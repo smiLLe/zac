@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'any_widget_builder.dart';
+part of 'widget_builder.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AnyWidgetBuilderBuilder _$$_AnyWidgetBuilderBuilderFromJson(
+_$_ZacWidgetBuilderBuilder _$$_ZacWidgetBuilderBuilderFromJson(
         Map<String, dynamic> json) =>
-    _$_AnyWidgetBuilderBuilder(
+    _$_ZacWidgetBuilderBuilder(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
@@ -16,9 +16,9 @@ _$_AnyWidgetBuilderBuilder _$$_AnyWidgetBuilderBuilderFromJson(
       $type: json['_converter'] as String?,
     );
 
-_$_AnyWidgetBuilderBuilderIsolate _$$_AnyWidgetBuilderBuilderIsolateFromJson(
+_$_ZacWidgetBuilderBuilderIsolate _$$_ZacWidgetBuilderBuilderIsolateFromJson(
         Map<String, dynamic> json) =>
-    _$_AnyWidgetBuilderBuilderIsolate(
+    _$_ZacWidgetBuilderBuilderIsolate(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
@@ -26,10 +26,10 @@ _$_AnyWidgetBuilderBuilderIsolate _$$_AnyWidgetBuilderBuilderIsolateFromJson(
       $type: json['_converter'] as String?,
     );
 
-_$_AnyWidgetBuilderBuilderIsolateString
-    _$$_AnyWidgetBuilderBuilderIsolateStringFromJson(
+_$_ZacWidgetBuilderBuilderIsolateString
+    _$$_ZacWidgetBuilderBuilderIsolateStringFromJson(
             Map<String, dynamic> json) =>
-        _$_AnyWidgetBuilderBuilderIsolateString(
+        _$_ZacWidgetBuilderBuilderIsolateString(
           key: json['key'] == null
               ? null
               : FlutterKey.fromJson(json['key'] as Object),

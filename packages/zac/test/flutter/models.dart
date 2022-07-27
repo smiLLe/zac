@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:zac/src/zac/context/any_widget_context.dart';
+import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';

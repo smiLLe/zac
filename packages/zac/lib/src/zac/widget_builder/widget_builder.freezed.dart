@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'any_widget_builder.dart';
+part of 'widget_builder.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AnyWidgetBuilderBuilder _$AnyWidgetBuilderBuilderFromJson(
+ZacWidgetBuilderBuilder _$ZacWidgetBuilderBuilderFromJson(
     Map<String, dynamic> json) {
   switch (json['_converter']) {
-    case 'z:1:AnyWidgetBuilder':
-      return _AnyWidgetBuilderBuilder.fromJson(json);
-    case 'z:1:AnyWidgetBuilder.isolate':
-      return _AnyWidgetBuilderBuilderIsolate.fromJson(json);
-    case 'z:1:AnyWidgetBuilder.isolateString':
-      return _AnyWidgetBuilderBuilderIsolateString.fromJson(json);
+    case 'z:1:ZacWidgetBuilder':
+      return _ZacWidgetBuilderBuilder.fromJson(json);
+    case 'z:1:ZacWidgetBuilder.isolate':
+      return _ZacWidgetBuilderBuilderIsolate.fromJson(json);
+    case 'z:1:ZacWidgetBuilder.isolateString':
+      return _ZacWidgetBuilderBuilderIsolateString.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
           json,
           '_converter',
-          'AnyWidgetBuilderBuilder',
+          'ZacWidgetBuilderBuilder',
           'Invalid union type "${json['_converter']}"!');
   }
 }
 
 /// @nodoc
-mixin _$AnyWidgetBuilderBuilder {
+mixin _$ZacWidgetBuilderBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyWidgetBuilderBuilder value) $default, {
-    required TResult Function(_AnyWidgetBuilderBuilderIsolate value) isolate,
-    required TResult Function(_AnyWidgetBuilderBuilderIsolateString value)
+    TResult Function(_ZacWidgetBuilderBuilder value) $default, {
+    required TResult Function(_ZacWidgetBuilderBuilderIsolate value) isolate,
+    required TResult Function(_ZacWidgetBuilderBuilderIsolateString value)
         isolateString,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,15 +49,15 @@ mixin _$AnyWidgetBuilderBuilder {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyWidgetBuilderBuilder extends _AnyWidgetBuilderBuilder
+class _$_ZacWidgetBuilderBuilder extends _ZacWidgetBuilderBuilder
     with DiagnosticableTreeMixin {
-  _$_AnyWidgetBuilderBuilder(
+  _$_ZacWidgetBuilderBuilder(
       {this.key, required this.data, final String? $type})
-      : $type = $type ?? 'z:1:AnyWidgetBuilder',
+      : $type = $type ?? 'z:1:ZacWidgetBuilder',
         super._();
 
-  factory _$_AnyWidgetBuilderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_AnyWidgetBuilderBuilderFromJson(json);
+  factory _$_ZacWidgetBuilderBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacWidgetBuilderBuilderFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -69,14 +69,14 @@ class _$_AnyWidgetBuilderBuilder extends _AnyWidgetBuilderBuilder
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AnyWidgetBuilderBuilder(key: $key, data: $data)';
+    return 'ZacWidgetBuilderBuilder(key: $key, data: $data)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AnyWidgetBuilderBuilder'))
+      ..add(DiagnosticsProperty('type', 'ZacWidgetBuilderBuilder'))
       ..add(DiagnosticsProperty('key', key))
       ..add(DiagnosticsProperty('data', data));
   }
@@ -85,7 +85,7 @@ class _$_AnyWidgetBuilderBuilder extends _AnyWidgetBuilderBuilder
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyWidgetBuilderBuilder &&
+            other is _$_ZacWidgetBuilderBuilder &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
@@ -100,23 +100,23 @@ class _$_AnyWidgetBuilderBuilder extends _AnyWidgetBuilderBuilder
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyWidgetBuilderBuilder value) $default, {
-    required TResult Function(_AnyWidgetBuilderBuilderIsolate value) isolate,
-    required TResult Function(_AnyWidgetBuilderBuilderIsolateString value)
+    TResult Function(_ZacWidgetBuilderBuilder value) $default, {
+    required TResult Function(_ZacWidgetBuilderBuilderIsolate value) isolate,
+    required TResult Function(_ZacWidgetBuilderBuilderIsolateString value)
         isolateString,
   }) {
     return $default(this);
   }
 }
 
-abstract class _AnyWidgetBuilderBuilder extends AnyWidgetBuilderBuilder {
-  factory _AnyWidgetBuilderBuilder(
+abstract class _ZacWidgetBuilderBuilder extends ZacWidgetBuilderBuilder {
+  factory _ZacWidgetBuilderBuilder(
       {final FlutterKey? key,
-      required final ZacMap data}) = _$_AnyWidgetBuilderBuilder;
-  _AnyWidgetBuilderBuilder._() : super._();
+      required final ZacMap data}) = _$_ZacWidgetBuilderBuilder;
+  _ZacWidgetBuilderBuilder._() : super._();
 
-  factory _AnyWidgetBuilderBuilder.fromJson(Map<String, dynamic> json) =
-      _$_AnyWidgetBuilderBuilder.fromJson;
+  factory _ZacWidgetBuilderBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacWidgetBuilderBuilder.fromJson;
 
   @override
   FlutterKey? get key;
@@ -125,16 +125,16 @@ abstract class _AnyWidgetBuilderBuilder extends AnyWidgetBuilderBuilder {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyWidgetBuilderBuilderIsolate extends _AnyWidgetBuilderBuilderIsolate
+class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
     with DiagnosticableTreeMixin {
-  _$_AnyWidgetBuilderBuilderIsolate(
+  _$_ZacWidgetBuilderBuilderIsolate(
       {this.key, required this.data, final String? $type})
-      : $type = $type ?? 'z:1:AnyWidgetBuilder.isolate',
+      : $type = $type ?? 'z:1:ZacWidgetBuilder.isolate',
         super._();
 
-  factory _$_AnyWidgetBuilderBuilderIsolate.fromJson(
+  factory _$_ZacWidgetBuilderBuilderIsolate.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AnyWidgetBuilderBuilderIsolateFromJson(json);
+      _$$_ZacWidgetBuilderBuilderIsolateFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -146,14 +146,14 @@ class _$_AnyWidgetBuilderBuilderIsolate extends _AnyWidgetBuilderBuilderIsolate
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AnyWidgetBuilderBuilder.isolate(key: $key, data: $data)';
+    return 'ZacWidgetBuilderBuilder.isolate(key: $key, data: $data)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AnyWidgetBuilderBuilder.isolate'))
+      ..add(DiagnosticsProperty('type', 'ZacWidgetBuilderBuilder.isolate'))
       ..add(DiagnosticsProperty('key', key))
       ..add(DiagnosticsProperty('data', data));
   }
@@ -162,7 +162,7 @@ class _$_AnyWidgetBuilderBuilderIsolate extends _AnyWidgetBuilderBuilderIsolate
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyWidgetBuilderBuilderIsolate &&
+            other is _$_ZacWidgetBuilderBuilderIsolate &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
@@ -177,23 +177,23 @@ class _$_AnyWidgetBuilderBuilderIsolate extends _AnyWidgetBuilderBuilderIsolate
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyWidgetBuilderBuilder value) $default, {
-    required TResult Function(_AnyWidgetBuilderBuilderIsolate value) isolate,
-    required TResult Function(_AnyWidgetBuilderBuilderIsolateString value)
+    TResult Function(_ZacWidgetBuilderBuilder value) $default, {
+    required TResult Function(_ZacWidgetBuilderBuilderIsolate value) isolate,
+    required TResult Function(_ZacWidgetBuilderBuilderIsolateString value)
         isolateString,
   }) {
     return isolate(this);
   }
 }
 
-abstract class _AnyWidgetBuilderBuilderIsolate extends AnyWidgetBuilderBuilder {
-  factory _AnyWidgetBuilderBuilderIsolate(
+abstract class _ZacWidgetBuilderBuilderIsolate extends ZacWidgetBuilderBuilder {
+  factory _ZacWidgetBuilderBuilderIsolate(
       {final FlutterKey? key,
-      required final ZacMap data}) = _$_AnyWidgetBuilderBuilderIsolate;
-  _AnyWidgetBuilderBuilderIsolate._() : super._();
+      required final ZacMap data}) = _$_ZacWidgetBuilderBuilderIsolate;
+  _ZacWidgetBuilderBuilderIsolate._() : super._();
 
-  factory _AnyWidgetBuilderBuilderIsolate.fromJson(Map<String, dynamic> json) =
-      _$_AnyWidgetBuilderBuilderIsolate.fromJson;
+  factory _ZacWidgetBuilderBuilderIsolate.fromJson(Map<String, dynamic> json) =
+      _$_ZacWidgetBuilderBuilderIsolate.fromJson;
 
   @override
   FlutterKey? get key;
@@ -202,16 +202,16 @@ abstract class _AnyWidgetBuilderBuilderIsolate extends AnyWidgetBuilderBuilder {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyWidgetBuilderBuilderIsolateString
-    extends _AnyWidgetBuilderBuilderIsolateString with DiagnosticableTreeMixin {
-  _$_AnyWidgetBuilderBuilderIsolateString(
+class _$_ZacWidgetBuilderBuilderIsolateString
+    extends _ZacWidgetBuilderBuilderIsolateString with DiagnosticableTreeMixin {
+  _$_ZacWidgetBuilderBuilderIsolateString(
       {this.key, required this.data, final String? $type})
-      : $type = $type ?? 'z:1:AnyWidgetBuilder.isolateString',
+      : $type = $type ?? 'z:1:ZacWidgetBuilder.isolateString',
         super._();
 
-  factory _$_AnyWidgetBuilderBuilderIsolateString.fromJson(
+  factory _$_ZacWidgetBuilderBuilderIsolateString.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AnyWidgetBuilderBuilderIsolateStringFromJson(json);
+      _$$_ZacWidgetBuilderBuilderIsolateStringFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -223,7 +223,7 @@ class _$_AnyWidgetBuilderBuilderIsolateString
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AnyWidgetBuilderBuilder.isolateString(key: $key, data: $data)';
+    return 'ZacWidgetBuilderBuilder.isolateString(key: $key, data: $data)';
   }
 
   @override
@@ -231,7 +231,7 @@ class _$_AnyWidgetBuilderBuilderIsolateString
     super.debugFillProperties(properties);
     properties
       ..add(
-          DiagnosticsProperty('type', 'AnyWidgetBuilderBuilder.isolateString'))
+          DiagnosticsProperty('type', 'ZacWidgetBuilderBuilder.isolateString'))
       ..add(DiagnosticsProperty('key', key))
       ..add(DiagnosticsProperty('data', data));
   }
@@ -240,7 +240,7 @@ class _$_AnyWidgetBuilderBuilderIsolateString
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyWidgetBuilderBuilderIsolateString &&
+            other is _$_ZacWidgetBuilderBuilderIsolateString &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.data, data));
   }
@@ -255,25 +255,25 @@ class _$_AnyWidgetBuilderBuilderIsolateString
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyWidgetBuilderBuilder value) $default, {
-    required TResult Function(_AnyWidgetBuilderBuilderIsolate value) isolate,
-    required TResult Function(_AnyWidgetBuilderBuilderIsolateString value)
+    TResult Function(_ZacWidgetBuilderBuilder value) $default, {
+    required TResult Function(_ZacWidgetBuilderBuilderIsolate value) isolate,
+    required TResult Function(_ZacWidgetBuilderBuilderIsolateString value)
         isolateString,
   }) {
     return isolateString(this);
   }
 }
 
-abstract class _AnyWidgetBuilderBuilderIsolateString
-    extends AnyWidgetBuilderBuilder {
-  factory _AnyWidgetBuilderBuilderIsolateString(
+abstract class _ZacWidgetBuilderBuilderIsolateString
+    extends ZacWidgetBuilderBuilder {
+  factory _ZacWidgetBuilderBuilderIsolateString(
       {final FlutterKey? key,
-      required final ZacString data}) = _$_AnyWidgetBuilderBuilderIsolateString;
-  _AnyWidgetBuilderBuilderIsolateString._() : super._();
+      required final ZacString data}) = _$_ZacWidgetBuilderBuilderIsolateString;
+  _ZacWidgetBuilderBuilderIsolateString._() : super._();
 
-  factory _AnyWidgetBuilderBuilderIsolateString.fromJson(
+  factory _ZacWidgetBuilderBuilderIsolateString.fromJson(
           Map<String, dynamic> json) =
-      _$_AnyWidgetBuilderBuilderIsolateString.fromJson;
+      _$_ZacWidgetBuilderBuilderIsolateString.fromJson;
 
   @override
   FlutterKey? get key;

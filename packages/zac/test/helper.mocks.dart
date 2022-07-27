@@ -4,7 +4,7 @@
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/actions/action.dart' as _i4;
-import 'package:zac/src/zac/context/any_widget_context.dart' as _i3;
+import 'package:zac/src/zac/context/widget_context.dart' as _i3;
 
 import 'helper.dart' as _i2;
 

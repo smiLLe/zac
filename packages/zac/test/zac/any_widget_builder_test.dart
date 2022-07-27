@@ -42,11 +42,11 @@ void main() {
 
     testWidgets('nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'z:1:AnyWidgetBuilder',
+        converterKey: 'z:1:ZacWidgetBuilder',
         'data': {
-          converterKey: 'z:1:AnyWidgetBuilder',
+          converterKey: 'z:1:ZacWidgetBuilder',
           'data': {
-            converterKey: 'z:1:AnyWidgetBuilder',
+            converterKey: 'z:1:ZacWidgetBuilder',
             'data': {
               converterKey: 'f:1:SizedBox',
               'key': KeysModel.getValueKey('FIND_ME'),
@@ -61,11 +61,11 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: 'z:1:AnyWidgetBuilder.isolate',
+          converterKey: 'z:1:ZacWidgetBuilder.isolate',
           'data': {
-            converterKey: 'z:1:AnyWidgetBuilder.isolateString',
+            converterKey: 'z:1:ZacWidgetBuilder.isolateString',
             'data': jsonEncode({
-              converterKey: 'z:1:AnyWidgetBuilder.isolate',
+              converterKey: 'z:1:ZacWidgetBuilder.isolate',
               'data': {
                 converterKey: 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
@@ -80,13 +80,13 @@ void main() {
 
     testWidgets('mixed nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'z:1:AnyWidgetBuilder.isolate',
+        converterKey: 'z:1:ZacWidgetBuilder.isolate',
         'data': {
-          converterKey: 'z:1:AnyWidgetBuilder',
+          converterKey: 'z:1:ZacWidgetBuilder',
           'data': {
-            converterKey: 'z:1:AnyWidgetBuilder.isolateString',
+            converterKey: 'z:1:ZacWidgetBuilder.isolateString',
             'data': jsonEncode({
-              converterKey: 'z:1:AnyWidgetBuilder.isolate',
+              converterKey: 'z:1:ZacWidgetBuilder.isolate',
               'data': {
                 converterKey: 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),

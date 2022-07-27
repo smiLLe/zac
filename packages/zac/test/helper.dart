@@ -1,7 +1,7 @@
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
-import 'package:zac/src/zac/context/any_widget_context.dart';
-import 'package:zac/src/zac/any_widget_builder/any_widget_builder.dart';
+import 'package:zac/src/zac/context/widget_context.dart';
+import 'package:zac/src/zac/widget_builder/widget_builder.dart';
 import 'package:zac/src/base.dart';
 
 import 'package:zac/src/converter.dart';
@@ -25,7 +25,7 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    AnyWidgetBuilderFromMap(anyMap: ZacMap(data)),
+    ZacWidgetBuilderFromMap(anyMap: ZacMap(data)),
     converter: converter,
     useContainer: useContainer,
   );

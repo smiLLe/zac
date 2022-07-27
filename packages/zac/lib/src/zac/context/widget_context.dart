@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-part 'any_widget_context.freezed.dart';
-part 'any_widget_context.g.dart';
+part 'widget_context.freezed.dart';
+part 'widget_context.g.dart';
 
 @nonConverterFreezed
 class ZacBuildContext with _$ZacBuildContext {
