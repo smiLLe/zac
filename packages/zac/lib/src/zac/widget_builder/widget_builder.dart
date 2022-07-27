@@ -56,11 +56,11 @@ class ZacWidgetBuilderBuilder
         key: obj.key?.build(context),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
-        anyMap: obj.data,
+        zacMap: obj.data,
         key: obj.key?.build(context),
       ),
       isolateString: (obj) => ZacWidgetBuilderFromMapInIsolateFromString(
-        anyString: obj.data,
+        zacString: obj.data,
         key: obj.key?.build(context),
       ),
     );
@@ -99,10 +99,10 @@ class ZacWidgetBuilderFromMap extends HookConsumerWidget {
 
 class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
   const ZacWidgetBuilderFromMapInIsolateFromString(
-      {required this.anyString, Key? key})
+      {required this.zacString, Key? key})
       : super(key: key);
 
-  final ZacString anyString;
+  final ZacString zacString;
 
   static Future<Map<String, dynamic>> _parseJson(String encodedJson) async {
     final Object? data = jsonDecode(encodedJson);
@@ -118,7 +118,7 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
     final awContext = useZacWidgetContext(ref);
-    final data = anyString.getValue(awContext);
+    final data = zacString.getValue(awContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -139,7 +139,7 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
 
     return loadingState.value.map(
       data: (obj) =>
-          ZacWidgetBuilderFromMapInIsolate(anyMap: ZacMap(obj.value)),
+          ZacWidgetBuilderFromMapInIsolate(zacMap: ZacMap(obj.value)),
       error: (obj) => const SizedBox.shrink(),
       loading: (obj) => const SizedBox.shrink(),
     );
@@ -147,7 +147,7 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
 }
 
 class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
-  const ZacWidgetBuilderFromMapInIsolate({required this.anyMap, Key? key})
+  const ZacWidgetBuilderFromMapInIsolate({required this.zacMap, Key? key})
       : super(key: key);
 
   static Future<ZacWidget> _isolateConvert(List<Object?> data) async {
@@ -157,7 +157,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     // return const ZacWidgetConverter().fromJson(data[0] as Map<String, dynamic>);
   }
 
-  final ZacMap anyMap;
+  final ZacMap zacMap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -165,7 +165,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     final loadingState =
         useState<AsyncValue<ZacWidget>>(const AsyncValue.loading());
     final awContext = useZacWidgetContext(ref);
-    final map = anyMap.getValue(awContext);
+    final map = zacMap.getValue(awContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
