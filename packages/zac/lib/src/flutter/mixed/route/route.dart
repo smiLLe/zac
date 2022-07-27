@@ -15,8 +15,8 @@ abstract class FlutterRoute {
     return ConverterHelper.convertToType<FlutterRoute>(data);
   }
 
-  Route<AnyActions?> build(ZacBuildContext context,
-      {Widget Function(ZacBuildContext context, ZacWidget anyWidget)? wrap});
+  Route<ZacActions?> build(ZacBuildContext context,
+      {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap});
 }
 
 @defaultConverterFreezed
@@ -39,9 +39,9 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   @override
-  MaterialPageRoute<AnyActions?> build(ZacBuildContext context,
-      {Widget Function(ZacBuildContext context, ZacWidget anyWidget)? wrap}) {
-    return MaterialPageRoute<AnyActions?>(
+  MaterialPageRoute<ZacActions?> build(ZacBuildContext context,
+      {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap}) {
+    return MaterialPageRoute<ZacActions?>(
       builder: (_) => UpdateContextBuilder(
         builder: (context) {
           if (null == wrap) return child.buildWidget(context);
@@ -82,9 +82,9 @@ class FlutterPageRouteBuilder
   }) = _FlutterPageRouteBuilder;
 
   @override
-  PageRouteBuilder<AnyActions?> build(ZacBuildContext context,
-      {Widget Function(ZacBuildContext context, ZacWidget anyWidget)? wrap}) {
-    return PageRouteBuilder<AnyActions?>(
+  PageRouteBuilder<ZacActions?> build(ZacBuildContext context,
+      {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap}) {
+    return PageRouteBuilder<ZacActions?>(
       pageBuilder: (_, __, ___) => UpdateContextBuilder(
         builder: (context) {
           if (null == wrap) return child.buildWidget(context);

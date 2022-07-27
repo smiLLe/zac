@@ -17,7 +17,7 @@ class SharedValue with _$SharedValue {
 
   static final provider = StateProvider.family.autoDispose<SharedValue, String>(
     (ref, fam) => SharedValue.empty(),
-    name: 'AnyWidget SharedValue',
+    name: 'ZacWidget SharedValue',
   );
 
   static Object getFilled(
@@ -136,7 +136,7 @@ class BuiltInTransformer
 }
 
 @defaultConverterFreezed
-class UpdateSharedValue with _$UpdateSharedValue implements AnyAction {
+class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
   const UpdateSharedValue._();
 
   static const String unionValue = 'z:1:SharedValue.update';

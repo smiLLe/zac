@@ -6,22 +6,22 @@ part of 'navigator.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AnyNavigatorStateClosest _$$_AnyNavigatorStateClosestFromJson(
+_$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
         Map<String, dynamic> json) =>
-    _$_AnyNavigatorStateClosest(
+    _$_ZacNavigatorStateClosest(
       $type: json['_converter'] as String?,
     );
 
-_$_AnyNavigatorStateRoot _$$_AnyNavigatorStateRootFromJson(
+_$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
         Map<String, dynamic> json) =>
-    _$_AnyNavigatorStateRoot(
+    _$_ZacNavigatorStateRoot(
       $type: json['_converter'] as String?,
     );
 
-_$_AnyNavigatorStateConsumeFromGlobalKey
-    _$$_AnyNavigatorStateConsumeFromGlobalKeyFromJson(
+_$_ZacNavigatorStateConsumeFromGlobalKey
+    _$$_ZacNavigatorStateConsumeFromGlobalKeyFromJson(
             Map<String, dynamic> json) =>
-        _$_AnyNavigatorStateConsumeFromGlobalKey(
+        _$_ZacNavigatorStateConsumeFromGlobalKey(
           name: json['name'] as String,
           consumeType: json['consumeType'] == null
               ? null
@@ -34,16 +34,16 @@ _$_AnyNavigatorStateConsumeFromGlobalKey
           $type: json['_converter'] as String?,
         );
 
-_$_AnyNavigatorStateBuilder _$$_AnyNavigatorStateBuilderFromJson(
+_$_ZacNavigatorStateBuilder _$$_ZacNavigatorStateBuilderFromJson(
         Map<String, dynamic> json) =>
-    _$_AnyNavigatorStateBuilder(
+    _$_ZacNavigatorStateBuilder(
       debugLabel: json['debugLabel'] as String?,
       $type: json['_converter'] as String?,
     );
 
-_$_AnyNavigatorStateTransformBuilder
-    _$$_AnyNavigatorStateTransformBuilderFromJson(Map<String, dynamic> json) =>
-        _$_AnyNavigatorStateTransformBuilder(
+_$_ZacNavigatorStateTransformBuilder
+    _$$_ZacNavigatorStateTransformBuilderFromJson(Map<String, dynamic> json) =>
+        _$_ZacNavigatorStateTransformBuilder(
           $type: json['_converter'] as String?,
         );
 
@@ -73,7 +73,7 @@ _$_FlutterNavigatorPush _$$_FlutterNavigatorPushFromJson(
       route: FlutterRoute.fromJson(json['route'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -84,7 +84,7 @@ _$_FlutterNavigatorPushNamed _$$_FlutterNavigatorPushNamedFromJson(
       arguments: json['arguments'],
       navigatorState: json['navigatorState'] == null
           ? null
-          : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -93,10 +93,10 @@ _$_FlutterNavigatorPop _$$_FlutterNavigatorPopFromJson(
     _$_FlutterNavigatorPop(
       actions: json['actions'] == null
           ? null
-          : AnyActions.fromJson(json['actions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -105,10 +105,10 @@ _$_FlutterNavigatorMaybePop _$$_FlutterNavigatorMaybePopFromJson(
     _$_FlutterNavigatorMaybePop(
       actions: json['actions'] == null
           ? null
-          : AnyActions.fromJson(json['actions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -118,10 +118,10 @@ _$_FlutterNavigatorPushReplacement _$$_FlutterNavigatorPushReplacementFromJson(
       route: FlutterRoute.fromJson(json['route'] as Object),
       result: json['result'] == null
           ? null
-          : AnyActions.fromJson(json['result'] as Object),
+          : ZacActions.fromJson(json['result'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -133,10 +133,10 @@ _$_FlutterNavigatorPushReplacementNamed
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
-              : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+              : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
           result: json['result'] == null
               ? null
-              : AnyActions.fromJson(json['result'] as Object),
+              : ZacActions.fromJson(json['result'] as Object),
           $type: json['_converter'] as String?,
         );
 
@@ -146,7 +146,7 @@ _$_FlutterNavigatorPopUntilRouteName
           routeName: ZacString.fromJson(json['routeName'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
-              : AnyNavigatorState.fromJson(json['navigatorState'] as Object),
+              : ZacNavigatorState.fromJson(json['navigatorState'] as Object),
           $type: json['_converter'] as String?,
         );
 

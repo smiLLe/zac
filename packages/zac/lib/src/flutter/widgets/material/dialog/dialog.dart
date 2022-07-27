@@ -22,7 +22,7 @@ part 'dialog.freezed.dart';
 part 'dialog.g.dart';
 
 @defaultConverterFreezed
-class FlutterDialogs with _$FlutterDialogs, AnyAction implements ZacWidget {
+class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';
@@ -105,12 +105,12 @@ class FlutterDialogs with _$FlutterDialogs, AnyAction implements ZacWidget {
   factory FlutterDialogs.simpleDialogOption({
     FlutterKey? key,
     ZacWidget? child,
-    AnyActions? onPressed,
+    ZacActions? onPressed,
     FlutterEdgeInsets? padding,
   }) = _FlutterDialogsSimpleDialogOption;
 
   @override
-  FutureOr<AnyActions?> execute(
+  FutureOr<ZacActions?> execute(
       ZacBuildContext context, ActionPayload payload) {
     if (!context.isMounted()) return null;
     return map(
@@ -118,7 +118,7 @@ class FlutterDialogs with _$FlutterDialogs, AnyAction implements ZacWidget {
       dialog: (_) => throw StateError('Should never happen'),
       simpleDialog: (_) => throw StateError('Should never happen'),
       simpleDialogOption: (_) => throw StateError('Should never happen'),
-      showDialog: (value) => showDialog<AnyActions?>(
+      showDialog: (value) => showDialog<ZacActions?>(
         context: context.context,
         builder: (_) => FlutterBuilder(child: value.child).buildWidget(context),
         routeSettings: value.routeSettings?.build(context),

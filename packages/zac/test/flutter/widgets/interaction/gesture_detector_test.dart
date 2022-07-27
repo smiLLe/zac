@@ -16,7 +16,7 @@ void main() {
     final onSecondaryLongPressCb = MockLeakedActionCb();
     final onTertiaryLongPressCb = MockLeakedActionCb();
 
-    await testAnyWidget(
+    await testZacWidget(
       tester,
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME'),
@@ -58,7 +58,7 @@ void main() {
 
   testWidgets('doubleTap', (tester) async {
     final doubleTapCb = MockLeakedActionCb();
-    await testAnyWidget(
+    await testZacWidget(
       tester,
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME'),

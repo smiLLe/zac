@@ -14,9 +14,9 @@ part 'navigator.g.dart';
 
 Type _typeOf<T>() => T;
 
-abstract class AnyNavigatorState {
-  factory AnyNavigatorState.fromJson(Object data) {
-    return ConverterHelper.convertToType<AnyNavigatorState>(data);
+abstract class ZacNavigatorState {
+  factory ZacNavigatorState.fromJson(Object data) {
+    return ConverterHelper.convertToType<ZacNavigatorState>(data);
   }
 
   NavigatorState getNavigatorState(ZacBuildContext context);
@@ -25,7 +25,7 @@ abstract class AnyNavigatorState {
 @defaultConverterFreezed
 class FlutterNavigatorState
     with _$FlutterNavigatorState
-    implements SharedValueTransformer, AnyNavigatorState, FlutterKey {
+    implements SharedValueTransformer, ZacNavigatorState, FlutterKey {
   const FlutterNavigatorState._();
   static const String unionValueClosest = 'f:1:NavigatorState.closest';
   static const String unionValueRoot = 'f:1:NavigatorState.root';
@@ -39,10 +39,10 @@ class FlutterNavigatorState
       _$FlutterNavigatorStateFromJson(json);
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueClosest)
-  factory FlutterNavigatorState.closest() = _AnyNavigatorStateClosest;
+  factory FlutterNavigatorState.closest() = _ZacNavigatorStateClosest;
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueRoot)
-  factory FlutterNavigatorState.root() = _AnyNavigatorStateRoot;
+  factory FlutterNavigatorState.root() = _ZacNavigatorStateRoot;
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueConsume)
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
@@ -50,19 +50,19 @@ class FlutterNavigatorState
     required String name,
     SharedValueConsumeType? consumeType,
     List<SharedValueTransformer>? mapper,
-  }) = _AnyNavigatorStateConsumeFromGlobalKey;
+  }) = _ZacNavigatorStateConsumeFromGlobalKey;
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueBuilder)
   factory FlutterNavigatorState.builder({String? debugLabel}) =
-      _AnyNavigatorStateBuilder;
+      _ZacNavigatorStateBuilder;
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueBuilderTransform)
   factory FlutterNavigatorState.transform() =
-      _AnyNavigatorStateTransformBuilder;
+      _ZacNavigatorStateTransformBuilder;
 
   @override
   Object transform(Object value, SharedValueInteractionType interaction) {
-    if (value is! _AnyNavigatorStateBuilder) {
+    if (value is! _ZacNavigatorStateBuilder) {
       throw StateError(
           'Trying to get NavigatorState from unsupported type "$this"');
     }
@@ -105,7 +105,7 @@ class FlutterNavigatorState
 }
 
 @defaultConverterFreezed
-class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
+class FlutterNavigator with _$FlutterNavigator, ZacAction implements ZacWidget {
   const FlutterNavigator._();
 
   static const String unionValue = 'f:1:Navigator';
@@ -136,45 +136,45 @@ class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
   @FreezedUnionValue(FlutterNavigator.unionValuePush)
   factory FlutterNavigator.push(
       {required FlutterRoute route,
-      AnyNavigatorState? navigatorState}) = _FlutterNavigatorPush;
+      ZacNavigatorState? navigatorState}) = _FlutterNavigatorPush;
 
   @FreezedUnionValue(FlutterNavigator.unionValuePushNamed)
   factory FlutterNavigator.pushNamed(
       {required ZacString routeName,
       Object? arguments,
-      AnyNavigatorState? navigatorState}) = _FlutterNavigatorPushNamed;
+      ZacNavigatorState? navigatorState}) = _FlutterNavigatorPushNamed;
 
   @FreezedUnionValue(FlutterNavigator.unionValuePop)
   factory FlutterNavigator.pop({
-    AnyActions? actions,
-    AnyNavigatorState? navigatorState,
+    ZacActions? actions,
+    ZacNavigatorState? navigatorState,
   }) = _FlutterNavigatorPop;
 
   @FreezedUnionValue(FlutterNavigator.unionValueMaybePop)
   factory FlutterNavigator.maybePop({
-    AnyActions? actions,
-    AnyNavigatorState? navigatorState,
+    ZacActions? actions,
+    ZacNavigatorState? navigatorState,
   }) = _FlutterNavigatorMaybePop;
 
   @FreezedUnionValue(FlutterNavigator.unionValuePushReplacement)
   factory FlutterNavigator.pushReplacement({
     required FlutterRoute route,
-    AnyActions? result,
-    AnyNavigatorState? navigatorState,
+    ZacActions? result,
+    ZacNavigatorState? navigatorState,
   }) = _FlutterNavigatorPushReplacement;
 
   @FreezedUnionValue(FlutterNavigator.unionValuePushReplacementNamed)
   factory FlutterNavigator.pushReplacementNamed({
     required ZacString routeName,
     Object? arguments,
-    AnyNavigatorState? navigatorState,
-    AnyActions? result,
+    ZacNavigatorState? navigatorState,
+    ZacActions? result,
   }) = _FlutterNavigatorPushReplacementNamed;
 
   @FreezedUnionValue(FlutterNavigator.unionValuePopUntilRouteName)
   factory FlutterNavigator.popUntilRouteName({
     required ZacString routeName,
-    AnyNavigatorState? navigatorState,
+    ZacNavigatorState? navigatorState,
   }) = _FlutterNavigatorPopUntilRouteName;
 
   NavigatorState? _getState(ZacBuildContext context) {
@@ -202,7 +202,7 @@ class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
         final state = _getState(context);
         if (null == state) return null;
         state.push(obj.route.build(context)).then((value) {
-          if (value is AnyActions) {
+          if (value is ZacActions) {
             value.execute(context, payload);
           }
         });
@@ -216,7 +216,7 @@ class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
           arguments: obj.arguments,
         )
             .then((value) {
-          if (value is AnyActions) {
+          if (value is ZacActions) {
             value.execute(context, payload);
           }
         });
@@ -240,7 +240,7 @@ class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
           result: obj.result,
         )
             .then((value) {
-          if (value is AnyActions) {
+          if (value is ZacActions) {
             value.execute(context, payload);
           }
         });
@@ -255,7 +255,7 @@ class FlutterNavigator with _$FlutterNavigator, AnyAction implements ZacWidget {
           result: obj.result,
         )
             .then((value) {
-          if (value is AnyActions) {
+          if (value is ZacActions) {
             value.execute(context, payload);
           }
         });
@@ -327,14 +327,14 @@ class RouteFactorySingleRoute
 
       return routeConfig.route.build(
         context,
-        wrap: (context, anyWidget) {
+        wrap: (context, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return anyWidget.buildWidget(context);
+            return zacWidget.buildWidget(context);
           }
 
           return SharedValueProvider(
-            child: anyWidget,
+            child: zacWidget,
             name: RouteFactoryFromRoutes.providerName(
               context,
               routeConfig,
@@ -389,14 +389,14 @@ class RouteFactoryFromRoutes
       final config = routes[name]!;
       return config.route.build(
         context,
-        wrap: (context, anyWidget) {
+        wrap: (context, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return anyWidget.buildWidget(context);
+            return zacWidget.buildWidget(context);
           }
 
           return SharedValueProvider(
-            child: anyWidget,
+            child: zacWidget,
             name: RouteFactoryFromRoutes.providerName(
               context,
               config,

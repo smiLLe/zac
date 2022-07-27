@@ -30,7 +30,7 @@ void main() {
   testWidgets('FlutterListTile interactions', (tester) async {
     final onTapCb = MockLeakedActionCb();
     final onLongPressCb = MockLeakedActionCb();
-    await testAnyWidget(
+    await testZacWidget(
         tester,
         FlutterScaffold(
             body: FlutterListTile(

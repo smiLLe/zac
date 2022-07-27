@@ -10,12 +10,12 @@ void main() {
     group('GlobalKeyNavigatorStateBuilder', () {
       test('fromJson', () {
         expect(
-            AnyNavigatorState.fromJson(
+            ZacNavigatorState.fromJson(
                 {'_converter': 'z:1:GlobalKeyNavigatorState'}),
             FlutterNavigatorState.builder());
 
         expect(
-            AnyNavigatorState.fromJson({
+            ZacNavigatorState.fromJson({
               '_converter': 'z:1:GlobalKeyNavigatorState',
               'debugLabel': 'foo'
             }),
@@ -38,7 +38,7 @@ void main() {
       testWidgets('provide and consume', (tester) async {
         late ZacBuildContext awContext;
 
-        await testAnyWidget(
+        await testZacWidget(
             tester,
             SharedValueProviderBuilder(
               name: 'foo',
@@ -157,7 +157,7 @@ void main() {
       testWidgets('provide arguments', (tester) async {
         late ZacBuildContext context;
 
-        await testAnyWidget(
+        await testZacWidget(
           tester,
           FlutterNavigator(
             onUnknownRoute: RouteFactorySingleRoute(
@@ -174,7 +174,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ExecuteActionsBuilder(
-                      actions: AnyActions(
+                      actions: ZacActions(
                         [
                           FlutterNavigator.pushNamed(
                             routeName: ZacString('/other'),
@@ -247,7 +247,7 @@ void main() {
       testWidgets('provide arguments', (tester) async {
         late ZacBuildContext context;
 
-        await testAnyWidget(
+        await testZacWidget(
           tester,
           FlutterNavigator(
             onGenerateRoute: RouteFactoryFromRoutes(
@@ -255,7 +255,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ExecuteActionsBuilder(
-                      actions: AnyActions(
+                      actions: ZacActions(
                         [
                           FlutterNavigator.pushNamed(
                             routeName: ZacString('/other'),
@@ -270,7 +270,7 @@ void main() {
                   route: FlutterMaterialPageRoute(
                     child: FlutterTextButton(
                       key: FlutterValueKey('press_me'),
-                      onPressed: AnyActions([
+                      onPressed: ZacActions([
                         FlutterNavigator.pushNamed(
                           routeName: ZacString('/otherother'),
                           arguments: 11,
@@ -311,7 +311,7 @@ void main() {
 
       testWidgets('providerName', (tester) async {
         late ZacBuildContext context;
-        await testAnyWidget(tester, LeakContext(cb: ((c) {
+        await testZacWidget(tester, LeakContext(cb: ((c) {
           context = c;
         })));
 

@@ -18,10 +18,10 @@ _$_ActionPayloadWithData _$$_ActionPayloadWithDataFromJson(
       $type: json['_converter'] as String?,
     );
 
-_$_AnyActions _$$_AnyActionsFromJson(Map<String, dynamic> json) =>
-    _$_AnyActions(
+_$_ZacActions _$$_ZacActionsFromJson(Map<String, dynamic> json) =>
+    _$_ZacActions(
       (json['actions'] as List<dynamic>)
-          .map((e) => AnyAction.fromJson(e as Map<String, dynamic>))
+          .map((e) => ZacAction.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -31,7 +31,7 @@ _$_ExecuteActionsWidgetBuilder _$$_ExecuteActionsWidgetBuilderFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      actions: AnyActions.fromJson(json['actions'] as Object),
+      actions: ZacActions.fromJson(json['actions'] as Object),
       child: json['child'] == null
           ? null
           : ZacWidget.fromJson(json['child'] as Object),

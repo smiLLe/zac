@@ -208,7 +208,7 @@ void main() {
 
     testWidgets('interaction', (tester) async {
       final cb = MockLeakedActionCb();
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           FlutterMaterial(
               child: FlutterDialogs.simpleDialogOption(

@@ -20,7 +20,7 @@ part 'scaffold.freezed.dart';
 part 'scaffold.g.dart';
 
 @defaultConverterFreezed
-class FlutterScaffold with _$FlutterScaffold, AnyAction implements ZacWidget {
+class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
   const FlutterScaffold._();
 
   static const String unionValue = 'f:1:Scaffold';
@@ -85,7 +85,7 @@ class FlutterScaffold with _$FlutterScaffold, AnyAction implements ZacWidget {
   }) = _FlutterScaffoldShowBottomSheet;
 
   @override
-  FutureOr<AnyActions?> execute(
+  FutureOr<ZacActions?> execute(
       ZacBuildContext context, ActionPayload payload) {
     return map(
       (_) => throw StateError('Should never happen'),
@@ -164,7 +164,7 @@ class FlutterScaffold with _$FlutterScaffold, AnyAction implements ZacWidget {
 @defaultConverterFreezed
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
-    implements AnyAction {
+    implements ZacAction {
   const FlutterScaffoldMessenger._();
 
   static const String unionValue = 'f:1:ScaffoldMessenger';
@@ -216,7 +216,7 @@ class FlutterScaffoldMessenger
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
   @override
-  FutureOr<AnyActions?> execute(
+  FutureOr<ZacActions?> execute(
       ZacBuildContext context, ActionPayload payload) {
     return map(
       showSnackBar: (value) {
@@ -284,7 +284,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
     // Animation<double>? animation,
-    AnyActions? onVisible,
+    ZacActions? onVisible,
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
@@ -345,7 +345,7 @@ class FlutterSnackBarAction with _$FlutterSnackBarAction implements ZacWidget {
     FlutterColor? textColor,
     FlutterColor? disabledTextColor,
     required String label,
-    required AnyActions? onPressed,
+    required ZacActions? onPressed,
   }) = _FlutterSnackBarAction;
 
   @override
@@ -383,7 +383,7 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
     ZacBool? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-    AnyActions? onVisible,
+    ZacActions? onVisible,
   }) = _FlutterMaterialBanner;
 
   @override

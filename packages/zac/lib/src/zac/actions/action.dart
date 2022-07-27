@@ -15,9 +15,9 @@ part 'action.g.dart';
 
 Type _typeOf<T>() => T;
 
-abstract class AnyAction {
-  factory AnyAction.fromJson(Map<String, dynamic> data) {
-    return ConverterHelper.convertToType<AnyAction>(data);
+abstract class ZacAction {
+  factory ZacAction.fromJson(Map<String, dynamic> data) {
+    return ConverterHelper.convertToType<ZacAction>(data);
   }
 
   void execute(ZacBuildContext context, ActionPayload payload);
@@ -29,46 +29,46 @@ class ActionPayload with _$ActionPayload {
   factory ActionPayload.withData(Object? data) = _ActionPayloadWithData;
 }
 
-void Function()? actionsCallback(AnyActions? actions, ZacBuildContext context) {
+void Function()? actionsCallback(ZacActions? actions, ZacBuildContext context) {
   if (null == actions) return null;
   return () => actions.execute(context, const ActionPayload.none());
 }
 
 void Function(Object? data)? actionsCallback1(
-    AnyActions? actions, ZacBuildContext context) {
+    ZacActions? actions, ZacBuildContext context) {
   if (null == actions) return null;
   return (Object? data) =>
       actions.execute(context, ActionPayload.withData(data));
 }
 
 @defaultConverterFreezed
-class AnyActions with _$AnyActions {
-  const AnyActions._();
+class ZacActions with _$ZacActions {
+  const ZacActions._();
 
   static const String unionValue = 'z:1:Actions';
 
-  factory AnyActions.fromJson(Object data) {
+  factory ZacActions.fromJson(Object data) {
     /// allow a single action or the default implementation
     if (ConverterHelper.isConverter(data)) {
       if ((data as Map<String, dynamic>)[converterKey] as String !=
-          AnyActions.unionValue) {
-        return AnyActions([AnyAction.fromJson(data)]);
+          ZacActions.unionValue) {
+        return ZacActions([ZacAction.fromJson(data)]);
       }
-      return _$AnyActionsFromJson(data);
+      return _$ZacActionsFromJson(data);
     }
 
     /// allow a list of actions
     else if (data is List) {
-      return AnyActions(
-          data.cast<Map<String, dynamic>>().map(AnyAction.fromJson).toList());
+      return ZacActions(
+          data.cast<Map<String, dynamic>>().map(ZacAction.fromJson).toList());
     }
 
     throw Exception(
-        'It was not possible to convert to "${_typeOf<AnyActions>()}" with data: $data ');
+        'It was not possible to convert to "${_typeOf<ZacActions>()}" with data: $data ');
   }
 
-  @FreezedUnionValue(AnyActions.unionValue)
-  factory AnyActions(List<AnyAction> actions) = _AnyActions;
+  @FreezedUnionValue(ZacActions.unionValue)
+  factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
   void execute(ZacBuildContext context, ActionPayload payload) async {
     if (!context.isMounted()) return;
@@ -91,7 +91,7 @@ class ExecuteActionsBuilder with _$ExecuteActionsBuilder implements ZacWidget {
   @FreezedUnionValue(ExecuteActionsBuilder.unionValue)
   factory ExecuteActionsBuilder({
     FlutterKey? key,
-    required AnyActions actions,
+    required ZacActions actions,
     ZacWidget? child,
   }) = _ExecuteActionsWidgetBuilder;
 
@@ -109,12 +109,12 @@ class ExecuteActions extends HookConsumerWidget {
   const ExecuteActions({required this.actions, required this.child, Key? key})
       : super(key: key);
 
-  final AnyActions actions;
+  final ZacActions actions;
   final ZacWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final awContext = useAnyWidgetContext(ref);
+    final awContext = useZacWidgetContext(ref);
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;
@@ -130,8 +130,8 @@ class ExecuteActions extends HookConsumerWidget {
 
     if (null == child || doneState.value) return const SizedBox.shrink();
 
-    return AnyWidgetBuilder(
-      anyWidget: child!,
+    return ZacWidgetBuilder(
+      zacWidget: child!,
     );
   }
 }

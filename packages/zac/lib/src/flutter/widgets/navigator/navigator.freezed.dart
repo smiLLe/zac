@@ -18,15 +18,15 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
     Map<String, dynamic> json) {
   switch (json['_converter']) {
     case 'f:1:NavigatorState.closest':
-      return _AnyNavigatorStateClosest.fromJson(json);
+      return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
-      return _AnyNavigatorStateRoot.fromJson(json);
+      return _ZacNavigatorStateRoot.fromJson(json);
     case 'z:1:NavigatorState.consumeFromGlobalKey':
-      return _AnyNavigatorStateConsumeFromGlobalKey.fromJson(json);
+      return _ZacNavigatorStateConsumeFromGlobalKey.fromJson(json);
     case 'z:1:GlobalKeyNavigatorState':
-      return _AnyNavigatorStateBuilder.fromJson(json);
+      return _ZacNavigatorStateBuilder.fromJson(json);
     case 'z:1:GlobalKeyNavigatorState.transformToGlobalKey':
-      return _AnyNavigatorStateTransformBuilder.fromJson(json);
+      return _ZacNavigatorStateTransformBuilder.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -41,12 +41,12 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
 mixin _$FlutterNavigatorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,13 +54,13 @@ mixin _$FlutterNavigatorState {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyNavigatorStateClosest extends _AnyNavigatorStateClosest {
-  _$_AnyNavigatorStateClosest({final String? $type})
+class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
+  _$_ZacNavigatorStateClosest({final String? $type})
       : $type = $type ?? 'f:1:NavigatorState.closest',
         super._();
 
-  factory _$_AnyNavigatorStateClosest.fromJson(Map<String, dynamic> json) =>
-      _$$_AnyNavigatorStateClosestFromJson(json);
+  factory _$_ZacNavigatorStateClosest.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNavigatorStateClosestFromJson(json);
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -74,7 +74,7 @@ class _$_AnyNavigatorStateClosest extends _AnyNavigatorStateClosest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyNavigatorStateClosest);
+            other is _$_ZacNavigatorStateClosest);
   }
 
   @JsonKey(ignore: true)
@@ -84,35 +84,35 @@ class _$_AnyNavigatorStateClosest extends _AnyNavigatorStateClosest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) {
     return closest(this);
   }
 }
 
-abstract class _AnyNavigatorStateClosest extends FlutterNavigatorState {
-  factory _AnyNavigatorStateClosest() = _$_AnyNavigatorStateClosest;
-  _AnyNavigatorStateClosest._() : super._();
+abstract class _ZacNavigatorStateClosest extends FlutterNavigatorState {
+  factory _ZacNavigatorStateClosest() = _$_ZacNavigatorStateClosest;
+  _ZacNavigatorStateClosest._() : super._();
 
-  factory _AnyNavigatorStateClosest.fromJson(Map<String, dynamic> json) =
-      _$_AnyNavigatorStateClosest.fromJson;
+  factory _ZacNavigatorStateClosest.fromJson(Map<String, dynamic> json) =
+      _$_ZacNavigatorStateClosest.fromJson;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyNavigatorStateRoot extends _AnyNavigatorStateRoot {
-  _$_AnyNavigatorStateRoot({final String? $type})
+class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
+  _$_ZacNavigatorStateRoot({final String? $type})
       : $type = $type ?? 'f:1:NavigatorState.root',
         super._();
 
-  factory _$_AnyNavigatorStateRoot.fromJson(Map<String, dynamic> json) =>
-      _$$_AnyNavigatorStateRootFromJson(json);
+  factory _$_ZacNavigatorStateRoot.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNavigatorStateRootFromJson(json);
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -125,7 +125,7 @@ class _$_AnyNavigatorStateRoot extends _AnyNavigatorStateRoot {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AnyNavigatorStateRoot);
+        (other.runtimeType == runtimeType && other is _$_ZacNavigatorStateRoot);
   }
 
   @JsonKey(ignore: true)
@@ -135,32 +135,32 @@ class _$_AnyNavigatorStateRoot extends _AnyNavigatorStateRoot {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) {
     return root(this);
   }
 }
 
-abstract class _AnyNavigatorStateRoot extends FlutterNavigatorState {
-  factory _AnyNavigatorStateRoot() = _$_AnyNavigatorStateRoot;
-  _AnyNavigatorStateRoot._() : super._();
+abstract class _ZacNavigatorStateRoot extends FlutterNavigatorState {
+  factory _ZacNavigatorStateRoot() = _$_ZacNavigatorStateRoot;
+  _ZacNavigatorStateRoot._() : super._();
 
-  factory _AnyNavigatorStateRoot.fromJson(Map<String, dynamic> json) =
-      _$_AnyNavigatorStateRoot.fromJson;
+  factory _ZacNavigatorStateRoot.fromJson(Map<String, dynamic> json) =
+      _$_ZacNavigatorStateRoot.fromJson;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyNavigatorStateConsumeFromGlobalKey
-    extends _AnyNavigatorStateConsumeFromGlobalKey
+class _$_ZacNavigatorStateConsumeFromGlobalKey
+    extends _ZacNavigatorStateConsumeFromGlobalKey
     with ConsumeValue<GlobalKey<NavigatorState>> {
-  _$_AnyNavigatorStateConsumeFromGlobalKey(
+  _$_ZacNavigatorStateConsumeFromGlobalKey(
       {required this.name,
       this.consumeType,
       final List<SharedValueTransformer>? mapper,
@@ -169,9 +169,9 @@ class _$_AnyNavigatorStateConsumeFromGlobalKey
         $type = $type ?? 'z:1:NavigatorState.consumeFromGlobalKey',
         super._();
 
-  factory _$_AnyNavigatorStateConsumeFromGlobalKey.fromJson(
+  factory _$_ZacNavigatorStateConsumeFromGlobalKey.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AnyNavigatorStateConsumeFromGlobalKeyFromJson(json);
+      _$$_ZacNavigatorStateConsumeFromGlobalKeyFromJson(json);
 
   @override
   final String name;
@@ -198,7 +198,7 @@ class _$_AnyNavigatorStateConsumeFromGlobalKey
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyNavigatorStateConsumeFromGlobalKey &&
+            other is _$_ZacNavigatorStateConsumeFromGlobalKey &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType) &&
@@ -216,31 +216,31 @@ class _$_AnyNavigatorStateConsumeFromGlobalKey
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) {
     return consumeFromGlobalKey(this);
   }
 }
 
-abstract class _AnyNavigatorStateConsumeFromGlobalKey
+abstract class _ZacNavigatorStateConsumeFromGlobalKey
     extends FlutterNavigatorState
     implements ConsumeValue<GlobalKey<NavigatorState>> {
-  factory _AnyNavigatorStateConsumeFromGlobalKey(
+  factory _ZacNavigatorStateConsumeFromGlobalKey(
           {required final String name,
           final SharedValueConsumeType? consumeType,
           final List<SharedValueTransformer>? mapper}) =
-      _$_AnyNavigatorStateConsumeFromGlobalKey;
-  _AnyNavigatorStateConsumeFromGlobalKey._() : super._();
+      _$_ZacNavigatorStateConsumeFromGlobalKey;
+  _ZacNavigatorStateConsumeFromGlobalKey._() : super._();
 
-  factory _AnyNavigatorStateConsumeFromGlobalKey.fromJson(
+  factory _ZacNavigatorStateConsumeFromGlobalKey.fromJson(
           Map<String, dynamic> json) =
-      _$_AnyNavigatorStateConsumeFromGlobalKey.fromJson;
+      _$_ZacNavigatorStateConsumeFromGlobalKey.fromJson;
 
   String get name;
   SharedValueConsumeType? get consumeType;
@@ -249,13 +249,13 @@ abstract class _AnyNavigatorStateConsumeFromGlobalKey
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyNavigatorStateBuilder extends _AnyNavigatorStateBuilder {
-  _$_AnyNavigatorStateBuilder({this.debugLabel, final String? $type})
+class _$_ZacNavigatorStateBuilder extends _ZacNavigatorStateBuilder {
+  _$_ZacNavigatorStateBuilder({this.debugLabel, final String? $type})
       : $type = $type ?? 'z:1:GlobalKeyNavigatorState',
         super._();
 
-  factory _$_AnyNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_AnyNavigatorStateBuilderFromJson(json);
+  factory _$_ZacNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNavigatorStateBuilderFromJson(json);
 
   @override
   final String? debugLabel;
@@ -272,7 +272,7 @@ class _$_AnyNavigatorStateBuilder extends _AnyNavigatorStateBuilder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyNavigatorStateBuilder &&
+            other is _$_ZacNavigatorStateBuilder &&
             const DeepCollectionEquality()
                 .equals(other.debugLabel, debugLabel));
   }
@@ -285,40 +285,40 @@ class _$_AnyNavigatorStateBuilder extends _AnyNavigatorStateBuilder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) {
     return builder(this);
   }
 }
 
-abstract class _AnyNavigatorStateBuilder extends FlutterNavigatorState {
-  factory _AnyNavigatorStateBuilder({final String? debugLabel}) =
-      _$_AnyNavigatorStateBuilder;
-  _AnyNavigatorStateBuilder._() : super._();
+abstract class _ZacNavigatorStateBuilder extends FlutterNavigatorState {
+  factory _ZacNavigatorStateBuilder({final String? debugLabel}) =
+      _$_ZacNavigatorStateBuilder;
+  _ZacNavigatorStateBuilder._() : super._();
 
-  factory _AnyNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =
-      _$_AnyNavigatorStateBuilder.fromJson;
+  factory _ZacNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacNavigatorStateBuilder.fromJson;
 
   String? get debugLabel;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyNavigatorStateTransformBuilder
-    extends _AnyNavigatorStateTransformBuilder {
-  _$_AnyNavigatorStateTransformBuilder({final String? $type})
+class _$_ZacNavigatorStateTransformBuilder
+    extends _ZacNavigatorStateTransformBuilder {
+  _$_ZacNavigatorStateTransformBuilder({final String? $type})
       : $type = $type ?? 'z:1:GlobalKeyNavigatorState.transformToGlobalKey',
         super._();
 
-  factory _$_AnyNavigatorStateTransformBuilder.fromJson(
+  factory _$_ZacNavigatorStateTransformBuilder.fromJson(
           Map<String, dynamic> json) =>
-      _$$_AnyNavigatorStateTransformBuilderFromJson(json);
+      _$$_ZacNavigatorStateTransformBuilderFromJson(json);
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -332,7 +332,7 @@ class _$_AnyNavigatorStateTransformBuilder
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyNavigatorStateTransformBuilder);
+            other is _$_ZacNavigatorStateTransformBuilder);
   }
 
   @JsonKey(ignore: true)
@@ -342,27 +342,27 @@ class _$_AnyNavigatorStateTransformBuilder
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AnyNavigatorStateClosest value) closest,
-    required TResult Function(_AnyNavigatorStateRoot value) root,
-    required TResult Function(_AnyNavigatorStateConsumeFromGlobalKey value)
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
         consumeFromGlobalKey,
-    required TResult Function(_AnyNavigatorStateBuilder value) builder,
-    required TResult Function(_AnyNavigatorStateTransformBuilder value)
+    required TResult Function(_ZacNavigatorStateBuilder value) builder,
+    required TResult Function(_ZacNavigatorStateTransformBuilder value)
         transform,
   }) {
     return transform(this);
   }
 }
 
-abstract class _AnyNavigatorStateTransformBuilder
+abstract class _ZacNavigatorStateTransformBuilder
     extends FlutterNavigatorState {
-  factory _AnyNavigatorStateTransformBuilder() =
-      _$_AnyNavigatorStateTransformBuilder;
-  _AnyNavigatorStateTransformBuilder._() : super._();
+  factory _ZacNavigatorStateTransformBuilder() =
+      _$_ZacNavigatorStateTransformBuilder;
+  _ZacNavigatorStateTransformBuilder._() : super._();
 
-  factory _AnyNavigatorStateTransformBuilder.fromJson(
+  factory _ZacNavigatorStateTransformBuilder.fromJson(
           Map<String, dynamic> json) =
-      _$_AnyNavigatorStateTransformBuilder.fromJson;
+      _$_ZacNavigatorStateTransformBuilder.fromJson;
 }
 
 FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
@@ -522,7 +522,7 @@ class _$_FlutterNavigatorPush extends _FlutterNavigatorPush {
   @override
   final FlutterRoute route;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -571,14 +571,14 @@ class _$_FlutterNavigatorPush extends _FlutterNavigatorPush {
 abstract class _FlutterNavigatorPush extends FlutterNavigator {
   factory _FlutterNavigatorPush(
       {required final FlutterRoute route,
-      final AnyNavigatorState? navigatorState}) = _$_FlutterNavigatorPush;
+      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPush;
   _FlutterNavigatorPush._() : super._();
 
   factory _FlutterNavigatorPush.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorPush.fromJson;
 
   FlutterRoute get route;
-  AnyNavigatorState? get navigatorState;
+  ZacNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -600,7 +600,7 @@ class _$_FlutterNavigatorPushNamed extends _FlutterNavigatorPushNamed {
   @override
   final Object? arguments;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -652,7 +652,7 @@ abstract class _FlutterNavigatorPushNamed extends FlutterNavigator {
   factory _FlutterNavigatorPushNamed(
       {required final ZacString routeName,
       final Object? arguments,
-      final AnyNavigatorState? navigatorState}) = _$_FlutterNavigatorPushNamed;
+      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPushNamed;
   _FlutterNavigatorPushNamed._() : super._();
 
   factory _FlutterNavigatorPushNamed.fromJson(Map<String, dynamic> json) =
@@ -660,7 +660,7 @@ abstract class _FlutterNavigatorPushNamed extends FlutterNavigator {
 
   ZacString get routeName;
   Object? get arguments;
-  AnyNavigatorState? get navigatorState;
+  ZacNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -675,9 +675,9 @@ class _$_FlutterNavigatorPop extends _FlutterNavigatorPop {
       _$$_FlutterNavigatorPopFromJson(json);
 
   @override
-  final AnyActions? actions;
+  final ZacActions? actions;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -725,15 +725,15 @@ class _$_FlutterNavigatorPop extends _FlutterNavigatorPop {
 
 abstract class _FlutterNavigatorPop extends FlutterNavigator {
   factory _FlutterNavigatorPop(
-      {final AnyActions? actions,
-      final AnyNavigatorState? navigatorState}) = _$_FlutterNavigatorPop;
+      {final ZacActions? actions,
+      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPop;
   _FlutterNavigatorPop._() : super._();
 
   factory _FlutterNavigatorPop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorPop.fromJson;
 
-  AnyActions? get actions;
-  AnyNavigatorState? get navigatorState;
+  ZacActions? get actions;
+  ZacNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -748,9 +748,9 @@ class _$_FlutterNavigatorMaybePop extends _FlutterNavigatorMaybePop {
       _$$_FlutterNavigatorMaybePopFromJson(json);
 
   @override
-  final AnyActions? actions;
+  final ZacActions? actions;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -798,15 +798,15 @@ class _$_FlutterNavigatorMaybePop extends _FlutterNavigatorMaybePop {
 
 abstract class _FlutterNavigatorMaybePop extends FlutterNavigator {
   factory _FlutterNavigatorMaybePop(
-      {final AnyActions? actions,
-      final AnyNavigatorState? navigatorState}) = _$_FlutterNavigatorMaybePop;
+      {final ZacActions? actions,
+      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorMaybePop;
   _FlutterNavigatorMaybePop._() : super._();
 
   factory _FlutterNavigatorMaybePop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorMaybePop.fromJson;
 
-  AnyActions? get actions;
-  AnyNavigatorState? get navigatorState;
+  ZacActions? get actions;
+  ZacNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -828,9 +828,9 @@ class _$_FlutterNavigatorPushReplacement
   @override
   final FlutterRoute route;
   @override
-  final AnyActions? result;
+  final ZacActions? result;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -881,8 +881,8 @@ class _$_FlutterNavigatorPushReplacement
 abstract class _FlutterNavigatorPushReplacement extends FlutterNavigator {
   factory _FlutterNavigatorPushReplacement(
           {required final FlutterRoute route,
-          final AnyActions? result,
-          final AnyNavigatorState? navigatorState}) =
+          final ZacActions? result,
+          final ZacNavigatorState? navigatorState}) =
       _$_FlutterNavigatorPushReplacement;
   _FlutterNavigatorPushReplacement._() : super._();
 
@@ -890,8 +890,8 @@ abstract class _FlutterNavigatorPushReplacement extends FlutterNavigator {
       _$_FlutterNavigatorPushReplacement.fromJson;
 
   FlutterRoute get route;
-  AnyActions? get result;
-  AnyNavigatorState? get navigatorState;
+  ZacActions? get result;
+  ZacNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -916,9 +916,9 @@ class _$_FlutterNavigatorPushReplacementNamed
   @override
   final Object? arguments;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
   @override
-  final AnyActions? result;
+  final ZacActions? result;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -972,8 +972,8 @@ abstract class _FlutterNavigatorPushReplacementNamed extends FlutterNavigator {
   factory _FlutterNavigatorPushReplacementNamed(
       {required final ZacString routeName,
       final Object? arguments,
-      final AnyNavigatorState? navigatorState,
-      final AnyActions? result}) = _$_FlutterNavigatorPushReplacementNamed;
+      final ZacNavigatorState? navigatorState,
+      final ZacActions? result}) = _$_FlutterNavigatorPushReplacementNamed;
   _FlutterNavigatorPushReplacementNamed._() : super._();
 
   factory _FlutterNavigatorPushReplacementNamed.fromJson(
@@ -982,8 +982,8 @@ abstract class _FlutterNavigatorPushReplacementNamed extends FlutterNavigator {
 
   ZacString get routeName;
   Object? get arguments;
-  AnyNavigatorState? get navigatorState;
-  AnyActions? get result;
+  ZacNavigatorState? get navigatorState;
+  ZacActions? get result;
 }
 
 /// @nodoc
@@ -1002,7 +1002,7 @@ class _$_FlutterNavigatorPopUntilRouteName
   @override
   final ZacString routeName;
   @override
-  final AnyNavigatorState? navigatorState;
+  final ZacNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -1051,7 +1051,7 @@ class _$_FlutterNavigatorPopUntilRouteName
 abstract class _FlutterNavigatorPopUntilRouteName extends FlutterNavigator {
   factory _FlutterNavigatorPopUntilRouteName(
           {required final ZacString routeName,
-          final AnyNavigatorState? navigatorState}) =
+          final ZacNavigatorState? navigatorState}) =
       _$_FlutterNavigatorPopUntilRouteName;
   _FlutterNavigatorPopUntilRouteName._() : super._();
 
@@ -1060,7 +1060,7 @@ abstract class _FlutterNavigatorPopUntilRouteName extends FlutterNavigator {
       _$_FlutterNavigatorPopUntilRouteName.fromJson;
 
   ZacString get routeName;
-  AnyNavigatorState? get navigatorState;
+  ZacNavigatorState? get navigatorState;
 }
 
 RouteFactorySingleRoute _$RouteFactorySingleRouteFromJson(

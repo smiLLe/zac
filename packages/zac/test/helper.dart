@@ -15,7 +15,7 @@ import 'package:mockito/mockito.dart';
 part 'helper.freezed.dart';
 part 'helper.g.dart';
 
-class FakeAnyWidgetContext extends Fake implements ZacBuildContext {}
+class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
 
 Future<void> testMap(
   WidgetTester tester,
@@ -25,21 +25,21 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetBuilderFromMap(anyMap: ZacMap(data)),
+    ZacWidgetBuilderFromMap(zacMap: ZacMap(data)),
     converter: converter,
     useContainer: useContainer,
   );
 }
 
-Future<void> testAnyWidget(
+Future<void> testZacWidget(
   WidgetTester tester,
-  ZacWidget anyWidget, {
+  ZacWidget zacWidget, {
   Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithinMaterialApp(
     tester,
-    AnyWidgetBuilder(anyWidget: anyWidget),
+    ZacWidgetBuilder(zacWidget: zacWidget),
     converter: converter,
     useContainer: useContainer,
   );
@@ -80,16 +80,16 @@ class LeakedActionCb extends Mock {
 }
 
 @nonConverterFreezed
-class LeakAction with _$LeakAction implements AnyAction {
+class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
   factory LeakAction(
           void Function(ZacBuildContext context, ActionPayload payload) cb) =
       _LeakAction;
 
-  static AnyActions createActions(
+  static ZacActions createActions(
           void Function(ZacBuildContext context, ActionPayload payload) cb) =>
-      AnyActions([LeakAction(cb)]);
+      ZacActions([LeakAction(cb)]);
 
   @override
   void execute(ZacBuildContext context, ActionPayload payload) =>
@@ -97,7 +97,7 @@ class LeakAction with _$LeakAction implements AnyAction {
 }
 
 @defaultConverterFreezed
-class NoopAction with _$NoopAction implements AnyAction {
+class NoopAction with _$NoopAction implements ZacAction {
   const NoopAction._();
 
   static const String unionValue = 'z:1:test:NoopAction';

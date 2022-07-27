@@ -29,7 +29,7 @@ class FlutterRefreshIndicator
     required ZacWidget child,
     ZacDouble? displacement,
     ZacDouble? edgeOffset,
-    required AnyActions onRefresh,
+    required ZacActions onRefresh,
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,

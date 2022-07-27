@@ -51,10 +51,10 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['enabled'] as Object),
       onTap: json['onTap'] == null
           ? null
-          : AnyActions.fromJson(json['onTap'] as Object),
+          : ZacActions.fromJson(json['onTap'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : AnyActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       selected: json['selected'] == null
           ? null
           : ZacBool.fromJson(json['selected'] as Object),

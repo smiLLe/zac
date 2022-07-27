@@ -52,7 +52,7 @@ class ZacWidgetBuilderBuilder
   Widget buildWidget(ZacBuildContext context) {
     return map(
       (obj) => ZacWidgetBuilderFromMap(
-        anyMap: obj.data,
+        zacMap: obj.data,
         key: obj.key?.build(context),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
@@ -67,33 +67,33 @@ class ZacWidgetBuilderBuilder
   }
 }
 
-class AnyWidgetBuilder extends HookConsumerWidget {
-  const AnyWidgetBuilder({required this.anyWidget, Key? key}) : super(key: key);
+class ZacWidgetBuilder extends HookConsumerWidget {
+  const ZacWidgetBuilder({required this.zacWidget, Key? key}) : super(key: key);
 
-  final ZacWidget anyWidget;
+  final ZacWidget zacWidget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return UpdateContextBuilder(
-      builder: (context) => anyWidget.buildWidget(context),
+      builder: (context) => zacWidget.buildWidget(context),
     );
   }
 }
 
 class ZacWidgetBuilderFromMap extends HookConsumerWidget {
-  const ZacWidgetBuilderFromMap({required this.anyMap, Key? key})
+  const ZacWidgetBuilderFromMap({required this.zacMap, Key? key})
       : super(key: key);
 
-  final ZacMap anyMap;
+  final ZacMap zacMap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // globalRuntimeConverter = ref.watch(AWProviders.widgetsConverter);
-    final awContext = useAnyWidgetContext(ref);
-    final map = anyMap.getValue(awContext);
-    final anyWidget =
+    final awContext = useZacWidgetContext(ref);
+    final map = zacMap.getValue(awContext);
+    final zacWidget =
         useMemoized(() => ConverterHelper.convertToType<ZacWidget>(map));
-    return AnyWidgetBuilder(anyWidget: anyWidget);
+    return ZacWidgetBuilder(zacWidget: zacWidget);
   }
 }
 
@@ -117,7 +117,7 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
-    final awContext = useAnyWidgetContext(ref);
+    final awContext = useZacWidgetContext(ref);
     final data = anyString.getValue(awContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
@@ -154,7 +154,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     allConverters = data[1] as Map<String, Convert>;
     return ConverterHelper.convertToType<ZacWidget>(
         data[0] as Map<String, dynamic>);
-    // return const AnyWidgetConverter().fromJson(data[0] as Map<String, dynamic>);
+    // return const ZacWidgetConverter().fromJson(data[0] as Map<String, dynamic>);
   }
 
   final ZacMap anyMap;
@@ -164,7 +164,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     // final converters = ref.watch(AWProviders.widgetsConverter);
     final loadingState =
         useState<AsyncValue<ZacWidget>>(const AsyncValue.loading());
-    final awContext = useAnyWidgetContext(ref);
+    final awContext = useZacWidgetContext(ref);
     final map = anyMap.getValue(awContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();

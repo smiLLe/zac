@@ -56,11 +56,11 @@ class UpdateContextBuilder extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
   ) {
-    return builder(useAnyWidgetContext(ref));
+    return builder(useZacWidgetContext(ref));
   }
 }
 
-ZacBuildContext useAnyWidgetContext(WidgetRef ref) {
+ZacBuildContext useZacWidgetContext(WidgetRef ref) {
   final isMounted = useIsMounted();
   final context = useContext();
   final unmountCallbacks = useRef(<void Function()>[]);

@@ -27,7 +27,7 @@ class FlutterAlign with _$FlutterAlign implements ZacWidget {
     FlutterAlignmentGeometry? alignment,
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
-    // @AnyWidgetNullableConverter() AnyWidget? child,
+    // @ZacWidgetNullableConverter() ZacWidget? child,
     ZacWidget? child,
   }) = _FlutterAlign;
 

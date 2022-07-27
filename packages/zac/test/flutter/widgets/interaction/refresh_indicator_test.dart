@@ -68,7 +68,7 @@ void main() {
   testWidgets('FlutterRefreshIndicator interaction', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
     final executeCb = MockLeakedActionCb();
-    await testAnyWidget(
+    await testZacWidget(
       tester,
       FlutterScaffold(
         appBar: FlutterAppBar(

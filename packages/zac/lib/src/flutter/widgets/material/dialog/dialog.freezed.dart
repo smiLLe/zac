@@ -665,7 +665,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final ZacWidget? child;
   @override
-  final AnyActions? onPressed;
+  final ZacActions? onPressed;
   @override
   final FlutterEdgeInsets? padding;
 
@@ -715,7 +715,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialogOption(
       {final FlutterKey? key,
       final ZacWidget? child,
-      final AnyActions? onPressed,
+      final ZacActions? onPressed,
       final FlutterEdgeInsets? padding}) = _$_FlutterDialogsSimpleDialogOption;
   _FlutterDialogsSimpleDialogOption._() : super._();
 
@@ -724,6 +724,6 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
 
   FlutterKey? get key;
   ZacWidget? get child;
-  AnyActions? get onPressed;
+  ZacActions? get onPressed;
   FlutterEdgeInsets? get padding;
 }

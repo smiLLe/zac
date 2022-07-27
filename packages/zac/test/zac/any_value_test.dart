@@ -6,7 +6,7 @@ import '../flutter/models.dart';
 import '../helper.dart';
 
 void main() {
-  group('AnyBool', () {
+  group('ZacBool', () {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacBool>({
@@ -47,7 +47,7 @@ void main() {
     testWidgets('consume ActualValue', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -67,7 +67,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -81,7 +81,7 @@ void main() {
     });
   });
 
-  group('AnyInt', () {
+  group('ZacInt', () {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacInt>({
@@ -123,7 +123,7 @@ void main() {
     testWidgets('consume ActualValue', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -143,7 +143,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -157,7 +157,7 @@ void main() {
     });
   });
 
-  group('AnyDouble', () {
+  group('ZacDouble', () {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacDouble>({
@@ -205,7 +205,7 @@ void main() {
     testWidgets('consume ActualValue', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -225,7 +225,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -241,7 +241,7 @@ void main() {
     testWidgets('consume #2', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -256,7 +256,7 @@ void main() {
     });
   });
 
-  group('AnyString', () {
+  group('ZacString', () {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacString>({
@@ -297,7 +297,7 @@ void main() {
     testWidgets('consume ActualValue', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -317,7 +317,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -331,7 +331,7 @@ void main() {
     });
   });
 
-  group('AnyMap', () {
+  group('ZacMap', () {
     test('fromJson', () {
       final compare = <String, dynamic>{'foo': 'bar'};
       expect(
@@ -374,7 +374,7 @@ void main() {
       late ZacBuildContext awContext;
       final compare = <String, dynamic>{'foo': 'bar'};
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -395,7 +395,7 @@ void main() {
       late ZacBuildContext awContext;
       final compare = <String, dynamic>{'foo': 'bar'};
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -409,7 +409,7 @@ void main() {
     });
   });
 
-  group('AnyObject', () {
+  group('ZacObject', () {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacObject>({
@@ -449,7 +449,7 @@ void main() {
     testWidgets('consume ActualValue', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -469,7 +469,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -483,7 +483,7 @@ void main() {
     });
   });
 
-  group('AnyWidget', () {
+  group('ZacWidget', () {
     test('fromJson', () {
       expect(ZacWidget.fromJson({converterKey: 'f:1:SizedBox'}),
           FlutterSizedBox());
@@ -496,7 +496,7 @@ void main() {
       expect(() => ZacWidget.fromJson(55), throwsException);
     });
 
-    testWidgets('can be consumed through AnyWidgetConsumer', (tester) async {
+    testWidgets('can be consumed through ZacWidgetConsumer', (tester) async {
       await testMap(
         tester,
         <String, dynamic>{
@@ -522,7 +522,7 @@ void main() {
     });
   });
 
-  group('ListOfAnyWidget', () {
+  group('ListOfZacWidget', () {
     test('fromJson', () {
       expect(
           ListOfZacWidget.fromJson([
@@ -573,7 +573,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',
@@ -594,7 +594,7 @@ void main() {
     testWidgets('consume #2', (tester) async {
       late ZacBuildContext awContext;
 
-      await testAnyWidget(
+      await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             name: 'foo',

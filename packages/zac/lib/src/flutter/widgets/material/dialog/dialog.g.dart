@@ -201,7 +201,7 @@ _$_FlutterDialogsSimpleDialogOption
               : ZacWidget.fromJson(json['child'] as Object),
           onPressed: json['onPressed'] == null
               ? null
-              : AnyActions.fromJson(json['onPressed'] as Object),
+              : ZacActions.fromJson(json['onPressed'] as Object),
           padding: json['padding'] == null
               ? null
               : FlutterEdgeInsets.fromJson(

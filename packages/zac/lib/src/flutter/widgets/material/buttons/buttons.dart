@@ -26,8 +26,8 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
   factory FlutterElevatedButton({
     FlutterKey? key,
     required ZacWidget? child,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButton;
@@ -37,8 +37,8 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
     FlutterKey? key,
     required ZacWidget icon,
     required ZacWidget label,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
@@ -81,8 +81,8 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
   factory FlutterOutlinedButton({
     FlutterKey? key,
     required ZacWidget child,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButton;
@@ -92,8 +92,8 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
     FlutterKey? key,
     required ZacWidget icon,
     required ZacWidget label,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
@@ -136,8 +136,8 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
   factory FlutterTextButton({
     FlutterKey? key,
     required ZacWidget child,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButton;
@@ -147,8 +147,8 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
     FlutterKey? key,
     required ZacWidget icon,
     required ZacWidget label,
-    AnyActions? onPressed,
-    AnyActions? onLongPress,
+    ZacActions? onPressed,
+    ZacActions? onLongPress,
     ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButtonIcon;

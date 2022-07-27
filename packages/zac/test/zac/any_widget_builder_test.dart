@@ -28,7 +28,7 @@ void main() {
     if (!found) throw Exception('did not find $finder');
   }
 
-  group('AnyWidgetBuilder', () {
+  group('ZacWidgetBuilder', () {
     testWidgets('create from Map', (tester) async {
       await testMap(tester, <String, dynamic>{
         converterKey: 'f:1:SizedBox',

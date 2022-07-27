@@ -25,7 +25,7 @@ mixin _$FlutterRefreshIndicator {
   ZacWidget get child => throw _privateConstructorUsedError;
   ZacDouble? get displacement => throw _privateConstructorUsedError;
   ZacDouble? get edgeOffset => throw _privateConstructorUsedError;
-  AnyActions get onRefresh => throw _privateConstructorUsedError;
+  ZacActions get onRefresh => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
@@ -71,7 +71,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final ZacDouble? edgeOffset;
   @override
-  final AnyActions onRefresh;
+  final ZacActions onRefresh;
   @override
   final FlutterColor? color;
   @override
@@ -147,7 +147,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
           required final ZacWidget child,
           final ZacDouble? displacement,
           final ZacDouble? edgeOffset,
-          required final AnyActions onRefresh,
+          required final ZacActions onRefresh,
           final FlutterColor? color,
           final FlutterColor? backgroundColor,
           final ZacString? semanticsLabel,
@@ -169,7 +169,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   ZacDouble? get edgeOffset;
   @override
-  AnyActions get onRefresh;
+  ZacActions get onRefresh;
   @override
   FlutterColor? get color;
   @override

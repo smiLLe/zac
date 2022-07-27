@@ -132,48 +132,48 @@ abstract class _ActionPayloadWithData implements ActionPayload {
   Object? get data;
 }
 
-AnyActions _$AnyActionsFromJson(Map<String, dynamic> json) {
-  return _AnyActions.fromJson(json);
+ZacActions _$ZacActionsFromJson(Map<String, dynamic> json) {
+  return _ZacActions.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AnyActions {
-  List<AnyAction> get actions => throw _privateConstructorUsedError;
+mixin _$ZacActions {
+  List<ZacAction> get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyActions value) $default,
+    TResult Function(_ZacActions value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_AnyActions extends _AnyActions {
-  _$_AnyActions(final List<AnyAction> actions)
+class _$_ZacActions extends _ZacActions {
+  _$_ZacActions(final List<ZacAction> actions)
       : _actions = actions,
         super._();
 
-  factory _$_AnyActions.fromJson(Map<String, dynamic> json) =>
-      _$$_AnyActionsFromJson(json);
+  factory _$_ZacActions.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacActionsFromJson(json);
 
-  final List<AnyAction> _actions;
+  final List<ZacAction> _actions;
   @override
-  List<AnyAction> get actions {
+  List<ZacAction> get actions {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_actions);
   }
 
   @override
   String toString() {
-    return 'AnyActions(actions: $actions)';
+    return 'ZacActions(actions: $actions)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnyActions &&
+            other is _$_ZacActions &&
             const DeepCollectionEquality().equals(other._actions, _actions));
   }
 
@@ -185,21 +185,21 @@ class _$_AnyActions extends _AnyActions {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_AnyActions value) $default,
+    TResult Function(_ZacActions value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _AnyActions extends AnyActions {
-  factory _AnyActions(final List<AnyAction> actions) = _$_AnyActions;
-  _AnyActions._() : super._();
+abstract class _ZacActions extends ZacActions {
+  factory _ZacActions(final List<ZacAction> actions) = _$_ZacActions;
+  _ZacActions._() : super._();
 
-  factory _AnyActions.fromJson(Map<String, dynamic> json) =
-      _$_AnyActions.fromJson;
+  factory _ZacActions.fromJson(Map<String, dynamic> json) =
+      _$_ZacActions.fromJson;
 
   @override
-  List<AnyAction> get actions;
+  List<ZacAction> get actions;
 }
 
 ExecuteActionsBuilder _$ExecuteActionsBuilderFromJson(
@@ -210,7 +210,7 @@ ExecuteActionsBuilder _$ExecuteActionsBuilderFromJson(
 /// @nodoc
 mixin _$ExecuteActionsBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  AnyActions get actions => throw _privateConstructorUsedError;
+  ZacActions get actions => throw _privateConstructorUsedError;
   ZacWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -232,7 +232,7 @@ class _$_ExecuteActionsWidgetBuilder extends _ExecuteActionsWidgetBuilder {
   @override
   final FlutterKey? key;
   @override
-  final AnyActions actions;
+  final ZacActions actions;
   @override
   final ZacWidget? child;
 
@@ -271,7 +271,7 @@ class _$_ExecuteActionsWidgetBuilder extends _ExecuteActionsWidgetBuilder {
 abstract class _ExecuteActionsWidgetBuilder extends ExecuteActionsBuilder {
   factory _ExecuteActionsWidgetBuilder(
       {final FlutterKey? key,
-      required final AnyActions actions,
+      required final ZacActions actions,
       final ZacWidget? child}) = _$_ExecuteActionsWidgetBuilder;
   _ExecuteActionsWidgetBuilder._() : super._();
 
@@ -281,7 +281,7 @@ abstract class _ExecuteActionsWidgetBuilder extends ExecuteActionsBuilder {
   @override
   FlutterKey? get key;
   @override
-  AnyActions get actions;
+  ZacActions get actions;
   @override
   ZacWidget? get child;
 }

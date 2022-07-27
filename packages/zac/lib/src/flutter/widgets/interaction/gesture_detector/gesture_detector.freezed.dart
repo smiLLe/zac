@@ -23,12 +23,12 @@ FlutterGestureDetector _$FlutterGestureDetectorFromJson(
 mixin _$FlutterGestureDetector {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacWidget? get child => throw _privateConstructorUsedError;
-  AnyActions? get onTap => throw _privateConstructorUsedError;
-  AnyActions? get onSecondaryTap => throw _privateConstructorUsedError;
-  AnyActions? get onDoubleTap => throw _privateConstructorUsedError;
-  AnyActions? get onLongPress => throw _privateConstructorUsedError;
-  AnyActions? get onSecondaryLongPress => throw _privateConstructorUsedError;
-  AnyActions? get onTertiaryLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onTap => throw _privateConstructorUsedError;
+  ZacActions? get onSecondaryTap => throw _privateConstructorUsedError;
+  ZacActions? get onDoubleTap => throw _privateConstructorUsedError;
+  ZacActions? get onLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onSecondaryLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onTertiaryLongPress => throw _privateConstructorUsedError;
   FlutterHitTestBehavior? get behavior => throw _privateConstructorUsedError;
   ZacBool? get excludeFromSemantics => throw _privateConstructorUsedError;
 
@@ -63,17 +63,17 @@ class _$_FlutterGestureDetector extends _FlutterGestureDetector {
   @override
   final ZacWidget? child;
   @override
-  final AnyActions? onTap;
+  final ZacActions? onTap;
   @override
-  final AnyActions? onSecondaryTap;
+  final ZacActions? onSecondaryTap;
   @override
-  final AnyActions? onDoubleTap;
+  final ZacActions? onDoubleTap;
   @override
-  final AnyActions? onLongPress;
+  final ZacActions? onLongPress;
   @override
-  final AnyActions? onSecondaryLongPress;
+  final ZacActions? onSecondaryLongPress;
   @override
-  final AnyActions? onTertiaryLongPress;
+  final ZacActions? onTertiaryLongPress;
   @override
   final FlutterHitTestBehavior? behavior;
   @override
@@ -135,12 +135,12 @@ abstract class _FlutterGestureDetector extends FlutterGestureDetector {
   factory _FlutterGestureDetector(
       {final FlutterKey? key,
       final ZacWidget? child,
-      final AnyActions? onTap,
-      final AnyActions? onSecondaryTap,
-      final AnyActions? onDoubleTap,
-      final AnyActions? onLongPress,
-      final AnyActions? onSecondaryLongPress,
-      final AnyActions? onTertiaryLongPress,
+      final ZacActions? onTap,
+      final ZacActions? onSecondaryTap,
+      final ZacActions? onDoubleTap,
+      final ZacActions? onLongPress,
+      final ZacActions? onSecondaryLongPress,
+      final ZacActions? onTertiaryLongPress,
       final FlutterHitTestBehavior? behavior,
       final ZacBool? excludeFromSemantics}) = _$_FlutterGestureDetector;
   _FlutterGestureDetector._() : super._();
@@ -153,17 +153,17 @@ abstract class _FlutterGestureDetector extends FlutterGestureDetector {
   @override
   ZacWidget? get child;
   @override
-  AnyActions? get onTap;
+  ZacActions? get onTap;
   @override
-  AnyActions? get onSecondaryTap;
+  ZacActions? get onSecondaryTap;
   @override
-  AnyActions? get onDoubleTap;
+  ZacActions? get onDoubleTap;
   @override
-  AnyActions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
-  AnyActions? get onSecondaryLongPress;
+  ZacActions? get onSecondaryLongPress;
   @override
-  AnyActions? get onTertiaryLongPress;
+  ZacActions? get onTertiaryLongPress;
   @override
   FlutterHitTestBehavior? get behavior;
   @override
