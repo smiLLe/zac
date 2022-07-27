@@ -10,7 +10,7 @@ import 'models.dart';
 
 void main() {
   test('FlutterColor', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final fromARGB = FlutterColor.fromJson(<String, dynamic>{
       converterKey: 'f:1:Color.fromARGB',
       'a': 10,
@@ -31,7 +31,7 @@ void main() {
   });
 
   test('FlutterOffset', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final offset = FlutterOffset.fromJson(<String, dynamic>{
       converterKey: 'f:1:Offset',
       'dx': 10,
@@ -49,7 +49,7 @@ void main() {
   });
 
   test('FlutterBlurStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final inner = FlutterBlurStyle.fromJson(
         <String, dynamic>{converterKey: 'f:1:BlurSyle.inner'});
     final normal = FlutterBlurStyle.fromJson(
@@ -66,7 +66,7 @@ void main() {
   });
 
   test('FlutterRadius', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final circular = FlutterRadius.fromJson(<String, dynamic>{
       converterKey: 'f:1:Radius.circular',
       'radius': 5.0,
@@ -82,7 +82,7 @@ void main() {
   });
 
   test('FlutterTextDirection', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final rtl = FlutterTextDirection.fromJson(
         <String, dynamic>{converterKey: 'f:1:TextDirection.rtl'});
     final ltr = FlutterTextDirection.fromJson(
@@ -93,7 +93,7 @@ void main() {
   });
 
   test('FlutterClip', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterClip.fromJson(<String, dynamic>{converterKey: 'f:1:Clip.none'})
             .build(config),
@@ -110,7 +110,7 @@ void main() {
   });
 
   test('FlutterTextBaseline', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextBaseline.fromJson(
                 <String, dynamic>{converterKey: 'f:1:TextBaseline.alphabetic'})
@@ -124,7 +124,7 @@ void main() {
   });
 
   test('FlutterFontWeight', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterFontWeight.fromJson(
                 <String, dynamic>{converterKey: 'f:1:FontWeight.bold'})
@@ -193,7 +193,7 @@ void main() {
   });
 
   test('FlutterFontStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterFontStyle.fromJson(
                 <String, dynamic>{converterKey: 'f:1:FontStyle.italic'})
@@ -208,7 +208,7 @@ void main() {
   });
 
   test('FlutterTextDecoration', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextDecoration.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextDecoration.lineThrough'
@@ -232,7 +232,7 @@ void main() {
   });
 
   test('FlutterTextLeadingDistribution', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextLeadingDistribution.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextLeadingDistribution.even'
@@ -247,7 +247,7 @@ void main() {
   });
 
   test('FlutterLocale', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterLocale.fromJson(<String, dynamic>{
           converterKey: 'f:1:Locale',
@@ -258,7 +258,7 @@ void main() {
   });
 
   test('FlutterFontFeature', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterFontFeature.fromJson(<String, dynamic>{
           converterKey: 'f:1:FontFeature',
@@ -439,7 +439,7 @@ void main() {
   });
 
   test('FlutterTextDecorationStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextDecorationStyle.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextDecorationStyle.dashed'
@@ -472,7 +472,7 @@ void main() {
   });
 
   test('FlutterTextAlign', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextAlign.fromJson(
                 <String, dynamic>{converterKey: 'f:1:TextAlign.center'})
@@ -510,7 +510,7 @@ void main() {
   });
 
   test('FlutterTextHeightBehavior', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextHeightBehavior.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextHeightBehavior',
@@ -527,7 +527,7 @@ void main() {
   });
 
   test('FlutterBlendMode', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBlendMode.fromJson(
                 <String, dynamic>{converterKey: 'f:1:BlendMode.clear'})
@@ -699,7 +699,7 @@ void main() {
   });
 
   test('FlutterRect', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final offset = FlutterOffset(ZacDouble(10), ZacDouble(20));
     expect(
         FlutterRect.fromJson(<String, dynamic>{
@@ -765,7 +765,7 @@ void main() {
   });
 
   test('FlutterFilterQuality', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterFilterQuality.fromJson(
                 <String, dynamic>{converterKey: 'f:1:FilterQuality.high'})
@@ -792,7 +792,7 @@ void main() {
   });
 
   test('FlutterBrightness', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBrightness.fromJson(
                 <String, dynamic>{converterKey: 'f:1:Brightness.light'})
@@ -806,7 +806,7 @@ void main() {
   });
 
   test('FlutterSize', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterSize.fromJson(<String, dynamic>{
           converterKey: 'f:1:Size',
@@ -817,7 +817,7 @@ void main() {
   });
 
   test('FlutterBoxHeightStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBoxHeightStyle.fromJson(<String, dynamic>{
           converterKey: 'f:1:BoxHeightStyle.includeLineSpacingBottom',
@@ -851,7 +851,7 @@ void main() {
   });
 
   test('FlutterBoxWidthStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBoxWidthStyle.fromJson(<String, dynamic>{
           converterKey: 'f:1:BoxWidthStyle.max',

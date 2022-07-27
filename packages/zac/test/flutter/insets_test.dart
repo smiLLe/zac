@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/mixed/insets/edge_insets.dart';
+import 'package:zac/src/flutter/painting/painting.dart';
 
 import 'models.dart';
 
 void main() {
   group('FlutterEdgeInsets', () {
     test('.all', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final map = {
         converterKey: FlutterEdgeInsets.unionValueAll,
         'value': 10,
@@ -21,7 +21,7 @@ void main() {
     });
 
     test('.symmetric', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final map = {
         converterKey: FlutterEdgeInsets.unionValueSymmetric,
         'vertical': 10,
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('.only', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final map = {
         converterKey: FlutterEdgeInsets.unionValueOnly,
         'left': 1,
@@ -69,7 +69,7 @@ void main() {
 
   group('FlutterEdgeInsetsDirectional', () {
     test('.all', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final map = {
         converterKey: FlutterEdgeInsetsDirectional.unionValueAll,
         'value': 10,
@@ -86,7 +86,7 @@ void main() {
     });
 
     test('.only', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final map = {
         converterKey: FlutterEdgeInsetsDirectional.unionValueOnly,
         'start': 1,

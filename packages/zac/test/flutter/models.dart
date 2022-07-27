@@ -1,17 +1,14 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/flutter/mixed/border/border.dart';
-import 'package:zac/src/flutter/mixed/decoration/decoration.dart';
-import 'package:zac/src/flutter/mixed/insets/edge_insets.dart';
-import 'package:zac/src/flutter/mixed/shadow/shadow.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box/sized_box.dart';
 
-class FakeWidgetConfig extends Fake implements ZacBuildContext {}
+class FakeZacContext extends Fake implements ZacBuildContext {}
 
 abstract class ActionsModel {
   static Map<String, Object?> createTestAction(String data) {

@@ -2,8 +2,8 @@ import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'keys.freezed.dart';
-part 'keys.g.dart';
+part 'foundation.freezed.dart';
+part 'foundation.g.dart';
 
 abstract class FlutterKey {
   factory FlutterKey.fromJson(Object data) {

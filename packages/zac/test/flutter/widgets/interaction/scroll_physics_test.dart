@@ -8,7 +8,7 @@ import '../../models.dart';
 
 void main() {
   test('FlutterScrollPhysics()', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterScrollPhysics.fromJson(<String, dynamic>{
           converterKey: 'f:1:AlwaysScrollableScrollPhysics',

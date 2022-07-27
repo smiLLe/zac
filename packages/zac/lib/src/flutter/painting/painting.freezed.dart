@@ -1713,7 +1713,7 @@ mixin _$FlutterTextStyle {
   FlutterLocale? get locale =>
       throw _privateConstructorUsedError; // Paint? foreground,
 // Paint? background,
-  List<FlutterShadow>? get shadows => throw _privateConstructorUsedError;
+  List<FlutterDartUiShadow>? get shadows => throw _privateConstructorUsedError;
   List<FlutterFontFeature>? get fontFeatures =>
       throw _privateConstructorUsedError;
   FlutterTextDecoration? get decoration => throw _privateConstructorUsedError;
@@ -1750,7 +1750,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       this.height,
       this.leadingDistribution,
       this.locale,
-      final List<FlutterShadow>? shadows,
+      final List<FlutterDartUiShadow>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       this.decoration,
       this.decorationColor,
@@ -1795,11 +1795,11 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   final FlutterLocale? locale;
 // Paint? foreground,
 // Paint? background,
-  final List<FlutterShadow>? _shadows;
+  final List<FlutterDartUiShadow>? _shadows;
 // Paint? foreground,
 // Paint? background,
   @override
-  List<FlutterShadow>? get shadows {
+  List<FlutterDartUiShadow>? get shadows {
     final value = _shadows;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -1942,7 +1942,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacDouble? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
       final FlutterLocale? locale,
-      final List<FlutterShadow>? shadows,
+      final List<FlutterDartUiShadow>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       final FlutterTextDecoration? decoration,
       final FlutterColor? decorationColor,
@@ -1984,7 +1984,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   FlutterLocale? get locale;
   @override // Paint? foreground,
 // Paint? background,
-  List<FlutterShadow>? get shadows;
+  List<FlutterDartUiShadow>? get shadows;
   @override
   List<FlutterFontFeature>? get fontFeatures;
   @override
@@ -2248,4 +2248,2950 @@ abstract class _FlutterTextAlignVerticaltop extends FlutterTextAlignVertical {
 
   factory _FlutterTextAlignVerticaltop.fromJson(Map<String, dynamic> json) =
       _$_FlutterTextAlignVerticaltop.fromJson;
+}
+
+FlutterBoxShadow _$FlutterBoxShadowFromJson(Map<String, dynamic> json) {
+  return _FlutterBoxShadow.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterBoxShadow {
+  FlutterColor? get color => throw _privateConstructorUsedError;
+  FlutterOffset? get offset => throw _privateConstructorUsedError;
+  ZacDouble? get blurRadius => throw _privateConstructorUsedError;
+  ZacDouble? get spreadRadius => throw _privateConstructorUsedError;
+  FlutterBlurStyle? get blurStyle => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBoxShadow value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBoxShadow extends _FlutterBoxShadow {
+  _$_FlutterBoxShadow(
+      {this.color,
+      this.offset,
+      this.blurRadius,
+      this.spreadRadius,
+      this.blurStyle})
+      : super._();
+
+  factory _$_FlutterBoxShadow.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBoxShadowFromJson(json);
+
+  @override
+  final FlutterColor? color;
+  @override
+  final FlutterOffset? offset;
+  @override
+  final ZacDouble? blurRadius;
+  @override
+  final ZacDouble? spreadRadius;
+  @override
+  final FlutterBlurStyle? blurStyle;
+
+  @override
+  String toString() {
+    return 'FlutterBoxShadow(color: $color, offset: $offset, blurRadius: $blurRadius, spreadRadius: $spreadRadius, blurStyle: $blurStyle)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBoxShadow &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.offset, offset) &&
+            const DeepCollectionEquality()
+                .equals(other.blurRadius, blurRadius) &&
+            const DeepCollectionEquality()
+                .equals(other.spreadRadius, spreadRadius) &&
+            const DeepCollectionEquality().equals(other.blurStyle, blurStyle));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(offset),
+      const DeepCollectionEquality().hash(blurRadius),
+      const DeepCollectionEquality().hash(spreadRadius),
+      const DeepCollectionEquality().hash(blurStyle));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBoxShadow value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterBoxShadow extends FlutterBoxShadow {
+  factory _FlutterBoxShadow(
+      {final FlutterColor? color,
+      final FlutterOffset? offset,
+      final ZacDouble? blurRadius,
+      final ZacDouble? spreadRadius,
+      final FlutterBlurStyle? blurStyle}) = _$_FlutterBoxShadow;
+  _FlutterBoxShadow._() : super._();
+
+  factory _FlutterBoxShadow.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBoxShadow.fromJson;
+
+  @override
+  FlutterColor? get color;
+  @override
+  FlutterOffset? get offset;
+  @override
+  ZacDouble? get blurRadius;
+  @override
+  ZacDouble? get spreadRadius;
+  @override
+  FlutterBlurStyle? get blurStyle;
+}
+
+FlutterAlignment _$FlutterAlignmentFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:Alignment':
+      return _FlutterAlignment.fromJson(json);
+    case 'f:1:Alignment.bottomCenter':
+      return _FlutterAlignmentbottomCenter.fromJson(json);
+    case 'f:1:Alignment.bottomLeft':
+      return _FlutterAlignmentbottomLeft.fromJson(json);
+    case 'f:1:Alignment.bottomRight':
+      return _FlutterAlignmentbottomRight.fromJson(json);
+    case 'f:1:Alignment.center':
+      return _FlutterAlignmentcenter.fromJson(json);
+    case 'f:1:Alignment.centerLeft':
+      return _FlutterAlignmentcenterLeft.fromJson(json);
+    case 'f:1:Alignment.centerRight':
+      return _FlutterAlignmentcenterRight.fromJson(json);
+    case 'f:1:Alignment.topCenter':
+      return _FlutterAlignmenttopCenter.fromJson(json);
+    case 'f:1:Alignment.topLeft':
+      return _FlutterAlignmenttopLeft.fromJson(json);
+    case 'f:1:Alignment.topRight':
+      return _FlutterAlignmenttopRight.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'FlutterAlignment',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterAlignment {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignment extends _FlutterAlignment {
+  _$_FlutterAlignment(this.x, this.y, {final String? $type})
+      : $type = $type ?? 'f:1:Alignment',
+        super._();
+
+  factory _$_FlutterAlignment.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentFromJson(json);
+
+  @override
+  final ZacDouble x;
+  @override
+  final ZacDouble y;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment(x: $x, y: $y)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignment &&
+            const DeepCollectionEquality().equals(other.x, x) &&
+            const DeepCollectionEquality().equals(other.y, y));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(x),
+      const DeepCollectionEquality().hash(y));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterAlignment extends FlutterAlignment {
+  factory _FlutterAlignment(final ZacDouble x, final ZacDouble y) =
+      _$_FlutterAlignment;
+  _FlutterAlignment._() : super._();
+
+  factory _FlutterAlignment.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignment.fromJson;
+
+  ZacDouble get x;
+  ZacDouble get y;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentbottomCenter extends _FlutterAlignmentbottomCenter {
+  _$_FlutterAlignmentbottomCenter({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.bottomCenter',
+        super._();
+
+  factory _$_FlutterAlignmentbottomCenter.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentbottomCenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.bottomCenter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentbottomCenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return bottomCenter(this);
+  }
+}
+
+abstract class _FlutterAlignmentbottomCenter extends FlutterAlignment {
+  factory _FlutterAlignmentbottomCenter() = _$_FlutterAlignmentbottomCenter;
+  _FlutterAlignmentbottomCenter._() : super._();
+
+  factory _FlutterAlignmentbottomCenter.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentbottomCenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentbottomLeft extends _FlutterAlignmentbottomLeft {
+  _$_FlutterAlignmentbottomLeft({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.bottomLeft',
+        super._();
+
+  factory _$_FlutterAlignmentbottomLeft.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentbottomLeftFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.bottomLeft()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentbottomLeft);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return bottomLeft(this);
+  }
+}
+
+abstract class _FlutterAlignmentbottomLeft extends FlutterAlignment {
+  factory _FlutterAlignmentbottomLeft() = _$_FlutterAlignmentbottomLeft;
+  _FlutterAlignmentbottomLeft._() : super._();
+
+  factory _FlutterAlignmentbottomLeft.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentbottomLeft.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentbottomRight extends _FlutterAlignmentbottomRight {
+  _$_FlutterAlignmentbottomRight({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.bottomRight',
+        super._();
+
+  factory _$_FlutterAlignmentbottomRight.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentbottomRightFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.bottomRight()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentbottomRight);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return bottomRight(this);
+  }
+}
+
+abstract class _FlutterAlignmentbottomRight extends FlutterAlignment {
+  factory _FlutterAlignmentbottomRight() = _$_FlutterAlignmentbottomRight;
+  _FlutterAlignmentbottomRight._() : super._();
+
+  factory _FlutterAlignmentbottomRight.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentbottomRight.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentcenter extends _FlutterAlignmentcenter {
+  _$_FlutterAlignmentcenter({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.center',
+        super._();
+
+  factory _$_FlutterAlignmentcenter.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentcenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.center()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentcenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return center(this);
+  }
+}
+
+abstract class _FlutterAlignmentcenter extends FlutterAlignment {
+  factory _FlutterAlignmentcenter() = _$_FlutterAlignmentcenter;
+  _FlutterAlignmentcenter._() : super._();
+
+  factory _FlutterAlignmentcenter.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentcenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentcenterLeft extends _FlutterAlignmentcenterLeft {
+  _$_FlutterAlignmentcenterLeft({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.centerLeft',
+        super._();
+
+  factory _$_FlutterAlignmentcenterLeft.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentcenterLeftFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.centerLeft()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentcenterLeft);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return centerLeft(this);
+  }
+}
+
+abstract class _FlutterAlignmentcenterLeft extends FlutterAlignment {
+  factory _FlutterAlignmentcenterLeft() = _$_FlutterAlignmentcenterLeft;
+  _FlutterAlignmentcenterLeft._() : super._();
+
+  factory _FlutterAlignmentcenterLeft.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentcenterLeft.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentcenterRight extends _FlutterAlignmentcenterRight {
+  _$_FlutterAlignmentcenterRight({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.centerRight',
+        super._();
+
+  factory _$_FlutterAlignmentcenterRight.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentcenterRightFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.centerRight()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentcenterRight);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return centerRight(this);
+  }
+}
+
+abstract class _FlutterAlignmentcenterRight extends FlutterAlignment {
+  factory _FlutterAlignmentcenterRight() = _$_FlutterAlignmentcenterRight;
+  _FlutterAlignmentcenterRight._() : super._();
+
+  factory _FlutterAlignmentcenterRight.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentcenterRight.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmenttopCenter extends _FlutterAlignmenttopCenter {
+  _$_FlutterAlignmenttopCenter({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.topCenter',
+        super._();
+
+  factory _$_FlutterAlignmenttopCenter.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmenttopCenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.topCenter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmenttopCenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return topCenter(this);
+  }
+}
+
+abstract class _FlutterAlignmenttopCenter extends FlutterAlignment {
+  factory _FlutterAlignmenttopCenter() = _$_FlutterAlignmenttopCenter;
+  _FlutterAlignmenttopCenter._() : super._();
+
+  factory _FlutterAlignmenttopCenter.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmenttopCenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmenttopLeft extends _FlutterAlignmenttopLeft {
+  _$_FlutterAlignmenttopLeft({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.topLeft',
+        super._();
+
+  factory _$_FlutterAlignmenttopLeft.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmenttopLeftFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.topLeft()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmenttopLeft);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return topLeft(this);
+  }
+}
+
+abstract class _FlutterAlignmenttopLeft extends FlutterAlignment {
+  factory _FlutterAlignmenttopLeft() = _$_FlutterAlignmenttopLeft;
+  _FlutterAlignmenttopLeft._() : super._();
+
+  factory _FlutterAlignmenttopLeft.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmenttopLeft.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmenttopRight extends _FlutterAlignmenttopRight {
+  _$_FlutterAlignmenttopRight({final String? $type})
+      : $type = $type ?? 'f:1:Alignment.topRight',
+        super._();
+
+  factory _$_FlutterAlignmenttopRight.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmenttopRightFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignment.topRight()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmenttopRight);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignment value) $default, {
+    required TResult Function(_FlutterAlignmentbottomCenter value) bottomCenter,
+    required TResult Function(_FlutterAlignmentbottomLeft value) bottomLeft,
+    required TResult Function(_FlutterAlignmentbottomRight value) bottomRight,
+    required TResult Function(_FlutterAlignmentcenter value) center,
+    required TResult Function(_FlutterAlignmentcenterLeft value) centerLeft,
+    required TResult Function(_FlutterAlignmentcenterRight value) centerRight,
+    required TResult Function(_FlutterAlignmenttopCenter value) topCenter,
+    required TResult Function(_FlutterAlignmenttopLeft value) topLeft,
+    required TResult Function(_FlutterAlignmenttopRight value) topRight,
+  }) {
+    return topRight(this);
+  }
+}
+
+abstract class _FlutterAlignmenttopRight extends FlutterAlignment {
+  factory _FlutterAlignmenttopRight() = _$_FlutterAlignmenttopRight;
+  _FlutterAlignmenttopRight._() : super._();
+
+  factory _FlutterAlignmenttopRight.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmenttopRight.fromJson;
+}
+
+FlutterAlignmentDirectional _$FlutterAlignmentDirectionalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:AlignmentDirectional':
+      return _FlutterAlignmentDirectional.fromJson(json);
+    case 'f:1:AlignmentDirectional.bottomCenter':
+      return _FlutterAlignmentDirectionalbottomCenter.fromJson(json);
+    case 'f:1:AlignmentDirectional.bottomStart':
+      return _FlutterAlignmentDirectionalbottomStart.fromJson(json);
+    case 'f:1:AlignmentDirectional.bottomEnd':
+      return _FlutterAlignmentDirectionalbottomEnd.fromJson(json);
+    case 'f:1:AlignmentDirectional.center':
+      return _FlutterAlignmentDirectionalcenter.fromJson(json);
+    case 'f:1:AlignmentDirectional.centerStart':
+      return _FlutterAlignmentDirectionalcenterStart.fromJson(json);
+    case 'f:1:AlignmentDirectional.centerEnd':
+      return _FlutterAlignmentDirectionalcenterEnd.fromJson(json);
+    case 'f:1:AlignmentDirectional.topCenter':
+      return _FlutterAlignmentDirectionaltopCenter.fromJson(json);
+    case 'f:1:AlignmentDirectional.topStart':
+      return _FlutterAlignmentDirectionaltopStart.fromJson(json);
+    case 'f:1:AlignmentDirectional.topEnd':
+      return _FlutterAlignmentDirectionaltopEnd.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          '_converter',
+          'FlutterAlignmentDirectional',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterAlignmentDirectional {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectional extends _FlutterAlignmentDirectional {
+  _$_FlutterAlignmentDirectional(this.start, this.y, {final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional',
+        super._();
+
+  factory _$_FlutterAlignmentDirectional.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalFromJson(json);
+
+  @override
+  final ZacDouble start;
+  @override
+  final ZacDouble y;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional(start: $start, y: $y)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectional &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality().equals(other.y, y));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(start),
+      const DeepCollectionEquality().hash(y));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectional
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectional(
+          final ZacDouble start, final ZacDouble y) =
+      _$_FlutterAlignmentDirectional;
+  _FlutterAlignmentDirectional._() : super._();
+
+  factory _FlutterAlignmentDirectional.fromJson(Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectional.fromJson;
+
+  ZacDouble get start;
+  ZacDouble get y;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalbottomCenter
+    extends _FlutterAlignmentDirectionalbottomCenter {
+  _$_FlutterAlignmentDirectionalbottomCenter({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.bottomCenter',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalbottomCenter.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalbottomCenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.bottomCenter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalbottomCenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return bottomCenter(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalbottomCenter
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalbottomCenter() =
+      _$_FlutterAlignmentDirectionalbottomCenter;
+  _FlutterAlignmentDirectionalbottomCenter._() : super._();
+
+  factory _FlutterAlignmentDirectionalbottomCenter.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalbottomCenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalbottomStart
+    extends _FlutterAlignmentDirectionalbottomStart {
+  _$_FlutterAlignmentDirectionalbottomStart({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.bottomStart',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalbottomStart.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalbottomStartFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.bottomStart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalbottomStart);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return bottomStart(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalbottomStart
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalbottomStart() =
+      _$_FlutterAlignmentDirectionalbottomStart;
+  _FlutterAlignmentDirectionalbottomStart._() : super._();
+
+  factory _FlutterAlignmentDirectionalbottomStart.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalbottomStart.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalbottomEnd
+    extends _FlutterAlignmentDirectionalbottomEnd {
+  _$_FlutterAlignmentDirectionalbottomEnd({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.bottomEnd',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalbottomEnd.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalbottomEndFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.bottomEnd()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalbottomEnd);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return bottomEnd(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalbottomEnd
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalbottomEnd() =
+      _$_FlutterAlignmentDirectionalbottomEnd;
+  _FlutterAlignmentDirectionalbottomEnd._() : super._();
+
+  factory _FlutterAlignmentDirectionalbottomEnd.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalbottomEnd.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalcenter
+    extends _FlutterAlignmentDirectionalcenter {
+  _$_FlutterAlignmentDirectionalcenter({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.center',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalcenter.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalcenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.center()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalcenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return center(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalcenter
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalcenter() =
+      _$_FlutterAlignmentDirectionalcenter;
+  _FlutterAlignmentDirectionalcenter._() : super._();
+
+  factory _FlutterAlignmentDirectionalcenter.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalcenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalcenterStart
+    extends _FlutterAlignmentDirectionalcenterStart {
+  _$_FlutterAlignmentDirectionalcenterStart({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.centerStart',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalcenterStart.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalcenterStartFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.centerStart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalcenterStart);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return centerStart(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalcenterStart
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalcenterStart() =
+      _$_FlutterAlignmentDirectionalcenterStart;
+  _FlutterAlignmentDirectionalcenterStart._() : super._();
+
+  factory _FlutterAlignmentDirectionalcenterStart.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalcenterStart.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionalcenterEnd
+    extends _FlutterAlignmentDirectionalcenterEnd {
+  _$_FlutterAlignmentDirectionalcenterEnd({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.centerEnd',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionalcenterEnd.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionalcenterEndFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.centerEnd()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionalcenterEnd);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return centerEnd(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionalcenterEnd
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionalcenterEnd() =
+      _$_FlutterAlignmentDirectionalcenterEnd;
+  _FlutterAlignmentDirectionalcenterEnd._() : super._();
+
+  factory _FlutterAlignmentDirectionalcenterEnd.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionalcenterEnd.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionaltopCenter
+    extends _FlutterAlignmentDirectionaltopCenter {
+  _$_FlutterAlignmentDirectionaltopCenter({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.topCenter',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionaltopCenter.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionaltopCenterFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.topCenter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionaltopCenter);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return topCenter(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionaltopCenter
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionaltopCenter() =
+      _$_FlutterAlignmentDirectionaltopCenter;
+  _FlutterAlignmentDirectionaltopCenter._() : super._();
+
+  factory _FlutterAlignmentDirectionaltopCenter.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionaltopCenter.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionaltopStart
+    extends _FlutterAlignmentDirectionaltopStart {
+  _$_FlutterAlignmentDirectionaltopStart({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.topStart',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionaltopStart.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionaltopStartFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.topStart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionaltopStart);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return topStart(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionaltopStart
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionaltopStart() =
+      _$_FlutterAlignmentDirectionaltopStart;
+  _FlutterAlignmentDirectionaltopStart._() : super._();
+
+  factory _FlutterAlignmentDirectionaltopStart.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionaltopStart.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterAlignmentDirectionaltopEnd
+    extends _FlutterAlignmentDirectionaltopEnd {
+  _$_FlutterAlignmentDirectionaltopEnd({final String? $type})
+      : $type = $type ?? 'f:1:AlignmentDirectional.topEnd',
+        super._();
+
+  factory _$_FlutterAlignmentDirectionaltopEnd.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterAlignmentDirectionaltopEndFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterAlignmentDirectional.topEnd()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterAlignmentDirectionaltopEnd);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterAlignmentDirectional value) $default, {
+    required TResult Function(_FlutterAlignmentDirectionalbottomCenter value)
+        bottomCenter,
+    required TResult Function(_FlutterAlignmentDirectionalbottomStart value)
+        bottomStart,
+    required TResult Function(_FlutterAlignmentDirectionalbottomEnd value)
+        bottomEnd,
+    required TResult Function(_FlutterAlignmentDirectionalcenter value) center,
+    required TResult Function(_FlutterAlignmentDirectionalcenterStart value)
+        centerStart,
+    required TResult Function(_FlutterAlignmentDirectionalcenterEnd value)
+        centerEnd,
+    required TResult Function(_FlutterAlignmentDirectionaltopCenter value)
+        topCenter,
+    required TResult Function(_FlutterAlignmentDirectionaltopStart value)
+        topStart,
+    required TResult Function(_FlutterAlignmentDirectionaltopEnd value) topEnd,
+  }) {
+    return topEnd(this);
+  }
+}
+
+abstract class _FlutterAlignmentDirectionaltopEnd
+    extends FlutterAlignmentDirectional {
+  factory _FlutterAlignmentDirectionaltopEnd() =
+      _$_FlutterAlignmentDirectionaltopEnd;
+  _FlutterAlignmentDirectionaltopEnd._() : super._();
+
+  factory _FlutterAlignmentDirectionaltopEnd.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterAlignmentDirectionaltopEnd.fromJson;
+}
+
+FlutterFractionalOffset _$FlutterFractionalOffsetFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterFractionalOffset.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterFractionalOffset {
+  ZacDouble get dx => throw _privateConstructorUsedError;
+  ZacDouble get dy => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterFractionalOffset value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterFractionalOffset extends _FlutterFractionalOffset {
+  _$_FlutterFractionalOffset(this.dx, this.dy) : super._();
+
+  factory _$_FlutterFractionalOffset.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterFractionalOffsetFromJson(json);
+
+  @override
+  final ZacDouble dx;
+  @override
+  final ZacDouble dy;
+
+  @override
+  String toString() {
+    return 'FlutterFractionalOffset(dx: $dx, dy: $dy)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterFractionalOffset &&
+            const DeepCollectionEquality().equals(other.dx, dx) &&
+            const DeepCollectionEquality().equals(other.dy, dy));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(dx),
+      const DeepCollectionEquality().hash(dy));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterFractionalOffset value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterFractionalOffset extends FlutterFractionalOffset {
+  factory _FlutterFractionalOffset(final ZacDouble dx, final ZacDouble dy) =
+      _$_FlutterFractionalOffset;
+  _FlutterFractionalOffset._() : super._();
+
+  factory _FlutterFractionalOffset.fromJson(Map<String, dynamic> json) =
+      _$_FlutterFractionalOffset.fromJson;
+
+  @override
+  ZacDouble get dx;
+  @override
+  ZacDouble get dy;
+}
+
+FlutterBorderDirectional _$FlutterBorderDirectionalFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterBorderDirectional.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterBorderDirectional {
+  FlutterBorderSide? get top => throw _privateConstructorUsedError;
+  FlutterBorderSide? get start => throw _privateConstructorUsedError;
+  FlutterBorderSide? get bottom => throw _privateConstructorUsedError;
+  FlutterBorderSide? get end => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorderDirectional value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderDirectional extends _FlutterBorderDirectional {
+  _$_FlutterBorderDirectional({this.top, this.start, this.bottom, this.end})
+      : super._();
+
+  factory _$_FlutterBorderDirectional.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderDirectionalFromJson(json);
+
+  @override
+  final FlutterBorderSide? top;
+  @override
+  final FlutterBorderSide? start;
+  @override
+  final FlutterBorderSide? bottom;
+  @override
+  final FlutterBorderSide? end;
+
+  @override
+  String toString() {
+    return 'FlutterBorderDirectional(top: $top, start: $start, bottom: $bottom, end: $end)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderDirectional &&
+            const DeepCollectionEquality().equals(other.top, top) &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality().equals(other.bottom, bottom) &&
+            const DeepCollectionEquality().equals(other.end, end));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(top),
+      const DeepCollectionEquality().hash(start),
+      const DeepCollectionEquality().hash(bottom),
+      const DeepCollectionEquality().hash(end));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorderDirectional value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterBorderDirectional extends FlutterBorderDirectional {
+  factory _FlutterBorderDirectional(
+      {final FlutterBorderSide? top,
+      final FlutterBorderSide? start,
+      final FlutterBorderSide? bottom,
+      final FlutterBorderSide? end}) = _$_FlutterBorderDirectional;
+  _FlutterBorderDirectional._() : super._();
+
+  factory _FlutterBorderDirectional.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderDirectional.fromJson;
+
+  @override
+  FlutterBorderSide? get top;
+  @override
+  FlutterBorderSide? get start;
+  @override
+  FlutterBorderSide? get bottom;
+  @override
+  FlutterBorderSide? get end;
+}
+
+FlutterBorder _$FlutterBorderFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:Border':
+      return _FlutterBorder.fromJson(json);
+    case 'f:1:Border.all':
+      return _FlutterBorderAll.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'FlutterBorder',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterBorder {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorder value) $default, {
+    required TResult Function(_FlutterBorderAll value) all,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorder extends _FlutterBorder {
+  _$_FlutterBorder(
+      {this.top, this.right, this.bottom, this.left, final String? $type})
+      : $type = $type ?? 'f:1:Border',
+        super._();
+
+  factory _$_FlutterBorder.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderFromJson(json);
+
+  @override
+  final FlutterBorderSide? top;
+  @override
+  final FlutterBorderSide? right;
+  @override
+  final FlutterBorderSide? bottom;
+  @override
+  final FlutterBorderSide? left;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorder(top: $top, right: $right, bottom: $bottom, left: $left)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorder &&
+            const DeepCollectionEquality().equals(other.top, top) &&
+            const DeepCollectionEquality().equals(other.right, right) &&
+            const DeepCollectionEquality().equals(other.bottom, bottom) &&
+            const DeepCollectionEquality().equals(other.left, left));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(top),
+      const DeepCollectionEquality().hash(right),
+      const DeepCollectionEquality().hash(bottom),
+      const DeepCollectionEquality().hash(left));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorder value) $default, {
+    required TResult Function(_FlutterBorderAll value) all,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterBorder extends FlutterBorder {
+  factory _FlutterBorder(
+      {final FlutterBorderSide? top,
+      final FlutterBorderSide? right,
+      final FlutterBorderSide? bottom,
+      final FlutterBorderSide? left}) = _$_FlutterBorder;
+  _FlutterBorder._() : super._();
+
+  factory _FlutterBorder.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorder.fromJson;
+
+  FlutterBorderSide? get top;
+  FlutterBorderSide? get right;
+  FlutterBorderSide? get bottom;
+  FlutterBorderSide? get left;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderAll extends _FlutterBorderAll {
+  _$_FlutterBorderAll({this.color, this.width, this.style, final String? $type})
+      : $type = $type ?? 'f:1:Border.all',
+        super._();
+
+  factory _$_FlutterBorderAll.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderAllFromJson(json);
+
+  @override
+  final FlutterColor? color;
+  @override
+  final ZacDouble? width;
+  @override
+  final FlutterBorderStyle? style;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorder.all(color: $color, width: $width, style: $style)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderAll &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.width, width) &&
+            const DeepCollectionEquality().equals(other.style, style));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(width),
+      const DeepCollectionEquality().hash(style));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorder value) $default, {
+    required TResult Function(_FlutterBorderAll value) all,
+  }) {
+    return all(this);
+  }
+}
+
+abstract class _FlutterBorderAll extends FlutterBorder {
+  factory _FlutterBorderAll(
+      {final FlutterColor? color,
+      final ZacDouble? width,
+      final FlutterBorderStyle? style}) = _$_FlutterBorderAll;
+  _FlutterBorderAll._() : super._();
+
+  factory _FlutterBorderAll.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderAll.fromJson;
+
+  FlutterColor? get color;
+  ZacDouble? get width;
+  FlutterBorderStyle? get style;
+}
+
+FlutterBorderStyle _$FlutterBorderStyleFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:BorderStyle.none':
+      return _FlutterBorderStyleNone.fromJson(json);
+    case 'f:1:BorderStyle.solid':
+      return _FlutterBorderStyleSolid.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'FlutterBorderStyle',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterBorderStyle {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderStyleNone value) none,
+    required TResult Function(_FlutterBorderStyleSolid value) solid,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderStyleNone extends _FlutterBorderStyleNone {
+  _$_FlutterBorderStyleNone({final String? $type})
+      : $type = $type ?? 'f:1:BorderStyle.none',
+        super._();
+
+  factory _$_FlutterBorderStyleNone.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderStyleNoneFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorderStyle.none()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderStyleNone);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderStyleNone value) none,
+    required TResult Function(_FlutterBorderStyleSolid value) solid,
+  }) {
+    return none(this);
+  }
+}
+
+abstract class _FlutterBorderStyleNone extends FlutterBorderStyle {
+  factory _FlutterBorderStyleNone() = _$_FlutterBorderStyleNone;
+  _FlutterBorderStyleNone._() : super._();
+
+  factory _FlutterBorderStyleNone.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderStyleNone.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderStyleSolid extends _FlutterBorderStyleSolid {
+  _$_FlutterBorderStyleSolid({final String? $type})
+      : $type = $type ?? 'f:1:BorderStyle.solid',
+        super._();
+
+  factory _$_FlutterBorderStyleSolid.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderStyleSolidFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorderStyle.solid()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderStyleSolid);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderStyleNone value) none,
+    required TResult Function(_FlutterBorderStyleSolid value) solid,
+  }) {
+    return solid(this);
+  }
+}
+
+abstract class _FlutterBorderStyleSolid extends FlutterBorderStyle {
+  factory _FlutterBorderStyleSolid() = _$_FlutterBorderStyleSolid;
+  _FlutterBorderStyleSolid._() : super._();
+
+  factory _FlutterBorderStyleSolid.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderStyleSolid.fromJson;
+}
+
+FlutterBorderRadius _$FlutterBorderRadiusFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:BorderRadius.all':
+      return _FlutterBorderRadiusAll.fromJson(json);
+    case 'f:1:BorderRadius.circular':
+      return _FlutterBorderRadiusCircular.fromJson(json);
+    case 'f:1:BorderRadius.horizontal':
+      return _FlutterBorderRadiusHorizontal.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'FlutterBorderRadius',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterBorderRadius {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderRadiusAll value) all,
+    required TResult Function(_FlutterBorderRadiusCircular value) circular,
+    required TResult Function(_FlutterBorderRadiusHorizontal value) horizontal,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderRadiusAll extends _FlutterBorderRadiusAll {
+  _$_FlutterBorderRadiusAll(this.radius, {final String? $type})
+      : $type = $type ?? 'f:1:BorderRadius.all',
+        super._();
+
+  factory _$_FlutterBorderRadiusAll.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderRadiusAllFromJson(json);
+
+  @override
+  final FlutterRadius radius;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorderRadius.all(radius: $radius)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderRadiusAll &&
+            const DeepCollectionEquality().equals(other.radius, radius));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(radius));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderRadiusAll value) all,
+    required TResult Function(_FlutterBorderRadiusCircular value) circular,
+    required TResult Function(_FlutterBorderRadiusHorizontal value) horizontal,
+  }) {
+    return all(this);
+  }
+}
+
+abstract class _FlutterBorderRadiusAll extends FlutterBorderRadius {
+  factory _FlutterBorderRadiusAll(final FlutterRadius radius) =
+      _$_FlutterBorderRadiusAll;
+  _FlutterBorderRadiusAll._() : super._();
+
+  factory _FlutterBorderRadiusAll.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderRadiusAll.fromJson;
+
+  FlutterRadius get radius;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderRadiusCircular extends _FlutterBorderRadiusCircular {
+  _$_FlutterBorderRadiusCircular(this.radius, {final String? $type})
+      : $type = $type ?? 'f:1:BorderRadius.circular',
+        super._();
+
+  factory _$_FlutterBorderRadiusCircular.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderRadiusCircularFromJson(json);
+
+  @override
+  final ZacDouble radius;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorderRadius.circular(radius: $radius)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderRadiusCircular &&
+            const DeepCollectionEquality().equals(other.radius, radius));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(radius));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderRadiusAll value) all,
+    required TResult Function(_FlutterBorderRadiusCircular value) circular,
+    required TResult Function(_FlutterBorderRadiusHorizontal value) horizontal,
+  }) {
+    return circular(this);
+  }
+}
+
+abstract class _FlutterBorderRadiusCircular extends FlutterBorderRadius {
+  factory _FlutterBorderRadiusCircular(final ZacDouble radius) =
+      _$_FlutterBorderRadiusCircular;
+  _FlutterBorderRadiusCircular._() : super._();
+
+  factory _FlutterBorderRadiusCircular.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderRadiusCircular.fromJson;
+
+  ZacDouble get radius;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderRadiusHorizontal extends _FlutterBorderRadiusHorizontal {
+  _$_FlutterBorderRadiusHorizontal({this.left, this.right, final String? $type})
+      : $type = $type ?? 'f:1:BorderRadius.horizontal',
+        super._();
+
+  factory _$_FlutterBorderRadiusHorizontal.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterBorderRadiusHorizontalFromJson(json);
+
+  @override
+  final FlutterRadius? left;
+  @override
+  final FlutterRadius? right;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterBorderRadius.horizontal(left: $left, right: $right)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderRadiusHorizontal &&
+            const DeepCollectionEquality().equals(other.left, left) &&
+            const DeepCollectionEquality().equals(other.right, right));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(left),
+      const DeepCollectionEquality().hash(right));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterBorderRadiusAll value) all,
+    required TResult Function(_FlutterBorderRadiusCircular value) circular,
+    required TResult Function(_FlutterBorderRadiusHorizontal value) horizontal,
+  }) {
+    return horizontal(this);
+  }
+}
+
+abstract class _FlutterBorderRadiusHorizontal extends FlutterBorderRadius {
+  factory _FlutterBorderRadiusHorizontal(
+      {final FlutterRadius? left,
+      final FlutterRadius? right}) = _$_FlutterBorderRadiusHorizontal;
+  _FlutterBorderRadiusHorizontal._() : super._();
+
+  factory _FlutterBorderRadiusHorizontal.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderRadiusHorizontal.fromJson;
+
+  FlutterRadius? get left;
+  FlutterRadius? get right;
+}
+
+FlutterBorderSide _$FlutterBorderSideFromJson(Map<String, dynamic> json) {
+  return _FlutterBorderSide.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterBorderSide {
+  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacDouble? get width => throw _privateConstructorUsedError;
+  FlutterBorderStyle? get style => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorderSide value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBorderSide extends _FlutterBorderSide {
+  _$_FlutterBorderSide({this.color, this.width, this.style}) : super._();
+
+  factory _$_FlutterBorderSide.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBorderSideFromJson(json);
+
+  @override
+  final FlutterColor? color;
+  @override
+  final ZacDouble? width;
+  @override
+  final FlutterBorderStyle? style;
+
+  @override
+  String toString() {
+    return 'FlutterBorderSide(color: $color, width: $width, style: $style)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBorderSide &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.width, width) &&
+            const DeepCollectionEquality().equals(other.style, style));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(width),
+      const DeepCollectionEquality().hash(style));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBorderSide value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterBorderSide extends FlutterBorderSide {
+  factory _FlutterBorderSide(
+      {final FlutterColor? color,
+      final ZacDouble? width,
+      final FlutterBorderStyle? style}) = _$_FlutterBorderSide;
+  _FlutterBorderSide._() : super._();
+
+  factory _FlutterBorderSide.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBorderSide.fromJson;
+
+  @override
+  FlutterColor? get color;
+  @override
+  ZacDouble? get width;
+  @override
+  FlutterBorderStyle? get style;
+}
+
+FlutterCircleBorder _$FlutterCircleBorderFromJson(Map<String, dynamic> json) {
+  return _FlutterCircleBorder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterCircleBorder {
+  FlutterBorderSide? get side => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterCircleBorder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterCircleBorder extends _FlutterCircleBorder {
+  _$_FlutterCircleBorder({this.side}) : super._();
+
+  factory _$_FlutterCircleBorder.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterCircleBorderFromJson(json);
+
+  @override
+  final FlutterBorderSide? side;
+
+  @override
+  String toString() {
+    return 'FlutterCircleBorder(side: $side)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterCircleBorder &&
+            const DeepCollectionEquality().equals(other.side, side));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(side));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterCircleBorder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterCircleBorder extends FlutterCircleBorder {
+  factory _FlutterCircleBorder({final FlutterBorderSide? side}) =
+      _$_FlutterCircleBorder;
+  _FlutterCircleBorder._() : super._();
+
+  factory _FlutterCircleBorder.fromJson(Map<String, dynamic> json) =
+      _$_FlutterCircleBorder.fromJson;
+
+  @override
+  FlutterBorderSide? get side;
+}
+
+FlutterRoundedRectangleBorder _$FlutterRoundedRectangleBorderFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterRoundedRectangleBorder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterRoundedRectangleBorder {
+  FlutterBorderSide? get side => throw _privateConstructorUsedError;
+  FlutterBorderRadiusGeometry? get borderRadius =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterRoundedRectangleBorder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterRoundedRectangleBorder extends _FlutterRoundedRectangleBorder {
+  _$_FlutterRoundedRectangleBorder({this.side, this.borderRadius}) : super._();
+
+  factory _$_FlutterRoundedRectangleBorder.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterRoundedRectangleBorderFromJson(json);
+
+  @override
+  final FlutterBorderSide? side;
+  @override
+  final FlutterBorderRadiusGeometry? borderRadius;
+
+  @override
+  String toString() {
+    return 'FlutterRoundedRectangleBorder(side: $side, borderRadius: $borderRadius)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterRoundedRectangleBorder &&
+            const DeepCollectionEquality().equals(other.side, side) &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(side),
+      const DeepCollectionEquality().hash(borderRadius));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterRoundedRectangleBorder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterRoundedRectangleBorder
+    extends FlutterRoundedRectangleBorder {
+  factory _FlutterRoundedRectangleBorder(
+          {final FlutterBorderSide? side,
+          final FlutterBorderRadiusGeometry? borderRadius}) =
+      _$_FlutterRoundedRectangleBorder;
+  _FlutterRoundedRectangleBorder._() : super._();
+
+  factory _FlutterRoundedRectangleBorder.fromJson(Map<String, dynamic> json) =
+      _$_FlutterRoundedRectangleBorder.fromJson;
+
+  @override
+  FlutterBorderSide? get side;
+  @override
+  FlutterBorderRadiusGeometry? get borderRadius;
+}
+
+FlutterBoxDecoration _$FlutterBoxDecorationFromJson(Map<String, dynamic> json) {
+  return _FlutterBoxDecoration.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterBoxDecoration {
+  FlutterColor? get color => throw _privateConstructorUsedError;
+  FlutterBoxBorder? get border => throw _privateConstructorUsedError;
+  FlutterBorderRadiusGeometry? get borderRadius =>
+      throw _privateConstructorUsedError;
+  List<FlutterBoxShadow>? get boxShadow => throw _privateConstructorUsedError;
+  FlutterBoxShape? get shape => throw _privateConstructorUsedError;
+  FlutterBlendMode? get backgroundBlendMode =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBoxDecoration value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
+  _$_FlutterBoxDecoration(
+      {this.color,
+      this.border,
+      this.borderRadius,
+      final List<FlutterBoxShadow>? boxShadow,
+      this.shape,
+      this.backgroundBlendMode})
+      : _boxShadow = boxShadow,
+        super._();
+
+  factory _$_FlutterBoxDecoration.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterBoxDecorationFromJson(json);
+
+  @override
+  final FlutterColor? color;
+  @override
+  final FlutterBoxBorder? border;
+  @override
+  final FlutterBorderRadiusGeometry? borderRadius;
+  final List<FlutterBoxShadow>? _boxShadow;
+  @override
+  List<FlutterBoxShadow>? get boxShadow {
+    final value = _boxShadow;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final FlutterBoxShape? shape;
+  @override
+  final FlutterBlendMode? backgroundBlendMode;
+
+  @override
+  String toString() {
+    return 'FlutterBoxDecoration(color: $color, border: $border, borderRadius: $borderRadius, boxShadow: $boxShadow, shape: $shape, backgroundBlendMode: $backgroundBlendMode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterBoxDecoration &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.border, border) &&
+            const DeepCollectionEquality()
+                .equals(other.borderRadius, borderRadius) &&
+            const DeepCollectionEquality()
+                .equals(other._boxShadow, _boxShadow) &&
+            const DeepCollectionEquality().equals(other.shape, shape) &&
+            const DeepCollectionEquality()
+                .equals(other.backgroundBlendMode, backgroundBlendMode));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(border),
+      const DeepCollectionEquality().hash(borderRadius),
+      const DeepCollectionEquality().hash(_boxShadow),
+      const DeepCollectionEquality().hash(shape),
+      const DeepCollectionEquality().hash(backgroundBlendMode));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterBoxDecoration value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
+  factory _FlutterBoxDecoration(
+      {final FlutterColor? color,
+      final FlutterBoxBorder? border,
+      final FlutterBorderRadiusGeometry? borderRadius,
+      final List<FlutterBoxShadow>? boxShadow,
+      final FlutterBoxShape? shape,
+      final FlutterBlendMode? backgroundBlendMode}) = _$_FlutterBoxDecoration;
+  _FlutterBoxDecoration._() : super._();
+
+  factory _FlutterBoxDecoration.fromJson(Map<String, dynamic> json) =
+      _$_FlutterBoxDecoration.fromJson;
+
+  @override
+  FlutterColor? get color;
+  @override
+  FlutterBoxBorder? get border;
+  @override
+  FlutterBorderRadiusGeometry? get borderRadius;
+  @override
+  List<FlutterBoxShadow>? get boxShadow;
+  @override
+  FlutterBoxShape? get shape;
+  @override
+  FlutterBlendMode? get backgroundBlendMode;
+}
+
+FlutterShapeDecoration _$FlutterShapeDecorationFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterShapeDecoration.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterShapeDecoration {
+  FlutterColor? get color =>
+      throw _privateConstructorUsedError; // FlutterDecorationImage? image,
+// FlutterGradient? gradient,
+  List<FlutterBoxShadow>? get shadows => throw _privateConstructorUsedError;
+  FlutterShapeBorder get shape => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterShapeDecoration value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
+  _$_FlutterShapeDecoration(
+      {this.color, final List<FlutterBoxShadow>? shadows, required this.shape})
+      : _shadows = shadows,
+        super._();
+
+  factory _$_FlutterShapeDecoration.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterShapeDecorationFromJson(json);
+
+  @override
+  final FlutterColor? color;
+// FlutterDecorationImage? image,
+// FlutterGradient? gradient,
+  final List<FlutterBoxShadow>? _shadows;
+// FlutterDecorationImage? image,
+// FlutterGradient? gradient,
+  @override
+  List<FlutterBoxShadow>? get shadows {
+    final value = _shadows;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final FlutterShapeBorder shape;
+
+  @override
+  String toString() {
+    return 'FlutterShapeDecoration(color: $color, shadows: $shadows, shape: $shape)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterShapeDecoration &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other._shadows, _shadows) &&
+            const DeepCollectionEquality().equals(other.shape, shape));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(_shadows),
+      const DeepCollectionEquality().hash(shape));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterShapeDecoration value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
+  factory _FlutterShapeDecoration(
+      {final FlutterColor? color,
+      final List<FlutterBoxShadow>? shadows,
+      required final FlutterShapeBorder shape}) = _$_FlutterShapeDecoration;
+  _FlutterShapeDecoration._() : super._();
+
+  factory _FlutterShapeDecoration.fromJson(Map<String, dynamic> json) =
+      _$_FlutterShapeDecoration.fromJson;
+
+  @override
+  FlutterColor? get color;
+  @override // FlutterDecorationImage? image,
+// FlutterGradient? gradient,
+  List<FlutterBoxShadow>? get shadows;
+  @override
+  FlutterShapeBorder get shape;
+}
+
+FlutterEdgeInsets _$FlutterEdgeInsetsFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:EdgeInsets.all':
+      return _FlutterEdgeInsetsAll.fromJson(json);
+    case 'f:1:EdgeInsets.symmetric':
+      return _FlutterEdgeInsetsSymmetric.fromJson(json);
+    case 'f:1:EdgeInsets.only':
+      return _FlutterEdgeInsetsOnly.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'FlutterEdgeInsets',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterEdgeInsets {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsAll value) all,
+    required TResult Function(_FlutterEdgeInsetsSymmetric value) symmetric,
+    required TResult Function(_FlutterEdgeInsetsOnly value) only,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterEdgeInsetsAll extends _FlutterEdgeInsetsAll {
+  _$_FlutterEdgeInsetsAll(this.value, {final String? $type})
+      : $type = $type ?? 'f:1:EdgeInsets.all',
+        super._();
+
+  factory _$_FlutterEdgeInsetsAll.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterEdgeInsetsAllFromJson(json);
+
+  @override
+  final ZacDouble value;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterEdgeInsets.all(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterEdgeInsetsAll &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsAll value) all,
+    required TResult Function(_FlutterEdgeInsetsSymmetric value) symmetric,
+    required TResult Function(_FlutterEdgeInsetsOnly value) only,
+  }) {
+    return all(this);
+  }
+}
+
+abstract class _FlutterEdgeInsetsAll extends FlutterEdgeInsets {
+  factory _FlutterEdgeInsetsAll(final ZacDouble value) =
+      _$_FlutterEdgeInsetsAll;
+  _FlutterEdgeInsetsAll._() : super._();
+
+  factory _FlutterEdgeInsetsAll.fromJson(Map<String, dynamic> json) =
+      _$_FlutterEdgeInsetsAll.fromJson;
+
+  ZacDouble get value;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterEdgeInsetsSymmetric extends _FlutterEdgeInsetsSymmetric {
+  _$_FlutterEdgeInsetsSymmetric(
+      {this.vertical, this.horizontal, final String? $type})
+      : $type = $type ?? 'f:1:EdgeInsets.symmetric',
+        super._();
+
+  factory _$_FlutterEdgeInsetsSymmetric.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterEdgeInsetsSymmetricFromJson(json);
+
+  @override
+  final ZacDouble? vertical;
+  @override
+  final ZacDouble? horizontal;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterEdgeInsets.symmetric(vertical: $vertical, horizontal: $horizontal)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterEdgeInsetsSymmetric &&
+            const DeepCollectionEquality().equals(other.vertical, vertical) &&
+            const DeepCollectionEquality()
+                .equals(other.horizontal, horizontal));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(vertical),
+      const DeepCollectionEquality().hash(horizontal));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsAll value) all,
+    required TResult Function(_FlutterEdgeInsetsSymmetric value) symmetric,
+    required TResult Function(_FlutterEdgeInsetsOnly value) only,
+  }) {
+    return symmetric(this);
+  }
+}
+
+abstract class _FlutterEdgeInsetsSymmetric extends FlutterEdgeInsets {
+  factory _FlutterEdgeInsetsSymmetric(
+      {final ZacDouble? vertical,
+      final ZacDouble? horizontal}) = _$_FlutterEdgeInsetsSymmetric;
+  _FlutterEdgeInsetsSymmetric._() : super._();
+
+  factory _FlutterEdgeInsetsSymmetric.fromJson(Map<String, dynamic> json) =
+      _$_FlutterEdgeInsetsSymmetric.fromJson;
+
+  ZacDouble? get vertical;
+  ZacDouble? get horizontal;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterEdgeInsetsOnly extends _FlutterEdgeInsetsOnly {
+  _$_FlutterEdgeInsetsOnly(
+      {this.left, this.top, this.right, this.bottom, final String? $type})
+      : $type = $type ?? 'f:1:EdgeInsets.only',
+        super._();
+
+  factory _$_FlutterEdgeInsetsOnly.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterEdgeInsetsOnlyFromJson(json);
+
+  @override
+  final ZacDouble? left;
+  @override
+  final ZacDouble? top;
+  @override
+  final ZacDouble? right;
+  @override
+  final ZacDouble? bottom;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterEdgeInsets.only(left: $left, top: $top, right: $right, bottom: $bottom)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterEdgeInsetsOnly &&
+            const DeepCollectionEquality().equals(other.left, left) &&
+            const DeepCollectionEquality().equals(other.top, top) &&
+            const DeepCollectionEquality().equals(other.right, right) &&
+            const DeepCollectionEquality().equals(other.bottom, bottom));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(left),
+      const DeepCollectionEquality().hash(top),
+      const DeepCollectionEquality().hash(right),
+      const DeepCollectionEquality().hash(bottom));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsAll value) all,
+    required TResult Function(_FlutterEdgeInsetsSymmetric value) symmetric,
+    required TResult Function(_FlutterEdgeInsetsOnly value) only,
+  }) {
+    return only(this);
+  }
+}
+
+abstract class _FlutterEdgeInsetsOnly extends FlutterEdgeInsets {
+  factory _FlutterEdgeInsetsOnly(
+      {final ZacDouble? left,
+      final ZacDouble? top,
+      final ZacDouble? right,
+      final ZacDouble? bottom}) = _$_FlutterEdgeInsetsOnly;
+  _FlutterEdgeInsetsOnly._() : super._();
+
+  factory _FlutterEdgeInsetsOnly.fromJson(Map<String, dynamic> json) =
+      _$_FlutterEdgeInsetsOnly.fromJson;
+
+  ZacDouble? get left;
+  ZacDouble? get top;
+  ZacDouble? get right;
+  ZacDouble? get bottom;
+}
+
+FlutterEdgeInsetsDirectional _$FlutterEdgeInsetsDirectionalFromJson(
+    Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:EdgeInsetsDirectional.all':
+      return _FlutterEdgeInsetsDirectionalAll.fromJson(json);
+    case 'f:1:EdgeInsetsDirectional.only':
+      return _FlutterEdgeInsetsDirectionalOnly.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          '_converter',
+          'FlutterEdgeInsetsDirectional',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterEdgeInsetsDirectional {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsDirectionalAll value) all,
+    required TResult Function(_FlutterEdgeInsetsDirectionalOnly value) only,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterEdgeInsetsDirectionalAll
+    extends _FlutterEdgeInsetsDirectionalAll {
+  _$_FlutterEdgeInsetsDirectionalAll(this.value, {final String? $type})
+      : $type = $type ?? 'f:1:EdgeInsetsDirectional.all',
+        super._();
+
+  factory _$_FlutterEdgeInsetsDirectionalAll.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterEdgeInsetsDirectionalAllFromJson(json);
+
+  @override
+  final ZacDouble value;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterEdgeInsetsDirectional.all(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterEdgeInsetsDirectionalAll &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsDirectionalAll value) all,
+    required TResult Function(_FlutterEdgeInsetsDirectionalOnly value) only,
+  }) {
+    return all(this);
+  }
+}
+
+abstract class _FlutterEdgeInsetsDirectionalAll
+    extends FlutterEdgeInsetsDirectional {
+  factory _FlutterEdgeInsetsDirectionalAll(final ZacDouble value) =
+      _$_FlutterEdgeInsetsDirectionalAll;
+  _FlutterEdgeInsetsDirectionalAll._() : super._();
+
+  factory _FlutterEdgeInsetsDirectionalAll.fromJson(Map<String, dynamic> json) =
+      _$_FlutterEdgeInsetsDirectionalAll.fromJson;
+
+  ZacDouble get value;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterEdgeInsetsDirectionalOnly
+    extends _FlutterEdgeInsetsDirectionalOnly {
+  _$_FlutterEdgeInsetsDirectionalOnly(
+      {this.start, this.top, this.end, this.bottom, final String? $type})
+      : $type = $type ?? 'f:1:EdgeInsetsDirectional.only',
+        super._();
+
+  factory _$_FlutterEdgeInsetsDirectionalOnly.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterEdgeInsetsDirectionalOnlyFromJson(json);
+
+  @override
+  final ZacDouble? start;
+  @override
+  final ZacDouble? top;
+  @override
+  final ZacDouble? end;
+  @override
+  final ZacDouble? bottom;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterEdgeInsetsDirectional.only(start: $start, top: $top, end: $end, bottom: $bottom)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterEdgeInsetsDirectionalOnly &&
+            const DeepCollectionEquality().equals(other.start, start) &&
+            const DeepCollectionEquality().equals(other.top, top) &&
+            const DeepCollectionEquality().equals(other.end, end) &&
+            const DeepCollectionEquality().equals(other.bottom, bottom));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(start),
+      const DeepCollectionEquality().hash(top),
+      const DeepCollectionEquality().hash(end),
+      const DeepCollectionEquality().hash(bottom));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterEdgeInsetsDirectionalAll value) all,
+    required TResult Function(_FlutterEdgeInsetsDirectionalOnly value) only,
+  }) {
+    return only(this);
+  }
+}
+
+abstract class _FlutterEdgeInsetsDirectionalOnly
+    extends FlutterEdgeInsetsDirectional {
+  factory _FlutterEdgeInsetsDirectionalOnly(
+      {final ZacDouble? start,
+      final ZacDouble? top,
+      final ZacDouble? end,
+      final ZacDouble? bottom}) = _$_FlutterEdgeInsetsDirectionalOnly;
+  _FlutterEdgeInsetsDirectionalOnly._() : super._();
+
+  factory _FlutterEdgeInsetsDirectionalOnly.fromJson(
+      Map<String, dynamic> json) = _$_FlutterEdgeInsetsDirectionalOnly.fromJson;
+
+  ZacDouble? get start;
+  ZacDouble? get top;
+  ZacDouble? get end;
+  ZacDouble? get bottom;
 }

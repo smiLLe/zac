@@ -8,7 +8,7 @@ import 'models.dart';
 
 void main() {
   test('FlutterTextInputType', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextInputType.fromJson(
                 <String, dynamic>{converterKey: 'f:1:TextInputType.datetime'})
@@ -71,7 +71,7 @@ void main() {
   });
 
   test('FlutterTextInputAction', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextInputAction.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextInputAction.continueAction'
@@ -140,7 +140,7 @@ void main() {
   });
 
   test('FlutterTextCapitalization', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextCapitalization.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextCapitalization.characters'
@@ -165,7 +165,7 @@ void main() {
   });
 
   test('FlutterSmartDashesType', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterSmartDashesType.fromJson(
                 <String, dynamic>{converterKey: 'f:1:SmartDashesType.disabled'})
@@ -180,7 +180,7 @@ void main() {
   });
 
   test('FlutterSmartQuotesType', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterSmartQuotesType.fromJson(
                 <String, dynamic>{converterKey: 'f:1:SmartQuotesType.disabled'})

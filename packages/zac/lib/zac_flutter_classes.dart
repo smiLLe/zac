@@ -1,11 +1,6 @@
 export 'src/flutter/dart_ui/dart_ui.dart';
-export 'src/flutter/mixed/alignment/alignment.dart';
-export 'src/flutter/mixed/border/border.dart';
-export 'src/flutter/mixed/decoration/decoration.dart';
-export 'src/flutter/mixed/insets/edge_insets.dart';
-export 'src/flutter/mixed/keys/keys.dart';
-export 'src/flutter/mixed/route/route.dart';
-export 'src/flutter/mixed/shadow/shadow.dart';
+export 'src/flutter/foundation/foundation.dart';
+export 'src/flutter/material/material.dart';
 export 'src/flutter/painting/painting.dart';
 export 'src/flutter/rendering/rendering.dart';
 export 'src/flutter/services/services.dart';

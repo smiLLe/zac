@@ -6,8 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
-import 'package:zac/src/flutter/mixed/border/border.dart';
-import 'package:zac/src/flutter/mixed/keys/keys.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
 
 part 'material.freezed.dart';

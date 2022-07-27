@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:flutter/widgets.dart';
@@ -877,6 +878,40 @@ class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
     return map(
       max: (_) => BoxWidthStyle.max,
       tight: (_) => BoxWidthStyle.tight,
+    );
+  }
+}
+
+abstract class FlutterDartUiShadow {
+  factory FlutterDartUiShadow.fromJson(Object data) {
+    return ConverterHelper.convertToType<FlutterDartUiShadow>(data);
+  }
+
+  Shadow build(ZacBuildContext context);
+}
+
+@defaultConverterFreezed
+class DartUiShadow with _$DartUiShadow implements FlutterDartUiShadow {
+  const DartUiShadow._();
+
+  static const String unionValue = 'f:1:Shadow';
+
+  factory DartUiShadow.fromJson(Map<String, dynamic> json) =>
+      _$DartUiShadowFromJson(json);
+
+  @FreezedUnionValue(DartUiShadow.unionValue)
+  factory DartUiShadow({
+    FlutterColor? color,
+    FlutterOffset? offset,
+    ZacDouble? blurRadius,
+  }) = _DartUiShadow;
+
+  @override
+  Shadow build(ZacBuildContext context) {
+    return Shadow(
+      color: color?.build(context) ?? const Color(0xFF000000),
+      offset: offset?.build(context) ?? Offset.zero,
+      blurRadius: blurRadius?.getValue(context) ?? 0.0,
     );
   }
 }

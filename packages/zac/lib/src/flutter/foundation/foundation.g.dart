@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'keys.dart';
+part of 'foundation.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

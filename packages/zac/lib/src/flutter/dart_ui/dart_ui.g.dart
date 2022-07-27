@@ -813,3 +813,16 @@ _$_FlutterBoxWidthStyletight _$$_FlutterBoxWidthStyletightFromJson(
     _$_FlutterBoxWidthStyletight(
       $type: json['_converter'] as String?,
     );
+
+_$_DartUiShadow _$$_DartUiShadowFromJson(Map<String, dynamic> json) =>
+    _$_DartUiShadow(
+      color: json['color'] == null
+          ? null
+          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+      offset: json['offset'] == null
+          ? null
+          : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
+      blurRadius: json['blurRadius'] == null
+          ? null
+          : ZacDouble.fromJson(json['blurRadius'] as Object),
+    );

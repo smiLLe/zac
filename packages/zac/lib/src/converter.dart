@@ -1,3 +1,6 @@
+import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
+import 'package:zac/src/flutter/material/material.dart';
+import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 
@@ -5,13 +8,7 @@ import 'package:zac/src/zac/widget_builder/widget_builder.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 
 import 'package:zac/src/zac/shared_value/shared_value.dart';
-import 'package:zac/src/flutter/mixed/alignment/alignment.dart';
-import 'package:zac/src/flutter/mixed/border/border.dart';
-import 'package:zac/src/flutter/mixed/decoration/decoration.dart';
-import 'package:zac/src/flutter/mixed/insets/edge_insets.dart';
-import 'package:zac/src/flutter/mixed/keys/keys.dart';
-import 'package:zac/src/flutter/mixed/route/route.dart';
-import 'package:zac/src/flutter/mixed/shadow/shadow.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/src/flutter/widgets/assets/icon/icon.dart';
 import 'package:zac/src/flutter/widgets/assets/image/image.dart';
 import 'package:zac/src/flutter/widgets/interaction/gesture_detector/gesture_detector.dart';
@@ -302,8 +299,9 @@ Map<String, Convert> allConverters = {
       FlutterEdgeInsetsDirectional.fromJson,
   FlutterMaterialPageRoute.unionValue: FlutterMaterialPageRoute.fromJson,
   FlutterPageRouteBuilder.unionValue: FlutterPageRouteBuilder.fromJson,
-  FlutterUiShadow.unionValue: FlutterUiShadow.fromJson,
+  DartUiShadow.unionValue: DartUiShadow.fromJson,
   FlutterBoxShadow.unionValue: FlutterBoxShadow.fromJson,
+  FlutterFractionalOffset.unionValue: FlutterFractionalOffset.fromJson,
 };
 
 const converterKey = '_converter';

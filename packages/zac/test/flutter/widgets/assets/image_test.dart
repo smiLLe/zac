@@ -9,7 +9,7 @@ import '../../models.dart';
 void main() {
   group('Image.network', () {
     testWidgets('#1', (tester) async {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
         converterKey: FlutterImage.unionValueNetwork,
         'key': KeysModel.getValueKey('test_key'),
@@ -74,7 +74,7 @@ void main() {
     });
 
     test('#2', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
         converterKey: FlutterImage.unionValueNetwork,
         'key': KeysModel.getValueKey('test_key'),
@@ -95,7 +95,7 @@ void main() {
 
   group('Image.asset', () {
     test('#1', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
         converterKey: FlutterImage.unionValueAsset,
         'key': KeysModel.getValueKey('test_key'),
@@ -157,7 +157,7 @@ void main() {
     });
 
     test('#2', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
         converterKey: FlutterImage.unionValueAsset,
         'key': KeysModel.getValueKey('test_key'),

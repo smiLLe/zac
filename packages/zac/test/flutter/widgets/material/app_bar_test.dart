@@ -10,7 +10,7 @@ import '../helper.dart';
 
 void main() {
   test('check non widget properties', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterAppBar.fromJson(<String, dynamic>{
       converterKey: FlutterAppBar.unionValue,
       'automaticallyImplyLeading': false,

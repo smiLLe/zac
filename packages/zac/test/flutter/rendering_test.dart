@@ -8,7 +8,7 @@ import 'models.dart';
 
 void main() {
   test('FlutterCrossAxisAlignment', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterCrossAxisAlignment.fromJson(<String, dynamic>{
           converterKey: 'f:1:CrossAxisAlignment.baseline'
@@ -41,7 +41,7 @@ void main() {
   });
 
   test('FlutterMainAxisSize', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterMainAxisSize.fromJson(
                 <String, dynamic>{converterKey: 'f:1:MainAxisSize.min'})
@@ -56,7 +56,7 @@ void main() {
   });
 
   test('FlutterMainAxisAlignment', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterMainAxisAlignment.fromJson(
                 <String, dynamic>{converterKey: 'f:1:MainAxisAlignment.start'})
@@ -95,7 +95,7 @@ void main() {
   });
 
   test('FlutterFlexFit', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterFlexFit.fromJson(
             <String, dynamic>{converterKey: 'f:1:FlexFit.tight'}).build(config),
@@ -108,7 +108,7 @@ void main() {
   });
 
   test('FlutterWrapAlignment', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterWrapAlignment.fromJson(
                 <String, dynamic>{converterKey: 'f:1:WrapAlignment.start'})
@@ -147,7 +147,7 @@ void main() {
   });
 
   test('FlutterWrapCrossAlignment', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterWrapCrossAlignment.fromJson(<String, dynamic>{
           converterKey: 'f:1:WrapCrossAlignment.center'
@@ -168,7 +168,7 @@ void main() {
   });
 
   test('FlutterStackFit', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterStackFit.fromJson(
                 <String, dynamic>{converterKey: 'f:1:StackFit.expand'})
@@ -189,7 +189,7 @@ void main() {
 
   group('FlutterSliverGridDelegate', () {
     test('FlutterSliverGridDelegateWithFixedCrossAxisCount()', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterSliverGridDelegate.fromJson(<String, dynamic>{
         converterKey: 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
         'crossAxisCount': 8,
@@ -210,7 +210,7 @@ void main() {
     });
 
     test('FlutterSliverGridDelegateWithMaxCrossAxisExtent()', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterSliverGridDelegate.fromJson(<String, dynamic>{
         converterKey: 'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
         'maxCrossAxisExtent': 8,
@@ -232,7 +232,7 @@ void main() {
   });
 
   test('FlutterHitTestBehavior', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterHitTestBehavior.fromJson(<String, dynamic>{
           converterKey: 'f:1:HitTestBehavior.deferToChild'
@@ -253,7 +253,7 @@ void main() {
   });
 
   test('FlutterBoxConstraints', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBoxConstraints.fromJson(<String, dynamic>{
           converterKey: 'f:1:BoxConstraints',
@@ -317,7 +317,7 @@ void main() {
   });
 
   test('FlutterDecorationPosition', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterDecorationPosition.fromJson(<String, dynamic>{
           converterKey: 'f:1:DecorationPosition.background'

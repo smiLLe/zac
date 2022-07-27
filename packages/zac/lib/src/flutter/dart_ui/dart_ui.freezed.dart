@@ -9177,3 +9177,86 @@ abstract class _FlutterBoxWidthStyletight extends FlutterBoxWidthStyle {
   factory _FlutterBoxWidthStyletight.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxWidthStyletight.fromJson;
 }
+
+DartUiShadow _$DartUiShadowFromJson(Map<String, dynamic> json) {
+  return _DartUiShadow.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DartUiShadow {
+  FlutterColor? get color => throw _privateConstructorUsedError;
+  FlutterOffset? get offset => throw _privateConstructorUsedError;
+  ZacDouble? get blurRadius => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DartUiShadow value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_DartUiShadow extends _DartUiShadow {
+  _$_DartUiShadow({this.color, this.offset, this.blurRadius}) : super._();
+
+  factory _$_DartUiShadow.fromJson(Map<String, dynamic> json) =>
+      _$$_DartUiShadowFromJson(json);
+
+  @override
+  final FlutterColor? color;
+  @override
+  final FlutterOffset? offset;
+  @override
+  final ZacDouble? blurRadius;
+
+  @override
+  String toString() {
+    return 'DartUiShadow(color: $color, offset: $offset, blurRadius: $blurRadius)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DartUiShadow &&
+            const DeepCollectionEquality().equals(other.color, color) &&
+            const DeepCollectionEquality().equals(other.offset, offset) &&
+            const DeepCollectionEquality()
+                .equals(other.blurRadius, blurRadius));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(color),
+      const DeepCollectionEquality().hash(offset),
+      const DeepCollectionEquality().hash(blurRadius));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_DartUiShadow value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _DartUiShadow extends DartUiShadow {
+  factory _DartUiShadow(
+      {final FlutterColor? color,
+      final FlutterOffset? offset,
+      final ZacDouble? blurRadius}) = _$_DartUiShadow;
+  _DartUiShadow._() : super._();
+
+  factory _DartUiShadow.fromJson(Map<String, dynamic> json) =
+      _$_DartUiShadow.fromJson;
+
+  @override
+  FlutterColor? get color;
+  @override
+  FlutterOffset? get offset;
+  @override
+  ZacDouble? get blurRadius;
+}

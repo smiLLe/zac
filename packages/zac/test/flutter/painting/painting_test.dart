@@ -3,28 +3,25 @@ import 'dart:ui';
 import 'package:zac/src/converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/mixed/decoration/decoration.dart';
-import 'package:zac/src/flutter/mixed/shadow/shadow.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
 
 import '../models.dart';
 
 void main() {
   test('FlutterBoxShadow', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterBoxShadow.fromJson(BoxShadowModel.json);
     expect(data.build(config), BoxShadowModel.equals);
   });
 
   test('FlutterBoxShape', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterBoxShape.fromJson(BoxShapeModel.json);
     expect(data.build(config), BoxShapeModel.equals);
   });
 
   test('FlutterBoxDecoration', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBoxDecoration.fromJson(BoxDecorationModel.getMap(
                 type: FlutterBoxDecoration.unionValue))
@@ -39,7 +36,7 @@ void main() {
   });
 
   test('FlutterShapeDecoration', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterShapeDecoration.fromJson(<String, dynamic>{
           converterKey: 'f:1:ShapeDecoration',
@@ -61,7 +58,7 @@ void main() {
   });
 
   test('FlutterAxis', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterAxis.fromJson(
                 <String, dynamic>{converterKey: 'f:1:Axis.horizontal'})
@@ -75,7 +72,7 @@ void main() {
   });
 
   test('FlutterVerticalDirection', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterVerticalDirection.fromJson(
                 <String, dynamic>{converterKey: 'f:1:VerticalDirection.up'})
@@ -90,7 +87,7 @@ void main() {
   });
 
   test('TextStyle', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextStyle.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextStyle',
@@ -175,7 +172,7 @@ void main() {
   });
 
   test('FlutterTextOverflow', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextOverflow.fromJson(
                 <String, dynamic>{converterKey: 'f:1:TextOverflow.clip'})
@@ -203,7 +200,7 @@ void main() {
 
   group('FlutterStrutStyle', () {
     test('FlutterStrutStyle()', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       expect(
           FlutterStrutStyle.fromJson(<String, dynamic>{
             converterKey: 'f:1:StrutStyle',
@@ -235,7 +232,7 @@ void main() {
     });
 
     test('FlutterStrutStyle.fromTextStyle()', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       expect(
           FlutterStrutStyle.fromJson(<String, dynamic>{
             converterKey: 'f:1:StrutStyle.fromTextStyle',
@@ -270,7 +267,7 @@ void main() {
   });
 
   test('FlutterTextWidthBasis', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextWidthBasis.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextWidthBasis.longestLine'
@@ -285,7 +282,7 @@ void main() {
   });
 
   test('FlutterBoxFit', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterBoxFit.fromJson(
                 <String, dynamic>{converterKey: 'f:1:BoxFit.contain'})
@@ -321,7 +318,7 @@ void main() {
   });
 
   test('FlutterImageRepeat', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterImageRepeat.fromJson(
                 <String, dynamic>{converterKey: 'f:1:ImageRepeat.noRepeat'})
@@ -348,7 +345,7 @@ void main() {
   });
 
   test('FlutterTextAlignVertical', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterTextAlignVertical.fromJson(<String, dynamic>{
           converterKey: 'f:1:TextAlignVertical',

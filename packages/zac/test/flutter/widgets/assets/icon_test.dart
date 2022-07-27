@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   test('IconData', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterIconData.fromJson(<String, dynamic>{
       converterKey: 'f:1:IconData',
       'codePoint': 30,
@@ -28,7 +28,7 @@ void main() {
   });
 
   test('Icon', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterIcon.fromJson(<String, dynamic>{
       converterKey: 'f:1:Icon',
       'icon': {
@@ -54,7 +54,7 @@ void main() {
   });
 
   test('IconThemeData', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     final data = FlutterIconThemeData.fromJson(<String, dynamic>{
       converterKey: 'f:1:IconThemeData',
       'color': ColorModel.json,

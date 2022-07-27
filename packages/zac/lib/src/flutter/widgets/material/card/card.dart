@@ -1,11 +1,10 @@
+import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
-import 'package:zac/src/flutter/mixed/border/border.dart';
-import 'package:zac/src/flutter/mixed/insets/edge_insets.dart';
-import 'package:zac/src/flutter/mixed/keys/keys.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

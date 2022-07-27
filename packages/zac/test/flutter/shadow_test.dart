@@ -1,16 +1,17 @@
 import 'dart:ui';
 
-import 'package:zac/src/flutter/mixed/shadow/shadow.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
+import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
+import 'package:zac/src/flutter/painting/painting.dart';
 
 import 'models.dart';
 
 void main() {
   test('Shadow', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
-        FlutterShadow.fromJson(<String, dynamic>{
+        FlutterDartUiShadow.fromJson(<String, dynamic>{
           converterKey: 'f:1:Shadow',
           'color': ColorModel.json,
           'offset': OffsetModel.json,
@@ -23,9 +24,9 @@ void main() {
   });
 
   test('BoxShadow', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
-        FlutterShadow.fromJson(<String, dynamic>{
+        FlutterDartUiShadow.fromJson(<String, dynamic>{
           converterKey: FlutterBoxShadow.unionValue,
           ...BoxShadowModel.json,
         }).build(config),

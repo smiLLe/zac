@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/mixed/alignment/alignment.dart';
+import 'package:zac/src/flutter/painting/painting.dart';
+import 'package:zac/src/zac/context/widget_context.dart';
 
-import 'models.dart';
+import '../../helper.dart';
+import '../models.dart';
 
 void main() {
   group('Alignment', () {
     test('FlutterAlignmentGeometry', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
@@ -81,7 +83,7 @@ void main() {
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.topRight));
     });
     test('FlutterAlignment', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterAlignment.fromJson(<String, dynamic>{
         converterKey: FlutterAlignment.unionValue,
         'x': 10,
@@ -158,7 +160,7 @@ void main() {
 
   group('AlignmentDirectional', () {
     test('FlutterAlignmentGeometry', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
@@ -228,7 +230,7 @@ void main() {
     });
 
     test('FlutterAlignmentDirectional', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final data = FlutterAlignmentDirectional.fromJson(<String, dynamic>{
         converterKey: FlutterAlignmentDirectional.unionValue,
         'start': 10,
@@ -296,6 +298,23 @@ void main() {
           }).build(config),
           isA<AlignmentDirectional>().having(
               (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topEnd));
+    });
+  });
+
+  group('FractionalOffset', () {
+    testWidgets('FractionalOffset()', (tester) async {
+      late ZacBuildContext context;
+      await testZacWidget(tester, LeakContext(cb: (c) => context = c));
+
+      expect(
+          FlutterAlignmentGeometry.fromJson(<String, dynamic>{
+            '_converter': 'f:1:FractionalOffset',
+            'dx': 10,
+            'dy': 20,
+          }).build(context),
+          isA<FractionalOffset>()
+              .having((p0) => p0.dx, 'FractionalOffset.dx', 10)
+              .having((p0) => p0.dy, 'FractionalOffset.dy', 20));
     });
   });
 }

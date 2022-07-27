@@ -1,3 +1,4 @@
+import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

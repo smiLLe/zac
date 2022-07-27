@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/mixed/keys/keys.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
 
 import 'models.dart';
 
 void main() {
   test('FlutterKey', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,
@@ -17,7 +17,7 @@ void main() {
   });
 
   test('FlutterLocalKey', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterLocalKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,
@@ -27,7 +27,7 @@ void main() {
   });
 
   test('FlutterValueKey', () {
-    final config = FakeWidgetConfig();
+    final config = FakeZacContext();
     expect(
         FlutterValueKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,

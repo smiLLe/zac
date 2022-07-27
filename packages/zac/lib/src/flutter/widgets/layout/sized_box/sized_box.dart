@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
-import 'package:zac/src/flutter/mixed/keys/keys.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
 
 part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';

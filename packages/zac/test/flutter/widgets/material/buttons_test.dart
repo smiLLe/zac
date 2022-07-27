@@ -238,7 +238,7 @@ void main() {
 
   group('ElevatedButton.icon()', () {
     test('properties', () {
-      final config = FakeWidgetConfig();
+      final config = FakeZacContext();
       final widget = FlutterElevatedButton.fromJson(<String, dynamic>{
         converterKey: FlutterElevatedButton.unionValueIcon,
         'key': KeysModel.getValueKey('test_key'),
