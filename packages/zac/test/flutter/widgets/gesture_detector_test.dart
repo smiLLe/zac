@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../helper.dart';
-import '../../../helper.mocks.dart';
-import '../../models.dart';
+import '../../helper.dart';
+import '../../helper.mocks.dart';
+import '../models.dart';
 
 void main() {
   testWidgets('FlutterGestureDetector interactions', (tester) async {

@@ -1,14 +1,14 @@
 import 'dart:ui';
 
 import 'package:zac/zac.dart';
-import 'package:zac/src/flutter/widgets/interaction/text_field/text_field.dart';
+import 'package:zac/src/flutter/widgets/material/text_field/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../helper.dart';
-import '../../../helper.mocks.dart';
-import '../../models.dart';
+import '../../helper.dart';
+import '../../helper.mocks.dart';
+import '../models.dart';
 
 void main() {
   testWidgets('FlutterTextField()', (tester) async {

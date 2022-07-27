@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/widgets/layout/builder/builder.dart';
+import 'package:zac/src/flutter/widgets/builder/builder.dart';
 import 'package:zac/src/flutter/widgets/material/buttons/buttons.dart';
 import 'package:zac/src/flutter/widgets/material/scaffold/scaffold.dart';
 

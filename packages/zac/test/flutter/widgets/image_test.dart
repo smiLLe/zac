@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/widgets/assets/image/image.dart';
+import 'package:zac/src/flutter/widgets/image/image.dart';
 
-import '../../../helper.dart';
-import '../../models.dart';
+import '../models.dart';
 
 void main() {
   group('Image.network', () {

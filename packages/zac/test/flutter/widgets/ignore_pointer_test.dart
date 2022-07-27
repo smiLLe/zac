@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/widgets/interaction/ignore_pointer/ignore_pointer.dart';
+import 'package:zac/src/flutter/widgets/ignore_pointer/ignore_pointer.dart';
 
-import '../../../helper.dart';
-import '../../models.dart';
+import '../../helper.dart';
+import '../../helper.mocks.dart';
+import '../models.dart';
 
 void main() {
   testWidgets('FlutterIgnorePointer()', (tester) async {

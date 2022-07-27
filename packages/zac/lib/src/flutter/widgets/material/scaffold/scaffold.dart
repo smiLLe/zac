@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
 import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/flutter/rendering/rendering.dart';
-import 'package:zac/src/flutter/widgets/layout/builder/builder.dart';
+import 'package:zac/src/flutter/widgets/builder/builder.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/widgets/assets/icon/icon.dart';
+import 'package:zac/src/flutter/widgets/icon/icon.dart';
 
-import '../../models.dart';
+import '../models.dart';
 
 void main() {
   test('IconData', () {

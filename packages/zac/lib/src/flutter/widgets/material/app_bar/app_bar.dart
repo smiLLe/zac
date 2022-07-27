@@ -1,3 +1,4 @@
+import 'package:zac/src/flutter/widgets/icon/icon.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 
 import 'package:zac/src/zac/context/widget_context.dart';
@@ -9,7 +10,6 @@ import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
 import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/flutter/services/services.dart';
-import 'package:zac/src/flutter/widgets/assets/icon/icon.dart';
 
 part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';

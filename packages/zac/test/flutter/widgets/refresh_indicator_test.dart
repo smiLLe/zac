@@ -1,13 +1,11 @@
 import 'package:zac/zac.dart';
-import 'package:zac/zac_flutter_classes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../helper.dart';
-import '../../../helper.mocks.dart';
-import '../../models.dart';
+import '../../helper.dart';
+import '../../helper.mocks.dart';
+import '../models.dart';
 
 void main() {
   testWidgets('FlutterRefreshIndicator()', (tester) async {

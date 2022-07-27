@@ -1,11 +1,11 @@
-import 'package:zac/src/flutter/widgets/interaction/interactive_viewer/interactive_viewer.dart';
+import 'package:zac/src/flutter/widgets/interactive_viewer/interactive_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 
-import '../../../helper.dart';
-import '../../../helper.mocks.dart';
-import '../../models.dart';
+import '../../helper.dart';
+import '../../helper.mocks.dart';
+import '../models.dart';
 
 void main() {
   testWidgets('FlutterInteractiveViewer()', (tester) async {

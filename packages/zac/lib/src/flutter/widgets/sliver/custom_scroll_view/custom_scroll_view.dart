@@ -5,8 +5,8 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
 import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
-import 'package:zac/src/flutter/widgets/interaction/keyboard/keyboard.dart';
-import 'package:zac/src/flutter/widgets/interaction/scroll_physics/scroll_physics.dart';
+import 'package:zac/src/flutter/widgets/keyboard/keyboard.dart';
+import 'package:zac/src/flutter/widgets/scroll_physics/scroll_physics.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
