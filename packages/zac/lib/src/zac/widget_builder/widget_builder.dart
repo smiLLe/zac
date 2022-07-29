@@ -53,15 +53,15 @@ class ZacWidgetBuilderBuilder
     return map(
       (obj) => ZacWidgetBuilderFromMap(
         zacMap: obj.data,
-        key: obj.key?.build(context),
+        key: obj.key?.buildKey(context),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.build(context),
+        key: obj.key?.buildKey(context),
       ),
       isolateString: (obj) => ZacWidgetBuilderFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.build(context),
+        key: obj.key?.buildKey(context),
       ),
     );
   }

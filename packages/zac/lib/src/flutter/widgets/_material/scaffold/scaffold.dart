@@ -126,7 +126,7 @@ class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
   Widget buildWidget(ZacBuildContext context) {
     return map(
       (value) => Scaffold(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         body: value.body?.buildWidget(context),
         floatingActionButton: value.floatingActionButton?.buildWidget(context),
         persistentFooterButtons:
@@ -290,7 +290,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
   SnackBar buildWidget(ZacBuildContext context) {
     return SnackBar(
       content: content.buildWidget(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
       action: action?.buildWidget(context),
       // animation: key?.toFlutter(context),
       backgroundColor: backgroundColor?.build(context),
@@ -349,7 +349,7 @@ class FlutterSnackBarAction with _$FlutterSnackBarAction implements ZacWidget {
   @override
   SnackBarAction buildWidget(ZacBuildContext context) {
     return SnackBarAction(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       label: label,
       onPressed: actionsCallback(onPressed, context)!,
       disabledTextColor: disabledTextColor?.build(context),
@@ -389,7 +389,7 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
     return MaterialBanner(
       content: content.buildWidget(context),
       actions: actions.getValue(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
       // animation: ,
       backgroundColor: backgroundColor?.build(context),
       contentTextStyle: contentTextStyle?.build(context),

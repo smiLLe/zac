@@ -42,7 +42,7 @@ class FlutterRefreshIndicator
   @override
   RefreshIndicator buildWidget(ZacBuildContext context) {
     return RefreshIndicator(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child.buildWidget(context),
       onRefresh: () async =>
           onRefresh.execute(context, const ActionPayload.none()),

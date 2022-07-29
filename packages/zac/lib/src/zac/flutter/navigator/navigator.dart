@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator/navigator.dart';
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
@@ -14,67 +15,81 @@ part 'navigator.g.dart';
 Type _typeOf<T>() => T;
 
 @defaultConverterFreezed
-class ZacFlutterNavigatorState
-    with _$ZacFlutterNavigatorState
-    implements SharedValueTransformer, GetFlutterNavigatorState, FlutterKey {
-  const ZacFlutterNavigatorState._();
-  static const String unionValueConsume =
-      'z:1:NavigatorState.consumeFromGlobalKey';
-  static const String unionValueBuilder = 'z:1:GlobalKeyNavigatorState';
-  static const String unionValueBuilderTransform =
-      'z:1:GlobalKeyNavigatorState.transformToGlobalKey';
+class ZacFlutterGlobalKeyNavigatorState
+    with _$ZacFlutterGlobalKeyNavigatorState
+    implements
+        ZacWidget,
+        GetFlutterNavigatorState,
+        FlutterGlobalKeyNavigatorState {
+  const ZacFlutterGlobalKeyNavigatorState._();
+  static const String unionValueConsume = 'z:1:GlobalKeyNavigatorState.consume';
+  static const String unionValueProvide = 'z:1:GlobalKeyNavigatorState.provide';
 
-  factory ZacFlutterNavigatorState.fromJson(Map<String, dynamic> json) =>
-      _$ZacFlutterNavigatorStateFromJson(json);
+  factory ZacFlutterGlobalKeyNavigatorState.fromJson(
+          Map<String, dynamic> json) =>
+      _$ZacFlutterGlobalKeyNavigatorStateFromJson(json);
 
-  @FreezedUnionValue(ZacFlutterNavigatorState.unionValueConsume)
+  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueProvide)
+  factory ZacFlutterGlobalKeyNavigatorState.provide({
+    required ZacString name,
+    required ZacWidget child,
+    ZacString? debugLabel,
+  }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
+
+  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
-  factory ZacFlutterNavigatorState.consumeFromGlobalKey({
+  factory ZacFlutterGlobalKeyNavigatorState.consume({
     required String name,
     SharedValueConsumeType? consumeType,
     List<SharedValueTransformer>? mapper,
-  }) = _ConsumeFromGlobalKey;
-
-  @FreezedUnionValue(ZacFlutterNavigatorState.unionValueBuilder)
-  factory ZacFlutterNavigatorState.builder({String? debugLabel}) = _Builder;
-
-  @FreezedUnionValue(ZacFlutterNavigatorState.unionValueBuilderTransform)
-  factory ZacFlutterNavigatorState.transform() = _TransformBuilder;
+  }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
   @override
-  Object transform(Object value, SharedValueInteractionType interaction) {
-    if (value is! _Builder) {
-      throw StateError(
-          'Trying to get NavigatorState from unsupported type "$this"');
-    }
-
-    return GlobalKey<NavigatorState>(debugLabel: value.debugLabel);
+  Widget buildWidget(ZacBuildContext context) {
+    return map(
+      provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
+      consume: (_) => throw StateError(''),
+    );
   }
 
   @override
   NavigatorState getNavigatorState(ZacBuildContext context) {
     return map(
-      consumeFromGlobalKey: (obj) {
+      consume: (obj) {
         if (null != obj.getSharedValue(context).currentState) {
           return obj.getSharedValue(context).currentState!;
         }
         throw StateError('');
       },
-      builder: (obj) => throw StateError(
-          'Trying to get NavigatorState from unsupported type "$obj"'),
-      transform: (obj) => throw StateError(
-          'Trying to get NavigatorState from unsupported type "$obj"'),
+      provide: (_) => throw StateError(''),
     );
   }
 
   @override
-  Key build(ZacBuildContext context) {
+  GlobalKey<NavigatorState> buildKey(ZacBuildContext context) {
     return map(
-      consumeFromGlobalKey: (obj) => obj.getSharedValue(context),
-      builder: (obj) => throw StateError(
-          'Trying to create a FlutterKey from unsupported type "$obj"'),
-      transform: (obj) => throw StateError(
-          'Trying to create a FlutterKey from unsupported type "$obj"'),
+      consume: (obj) => obj.getSharedValue(context),
+      provide: (_) => throw StateError(''),
+    );
+  }
+}
+
+/// Special Provider that will only share a [GlobalKey] of NavigatorState
+class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
+  const GlobalKeyNavigatorStateProvider({required this.builder, Key? key})
+      : super(key: key);
+
+  final _ZacFlutterGlobalKeyNavigatorStateProvide builder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacWidgetContext(ref);
+    return SharedValueProvider(
+      value: GlobalKey<NavigatorState>(
+        debugLabel: builder.debugLabel?.getValue(zacContext),
+      ),
+      name: builder.name.getValue(zacContext),
+      child: builder.child,
     );
   }
 }

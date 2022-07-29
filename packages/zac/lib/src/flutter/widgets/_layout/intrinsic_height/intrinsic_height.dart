@@ -30,7 +30,7 @@ class FlutterIntrinsicHeight
   @override
   IntrinsicHeight buildWidget(ZacBuildContext context) {
     return IntrinsicHeight(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
     );
   }

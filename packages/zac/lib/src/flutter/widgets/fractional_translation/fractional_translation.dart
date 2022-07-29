@@ -33,7 +33,7 @@ class FlutterFractionalTranslation
   @override
   FractionalTranslation buildWidget(ZacBuildContext context) {
     return FractionalTranslation(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       translation: translation.build(context),
       transformHitTests: transformHitTests?.getValue(context) ?? true,

@@ -37,7 +37,7 @@ class FlutterRow with _$FlutterRow implements ZacWidget {
   @override
   Row buildWidget(ZacBuildContext context) {
     return Row(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       mainAxisAlignment:
           mainAxisAlignment?.build(context) ?? MainAxisAlignment.start,
       mainAxisSize: mainAxisSize?.build(context) ?? MainAxisSize.max,

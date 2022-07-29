@@ -35,7 +35,7 @@ class FlutterStack with _$FlutterStack implements ZacWidget {
   @override
   Stack buildWidget(ZacBuildContext context) {
     return Stack(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       alignment: alignment?.build(context) ?? AlignmentDirectional.topStart,
       textDirection: textDirection?.build(context),
       fit: fit?.build(context) ?? StackFit.loose,

@@ -12,7 +12,7 @@ void main() {
         FlutterKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,
           'value': 'test_key',
-        }).build(config),
+        }).buildKey(config),
         const ValueKey<String>('test_key'));
   });
 
@@ -22,7 +22,7 @@ void main() {
         FlutterLocalKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,
           'value': 'test_key',
-        }).build(config),
+        }).buildKey(config),
         const ValueKey<String>('test_key'));
   });
 
@@ -32,7 +32,7 @@ void main() {
         FlutterValueKey.fromJson(<String, dynamic>{
           converterKey: FlutterValueKey.unionValue,
           'value': 'test_key',
-        }).build(config),
+        }).buildKey(config),
         const ValueKey<String>('test_key'));
   });
 }

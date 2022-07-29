@@ -27,7 +27,7 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
   @override
   Builder buildWidget(ZacBuildContext context) {
     return Builder(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       builder: (_) {
         return UpdateContextBuilder(
           builder: (context) => child.buildWidget(context),

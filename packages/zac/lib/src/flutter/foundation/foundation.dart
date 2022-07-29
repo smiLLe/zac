@@ -10,7 +10,7 @@ abstract class FlutterKey {
     return ConverterHelper.convertToType<FlutterKey>(data);
   }
 
-  Key build(ZacBuildContext context);
+  Key buildKey(ZacBuildContext context);
 }
 
 abstract class FlutterLocalKey implements FlutterKey {
@@ -19,7 +19,7 @@ abstract class FlutterLocalKey implements FlutterKey {
   }
 
   @override
-  LocalKey build(ZacBuildContext context);
+  LocalKey buildKey(ZacBuildContext context);
 }
 
 @defaultConverterFreezed
@@ -35,7 +35,16 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   factory FlutterValueKey(String value) = _FlutterValueKey;
 
   @override
-  ValueKey<String> build(ZacBuildContext config) {
+  ValueKey<String> buildKey(ZacBuildContext config) {
     return ValueKey<String>(value);
   }
+}
+
+abstract class FlutterGlobalKeyNavigatorState implements FlutterKey {
+  factory FlutterGlobalKeyNavigatorState.fromJson(Object data) {
+    return ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>(data);
+  }
+
+  @override
+  GlobalKey<NavigatorState> buildKey(ZacBuildContext context);
 }

@@ -56,7 +56,7 @@ class FlutterListTile with _$FlutterListTile implements ZacWidget {
   @override
   ListTile buildWidget(ZacBuildContext context) {
     return ListTile(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       leading: leading?.buildWidget(context),
       title: title?.buildWidget(context),
       subtitle: subtitle?.buildWidget(context),

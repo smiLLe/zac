@@ -30,7 +30,7 @@ class FlutterPadding with _$FlutterPadding implements ZacWidget {
   @override
   Padding buildWidget(ZacBuildContext context) {
     return Padding(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       padding: padding.build(context),
       child: child?.buildWidget(context),
     );

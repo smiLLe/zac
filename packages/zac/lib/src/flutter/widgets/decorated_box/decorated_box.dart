@@ -32,7 +32,7 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements ZacWidget {
   @override
   DecoratedBox buildWidget(ZacBuildContext context) {
     return DecoratedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       decoration: decoration.build(context),
       position: position?.build(context) ?? DecorationPosition.background,

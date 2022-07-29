@@ -44,7 +44,7 @@ class FlutterInteractiveViewer
   @override
   InteractiveViewer buildWidget(ZacBuildContext context) {
     return InteractiveViewer(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child.buildWidget(context),
       clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
       alignPanAxis: alignPanAxis?.getValue(context) ?? false,

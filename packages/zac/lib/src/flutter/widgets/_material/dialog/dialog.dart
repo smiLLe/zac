@@ -133,7 +133,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
     return map(
       showDialog: (_) => throw StateError('Should never happen'),
       dialog: (value) => Dialog(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         child: value.child?.buildWidget(context),
         alignment: value.alignment?.build(context),
         backgroundColor: value.backgroundColor?.build(context),
@@ -145,7 +145,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
         shape: value.shape?.build(context),
       ),
       alertDialog: (value) => AlertDialog(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         title: value.title?.buildWidget(context),
         content: value.content?.buildWidget(context),
         actions: value.actions?.getValue(context) ?? const <Widget>[],
@@ -172,7 +172,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
         titleTextStyle: value.titleTextStyle?.build(context),
       ),
       simpleDialog: (value) => SimpleDialog(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         title: value.title?.buildWidget(context),
         children: value.children?.getValue(context) ?? const <Widget>[],
         alignment: value.alignment?.build(context),
@@ -190,7 +190,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
         titleTextStyle: value.titleTextStyle?.build(context),
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         child: value.child?.buildWidget(context),
         padding: value.padding?.build(context),
         onPressed: actionsCallback(value.onPressed, context),

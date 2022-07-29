@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
 import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
+import 'package:zac/src/flutter/widgets/_material/material_app/material_app.dart';
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/flutter/navigator/navigator.dart';
@@ -118,10 +119,10 @@ Map<String, Convert> allConverters = {
       FlutterNavigatorActions.fromJson,
   FlutterNavigatorState.unionValueClosest: FlutterNavigatorState.fromJson,
   FlutterNavigatorState.unionValueRoot: FlutterNavigatorState.fromJson,
-  ZacFlutterNavigatorState.unionValueConsume: ZacFlutterNavigatorState.fromJson,
-  ZacFlutterNavigatorState.unionValueBuilder: ZacFlutterNavigatorState.fromJson,
-  ZacFlutterNavigatorState.unionValueBuilderTransform:
-      ZacFlutterNavigatorState.fromJson,
+  ZacFlutterGlobalKeyNavigatorState.unionValueConsume:
+      ZacFlutterGlobalKeyNavigatorState.fromJson,
+  ZacFlutterGlobalKeyNavigatorState.unionValueProvide:
+      ZacFlutterGlobalKeyNavigatorState.fromJson,
   RouteFactoryFromRoutes.unionValue: RouteFactoryFromRoutes.fromJson,
   RouteFactorySingleRoute.unionValue: RouteFactorySingleRoute.fromJson,
   RouteFactoryRouteConfig.unionValue: RouteFactoryRouteConfig.fromJson,
@@ -163,7 +164,7 @@ Map<String, Convert> allConverters = {
 
   /// Flutter
   FlutterFittedBox.unionValue: FlutterFittedBox.fromJson,
-
+  FlutterMaterialApp.unionValue: FlutterMaterialApp.fromJson,
   FlutterTextField.unionValue: FlutterTextField.fromJson,
   FlutterClipOval.unionValue: FlutterClipOval.fromJson,
   FlutterFractionalTranslation.unionValue:

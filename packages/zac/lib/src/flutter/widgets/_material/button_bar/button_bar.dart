@@ -39,7 +39,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements ZacWidget {
   @override
   ButtonBar buildWidget(ZacBuildContext context) {
     return ButtonBar(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       alignment: alignment?.build(context),
       mainAxisSize: mainAxisSize?.build(context),
 // FlutterButtonTextTheme? buttonTextTheme,

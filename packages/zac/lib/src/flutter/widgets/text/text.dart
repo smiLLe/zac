@@ -42,7 +42,7 @@ class FlutterText with _$FlutterText implements ZacWidget {
   Text buildWidget(ZacBuildContext context) {
     return Text(
       data.getValue(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
       style: style?.build(context),
       strutStyle: strutStyle?.build(context),
       textAlign: textAlign?.build(context),

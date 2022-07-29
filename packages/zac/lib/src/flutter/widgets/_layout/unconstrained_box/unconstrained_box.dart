@@ -36,7 +36,7 @@ class FlutterUnconstrainedBox
   @override
   UnconstrainedBox buildWidget(ZacBuildContext context) {
     return UnconstrainedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       textDirection: textDirection?.build(context),
       alignment: alignment?.build(context) ?? Alignment.center,

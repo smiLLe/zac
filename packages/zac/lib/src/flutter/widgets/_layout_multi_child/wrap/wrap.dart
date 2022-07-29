@@ -40,7 +40,7 @@ class FlutterWrap with _$FlutterWrap implements ZacWidget {
   @override
   Wrap buildWidget(ZacBuildContext context) {
     return Wrap(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       direction: direction?.build(context) ?? Axis.horizontal,
       alignment: alignment?.build(context) ?? WrapAlignment.start,
       spacing: spacing?.getValue(context) ?? 0.0,

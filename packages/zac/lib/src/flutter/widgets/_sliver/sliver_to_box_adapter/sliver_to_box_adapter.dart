@@ -30,7 +30,7 @@ class FlutterSliverToBoxAdapter
   @override
   SliverToBoxAdapter buildWidget(ZacBuildContext context) {
     return SliverToBoxAdapter(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
     );
   }

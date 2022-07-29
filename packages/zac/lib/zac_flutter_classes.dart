@@ -42,6 +42,7 @@ export 'src/flutter/widgets/_layout_multi_child/list_view/list_view.dart';
 export 'src/flutter/widgets/_layout_multi_child/row/row.dart';
 export 'src/flutter/widgets/_layout_multi_child/stack/stack.dart';
 export 'src/flutter/widgets/_layout_multi_child/wrap/wrap.dart';
+export 'src/flutter/widgets/_material/material_app/material_app.dart';
 export 'src/flutter/widgets/_material/app_bar/app_bar.dart';
 export 'src/flutter/widgets/_material/button_bar/button_bar.dart';
 export 'src/flutter/widgets/_material/buttons/buttons.dart';

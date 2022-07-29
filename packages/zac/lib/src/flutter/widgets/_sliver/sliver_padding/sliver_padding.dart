@@ -30,7 +30,7 @@ class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
   @override
   SliverPadding buildWidget(ZacBuildContext context) {
     return SliverPadding(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       sliver: sliver?.buildWidget(context),
       padding: padding.build(context),
     );

@@ -47,7 +47,7 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
   ElevatedButton buildWidget(ZacBuildContext context) {
     return map(
       (value) => ElevatedButton(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         child: value.child?.buildWidget(context),
@@ -55,7 +55,7 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
         clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
       ),
       icon: (value) => ElevatedButton.icon(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         icon: value.icon.buildWidget(context),
@@ -102,7 +102,7 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
   OutlinedButton buildWidget(ZacBuildContext context) {
     return map(
       (value) => OutlinedButton(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         child: value.child.buildWidget(context),
@@ -110,7 +110,7 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
         clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
       ),
       icon: (value) => OutlinedButton.icon(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         icon: value.icon.buildWidget(context),
@@ -157,7 +157,7 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
   TextButton buildWidget(ZacBuildContext context) {
     return map(
       (value) => TextButton(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         child: value.child.buildWidget(context),
@@ -165,7 +165,7 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
         clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
       ),
       icon: (value) => TextButton.icon(
-        key: value.key?.build(context),
+        key: value.key?.buildKey(context),
         onPressed: actionsCallback(value.onPressed, context),
         onLongPress: actionsCallback(value.onLongPress, context),
         icon: value.icon.buildWidget(context),

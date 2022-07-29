@@ -34,7 +34,7 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
   @override
   OverflowBox buildWidget(ZacBuildContext context) {
     return OverflowBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       alignment: alignment?.build(context) ?? Alignment.center,
       minWidth: minWidth?.getValue(context),
       maxWidth: maxWidth?.getValue(context),

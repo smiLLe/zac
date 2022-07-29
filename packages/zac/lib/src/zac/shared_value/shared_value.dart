@@ -207,7 +207,7 @@ class SharedValueProviderBuilder
   @override
   SharedValueProvider buildWidget(ZacBuildContext context) {
     return SharedValueProvider(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       transformer: transformer,
       value: value,
       name: name,

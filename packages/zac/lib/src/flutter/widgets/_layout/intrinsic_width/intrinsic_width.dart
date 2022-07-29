@@ -28,7 +28,7 @@ class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
   @override
   IntrinsicWidth buildWidget(ZacBuildContext context) {
     return IntrinsicWidth(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
     );
   }

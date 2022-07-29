@@ -326,7 +326,7 @@ class FlutterLocale with _$FlutterLocale {
   factory FlutterLocale(String languageCode, [String? countryCode]) =
       _FlutterLocale;
 
-  Locale build(ZacBuildContext config) {
+  Locale build(ZacBuildContext context) {
     return Locale(languageCode, countryCode);
   }
 }

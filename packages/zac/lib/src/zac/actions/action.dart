@@ -98,7 +98,7 @@ class ExecuteActionsBuilder with _$ExecuteActionsBuilder implements ZacWidget {
   @override
   ExecuteActions buildWidget(ZacBuildContext context) {
     return ExecuteActions(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       actions: actions,
       child: child,
     );

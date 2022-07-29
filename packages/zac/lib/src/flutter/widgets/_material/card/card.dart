@@ -37,7 +37,7 @@ class FlutterCard with _$FlutterCard implements ZacWidget {
   @override
   Card buildWidget(ZacBuildContext context) {
     return Card(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       color: color?.build(context),
       shadowColor: shadowColor?.build(context),
       elevation: elevation?.getValue(context),

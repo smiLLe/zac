@@ -34,7 +34,7 @@ class FlutterFractionallySizedBox
   @override
   FractionallySizedBox buildWidget(ZacBuildContext context) {
     return FractionallySizedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       heightFactor: heightFactor?.getValue(context),
       widthFactor: widthFactor?.getValue(context),

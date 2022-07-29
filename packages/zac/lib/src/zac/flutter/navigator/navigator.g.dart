@@ -6,30 +6,33 @@ part of 'navigator.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConsumeFromGlobalKey _$$_ConsumeFromGlobalKeyFromJson(
-        Map<String, dynamic> json) =>
-    _$_ConsumeFromGlobalKey(
-      name: json['name'] as String,
-      consumeType: json['consumeType'] == null
-          ? null
-          : SharedValueConsumeType.fromJson(
-              json['consumeType'] as Map<String, dynamic>),
-      mapper: (json['mapper'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      $type: json['_converter'] as String?,
-    );
+_$_ZacFlutterGlobalKeyNavigatorStateProvide
+    _$$_ZacFlutterGlobalKeyNavigatorStateProvideFromJson(
+            Map<String, dynamic> json) =>
+        _$_ZacFlutterGlobalKeyNavigatorStateProvide(
+          name: ZacString.fromJson(json['name'] as Object),
+          child: ZacWidget.fromJson(json['child'] as Object),
+          debugLabel: json['debugLabel'] == null
+              ? null
+              : ZacString.fromJson(json['debugLabel'] as Object),
+          $type: json['_converter'] as String?,
+        );
 
-_$_Builder _$$_BuilderFromJson(Map<String, dynamic> json) => _$_Builder(
-      debugLabel: json['debugLabel'] as String?,
-      $type: json['_converter'] as String?,
-    );
-
-_$_TransformBuilder _$$_TransformBuilderFromJson(Map<String, dynamic> json) =>
-    _$_TransformBuilder(
-      $type: json['_converter'] as String?,
-    );
+_$_ZacFlutterGlobalKeyNavigatorStateConsume
+    _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(
+            Map<String, dynamic> json) =>
+        _$_ZacFlutterGlobalKeyNavigatorStateConsume(
+          name: json['name'] as String,
+          consumeType: json['consumeType'] == null
+              ? null
+              : SharedValueConsumeType.fromJson(
+                  json['consumeType'] as Map<String, dynamic>),
+          mapper: (json['mapper'] as List<dynamic>?)
+              ?.map((e) =>
+                  SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          $type: json['_converter'] as String?,
+        );
 
 _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
     _$_PopUntilRouteName(

@@ -33,7 +33,7 @@ class FlutterAlign with _$FlutterAlign implements ZacWidget {
   @override
   Align buildWidget(ZacBuildContext context) {
     return Align(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       alignment: alignment?.build(context) ?? Alignment.center,
       widthFactor: widthFactor?.getValue(context),
       heightFactor: heightFactor?.getValue(context),

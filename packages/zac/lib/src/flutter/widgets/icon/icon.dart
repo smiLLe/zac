@@ -33,7 +33,7 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
   Icon buildWidget(ZacBuildContext context) {
     return Icon(
       icon?.build(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
       color: color?.build(context),
       size: size?.getValue(context),
       semanticLabel: semanticLabel?.getValue(context),

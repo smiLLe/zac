@@ -29,7 +29,7 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements ZacWidget {
   @override
   RotatedBox buildWidget(ZacBuildContext context) {
     return RotatedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       quarterTurns: quarterTurns,
     );

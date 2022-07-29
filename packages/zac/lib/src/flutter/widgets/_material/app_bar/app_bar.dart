@@ -65,7 +65,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
       return true;
     }(), '');
     return AppBar(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       leading: leading?.buildWidget(context),
       automaticallyImplyLeading:
           automaticallyImplyLeading?.getValue(context) ?? true,

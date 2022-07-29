@@ -1,3 +1,5 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/flutter/widgets/_material/material_app/material_app.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,61 +8,73 @@ import '../flutter/models.dart';
 import '../helper.dart';
 
 void main() {
-  group('GetNavigatorState', () {
-    group('GlobalKeyNavigatorStateBuilder', () {
-      test('fromJson', () {
-        expect(
-            GetFlutterNavigatorState.fromJson(
-                {'_converter': 'z:1:GlobalKeyNavigatorState'}),
-            ZacFlutterNavigatorState.builder());
+  group('ZacFlutterGlobalKeyNavigatorState', () {
+    test('fromJson', () {
+      expect(
+          ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
+            '_converter': 'z:1:GlobalKeyNavigatorState.provide',
+            'name': 'foo',
+            'child': ChildModel.sizedBox,
+            'debugLabel': 'label',
+          }),
+          ZacFlutterGlobalKeyNavigatorState.provide(
+            name: ZacString('foo'),
+            child: FlutterSizedBox(),
+            debugLabel: ZacString('label'),
+          ));
 
-        expect(
-            GetFlutterNavigatorState.fromJson({
-              '_converter': 'z:1:GlobalKeyNavigatorState',
-              'debugLabel': 'foo'
-            }),
-            ZacFlutterNavigatorState.builder(debugLabel: 'foo'));
+      expect(
+          ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
+            '_converter': 'z:1:GlobalKeyNavigatorState.consume',
+            'name': 'foo',
+          }),
+          ZacFlutterGlobalKeyNavigatorState.consume(
+            name: 'foo',
+          ));
+    });
 
-        expect(
-            ConverterHelper.convertToType<ZacFlutterNavigatorState>({
-              '_converter': 'z:1:GlobalKeyNavigatorState.transformToGlobalKey',
-            }),
-            ZacFlutterNavigatorState.transform());
+    testWidgets('provide and read', (tester) async {
+      late ZacBuildContext context;
+      await testZacWidget(
+        tester,
+        ZacFlutterGlobalKeyNavigatorState.provide(
+          name: ZacString('foo'),
+          child: LeakContext(cb: (c) => context = c),
+        ),
+      );
 
-        expect(
-            ConverterHelper.convertToType<ZacFlutterNavigatorState>({
-              '_converter': 'z:1:NavigatorState.consumeFromGlobalKey',
-              'name': 'foo',
-            }),
-            ZacFlutterNavigatorState.consumeFromGlobalKey(name: 'foo'));
-      });
+      expect(
+          context.ref.read(SharedValue.provider('foo')),
+          isA<FilledSharedValue>().having(
+              (p0) => p0.data, 'data', isA<GlobalKey<NavigatorState>>()));
+    });
 
-      testWidgets('provide and consume', (tester) async {
-        late ZacBuildContext awContext;
+    testWidgets('get NavigatorState', (tester) async {
+      late ZacBuildContext context;
 
-        await testZacWidget(
-            tester,
-            SharedValueProviderBuilder(
-              name: 'foo',
-              value: {
-                '_converter': 'z:1:GlobalKeyNavigatorState',
-              },
-              transformer: [
-                BuiltInTransformer.convert(),
-                ZacFlutterNavigatorState.transform()
-              ],
-              child: LeakContext(
-                cb: (context) => awContext = context,
+      await testWithConverters(
+        tester: tester,
+        widget: ZacWidgetBuilder(
+          zacWidget: ZacFlutterGlobalKeyNavigatorState.provide(
+            name: ZacString('foo'),
+            child: FlutterMaterialApp(
+              navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume(
+                name: 'foo',
               ),
-            ));
+              home: LeakContext(cb: (c) => context = c),
+            ),
+          ),
+        ),
+        container: ProviderContainer(),
+      );
 
-        final val = ZacFlutterNavigatorState.consumeFromGlobalKey(name: 'foo')
-            .map(
-                builder: (_) => throw Exception(),
-                transform: (_) => throw Exception(),
-                consumeFromGlobalKey: (obj) => obj.getSharedValue(awContext));
-        expect(val, isA<GlobalKey<NavigatorState>>());
-      });
+      expect(
+          context.ref.read(SharedValue.provider('foo')),
+          isA<FilledSharedValue>().having(
+              (p0) => p0.data,
+              'data',
+              isA<GlobalKey<NavigatorState>>().having(
+                  (p0) => p0.currentState, 'NavigatorState', isNotNull)));
     });
   });
 

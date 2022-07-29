@@ -40,7 +40,7 @@ class UpdateContextBuilderBuilder
   UpdateContextBuilder buildWidget(ZacBuildContext context) {
     return UpdateContextBuilder(
       builder: (context) => child.buildWidget(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
     );
   }
 }

@@ -30,7 +30,7 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements ZacWidget {
   @override
   LimitedBox buildWidget(ZacBuildContext context) {
     return LimitedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
       maxHeight: maxHeight?.getValue(context) ?? double.infinity,
       maxWidth: maxWidth?.getValue(context) ?? double.infinity,

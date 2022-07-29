@@ -52,7 +52,7 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
   SelectableText buildWidget(ZacBuildContext context) {
     return SelectableText(
       data,
-      key: key?.build(context),
+      key: key?.buildKey(context),
       style: style?.build(context),
       strutStyle: strutStyle?.build(context),
       textAlign: textAlign?.build(context),

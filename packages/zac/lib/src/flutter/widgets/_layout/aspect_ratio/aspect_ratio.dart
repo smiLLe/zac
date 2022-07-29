@@ -30,7 +30,7 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements ZacWidget {
   AspectRatio buildWidget(ZacBuildContext context) {
     return AspectRatio(
       aspectRatio: aspectRatio.getValue(context),
-      key: key?.build(context),
+      key: key?.buildKey(context),
       child: child?.buildWidget(context),
     );
   }

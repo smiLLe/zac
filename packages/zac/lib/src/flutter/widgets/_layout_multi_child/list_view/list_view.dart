@@ -50,7 +50,7 @@ class FlutterListView with _$FlutterListView implements ZacWidget {
   @override
   ListView buildWidget(ZacBuildContext context) {
     return ListView(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
       reverse: this.reverse?.getValue(context) ?? false,
       primary: primary?.getValue(context),

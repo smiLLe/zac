@@ -29,7 +29,7 @@ class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
   @override
   ConstrainedBox buildWidget(ZacBuildContext context) {
     return ConstrainedBox(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       constraints: constraints.build(context),
       child: child?.buildWidget(context),
     );

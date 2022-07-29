@@ -30,7 +30,7 @@ class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
   @override
   IgnorePointer buildWidget(ZacBuildContext context) {
     return IgnorePointer(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       ignoring: ignoring?.getValue(context) ?? true,
       ignoringSemantics: ignoringSemantics?.getValue(context),
       child: child?.buildWidget(context),

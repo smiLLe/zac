@@ -34,7 +34,7 @@ class FlutterDrawer with _$FlutterDrawer implements ZacWidget {
   @override
   Drawer buildWidget(ZacBuildContext context) {
     return Drawer(
-      key: key?.build(context),
+      key: key?.buildKey(context),
       backgroundColor: backgroundColor?.build(context),
       child: child?.buildWidget(context),
       elevation: elevation?.getValue(context),

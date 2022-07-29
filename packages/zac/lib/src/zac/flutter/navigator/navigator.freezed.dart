@@ -14,51 +14,132 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacFlutterNavigatorState _$ZacFlutterNavigatorStateFromJson(
+ZacFlutterGlobalKeyNavigatorState _$ZacFlutterGlobalKeyNavigatorStateFromJson(
     Map<String, dynamic> json) {
   switch (json['_converter']) {
-    case 'z:1:NavigatorState.consumeFromGlobalKey':
-      return _ConsumeFromGlobalKey.fromJson(json);
-    case 'z:1:GlobalKeyNavigatorState':
-      return _Builder.fromJson(json);
-    case 'z:1:GlobalKeyNavigatorState.transformToGlobalKey':
-      return _TransformBuilder.fromJson(json);
+    case 'z:1:GlobalKeyNavigatorState.provide':
+      return _ZacFlutterGlobalKeyNavigatorStateProvide.fromJson(json);
+    case 'z:1:GlobalKeyNavigatorState.consume':
+      return _ZacFlutterGlobalKeyNavigatorStateConsume.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
           json,
           '_converter',
-          'ZacFlutterNavigatorState',
+          'ZacFlutterGlobalKeyNavigatorState',
           'Invalid union type "${json['_converter']}"!');
   }
 }
 
 /// @nodoc
-mixin _$ZacFlutterNavigatorState {
+mixin _$ZacFlutterGlobalKeyNavigatorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ConsumeFromGlobalKey value) consumeFromGlobalKey,
-    required TResult Function(_Builder value) builder,
-    required TResult Function(_TransformBuilder value) transform,
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateProvide value)
+        provide,
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateConsume value)
+        consume,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ConsumeFromGlobalKey extends _ConsumeFromGlobalKey
+class _$_ZacFlutterGlobalKeyNavigatorStateProvide
+    extends _ZacFlutterGlobalKeyNavigatorStateProvide {
+  _$_ZacFlutterGlobalKeyNavigatorStateProvide(
+      {required this.name,
+      required this.child,
+      this.debugLabel,
+      final String? $type})
+      : $type = $type ?? 'z:1:GlobalKeyNavigatorState.provide',
+        super._();
+
+  factory _$_ZacFlutterGlobalKeyNavigatorStateProvide.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacFlutterGlobalKeyNavigatorStateProvideFromJson(json);
+
+  @override
+  final ZacString name;
+  @override
+  final ZacWidget child;
+  @override
+  final ZacString? debugLabel;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacFlutterGlobalKeyNavigatorState.provide(name: $name, child: $child, debugLabel: $debugLabel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacFlutterGlobalKeyNavigatorStateProvide &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality()
+                .equals(other.debugLabel, debugLabel));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(debugLabel));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateProvide value)
+        provide,
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateConsume value)
+        consume,
+  }) {
+    return provide(this);
+  }
+}
+
+abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
+    extends ZacFlutterGlobalKeyNavigatorState {
+  factory _ZacFlutterGlobalKeyNavigatorStateProvide(
+          {required final ZacString name,
+          required final ZacWidget child,
+          final ZacString? debugLabel}) =
+      _$_ZacFlutterGlobalKeyNavigatorStateProvide;
+  _ZacFlutterGlobalKeyNavigatorStateProvide._() : super._();
+
+  factory _ZacFlutterGlobalKeyNavigatorStateProvide.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacFlutterGlobalKeyNavigatorStateProvide.fromJson;
+
+  ZacString get name;
+  ZacWidget get child;
+  ZacString? get debugLabel;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacFlutterGlobalKeyNavigatorStateConsume
+    extends _ZacFlutterGlobalKeyNavigatorStateConsume
     with ConsumeValue<GlobalKey<NavigatorState>> {
-  _$_ConsumeFromGlobalKey(
+  _$_ZacFlutterGlobalKeyNavigatorStateConsume(
       {required this.name,
       this.consumeType,
       final List<SharedValueTransformer>? mapper,
       final String? $type})
       : _mapper = mapper,
-        $type = $type ?? 'z:1:NavigatorState.consumeFromGlobalKey',
+        $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
         super._();
 
-  factory _$_ConsumeFromGlobalKey.fromJson(Map<String, dynamic> json) =>
-      _$$_ConsumeFromGlobalKeyFromJson(json);
+  factory _$_ZacFlutterGlobalKeyNavigatorStateConsume.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(json);
 
   @override
   final String name;
@@ -78,14 +159,14 @@ class _$_ConsumeFromGlobalKey extends _ConsumeFromGlobalKey
 
   @override
   String toString() {
-    return 'ZacFlutterNavigatorState.consumeFromGlobalKey(name: $name, consumeType: $consumeType, mapper: $mapper)';
+    return 'ZacFlutterGlobalKeyNavigatorState.consume(name: $name, consumeType: $consumeType, mapper: $mapper)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConsumeFromGlobalKey &&
+            other is _$_ZacFlutterGlobalKeyNavigatorStateConsume &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType) &&
@@ -103,130 +184,32 @@ class _$_ConsumeFromGlobalKey extends _ConsumeFromGlobalKey
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ConsumeFromGlobalKey value) consumeFromGlobalKey,
-    required TResult Function(_Builder value) builder,
-    required TResult Function(_TransformBuilder value) transform,
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateProvide value)
+        provide,
+    required TResult Function(_ZacFlutterGlobalKeyNavigatorStateConsume value)
+        consume,
   }) {
-    return consumeFromGlobalKey(this);
+    return consume(this);
   }
 }
 
-abstract class _ConsumeFromGlobalKey extends ZacFlutterNavigatorState
+abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
+    extends ZacFlutterGlobalKeyNavigatorState
     implements ConsumeValue<GlobalKey<NavigatorState>> {
-  factory _ConsumeFromGlobalKey(
-      {required final String name,
-      final SharedValueConsumeType? consumeType,
-      final List<SharedValueTransformer>? mapper}) = _$_ConsumeFromGlobalKey;
-  _ConsumeFromGlobalKey._() : super._();
+  factory _ZacFlutterGlobalKeyNavigatorStateConsume(
+          {required final String name,
+          final SharedValueConsumeType? consumeType,
+          final List<SharedValueTransformer>? mapper}) =
+      _$_ZacFlutterGlobalKeyNavigatorStateConsume;
+  _ZacFlutterGlobalKeyNavigatorStateConsume._() : super._();
 
-  factory _ConsumeFromGlobalKey.fromJson(Map<String, dynamic> json) =
-      _$_ConsumeFromGlobalKey.fromJson;
+  factory _ZacFlutterGlobalKeyNavigatorStateConsume.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacFlutterGlobalKeyNavigatorStateConsume.fromJson;
 
   String get name;
   SharedValueConsumeType? get consumeType;
   List<SharedValueTransformer>? get mapper;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_Builder extends _Builder {
-  _$_Builder({this.debugLabel, final String? $type})
-      : $type = $type ?? 'z:1:GlobalKeyNavigatorState',
-        super._();
-
-  factory _$_Builder.fromJson(Map<String, dynamic> json) =>
-      _$$_BuilderFromJson(json);
-
-  @override
-  final String? debugLabel;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacFlutterNavigatorState.builder(debugLabel: $debugLabel)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Builder &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(debugLabel));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ConsumeFromGlobalKey value) consumeFromGlobalKey,
-    required TResult Function(_Builder value) builder,
-    required TResult Function(_TransformBuilder value) transform,
-  }) {
-    return builder(this);
-  }
-}
-
-abstract class _Builder extends ZacFlutterNavigatorState {
-  factory _Builder({final String? debugLabel}) = _$_Builder;
-  _Builder._() : super._();
-
-  factory _Builder.fromJson(Map<String, dynamic> json) = _$_Builder.fromJson;
-
-  String? get debugLabel;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_TransformBuilder extends _TransformBuilder {
-  _$_TransformBuilder({final String? $type})
-      : $type = $type ?? 'z:1:GlobalKeyNavigatorState.transformToGlobalKey',
-        super._();
-
-  factory _$_TransformBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_TransformBuilderFromJson(json);
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacFlutterNavigatorState.transform()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TransformBuilder);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ConsumeFromGlobalKey value) consumeFromGlobalKey,
-    required TResult Function(_Builder value) builder,
-    required TResult Function(_TransformBuilder value) transform,
-  }) {
-    return transform(this);
-  }
-}
-
-abstract class _TransformBuilder extends ZacFlutterNavigatorState {
-  factory _TransformBuilder() = _$_TransformBuilder;
-  _TransformBuilder._() : super._();
-
-  factory _TransformBuilder.fromJson(Map<String, dynamic> json) =
-      _$_TransformBuilder.fromJson;
 }
 
 ZacFlutterNavigatorActions _$ZacFlutterNavigatorActionsFromJson(
