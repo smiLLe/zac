@@ -3,6 +3,7 @@ import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting/painting.dart';
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
+import 'package:zac/src/zac/navigator/navigator.dart';
 
 import 'package:zac/src/zac/widget_builder/widget_builder.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
@@ -107,22 +108,25 @@ Map<String, Convert> allConverters = {
          * Navigator && NavigatorState
          */
   FlutterNavigator.unionValue: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePush: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePushNamed: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePop: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValueMaybePop: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePushReplacement: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePushReplacementNamed: FlutterNavigator.fromJson,
-  FlutterNavigator.unionValuePopUntilRouteName: FlutterNavigator.fromJson,
+  FlutterNavigatorActions.unionValuePush: FlutterNavigatorActions.fromJson,
+  FlutterNavigatorActions.unionValuePushNamed: FlutterNavigatorActions.fromJson,
+  FlutterNavigatorActions.unionValuePop: FlutterNavigatorActions.fromJson,
+  FlutterNavigatorActions.unionValueMaybePop: FlutterNavigatorActions.fromJson,
+  FlutterNavigatorActions.unionValuePushReplacement:
+      FlutterNavigatorActions.fromJson,
+  FlutterNavigatorActions.unionValuePushReplacementNamed:
+      FlutterNavigatorActions.fromJson,
   FlutterNavigatorState.unionValueClosest: FlutterNavigatorState.fromJson,
   FlutterNavigatorState.unionValueRoot: FlutterNavigatorState.fromJson,
-  FlutterNavigatorState.unionValueConsume: FlutterNavigatorState.fromJson,
-  FlutterNavigatorState.unionValueBuilder: FlutterNavigatorState.fromJson,
-  FlutterNavigatorState.unionValueBuilderTransform:
-      FlutterNavigatorState.fromJson,
+  ZacFlutterNavigatorState.unionValueConsume: ZacFlutterNavigatorState.fromJson,
+  ZacFlutterNavigatorState.unionValueBuilder: ZacFlutterNavigatorState.fromJson,
+  ZacFlutterNavigatorState.unionValueBuilderTransform:
+      ZacFlutterNavigatorState.fromJson,
   RouteFactoryFromRoutes.unionValue: RouteFactoryFromRoutes.fromJson,
   RouteFactorySingleRoute.unionValue: RouteFactorySingleRoute.fromJson,
   RouteFactoryRouteConfig.unionValue: RouteFactoryRouteConfig.fromJson,
+  ZacFlutterNavigatorActions.unionValuePopUntilRouteName:
+      ZacFlutterNavigatorActions.fromJson,
 
   /**
          * ACTIONS
@@ -321,7 +325,8 @@ abstract class ConverterHelper {
   static Map<String, dynamic> validateConverter(Object? data,
       {Type? expectedType}) {
     if (!isConverter(data)) {
-      throw Exception('''
+      throw Exception(
+          '''
 Given data cannot be used to create a converter${null != expectedType ? ' of type "$expectedType"' : ''}.
 It is either no Map<String, dynamic> or it has an invalid/missing "_converter" key/value.
 Data: "$data"''');
@@ -330,7 +335,8 @@ Data: "$data"''');
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw Exception('''
+      throw Exception(
+          '''
 Error while trying to convert${null != expectedType ? ' data to type "$expectedType"' : ' data'}.
 There was no _converter found for name: "$rt".''');
     }
@@ -350,7 +356,8 @@ There was no _converter found for name: "$rt".''');
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw Exception('''
+      throw Exception(
+          '''
 There was an error while trying to convert a type of "$expectedType".
 Got the converted type "${converted.runtimeType}" which
 is not assignable to expected type "$expectedType"''');

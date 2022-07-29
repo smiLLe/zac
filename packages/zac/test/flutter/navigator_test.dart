@@ -10,29 +10,29 @@ void main() {
     group('GlobalKeyNavigatorStateBuilder', () {
       test('fromJson', () {
         expect(
-            ZacNavigatorState.fromJson(
+            GetFlutterNavigatorState.fromJson(
                 {'_converter': 'z:1:GlobalKeyNavigatorState'}),
-            FlutterNavigatorState.builder());
+            ZacFlutterNavigatorState.builder());
 
         expect(
-            ZacNavigatorState.fromJson({
+            GetFlutterNavigatorState.fromJson({
               '_converter': 'z:1:GlobalKeyNavigatorState',
               'debugLabel': 'foo'
             }),
-            FlutterNavigatorState.builder(debugLabel: 'foo'));
+            ZacFlutterNavigatorState.builder(debugLabel: 'foo'));
 
         expect(
-            ConverterHelper.convertToType<FlutterNavigatorState>({
+            ConverterHelper.convertToType<ZacFlutterNavigatorState>({
               '_converter': 'z:1:GlobalKeyNavigatorState.transformToGlobalKey',
             }),
-            FlutterNavigatorState.transform());
+            ZacFlutterNavigatorState.transform());
 
         expect(
-            ConverterHelper.convertToType<FlutterNavigatorState>({
+            ConverterHelper.convertToType<ZacFlutterNavigatorState>({
               '_converter': 'z:1:NavigatorState.consumeFromGlobalKey',
               'name': 'foo',
             }),
-            FlutterNavigatorState.consumeFromGlobalKey(name: 'foo'));
+            ZacFlutterNavigatorState.consumeFromGlobalKey(name: 'foo'));
       });
 
       testWidgets('provide and consume', (tester) async {
@@ -47,19 +47,18 @@ void main() {
               },
               transformer: [
                 BuiltInTransformer.convert(),
-                FlutterNavigatorState.transform()
+                ZacFlutterNavigatorState.transform()
               ],
               child: LeakContext(
                 cb: (context) => awContext = context,
               ),
             ));
 
-        final val = FlutterNavigatorState.consumeFromGlobalKey(name: 'foo').map(
-            builder: (_) => throw Exception(),
-            transform: (_) => throw Exception(),
-            closest: (_) => throw Exception(),
-            root: (_) => throw Exception(),
-            consumeFromGlobalKey: (obj) => obj.getSharedValue(awContext));
+        final val = ZacFlutterNavigatorState.consumeFromGlobalKey(name: 'foo')
+            .map(
+                builder: (_) => throw Exception(),
+                transform: (_) => throw Exception(),
+                consumeFromGlobalKey: (obj) => obj.getSharedValue(awContext));
         expect(val, isA<GlobalKey<NavigatorState>>());
       });
     });
@@ -82,41 +81,43 @@ void main() {
           FlutterNavigator(
               initialRoute: ZacString('/foo'), requestFocus: ZacBool(false)));
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>({
+          ConverterHelper.convertToType<FlutterNavigatorActions>({
             '_converter': 'f:1:Navigator.push',
             'route': routeMap,
           }),
-          FlutterNavigator.push(route: route));
+          FlutterNavigatorActions.push(route: route));
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>(
+          ConverterHelper.convertToType<FlutterNavigatorActions>(
               {'_converter': 'f:1:Navigator.pushNamed', 'routeName': '/cool'}),
-          FlutterNavigator.pushNamed(routeName: ZacString('/cool')));
+          FlutterNavigatorActions.pushNamed(routeName: ZacString('/cool')));
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>(
+          ConverterHelper.convertToType<FlutterNavigatorActions>(
               {'_converter': 'f:1:Navigator.pop'}),
-          FlutterNavigator.pop());
+          FlutterNavigatorActions.pop());
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>(
+          ConverterHelper.convertToType<FlutterNavigatorActions>(
               {'_converter': 'f:1:Navigator.maybePop'}),
-          FlutterNavigator.maybePop());
+          FlutterNavigatorActions.maybePop());
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>({
+          ConverterHelper.convertToType<FlutterNavigatorActions>({
             '_converter': 'f:1:Navigator.pushReplacement',
             'route': routeMap,
           }),
-          FlutterNavigator.pushReplacement(route: route));
+          FlutterNavigatorActions.pushReplacement(route: route));
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>({
+          ConverterHelper.convertToType<FlutterNavigatorActions>({
             '_converter': 'f:1:Navigator.pushReplacementNamed',
             'routeName': '/cool'
           }),
-          FlutterNavigator.pushReplacementNamed(routeName: ZacString('/cool')));
+          FlutterNavigatorActions.pushReplacementNamed(
+              routeName: ZacString('/cool')));
       expect(
-          ConverterHelper.convertToType<FlutterNavigator>({
+          ConverterHelper.convertToType<ZacFlutterNavigatorActions>({
             '_converter': 'z:1:Navigator.popUntilRouteName',
             'routeName': '/cool'
           }),
-          FlutterNavigator.popUntilRouteName(routeName: ZacString('/cool')));
+          ZacFlutterNavigatorActions.popUntilRouteName(
+              routeName: ZacString('/cool')));
     });
   });
 
@@ -176,7 +177,7 @@ void main() {
                     child: ExecuteActionsBuilder(
                       actions: ZacActions(
                         [
-                          FlutterNavigator.pushNamed(
+                          FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
                             arguments: 22,
                           )
@@ -257,7 +258,7 @@ void main() {
                     child: ExecuteActionsBuilder(
                       actions: ZacActions(
                         [
-                          FlutterNavigator.pushNamed(
+                          FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
                             arguments: 1,
                           )
@@ -271,7 +272,7 @@ void main() {
                     child: FlutterTextButton(
                       key: FlutterValueKey('press_me'),
                       onPressed: ZacActions([
-                        FlutterNavigator.pushNamed(
+                        FlutterNavigatorActions.pushNamed(
                           routeName: ZacString('/otherother'),
                           arguments: 11,
                         )

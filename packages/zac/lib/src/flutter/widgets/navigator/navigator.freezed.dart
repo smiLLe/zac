@@ -21,12 +21,6 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
       return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
       return _ZacNavigatorStateRoot.fromJson(json);
-    case 'z:1:NavigatorState.consumeFromGlobalKey':
-      return _ZacNavigatorStateConsumeFromGlobalKey.fromJson(json);
-    case 'z:1:GlobalKeyNavigatorState':
-      return _ZacNavigatorStateBuilder.fromJson(json);
-    case 'z:1:GlobalKeyNavigatorState.transformToGlobalKey':
-      return _ZacNavigatorStateTransformBuilder.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -43,11 +37,6 @@ mixin _$FlutterNavigatorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -86,11 +75,6 @@ class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
   }) {
     return closest(this);
   }
@@ -137,11 +121,6 @@ class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
   }) {
     return root(this);
   }
@@ -155,257 +134,23 @@ abstract class _ZacNavigatorStateRoot extends FlutterNavigatorState {
       _$_ZacNavigatorStateRoot.fromJson;
 }
 
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacNavigatorStateConsumeFromGlobalKey
-    extends _ZacNavigatorStateConsumeFromGlobalKey
-    with ConsumeValue<GlobalKey<NavigatorState>> {
-  _$_ZacNavigatorStateConsumeFromGlobalKey(
-      {required this.name,
-      this.consumeType,
-      final List<SharedValueTransformer>? mapper,
-      final String? $type})
-      : _mapper = mapper,
-        $type = $type ?? 'z:1:NavigatorState.consumeFromGlobalKey',
-        super._();
-
-  factory _$_ZacNavigatorStateConsumeFromGlobalKey.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacNavigatorStateConsumeFromGlobalKeyFromJson(json);
-
-  @override
-  final String name;
-  @override
-  final SharedValueConsumeType? consumeType;
-  final List<SharedValueTransformer>? _mapper;
-  @override
-  List<SharedValueTransformer>? get mapper {
-    final value = _mapper;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterNavigatorState.consumeFromGlobalKey(name: $name, consumeType: $consumeType, mapper: $mapper)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacNavigatorStateConsumeFromGlobalKey &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.consumeType, consumeType) &&
-            const DeepCollectionEquality().equals(other._mapper, _mapper));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(consumeType),
-      const DeepCollectionEquality().hash(_mapper));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacNavigatorStateClosest value) closest,
-    required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
-  }) {
-    return consumeFromGlobalKey(this);
-  }
-}
-
-abstract class _ZacNavigatorStateConsumeFromGlobalKey
-    extends FlutterNavigatorState
-    implements ConsumeValue<GlobalKey<NavigatorState>> {
-  factory _ZacNavigatorStateConsumeFromGlobalKey(
-          {required final String name,
-          final SharedValueConsumeType? consumeType,
-          final List<SharedValueTransformer>? mapper}) =
-      _$_ZacNavigatorStateConsumeFromGlobalKey;
-  _ZacNavigatorStateConsumeFromGlobalKey._() : super._();
-
-  factory _ZacNavigatorStateConsumeFromGlobalKey.fromJson(
-          Map<String, dynamic> json) =
-      _$_ZacNavigatorStateConsumeFromGlobalKey.fromJson;
-
-  String get name;
-  SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get mapper;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacNavigatorStateBuilder extends _ZacNavigatorStateBuilder {
-  _$_ZacNavigatorStateBuilder({this.debugLabel, final String? $type})
-      : $type = $type ?? 'z:1:GlobalKeyNavigatorState',
-        super._();
-
-  factory _$_ZacNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacNavigatorStateBuilderFromJson(json);
-
-  @override
-  final String? debugLabel;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterNavigatorState.builder(debugLabel: $debugLabel)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacNavigatorStateBuilder &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(debugLabel));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacNavigatorStateClosest value) closest,
-    required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
-  }) {
-    return builder(this);
-  }
-}
-
-abstract class _ZacNavigatorStateBuilder extends FlutterNavigatorState {
-  factory _ZacNavigatorStateBuilder({final String? debugLabel}) =
-      _$_ZacNavigatorStateBuilder;
-  _ZacNavigatorStateBuilder._() : super._();
-
-  factory _ZacNavigatorStateBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ZacNavigatorStateBuilder.fromJson;
-
-  String? get debugLabel;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacNavigatorStateTransformBuilder
-    extends _ZacNavigatorStateTransformBuilder {
-  _$_ZacNavigatorStateTransformBuilder({final String? $type})
-      : $type = $type ?? 'z:1:GlobalKeyNavigatorState.transformToGlobalKey',
-        super._();
-
-  factory _$_ZacNavigatorStateTransformBuilder.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacNavigatorStateTransformBuilderFromJson(json);
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterNavigatorState.transform()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacNavigatorStateTransformBuilder);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacNavigatorStateClosest value) closest,
-    required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateConsumeFromGlobalKey value)
-        consumeFromGlobalKey,
-    required TResult Function(_ZacNavigatorStateBuilder value) builder,
-    required TResult Function(_ZacNavigatorStateTransformBuilder value)
-        transform,
-  }) {
-    return transform(this);
-  }
-}
-
-abstract class _ZacNavigatorStateTransformBuilder
-    extends FlutterNavigatorState {
-  factory _ZacNavigatorStateTransformBuilder() =
-      _$_ZacNavigatorStateTransformBuilder;
-  _ZacNavigatorStateTransformBuilder._() : super._();
-
-  factory _ZacNavigatorStateTransformBuilder.fromJson(
-          Map<String, dynamic> json) =
-      _$_ZacNavigatorStateTransformBuilder.fromJson;
-}
-
 FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
-    case 'f:1:Navigator':
-      return _FlutterNavigator.fromJson(json);
-    case 'f:1:Navigator.push':
-      return _FlutterNavigatorPush.fromJson(json);
-    case 'f:1:Navigator.pushNamed':
-      return _FlutterNavigatorPushNamed.fromJson(json);
-    case 'f:1:Navigator.pop':
-      return _FlutterNavigatorPop.fromJson(json);
-    case 'f:1:Navigator.maybePop':
-      return _FlutterNavigatorMaybePop.fromJson(json);
-    case 'f:1:Navigator.pushReplacement':
-      return _FlutterNavigatorPushReplacement.fromJson(json);
-    case 'f:1:Navigator.pushReplacementNamed':
-      return _FlutterNavigatorPushReplacementNamed.fromJson(json);
-    case 'z:1:Navigator.popUntilRouteName':
-      return _FlutterNavigatorPopUntilRouteName.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterNavigator',
-          'Invalid union type "${json['_converter']}"!');
-  }
+  return _FlutterNavigator.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterNavigator {
+  FlutterKey? get key => throw _privateConstructorUsedError;
+  FlutterRouteFactory? get onGenerateRoute =>
+      throw _privateConstructorUsedError;
+  FlutterRouteFactory? get onUnknownRoute => throw _privateConstructorUsedError;
+  ZacString? get initialRoute => throw _privateConstructorUsedError;
+  ZacBool? get requestFocus => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
-        pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
-        pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
-  }) =>
+    TResult Function(_FlutterNavigator value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
@@ -417,10 +162,8 @@ class _$_FlutterNavigator extends _FlutterNavigator {
       this.onGenerateRoute,
       this.onUnknownRoute,
       this.initialRoute,
-      this.requestFocus,
-      final String? $type})
-      : $type = $type ?? 'f:1:Navigator',
-        super._();
+      this.requestFocus})
+      : super._();
 
   factory _$_FlutterNavigator.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterNavigatorFromJson(json);
@@ -435,9 +178,6 @@ class _$_FlutterNavigator extends _FlutterNavigator {
   final ZacString? initialRoute;
   @override
   final ZacBool? requestFocus;
-
-  @JsonKey(name: '_converter')
-  final String $type;
 
   @override
   String toString() {
@@ -473,18 +213,8 @@ class _$_FlutterNavigator extends _FlutterNavigator {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
-        pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
-        pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
-  }) {
+    TResult Function(_FlutterNavigator value) $default,
+  ) {
     return $default(this);
   }
 }
@@ -501,42 +231,93 @@ abstract class _FlutterNavigator extends FlutterNavigator {
   factory _FlutterNavigator.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigator.fromJson;
 
+  @override
   FlutterKey? get key;
+  @override
   FlutterRouteFactory? get onGenerateRoute;
+  @override
   FlutterRouteFactory? get onUnknownRoute;
+  @override
   ZacString? get initialRoute;
+  @override
   ZacBool? get requestFocus;
+}
+
+FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'f:1:Navigator.push':
+      return _FlutterNavigatorActionsPush.fromJson(json);
+    case 'f:1:Navigator.pushNamed':
+      return _FlutterNavigatorActionsPushNamed.fromJson(json);
+    case 'f:1:Navigator.pop':
+      return _FlutterNavigatorActionsPop.fromJson(json);
+    case 'f:1:Navigator.maybePop':
+      return _FlutterNavigatorActionsMaybePop.fromJson(json);
+    case 'f:1:Navigator.pushReplacement':
+      return _FlutterNavigatorActionsPushReplacement.fromJson(json);
+    case 'f:1:Navigator.pushReplacementNamed':
+      return _FlutterNavigatorActionsPushReplacementNamed.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          '_converter',
+          'FlutterNavigatorActions',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterNavigatorActions {
+  GetFlutterNavigatorState? get navigatorState =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
+        pushReplacement,
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
+        pushReplacementNamed,
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPush extends _FlutterNavigatorPush {
-  _$_FlutterNavigatorPush(
+class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
+  _$_FlutterNavigatorActionsPush(
       {required this.route, this.navigatorState, final String? $type})
       : $type = $type ?? 'f:1:Navigator.push',
         super._();
 
-  factory _$_FlutterNavigatorPush.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPushFromJson(json);
+  factory _$_FlutterNavigatorActionsPush.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterNavigatorActionsPushFromJson(json);
 
   @override
   final FlutterRoute route;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterNavigator.push(route: $route, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.push(route: $route, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPush &&
+            other is _$_FlutterNavigatorActionsPush &&
             const DeepCollectionEquality().equals(other.route, route) &&
             const DeepCollectionEquality()
                 .equals(other.navigatorState, navigatorState));
@@ -551,40 +332,42 @@ class _$_FlutterNavigatorPush extends _FlutterNavigatorPush {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return push(this);
   }
 }
 
-abstract class _FlutterNavigatorPush extends FlutterNavigator {
-  factory _FlutterNavigatorPush(
-      {required final FlutterRoute route,
-      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPush;
-  _FlutterNavigatorPush._() : super._();
+abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPush(
+          {required final FlutterRoute route,
+          final GetFlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsPush;
+  _FlutterNavigatorActionsPush._() : super._();
 
-  factory _FlutterNavigatorPush.fromJson(Map<String, dynamic> json) =
-      _$_FlutterNavigatorPush.fromJson;
+  factory _FlutterNavigatorActionsPush.fromJson(Map<String, dynamic> json) =
+      _$_FlutterNavigatorActionsPush.fromJson;
 
   FlutterRoute get route;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPushNamed extends _FlutterNavigatorPushNamed {
-  _$_FlutterNavigatorPushNamed(
+class _$_FlutterNavigatorActionsPushNamed
+    extends _FlutterNavigatorActionsPushNamed {
+  _$_FlutterNavigatorActionsPushNamed(
       {required this.routeName,
       this.arguments,
       this.navigatorState,
@@ -592,29 +375,30 @@ class _$_FlutterNavigatorPushNamed extends _FlutterNavigatorPushNamed {
       : $type = $type ?? 'f:1:Navigator.pushNamed',
         super._();
 
-  factory _$_FlutterNavigatorPushNamed.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPushNamedFromJson(json);
+  factory _$_FlutterNavigatorActionsPushNamed.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterNavigatorActionsPushNamedFromJson(json);
 
   @override
   final ZacString routeName;
   @override
   final Object? arguments;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterNavigator.pushNamed(routeName: $routeName, arguments: $arguments, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.pushNamed(routeName: $routeName, arguments: $arguments, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPushNamed &&
+            other is _$_FlutterNavigatorActionsPushNamed &&
             const DeepCollectionEquality().equals(other.routeName, routeName) &&
             const DeepCollectionEquality().equals(other.arguments, arguments) &&
             const DeepCollectionEquality()
@@ -631,67 +415,69 @@ class _$_FlutterNavigatorPushNamed extends _FlutterNavigatorPushNamed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return pushNamed(this);
   }
 }
 
-abstract class _FlutterNavigatorPushNamed extends FlutterNavigator {
-  factory _FlutterNavigatorPushNamed(
-      {required final ZacString routeName,
-      final Object? arguments,
-      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPushNamed;
-  _FlutterNavigatorPushNamed._() : super._();
+abstract class _FlutterNavigatorActionsPushNamed
+    extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPushNamed(
+          {required final ZacString routeName,
+          final Object? arguments,
+          final GetFlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsPushNamed;
+  _FlutterNavigatorActionsPushNamed._() : super._();
 
-  factory _FlutterNavigatorPushNamed.fromJson(Map<String, dynamic> json) =
-      _$_FlutterNavigatorPushNamed.fromJson;
+  factory _FlutterNavigatorActionsPushNamed.fromJson(
+      Map<String, dynamic> json) = _$_FlutterNavigatorActionsPushNamed.fromJson;
 
   ZacString get routeName;
   Object? get arguments;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPop extends _FlutterNavigatorPop {
-  _$_FlutterNavigatorPop(
+class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
+  _$_FlutterNavigatorActionsPop(
       {this.actions, this.navigatorState, final String? $type})
       : $type = $type ?? 'f:1:Navigator.pop',
         super._();
 
-  factory _$_FlutterNavigatorPop.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPopFromJson(json);
+  factory _$_FlutterNavigatorActionsPop.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterNavigatorActionsPopFromJson(json);
 
   @override
   final ZacActions? actions;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterNavigator.pop(actions: $actions, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.pop(actions: $actions, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPop &&
+            other is _$_FlutterNavigatorActionsPop &&
             const DeepCollectionEquality().equals(other.actions, actions) &&
             const DeepCollectionEquality()
                 .equals(other.navigatorState, navigatorState));
@@ -706,65 +492,68 @@ class _$_FlutterNavigatorPop extends _FlutterNavigatorPop {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return pop(this);
   }
 }
 
-abstract class _FlutterNavigatorPop extends FlutterNavigator {
-  factory _FlutterNavigatorPop(
-      {final ZacActions? actions,
-      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorPop;
-  _FlutterNavigatorPop._() : super._();
+abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPop(
+          {final ZacActions? actions,
+          final GetFlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsPop;
+  _FlutterNavigatorActionsPop._() : super._();
 
-  factory _FlutterNavigatorPop.fromJson(Map<String, dynamic> json) =
-      _$_FlutterNavigatorPop.fromJson;
+  factory _FlutterNavigatorActionsPop.fromJson(Map<String, dynamic> json) =
+      _$_FlutterNavigatorActionsPop.fromJson;
 
   ZacActions? get actions;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorMaybePop extends _FlutterNavigatorMaybePop {
-  _$_FlutterNavigatorMaybePop(
+class _$_FlutterNavigatorActionsMaybePop
+    extends _FlutterNavigatorActionsMaybePop {
+  _$_FlutterNavigatorActionsMaybePop(
       {this.actions, this.navigatorState, final String? $type})
       : $type = $type ?? 'f:1:Navigator.maybePop',
         super._();
 
-  factory _$_FlutterNavigatorMaybePop.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorMaybePopFromJson(json);
+  factory _$_FlutterNavigatorActionsMaybePop.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterNavigatorActionsMaybePopFromJson(json);
 
   @override
   final ZacActions? actions;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterNavigator.maybePop(actions: $actions, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.maybePop(actions: $actions, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorMaybePop &&
+            other is _$_FlutterNavigatorActionsMaybePop &&
             const DeepCollectionEquality().equals(other.actions, actions) &&
             const DeepCollectionEquality()
                 .equals(other.navigatorState, navigatorState));
@@ -779,41 +568,43 @@ class _$_FlutterNavigatorMaybePop extends _FlutterNavigatorMaybePop {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return maybePop(this);
   }
 }
 
-abstract class _FlutterNavigatorMaybePop extends FlutterNavigator {
-  factory _FlutterNavigatorMaybePop(
-      {final ZacActions? actions,
-      final ZacNavigatorState? navigatorState}) = _$_FlutterNavigatorMaybePop;
-  _FlutterNavigatorMaybePop._() : super._();
+abstract class _FlutterNavigatorActionsMaybePop
+    extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsMaybePop(
+          {final ZacActions? actions,
+          final GetFlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsMaybePop;
+  _FlutterNavigatorActionsMaybePop._() : super._();
 
-  factory _FlutterNavigatorMaybePop.fromJson(Map<String, dynamic> json) =
-      _$_FlutterNavigatorMaybePop.fromJson;
+  factory _FlutterNavigatorActionsMaybePop.fromJson(Map<String, dynamic> json) =
+      _$_FlutterNavigatorActionsMaybePop.fromJson;
 
   ZacActions? get actions;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPushReplacement
-    extends _FlutterNavigatorPushReplacement {
-  _$_FlutterNavigatorPushReplacement(
+class _$_FlutterNavigatorActionsPushReplacement
+    extends _FlutterNavigatorActionsPushReplacement {
+  _$_FlutterNavigatorActionsPushReplacement(
       {required this.route,
       this.result,
       this.navigatorState,
@@ -821,30 +612,30 @@ class _$_FlutterNavigatorPushReplacement
       : $type = $type ?? 'f:1:Navigator.pushReplacement',
         super._();
 
-  factory _$_FlutterNavigatorPushReplacement.fromJson(
+  factory _$_FlutterNavigatorActionsPushReplacement.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPushReplacementFromJson(json);
+      _$$_FlutterNavigatorActionsPushReplacementFromJson(json);
 
   @override
   final FlutterRoute route;
   @override
   final ZacActions? result;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterNavigator.pushReplacement(route: $route, result: $result, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.pushReplacement(route: $route, result: $result, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPushReplacement &&
+            other is _$_FlutterNavigatorActionsPushReplacement &&
             const DeepCollectionEquality().equals(other.route, route) &&
             const DeepCollectionEquality().equals(other.result, result) &&
             const DeepCollectionEquality()
@@ -861,44 +652,46 @@ class _$_FlutterNavigatorPushReplacement
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return pushReplacement(this);
   }
 }
 
-abstract class _FlutterNavigatorPushReplacement extends FlutterNavigator {
-  factory _FlutterNavigatorPushReplacement(
+abstract class _FlutterNavigatorActionsPushReplacement
+    extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPushReplacement(
           {required final FlutterRoute route,
           final ZacActions? result,
-          final ZacNavigatorState? navigatorState}) =
-      _$_FlutterNavigatorPushReplacement;
-  _FlutterNavigatorPushReplacement._() : super._();
+          final GetFlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsPushReplacement;
+  _FlutterNavigatorActionsPushReplacement._() : super._();
 
-  factory _FlutterNavigatorPushReplacement.fromJson(Map<String, dynamic> json) =
-      _$_FlutterNavigatorPushReplacement.fromJson;
+  factory _FlutterNavigatorActionsPushReplacement.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterNavigatorActionsPushReplacement.fromJson;
 
   FlutterRoute get route;
   ZacActions? get result;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPushReplacementNamed
-    extends _FlutterNavigatorPushReplacementNamed {
-  _$_FlutterNavigatorPushReplacementNamed(
+class _$_FlutterNavigatorActionsPushReplacementNamed
+    extends _FlutterNavigatorActionsPushReplacementNamed {
+  _$_FlutterNavigatorActionsPushReplacementNamed(
       {required this.routeName,
       this.arguments,
       this.navigatorState,
@@ -907,16 +700,16 @@ class _$_FlutterNavigatorPushReplacementNamed
       : $type = $type ?? 'f:1:Navigator.pushReplacementNamed',
         super._();
 
-  factory _$_FlutterNavigatorPushReplacementNamed.fromJson(
+  factory _$_FlutterNavigatorActionsPushReplacementNamed.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPushReplacementNamedFromJson(json);
+      _$$_FlutterNavigatorActionsPushReplacementNamedFromJson(json);
 
   @override
   final ZacString routeName;
   @override
   final Object? arguments;
   @override
-  final ZacNavigatorState? navigatorState;
+  final GetFlutterNavigatorState? navigatorState;
   @override
   final ZacActions? result;
 
@@ -925,14 +718,14 @@ class _$_FlutterNavigatorPushReplacementNamed
 
   @override
   String toString() {
-    return 'FlutterNavigator.pushReplacementNamed(routeName: $routeName, arguments: $arguments, navigatorState: $navigatorState, result: $result)';
+    return 'FlutterNavigatorActions.pushReplacementNamed(routeName: $routeName, arguments: $arguments, navigatorState: $navigatorState, result: $result)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPushReplacementNamed &&
+            other is _$_FlutterNavigatorActionsPushReplacementNamed &&
             const DeepCollectionEquality().equals(other.routeName, routeName) &&
             const DeepCollectionEquality().equals(other.arguments, arguments) &&
             const DeepCollectionEquality()
@@ -951,378 +744,41 @@ class _$_FlutterNavigatorPushReplacementNamed
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
         pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
   }) {
     return pushReplacementNamed(this);
   }
 }
 
-abstract class _FlutterNavigatorPushReplacementNamed extends FlutterNavigator {
-  factory _FlutterNavigatorPushReplacementNamed(
-      {required final ZacString routeName,
-      final Object? arguments,
-      final ZacNavigatorState? navigatorState,
-      final ZacActions? result}) = _$_FlutterNavigatorPushReplacementNamed;
-  _FlutterNavigatorPushReplacementNamed._() : super._();
+abstract class _FlutterNavigatorActionsPushReplacementNamed
+    extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPushReplacementNamed(
+          {required final ZacString routeName,
+          final Object? arguments,
+          final GetFlutterNavigatorState? navigatorState,
+          final ZacActions? result}) =
+      _$_FlutterNavigatorActionsPushReplacementNamed;
+  _FlutterNavigatorActionsPushReplacementNamed._() : super._();
 
-  factory _FlutterNavigatorPushReplacementNamed.fromJson(
+  factory _FlutterNavigatorActionsPushReplacementNamed.fromJson(
           Map<String, dynamic> json) =
-      _$_FlutterNavigatorPushReplacementNamed.fromJson;
+      _$_FlutterNavigatorActionsPushReplacementNamed.fromJson;
 
   ZacString get routeName;
   Object? get arguments;
-  ZacNavigatorState? get navigatorState;
+  @override
+  GetFlutterNavigatorState? get navigatorState;
   ZacActions? get result;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_FlutterNavigatorPopUntilRouteName
-    extends _FlutterNavigatorPopUntilRouteName {
-  _$_FlutterNavigatorPopUntilRouteName(
-      {required this.routeName, this.navigatorState, final String? $type})
-      : $type = $type ?? 'z:1:Navigator.popUntilRouteName',
-        super._();
-
-  factory _$_FlutterNavigatorPopUntilRouteName.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_FlutterNavigatorPopUntilRouteNameFromJson(json);
-
-  @override
-  final ZacString routeName;
-  @override
-  final ZacNavigatorState? navigatorState;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterNavigator.popUntilRouteName(routeName: $routeName, navigatorState: $navigatorState)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FlutterNavigatorPopUntilRouteName &&
-            const DeepCollectionEquality().equals(other.routeName, routeName) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeName),
-      const DeepCollectionEquality().hash(navigatorState));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterNavigator value) $default, {
-    required TResult Function(_FlutterNavigatorPush value) push,
-    required TResult Function(_FlutterNavigatorPushNamed value) pushNamed,
-    required TResult Function(_FlutterNavigatorPop value) pop,
-    required TResult Function(_FlutterNavigatorMaybePop value) maybePop,
-    required TResult Function(_FlutterNavigatorPushReplacement value)
-        pushReplacement,
-    required TResult Function(_FlutterNavigatorPushReplacementNamed value)
-        pushReplacementNamed,
-    required TResult Function(_FlutterNavigatorPopUntilRouteName value)
-        popUntilRouteName,
-  }) {
-    return popUntilRouteName(this);
-  }
-}
-
-abstract class _FlutterNavigatorPopUntilRouteName extends FlutterNavigator {
-  factory _FlutterNavigatorPopUntilRouteName(
-          {required final ZacString routeName,
-          final ZacNavigatorState? navigatorState}) =
-      _$_FlutterNavigatorPopUntilRouteName;
-  _FlutterNavigatorPopUntilRouteName._() : super._();
-
-  factory _FlutterNavigatorPopUntilRouteName.fromJson(
-          Map<String, dynamic> json) =
-      _$_FlutterNavigatorPopUntilRouteName.fromJson;
-
-  ZacString get routeName;
-  ZacNavigatorState? get navigatorState;
-}
-
-RouteFactorySingleRoute _$RouteFactorySingleRouteFromJson(
-    Map<String, dynamic> json) {
-  return _RouteFactorySingleRoute.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RouteFactorySingleRoute {
-  RouteFactoryRouteConfig get routeConfig => throw _privateConstructorUsedError;
-  String? get provideArgsNamePrefix => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactorySingleRoute value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_RouteFactorySingleRoute extends _RouteFactorySingleRoute {
-  _$_RouteFactorySingleRoute(
-      {required this.routeConfig, this.provideArgsNamePrefix})
-      : super._();
-
-  factory _$_RouteFactorySingleRoute.fromJson(Map<String, dynamic> json) =>
-      _$$_RouteFactorySingleRouteFromJson(json);
-
-  @override
-  final RouteFactoryRouteConfig routeConfig;
-  @override
-  final String? provideArgsNamePrefix;
-
-  @override
-  String toString() {
-    return 'RouteFactorySingleRoute(routeConfig: $routeConfig, provideArgsNamePrefix: $provideArgsNamePrefix)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RouteFactorySingleRoute &&
-            const DeepCollectionEquality()
-                .equals(other.routeConfig, routeConfig) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsNamePrefix, provideArgsNamePrefix));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeConfig),
-      const DeepCollectionEquality().hash(provideArgsNamePrefix));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactorySingleRoute value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _RouteFactorySingleRoute extends RouteFactorySingleRoute {
-  factory _RouteFactorySingleRoute(
-      {required final RouteFactoryRouteConfig routeConfig,
-      final String? provideArgsNamePrefix}) = _$_RouteFactorySingleRoute;
-  _RouteFactorySingleRoute._() : super._();
-
-  factory _RouteFactorySingleRoute.fromJson(Map<String, dynamic> json) =
-      _$_RouteFactorySingleRoute.fromJson;
-
-  @override
-  RouteFactoryRouteConfig get routeConfig;
-  @override
-  String? get provideArgsNamePrefix;
-}
-
-RouteFactoryFromRoutes _$RouteFactoryFromRoutesFromJson(
-    Map<String, dynamic> json) {
-  return _RouteFactoryFromRoutes.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RouteFactoryFromRoutes {
-  Map<String, RouteFactoryRouteConfig> get routes =>
-      throw _privateConstructorUsedError;
-  String? get provideArgsNamePrefix => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryFromRoutes value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_RouteFactoryFromRoutes extends _RouteFactoryFromRoutes {
-  _$_RouteFactoryFromRoutes(
-      {required final Map<String, RouteFactoryRouteConfig> routes,
-      this.provideArgsNamePrefix})
-      : _routes = routes,
-        super._();
-
-  factory _$_RouteFactoryFromRoutes.fromJson(Map<String, dynamic> json) =>
-      _$$_RouteFactoryFromRoutesFromJson(json);
-
-  final Map<String, RouteFactoryRouteConfig> _routes;
-  @override
-  Map<String, RouteFactoryRouteConfig> get routes {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_routes);
-  }
-
-  @override
-  final String? provideArgsNamePrefix;
-
-  @override
-  String toString() {
-    return 'RouteFactoryFromRoutes(routes: $routes, provideArgsNamePrefix: $provideArgsNamePrefix)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RouteFactoryFromRoutes &&
-            const DeepCollectionEquality().equals(other._routes, _routes) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsNamePrefix, provideArgsNamePrefix));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_routes),
-      const DeepCollectionEquality().hash(provideArgsNamePrefix));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryFromRoutes value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _RouteFactoryFromRoutes extends RouteFactoryFromRoutes {
-  factory _RouteFactoryFromRoutes(
-      {required final Map<String, RouteFactoryRouteConfig> routes,
-      final String? provideArgsNamePrefix}) = _$_RouteFactoryFromRoutes;
-  _RouteFactoryFromRoutes._() : super._();
-
-  factory _RouteFactoryFromRoutes.fromJson(Map<String, dynamic> json) =
-      _$_RouteFactoryFromRoutes.fromJson;
-
-  @override
-  Map<String, RouteFactoryRouteConfig> get routes;
-  @override
-  String? get provideArgsNamePrefix;
-}
-
-RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
-    Map<String, dynamic> json) {
-  return _RouteFactoryConfig.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RouteFactoryRouteConfig {
-  FlutterRoute get route => throw _privateConstructorUsedError;
-  ZacString? get provideArgsName => throw _privateConstructorUsedError;
-  List<SharedValueTransformer>? get transform =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryConfig value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_RouteFactoryConfig extends _RouteFactoryConfig {
-  _$_RouteFactoryConfig(
-      {required this.route,
-      this.provideArgsName,
-      final List<SharedValueTransformer>? transform})
-      : _transform = transform,
-        super._();
-
-  factory _$_RouteFactoryConfig.fromJson(Map<String, dynamic> json) =>
-      _$$_RouteFactoryConfigFromJson(json);
-
-  @override
-  final FlutterRoute route;
-  @override
-  final ZacString? provideArgsName;
-  final List<SharedValueTransformer>? _transform;
-  @override
-  List<SharedValueTransformer>? get transform {
-    final value = _transform;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'RouteFactoryRouteConfig(route: $route, provideArgsName: $provideArgsName, transform: $transform)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RouteFactoryConfig &&
-            const DeepCollectionEquality().equals(other.route, route) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsName, provideArgsName) &&
-            const DeepCollectionEquality()
-                .equals(other._transform, _transform));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(route),
-      const DeepCollectionEquality().hash(provideArgsName),
-      const DeepCollectionEquality().hash(_transform));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryConfig value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
-  factory _RouteFactoryConfig(
-      {required final FlutterRoute route,
-      final ZacString? provideArgsName,
-      final List<SharedValueTransformer>? transform}) = _$_RouteFactoryConfig;
-  _RouteFactoryConfig._() : super._();
-
-  factory _RouteFactoryConfig.fromJson(Map<String, dynamic> json) =
-      _$_RouteFactoryConfig.fromJson;
-
-  @override
-  FlutterRoute get route;
-  @override
-  ZacString? get provideArgsName;
-  @override
-  List<SharedValueTransformer>? get transform;
 }
 
 FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
