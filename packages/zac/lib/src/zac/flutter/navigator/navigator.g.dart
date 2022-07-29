@@ -39,6 +39,19 @@ _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
     );
 
+_$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(
+        Map<String, dynamic> json) =>
+    _$_RouteFactoryConfig(
+      route: FlutterRoute.fromJson(json['route'] as Object),
+      provideArgsName: json['provideArgsName'] == null
+          ? null
+          : ZacString.fromJson(json['provideArgsName'] as Object),
+      transform: (json['transform'] as List<dynamic>?)
+          ?.map(
+              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
 _$_RouteFactorySingleRoute _$$_RouteFactorySingleRouteFromJson(
         Map<String, dynamic> json) =>
     _$_RouteFactorySingleRoute(
@@ -55,17 +68,4 @@ _$_RouteFactoryFromRoutes _$$_RouteFactoryFromRoutesFromJson(
             k, RouteFactoryRouteConfig.fromJson(e as Map<String, dynamic>)),
       ),
       provideArgsNamePrefix: json['provideArgsNamePrefix'] as String?,
-    );
-
-_$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(
-        Map<String, dynamic> json) =>
-    _$_RouteFactoryConfig(
-      route: FlutterRoute.fromJson(json['route'] as Object),
-      provideArgsName: json['provideArgsName'] == null
-          ? null
-          : ZacString.fromJson(json['provideArgsName'] as Object),
-      transform: (json['transform'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );

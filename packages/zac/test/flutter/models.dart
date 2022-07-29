@@ -6,7 +6,7 @@ import 'package:zac/src/converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/flutter/widgets/layout/sized_box/sized_box.dart';
+import 'package:zac/src/flutter/widgets/_layout/sized_box/sized_box.dart';
 
 class FakeZacContext extends Fake implements ZacBuildContext {}
 

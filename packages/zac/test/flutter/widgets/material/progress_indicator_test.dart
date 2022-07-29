@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/widgets/material/progress_indicator/progress_indicator.dart';
+import 'package:zac/src/flutter/widgets/_material/progress_indicator/progress_indicator.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';

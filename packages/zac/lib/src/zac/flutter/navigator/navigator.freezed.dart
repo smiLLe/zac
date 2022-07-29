@@ -307,6 +307,103 @@ abstract class _PopUntilRouteName extends ZacFlutterNavigatorActions {
   GetFlutterNavigatorState? get navigatorState;
 }
 
+RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
+    Map<String, dynamic> json) {
+  return _RouteFactoryConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RouteFactoryRouteConfig {
+  FlutterRoute get route => throw _privateConstructorUsedError;
+  ZacString? get provideArgsName => throw _privateConstructorUsedError;
+  List<SharedValueTransformer>? get transform =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_RouteFactoryConfig value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_RouteFactoryConfig extends _RouteFactoryConfig {
+  _$_RouteFactoryConfig(
+      {required this.route,
+      this.provideArgsName,
+      final List<SharedValueTransformer>? transform})
+      : _transform = transform,
+        super._();
+
+  factory _$_RouteFactoryConfig.fromJson(Map<String, dynamic> json) =>
+      _$$_RouteFactoryConfigFromJson(json);
+
+  @override
+  final FlutterRoute route;
+  @override
+  final ZacString? provideArgsName;
+  final List<SharedValueTransformer>? _transform;
+  @override
+  List<SharedValueTransformer>? get transform {
+    final value = _transform;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'RouteFactoryRouteConfig(route: $route, provideArgsName: $provideArgsName, transform: $transform)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RouteFactoryConfig &&
+            const DeepCollectionEquality().equals(other.route, route) &&
+            const DeepCollectionEquality()
+                .equals(other.provideArgsName, provideArgsName) &&
+            const DeepCollectionEquality()
+                .equals(other._transform, _transform));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(route),
+      const DeepCollectionEquality().hash(provideArgsName),
+      const DeepCollectionEquality().hash(_transform));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_RouteFactoryConfig value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
+  factory _RouteFactoryConfig(
+      {required final FlutterRoute route,
+      final ZacString? provideArgsName,
+      final List<SharedValueTransformer>? transform}) = _$_RouteFactoryConfig;
+  _RouteFactoryConfig._() : super._();
+
+  factory _RouteFactoryConfig.fromJson(Map<String, dynamic> json) =
+      _$_RouteFactoryConfig.fromJson;
+
+  @override
+  FlutterRoute get route;
+  @override
+  ZacString? get provideArgsName;
+  @override
+  List<SharedValueTransformer>? get transform;
+}
+
 RouteFactorySingleRoute _$RouteFactorySingleRouteFromJson(
     Map<String, dynamic> json) {
   return _RouteFactorySingleRoute.fromJson(json);
@@ -470,101 +567,4 @@ abstract class _RouteFactoryFromRoutes extends RouteFactoryFromRoutes {
   Map<String, RouteFactoryRouteConfig> get routes;
   @override
   String? get provideArgsNamePrefix;
-}
-
-RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
-    Map<String, dynamic> json) {
-  return _RouteFactoryConfig.fromJson(json);
-}
-
-/// @nodoc
-mixin _$RouteFactoryRouteConfig {
-  FlutterRoute get route => throw _privateConstructorUsedError;
-  ZacString? get provideArgsName => throw _privateConstructorUsedError;
-  List<SharedValueTransformer>? get transform =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryConfig value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_RouteFactoryConfig extends _RouteFactoryConfig {
-  _$_RouteFactoryConfig(
-      {required this.route,
-      this.provideArgsName,
-      final List<SharedValueTransformer>? transform})
-      : _transform = transform,
-        super._();
-
-  factory _$_RouteFactoryConfig.fromJson(Map<String, dynamic> json) =>
-      _$$_RouteFactoryConfigFromJson(json);
-
-  @override
-  final FlutterRoute route;
-  @override
-  final ZacString? provideArgsName;
-  final List<SharedValueTransformer>? _transform;
-  @override
-  List<SharedValueTransformer>? get transform {
-    final value = _transform;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'RouteFactoryRouteConfig(route: $route, provideArgsName: $provideArgsName, transform: $transform)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RouteFactoryConfig &&
-            const DeepCollectionEquality().equals(other.route, route) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsName, provideArgsName) &&
-            const DeepCollectionEquality()
-                .equals(other._transform, _transform));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(route),
-      const DeepCollectionEquality().hash(provideArgsName),
-      const DeepCollectionEquality().hash(_transform));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_RouteFactoryConfig value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
-  factory _RouteFactoryConfig(
-      {required final FlutterRoute route,
-      final ZacString? provideArgsName,
-      final List<SharedValueTransformer>? transform}) = _$_RouteFactoryConfig;
-  _RouteFactoryConfig._() : super._();
-
-  factory _RouteFactoryConfig.fromJson(Map<String, dynamic> json) =
-      _$_RouteFactoryConfig.fromJson;
-
-  @override
-  FlutterRoute get route;
-  @override
-  ZacString? get provideArgsName;
-  @override
-  List<SharedValueTransformer>? get transform;
 }
