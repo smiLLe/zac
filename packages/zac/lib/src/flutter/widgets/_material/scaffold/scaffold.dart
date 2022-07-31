@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 
@@ -83,9 +81,8 @@ class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
   }) = _FlutterScaffoldShowBottomSheet;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacBuildContext context, ActionPayload payload) {
-    return map(
+  void execute(ZacBuildContext context, ActionPayload payload) {
+    map(
       (_) => throw StateError('Should never happen'),
       showBottomSheet: (value) {
         final state = Scaffold.maybeOf(context.context);
@@ -214,9 +211,8 @@ class FlutterScaffoldMessenger
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacBuildContext context, ActionPayload payload) {
-    return map(
+  void execute(ZacBuildContext context, ActionPayload payload) {
+    map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context.context);
         if (null == state) return null;
