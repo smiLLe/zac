@@ -1,6 +1,7 @@
 import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
+import 'package:zac/src/zac/shared_value/shared_value.dart';
 import 'package:zac/src/zac/widget_builder/widget_builder.dart';
 import 'package:zac/src/base.dart';
 
@@ -16,6 +17,11 @@ part 'helper.freezed.dart';
 part 'helper.g.dart';
 
 class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
+
+TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
+  return isA<FilledSharedValue>()
+      .having((p0) => p0.data, 'FilledSharedValue.data', matcher);
+}
 
 Future<void> testMap(
   WidgetTester tester,

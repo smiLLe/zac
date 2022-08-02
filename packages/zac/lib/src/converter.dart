@@ -102,8 +102,8 @@ Map<String, Convert> allConverters = {
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
   UpdateSharedValue.unionValue: UpdateSharedValue.fromJson,
-  BuiltInTransformer.unionValue: BuiltInTransformer.fromJson,
-  BuiltInTransformer.unionValueIntAdd: BuiltInTransformer.fromJson,
+  ConvertSharedValueTransformer.unionValue:
+      ConvertSharedValueTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState

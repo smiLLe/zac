@@ -1,4 +1,3 @@
-import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -9,19 +8,23 @@ part 'shared_value.g.dart';
 
 Type _typeOf<T>() => T;
 
+class AccessEmptySharedValueError extends StateError {
+  AccessEmptySharedValueError(super.message);
+}
+
 @defaultConverterFreezed
 class SharedValue with _$SharedValue {
   const SharedValue._();
 
-  factory SharedValue(Object data) = FilledSharedValue;
-  factory SharedValue.empty() = EmptySharedValue;
+  factory SharedValue(Object? data) = FilledSharedValue;
+  const factory SharedValue.empty() = EmptySharedValue;
 
   static final provider = StateProvider.family.autoDispose<SharedValue, String>(
-    (ref, fam) => SharedValue.empty(),
-    name: 'ZacWidget SharedValue',
+    (_, __) => const SharedValue.empty(),
+    name: 'Zac SharedValue',
   );
 
-  static Object getFilled(
+  static Object? getFilled(
       SharedValueConsumeType type, ZacBuildContext context, String name) {
     return type
         .map(
@@ -29,7 +32,7 @@ class SharedValue with _$SharedValue {
             read: (_) => context.ref.read(provider(name)))
         .map(
           (value) => value.data,
-          empty: (_) => throw StateError('''
+          empty: (_) => throw AccessEmptySharedValueError('''
 Could not find a ${_typeOf<SharedValue>()} for name: "$name".
 Provide a ${_typeOf<SharedValue>()} via "${SharedValueProviderBuilder.unionValue}".
 See "${_typeOf<SharedValueProviderBuilder>()}" for more info.
@@ -37,31 +40,38 @@ See "${_typeOf<SharedValueProviderBuilder>()}" for more info.
         );
   }
 
-  static void update(ZacBuildContext context, Object value, String name,
-      {Object Function(Object current)? reduce}) {
-    final notifier = context.ref.read(SharedValue.provider(name).notifier);
-    notifier.state = SharedValue(reduce?.call(getFilled(
-          const SharedValueConsumeType.read(),
-          context,
-          name,
-        )) ??
-        value);
+  static void update(
+    ZacBuildContext context,
+    String name,
+    Object? Function(Object? current) update,
+  ) {
+    context.ref
+        .read(SharedValue.provider(name).notifier)
+        .update((state) => state.map(
+              (obj) => SharedValue(update(obj.data)),
+              empty: (_) => throw AccessEmptySharedValueError('''
+It was not possible to update the $SharedValue "$name",
+because the $SharedValue did not exist until now.
+Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
+in your Widget tree before trying to update the $SharedValue.
+'''),
+            ));
   }
 
-  static Object transform(
+  static Object? transform(
       List<SharedValueTransformer> transformer,
-      Object value,
+      Object? value,
       ZacBuildContext context,
       SharedValueInteractionType interaction) {
     if (value is List) {
       return value
-          .cast<Object>()
-          .map((Object e) => transformer.transformSharedValues(e, interaction))
+          .cast<Object?>()
+          .map((Object? e) => transformer.transformSharedValues(e, interaction))
           .toList();
     }
 
-    if (!ConverterHelper.isConverter(value)) {
-      return (value as Map<String, dynamic>).cast<String, Object>().map((key,
+    if (!ConverterHelper.isConverter(value) && value is Map) {
+      return (value as Map<String, dynamic>).cast<String, Object?>().map((key,
               value) =>
           MapEntry(key, transformer.transformSharedValues(value, interaction)));
     }
@@ -77,6 +87,7 @@ class SharedValueInteractionType with _$SharedValueInteractionType {
   factory SharedValueInteractionType.action({
     required ZacBuildContext context,
     required ActionPayload payload,
+    required Object? current,
   }) = _SharedValueInteractionTypeAction;
 
   factory SharedValueInteractionType.consume({
@@ -95,44 +106,34 @@ abstract class SharedValueTransformer {
   factory SharedValueTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<SharedValueTransformer>(json);
 
-  Object transform(Object value, SharedValueInteractionType interaction);
+  Object? transform(Object? value, SharedValueInteractionType interaction);
 }
 
 extension SharedValueTransformerOnList on List<SharedValueTransformer> {
-  Object transformSharedValues(
-          Object value, SharedValueInteractionType interaction) =>
-      fold<Object>(
+  Object? transformSharedValues(
+          Object? value, SharedValueInteractionType interaction) =>
+      fold<Object?>(
           value,
           (previousValue, element) =>
               element.transform(previousValue, interaction));
 }
 
 @defaultConverterFreezed
-class BuiltInTransformer
-    with _$BuiltInTransformer
+class ConvertSharedValueTransformer
+    with _$ConvertSharedValueTransformer
     implements SharedValueTransformer {
-  const BuiltInTransformer._();
+  const ConvertSharedValueTransformer._();
+  static const String unionValue = 'z:1:ConvertSharedValueTransformer';
 
-  static const String unionValue = 'z:1:SharedValue:Transform:convert';
-  static const String unionValueIntAdd = 'z:1:SharedValue:Transform:Int.add';
+  factory ConvertSharedValueTransformer.fromJson(Map<String, dynamic> json) =>
+      _$ConvertSharedValueTransformerFromJson(json);
 
-  factory BuiltInTransformer.fromJson(Map<String, dynamic> json) =>
-      _$BuiltInTransformerFromJson(json);
-
-  @FreezedUnionValue(BuiltInTransformer.unionValue)
-  factory BuiltInTransformer.convert() = _Convert;
-
-  @FreezedUnionValue(BuiltInTransformer.unionValueIntAdd)
-  factory BuiltInTransformer.intAdd({required int amount}) = _IntAdd;
+  @FreezedUnionValue(ConvertSharedValueTransformer.unionValue)
+  factory ConvertSharedValueTransformer() = _Convert;
 
   @override
-  Object transform(Object value, SharedValueInteractionType interaction) {
-    return map(
-        convert: (obj) => ConverterHelper.convertToType<Object>(value),
-        intAdd: (obj) {
-          assert(value is int, 'value is no int in $unionValueIntAdd');
-          return (value as int) + obj.amount;
-        });
+  Object? transform(Object? value, SharedValueInteractionType interaction) {
+    return ConverterHelper.convertToType<Object>(value);
   }
 }
 
@@ -154,9 +155,8 @@ class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
 
   @override
   void execute(ZacBuildContext context, ActionPayload payload) =>
-      SharedValue.update(
-        context,
-        null == transformer || true == transformer!.isEmpty
+      SharedValue.update(context, name, (current) {
+        return null == transformer || true == transformer!.isEmpty
             ? value
             : SharedValue.transform(
                 transformer!,
@@ -165,9 +165,9 @@ class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
                 SharedValueInteractionType.action(
                   context: context,
                   payload: payload,
-                )),
-        name,
-      );
+                  current: current,
+                ));
+      });
 }
 
 @defaultConverterFreezed
@@ -198,7 +198,7 @@ class SharedValueProviderBuilder
   @FreezedUnionValue(SharedValueProviderBuilder.unionValue)
   factory SharedValueProviderBuilder({
     FlutterKey? key,
-    required Object value,
+    required Object? value,
     List<SharedValueTransformer>? transformer,
     required String name,
     required ZacWidget child,
@@ -225,7 +225,7 @@ class SharedValueProvider extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final Object value;
+  final Object? value;
   final String name;
   final ZacWidget child;
   final List<SharedValueTransformer>? transformer;

@@ -48,7 +48,7 @@ class _$FilledSharedValue extends FilledSharedValue {
       _$$FilledSharedValueFromJson(json);
 
   @override
-  final Object data;
+  final Object? data;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -82,19 +82,19 @@ class _$FilledSharedValue extends FilledSharedValue {
 }
 
 abstract class FilledSharedValue extends SharedValue {
-  factory FilledSharedValue(final Object data) = _$FilledSharedValue;
+  factory FilledSharedValue(final Object? data) = _$FilledSharedValue;
   FilledSharedValue._() : super._();
 
   factory FilledSharedValue.fromJson(Map<String, dynamic> json) =
       _$FilledSharedValue.fromJson;
 
-  Object get data;
+  Object? get data;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$EmptySharedValue extends EmptySharedValue {
-  _$EmptySharedValue({final String? $type})
+  const _$EmptySharedValue({final String? $type})
       : $type = $type ?? 'empty',
         super._();
 
@@ -130,8 +130,8 @@ class _$EmptySharedValue extends EmptySharedValue {
 }
 
 abstract class EmptySharedValue extends SharedValue {
-  factory EmptySharedValue() = _$EmptySharedValue;
-  EmptySharedValue._() : super._();
+  const factory EmptySharedValue() = _$EmptySharedValue;
+  const EmptySharedValue._() : super._();
 
   factory EmptySharedValue.fromJson(Map<String, dynamic> json) =
       _$EmptySharedValue.fromJson;
@@ -154,17 +154,19 @@ mixin _$SharedValueInteractionType {
 class _$_SharedValueInteractionTypeAction
     extends _SharedValueInteractionTypeAction {
   _$_SharedValueInteractionTypeAction(
-      {required this.context, required this.payload})
+      {required this.context, required this.payload, required this.current})
       : super._();
 
   @override
   final ZacBuildContext context;
   @override
   final ActionPayload payload;
+  @override
+  final Object? current;
 
   @override
   String toString() {
-    return 'SharedValueInteractionType.action(context: $context, payload: $payload)';
+    return 'SharedValueInteractionType.action(context: $context, payload: $payload, current: $current)';
   }
 
   @override
@@ -173,14 +175,16 @@ class _$_SharedValueInteractionTypeAction
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueInteractionTypeAction &&
             const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality().equals(other.payload, payload));
+            const DeepCollectionEquality().equals(other.payload, payload) &&
+            const DeepCollectionEquality().equals(other.current, current));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(payload));
+      const DeepCollectionEquality().hash(payload),
+      const DeepCollectionEquality().hash(current));
 
   @override
   @optionalTypeArgs
@@ -197,13 +201,14 @@ class _$_SharedValueInteractionTypeAction
 abstract class _SharedValueInteractionTypeAction
     extends SharedValueInteractionType {
   factory _SharedValueInteractionTypeAction(
-          {required final ZacBuildContext context,
-          required final ActionPayload payload}) =
-      _$_SharedValueInteractionTypeAction;
+      {required final ZacBuildContext context,
+      required final ActionPayload payload,
+      required final Object? current}) = _$_SharedValueInteractionTypeAction;
   _SharedValueInteractionTypeAction._() : super._();
 
   ZacBuildContext get context;
   ActionPayload get payload;
+  Object? get current;
 }
 
 /// @nodoc
@@ -349,45 +354,31 @@ abstract class _SharedValueInteractionTypeOther
   Object? get data;
 }
 
-BuiltInTransformer _$BuiltInTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
-    case 'z:1:SharedValue:Transform:convert':
-      return _Convert.fromJson(json);
-    case 'z:1:SharedValue:Transform:Int.add':
-      return _IntAdd.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, '_converter', 'BuiltInTransformer',
-          'Invalid union type "${json['_converter']}"!');
-  }
+ConvertSharedValueTransformer _$ConvertSharedValueTransformerFromJson(
+    Map<String, dynamic> json) {
+  return _Convert.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BuiltInTransformer {
+mixin _$ConvertSharedValueTransformer {
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Convert value) convert,
-    required TResult Function(_IntAdd value) intAdd,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_Convert value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_Convert extends _Convert {
-  _$_Convert({final String? $type})
-      : $type = $type ?? 'z:1:SharedValue:Transform:convert',
-        super._();
+  _$_Convert() : super._();
 
   factory _$_Convert.fromJson(Map<String, dynamic> json) =>
       _$$_ConvertFromJson(json);
 
-  @JsonKey(name: '_converter')
-  final String $type;
-
   @override
   String toString() {
-    return 'BuiltInTransformer.convert()';
+    return 'ConvertSharedValueTransformer()';
   }
 
   @override
@@ -402,72 +393,18 @@ class _$_Convert extends _Convert {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Convert value) convert,
-    required TResult Function(_IntAdd value) intAdd,
-  }) {
-    return convert(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_Convert value) $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _Convert extends BuiltInTransformer {
+abstract class _Convert extends ConvertSharedValueTransformer {
   factory _Convert() = _$_Convert;
   _Convert._() : super._();
 
   factory _Convert.fromJson(Map<String, dynamic> json) = _$_Convert.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_IntAdd extends _IntAdd {
-  _$_IntAdd({required this.amount, final String? $type})
-      : $type = $type ?? 'z:1:SharedValue:Transform:Int.add',
-        super._();
-
-  factory _$_IntAdd.fromJson(Map<String, dynamic> json) =>
-      _$$_IntAddFromJson(json);
-
-  @override
-  final int amount;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'BuiltInTransformer.intAdd(amount: $amount)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_IntAdd &&
-            const DeepCollectionEquality().equals(other.amount, amount));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(amount));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Convert value) convert,
-    required TResult Function(_IntAdd value) intAdd,
-  }) {
-    return intAdd(this);
-  }
-}
-
-abstract class _IntAdd extends BuiltInTransformer {
-  factory _IntAdd({required final int amount}) = _$_IntAdd;
-  _IntAdd._() : super._();
-
-  factory _IntAdd.fromJson(Map<String, dynamic> json) = _$_IntAdd.fromJson;
-
-  int get amount;
 }
 
 UpdateSharedValue _$UpdateSharedValueFromJson(Map<String, dynamic> json) {
@@ -690,7 +627,7 @@ SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
 /// @nodoc
 mixin _$SharedValueProviderBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  Object get value => throw _privateConstructorUsedError;
+  Object? get value => throw _privateConstructorUsedError;
   List<SharedValueTransformer>? get transformer =>
       throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -721,7 +658,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   @override
   final FlutterKey? key;
   @override
-  final Object value;
+  final Object? value;
   final List<SharedValueTransformer>? _transformer;
   @override
   List<SharedValueTransformer>? get transformer {
@@ -776,7 +713,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
 abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   factory _SharedValueProviderBuilder(
       {final FlutterKey? key,
-      required final Object value,
+      required final Object? value,
       final List<SharedValueTransformer>? transformer,
       required final String name,
       required final ZacWidget child}) = _$_SharedValueProviderBuilder;
@@ -788,7 +725,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   FlutterKey? get key;
   @override
-  Object get value;
+  Object? get value;
   @override
   List<SharedValueTransformer>? get transformer;
   @override

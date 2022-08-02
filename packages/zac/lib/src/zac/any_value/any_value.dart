@@ -51,7 +51,7 @@ mixin ConsumeValue<Of> {
     if (consumedValue is ActualValue<Of>) {
       value = consumedValue.value;
     } else if (consumedValue is Of) {
-      value = consumedValue as Of;
+      value = consumedValue;
     } else {
       throw StateError('''
 It was not possible to consume a value of "${_typeOf<Of>()}"
