@@ -41,7 +41,7 @@ class ZacFlutterGlobalKeyNavigatorState
   factory ZacFlutterGlobalKeyNavigatorState.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
   @override
@@ -89,7 +89,7 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
         debugLabel: builder.debugLabel?.getValue(zacContext),
       ),
       name: builder.name.getValue(zacContext),
-      child: builder.child,
+      builder: builder.child.buildWidget,
     );
   }
 }
@@ -182,7 +182,7 @@ class RouteFactorySingleRoute
           }
 
           return SharedValueProvider(
-            child: zacWidget,
+            builder: zacWidget.buildWidget,
             name: RouteFactoryFromRoutes.providerName(
               context,
               routeConfig,
@@ -244,7 +244,7 @@ class RouteFactoryFromRoutes
           }
 
           return SharedValueProvider(
-            child: zacWidget,
+            builder: zacWidget.buildWidget,
             name: RouteFactoryFromRoutes.providerName(
               context,
               config,

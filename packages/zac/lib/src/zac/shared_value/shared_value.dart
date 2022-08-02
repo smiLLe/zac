@@ -211,7 +211,7 @@ class SharedValueProviderBuilder
       transformer: transformer,
       value: value,
       name: name,
-      child: child,
+      builder: child.buildWidget,
     );
   }
 }
@@ -221,13 +221,13 @@ class SharedValueProvider extends StatelessWidget {
     required this.value,
     this.transformer,
     required this.name,
-    required this.child,
+    required this.builder,
     Key? key,
   }) : super(key: key);
 
   final Object? value;
   final String name;
-  final ZacWidget child;
+  final Widget Function(ZacBuildContext context) builder;
   final List<SharedValueTransformer>? transformer;
 
   @override
@@ -242,9 +242,7 @@ class SharedValueProvider extends StatelessWidget {
                   : SharedValue.transform(transformer!, value, context,
                       SharedValueInteractionType.provide(context: context))))),
         ],
-        child: UpdateContextBuilder(
-          builder: (context) => child.buildWidget(context),
-        ),
+        child: UpdateContextBuilder(builder: builder),
       ),
     );
   }

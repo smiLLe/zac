@@ -38,7 +38,7 @@ mixin ActualValue<Of> {
 mixin ConsumeValue<Of> {
   String get name;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get mapper;
+  List<SharedValueTransformer>? get transformer;
 
   Of getSharedValue(ZacBuildContext context) {
     final consumedValue = SharedValue.getFilled(
@@ -62,23 +62,23 @@ $consumedValue
 ''');
     }
 
-    if (null == mapper || true == mapper?.isEmpty) {
+    if (null == transformer || true == transformer?.isEmpty) {
       return value;
     }
 
     assert(value is Object);
 
-    final mappedVal = SharedValue.transform(mapper!, value as Object, context,
-        SharedValueInteractionType.consume(context: context));
+    final mappedVal = SharedValue.transform(transformer!, value as Object,
+        context, SharedValueInteractionType.consume(context: context));
 
     assert(() {
       if (mappedVal is Of) return true;
-      final allMapperTypers = mapper!.map((e) => e.runtimeType);
+      final alltransformerTypers = transformer!.map((e) => e.runtimeType);
       final msg = '''
 It was not possible to map a consumed ${_typeOf<SharedValue>()}
-because the mappers used did not return a value of type "${_typeOf<Of>()}".
+because the transformers used did not return a value of type "${_typeOf<Of>()}".
 Instead the returned value is of runtimeType "${mappedVal.runtimeType}".
-The following mapper were used: "${allMapperTypers.join(' > ')}".
+The following transformer were used: "${alltransformerTypers.join(' > ')}".
 The mapped value returned is:
 $mappedVal
 
@@ -95,7 +95,7 @@ $consumedValue
 mixin ConsumeValueList<Of> {
   String get name;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get mapper;
+  List<SharedValueTransformer>? get transformer;
 
   List<Of> getSharedValue(ZacBuildContext context) {
     final consumedValue = SharedValue.getFilled(
@@ -124,23 +124,23 @@ $consumedValue
       }
     }
 
-    if (null == mapper || true == mapper?.isEmpty) {
+    if (null == transformer || true == transformer?.isEmpty) {
       return value;
     }
 
     final mappedValues = value.map((e) {
       assert(e is Object);
-      final mapped = mapper!.transformSharedValues(
+      final mapped = transformer!.transformSharedValues(
           e as Object, SharedValueInteractionType.consume(context: context));
 
       assert(() {
         if (mapped is Of) return true;
-        final allMapperTypers = mapper!.map((e) => e.runtimeType);
+        final alltransformerTypers = transformer!.map((e) => e.runtimeType);
         final msg = '''
 It was not possible to map a consumed ${_typeOf<SharedValue>()}
 to an expected type "${_typeOf<Of>()}" in "${_typeOf<ConsumeValueList<Of>>()}".
-The mappers used returned the following runtimeType "${mapped.runtimeType}".
-The following mapper were used: "${allMapperTypers.join(' > ')}".
+The transformers used returned the following runtimeType "${mapped.runtimeType}".
+The following transformer were used: "${alltransformerTypers.join(' > ')}".
 The mapped value:
 $mapped
 
@@ -184,7 +184,7 @@ class ZacInt with _$ZacInt {
   factory ZacInt.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacIntConsume;
 
   int getValue(ZacBuildContext context) => map(
@@ -221,7 +221,7 @@ class ZacDouble with _$ZacDouble {
   factory ZacDouble.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacDoubleConsume;
 
   double getValue(ZacBuildContext context) => map(
@@ -255,7 +255,7 @@ class ZacString with _$ZacString {
   factory ZacString.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacStringConsume;
 
   String getValue(ZacBuildContext context) => map(
@@ -289,7 +289,7 @@ class ZacBool with _$ZacBool {
   factory ZacBool.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacBoolConsume;
 
   bool getValue(ZacBuildContext context) => map(
@@ -334,7 +334,7 @@ class ZacMap with _$ZacMap {
   factory ZacMap.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacMapConsume;
 
   Map<String, dynamic> getValue(ZacBuildContext context) => map(
@@ -382,7 +382,7 @@ class ZacObject with _$ZacObject {
   factory ZacObject.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ZacObjectConsume;
 
   Object getValue(ZacBuildContext context) => map(
@@ -425,7 +425,7 @@ class ListOfZacWidget with _$ListOfZacWidget {
   factory ListOfZacWidget.consume({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = ListOfZacWidgetConsume;
 
   List<Widget> getValue(ZacBuildContext context) => map(
@@ -452,7 +452,7 @@ class ZacWidgetConsumerBuilder
   factory ZacWidgetConsumerBuilder({
     required String name,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? mapper,
+    List<SharedValueTransformer>? transformer,
   }) = _ZacWidgetConsumerBuilder;
 
   @override

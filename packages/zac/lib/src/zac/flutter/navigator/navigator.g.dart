@@ -27,7 +27,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
               ? null
               : SharedValueConsumeType.fromJson(
                   json['consumeType'] as Map<String, dynamic>),
-          mapper: (json['mapper'] as List<dynamic>?)
+          transformer: (json['transformer'] as List<dynamic>?)
               ?.map((e) =>
                   SharedValueTransformer.fromJson(e as Map<String, dynamic>))
               .toList(),

@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/flutter/widgets/_layout/container/container.dart';
 import 'package:zac/src/flutter/widgets/_layout/sized_box/sized_box.dart';
+import 'package:zac/src/flutter/widgets/text/text.dart';
+import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/zac/shared_value/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -23,6 +27,47 @@ void main() {
     test('provider default value', () {
       final c = ProviderContainer();
       expect(c.read(SharedValue.provider('abc')), isA<EmptySharedValue>());
+    });
+
+    testWidgets('can be transformed and provieded through SharedValueProvider',
+        (tester) async {
+      late ZacBuildContext context;
+
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          builder: (c) {
+            context = c;
+            // ignore returned widget
+            return const SizedBox();
+          },
+          name: 'foo',
+          value: const <String, dynamic>{
+            '_converter': 'f:1:SizedBox',
+          },
+          transformer: [ConvertSharedValueTransformer()],
+        ),
+      );
+
+      expect(
+        context.ref.read(SharedValue.provider('foo')),
+        isFilledSharedValue(isA<FlutterSizedBox>()),
+      );
+    });
+
+    testWidgets('can be consumed and then transformed', (tester) async {
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          name: 'foo',
+          value: 'hello',
+          builder: (c) => FlutterText(
+            ZacString.consume(name: 'foo', transformer: [_ConcatStr(' world')]),
+          ).buildWidget(c),
+        ),
+      );
+
+      expect(find.text('hello world'), findsOneWidget);
     });
 
     group('getFilled()', () {
