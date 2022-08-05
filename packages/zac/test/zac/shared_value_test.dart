@@ -70,6 +70,33 @@ void main() {
       expect(find.text('hello world'), findsOneWidget);
     });
 
+    testWidgets('can be consumed and then transformed #2', (tester) async {
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          name: 'foo',
+          value: const {
+            '_converter': 'f:1:SizedBox',
+            'key': {
+              '_converter': 'f:1:ValueKey',
+              'value': 'FIND_ME',
+            }
+          },
+          transformer: [ConvertSharedValueTransformer()],
+          builder: (c) => FlutterContainer(
+            child: ZacWidget.fromJson(
+              {
+                '_converter': 'z:1:SharedValue.consume',
+                'name': 'foo',
+              },
+            ),
+          ).buildWidget(c),
+        ),
+      );
+
+      expect(find.byKey(const ValueKey('FIND_ME')), findsOneWidget);
+    });
+
     group('getFilled()', () {
       testWidgets('return the provided value', (tester) async {
         late ZacBuildContext context;

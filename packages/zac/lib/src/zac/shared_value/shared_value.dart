@@ -6,8 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
 
-Type _typeOf<T>() => T;
-
 class AccessEmptySharedValueError extends StateError {
   AccessEmptySharedValueError(super.message);
 }
@@ -33,9 +31,9 @@ class SharedValue with _$SharedValue {
         .map(
           (value) => value.data,
           empty: (_) => throw AccessEmptySharedValueError('''
-Could not find a ${_typeOf<SharedValue>()} for name: "$name".
-Provide a ${_typeOf<SharedValue>()} via "${SharedValueProviderBuilder.unionValue}".
-See "${_typeOf<SharedValueProviderBuilder>()}" for more info.
+Could not find a $SharedValue for name: "$name".
+Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
+See "$SharedValueProviderBuilder" for more info.
 '''),
         );
   }

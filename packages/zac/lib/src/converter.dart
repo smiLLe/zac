@@ -311,6 +311,10 @@ Map<String, Convert> allConverters = {
 
 const converterKey = '_converter';
 
+class ConverterError extends StateError {
+  ConverterError(super.message);
+}
+
 abstract class ConverterHelper {
   static bool isConverter(Object? data) {
     if (data is! Map<String, dynamic>) return false;
@@ -326,28 +330,21 @@ abstract class ConverterHelper {
   static Map<String, dynamic> validateConverter(Object? data,
       {Type? expectedType}) {
     if (!isConverter(data)) {
-      throw Exception(
-          '''
-Given data cannot be used to create a converter${null != expectedType ? ' of type "$expectedType"' : ''}.
-It is either no Map<String, dynamic> or it has an invalid/missing "_converter" key/value.
+      throw ConverterError(
+          '''Data cannot be used to create a converter${null != expectedType ? ' of type "$expectedType"' : ''}.
+It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
 Data: "$data"''');
     }
 
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw Exception(
-          '''
-Error while trying to convert${null != expectedType ? ' data to type "$expectedType"' : ' data'}.
-There was no _converter found for name: "$rt".''');
+      throw ConverterError(
+          '''Error while trying to convert${null != expectedType ? ' data to type "$expectedType"' : ' data'}.
+There was no "$converterKey" found for name: "$rt".''');
     }
 
     return data;
-  }
-
-  static T? convertToTypeNullable<T>(Object? data) {
-    if (null == data) return null;
-    return convertToType<T>(data);
   }
 
   static T convertToType<T>(Object? data) {
@@ -357,9 +354,8 @@ There was no _converter found for name: "$rt".''');
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw Exception(
-          '''
-There was an error while trying to convert a type of "$expectedType".
+      throw ConverterError(
+          '''There was an error while trying to convert a type of "$expectedType".
 Got the converted type "${converted.runtimeType}" which
 is not assignable to expected type "$expectedType"''');
     }

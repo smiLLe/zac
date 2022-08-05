@@ -47,48 +47,58 @@ mixin ConsumeValue<Of> {
       name,
     );
 
-    late Of value;
-    if (consumedValue is ActualValue<Of>) {
+    late Object? value;
+    if (consumedValue is ActualValue<Object?>) {
       value = consumedValue.value;
     } else if (consumedValue is Of) {
       value = consumedValue;
     } else {
       throw StateError('''
-It was not possible to consume a value of "${_typeOf<Of>()}"
-in "$runtimeType", because the returned ${_typeOf<SharedValue>()}
+It was not possible to consume a value of type "${_typeOf<Of>()}"
+in "$runtimeType", because the returned $SharedValue
 was of type ${consumedValue.runtimeType}.
 The value returned is:
 $consumedValue
 ''');
     }
 
-    if (null == transformer || true == transformer?.isEmpty) {
+    if (value is Of && (null == transformer || true == transformer?.isEmpty)) {
       return value;
     }
 
-    assert(value is Object);
+    if (null == transformer || true == transformer?.isEmpty) {
+      throw StateError('''
+There was an error while trying to consume a $SharedValue.
+The consumed value was of runtimeType: "${value.runtimeType}".
+However there are no transformers given in order to transform the value to
+an expected type of "${_typeOf<Of>()}".
 
-    final mappedVal = SharedValue.transform(transformer!, value as Object,
-        context, SharedValueInteractionType.consume(context: context));
+The consumed $SharedValue: $value
+''');
+    }
 
-    assert(() {
-      if (mappedVal is Of) return true;
+    final transformedValue = SharedValue.transform(transformer!, value, context,
+        SharedValueInteractionType.consume(context: context));
+
+    if (transformedValue is! Of) {
       final alltransformerTypers = transformer!.map((e) => e.runtimeType);
-      final msg = '''
-It was not possible to map a consumed ${_typeOf<SharedValue>()}
-because the transformers used did not return a value of type "${_typeOf<Of>()}".
-Instead the returned value is of runtimeType "${mappedVal.runtimeType}".
-The following transformer were used: "${alltransformerTypers.join(' > ')}".
-The mapped value returned is:
-$mappedVal
+      throw StateError('''
+There was an error while trying to transform a consumed $SharedValue.
+The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
+The $SharedValue after transformation was of runtimeType: "${transformedValue.runtimeType}".
+The expected type after transformation was: "${_typeOf<Of>()}".
+The following transformer were used: 
+${alltransformerTypers.join(' > ')}
 
-The ${_typeOf<SharedValue>()} consumed was:
+The transformed value:
+$transformedValue
+
+The consumed $SharedValue:
 $consumedValue
-''';
-      throw AssertionError(msg);
-    }());
+''');
+    }
 
-    return mappedVal as Of;
+    return transformedValue;
   }
 }
 
@@ -307,8 +317,8 @@ class ZacMap with _$ZacMap {
 
   factory ZacMap.fromJson(Object data) {
     if (data is! Map<String, dynamic>) {
-      throw Exception(
-          'Could not convert data to ${_typeOf<ZacMap>()}. Data: "$data"');
+      return ConverterHelper.convertToType<ZacMap>(
+          mapConsumeUnion(ZacMap.unionValueConsume, data));
     }
 
     if (ConverterHelper.isConverter(data)) {
@@ -399,12 +409,6 @@ class ListOfZacWidget with _$ListOfZacWidget {
   static const String unionValueConsume = 'z:1:ListOfZacWidget.consume';
 
   factory ListOfZacWidget.fromJson(Object data) {
-    if (data is Map<String, dynamic>) {
-      return ConverterHelper.convertToType<ListOfZacWidget>(
-        mapConsumeUnion(ListOfZacWidget.unionValueConsume, data),
-      );
-    }
-
     if (data is List<dynamic>) {
       return ListOfZacWidgetValue.fromJson(<String, dynamic>{
         converterKey: ListOfZacWidget.unionValue,
@@ -412,8 +416,9 @@ class ListOfZacWidget with _$ListOfZacWidget {
       });
     }
 
-    throw Exception(
-        'Could not convert data to ${_typeOf<ListOfZacWidget>()}. Data: "$data"');
+    return ConverterHelper.convertToType<ListOfZacWidget>(
+      mapConsumeUnion(ListOfZacWidget.unionValueConsume, data),
+    );
   }
 
   @FreezedUnionValue(ListOfZacWidget.unionValue)

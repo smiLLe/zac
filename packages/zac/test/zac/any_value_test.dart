@@ -41,7 +41,7 @@ void main() {
             'name': 'foo',
           }),
           ZacBool.consume(name: 'foo'));
-      expect(() => ZacBool.fromJson('foo'), throwsException);
+      expect(() => ZacBool.fromJson('foo'), throwsConverterError);
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -117,7 +117,7 @@ void main() {
             'name': 'foo',
           }),
           ZacInt.consume(name: 'foo'));
-      expect(() => ZacInt.fromJson('foo'), throwsException);
+      expect(() => ZacInt.fromJson('foo'), throwsConverterError);
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -199,7 +199,7 @@ void main() {
             'name': 'foo',
           }),
           ZacDouble.consume(name: 'foo'));
-      expect(() => ZacDouble.fromJson('foo'), throwsException);
+      expect(() => ZacDouble.fromJson('foo'), throwsConverterError);
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -291,7 +291,7 @@ void main() {
             'name': 'foo',
           }),
           ZacString.consume(name: 'foo'));
-      expect(() => ZacString.fromJson(55), throwsException);
+      expect(() => ZacString.fromJson(55), throwsConverterError);
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -367,7 +367,7 @@ void main() {
             'name': 'foo',
           }),
           ZacMap.consume(name: 'foo'));
-      expect(() => ZacMap.fromJson(55), throwsException);
+      expect(() => ZacMap.fromJson(55), throwsConverterError);
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -493,7 +493,7 @@ void main() {
               {converterKey: 'f:1:SizedBox'}),
           isA<ZacWidget>());
 
-      expect(() => ZacWidget.fromJson(55), throwsException);
+      expect(() => ZacWidget.fromJson(55), throwsConverterError);
     });
 
     testWidgets('can be consumed through ZacWidgetConsumer', (tester) async {
@@ -567,7 +567,7 @@ void main() {
             'name': 'foo',
           }),
           ListOfZacWidget.consume(name: 'foo'));
-      expect(() => ListOfZacWidget.fromJson(55), throwsException);
+      expect(() => ListOfZacWidget.fromJson(55), throwsConverterError);
     });
 
     testWidgets('consume', (tester) async {

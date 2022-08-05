@@ -21,7 +21,7 @@ void main() {
         FlutterDialogs.showDialog(
             child: FlutterSizedBox(key: FlutterValueKey('dialog_child'))));
 
-    expect(() => ZacAction.fromJson(<String, dynamic>{}), throwsException);
+    expect(() => ZacAction.fromJson(<String, dynamic>{}), throwsConverterError);
   });
 
   test('AnyActions', () {

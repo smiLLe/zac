@@ -18,6 +18,8 @@ part 'helper.g.dart';
 
 class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
 
+Matcher throwsConverterError = throwsA(isA<ConverterError>());
+
 TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
   return isA<FilledSharedValue>()
       .having((p0) => p0.data, 'FilledSharedValue.data', matcher);
