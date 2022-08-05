@@ -35,6 +35,10 @@ mixin ActualValue<Of> {
   Of get value;
 }
 
+class ConsumeSharedValueOfError extends StateError {
+  ConsumeSharedValueOfError(super.message);
+}
+
 mixin ConsumeValue<Of> {
   String get name;
   SharedValueConsumeType? get consumeType;
@@ -53,11 +57,12 @@ mixin ConsumeValue<Of> {
     } else if (consumedValue is Of) {
       value = consumedValue;
     } else {
-      throw StateError('''
-It was not possible to consume a value of type "${_typeOf<Of>()}"
-in "$runtimeType", because the returned $SharedValue
-was of type ${consumedValue.runtimeType}.
-The value returned is:
+      throw ConsumeSharedValueOfError('''
+It was not possible to use a consumed $SharedValue in "$runtimeType" for name "$name".
+The expected possible types for the consumed $SharedValue were:
+$Of || ${_typeOf<ActualValue<Of>>()} || ${_typeOf<ActualValue<Object?>>()}
+
+The actual value returned was of runtimeType "${consumedValue.runtimeType}".
 $consumedValue
 ''');
     }
@@ -67,11 +72,13 @@ $consumedValue
     }
 
     if (null == transformer || true == transformer?.isEmpty) {
-      throw StateError('''
-There was an error while trying to consume a $SharedValue.
-The consumed value was of runtimeType: "${value.runtimeType}".
-However there are no transformers given in order to transform the value to
-an expected type of "${_typeOf<Of>()}".
+      throw ConsumeSharedValueOfError('''
+It was not possible to return a $SharedValue in "$runtimeType" for name "$name".
+The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
+It was expected to return a type of: "${_typeOf<Of>()}".
+
+This error was created because there are no transformers to use.
+Add a transformer in order to transform the $SharedValue into a type of: "${_typeOf<Of>()}".
 
 The consumed $SharedValue: $value
 ''');
@@ -82,11 +89,11 @@ The consumed $SharedValue: $value
 
     if (transformedValue is! Of) {
       final alltransformerTypers = transformer!.map((e) => e.runtimeType);
-      throw StateError('''
-There was an error while trying to transform a consumed $SharedValue.
+      throw ConsumeSharedValueOfError('''
+Unexpected type found after transforming a consumed $SharedValue in "$runtimeType" for name "$name".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
 The $SharedValue after transformation was of runtimeType: "${transformedValue.runtimeType}".
-The expected type after transformation was: "${_typeOf<Of>()}".
+The expected type was: "${_typeOf<Of>()}".
 The following transformer were used: 
 ${alltransformerTypers.join(' > ')}
 
@@ -114,55 +121,64 @@ mixin ConsumeValueList<Of> {
       name,
     );
 
-    late List<Of> value;
-    if (consumedValue is ActualValue<List<Of>>) {
+    late List<Object?> value;
+    if (consumedValue is ActualValue<List>) {
       value = consumedValue.value;
     } else if (consumedValue is List) {
-      try {
-        value = consumedValue.cast<Of>();
-      } catch (e) {
-        assert(() {
-          throw StateError('''
-It was not possible to consume a value of "${_typeOf<List<Of>>()}" in "$runtimeType"
-because the returned SharedValue was of type ${consumedValue.runtimeType}.
-The value returned is:
+      value = consumedValue;
+    } else {
+      throw ConsumeSharedValueOfError('''
+It was not possible to use a consumed $SharedValue in "$runtimeType" for name "$name".
+The expected possible types for the consumed $SharedValue were:
+${_typeOf<List<Of>>()} || ${_typeOf<ActualValue<List<Of>>>()} || ${_typeOf<ActualValue<List>>()}
+
+The actual value returned was of runtimeType "${consumedValue.runtimeType}".
 $consumedValue
 ''');
-        }(), '');
+    }
 
-        rethrow;
-      }
+    if (value.every((element) => element is Of) &&
+        (null == transformer || true == transformer?.isEmpty)) {
+      return value.cast<Of>();
     }
 
     if (null == transformer || true == transformer?.isEmpty) {
-      return value;
+      throw ConsumeSharedValueOfError('''
+It was not possible to return a $SharedValue in "$runtimeType" for name "$name".
+The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
+It was expected to return a type of: "${_typeOf<List<Of>>()}".
+
+This error was created because there are no transformers to use.
+Add a transformer in order to transform the $SharedValue into a type of: "${_typeOf<List<Of>>()}".
+
+The consumed $SharedValue: $value
+''');
     }
 
-    final mappedValues = value.map((e) {
-      assert(e is Object);
-      final mapped = transformer!.transformSharedValues(
-          e as Object, SharedValueInteractionType.consume(context: context));
+    return value.map<Of>((element) {
+      final transformedValue = transformer!.transformSharedValues(
+          element, SharedValueInteractionType.consume(context: context));
 
-      assert(() {
-        if (mapped is Of) return true;
+      if (transformedValue is! Of) {
         final alltransformerTypers = transformer!.map((e) => e.runtimeType);
-        final msg = '''
-It was not possible to map a consumed ${_typeOf<SharedValue>()}
-to an expected type "${_typeOf<Of>()}" in "${_typeOf<ConsumeValueList<Of>>()}".
-The transformers used returned the following runtimeType "${mapped.runtimeType}".
-The following transformer were used: "${alltransformerTypers.join(' > ')}".
-The mapped value:
-$mapped
+        throw ConsumeSharedValueOfError('''
+Unexpected type found after transforming an item in a consumed $SharedValue List in "$runtimeType" for name "$name".
+The item was of runtimeType: "${element.runtimeType}".
+The item after transformation was of runtimeType: "${transformedValue.runtimeType}".
+The expected type was: "${_typeOf<Of>()}".
+The following transformer were used: 
+${alltransformerTypers.join(' > ')}
 
-List item:
-$e
-''';
-        throw AssertionError(msg);
-      }());
-      return mapped;
+The transformed value:
+$transformedValue
+
+The item:
+$element
+''');
+      }
+
+      return transformedValue;
     }).toList();
-
-    return mappedValues.cast<Of>();
   }
 }
 
@@ -348,6 +364,50 @@ class ZacMap with _$ZacMap {
   }) = ZacMapConsume;
 
   Map<String, dynamic> getValue(ZacBuildContext context) => map(
+        (obj) => obj.value,
+        consume: (obj) => obj.getSharedValue(context),
+      );
+}
+
+@defaultConverterFreezed
+class ZacList with _$ZacList {
+  const ZacList._();
+
+  static const String unionValue = 'z:1:ZacList';
+  static const String unionValueConsume = 'z:1:ZacList.consume';
+
+  factory ZacList.fromJson(Object data) {
+    if (data is List) {
+      return ZacList(data.cast<Object?>());
+    }
+
+    if (ConverterHelper.isConverter(data)) {
+      final rt = (data as Map<String, dynamic>)[converterKey] as String;
+      if (rt == ZacList.unionValue ||
+          rt == ZacList.unionValueConsume ||
+          rt == consumeUnion) {
+        return ConverterHelper.convertToType<ZacList>(
+            mapConsumeUnion(ZacList.unionValueConsume, data));
+      }
+    }
+
+    return ConverterHelper.convertToType<ZacList>(
+        mapConsumeUnion(ZacList.unionValueConsume, data));
+  }
+
+  @FreezedUnionValue(ZacList.unionValue)
+  @With<ActualValue<List<dynamic>>>()
+  factory ZacList(List<dynamic> value) = ZacListValue;
+
+  @FreezedUnionValue(ZacList.unionValueConsume)
+  @With<ConsumeValue<List<dynamic>>>()
+  factory ZacList.consume({
+    required String name,
+    SharedValueConsumeType? consumeType,
+    List<SharedValueTransformer>? transformer,
+  }) = ZacListConsume;
+
+  List<dynamic> getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
         consume: (obj) => obj.getSharedValue(context),
       );

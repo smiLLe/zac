@@ -814,6 +814,171 @@ abstract class ZacMapConsume extends ZacMap
   List<SharedValueTransformer>? get transformer;
 }
 
+ZacList _$ZacListFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'z:1:ZacList':
+      return ZacListValue.fromJson(json);
+    case 'z:1:ZacList.consume':
+      return ZacListConsume.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'ZacList',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacList {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacListValue value) $default, {
+    required TResult Function(ZacListConsume value) consume,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
+  _$ZacListValue(final List<dynamic> value, {final String? $type})
+      : _value = value,
+        $type = $type ?? 'z:1:ZacList',
+        super._();
+
+  factory _$ZacListValue.fromJson(Map<String, dynamic> json) =>
+      _$$ZacListValueFromJson(json);
+
+  final List<dynamic> _value;
+  @override
+  List<dynamic> get value {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_value);
+  }
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacList(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ZacListValue &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacListValue value) $default, {
+    required TResult Function(ZacListConsume value) consume,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class ZacListValue extends ZacList
+    implements ActualValue<List<dynamic>> {
+  factory ZacListValue(final List<dynamic> value) = _$ZacListValue;
+  ZacListValue._() : super._();
+
+  factory ZacListValue.fromJson(Map<String, dynamic> json) =
+      _$ZacListValue.fromJson;
+
+  List<dynamic> get value;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
+  _$ZacListConsume(
+      {required this.name,
+      this.consumeType,
+      final List<SharedValueTransformer>? transformer,
+      final String? $type})
+      : _transformer = transformer,
+        $type = $type ?? 'z:1:ZacList.consume',
+        super._();
+
+  factory _$ZacListConsume.fromJson(Map<String, dynamic> json) =>
+      _$$ZacListConsumeFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final SharedValueConsumeType? consumeType;
+  final List<SharedValueTransformer>? _transformer;
+  @override
+  List<SharedValueTransformer>? get transformer {
+    final value = _transformer;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacList.consume(name: $name, consumeType: $consumeType, transformer: $transformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ZacListConsume &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.consumeType, consumeType) &&
+            const DeepCollectionEquality()
+                .equals(other._transformer, _transformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(consumeType),
+      const DeepCollectionEquality().hash(_transformer));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacListValue value) $default, {
+    required TResult Function(ZacListConsume value) consume,
+  }) {
+    return consume(this);
+  }
+}
+
+abstract class ZacListConsume extends ZacList
+    implements ConsumeValue<List<dynamic>> {
+  factory ZacListConsume(
+      {required final String name,
+      final SharedValueConsumeType? consumeType,
+      final List<SharedValueTransformer>? transformer}) = _$ZacListConsume;
+  ZacListConsume._() : super._();
+
+  factory ZacListConsume.fromJson(Map<String, dynamic> json) =
+      _$ZacListConsume.fromJson;
+
+  String get name;
+  SharedValueConsumeType? get consumeType;
+  List<SharedValueTransformer>? get transformer;
+}
+
 ZacObject _$ZacObjectFromJson(Map<String, dynamic> json) {
   switch (json['_converter']) {
     case 'z:1:ZacObject':

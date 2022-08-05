@@ -92,6 +92,8 @@ Map<String, Convert> allConverters = {
   ZacObject.unionValueConsume: ZacObjectConsume.fromJson,
   ZacMap.unionValue: ZacMapValue.fromJson,
   ZacMap.unionValueConsume: ZacMapConsume.fromJson,
+  ZacList.unionValue: ZacListValue.fromJson,
+  ZacList.unionValueConsume: ZacListConsume.fromJson,
   ZacWidgetConsumerBuilder.unionValue: ZacWidgetConsumerBuilder.fromJson,
   ListOfZacWidget.unionValue: ListOfZacWidgetValue.fromJson,
   ListOfZacWidget.unionValueConsume: ListOfZacWidgetConsume.fromJson,

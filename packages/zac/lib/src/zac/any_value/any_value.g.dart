@@ -106,6 +106,26 @@ _$ZacMapConsume _$$ZacMapConsumeFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
+_$ZacListValue _$$ZacListValueFromJson(Map<String, dynamic> json) =>
+    _$ZacListValue(
+      json['value'] as List<dynamic>,
+      $type: json['_converter'] as String?,
+    );
+
+_$ZacListConsume _$$ZacListConsumeFromJson(Map<String, dynamic> json) =>
+    _$ZacListConsume(
+      name: json['name'] as String,
+      consumeType: json['consumeType'] == null
+          ? null
+          : SharedValueConsumeType.fromJson(
+              json['consumeType'] as Map<String, dynamic>),
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map(
+              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['_converter'] as String?,
+    );
+
 _$ZacObjectValue _$$ZacObjectValueFromJson(Map<String, dynamic> json) =>
     _$ZacObjectValue(
       json['value'] as Object,

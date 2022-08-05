@@ -331,6 +331,91 @@ void main() {
     });
   });
 
+  group('ZacList', () {
+    test('fromJson', () {
+      final compare = <String>['foo', 'bar'];
+      expect(
+          ConverterHelper.convertToType<ZacList>({
+            '_converter': 'z:1:ZacList',
+            'value': compare,
+          }),
+          ZacList(compare));
+
+      expect(
+          ZacList.fromJson({
+            '_converter': 'z:1:ZacList',
+            'value': compare,
+          }),
+          ZacList(compare));
+
+      expect(
+          ConverterHelper.convertToType<ZacList>({
+            '_converter': 'z:1:ZacList.consume',
+            'name': 'foo',
+            'value': compare,
+          }),
+          ZacList.consume(name: 'foo'));
+
+      expect(
+          ZacList.fromJson({
+            '_converter': 'z:1:ZacList.consume',
+            'name': 'foo',
+            'value': compare,
+          }),
+          ZacList.consume(name: 'foo'));
+
+      expect(
+          ZacList.fromJson({
+            '_converter': 'z:1:SharedValue.consume',
+            'name': 'foo',
+            'value': compare,
+          }),
+          ZacList.consume(name: 'foo'));
+
+      expect(ZacList.fromJson(compare), ZacList(compare));
+
+      expect(() => ZacList.fromJson(55), throwsConverterError);
+    });
+
+    testWidgets('consume ActualValue', (tester) async {
+      late ZacBuildContext awContext;
+      final compare = <String>['foo', 'bar'];
+
+      await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            name: 'foo',
+            value: {
+              converterKey: 'z:1:ZacList',
+              'value': compare,
+            },
+            transformer: [ConvertSharedValueTransformer()],
+            child: LeakContext(
+              cb: (context) => awContext = context,
+            ),
+          ));
+
+      expect(ZacList.consume(name: 'foo').getValue(awContext), compare);
+    });
+
+    testWidgets('consume', (tester) async {
+      late ZacBuildContext awContext;
+      final compare = <String>['foo', 'bar'];
+
+      await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            name: 'foo',
+            value: compare,
+            child: LeakContext(
+              cb: (context) => awContext = context,
+            ),
+          ));
+
+      expect(ZacList.consume(name: 'foo').getValue(awContext), compare);
+    });
+  });
+
   group('ZacMap', () {
     test('fromJson', () {
       final compare = <String, dynamic>{'foo': 'bar'};

@@ -97,6 +97,27 @@ void main() {
       expect(find.byKey(const ValueKey('FIND_ME')), findsOneWidget);
     });
 
+    testWidgets('can be consumed and then transformed #3', (tester) async {
+      late ZacBuildContext context;
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          name: 'foo',
+          value: const ['foo', 'oof'],
+          builder: (c) => LeakContext(
+            cb: (c) => context = c,
+          ).buildWidget(c),
+        ),
+      );
+
+      expect(
+          ZacList.consume(
+            name: 'foo',
+            transformer: [_ConcatStr('bar')],
+          ).getValue(context),
+          ['foobar', 'oofbar']);
+    });
+
     group('getFilled()', () {
       testWidgets('return the provided value', (tester) async {
         late ZacBuildContext context;
