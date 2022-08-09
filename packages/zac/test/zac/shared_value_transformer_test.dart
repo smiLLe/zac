@@ -1,4 +1,5 @@
 import 'package:zac/src/converter.dart';
+import 'package:zac/src/flutter/widgets/_layout/sized_box/sized_box.dart';
 import 'package:zac/src/zac/shared_value/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/shared_value/transformers.dart';
@@ -8,6 +9,14 @@ import '../helper.dart';
 import '../helper.mocks.dart';
 
 void main() {
+  test('Convert', () {
+    expect(
+        ConvertTransformer().transform({
+          '_converter': 'f:1:SizedBox',
+        }, TestSharedValueInteractionType()),
+        FlutterSizedBox());
+  });
+
   group('List', () {
     test('.map()', () async {
       expect(

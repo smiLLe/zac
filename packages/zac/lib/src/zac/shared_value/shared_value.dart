@@ -69,6 +69,18 @@ in your Widget tree before trying to update the $SharedValue.
 
 abstract class SharedValueInteractionType {}
 
+extension WhenZacSharedValueInteractionType on SharedValueInteractionType {
+  T? whenZac<T extends Object?>(
+      T? Function(ZacSharedValueInteractionType obj) cb,
+      {T? Function(SharedValueInteractionType obj)? orElse}) {
+    if (this is ZacSharedValueInteractionType) {
+      return cb(this as ZacSharedValueInteractionType);
+    }
+
+    return orElse?.call(this);
+  }
+}
+
 @nonConverterFreezed
 class ZacSharedValueInteractionType
     with _$ZacSharedValueInteractionType
@@ -79,15 +91,15 @@ class ZacSharedValueInteractionType
     required ZacBuildContext context,
     required ActionPayload payload,
     required Object? current,
-  }) = _SharedValueInteractionTypeAction;
+  }) = ZacSharedValueInteractionTypeAction;
 
   factory ZacSharedValueInteractionType.consume({
     required ZacBuildContext context,
-  }) = _SharedValueInteractionTypeConsume;
+  }) = ZacSharedValueInteractionTypeConsume;
 
   factory ZacSharedValueInteractionType.provide({
     required ZacBuildContext context,
-  }) = _SharedValueInteractionTypeProvide;
+  }) = ZacSharedValueInteractionTypeProvide;
 }
 
 @defaultConverterFreezed

@@ -2,6 +2,7 @@ import 'package:zac/src/zac/actions/action.dart';
 import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/zac/shared_value/shared_value.dart';
+import 'package:zac/src/zac/shared_value/transformers.dart';
 import 'package:zac/src/zac/widget_builder/widget_builder.dart';
 import 'package:zac/src/base.dart';
 
@@ -128,9 +129,31 @@ class NoopAction with _$NoopAction implements ZacAction {
   void execute(ZacBuildContext context, ActionPayload payload) {}
 }
 
+@GenerateMocks([WhenZacCb])
+class WhenZacCb<T> extends Mock {
+  T? call(ZacSharedValueInteractionType obj);
+}
+
+@GenerateMocks([WhenNotZacCb])
+class WhenNotZacCb<T> extends Mock {
+  T? call(SharedValueInteractionType obj);
+}
+
 @GenerateMocks([LeakeContextCb])
 class LeakeContextCb extends Mock {
   void call(ZacBuildContext context);
+}
+
+@GenerateMocks([TransformerCb])
+class TransformerCb extends Mock implements SharedValueTransformer {
+  Object? call(Object? value, SharedValueInteractionType interaction) {
+    return value;
+  }
+
+  @override
+  Object? transform(Object? value, SharedValueInteractionType interaction) {
+    return value;
+  }
 }
 
 @nonConverterFreezed

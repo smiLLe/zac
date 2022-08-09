@@ -5,6 +5,7 @@
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/actions/action.dart' as _i4;
 import 'package:zac/src/zac/context/widget_context.dart' as _i3;
+import 'package:zac/src/zac/shared_value/shared_value.dart' as _i5;
 
 import 'helper.dart' as _i2;
 
@@ -32,6 +33,32 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
           returnValueForMissingStub: null);
 }
 
+/// A class which mocks [WhenZacCb].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockWhenZacCb<T> extends _i1.Mock implements _i2.WhenZacCb<T> {
+  MockWhenZacCb() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  T? call(_i5.ZacSharedValueInteractionType? obj) =>
+      (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
+}
+
+/// A class which mocks [WhenNotZacCb].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockWhenNotZacCb<T> extends _i1.Mock implements _i2.WhenNotZacCb<T> {
+  MockWhenNotZacCb() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  T? call(_i5.SharedValueInteractionType? obj) =>
+      (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
+}
+
 /// A class which mocks [LeakeContextCb].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -44,4 +71,23 @@ class MockLeakeContextCb extends _i1.Mock implements _i2.LeakeContextCb {
   void call(_i3.ZacBuildContext? context) =>
       super.noSuchMethod(Invocation.method(#call, [context]),
           returnValueForMissingStub: null);
+}
+
+/// A class which mocks [TransformerCb].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
+  MockTransformerCb() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  Object? call(Object? value, _i5.SharedValueInteractionType? interaction) =>
+      (super.noSuchMethod(Invocation.method(#call, [value, interaction]))
+          as Object?);
+  @override
+  Object? transform(
+          Object? value, _i5.SharedValueInteractionType? interaction) =>
+      (super.noSuchMethod(Invocation.method(#transform, [value, interaction]))
+          as Object?);
 }
