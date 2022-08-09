@@ -67,26 +67,27 @@ in your Widget tree before trying to update the $SharedValue.
   }
 }
 
-@nonConverterFreezed
-class SharedValueInteractionType with _$SharedValueInteractionType {
-  const SharedValueInteractionType._();
+abstract class SharedValueInteractionType {}
 
-  factory SharedValueInteractionType.action({
+@nonConverterFreezed
+class ZacSharedValueInteractionType
+    with _$ZacSharedValueInteractionType
+    implements SharedValueInteractionType {
+  const ZacSharedValueInteractionType._();
+
+  factory ZacSharedValueInteractionType.action({
     required ZacBuildContext context,
     required ActionPayload payload,
     required Object? current,
   }) = _SharedValueInteractionTypeAction;
 
-  factory SharedValueInteractionType.consume({
+  factory ZacSharedValueInteractionType.consume({
     required ZacBuildContext context,
   }) = _SharedValueInteractionTypeConsume;
 
-  factory SharedValueInteractionType.provide({
+  factory ZacSharedValueInteractionType.provide({
     required ZacBuildContext context,
   }) = _SharedValueInteractionTypeProvide;
-
-  factory SharedValueInteractionType.other({Object? data}) =
-      _SharedValueInteractionTypeOther;
 }
 
 @defaultConverterFreezed
@@ -113,7 +114,7 @@ class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
             : SharedValue.transform(
                 transformer!,
                 value,
-                SharedValueInteractionType.action(
+                ZacSharedValueInteractionType.action(
                   context: context,
                   payload: payload,
                   current: current,
@@ -187,11 +188,14 @@ class SharedValueProvider extends StatelessWidget {
       builder: (context) => ProviderScope(
         overrides: [
           SharedValue.provider(name).overrideWithValue(
-              StateController<SharedValue>(SharedValue(null == transformer ||
-                      true == transformer!.isEmpty
-                  ? value
-                  : SharedValue.transform(transformer!, value,
-                      SharedValueInteractionType.provide(context: context))))),
+              StateController<SharedValue>(SharedValue(
+                  null == transformer || true == transformer!.isEmpty
+                      ? value
+                      : SharedValue.transform(
+                          transformer!,
+                          value,
+                          ZacSharedValueInteractionType.provide(
+                              context: context))))),
         ],
         child: UpdateContextBuilder(builder: builder),
       ),

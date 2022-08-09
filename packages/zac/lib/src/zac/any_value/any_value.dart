@@ -85,7 +85,7 @@ The consumed $SharedValue: $value
     }
 
     final transformedValue = SharedValue.transform(transformer!, value,
-        SharedValueInteractionType.consume(context: context));
+        ZacSharedValueInteractionType.consume(context: context));
 
     if (transformedValue is! Of) {
       final alltransformerTypers = transformer!.map((e) => e.runtimeType);
@@ -157,7 +157,7 @@ The consumed $SharedValue: $value
 
     return value.map<Of>((element) {
       final transformedValue = transformer!.transformSharedValues(
-          element, SharedValueInteractionType.consume(context: context));
+          element, ZacSharedValueInteractionType.consume(context: context));
 
       if (transformedValue is! Of) {
         final alltransformerTypers = transformer!.map((e) => e.runtimeType);

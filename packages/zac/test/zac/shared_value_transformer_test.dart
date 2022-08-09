@@ -25,12 +25,12 @@ void main() {
 
       expect(
           ListTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(['foo', 'oof'], SharedValueInteractionType.other()),
+              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
           ['foobar', 'oofbar']);
 
       expect(
           () => ListTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(55, SharedValueInteractionType.other()),
+              .transform(55, TestSharedValueInteractionType()),
           throwsA(isA<SharedValueTransformError>()));
     });
   });
@@ -51,12 +51,12 @@ void main() {
 
       expect(
           MapTransformer.mapValues(transformer: [_ConcatStr('bar')]).transform(
-              {'a': 'foo', 'b': 'oof'}, SharedValueInteractionType.other()),
+              {'a': 'foo', 'b': 'oof'}, TestSharedValueInteractionType()),
           {'a': 'foobar', 'b': 'oofbar'});
 
       expect(
           () => MapTransformer.mapValues(transformer: [_ConcatStr('bar')])
-              .transform(55, SharedValueInteractionType.other()),
+              .transform(55, TestSharedValueInteractionType()),
           throwsA(isA<SharedValueTransformError>()));
     });
   });
@@ -72,3 +72,5 @@ class _ConcatStr implements SharedValueTransformer {
     return (value as String) + str;
   }
 }
+
+class TestSharedValueInteractionType extends SharedValueInteractionType {}

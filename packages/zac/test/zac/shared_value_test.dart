@@ -19,7 +19,7 @@ void main() {
       expect(
           ConvertTransformer().transform({
             '_converter': 'f:1:SizedBox',
-          }, SharedValueInteractionType.other()),
+          }, TestSharedValueInteractionType()),
           FlutterSizedBox());
     });
   });
@@ -223,7 +223,7 @@ void main() {
             SharedValue.transform(
               [_ConcatStr('bar'), _ConcatStr('baz')],
               'foo',
-              SharedValueInteractionType.other(),
+              TestSharedValueInteractionType(),
             ),
             equals('foobarbaz'));
       });
@@ -241,3 +241,5 @@ class _ConcatStr implements SharedValueTransformer {
     return (value as String) + str;
   }
 }
+
+class TestSharedValueInteractionType extends SharedValueInteractionType {}
