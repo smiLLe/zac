@@ -55,7 +55,7 @@ void main() {
               converterKey: 'z:1:ZacBool',
               'value': false,
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -131,7 +131,7 @@ void main() {
               converterKey: 'z:1:ZacInt',
               'value': 55,
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -213,7 +213,7 @@ void main() {
               converterKey: 'z:1:ZacDouble',
               'value': 1.0,
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -305,7 +305,7 @@ void main() {
               converterKey: 'z:1:ZacString',
               'value': 'hello',
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -389,7 +389,7 @@ void main() {
               converterKey: 'z:1:ZacList',
               'value': compare,
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -467,7 +467,7 @@ void main() {
               converterKey: 'z:1:ZacMap',
               'value': compare,
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -542,7 +542,7 @@ void main() {
               converterKey: 'z:1:ZacObject',
               'value': 'hello',
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -593,7 +593,7 @@ void main() {
           },
           'transformer': [
             {
-              converterKey: 'z:1:ConvertSharedValueTransformer',
+              converterKey: 'z:1:Transformer:Converter',
             }
           ],
           'child': {
@@ -665,7 +665,13 @@ void main() {
             value: [
               {converterKey: 'f:1:SizedBox'}
             ],
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [
+              ListTransformer.map(
+                transformer: [
+                  ConvertTransformer(),
+                ],
+              )
+            ],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),
@@ -689,7 +695,7 @@ void main() {
                 {converterKey: 'f:1:SizedBox'}
               ]
             },
-            transformer: [ConvertSharedValueTransformer()],
+            transformer: [ConvertTransformer()],
             child: LeakContext(
               cb: (context) => awContext = context,
             ),

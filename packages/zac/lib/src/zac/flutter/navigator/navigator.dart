@@ -8,6 +8,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/shared_value/transformers.dart';
 
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';

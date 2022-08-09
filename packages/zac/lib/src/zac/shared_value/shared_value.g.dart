@@ -17,8 +17,6 @@ _$EmptySharedValue _$$EmptySharedValueFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
-_$_Convert _$$_ConvertFromJson(Map<String, dynamic> json) => _$_Convert();
-
 _$_UpdateSharedValue _$$_UpdateSharedValueFromJson(Map<String, dynamic> json) =>
     _$_UpdateSharedValue(
       name: json['name'] as String,

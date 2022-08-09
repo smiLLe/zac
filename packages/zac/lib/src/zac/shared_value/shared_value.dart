@@ -1,7 +1,12 @@
-import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/base.dart';
+import 'package:zac/src/flutter/foundation/foundation.dart';
+import 'package:zac/src/zac/actions/action.dart';
+import 'package:zac/src/zac/any_value/any_value.dart';
+import 'package:zac/src/zac/context/widget_context.dart';
+import 'package:zac/src/zac/shared_value/transformers.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
@@ -56,24 +61,8 @@ in your Widget tree before trying to update the $SharedValue.
             ));
   }
 
-  static Object? transform(
-      List<SharedValueTransformer> transformer,
-      Object? value,
-      ZacBuildContext context,
-      SharedValueInteractionType interaction) {
-    if (value is List) {
-      return value
-          .cast<Object?>()
-          .map((Object? e) => transformer.transformSharedValues(e, interaction))
-          .toList();
-    }
-
-    if (!ConverterHelper.isConverter(value) && value is Map) {
-      return (value as Map<String, dynamic>).cast<String, Object?>().map((key,
-              value) =>
-          MapEntry(key, transformer.transformSharedValues(value, interaction)));
-    }
-
+  static Object? transform(List<SharedValueTransformer> transformer,
+      Object? value, SharedValueInteractionType interaction) {
     return transformer.transformSharedValues(value, interaction);
   }
 }
@@ -100,41 +89,6 @@ class SharedValueInteractionType with _$SharedValueInteractionType {
       _SharedValueInteractionTypeOther;
 }
 
-abstract class SharedValueTransformer {
-  factory SharedValueTransformer.fromJson(Map<String, dynamic> json) =>
-      ConverterHelper.convertToType<SharedValueTransformer>(json);
-
-  Object? transform(Object? value, SharedValueInteractionType interaction);
-}
-
-extension SharedValueTransformerOnList on List<SharedValueTransformer> {
-  Object? transformSharedValues(
-          Object? value, SharedValueInteractionType interaction) =>
-      fold<Object?>(
-          value,
-          (previousValue, element) =>
-              element.transform(previousValue, interaction));
-}
-
-@defaultConverterFreezed
-class ConvertSharedValueTransformer
-    with _$ConvertSharedValueTransformer
-    implements SharedValueTransformer {
-  const ConvertSharedValueTransformer._();
-  static const String unionValue = 'z:1:ConvertSharedValueTransformer';
-
-  factory ConvertSharedValueTransformer.fromJson(Map<String, dynamic> json) =>
-      _$ConvertSharedValueTransformerFromJson(json);
-
-  @FreezedUnionValue(ConvertSharedValueTransformer.unionValue)
-  factory ConvertSharedValueTransformer() = _Convert;
-
-  @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
-    return ConverterHelper.convertToType<Object>(value);
-  }
-}
-
 @defaultConverterFreezed
 class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
   const UpdateSharedValue._();
@@ -159,7 +113,6 @@ class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
             : SharedValue.transform(
                 transformer!,
                 value,
-                context,
                 SharedValueInteractionType.action(
                   context: context,
                   payload: payload,
@@ -237,7 +190,7 @@ class SharedValueProvider extends StatelessWidget {
               StateController<SharedValue>(SharedValue(null == transformer ||
                       true == transformer!.isEmpty
                   ? value
-                  : SharedValue.transform(transformer!, value, context,
+                  : SharedValue.transform(transformer!, value,
                       SharedValueInteractionType.provide(context: context))))),
         ],
         child: UpdateContextBuilder(builder: builder),

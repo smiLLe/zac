@@ -7,6 +7,7 @@ import 'package:zac/src/zac/any_value/any_value.dart';
 import 'package:zac/src/zac/context/widget_context.dart';
 import 'package:zac/src/zac/shared_value/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/zac/shared_value/transformers.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -16,7 +17,7 @@ void main() {
   group('Transformers', () {
     test('ConvertSharedValueTransformer', () {
       expect(
-          ConvertSharedValueTransformer().transform({
+          ConvertTransformer().transform({
             '_converter': 'f:1:SizedBox',
           }, SharedValueInteractionType.other()),
           FlutterSizedBox());
@@ -45,7 +46,7 @@ void main() {
           value: const <String, dynamic>{
             '_converter': 'f:1:SizedBox',
           },
-          transformer: [ConvertSharedValueTransformer()],
+          transformer: [ConvertTransformer()],
         ),
       );
 
@@ -82,7 +83,7 @@ void main() {
               'value': 'FIND_ME',
             }
           },
-          transformer: [ConvertSharedValueTransformer()],
+          transformer: [ConvertTransformer()],
           builder: (c) => FlutterContainer(
             child: ZacWidget.fromJson(
               {
@@ -113,7 +114,9 @@ void main() {
       expect(
           ZacList.consume(
             name: 'foo',
-            transformer: [_ConcatStr('bar')],
+            transformer: [
+              ListTransformer.map(transformer: [_ConcatStr('bar')])
+            ],
           ).getValue(context),
           ['foobar', 'oofbar']);
     });
@@ -215,61 +218,14 @@ void main() {
     });
 
     group('transform()', () {
-      testWidgets('simple value', (tester) async {
-        late ZacBuildContext context;
-        await testZacWidget(
-          tester,
-          LeakContext(
-            cb: (c) => context = c,
-          ),
-        );
-
+      test('simple value', () {
         expect(
             SharedValue.transform(
               [_ConcatStr('bar'), _ConcatStr('baz')],
               'foo',
-              context,
               SharedValueInteractionType.other(),
             ),
             equals('foobarbaz'));
-      });
-
-      testWidgets('transform List element', (tester) async {
-        late ZacBuildContext context;
-        await testZacWidget(
-          tester,
-          LeakContext(
-            cb: (c) => context = c,
-          ),
-        );
-
-        expect(
-            SharedValue.transform(
-              [_ConcatStr('bar'), _ConcatStr('baz')],
-              ['foo', 'oof'],
-              context,
-              SharedValueInteractionType.other(),
-            ),
-            equals(['foobarbaz', 'oofbarbaz']));
-      });
-
-      testWidgets('transform Map element', (tester) async {
-        late ZacBuildContext context;
-        await testZacWidget(
-          tester,
-          LeakContext(
-            cb: (c) => context = c,
-          ),
-        );
-
-        expect(
-            SharedValue.transform(
-              [_ConcatStr('bar'), _ConcatStr('baz')],
-              {'a': 'foo', 'b': 'oof'},
-              context,
-              SharedValueInteractionType.other(),
-            ),
-            equals({'a': 'foobarbaz', 'b': 'oofbarbaz'}));
       });
     });
   });

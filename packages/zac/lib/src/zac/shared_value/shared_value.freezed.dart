@@ -354,59 +354,6 @@ abstract class _SharedValueInteractionTypeOther
   Object? get data;
 }
 
-ConvertSharedValueTransformer _$ConvertSharedValueTransformerFromJson(
-    Map<String, dynamic> json) {
-  return _Convert.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ConvertSharedValueTransformer {
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Convert value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_Convert extends _Convert {
-  _$_Convert() : super._();
-
-  factory _$_Convert.fromJson(Map<String, dynamic> json) =>
-      _$$_ConvertFromJson(json);
-
-  @override
-  String toString() {
-    return 'ConvertSharedValueTransformer()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Convert);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Convert value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _Convert extends ConvertSharedValueTransformer {
-  factory _Convert() = _$_Convert;
-  _Convert._() : super._();
-
-  factory _Convert.fromJson(Map<String, dynamic> json) = _$_Convert.fromJson;
-}
-
 UpdateSharedValue _$UpdateSharedValueFromJson(Map<String, dynamic> json) {
   return _UpdateSharedValue.fromJson(json);
 }

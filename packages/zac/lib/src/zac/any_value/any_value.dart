@@ -84,7 +84,7 @@ The consumed $SharedValue: $value
 ''');
     }
 
-    final transformedValue = SharedValue.transform(transformer!, value, context,
+    final transformedValue = SharedValue.transform(transformer!, value,
         SharedValueInteractionType.consume(context: context));
 
     if (transformedValue is! Of) {
