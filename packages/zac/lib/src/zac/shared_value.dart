@@ -73,6 +73,18 @@ in your Widget tree before trying to update the $SharedValue.''')));
       Object? value, SharedValueInteractionType interaction) {
     return transformer.transformSharedValues(value, interaction);
   }
+
+  static void listenAndExecuteActions(
+      ZacBuildContext context, String name, ZacActions actions) {
+    context.ref.listen<SharedValue>(SharedValue.provider(name),
+        (previous, next) {
+      actions.execute(context, ActionPayload.withData(_extract(next, '''
+It was not possible to listen for $SharedValue($name) changes and execute actions,
+because the $SharedValue did not exist until now.
+Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
+in your Widget tree before trying to update the $SharedValue.''')));
+    });
+  }
 }
 
 abstract class SharedValueInteractionType {}

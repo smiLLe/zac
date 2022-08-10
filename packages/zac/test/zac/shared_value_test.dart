@@ -328,7 +328,7 @@ void main() {
         SharedValueProviderBuilder(
           value: 1,
           name: 'foo',
-          child: ZacExecuteActionsBuilder(
+          child: ZacExecuteActionsBuilder.once(
             actions: ZacActions([
               UpdateSharedValue(
                 name: 'foo',

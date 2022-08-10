@@ -158,7 +158,7 @@ void main() {
               routes: {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
-                    child: ZacExecuteActionsBuilder(
+                    child: ZacExecuteActionsBuilder.once(
                       actions: ZacActions(
                         [
                           FlutterNavigatorActions.pushNamed(
@@ -239,7 +239,7 @@ void main() {
               routes: {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
-                    child: ZacExecuteActionsBuilder(
+                    child: ZacExecuteActionsBuilder.once(
                       actions: ZacActions(
                         [
                           FlutterNavigatorActions.pushNamed(

@@ -86,30 +86,64 @@ class ZacExecuteActionsBuilder
     implements ZacWidget {
   const ZacExecuteActionsBuilder._();
 
-  static const String unionValue = 'z:1:ExecuteActions';
+  static const String unionValue = 'z:1:ExecuteActions.once';
+  static const String unionValueListen = 'z:1:ExecuteActions.listen';
 
   factory ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
       _$ZacExecuteActionsBuilderFromJson(json);
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
-  factory ZacExecuteActionsBuilder({
-    FlutterKey? key,
+  factory ZacExecuteActionsBuilder.once({
     required ZacActions actions,
     ZacWidget? child,
-  }) = _ZacExecuteActionsBuilder;
+  }) = _ZacExecuteActionsBuilderOnce;
+
+  @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
+  factory ZacExecuteActionsBuilder.listen({
+    required ZacActions actions,
+    required ZacString name,
+    ZacWidget? child,
+  }) = _ZacExecuteActionsBuilderListen;
 
   @override
-  ZacExecuteActions buildWidget(ZacBuildContext context) {
-    return ZacExecuteActions(
-      key: key?.buildKey(context),
-      actions: actions,
-      child: child,
+  Widget buildWidget(ZacBuildContext context) {
+    return map(
+      once: (obj) => ZacExecuteActionsOnce(
+        actions: obj.actions,
+        child: obj.child,
+      ),
+      listen: (obj) => ZacExecuteActionsListen(
+        actions: obj.actions,
+        name: obj.name,
+        child: obj.child,
+      ),
     );
   }
 }
 
-class ZacExecuteActions extends HookConsumerWidget {
-  const ZacExecuteActions(
+class ZacExecuteActionsListen extends HookConsumerWidget {
+  const ZacExecuteActionsListen(
+      {required this.actions, required this.name, this.child, Key? key})
+      : super(key: key);
+
+  final ZacActions actions;
+  final ZacString name;
+  final ZacWidget? child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacBuildContext(ref);
+    SharedValue.listenAndExecuteActions(
+        zacContext, name.getValue(zacContext), actions);
+
+    return null != child
+        ? ZacWidgetBuilder(zacWidget: child!)
+        : const SizedBox.shrink();
+  }
+}
+
+class ZacExecuteActionsOnce extends HookConsumerWidget {
+  const ZacExecuteActionsOnce(
       {required this.actions, required this.child, Key? key})
       : super(key: key);
 

@@ -164,6 +164,7 @@ Map<String, Convert> allConverters = {
       ZacWidgetBuilderBuilder.fromJson,
   ZacUpdateContextBuilder.unionValue: ZacUpdateContextBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValue: ZacExecuteActionsBuilder.fromJson,
+  ZacExecuteActionsBuilder.unionValueListen: ZacExecuteActionsBuilder.fromJson,
   SharedValueProviderBuilder.unionValue: SharedValueProviderBuilder.fromJson,
 
   /// Flutter

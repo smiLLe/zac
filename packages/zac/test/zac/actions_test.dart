@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/update_context.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -76,11 +79,10 @@ void main() {
     expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
   });
 
-  group('ExecuteActions', () {
+  group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:ExecuteActions',
-        'key': KeysModel.getValueKey('FINDME'),
+        '_converter': 'z:1:ExecuteActions.once',
         'actions': [
           {'_converter': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
         ],
@@ -89,11 +91,8 @@ void main() {
           'key': KeysModel.getValueKey('child')
         }
       });
-      final findMe = find.byKey(const ValueKey('FINDME'));
-      expect(findMe, findsOneWidget);
       expect(find.byKey(const ValueKey('child')), findsNothing);
       await tester.pumpAndSettle();
-      expect(findMe, findsOneWidget);
       expect(find.byKey(const ValueKey('child')), findsOneWidget);
     });
 
@@ -102,8 +101,7 @@ void main() {
 
       await testZacWidget(
         tester,
-        ZacExecuteActionsBuilder(
-            key: FlutterValueKey('FIND_ME'),
+        ZacExecuteActionsBuilder.once(
             actions: LeakAction.createActions(executeCb)),
       );
       verify(executeCb(any, any)).called(1);
@@ -112,6 +110,61 @@ void main() {
       await tester.pump();
 
       verifyNoMoreInteractions(executeCb);
+    });
+  });
+
+  group('ZacExecuteActionsListen', () {
+    test('convert', () {
+      allConverters = {
+        ...allConverters,
+        NoopAction.unionValue: NoopAction.fromJson
+      };
+      expect(
+          ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
+            '_converter': 'z:1:ExecuteActions.listen',
+            'name': 'foo',
+            'actions': NoopAction.createActions(),
+          }),
+          ZacExecuteActionsBuilder.listen(
+              actions: ZacActions([NoopAction()]), name: ZacString('foo')));
+
+      expect(
+          ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
+            '_converter': 'z:1:ExecuteActions.listen',
+            'name': 'foo',
+            'actions': NoopAction.createActions(),
+          }),
+          ZacExecuteActionsBuilder.listen(
+              actions: ZacActions([NoopAction()]), name: ZacString('foo')));
+    });
+
+    testWidgets('execute actions', (tester) async {
+      late ZacBuildContext context;
+      final cb = MockLeakedActionCb();
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 1,
+          name: 'shared',
+          child: ZacExecuteActionsBuilder.listen(
+            actions: LeakAction.createActions(cb),
+            name: ZacString('shared'),
+            child: FlutterSizedBox(
+              key: FlutterValueKey('child'),
+              child: LeakContext(cb: (c) => context = c),
+            ),
+          ),
+        ),
+      );
+
+      verifyZeroInteractions(cb);
+
+      SharedValue.update(context, 'shared', (current) => 2);
+      await tester.pumpAndSettle();
+
+      verify(cb(any, ActionPayload.withData(2))).called(1);
+      verifyNoMoreInteractions(cb);
     });
   });
 

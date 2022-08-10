@@ -25,14 +25,23 @@ _$_ZacActions _$$_ZacActionsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-_$_ZacExecuteActionsBuilder _$$_ZacExecuteActionsBuilderFromJson(
+_$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
         Map<String, dynamic> json) =>
-    _$_ZacExecuteActionsBuilder(
-      key: json['key'] == null
-          ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+    _$_ZacExecuteActionsBuilderOnce(
       actions: ZacActions.fromJson(json['actions'] as Object),
       child: json['child'] == null
           ? null
           : ZacWidget.fromJson(json['child'] as Object),
+      $type: json['_converter'] as String?,
+    );
+
+_$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacExecuteActionsBuilderListen(
+      actions: ZacActions.fromJson(json['actions'] as Object),
+      name: ZacString.fromJson(json['name'] as Object),
+      child: json['child'] == null
+          ? null
+          : ZacWidget.fromJson(json['child'] as Object),
+      $type: json['_converter'] as String?,
     );
