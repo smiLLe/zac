@@ -30,6 +30,10 @@ _$_UpdateSharedValue _$$_UpdateSharedValueFromJson(Map<String, dynamic> json) =>
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeWatch(
+      select: (json['select'] as List<dynamic>?)
+          ?.map(
+              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 

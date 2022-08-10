@@ -27,20 +27,32 @@ class SharedValue with _$SharedValue {
     name: 'Zac SharedValue',
   );
 
+  static Object? _extract(SharedValue sharedValue, String ifEmptyMessage) =>
+      sharedValue.map(
+        (obj) => obj.data,
+        empty: (_) => throw AccessEmptySharedValueError(ifEmptyMessage),
+      );
+
   static Object? getFilled(
       SharedValueConsumeType type, ZacBuildContext context, String name) {
-    return type
-        .map(
-            watch: (_) => context.ref.watch(provider(name)),
-            read: (_) => context.ref.read(provider(name)))
-        .map(
-          (value) => value.data,
-          empty: (_) => throw AccessEmptySharedValueError('''
+    final error = '''
 Could not find a $SharedValue for name: "$name".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
 See "$SharedValueProviderBuilder" for more info.
-'''),
-        );
+''';
+    return type.map<Object?>(
+      watch: (obj) {
+        if (null == obj.select || true == obj.select?.isEmpty) {
+          return _extract(context.ref.watch(SharedValue.provider(name)), error);
+        }
+
+        return context.ref.watch(SharedValue.provider(name).select(
+            (sharedValue) => obj.select!.transformSharedValues(
+                _extract(sharedValue, error),
+                ZacSharedValueInteractionType.consume(context: context))));
+      },
+      read: (_) => _extract(context.ref.read(provider(name)), error),
+    );
   }
 
   static void update(
@@ -48,17 +60,13 @@ See "$SharedValueProviderBuilder" for more info.
     String name,
     Object? Function(Object? current) update,
   ) {
-    context.ref
-        .read(SharedValue.provider(name).notifier)
-        .update((state) => state.map(
-              (obj) => SharedValue(update(obj.data)),
-              empty: (_) => throw AccessEmptySharedValueError('''
+    context.ref.read(SharedValue.provider(name).notifier).update((sharedValue) {
+      return SharedValue(update(_extract(sharedValue, '''
 It was not possible to update the $SharedValue "$name",
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
-in your Widget tree before trying to update the $SharedValue.
-'''),
-            ));
+in your Widget tree before trying to update the $SharedValue.''')));
+    });
   }
 
   static Object? transform(List<SharedValueTransformer> transformer,
@@ -143,7 +151,9 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
       _$SharedValueConsumeTypeFromJson(json);
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
-  const factory SharedValueConsumeType.watch() = _SharedValueConsumeTypeWatch;
+  const factory SharedValueConsumeType.watch({
+    List<SharedValueTransformer>? select,
+  }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
   const factory SharedValueConsumeType.read() = _SharedValueConsumeTypeRead;

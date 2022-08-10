@@ -223,6 +223,29 @@ void main() {
     });
   });
 
+  group('SharedValueConsumeType', () {
+    testWidgets('execute transformer through provider.select() in .watch()',
+        (tester) async {
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          name: 'shared',
+          value: 'foo',
+          builder: (c) => FlutterText(
+            ZacString.consume(
+              name: 'shared',
+              transformer: [_ConcatStr('baz')],
+              consumeType:
+                  SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
+            ),
+          ).buildWidget(c),
+        ),
+      );
+
+      expect(find.text('foobarbaz'), findsOneWidget);
+    });
+  });
+
   group('SharedValueInteractionType', () {
     test('.whenZac()', () {
       final cb = MockWhenZacCb<String>();

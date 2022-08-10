@@ -441,30 +441,43 @@ mixin _$SharedValueConsumeType {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
-  const _$_SharedValueConsumeTypeWatch({final String? $type})
-      : $type = $type ?? 'z:1:SharedValueConsume.watch';
+  const _$_SharedValueConsumeTypeWatch(
+      {final List<SharedValueTransformer>? select, final String? $type})
+      : _select = select,
+        $type = $type ?? 'z:1:SharedValueConsume.watch';
 
   factory _$_SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeWatchFromJson(json);
+
+  final List<SharedValueTransformer>? _select;
+  @override
+  List<SharedValueTransformer>? get select {
+    final value = _select;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString() {
-    return 'SharedValueConsumeType.watch()';
+    return 'SharedValueConsumeType.watch(select: $select)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SharedValueConsumeTypeWatch);
+            other is _$_SharedValueConsumeTypeWatch &&
+            const DeepCollectionEquality().equals(other._select, _select));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_select));
 
   @override
   @optionalTypeArgs
@@ -477,10 +490,14 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
 }
 
 abstract class _SharedValueConsumeTypeWatch implements SharedValueConsumeType {
-  const factory _SharedValueConsumeTypeWatch() = _$_SharedValueConsumeTypeWatch;
+  const factory _SharedValueConsumeTypeWatch(
+          {final List<SharedValueTransformer>? select}) =
+      _$_SharedValueConsumeTypeWatch;
 
   factory _SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
       _$_SharedValueConsumeTypeWatch.fromJson;
+
+  List<SharedValueTransformer>? get select;
 }
 
 /// @nodoc
