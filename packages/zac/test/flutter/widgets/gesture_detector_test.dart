@@ -1,4 +1,4 @@
-import 'package:zac/zac_flutter_classes.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

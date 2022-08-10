@@ -7,4 +7,4 @@ export 'src/zac/widget_builder.dart';
 export 'src/zac/shared_value.dart';
 export 'src/zac/transformers.dart';
 export 'src/zac/flutter/navigator.dart';
-export 'zac_flutter_classes.dart';
+export 'src/flutter/all.dart';
