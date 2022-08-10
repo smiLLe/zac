@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/widgets/_material/app_bar/app_bar.dart';
+import 'package:zac/src/flutter/widgets/material/app_bar.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';

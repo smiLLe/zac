@@ -1,5 +1,5 @@
 import 'package:zac/zac_flutter_classes.dart';
-import 'package:zac/src/zac/actions/action.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';

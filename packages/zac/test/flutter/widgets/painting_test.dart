@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/widgets/clip_oval/clip_oval.dart';
-import 'package:zac/src/flutter/widgets/clip_rect/clip_rect.dart';
-import 'package:zac/src/flutter/widgets/decorated_box/decorated_box.dart';
-import 'package:zac/src/flutter/widgets/fractional_translation/fractional_translation.dart';
-import 'package:zac/src/flutter/widgets/opcaity/opacity.dart';
-import 'package:zac/src/flutter/widgets/rotated_box/rotated_box.dart';
+import 'package:zac/src/flutter/widgets/clip_oval.dart';
+import 'package:zac/src/flutter/widgets/clip_rect.dart';
+import 'package:zac/src/flutter/widgets/decorated_box.dart';
+import 'package:zac/src/flutter/widgets/fractional_translation.dart';
+import 'package:zac/src/flutter/widgets/opacity.dart';
+import 'package:zac/src/flutter/widgets/rotated_box.dart';
 
 import '../../helper.dart';
 import '../models.dart';

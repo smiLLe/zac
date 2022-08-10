@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/widgets/_material/divider/divider.dart';
+import 'package:zac/src/flutter/widgets/material/divider.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';

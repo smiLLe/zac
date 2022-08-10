@@ -1,4 +1,4 @@
-import 'package:zac/src/flutter/widgets/interactive_viewer/interactive_viewer.dart';
+import 'package:zac/src/flutter/widgets/interactive_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';

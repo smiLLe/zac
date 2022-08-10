@@ -1,12 +1,12 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:zac/src/flutter/painting/painting.dart';
-import 'package:zac/src/zac/context/widget_context.dart';
+import 'package:zac/src/flutter/painting.dart';
+import 'package:zac/src/zac/widget_context.dart';
 import 'package:zac/src/converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/flutter/widgets/_layout/sized_box/sized_box.dart';
+import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 
 class FakeZacContext extends Fake implements ZacBuildContext {}
 

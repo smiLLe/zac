@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
-import 'package:zac/src/flutter/painting/painting.dart';
+import 'package:zac/src/flutter/dart_ui.dart';
+import 'package:zac/src/flutter/painting.dart';
 
 import 'models.dart';
 

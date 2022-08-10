@@ -3,9 +3,9 @@
 // Do not manually edit this file.
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:zac/src/zac/actions/action.dart' as _i4;
-import 'package:zac/src/zac/context/widget_context.dart' as _i3;
-import 'package:zac/src/zac/shared_value/shared_value.dart' as _i5;
+import 'package:zac/src/zac/action.dart' as _i4;
+import 'package:zac/src/zac/shared_value.dart' as _i5;
+import 'package:zac/src/zac/widget_context.dart' as _i3;
 
 import 'helper.dart' as _i2;
 

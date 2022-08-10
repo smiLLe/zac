@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/rendering/rendering.dart';
+import 'package:zac/src/flutter/rendering.dart';
 
 import 'models.dart';
 

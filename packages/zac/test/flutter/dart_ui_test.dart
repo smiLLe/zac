@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:zac/src/zac/any_value/any_value.dart';
+import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui/dart_ui.dart';
+import 'package:zac/src/flutter/dart_ui.dart';
 
 import 'models.dart';
 
