@@ -12,14 +12,14 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSafeArea.unionValue,
+        '_converter': FlutterSafeArea.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'left': false,
         'top': false,
         'right': false,
         'bottom': false,
         'minimum': {
-          converterKey: 'f:1:EdgeInsets.all',
+          '_converter': 'f:1:EdgeInsets.all',
           'value': 5,
         },
         'maintainBottomViewPadding': true,

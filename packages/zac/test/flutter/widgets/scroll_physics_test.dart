@@ -10,19 +10,19 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterScrollPhysics.fromJson(<String, dynamic>{
-          converterKey: 'f:1:AlwaysScrollableScrollPhysics',
+          '_converter': 'f:1:AlwaysScrollableScrollPhysics',
         }).build(config),
         isA<AlwaysScrollableScrollPhysics>());
 
     expect(
         FlutterScrollPhysics.fromJson(<String, dynamic>{
-          converterKey: 'f:1:BouncingScrollPhysics',
+          '_converter': 'f:1:BouncingScrollPhysics',
         }).build(config),
         isA<BouncingScrollPhysics>());
 
     expect(
         FlutterScrollPhysics.fromJson(<String, dynamic>{
-          converterKey: 'f:1:ClampingScrollPhysics',
+          '_converter': 'f:1:ClampingScrollPhysics',
         }).build(config),
         isA<ClampingScrollPhysics>());
   });

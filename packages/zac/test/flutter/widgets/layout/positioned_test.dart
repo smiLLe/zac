@@ -13,10 +13,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterStack.unionValue,
+        '_converter': FlutterStack.unionValue,
         'children': [
           {
-            converterKey: FlutterPositioned.unionValue,
+            '_converter': FlutterPositioned.unionValue,
             'key': KeysModel.getValueKey('FINDME'),
             'left': 1,
             'top': 2,
@@ -46,10 +46,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterStack.unionValue,
+        '_converter': FlutterStack.unionValue,
         'children': [
           {
-            converterKey: FlutterPositioned.unionValue,
+            '_converter': FlutterPositioned.unionValue,
             'key': KeysModel.getValueKey('FINDME'),
             'left': 1,
             'top': 2,
@@ -79,10 +79,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterStack.unionValue,
+        '_converter': FlutterStack.unionValue,
         'children': [
           {
-            converterKey: FlutterPositioned.unionValueDirectional,
+            '_converter': FlutterPositioned.unionValueDirectional,
             'key': KeysModel.getValueKey('FINDME'),
             'textDirection': TextModel.textDirection,
             'start': 1,
@@ -109,10 +109,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterStack.unionValue,
+        '_converter': FlutterStack.unionValue,
         'children': [
           {
-            converterKey: FlutterPositioned.unionValueFill,
+            '_converter': FlutterPositioned.unionValueFill,
             'key': KeysModel.getValueKey('FINDME'),
             'left': 1,
             'top': 2,

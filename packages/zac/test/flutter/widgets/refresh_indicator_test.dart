@@ -12,19 +12,19 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterScaffold.unionValue,
+        '_converter': FlutterScaffold.unionValue,
         'appBar': {
-          converterKey: FlutterAppBar.unionValue,
+          '_converter': FlutterAppBar.unionValue,
           'title': {
-            converterKey: FlutterText.unionValue,
+            '_converter': FlutterText.unionValue,
             'data': 'Title',
           },
         },
         'body': {
-          converterKey: FlutterRefreshIndicator.unionValue,
+          '_converter': FlutterRefreshIndicator.unionValue,
           'key': KeysModel.getValueKey('FIND_ME'),
           'child': {
-            converterKey: FlutterListView.unionValue,
+            '_converter': FlutterListView.unionValue,
             'children': [
               ChildModel.getSizedBox(key: 'child1'),
               ChildModel.getSizedBox(key: 'child2')

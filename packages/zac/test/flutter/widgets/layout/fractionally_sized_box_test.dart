@@ -12,12 +12,12 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterFractionallySizedBox.unionValue,
+        '_converter': FlutterFractionallySizedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'widthFactor': 100,
         'heightFactor': 200,
         'alignment': {
-          converterKey: 'f:1:Alignment.bottomRight',
+          '_converter': 'f:1:Alignment.bottomRight',
         },
         'child': ChildModel.getSizedBox(key: 'child'),
       },

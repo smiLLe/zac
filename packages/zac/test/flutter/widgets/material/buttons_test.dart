@@ -15,10 +15,10 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: rt,
+          '_converter': rt,
           'key': KeysModel.getValueKey('FIND_ME'),
           'child': ChildModel.getSizedBox(key: 'test_sizedBox'),
-          'clipBehavior': {converterKey: 'f:1:Clip.antiAlias'},
+          'clipBehavior': {'_converter': 'f:1:Clip.antiAlias'},
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
@@ -123,11 +123,11 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: rt,
+          '_converter': rt,
           'key': KeysModel.getValueKey('FIND_ME'),
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
-          'clipBehavior': {converterKey: 'f:1:Clip.antiAlias'},
+          'clipBehavior': {'_converter': 'f:1:Clip.antiAlias'},
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
@@ -240,11 +240,11 @@ void main() {
     test('properties', () {
       final config = FakeZacContext();
       final widget = FlutterElevatedButton.fromJson(<String, dynamic>{
-        converterKey: FlutterElevatedButton.unionValueIcon,
+        '_converter': FlutterElevatedButton.unionValueIcon,
         'key': KeysModel.getValueKey('test_key'),
         'icon': ChildModel.getSizedBox(key: 'test_icon'),
         'label': ChildModel.getSizedBox(key: 'test_label'),
-        'clipBehavior': {converterKey: 'f:1:Clip.antiAlias'}
+        'clipBehavior': {'_converter': 'f:1:Clip.antiAlias'}
       });
 
       expect(
@@ -257,7 +257,7 @@ void main() {
 
     testWidgets('created a label and icon', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'f:1:ElevatedButton.icon',
+        '_converter': 'f:1:ElevatedButton.icon',
         'icon': ChildModel.getSizedBox(key: 'test_icon'),
         'label': ChildModel.getSizedBox(key: 'test_label'),
       });

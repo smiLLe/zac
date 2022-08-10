@@ -11,7 +11,7 @@ void main() {
   test('check non widget properties', () {
     final config = FakeZacContext();
     final data = FlutterAppBar.fromJson(<String, dynamic>{
-      converterKey: FlutterAppBar.unionValue,
+      '_converter': FlutterAppBar.unionValue,
       'automaticallyImplyLeading': false,
       'elevation': 33,
       'shadowColor': ColorModel.json,
@@ -19,13 +19,13 @@ void main() {
       'backgroundColor': ColorModel.json,
       'foregroundColor': ColorModel.json,
       'iconTheme': {
-        converterKey: 'f:1:IconThemeData',
+        '_converter': 'f:1:IconThemeData',
         'color': ColorModel.json,
         'opacity': 0.9,
         'size': 22,
       },
       'actionsIconTheme': {
-        converterKey: 'f:1:IconThemeData',
+        '_converter': 'f:1:IconThemeData',
         'color': ColorModel.json,
         'opacity': 0.9,
         'size': 22,
@@ -85,7 +85,7 @@ void main() {
   });
   testWidgets('find all widgets', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: 'f:1:AppBar',
+      '_converter': 'f:1:AppBar',
       'key': KeysModel.getValueKey('test_key'),
       'leading': ChildModel.getSizedBox(key: 'test_leading'),
       'title': ChildModel.getSizedBox(key: 'test_title'),
@@ -94,7 +94,7 @@ void main() {
       ],
       'flexibleSpace': ChildModel.getSizedBox(key: 'test_flexibleSpace'),
       'bottom': {
-        converterKey: 'f:1:AppBar',
+        '_converter': 'f:1:AppBar',
         'key': KeysModel.getValueKey('test_bottom'),
       },
     });

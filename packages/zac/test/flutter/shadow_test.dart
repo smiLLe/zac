@@ -12,7 +12,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterDartUiShadow.fromJson(<String, dynamic>{
-          converterKey: 'f:1:Shadow',
+          '_converter': 'f:1:Shadow',
           'color': ColorModel.json,
           'offset': OffsetModel.json,
           'blurRadius': 10,
@@ -27,7 +27,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterDartUiShadow.fromJson(<String, dynamic>{
-          converterKey: FlutterBoxShadow.unionValue,
+          '_converter': FlutterBoxShadow.unionValue,
           ...BoxShadowModel.json,
         }).build(config),
         BoxShadowModel.equals);

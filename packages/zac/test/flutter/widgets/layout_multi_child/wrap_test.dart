@@ -12,20 +12,20 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterWrap.unionValue,
+        '_converter': FlutterWrap.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'axis': AxisModel.horizontal,
-        'alignment': {converterKey: 'f:1:WrapAlignment.spaceAround'},
+        'alignment': {'_converter': 'f:1:WrapAlignment.spaceAround'},
         'spacing': 21,
         'runSpacing': 22,
-        'runAlignment': {converterKey: 'f:1:WrapAlignment.spaceEvenly'},
-        'crossAxisAlignment': {converterKey: 'f:1:WrapCrossAlignment.end'},
+        'runAlignment': {'_converter': 'f:1:WrapAlignment.spaceEvenly'},
+        'crossAxisAlignment': {'_converter': 'f:1:WrapCrossAlignment.end'},
         'textDirection': TextModel.textDirection,
         'verticalDirection': {
-          converterKey: 'f:1:VerticalDirection.up',
+          '_converter': 'f:1:VerticalDirection.up',
         },
         'clipBehavior': {
-          converterKey: 'f:1:Clip.none',
+          '_converter': 'f:1:Clip.none',
         },
         'children': [
           ChildModel.getSizedBox(key: 'child1'),

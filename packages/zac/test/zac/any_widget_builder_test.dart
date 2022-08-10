@@ -31,9 +31,9 @@ void main() {
   group('ZacWidgetBuilder', () {
     testWidgets('create from Map', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'f:1:SizedBox',
+        '_converter': 'f:1:SizedBox',
         'child': {
-          converterKey: 'f:1:SizedBox',
+          '_converter': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('FIND_ME'),
         },
       });
@@ -42,13 +42,13 @@ void main() {
 
     testWidgets('nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'z:1:ZacWidgetBuilder',
+        '_converter': 'z:1:ZacWidgetBuilder',
         'data': {
-          converterKey: 'z:1:ZacWidgetBuilder',
+          '_converter': 'z:1:ZacWidgetBuilder',
           'data': {
-            converterKey: 'z:1:ZacWidgetBuilder',
+            '_converter': 'z:1:ZacWidgetBuilder',
             'data': {
-              converterKey: 'f:1:SizedBox',
+              '_converter': 'f:1:SizedBox',
               'key': KeysModel.getValueKey('FIND_ME'),
             },
           },
@@ -61,13 +61,13 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: 'z:1:ZacWidgetBuilder.isolate',
+          '_converter': 'z:1:ZacWidgetBuilder.isolate',
           'data': {
-            converterKey: 'z:1:ZacWidgetBuilder.isolateString',
+            '_converter': 'z:1:ZacWidgetBuilder.isolateString',
             'data': jsonEncode({
-              converterKey: 'z:1:ZacWidgetBuilder.isolate',
+              '_converter': 'z:1:ZacWidgetBuilder.isolate',
               'data': {
-                converterKey: 'f:1:SizedBox',
+                '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
               },
             }),
@@ -80,15 +80,15 @@ void main() {
 
     testWidgets('mixed nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: 'z:1:ZacWidgetBuilder.isolate',
+        '_converter': 'z:1:ZacWidgetBuilder.isolate',
         'data': {
-          converterKey: 'z:1:ZacWidgetBuilder',
+          '_converter': 'z:1:ZacWidgetBuilder',
           'data': {
-            converterKey: 'z:1:ZacWidgetBuilder.isolateString',
+            '_converter': 'z:1:ZacWidgetBuilder.isolateString',
             'data': jsonEncode({
-              converterKey: 'z:1:ZacWidgetBuilder.isolate',
+              '_converter': 'z:1:ZacWidgetBuilder.isolate',
               'data': {
-                converterKey: 'f:1:SizedBox',
+                '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
               },
             }),

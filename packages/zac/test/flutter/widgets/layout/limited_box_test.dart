@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterLimitedBox.unionValue,
+        '_converter': FlutterLimitedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'maxHeight': 40,
         'maxWidth': 50,

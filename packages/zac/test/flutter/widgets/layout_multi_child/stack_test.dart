@@ -12,13 +12,13 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterStack.unionValue,
+        '_converter': FlutterStack.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'fit': {
-          converterKey: 'f:1:StackFit.expand',
+          '_converter': 'f:1:StackFit.expand',
         },
         'alignment': AlignmentModel.geometry_alignment,
-        'clipBehavior': {converterKey: 'f:1:Clip.hardEdge'},
+        'clipBehavior': {'_converter': 'f:1:Clip.hardEdge'},
         'textDirection': TextModel.textDirection,
         'children': [
           ChildModel.getSizedBox(key: 'child1'),

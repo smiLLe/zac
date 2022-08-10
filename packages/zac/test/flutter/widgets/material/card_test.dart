@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterCard.unionValue,
+        '_converter': FlutterCard.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'color': ColorModel.json,
         'shadowColor': ColorModel.json,

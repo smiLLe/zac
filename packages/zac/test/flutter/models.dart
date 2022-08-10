@@ -13,10 +13,10 @@ class FakeZacContext extends Fake implements ZacBuildContext {}
 abstract class ActionsModel {
   static Map<String, Object?> createTestAction(String data) {
     return {
-      converterKey: 'z:1:Actions',
+      '_converter': 'z:1:Actions',
       'actions': [
         {
-          converterKey: 'test_action',
+          '_converter': 'test_action',
           'data': data,
         }
       ],
@@ -26,28 +26,28 @@ abstract class ActionsModel {
 
 abstract class ChildModel {
   static Map<String, Object?> sizedBox = {
-    converterKey: FlutterSizedBox.unionValue,
+    '_converter': FlutterSizedBox.unionValue,
   };
 
   static Map<String, Object?> getSizedBox({
     String? key,
   }) =>
       {
-        converterKey: FlutterSizedBox.unionValue,
+        '_converter': FlutterSizedBox.unionValue,
         'key': key == null ? null : KeysModel.getValueKey(key)
       };
 }
 
 abstract class KeysModel {
   static Map<String, Object?> getValueKey(String key) => {
-        converterKey: 'f:1:ValueKey',
+        '_converter': 'f:1:ValueKey',
         'value': key,
       };
 }
 
 abstract class ColorModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Color.fromARGB',
+    '_converter': 'f:1:Color.fromARGB',
     'a': 10,
     'r': 100,
     'g': 100,
@@ -58,7 +58,7 @@ abstract class ColorModel {
 
 abstract class EdgeInsetsModel {
   static Map<String, Object?> geometry_edgeInsetsAll = {
-    converterKey: FlutterEdgeInsets.unionValueAll,
+    '_converter': FlutterEdgeInsets.unionValueAll,
     'value': 10,
   };
   static const EdgeInsets equalsAll = EdgeInsets.all(10);
@@ -66,7 +66,7 @@ abstract class EdgeInsetsModel {
 
 abstract class AlignmentModel {
   static Map<String, Object?> geometry_alignment = {
-    converterKey: 'f:1:Alignment',
+    '_converter': 'f:1:Alignment',
     'x': 10,
     'y': 15,
   };
@@ -75,11 +75,11 @@ abstract class AlignmentModel {
 
 abstract class BorderModel {
   static Map<String, Object?> borderAll = {
-    converterKey: 'f:1:Border.all',
+    '_converter': 'f:1:Border.all',
     'color': ColorModel.json,
     'width': 5,
     'style': {
-      converterKey: 'f:1:BorderStyle.solid',
+      '_converter': 'f:1:BorderStyle.solid',
     },
   };
 
@@ -93,21 +93,21 @@ abstract class BorderModel {
 
 abstract class BorderRadiusModel {
   static Map<String, Object?> allJson = {
-    converterKey: FlutterBorderRadius.unionValueAll,
+    '_converter': FlutterBorderRadius.unionValueAll,
     'radius': RadiusModel.json,
   };
 
   static const BorderRadius allEquals = BorderRadius.all(RadiusModel.equals);
 
   static Map<String, Object?> circularJson = {
-    converterKey: FlutterBorderRadius.unionValueCircular,
+    '_converter': FlutterBorderRadius.unionValueCircular,
     'radius': 22,
   };
 
   static BorderRadius circularEquals = BorderRadius.circular(22);
 
   static Map<String, Object?> horizontalJson = {
-    converterKey: FlutterBorderRadius.unionValueHorizontal,
+    '_converter': FlutterBorderRadius.unionValueHorizontal,
     'left': RadiusModel.json,
     'right': RadiusModel.json
   };
@@ -118,7 +118,7 @@ abstract class BorderRadiusModel {
 
 abstract class RadiusModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Radius.elliptical',
+    '_converter': 'f:1:Radius.elliptical',
     'x': 10,
     'y': 20,
   };
@@ -130,13 +130,13 @@ abstract class BoxDecorationModel {
   static Map<String, dynamic> getMap(
           {String type = FlutterBoxDecoration.unionValue}) =>
       <String, dynamic>{
-        converterKey: type,
+        '_converter': type,
         'color': ColorModel.json,
         'border': BorderModel.box_borderAll,
         'borderRadius': BorderRadiusModel.horizontalJson,
         'boxShadow': [BoxShadowModel.json],
         'backgroundBlendMode': {
-          converterKey: 'f:1:BlendMode.darken',
+          '_converter': 'f:1:BlendMode.darken',
         }
       };
 
@@ -151,7 +151,7 @@ abstract class BoxDecorationModel {
 
 abstract class BlurStyleModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:BlurSyle.inner',
+    '_converter': 'f:1:BlurSyle.inner',
   };
 
   static const BlurStyle equals = BlurStyle.inner;
@@ -159,7 +159,7 @@ abstract class BlurStyleModel {
 
 abstract class OffsetModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Offset',
+    '_converter': 'f:1:Offset',
     'dx': 10,
     'dy': 20,
   };
@@ -169,7 +169,7 @@ abstract class OffsetModel {
 
 abstract class BoxShadowModel {
   static Map<String, Object?> json = {
-    converterKey: FlutterBoxShadow.unionValue,
+    '_converter': FlutterBoxShadow.unionValue,
     'color': ColorModel.json,
     'offset': OffsetModel.json,
     'blurRadius': 11,
@@ -188,7 +188,7 @@ abstract class BoxShadowModel {
 
 abstract class ShadowModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Shadow',
+    '_converter': 'f:1:Shadow',
     'color': ColorModel.json,
     'offset': OffsetModel.json,
     'blurRadius': 10,
@@ -202,14 +202,14 @@ abstract class ShadowModel {
 }
 
 abstract class BoxShapeModel {
-  static Map<String, Object?> json = {converterKey: 'f:1:BoxShape.circle'};
+  static Map<String, Object?> json = {'_converter': 'f:1:BoxShape.circle'};
 
   static const BoxShape equals = BoxShape.circle;
 }
 
 abstract class LocaleModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Locale',
+    '_converter': 'f:1:Locale',
     'languageCode': 'de',
     'countryCode': 'AT',
   };
@@ -219,14 +219,14 @@ abstract class LocaleModel {
 
 abstract class TextModel {
   static Map<String, Object?> textStyle = {
-    converterKey: 'f:1:TextStyle',
+    '_converter': 'f:1:TextStyle',
     'inherit': false,
     'color': ColorModel.json,
     'backgroundColor': ColorModel.json,
     'fontSize': 20,
     'letterSpacing': 5,
     'wordSpacing': 3,
-    'textBaseline': {converterKey: 'f:1:TextBaseline.alphabetic'}
+    'textBaseline': {'_converter': 'f:1:TextBaseline.alphabetic'}
   };
 
   static const TextStyle equalsTextStyle = TextStyle(
@@ -240,32 +240,32 @@ abstract class TextModel {
   );
 
   static Map<String, Object?> fontWeight = {
-    converterKey: 'f:1:FontWeight.w900'
+    '_converter': 'f:1:FontWeight.w900'
   };
 
   static const FontWeight equalsFontWeight = FontWeight.w900;
 
   static Map<String, Object?> fontStyle = {
-    converterKey: 'f:1:FontStyle.italic'
+    '_converter': 'f:1:FontStyle.italic'
   };
 
   static const FontStyle equalsFontStyle = FontStyle.italic;
 
   static Map<String, Object?> textDecoration = {
-    converterKey: 'f:1:TextDecoration.underline'
+    '_converter': 'f:1:TextDecoration.underline'
   };
 
   static const TextDecoration equalsTextDecoration = TextDecoration.underline;
 
   static Map<String, Object?> textLeadingDistribution = {
-    converterKey: 'f:1:TextLeadingDistribution.proportional'
+    '_converter': 'f:1:TextLeadingDistribution.proportional'
   };
 
   static const TextLeadingDistribution equalsTextLeadingDistribution =
       TextLeadingDistribution.proportional;
 
   static Map<String, Object?> strutStyle = {
-    converterKey: 'f:1:StrutStyle',
+    '_converter': 'f:1:StrutStyle',
     'fontFamily': 'test_fontFamily',
     'fontFamilyFallback': ['test_fontFamilyFallback'],
     'fontSize': 42,
@@ -277,34 +277,34 @@ abstract class TextModel {
     fontSize: 42,
   );
 
-  static Map<String, Object?> textAlign = {converterKey: 'f:1:TextAlign.right'};
+  static Map<String, Object?> textAlign = {'_converter': 'f:1:TextAlign.right'};
 
   static const TextAlign equalsTextAlign = TextAlign.right;
 
   static Map<String, Object?> textDirection = {
-    converterKey: 'f:1:TextDirection.ltr'
+    '_converter': 'f:1:TextDirection.ltr'
   };
 
   static const TextDirection equalsTextDirection = TextDirection.ltr;
 
   static Map<String, Object?> textOverflow = {
-    converterKey: 'f:1:TextOverflow.clip'
+    '_converter': 'f:1:TextOverflow.clip'
   };
 
   static const TextOverflow equalsTextOverflow = TextOverflow.clip;
 
   static Map<String, Object?> textWidthBasis = {
-    converterKey: 'f:1:TextWidthBasis.longestLine'
+    '_converter': 'f:1:TextWidthBasis.longestLine'
   };
 
   static const TextWidthBasis equalsTextWidthBasis = TextWidthBasis.longestLine;
 
   static Map<String, Object?> textHeightBehavior = {
-    converterKey: 'f:1:TextHeightBehavior',
+    '_converter': 'f:1:TextHeightBehavior',
     'applyHeightToFirstAscent': false,
     'applyHeightToLastDescent': true,
     'leadingDistribution': {
-      converterKey: 'f:1:TextLeadingDistribution.even',
+      '_converter': 'f:1:TextLeadingDistribution.even',
     }
   };
 
@@ -317,21 +317,21 @@ abstract class TextModel {
 
 abstract class AxisModel {
   static Map<String, Object?> horizontal = {
-    converterKey: 'f:1:Axis.horizontal'
+    '_converter': 'f:1:Axis.horizontal'
   };
 
   static const Axis equalsHorizontal = Axis.horizontal;
 }
 
 abstract class BrightnessModel {
-  static Map<String, Object?> light = {converterKey: 'f:1:Brightness.light'};
+  static Map<String, Object?> light = {'_converter': 'f:1:Brightness.light'};
 
   static const Brightness equalsLight = Brightness.light;
 }
 
 abstract class SystemUiOverlayStyleModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:SystemUiOverlayStyle',
+    '_converter': 'f:1:SystemUiOverlayStyle',
     'systemNavigationBarColor': ColorModel.json,
     'systemNavigationBarDividerColor': ColorModel.json,
     'systemNavigationBarIconBrightness': BrightnessModel.light,
@@ -356,14 +356,14 @@ abstract class SystemUiOverlayStyleModel {
 
 abstract class GridDelegateModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
+    '_converter': 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
     'crossAxisCount': 7,
   };
 }
 
 abstract class ClipBehaviorModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:Clip.hardEdge',
+    '_converter': 'f:1:Clip.hardEdge',
   };
 
   static Clip equals = Clip.hardEdge;
@@ -371,7 +371,7 @@ abstract class ClipBehaviorModel {
 
 abstract class BoxConstraintsModel {
   static Map<String, Object?> json = {
-    converterKey: 'f:1:BoxConstraints.expand',
+    '_converter': 'f:1:BoxConstraints.expand',
     'width': 400,
     'height': 401,
   };

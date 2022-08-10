@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSelectableText.unionValue,
+        '_converter': FlutterSelectableText.unionValue,
         'key': KeysModel.getValueKey('FIND_ME'),
         'data': 'data_text',
         'strutStyle': TextModel.strutStyle,
@@ -79,7 +79,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSelectableText.unionValue,
+        '_converter': FlutterSelectableText.unionValue,
         'key': KeysModel.getValueKey('FIND_ME'),
         'data': 'data_text',
         'style': {...TextModel.textStyle, 'inherit': true},

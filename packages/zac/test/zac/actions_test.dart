@@ -120,13 +120,13 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: FlutterElevatedButton.unionValue,
+          '_converter': FlutterElevatedButton.unionValue,
           'key': KeysModel.getValueKey('button'),
           'onPressed': {
-            converterKey: 'z:1:Actions',
+            '_converter': 'z:1:Actions',
             'actions': [
               {
-                converterKey: FlutterDialogs.unionValueShowDialog,
+                '_converter': FlutterDialogs.unionValueShowDialog,
                 'child': ChildModel.getSizedBox(key: 'dialog_child')
               },
             ],
@@ -151,24 +151,24 @@ void main() {
         required List<Map<String, dynamic>> backActions,
       }) {
         return <String, dynamic>{
-          converterKey: FlutterColumn.unionValue,
+          '_converter': FlutterColumn.unionValue,
           'children': [
             ChildModel.getSizedBox(key: 'page$number'),
             {
-              converterKey: FlutterElevatedButton.unionValue,
+              '_converter': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('page${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                converterKey: 'z:1:Actions',
+                '_converter': 'z:1:Actions',
                 'actions': actions,
               }
             },
             {
-              converterKey: FlutterElevatedButton.unionValue,
+              '_converter': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('pageback${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                converterKey: 'z:1:Actions',
+                '_converter': 'z:1:Actions',
                 'actions': backActions,
               }
             },
@@ -182,30 +182,30 @@ void main() {
           number: 1,
           actions: [
             <String, dynamic>{
-              converterKey: FlutterNavigatorActions.unionValuePush,
+              '_converter': FlutterNavigatorActions.unionValuePush,
               'route': {
-                converterKey: 'f:1:MaterialPageRoute',
+                '_converter': 'f:1:MaterialPageRoute',
                 'child': page(
                   number: 2,
                   actions: [
                     <String, dynamic>{
-                      converterKey: FlutterNavigatorActions.unionValuePush,
+                      '_converter': FlutterNavigatorActions.unionValuePush,
                       'route': {
-                        converterKey: 'f:1:MaterialPageRoute',
+                        '_converter': 'f:1:MaterialPageRoute',
                         'child': page(
                           number: 3,
                           actions: [
                             <String, dynamic>{
-                              converterKey: FlutterNavigatorActions
+                              '_converter': FlutterNavigatorActions
                                   .unionValuePushReplacement,
                               'route': {
-                                converterKey: 'f:1:MaterialPageRoute',
+                                '_converter': 'f:1:MaterialPageRoute',
                                 'child': page(
                                   number: 4,
                                   actions: [],
                                   backActions: [
                                     <String, dynamic>{
-                                      converterKey:
+                                      '_converter':
                                           FlutterNavigatorActions.unionValuePop,
                                     }
                                   ],
@@ -215,7 +215,7 @@ void main() {
                           ],
                           backActions: [
                             <String, dynamic>{
-                              converterKey:
+                              '_converter':
                                   FlutterNavigatorActions.unionValueMaybePop,
                             }
                           ],
@@ -225,7 +225,7 @@ void main() {
                   ],
                   backActions: [
                     <String, dynamic>{
-                      converterKey: FlutterNavigatorActions.unionValuePop,
+                      '_converter': FlutterNavigatorActions.unionValuePop,
                     }
                   ],
                 ),

@@ -12,11 +12,11 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterUnconstrainedBox.unionValue,
+        '_converter': FlutterUnconstrainedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
         'alignment': {
-          converterKey: 'f:1:Alignment.bottomRight',
+          '_converter': 'f:1:Alignment.bottomRight',
         },
         'textDirection': TextModel.textDirection,
         'constrainedAxis': AxisModel.horizontal,

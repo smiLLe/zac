@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSizedBox.unionValue,
+        '_converter': FlutterSizedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'width': 10,
         'height': 20,
@@ -36,7 +36,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSizedBox.unionValueExpand,
+        '_converter': FlutterSizedBox.unionValueExpand,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
       },
@@ -58,7 +58,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSizedBox.unionValueShrink,
+        '_converter': FlutterSizedBox.unionValueShrink,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
       },
@@ -80,10 +80,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSizedBox.unionValueFromSize,
+        '_converter': FlutterSizedBox.unionValueFromSize,
         'key': KeysModel.getValueKey('FINDME'),
         'size': {
-          converterKey: 'f:1:Size',
+          '_converter': 'f:1:Size',
           'width': 10,
           'height': 20,
         },
@@ -107,7 +107,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterSizedBox.unionValueSquare,
+        '_converter': FlutterSizedBox.unionValueSquare,
         'key': KeysModel.getValueKey('FINDME'),
         'dimension': 22,
         'child': ChildModel.getSizedBox(key: 'child'),

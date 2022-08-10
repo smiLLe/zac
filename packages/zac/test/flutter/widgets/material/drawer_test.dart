@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterDrawer.unionValue,
+        '_converter': FlutterDrawer.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'backgroundColor': ColorModel.json,
         'semanticLabel': 'test_semanticsLabel',

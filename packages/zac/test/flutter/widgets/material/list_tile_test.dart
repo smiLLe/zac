@@ -14,9 +14,9 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: 'f:1:Scaffold',
+        '_converter': 'f:1:Scaffold',
         'body': {
-          converterKey: 'f:1:ListTile',
+          '_converter': 'f:1:ListTile',
           'key': KeysModel.getValueKey('FIND_ME'),
         },
       },

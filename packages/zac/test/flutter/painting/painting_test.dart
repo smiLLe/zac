@@ -39,9 +39,9 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterShapeDecoration.fromJson(<String, dynamic>{
-          converterKey: 'f:1:ShapeDecoration',
+          '_converter': 'f:1:ShapeDecoration',
           'shape': {
-            converterKey: 'f:1:CircleBorder',
+            '_converter': 'f:1:CircleBorder',
           },
         }).build(config),
         isA<ShapeDecoration>().having(
@@ -49,9 +49,9 @@ void main() {
 
     expect(
         FlutterDecoration.fromJson(<String, dynamic>{
-          converterKey: 'f:1:ShapeDecoration',
+          '_converter': 'f:1:ShapeDecoration',
           'shape': {
-            converterKey: 'f:1:CircleBorder',
+            '_converter': 'f:1:CircleBorder',
           },
         }).build(config),
         isA<ShapeDecoration>());
@@ -61,13 +61,13 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterAxis.fromJson(
-                <String, dynamic>{converterKey: 'f:1:Axis.horizontal'})
+                <String, dynamic>{'_converter': 'f:1:Axis.horizontal'})
             .build(config),
         Axis.horizontal);
 
     expect(
         FlutterAxis.fromJson(
-            <String, dynamic>{converterKey: 'f:1:Axis.vertical'}).build(config),
+            <String, dynamic>{'_converter': 'f:1:Axis.vertical'}).build(config),
         Axis.vertical);
   });
 
@@ -75,13 +75,13 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterVerticalDirection.fromJson(
-                <String, dynamic>{converterKey: 'f:1:VerticalDirection.up'})
+                <String, dynamic>{'_converter': 'f:1:VerticalDirection.up'})
             .build(config),
         VerticalDirection.up);
 
     expect(
         FlutterVerticalDirection.fromJson(
-                <String, dynamic>{converterKey: 'f:1:VerticalDirection.down'})
+                <String, dynamic>{'_converter': 'f:1:VerticalDirection.down'})
             .build(config),
         VerticalDirection.down);
   });
@@ -90,28 +90,28 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterTextStyle.fromJson(<String, dynamic>{
-          converterKey: 'f:1:TextStyle',
+          '_converter': 'f:1:TextStyle',
           'inherit': false,
           'color': ColorModel.json,
           'backgroundColor': ColorModel.json,
           'fontSize': 20,
           'letterSpacing': 5,
           'wordSpacing': 3,
-          'textBaseline': {converterKey: 'f:1:TextBaseline.ideographic'},
+          'textBaseline': {'_converter': 'f:1:TextBaseline.ideographic'},
           'height': 200,
           'leadingDistribution': {
-            converterKey: 'f:1:TextLeadingDistribution.proportional'
+            '_converter': 'f:1:TextLeadingDistribution.proportional'
           },
           'locale': LocaleModel.json,
           'shadows': [ShadowModel.json],
           'fontFeatures': [
             {
-              converterKey: 'f:1:FontFeature.slashedZero',
+              '_converter': 'f:1:FontFeature.slashedZero',
             }
           ],
           'decorationColor': ColorModel.json,
           'decorationStyle': {
-            converterKey: 'f:1:TextDecorationStyle.wavy',
+            '_converter': 'f:1:TextDecorationStyle.wavy',
           },
           'decorationThickness': 20,
           'debugLabel': 'test_debugLabel',
@@ -124,7 +124,7 @@ void main() {
           'fontStyle': TextModel.fontStyle,
           'decoration': TextModel.textDecoration,
           'overflow': {
-            converterKey: 'f:1:TextOverflow.clip',
+            '_converter': 'f:1:TextOverflow.clip',
           }
         }).build(config),
         isA<TextStyle>()
@@ -175,25 +175,25 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterTextOverflow.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextOverflow.clip'})
+                <String, dynamic>{'_converter': 'f:1:TextOverflow.clip'})
             .build(config),
         TextOverflow.clip);
 
     expect(
         FlutterTextOverflow.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextOverflow.ellipsis'})
+                <String, dynamic>{'_converter': 'f:1:TextOverflow.ellipsis'})
             .build(config),
         TextOverflow.ellipsis);
 
     expect(
         FlutterTextOverflow.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextOverflow.fade'})
+                <String, dynamic>{'_converter': 'f:1:TextOverflow.fade'})
             .build(config),
         TextOverflow.fade);
 
     expect(
         FlutterTextOverflow.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextOverflow.visible'})
+                <String, dynamic>{'_converter': 'f:1:TextOverflow.visible'})
             .build(config),
         TextOverflow.visible);
   });
@@ -203,7 +203,7 @@ void main() {
       final config = FakeZacContext();
       expect(
           FlutterStrutStyle.fromJson(<String, dynamic>{
-            converterKey: 'f:1:StrutStyle',
+            '_converter': 'f:1:StrutStyle',
             'fontFamily': 'test_fontFamily',
             'fontFamilyFallback': ['test_fontFamilyFallback'],
             'fontSize': 42,
@@ -235,7 +235,7 @@ void main() {
       final config = FakeZacContext();
       expect(
           FlutterStrutStyle.fromJson(<String, dynamic>{
-            converterKey: 'f:1:StrutStyle.fromTextStyle',
+            '_converter': 'f:1:StrutStyle.fromTextStyle',
             'textStyle': TextModel.textStyle,
             'fontFamily': 'test_fontFamily',
             'fontFamilyFallback': ['test_fontFamilyFallback'],
@@ -270,13 +270,13 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterTextWidthBasis.fromJson(<String, dynamic>{
-          converterKey: 'f:1:TextWidthBasis.longestLine'
+          '_converter': 'f:1:TextWidthBasis.longestLine'
         }).build(config),
         TextWidthBasis.longestLine);
 
     expect(
         FlutterTextWidthBasis.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextWidthBasis.parent'})
+                <String, dynamic>{'_converter': 'f:1:TextWidthBasis.parent'})
             .build(config),
         TextWidthBasis.parent);
   });
@@ -285,34 +285,34 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterBoxFit.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BoxFit.contain'})
+                <String, dynamic>{'_converter': 'f:1:BoxFit.contain'})
             .build(config),
         BoxFit.contain);
     expect(
         FlutterBoxFit.fromJson(
-            <String, dynamic>{converterKey: 'f:1:BoxFit.cover'}).build(config),
+            <String, dynamic>{'_converter': 'f:1:BoxFit.cover'}).build(config),
         BoxFit.cover);
     expect(
         FlutterBoxFit.fromJson(
-            <String, dynamic>{converterKey: 'f:1:BoxFit.fill'}).build(config),
+            <String, dynamic>{'_converter': 'f:1:BoxFit.fill'}).build(config),
         BoxFit.fill);
     expect(
         FlutterBoxFit.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BoxFit.fitHeight'})
+                <String, dynamic>{'_converter': 'f:1:BoxFit.fitHeight'})
             .build(config),
         BoxFit.fitHeight);
     expect(
         FlutterBoxFit.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BoxFit.fitWidth'})
+                <String, dynamic>{'_converter': 'f:1:BoxFit.fitWidth'})
             .build(config),
         BoxFit.fitWidth);
     expect(
         FlutterBoxFit.fromJson(
-            <String, dynamic>{converterKey: 'f:1:BoxFit.none'}).build(config),
+            <String, dynamic>{'_converter': 'f:1:BoxFit.none'}).build(config),
         BoxFit.none);
     expect(
         FlutterBoxFit.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BoxFit.scaleDown'})
+                <String, dynamic>{'_converter': 'f:1:BoxFit.scaleDown'})
             .build(config),
         BoxFit.scaleDown);
   });
@@ -321,25 +321,25 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterImageRepeat.fromJson(
-                <String, dynamic>{converterKey: 'f:1:ImageRepeat.noRepeat'})
+                <String, dynamic>{'_converter': 'f:1:ImageRepeat.noRepeat'})
             .build(config),
         ImageRepeat.noRepeat);
 
     expect(
         FlutterImageRepeat.fromJson(
-                <String, dynamic>{converterKey: 'f:1:ImageRepeat.repeat'})
+                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeat'})
             .build(config),
         ImageRepeat.repeat);
 
     expect(
         FlutterImageRepeat.fromJson(
-                <String, dynamic>{converterKey: 'f:1:ImageRepeat.repeatX'})
+                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatX'})
             .build(config),
         ImageRepeat.repeatX);
 
     expect(
         FlutterImageRepeat.fromJson(
-                <String, dynamic>{converterKey: 'f:1:ImageRepeat.repeatY'})
+                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatY'})
             .build(config),
         ImageRepeat.repeatY);
   });
@@ -348,7 +348,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterTextAlignVertical.fromJson(<String, dynamic>{
-          converterKey: 'f:1:TextAlignVertical',
+          '_converter': 'f:1:TextAlignVertical',
           'y': 0.2,
         }).build(config),
         isA<TextAlignVertical>()
@@ -356,17 +356,17 @@ void main() {
 
     expect(
         FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextAlignVertical.bottom'})
+                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.bottom'})
             .build(config),
         TextAlignVertical.bottom);
     expect(
         FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextAlignVertical.center'})
+                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.center'})
             .build(config),
         TextAlignVertical.center);
     expect(
         FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{converterKey: 'f:1:TextAlignVertical.top'})
+                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.top'})
             .build(config),
         TextAlignVertical.top);
   });

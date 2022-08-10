@@ -14,7 +14,7 @@ void main() {
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValue,
+            '_converter': FlutterAlignment.unionValue,
             'x': 10,
             'y': 20,
           }).build(config),
@@ -24,68 +24,68 @@ void main() {
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomCenter,
+            '_converter': FlutterAlignment.unionValueBottomCenter,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomCenter));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomLeft,
+            '_converter': FlutterAlignment.unionValueBottomLeft,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomLeft));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomRight,
+            '_converter': FlutterAlignment.unionValueBottomRight,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomRight));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenter,
+            '_converter': FlutterAlignment.unionValueCenter,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.center));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenterLeft,
+            '_converter': FlutterAlignment.unionValueCenterLeft,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.centerLeft));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenterRight,
+            '_converter': FlutterAlignment.unionValueCenterRight,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.centerRight));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopCenter,
+            '_converter': FlutterAlignment.unionValueTopCenter,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.topCenter));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopLeft,
+            '_converter': FlutterAlignment.unionValueTopLeft,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.topLeft));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopRight,
+            '_converter': FlutterAlignment.unionValueTopRight,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.topRight));
     });
     test('FlutterAlignment', () {
       final config = FakeZacContext();
       final data = FlutterAlignment.fromJson(<String, dynamic>{
-        converterKey: FlutterAlignment.unionValue,
+        '_converter': FlutterAlignment.unionValue,
         'x': 10,
         'y': 20,
       });
@@ -98,61 +98,61 @@ void main() {
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomCenter,
+            '_converter': FlutterAlignment.unionValueBottomCenter,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomCenter));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomLeft,
+            '_converter': FlutterAlignment.unionValueBottomLeft,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomLeft));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueBottomRight,
+            '_converter': FlutterAlignment.unionValueBottomRight,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.bottomRight));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenter,
+            '_converter': FlutterAlignment.unionValueCenter,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.center));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenterLeft,
+            '_converter': FlutterAlignment.unionValueCenterLeft,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.centerLeft));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueCenterRight,
+            '_converter': FlutterAlignment.unionValueCenterRight,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.centerRight));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopCenter,
+            '_converter': FlutterAlignment.unionValueTopCenter,
           }).build(config),
           isA<Alignment>()
               .having((p0) => p0, 'Alignment', Alignment.topCenter));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopLeft,
+            '_converter': FlutterAlignment.unionValueTopLeft,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.topLeft));
 
       expect(
           FlutterAlignment.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignment.unionValueTopRight,
+            '_converter': FlutterAlignment.unionValueTopRight,
           }).build(config),
           isA<Alignment>().having((p0) => p0, 'Alignment', Alignment.topRight));
     });
@@ -164,7 +164,7 @@ void main() {
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValue,
+            '_converter': FlutterAlignmentDirectional.unionValue,
             'start': 10,
             'y': 20,
           }).build(config),
@@ -174,56 +174,56 @@ void main() {
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomCenter,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomCenter));
 
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomStart,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomStart));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomEnd,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomEnd));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueCenter,
           }).build(config),
           isA<AlignmentDirectional>().having(
               (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.center));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenterStart,
+            '_converter': FlutterAlignmentDirectional.unionValueCenterStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.centerStart));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenterEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueCenterEnd,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.centerEnd));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueTopCenter,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.topCenter));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopStart,
+            '_converter': FlutterAlignmentDirectional.unionValueTopStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.topStart));
       expect(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueTopEnd,
           }).build(config),
           isA<AlignmentDirectional>().having(
               (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topEnd));
@@ -232,7 +232,7 @@ void main() {
     test('FlutterAlignmentDirectional', () {
       final config = FakeZacContext();
       final data = FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-        converterKey: FlutterAlignmentDirectional.unionValue,
+        '_converter': FlutterAlignmentDirectional.unionValue,
         'start': 10,
         'y': 20,
       });
@@ -245,56 +245,56 @@ void main() {
 
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomCenter,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomCenter));
 
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomStart,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomStart));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueBottomEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueBottomEnd,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.bottomEnd));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueCenter,
           }).build(config),
           isA<AlignmentDirectional>().having(
               (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.center));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenterStart,
+            '_converter': FlutterAlignmentDirectional.unionValueCenterStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.centerStart));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueCenterEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueCenterEnd,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.centerEnd));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopCenter,
+            '_converter': FlutterAlignmentDirectional.unionValueTopCenter,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.topCenter));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopStart,
+            '_converter': FlutterAlignmentDirectional.unionValueTopStart,
           }).build(config),
           isA<AlignmentDirectional>().having((p0) => p0, 'AlignmentDirectional',
               AlignmentDirectional.topStart));
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            converterKey: FlutterAlignmentDirectional.unionValueTopEnd,
+            '_converter': FlutterAlignmentDirectional.unionValueTopEnd,
           }).build(config),
           isA<AlignmentDirectional>().having(
               (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topEnd));

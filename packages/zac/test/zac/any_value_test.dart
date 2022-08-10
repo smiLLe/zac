@@ -10,14 +10,14 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacBool>({
-            converterKey: 'z:1:ZacBool',
+            '_converter': 'z:1:ZacBool',
             'value': false,
           }),
           ZacBool(false));
 
       expect(
           ConverterHelper.convertToType<ZacBool>({
-            converterKey: 'z:1:ZacBool.consume',
+            '_converter': 'z:1:ZacBool.consume',
             'name': 'foo',
           }),
           ZacBool.consume(name: 'foo'));
@@ -25,19 +25,19 @@ void main() {
       expect(ZacBool.fromJson(false), ZacBool(false));
       expect(
           ZacBool.fromJson({
-            converterKey: 'z:1:ZacBool',
+            '_converter': 'z:1:ZacBool',
             'value': false,
           }),
           ZacBool(false));
       expect(
           ZacBool.fromJson({
-            converterKey: 'z:1:ZacBool.consume',
+            '_converter': 'z:1:ZacBool.consume',
             'name': 'foo',
           }),
           ZacBool.consume(name: 'foo'));
       expect(
           ZacBool.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacBool.consume(name: 'foo'));
@@ -52,7 +52,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacBool',
+              '_converter': 'z:1:ZacBool',
               'value': false,
             },
             transformer: [ConvertTransformer()],
@@ -85,14 +85,14 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacInt>({
-            converterKey: 'z:1:ZacInt',
+            '_converter': 'z:1:ZacInt',
             'value': 1,
           }),
           ZacInt(1));
 
       expect(
           ConverterHelper.convertToType<ZacInt>({
-            converterKey: 'z:1:ZacInt.consume',
+            '_converter': 'z:1:ZacInt.consume',
             'name': 'foo',
           }),
           ZacInt.consume(name: 'foo'));
@@ -101,19 +101,19 @@ void main() {
       expect(ZacInt.fromJson(1.2), ZacInt(1));
       expect(
           ZacInt.fromJson({
-            converterKey: 'z:1:ZacInt',
+            '_converter': 'z:1:ZacInt',
             'value': 1,
           }),
           ZacInt(1));
       expect(
           ZacInt.fromJson({
-            converterKey: 'z:1:ZacInt.consume',
+            '_converter': 'z:1:ZacInt.consume',
             'name': 'foo',
           }),
           ZacInt.consume(name: 'foo'));
       expect(
           ZacInt.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacInt.consume(name: 'foo'));
@@ -128,7 +128,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacInt',
+              '_converter': 'z:1:ZacInt',
               'value': 55,
             },
             transformer: [ConvertTransformer()],
@@ -161,20 +161,20 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacDouble>({
-            converterKey: 'z:1:ZacDouble',
+            '_converter': 'z:1:ZacDouble',
             'value': 1.0,
           }),
           ZacDouble(1.0));
       expect(
           ConverterHelper.convertToType<ZacDouble>({
-            converterKey: 'z:1:ZacDouble',
+            '_converter': 'z:1:ZacDouble',
             'value': 1,
           }),
           ZacDouble(1.0));
 
       expect(
           ConverterHelper.convertToType<ZacDouble>({
-            converterKey: 'z:1:ZacDouble.consume',
+            '_converter': 'z:1:ZacDouble.consume',
             'name': 'foo',
           }),
           ZacDouble.consume(name: 'foo'));
@@ -183,19 +183,19 @@ void main() {
       expect(ZacDouble.fromJson(1.2), ZacDouble(1.2));
       expect(
           ZacDouble.fromJson({
-            converterKey: 'z:1:ZacDouble',
+            '_converter': 'z:1:ZacDouble',
             'value': 1.0,
           }),
           ZacDouble(1.0));
       expect(
           ZacDouble.fromJson({
-            converterKey: 'z:1:ZacDouble.consume',
+            '_converter': 'z:1:ZacDouble.consume',
             'name': 'foo',
           }),
           ZacDouble.consume(name: 'foo'));
       expect(
           ZacDouble.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacDouble.consume(name: 'foo'));
@@ -210,7 +210,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacDouble',
+              '_converter': 'z:1:ZacDouble',
               'value': 1.0,
             },
             transformer: [ConvertTransformer()],
@@ -260,14 +260,14 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacString>({
-            converterKey: 'z:1:ZacString',
+            '_converter': 'z:1:ZacString',
             'value': 'hello',
           }),
           ZacString('hello'));
 
       expect(
           ConverterHelper.convertToType<ZacString>({
-            converterKey: 'z:1:ZacString.consume',
+            '_converter': 'z:1:ZacString.consume',
             'name': 'foo',
           }),
           ZacString.consume(name: 'foo'));
@@ -275,19 +275,19 @@ void main() {
       expect(ZacString.fromJson('hello'), ZacString('hello'));
       expect(
           ZacString.fromJson({
-            converterKey: 'z:1:ZacString',
+            '_converter': 'z:1:ZacString',
             'value': 'hello',
           }),
           ZacString('hello'));
       expect(
           ZacString.fromJson({
-            converterKey: 'z:1:ZacString.consume',
+            '_converter': 'z:1:ZacString.consume',
             'name': 'foo',
           }),
           ZacString.consume(name: 'foo'));
       expect(
           ZacString.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacString.consume(name: 'foo'));
@@ -302,7 +302,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacString',
+              '_converter': 'z:1:ZacString',
               'value': 'hello',
             },
             transformer: [ConvertTransformer()],
@@ -386,7 +386,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacList',
+              '_converter': 'z:1:ZacList',
               'value': compare,
             },
             transformer: [ConvertTransformer()],
@@ -421,14 +421,14 @@ void main() {
       final compare = <String, dynamic>{'foo': 'bar'};
       expect(
           ConverterHelper.convertToType<ZacMap>({
-            converterKey: 'z:1:ZacMap',
+            '_converter': 'z:1:ZacMap',
             'value': compare,
           }),
           ZacMap(compare));
 
       expect(
           ConverterHelper.convertToType<ZacMap>({
-            converterKey: 'z:1:ZacMap.consume',
+            '_converter': 'z:1:ZacMap.consume',
             'name': 'foo',
           }),
           ZacMap.consume(name: 'foo'));
@@ -436,19 +436,19 @@ void main() {
       expect(ZacMap.fromJson(compare), ZacMap(compare));
       expect(
           ZacMap.fromJson({
-            converterKey: 'z:1:ZacMap',
+            '_converter': 'z:1:ZacMap',
             'value': compare,
           }),
           ZacMap(compare));
       expect(
           ZacMap.fromJson({
-            converterKey: 'z:1:ZacMap.consume',
+            '_converter': 'z:1:ZacMap.consume',
             'name': 'foo',
           }),
           ZacMap.consume(name: 'foo'));
       expect(
           ZacMap.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacMap.consume(name: 'foo'));
@@ -464,7 +464,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacMap',
+              '_converter': 'z:1:ZacMap',
               'value': compare,
             },
             transformer: [ConvertTransformer()],
@@ -498,14 +498,14 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacObject>({
-            converterKey: 'z:1:ZacObject',
+            '_converter': 'z:1:ZacObject',
             'value': 'hello',
           }),
           ZacObject('hello'));
 
       expect(
           ConverterHelper.convertToType<ZacObject>({
-            converterKey: 'z:1:ZacObject.consume',
+            '_converter': 'z:1:ZacObject.consume',
             'name': 'foo',
           }),
           ZacObject.consume(name: 'foo'));
@@ -513,19 +513,19 @@ void main() {
       expect(ZacObject.fromJson(55), ZacObject(55));
       expect(
           ZacObject.fromJson({
-            converterKey: 'z:1:ZacObject',
+            '_converter': 'z:1:ZacObject',
             'value': 55,
           }),
           ZacObject(55));
       expect(
           ZacObject.fromJson({
-            converterKey: 'z:1:ZacObject.consume',
+            '_converter': 'z:1:ZacObject.consume',
             'name': 'foo',
           }),
           ZacObject.consume(name: 'foo'));
       expect(
           ZacObject.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ZacObject.consume(name: 'foo'));
@@ -539,7 +539,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ZacObject',
+              '_converter': 'z:1:ZacObject',
               'value': 'hello',
             },
             transformer: [ConvertTransformer()],
@@ -570,12 +570,12 @@ void main() {
 
   group('ZacWidget', () {
     test('fromJson', () {
-      expect(ZacWidget.fromJson({converterKey: 'f:1:SizedBox'}),
+      expect(ZacWidget.fromJson({'_converter': 'f:1:SizedBox'}),
           FlutterSizedBox());
 
       expect(
           ConverterHelper.convertToType<ZacWidget>(
-              {converterKey: 'f:1:SizedBox'}),
+              {'_converter': 'f:1:SizedBox'}),
           isA<ZacWidget>());
 
       expect(() => ZacWidget.fromJson(55), throwsConverterError);
@@ -585,19 +585,19 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          converterKey: 'z:1:SharedValue.provide',
+          '_converter': 'z:1:SharedValue.provide',
           'name': 'foo',
           'value': {
-            converterKey: 'f:1:SizedBox',
+            '_converter': 'f:1:SizedBox',
             'key': KeysModel.getValueKey('FINDME'),
           },
           'transformer': [
             {
-              converterKey: 'z:1:Transformer:Converter',
+              '_converter': 'z:1:Transformer:Converter',
             }
           ],
           'child': {
-            converterKey: 'z:1:ZacWidget.consume',
+            '_converter': 'z:1:ZacWidget.consume',
             'name': 'foo',
           },
         },
@@ -611,44 +611,44 @@ void main() {
     test('fromJson', () {
       expect(
           ListOfZacWidget.fromJson([
-            {converterKey: 'f:1:SizedBox'}
+            {'_converter': 'f:1:SizedBox'}
           ]),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ConverterHelper.convertToType<ListOfZacWidget>({
-            converterKey: 'z:1:ListOfZacWidget',
+            '_converter': 'z:1:ListOfZacWidget',
             'value': [
-              {converterKey: 'f:1:SizedBox'}
+              {'_converter': 'f:1:SizedBox'}
             ],
           }),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ConverterHelper.convertToType<ListOfZacWidget>({
-            converterKey: 'z:1:ListOfZacWidget.consume',
+            '_converter': 'z:1:ListOfZacWidget.consume',
             'name': 'foo',
           }),
           ListOfZacWidget.consume(name: 'foo'));
 
       expect(
           ListOfZacWidget.fromJson({
-            converterKey: 'z:1:ListOfZacWidget',
+            '_converter': 'z:1:ListOfZacWidget',
             'value': [
-              {converterKey: 'f:1:SizedBox'}
+              {'_converter': 'f:1:SizedBox'}
             ],
           }),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ListOfZacWidget.fromJson({
-            converterKey: 'z:1:ListOfZacWidget.consume',
+            '_converter': 'z:1:ListOfZacWidget.consume',
             'name': 'foo',
           }),
           ListOfZacWidget.consume(name: 'foo'));
       expect(
           ListOfZacWidget.fromJson({
-            converterKey: 'z:1:SharedValue.consume',
+            '_converter': 'z:1:SharedValue.consume',
             'name': 'foo',
           }),
           ListOfZacWidget.consume(name: 'foo'));
@@ -663,7 +663,7 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: [
-              {converterKey: 'f:1:SizedBox'}
+              {'_converter': 'f:1:SizedBox'}
             ],
             transformer: [
               ListTransformer.map(
@@ -690,9 +690,9 @@ void main() {
           SharedValueProviderBuilder(
             name: 'foo',
             value: {
-              converterKey: 'z:1:ListOfZacWidget',
+              '_converter': 'z:1:ListOfZacWidget',
               'value': [
-                {converterKey: 'f:1:SizedBox'}
+                {'_converter': 'f:1:SizedBox'}
               ]
             },
             transformer: [ConvertTransformer()],

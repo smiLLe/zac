@@ -12,7 +12,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey:
+        '_converter':
             FlutterProgressIndicator.unionValueCircularProgressIndicator,
         'key': KeysModel.getValueKey('FINDME'),
         'value': 9,
@@ -52,7 +52,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey:
+        '_converter':
             FlutterProgressIndicator.unionValueLinearProgressIndicator,
         'key': KeysModel.getValueKey('FINDME'),
         'value': 9,

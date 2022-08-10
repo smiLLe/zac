@@ -11,7 +11,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterAlign.unionValue,
+        '_converter': FlutterAlign.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'alignment': AlignmentModel.geometry_alignment,
         'widthFactor': 10.0,

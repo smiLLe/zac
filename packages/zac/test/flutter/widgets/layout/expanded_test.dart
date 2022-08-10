@@ -13,10 +13,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterColumn.unionValue,
+        '_converter': FlutterColumn.unionValue,
         'children': [
           {
-            converterKey: FlutterExpanded.unionValue,
+            '_converter': FlutterExpanded.unionValue,
             'key': KeysModel.getValueKey('FINDME'),
             'flex': 100,
             'child': ChildModel.getSizedBox(key: 'child'),

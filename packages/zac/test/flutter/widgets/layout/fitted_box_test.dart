@@ -12,13 +12,13 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterFittedBox.unionValue,
+        '_converter': FlutterFittedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'fit': {
-          converterKey: 'f:1:BoxFit.fitWidth',
+          '_converter': 'f:1:BoxFit.fitWidth',
         },
         'alignment': AlignmentModel.geometry_alignment,
-        'clipBehavior': {converterKey: 'f:1:Clip.hardEdge'},
+        'clipBehavior': {'_converter': 'f:1:Clip.hardEdge'},
         'child': ChildModel.getSizedBox(key: 'child'),
       },
     );

@@ -10,7 +10,7 @@ void main() {
     testWidgets('#1', (tester) async {
       final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
-        converterKey: FlutterImage.unionValueNetwork,
+        '_converter': FlutterImage.unionValueNetwork,
         'key': KeysModel.getValueKey('test_key'),
         'src': 'test_src',
         'scale': 0.9,
@@ -19,23 +19,23 @@ void main() {
         'height': 44,
         'color': ColorModel.json,
         'excludeFromSemantics': true,
-        'colorBlendMode': {converterKey: 'f:1:BlendMode.saturation'},
+        'colorBlendMode': {'_converter': 'f:1:BlendMode.saturation'},
         'alignment': AlignmentModel.geometry_alignment,
         'matchTextDirection': true,
         'gaplessPlayback': true,
         'isAntiAlias': true,
         'headers': <String, String>{},
-        'fit': {converterKey: 'f:1:BoxFit.scaleDown'},
-        'repeat': {converterKey: 'f:1:ImageRepeat.repeat'},
+        'fit': {'_converter': 'f:1:BoxFit.scaleDown'},
+        'repeat': {'_converter': 'f:1:ImageRepeat.repeat'},
         'centerSlice': {
-          converterKey: 'f:1:Rect.fromLTRB',
+          '_converter': 'f:1:Rect.fromLTRB',
           'left': 1,
           'top': 2,
           'right': 3,
           'bottom': 4
         },
         'filterQuality': {
-          converterKey: 'f:1:FilterQuality.high',
+          '_converter': 'f:1:FilterQuality.high',
         }
       });
 
@@ -75,7 +75,7 @@ void main() {
     test('#2', () {
       final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
-        converterKey: FlutterImage.unionValueNetwork,
+        '_converter': FlutterImage.unionValueNetwork,
         'key': KeysModel.getValueKey('test_key'),
         'src': 'test_src',
         'cacheWidth': 11,
@@ -96,7 +96,7 @@ void main() {
     test('#1', () {
       final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
-        converterKey: FlutterImage.unionValueAsset,
+        '_converter': FlutterImage.unionValueAsset,
         'key': KeysModel.getValueKey('test_key'),
         'name': 'test_name',
         'semanticLabel': 'test_semanticLabel',
@@ -104,23 +104,23 @@ void main() {
         'height': 44,
         'color': ColorModel.json,
         'excludeFromSemantics': true,
-        'colorBlendMode': {converterKey: 'f:1:BlendMode.saturation'},
+        'colorBlendMode': {'_converter': 'f:1:BlendMode.saturation'},
         'alignment': AlignmentModel.geometry_alignment,
         'matchTextDirection': true,
         'gaplessPlayback': true,
         'isAntiAlias': true,
         'headers': <String, String>{},
-        'fit': {converterKey: 'f:1:BoxFit.scaleDown'},
-        'repeat': {converterKey: 'f:1:ImageRepeat.repeat'},
+        'fit': {'_converter': 'f:1:BoxFit.scaleDown'},
+        'repeat': {'_converter': 'f:1:ImageRepeat.repeat'},
         'centerSlice': {
-          converterKey: 'f:1:Rect.fromLTRB',
+          '_converter': 'f:1:Rect.fromLTRB',
           'left': 1,
           'top': 2,
           'right': 3,
           'bottom': 4
         },
         'filterQuality': {
-          converterKey: 'f:1:FilterQuality.high',
+          '_converter': 'f:1:FilterQuality.high',
         }
       });
 
@@ -158,7 +158,7 @@ void main() {
     test('#2', () {
       final config = FakeZacContext();
       final data = FlutterImage.fromJson(<String, dynamic>{
-        converterKey: FlutterImage.unionValueAsset,
+        '_converter': FlutterImage.unionValueAsset,
         'key': KeysModel.getValueKey('test_key'),
         'name': 'test_name',
         'cacheWidth': 11,

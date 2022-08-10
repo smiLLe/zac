@@ -11,14 +11,14 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterBorderStyle.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BorderStyle.none'})
+                <String, dynamic>{'_converter': 'f:1:BorderStyle.none'})
             .build(config),
         isA<BorderStyle>()
             .having((p0) => p0, 'BorderStyle.none', BorderStyle.none));
 
     expect(
         FlutterBorderStyle.fromJson(
-                <String, dynamic>{converterKey: 'f:1:BorderStyle.solid'})
+                <String, dynamic>{'_converter': 'f:1:BorderStyle.solid'})
             .build(config),
         isA<BorderStyle>()
             .having((p0) => p0, 'BorderStyle.solid', BorderStyle.solid));
@@ -29,27 +29,27 @@ void main() {
       final config = FakeZacContext();
 
       Map<String, dynamic> getMap(String type) => <String, dynamic>{
-            converterKey: type,
+            '_converter': type,
             'top': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 11,
             },
             'right': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 12,
             },
             'bottom': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 13,
             },
             'left': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 14,
             },
           };
 
       Map<String, dynamic> getMapAll(String type) => <String, dynamic>{
-            converterKey: type,
+            '_converter': type,
             'width': 11,
           };
 
@@ -103,9 +103,9 @@ void main() {
       final config = FakeZacContext();
       expect(
           FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueAll,
+            '_converter': FlutterBorderRadius.unionValueAll,
             'radius': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 11,
             }
           }).build(config),
@@ -121,9 +121,9 @@ void main() {
 
       expect(
           FlutterBorderRadius.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueAll,
+            '_converter': FlutterBorderRadius.unionValueAll,
             'radius': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 11,
             }
           }).build(config),
@@ -141,7 +141,7 @@ void main() {
       final config = FakeZacContext();
       expect(
           FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueCircular,
+            '_converter': FlutterBorderRadius.unionValueCircular,
             'radius': 12
           }).build(config),
           isA<BorderRadius>()
@@ -156,7 +156,7 @@ void main() {
 
       expect(
           FlutterBorderRadius.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueCircular,
+            '_converter': FlutterBorderRadius.unionValueCircular,
             'radius': 12
           }).build(config),
           isA<BorderRadius>()
@@ -173,13 +173,13 @@ void main() {
       final config = FakeZacContext();
       expect(
           FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueHorizontal,
+            '_converter': FlutterBorderRadius.unionValueHorizontal,
             'left': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 11,
             },
             'right': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 12,
             },
           }).build(config),
@@ -195,13 +195,13 @@ void main() {
 
       expect(
           FlutterBorderRadius.fromJson(<String, dynamic>{
-            converterKey: FlutterBorderRadius.unionValueHorizontal,
+            '_converter': FlutterBorderRadius.unionValueHorizontal,
             'left': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 11,
             },
             'right': {
-              converterKey: 'f:1:Radius.circular',
+              '_converter': 'f:1:Radius.circular',
               'radius': 12,
             },
           }).build(config),
@@ -222,9 +222,9 @@ void main() {
       final context = FakeZacContext();
       expect(
           FlutterOutlineInputBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:OutlineInputBorder',
+            '_converter': 'f:1:OutlineInputBorder',
             'borderSide': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 11,
             },
             'borderRadius': BorderRadiusModel.allJson,
@@ -244,13 +244,13 @@ void main() {
 
       expect(
           FlutterInputBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:OutlineInputBorder',
+            '_converter': 'f:1:OutlineInputBorder',
           }).build(context),
           isA<OutlineInputBorder>());
 
       expect(
           FlutterShapeBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:OutlineInputBorder',
+            '_converter': 'f:1:OutlineInputBorder',
           }).build(context),
           isA<OutlineInputBorder>());
     });
@@ -259,9 +259,9 @@ void main() {
       final context = FakeZacContext();
       expect(
           FlutterUnderlineInputBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:UnderlineInputBorder',
+            '_converter': 'f:1:UnderlineInputBorder',
             'borderSide': {
-              converterKey: 'f:1:BorderSide',
+              '_converter': 'f:1:BorderSide',
               'width': 11,
             },
             'borderRadius': BorderRadiusModel.allJson,
@@ -276,13 +276,13 @@ void main() {
 
       expect(
           FlutterInputBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:UnderlineInputBorder',
+            '_converter': 'f:1:UnderlineInputBorder',
           }).build(context),
           isA<UnderlineInputBorder>());
 
       expect(
           FlutterShapeBorder.fromJson(<String, dynamic>{
-            converterKey: 'f:1:UnderlineInputBorder',
+            '_converter': 'f:1:UnderlineInputBorder',
           }).build(context),
           isA<UnderlineInputBorder>());
     });
@@ -292,9 +292,9 @@ void main() {
     final context = FakeZacContext();
     expect(
         FlutterCircleBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:CircleBorder',
+          '_converter': 'f:1:CircleBorder',
           'side': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 11,
           },
         }).build(context),
@@ -303,13 +303,13 @@ void main() {
 
     expect(
         FlutterShapeBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:CircleBorder',
+          '_converter': 'f:1:CircleBorder',
         }).build(context),
         isA<CircleBorder>());
 
     expect(
         FlutterOutlinedBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:CircleBorder',
+          '_converter': 'f:1:CircleBorder',
         }).build(context),
         isA<CircleBorder>());
   });
@@ -318,9 +318,9 @@ void main() {
     final context = FakeZacContext();
     expect(
         FlutterRoundedRectangleBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:RoundedRectangleBorder',
+          '_converter': 'f:1:RoundedRectangleBorder',
           'side': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
@@ -335,13 +335,13 @@ void main() {
 
     expect(
         FlutterShapeBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:RoundedRectangleBorder',
+          '_converter': 'f:1:RoundedRectangleBorder',
         }).build(context),
         isA<RoundedRectangleBorder>());
 
     expect(
         FlutterOutlinedBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:RoundedRectangleBorder',
+          '_converter': 'f:1:RoundedRectangleBorder',
         }).build(context),
         isA<RoundedRectangleBorder>());
   });
@@ -350,21 +350,21 @@ void main() {
     final context = FakeZacContext();
     expect(
         FlutterBorderDirectional.fromJson(<String, dynamic>{
-          converterKey: 'f:1:BorderDirectional',
+          '_converter': 'f:1:BorderDirectional',
           'top': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 11,
           },
           'start': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 12,
           },
           'bottom': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 13,
           },
           'end': {
-            converterKey: 'f:1:BorderSide',
+            '_converter': 'f:1:BorderSide',
             'width': 14,
           },
         }).build(context),
@@ -380,13 +380,13 @@ void main() {
 
     expect(
         FlutterShapeBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:BorderDirectional',
+          '_converter': 'f:1:BorderDirectional',
         }).build(context),
         isA<BorderDirectional>());
 
     expect(
         FlutterBoxBorder.fromJson(<String, dynamic>{
-          converterKey: 'f:1:BorderDirectional',
+          '_converter': 'f:1:BorderDirectional',
         }).build(context),
         isA<BorderDirectional>());
   });

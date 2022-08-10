@@ -11,15 +11,15 @@ void main() {
   late Map<String, dynamic> map;
   setUp(() {
     map = <String, dynamic>{
-      converterKey: FlutterListView.unionValue,
+      '_converter': FlutterListView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
-      'scrollDirection': {converterKey: 'f:1:Axis.horizontal'},
+      'scrollDirection': {'_converter': 'f:1:Axis.horizontal'},
       'shrinkWrap': true,
       'reverse': true,
       'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
       'primary': true,
       'physics': {
-        converterKey: 'f:1:AlwaysScrollableScrollPhysics',
+        '_converter': 'f:1:AlwaysScrollableScrollPhysics',
       },
       // 'addAutomaticKeepAlives': false,
       // 'addRepaintBoundaries': false,
@@ -31,21 +31,21 @@ void main() {
         ChildModel.getSizedBox(key: 'child2')
       ],
       'clipBehavior': {
-        converterKey: 'f:1:Clip.none',
+        '_converter': 'f:1:Clip.none',
       },
       'restorationId': 'resto_id',
       'keyboardDismissBehavior': {
-        converterKey: 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
+        '_converter': 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
       },
     };
   });
 
   testWidgets('FlutterListView() #1', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterListView.unionValue,
+      '_converter': FlutterListView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'prototypeItem': {
-        converterKey: 'f:1:SizedBox',
+        '_converter': 'f:1:SizedBox',
         'height': 300,
       },
       'children': [
@@ -70,7 +70,7 @@ void main() {
 
   testWidgets('FlutterListView() #2', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterListView.unionValue,
+      '_converter': FlutterListView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'itemExtent': 300,
       'children': [

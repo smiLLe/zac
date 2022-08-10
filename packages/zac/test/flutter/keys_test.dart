@@ -10,7 +10,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterKey.fromJson(<String, dynamic>{
-          converterKey: FlutterValueKey.unionValue,
+          '_converter': FlutterValueKey.unionValue,
           'value': 'test_key',
         }).buildKey(config),
         const ValueKey<String>('test_key'));
@@ -20,7 +20,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterLocalKey.fromJson(<String, dynamic>{
-          converterKey: FlutterValueKey.unionValue,
+          '_converter': FlutterValueKey.unionValue,
           'value': 'test_key',
         }).buildKey(config),
         const ValueKey<String>('test_key'));
@@ -30,7 +30,7 @@ void main() {
     final config = FakeZacContext();
     expect(
         FlutterValueKey.fromJson(<String, dynamic>{
-          converterKey: FlutterValueKey.unionValue,
+          '_converter': FlutterValueKey.unionValue,
           'value': 'test_key',
         }).buildKey(config),
         const ValueKey<String>('test_key'));

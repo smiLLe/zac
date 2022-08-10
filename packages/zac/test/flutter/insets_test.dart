@@ -10,7 +10,7 @@ void main() {
     test('.all', () {
       final config = FakeZacContext();
       final map = {
-        converterKey: FlutterEdgeInsets.unionValueAll,
+        '_converter': FlutterEdgeInsets.unionValueAll,
         'value': 10,
       };
       expect(FlutterEdgeInsets.fromJson(map).build(config),
@@ -23,7 +23,7 @@ void main() {
     test('.symmetric', () {
       final config = FakeZacContext();
       final map = {
-        converterKey: FlutterEdgeInsets.unionValueSymmetric,
+        '_converter': FlutterEdgeInsets.unionValueSymmetric,
         'vertical': 10,
         'horizontal': 11,
       };
@@ -43,7 +43,7 @@ void main() {
     test('.only', () {
       final config = FakeZacContext();
       final map = {
-        converterKey: FlutterEdgeInsets.unionValueOnly,
+        '_converter': FlutterEdgeInsets.unionValueOnly,
         'left': 1,
         'top': 2,
         'right': 3,
@@ -71,7 +71,7 @@ void main() {
     test('.all', () {
       final config = FakeZacContext();
       final map = {
-        converterKey: FlutterEdgeInsetsDirectional.unionValueAll,
+        '_converter': FlutterEdgeInsetsDirectional.unionValueAll,
         'value': 10,
       };
       expect(
@@ -88,7 +88,7 @@ void main() {
     test('.only', () {
       final config = FakeZacContext();
       final map = {
-        converterKey: FlutterEdgeInsetsDirectional.unionValueOnly,
+        '_converter': FlutterEdgeInsetsDirectional.unionValueOnly,
         'start': 1,
         'top': 2,
         'end': 3,

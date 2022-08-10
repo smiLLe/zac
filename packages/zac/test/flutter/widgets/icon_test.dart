@@ -9,7 +9,7 @@ void main() {
   test('IconData', () {
     final config = FakeZacContext();
     final data = FlutterIconData.fromJson(<String, dynamic>{
-      converterKey: 'f:1:IconData',
+      '_converter': 'f:1:IconData',
       'codePoint': 30,
       'fontFamily': 'someFamily',
       'fontPackage': 'somePackage',
@@ -30,16 +30,16 @@ void main() {
   test('Icon', () {
     final config = FakeZacContext();
     final data = FlutterIcon.fromJson(<String, dynamic>{
-      converterKey: 'f:1:Icon',
+      '_converter': 'f:1:Icon',
       'icon': {
-        converterKey: 'f:1:IconData',
+        '_converter': 'f:1:IconData',
         'codePoint': 30,
       },
       'key': KeysModel.getValueKey('test_key'),
       'size': 20,
       'color': ColorModel.json,
       'semanticLabel': 'semantic',
-      'textDirection': {converterKey: 'f:1:TextDirection.ltr'}
+      'textDirection': {'_converter': 'f:1:TextDirection.ltr'}
     });
 
     expect(
@@ -56,7 +56,7 @@ void main() {
   test('IconThemeData', () {
     final config = FakeZacContext();
     final data = FlutterIconThemeData.fromJson(<String, dynamic>{
-      converterKey: 'f:1:IconThemeData',
+      '_converter': 'f:1:IconThemeData',
       'color': ColorModel.json,
       'opacity': 0.9,
       'size': 22,

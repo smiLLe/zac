@@ -14,7 +14,7 @@ import '../models.dart';
 void main() {
   testWidgets('FlutterDecoratedBox()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterDecoratedBox.unionValue,
+      '_converter': FlutterDecoratedBox.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'decoration': BoxDecorationModel.getMap(),
       'child': ChildModel.getSizedBox(key: 'child'),
@@ -34,7 +34,7 @@ void main() {
 
   testWidgets('FlutterClipRect()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterClipRect.unionValue,
+      '_converter': FlutterClipRect.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
     });
@@ -46,7 +46,7 @@ void main() {
 
   testWidgets('FlutterClipOval()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterClipOval.unionValue,
+      '_converter': FlutterClipOval.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
     });
@@ -58,7 +58,7 @@ void main() {
 
   testWidgets('FlutterRotatedBox()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: FlutterRotatedBox.unionValue,
+      '_converter': FlutterRotatedBox.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
       'quarterTurns': 2,
@@ -80,11 +80,11 @@ void main() {
     'FlutterFractionalTranslation()',
     (tester) async {
       await testMap(tester, <String, dynamic>{
-        converterKey: FlutterFractionalTranslation.unionValue,
+        '_converter': FlutterFractionalTranslation.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
         'translation': {
-          converterKey: 'f:1:Offset',
+          '_converter': 'f:1:Offset',
           'dx': 1,
           'dy': 23,
         }
@@ -106,7 +106,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterOpacity.unionValue,
+        '_converter': FlutterOpacity.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'opacity': 0.9,
         'alwaysIncludeSemantics': true,

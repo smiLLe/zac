@@ -11,7 +11,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        converterKey: FlutterPadding.unionValue,
+        '_converter': FlutterPadding.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
         'child': ChildModel.getSizedBox(key: 'child'),

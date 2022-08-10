@@ -12,7 +12,7 @@ import '../helper.dart';
 void main() {
   testWidgets('UpdateContextConverter()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      converterKey: 'z:1:UpdateContext',
+      '_converter': 'z:1:UpdateContext',
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
     });
