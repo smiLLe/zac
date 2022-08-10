@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'widget_context.dart';
+part of 'update_context.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UpdateContextBuilderBuilder _$$_UpdateContextBuilderBuilderFromJson(
+_$_ZacUpdateContextBuilder _$$_ZacUpdateContextBuilderFromJson(
         Map<String, dynamic> json) =>
-    _$_UpdateContextBuilderBuilder(
+    _$_ZacUpdateContextBuilder(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),

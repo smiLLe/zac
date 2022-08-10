@@ -2,7 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -84,7 +84,7 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacWidgetContext(ref);
+    final zacContext = useZacBuildContext(ref);
     return SharedValueProvider(
       value: GlobalKey<NavigatorState>(
         debugLabel: builder.debugLabel?.getValue(zacContext),

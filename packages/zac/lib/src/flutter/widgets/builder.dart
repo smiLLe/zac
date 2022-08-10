@@ -1,6 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -29,7 +29,7 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
     return Builder(
       key: key?.buildKey(context),
       builder: (_) {
-        return UpdateContextBuilder(
+        return ZacUpdateContext(
           builder: (context) => child.buildWidget(context),
         );
       },

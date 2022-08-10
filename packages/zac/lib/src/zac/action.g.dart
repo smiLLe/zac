@@ -25,9 +25,9 @@ _$_ZacActions _$$_ZacActionsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-_$_ExecuteActionsWidgetBuilder _$$_ExecuteActionsWidgetBuilderFromJson(
+_$_ZacExecuteActionsBuilder _$$_ZacExecuteActionsBuilderFromJson(
         Map<String, dynamic> json) =>
-    _$_ExecuteActionsWidgetBuilder(
+    _$_ZacExecuteActionsBuilder(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),

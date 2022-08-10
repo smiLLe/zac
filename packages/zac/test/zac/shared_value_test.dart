@@ -6,7 +6,7 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -305,7 +305,7 @@ void main() {
         SharedValueProviderBuilder(
           value: 1,
           name: 'foo',
-          child: ExecuteActionsBuilder(
+          child: ZacExecuteActionsBuilder(
             actions: ZacActions([
               UpdateSharedValue(
                 name: 'foo',

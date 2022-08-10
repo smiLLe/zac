@@ -102,7 +102,7 @@ void main() {
 
       await testZacWidget(
         tester,
-        ExecuteActionsBuilder(
+        ZacExecuteActionsBuilder(
             key: FlutterValueKey('FIND_ME'),
             actions: LeakAction.createActions(executeCb)),
       );

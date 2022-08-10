@@ -8,7 +8,7 @@ import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import 'package:zac/src/zac/widget_builder.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -162,8 +162,8 @@ Map<String, Convert> allConverters = {
   ZacWidgetBuilderBuilder.unionValueIsolate: ZacWidgetBuilderBuilder.fromJson,
   ZacWidgetBuilderBuilder.unionValueIsolateString:
       ZacWidgetBuilderBuilder.fromJson,
-  UpdateContextBuilderBuilder.unionValue: UpdateContextBuilderBuilder.fromJson,
-  ExecuteActionsBuilder.unionValue: ExecuteActionsBuilder.fromJson,
+  ZacUpdateContextBuilder.unionValue: ZacUpdateContextBuilder.fromJson,
+  ZacExecuteActionsBuilder.unionValue: ZacExecuteActionsBuilder.fromJson,
   SharedValueProviderBuilder.unionValue: SharedValueProviderBuilder.fromJson,
 
   /// Flutter

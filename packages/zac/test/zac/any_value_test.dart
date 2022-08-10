@@ -45,7 +45,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -57,15 +57,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacBool.consume(name: 'foo').getValue(awContext), false);
+      expect(ZacBool.consume(name: 'foo').getValue(zacContext), false);
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -73,11 +73,11 @@ void main() {
             name: 'foo',
             value: false,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacBool.consume(name: 'foo').getValue(awContext), false);
+      expect(ZacBool.consume(name: 'foo').getValue(zacContext), false);
     });
   });
 
@@ -121,7 +121,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -133,15 +133,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacInt.consume(name: 'foo').getValue(awContext), 55);
+      expect(ZacInt.consume(name: 'foo').getValue(zacContext), 55);
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -149,11 +149,11 @@ void main() {
             name: 'foo',
             value: 55,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacInt.consume(name: 'foo').getValue(awContext), 55);
+      expect(ZacInt.consume(name: 'foo').getValue(zacContext), 55);
     });
   });
 
@@ -203,7 +203,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -215,15 +215,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacDouble.consume(name: 'foo').getValue(awContext), 1.0);
+      expect(ZacDouble.consume(name: 'foo').getValue(zacContext), 1.0);
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -231,15 +231,15 @@ void main() {
             name: 'foo',
             value: 1.0,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacDouble.consume(name: 'foo').getValue(awContext), 1.0);
+      expect(ZacDouble.consume(name: 'foo').getValue(zacContext), 1.0);
     });
 
     testWidgets('consume #2', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -247,11 +247,11 @@ void main() {
             name: 'foo',
             value: 1,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(() => ZacDouble.consume(name: 'foo').getValue(awContext),
+      expect(() => ZacDouble.consume(name: 'foo').getValue(zacContext),
           throwsStateError);
     });
   });
@@ -295,7 +295,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -307,15 +307,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacString.consume(name: 'foo').getValue(awContext), 'hello');
+      expect(ZacString.consume(name: 'foo').getValue(zacContext), 'hello');
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -323,11 +323,11 @@ void main() {
             name: 'foo',
             value: 'hello',
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacString.consume(name: 'foo').getValue(awContext), 'hello');
+      expect(ZacString.consume(name: 'foo').getValue(zacContext), 'hello');
     });
   });
 
@@ -378,7 +378,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
       final compare = <String>['foo', 'bar'];
 
       await testZacWidget(
@@ -391,15 +391,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacList.consume(name: 'foo').getValue(awContext), compare);
+      expect(ZacList.consume(name: 'foo').getValue(zacContext), compare);
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
       final compare = <String>['foo', 'bar'];
 
       await testZacWidget(
@@ -408,11 +408,11 @@ void main() {
             name: 'foo',
             value: compare,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacList.consume(name: 'foo').getValue(awContext), compare);
+      expect(ZacList.consume(name: 'foo').getValue(zacContext), compare);
     });
   });
 
@@ -456,7 +456,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
       final compare = <String, dynamic>{'foo': 'bar'};
 
       await testZacWidget(
@@ -469,15 +469,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacMap.consume(name: 'foo').getValue(awContext), compare);
+      expect(ZacMap.consume(name: 'foo').getValue(zacContext), compare);
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
       final compare = <String, dynamic>{'foo': 'bar'};
 
       await testZacWidget(
@@ -486,11 +486,11 @@ void main() {
             name: 'foo',
             value: compare,
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacMap.consume(name: 'foo').getValue(awContext), compare);
+      expect(ZacMap.consume(name: 'foo').getValue(zacContext), compare);
     });
   });
 
@@ -532,7 +532,7 @@ void main() {
     });
 
     testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -544,15 +544,15 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacObject.consume(name: 'foo').getValue(awContext), 'hello');
+      expect(ZacObject.consume(name: 'foo').getValue(zacContext), 'hello');
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -560,11 +560,11 @@ void main() {
             name: 'foo',
             value: 'hello',
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacObject.consume(name: 'foo').getValue(awContext), 'hello');
+      expect(ZacObject.consume(name: 'foo').getValue(zacContext), 'hello');
     });
   });
 
@@ -656,7 +656,7 @@ void main() {
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -673,17 +673,17 @@ void main() {
               )
             ],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
-      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(awContext),
+      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume(name: 'foo').getValue(awContext),
+      expect(ListOfZacWidget.consume(name: 'foo').getValue(zacContext),
           isA<List<Widget>>());
     });
 
     testWidgets('consume #2', (tester) async {
-      late ZacBuildContext awContext;
+      late ZacBuildContext zacContext;
 
       await testZacWidget(
           tester,
@@ -697,12 +697,12 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => awContext = context,
+              cb: (context) => zacContext = context,
             ),
           ));
-      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(awContext),
+      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume(name: 'foo').getValue(awContext),
+      expect(ListOfZacWidget.consume(name: 'foo').getValue(zacContext),
           isA<List<Widget>>());
     });
   });

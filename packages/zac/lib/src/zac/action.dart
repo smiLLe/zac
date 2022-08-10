@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/widget_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
@@ -80,24 +80,26 @@ class ZacActions with _$ZacActions {
 }
 
 @defaultConverterFreezed
-class ExecuteActionsBuilder with _$ExecuteActionsBuilder implements ZacWidget {
-  const ExecuteActionsBuilder._();
+class ZacExecuteActionsBuilder
+    with _$ZacExecuteActionsBuilder
+    implements ZacWidget {
+  const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActions';
 
-  factory ExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
-      _$ExecuteActionsBuilderFromJson(json);
+  factory ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
+      _$ZacExecuteActionsBuilderFromJson(json);
 
-  @FreezedUnionValue(ExecuteActionsBuilder.unionValue)
-  factory ExecuteActionsBuilder({
+  @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
+  factory ZacExecuteActionsBuilder({
     FlutterKey? key,
     required ZacActions actions,
     ZacWidget? child,
-  }) = _ExecuteActionsWidgetBuilder;
+  }) = _ZacExecuteActionsBuilder;
 
   @override
-  ExecuteActions buildWidget(ZacBuildContext context) {
-    return ExecuteActions(
+  ZacExecuteActions buildWidget(ZacBuildContext context) {
+    return ZacExecuteActions(
       key: key?.buildKey(context),
       actions: actions,
       child: child,
@@ -105,8 +107,9 @@ class ExecuteActionsBuilder with _$ExecuteActionsBuilder implements ZacWidget {
   }
 }
 
-class ExecuteActions extends HookConsumerWidget {
-  const ExecuteActions({required this.actions, required this.child, Key? key})
+class ZacExecuteActions extends HookConsumerWidget {
+  const ZacExecuteActions(
+      {required this.actions, required this.child, Key? key})
       : super(key: key);
 
   final ZacActions actions;
@@ -114,21 +117,21 @@ class ExecuteActions extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final awContext = useZacWidgetContext(ref);
+    final zacContext = useZacBuildContext(ref);
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;
-      doneState.value = true;
+      doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(awContext, const ActionPayload.none());
+        actions.execute(zacContext, const ActionPayload.none());
         if (!mounted) return;
-        doneState.value = false;
+        doneState.value = true;
       });
       return () => mounted = false;
     }, [actions]);
 
-    if (null == child || doneState.value) return const SizedBox.shrink();
+    if (null == child || !doneState.value) return const SizedBox.shrink();
 
     return ZacWidgetBuilder(
       zacWidget: child!,

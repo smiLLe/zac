@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,7 @@ void main() {
       late ZacBuildContext c2;
       await testZacWidget(
         tester,
-        UpdateContextBuilderBuilder(
+        ZacUpdateContextBuilder(
           child: LeakContext(
             cb: (c) {
               c1 = c;
@@ -48,12 +48,12 @@ void main() {
 
       await testZacWidget(
         tester,
-        UpdateContextBuilderBuilder(
+        ZacUpdateContextBuilder(
           child: LeakContext(
             cb: (c) {
               c1 = c;
             },
-            child: UpdateContextBuilderBuilder(
+            child: ZacUpdateContextBuilder(
               child: LeakContext(
                 cb: (c) {
                   c2 = c;
@@ -77,12 +77,12 @@ void main() {
 
       await testZacWidget(
         tester,
-        UpdateContextBuilderBuilder(
+        ZacUpdateContextBuilder(
           child: LeakContext(
             cb: (c) {
               ctx1 = c;
             },
-            child: UpdateContextBuilderBuilder(
+            child: ZacUpdateContextBuilder(
               child: LeakContext(
                 cb: (c) {
                   ctx2 = c;

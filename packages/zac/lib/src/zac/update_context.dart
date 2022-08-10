@@ -6,8 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-part 'widget_context.freezed.dart';
-part 'widget_context.g.dart';
+part 'update_context.freezed.dart';
+part 'update_context.g.dart';
 
 @nonConverterFreezed
 class ZacBuildContext with _$ZacBuildContext {
@@ -20,34 +20,33 @@ class ZacBuildContext with _$ZacBuildContext {
 }
 
 @defaultConverterFreezed
-class UpdateContextBuilderBuilder
-    with _$UpdateContextBuilderBuilder
+class ZacUpdateContextBuilder
+    with _$ZacUpdateContextBuilder
     implements ZacWidget {
-  const UpdateContextBuilderBuilder._();
+  const ZacUpdateContextBuilder._();
 
   static const String unionValue = 'z:1:UpdateContext';
 
-  factory UpdateContextBuilderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$UpdateContextBuilderBuilderFromJson(json);
+  factory ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =>
+      _$ZacUpdateContextBuilderFromJson(json);
 
-  @FreezedUnionValue(UpdateContextBuilderBuilder.unionValue)
-  factory UpdateContextBuilderBuilder({
+  @FreezedUnionValue(ZacUpdateContextBuilder.unionValue)
+  factory ZacUpdateContextBuilder({
     FlutterKey? key,
     required ZacWidget child,
-  }) = _UpdateContextBuilderBuilder;
+  }) = _ZacUpdateContextBuilder;
 
   @override
-  UpdateContextBuilder buildWidget(ZacBuildContext context) {
-    return UpdateContextBuilder(
+  ZacUpdateContext buildWidget(ZacBuildContext context) {
+    return ZacUpdateContext(
       builder: (context) => child.buildWidget(context),
       key: key?.buildKey(context),
     );
   }
 }
 
-class UpdateContextBuilder extends HookConsumerWidget {
-  const UpdateContextBuilder({required this.builder, Key? key})
-      : super(key: key);
+class ZacUpdateContext extends HookConsumerWidget {
+  const ZacUpdateContext({required this.builder, Key? key}) : super(key: key);
 
   final Widget Function(ZacBuildContext context) builder;
 
@@ -56,11 +55,11 @@ class UpdateContextBuilder extends HookConsumerWidget {
     BuildContext context,
     WidgetRef ref,
   ) {
-    return builder(useZacWidgetContext(ref));
+    return builder(useZacBuildContext(ref));
   }
 }
 
-ZacBuildContext useZacWidgetContext(WidgetRef ref) {
+ZacBuildContext useZacBuildContext(WidgetRef ref) {
   final isMounted = useIsMounted();
   final context = useContext();
   final unmountCallbacks = useRef(<void Function()>[]);

@@ -4,7 +4,7 @@ import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -104,7 +104,7 @@ class FlutterMaterialPageRoute
   MaterialPageRoute<ZacActions?> build(ZacBuildContext context,
       {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap}) {
     return MaterialPageRoute<ZacActions?>(
-      builder: (_) => UpdateContextBuilder(
+      builder: (_) => ZacUpdateContext(
         builder: (context) {
           if (null == wrap) return child.buildWidget(context);
           return wrap(context, child);

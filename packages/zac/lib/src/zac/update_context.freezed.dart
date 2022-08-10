@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'widget_context.dart';
+part of 'update_context.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -100,30 +100,30 @@ abstract class _ZacBuildContext implements ZacBuildContext {
   void Function(void Function()) get onUnmount;
 }
 
-UpdateContextBuilderBuilder _$UpdateContextBuilderBuilderFromJson(
+ZacUpdateContextBuilder _$ZacUpdateContextBuilderFromJson(
     Map<String, dynamic> json) {
-  return _UpdateContextBuilderBuilder.fromJson(json);
+  return _ZacUpdateContextBuilder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UpdateContextBuilderBuilder {
+mixin _$ZacUpdateContextBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_UpdateContextBuilderBuilder value) $default,
+    TResult Function(_ZacUpdateContextBuilder value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_UpdateContextBuilderBuilder extends _UpdateContextBuilderBuilder {
-  _$_UpdateContextBuilderBuilder({this.key, required this.child}) : super._();
+class _$_ZacUpdateContextBuilder extends _ZacUpdateContextBuilder {
+  _$_ZacUpdateContextBuilder({this.key, required this.child}) : super._();
 
-  factory _$_UpdateContextBuilderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_UpdateContextBuilderBuilderFromJson(json);
+  factory _$_ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacUpdateContextBuilderFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -132,14 +132,14 @@ class _$_UpdateContextBuilderBuilder extends _UpdateContextBuilderBuilder {
 
   @override
   String toString() {
-    return 'UpdateContextBuilderBuilder(key: $key, child: $child)';
+    return 'ZacUpdateContextBuilder(key: $key, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateContextBuilderBuilder &&
+            other is _$_ZacUpdateContextBuilder &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
@@ -154,21 +154,20 @@ class _$_UpdateContextBuilderBuilder extends _UpdateContextBuilderBuilder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_UpdateContextBuilderBuilder value) $default,
+    TResult Function(_ZacUpdateContextBuilder value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _UpdateContextBuilderBuilder
-    extends UpdateContextBuilderBuilder {
-  factory _UpdateContextBuilderBuilder(
+abstract class _ZacUpdateContextBuilder extends ZacUpdateContextBuilder {
+  factory _ZacUpdateContextBuilder(
       {final FlutterKey? key,
-      required final ZacWidget child}) = _$_UpdateContextBuilderBuilder;
-  _UpdateContextBuilderBuilder._() : super._();
+      required final ZacWidget child}) = _$_ZacUpdateContextBuilder;
+  _ZacUpdateContextBuilder._() : super._();
 
-  factory _UpdateContextBuilderBuilder.fromJson(Map<String, dynamic> json) =
-      _$_UpdateContextBuilderBuilder.fromJson;
+  factory _ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacUpdateContextBuilder.fromJson;
 
   @override
   FlutterKey? get key;

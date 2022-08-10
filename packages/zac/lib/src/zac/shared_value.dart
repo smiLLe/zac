@@ -5,7 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 part 'shared_value.freezed.dart';
@@ -196,7 +196,7 @@ class SharedValueProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UpdateContextBuilder(
+    return ZacUpdateContext(
       builder: (context) => ProviderScope(
         overrides: [
           SharedValue.provider(name).overrideWithValue(
@@ -209,7 +209,7 @@ class SharedValueProvider extends StatelessWidget {
                           ZacSharedValueInteractionType.provide(
                               context: context))))),
         ],
-        child: UpdateContextBuilder(builder: builder),
+        child: ZacUpdateContext(builder: builder),
       ),
     );
   }

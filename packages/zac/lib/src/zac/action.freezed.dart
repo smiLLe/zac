@@ -202,32 +202,32 @@ abstract class _ZacActions extends ZacActions {
   List<ZacAction> get actions;
 }
 
-ExecuteActionsBuilder _$ExecuteActionsBuilderFromJson(
+ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
     Map<String, dynamic> json) {
-  return _ExecuteActionsWidgetBuilder.fromJson(json);
+  return _ZacExecuteActionsBuilder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ExecuteActionsBuilder {
+mixin _$ZacExecuteActionsBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacActions get actions => throw _privateConstructorUsedError;
   ZacWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ExecuteActionsWidgetBuilder value) $default,
+    TResult Function(_ZacExecuteActionsBuilder value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ExecuteActionsWidgetBuilder extends _ExecuteActionsWidgetBuilder {
-  _$_ExecuteActionsWidgetBuilder({this.key, required this.actions, this.child})
+class _$_ZacExecuteActionsBuilder extends _ZacExecuteActionsBuilder {
+  _$_ZacExecuteActionsBuilder({this.key, required this.actions, this.child})
       : super._();
 
-  factory _$_ExecuteActionsWidgetBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_ExecuteActionsWidgetBuilderFromJson(json);
+  factory _$_ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacExecuteActionsBuilderFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -238,14 +238,14 @@ class _$_ExecuteActionsWidgetBuilder extends _ExecuteActionsWidgetBuilder {
 
   @override
   String toString() {
-    return 'ExecuteActionsBuilder(key: $key, actions: $actions, child: $child)';
+    return 'ZacExecuteActionsBuilder(key: $key, actions: $actions, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ExecuteActionsWidgetBuilder &&
+            other is _$_ZacExecuteActionsBuilder &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.actions, actions) &&
             const DeepCollectionEquality().equals(other.child, child));
@@ -262,21 +262,21 @@ class _$_ExecuteActionsWidgetBuilder extends _ExecuteActionsWidgetBuilder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ExecuteActionsWidgetBuilder value) $default,
+    TResult Function(_ZacExecuteActionsBuilder value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ExecuteActionsWidgetBuilder extends ExecuteActionsBuilder {
-  factory _ExecuteActionsWidgetBuilder(
+abstract class _ZacExecuteActionsBuilder extends ZacExecuteActionsBuilder {
+  factory _ZacExecuteActionsBuilder(
       {final FlutterKey? key,
       required final ZacActions actions,
-      final ZacWidget? child}) = _$_ExecuteActionsWidgetBuilder;
-  _ExecuteActionsWidgetBuilder._() : super._();
+      final ZacWidget? child}) = _$_ZacExecuteActionsBuilder;
+  _ZacExecuteActionsBuilder._() : super._();
 
-  factory _ExecuteActionsWidgetBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ExecuteActionsWidgetBuilder.fromJson;
+  factory _ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacExecuteActionsBuilder.fromJson;
 
   @override
   FlutterKey? get key;

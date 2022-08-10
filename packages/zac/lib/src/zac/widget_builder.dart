@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -74,7 +74,7 @@ class ZacWidgetBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return UpdateContextBuilder(
+    return ZacUpdateContext(
       builder: (context) => zacWidget.buildWidget(context),
     );
   }
@@ -89,8 +89,8 @@ class ZacWidgetBuilderFromMap extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // globalRuntimeConverter = ref.watch(AWProviders.widgetsConverter);
-    final awContext = useZacWidgetContext(ref);
-    final map = zacMap.getValue(awContext);
+    final zacContext = useZacBuildContext(ref);
+    final map = zacMap.getValue(zacContext);
     final zacWidget =
         useMemoized(() => ConverterHelper.convertToType<ZacWidget>(map));
     return ZacWidgetBuilder(zacWidget: zacWidget);
@@ -117,8 +117,8 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
-    final awContext = useZacWidgetContext(ref);
-    final data = zacString.getValue(awContext);
+    final zacContext = useZacBuildContext(ref);
+    final data = zacString.getValue(zacContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -164,8 +164,8 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     // final converters = ref.watch(AWProviders.widgetsConverter);
     final loadingState =
         useState<AsyncValue<ZacWidget>>(const AsyncValue.loading());
-    final awContext = useZacWidgetContext(ref);
-    final map = zacMap.getValue(awContext);
+    final zacContext = useZacBuildContext(ref);
+    final map = zacMap.getValue(zacContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -185,7 +185,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
       return () => mounted = false;
     }, [map, allConverters]);
 
-    return UpdateContextBuilder(
+    return ZacUpdateContext(
       builder: (context) {
         return loadingState.value.map(
           data: (value) => value.value.buildWidget(context),

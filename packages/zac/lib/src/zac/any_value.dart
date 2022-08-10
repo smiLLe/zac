@@ -535,7 +535,7 @@ class ZacWidgetConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UpdateContextBuilder(
+    return ZacUpdateContext(
       builder: (context) => builder
           .map((value) => value.getSharedValue(context).buildWidget(context)),
     );

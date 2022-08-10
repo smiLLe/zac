@@ -1,7 +1,7 @@
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/widget_context.dart';
+import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -264,7 +264,7 @@ class FlutterPageRouteBuilder
   PageRouteBuilder<ZacActions?> build(ZacBuildContext context,
       {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap}) {
     return PageRouteBuilder<ZacActions?>(
-      pageBuilder: (_, __, ___) => UpdateContextBuilder(
+      pageBuilder: (_, __, ___) => ZacUpdateContext(
         builder: (context) {
           if (null == wrap) return child.buildWidget(context);
           return wrap(context, child);
