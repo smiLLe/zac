@@ -35,7 +35,7 @@ void main() {
             // ignore returned widget
             return const SizedBox();
           },
-          name: 'foo',
+          family: 'foo',
           value: const <String, dynamic>{
             '_converter': 'f:1:SizedBox',
           },
@@ -53,10 +53,11 @@ void main() {
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          name: 'foo',
+          family: 'foo',
           value: 'hello',
           builder: (c) => FlutterText(
-            ZacString.consume(name: 'foo', transformer: [_ConcatStr(' world')]),
+            ZacString.consume(
+                family: 'foo', transformer: [_ConcatStr(' world')]),
           ).buildWidget(c),
         ),
       );
@@ -68,7 +69,7 @@ void main() {
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          name: 'foo',
+          family: 'foo',
           value: const {
             '_converter': 'f:1:SizedBox',
             'key': {
@@ -81,7 +82,7 @@ void main() {
             child: ZacWidget.fromJson(
               {
                 '_converter': 'z:1:SharedValue.consume',
-                'name': 'foo',
+                'family': 'foo',
               },
             ),
           ).buildWidget(c),
@@ -96,7 +97,7 @@ void main() {
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          name: 'foo',
+          family: 'foo',
           value: const ['foo', 'oof'],
           builder: (c) => LeakContext(
             cb: (c) => context = c,
@@ -106,7 +107,7 @@ void main() {
 
       expect(
           ZacList.consume(
-            name: 'foo',
+            family: 'foo',
             transformer: [
               ListTransformer.map(transformer: [_ConcatStr('bar')])
             ],
@@ -121,7 +122,7 @@ void main() {
           tester,
           SharedValueProviderBuilder(
             value: 10,
-            name: 'foo',
+            family: 'foo',
             child: LeakContext(
               cb: (c) => context = c,
             ),
@@ -140,7 +141,7 @@ void main() {
           tester,
           SharedValueProviderBuilder(
             value: null,
-            name: 'foo',
+            family: 'foo',
             child: LeakContext(
               cb: (c) => context = c,
             ),
@@ -189,7 +190,7 @@ void main() {
           tester,
           SharedValueProviderBuilder(
             value: null,
-            name: 'foo',
+            family: 'foo',
             child: LeakContext(
               cb: (c) => context = c,
             ),
@@ -229,11 +230,11 @@ void main() {
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          name: 'shared',
+          family: 'shared',
           value: 'foo',
           builder: (c) => FlutterText(
             ZacString.consume(
-              name: 'shared',
+              family: 'shared',
               transformer: [_ConcatStr('baz')],
               consumeType:
                   SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
@@ -283,7 +284,7 @@ void main() {
         tester,
         SharedValueProviderBuilder(
           value: 1,
-          name: 'foo',
+          family: 'foo',
           child: FlutterSizedBox(),
           transformer: [
             transformer,
@@ -305,14 +306,15 @@ void main() {
         tester,
         SharedValueProviderBuilder(
           value: 1,
-          name: 'foo',
+          family: 'foo',
           child: LeakContext(
             cb: (c) => context = c,
           ),
         ),
       );
 
-      ZacInt.consume(name: 'foo', transformer: [transformer]).getValue(context);
+      ZacInt.consume(family: 'foo', transformer: [transformer])
+          .getValue(context);
 
       verify(transformer.transform(
           1, argThat(isA<ZacSharedValueInteractionTypeConsume>())));
@@ -327,11 +329,11 @@ void main() {
         tester,
         SharedValueProviderBuilder(
           value: 1,
-          name: 'foo',
+          family: 'foo',
           child: ZacExecuteActionsBuilder.once(
             actions: ZacActions([
               UpdateSharedValue(
-                name: 'foo',
+                family: 'foo',
                 value: 2,
                 transformer: [transformer],
               ),

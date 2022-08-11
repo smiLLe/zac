@@ -39,7 +39,7 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
         Map<String, dynamic> json) =>
     _$_ZacExecuteActionsBuilderListen(
       actions: ZacActions.fromJson(json['actions'] as Object),
-      name: ZacString.fromJson(json['name'] as Object),
+      family: json['family'] as Object,
       child: json['child'] == null
           ? null
           : ZacWidget.fromJson(json['child'] as Object),

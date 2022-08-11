@@ -303,7 +303,7 @@ class _$_ZacExecuteActionsBuilderListen
     extends _ZacExecuteActionsBuilderListen {
   _$_ZacExecuteActionsBuilderListen(
       {required this.actions,
-      required this.name,
+      required this.family,
       this.child,
       final String? $type})
       : $type = $type ?? 'z:1:ExecuteActions.listen',
@@ -316,7 +316,7 @@ class _$_ZacExecuteActionsBuilderListen
   @override
   final ZacActions actions;
   @override
-  final ZacString name;
+  final Object family;
   @override
   final ZacWidget? child;
 
@@ -325,7 +325,7 @@ class _$_ZacExecuteActionsBuilderListen
 
   @override
   String toString() {
-    return 'ZacExecuteActionsBuilder.listen(actions: $actions, name: $name, child: $child)';
+    return 'ZacExecuteActionsBuilder.listen(actions: $actions, family: $family, child: $child)';
   }
 
   @override
@@ -334,7 +334,7 @@ class _$_ZacExecuteActionsBuilderListen
         (other.runtimeType == runtimeType &&
             other is _$_ZacExecuteActionsBuilderListen &&
             const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
 
@@ -343,7 +343,7 @@ class _$_ZacExecuteActionsBuilderListen
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(child));
 
   @override
@@ -360,7 +360,7 @@ abstract class _ZacExecuteActionsBuilderListen
     extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderListen(
       {required final ZacActions actions,
-      required final ZacString name,
+      required final Object family,
       final ZacWidget? child}) = _$_ZacExecuteActionsBuilderListen;
   _ZacExecuteActionsBuilderListen._() : super._();
 
@@ -369,7 +369,7 @@ abstract class _ZacExecuteActionsBuilderListen
 
   @override
   ZacActions get actions;
-  ZacString get name;
+  Object get family;
   @override
   ZacWidget? get child;
 }

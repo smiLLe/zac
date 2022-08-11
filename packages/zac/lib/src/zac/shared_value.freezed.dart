@@ -322,7 +322,7 @@ UpdateSharedValue _$UpdateSharedValueFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateSharedValue {
-  String get name => throw _privateConstructorUsedError;
+  Object get family => throw _privateConstructorUsedError;
   Object get value => throw _privateConstructorUsedError;
   List<SharedValueTransformer>? get transformer =>
       throw _privateConstructorUsedError;
@@ -338,7 +338,7 @@ mixin _$UpdateSharedValue {
 @JsonSerializable(createToJson: false)
 class _$_UpdateSharedValue extends _UpdateSharedValue {
   _$_UpdateSharedValue(
-      {required this.name,
+      {required this.family,
       required this.value,
       final List<SharedValueTransformer>? transformer})
       : _transformer = transformer,
@@ -348,7 +348,7 @@ class _$_UpdateSharedValue extends _UpdateSharedValue {
       _$$_UpdateSharedValueFromJson(json);
 
   @override
-  final String name;
+  final Object family;
   @override
   final Object value;
   final List<SharedValueTransformer>? _transformer;
@@ -362,7 +362,7 @@ class _$_UpdateSharedValue extends _UpdateSharedValue {
 
   @override
   String toString() {
-    return 'UpdateSharedValue(name: $name, value: $value, transformer: $transformer)';
+    return 'UpdateSharedValue(family: $family, value: $value, transformer: $transformer)';
   }
 
   @override
@@ -370,7 +370,7 @@ class _$_UpdateSharedValue extends _UpdateSharedValue {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateSharedValue &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
                 .equals(other._transformer, _transformer));
@@ -380,7 +380,7 @@ class _$_UpdateSharedValue extends _UpdateSharedValue {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(value),
       const DeepCollectionEquality().hash(_transformer));
 
@@ -395,7 +395,7 @@ class _$_UpdateSharedValue extends _UpdateSharedValue {
 
 abstract class _UpdateSharedValue extends UpdateSharedValue {
   factory _UpdateSharedValue(
-      {required final String name,
+      {required final Object family,
       required final Object value,
       final List<SharedValueTransformer>? transformer}) = _$_UpdateSharedValue;
   _UpdateSharedValue._() : super._();
@@ -404,7 +404,7 @@ abstract class _UpdateSharedValue extends UpdateSharedValue {
       _$_UpdateSharedValue.fromJson;
 
   @override
-  String get name;
+  Object get family;
   @override
   Object get value;
   @override
@@ -556,7 +556,7 @@ mixin _$SharedValueProviderBuilder {
   Object? get value => throw _privateConstructorUsedError;
   List<SharedValueTransformer>? get transformer =>
       throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  Object get family => throw _privateConstructorUsedError;
   ZacWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -573,7 +573,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       {this.key,
       required this.value,
       final List<SharedValueTransformer>? transformer,
-      required this.name,
+      required this.family,
       required this.child})
       : _transformer = transformer,
         super._();
@@ -595,13 +595,13 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   }
 
   @override
-  final String name;
+  final Object family;
   @override
   final ZacWidget child;
 
   @override
   String toString() {
-    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, name: $name, child: $child)';
+    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, family: $family, child: $child)';
   }
 
   @override
@@ -613,7 +613,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
                 .equals(other._transformer, _transformer) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
 
@@ -624,7 +624,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       const DeepCollectionEquality().hash(key),
       const DeepCollectionEquality().hash(value),
       const DeepCollectionEquality().hash(_transformer),
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(child));
 
   @override
@@ -641,7 +641,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       {final FlutterKey? key,
       required final Object? value,
       final List<SharedValueTransformer>? transformer,
-      required final String name,
+      required final Object family,
       required final ZacWidget child}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
 
@@ -655,7 +655,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   List<SharedValueTransformer>? get transformer;
   @override
-  String get name;
+  Object get family;
   @override
   ZacWidget get child;
 }

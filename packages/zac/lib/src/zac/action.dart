@@ -4,7 +4,6 @@ import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/widget_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -101,7 +100,7 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacActions actions,
-    required ZacString name,
+    required SharedValueFamily family,
     ZacWidget? child,
   }) = _ZacExecuteActionsBuilderListen;
 
@@ -114,7 +113,7 @@ class ZacExecuteActionsBuilder
       ),
       listen: (obj) => ZacExecuteActionsListen(
         actions: obj.actions,
-        name: obj.name,
+        family: obj.family,
         child: obj.child,
       ),
     );
@@ -123,18 +122,17 @@ class ZacExecuteActionsBuilder
 
 class ZacExecuteActionsListen extends HookConsumerWidget {
   const ZacExecuteActionsListen(
-      {required this.actions, required this.name, this.child, Key? key})
+      {required this.actions, required this.family, this.child, Key? key})
       : super(key: key);
 
   final ZacActions actions;
-  final ZacString name;
+  final SharedValueFamily family;
   final ZacWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacBuildContext(ref);
-    SharedValue.listenAndExecuteActions(
-        zacContext, name.getValue(zacContext), actions);
+    SharedValue.listenAndExecuteActions(zacContext, family, actions);
 
     return null != child
         ? ZacWidgetBuilder(zacWidget: child!)

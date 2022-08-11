@@ -346,7 +346,7 @@ Data: "$data"''');
     if (!hasExistingConverter(rt)) {
       throw ConverterError(
           '''Error while trying to convert${null != expectedType ? ' data to type "$expectedType"' : ' data'}.
-There was no "$converterKey" found for name: "$rt".''');
+There was no "$converterKey" found for family: "$rt".''');
     }
 
     return data;

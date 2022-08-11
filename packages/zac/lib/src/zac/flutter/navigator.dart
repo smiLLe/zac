@@ -32,7 +32,7 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueProvide)
   factory ZacFlutterGlobalKeyNavigatorState.provide({
-    required ZacString name,
+    required SharedValueFamily family,
     required ZacWidget child,
     ZacString? debugLabel,
   }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
@@ -40,7 +40,7 @@ class ZacFlutterGlobalKeyNavigatorState
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
   factory ZacFlutterGlobalKeyNavigatorState.consume({
-    required String name,
+    required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
     List<SharedValueTransformer>? transformer,
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
@@ -89,7 +89,7 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
       value: GlobalKey<NavigatorState>(
         debugLabel: builder.debugLabel?.getValue(zacContext),
       ),
-      name: builder.name.getValue(zacContext),
+      family: builder.family,
       builder: builder.child.buildWidget,
     );
   }
@@ -184,7 +184,7 @@ class RouteFactorySingleRoute
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
-            name: RouteFactoryFromRoutes.providerName(
+            family: RouteFactoryFromRoutes.providerName(
               context,
               routeConfig,
               provideArgsNamePrefix,
@@ -246,7 +246,7 @@ class RouteFactoryFromRoutes
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
-            name: RouteFactoryFromRoutes.providerName(
+            family: RouteFactoryFromRoutes.providerName(
               context,
               config,
               provideArgsNamePrefix,

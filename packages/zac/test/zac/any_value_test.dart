@@ -18,9 +18,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacBool>({
             '_converter': 'z:1:ZacBool.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacBool.consume(name: 'foo'));
+          ZacBool.consume(family: 'foo'));
 
       expect(ZacBool.fromJson(false), ZacBool(false));
       expect(
@@ -32,15 +32,15 @@ void main() {
       expect(
           ZacBool.fromJson({
             '_converter': 'z:1:ZacBool.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacBool.consume(name: 'foo'));
+          ZacBool.consume(family: 'foo'));
       expect(
           ZacBool.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacBool.consume(name: 'foo'));
+          ZacBool.consume(family: 'foo'));
       expect(() => ZacBool.fromJson('foo'), throwsConverterError);
     });
 
@@ -50,7 +50,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacBool',
               'value': false,
@@ -61,7 +61,7 @@ void main() {
             ),
           ));
 
-      expect(ZacBool.consume(name: 'foo').getValue(zacContext), false);
+      expect(ZacBool.consume(family: 'foo').getValue(zacContext), false);
     });
 
     testWidgets('consume', (tester) async {
@@ -70,14 +70,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: false,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacBool.consume(name: 'foo').getValue(zacContext), false);
+      expect(ZacBool.consume(family: 'foo').getValue(zacContext), false);
     });
   });
 
@@ -93,9 +93,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacInt>({
             '_converter': 'z:1:ZacInt.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacInt.consume(name: 'foo'));
+          ZacInt.consume(family: 'foo'));
 
       expect(ZacInt.fromJson(1), ZacInt(1));
       expect(ZacInt.fromJson(1.2), ZacInt(1));
@@ -108,15 +108,15 @@ void main() {
       expect(
           ZacInt.fromJson({
             '_converter': 'z:1:ZacInt.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacInt.consume(name: 'foo'));
+          ZacInt.consume(family: 'foo'));
       expect(
           ZacInt.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacInt.consume(name: 'foo'));
+          ZacInt.consume(family: 'foo'));
       expect(() => ZacInt.fromJson('foo'), throwsConverterError);
     });
 
@@ -126,7 +126,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacInt',
               'value': 55,
@@ -137,7 +137,7 @@ void main() {
             ),
           ));
 
-      expect(ZacInt.consume(name: 'foo').getValue(zacContext), 55);
+      expect(ZacInt.consume(family: 'foo').getValue(zacContext), 55);
     });
 
     testWidgets('consume', (tester) async {
@@ -146,14 +146,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: 55,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacInt.consume(name: 'foo').getValue(zacContext), 55);
+      expect(ZacInt.consume(family: 'foo').getValue(zacContext), 55);
     });
   });
 
@@ -175,9 +175,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacDouble>({
             '_converter': 'z:1:ZacDouble.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacDouble.consume(name: 'foo'));
+          ZacDouble.consume(family: 'foo'));
 
       expect(ZacDouble.fromJson(1), ZacDouble(1.0));
       expect(ZacDouble.fromJson(1.2), ZacDouble(1.2));
@@ -190,15 +190,15 @@ void main() {
       expect(
           ZacDouble.fromJson({
             '_converter': 'z:1:ZacDouble.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacDouble.consume(name: 'foo'));
+          ZacDouble.consume(family: 'foo'));
       expect(
           ZacDouble.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacDouble.consume(name: 'foo'));
+          ZacDouble.consume(family: 'foo'));
       expect(() => ZacDouble.fromJson('foo'), throwsConverterError);
     });
 
@@ -208,7 +208,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacDouble',
               'value': 1.0,
@@ -219,7 +219,7 @@ void main() {
             ),
           ));
 
-      expect(ZacDouble.consume(name: 'foo').getValue(zacContext), 1.0);
+      expect(ZacDouble.consume(family: 'foo').getValue(zacContext), 1.0);
     });
 
     testWidgets('consume', (tester) async {
@@ -228,14 +228,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: 1.0,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacDouble.consume(name: 'foo').getValue(zacContext), 1.0);
+      expect(ZacDouble.consume(family: 'foo').getValue(zacContext), 1.0);
     });
 
     testWidgets('consume #2', (tester) async {
@@ -244,14 +244,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: 1,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(() => ZacDouble.consume(name: 'foo').getValue(zacContext),
+      expect(() => ZacDouble.consume(family: 'foo').getValue(zacContext),
           throwsStateError);
     });
   });
@@ -268,9 +268,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacString>({
             '_converter': 'z:1:ZacString.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacString.consume(name: 'foo'));
+          ZacString.consume(family: 'foo'));
 
       expect(ZacString.fromJson('hello'), ZacString('hello'));
       expect(
@@ -282,15 +282,15 @@ void main() {
       expect(
           ZacString.fromJson({
             '_converter': 'z:1:ZacString.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacString.consume(name: 'foo'));
+          ZacString.consume(family: 'foo'));
       expect(
           ZacString.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacString.consume(name: 'foo'));
+          ZacString.consume(family: 'foo'));
       expect(() => ZacString.fromJson(55), throwsConverterError);
     });
 
@@ -300,7 +300,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacString',
               'value': 'hello',
@@ -311,7 +311,7 @@ void main() {
             ),
           ));
 
-      expect(ZacString.consume(name: 'foo').getValue(zacContext), 'hello');
+      expect(ZacString.consume(family: 'foo').getValue(zacContext), 'hello');
     });
 
     testWidgets('consume', (tester) async {
@@ -320,14 +320,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: 'hello',
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacString.consume(name: 'foo').getValue(zacContext), 'hello');
+      expect(ZacString.consume(family: 'foo').getValue(zacContext), 'hello');
     });
   });
 
@@ -351,26 +351,26 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacList>({
             '_converter': 'z:1:ZacList.consume',
-            'name': 'foo',
+            'family': 'foo',
             'value': compare,
           }),
-          ZacList.consume(name: 'foo'));
+          ZacList.consume(family: 'foo'));
 
       expect(
           ZacList.fromJson({
             '_converter': 'z:1:ZacList.consume',
-            'name': 'foo',
+            'family': 'foo',
             'value': compare,
           }),
-          ZacList.consume(name: 'foo'));
+          ZacList.consume(family: 'foo'));
 
       expect(
           ZacList.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
             'value': compare,
           }),
-          ZacList.consume(name: 'foo'));
+          ZacList.consume(family: 'foo'));
 
       expect(ZacList.fromJson(compare), ZacList(compare));
 
@@ -384,7 +384,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacList',
               'value': compare,
@@ -395,7 +395,7 @@ void main() {
             ),
           ));
 
-      expect(ZacList.consume(name: 'foo').getValue(zacContext), compare);
+      expect(ZacList.consume(family: 'foo').getValue(zacContext), compare);
     });
 
     testWidgets('consume', (tester) async {
@@ -405,14 +405,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: compare,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacList.consume(name: 'foo').getValue(zacContext), compare);
+      expect(ZacList.consume(family: 'foo').getValue(zacContext), compare);
     });
   });
 
@@ -429,9 +429,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacMap>({
             '_converter': 'z:1:ZacMap.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacMap.consume(name: 'foo'));
+          ZacMap.consume(family: 'foo'));
 
       expect(ZacMap.fromJson(compare), ZacMap(compare));
       expect(
@@ -443,15 +443,15 @@ void main() {
       expect(
           ZacMap.fromJson({
             '_converter': 'z:1:ZacMap.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacMap.consume(name: 'foo'));
+          ZacMap.consume(family: 'foo'));
       expect(
           ZacMap.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacMap.consume(name: 'foo'));
+          ZacMap.consume(family: 'foo'));
       expect(() => ZacMap.fromJson(55), throwsConverterError);
     });
 
@@ -462,7 +462,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacMap',
               'value': compare,
@@ -473,7 +473,7 @@ void main() {
             ),
           ));
 
-      expect(ZacMap.consume(name: 'foo').getValue(zacContext), compare);
+      expect(ZacMap.consume(family: 'foo').getValue(zacContext), compare);
     });
 
     testWidgets('consume', (tester) async {
@@ -483,14 +483,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: compare,
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacMap.consume(name: 'foo').getValue(zacContext), compare);
+      expect(ZacMap.consume(family: 'foo').getValue(zacContext), compare);
     });
   });
 
@@ -506,9 +506,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacObject>({
             '_converter': 'z:1:ZacObject.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacObject.consume(name: 'foo'));
+          ZacObject.consume(family: 'foo'));
 
       expect(ZacObject.fromJson(55), ZacObject(55));
       expect(
@@ -520,15 +520,15 @@ void main() {
       expect(
           ZacObject.fromJson({
             '_converter': 'z:1:ZacObject.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacObject.consume(name: 'foo'));
+          ZacObject.consume(family: 'foo'));
       expect(
           ZacObject.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ZacObject.consume(name: 'foo'));
+          ZacObject.consume(family: 'foo'));
     });
 
     testWidgets('consume ActualValue', (tester) async {
@@ -537,7 +537,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ZacObject',
               'value': 'hello',
@@ -548,7 +548,7 @@ void main() {
             ),
           ));
 
-      expect(ZacObject.consume(name: 'foo').getValue(zacContext), 'hello');
+      expect(ZacObject.consume(family: 'foo').getValue(zacContext), 'hello');
     });
 
     testWidgets('consume', (tester) async {
@@ -557,14 +557,14 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: 'hello',
             child: LeakContext(
               cb: (context) => zacContext = context,
             ),
           ));
 
-      expect(ZacObject.consume(name: 'foo').getValue(zacContext), 'hello');
+      expect(ZacObject.consume(family: 'foo').getValue(zacContext), 'hello');
     });
   });
 
@@ -586,7 +586,7 @@ void main() {
         tester,
         <String, dynamic>{
           '_converter': 'z:1:SharedValue.provide',
-          'name': 'foo',
+          'family': 'foo',
           'value': {
             '_converter': 'f:1:SizedBox',
             'key': KeysModel.getValueKey('FINDME'),
@@ -598,7 +598,7 @@ void main() {
           ],
           'child': {
             '_converter': 'z:1:ZacWidget.consume',
-            'name': 'foo',
+            'family': 'foo',
           },
         },
       );
@@ -627,9 +627,9 @@ void main() {
       expect(
           ConverterHelper.convertToType<ListOfZacWidget>({
             '_converter': 'z:1:ListOfZacWidget.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ListOfZacWidget.consume(name: 'foo'));
+          ListOfZacWidget.consume(family: 'foo'));
 
       expect(
           ListOfZacWidget.fromJson({
@@ -643,15 +643,15 @@ void main() {
       expect(
           ListOfZacWidget.fromJson({
             '_converter': 'z:1:ListOfZacWidget.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ListOfZacWidget.consume(name: 'foo'));
+          ListOfZacWidget.consume(family: 'foo'));
       expect(
           ListOfZacWidget.fromJson({
             '_converter': 'z:1:SharedValue.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
-          ListOfZacWidget.consume(name: 'foo'));
+          ListOfZacWidget.consume(family: 'foo'));
       expect(() => ListOfZacWidget.fromJson(55), throwsConverterError);
     });
 
@@ -661,7 +661,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: [
               {'_converter': 'f:1:SizedBox'}
             ],
@@ -676,9 +676,9 @@ void main() {
               cb: (context) => zacContext = context,
             ),
           ));
-      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(zacContext),
+      expect(ListOfZacWidgetConsume(family: 'foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume(name: 'foo').getValue(zacContext),
+      expect(ListOfZacWidget.consume(family: 'foo').getValue(zacContext),
           isA<List<Widget>>());
     });
 
@@ -688,7 +688,7 @@ void main() {
       await testZacWidget(
           tester,
           SharedValueProviderBuilder(
-            name: 'foo',
+            family: 'foo',
             value: {
               '_converter': 'z:1:ListOfZacWidget',
               'value': [
@@ -700,9 +700,9 @@ void main() {
               cb: (context) => zacContext = context,
             ),
           ));
-      expect(ListOfZacWidgetConsume(name: 'foo').getSharedValue(zacContext),
+      expect(ListOfZacWidgetConsume(family: 'foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume(name: 'foo').getValue(zacContext),
+      expect(ListOfZacWidget.consume(family: 'foo').getValue(zacContext),
           isA<List<Widget>>());
     });
   });

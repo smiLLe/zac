@@ -41,10 +41,10 @@ void main() {
       tester: tester,
       widget: ZacWidgetBuilder(
         zacWidget: ZacFlutterGlobalKeyNavigatorState.provide(
-          name: ZacString('foo'),
+          family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume(
-              name: 'foo',
+              family: 'foo',
             ),
             home: LeakContext(cb: (c) => context = c),
           ),

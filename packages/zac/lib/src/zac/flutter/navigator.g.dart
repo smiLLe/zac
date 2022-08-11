@@ -10,7 +10,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateProvide
     _$$_ZacFlutterGlobalKeyNavigatorStateProvideFromJson(
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateProvide(
-          name: ZacString.fromJson(json['name'] as Object),
+          family: json['family'] as Object,
           child: ZacWidget.fromJson(json['child'] as Object),
           debugLabel: json['debugLabel'] == null
               ? null
@@ -22,7 +22,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
     _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateConsume(
-          name: json['name'] as String,
+          family: json['family'] as Object,
           consumeType: json['consumeType'] == null
               ? null
               : SharedValueConsumeType.fromJson(

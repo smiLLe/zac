@@ -19,7 +19,7 @@ _$EmptySharedValue _$$EmptySharedValueFromJson(Map<String, dynamic> json) =>
 
 _$_UpdateSharedValue _$$_UpdateSharedValueFromJson(Map<String, dynamic> json) =>
     _$_UpdateSharedValue(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       value: json['value'] as Object,
       transformer: (json['transformer'] as List<dynamic>?)
           ?.map(
@@ -54,6 +54,6 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
           ?.map(
               (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      name: json['name'] as String,
+      family: json['family'] as Object,
       child: ZacWidget.fromJson(json['child'] as Object),
     );

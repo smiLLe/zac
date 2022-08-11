@@ -15,6 +15,8 @@ class AccessEmptySharedValueError extends StateError {
   AccessEmptySharedValueError(super.message);
 }
 
+typedef SharedValueFamily = Object;
+
 @defaultConverterFreezed
 class SharedValue with _$SharedValue {
   const SharedValue._();
@@ -22,47 +24,51 @@ class SharedValue with _$SharedValue {
   factory SharedValue(Object? data) = FilledSharedValue;
   const factory SharedValue.empty() = EmptySharedValue;
 
-  static final provider = StateProvider.family.autoDispose<SharedValue, String>(
+  static final provider =
+      StateProvider.family.autoDispose<SharedValue, SharedValueFamily>(
     (_, __) => const SharedValue.empty(),
     name: 'Zac SharedValue',
   );
 
-  static Object? _extract(SharedValue sharedValue, String ifEmptyMessage) =>
+  static Object? _extractData(SharedValue sharedValue, String ifEmptyMessage) =>
       sharedValue.map(
         (obj) => obj.data,
         empty: (_) => throw AccessEmptySharedValueError(ifEmptyMessage),
       );
 
-  static Object? getFilled(
-      SharedValueConsumeType type, ZacBuildContext context, String name) {
+  static Object? getFilled(SharedValueConsumeType type, ZacBuildContext context,
+      SharedValueFamily family) {
     final error = '''
-Could not find a $SharedValue for name: "$name".
+Could not find a $SharedValue for family: "$family".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
 See "$SharedValueProviderBuilder" for more info.
 ''';
     return type.map<Object?>(
       watch: (obj) {
         if (null == obj.select || true == obj.select?.isEmpty) {
-          return _extract(context.ref.watch(SharedValue.provider(name)), error);
+          return _extractData(
+              context.ref.watch(SharedValue.provider(family)), error);
         }
 
-        return context.ref.watch(SharedValue.provider(name).select(
+        return context.ref.watch(SharedValue.provider(family).select(
             (sharedValue) => obj.select!.transformSharedValues(
-                _extract(sharedValue, error),
+                _extractData(sharedValue, error),
                 ZacSharedValueInteractionType.consume(context: context))));
       },
-      read: (_) => _extract(context.ref.read(provider(name)), error),
+      read: (_) => _extractData(context.ref.read(provider(family)), error),
     );
   }
 
   static void update(
     ZacBuildContext context,
-    String name,
+    SharedValueFamily family,
     Object? Function(Object? current) update,
   ) {
-    context.ref.read(SharedValue.provider(name).notifier).update((sharedValue) {
-      return SharedValue(update(_extract(sharedValue, '''
-It was not possible to update the $SharedValue "$name",
+    context.ref
+        .read(SharedValue.provider(family).notifier)
+        .update((sharedValue) {
+      return SharedValue(update(_extractData(sharedValue, '''
+It was not possible to update the $SharedValue "$family",
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
 in your Widget tree before trying to update the $SharedValue.''')));
@@ -75,11 +81,11 @@ in your Widget tree before trying to update the $SharedValue.''')));
   }
 
   static void listenAndExecuteActions(
-      ZacBuildContext context, String name, ZacActions actions) {
-    context.ref.listen<SharedValue>(SharedValue.provider(name),
+      ZacBuildContext context, SharedValueFamily family, ZacActions actions) {
+    context.ref.listen<SharedValue>(SharedValue.provider(family),
         (previous, next) {
-      actions.execute(context, ActionPayload.withData(_extract(next, '''
-It was not possible to listen for $SharedValue($name) changes and execute actions,
+      actions.execute(context, ActionPayload.withData(_extractData(next, '''
+It was not possible to listen for $SharedValue($family) changes and execute actions,
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
 in your Widget tree before trying to update the $SharedValue.''')));
@@ -133,14 +139,14 @@ class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
 
   @FreezedUnionValue(UpdateSharedValue.unionValue)
   factory UpdateSharedValue({
-    required String name,
+    required SharedValueFamily family,
     required Object value,
     List<SharedValueTransformer>? transformer,
   }) = _UpdateSharedValue;
 
   @override
   void execute(ZacBuildContext context, ActionPayload payload) =>
-      SharedValue.update(context, name, (current) {
+      SharedValue.update(context, family, (current) {
         return null == transformer || true == transformer!.isEmpty
             ? value
             : SharedValue.transform(
@@ -186,7 +192,7 @@ class SharedValueProviderBuilder
     FlutterKey? key,
     required Object? value,
     List<SharedValueTransformer>? transformer,
-    required String name,
+    required SharedValueFamily family,
     required ZacWidget child,
   }) = _SharedValueProviderBuilder;
 
@@ -196,7 +202,7 @@ class SharedValueProviderBuilder
       key: key?.buildKey(context),
       transformer: transformer,
       value: value,
-      name: name,
+      family: family,
       builder: child.buildWidget,
     );
   }
@@ -206,13 +212,13 @@ class SharedValueProvider extends StatelessWidget {
   const SharedValueProvider({
     required this.value,
     this.transformer,
-    required this.name,
+    required this.family,
     required this.builder,
     Key? key,
   }) : super(key: key);
 
   final Object? value;
-  final String name;
+  final SharedValueFamily family;
   final Widget Function(ZacBuildContext context) builder;
   final List<SharedValueTransformer>? transformer;
 
@@ -221,7 +227,7 @@ class SharedValueProvider extends StatelessWidget {
     return ZacUpdateContext(
       builder: (context) => ProviderScope(
         overrides: [
-          SharedValue.provider(name).overrideWithValue(
+          SharedValue.provider(family).overrideWithValue(
               StateController<SharedValue>(SharedValue(
                   null == transformer || true == transformer!.isEmpty
                       ? value

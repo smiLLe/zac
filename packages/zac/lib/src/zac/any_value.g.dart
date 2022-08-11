@@ -14,7 +14,7 @@ _$ZacIntValue _$$ZacIntValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacIntConsume _$$ZacIntConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacIntConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -34,7 +34,7 @@ _$ZacDoubleValue _$$ZacDoubleValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacDoubleConsume _$$ZacDoubleConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacDoubleConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -54,7 +54,7 @@ _$ZacStringValue _$$ZacStringValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacStringConsume _$$ZacStringConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacStringConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -74,7 +74,7 @@ _$ZacBoolValue _$$ZacBoolValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacBoolConsume _$$ZacBoolConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacBoolConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -94,7 +94,7 @@ _$ZacMapValue _$$ZacMapValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacMapConsume _$$ZacMapConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacMapConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -114,7 +114,7 @@ _$ZacListValue _$$ZacListValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacListConsume _$$ZacListConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacListConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -134,7 +134,7 @@ _$ZacObjectValue _$$ZacObjectValueFromJson(Map<String, dynamic> json) =>
 
 _$ZacObjectConsume _$$ZacObjectConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacObjectConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -158,7 +158,7 @@ _$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
 _$ListOfZacWidgetConsume _$$ListOfZacWidgetConsumeFromJson(
         Map<String, dynamic> json) =>
     _$ListOfZacWidgetConsume(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -173,7 +173,7 @@ _$ListOfZacWidgetConsume _$$ListOfZacWidgetConsumeFromJson(
 _$_ZacWidgetConsumerBuilder _$$_ZacWidgetConsumerBuilderFromJson(
         Map<String, dynamic> json) =>
     _$_ZacWidgetConsumerBuilder(
-      name: json['name'] as String,
+      family: json['family'] as Object,
       consumeType: json['consumeType'] == null
           ? null
           : SharedValueConsumeType.fromJson(

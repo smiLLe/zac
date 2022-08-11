@@ -122,20 +122,20 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
             '_converter': 'z:1:ExecuteActions.listen',
-            'name': 'foo',
+            'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([NoopAction()]), name: ZacString('foo')));
+              actions: ZacActions([NoopAction()]), family: 'foo'));
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
             '_converter': 'z:1:ExecuteActions.listen',
-            'name': 'foo',
+            'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([NoopAction()]), name: ZacString('foo')));
+              actions: ZacActions([NoopAction()]), family: 'foo'));
     });
 
     testWidgets('execute actions', (tester) async {
@@ -146,10 +146,10 @@ void main() {
         tester,
         SharedValueProviderBuilder(
           value: 1,
-          name: 'shared',
+          family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
             actions: LeakAction.createActions(cb),
-            name: ZacString('shared'),
+            family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
               child: LeakContext(cb: (c) => context = c),

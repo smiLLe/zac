@@ -11,12 +11,12 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
             '_converter': 'z:1:GlobalKeyNavigatorState.provide',
-            'name': 'foo',
+            'family': 'foo',
             'child': ChildModel.sizedBox,
             'debugLabel': 'label',
           }),
           ZacFlutterGlobalKeyNavigatorState.provide(
-            name: ZacString('foo'),
+            family: 'foo',
             child: FlutterSizedBox(),
             debugLabel: ZacString('label'),
           ));
@@ -24,10 +24,10 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
             '_converter': 'z:1:GlobalKeyNavigatorState.consume',
-            'name': 'foo',
+            'family': 'foo',
           }),
           ZacFlutterGlobalKeyNavigatorState.consume(
-            name: 'foo',
+            family: 'foo',
           ));
     });
 
@@ -36,7 +36,7 @@ void main() {
       await testZacWidget(
         tester,
         ZacFlutterGlobalKeyNavigatorState.provide(
-          name: ZacString('foo'),
+          family: 'foo',
           child: LeakContext(cb: (c) => context = c),
         ),
       );

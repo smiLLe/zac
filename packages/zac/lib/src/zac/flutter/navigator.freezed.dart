@@ -33,6 +33,8 @@ ZacFlutterGlobalKeyNavigatorState _$ZacFlutterGlobalKeyNavigatorStateFromJson(
 
 /// @nodoc
 mixin _$ZacFlutterGlobalKeyNavigatorState {
+  Object get family => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacFlutterGlobalKeyNavigatorStateProvide value)
@@ -48,7 +50,7 @@ mixin _$ZacFlutterGlobalKeyNavigatorState {
 class _$_ZacFlutterGlobalKeyNavigatorStateProvide
     extends _ZacFlutterGlobalKeyNavigatorStateProvide {
   _$_ZacFlutterGlobalKeyNavigatorStateProvide(
-      {required this.name,
+      {required this.family,
       required this.child,
       this.debugLabel,
       final String? $type})
@@ -60,7 +62,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
       _$$_ZacFlutterGlobalKeyNavigatorStateProvideFromJson(json);
 
   @override
-  final ZacString name;
+  final Object family;
   @override
   final ZacWidget child;
   @override
@@ -71,7 +73,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
 
   @override
   String toString() {
-    return 'ZacFlutterGlobalKeyNavigatorState.provide(name: $name, child: $child, debugLabel: $debugLabel)';
+    return 'ZacFlutterGlobalKeyNavigatorState.provide(family: $family, child: $child, debugLabel: $debugLabel)';
   }
 
   @override
@@ -79,7 +81,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacFlutterGlobalKeyNavigatorStateProvide &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.child, child) &&
             const DeepCollectionEquality()
                 .equals(other.debugLabel, debugLabel));
@@ -89,7 +91,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(child),
       const DeepCollectionEquality().hash(debugLabel));
 
@@ -108,7 +110,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
 abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
     extends ZacFlutterGlobalKeyNavigatorState {
   factory _ZacFlutterGlobalKeyNavigatorStateProvide(
-          {required final ZacString name,
+          {required final Object family,
           required final ZacWidget child,
           final ZacString? debugLabel}) =
       _$_ZacFlutterGlobalKeyNavigatorStateProvide;
@@ -118,7 +120,8 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
           Map<String, dynamic> json) =
       _$_ZacFlutterGlobalKeyNavigatorStateProvide.fromJson;
 
-  ZacString get name;
+  @override
+  Object get family;
   ZacWidget get child;
   ZacString? get debugLabel;
 }
@@ -129,7 +132,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     extends _ZacFlutterGlobalKeyNavigatorStateConsume
     with ConsumeValue<GlobalKey<NavigatorState>> {
   _$_ZacFlutterGlobalKeyNavigatorStateConsume(
-      {required this.name,
+      {required this.family,
       this.consumeType,
       final List<SharedValueTransformer>? transformer,
       final String? $type})
@@ -142,7 +145,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
       _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(json);
 
   @override
-  final String name;
+  final Object family;
   @override
   final SharedValueConsumeType? consumeType;
   final List<SharedValueTransformer>? _transformer;
@@ -159,7 +162,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
 
   @override
   String toString() {
-    return 'ZacFlutterGlobalKeyNavigatorState.consume(name: $name, consumeType: $consumeType, transformer: $transformer)';
+    return 'ZacFlutterGlobalKeyNavigatorState.consume(family: $family, consumeType: $consumeType, transformer: $transformer)';
   }
 
   @override
@@ -167,7 +170,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacFlutterGlobalKeyNavigatorStateConsume &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType) &&
             const DeepCollectionEquality()
@@ -178,7 +181,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(consumeType),
       const DeepCollectionEquality().hash(_transformer));
 
@@ -198,7 +201,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
     extends ZacFlutterGlobalKeyNavigatorState
     implements ConsumeValue<GlobalKey<NavigatorState>> {
   factory _ZacFlutterGlobalKeyNavigatorStateConsume(
-          {required final String name,
+          {required final Object family,
           final SharedValueConsumeType? consumeType,
           final List<SharedValueTransformer>? transformer}) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume;
@@ -208,7 +211,8 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
           Map<String, dynamic> json) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume.fromJson;
 
-  String get name;
+  @override
+  Object get family;
   SharedValueConsumeType? get consumeType;
   List<SharedValueTransformer>? get transformer;
 }
