@@ -129,20 +129,22 @@ class ZacSharedValueInteractionType
 }
 
 @defaultConverterFreezed
-class UpdateSharedValue with _$UpdateSharedValue implements ZacAction {
-  const UpdateSharedValue._();
+class UpdateSharedValueAction
+    with _$UpdateSharedValueAction
+    implements ZacAction {
+  const UpdateSharedValueAction._();
 
   static const String unionValue = 'z:1:SharedValue.update';
 
-  factory UpdateSharedValue.fromJson(Map<String, dynamic> json) =>
-      _$UpdateSharedValueFromJson(json);
+  factory UpdateSharedValueAction.fromJson(Map<String, dynamic> json) =>
+      _$UpdateSharedValueActionFromJson(json);
 
-  @FreezedUnionValue(UpdateSharedValue.unionValue)
-  factory UpdateSharedValue({
+  @FreezedUnionValue(UpdateSharedValueAction.unionValue)
+  factory UpdateSharedValueAction({
     required SharedValueFamily family,
     required Object value,
     List<SharedValueTransformer>? transformer,
-  }) = _UpdateSharedValue;
+  }) = _UpdateSharedValueAction;
 
   @override
   void execute(ZacBuildContext context, ActionPayload payload) =>

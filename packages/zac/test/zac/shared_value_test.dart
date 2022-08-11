@@ -332,7 +332,7 @@ void main() {
           family: 'foo',
           child: ZacExecuteActionsBuilder.once(
             actions: ZacActions([
-              UpdateSharedValue(
+              UpdateSharedValueAction(
                 family: 'foo',
                 value: 2,
                 transformer: [transformer],

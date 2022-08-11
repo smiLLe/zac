@@ -104,7 +104,7 @@ Map<String, Convert> allConverters = {
          */
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
-  UpdateSharedValue.unionValue: UpdateSharedValue.fromJson,
+  UpdateSharedValueAction.unionValue: UpdateSharedValueAction.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   ListTransformer.unionValue: ListTransformer.fromJson,
   MapTransformer.unionValue: MapTransformer.fromJson,
