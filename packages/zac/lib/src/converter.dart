@@ -159,6 +159,7 @@ Map<String, Convert> allConverters = {
         */
   /// ZacWidget Classes
   ZacWidgetBuilderBuilder.unionValue: ZacWidgetBuilderBuilder.fromJson,
+  ZacWidgetBuilderBuilder.unionValueMap: ZacWidgetBuilderBuilder.fromJson,
   ZacWidgetBuilderBuilder.unionValueIsolate: ZacWidgetBuilderBuilder.fromJson,
   ZacWidgetBuilderBuilder.unionValueIsolateString:
       ZacWidgetBuilderBuilder.fromJson,

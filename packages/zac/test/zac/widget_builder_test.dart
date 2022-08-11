@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:zac/src/converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -28,7 +26,7 @@ void main() {
     if (!found) throw Exception('did not find $finder');
   }
 
-  group('ZacWidgetBuilder', () {
+  group('WidgetBuilder', () {
     testWidgets('create from Map', (tester) async {
       await testMap(tester, <String, dynamic>{
         '_converter': 'f:1:SizedBox',
@@ -42,11 +40,11 @@ void main() {
 
     testWidgets('nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:ZacWidgetBuilder',
+        '_converter': 'z:1:WidgetBuilder',
         'data': {
-          '_converter': 'z:1:ZacWidgetBuilder',
+          '_converter': 'z:1:WidgetBuilder',
           'data': {
-            '_converter': 'z:1:ZacWidgetBuilder',
+            '_converter': 'z:1:WidgetBuilder',
             'data': {
               '_converter': 'f:1:SizedBox',
               'key': KeysModel.getValueKey('FIND_ME'),
@@ -61,11 +59,11 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          '_converter': 'z:1:ZacWidgetBuilder.isolate',
+          '_converter': 'z:1:WidgetBuilder.isolate',
           'data': {
-            '_converter': 'z:1:ZacWidgetBuilder.isolateString',
+            '_converter': 'z:1:WidgetBuilder.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:ZacWidgetBuilder.isolate',
+              '_converter': 'z:1:WidgetBuilder.isolate',
               'data': {
                 '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
@@ -80,13 +78,13 @@ void main() {
 
     testWidgets('mixed nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:ZacWidgetBuilder.isolate',
+        '_converter': 'z:1:WidgetBuilder.isolate',
         'data': {
-          '_converter': 'z:1:ZacWidgetBuilder',
+          '_converter': 'z:1:WidgetBuilder',
           'data': {
-            '_converter': 'z:1:ZacWidgetBuilder.isolateString',
+            '_converter': 'z:1:WidgetBuilder.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:ZacWidgetBuilder.isolate',
+              '_converter': 'z:1:WidgetBuilder.isolate',
               'data': {
                 '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),

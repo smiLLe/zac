@@ -12,6 +12,16 @@ _$_ZacWidgetBuilderBuilder _$$_ZacWidgetBuilderBuilderFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
+      data: ZacWidget.fromJson(json['data'] as Object),
+      $type: json['_converter'] as String?,
+    );
+
+_$_ZacWidgetBuilderBuilderMap _$$_ZacWidgetBuilderBuilderMapFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacWidgetBuilderBuilderMap(
+      key: json['key'] == null
+          ? null
+          : FlutterKey.fromJson(json['key'] as Object),
       data: ZacMap.fromJson(json['data'] as Object),
       $type: json['_converter'] as String?,
     );

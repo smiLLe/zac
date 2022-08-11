@@ -22,10 +22,11 @@ class ZacWidgetBuilderBuilder
     implements ZacWidget {
   const ZacWidgetBuilderBuilder._();
 
-  static const String unionValue = 'z:1:ZacWidgetBuilder';
-  static const String unionValueIsolate = 'z:1:ZacWidgetBuilder.isolate';
+  static const String unionValue = 'z:1:WidgetBuilder';
+  static const String unionValueMap = 'z:1:WidgetBuilder.map';
+  static const String unionValueIsolate = 'z:1:WidgetBuilder.isolate';
   static const String unionValueIsolateString =
-      'z:1:ZacWidgetBuilder.isolateString';
+      'z:1:WidgetBuilder.isolateString';
 
   factory ZacWidgetBuilderBuilder.fromJson(Map<String, dynamic> json) =>
       _$ZacWidgetBuilderBuilderFromJson(json);
@@ -33,8 +34,14 @@ class ZacWidgetBuilderBuilder
   @FreezedUnionValue(ZacWidgetBuilderBuilder.unionValue)
   factory ZacWidgetBuilderBuilder({
     FlutterKey? key,
-    required ZacMap data,
+    required ZacWidget data,
   }) = _ZacWidgetBuilderBuilder;
+
+  @FreezedUnionValue(ZacWidgetBuilderBuilder.unionValueMap)
+  factory ZacWidgetBuilderBuilder.map({
+    FlutterKey? key,
+    required ZacMap data,
+  }) = _ZacWidgetBuilderBuilderMap;
 
   @FreezedUnionValue(ZacWidgetBuilderBuilder.unionValueIsolate)
   factory ZacWidgetBuilderBuilder.isolate({
@@ -51,7 +58,11 @@ class ZacWidgetBuilderBuilder
   @override
   Widget buildWidget(ZacBuildContext context) {
     return map(
-      (obj) => ZacWidgetBuilderFromMap(
+      (obj) => ZacWidgetBuilder(
+        zacWidget: obj.data,
+        key: obj.key?.buildKey(context),
+      ),
+      map: (obj) => ZacWidgetBuilderFromMap(
         zacMap: obj.data,
         key: obj.key?.buildKey(context),
       ),
@@ -88,7 +99,6 @@ class ZacWidgetBuilderFromMap extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // globalRuntimeConverter = ref.watch(AWProviders.widgetsConverter);
     final zacContext = useZacBuildContext(ref);
     final map = zacMap.getValue(zacContext);
     final zacWidget =
@@ -154,14 +164,12 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     allConverters = data[1] as Map<String, Convert>;
     return ConverterHelper.convertToType<ZacWidget>(
         data[0] as Map<String, dynamic>);
-    // return const ZacWidgetConverter().fromJson(data[0] as Map<String, dynamic>);
   }
 
   final ZacMap zacMap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final converters = ref.watch(AWProviders.widgetsConverter);
     final loadingState =
         useState<AsyncValue<ZacWidget>>(const AsyncValue.loading());
     final zacContext = useZacBuildContext(ref);
