@@ -209,7 +209,11 @@ abstract class _ZacWidgetBuilderBuilderMap extends ZacWidgetBuilderBuilder {
 class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
     with DiagnosticableTreeMixin {
   _$_ZacWidgetBuilderBuilderIsolate(
-      {this.key, required this.data, final String? $type})
+      {this.key,
+      required this.data,
+      this.errorChild,
+      this.debugRethrowError,
+      final String? $type})
       : $type = $type ?? 'z:1:WidgetBuilder.isolate',
         super._();
 
@@ -221,13 +225,17 @@ class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
   final FlutterKey? key;
   @override
   final ZacMap data;
+  @override
+  final ZacWidget? errorChild;
+  @override
+  final bool? debugRethrowError;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ZacWidgetBuilderBuilder.isolate(key: $key, data: $data)';
+    return 'ZacWidgetBuilderBuilder.isolate(key: $key, data: $data, errorChild: $errorChild, debugRethrowError: $debugRethrowError)';
   }
 
   @override
@@ -236,7 +244,9 @@ class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
     properties
       ..add(DiagnosticsProperty('type', 'ZacWidgetBuilderBuilder.isolate'))
       ..add(DiagnosticsProperty('key', key))
-      ..add(DiagnosticsProperty('data', data));
+      ..add(DiagnosticsProperty('data', data))
+      ..add(DiagnosticsProperty('errorChild', errorChild))
+      ..add(DiagnosticsProperty('debugRethrowError', debugRethrowError));
   }
 
   @override
@@ -245,7 +255,11 @@ class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilderBuilderIsolate &&
             const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality()
+                .equals(other.errorChild, errorChild) &&
+            const DeepCollectionEquality()
+                .equals(other.debugRethrowError, debugRethrowError));
   }
 
   @JsonKey(ignore: true)
@@ -253,7 +267,9 @@ class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(errorChild),
+      const DeepCollectionEquality().hash(debugRethrowError));
 
   @override
   @optionalTypeArgs
@@ -271,7 +287,9 @@ class _$_ZacWidgetBuilderBuilderIsolate extends _ZacWidgetBuilderBuilderIsolate
 abstract class _ZacWidgetBuilderBuilderIsolate extends ZacWidgetBuilderBuilder {
   factory _ZacWidgetBuilderBuilderIsolate(
       {final FlutterKey? key,
-      required final ZacMap data}) = _$_ZacWidgetBuilderBuilderIsolate;
+      required final ZacMap data,
+      final ZacWidget? errorChild,
+      final bool? debugRethrowError}) = _$_ZacWidgetBuilderBuilderIsolate;
   _ZacWidgetBuilderBuilderIsolate._() : super._();
 
   factory _ZacWidgetBuilderBuilderIsolate.fromJson(Map<String, dynamic> json) =
@@ -280,6 +298,8 @@ abstract class _ZacWidgetBuilderBuilderIsolate extends ZacWidgetBuilderBuilder {
   @override
   FlutterKey? get key;
   ZacMap get data;
+  ZacWidget? get errorChild;
+  bool? get debugRethrowError;
 }
 
 /// @nodoc
@@ -287,7 +307,11 @@ abstract class _ZacWidgetBuilderBuilderIsolate extends ZacWidgetBuilderBuilder {
 class _$_ZacWidgetBuilderBuilderIsolateString
     extends _ZacWidgetBuilderBuilderIsolateString with DiagnosticableTreeMixin {
   _$_ZacWidgetBuilderBuilderIsolateString(
-      {this.key, required this.data, final String? $type})
+      {this.key,
+      required this.data,
+      this.errorChild,
+      this.debugRethrowError,
+      final String? $type})
       : $type = $type ?? 'z:1:WidgetBuilder.isolateString',
         super._();
 
@@ -299,13 +323,17 @@ class _$_ZacWidgetBuilderBuilderIsolateString
   final FlutterKey? key;
   @override
   final ZacString data;
+  @override
+  final ZacWidget? errorChild;
+  @override
+  final bool? debugRethrowError;
 
   @JsonKey(name: '_converter')
   final String $type;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ZacWidgetBuilderBuilder.isolateString(key: $key, data: $data)';
+    return 'ZacWidgetBuilderBuilder.isolateString(key: $key, data: $data, errorChild: $errorChild, debugRethrowError: $debugRethrowError)';
   }
 
   @override
@@ -315,7 +343,9 @@ class _$_ZacWidgetBuilderBuilderIsolateString
       ..add(
           DiagnosticsProperty('type', 'ZacWidgetBuilderBuilder.isolateString'))
       ..add(DiagnosticsProperty('key', key))
-      ..add(DiagnosticsProperty('data', data));
+      ..add(DiagnosticsProperty('data', data))
+      ..add(DiagnosticsProperty('errorChild', errorChild))
+      ..add(DiagnosticsProperty('debugRethrowError', debugRethrowError));
   }
 
   @override
@@ -324,7 +354,11 @@ class _$_ZacWidgetBuilderBuilderIsolateString
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilderBuilderIsolateString &&
             const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality()
+                .equals(other.errorChild, errorChild) &&
+            const DeepCollectionEquality()
+                .equals(other.debugRethrowError, debugRethrowError));
   }
 
   @JsonKey(ignore: true)
@@ -332,7 +366,9 @@ class _$_ZacWidgetBuilderBuilderIsolateString
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(errorChild),
+      const DeepCollectionEquality().hash(debugRethrowError));
 
   @override
   @optionalTypeArgs
@@ -351,7 +387,9 @@ abstract class _ZacWidgetBuilderBuilderIsolateString
     extends ZacWidgetBuilderBuilder {
   factory _ZacWidgetBuilderBuilderIsolateString(
       {final FlutterKey? key,
-      required final ZacString data}) = _$_ZacWidgetBuilderBuilderIsolateString;
+      required final ZacString data,
+      final ZacWidget? errorChild,
+      final bool? debugRethrowError}) = _$_ZacWidgetBuilderBuilderIsolateString;
   _ZacWidgetBuilderBuilderIsolateString._() : super._();
 
   factory _ZacWidgetBuilderBuilderIsolateString.fromJson(
@@ -361,4 +399,6 @@ abstract class _ZacWidgetBuilderBuilderIsolateString
   @override
   FlutterKey? get key;
   ZacString get data;
+  ZacWidget? get errorChild;
+  bool? get debugRethrowError;
 }

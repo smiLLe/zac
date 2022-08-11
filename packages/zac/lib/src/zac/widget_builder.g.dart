@@ -33,6 +33,10 @@ _$_ZacWidgetBuilderBuilderIsolate _$$_ZacWidgetBuilderBuilderIsolateFromJson(
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
       data: ZacMap.fromJson(json['data'] as Object),
+      errorChild: json['errorChild'] == null
+          ? null
+          : ZacWidget.fromJson(json['errorChild'] as Object),
+      debugRethrowError: json['debugRethrowError'] as bool?,
       $type: json['_converter'] as String?,
     );
 
@@ -44,5 +48,9 @@ _$_ZacWidgetBuilderBuilderIsolateString
               ? null
               : FlutterKey.fromJson(json['key'] as Object),
           data: ZacString.fromJson(json['data'] as Object),
+          errorChild: json['errorChild'] == null
+              ? null
+              : ZacWidget.fromJson(json['errorChild'] as Object),
+          debugRethrowError: json['debugRethrowError'] as bool?,
           $type: json['_converter'] as String?,
         );

@@ -1,7 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/widget_builder.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -94,6 +99,148 @@ void main() {
         },
       });
       await pumpUntilFound(tester, find.byKey(const ValueKey('FIND_ME')));
+    });
+  });
+
+  group('ZacWidgetBuilderFromMapInIsolate', () {
+    testWidgets('allow rethrow of error', (tester) async {
+      Object? error;
+
+      await runZonedGuarded(() async {
+        await tester.runAsync(() async {
+          await testZacWidget(
+            tester,
+            ZacWidgetBuilderBuilder.isolate(
+              data: ZacMap(
+                <String, dynamic>{},
+              ),
+            ),
+          );
+          await Future<void>.delayed(const Duration(seconds: 1));
+        });
+      }, (err, trace) {
+        error = err;
+      });
+
+      expect(error, isNotNull);
+    });
+
+    testWidgets('show DebugErrorBox when no error child given', (tester) async {
+      await tester.runAsync(() async {
+        await testZacWidget(
+          tester,
+          ZacWidgetBuilderBuilder.isolate(
+            data: ZacMap(
+              <String, dynamic>{},
+            ),
+            debugRethrowError: false,
+          ),
+        );
+        await Future<void>.delayed(const Duration(seconds: 1));
+      });
+
+      await tester.pump();
+
+      expect(find.textContaining('ERROR IN $ZacWidgetBuilder'), findsOneWidget);
+    });
+
+    testWidgets('allow custom error widget with access to the error',
+        (tester) async {
+      late ZacBuildContext context;
+
+      await tester.runAsync(() async {
+        await testZacWidget(
+          tester,
+          ZacWidgetBuilderBuilder.isolate(
+            data: ZacMap(
+              <String, dynamic>{},
+            ),
+            errorChild: LeakContext(
+              cb: (c) => context = c,
+              child: FlutterSizedBox(
+                key: FlutterValueKey('ERROR'),
+              ),
+            ),
+            debugRethrowError: false,
+          ),
+        );
+        await Future<void>.delayed(const Duration(seconds: 1));
+      });
+
+      await tester.pump();
+      expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
+      expect(
+          ZacObject.consume(family: ZacWidgetBuilder.provideErrorFamily)
+              .getValue(context),
+          isNotNull);
+    });
+  });
+
+  group('ZacWidgetBuilderFromMapInIsolateFromString', () {
+    testWidgets('allow rethrow of error', (tester) async {
+      Object? error;
+
+      await runZonedGuarded(() async {
+        await tester.runAsync(() async {
+          await testZacWidget(
+            tester,
+            ZacWidgetBuilderBuilder.isolateString(
+              data: ZacString('{'),
+            ),
+          );
+          await Future<void>.delayed(const Duration(seconds: 1));
+        });
+      }, (err, trace) {
+        error = err;
+      });
+
+      expect(error, isNotNull);
+    });
+
+    testWidgets('show DebugErrorBox when no error child given', (tester) async {
+      await tester.runAsync(() async {
+        await testZacWidget(
+          tester,
+          ZacWidgetBuilderBuilder.isolateString(
+            data: ZacString('{'),
+            debugRethrowError: false,
+          ),
+        );
+        await Future<void>.delayed(const Duration(seconds: 1));
+      });
+
+      await tester.pump();
+
+      expect(find.textContaining('ERROR IN $ZacWidgetBuilder'), findsOneWidget);
+    });
+
+    testWidgets('allow custom error widget with access to the error',
+        (tester) async {
+      late ZacBuildContext context;
+
+      await tester.runAsync(() async {
+        await testZacWidget(
+          tester,
+          ZacWidgetBuilderBuilder.isolateString(
+            data: ZacString('{'),
+            errorChild: LeakContext(
+              cb: (c) => context = c,
+              child: FlutterSizedBox(
+                key: FlutterValueKey('ERROR'),
+              ),
+            ),
+            debugRethrowError: false,
+          ),
+        );
+        await Future<void>.delayed(const Duration(seconds: 1));
+      });
+
+      await tester.pump();
+      expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
+      expect(
+          ZacObject.consume(family: ZacWidgetBuilder.provideErrorFamily)
+              .getValue(context),
+          isNotNull);
     });
   });
 }
