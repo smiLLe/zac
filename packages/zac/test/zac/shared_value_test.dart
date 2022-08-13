@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/flutter/widgets/layout/container.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
@@ -113,6 +114,42 @@ void main() {
             ],
           ).getValue(context),
           ['foobar', 'oofbar']);
+    });
+
+    testWidgets('nested', (tester) async {
+      await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          family: 'sharedA',
+          value: 'a',
+          builder: (c) => SharedValueProvider(
+            family: 'sharedB',
+            value: 'b',
+            builder: (c) => SharedValueProvider(
+              family: 'sharedC',
+              value: 'c',
+              builder: (c) => SharedValueProvider(
+                family: 'sharedA',
+                value: 'AA',
+                builder: (c) => FlutterColumn(
+                  children: ListOfZacWidget(
+                    [
+                      FlutterText(ZacString.consume(family: 'sharedA')),
+                      FlutterText(ZacString.consume(family: 'sharedB')),
+                      FlutterText(ZacString.consume(family: 'sharedC')),
+                    ],
+                  ),
+                ).buildWidget(c),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('a'), findsNothing);
+      expect(find.text('AA'), findsOneWidget);
+      expect(find.text('b'), findsOneWidget);
+      expect(find.text('c'), findsOneWidget);
     });
 
     group('getFilled()', () {
