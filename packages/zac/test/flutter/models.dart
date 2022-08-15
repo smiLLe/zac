@@ -2,7 +2,6 @@
 
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/update_context.dart';
-import 'package:zac/src/converter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:mockito/mockito.dart';

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 
@@ -126,7 +125,7 @@ void main() {
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([NoopAction()]), family: 'foo'));
+              actions: ZacActions([const NoopAction()]), family: 'foo'));
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
@@ -135,7 +134,7 @@ void main() {
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([NoopAction()]), family: 'foo'));
+              actions: ZacActions([const NoopAction()]), family: 'foo'));
     });
 
     testWidgets('execute actions', (tester) async {

@@ -84,7 +84,7 @@ mixin _$NoopAction {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NoopAction extends _NoopAction {
-  _$_NoopAction() : super._();
+  const _$_NoopAction() : super._();
 
   factory _$_NoopAction.fromJson(Map<String, dynamic> json) =>
       _$$_NoopActionFromJson(json);
@@ -114,8 +114,8 @@ class _$_NoopAction extends _NoopAction {
 }
 
 abstract class _NoopAction extends NoopAction {
-  factory _NoopAction() = _$_NoopAction;
-  _NoopAction._() : super._();
+  const factory _NoopAction() = _$_NoopAction;
+  const _NoopAction._() : super._();
 
   factory _NoopAction.fromJson(Map<String, dynamic> json) =
       _$_NoopAction.fromJson;

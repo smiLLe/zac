@@ -230,7 +230,7 @@ class RouteFactoryFromRoutes
       final name = settings.name;
       if (null == name) {
         throw Exception(
-            '${_typeOf<RouteFactoryFromRoutes>()} does currently not support settings without a name');
+            '$RouteFactoryFromRoutes does currently not support $RouteSettings without a name');
       }
       if (!routes.containsKey(name)) {
         return null;

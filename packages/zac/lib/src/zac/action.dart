@@ -13,8 +13,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 part 'action.freezed.dart';
 part 'action.g.dart';
 
-Type _typeOf<T>() => T;
-
 abstract class ZacAction {
   factory ZacAction.fromJson(Map<String, dynamic> data) {
     return ConverterHelper.convertToType<ZacAction>(data);
@@ -64,7 +62,7 @@ class ZacActions with _$ZacActions {
     }
 
     throw Exception(
-        'It was not possible to convert to "${_typeOf<ZacActions>()}" with data: $data ');
+        'It was not possible to convert to $ZacActions from data: $data ');
   }
 
   @FreezedUnionValue(ZacActions.unionValue)

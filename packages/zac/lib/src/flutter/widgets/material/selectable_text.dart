@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 import '../../../../../zac.dart';
 

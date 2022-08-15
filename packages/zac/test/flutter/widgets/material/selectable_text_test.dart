@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
-import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/widgets/material/selectable_text.dart';
 
 import '../../../helper.dart';

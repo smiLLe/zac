@@ -123,7 +123,7 @@ class NoopAction with _$NoopAction implements ZacAction {
   factory NoopAction.fromJson(Map<String, dynamic> json) =>
       _$NoopActionFromJson(json);
 
-  factory NoopAction() = _NoopAction;
+  const factory NoopAction() = _NoopAction;
 
   @override
   void execute(ZacBuildContext context, ActionPayload payload) {}

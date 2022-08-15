@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/widgets/material/app_bar.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
-import '../helper.dart';
 
 void main() {
   test('check non widget properties', () {

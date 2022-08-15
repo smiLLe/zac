@@ -52,7 +52,7 @@ class FlutterGridView with _$FlutterGridView implements ZacWidget {
       gridDelegate: gridDelegate.build(context),
       key: key?.buildKey(context),
       scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: this.reverse?.getValue(context) ?? false,
+      reverse: reverse?.getValue(context) ?? false,
       primary: primary?.getValue(context),
       shrinkWrap: shrinkWrap?.getValue(context) ?? false,
       padding: padding?.build(context),

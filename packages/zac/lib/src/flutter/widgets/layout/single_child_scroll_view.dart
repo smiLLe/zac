@@ -45,7 +45,7 @@ class FlutterSingleChildScrollView
     return SingleChildScrollView(
       key: key?.buildKey(context),
       scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: this.reverse?.getValue(context) ?? false,
+      reverse: reverse?.getValue(context) ?? false,
       padding: padding?.build(context),
       primary: primary?.getValue(context),
       child: child?.buildWidget(context),

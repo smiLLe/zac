@@ -51,7 +51,7 @@ class FlutterCustomScrollView
       key: key?.buildKey(context),
       slivers: slivers?.getValue(context) ?? const <Widget>[],
       scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: this.reverse?.getValue(context) ?? false,
+      reverse: reverse?.getValue(context) ?? false,
       primary: primary?.getValue(context),
       physics: physics?.build(context),
       shrinkWrap: shrinkWrap?.getValue(context) ?? false,
