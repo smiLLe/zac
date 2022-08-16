@@ -1,0 +1,12 @@
+name: zac
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+
+command:
+  bootstrap:
+    runPubGetInParallel: false
