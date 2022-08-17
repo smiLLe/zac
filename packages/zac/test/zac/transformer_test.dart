@@ -39,7 +39,7 @@ void main() {
       expect(
           () => ListTransformer.map(transformer: [_ConcatStr('bar')])
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
 
     test('.first', () {
@@ -62,7 +62,7 @@ void main() {
       expect(
           () => ListTransformer.first()
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
 
     test('.last', () {
@@ -85,7 +85,7 @@ void main() {
       expect(
           () => ListTransformer.first()
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
 
     test('.single', () {
@@ -113,7 +113,7 @@ void main() {
       expect(
           () => ListTransformer.first()
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
 
     test('.length', () {
@@ -136,7 +136,7 @@ void main() {
       expect(
           () => ListTransformer.first()
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
   });
   group('Map', () {
@@ -162,7 +162,7 @@ void main() {
       expect(
           () => MapTransformer.mapValues(transformer: [_ConcatStr('bar')])
               .transform(55, TestSharedValueInteractionType()),
-          throwsA(isA<SharedValueTransformError>()));
+          throwsA(isA<ZacTransformError>()));
     });
   });
 
@@ -264,7 +264,7 @@ void main() {
                     family: 'shared',
                     consumeType: const SharedValueConsumeType.read())
                 .transform('ignore', TestSharedValueInteractionType()),
-            throwsA(isA<SharedValueTransformError>()));
+            throwsA(isA<ZacTransformError>()));
       });
 
       testWidgets('.transform()', (tester) async {
@@ -298,7 +298,7 @@ void main() {
   });
 }
 
-class _ConcatStr implements SharedValueTransformer {
+class _ConcatStr implements ZacTransformer {
   final String str;
 
   _ConcatStr(this.str);

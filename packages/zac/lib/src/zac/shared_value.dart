@@ -76,8 +76,8 @@ in your Widget tree before trying to update the $SharedValue.''')));
     });
   }
 
-  static Object? transform(List<SharedValueTransformer> transformer,
-      Object? value, SharedValueInteractionType interaction) {
+  static Object? transform(List<ZacTransformer> transformer, Object? value,
+      SharedValueInteractionType interaction) {
     return transformer.transformSharedValues(value, interaction);
   }
 
@@ -144,7 +144,7 @@ class UpdateSharedValueAction
   factory UpdateSharedValueAction({
     required SharedValueFamily family,
     required Object value,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = _UpdateSharedValueAction;
 
   @override
@@ -173,7 +173,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
   const factory SharedValueConsumeType.watch({
-    List<SharedValueTransformer>? select,
+    List<ZacTransformer>? select,
   }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
@@ -194,7 +194,7 @@ class SharedValueProviderBuilder
   factory SharedValueProviderBuilder({
     FlutterKey? key,
     required Object? value,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
     required SharedValueFamily family,
     required ZacWidget child,
   }) = _SharedValueProviderBuilder;
@@ -223,7 +223,7 @@ class SharedValueProvider extends HookConsumerWidget {
   final Object? value;
   final SharedValueFamily family;
   final Widget Function(ZacBuildContext context) builder;
-  final List<SharedValueTransformer>? transformer;
+  final List<ZacTransformer>? transformer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

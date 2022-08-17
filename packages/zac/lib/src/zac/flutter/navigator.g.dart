@@ -28,8 +28,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
               : SharedValueConsumeType.fromJson(
                   json['consumeType'] as Map<String, dynamic>),
           transformer: (json['transformer'] as List<dynamic>?)
-              ?.map((e) =>
-                  SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
               .toList(),
           $type: json['_converter'] as String?,
         );
@@ -50,8 +49,7 @@ _$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(
           ? null
           : ZacString.fromJson(json['provideArgsName'] as Object),
       transform: (json['transform'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

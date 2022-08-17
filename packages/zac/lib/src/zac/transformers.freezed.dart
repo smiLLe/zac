@@ -72,8 +72,7 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapTransformer {
-  List<SharedValueTransformer> get transformer =>
-      throw _privateConstructorUsedError;
+  List<ZacTransformer> get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -85,16 +84,16 @@ mixin _$MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapMapValues extends _MapMapValues {
-  _$_MapMapValues({required final List<SharedValueTransformer> transformer})
+  _$_MapMapValues({required final List<ZacTransformer> transformer})
       : _transformer = transformer,
         super._();
 
   factory _$_MapMapValues.fromJson(Map<String, dynamic> json) =>
       _$$_MapMapValuesFromJson(json);
 
-  final List<SharedValueTransformer> _transformer;
+  final List<ZacTransformer> _transformer;
   @override
-  List<SharedValueTransformer> get transformer {
+  List<ZacTransformer> get transformer {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_transformer);
   }
@@ -128,8 +127,7 @@ class _$_MapMapValues extends _MapMapValues {
 }
 
 abstract class _MapMapValues extends MapTransformer {
-  factory _MapMapValues(
-          {required final List<SharedValueTransformer> transformer}) =
+  factory _MapMapValues({required final List<ZacTransformer> transformer}) =
       _$_MapMapValues;
   _MapMapValues._() : super._();
 
@@ -137,7 +135,7 @@ abstract class _MapMapValues extends MapTransformer {
       _$_MapMapValues.fromJson;
 
   @override
-  List<SharedValueTransformer> get transformer;
+  List<ZacTransformer> get transformer;
 }
 
 ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
@@ -176,8 +174,7 @@ mixin _$ListTransformer {
 @JsonSerializable(createToJson: false)
 class _$_ListMap extends _ListMap {
   _$_ListMap(
-      {required final List<SharedValueTransformer> transformer,
-      final String? $type})
+      {required final List<ZacTransformer> transformer, final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:Transformer:List.map',
         super._();
@@ -185,9 +182,9 @@ class _$_ListMap extends _ListMap {
   factory _$_ListMap.fromJson(Map<String, dynamic> json) =>
       _$$_ListMapFromJson(json);
 
-  final List<SharedValueTransformer> _transformer;
+  final List<ZacTransformer> _transformer;
   @override
-  List<SharedValueTransformer> get transformer {
+  List<ZacTransformer> get transformer {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_transformer);
   }
@@ -228,13 +225,13 @@ class _$_ListMap extends _ListMap {
 }
 
 abstract class _ListMap extends ListTransformer {
-  factory _ListMap({required final List<SharedValueTransformer> transformer}) =
+  factory _ListMap({required final List<ZacTransformer> transformer}) =
       _$_ListMap;
   _ListMap._() : super._();
 
   factory _ListMap.fromJson(Map<String, dynamic> json) = _$_ListMap.fromJson;
 
-  List<SharedValueTransformer> get transformer;
+  List<ZacTransformer> get transformer;
 }
 
 /// @nodoc
@@ -620,7 +617,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
   _$_ObjectEqualsSharedValue(
       {required this.family,
       this.consumeType = const SharedValueConsumeType.read(),
-      final List<SharedValueTransformer>? transformer,
+      final List<ZacTransformer>? transformer,
       final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
@@ -634,9 +631,9 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
   @override
   @JsonKey()
   final SharedValueConsumeType? consumeType;
-  final List<SharedValueTransformer>? _transformer;
+  final List<ZacTransformer>? _transformer;
   @override
-  List<SharedValueTransformer>? get transformer {
+  List<ZacTransformer>? get transformer {
     final value = _transformer;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -686,10 +683,9 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer
     implements ConsumeValue<Object> {
   factory _ObjectEqualsSharedValue(
-          {required final Object family,
-          final SharedValueConsumeType? consumeType,
-          final List<SharedValueTransformer>? transformer}) =
-      _$_ObjectEqualsSharedValue;
+      {required final Object family,
+      final SharedValueConsumeType? consumeType,
+      final List<ZacTransformer>? transformer}) = _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
@@ -697,5 +693,5 @@ abstract class _ObjectEqualsSharedValue extends ObjectTransformer
 
   Object get family;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
 }

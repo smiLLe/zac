@@ -23,8 +23,7 @@ _$_UpdateSharedValueAction _$$_UpdateSharedValueActionFromJson(
       family: json['family'] as Object,
       value: json['value'] as Object,
       transformer: (json['transformer'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -32,8 +31,7 @@ _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeWatch(
       select: (json['select'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['_converter'] as String?,
     );
@@ -52,8 +50,7 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       value: json['value'],
       transformer: (json['transformer'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       family: json['family'] as Object,
       child: ZacWidget.fromJson(json['child'] as Object),

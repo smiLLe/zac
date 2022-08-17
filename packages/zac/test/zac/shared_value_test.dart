@@ -383,7 +383,7 @@ void main() {
   });
 }
 
-class _ConcatStr implements SharedValueTransformer {
+class _ConcatStr implements ZacTransformer {
   final String str;
 
   _ConcatStr(this.str);

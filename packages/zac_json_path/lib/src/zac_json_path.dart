@@ -12,7 +12,7 @@ Map<String, Convert> zacJsonPathConverter = const {
 @defaultConverterFreezed
 class ZacJsonPathTransformer
     with _$ZacJsonPathTransformer
-    implements SharedValueTransformer {
+    implements ZacTransformer {
   const ZacJsonPathTransformer._();
   static const String unionValue = 'json_path:1:Transformer:JsonPath';
 

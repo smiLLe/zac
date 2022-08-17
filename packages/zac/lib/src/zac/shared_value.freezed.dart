@@ -325,8 +325,7 @@ UpdateSharedValueAction _$UpdateSharedValueActionFromJson(
 mixin _$UpdateSharedValueAction {
   Object get family => throw _privateConstructorUsedError;
   Object get value => throw _privateConstructorUsedError;
-  List<SharedValueTransformer>? get transformer =>
-      throw _privateConstructorUsedError;
+  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -341,7 +340,7 @@ class _$_UpdateSharedValueAction extends _UpdateSharedValueAction {
   _$_UpdateSharedValueAction(
       {required this.family,
       required this.value,
-      final List<SharedValueTransformer>? transformer})
+      final List<ZacTransformer>? transformer})
       : _transformer = transformer,
         super._();
 
@@ -352,9 +351,9 @@ class _$_UpdateSharedValueAction extends _UpdateSharedValueAction {
   final Object family;
   @override
   final Object value;
-  final List<SharedValueTransformer>? _transformer;
+  final List<ZacTransformer>? _transformer;
   @override
-  List<SharedValueTransformer>? get transformer {
+  List<ZacTransformer>? get transformer {
     final value = _transformer;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -396,10 +395,9 @@ class _$_UpdateSharedValueAction extends _UpdateSharedValueAction {
 
 abstract class _UpdateSharedValueAction extends UpdateSharedValueAction {
   factory _UpdateSharedValueAction(
-          {required final Object family,
-          required final Object value,
-          final List<SharedValueTransformer>? transformer}) =
-      _$_UpdateSharedValueAction;
+      {required final Object family,
+      required final Object value,
+      final List<ZacTransformer>? transformer}) = _$_UpdateSharedValueAction;
   _UpdateSharedValueAction._() : super._();
 
   factory _UpdateSharedValueAction.fromJson(Map<String, dynamic> json) =
@@ -410,7 +408,7 @@ abstract class _UpdateSharedValueAction extends UpdateSharedValueAction {
   @override
   Object get value;
   @override
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
 }
 
 SharedValueConsumeType _$SharedValueConsumeTypeFromJson(
@@ -444,16 +442,16 @@ mixin _$SharedValueConsumeType {
 @JsonSerializable(createToJson: false)
 class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
   const _$_SharedValueConsumeTypeWatch(
-      {final List<SharedValueTransformer>? select, final String? $type})
+      {final List<ZacTransformer>? select, final String? $type})
       : _select = select,
         $type = $type ?? 'z:1:SharedValueConsume.watch';
 
   factory _$_SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeWatchFromJson(json);
 
-  final List<SharedValueTransformer>? _select;
+  final List<ZacTransformer>? _select;
   @override
-  List<SharedValueTransformer>? get select {
+  List<ZacTransformer>? get select {
     final value = _select;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -493,13 +491,12 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
 
 abstract class _SharedValueConsumeTypeWatch implements SharedValueConsumeType {
   const factory _SharedValueConsumeTypeWatch(
-          {final List<SharedValueTransformer>? select}) =
-      _$_SharedValueConsumeTypeWatch;
+      {final List<ZacTransformer>? select}) = _$_SharedValueConsumeTypeWatch;
 
   factory _SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
       _$_SharedValueConsumeTypeWatch.fromJson;
 
-  List<SharedValueTransformer>? get select;
+  List<ZacTransformer>? get select;
 }
 
 /// @nodoc
@@ -556,8 +553,7 @@ SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
 mixin _$SharedValueProviderBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   Object? get value => throw _privateConstructorUsedError;
-  List<SharedValueTransformer>? get transformer =>
-      throw _privateConstructorUsedError;
+  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
   ZacWidget get child => throw _privateConstructorUsedError;
 
@@ -574,7 +570,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   _$_SharedValueProviderBuilder(
       {this.key,
       required this.value,
-      final List<SharedValueTransformer>? transformer,
+      final List<ZacTransformer>? transformer,
       required this.family,
       required this.child})
       : _transformer = transformer,
@@ -587,9 +583,9 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   final FlutterKey? key;
   @override
   final Object? value;
-  final List<SharedValueTransformer>? _transformer;
+  final List<ZacTransformer>? _transformer;
   @override
-  List<SharedValueTransformer>? get transformer {
+  List<ZacTransformer>? get transformer {
     final value = _transformer;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -642,7 +638,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   factory _SharedValueProviderBuilder(
       {final FlutterKey? key,
       required final Object? value,
-      final List<SharedValueTransformer>? transformer,
+      final List<ZacTransformer>? transformer,
       required final Object family,
       required final ZacWidget child}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
@@ -655,7 +651,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   Object? get value;
   @override
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
   @override
   Object get family;
   @override

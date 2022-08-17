@@ -11,15 +11,13 @@ _$_Convert _$$_ConvertFromJson(Map<String, dynamic> json) => _$_Convert();
 _$_MapMapValues _$$_MapMapValuesFromJson(Map<String, dynamic> json) =>
     _$_MapMapValues(
       transformer: (json['transformer'] as List<dynamic>)
-          .map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 _$_ListMap _$$_ListMapFromJson(Map<String, dynamic> json) => _$_ListMap(
       transformer: (json['transformer'] as List<dynamic>)
-          .map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['_converter'] as String?,
     );
@@ -67,8 +65,7 @@ _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
           : SharedValueConsumeType.fromJson(
               json['consumeType'] as Map<String, dynamic>),
       transformer: (json['transformer'] as List<dynamic>?)
-          ?.map(
-              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['_converter'] as String?,
     );

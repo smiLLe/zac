@@ -134,7 +134,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
   _$_ZacFlutterGlobalKeyNavigatorStateConsume(
       {required this.family,
       this.consumeType,
-      final List<SharedValueTransformer>? transformer,
+      final List<ZacTransformer>? transformer,
       final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
@@ -148,9 +148,9 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
   final Object family;
   @override
   final SharedValueConsumeType? consumeType;
-  final List<SharedValueTransformer>? _transformer;
+  final List<ZacTransformer>? _transformer;
   @override
-  List<SharedValueTransformer>? get transformer {
+  List<ZacTransformer>? get transformer {
     final value = _transformer;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -203,7 +203,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
   factory _ZacFlutterGlobalKeyNavigatorStateConsume(
           {required final Object family,
           final SharedValueConsumeType? consumeType,
-          final List<SharedValueTransformer>? transformer}) =
+          final List<ZacTransformer>? transformer}) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume;
   _ZacFlutterGlobalKeyNavigatorStateConsume._() : super._();
 
@@ -214,7 +214,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
   @override
   Object get family;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
 }
 
 ZacFlutterNavigatorActions _$ZacFlutterNavigatorActionsFromJson(
@@ -304,8 +304,7 @@ RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
 mixin _$RouteFactoryRouteConfig {
   FlutterRoute get route => throw _privateConstructorUsedError;
   ZacString? get provideArgsName => throw _privateConstructorUsedError;
-  List<SharedValueTransformer>? get transform =>
-      throw _privateConstructorUsedError;
+  List<ZacTransformer>? get transform => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -320,7 +319,7 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
   _$_RouteFactoryConfig(
       {required this.route,
       this.provideArgsName,
-      final List<SharedValueTransformer>? transform})
+      final List<ZacTransformer>? transform})
       : _transform = transform,
         super._();
 
@@ -331,9 +330,9 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
   final FlutterRoute route;
   @override
   final ZacString? provideArgsName;
-  final List<SharedValueTransformer>? _transform;
+  final List<ZacTransformer>? _transform;
   @override
-  List<SharedValueTransformer>? get transform {
+  List<ZacTransformer>? get transform {
     final value = _transform;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -378,7 +377,7 @@ abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   factory _RouteFactoryConfig(
       {required final FlutterRoute route,
       final ZacString? provideArgsName,
-      final List<SharedValueTransformer>? transform}) = _$_RouteFactoryConfig;
+      final List<ZacTransformer>? transform}) = _$_RouteFactoryConfig;
   _RouteFactoryConfig._() : super._();
 
   factory _RouteFactoryConfig.fromJson(Map<String, dynamic> json) =
@@ -389,7 +388,7 @@ abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   @override
   ZacString? get provideArgsName;
   @override
-  List<SharedValueTransformer>? get transform;
+  List<ZacTransformer>? get transform;
 }
 
 RouteFactorySingleRoute _$RouteFactorySingleRouteFromJson(

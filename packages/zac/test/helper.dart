@@ -145,7 +145,7 @@ class LeakeContextCb extends Mock {
 }
 
 @GenerateMocks([TransformerCb])
-class TransformerCb extends Mock implements SharedValueTransformer {
+class TransformerCb extends Mock implements ZacTransformer {
   Object? call(Object? value, SharedValueInteractionType interaction) {
     return value;
   }

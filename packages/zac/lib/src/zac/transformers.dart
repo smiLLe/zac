@@ -8,18 +8,18 @@ import 'package:zac/src/zac/update_context.dart';
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
 
-class SharedValueTransformError extends StateError {
-  SharedValueTransformError(super.message);
+class ZacTransformError extends StateError {
+  ZacTransformError(super.message);
 }
 
-abstract class SharedValueTransformer {
-  factory SharedValueTransformer.fromJson(Map<String, dynamic> json) =>
-      ConverterHelper.convertToType<SharedValueTransformer>(json);
+abstract class ZacTransformer {
+  factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
+      ConverterHelper.convertToType<ZacTransformer>(json);
 
   Object? transform(Object? value, SharedValueInteractionType interaction);
 }
 
-extension SharedValueTransformerOnList on List<SharedValueTransformer> {
+extension ZacTransformerOnList on List<ZacTransformer> {
   Object? transformSharedValues(
           Object? value, SharedValueInteractionType interaction) =>
       fold<Object?>(
@@ -29,9 +29,7 @@ extension SharedValueTransformerOnList on List<SharedValueTransformer> {
 }
 
 @defaultConverterFreezed
-class ConvertTransformer
-    with _$ConvertTransformer
-    implements SharedValueTransformer {
+class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   const ConvertTransformer._();
   static const String unionValue = 'z:1:Transformer:Converter';
 
@@ -48,7 +46,7 @@ class ConvertTransformer
 }
 
 @defaultConverterFreezed
-class MapTransformer with _$MapTransformer implements SharedValueTransformer {
+class MapTransformer with _$MapTransformer implements ZacTransformer {
   const MapTransformer._();
   static const String unionValue = 'z:1:Transformer:Map.mapValues';
 
@@ -57,14 +55,14 @@ class MapTransformer with _$MapTransformer implements SharedValueTransformer {
 
   @FreezedUnionValue(MapTransformer.unionValue)
   factory MapTransformer.mapValues({
-    required List<SharedValueTransformer> transformer,
+    required List<ZacTransformer> transformer,
   }) = _MapMapValues;
 
   @override
   Map<String, Object?> transform(
       Object? value, SharedValueInteractionType interaction) {
     if (value is! Map) {
-      throw SharedValueTransformError('''
+      throw ZacTransformError('''
 There was an error while trying to transform a value in $runtimeType.
 The value was expected to be a type of Map but instead we got a "${value.runtimeType}".
 The value: $value
@@ -79,7 +77,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-class ListTransformer with _$ListTransformer implements SharedValueTransformer {
+class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.map';
   static const String unionValueSingle = 'z:1:Transformer:List.single';
@@ -92,7 +90,7 @@ class ListTransformer with _$ListTransformer implements SharedValueTransformer {
 
   @FreezedUnionValue(ListTransformer.unionValue)
   factory ListTransformer.map({
-    required List<SharedValueTransformer> transformer,
+    required List<ZacTransformer> transformer,
   }) = _ListMap;
 
   @FreezedUnionValue(ListTransformer.unionValueSingle)
@@ -110,7 +108,7 @@ class ListTransformer with _$ListTransformer implements SharedValueTransformer {
   @override
   Object? transform(Object? value, SharedValueInteractionType interaction) {
     if (value is! List) {
-      throw SharedValueTransformError('''
+      throw ZacTransformError('''
 There was an error while trying to transform a value in $runtimeType.
 The value was expected to be a type of List but instead we got a "${value.runtimeType}".
 The value: $value
@@ -131,9 +129,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-class ObjectTransformer
-    with _$ObjectTransformer
-    implements SharedValueTransformer {
+class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
   static const String unionValue = 'z:1:Transformer:Object.isList';
   static const String unionValueIsMap = 'z:1:Transformer:Object.isMap';
@@ -158,7 +154,7 @@ class ObjectTransformer
   factory ObjectTransformer.equalsSharedValue({
     required SharedValueFamily family,
     @Default(SharedValueConsumeType.read()) SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -170,7 +166,7 @@ class ObjectTransformer
         equalsSharedValue: (obj) {
           final zacContext = interaction.whenZac((obj) => obj.context);
           if (null == zacContext) {
-            throw SharedValueTransformError('''
+            throw ZacTransformError('''
 There was an error while trying to compare two values in ${obj.runtimeType}
 for converter "${ObjectTransformer.unionValueEqualsSharedValue}".
 A $ZacBuildContext was required but was not accesible through $SharedValueInteractionType.

@@ -42,7 +42,7 @@ class ConsumeSharedValueOfError extends StateError {
 mixin ConsumeValue<Of> {
   SharedValueFamily get family;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
 
   Of getSharedValue(ZacBuildContext context) {
     final consumedValue = SharedValue.getFilled(
@@ -112,7 +112,7 @@ $consumedValue
 mixin ConsumeValueList<Of> {
   SharedValueFamily get family;
   SharedValueConsumeType? get consumeType;
-  List<SharedValueTransformer>? get transformer;
+  List<ZacTransformer>? get transformer;
 
   List<Of> getSharedValue(ZacBuildContext context) {
     final consumedValue = SharedValue.getFilled(
@@ -210,7 +210,7 @@ class ZacInt with _$ZacInt {
   factory ZacInt.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacIntConsume;
 
   int getValue(ZacBuildContext context) => map(
@@ -247,7 +247,7 @@ class ZacDouble with _$ZacDouble {
   factory ZacDouble.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacDoubleConsume;
 
   double getValue(ZacBuildContext context) => map(
@@ -281,7 +281,7 @@ class ZacString with _$ZacString {
   factory ZacString.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacStringConsume;
 
   String getValue(ZacBuildContext context) => map(
@@ -315,7 +315,7 @@ class ZacBool with _$ZacBool {
   factory ZacBool.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacBoolConsume;
 
   bool getValue(ZacBuildContext context) => map(
@@ -360,7 +360,7 @@ class ZacMap with _$ZacMap {
   factory ZacMap.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacMapConsume;
 
   Map<String, dynamic> getValue(ZacBuildContext context) => map(
@@ -404,7 +404,7 @@ class ZacList with _$ZacList {
   factory ZacList.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacListConsume;
 
   List<dynamic> getValue(ZacBuildContext context) => map(
@@ -452,7 +452,7 @@ class ZacObject with _$ZacObject {
   factory ZacObject.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ZacObjectConsume;
 
   Object getValue(ZacBuildContext context) => map(
@@ -490,7 +490,7 @@ class ListOfZacWidget with _$ListOfZacWidget {
   factory ListOfZacWidget.consume({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = ListOfZacWidgetConsume;
 
   List<Widget> getValue(ZacBuildContext context) => map(
@@ -517,7 +517,7 @@ class ZacWidgetConsumerBuilder
   factory ZacWidgetConsumerBuilder({
     required SharedValueFamily family,
     SharedValueConsumeType? consumeType,
-    List<SharedValueTransformer>? transformer,
+    List<ZacTransformer>? transformer,
   }) = _ZacWidgetConsumerBuilder;
 
   @override
