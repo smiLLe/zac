@@ -113,6 +113,8 @@ Map<String, Convert> allConverters = {
   MapTransformer.unionValue: MapTransformer.fromJson,
   ObjectTransformer.unionValue: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueIsMap: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueEquals: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueEqualsSharedValue: ObjectTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState

@@ -438,6 +438,10 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsList.fromJson(json);
     case 'z:1:Transformer:Object.isMap':
       return _ObjectIsMap.fromJson(json);
+    case 'z:1:Transformer:Object.equals':
+      return _ObjectEquals.fromJson(json);
+    case 'z:1:Transformer:Object.equalsSharedValue':
+      return _ObjectEqualsSharedValue.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, '_converter', 'ObjectTransformer',
@@ -451,6 +455,8 @@ mixin _$ObjectTransformer {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -488,6 +494,8 @@ class _$_ObjectIsList extends _ObjectIsList {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isList(this);
   }
@@ -534,6 +542,8 @@ class _$_ObjectIsMap extends _ObjectIsMap {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isMap(this);
   }
@@ -545,4 +555,147 @@ abstract class _ObjectIsMap extends ObjectTransformer {
 
   factory _ObjectIsMap.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsMap.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectEquals extends _ObjectEquals {
+  _$_ObjectEquals({required this.other, final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.equals',
+        super._();
+
+  factory _$_ObjectEquals.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectEqualsFromJson(json);
+
+  @override
+  final Object? other;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.equals(other: $other)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectEquals &&
+            const DeepCollectionEquality().equals(other.other, this.other));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(other));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return equals(this);
+  }
+}
+
+abstract class _ObjectEquals extends ObjectTransformer {
+  factory _ObjectEquals({required final Object? other}) = _$_ObjectEquals;
+  _ObjectEquals._() : super._();
+
+  factory _ObjectEquals.fromJson(Map<String, dynamic> json) =
+      _$_ObjectEquals.fromJson;
+
+  Object? get other;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
+    with ConsumeValue<Object> {
+  _$_ObjectEqualsSharedValue(
+      {required this.family,
+      this.consumeType = const SharedValueConsumeType.read(),
+      final List<SharedValueTransformer>? transformer,
+      final String? $type})
+      : _transformer = transformer,
+        $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
+        super._();
+
+  factory _$_ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectEqualsSharedValueFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  @JsonKey()
+  final SharedValueConsumeType? consumeType;
+  final List<SharedValueTransformer>? _transformer;
+  @override
+  List<SharedValueTransformer>? get transformer {
+    final value = _transformer;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.equalsSharedValue(family: $family, consumeType: $consumeType, transformer: $transformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectEqualsSharedValue &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality()
+                .equals(other.consumeType, consumeType) &&
+            const DeepCollectionEquality()
+                .equals(other._transformer, _transformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(consumeType),
+      const DeepCollectionEquality().hash(_transformer));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return equalsSharedValue(this);
+  }
+}
+
+abstract class _ObjectEqualsSharedValue extends ObjectTransformer
+    implements ConsumeValue<Object> {
+  factory _ObjectEqualsSharedValue(
+          {required final Object family,
+          final SharedValueConsumeType? consumeType,
+          final List<SharedValueTransformer>? transformer}) =
+      _$_ObjectEqualsSharedValue;
+  _ObjectEqualsSharedValue._() : super._();
+
+  factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
+      _$_ObjectEqualsSharedValue.fromJson;
+
+  Object get family;
+  SharedValueConsumeType? get consumeType;
+  List<SharedValueTransformer>? get transformer;
 }

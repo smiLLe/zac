@@ -3,6 +3,9 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/update_context.dart';
+
+import '../helper.dart';
 
 void main() {
   test('Convert', () {
@@ -164,7 +167,7 @@ void main() {
   });
 
   group('Object', () {
-    test('.isList', () {
+    test('.isList()', () {
       expect(
           ConverterHelper.convertToType<ObjectTransformer>({
             '_converter': 'z:1:Transformer:Object.isList',
@@ -187,7 +190,7 @@ void main() {
           isFalse);
     });
 
-    test('.isMap', () {
+    test('.isMap()', () {
       expect(
           ConverterHelper.convertToType<ObjectTransformer>({
             '_converter': 'z:1:Transformer:Object.isMap',
@@ -208,6 +211,89 @@ void main() {
           ObjectTransformer.isMap()
               .transform(55, TestSharedValueInteractionType()),
           isFalse);
+    });
+
+    test('.equals()', () {
+      expect(
+          ConverterHelper.convertToType<ObjectTransformer>({
+            '_converter': 'z:1:Transformer:Object.equals',
+            'other': 5,
+          }),
+          ObjectTransformer.equals(other: 5));
+      expect(
+          ObjectTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:Object.equals',
+            'other': 5,
+          }),
+          ObjectTransformer.equals(other: 5));
+
+      expect(
+          ObjectTransformer.equals(other: 5)
+              .transform(5, TestSharedValueInteractionType()),
+          isTrue);
+
+      expect(
+          ObjectTransformer.equals(other: 5)
+              .transform('foo', TestSharedValueInteractionType()),
+          isFalse);
+    });
+
+    group('.equalsSharedValue()', () {
+      test('fromJson', () {
+        expect(
+            ConverterHelper.convertToType<ObjectTransformer>({
+              '_converter': 'z:1:Transformer:Object.equalsSharedValue',
+              'family': 'shared',
+            }),
+            ObjectTransformer.equalsSharedValue(
+                family: 'shared',
+                consumeType: const SharedValueConsumeType.read()));
+        expect(
+            ObjectTransformer.fromJson(<String, dynamic>{
+              '_converter': 'z:1:Transformer:Object.equalsSharedValue',
+              'family': 'shared',
+            }),
+            ObjectTransformer.equalsSharedValue(
+                family: 'shared',
+                consumeType: const SharedValueConsumeType.read()));
+      });
+
+      test('throws if no ZacContext found', () {
+        expect(
+            () => ObjectTransformer.equalsSharedValue(
+                    family: 'shared',
+                    consumeType: const SharedValueConsumeType.read())
+                .transform('ignore', TestSharedValueInteractionType()),
+            throwsA(isA<SharedValueTransformError>()));
+      });
+
+      testWidgets('.transform()', (tester) async {
+        late ZacBuildContext context;
+        await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            value: 5,
+            family: 'shared',
+            child: SharedValueProviderBuilder(
+              value: 'foo',
+              family: 'shared2',
+              child: LeakContext(
+                cb: (c) => context = c,
+              ),
+            ),
+          ),
+        );
+
+        expect(
+            ObjectTransformer.equalsSharedValue(family: 'shared').transform(
+                5, ZacSharedValueInteractionType.consume(context: context)),
+            isTrue);
+
+        expect(
+            ObjectTransformer.equalsSharedValue(family: 'shared2').transform(
+                5, ZacSharedValueInteractionType.consume(context: context)),
+            isFalse);
+      });
     });
   });
 }

@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
+import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/update_context.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -135,6 +137,9 @@ class ObjectTransformer
   const ObjectTransformer._();
   static const String unionValue = 'z:1:Transformer:Object.isList';
   static const String unionValueIsMap = 'z:1:Transformer:Object.isMap';
+  static const String unionValueEquals = 'z:1:Transformer:Object.equals';
+  static const String unionValueEqualsSharedValue =
+      'z:1:Transformer:Object.equalsSharedValue';
 
   factory ObjectTransformer.fromJson(Map<String, dynamic> json) =>
       _$ObjectTransformerFromJson(json);
@@ -145,11 +150,34 @@ class ObjectTransformer
   @FreezedUnionValue(ObjectTransformer.unionValueIsMap)
   factory ObjectTransformer.isMap() = _ObjectIsMap;
 
+  @FreezedUnionValue(ObjectTransformer.unionValueEquals)
+  factory ObjectTransformer.equals({required Object? other}) = _ObjectEquals;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
+  @With<ConsumeValue<Object?>>()
+  factory ObjectTransformer.equalsSharedValue({
+    required SharedValueFamily family,
+    @Default(SharedValueConsumeType.read()) SharedValueConsumeType? consumeType,
+    List<SharedValueTransformer>? transformer,
+  }) = _ObjectEqualsSharedValue;
+
   @override
   Object? transform(Object? value, SharedValueInteractionType interaction) {
     return map(
-      isList: (_) => value is List,
-      isMap: (_) => value is Map,
-    );
+        isList: (_) => value is List,
+        isMap: (_) => value is Map,
+        equals: (obj) => obj.other == value,
+        equalsSharedValue: (obj) {
+          final zacContext = interaction.whenZac((obj) => obj.context);
+          if (null == zacContext) {
+            throw SharedValueTransformError('''
+There was an error while trying to compare two values in ${obj.runtimeType}
+for converter "${ObjectTransformer.unionValueEqualsSharedValue}".
+A $ZacBuildContext was required but was not accesible through $SharedValueInteractionType.
+''');
+          }
+          final sValue = obj.getSharedValue(zacContext);
+          return sValue == value;
+        });
   }
 }

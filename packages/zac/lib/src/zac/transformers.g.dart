@@ -51,3 +51,24 @@ _$_ObjectIsMap _$$_ObjectIsMapFromJson(Map<String, dynamic> json) =>
     _$_ObjectIsMap(
       $type: json['_converter'] as String?,
     );
+
+_$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
+    _$_ObjectEquals(
+      other: json['other'],
+      $type: json['_converter'] as String?,
+    );
+
+_$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
+        Map<String, dynamic> json) =>
+    _$_ObjectEqualsSharedValue(
+      family: json['family'] as Object,
+      consumeType: json['consumeType'] == null
+          ? const SharedValueConsumeType.read()
+          : SharedValueConsumeType.fromJson(
+              json['consumeType'] as Map<String, dynamic>),
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map(
+              (e) => SharedValueTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['_converter'] as String?,
+    );
