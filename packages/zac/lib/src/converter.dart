@@ -106,7 +106,13 @@ Map<String, Convert> allConverters = {
   UpdateSharedValueAction.unionValue: UpdateSharedValueAction.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   ListTransformer.unionValue: ListTransformer.fromJson,
+  ListTransformer.unionValueSingle: ListTransformer.fromJson,
+  ListTransformer.unionValueFirst: ListTransformer.fromJson,
+  ListTransformer.unionValueLast: ListTransformer.fromJson,
+  ListTransformer.unionValueLength: ListTransformer.fromJson,
   MapTransformer.unionValue: MapTransformer.fromJson,
+  ObjectTransformer.unionValue: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueIsMap: ObjectTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState

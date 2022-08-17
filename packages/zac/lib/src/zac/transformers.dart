@@ -80,6 +80,10 @@ The value: $value
 class ListTransformer with _$ListTransformer implements SharedValueTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.map';
+  static const String unionValueSingle = 'z:1:Transformer:List.single';
+  static const String unionValueFirst = 'z:1:Transformer:List.first';
+  static const String unionValueLast = 'z:1:Transformer:List.last';
+  static const String unionValueLength = 'z:1:Transformer:List.length';
 
   factory ListTransformer.fromJson(Map<String, dynamic> json) =>
       _$ListTransformerFromJson(json);
@@ -89,9 +93,20 @@ class ListTransformer with _$ListTransformer implements SharedValueTransformer {
     required List<SharedValueTransformer> transformer,
   }) = _ListMap;
 
+  @FreezedUnionValue(ListTransformer.unionValueSingle)
+  factory ListTransformer.single() = _ListSingle;
+
+  @FreezedUnionValue(ListTransformer.unionValueFirst)
+  factory ListTransformer.first() = _ListFirst;
+
+  @FreezedUnionValue(ListTransformer.unionValueLast)
+  factory ListTransformer.last() = _ListLast;
+
+  @FreezedUnionValue(ListTransformer.unionValueLength)
+  factory ListTransformer.length() = _ListLength;
+
   @override
-  List<Object?> transform(
-      Object? value, SharedValueInteractionType interaction) {
+  Object? transform(Object? value, SharedValueInteractionType interaction) {
     if (value is! List) {
       throw SharedValueTransformError('''
 There was an error while trying to transform a value in $runtimeType.
@@ -105,6 +120,36 @@ The value: $value
           .map((Object? e) =>
               obj.transformer.transformSharedValues(e, interaction))
           .toList(),
+      first: (_) => list.first,
+      last: (_) => list.last,
+      single: (_) => list.single,
+      length: (_) => list.length,
+    );
+  }
+}
+
+@defaultConverterFreezed
+class ObjectTransformer
+    with _$ObjectTransformer
+    implements SharedValueTransformer {
+  const ObjectTransformer._();
+  static const String unionValue = 'z:1:Transformer:Object.isList';
+  static const String unionValueIsMap = 'z:1:Transformer:Object.isMap';
+
+  factory ObjectTransformer.fromJson(Map<String, dynamic> json) =>
+      _$ObjectTransformerFromJson(json);
+
+  @FreezedUnionValue(ObjectTransformer.unionValue)
+  factory ObjectTransformer.isList() = _ObjectIsList;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsMap)
+  factory ObjectTransformer.isMap() = _ObjectIsMap;
+
+  @override
+  Object? transform(Object? value, SharedValueInteractionType interaction) {
+    return map(
+      isList: (_) => value is List,
+      isMap: (_) => value is Map,
     );
   }
 }

@@ -14,7 +14,7 @@ void main() {
   });
 
   group('List', () {
-    test('.map()', () async {
+    test('.map()', () {
       expect(
           ConverterHelper.convertToType<ListTransformer>({
             '_converter': 'z:1:Transformer:List.map',
@@ -35,6 +35,103 @@ void main() {
 
       expect(
           () => ListTransformer.map(transformer: [_ConcatStr('bar')])
+              .transform(55, TestSharedValueInteractionType()),
+          throwsA(isA<SharedValueTransformError>()));
+    });
+
+    test('.first', () {
+      expect(
+          ConverterHelper.convertToType<ListTransformer>({
+            '_converter': 'z:1:Transformer:List.first',
+          }),
+          ListTransformer.first());
+      expect(
+          ListTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:List.first',
+          }),
+          ListTransformer.first());
+
+      expect(
+          ListTransformer.first()
+              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          'foo');
+
+      expect(
+          () => ListTransformer.first()
+              .transform(55, TestSharedValueInteractionType()),
+          throwsA(isA<SharedValueTransformError>()));
+    });
+
+    test('.last', () {
+      expect(
+          ConverterHelper.convertToType<ListTransformer>({
+            '_converter': 'z:1:Transformer:List.last',
+          }),
+          ListTransformer.last());
+      expect(
+          ListTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:List.last',
+          }),
+          ListTransformer.last());
+
+      expect(
+          ListTransformer.last()
+              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          'oof');
+
+      expect(
+          () => ListTransformer.first()
+              .transform(55, TestSharedValueInteractionType()),
+          throwsA(isA<SharedValueTransformError>()));
+    });
+
+    test('.single', () {
+      expect(
+          ConverterHelper.convertToType<ListTransformer>({
+            '_converter': 'z:1:Transformer:List.single',
+          }),
+          ListTransformer.single());
+      expect(
+          ListTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:List.single',
+          }),
+          ListTransformer.single());
+
+      expect(
+          ListTransformer.single()
+              .transform(['foo'], TestSharedValueInteractionType()),
+          'foo');
+
+      expect(
+          () => ListTransformer.single()
+              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          throwsStateError);
+
+      expect(
+          () => ListTransformer.first()
+              .transform(55, TestSharedValueInteractionType()),
+          throwsA(isA<SharedValueTransformError>()));
+    });
+
+    test('.length', () {
+      expect(
+          ConverterHelper.convertToType<ListTransformer>({
+            '_converter': 'z:1:Transformer:List.length',
+          }),
+          ListTransformer.length());
+      expect(
+          ListTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:List.length',
+          }),
+          ListTransformer.length());
+
+      expect(
+          ListTransformer.length().transform(
+              ['foo', 'foo', 'foo', 'foo'], TestSharedValueInteractionType()),
+          4);
+
+      expect(
+          () => ListTransformer.first()
               .transform(55, TestSharedValueInteractionType()),
           throwsA(isA<SharedValueTransformError>()));
     });
@@ -63,6 +160,54 @@ void main() {
           () => MapTransformer.mapValues(transformer: [_ConcatStr('bar')])
               .transform(55, TestSharedValueInteractionType()),
           throwsA(isA<SharedValueTransformError>()));
+    });
+  });
+
+  group('Object', () {
+    test('.isList', () {
+      expect(
+          ConverterHelper.convertToType<ObjectTransformer>({
+            '_converter': 'z:1:Transformer:Object.isList',
+          }),
+          ObjectTransformer.isList());
+      expect(
+          ObjectTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:Object.isList',
+          }),
+          ObjectTransformer.isList());
+
+      expect(
+          ObjectTransformer.isList()
+              .transform(['foo'], TestSharedValueInteractionType()),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isList()
+              .transform(55, TestSharedValueInteractionType()),
+          isFalse);
+    });
+
+    test('.isMap', () {
+      expect(
+          ConverterHelper.convertToType<ObjectTransformer>({
+            '_converter': 'z:1:Transformer:Object.isMap',
+          }),
+          ObjectTransformer.isMap());
+      expect(
+          ObjectTransformer.fromJson(<String, dynamic>{
+            '_converter': 'z:1:Transformer:Object.isMap',
+          }),
+          ObjectTransformer.isMap());
+
+      expect(
+          ObjectTransformer.isMap()
+              .transform(<String, dynamic>{}, TestSharedValueInteractionType()),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isMap()
+              .transform(55, TestSharedValueInteractionType()),
+          isFalse);
     });
   });
 }
