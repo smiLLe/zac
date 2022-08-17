@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: zac
-dependency_overrides:
-  zac:
-    path: ..\\zac
