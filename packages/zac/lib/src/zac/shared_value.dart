@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -210,7 +211,7 @@ class SharedValueProviderBuilder
   }
 }
 
-class SharedValueProvider extends StatelessWidget {
+class SharedValueProvider extends HookConsumerWidget {
   const SharedValueProvider({
     required this.value,
     this.transformer,
@@ -225,22 +226,23 @@ class SharedValueProvider extends StatelessWidget {
   final List<SharedValueTransformer>? transformer;
 
   @override
-  Widget build(BuildContext context) {
-    return ZacUpdateContext(
-      builder: (context) => ProviderScope(
-        overrides: [
-          SharedValue.provider(family).overrideWithValue(
-              StateController<SharedValue>(SharedValue(
-                  null == transformer || true == transformer!.isEmpty
-                      ? value
-                      : SharedValue.transform(
-                          transformer!,
-                          value,
-                          ZacSharedValueInteractionType.provide(
-                              context: context))))),
-        ],
-        child: ZacUpdateContext(builder: builder),
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacBuildContext(ref);
+    final provideValue = useMemoized(
+      () {
+        return SharedValue(null == transformer || true == transformer!.isEmpty
+            ? value
+            : SharedValue.transform(transformer!, value,
+                ZacSharedValueInteractionType.provide(context: zacContext)));
+      },
+      [value, family, transformer],
+    );
+    return ProviderScope(
+      overrides: [
+        SharedValue.provider(family).overrideWithProvider(
+            AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
+      ],
+      child: ZacUpdateContext(builder: builder),
     );
   }
 }
