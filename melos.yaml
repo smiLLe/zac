@@ -9,4 +9,5 @@ scripts:
 
 command:
   bootstrap:
-    runPubGetInParallel: false
+    usePubspecOverrides: true
+    # runPubGetInParallel: false
