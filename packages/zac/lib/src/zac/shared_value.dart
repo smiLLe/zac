@@ -53,7 +53,7 @@ See "$SharedValueProviderBuilder" for more info.
 
         return context.ref.watch(SharedValue.provider(family).select(
             (sharedValue) => obj.select!.transformSharedValues(
-                _extractData(sharedValue, error),
+                ZacTransformValue(_extractData(sharedValue, error)),
                 ZacSharedValueInteractionType.consume(context: context))));
       },
       read: (_) => _extractData(context.ref.read(provider(family)), error),
@@ -78,7 +78,8 @@ in your Widget tree before trying to update the $SharedValue.''')));
 
   static Object? transform(List<ZacTransformer> transformer, Object? value,
       SharedValueInteractionType interaction) {
-    return transformer.transformSharedValues(value, interaction);
+    return transformer.transformSharedValues(
+        ZacTransformValue(value), interaction);
   }
 
   static void listenAndExecuteActions(

@@ -14,6 +14,85 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ZacTransformValue _$ZacTransformValueFromJson(Map<String, dynamic> json) {
+  return _ZacTransformValue.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacTransformValue {
+  Object? get value => throw _privateConstructorUsedError;
+  Map<String, Object?>? get extra => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacTransformValue value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacTransformValue implements _ZacTransformValue {
+  _$_ZacTransformValue(this.value, {final Map<String, Object?>? extra})
+      : _extra = extra;
+
+  factory _$_ZacTransformValue.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacTransformValueFromJson(json);
+
+  @override
+  final Object? value;
+  final Map<String, Object?>? _extra;
+  @override
+  Map<String, Object?>? get extra {
+    final value = _extra;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @override
+  String toString() {
+    return 'ZacTransformValue(value: $value, extra: $extra)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacTransformValue &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(_extra));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacTransformValue value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacTransformValue implements ZacTransformValue {
+  factory _ZacTransformValue(final Object? value,
+      {final Map<String, Object?>? extra}) = _$_ZacTransformValue;
+
+  factory _ZacTransformValue.fromJson(Map<String, dynamic> json) =
+      _$_ZacTransformValue.fromJson;
+
+  @override
+  Object? get value;
+  @override
+  Map<String, Object?>? get extra;
+}
+
 ConvertTransformer _$ConvertTransformerFromJson(Map<String, dynamic> json) {
   return _Convert.fromJson(json);
 }

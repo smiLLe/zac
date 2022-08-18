@@ -31,9 +31,11 @@ void _expectFromJson<T>({
 void main() {
   test('Convert', () {
     expect(
-        ConvertTransformer().transform({
-          '_converter': 'f:1:SizedBox',
-        }, TestSharedValueInteractionType()),
+        ConvertTransformer().transform(
+            ZacTransformValue({
+              '_converter': 'f:1:SizedBox',
+            }),
+            TestSharedValueInteractionType()),
         FlutterSizedBox());
   });
 
@@ -49,13 +51,15 @@ void main() {
       );
 
       expect(
-          IterableTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          IterableTransformer.map(transformer: [_ConcatStr('bar')]).transform(
+              ZacTransformValue(['foo', 'oof']),
+              TestSharedValueInteractionType()),
           ['foobar', 'oofbar']);
 
       expect(
           () => IterableTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(55, TestSharedValueInteractionType()),
+              .transform(
+                  ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -67,13 +71,14 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.first()
-              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          const IterableTransformer.first().transform(
+              ZacTransformValue(['foo', 'oof']),
+              TestSharedValueInteractionType()),
           'foo');
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -85,13 +90,14 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.last()
-              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          const IterableTransformer.last().transform(
+              ZacTransformValue(['foo', 'oof']),
+              TestSharedValueInteractionType()),
           'oof');
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -103,18 +109,19 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.single()
-              .transform(['foo'], TestSharedValueInteractionType()),
+          const IterableTransformer.single().transform(
+              ZacTransformValue(['foo']), TestSharedValueInteractionType()),
           'foo');
 
       expect(
-          () => const IterableTransformer.single()
-              .transform(['foo', 'oof'], TestSharedValueInteractionType()),
+          () => const IterableTransformer.single().transform(
+              ZacTransformValue(['foo', 'oof']),
+              TestSharedValueInteractionType()),
           throwsStateError);
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -127,12 +134,13 @@ void main() {
 
       expect(
           const IterableTransformer.length().transform(
-              ['foo', 'foo', 'foo', 'foo'], TestSharedValueInteractionType()),
+              ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
+              TestSharedValueInteractionType()),
           4);
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -144,18 +152,18 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.isEmpty()
-              .transform(['foo'], TestSharedValueInteractionType()),
+          const IterableTransformer.isEmpty().transform(
+              ZacTransformValue(['foo']), TestSharedValueInteractionType()),
           isFalse);
 
       expect(
-          const IterableTransformer.isEmpty()
-              .transform(<dynamic>[], TestSharedValueInteractionType()),
+          const IterableTransformer.isEmpty().transform(
+              ZacTransformValue(<dynamic>[]), TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          () => const IterableTransformer.isEmpty()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.isEmpty().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -167,18 +175,18 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.isNotEmpty()
-              .transform(['foo'], TestSharedValueInteractionType()),
+          const IterableTransformer.isNotEmpty().transform(
+              ZacTransformValue(['foo']), TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          const IterableTransformer.isNotEmpty()
-              .transform(<dynamic>[], TestSharedValueInteractionType()),
+          const IterableTransformer.isNotEmpty().transform(
+              ZacTransformValue(<dynamic>[]), TestSharedValueInteractionType()),
           isFalse);
 
       expect(
-          () => const IterableTransformer.isNotEmpty()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.isNotEmpty().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -190,13 +198,14 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.toList()
-              .transform(<String>{'foo'}, TestSharedValueInteractionType()),
+          const IterableTransformer.toList().transform(
+              ZacTransformValue(<String>{'foo'}),
+              TestSharedValueInteractionType()),
           isA<List<Object?>>());
 
       expect(
-          () => const IterableTransformer.toList()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.toList().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -208,13 +217,14 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.toSet()
-              .transform(<String>['foo'], TestSharedValueInteractionType()),
+          const IterableTransformer.toSet().transform(
+              ZacTransformValue(<String>['foo']),
+              TestSharedValueInteractionType()),
           isA<Set<Object?>>());
 
       expect(
-          () => const IterableTransformer.toSet()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.toSet().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -226,13 +236,14 @@ void main() {
       );
 
       expect(
-          const IterableTransformer.toString()
-              .transform(<String>['foo'], TestSharedValueInteractionType()),
+          const IterableTransformer.toString().transform(
+              ZacTransformValue(<String>['foo']),
+              TestSharedValueInteractionType()),
           equals('[foo]'));
 
       expect(
-          () => const IterableTransformer.toString()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.toString().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -253,12 +264,13 @@ void main() {
 
       expect(
           const IterableTransformer.join().transform(
-              <String>['foo', 'bar'], TestSharedValueInteractionType()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
           equals('foobar'));
 
       expect(
-          () => const IterableTransformer.join()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.join().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -274,12 +286,13 @@ void main() {
 
       expect(
           () => IterableTransformer.contains(ZacObject('foo')).transform(
-              <String>['foo', 'bar'], TestSharedValueInteractionType()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
-          () => IterableTransformer.contains(ZacObject('foo'))
-              .transform(55, TestSharedValueInteractionType()),
+          () => IterableTransformer.contains(ZacObject('foo')).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -287,7 +300,7 @@ void main() {
 
       expect(
           IterableTransformer.contains(ZacObject('foo')).transform(
-              <String>['foo', 'bar'],
+              ZacTransformValue(<String>['foo', 'bar']),
               ZacSharedValueInteractionType.consume(context: context)),
           isTrue);
     });
@@ -303,12 +316,13 @@ void main() {
 
       expect(
           const IterableTransformer.elementAt(1).transform(
-              <String>['foo', 'bar'], TestSharedValueInteractionType()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
           equals('bar'));
 
       expect(
-          () => const IterableTransformer.elementAt(1)
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.elementAt(1).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -323,12 +337,13 @@ void main() {
 
       expect(
           const IterableTransformer.skip(1).transform(
-              <String>['foo', 'bar'], TestSharedValueInteractionType()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
           ['bar']);
 
       expect(
-          () => const IterableTransformer.skip(1)
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.skip(1).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -343,12 +358,13 @@ void main() {
 
       expect(
           const IterableTransformer.take(2).transform(
-              <String>['foo', 'bar'], TestSharedValueInteractionType()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
           ['foo', 'bar']);
 
       expect(
-          () => const IterableTransformer.take(2)
-              .transform(55, TestSharedValueInteractionType()),
+          () => const IterableTransformer.take(2).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -363,13 +379,13 @@ void main() {
 
       expect(
           const MapTransformer.values().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           [1, 2]);
 
       expect(
-          () => const MapTransformer.values()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.values().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -382,13 +398,13 @@ void main() {
 
       expect(
           const MapTransformer.keys().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           ['foo', 'bar']);
 
       expect(
-          () => const MapTransformer.keys()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.keys().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -401,13 +417,13 @@ void main() {
 
       expect(
           const MapTransformer.entries().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           isA<Iterable<MapEntry<String, dynamic>>>());
 
       expect(
-          () => const MapTransformer.entries()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.entries().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -420,13 +436,13 @@ void main() {
 
       expect(
           const MapTransformer.length().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           2);
 
       expect(
-          () => const MapTransformer.length()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.length().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -439,18 +455,19 @@ void main() {
 
       expect(
           const MapTransformer.isEmpty().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           isFalse);
 
       expect(
-          const MapTransformer.isEmpty()
-              .transform(<String, dynamic>{}, TestSharedValueInteractionType()),
+          const MapTransformer.isEmpty().transform(
+              ZacTransformValue(<String, dynamic>{}),
+              TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          () => const MapTransformer.isEmpty()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.isEmpty().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -463,18 +480,19 @@ void main() {
 
       expect(
           const MapTransformer.isNotEmpty().transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          const MapTransformer.isNotEmpty()
-              .transform(<String, dynamic>{}, TestSharedValueInteractionType()),
+          const MapTransformer.isNotEmpty().transform(
+              ZacTransformValue(<String, dynamic>{}),
+              TestSharedValueInteractionType()),
           isFalse);
 
       expect(
-          () => const MapTransformer.isNotEmpty()
-              .transform(55, TestSharedValueInteractionType()),
+          () => const MapTransformer.isNotEmpty().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -487,13 +505,13 @@ void main() {
 
       expect(
           () => MapTransformer.containsKey(ZacObject('foo')).transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
-          () => MapTransformer.containsKey(ZacObject('foo'))
-              .transform(55, TestSharedValueInteractionType()),
+          () => MapTransformer.containsKey(ZacObject('foo')).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -501,7 +519,7 @@ void main() {
 
       expect(
           MapTransformer.containsKey(ZacObject('foo')).transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               ZacSharedValueInteractionType.consume(context: context)),
           isTrue);
     });
@@ -515,13 +533,13 @@ void main() {
 
       expect(
           () => MapTransformer.containsValue(ZacObject(2)).transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
-          () => MapTransformer.containsValue(ZacObject(2))
-              .transform(55, TestSharedValueInteractionType()),
+          () => MapTransformer.containsValue(ZacObject(2)).transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -529,7 +547,7 @@ void main() {
 
       expect(
           MapTransformer.containsValue(ZacObject(2)).transform(
-              <String, dynamic>{'foo': 1, 'bar': 2},
+              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               ZacSharedValueInteractionType.consume(context: context)),
           isTrue);
     });
@@ -544,13 +562,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.isList()
-              .transform(['foo'], TestSharedValueInteractionType()),
+          ObjectTransformer.isList().transform(
+              ZacTransformValue(['foo']), TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          ObjectTransformer.isList()
-              .transform(55, TestSharedValueInteractionType()),
+          ObjectTransformer.isList().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           isFalse);
     });
 
@@ -562,13 +580,14 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.isMap()
-              .transform(<String, dynamic>{}, TestSharedValueInteractionType()),
+          ObjectTransformer.isMap().transform(
+              ZacTransformValue(<String, dynamic>{}),
+              TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          ObjectTransformer.isMap()
-              .transform(55, TestSharedValueInteractionType()),
+          ObjectTransformer.isMap().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           isFalse);
     });
 
@@ -583,13 +602,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.equals(other: 5)
-              .transform(5, TestSharedValueInteractionType()),
+          ObjectTransformer.equals(other: 5).transform(
+              ZacTransformValue(5), TestSharedValueInteractionType()),
           isTrue);
 
       expect(
-          ObjectTransformer.equals(other: 5)
-              .transform('foo', TestSharedValueInteractionType()),
+          ObjectTransformer.equals(other: 5).transform(
+              ZacTransformValue('foo'), TestSharedValueInteractionType()),
           isFalse);
     });
 
@@ -612,7 +631,8 @@ void main() {
             () => ObjectTransformer.equalsSharedValue(
                     family: 'shared',
                     consumeType: const SharedValueConsumeType.read())
-                .transform('ignore', TestSharedValueInteractionType()),
+                .transform(ZacTransformValue('ignore'),
+                    TestSharedValueInteractionType()),
             throwsA(isA<ZacTransformError>()));
       });
 
@@ -635,12 +655,14 @@ void main() {
 
         expect(
             ObjectTransformer.equalsSharedValue(family: 'shared').transform(
-                5, ZacSharedValueInteractionType.consume(context: context)),
+                ZacTransformValue(5),
+                ZacSharedValueInteractionType.consume(context: context)),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue(family: 'shared2').transform(
-                5, ZacSharedValueInteractionType.consume(context: context)),
+                ZacTransformValue(5),
+                ZacSharedValueInteractionType.consume(context: context)),
             isFalse);
       });
     });
@@ -655,18 +677,18 @@ void main() {
       );
 
       expect(
-          const IntTransformer.parse()
-              .transform('5', TestSharedValueInteractionType()),
+          const IntTransformer.parse().transform(
+              ZacTransformValue('5'), TestSharedValueInteractionType()),
           5);
 
       expect(
-          () => const IntTransformer.parse()
-              .transform('no no no', TestSharedValueInteractionType()),
+          () => const IntTransformer.parse().transform(
+              ZacTransformValue('no no no'), TestSharedValueInteractionType()),
           throwsFormatException);
 
       expect(
-          () => const IntTransformer.parse()
-              .transform(Object(), TestSharedValueInteractionType()),
+          () => const IntTransformer.parse().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -678,18 +700,18 @@ void main() {
       );
 
       expect(
-          const IntTransformer.tryParse()
-              .transform('5', TestSharedValueInteractionType()),
+          const IntTransformer.tryParse().transform(
+              ZacTransformValue('5'), TestSharedValueInteractionType()),
           5);
 
       expect(
-          const IntTransformer.tryParse()
-              .transform('no no no', TestSharedValueInteractionType()),
+          const IntTransformer.tryParse().transform(
+              ZacTransformValue('no no no'), TestSharedValueInteractionType()),
           isNull);
 
       expect(
-          () => const IntTransformer.tryParse()
-              .transform(Object(), TestSharedValueInteractionType()),
+          () => const IntTransformer.tryParse().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -701,8 +723,9 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
-    return (value as String) + str;
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    return (transformValue.value as String) + str;
   }
 }
 

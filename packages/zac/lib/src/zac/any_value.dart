@@ -157,7 +157,8 @@ The consumed $SharedValue: $value
 
     return value.map<Of>((element) {
       final transformedValue = transformer!.transformSharedValues(
-          element, ZacSharedValueInteractionType.consume(context: context));
+          ZacTransformValue(element),
+          ZacSharedValueInteractionType.consume(context: context));
 
       if (transformedValue is! Of) {
         final alltransformerTypers = transformer!.map((e) => e.runtimeType);

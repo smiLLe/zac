@@ -5,6 +5,7 @@
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/action.dart' as _i4;
 import 'package:zac/src/zac/shared_value.dart' as _i5;
+import 'package:zac/src/zac/transformers.dart' as _i6;
 import 'package:zac/src/zac/update_context.dart' as _i3;
 
 import 'helper.dart' as _i2;
@@ -82,12 +83,14 @@ class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
   }
 
   @override
-  Object? call(Object? value, _i5.SharedValueInteractionType? interaction) =>
-      (super.noSuchMethod(Invocation.method(#call, [value, interaction]))
-          as Object?);
+  Object? call(_i6.ZacTransformValue? transformValue,
+          _i5.SharedValueInteractionType? interaction) =>
+      (super.noSuchMethod(
+          Invocation.method(#call, [transformValue, interaction])) as Object?);
   @override
-  Object? transform(
-          Object? value, _i5.SharedValueInteractionType? interaction) =>
-      (super.noSuchMethod(Invocation.method(#transform, [value, interaction]))
+  Object? transform(_i6.ZacTransformValue? transformValue,
+          _i5.SharedValueInteractionType? interaction) =>
+      (super.noSuchMethod(
+              Invocation.method(#transform, [transformValue, interaction]))
           as Object?);
 }

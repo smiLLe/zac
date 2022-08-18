@@ -324,15 +324,15 @@ void main() {
         ),
       );
 
-      verify(transformer.transform(
-          1, argThat(isA<ZacSharedValueInteractionTypeProvide>())));
+      verify(transformer.transform(ZacTransformValue(1),
+          argThat(isA<ZacSharedValueInteractionTypeProvide>())));
     });
 
     testWidgets('when consumed', (tester) async {
       late ZacBuildContext context;
       final transformer = MockTransformerCb();
       when(transformer.transform(any, any))
-          .thenAnswer((i) => i.positionalArguments[0]);
+          .thenAnswer((i) => i.positionalArguments[0].value);
 
       await testZacWidget(
         tester,
@@ -348,8 +348,8 @@ void main() {
       ZacInt.consume(family: 'foo', transformer: [transformer])
           .getValue(context);
 
-      verify(transformer.transform(
-          1, argThat(isA<ZacSharedValueInteractionTypeConsume>())));
+      verify(transformer.transform(ZacTransformValue(1),
+          argThat(isA<ZacSharedValueInteractionTypeConsume>())));
     });
 
     testWidgets('in action consumed', (tester) async {
@@ -376,7 +376,7 @@ void main() {
       );
 
       verify(transformer.transform(
-          2,
+          ZacTransformValue(2),
           argThat(isA<ZacSharedValueInteractionTypeAction>()
               .having((p0) => p0.current, 'current', 1))));
     });
@@ -389,8 +389,9 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
-    return (value as String) + str;
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    return (transformValue.value as String) + str;
   }
 }
 

@@ -14,20 +14,30 @@ class ZacTransformError extends StateError {
   ZacTransformError(super.message);
 }
 
+@defaultConverterFreezed
+class ZacTransformValue with _$ZacTransformValue {
+  factory ZacTransformValue(
+    Object? value, {
+    Map<String, Object?>? extra,
+  }) = _ZacTransformValue;
+}
+
 abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);
 
-  Object? transform(Object? value, SharedValueInteractionType interaction);
+  Object? transform(
+      ZacTransformValue transformValue, SharedValueInteractionType interaction);
 }
 
 extension ZacTransformerOnList on List<ZacTransformer> {
   Object? transformSharedValues(
-          Object? value, SharedValueInteractionType interaction) =>
-      fold<Object?>(
-          value,
-          (previousValue, element) =>
-              element.transform(previousValue, interaction));
+      ZacTransformValue value, SharedValueInteractionType interaction) {
+    return fold<ZacTransformValue>(value, (previousValue, element) {
+      final obj = element.transform(previousValue, interaction);
+      return ZacTransformValue(obj, extra: previousValue.extra);
+    }).value;
+  }
 }
 
 @defaultConverterFreezed
@@ -42,7 +52,9 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   factory ConvertTransformer() = _Convert;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
     return ConverterHelper.convertToType<Object>(value);
   }
 }
@@ -90,7 +102,9 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapContainsValue;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
     if (value is! Map) {
       throw ZacTransformError('''
 There was an error while trying to transform a value in $runtimeType.
@@ -209,7 +223,9 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.take(int count) = _IterableTake;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
 There was an error while trying to transform a value in $runtimeType.
@@ -219,10 +235,10 @@ The value: $value
     }
     final iterable = value.cast<Object?>();
     return map(
-      map: (obj) => iterable
-          .map((Object? e) =>
-              obj.transformer.transformSharedValues(e, interaction))
-          .toList(),
+      map: (obj) => iterable.map((Object? e) {
+        return obj.transformer
+            .transformSharedValues(ZacTransformValue(e), interaction);
+      }).toList(),
       first: (_) => iterable.first,
       last: (_) => iterable.last,
       single: (_) => iterable.single,
@@ -282,7 +298,9 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   }) = _ObjectEqualsSharedValue;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
     return map(
         isList: (_) => value is List,
         isMap: (_) => value is Map,
@@ -318,7 +336,9 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
   const factory IntTransformer.tryParse() = _IntTryParse;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
     return map(
       parse: (obj) {
         if (value is! String) {
