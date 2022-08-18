@@ -666,7 +666,7 @@ void main() {
               {'_converter': 'f:1:SizedBox'}
             ],
             transformer: [
-              ListTransformer.map(
+              IterableTransformer.map(
                 transformer: [
                   ConvertTransformer(),
                 ],

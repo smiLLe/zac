@@ -97,14 +97,13 @@ in your Widget tree before trying to update the $SharedValue.''')));
 abstract class SharedValueInteractionType {}
 
 extension WhenZacSharedValueInteractionType on SharedValueInteractionType {
-  T? whenZac<T extends Object?>(
-      T? Function(ZacSharedValueInteractionType obj) cb,
-      {T? Function(SharedValueInteractionType obj)? orElse}) {
+  T whenZac<T extends Object?>(T Function(ZacSharedValueInteractionType obj) cb,
+      {required T Function(SharedValueInteractionType obj) orElse}) {
     if (this is ZacSharedValueInteractionType) {
       return cb(this as ZacSharedValueInteractionType);
     }
 
-    return orElse?.call(this);
+    return orElse(this);
   }
 }
 

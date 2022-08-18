@@ -105,7 +105,7 @@ void main() {
           ZacList.consume(
             family: 'foo',
             transformer: [
-              ListTransformer.map(transformer: [_ConcatStr('bar')])
+              IterableTransformer.map(transformer: [_ConcatStr('bar')])
             ],
           ).getValue(context),
           ['foobar', 'oofbar']);
