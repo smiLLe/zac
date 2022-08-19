@@ -163,6 +163,14 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
       return _MapContainsKey.fromJson(json);
     case 'z:1:Transformer:Map.containsValue':
       return _MapContainsValue.fromJson(json);
+    case 'z:1:Transformer:Map.map':
+      return _MapMapper.fromJson(json);
+    case 'z:1:Transformer:Map<Object, Object>.from':
+      return _MapFromObjectObject.fromJson(json);
+    case 'z:1:Transformer:Map<String, Object>.from':
+      return _MapFromStringObject.fromJson(json);
+    case 'z:1:Transformer:Map<String, Object?>.from':
+      return _MapFromStringNullObject.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, '_converter', 'MapTransformer',
@@ -182,6 +190,11 @@ mixin _$MapTransformer {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -225,6 +238,11 @@ class _$_MapValues extends _MapValues {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return values(this);
   }
@@ -277,6 +295,11 @@ class _$_MapKeys extends _MapKeys {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return keys(this);
   }
@@ -328,6 +351,11 @@ class _$_MapEntries extends _MapEntries {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return entries(this);
   }
@@ -380,6 +408,11 @@ class _$_MapLength extends _MapLength {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return length(this);
   }
@@ -432,6 +465,11 @@ class _$_MapIsEmpty extends _MapIsEmpty {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return isEmpty(this);
   }
@@ -484,6 +522,11 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return isNotEmpty(this);
   }
@@ -542,6 +585,11 @@ class _$_MapContainsKey extends _MapContainsKey {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return containsKey(this);
   }
@@ -602,6 +650,11 @@ class _$_MapContainsValue extends _MapContainsValue {
     required TResult Function(_MapIsNotEmpty value) isNotEmpty,
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
   }) {
     return containsValue(this);
   }
@@ -615,6 +668,271 @@ abstract class _MapContainsValue extends MapTransformer {
       _$_MapContainsValue.fromJson;
 
   ZacObject? get value;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapMapper extends _MapMapper {
+  const _$_MapMapper(
+      {final List<ZacTransformer>? keyTransformer,
+      final List<ZacTransformer>? valueTransformer,
+      final String? $type})
+      : _keyTransformer = keyTransformer,
+        _valueTransformer = valueTransformer,
+        $type = $type ?? 'z:1:Transformer:Map.map',
+        super._();
+
+  factory _$_MapMapper.fromJson(Map<String, dynamic> json) =>
+      _$$_MapMapperFromJson(json);
+
+  final List<ZacTransformer>? _keyTransformer;
+  @override
+  List<ZacTransformer>? get keyTransformer {
+    final value = _keyTransformer;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<ZacTransformer>? _valueTransformer;
+  @override
+  List<ZacTransformer>? get valueTransformer {
+    final value = _valueTransformer;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.mapper(keyTransformer: $keyTransformer, valueTransformer: $valueTransformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapMapper &&
+            const DeepCollectionEquality()
+                .equals(other._keyTransformer, _keyTransformer) &&
+            const DeepCollectionEquality()
+                .equals(other._valueTransformer, _valueTransformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_keyTransformer),
+      const DeepCollectionEquality().hash(_valueTransformer));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
+  }) {
+    return mapper(this);
+  }
+}
+
+abstract class _MapMapper extends MapTransformer {
+  const factory _MapMapper(
+      {final List<ZacTransformer>? keyTransformer,
+      final List<ZacTransformer>? valueTransformer}) = _$_MapMapper;
+  const _MapMapper._() : super._();
+
+  factory _MapMapper.fromJson(Map<String, dynamic> json) =
+      _$_MapMapper.fromJson;
+
+  List<ZacTransformer>? get keyTransformer;
+  List<ZacTransformer>? get valueTransformer;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapFromObjectObject extends _MapFromObjectObject {
+  const _$_MapFromObjectObject({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map<Object, Object>.from',
+        super._();
+
+  factory _$_MapFromObjectObject.fromJson(Map<String, dynamic> json) =>
+      _$$_MapFromObjectObjectFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.mapFromObjectObject()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MapFromObjectObject);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
+  }) {
+    return mapFromObjectObject(this);
+  }
+}
+
+abstract class _MapFromObjectObject extends MapTransformer {
+  const factory _MapFromObjectObject() = _$_MapFromObjectObject;
+  const _MapFromObjectObject._() : super._();
+
+  factory _MapFromObjectObject.fromJson(Map<String, dynamic> json) =
+      _$_MapFromObjectObject.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapFromStringObject extends _MapFromStringObject {
+  const _$_MapFromStringObject({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map<String, Object>.from',
+        super._();
+
+  factory _$_MapFromStringObject.fromJson(Map<String, dynamic> json) =>
+      _$$_MapFromStringObjectFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.mapFromStringObject()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MapFromStringObject);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
+  }) {
+    return mapFromStringObject(this);
+  }
+}
+
+abstract class _MapFromStringObject extends MapTransformer {
+  const factory _MapFromStringObject() = _$_MapFromStringObject;
+  const _MapFromStringObject._() : super._();
+
+  factory _MapFromStringObject.fromJson(Map<String, dynamic> json) =
+      _$_MapFromStringObject.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapFromStringNullObject extends _MapFromStringNullObject {
+  const _$_MapFromStringNullObject({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map<String, Object?>.from',
+        super._();
+
+  factory _$_MapFromStringNullObject.fromJson(Map<String, dynamic> json) =>
+      _$$_MapFromStringNullObjectFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.mapFromStringNullObject()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapFromStringNullObject);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
+    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        mapFromStringNullObject,
+  }) {
+    return mapFromStringNullObject(this);
+  }
+}
+
+abstract class _MapFromStringNullObject extends MapTransformer {
+  const factory _MapFromStringNullObject() = _$_MapFromStringNullObject;
+  const _MapFromStringNullObject._() : super._();
+
+  factory _MapFromStringNullObject.fromJson(Map<String, dynamic> json) =
+      _$_MapFromStringNullObject.fromJson;
 }
 
 IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {

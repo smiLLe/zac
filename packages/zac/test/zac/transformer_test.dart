@@ -551,6 +551,108 @@ void main() {
               ZacSharedValueInteractionType.consume(context: context)),
           isTrue);
     });
+
+    test('.map', () {
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map.map',
+        equals: const MapTransformer.mapper(),
+      );
+
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map.map',
+        equals: const MapTransformer.mapper(
+            keyTransformer: [], valueTransformer: []),
+        props: <String, dynamic>{
+          'keyTransformer': <Map<String, dynamic>>[],
+          'valueTransformer': <Map<String, dynamic>>[],
+        },
+      );
+
+      expect(
+          const MapTransformer.mapper().transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          isA<Map<Object?, Object?>>());
+
+      expect(
+          MapTransformer.mapper(
+            keyTransformer: [_ConcatStr('cool')],
+            valueTransformer: [_ConcatStr('hello')],
+          ).transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          equals(<String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
+
+      expect(
+          const MapTransformer.mapper().transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
+
+      expect(
+          () => const MapTransformer.mapper().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.from() of type <Object, Object>', () {
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map<Object, Object>.from',
+        equals: const MapTransformer.mapFromObjectObject(),
+      );
+
+      expect(
+          () => const MapTransformer.mapFromObjectObject().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          const MapTransformer.mapFromObjectObject().transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          isA<Map<Object, Object>>());
+    });
+
+    test('.from() of type <String, Object?>', () {
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map<String, Object?>.from',
+        equals: const MapTransformer.mapFromStringNullObject(),
+      );
+
+      expect(
+          () => const MapTransformer.mapFromStringNullObject().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          const MapTransformer.mapFromStringNullObject().transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          isA<Map<String, Object?>>());
+    });
+
+    test('.from() of type <String, Object>', () {
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map<String, Object>.from',
+        equals: const MapTransformer.mapFromStringObject(),
+      );
+
+      expect(
+          () => const MapTransformer.mapFromStringObject().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          const MapTransformer.mapFromStringObject().transform(
+              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+              TestSharedValueInteractionType()),
+          isA<Map<String, Object>>());
+    });
   });
 
   group('Object', () {

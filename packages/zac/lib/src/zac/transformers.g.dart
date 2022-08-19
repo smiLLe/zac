@@ -55,6 +55,34 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
+_$_MapMapper _$$_MapMapperFromJson(Map<String, dynamic> json) => _$_MapMapper(
+      keyTransformer: (json['keyTransformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      valueTransformer: (json['valueTransformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['_converter'] as String?,
+    );
+
+_$_MapFromObjectObject _$$_MapFromObjectObjectFromJson(
+        Map<String, dynamic> json) =>
+    _$_MapFromObjectObject(
+      $type: json['_converter'] as String?,
+    );
+
+_$_MapFromStringObject _$$_MapFromStringObjectFromJson(
+        Map<String, dynamic> json) =>
+    _$_MapFromStringObject(
+      $type: json['_converter'] as String?,
+    );
+
+_$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
+        Map<String, dynamic> json) =>
+    _$_MapFromStringNullObject(
+      $type: json['_converter'] as String?,
+    );
+
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
       transformer: (json['transformer'] as List<dynamic>)

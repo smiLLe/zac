@@ -71,7 +71,13 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   static const String unionValueContainsKey = 'z:1:Transformer:Map.containsKey';
   static const String unionValueContainsValue =
       'z:1:Transformer:Map.containsValue';
-  static const String unionValueFromEntries = 'z:1:Transformer:Map.fromEntries';
+  static const String unionValueMap = 'z:1:Transformer:Map.map';
+  static const String unionValueMapFromObjectObject =
+      'z:1:Transformer:Map<Object, Object>.from';
+  static const String unionValueMapFromStringObject =
+      'z:1:Transformer:Map<String, Object>.from';
+  static const String unionValueMapFromStringNullObject =
+      'z:1:Transformer:Map<String, Object?>.from';
 
   factory MapTransformer.fromJson(Map<String, dynamic> json) =>
       _$MapTransformerFromJson(json);
@@ -101,6 +107,23 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.containsValue(ZacObject? value) =
       _MapContainsValue;
 
+  /// The returned Map will always be a Map<Object?, Object?>
+  @FreezedUnionValue(MapTransformer.unionValueMap)
+  const factory MapTransformer.mapper({
+    List<ZacTransformer>? keyTransformer,
+    List<ZacTransformer>? valueTransformer,
+  }) = _MapMapper;
+
+  @FreezedUnionValue(MapTransformer.unionValueMapFromObjectObject)
+  const factory MapTransformer.mapFromObjectObject() = _MapFromObjectObject;
+
+  @FreezedUnionValue(MapTransformer.unionValueMapFromStringObject)
+  const factory MapTransformer.mapFromStringObject() = _MapFromStringObject;
+
+  @FreezedUnionValue(MapTransformer.unionValueMapFromStringNullObject)
+  const factory MapTransformer.mapFromStringNullObject() =
+      _MapFromStringNullObject;
+
   @override
   Object? transform(ZacTransformValue transformValue,
       SharedValueInteractionType interaction) {
@@ -112,15 +135,14 @@ The value was expected to be a type of Map but instead we got a "${value.runtime
 The value: $value
 ''');
     }
-    final castMap = value.cast<String, Object?>();
 
     return map(
-      values: (_) => castMap.values,
-      keys: (_) => castMap.keys,
-      entries: (_) => castMap.entries,
-      isEmpty: (_) => castMap.isEmpty,
-      isNotEmpty: (_) => castMap.isNotEmpty,
-      length: (_) => castMap.length,
+      values: (_) => value.values,
+      keys: (_) => value.keys,
+      entries: (_) => value.entries,
+      isEmpty: (_) => value.isEmpty,
+      isNotEmpty: (_) => value.isNotEmpty,
+      length: (_) => value.length,
       containsKey: (obj) {
         final ctx = interaction.whenZac<ZacBuildContext>(
           (obj) => obj.context,
@@ -132,7 +154,7 @@ but none was found.
 '''),
         );
 
-        return castMap.containsKey(obj.key?.getValue(ctx));
+        return value.containsKey(obj.key?.getValue(ctx));
       },
       containsValue: (obj) {
         final ctx = interaction.whenZac<ZacBuildContext>(
@@ -144,7 +166,34 @@ A $ZacBuildContext is required through a $SharedValueInteractionType
 but none was found.
 '''),
         );
-        return castMap.containsValue(obj.value?.getValue(ctx));
+        return value.containsValue(obj.value?.getValue(ctx));
+      },
+      mapper: (obj) {
+        return value
+            .cast<Object?, Object?>()
+            .map<Object?, Object?>((Object? key, Object? value) {
+          Object? updatedKey = key;
+          Object? updatedValue = value;
+          if (true == obj.keyTransformer?.isNotEmpty) {
+            updatedKey = obj.keyTransformer?.transformSharedValues(
+                ZacTransformValue(key, extra: {'value': value}), interaction);
+          }
+          if (true == obj.valueTransformer?.isNotEmpty) {
+            updatedValue = obj.valueTransformer?.transformSharedValues(
+                ZacTransformValue(value, extra: {'key': key}), interaction);
+          }
+
+          return MapEntry<Object?, Object?>(updatedKey, updatedValue);
+        });
+      },
+      mapFromObjectObject: (_) {
+        return Map<Object, Object>.from(value);
+      },
+      mapFromStringNullObject: (_) {
+        return Map<String, Object?>.from(value);
+      },
+      mapFromStringObject: (_) {
+        return Map<String, Object>.from(value);
       },
     );
   }
