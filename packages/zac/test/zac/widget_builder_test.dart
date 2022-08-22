@@ -170,7 +170,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacObject.consume(family: ZacWidgetBuilder.provideErrorFamily)
+          ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
               .getValue(context),
           isNotNull);
     });
@@ -238,7 +238,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacObject.consume(family: ZacWidgetBuilder.provideErrorFamily)
+          ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
               .getValue(context),
           isNotNull);
     });

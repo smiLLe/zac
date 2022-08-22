@@ -223,6 +223,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   factory IterableTransformer.fromJson(Map<String, dynamic> json) =>
       _$IterableTransformerFromJson(json);
 
+  /// Will always return a Iterable<Object?>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
     required List<ZacTransformer> transformer,
@@ -246,9 +247,11 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   @FreezedUnionValue(IterableTransformer.unionValueIsNotEmpty)
   const factory IterableTransformer.isNotEmpty() = _IterableIsNotEmpty;
 
+  /// Will always return a List<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToList)
   const factory IterableTransformer.toList() = _IterableToList;
 
+  /// Will always return a Set<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToSet)
   const factory IterableTransformer.toSet() = _IterableToSet;
 
@@ -282,12 +285,14 @@ The value was expected to be a type of Iterable but instead we got a "${value.ru
 The value: $value
 ''');
     }
-    final iterable = value.cast<Object?>();
+    final iterable = value;
     return map(
-      map: (obj) => iterable.map((Object? e) {
-        return obj.transformer
-            .transformSharedValues(ZacTransformValue(e), interaction);
-      }).toList(),
+      map: (obj) {
+        return iterable.cast<Object?>().map((Object? e) {
+          return obj.transformer
+              .transformSharedValues(ZacTransformValue(e), interaction);
+        });
+      },
       first: (_) => iterable.first,
       last: (_) => iterable.last,
       single: (_) => iterable.single,
@@ -340,11 +345,11 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   @With<ConsumeValue<Object?>>()
-  factory ObjectTransformer.equalsSharedValue({
-    required SharedValueFamily family,
-    @Default(SharedValueConsumeType.read()) SharedValueConsumeType? consumeType,
+  factory ObjectTransformer.equalsSharedValue(
+    SharedValueFamily family, [
     List<ZacTransformer>? transformer,
-  }) = _ObjectEqualsSharedValue;
+    @Default(SharedValueConsumeType.read()) SharedValueConsumeType consumeType,
+  ]) = _ObjectEqualsSharedValue;
 
   @override
   Object? transform(ZacTransformValue transformValue,

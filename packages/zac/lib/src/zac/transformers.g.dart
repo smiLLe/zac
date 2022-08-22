@@ -188,15 +188,15 @@ _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      family: json['family'] as Object,
-      consumeType: json['consumeType'] == null
+      json['family'] as Object,
+      (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['consumeType'] == null
           ? const SharedValueConsumeType.read()
           : SharedValueConsumeType.fromJson(
               json['consumeType'] as Map<String, dynamic>),
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      $type: json['_converter'] as String?,
+      json['_converter'] as String?,
     );
 
 _$_IntParse _$$_IntParseFromJson(Map<String, dynamic> json) => _$_IntParse(

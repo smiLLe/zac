@@ -51,6 +51,12 @@ void main() {
       );
 
       expect(
+          IterableTransformer.map(transformer: []).transform(
+              ZacTransformValue(['foo', 'oof']),
+              TestSharedValueInteractionType()),
+          isA<Iterable<Object?>>());
+
+      expect(
           IterableTransformer.map(transformer: [_ConcatStr('bar')]).transform(
               ZacTransformValue(['foo', 'oof']),
               TestSharedValueInteractionType()),
@@ -720,8 +726,7 @@ void main() {
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
           equals: ObjectTransformer.equalsSharedValue(
-              family: 'shared',
-              consumeType: const SharedValueConsumeType.read()),
+              'shared', null, const SharedValueConsumeType.read()),
           props: <String, dynamic>{
             'family': 'shared',
           },
@@ -731,8 +736,7 @@ void main() {
       test('throws if no ZacContext found', () {
         expect(
             () => ObjectTransformer.equalsSharedValue(
-                    family: 'shared',
-                    consumeType: const SharedValueConsumeType.read())
+                    'shared', null, const SharedValueConsumeType.read())
                 .transform(ZacTransformValue('ignore'),
                     TestSharedValueInteractionType()),
             throwsA(isA<ZacTransformError>()));
@@ -756,13 +760,13 @@ void main() {
         );
 
         expect(
-            ObjectTransformer.equalsSharedValue(family: 'shared').transform(
+            ObjectTransformer.equalsSharedValue('shared').transform(
                 ZacTransformValue(5),
                 ZacSharedValueInteractionType.consume(context: context)),
             isTrue);
 
         expect(
-            ObjectTransformer.equalsSharedValue(family: 'shared2').transform(
+            ObjectTransformer.equalsSharedValue('shared2').transform(
                 ZacTransformValue(5),
                 ZacSharedValueInteractionType.consume(context: context)),
             isFalse);

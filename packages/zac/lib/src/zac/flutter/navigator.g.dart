@@ -22,15 +22,15 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
     _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateConsume(
-          family: json['family'] as Object,
-          consumeType: json['consumeType'] == null
-              ? null
-              : SharedValueConsumeType.fromJson(
-                  json['consumeType'] as Map<String, dynamic>),
-          transformer: (json['transformer'] as List<dynamic>?)
+          json['family'] as Object,
+          (json['transformer'] as List<dynamic>?)
               ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
               .toList(),
-          $type: json['_converter'] as String?,
+          json['consumeType'] == null
+              ? const SharedValueConsumeType.watch()
+              : SharedValueConsumeType.fromJson(
+                  json['consumeType'] as Map<String, dynamic>),
+          json['_converter'] as String?,
         );
 
 _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>

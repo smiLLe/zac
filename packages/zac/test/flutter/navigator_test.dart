@@ -26,9 +26,7 @@ void main() {
             '_converter': 'z:1:GlobalKeyNavigatorState.consume',
             'family': 'foo',
           }),
-          ZacFlutterGlobalKeyNavigatorState.consume(
-            family: 'foo',
-          ));
+          ZacFlutterGlobalKeyNavigatorState.consume('foo'));
     });
 
     testWidgets('provide and read', (tester) async {

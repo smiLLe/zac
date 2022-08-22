@@ -42,9 +42,7 @@ void main() {
         zacWidget: ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
           child: FlutterMaterialApp(
-            navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume(
-              family: 'foo',
-            ),
+            navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume('foo'),
             home: LeakContext(cb: (c) => context = c),
           ),
         ),

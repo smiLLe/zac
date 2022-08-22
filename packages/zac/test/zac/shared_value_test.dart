@@ -52,8 +52,7 @@ void main() {
           family: 'foo',
           value: 'hello',
           builder: (c) => FlutterText(
-            ZacString.consume(
-                family: 'foo', transformer: [_ConcatStr(' world')]),
+            ZacString.consume('foo', [_ConcatStr(' world')]),
           ).buildWidget(c),
         ),
       );
@@ -103,9 +102,10 @@ void main() {
 
       expect(
           ZacList.consume(
-            family: 'foo',
-            transformer: [
-              IterableTransformer.map(transformer: [_ConcatStr('bar')])
+            'foo',
+            [
+              IterableTransformer.map(transformer: [_ConcatStr('bar')]),
+              const IterableTransformer.toList()
             ],
           ).getValue(context),
           ['foobar', 'oofbar']);
@@ -129,9 +129,9 @@ void main() {
                 builder: (c) => FlutterColumn(
                   children: ListOfZacWidget(
                     [
-                      FlutterText(ZacString.consume(family: 'sharedA')),
-                      FlutterText(ZacString.consume(family: 'sharedB')),
-                      FlutterText(ZacString.consume(family: 'sharedC')),
+                      FlutterText(ZacString.consume('sharedA')),
+                      FlutterText(ZacString.consume('sharedB')),
+                      FlutterText(ZacString.consume('sharedC')),
                     ],
                   ),
                 ).buildWidget(c),
@@ -266,10 +266,9 @@ void main() {
           value: 'foo',
           builder: (c) => FlutterText(
             ZacString.consume(
-              family: 'shared',
-              transformer: [_ConcatStr('baz')],
-              consumeType:
-                  SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
+              'shared',
+              [_ConcatStr('baz')],
+              SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
             ),
           ).buildWidget(c),
         ),
@@ -345,8 +344,7 @@ void main() {
         ),
       );
 
-      ZacInt.consume(family: 'foo', transformer: [transformer])
-          .getValue(context);
+      ZacInt.consume('foo', [transformer]).getValue(context);
 
       verify(transformer.transform(ZacTransformValue(1),
           argThat(isA<ZacSharedValueInteractionTypeConsume>())));
