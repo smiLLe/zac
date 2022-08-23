@@ -185,6 +185,21 @@ _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
+_$_ObjectToString _$$_ObjectToStringFromJson(Map<String, dynamic> json) =>
+    _$_ObjectToString(
+      $type: json['_converter'] as String?,
+    );
+
+_$_ObjectRuntimeType _$$_ObjectRuntimeTypeFromJson(Map<String, dynamic> json) =>
+    _$_ObjectRuntimeType(
+      $type: json['_converter'] as String?,
+    );
+
+_$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
+    _$_ObjectHashCode(
+      $type: json['_converter'] as String?,
+    );
+
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
@@ -197,6 +212,65 @@ _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
           : SharedValueConsumeType.fromJson(
               json['consumeType'] as Map<String, dynamic>),
       json['_converter'] as String?,
+    );
+
+_$_NumToDouble _$$_NumToDoubleFromJson(Map<String, dynamic> json) =>
+    _$_NumToDouble(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumToInt _$$_NumToIntFromJson(Map<String, dynamic> json) => _$_NumToInt(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumAbs _$$_NumAbsFromJson(Map<String, dynamic> json) => _$_NumAbs(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumCeil _$$_NumCeilFromJson(Map<String, dynamic> json) => _$_NumCeil(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumCeilToDouble _$$_NumCeilToDoubleFromJson(Map<String, dynamic> json) =>
+    _$_NumCeilToDouble(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumFloor _$$_NumFloorFromJson(Map<String, dynamic> json) => _$_NumFloor(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumFloorToDouble _$$_NumFloorToDoubleFromJson(Map<String, dynamic> json) =>
+    _$_NumFloorToDouble(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumRound _$$_NumRoundFromJson(Map<String, dynamic> json) => _$_NumRound(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumRoundToDouble _$$_NumRoundToDoubleFromJson(Map<String, dynamic> json) =>
+    _$_NumRoundToDouble(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumIsFinite _$$_NumIsFiniteFromJson(Map<String, dynamic> json) =>
+    _$_NumIsFinite(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumIsInfinite _$$_NumIsInfiniteFromJson(Map<String, dynamic> json) =>
+    _$_NumIsInfinite(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumIsNan _$$_NumIsNanFromJson(Map<String, dynamic> json) => _$_NumIsNan(
+      $type: json['_converter'] as String?,
+    );
+
+_$_NumIsNegative _$$_NumIsNegativeFromJson(Map<String, dynamic> json) =>
+    _$_NumIsNegative(
+      $type: json['_converter'] as String?,
     );
 
 _$_IntParse _$$_IntParseFromJson(Map<String, dynamic> json) => _$_IntParse(

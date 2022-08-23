@@ -72,11 +72,11 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   static const String unionValueContainsValue =
       'z:1:Transformer:Map.containsValue';
   static const String unionValueMap = 'z:1:Transformer:Map.map';
-  static const String unionValueMapFromObjectObject =
+  static const String unionValueFromObjectObject =
       'z:1:Transformer:Map<Object, Object>.from';
-  static const String unionValueMapFromStringObject =
+  static const String unionValueFromStringObject =
       'z:1:Transformer:Map<String, Object>.from';
-  static const String unionValueMapFromStringNullObject =
+  static const String unionValueFromStringNullObject =
       'z:1:Transformer:Map<String, Object?>.from';
 
   factory MapTransformer.fromJson(Map<String, dynamic> json) =>
@@ -107,21 +107,21 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.containsValue(ZacObject? value) =
       _MapContainsValue;
 
-  /// The returned Map will always be a Map<Object?, Object?>
+  /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   const factory MapTransformer.mapper({
     List<ZacTransformer>? keyTransformer,
     List<ZacTransformer>? valueTransformer,
   }) = _MapMapper;
 
-  @FreezedUnionValue(MapTransformer.unionValueMapFromObjectObject)
-  const factory MapTransformer.mapFromObjectObject() = _MapFromObjectObject;
+  @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
+  const factory MapTransformer.fromObjectObject() = _MapFromObjectObject;
 
-  @FreezedUnionValue(MapTransformer.unionValueMapFromStringObject)
-  const factory MapTransformer.mapFromStringObject() = _MapFromStringObject;
+  @FreezedUnionValue(MapTransformer.unionValueFromStringObject)
+  const factory MapTransformer.fromStringObject() = _MapFromStringObject;
 
-  @FreezedUnionValue(MapTransformer.unionValueMapFromStringNullObject)
-  const factory MapTransformer.mapFromStringNullObject() =
+  @FreezedUnionValue(MapTransformer.unionValueFromStringNullObject)
+  const factory MapTransformer.fromStringNullObject() =
       _MapFromStringNullObject;
 
   @override
@@ -169,11 +169,9 @@ but none was found.
         return value.containsValue(obj.value?.getValue(ctx));
       },
       mapper: (obj) {
-        return value
-            .cast<Object?, Object?>()
-            .map<Object?, Object?>((Object? key, Object? value) {
-          Object? updatedKey = key;
-          Object? updatedValue = value;
+        return value.map<dynamic, dynamic>((dynamic key, dynamic value) {
+          dynamic updatedKey = key;
+          dynamic updatedValue = value;
           if (true == obj.keyTransformer?.isNotEmpty) {
             updatedKey = obj.keyTransformer?.transformSharedValues(
                 ZacTransformValue(key, extra: {'value': value}), interaction);
@@ -183,16 +181,16 @@ but none was found.
                 ZacTransformValue(value, extra: {'key': key}), interaction);
           }
 
-          return MapEntry<Object?, Object?>(updatedKey, updatedValue);
+          return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
         });
       },
-      mapFromObjectObject: (_) {
+      fromObjectObject: (_) {
         return Map<Object, Object>.from(value);
       },
-      mapFromStringNullObject: (_) {
+      fromStringNullObject: (_) {
         return Map<String, Object?>.from(value);
       },
-      mapFromStringObject: (_) {
+      fromStringObject: (_) {
         return Map<String, Object>.from(value);
       },
     );
@@ -223,7 +221,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   factory IterableTransformer.fromJson(Map<String, dynamic> json) =>
       _$IterableTransformerFromJson(json);
 
-  /// Will always return a Iterable<Object?>
+  /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
     required List<ZacTransformer> transformer,
@@ -247,11 +245,11 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   @FreezedUnionValue(IterableTransformer.unionValueIsNotEmpty)
   const factory IterableTransformer.isNotEmpty() = _IterableIsNotEmpty;
 
-  /// Will always return a List<dynamic>
+  /// Will return a List<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToList)
   const factory IterableTransformer.toList() = _IterableToList;
 
-  /// Will always return a Set<dynamic>
+  /// Will return a Set<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToSet)
   const factory IterableTransformer.toSet() = _IterableToSet;
 
@@ -285,24 +283,19 @@ The value was expected to be a type of Iterable but instead we got a "${value.ru
 The value: $value
 ''');
     }
-    final iterable = value;
     return map(
-      map: (obj) {
-        return iterable.cast<Object?>().map((Object? e) {
-          return obj.transformer
-              .transformSharedValues(ZacTransformValue(e), interaction);
-        });
-      },
-      first: (_) => iterable.first,
-      last: (_) => iterable.last,
-      single: (_) => iterable.single,
-      length: (_) => iterable.length,
-      isEmpty: (_) => iterable.isEmpty,
-      isNotEmpty: (_) => iterable.isNotEmpty,
-      toList: (_) => iterable.toList(),
-      toSet: (_) => iterable.toSet(),
-      toString: (_) => iterable.toString(),
-      join: (obj) => iterable.join(obj.separator ?? ""),
+      map: (obj) => value.map((dynamic e) => obj.transformer
+          .transformSharedValues(ZacTransformValue(e), interaction)),
+      first: (_) => value.first,
+      last: (_) => value.last,
+      single: (_) => value.single,
+      length: (_) => value.length,
+      isEmpty: (_) => value.isEmpty,
+      isNotEmpty: (_) => value.isNotEmpty,
+      toList: (_) => value.toList(),
+      toSet: (_) => value.toSet(),
+      toString: (_) => value.toString(),
+      join: (obj) => value.join(obj.separator ?? ""),
       contains: (obj) {
         final ctx = interaction.whenZac<ZacBuildContext>(
           (obj) => obj.context,
@@ -313,11 +306,11 @@ A $ZacBuildContext is required through a $SharedValueInteractionType
 but none was found.
 '''),
         );
-        return iterable.contains(obj.element?.getValue(ctx));
+        return value.contains(obj.element?.getValue(ctx));
       },
-      elementAt: (obj) => iterable.elementAt(obj.index),
-      skip: (obj) => iterable.skip(obj.count),
-      take: (obj) => iterable.take(obj.count),
+      elementAt: (obj) => value.elementAt(obj.index),
+      skip: (obj) => value.skip(obj.count),
+      take: (obj) => value.take(obj.count),
     );
   }
 }
@@ -330,6 +323,10 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   static const String unionValueEquals = 'z:1:Transformer:Object.equals';
   static const String unionValueEqualsSharedValue =
       'z:1:Transformer:Object.equalsSharedValue';
+  static const String unionValueToString = 'z:1:Transformer:Object.toString';
+  static const String unionValueRuntimeType =
+      'z:1:Transformer:Object.runtimeType';
+  static const String unionValueHashCode = 'z:1:Transformer:Object.hashCode';
 
   factory ObjectTransformer.fromJson(Map<String, dynamic> json) =>
       _$ObjectTransformerFromJson(json);
@@ -342,6 +339,15 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEquals)
   factory ObjectTransformer.equals({required Object? other}) = _ObjectEquals;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueToString)
+  factory ObjectTransformer.toString() = _ObjectToString;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueRuntimeType)
+  factory ObjectTransformer.runtimeType() = _ObjectRuntimeType;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueHashCode)
+  factory ObjectTransformer.hashCode() = _ObjectHashCode;
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   @With<ConsumeValue<Object?>>()
@@ -356,21 +362,117 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       SharedValueInteractionType interaction) {
     final value = transformValue.value;
     return map(
-        isList: (_) => value is List,
-        isMap: (_) => value is Map,
-        equals: (obj) => obj.other == value,
-        equalsSharedValue: (obj) {
-          final zacContext = interaction.whenZac(
-            (obj) => obj.context,
-            orElse: (_) => throw ZacTransformError('''
+      isList: (_) => value is List,
+      isMap: (_) => value is Map,
+      equals: (obj) => obj.other == value,
+      equalsSharedValue: (obj) {
+        final zacContext = interaction.whenZac(
+          (obj) => obj.context,
+          orElse: (_) => throw ZacTransformError('''
 There was an error while trying to compare two values in ${obj.runtimeType}
 for converter "${ObjectTransformer.unionValueEqualsSharedValue}".
 A $ZacBuildContext was required but was not accesible through $SharedValueInteractionType.
 '''),
-          );
-          final sValue = obj.getSharedValue(zacContext);
-          return sValue == value;
-        });
+        );
+        final sValue = obj.getSharedValue(zacContext);
+        return sValue == value;
+      },
+      hashCode: (_) => value.hashCode,
+      runtimeType: (_) => value.runtimeType,
+      toString: (_) => value.toString(),
+    );
+  }
+}
+
+@defaultConverterFreezed
+class NumTransformer with _$NumTransformer implements ZacTransformer {
+  const NumTransformer._();
+  static const String unionValue = 'z:1:Transformer:num.toDouble';
+  static const String unionValueToInt = 'z:1:Transformer:num.toInt';
+  static const String unionValueAbs = 'z:1:Transformer:num.abs';
+  static const String unionValueCeil = 'z:1:Transformer:num.ceil';
+  static const String unionValueCeilToDouble =
+      'z:1:Transformer:num.ceilToDouble';
+  static const String unionValueFloor = 'z:1:Transformer:num.floor';
+  static const String unionValueFloorToDouble =
+      'z:1:Transformer:num.floorToDouble';
+  static const String unionValueRound = 'z:1:Transformer:num.round';
+  static const String unionValueRoundToDouble =
+      'z:1:Transformer:num.roundToDouble';
+  static const String unionValueIsFinite = 'z:1:Transformer:num.isFinite';
+  static const String unionValueIsInfinite = 'z:1:Transformer:num.isInfinite';
+  static const String unionValueIsNan = 'z:1:Transformer:num.isNan';
+  static const String unionValueIsNegative = 'z:1:Transformer:num.isNegative';
+
+  factory NumTransformer.fromJson(Map<String, dynamic> json) =>
+      _$NumTransformerFromJson(json);
+
+  @FreezedUnionValue(NumTransformer.unionValue)
+  const factory NumTransformer.toDouble() = _NumToDouble;
+
+  @FreezedUnionValue(NumTransformer.unionValueToInt)
+  const factory NumTransformer.toInt() = _NumToInt;
+
+  @FreezedUnionValue(NumTransformer.unionValueAbs)
+  const factory NumTransformer.abs() = _NumAbs;
+
+  @FreezedUnionValue(NumTransformer.unionValueCeil)
+  const factory NumTransformer.ceil() = _NumCeil;
+
+  @FreezedUnionValue(NumTransformer.unionValueCeilToDouble)
+  const factory NumTransformer.ceilToDouble() = _NumCeilToDouble;
+
+  @FreezedUnionValue(NumTransformer.unionValueFloor)
+  const factory NumTransformer.floor() = _NumFloor;
+
+  @FreezedUnionValue(NumTransformer.unionValueFloorToDouble)
+  const factory NumTransformer.floorToDouble() = _NumFloorToDouble;
+
+  @FreezedUnionValue(NumTransformer.unionValueRound)
+  const factory NumTransformer.round() = _NumRound;
+
+  @FreezedUnionValue(NumTransformer.unionValueRoundToDouble)
+  const factory NumTransformer.roundToDouble() = _NumRoundToDouble;
+
+  @FreezedUnionValue(NumTransformer.unionValueIsFinite)
+  const factory NumTransformer.isFinite() = _NumIsFinite;
+
+  @FreezedUnionValue(NumTransformer.unionValueIsInfinite)
+  const factory NumTransformer.isInfinite() = _NumIsInfinite;
+
+  @FreezedUnionValue(NumTransformer.unionValueIsNan)
+  const factory NumTransformer.isNan() = _NumIsNan;
+
+  @FreezedUnionValue(NumTransformer.unionValueIsNegative)
+  const factory NumTransformer.isNegative() = _NumIsNegative;
+
+  @override
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
+    if (value is! num) {
+      throw ZacTransformError('''
+There was an error while trying to transform a value in $runtimeType.
+The value was expected to be a type of num but instead we got a "${value.runtimeType}".
+The value: $value
+''');
+    }
+
+    return map(
+      toDouble: (_) => value.toDouble(),
+      toInt: (_) => value.toInt(),
+      abs: (_) => value.abs(),
+      ceil: (_) => value.ceil(),
+      ceilToDouble: (_) => value.ceilToDouble(),
+      floor: (_) => value.floor(),
+      floorToDouble: (_) => value.floorToDouble(),
+      round: (_) => value.round(),
+      roundToDouble: (_) => value.roundToDouble(),
+      isFinite: (_) => value.isFinite,
+      isInfinite: (_) => value.isInfinite,
+      isNan: (_) => value.isNaN,
+      isNegative: (_) => value.isNegative,
+    );
   }
 }
 

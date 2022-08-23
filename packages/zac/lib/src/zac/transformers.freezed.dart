@@ -191,10 +191,10 @@ mixin _$MapTransformer {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -239,10 +239,10 @@ class _$_MapValues extends _MapValues {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return values(this);
   }
@@ -296,10 +296,10 @@ class _$_MapKeys extends _MapKeys {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return keys(this);
   }
@@ -352,10 +352,10 @@ class _$_MapEntries extends _MapEntries {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return entries(this);
   }
@@ -409,10 +409,10 @@ class _$_MapLength extends _MapLength {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return length(this);
   }
@@ -466,10 +466,10 @@ class _$_MapIsEmpty extends _MapIsEmpty {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return isEmpty(this);
   }
@@ -523,10 +523,10 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return isNotEmpty(this);
   }
@@ -586,10 +586,10 @@ class _$_MapContainsKey extends _MapContainsKey {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return containsKey(this);
   }
@@ -651,10 +651,10 @@ class _$_MapContainsValue extends _MapContainsValue {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return containsValue(this);
   }
@@ -741,10 +741,10 @@ class _$_MapMapper extends _MapMapper {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
     return mapper(this);
   }
@@ -778,7 +778,7 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
 
   @override
   String toString() {
-    return 'MapTransformer.mapFromObjectObject()';
+    return 'MapTransformer.fromObjectObject()';
   }
 
   @override
@@ -803,12 +803,12 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
-    return mapFromObjectObject(this);
+    return fromObjectObject(this);
   }
 }
 
@@ -835,7 +835,7 @@ class _$_MapFromStringObject extends _MapFromStringObject {
 
   @override
   String toString() {
-    return 'MapTransformer.mapFromStringObject()';
+    return 'MapTransformer.fromStringObject()';
   }
 
   @override
@@ -860,12 +860,12 @@ class _$_MapFromStringObject extends _MapFromStringObject {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
-    return mapFromStringObject(this);
+    return fromStringObject(this);
   }
 }
 
@@ -892,7 +892,7 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
 
   @override
   String toString() {
-    return 'MapTransformer.mapFromStringNullObject()';
+    return 'MapTransformer.fromStringNullObject()';
   }
 
   @override
@@ -918,12 +918,12 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
     required TResult Function(_MapContainsKey value) containsKey,
     required TResult Function(_MapContainsValue value) containsValue,
     required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) mapFromObjectObject,
-    required TResult Function(_MapFromStringObject value) mapFromStringObject,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
-        mapFromStringNullObject,
+        fromStringNullObject,
   }) {
-    return mapFromStringNullObject(this);
+    return fromStringNullObject(this);
   }
 }
 
@@ -1947,6 +1947,12 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsMap.fromJson(json);
     case 'z:1:Transformer:Object.equals':
       return _ObjectEquals.fromJson(json);
+    case 'z:1:Transformer:Object.toString':
+      return _ObjectToString.fromJson(json);
+    case 'z:1:Transformer:Object.runtimeType':
+      return _ObjectRuntimeType.fromJson(json);
+    case 'z:1:Transformer:Object.hashCode':
+      return _ObjectHashCode.fromJson(json);
     case 'z:1:Transformer:Object.equalsSharedValue':
       return _ObjectEqualsSharedValue.fromJson(json);
 
@@ -1963,6 +1969,9 @@ mixin _$ObjectTransformer {
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
     required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
     required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) =>
       throw _privateConstructorUsedError;
@@ -2002,6 +2011,9 @@ class _$_ObjectIsList extends _ObjectIsList {
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
     required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
     required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isList(this);
@@ -2050,6 +2062,9 @@ class _$_ObjectIsMap extends _ObjectIsMap {
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
     required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
     required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isMap(this);
@@ -2104,6 +2119,9 @@ class _$_ObjectEquals extends _ObjectEquals {
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
     required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
     required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return equals(this);
@@ -2118,6 +2136,159 @@ abstract class _ObjectEquals extends ObjectTransformer {
       _$_ObjectEquals.fromJson;
 
   Object? get other;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectToString extends _ObjectToString {
+  _$_ObjectToString({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.toString',
+        super._();
+
+  factory _$_ObjectToString.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectToStringFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.toString()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectToString);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return toString(this);
+  }
+}
+
+abstract class _ObjectToString extends ObjectTransformer {
+  factory _ObjectToString() = _$_ObjectToString;
+  _ObjectToString._() : super._();
+
+  factory _ObjectToString.fromJson(Map<String, dynamic> json) =
+      _$_ObjectToString.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectRuntimeType extends _ObjectRuntimeType {
+  _$_ObjectRuntimeType({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.runtimeType',
+        super._();
+
+  factory _$_ObjectRuntimeType.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectRuntimeTypeFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.runtimeType()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectRuntimeType);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return runtimeType(this);
+  }
+}
+
+abstract class _ObjectRuntimeType extends ObjectTransformer {
+  factory _ObjectRuntimeType() = _$_ObjectRuntimeType;
+  _ObjectRuntimeType._() : super._();
+
+  factory _ObjectRuntimeType.fromJson(Map<String, dynamic> json) =
+      _$_ObjectRuntimeType.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectHashCode extends _ObjectHashCode {
+  _$_ObjectHashCode({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.hashCode',
+        super._();
+
+  factory _$_ObjectHashCode.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectHashCodeFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.hashCode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectHashCode);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return hashCode(this);
+  }
+}
+
+abstract class _ObjectHashCode extends ObjectTransformer {
+  factory _ObjectHashCode() = _$_ObjectHashCode;
+  _ObjectHashCode._() : super._();
+
+  factory _ObjectHashCode.fromJson(Map<String, dynamic> json) =
+      _$_ObjectHashCode.fromJson;
 }
 
 /// @nodoc
@@ -2184,6 +2355,9 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
     required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
     required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return equalsSharedValue(this);
@@ -2203,6 +2377,797 @@ abstract class _ObjectEqualsSharedValue extends ObjectTransformer
   Object get family;
   List<ZacTransformer>? get transformer;
   SharedValueConsumeType get consumeType;
+}
+
+NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'z:1:Transformer:num.toDouble':
+      return _NumToDouble.fromJson(json);
+    case 'z:1:Transformer:num.toInt':
+      return _NumToInt.fromJson(json);
+    case 'z:1:Transformer:num.abs':
+      return _NumAbs.fromJson(json);
+    case 'z:1:Transformer:num.ceil':
+      return _NumCeil.fromJson(json);
+    case 'z:1:Transformer:num.ceilToDouble':
+      return _NumCeilToDouble.fromJson(json);
+    case 'z:1:Transformer:num.floor':
+      return _NumFloor.fromJson(json);
+    case 'z:1:Transformer:num.floorToDouble':
+      return _NumFloorToDouble.fromJson(json);
+    case 'z:1:Transformer:num.round':
+      return _NumRound.fromJson(json);
+    case 'z:1:Transformer:num.roundToDouble':
+      return _NumRoundToDouble.fromJson(json);
+    case 'z:1:Transformer:num.isFinite':
+      return _NumIsFinite.fromJson(json);
+    case 'z:1:Transformer:num.isInfinite':
+      return _NumIsInfinite.fromJson(json);
+    case 'z:1:Transformer:num.isNan':
+      return _NumIsNan.fromJson(json);
+    case 'z:1:Transformer:num.isNegative':
+      return _NumIsNegative.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'NumTransformer',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$NumTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumToDouble extends _NumToDouble {
+  const _$_NumToDouble({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.toDouble',
+        super._();
+
+  factory _$_NumToDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_NumToDoubleFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.toDouble()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumToDouble);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return toDouble(this);
+  }
+}
+
+abstract class _NumToDouble extends NumTransformer {
+  const factory _NumToDouble() = _$_NumToDouble;
+  const _NumToDouble._() : super._();
+
+  factory _NumToDouble.fromJson(Map<String, dynamic> json) =
+      _$_NumToDouble.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumToInt extends _NumToInt {
+  const _$_NumToInt({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.toInt',
+        super._();
+
+  factory _$_NumToInt.fromJson(Map<String, dynamic> json) =>
+      _$$_NumToIntFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.toInt()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumToInt);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return toInt(this);
+  }
+}
+
+abstract class _NumToInt extends NumTransformer {
+  const factory _NumToInt() = _$_NumToInt;
+  const _NumToInt._() : super._();
+
+  factory _NumToInt.fromJson(Map<String, dynamic> json) = _$_NumToInt.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumAbs extends _NumAbs {
+  const _$_NumAbs({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.abs',
+        super._();
+
+  factory _$_NumAbs.fromJson(Map<String, dynamic> json) =>
+      _$$_NumAbsFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.abs()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumAbs);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return abs(this);
+  }
+}
+
+abstract class _NumAbs extends NumTransformer {
+  const factory _NumAbs() = _$_NumAbs;
+  const _NumAbs._() : super._();
+
+  factory _NumAbs.fromJson(Map<String, dynamic> json) = _$_NumAbs.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumCeil extends _NumCeil {
+  const _$_NumCeil({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.ceil',
+        super._();
+
+  factory _$_NumCeil.fromJson(Map<String, dynamic> json) =>
+      _$$_NumCeilFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.ceil()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumCeil);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return ceil(this);
+  }
+}
+
+abstract class _NumCeil extends NumTransformer {
+  const factory _NumCeil() = _$_NumCeil;
+  const _NumCeil._() : super._();
+
+  factory _NumCeil.fromJson(Map<String, dynamic> json) = _$_NumCeil.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumCeilToDouble extends _NumCeilToDouble {
+  const _$_NumCeilToDouble({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.ceilToDouble',
+        super._();
+
+  factory _$_NumCeilToDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_NumCeilToDoubleFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.ceilToDouble()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumCeilToDouble);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return ceilToDouble(this);
+  }
+}
+
+abstract class _NumCeilToDouble extends NumTransformer {
+  const factory _NumCeilToDouble() = _$_NumCeilToDouble;
+  const _NumCeilToDouble._() : super._();
+
+  factory _NumCeilToDouble.fromJson(Map<String, dynamic> json) =
+      _$_NumCeilToDouble.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumFloor extends _NumFloor {
+  const _$_NumFloor({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.floor',
+        super._();
+
+  factory _$_NumFloor.fromJson(Map<String, dynamic> json) =>
+      _$$_NumFloorFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.floor()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumFloor);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return floor(this);
+  }
+}
+
+abstract class _NumFloor extends NumTransformer {
+  const factory _NumFloor() = _$_NumFloor;
+  const _NumFloor._() : super._();
+
+  factory _NumFloor.fromJson(Map<String, dynamic> json) = _$_NumFloor.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumFloorToDouble extends _NumFloorToDouble {
+  const _$_NumFloorToDouble({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.floorToDouble',
+        super._();
+
+  factory _$_NumFloorToDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_NumFloorToDoubleFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.floorToDouble()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumFloorToDouble);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return floorToDouble(this);
+  }
+}
+
+abstract class _NumFloorToDouble extends NumTransformer {
+  const factory _NumFloorToDouble() = _$_NumFloorToDouble;
+  const _NumFloorToDouble._() : super._();
+
+  factory _NumFloorToDouble.fromJson(Map<String, dynamic> json) =
+      _$_NumFloorToDouble.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumRound extends _NumRound {
+  const _$_NumRound({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.round',
+        super._();
+
+  factory _$_NumRound.fromJson(Map<String, dynamic> json) =>
+      _$$_NumRoundFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.round()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumRound);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return round(this);
+  }
+}
+
+abstract class _NumRound extends NumTransformer {
+  const factory _NumRound() = _$_NumRound;
+  const _NumRound._() : super._();
+
+  factory _NumRound.fromJson(Map<String, dynamic> json) = _$_NumRound.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumRoundToDouble extends _NumRoundToDouble {
+  const _$_NumRoundToDouble({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.roundToDouble',
+        super._();
+
+  factory _$_NumRoundToDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_NumRoundToDoubleFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.roundToDouble()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumRoundToDouble);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return roundToDouble(this);
+  }
+}
+
+abstract class _NumRoundToDouble extends NumTransformer {
+  const factory _NumRoundToDouble() = _$_NumRoundToDouble;
+  const _NumRoundToDouble._() : super._();
+
+  factory _NumRoundToDouble.fromJson(Map<String, dynamic> json) =
+      _$_NumRoundToDouble.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumIsFinite extends _NumIsFinite {
+  const _$_NumIsFinite({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.isFinite',
+        super._();
+
+  factory _$_NumIsFinite.fromJson(Map<String, dynamic> json) =>
+      _$$_NumIsFiniteFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.isFinite()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumIsFinite);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return isFinite(this);
+  }
+}
+
+abstract class _NumIsFinite extends NumTransformer {
+  const factory _NumIsFinite() = _$_NumIsFinite;
+  const _NumIsFinite._() : super._();
+
+  factory _NumIsFinite.fromJson(Map<String, dynamic> json) =
+      _$_NumIsFinite.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumIsInfinite extends _NumIsInfinite {
+  const _$_NumIsInfinite({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.isInfinite',
+        super._();
+
+  factory _$_NumIsInfinite.fromJson(Map<String, dynamic> json) =>
+      _$$_NumIsInfiniteFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.isInfinite()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumIsInfinite);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return isInfinite(this);
+  }
+}
+
+abstract class _NumIsInfinite extends NumTransformer {
+  const factory _NumIsInfinite() = _$_NumIsInfinite;
+  const _NumIsInfinite._() : super._();
+
+  factory _NumIsInfinite.fromJson(Map<String, dynamic> json) =
+      _$_NumIsInfinite.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumIsNan extends _NumIsNan {
+  const _$_NumIsNan({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.isNan',
+        super._();
+
+  factory _$_NumIsNan.fromJson(Map<String, dynamic> json) =>
+      _$$_NumIsNanFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.isNan()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumIsNan);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return isNan(this);
+  }
+}
+
+abstract class _NumIsNan extends NumTransformer {
+  const factory _NumIsNan() = _$_NumIsNan;
+  const _NumIsNan._() : super._();
+
+  factory _NumIsNan.fromJson(Map<String, dynamic> json) = _$_NumIsNan.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_NumIsNegative extends _NumIsNegative {
+  const _$_NumIsNegative({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:num.isNegative',
+        super._();
+
+  factory _$_NumIsNegative.fromJson(Map<String, dynamic> json) =>
+      _$$_NumIsNegativeFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'NumTransformer.isNegative()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NumIsNegative);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NumToDouble value) toDouble,
+    required TResult Function(_NumToInt value) toInt,
+    required TResult Function(_NumAbs value) abs,
+    required TResult Function(_NumCeil value) ceil,
+    required TResult Function(_NumCeilToDouble value) ceilToDouble,
+    required TResult Function(_NumFloor value) floor,
+    required TResult Function(_NumFloorToDouble value) floorToDouble,
+    required TResult Function(_NumRound value) round,
+    required TResult Function(_NumRoundToDouble value) roundToDouble,
+    required TResult Function(_NumIsFinite value) isFinite,
+    required TResult Function(_NumIsInfinite value) isInfinite,
+    required TResult Function(_NumIsNan value) isNan,
+    required TResult Function(_NumIsNegative value) isNegative,
+  }) {
+    return isNegative(this);
+  }
+}
+
+abstract class _NumIsNegative extends NumTransformer {
+  const factory _NumIsNegative() = _$_NumIsNegative;
+  const _NumIsNegative._() : super._();
+
+  factory _NumIsNegative.fromJson(Map<String, dynamic> json) =
+      _$_NumIsNegative.fromJson;
 }
 
 IntTransformer _$IntTransformerFromJson(Map<String, dynamic> json) {

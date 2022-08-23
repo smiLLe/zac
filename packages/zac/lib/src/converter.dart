@@ -129,15 +129,31 @@ Map<String, Convert> allConverters = const {
   MapTransformer.unionValueContainsKey: MapTransformer.fromJson,
   MapTransformer.unionValueContainsValue: MapTransformer.fromJson,
   MapTransformer.unionValueMap: MapTransformer.fromJson,
-  MapTransformer.unionValueMapFromObjectObject: MapTransformer.fromJson,
-  MapTransformer.unionValueMapFromStringNullObject: MapTransformer.fromJson,
-  MapTransformer.unionValueMapFromStringObject: MapTransformer.fromJson,
+  MapTransformer.unionValueFromObjectObject: MapTransformer.fromJson,
+  MapTransformer.unionValueFromStringNullObject: MapTransformer.fromJson,
+  MapTransformer.unionValueFromStringObject: MapTransformer.fromJson,
+  NumTransformer.unionValue: NumTransformer.fromJson,
+  NumTransformer.unionValueToInt: NumTransformer.fromJson,
+  NumTransformer.unionValueAbs: NumTransformer.fromJson,
+  NumTransformer.unionValueCeil: NumTransformer.fromJson,
+  NumTransformer.unionValueCeilToDouble: NumTransformer.fromJson,
+  NumTransformer.unionValueFloor: NumTransformer.fromJson,
+  NumTransformer.unionValueFloorToDouble: NumTransformer.fromJson,
+  NumTransformer.unionValueRound: NumTransformer.fromJson,
+  NumTransformer.unionValueRoundToDouble: NumTransformer.fromJson,
+  NumTransformer.unionValueIsFinite: NumTransformer.fromJson,
+  NumTransformer.unionValueIsInfinite: NumTransformer.fromJson,
+  NumTransformer.unionValueIsNan: NumTransformer.fromJson,
+  NumTransformer.unionValueIsNegative: NumTransformer.fromJson,
   IntTransformer.unionValue: IntTransformer.fromJson,
   IntTransformer.unionValueTryParse: IntTransformer.fromJson,
   ObjectTransformer.unionValue: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueIsMap: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueEquals: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueEqualsSharedValue: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueToString: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueRuntimeType: ObjectTransformer.fromJson,
+  ObjectTransformer.unionValueHashCode: ObjectTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState
@@ -391,7 +407,7 @@ There was no "$converterKey" found for family: "$rt".''');
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
       throw ConverterError(
-          '''There was an error while trying to convert a type of "$expectedType".
+          '''There was an error while trying to builder a type of "$expectedType".
 Got the converted type "${converted.runtimeType}" which
 is not assignable to expected type "$expectedType"''');
     }
