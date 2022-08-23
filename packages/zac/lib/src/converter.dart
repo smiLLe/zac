@@ -154,6 +154,10 @@ Map<String, Convert> allConverters = const {
   ObjectTransformer.unionValueToString: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueRuntimeType: ObjectTransformer.fromJson,
   ObjectTransformer.unionValueHashCode: ObjectTransformer.fromJson,
+  StringTransformer.unionValue: StringTransformer.fromJson,
+  StringTransformer.unionValueSplit: StringTransformer.fromJson,
+  StringTransformer.unionValueIsEmpty: StringTransformer.fromJson,
+  StringTransformer.unionValueIsNotEmpty: StringTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState

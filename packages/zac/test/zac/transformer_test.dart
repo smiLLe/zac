@@ -1026,6 +1026,24 @@ void main() {
     test('.isNan', () {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
+        converter: 'z:1:Transformer:num.isNan',
+        equals: const NumTransformer.isNan(),
+      );
+
+      expect(
+          const NumTransformer.isNan().transform(
+              ZacTransformValue(double.nan), TestSharedValueInteractionType()),
+          isTrue);
+
+      expect(
+          () => const NumTransformer.isNan().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.isNegative', () {
+      _expectFromJson<NumTransformer>(
+        fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.isNegative',
         equals: const NumTransformer.isNegative(),
       );
@@ -1085,6 +1103,83 @@ void main() {
 
       expect(
           () => const IntTransformer.tryParse().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+  });
+
+  group('String', () {
+    test('.length', () {
+      _expectFromJson<StringTransformer>(
+        fromJson: StringTransformer.fromJson,
+        converter: 'z:1:Transformer:String.length',
+        equals: const StringTransformer.length(),
+      );
+
+      expect(
+          const StringTransformer.length().transform(
+              ZacTransformValue('foo'), TestSharedValueInteractionType()),
+          3);
+
+      expect(
+          () => const StringTransformer.length().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.split()', () {
+      _expectFromJson<StringTransformer>(
+        fromJson: StringTransformer.fromJson,
+        converter: 'z:1:Transformer:String.split',
+        equals: const StringTransformer.split(pattern: ','),
+        props: <String, dynamic>{
+          'pattern': ',',
+        },
+      );
+
+      expect(
+          const StringTransformer.split(pattern: ',').transform(
+              ZacTransformValue('a,b'), TestSharedValueInteractionType()),
+          ['a', 'b']);
+
+      expect(
+          () => const StringTransformer.split(pattern: ',').transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.isEmpty', () {
+      _expectFromJson<StringTransformer>(
+        fromJson: StringTransformer.fromJson,
+        converter: 'z:1:Transformer:String.isEmpty',
+        equals: const StringTransformer.isEmpty(),
+      );
+
+      expect(
+          const StringTransformer.isEmpty().transform(
+              ZacTransformValue(''), TestSharedValueInteractionType()),
+          isTrue);
+
+      expect(
+          () => const StringTransformer.isEmpty().transform(
+              ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.isNotEmpty', () {
+      _expectFromJson<StringTransformer>(
+        fromJson: StringTransformer.fromJson,
+        converter: 'z:1:Transformer:String.isNotEmpty',
+        equals: const StringTransformer.isNotEmpty(),
+      );
+
+      expect(
+          const StringTransformer.isNotEmpty().transform(
+              ZacTransformValue(''), TestSharedValueInteractionType()),
+          isFalse);
+
+      expect(
+          () => const StringTransformer.isNotEmpty().transform(
               ZacTransformValue(Object()), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });

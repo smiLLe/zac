@@ -3283,3 +3283,232 @@ abstract class _IntTryParse extends IntTransformer {
   factory _IntTryParse.fromJson(Map<String, dynamic> json) =
       _$_IntTryParse.fromJson;
 }
+
+StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'z:1:Transformer:String.length':
+      return _StringLength.fromJson(json);
+    case 'z:1:Transformer:String.split':
+      return _StringSplit.fromJson(json);
+    case 'z:1:Transformer:String.isEmpty':
+      return _StringIsEmpty.fromJson(json);
+    case 'z:1:Transformer:String.isNotEmpty':
+      return _StringIsNotEmpty.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'StringTransformer',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$StringTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StringLength extends _StringLength {
+  const _$_StringLength({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:String.length',
+        super._();
+
+  factory _$_StringLength.fromJson(Map<String, dynamic> json) =>
+      _$$_StringLengthFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'StringTransformer.length()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_StringLength);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+  }) {
+    return length(this);
+  }
+}
+
+abstract class _StringLength extends StringTransformer {
+  const factory _StringLength() = _$_StringLength;
+  const _StringLength._() : super._();
+
+  factory _StringLength.fromJson(Map<String, dynamic> json) =
+      _$_StringLength.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StringSplit extends _StringSplit {
+  const _$_StringSplit({required this.pattern, final String? $type})
+      : $type = $type ?? 'z:1:Transformer:String.split',
+        super._();
+
+  factory _$_StringSplit.fromJson(Map<String, dynamic> json) =>
+      _$$_StringSplitFromJson(json);
+
+  @override
+  final String pattern;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'StringTransformer.split(pattern: $pattern)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StringSplit &&
+            const DeepCollectionEquality().equals(other.pattern, pattern));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+  }) {
+    return split(this);
+  }
+}
+
+abstract class _StringSplit extends StringTransformer {
+  const factory _StringSplit({required final String pattern}) = _$_StringSplit;
+  const _StringSplit._() : super._();
+
+  factory _StringSplit.fromJson(Map<String, dynamic> json) =
+      _$_StringSplit.fromJson;
+
+  String get pattern;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StringIsEmpty extends _StringIsEmpty {
+  const _$_StringIsEmpty({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:String.isEmpty',
+        super._();
+
+  factory _$_StringIsEmpty.fromJson(Map<String, dynamic> json) =>
+      _$$_StringIsEmptyFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'StringTransformer.isEmpty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_StringIsEmpty);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+  }) {
+    return isEmpty(this);
+  }
+}
+
+abstract class _StringIsEmpty extends StringTransformer {
+  const factory _StringIsEmpty() = _$_StringIsEmpty;
+  const _StringIsEmpty._() : super._();
+
+  factory _StringIsEmpty.fromJson(Map<String, dynamic> json) =
+      _$_StringIsEmpty.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StringIsNotEmpty extends _StringIsNotEmpty {
+  const _$_StringIsNotEmpty({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:String.isNotEmpty',
+        super._();
+
+  factory _$_StringIsNotEmpty.fromJson(Map<String, dynamic> json) =>
+      _$$_StringIsNotEmptyFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'StringTransformer.isNotEmpty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_StringIsNotEmpty);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+  }) {
+    return isNotEmpty(this);
+  }
+}
+
+abstract class _StringIsNotEmpty extends StringTransformer {
+  const factory _StringIsNotEmpty() = _$_StringIsNotEmpty;
+  const _StringIsNotEmpty._() : super._();
+
+  factory _StringIsNotEmpty.fromJson(Map<String, dynamic> json) =
+      _$_StringIsNotEmpty.fromJson;
+}

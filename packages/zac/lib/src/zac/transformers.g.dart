@@ -281,3 +281,24 @@ _$_IntTryParse _$$_IntTryParseFromJson(Map<String, dynamic> json) =>
     _$_IntTryParse(
       $type: json['_converter'] as String?,
     );
+
+_$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
+    _$_StringLength(
+      $type: json['_converter'] as String?,
+    );
+
+_$_StringSplit _$$_StringSplitFromJson(Map<String, dynamic> json) =>
+    _$_StringSplit(
+      pattern: json['pattern'] as String,
+      $type: json['_converter'] as String?,
+    );
+
+_$_StringIsEmpty _$$_StringIsEmptyFromJson(Map<String, dynamic> json) =>
+    _$_StringIsEmpty(
+      $type: json['_converter'] as String?,
+    );
+
+_$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
+    _$_StringIsNotEmpty(
+      $type: json['_converter'] as String?,
+    );

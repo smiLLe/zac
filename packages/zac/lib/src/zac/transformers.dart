@@ -521,3 +521,49 @@ Value: $value
     );
   }
 }
+
+@defaultConverterFreezed
+class StringTransformer with _$StringTransformer implements ZacTransformer {
+  const StringTransformer._();
+  static const String unionValue = 'z:1:Transformer:String.length';
+  static const String unionValueSplit = 'z:1:Transformer:String.split';
+  static const String unionValueIsEmpty = 'z:1:Transformer:String.isEmpty';
+  static const String unionValueIsNotEmpty =
+      'z:1:Transformer:String.isNotEmpty';
+
+  factory StringTransformer.fromJson(Map<String, dynamic> json) =>
+      _$StringTransformerFromJson(json);
+
+  @FreezedUnionValue(StringTransformer.unionValue)
+  const factory StringTransformer.length() = _StringLength;
+
+  @FreezedUnionValue(StringTransformer.unionValueSplit)
+  const factory StringTransformer.split({required String pattern}) =
+      _StringSplit;
+
+  @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
+  const factory StringTransformer.isEmpty() = _StringIsEmpty;
+
+  @FreezedUnionValue(StringTransformer.unionValueIsNotEmpty)
+  const factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
+
+  @override
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
+    if (value is! String) {
+      throw ZacTransformError('''
+There was an error while trying to transform a value in $runtimeType.
+The value was expected to be a type of String but instead we got a "${value.runtimeType}".
+The value: $value
+''');
+    }
+
+    return map(
+      length: (_) => value.length,
+      split: (obj) => value.split(obj.pattern),
+      isEmpty: (_) => value.isEmpty,
+      isNotEmpty: (_) => value.isNotEmpty,
+    );
+  }
+}
