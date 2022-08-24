@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
@@ -316,6 +318,36 @@ but none was found.
 }
 
 @defaultConverterFreezed
+class ListTransformer with _$ListTransformer implements ZacTransformer {
+  const ListTransformer._();
+  static const String unionValue = 'z:1:Transformer:List.reversed';
+
+  factory ListTransformer.fromJson(Map<String, dynamic> json) =>
+      _$ListTransformerFromJson(json);
+
+  /// Will return a Iterable<dynamic>
+  @FreezedUnionValue(ListTransformer.unionValue)
+  const factory ListTransformer.reversed() = _ListReversed;
+
+  @override
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
+    if (value is! List) {
+      throw ZacTransformError('''
+There was an error while trying to transform a value in $runtimeType.
+The value was expected to be a type of List but instead we got a "${value.runtimeType}".
+The value: $value
+''');
+    }
+
+    return map(
+      reversed: (_) => value.reversed,
+    );
+  }
+}
+
+@defaultConverterFreezed
 class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
   static const String unionValue = 'z:1:Transformer:Object.isList';
@@ -564,6 +596,42 @@ The value: $value
       split: (obj) => value.split(obj.pattern),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
+    );
+  }
+}
+
+@defaultConverterFreezed
+class JsonTransformer with _$JsonTransformer implements ZacTransformer {
+  const JsonTransformer._();
+  static const String unionValue = 'z:1:Transformer:Json.encode';
+  static const String unionValueDecode = 'z:1:Transformer:Json.decode';
+
+  factory JsonTransformer.fromJson(Map<String, dynamic> json) =>
+      _$JsonTransformerFromJson(json);
+
+  @FreezedUnionValue(JsonTransformer.unionValue)
+  const factory JsonTransformer.encode() = _JsonEncode;
+
+  @FreezedUnionValue(JsonTransformer.unionValueDecode)
+  const factory JsonTransformer.decode() = _JsonDencode;
+
+  @override
+  Object? transform(ZacTransformValue transformValue,
+      SharedValueInteractionType interaction) {
+    final value = transformValue.value;
+
+    return map(
+      decode: (_) {
+        if (value is! String) {
+          throw ZacTransformError('''
+There was an error while trying to transform a value in $runtimeType.
+The value was expected to be a type of String but instead we got a "${value.runtimeType}".
+The value: $value
+''');
+        }
+        return jsonDecode(value);
+      },
+      encode: (_) => jsonEncode(value),
     );
   }
 }

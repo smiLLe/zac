@@ -1939,6 +1939,59 @@ abstract class _IterableTake extends IterableTransformer {
   int get count;
 }
 
+ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
+  return _ListReversed.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ListTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ListReversed value) reversed,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ListReversed extends _ListReversed {
+  const _$_ListReversed() : super._();
+
+  factory _$_ListReversed.fromJson(Map<String, dynamic> json) =>
+      _$$_ListReversedFromJson(json);
+
+  @override
+  String toString() {
+    return 'ListTransformer.reversed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ListReversed);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ListReversed value) reversed,
+  }) {
+    return reversed(this);
+  }
+}
+
+abstract class _ListReversed extends ListTransformer {
+  const factory _ListReversed() = _$_ListReversed;
+  const _ListReversed._() : super._();
+
+  factory _ListReversed.fromJson(Map<String, dynamic> json) =
+      _$_ListReversed.fromJson;
+}
+
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
   switch (json['_converter']) {
     case 'z:1:Transformer:Object.isList':
@@ -3511,4 +3564,119 @@ abstract class _StringIsNotEmpty extends StringTransformer {
 
   factory _StringIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsNotEmpty.fromJson;
+}
+
+JsonTransformer _$JsonTransformerFromJson(Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'z:1:Transformer:Json.encode':
+      return _JsonEncode.fromJson(json);
+    case 'z:1:Transformer:Json.decode':
+      return _JsonDencode.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, '_converter', 'JsonTransformer',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$JsonTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_JsonEncode value) encode,
+    required TResult Function(_JsonDencode value) decode,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_JsonEncode extends _JsonEncode {
+  const _$_JsonEncode({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Json.encode',
+        super._();
+
+  factory _$_JsonEncode.fromJson(Map<String, dynamic> json) =>
+      _$$_JsonEncodeFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'JsonTransformer.encode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_JsonEncode);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_JsonEncode value) encode,
+    required TResult Function(_JsonDencode value) decode,
+  }) {
+    return encode(this);
+  }
+}
+
+abstract class _JsonEncode extends JsonTransformer {
+  const factory _JsonEncode() = _$_JsonEncode;
+  const _JsonEncode._() : super._();
+
+  factory _JsonEncode.fromJson(Map<String, dynamic> json) =
+      _$_JsonEncode.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_JsonDencode extends _JsonDencode {
+  const _$_JsonDencode({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Json.decode',
+        super._();
+
+  factory _$_JsonDencode.fromJson(Map<String, dynamic> json) =>
+      _$$_JsonDencodeFromJson(json);
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'JsonTransformer.decode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_JsonDencode);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_JsonEncode value) encode,
+    required TResult Function(_JsonDencode value) decode,
+  }) {
+    return decode(this);
+  }
+}
+
+abstract class _JsonDencode extends JsonTransformer {
+  const factory _JsonDencode() = _$_JsonDencode;
+  const _JsonDencode._() : super._();
+
+  factory _JsonDencode.fromJson(Map<String, dynamic> json) =
+      _$_JsonDencode.fromJson;
 }

@@ -375,6 +375,27 @@ void main() {
     });
   });
 
+  group('List', () {
+    test('.reversed', () {
+      _expectFromJson<ListTransformer>(
+        fromJson: ListTransformer.fromJson,
+        converter: 'z:1:Transformer:List.reversed',
+        equals: const ListTransformer.reversed(),
+      );
+
+      expect(
+          const ListTransformer.reversed().transform(
+              ZacTransformValue(<String>['foo', 'bar']),
+              TestSharedValueInteractionType()),
+          ['bar', 'foo']);
+
+      expect(
+          () => const ListTransformer.reversed().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+  });
+
   group('Map', () {
     test('.values', () {
       _expectFromJson<MapTransformer>(
@@ -1181,6 +1202,41 @@ void main() {
       expect(
           () => const StringTransformer.isNotEmpty().transform(
               ZacTransformValue(Object()), TestSharedValueInteractionType()),
+          throwsA(isA<ZacTransformError>()));
+    });
+  });
+
+  group('Json', () {
+    test('.encode()', () {
+      _expectFromJson<JsonTransformer>(
+        fromJson: JsonTransformer.fromJson,
+        converter: 'z:1:Transformer:Json.encode',
+        equals: const JsonTransformer.encode(),
+      );
+
+      expect(
+          const JsonTransformer.encode().transform(
+              ZacTransformValue(['foo', 'bar']),
+              TestSharedValueInteractionType()),
+          '["foo","bar"]');
+    });
+
+    test('.decode()', () {
+      _expectFromJson<JsonTransformer>(
+        fromJson: JsonTransformer.fromJson,
+        converter: 'z:1:Transformer:Json.decode',
+        equals: const JsonTransformer.decode(),
+      );
+
+      expect(
+          const JsonTransformer.decode().transform(
+              ZacTransformValue('["foo", "bar"]'),
+              TestSharedValueInteractionType()),
+          ['foo', 'bar']);
+
+      expect(
+          () => const JsonTransformer.decode().transform(
+              ZacTransformValue(55), TestSharedValueInteractionType()),
           throwsA(isA<ZacTransformError>()));
     });
   });

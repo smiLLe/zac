@@ -169,6 +169,9 @@ _$_IterableTake _$$_IterableTakeFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
+_$_ListReversed _$$_ListReversedFromJson(Map<String, dynamic> json) =>
+    _$_ListReversed();
+
 _$_ObjectIsList _$$_ObjectIsListFromJson(Map<String, dynamic> json) =>
     _$_ObjectIsList(
       $type: json['_converter'] as String?,
@@ -300,5 +303,15 @@ _$_StringIsEmpty _$$_StringIsEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
     _$_StringIsNotEmpty(
+      $type: json['_converter'] as String?,
+    );
+
+_$_JsonEncode _$$_JsonEncodeFromJson(Map<String, dynamic> json) =>
+    _$_JsonEncode(
+      $type: json['_converter'] as String?,
+    );
+
+_$_JsonDencode _$$_JsonDencodeFromJson(Map<String, dynamic> json) =>
+    _$_JsonDencode(
       $type: json['_converter'] as String?,
     );

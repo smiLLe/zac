@@ -120,6 +120,7 @@ Map<String, Convert> allConverters = const {
   IterableTransformer.unionValueElementAt: IterableTransformer.fromJson,
   IterableTransformer.unionValueSkip: IterableTransformer.fromJson,
   IterableTransformer.unionValueTake: IterableTransformer.fromJson,
+  ListTransformer.unionValue: ListTransformer.fromJson,
   MapTransformer.unionValue: MapTransformer.fromJson,
   MapTransformer.unionValueKeys: MapTransformer.fromJson,
   MapTransformer.unionValueEntries: MapTransformer.fromJson,
@@ -158,6 +159,8 @@ Map<String, Convert> allConverters = const {
   StringTransformer.unionValueSplit: StringTransformer.fromJson,
   StringTransformer.unionValueIsEmpty: StringTransformer.fromJson,
   StringTransformer.unionValueIsNotEmpty: StringTransformer.fromJson,
+  JsonTransformer.unionValue: JsonTransformer.fromJson,
+  JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState
