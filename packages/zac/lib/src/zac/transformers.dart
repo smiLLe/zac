@@ -18,10 +18,22 @@ class ZacTransformError extends StateError {
 
 @defaultConverterFreezed
 class ZacTransformValue with _$ZacTransformValue {
+  ZacTransformValue._();
+
   factory ZacTransformValue(
     Object? value, {
     Map<String, Object?>? extra,
   }) = _ZacTransformValue;
+
+  ZacTransformValue withExtra(Object? value, Map<String, Object?> extra) {
+    return ZacTransformValue(
+      value,
+      extra: <String, Object?>{
+        if (null != this.extra) ...this.extra!,
+        ...extra,
+      },
+    );
+  }
 }
 
 abstract class ZacTransformer {
@@ -37,7 +49,7 @@ extension ZacTransformerOnList on List<ZacTransformer> {
       ZacTransformValue value, SharedValueInteractionType interaction) {
     return fold<ZacTransformValue>(value, (previousValue, element) {
       final obj = element.transform(previousValue, interaction);
-      return ZacTransformValue(obj, extra: previousValue.extra);
+      return ZacTransformValue(obj);
     }).value;
   }
 }
@@ -176,11 +188,11 @@ but none was found.
           dynamic updatedValue = value;
           if (true == obj.keyTransformer?.isNotEmpty) {
             updatedKey = obj.keyTransformer?.transformSharedValues(
-                ZacTransformValue(key, extra: {'value': value}), interaction);
+                transformValue.withExtra(key, {'value': value}), interaction);
           }
           if (true == obj.valueTransformer?.isNotEmpty) {
             updatedValue = obj.valueTransformer?.transformSharedValues(
-                ZacTransformValue(value, extra: {'key': key}), interaction);
+                transformValue.withExtra(value, {'key': key}), interaction);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);

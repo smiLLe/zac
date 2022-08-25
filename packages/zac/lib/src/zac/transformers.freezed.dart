@@ -32,9 +32,10 @@ mixin _$ZacTransformValue {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacTransformValue implements _ZacTransformValue {
+class _$_ZacTransformValue extends _ZacTransformValue {
   _$_ZacTransformValue(this.value, {final Map<String, Object?>? extra})
-      : _extra = extra;
+      : _extra = extra,
+        super._();
 
   factory _$_ZacTransformValue.fromJson(Map<String, dynamic> json) =>
       _$$_ZacTransformValueFromJson(json);
@@ -80,9 +81,10 @@ class _$_ZacTransformValue implements _ZacTransformValue {
   }
 }
 
-abstract class _ZacTransformValue implements ZacTransformValue {
+abstract class _ZacTransformValue extends ZacTransformValue {
   factory _ZacTransformValue(final Object? value,
       {final Map<String, Object?>? extra}) = _$_ZacTransformValue;
+  _ZacTransformValue._() : super._();
 
   factory _ZacTransformValue.fromJson(Map<String, dynamic> json) =
       _$_ZacTransformValue.fromJson;
