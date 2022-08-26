@@ -25,3 +25,4 @@ doc/api/
 
 *.iml
 .DS_Store
+packages/**/pubspec_overrides.yaml
