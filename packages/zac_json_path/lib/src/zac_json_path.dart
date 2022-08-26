@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/zac.dart';
 import 'package:json_path/json_path.dart';

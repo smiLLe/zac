@@ -10,8 +10,6 @@ import 'package:zac/src/zac/update_context.dart';
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
 
-Type _typeOf<T>() => T;
-
 class ZacTransformError extends StateError {
   ZacTransformError(super.message);
 }
