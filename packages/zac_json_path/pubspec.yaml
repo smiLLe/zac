@@ -11,8 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
   json_path: ^0.4.2
-  freezed_annotation: ^2.0.3
-  json_annotation: ^4.5.0
   zac:
 
 dev_dependencies:
