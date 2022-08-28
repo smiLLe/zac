@@ -2351,9 +2351,9 @@ abstract class _ObjectHashCode extends ObjectTransformer {
 class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
     with ConsumeValue<Object> {
   _$_ObjectEqualsSharedValue(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.read(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
         super._();
@@ -2422,8 +2422,8 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer
     implements ConsumeValue<Object> {
   factory _ObjectEqualsSharedValue(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$_ObjectEqualsSharedValue;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =

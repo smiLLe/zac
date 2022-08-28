@@ -52,7 +52,7 @@ void main() {
           family: 'foo',
           value: 'hello',
           builder: (c) => FlutterText(
-            ZacString.consume('foo', [_ConcatStr(' world')]),
+            ZacString.consume('foo', transformer: [_ConcatStr(' world')]),
           ).buildWidget(c),
         ),
       );
@@ -103,7 +103,7 @@ void main() {
       expect(
           ZacList.consume(
             'foo',
-            [
+            transformer: [
               IterableTransformer.map(transformer: [_ConcatStr('bar')]),
               const IterableTransformer.toList()
             ],
@@ -267,8 +267,9 @@ void main() {
           builder: (c) => FlutterText(
             ZacString.consume(
               'shared',
-              [_ConcatStr('baz')],
-              SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
+              transformer: [_ConcatStr('baz')],
+              consumeType:
+                  SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
             ),
           ).buildWidget(c),
         ),
@@ -344,7 +345,7 @@ void main() {
         ),
       );
 
-      ZacInt.consume('foo', [transformer]).getValue(context);
+      ZacInt.consume('foo', transformer: [transformer]).getValue(context);
 
       verify(transformer.transform(ZacTransformValue(1),
           argThat(isA<ZacSharedValueInteractionTypeConsume>())));

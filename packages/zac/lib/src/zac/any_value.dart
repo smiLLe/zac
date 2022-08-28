@@ -205,10 +205,10 @@ class ZacInt with _$ZacInt {
   @FreezedUnionValue(ZacInt.unionValueConsume)
   @With<ConsumeValue<int>>()
   factory ZacInt.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacIntConsume;
+  }) = ZacIntConsume;
 
   int getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -242,10 +242,10 @@ class ZacDouble with _$ZacDouble {
   @FreezedUnionValue(ZacDouble.unionValueConsume)
   @With<ConsumeValue<double>>()
   factory ZacDouble.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacDoubleConsume;
+  }) = ZacDoubleConsume;
 
   double getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -276,10 +276,10 @@ class ZacString with _$ZacString {
   @FreezedUnionValue(ZacString.unionValueConsume)
   @With<ConsumeValue<String>>()
   factory ZacString.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacStringConsume;
+  }) = ZacStringConsume;
 
   String getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -310,10 +310,10 @@ class ZacBool with _$ZacBool {
   @FreezedUnionValue(ZacBool.unionValueConsume)
   @With<ConsumeValue<bool>>()
   factory ZacBool.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacBoolConsume;
+  }) = ZacBoolConsume;
 
   bool getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -355,10 +355,10 @@ class ZacMap with _$ZacMap {
   @FreezedUnionValue(ZacMap.unionValueConsume)
   @With<ConsumeValue<Map<String, dynamic>>>()
   factory ZacMap.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacMapConsume;
+  }) = ZacMapConsume;
 
   Map<String, dynamic> getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -399,10 +399,10 @@ class ZacList with _$ZacList {
   @FreezedUnionValue(ZacList.unionValueConsume)
   @With<ConsumeValue<List<dynamic>>>()
   factory ZacList.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacListConsume;
+  }) = ZacListConsume;
 
   List<dynamic> getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -447,10 +447,10 @@ class ZacObject with _$ZacObject {
   @FreezedUnionValue(ZacObject.unionValueConsume)
   @With<ConsumeValue<Object>>()
   factory ZacObject.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ZacObjectConsume;
+  }) = ZacObjectConsume;
 
   Object getValue(ZacBuildContext context) => map(
         (obj) => obj.value,
@@ -485,10 +485,10 @@ class ListOfZacWidget with _$ListOfZacWidget {
   @FreezedUnionValue(ListOfZacWidget.unionValueConsume)
   @With<ConsumeValueList<ZacWidget>>()
   factory ListOfZacWidget.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = ListOfZacWidgetConsume;
+  }) = ListOfZacWidgetConsume;
 
   List<Widget> getValue(ZacBuildContext context) => map(
         (obj) => obj.value.map((e) => e.buildWidget(context)).toList(),
@@ -512,10 +512,10 @@ class ZacWidgetConsumerBuilder
   @FreezedUnionValue(ZacWidgetConsumerBuilder.unionValue)
   @With<ConsumeValue<ZacWidget>>()
   factory ZacWidgetConsumerBuilder(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = _ZacWidgetConsumerBuilder;
+  }) = _ZacWidgetConsumerBuilder;
 
   @override
   Widget buildWidget(ZacBuildContext context) {

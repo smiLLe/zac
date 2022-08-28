@@ -40,10 +40,10 @@ class ZacFlutterGlobalKeyNavigatorState
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
   factory ZacFlutterGlobalKeyNavigatorState.consume(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  ]) = _ZacFlutterGlobalKeyNavigatorStateConsume;
+  }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
   @override
   Widget buildWidget(ZacBuildContext context) {

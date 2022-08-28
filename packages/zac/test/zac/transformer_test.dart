@@ -795,8 +795,8 @@ void main() {
         _expectFromJson<ObjectTransformer>(
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
-          equals: ObjectTransformer.equalsSharedValue(
-              'shared', null, const SharedValueConsumeType.read()),
+          equals: ObjectTransformer.equalsSharedValue('shared',
+              consumeType: const SharedValueConsumeType.read()),
           props: <String, dynamic>{
             'family': 'shared',
           },
@@ -805,8 +805,8 @@ void main() {
 
       test('throws if no ZacContext found', () {
         expect(
-            () => ObjectTransformer.equalsSharedValue(
-                    'shared', null, const SharedValueConsumeType.read())
+            () => ObjectTransformer.equalsSharedValue('shared',
+                    consumeType: const SharedValueConsumeType.read())
                 .transform(ZacTransformValue('ignore'),
                     TestSharedValueInteractionType()),
             throwsA(isA<ZacTransformError>()));

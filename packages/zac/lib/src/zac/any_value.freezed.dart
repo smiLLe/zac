@@ -95,9 +95,9 @@ abstract class ZacIntValue extends ZacInt implements ActualValue<int> {
 @JsonSerializable(createToJson: false)
 class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
   _$ZacIntConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacInt.consume',
         super._();
@@ -160,8 +160,8 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
 
 abstract class ZacIntConsume extends ZacInt implements ConsumeValue<int> {
   factory ZacIntConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacIntConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacIntConsume;
   ZacIntConsume._() : super._();
 
   factory ZacIntConsume.fromJson(Map<String, dynamic> json) =
@@ -253,9 +253,9 @@ abstract class ZacDoubleValue extends ZacDouble implements ActualValue<double> {
 @JsonSerializable(createToJson: false)
 class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
   _$ZacDoubleConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacDouble.consume',
         super._();
@@ -319,8 +319,8 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
 abstract class ZacDoubleConsume extends ZacDouble
     implements ConsumeValue<double> {
   factory ZacDoubleConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacDoubleConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacDoubleConsume;
   ZacDoubleConsume._() : super._();
 
   factory ZacDoubleConsume.fromJson(Map<String, dynamic> json) =
@@ -412,9 +412,9 @@ abstract class ZacStringValue extends ZacString implements ActualValue<String> {
 @JsonSerializable(createToJson: false)
 class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
   _$ZacStringConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacString.consume',
         super._();
@@ -478,8 +478,8 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
 abstract class ZacStringConsume extends ZacString
     implements ConsumeValue<String> {
   factory ZacStringConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacStringConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacStringConsume;
   ZacStringConsume._() : super._();
 
   factory ZacStringConsume.fromJson(Map<String, dynamic> json) =
@@ -571,9 +571,9 @@ abstract class ZacBoolValue extends ZacBool implements ActualValue<bool> {
 @JsonSerializable(createToJson: false)
 class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
   _$ZacBoolConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacBool.consume',
         super._();
@@ -636,8 +636,8 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
 
 abstract class ZacBoolConsume extends ZacBool implements ConsumeValue<bool> {
   factory ZacBoolConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacBoolConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacBoolConsume;
   ZacBoolConsume._() : super._();
 
   factory ZacBoolConsume.fromJson(Map<String, dynamic> json) =
@@ -736,9 +736,9 @@ abstract class ZacMapValue extends ZacMap
 class _$ZacMapConsume extends ZacMapConsume
     with ConsumeValue<Map<String, dynamic>> {
   _$ZacMapConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacMap.consume',
         super._();
@@ -802,8 +802,8 @@ class _$ZacMapConsume extends ZacMapConsume
 abstract class ZacMapConsume extends ZacMap
     implements ConsumeValue<Map<String, dynamic>> {
   factory ZacMapConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacMapConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacMapConsume;
   ZacMapConsume._() : super._();
 
   factory ZacMapConsume.fromJson(Map<String, dynamic> json) =
@@ -901,9 +901,9 @@ abstract class ZacListValue extends ZacList
 @JsonSerializable(createToJson: false)
 class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
   _$ZacListConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacList.consume',
         super._();
@@ -967,8 +967,8 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
 abstract class ZacListConsume extends ZacList
     implements ConsumeValue<List<dynamic>> {
   factory ZacListConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacListConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacListConsume;
   ZacListConsume._() : super._();
 
   factory ZacListConsume.fromJson(Map<String, dynamic> json) =
@@ -1060,9 +1060,9 @@ abstract class ZacObjectValue extends ZacObject implements ActualValue<Object> {
 @JsonSerializable(createToJson: false)
 class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
   _$ZacObjectConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ZacObject.consume',
         super._();
@@ -1126,8 +1126,8 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
 abstract class ZacObjectConsume extends ZacObject
     implements ConsumeValue<Object> {
   factory ZacObjectConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ZacObjectConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ZacObjectConsume;
   ZacObjectConsume._() : super._();
 
   factory ZacObjectConsume.fromJson(Map<String, dynamic> json) =
@@ -1228,9 +1228,9 @@ abstract class ListOfZacWidgetValue extends ListOfZacWidget
 class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
     with ConsumeValueList<ZacWidget> {
   _$ListOfZacWidgetConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:ListOfZacWidget.consume',
         super._();
@@ -1294,8 +1294,8 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
 abstract class ListOfZacWidgetConsume extends ListOfZacWidget
     implements ConsumeValueList<ZacWidget> {
   factory ListOfZacWidgetConsume(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$ListOfZacWidgetConsume;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$ListOfZacWidgetConsume;
   ListOfZacWidgetConsume._() : super._();
 
   factory ListOfZacWidgetConsume.fromJson(Map<String, dynamic> json) =
@@ -1329,8 +1329,8 @@ mixin _$ZacWidgetConsumerBuilder {
 class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
     with ConsumeValue<ZacWidget> {
   _$_ZacWidgetConsumerBuilder(this.family,
-      [final List<ZacTransformer>? transformer,
-      this.consumeType = const SharedValueConsumeType.watch()])
+      {final List<ZacTransformer>? transformer,
+      this.consumeType = const SharedValueConsumeType.watch()})
       : _transformer = transformer,
         super._();
 
@@ -1389,8 +1389,8 @@ class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
 abstract class _ZacWidgetConsumerBuilder extends ZacWidgetConsumerBuilder
     implements ConsumeValue<ZacWidget> {
   factory _ZacWidgetConsumerBuilder(final Object family,
-      [final List<ZacTransformer>? transformer,
-      final SharedValueConsumeType consumeType]) = _$_ZacWidgetConsumerBuilder;
+      {final List<ZacTransformer>? transformer,
+      final SharedValueConsumeType consumeType}) = _$_ZacWidgetConsumerBuilder;
   _ZacWidgetConsumerBuilder._() : super._();
 
   factory _ZacWidgetConsumerBuilder.fromJson(Map<String, dynamic> json) =

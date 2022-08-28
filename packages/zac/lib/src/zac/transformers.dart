@@ -394,10 +394,10 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   @With<ConsumeValue<Object?>>()
   factory ObjectTransformer.equalsSharedValue(
-    SharedValueFamily family, [
+    SharedValueFamily family, {
     List<ZacTransformer>? transformer,
     @Default(SharedValueConsumeType.read()) SharedValueConsumeType consumeType,
-  ]) = _ObjectEqualsSharedValue;
+  }) = _ObjectEqualsSharedValue;
 
   @override
   Object? transform(ZacTransformValue transformValue,

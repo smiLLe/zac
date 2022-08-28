@@ -207,14 +207,14 @@ _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
       json['family'] as Object,
-      (json['transformer'] as List<dynamic>?)
+      transformer: (json['transformer'] as List<dynamic>?)
           ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['consumeType'] == null
+      consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.read()
           : SharedValueConsumeType.fromJson(
               json['consumeType'] as Map<String, dynamic>),
-      json['_converter'] as String?,
+      $type: json['_converter'] as String?,
     );
 
 _$_NumToDouble _$$_NumToDoubleFromJson(Map<String, dynamic> json) =>

@@ -132,9 +132,9 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     extends _ZacFlutterGlobalKeyNavigatorStateConsume
     with ConsumeValue<GlobalKey<NavigatorState>> {
   _$_ZacFlutterGlobalKeyNavigatorStateConsume(this.family,
-      [final List<ZacTransformer>? transformer,
+      {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type])
+      final String? $type})
       : _transformer = transformer,
         $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
         super._();
@@ -202,8 +202,8 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
     extends ZacFlutterGlobalKeyNavigatorState
     implements ConsumeValue<GlobalKey<NavigatorState>> {
   factory _ZacFlutterGlobalKeyNavigatorStateConsume(final Object family,
-          [final List<ZacTransformer>? transformer,
-          final SharedValueConsumeType consumeType]) =
+          {final List<ZacTransformer>? transformer,
+          final SharedValueConsumeType consumeType}) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume;
   _ZacFlutterGlobalKeyNavigatorStateConsume._() : super._();
 
