@@ -84,7 +84,7 @@ void main() {
     expect(
         ZacTemplateExpressionsTransformer(expression: r'''${tValue}''')
             .transform('hello world',
-                ZacSharedValueInteractionType.consume(context: context)),
+                SharedValueInteractionType.consume(context: context)),
         'hello world');
 
     expect(
@@ -93,18 +93,8 @@ void main() {
           context: {
             'hello': ZacObject('hello world'),
           },
-        ).transform(
-            null, ZacSharedValueInteractionType.consume(context: context)),
+        ).transform(null, SharedValueInteractionType.consume(context: context)),
         'hello world');
-
-    expect(
-        () => ZacTemplateExpressionsTransformer(
-              expression: '',
-              context: {
-                'will': ZacObject('throw'),
-              },
-            ).transform('hello world', TestSharedValueInteractionType()),
-        throwsA(isA<ZacTemplateExpressionsTransformerError>()));
   });
 }
 
@@ -123,5 +113,3 @@ class LeakContext with _$LeakContext implements ZacWidget {
     return child?.buildWidget(context) ?? const SizedBox.shrink();
   }
 }
-
-class TestSharedValueInteractionType extends SharedValueInteractionType {}

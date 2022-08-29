@@ -131,7 +131,7 @@ class NoopAction with _$NoopAction implements ZacAction {
 
 @GenerateMocks([WhenZacCb])
 class WhenZacCb<T> extends Mock {
-  T? call(ZacSharedValueInteractionType obj);
+  T? call(SharedValueInteractionType obj);
 }
 
 @GenerateMocks([WhenNotZacCb])

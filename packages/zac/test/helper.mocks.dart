@@ -43,7 +43,7 @@ class MockWhenZacCb<T> extends _i1.Mock implements _i2.WhenZacCb<T> {
   }
 
   @override
-  T? call(_i5.ZacSharedValueInteractionType? obj) =>
+  T? call(_i5.SharedValueInteractionType? obj) =>
       (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
 }
 

@@ -249,7 +249,8 @@ void main() {
             SharedValue.transform(
               [_ConcatStr('bar'), _ConcatStr('baz')],
               'foo',
-              TestSharedValueInteractionType(),
+              SharedValueInteractionType.consume(
+                  context: FakeZacWidgetContext()),
             ),
             equals('foobarbaz'));
       });
@@ -280,33 +281,6 @@ void main() {
   });
 
   group('SharedValueInteractionType', () {
-    test('.whenZac()', () {
-      final cb = MockWhenZacCb<String>();
-      final cbOrElse = MockWhenNotZacCb<String>();
-      when(cb(any)).thenAnswer((_) => 'foo');
-      when(cbOrElse(any)).thenAnswer((_) => 'foo');
-      ZacSharedValueInteractionType.provide(context: FakeZacWidgetContext())
-          .whenZac(cb, orElse: cbOrElse);
-      TestSharedValueInteractionType().whenZac(cb, orElse: cbOrElse);
-      verify(cb(argThat(isA<ZacSharedValueInteractionTypeProvide>())))
-          .called(1);
-      verify(cbOrElse(argThat(isA<TestSharedValueInteractionType>())))
-          .called(1);
-      verifyNoMoreInteractions(cb);
-      verifyNoMoreInteractions(cbOrElse);
-    });
-
-    test('.whenZac() return value', () {
-      expect(
-          ZacSharedValueInteractionType.provide(context: FakeZacWidgetContext())
-              .whenZac((_) => 'foo', orElse: (_) => 'bar'),
-          'foo');
-      expect(
-          TestSharedValueInteractionType()
-              .whenZac((_) => 'foo', orElse: (_) => 'bar'),
-          'bar');
-    });
-
     testWidgets('when provided', (tester) async {
       final transformer = MockTransformerCb();
       when(transformer.transform(any, any))
@@ -325,7 +299,7 @@ void main() {
       );
 
       verify(transformer.transform(ZacTransformValue(1),
-          argThat(isA<ZacSharedValueInteractionTypeProvide>())));
+          argThat(isA<SharedValueInteractionTypeProvide>())));
     });
 
     testWidgets('when consumed', (tester) async {
@@ -348,7 +322,7 @@ void main() {
       ZacInt.consume('foo', transformer: [transformer]).getValue(context);
 
       verify(transformer.transform(ZacTransformValue(1),
-          argThat(isA<ZacSharedValueInteractionTypeConsume>())));
+          argThat(isA<SharedValueInteractionTypeConsume>())));
     });
 
     testWidgets('in action consumed', (tester) async {
@@ -376,7 +350,7 @@ void main() {
 
       verify(transformer.transform(
           ZacTransformValue(2),
-          argThat(isA<ZacSharedValueInteractionTypeAction>()
+          argThat(isA<SharedValueInteractionTypeAction>()
               .having((p0) => p0.current, 'current', 1))));
     });
   });
@@ -393,5 +367,3 @@ class _ConcatStr implements ZacTransformer {
     return (transformValue.value as String) + str;
   }
 }
-
-class TestSharedValueInteractionType extends SharedValueInteractionType {}

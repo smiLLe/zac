@@ -46,19 +46,8 @@ class ZacTemplateExpressionsTransformer
           syntax: [syntax.map((_) => const StandardExpressionSyntax())],
         );
 
-        final templateContext =
-            obj.context?.map<String, Object?>((key, value) => MapEntry(
-                key,
-                interaction.whenZac<Object?>(
-                  (obj) => value.getValue(obj.context),
-                  orElse: (_) =>
-                      throw ZacTemplateExpressionsTransformerError('''
-There was an error while trying to transform a value in ${obj.runtimeType}
-for converter "${ZacTemplateExpressionsTransformer.unionValue}".
-A $ZacBuildContext is required through a $SharedValueInteractionType
-but none was found.
-'''),
-                )));
+        final templateContext = obj.context?.map<String, Object?>(
+            (key, value) => MapEntry(key, value.getValue(interaction.context)));
         return template.process(context: <dynamic, dynamic>{
           'tValue': value,
           if (null != templateContext) ...templateContext,

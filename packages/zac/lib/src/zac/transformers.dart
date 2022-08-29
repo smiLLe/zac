@@ -5,7 +5,6 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -155,31 +154,10 @@ The value: $value
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
-      containsKey: (obj) {
-        final ctx = interaction.whenZac<ZacBuildContext>(
-          (obj) => obj.context,
-          orElse: (_) => throw ZacTransformError('''
-There was an error while trying to transform a value in ${obj.runtimeType}
-for converter "${MapTransformer.unionValueContainsKey}".
-A $ZacBuildContext is required through a $SharedValueInteractionType
-but none was found.
-'''),
-        );
-
-        return value.containsKey(obj.key?.getValue(ctx));
-      },
-      containsValue: (obj) {
-        final ctx = interaction.whenZac<ZacBuildContext>(
-          (obj) => obj.context,
-          orElse: (_) => throw ZacTransformError('''
-There was an error while trying to transform a value in ${obj.runtimeType}
-for converter "${MapTransformer.unionValueContainsValue}".
-A $ZacBuildContext is required through a $SharedValueInteractionType
-but none was found.
-'''),
-        );
-        return value.containsValue(obj.value?.getValue(ctx));
-      },
+      containsKey: (obj) =>
+          value.containsKey(obj.key?.getValue(interaction.context)),
+      containsValue: (obj) =>
+          value.containsValue(obj.value?.getValue(interaction.context)),
       mapper: (obj) {
         return value.map<dynamic, dynamic>((dynamic key, dynamic value) {
           dynamic updatedKey = key;
@@ -308,18 +286,8 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) {
-        final ctx = interaction.whenZac<ZacBuildContext>(
-          (obj) => obj.context,
-          orElse: (_) => throw ZacTransformError('''
-There was an error while trying to transform a value in ${obj.runtimeType}
-for converter "${IterableTransformer.unionValueContains}".
-A $ZacBuildContext is required through a $SharedValueInteractionType
-but none was found.
-'''),
-        );
-        return value.contains(obj.element?.getValue(ctx));
-      },
+      contains: (obj) =>
+          value.contains(obj.element?.getValue(interaction.context)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -408,15 +376,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) {
-        final zacContext = interaction.whenZac(
-          (obj) => obj.context,
-          orElse: (_) => throw ZacTransformError('''
-There was an error while trying to compare two values in ${obj.runtimeType}
-for converter "${ObjectTransformer.unionValueEqualsSharedValue}".
-A $ZacBuildContext was required but was not accesible through $SharedValueInteractionType.
-'''),
-        );
-        final sValue = obj.getSharedValue(zacContext);
+        final sValue = obj.getSharedValue(interaction.context);
         return sValue == value;
       },
       hashCode: (_) => value.hashCode,

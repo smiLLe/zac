@@ -54,7 +54,7 @@ See "$SharedValueProviderBuilder" for more info.
         return context.ref.watch(SharedValue.provider(family).select(
             (sharedValue) => obj.select!.transformSharedValues(
                 ZacTransformValue(_extractData(sharedValue, error)),
-                ZacSharedValueInteractionType.consume(context: context))));
+                SharedValueInteractionType.consume(context: context))));
       },
       read: (_) => _extractData(context.ref.read(provider(family)), error),
     );
@@ -95,38 +95,23 @@ in your Widget tree before trying to update the $SharedValue.''')));
   }
 }
 
-abstract class SharedValueInteractionType {}
-
-extension WhenZacSharedValueInteractionType on SharedValueInteractionType {
-  T whenZac<T extends Object?>(T Function(ZacSharedValueInteractionType obj) cb,
-      {required T Function(SharedValueInteractionType obj) orElse}) {
-    if (this is ZacSharedValueInteractionType) {
-      return cb(this as ZacSharedValueInteractionType);
-    }
-
-    return orElse(this);
-  }
-}
-
 @nonConverterFreezed
-class ZacSharedValueInteractionType
-    with _$ZacSharedValueInteractionType
-    implements SharedValueInteractionType {
-  const ZacSharedValueInteractionType._();
+class SharedValueInteractionType with _$SharedValueInteractionType {
+  const SharedValueInteractionType._();
 
-  factory ZacSharedValueInteractionType.action({
+  factory SharedValueInteractionType.action({
     required ZacBuildContext context,
     required ActionPayload payload,
     required Object? current,
-  }) = ZacSharedValueInteractionTypeAction;
+  }) = SharedValueInteractionTypeAction;
 
-  factory ZacSharedValueInteractionType.consume({
+  factory SharedValueInteractionType.consume({
     required ZacBuildContext context,
-  }) = ZacSharedValueInteractionTypeConsume;
+  }) = SharedValueInteractionTypeConsume;
 
-  factory ZacSharedValueInteractionType.provide({
+  factory SharedValueInteractionType.provide({
     required ZacBuildContext context,
-  }) = ZacSharedValueInteractionTypeProvide;
+  }) = SharedValueInteractionTypeProvide;
 }
 
 @defaultConverterFreezed
@@ -155,7 +140,7 @@ class UpdateSharedValueAction
             : SharedValue.transform(
                 transformer!,
                 value,
-                ZacSharedValueInteractionType.action(
+                SharedValueInteractionType.action(
                   context: context,
                   payload: payload,
                   current: current,
@@ -233,7 +218,7 @@ class SharedValueProvider extends HookConsumerWidget {
         return SharedValue(null == transformer || true == transformer!.isEmpty
             ? value
             : SharedValue.transform(transformer!, value,
-                ZacSharedValueInteractionType.provide(context: zacContext)));
+                SharedValueInteractionType.provide(context: zacContext)));
       },
       [value, family, transformer],
     );
