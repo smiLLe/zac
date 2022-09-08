@@ -18,7 +18,7 @@ ActionPayload _$ActionPayloadFromJson(Map<String, dynamic> json) {
   switch (json['_converter']) {
     case 'none':
       return _ActionPayloadNone.fromJson(json);
-    case 'withData':
+    case 'default':
       return _ActionPayloadWithData.fromJson(json);
 
     default:
@@ -30,9 +30,9 @@ ActionPayload _$ActionPayloadFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ActionPayload {
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_ActionPayloadWithData value) $default, {
     required TResult Function(_ActionPayloadNone value) none,
-    required TResult Function(_ActionPayloadWithData value) withData,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -65,9 +65,9 @@ class _$_ActionPayloadNone implements _ActionPayloadNone {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_ActionPayloadWithData value) $default, {
     required TResult Function(_ActionPayloadNone value) none,
-    required TResult Function(_ActionPayloadWithData value) withData,
   }) {
     return none(this);
   }
@@ -84,7 +84,7 @@ abstract class _ActionPayloadNone implements ActionPayload {
 @JsonSerializable(createToJson: false)
 class _$_ActionPayloadWithData implements _ActionPayloadWithData {
   _$_ActionPayloadWithData(this.data, {final String? $type})
-      : $type = $type ?? 'withData';
+      : $type = $type ?? 'default';
 
   factory _$_ActionPayloadWithData.fromJson(Map<String, dynamic> json) =>
       _$$_ActionPayloadWithDataFromJson(json);
@@ -97,7 +97,7 @@ class _$_ActionPayloadWithData implements _ActionPayloadWithData {
 
   @override
   String toString() {
-    return 'ActionPayload.withData(data: $data)';
+    return 'ActionPayload(data: $data)';
   }
 
   @override
@@ -115,11 +115,11 @@ class _$_ActionPayloadWithData implements _ActionPayloadWithData {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_ActionPayloadWithData value) $default, {
     required TResult Function(_ActionPayloadNone value) none,
-    required TResult Function(_ActionPayloadWithData value) withData,
   }) {
-    return withData(this);
+    return $default(this);
   }
 }
 

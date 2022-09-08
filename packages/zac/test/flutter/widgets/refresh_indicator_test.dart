@@ -78,7 +78,7 @@ void main() {
         body: FlutterRefreshIndicator(
           onRefresh: ZacActions([
             LeakAction(executeCb),
-            FlutterRefreshIndicatorAction(),
+            const FlutterRefreshIndicatorAction(),
           ]),
           key: FlutterValueKey('FIND_ME'),
           child: FlutterListView(
@@ -101,7 +101,7 @@ void main() {
             argThat(isA<ActionPayload>().having(
                 (p) => p.map(
                       none: (_) => throw Exception(''),
-                      withData: (payload) => payload.data,
+                      (payload) => payload.data,
                     ),
                 'payload.data',
                 isA<Completer>()))))

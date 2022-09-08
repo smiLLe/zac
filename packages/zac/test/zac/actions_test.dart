@@ -162,7 +162,7 @@ void main() {
       SharedValue.update(context, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
-      verify(cb(any, ActionPayload.withData(2))).called(1);
+      verify(cb(any, ActionPayload(2))).called(1);
       verifyNoMoreInteractions(cb);
     });
   });

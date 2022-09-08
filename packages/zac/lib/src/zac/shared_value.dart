@@ -86,7 +86,7 @@ in your Widget tree before trying to update the $SharedValue.''')));
       ZacBuildContext context, SharedValueFamily family, ZacActions actions) {
     context.ref.listen<SharedValue>(SharedValue.provider(family),
         (previous, next) {
-      actions.execute(context, ActionPayload.withData(_extractData(next, '''
+      actions.execute(context, ActionPayload(_extractData(next, '''
 It was not possible to listen for $SharedValue($family) changes and execute actions,
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"

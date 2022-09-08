@@ -48,7 +48,7 @@ class FlutterRefreshIndicator
       child: child.buildWidget(context),
       onRefresh: () async {
         final completer = Completer<void>();
-        onRefresh.execute(context, ActionPayload.withData(completer));
+        onRefresh.execute(context, ActionPayload(completer));
         return completer.future;
       },
       displacement: displacement?.getValue(context) ?? 40.0,

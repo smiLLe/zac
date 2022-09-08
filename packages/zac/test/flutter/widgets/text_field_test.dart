@@ -104,7 +104,7 @@ void main() {
     await tester.enterText(findMe, 'hello world');
     await tester.pump();
 
-    verify(executeCb(any, ActionPayload.withData('hello world')));
+    verify(executeCb(any, ActionPayload('hello world')));
   });
 
   testWidgets(

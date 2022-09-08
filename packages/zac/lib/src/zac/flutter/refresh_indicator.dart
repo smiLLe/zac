@@ -31,7 +31,7 @@ class FlutterRefreshIndicatorAction
 There was an error in $FlutterRefreshIndicatorAction where no payload was found.
 It is expected to receive a $Completer from $FlutterRefreshIndicator.
 '''),
-      withData: (payload) {
+      (payload) {
         if (payload.data is! Completer<void>) {
           throw StateError('''
 There was an error in $FlutterRefreshIndicatorAction.

@@ -24,7 +24,7 @@ abstract class ZacAction {
 @defaultConverterFreezed
 class ActionPayload with _$ActionPayload {
   const factory ActionPayload.none() = _ActionPayloadNone;
-  factory ActionPayload.withData(Object? data) = _ActionPayloadWithData;
+  factory ActionPayload(Object? data) = _ActionPayloadWithData;
 }
 
 void Function()? actionsCallback(ZacActions? actions, ZacBuildContext context) {
@@ -35,8 +35,7 @@ void Function()? actionsCallback(ZacActions? actions, ZacBuildContext context) {
 void Function(Object? data)? actionsCallback1(
     ZacActions? actions, ZacBuildContext context) {
   if (null == actions) return null;
-  return (Object? data) =>
-      actions.execute(context, ActionPayload.withData(data));
+  return (Object? data) => actions.execute(context, ActionPayload(data));
 }
 
 @defaultConverterFreezed
