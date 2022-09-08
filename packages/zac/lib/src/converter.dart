@@ -5,6 +5,7 @@ import 'package:zac/src/flutter/widgets/material/material_app.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
+import 'package:zac/src/zac/flutter/refresh_indicator.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import 'package:zac/src/zac/widget_builder.dart';
@@ -206,6 +207,8 @@ Map<String, Convert> allConverters = const {
       FlutterScaffoldMessenger.fromJson,
   FlutterScaffoldMessenger.unionValueRemoveCurrentMaterialBanner:
       FlutterScaffoldMessenger.fromJson,
+  FlutterRefreshIndicatorAction.unionValue:
+      FlutterRefreshIndicatorAction.fromJson,
 
   /**
         * WIDGETS

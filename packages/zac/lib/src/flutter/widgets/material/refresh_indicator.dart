@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
@@ -44,8 +46,11 @@ class FlutterRefreshIndicator
     return RefreshIndicator(
       key: key?.buildKey(context),
       child: child.buildWidget(context),
-      onRefresh: () async =>
-          onRefresh.execute(context, const ActionPayload.none()),
+      onRefresh: () async {
+        final completer = Completer<void>();
+        onRefresh.execute(context, ActionPayload.withData(completer));
+        return completer.future;
+      },
       displacement: displacement?.getValue(context) ?? 40.0,
       edgeOffset: edgeOffset?.getValue(context) ?? 0.0,
       color: color?.build(context),

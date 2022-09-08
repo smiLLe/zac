@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:zac/src/zac/flutter/refresh_indicator.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -73,7 +76,10 @@ void main() {
           title: FlutterText(ZacString('Title')),
         ),
         body: FlutterRefreshIndicator(
-          onRefresh: LeakAction.createActions(executeCb),
+          onRefresh: ZacActions([
+            LeakAction(executeCb),
+            FlutterRefreshIndicatorAction(),
+          ]),
           key: FlutterValueKey('FIND_ME'),
           child: FlutterListView(
             children: ListOfZacWidget(
@@ -90,8 +96,24 @@ void main() {
     await tester.fling(findMe, const Offset(0.0, 300.0), 1000.0);
     await tester.pumpAndSettle();
 
-    verify(executeCb(any, any)).called(1);
+    verify(executeCb(
+            any,
+            argThat(isA<ActionPayload>().having(
+                (p) => p.map(
+                      none: (_) => throw Exception(''),
+                      withData: (payload) => payload.data,
+                    ),
+                'payload.data',
+                isA<Completer>()))))
+        .called(1);
 
     handle.dispose();
+  });
+
+  test('convert FlutterRefreshIndicatorAction', () {
+    expect(
+        ConverterHelper.convertToType<FlutterRefreshIndicatorAction>(
+            {'_converter': 'z:1:RefreshIndicator.complete'}),
+        const FlutterRefreshIndicatorAction());
   });
 }
