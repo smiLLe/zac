@@ -389,11 +389,10 @@ abstract class ConverterHelper {
     return allConverters.containsKey(name);
   }
 
-  static Map<String, dynamic> validateConverter(Object? data,
-      {Type? expectedType}) {
+  static Map<String, dynamic> validateConverter<T>(Object? data) {
     if (!isConverter(data)) {
-      throw ConverterError(
-          '''Data cannot be used to create a converter${null != expectedType ? ' of type "$expectedType"' : ''}.
+      throw ConverterError('''
+Could not convert ${data.runtimeType} to $T.
 It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
 Data: "$data"''');
     }
@@ -401,25 +400,25 @@ Data: "$data"''');
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw ConverterError(
-          '''Error while trying to convert${null != expectedType ? ' data to type "$expectedType"' : ' data'}.
-There was no "$converterKey" found for family: "$rt".''');
+      throw ConverterError('''
+Error while trying to convert data to $T.
+There is no registered Converter found for "$rt".''');
     }
 
     return data;
   }
 
   static T convertToType<T>(Object? data) {
-    final expectedType = _typeOf<T>();
-    final converterMap = validateConverter(data, expectedType: expectedType);
+    final converterMap = validateConverter<T>(data);
     final rt = converterMap[converterKey] as String;
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw ConverterError(
-          '''There was an error while trying to builder a type of "$expectedType".
-Got the converted type "${converted.runtimeType}" which
-is not assignable to expected type "$expectedType"''');
+      throw ConverterError('''
+An unexpected Builder was returned after convertion of "$rt"
+Expected Builder type: $T
+Actual Builder: "${converted.runtimeType}"
+$converted''');
     }
 
     return converted;
