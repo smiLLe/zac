@@ -9,6 +9,9 @@ part of 'any_value.dart';
 _$ZacIntValue _$$ZacIntValueFromJson(Map<String, dynamic> json) =>
     _$ZacIntValue(
       json['value'] as int,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -28,6 +31,9 @@ _$ZacIntConsume _$$ZacIntConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacDoubleValue _$$ZacDoubleValueFromJson(Map<String, dynamic> json) =>
     _$ZacDoubleValue(
       (json['value'] as num).toDouble(),
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -47,6 +53,9 @@ _$ZacDoubleConsume _$$ZacDoubleConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacStringValue _$$ZacStringValueFromJson(Map<String, dynamic> json) =>
     _$ZacStringValue(
       json['value'] as String,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -66,6 +75,9 @@ _$ZacStringConsume _$$ZacStringConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacBoolValue _$$ZacBoolValueFromJson(Map<String, dynamic> json) =>
     _$ZacBoolValue(
       json['value'] as bool,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -85,6 +97,9 @@ _$ZacBoolConsume _$$ZacBoolConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacMapValue _$$ZacMapValueFromJson(Map<String, dynamic> json) =>
     _$ZacMapValue(
       json['value'] as Map<String, dynamic>,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -104,6 +119,9 @@ _$ZacMapConsume _$$ZacMapConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacListValue _$$ZacListValueFromJson(Map<String, dynamic> json) =>
     _$ZacListValue(
       json['value'] as List<dynamic>,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -123,6 +141,9 @@ _$ZacListConsume _$$ZacListConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacObjectValue _$$ZacObjectValueFromJson(Map<String, dynamic> json) =>
     _$ZacObjectValue(
       json['value'] as Object,
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
       $type: json['_converter'] as String?,
     );
 
@@ -144,6 +165,9 @@ _$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
     _$ListOfZacWidgetValue(
       (json['value'] as List<dynamic>)
           .map((e) => ZacWidget.fromJson(e as Object))
+          .toList(),
+      transformer: (json['transformer'] as List<dynamic>?)
+          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['_converter'] as String?,
     );

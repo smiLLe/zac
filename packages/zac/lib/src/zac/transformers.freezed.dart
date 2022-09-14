@@ -3349,6 +3349,8 @@ StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {
       return _StringIsEmpty.fromJson(json);
     case 'z:1:Transformer:String.isNotEmpty':
       return _StringIsNotEmpty.fromJson(json);
+    case 'z:1:Transformer:String.replaceAll':
+      return _StringReplaceAll.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, '_converter', 'StringTransformer',
@@ -3364,6 +3366,7 @@ mixin _$StringTransformer {
     required TResult Function(_StringSplit value) split,
     required TResult Function(_StringIsEmpty value) isEmpty,
     required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -3403,6 +3406,7 @@ class _$_StringLength extends _StringLength {
     required TResult Function(_StringSplit value) split,
     required TResult Function(_StringIsEmpty value) isEmpty,
     required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
   }) {
     return length(this);
   }
@@ -3457,6 +3461,7 @@ class _$_StringSplit extends _StringSplit {
     required TResult Function(_StringSplit value) split,
     required TResult Function(_StringIsEmpty value) isEmpty,
     required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
   }) {
     return split(this);
   }
@@ -3507,6 +3512,7 @@ class _$_StringIsEmpty extends _StringIsEmpty {
     required TResult Function(_StringSplit value) split,
     required TResult Function(_StringIsEmpty value) isEmpty,
     required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
   }) {
     return isEmpty(this);
   }
@@ -3555,6 +3561,7 @@ class _$_StringIsNotEmpty extends _StringIsNotEmpty {
     required TResult Function(_StringSplit value) split,
     required TResult Function(_StringIsEmpty value) isEmpty,
     required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
   }) {
     return isNotEmpty(this);
   }
@@ -3566,6 +3573,70 @@ abstract class _StringIsNotEmpty extends StringTransformer {
 
   factory _StringIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsNotEmpty.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StringReplaceAll extends _StringReplaceAll {
+  const _$_StringReplaceAll(this.from, this.replace, {final String? $type})
+      : $type = $type ?? 'z:1:Transformer:String.replaceAll',
+        super._();
+
+  factory _$_StringReplaceAll.fromJson(Map<String, dynamic> json) =>
+      _$$_StringReplaceAllFromJson(json);
+
+  @override
+  final String from;
+  @override
+  final String replace;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'StringTransformer.replaceAll(from: $from, replace: $replace)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StringReplaceAll &&
+            const DeepCollectionEquality().equals(other.from, from) &&
+            const DeepCollectionEquality().equals(other.replace, replace));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(from),
+      const DeepCollectionEquality().hash(replace));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StringLength value) length,
+    required TResult Function(_StringSplit value) split,
+    required TResult Function(_StringIsEmpty value) isEmpty,
+    required TResult Function(_StringIsNotEmpty value) isNotEmpty,
+    required TResult Function(_StringReplaceAll value) replaceAll,
+  }) {
+    return replaceAll(this);
+  }
+}
+
+abstract class _StringReplaceAll extends StringTransformer {
+  const factory _StringReplaceAll(final String from, final String replace) =
+      _$_StringReplaceAll;
+  const _StringReplaceAll._() : super._();
+
+  factory _StringReplaceAll.fromJson(Map<String, dynamic> json) =
+      _$_StringReplaceAll.fromJson;
+
+  String get from;
+  String get replace;
 }
 
 JsonTransformer _$JsonTransformerFromJson(Map<String, dynamic> json) {

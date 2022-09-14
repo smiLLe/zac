@@ -79,7 +79,11 @@ Future<void> testWithConverters({
   allConverters = {...allConverters, ...(converter ?? <String, Convert>{})};
 
   return tester.pumpWidget(
-    UncontrolledProviderScope(container: container, child: widget),
+    UncontrolledProviderScope(
+      key: GlobalKey(),
+      container: container,
+      child: widget,
+    ),
   );
 }
 

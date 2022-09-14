@@ -532,6 +532,8 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   static const String unionValueIsEmpty = 'z:1:Transformer:String.isEmpty';
   static const String unionValueIsNotEmpty =
       'z:1:Transformer:String.isNotEmpty';
+  static const String unionValueReplaceAll =
+      'z:1:Transformer:String.replaceAll';
 
   factory StringTransformer.fromJson(Map<String, dynamic> json) =>
       _$StringTransformerFromJson(json);
@@ -548,6 +550,10 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
 
   @FreezedUnionValue(StringTransformer.unionValueIsNotEmpty)
   const factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
+
+  @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
+  const factory StringTransformer.replaceAll(String from, String replace) =
+      _StringReplaceAll;
 
   @override
   Object? transform(ZacTransformValue transformValue,
@@ -566,6 +572,7 @@ The value: $value
       split: (obj) => value.split(obj.pattern),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
+      replaceAll: (obj) => value.replaceAll(RegExp(obj.from), obj.replace),
     );
   }
 }

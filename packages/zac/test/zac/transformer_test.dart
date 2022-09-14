@@ -1372,6 +1372,29 @@ void main() {
                   context: FakeZacWidgetContext())),
           throwsA(isA<ZacTransformError>()));
     });
+
+    test('.replaceAll()', () {
+      _expectFromJson<StringTransformer>(
+        fromJson: StringTransformer.fromJson,
+        converter: 'z:1:Transformer:String.replaceAll',
+        equals: const StringTransformer.replaceAll('xx', 'yy'),
+        props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
+      );
+
+      expect(
+          const StringTransformer.replaceAll('xx', 'yy').transform(
+              ZacTransformValue('fooxx'),
+              SharedValueInteractionType.consume(
+                  context: FakeZacWidgetContext())),
+          'fooyy');
+
+      expect(
+          () => const StringTransformer.replaceAll('xx', 'yy').transform(
+              ZacTransformValue(Object()),
+              SharedValueInteractionType.consume(
+                  context: FakeZacWidgetContext())),
+          throwsA(isA<ZacTransformError>()));
+    });
   });
 
   group('Json', () {

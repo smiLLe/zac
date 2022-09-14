@@ -5,566 +5,307 @@ import 'package:flutter_test/flutter_test.dart';
 import '../flutter/models.dart';
 import '../helper.dart';
 
+Future<void> _commonConsume<TClass, TVal>({
+  required WidgetTester tester,
+  required TVal testVal,
+  required TClass Function(
+    Object family, {
+    List<ZacTransformer>? transformer,
+    SharedValueConsumeType consumeType,
+  })
+      createConsume,
+}) async {
+  late ZacBuildContext zacContext;
+
+  await testZacWidget(
+      tester,
+      SharedValueProviderBuilder(
+        family: 'foo',
+        value: {
+          '_converter': 'z:1:$TClass',
+          'value': testVal,
+        },
+        transformer: [ConvertTransformer()],
+        child: LeakContext(
+          cb: (context) => zacContext = context,
+        ),
+      ));
+
+  expect(
+      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
+      testVal);
+
+  await testZacWidget(
+      tester,
+      SharedValueProviderBuilder(
+        family: 'foo',
+        value: testVal,
+        child: LeakContext(
+          cb: (context) => zacContext = context,
+        ),
+      ));
+
+  expect(
+      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
+      testVal);
+}
+
+void _commonCreate<TClass, TVal>({
+  required TVal testVal,
+  required TClass Function(TVal value, {List<ZacTransformer>? transformer})
+      create,
+  required TClass Function(
+    Object family, {
+    List<ZacTransformer>? transformer,
+    SharedValueConsumeType consumeType,
+  })
+      createConsume,
+  required TClass Function(Object data) fromJson,
+}) {
+  expect(
+      ConverterHelper.convertToType<TClass>({
+        '_converter': 'z:1:$TClass',
+        'value': testVal,
+      }),
+      create(testVal));
+
+  expect(
+      ConverterHelper.convertToType<TClass>({
+        '_converter': 'z:1:$TClass.consume',
+        'family': 'foo',
+      }),
+      createConsume('foo'));
+
+  expect(
+      fromJson({
+        '_converter': 'z:1:$TClass',
+        'value': testVal,
+      }),
+      create(testVal));
+
+  expect(
+      fromJson({
+        '_converter': 'z:1:$TClass.consume',
+        'family': 'foo',
+      }),
+      createConsume('foo', consumeType: const SharedValueConsumeType.watch()));
+
+  expect(
+      fromJson({
+        '_converter': 'z:1:SharedValue.consume',
+        'family': 'foo',
+      }),
+      createConsume('foo', consumeType: const SharedValueConsumeType.watch()));
+
+  expect(
+      fromJson({
+        '_converter': 'z:1:$TClass',
+        'value': testVal,
+        'transformer': [
+          {'_converter': 'z:1:Transformer:Object.runtimeType'}
+        ]
+      }),
+      create(testVal, transformer: [ObjectTransformer.runtimeType()]));
+
+  expect(
+      fromJson({
+        '_converter': 'z:1:SharedValue.consume',
+        'family': 'foo',
+        'transformer': [
+          {'_converter': 'z:1:Transformer:Object.runtimeType'}
+        ]
+      }),
+      createConsume('foo', transformer: [ObjectTransformer.runtimeType()]));
+}
+
 void main() {
+  testWidgets(
+      'ActualValue.getActualValue() may transform but only to same type',
+      (tester) async {
+    late ZacBuildContext zacContext;
+
+    await testZacWidget(
+        tester,
+        LeakContext(
+          cb: (context) => zacContext = context,
+        ));
+
+    expect(
+        (ZacString('hello', transformer: [
+          const StringTransformer.replaceAll('hello', 'world')
+        ]) as ActualValue<String>)
+            .getActualValue(zacContext),
+        'world');
+
+    expect(
+        () => (ZacString('hello',
+                    transformer: [const StringTransformer.isEmpty()])
+                as ActualValue<String>)
+            .getActualValue(zacContext),
+        throwsStateError);
+  });
   group('ZacBool', () {
     test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacBool>({
-            '_converter': 'z:1:ZacBool',
-            'value': false,
-          }),
-          ZacBool(false));
-
-      expect(
-          ConverterHelper.convertToType<ZacBool>({
-            '_converter': 'z:1:ZacBool.consume',
-            'family': 'foo',
-          }),
-          ZacBool.consume('foo'));
+      _commonCreate<ZacBool, bool>(
+        testVal: false,
+        create: ZacBool.new,
+        createConsume: ZacBool.consume,
+        fromJson: ZacBool.fromJson,
+      );
 
       expect(ZacBool.fromJson(false), ZacBool(false));
-      expect(
-          ZacBool.fromJson({
-            '_converter': 'z:1:ZacBool',
-            'value': false,
-          }),
-          ZacBool(false));
-      expect(
-          ZacBool.fromJson({
-            '_converter': 'z:1:ZacBool.consume',
-            'family': 'foo',
-          }),
-          ZacBool.consume('foo'));
-      expect(
-          ZacBool.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacBool.consume('foo'));
       expect(() => ZacBool.fromJson('foo'), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacBool',
-              'value': false,
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacBool.consume('foo').getValue(zacContext), false);
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: false,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacBool.consume('foo').getValue(zacContext), false);
+      await _commonConsume<ZacBool, bool>(
+        tester: tester,
+        testVal: false,
+        createConsume: ZacBool.consume,
+      );
     });
   });
 
   group('ZacInt', () {
     test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacInt>({
-            '_converter': 'z:1:ZacInt',
-            'value': 1,
-          }),
-          ZacInt(1));
-
-      expect(
-          ConverterHelper.convertToType<ZacInt>({
-            '_converter': 'z:1:ZacInt.consume',
-            'family': 'foo',
-          }),
-          ZacInt.consume('foo'));
+      _commonCreate<ZacInt, int>(
+        testVal: 1,
+        create: ZacInt.new,
+        createConsume: ZacInt.consume,
+        fromJson: ZacInt.fromJson,
+      );
 
       expect(ZacInt.fromJson(1), ZacInt(1));
       expect(ZacInt.fromJson(1.2), ZacInt(1));
-      expect(
-          ZacInt.fromJson({
-            '_converter': 'z:1:ZacInt',
-            'value': 1,
-          }),
-          ZacInt(1));
-      expect(
-          ZacInt.fromJson({
-            '_converter': 'z:1:ZacInt.consume',
-            'family': 'foo',
-          }),
-          ZacInt.consume('foo'));
-      expect(
-          ZacInt.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacInt.consume('foo'));
       expect(() => ZacInt.fromJson('foo'), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacInt',
-              'value': 55,
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacInt.consume('foo').getValue(zacContext), 55);
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: 55,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacInt.consume('foo').getValue(zacContext), 55);
+      await _commonConsume<ZacInt, int>(
+        tester: tester,
+        testVal: 1,
+        createConsume: ZacInt.consume,
+      );
     });
   });
 
   group('ZacDouble', () {
     test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacDouble>({
-            '_converter': 'z:1:ZacDouble',
-            'value': 1.0,
-          }),
-          ZacDouble(1.0));
-      expect(
-          ConverterHelper.convertToType<ZacDouble>({
-            '_converter': 'z:1:ZacDouble',
-            'value': 1,
-          }),
-          ZacDouble(1.0));
-
-      expect(
-          ConverterHelper.convertToType<ZacDouble>({
-            '_converter': 'z:1:ZacDouble.consume',
-            'family': 'foo',
-          }),
-          ZacDouble.consume('foo'));
-
+      _commonCreate<ZacDouble, double>(
+        testVal: 1.0,
+        create: ZacDouble.new,
+        createConsume: ZacDouble.consume,
+        fromJson: ZacDouble.fromJson,
+      );
       expect(ZacDouble.fromJson(1), ZacDouble(1.0));
       expect(ZacDouble.fromJson(1.2), ZacDouble(1.2));
-      expect(
-          ZacDouble.fromJson({
-            '_converter': 'z:1:ZacDouble',
-            'value': 1.0,
-          }),
-          ZacDouble(1.0));
-      expect(
-          ZacDouble.fromJson({
-            '_converter': 'z:1:ZacDouble.consume',
-            'family': 'foo',
-          }),
-          ZacDouble.consume('foo'));
-      expect(
-          ZacDouble.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacDouble.consume('foo'));
       expect(() => ZacDouble.fromJson('foo'), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacDouble',
-              'value': 1.0,
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacDouble.consume('foo').getValue(zacContext), 1.0);
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: 1.0,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacDouble.consume('foo').getValue(zacContext), 1.0);
-    });
-
-    testWidgets('consume #2', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: 1,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(() => ZacDouble.consume('foo').getValue(zacContext),
-          throwsStateError);
+      await _commonConsume<ZacDouble, double>(
+        tester: tester,
+        testVal: 1.0,
+        createConsume: ZacDouble.consume,
+      );
+      await _commonConsume<ZacDouble, double>(
+        tester: tester,
+        testVal: 1,
+        createConsume: ZacDouble.consume,
+      );
     });
   });
 
   group('ZacString', () {
     test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacString>({
-            '_converter': 'z:1:ZacString',
-            'value': 'hello',
-          }),
-          ZacString('hello'));
-
-      expect(
-          ConverterHelper.convertToType<ZacString>({
-            '_converter': 'z:1:ZacString.consume',
-            'family': 'foo',
-          }),
-          ZacString.consume('foo'));
-
+      _commonCreate<ZacString, String>(
+        testVal: 'hello',
+        create: ZacString.new,
+        createConsume: ZacString.consume,
+        fromJson: ZacString.fromJson,
+      );
       expect(ZacString.fromJson('hello'), ZacString('hello'));
-      expect(
-          ZacString.fromJson({
-            '_converter': 'z:1:ZacString',
-            'value': 'hello',
-          }),
-          ZacString('hello'));
-      expect(
-          ZacString.fromJson({
-            '_converter': 'z:1:ZacString.consume',
-            'family': 'foo',
-          }),
-          ZacString.consume('foo'));
-      expect(
-          ZacString.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacString.consume('foo'));
       expect(() => ZacString.fromJson(55), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacString',
-              'value': 'hello',
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacString.consume('foo').getValue(zacContext), 'hello');
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: 'hello',
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacString.consume('foo').getValue(zacContext), 'hello');
+      await _commonConsume<ZacString, String>(
+        tester: tester,
+        testVal: 'hello',
+        createConsume: ZacString.consume,
+      );
     });
   });
 
   group('ZacList', () {
     test('fromJson', () {
       final compare = <String>['foo', 'bar'];
-      expect(
-          ConverterHelper.convertToType<ZacList>({
-            '_converter': 'z:1:ZacList',
-            'value': compare,
-          }),
-          ZacList(compare));
-
-      expect(
-          ZacList.fromJson({
-            '_converter': 'z:1:ZacList',
-            'value': compare,
-          }),
-          ZacList(compare));
-
-      expect(
-          ConverterHelper.convertToType<ZacList>({
-            '_converter': 'z:1:ZacList.consume',
-            'family': 'foo',
-            'value': compare,
-          }),
-          ZacList.consume('foo'));
-
-      expect(
-          ZacList.fromJson({
-            '_converter': 'z:1:ZacList.consume',
-            'family': 'foo',
-            'value': compare,
-          }),
-          ZacList.consume('foo'));
-
-      expect(
-          ZacList.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-            'value': compare,
-          }),
-          ZacList.consume('foo'));
-
+      _commonCreate<ZacList, List<dynamic>>(
+        testVal: compare,
+        create: ZacList.new,
+        createConsume: ZacList.consume,
+        fromJson: ZacList.fromJson,
+      );
       expect(ZacList.fromJson(compare), ZacList(compare));
-
       expect(() => ZacList.fromJson(55), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-      final compare = <String>['foo', 'bar'];
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacList',
-              'value': compare,
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacList.consume('foo').getValue(zacContext), compare);
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-      final compare = <String>['foo', 'bar'];
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: compare,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacList.consume('foo').getValue(zacContext), compare);
+      await _commonConsume<ZacList, List<dynamic>>(
+        tester: tester,
+        testVal: <String>['foo', 'bar'],
+        createConsume: ZacList.consume,
+      );
     });
   });
 
   group('ZacMap', () {
     test('fromJson', () {
       final compare = <String, dynamic>{'foo': 'bar'};
-      expect(
-          ConverterHelper.convertToType<ZacMap>({
-            '_converter': 'z:1:ZacMap',
-            'value': compare,
-          }),
-          ZacMap(compare));
-
-      expect(
-          ConverterHelper.convertToType<ZacMap>({
-            '_converter': 'z:1:ZacMap.consume',
-            'family': 'foo',
-          }),
-          ZacMap.consume('foo'));
-
+      _commonCreate<ZacMap, Map<String, dynamic>>(
+        testVal: compare,
+        create: ZacMap.new,
+        createConsume: ZacMap.consume,
+        fromJson: ZacMap.fromJson,
+      );
       expect(ZacMap.fromJson(compare), ZacMap(compare));
-      expect(
-          ZacMap.fromJson({
-            '_converter': 'z:1:ZacMap',
-            'value': compare,
-          }),
-          ZacMap(compare));
-      expect(
-          ZacMap.fromJson({
-            '_converter': 'z:1:ZacMap.consume',
-            'family': 'foo',
-          }),
-          ZacMap.consume('foo'));
-      expect(
-          ZacMap.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacMap.consume('foo'));
       expect(() => ZacMap.fromJson(55), throwsConverterError);
     });
 
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-      final compare = <String, dynamic>{'foo': 'bar'};
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacMap',
-              'value': compare,
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacMap.consume('foo').getValue(zacContext), compare);
-    });
-
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-      final compare = <String, dynamic>{'foo': 'bar'};
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: compare,
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacMap.consume('foo').getValue(zacContext), compare);
+      await _commonConsume<ZacMap, Map<String, dynamic>>(
+        tester: tester,
+        testVal: <String, dynamic>{'foo': 'bar'},
+        createConsume: ZacMap.consume,
+      );
     });
   });
 
   group('ZacObject', () {
     test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacObject>({
-            '_converter': 'z:1:ZacObject',
-            'value': 'hello',
-          }),
-          ZacObject('hello'));
+      _commonCreate<ZacObject, Object>(
+        testVal: 'hello',
+        create: ZacObject.new,
+        createConsume: ZacObject.consume,
+        fromJson: ZacObject.fromJson,
+      );
+      _commonCreate<ZacObject, Object>(
+        testVal: 55,
+        create: ZacObject.new,
+        createConsume: ZacObject.consume,
+        fromJson: ZacObject.fromJson,
+      );
 
-      expect(
-          ConverterHelper.convertToType<ZacObject>({
-            '_converter': 'z:1:ZacObject.consume',
-            'family': 'foo',
-          }),
-          ZacObject.consume('foo'));
-
+      expect(ZacObject.fromJson('hello'), ZacObject('hello'));
       expect(ZacObject.fromJson(55), ZacObject(55));
-      expect(
-          ZacObject.fromJson({
-            '_converter': 'z:1:ZacObject',
-            'value': 55,
-          }),
-          ZacObject(55));
-      expect(
-          ZacObject.fromJson({
-            '_converter': 'z:1:ZacObject.consume',
-            'family': 'foo',
-          }),
-          ZacObject.consume('foo'));
-      expect(
-          ZacObject.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
-            'family': 'foo',
-          }),
-          ZacObject.consume('foo'));
-    });
-
-    testWidgets('consume ActualValue', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: {
-              '_converter': 'z:1:ZacObject',
-              'value': 'hello',
-            },
-            transformer: [ConvertTransformer()],
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacObject.consume('foo').getValue(zacContext), 'hello');
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
-
-      await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            family: 'foo',
-            value: 'hello',
-            child: LeakContext(
-              cb: (context) => zacContext = context,
-            ),
-          ));
-
-      expect(ZacObject.consume('foo').getValue(zacContext), 'hello');
+      await _commonConsume<ZacObject, Object>(
+        tester: tester,
+        testVal: 55,
+        createConsume: ZacObject.consume,
+      );
     });
   });
 

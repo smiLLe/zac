@@ -306,6 +306,13 @@ _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
+_$_StringReplaceAll _$$_StringReplaceAllFromJson(Map<String, dynamic> json) =>
+    _$_StringReplaceAll(
+      json['from'] as String,
+      json['replace'] as String,
+      $type: json['_converter'] as String?,
+    );
+
 _$_JsonEncode _$$_JsonEncodeFromJson(Map<String, dynamic> json) =>
     _$_JsonEncode(
       $type: json['_converter'] as String?,

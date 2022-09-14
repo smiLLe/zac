@@ -33,6 +33,26 @@ abstract class ZacWidget {
 
 mixin ActualValue<Of> {
   Of get value;
+  List<ZacTransformer>? get transformer;
+
+  Of getActualValue(ZacBuildContext context) {
+    if (true == transformer?.isNotEmpty) {
+      final transformed = transformer!.transformSharedValues(
+          ZacTransformValue(value),
+          SharedValueInteractionType.consume(context: context));
+
+      if (transformed is! Of) {
+        throw StateError('''
+It was not possible to return a value of type $Of in ${_typeOf<ActualValue<Of>>()}.
+Instead the returned value was of runtimeType ${transformed.runtimeType}.
+Value: $transformed
+''');
+      }
+      return transformed;
+    }
+
+    return value;
+  }
 }
 
 class ConsumeSharedValueOfError extends StateError {
@@ -49,7 +69,7 @@ mixin ConsumeValue<Of> {
 
     late Object? value;
     if (consumedValue is ActualValue<Object?>) {
-      value = consumedValue.value;
+      value = consumedValue.getActualValue(context);
     } else if (consumedValue is Of) {
       value = consumedValue;
     } else {
@@ -119,7 +139,7 @@ mixin ConsumeValueList<Of> {
 
     late List<Object?> value;
     if (consumedValue is ActualValue<List>) {
-      value = consumedValue.value;
+      value = consumedValue.getActualValue(context);
     } else if (consumedValue is List) {
       value = consumedValue;
     } else {
@@ -200,7 +220,10 @@ class ZacInt with _$ZacInt {
 
   @FreezedUnionValue(ZacInt.unionValue)
   @With<ActualValue<int>>()
-  factory ZacInt(int value) = ZacIntValue;
+  factory ZacInt(
+    int value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacIntValue;
 
   @FreezedUnionValue(ZacInt.unionValueConsume)
   @With<ConsumeValue<int>>()
@@ -211,7 +234,7 @@ class ZacInt with _$ZacInt {
   }) = ZacIntConsume;
 
   int getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -237,7 +260,10 @@ class ZacDouble with _$ZacDouble {
 
   @FreezedUnionValue(ZacDouble.unionValue)
   @With<ActualValue<double>>()
-  factory ZacDouble(double value) = ZacDoubleValue;
+  factory ZacDouble(
+    double value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacDoubleValue;
 
   @FreezedUnionValue(ZacDouble.unionValueConsume)
   @With<ConsumeValue<double>>()
@@ -248,7 +274,7 @@ class ZacDouble with _$ZacDouble {
   }) = ZacDoubleConsume;
 
   double getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -271,7 +297,10 @@ class ZacString with _$ZacString {
 
   @FreezedUnionValue(ZacString.unionValue)
   @With<ActualValue<String>>()
-  factory ZacString(String value) = ZacStringValue;
+  factory ZacString(
+    String value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacStringValue;
 
   @FreezedUnionValue(ZacString.unionValueConsume)
   @With<ConsumeValue<String>>()
@@ -282,7 +311,7 @@ class ZacString with _$ZacString {
   }) = ZacStringConsume;
 
   String getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -305,7 +334,10 @@ class ZacBool with _$ZacBool {
 
   @FreezedUnionValue(ZacBool.unionValue)
   @With<ActualValue<bool>>()
-  factory ZacBool(bool value) = ZacBoolValue;
+  factory ZacBool(
+    bool value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacBoolValue;
 
   @FreezedUnionValue(ZacBool.unionValueConsume)
   @With<ConsumeValue<bool>>()
@@ -316,7 +348,7 @@ class ZacBool with _$ZacBool {
   }) = ZacBoolConsume;
 
   bool getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -350,7 +382,10 @@ class ZacMap with _$ZacMap {
 
   @FreezedUnionValue(ZacMap.unionValue)
   @With<ActualValue<Map<String, dynamic>>>()
-  factory ZacMap(Map<String, dynamic> value) = ZacMapValue;
+  factory ZacMap(
+    Map<String, dynamic> value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacMapValue;
 
   @FreezedUnionValue(ZacMap.unionValueConsume)
   @With<ConsumeValue<Map<String, dynamic>>>()
@@ -361,7 +396,7 @@ class ZacMap with _$ZacMap {
   }) = ZacMapConsume;
 
   Map<String, dynamic> getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -394,7 +429,10 @@ class ZacList with _$ZacList {
 
   @FreezedUnionValue(ZacList.unionValue)
   @With<ActualValue<List<dynamic>>>()
-  factory ZacList(List<dynamic> value) = ZacListValue;
+  factory ZacList(
+    List<dynamic> value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacListValue;
 
   @FreezedUnionValue(ZacList.unionValueConsume)
   @With<ConsumeValue<List<dynamic>>>()
@@ -405,7 +443,7 @@ class ZacList with _$ZacList {
   }) = ZacListConsume;
 
   List<dynamic> getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -442,7 +480,10 @@ class ZacObject with _$ZacObject {
 
   @FreezedUnionValue(ZacObject.unionValue)
   @With<ActualValue<Object>>()
-  factory ZacObject(Object value) = ZacObjectValue;
+  factory ZacObject(
+    Object value, {
+    List<ZacTransformer>? transformer,
+  }) = ZacObjectValue;
 
   @FreezedUnionValue(ZacObject.unionValueConsume)
   @With<ConsumeValue<Object>>()
@@ -453,7 +494,7 @@ class ZacObject with _$ZacObject {
   }) = ZacObjectConsume;
 
   Object getValue(ZacBuildContext context) => map(
-        (obj) => obj.value,
+        (obj) => obj.getActualValue(context),
         consume: (obj) => obj.getSharedValue(context),
       );
 }
@@ -480,7 +521,10 @@ class ListOfZacWidget with _$ListOfZacWidget {
 
   @FreezedUnionValue(ListOfZacWidget.unionValue)
   @With<ActualValue<List<ZacWidget>>>()
-  factory ListOfZacWidget(List<ZacWidget> value) = ListOfZacWidgetValue;
+  factory ListOfZacWidget(
+    List<ZacWidget> value, {
+    List<ZacTransformer>? transformer,
+  }) = ListOfZacWidgetValue;
 
   @FreezedUnionValue(ListOfZacWidget.unionValueConsume)
   @With<ConsumeValueList<ZacWidget>>()
@@ -491,7 +535,10 @@ class ListOfZacWidget with _$ListOfZacWidget {
   }) = ListOfZacWidgetConsume;
 
   List<Widget> getValue(ZacBuildContext context) => map(
-        (obj) => obj.value.map((e) => e.buildWidget(context)).toList(),
+        (obj) => obj
+            .getActualValue(context)
+            .map((e) => e.buildWidget(context))
+            .toList(),
         consume: (obj) => obj
             .getSharedValue(context)
             .map((e) => e.buildWidget(context))

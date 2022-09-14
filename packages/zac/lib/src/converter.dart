@@ -160,6 +160,7 @@ Map<String, Convert> allConverters = const {
   StringTransformer.unionValueSplit: StringTransformer.fromJson,
   StringTransformer.unionValueIsEmpty: StringTransformer.fromJson,
   StringTransformer.unionValueIsNotEmpty: StringTransformer.fromJson,
+  StringTransformer.unionValueReplaceAll: StringTransformer.fromJson,
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
