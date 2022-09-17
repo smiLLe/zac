@@ -542,7 +542,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   const factory StringTransformer.length() = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  const factory StringTransformer.split({required String pattern}) =
+  const factory StringTransformer.split({required ZacString pattern}) =
       _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
@@ -552,8 +552,8 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   const factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
-  const factory StringTransformer.replaceAll(String from, String replace) =
-      _StringReplaceAll;
+  const factory StringTransformer.replaceAll(
+      ZacString from, ZacString replace) = _StringReplaceAll;
 
   @override
   Object? transform(ZacTransformValue transformValue,
@@ -569,10 +569,12 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern),
+      split: (obj) => value.split(obj.pattern.getValue(interaction.context)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
-      replaceAll: (obj) => value.replaceAll(RegExp(obj.from), obj.replace),
+      replaceAll: (obj) => value.replaceAll(
+          RegExp(obj.from.getValue(interaction.context)),
+          obj.replace.getValue(interaction.context)),
     );
   }
 }

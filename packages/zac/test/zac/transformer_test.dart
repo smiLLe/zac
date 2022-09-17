@@ -1308,21 +1308,21 @@ void main() {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.split',
-        equals: const StringTransformer.split(pattern: ','),
+        equals: StringTransformer.split(pattern: ZacString(',')),
         props: <String, dynamic>{
           'pattern': ',',
         },
       );
 
       expect(
-          const StringTransformer.split(pattern: ',').transform(
+          StringTransformer.split(pattern: ZacString(',')).transform(
               ZacTransformValue('a,b'),
               SharedValueInteractionType.consume(
                   context: FakeZacWidgetContext())),
           ['a', 'b']);
 
       expect(
-          () => const StringTransformer.split(pattern: ',').transform(
+          () => StringTransformer.split(pattern: ZacString(',')).transform(
               ZacTransformValue(Object()),
               SharedValueInteractionType.consume(
                   context: FakeZacWidgetContext())),
@@ -1377,22 +1377,24 @@ void main() {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.replaceAll',
-        equals: const StringTransformer.replaceAll('xx', 'yy'),
+        equals: StringTransformer.replaceAll(ZacString('xx'), ZacString('yy')),
         props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
       );
 
       expect(
-          const StringTransformer.replaceAll('xx', 'yy').transform(
-              ZacTransformValue('fooxx'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
+              .transform(
+                  ZacTransformValue('fooxx'),
+                  SharedValueInteractionType.consume(
+                      context: FakeZacWidgetContext())),
           'fooyy');
 
       expect(
-          () => const StringTransformer.replaceAll('xx', 'yy').transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
+              .transform(
+                  ZacTransformValue(Object()),
+                  SharedValueInteractionType.consume(
+                      context: FakeZacWidgetContext())),
           throwsA(isA<ZacTransformError>()));
     });
   });

@@ -132,7 +132,7 @@ void main() {
 
     expect(
         (ZacString('hello', transformer: [
-          const StringTransformer.replaceAll('hello', 'world')
+          StringTransformer.replaceAll(ZacString('hello'), ZacString('world'))
         ]) as ActualValue<String>)
             .getActualValue(zacContext),
         'world');
