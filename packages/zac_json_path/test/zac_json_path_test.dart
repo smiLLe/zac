@@ -9,7 +9,7 @@ class MockSharedValueInteractionType extends Mock
     implements SharedValueInteractionType {}
 
 void main() {
-  test('a', () {
+  test('transform', () {
     final t = ZacJsonPathTransformer.fromJson(jsonDecode(r'''{
   "expression": "$.firstname"
 }''') as Map<String, dynamic>);
@@ -17,5 +17,5 @@ void main() {
     final val =
         t.transform({'firstname': 'Luke'}, MockSharedValueInteractionType());
     expect(val, ['Luke']);
-  });
+  }, skip: true);
 }
