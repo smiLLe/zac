@@ -6,7 +6,7 @@ import 'package:zac/zac.dart';
 import 'package:zac_json_path/zac_json_path.dart';
 
 class MockSharedValueInteractionType extends Mock
-    implements SharedValueInteractionType {}
+    implements SharedValueTransformerInteraction {}
 
 void main() {
   test('transform', () {

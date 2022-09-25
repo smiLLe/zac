@@ -138,28 +138,27 @@ abstract class EmptySharedValue extends SharedValue {
 }
 
 /// @nodoc
-mixin _$SharedValueInteractionType {
-  ZacBuildContext get context => throw _privateConstructorUsedError;
-
+mixin _$SharedValueTransformerInteraction {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SharedValueInteractionTypeAction value) action,
-    required TResult Function(SharedValueInteractionTypeConsume value) consume,
-    required TResult Function(SharedValueInteractionTypeProvide value) provide,
+    required TResult Function(SharedValueTransformerInteractionAction value)
+        action,
+    required TResult Function(SharedValueTransformerInteractionConsume value)
+        consume,
+    required TResult Function(SharedValueTransformerInteractionProvide value)
+        provide,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 
-class _$SharedValueInteractionTypeAction
-    extends SharedValueInteractionTypeAction {
-  _$SharedValueInteractionTypeAction(
-      {required this.context, required this.payload, required this.current})
+class _$SharedValueTransformerInteractionAction
+    extends SharedValueTransformerInteractionAction {
+  _$SharedValueTransformerInteractionAction(
+      {required this.payload, required this.current})
       : super._();
 
-  @override
-  final ZacBuildContext context;
   @override
   final ActionPayload payload;
   @override
@@ -167,15 +166,14 @@ class _$SharedValueInteractionTypeAction
 
   @override
   String toString() {
-    return 'SharedValueInteractionType.action(context: $context, payload: $payload, current: $current)';
+    return 'SharedValueTransformerInteraction.action(payload: $payload, current: $current)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedValueInteractionTypeAction &&
-            const DeepCollectionEquality().equals(other.context, context) &&
+            other is _$SharedValueTransformerInteractionAction &&
             const DeepCollectionEquality().equals(other.payload, payload) &&
             const DeepCollectionEquality().equals(other.current, current));
   }
@@ -183,129 +181,117 @@ class _$SharedValueInteractionTypeAction
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(context),
       const DeepCollectionEquality().hash(payload),
       const DeepCollectionEquality().hash(current));
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SharedValueInteractionTypeAction value) action,
-    required TResult Function(SharedValueInteractionTypeConsume value) consume,
-    required TResult Function(SharedValueInteractionTypeProvide value) provide,
+    required TResult Function(SharedValueTransformerInteractionAction value)
+        action,
+    required TResult Function(SharedValueTransformerInteractionConsume value)
+        consume,
+    required TResult Function(SharedValueTransformerInteractionProvide value)
+        provide,
   }) {
     return action(this);
   }
 }
 
-abstract class SharedValueInteractionTypeAction
-    extends SharedValueInteractionType {
-  factory SharedValueInteractionTypeAction(
-      {required final ZacBuildContext context,
-      required final ActionPayload payload,
-      required final Object? current}) = _$SharedValueInteractionTypeAction;
-  SharedValueInteractionTypeAction._() : super._();
+abstract class SharedValueTransformerInteractionAction
+    extends SharedValueTransformerInteraction {
+  factory SharedValueTransformerInteractionAction(
+          {required final ActionPayload payload,
+          required final Object? current}) =
+      _$SharedValueTransformerInteractionAction;
+  SharedValueTransformerInteractionAction._() : super._();
 
-  @override
-  ZacBuildContext get context;
   ActionPayload get payload;
   Object? get current;
 }
 
 /// @nodoc
 
-class _$SharedValueInteractionTypeConsume
-    extends SharedValueInteractionTypeConsume {
-  _$SharedValueInteractionTypeConsume({required this.context}) : super._();
-
-  @override
-  final ZacBuildContext context;
+class _$SharedValueTransformerInteractionConsume
+    extends SharedValueTransformerInteractionConsume {
+  _$SharedValueTransformerInteractionConsume() : super._();
 
   @override
   String toString() {
-    return 'SharedValueInteractionType.consume(context: $context)';
+    return 'SharedValueTransformerInteraction.consume()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedValueInteractionTypeConsume &&
-            const DeepCollectionEquality().equals(other.context, context));
+            other is _$SharedValueTransformerInteractionConsume);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SharedValueInteractionTypeAction value) action,
-    required TResult Function(SharedValueInteractionTypeConsume value) consume,
-    required TResult Function(SharedValueInteractionTypeProvide value) provide,
+    required TResult Function(SharedValueTransformerInteractionAction value)
+        action,
+    required TResult Function(SharedValueTransformerInteractionConsume value)
+        consume,
+    required TResult Function(SharedValueTransformerInteractionProvide value)
+        provide,
   }) {
     return consume(this);
   }
 }
 
-abstract class SharedValueInteractionTypeConsume
-    extends SharedValueInteractionType {
-  factory SharedValueInteractionTypeConsume(
-          {required final ZacBuildContext context}) =
-      _$SharedValueInteractionTypeConsume;
-  SharedValueInteractionTypeConsume._() : super._();
-
-  @override
-  ZacBuildContext get context;
+abstract class SharedValueTransformerInteractionConsume
+    extends SharedValueTransformerInteraction {
+  factory SharedValueTransformerInteractionConsume() =
+      _$SharedValueTransformerInteractionConsume;
+  SharedValueTransformerInteractionConsume._() : super._();
 }
 
 /// @nodoc
 
-class _$SharedValueInteractionTypeProvide
-    extends SharedValueInteractionTypeProvide {
-  _$SharedValueInteractionTypeProvide({required this.context}) : super._();
-
-  @override
-  final ZacBuildContext context;
+class _$SharedValueTransformerInteractionProvide
+    extends SharedValueTransformerInteractionProvide {
+  _$SharedValueTransformerInteractionProvide() : super._();
 
   @override
   String toString() {
-    return 'SharedValueInteractionType.provide(context: $context)';
+    return 'SharedValueTransformerInteraction.provide()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SharedValueInteractionTypeProvide &&
-            const DeepCollectionEquality().equals(other.context, context));
+            other is _$SharedValueTransformerInteractionProvide);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SharedValueInteractionTypeAction value) action,
-    required TResult Function(SharedValueInteractionTypeConsume value) consume,
-    required TResult Function(SharedValueInteractionTypeProvide value) provide,
+    required TResult Function(SharedValueTransformerInteractionAction value)
+        action,
+    required TResult Function(SharedValueTransformerInteractionConsume value)
+        consume,
+    required TResult Function(SharedValueTransformerInteractionProvide value)
+        provide,
   }) {
     return provide(this);
   }
 }
 
-abstract class SharedValueInteractionTypeProvide
-    extends SharedValueInteractionType {
-  factory SharedValueInteractionTypeProvide(
-          {required final ZacBuildContext context}) =
-      _$SharedValueInteractionTypeProvide;
-  SharedValueInteractionTypeProvide._() : super._();
-
-  @override
-  ZacBuildContext get context;
+abstract class SharedValueTransformerInteractionProvide
+    extends SharedValueTransformerInteraction {
+  factory SharedValueTransformerInteractionProvide() =
+      _$SharedValueTransformerInteractionProvide;
+  SharedValueTransformerInteractionProvide._() : super._();
 }
 
 UpdateSharedValueAction _$UpdateSharedValueActionFromJson(

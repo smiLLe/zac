@@ -38,8 +38,8 @@ class ZacTemplateExpressionsTransformer
   }) = _ZacTemplateExpressionsTransformer;
 
   @override
-  Object? transform(Object? value, ZacBuildContext context,
-      SharedValueInteractionType interaction) {
+  Object? transform(
+      Object? value, ZacBuildContext context, ZacTransformerExtra? extra) {
     return map(
       (obj) {
         final template = Template(
@@ -48,7 +48,7 @@ class ZacTemplateExpressionsTransformer
         );
 
         final templateContext = obj.context?.map<String, Object?>(
-            (key, value) => MapEntry(key, value.getValue(interaction.context)));
+            (key, value) => MapEntry(key, value.getValue(context)));
         return template.process(context: <dynamic, dynamic>{
           'tValue': value,
           if (null != templateContext) ...templateContext,

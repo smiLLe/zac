@@ -247,10 +247,7 @@ void main() {
       test('simple value', () {
         expect(
             [_ConcatStr('bar'), _ConcatStr('baz')].transformValues(
-                ZacTransformValue('foo'),
-                FakeZacWidgetContext(),
-                SharedValueInteractionType.consume(
-                    context: FakeZacWidgetContext())),
+                ZacTransformValue('foo'), FakeZacWidgetContext(), null),
             equals('foobarbaz'));
       });
     });
@@ -300,7 +297,7 @@ void main() {
       verify(transformer.transform(
           ZacTransformValue(1),
           argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueInteractionTypeProvide>())));
+          argThat(isA<SharedValueTransformerInteractionProvide>())));
     });
 
     testWidgets('when consumed', (tester) async {
@@ -325,7 +322,7 @@ void main() {
       verify(transformer.transform(
           ZacTransformValue(1),
           argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueInteractionTypeConsume>())));
+          argThat(isA<SharedValueTransformerInteractionConsume>())));
     });
 
     testWidgets('in action consumed', (tester) async {
@@ -354,7 +351,7 @@ void main() {
       verify(transformer.transform(
           ZacTransformValue(2),
           argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueInteractionTypeAction>()
+          argThat(isA<SharedValueTransformerInteractionAction>()
               .having((p0) => p0.current, 'current', 1))));
     });
   });
@@ -367,7 +364,7 @@ class _ConcatStr implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      SharedValueInteractionType interaction) {
+      ZacTransformerExtra? extra) {
     return (transformValue.value as String) + str;
   }
 }
