@@ -88,9 +88,10 @@ class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
       (super.noSuchMethod(
           Invocation.method(#call, [transformValue, interaction])) as Object?);
   @override
-  Object? transform(_i6.ZacTransformValue? transformValue,
+  Object? transform(
+          _i6.ZacTransformValue? transformValue,
+          _i3.ZacBuildContext? context,
           _i5.SharedValueInteractionType? interaction) =>
-      (super.noSuchMethod(
-              Invocation.method(#transform, [transformValue, interaction]))
-          as Object?);
+      (super.noSuchMethod(Invocation.method(
+          #transform, [transformValue, context, interaction])) as Object?);
 }

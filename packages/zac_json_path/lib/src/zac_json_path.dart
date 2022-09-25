@@ -27,8 +27,8 @@ class ZacJsonPathTransformer
   }) = _ZacJsonPathTransformer;
 
   @override
-  Iterable<dynamic> transform(
-      Object? value, SharedValueInteractionType interaction) {
+  Iterable<dynamic> transform(Object? value, ZacBuildContext context,
+      SharedValueInteractionType interaction) {
     return JsonPath(expression).readValues(value);
   }
 }

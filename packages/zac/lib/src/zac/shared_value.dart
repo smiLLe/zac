@@ -52,8 +52,9 @@ See "$SharedValueProviderBuilder" for more info.
         }
 
         return context.ref.watch(SharedValue.provider(family).select(
-            (sharedValue) => obj.select!.transformSharedValues(
+            (sharedValue) => obj.select!.transformValues(
                 ZacTransformValue(_extractData(sharedValue, error)),
+                context,
                 SharedValueInteractionType.consume(context: context))));
       },
       read: (_) => _extractData(context.ref.read(provider(family)), error),
@@ -74,12 +75,6 @@ because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
 in your Widget tree before trying to update the $SharedValue.''')));
     });
-  }
-
-  static Object? transform(List<ZacTransformer> transformer, Object? value,
-      SharedValueInteractionType interaction) {
-    return transformer.transformSharedValues(
-        ZacTransformValue(value), interaction);
   }
 
   static void listenAndExecuteActions(
@@ -137,9 +132,9 @@ class UpdateSharedValueAction
       SharedValue.update(context, family, (current) {
         return null == transformer || true == transformer!.isEmpty
             ? value
-            : SharedValue.transform(
-                transformer!,
-                value,
+            : transformer!.transformValues(
+                ZacTransformValue(value),
+                context,
                 SharedValueInteractionType.action(
                   context: context,
                   payload: payload,
@@ -217,7 +212,7 @@ class SharedValueProvider extends HookConsumerWidget {
       () {
         return SharedValue(null == transformer || true == transformer!.isEmpty
             ? value
-            : SharedValue.transform(transformer!, value,
+            : transformer!.transformValues(ZacTransformValue(value), zacContext,
                 SharedValueInteractionType.provide(context: zacContext)));
       },
       [value, family, transformer],

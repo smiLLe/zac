@@ -38,7 +38,8 @@ class ZacTemplateExpressionsTransformer
   }) = _ZacTemplateExpressionsTransformer;
 
   @override
-  Object? transform(Object? value, SharedValueInteractionType interaction) {
+  Object? transform(Object? value, ZacBuildContext context,
+      SharedValueInteractionType interaction) {
     return map(
       (obj) {
         final template = Template(

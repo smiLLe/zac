@@ -156,7 +156,7 @@ class TransformerCb extends Mock implements ZacTransformer {
   }
 
   @override
-  Object? transform(ZacTransformValue transformValue,
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
       SharedValueInteractionType interaction) {
     return transformValue.value;
   }
