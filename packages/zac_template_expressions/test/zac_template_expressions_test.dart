@@ -83,8 +83,7 @@ void main() {
 
     expect(
         ZacTemplateExpressionsTransformer(expression: r'''${tValue}''')
-            .transform('hello world',
-                SharedValueInteractionType.consume(context: context)),
+            .transform('hello world', context, null),
         'hello world');
 
     expect(
@@ -93,7 +92,7 @@ void main() {
           context: {
             'hello': ZacObject('hello world'),
           },
-        ).transform(null, SharedValueInteractionType.consume(context: context)),
+        ).transform(null, context, null),
         'hello world');
   });
 }

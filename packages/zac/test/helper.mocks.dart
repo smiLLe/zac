@@ -43,7 +43,7 @@ class MockWhenZacCb<T> extends _i1.Mock implements _i2.WhenZacCb<T> {
   }
 
   @override
-  T? call(_i5.SharedValueInteractionType? obj) =>
+  T? call(_i5.SharedValueTransformerInteraction? obj) =>
       (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
 }
 
@@ -56,7 +56,7 @@ class MockWhenNotZacCb<T> extends _i1.Mock implements _i2.WhenNotZacCb<T> {
   }
 
   @override
-  T? call(_i5.SharedValueInteractionType? obj) =>
+  T? call(_i5.SharedValueTransformerInteraction? obj) =>
       (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
 }
 
@@ -84,13 +84,13 @@ class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
 
   @override
   Object? call(_i6.ZacTransformValue? transformValue,
-          _i5.SharedValueInteractionType? interaction) =>
+          _i5.SharedValueTransformerInteraction? interaction) =>
       (super.noSuchMethod(
           Invocation.method(#call, [transformValue, interaction])) as Object?);
   @override
   Object? transform(_i6.ZacTransformValue? transformValue,
-          _i5.SharedValueInteractionType? interaction) =>
+          _i3.ZacBuildContext? context, _i6.ZacTransformerExtra? extra) =>
       (super.noSuchMethod(
-              Invocation.method(#transform, [transformValue, interaction]))
+              Invocation.method(#transform, [transformValue, context, extra]))
           as Object?);
 }

@@ -6,16 +6,16 @@ import 'package:zac/zac.dart';
 import 'package:zac_json_path/zac_json_path.dart';
 
 class MockSharedValueInteractionType extends Mock
-    implements SharedValueInteractionType {}
+    implements SharedValueTransformerInteraction {}
 
 void main() {
   test('transform', () {
-    final t = ZacJsonPathTransformer.fromJson(jsonDecode(r'''{
-  "expression": "$.firstname"
-}''') as Map<String, dynamic>);
+//     final t = ZacJsonPathTransformer.fromJson(jsonDecode(r'''{
+//   "expression": "$.firstname"
+// }''') as Map<String, dynamic>);
 
-    final val =
-        t.transform({'firstname': 'Luke'}, MockSharedValueInteractionType());
-    expect(val, ['Luke']);
+//     final val =
+//         t.transform({'firstname': 'Luke'}, MockSharedValueInteractionType());
+//     expect(val, ['Luke']);
   }, skip: true);
 }

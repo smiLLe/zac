@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/update_context.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -37,15 +38,17 @@ abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);
 
-  Object? transform(
-      ZacTransformValue transformValue, SharedValueInteractionType interaction);
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra);
 }
 
+abstract class ZacTransformerExtra {}
+
 extension ZacTransformerOnList on List<ZacTransformer> {
-  Object? transformSharedValues(
-      ZacTransformValue value, SharedValueInteractionType interaction) {
+  Object? transformValues(ZacTransformValue value, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(previousValue, interaction);
+      final obj = element.transform(previousValue, context, extra);
       return ZacTransformValue(obj);
     }).value;
   }
@@ -63,8 +66,8 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   factory ConvertTransformer() = _Convert;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     return ConverterHelper.convertToType<Object>(value);
   }
@@ -136,8 +139,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapFromStringNullObject;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     if (value is! Map) {
       throw ZacTransformError('''
@@ -154,21 +157,21 @@ The value: $value
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
-      containsKey: (obj) =>
-          value.containsKey(obj.key?.getValue(interaction.context)),
-      containsValue: (obj) =>
-          value.containsValue(obj.value?.getValue(interaction.context)),
+      containsKey: (obj) => value.containsKey(obj.key?.getValue(context)),
+      containsValue: (obj) => value.containsValue(obj.value?.getValue(context)),
       mapper: (obj) {
         return value.map<dynamic, dynamic>((dynamic key, dynamic value) {
           dynamic updatedKey = key;
           dynamic updatedValue = value;
           if (true == obj.keyTransformer?.isNotEmpty) {
-            updatedKey = obj.keyTransformer?.transformSharedValues(
-                transformValue.withExtra(key, {'value': value}), interaction);
+            updatedKey = obj.keyTransformer?.transformValues(
+                transformValue.withExtra(key, {'value': value}),
+                context,
+                extra);
           }
           if (true == obj.valueTransformer?.isNotEmpty) {
-            updatedValue = obj.valueTransformer?.transformSharedValues(
-                transformValue.withExtra(value, {'key': key}), interaction);
+            updatedValue = obj.valueTransformer?.transformValues(
+                transformValue.withExtra(value, {'key': key}), context, extra);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -263,8 +266,8 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.take(int count) = _IterableTake;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
@@ -275,7 +278,7 @@ The value: $value
     }
     return map(
       map: (obj) => value.map((dynamic e) => obj.transformer
-          .transformSharedValues(ZacTransformValue(e), interaction)),
+          .transformValues(ZacTransformValue(e), context, extra)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -286,8 +289,7 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) =>
-          value.contains(obj.element?.getValue(interaction.context)),
+      contains: (obj) => value.contains(obj.element?.getValue(context)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -308,8 +310,8 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.reversed() = _ListReversed;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     if (value is! List) {
       throw ZacTransformError('''
@@ -368,15 +370,15 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   }) = _ObjectEqualsSharedValue;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     return map(
       isList: (_) => value is List,
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) {
-        final sValue = obj.getSharedValue(interaction.context);
+        final sValue = obj.getSharedValue(context);
         return sValue == value;
       },
       hashCode: (_) => value.hashCode,
@@ -449,8 +451,8 @@ class NumTransformer with _$NumTransformer implements ZacTransformer {
   const factory NumTransformer.isNegative() = _NumIsNegative;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     if (value is! num) {
       throw ZacTransformError('''
@@ -494,8 +496,8 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
   const factory IntTransformer.tryParse() = _IntTryParse;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     return map(
       parse: (obj) {
@@ -556,8 +558,8 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
       ZacString from, ZacString replace) = _StringReplaceAll;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
     if (value is! String) {
       throw ZacTransformError('''
@@ -569,12 +571,11 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.getValue(interaction.context)),
+      split: (obj) => value.split(obj.pattern.getValue(context)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.getValue(interaction.context)),
-          obj.replace.getValue(interaction.context)),
+          RegExp(obj.from.getValue(context)), obj.replace.getValue(context)),
     );
   }
 }
@@ -595,8 +596,8 @@ class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const factory JsonTransformer.decode() = _JsonDencode;
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     final value = transformValue.value;
 
     return map(

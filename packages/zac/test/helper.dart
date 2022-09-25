@@ -135,12 +135,12 @@ class NoopAction with _$NoopAction implements ZacAction {
 
 @GenerateMocks([WhenZacCb])
 class WhenZacCb<T> extends Mock {
-  T? call(SharedValueInteractionType obj);
+  T? call(SharedValueTransformerInteraction obj);
 }
 
 @GenerateMocks([WhenNotZacCb])
 class WhenNotZacCb<T> extends Mock {
-  T? call(SharedValueInteractionType obj);
+  T? call(SharedValueTransformerInteraction obj);
 }
 
 @GenerateMocks([LeakeContextCb])
@@ -151,13 +151,13 @@ class LeakeContextCb extends Mock {
 @GenerateMocks([TransformerCb])
 class TransformerCb extends Mock implements ZacTransformer {
   Object? call(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+      SharedValueTransformerInteraction interaction) {
     return transformValue.value;
   }
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     return transformValue.value;
   }
 }

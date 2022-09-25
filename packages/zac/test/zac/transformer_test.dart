@@ -35,8 +35,8 @@ void main() {
             ZacTransformValue({
               '_converter': 'f:1:SizedBox',
             }),
-            SharedValueInteractionType.consume(
-                context: FakeZacWidgetContext())),
+            FakeZacWidgetContext(),
+            null),
         FlutterSizedBox());
   });
 
@@ -53,24 +53,17 @@ void main() {
 
       expect(
           IterableTransformer.map(transformer: []).transform(
-              ZacTransformValue(['foo', 'oof']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
           isA<Iterable<Object?>>());
 
       expect(
           IterableTransformer.map(transformer: [_ConcatStr('bar')]).transform(
-              ZacTransformValue(['foo', 'oof']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
           ['foobar', 'oofbar']);
 
       expect(
           () => IterableTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(
-                  ZacTransformValue(55),
-                  SharedValueInteractionType.consume(
-                      context: FakeZacWidgetContext())),
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -83,16 +76,12 @@ void main() {
 
       expect(
           const IterableTransformer.first().transform(
-              ZacTransformValue(['foo', 'oof']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
           'foo');
 
       expect(
-          () => const IterableTransformer.first().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.first()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -105,16 +94,12 @@ void main() {
 
       expect(
           const IterableTransformer.last().transform(
-              ZacTransformValue(['foo', 'oof']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
           'oof');
 
       expect(
-          () => const IterableTransformer.first().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.first()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -127,23 +112,17 @@ void main() {
 
       expect(
           const IterableTransformer.single().transform(
-              ZacTransformValue(['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
           'foo');
 
       expect(
           () => const IterableTransformer.single().transform(
-              ZacTransformValue(['foo', 'oof']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
           throwsStateError);
 
       expect(
-          () => const IterableTransformer.first().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.first()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -157,15 +136,13 @@ void main() {
       expect(
           const IterableTransformer.length().transform(
               ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           4);
 
       expect(
-          () => const IterableTransformer.first().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.first()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -178,23 +155,17 @@ void main() {
 
       expect(
           const IterableTransformer.isEmpty().transform(
-              ZacTransformValue(['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
           isFalse);
 
       expect(
           const IterableTransformer.isEmpty().transform(
-              ZacTransformValue(<dynamic>[]),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(<dynamic>[]), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
-          () => const IterableTransformer.isEmpty().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.isEmpty()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -207,23 +178,17 @@ void main() {
 
       expect(
           const IterableTransformer.isNotEmpty().transform(
-              ZacTransformValue(['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           const IterableTransformer.isNotEmpty().transform(
-              ZacTransformValue(<dynamic>[]),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(<dynamic>[]), FakeZacWidgetContext(), null),
           isFalse);
 
       expect(
-          () => const IterableTransformer.isNotEmpty().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.isNotEmpty()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -236,16 +201,12 @@ void main() {
 
       expect(
           const IterableTransformer.toList().transform(
-              ZacTransformValue(<String>{'foo'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(<String>{'foo'}), FakeZacWidgetContext(), null),
           isA<List<Object?>>());
 
       expect(
-          () => const IterableTransformer.toList().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.toList()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -258,16 +219,12 @@ void main() {
 
       expect(
           const IterableTransformer.toSet().transform(
-              ZacTransformValue(<String>['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(<String>['foo']), FakeZacWidgetContext(), null),
           isA<Set<Object?>>());
 
       expect(
-          () => const IterableTransformer.toSet().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.toSet()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -280,16 +237,12 @@ void main() {
 
       expect(
           const IterableTransformer.toString().transform(
-              ZacTransformValue(<String>['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(<String>['foo']), FakeZacWidgetContext(), null),
           equals('[foo]'));
 
       expect(
-          () => const IterableTransformer.toString().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.toString()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -311,15 +264,13 @@ void main() {
       expect(
           const IterableTransformer.join().transform(
               ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           equals('foobar'));
 
       expect(
-          () => const IterableTransformer.join().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.join()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -334,10 +285,8 @@ void main() {
       );
 
       expect(
-          () => IterableTransformer.contains(ZacObject('foo')).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => IterableTransformer.contains(ZacObject('foo'))
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -345,8 +294,7 @@ void main() {
 
       expect(
           IterableTransformer.contains(ZacObject('foo')).transform(
-              ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(context: context)),
+              ZacTransformValue(<String>['foo', 'bar']), context, null),
           isTrue);
     });
 
@@ -362,15 +310,13 @@ void main() {
       expect(
           const IterableTransformer.elementAt(1).transform(
               ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           equals('bar'));
 
       expect(
-          () => const IterableTransformer.elementAt(1).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.elementAt(1)
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -386,15 +332,13 @@ void main() {
       expect(
           const IterableTransformer.skip(1).transform(
               ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           ['bar']);
 
       expect(
-          () => const IterableTransformer.skip(1).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.skip(1)
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -410,15 +354,13 @@ void main() {
       expect(
           const IterableTransformer.take(2).transform(
               ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           ['foo', 'bar']);
 
       expect(
-          () => const IterableTransformer.take(2).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const IterableTransformer.take(2)
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -434,15 +376,13 @@ void main() {
       expect(
           const ListTransformer.reversed().transform(
               ZacTransformValue(<String>['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           ['bar', 'foo']);
 
       expect(
-          () => const ListTransformer.reversed().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const ListTransformer.reversed()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -458,15 +398,13 @@ void main() {
       expect(
           const MapTransformer.values().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           [1, 2]);
 
       expect(
-          () => const MapTransformer.values().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.values()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -480,15 +418,13 @@ void main() {
       expect(
           const MapTransformer.keys().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           ['foo', 'bar']);
 
       expect(
-          () => const MapTransformer.keys().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.keys()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -502,15 +438,13 @@ void main() {
       expect(
           const MapTransformer.entries().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isA<Iterable<MapEntry<String, dynamic>>>());
 
       expect(
-          () => const MapTransformer.entries().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.entries()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -524,15 +458,13 @@ void main() {
       expect(
           const MapTransformer.length().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           2);
 
       expect(
-          () => const MapTransformer.length().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.length()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -546,22 +478,20 @@ void main() {
       expect(
           const MapTransformer.isEmpty().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isFalse);
 
       expect(
           const MapTransformer.isEmpty().transform(
               ZacTransformValue(<String, dynamic>{}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isTrue);
 
       expect(
-          () => const MapTransformer.isEmpty().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.isEmpty()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -575,22 +505,20 @@ void main() {
       expect(
           const MapTransformer.isNotEmpty().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isTrue);
 
       expect(
           const MapTransformer.isNotEmpty().transform(
               ZacTransformValue(<String, dynamic>{}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isFalse);
 
       expect(
-          () => const MapTransformer.isNotEmpty().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.isNotEmpty()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -602,10 +530,8 @@ void main() {
           props: <String, dynamic>{'key': 'foo'});
 
       expect(
-          () => MapTransformer.containsKey(ZacObject('foo')).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => MapTransformer.containsKey(ZacObject('foo'))
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -614,7 +540,8 @@ void main() {
       expect(
           MapTransformer.containsKey(ZacObject('foo')).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(context: context)),
+              context,
+              null),
           isTrue);
     });
 
@@ -626,10 +553,8 @@ void main() {
           props: <String, dynamic>{'value': 2});
 
       expect(
-          () => MapTransformer.containsValue(ZacObject(2)).transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => MapTransformer.containsValue(ZacObject(2))
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -638,7 +563,8 @@ void main() {
       expect(
           MapTransformer.containsValue(ZacObject(2)).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              SharedValueInteractionType.consume(context: context)),
+              context,
+              null),
           isTrue);
     });
 
@@ -663,8 +589,8 @@ void main() {
       expect(
           const MapTransformer.mapper().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isA<Map<Object?, Object?>>());
 
       expect(
@@ -673,22 +599,20 @@ void main() {
             valueTransformer: [_ConcatStr('hello')],
           ).transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           equals(<String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
 
       expect(
           const MapTransformer.mapper().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
 
       expect(
-          () => const MapTransformer.mapper().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.mapper()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -700,17 +624,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromObjectObject().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.fromObjectObject()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromObjectObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isA<Map<Object, Object>>());
     });
 
@@ -722,17 +644,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromStringNullObject().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.fromStringNullObject()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromStringNullObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isA<Map<String, Object?>>());
     });
 
@@ -744,17 +664,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromStringObject().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const MapTransformer.fromStringObject()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromStringObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isA<Map<String, Object>>());
     });
   });
@@ -769,16 +687,12 @@ void main() {
 
       expect(
           ObjectTransformer.isList().transform(
-              ZacTransformValue(['foo']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
-          ObjectTransformer.isList().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.isList()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           isFalse);
     });
 
@@ -792,15 +706,13 @@ void main() {
       expect(
           ObjectTransformer.isMap().transform(
               ZacTransformValue(<String, dynamic>{}),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           isTrue);
 
       expect(
-          ObjectTransformer.isMap().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.isMap()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           isFalse);
     });
 
@@ -815,17 +727,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.equals(other: 5).transform(
-              ZacTransformValue(5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.equals(other: 5)
+              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           ObjectTransformer.equals(other: 5).transform(
-              ZacTransformValue('foo'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
           isFalse);
     });
 
@@ -837,10 +745,8 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.hashCode().transform(
-              ZacTransformValue(5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.hashCode()
+              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
           5.hashCode);
     });
 
@@ -852,17 +758,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.runtimeType().transform(
-              ZacTransformValue(5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.runtimeType()
+              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
           5.runtimeType);
 
       expect(
           ObjectTransformer.runtimeType().transform(
-              ZacTransformValue('foo'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
           'foo'.runtimeType);
     });
 
@@ -874,17 +776,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.toString().transform(
-              ZacTransformValue(5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          ObjectTransformer.toString()
+              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
           '5');
 
       expect(
           ObjectTransformer.toString().transform(
-              ZacTransformValue('foo'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
           'foo');
     });
 
@@ -919,15 +817,13 @@ void main() {
         );
 
         expect(
-            ObjectTransformer.equalsSharedValue('shared').transform(
-                ZacTransformValue(5),
-                SharedValueInteractionType.consume(context: context)),
+            ObjectTransformer.equalsSharedValue('shared')
+                .transform(ZacTransformValue(5), context, null),
             isTrue);
 
         expect(
-            ObjectTransformer.equalsSharedValue('shared2').transform(
-                ZacTransformValue(5),
-                SharedValueInteractionType.consume(context: context)),
+            ObjectTransformer.equalsSharedValue('shared2')
+                .transform(ZacTransformValue(5), context, null),
             isFalse);
       });
     });
@@ -942,17 +838,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.toDouble().transform(
-              ZacTransformValue(5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.toDouble()
+              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
           isA<double>().having((p0) => p0, 'is double', 5.0));
 
       expect(
           () => const NumTransformer.toDouble().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -964,17 +856,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.toInt().transform(
-              ZacTransformValue(5.1),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.toInt()
+              .transform(ZacTransformValue(5.1), FakeZacWidgetContext(), null),
           isA<int>().having((p0) => p0, 'is int', 5));
 
       expect(
           () => const NumTransformer.toInt().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -986,17 +874,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.abs().transform(
-              ZacTransformValue(-2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.abs()
+              .transform(ZacTransformValue(-2.5), FakeZacWidgetContext(), null),
           2.5);
 
       expect(
           () => const NumTransformer.abs().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1008,17 +892,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.ceil().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.ceil()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           3);
 
       expect(
           () => const NumTransformer.ceil().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1030,17 +910,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.ceilToDouble().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.ceilToDouble()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           isA<double>().having((p0) => p0, 'double', 3.0));
 
       expect(
           () => const NumTransformer.ceilToDouble().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1052,17 +928,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.floor().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.floor()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           2);
 
       expect(
           () => const NumTransformer.floor().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1074,17 +946,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.floorToDouble().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.floorToDouble()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           isA<double>().having((p0) => p0, 'double', 2.0));
 
       expect(
           () => const NumTransformer.floorToDouble().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1096,17 +964,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.round().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.round()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           isA<int>().having((p0) => p0, 'int', 3));
 
       expect(
           () => const NumTransformer.round().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1118,17 +982,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.roundToDouble().transform(
-              ZacTransformValue(2.5),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.roundToDouble()
+              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
           isA<double>().having((p0) => p0, 'int', 3.0));
 
       expect(
           () => const NumTransformer.roundToDouble().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1140,17 +1000,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.isFinite().transform(
-              ZacTransformValue(1),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.isFinite()
+              .transform(ZacTransformValue(1), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           () => const NumTransformer.roundToDouble().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1163,16 +1019,12 @@ void main() {
 
       expect(
           const NumTransformer.isInfinite().transform(
-              ZacTransformValue(double.infinity),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(double.infinity), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           () => const NumTransformer.isInfinite().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1185,16 +1037,12 @@ void main() {
 
       expect(
           const NumTransformer.isNan().transform(
-              ZacTransformValue(double.nan),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(double.nan), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           () => const NumTransformer.isNan().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1206,17 +1054,13 @@ void main() {
       );
 
       expect(
-          const NumTransformer.isNegative().transform(
-              ZacTransformValue(-1.0),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const NumTransformer.isNegative()
+              .transform(ZacTransformValue(-1.0), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           () => const NumTransformer.isNegative().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1230,24 +1074,18 @@ void main() {
       );
 
       expect(
-          const IntTransformer.parse().transform(
-              ZacTransformValue('5'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const IntTransformer.parse()
+              .transform(ZacTransformValue('5'), FakeZacWidgetContext(), null),
           5);
 
       expect(
           () => const IntTransformer.parse().transform(
-              ZacTransformValue('no no no'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('no no no'), FakeZacWidgetContext(), null),
           throwsFormatException);
 
       expect(
           () => const IntTransformer.parse().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1259,24 +1097,18 @@ void main() {
       );
 
       expect(
-          const IntTransformer.tryParse().transform(
-              ZacTransformValue('5'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const IntTransformer.tryParse()
+              .transform(ZacTransformValue('5'), FakeZacWidgetContext(), null),
           5);
 
       expect(
           const IntTransformer.tryParse().transform(
-              ZacTransformValue('no no no'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('no no no'), FakeZacWidgetContext(), null),
           isNull);
 
       expect(
           () => const IntTransformer.tryParse().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1291,16 +1123,12 @@ void main() {
 
       expect(
           const StringTransformer.length().transform(
-              ZacTransformValue('foo'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
           3);
 
       expect(
           () => const StringTransformer.length().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1316,16 +1144,12 @@ void main() {
 
       expect(
           StringTransformer.split(pattern: ZacString(',')).transform(
-              ZacTransformValue('a,b'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue('a,b'), FakeZacWidgetContext(), null),
           ['a', 'b']);
 
       expect(
           () => StringTransformer.split(pattern: ZacString(',')).transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1337,17 +1161,13 @@ void main() {
       );
 
       expect(
-          const StringTransformer.isEmpty().transform(
-              ZacTransformValue(''),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const StringTransformer.isEmpty()
+              .transform(ZacTransformValue(''), FakeZacWidgetContext(), null),
           isTrue);
 
       expect(
           () => const StringTransformer.isEmpty().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1359,17 +1179,13 @@ void main() {
       );
 
       expect(
-          const StringTransformer.isNotEmpty().transform(
-              ZacTransformValue(''),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          const StringTransformer.isNotEmpty()
+              .transform(ZacTransformValue(''), FakeZacWidgetContext(), null),
           isFalse);
 
       expect(
           () => const StringTransformer.isNotEmpty().transform(
-              ZacTransformValue(Object()),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1384,17 +1200,13 @@ void main() {
       expect(
           StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
               .transform(
-                  ZacTransformValue('fooxx'),
-                  SharedValueInteractionType.consume(
-                      context: FakeZacWidgetContext())),
+                  ZacTransformValue('fooxx'), FakeZacWidgetContext(), null),
           'fooyy');
 
       expect(
           () => StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
               .transform(
-                  ZacTransformValue(Object()),
-                  SharedValueInteractionType.consume(
-                      context: FakeZacWidgetContext())),
+                  ZacTransformValue(Object()), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1409,9 +1221,7 @@ void main() {
 
       expect(
           const JsonTransformer.encode().transform(
-              ZacTransformValue(['foo', 'bar']),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              ZacTransformValue(['foo', 'bar']), FakeZacWidgetContext(), null),
           '["foo","bar"]');
     });
 
@@ -1425,15 +1235,13 @@ void main() {
       expect(
           const JsonTransformer.decode().transform(
               ZacTransformValue('["foo", "bar"]'),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+              FakeZacWidgetContext(),
+              null),
           ['foo', 'bar']);
 
       expect(
-          () => const JsonTransformer.decode().transform(
-              ZacTransformValue(55),
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext())),
+          () => const JsonTransformer.decode()
+              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1445,8 +1253,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     return (transformValue.value as String) + str;
   }
 }

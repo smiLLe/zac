@@ -246,12 +246,8 @@ void main() {
     group('transform()', () {
       test('simple value', () {
         expect(
-            SharedValue.transform(
-              [_ConcatStr('bar'), _ConcatStr('baz')],
-              'foo',
-              SharedValueInteractionType.consume(
-                  context: FakeZacWidgetContext()),
-            ),
+            [_ConcatStr('bar'), _ConcatStr('baz')].transformValues(
+                ZacTransformValue('foo'), FakeZacWidgetContext(), null),
             equals('foobarbaz'));
       });
     });
@@ -283,7 +279,7 @@ void main() {
   group('SharedValueInteractionType', () {
     testWidgets('when provided', (tester) async {
       final transformer = MockTransformerCb();
-      when(transformer.transform(any, any))
+      when(transformer.transform(any, any, any))
           .thenAnswer((i) => i.positionalArguments[0]);
 
       await testZacWidget(
@@ -298,14 +294,16 @@ void main() {
         ),
       );
 
-      verify(transformer.transform(ZacTransformValue(1),
-          argThat(isA<SharedValueInteractionTypeProvide>())));
+      verify(transformer.transform(
+          ZacTransformValue(1),
+          argThat(isA<ZacBuildContext>()),
+          argThat(isA<SharedValueTransformerInteractionProvide>())));
     });
 
     testWidgets('when consumed', (tester) async {
       late ZacBuildContext context;
       final transformer = MockTransformerCb();
-      when(transformer.transform(any, any))
+      when(transformer.transform(any, any, any))
           .thenAnswer((i) => i.positionalArguments[0].value);
 
       await testZacWidget(
@@ -321,13 +319,15 @@ void main() {
 
       ZacInt.consume('foo', transformer: [transformer]).getValue(context);
 
-      verify(transformer.transform(ZacTransformValue(1),
-          argThat(isA<SharedValueInteractionTypeConsume>())));
+      verify(transformer.transform(
+          ZacTransformValue(1),
+          argThat(isA<ZacBuildContext>()),
+          argThat(isA<SharedValueTransformerInteractionConsume>())));
     });
 
     testWidgets('in action consumed', (tester) async {
       final transformer = MockTransformerCb();
-      when(transformer.transform(any, any))
+      when(transformer.transform(any, any, any))
           .thenAnswer((i) => i.positionalArguments[0]);
 
       await testZacWidget(
@@ -350,7 +350,8 @@ void main() {
 
       verify(transformer.transform(
           ZacTransformValue(2),
-          argThat(isA<SharedValueInteractionTypeAction>()
+          argThat(isA<ZacBuildContext>()),
+          argThat(isA<SharedValueTransformerInteractionAction>()
               .having((p0) => p0.current, 'current', 1))));
     });
   });
@@ -362,8 +363,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(ZacTransformValue transformValue,
-      SharedValueInteractionType interaction) {
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ZacTransformerExtra? extra) {
     return (transformValue.value as String) + str;
   }
 }
