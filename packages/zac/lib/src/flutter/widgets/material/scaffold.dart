@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 
 import 'package:zac/src/zac/update_context.dart';
 
@@ -81,7 +82,7 @@ class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
   }) = _FlutterScaffoldShowBottomSheet;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
+  void execute(ZacBuildContext context, ContextBag bag) {
     map(
       (_) => throw StateError('Should never happen'),
       showBottomSheet: (value) {
@@ -211,7 +212,7 @@ class FlutterScaffoldMessenger
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
+  void execute(ZacBuildContext context, ContextBag bag) {
     map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context.context);

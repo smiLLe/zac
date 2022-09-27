@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/base.dart';
@@ -122,7 +123,7 @@ class ZacFlutterNavigatorActions
   }
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
+  void execute(ZacBuildContext context, ContextBag bag) {
     final state = _getState(context);
     if (null == state) return;
 

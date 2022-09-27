@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/widget_builder.dart';
@@ -18,24 +19,19 @@ abstract class ZacAction {
     return ConverterHelper.convertToType<ZacAction>(data);
   }
 
-  void execute(ZacBuildContext context, ActionPayload payload);
-}
-
-@defaultConverterFreezed
-class ActionPayload with _$ActionPayload {
-  const factory ActionPayload.none() = _ActionPayloadNone;
-  factory ActionPayload(Object? data) = _ActionPayloadWithData;
+  void execute(ZacBuildContext context, ContextBag bag);
 }
 
 void Function()? actionsCallback(ZacActions? actions, ZacBuildContext context) {
   if (null == actions) return null;
-  return () => actions.execute(context, const ActionPayload.none());
+  return () => actions.execute(context);
 }
 
 void Function(Object? data)? actionsCallback1(
     ZacActions? actions, ZacBuildContext context) {
   if (null == actions) return null;
-  return (Object? data) => actions.execute(context, ActionPayload(data));
+  return (Object? data) => actions.execute(context,
+      prefillBag: (bag) => bag..addKeyValue(kBagActionPayload, data));
 }
 
 @defaultConverterFreezed
@@ -67,12 +63,22 @@ class ZacActions with _$ZacActions {
   @FreezedUnionValue(ZacActions.unionValue)
   factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
-  void execute(ZacBuildContext context, ActionPayload payload) async {
+  void execute(
+    ZacBuildContext context, {
+    void Function(ContextBag bag)? prefillBag,
+  }) async {
     if (!context.isMounted()) return;
+    final bag = ContextBag();
+    prefillBag?.call(bag);
+
     for (var action in actions) {
-      if (!context.isMounted()) return;
-      action.execute(context, payload);
+      if (!context.isMounted()) {
+        bag.clear();
+        return;
+      }
+      action.execute(context, bag);
     }
+    bag.clear();
   }
 }
 
@@ -154,7 +160,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(zacContext, const ActionPayload.none());
+        actions.execute(zacContext);
         if (!mounted) return;
         doneState.value = true;
       });

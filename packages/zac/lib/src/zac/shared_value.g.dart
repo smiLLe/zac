@@ -17,14 +17,25 @@ _$EmptySharedValue _$$EmptySharedValueFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
-_$_UpdateSharedValueAction _$$_UpdateSharedValueActionFromJson(
+_$_SharedValueActionUpdate _$$_SharedValueActionUpdateFromJson(
         Map<String, dynamic> json) =>
-    _$_UpdateSharedValueAction(
+    _$_SharedValueActionUpdate(
+      family: json['family'] as Object,
+      transformer: (json['transformer'] as List<dynamic>)
+          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $type: json['_converter'] as String?,
+    );
+
+_$_SharedValueActionReplaceWith _$$_SharedValueActionReplaceWithFromJson(
+        Map<String, dynamic> json) =>
+    _$_SharedValueActionReplaceWith(
       family: json['family'] as Object,
       value: json['value'] as Object,
       transformer: (json['transformer'] as List<dynamic>?)
           ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
+      $type: json['_converter'] as String?,
     );
 
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(

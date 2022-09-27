@@ -6,18 +6,6 @@ part of 'action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ActionPayloadNone _$$_ActionPayloadNoneFromJson(Map<String, dynamic> json) =>
-    _$_ActionPayloadNone(
-      $type: json['_converter'] as String?,
-    );
-
-_$_ActionPayloadWithData _$$_ActionPayloadWithDataFromJson(
-        Map<String, dynamic> json) =>
-    _$_ActionPayloadWithData(
-      json['data'],
-      $type: json['_converter'] as String?,
-    );
-
 _$_ZacActions _$$_ZacActionsFromJson(Map<String, dynamic> json) =>
     _$_ZacActions(
       (json['actions'] as List<dynamic>)

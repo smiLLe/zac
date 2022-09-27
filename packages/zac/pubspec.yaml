@@ -15,6 +15,7 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   riverpod: ^2.0.0-dev.9
   hooks_riverpod: ^2.0.0-dev.9
+  collection: ^1.16.0
 
 dev_dependencies:
   flutter_test:

@@ -38,8 +38,7 @@ class ZacTemplateExpressionsTransformer
   }) = _ZacTemplateExpressionsTransformer;
 
   @override
-  Object? transform(
-      Object? value, ZacBuildContext context, ZacTransformerExtra? extra) {
+  Object? transform(Object? value, ZacBuildContext context, ContextBag? extra) {
     return map(
       (obj) {
         final template = Template(

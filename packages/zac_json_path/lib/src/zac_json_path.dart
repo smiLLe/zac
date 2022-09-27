@@ -28,7 +28,7 @@ class ZacJsonPathTransformer
 
   @override
   Iterable<dynamic> transform(
-      Object? value, ZacBuildContext context, ZacTransformerExtra? extra) {
+      Object? value, ZacBuildContext context, ContextBag? extra) {
     return JsonPath(expression).readValues(value);
   }
 }

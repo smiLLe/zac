@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
@@ -107,8 +108,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
   }) = _FlutterDialogsSimpleDialogOption;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacBuildContext context, ActionPayload payload) {
+  FutureOr<ZacActions?> execute(ZacBuildContext context, ContextBag bag) {
     if (!context.isMounted()) return null;
     return map(
       alertDialog: (_) => throw StateError('Should never happen'),

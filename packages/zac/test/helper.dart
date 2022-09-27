@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -89,7 +90,12 @@ Future<void> testWithConverters({
 
 @GenerateMocks([LeakedActionCb])
 class LeakedActionCb extends Mock {
-  void call(ZacBuildContext context, ActionPayload payload);
+  void call(ZacBuildContext context, ContextBag bag);
+}
+
+@GenerateMocks([LeakBagCb])
+class LeakBagCb extends Mock {
+  void call(Map<String, dynamic> bag) {}
 }
 
 @nonConverterFreezed
@@ -97,16 +103,29 @@ class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
   factory LeakAction(
-          void Function(ZacBuildContext context, ActionPayload payload) cb) =
-      _LeakAction;
+      void Function(ZacBuildContext context, ContextBag bag) cb) = _LeakAction;
 
   static ZacActions createActions(
-          void Function(ZacBuildContext context, ActionPayload payload) cb) =>
+          void Function(ZacBuildContext context, ContextBag bag) cb) =>
       ZacActions([LeakAction(cb)]);
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) =>
-      cb(context, payload);
+  void execute(ZacBuildContext context, ContextBag bag) => cb(context, bag);
+}
+
+@nonConverterFreezed
+class LeakBagContentAction with _$LeakBagContentAction implements ZacAction {
+  const LeakBagContentAction._();
+
+  factory LeakBagContentAction(void Function(Map<String, dynamic> bag) cb) =
+      _LeakBagContentAction;
+
+  static ZacActions createActions(void Function(Map<String, dynamic> bag) cb) =>
+      ZacActions([LeakBagContentAction(cb)]);
+
+  @override
+  void execute(ZacBuildContext context, ContextBag bag) =>
+      cb(<String, dynamic>{...bag});
 }
 
 @defaultConverterFreezed
@@ -130,17 +149,7 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {}
-}
-
-@GenerateMocks([WhenZacCb])
-class WhenZacCb<T> extends Mock {
-  T? call(SharedValueTransformerInteraction obj);
-}
-
-@GenerateMocks([WhenNotZacCb])
-class WhenNotZacCb<T> extends Mock {
-  T? call(SharedValueTransformerInteraction obj);
+  void execute(ZacBuildContext context, ContextBag bag) {}
 }
 
 @GenerateMocks([LeakeContextCb])
@@ -148,16 +157,49 @@ class LeakeContextCb extends Mock {
   void call(ZacBuildContext context);
 }
 
-@GenerateMocks([TransformerCb])
-class TransformerCb extends Mock implements ZacTransformer {
-  Object? call(ZacTransformValue transformValue,
-      SharedValueTransformerInteraction interaction) {
+class CustomTransformer implements ZacTransformer {
+  CustomTransformer(this.cb);
+
+  final Object? Function(ZacTransformValue transformValue,
+      ZacBuildContext context, ContextBag bag) cb;
+
+  @override
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ContextBag bag) {
+    return cb(transformValue, context, bag);
+  }
+}
+
+@GenerateMocks([LeakBagTransformer])
+class LeakBagTransformer extends Mock implements ZacTransformer {
+  LeakBagTransformer(this.cb);
+
+  final void Function(Map<String, dynamic> bag) cb;
+
+  Object? call(ZacTransformValue transformValue, ZacBuildContext context,
+      ContextBag bag) {
+    cb(<String, dynamic>{...bag});
     return transformValue.value;
   }
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
+    cb(<String, dynamic>{...bag});
+    return transformValue.value;
+  }
+}
+
+@GenerateMocks([TransformerCb])
+class TransformerCb extends Mock implements ZacTransformer {
+  Object? call(ZacTransformValue transformValue, ZacBuildContext context,
+      ContextBag bag) {
+    return transformValue.value;
+  }
+
+  @override
+  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
+      ContextBag bag) {
     return transformValue.value;
   }
 }

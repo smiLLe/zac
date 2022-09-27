@@ -4,6 +4,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -241,15 +242,116 @@ void main() {
                 const SharedValueConsumeType.read(), context, 'foo'),
             20);
       });
+
+      testWidgets('using Action', (tester) async {
+        final cb = MockLeakBagCb();
+        await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            value: 1,
+            family: 'foo',
+            child: ZacExecuteActionsBuilder.once(
+              actions: ZacActions([
+                UpdateSharedValueAction.replaceWith(
+                  family: 'foo',
+                  value: 2,
+                  transformer: [LeakBagTransformer(cb)],
+                ),
+              ]),
+              child: FlutterSizedBox(),
+            ),
+          ),
+        );
+
+        verify(cb(argThat(isA<Map<String, dynamic>>()
+                .having((p0) => p0, 'contains SharedValue.replaceWith',
+                    containsPair('SharedValue.replaceWith', 2))
+                .having((p0) => p0, 'contains SharedValue.current',
+                    containsPair('SharedValue.current', 1)))))
+            .called(1);
+      });
     });
 
     group('transform()', () {
       test('simple value', () {
         expect(
-            [_ConcatStr('bar'), _ConcatStr('baz')].transformValues(
-                ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+            [
+              _ConcatStr('bar'),
+              _ConcatStr('baz')
+            ].transformValues(ZacTransformValue('foo'), FakeZacWidgetContext()),
             equals('foobarbaz'));
       });
+    });
+  });
+
+  group('Actions', () {
+    testWidgets(
+        'update the SharedValue by updating/tranforming its current value',
+        (tester) async {
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'foo',
+          family: 'family',
+          child: FlutterColumn(
+            children: ListOfZacWidget([
+              FlutterText(ZacString.consume('family')),
+              ZacExecuteActionsBuilder.once(
+                actions: ZacActions([
+                  UpdateSharedValueAction(
+                    family: 'family',
+                    transformer: [_ConcatStr('oof')],
+                  ),
+                ]),
+              ),
+            ]),
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('foooof'), findsOneWidget);
+    });
+
+    testWidgets('replace the value of the SharedValue with another value',
+        (tester) async {
+      final cb = MockLeakBagCb();
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'foo',
+          family: 'family',
+          child: FlutterColumn(
+            children: ListOfZacWidget([
+              FlutterText(ZacString.consume('family')),
+              ZacExecuteActionsBuilder.once(
+                actions: ZacActions([
+                  UpdateSharedValueAction.replaceWith(
+                    family: 'family',
+                    value: 'bar',
+                    transformer: [LeakBagTransformer(cb)],
+                  ),
+                ]),
+                child: FlutterSizedBox(),
+              ),
+            ]),
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      verify(cb(argThat(isA<Map<String, dynamic>>()
+              .having((p0) => p0, 'contains SharedValue.replaceWith',
+                  containsPair('SharedValue.replaceWith', 'bar'))
+              .having((p0) => p0, 'contains SharedValue.current',
+                  containsPair('SharedValue.current', 'foo')))))
+          .called(1);
+
+      expect(find.text('bar'), findsOneWidget);
+      verifyNoMoreInteractions(cb);
     });
   });
 
@@ -275,86 +377,6 @@ void main() {
       expect(find.text('foobarbaz'), findsOneWidget);
     });
   });
-
-  group('SharedValueInteractionType', () {
-    testWidgets('when provided', (tester) async {
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0]);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: FlutterSizedBox(),
-          transformer: [
-            transformer,
-          ],
-        ),
-      );
-
-      verify(transformer.transform(
-          ZacTransformValue(1),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionProvide>())));
-    });
-
-    testWidgets('when consumed', (tester) async {
-      late ZacBuildContext context;
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0].value);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: LeakContext(
-            cb: (c) => context = c,
-          ),
-        ),
-      );
-
-      ZacInt.consume('foo', transformer: [transformer]).getValue(context);
-
-      verify(transformer.transform(
-          ZacTransformValue(1),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionConsume>())));
-    });
-
-    testWidgets('in action consumed', (tester) async {
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0]);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: ZacExecuteActionsBuilder.once(
-            actions: ZacActions([
-              UpdateSharedValueAction(
-                family: 'foo',
-                value: 2,
-                transformer: [transformer],
-              ),
-            ]),
-            child: FlutterSizedBox(),
-          ),
-        ),
-      );
-
-      verify(transformer.transform(
-          ZacTransformValue(2),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionAction>()
-              .having((p0) => p0.current, 'current', 1))));
-    });
-  });
 }
 
 class _ConcatStr implements ZacTransformer {
@@ -364,7 +386,7 @@ class _ConcatStr implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag? extra) {
     return (transformValue.value as String) + str;
   }
 }

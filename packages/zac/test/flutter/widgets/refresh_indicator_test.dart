@@ -68,7 +68,7 @@ void main() {
 
   testWidgets('FlutterRefreshIndicator interaction', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
-    final executeCb = MockLeakedActionCb();
+    final cb = MockLeakBagCb();
     await testZacWidget(
       tester,
       FlutterScaffold(
@@ -77,7 +77,7 @@ void main() {
         ),
         body: FlutterRefreshIndicator(
           onRefresh: ZacActions([
-            LeakAction(executeCb),
+            LeakBagContentAction(cb),
             const FlutterRefreshIndicatorAction(),
           ]),
           key: FlutterValueKey('FIND_ME'),
@@ -96,15 +96,13 @@ void main() {
     await tester.fling(findMe, const Offset(0.0, 300.0), 1000.0);
     await tester.pumpAndSettle();
 
-    verify(executeCb(
-            any,
-            argThat(isA<ActionPayload>().having(
-                (p) => p.map(
-                      none: (_) => throw Exception(''),
-                      (payload) => payload.data,
-                    ),
-                'payload.data',
-                isA<Completer>()))))
+    verify(cb(argThat(isA<Map<String, dynamic>>().having(
+            (p0) => p0,
+            'contains action.payload',
+            containsPair(
+                'action.payload',
+                isA<Completer>().having((p0) => p0.isCompleted,
+                    'Completer.isCompleted', isTrue))))))
         .called(1);
 
     handle.dispose();

@@ -37,8 +37,10 @@ mixin ActualValue<Of> {
 
   Of getActualValue(ZacBuildContext context) {
     if (true == transformer?.isNotEmpty) {
-      final transformed = transformer!.transformValues(ZacTransformValue(value),
-          context, SharedValueTransformerInteraction.consume());
+      final transformed = transformer!.transformValues(
+        ZacTransformValue(value),
+        context,
+      );
 
       if (transformed is! Of) {
         throw StateError('''
@@ -100,9 +102,9 @@ The consumed $SharedValue: $value
     }
 
     final transformedValue = transformer!.transformValues(
-        ZacTransformValue(value),
-        context,
-        SharedValueTransformerInteraction.consume());
+      ZacTransformValue(value),
+      context,
+    );
 
     if (transformedValue is! Of) {
       final alltransformerTypers = transformer!.map((e) => e.runtimeType);
@@ -174,9 +176,9 @@ The consumed $SharedValue: $value
 
     return value.map<Of>((element) {
       final transformedValue = transformer!.transformValues(
-          ZacTransformValue(element),
-          context,
-          SharedValueTransformerInteraction.consume());
+        ZacTransformValue(element),
+        context,
+      );
 
       if (transformedValue is! Of) {
         final alltransformerTypers = transformer!.map((e) => e.runtimeType);

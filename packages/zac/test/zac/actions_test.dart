@@ -139,7 +139,7 @@ void main() {
 
     testWidgets('execute actions', (tester) async {
       late ZacBuildContext context;
-      final cb = MockLeakedActionCb();
+      final cb = MockLeakBagCb();
 
       await testZacWidget(
         tester,
@@ -147,7 +147,7 @@ void main() {
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            actions: LeakAction.createActions(cb),
+            actions: LeakBagContentAction.createActions(cb),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
@@ -162,7 +162,7 @@ void main() {
       SharedValue.update(context, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
-      verify(cb(any, ActionPayload(2))).called(1);
+      verify(cb(argThat(containsPair('action.payload', 2)))).called(1);
       verifyNoMoreInteractions(cb);
     });
   });

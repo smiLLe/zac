@@ -1,6 +1,7 @@
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -36,7 +37,7 @@ void main() {
               '_converter': 'f:1:SizedBox',
             }),
             FakeZacWidgetContext(),
-            null),
+            ContextBag()),
         FlutterSizedBox());
   });
 
@@ -53,17 +54,22 @@ void main() {
 
       expect(
           IterableTransformer.map(transformer: []).transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'oof']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isA<Iterable<Object?>>());
 
       expect(
           IterableTransformer.map(transformer: [_ConcatStr('bar')]).transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'oof']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           ['foobar', 'oofbar']);
 
       expect(
           () => IterableTransformer.map(transformer: [_ConcatStr('bar')])
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+              .transform(
+                  ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -76,12 +82,14 @@ void main() {
 
       expect(
           const IterableTransformer.first().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'oof']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           'foo');
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -94,12 +102,14 @@ void main() {
 
       expect(
           const IterableTransformer.last().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'oof']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           'oof');
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -112,17 +122,19 @@ void main() {
 
       expect(
           const IterableTransformer.single().transform(
-              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), ContextBag()),
           'foo');
 
       expect(
           () => const IterableTransformer.single().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'oof']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsStateError);
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -137,12 +149,12 @@ void main() {
           const IterableTransformer.length().transform(
               ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           4);
 
       expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.first().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -155,17 +167,19 @@ void main() {
 
       expect(
           const IterableTransformer.isEmpty().transform(
-              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), ContextBag()),
           isFalse);
 
       expect(
           const IterableTransformer.isEmpty().transform(
-              ZacTransformValue(<dynamic>[]), FakeZacWidgetContext(), null),
+              ZacTransformValue(<dynamic>[]),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isTrue);
 
       expect(
-          () => const IterableTransformer.isEmpty()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.isEmpty().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -178,17 +192,19 @@ void main() {
 
       expect(
           const IterableTransformer.isNotEmpty().transform(
-              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           const IterableTransformer.isNotEmpty().transform(
-              ZacTransformValue(<dynamic>[]), FakeZacWidgetContext(), null),
+              ZacTransformValue(<dynamic>[]),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isFalse);
 
       expect(
-          () => const IterableTransformer.isNotEmpty()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.isNotEmpty().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -201,12 +217,14 @@ void main() {
 
       expect(
           const IterableTransformer.toList().transform(
-              ZacTransformValue(<String>{'foo'}), FakeZacWidgetContext(), null),
+              ZacTransformValue(<String>{'foo'}),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isA<List<Object?>>());
 
       expect(
-          () => const IterableTransformer.toList()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.toList().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -219,12 +237,14 @@ void main() {
 
       expect(
           const IterableTransformer.toSet().transform(
-              ZacTransformValue(<String>['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(<String>['foo']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isA<Set<Object?>>());
 
       expect(
-          () => const IterableTransformer.toSet()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.toSet().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -237,12 +257,14 @@ void main() {
 
       expect(
           const IterableTransformer.toString().transform(
-              ZacTransformValue(<String>['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(<String>['foo']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           equals('[foo]'));
 
       expect(
-          () => const IterableTransformer.toString()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.toString().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -265,12 +287,12 @@ void main() {
           const IterableTransformer.join().transform(
               ZacTransformValue(<String>['foo', 'bar']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           equals('foobar'));
 
       expect(
-          () => const IterableTransformer.join()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.join().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -285,8 +307,8 @@ void main() {
       );
 
       expect(
-          () => IterableTransformer.contains(ZacObject('foo'))
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => IterableTransformer.contains(ZacObject('foo')).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -294,7 +316,7 @@ void main() {
 
       expect(
           IterableTransformer.contains(ZacObject('foo')).transform(
-              ZacTransformValue(<String>['foo', 'bar']), context, null),
+              ZacTransformValue(<String>['foo', 'bar']), context, ContextBag()),
           isTrue);
     });
 
@@ -311,12 +333,12 @@ void main() {
           const IterableTransformer.elementAt(1).transform(
               ZacTransformValue(<String>['foo', 'bar']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           equals('bar'));
 
       expect(
-          () => const IterableTransformer.elementAt(1)
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.elementAt(1).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -333,12 +355,12 @@ void main() {
           const IterableTransformer.skip(1).transform(
               ZacTransformValue(<String>['foo', 'bar']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           ['bar']);
 
       expect(
-          () => const IterableTransformer.skip(1)
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.skip(1).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -355,12 +377,12 @@ void main() {
           const IterableTransformer.take(2).transform(
               ZacTransformValue(<String>['foo', 'bar']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           ['foo', 'bar']);
 
       expect(
-          () => const IterableTransformer.take(2)
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const IterableTransformer.take(2).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -377,12 +399,12 @@ void main() {
           const ListTransformer.reversed().transform(
               ZacTransformValue(<String>['foo', 'bar']),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           ['bar', 'foo']);
 
       expect(
-          () => const ListTransformer.reversed()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const ListTransformer.reversed().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -399,12 +421,12 @@ void main() {
           const MapTransformer.values().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           [1, 2]);
 
       expect(
-          () => const MapTransformer.values()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.values().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -419,12 +441,12 @@ void main() {
           const MapTransformer.keys().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           ['foo', 'bar']);
 
       expect(
-          () => const MapTransformer.keys()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.keys().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -439,12 +461,12 @@ void main() {
           const MapTransformer.entries().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isA<Iterable<MapEntry<String, dynamic>>>());
 
       expect(
-          () => const MapTransformer.entries()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.entries().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -459,12 +481,12 @@ void main() {
           const MapTransformer.length().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           2);
 
       expect(
-          () => const MapTransformer.length()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.length().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -479,19 +501,19 @@ void main() {
           const MapTransformer.isEmpty().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isFalse);
 
       expect(
           const MapTransformer.isEmpty().transform(
               ZacTransformValue(<String, dynamic>{}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isTrue);
 
       expect(
-          () => const MapTransformer.isEmpty()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.isEmpty().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -506,19 +528,19 @@ void main() {
           const MapTransformer.isNotEmpty().transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isTrue);
 
       expect(
           const MapTransformer.isNotEmpty().transform(
               ZacTransformValue(<String, dynamic>{}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isFalse);
 
       expect(
-          () => const MapTransformer.isNotEmpty()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.isNotEmpty().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -530,8 +552,8 @@ void main() {
           props: <String, dynamic>{'key': 'foo'});
 
       expect(
-          () => MapTransformer.containsKey(ZacObject('foo'))
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => MapTransformer.containsKey(ZacObject('foo')).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -541,7 +563,7 @@ void main() {
           MapTransformer.containsKey(ZacObject('foo')).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               context,
-              null),
+              ContextBag()),
           isTrue);
     });
 
@@ -553,8 +575,8 @@ void main() {
           props: <String, dynamic>{'value': 2});
 
       expect(
-          () => MapTransformer.containsValue(ZacObject(2))
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => MapTransformer.containsValue(ZacObject(2)).transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       late ZacBuildContext context;
@@ -564,7 +586,7 @@ void main() {
           MapTransformer.containsValue(ZacObject(2)).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
               context,
-              null),
+              ContextBag()),
           isTrue);
     });
 
@@ -590,7 +612,7 @@ void main() {
           const MapTransformer.mapper().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isA<Map<Object?, Object?>>());
 
       expect(
@@ -600,20 +622,55 @@ void main() {
           ).transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           equals(<String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
 
       expect(
           const MapTransformer.mapper().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
 
       expect(
-          () => const MapTransformer.mapper()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.mapper().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
+
+      Object? mergedBagValue;
+      late final Object? value;
+      MapTransformer.mapper(
+        keyTransformer: [
+          CustomTransformer((transformValue, context, bag) {
+            value = bag['MapEntry.value'];
+            mergedBagValue = bag['extra'];
+            return transformValue;
+          })
+        ],
+      ).transform(
+          ZacTransformValue(<String, dynamic>{'foo': 'a'}),
+          FakeZacWidgetContext(),
+          ContextBag()..addAll(<String, dynamic>{'extra': true}));
+      expect(value, 'a');
+      expect(mergedBagValue, isTrue);
+
+      mergedBagValue = null;
+
+      late final Object? key;
+      MapTransformer.mapper(
+        valueTransformer: [
+          CustomTransformer((transformValue, context, bag) {
+            key = bag['MapEntry.key'];
+            mergedBagValue = bag['extra'];
+            return transformValue;
+          })
+        ],
+      ).transform(
+          ZacTransformValue(<String, dynamic>{'foo': 'a'}),
+          FakeZacWidgetContext(),
+          ContextBag()..addAll(<String, dynamic>{'extra': true}));
+      expect(key, 'foo');
+      expect(mergedBagValue, isTrue);
     });
 
     test('.from() of type <Object, Object>', () {
@@ -624,15 +681,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromObjectObject()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.fromObjectObject().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromObjectObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isA<Map<Object, Object>>());
     });
 
@@ -644,15 +701,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromStringNullObject()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.fromStringNullObject().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromStringNullObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isA<Map<String, Object?>>());
     });
 
@@ -664,15 +721,15 @@ void main() {
       );
 
       expect(
-          () => const MapTransformer.fromStringObject()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const MapTransformer.fromStringObject().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           const MapTransformer.fromStringObject().transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isA<Map<String, Object>>());
     });
   });
@@ -687,12 +744,12 @@ void main() {
 
       expect(
           ObjectTransformer.isList().transform(
-              ZacTransformValue(['foo']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo']), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
-          ObjectTransformer.isList()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          ObjectTransformer.isList().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           isFalse);
     });
 
@@ -707,12 +764,12 @@ void main() {
           ObjectTransformer.isMap().transform(
               ZacTransformValue(<String, dynamic>{}),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           isTrue);
 
       expect(
-          ObjectTransformer.isMap()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          ObjectTransformer.isMap().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           isFalse);
     });
 
@@ -727,13 +784,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.equals(other: 5)
-              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
+          ObjectTransformer.equals(other: 5).transform(
+              ZacTransformValue(5), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           ObjectTransformer.equals(other: 5).transform(
-              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), ContextBag()),
           isFalse);
     });
 
@@ -745,8 +802,8 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.hashCode()
-              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
+          ObjectTransformer.hashCode().transform(
+              ZacTransformValue(5), FakeZacWidgetContext(), ContextBag()),
           5.hashCode);
     });
 
@@ -758,13 +815,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.runtimeType()
-              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
+          ObjectTransformer.runtimeType().transform(
+              ZacTransformValue(5), FakeZacWidgetContext(), ContextBag()),
           5.runtimeType);
 
       expect(
           ObjectTransformer.runtimeType().transform(
-              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), ContextBag()),
           'foo'.runtimeType);
     });
 
@@ -776,13 +833,13 @@ void main() {
       );
 
       expect(
-          ObjectTransformer.toString()
-              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
+          ObjectTransformer.toString().transform(
+              ZacTransformValue(5), FakeZacWidgetContext(), ContextBag()),
           '5');
 
       expect(
           ObjectTransformer.toString().transform(
-              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), ContextBag()),
           'foo');
     });
 
@@ -818,12 +875,12 @@ void main() {
 
         expect(
             ObjectTransformer.equalsSharedValue('shared')
-                .transform(ZacTransformValue(5), context, null),
+                .transform(ZacTransformValue(5), context, ContextBag()),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue('shared2')
-                .transform(ZacTransformValue(5), context, null),
+                .transform(ZacTransformValue(5), context, ContextBag()),
             isFalse);
       });
     });
@@ -838,13 +895,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.toDouble()
-              .transform(ZacTransformValue(5), FakeZacWidgetContext(), null),
+          const NumTransformer.toDouble().transform(
+              ZacTransformValue(5), FakeZacWidgetContext(), ContextBag()),
           isA<double>().having((p0) => p0, 'is double', 5.0));
 
       expect(
           () => const NumTransformer.toDouble().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -856,13 +915,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.toInt()
-              .transform(ZacTransformValue(5.1), FakeZacWidgetContext(), null),
+          const NumTransformer.toInt().transform(
+              ZacTransformValue(5.1), FakeZacWidgetContext(), ContextBag()),
           isA<int>().having((p0) => p0, 'is int', 5));
 
       expect(
           () => const NumTransformer.toInt().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -874,13 +935,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.abs()
-              .transform(ZacTransformValue(-2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.abs().transform(
+              ZacTransformValue(-2.5), FakeZacWidgetContext(), ContextBag()),
           2.5);
 
       expect(
           () => const NumTransformer.abs().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -892,13 +955,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.ceil()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.ceil().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           3);
 
       expect(
           () => const NumTransformer.ceil().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -910,13 +975,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.ceilToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.ceilToDouble().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           isA<double>().having((p0) => p0, 'double', 3.0));
 
       expect(
           () => const NumTransformer.ceilToDouble().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -928,13 +995,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.floor()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.floor().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           2);
 
       expect(
           () => const NumTransformer.floor().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -946,13 +1015,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.floorToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.floorToDouble().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           isA<double>().having((p0) => p0, 'double', 2.0));
 
       expect(
           () => const NumTransformer.floorToDouble().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -964,13 +1035,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.round()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.round().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           isA<int>().having((p0) => p0, 'int', 3));
 
       expect(
           () => const NumTransformer.round().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -982,13 +1055,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.roundToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacWidgetContext(), null),
+          const NumTransformer.roundToDouble().transform(
+              ZacTransformValue(2.5), FakeZacWidgetContext(), ContextBag()),
           isA<double>().having((p0) => p0, 'int', 3.0));
 
       expect(
           () => const NumTransformer.roundToDouble().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1000,13 +1075,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.isFinite()
-              .transform(ZacTransformValue(1), FakeZacWidgetContext(), null),
+          const NumTransformer.isFinite().transform(
+              ZacTransformValue(1), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           () => const NumTransformer.roundToDouble().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1019,12 +1096,16 @@ void main() {
 
       expect(
           const NumTransformer.isInfinite().transform(
-              ZacTransformValue(double.infinity), FakeZacWidgetContext(), null),
+              ZacTransformValue(double.infinity),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isTrue);
 
       expect(
           () => const NumTransformer.isInfinite().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1036,13 +1117,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.isNan().transform(
-              ZacTransformValue(double.nan), FakeZacWidgetContext(), null),
+          const NumTransformer.isNan().transform(ZacTransformValue(double.nan),
+              FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           () => const NumTransformer.isNan().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1054,13 +1137,15 @@ void main() {
       );
 
       expect(
-          const NumTransformer.isNegative()
-              .transform(ZacTransformValue(-1.0), FakeZacWidgetContext(), null),
+          const NumTransformer.isNegative().transform(
+              ZacTransformValue(-1.0), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           () => const NumTransformer.isNegative().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1074,18 +1159,22 @@ void main() {
       );
 
       expect(
-          const IntTransformer.parse()
-              .transform(ZacTransformValue('5'), FakeZacWidgetContext(), null),
+          const IntTransformer.parse().transform(
+              ZacTransformValue('5'), FakeZacWidgetContext(), ContextBag()),
           5);
 
       expect(
           () => const IntTransformer.parse().transform(
-              ZacTransformValue('no no no'), FakeZacWidgetContext(), null),
+              ZacTransformValue('no no no'),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsFormatException);
 
       expect(
           () => const IntTransformer.parse().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1097,18 +1186,22 @@ void main() {
       );
 
       expect(
-          const IntTransformer.tryParse()
-              .transform(ZacTransformValue('5'), FakeZacWidgetContext(), null),
+          const IntTransformer.tryParse().transform(
+              ZacTransformValue('5'), FakeZacWidgetContext(), ContextBag()),
           5);
 
       expect(
           const IntTransformer.tryParse().transform(
-              ZacTransformValue('no no no'), FakeZacWidgetContext(), null),
+              ZacTransformValue('no no no'),
+              FakeZacWidgetContext(),
+              ContextBag()),
           isNull);
 
       expect(
           () => const IntTransformer.tryParse().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1123,12 +1216,14 @@ void main() {
 
       expect(
           const StringTransformer.length().transform(
-              ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+              ZacTransformValue('foo'), FakeZacWidgetContext(), ContextBag()),
           3);
 
       expect(
           () => const StringTransformer.length().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1144,12 +1239,14 @@ void main() {
 
       expect(
           StringTransformer.split(pattern: ZacString(',')).transform(
-              ZacTransformValue('a,b'), FakeZacWidgetContext(), null),
+              ZacTransformValue('a,b'), FakeZacWidgetContext(), ContextBag()),
           ['a', 'b']);
 
       expect(
           () => StringTransformer.split(pattern: ZacString(',')).transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1161,13 +1258,15 @@ void main() {
       );
 
       expect(
-          const StringTransformer.isEmpty()
-              .transform(ZacTransformValue(''), FakeZacWidgetContext(), null),
+          const StringTransformer.isEmpty().transform(
+              ZacTransformValue(''), FakeZacWidgetContext(), ContextBag()),
           isTrue);
 
       expect(
           () => const StringTransformer.isEmpty().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1179,13 +1278,15 @@ void main() {
       );
 
       expect(
-          const StringTransformer.isNotEmpty()
-              .transform(ZacTransformValue(''), FakeZacWidgetContext(), null),
+          const StringTransformer.isNotEmpty().transform(
+              ZacTransformValue(''), FakeZacWidgetContext(), ContextBag()),
           isFalse);
 
       expect(
           () => const StringTransformer.isNotEmpty().transform(
-              ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              ZacTransformValue(Object()),
+              FakeZacWidgetContext(),
+              ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
 
@@ -1199,14 +1300,14 @@ void main() {
 
       expect(
           StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
-              .transform(
-                  ZacTransformValue('fooxx'), FakeZacWidgetContext(), null),
+              .transform(ZacTransformValue('fooxx'), FakeZacWidgetContext(),
+                  ContextBag()),
           'fooyy');
 
       expect(
           () => StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
-              .transform(
-                  ZacTransformValue(Object()), FakeZacWidgetContext(), null),
+              .transform(ZacTransformValue(Object()), FakeZacWidgetContext(),
+                  ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1221,7 +1322,9 @@ void main() {
 
       expect(
           const JsonTransformer.encode().transform(
-              ZacTransformValue(['foo', 'bar']), FakeZacWidgetContext(), null),
+              ZacTransformValue(['foo', 'bar']),
+              FakeZacWidgetContext(),
+              ContextBag()),
           '["foo","bar"]');
     });
 
@@ -1236,12 +1339,12 @@ void main() {
           const JsonTransformer.decode().transform(
               ZacTransformValue('["foo", "bar"]'),
               FakeZacWidgetContext(),
-              null),
+              ContextBag()),
           ['foo', 'bar']);
 
       expect(
-          () => const JsonTransformer.decode()
-              .transform(ZacTransformValue(55), FakeZacWidgetContext(), null),
+          () => const JsonTransformer.decode().transform(
+              ZacTransformValue(55), FakeZacWidgetContext(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
   });
@@ -1254,7 +1357,7 @@ class _ConcatStr implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag? bag) {
     return (transformValue.value as String) + str;
   }
 }

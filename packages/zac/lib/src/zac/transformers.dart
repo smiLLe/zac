@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 
@@ -39,18 +40,24 @@ abstract class ZacTransformer {
       ConverterHelper.convertToType<ZacTransformer>(json);
 
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra);
+      ContextBag bag);
 }
 
-abstract class ZacTransformerExtra {}
-
 extension ZacTransformerOnList on List<ZacTransformer> {
-  Object? transformValues(ZacTransformValue value, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
-    return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(previousValue, context, extra);
+  Object? transformValues(
+    ZacTransformValue value,
+    ZacBuildContext context, {
+    void Function(ContextBag bag)? prefillBag,
+  }) {
+    final bag = ContextBag();
+    prefillBag?.call(bag);
+    final transformedValue =
+        fold<ZacTransformValue>(value, (previousValue, element) {
+      final obj = element.transform(previousValue, context, bag);
       return ZacTransformValue(obj);
     }).value;
+    bag.clear();
+    return transformedValue;
   }
 }
 
@@ -67,7 +74,7 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     return ConverterHelper.convertToType<Object>(value);
   }
@@ -140,7 +147,7 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     if (value is! Map) {
       throw ZacTransformError('''
@@ -164,14 +171,18 @@ The value: $value
           dynamic updatedKey = key;
           dynamic updatedValue = value;
           if (true == obj.keyTransformer?.isNotEmpty) {
-            updatedKey = obj.keyTransformer?.transformValues(
-                transformValue.withExtra(key, {'value': value}),
-                context,
-                extra);
+            updatedKey = obj.keyTransformer
+                ?.transformValues(ZacTransformValue(key), context,
+                    prefillBag: (innerBag) => innerBag
+                      ..addEntries(bag.entries)
+                      ..addKeyValue(kBagTransformerMapEntryValue, value));
           }
           if (true == obj.valueTransformer?.isNotEmpty) {
-            updatedValue = obj.valueTransformer?.transformValues(
-                transformValue.withExtra(value, {'key': key}), context, extra);
+            updatedValue = obj.valueTransformer
+                ?.transformValues(ZacTransformValue(value), context,
+                    prefillBag: (innerBag) => innerBag
+                      ..addEntries(bag.entries)
+                      ..addKeyValue(kBagTransformerMapEntryKey, key));
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -267,7 +278,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
@@ -277,8 +288,9 @@ The value: $value
 ''');
     }
     return map(
-      map: (obj) => value.map((dynamic e) => obj.transformer
-          .transformValues(ZacTransformValue(e), context, extra)),
+      map: (obj) => value.map((dynamic e) => obj.transformer.transformValues(
+          ZacTransformValue(e), context,
+          prefillBag: (innerBag) => innerBag..addEntries(bag.entries))),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -311,7 +323,7 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     if (value is! List) {
       throw ZacTransformError('''
@@ -371,7 +383,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     return map(
       isList: (_) => value is List,
@@ -452,7 +464,7 @@ class NumTransformer with _$NumTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     if (value is! num) {
       throw ZacTransformError('''
@@ -497,7 +509,7 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     return map(
       parse: (obj) {
@@ -559,7 +571,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
     if (value is! String) {
       throw ZacTransformError('''
@@ -597,7 +609,7 @@ class JsonTransformer with _$JsonTransformer implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+      ContextBag bag) {
     final value = transformValue.value;
 
     return map(

@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
@@ -158,14 +159,17 @@ class FlutterNavigatorActions
   }
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
+  void execute(ZacBuildContext context, ContextBag bag) {
     map(
       push: (obj) {
         final state = _getState(context);
         if (null == state) return null;
         state.push(obj.route.build(context)).then((value) {
           if (value is ZacActions) {
-            value.execute(context, payload);
+            value.execute(
+              context,
+              prefillBag: (bag) => bag..addEntries(bag.entries),
+            );
           }
         });
       },
@@ -179,7 +183,10 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(context, payload);
+            value.execute(
+              context,
+              prefillBag: (bag) => bag..addEntries(bag.entries),
+            );
           }
         });
       },
@@ -203,7 +210,10 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(context, payload);
+            value.execute(
+              context,
+              prefillBag: (bag) => bag..addEntries(bag.entries),
+            );
           }
         });
       },
@@ -218,7 +228,10 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(context, payload);
+            value.execute(
+              context,
+              prefillBag: (bag) => bag..addEntries(bag.entries),
+            );
           }
         });
       },
