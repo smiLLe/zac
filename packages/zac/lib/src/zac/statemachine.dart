@@ -1,8 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/base.dart';
+import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -15,23 +19,6 @@ part 'statemachine.g.dart';
 
 typedef MachineContext = Object?;
 typedef UpdateContext = void Function(MachineContext context);
-
-@freezed
-class CurrentState with _$CurrentState {
-  factory CurrentState(
-    String state,
-    MachineContext context, {
-    required void Function(
-      String event,
-
-      /// Optional payload which will be available as [kBagStateMachineSendPayload]
-      /// and [kBagPayload].
-      SendPayload payload, {
-      void Function(ContextBag bag)? prefillBag,
-    })
-        send,
-  }) = _CurrentState;
-}
 
 @nonConverterFreezed
 class SendPayload with _$SendPayload {
@@ -69,27 +56,23 @@ class StateMachineValidationError extends StateError {
   StateMachineValidationError(super.message);
 }
 
-@defaultConverterFreezed
+@freezed
 class StateMachine with _$StateMachine {
   StateMachine._();
 
-  static const String unionValue = 'z:1:StateMachine';
+  factory StateMachine({
+    required String state,
+    required MachineContext context,
+    required List<StateNode> states,
+    required void Function(
+      String event,
 
-  factory StateMachine.fromJson(Map<String, dynamic> json) {
-    final machine = _$StateMachineFromJson(json);
-    assert(() {
-      machine.validate();
-      return true;
-    }(), '');
-
-    return machine;
-  }
-
-  @FreezedUnionValue(StateMachine.unionValue)
-  factory StateMachine(
-    String initial,
-    List<StateNode> states, {
-    MachineContext initialContext,
+      /// Optional payload which will be available as [kBagStateMachineSendPayload]
+      /// and [kBagPayload].
+      SendPayload payload, {
+      void Function(ContextBag bag)? prefillBag,
+    })
+        send,
   }) = _StateMachine;
 
   @visibleForTesting
@@ -150,53 +133,55 @@ extension XTransitions on Iterable<Transition> {
 }
 
 final statemachineProvider =
-    AutoDisposeProviderFamily<CurrentState, Object>((_, fam) {
+    AutoDisposeProviderFamily<StateMachine, Object>((_, fam) {
   throw UnimplementedError('Cannot request StateMachine for family: $fam');
 });
 
-AutoDisposeProvider<CurrentState> createStateMachineProvider({
-  required StateMachine machine,
+StateMachine createStateMachineProvider({
+  required String initialState,
+  required Object? initialContext,
+  required List<StateNode> states,
   required ZacBuildContext zacContext,
+  required AutoDisposeProviderRef<StateMachine> ref,
 }) {
-  return Provider.autoDispose<CurrentState>((ref) {
-    ref.listenSelf((previous, next) {});
+  ref.listenSelf((previous, next) {});
 
-    return CurrentState(
-      machine.initial,
-      machine.initialContext,
-      send: (event, payload, {prefillBag}) {
-        final curNode = machine.findNodeByState(ref.state.state);
-        final candidates = curNode.on.findCandidates(event);
-        if (candidates.isEmpty) return;
-        final transition = candidates.first;
-        final targetNode = machine.findNodeByState(transition.targetState);
+  return StateMachine(
+    state: initialState,
+    context: initialContext,
+    states: states,
+    send: (event, payload, {prefillBag}) {
+      final curNode = ref.state.findNodeByState(ref.state.state);
+      final candidates = curNode.on.findCandidates(event);
+      if (candidates.isEmpty) return;
+      final transition = candidates.first;
+      final targetNode = ref.state.findNodeByState(transition.targetState);
 
-        MachineContext nextContext = ref.state.context;
-        transition.actions?.execute(
-          zacContext,
-          prefillBag: (bag) {
-            bag
-              ..addKeyValue(kBagStateMachineSendEvent, event)
-              ..addKeyValue(kBagStateMachineCurrentContext, ref.state.context)
-              ..addKeyValue(kBagStateMachineUpdateContext,
-                  (MachineContext context) {
-                bag.addKeyValue(
-                    kBagStateMachineCurrentContext, ref.state.context);
-                return nextContext = context;
-              });
-            if (payload is _SendPayload) {
-              bag.setStateMachinePayload(payload.data);
-            }
-          },
-        );
+      MachineContext nextContext = ref.state.context;
+      transition.actions?.execute(
+        zacContext,
+        prefillBag: (bag) {
+          bag
+            ..addKeyValue(kBagStateMachineSendEvent, event)
+            ..addKeyValue(kBagStateMachineCurrentContext, ref.state.context)
+            ..addKeyValue(kBagStateMachineUpdateContext,
+                (MachineContext context) {
+              bag.addKeyValue(
+                  kBagStateMachineCurrentContext, ref.state.context);
+              return nextContext = context;
+            });
+          if (payload is _SendPayload) {
+            bag.setStateMachinePayload(payload.data);
+          }
+        },
+      );
 
-        ref.state = ref.state.copyWith.call(
-          state: targetNode.state,
-          context: nextContext,
-        );
-      },
-    );
-  });
+      ref.state = ref.state.copyWith.call(
+        state: targetNode.state,
+        context: nextContext,
+      );
+    },
+  );
 }
 
 @defaultConverterFreezed
@@ -240,13 +225,107 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
             );
       },
       updateContext: (obj) {
-        final updateContext = bag.saveGet<UpdateContext>(
+        final updateContext = bag.safeGet<UpdateContext>(
             key: kBagStateMachineUpdateContext, notFound: null);
-        final machineContext = bag.saveGet<MachineContext>(
+        final machineContext = bag.safeGet<MachineContext>(
             key: kBagStateMachineCurrentContext, notFound: null);
-        updateContext(obj.transformer
-            .transformValues(ZacTransformValue(machineContext), context));
+        updateContext(
+          obj.transformer.transformValues(
+            ZacTransformValue(machineContext),
+            context,
+            prefillBag: (innerBag) => innerBag..addEntries(bag.entries),
+          ),
+        );
       },
+    );
+  }
+}
+
+@defaultConverterFreezed
+class StateMachineProviderBuilder
+    with _$StateMachineProviderBuilder
+    implements ZacWidget {
+  const StateMachineProviderBuilder._();
+  static const String unionValue = 'z:1:StateMachine.provide';
+
+  factory StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
+      _$StateMachineProviderBuilderFromJson(json);
+
+  @FreezedUnionValue(StateMachineProviderBuilder.unionValue)
+  factory StateMachineProviderBuilder({
+    FlutterKey? key,
+    required ZacString initialState,
+    required List<StateNode> states,
+    required ZacString family,
+    required ZacWidget child,
+    ZacObject? initialContext,
+  }) = _StateMachineProviderBuilder;
+
+  @override
+  StateMachineProvider buildWidget(ZacBuildContext context) {
+    return StateMachineProvider(
+      key: key?.buildKey(context),
+      initialState: initialState.getValue(context),
+      initialContext: initialContext?.getValue(context),
+      states: states,
+      family: family.getValue(context),
+      builder: child.buildWidget,
+    );
+  }
+}
+
+class StateMachineProvider extends HookConsumerWidget {
+  const StateMachineProvider({
+    required this.initialState,
+    required this.initialContext,
+    required this.states,
+    required this.family,
+    required this.builder,
+    Key? key,
+  }) : super(key: key);
+
+  final String initialState;
+  final Object? initialContext;
+  final List<StateNode> states;
+  final String family;
+  final Widget Function(ZacBuildContext context) builder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacBuildContext(ref);
+
+    final provider = useMemoized(() {
+      return AutoDisposeProvider<StateMachine>(
+          (ref) => createStateMachineProvider(
+                ref: ref,
+                initialContext: initialContext,
+                initialState: initialState,
+                states: states,
+                zacContext: zacContext,
+              ));
+    }, [initialState, initialContext, states]);
+
+    return ProviderScope(
+      overrides: [
+        statemachineProvider(family).overrideWithProvider(provider),
+        SharedValue.provider('$family.state')
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+          (ref) {
+            return SharedValue(ref.watch(
+                statemachineProvider(family).select((value) => value.state)));
+          },
+          // dependencies: [statemachineProvider(family)],
+        )),
+        SharedValue.provider('$family.context')
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+          (ref) {
+            return SharedValue(ref.watch(
+                statemachineProvider(family).select((value) => value.context)));
+          },
+          // dependencies: [statemachineProvider(family)],
+        )),
+      ],
+      child: ZacUpdateContext(builder: builder),
     );
   }
 }

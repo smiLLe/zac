@@ -21,7 +21,7 @@ class ContextBag extends DelegatingMap<String, dynamic> {
     this[key] = data;
   }
 
-  T saveGet<T>({required String key, required T Function()? notFound}) {
+  T safeGet<T>({required String key, required T Function()? notFound}) {
     if (!containsKey(key)) {
       if (null == notFound) {
         throw StateError(

@@ -15,167 +15,6 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CurrentState {
-  String get state => throw _privateConstructorUsedError;
-  Object? get context => throw _privateConstructorUsedError;
-  void Function(String, SendPayload, {void Function(ContextBag)? prefillBag})
-      get send => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CurrentStateCopyWith<CurrentState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CurrentStateCopyWith<$Res> {
-  factory $CurrentStateCopyWith(
-          CurrentState value, $Res Function(CurrentState) then) =
-      _$CurrentStateCopyWithImpl<$Res>;
-  $Res call(
-      {String state,
-      Object? context,
-      void Function(String, SendPayload,
-              {void Function(ContextBag)? prefillBag})
-          send});
-}
-
-/// @nodoc
-class _$CurrentStateCopyWithImpl<$Res> implements $CurrentStateCopyWith<$Res> {
-  _$CurrentStateCopyWithImpl(this._value, this._then);
-
-  final CurrentState _value;
-  // ignore: unused_field
-  final $Res Function(CurrentState) _then;
-
-  @override
-  $Res call({
-    Object? state = freezed,
-    Object? context = freezed,
-    Object? send = freezed,
-  }) {
-    return _then(_value.copyWith(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-      context: context == freezed ? _value.context : context,
-      send: send == freezed
-          ? _value.send
-          : send // ignore: cast_nullable_to_non_nullable
-              as void Function(String, SendPayload,
-                  {void Function(ContextBag)? prefillBag}),
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_CurrentStateCopyWith<$Res>
-    implements $CurrentStateCopyWith<$Res> {
-  factory _$$_CurrentStateCopyWith(
-          _$_CurrentState value, $Res Function(_$_CurrentState) then) =
-      __$$_CurrentStateCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String state,
-      Object? context,
-      void Function(String, SendPayload,
-              {void Function(ContextBag)? prefillBag})
-          send});
-}
-
-/// @nodoc
-class __$$_CurrentStateCopyWithImpl<$Res>
-    extends _$CurrentStateCopyWithImpl<$Res>
-    implements _$$_CurrentStateCopyWith<$Res> {
-  __$$_CurrentStateCopyWithImpl(
-      _$_CurrentState _value, $Res Function(_$_CurrentState) _then)
-      : super(_value, (v) => _then(v as _$_CurrentState));
-
-  @override
-  _$_CurrentState get _value => super._value as _$_CurrentState;
-
-  @override
-  $Res call({
-    Object? state = freezed,
-    Object? context = freezed,
-    Object? send = freezed,
-  }) {
-    return _then(_$_CurrentState(
-      state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-      context == freezed ? _value.context : context,
-      send: send == freezed
-          ? _value.send
-          : send // ignore: cast_nullable_to_non_nullable
-              as void Function(String, SendPayload,
-                  {void Function(ContextBag)? prefillBag}),
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_CurrentState implements _CurrentState {
-  _$_CurrentState(this.state, this.context, {required this.send});
-
-  @override
-  final String state;
-  @override
-  final Object? context;
-  @override
-  final void Function(String, SendPayload,
-      {void Function(ContextBag)? prefillBag}) send;
-
-  @override
-  String toString() {
-    return 'CurrentState(state: $state, context: $context, send: $send)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_CurrentState &&
-            const DeepCollectionEquality().equals(other.state, state) &&
-            const DeepCollectionEquality().equals(other.context, context) &&
-            (identical(other.send, send) || other.send == send));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(context),
-      send);
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_CurrentStateCopyWith<_$_CurrentState> get copyWith =>
-      __$$_CurrentStateCopyWithImpl<_$_CurrentState>(this, _$identity);
-}
-
-abstract class _CurrentState implements CurrentState {
-  factory _CurrentState(final String state, final Object? context,
-      {required final void Function(String, SendPayload,
-              {void Function(ContextBag)? prefillBag})
-          send}) = _$_CurrentState;
-
-  @override
-  String get state;
-  @override
-  Object? get context;
-  @override
-  void Function(String, SendPayload, {void Function(ContextBag)? prefillBag})
-      get send;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CurrentStateCopyWith<_$_CurrentState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$SendPayload {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -415,36 +254,135 @@ abstract class _Transition implements Transition {
   ZacActions? get actions;
 }
 
-StateMachine _$StateMachineFromJson(Map<String, dynamic> json) {
-  return _StateMachine.fromJson(json);
-}
-
 /// @nodoc
 mixin _$StateMachine {
-  String get initial => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  Object? get context => throw _privateConstructorUsedError;
   List<StateNode> get states => throw _privateConstructorUsedError;
-  Object? get initialContext => throw _privateConstructorUsedError;
+  void Function(String, SendPayload, {void Function(ContextBag)? prefillBag})
+      get send => throw _privateConstructorUsedError;
 
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_StateMachine value) $default,
-  ) =>
+  @JsonKey(ignore: true)
+  $StateMachineCopyWith<StateMachine> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+abstract class $StateMachineCopyWith<$Res> {
+  factory $StateMachineCopyWith(
+          StateMachine value, $Res Function(StateMachine) then) =
+      _$StateMachineCopyWithImpl<$Res>;
+  $Res call(
+      {String state,
+      Object? context,
+      List<StateNode> states,
+      void Function(String, SendPayload,
+              {void Function(ContextBag)? prefillBag})
+          send});
+}
+
+/// @nodoc
+class _$StateMachineCopyWithImpl<$Res> implements $StateMachineCopyWith<$Res> {
+  _$StateMachineCopyWithImpl(this._value, this._then);
+
+  final StateMachine _value;
+  // ignore: unused_field
+  final $Res Function(StateMachine) _then;
+
+  @override
+  $Res call({
+    Object? state = freezed,
+    Object? context = freezed,
+    Object? states = freezed,
+    Object? send = freezed,
+  }) {
+    return _then(_value.copyWith(
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: context == freezed ? _value.context : context,
+      states: states == freezed
+          ? _value.states
+          : states // ignore: cast_nullable_to_non_nullable
+              as List<StateNode>,
+      send: send == freezed
+          ? _value.send
+          : send // ignore: cast_nullable_to_non_nullable
+              as void Function(String, SendPayload,
+                  {void Function(ContextBag)? prefillBag}),
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_StateMachineCopyWith<$Res>
+    implements $StateMachineCopyWith<$Res> {
+  factory _$$_StateMachineCopyWith(
+          _$_StateMachine value, $Res Function(_$_StateMachine) then) =
+      __$$_StateMachineCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String state,
+      Object? context,
+      List<StateNode> states,
+      void Function(String, SendPayload,
+              {void Function(ContextBag)? prefillBag})
+          send});
+}
+
+/// @nodoc
+class __$$_StateMachineCopyWithImpl<$Res>
+    extends _$StateMachineCopyWithImpl<$Res>
+    implements _$$_StateMachineCopyWith<$Res> {
+  __$$_StateMachineCopyWithImpl(
+      _$_StateMachine _value, $Res Function(_$_StateMachine) _then)
+      : super(_value, (v) => _then(v as _$_StateMachine));
+
+  @override
+  _$_StateMachine get _value => super._value as _$_StateMachine;
+
+  @override
+  $Res call({
+    Object? state = freezed,
+    Object? context = freezed,
+    Object? states = freezed,
+    Object? send = freezed,
+  }) {
+    return _then(_$_StateMachine(
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: context == freezed ? _value.context : context,
+      states: states == freezed
+          ? _value._states
+          : states // ignore: cast_nullable_to_non_nullable
+              as List<StateNode>,
+      send: send == freezed
+          ? _value.send
+          : send // ignore: cast_nullable_to_non_nullable
+              as void Function(String, SendPayload,
+                  {void Function(ContextBag)? prefillBag}),
+    ));
+  }
+}
+
+/// @nodoc
+
 class _$_StateMachine extends _StateMachine {
-  _$_StateMachine(this.initial, final List<StateNode> states,
-      {this.initialContext})
+  _$_StateMachine(
+      {required this.state,
+      required this.context,
+      required final List<StateNode> states,
+      required this.send})
       : _states = states,
         super._();
 
-  factory _$_StateMachine.fromJson(Map<String, dynamic> json) =>
-      _$$_StateMachineFromJson(json);
-
   @override
-  final String initial;
+  final String state;
+  @override
+  final Object? context;
   final List<StateNode> _states;
   @override
   List<StateNode> get states {
@@ -453,11 +391,12 @@ class _$_StateMachine extends _StateMachine {
   }
 
   @override
-  final Object? initialContext;
+  final void Function(String, SendPayload,
+      {void Function(ContextBag)? prefillBag}) send;
 
   @override
   String toString() {
-    return 'StateMachine(initial: $initial, states: $states, initialContext: $initialContext)';
+    return 'StateMachine(state: $state, context: $context, states: $states, send: $send)';
   }
 
   @override
@@ -465,43 +404,49 @@ class _$_StateMachine extends _StateMachine {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StateMachine &&
-            const DeepCollectionEquality().equals(other.initial, initial) &&
+            const DeepCollectionEquality().equals(other.state, state) &&
+            const DeepCollectionEquality().equals(other.context, context) &&
             const DeepCollectionEquality().equals(other._states, _states) &&
-            const DeepCollectionEquality()
-                .equals(other.initialContext, initialContext));
+            (identical(other.send, send) || other.send == send));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(initial),
+      const DeepCollectionEquality().hash(state),
+      const DeepCollectionEquality().hash(context),
       const DeepCollectionEquality().hash(_states),
-      const DeepCollectionEquality().hash(initialContext));
+      send);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_StateMachine value) $default,
-  ) {
-    return $default(this);
-  }
+  _$$_StateMachineCopyWith<_$_StateMachine> get copyWith =>
+      __$$_StateMachineCopyWithImpl<_$_StateMachine>(this, _$identity);
 }
 
 abstract class _StateMachine extends StateMachine {
-  factory _StateMachine(final String initial, final List<StateNode> states,
-      {final Object? initialContext}) = _$_StateMachine;
+  factory _StateMachine(
+      {required final String state,
+      required final Object? context,
+      required final List<StateNode> states,
+      required final void Function(String, SendPayload,
+              {void Function(ContextBag)? prefillBag})
+          send}) = _$_StateMachine;
   _StateMachine._() : super._();
 
-  factory _StateMachine.fromJson(Map<String, dynamic> json) =
-      _$_StateMachine.fromJson;
-
   @override
-  String get initial;
+  String get state;
+  @override
+  Object? get context;
   @override
   List<StateNode> get states;
   @override
-  Object? get initialContext;
+  void Function(String, SendPayload, {void Function(ContextBag)? prefillBag})
+      get send;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StateMachineCopyWith<_$_StateMachine> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 StateMachineActions _$StateMachineActionsFromJson(Map<String, dynamic> json) {
@@ -675,4 +620,127 @@ abstract class _StateMachineActionsUpdateContext extends StateMachineActions {
       Map<String, dynamic> json) = _$_StateMachineActionsUpdateContext.fromJson;
 
   List<ZacTransformer> get transformer;
+}
+
+StateMachineProviderBuilder _$StateMachineProviderBuilderFromJson(
+    Map<String, dynamic> json) {
+  return _StateMachineProviderBuilder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StateMachineProviderBuilder {
+  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacString get initialState => throw _privateConstructorUsedError;
+  List<StateNode> get states => throw _privateConstructorUsedError;
+  ZacString get family => throw _privateConstructorUsedError;
+  ZacWidget get child => throw _privateConstructorUsedError;
+  ZacObject? get initialContext => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateMachineProviderBuilder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StateMachineProviderBuilder extends _StateMachineProviderBuilder {
+  _$_StateMachineProviderBuilder(
+      {this.key,
+      required this.initialState,
+      required final List<StateNode> states,
+      required this.family,
+      required this.child,
+      this.initialContext})
+      : _states = states,
+        super._();
+
+  factory _$_StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_StateMachineProviderBuilderFromJson(json);
+
+  @override
+  final FlutterKey? key;
+  @override
+  final ZacString initialState;
+  final List<StateNode> _states;
+  @override
+  List<StateNode> get states {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_states);
+  }
+
+  @override
+  final ZacString family;
+  @override
+  final ZacWidget child;
+  @override
+  final ZacObject? initialContext;
+
+  @override
+  String toString() {
+    return 'StateMachineProviderBuilder(key: $key, initialState: $initialState, states: $states, family: $family, child: $child, initialContext: $initialContext)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StateMachineProviderBuilder &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality()
+                .equals(other.initialState, initialState) &&
+            const DeepCollectionEquality().equals(other._states, _states) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality()
+                .equals(other.initialContext, initialContext));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(initialState),
+      const DeepCollectionEquality().hash(_states),
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(initialContext));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateMachineProviderBuilder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _StateMachineProviderBuilder
+    extends StateMachineProviderBuilder {
+  factory _StateMachineProviderBuilder(
+      {final FlutterKey? key,
+      required final ZacString initialState,
+      required final List<StateNode> states,
+      required final ZacString family,
+      required final ZacWidget child,
+      final ZacObject? initialContext}) = _$_StateMachineProviderBuilder;
+  _StateMachineProviderBuilder._() : super._();
+
+  factory _StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
+      _$_StateMachineProviderBuilder.fromJson;
+
+  @override
+  FlutterKey? get key;
+  @override
+  ZacString get initialState;
+  @override
+  List<StateNode> get states;
+  @override
+  ZacString get family;
+  @override
+  ZacWidget get child;
+  @override
+  ZacObject? get initialContext;
 }

@@ -27,7 +27,7 @@ class FlutterRefreshIndicatorAction
 
   @override
   void execute(ZacBuildContext context, ContextBag bag) {
-    final completer = bag.saveGet<Completer<void>>(
+    final completer = bag.safeGet<Completer<void>>(
       key: kBagActionPayload,
       notFound: () => throw StateError('''
 There was an error in $FlutterRefreshIndicatorAction where no payload was found.

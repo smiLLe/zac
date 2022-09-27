@@ -167,6 +167,7 @@ Map<String, Convert> allConverters = const {
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
+  StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
   StateMachineActions.unionValue: StateMachineActions.fromJson,
   StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
 

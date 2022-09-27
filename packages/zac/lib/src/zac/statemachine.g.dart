@@ -22,15 +22,6 @@ _$_Transition _$$_TransitionFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['actions'] as Object),
     );
 
-_$_StateMachine _$$_StateMachineFromJson(Map<String, dynamic> json) =>
-    _$_StateMachine(
-      json['initial'] as String,
-      (json['states'] as List<dynamic>)
-          .map((e) => StateNode.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      initialContext: json['initialContext'],
-    );
-
 _$_StateMachineActionsSend _$$_StateMachineActionsSendFromJson(
         Map<String, dynamic> json) =>
     _$_StateMachineActionsSend(
@@ -50,3 +41,20 @@ _$_StateMachineActionsUpdateContext
               .toList(),
           $type: json['_converter'] as String?,
         );
+
+_$_StateMachineProviderBuilder _$$_StateMachineProviderBuilderFromJson(
+        Map<String, dynamic> json) =>
+    _$_StateMachineProviderBuilder(
+      key: json['key'] == null
+          ? null
+          : FlutterKey.fromJson(json['key'] as Object),
+      initialState: ZacString.fromJson(json['initialState'] as Object),
+      states: (json['states'] as List<dynamic>)
+          .map((e) => StateNode.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      family: ZacString.fromJson(json['family'] as Object),
+      child: ZacWidget.fromJson(json['child'] as Object),
+      initialContext: json['initialContext'] == null
+          ? null
+          : ZacObject.fromJson(json['initialContext'] as Object),
+    );
