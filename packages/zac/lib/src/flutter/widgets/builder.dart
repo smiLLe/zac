@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
@@ -25,12 +26,14 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
   }) = _FlutterBuilder;
 
   @override
-  Builder buildWidget(ZacBuildContext context) {
+  Builder buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Builder(
-      key: key?.buildKey(context),
+      key: key?.buildKey(context, ref, zacContext),
       builder: (_) {
         return ZacUpdateContext(
-          builder: (context) => child.buildWidget(context),
+          builder: (context) =>
+              child.buildWidget(context.context, ref, context),
         );
       },
     );

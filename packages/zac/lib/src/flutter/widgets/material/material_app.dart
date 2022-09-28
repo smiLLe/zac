@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -60,30 +60,33 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
   }) = _FlutterMaterialApp;
 
   @override
-  MaterialApp buildWidget(ZacBuildContext context) {
+  MaterialApp buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return MaterialApp(
-      key: key?.buildKey(context),
-      navigatorKey: navigatorKey?.buildKey(context),
-      home: home?.buildWidget(context),
-      initialRoute: initialRoute?.getValue(context),
-      onGenerateRoute: onGenerateRoute?.buildRouteFactory(context),
-      onUnknownRoute: onUnknownRoute?.buildRouteFactory(context),
-      title: title?.getValue(context) ?? '',
-      color: color?.build(context),
-      locale: locale?.build(context),
-      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(context) ?? false,
+      key: key?.buildKey(context, ref, zacContext),
+      navigatorKey: navigatorKey?.buildKey(context, ref, zacContext),
+      home: home?.buildWidget(context, ref, zacContext),
+      initialRoute: initialRoute?.getValue(zacContext),
+      onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
+      onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
+      title: title?.getValue(zacContext) ?? '',
+      color: color?.build(context, ref, zacContext),
+      locale: locale?.build(context, ref, zacContext),
+      debugShowMaterialGrid:
+          debugShowMaterialGrid?.getValue(zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.getValue(context) ?? false,
+          showPerformanceOverlay?.getValue(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(context) ?? false,
+          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(context) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.getValue(context) ?? false,
+          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
+      showSemanticsDebugger:
+          showSemanticsDebugger?.getValue(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(context) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(context),
+          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValue(context) ?? false,
+          useInheritedMediaQuery?.getValue(zacContext) ?? false,
     );
   }
 }

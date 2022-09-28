@@ -47,7 +47,8 @@ class ZacFlutterGlobalKeyNavigatorState
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
       consume: (_) => throw StateError(''),
@@ -68,9 +69,10 @@ class ZacFlutterGlobalKeyNavigatorState
   }
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacBuildContext context) {
+  GlobalKey<NavigatorState> buildKey(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
-      consume: (obj) => obj.getSharedValue(context),
+      consume: (obj) => obj.getSharedValue(zacContext),
       provide: (_) => throw StateError(''),
     );
   }
@@ -180,7 +182,7 @@ class RouteFactorySingleRoute
         wrap: (context, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context);
+            return zacWidget.buildWidget(context.context, context.ref, context);
           }
 
           return SharedValueProvider(
@@ -242,7 +244,7 @@ class RouteFactoryFromRoutes
         wrap: (context, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context);
+            return zacWidget.buildWidget(context.context, context.ref, context);
           }
 
           return SharedValueProvider(

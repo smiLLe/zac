@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -47,25 +47,31 @@ class FlutterGridView with _$FlutterGridView implements ZacWidget {
   }) = _FlutterGridView;
 
   @override
-  GridView buildWidget(ZacBuildContext context) {
+  GridView buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return GridView(
-      gridDelegate: gridDelegate.build(context),
-      key: key?.buildKey(context),
-      scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: reverse?.getValue(context) ?? false,
-      primary: primary?.getValue(context),
-      shrinkWrap: shrinkWrap?.getValue(context) ?? false,
-      padding: padding?.build(context),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(context) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(context) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(context) ?? true,
-      cacheExtent: cacheExtent?.getValue(context),
-      children: children?.getValue(context) ?? const <Widget>[],
-      semanticChildCount: semanticChildCount?.getValue(context),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(context) ??
-          ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
+      gridDelegate: gridDelegate.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, zacContext),
+      scrollDirection:
+          scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
+      reverse: reverse?.getValue(zacContext) ?? false,
+      primary: primary?.getValue(zacContext),
+      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      padding: padding?.build(context, ref, zacContext),
+      addAutomaticKeepAlives:
+          addAutomaticKeepAlives?.getValue(zacContext) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
+      cacheExtent: cacheExtent?.getValue(zacContext),
+      children:
+          children?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, ref, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.getValue(zacContext),
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
     );
   }
 }

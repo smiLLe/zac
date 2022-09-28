@@ -108,7 +108,8 @@ class ZacExecuteActionsBuilder
   }) = _ZacExecuteActionsBuilderListen;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       once: (obj) => ZacExecuteActionsOnce(
         actions: obj.actions,

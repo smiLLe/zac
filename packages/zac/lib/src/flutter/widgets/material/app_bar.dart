@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -54,9 +54,10 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
   }) = _FlutterAppBar;
 
   @override
-  AppBar buildWidget(ZacBuildContext context) {
+  AppBar buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     assert(() {
-      final w = bottom?.buildWidget(context);
+      final w = bottom?.buildWidget(context, ref, zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -65,33 +66,34 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
       return true;
     }(), '');
     return AppBar(
-      key: key?.buildKey(context),
-      leading: leading?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      leading: leading?.buildWidget(context, ref, zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(context) ?? true,
-      title: title?.buildWidget(context),
-      actions: actions?.getValue(context) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(context),
-      bottom: bottom?.buildWidget(context) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(context),
-      shadowColor: shadowColor?.build(context),
-      shape: shape?.build(context),
-      backgroundColor: backgroundColor?.build(context),
-      foregroundColor: foregroundColor?.build(context),
-      iconTheme: iconTheme?.build(context),
-      actionsIconTheme: actionsIconTheme?.build(context),
-      primary: primary?.getValue(context) ?? true,
-      centerTitle: centerTitle?.getValue(context),
+          automaticallyImplyLeading?.getValue(zacContext) ?? true,
+      title: title?.buildWidget(context, ref, zacContext),
+      actions: actions?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.buildWidget(context, ref, zacContext),
+      bottom:
+          bottom?.buildWidget(context, ref, zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.getValue(zacContext),
+      shadowColor: shadowColor?.build(context, ref, zacContext),
+      shape: shape?.build(context, ref, zacContext),
+      backgroundColor: backgroundColor?.build(context, ref, zacContext),
+      foregroundColor: foregroundColor?.build(context, ref, zacContext),
+      iconTheme: iconTheme?.build(context, ref, zacContext),
+      actionsIconTheme: actionsIconTheme?.build(context, ref, zacContext),
+      primary: primary?.getValue(zacContext) ?? true,
+      centerTitle: centerTitle?.getValue(zacContext),
       excludeHeaderSemantics:
-          excludeHeaderSemantics?.getValue(context) ?? false,
-      titleSpacing: titleSpacing?.getValue(context),
-      toolbarOpacity: toolbarOpacity?.getValue(context) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(context) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(context),
-      leadingWidth: leadingWidth?.getValue(context),
-      toolbarTextStyle: toolbarTextStyle?.build(context),
-      titleTextStyle: titleTextStyle?.build(context),
-      systemOverlayStyle: systemOverlayStyle?.build(context),
+          excludeHeaderSemantics?.getValue(zacContext) ?? false,
+      titleSpacing: titleSpacing?.getValue(zacContext),
+      toolbarOpacity: toolbarOpacity?.getValue(zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(zacContext),
+      leadingWidth: leadingWidth?.getValue(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.build(context, ref, zacContext),
+      titleTextStyle: titleTextStyle?.build(context, ref, zacContext),
+      systemOverlayStyle: systemOverlayStyle?.build(context, ref, zacContext),
     );
   }
 }

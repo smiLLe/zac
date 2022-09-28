@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,15 +34,16 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
   }) = _FlutterContainer;
 
   @override
-  Container buildWidget(ZacBuildContext context) {
+  Container buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Container(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      color: color?.build(context),
-      padding: padding?.build(context),
-      margin: margin?.build(context),
-      alignment: alignment?.build(context),
-      decoration: decoration?.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      color: color?.build(context, ref, zacContext),
+      padding: padding?.build(context, ref, zacContext),
+      margin: margin?.build(context, ref, zacContext),
+      alignment: alignment?.build(context, ref, zacContext),
+      decoration: decoration?.build(context, ref, zacContext),
     );
   }
 }

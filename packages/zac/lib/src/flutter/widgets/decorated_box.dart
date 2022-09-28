@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,12 +30,14 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements ZacWidget {
   }) = _FlutterDecoratedBox;
 
   @override
-  DecoratedBox buildWidget(ZacBuildContext context) {
+  DecoratedBox buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return DecoratedBox(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      decoration: decoration.build(context),
-      position: position?.build(context) ?? DecorationPosition.background,
+      key: key?.buildKey(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      decoration: decoration.build(context, ref, zacContext),
+      position: position?.build(context, ref, zacContext) ??
+          DecorationPosition.background,
     );
   }
 }

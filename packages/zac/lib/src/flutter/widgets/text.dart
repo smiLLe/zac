@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -39,22 +39,23 @@ class FlutterText with _$FlutterText implements ZacWidget {
   }) = _FlutterText;
 
   @override
-  Text buildWidget(ZacBuildContext context) {
+  Text buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Text(
-      data.getValue(context),
-      key: key?.buildKey(context),
-      style: style?.build(context),
-      strutStyle: strutStyle?.build(context),
-      textAlign: textAlign?.build(context),
-      textDirection: textDirection?.build(context),
-      locale: locale?.build(context),
-      softWrap: softWrap?.getValue(context),
-      overflow: overflow?.build(context),
-      textScaleFactor: textScaleFactor?.getValue(context),
-      maxLines: maxLines?.getValue(context),
-      semanticsLabel: semanticsLabel?.getValue(context),
-      textWidthBasis: textWidthBasis?.build(context),
-      textHeightBehavior: textHeightBehavior?.build(context),
+      data.getValue(zacContext),
+      key: key?.buildKey(context, ref, zacContext),
+      style: style?.build(context, ref, zacContext),
+      strutStyle: strutStyle?.build(context, ref, zacContext),
+      textAlign: textAlign?.build(context, ref, zacContext),
+      textDirection: textDirection?.build(context, ref, zacContext),
+      locale: locale?.build(context, ref, zacContext),
+      softWrap: softWrap?.getValue(zacContext),
+      overflow: overflow?.build(context, ref, zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacContext),
+      maxLines: maxLines?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
     );
   }
 }

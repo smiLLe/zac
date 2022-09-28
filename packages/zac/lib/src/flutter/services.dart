@@ -1,8 +1,9 @@
+import 'package:flutter/widgets.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/base.dart';
 
@@ -28,20 +29,23 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     ZacBool? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
-  SystemUiOverlayStyle build(ZacBuildContext context) {
+  SystemUiOverlayStyle build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.build(context),
+      systemNavigationBarColor:
+          systemNavigationBarColor?.build(context, ref, zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(context),
+          systemNavigationBarDividerColor?.build(context, ref, zacContext),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(context),
+          systemNavigationBarIconBrightness?.build(context, ref, zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(context),
-      statusBarColor: statusBarColor?.build(context),
-      statusBarBrightness: statusBarBrightness?.build(context),
-      statusBarIconBrightness: statusBarIconBrightness?.build(context),
+          systemNavigationBarContrastEnforced?.getValue(zacContext),
+      statusBarColor: statusBarColor?.build(context, ref, zacContext),
+      statusBarBrightness: statusBarBrightness?.build(context, ref, zacContext),
+      statusBarIconBrightness:
+          statusBarIconBrightness?.build(context, ref, zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(context),
+          systemStatusBarContrastEnforced?.getValue(zacContext),
     );
   }
 }
@@ -79,7 +83,8 @@ class FlutterTextInputType with _$FlutterTextInputType {
   factory FlutterTextInputType.visiblePassword() =
       _FlutterTextInputTypevisiblePassword;
 
-  TextInputType build(ZacBuildContext context) {
+  TextInputType build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -133,7 +138,8 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
   factory FlutterTextInputAction.unspecified() =
       _FlutterTextInputActionunspecified;
 
-  TextInputAction build(ZacBuildContext context) {
+  TextInputAction build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -170,7 +176,8 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   @FreezedUnionValue('f:1:TextCapitalization.words')
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
-  TextCapitalization build(ZacBuildContext context) {
+  TextCapitalization build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -193,7 +200,8 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   @FreezedUnionValue('f:1:SmartDashesType.enabled')
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
-  SmartDashesType build(ZacBuildContext context) {
+  SmartDashesType build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -214,7 +222,8 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   @FreezedUnionValue('f:1:SmartQuotesType.enabled')
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
-  SmartQuotesType build(ZacBuildContext context) {
+  SmartQuotesType build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,

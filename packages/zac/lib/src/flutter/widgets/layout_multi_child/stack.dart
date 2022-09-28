@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,14 +33,18 @@ class FlutterStack with _$FlutterStack implements ZacWidget {
   }) = _FlutterStack;
 
   @override
-  Stack buildWidget(ZacBuildContext context) {
+  Stack buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Stack(
-      key: key?.buildKey(context),
-      alignment: alignment?.build(context) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(context),
-      fit: fit?.build(context) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
-      children: children?.getValue(context) ?? const <Widget>[],
+      key: key?.buildKey(context, ref, zacContext),
+      alignment: alignment?.build(context, ref, zacContext) ??
+          AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(context, ref, zacContext),
+      fit: fit?.build(context, ref, zacContext) ?? StackFit.loose,
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
+      children:
+          children?.getValue(context, ref, zacContext) ?? const <Widget>[],
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -44,24 +44,27 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
   }) = _FlutterElevatedButtonIcon;
 
   @override
-  ElevatedButton buildWidget(ZacBuildContext context) {
+  ElevatedButton buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (value) => ElevatedButton(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        child: value.child?.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
       icon: (value) => ElevatedButton.icon(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        icon: value.icon.buildWidget(context),
-        label: value.label.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        icon: value.icon.buildWidget(context, ref, zacContext),
+        label: value.label.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
     );
   }
@@ -99,24 +102,27 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
   }) = _FlutterOutlinedButtonIcon;
 
   @override
-  OutlinedButton buildWidget(ZacBuildContext context) {
+  OutlinedButton buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (value) => OutlinedButton(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        child: value.child.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        child: value.child.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
       icon: (value) => OutlinedButton.icon(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        icon: value.icon.buildWidget(context),
-        label: value.label.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        icon: value.icon.buildWidget(context, ref, zacContext),
+        label: value.label.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
     );
   }
@@ -154,24 +160,27 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
   }) = _FlutterTextButtonIcon;
 
   @override
-  TextButton buildWidget(ZacBuildContext context) {
+  TextButton buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (value) => TextButton(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        child: value.child.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        child: value.child.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
       icon: (value) => TextButton.icon(
-        key: value.key?.buildKey(context),
-        onPressed: actionsCallback(value.onPressed, context),
-        onLongPress: actionsCallback(value.onLongPress, context),
-        icon: value.icon.buildWidget(context),
-        label: value.label.buildWidget(context),
-        autofocus: value.autofocus?.getValue(context) ?? false,
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
+        key: value.key?.buildKey(context, ref, zacContext),
+        onPressed: actionsCallback(value.onPressed, zacContext),
+        onLongPress: actionsCallback(value.onLongPress, zacContext),
+        icon: value.icon.buildWidget(context, ref, zacContext),
+        label: value.label.buildWidget(context, ref, zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior:
+            value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
       ),
     );
   }

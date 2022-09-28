@@ -1,864 +1,1061 @@
 import 'dart:ui';
 
-import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 
-import 'models.dart';
+import '../helper.dart';
 
 void main() {
   test('FlutterColor', () {
-    final config = FakeZacContext();
-    final fromARGB = FlutterColor.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Color.fromARGB',
-      'a': 10,
-      'r': 100,
-      'g': 100,
-      'b': 100
-    });
-
-    final fromRGBO = FlutterColor.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Color.fromRGBO',
-      'opacity': 0.9,
-      'r': 100,
-      'g': 100,
-      'b': 100
-    });
-    expect(fromARGB.build(config), const Color.fromARGB(10, 100, 100, 100));
-    expect(fromRGBO.build(config), const Color.fromRGBO(100, 100, 100, 0.9));
+    fakeBuild<Color>(
+      FlutterColor.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Color.fromARGB',
+        'a': 10,
+        'r': 100,
+        'g': 100,
+        'b': 100
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Color.fromARGB',
+          equals(const Color.fromARGB(10, 100, 100, 100))),
+    );
+    fakeBuild<Color>(
+      FlutterColor.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Color.fromRGBO',
+        'opacity': 0.9,
+        'r': 100,
+        'g': 100,
+        'b': 100
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Color.fromRGBO',
+          equals(const Color.fromRGBO(100, 100, 100, 0.9))),
+    );
   });
 
   test('FlutterOffset', () {
-    final config = FakeZacContext();
-    final offset = FlutterOffset.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Offset',
-      'dx': 10,
-      'dy': 20,
-    });
+    fakeBuild<Offset>(
+      FlutterOffset.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Offset',
+        'dx': 10,
+        'dy': 20,
+      }).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'Offset', equals(const Offset(10, 20))),
+    );
 
-    final direction = FlutterOffset.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Offset.fromDirection',
-      'direction': 10,
-      'distance': 20,
-    });
-
-    expect(offset.build(config), const Offset(10, 20));
-    expect(direction.build(config), Offset.fromDirection(10, 20));
+    fakeBuild<Offset>(
+      FlutterOffset.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Offset.fromDirection',
+        'direction': 10,
+        'distance': 20,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Offset.fromDirection',
+          equals(Offset.fromDirection(10, 20))),
+    );
   });
 
   test('FlutterBlurStyle', () {
-    final config = FakeZacContext();
-    final inner = FlutterBlurStyle.fromJson(
-        <String, dynamic>{'_converter': 'f:1:BlurSyle.inner'});
-    final normal = FlutterBlurStyle.fromJson(
-        <String, dynamic>{'_converter': 'f:1:BlurSyle.normal'});
-    final outer = FlutterBlurStyle.fromJson(
-        <String, dynamic>{'_converter': 'f:1:BlurSyle.outer'});
-    final solid = FlutterBlurStyle.fromJson(
-        <String, dynamic>{'_converter': 'f:1:BlurSyle.solid'});
+    fakeBuild<BlurStyle>(
+      FlutterBlurStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlurSyle.inner'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlurStyle.inner', equals(BlurStyle.inner)),
+    );
+    fakeBuild<BlurStyle>(
+      FlutterBlurStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlurSyle.normal'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlurStyle.normal', equals(BlurStyle.normal)),
+    );
 
-    expect(inner.build(config), BlurStyle.inner);
-    expect(normal.build(config), BlurStyle.normal);
-    expect(outer.build(config), BlurStyle.outer);
-    expect(solid.build(config), BlurStyle.solid);
+    fakeBuild<BlurStyle>(
+      FlutterBlurStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlurSyle.outer'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlurStyle.outer', equals(BlurStyle.outer)),
+    );
+
+    fakeBuild<BlurStyle>(
+      FlutterBlurStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlurSyle.solid'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlurStyle.solid', equals(BlurStyle.solid)),
+    );
   });
 
   test('FlutterRadius', () {
-    final config = FakeZacContext();
-    final circular = FlutterRadius.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Radius.circular',
-      'radius': 5.0,
-    });
-    final elliptical = FlutterRadius.fromJson(<String, dynamic>{
-      '_converter': 'f:1:Radius.elliptical',
-      'x': 10,
-      'y': 20,
-    });
-
-    expect(circular.build(config), const Radius.circular(5));
-    expect(elliptical.build(config), const Radius.elliptical(10, 20));
+    fakeBuild<Radius>(
+      FlutterRadius.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Radius.circular',
+        'radius': 5.0,
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'Radius.circular', equals(const Radius.circular(5))),
+    );
+    fakeBuild<Radius>(
+      FlutterRadius.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Radius.elliptical',
+        'x': 10,
+        'y': 20,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Radius.elliptical',
+          equals(const Radius.elliptical(10, 20))),
+    );
   });
 
   test('FlutterTextDirection', () {
-    final config = FakeZacContext();
-    final rtl = FlutterTextDirection.fromJson(
-        <String, dynamic>{'_converter': 'f:1:TextDirection.rtl'});
-    final ltr = FlutterTextDirection.fromJson(
-        <String, dynamic>{'_converter': 'f:1:TextDirection.ltr'});
+    fakeBuild<TextDirection>(
+      FlutterTextDirection.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextDirection.rtl'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextDirection.rtl', equals(TextDirection.rtl)),
+    );
 
-    expect(rtl.build(config), TextDirection.rtl);
-    expect(ltr.build(config), TextDirection.ltr);
+    fakeBuild<TextDirection>(
+      FlutterTextDirection.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextDirection.ltr'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextDirection.ltr', equals(TextDirection.ltr)),
+    );
   });
 
   test('FlutterClip', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterClip.fromJson(<String, dynamic>{'_converter': 'f:1:Clip.none'})
-            .build(config),
-        Clip.none);
-    expect(
-        FlutterClip.fromJson(
-                <String, dynamic>{'_converter': 'f:1:Clip.antiAlias'})
-            .build(config),
-        Clip.antiAlias);
-    expect(
-        FlutterClip.fromJson(
-            <String, dynamic>{'_converter': 'f:1:Clip.hardEdge'}).build(config),
-        Clip.hardEdge);
+    fakeBuild<Clip>(
+      FlutterClip.fromJson(<String, dynamic>{'_converter': 'f:1:Clip.none'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'Clip.none', equals(Clip.none)),
+    );
+
+    fakeBuild<Clip>(
+      FlutterClip.fromJson(
+          <String, dynamic>{'_converter': 'f:1:Clip.antiAlias'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'Clip.antiAlias', equals(Clip.antiAlias)),
+    );
+
+    fakeBuild<Clip>(
+      FlutterClip.fromJson(<String, dynamic>{'_converter': 'f:1:Clip.hardEdge'})
+          .build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'Clip.hardEdge', equals(Clip.hardEdge)),
+    );
   });
 
   test('FlutterTextBaseline', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextBaseline.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextBaseline.alphabetic'})
-            .build(config),
-        TextBaseline.alphabetic);
-    expect(
-        FlutterTextBaseline.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextBaseline.ideographic'})
-            .build(config),
-        TextBaseline.ideographic);
+    fakeBuild<TextBaseline>(
+      FlutterTextBaseline.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextBaseline.alphabetic'}).build,
+      (matcher) => matcher.having((p0) => p0, 'TextBaseline.alphabetic',
+          equals(TextBaseline.alphabetic)),
+    );
+
+    fakeBuild<TextBaseline>(
+      FlutterTextBaseline.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextBaseline.ideographic'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextBaseline.ideographic',
+          equals(TextBaseline.ideographic)),
+    );
   });
 
   test('FlutterFontWeight', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.bold'})
-            .build(config),
-        FontWeight.bold);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.bold'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.bold', equals(FontWeight.bold)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.normal'})
-            .build(config),
-        FontWeight.normal);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.normal'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.normal', equals(FontWeight.normal)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w100'})
-            .build(config),
-        FontWeight.w100);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w100'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w100', equals(FontWeight.w100)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w200'})
-            .build(config),
-        FontWeight.w200);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w200'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w200', equals(FontWeight.w200)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w300'})
-            .build(config),
-        FontWeight.w300);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w300'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w300', equals(FontWeight.w300)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w400'})
-            .build(config),
-        FontWeight.w400);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w400'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w400', equals(FontWeight.w400)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w500'})
-            .build(config),
-        FontWeight.w500);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w500'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w500', equals(FontWeight.w500)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w600'})
-            .build(config),
-        FontWeight.w600);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w600'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w600', equals(FontWeight.w600)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w700'})
-            .build(config),
-        FontWeight.w700);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w700'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w700', equals(FontWeight.w700)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w800'})
-            .build(config),
-        FontWeight.w800);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w800'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w800', equals(FontWeight.w800)),
+    );
 
-    expect(
-        FlutterFontWeight.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontWeight.w900'})
-            .build(config),
-        FontWeight.w900);
+    fakeBuild<FontWeight>(
+      FlutterFontWeight.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontWeight.w900'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontWeight.w900', equals(FontWeight.w900)),
+    );
   });
 
   test('FlutterFontStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterFontStyle.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontStyle.italic'})
-            .build(config),
-        FontStyle.italic);
-
-    expect(
-        FlutterFontStyle.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FontStyle.normal'})
-            .build(config),
-        FontStyle.normal);
+    fakeBuild<FontStyle>(
+      FlutterFontStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontStyle.italic'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontStyle.italic', equals(FontStyle.italic)),
+    );
+    fakeBuild<FontStyle>(
+      FlutterFontStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FontStyle.normal'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontStyle.normal', equals(FontStyle.normal)),
+    );
   });
 
   test('FlutterTextDecoration', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextDecoration.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextDecoration.lineThrough'
-        }).build(config),
-        TextDecoration.lineThrough);
-    expect(
-        FlutterTextDecoration.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextDecoration.none'})
-            .build(config),
-        TextDecoration.none);
-    expect(
-        FlutterTextDecoration.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextDecoration.overline'})
-            .build(config),
-        TextDecoration.overline);
-    expect(
-        FlutterTextDecoration.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextDecoration.underline'})
-            .build(config),
-        TextDecoration.underline);
+    fakeBuild<TextDecoration>(
+      FlutterTextDecoration.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecoration.lineThrough'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecoration.lineThrough',
+          equals(TextDecoration.lineThrough)),
+    );
+    fakeBuild<TextDecoration>(
+      FlutterTextDecoration.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextDecoration.none'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextDecoration.none', equals(TextDecoration.none)),
+    );
+    fakeBuild<TextDecoration>(
+      FlutterTextDecoration.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextDecoration.overline'}).build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecoration.overline',
+          equals(TextDecoration.overline)),
+    );
+    fakeBuild<TextDecoration>(
+      FlutterTextDecoration.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecoration.underline'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecoration.underline',
+          equals(TextDecoration.underline)),
+    );
   });
 
   test('FlutterTextLeadingDistribution', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextLeadingDistribution.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextLeadingDistribution.even'
-        }).build(config),
-        TextLeadingDistribution.even);
-
-    expect(
-        FlutterTextLeadingDistribution.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextLeadingDistribution.proportional'
-        }).build(config),
-        TextLeadingDistribution.proportional);
+    fakeBuild<TextLeadingDistribution>(
+      FlutterTextLeadingDistribution.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextLeadingDistribution.even'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextLeadingDistribution.even',
+          equals(TextLeadingDistribution.even)),
+    );
+    fakeBuild<TextLeadingDistribution>(
+      FlutterTextLeadingDistribution.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextLeadingDistribution.proportional'
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'TextLeadingDistribution.proportional',
+          equals(TextLeadingDistribution.proportional)),
+    );
   });
 
   test('FlutterLocale', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterLocale.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Locale',
-          'languageCode': 'de',
-          'countryCode': 'AT',
-        }).build(config),
-        const Locale('de', 'AT'));
+    fakeBuild<Locale>(
+      FlutterLocale.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Locale',
+        'languageCode': 'de',
+        'countryCode': 'AT',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'Locale', equals(const Locale('de', 'AT'))),
+    );
   });
 
   test('FlutterFontFeature', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature',
-          'feature': 'some',
-          'value': 5,
-        }).build(config),
-        const FontFeature('some', 5));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature',
+        'feature': 'some',
+        'value': 5,
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontFeature', equals(const FontFeature('some', 5))),
+    );
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.alternative',
+        'value': 5,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.alternative',
+          equals(const FontFeature.alternative(5))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.alternative',
-          'value': 5,
-        }).build(config),
-        const FontFeature.alternative(5));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.alternativeFractions',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'FontFeature.alternativeFractions',
+          equals(const FontFeature.alternativeFractions())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.alternativeFractions',
-        }).build(config),
-        const FontFeature.alternativeFractions());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.caseSensitiveForms',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.caseSensitiveForms',
+          equals(const FontFeature.caseSensitiveForms())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.caseSensitiveForms',
-        }).build(config),
-        const FontFeature.caseSensitiveForms());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.characterVariant',
+        'value': 5,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.characterVariant',
+          equals(FontFeature.characterVariant(5))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.characterVariant',
-          'value': 5,
-        }).build(config),
-        FontFeature.characterVariant(5));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.contextualAlternates',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'FontFeature.contextualAlternates',
+          equals(const FontFeature.contextualAlternates())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.contextualAlternates',
-        }).build(config),
-        const FontFeature.contextualAlternates());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.denominator',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.denominator',
+          equals(const FontFeature.denominator())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.denominator',
-        }).build(config),
-        const FontFeature.denominator());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.disable',
+        'feature': 'some'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.disable',
+          equals(const FontFeature.disable('some'))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.disable',
-          'feature': 'some'
-        }).build(config),
-        const FontFeature.disable('some'));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.enable',
+        'feature': 'some'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.enable',
+          equals(const FontFeature.enable('some'))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.enable',
-          'feature': 'some'
-        }).build(config),
-        const FontFeature.enable('some'));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.fractions',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.fractions',
+          equals(const FontFeature.fractions())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.fractions',
-        }).build(config),
-        const FontFeature.fractions());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.historicalForms',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.historicalForms',
+          equals(const FontFeature.historicalForms())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.historicalForms',
-        }).build(config),
-        const FontFeature.historicalForms());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.historicalLigatures',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.historicalLigatures',
+          equals(const FontFeature.historicalLigatures())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.historicalLigatures',
-        }).build(config),
-        const FontFeature.historicalLigatures());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.liningFigures',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.liningFigures',
+          equals(const FontFeature.liningFigures())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.liningFigures',
-        }).build(config),
-        const FontFeature.liningFigures());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.localeAware',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.localeAware',
+          equals(const FontFeature.localeAware())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.localeAware',
-          'enable': false
-        }).build(config),
-        const FontFeature.localeAware(enable: false));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.notationalForms',
+        'value': 5
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.notationalForms',
+          equals(const FontFeature.notationalForms(5))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.notationalForms',
-          'value': 5
-        }).build(config),
-        const FontFeature.notationalForms(5));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.numerators',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.numerators',
+          equals(const FontFeature.numerators())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.numerators',
-        }).build(config),
-        const FontFeature.numerators());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.oldstyleFigures',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.oldstyleFigures',
+          equals(const FontFeature.oldstyleFigures())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.oldstyleFigures',
-        }).build(config),
-        const FontFeature.oldstyleFigures());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.ordinalForms',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.ordinalForms',
+          equals(const FontFeature.ordinalForms())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.ordinalForms',
-        }).build(config),
-        const FontFeature.ordinalForms());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.proportionalFigures',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.proportionalFigures',
+          equals(const FontFeature.proportionalFigures())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.proportionalFigures',
-        }).build(config),
-        const FontFeature.proportionalFigures());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.randomize',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.randomize',
+          equals(const FontFeature.randomize())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.randomize',
-        }).build(config),
-        const FontFeature.randomize());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.scientificInferiors',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.scientificInferiors',
+          equals(const FontFeature.scientificInferiors())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.scientificInferiors',
-        }).build(config),
-        const FontFeature.scientificInferiors());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.slashedZero',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.slashedZero',
+          equals(const FontFeature.slashedZero())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.slashedZero',
-        }).build(config),
-        const FontFeature.slashedZero());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.stylisticAlternates',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.stylisticAlternates',
+          equals(const FontFeature.stylisticAlternates())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.stylisticAlternates',
-        }).build(config),
-        const FontFeature.stylisticAlternates());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.stylisticSet',
+        'value': 5,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.stylisticSet',
+          equals(FontFeature.stylisticSet(5))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.stylisticSet',
-          'value': 5,
-        }).build(config),
-        FontFeature.stylisticSet(5));
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.subscripts',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.subscripts',
+          equals(FontFeature.subscripts())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.subscripts',
-        }).build(config),
-        const FontFeature.subscripts());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.superscripts',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.superscripts',
+          equals(const FontFeature.superscripts())),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.superscripts',
-        }).build(config),
-        const FontFeature.superscripts());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.swash',
+        'value': 5
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FontFeature.swash', equals(const FontFeature.swash(5))),
+    );
 
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.swash',
-          'value': 5
-        }).build(config),
-        const FontFeature.swash(5));
-
-    expect(
-        FlutterFontFeature.fromJson(<String, dynamic>{
-          '_converter': 'f:1:FontFeature.tabularFigures',
-        }).build(config),
-        const FontFeature.tabularFigures());
+    fakeBuild<FontFeature>(
+      FlutterFontFeature.fromJson(<String, dynamic>{
+        '_converter': 'f:1:FontFeature.tabularFigures',
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'FontFeature.tabularFigures',
+          equals(const FontFeature.tabularFigures())),
+    );
   });
 
   test('FlutterTextDecorationStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextDecorationStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextDecorationStyle.dashed'
-        }).build(config),
-        TextDecorationStyle.dashed);
+    fakeBuild<TextDecorationStyle>(
+      FlutterTextDecorationStyle.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.dashed'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecorationStyle.dashed',
+          equals(TextDecorationStyle.dashed)),
+    );
 
-    expect(
-        FlutterTextDecorationStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextDecorationStyle.dotted'
-        }).build(config),
-        TextDecorationStyle.dotted);
+    fakeBuild<TextDecorationStyle>(
+      FlutterTextDecorationStyle.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.dotted'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecorationStyle.dotted',
+          equals(TextDecorationStyle.dotted)),
+    );
 
-    expect(
-        FlutterTextDecorationStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextDecorationStyle.double'
-        }).build(config),
-        TextDecorationStyle.double);
+    fakeBuild<TextDecorationStyle>(
+      FlutterTextDecorationStyle.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.double'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecorationStyle.double',
+          equals(TextDecorationStyle.double)),
+    );
 
-    expect(
-        FlutterTextDecorationStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextDecorationStyle.solid'
-        }).build(config),
-        TextDecorationStyle.solid);
+    fakeBuild<TextDecorationStyle>(
+      FlutterTextDecorationStyle.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.solid'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecorationStyle.solid',
+          equals(TextDecorationStyle.solid)),
+    );
 
-    expect(
-        FlutterTextDecorationStyle.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.wavy'})
-            .build(config),
-        TextDecorationStyle.wavy);
+    fakeBuild<TextDecorationStyle>(
+      FlutterTextDecorationStyle.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextDecorationStyle.wavy'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextDecorationStyle.wavy',
+          equals(TextDecorationStyle.wavy)),
+    );
   });
 
   test('FlutterTextAlign', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextAlign.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlign.center'})
-            .build(config),
-        TextAlign.center);
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.center'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextAlign.center', equals(TextAlign.center)),
+    );
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.end'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'TextAlign.end', equals(TextAlign.end)),
+    );
 
-    expect(
-        FlutterTextAlign.fromJson(
-            <String, dynamic>{'_converter': 'f:1:TextAlign.end'}).build(config),
-        TextAlign.end);
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.justify'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextAlign.justify', equals(TextAlign.justify)),
+    );
 
-    expect(
-        FlutterTextAlign.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlign.justify'})
-            .build(config),
-        TextAlign.justify);
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.left'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'TextAlign.left', equals(TextAlign.left)),
+    );
 
-    expect(
-        FlutterTextAlign.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlign.left'})
-            .build(config),
-        TextAlign.left);
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.right'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextAlign.right', equals(TextAlign.right)),
+    );
 
-    expect(
-        FlutterTextAlign.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlign.right'})
-            .build(config),
-        TextAlign.right);
-
-    expect(
-        FlutterTextAlign.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlign.start'})
-            .build(config),
-        TextAlign.start);
+    fakeBuild<TextAlign>(
+      FlutterTextAlign.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlign.start'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextAlign.start', equals(TextAlign.start)),
+    );
   });
 
   test('FlutterTextHeightBehavior', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextHeightBehavior.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextHeightBehavior',
-          'applyHeightToFirstAscent': false,
-          'applyHeightToLastDescent': false,
-          'leadingDistribution': {
-            '_converter': 'f:1:TextLeadingDistribution.even'
-          }
-        }).build(config),
-        const TextHeightBehavior(
-            applyHeightToFirstAscent: false,
-            applyHeightToLastDescent: false,
-            leadingDistribution: TextLeadingDistribution.even));
+    fakeBuild<TextHeightBehavior>(
+      FlutterTextHeightBehavior.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextHeightBehavior',
+        'applyHeightToFirstAscent': false,
+        'applyHeightToLastDescent': false,
+        'leadingDistribution': {
+          '_converter': 'f:1:TextLeadingDistribution.even'
+        }
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'TextHeightBehavior',
+          equals(const TextHeightBehavior(
+              applyHeightToFirstAscent: false,
+              applyHeightToLastDescent: false,
+              leadingDistribution: TextLeadingDistribution.even))),
+    );
   });
 
   test('FlutterBlendMode', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.clear'})
-            .build(config),
-        BlendMode.clear);
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.color'})
-            .build(config),
-        BlendMode.color);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.clear'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.clear', equals(BlendMode.clear)),
+    );
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.color'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.color', equals(BlendMode.color)),
+    );
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.colorBurn'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.colorBurn', equals(BlendMode.colorBurn)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.colorBurn'})
-            .build(config),
-        BlendMode.colorBurn);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.colorDodge'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.colorDodge', equals(BlendMode.colorDodge)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.colorDodge'})
-            .build(config),
-        BlendMode.colorDodge);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.darken'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.darken', equals(BlendMode.darken)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.darken'})
-            .build(config),
-        BlendMode.darken);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.difference'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.difference', equals(BlendMode.difference)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.difference'})
-            .build(config),
-        BlendMode.difference);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.dst'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BlendMode.dst', equals(BlendMode.dst)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BlendMode.dst'}).build(config),
-        BlendMode.dst);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.dstATop'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.dstATop', equals(BlendMode.dstATop)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.dstATop'})
-            .build(config),
-        BlendMode.dstATop);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.dstIn'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.dstIn', equals(BlendMode.dstIn)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.dstIn'})
-            .build(config),
-        BlendMode.dstIn);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.dstOut'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.dstOut', equals(BlendMode.dstOut)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.dstOut'})
-            .build(config),
-        BlendMode.dstOut);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.dstOver'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.dstOver', equals(BlendMode.dstOver)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.dstOver'})
-            .build(config),
-        BlendMode.dstOver);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.exclusion'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.exclusion', equals(BlendMode.exclusion)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.exclusion'})
-            .build(config),
-        BlendMode.exclusion);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.hardLight'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.hardLight', equals(BlendMode.hardLight)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.hardLight'})
-            .build(config),
-        BlendMode.hardLight);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.hue'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BlendMode.hue', equals(BlendMode.hue)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BlendMode.hue'}).build(config),
-        BlendMode.hue);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.lighten'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.lighten', equals(BlendMode.lighten)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.lighten'})
-            .build(config),
-        BlendMode.lighten);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.luminosity'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.luminosity', equals(BlendMode.luminosity)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.luminosity'})
-            .build(config),
-        BlendMode.luminosity);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.modulate'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.modulate', equals(BlendMode.modulate)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.modulate'})
-            .build(config),
-        BlendMode.modulate);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.multiply'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.multiply', equals(BlendMode.multiply)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.multiply'})
-            .build(config),
-        BlendMode.multiply);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.overlay'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.overlay', equals(BlendMode.overlay)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.overlay'})
-            .build(config),
-        BlendMode.overlay);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.plus'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BlendMode.plus', equals(BlendMode.plus)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.plus'})
-            .build(config),
-        BlendMode.plus);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.saturation'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.saturation', equals(BlendMode.saturation)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.saturation'})
-            .build(config),
-        BlendMode.saturation);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.screen'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.screen', equals(BlendMode.screen)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.screen'})
-            .build(config),
-        BlendMode.screen);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.softLight'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.softLight', equals(BlendMode.softLight)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.softLight'})
-            .build(config),
-        BlendMode.softLight);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.src'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BlendMode.src', equals(BlendMode.src)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BlendMode.src'}).build(config),
-        BlendMode.src);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.srcATop'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.srcATop', equals(BlendMode.srcATop)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.srcATop'})
-            .build(config),
-        BlendMode.srcATop);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.srcIn'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.srcIn', equals(BlendMode.srcIn)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.srcIn'})
-            .build(config),
-        BlendMode.srcIn);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.srcOut'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.srcOut', equals(BlendMode.srcOut)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.srcOut'})
-            .build(config),
-        BlendMode.srcOut);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.srcOver'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BlendMode.srcOver', equals(BlendMode.srcOver)),
+    );
 
-    expect(
-        FlutterBlendMode.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BlendMode.srcOver'})
-            .build(config),
-        BlendMode.srcOver);
-
-    expect(
-        FlutterBlendMode.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BlendMode.xor'}).build(config),
-        BlendMode.xor);
+    fakeBuild<BlendMode>(
+      FlutterBlendMode.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BlendMode.xor'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BlendMode.xor', equals(BlendMode.xor)),
+    );
   });
 
   test('FlutterRect', () {
-    final config = FakeZacContext();
-    final offset = FlutterOffset(ZacDouble(10), ZacDouble(20));
-    expect(
-        FlutterRect.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Rect.fromCenter',
-          'center': {
-            '_converter': 'f:1:Offset',
-            'dx': 10,
-            'dy': 20,
-          },
-          'width': 11,
-          'height': 22,
-        }).build(config),
-        Rect.fromCenter(center: offset.build(config), width: 11, height: 22));
-    expect(
-        FlutterRect.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Rect.fromCircle',
-          'center': {
-            '_converter': 'f:1:Offset',
-            'dx': 10,
-            'dy': 20,
-          },
-          'radius': 11,
-        }).build(config),
-        Rect.fromCircle(center: offset.build(config), radius: 11));
-    expect(
-        FlutterRect.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Rect.fromLTRB',
-          'left': 1,
-          'top': 2,
-          'right': 3,
-          'bottom': 4
-        }).build(config),
-        const Rect.fromLTRB(1, 2, 3, 4));
-    expect(
-        FlutterRect.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Rect.fromLTWH',
-          'left': 1,
-          'top': 2,
-          'width': 3,
-          'height': 4,
-        }).build(config),
-        const Rect.fromLTWH(1, 2, 3, 4));
-    expect(
-        FlutterRect.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Rect.fromPoints',
-          'center': {
-            '_converter': 'f:1:Offset',
-            'dx': 10,
-            'dy': 20,
-          },
-          'a': {
-            '_converter': 'f:1:Offset',
-            'dx': 10,
-            'dy': 20,
-          },
-          'b': {
-            '_converter': 'f:1:Offset',
-            'dx': 10,
-            'dy': 20,
-          },
-        }).build(config),
-        Rect.fromPoints(offset.build(config), offset.build(config)));
+    fakeBuild<Rect>(
+      FlutterRect.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Rect.fromCenter',
+        'center': {
+          '_converter': 'f:1:Offset',
+          'dx': 10,
+          'dy': 20,
+        },
+        'width': 11,
+        'height': 22,
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'Rect.fromCenter',
+          equals(Rect.fromCenter(
+              center: const Offset(10, 20), width: 11, height: 22))),
+    );
+
+    fakeBuild<Rect>(
+      FlutterRect.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Rect.fromCircle',
+        'center': {
+          '_converter': 'f:1:Offset',
+          'dx': 10,
+          'dy': 20,
+        },
+        'radius': 11,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Rect.fromCenter',
+          equals(Rect.fromCircle(center: const Offset(10, 20), radius: 11))),
+    );
+    fakeBuild<Rect>(
+      FlutterRect.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Rect.fromLTRB',
+        'left': 1,
+        'top': 2,
+        'right': 3,
+        'bottom': 4
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Rect.fromCenter',
+          equals(const Rect.fromLTRB(1, 2, 3, 4))),
+    );
+    fakeBuild<Rect>(
+      FlutterRect.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Rect.fromLTWH',
+        'left': 1,
+        'top': 2,
+        'width': 3,
+        'height': 4,
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Rect.fromCenter',
+          equals(const Rect.fromLTWH(1, 2, 3, 4))),
+    );
+    fakeBuild<Rect>(
+      FlutterRect.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Rect.fromPoints',
+        'center': {
+          '_converter': 'f:1:Offset',
+          'dx': 10,
+          'dy': 20,
+        },
+        'a': {
+          '_converter': 'f:1:Offset',
+          'dx': 10,
+          'dy': 20,
+        },
+        'b': {
+          '_converter': 'f:1:Offset',
+          'dx': 10,
+          'dy': 20,
+        },
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'Rect.fromCenter',
+          equals(Rect.fromPoints(const Offset(10, 20), const Offset(10, 20)))),
+    );
   });
 
   test('FlutterFilterQuality', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterFilterQuality.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FilterQuality.high'})
-            .build(config),
-        FilterQuality.high);
+    fakeBuild<FilterQuality>(
+      FlutterFilterQuality.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FilterQuality.high'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FilterQuality.high', equals(FilterQuality.high)),
+    );
+    fakeBuild<FilterQuality>(
+      FlutterFilterQuality.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FilterQuality.low'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FilterQuality.low', equals(FilterQuality.low)),
+    );
 
-    expect(
-        FlutterFilterQuality.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FilterQuality.low'})
-            .build(config),
-        FilterQuality.low);
+    fakeBuild<FilterQuality>(
+      FlutterFilterQuality.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FilterQuality.medium'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FilterQuality.medium', equals(FilterQuality.medium)),
+    );
 
-    expect(
-        FlutterFilterQuality.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FilterQuality.medium'})
-            .build(config),
-        FilterQuality.medium);
-
-    expect(
-        FlutterFilterQuality.fromJson(
-                <String, dynamic>{'_converter': 'f:1:FilterQuality.none'})
-            .build(config),
-        FilterQuality.none);
+    fakeBuild<FilterQuality>(
+      FlutterFilterQuality.fromJson(
+          <String, dynamic>{'_converter': 'f:1:FilterQuality.none'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'FilterQuality.none', equals(FilterQuality.none)),
+    );
   });
 
   test('FlutterBrightness', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBrightness.fromJson(
-                <String, dynamic>{'_converter': 'f:1:Brightness.light'})
-            .build(config),
-        Brightness.light);
-    expect(
-        FlutterBrightness.fromJson(
-                <String, dynamic>{'_converter': 'f:1:Brightness.dark'})
-            .build(config),
-        Brightness.dark);
+    fakeBuild<Brightness>(
+      FlutterBrightness.fromJson(
+          <String, dynamic>{'_converter': 'f:1:Brightness.light'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'Brightness.light)', equals(Brightness.light)),
+    );
+    fakeBuild<Brightness>(
+      FlutterBrightness.fromJson(
+          <String, dynamic>{'_converter': 'f:1:Brightness.dark'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'Brightness.dark)', equals(Brightness.dark)),
+    );
   });
 
   test('FlutterSize', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterSize.fromJson(<String, dynamic>{
-          '_converter': 'f:1:Size',
-          'width': 10,
-          'height': 20,
-        }).build(config),
-        const Size(10, 20));
+    fakeBuild<Size>(
+      FlutterSize.fromJson(<String, dynamic>{
+        '_converter': 'f:1:Size',
+        'width': 10,
+        'height': 20,
+      }).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'Size)', equals(const Size(10, 20))),
+    );
   });
 
   test('FlutterBoxHeightStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.includeLineSpacingBottom',
-        }).build(config),
-        BoxHeightStyle.includeLineSpacingBottom);
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.includeLineSpacingMiddle',
-        }).build(config),
-        BoxHeightStyle.includeLineSpacingMiddle);
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.includeLineSpacingTop',
-        }).build(config),
-        BoxHeightStyle.includeLineSpacingTop);
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.max',
-        }).build(config),
-        BoxHeightStyle.max);
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.strut',
-        }).build(config),
-        BoxHeightStyle.strut);
-    expect(
-        FlutterBoxHeightStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxHeightStyle.tight',
-        }).build(config),
-        BoxHeightStyle.tight);
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.includeLineSpacingBottom',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'BoxHeightStyle.includeLineSpacingBottom)',
+          equals(BoxHeightStyle.includeLineSpacingBottom)),
+    );
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.includeLineSpacingMiddle',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'BoxHeightStyle.includeLineSpacingMiddle)',
+          equals(BoxHeightStyle.includeLineSpacingMiddle)),
+    );
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.includeLineSpacingTop',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0,
+          'BoxHeightStyle.includeLineSpacingTop',
+          equals(BoxHeightStyle.includeLineSpacingTop)),
+    );
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.max',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxHeightStyle.max', equals(BoxHeightStyle.max)),
+    );
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.strut',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxHeightStyle.strut', equals(BoxHeightStyle.strut)),
+    );
+    fakeBuild<BoxHeightStyle>(
+      FlutterBoxHeightStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxHeightStyle.tight',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxHeightStyle.tight', equals(BoxHeightStyle.tight)),
+    );
   });
 
   test('FlutterBoxWidthStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBoxWidthStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxWidthStyle.max',
-        }).build(config),
-        BoxWidthStyle.max);
-    expect(
-        FlutterBoxWidthStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BoxWidthStyle.tight',
-        }).build(config),
-        BoxWidthStyle.tight);
+    fakeBuild<BoxWidthStyle>(
+      FlutterBoxWidthStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxWidthStyle.max',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxWidthStyle.max', equals(BoxWidthStyle.max)),
+    );
+    fakeBuild<BoxWidthStyle>(
+      FlutterBoxWidthStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BoxWidthStyle.tight',
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxWidthStyle.tight', equals(BoxWidthStyle.tight)),
+    );
   });
 }

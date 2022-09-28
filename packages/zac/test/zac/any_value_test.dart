@@ -420,7 +420,9 @@ void main() {
           ));
       expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume('foo').getValue(zacContext),
+      expect(
+          ListOfZacWidget.consume('foo')
+              .getValue(zacContext.context, zacContext.ref, zacContext),
           isA<List<Widget>>());
     });
 
@@ -444,7 +446,9 @@ void main() {
           ));
       expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume('foo').getValue(zacContext),
+      expect(
+          ListOfZacWidget.consume('foo')
+              .getValue(zacContext.context, zacContext.ref, zacContext),
           isA<List<Widget>>());
     });
   });

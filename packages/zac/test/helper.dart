@@ -20,12 +20,59 @@ part 'helper.g.dart';
 
 class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
 
+class FakeBuildContext extends Fake implements BuildContext {}
+
+class FakeWidgetRef extends Fake implements WidgetRef {}
+
 Matcher throwsConverterError = throwsA(isA<ConverterError>());
 
 TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
   return isA<FilledSharedValue>()
       .having((p0) => p0.data, 'FilledSharedValue.data', matcher);
 }
+
+void fakeBuild<T>(
+  Object Function(
+          BuildContext context, WidgetRef ref, ZacBuildContext zacContext)
+      builder,
+  TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
+) {
+  final context = FakeZacWidgetContext();
+  final buildContext = FakeBuildContext();
+  final ref = FakeWidgetRef();
+  expect(builder(buildContext, ref, context), isA<T>());
+  expect(builder(buildContext, ref, context), matcher(isA<T>()));
+}
+
+// Future<void> testSingleWidget<TWidget>({
+//   required WidgetTester tester,
+//   required Map<String, dynamic> widget,
+// }) async {
+//   await testZacWidget(
+//     tester,
+//     ZacWidgetBuilderBuilder.map(
+//       data: ZacMap(
+//         <String, dynamic>{
+//           '_converter': 'f:1:SizedBox',
+//           'key': {'_converter': 'f:1:ValueKey', 'value': 'THE_PARENT'},
+//           'child': widget,
+//         },
+//       ),
+//     ),
+//   );
+
+//   final finder = find
+//       .descendant(
+//         of: find.byKey(const ValueKey('THE_PARENT')),
+//         matching: find.byWidgetPredicate((widget) => widget is TWidget),
+//       )
+//       .first
+//       .evaluate()
+//       .first
+//       .widget;
+
+//   expect(finder, isA<TWidget>());
+// }
 
 Future<void> testMap(
   WidgetTester tester,
@@ -214,8 +261,10 @@ class LeakContext with _$LeakContext implements ZacWidget {
   }) = _LeakContext;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
-    cb(context);
-    return child?.buildWidget(context) ?? const SizedBox.shrink();
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    cb(zacContext);
+    return child?.buildWidget(context, ref, zacContext) ??
+        const SizedBox.shrink();
   }
 }

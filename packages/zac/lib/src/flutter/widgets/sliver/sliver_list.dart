@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
@@ -25,10 +26,11 @@ class FlutterSliverList with _$FlutterSliverList implements ZacWidget {
   }) = _FlutterSliverList;
 
   @override
-  SliverList buildWidget(ZacBuildContext context) {
+  SliverList buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SliverList(
-      key: key?.buildKey(context),
-      delegate: delegate.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      delegate: delegate.build(context, ref, zacContext),
     );
   }
 }

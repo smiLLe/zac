@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -59,31 +59,32 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
   }) = _FlutterWidgetSizedBoxSquare;
 
   @override
-  SizedBox buildWidget(ZacBuildContext context) {
+  SizedBox buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (value) => SizedBox(
-        key: value.key?.buildKey(context),
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(context, ref, zacContext),
+        width: value.width?.getValue(zacContext),
+        height: value.height?.getValue(zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(context, ref, zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        size: value.size?.build(context),
+        key: value.key?.buildKey(context, ref, zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
+        size: value.size?.build(context, ref, zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(context, ref, zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        dimension: value.dimension?.getValue(context),
+        key: value.key?.buildKey(context, ref, zacContext),
+        child: value.child?.buildWidget(context, ref, zacContext),
+        dimension: value.dimension?.getValue(zacContext),
       ),
     );
   }

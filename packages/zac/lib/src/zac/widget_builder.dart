@@ -61,25 +61,26 @@ class ZacWidgetBuilderBuilder
   }) = _ZacWidgetBuilderBuilderIsolateString;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (obj) => ZacWidgetBuilder(
         zacWidget: obj.data,
-        key: obj.key?.buildKey(context),
+        key: obj.key?.buildKey(context, ref, zacContext),
       ),
       map: (obj) => ZacWidgetBuilderFromMap(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context),
+        key: obj.key?.buildKey(context, ref, zacContext),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context),
+        key: obj.key?.buildKey(context, ref, zacContext),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
       isolateString: (obj) => ZacWidgetBuilderFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.buildKey(context),
+        key: obj.key?.buildKey(context, ref, zacContext),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
@@ -97,7 +98,7 @@ class ZacWidgetBuilder extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacBuildContext(ref);
-    return zacWidget.buildWidget(zacContext);
+    return zacWidget.buildWidget(context, ref, zacContext);
   }
 }
 
@@ -231,7 +232,8 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     return ZacUpdateContext(
       builder: (context) {
         return loadingState.value.map(
-          data: (obj) => obj.value.buildWidget(context),
+          data: (obj) =>
+              obj.value.buildWidget(context.context, context.ref, context),
           error: (obj) => _ErrorProvide(
             error: obj.error,
             child: errorChild,
@@ -255,7 +257,7 @@ class _ErrorProvide extends StatelessWidget {
     return SharedValueProvider(
       family: ZacWidgetBuilder.provideErrorFamily,
       value: error,
-      builder: (context) {
+      builder: (context, ref, zacContext) {
         Widget err = const SizedBox.shrink();
         assert(() {
           if (null == child) {
@@ -264,7 +266,7 @@ class _ErrorProvide extends StatelessWidget {
           return true;
         }(), '');
         if (null != child) {
-          err = child!.buildWidget(context);
+          err = child!.buildWidget(context, ref, zacContext);
         }
 
         return err;

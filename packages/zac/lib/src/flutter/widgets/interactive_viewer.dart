@@ -1,7 +1,7 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -42,21 +42,24 @@ class FlutterInteractiveViewer
   }) = _FlutterInteractiveViewer;
 
   @override
-  InteractiveViewer buildWidget(ZacBuildContext context) {
+  InteractiveViewer buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return InteractiveViewer(
-      key: key?.buildKey(context),
-      child: child.buildWidget(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.getValue(context) ?? false,
-      boundaryMargin: boundaryMargin?.build(context) ?? EdgeInsets.zero,
-      constrained: constrained?.getValue(context) ?? true,
-      maxScale: maxScale?.getValue(context) ?? 2.5,
-      minScale: minScale?.getValue(context) ?? 0.8,
-      onInteractionEnd: actionsCallback1(onInteractionEnd, context),
-      onInteractionStart: actionsCallback1(onInteractionStart, context),
-      onInteractionUpdate: actionsCallback1(onInteractionUpdate, context),
-      panEnabled: panEnabled?.getValue(context) ?? true,
-      scaleEnabled: scaleEnabled?.getValue(context) ?? true,
+      key: key?.buildKey(context, ref, zacContext),
+      child: child.buildWidget(context, ref, zacContext),
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
+      boundaryMargin:
+          boundaryMargin?.build(context, ref, zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.getValue(zacContext) ?? true,
+      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
+      minScale: minScale?.getValue(zacContext) ?? 0.8,
+      onInteractionEnd: actionsCallback1(onInteractionEnd, zacContext),
+      onInteractionStart: actionsCallback1(onInteractionStart, zacContext),
+      onInteractionUpdate: actionsCallback1(onInteractionUpdate, zacContext),
+      panEnabled: panEnabled?.getValue(zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
       // transformationController: key?.toFlutter(context),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -34,14 +34,15 @@ class FlutterUnconstrainedBox
   }) = _FlutterUnconstrainedBox;
 
   @override
-  UnconstrainedBox buildWidget(ZacBuildContext context) {
+  UnconstrainedBox buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return UnconstrainedBox(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      textDirection: textDirection?.build(context),
-      alignment: alignment?.build(context) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(context) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      textDirection: textDirection?.build(context, ref, zacContext),
+      alignment: alignment?.build(context, ref, zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(context, ref, zacContext),
     );
   }
 }

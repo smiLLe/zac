@@ -3,30 +3,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting.dart';
 
+import '../helper.dart';
 import 'models.dart';
 
 void main() {
   test('BorderStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBorderStyle.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BorderStyle.none'})
-            .build(config),
-        isA<BorderStyle>()
-            .having((p0) => p0, 'BorderStyle.none', BorderStyle.none));
+    fakeBuild<BorderStyle>(
+      FlutterBorderStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BorderStyle.none'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BorderStyle.none', equals(BorderStyle.none)),
+    );
 
-    expect(
-        FlutterBorderStyle.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BorderStyle.solid'})
-            .build(config),
-        isA<BorderStyle>()
-            .having((p0) => p0, 'BorderStyle.solid', BorderStyle.solid));
+    fakeBuild<BorderStyle>(
+      FlutterBorderStyle.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BorderStyle.solid'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BorderStyle.solid', equals(BorderStyle.solid)),
+    );
   });
 
   group('Border', () {
     test('FlutterBorder', () {
-      final config = FakeZacContext();
-
       Map<String, dynamic> getMap(String type) => <String, dynamic>{
             '_converter': type,
             'top': {
@@ -65,328 +63,344 @@ void main() {
       final matcherAll = isA<Border>().having((p0) => p0.top, 'Border.top',
           isA<BorderSide>().having((p0) => p0.width, 'width', 11));
 
-      expect(
-          FlutterBorder.fromJson(getMap(FlutterBorder.unionValue))
-              .build(config),
-          matcher);
+      fakeBuild<Border>(
+        FlutterBorder.fromJson(getMap(FlutterBorder.unionValue)).build,
+        (m) => m.having((p0) => p0, 'matcher', matcher),
+      );
 
-      expect(
-          FlutterBorder.fromJson(getMapAll(FlutterBorder.unionValueAll))
-              .build(config),
-          matcherAll);
+      fakeBuild<Border>(
+        FlutterBorder.fromJson(getMapAll(FlutterBorder.unionValueAll)).build,
+        (m) => m.having((p0) => p0, 'matcher', matcherAll),
+      );
 
-      expect(
-          FlutterBoxBorder.fromJson(getMap(FlutterBorder.unionValue))
-              .build(config),
-          matcher);
+      fakeBuild<Border>(
+        FlutterBoxBorder.fromJson(getMap(FlutterBorder.unionValue)).build,
+        (m) => m.having((p0) => p0, 'matcher', matcher),
+      );
 
-      expect(
-          FlutterBoxBorder.fromJson(getMapAll(FlutterBorder.unionValueAll))
-              .build(config),
-          matcherAll);
+      fakeBuild<Border>(
+        FlutterBoxBorder.fromJson(getMapAll(FlutterBorder.unionValueAll)).build,
+        (m) => m.having((p0) => p0, 'matcher', matcherAll),
+      );
 
-      expect(
-          FlutterShapeBorder.fromJson(getMap(FlutterBorder.unionValue))
-              .build(config),
-          matcher);
+      fakeBuild<Border>(
+        FlutterShapeBorder.fromJson(getMap(FlutterBorder.unionValue)).build,
+        (m) => m.having((p0) => p0, 'matcher', matcher),
+      );
 
-      expect(
-          FlutterShapeBorder.fromJson(getMapAll(FlutterBorder.unionValueAll))
-              .build(config),
-          matcherAll);
+      fakeBuild<Border>(
+        FlutterShapeBorder.fromJson(getMapAll(FlutterBorder.unionValueAll))
+            .build,
+        (m) => m.having((p0) => p0, 'matcher', matcherAll),
+      );
     });
   });
 
   group('Radius', () {
     test('BorderRadius.all', () {
-      final config = FakeZacContext();
-      expect(
-          FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueAll,
-            'radius': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 11,
-            }
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(11)));
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueAll,
+          'radius': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 11,
+          }
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(11)),
+      );
 
-      expect(
-          FlutterBorderRadius.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueAll,
-            'radius': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 11,
-            }
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(11)));
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadius.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueAll,
+          'radius': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 11,
+          }
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(11)),
+      );
     });
+
     test('BorderRadius.circular', () {
-      final config = FakeZacContext();
-      expect(
-          FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueCircular,
-            'radius': 12
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(12))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(12)));
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueCircular,
+          'radius': 12
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(12))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(12)),
+      );
 
-      expect(
-          FlutterBorderRadius.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueCircular,
-            'radius': 12
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(12))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(12)));
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadius.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueCircular,
+          'radius': 12
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(12))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(12)),
+      );
     });
-    test('BorderRadius.horizontal', () {
-      final config = FakeZacContext();
-      expect(
-          FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueHorizontal,
-            'left': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 11,
-            },
-            'right': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 12,
-            },
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(12)));
 
-      expect(
-          FlutterBorderRadius.fromJson(<String, dynamic>{
-            '_converter': FlutterBorderRadius.unionValueHorizontal,
-            'left': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 11,
-            },
-            'right': {
-              '_converter': 'f:1:Radius.circular',
-              'radius': 12,
-            },
-          }).build(config),
-          isA<BorderRadius>()
-              .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.topRight, 'BorderRadius.topRight',
-                  const Radius.circular(12))
-              .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
-                  const Radius.circular(11))
-              .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
-                  const Radius.circular(12)));
+    test('BorderRadius.horizontal', () {
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadiusGeometry.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueHorizontal,
+          'left': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 11,
+          },
+          'right': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 12,
+          },
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(12)),
+      );
+
+      fakeBuild<BorderRadius>(
+        FlutterBorderRadius.fromJson(<String, dynamic>{
+          '_converter': FlutterBorderRadius.unionValueHorizontal,
+          'left': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 11,
+          },
+          'right': {
+            '_converter': 'f:1:Radius.circular',
+            'radius': 12,
+          },
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.topRight, 'BorderRadius.topRight',
+                const Radius.circular(12))
+            .having((p0) => p0.bottomLeft, 'BorderRadius.bottomLeft',
+                const Radius.circular(11))
+            .having((p0) => p0.bottomRight, 'BorderRadius.bottomRight',
+                const Radius.circular(12)),
+      );
     });
   });
 
   group('FlutterInputBorder', () {
     test('FlutterOutlineInputBorder', () {
-      final context = FakeZacContext();
-      expect(
-          FlutterOutlineInputBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:OutlineInputBorder',
-            'borderSide': {
-              '_converter': 'f:1:BorderSide',
-              'width': 11,
-            },
-            'borderRadius': BorderRadiusModel.allJson,
-            'gapPadding': 1.0,
-          }).build(context),
-          isA<OutlineInputBorder>()
-              .having(
-                  (p0) => p0.borderSide,
-                  'FlutterOutlineInputBorder.borderSide',
-                  const BorderSide(width: 11))
-              .having(
-                  (p0) => p0.borderRadius,
-                  'FlutterOutlineInputBorder.borderRadius',
-                  BorderRadiusModel.allEquals)
-              .having((p0) => p0.gapPadding,
-                  'FlutterOutlineInputBorder.gapPadding', 1.0));
-
-      expect(
-          FlutterInputBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:OutlineInputBorder',
-          }).build(context),
-          isA<OutlineInputBorder>());
-
-      expect(
-          FlutterShapeBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:OutlineInputBorder',
-          }).build(context),
-          isA<OutlineInputBorder>());
-    });
-
-    test('FlutterUnderlineInputBorder', () {
-      final context = FakeZacContext();
-      expect(
-          FlutterUnderlineInputBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:UnderlineInputBorder',
-            'borderSide': {
-              '_converter': 'f:1:BorderSide',
-              'width': 11,
-            },
-            'borderRadius': BorderRadiusModel.allJson,
-          }).build(context),
-          isA<UnderlineInputBorder>()
-              .having((p0) => p0.borderSide, 'UnderlineInputBorder.borderSide',
-                  const BorderSide(width: 11))
-              .having(
-                  (p0) => p0.borderRadius,
-                  'UnderlineInputBorder.borderRadius',
-                  BorderRadiusModel.allEquals));
-
-      expect(
-          FlutterInputBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:UnderlineInputBorder',
-          }).build(context),
-          isA<UnderlineInputBorder>());
-
-      expect(
-          FlutterShapeBorder.fromJson(<String, dynamic>{
-            '_converter': 'f:1:UnderlineInputBorder',
-          }).build(context),
-          isA<UnderlineInputBorder>());
-    });
-  });
-
-  test('FlutterCircleBorder', () {
-    final context = FakeZacContext();
-    expect(
-        FlutterCircleBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:CircleBorder',
-          'side': {
-            '_converter': 'f:1:BorderSide',
-            'width': 11,
-          },
-        }).build(context),
-        isA<CircleBorder>().having(
-            (p0) => p0.side, 'CircleBorder.side', const BorderSide(width: 11)));
-
-    expect(
-        FlutterShapeBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:CircleBorder',
-        }).build(context),
-        isA<CircleBorder>());
-
-    expect(
-        FlutterOutlinedBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:CircleBorder',
-        }).build(context),
-        isA<CircleBorder>());
-  });
-
-  test('FlutterRoundedRectangleBorder', () {
-    final context = FakeZacContext();
-    expect(
-        FlutterRoundedRectangleBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:RoundedRectangleBorder',
-          'side': {
+      fakeBuild<OutlineInputBorder>(
+        FlutterOutlineInputBorder.fromJson(<String, dynamic>{
+          '_converter': 'f:1:OutlineInputBorder',
+          'borderSide': {
             '_converter': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
-        }).build(context),
-        isA<RoundedRectangleBorder>()
-            .having((p0) => p0.side, 'RoundedRectangleBorder.side',
+          'gapPadding': 1.0,
+        }).build,
+        (matcher) => matcher
+            .having(
+                (p0) => p0.borderSide,
+                'FlutterOutlineInputBorder.borderSide',
                 const BorderSide(width: 11))
             .having(
                 (p0) => p0.borderRadius,
-                'RoundedRectangleBorder.borderRadius',
-                BorderRadiusModel.allEquals));
+                'FlutterOutlineInputBorder.borderRadius',
+                BorderRadiusModel.allEquals)
+            .having((p0) => p0.gapPadding,
+                'FlutterOutlineInputBorder.gapPadding', 1.0),
+      );
 
-    expect(
+      fakeBuild<OutlineInputBorder>(
+        FlutterInputBorder.fromJson(<String, dynamic>{
+          '_converter': 'f:1:OutlineInputBorder',
+        }).build,
+        (matcher) => matcher,
+      );
+
+      fakeBuild<OutlineInputBorder>(
         FlutterShapeBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:RoundedRectangleBorder',
-        }).build(context),
-        isA<RoundedRectangleBorder>());
+          '_converter': 'f:1:OutlineInputBorder',
+        }).build,
+        (matcher) => matcher,
+      );
+    });
 
-    expect(
-        FlutterOutlinedBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:RoundedRectangleBorder',
-        }).build(context),
-        isA<RoundedRectangleBorder>());
-  });
-
-  test('FlutterBorderDirectional', () {
-    final context = FakeZacContext();
-    expect(
-        FlutterBorderDirectional.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BorderDirectional',
-          'top': {
+    test('FlutterUnderlineInputBorder', () {
+      fakeBuild<UnderlineInputBorder>(
+        FlutterUnderlineInputBorder.fromJson(<String, dynamic>{
+          '_converter': 'f:1:UnderlineInputBorder',
+          'borderSide': {
             '_converter': 'f:1:BorderSide',
             'width': 11,
           },
-          'start': {
-            '_converter': 'f:1:BorderSide',
-            'width': 12,
-          },
-          'bottom': {
-            '_converter': 'f:1:BorderSide',
-            'width': 13,
-          },
-          'end': {
-            '_converter': 'f:1:BorderSide',
-            'width': 14,
-          },
-        }).build(context),
-        isA<BorderDirectional>()
-            .having((p0) => p0.top, 'BorderDirectional.top',
+          'borderRadius': BorderRadiusModel.allJson,
+        }).build,
+        (matcher) => matcher
+            .having((p0) => p0.borderSide, 'UnderlineInputBorder.borderSide',
                 const BorderSide(width: 11))
-            .having((p0) => p0.start, 'BorderDirectional.start',
-                const BorderSide(width: 12))
-            .having((p0) => p0.bottom, 'BorderDirectional.bottom',
-                const BorderSide(width: 13))
-            .having((p0) => p0.end, 'BorderDirectional.end',
-                const BorderSide(width: 14)));
+            .having(
+                (p0) => p0.borderRadius,
+                'UnderlineInputBorder.borderRadius',
+                BorderRadiusModel.allEquals),
+      );
 
-    expect(
+      fakeBuild<UnderlineInputBorder>(
+        FlutterInputBorder.fromJson(<String, dynamic>{
+          '_converter': 'f:1:UnderlineInputBorder',
+        }).build,
+        (matcher) => matcher,
+      );
+
+      fakeBuild<UnderlineInputBorder>(
         FlutterShapeBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BorderDirectional',
-        }).build(context),
-        isA<BorderDirectional>());
+          '_converter': 'f:1:UnderlineInputBorder',
+        }).build,
+        (matcher) => matcher,
+      );
+    });
+  });
 
-    expect(
-        FlutterBoxBorder.fromJson(<String, dynamic>{
-          '_converter': 'f:1:BorderDirectional',
-        }).build(context),
-        isA<BorderDirectional>());
+  test('FlutterCircleBorder', () {
+    fakeBuild<CircleBorder>(
+      FlutterCircleBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:CircleBorder',
+        'side': {
+          '_converter': 'f:1:BorderSide',
+          'width': 11,
+        },
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0.side, 'CircleBorder.side', const BorderSide(width: 11)),
+    );
+
+    fakeBuild<CircleBorder>(
+      FlutterShapeBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:CircleBorder',
+      }).build,
+      (matcher) => matcher,
+    );
+
+    fakeBuild<CircleBorder>(
+      FlutterOutlinedBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:CircleBorder',
+      }).build,
+      (matcher) => matcher,
+    );
+  });
+
+  test('FlutterRoundedRectangleBorder', () {
+    fakeBuild<RoundedRectangleBorder>(
+      FlutterRoundedRectangleBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:RoundedRectangleBorder',
+        'side': {
+          '_converter': 'f:1:BorderSide',
+          'width': 11,
+        },
+        'borderRadius': BorderRadiusModel.allJson,
+      }).build,
+      (matcher) => matcher
+          .having((p0) => p0.side, 'RoundedRectangleBorder.side',
+              const BorderSide(width: 11))
+          .having(
+              (p0) => p0.borderRadius,
+              'RoundedRectangleBorder.borderRadius',
+              BorderRadiusModel.allEquals),
+    );
+
+    fakeBuild<RoundedRectangleBorder>(
+      FlutterShapeBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:RoundedRectangleBorder',
+      }).build,
+      (matcher) => matcher,
+    );
+
+    fakeBuild<RoundedRectangleBorder>(
+      FlutterOutlinedBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:RoundedRectangleBorder',
+      }).build,
+      (matcher) => matcher,
+    );
+  });
+
+  test('FlutterBorderDirectional', () {
+    fakeBuild<BorderDirectional>(
+      FlutterBorderDirectional.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BorderDirectional',
+        'top': {
+          '_converter': 'f:1:BorderSide',
+          'width': 11,
+        },
+        'start': {
+          '_converter': 'f:1:BorderSide',
+          'width': 12,
+        },
+        'bottom': {
+          '_converter': 'f:1:BorderSide',
+          'width': 13,
+        },
+        'end': {
+          '_converter': 'f:1:BorderSide',
+          'width': 14,
+        },
+      }).build,
+      (matcher) => matcher
+          .having((p0) => p0.top, 'BorderDirectional.top',
+              const BorderSide(width: 11))
+          .having((p0) => p0.start, 'BorderDirectional.start',
+              const BorderSide(width: 12))
+          .having((p0) => p0.bottom, 'BorderDirectional.bottom',
+              const BorderSide(width: 13))
+          .having((p0) => p0.end, 'BorderDirectional.end',
+              const BorderSide(width: 14)),
+    );
+
+    fakeBuild<BorderDirectional>(
+      FlutterShapeBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BorderDirectional',
+      }).build,
+      (matcher) => matcher,
+    );
+
+    fakeBuild<BorderDirectional>(
+      FlutterBoxBorder.fromJson(<String, dynamic>{
+        '_converter': 'f:1:BorderDirectional',
+      }).build,
+      (matcher) => matcher,
+    );
   });
 }

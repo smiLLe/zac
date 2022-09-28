@@ -186,9 +186,10 @@ class SharedValueProviderBuilder
   }) = _SharedValueProviderBuilder;
 
   @override
-  SharedValueProvider buildWidget(ZacBuildContext context) {
+  SharedValueProvider buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildKey(context),
+      key: key?.buildKey(context, ref, zacContext),
       transformer: transformer,
       value: value,
       family: family,
@@ -208,7 +209,8 @@ class SharedValueProvider extends HookConsumerWidget {
 
   final Object? value;
   final SharedValueFamily family;
-  final Widget Function(ZacBuildContext context) builder;
+  final Widget Function(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) builder;
   final List<ZacTransformer>? transformer;
 
   @override
@@ -230,7 +232,8 @@ class SharedValueProvider extends HookConsumerWidget {
         SharedValue.provider(family).overrideWithProvider(
             AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
       ],
-      child: ZacUpdateContext(builder: builder),
+      child: ZacUpdateContext(
+          builder: (ctx) => builder(ctx.context, ctx.ref, ctx)),
     );
   }
 }

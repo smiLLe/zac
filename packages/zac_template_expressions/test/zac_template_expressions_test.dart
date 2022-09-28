@@ -107,7 +107,8 @@ class LeakContext with _$LeakContext implements ZacWidget {
   }) = _LeakContext;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     cb(context);
     return child?.buildWidget(context) ?? const SizedBox.shrink();
   }

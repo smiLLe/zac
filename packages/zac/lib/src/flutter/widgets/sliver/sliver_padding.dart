@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
@@ -28,11 +29,12 @@ class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
   }) = _FlutterSliverPadding;
 
   @override
-  SliverPadding buildWidget(ZacBuildContext context) {
+  SliverPadding buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SliverPadding(
-      key: key?.buildKey(context),
-      sliver: sliver?.buildWidget(context),
-      padding: padding.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      sliver: sliver?.buildWidget(context, ref, zacContext),
+      padding: padding.build(context, ref, zacContext),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
@@ -42,26 +43,27 @@ class FlutterRefreshIndicator
   }) = _FlutterRefreshIndicator;
 
   @override
-  RefreshIndicator buildWidget(ZacBuildContext context) {
+  RefreshIndicator buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return RefreshIndicator(
-      key: key?.buildKey(context),
-      child: child.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      child: child.buildWidget(context, ref, zacContext),
       onRefresh: () async {
         final completer = Completer<void>();
         onRefresh.execute(
-          context,
+          zacContext,
           prefillBag: (bag) => bag..setActionPayload(completer),
         );
         return completer.future;
       },
-      displacement: displacement?.getValue(context) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(context) ?? 0.0,
-      color: color?.build(context),
-      backgroundColor: backgroundColor?.build(context),
-      semanticsLabel: semanticsLabel?.getValue(context),
-      semanticsValue: semanticsValue?.getValue(context),
-      triggerMode:
-          triggerMode?.build(context) ?? RefreshIndicatorTriggerMode.onEdge,
+      displacement: displacement?.getValue(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      color: color?.build(context, ref, zacContext),
+      backgroundColor: backgroundColor?.build(context, ref, zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      semanticsValue: semanticsValue?.getValue(zacContext),
+      triggerMode: triggerMode?.build(context, ref, zacContext) ??
+          RefreshIndicatorTriggerMode.onEdge,
     );
   }
 }
@@ -88,7 +90,8 @@ class FlutterRefreshIndicatorTriggerMode
   factory FlutterRefreshIndicatorTriggerMode.anywhere() =
       _FlutterRefreshIndicatorTriggerModeanywhere;
 
-  RefreshIndicatorTriggerMode build(ZacBuildContext context) {
+  RefreshIndicatorTriggerMode build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       onEdge: (_) => RefreshIndicatorTriggerMode.onEdge,
       anywhere: (_) => RefreshIndicatorTriggerMode.anywhere,

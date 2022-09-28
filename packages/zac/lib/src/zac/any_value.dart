@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,7 +29,8 @@ abstract class ZacWidget {
     );
   }
 
-  Widget buildWidget(ZacBuildContext context);
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext);
 }
 
 mixin ActualValue<Of> {
@@ -538,14 +540,16 @@ class ListOfZacWidget with _$ListOfZacWidget {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ListOfZacWidgetConsume;
 
-  List<Widget> getValue(ZacBuildContext context) => map(
+  List<Widget> getValue(
+          BuildContext context, WidgetRef ref, ZacBuildContext zacContext) =>
+      map(
         (obj) => obj
-            .getActualValue(context)
-            .map((e) => e.buildWidget(context))
+            .getActualValue(zacContext)
+            .map((e) => e.buildWidget(context, ref, zacContext))
             .toList(),
         consume: (obj) => obj
-            .getSharedValue(context)
-            .map((e) => e.buildWidget(context))
+            .getSharedValue(zacContext)
+            .map((e) => e.buildWidget(context, ref, zacContext))
             .toList(),
       );
 }
@@ -569,7 +573,8 @@ class ZacWidgetConsumerBuilder
   }) = _ZacWidgetConsumerBuilder;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return ZacWidgetConsumer(
       builder: this,
     );
@@ -584,8 +589,9 @@ class ZacWidgetConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZacUpdateContext(
-      builder: (context) => builder
-          .map((value) => value.getSharedValue(context).buildWidget(context)),
+      builder: (context) => builder.map((value) => value
+          .getSharedValue(context)
+          .buildWidget(context.context, context.ref, context)),
     );
   }
 }

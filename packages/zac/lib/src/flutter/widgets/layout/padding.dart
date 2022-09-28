@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,11 +28,12 @@ class FlutterPadding with _$FlutterPadding implements ZacWidget {
   }) = _FlutterPadding;
 
   @override
-  Padding buildWidget(ZacBuildContext context) {
+  Padding buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Padding(
-      key: key?.buildKey(context),
-      padding: padding.build(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      padding: padding.build(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,18 +41,22 @@ class FlutterSingleChildScrollView
   }) = _FlutterSingleChildScrollView;
 
   @override
-  SingleChildScrollView buildWidget(ZacBuildContext context) {
+  SingleChildScrollView buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SingleChildScrollView(
-      key: key?.buildKey(context),
-      scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: reverse?.getValue(context) ?? false,
-      padding: padding?.build(context),
-      primary: primary?.getValue(context),
-      child: child?.buildWidget(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(context),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(context) ??
-          ScrollViewKeyboardDismissBehavior.manual,
+      key: key?.buildKey(context, ref, zacContext),
+      scrollDirection:
+          scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
+      reverse: reverse?.getValue(zacContext) ?? false,
+      padding: padding?.build(context, ref, zacContext),
+      primary: primary?.getValue(zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.getValue(zacContext),
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, ref, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
     );
   }
 }

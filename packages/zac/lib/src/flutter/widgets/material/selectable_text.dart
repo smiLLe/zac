@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../zac.dart';
 
@@ -48,28 +49,29 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
   }) = _FlutterSelectableText;
 
   @override
-  SelectableText buildWidget(ZacBuildContext context) {
+  SelectableText buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SelectableText(
       data,
-      key: key?.buildKey(context),
-      style: style?.build(context),
-      strutStyle: strutStyle?.build(context),
-      textAlign: textAlign?.build(context),
-      textDirection: textDirection?.build(context),
-      textScaleFactor: textScaleFactor?.getValue(context),
-      showCursor: showCursor?.getValue(context) ?? false,
-      autofocus: autofocus?.getValue(context) ?? false,
-      minLines: minLines?.getValue(context),
-      maxLines: maxLines?.getValue(context),
-      cursorWidth: cursorWidth?.getValue(context) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(context),
-      cursorRadius: cursorRadius?.build(context),
-      cursorColor: cursorColor?.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      style: style?.build(context, ref, zacContext),
+      strutStyle: strutStyle?.build(context, ref, zacContext),
+      textAlign: textAlign?.build(context, ref, zacContext),
+      textDirection: textDirection?.build(context, ref, zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacContext),
+      showCursor: showCursor?.getValue(zacContext) ?? false,
+      autofocus: autofocus?.getValue(zacContext) ?? false,
+      minLines: minLines?.getValue(zacContext),
+      maxLines: maxLines?.getValue(zacContext),
+      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(zacContext),
+      cursorRadius: cursorRadius?.build(context, ref, zacContext),
+      cursorColor: cursorColor?.build(context, ref, zacContext),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(context) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(context),
-      textHeightBehavior: textHeightBehavior?.build(context),
-      textWidthBasis: textWidthBasis?.build(context),
+          enableInteractiveSelection?.getValue(zacContext) ?? true,
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
+      textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -39,18 +39,19 @@ class FlutterGestureDetector
   }) = _FlutterGestureDetector;
 
   @override
-  GestureDetector buildWidget(ZacBuildContext context) {
+  GestureDetector buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return GestureDetector(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      behavior: behavior?.build(context),
-      excludeFromSemantics: excludeFromSemantics?.getValue(context) ?? false,
-      onTap: actionsCallback(onTap, context),
-      onSecondaryTap: actionsCallback(onSecondaryTap, context),
-      onDoubleTap: actionsCallback(onDoubleTap, context),
-      onLongPress: actionsCallback(onLongPress, context),
-      onSecondaryLongPress: actionsCallback(onSecondaryLongPress, context),
-      onTertiaryLongPress: actionsCallback(onTertiaryLongPress, context),
+      key: key?.buildKey(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      behavior: behavior?.build(context, ref, zacContext),
+      excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
+      onTap: actionsCallback(onTap, zacContext),
+      onSecondaryTap: actionsCallback(onSecondaryTap, zacContext),
+      onDoubleTap: actionsCallback(onDoubleTap, zacContext),
+      onLongPress: actionsCallback(onLongPress, zacContext),
+      onSecondaryLongPress: actionsCallback(onSecondaryLongPress, zacContext),
+      onTertiaryLongPress: actionsCallback(onTertiaryLongPress, zacContext),
     );
   }
 }

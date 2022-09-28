@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
@@ -86,54 +87,59 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
   }) = _FlutterTextField;
 
   @override
-  TextField buildWidget(ZacBuildContext context) {
+  TextField buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return TextField(
-      key: key?.buildKey(context),
-      style: style?.build(context),
-      strutStyle: strutStyle?.build(context),
-      textAlign: textAlign?.build(context) ?? TextAlign.start,
-      textDirection: textDirection?.build(context),
-      readOnly: readOnly?.getValue(context) ?? false,
-      showCursor: showCursor?.getValue(context),
-      autofocus: autofocus?.getValue(context) ?? false,
-      obscuringCharacter: obscuringCharacter?.getValue(context) ?? '•',
-      obscureText: obscureText?.getValue(context) ?? false,
-      autocorrect: autocorrect?.getValue(context) ?? true,
-      enableSuggestions: enableSuggestions?.getValue(context) ?? true,
-      maxLines: maxLines?.getValue(context),
-      minLines: minLines?.getValue(context),
-      expands: expands?.getValue(context) ?? false,
-      maxLength: maxLength?.getValue(context),
-      enabled: enabled?.getValue(context),
-      cursorWidth: cursorWidth?.getValue(context) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(context),
-      cursorRadius: cursorRadius?.build(context),
-      cursorColor: cursorColor?.build(context),
-      keyboardAppearance: keyboardAppearance?.build(context),
-      scrollPadding:
-          scrollPadding?.build(context) ?? const EdgeInsets.all(20.0),
+      key: key?.buildKey(context, ref, zacContext),
+      style: style?.build(context, ref, zacContext),
+      strutStyle: strutStyle?.build(context, ref, zacContext),
+      textAlign: textAlign?.build(context, ref, zacContext) ?? TextAlign.start,
+      textDirection: textDirection?.build(context, ref, zacContext),
+      readOnly: readOnly?.getValue(zacContext) ?? false,
+      showCursor: showCursor?.getValue(zacContext),
+      autofocus: autofocus?.getValue(zacContext) ?? false,
+      obscuringCharacter: obscuringCharacter?.getValue(zacContext) ?? '•',
+      obscureText: obscureText?.getValue(zacContext) ?? false,
+      autocorrect: autocorrect?.getValue(zacContext) ?? true,
+      enableSuggestions: enableSuggestions?.getValue(zacContext) ?? true,
+      maxLines: maxLines?.getValue(zacContext),
+      minLines: minLines?.getValue(zacContext),
+      expands: expands?.getValue(zacContext) ?? false,
+      maxLength: maxLength?.getValue(zacContext),
+      enabled: enabled?.getValue(zacContext),
+      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(zacContext),
+      cursorRadius: cursorRadius?.build(context, ref, zacContext),
+      cursorColor: cursorColor?.build(context, ref, zacContext),
+      keyboardAppearance: keyboardAppearance?.build(context, ref, zacContext),
+      scrollPadding: scrollPadding?.build(context, ref, zacContext) ??
+          const EdgeInsets.all(20.0),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(context) ?? true,
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(context),
+          enableInteractiveSelection?.getValue(zacContext) ?? true,
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.getValue(zacContext),
       enableIMEPersonalizedLearning:
-          enableIMEPersonalizedLearning?.getValue(context) ?? true,
-      onChanged: actionsCallback1(onChanged, context),
-      decoration: decoration?.build(context) ?? const InputDecoration(),
-      keyboardType: keyboardType?.build(context),
-      textInputAction: textInputAction?.build(context),
-      textCapitalization:
-          textCapitalization?.build(context) ?? TextCapitalization.none,
-      textAlignVertical: textAlignVertical?.build(context),
-      smartDashesType: smartDashesType?.build(context),
-      smartQuotesType: smartQuotesType?.build(context),
+          enableIMEPersonalizedLearning?.getValue(zacContext) ?? true,
+      onChanged: actionsCallback1(onChanged, zacContext),
+      decoration: decoration?.build(context, ref, zacContext) ??
+          const InputDecoration(),
+      keyboardType: keyboardType?.build(context, ref, zacContext),
+      textInputAction: textInputAction?.build(context, ref, zacContext),
+      textCapitalization: textCapitalization?.build(context, ref, zacContext) ??
+          TextCapitalization.none,
+      textAlignVertical: textAlignVertical?.build(context, ref, zacContext),
+      smartDashesType: smartDashesType?.build(context, ref, zacContext),
+      smartQuotesType: smartQuotesType?.build(context, ref, zacContext),
       selectionHeightStyle:
-          selectionHeightStyle?.build(context) ?? BoxHeightStyle.tight,
+          selectionHeightStyle?.build(context, ref, zacContext) ??
+              BoxHeightStyle.tight,
       selectionWidthStyle:
-          selectionWidthStyle?.build(context) ?? BoxWidthStyle.tight,
-      onTap: actionsCallback(onTap, context),
-      onEditingComplete: actionsCallback(onEditingComplete, context),
-      onSubmitted: actionsCallback1(onSubmitted, context),
+          selectionWidthStyle?.build(context, ref, zacContext) ??
+              BoxWidthStyle.tight,
+      onTap: actionsCallback(onTap, zacContext),
+      onEditingComplete: actionsCallback(onEditingComplete, zacContext),
+      onSubmitted: actionsCallback1(onSubmitted, zacContext),
     );
   }
 }

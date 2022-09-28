@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -78,54 +78,61 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
   }) = _FlutterImageAsset;
 
   @override
-  Image buildWidget(ZacBuildContext context) {
+  Image buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       network: (value) => Image.network(
-        value.src.getValue(context),
-        key: value.key?.buildKey(context),
-        scale: value.scale?.getValue(context) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(context),
+        value.src.getValue(zacContext),
+        key: value.key?.buildKey(context, ref, zacContext),
+        scale: value.scale?.getValue(zacContext) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(zacContext),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(context) ?? false,
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        color: value.color?.build(context),
-        colorBlendMode: value.colorBlendMode?.build(context),
-        fit: value.fit?.build(context),
-        alignment: value.alignment?.build(context) ?? Alignment.center,
-        repeat: value.repeat?.build(context) ?? ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context),
+            value.excludeFromSemantics?.getValue(zacContext) ?? false,
+        width: value.width?.getValue(zacContext),
+        height: value.height?.getValue(zacContext),
+        color: value.color?.build(context, ref, zacContext),
+        colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
+        fit: value.fit?.build(context, ref, zacContext),
+        alignment: value.alignment?.build(context, ref, zacContext) ??
+            Alignment.center,
+        repeat: value.repeat?.build(context, ref, zacContext) ??
+            ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(context, ref, zacContext),
         matchTextDirection:
-            value.matchTextDirection?.getValue(context) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(context) ?? false,
-        filterQuality: value.filterQuality?.build(context) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(context) ?? false,
+            value.matchTextDirection?.getValue(zacContext) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(zacContext) ?? false,
+        filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
+            FilterQuality.low,
+        isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
         headers: value.headers,
-        cacheWidth: value.cacheWidth?.getValue(context),
-        cacheHeight: value.cacheHeight?.getValue(context),
+        cacheWidth: value.cacheWidth?.getValue(zacContext),
+        cacheHeight: value.cacheHeight?.getValue(zacContext),
       ),
       asset: (value) => Image.asset(
-        value.name.getValue(context),
-        key: value.key?.buildKey(context),
-        scale: value.scale?.getValue(context) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(context),
+        value.name.getValue(zacContext),
+        key: value.key?.buildKey(context, ref, zacContext),
+        scale: value.scale?.getValue(zacContext) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(zacContext),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(context) ?? false,
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        color: value.color?.build(context),
-        colorBlendMode: value.colorBlendMode?.build(context),
-        fit: value.fit?.build(context),
-        alignment: value.alignment?.build(context) ?? Alignment.center,
-        repeat: value.repeat?.build(context) ?? ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context),
+            value.excludeFromSemantics?.getValue(zacContext) ?? false,
+        width: value.width?.getValue(zacContext),
+        height: value.height?.getValue(zacContext),
+        color: value.color?.build(context, ref, zacContext),
+        colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
+        fit: value.fit?.build(context, ref, zacContext),
+        alignment: value.alignment?.build(context, ref, zacContext) ??
+            Alignment.center,
+        repeat: value.repeat?.build(context, ref, zacContext) ??
+            ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(context, ref, zacContext),
         matchTextDirection:
-            value.matchTextDirection?.getValue(context) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(context) ?? false,
-        filterQuality: value.filterQuality?.build(context) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(context) ?? false,
-        cacheWidth: value.cacheWidth?.getValue(context),
-        cacheHeight: value.cacheHeight?.getValue(context),
+            value.matchTextDirection?.getValue(zacContext) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(zacContext) ?? false,
+        filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
+            FilterQuality.low,
+        isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
+        cacheWidth: value.cacheWidth?.getValue(zacContext),
+        cacheHeight: value.cacheHeight?.getValue(zacContext),
       ),
     );
   }

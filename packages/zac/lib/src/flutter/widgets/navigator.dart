@@ -8,7 +8,7 @@ import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
@@ -74,14 +74,15 @@ class FlutterNavigator with _$FlutterNavigator implements ZacWidget {
   }) = _FlutterNavigator;
 
   @override
-  Navigator buildWidget(ZacBuildContext context) {
+  Navigator buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.buildKey(context),
-        onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(context),
-        onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(context),
-        initialRoute: obj.initialRoute?.getValue(context),
-        requestFocus: obj.requestFocus?.getValue(context) ?? true,
+        key: obj.key?.buildKey(context, ref, zacContext),
+        onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
+        onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
+        initialRoute: obj.initialRoute?.getValue(zacContext),
+        requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
       ),
     );
   }
@@ -164,7 +165,11 @@ class FlutterNavigatorActions
       push: (obj) {
         final state = _getState(context);
         if (null == state) return null;
-        state.push(obj.route.build(context)).then((value) {
+        state
+            .push(obj.route.build(
+          context,
+        ))
+            .then((value) {
           if (value is ZacActions) {
             value.execute(
               context,
@@ -178,7 +183,9 @@ class FlutterNavigatorActions
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.getValue(context),
+          obj.routeName.getValue(
+            context,
+          ),
           arguments: obj.arguments,
         )
             .then((value) {
@@ -205,7 +212,9 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.build(context),
+          obj.route.build(
+            context,
+          ),
           result: obj.result,
         )
             .then((value) {
@@ -222,7 +231,9 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.getValue(context),
+          obj.routeName.getValue(
+            context,
+          ),
           arguments: obj.arguments,
           result: obj.result,
         )
@@ -279,14 +290,15 @@ class FlutterPageRouteBuilder
     return PageRouteBuilder<ZacActions?>(
       pageBuilder: (_, __, ___) => ZacUpdateContext(
         builder: (context) {
-          if (null == wrap) return child.buildWidget(context);
+          if (null == wrap)
+            return child.buildWidget(context.context, context.ref, context);
           return wrap(context, child);
         },
       ),
-      settings: settings?.build(context),
+      settings: settings?.build(context.context, context.ref, context),
       opaque: opaque?.getValue(context) ?? true,
       barrierDismissible: barrierDismissible?.getValue(context) ?? false,
-      barrierColor: barrierColor?.build(context),
+      barrierColor: barrierColor?.build(context.context, context.ref, context),
       barrierLabel: barrierLabel?.getValue(context),
       maintainState: maintainState?.getValue(context) ?? true,
       fullscreenDialog: fullscreenDialog?.getValue(context) ?? false,
@@ -309,10 +321,11 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
     Object? arguments,
   }) = _FlutterRouteSettings;
 
-  RouteSettings build(ZacBuildContext context) {
+  RouteSettings build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return RouteSettings(
       arguments: arguments,
-      name: name?.getValue(context),
+      name: name?.getValue(zacContext),
     );
   }
 }

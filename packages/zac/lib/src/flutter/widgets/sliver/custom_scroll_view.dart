@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -46,23 +46,27 @@ class FlutterCustomScrollView
   }) = _FlutterCustomScrollView;
 
   @override
-  CustomScrollView buildWidget(ZacBuildContext context) {
+  CustomScrollView buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return CustomScrollView(
-      key: key?.buildKey(context),
-      slivers: slivers?.getValue(context) ?? const <Widget>[],
-      scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: reverse?.getValue(context) ?? false,
-      primary: primary?.getValue(context),
-      physics: physics?.build(context),
-      shrinkWrap: shrinkWrap?.getValue(context) ?? false,
-      center: center?.buildKey(context),
-      anchor: anchor?.getValue(context) ?? 0.0,
-      cacheExtent: cacheExtent?.getValue(context),
-      semanticChildCount: semanticChildCount?.getValue(context),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(context) ??
-          ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
+      key: key?.buildKey(context, ref, zacContext),
+      slivers: slivers?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      scrollDirection:
+          scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
+      reverse: reverse?.getValue(zacContext) ?? false,
+      primary: primary?.getValue(zacContext),
+      physics: physics?.build(context, ref, zacContext),
+      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      center: center?.buildKey(context, ref, zacContext),
+      anchor: anchor?.getValue(zacContext) ?? 0.0,
+      cacheExtent: cacheExtent?.getValue(zacContext),
+      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, ref, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.getValue(zacContext),
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:zac/src/base.dart';
 
@@ -40,23 +41,24 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
     ZacDouble? mainAxisExtent,
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
-  SliverGridDelegate build(ZacBuildContext context) {
+  SliverGridDelegate build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return map(
       withFixedCrossAxisCount: (value) =>
           SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        childAspectRatio: value.childAspectRatio?.getValue(context) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(context) ?? 0.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(context),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(context) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
       ),
       withMaxCrossAxisExtent: (value) =>
           SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(context),
-        mainAxisExtent: value.mainAxisExtent?.getValue(context),
-        childAspectRatio: value.childAspectRatio?.getValue(context) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(context) ?? 0.0,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(context) ?? 0.0,
+        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
       ),
     );
   }

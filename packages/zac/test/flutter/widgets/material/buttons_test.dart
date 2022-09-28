@@ -237,21 +237,19 @@ void main() {
 
   group('ElevatedButton.icon()', () {
     test('properties', () {
-      final config = FakeZacContext();
-      final widget = FlutterElevatedButton.fromJson(<String, dynamic>{
-        '_converter': FlutterElevatedButton.unionValueIcon,
-        'key': KeysModel.getValueKey('test_key'),
-        'icon': ChildModel.getSizedBox(key: 'test_icon'),
-        'label': ChildModel.getSizedBox(key: 'test_label'),
-        'clipBehavior': {'_converter': 'f:1:Clip.antiAlias'}
-      });
-
-      expect(
-          widget.buildWidget(config),
-          isA<ElevatedButton>().havingValueKey('test_key').having(
-              (p0) => p0.clipBehavior,
-              'ElevatedButton.clipBehavior',
-              Clip.antiAlias));
+      fakeBuild<ElevatedButton>(
+        FlutterElevatedButton.fromJson(<String, dynamic>{
+          '_converter': FlutterElevatedButton.unionValueIcon,
+          'key': KeysModel.getValueKey('test_key'),
+          'icon': ChildModel.getSizedBox(key: 'test_icon'),
+          'label': ChildModel.getSizedBox(key: 'test_label'),
+          'clipBehavior': {'_converter': 'f:1:Clip.antiAlias'}
+        }).buildWidget,
+        (matcher) => matcher.havingValueKey('test_key').having(
+            (p0) => p0.clipBehavior,
+            'ElevatedButton.clipBehavior',
+            Clip.antiAlias),
+      );
     });
 
     testWidgets('created a label and icon', (tester) async {

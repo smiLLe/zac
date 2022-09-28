@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -27,11 +28,12 @@ class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
   }) = _FlutterConstrainedBox;
 
   @override
-  ConstrainedBox buildWidget(ZacBuildContext context) {
+  ConstrainedBox buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return ConstrainedBox(
-      key: key?.buildKey(context),
-      constraints: constraints.build(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      constraints: constraints.build(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
     );
   }
 }

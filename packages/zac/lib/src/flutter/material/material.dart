@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
@@ -18,7 +19,8 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   }
 
   @override
-  InputBorder build(ZacBuildContext context);
+  InputBorder build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -40,12 +42,14 @@ class FlutterOutlineInputBorder
   }) = _FlutterOutlineInputBorder;
 
   @override
-  OutlineInputBorder build(ZacBuildContext context) {
+  OutlineInputBorder build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return OutlineInputBorder(
-      borderSide: borderSide?.build(context) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context) ??
+      borderSide:
+          borderSide?.build(context, ref, zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, ref, zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.getValue(context) ?? 4.0,
+      gapPadding: gapPadding?.getValue(zacContext) ?? 4.0,
     );
   }
 }
@@ -68,10 +72,12 @@ class FlutterUnderlineInputBorder
   }) = _FlutterUnderlineInputBorder;
 
   @override
-  UnderlineInputBorder build(ZacBuildContext context) {
+  UnderlineInputBorder build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return UnderlineInputBorder(
-      borderSide: borderSide?.build(context) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context) ??
+      borderSide:
+          borderSide?.build(context, ref, zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, ref, zacContext) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),
@@ -105,13 +111,14 @@ class FlutterMaterialPageRoute
     return MaterialPageRoute<ZacActions?>(
       builder: (_) => ZacUpdateContext(
         builder: (context) {
-          if (null == wrap) return child.buildWidget(context);
+          if (null == wrap)
+            return child.buildWidget(context.context, context.ref, context);
           return wrap(context, child);
         },
       ),
       maintainState: maintainState?.getValue(context) ?? true,
       fullscreenDialog: fullscreenDialog?.getValue(context) ?? false,
-      settings: settings?.build(context),
+      settings: settings?.build(context.context, context.ref, context),
     );
   }
 }

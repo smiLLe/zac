@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,12 +29,13 @@ class FlutterCenter with _$FlutterCenter implements ZacWidget {
   }) = _FlutterCenter;
 
   @override
-  Center buildWidget(ZacBuildContext context) {
+  Center buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Center(
-      key: key?.buildKey(context),
-      widthFactor: widthFactor?.getValue(context),
-      heightFactor: heightFactor?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      widthFactor: widthFactor?.getValue(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
     );
   }
 }

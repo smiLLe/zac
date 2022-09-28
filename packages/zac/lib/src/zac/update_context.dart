@@ -37,10 +37,12 @@ class ZacUpdateContextBuilder
   }) = _ZacUpdateContextBuilder;
 
   @override
-  ZacUpdateContext buildWidget(ZacBuildContext context) {
+  ZacUpdateContext buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return ZacUpdateContext(
-      builder: (context) => child.buildWidget(context),
-      key: key?.buildKey(context),
+      builder: (context) =>
+          child.buildWidget(context.context, context.ref, context),
+      key: key?.buildKey(context, ref, zacContext),
     );
   }
 }

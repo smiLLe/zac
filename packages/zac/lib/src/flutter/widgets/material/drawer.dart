@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,14 +32,15 @@ class FlutterDrawer with _$FlutterDrawer implements ZacWidget {
   }) = _FlutterDrawer;
 
   @override
-  Drawer buildWidget(ZacBuildContext context) {
+  Drawer buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Drawer(
-      key: key?.buildKey(context),
-      backgroundColor: backgroundColor?.build(context),
-      child: child?.buildWidget(context),
-      elevation: elevation?.getValue(context),
-      semanticLabel: semanticLabel?.getValue(context),
-      shape: shape?.build(context),
+      key: key?.buildKey(context, ref, zacContext),
+      backgroundColor: backgroundColor?.build(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      elevation: elevation?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      shape: shape?.build(context, ref, zacContext),
     );
   }
 }

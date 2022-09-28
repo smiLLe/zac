@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,10 +25,11 @@ class FlutterSpacer with _$FlutterSpacer implements ZacWidget {
   }) = _FlutterSpacer;
 
   @override
-  Spacer buildWidget(ZacBuildContext context) {
+  Spacer buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Spacer(
-      key: key?.buildKey(context),
-      flex: flex?.getValue(context) ?? 1,
+      key: key?.buildKey(context, ref, zacContext),
+      flex: flex?.getValue(zacContext) ?? 1,
     );
   }
 }

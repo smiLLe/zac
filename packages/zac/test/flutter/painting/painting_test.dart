@@ -4,369 +4,410 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/painting.dart';
 
+import '../../helper.dart';
 import '../models.dart';
 
 void main() {
   test('FlutterBoxShadow', () {
-    final config = FakeZacContext();
-    final data = FlutterBoxShadow.fromJson(BoxShadowModel.json);
-    expect(data.build(config), BoxShadowModel.equals);
+    fakeBuild<BoxShadow>(
+      FlutterBoxShadow.fromJson(BoxShadowModel.json).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxShadow', equals(BoxShadowModel.equals)),
+    );
   });
 
   test('FlutterBoxShape', () {
-    final config = FakeZacContext();
-    final data = FlutterBoxShape.fromJson(BoxShapeModel.json);
-    expect(data.build(config), BoxShapeModel.equals);
+    fakeBuild<BoxShape>(
+      FlutterBoxShape.fromJson(BoxShapeModel.json).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BoxShape ', equals(BoxShapeModel.equals)),
+    );
   });
 
   test('FlutterBoxDecoration', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBoxDecoration.fromJson(BoxDecorationModel.getMap(
-                type: FlutterBoxDecoration.unionValue))
-            .build(config),
-        BoxDecorationModel.equals);
+    fakeBuild<BoxDecoration>(
+      FlutterBoxDecoration.fromJson(
+              BoxDecorationModel.getMap(type: FlutterBoxDecoration.unionValue))
+          .build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxDecoration', equals(BoxDecorationModel.equals)),
+    );
 
-    expect(
-        FlutterDecoration.fromJson(BoxDecorationModel.getMap(
-                type: FlutterBoxDecoration.unionValue))
-            .build(config),
-        BoxDecorationModel.equals);
+    fakeBuild<BoxDecoration>(
+      FlutterDecoration.fromJson(
+              BoxDecorationModel.getMap(type: FlutterBoxDecoration.unionValue))
+          .build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxDecoration', equals(BoxDecorationModel.equals)),
+    );
   });
 
   test('FlutterShapeDecoration', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterShapeDecoration.fromJson(<String, dynamic>{
-          '_converter': 'f:1:ShapeDecoration',
-          'shape': {
-            '_converter': 'f:1:CircleBorder',
-          },
-        }).build(config),
-        isA<ShapeDecoration>().having(
-            (p0) => p0.shape, 'ShapeDecoration.shape', isA<CircleBorder>()));
+    fakeBuild<ShapeDecoration>(
+      FlutterShapeDecoration.fromJson(<String, dynamic>{
+        '_converter': 'f:1:ShapeDecoration',
+        'shape': {
+          '_converter': 'f:1:CircleBorder',
+        },
+      }).build,
+      (matcher) => matcher.having(
+          (p0) => p0.shape, 'ShapeDecoration.shape', isA<CircleBorder>()),
+    );
 
-    expect(
-        FlutterDecoration.fromJson(<String, dynamic>{
-          '_converter': 'f:1:ShapeDecoration',
-          'shape': {
-            '_converter': 'f:1:CircleBorder',
-          },
-        }).build(config),
-        isA<ShapeDecoration>());
+    fakeBuild<ShapeDecoration>(
+      FlutterDecoration.fromJson(<String, dynamic>{
+        '_converter': 'f:1:ShapeDecoration',
+        'shape': {
+          '_converter': 'f:1:CircleBorder',
+        },
+      }).build,
+      (matcher) => matcher,
+    );
   });
 
   test('FlutterAxis', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterAxis.fromJson(
-                <String, dynamic>{'_converter': 'f:1:Axis.horizontal'})
-            .build(config),
-        Axis.horizontal);
+    fakeBuild<Axis>(
+      FlutterAxis.fromJson(
+          <String, dynamic>{'_converter': 'f:1:Axis.horizontal'}).build,
+      (matcher) => matcher.having((p0) => p0, 'Axis', equals(Axis.horizontal)),
+    );
 
-    expect(
-        FlutterAxis.fromJson(
-            <String, dynamic>{'_converter': 'f:1:Axis.vertical'}).build(config),
-        Axis.vertical);
+    fakeBuild<Axis>(
+      FlutterAxis.fromJson(<String, dynamic>{'_converter': 'f:1:Axis.vertical'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'Axis', equals(Axis.vertical)),
+    );
   });
 
   test('FlutterVerticalDirection', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterVerticalDirection.fromJson(
-                <String, dynamic>{'_converter': 'f:1:VerticalDirection.up'})
-            .build(config),
-        VerticalDirection.up);
+    fakeBuild<VerticalDirection>(
+      FlutterVerticalDirection.fromJson(
+          <String, dynamic>{'_converter': 'f:1:VerticalDirection.up'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'VerticalDirection.up', equals(VerticalDirection.up)),
+    );
 
-    expect(
-        FlutterVerticalDirection.fromJson(
-                <String, dynamic>{'_converter': 'f:1:VerticalDirection.down'})
-            .build(config),
-        VerticalDirection.down);
+    fakeBuild<VerticalDirection>(
+      FlutterVerticalDirection.fromJson(
+          <String, dynamic>{'_converter': 'f:1:VerticalDirection.down'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'VerticalDirection.down', equals(VerticalDirection.down)),
+    );
   });
 
   test('TextStyle', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextStyle.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextStyle',
-          'inherit': false,
-          'color': ColorModel.json,
-          'backgroundColor': ColorModel.json,
-          'fontSize': 20,
-          'letterSpacing': 5,
-          'wordSpacing': 3,
-          'textBaseline': {'_converter': 'f:1:TextBaseline.ideographic'},
-          'height': 200,
-          'leadingDistribution': {
-            '_converter': 'f:1:TextLeadingDistribution.proportional'
-          },
-          'locale': LocaleModel.json,
-          'shadows': [ShadowModel.json],
-          'fontFeatures': [
-            {
-              '_converter': 'f:1:FontFeature.slashedZero',
-            }
-          ],
-          'decorationColor': ColorModel.json,
-          'decorationStyle': {
-            '_converter': 'f:1:TextDecorationStyle.wavy',
-          },
-          'decorationThickness': 20,
-          'debugLabel': 'test_debugLabel',
-          'fontFamily': 'test_fontFamily',
-          'fontFamilyFallback': [
-            'a_fontFamilyFallback',
-            'b_fontFamilyFallback'
-          ],
-          'fontWeight': TextModel.fontWeight,
-          'fontStyle': TextModel.fontStyle,
-          'decoration': TextModel.textDecoration,
-          'overflow': {
-            '_converter': 'f:1:TextOverflow.clip',
+    fakeBuild<TextStyle>(
+      FlutterTextStyle.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextStyle',
+        'inherit': false,
+        'color': ColorModel.json,
+        'backgroundColor': ColorModel.json,
+        'fontSize': 20,
+        'letterSpacing': 5,
+        'wordSpacing': 3,
+        'textBaseline': {'_converter': 'f:1:TextBaseline.ideographic'},
+        'height': 200,
+        'leadingDistribution': {
+          '_converter': 'f:1:TextLeadingDistribution.proportional'
+        },
+        'locale': LocaleModel.json,
+        'shadows': [ShadowModel.json],
+        'fontFeatures': [
+          {
+            '_converter': 'f:1:FontFeature.slashedZero',
           }
-        }).build(config),
-        isA<TextStyle>()
-            .having((p0) => p0.inherit, 'TextStyle.inherit', isFalse)
-            .having((p0) => p0.color, 'TextStyle.color', ColorModel.equals)
-            .having((p0) => p0.backgroundColor, 'TextStyle.backgroundColor',
-                ColorModel.equals)
-            .having((p0) => p0.fontSize, 'TextStyle.fontSize', 20)
-            .having((p0) => p0.letterSpacing, 'TextStyle.letterSpacing', 5)
-            .having((p0) => p0.wordSpacing, 'TextStyle.wordSpacing', 3)
-            .having((p0) => p0.textBaseline, 'TextStyle.textBaseline',
-                TextBaseline.ideographic)
-            .having((p0) => p0.height, 'TextStyle.height', 200)
-            .having(
-                (p0) => p0.leadingDistribution,
-                'TextStyle.leadingDistribution',
-                TextLeadingDistribution.proportional)
-            .having((p0) => p0.locale, 'TextStyle.locale', LocaleModel.equals)
-            .having(
-                (p0) => p0.shadows, 'TextStyle.shadows', [ShadowModel.equals])
-            .having((p0) => p0.fontFeatures, 'TextStyle.fontFeatures',
-                const [FontFeature.slashedZero()])
-            .having((p0) => p0.decorationColor, 'TextStyle.decorationColor',
-                ColorModel.equals)
-            .having((p0) => p0.decorationStyle, 'TextStyle.decorationStyle',
-                TextDecorationStyle.wavy)
-            .having((p0) => p0.decorationThickness,
-                'TextStyle.decorationThickness', 20)
-            .having((p0) => p0.debugLabel, 'TextStyle.debugLabel',
-                'test_debugLabel')
-            .having((p0) => p0.fontFamily, 'TextStyle.fontFamily',
-                'test_fontFamily')
-            .having(
-                (p0) => p0.fontFamilyFallback,
-                'TextStyle.fontFamilyFallback',
-                ['a_fontFamilyFallback', 'b_fontFamilyFallback'])
-            .having((p0) => p0.fontWeight, 'TextStyle.fontWeight',
-                TextModel.equalsFontWeight)
-            .having((p0) => p0.fontStyle, 'TextStyle.fontStyle',
-                TextModel.equalsFontStyle)
-            .having((p0) => p0.decoration, 'TextStyle.decoration',
-                TextModel.equalsTextDecoration)
-            .having(
-                (p0) => p0.overflow, 'TextStyle.overflow', TextOverflow.clip));
+        ],
+        'decorationColor': ColorModel.json,
+        'decorationStyle': {
+          '_converter': 'f:1:TextDecorationStyle.wavy',
+        },
+        'decorationThickness': 20,
+        'debugLabel': 'test_debugLabel',
+        'fontFamily': 'test_fontFamily',
+        'fontFamilyFallback': ['a_fontFamilyFallback', 'b_fontFamilyFallback'],
+        'fontWeight': TextModel.fontWeight,
+        'fontStyle': TextModel.fontStyle,
+        'decoration': TextModel.textDecoration,
+        'overflow': {
+          '_converter': 'f:1:TextOverflow.clip',
+        }
+      }).build,
+      (matcher) => matcher
+          .having((p0) => p0.inherit, 'TextStyle.inherit', isFalse)
+          .having((p0) => p0.color, 'TextStyle.color', ColorModel.equals)
+          .having((p0) => p0.backgroundColor, 'TextStyle.backgroundColor',
+              ColorModel.equals)
+          .having((p0) => p0.fontSize, 'TextStyle.fontSize', 20)
+          .having((p0) => p0.letterSpacing, 'TextStyle.letterSpacing', 5)
+          .having((p0) => p0.wordSpacing, 'TextStyle.wordSpacing', 3)
+          .having((p0) => p0.textBaseline, 'TextStyle.textBaseline',
+              TextBaseline.ideographic)
+          .having((p0) => p0.height, 'TextStyle.height', 200)
+          .having(
+              (p0) => p0.leadingDistribution,
+              'TextStyle.leadingDistribution',
+              TextLeadingDistribution.proportional)
+          .having((p0) => p0.locale, 'TextStyle.locale', LocaleModel.equals)
+          .having((p0) => p0.shadows, 'TextStyle.shadows', [ShadowModel.equals])
+          .having((p0) => p0.fontFeatures, 'TextStyle.fontFeatures',
+              const [FontFeature.slashedZero()])
+          .having((p0) => p0.decorationColor, 'TextStyle.decorationColor',
+              ColorModel.equals)
+          .having((p0) => p0.decorationStyle, 'TextStyle.decorationStyle',
+              TextDecorationStyle.wavy)
+          .having((p0) => p0.decorationThickness,
+              'TextStyle.decorationThickness', 20)
+          .having(
+              (p0) => p0.debugLabel, 'TextStyle.debugLabel', 'test_debugLabel')
+          .having(
+              (p0) => p0.fontFamily, 'TextStyle.fontFamily', 'test_fontFamily')
+          .having((p0) => p0.fontFamilyFallback, 'TextStyle.fontFamilyFallback',
+              ['a_fontFamilyFallback', 'b_fontFamilyFallback'])
+          .having((p0) => p0.fontWeight, 'TextStyle.fontWeight',
+              TextModel.equalsFontWeight)
+          .having((p0) => p0.fontStyle, 'TextStyle.fontStyle',
+              TextModel.equalsFontStyle)
+          .having((p0) => p0.decoration, 'TextStyle.decoration',
+              TextModel.equalsTextDecoration)
+          .having((p0) => p0.overflow, 'TextStyle.overflow', TextOverflow.clip),
+    );
   });
 
   test('FlutterTextOverflow', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextOverflow.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextOverflow.clip'})
-            .build(config),
-        TextOverflow.clip);
+    fakeBuild<TextOverflow>(
+      FlutterTextOverflow.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextOverflow.clip'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextOverflow.clip', equals(TextOverflow.clip)),
+    );
 
-    expect(
-        FlutterTextOverflow.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextOverflow.ellipsis'})
-            .build(config),
-        TextOverflow.ellipsis);
+    fakeBuild<TextOverflow>(
+      FlutterTextOverflow.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextOverflow.ellipsis'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextOverflow.ellipsis', equals(TextOverflow.ellipsis)),
+    );
 
-    expect(
-        FlutterTextOverflow.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextOverflow.fade'})
-            .build(config),
-        TextOverflow.fade);
+    fakeBuild<TextOverflow>(
+      FlutterTextOverflow.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextOverflow.fade'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextOverflow.fade', equals(TextOverflow.fade)),
+    );
 
-    expect(
-        FlutterTextOverflow.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextOverflow.visible'})
-            .build(config),
-        TextOverflow.visible);
+    fakeBuild<TextOverflow>(
+      FlutterTextOverflow.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextOverflow.visible'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextOverflow.visible', equals(TextOverflow.visible)),
+    );
   });
 
   group('FlutterStrutStyle', () {
     test('FlutterStrutStyle()', () {
-      final config = FakeZacContext();
-      expect(
-          FlutterStrutStyle.fromJson(<String, dynamic>{
-            '_converter': 'f:1:StrutStyle',
-            'fontFamily': 'test_fontFamily',
-            'fontFamilyFallback': ['test_fontFamilyFallback'],
-            'fontSize': 42,
-            'height': 43,
-            'leadingDistribution': TextModel.textLeadingDistribution,
-            'leading': 44,
-            'fontWeight': TextModel.fontWeight,
-            'fontStyle': TextModel.fontStyle,
-            'forceStrutHeight': true,
-            'debugLabel': 'test_debugLabel',
-            'package': 'test_package',
-          }).build(config),
-          const StrutStyle(
-            fontFamily: 'test_fontFamily',
-            fontFamilyFallback: ['test_fontFamilyFallback'],
-            fontSize: 42,
-            height: 43,
-            leadingDistribution: TextModel.equalsTextLeadingDistribution,
-            leading: 44,
-            fontWeight: TextModel.equalsFontWeight,
-            fontStyle: TextModel.equalsFontStyle,
-            forceStrutHeight: true,
-            debugLabel: 'test_debugLabel',
-            package: 'test_package',
-          ));
+      fakeBuild<StrutStyle>(
+        FlutterStrutStyle.fromJson(<String, dynamic>{
+          '_converter': 'f:1:StrutStyle',
+          'fontFamily': 'test_fontFamily',
+          'fontFamilyFallback': ['test_fontFamilyFallback'],
+          'fontSize': 42,
+          'height': 43,
+          'leadingDistribution': TextModel.textLeadingDistribution,
+          'leading': 44,
+          'fontWeight': TextModel.fontWeight,
+          'fontStyle': TextModel.fontStyle,
+          'forceStrutHeight': true,
+          'debugLabel': 'test_debugLabel',
+          'package': 'test_package',
+        }).build,
+        (matcher) => matcher.having(
+            (p0) => p0,
+            'StrutStyle',
+            equals(const StrutStyle(
+              fontFamily: 'test_fontFamily',
+              fontFamilyFallback: ['test_fontFamilyFallback'],
+              fontSize: 42,
+              height: 43,
+              leadingDistribution: TextModel.equalsTextLeadingDistribution,
+              leading: 44,
+              fontWeight: TextModel.equalsFontWeight,
+              fontStyle: TextModel.equalsFontStyle,
+              forceStrutHeight: true,
+              debugLabel: 'test_debugLabel',
+              package: 'test_package',
+            ))),
+      );
     });
 
     test('FlutterStrutStyle.fromTextStyle()', () {
-      final config = FakeZacContext();
-      expect(
-          FlutterStrutStyle.fromJson(<String, dynamic>{
-            '_converter': 'f:1:StrutStyle.fromTextStyle',
-            'textStyle': TextModel.textStyle,
-            'fontFamily': 'test_fontFamily',
-            'fontFamilyFallback': ['test_fontFamilyFallback'],
-            'fontSize': 42,
-            'height': 43,
-            'leadingDistribution': TextModel.textLeadingDistribution,
-            'leading': 44,
-            'fontWeight': TextModel.fontWeight,
-            'fontStyle': TextModel.fontStyle,
-            'forceStrutHeight': true,
-            'debugLabel': 'test_debugLabel',
-            'package': 'test_package',
-          }).build(config),
-          StrutStyle.fromTextStyle(
-            TextModel.equalsTextStyle,
-            fontFamily: 'test_fontFamily',
-            fontFamilyFallback: const ['test_fontFamilyFallback'],
-            fontSize: 42,
-            height: 43,
-            leadingDistribution: TextModel.equalsTextLeadingDistribution,
-            leading: 44,
-            fontWeight: TextModel.equalsFontWeight,
-            fontStyle: TextModel.equalsFontStyle,
-            forceStrutHeight: true,
-            debugLabel: 'test_debugLabel',
-            package: 'test_package',
-          ));
+      fakeBuild<StrutStyle>(
+        FlutterStrutStyle.fromJson(<String, dynamic>{
+          '_converter': 'f:1:StrutStyle.fromTextStyle',
+          'textStyle': TextModel.textStyle,
+          'fontFamily': 'test_fontFamily',
+          'fontFamilyFallback': ['test_fontFamilyFallback'],
+          'fontSize': 42,
+          'height': 43,
+          'leadingDistribution': TextModel.textLeadingDistribution,
+          'leading': 44,
+          'fontWeight': TextModel.fontWeight,
+          'fontStyle': TextModel.fontStyle,
+          'forceStrutHeight': true,
+          'debugLabel': 'test_debugLabel',
+          'package': 'test_package',
+        }).build,
+        (matcher) => matcher.having(
+            (p0) => p0,
+            'StrutStyle.fromTextStyle',
+            equals(StrutStyle.fromTextStyle(
+              TextModel.equalsTextStyle,
+              fontFamily: 'test_fontFamily',
+              fontFamilyFallback: const ['test_fontFamilyFallback'],
+              fontSize: 42,
+              height: 43,
+              leadingDistribution: TextModel.equalsTextLeadingDistribution,
+              leading: 44,
+              fontWeight: TextModel.equalsFontWeight,
+              fontStyle: TextModel.equalsFontStyle,
+              forceStrutHeight: true,
+              debugLabel: 'test_debugLabel',
+              package: 'test_package',
+            ))),
+      );
     });
   });
 
   test('FlutterTextWidthBasis', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextWidthBasis.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextWidthBasis.longestLine'
-        }).build(config),
-        TextWidthBasis.longestLine);
+    fakeBuild<TextWidthBasis>(
+      FlutterTextWidthBasis.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextWidthBasis.longestLine'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextWidthBasis.longestLine',
+          equals(TextWidthBasis.longestLine)),
+    );
 
-    expect(
-        FlutterTextWidthBasis.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextWidthBasis.parent'})
-            .build(config),
-        TextWidthBasis.parent);
+    fakeBuild<TextWidthBasis>(
+      FlutterTextWidthBasis.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextWidthBasis.parent'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextWidthBasis.parent', equals(TextWidthBasis.parent)),
+    );
   });
 
   test('FlutterBoxFit', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterBoxFit.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BoxFit.contain'})
-            .build(config),
-        BoxFit.contain);
-    expect(
-        FlutterBoxFit.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BoxFit.cover'}).build(config),
-        BoxFit.cover);
-    expect(
-        FlutterBoxFit.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BoxFit.fill'}).build(config),
-        BoxFit.fill);
-    expect(
-        FlutterBoxFit.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BoxFit.fitHeight'})
-            .build(config),
-        BoxFit.fitHeight);
-    expect(
-        FlutterBoxFit.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BoxFit.fitWidth'})
-            .build(config),
-        BoxFit.fitWidth);
-    expect(
-        FlutterBoxFit.fromJson(
-            <String, dynamic>{'_converter': 'f:1:BoxFit.none'}).build(config),
-        BoxFit.none);
-    expect(
-        FlutterBoxFit.fromJson(
-                <String, dynamic>{'_converter': 'f:1:BoxFit.scaleDown'})
-            .build(config),
-        BoxFit.scaleDown);
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BoxFit.contain'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BoxFit.contain', equals(BoxFit.contain)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BoxFit.cover'}).build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BoxFit.cover', equals(BoxFit.cover)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(<String, dynamic>{'_converter': 'f:1:BoxFit.fill'})
+          .build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BoxFit.fill', equals(BoxFit.fill)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BoxFit.fitHeight'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxFit.fitHeight', equals(BoxFit.fitHeight)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BoxFit.fitWidth'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxFit.fitWidth', equals(BoxFit.fitWidth)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(<String, dynamic>{'_converter': 'f:1:BoxFit.none'})
+          .build,
+      (matcher) =>
+          matcher.having((p0) => p0, 'BoxFit.none', equals(BoxFit.none)),
+    );
+
+    fakeBuild<BoxFit>(
+      FlutterBoxFit.fromJson(
+          <String, dynamic>{'_converter': 'f:1:BoxFit.scaleDown'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'BoxFit.scaleDown', equals(BoxFit.scaleDown)),
+    );
   });
 
   test('FlutterImageRepeat', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterImageRepeat.fromJson(
-                <String, dynamic>{'_converter': 'f:1:ImageRepeat.noRepeat'})
-            .build(config),
-        ImageRepeat.noRepeat);
+    fakeBuild<ImageRepeat>(
+      FlutterImageRepeat.fromJson(
+          <String, dynamic>{'_converter': 'f:1:ImageRepeat.noRepeat'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'ImageRepeat.noRepeat', equals(ImageRepeat.noRepeat)),
+    );
 
-    expect(
-        FlutterImageRepeat.fromJson(
-                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeat'})
-            .build(config),
-        ImageRepeat.repeat);
+    fakeBuild<ImageRepeat>(
+      FlutterImageRepeat.fromJson(
+          <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeat'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'ImageRepeat.repeat', equals(ImageRepeat.repeat)),
+    );
 
-    expect(
-        FlutterImageRepeat.fromJson(
-                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatX'})
-            .build(config),
-        ImageRepeat.repeatX);
+    fakeBuild<ImageRepeat>(
+      FlutterImageRepeat.fromJson(
+          <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatX'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'ImageRepeat.repeatX', equals(ImageRepeat.repeatX)),
+    );
 
-    expect(
-        FlutterImageRepeat.fromJson(
-                <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatY'})
-            .build(config),
-        ImageRepeat.repeatY);
+    fakeBuild<ImageRepeat>(
+      FlutterImageRepeat.fromJson(
+          <String, dynamic>{'_converter': 'f:1:ImageRepeat.repeatY'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'ImageRepeat.repeatY', equals(ImageRepeat.repeatY)),
+    );
   });
 
   test('FlutterTextAlignVertical', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextAlignVertical.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextAlignVertical',
-          'y': 0.2,
-        }).build(config),
-        isA<TextAlignVertical>()
-            .having((p0) => p0.y, 'TextAlignVertical.y', 0.2));
+    fakeBuild<TextAlignVertical>(
+      FlutterTextAlignVertical.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextAlignVertical',
+        'y': 0.2,
+      }).build,
+      (matcher) => matcher..having((p0) => p0.y, 'TextAlignVertical.y', 0.2),
+    );
 
-    expect(
-        FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.bottom'})
-            .build(config),
-        TextAlignVertical.bottom);
-    expect(
-        FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.center'})
-            .build(config),
-        TextAlignVertical.center);
-    expect(
-        FlutterTextAlignVertical.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextAlignVertical.top'})
-            .build(config),
-        TextAlignVertical.top);
+    fakeBuild<TextAlignVertical>(
+      FlutterTextAlignVertical.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextAlignVertical.bottom'})
+          .build,
+      (matcher) => matcher
+        ..having((p0) => p0, 'TextAlignVertical.bottom',
+            equals(TextAlignVertical.bottom)),
+    );
+
+    fakeBuild<TextAlignVertical>(
+      FlutterTextAlignVertical.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextAlignVertical.center'})
+          .build,
+      (matcher) => matcher
+        ..having((p0) => p0, 'TextAlignVertical.center',
+            equals(TextAlignVertical.center)),
+    );
+
+    fakeBuild<TextAlignVertical>(
+      FlutterTextAlignVertical.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextAlignVertical.top'}).build,
+      (matcher) => matcher
+        ..having(
+            (p0) => p0, 'TextAlignVertical.top', equals(TextAlignVertical.top)),
+    );
   });
 }

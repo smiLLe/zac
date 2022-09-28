@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,17 +32,18 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
   }) = _FlutterSafeArea;
 
   @override
-  SafeArea buildWidget(ZacBuildContext context) {
+  SafeArea buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return SafeArea(
-      child: child.buildWidget(context),
-      key: key?.buildKey(context),
-      left: left?.getValue(context) ?? true,
-      top: top?.getValue(context) ?? true,
-      right: right?.getValue(context) ?? true,
-      bottom: bottom?.getValue(context) ?? true,
-      minimum: minimum?.build(context) ?? EdgeInsets.zero,
+      child: child.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, zacContext),
+      left: left?.getValue(zacContext) ?? true,
+      top: top?.getValue(zacContext) ?? true,
+      right: right?.getValue(zacContext) ?? true,
+      bottom: bottom?.getValue(zacContext) ?? true,
+      minimum: minimum?.build(context, ref, zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.getValue(context) ?? false,
+          maintainBottomViewPadding?.getValue(zacContext) ?? false,
     );
   }
 }

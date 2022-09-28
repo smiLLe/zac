@@ -1,6 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,15 +32,16 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
   }) = _FlutterOverflowBox;
 
   @override
-  OverflowBox buildWidget(ZacBuildContext context) {
+  OverflowBox buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return OverflowBox(
-      key: key?.buildKey(context),
-      alignment: alignment?.build(context) ?? Alignment.center,
-      minWidth: minWidth?.getValue(context),
-      maxWidth: maxWidth?.getValue(context),
-      minHeight: minHeight?.getValue(context),
-      maxHeight: maxHeight?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      alignment: alignment?.build(context, ref, zacContext) ?? Alignment.center,
+      minWidth: minWidth?.getValue(zacContext),
+      maxWidth: maxWidth?.getValue(zacContext),
+      minHeight: minHeight?.getValue(zacContext),
+      maxHeight: maxHeight?.getValue(zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
     );
   }
 }

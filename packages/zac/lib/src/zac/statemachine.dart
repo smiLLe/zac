@@ -262,13 +262,14 @@ class StateMachineProviderBuilder
   }) = _StateMachineProviderBuilder;
 
   @override
-  StateMachineProvider buildWidget(ZacBuildContext context) {
+  StateMachineProvider buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return StateMachineProvider(
-      key: key?.buildKey(context),
-      initialState: initialState.getValue(context),
-      initialContext: initialContext?.getValue(context),
+      key: key?.buildKey(context, ref, zacContext),
+      initialState: initialState.getValue(zacContext),
+      initialContext: initialContext?.getValue(zacContext),
       states: states,
-      family: family.getValue(context),
+      family: family.getValue(zacContext),
       builder: child.buildWidget,
     );
   }
@@ -288,7 +289,8 @@ class StateMachineProvider extends HookConsumerWidget {
   final Object? initialContext;
   final List<StateNode> states;
   final String family;
-  final Widget Function(ZacBuildContext context) builder;
+  final Widget Function(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -325,7 +327,8 @@ class StateMachineProvider extends HookConsumerWidget {
           // dependencies: [statemachineProvider(family)],
         )),
       ],
-      child: ZacUpdateContext(builder: builder),
+      child: ZacUpdateContext(
+          builder: (ctx) => builder(ctx.context, ctx.ref, ctx)),
     );
   }
 }

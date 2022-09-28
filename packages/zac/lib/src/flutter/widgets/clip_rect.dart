@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,11 +29,13 @@ class FlutterClipRect with _$FlutterClipRect implements ZacWidget {
   }) = _FlutterClipRect;
 
   @override
-  ClipRect buildWidget(ZacBuildContext context) {
+  ClipRect buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return ClipRect(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
+      key: key?.buildKey(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
+      clipBehavior:
+          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
     );
   }
 }

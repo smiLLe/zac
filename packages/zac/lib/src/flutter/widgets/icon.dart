@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,14 +30,15 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
   }) = _FlutterIcon;
 
   @override
-  Icon buildWidget(ZacBuildContext context) {
+  Icon buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return Icon(
-      icon?.build(context),
-      key: key?.buildKey(context),
-      color: color?.build(context),
-      size: size?.getValue(context),
-      semanticLabel: semanticLabel?.getValue(context),
-      textDirection: textDirection?.build(context),
+      icon?.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, zacContext),
+      color: color?.build(context, ref, zacContext),
+      size: size?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      textDirection: textDirection?.build(context, ref, zacContext),
     );
   }
 }
@@ -57,12 +58,13 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(ZacBuildContext context) {
+  IconData build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return IconData(
-      codePoint.getValue(context),
-      fontFamily: fontFamily?.getValue(context),
-      fontPackage: fontPackage?.getValue(context),
-      matchTextDirection: matchTextDirection?.getValue(context) ?? false,
+      codePoint.getValue(zacContext),
+      fontFamily: fontFamily?.getValue(zacContext),
+      fontPackage: fontPackage?.getValue(zacContext),
+      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
     );
   }
 }
@@ -81,11 +83,12 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
     ZacDouble? size,
   }) = _FlutterIconThemeData;
 
-  IconThemeData build(ZacBuildContext context) {
+  IconThemeData build(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return IconThemeData(
-      color: color?.build(context),
-      opacity: opacity?.getValue(context),
-      size: size?.getValue(context),
+      color: color?.build(context, ref, zacContext),
+      opacity: opacity?.getValue(zacContext),
+      size: size?.getValue(zacContext),
     );
   }
 }

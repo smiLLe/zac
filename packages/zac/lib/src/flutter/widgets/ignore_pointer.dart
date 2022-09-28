@@ -1,5 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,12 +28,13 @@ class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
   }) = _FlutterIgnorePointer;
 
   @override
-  IgnorePointer buildWidget(ZacBuildContext context) {
+  IgnorePointer buildWidget(
+      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
     return IgnorePointer(
-      key: key?.buildKey(context),
-      ignoring: ignoring?.getValue(context) ?? true,
-      ignoringSemantics: ignoringSemantics?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(context, ref, zacContext),
+      ignoring: ignoring?.getValue(zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.getValue(zacContext),
+      child: child?.buildWidget(context, ref, zacContext),
     );
   }
 }
