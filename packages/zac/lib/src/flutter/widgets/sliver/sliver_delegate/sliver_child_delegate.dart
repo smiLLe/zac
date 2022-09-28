@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/widgets.dart';
@@ -44,25 +45,24 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
 
   SliverChildDelegate build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       list: (value) => SliverChildListDelegate(
         children.getValue(context, ref, zacContext),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(zacContext) ?? true,
-        addRepaintBoundaries:
-            addRepaintBoundaries?.getValue(zacContext) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(zacContext) ?? 0,
+            addAutomaticKeepAlives?.getValue(zacRef) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(zacRef) ?? 0,
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
         children.getValue(context, ref, zacContext),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(zacContext) ?? true,
-        addRepaintBoundaries:
-            addRepaintBoundaries?.getValue(zacContext) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(zacContext) ?? 0,
+            addAutomaticKeepAlives?.getValue(zacRef) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(zacRef) ?? 0,
         // semanticIndexCallback:
       ),
     );

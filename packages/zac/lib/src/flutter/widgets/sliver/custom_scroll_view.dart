@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -48,23 +49,24 @@ class FlutterCustomScrollView
   @override
   CustomScrollView buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return CustomScrollView(
       key: key?.buildKey(context, ref, zacContext),
       slivers: slivers?.getValue(context, ref, zacContext) ?? const <Widget>[],
       scrollDirection:
           scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacContext) ?? false,
-      primary: primary?.getValue(zacContext),
+      reverse: reverse?.getValue(zacRef) ?? false,
+      primary: primary?.getValue(zacRef),
       physics: physics?.build(context, ref, zacContext),
-      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
       center: center?.buildKey(context, ref, zacContext),
-      anchor: anchor?.getValue(zacContext) ?? 0.0,
-      cacheExtent: cacheExtent?.getValue(zacContext),
-      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      anchor: anchor?.getValue(zacRef) ?? 0.0,
+      cacheExtent: cacheExtent?.getValue(zacRef),
+      semanticChildCount: semanticChildCount?.getValue(zacRef),
       keyboardDismissBehavior:
           keyboardDismissBehavior?.build(context, ref, zacContext) ??
               ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValue(zacRef),
       clipBehavior:
           clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
     );

@@ -1,6 +1,7 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,11 +42,12 @@ class FlutterGestureDetector
   @override
   GestureDetector buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return GestureDetector(
       key: key?.buildKey(context, ref, zacContext),
       child: child?.buildWidget(context, ref, zacContext),
       behavior: behavior?.build(context, ref, zacContext),
-      excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
+      excludeFromSemantics: excludeFromSemantics?.getValue(zacRef) ?? false,
       onTap: actionsCallback(onTap, zacContext),
       onSecondaryTap: actionsCallback(onSecondaryTap, zacContext),
       onDoubleTap: actionsCallback(onDoubleTap, zacContext),

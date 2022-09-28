@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
@@ -89,38 +90,39 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
   @override
   TextField buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return TextField(
       key: key?.buildKey(context, ref, zacContext),
       style: style?.build(context, ref, zacContext),
       strutStyle: strutStyle?.build(context, ref, zacContext),
       textAlign: textAlign?.build(context, ref, zacContext) ?? TextAlign.start,
       textDirection: textDirection?.build(context, ref, zacContext),
-      readOnly: readOnly?.getValue(zacContext) ?? false,
-      showCursor: showCursor?.getValue(zacContext),
-      autofocus: autofocus?.getValue(zacContext) ?? false,
-      obscuringCharacter: obscuringCharacter?.getValue(zacContext) ?? '•',
-      obscureText: obscureText?.getValue(zacContext) ?? false,
-      autocorrect: autocorrect?.getValue(zacContext) ?? true,
-      enableSuggestions: enableSuggestions?.getValue(zacContext) ?? true,
-      maxLines: maxLines?.getValue(zacContext),
-      minLines: minLines?.getValue(zacContext),
-      expands: expands?.getValue(zacContext) ?? false,
-      maxLength: maxLength?.getValue(zacContext),
-      enabled: enabled?.getValue(zacContext),
-      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(zacContext),
+      readOnly: readOnly?.getValue(zacRef) ?? false,
+      showCursor: showCursor?.getValue(zacRef),
+      autofocus: autofocus?.getValue(zacRef) ?? false,
+      obscuringCharacter: obscuringCharacter?.getValue(zacRef) ?? '•',
+      obscureText: obscureText?.getValue(zacRef) ?? false,
+      autocorrect: autocorrect?.getValue(zacRef) ?? true,
+      enableSuggestions: enableSuggestions?.getValue(zacRef) ?? true,
+      maxLines: maxLines?.getValue(zacRef),
+      minLines: minLines?.getValue(zacRef),
+      expands: expands?.getValue(zacRef) ?? false,
+      maxLength: maxLength?.getValue(zacRef),
+      enabled: enabled?.getValue(zacRef),
+      cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(zacRef),
       cursorRadius: cursorRadius?.build(context, ref, zacContext),
       cursorColor: cursorColor?.build(context, ref, zacContext),
       keyboardAppearance: keyboardAppearance?.build(context, ref, zacContext),
       scrollPadding: scrollPadding?.build(context, ref, zacContext) ??
           const EdgeInsets.all(20.0),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(zacContext) ?? true,
+          enableInteractiveSelection?.getValue(zacRef) ?? true,
       clipBehavior:
           clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValue(zacRef),
       enableIMEPersonalizedLearning:
-          enableIMEPersonalizedLearning?.getValue(zacContext) ?? true,
+          enableIMEPersonalizedLearning?.getValue(zacRef) ?? true,
       onChanged: actionsCallback1(onChanged, zacContext),
       decoration: decoration?.build(context, ref, zacContext) ??
           const InputDecoration(),

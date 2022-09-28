@@ -51,6 +51,7 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
   @override
   SelectableText buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return SelectableText(
       data,
       key: key?.buildKey(context, ref, zacContext),
@@ -58,18 +59,18 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
       strutStyle: strutStyle?.build(context, ref, zacContext),
       textAlign: textAlign?.build(context, ref, zacContext),
       textDirection: textDirection?.build(context, ref, zacContext),
-      textScaleFactor: textScaleFactor?.getValue(zacContext),
-      showCursor: showCursor?.getValue(zacContext) ?? false,
-      autofocus: autofocus?.getValue(zacContext) ?? false,
-      minLines: minLines?.getValue(zacContext),
-      maxLines: maxLines?.getValue(zacContext),
-      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacRef),
+      showCursor: showCursor?.getValue(zacRef) ?? false,
+      autofocus: autofocus?.getValue(zacRef) ?? false,
+      minLines: minLines?.getValue(zacRef),
+      maxLines: maxLines?.getValue(zacRef),
+      cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(zacRef),
       cursorRadius: cursorRadius?.build(context, ref, zacContext),
       cursorColor: cursorColor?.build(context, ref, zacContext),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(zacContext) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
+          enableInteractiveSelection?.getValue(zacRef) ?? true,
+      semanticsLabel: semanticsLabel?.getValue(zacRef),
       textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
       textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
     );

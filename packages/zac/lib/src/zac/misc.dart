@@ -1,4 +1,8 @@
 import 'package:collection/collection.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+part 'misc.freezed.dart';
 
 const kBagPayload = 'payload';
 const kBagActionPayload = 'action.payload';
@@ -60,4 +64,11 @@ class ContextBag extends DelegatingMap<String, dynamic> {
     _onClear.clear();
     super.clear();
   }
+}
+
+@freezed
+class ZacRef with _$ZacRef {
+  factory ZacRef.widget(WidgetRef ref) = _WidgetRef;
+  factory ZacRef.adProvider(AutoDisposeProviderRef<Object?> ref) =
+      _AutoDisposeProviderRef;
 }

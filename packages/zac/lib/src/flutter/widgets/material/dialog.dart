@@ -134,6 +134,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
   @override
   Widget buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       showDialog: (_) => throw StateError('Should never happen'),
       dialog: (value) => Dialog(
@@ -143,7 +144,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
         backgroundColor: value.backgroundColor?.build(context, ref, zacContext),
         clipBehavior:
             value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValue(zacRef),
         // insetAnimationCurve: value.insetAnimationCurve?.toFlutter(context),
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
         insetPadding: value.insetPadding?.build(context, ref, zacContext),
@@ -158,7 +159,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
         actionsAlignment:
             value.actionsAlignment?.build(context, ref, zacContext),
         actionsOverflowButtonSpacing:
-            value.actionsOverflowButtonSpacing?.getValue(zacContext),
+            value.actionsOverflowButtonSpacing?.getValue(zacRef),
         actionsOverflowDirection:
             value.actionsOverflowDirection?.build(context, ref, zacContext),
         actionsPadding: value.actionsPadding?.build(context, ref, zacContext) ??
@@ -172,11 +173,11 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
             const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
         contentTextStyle:
             value.contentTextStyle?.build(context, ref, zacContext),
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValue(zacRef),
         insetPadding: value.insetPadding?.build(context, ref, zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        scrollable: value.scrollable?.getValue(zacContext) ?? false,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        scrollable: value.scrollable?.getValue(zacRef) ?? false,
+        semanticLabel: value.semanticLabel?.getValue(zacRef),
         shape: value.shape?.build(context, ref, zacContext),
         titlePadding: value.titlePadding?.build(context, ref, zacContext),
         titleTextStyle: value.titleTextStyle?.build(context, ref, zacContext),
@@ -192,10 +193,10 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
             value.clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
         contentPadding: value.contentPadding?.build(context, ref, zacContext) ??
             const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValue(zacRef),
         insetPadding: value.insetPadding?.build(context, ref, zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        semanticLabel: value.semanticLabel?.getValue(zacRef),
         shape: value.shape?.build(context, ref, zacContext),
         titlePadding: value.titlePadding?.build(context, ref, zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),

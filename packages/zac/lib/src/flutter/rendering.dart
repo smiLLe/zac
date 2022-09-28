@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -283,26 +284,27 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 
   BoxConstraints build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.getValue(zacContext) ?? 0.0,
-        maxWidth: value.maxWidth?.getValue(zacContext) ?? double.infinity,
-        minHeight: value.minHeight?.getValue(zacContext) ?? 0.0,
-        maxHeight: value.maxHeight?.getValue(zacContext) ?? double.infinity,
+        minWidth: value.minWidth?.getValue(zacRef) ?? 0.0,
+        maxWidth: value.maxWidth?.getValue(zacRef) ?? double.infinity,
+        minHeight: value.minHeight?.getValue(zacRef) ?? 0.0,
+        maxHeight: value.maxHeight?.getValue(zacRef) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.getValue(zacRef),
+          height: value.height?.getValue(zacRef)),
       loose: (value) =>
           BoxConstraints.loose(value.size.build(context, ref, zacContext)),
       tight: (value) =>
           BoxConstraints.tight(value.size.build(context, ref, zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.getValue(zacRef),
+          height: value.height?.getValue(zacRef)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.getValue(zacContext) ?? double.infinity,
-        height: value.height?.getValue(zacContext) ?? double.infinity,
+        width: value.width?.getValue(zacRef) ?? double.infinity,
+        height: value.height?.getValue(zacRef) ?? double.infinity,
       ),
     );
   }
@@ -335,20 +337,21 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
 
   SliverGridDelegate build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       fixedCrossAxisCount: (value) => SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacRef) ?? 0.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacRef) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacRef) ?? 1.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacRef),
       ),
       maxCrossAxisExtent: (value) => SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacRef),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacRef) ?? 0.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacRef) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacRef) ?? 1.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacRef),
       ),
     );
   }

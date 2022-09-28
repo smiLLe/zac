@@ -38,8 +38,8 @@ class SharedValue with _$SharedValue {
         empty: (_) => throw AccessEmptySharedValueError(ifEmptyMessage),
       );
 
-  static Object? getFilled(SharedValueConsumeType type, ZacBuildContext context,
-      SharedValueFamily family) {
+  static Object? getFilled(
+      SharedValueConsumeType type, ZacRef ref, SharedValueFamily family) {
     final error = '''
 Could not find a $SharedValue for family: "$family".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
@@ -48,15 +48,31 @@ See "$SharedValueProviderBuilder" for more info.
     return type.map<Object?>(
       watch: (obj) {
         if (null == obj.select || true == obj.select?.isEmpty) {
-          return _extractData(
-              context.ref.watch(SharedValue.provider(family)), error);
+          return ref.when(
+            widget: (ref) =>
+                _extractData(ref.watch(SharedValue.provider(family)), error),
+            adProvider: (ref) =>
+                _extractData(ref.watch(SharedValue.provider(family)), error),
+          );
         }
 
-        return context.ref.watch(SharedValue.provider(family).select(
-            (sharedValue) => obj.select!.transformValues(
-                ZacTransformValue(_extractData(sharedValue, error)), context)));
+        return ref.when(
+          widget: (ref) => ref.watch(SharedValue.provider(family).select(
+              (sharedValue) => obj.select!.transformValues(
+                  ZacTransformValue(_extractData(sharedValue, error)),
+                  context))),
+          adProvider: (ref) => ref.watch(SharedValue.provider(family).select(
+              (sharedValue) => obj.select!.transformValues(
+                  ZacTransformValue(_extractData(sharedValue, error)),
+                  context))),
+        );
       },
-      read: (_) => _extractData(context.ref.read(provider(family)), error),
+      read: (_) => ref.when(
+        widget: (ref) =>
+            _extractData(ref.read(SharedValue.provider(family)), error),
+        adProvider: (ref) =>
+            _extractData(ref.read(SharedValue.provider(family)), error),
+      ),
     );
   }
 

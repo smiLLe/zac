@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -80,16 +81,17 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
   @override
   Image buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       network: (value) => Image.network(
-        value.src.getValue(zacContext),
+        value.src.getValue(zacRef),
         key: value.key?.buildKey(context, ref, zacContext),
-        scale: value.scale?.getValue(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        scale: value.scale?.getValue(zacRef) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(zacRef),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(zacContext) ?? false,
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+            value.excludeFromSemantics?.getValue(zacRef) ?? false,
+        width: value.width?.getValue(zacRef),
+        height: value.height?.getValue(zacRef),
         color: value.color?.build(context, ref, zacContext),
         colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
         fit: value.fit?.build(context, ref, zacContext),
@@ -98,25 +100,24 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
         repeat: value.repeat?.build(context, ref, zacContext) ??
             ImageRepeat.noRepeat,
         centerSlice: value.centerSlice?.build(context, ref, zacContext),
-        matchTextDirection:
-            value.matchTextDirection?.getValue(zacContext) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(zacContext) ?? false,
+        matchTextDirection: value.matchTextDirection?.getValue(zacRef) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(zacRef) ?? false,
         filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
             FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
+        isAntiAlias: value.isAntiAlias?.getValue(zacRef) ?? false,
         headers: value.headers,
-        cacheWidth: value.cacheWidth?.getValue(zacContext),
-        cacheHeight: value.cacheHeight?.getValue(zacContext),
+        cacheWidth: value.cacheWidth?.getValue(zacRef),
+        cacheHeight: value.cacheHeight?.getValue(zacRef),
       ),
       asset: (value) => Image.asset(
-        value.name.getValue(zacContext),
+        value.name.getValue(zacRef),
         key: value.key?.buildKey(context, ref, zacContext),
-        scale: value.scale?.getValue(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        scale: value.scale?.getValue(zacRef) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(zacRef),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(zacContext) ?? false,
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+            value.excludeFromSemantics?.getValue(zacRef) ?? false,
+        width: value.width?.getValue(zacRef),
+        height: value.height?.getValue(zacRef),
         color: value.color?.build(context, ref, zacContext),
         colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
         fit: value.fit?.build(context, ref, zacContext),
@@ -125,14 +126,13 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
         repeat: value.repeat?.build(context, ref, zacContext) ??
             ImageRepeat.noRepeat,
         centerSlice: value.centerSlice?.build(context, ref, zacContext),
-        matchTextDirection:
-            value.matchTextDirection?.getValue(zacContext) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(zacContext) ?? false,
+        matchTextDirection: value.matchTextDirection?.getValue(zacRef) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(zacRef) ?? false,
         filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
             FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
-        cacheWidth: value.cacheWidth?.getValue(zacContext),
-        cacheHeight: value.cacheHeight?.getValue(zacContext),
+        isAntiAlias: value.isAntiAlias?.getValue(zacRef) ?? false,
+        cacheWidth: value.cacheWidth?.getValue(zacRef),
+        cacheHeight: value.cacheHeight?.getValue(zacRef),
       ),
     );
   }

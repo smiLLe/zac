@@ -2,6 +2,7 @@ import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -44,22 +45,23 @@ class FlutterInteractiveViewer
   @override
   InteractiveViewer buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return InteractiveViewer(
       key: key?.buildKey(context, ref, zacContext),
       child: child.buildWidget(context, ref, zacContext),
       clipBehavior:
           clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
+      alignPanAxis: alignPanAxis?.getValue(zacRef) ?? false,
       boundaryMargin:
           boundaryMargin?.build(context, ref, zacContext) ?? EdgeInsets.zero,
-      constrained: constrained?.getValue(zacContext) ?? true,
-      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
-      minScale: minScale?.getValue(zacContext) ?? 0.8,
+      constrained: constrained?.getValue(zacRef) ?? true,
+      maxScale: maxScale?.getValue(zacRef) ?? 2.5,
+      minScale: minScale?.getValue(zacRef) ?? 0.8,
       onInteractionEnd: actionsCallback1(onInteractionEnd, zacContext),
       onInteractionStart: actionsCallback1(onInteractionStart, zacContext),
       onInteractionUpdate: actionsCallback1(onInteractionUpdate, zacContext),
-      panEnabled: panEnabled?.getValue(zacContext) ?? true,
-      scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
+      panEnabled: panEnabled?.getValue(zacRef) ?? true,
+      scaleEnabled: scaleEnabled?.getValue(zacRef) ?? true,
       // transformationController: key?.toFlutter(context),
     );
   }

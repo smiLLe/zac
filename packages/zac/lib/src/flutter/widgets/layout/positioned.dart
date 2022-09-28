@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -60,35 +61,36 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
   @override
   Positioned buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       (value) => Positioned(
         child: value.child.buildWidget(context, ref, zacContext),
         key: value.key?.buildKey(context, ref, zacContext),
-        left: value.left?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        right: value.right?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+        left: value.left?.getValue(zacRef),
+        top: value.top?.getValue(zacRef),
+        right: value.right?.getValue(zacRef),
+        bottom: value.bottom?.getValue(zacRef),
+        width: value.width?.getValue(zacRef),
+        height: value.height?.getValue(zacRef),
       ),
       directional: (value) => Positioned.directional(
         child: value.child.buildWidget(context, ref, zacContext),
         textDirection: value.textDirection.build(context, ref, zacContext),
         key: value.key?.buildKey(context, ref, zacContext),
-        start: value.start?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        end: value.end?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+        start: value.start?.getValue(zacRef),
+        top: value.top?.getValue(zacRef),
+        end: value.end?.getValue(zacRef),
+        bottom: value.bottom?.getValue(zacRef),
+        width: value.width?.getValue(zacRef),
+        height: value.height?.getValue(zacRef),
       ),
       fill: (value) => Positioned.fill(
         child: value.child.buildWidget(context, ref, zacContext),
         key: value.key?.buildKey(context, ref, zacContext),
-        left: value.left?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        right: value.right?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
+        left: value.left?.getValue(zacRef),
+        top: value.top?.getValue(zacRef),
+        right: value.right?.getValue(zacRef),
+        bottom: value.bottom?.getValue(zacRef),
       ),
     );
   }

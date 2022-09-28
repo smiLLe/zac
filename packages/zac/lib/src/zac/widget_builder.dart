@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/foundation.dart';
@@ -111,7 +112,7 @@ class ZacWidgetBuilderFromMap extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacBuildContext(ref);
-    final map = zacMap.getValue(zacContext);
+    final map = zacMap.getValue(ZacRef.widget(ref));
     final zacWidget =
         useMemoized(() => ConverterHelper.convertToType<ZacWidget>(map), [map]);
     return ZacWidgetBuilder(zacWidget: zacWidget);
@@ -144,7 +145,7 @@ class ZacWidgetBuilderFromMapInIsolateFromString extends HookConsumerWidget {
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
     final zacContext = useZacBuildContext(ref);
-    final data = zacString.getValue(zacContext);
+    final data = zacString.getValue(ZacRef.widget(ref));
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -205,7 +206,7 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     final loadingState =
         useState<AsyncValue<ZacWidget>>(const AsyncValue.loading());
     final zacContext = useZacBuildContext(ref);
-    final map = zacMap.getValue(zacContext);
+    final map = zacMap.getValue(ZacRef.widget(ref));
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -282,7 +283,7 @@ class _DebugErrorBox extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacBuildContext(ref);
     final val = SharedValue.getFilled(const SharedValueConsumeType.watch(),
-        zacContext, ZacWidgetBuilder.provideErrorFamily);
+        ZacRef.widget(ref), ZacWidgetBuilder.provideErrorFamily);
 
     return Container(
       decoration: BoxDecoration(

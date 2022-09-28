@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -62,31 +63,28 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
   @override
   MaterialApp buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return MaterialApp(
       key: key?.buildKey(context, ref, zacContext),
       navigatorKey: navigatorKey?.buildKey(context, ref, zacContext),
       home: home?.buildWidget(context, ref, zacContext),
-      initialRoute: initialRoute?.getValue(zacContext),
+      initialRoute: initialRoute?.getValue(zacRef),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
       onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
-      title: title?.getValue(zacContext) ?? '',
+      title: title?.getValue(zacRef) ?? '',
       color: color?.build(context, ref, zacContext),
       locale: locale?.build(context, ref, zacContext),
-      debugShowMaterialGrid:
-          debugShowMaterialGrid?.getValue(zacContext) ?? false,
-      showPerformanceOverlay:
-          showPerformanceOverlay?.getValue(zacContext) ?? false,
+      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(zacRef) ?? false,
+      showPerformanceOverlay: showPerformanceOverlay?.getValue(zacRef) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
+          checkerboardRasterCacheImages?.getValue(zacRef) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
-      showSemanticsDebugger:
-          showSemanticsDebugger?.getValue(zacContext) ?? false,
+          checkerboardOffscreenLayers?.getValue(zacRef) ?? false,
+      showSemanticsDebugger: showSemanticsDebugger?.getValue(zacRef) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(zacContext),
-      useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValue(zacContext) ?? false,
+          debugShowCheckedModeBanner?.getValue(zacRef) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(zacRef),
+      useInheritedMediaQuery: useInheritedMediaQuery?.getValue(zacRef) ?? false,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -40,15 +41,16 @@ class FlutterWrap with _$FlutterWrap implements ZacWidget {
   @override
   Wrap buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return Wrap(
       key: key?.buildKey(context, ref, zacContext),
       direction: direction?.build(context, ref, zacContext) ?? Axis.horizontal,
       alignment:
           alignment?.build(context, ref, zacContext) ?? WrapAlignment.start,
-      spacing: spacing?.getValue(zacContext) ?? 0.0,
+      spacing: spacing?.getValue(zacRef) ?? 0.0,
       runAlignment:
           runAlignment?.build(context, ref, zacContext) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.getValue(zacContext) ?? 0.0,
+      runSpacing: runSpacing?.getValue(zacRef) ?? 0.0,
       crossAxisAlignment: crossAxisAlignment?.build(context, ref, zacContext) ??
           WrapCrossAlignment.start,
       textDirection: textDirection?.build(context, ref, zacContext),

@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -61,11 +62,12 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
   @override
   SizedBox buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       (value) => SizedBox(
         key: value.key?.buildKey(context, ref, zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+        width: value.width?.getValue(zacRef),
+        height: value.height?.getValue(zacRef),
         child: value.child?.buildWidget(context, ref, zacContext),
       ),
       expand: (value) => SizedBox.expand(
@@ -84,7 +86,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
       square: (value) => SizedBox.square(
         key: value.key?.buildKey(context, ref, zacContext),
         child: value.child?.buildWidget(context, ref, zacContext),
-        dimension: value.dimension?.getValue(zacContext),
+        dimension: value.dimension?.getValue(zacRef),
       ),
     );
   }

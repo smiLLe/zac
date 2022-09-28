@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 
 import 'package:zac/src/zac/update_context.dart';
 
@@ -45,6 +46,7 @@ class FlutterRefreshIndicator
   @override
   RefreshIndicator buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return RefreshIndicator(
       key: key?.buildKey(context, ref, zacContext),
       child: child.buildWidget(context, ref, zacContext),
@@ -56,12 +58,12 @@ class FlutterRefreshIndicator
         );
         return completer.future;
       },
-      displacement: displacement?.getValue(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      displacement: displacement?.getValue(zacRef) ?? 40.0,
+      edgeOffset: edgeOffset?.getValue(zacRef) ?? 0.0,
       color: color?.build(context, ref, zacContext),
       backgroundColor: backgroundColor?.build(context, ref, zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      semanticsValue: semanticsValue?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacRef),
+      semanticsValue: semanticsValue?.getValue(zacRef),
       triggerMode: triggerMode?.build(context, ref, zacContext) ??
           RefreshIndicatorTriggerMode.onEdge,
     );

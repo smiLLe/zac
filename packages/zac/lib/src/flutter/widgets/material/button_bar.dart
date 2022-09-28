@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -39,18 +40,19 @@ class FlutterButtonBar with _$FlutterButtonBar implements ZacWidget {
   @override
   ButtonBar buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return ButtonBar(
       key: key?.buildKey(context, ref, zacContext),
       alignment: alignment?.build(context, ref, zacContext),
       mainAxisSize: mainAxisSize?.build(context, ref, zacContext),
 // FlutterButtonTextTheme? buttonTextTheme,
-      buttonMinWidth: buttonMinWidth?.getValue(zacContext),
-      buttonHeight: buttonHeight?.getValue(zacContext),
+      buttonMinWidth: buttonMinWidth?.getValue(zacRef),
+      buttonHeight: buttonHeight?.getValue(zacRef),
       buttonPadding: buttonPadding?.build(context, ref, zacContext),
-      buttonAlignedDropdown: buttonAlignedDropdown?.getValue(zacContext),
+      buttonAlignedDropdown: buttonAlignedDropdown?.getValue(zacRef),
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
       overflowDirection: overflowDirection?.build(context, ref, zacContext),
-      overflowButtonSpacing: overflowButtonSpacing?.getValue(zacContext),
+      overflowButtonSpacing: overflowButtonSpacing?.getValue(zacRef),
       children:
           children?.getValue(context, ref, zacContext) ?? const <Widget>[],
     );

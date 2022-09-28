@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,10 +32,11 @@ class FlutterFlexible with _$FlutterFlexible implements ZacWidget {
   @override
   Flexible buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return Flexible(
       key: key?.buildKey(context, ref, zacContext),
       child: child.buildWidget(context, ref, zacContext),
-      flex: flex?.getValue(zacContext) ?? 1,
+      flex: flex?.getValue(zacRef) ?? 1,
       fit: fit?.build(context, ref, zacContext) ?? FlexFit.loose,
     );
   }

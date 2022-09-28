@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,12 +33,13 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
   @override
   Icon buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return Icon(
       icon?.build(context, ref, zacContext),
       key: key?.buildKey(context, ref, zacContext),
       color: color?.build(context, ref, zacContext),
-      size: size?.getValue(zacContext),
-      semanticLabel: semanticLabel?.getValue(zacContext),
+      size: size?.getValue(zacRef),
+      semanticLabel: semanticLabel?.getValue(zacRef),
       textDirection: textDirection?.build(context, ref, zacContext),
     );
   }
@@ -60,11 +62,12 @@ class FlutterIconData with _$FlutterIconData {
 
   IconData build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return IconData(
-      codePoint.getValue(zacContext),
-      fontFamily: fontFamily?.getValue(zacContext),
-      fontPackage: fontPackage?.getValue(zacContext),
-      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
+      codePoint.getValue(zacRef),
+      fontFamily: fontFamily?.getValue(zacRef),
+      fontPackage: fontPackage?.getValue(zacRef),
+      matchTextDirection: matchTextDirection?.getValue(zacRef) ?? false,
     );
   }
 }
@@ -85,10 +88,11 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
 
   IconThemeData build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return IconThemeData(
       color: color?.build(context, ref, zacContext),
-      opacity: opacity?.getValue(zacContext),
-      size: size?.getValue(zacContext),
+      opacity: opacity?.getValue(zacRef),
+      size: size?.getValue(zacRef),
     );
   }
 }

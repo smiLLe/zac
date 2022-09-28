@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -50,28 +51,28 @@ class FlutterListView with _$FlutterListView implements ZacWidget {
   @override
   ListView buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return ListView(
       key: key?.buildKey(context, ref, zacContext),
       scrollDirection:
           scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacContext) ?? false,
-      primary: primary?.getValue(zacContext),
-      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      reverse: reverse?.getValue(zacRef) ?? false,
+      primary: primary?.getValue(zacRef),
+      shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
       padding: padding?.build(context, ref, zacContext),
-      itemExtent: itemExtent?.getValue(zacContext),
+      itemExtent: itemExtent?.getValue(zacRef),
       prototypeItem: prototypeItem?.buildWidget(context, ref, zacContext),
-      addAutomaticKeepAlives:
-          addAutomaticKeepAlives?.getValue(zacContext) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
-      cacheExtent: cacheExtent?.getValue(zacContext),
+      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(zacRef) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
+      cacheExtent: cacheExtent?.getValue(zacRef),
       children:
           children?.getValue(context, ref, zacContext) ?? const <Widget>[],
-      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      semanticChildCount: semanticChildCount?.getValue(zacRef),
       keyboardDismissBehavior:
           keyboardDismissBehavior?.build(context, ref, zacContext) ??
               ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValue(zacRef),
       clipBehavior:
           clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
       physics: physics?.build(context, ref, zacContext),

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,6 +32,7 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
 
   SystemUiOverlayStyle build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return SystemUiOverlayStyle(
       systemNavigationBarColor:
           systemNavigationBarColor?.build(context, ref, zacContext),
@@ -39,13 +41,13 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
       systemNavigationBarIconBrightness:
           systemNavigationBarIconBrightness?.build(context, ref, zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(zacContext),
+          systemNavigationBarContrastEnforced?.getValue(zacRef),
       statusBarColor: statusBarColor?.build(context, ref, zacContext),
       statusBarBrightness: statusBarBrightness?.build(context, ref, zacContext),
       statusBarIconBrightness:
           statusBarIconBrightness?.build(context, ref, zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(zacContext),
+          systemStatusBarContrastEnforced?.getValue(zacRef),
     );
   }
 }

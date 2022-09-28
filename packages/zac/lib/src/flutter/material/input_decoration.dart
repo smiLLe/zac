@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/rendering.dart';
@@ -75,38 +76,39 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
 
   InputDecoration build(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return InputDecoration(
       icon: icon?.buildWidget(context, ref, zacContext),
       iconColor: iconColor?.build(context, ref, zacContext),
       label: label?.buildWidget(context, ref, zacContext),
       labelStyle: labelStyle?.build(context, ref, zacContext),
       floatingLabelStyle: floatingLabelStyle?.build(context, ref, zacContext),
-      helperText: helperText?.getValue(zacContext),
+      helperText: helperText?.getValue(zacRef),
       helperStyle: helperStyle?.build(context, ref, zacContext),
-      helperMaxLines: helperMaxLines?.getValue(zacContext),
-      hintText: hintText?.getValue(zacContext),
+      helperMaxLines: helperMaxLines?.getValue(zacRef),
+      hintText: hintText?.getValue(zacRef),
       hintStyle: hintStyle?.build(context, ref, zacContext),
       hintTextDirection: hintTextDirection?.build(context, ref, zacContext),
-      hintMaxLines: hintMaxLines?.getValue(zacContext),
-      errorText: errorText?.getValue(zacContext),
+      hintMaxLines: hintMaxLines?.getValue(zacRef),
+      errorText: errorText?.getValue(zacRef),
       errorStyle: errorStyle?.build(context, ref, zacContext),
-      errorMaxLines: errorMaxLines?.getValue(zacContext),
-      isCollapsed: isCollapsed?.getValue(zacContext) ?? false,
-      isDense: isDense?.getValue(zacContext),
+      errorMaxLines: errorMaxLines?.getValue(zacRef),
+      isCollapsed: isCollapsed?.getValue(zacRef) ?? false,
+      isDense: isDense?.getValue(zacRef),
       contentPadding: contentPadding?.build(context, ref, zacContext),
       prefixIcon: prefixIcon?.buildWidget(context, ref, zacContext),
       prefixIconConstraints:
           prefixIconConstraints?.build(context, ref, zacContext),
       prefix: prefix?.buildWidget(context, ref, zacContext),
-      prefixText: prefixText?.getValue(zacContext),
+      prefixText: prefixText?.getValue(zacRef),
       prefixStyle: prefixStyle?.build(context, ref, zacContext),
       prefixIconColor: prefixIconColor?.build(context, ref, zacContext),
       suffixIconConstraints:
           suffixIconConstraints?.build(context, ref, zacContext),
       counter: counter?.buildWidget(context, ref, zacContext),
-      counterText: counterText?.getValue(zacContext),
+      counterText: counterText?.getValue(zacRef),
       counterStyle: counterStyle?.build(context, ref, zacContext),
-      filled: filled?.getValue(zacContext),
+      filled: filled?.getValue(zacRef),
       fillColor: fillColor?.build(context, ref, zacContext),
       focusColor: focusColor?.build(context, ref, zacContext),
       hoverColor: hoverColor?.build(context, ref, zacContext),
@@ -116,9 +118,9 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
       disabledBorder: disabledBorder?.build(context, ref, zacContext),
       enabledBorder: enabledBorder?.build(context, ref, zacContext),
       border: border?.build(context, ref, zacContext),
-      enabled: enabled?.getValue(zacContext) ?? true,
-      semanticCounterText: semanticCounterText?.getValue(zacContext),
-      alignLabelWithHint: alignLabelWithHint?.getValue(zacContext),
+      enabled: enabled?.getValue(zacRef) ?? true,
+      semanticCounterText: semanticCounterText?.getValue(zacRef),
+      alignLabelWithHint: alignLabelWithHint?.getValue(zacRef),
       constraints: constraints?.build(context, ref, zacContext),
     );
   }

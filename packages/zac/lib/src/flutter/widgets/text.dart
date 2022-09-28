@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,19 +42,20 @@ class FlutterText with _$FlutterText implements ZacWidget {
   @override
   Text buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return Text(
-      data.getValue(zacContext),
+      data.getValue(zacRef),
       key: key?.buildKey(context, ref, zacContext),
       style: style?.build(context, ref, zacContext),
       strutStyle: strutStyle?.build(context, ref, zacContext),
       textAlign: textAlign?.build(context, ref, zacContext),
       textDirection: textDirection?.build(context, ref, zacContext),
       locale: locale?.build(context, ref, zacContext),
-      softWrap: softWrap?.getValue(zacContext),
+      softWrap: softWrap?.getValue(zacRef),
       overflow: overflow?.build(context, ref, zacContext),
-      textScaleFactor: textScaleFactor?.getValue(zacContext),
-      maxLines: maxLines?.getValue(zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacRef),
+      maxLines: maxLines?.getValue(zacRef),
+      semanticsLabel: semanticsLabel?.getValue(zacRef),
       textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
       textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
     );

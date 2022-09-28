@@ -128,6 +128,7 @@ class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
   @override
   Widget buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       (value) => Scaffold(
         key: value.key?.buildKey(context, ref, zacContext),
@@ -145,19 +146,19 @@ class FlutterScaffold with _$FlutterScaffold, ZacAction implements ZacWidget {
         bottomSheet: value.bottomSheet?.buildWidget(context, ref, zacContext),
         backgroundColor: value.backgroundColor?.build(context, ref, zacContext),
         resizeToAvoidBottomInset:
-            value.resizeToAvoidBottomInset?.getValue(zacContext),
-        primary: value.primary?.getValue(zacContext) ?? true,
-        extendBody: value.extendBody?.getValue(zacContext) ?? false,
+            value.resizeToAvoidBottomInset?.getValue(zacRef),
+        primary: value.primary?.getValue(zacRef) ?? true,
+        extendBody: value.extendBody?.getValue(zacRef) ?? false,
         extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
+            value.extendBodyBehindAppBar?.getValue(zacRef) ?? false,
         drawerScrimColor:
             value.drawerScrimColor?.build(context, ref, zacContext),
-        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacContext),
+        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacRef),
         drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+            value.drawerEnableOpenDragGesture?.getValue(zacRef) ?? true,
         endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
-        restorationId: value.restorationId?.getValue(zacContext),
+            value.endDrawerEnableOpenDragGesture?.getValue(zacRef) ?? true,
+        restorationId: value.restorationId?.getValue(zacRef),
       ),
       openDrawer: (_) => throw StateError('Should never happen'),
       openEndDrawer: (_) => throw StateError('Should never happen'),
@@ -298,6 +299,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
   @override
   SnackBar buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return SnackBar(
       content: content.buildWidget(context, ref, zacContext),
       key: key?.buildKey(context, ref, zacContext),
@@ -307,12 +309,12 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
       behavior: behavior?.build(context, ref, zacContext),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
-      elevation: elevation?.getValue(zacContext),
+      elevation: elevation?.getValue(zacRef),
       margin: margin?.build(context, ref, zacContext),
       onVisible: actionsCallback(onVisible, zacContext),
       padding: padding?.build(context, ref, zacContext),
       shape: shape?.build(context, ref, zacContext),
-      width: width?.getValue(zacContext),
+      width: width?.getValue(zacRef),
     );
   }
 }
@@ -399,6 +401,7 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
   @override
   MaterialBanner buildWidget(
       BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+    final zacRef = ZacRef.widget(ref);
     return MaterialBanner(
       content: content.buildWidget(context, ref, zacContext),
       actions: actions.getValue(context, ref, zacContext),
@@ -406,8 +409,8 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
       // animation: ,
       backgroundColor: backgroundColor?.build(context, ref, zacContext),
       contentTextStyle: contentTextStyle?.build(context, ref, zacContext),
-      elevation: elevation?.getValue(zacContext),
-      forceActionsBelow: forceActionsBelow?.getValue(zacContext) ?? false,
+      elevation: elevation?.getValue(zacRef),
+      forceActionsBelow: forceActionsBelow?.getValue(zacRef) ?? false,
       leading: leading?.buildWidget(context, ref, zacContext),
       leadingPadding: leadingPadding?.build(context, ref, zacContext),
       onVisible: actionsCallback(onVisible, zacContext),

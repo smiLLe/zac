@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -65,32 +66,32 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
       }
       return true;
     }(), '');
+    final zacRef = ZacRef.widget(ref);
     return AppBar(
       key: key?.buildKey(context, ref, zacContext),
       leading: leading?.buildWidget(context, ref, zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(zacContext) ?? true,
+          automaticallyImplyLeading?.getValue(zacRef) ?? true,
       title: title?.buildWidget(context, ref, zacContext),
       actions: actions?.getValue(context, ref, zacContext) ?? const <Widget>[],
       flexibleSpace: flexibleSpace?.buildWidget(context, ref, zacContext),
       bottom:
           bottom?.buildWidget(context, ref, zacContext) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(zacContext),
+      elevation: elevation?.getValue(zacRef),
       shadowColor: shadowColor?.build(context, ref, zacContext),
       shape: shape?.build(context, ref, zacContext),
       backgroundColor: backgroundColor?.build(context, ref, zacContext),
       foregroundColor: foregroundColor?.build(context, ref, zacContext),
       iconTheme: iconTheme?.build(context, ref, zacContext),
       actionsIconTheme: actionsIconTheme?.build(context, ref, zacContext),
-      primary: primary?.getValue(zacContext) ?? true,
-      centerTitle: centerTitle?.getValue(zacContext),
-      excludeHeaderSemantics:
-          excludeHeaderSemantics?.getValue(zacContext) ?? false,
-      titleSpacing: titleSpacing?.getValue(zacContext),
-      toolbarOpacity: toolbarOpacity?.getValue(zacContext) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(zacContext) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(zacContext),
-      leadingWidth: leadingWidth?.getValue(zacContext),
+      primary: primary?.getValue(zacRef) ?? true,
+      centerTitle: centerTitle?.getValue(zacRef),
+      excludeHeaderSemantics: excludeHeaderSemantics?.getValue(zacRef) ?? false,
+      titleSpacing: titleSpacing?.getValue(zacRef),
+      toolbarOpacity: toolbarOpacity?.getValue(zacRef) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(zacRef) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(zacRef),
+      leadingWidth: leadingWidth?.getValue(zacRef),
       toolbarTextStyle: toolbarTextStyle?.build(context, ref, zacContext),
       titleTextStyle: titleTextStyle?.build(context, ref, zacContext),
       systemOverlayStyle: systemOverlayStyle?.build(context, ref, zacContext),
