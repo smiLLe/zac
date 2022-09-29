@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -41,23 +41,23 @@ class FlutterText with _$FlutterText implements ZacWidget {
 
   @override
   Text buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Text(
       data.getValue(zacRef),
-      key: key?.buildKey(context, ref, zacContext),
-      style: style?.build(context, ref, zacContext),
-      strutStyle: strutStyle?.build(context, ref, zacContext),
-      textAlign: textAlign?.build(context, ref, zacContext),
-      textDirection: textDirection?.build(context, ref, zacContext),
-      locale: locale?.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      style: style?.build(context, ref, helper),
+      strutStyle: strutStyle?.build(context, ref, helper),
+      textAlign: textAlign?.build(context, ref, helper),
+      textDirection: textDirection?.build(context, ref, helper),
+      locale: locale?.build(context, ref, helper),
       softWrap: softWrap?.getValue(zacRef),
-      overflow: overflow?.build(context, ref, zacContext),
+      overflow: overflow?.build(context, ref, helper),
       textScaleFactor: textScaleFactor?.getValue(zacRef),
       maxLines: maxLines?.getValue(zacRef),
       semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
+      textWidthBasis: textWidthBasis?.build(context, ref, helper),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, helper),
     );
   }
 }

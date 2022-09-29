@@ -1,3 +1,4 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,13 +28,13 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
 
   @override
   Builder buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return Builder(
-      key: key?.buildKey(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
       builder: (_) {
         return ZacUpdateContext(
-          builder: (context) =>
-              child.buildWidget(context.context, ref, context),
+          builder: (context, ref, helper) =>
+              child.buildWidget(context, ref, helper),
         );
       },
     );

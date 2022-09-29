@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/material/material.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
@@ -75,53 +76,51 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
   }) = _FlutterInputDecoration;
 
   InputDecoration build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return InputDecoration(
-      icon: icon?.buildWidget(context, ref, zacContext),
-      iconColor: iconColor?.build(context, ref, zacContext),
-      label: label?.buildWidget(context, ref, zacContext),
-      labelStyle: labelStyle?.build(context, ref, zacContext),
-      floatingLabelStyle: floatingLabelStyle?.build(context, ref, zacContext),
+      icon: icon?.buildWidget(context, ref, helper),
+      iconColor: iconColor?.build(context, ref, helper),
+      label: label?.buildWidget(context, ref, helper),
+      labelStyle: labelStyle?.build(context, ref, helper),
+      floatingLabelStyle: floatingLabelStyle?.build(context, ref, helper),
       helperText: helperText?.getValue(zacRef),
-      helperStyle: helperStyle?.build(context, ref, zacContext),
+      helperStyle: helperStyle?.build(context, ref, helper),
       helperMaxLines: helperMaxLines?.getValue(zacRef),
       hintText: hintText?.getValue(zacRef),
-      hintStyle: hintStyle?.build(context, ref, zacContext),
-      hintTextDirection: hintTextDirection?.build(context, ref, zacContext),
+      hintStyle: hintStyle?.build(context, ref, helper),
+      hintTextDirection: hintTextDirection?.build(context, ref, helper),
       hintMaxLines: hintMaxLines?.getValue(zacRef),
       errorText: errorText?.getValue(zacRef),
-      errorStyle: errorStyle?.build(context, ref, zacContext),
+      errorStyle: errorStyle?.build(context, ref, helper),
       errorMaxLines: errorMaxLines?.getValue(zacRef),
       isCollapsed: isCollapsed?.getValue(zacRef) ?? false,
       isDense: isDense?.getValue(zacRef),
-      contentPadding: contentPadding?.build(context, ref, zacContext),
-      prefixIcon: prefixIcon?.buildWidget(context, ref, zacContext),
-      prefixIconConstraints:
-          prefixIconConstraints?.build(context, ref, zacContext),
-      prefix: prefix?.buildWidget(context, ref, zacContext),
+      contentPadding: contentPadding?.build(context, ref, helper),
+      prefixIcon: prefixIcon?.buildWidget(context, ref, helper),
+      prefixIconConstraints: prefixIconConstraints?.build(context, ref, helper),
+      prefix: prefix?.buildWidget(context, ref, helper),
       prefixText: prefixText?.getValue(zacRef),
-      prefixStyle: prefixStyle?.build(context, ref, zacContext),
-      prefixIconColor: prefixIconColor?.build(context, ref, zacContext),
-      suffixIconConstraints:
-          suffixIconConstraints?.build(context, ref, zacContext),
-      counter: counter?.buildWidget(context, ref, zacContext),
+      prefixStyle: prefixStyle?.build(context, ref, helper),
+      prefixIconColor: prefixIconColor?.build(context, ref, helper),
+      suffixIconConstraints: suffixIconConstraints?.build(context, ref, helper),
+      counter: counter?.buildWidget(context, ref, helper),
       counterText: counterText?.getValue(zacRef),
-      counterStyle: counterStyle?.build(context, ref, zacContext),
+      counterStyle: counterStyle?.build(context, ref, helper),
       filled: filled?.getValue(zacRef),
-      fillColor: fillColor?.build(context, ref, zacContext),
-      focusColor: focusColor?.build(context, ref, zacContext),
-      hoverColor: hoverColor?.build(context, ref, zacContext),
-      errorBorder: errorBorder?.build(context, ref, zacContext),
-      focusedBorder: focusedBorder?.build(context, ref, zacContext),
-      focusedErrorBorder: focusedErrorBorder?.build(context, ref, zacContext),
-      disabledBorder: disabledBorder?.build(context, ref, zacContext),
-      enabledBorder: enabledBorder?.build(context, ref, zacContext),
-      border: border?.build(context, ref, zacContext),
+      fillColor: fillColor?.build(context, ref, helper),
+      focusColor: focusColor?.build(context, ref, helper),
+      hoverColor: hoverColor?.build(context, ref, helper),
+      errorBorder: errorBorder?.build(context, ref, helper),
+      focusedBorder: focusedBorder?.build(context, ref, helper),
+      focusedErrorBorder: focusedErrorBorder?.build(context, ref, helper),
+      disabledBorder: disabledBorder?.build(context, ref, helper),
+      enabledBorder: enabledBorder?.build(context, ref, helper),
+      border: border?.build(context, ref, helper),
       enabled: enabled?.getValue(zacRef) ?? true,
       semanticCounterText: semanticCounterText?.getValue(zacRef),
       alignLabelWithHint: alignLabelWithHint?.getValue(zacRef),
-      constraints: constraints?.build(context, ref, zacContext),
+      constraints: constraints?.build(context, ref, helper),
     );
   }
 }

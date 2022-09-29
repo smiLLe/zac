@@ -1,6 +1,6 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -31,13 +31,13 @@ class FlutterFittedBox with _$FlutterFittedBox implements ZacWidget {
 
   @override
   FittedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return FittedBox(
-      key: key?.buildKey(context, ref, zacContext),
-      fit: fit?.build(context, ref, zacContext) ?? BoxFit.contain,
-      alignment: alignment?.build(context, ref, zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
-      child: child?.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      fit: fit?.build(context, ref, helper) ?? BoxFit.contain,
+      alignment: alignment?.build(context, ref, helper) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
+      child: child?.buildWidget(context, ref, helper),
     );
   }
 }

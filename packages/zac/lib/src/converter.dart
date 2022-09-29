@@ -167,8 +167,11 @@ Map<String, Convert> allConverters = const {
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
+  ZacUiActions.unionValue: ZacUiActions.fromJson,
+  ZacStateMachineActions.unionValue: ZacStateMachineActions.fromJson,
+
   StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
-  StateMachineActions.unionValue: StateMachineActions.fromJson,
+  StateMachineBaseActions.unionValue: StateMachineActions.fromJson,
   StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
 
   /**
@@ -399,7 +402,8 @@ abstract class ConverterHelper {
 
   static Map<String, dynamic> validateConverter<T>(Object? data) {
     if (!isConverter(data)) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 Could not convert ${data.runtimeType} to $T.
 It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
 Data: "$data"''');
@@ -408,7 +412,8 @@ Data: "$data"''');
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 Error while trying to convert data to $T.
 There is no registered Converter found for "$rt".''');
     }
@@ -422,7 +427,8 @@ There is no registered Converter found for "$rt".''');
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 An unexpected Builder was returned after convertion of "$rt"
 Expected Builder type: $T
 Actual Builder: "${converted.runtimeType}"

@@ -24,6 +24,10 @@ class FakeBuildContext extends Fake implements BuildContext {}
 
 class FakeWidgetRef extends Fake implements WidgetRef {}
 
+class FakeZacRef extends Fake implements ZacRef {}
+
+class FakeActionHelper extends Fake implements ZacActionHelper {}
+
 Matcher throwsConverterError = throwsA(isA<ConverterError>());
 
 TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
@@ -32,16 +36,15 @@ TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
 }
 
 void fakeBuild<T>(
-  Object Function(
-          BuildContext context, WidgetRef ref, ZacBuildContext zacContext)
+  Object Function(BuildContext context, WidgetRef ref, ZacActionHelper helper)
       builder,
   TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 ) {
-  final context = FakeZacWidgetContext();
+  final helper = FakeActionHelper();
   final buildContext = FakeBuildContext();
   final ref = FakeWidgetRef();
-  expect(builder(buildContext, ref, context), isA<T>());
-  expect(builder(buildContext, ref, context), matcher(isA<T>()));
+  expect(builder(buildContext, ref, helper), isA<T>());
+  expect(builder(buildContext, ref, helper), matcher(isA<T>()));
 }
 
 // Future<void> testSingleWidget<TWidget>({
@@ -137,7 +140,8 @@ Future<void> testWithConverters({
 
 @GenerateMocks([LeakedActionCb])
 class LeakedActionCb extends Mock {
-  void call(ZacBuildContext context, ContextBag bag);
+  void call(BuildContext context, WidgetRef ref, ZacActionHelper helper,
+      ContextBag bag);
 }
 
 @GenerateMocks([LeakBagCb])
@@ -146,18 +150,24 @@ class LeakBagCb extends Mock {
 }
 
 @nonConverterFreezed
-class LeakAction with _$LeakAction implements ZacAction {
-  const LeakAction._();
+class LeakUiAction with _$LeakUiAction implements ZacUiAction {
+  const LeakUiAction._();
 
-  factory LeakAction(
-      void Function(ZacBuildContext context, ContextBag bag) cb) = _LeakAction;
+  factory LeakUiAction(
+      void Function(BuildContext context, WidgetRef ref, ZacActionHelper helper,
+              ContextBag bag)
+          cb) = _LeakUiAction;
 
-  static ZacActions createActions(
-          void Function(ZacBuildContext context, ContextBag bag) cb) =>
-      ZacActions([LeakAction(cb)]);
+  static ZacUiActions createActions(
+          void Function(BuildContext context, WidgetRef ref,
+                  ZacActionHelper helper, ContextBag bag)
+              cb) =>
+      ZacUiActions([LeakUiAction(cb)]);
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) => cb(context, bag);
+  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
+          ContextBag bag) =>
+      cb(context, ref, helper, bag);
 }
 
 @nonConverterFreezed
@@ -167,11 +177,12 @@ class LeakBagContentAction with _$LeakBagContentAction implements ZacAction {
   factory LeakBagContentAction(void Function(Map<String, dynamic> bag) cb) =
       _LeakBagContentAction;
 
-  static ZacActions createActions(void Function(Map<String, dynamic> bag) cb) =>
-      ZacActions([LeakBagContentAction(cb)]);
+  static ZacUiActions createActions(
+          void Function(Map<String, dynamic> bag) cb) =>
+      ZacUiActions([LeakBagContentAction(cb)]);
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) =>
+  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) =>
       cb(<String, dynamic>{...bag});
 }
 
@@ -182,7 +193,7 @@ class NoopAction with _$NoopAction implements ZacAction {
   static const String unionValue = 'z:1:test:NoopAction';
 
   static Map<String, dynamic> createActions() => <String, dynamic>{
-        '_converter': 'z:1:Actions',
+        '_converter': 'z:1:UiActions',
         'actions': [
           {
             '_converter': NoopAction.unionValue,
@@ -196,7 +207,7 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) {}
+  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) {}
 }
 
 @GenerateMocks([LeakeContextCb])
@@ -207,13 +218,13 @@ class LeakeContextCb extends Mock {
 class CustomTransformer implements ZacTransformer {
   CustomTransformer(this.cb);
 
-  final Object? Function(ZacTransformValue transformValue,
-      ZacBuildContext context, ContextBag bag) cb;
+  final Object? Function(
+      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) cb;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
-    return cb(transformValue, context, bag);
+  Object? transform(
+      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
+    return cb(transformValue, ref, bag);
   }
 }
 
@@ -223,15 +234,14 @@ class LeakBagTransformer extends Mock implements ZacTransformer {
 
   final void Function(Map<String, dynamic> bag) cb;
 
-  Object? call(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
+  Object? call(ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
     cb(<String, dynamic>{...bag});
     return transformValue.value;
   }
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
     cb(<String, dynamic>{...bag});
     return transformValue.value;
   }
@@ -245,8 +255,8 @@ class TransformerCb extends Mock implements ZacTransformer {
   }
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
     return transformValue.value;
   }
 }
@@ -256,15 +266,16 @@ class LeakContext with _$LeakContext implements ZacWidget {
   LeakContext._();
 
   factory LeakContext({
-    required void Function(ZacBuildContext context) cb,
+    required void Function(
+            BuildContext context, WidgetRef ref, ZacActionHelper helper)
+        cb,
     ZacWidget? child,
   }) = _LeakContext;
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
-    cb(zacContext);
-    return child?.buildWidget(context, ref, zacContext) ??
-        const SizedBox.shrink();
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+    cb(context, ref, helper);
+    return child?.buildWidget(context, ref, helper) ?? const SizedBox.shrink();
   }
 }

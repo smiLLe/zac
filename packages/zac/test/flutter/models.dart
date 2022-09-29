@@ -12,7 +12,7 @@ class FakeZacContext extends Fake implements ZacBuildContext {}
 abstract class ActionsModel {
   static Map<String, Object?> createTestAction(String data) {
     return {
-      '_converter': 'z:1:Actions',
+      '_converter': 'z:1:UiActions',
       'actions': [
         {
           '_converter': 'test_action',

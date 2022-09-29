@@ -1,3 +1,4 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -38,26 +39,29 @@ class ZacUpdateContextBuilder
 
   @override
   ZacUpdateContext buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return ZacUpdateContext(
-      builder: (context) =>
-          child.buildWidget(context.context, context.ref, context),
-      key: key?.buildKey(context, ref, zacContext),
+      builder: (context, ref, helper) =>
+          child.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, helper),
     );
   }
 }
 
+/// @Todo: find better classname
 class ZacUpdateContext extends HookConsumerWidget {
   const ZacUpdateContext({required this.builder, Key? key}) : super(key: key);
 
-  final Widget Function(ZacBuildContext context) builder;
+  final Widget Function(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
 
   @override
   Widget build(
     BuildContext context,
     WidgetRef ref,
   ) {
-    return builder(useZacBuildContext(ref));
+    final helper = useZacActionHelper();
+    return builder(context, ref, helper);
   }
 }
 

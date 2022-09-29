@@ -1,6 +1,6 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -27,10 +27,10 @@ class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
 
   @override
   IntrinsicWidth buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return IntrinsicWidth(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child?.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child?.buildWidget(context, ref, helper),
     );
   }
 }

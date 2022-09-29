@@ -48,7 +48,7 @@ class Transition with _$Transition {
   factory Transition(
     String event,
     String targetState, {
-    ZacActions? actions,
+    ZacStateMachineActions? actions,
   }) = _Transition;
 }
 
@@ -158,8 +158,15 @@ StateMachine createStateMachineProvider({
       final targetNode = ref.state.findNodeByState(transition.targetState);
 
       MachineContext nextContext = ref.state.context;
+      bool isActive = true;
+      final callbacks = <void Function()>[];
+      final helper = ZacActionHelper(
+        isActive: () => isActive,
+        onBecomeInactive: callbacks.add,
+      );
       transition.actions?.execute(
-        zacContext,
+        ZacRef.adProvider(ref),
+        helper,
         prefillBag: (bag) {
           bag
             ..addKeyValue(kBagStateMachineSendEvent, event)
@@ -185,18 +192,18 @@ StateMachine createStateMachineProvider({
 }
 
 @defaultConverterFreezed
-class StateMachineActions with _$StateMachineActions implements ZacAction {
-  const StateMachineActions._();
+class StateMachineBaseActions
+    with _$StateMachineBaseActions
+    implements ZacAction {
+  const StateMachineBaseActions._();
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
-  static const String unionValueUpdateContext =
-      'z:1:StateMachine:Action.updateContext';
 
-  factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
-      _$StateMachineActionsFromJson(json);
+  factory StateMachineBaseActions.fromJson(Map<String, dynamic> json) =>
+      _$StateMachineBaseActionsFromJson(json);
 
-  @FreezedUnionValue(StateMachineActions.unionValue)
-  factory StateMachineActions.send({
+  @FreezedUnionValue(StateMachineBaseActions.unionValue)
+  factory StateMachineBaseActions.send({
     required SharedValueFamily family,
     required ZacString event,
 
@@ -205,7 +212,42 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
     /// A payload send by an action will still be available
     /// through [kBagActionPayload].
     ZacObject? payload,
-  }) = _StateMachineActionsSend;
+  }) = _StateMachineBaseActionsSend;
+
+  @override
+  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) {
+    map(
+      send: (obj) {
+        ref
+            .when(
+              widget: (widgetRef) =>
+                  widgetRef.read(statemachineProvider(obj.family)),
+              adProvider: (proRef) =>
+                  proRef.read(statemachineProvider(obj.family)),
+            )
+            .send(
+              obj.event.getValue(ref),
+              null == obj.payload
+                  ? const SendPayload.none()
+                  : SendPayload(obj.payload?.getValue(ref)),
+              prefillBag: (bag) => bag.addEntries(bag.entries),
+            );
+      },
+    );
+  }
+}
+
+@defaultConverterFreezed
+class StateMachineActions
+    with _$StateMachineActions
+    implements ZacStateMachineAction {
+  const StateMachineActions._();
+
+  static const String unionValueUpdateContext =
+      'z:1:StateMachine:Action.updateContext';
+
+  factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
+      _$StateMachineActionsFromJson(json);
 
   @FreezedUnionValue(StateMachineActions.unionValueUpdateContext)
   factory StateMachineActions.updateContext({
@@ -213,17 +255,8 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
   }) = _StateMachineActionsUpdateContext;
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) {
+  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) {
     map(
-      send: (obj) {
-        context.ref.read(statemachineProvider(obj.family)).send(
-              obj.event.getValue(context),
-              null == obj.payload
-                  ? const SendPayload.none()
-                  : SendPayload(obj.payload?.getValue(context)),
-              prefillBag: (bag) => bag.addEntries(bag.entries),
-            );
-      },
       updateContext: (obj) {
         final updateContext = bag.safeGet<UpdateContext>(
             key: kBagStateMachineUpdateContext, notFound: null);
@@ -232,7 +265,7 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
         updateContext(
           obj.transformer.transformValues(
             ZacTransformValue(machineContext),
-            context,
+            ref,
             prefillBag: (innerBag) => innerBag..addEntries(bag.entries),
           ),
         );
@@ -263,13 +296,14 @@ class StateMachineProviderBuilder
 
   @override
   StateMachineProvider buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+    final zacRef = ZacRef.widget(ref);
     return StateMachineProvider(
-      key: key?.buildKey(context, ref, zacContext),
-      initialState: initialState.getValue(zacContext),
-      initialContext: initialContext?.getValue(zacContext),
+      key: key?.buildKey(context, ref, helper),
+      initialState: initialState.getValue(zacRef),
+      initialContext: initialContext?.getValue(zacRef),
       states: states,
-      family: family.getValue(zacContext),
+      family: family.getValue(zacRef),
       builder: child.buildWidget,
     );
   }
@@ -290,7 +324,7 @@ class StateMachineProvider extends HookConsumerWidget {
   final List<StateNode> states;
   final String family;
   final Widget Function(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) builder;
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -327,8 +361,7 @@ class StateMachineProvider extends HookConsumerWidget {
           // dependencies: [statemachineProvider(family)],
         )),
       ],
-      child: ZacUpdateContext(
-          builder: (ctx) => builder(ctx.context, ctx.ref, ctx)),
+      child: ZacUpdateContext(builder: builder),
     );
   }
 }

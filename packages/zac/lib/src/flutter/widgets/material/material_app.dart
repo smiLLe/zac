@@ -1,8 +1,8 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -62,18 +62,18 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
 
   @override
   MaterialApp buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return MaterialApp(
-      key: key?.buildKey(context, ref, zacContext),
-      navigatorKey: navigatorKey?.buildKey(context, ref, zacContext),
-      home: home?.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      navigatorKey: navigatorKey?.buildKey(context, ref, helper),
+      home: home?.buildWidget(context, ref, helper),
       initialRoute: initialRoute?.getValue(zacRef),
-      onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
-      onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
+      onGenerateRoute: onGenerateRoute?.buildRouteFactory(context, ref, helper),
+      onUnknownRoute: onUnknownRoute?.buildRouteFactory(context, ref, helper),
       title: title?.getValue(zacRef) ?? '',
-      color: color?.build(context, ref, zacContext),
-      locale: locale?.build(context, ref, zacContext),
+      color: color?.build(context, ref, helper),
+      locale: locale?.build(context, ref, helper),
       debugShowMaterialGrid: debugShowMaterialGrid?.getValue(zacRef) ?? false,
       showPerformanceOverlay: showPerformanceOverlay?.getValue(zacRef) ?? false,
       checkerboardRasterCacheImages:

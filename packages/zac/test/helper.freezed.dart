@@ -15,35 +15,35 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LeakAction {
-  void Function(ZacBuildContext, ContextBag) get cb =>
+mixin _$LeakUiAction {
+  void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) get cb =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_LeakAction value) $default,
+    TResult Function(_LeakUiAction value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 
-class _$_LeakAction extends _LeakAction {
-  _$_LeakAction(this.cb) : super._();
+class _$_LeakUiAction extends _LeakUiAction {
+  _$_LeakUiAction(this.cb) : super._();
 
   @override
-  final void Function(ZacBuildContext, ContextBag) cb;
+  final void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) cb;
 
   @override
   String toString() {
-    return 'LeakAction(cb: $cb)';
+    return 'LeakUiAction(cb: $cb)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LeakAction &&
+            other is _$_LeakUiAction &&
             (identical(other.cb, cb) || other.cb == cb));
   }
 
@@ -53,19 +53,20 @@ class _$_LeakAction extends _LeakAction {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_LeakAction value) $default,
+    TResult Function(_LeakUiAction value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _LeakAction extends LeakAction {
-  factory _LeakAction(final void Function(ZacBuildContext, ContextBag) cb) =
-      _$_LeakAction;
-  _LeakAction._() : super._();
+abstract class _LeakUiAction extends LeakUiAction {
+  factory _LeakUiAction(
+      final void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag)
+          cb) = _$_LeakUiAction;
+  _LeakUiAction._() : super._();
 
   @override
-  void Function(ZacBuildContext, ContextBag) get cb;
+  void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) get cb;
 }
 
 /// @nodoc
@@ -177,7 +178,8 @@ abstract class _NoopAction extends NoopAction {
 
 /// @nodoc
 mixin _$LeakContext {
-  void Function(ZacBuildContext) get cb => throw _privateConstructorUsedError;
+  void Function(BuildContext, WidgetRef, ZacActionHelper) get cb =>
+      throw _privateConstructorUsedError;
   ZacWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -193,7 +195,7 @@ class _$_LeakContext extends _LeakContext {
   _$_LeakContext({required this.cb, this.child}) : super._();
 
   @override
-  final void Function(ZacBuildContext) cb;
+  final void Function(BuildContext, WidgetRef, ZacActionHelper) cb;
   @override
   final ZacWidget? child;
 
@@ -226,12 +228,13 @@ class _$_LeakContext extends _LeakContext {
 
 abstract class _LeakContext extends LeakContext {
   factory _LeakContext(
-      {required final void Function(ZacBuildContext) cb,
+      {required final void Function(BuildContext, WidgetRef, ZacActionHelper)
+          cb,
       final ZacWidget? child}) = _$_LeakContext;
   _LeakContext._() : super._();
 
   @override
-  void Function(ZacBuildContext) get cb;
+  void Function(BuildContext, WidgetRef, ZacActionHelper) get cb;
   @override
   ZacWidget? get child;
 }

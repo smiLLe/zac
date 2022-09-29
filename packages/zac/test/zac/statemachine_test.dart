@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
@@ -72,7 +73,7 @@ void main() {
 
   group('transition', () {
     testWidgets('to other state on event', (tester) async {
-      late ZacBuildContext context;
+      late WidgetRef ref;
       await testZacWidget(
         tester,
         StateMachineProviderBuilder(
@@ -93,36 +94,40 @@ void main() {
             ),
           ],
           child: LeakContext(
-            cb: (c) => context = c,
+            cb: (_, r, __) => ref = r,
           ),
         ),
       );
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'red');
-      expect(context.ref.watch(SharedValue.provider('machine1.context')),
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'red');
+      expect(ref.watch(SharedValue.provider('machine1.context')),
           SharedValue(null));
 
-      context.ref
+      ref
           .read(statemachineProvider('machine1'))
           .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'green');
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'green');
 
-      context.ref
+      ref
           .read(statemachineProvider('machine1'))
           .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'yellow');
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'yellow');
 
-      context.ref
+      ref
           .read(statemachineProvider('machine1'))
           .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'red');
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'red');
     });
 
     testWidgets('may update context', (tester) async {
-      late ZacBuildContext context;
+      late WidgetRef ref;
       await testZacWidget(
         tester,
         StateMachineProviderBuilder(
@@ -136,7 +141,7 @@ void main() {
                 Transition(
                   'NEXT',
                   'counter',
-                  actions: ZacActions([
+                  actions: ZacStateMachineActions([
                     StateMachineActions.updateContext(transformer: [_Incr()])
                   ]),
                 )
@@ -144,27 +149,31 @@ void main() {
             ),
           ],
           child: LeakContext(
-            cb: (c) => context = c,
+            cb: (_, r, __) => ref = r,
           ),
         ),
       );
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(context), 0);
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'counter');
+      expect(
+          ZacInt.consume('machine1.context').getValue(ZacRef.widget(ref)), 0);
 
-      context.ref
+      ref
           .read(statemachineProvider('machine1'))
           .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(context), 1);
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'counter');
+      expect(
+          ZacInt.consume('machine1.context').getValue(ZacRef.widget(ref)), 1);
 
-      context.ref
-          .read(statemachineProvider('machine1'))
-          .send('NEXT', SendPayload(100));
+      ref.read(statemachineProvider('machine1')).send('NEXT', SendPayload(100));
 
-      expect(ZacString.consume('machine1.state').getValue(context), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(context), 101);
+      expect(ZacString.consume('machine1.state').getValue(ZacRef.widget(ref)),
+          'counter');
+      expect(
+          ZacInt.consume('machine1.context').getValue(ZacRef.widget(ref)), 101);
     });
   });
 }
@@ -173,8 +182,8 @@ class _Incr implements ZacTransformer {
   _Incr();
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
     if (bag.containsKey(kBagPayload)) {
       final payload = bag.safeGet<int>(key: kBagPayload, notFound: null);
       return (transformValue.value as int) + payload;

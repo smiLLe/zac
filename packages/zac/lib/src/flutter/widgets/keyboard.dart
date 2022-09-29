@@ -1,8 +1,8 @@
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/base.dart';
+import 'package:zac/src/zac/action.dart';
 
 part 'keyboard.freezed.dart';
 part 'keyboard.g.dart';
@@ -25,7 +25,7 @@ class FlutterScrollViewKeyboardDismissBehavior
       _FlutterScrollViewKeyboardDismissBehaviorOnDrag;
 
   ScrollViewKeyboardDismissBehavior build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
         manual: (_) => ScrollViewKeyboardDismissBehavior.manual,
         onDrag: (_) => ScrollViewKeyboardDismissBehavior.onDrag);

@@ -1,5 +1,5 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -29,11 +29,11 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements ZacWidget {
 
   @override
   SliverGrid buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return SliverGrid(
-      key: key?.buildKey(context, ref, zacContext),
-      delegate: delegate.build(context, ref, zacContext),
-      gridDelegate: gridDelegate.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      delegate: delegate.build(context, ref, helper),
+      gridDelegate: gridDelegate.build(context, ref, helper),
     );
   }
 }

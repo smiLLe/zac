@@ -4,9 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
-
-import 'package:zac/src/zac/update_context.dart';
-
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -33,7 +30,7 @@ class FlutterRefreshIndicator
     required ZacWidget child,
     ZacDouble? displacement,
     ZacDouble? edgeOffset,
-    required ZacActions onRefresh,
+    required ZacUiActions onRefresh,
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
@@ -45,26 +42,28 @@ class FlutterRefreshIndicator
 
   @override
   RefreshIndicator buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return RefreshIndicator(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child.buildWidget(context, ref, helper),
       onRefresh: () async {
         final completer = Completer<void>();
         onRefresh.execute(
-          zacContext,
+          context,
+          ref,
+          helper,
           prefillBag: (bag) => bag..setActionPayload(completer),
         );
         return completer.future;
       },
       displacement: displacement?.getValue(zacRef) ?? 40.0,
       edgeOffset: edgeOffset?.getValue(zacRef) ?? 0.0,
-      color: color?.build(context, ref, zacContext),
-      backgroundColor: backgroundColor?.build(context, ref, zacContext),
+      color: color?.build(context, ref, helper),
+      backgroundColor: backgroundColor?.build(context, ref, helper),
       semanticsLabel: semanticsLabel?.getValue(zacRef),
       semanticsValue: semanticsValue?.getValue(zacRef),
-      triggerMode: triggerMode?.build(context, ref, zacContext) ??
+      triggerMode: triggerMode?.build(context, ref, helper) ??
           RefreshIndicatorTriggerMode.onEdge,
     );
   }
@@ -93,7 +92,7 @@ class FlutterRefreshIndicatorTriggerMode
       _FlutterRefreshIndicatorTriggerModeanywhere;
 
   RefreshIndicatorTriggerMode build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       onEdge: (_) => RefreshIndicatorTriggerMode.onEdge,
       anywhere: (_) => RefreshIndicatorTriggerMode.anywhere,

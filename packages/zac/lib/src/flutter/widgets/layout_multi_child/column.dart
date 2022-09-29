@@ -1,6 +1,6 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -36,21 +36,20 @@ class FlutterColumn with _$FlutterColumn implements ZacWidget {
 
   @override
   Column buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return Column(
-      key: key?.buildKey(context, ref, zacContext),
-      mainAxisAlignment: mainAxisAlignment?.build(context, ref, zacContext) ??
+      key: key?.buildKey(context, ref, helper),
+      mainAxisAlignment: mainAxisAlignment?.build(context, ref, helper) ??
           MainAxisAlignment.start,
       mainAxisSize:
-          mainAxisSize?.build(context, ref, zacContext) ?? MainAxisSize.max,
-      crossAxisAlignment: crossAxisAlignment?.build(context, ref, zacContext) ??
+          mainAxisSize?.build(context, ref, helper) ?? MainAxisSize.max,
+      crossAxisAlignment: crossAxisAlignment?.build(context, ref, helper) ??
           CrossAxisAlignment.center,
-      textDirection: textDirection?.build(context, ref, zacContext),
-      verticalDirection: verticalDirection?.build(context, ref, zacContext) ??
+      textDirection: textDirection?.build(context, ref, helper),
+      verticalDirection: verticalDirection?.build(context, ref, helper) ??
           VerticalDirection.down,
-      textBaseline: textBaseline?.build(context, ref, zacContext),
-      children:
-          children?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      textBaseline: textBaseline?.build(context, ref, helper),
+      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
     );
   }
 }

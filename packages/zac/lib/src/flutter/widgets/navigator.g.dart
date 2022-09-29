@@ -64,7 +64,7 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
     _$_FlutterNavigatorActionsPop(
       actions: json['actions'] == null
           ? null
-          : ZacActions.fromJson(json['actions'] as Object),
+          : ZacUiActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
@@ -76,7 +76,7 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
     _$_FlutterNavigatorActionsMaybePop(
       actions: json['actions'] == null
           ? null
-          : ZacActions.fromJson(json['actions'] as Object),
+          : ZacUiActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
@@ -90,7 +90,7 @@ _$_FlutterNavigatorActionsPushReplacement
           route: FlutterRoute.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
-              : ZacActions.fromJson(json['result'] as Object),
+              : ZacUiActions.fromJson(json['result'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
               : GetFlutterNavigatorState.fromJson(
@@ -110,7 +110,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
                   json['navigatorState'] as Object),
           result: json['result'] == null
               ? null
-              : ZacActions.fromJson(json['result'] as Object),
+              : ZacUiActions.fromJson(json['result'] as Object),
           $type: json['_converter'] as String?,
         );
 

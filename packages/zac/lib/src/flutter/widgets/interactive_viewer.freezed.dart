@@ -29,9 +29,9 @@ mixin _$FlutterInteractiveViewer {
   ZacBool? get constrained => throw _privateConstructorUsedError;
   ZacDouble? get maxScale => throw _privateConstructorUsedError;
   ZacDouble? get minScale => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionEnd => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionStart => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionUpdate => throw _privateConstructorUsedError;
+  ZacUiActions? get onInteractionEnd => throw _privateConstructorUsedError;
+  ZacUiActions? get onInteractionStart => throw _privateConstructorUsedError;
+  ZacUiActions? get onInteractionUpdate => throw _privateConstructorUsedError;
   ZacBool? get panEnabled => throw _privateConstructorUsedError;
   ZacBool? get scaleEnabled => throw _privateConstructorUsedError;
 
@@ -81,11 +81,11 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacDouble? minScale;
   @override
-  final ZacActions? onInteractionEnd;
+  final ZacUiActions? onInteractionEnd;
   @override
-  final ZacActions? onInteractionStart;
+  final ZacUiActions? onInteractionStart;
   @override
-  final ZacActions? onInteractionUpdate;
+  final ZacUiActions? onInteractionUpdate;
   @override
   final ZacBool? panEnabled;
   @override
@@ -162,9 +162,9 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       final ZacBool? constrained,
       final ZacDouble? maxScale,
       final ZacDouble? minScale,
-      final ZacActions? onInteractionEnd,
-      final ZacActions? onInteractionStart,
-      final ZacActions? onInteractionUpdate,
+      final ZacUiActions? onInteractionEnd,
+      final ZacUiActions? onInteractionStart,
+      final ZacUiActions? onInteractionUpdate,
       final ZacBool? panEnabled,
       final ZacBool? scaleEnabled}) = _$_FlutterInteractiveViewer;
   _FlutterInteractiveViewer._() : super._();
@@ -189,11 +189,11 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacDouble? get minScale;
   @override
-  ZacActions? get onInteractionEnd;
+  ZacUiActions? get onInteractionEnd;
   @override
-  ZacActions? get onInteractionStart;
+  ZacUiActions? get onInteractionStart;
   @override
-  ZacActions? get onInteractionUpdate;
+  ZacUiActions? get onInteractionUpdate;
   @override
   ZacBool? get panEnabled;
   @override

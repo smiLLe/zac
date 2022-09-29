@@ -39,7 +39,7 @@ class SharedValue with _$SharedValue {
       );
 
   static Object? getFilled(
-      SharedValueConsumeType type, ZacRef ref, SharedValueFamily family) {
+      SharedValueConsumeType type, ZacRef zacRef, SharedValueFamily family) {
     final error = '''
 Could not find a $SharedValue for family: "$family".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
@@ -48,7 +48,7 @@ See "$SharedValueProviderBuilder" for more info.
     return type.map<Object?>(
       watch: (obj) {
         if (null == obj.select || true == obj.select?.isEmpty) {
-          return ref.when(
+          return zacRef.when(
             widget: (ref) =>
                 _extractData(ref.watch(SharedValue.provider(family)), error),
             adProvider: (ref) =>
@@ -56,18 +56,18 @@ See "$SharedValueProviderBuilder" for more info.
           );
         }
 
-        return ref.when(
+        return zacRef.when(
           widget: (ref) => ref.watch(SharedValue.provider(family).select(
               (sharedValue) => obj.select!.transformValues(
                   ZacTransformValue(_extractData(sharedValue, error)),
-                  context))),
+                  zacRef))),
           adProvider: (ref) => ref.watch(SharedValue.provider(family).select(
               (sharedValue) => obj.select!.transformValues(
                   ZacTransformValue(_extractData(sharedValue, error)),
-                  context))),
+                  zacRef))),
         );
       },
-      read: (_) => ref.when(
+      read: (_) => zacRef.when(
         widget: (ref) =>
             _extractData(ref.read(SharedValue.provider(family)), error),
         adProvider: (ref) =>
@@ -77,12 +77,15 @@ See "$SharedValueProviderBuilder" for more info.
   }
 
   static void update(
-    ZacBuildContext context,
+    ZacRef zacRef,
     SharedValueFamily family,
     Object? Function(Object? current) update,
   ) {
-    context.ref
-        .read(SharedValue.provider(family).notifier)
+    zacRef
+        .when<StateController<SharedValue>>(
+      widget: (ref) => ref.read(SharedValue.provider(family).notifier),
+      adProvider: (ref) => ref.read(SharedValue.provider(family).notifier),
+    )
         .update((sharedValue) {
       return SharedValue(update(_extractData(sharedValue, '''
 It was not possible to update the $SharedValue "$family",
@@ -92,12 +95,13 @@ in your Widget tree before trying to update the $SharedValue.''')));
     });
   }
 
-  static void listenAndExecuteActions(
-      ZacBuildContext context, SharedValueFamily family, ZacActions actions) {
-    context.ref.listen<SharedValue>(SharedValue.provider(family),
-        (previous, next) {
+  static void listenAndExecuteActions(BuildContext context, WidgetRef ref,
+      ZacActionHelper helper, SharedValueFamily family, ZacUiActions actions) {
+    ref.listen<SharedValue>(SharedValue.provider(family), (previous, next) {
       actions.execute(
         context,
+        ref,
+        helper,
         prefillBag: (bag) => bag..setActionPayload(_extractData(next, '''
 It was not possible to listen for $SharedValue($family) changes and execute actions,
 because the $SharedValue did not exist until now.
@@ -134,8 +138,9 @@ class UpdateSharedValueAction
   }) = _SharedValueActionReplaceWith;
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) => SharedValue.update(
-        context,
+  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) =>
+      SharedValue.update(
+        ref,
         family,
         (current) => map(
           (obj) {
@@ -143,7 +148,7 @@ class UpdateSharedValueAction
 
             return obj.transformer.transformValues(
               ZacTransformValue(current),
-              context,
+              ref,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           },
@@ -152,7 +157,7 @@ class UpdateSharedValueAction
                 ? obj.value
                 : obj.transformer!.transformValues(
                     ZacTransformValue(obj.value),
-                    context,
+                    ref,
                     prefillBag: (bag) => bag
                       ..addEntries(bag.entries)
                       ..addAll(<String, dynamic>{
@@ -203,9 +208,9 @@ class SharedValueProviderBuilder
 
   @override
   SharedValueProvider buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return SharedValueProvider(
-      key: key?.buildKey(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
       transformer: transformer,
       value: value,
       family: family,
@@ -226,19 +231,18 @@ class SharedValueProvider extends HookConsumerWidget {
   final Object? value;
   final SharedValueFamily family;
   final Widget Function(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) builder;
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
   final List<ZacTransformer>? transformer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
     final provideValue = useMemoized(
       () {
         return SharedValue(null == transformer || true == transformer!.isEmpty
             ? value
             : transformer!.transformValues(
                 ZacTransformValue(value),
-                zacContext,
+                ZacRef.widget(ref),
               ));
       },
       [value, family, transformer],
@@ -248,8 +252,7 @@ class SharedValueProvider extends HookConsumerWidget {
         SharedValue.provider(family).overrideWithProvider(
             AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
       ],
-      child: ZacUpdateContext(
-          builder: (ctx) => builder(ctx.context, ctx.ref, ctx)),
+      child: ZacUpdateContext(builder: builder),
     );
   }
 }

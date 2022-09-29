@@ -3,8 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/widget_builder.dart';
 
@@ -146,7 +148,7 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late ZacBuildContext context;
+      late WidgetRef ref;
 
       await tester.runAsync(() async {
         await testZacWidget(
@@ -156,7 +158,7 @@ void main() {
               <String, dynamic>{},
             ),
             errorChild: LeakContext(
-              cb: (c) => context = c,
+              cb: (_, r, __) => ref = r,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -171,7 +173,7 @@ void main() {
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
           ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
-              .getValue(context),
+              .getValue(ZacRef.widget(ref)),
           isNotNull);
     });
   });
@@ -216,7 +218,7 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late ZacBuildContext context;
+      late WidgetRef ref;
 
       await tester.runAsync(() async {
         await testZacWidget(
@@ -224,7 +226,7 @@ void main() {
           ZacWidgetBuilderBuilder.isolateString(
             data: ZacString('{'),
             errorChild: LeakContext(
-              cb: (c) => context = c,
+              cb: (_, r, __) => ref = r,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -239,7 +241,7 @@ void main() {
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
           ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
-              .getValue(context),
+              .getValue(ZacRef.widget(ref)),
           isNotNull);
     });
   });

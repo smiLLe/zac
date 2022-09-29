@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,11 +29,11 @@ class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
 
   @override
   SliverPadding buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return SliverPadding(
-      key: key?.buildKey(context, ref, zacContext),
-      sliver: sliver?.buildWidget(context, ref, zacContext),
-      padding: padding.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      sliver: sliver?.buildWidget(context, ref, helper),
+      padding: padding.build(context, ref, helper),
     );
   }
 }

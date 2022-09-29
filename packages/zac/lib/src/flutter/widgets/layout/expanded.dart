@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -29,11 +29,11 @@ class FlutterExpanded with _$FlutterExpanded implements ZacWidget {
 
   @override
   Expanded buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Expanded(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child.buildWidget(context, ref, helper),
       flex: flex?.getValue(zacRef) ?? 1,
     );
   }

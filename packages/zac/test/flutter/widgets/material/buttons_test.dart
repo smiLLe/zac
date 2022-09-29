@@ -44,8 +44,8 @@ void main() {
         FlutterElevatedButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -59,8 +59,8 @@ void main() {
         FlutterOutlinedButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -74,8 +74,8 @@ void main() {
         FlutterTextButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -84,8 +84,8 @@ void main() {
       await tester.longPress(findMe);
       await tester.pump();
 
-      verify(onPressedCb(any, any)).called(3);
-      verify(onLongPressCb(any, any)).called(3);
+      verify(onPressedCb(any, any, any, any)).called(3);
+      verify(onLongPressCb(any, any, any, any)).called(3);
     });
 
     testWidgets('ElevatedButton()', (tester) async {
@@ -156,8 +156,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -172,8 +172,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -188,8 +188,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: LeakUiAction.createActions(onPressedCb),
+          onLongPress: LeakUiAction.createActions(onLongPressCb),
         ),
       );
 
@@ -198,8 +198,8 @@ void main() {
       await tester.longPress(findMe);
       await tester.pump();
 
-      verify(onPressedCb(any, any)).called(3);
-      verify(onLongPressCb(any, any)).called(3);
+      verify(onPressedCb(any, any, any, any)).called(3);
+      verify(onLongPressCb(any, any, any, any)).called(3);
     });
 
     testWidgets('ElevatedButton', (tester) async {

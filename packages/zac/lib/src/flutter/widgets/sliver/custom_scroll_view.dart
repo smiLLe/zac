@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -48,27 +48,26 @@ class FlutterCustomScrollView
 
   @override
   CustomScrollView buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return CustomScrollView(
-      key: key?.buildKey(context, ref, zacContext),
-      slivers: slivers?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      key: key?.buildKey(context, ref, helper),
+      slivers: slivers?.getValue(context, ref, helper) ?? const <Widget>[],
       scrollDirection:
-          scrollDirection?.build(context, ref, zacContext) ?? Axis.vertical,
+          scrollDirection?.build(context, ref, helper) ?? Axis.vertical,
       reverse: reverse?.getValue(zacRef) ?? false,
       primary: primary?.getValue(zacRef),
-      physics: physics?.build(context, ref, zacContext),
+      physics: physics?.build(context, ref, helper),
       shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
-      center: center?.buildKey(context, ref, zacContext),
+      center: center?.buildKey(context, ref, helper),
       anchor: anchor?.getValue(zacRef) ?? 0.0,
       cacheExtent: cacheExtent?.getValue(zacRef),
       semanticChildCount: semanticChildCount?.getValue(zacRef),
       keyboardDismissBehavior:
-          keyboardDismissBehavior?.build(context, ref, zacContext) ??
+          keyboardDismissBehavior?.build(context, ref, helper) ??
               ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.getValue(zacRef),
-      clipBehavior:
-          clipBehavior?.build(context, ref, zacContext) ?? Clip.hardEdge,
+      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.hardEdge,
     );
   }
 }

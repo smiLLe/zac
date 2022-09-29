@@ -2,7 +2,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -28,12 +27,12 @@ class FlutterGestureDetector
   factory FlutterGestureDetector({
     FlutterKey? key,
     ZacWidget? child,
-    ZacActions? onTap,
-    ZacActions? onSecondaryTap,
-    ZacActions? onDoubleTap,
-    ZacActions? onLongPress,
-    ZacActions? onSecondaryLongPress,
-    ZacActions? onTertiaryLongPress,
+    ZacUiActions? onTap,
+    ZacUiActions? onSecondaryTap,
+    ZacUiActions? onDoubleTap,
+    ZacUiActions? onLongPress,
+    ZacUiActions? onSecondaryLongPress,
+    ZacUiActions? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
     ZacBool? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -41,19 +40,43 @@ class FlutterGestureDetector
 
   @override
   GestureDetector buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return GestureDetector(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child?.buildWidget(context, ref, zacContext),
-      behavior: behavior?.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child?.buildWidget(context, ref, helper),
+      behavior: behavior?.build(context, ref, helper),
       excludeFromSemantics: excludeFromSemantics?.getValue(zacRef) ?? false,
-      onTap: actionsCallback(onTap, zacContext),
-      onSecondaryTap: actionsCallback(onSecondaryTap, zacContext),
-      onDoubleTap: actionsCallback(onDoubleTap, zacContext),
-      onLongPress: actionsCallback(onLongPress, zacContext),
-      onSecondaryLongPress: actionsCallback(onSecondaryLongPress, zacContext),
-      onTertiaryLongPress: actionsCallback(onTertiaryLongPress, zacContext),
+      onTap: onTap?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
+      onSecondaryTap: onSecondaryTap?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
+      onDoubleTap: onDoubleTap?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
+      onLongPress: onLongPress?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
+      onSecondaryLongPress: onSecondaryLongPress?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
+      onTertiaryLongPress: onTertiaryLongPress?.createCb(
+        context: context,
+        ref: ref,
+        helper: helper,
+      ),
     );
   }
 }

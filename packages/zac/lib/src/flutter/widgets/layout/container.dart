@@ -1,8 +1,8 @@
 import 'package:zac/src/flutter/painting.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,15 +35,15 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
 
   @override
   Container buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return Container(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child?.buildWidget(context, ref, zacContext),
-      color: color?.build(context, ref, zacContext),
-      padding: padding?.build(context, ref, zacContext),
-      margin: margin?.build(context, ref, zacContext),
-      alignment: alignment?.build(context, ref, zacContext),
-      decoration: decoration?.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child?.buildWidget(context, ref, helper),
+      color: color?.build(context, ref, helper),
+      padding: padding?.build(context, ref, helper),
+      margin: margin?.build(context, ref, helper),
+      alignment: alignment?.build(context, ref, helper),
+      decoration: decoration?.build(context, ref, helper),
     );
   }
 }

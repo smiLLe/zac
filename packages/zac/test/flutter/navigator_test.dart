@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,17 +31,17 @@ void main() {
     });
 
     testWidgets('provide and read', (tester) async {
-      late ZacBuildContext context;
+      late WidgetRef ref;
       await testZacWidget(
         tester,
         ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
-          child: LeakContext(cb: (c) => context = c),
+          child: LeakContext(cb: (_, r, __) => ref = r),
         ),
       );
 
       expect(
-          context.ref.read(SharedValue.provider('foo')),
+          ref.read(SharedValue.provider('foo')),
           isA<FilledSharedValue>().having(
               (p0) => p0.data, 'data', isA<GlobalKey<NavigatorState>>()));
     });
@@ -138,7 +139,7 @@ void main() {
       });
 
       testWidgets('provide arguments', (tester) async {
-        late ZacBuildContext context;
+        late WidgetRef ref;
 
         await testZacWidget(
           tester,
@@ -146,8 +147,8 @@ void main() {
             onUnknownRoute: RouteFactorySingleRoute(
               routeConfig: RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
-                  child: LeakContext(cb: (c) {
-                    context = c;
+                  child: LeakContext(cb: (_, r, __) {
+                    ref = r;
                   }),
                 ),
               ),
@@ -157,7 +158,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ZacExecuteActionsBuilder.once(
-                      actions: ZacActions(
+                      actions: ZacUiActions(
                         [
                           FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
@@ -175,7 +176,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            context.ref.read(SharedValue.provider(
+            ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             SharedValue(22));
       });
@@ -228,7 +229,7 @@ void main() {
       });
 
       testWidgets('provide arguments', (tester) async {
-        late ZacBuildContext context;
+        late WidgetRef ref;
 
         await testZacWidget(
           tester,
@@ -238,7 +239,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ZacExecuteActionsBuilder.once(
-                      actions: ZacActions(
+                      actions: ZacUiActions(
                         [
                           FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
@@ -253,22 +254,22 @@ void main() {
                   route: FlutterMaterialPageRoute(
                     child: FlutterTextButton(
                       key: FlutterValueKey('press_me'),
-                      onPressed: ZacActions([
+                      onPressed: ZacUiActions([
                         FlutterNavigatorActions.pushNamed(
                           routeName: ZacString('/otherother'),
                           arguments: 11,
                         )
                       ]),
-                      child: LeakContext(cb: (c) {
-                        context = c;
+                      child: LeakContext(cb: (_, r, __) {
+                        ref = r;
                       }),
                     ),
                   ),
                 ),
                 '/otherother': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
-                    child: LeakContext(cb: (c) {
-                      context = c;
+                    child: LeakContext(cb: (_, r, __) {
+                      ref = r;
                     }),
                   ),
                 ),
@@ -279,7 +280,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            context.ref.read(SharedValue.provider(
+            ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             SharedValue(1));
 
@@ -287,20 +288,26 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            context.ref.read(SharedValue.provider(
+            ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             SharedValue(11));
       });
 
       testWidgets('providerName', (tester) async {
-        late ZacBuildContext context;
-        await testZacWidget(tester, LeakContext(cb: ((c) {
+        late BuildContext context;
+        late WidgetRef ref;
+        late ZacActionHelper helper;
+        await testZacWidget(tester, LeakContext(cb: ((c, r, h) {
+          ref = r;
           context = c;
+          helper = h;
         })));
 
         expect(
             RouteFactoryFromRoutes.providerName(
               context,
+              ref,
+              helper,
               RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
                   child: FlutterSizedBox(),
@@ -313,6 +320,8 @@ void main() {
         expect(
             RouteFactoryFromRoutes.providerName(
               context,
+              ref,
+              helper,
               RouteFactoryRouteConfig(
                 provideArgsName: ZacString('foo'),
                 route: FlutterMaterialPageRoute(
@@ -326,6 +335,8 @@ void main() {
         expect(
             RouteFactoryFromRoutes.providerName(
                 context,
+                ref,
+                helper,
                 RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: FlutterSizedBox(),
@@ -337,6 +348,8 @@ void main() {
         expect(
             RouteFactoryFromRoutes.providerName(
                 context,
+                ref,
+                helper,
                 RouteFactoryRouteConfig(
                   provideArgsName: ZacString('foo'),
                   route: FlutterMaterialPageRoute(

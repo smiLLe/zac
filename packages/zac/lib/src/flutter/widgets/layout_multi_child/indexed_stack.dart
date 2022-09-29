@@ -1,8 +1,8 @@
 import 'package:zac/src/flutter/painting.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,17 +35,16 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements ZacWidget {
 
   @override
   IndexedStack buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return IndexedStack(
-      key: key?.buildKey(context, ref, zacContext),
-      alignment: alignment?.build(context, ref, zacContext) ??
+      key: key?.buildKey(context, ref, helper),
+      alignment: alignment?.build(context, ref, helper) ??
           AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(context, ref, zacContext),
-      sizing: sizing?.build(context, ref, zacContext) ?? StackFit.loose,
+      textDirection: textDirection?.build(context, ref, helper),
+      sizing: sizing?.build(context, ref, helper) ?? StackFit.loose,
       index: index?.getValue(zacRef),
-      children:
-          children?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
     );
   }
 }

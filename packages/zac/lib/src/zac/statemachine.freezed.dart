@@ -182,7 +182,7 @@ Transition _$TransitionFromJson(Map<String, dynamic> json) {
 mixin _$Transition {
   String get event => throw _privateConstructorUsedError;
   String get targetState => throw _privateConstructorUsedError;
-  ZacActions? get actions => throw _privateConstructorUsedError;
+  ZacStateMachineActions? get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -204,7 +204,7 @@ class _$_Transition implements _Transition {
   @override
   final String targetState;
   @override
-  final ZacActions? actions;
+  final ZacStateMachineActions? actions;
 
   @override
   String toString() {
@@ -241,7 +241,7 @@ class _$_Transition implements _Transition {
 
 abstract class _Transition implements Transition {
   factory _Transition(final String event, final String targetState,
-      {final ZacActions? actions}) = _$_Transition;
+      {final ZacStateMachineActions? actions}) = _$_Transition;
 
   factory _Transition.fromJson(Map<String, dynamic> json) =
       _$_Transition.fromJson;
@@ -251,7 +251,7 @@ abstract class _Transition implements Transition {
   @override
   String get targetState;
   @override
-  ZacActions? get actions;
+  ZacStateMachineActions? get actions;
 }
 
 /// @nodoc
@@ -449,43 +449,38 @@ abstract class _StateMachine extends StateMachine {
       throw _privateConstructorUsedError;
 }
 
-StateMachineActions _$StateMachineActionsFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
-    case 'z:1:StateMachine:Action.send':
-      return _StateMachineActionsSend.fromJson(json);
-    case 'z:1:StateMachine:Action.updateContext':
-      return _StateMachineActionsUpdateContext.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, '_converter', 'StateMachineActions',
-          'Invalid union type "${json['_converter']}"!');
-  }
+StateMachineBaseActions _$StateMachineBaseActionsFromJson(
+    Map<String, dynamic> json) {
+  return _StateMachineBaseActionsSend.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StateMachineActions {
+mixin _$StateMachineBaseActions {
+  Object get family => throw _privateConstructorUsedError;
+  ZacString get event => throw _privateConstructorUsedError;
+
+  /// Optional payload which will be available as [kBagStateMachineSendPayload]
+  /// and [kBagPayload].
+  /// A payload send by an action will still be available
+  /// through [kBagActionPayload].
+  ZacObject? get payload => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateMachineActionsSend value) send,
-    required TResult Function(_StateMachineActionsUpdateContext value)
-        updateContext,
+    required TResult Function(_StateMachineBaseActionsSend value) send,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_StateMachineActionsSend extends _StateMachineActionsSend {
-  _$_StateMachineActionsSend(
-      {required this.family,
-      required this.event,
-      this.payload,
-      final String? $type})
-      : $type = $type ?? 'z:1:StateMachine:Action.send',
-        super._();
+class _$_StateMachineBaseActionsSend extends _StateMachineBaseActionsSend {
+  _$_StateMachineBaseActionsSend(
+      {required this.family, required this.event, this.payload})
+      : super._();
 
-  factory _$_StateMachineActionsSend.fromJson(Map<String, dynamic> json) =>
-      _$$_StateMachineActionsSendFromJson(json);
+  factory _$_StateMachineBaseActionsSend.fromJson(Map<String, dynamic> json) =>
+      _$$_StateMachineBaseActionsSendFromJson(json);
 
   @override
   final Object family;
@@ -499,19 +494,16 @@ class _$_StateMachineActionsSend extends _StateMachineActionsSend {
   @override
   final ZacObject? payload;
 
-  @JsonKey(name: '_converter')
-  final String $type;
-
   @override
   String toString() {
-    return 'StateMachineActions.send(family: $family, event: $event, payload: $payload)';
+    return 'StateMachineBaseActions.send(family: $family, event: $event, payload: $payload)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateMachineActionsSend &&
+            other is _$_StateMachineBaseActionsSend &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.event, event) &&
             const DeepCollectionEquality().equals(other.payload, payload));
@@ -528,26 +520,27 @@ class _$_StateMachineActionsSend extends _StateMachineActionsSend {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateMachineActionsSend value) send,
-    required TResult Function(_StateMachineActionsUpdateContext value)
-        updateContext,
+    required TResult Function(_StateMachineBaseActionsSend value) send,
   }) {
     return send(this);
   }
 }
 
-abstract class _StateMachineActionsSend extends StateMachineActions {
-  factory _StateMachineActionsSend(
+abstract class _StateMachineBaseActionsSend extends StateMachineBaseActions {
+  factory _StateMachineBaseActionsSend(
       {required final Object family,
       required final ZacString event,
-      final ZacObject? payload}) = _$_StateMachineActionsSend;
-  _StateMachineActionsSend._() : super._();
+      final ZacObject? payload}) = _$_StateMachineBaseActionsSend;
+  _StateMachineBaseActionsSend._() : super._();
 
-  factory _StateMachineActionsSend.fromJson(Map<String, dynamic> json) =
-      _$_StateMachineActionsSend.fromJson;
+  factory _StateMachineBaseActionsSend.fromJson(Map<String, dynamic> json) =
+      _$_StateMachineBaseActionsSend.fromJson;
 
+  @override
   Object get family;
+  @override
   ZacString get event;
+  @override
 
   /// Optional payload which will be available as [kBagStateMachineSendPayload]
   /// and [kBagPayload].
@@ -556,14 +549,29 @@ abstract class _StateMachineActionsSend extends StateMachineActions {
   ZacObject? get payload;
 }
 
+StateMachineActions _$StateMachineActionsFromJson(Map<String, dynamic> json) {
+  return _StateMachineActionsUpdateContext.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StateMachineActions {
+  List<ZacTransformer> get transformer => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StateMachineActionsUpdateContext value)
+        updateContext,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StateMachineActionsUpdateContext
     extends _StateMachineActionsUpdateContext {
   _$_StateMachineActionsUpdateContext(
-      {required final List<ZacTransformer> transformer, final String? $type})
+      {required final List<ZacTransformer> transformer})
       : _transformer = transformer,
-        $type = $type ?? 'z:1:StateMachine:Action.updateContext',
         super._();
 
   factory _$_StateMachineActionsUpdateContext.fromJson(
@@ -576,9 +584,6 @@ class _$_StateMachineActionsUpdateContext
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_transformer);
   }
-
-  @JsonKey(name: '_converter')
-  final String $type;
 
   @override
   String toString() {
@@ -602,7 +607,6 @@ class _$_StateMachineActionsUpdateContext
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateMachineActionsSend value) send,
     required TResult Function(_StateMachineActionsUpdateContext value)
         updateContext,
   }) {
@@ -619,6 +623,7 @@ abstract class _StateMachineActionsUpdateContext extends StateMachineActions {
   factory _StateMachineActionsUpdateContext.fromJson(
       Map<String, dynamic> json) = _$_StateMachineActionsUpdateContext.fromJson;
 
+  @override
   List<ZacTransformer> get transformer;
 }
 

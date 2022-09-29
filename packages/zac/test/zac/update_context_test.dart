@@ -1,3 +1,5 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -24,37 +26,37 @@ void main() {
 
   group('ZacWidgetContext', () {
     testWidgets('can be updated in tree', (tester) async {
-      late ZacBuildContext c1;
-      late ZacBuildContext c2;
+      late WidgetRef ref1;
+      late WidgetRef ref2;
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
           child: LeakContext(
-            cb: (c) {
-              c1 = c;
+            cb: (_, r, __) {
+              ref1 = r;
             },
             child: LeakContext(
-              cb: (c) {
-                c2 = c;
+              cb: (_, r, __) {
+                ref2 = r;
               },
             ),
           ),
         ),
       );
 
-      expect(c1, equals(c2));
+      expect(ref1, equals(ref2));
 
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
           child: LeakContext(
-            cb: (c) {
-              c1 = c;
+            cb: (_, r, __) {
+              ref1 = r;
             },
             child: ZacUpdateContextBuilder(
               child: LeakContext(
-                cb: (c) {
-                  c2 = c;
+                cb: (_, r, __) {
+                  ref2 = r;
                 },
               ),
             ),
@@ -62,7 +64,7 @@ void main() {
         ),
       );
 
-      expect(c1, isNot(equals(c2)));
+      expect(ref1, isNot(equals(ref2)));
     });
     testWidgets('Unmount Callback', (tester) async {
       final cb1 = MockUnmountCb();
@@ -70,20 +72,20 @@ void main() {
       final cb3 = MockUnmountCb();
       final cb4 = MockUnmountCb();
 
-      late ZacBuildContext ctx1;
-      late ZacBuildContext ctx2;
+      late ZacActionHelper helper1;
+      late ZacActionHelper helper2;
 
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
           child: LeakContext(
-            cb: (c) {
-              ctx1 = c;
+            cb: (_, __, h) {
+              helper1 = h;
             },
             child: ZacUpdateContextBuilder(
               child: LeakContext(
-                cb: (c) {
-                  ctx2 = c;
+                cb: (_, __, h) {
+                  helper2 = h;
                 },
                 child: FlutterSizedBox(),
               ),
@@ -91,11 +93,11 @@ void main() {
           ),
         ),
       );
-      ctx1.onUnmount(cb1);
-      ctx1.onUnmount(cb2);
+      helper1.onBecomeInactive(cb1);
+      helper1.onBecomeInactive(cb2);
 
-      ctx2.onUnmount(cb3);
-      ctx2.onUnmount(cb4);
+      helper2.onBecomeInactive(cb3);
+      helper2.onBecomeInactive(cb4);
 
       await testZacWidget(
         tester,

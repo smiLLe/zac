@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -63,25 +64,25 @@ class ZacWidgetBuilderBuilder
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       (obj) => ZacWidgetBuilder(
         zacWidget: obj.data,
-        key: obj.key?.buildKey(context, ref, zacContext),
+        key: obj.key?.buildKey(context, ref, helper),
       ),
       map: (obj) => ZacWidgetBuilderFromMap(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, zacContext),
+        key: obj.key?.buildKey(context, ref, helper),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, zacContext),
+        key: obj.key?.buildKey(context, ref, helper),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
       isolateString: (obj) => ZacWidgetBuilderFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.buildKey(context, ref, zacContext),
+        key: obj.key?.buildKey(context, ref, helper),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
@@ -98,8 +99,8 @@ class ZacWidgetBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
-    return zacWidget.buildWidget(context, ref, zacContext);
+    final helper = useZacActionHelper();
+    return zacWidget.buildWidget(context, ref, helper);
   }
 }
 
@@ -111,7 +112,6 @@ class ZacWidgetBuilderFromMap extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
     final map = zacMap.getValue(ZacRef.widget(ref));
     final zacWidget =
         useMemoized(() => ConverterHelper.convertToType<ZacWidget>(map), [map]);
@@ -231,10 +231,9 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     }, [map, allConverters]);
 
     return ZacUpdateContext(
-      builder: (context) {
+      builder: (context, ref, helper) {
         return loadingState.value.map(
-          data: (obj) =>
-              obj.value.buildWidget(context.context, context.ref, context),
+          data: (obj) => obj.value.buildWidget(context, ref, helper),
           error: (obj) => _ErrorProvide(
             error: obj.error,
             child: errorChild,

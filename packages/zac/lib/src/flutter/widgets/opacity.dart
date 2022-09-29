@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,13 +30,13 @@ class FlutterOpacity with _$FlutterOpacity implements ZacWidget {
 
   @override
   Opacity buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Opacity(
-      key: key?.buildKey(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
       opacity: opacity.getValue(zacRef),
       alwaysIncludeSemantics: alwaysIncludeSemantics?.getValue(zacRef) ?? false,
-      child: child?.buildWidget(context, ref, zacContext),
+      child: child?.buildWidget(context, ref, helper),
     );
   }
 }

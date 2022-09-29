@@ -48,7 +48,7 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
       consume: (_) => throw StateError(''),
@@ -56,11 +56,13 @@ class ZacFlutterGlobalKeyNavigatorState
   }
 
   @override
-  NavigatorState getNavigatorState(ZacBuildContext context) {
+  NavigatorState getNavigatorState(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+    final zacRef = ZacRef.widget(ref);
     return map(
       consume: (obj) {
-        if (null != obj.getSharedValue(context).currentState) {
-          return obj.getSharedValue(context).currentState!;
+        if (null != obj.getSharedValue(zacRef).currentState) {
+          return obj.getSharedValue(zacRef).currentState!;
         }
         throw StateError('');
       },
@@ -70,9 +72,10 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @override
   GlobalKey<NavigatorState> buildKey(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+    final zacRef = ZacRef.widget(ref);
     return map(
-      consume: (obj) => obj.getSharedValue(zacContext),
+      consume: (obj) => obj.getSharedValue(zacRef),
       provide: (_) => throw StateError(''),
     );
   }
@@ -87,10 +90,10 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
+    final zacRef = ZacRef.widget(ref);
     return SharedValueProvider(
       value: GlobalKey<NavigatorState>(
-        debugLabel: builder.debugLabel?.getValue(zacContext),
+        debugLabel: builder.debugLabel?.getValue(zacRef),
       ),
       family: builder.family,
       builder: builder.child.buildWidget,
@@ -101,7 +104,7 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
 @defaultConverterFreezed
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
-    implements ZacAction {
+    implements ZacUiAction {
   const ZacFlutterNavigatorActions._();
 
   static const String unionValuePopUntilRouteName =
@@ -116,21 +119,24 @@ class ZacFlutterNavigatorActions
     GetFlutterNavigatorState? navigatorState,
   }) = _PopUntilRouteName;
 
-  NavigatorState? _getState(ZacBuildContext context) {
+  NavigatorState? _getState(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
           popUntilRouteName: (obj) =>
-              obj.navigatorState?.getNavigatorState(context),
+              obj.navigatorState?.getNavigatorState(context, ref, helper),
         ) ??
-        Navigator.maybeOf(context.context);
+        Navigator.maybeOf(context);
   }
 
   @override
-  void execute(ZacBuildContext context, ContextBag bag) {
-    final state = _getState(context);
+  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
+      ContextBag bag) {
+    final state = _getState(context, ref, helper);
     if (null == state) return;
+    final zacRef = ZacRef.widget(ref);
 
     /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-    state.popUntil(ModalRoute.withName(routeName.getValue(context)));
+    state.popUntil(ModalRoute.withName(routeName.getValue(zacRef)));
   }
 }
 
@@ -169,7 +175,8 @@ class RouteFactorySingleRoute
   }) = _RouteFactorySingleRoute;
 
   @override
-  RouteFactory buildRouteFactory(ZacBuildContext context) {
+  RouteFactory buildRouteFactory(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -179,16 +186,20 @@ class RouteFactorySingleRoute
 
       return routeConfig.route.build(
         context,
-        wrap: (context, zacWidget) {
+        ref,
+        helper,
+        wrap: (context, ref, helper, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context.context, context.ref, context);
+            return zacWidget.buildWidget(context, ref, helper);
           }
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
             family: RouteFactoryFromRoutes.providerName(
               context,
+              ref,
+              helper,
               routeConfig,
               provideArgsNamePrefix,
             ),
@@ -220,15 +231,16 @@ class RouteFactoryFromRoutes
     String? provideArgsNamePrefix,
   }) = _RouteFactoryFromRoutes;
 
-  static String providerName(
-      ZacBuildContext context, RouteFactoryRouteConfig config, String? prefix) {
-    final name = config.provideArgsName?.getValue(context) ??
+  static String providerName(BuildContext context, WidgetRef ref,
+      ZacActionHelper helper, RouteFactoryRouteConfig config, String? prefix) {
+    final name = config.provideArgsName?.getValue(ZacRef.widget(ref)) ??
         RouteFactoryFromRoutes.defaultProviderName;
     return '${null == prefix ? "" : "$prefix."}$name';
   }
 
   @override
-  RouteFactory buildRouteFactory(ZacBuildContext context) {
+  RouteFactory buildRouteFactory(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -241,16 +253,20 @@ class RouteFactoryFromRoutes
       final config = routes[name]!;
       return config.route.build(
         context,
-        wrap: (context, zacWidget) {
+        ref,
+        helper,
+        wrap: (context, ref, helper, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context.context, context.ref, context);
+            return zacWidget.buildWidget(context, ref, helper);
           }
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
             family: RouteFactoryFromRoutes.providerName(
               context,
+              ref,
+              helper,
               config,
               provideArgsNamePrefix,
             ),

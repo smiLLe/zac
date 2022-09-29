@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -32,15 +32,15 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
 
   @override
   Icon buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Icon(
-      icon?.build(context, ref, zacContext),
-      key: key?.buildKey(context, ref, zacContext),
-      color: color?.build(context, ref, zacContext),
+      icon?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, helper),
+      color: color?.build(context, ref, helper),
       size: size?.getValue(zacRef),
       semanticLabel: semanticLabel?.getValue(zacRef),
-      textDirection: textDirection?.build(context, ref, zacContext),
+      textDirection: textDirection?.build(context, ref, helper),
     );
   }
 }
@@ -60,8 +60,7 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+  IconData build(BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return IconData(
       codePoint.getValue(zacRef),
@@ -87,10 +86,10 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
   }) = _FlutterIconThemeData;
 
   IconThemeData build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return IconThemeData(
-      color: color?.build(context, ref, zacContext),
+      color: color?.build(context, ref, helper),
       opacity: opacity?.getValue(zacRef),
       size: size?.getValue(zacRef),
     );

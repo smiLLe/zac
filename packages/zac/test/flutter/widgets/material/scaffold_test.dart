@@ -99,7 +99,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter': FlutterScaffold.unionValueOpenDrawer,
@@ -135,7 +135,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter': FlutterScaffold.unionValueOpenEndDrawer,
@@ -170,7 +170,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter': FlutterScaffold.unionValueShowBodyScrim,
@@ -210,7 +210,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter': FlutterScaffold.unionValueShowBottomSheet,
@@ -245,7 +245,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter': FlutterScaffoldMessenger.unionValueShowSnackBar,
@@ -283,7 +283,7 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:Actions',
+              '_converter': 'z:1:UiActions',
               'actions': [
                 {
                   '_converter':
@@ -297,7 +297,7 @@ void main() {
                         'key': KeysModel.getValueKey('remove_button'),
                         'child': ChildModel.sizedBox,
                         'onPressed': {
-                          '_converter': 'z:1:Actions',
+                          '_converter': 'z:1:UiActions',
                           'actions': [
                             {
                               '_converter': FlutterScaffoldMessenger

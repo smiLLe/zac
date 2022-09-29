@@ -50,15 +50,15 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
 
   @override
   SelectableText buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return SelectableText(
       data,
-      key: key?.buildKey(context, ref, zacContext),
-      style: style?.build(context, ref, zacContext),
-      strutStyle: strutStyle?.build(context, ref, zacContext),
-      textAlign: textAlign?.build(context, ref, zacContext),
-      textDirection: textDirection?.build(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      style: style?.build(context, ref, helper),
+      strutStyle: strutStyle?.build(context, ref, helper),
+      textAlign: textAlign?.build(context, ref, helper),
+      textDirection: textDirection?.build(context, ref, helper),
       textScaleFactor: textScaleFactor?.getValue(zacRef),
       showCursor: showCursor?.getValue(zacRef) ?? false,
       autofocus: autofocus?.getValue(zacRef) ?? false,
@@ -66,13 +66,13 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
       maxLines: maxLines?.getValue(zacRef),
       cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
       cursorHeight: cursorHeight?.getValue(zacRef),
-      cursorRadius: cursorRadius?.build(context, ref, zacContext),
-      cursorColor: cursorColor?.build(context, ref, zacContext),
+      cursorRadius: cursorRadius?.build(context, ref, helper),
+      cursorColor: cursorColor?.build(context, ref, helper),
       enableInteractiveSelection:
           enableInteractiveSelection?.getValue(zacRef) ?? true,
       semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, zacContext),
-      textWidthBasis: textWidthBasis?.build(context, ref, zacContext),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, helper),
+      textWidthBasis: textWidthBasis?.build(context, ref, helper),
     );
   }
 }

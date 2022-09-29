@@ -1,6 +1,6 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -44,11 +44,11 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   }) = _FlutterSliverChildListDelegateFixed;
 
   SliverChildDelegate build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return map(
       list: (value) => SliverChildListDelegate(
-        children.getValue(context, ref, zacContext),
+        children.getValue(context, ref, helper),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacRef) ?? true,
         addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
@@ -57,7 +57,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.getValue(context, ref, zacContext),
+        children.getValue(context, ref, helper),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacRef) ?? true,
         addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,

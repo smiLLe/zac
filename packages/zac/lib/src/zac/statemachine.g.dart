@@ -19,18 +19,17 @@ _$_Transition _$$_TransitionFromJson(Map<String, dynamic> json) =>
       json['targetState'] as String,
       actions: json['actions'] == null
           ? null
-          : ZacActions.fromJson(json['actions'] as Object),
+          : ZacStateMachineActions.fromJson(json['actions'] as Object),
     );
 
-_$_StateMachineActionsSend _$$_StateMachineActionsSendFromJson(
+_$_StateMachineBaseActionsSend _$$_StateMachineBaseActionsSendFromJson(
         Map<String, dynamic> json) =>
-    _$_StateMachineActionsSend(
+    _$_StateMachineBaseActionsSend(
       family: json['family'] as Object,
       event: ZacString.fromJson(json['event'] as Object),
       payload: json['payload'] == null
           ? null
           : ZacObject.fromJson(json['payload'] as Object),
-      $type: json['_converter'] as String?,
     );
 
 _$_StateMachineActionsUpdateContext
@@ -39,7 +38,6 @@ _$_StateMachineActionsUpdateContext
           transformer: (json['transformer'] as List<dynamic>)
               .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
               .toList(),
-          $type: json['_converter'] as String?,
         );
 
 _$_StateMachineProviderBuilder _$$_StateMachineProviderBuilderFromJson(

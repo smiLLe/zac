@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -80,29 +80,29 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
 
   @override
   Image buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return map(
       network: (value) => Image.network(
         value.src.getValue(zacRef),
-        key: value.key?.buildKey(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
         scale: value.scale?.getValue(zacRef) ?? 1.0,
         semanticLabel: value.semanticLabel?.getValue(zacRef),
         excludeFromSemantics:
             value.excludeFromSemantics?.getValue(zacRef) ?? false,
         width: value.width?.getValue(zacRef),
         height: value.height?.getValue(zacRef),
-        color: value.color?.build(context, ref, zacContext),
-        colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
-        fit: value.fit?.build(context, ref, zacContext),
-        alignment: value.alignment?.build(context, ref, zacContext) ??
-            Alignment.center,
-        repeat: value.repeat?.build(context, ref, zacContext) ??
-            ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context, ref, zacContext),
+        color: value.color?.build(context, ref, helper),
+        colorBlendMode: value.colorBlendMode?.build(context, ref, helper),
+        fit: value.fit?.build(context, ref, helper),
+        alignment:
+            value.alignment?.build(context, ref, helper) ?? Alignment.center,
+        repeat:
+            value.repeat?.build(context, ref, helper) ?? ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(context, ref, helper),
         matchTextDirection: value.matchTextDirection?.getValue(zacRef) ?? false,
         gaplessPlayback: value.gaplessPlayback?.getValue(zacRef) ?? false,
-        filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
+        filterQuality: value.filterQuality?.build(context, ref, helper) ??
             FilterQuality.low,
         isAntiAlias: value.isAntiAlias?.getValue(zacRef) ?? false,
         headers: value.headers,
@@ -111,24 +111,24 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
       ),
       asset: (value) => Image.asset(
         value.name.getValue(zacRef),
-        key: value.key?.buildKey(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
         scale: value.scale?.getValue(zacRef) ?? 1.0,
         semanticLabel: value.semanticLabel?.getValue(zacRef),
         excludeFromSemantics:
             value.excludeFromSemantics?.getValue(zacRef) ?? false,
         width: value.width?.getValue(zacRef),
         height: value.height?.getValue(zacRef),
-        color: value.color?.build(context, ref, zacContext),
-        colorBlendMode: value.colorBlendMode?.build(context, ref, zacContext),
-        fit: value.fit?.build(context, ref, zacContext),
-        alignment: value.alignment?.build(context, ref, zacContext) ??
-            Alignment.center,
-        repeat: value.repeat?.build(context, ref, zacContext) ??
-            ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context, ref, zacContext),
+        color: value.color?.build(context, ref, helper),
+        colorBlendMode: value.colorBlendMode?.build(context, ref, helper),
+        fit: value.fit?.build(context, ref, helper),
+        alignment:
+            value.alignment?.build(context, ref, helper) ?? Alignment.center,
+        repeat:
+            value.repeat?.build(context, ref, helper) ?? ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(context, ref, helper),
         matchTextDirection: value.matchTextDirection?.getValue(zacRef) ?? false,
         gaplessPlayback: value.gaplessPlayback?.getValue(zacRef) ?? false,
-        filterQuality: value.filterQuality?.build(context, ref, zacContext) ??
+        filterQuality: value.filterQuality?.build(context, ref, helper) ??
             FilterQuality.low,
         isAntiAlias: value.isAntiAlias?.getValue(zacRef) ?? false,
         cacheWidth: value.cacheWidth?.getValue(zacRef),

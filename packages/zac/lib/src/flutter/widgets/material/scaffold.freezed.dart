@@ -1030,7 +1030,7 @@ mixin _$FlutterSnackBar {
   FlutterSnackBarAction? get action =>
       throw _privateConstructorUsedError; // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
-  ZacActions? get onVisible => throw _privateConstructorUsedError;
+  ZacUiActions? get onVisible => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1082,7 +1082,7 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
 // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
   @override
-  final ZacActions? onVisible;
+  final ZacUiActions? onVisible;
 
   @override
   String toString() {
@@ -1145,7 +1145,7 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
       final FlutterShapeBorder? shape,
       final FlutterSnackBarBehavior? behavior,
       final FlutterSnackBarAction? action,
-      final ZacActions? onVisible}) = _$_FlutterSnackBar;
+      final ZacUiActions? onVisible}) = _$_FlutterSnackBar;
   _FlutterSnackBar._() : super._();
 
   factory _FlutterSnackBar.fromJson(Map<String, dynamic> json) =
@@ -1173,7 +1173,7 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
   FlutterSnackBarAction? get action;
   @override // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
-  ZacActions? get onVisible;
+  ZacUiActions? get onVisible;
 }
 
 FlutterSnackBarBehavior _$FlutterSnackBarBehaviorFromJson(
@@ -1312,7 +1312,7 @@ mixin _$FlutterSnackBarAction {
   FlutterColor? get textColor => throw _privateConstructorUsedError;
   FlutterColor? get disabledTextColor => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
-  ZacActions? get onPressed => throw _privateConstructorUsedError;
+  ZacUiActions? get onPressed => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1344,7 +1344,7 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
   @override
   final String label;
   @override
-  final ZacActions? onPressed;
+  final ZacUiActions? onPressed;
 
   @override
   String toString() {
@@ -1389,7 +1389,7 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
       final FlutterColor? textColor,
       final FlutterColor? disabledTextColor,
       required final String label,
-      required final ZacActions? onPressed}) = _$_FlutterSnackBarAction;
+      required final ZacUiActions? onPressed}) = _$_FlutterSnackBarAction;
   _FlutterSnackBarAction._() : super._();
 
   factory _FlutterSnackBarAction.fromJson(Map<String, dynamic> json) =
@@ -1404,7 +1404,7 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
   @override
   String get label;
   @override
-  ZacActions? get onPressed;
+  ZacUiActions? get onPressed;
 }
 
 FlutterMaterialBanner _$FlutterMaterialBannerFromJson(
@@ -1427,7 +1427,7 @@ mixin _$FlutterMaterialBanner {
   ZacBool? get forceActionsBelow =>
       throw _privateConstructorUsedError; // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-  ZacActions? get onVisible => throw _privateConstructorUsedError;
+  ZacUiActions? get onVisible => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1479,7 +1479,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   @override
-  final ZacActions? onVisible;
+  final ZacUiActions? onVisible;
 
   @override
   String toString() {
@@ -1545,7 +1545,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
       final FlutterEdgeInsetsGeometry? padding,
       final FlutterEdgeInsetsGeometry? leadingPadding,
       final ZacBool? forceActionsBelow,
-      final ZacActions? onVisible}) = _$_FlutterMaterialBanner;
+      final ZacUiActions? onVisible}) = _$_FlutterMaterialBanner;
   _FlutterMaterialBanner._() : super._();
 
   factory _FlutterMaterialBanner.fromJson(Map<String, dynamic> json) =
@@ -1573,5 +1573,5 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   ZacBool? get forceActionsBelow;
   @override // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-  ZacActions? get onVisible;
+  ZacUiActions? get onVisible;
 }

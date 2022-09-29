@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +16,7 @@ Future<void> _commonConsume<TClass, TVal>({
   })
       createConsume,
 }) async {
-  late ZacBuildContext zacContext;
+  late WidgetRef ref;
 
   await testZacWidget(
       tester,
@@ -27,12 +28,13 @@ Future<void> _commonConsume<TClass, TVal>({
         },
         transformer: [ConvertTransformer()],
         child: LeakContext(
-          cb: (context) => zacContext = context,
+          cb: (_, r, __) => ref = r,
         ),
       ));
 
   expect(
-      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
+      (createConsume('foo') as ConsumeValue<TVal>)
+          .getSharedValue(ZacRef.widget(ref)),
       testVal);
 
   await testZacWidget(
@@ -41,12 +43,13 @@ Future<void> _commonConsume<TClass, TVal>({
         family: 'foo',
         value: testVal,
         child: LeakContext(
-          cb: (context) => zacContext = context,
+          cb: (_, r, __) => ref = r,
         ),
       ));
 
   expect(
-      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
+      (createConsume('foo') as ConsumeValue<TVal>)
+          .getSharedValue(ZacRef.widget(ref)),
       testVal);
 }
 
@@ -122,26 +125,26 @@ void main() {
   testWidgets(
       'ActualValue.getActualValue() may transform but only to same type',
       (tester) async {
-    late ZacBuildContext zacContext;
+    late WidgetRef ref;
 
     await testZacWidget(
         tester,
         LeakContext(
-          cb: (context) => zacContext = context,
+          cb: (_, r, __) => ref = r,
         ));
 
     expect(
         (ZacString('hello', transformer: [
           StringTransformer.replaceAll(ZacString('hello'), ZacString('world'))
         ]) as ActualValue<String>)
-            .getActualValue(zacContext),
+            .getActualValue(ZacRef.widget(ref)),
         'world');
 
     expect(
         () => (ZacString('hello',
                     transformer: [const StringTransformer.isEmpty()])
                 as ActualValue<String>)
-            .getActualValue(zacContext),
+            .getActualValue(ZacRef.widget(ref)),
         throwsStateError);
   });
   group('ZacBool', () {
@@ -397,7 +400,9 @@ void main() {
     });
 
     testWidgets('consume', (tester) async {
-      late ZacBuildContext zacContext;
+      late WidgetRef ref;
+      late BuildContext context;
+      late ZacActionHelper helper;
 
       await testZacWidget(
           tester,
@@ -415,19 +420,23 @@ void main() {
               const IterableTransformer.toList(),
             ],
             child: LeakContext(
-              cb: (context) => zacContext = context,
+              cb: (c, r, h) {
+                ref = r;
+                context = c;
+                helper = h;
+              },
             ),
           ));
-      expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
+      expect(ListOfZacWidgetConsume('foo').getSharedValue(ZacRef.widget(ref)),
           [FlutterSizedBox()]);
-      expect(
-          ListOfZacWidget.consume('foo')
-              .getValue(zacContext.context, zacContext.ref, zacContext),
+      expect(ListOfZacWidget.consume('foo').getValue(context, ref, helper),
           isA<List<Widget>>());
     });
 
     testWidgets('consume #2', (tester) async {
-      late ZacBuildContext zacContext;
+      late WidgetRef ref;
+      late BuildContext context;
+      late ZacActionHelper helper;
 
       await testZacWidget(
           tester,
@@ -441,14 +450,16 @@ void main() {
             },
             transformer: [ConvertTransformer()],
             child: LeakContext(
-              cb: (context) => zacContext = context,
+              cb: (c, r, h) {
+                ref = r;
+                context = c;
+                helper = h;
+              },
             ),
           ));
-      expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
+      expect(ListOfZacWidgetConsume('foo').getSharedValue(ZacRef.widget(ref)),
           [FlutterSizedBox()]);
-      expect(
-          ListOfZacWidget.consume('foo')
-              .getValue(zacContext.context, zacContext.ref, zacContext),
+      expect(ListOfZacWidget.consume('foo').getValue(context, ref, helper),
           isA<List<Widget>>());
     });
   });

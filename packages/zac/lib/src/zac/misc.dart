@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -72,3 +73,13 @@ class ZacRef with _$ZacRef {
   factory ZacRef.adProvider(AutoDisposeProviderRef<Object?> ref) =
       _AutoDisposeProviderRef;
 }
+
+// @freezed
+// class ZacHelper with _$ZacHelper {
+//   factory ZacHelper() = _ZacHelper;
+//   factory ZacHelper.ui({
+//     required BuildContext context,
+//     required bool Function() isActive,
+//     required void Function(void Function() cb) onBecomeInactive,
+//   }) = _ZacHelperUi;
+// }

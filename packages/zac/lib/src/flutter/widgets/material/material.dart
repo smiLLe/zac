@@ -1,8 +1,8 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -40,20 +40,20 @@ class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
 
   @override
   Material buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Material(
-      key: key?.buildKey(context, ref, zacContext),
-      child: child?.buildWidget(context, ref, zacContext),
+      key: key?.buildKey(context, ref, helper),
+      child: child?.buildWidget(context, ref, helper),
       // animationDuration: key?.toFlutter(context),
       borderOnForeground: borderOnForeground?.getValue(zacRef) ?? true,
-      borderRadius: borderRadius?.build(context, ref, zacContext),
-      clipBehavior: clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
-      color: color?.build(context, ref, zacContext),
+      borderRadius: borderRadius?.build(context, ref, helper),
+      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
+      color: color?.build(context, ref, helper),
       elevation: elevation?.getValue(zacRef) ?? 0,
-      shadowColor: shadowColor?.build(context, ref, zacContext),
-      shape: shape?.build(context, ref, zacContext),
-      textStyle: textStyle?.build(context, ref, zacContext),
+      shadowColor: shadowColor?.build(context, ref, helper),
+      shape: shape?.build(context, ref, helper),
+      textStyle: textStyle?.build(context, ref, helper),
       // type: type?.toFlutter(context),
     );
   }

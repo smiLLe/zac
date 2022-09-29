@@ -198,7 +198,7 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
               json['action'] as Map<String, dynamic>),
       onVisible: json['onVisible'] == null
           ? null
-          : ZacActions.fromJson(json['onVisible'] as Object),
+          : ZacUiActions.fromJson(json['onVisible'] as Object),
     );
 
 _$_FlutterSnackBarBehaviorFixed _$$_FlutterSnackBarBehaviorFixedFromJson(
@@ -229,7 +229,7 @@ _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
       label: json['label'] as String,
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacUiActions.fromJson(json['onPressed'] as Object),
     );
 
 _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
@@ -266,5 +266,5 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
           : ZacBool.fromJson(json['forceActionsBelow'] as Object),
       onVisible: json['onVisible'] == null
           ? null
-          : ZacActions.fromJson(json['onVisible'] as Object),
+          : ZacUiActions.fromJson(json['onVisible'] as Object),
     );

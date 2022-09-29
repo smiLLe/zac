@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -40,25 +40,23 @@ class FlutterWrap with _$FlutterWrap implements ZacWidget {
 
   @override
   Wrap buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return Wrap(
-      key: key?.buildKey(context, ref, zacContext),
-      direction: direction?.build(context, ref, zacContext) ?? Axis.horizontal,
-      alignment:
-          alignment?.build(context, ref, zacContext) ?? WrapAlignment.start,
+      key: key?.buildKey(context, ref, helper),
+      direction: direction?.build(context, ref, helper) ?? Axis.horizontal,
+      alignment: alignment?.build(context, ref, helper) ?? WrapAlignment.start,
       spacing: spacing?.getValue(zacRef) ?? 0.0,
       runAlignment:
-          runAlignment?.build(context, ref, zacContext) ?? WrapAlignment.start,
+          runAlignment?.build(context, ref, helper) ?? WrapAlignment.start,
       runSpacing: runSpacing?.getValue(zacRef) ?? 0.0,
-      crossAxisAlignment: crossAxisAlignment?.build(context, ref, zacContext) ??
+      crossAxisAlignment: crossAxisAlignment?.build(context, ref, helper) ??
           WrapCrossAlignment.start,
-      textDirection: textDirection?.build(context, ref, zacContext),
-      verticalDirection: verticalDirection?.build(context, ref, zacContext) ??
+      textDirection: textDirection?.build(context, ref, helper),
+      verticalDirection: verticalDirection?.build(context, ref, helper) ??
           VerticalDirection.down,
-      clipBehavior: clipBehavior?.build(context, ref, zacContext) ?? Clip.none,
-      children:
-          children?.getValue(context, ref, zacContext) ?? const <Widget>[],
+      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
+      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
     );
   }
 }

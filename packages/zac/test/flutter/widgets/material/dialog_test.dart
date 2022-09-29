@@ -213,14 +213,14 @@ void main() {
               child: FlutterDialogs.simpleDialogOption(
             key: FlutterValueKey('FIND_ME'),
             child: FlutterSizedBox(key: FlutterValueKey('child1')),
-            onPressed: LeakAction.createActions(cb),
+            onPressed: LeakUiAction.createActions(cb),
           )));
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
       await tester.tap(findMe);
 
-      verify(cb(any, any)).called(1);
+      verify(cb(any, any, any, any)).called(1);
     });
   });
 }

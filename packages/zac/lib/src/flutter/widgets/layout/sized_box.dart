@@ -1,7 +1,7 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -61,31 +61,31 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
 
   @override
   SizedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return map(
       (value) => SizedBox(
-        key: value.key?.buildKey(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
         width: value.width?.getValue(zacRef),
         height: value.height?.getValue(zacRef),
-        child: value.child?.buildWidget(context, ref, zacContext),
+        child: value.child?.buildWidget(context, ref, helper),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.buildKey(context, ref, zacContext),
-        child: value.child?.buildWidget(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
+        child: value.child?.buildWidget(context, ref, helper),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.buildKey(context, ref, zacContext),
-        child: value.child?.buildWidget(context, ref, zacContext),
-        size: value.size?.build(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
+        child: value.child?.buildWidget(context, ref, helper),
+        size: value.size?.build(context, ref, helper),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.buildKey(context, ref, zacContext),
-        child: value.child?.buildWidget(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
+        child: value.child?.buildWidget(context, ref, helper),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.buildKey(context, ref, zacContext),
-        child: value.child?.buildWidget(context, ref, zacContext),
+        key: value.key?.buildKey(context, ref, helper),
+        child: value.child?.buildWidget(context, ref, helper),
         dimension: value.dimension?.getValue(zacRef),
       ),
     );

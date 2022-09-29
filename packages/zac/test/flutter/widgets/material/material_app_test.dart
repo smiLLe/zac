@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
 import 'package:zac/src/zac/update_context.dart';
@@ -34,7 +35,7 @@ void main() {
   });
 
   testWidgets('get NavigatorState', (tester) async {
-    late ZacBuildContext context;
+    late WidgetRef ref;
 
     await testWithConverters(
       tester: tester,
@@ -43,7 +44,7 @@ void main() {
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume('foo'),
-            home: LeakContext(cb: (c) => context = c),
+            home: LeakContext(cb: (c, r, helper) => ref = r),
           ),
         ),
       ),
@@ -51,7 +52,7 @@ void main() {
     );
 
     expect(
-        context.ref.read(SharedValue.provider('foo')),
+        ref.read(SharedValue.provider('foo')),
         isA<FilledSharedValue>().having(
             (p0) => p0.data,
             'data',

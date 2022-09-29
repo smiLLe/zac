@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,21 +31,21 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     final zacRef = ZacRef.widget(ref);
     return SystemUiOverlayStyle(
       systemNavigationBarColor:
-          systemNavigationBarColor?.build(context, ref, zacContext),
+          systemNavigationBarColor?.build(context, ref, helper),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(context, ref, zacContext),
+          systemNavigationBarDividerColor?.build(context, ref, helper),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(context, ref, zacContext),
+          systemNavigationBarIconBrightness?.build(context, ref, helper),
       systemNavigationBarContrastEnforced:
           systemNavigationBarContrastEnforced?.getValue(zacRef),
-      statusBarColor: statusBarColor?.build(context, ref, zacContext),
-      statusBarBrightness: statusBarBrightness?.build(context, ref, zacContext),
+      statusBarColor: statusBarColor?.build(context, ref, helper),
+      statusBarBrightness: statusBarBrightness?.build(context, ref, helper),
       statusBarIconBrightness:
-          statusBarIconBrightness?.build(context, ref, zacContext),
+          statusBarIconBrightness?.build(context, ref, helper),
       systemStatusBarContrastEnforced:
           systemStatusBarContrastEnforced?.getValue(zacRef),
     );
@@ -86,7 +86,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
       _FlutterTextInputTypevisiblePassword;
 
   TextInputType build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -141,7 +141,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
       _FlutterTextInputActionunspecified;
 
   TextInputAction build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -179,7 +179,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
   TextCapitalization build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -203,7 +203,7 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
   SmartDashesType build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -225,7 +225,7 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
   SmartQuotesType build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,

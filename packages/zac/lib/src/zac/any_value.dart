@@ -30,7 +30,7 @@ abstract class ZacWidget {
   }
 
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext);
+      BuildContext context, WidgetRef ref, ZacActionHelper helper);
 }
 
 mixin ActualValue<Of> {
@@ -41,7 +41,7 @@ mixin ActualValue<Of> {
     if (true == transformer?.isNotEmpty) {
       final transformed = transformer!.transformValues(
         ZacTransformValue(value),
-        context,
+        ref,
       );
 
       if (transformed is! Of) {
@@ -105,7 +105,7 @@ The consumed $SharedValue: $value
 
     final transformedValue = transformer!.transformValues(
       ZacTransformValue(value),
-      context,
+      ref,
     );
 
     if (transformedValue is! Of) {
@@ -144,7 +144,7 @@ mixin ConsumeValueList<Of> {
 
     late List<Object?> value;
     if (consumedValue is ActualValue<List>) {
-      value = consumedValue.getActualValue(context);
+      value = consumedValue.getActualValue(ref);
     } else if (consumedValue is List) {
       value = consumedValue;
     } else {
@@ -179,7 +179,7 @@ The consumed $SharedValue: $value
     return value.map<Of>((element) {
       final transformedValue = transformer!.transformValues(
         ZacTransformValue(element),
-        context,
+        ref,
       );
 
       if (transformedValue is! Of) {
@@ -541,15 +541,15 @@ class ListOfZacWidget with _$ListOfZacWidget {
   }) = ListOfZacWidgetConsume;
 
   List<Widget> getValue(
-          BuildContext context, WidgetRef ref, ZacBuildContext zacContext) =>
+          BuildContext context, WidgetRef ref, ZacActionHelper helper) =>
       map(
         (obj) => obj
             .getActualValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, zacContext))
+            .map((e) => e.buildWidget(context, ref, helper))
             .toList(),
         consume: (obj) => obj
             .getSharedValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, zacContext))
+            .map((e) => e.buildWidget(context, ref, helper))
             .toList(),
       );
 }
@@ -574,7 +574,7 @@ class ZacWidgetConsumerBuilder
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return ZacWidgetConsumer(
       builder: this,
     );
@@ -589,9 +589,9 @@ class ZacWidgetConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZacUpdateContext(
-      builder: (context) => builder.map((value) => value
-          .getSharedValue(context)
-          .buildWidget(context.context, context.ref, context)),
+      builder: (context, ref, helper) => builder.map((value) => value
+          .getSharedValue(ZacRef.widget(ref))
+          .buildWidget(context, ref, helper)),
     );
   }
 }

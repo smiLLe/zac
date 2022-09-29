@@ -21,7 +21,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
 
   @override
   InputBorder build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext);
+      BuildContext context, WidgetRef ref, ZacActionHelper helper);
 }
 
 @defaultConverterFreezed
@@ -44,11 +44,10 @@ class FlutterOutlineInputBorder
 
   @override
   OutlineInputBorder build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return OutlineInputBorder(
-      borderSide:
-          borderSide?.build(context, ref, zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context, ref, zacContext) ??
+      borderSide: borderSide?.build(context, ref, helper) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, ref, helper) ??
           const BorderRadius.all(Radius.circular(4.0)),
       gapPadding: gapPadding?.getValue(ZacRef.widget(ref)) ?? 4.0,
     );
@@ -74,11 +73,10 @@ class FlutterUnderlineInputBorder
 
   @override
   UnderlineInputBorder build(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
+      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
     return UnderlineInputBorder(
-      borderSide:
-          borderSide?.build(context, ref, zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context, ref, zacContext) ??
+      borderSide: borderSide?.build(context, ref, helper) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, ref, helper) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),
@@ -107,19 +105,24 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   @override
-  MaterialPageRoute<ZacActions?> build(ZacBuildContext context,
-      {Widget Function(ZacBuildContext context, ZacWidget zacWidget)? wrap}) {
-    return MaterialPageRoute<ZacActions?>(
+  MaterialPageRoute<ZacUiActions?> build(
+      BuildContext context, WidgetRef ref, ZacActionHelper helper,
+      {Widget Function(BuildContext context, WidgetRef ref,
+              ZacActionHelper helper, ZacWidget zacWidget)?
+          wrap}) {
+    final zacRef = ZacRef.widget(ref);
+    return MaterialPageRoute<ZacUiActions?>(
       builder: (_) => ZacUpdateContext(
-        builder: (context) {
-          if (null == wrap)
-            return child.buildWidget(context.context, context.ref, context);
-          return wrap(context, child);
+        builder: (context, ref, helper) {
+          if (null == wrap) {
+            return child.buildWidget(context, ref, helper);
+          }
+          return wrap(context, ref, helper, child);
         },
       ),
-      maintainState: maintainState?.getValue(context) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(context) ?? false,
-      settings: settings?.build(context.context, context.ref, context),
+      maintainState: maintainState?.getValue(zacRef) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValue(zacRef) ?? false,
+      settings: settings?.build(context, ref, helper),
     );
   }
 }

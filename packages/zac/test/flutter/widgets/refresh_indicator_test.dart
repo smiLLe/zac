@@ -76,7 +76,7 @@ void main() {
           title: FlutterText(ZacString('Title')),
         ),
         body: FlutterRefreshIndicator(
-          onRefresh: ZacActions([
+          onRefresh: ZacUiActions([
             LeakBagContentAction(cb),
             const FlutterRefreshIndicatorAction(),
           ]),
