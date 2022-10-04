@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/services.dart';
@@ -31,21 +31,21 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return SystemUiOverlayStyle(
       systemNavigationBarColor:
-          systemNavigationBarColor?.build(context, ref, helper),
+          systemNavigationBarColor?.build(context, ref, lifetime),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(context, ref, helper),
+          systemNavigationBarDividerColor?.build(context, ref, lifetime),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(context, ref, helper),
+          systemNavigationBarIconBrightness?.build(context, ref, lifetime),
       systemNavigationBarContrastEnforced:
           systemNavigationBarContrastEnforced?.getValue(zacRef),
-      statusBarColor: statusBarColor?.build(context, ref, helper),
-      statusBarBrightness: statusBarBrightness?.build(context, ref, helper),
+      statusBarColor: statusBarColor?.build(context, ref, lifetime),
+      statusBarBrightness: statusBarBrightness?.build(context, ref, lifetime),
       statusBarIconBrightness:
-          statusBarIconBrightness?.build(context, ref, helper),
+          statusBarIconBrightness?.build(context, ref, lifetime),
       systemStatusBarContrastEnforced:
           systemStatusBarContrastEnforced?.getValue(zacRef),
     );
@@ -86,7 +86,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
       _FlutterTextInputTypevisiblePassword;
 
   TextInputType build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -141,7 +141,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
       _FlutterTextInputActionunspecified;
 
   TextInputAction build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -179,7 +179,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
   TextCapitalization build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -203,7 +203,7 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
   SmartDashesType build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -225,7 +225,7 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
   SmartQuotesType build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,

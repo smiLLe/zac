@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,15 +35,15 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
 
   @override
   Container buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return Container(
-      key: key?.buildKey(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
-      color: color?.build(context, ref, helper),
-      padding: padding?.build(context, ref, helper),
-      margin: margin?.build(context, ref, helper),
-      alignment: alignment?.build(context, ref, helper),
-      decoration: decoration?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
+      color: color?.build(context, ref, lifetime),
+      padding: padding?.build(context, ref, lifetime),
+      margin: margin?.build(context, ref, lifetime),
+      alignment: alignment?.build(context, ref, lifetime),
+      decoration: decoration?.build(context, ref, lifetime),
     );
   }
 }

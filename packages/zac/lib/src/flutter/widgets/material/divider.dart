@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -32,15 +32,15 @@ class FlutterDivider with _$FlutterDivider implements ZacWidget {
 
   @override
   Divider buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Divider(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       height: height?.getValue(zacRef),
       thickness: thickness?.getValue(zacRef),
       indent: indent?.getValue(zacRef),
       endIndent: endIndent?.getValue(zacRef),
-      color: color?.build(context, ref, helper),
+      color: color?.build(context, ref, lifetime),
     );
   }
 }

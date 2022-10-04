@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,23 +53,23 @@ class FlutterProgressIndicator
 
   @override
   ProgressIndicator buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       linear: (value) => LinearProgressIndicator(
-        key: value.key?.buildKey(context, ref, helper),
+        key: value.key?.buildKey(context, ref, lifetime),
         value: value.value?.getValue(zacRef),
-        backgroundColor: value.backgroundColor?.build(context, ref, helper),
-        color: value.color?.build(context, ref, helper),
+        backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
+        color: value.color?.build(context, ref, lifetime),
         minHeight: value.minHeight?.getValue(zacRef),
         semanticsLabel: value.semanticsLabel?.getValue(zacRef),
         semanticsValue: value.semanticsValue?.getValue(zacRef),
       ),
       circular: (value) => CircularProgressIndicator(
-        key: value.key?.buildKey(context, ref, helper),
+        key: value.key?.buildKey(context, ref, lifetime),
         value: value.value?.getValue(zacRef),
-        backgroundColor: value.backgroundColor?.build(context, ref, helper),
-        color: value.color?.build(context, ref, helper),
+        backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
+        color: value.color?.build(context, ref, lifetime),
         strokeWidth: value.strokeWidth?.getValue(zacRef) ?? 4.0,
         semanticsLabel: value.semanticsLabel?.getValue(zacRef),
         semanticsValue: value.semanticsValue?.getValue(zacRef),

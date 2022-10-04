@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -35,16 +35,16 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements ZacWidget {
 
   @override
   IndexedStack buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return IndexedStack(
-      key: key?.buildKey(context, ref, helper),
-      alignment: alignment?.build(context, ref, helper) ??
+      key: key?.buildKey(context, ref, lifetime),
+      alignment: alignment?.build(context, ref, lifetime) ??
           AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(context, ref, helper),
-      sizing: sizing?.build(context, ref, helper) ?? StackFit.loose,
+      textDirection: textDirection?.build(context, ref, lifetime),
+      sizing: sizing?.build(context, ref, lifetime) ?? StackFit.loose,
       index: index?.getValue(zacRef),
-      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
+      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
     );
   }
 }

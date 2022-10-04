@@ -1,9 +1,8 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -18,7 +17,9 @@ part 'scaffold.freezed.dart';
 part 'scaffold.g.dart';
 
 @defaultConverterFreezed
-class FlutterScaffold with _$FlutterScaffold implements ZacUiAction, ZacWidget {
+class FlutterScaffold
+    with _$FlutterScaffold
+    implements ZacInteraction, ZacWidget {
   const FlutterScaffold._();
 
   static const String unionValue = 'f:1:Scaffold';
@@ -83,8 +84,8 @@ class FlutterScaffold with _$FlutterScaffold implements ZacUiAction, ZacWidget {
   }) = _FlutterScaffoldShowBottomSheet;
 
   @override
-  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
-      ContextBag bag) {
+  void execute(BuildContext context, WidgetRef ref,
+      ZacInteractionLifetime lifetime, ContextBag bag) {
     final zacRef = ZacRef.widget(ref);
     map(
       (_) => throw StateError('Should never happen'),
@@ -93,12 +94,12 @@ class FlutterScaffold with _$FlutterScaffold implements ZacUiAction, ZacWidget {
         if (null == state) return;
         state.showBottomSheet<void>(
           (_) => FlutterBuilder(child: value.child)
-              .buildWidget(context, ref, helper),
-          backgroundColor: value.backgroundColor?.build(context, ref, helper),
-          clipBehavior: value.clipBehavior?.build(context, ref, helper),
-          constraints: value.constraints?.build(context, ref, helper),
+              .buildWidget(context, ref, lifetime),
+          backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
+          clipBehavior: value.clipBehavior?.build(context, ref, lifetime),
+          constraints: value.constraints?.build(context, ref, lifetime),
           elevation: value.elevation?.getValue(zacRef),
-          shape: value.shape?.build(context, ref, helper),
+          shape: value.shape?.build(context, ref, lifetime),
           // transitionAnimationController:
         );
       },
@@ -126,31 +127,31 @@ class FlutterScaffold with _$FlutterScaffold implements ZacUiAction, ZacWidget {
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       (value) => Scaffold(
-        key: value.key?.buildKey(context, ref, helper),
-        body: value.body?.buildWidget(context, ref, helper),
+        key: value.key?.buildKey(context, ref, lifetime),
+        body: value.body?.buildWidget(context, ref, lifetime),
         floatingActionButton:
-            value.floatingActionButton?.buildWidget(context, ref, helper),
+            value.floatingActionButton?.buildWidget(context, ref, lifetime),
         persistentFooterButtons:
-            value.persistentFooterButtons?.getValue(context, ref, helper),
-        appBar: value.appBar?.buildWidget(context, ref, helper)
+            value.persistentFooterButtons?.getValue(context, ref, lifetime),
+        appBar: value.appBar?.buildWidget(context, ref, lifetime)
             as PreferredSizeWidget?,
-        drawer: value.drawer?.buildWidget(context, ref, helper),
-        endDrawer: value.endDrawer?.buildWidget(context, ref, helper),
+        drawer: value.drawer?.buildWidget(context, ref, lifetime),
+        endDrawer: value.endDrawer?.buildWidget(context, ref, lifetime),
         bottomNavigationBar:
-            value.bottomNavigationBar?.buildWidget(context, ref, helper),
-        bottomSheet: value.bottomSheet?.buildWidget(context, ref, helper),
-        backgroundColor: value.backgroundColor?.build(context, ref, helper),
+            value.bottomNavigationBar?.buildWidget(context, ref, lifetime),
+        bottomSheet: value.bottomSheet?.buildWidget(context, ref, lifetime),
+        backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
         resizeToAvoidBottomInset:
             value.resizeToAvoidBottomInset?.getValue(zacRef),
         primary: value.primary?.getValue(zacRef) ?? true,
         extendBody: value.extendBody?.getValue(zacRef) ?? false,
         extendBodyBehindAppBar:
             value.extendBodyBehindAppBar?.getValue(zacRef) ?? false,
-        drawerScrimColor: value.drawerScrimColor?.build(context, ref, helper),
+        drawerScrimColor: value.drawerScrimColor?.build(context, ref, lifetime),
         drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacRef),
         drawerEnableOpenDragGesture:
             value.drawerEnableOpenDragGesture?.getValue(zacRef) ?? true,
@@ -169,7 +170,7 @@ class FlutterScaffold with _$FlutterScaffold implements ZacUiAction, ZacWidget {
 @defaultConverterFreezed
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
-    implements ZacUiAction {
+    implements ZacInteraction {
   const FlutterScaffoldMessenger._();
 
   static const String unionValue = 'f:1:ScaffoldMessenger';
@@ -221,15 +222,15 @@ class FlutterScaffoldMessenger
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
   @override
-  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
-      ContextBag bag) {
+  void execute(BuildContext context, WidgetRef ref,
+      ZacInteractionLifetime lifetime, ContextBag bag) {
     map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
-        state.showSnackBar(value.snackBar.buildWidget(context, ref, helper));
+        state.showSnackBar(value.snackBar.buildWidget(context, ref, lifetime));
       },
       hideCurrentSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context);
@@ -249,7 +250,7 @@ class FlutterScaffoldMessenger
 
         // TODO: Add reasons via AWActions in constructor
         state.showMaterialBanner(
-            value.materialBanner.buildWidget(context, ref, helper));
+            value.materialBanner.buildWidget(context, ref, lifetime));
       },
       hideCurrentMaterialBanner: (value) {
         final state = ScaffoldMessenger.maybeOf(context);
@@ -290,32 +291,32 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
     // Animation<double>? animation,
-    ZacUiActions? onVisible,
+    ZacInteractions? onVisible,
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
   @override
   SnackBar buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return SnackBar(
-      content: content.buildWidget(context, ref, helper),
-      key: key?.buildKey(context, ref, helper),
-      action: action?.buildWidget(context, ref, helper),
+      content: content.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(context, ref, lifetime),
+      action: action?.buildWidget(context, ref, lifetime),
       // animation: key?.toFlutter(context),
-      backgroundColor: backgroundColor?.build(context, ref, helper),
-      behavior: behavior?.build(context, ref, helper),
+      backgroundColor: backgroundColor?.build(context, ref, lifetime),
+      behavior: behavior?.build(context, ref, lifetime),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
       elevation: elevation?.getValue(zacRef),
-      margin: margin?.build(context, ref, helper),
+      margin: margin?.build(context, ref, lifetime),
       onVisible: onVisible?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
-      padding: padding?.build(context, ref, helper),
-      shape: shape?.build(context, ref, helper),
+      padding: padding?.build(context, ref, lifetime),
+      shape: shape?.build(context, ref, lifetime),
       width: width?.getValue(zacRef),
     );
   }
@@ -335,7 +336,7 @@ class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
   factory FlutterSnackBarBehavior.floating() = _FlutterSnackBarBehaviorFloating;
 
   SnackBarBehavior build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       fixed: (_) => SnackBarBehavior.fixed,
       floating: (_) => SnackBarBehavior.floating,
@@ -358,23 +359,23 @@ class FlutterSnackBarAction with _$FlutterSnackBarAction implements ZacWidget {
     FlutterColor? textColor,
     FlutterColor? disabledTextColor,
     required String label,
-    required ZacUiActions? onPressed,
+    required ZacInteractions? onPressed,
   }) = _FlutterSnackBarAction;
 
   @override
   SnackBarAction buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return SnackBarAction(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       label: label,
       onPressed: onPressed?.createCb(
             context: context,
             ref: ref,
-            helper: helper,
+            lifetime: lifetime,
           ) ??
           () {},
-      disabledTextColor: disabledTextColor?.build(context, ref, helper),
-      textColor: textColor?.build(context, ref, helper),
+      disabledTextColor: disabledTextColor?.build(context, ref, lifetime),
+      textColor: textColor?.build(context, ref, lifetime),
     );
   }
 }
@@ -402,31 +403,31 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
     ZacBool? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-    ZacUiActions? onVisible,
+    ZacInteractions? onVisible,
   }) = _FlutterMaterialBanner;
 
   @override
   MaterialBanner buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return MaterialBanner(
-      content: content.buildWidget(context, ref, helper),
-      actions: actions.getValue(context, ref, helper),
-      key: key?.buildKey(context, ref, helper),
+      content: content.buildWidget(context, ref, lifetime),
+      actions: actions.getValue(context, ref, lifetime),
+      key: key?.buildKey(context, ref, lifetime),
       // animation: ,
-      backgroundColor: backgroundColor?.build(context, ref, helper),
-      contentTextStyle: contentTextStyle?.build(context, ref, helper),
+      backgroundColor: backgroundColor?.build(context, ref, lifetime),
+      contentTextStyle: contentTextStyle?.build(context, ref, lifetime),
       elevation: elevation?.getValue(zacRef),
       forceActionsBelow: forceActionsBelow?.getValue(zacRef) ?? false,
-      leading: leading?.buildWidget(context, ref, helper),
-      leadingPadding: leadingPadding?.build(context, ref, helper),
+      leading: leading?.buildWidget(context, ref, lifetime),
+      leadingPadding: leadingPadding?.build(context, ref, lifetime),
       onVisible: onVisible?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       // overflowAlignment: backgroundColor?.toFlutter(context),
-      padding: padding?.build(context, ref, helper),
+      padding: padding?.build(context, ref, lifetime),
     );
   }
 }

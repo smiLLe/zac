@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
@@ -29,7 +29,7 @@ class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
       _FlutterHitTestBehaviortranslucent;
 
   HitTestBehavior build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       deferToChild: (_) => HitTestBehavior.deferToChild,
       opaque: (_) => HitTestBehavior.opaque,
@@ -63,7 +63,7 @@ class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
       _FlutterCrossAxisAlignmentStretch;
 
   CrossAxisAlignment build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       baseline: (_) => CrossAxisAlignment.baseline,
       center: (_) => CrossAxisAlignment.center,
@@ -103,7 +103,7 @@ class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
       _FlutterMainAxisAlignmentEvenly;
 
   MainAxisAlignment build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       start: (_) => MainAxisAlignment.start,
       end: (_) => MainAxisAlignment.end,
@@ -129,7 +129,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize {
   factory FlutterMainAxisSize.max() = _FlutterMainAxisSizeMax;
 
   MainAxisSize build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(min: (_) => MainAxisSize.min, max: (_) => MainAxisSize.max);
   }
 }
@@ -147,7 +147,8 @@ class FlutterFlexFit with _$FlutterFlexFit {
   @FreezedUnionValue('f:1:FlexFit.loose')
   factory FlutterFlexFit.loose() = _FlutterFlexFitLoose;
 
-  FlexFit build(BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+  FlexFit build(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(tight: (_) => FlexFit.tight, loose: (_) => FlexFit.loose);
   }
 }
@@ -179,7 +180,7 @@ class FlutterWrapAlignment with _$FlutterWrapAlignment {
   factory FlutterWrapAlignment.spaceEvenly() = _FlutterWrapAlignmentSpaceEvenly;
 
   WrapAlignment build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       center: (_) => WrapAlignment.center,
       end: (_) => WrapAlignment.end,
@@ -208,7 +209,7 @@ class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
   factory FlutterWrapCrossAlignment.start() = _FlutterWrapCrossAlignmentStart;
 
   WrapCrossAlignment build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       center: (_) => WrapCrossAlignment.center,
       end: (_) => WrapCrossAlignment.end,
@@ -233,7 +234,8 @@ class FlutterStackFit with _$FlutterStackFit {
   @FreezedUnionValue('f:1:StackFit.passthrough')
   factory FlutterStackFit.passthrough() = _FlutterStackFit;
 
-  StackFit build(BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+  StackFit build(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       expand: (_) => StackFit.expand,
       loose: (_) => StackFit.loose,
@@ -281,7 +283,7 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
       ZacDouble? height}) = _FlutterBoxConstraintsTightForFinite;
 
   BoxConstraints build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       (value) => BoxConstraints(
@@ -294,9 +296,9 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
           width: value.width?.getValue(zacRef),
           height: value.height?.getValue(zacRef)),
       loose: (value) =>
-          BoxConstraints.loose(value.size.build(context, ref, helper)),
+          BoxConstraints.loose(value.size.build(context, ref, lifetime)),
       tight: (value) =>
-          BoxConstraints.tight(value.size.build(context, ref, helper)),
+          BoxConstraints.tight(value.size.build(context, ref, lifetime)),
       tightFor: (value) => BoxConstraints.tightFor(
           width: value.width?.getValue(zacRef),
           height: value.height?.getValue(zacRef)),
@@ -334,7 +336,7 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
   }) = _FlutterSliverGridDelegateMaxCrossAxisExtent;
 
   SliverGridDelegate build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       fixedCrossAxisCount: (value) => SliverGridDelegateWithFixedCrossAxisCount(
@@ -369,7 +371,7 @@ class FlutterDecorationPosition with _$FlutterDecorationPosition {
   factory FlutterDecorationPosition.foreground() = FlutterDecorationPositionFG;
 
   DecorationPosition build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       background: (_) => DecorationPosition.background,
       foreground: (_) => DecorationPosition.foreground,

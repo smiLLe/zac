@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -56,9 +56,9 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
 
   @override
   AppBar buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     assert(() {
-      final w = bottom?.buildWidget(context, ref, helper);
+      final w = bottom?.buildWidget(context, ref, lifetime);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -68,21 +68,22 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
     }(), '');
     final zacRef = ZacRef.widget(ref);
     return AppBar(
-      key: key?.buildKey(context, ref, helper),
-      leading: leading?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      leading: leading?.buildWidget(context, ref, lifetime),
       automaticallyImplyLeading:
           automaticallyImplyLeading?.getValue(zacRef) ?? true,
-      title: title?.buildWidget(context, ref, helper),
-      actions: actions?.getValue(context, ref, helper) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(context, ref, helper),
-      bottom: bottom?.buildWidget(context, ref, helper) as PreferredSizeWidget?,
+      title: title?.buildWidget(context, ref, lifetime),
+      actions: actions?.getValue(context, ref, lifetime) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.buildWidget(context, ref, lifetime),
+      bottom:
+          bottom?.buildWidget(context, ref, lifetime) as PreferredSizeWidget?,
       elevation: elevation?.getValue(zacRef),
-      shadowColor: shadowColor?.build(context, ref, helper),
-      shape: shape?.build(context, ref, helper),
-      backgroundColor: backgroundColor?.build(context, ref, helper),
-      foregroundColor: foregroundColor?.build(context, ref, helper),
-      iconTheme: iconTheme?.build(context, ref, helper),
-      actionsIconTheme: actionsIconTheme?.build(context, ref, helper),
+      shadowColor: shadowColor?.build(context, ref, lifetime),
+      shape: shape?.build(context, ref, lifetime),
+      backgroundColor: backgroundColor?.build(context, ref, lifetime),
+      foregroundColor: foregroundColor?.build(context, ref, lifetime),
+      iconTheme: iconTheme?.build(context, ref, lifetime),
+      actionsIconTheme: actionsIconTheme?.build(context, ref, lifetime),
       primary: primary?.getValue(zacRef) ?? true,
       centerTitle: centerTitle?.getValue(zacRef),
       excludeHeaderSemantics: excludeHeaderSemantics?.getValue(zacRef) ?? false,
@@ -91,9 +92,9 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
       bottomOpacity: bottomOpacity?.getValue(zacRef) ?? 1.0,
       toolbarHeight: toolbarHeight?.getValue(zacRef),
       leadingWidth: leadingWidth?.getValue(zacRef),
-      toolbarTextStyle: toolbarTextStyle?.build(context, ref, helper),
-      titleTextStyle: titleTextStyle?.build(context, ref, helper),
-      systemOverlayStyle: systemOverlayStyle?.build(context, ref, helper),
+      toolbarTextStyle: toolbarTextStyle?.build(context, ref, lifetime),
+      titleTextStyle: titleTextStyle?.build(context, ref, lifetime),
+      systemOverlayStyle: systemOverlayStyle?.build(context, ref, lifetime),
     );
   }
 }

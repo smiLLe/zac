@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
@@ -35,14 +35,14 @@ class FlutterUnconstrainedBox
 
   @override
   UnconstrainedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return UnconstrainedBox(
-      key: key?.buildKey(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
-      textDirection: textDirection?.build(context, ref, helper),
-      alignment: alignment?.build(context, ref, helper) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
+      textDirection: textDirection?.build(context, ref, lifetime),
+      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, ref, lifetime) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(context, ref, lifetime),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/interactions.dart';
 
 import '../../../../../zac.dart';
 
@@ -50,15 +51,15 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
 
   @override
   SelectableText buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return SelectableText(
       data,
-      key: key?.buildKey(context, ref, helper),
-      style: style?.build(context, ref, helper),
-      strutStyle: strutStyle?.build(context, ref, helper),
-      textAlign: textAlign?.build(context, ref, helper),
-      textDirection: textDirection?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      style: style?.build(context, ref, lifetime),
+      strutStyle: strutStyle?.build(context, ref, lifetime),
+      textAlign: textAlign?.build(context, ref, lifetime),
+      textDirection: textDirection?.build(context, ref, lifetime),
       textScaleFactor: textScaleFactor?.getValue(zacRef),
       showCursor: showCursor?.getValue(zacRef) ?? false,
       autofocus: autofocus?.getValue(zacRef) ?? false,
@@ -66,13 +67,13 @@ class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
       maxLines: maxLines?.getValue(zacRef),
       cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
       cursorHeight: cursorHeight?.getValue(zacRef),
-      cursorRadius: cursorRadius?.build(context, ref, helper),
-      cursorColor: cursorColor?.build(context, ref, helper),
+      cursorRadius: cursorRadius?.build(context, ref, lifetime),
+      cursorColor: cursorColor?.build(context, ref, lifetime),
       enableInteractiveSelection:
           enableInteractiveSelection?.getValue(zacRef) ?? true,
       semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, helper),
-      textWidthBasis: textWidthBasis?.build(context, ref, helper),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, lifetime),
+      textWidthBasis: textWidthBasis?.build(context, ref, lifetime),
     );
   }
 }

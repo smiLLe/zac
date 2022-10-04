@@ -99,8 +99,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter': FlutterScaffold.unionValueOpenDrawer,
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
@@ -135,8 +135,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter': FlutterScaffold.unionValueOpenEndDrawer,
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
@@ -170,8 +170,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter': FlutterScaffold.unionValueShowBodyScrim,
                   'value': true,
@@ -210,8 +210,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter': FlutterScaffold.unionValueShowBottomSheet,
                   'child': ChildModel.getSizedBox(key: 'child')
@@ -245,8 +245,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter': FlutterScaffoldMessenger.unionValueShowSnackBar,
                   'snackBar': {
@@ -283,8 +283,8 @@ void main() {
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              '_converter': 'z:1:UiActions',
-              'actions': [
+              '_converter': 'z:1:Interactions',
+              'interactions': [
                 {
                   '_converter':
                       FlutterScaffoldMessenger.unionValueShowMaterialBanner,
@@ -297,8 +297,8 @@ void main() {
                         'key': KeysModel.getValueKey('remove_button'),
                         'child': ChildModel.sizedBox,
                         'onPressed': {
-                          '_converter': 'z:1:UiActions',
-                          'actions': [
+                          '_converter': 'z:1:Interactions',
+                          'interactions': [
                             {
                               '_converter': FlutterScaffoldMessenger
                                   .unionValueRemoveCurrentMaterialBanner

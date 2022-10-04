@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
@@ -29,11 +29,11 @@ class FlutterPadding with _$FlutterPadding implements ZacWidget {
 
   @override
   Padding buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return Padding(
-      key: key?.buildKey(context, ref, helper),
-      padding: padding.build(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      padding: padding.build(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
     );
   }
 }

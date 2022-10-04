@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import '../helper.dart';
@@ -255,8 +254,8 @@ void main() {
             value: 1,
             family: 'foo',
             child: ZacExecuteActionsBuilder.once(
-              actions: ZacUiActions([
-                UpdateSharedValueAction.replaceWith(
+              interactions: ZacInteractions([
+                UpdateSharedValueInteractions.replaceWith(
                   family: 'foo',
                   value: 2,
                   transformer: [LeakBagTransformer(cb)],
@@ -286,7 +285,23 @@ void main() {
     });
   });
 
-  group('Actions', () {
+  group('Interactions', () {
+    test('fromJson', () {
+      ConverterHelper.convertToType<
+          UpdateSharedValueInteractions>(<String, dynamic>{
+        '_converter': 'z:1:Interaction:SharedValue.update',
+        'family': 'fam',
+        'transformer': <ZacTransformer>[],
+      });
+
+      ConverterHelper.convertToType<
+          UpdateSharedValueInteractions>(<String, dynamic>{
+        '_converter': 'z:1:Interaction:SharedValue.replaceWith',
+        'family': 'fam',
+        'value': 1,
+        'transformer': <ZacTransformer>[],
+      });
+    });
     testWidgets(
         'update the SharedValue by updating/tranforming its current value',
         (tester) async {
@@ -299,8 +314,8 @@ void main() {
             children: ListOfZacWidget([
               FlutterText(ZacString.consume('family')),
               ZacExecuteActionsBuilder.once(
-                actions: ZacUiActions([
-                  UpdateSharedValueAction(
+                interactions: ZacInteractions([
+                  UpdateSharedValueInteractions(
                     family: 'family',
                     transformer: [_ConcatStr('oof')],
                   ),
@@ -329,8 +344,8 @@ void main() {
             children: ListOfZacWidget([
               FlutterText(ZacString.consume('family')),
               ZacExecuteActionsBuilder.once(
-                actions: ZacUiActions([
-                  UpdateSharedValueAction.replaceWith(
+                interactions: ZacInteractions([
+                  UpdateSharedValueInteractions.replaceWith(
                     family: 'family',
                     value: 'bar',
                     transformer: [LeakBagTransformer(cb)],

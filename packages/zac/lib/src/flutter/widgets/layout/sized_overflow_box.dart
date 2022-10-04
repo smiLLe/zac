@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -32,12 +32,12 @@ class FlutterSizedOverflowBox
 
   @override
   SizedOverflowBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return SizedOverflowBox(
-      key: key?.buildKey(context, ref, helper),
-      size: size.build(context, ref, helper),
-      alignment: alignment?.build(context, ref, helper) ?? Alignment.center,
-      child: child?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      size: size.build(context, ref, lifetime),
+      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
+      child: child?.buildWidget(context, ref, lifetime),
     );
   }
 }

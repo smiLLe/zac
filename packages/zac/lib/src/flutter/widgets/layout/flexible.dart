@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -31,13 +31,13 @@ class FlutterFlexible with _$FlutterFlexible implements ZacWidget {
 
   @override
   Flexible buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Flexible(
-      key: key?.buildKey(context, ref, helper),
-      child: child.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child.buildWidget(context, ref, lifetime),
       flex: flex?.getValue(zacRef) ?? 1,
-      fit: fit?.build(context, ref, helper) ?? FlexFit.loose,
+      fit: fit?.build(context, ref, lifetime) ?? FlexFit.loose,
     );
   }
 }

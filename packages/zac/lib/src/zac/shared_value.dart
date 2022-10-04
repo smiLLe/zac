@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -95,15 +95,19 @@ in your Widget tree before trying to update the $SharedValue.''')));
     });
   }
 
-  static void listenAndExecuteActions(BuildContext context, WidgetRef ref,
-      ZacActionHelper helper, SharedValueFamily family, ZacUiActions actions) {
+  static void listenAndExecuteActions(
+      BuildContext context,
+      WidgetRef ref,
+      ZacInteractionLifetime lifetime,
+      SharedValueFamily family,
+      ZacInteractions interactions) {
     ref.listen<SharedValue>(SharedValue.provider(family), (previous, next) {
-      actions.execute(
+      interactions.execute(
         context,
         ref,
-        helper,
+        lifetime,
         prefillBag: (bag) => bag..setActionPayload(_extractData(next, '''
-It was not possible to listen for $SharedValue($family) changes and execute actions,
+It was not possible to listen for $SharedValue($family) changes and execute interactions,
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
 in your Widget tree before trying to update the $SharedValue.''')),
@@ -113,34 +117,36 @@ in your Widget tree before trying to update the $SharedValue.''')),
 }
 
 @defaultConverterFreezed
-class UpdateSharedValueAction
-    with _$UpdateSharedValueAction
-    implements ZacAction {
-  const UpdateSharedValueAction._();
+class UpdateSharedValueInteractions
+    with _$UpdateSharedValueInteractions
+    implements ZacInteraction {
+  const UpdateSharedValueInteractions._();
 
-  static const String unionValue = 'z:1:SharedValue.update';
-  static const String unionValueReplaceWith = 'z:1:SharedValue.replaceWith';
+  static const String unionValue = 'z:1:Interaction:SharedValue.update';
+  static const String unionValueReplaceWith =
+      'z:1:Interaction:SharedValue.replaceWith';
 
-  factory UpdateSharedValueAction.fromJson(Map<String, dynamic> json) =>
-      _$UpdateSharedValueActionFromJson(json);
+  factory UpdateSharedValueInteractions.fromJson(Map<String, dynamic> json) =>
+      _$UpdateSharedValueInteractionsFromJson(json);
 
-  @FreezedUnionValue(UpdateSharedValueAction.unionValue)
-  factory UpdateSharedValueAction({
+  @FreezedUnionValue(UpdateSharedValueInteractions.unionValue)
+  factory UpdateSharedValueInteractions({
     required SharedValueFamily family,
     required List<ZacTransformer> transformer,
-  }) = _SharedValueActionUpdate;
+  }) = _SharedValueInteractionUpdate;
 
-  @FreezedUnionValue(UpdateSharedValueAction.unionValueReplaceWith)
-  factory UpdateSharedValueAction.replaceWith({
+  @FreezedUnionValue(UpdateSharedValueInteractions.unionValueReplaceWith)
+  factory UpdateSharedValueInteractions.replaceWith({
     required SharedValueFamily family,
     required Object value,
     List<ZacTransformer>? transformer,
-  }) = _SharedValueActionReplaceWith;
+  }) = _SharedValueInteractionReplaceWith;
 
   @override
-  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) =>
+  void execute(BuildContext context, WidgetRef ref,
+          ZacInteractionLifetime lifetime, ContextBag bag) =>
       SharedValue.update(
-        ref,
+        ZacRef.widget(ref),
         family,
         (current) => map(
           (obj) {
@@ -148,7 +154,7 @@ class UpdateSharedValueAction
 
             return obj.transformer.transformValues(
               ZacTransformValue(current),
-              ref,
+              ZacRef.widget(ref),
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           },
@@ -157,7 +163,7 @@ class UpdateSharedValueAction
                 ? obj.value
                 : obj.transformer!.transformValues(
                     ZacTransformValue(obj.value),
-                    ref,
+                    ZacRef.widget(ref),
                     prefillBag: (bag) => bag
                       ..addEntries(bag.entries)
                       ..addAll(<String, dynamic>{
@@ -208,9 +214,9 @@ class SharedValueProviderBuilder
 
   @override
   SharedValueProvider buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return SharedValueProvider(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       transformer: transformer,
       value: value,
       family: family,
@@ -231,7 +237,8 @@ class SharedValueProvider extends HookConsumerWidget {
   final Object? value;
   final SharedValueFamily family;
   final Widget Function(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
+          BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime)
+      builder;
   final List<ZacTransformer>? transformer;
 
   @override

@@ -1,4 +1,3 @@
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/interactions.dart';
 
 part 'update_context.freezed.dart';
 part 'update_context.g.dart';
@@ -39,11 +39,11 @@ class ZacUpdateContextBuilder
 
   @override
   ZacUpdateContext buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return ZacUpdateContext(
-      builder: (context, ref, helper) =>
-          child.buildWidget(context, ref, helper),
-      key: key?.buildKey(context, ref, helper),
+      builder: (context, ref, lifetime) =>
+          child.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(context, ref, lifetime),
     );
   }
 }
@@ -53,15 +53,16 @@ class ZacUpdateContext extends HookConsumerWidget {
   const ZacUpdateContext({required this.builder, Key? key}) : super(key: key);
 
   final Widget Function(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
+          BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime)
+      builder;
 
   @override
   Widget build(
     BuildContext context,
     WidgetRef ref,
   ) {
-    final helper = useZacActionHelper();
-    return builder(context, ref, helper);
+    final lifetime = useZacInteractionLifetime();
+    return builder(context, ref, lifetime);
   }
 }
 

@@ -154,76 +154,6 @@ abstract class _ZacActionHelper implements ZacActionHelper {
       throw _privateConstructorUsedError;
 }
 
-ZacUiActions _$ZacUiActionsFromJson(Map<String, dynamic> json) {
-  return _ZacUiActions.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ZacUiActions {
-  List<ZacBaseAction> get actions => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacUiActions value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacUiActions extends _ZacUiActions {
-  _$_ZacUiActions(final List<ZacBaseAction> actions)
-      : _actions = actions,
-        super._();
-
-  factory _$_ZacUiActions.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacUiActionsFromJson(json);
-
-  final List<ZacBaseAction> _actions;
-  @override
-  List<ZacBaseAction> get actions {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_actions);
-  }
-
-  @override
-  String toString() {
-    return 'ZacUiActions(actions: $actions)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacUiActions &&
-            const DeepCollectionEquality().equals(other._actions, _actions));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_actions));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacUiActions value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacUiActions extends ZacUiActions {
-  factory _ZacUiActions(final List<ZacBaseAction> actions) = _$_ZacUiActions;
-  _ZacUiActions._() : super._();
-
-  factory _ZacUiActions.fromJson(Map<String, dynamic> json) =
-      _$_ZacUiActions.fromJson;
-
-  @override
-  List<ZacBaseAction> get actions;
-}
-
 ZacStateMachineActions _$ZacStateMachineActionsFromJson(
     Map<String, dynamic> json) {
   return _ZacStateMachineActions.fromJson(json);
@@ -231,7 +161,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineActions {
-  List<ZacBaseAction> get actions => throw _privateConstructorUsedError;
+  List<ZacStateMachineAction> get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -243,16 +173,16 @@ mixin _$ZacStateMachineActions {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacStateMachineActions extends _ZacStateMachineActions {
-  _$_ZacStateMachineActions(final List<ZacBaseAction> actions)
+  _$_ZacStateMachineActions(final List<ZacStateMachineAction> actions)
       : _actions = actions,
         super._();
 
   factory _$_ZacStateMachineActions.fromJson(Map<String, dynamic> json) =>
       _$$_ZacStateMachineActionsFromJson(json);
 
-  final List<ZacBaseAction> _actions;
+  final List<ZacStateMachineAction> _actions;
   @override
-  List<ZacBaseAction> get actions {
+  List<ZacStateMachineAction> get actions {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_actions);
   }
@@ -285,7 +215,7 @@ class _$_ZacStateMachineActions extends _ZacStateMachineActions {
 }
 
 abstract class _ZacStateMachineActions extends ZacStateMachineActions {
-  factory _ZacStateMachineActions(final List<ZacBaseAction> actions) =
+  factory _ZacStateMachineActions(final List<ZacStateMachineAction> actions) =
       _$_ZacStateMachineActions;
   _ZacStateMachineActions._() : super._();
 
@@ -293,177 +223,5 @@ abstract class _ZacStateMachineActions extends ZacStateMachineActions {
       _$_ZacStateMachineActions.fromJson;
 
   @override
-  List<ZacBaseAction> get actions;
-}
-
-ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
-    Map<String, dynamic> json) {
-  switch (json['_converter']) {
-    case 'z:1:ExecuteActions.once':
-      return _ZacExecuteActionsBuilderOnce.fromJson(json);
-    case 'z:1:ExecuteActions.listen':
-      return _ZacExecuteActionsBuilderListen.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'ZacExecuteActionsBuilder',
-          'Invalid union type "${json['_converter']}"!');
-  }
-}
-
-/// @nodoc
-mixin _$ZacExecuteActionsBuilder {
-  ZacUiActions get actions => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
-  _$_ZacExecuteActionsBuilderOnce(
-      {required this.actions, this.child, final String? $type})
-      : $type = $type ?? 'z:1:ExecuteActions.once',
-        super._();
-
-  factory _$_ZacExecuteActionsBuilderOnce.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacExecuteActionsBuilderOnceFromJson(json);
-
-  @override
-  final ZacUiActions actions;
-  @override
-  final ZacWidget? child;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacExecuteActionsBuilder.once(actions: $actions, child: $child)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacExecuteActionsBuilderOnce &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality().equals(other.child, child));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(child));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
-  }) {
-    return once(this);
-  }
-}
-
-abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
-  factory _ZacExecuteActionsBuilderOnce(
-      {required final ZacUiActions actions,
-      final ZacWidget? child}) = _$_ZacExecuteActionsBuilderOnce;
-  _ZacExecuteActionsBuilderOnce._() : super._();
-
-  factory _ZacExecuteActionsBuilderOnce.fromJson(Map<String, dynamic> json) =
-      _$_ZacExecuteActionsBuilderOnce.fromJson;
-
-  @override
-  ZacUiActions get actions;
-  @override
-  ZacWidget? get child;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacExecuteActionsBuilderListen
-    extends _ZacExecuteActionsBuilderListen {
-  _$_ZacExecuteActionsBuilderListen(
-      {required this.actions,
-      required this.family,
-      this.child,
-      final String? $type})
-      : $type = $type ?? 'z:1:ExecuteActions.listen',
-        super._();
-
-  factory _$_ZacExecuteActionsBuilderListen.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacExecuteActionsBuilderListenFromJson(json);
-
-  @override
-  final ZacUiActions actions;
-  @override
-  final Object family;
-  @override
-  final ZacWidget? child;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacExecuteActionsBuilder.listen(actions: $actions, family: $family, child: $child)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacExecuteActionsBuilderListen &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
-  }) {
-    return listen(this);
-  }
-}
-
-abstract class _ZacExecuteActionsBuilderListen
-    extends ZacExecuteActionsBuilder {
-  factory _ZacExecuteActionsBuilderListen(
-      {required final ZacUiActions actions,
-      required final Object family,
-      final ZacWidget? child}) = _$_ZacExecuteActionsBuilderListen;
-  _ZacExecuteActionsBuilderListen._() : super._();
-
-  factory _ZacExecuteActionsBuilderListen.fromJson(Map<String, dynamic> json) =
-      _$_ZacExecuteActionsBuilderListen.fromJson;
-
-  @override
-  ZacUiActions get actions;
-  Object get family;
-  @override
-  ZacWidget? get child;
+  List<ZacStateMachineAction> get actions;
 }

@@ -5,7 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 
@@ -38,8 +38,8 @@ class FlutterListTile with _$FlutterListTile implements ZacWidget {
     FlutterColor? textColor,
     FlutterEdgeInsetsGeometry? contentPadding,
     ZacBool? enabled,
-    ZacUiActions? onTap,
-    ZacUiActions? onLongPress,
+    ZacInteractions? onTap,
+    ZacInteractions? onLongPress,
 // MouseCursor? mouseCursor,
     ZacBool? selected,
     FlutterColor? focusColor,
@@ -56,42 +56,42 @@ class FlutterListTile with _$FlutterListTile implements ZacWidget {
 
   @override
   ListTile buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return ListTile(
-      key: key?.buildKey(context, ref, helper),
-      leading: leading?.buildWidget(context, ref, helper),
-      title: title?.buildWidget(context, ref, helper),
-      subtitle: subtitle?.buildWidget(context, ref, helper),
-      trailing: trailing?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      leading: leading?.buildWidget(context, ref, lifetime),
+      title: title?.buildWidget(context, ref, lifetime),
+      subtitle: subtitle?.buildWidget(context, ref, lifetime),
+      trailing: trailing?.buildWidget(context, ref, lifetime),
       isThreeLine: isThreeLine?.getValue(zacRef) ?? false,
       dense: dense?.getValue(zacRef),
 // FlutterVisualDensity? visualDensity,
-      shape: shape?.build(context, ref, helper),
+      shape: shape?.build(context, ref, lifetime),
 // FlutterListTileStyle? style,
-      selectedColor: selectedColor?.build(context, ref, helper),
-      iconColor: iconColor?.build(context, ref, helper),
-      textColor: textColor?.build(context, ref, helper),
-      contentPadding: contentPadding?.build(context, ref, helper),
+      selectedColor: selectedColor?.build(context, ref, lifetime),
+      iconColor: iconColor?.build(context, ref, lifetime),
+      textColor: textColor?.build(context, ref, lifetime),
+      contentPadding: contentPadding?.build(context, ref, lifetime),
       enabled: enabled?.getValue(zacRef) ?? true,
       onTap: onTap?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onLongPress: onLongPress?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
 // MouseCursor? mouseCursor,
       selected: selected?.getValue(zacRef) ?? false,
-      focusColor: focusColor?.build(context, ref, helper),
-      hoverColor: hoverColor?.build(context, ref, helper),
+      focusColor: focusColor?.build(context, ref, lifetime),
+      hoverColor: hoverColor?.build(context, ref, lifetime),
 // FocusNode? focusNode,
       autofocus: autofocus?.getValue(zacRef) ?? false,
-      tileColor: tileColor?.build(context, ref, helper),
-      selectedTileColor: selectedTileColor?.build(context, ref, helper),
+      tileColor: tileColor?.build(context, ref, lifetime),
+      selectedTileColor: selectedTileColor?.build(context, ref, lifetime),
       enableFeedback: enableFeedback?.getValue(zacRef),
       horizontalTitleGap: horizontalTitleGap?.getValue(zacRef),
       minVerticalPadding: minVerticalPadding?.getValue(zacRef),

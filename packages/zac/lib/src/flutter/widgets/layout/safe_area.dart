@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -34,16 +34,16 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
 
   @override
   SafeArea buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return SafeArea(
-      child: child.buildWidget(context, ref, helper),
-      key: key?.buildKey(context, ref, helper),
+      child: child.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(context, ref, lifetime),
       left: left?.getValue(zacRef) ?? true,
       top: top?.getValue(zacRef) ?? true,
       right: right?.getValue(zacRef) ?? true,
       bottom: bottom?.getValue(zacRef) ?? true,
-      minimum: minimum?.build(context, ref, helper) ?? EdgeInsets.zero,
+      minimum: minimum?.build(context, ref, lifetime) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
           maintainBottomViewPadding?.getValue(zacRef) ?? false,
     );

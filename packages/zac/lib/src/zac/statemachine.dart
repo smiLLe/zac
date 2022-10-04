@@ -9,6 +9,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -160,13 +161,12 @@ StateMachine createStateMachineProvider({
       MachineContext nextContext = ref.state.context;
       bool isActive = true;
       final callbacks = <void Function()>[];
-      final helper = ZacActionHelper(
-        isActive: () => isActive,
-        onBecomeInactive: callbacks.add,
-      );
+      // final helper = ZacActionHelper(
+      //   isActive: () => isActive,
+      //   onBecomeInactive: callbacks.add,
+      // );
       transition.actions?.execute(
         ZacRef.adProvider(ref),
-        helper,
         prefillBag: (bag) {
           bag
             ..addKeyValue(kBagStateMachineSendEvent, event)
@@ -194,7 +194,7 @@ StateMachine createStateMachineProvider({
 @defaultConverterFreezed
 class StateMachineBaseActions
     with _$StateMachineBaseActions
-    implements ZacAction {
+    implements ZacStateMachineAction {
   const StateMachineBaseActions._();
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
@@ -215,7 +215,7 @@ class StateMachineBaseActions
   }) = _StateMachineBaseActionsSend;
 
   @override
-  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) {
+  void execute(ZacRef ref, ContextBag bag) {
     map(
       send: (obj) {
         ref
@@ -255,7 +255,7 @@ class StateMachineActions
   }) = _StateMachineActionsUpdateContext;
 
   @override
-  void execute(ZacRef ref, ZacActionHelper helper, ContextBag bag) {
+  void execute(ZacRef ref, ContextBag bag) {
     map(
       updateContext: (obj) {
         final updateContext = bag.safeGet<UpdateContext>(
@@ -296,10 +296,10 @@ class StateMachineProviderBuilder
 
   @override
   StateMachineProvider buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return StateMachineProvider(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       initialState: initialState.getValue(zacRef),
       initialContext: initialContext?.getValue(zacRef),
       states: states,
@@ -324,7 +324,8 @@ class StateMachineProvider extends HookConsumerWidget {
   final List<StateNode> states;
   final String family;
   final Widget Function(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) builder;
+          BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime)
+      builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

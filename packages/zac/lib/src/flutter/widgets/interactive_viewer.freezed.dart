@@ -29,9 +29,10 @@ mixin _$FlutterInteractiveViewer {
   ZacBool? get constrained => throw _privateConstructorUsedError;
   ZacDouble? get maxScale => throw _privateConstructorUsedError;
   ZacDouble? get minScale => throw _privateConstructorUsedError;
-  ZacUiActions? get onInteractionEnd => throw _privateConstructorUsedError;
-  ZacUiActions? get onInteractionStart => throw _privateConstructorUsedError;
-  ZacUiActions? get onInteractionUpdate => throw _privateConstructorUsedError;
+  ZacInteractions? get onInteractionEnd => throw _privateConstructorUsedError;
+  ZacInteractions? get onInteractionStart => throw _privateConstructorUsedError;
+  ZacInteractions? get onInteractionUpdate =>
+      throw _privateConstructorUsedError;
   ZacBool? get panEnabled => throw _privateConstructorUsedError;
   ZacBool? get scaleEnabled => throw _privateConstructorUsedError;
 
@@ -81,11 +82,11 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacDouble? minScale;
   @override
-  final ZacUiActions? onInteractionEnd;
+  final ZacInteractions? onInteractionEnd;
   @override
-  final ZacUiActions? onInteractionStart;
+  final ZacInteractions? onInteractionStart;
   @override
-  final ZacUiActions? onInteractionUpdate;
+  final ZacInteractions? onInteractionUpdate;
   @override
   final ZacBool? panEnabled;
   @override
@@ -162,9 +163,9 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       final ZacBool? constrained,
       final ZacDouble? maxScale,
       final ZacDouble? minScale,
-      final ZacUiActions? onInteractionEnd,
-      final ZacUiActions? onInteractionStart,
-      final ZacUiActions? onInteractionUpdate,
+      final ZacInteractions? onInteractionEnd,
+      final ZacInteractions? onInteractionStart,
+      final ZacInteractions? onInteractionUpdate,
       final ZacBool? panEnabled,
       final ZacBool? scaleEnabled}) = _$_FlutterInteractiveViewer;
   _FlutterInteractiveViewer._() : super._();
@@ -189,11 +190,11 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacDouble? get minScale;
   @override
-  ZacUiActions? get onInteractionEnd;
+  ZacInteractions? get onInteractionEnd;
   @override
-  ZacUiActions? get onInteractionStart;
+  ZacInteractions? get onInteractionStart;
   @override
-  ZacUiActions? get onInteractionUpdate;
+  ZacInteractions? get onInteractionUpdate;
   @override
   ZacBool? get panEnabled;
   @override

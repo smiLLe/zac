@@ -52,11 +52,11 @@ mixin _$FlutterTextField {
   ZacBool? get expands => throw _privateConstructorUsedError;
   ZacInt? get maxLength =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onChanged,
-  ZacUiActions? get onChanged =>
+  ZacInteractions? get onChanged =>
       throw _privateConstructorUsedError; // VoidCallback? onEditingComplete,
-  ZacUiActions? get onEditingComplete =>
+  ZacInteractions? get onEditingComplete =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onSubmitted,
-  ZacUiActions? get onSubmitted =>
+  ZacInteractions? get onSubmitted =>
       throw _privateConstructorUsedError; // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   ZacBool? get enabled => throw _privateConstructorUsedError;
@@ -75,7 +75,7 @@ mixin _$FlutterTextField {
   ZacBool? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
-  ZacUiActions? get onTap =>
+  ZacInteractions? get onTap =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
 // ScrollController? scrollController,
@@ -193,13 +193,13 @@ class _$_FlutterTextField extends _FlutterTextField {
   final ZacInt? maxLength;
 // ValueChanged<String>? onChanged,
   @override
-  final ZacUiActions? onChanged;
+  final ZacInteractions? onChanged;
 // VoidCallback? onEditingComplete,
   @override
-  final ZacUiActions? onEditingComplete;
+  final ZacInteractions? onEditingComplete;
 // ValueChanged<String>? onSubmitted,
   @override
-  final ZacUiActions? onSubmitted;
+  final ZacInteractions? onSubmitted;
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   @override
@@ -226,7 +226,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
   @override
-  final ZacUiActions? onTap;
+  final ZacInteractions? onTap;
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
 // ScrollController? scrollController,
@@ -400,9 +400,9 @@ abstract class _FlutterTextField extends FlutterTextField {
       final ZacInt? minLines,
       final ZacBool? expands,
       final ZacInt? maxLength,
-      final ZacUiActions? onChanged,
-      final ZacUiActions? onEditingComplete,
-      final ZacUiActions? onSubmitted,
+      final ZacInteractions? onChanged,
+      final ZacInteractions? onEditingComplete,
+      final ZacInteractions? onSubmitted,
       final ZacBool? enabled,
       final ZacDouble? cursorWidth,
       final ZacDouble? cursorHeight,
@@ -413,7 +413,7 @@ abstract class _FlutterTextField extends FlutterTextField {
       final FlutterBrightness? keyboardAppearance,
       final FlutterEdgeInsets? scrollPadding,
       final ZacBool? enableInteractiveSelection,
-      final ZacUiActions? onTap,
+      final ZacInteractions? onTap,
       final FlutterClip? clipBehavior,
       final ZacString? restorationId,
       final ZacBool? enableIMEPersonalizedLearning}) = _$_FlutterTextField;
@@ -470,11 +470,11 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacInt? get maxLength;
   @override // ValueChanged<String>? onChanged,
-  ZacUiActions? get onChanged;
+  ZacInteractions? get onChanged;
   @override // VoidCallback? onEditingComplete,
-  ZacUiActions? get onEditingComplete;
+  ZacInteractions? get onEditingComplete;
   @override // ValueChanged<String>? onSubmitted,
-  ZacUiActions? get onSubmitted;
+  ZacInteractions? get onSubmitted;
   @override // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   ZacBool? get enabled;
@@ -498,7 +498,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacBool? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
-  ZacUiActions? get onTap;
+  ZacInteractions? get onTap;
   @override // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
 // ScrollController? scrollController,

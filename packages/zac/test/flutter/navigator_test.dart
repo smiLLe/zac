@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -158,7 +159,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ZacExecuteActionsBuilder.once(
-                      actions: ZacUiActions(
+                      interactions: ZacInteractions(
                         [
                           FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
@@ -239,7 +240,7 @@ void main() {
                 '/': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: ZacExecuteActionsBuilder.once(
-                      actions: ZacUiActions(
+                      interactions: ZacInteractions(
                         [
                           FlutterNavigatorActions.pushNamed(
                             routeName: ZacString('/other'),
@@ -254,7 +255,7 @@ void main() {
                   route: FlutterMaterialPageRoute(
                     child: FlutterTextButton(
                       key: FlutterValueKey('press_me'),
-                      onPressed: ZacUiActions([
+                      onPressed: ZacInteractions([
                         FlutterNavigatorActions.pushNamed(
                           routeName: ZacString('/otherother'),
                           arguments: 11,
@@ -296,18 +297,18 @@ void main() {
       testWidgets('providerName', (tester) async {
         late BuildContext context;
         late WidgetRef ref;
-        late ZacActionHelper helper;
+        late ZacInteractionLifetime lifetime;
         await testZacWidget(tester, LeakContext(cb: ((c, r, h) {
           ref = r;
           context = c;
-          helper = h;
+          lifetime = h;
         })));
 
         expect(
             RouteFactoryFromRoutes.providerName(
               context,
               ref,
-              helper,
+              lifetime,
               RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
                   child: FlutterSizedBox(),
@@ -321,7 +322,7 @@ void main() {
             RouteFactoryFromRoutes.providerName(
               context,
               ref,
-              helper,
+              lifetime,
               RouteFactoryRouteConfig(
                 provideArgsName: ZacString('foo'),
                 route: FlutterMaterialPageRoute(
@@ -336,7 +337,7 @@ void main() {
             RouteFactoryFromRoutes.providerName(
                 context,
                 ref,
-                helper,
+                lifetime,
                 RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: FlutterSizedBox(),
@@ -349,7 +350,7 @@ void main() {
             RouteFactoryFromRoutes.providerName(
                 context,
                 ref,
-                helper,
+                lifetime,
                 RouteFactoryRouteConfig(
                   provideArgsName: ZacString('foo'),
                   route: FlutterMaterialPageRoute(

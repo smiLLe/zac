@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
@@ -34,15 +34,16 @@ class FlutterStack with _$FlutterStack implements ZacWidget {
 
   @override
   Stack buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return Stack(
-      key: key?.buildKey(context, ref, helper),
-      alignment: alignment?.build(context, ref, helper) ??
+      key: key?.buildKey(context, ref, lifetime),
+      alignment: alignment?.build(context, ref, lifetime) ??
           AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(context, ref, helper),
-      fit: fit?.build(context, ref, helper) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.hardEdge,
-      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
+      textDirection: textDirection?.build(context, ref, lifetime),
+      fit: fit?.build(context, ref, lifetime) ?? StackFit.loose,
+      clipBehavior:
+          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
+      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
     );
   }
 }

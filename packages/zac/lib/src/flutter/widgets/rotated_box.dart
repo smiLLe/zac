@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,10 +27,10 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements ZacWidget {
 
   @override
   RotatedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return RotatedBox(
-      key: key?.buildKey(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
       quarterTurns: quarterTurns,
     );
   }

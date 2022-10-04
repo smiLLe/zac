@@ -6,6 +6,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/statemachine.dart';
 import 'package:zac/src/zac/transformers.dart';
 
@@ -105,9 +106,10 @@ Map<String, Convert> allConverters = const {
          */
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
-  UpdateSharedValueAction.unionValue: UpdateSharedValueAction.fromJson,
-  UpdateSharedValueAction.unionValueReplaceWith:
-      UpdateSharedValueAction.fromJson,
+  UpdateSharedValueInteractions.unionValue:
+      UpdateSharedValueInteractions.fromJson,
+  UpdateSharedValueInteractions.unionValueReplaceWith:
+      UpdateSharedValueInteractions.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   IterableTransformer.unionValue: IterableTransformer.fromJson,
   IterableTransformer.unionValueSingle: IterableTransformer.fromJson,
@@ -167,7 +169,7 @@ Map<String, Convert> allConverters = const {
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
-  ZacUiActions.unionValue: ZacUiActions.fromJson,
+  ZacInteractions.unionValue: ZacInteractions.fromJson,
   ZacStateMachineActions.unionValue: ZacStateMachineActions.fromJson,
 
   StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,

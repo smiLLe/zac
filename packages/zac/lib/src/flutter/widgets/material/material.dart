@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,20 +40,20 @@ class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
 
   @override
   Material buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Material(
-      key: key?.buildKey(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
       // animationDuration: key?.toFlutter(context),
       borderOnForeground: borderOnForeground?.getValue(zacRef) ?? true,
-      borderRadius: borderRadius?.build(context, ref, helper),
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
-      color: color?.build(context, ref, helper),
+      borderRadius: borderRadius?.build(context, ref, lifetime),
+      clipBehavior: clipBehavior?.build(context, ref, lifetime) ?? Clip.none,
+      color: color?.build(context, ref, lifetime),
       elevation: elevation?.getValue(zacRef) ?? 0,
-      shadowColor: shadowColor?.build(context, ref, helper),
-      shape: shape?.build(context, ref, helper),
-      textStyle: textStyle?.build(context, ref, helper),
+      shadowColor: shadowColor?.build(context, ref, lifetime),
+      shape: shape?.build(context, ref, lifetime),
+      textStyle: textStyle?.build(context, ref, lifetime),
       // type: type?.toFlutter(context),
     );
   }

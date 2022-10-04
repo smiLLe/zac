@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 
@@ -54,11 +54,11 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
     ZacBool? expands,
     ZacInt? maxLength,
     // ValueChanged<String>? onChanged,
-    ZacUiActions? onChanged,
+    ZacInteractions? onChanged,
     // VoidCallback? onEditingComplete,
-    ZacUiActions? onEditingComplete,
+    ZacInteractions? onEditingComplete,
     // ValueChanged<String>? onSubmitted,
-    ZacUiActions? onSubmitted,
+    ZacInteractions? onSubmitted,
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
     ZacBool? enabled,
@@ -74,7 +74,7 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
     ZacBool? enableInteractiveSelection,
 // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
-    ZacUiActions? onTap,
+    ZacInteractions? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
 // ScrollController? scrollController,
@@ -87,14 +87,14 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
 
   @override
   TextField buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return TextField(
-      key: key?.buildKey(context, ref, helper),
-      style: style?.build(context, ref, helper),
-      strutStyle: strutStyle?.build(context, ref, helper),
-      textAlign: textAlign?.build(context, ref, helper) ?? TextAlign.start,
-      textDirection: textDirection?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      style: style?.build(context, ref, lifetime),
+      strutStyle: strutStyle?.build(context, ref, lifetime),
+      textAlign: textAlign?.build(context, ref, lifetime) ?? TextAlign.start,
+      textDirection: textDirection?.build(context, ref, lifetime),
       readOnly: readOnly?.getValue(zacRef) ?? false,
       showCursor: showCursor?.getValue(zacRef),
       autofocus: autofocus?.getValue(zacRef) ?? false,
@@ -109,49 +109,51 @@ class FlutterTextField with _$FlutterTextField implements ZacWidget {
       enabled: enabled?.getValue(zacRef),
       cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
       cursorHeight: cursorHeight?.getValue(zacRef),
-      cursorRadius: cursorRadius?.build(context, ref, helper),
-      cursorColor: cursorColor?.build(context, ref, helper),
-      keyboardAppearance: keyboardAppearance?.build(context, ref, helper),
-      scrollPadding: scrollPadding?.build(context, ref, helper) ??
+      cursorRadius: cursorRadius?.build(context, ref, lifetime),
+      cursorColor: cursorColor?.build(context, ref, lifetime),
+      keyboardAppearance: keyboardAppearance?.build(context, ref, lifetime),
+      scrollPadding: scrollPadding?.build(context, ref, lifetime) ??
           const EdgeInsets.all(20.0),
       enableInteractiveSelection:
           enableInteractiveSelection?.getValue(zacRef) ?? true,
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.hardEdge,
+      clipBehavior:
+          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
       restorationId: restorationId?.getValue(zacRef),
       enableIMEPersonalizedLearning:
           enableIMEPersonalizedLearning?.getValue(zacRef) ?? true,
       onChanged: onChanged?.createCbParam1<String>(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       decoration:
-          decoration?.build(context, ref, helper) ?? const InputDecoration(),
-      keyboardType: keyboardType?.build(context, ref, helper),
-      textInputAction: textInputAction?.build(context, ref, helper),
-      textCapitalization: textCapitalization?.build(context, ref, helper) ??
+          decoration?.build(context, ref, lifetime) ?? const InputDecoration(),
+      keyboardType: keyboardType?.build(context, ref, lifetime),
+      textInputAction: textInputAction?.build(context, ref, lifetime),
+      textCapitalization: textCapitalization?.build(context, ref, lifetime) ??
           TextCapitalization.none,
-      textAlignVertical: textAlignVertical?.build(context, ref, helper),
-      smartDashesType: smartDashesType?.build(context, ref, helper),
-      smartQuotesType: smartQuotesType?.build(context, ref, helper),
-      selectionHeightStyle: selectionHeightStyle?.build(context, ref, helper) ??
-          BoxHeightStyle.tight,
-      selectionWidthStyle: selectionWidthStyle?.build(context, ref, helper) ??
+      textAlignVertical: textAlignVertical?.build(context, ref, lifetime),
+      smartDashesType: smartDashesType?.build(context, ref, lifetime),
+      smartQuotesType: smartQuotesType?.build(context, ref, lifetime),
+      selectionHeightStyle:
+          selectionHeightStyle?.build(context, ref, lifetime) ??
+              BoxHeightStyle.tight,
+      selectionWidthStyle: selectionWidthStyle?.build(context, ref, lifetime) ??
           BoxWidthStyle.tight,
       onTap: onTap?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onEditingComplete: onEditingComplete?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onSubmitted: onSubmitted?.createCbParam1<String>(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
     );
   }

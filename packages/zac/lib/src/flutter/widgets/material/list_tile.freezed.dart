@@ -36,8 +36,8 @@ mixin _$FlutterListTile {
   FlutterEdgeInsetsGeometry? get contentPadding =>
       throw _privateConstructorUsedError;
   ZacBool? get enabled => throw _privateConstructorUsedError;
-  ZacUiActions? get onTap => throw _privateConstructorUsedError;
-  ZacUiActions? get onLongPress =>
+  ZacInteractions? get onTap => throw _privateConstructorUsedError;
+  ZacInteractions? get onLongPress =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
   ZacBool? get selected => throw _privateConstructorUsedError;
   FlutterColor? get focusColor => throw _privateConstructorUsedError;
@@ -121,9 +121,9 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final ZacBool? enabled;
   @override
-  final ZacUiActions? onTap;
+  final ZacInteractions? onTap;
   @override
-  final ZacUiActions? onLongPress;
+  final ZacInteractions? onLongPress;
 // MouseCursor? mouseCursor,
   @override
   final ZacBool? selected;
@@ -250,8 +250,8 @@ abstract class _FlutterListTile extends FlutterListTile {
       final FlutterColor? textColor,
       final FlutterEdgeInsetsGeometry? contentPadding,
       final ZacBool? enabled,
-      final ZacUiActions? onTap,
-      final ZacUiActions? onLongPress,
+      final ZacInteractions? onTap,
+      final ZacInteractions? onLongPress,
       final ZacBool? selected,
       final FlutterColor? focusColor,
       final FlutterColor? hoverColor,
@@ -294,9 +294,9 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   ZacBool? get enabled;
   @override
-  ZacUiActions? get onTap;
+  ZacInteractions? get onTap;
   @override
-  ZacUiActions? get onLongPress;
+  ZacInteractions? get onLongPress;
   @override // MouseCursor? mouseCursor,
   ZacBool? get selected;
   @override

@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
@@ -43,7 +43,7 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
   SliverGridDelegate build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       withFixedCrossAxisCount: (value) =>

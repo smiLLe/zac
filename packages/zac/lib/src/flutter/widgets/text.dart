@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -41,23 +41,23 @@ class FlutterText with _$FlutterText implements ZacWidget {
 
   @override
   Text buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Text(
       data.getValue(zacRef),
-      key: key?.buildKey(context, ref, helper),
-      style: style?.build(context, ref, helper),
-      strutStyle: strutStyle?.build(context, ref, helper),
-      textAlign: textAlign?.build(context, ref, helper),
-      textDirection: textDirection?.build(context, ref, helper),
-      locale: locale?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      style: style?.build(context, ref, lifetime),
+      strutStyle: strutStyle?.build(context, ref, lifetime),
+      textAlign: textAlign?.build(context, ref, lifetime),
+      textDirection: textDirection?.build(context, ref, lifetime),
+      locale: locale?.build(context, ref, lifetime),
       softWrap: softWrap?.getValue(zacRef),
-      overflow: overflow?.build(context, ref, helper),
+      overflow: overflow?.build(context, ref, lifetime),
       textScaleFactor: textScaleFactor?.getValue(zacRef),
       maxLines: maxLines?.getValue(zacRef),
       semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textWidthBasis: textWidthBasis?.build(context, ref, helper),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, helper),
+      textWidthBasis: textWidthBasis?.build(context, ref, lifetime),
+      textHeightBehavior: textHeightBehavior?.build(context, ref, lifetime),
     );
   }
 }

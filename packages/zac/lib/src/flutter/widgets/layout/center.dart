@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,13 +31,13 @@ class FlutterCenter with _$FlutterCenter implements ZacWidget {
 
   @override
   Center buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Center(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       widthFactor: widthFactor?.getValue(zacRef),
       heightFactor: heightFactor?.getValue(zacRef),
-      child: child?.buildWidget(context, ref, helper),
+      child: child?.buildWidget(context, ref, lifetime),
     );
   }
 }

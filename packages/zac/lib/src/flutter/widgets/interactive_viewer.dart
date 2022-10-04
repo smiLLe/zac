@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -33,9 +33,9 @@ class FlutterInteractiveViewer
     ZacBool? constrained,
     ZacDouble? maxScale,
     ZacDouble? minScale,
-    ZacUiActions? onInteractionEnd,
-    ZacUiActions? onInteractionStart,
-    ZacUiActions? onInteractionUpdate,
+    ZacInteractions? onInteractionEnd,
+    ZacInteractions? onInteractionStart,
+    ZacInteractions? onInteractionUpdate,
     ZacBool? panEnabled,
     ZacBool? scaleEnabled,
 // TransformationController? transformationController,
@@ -43,33 +43,34 @@ class FlutterInteractiveViewer
 
   @override
   InteractiveViewer buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return InteractiveViewer(
-      key: key?.buildKey(context, ref, helper),
-      child: child.buildWidget(context, ref, helper),
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.hardEdge,
+      key: key?.buildKey(context, ref, lifetime),
+      child: child.buildWidget(context, ref, lifetime),
+      clipBehavior:
+          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
       alignPanAxis: alignPanAxis?.getValue(zacRef) ?? false,
       boundaryMargin:
-          boundaryMargin?.build(context, ref, helper) ?? EdgeInsets.zero,
+          boundaryMargin?.build(context, ref, lifetime) ?? EdgeInsets.zero,
       constrained: constrained?.getValue(zacRef) ?? true,
       maxScale: maxScale?.getValue(zacRef) ?? 2.5,
       minScale: minScale?.getValue(zacRef) ?? 0.8,
       onInteractionEnd: onInteractionEnd?.createCbParam1<ScaleEndDetails>(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onInteractionStart: onInteractionStart?.createCbParam1<ScaleStartDetails>(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onInteractionUpdate:
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       panEnabled: panEnabled?.getValue(zacRef) ?? true,
       scaleEnabled: scaleEnabled?.getValue(zacRef) ?? true,

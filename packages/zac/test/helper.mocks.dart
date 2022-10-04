@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart' as _i3;
 import 'package:hooks_riverpod/hooks_riverpod.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:zac/src/zac/action.dart' as _i5;
+import 'package:zac/src/zac/interactions.dart' as _i5;
 import 'package:zac/src/zac/misc.dart' as _i6;
 import 'package:zac/src/zac/transformers.dart' as _i8;
 import 'package:zac/src/zac/update_context.dart' as _i7;
@@ -32,8 +32,9 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
 
   @override
   void call(_i3.BuildContext? context, _i4.WidgetRef? ref,
-          _i5.ZacActionHelper? helper, _i6.ContextBag? bag) =>
-      super.noSuchMethod(Invocation.method(#call, [context, ref, helper, bag]),
+          _i5.ZacInteractionLifetime? lifetime, _i6.ContextBag? bag) =>
+      super.noSuchMethod(
+          Invocation.method(#call, [context, ref, lifetime, bag]),
           returnValueForMissingStub: null);
 }
 

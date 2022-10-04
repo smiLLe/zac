@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LeakUiAction {
-  void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) get cb =>
-      throw _privateConstructorUsedError;
+  void Function(BuildContext, WidgetRef, ZacInteractionLifetime, ContextBag)
+      get cb => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -32,7 +32,8 @@ class _$_LeakUiAction extends _LeakUiAction {
   _$_LeakUiAction(this.cb) : super._();
 
   @override
-  final void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) cb;
+  final void Function(
+      BuildContext, WidgetRef, ZacInteractionLifetime, ContextBag) cb;
 
   @override
   String toString() {
@@ -61,12 +62,14 @@ class _$_LeakUiAction extends _LeakUiAction {
 
 abstract class _LeakUiAction extends LeakUiAction {
   factory _LeakUiAction(
-      final void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag)
+      final void Function(
+              BuildContext, WidgetRef, ZacInteractionLifetime, ContextBag)
           cb) = _$_LeakUiAction;
   _LeakUiAction._() : super._();
 
   @override
-  void Function(BuildContext, WidgetRef, ZacActionHelper, ContextBag) get cb;
+  void Function(BuildContext, WidgetRef, ZacInteractionLifetime, ContextBag)
+      get cb;
 }
 
 /// @nodoc
@@ -178,7 +181,7 @@ abstract class _NoopAction extends NoopAction {
 
 /// @nodoc
 mixin _$LeakContext {
-  void Function(BuildContext, WidgetRef, ZacActionHelper) get cb =>
+  void Function(BuildContext, WidgetRef, ZacInteractionLifetime) get cb =>
       throw _privateConstructorUsedError;
   ZacWidget? get child => throw _privateConstructorUsedError;
 
@@ -195,7 +198,7 @@ class _$_LeakContext extends _LeakContext {
   _$_LeakContext({required this.cb, this.child}) : super._();
 
   @override
-  final void Function(BuildContext, WidgetRef, ZacActionHelper) cb;
+  final void Function(BuildContext, WidgetRef, ZacInteractionLifetime) cb;
   @override
   final ZacWidget? child;
 
@@ -228,13 +231,14 @@ class _$_LeakContext extends _LeakContext {
 
 abstract class _LeakContext extends LeakContext {
   factory _LeakContext(
-      {required final void Function(BuildContext, WidgetRef, ZacActionHelper)
+      {required final void Function(
+              BuildContext, WidgetRef, ZacInteractionLifetime)
           cb,
       final ZacWidget? child}) = _$_LeakContext;
   _LeakContext._() : super._();
 
   @override
-  void Function(BuildContext, WidgetRef, ZacActionHelper) get cb;
+  void Function(BuildContext, WidgetRef, ZacInteractionLifetime) get cb;
   @override
   ZacWidget? get child;
 }

@@ -1,9 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -48,7 +47,7 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
       consume: (_) => throw StateError(''),
@@ -57,7 +56,7 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @override
   NavigatorState getNavigatorState(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       consume: (obj) {
@@ -72,7 +71,7 @@ class ZacFlutterGlobalKeyNavigatorState
 
   @override
   GlobalKey<NavigatorState> buildKey(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       consume: (obj) => obj.getSharedValue(zacRef),
@@ -104,7 +103,7 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
 @defaultConverterFreezed
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
-    implements ZacUiAction {
+    implements ZacInteraction {
   const ZacFlutterNavigatorActions._();
 
   static const String unionValuePopUntilRouteName =
@@ -120,18 +119,18 @@ class ZacFlutterNavigatorActions
   }) = _PopUntilRouteName;
 
   NavigatorState? _getState(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
           popUntilRouteName: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
         ) ??
         Navigator.maybeOf(context);
   }
 
   @override
-  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
-      ContextBag bag) {
-    final state = _getState(context, ref, helper);
+  void execute(BuildContext context, WidgetRef ref,
+      ZacInteractionLifetime lifetime, ContextBag bag) {
+    final state = _getState(context, ref, lifetime);
     if (null == state) return;
     final zacRef = ZacRef.widget(ref);
 
@@ -176,7 +175,7 @@ class RouteFactorySingleRoute
 
   @override
   RouteFactory buildRouteFactory(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -187,11 +186,11 @@ class RouteFactorySingleRoute
       return routeConfig.route.build(
         context,
         ref,
-        helper,
+        lifetime,
         wrap: (context, ref, helper, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context, ref, helper);
+            return zacWidget.buildWidget(context, ref, lifetime);
           }
 
           return SharedValueProvider(
@@ -231,8 +230,12 @@ class RouteFactoryFromRoutes
     String? provideArgsNamePrefix,
   }) = _RouteFactoryFromRoutes;
 
-  static String providerName(BuildContext context, WidgetRef ref,
-      ZacActionHelper helper, RouteFactoryRouteConfig config, String? prefix) {
+  static String providerName(
+      BuildContext context,
+      WidgetRef ref,
+      ZacInteractionLifetime lifetime,
+      RouteFactoryRouteConfig config,
+      String? prefix) {
     final name = config.provideArgsName?.getValue(ZacRef.widget(ref)) ??
         RouteFactoryFromRoutes.defaultProviderName;
     return '${null == prefix ? "" : "$prefix."}$name';
@@ -240,7 +243,7 @@ class RouteFactoryFromRoutes
 
   @override
   RouteFactory buildRouteFactory(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -254,11 +257,11 @@ class RouteFactoryFromRoutes
       return config.route.build(
         context,
         ref,
-        helper,
+        lifetime,
         wrap: (context, ref, helper, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context, ref, helper);
+            return zacWidget.buildWidget(context, ref, lifetime);
           }
 
           return SharedValueProvider(

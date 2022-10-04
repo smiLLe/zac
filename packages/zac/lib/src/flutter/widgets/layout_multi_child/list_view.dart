@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -50,30 +50,31 @@ class FlutterListView with _$FlutterListView implements ZacWidget {
 
   @override
   ListView buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return ListView(
-      key: key?.buildKey(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
       scrollDirection:
-          scrollDirection?.build(context, ref, helper) ?? Axis.vertical,
+          scrollDirection?.build(context, ref, lifetime) ?? Axis.vertical,
       reverse: reverse?.getValue(zacRef) ?? false,
       primary: primary?.getValue(zacRef),
       shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
-      padding: padding?.build(context, ref, helper),
+      padding: padding?.build(context, ref, lifetime),
       itemExtent: itemExtent?.getValue(zacRef),
-      prototypeItem: prototypeItem?.buildWidget(context, ref, helper),
+      prototypeItem: prototypeItem?.buildWidget(context, ref, lifetime),
       addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(zacRef) ?? true,
       addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
       addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
       cacheExtent: cacheExtent?.getValue(zacRef),
-      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
+      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
       semanticChildCount: semanticChildCount?.getValue(zacRef),
       keyboardDismissBehavior:
-          keyboardDismissBehavior?.build(context, ref, helper) ??
+          keyboardDismissBehavior?.build(context, ref, lifetime) ??
               ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.getValue(zacRef),
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.hardEdge,
-      physics: physics?.build(context, ref, helper),
+      clipBehavior:
+          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
+      physics: physics?.build(context, ref, lifetime),
     );
   }
 }

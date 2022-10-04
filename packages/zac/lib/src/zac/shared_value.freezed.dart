@@ -137,48 +137,49 @@ abstract class EmptySharedValue extends SharedValue {
       _$EmptySharedValue.fromJson;
 }
 
-UpdateSharedValueAction _$UpdateSharedValueActionFromJson(
+UpdateSharedValueInteractions _$UpdateSharedValueInteractionsFromJson(
     Map<String, dynamic> json) {
   switch (json['_converter']) {
-    case 'z:1:SharedValue.update':
-      return _SharedValueActionUpdate.fromJson(json);
-    case 'z:1:SharedValue.replaceWith':
-      return _SharedValueActionReplaceWith.fromJson(json);
+    case 'z:1:Interaction:SharedValue.update':
+      return _SharedValueInteractionUpdate.fromJson(json);
+    case 'z:1:Interaction:SharedValue.replaceWith':
+      return _SharedValueInteractionReplaceWith.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
           json,
           '_converter',
-          'UpdateSharedValueAction',
+          'UpdateSharedValueInteractions',
           'Invalid union type "${json['_converter']}"!');
   }
 }
 
 /// @nodoc
-mixin _$UpdateSharedValueAction {
+mixin _$UpdateSharedValueInteractions {
   Object get family => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SharedValueActionUpdate value) $default, {
-    required TResult Function(_SharedValueActionReplaceWith value) replaceWith,
+    TResult Function(_SharedValueInteractionUpdate value) $default, {
+    required TResult Function(_SharedValueInteractionReplaceWith value)
+        replaceWith,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_SharedValueActionUpdate extends _SharedValueActionUpdate {
-  _$_SharedValueActionUpdate(
+class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
+  _$_SharedValueInteractionUpdate(
       {required this.family,
       required final List<ZacTransformer> transformer,
       final String? $type})
       : _transformer = transformer,
-        $type = $type ?? 'z:1:SharedValue.update',
+        $type = $type ?? 'z:1:Interaction:SharedValue.update',
         super._();
 
-  factory _$_SharedValueActionUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_SharedValueActionUpdateFromJson(json);
+  factory _$_SharedValueInteractionUpdate.fromJson(Map<String, dynamic> json) =>
+      _$$_SharedValueInteractionUpdateFromJson(json);
 
   @override
   final Object family;
@@ -194,14 +195,14 @@ class _$_SharedValueActionUpdate extends _SharedValueActionUpdate {
 
   @override
   String toString() {
-    return 'UpdateSharedValueAction(family: $family, transformer: $transformer)';
+    return 'UpdateSharedValueInteractions(family: $family, transformer: $transformer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SharedValueActionUpdate &&
+            other is _$_SharedValueInteractionUpdate &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
                 .equals(other._transformer, _transformer));
@@ -217,22 +218,24 @@ class _$_SharedValueActionUpdate extends _SharedValueActionUpdate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SharedValueActionUpdate value) $default, {
-    required TResult Function(_SharedValueActionReplaceWith value) replaceWith,
+    TResult Function(_SharedValueInteractionUpdate value) $default, {
+    required TResult Function(_SharedValueInteractionReplaceWith value)
+        replaceWith,
   }) {
     return $default(this);
   }
 }
 
-abstract class _SharedValueActionUpdate extends UpdateSharedValueAction {
-  factory _SharedValueActionUpdate(
+abstract class _SharedValueInteractionUpdate
+    extends UpdateSharedValueInteractions {
+  factory _SharedValueInteractionUpdate(
           {required final Object family,
           required final List<ZacTransformer> transformer}) =
-      _$_SharedValueActionUpdate;
-  _SharedValueActionUpdate._() : super._();
+      _$_SharedValueInteractionUpdate;
+  _SharedValueInteractionUpdate._() : super._();
 
-  factory _SharedValueActionUpdate.fromJson(Map<String, dynamic> json) =
-      _$_SharedValueActionUpdate.fromJson;
+  factory _SharedValueInteractionUpdate.fromJson(Map<String, dynamic> json) =
+      _$_SharedValueInteractionUpdate.fromJson;
 
   @override
   Object get family;
@@ -241,18 +244,20 @@ abstract class _SharedValueActionUpdate extends UpdateSharedValueAction {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_SharedValueActionReplaceWith extends _SharedValueActionReplaceWith {
-  _$_SharedValueActionReplaceWith(
+class _$_SharedValueInteractionReplaceWith
+    extends _SharedValueInteractionReplaceWith {
+  _$_SharedValueInteractionReplaceWith(
       {required this.family,
       required this.value,
       final List<ZacTransformer>? transformer,
       final String? $type})
       : _transformer = transformer,
-        $type = $type ?? 'z:1:SharedValue.replaceWith',
+        $type = $type ?? 'z:1:Interaction:SharedValue.replaceWith',
         super._();
 
-  factory _$_SharedValueActionReplaceWith.fromJson(Map<String, dynamic> json) =>
-      _$$_SharedValueActionReplaceWithFromJson(json);
+  factory _$_SharedValueInteractionReplaceWith.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_SharedValueInteractionReplaceWithFromJson(json);
 
   @override
   final Object family;
@@ -272,14 +277,14 @@ class _$_SharedValueActionReplaceWith extends _SharedValueActionReplaceWith {
 
   @override
   String toString() {
-    return 'UpdateSharedValueAction.replaceWith(family: $family, value: $value, transformer: $transformer)';
+    return 'UpdateSharedValueInteractions.replaceWith(family: $family, value: $value, transformer: $transformer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SharedValueActionReplaceWith &&
+            other is _$_SharedValueInteractionReplaceWith &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
@@ -297,23 +302,26 @@ class _$_SharedValueActionReplaceWith extends _SharedValueActionReplaceWith {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SharedValueActionUpdate value) $default, {
-    required TResult Function(_SharedValueActionReplaceWith value) replaceWith,
+    TResult Function(_SharedValueInteractionUpdate value) $default, {
+    required TResult Function(_SharedValueInteractionReplaceWith value)
+        replaceWith,
   }) {
     return replaceWith(this);
   }
 }
 
-abstract class _SharedValueActionReplaceWith extends UpdateSharedValueAction {
-  factory _SharedValueActionReplaceWith(
+abstract class _SharedValueInteractionReplaceWith
+    extends UpdateSharedValueInteractions {
+  factory _SharedValueInteractionReplaceWith(
           {required final Object family,
           required final Object value,
           final List<ZacTransformer>? transformer}) =
-      _$_SharedValueActionReplaceWith;
-  _SharedValueActionReplaceWith._() : super._();
+      _$_SharedValueInteractionReplaceWith;
+  _SharedValueInteractionReplaceWith._() : super._();
 
-  factory _SharedValueActionReplaceWith.fromJson(Map<String, dynamic> json) =
-      _$_SharedValueActionReplaceWith.fromJson;
+  factory _SharedValueInteractionReplaceWith.fromJson(
+          Map<String, dynamic> json) =
+      _$_SharedValueInteractionReplaceWith.fromJson;
 
   @override
   Object get family;

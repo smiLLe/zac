@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -402,7 +403,7 @@ void main() {
     testWidgets('consume', (tester) async {
       late WidgetRef ref;
       late BuildContext context;
-      late ZacActionHelper helper;
+      late ZacInteractionLifetime lifetime;
 
       await testZacWidget(
           tester,
@@ -423,20 +424,20 @@ void main() {
               cb: (c, r, h) {
                 ref = r;
                 context = c;
-                helper = h;
+                lifetime = h;
               },
             ),
           ));
       expect(ListOfZacWidgetConsume('foo').getSharedValue(ZacRef.widget(ref)),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume('foo').getValue(context, ref, helper),
+      expect(ListOfZacWidget.consume('foo').getValue(context, ref, lifetime),
           isA<List<Widget>>());
     });
 
     testWidgets('consume #2', (tester) async {
       late WidgetRef ref;
       late BuildContext context;
-      late ZacActionHelper helper;
+      late ZacInteractionLifetime lifetime;
 
       await testZacWidget(
           tester,
@@ -453,13 +454,13 @@ void main() {
               cb: (c, r, h) {
                 ref = r;
                 context = c;
-                helper = h;
+                lifetime = h;
               },
             ),
           ));
       expect(ListOfZacWidgetConsume('foo').getSharedValue(ZacRef.widget(ref)),
           [FlutterSizedBox()]);
-      expect(ListOfZacWidget.consume('foo').getValue(context, ref, helper),
+      expect(ListOfZacWidget.consume('foo').getValue(context, ref, lifetime),
           isA<List<Widget>>());
     });
   });

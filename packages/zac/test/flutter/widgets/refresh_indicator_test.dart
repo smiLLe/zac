@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -76,7 +77,7 @@ void main() {
           title: FlutterText(ZacString('Title')),
         ),
         body: FlutterRefreshIndicator(
-          onRefresh: ZacUiActions([
+          onRefresh: ZacInteractions([
             LeakBagContentAction(cb),
             const FlutterRefreshIndicatorAction(),
           ]),

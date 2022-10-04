@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -72,20 +73,20 @@ void main() {
       final cb3 = MockUnmountCb();
       final cb4 = MockUnmountCb();
 
-      late ZacActionHelper helper1;
-      late ZacActionHelper helper2;
+      late ZacInteractionLifetime lifetime1;
+      late ZacInteractionLifetime lifetime2;
 
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
           child: LeakContext(
             cb: (_, __, h) {
-              helper1 = h;
+              lifetime1 = h;
             },
             child: ZacUpdateContextBuilder(
               child: LeakContext(
                 cb: (_, __, h) {
-                  helper2 = h;
+                  lifetime2 = h;
                 },
                 child: FlutterSizedBox(),
               ),
@@ -93,11 +94,11 @@ void main() {
           ),
         ),
       );
-      helper1.onBecomeInactive(cb1);
-      helper1.onBecomeInactive(cb2);
+      lifetime1.onUnmount(cb1);
+      lifetime1.onUnmount(cb2);
 
-      helper2.onBecomeInactive(cb3);
-      helper2.onBecomeInactive(cb4);
+      lifetime2.onUnmount(cb3);
+      lifetime2.onUnmount(cb4);
 
       await testZacWidget(
         tester,

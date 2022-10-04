@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
@@ -44,11 +44,11 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   }) = _FlutterSliverChildListDelegateFixed;
 
   SliverChildDelegate build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       list: (value) => SliverChildListDelegate(
-        children.getValue(context, ref, helper),
+        children.getValue(context, ref, lifetime),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacRef) ?? true,
         addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
@@ -57,7 +57,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.getValue(context, ref, helper),
+        children.getValue(context, ref, lifetime),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacRef) ?? true,
         addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,

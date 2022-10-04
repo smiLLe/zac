@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
@@ -35,20 +35,21 @@ class FlutterRow with _$FlutterRow implements ZacWidget {
   }) = _FlutterRow;
 
   @override
-  Row buildWidget(BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+  Row buildWidget(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return Row(
-      key: key?.buildKey(context, ref, helper),
-      mainAxisAlignment: mainAxisAlignment?.build(context, ref, helper) ??
+      key: key?.buildKey(context, ref, lifetime),
+      mainAxisAlignment: mainAxisAlignment?.build(context, ref, lifetime) ??
           MainAxisAlignment.start,
       mainAxisSize:
-          mainAxisSize?.build(context, ref, helper) ?? MainAxisSize.max,
-      crossAxisAlignment: crossAxisAlignment?.build(context, ref, helper) ??
+          mainAxisSize?.build(context, ref, lifetime) ?? MainAxisSize.max,
+      crossAxisAlignment: crossAxisAlignment?.build(context, ref, lifetime) ??
           CrossAxisAlignment.center,
-      textDirection: textDirection?.build(context, ref, helper),
-      verticalDirection: verticalDirection?.build(context, ref, helper) ??
+      textDirection: textDirection?.build(context, ref, lifetime),
+      verticalDirection: verticalDirection?.build(context, ref, lifetime) ??
           VerticalDirection.down,
-      textBaseline: textBaseline?.build(context, ref, helper),
-      children: children?.getValue(context, ref, helper) ?? const <Widget>[],
+      textBaseline: textBaseline?.build(context, ref, lifetime),
+      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
     );
   }
 }

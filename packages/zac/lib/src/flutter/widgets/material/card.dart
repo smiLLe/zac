@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -37,18 +37,18 @@ class FlutterCard with _$FlutterCard implements ZacWidget {
 
   @override
   Card buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Card(
-      key: key?.buildKey(context, ref, helper),
-      color: color?.build(context, ref, helper),
-      shadowColor: shadowColor?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      color: color?.build(context, ref, lifetime),
+      shadowColor: shadowColor?.build(context, ref, lifetime),
       elevation: elevation?.getValue(zacRef),
-      shape: shape?.build(context, ref, helper),
+      shape: shape?.build(context, ref, lifetime),
       borderOnForeground: borderOnForeground?.getValue(zacRef) ?? true,
-      margin: margin?.build(context, ref, helper),
-      clipBehavior: clipBehavior?.build(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
+      margin: margin?.build(context, ref, lifetime),
+      clipBehavior: clipBehavior?.build(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
       semanticContainer: semanticContainer?.getValue(zacRef) ?? true,
     );
   }

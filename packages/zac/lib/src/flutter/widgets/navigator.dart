@@ -1,5 +1,5 @@
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_context.dart';
@@ -17,10 +17,10 @@ abstract class FlutterRoute {
     return ConverterHelper.convertToType<FlutterRoute>(data);
   }
 
-  Route<ZacUiActions?> build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper,
+  Route<ZacInteractions?> build(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
       {Widget Function(BuildContext context, WidgetRef ref,
-              ZacActionHelper helper, ZacWidget zacWidget)?
+              ZacInteractionLifetime lifetime, ZacWidget zacWidget)?
           wrap});
 }
 
@@ -30,7 +30,7 @@ abstract class GetFlutterNavigatorState {
   }
 
   NavigatorState getNavigatorState(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper);
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
 }
 
 @defaultConverterFreezed
@@ -52,7 +52,7 @@ class FlutterNavigatorState
 
   @override
   NavigatorState getNavigatorState(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       closest: (_) => Navigator.of(context, rootNavigator: false),
       root: (_) => Navigator.of(context, rootNavigator: true),
@@ -80,15 +80,15 @@ class FlutterNavigator with _$FlutterNavigator implements ZacWidget {
 
   @override
   Navigator buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return map(
       (obj) => Navigator(
-        key: obj.key?.buildKey(context, ref, helper),
+        key: obj.key?.buildKey(context, ref, lifetime),
         onGenerateRoute:
-            obj.onGenerateRoute?.buildRouteFactory(context, ref, helper),
+            obj.onGenerateRoute?.buildRouteFactory(context, ref, lifetime),
         onUnknownRoute:
-            obj.onUnknownRoute?.buildRouteFactory(context, ref, helper),
+            obj.onUnknownRoute?.buildRouteFactory(context, ref, lifetime),
         initialRoute: obj.initialRoute?.getValue(zacRef),
         requestFocus: obj.requestFocus?.getValue(zacRef) ?? true,
       ),
@@ -99,7 +99,7 @@ class FlutterNavigator with _$FlutterNavigator implements ZacWidget {
 @defaultConverterFreezed
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
-    implements ZacUiAction {
+    implements ZacInteraction {
   const FlutterNavigatorActions._();
 
   static const String unionValuePush = 'f:1:Navigator.push';
@@ -128,20 +128,20 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePop)
   factory FlutterNavigatorActions.pop({
-    ZacUiActions? actions,
+    ZacInteractions? interactions,
     GetFlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValueMaybePop)
   factory FlutterNavigatorActions.maybePop({
-    ZacUiActions? actions,
+    ZacInteractions? interactions,
     GetFlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushReplacement)
   factory FlutterNavigatorActions.pushReplacement({
     required FlutterRoute route,
-    ZacUiActions? result,
+    ZacInteractions? result,
     GetFlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
@@ -150,49 +150,49 @@ class FlutterNavigatorActions
     required ZacString routeName,
     Object? arguments,
     GetFlutterNavigatorState? navigatorState,
-    ZacUiActions? result,
+    ZacInteractions? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
   NavigatorState? _getState(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
           push: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
           pushNamed: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
           pop: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
           maybePop: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
           pushReplacement: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
           pushReplacementNamed: (obj) =>
-              obj.navigatorState?.getNavigatorState(context, ref, helper),
+              obj.navigatorState?.getNavigatorState(context, ref, lifetime),
         ) ??
         Navigator.maybeOf(context);
   }
 
   @override
-  void execute(BuildContext context, WidgetRef ref, ZacActionHelper helper,
-      ContextBag bag) {
+  void execute(BuildContext context, WidgetRef ref,
+      ZacInteractionLifetime lifetime, ContextBag bag) {
     final zacRef = ZacRef.widget(ref);
     map(
       push: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return null;
-        state.push(obj.route.build(context, ref, helper)).then((value) {
-          if (value is ZacUiActions) {
+        state.push(obj.route.build(context, ref, lifetime)).then((value) {
+          if (value is ZacInteractions) {
             value.execute(
               context,
               ref,
-              helper,
+              lifetime,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pushNamed: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return null;
         state
             .pushNamed(
@@ -200,47 +200,47 @@ class FlutterNavigatorActions
           arguments: obj.arguments,
         )
             .then((value) {
-          if (value is ZacUiActions) {
+          if (value is ZacInteractions) {
             value.execute(
               context,
               ref,
-              helper,
+              lifetime,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pop: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return;
-        state.pop(obj.actions);
+        state.pop(obj.interactions);
       },
       maybePop: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return;
-        state.maybePop(obj.actions);
+        state.maybePop(obj.interactions);
       },
       pushReplacement: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.build(context, ref, helper),
+          obj.route.build(context, ref, lifetime),
           result: obj.result,
         )
             .then((value) {
-          if (value is ZacUiActions) {
+          if (value is ZacInteractions) {
             value.execute(
               context,
               ref,
-              helper,
+              lifetime,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pushReplacementNamed: (obj) {
-        final state = _getState(context, ref, helper);
+        final state = _getState(context, ref, lifetime);
         if (null == state) return;
         state
             .pushReplacementNamed(
@@ -249,11 +249,11 @@ class FlutterNavigatorActions
           result: obj.result,
         )
             .then((value) {
-          if (value is ZacUiActions) {
+          if (value is ZacInteractions) {
             value.execute(
               context,
               ref,
-              helper,
+              lifetime,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
@@ -269,7 +269,7 @@ abstract class FlutterRouteFactory {
   }
 
   RouteFactory buildRouteFactory(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper);
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
 }
 
 @defaultConverterFreezed
@@ -299,25 +299,25 @@ class FlutterPageRouteBuilder
   }) = _FlutterPageRouteBuilder;
 
   @override
-  PageRouteBuilder<ZacUiActions?> build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper,
+  PageRouteBuilder<ZacInteractions?> build(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
       {Widget Function(BuildContext context, WidgetRef ref,
-              ZacActionHelper helper, ZacWidget zacWidget)?
+              ZacInteractionLifetime lifetime, ZacWidget zacWidget)?
           wrap}) {
     final zacRef = ZacRef.widget(ref);
-    return PageRouteBuilder<ZacUiActions?>(
+    return PageRouteBuilder<ZacInteractions?>(
       pageBuilder: (_, __, ___) => ZacUpdateContext(
-        builder: (context, ref, helper) {
+        builder: (context, ref, lifetime) {
           if (null == wrap) {
-            return child.buildWidget(context, ref, helper);
+            return child.buildWidget(context, ref, lifetime);
           }
-          return wrap(context, ref, helper, child);
+          return wrap(context, ref, lifetime, child);
         },
       ),
-      settings: settings?.build(context, ref, helper),
+      settings: settings?.build(context, ref, lifetime),
       opaque: opaque?.getValue(zacRef) ?? true,
       barrierDismissible: barrierDismissible?.getValue(zacRef) ?? false,
-      barrierColor: barrierColor?.build(context, ref, helper),
+      barrierColor: barrierColor?.build(context, ref, lifetime),
       barrierLabel: barrierLabel?.getValue(zacRef),
       maintainState: maintainState?.getValue(zacRef) ?? true,
       fullscreenDialog: fullscreenDialog?.getValue(zacRef) ?? false,
@@ -341,7 +341,7 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
   }) = _FlutterRouteSettings;
 
   RouteSettings build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return RouteSettings(
       arguments: arguments,

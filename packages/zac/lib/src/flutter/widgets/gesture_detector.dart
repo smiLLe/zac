@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -27,12 +27,12 @@ class FlutterGestureDetector
   factory FlutterGestureDetector({
     FlutterKey? key,
     ZacWidget? child,
-    ZacUiActions? onTap,
-    ZacUiActions? onSecondaryTap,
-    ZacUiActions? onDoubleTap,
-    ZacUiActions? onLongPress,
-    ZacUiActions? onSecondaryLongPress,
-    ZacUiActions? onTertiaryLongPress,
+    ZacInteractions? onTap,
+    ZacInteractions? onSecondaryTap,
+    ZacInteractions? onDoubleTap,
+    ZacInteractions? onLongPress,
+    ZacInteractions? onSecondaryLongPress,
+    ZacInteractions? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
     ZacBool? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -40,42 +40,42 @@ class FlutterGestureDetector
 
   @override
   GestureDetector buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return GestureDetector(
-      key: key?.buildKey(context, ref, helper),
-      child: child?.buildWidget(context, ref, helper),
-      behavior: behavior?.build(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      child: child?.buildWidget(context, ref, lifetime),
+      behavior: behavior?.build(context, ref, lifetime),
       excludeFromSemantics: excludeFromSemantics?.getValue(zacRef) ?? false,
       onTap: onTap?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onSecondaryTap: onSecondaryTap?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onDoubleTap: onDoubleTap?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onLongPress: onLongPress?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onSecondaryLongPress: onSecondaryLongPress?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
       onTertiaryLongPress: onTertiaryLongPress?.createCb(
         context: context,
         ref: ref,
-        helper: helper,
+        lifetime: lifetime,
       ),
     );
   }

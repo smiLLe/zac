@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
@@ -31,13 +31,13 @@ class FlutterFittedBox with _$FlutterFittedBox implements ZacWidget {
 
   @override
   FittedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return FittedBox(
-      key: key?.buildKey(context, ref, helper),
-      fit: fit?.build(context, ref, helper) ?? BoxFit.contain,
-      alignment: alignment?.build(context, ref, helper) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(context, ref, helper) ?? Clip.none,
-      child: child?.buildWidget(context, ref, helper),
+      key: key?.buildKey(context, ref, lifetime),
+      fit: fit?.build(context, ref, lifetime) ?? BoxFit.contain,
+      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, ref, lifetime) ?? Clip.none,
+      child: child?.buildWidget(context, ref, lifetime),
     );
   }
 }

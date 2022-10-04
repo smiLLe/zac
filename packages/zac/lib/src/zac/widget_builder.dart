@@ -4,6 +4,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_context.dart';
@@ -64,25 +65,25 @@ class ZacWidgetBuilderBuilder
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return map(
       (obj) => ZacWidgetBuilder(
         zacWidget: obj.data,
-        key: obj.key?.buildKey(context, ref, helper),
+        key: obj.key?.buildKey(context, ref, lifetime),
       ),
       map: (obj) => ZacWidgetBuilderFromMap(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, helper),
+        key: obj.key?.buildKey(context, ref, lifetime),
       ),
       isolate: (obj) => ZacWidgetBuilderFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, helper),
+        key: obj.key?.buildKey(context, ref, lifetime),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
       isolateString: (obj) => ZacWidgetBuilderFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.buildKey(context, ref, helper),
+        key: obj.key?.buildKey(context, ref, lifetime),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
@@ -99,8 +100,8 @@ class ZacWidgetBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final helper = useZacActionHelper();
-    return zacWidget.buildWidget(context, ref, helper);
+    final lifetime = useZacInteractionLifetime();
+    return zacWidget.buildWidget(context, ref, lifetime);
   }
 }
 
@@ -231,9 +232,9 @@ class ZacWidgetBuilderFromMapInIsolate extends HookConsumerWidget {
     }, [map, allConverters]);
 
     return ZacUpdateContext(
-      builder: (context, ref, helper) {
+      builder: (context, ref, lifetime) {
         return loadingState.value.map(
-          data: (obj) => obj.value.buildWidget(context, ref, helper),
+          data: (obj) => obj.value.buildWidget(context, ref, lifetime),
           error: (obj) => _ErrorProvide(
             error: obj.error,
             child: errorChild,

@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,7 +31,7 @@ abstract class ZacWidget {
   }
 
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper);
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
 }
 
 mixin ActualValue<Of> {
@@ -540,16 +541,16 @@ class ListOfZacWidget with _$ListOfZacWidget {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ListOfZacWidgetConsume;
 
-  List<Widget> getValue(
-          BuildContext context, WidgetRef ref, ZacActionHelper helper) =>
+  List<Widget> getValue(BuildContext context, WidgetRef ref,
+          ZacInteractionLifetime lifetime) =>
       map(
         (obj) => obj
             .getActualValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, helper))
+            .map((e) => e.buildWidget(context, ref, lifetime))
             .toList(),
         consume: (obj) => obj
             .getSharedValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, helper))
+            .map((e) => e.buildWidget(context, ref, lifetime))
             .toList(),
       );
 }
@@ -574,7 +575,7 @@ class ZacWidgetConsumerBuilder
 
   @override
   Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     return ZacWidgetConsumer(
       builder: this,
     );
@@ -589,9 +590,9 @@ class ZacWidgetConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZacUpdateContext(
-      builder: (context, ref, helper) => builder.map((value) => value
+      builder: (context, ref, lifetime) => builder.map((value) => value
           .getSharedValue(ZacRef.widget(ref))
-          .buildWidget(context, ref, helper)),
+          .buildWidget(context, ref, lifetime)),
     );
   }
 }

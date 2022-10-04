@@ -1,4 +1,4 @@
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/misc.dart';
@@ -32,15 +32,15 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
 
   @override
   Icon buildWidget(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return Icon(
-      icon?.build(context, ref, helper),
-      key: key?.buildKey(context, ref, helper),
-      color: color?.build(context, ref, helper),
+      icon?.build(context, ref, lifetime),
+      key: key?.buildKey(context, ref, lifetime),
+      color: color?.build(context, ref, lifetime),
       size: size?.getValue(zacRef),
       semanticLabel: semanticLabel?.getValue(zacRef),
-      textDirection: textDirection?.build(context, ref, helper),
+      textDirection: textDirection?.build(context, ref, lifetime),
     );
   }
 }
@@ -60,7 +60,8 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+  IconData build(
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return IconData(
       codePoint.getValue(zacRef),
@@ -86,10 +87,10 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
   }) = _FlutterIconThemeData;
 
   IconThemeData build(
-      BuildContext context, WidgetRef ref, ZacActionHelper helper) {
+      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
     final zacRef = ZacRef.widget(ref);
     return IconThemeData(
-      color: color?.build(context, ref, helper),
+      color: color?.build(context, ref, lifetime),
       opacity: opacity?.getValue(zacRef),
       size: size?.getValue(zacRef),
     );
