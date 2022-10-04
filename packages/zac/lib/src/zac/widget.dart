@@ -251,7 +251,7 @@ class _ErrorProvide extends StatelessWidget {
     return SharedValueProvider(
       family: ZacWidget.provideErrorFamily,
       value: error,
-      builder: (context, ref, zacContext) {
+      builder: (context, ref, lifetime) {
         Widget err = const SizedBox.shrink();
         assert(() {
           if (null == child) {
@@ -260,7 +260,7 @@ class _ErrorProvide extends StatelessWidget {
           return true;
         }(), '');
         if (null != child) {
-          err = child!.buildWidget(context, ref, zacContext);
+          err = child!.buildWidget(context, ref, lifetime);
         }
 
         return err;

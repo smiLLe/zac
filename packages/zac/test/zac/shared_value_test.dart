@@ -27,7 +27,7 @@ void main() {
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          builder: (c, r, zacContext) {
+          builder: (c, r, lifetime) {
             ref = r;
             // ignore returned widget
             return const SizedBox();
@@ -52,9 +52,9 @@ void main() {
         SharedValueProvider(
           family: 'foo',
           value: 'hello',
-          builder: (c, ref, zacContext) => FlutterText(
+          builder: (c, ref, lifetime) => FlutterText(
             ZacString.consume('foo', transformer: [_ConcatStr(' world')]),
-          ).buildWidget(c, ref, zacContext),
+          ).buildWidget(c, ref, lifetime),
         ),
       );
 
@@ -90,9 +90,9 @@ void main() {
         SharedValueProvider(
           family: 'foo',
           value: const ['foo', 'oof'],
-          builder: (c, ref2, zacContext) => LeakContext(
+          builder: (c, ref2, lifetime) => LeakContext(
             cb: (_, r, __) => ref = r,
-          ).buildWidget(c, ref2, zacContext),
+          ).buildWidget(c, ref2, lifetime),
         ),
       );
 
@@ -113,16 +113,16 @@ void main() {
         SharedValueProvider(
           family: 'sharedA',
           value: 'a',
-          builder: (c, ref, zacContext) => SharedValueProvider(
+          builder: (c, ref, lifetime) => SharedValueProvider(
             family: 'sharedB',
             value: 'b',
-            builder: (c, ref, zacContext) => SharedValueProvider(
+            builder: (c, ref, lifetime) => SharedValueProvider(
               family: 'sharedC',
               value: 'c',
-              builder: (c, ref, zacContext) => SharedValueProvider(
+              builder: (c, ref, lifetime) => SharedValueProvider(
                 family: 'sharedA',
                 value: 'AA',
-                builder: (c, ref, zacContext) => FlutterColumn(
+                builder: (c, ref, lifetime) => FlutterColumn(
                   children: ListOfZacWidget(
                     [
                       FlutterText(ZacString.consume('sharedA')),
@@ -130,7 +130,7 @@ void main() {
                       FlutterText(ZacString.consume('sharedC')),
                     ],
                   ),
-                ).buildWidget(c, ref, zacContext),
+                ).buildWidget(c, ref, lifetime),
               ),
             ),
           ),
@@ -375,14 +375,14 @@ void main() {
         SharedValueProvider(
           family: 'shared',
           value: 'foo',
-          builder: (c, ref, zacContext) => FlutterText(
+          builder: (c, ref, lifetime) => FlutterText(
             ZacString.consume(
               'shared',
               transformer: [_ConcatStr('baz')],
               consumeType:
                   SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
             ),
-          ).buildWidget(c, ref, zacContext),
+          ).buildWidget(c, ref, lifetime),
         ),
       );
 
