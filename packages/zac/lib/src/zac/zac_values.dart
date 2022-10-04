@@ -3,8 +3,8 @@ import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'any_value.freezed.dart';
-part 'any_value.g.dart';
+part 'zac_values.freezed.dart';
+part 'zac_values.g.dart';
 
 Type _typeOf<T>() => T;
 

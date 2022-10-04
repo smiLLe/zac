@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'any_value.dart';
+part of 'zac_values.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
