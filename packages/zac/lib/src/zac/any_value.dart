@@ -1,5 +1,4 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,31 +7,6 @@ part 'any_value.freezed.dart';
 part 'any_value.g.dart';
 
 Type _typeOf<T>() => T;
-
-const consumeUnion = 'z:1:SharedValue.consume';
-
-/// take the generic SharedValue.consume and map it to another converter name.
-Object mapConsumeUnion(String other, Object map) {
-  if (ConverterHelper.isConverter(map)) {
-    final m = map as Map<String, dynamic>;
-    if (m[converterKey] == consumeUnion) {
-      m[converterKey] = other;
-    }
-    return m;
-  }
-  return map;
-}
-
-abstract class FlutterWidget {
-  factory FlutterWidget.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterWidget>(
-      mapConsumeUnion(ZacWidgetConsumerBuilder.unionValue, data),
-    );
-  }
-
-  Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
-}
 
 mixin ActualValue<Of> {
   Of get value;

@@ -74,14 +74,9 @@ void main() {
             }
           },
           transformer: [ConvertTransformer()],
-          builder: (c, ref, zacContext) => FlutterContainer(
-            child: FlutterWidget.fromJson(
-              {
-                '_converter': 'z:1:SharedValue.consume',
-                'family': 'foo',
-              },
-            ),
-          ).buildWidget(c, ref, zacContext),
+          builder: (c, ref, lifetime) => FlutterContainer(
+            child: ZacWidgetConsumerBuilder('foo'),
+          ).buildWidget(c, ref, lifetime),
         ),
       );
 
