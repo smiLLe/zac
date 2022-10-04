@@ -12,7 +12,7 @@ part 'opacity.freezed.dart';
 part 'opacity.g.dart';
 
 @defaultConverterFreezed
-class FlutterOpacity with _$FlutterOpacity implements ZacWidget {
+class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   const FlutterOpacity._();
 
   static const String unionValue = 'f:1:Opacity';
@@ -25,7 +25,7 @@ class FlutterOpacity with _$FlutterOpacity implements ZacWidget {
     FlutterKey? key,
     required ZacDouble opacity,
     ZacBool? alwaysIncludeSemantics,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterOpacity;
 
   @override

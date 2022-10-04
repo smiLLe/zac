@@ -11,13 +11,13 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
     _$_FlutterInputDecoration(
       icon: json['icon'] == null
           ? null
-          : ZacWidget.fromJson(json['icon'] as Object),
+          : FlutterWidget.fromJson(json['icon'] as Object),
       iconColor: json['iconColor'] == null
           ? null
           : FlutterColor.fromJson(json['iconColor'] as Map<String, dynamic>),
       label: json['label'] == null
           ? null
-          : ZacWidget.fromJson(json['label'] as Object),
+          : FlutterWidget.fromJson(json['label'] as Object),
       labelText: json['labelText'] == null
           ? null
           : ZacString.fromJson(json['labelText'] as Object),
@@ -75,14 +75,14 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['contentPadding'] as Object),
       prefixIcon: json['prefixIcon'] == null
           ? null
-          : ZacWidget.fromJson(json['prefixIcon'] as Object),
+          : FlutterWidget.fromJson(json['prefixIcon'] as Object),
       prefixIconConstraints: json['prefixIconConstraints'] == null
           ? null
           : FlutterBoxConstraints.fromJson(
               json['prefixIconConstraints'] as Map<String, dynamic>),
       prefix: json['prefix'] == null
           ? null
-          : ZacWidget.fromJson(json['prefix'] as Object),
+          : FlutterWidget.fromJson(json['prefix'] as Object),
       prefixText: json['prefixText'] == null
           ? null
           : ZacString.fromJson(json['prefixText'] as Object),
@@ -96,10 +96,10 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['prefixIconColor'] as Map<String, dynamic>),
       suffixIcon: json['suffixIcon'] == null
           ? null
-          : ZacWidget.fromJson(json['suffixIcon'] as Object),
+          : FlutterWidget.fromJson(json['suffixIcon'] as Object),
       suffix: json['suffix'] == null
           ? null
-          : ZacWidget.fromJson(json['suffix'] as Object),
+          : FlutterWidget.fromJson(json['suffix'] as Object),
       suffixText: json['suffixText'] == null
           ? null
           : ZacString.fromJson(json['suffixText'] as Object),
@@ -117,7 +117,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['suffixIconConstraints'] as Map<String, dynamic>),
       counter: json['counter'] == null
           ? null
-          : ZacWidget.fromJson(json['counter'] as Object),
+          : FlutterWidget.fromJson(json['counter'] as Object),
       counterText: json['counterText'] == null
           ? null
           : ZacString.fromJson(json['counterText'] as Object),

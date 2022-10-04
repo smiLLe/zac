@@ -28,7 +28,7 @@ mixin _$FlutterCard {
   ZacBool? get borderOnForeground => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get margin => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   ZacBool? get semanticContainer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -74,7 +74,7 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final ZacBool? semanticContainer;
 
@@ -138,7 +138,7 @@ abstract class _FlutterCard extends FlutterCard {
       final ZacBool? borderOnForeground,
       final FlutterEdgeInsetsGeometry? margin,
       final FlutterClip? clipBehavior,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final ZacBool? semanticContainer}) = _$_FlutterCard;
   _FlutterCard._() : super._();
 
@@ -162,7 +162,7 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   FlutterClip? get clipBehavior;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   ZacBool? get semanticContainer;
 }

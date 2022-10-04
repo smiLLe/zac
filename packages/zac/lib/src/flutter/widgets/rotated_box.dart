@@ -10,7 +10,7 @@ part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterRotatedBox with _$FlutterRotatedBox implements ZacWidget {
+class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   const FlutterRotatedBox._();
 
   static const String unionValue = 'f:1:RotatedBox';
@@ -21,7 +21,7 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements ZacWidget {
   @FreezedUnionValue(FlutterRotatedBox.unionValue)
   factory FlutterRotatedBox({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     required int quarterTurns,
   }) = _FlutterRotatedBox;
 

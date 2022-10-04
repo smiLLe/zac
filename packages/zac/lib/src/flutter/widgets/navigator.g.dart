@@ -117,7 +117,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
 _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterPageRouteBuilder(
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       settings: json['settings'] == null
           ? null
           : FlutterRouteSettings.fromJson(

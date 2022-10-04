@@ -638,7 +638,7 @@ mixin _$StateMachineProviderBuilder {
   ZacString get initialState => throw _privateConstructorUsedError;
   List<StateNode> get states => throw _privateConstructorUsedError;
   ZacString get family => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
   ZacObject? get initialContext => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -678,7 +678,7 @@ class _$_StateMachineProviderBuilder extends _StateMachineProviderBuilder {
   @override
   final ZacString family;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final ZacObject? initialContext;
 
@@ -729,7 +729,7 @@ abstract class _StateMachineProviderBuilder
       required final ZacString initialState,
       required final List<StateNode> states,
       required final ZacString family,
-      required final ZacWidget child,
+      required final FlutterWidget child,
       final ZacObject? initialContext}) = _$_StateMachineProviderBuilder;
   _StateMachineProviderBuilder._() : super._();
 
@@ -745,7 +745,7 @@ abstract class _StateMachineProviderBuilder
   @override
   ZacString get family;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
   @override
   ZacObject? get initialContext;
 }

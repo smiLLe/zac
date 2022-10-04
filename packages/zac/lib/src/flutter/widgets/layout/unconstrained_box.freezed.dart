@@ -22,7 +22,7 @@ FlutterUnconstrainedBox _$FlutterUnconstrainedBoxFromJson(
 /// @nodoc
 mixin _$FlutterUnconstrainedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   FlutterAxis? get constrainedAxis => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final FlutterTextDirection? textDirection;
   @override
@@ -107,7 +107,7 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
 abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   factory _FlutterUnconstrainedBox(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final FlutterTextDirection? textDirection,
       final FlutterAlignmentGeometry? alignment,
       final FlutterAxis? constrainedAxis,
@@ -120,7 +120,7 @@ abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   FlutterTextDirection? get textDirection;
   @override

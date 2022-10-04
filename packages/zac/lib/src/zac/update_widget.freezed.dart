@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'ignore_pointer.dart';
+part of 'update_widget.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,57 +14,47 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-FlutterIgnorePointer _$FlutterIgnorePointerFromJson(Map<String, dynamic> json) {
-  return _FlutterIgnorePointer.fromJson(json);
+ZacUpdateWidgetBuilder _$ZacUpdateWidgetBuilderFromJson(
+    Map<String, dynamic> json) {
+  return _ZacUpdateWidgetBuilder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FlutterIgnorePointer {
+mixin _$ZacUpdateWidgetBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacBool? get ignoring => throw _privateConstructorUsedError;
-  ZacBool? get ignoringSemantics => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterIgnorePointer value) $default,
+    TResult Function(_ZacUpdateWidgetBuilder value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
-  _$_FlutterIgnorePointer(
-      {this.key, this.ignoring, this.ignoringSemantics, this.child})
-      : super._();
+class _$_ZacUpdateWidgetBuilder extends _ZacUpdateWidgetBuilder {
+  _$_ZacUpdateWidgetBuilder({this.key, required this.child}) : super._();
 
-  factory _$_FlutterIgnorePointer.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterIgnorePointerFromJson(json);
+  factory _$_ZacUpdateWidgetBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacUpdateWidgetBuilderFromJson(json);
 
   @override
   final FlutterKey? key;
   @override
-  final ZacBool? ignoring;
-  @override
-  final ZacBool? ignoringSemantics;
-  @override
-  final FlutterWidget? child;
+  final FlutterWidget child;
 
   @override
   String toString() {
-    return 'FlutterIgnorePointer(key: $key, ignoring: $ignoring, ignoringSemantics: $ignoringSemantics, child: $child)';
+    return 'ZacUpdateWidgetBuilder(key: $key, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterIgnorePointer &&
+            other is _$_ZacUpdateWidgetBuilder &&
             const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.ignoring, ignoring) &&
-            const DeepCollectionEquality()
-                .equals(other.ignoringSemantics, ignoringSemantics) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
 
@@ -73,36 +63,28 @@ class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(ignoring),
-      const DeepCollectionEquality().hash(ignoringSemantics),
       const DeepCollectionEquality().hash(child));
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterIgnorePointer value) $default,
+    TResult Function(_ZacUpdateWidgetBuilder value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _FlutterIgnorePointer extends FlutterIgnorePointer {
-  factory _FlutterIgnorePointer(
+abstract class _ZacUpdateWidgetBuilder extends ZacUpdateWidgetBuilder {
+  factory _ZacUpdateWidgetBuilder(
       {final FlutterKey? key,
-      final ZacBool? ignoring,
-      final ZacBool? ignoringSemantics,
-      final FlutterWidget? child}) = _$_FlutterIgnorePointer;
-  _FlutterIgnorePointer._() : super._();
+      required final FlutterWidget child}) = _$_ZacUpdateWidgetBuilder;
+  _ZacUpdateWidgetBuilder._() : super._();
 
-  factory _FlutterIgnorePointer.fromJson(Map<String, dynamic> json) =
-      _$_FlutterIgnorePointer.fromJson;
+  factory _ZacUpdateWidgetBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacUpdateWidgetBuilder.fromJson;
 
   @override
   FlutterKey? get key;
   @override
-  ZacBool? get ignoring;
-  @override
-  ZacBool? get ignoringSemantics;
-  @override
-  FlutterWidget? get child;
+  FlutterWidget get child;
 }

@@ -13,7 +13,7 @@ import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 
 part 'statemachine.freezed.dart';
 part 'statemachine.g.dart';
@@ -142,7 +142,6 @@ StateMachine createStateMachineProvider({
   required String initialState,
   required Object? initialContext,
   required List<StateNode> states,
-  required ZacBuildContext zacContext,
   required AutoDisposeProviderRef<StateMachine> ref,
 }) {
   ref.listenSelf((previous, next) {});
@@ -277,7 +276,7 @@ class StateMachineActions
 @defaultConverterFreezed
 class StateMachineProviderBuilder
     with _$StateMachineProviderBuilder
-    implements ZacWidget {
+    implements FlutterWidget {
   const StateMachineProviderBuilder._();
   static const String unionValue = 'z:1:StateMachine.provide';
 
@@ -290,7 +289,7 @@ class StateMachineProviderBuilder
     required ZacString initialState,
     required List<StateNode> states,
     required ZacString family,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacObject? initialContext,
   }) = _StateMachineProviderBuilder;
 
@@ -329,8 +328,6 @@ class StateMachineProvider extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
-
     final provider = useMemoized(() {
       return AutoDisposeProvider<StateMachine>(
           (ref) => createStateMachineProvider(
@@ -338,7 +335,6 @@ class StateMachineProvider extends HookConsumerWidget {
                 initialContext: initialContext,
                 initialState: initialState,
                 states: states,
-                zacContext: zacContext,
               ));
     }, [initialState, initialContext, states]);
 
@@ -362,7 +358,7 @@ class StateMachineProvider extends HookConsumerWidget {
           // dependencies: [statemachineProvider(family)],
         )),
       ],
-      child: ZacUpdateContext(builder: builder),
+      child: ZacUpdateWidget(builder: builder),
     );
   }
 }

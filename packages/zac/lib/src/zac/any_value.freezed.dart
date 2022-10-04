@@ -1308,8 +1308,8 @@ mixin _$ListOfZacWidget {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
-    with ActualValue<List<ZacWidget>> {
-  _$ListOfZacWidgetValue(final List<ZacWidget> value,
+    with ActualValue<List<FlutterWidget>> {
+  _$ListOfZacWidgetValue(final List<FlutterWidget> value,
       {final List<ZacTransformer>? transformer, final String? $type})
       : _value = value,
         _transformer = transformer,
@@ -1319,9 +1319,9 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
   factory _$ListOfZacWidgetValue.fromJson(Map<String, dynamic> json) =>
       _$$ListOfZacWidgetValueFromJson(json);
 
-  final List<ZacWidget> _value;
+  final List<FlutterWidget> _value;
   @override
-  List<ZacWidget> get value {
+  List<FlutterWidget> get value {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_value);
   }
@@ -1371,15 +1371,15 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
 }
 
 abstract class ListOfZacWidgetValue extends ListOfZacWidget
-    implements ActualValue<List<ZacWidget>> {
-  factory ListOfZacWidgetValue(final List<ZacWidget> value,
+    implements ActualValue<List<FlutterWidget>> {
+  factory ListOfZacWidgetValue(final List<FlutterWidget> value,
       {final List<ZacTransformer>? transformer}) = _$ListOfZacWidgetValue;
   ListOfZacWidgetValue._() : super._();
 
   factory ListOfZacWidgetValue.fromJson(Map<String, dynamic> json) =
       _$ListOfZacWidgetValue.fromJson;
 
-  List<ZacWidget> get value;
+  List<FlutterWidget> get value;
   @override
   List<ZacTransformer>? get transformer;
 }
@@ -1387,7 +1387,7 @@ abstract class ListOfZacWidgetValue extends ListOfZacWidget
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
-    with ConsumeValueList<ZacWidget> {
+    with ConsumeValueList<FlutterWidget> {
   _$ListOfZacWidgetConsume(this.family,
       {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
@@ -1453,7 +1453,7 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
 }
 
 abstract class ListOfZacWidgetConsume extends ListOfZacWidget
-    implements ConsumeValueList<ZacWidget> {
+    implements ConsumeValueList<FlutterWidget> {
   factory ListOfZacWidgetConsume(final Object family,
       {final List<ZacTransformer>? transformer,
       final SharedValueConsumeType consumeType}) = _$ListOfZacWidgetConsume;
@@ -1489,7 +1489,7 @@ mixin _$ZacWidgetConsumerBuilder {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
-    with ConsumeValue<ZacWidget> {
+    with ConsumeValue<FlutterWidget> {
   _$_ZacWidgetConsumerBuilder(this.family,
       {final List<ZacTransformer>? transformer,
       this.consumeType = const SharedValueConsumeType.watch()})
@@ -1549,7 +1549,7 @@ class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
 }
 
 abstract class _ZacWidgetConsumerBuilder extends ZacWidgetConsumerBuilder
-    implements ConsumeValue<ZacWidget> {
+    implements ConsumeValue<FlutterWidget> {
   factory _ZacWidgetConsumerBuilder(final Object family,
       {final List<ZacTransformer>? transformer,
       final SharedValueConsumeType consumeType}) = _$_ZacWidgetConsumerBuilder;

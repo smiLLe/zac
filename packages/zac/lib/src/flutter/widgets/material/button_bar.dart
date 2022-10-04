@@ -13,7 +13,7 @@ part 'button_bar.freezed.dart';
 part 'button_bar.g.dart';
 
 @defaultConverterFreezed
-class FlutterButtonBar with _$FlutterButtonBar implements ZacWidget {
+class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
   const FlutterButtonBar._();
 
   static const String unionValue = 'f:1:ButtonBar';

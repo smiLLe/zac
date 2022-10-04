@@ -12,7 +12,7 @@ part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterLimitedBox with _$FlutterLimitedBox implements ZacWidget {
+class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   const FlutterLimitedBox._();
 
   static const String unionValue = 'f:1:LimitedBox';
@@ -25,7 +25,7 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements ZacWidget {
     FlutterKey? key,
     ZacDouble? maxWidth,
     ZacDouble? maxHeight,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterLimitedBox;
 
   @override

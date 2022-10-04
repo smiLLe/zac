@@ -27,7 +27,7 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : ZacBool.fromJson(json['primary'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

@@ -6,7 +6,7 @@ import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';

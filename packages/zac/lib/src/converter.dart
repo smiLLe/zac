@@ -10,8 +10,8 @@ import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/statemachine.dart';
 import 'package:zac/src/zac/transformers.dart';
 
-import 'package:zac/src/zac/widget_builder.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/update_widget.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -227,12 +227,11 @@ Map<String, Convert> allConverters = const {
         * WIDGETS
         */
   /// ZacWidget Classes
-  ZacWidgetBuilderBuilder.unionValue: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueMap: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueIsolate: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueIsolateString:
-      ZacWidgetBuilderBuilder.fromJson,
-  ZacUpdateContextBuilder.unionValue: ZacUpdateContextBuilder.fromJson,
+  ZacWidgetBuilder.unionValue: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueMap: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueIsolate: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueIsolateString: ZacWidgetBuilder.fromJson,
+  ZacUpdateWidgetBuilder.unionValue: ZacUpdateWidgetBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValue: ZacExecuteActionsBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValueListen: ZacExecuteActionsBuilder.fromJson,
   SharedValueProviderBuilder.unionValue: SharedValueProviderBuilder.fromJson,

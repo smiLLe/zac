@@ -13,7 +13,7 @@ part 'material_app.freezed.dart';
 part 'material_app.g.dart';
 
 @defaultConverterFreezed
-class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
+class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   const FlutterMaterialApp._();
 
   static const String unionValue = 'f:1:MaterialApp';
@@ -26,7 +26,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
     FlutterKey? key,
     FlutterGlobalKeyNavigatorState? navigatorKey,
     // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-    ZacWidget? home,
+    FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
     ZacString? initialRoute,
     FlutterRouteFactory? onGenerateRoute,

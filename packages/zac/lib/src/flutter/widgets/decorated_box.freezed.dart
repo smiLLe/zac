@@ -21,7 +21,7 @@ FlutterDecoratedBox _$FlutterDecoratedBoxFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterDecoratedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   FlutterDecoration get decoration => throw _privateConstructorUsedError;
   FlutterDecorationPosition? get position => throw _privateConstructorUsedError;
 
@@ -45,7 +45,7 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final FlutterDecoration decoration;
   @override
@@ -89,7 +89,7 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
 abstract class _FlutterDecoratedBox extends FlutterDecoratedBox {
   factory _FlutterDecoratedBox(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       required final FlutterDecoration decoration,
       final FlutterDecorationPosition? position}) = _$_FlutterDecoratedBox;
   _FlutterDecoratedBox._() : super._();
@@ -100,7 +100,7 @@ abstract class _FlutterDecoratedBox extends FlutterDecoratedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   FlutterDecoration get decoration;
   @override

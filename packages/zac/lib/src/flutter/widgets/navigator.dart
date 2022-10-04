@@ -2,7 +2,7 @@ import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -20,7 +20,7 @@ abstract class FlutterRoute {
   Route<ZacInteractions?> build(
       BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
       {Widget Function(BuildContext context, WidgetRef ref,
-              ZacInteractionLifetime lifetime, ZacWidget zacWidget)?
+              ZacInteractionLifetime lifetime, FlutterWidget zacWidget)?
           wrap});
 }
 
@@ -61,7 +61,7 @@ class FlutterNavigatorState
 }
 
 @defaultConverterFreezed
-class FlutterNavigator with _$FlutterNavigator implements ZacWidget {
+class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   const FlutterNavigator._();
 
   static const String unionValue = 'f:1:Navigator';
@@ -285,7 +285,7 @@ class FlutterPageRouteBuilder
 
   @FreezedUnionValue(FlutterPageRouteBuilder.unionValue)
   factory FlutterPageRouteBuilder({
-    required ZacWidget child,
+    required FlutterWidget child,
     FlutterRouteSettings? settings,
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
@@ -302,11 +302,11 @@ class FlutterPageRouteBuilder
   PageRouteBuilder<ZacInteractions?> build(
       BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
       {Widget Function(BuildContext context, WidgetRef ref,
-              ZacInteractionLifetime lifetime, ZacWidget zacWidget)?
+              ZacInteractionLifetime lifetime, FlutterWidget zacWidget)?
           wrap}) {
     final zacRef = ZacRef.widget(ref);
     return PageRouteBuilder<ZacInteractions?>(
-      pageBuilder: (_, __, ___) => ZacUpdateContext(
+      pageBuilder: (_, __, ___) => ZacUpdateWidget(
         builder: (context, ref, lifetime) {
           if (null == wrap) {
             return child.buildWidget(context, ref, lifetime);

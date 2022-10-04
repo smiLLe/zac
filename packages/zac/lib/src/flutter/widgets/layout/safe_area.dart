@@ -12,7 +12,7 @@ part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
 @defaultConverterFreezed
-class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
+class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   const FlutterSafeArea._();
 
   static const String unionValue = 'f:1:SafeArea';
@@ -29,7 +29,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
     ZacBool? bottom,
     FlutterEdgeInsets? minimum,
     ZacBool? maintainBottomViewPadding,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterSafeArea;
 
   @override

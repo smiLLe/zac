@@ -12,7 +12,7 @@ part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
 @defaultConverterFreezed
-class FlutterExpanded with _$FlutterExpanded implements ZacWidget {
+class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   const FlutterExpanded._();
 
   static const String unionValue = 'f:1:Expanded';
@@ -24,7 +24,7 @@ class FlutterExpanded with _$FlutterExpanded implements ZacWidget {
   factory FlutterExpanded({
     FlutterKey? key,
     ZacInt? flex,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterExpanded;
 
   @override

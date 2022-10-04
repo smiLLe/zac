@@ -13,7 +13,7 @@ part 'intrinsic_height.g.dart';
 @defaultConverterFreezed
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterIntrinsicHeight._();
 
   static const String unionValue = 'f:1:IntrinsicHeight';
@@ -24,7 +24,7 @@ class FlutterIntrinsicHeight
   @FreezedUnionValue(FlutterIntrinsicHeight.unionValue)
   factory FlutterIntrinsicHeight({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterIntrinsicHeight;
 
   @override

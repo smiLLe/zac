@@ -2,7 +2,7 @@ import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -12,7 +12,7 @@ part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @defaultConverterFreezed
-class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
+class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   const FlutterBuilder._();
 
   static const String unionValue = 'f:1:Builder';
@@ -23,7 +23,7 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
   @FreezedUnionValue(FlutterBuilder.unionValue)
   factory FlutterBuilder({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterBuilder;
 
   @override
@@ -32,9 +32,8 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
     return Builder(
       key: key?.buildKey(context, ref, lifetime),
       builder: (_) {
-        return ZacUpdateContext(
-          builder: (context, ref, lifetime) =>
-              child.buildWidget(context, ref, lifetime),
+        return ZacUpdateWidget(
+          builder: child.buildWidget,
         );
       },
     );

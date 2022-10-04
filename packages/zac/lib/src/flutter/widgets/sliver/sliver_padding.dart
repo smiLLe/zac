@@ -12,7 +12,9 @@ part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
 
 @defaultConverterFreezed
-class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
+class FlutterSliverPadding
+    with _$FlutterSliverPadding
+    implements FlutterWidget {
   const FlutterSliverPadding._();
 
   static const String unionValue = 'f:1:SliverPadding';
@@ -23,7 +25,7 @@ class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
   @FreezedUnionValue(FlutterSliverPadding.unionValue)
   factory FlutterSliverPadding({
     FlutterKey? key,
-    ZacWidget? sliver,
+    FlutterWidget? sliver,
     required FlutterEdgeInsetsGeometry padding,
   }) = _FlutterSliverPadding;
 

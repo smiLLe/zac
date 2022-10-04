@@ -2,10 +2,9 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
 import 'package:zac/src/converter.dart';
@@ -18,8 +17,6 @@ import 'package:mockito/mockito.dart';
 
 part 'helper.freezed.dart';
 part 'helper.g.dart';
-
-class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
 
 class FakeBuildContext extends Fake implements BuildContext {}
 
@@ -90,7 +87,7 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetBuilderFromMap(zacMap: ZacMap(data)),
+    ZacWidgetFromMa(zacMap: ZacMap(data)),
     converter: converter,
     useContainer: useContainer,
   );
@@ -98,13 +95,13 @@ Future<void> testMap(
 
 Future<void> testZacWidget(
   WidgetTester tester,
-  ZacWidget zacWidget, {
+  FlutterWidget zacWidget, {
   Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetBuilder(zacWidget: zacWidget),
+    ZacWidget(zacWidget: zacWidget),
     converter: converter,
     useContainer: useContainer,
   );
@@ -219,11 +216,6 @@ class NoopAction with _$NoopAction implements ZacInteraction {
       ZacInteractionLifetime lifetime, ContextBag bag) {}
 }
 
-@GenerateMocks([LeakeContextCb])
-class LeakeContextCb extends Mock {
-  void call(ZacBuildContext context);
-}
-
 class CustomTransformer implements ZacTransformer {
   CustomTransformer(this.cb);
 
@@ -256,29 +248,15 @@ class LeakBagTransformer extends Mock implements ZacTransformer {
   }
 }
 
-@GenerateMocks([TransformerCb])
-class TransformerCb extends Mock implements ZacTransformer {
-  Object? call(ZacTransformValue transformValue, ZacBuildContext context,
-      ContextBag bag) {
-    return transformValue.value;
-  }
-
-  @override
-  Object? transform(
-      ZacTransformValue transformValue, ZacRef ref, ContextBag bag) {
-    return transformValue.value;
-  }
-}
-
 @nonConverterFreezed
-class LeakContext with _$LeakContext implements ZacWidget {
+class LeakContext with _$LeakContext implements FlutterWidget {
   LeakContext._();
 
   factory LeakContext({
     required void Function(BuildContext context, WidgetRef ref,
             ZacInteractionLifetime lifetime)
         cb,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _LeakContext;
 
   @override

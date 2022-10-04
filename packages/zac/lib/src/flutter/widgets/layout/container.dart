@@ -14,7 +14,7 @@ part 'container.freezed.dart';
 part 'container.g.dart';
 
 @defaultConverterFreezed
-class FlutterContainer with _$FlutterContainer implements ZacWidget {
+class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   const FlutterContainer._();
 
   static const String unionValue = 'f:1:Container';
@@ -25,7 +25,7 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
   @FreezedUnionValue(FlutterContainer.unionValue)
   factory FlutterContainer({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     FlutterColor? color,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,

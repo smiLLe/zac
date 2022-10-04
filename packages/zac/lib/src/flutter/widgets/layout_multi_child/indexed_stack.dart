@@ -15,7 +15,7 @@ part 'indexed_stack.freezed.dart';
 part 'indexed_stack.g.dart';
 
 @defaultConverterFreezed
-class FlutterIndexedStack with _$FlutterIndexedStack implements ZacWidget {
+class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   const FlutterIndexedStack._();
 
   static const String unionValue = 'f:1:IndexedStack';

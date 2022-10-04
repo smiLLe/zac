@@ -15,7 +15,7 @@ part 'fractional_translation.g.dart';
 @defaultConverterFreezed
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterFractionalTranslation._();
 
   static const String unionValue = 'f:1:FractionalTranslation';
@@ -26,7 +26,7 @@ class FlutterFractionalTranslation
   @FreezedUnionValue(FlutterFractionalTranslation.unionValue)
   factory FlutterFractionalTranslation({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     required FlutterOffset translation,
     ZacBool? transformHitTests,
   }) = _FlutterFractionalTranslation;

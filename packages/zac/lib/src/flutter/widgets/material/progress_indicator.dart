@@ -15,7 +15,7 @@ part 'progress_indicator.g.dart';
 @defaultConverterFreezed
 class FlutterProgressIndicator
     with _$FlutterProgressIndicator
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterProgressIndicator._();
 
   static const String unionValueLinearProgressIndicator =

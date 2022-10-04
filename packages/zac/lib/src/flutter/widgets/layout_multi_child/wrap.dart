@@ -15,7 +15,7 @@ part 'wrap.freezed.dart';
 part 'wrap.g.dart';
 
 @defaultConverterFreezed
-class FlutterWrap with _$FlutterWrap implements ZacWidget {
+class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   const FlutterWrap._();
 
   static const String unionValue = 'f:1:Wrap';

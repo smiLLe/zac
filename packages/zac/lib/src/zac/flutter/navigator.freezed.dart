@@ -64,7 +64,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
   @override
   final Object family;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final ZacString? debugLabel;
 
@@ -111,7 +111,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
     extends ZacFlutterGlobalKeyNavigatorState {
   factory _ZacFlutterGlobalKeyNavigatorStateProvide(
           {required final Object family,
-          required final ZacWidget child,
+          required final FlutterWidget child,
           final ZacString? debugLabel}) =
       _$_ZacFlutterGlobalKeyNavigatorStateProvide;
   _ZacFlutterGlobalKeyNavigatorStateProvide._() : super._();
@@ -122,7 +122,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
 
   @override
   Object get family;
-  ZacWidget get child;
+  FlutterWidget get child;
   ZacString? get debugLabel;
 }
 

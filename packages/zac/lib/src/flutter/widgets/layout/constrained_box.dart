@@ -2,7 +2,7 @@ import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/any_value.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
@@ -13,7 +13,9 @@ part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
+class FlutterConstrainedBox
+    with _$FlutterConstrainedBox
+    implements FlutterWidget {
   const FlutterConstrainedBox._();
 
   static const String unionValue = 'f:1:ConstrainedBox';
@@ -25,7 +27,7 @@ class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
   factory FlutterConstrainedBox({
     FlutterKey? key,
     required FlutterBoxConstraints constraints,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterConstrainedBox;
 
   @override

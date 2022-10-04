@@ -13,7 +13,7 @@ part 'image.freezed.dart';
 part 'image.g.dart';
 
 @defaultConverterFreezed
-class FlutterImage with _$FlutterImage implements ZacWidget {
+class FlutterImage with _$FlutterImage implements FlutterWidget {
   const FlutterImage._();
 
   static const String unionValueNetwork = 'f:1:Image.network';

@@ -16,7 +16,7 @@ part 'list_view.freezed.dart';
 part 'list_view.g.dart';
 
 @defaultConverterFreezed
-class FlutterListView with _$FlutterListView implements ZacWidget {
+class FlutterListView with _$FlutterListView implements FlutterWidget {
   const FlutterListView._();
 
   static const String unionValue = 'f:1:ListView';
@@ -35,7 +35,7 @@ class FlutterListView with _$FlutterListView implements ZacWidget {
     ZacBool? shrinkWrap,
     FlutterEdgeInsetsGeometry? padding,
     ZacDouble? itemExtent,
-    ZacWidget? prototypeItem,
+    FlutterWidget? prototypeItem,
     ZacBool? addAutomaticKeepAlives,
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,

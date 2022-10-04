@@ -18,5 +18,5 @@ _$_FlutterSizedOverflowBox _$$_FlutterSizedOverflowBoxFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

@@ -24,7 +24,7 @@ mixin _$FlutterSizedOverflowBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterSize get size => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,7 +50,7 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   String toString() {
@@ -91,7 +91,7 @@ abstract class _FlutterSizedOverflowBox extends FlutterSizedOverflowBox {
       {final FlutterKey? key,
       required final FlutterSize size,
       final FlutterAlignmentGeometry? alignment,
-      final ZacWidget? child}) = _$_FlutterSizedOverflowBox;
+      final FlutterWidget? child}) = _$_FlutterSizedOverflowBox;
   _FlutterSizedOverflowBox._() : super._();
 
   factory _FlutterSizedOverflowBox.fromJson(Map<String, dynamic> json) =
@@ -104,5 +104,5 @@ abstract class _FlutterSizedOverflowBox extends FlutterSizedOverflowBox {
   @override
   FlutterAlignmentGeometry? get alignment;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }

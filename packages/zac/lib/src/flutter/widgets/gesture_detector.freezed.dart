@@ -22,7 +22,7 @@ FlutterGestureDetector _$FlutterGestureDetectorFromJson(
 /// @nodoc
 mixin _$FlutterGestureDetector {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   ZacInteractions? get onTap => throw _privateConstructorUsedError;
   ZacInteractions? get onSecondaryTap => throw _privateConstructorUsedError;
   ZacInteractions? get onDoubleTap => throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ class _$_FlutterGestureDetector extends _FlutterGestureDetector {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final ZacInteractions? onTap;
   @override
@@ -136,7 +136,7 @@ class _$_FlutterGestureDetector extends _FlutterGestureDetector {
 abstract class _FlutterGestureDetector extends FlutterGestureDetector {
   factory _FlutterGestureDetector(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final ZacInteractions? onTap,
       final ZacInteractions? onSecondaryTap,
       final ZacInteractions? onDoubleTap,
@@ -153,7 +153,7 @@ abstract class _FlutterGestureDetector extends FlutterGestureDetector {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   ZacInteractions? get onTap;
   @override

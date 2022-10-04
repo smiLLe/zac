@@ -13,7 +13,7 @@ part 'overflow_box.freezed.dart';
 part 'overflow_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
+class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   const FlutterOverflowBox._();
 
   static const String unionValue = 'f:1:OverflowBox';
@@ -29,7 +29,7 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
     ZacDouble? maxWidth,
     ZacDouble? minHeight,
     ZacDouble? maxHeight,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterOverflowBox;
 
   @override

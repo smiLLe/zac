@@ -16,7 +16,7 @@ part 'refresh_indicator.g.dart';
 @defaultConverterFreezed
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterRefreshIndicator._();
 
   static const String unionValue = 'f:1:RefreshIndicator';
@@ -27,7 +27,7 @@ class FlutterRefreshIndicator
   @FreezedUnionValue(FlutterRefreshIndicator.unionValue)
   factory FlutterRefreshIndicator({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacDouble? displacement,
     ZacDouble? edgeOffset,
     required ZacInteractions onRefresh,

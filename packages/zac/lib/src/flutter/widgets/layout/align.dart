@@ -13,7 +13,7 @@ part 'align.freezed.dart';
 part 'align.g.dart';
 
 @defaultConverterFreezed
-class FlutterAlign with _$FlutterAlign implements ZacWidget {
+class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   const FlutterAlign._();
 
   static const String unionValue = 'f:1:Align';
@@ -28,7 +28,7 @@ class FlutterAlign with _$FlutterAlign implements ZacWidget {
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
     // @ZacWidgetNullableConverter() ZacWidget? child,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterAlign;
 
   @override

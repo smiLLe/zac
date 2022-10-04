@@ -23,7 +23,7 @@ mixin _$FlutterMaterialApp {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterGlobalKeyNavigatorState? get navigatorKey =>
       throw _privateConstructorUsedError; // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-  ZacWidget? get home =>
+  FlutterWidget? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   ZacString? get initialRoute => throw _privateConstructorUsedError;
   FlutterRouteFactory? get onGenerateRoute =>
@@ -97,7 +97,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   final FlutterGlobalKeyNavigatorState? navigatorKey;
 // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
   @override
-  final ZacWidget? home;
+  final FlutterWidget? home;
 // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   @override
   final ZacString? initialRoute;
@@ -222,7 +222,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
       {final FlutterKey? key,
       final FlutterGlobalKeyNavigatorState? navigatorKey,
-      final ZacWidget? home,
+      final FlutterWidget? home,
       final ZacString? initialRoute,
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
@@ -247,7 +247,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override
   FlutterGlobalKeyNavigatorState? get navigatorKey;
   @override // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-  ZacWidget? get home;
+  FlutterWidget? get home;
   @override // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   ZacString? get initialRoute;
   @override

@@ -21,7 +21,7 @@ FlutterBuilder _$FlutterBuilderFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -41,7 +41,7 @@ class _$_FlutterBuilder extends _FlutterBuilder {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @override
   String toString() {
@@ -76,7 +76,7 @@ class _$_FlutterBuilder extends _FlutterBuilder {
 abstract class _FlutterBuilder extends FlutterBuilder {
   factory _FlutterBuilder(
       {final FlutterKey? key,
-      required final ZacWidget child}) = _$_FlutterBuilder;
+      required final FlutterWidget child}) = _$_FlutterBuilder;
   _FlutterBuilder._() : super._();
 
   factory _FlutterBuilder.fromJson(Map<String, dynamic> json) =
@@ -85,5 +85,5 @@ abstract class _FlutterBuilder extends FlutterBuilder {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }

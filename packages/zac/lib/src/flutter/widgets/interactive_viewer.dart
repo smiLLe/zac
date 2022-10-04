@@ -15,7 +15,7 @@ part 'interactive_viewer.g.dart';
 @defaultConverterFreezed
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterInteractiveViewer._();
 
   static const String unionValue = 'f:1:InteractiveViewer';
@@ -26,7 +26,7 @@ class FlutterInteractiveViewer
   @FreezedUnionValue(FlutterInteractiveViewer.unionValue)
   factory FlutterInteractiveViewer({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
     FlutterClip? clipBehavior,
     ZacBool? alignPanAxis,
     FlutterEdgeInsets? boundaryMargin,

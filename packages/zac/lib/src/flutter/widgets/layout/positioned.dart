@@ -13,7 +13,7 @@ part 'positioned.freezed.dart';
 part 'positioned.g.dart';
 
 @defaultConverterFreezed
-class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
+class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   const FlutterPositioned._();
 
   static const String unionValue = 'f:1:Positioned';
@@ -32,7 +32,7 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? bottom,
     ZacDouble? width,
     ZacDouble? height,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositioneddirectional;
 
   @FreezedUnionValue(FlutterPositioned.unionValueDirectional)
@@ -45,7 +45,7 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? bottom,
     ZacDouble? width,
     ZacDouble? height,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositioned;
 
   @FreezedUnionValue(FlutterPositioned.unionValueFill)
@@ -55,7 +55,7 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? top,
     ZacDouble? right,
     ZacDouble? bottom,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositionedfill;
 
   @override

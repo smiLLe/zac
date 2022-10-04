@@ -19,7 +19,7 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
       interactions: ZacInteractions.fromJson(json['interactions'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -30,6 +30,6 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
       family: json['family'] as Object,
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['_converter'] as String?,
     );

@@ -21,10 +21,10 @@ FlutterListTile _$FlutterListTileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterListTile {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get leading => throw _privateConstructorUsedError;
-  ZacWidget? get title => throw _privateConstructorUsedError;
-  ZacWidget? get subtitle => throw _privateConstructorUsedError;
-  ZacWidget? get trailing => throw _privateConstructorUsedError;
+  FlutterWidget? get leading => throw _privateConstructorUsedError;
+  FlutterWidget? get title => throw _privateConstructorUsedError;
+  FlutterWidget? get subtitle => throw _privateConstructorUsedError;
+  FlutterWidget? get trailing => throw _privateConstructorUsedError;
   ZacBool? get isThreeLine => throw _privateConstructorUsedError;
   ZacBool? get dense =>
       throw _privateConstructorUsedError; // FlutterVisualDensity? visualDensity,
@@ -95,13 +95,13 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? leading;
+  final FlutterWidget? leading;
   @override
-  final ZacWidget? title;
+  final FlutterWidget? title;
   @override
-  final ZacWidget? subtitle;
+  final FlutterWidget? subtitle;
   @override
-  final ZacWidget? trailing;
+  final FlutterWidget? trailing;
   @override
   final ZacBool? isThreeLine;
   @override
@@ -238,10 +238,10 @@ class _$_FlutterListTile extends _FlutterListTile {
 abstract class _FlutterListTile extends FlutterListTile {
   factory _FlutterListTile(
       {final FlutterKey? key,
-      final ZacWidget? leading,
-      final ZacWidget? title,
-      final ZacWidget? subtitle,
-      final ZacWidget? trailing,
+      final FlutterWidget? leading,
+      final FlutterWidget? title,
+      final FlutterWidget? subtitle,
+      final FlutterWidget? trailing,
       final ZacBool? isThreeLine,
       final ZacBool? dense,
       final FlutterShapeBorder? shape,
@@ -270,13 +270,13 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get leading;
+  FlutterWidget? get leading;
   @override
-  ZacWidget? get title;
+  FlutterWidget? get title;
   @override
-  ZacWidget? get subtitle;
+  FlutterWidget? get subtitle;
   @override
-  ZacWidget? get trailing;
+  FlutterWidget? get trailing;
   @override
   ZacBool? get isThreeLine;
   @override

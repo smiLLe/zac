@@ -74,7 +74,7 @@ void main() {
       UncontrolledProviderScope(
         container: ProviderContainer(),
         child: MaterialApp(
-          home: ZacWidgetBuilder(
+          home: FlutterWidget(
             zacWidget: LeakContext(cb: (c) => context = c),
           ),
         ),
@@ -98,12 +98,12 @@ void main() {
 }
 
 @nonConverterFreezed
-class LeakContext with _$LeakContext implements ZacWidget {
+class LeakContext with _$LeakContext implements FlutterWidget {
   LeakContext._();
 
   factory LeakContext({
     required void Function(ZacBuildContext context) cb,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _LeakContext;
 
   @override

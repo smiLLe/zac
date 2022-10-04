@@ -13,7 +13,7 @@ part 'center.freezed.dart';
 part 'center.g.dart';
 
 @defaultConverterFreezed
-class FlutterCenter with _$FlutterCenter implements ZacWidget {
+class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   const FlutterCenter._();
 
   static const String unionValue = 'f:1:Center';
@@ -26,7 +26,7 @@ class FlutterCenter with _$FlutterCenter implements ZacWidget {
     FlutterKey? key,
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterCenter;
 
   @override

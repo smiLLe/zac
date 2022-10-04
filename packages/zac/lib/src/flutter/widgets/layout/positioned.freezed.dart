@@ -34,7 +34,7 @@ mixin _$FlutterPositioned {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacDouble? get top => throw _privateConstructorUsedError;
   ZacDouble? get bottom => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -79,7 +79,7 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
   @override
   final ZacDouble? height;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -137,7 +137,7 @@ abstract class _FlutterPositioneddirectional extends FlutterPositioned {
       final ZacDouble? bottom,
       final ZacDouble? width,
       final ZacDouble? height,
-      required final ZacWidget child}) = _$_FlutterPositioneddirectional;
+      required final FlutterWidget child}) = _$_FlutterPositioneddirectional;
   _FlutterPositioneddirectional._() : super._();
 
   factory _FlutterPositioneddirectional.fromJson(Map<String, dynamic> json) =
@@ -154,7 +154,7 @@ abstract class _FlutterPositioneddirectional extends FlutterPositioned {
   ZacDouble? get width;
   ZacDouble? get height;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }
 
 /// @nodoc
@@ -194,7 +194,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
   @override
   final ZacDouble? height;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -256,7 +256,7 @@ abstract class _FlutterPositioned extends FlutterPositioned {
       final ZacDouble? bottom,
       final ZacDouble? width,
       final ZacDouble? height,
-      required final ZacWidget child}) = _$_FlutterPositioned;
+      required final FlutterWidget child}) = _$_FlutterPositioned;
   _FlutterPositioned._() : super._();
 
   factory _FlutterPositioned.fromJson(Map<String, dynamic> json) =
@@ -274,7 +274,7 @@ abstract class _FlutterPositioned extends FlutterPositioned {
   ZacDouble? get width;
   ZacDouble? get height;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }
 
 /// @nodoc
@@ -305,7 +305,7 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
   @override
   final ZacDouble? bottom;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -357,7 +357,7 @@ abstract class _FlutterPositionedfill extends FlutterPositioned {
       final ZacDouble? top,
       final ZacDouble? right,
       final ZacDouble? bottom,
-      required final ZacWidget child}) = _$_FlutterPositionedfill;
+      required final FlutterWidget child}) = _$_FlutterPositionedfill;
   _FlutterPositionedfill._() : super._();
 
   factory _FlutterPositionedfill.fromJson(Map<String, dynamic> json) =
@@ -372,5 +372,5 @@ abstract class _FlutterPositionedfill extends FlutterPositioned {
   @override
   ZacDouble? get bottom;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }

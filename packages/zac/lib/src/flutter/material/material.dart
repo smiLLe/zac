@@ -6,7 +6,7 @@ import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
@@ -100,7 +100,7 @@ class FlutterMaterialPageRoute
 
   @FreezedUnionValue(FlutterMaterialPageRoute.unionValue)
   factory FlutterMaterialPageRoute({
-    required ZacWidget child,
+    required FlutterWidget child,
     FlutterRouteSettings? settings,
     ZacBool? maintainState,
     ZacBool? fullscreenDialog,
@@ -110,11 +110,11 @@ class FlutterMaterialPageRoute
   MaterialPageRoute<ZacInteractions?> build(
       BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
       {Widget Function(BuildContext context, WidgetRef ref,
-              ZacInteractionLifetime lifetime, ZacWidget zacWidget)?
+              ZacInteractionLifetime lifetime, FlutterWidget zacWidget)?
           wrap}) {
     final zacRef = ZacRef.widget(ref);
     return MaterialPageRoute<ZacInteractions?>(
-      builder: (_) => ZacUpdateContext(
+      builder: (_) => ZacUpdateWidget(
         builder: (context, ref, lifetime) {
           if (null == wrap) {
             return child.buildWidget(context, ref, lifetime);

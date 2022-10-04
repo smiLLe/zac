@@ -16,7 +16,7 @@ part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @defaultConverterFreezed
-class FlutterGridView with _$FlutterGridView implements ZacWidget {
+class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   const FlutterGridView._();
 
   static const String unionValue = 'f:1:GridView';

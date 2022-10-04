@@ -7,8 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/interactions.dart' as _i5;
 import 'package:zac/src/zac/misc.dart' as _i6;
-import 'package:zac/src/zac/transformers.dart' as _i8;
-import 'package:zac/src/zac/update_context.dart' as _i7;
+import 'package:zac/src/zac/transformers.dart' as _i7;
 
 import 'helper.dart' as _i2;
 
@@ -52,20 +51,6 @@ class MockLeakBagCb extends _i1.Mock implements _i2.LeakBagCb {
           returnValueForMissingStub: null);
 }
 
-/// A class which mocks [LeakeContextCb].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockLeakeContextCb extends _i1.Mock implements _i2.LeakeContextCb {
-  MockLeakeContextCb() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  void call(_i7.ZacBuildContext? context) =>
-      super.noSuchMethod(Invocation.method(#call, [context]),
-          returnValueForMissingStub: null);
-}
-
 /// A class which mocks [LeakBagTransformer].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -81,33 +66,12 @@ class MockLeakBagTransformer extends _i1.Mock
               returnValue: (Map<String, dynamic> bag) {})
           as void Function(Map<String, dynamic>));
   @override
-  Object? call(_i8.ZacTransformValue? transformValue, _i6.ZacRef? ref,
+  Object? call(_i7.ZacTransformValue? transformValue, _i6.ZacRef? ref,
           _i6.ContextBag? bag) =>
       (super.noSuchMethod(Invocation.method(#call, [transformValue, ref, bag]))
           as Object?);
   @override
-  Object? transform(_i8.ZacTransformValue? transformValue, _i6.ZacRef? ref,
-          _i6.ContextBag? bag) =>
-      (super.noSuchMethod(
-              Invocation.method(#transform, [transformValue, ref, bag]))
-          as Object?);
-}
-
-/// A class which mocks [TransformerCb].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
-  MockTransformerCb() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  Object? call(_i8.ZacTransformValue? transformValue,
-          _i7.ZacBuildContext? context, _i6.ContextBag? bag) =>
-      (super.noSuchMethod(
-          Invocation.method(#call, [transformValue, context, bag])) as Object?);
-  @override
-  Object? transform(_i8.ZacTransformValue? transformValue, _i6.ZacRef? ref,
+  Object? transform(_i7.ZacTransformValue? transformValue, _i6.ZacRef? ref,
           _i6.ContextBag? bag) =>
       (super.noSuchMethod(
               Invocation.method(#transform, [transformValue, ref, bag]))

@@ -14,7 +14,7 @@ part 'drawer.freezed.dart';
 part 'drawer.g.dart';
 
 @defaultConverterFreezed
-class FlutterDrawer with _$FlutterDrawer implements ZacWidget {
+class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   const FlutterDrawer._();
 
   static const String unionValue = 'f:1:Drawer';
@@ -28,7 +28,7 @@ class FlutterDrawer with _$FlutterDrawer implements ZacWidget {
     FlutterColor? backgroundColor,
     ZacDouble? elevation,
     FlutterShapeBorder? shape,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacString? semanticLabel,
   }) = _FlutterDrawer;
 

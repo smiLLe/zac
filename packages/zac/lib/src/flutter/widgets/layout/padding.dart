@@ -12,7 +12,7 @@ part 'padding.freezed.dart';
 part 'padding.g.dart';
 
 @defaultConverterFreezed
-class FlutterPadding with _$FlutterPadding implements ZacWidget {
+class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   const FlutterPadding._();
 
   static const String unionValue = 'f:1:Padding';
@@ -24,7 +24,7 @@ class FlutterPadding with _$FlutterPadding implements ZacWidget {
   factory FlutterPadding({
     FlutterKey? key,
     required FlutterEdgeInsetsGeometry padding,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterPadding;
 
   @override

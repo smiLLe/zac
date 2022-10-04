@@ -14,7 +14,7 @@ part 'row.freezed.dart';
 part 'row.g.dart';
 
 @defaultConverterFreezed
-class FlutterRow with _$FlutterRow implements ZacWidget {
+class FlutterRow with _$FlutterRow implements FlutterWidget {
   const FlutterRow._();
 
   static const String unionValue = 'f:1:Row';

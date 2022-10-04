@@ -13,7 +13,9 @@ part 'buttons.freezed.dart';
 part 'buttons.g.dart';
 
 @defaultConverterFreezed
-class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
+class FlutterElevatedButton
+    with _$FlutterElevatedButton
+    implements FlutterWidget {
   const FlutterElevatedButton._();
 
   static const String unionValue = 'f:1:ElevatedButton';
@@ -25,7 +27,7 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
   @FreezedUnionValue(FlutterElevatedButton.unionValue)
   factory FlutterElevatedButton({
     FlutterKey? key,
-    required ZacWidget? child,
+    required FlutterWidget? child,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,
@@ -35,8 +37,8 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
   @FreezedUnionValue(FlutterElevatedButton.unionValueIcon)
   factory FlutterElevatedButton.icon({
     FlutterKey? key,
-    required ZacWidget icon,
-    required ZacWidget label,
+    required FlutterWidget icon,
+    required FlutterWidget label,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,
@@ -88,7 +90,9 @@ class FlutterElevatedButton with _$FlutterElevatedButton implements ZacWidget {
 }
 
 @defaultConverterFreezed
-class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
+class FlutterOutlinedButton
+    with _$FlutterOutlinedButton
+    implements FlutterWidget {
   const FlutterOutlinedButton._();
 
   static const String unionValue = 'f:1:OutlinedButton';
@@ -100,7 +104,7 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
   @FreezedUnionValue(FlutterOutlinedButton.unionValue)
   factory FlutterOutlinedButton({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,
@@ -110,8 +114,8 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
   @FreezedUnionValue(FlutterOutlinedButton.unionValueIcon)
   factory FlutterOutlinedButton.icon({
     FlutterKey? key,
-    required ZacWidget icon,
-    required ZacWidget label,
+    required FlutterWidget icon,
+    required FlutterWidget label,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,
@@ -163,7 +167,7 @@ class FlutterOutlinedButton with _$FlutterOutlinedButton implements ZacWidget {
 }
 
 @defaultConverterFreezed
-class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
+class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
   const FlutterTextButton._();
 
   static const String unionValue = 'f:1:TextButton';
@@ -175,7 +179,7 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
   @FreezedUnionValue(FlutterTextButton.unionValue)
   factory FlutterTextButton({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,
@@ -185,8 +189,8 @@ class FlutterTextButton with _$FlutterTextButton implements ZacWidget {
   @FreezedUnionValue(FlutterTextButton.unionValueIcon)
   factory FlutterTextButton.icon({
     FlutterKey? key,
-    required ZacWidget icon,
-    required ZacWidget label,
+    required FlutterWidget icon,
+    required FlutterWidget label,
     ZacInteractions? onPressed,
     ZacInteractions? onLongPress,
     ZacBool? autofocus,

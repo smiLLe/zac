@@ -11,7 +11,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateProvide
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateProvide(
           family: json['family'] as Object,
-          child: ZacWidget.fromJson(json['child'] as Object),
+          child: FlutterWidget.fromJson(json['child'] as Object),
           debugLabel: json['debugLabel'] == null
               ? null
               : ZacString.fromJson(json['debugLabel'] as Object),

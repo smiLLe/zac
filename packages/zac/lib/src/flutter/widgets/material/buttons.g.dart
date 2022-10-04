@@ -14,7 +14,7 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),
@@ -36,8 +36,8 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      icon: ZacWidget.fromJson(json['icon'] as Object),
-      label: ZacWidget.fromJson(json['label'] as Object),
+      icon: FlutterWidget.fromJson(json['icon'] as Object),
+      label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),
@@ -59,7 +59,7 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),
@@ -81,8 +81,8 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      icon: ZacWidget.fromJson(json['icon'] as Object),
-      label: ZacWidget.fromJson(json['label'] as Object),
+      icon: FlutterWidget.fromJson(json['icon'] as Object),
+      label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),
@@ -103,7 +103,7 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),
@@ -125,8 +125,8 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      icon: ZacWidget.fromJson(json['icon'] as Object),
-      label: ZacWidget.fromJson(json['label'] as Object),
+      icon: FlutterWidget.fromJson(json['icon'] as Object),
+      label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacInteractions.fromJson(json['onPressed'] as Object),

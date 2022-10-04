@@ -473,7 +473,7 @@ mixin _$SharedValueProviderBuilder {
   Object? get value => throw _privateConstructorUsedError;
   List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -513,7 +513,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   @override
   final Object family;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @override
   String toString() {
@@ -558,7 +558,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       required final Object? value,
       final List<ZacTransformer>? transformer,
       required final Object family,
-      required final ZacWidget child}) = _$_SharedValueProviderBuilder;
+      required final FlutterWidget child}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
 
   factory _SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =
@@ -573,5 +573,5 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   Object get family;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }

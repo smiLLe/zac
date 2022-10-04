@@ -14,7 +14,7 @@ part 'stack.freezed.dart';
 part 'stack.g.dart';
 
 @defaultConverterFreezed
-class FlutterStack with _$FlutterStack implements ZacWidget {
+class FlutterStack with _$FlutterStack implements FlutterWidget {
   const FlutterStack._();
 
   static const String unionValue = 'f:1:Stack';

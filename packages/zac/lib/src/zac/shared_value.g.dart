@@ -64,5 +64,5 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
           ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
           .toList(),
       family: json['family'] as Object,
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
     );

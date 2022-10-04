@@ -12,7 +12,7 @@ part 'offstage.freezed.dart';
 part 'offstage.g.dart';
 
 @defaultConverterFreezed
-class FlutterOffstage with _$FlutterOffstage implements ZacWidget {
+class FlutterOffstage with _$FlutterOffstage implements FlutterWidget {
   const FlutterOffstage._();
 
   static const String unionValue = 'f:1:Offstage';
@@ -24,7 +24,7 @@ class FlutterOffstage with _$FlutterOffstage implements ZacWidget {
   factory FlutterOffstage({
     FlutterKey? key,
     ZacBool? offstage,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterOffstage;
 
   @override

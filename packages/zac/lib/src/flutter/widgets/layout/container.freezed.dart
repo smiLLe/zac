@@ -21,7 +21,7 @@ FlutterContainer _$FlutterContainerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterContainer {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get margin => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ class _$_FlutterContainer extends _FlutterContainer {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final FlutterColor? color;
   @override
@@ -110,7 +110,7 @@ class _$_FlutterContainer extends _FlutterContainer {
 abstract class _FlutterContainer extends FlutterContainer {
   factory _FlutterContainer(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final FlutterColor? color,
       final FlutterEdgeInsetsGeometry? margin,
       final FlutterEdgeInsetsGeometry? padding,
@@ -124,7 +124,7 @@ abstract class _FlutterContainer extends FlutterContainer {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   FlutterColor? get color;
   @override

@@ -21,9 +21,9 @@ FlutterInputDecoration _$FlutterInputDecorationFromJson(
 
 /// @nodoc
 mixin _$FlutterInputDecoration {
-  ZacWidget? get icon => throw _privateConstructorUsedError;
+  FlutterWidget? get icon => throw _privateConstructorUsedError;
   FlutterColor? get iconColor => throw _privateConstructorUsedError;
-  ZacWidget? get label => throw _privateConstructorUsedError;
+  FlutterWidget? get label => throw _privateConstructorUsedError;
   ZacString? get labelText => throw _privateConstructorUsedError;
   FlutterTextStyle? get labelStyle => throw _privateConstructorUsedError;
   FlutterTextStyle? get floatingLabelStyle =>
@@ -45,21 +45,21 @@ mixin _$FlutterInputDecoration {
   ZacBool? get isDense => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get contentPadding =>
       throw _privateConstructorUsedError;
-  ZacWidget? get prefixIcon => throw _privateConstructorUsedError;
+  FlutterWidget? get prefixIcon => throw _privateConstructorUsedError;
   FlutterBoxConstraints? get prefixIconConstraints =>
       throw _privateConstructorUsedError;
-  ZacWidget? get prefix => throw _privateConstructorUsedError;
+  FlutterWidget? get prefix => throw _privateConstructorUsedError;
   ZacString? get prefixText => throw _privateConstructorUsedError;
   FlutterTextStyle? get prefixStyle => throw _privateConstructorUsedError;
   FlutterColor? get prefixIconColor => throw _privateConstructorUsedError;
-  ZacWidget? get suffixIcon => throw _privateConstructorUsedError;
-  ZacWidget? get suffix => throw _privateConstructorUsedError;
+  FlutterWidget? get suffixIcon => throw _privateConstructorUsedError;
+  FlutterWidget? get suffix => throw _privateConstructorUsedError;
   ZacString? get suffixText => throw _privateConstructorUsedError;
   FlutterTextStyle? get suffixStyle => throw _privateConstructorUsedError;
   FlutterColor? get suffixIconColor => throw _privateConstructorUsedError;
   FlutterBoxConstraints? get suffixIconConstraints =>
       throw _privateConstructorUsedError;
-  ZacWidget? get counter => throw _privateConstructorUsedError;
+  FlutterWidget? get counter => throw _privateConstructorUsedError;
   ZacString? get counterText => throw _privateConstructorUsedError;
   FlutterTextStyle? get counterStyle => throw _privateConstructorUsedError;
   ZacBool? get filled => throw _privateConstructorUsedError;
@@ -143,11 +143,11 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
       _$$_FlutterInputDecorationFromJson(json);
 
   @override
-  final ZacWidget? icon;
+  final FlutterWidget? icon;
   @override
   final FlutterColor? iconColor;
   @override
-  final ZacWidget? label;
+  final FlutterWidget? label;
   @override
   final ZacString? labelText;
   @override
@@ -183,11 +183,11 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterEdgeInsetsGeometry? contentPadding;
   @override
-  final ZacWidget? prefixIcon;
+  final FlutterWidget? prefixIcon;
   @override
   final FlutterBoxConstraints? prefixIconConstraints;
   @override
-  final ZacWidget? prefix;
+  final FlutterWidget? prefix;
   @override
   final ZacString? prefixText;
   @override
@@ -195,9 +195,9 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterColor? prefixIconColor;
   @override
-  final ZacWidget? suffixIcon;
+  final FlutterWidget? suffixIcon;
   @override
-  final ZacWidget? suffix;
+  final FlutterWidget? suffix;
   @override
   final ZacString? suffixText;
   @override
@@ -207,7 +207,7 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterBoxConstraints? suffixIconConstraints;
   @override
-  final ZacWidget? counter;
+  final FlutterWidget? counter;
   @override
   final ZacString? counterText;
   @override
@@ -399,9 +399,9 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
 
 abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   factory _FlutterInputDecoration(
-      {final ZacWidget? icon,
+      {final FlutterWidget? icon,
       final FlutterColor? iconColor,
-      final ZacWidget? label,
+      final FlutterWidget? label,
       final ZacString? labelText,
       final FlutterTextStyle? labelStyle,
       final FlutterTextStyle? floatingLabelStyle,
@@ -418,19 +418,19 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       final ZacBool? isCollapsed,
       final ZacBool? isDense,
       final FlutterEdgeInsetsGeometry? contentPadding,
-      final ZacWidget? prefixIcon,
+      final FlutterWidget? prefixIcon,
       final FlutterBoxConstraints? prefixIconConstraints,
-      final ZacWidget? prefix,
+      final FlutterWidget? prefix,
       final ZacString? prefixText,
       final FlutterTextStyle? prefixStyle,
       final FlutterColor? prefixIconColor,
-      final ZacWidget? suffixIcon,
-      final ZacWidget? suffix,
+      final FlutterWidget? suffixIcon,
+      final FlutterWidget? suffix,
       final ZacString? suffixText,
       final FlutterTextStyle? suffixStyle,
       final FlutterColor? suffixIconColor,
       final FlutterBoxConstraints? suffixIconConstraints,
-      final ZacWidget? counter,
+      final FlutterWidget? counter,
       final ZacString? counterText,
       final FlutterTextStyle? counterStyle,
       final ZacBool? filled,
@@ -453,11 +453,11 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       _$_FlutterInputDecoration.fromJson;
 
   @override
-  ZacWidget? get icon;
+  FlutterWidget? get icon;
   @override
   FlutterColor? get iconColor;
   @override
-  ZacWidget? get label;
+  FlutterWidget? get label;
   @override
   ZacString? get labelText;
   @override
@@ -492,11 +492,11 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterEdgeInsetsGeometry? get contentPadding;
   @override
-  ZacWidget? get prefixIcon;
+  FlutterWidget? get prefixIcon;
   @override
   FlutterBoxConstraints? get prefixIconConstraints;
   @override
-  ZacWidget? get prefix;
+  FlutterWidget? get prefix;
   @override
   ZacString? get prefixText;
   @override
@@ -504,9 +504,9 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterColor? get prefixIconColor;
   @override
-  ZacWidget? get suffixIcon;
+  FlutterWidget? get suffixIcon;
   @override
-  ZacWidget? get suffix;
+  FlutterWidget? get suffix;
   @override
   ZacString? get suffixText;
   @override
@@ -516,7 +516,7 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterBoxConstraints? get suffixIconConstraints;
   @override
-  ZacWidget? get counter;
+  FlutterWidget? get counter;
   @override
   ZacString? get counterText;
   @override

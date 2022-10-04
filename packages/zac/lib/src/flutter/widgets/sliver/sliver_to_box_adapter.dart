@@ -13,7 +13,7 @@ part 'sliver_to_box_adapter.g.dart';
 @defaultConverterFreezed
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterSliverToBoxAdapter._();
 
   static const String unionValue = 'f:1:SliverToBoxAdapter';
@@ -24,7 +24,7 @@ class FlutterSliverToBoxAdapter
   @FreezedUnionValue(FlutterSliverToBoxAdapter.unionValue)
   factory FlutterSliverToBoxAdapter({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterSliverToBoxAdapter;
 
   @override

@@ -17,7 +17,7 @@ part 'text_field.freezed.dart';
 part 'text_field.g.dart';
 
 @defaultConverterFreezed
-class FlutterTextField with _$FlutterTextField implements ZacWidget {
+class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   const FlutterTextField._();
 
   static const String unionValue = 'f:1:TextField';

@@ -14,7 +14,7 @@ part 'column.freezed.dart';
 part 'column.g.dart';
 
 @defaultConverterFreezed
-class FlutterColumn with _$FlutterColumn implements ZacWidget {
+class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   const FlutterColumn._();
 
   static const String unionValue = 'f:1:Column';

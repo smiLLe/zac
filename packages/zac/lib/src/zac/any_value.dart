@@ -23,9 +23,9 @@ Object mapConsumeUnion(String other, Object map) {
   return map;
 }
 
-abstract class ZacWidget {
-  factory ZacWidget.fromJson(Object data) {
-    return ConverterHelper.convertToType<ZacWidget>(
+abstract class FlutterWidget {
+  factory FlutterWidget.fromJson(Object data) {
+    return ConverterHelper.convertToType<FlutterWidget>(
       mapConsumeUnion(ZacWidgetConsumerBuilder.unionValue, data),
     );
   }
@@ -527,14 +527,14 @@ class ListOfZacWidget with _$ListOfZacWidget {
   }
 
   @FreezedUnionValue(ListOfZacWidget.unionValue)
-  @With<ActualValue<List<ZacWidget>>>()
+  @With<ActualValue<List<FlutterWidget>>>()
   factory ListOfZacWidget(
-    List<ZacWidget> value, {
+    List<FlutterWidget> value, {
     List<ZacTransformer>? transformer,
   }) = ListOfZacWidgetValue;
 
   @FreezedUnionValue(ListOfZacWidget.unionValueConsume)
-  @With<ConsumeValueList<ZacWidget>>()
+  @With<ConsumeValueList<FlutterWidget>>()
   factory ListOfZacWidget.consume(
     SharedValueFamily family, {
     List<ZacTransformer>? transformer,
@@ -558,7 +558,7 @@ class ListOfZacWidget with _$ListOfZacWidget {
 @defaultConverterFreezed
 class ZacWidgetConsumerBuilder
     with _$ZacWidgetConsumerBuilder
-    implements ZacWidget {
+    implements FlutterWidget {
   ZacWidgetConsumerBuilder._();
   static const String unionValue = 'z:1:ZacWidget.consume';
 
@@ -566,7 +566,7 @@ class ZacWidgetConsumerBuilder
       _$ZacWidgetConsumerBuilderFromJson(json);
 
   @FreezedUnionValue(ZacWidgetConsumerBuilder.unionValue)
-  @With<ConsumeValue<ZacWidget>>()
+  @With<ConsumeValue<FlutterWidget>>()
   factory ZacWidgetConsumerBuilder(
     SharedValueFamily family, {
     List<ZacTransformer>? transformer,
@@ -589,7 +589,7 @@ class ZacWidgetConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ZacUpdateContext(
+    return ZacUpdateWidget(
       builder: (context, ref, lifetime) => builder.map((value) => value
           .getSharedValue(ZacRef.widget(ref))
           .buildWidget(context, ref, lifetime)),

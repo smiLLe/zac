@@ -13,7 +13,7 @@ part 'aspect_ratio.freezed.dart';
 part 'aspect_ratio.g.dart';
 
 @defaultConverterFreezed
-class FlutterAspectRatio with _$FlutterAspectRatio implements ZacWidget {
+class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   const FlutterAspectRatio._();
 
   static const String unionValue = 'f:1:AspectRatio';
@@ -25,7 +25,7 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements ZacWidget {
   factory FlutterAspectRatio({
     FlutterKey? key,
     required ZacDouble aspectRatio,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterAspectRatio;
 
   @override

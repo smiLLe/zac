@@ -12,7 +12,7 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       displacement: json['displacement'] == null
           ? null
           : ZacDouble.fromJson(json['displacement'] as Object),

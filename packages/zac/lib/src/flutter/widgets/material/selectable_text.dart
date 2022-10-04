@@ -9,7 +9,9 @@ part 'selectable_text.freezed.dart';
 part 'selectable_text.g.dart';
 
 @defaultConverterFreezed
-class FlutterSelectableText with _$FlutterSelectableText implements ZacWidget {
+class FlutterSelectableText
+    with _$FlutterSelectableText
+    implements FlutterWidget {
   const FlutterSelectableText._();
 
   static const String unionValue = 'f:1:SelectableText';

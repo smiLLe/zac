@@ -12,7 +12,7 @@ part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
 
 @defaultConverterFreezed
-class FlutterClipOval with _$FlutterClipOval implements ZacWidget {
+class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   const FlutterClipOval._();
 
   static const String unionValue = 'f:1:ClipOval';
@@ -23,7 +23,7 @@ class FlutterClipOval with _$FlutterClipOval implements ZacWidget {
   @FreezedUnionValue(FlutterClipOval.unionValue)
   factory FlutterClipOval({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     // CustomClipper<Rect>? clipper,
     FlutterClip? clipBehavior,
   }) = _FlutterClipOval;

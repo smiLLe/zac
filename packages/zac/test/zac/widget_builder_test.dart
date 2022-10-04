@@ -7,8 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
-import 'package:zac/src/zac/update_context.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -47,11 +46,11 @@ void main() {
 
     testWidgets('nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:WidgetBuilder',
+        '_converter': 'z:1:Widget',
         'data': {
-          '_converter': 'z:1:WidgetBuilder',
+          '_converter': 'z:1:Widget',
           'data': {
-            '_converter': 'z:1:WidgetBuilder',
+            '_converter': 'z:1:Widget',
             'data': {
               '_converter': 'f:1:SizedBox',
               'key': KeysModel.getValueKey('FIND_ME'),
@@ -66,11 +65,11 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          '_converter': 'z:1:WidgetBuilder.isolate',
+          '_converter': 'z:1:Widget.isolate',
           'data': {
-            '_converter': 'z:1:WidgetBuilder.isolateString',
+            '_converter': 'z:1:Widget.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:WidgetBuilder.isolate',
+              '_converter': 'z:1:Widget.isolate',
               'data': {
                 '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
@@ -85,13 +84,13 @@ void main() {
 
     testWidgets('mixed nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:WidgetBuilder.isolate',
+        '_converter': 'z:1:Widget.isolate',
         'data': {
-          '_converter': 'z:1:WidgetBuilder',
+          '_converter': 'z:1:Widget',
           'data': {
-            '_converter': 'z:1:WidgetBuilder.isolateString',
+            '_converter': 'z:1:Widget.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:WidgetBuilder.isolate',
+              '_converter': 'z:1:Widget.isolate',
               'data': {
                 '_converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
@@ -112,7 +111,7 @@ void main() {
         await tester.runAsync(() async {
           await testZacWidget(
             tester,
-            ZacWidgetBuilderBuilder.isolate(
+            ZacWidgetBuilder.isolate(
               data: ZacMap(
                 <String, dynamic>{},
               ),
@@ -131,7 +130,7 @@ void main() {
       await tester.runAsync(() async {
         await testZacWidget(
           tester,
-          ZacWidgetBuilderBuilder.isolate(
+          ZacWidgetBuilder.isolate(
             data: ZacMap(
               <String, dynamic>{},
             ),
@@ -143,7 +142,7 @@ void main() {
 
       await tester.pump();
 
-      expect(find.textContaining('ERROR IN $ZacWidgetBuilder'), findsOneWidget);
+      expect(find.textContaining('ERROR IN $ZacWidget'), findsOneWidget);
     });
 
     testWidgets('allow custom error widget with access to the error',
@@ -153,7 +152,7 @@ void main() {
       await tester.runAsync(() async {
         await testZacWidget(
           tester,
-          ZacWidgetBuilderBuilder.isolate(
+          ZacWidgetBuilder.isolate(
             data: ZacMap(
               <String, dynamic>{},
             ),
@@ -172,7 +171,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
+          ZacObject.consume(ZacWidget.provideErrorFamily)
               .getValue(ZacRef.widget(ref)),
           isNotNull);
     });
@@ -186,7 +185,7 @@ void main() {
         await tester.runAsync(() async {
           await testZacWidget(
             tester,
-            ZacWidgetBuilderBuilder.isolateString(
+            ZacWidgetBuilder.isolateString(
               data: ZacString('{'),
             ),
           );
@@ -203,7 +202,7 @@ void main() {
       await tester.runAsync(() async {
         await testZacWidget(
           tester,
-          ZacWidgetBuilderBuilder.isolateString(
+          ZacWidgetBuilder.isolateString(
             data: ZacString('{'),
             debugRethrowError: false,
           ),
@@ -213,7 +212,7 @@ void main() {
 
       await tester.pump();
 
-      expect(find.textContaining('ERROR IN $ZacWidgetBuilder'), findsOneWidget);
+      expect(find.textContaining('ERROR IN $ZacWidget'), findsOneWidget);
     });
 
     testWidgets('allow custom error widget with access to the error',
@@ -223,7 +222,7 @@ void main() {
       await tester.runAsync(() async {
         await testZacWidget(
           tester,
-          ZacWidgetBuilderBuilder.isolateString(
+          ZacWidgetBuilder.isolateString(
             data: ZacString('{'),
             errorChild: LeakContext(
               cb: (_, r, __) => ref = r,
@@ -240,7 +239,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacObject.consume(ZacWidgetBuilder.provideErrorFamily)
+          ZacObject.consume(ZacWidget.provideErrorFamily)
               .getValue(ZacRef.widget(ref)),
           isNotNull);
     });

@@ -13,7 +13,7 @@ part 'text.freezed.dart';
 part 'text.g.dart';
 
 @defaultConverterFreezed
-class FlutterText with _$FlutterText implements ZacWidget {
+class FlutterText with _$FlutterText implements FlutterWidget {
   const FlutterText._();
 
   static const String unionValue = 'f:1:Text';

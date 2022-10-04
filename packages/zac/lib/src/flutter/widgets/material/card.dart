@@ -13,7 +13,7 @@ part 'card.freezed.dart';
 part 'card.g.dart';
 
 @defaultConverterFreezed
-class FlutterCard with _$FlutterCard implements ZacWidget {
+class FlutterCard with _$FlutterCard implements FlutterWidget {
   const FlutterCard._();
 
   static const String unionValue = 'f:1:Card';
@@ -31,7 +31,7 @@ class FlutterCard with _$FlutterCard implements ZacWidget {
     ZacBool? borderOnForeground,
     FlutterEdgeInsetsGeometry? margin,
     FlutterClip? clipBehavior,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacBool? semanticContainer,
   }) = _FlutterCard;
 

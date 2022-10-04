@@ -1,7 +1,7 @@
 import 'package:zac/src/zac/any_value.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +93,7 @@ class ZacInteractions with _$ZacInteractions {
 @defaultConverterFreezed
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
-    implements ZacWidget {
+    implements FlutterWidget {
   const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActions.once';
@@ -105,14 +105,14 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
     required ZacInteractions interactions,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacInteractions interactions,
     required SharedValueFamily family,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _ZacExecuteActionsBuilderListen;
 
   @override
@@ -139,7 +139,7 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   final ZacInteractions interactions;
   final SharedValueFamily family;
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -148,7 +148,7 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
         context, ref, helper, family, interactions);
 
     return null != child
-        ? ZacWidgetBuilder(zacWidget: child!)
+        ? ZacWidget(zacWidget: child!)
         : const SizedBox.shrink();
   }
 }
@@ -159,7 +159,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       : super(key: key);
 
   final ZacInteractions interactions;
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -179,7 +179,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
     if (null == child || !doneState.value) return const SizedBox.shrink();
 
-    return ZacWidgetBuilder(
+    return ZacWidget(
       zacWidget: child!,
     );
   }

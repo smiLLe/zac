@@ -11,7 +11,9 @@ part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
 
 @defaultConverterFreezed
-class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
+class FlutterIntrinsicWidth
+    with _$FlutterIntrinsicWidth
+    implements FlutterWidget {
   const FlutterIntrinsicWidth._();
 
   static const String unionValue = 'f:1:IntrinsicWidth';
@@ -22,7 +24,7 @@ class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
   @FreezedUnionValue(FlutterIntrinsicWidth.unionValue)
   factory FlutterIntrinsicWidth({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterIntrinsicWidth;
 
   @override

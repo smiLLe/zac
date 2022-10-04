@@ -51,7 +51,7 @@ _$_StateMachineProviderBuilder _$$_StateMachineProviderBuilderFromJson(
           .map((e) => StateNode.fromJson(e as Map<String, dynamic>))
           .toList(),
       family: ZacString.fromJson(json['family'] as Object),
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       initialContext: json['initialContext'] == null
           ? null
           : ZacObject.fromJson(json['initialContext'] as Object),

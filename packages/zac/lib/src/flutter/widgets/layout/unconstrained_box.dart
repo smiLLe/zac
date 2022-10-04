@@ -15,7 +15,7 @@ part 'unconstrained_box.g.dart';
 @defaultConverterFreezed
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterUnconstrainedBox._();
 
   static const String unionValue = 'f:1:UnconstrainedBox';
@@ -26,7 +26,7 @@ class FlutterUnconstrainedBox
   @FreezedUnionValue(FlutterUnconstrainedBox.unionValue)
   factory FlutterUnconstrainedBox({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     FlutterTextDirection? textDirection,
     FlutterAlignmentGeometry? alignment,
     FlutterAxis? constrainedAxis,

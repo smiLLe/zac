@@ -19,7 +19,7 @@ part 'scaffold.g.dart';
 @defaultConverterFreezed
 class FlutterScaffold
     with _$FlutterScaffold
-    implements ZacInteraction, ZacWidget {
+    implements ZacInteraction, FlutterWidget {
   const FlutterScaffold._();
 
   static const String unionValue = 'f:1:Scaffold';
@@ -36,18 +36,18 @@ class FlutterScaffold
   factory FlutterScaffold({
     FlutterKey? key,
     // PreferredSizeWidget?
-    ZacWidget? appBar,
-    ZacWidget? body,
-    ZacWidget? floatingActionButton,
+    FlutterWidget? appBar,
+    FlutterWidget? body,
+    FlutterWidget? floatingActionButton,
     // FloatingActionButtonLocation? floatingActionButtonLocation,
     // FloatingActionButtonAnimator? floatingActionButtonAnimator,
     ListOfZacWidget? persistentFooterButtons,
-    ZacWidget? drawer,
+    FlutterWidget? drawer,
     // DrawerCallback? onDrawerChanged,
-    ZacWidget? endDrawer,
+    FlutterWidget? endDrawer,
     // DrawerCallback? onEndDrawerChanged,
-    ZacWidget? bottomNavigationBar,
-    ZacWidget? bottomSheet,
+    FlutterWidget? bottomNavigationBar,
+    FlutterWidget? bottomSheet,
     FlutterColor? backgroundColor,
     ZacBool? resizeToAvoidBottomInset,
     ZacBool? primary,
@@ -73,7 +73,7 @@ class FlutterScaffold
 
   @FreezedUnionValue(FlutterScaffold.unionValueShowBottomSheet)
   factory FlutterScaffold.showBottomSheet(
-    ZacWidget child, {
+    FlutterWidget child, {
     FlutterColor? backgroundColor,
     ZacDouble? elevation,
     FlutterShapeBorder? shape,
@@ -269,7 +269,7 @@ class FlutterScaffoldMessenger
 }
 
 @defaultConverterFreezed
-class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
+class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   const FlutterSnackBar._();
 
   static const String unionValue = 'f:1:SnackBar';
@@ -280,7 +280,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacWidget {
   @FreezedUnionValue(FlutterSnackBar.unionValue)
   factory FlutterSnackBar({
     FlutterKey? key,
-    required ZacWidget content,
+    required FlutterWidget content,
     FlutterColor? backgroundColor,
     ZacDouble? elevation,
     FlutterEdgeInsetsGeometry? margin,
@@ -345,7 +345,9 @@ class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
 }
 
 @defaultConverterFreezed
-class FlutterSnackBarAction with _$FlutterSnackBarAction implements ZacWidget {
+class FlutterSnackBarAction
+    with _$FlutterSnackBarAction
+    implements FlutterWidget {
   const FlutterSnackBarAction._();
 
   static const String unionValue = 'f:1:SnackBarAction';
@@ -381,7 +383,9 @@ class FlutterSnackBarAction with _$FlutterSnackBarAction implements ZacWidget {
 }
 
 @defaultConverterFreezed
-class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
+class FlutterMaterialBanner
+    with _$FlutterMaterialBanner
+    implements FlutterWidget {
   const FlutterMaterialBanner._();
 
   static const String unionValue = 'f:1:MaterialBanner';
@@ -392,11 +396,11 @@ class FlutterMaterialBanner with _$FlutterMaterialBanner implements ZacWidget {
   @FreezedUnionValue(FlutterMaterialBanner.unionValue)
   factory FlutterMaterialBanner({
     FlutterKey? key,
-    required ZacWidget content,
+    required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
     required ListOfZacWidget actions,
     ZacDouble? elevation,
-    required ZacWidget? leading,
+    required FlutterWidget? leading,
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,
     FlutterEdgeInsetsGeometry? leadingPadding,

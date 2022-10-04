@@ -13,7 +13,7 @@ part 'flexible.freezed.dart';
 part 'flexible.g.dart';
 
 @defaultConverterFreezed
-class FlutterFlexible with _$FlutterFlexible implements ZacWidget {
+class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   const FlutterFlexible._();
 
   static const String unionValue = 'f:1:Flexible';
@@ -26,7 +26,7 @@ class FlutterFlexible with _$FlutterFlexible implements ZacWidget {
     FlutterKey? key,
     ZacInt? flex,
     FlutterFlexFit? fit,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterFlexible;
 
   @override

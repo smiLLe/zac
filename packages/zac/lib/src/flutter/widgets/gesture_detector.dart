@@ -15,7 +15,7 @@ part 'gesture_detector.g.dart';
 @defaultConverterFreezed
 class FlutterGestureDetector
     with _$FlutterGestureDetector
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterGestureDetector._();
 
   static const String unionValue = 'f:1:GestureDetector';
@@ -26,7 +26,7 @@ class FlutterGestureDetector
   @FreezedUnionValue(FlutterGestureDetector.unionValue)
   factory FlutterGestureDetector({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacInteractions? onTap,
     ZacInteractions? onSecondaryTap,
     ZacInteractions? onDoubleTap,

@@ -11,7 +11,7 @@ part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
 @defaultConverterFreezed
-class FlutterSpacer with _$FlutterSpacer implements ZacWidget {
+class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   const FlutterSpacer._();
 
   static const String unionValue = 'f:1:Spacer';

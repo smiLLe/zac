@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -39,7 +39,7 @@ void main() {
 
     await testWithConverters(
       tester: tester,
-      widget: ZacWidgetBuilder(
+      widget: ZacWidget(
         zacWidget: ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
           child: FlutterMaterialApp(

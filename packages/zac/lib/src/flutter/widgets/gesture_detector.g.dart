@@ -14,7 +14,7 @@ _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       onTap: json['onTap'] == null
           ? null
           : ZacInteractions.fromJson(json['onTap'] as Object),

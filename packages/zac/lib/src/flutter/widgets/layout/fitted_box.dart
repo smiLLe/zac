@@ -12,7 +12,7 @@ part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterFittedBox with _$FlutterFittedBox implements ZacWidget {
+class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   const FlutterFittedBox._();
 
   static const String unionValue = 'f:1:FittedBox';
@@ -26,7 +26,7 @@ class FlutterFittedBox with _$FlutterFittedBox implements ZacWidget {
     FlutterBoxFit? fit,
     FlutterAlignmentGeometry? alignment,
     FlutterClip? clipBehavior,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterFittedBox;
 
   @override

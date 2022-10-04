@@ -66,7 +66,7 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
       _$$_FlutterDialogsShowDialogFromJson(json);
 
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final ZacBool? barrierDismissible;
   @override
@@ -136,7 +136,7 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
 
 abstract class _FlutterDialogsShowDialog extends FlutterDialogs {
   factory _FlutterDialogsShowDialog(
-      {required final ZacWidget child,
+      {required final FlutterWidget child,
       final ZacBool? barrierDismissible,
       final FlutterColor? barrierColor,
       final ZacString? barrierLabel,
@@ -148,7 +148,7 @@ abstract class _FlutterDialogsShowDialog extends FlutterDialogs {
   factory _FlutterDialogsShowDialog.fromJson(Map<String, dynamic> json) =
       _$_FlutterDialogsShowDialog.fromJson;
 
-  ZacWidget get child;
+  FlutterWidget get child;
   ZacBool? get barrierDismissible;
   FlutterColor? get barrierColor;
   ZacString? get barrierLabel;
@@ -193,7 +193,7 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -257,7 +257,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
       final FlutterAlignmentGeometry? alignment,
-      final ZacWidget? child}) = _$_FlutterDialogsDialog;
+      final FlutterWidget? child}) = _$_FlutterDialogsDialog;
   _FlutterDialogsDialog._() : super._();
 
   factory _FlutterDialogsDialog.fromJson(Map<String, dynamic> json) =
@@ -272,7 +272,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
   FlutterClip? get clipBehavior;
   FlutterShapeBorder? get shape;
   FlutterAlignmentGeometry? get alignment;
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }
 
 /// @nodoc
@@ -310,9 +310,9 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? title;
+  final FlutterWidget? title;
   @override
-  final ZacWidget? content;
+  final FlutterWidget? content;
   @override
   final ListOfZacWidget? actions;
   @override
@@ -445,8 +445,8 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
 abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   factory _FlutterDialogsAlertDialog(
       {final FlutterKey? key,
-      final ZacWidget? title,
-      final ZacWidget? content,
+      final FlutterWidget? title,
+      final FlutterWidget? content,
       final ListOfZacWidget? actions,
       final FlutterEdgeInsetsGeometry? titlePadding,
       final FlutterTextStyle? titleTextStyle,
@@ -471,8 +471,8 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       _$_FlutterDialogsAlertDialog.fromJson;
 
   FlutterKey? get key;
-  ZacWidget? get title;
-  ZacWidget? get content;
+  FlutterWidget? get title;
+  FlutterWidget? get content;
   ListOfZacWidget? get actions;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
@@ -520,7 +520,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? title;
+  final FlutterWidget? title;
   @override
   final ListOfZacWidget? children;
   @override
@@ -614,7 +614,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
 abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialog(
           {final FlutterKey? key,
-          final ZacWidget? title,
+          final FlutterWidget? title,
           final ListOfZacWidget? children,
           final FlutterEdgeInsetsGeometry? titlePadding,
           final FlutterTextStyle? titleTextStyle,
@@ -633,7 +633,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
       _$_FlutterDialogsSimpleDialog.fromJson;
 
   FlutterKey? get key;
-  ZacWidget? get title;
+  FlutterWidget? get title;
   ListOfZacWidget? get children;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
@@ -663,7 +663,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final ZacInteractions? onPressed;
   @override
@@ -714,7 +714,7 @@ class _$_FlutterDialogsSimpleDialogOption
 abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialogOption(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final ZacInteractions? onPressed,
       final FlutterEdgeInsets? padding}) = _$_FlutterDialogsSimpleDialogOption;
   _FlutterDialogsSimpleDialogOption._() : super._();
@@ -723,7 +723,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
       Map<String, dynamic> json) = _$_FlutterDialogsSimpleDialogOption.fromJson;
 
   FlutterKey? get key;
-  ZacWidget? get child;
+  FlutterWidget? get child;
   ZacInteractions? get onPressed;
   FlutterEdgeInsets? get padding;
 }

@@ -18,7 +18,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
               json['navigatorKey'] as Object),
       home: json['home'] == null
           ? null
-          : ZacWidget.fromJson(json['home'] as Object),
+          : FlutterWidget.fromJson(json['home'] as Object),
       initialRoute: json['initialRoute'] == null
           ? null
           : ZacString.fromJson(json['initialRoute'] as Object),

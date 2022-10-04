@@ -14,7 +14,7 @@ part 'sized_overflow_box.g.dart';
 @defaultConverterFreezed
 class FlutterSizedOverflowBox
     with _$FlutterSizedOverflowBox
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterSizedOverflowBox._();
 
   static const String unionValue = 'f:1:SizedOverflowBox';
@@ -27,7 +27,7 @@ class FlutterSizedOverflowBox
     FlutterKey? key,
     required FlutterSize size,
     FlutterAlignmentGeometry? alignment,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterSizedOverflowBox;
 
   @override

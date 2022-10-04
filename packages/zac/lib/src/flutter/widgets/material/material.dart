@@ -15,7 +15,7 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @defaultConverterFreezed
-class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
+class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   const FlutterMaterial._();
 
   static const String unionValue = 'f:1:Material';
@@ -26,7 +26,7 @@ class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
   @FreezedUnionValue(FlutterMaterial.unionValue)
   factory FlutterMaterial({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacDouble? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,

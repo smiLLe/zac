@@ -12,7 +12,9 @@ part 'ignore_pointer.freezed.dart';
 part 'ignore_pointer.g.dart';
 
 @defaultConverterFreezed
-class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
+class FlutterIgnorePointer
+    with _$FlutterIgnorePointer
+    implements FlutterWidget {
   const FlutterIgnorePointer._();
 
   static const String unionValue = 'f:1:IgnorePointer';
@@ -25,7 +27,7 @@ class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
     FlutterKey? key,
     ZacBool? ignoring,
     ZacBool? ignoringSemantics,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterIgnorePointer;
 
   @override

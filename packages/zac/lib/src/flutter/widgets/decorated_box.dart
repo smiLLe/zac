@@ -13,7 +13,7 @@ part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterDecoratedBox with _$FlutterDecoratedBox implements ZacWidget {
+class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   const FlutterDecoratedBox._();
 
   static const String unionValue = 'f:1:DecoratedBox';
@@ -24,7 +24,7 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements ZacWidget {
   @FreezedUnionValue(FlutterDecoratedBox.unionValue)
   factory FlutterDecoratedBox({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     required FlutterDecoration decoration,
     FlutterDecorationPosition? position,
   }) = _FlutterDecoratedBox;

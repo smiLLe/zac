@@ -164,7 +164,7 @@ _$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
         Map<String, dynamic> json) =>
     _$ListOfZacWidgetValue(
       (json['value'] as List<dynamic>)
-          .map((e) => ZacWidget.fromJson(e as Object))
+          .map((e) => FlutterWidget.fromJson(e as Object))
           .toList(),
       transformer: (json['transformer'] as List<dynamic>?)
           ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))

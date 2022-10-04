@@ -315,15 +315,15 @@ void main() {
 
   group('ZacWidget', () {
     test('fromJson', () {
-      expect(ZacWidget.fromJson({'_converter': 'f:1:SizedBox'}),
+      expect(FlutterWidget.fromJson({'_converter': 'f:1:SizedBox'}),
           FlutterSizedBox());
 
       expect(
-          ConverterHelper.convertToType<ZacWidget>(
+          ConverterHelper.convertToType<FlutterWidget>(
               {'_converter': 'f:1:SizedBox'}),
-          isA<ZacWidget>());
+          isA<FlutterWidget>());
 
-      expect(() => ZacWidget.fromJson(55), throwsConverterError);
+      expect(() => FlutterWidget.fromJson(55), throwsConverterError);
     });
 
     testWidgets('can be consumed through ZacWidgetConsumer', (tester) async {

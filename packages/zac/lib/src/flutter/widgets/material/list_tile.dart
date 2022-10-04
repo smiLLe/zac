@@ -13,7 +13,7 @@ part 'list_tile.freezed.dart';
 part 'list_tile.g.dart';
 
 @defaultConverterFreezed
-class FlutterListTile with _$FlutterListTile implements ZacWidget {
+class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   const FlutterListTile._();
 
   static const String unionValue = 'f:1:ListTile';
@@ -24,10 +24,10 @@ class FlutterListTile with _$FlutterListTile implements ZacWidget {
   @FreezedUnionValue(FlutterListTile.unionValue)
   factory FlutterListTile({
     FlutterKey? key,
-    ZacWidget? leading,
-    ZacWidget? title,
-    ZacWidget? subtitle,
-    ZacWidget? trailing,
+    FlutterWidget? leading,
+    FlutterWidget? title,
+    FlutterWidget? subtitle,
+    FlutterWidget? trailing,
     ZacBool? isThreeLine,
     ZacBool? dense,
 // FlutterVisualDensity? visualDensity,

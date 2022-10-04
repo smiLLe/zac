@@ -11,7 +11,7 @@ part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
 
 @defaultConverterFreezed
-class FlutterSliverList with _$FlutterSliverList implements ZacWidget {
+class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   const FlutterSliverList._();
 
   static const String unionValue = 'f:1:SliverList';

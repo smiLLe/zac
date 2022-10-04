@@ -12,7 +12,7 @@ part 'icon.freezed.dart';
 part 'icon.g.dart';
 
 @defaultConverterFreezed
-class FlutterIcon with _$FlutterIcon implements ZacWidget {
+class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   const FlutterIcon._();
 
   static const String unionValue = 'f:1:Icon';

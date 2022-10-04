@@ -20,5 +20,5 @@ _$_FlutterIgnorePointer _$$_FlutterIgnorePointerFromJson(
           : ZacBool.fromJson(json['ignoringSemantics'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

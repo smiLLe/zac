@@ -19,7 +19,7 @@ Type _typeOf<T>() => T;
 class ZacFlutterGlobalKeyNavigatorState
     with _$ZacFlutterGlobalKeyNavigatorState
     implements
-        ZacWidget,
+        FlutterWidget,
         GetFlutterNavigatorState,
         FlutterGlobalKeyNavigatorState {
   const ZacFlutterGlobalKeyNavigatorState._();
@@ -33,7 +33,7 @@ class ZacFlutterGlobalKeyNavigatorState
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueProvide)
   factory ZacFlutterGlobalKeyNavigatorState.provide({
     required SharedValueFamily family,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacString? debugLabel,
   }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
 

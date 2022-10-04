@@ -17,7 +17,7 @@ part 'custom_scroll_view.g.dart';
 @defaultConverterFreezed
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterCustomScrollView._();
 
   static const String unionValue = 'f:1:CustomScrollView';

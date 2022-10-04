@@ -27,5 +27,5 @@ _$_FlutterSafeArea _$$_FlutterSafeAreaFromJson(Map<String, dynamic> json) =>
       maintainBottomViewPadding: json['maintainBottomViewPadding'] == null
           ? null
           : ZacBool.fromJson(json['maintainBottomViewPadding'] as Object),
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
     );

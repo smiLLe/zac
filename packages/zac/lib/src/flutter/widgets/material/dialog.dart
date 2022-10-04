@@ -21,7 +21,7 @@ part 'dialog.g.dart';
 @defaultConverterFreezed
 class FlutterDialogs
     with _$FlutterDialogs
-    implements ZacInteraction, ZacWidget {
+    implements ZacInteraction, FlutterWidget {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';
@@ -35,7 +35,7 @@ class FlutterDialogs
 
   @FreezedUnionValue(FlutterDialogs.unionValueShowDialog)
   factory FlutterDialogs.showDialog({
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacBool? barrierDismissible,
     FlutterColor? barrierColor,
     ZacString? barrierLabel,
@@ -55,14 +55,14 @@ class FlutterDialogs
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterDialogsDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueAlertDialog)
   factory FlutterDialogs.alertDialog({
     FlutterKey? key,
-    ZacWidget? title,
-    ZacWidget? content,
+    FlutterWidget? title,
+    FlutterWidget? content,
     ListOfZacWidget? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -86,7 +86,7 @@ class FlutterDialogs
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
-    ZacWidget? title,
+    FlutterWidget? title,
     ListOfZacWidget? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -103,7 +103,7 @@ class FlutterDialogs
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialogOption)
   factory FlutterDialogs.simpleDialogOption({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacInteractions? onPressed,
     FlutterEdgeInsets? padding,
   }) = _FlutterDialogsSimpleDialogOption;
