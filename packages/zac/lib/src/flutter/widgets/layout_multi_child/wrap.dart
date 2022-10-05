@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -39,25 +37,21 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   }) = _FlutterWrap;
 
   @override
-  Wrap buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Wrap buildWidget(ZacOriginWidgetTree origin) {
     return Wrap(
-      key: key?.buildKey(context, ref, lifetime),
-      direction: direction?.build(context, ref, lifetime) ?? Axis.horizontal,
-      alignment:
-          alignment?.build(context, ref, lifetime) ?? WrapAlignment.start,
-      spacing: spacing?.getValue(zacRef) ?? 0.0,
-      runAlignment:
-          runAlignment?.build(context, ref, lifetime) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.getValue(zacRef) ?? 0.0,
-      crossAxisAlignment: crossAxisAlignment?.build(context, ref, lifetime) ??
-          WrapCrossAlignment.start,
-      textDirection: textDirection?.build(context, ref, lifetime),
-      verticalDirection: verticalDirection?.build(context, ref, lifetime) ??
-          VerticalDirection.down,
-      clipBehavior: clipBehavior?.build(context, ref, lifetime) ?? Clip.none,
-      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
+      key: key?.buildKey(origin),
+      direction: direction?.build(origin) ?? Axis.horizontal,
+      alignment: alignment?.build(origin) ?? WrapAlignment.start,
+      spacing: spacing?.getValue(origin) ?? 0.0,
+      runAlignment: runAlignment?.build(origin) ?? WrapAlignment.start,
+      runSpacing: runSpacing?.getValue(origin) ?? 0.0,
+      crossAxisAlignment:
+          crossAxisAlignment?.build(origin) ?? WrapCrossAlignment.start,
+      textDirection: textDirection?.build(origin),
+      verticalDirection:
+          verticalDirection?.build(origin) ?? VerticalDirection.down,
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
+      children: children?.getValue(origin) ?? const <Widget>[],
     );
   }
 }

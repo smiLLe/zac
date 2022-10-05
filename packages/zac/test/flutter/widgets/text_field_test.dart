@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/zac.dart';
 import 'package:zac/src/flutter/widgets/material/text_field.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +94,7 @@ void main() {
       FlutterMaterial(
         child: FlutterTextField(
           key: FlutterValueKey('FINDME'),
-          onChanged: ZacInteractions([LeakBagContentAction(cb)]),
+          onChanged: ZacActions([LeakBagContentAction(cb)]),
         ),
       ),
     );

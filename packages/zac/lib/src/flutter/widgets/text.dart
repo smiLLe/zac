@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -40,24 +38,22 @@ class FlutterText with _$FlutterText implements FlutterWidget {
   }) = _FlutterText;
 
   @override
-  Text buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Text buildWidget(ZacOriginWidgetTree origin) {
     return Text(
-      data.getValue(zacRef),
-      key: key?.buildKey(context, ref, lifetime),
-      style: style?.build(context, ref, lifetime),
-      strutStyle: strutStyle?.build(context, ref, lifetime),
-      textAlign: textAlign?.build(context, ref, lifetime),
-      textDirection: textDirection?.build(context, ref, lifetime),
-      locale: locale?.build(context, ref, lifetime),
-      softWrap: softWrap?.getValue(zacRef),
-      overflow: overflow?.build(context, ref, lifetime),
-      textScaleFactor: textScaleFactor?.getValue(zacRef),
-      maxLines: maxLines?.getValue(zacRef),
-      semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textWidthBasis: textWidthBasis?.build(context, ref, lifetime),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, lifetime),
+      data.getValue(origin),
+      key: key?.buildKey(origin),
+      style: style?.build(origin),
+      strutStyle: strutStyle?.build(origin),
+      textAlign: textAlign?.build(origin),
+      textDirection: textDirection?.build(origin),
+      locale: locale?.build(origin),
+      softWrap: softWrap?.getValue(origin),
+      overflow: overflow?.build(origin),
+      textScaleFactor: textScaleFactor?.getValue(origin),
+      maxLines: maxLines?.getValue(origin),
+      semanticsLabel: semanticsLabel?.getValue(origin),
+      textWidthBasis: textWidthBasis?.build(origin),
+      textHeightBehavior: textHeightBehavior?.build(origin),
     );
   }
 }

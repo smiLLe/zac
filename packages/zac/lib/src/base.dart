@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 
 // ignore: constant_identifier_names
 const defaultConverterFreezed = Freezed(
@@ -26,8 +25,7 @@ abstract class FlutterWidget {
   factory FlutterWidget.fromJson(Object data) =>
       ConverterHelper.convertToType<FlutterWidget>(data);
 
-  Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
+  Widget buildWidget(ZacOriginWidgetTree origin);
 }
 
 const consumeUnion = 'z:1:SharedValue.consume';

@@ -1,8 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -29,13 +26,11 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   }) = _FlutterAspectRatio;
 
   @override
-  AspectRatio buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  AspectRatio buildWidget(ZacOriginWidgetTree origin) {
     return AspectRatio(
-      aspectRatio: aspectRatio.getValue(zacRef),
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
+      aspectRatio: aspectRatio.getValue(origin),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

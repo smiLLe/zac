@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,14 +28,12 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   }) = _FlutterFlexible;
 
   @override
-  Flexible buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Flexible buildWidget(ZacOriginWidgetTree origin) {
     return Flexible(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child.buildWidget(context, ref, lifetime),
-      flex: flex?.getValue(zacRef) ?? 1,
-      fit: fit?.build(context, ref, lifetime) ?? FlexFit.loose,
+      key: key?.buildKey(origin),
+      child: child.buildWidget(origin),
+      flex: flex?.getValue(origin) ?? 1,
+      fit: fit?.build(origin) ?? FlexFit.loose,
     );
   }
 }

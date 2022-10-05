@@ -1,8 +1,6 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -55,10 +53,9 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   }) = _FlutterAppBar;
 
   @override
-  AppBar buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  AppBar buildWidget(ZacOriginWidgetTree origin) {
     assert(() {
-      final w = bottom?.buildWidget(context, ref, lifetime);
+      final w = bottom?.buildWidget(origin);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -66,35 +63,34 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
       }
       return true;
     }(), '');
-    final zacRef = ZacRef.widget(ref);
+
     return AppBar(
-      key: key?.buildKey(context, ref, lifetime),
-      leading: leading?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      leading: leading?.buildWidget(origin),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(zacRef) ?? true,
-      title: title?.buildWidget(context, ref, lifetime),
-      actions: actions?.getValue(context, ref, lifetime) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(context, ref, lifetime),
-      bottom:
-          bottom?.buildWidget(context, ref, lifetime) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(zacRef),
-      shadowColor: shadowColor?.build(context, ref, lifetime),
-      shape: shape?.build(context, ref, lifetime),
-      backgroundColor: backgroundColor?.build(context, ref, lifetime),
-      foregroundColor: foregroundColor?.build(context, ref, lifetime),
-      iconTheme: iconTheme?.build(context, ref, lifetime),
-      actionsIconTheme: actionsIconTheme?.build(context, ref, lifetime),
-      primary: primary?.getValue(zacRef) ?? true,
-      centerTitle: centerTitle?.getValue(zacRef),
-      excludeHeaderSemantics: excludeHeaderSemantics?.getValue(zacRef) ?? false,
-      titleSpacing: titleSpacing?.getValue(zacRef),
-      toolbarOpacity: toolbarOpacity?.getValue(zacRef) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(zacRef) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(zacRef),
-      leadingWidth: leadingWidth?.getValue(zacRef),
-      toolbarTextStyle: toolbarTextStyle?.build(context, ref, lifetime),
-      titleTextStyle: titleTextStyle?.build(context, ref, lifetime),
-      systemOverlayStyle: systemOverlayStyle?.build(context, ref, lifetime),
+          automaticallyImplyLeading?.getValue(origin) ?? true,
+      title: title?.buildWidget(origin),
+      actions: actions?.getValue(origin) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.buildWidget(origin),
+      bottom: bottom?.buildWidget(origin) as PreferredSizeWidget?,
+      elevation: elevation?.getValue(origin),
+      shadowColor: shadowColor?.build(origin),
+      shape: shape?.build(origin),
+      backgroundColor: backgroundColor?.build(origin),
+      foregroundColor: foregroundColor?.build(origin),
+      iconTheme: iconTheme?.build(origin),
+      actionsIconTheme: actionsIconTheme?.build(origin),
+      primary: primary?.getValue(origin) ?? true,
+      centerTitle: centerTitle?.getValue(origin),
+      excludeHeaderSemantics: excludeHeaderSemantics?.getValue(origin) ?? false,
+      titleSpacing: titleSpacing?.getValue(origin),
+      toolbarOpacity: toolbarOpacity?.getValue(origin) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(origin) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(origin),
+      leadingWidth: leadingWidth?.getValue(origin),
+      toolbarTextStyle: toolbarTextStyle?.build(origin),
+      titleTextStyle: titleTextStyle?.build(origin),
+      systemOverlayStyle: systemOverlayStyle?.build(origin),
     );
   }
 }

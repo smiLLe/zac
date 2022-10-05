@@ -1,6 +1,4 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/origin.dart';
 
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
@@ -27,10 +25,9 @@ class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   }) = _FlutterBuilder;
 
   @override
-  Builder buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  Builder buildWidget(ZacOriginWidgetTree origin) {
     return Builder(
-      key: key?.buildKey(context, ref, lifetime),
+      key: key?.buildKey(origin),
       builder: (_) {
         return ZacUpdateWidget(
           builder: child.buildWidget,

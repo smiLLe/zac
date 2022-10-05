@@ -8,8 +8,8 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 abstract class ActionsModel {
   static Map<String, Object?> createTestAction(String data) {
     return {
-      '_converter': 'z:1:Interactions',
-      'interactions': [
+      '_converter': 'z:1:Actions',
+      'actions': [
         {
           '_converter': 'test_action',
           'data': data,

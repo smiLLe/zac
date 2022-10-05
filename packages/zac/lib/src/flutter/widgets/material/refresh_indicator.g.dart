@@ -19,7 +19,7 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       edgeOffset: json['edgeOffset'] == null
           ? null
           : ZacDouble.fromJson(json['edgeOffset'] as Object),
-      onRefresh: ZacInteractions.fromJson(json['onRefresh'] as Object),
+      onRefresh: ZacActions.fromJson(json['onRefresh'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),

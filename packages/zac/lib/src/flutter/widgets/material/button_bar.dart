@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
@@ -38,22 +36,20 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
   }) = _FlutterButtonBar;
 
   @override
-  ButtonBar buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  ButtonBar buildWidget(ZacOriginWidgetTree origin) {
     return ButtonBar(
-      key: key?.buildKey(context, ref, lifetime),
-      alignment: alignment?.build(context, ref, lifetime),
-      mainAxisSize: mainAxisSize?.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      alignment: alignment?.build(origin),
+      mainAxisSize: mainAxisSize?.build(origin),
 // FlutterButtonTextTheme? buttonTextTheme,
-      buttonMinWidth: buttonMinWidth?.getValue(zacRef),
-      buttonHeight: buttonHeight?.getValue(zacRef),
-      buttonPadding: buttonPadding?.build(context, ref, lifetime),
-      buttonAlignedDropdown: buttonAlignedDropdown?.getValue(zacRef),
+      buttonMinWidth: buttonMinWidth?.getValue(origin),
+      buttonHeight: buttonHeight?.getValue(origin),
+      buttonPadding: buttonPadding?.build(origin),
+      buttonAlignedDropdown: buttonAlignedDropdown?.getValue(origin),
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
-      overflowDirection: overflowDirection?.build(context, ref, lifetime),
-      overflowButtonSpacing: overflowButtonSpacing?.getValue(zacRef),
-      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
+      overflowDirection: overflowDirection?.build(origin),
+      overflowButtonSpacing: overflowButtonSpacing?.getValue(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
     );
   }
 }

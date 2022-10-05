@@ -34,8 +34,8 @@ FlutterElevatedButton _$FlutterElevatedButtonFromJson(
 /// @nodoc
 mixin _$FlutterElevatedButton {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacInteractions? get onPressed => throw _privateConstructorUsedError;
-  ZacInteractions? get onLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onPressed => throw _privateConstructorUsedError;
+  ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacBool? get autofocus => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -69,9 +69,9 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   @override
   final FlutterWidget? child;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -125,8 +125,8 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   factory _FlutterElevatedButton(
       {final FlutterKey? key,
       required final FlutterWidget? child,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterElevatedButton;
   _FlutterElevatedButton._() : super._();
@@ -138,9 +138,9 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   FlutterKey? get key;
   FlutterWidget? get child;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override
@@ -172,9 +172,9 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
   @override
   final FlutterWidget label;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -231,8 +231,8 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
       {final FlutterKey? key,
       required final FlutterWidget icon,
       required final FlutterWidget label,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterElevatedButtonIcon;
   _FlutterElevatedButtonIcon._() : super._();
@@ -245,9 +245,9 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
   FlutterWidget get icon;
   FlutterWidget get label;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override
@@ -274,8 +274,8 @@ FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
 /// @nodoc
 mixin _$FlutterOutlinedButton {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacInteractions? get onPressed => throw _privateConstructorUsedError;
-  ZacInteractions? get onLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onPressed => throw _privateConstructorUsedError;
+  ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacBool? get autofocus => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -309,9 +309,9 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
   @override
   final FlutterWidget child;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -365,8 +365,8 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   factory _FlutterOutlinedButton(
       {final FlutterKey? key,
       required final FlutterWidget child,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterOutlinedButton;
   _FlutterOutlinedButton._() : super._();
@@ -378,9 +378,9 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   FlutterKey? get key;
   FlutterWidget get child;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override
@@ -412,9 +412,9 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
   @override
   final FlutterWidget label;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -471,8 +471,8 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
       {final FlutterKey? key,
       required final FlutterWidget icon,
       required final FlutterWidget label,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterOutlinedButtonIcon;
   _FlutterOutlinedButtonIcon._() : super._();
@@ -485,9 +485,9 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
   FlutterWidget get icon;
   FlutterWidget get label;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override
@@ -510,8 +510,8 @@ FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterTextButton {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacInteractions? get onPressed => throw _privateConstructorUsedError;
-  ZacInteractions? get onLongPress => throw _privateConstructorUsedError;
+  ZacActions? get onPressed => throw _privateConstructorUsedError;
+  ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacBool? get autofocus => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -545,9 +545,9 @@ class _$_FlutterTextButton extends _FlutterTextButton {
   @override
   final FlutterWidget child;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -601,8 +601,8 @@ abstract class _FlutterTextButton extends FlutterTextButton {
   factory _FlutterTextButton(
       {final FlutterKey? key,
       required final FlutterWidget child,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterTextButton;
   _FlutterTextButton._() : super._();
@@ -614,9 +614,9 @@ abstract class _FlutterTextButton extends FlutterTextButton {
   FlutterKey? get key;
   FlutterWidget get child;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override
@@ -648,9 +648,9 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
   @override
   final FlutterWidget label;
   @override
-  final ZacInteractions? onPressed;
+  final ZacActions? onPressed;
   @override
-  final ZacInteractions? onLongPress;
+  final ZacActions? onLongPress;
   @override
   final ZacBool? autofocus;
   @override
@@ -707,8 +707,8 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
       {final FlutterKey? key,
       required final FlutterWidget icon,
       required final FlutterWidget label,
-      final ZacInteractions? onPressed,
-      final ZacInteractions? onLongPress,
+      final ZacActions? onPressed,
+      final ZacActions? onLongPress,
       final ZacBool? autofocus,
       final FlutterClip? clipBehavior}) = _$_FlutterTextButtonIcon;
   _FlutterTextButtonIcon._() : super._();
@@ -721,9 +721,9 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
   FlutterWidget get icon;
   FlutterWidget get label;
   @override
-  ZacInteractions? get onPressed;
+  ZacActions? get onPressed;
   @override
-  ZacInteractions? get onLongPress;
+  ZacActions? get onLongPress;
   @override
   ZacBool? get autofocus;
   @override

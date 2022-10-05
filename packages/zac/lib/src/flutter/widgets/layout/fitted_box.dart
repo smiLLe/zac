@@ -1,12 +1,10 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
@@ -30,14 +28,13 @@ class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   }) = _FlutterFittedBox;
 
   @override
-  FittedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  FittedBox buildWidget(ZacOriginWidgetTree origin) {
     return FittedBox(
-      key: key?.buildKey(context, ref, lifetime),
-      fit: fit?.build(context, ref, lifetime) ?? BoxFit.contain,
-      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(context, ref, lifetime) ?? Clip.none,
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      fit: fit?.build(origin) ?? BoxFit.contain,
+      alignment: alignment?.build(origin) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
+      child: child?.buildWidget(origin),
     );
   }
 }

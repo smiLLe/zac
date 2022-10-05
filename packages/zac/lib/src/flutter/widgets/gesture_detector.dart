@@ -1,7 +1,6 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -27,56 +26,30 @@ class FlutterGestureDetector
   factory FlutterGestureDetector({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacInteractions? onTap,
-    ZacInteractions? onSecondaryTap,
-    ZacInteractions? onDoubleTap,
-    ZacInteractions? onLongPress,
-    ZacInteractions? onSecondaryLongPress,
-    ZacInteractions? onTertiaryLongPress,
+    ZacActions? onTap,
+    ZacActions? onSecondaryTap,
+    ZacActions? onDoubleTap,
+    ZacActions? onLongPress,
+    ZacActions? onSecondaryLongPress,
+    ZacActions? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
     ZacBool? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) = _FlutterGestureDetector;
 
   @override
-  GestureDetector buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  GestureDetector buildWidget(ZacOriginWidgetTree origin) {
     return GestureDetector(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      behavior: behavior?.build(context, ref, lifetime),
-      excludeFromSemantics: excludeFromSemantics?.getValue(zacRef) ?? false,
-      onTap: onTap?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onSecondaryTap: onSecondaryTap?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onDoubleTap: onDoubleTap?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onLongPress: onLongPress?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onSecondaryLongPress: onSecondaryLongPress?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onTertiaryLongPress: onTertiaryLongPress?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      behavior: behavior?.build(origin),
+      excludeFromSemantics: excludeFromSemantics?.getValue(origin) ?? false,
+      onTap: onTap?.createCb(origin),
+      onSecondaryTap: onSecondaryTap?.createCb(origin),
+      onDoubleTap: onDoubleTap?.createCb(origin),
+      onLongPress: onLongPress?.createCb(origin),
+      onSecondaryLongPress: onSecondaryLongPress?.createCb(origin),
+      onTertiaryLongPress: onTertiaryLongPress?.createCb(origin),
     );
   }
 }

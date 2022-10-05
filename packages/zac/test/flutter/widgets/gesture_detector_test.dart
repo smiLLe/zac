@@ -21,11 +21,10 @@ void main() {
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: FlutterSizedBox(),
-        onTap: LeakUiAction.createActions(onTapCb),
-        onLongPress: LeakUiAction.createActions(onLongPressCb),
-        onSecondaryLongPress:
-            LeakUiAction.createActions(onSecondaryLongPressCb),
-        onTertiaryLongPress: LeakUiAction.createActions(onTertiaryLongPressCb),
+        onTap: LeakAction.createActions(onTapCb),
+        onLongPress: LeakAction.createActions(onLongPressCb),
+        onSecondaryLongPress: LeakAction.createActions(onSecondaryLongPressCb),
+        onTertiaryLongPress: LeakAction.createActions(onTertiaryLongPressCb),
       ),
     );
 
@@ -44,10 +43,10 @@ void main() {
     widget.onTertiaryLongPress?.call();
 
     verifyInOrder([
-      onTapCb(any, any, any, any),
-      onLongPressCb(any, any, any, any),
-      onSecondaryLongPressCb(any, any, any, any),
-      onTertiaryLongPressCb(any, any, any, any),
+      onTapCb(argThat(isAOriginWidgetTree), any),
+      onLongPressCb(argThat(isAOriginWidgetTree), any),
+      onSecondaryLongPressCb(argThat(isAOriginWidgetTree), any),
+      onTertiaryLongPressCb(argThat(isAOriginWidgetTree), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
@@ -64,7 +63,7 @@ void main() {
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: FlutterSizedBox(),
-        onDoubleTap: LeakUiAction.createActions(doubleTapCb),
+        onDoubleTap: LeakAction.createActions(doubleTapCb),
       ),
     );
 
@@ -78,7 +77,7 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('FIND_ME')));
     await tester.pumpAndSettle();
 
-    verify(doubleTapCb(any, any, any, any)).called(1);
+    verify(doubleTapCb(argThat(isAOriginWidgetTree), any)).called(1);
   });
 
   testWidgets('properties', (tester) async {

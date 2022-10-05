@@ -1,8 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -32,16 +30,14 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   }) = _FlutterAlign;
 
   @override
-  Align buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Align buildWidget(ZacOriginWidgetTree origin) {
     return Align(
-      key: key?.buildKey(context, ref, lifetime),
-      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
-      widthFactor: widthFactor?.getValue(zacRef),
-      heightFactor: heightFactor?.getValue(zacRef),
-      // child: child?.buildWidget(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      alignment: alignment?.build(origin) ?? Alignment.center,
+      widthFactor: widthFactor?.getValue(origin),
+      heightFactor: heightFactor?.getValue(origin),
+      // child: child?.buildWidget(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

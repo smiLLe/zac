@@ -1,12 +1,10 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
@@ -28,12 +26,11 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
   }) = _FlutterSliverGrid;
 
   @override
-  SliverGrid buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  SliverGrid buildWidget(ZacOriginWidgetTree origin) {
     return SliverGrid(
-      key: key?.buildKey(context, ref, lifetime),
-      delegate: delegate.build(context, ref, lifetime),
-      gridDelegate: gridDelegate.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      delegate: delegate.build(origin),
+      gridDelegate: gridDelegate.build(origin),
     );
   }
 }

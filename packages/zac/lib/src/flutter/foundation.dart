@@ -1,8 +1,7 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'foundation.freezed.dart';
 part 'foundation.g.dart';
@@ -12,8 +11,7 @@ abstract class FlutterKey {
     return ConverterHelper.convertToType<FlutterKey>(data);
   }
 
-  Key buildKey(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
+  Key buildKey(ZacOriginWidgetTree origin);
 }
 
 abstract class FlutterLocalKey implements FlutterKey {
@@ -22,8 +20,7 @@ abstract class FlutterLocalKey implements FlutterKey {
   }
 
   @override
-  LocalKey buildKey(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
+  LocalKey buildKey(ZacOriginWidgetTree origin);
 }
 
 @defaultConverterFreezed
@@ -39,8 +36,7 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   factory FlutterValueKey(String value) = _FlutterValueKey;
 
   @override
-  ValueKey<String> buildKey(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  ValueKey<String> buildKey(ZacOriginWidgetTree origin) {
     return ValueKey<String>(value);
   }
 }
@@ -51,6 +47,5 @@ abstract class FlutterGlobalKeyNavigatorState implements FlutterKey {
   }
 
   @override
-  GlobalKey<NavigatorState> buildKey(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
+  GlobalKey<NavigatorState> buildKey(ZacOriginWidgetTree origin);
 }

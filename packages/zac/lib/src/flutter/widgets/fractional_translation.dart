@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -32,14 +30,12 @@ class FlutterFractionalTranslation
   }) = _FlutterFractionalTranslation;
 
   @override
-  FractionalTranslation buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  FractionalTranslation buildWidget(ZacOriginWidgetTree origin) {
     return FractionalTranslation(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      translation: translation.build(context, ref, lifetime),
-      transformHitTests: transformHitTests?.getValue(zacRef) ?? true,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      translation: translation.build(origin),
+      transformHitTests: transformHitTests?.getValue(origin) ?? true,
     );
   }
 }

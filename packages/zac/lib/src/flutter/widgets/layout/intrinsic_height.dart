@@ -1,11 +1,9 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
@@ -28,11 +26,10 @@ class FlutterIntrinsicHeight
   }) = _FlutterIntrinsicHeight;
 
   @override
-  IntrinsicHeight buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  IntrinsicHeight buildWidget(ZacOriginWidgetTree origin) {
     return IntrinsicHeight(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

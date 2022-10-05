@@ -1,9 +1,6 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/material/material.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/material.dart';
@@ -75,54 +72,50 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
     FlutterBoxConstraints? constraints,
   }) = _FlutterInputDecoration;
 
-  InputDecoration build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  InputDecoration build(ZacOriginWidgetTree origin) {
     return InputDecoration(
-      icon: icon?.buildWidget(context, ref, lifetime),
-      iconColor: iconColor?.build(context, ref, lifetime),
-      label: label?.buildWidget(context, ref, lifetime),
-      labelStyle: labelStyle?.build(context, ref, lifetime),
-      floatingLabelStyle: floatingLabelStyle?.build(context, ref, lifetime),
-      helperText: helperText?.getValue(zacRef),
-      helperStyle: helperStyle?.build(context, ref, lifetime),
-      helperMaxLines: helperMaxLines?.getValue(zacRef),
-      hintText: hintText?.getValue(zacRef),
-      hintStyle: hintStyle?.build(context, ref, lifetime),
-      hintTextDirection: hintTextDirection?.build(context, ref, lifetime),
-      hintMaxLines: hintMaxLines?.getValue(zacRef),
-      errorText: errorText?.getValue(zacRef),
-      errorStyle: errorStyle?.build(context, ref, lifetime),
-      errorMaxLines: errorMaxLines?.getValue(zacRef),
-      isCollapsed: isCollapsed?.getValue(zacRef) ?? false,
-      isDense: isDense?.getValue(zacRef),
-      contentPadding: contentPadding?.build(context, ref, lifetime),
-      prefixIcon: prefixIcon?.buildWidget(context, ref, lifetime),
-      prefixIconConstraints:
-          prefixIconConstraints?.build(context, ref, lifetime),
-      prefix: prefix?.buildWidget(context, ref, lifetime),
-      prefixText: prefixText?.getValue(zacRef),
-      prefixStyle: prefixStyle?.build(context, ref, lifetime),
-      prefixIconColor: prefixIconColor?.build(context, ref, lifetime),
-      suffixIconConstraints:
-          suffixIconConstraints?.build(context, ref, lifetime),
-      counter: counter?.buildWidget(context, ref, lifetime),
-      counterText: counterText?.getValue(zacRef),
-      counterStyle: counterStyle?.build(context, ref, lifetime),
-      filled: filled?.getValue(zacRef),
-      fillColor: fillColor?.build(context, ref, lifetime),
-      focusColor: focusColor?.build(context, ref, lifetime),
-      hoverColor: hoverColor?.build(context, ref, lifetime),
-      errorBorder: errorBorder?.build(context, ref, lifetime),
-      focusedBorder: focusedBorder?.build(context, ref, lifetime),
-      focusedErrorBorder: focusedErrorBorder?.build(context, ref, lifetime),
-      disabledBorder: disabledBorder?.build(context, ref, lifetime),
-      enabledBorder: enabledBorder?.build(context, ref, lifetime),
-      border: border?.build(context, ref, lifetime),
-      enabled: enabled?.getValue(zacRef) ?? true,
-      semanticCounterText: semanticCounterText?.getValue(zacRef),
-      alignLabelWithHint: alignLabelWithHint?.getValue(zacRef),
-      constraints: constraints?.build(context, ref, lifetime),
+      icon: icon?.buildWidget(origin),
+      iconColor: iconColor?.build(origin),
+      label: label?.buildWidget(origin),
+      labelStyle: labelStyle?.build(origin),
+      floatingLabelStyle: floatingLabelStyle?.build(origin),
+      helperText: helperText?.getValue(origin),
+      helperStyle: helperStyle?.build(origin),
+      helperMaxLines: helperMaxLines?.getValue(origin),
+      hintText: hintText?.getValue(origin),
+      hintStyle: hintStyle?.build(origin),
+      hintTextDirection: hintTextDirection?.build(origin),
+      hintMaxLines: hintMaxLines?.getValue(origin),
+      errorText: errorText?.getValue(origin),
+      errorStyle: errorStyle?.build(origin),
+      errorMaxLines: errorMaxLines?.getValue(origin),
+      isCollapsed: isCollapsed?.getValue(origin) ?? false,
+      isDense: isDense?.getValue(origin),
+      contentPadding: contentPadding?.build(origin),
+      prefixIcon: prefixIcon?.buildWidget(origin),
+      prefixIconConstraints: prefixIconConstraints?.build(origin),
+      prefix: prefix?.buildWidget(origin),
+      prefixText: prefixText?.getValue(origin),
+      prefixStyle: prefixStyle?.build(origin),
+      prefixIconColor: prefixIconColor?.build(origin),
+      suffixIconConstraints: suffixIconConstraints?.build(origin),
+      counter: counter?.buildWidget(origin),
+      counterText: counterText?.getValue(origin),
+      counterStyle: counterStyle?.build(origin),
+      filled: filled?.getValue(origin),
+      fillColor: fillColor?.build(origin),
+      focusColor: focusColor?.build(origin),
+      hoverColor: hoverColor?.build(origin),
+      errorBorder: errorBorder?.build(origin),
+      focusedBorder: focusedBorder?.build(origin),
+      focusedErrorBorder: focusedErrorBorder?.build(origin),
+      disabledBorder: disabledBorder?.build(origin),
+      enabledBorder: enabledBorder?.build(origin),
+      border: border?.build(origin),
+      enabled: enabled?.getValue(origin) ?? true,
+      semanticCounterText: semanticCounterText?.getValue(origin),
+      alignLabelWithHint: alignLabelWithHint?.getValue(origin),
+      constraints: constraints?.build(origin),
     );
   }
 }

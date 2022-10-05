@@ -3,10 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/widget.dart';
 
 import '../flutter/models.dart';
@@ -147,7 +146,7 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late WidgetRef ref;
+      late ZacOriginWidgetTree origin;
 
       await tester.runAsync(() async {
         await testZacWidget(
@@ -156,8 +155,8 @@ void main() {
             data: ZacMap(
               <String, dynamic>{},
             ),
-            errorChild: LeakContext(
-              cb: (_, r, __) => ref = r,
+            errorChild: LeakOrigin(
+              cb: (o) => origin = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -170,9 +169,7 @@ void main() {
 
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
-      expect(
-          ZacObject.consume(ZacWidget.provideErrorFamily)
-              .getValue(ZacRef.widget(ref)),
+      expect(ZacObject.consume(ZacWidget.provideErrorFamily).getValue(origin),
           isNotNull);
     });
   });
@@ -217,15 +214,15 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late WidgetRef ref;
+      late ZacOriginWidgetTree origin;
 
       await tester.runAsync(() async {
         await testZacWidget(
           tester,
           ZacWidgetBuilder.isolateString(
             data: ZacString('{'),
-            errorChild: LeakContext(
-              cb: (_, r, __) => ref = r,
+            errorChild: LeakOrigin(
+              cb: (o) => origin = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -238,9 +235,7 @@ void main() {
 
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
-      expect(
-          ZacObject.consume(ZacWidget.provideErrorFamily)
-              .getValue(ZacRef.widget(ref)),
+      expect(ZacObject.consume(ZacWidget.provideErrorFamily).getValue(origin),
           isNotNull);
     });
   });

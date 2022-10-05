@@ -140,9 +140,9 @@ abstract class EmptySharedValue extends SharedValue {
 UpdateSharedValueInteractions _$UpdateSharedValueInteractionsFromJson(
     Map<String, dynamic> json) {
   switch (json['_converter']) {
-    case 'z:1:Interaction:SharedValue.update':
+    case 'z:1:SharedValue.update':
       return _SharedValueInteractionUpdate.fromJson(json);
-    case 'z:1:Interaction:SharedValue.replaceWith':
+    case 'z:1:SharedValue.replaceWith':
       return _SharedValueInteractionReplaceWith.fromJson(json);
 
     default:
@@ -175,7 +175,7 @@ class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
       required final List<ZacTransformer> transformer,
       final String? $type})
       : _transformer = transformer,
-        $type = $type ?? 'z:1:Interaction:SharedValue.update',
+        $type = $type ?? 'z:1:SharedValue.update',
         super._();
 
   factory _$_SharedValueInteractionUpdate.fromJson(Map<String, dynamic> json) =>
@@ -252,7 +252,7 @@ class _$_SharedValueInteractionReplaceWith
       final List<ZacTransformer>? transformer,
       final String? $type})
       : _transformer = transformer,
-        $type = $type ?? 'z:1:Interaction:SharedValue.replaceWith',
+        $type = $type ?? 'z:1:SharedValue.replaceWith',
         super._();
 
   factory _$_SharedValueInteractionReplaceWith.fromJson(

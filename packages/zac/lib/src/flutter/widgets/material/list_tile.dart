@@ -1,13 +1,12 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/misc.dart';
 
 part 'list_tile.freezed.dart';
 part 'list_tile.g.dart';
@@ -38,8 +37,8 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
     FlutterColor? textColor,
     FlutterEdgeInsetsGeometry? contentPadding,
     ZacBool? enabled,
-    ZacInteractions? onTap,
-    ZacInteractions? onLongPress,
+    ZacActions? onTap,
+    ZacActions? onLongPress,
 // MouseCursor? mouseCursor,
     ZacBool? selected,
     FlutterColor? focusColor,
@@ -55,47 +54,37 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   }) = _FlutterListTile;
 
   @override
-  ListTile buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  ListTile buildWidget(ZacOriginWidgetTree origin) {
     return ListTile(
-      key: key?.buildKey(context, ref, lifetime),
-      leading: leading?.buildWidget(context, ref, lifetime),
-      title: title?.buildWidget(context, ref, lifetime),
-      subtitle: subtitle?.buildWidget(context, ref, lifetime),
-      trailing: trailing?.buildWidget(context, ref, lifetime),
-      isThreeLine: isThreeLine?.getValue(zacRef) ?? false,
-      dense: dense?.getValue(zacRef),
+      key: key?.buildKey(origin),
+      leading: leading?.buildWidget(origin),
+      title: title?.buildWidget(origin),
+      subtitle: subtitle?.buildWidget(origin),
+      trailing: trailing?.buildWidget(origin),
+      isThreeLine: isThreeLine?.getValue(origin) ?? false,
+      dense: dense?.getValue(origin),
 // FlutterVisualDensity? visualDensity,
-      shape: shape?.build(context, ref, lifetime),
+      shape: shape?.build(origin),
 // FlutterListTileStyle? style,
-      selectedColor: selectedColor?.build(context, ref, lifetime),
-      iconColor: iconColor?.build(context, ref, lifetime),
-      textColor: textColor?.build(context, ref, lifetime),
-      contentPadding: contentPadding?.build(context, ref, lifetime),
-      enabled: enabled?.getValue(zacRef) ?? true,
-      onTap: onTap?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onLongPress: onLongPress?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
+      selectedColor: selectedColor?.build(origin),
+      iconColor: iconColor?.build(origin),
+      textColor: textColor?.build(origin),
+      contentPadding: contentPadding?.build(origin),
+      enabled: enabled?.getValue(origin) ?? true,
+      onTap: onTap?.createCb(origin),
+      onLongPress: onLongPress?.createCb(origin),
 // MouseCursor? mouseCursor,
-      selected: selected?.getValue(zacRef) ?? false,
-      focusColor: focusColor?.build(context, ref, lifetime),
-      hoverColor: hoverColor?.build(context, ref, lifetime),
+      selected: selected?.getValue(origin) ?? false,
+      focusColor: focusColor?.build(origin),
+      hoverColor: hoverColor?.build(origin),
 // FocusNode? focusNode,
-      autofocus: autofocus?.getValue(zacRef) ?? false,
-      tileColor: tileColor?.build(context, ref, lifetime),
-      selectedTileColor: selectedTileColor?.build(context, ref, lifetime),
-      enableFeedback: enableFeedback?.getValue(zacRef),
-      horizontalTitleGap: horizontalTitleGap?.getValue(zacRef),
-      minVerticalPadding: minVerticalPadding?.getValue(zacRef),
-      minLeadingWidth: minLeadingWidth?.getValue(zacRef),
+      autofocus: autofocus?.getValue(origin) ?? false,
+      tileColor: tileColor?.build(origin),
+      selectedTileColor: selectedTileColor?.build(origin),
+      enableFeedback: enableFeedback?.getValue(origin),
+      horizontalTitleGap: horizontalTitleGap?.getValue(origin),
+      minVerticalPadding: minVerticalPadding?.getValue(origin),
+      minLeadingWidth: minLeadingWidth?.getValue(origin),
     );
   }
 }

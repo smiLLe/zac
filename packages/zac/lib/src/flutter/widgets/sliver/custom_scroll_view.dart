@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -47,28 +45,23 @@ class FlutterCustomScrollView
   }) = _FlutterCustomScrollView;
 
   @override
-  CustomScrollView buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  CustomScrollView buildWidget(ZacOriginWidgetTree origin) {
     return CustomScrollView(
-      key: key?.buildKey(context, ref, lifetime),
-      slivers: slivers?.getValue(context, ref, lifetime) ?? const <Widget>[],
-      scrollDirection:
-          scrollDirection?.build(context, ref, lifetime) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacRef) ?? false,
-      primary: primary?.getValue(zacRef),
-      physics: physics?.build(context, ref, lifetime),
-      shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
-      center: center?.buildKey(context, ref, lifetime),
-      anchor: anchor?.getValue(zacRef) ?? 0.0,
-      cacheExtent: cacheExtent?.getValue(zacRef),
-      semanticChildCount: semanticChildCount?.getValue(zacRef),
-      keyboardDismissBehavior:
-          keyboardDismissBehavior?.build(context, ref, lifetime) ??
-              ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacRef),
-      clipBehavior:
-          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
+      key: key?.buildKey(origin),
+      slivers: slivers?.getValue(origin) ?? const <Widget>[],
+      scrollDirection: scrollDirection?.build(origin) ?? Axis.vertical,
+      reverse: reverse?.getValue(origin) ?? false,
+      primary: primary?.getValue(origin),
+      physics: physics?.build(origin),
+      shrinkWrap: shrinkWrap?.getValue(origin) ?? false,
+      center: center?.buildKey(origin),
+      anchor: anchor?.getValue(origin) ?? 0.0,
+      cacheExtent: cacheExtent?.getValue(origin),
+      semanticChildCount: semanticChildCount?.getValue(origin),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(origin) ??
+          ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.getValue(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
     );
   }
 }

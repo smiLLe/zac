@@ -1,8 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -52,27 +49,25 @@ class FlutterProgressIndicator
   }) = _FlutterProgressIndicatorCircular;
 
   @override
-  ProgressIndicator buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  ProgressIndicator buildWidget(ZacOriginWidgetTree origin) {
     return map(
       linear: (value) => LinearProgressIndicator(
-        key: value.key?.buildKey(context, ref, lifetime),
-        value: value.value?.getValue(zacRef),
-        backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
-        color: value.color?.build(context, ref, lifetime),
-        minHeight: value.minHeight?.getValue(zacRef),
-        semanticsLabel: value.semanticsLabel?.getValue(zacRef),
-        semanticsValue: value.semanticsValue?.getValue(zacRef),
+        key: value.key?.buildKey(origin),
+        value: value.value?.getValue(origin),
+        backgroundColor: value.backgroundColor?.build(origin),
+        color: value.color?.build(origin),
+        minHeight: value.minHeight?.getValue(origin),
+        semanticsLabel: value.semanticsLabel?.getValue(origin),
+        semanticsValue: value.semanticsValue?.getValue(origin),
       ),
       circular: (value) => CircularProgressIndicator(
-        key: value.key?.buildKey(context, ref, lifetime),
-        value: value.value?.getValue(zacRef),
-        backgroundColor: value.backgroundColor?.build(context, ref, lifetime),
-        color: value.color?.build(context, ref, lifetime),
-        strokeWidth: value.strokeWidth?.getValue(zacRef) ?? 4.0,
-        semanticsLabel: value.semanticsLabel?.getValue(zacRef),
-        semanticsValue: value.semanticsValue?.getValue(zacRef),
+        key: value.key?.buildKey(origin),
+        value: value.value?.getValue(origin),
+        backgroundColor: value.backgroundColor?.build(origin),
+        color: value.color?.build(origin),
+        strokeWidth: value.strokeWidth?.getValue(origin) ?? 4.0,
+        semanticsLabel: value.semanticsLabel?.getValue(origin),
+        semanticsValue: value.semanticsValue?.getValue(origin),
       ),
     );
   }

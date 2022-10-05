@@ -1,6 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -27,37 +26,37 @@ void main() {
 
   group('ZacWidgetContext', () {
     testWidgets('can be updated in tree', (tester) async {
-      late WidgetRef ref1;
-      late WidgetRef ref2;
+      late ZacOriginWidgetTree origin1;
+      late ZacOriginWidgetTree origin2;
       await testZacWidget(
         tester,
         ZacUpdateWidgetBuilder(
-          child: LeakContext(
-            cb: (_, r, __) {
-              ref1 = r;
+          child: LeakOrigin(
+            cb: (o) {
+              origin1 = o;
             },
-            child: LeakContext(
-              cb: (_, r, __) {
-                ref2 = r;
+            child: LeakOrigin(
+              cb: (o) {
+                origin2 = o;
               },
             ),
           ),
         ),
       );
 
-      expect(ref1, equals(ref2));
+      expect(origin1, equals(origin2));
 
       await testZacWidget(
         tester,
         ZacUpdateWidgetBuilder(
-          child: LeakContext(
-            cb: (_, r, __) {
-              ref1 = r;
+          child: LeakOrigin(
+            cb: (o) {
+              origin1 = o;
             },
             child: ZacUpdateWidgetBuilder(
-              child: LeakContext(
-                cb: (_, r, __) {
-                  ref2 = r;
+              child: LeakOrigin(
+                cb: (o) {
+                  origin2 = o;
                 },
               ),
             ),
@@ -65,7 +64,7 @@ void main() {
         ),
       );
 
-      expect(ref1, isNot(equals(ref2)));
+      expect(origin1, isNot(equals(origin2)));
     });
     testWidgets('Unmount Callback', (tester) async {
       final cb1 = MockUnmountCb();
@@ -73,20 +72,20 @@ void main() {
       final cb3 = MockUnmountCb();
       final cb4 = MockUnmountCb();
 
-      late ZacInteractionLifetime lifetime1;
-      late ZacInteractionLifetime lifetime2;
+      late ZacOriginWidgetTree origin1;
+      late ZacOriginWidgetTree origin2;
 
       await testZacWidget(
         tester,
         ZacUpdateWidgetBuilder(
-          child: LeakContext(
-            cb: (_, __, h) {
-              lifetime1 = h;
+          child: LeakOrigin(
+            cb: (o) {
+              origin1 = o;
             },
             child: ZacUpdateWidgetBuilder(
-              child: LeakContext(
-                cb: (_, __, h) {
-                  lifetime2 = h;
+              child: LeakOrigin(
+                cb: (o) {
+                  origin2 = o;
                 },
                 child: FlutterSizedBox(),
               ),
@@ -94,11 +93,11 @@ void main() {
           ),
         ),
       );
-      lifetime1.onUnmount(cb1);
-      lifetime1.onUnmount(cb2);
+      origin1.lifetime.onUnmount(cb1);
+      origin1.lifetime.onUnmount(cb2);
 
-      lifetime2.onUnmount(cb3);
-      lifetime2.onUnmount(cb4);
+      origin2.lifetime.onUnmount(cb3);
+      origin2.lifetime.onUnmount(cb4);
 
       await testZacWidget(
         tester,

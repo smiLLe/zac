@@ -1,13 +1,11 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
@@ -30,14 +28,12 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   }) = _FlutterDecoratedBox;
 
   @override
-  DecoratedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  DecoratedBox buildWidget(ZacOriginWidgetTree origin) {
     return DecoratedBox(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      decoration: decoration.build(context, ref, lifetime),
-      position: position?.build(context, ref, lifetime) ??
-          DecorationPosition.background,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      decoration: decoration.build(origin),
+      position: position?.build(origin) ?? DecorationPosition.background,
     );
   }
 }

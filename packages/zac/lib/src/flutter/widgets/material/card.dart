@@ -1,8 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -36,20 +34,18 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
   }) = _FlutterCard;
 
   @override
-  Card buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Card buildWidget(ZacOriginWidgetTree origin) {
     return Card(
-      key: key?.buildKey(context, ref, lifetime),
-      color: color?.build(context, ref, lifetime),
-      shadowColor: shadowColor?.build(context, ref, lifetime),
-      elevation: elevation?.getValue(zacRef),
-      shape: shape?.build(context, ref, lifetime),
-      borderOnForeground: borderOnForeground?.getValue(zacRef) ?? true,
-      margin: margin?.build(context, ref, lifetime),
-      clipBehavior: clipBehavior?.build(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      semanticContainer: semanticContainer?.getValue(zacRef) ?? true,
+      key: key?.buildKey(origin),
+      color: color?.build(origin),
+      shadowColor: shadowColor?.build(origin),
+      elevation: elevation?.getValue(origin),
+      shape: shape?.build(origin),
+      borderOnForeground: borderOnForeground?.getValue(origin) ?? true,
+      margin: margin?.build(origin),
+      clipBehavior: clipBehavior?.build(origin),
+      child: child?.buildWidget(origin),
+      semanticContainer: semanticContainer?.getValue(origin) ?? true,
     );
   }
 }

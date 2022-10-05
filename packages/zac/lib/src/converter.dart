@@ -6,7 +6,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
-import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/statemachine.dart';
 import 'package:zac/src/zac/transformers.dart';
 
@@ -169,11 +168,10 @@ Map<String, Convert> allConverters = const {
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
-  ZacInteractions.unionValue: ZacInteractions.fromJson,
-  ZacStateMachineActions.unionValue: ZacStateMachineActions.fromJson,
+  ZacActions.unionValue: ZacActions.fromJson,
 
   StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
-  StateMachineBaseActions.unionValue: StateMachineActions.fromJson,
+  StateMachineActions.unionValue: StateMachineActions.fromJson,
   StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
 
   /**

@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -31,16 +29,14 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   }) = _FlutterDivider;
 
   @override
-  Divider buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Divider buildWidget(ZacOriginWidgetTree origin) {
     return Divider(
-      key: key?.buildKey(context, ref, lifetime),
-      height: height?.getValue(zacRef),
-      thickness: thickness?.getValue(zacRef),
-      indent: indent?.getValue(zacRef),
-      endIndent: endIndent?.getValue(zacRef),
-      color: color?.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      height: height?.getValue(origin),
+      thickness: thickness?.getValue(origin),
+      indent: indent?.getValue(origin),
+      endIndent: endIndent?.getValue(origin),
+      color: color?.build(origin),
     );
   }
 }

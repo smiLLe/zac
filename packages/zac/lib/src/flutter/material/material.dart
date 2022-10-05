@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -20,8 +19,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   }
 
   @override
-  InputBorder build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime);
+  InputBorder build(ZacOriginWidgetTree origin);
 }
 
 @defaultConverterFreezed
@@ -43,14 +41,12 @@ class FlutterOutlineInputBorder
   }) = _FlutterOutlineInputBorder;
 
   @override
-  OutlineInputBorder build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  OutlineInputBorder build(ZacOriginWidgetTree origin) {
     return OutlineInputBorder(
-      borderSide:
-          borderSide?.build(context, ref, lifetime) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context, ref, lifetime) ??
+      borderSide: borderSide?.build(origin) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(origin) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.getValue(ZacRef.widget(ref)) ?? 4.0,
+      gapPadding: gapPadding?.getValue(origin) ?? 4.0,
     );
   }
 }
@@ -73,12 +69,10 @@ class FlutterUnderlineInputBorder
   }) = _FlutterUnderlineInputBorder;
 
   @override
-  UnderlineInputBorder build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  UnderlineInputBorder build(ZacOriginWidgetTree origin) {
     return UnderlineInputBorder(
-      borderSide:
-          borderSide?.build(context, ref, lifetime) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(context, ref, lifetime) ??
+      borderSide: borderSide?.build(origin) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(origin) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),
@@ -107,24 +101,21 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   @override
-  MaterialPageRoute<ZacInteractions?> build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime,
-      {Widget Function(BuildContext context, WidgetRef ref,
-              ZacInteractionLifetime lifetime, FlutterWidget zacWidget)?
+  MaterialPageRoute<ZacActions?> build(ZacOriginWidgetTree origin,
+      {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
           wrap}) {
-    final zacRef = ZacRef.widget(ref);
-    return MaterialPageRoute<ZacInteractions?>(
+    return MaterialPageRoute<ZacActions?>(
       builder: (_) => ZacUpdateWidget(
-        builder: (context, ref, lifetime) {
+        builder: (origin) {
           if (null == wrap) {
-            return child.buildWidget(context, ref, lifetime);
+            return child.buildWidget(origin);
           }
-          return wrap(context, ref, lifetime, child);
+          return wrap(origin, child);
         },
       ),
-      maintainState: maintainState?.getValue(zacRef) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(zacRef) ?? false,
-      settings: settings?.build(context, ref, lifetime),
+      maintainState: maintainState?.getValue(origin) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValue(origin) ?? false,
+      settings: settings?.build(origin),
     );
   }
 }

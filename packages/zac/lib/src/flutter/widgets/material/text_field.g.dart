@@ -89,13 +89,13 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacInt.fromJson(json['maxLength'] as Object),
       onChanged: json['onChanged'] == null
           ? null
-          : ZacInteractions.fromJson(json['onChanged'] as Object),
+          : ZacActions.fromJson(json['onChanged'] as Object),
       onEditingComplete: json['onEditingComplete'] == null
           ? null
-          : ZacInteractions.fromJson(json['onEditingComplete'] as Object),
+          : ZacActions.fromJson(json['onEditingComplete'] as Object),
       onSubmitted: json['onSubmitted'] == null
           ? null
-          : ZacInteractions.fromJson(json['onSubmitted'] as Object),
+          : ZacActions.fromJson(json['onSubmitted'] as Object),
       enabled: json['enabled'] == null
           ? null
           : ZacBool.fromJson(json['enabled'] as Object),
@@ -133,7 +133,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['enableInteractiveSelection'] as Object),
       onTap: json['onTap'] == null
           ? null
-          : ZacInteractions.fromJson(json['onTap'] as Object),
+          : ZacActions.fromJson(json['onTap'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

@@ -1,12 +1,10 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
@@ -29,13 +27,11 @@ class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   }) = _FlutterClipOval;
 
   @override
-  ClipOval buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  ClipOval buildWidget(ZacOriginWidgetTree origin) {
     return ClipOval(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      clipBehavior:
-          clipBehavior?.build(context, ref, lifetime) ?? Clip.antiAlias,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.antiAlias,
     );
   }
 }

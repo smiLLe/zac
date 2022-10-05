@@ -1,12 +1,10 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
@@ -30,12 +28,11 @@ class FlutterSliverPadding
   }) = _FlutterSliverPadding;
 
   @override
-  SliverPadding buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  SliverPadding buildWidget(ZacOriginWidgetTree origin) {
     return SliverPadding(
-      key: key?.buildKey(context, ref, lifetime),
-      sliver: sliver?.buildWidget(context, ref, lifetime),
-      padding: padding.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      sliver: sliver?.buildWidget(origin),
+      padding: padding.build(origin),
     );
   }
 }

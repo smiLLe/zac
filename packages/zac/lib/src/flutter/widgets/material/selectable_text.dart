@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 
 import '../../../../../zac.dart';
 
@@ -52,30 +51,28 @@ class FlutterSelectableText
   }) = _FlutterSelectableText;
 
   @override
-  SelectableText buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  SelectableText buildWidget(ZacOriginWidgetTree origin) {
     return SelectableText(
       data,
-      key: key?.buildKey(context, ref, lifetime),
-      style: style?.build(context, ref, lifetime),
-      strutStyle: strutStyle?.build(context, ref, lifetime),
-      textAlign: textAlign?.build(context, ref, lifetime),
-      textDirection: textDirection?.build(context, ref, lifetime),
-      textScaleFactor: textScaleFactor?.getValue(zacRef),
-      showCursor: showCursor?.getValue(zacRef) ?? false,
-      autofocus: autofocus?.getValue(zacRef) ?? false,
-      minLines: minLines?.getValue(zacRef),
-      maxLines: maxLines?.getValue(zacRef),
-      cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(zacRef),
-      cursorRadius: cursorRadius?.build(context, ref, lifetime),
-      cursorColor: cursorColor?.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      style: style?.build(origin),
+      strutStyle: strutStyle?.build(origin),
+      textAlign: textAlign?.build(origin),
+      textDirection: textDirection?.build(origin),
+      textScaleFactor: textScaleFactor?.getValue(origin),
+      showCursor: showCursor?.getValue(origin) ?? false,
+      autofocus: autofocus?.getValue(origin) ?? false,
+      minLines: minLines?.getValue(origin),
+      maxLines: maxLines?.getValue(origin),
+      cursorWidth: cursorWidth?.getValue(origin) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(origin),
+      cursorRadius: cursorRadius?.build(origin),
+      cursorColor: cursorColor?.build(origin),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(zacRef) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(zacRef),
-      textHeightBehavior: textHeightBehavior?.build(context, ref, lifetime),
-      textWidthBasis: textWidthBasis?.build(context, ref, lifetime),
+          enableInteractiveSelection?.getValue(origin) ?? true,
+      semanticsLabel: semanticsLabel?.getValue(origin),
+      textHeightBehavior: textHeightBehavior?.build(origin),
+      textWidthBasis: textWidthBasis?.build(origin),
     );
   }
 }

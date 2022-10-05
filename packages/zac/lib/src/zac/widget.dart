@@ -1,16 +1,13 @@
 import 'dart:convert';
 
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
@@ -60,26 +57,25 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   }) = _ZacWidgetBuilderIsolateString;
 
   @override
-  Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  Widget buildWidget(ZacOriginWidgetTree origin) {
     return map(
       (obj) => ZacWidget(
         zacWidget: obj.data,
-        key: obj.key?.buildKey(context, ref, lifetime),
+        key: obj.key?.buildKey(origin),
       ),
       map: (obj) => ZacWidgetFromMa(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, lifetime),
+        key: obj.key?.buildKey(origin),
       ),
       isolate: (obj) => ZacWidgetFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.buildKey(context, ref, lifetime),
+        key: obj.key?.buildKey(origin),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
       isolateString: (obj) => ZacWidgetFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.buildKey(context, ref, lifetime),
+        key: obj.key?.buildKey(origin),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
@@ -96,8 +92,8 @@ class ZacWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lifetime = useZacInteractionLifetime();
-    return zacWidget.buildWidget(context, ref, lifetime);
+    final origin = useZacOrigin(ref);
+    return zacWidget.buildWidget(origin);
   }
 }
 
@@ -108,7 +104,8 @@ class ZacWidgetFromMa extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final map = zacMap.getValue(ZacRef.widget(ref));
+    final origin = useZacOrigin(ref);
+    final map = zacMap.getValue(origin);
     final zacWidget = useMemoized(
         () => ConverterHelper.convertToType<FlutterWidget>(map), [map]);
     return ZacWidget(zacWidget: zacWidget);
@@ -138,9 +135,10 @@ class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final origin = useZacOrigin(ref);
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
-    final data = zacString.getValue(ZacRef.widget(ref));
+    final data = zacString.getValue(origin);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -198,9 +196,10 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final origin = useZacOrigin(ref);
     final loadingState =
         useState<AsyncValue<FlutterWidget>>(const AsyncValue.loading());
-    final map = zacMap.getValue(ZacRef.widget(ref));
+    final map = zacMap.getValue(origin);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -225,9 +224,9 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
     }, [map, allConverters]);
 
     return ZacUpdateWidget(
-      builder: (context, ref, lifetime) {
+      builder: (origin) {
         return loadingState.value.map(
-          data: (obj) => obj.value.buildWidget(context, ref, lifetime),
+          data: (obj) => obj.value.buildWidget(origin),
           error: (obj) => _ErrorProvide(
             error: obj.error,
             child: errorChild,
@@ -251,7 +250,7 @@ class _ErrorProvide extends StatelessWidget {
     return SharedValueProvider(
       family: ZacWidget.provideErrorFamily,
       value: error,
-      builder: (context, ref, lifetime) {
+      builder: (origin) {
         Widget err = const SizedBox.shrink();
         assert(() {
           if (null == child) {
@@ -260,7 +259,7 @@ class _ErrorProvide extends StatelessWidget {
           return true;
         }(), '');
         if (null != child) {
-          err = child!.buildWidget(context, ref, lifetime);
+          err = child!.buildWidget(origin);
         }
 
         return err;
@@ -274,8 +273,9 @@ class _DebugErrorBox extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final origin = useZacOrigin(ref);
     final val = SharedValue.getFilled(const SharedValueConsumeType.watch(),
-        ZacRef.widget(ref), ZacWidget.provideErrorFamily);
+        origin, ZacWidget.provideErrorFamily);
 
     return Container(
       decoration: BoxDecoration(

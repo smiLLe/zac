@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -48,30 +46,25 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   }) = _FlutterGridView;
 
   @override
-  GridView buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  GridView buildWidget(ZacOriginWidgetTree origin) {
     return GridView(
-      gridDelegate: gridDelegate.build(context, ref, lifetime),
-      key: key?.buildKey(context, ref, lifetime),
-      scrollDirection:
-          scrollDirection?.build(context, ref, lifetime) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacRef) ?? false,
-      primary: primary?.getValue(zacRef),
-      shrinkWrap: shrinkWrap?.getValue(zacRef) ?? false,
-      padding: padding?.build(context, ref, lifetime),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(zacRef) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
-      cacheExtent: cacheExtent?.getValue(zacRef),
-      children: children?.getValue(context, ref, lifetime) ?? const <Widget>[],
-      semanticChildCount: semanticChildCount?.getValue(zacRef),
-      keyboardDismissBehavior:
-          keyboardDismissBehavior?.build(context, ref, lifetime) ??
-              ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacRef),
-      clipBehavior:
-          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
+      gridDelegate: gridDelegate.build(origin),
+      key: key?.buildKey(origin),
+      scrollDirection: scrollDirection?.build(origin) ?? Axis.vertical,
+      reverse: reverse?.getValue(origin) ?? false,
+      primary: primary?.getValue(origin),
+      shrinkWrap: shrinkWrap?.getValue(origin) ?? false,
+      padding: padding?.build(origin),
+      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(origin) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+      cacheExtent: cacheExtent?.getValue(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
+      semanticChildCount: semanticChildCount?.getValue(origin),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(origin) ??
+          ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.getValue(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
     );
   }
 }

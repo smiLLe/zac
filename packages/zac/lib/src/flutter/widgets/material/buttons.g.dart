@@ -17,10 +17,10 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),
@@ -40,10 +40,10 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
       label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),
@@ -62,10 +62,10 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
       child: FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),
@@ -85,10 +85,10 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
       label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),
@@ -106,10 +106,10 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
       child: FlutterWidget.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),
@@ -129,10 +129,10 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
       label: FlutterWidget.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacInteractions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Object),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacInteractions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBool.fromJson(json['autofocus'] as Object),

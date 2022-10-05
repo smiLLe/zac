@@ -62,9 +62,9 @@ _$_FlutterNavigatorActionsPushNamed
 _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterNavigatorActionsPop(
-      interactions: json['interactions'] == null
+      actions: json['actions'] == null
           ? null
-          : ZacInteractions.fromJson(json['interactions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
@@ -74,9 +74,9 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
 _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterNavigatorActionsMaybePop(
-      interactions: json['interactions'] == null
+      actions: json['actions'] == null
           ? null
-          : ZacInteractions.fromJson(json['interactions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
@@ -90,7 +90,7 @@ _$_FlutterNavigatorActionsPushReplacement
           route: FlutterRoute.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
-              : ZacInteractions.fromJson(json['result'] as Object),
+              : ZacActions.fromJson(json['result'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
               : GetFlutterNavigatorState.fromJson(
@@ -110,7 +110,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
                   json['navigatorState'] as Object),
           result: json['result'] == null
               ? null
-              : ZacInteractions.fromJson(json['result'] as Object),
+              : ZacActions.fromJson(json['result'] as Object),
           $type: json['_converter'] as String?,
         );
 

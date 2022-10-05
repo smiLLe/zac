@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -49,7 +46,7 @@ class Transition with _$Transition {
   factory Transition(
     String event,
     String targetState, {
-    ZacStateMachineActions? actions,
+    ZacActions? actions,
   }) = _Transition;
 }
 
@@ -160,12 +157,16 @@ StateMachine createStateMachineProvider({
       MachineContext nextContext = ref.state.context;
       bool isActive = true;
       final callbacks = <void Function()>[];
-      // final helper = ZacActionHelper(
-      //   isActive: () => isActive,
-      //   onBecomeInactive: callbacks.add,
-      // );
+
+      final origin = ZacOriginStateMachineAction(
+        ref: ref,
+        lifetime: ZacOriginLifetimeStateMachineAction(
+          isActive: () => isActive,
+          onBecomeInactive: callbacks.add,
+        ),
+      );
       transition.actions?.execute(
-        ZacRef.adProvider(ref),
+        origin,
         prefillBag: (bag) {
           bag
             ..addKeyValue(kBagStateMachineSendEvent, event)
@@ -191,18 +192,18 @@ StateMachine createStateMachineProvider({
 }
 
 @defaultConverterFreezed
-class StateMachineBaseActions
-    with _$StateMachineBaseActions
-    implements ZacStateMachineAction {
-  const StateMachineBaseActions._();
+class StateMachineActions with _$StateMachineActions implements ZacAction {
+  const StateMachineActions._();
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
+  static const String unionValueUpdateContext =
+      'z:1:StateMachine:Action.updateContext';
 
-  factory StateMachineBaseActions.fromJson(Map<String, dynamic> json) =>
-      _$StateMachineBaseActionsFromJson(json);
+  factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
+      _$StateMachineActionsFromJson(json);
 
-  @FreezedUnionValue(StateMachineBaseActions.unionValue)
-  factory StateMachineBaseActions.send({
+  @FreezedUnionValue(StateMachineActions.unionValue)
+  factory StateMachineActions.send({
     required SharedValueFamily family,
     required ZacString event,
 
@@ -211,42 +212,7 @@ class StateMachineBaseActions
     /// A payload send by an action will still be available
     /// through [kBagActionPayload].
     ZacObject? payload,
-  }) = _StateMachineBaseActionsSend;
-
-  @override
-  void execute(ZacRef ref, ContextBag bag) {
-    map(
-      send: (obj) {
-        ref
-            .when(
-              widget: (widgetRef) =>
-                  widgetRef.read(statemachineProvider(obj.family)),
-              adProvider: (proRef) =>
-                  proRef.read(statemachineProvider(obj.family)),
-            )
-            .send(
-              obj.event.getValue(ref),
-              null == obj.payload
-                  ? const SendPayload.none()
-                  : SendPayload(obj.payload?.getValue(ref)),
-              prefillBag: (bag) => bag.addEntries(bag.entries),
-            );
-      },
-    );
-  }
-}
-
-@defaultConverterFreezed
-class StateMachineActions
-    with _$StateMachineActions
-    implements ZacStateMachineAction {
-  const StateMachineActions._();
-
-  static const String unionValueUpdateContext =
-      'z:1:StateMachine:Action.updateContext';
-
-  factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
-      _$StateMachineActionsFromJson(json);
+  }) = _StateMachineActionsSend;
 
   @FreezedUnionValue(StateMachineActions.unionValueUpdateContext)
   factory StateMachineActions.updateContext({
@@ -254,8 +220,23 @@ class StateMachineActions
   }) = _StateMachineActionsUpdateContext;
 
   @override
-  void execute(ZacRef ref, ContextBag bag) {
+  void execute(ZacOrigin origin, ContextBag bag) {
     map(
+      send: (obj) {
+        origin
+            .map(
+                widgetTree: (origin) =>
+                    origin.ref.read(statemachineProvider(obj.family)),
+                statemachineAction: (origin) =>
+                    origin.ref.read(statemachineProvider(obj.family)))
+            .send(
+              obj.event.getValue(origin),
+              null == obj.payload
+                  ? const SendPayload.none()
+                  : SendPayload(obj.payload?.getValue(origin)),
+              prefillBag: (bag) => bag.addEntries(bag.entries),
+            );
+      },
       updateContext: (obj) {
         final updateContext = bag.safeGet<UpdateContext>(
             key: kBagStateMachineUpdateContext, notFound: null);
@@ -264,7 +245,7 @@ class StateMachineActions
         updateContext(
           obj.transformer.transformValues(
             ZacTransformValue(machineContext),
-            ref,
+            origin,
             prefillBag: (innerBag) => innerBag..addEntries(bag.entries),
           ),
         );
@@ -294,15 +275,13 @@ class StateMachineProviderBuilder
   }) = _StateMachineProviderBuilder;
 
   @override
-  StateMachineProvider buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  StateMachineProvider buildWidget(ZacOriginWidgetTree origin) {
     return StateMachineProvider(
-      key: key?.buildKey(context, ref, lifetime),
-      initialState: initialState.getValue(zacRef),
-      initialContext: initialContext?.getValue(zacRef),
+      key: key?.buildKey(origin),
+      initialState: initialState.getValue(origin),
+      initialContext: initialContext?.getValue(origin),
       states: states,
-      family: family.getValue(zacRef),
+      family: family.getValue(origin),
       builder: child.buildWidget,
     );
   }
@@ -322,9 +301,7 @@ class StateMachineProvider extends HookConsumerWidget {
   final Object? initialContext;
   final List<StateNode> states;
   final String family;
-  final Widget Function(
-          BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime)
-      builder;
+  final Widget Function(ZacOriginWidgetTree origin) builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

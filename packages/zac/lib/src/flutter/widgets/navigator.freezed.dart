@@ -453,7 +453,7 @@ abstract class _FlutterNavigatorActionsPushNamed
 @JsonSerializable(createToJson: false)
 class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   _$_FlutterNavigatorActionsPop(
-      {this.interactions, this.navigatorState, final String? $type})
+      {this.actions, this.navigatorState, final String? $type})
       : $type = $type ?? 'f:1:Navigator.pop',
         super._();
 
@@ -461,7 +461,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
       _$$_FlutterNavigatorActionsPopFromJson(json);
 
   @override
-  final ZacInteractions? interactions;
+  final ZacActions? actions;
   @override
   final GetFlutterNavigatorState? navigatorState;
 
@@ -470,7 +470,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
 
   @override
   String toString() {
-    return 'FlutterNavigatorActions.pop(interactions: $interactions, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.pop(actions: $actions, navigatorState: $navigatorState)';
   }
 
   @override
@@ -478,8 +478,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPop &&
-            const DeepCollectionEquality()
-                .equals(other.interactions, interactions) &&
+            const DeepCollectionEquality().equals(other.actions, actions) &&
             const DeepCollectionEquality()
                 .equals(other.navigatorState, navigatorState));
   }
@@ -488,7 +487,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(interactions),
+      const DeepCollectionEquality().hash(actions),
       const DeepCollectionEquality().hash(navigatorState));
 
   @override
@@ -511,7 +510,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
 
 abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop(
-          {final ZacInteractions? interactions,
+          {final ZacActions? actions,
           final GetFlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPop;
   _FlutterNavigatorActionsPop._() : super._();
@@ -519,7 +518,7 @@ abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPop.fromJson;
 
-  ZacInteractions? get interactions;
+  ZacActions? get actions;
   @override
   GetFlutterNavigatorState? get navigatorState;
 }
@@ -529,7 +528,7 @@ abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
 class _$_FlutterNavigatorActionsMaybePop
     extends _FlutterNavigatorActionsMaybePop {
   _$_FlutterNavigatorActionsMaybePop(
-      {this.interactions, this.navigatorState, final String? $type})
+      {this.actions, this.navigatorState, final String? $type})
       : $type = $type ?? 'f:1:Navigator.maybePop',
         super._();
 
@@ -538,7 +537,7 @@ class _$_FlutterNavigatorActionsMaybePop
       _$$_FlutterNavigatorActionsMaybePopFromJson(json);
 
   @override
-  final ZacInteractions? interactions;
+  final ZacActions? actions;
   @override
   final GetFlutterNavigatorState? navigatorState;
 
@@ -547,7 +546,7 @@ class _$_FlutterNavigatorActionsMaybePop
 
   @override
   String toString() {
-    return 'FlutterNavigatorActions.maybePop(interactions: $interactions, navigatorState: $navigatorState)';
+    return 'FlutterNavigatorActions.maybePop(actions: $actions, navigatorState: $navigatorState)';
   }
 
   @override
@@ -555,8 +554,7 @@ class _$_FlutterNavigatorActionsMaybePop
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsMaybePop &&
-            const DeepCollectionEquality()
-                .equals(other.interactions, interactions) &&
+            const DeepCollectionEquality().equals(other.actions, actions) &&
             const DeepCollectionEquality()
                 .equals(other.navigatorState, navigatorState));
   }
@@ -565,7 +563,7 @@ class _$_FlutterNavigatorActionsMaybePop
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(interactions),
+      const DeepCollectionEquality().hash(actions),
       const DeepCollectionEquality().hash(navigatorState));
 
   @override
@@ -589,7 +587,7 @@ class _$_FlutterNavigatorActionsMaybePop
 abstract class _FlutterNavigatorActionsMaybePop
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsMaybePop(
-          {final ZacInteractions? interactions,
+          {final ZacActions? actions,
           final GetFlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsMaybePop;
   _FlutterNavigatorActionsMaybePop._() : super._();
@@ -597,7 +595,7 @@ abstract class _FlutterNavigatorActionsMaybePop
   factory _FlutterNavigatorActionsMaybePop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsMaybePop.fromJson;
 
-  ZacInteractions? get interactions;
+  ZacActions? get actions;
   @override
   GetFlutterNavigatorState? get navigatorState;
 }
@@ -621,7 +619,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final FlutterRoute route;
   @override
-  final ZacInteractions? result;
+  final ZacActions? result;
   @override
   final GetFlutterNavigatorState? navigatorState;
 
@@ -674,7 +672,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushReplacement(
           {required final FlutterRoute route,
-          final ZacInteractions? result,
+          final ZacActions? result,
           final GetFlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
   _FlutterNavigatorActionsPushReplacement._() : super._();
@@ -684,7 +682,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
       _$_FlutterNavigatorActionsPushReplacement.fromJson;
 
   FlutterRoute get route;
-  ZacInteractions? get result;
+  ZacActions? get result;
   @override
   GetFlutterNavigatorState? get navigatorState;
 }
@@ -713,7 +711,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final GetFlutterNavigatorState? navigatorState;
   @override
-  final ZacInteractions? result;
+  final ZacActions? result;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -768,7 +766,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
           {required final ZacString routeName,
           final Object? arguments,
           final GetFlutterNavigatorState? navigatorState,
-          final ZacInteractions? result}) =
+          final ZacActions? result}) =
       _$_FlutterNavigatorActionsPushReplacementNamed;
   _FlutterNavigatorActionsPushReplacementNamed._() : super._();
 
@@ -780,7 +778,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   Object? get arguments;
   @override
   GetFlutterNavigatorState? get navigatorState;
-  ZacInteractions? get result;
+  ZacActions? get result;
 }
 
 FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(

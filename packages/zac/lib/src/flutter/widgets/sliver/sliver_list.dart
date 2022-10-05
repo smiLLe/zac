@@ -1,11 +1,9 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
@@ -26,11 +24,10 @@ class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   }) = _FlutterSliverList;
 
   @override
-  SliverList buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  SliverList buildWidget(ZacOriginWidgetTree origin) {
     return SliverList(
-      key: key?.buildKey(context, ref, lifetime),
-      delegate: delegate.build(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      delegate: delegate.build(origin),
     );
   }
 }

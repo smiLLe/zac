@@ -1,11 +1,10 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/misc.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/shared_value.dart';
 
 import '../flutter/models.dart';
@@ -15,24 +14,25 @@ import '../helper.mocks.dart';
 void main() {
   test('AnyAction', () {
     expect(
-        ZacInteraction.fromJson(
+        ZacActions.fromJson(
           <String, dynamic>{
             '_converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child')
           },
         ),
-        FlutterDialogs.showDialog(
-            child: FlutterSizedBox(key: FlutterValueKey('dialog_child'))));
+        ZacActions([
+          FlutterDialogs.showDialog(
+              child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
+        ]));
 
-    expect(() => ZacInteraction.fromJson(<String, dynamic>{}),
-        throwsConverterError);
+    expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
   });
 
   test('AnyActions', () {
     expect(
-        ZacInteractions.fromJson({
-          '_converter': 'z:1:Interactions',
-          'interactions': [
+        ZacActions.fromJson({
+          '_converter': 'z:1:Actions',
+          'actions': [
             {
               '_converter': 'f:1:showDialog',
               'child': ChildModel.getSizedBox(key: 'dialog_child_1')
@@ -43,14 +43,14 @@ void main() {
             }
           ]
         }),
-        ZacInteractions([
+        ZacActions([
           FlutterDialogs.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
           FlutterDialogs.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
         ]));
     expect(
-        ZacInteractions.fromJson([
+        ZacActions.fromJson([
           {
             '_converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child_1')
@@ -60,32 +60,31 @@ void main() {
             'child': ChildModel.getSizedBox(key: 'dialog_child_1')
           }
         ]),
-        ZacInteractions([
+        ZacActions([
           FlutterDialogs.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
           FlutterDialogs.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
         ]));
     expect(
-        ZacInteractions.fromJson({
+        ZacActions.fromJson({
           '_converter': 'f:1:showDialog',
           'child': ChildModel.getSizedBox(key: 'dialog_child')
         }),
-        ZacInteractions([
+        ZacActions([
           FlutterDialogs.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
         ]));
 
-    expect(() => ZacInteractions.fromJson('nonono'), throwsException);
-    expect(
-        () => ZacInteractions.fromJson(<String, dynamic>{}), throwsException);
+    expect(() => ZacActions.fromJson('nonono'), throwsException);
+    expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
   });
 
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
         '_converter': 'z:1:ExecuteActions.once',
-        'interactions': [
+        'actions': [
           {'_converter': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
         ],
         'child': {
@@ -104,9 +103,9 @@ void main() {
       await testZacWidget(
         tester,
         ZacExecuteActionsBuilder.once(
-            interactions: LeakUiAction.createActions(executeCb)),
+            actions: LeakAction.createActions(executeCb)),
       );
-      verify(executeCb(any, any, any, any)).called(1);
+      verify(executeCb(argThat(isAOriginWidgetTree), any)).called(1);
       await tester.pump();
       await tester.pump();
       await tester.pump();
@@ -125,25 +124,23 @@ void main() {
           ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
             '_converter': 'z:1:ExecuteActions.listen',
             'family': 'foo',
-            'interactions': NoopAction.createActions(),
+            'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              interactions: ZacInteractions([const NoopAction()]),
-              family: 'foo'));
+              actions: ZacActions([const NoopAction()]), family: 'foo'));
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
             '_converter': 'z:1:ExecuteActions.listen',
             'family': 'foo',
-            'interactions': NoopAction.createActions(),
+            'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              interactions: ZacInteractions([const NoopAction()]),
-              family: 'foo'));
+              actions: ZacActions([const NoopAction()]), family: 'foo'));
     });
 
     testWidgets('execute interactions', (tester) async {
-      late WidgetRef ref;
+      late ZacOriginWidgetTree origin;
       final cb = MockLeakBagCb();
 
       await testZacWidget(
@@ -152,11 +149,11 @@ void main() {
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            interactions: LeakBagContentAction.createActions(cb),
+            actions: LeakBagContentAction.createActions(cb),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
-              child: LeakContext(cb: (_, r, __) => ref = r),
+              child: LeakOrigin(cb: (o) => origin = o),
             ),
           ),
         ),
@@ -164,7 +161,7 @@ void main() {
 
       verifyZeroInteractions(cb);
 
-      SharedValue.update(ZacRef.widget(ref), 'shared', (current) => 2);
+      SharedValue.update(origin, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
       verify(cb(argThat(containsPair('action.payload', 2)))).called(1);
@@ -180,8 +177,8 @@ void main() {
           '_converter': FlutterElevatedButton.unionValue,
           'key': KeysModel.getValueKey('button'),
           'onPressed': {
-            '_converter': 'z:1:Interactions',
-            'interactions': [
+            '_converter': 'z:1:Actions',
+            'actions': [
               {
                 '_converter': FlutterDialogs.unionValueShowDialog,
                 'child': ChildModel.getSizedBox(key: 'dialog_child')
@@ -216,8 +213,8 @@ void main() {
               'key': KeysModel.getValueKey('page${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                '_converter': 'z:1:Interactions',
-                'interactions': interactions,
+                '_converter': 'z:1:Actions',
+                'actions': interactions,
               }
             },
             {
@@ -225,8 +222,8 @@ void main() {
               'key': KeysModel.getValueKey('pageback${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                '_converter': 'z:1:Interactions',
-                'interactions': backActions,
+                '_converter': 'z:1:Actions',
+                'actions': backActions,
               }
             },
           ]

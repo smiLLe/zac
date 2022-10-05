@@ -1,12 +1,10 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';
@@ -31,13 +29,12 @@ class FlutterSizedOverflowBox
   }) = _FlutterSizedOverflowBox;
 
   @override
-  SizedOverflowBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  SizedOverflowBox buildWidget(ZacOriginWidgetTree origin) {
     return SizedOverflowBox(
-      key: key?.buildKey(context, ref, lifetime),
-      size: size.build(context, ref, lifetime),
-      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      size: size.build(origin),
+      alignment: alignment?.build(origin) ?? Alignment.center,
+      child: child?.buildWidget(origin),
     );
   }
 }

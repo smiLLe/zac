@@ -1,10 +1,8 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'sliver_child_delegate.freezed.dart';
 part 'sliver_child_delegate.g.dart';
@@ -43,26 +41,24 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
     ZacInt? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegateFixed;
 
-  SliverChildDelegate build(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  SliverChildDelegate build(ZacOriginWidgetTree origin) {
     return map(
       list: (value) => SliverChildListDelegate(
-        children.getValue(context, ref, lifetime),
+        children.getValue(origin),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(zacRef) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(zacRef) ?? 0,
+            addAutomaticKeepAlives?.getValue(origin) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(origin) ?? 0,
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.getValue(context, ref, lifetime),
+        children.getValue(origin),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(zacRef) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.getValue(zacRef) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(zacRef) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(zacRef) ?? 0,
+            addAutomaticKeepAlives?.getValue(origin) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(origin) ?? 0,
         // semanticIndexCallback:
       ),
     );

@@ -1,8 +1,6 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -61,31 +59,28 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   }) = _FlutterMaterialApp;
 
   @override
-  MaterialApp buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  MaterialApp buildWidget(ZacOriginWidgetTree origin) {
     return MaterialApp(
-      key: key?.buildKey(context, ref, lifetime),
-      navigatorKey: navigatorKey?.buildKey(context, ref, lifetime),
-      home: home?.buildWidget(context, ref, lifetime),
-      initialRoute: initialRoute?.getValue(zacRef),
-      onGenerateRoute:
-          onGenerateRoute?.buildRouteFactory(context, ref, lifetime),
-      onUnknownRoute: onUnknownRoute?.buildRouteFactory(context, ref, lifetime),
-      title: title?.getValue(zacRef) ?? '',
-      color: color?.build(context, ref, lifetime),
-      locale: locale?.build(context, ref, lifetime),
-      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(zacRef) ?? false,
-      showPerformanceOverlay: showPerformanceOverlay?.getValue(zacRef) ?? false,
+      key: key?.buildKey(origin),
+      navigatorKey: navigatorKey?.buildKey(origin),
+      home: home?.buildWidget(origin),
+      initialRoute: initialRoute?.getValue(origin),
+      onGenerateRoute: onGenerateRoute?.buildRouteFactory(origin),
+      onUnknownRoute: onUnknownRoute?.buildRouteFactory(origin),
+      title: title?.getValue(origin) ?? '',
+      color: color?.build(origin),
+      locale: locale?.build(origin),
+      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(origin) ?? false,
+      showPerformanceOverlay: showPerformanceOverlay?.getValue(origin) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(zacRef) ?? false,
+          checkerboardRasterCacheImages?.getValue(origin) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(zacRef) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.getValue(zacRef) ?? false,
+          checkerboardOffscreenLayers?.getValue(origin) ?? false,
+      showSemanticsDebugger: showSemanticsDebugger?.getValue(origin) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(zacRef) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(zacRef),
-      useInheritedMediaQuery: useInheritedMediaQuery?.getValue(zacRef) ?? false,
+          debugShowCheckedModeBanner?.getValue(origin) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(origin),
+      useInheritedMediaQuery: useInheritedMediaQuery?.getValue(origin) ?? false,
     );
   }
 }

@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -29,14 +27,12 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   }) = _FlutterOpacity;
 
   @override
-  Opacity buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  Opacity buildWidget(ZacOriginWidgetTree origin) {
     return Opacity(
-      key: key?.buildKey(context, ref, lifetime),
-      opacity: opacity.getValue(zacRef),
-      alwaysIncludeSemantics: alwaysIncludeSemantics?.getValue(zacRef) ?? false,
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      opacity: opacity.getValue(origin),
+      alwaysIncludeSemantics: alwaysIncludeSemantics?.getValue(origin) ?? false,
+      child: child?.buildWidget(origin),
     );
   }
 }

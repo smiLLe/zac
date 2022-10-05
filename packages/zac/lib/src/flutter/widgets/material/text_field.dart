@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -9,9 +8,9 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/misc.dart';
 
 part 'text_field.freezed.dart';
 part 'text_field.g.dart';
@@ -54,11 +53,11 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
     ZacBool? expands,
     ZacInt? maxLength,
     // ValueChanged<String>? onChanged,
-    ZacInteractions? onChanged,
+    ZacActions? onChanged,
     // VoidCallback? onEditingComplete,
-    ZacInteractions? onEditingComplete,
+    ZacActions? onEditingComplete,
     // ValueChanged<String>? onSubmitted,
-    ZacInteractions? onSubmitted,
+    ZacActions? onSubmitted,
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
     ZacBool? enabled,
@@ -74,7 +73,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
     ZacBool? enableInteractiveSelection,
 // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
-    ZacInteractions? onTap,
+    ZacActions? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
 // ScrollController? scrollController,
@@ -86,75 +85,53 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   }) = _FlutterTextField;
 
   @override
-  TextField buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  TextField buildWidget(ZacOriginWidgetTree origin) {
     return TextField(
-      key: key?.buildKey(context, ref, lifetime),
-      style: style?.build(context, ref, lifetime),
-      strutStyle: strutStyle?.build(context, ref, lifetime),
-      textAlign: textAlign?.build(context, ref, lifetime) ?? TextAlign.start,
-      textDirection: textDirection?.build(context, ref, lifetime),
-      readOnly: readOnly?.getValue(zacRef) ?? false,
-      showCursor: showCursor?.getValue(zacRef),
-      autofocus: autofocus?.getValue(zacRef) ?? false,
-      obscuringCharacter: obscuringCharacter?.getValue(zacRef) ?? '•',
-      obscureText: obscureText?.getValue(zacRef) ?? false,
-      autocorrect: autocorrect?.getValue(zacRef) ?? true,
-      enableSuggestions: enableSuggestions?.getValue(zacRef) ?? true,
-      maxLines: maxLines?.getValue(zacRef),
-      minLines: minLines?.getValue(zacRef),
-      expands: expands?.getValue(zacRef) ?? false,
-      maxLength: maxLength?.getValue(zacRef),
-      enabled: enabled?.getValue(zacRef),
-      cursorWidth: cursorWidth?.getValue(zacRef) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(zacRef),
-      cursorRadius: cursorRadius?.build(context, ref, lifetime),
-      cursorColor: cursorColor?.build(context, ref, lifetime),
-      keyboardAppearance: keyboardAppearance?.build(context, ref, lifetime),
-      scrollPadding: scrollPadding?.build(context, ref, lifetime) ??
-          const EdgeInsets.all(20.0),
+      key: key?.buildKey(origin),
+      style: style?.build(origin),
+      strutStyle: strutStyle?.build(origin),
+      textAlign: textAlign?.build(origin) ?? TextAlign.start,
+      textDirection: textDirection?.build(origin),
+      readOnly: readOnly?.getValue(origin) ?? false,
+      showCursor: showCursor?.getValue(origin),
+      autofocus: autofocus?.getValue(origin) ?? false,
+      obscuringCharacter: obscuringCharacter?.getValue(origin) ?? '•',
+      obscureText: obscureText?.getValue(origin) ?? false,
+      autocorrect: autocorrect?.getValue(origin) ?? true,
+      enableSuggestions: enableSuggestions?.getValue(origin) ?? true,
+      maxLines: maxLines?.getValue(origin),
+      minLines: minLines?.getValue(origin),
+      expands: expands?.getValue(origin) ?? false,
+      maxLength: maxLength?.getValue(origin),
+      enabled: enabled?.getValue(origin),
+      cursorWidth: cursorWidth?.getValue(origin) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(origin),
+      cursorRadius: cursorRadius?.build(origin),
+      cursorColor: cursorColor?.build(origin),
+      keyboardAppearance: keyboardAppearance?.build(origin),
+      scrollPadding: scrollPadding?.build(origin) ?? const EdgeInsets.all(20.0),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(zacRef) ?? true,
-      clipBehavior:
-          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(zacRef),
+          enableInteractiveSelection?.getValue(origin) ?? true,
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
+      restorationId: restorationId?.getValue(origin),
       enableIMEPersonalizedLearning:
-          enableIMEPersonalizedLearning?.getValue(zacRef) ?? true,
-      onChanged: onChanged?.createCbParam1<String>(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      decoration:
-          decoration?.build(context, ref, lifetime) ?? const InputDecoration(),
-      keyboardType: keyboardType?.build(context, ref, lifetime),
-      textInputAction: textInputAction?.build(context, ref, lifetime),
-      textCapitalization: textCapitalization?.build(context, ref, lifetime) ??
-          TextCapitalization.none,
-      textAlignVertical: textAlignVertical?.build(context, ref, lifetime),
-      smartDashesType: smartDashesType?.build(context, ref, lifetime),
-      smartQuotesType: smartQuotesType?.build(context, ref, lifetime),
+          enableIMEPersonalizedLearning?.getValue(origin) ?? true,
+      onChanged: onChanged?.createCbParam1<String>(origin),
+      decoration: decoration?.build(origin) ?? const InputDecoration(),
+      keyboardType: keyboardType?.build(origin),
+      textInputAction: textInputAction?.build(origin),
+      textCapitalization:
+          textCapitalization?.build(origin) ?? TextCapitalization.none,
+      textAlignVertical: textAlignVertical?.build(origin),
+      smartDashesType: smartDashesType?.build(origin),
+      smartQuotesType: smartQuotesType?.build(origin),
       selectionHeightStyle:
-          selectionHeightStyle?.build(context, ref, lifetime) ??
-              BoxHeightStyle.tight,
-      selectionWidthStyle: selectionWidthStyle?.build(context, ref, lifetime) ??
-          BoxWidthStyle.tight,
-      onTap: onTap?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onEditingComplete: onEditingComplete?.createCb(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
-      onSubmitted: onSubmitted?.createCbParam1<String>(
-        context: context,
-        ref: ref,
-        lifetime: lifetime,
-      ),
+          selectionHeightStyle?.build(origin) ?? BoxHeightStyle.tight,
+      selectionWidthStyle:
+          selectionWidthStyle?.build(origin) ?? BoxWidthStyle.tight,
+      onTap: onTap?.createCb(origin),
+      onEditingComplete: onEditingComplete?.createCb(origin),
+      onSubmitted: onSubmitted?.createCbParam1<String>(origin),
     );
   }
 }

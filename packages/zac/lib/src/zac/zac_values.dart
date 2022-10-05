@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,11 +12,11 @@ mixin ActualValue<Of> {
   Of get value;
   List<ZacTransformer>? get transformer;
 
-  Of getActualValue(ZacRef ref) {
+  Of getActualValue(ZacOrigin origin) {
     if (true == transformer?.isNotEmpty) {
       final transformed = transformer!.transformValues(
         ZacTransformValue(value),
-        ref,
+        origin,
       );
 
       if (transformed is! Of) {
@@ -42,12 +42,12 @@ mixin ConsumeValue<Of> {
   SharedValueConsumeType get consumeType;
   List<ZacTransformer>? get transformer;
 
-  Of getSharedValue(ZacRef ref) {
-    final consumedValue = SharedValue.getFilled(consumeType, ref, family);
+  Of getSharedValue(ZacOrigin origin) {
+    final consumedValue = SharedValue.getFilled(consumeType, origin, family);
 
     late Object? value;
     if (consumedValue is ActualValue<Object?>) {
-      value = consumedValue.getActualValue(ref);
+      value = consumedValue.getActualValue(origin);
     } else if (consumedValue is Of) {
       value = consumedValue;
     } else {
@@ -80,7 +80,7 @@ The consumed $SharedValue: $value
 
     final transformedValue = transformer!.transformValues(
       ZacTransformValue(value),
-      ref,
+      origin,
     );
 
     if (transformedValue is! Of) {
@@ -110,16 +110,16 @@ mixin ConsumeValueList<Of> {
   SharedValueConsumeType get consumeType;
   List<ZacTransformer>? get transformer;
 
-  List<Of> getSharedValue(ZacRef ref) {
+  List<Of> getSharedValue(ZacOrigin origin) {
     final consumedValue = SharedValue.getFilled(
       consumeType,
-      ref,
+      origin,
       family,
     );
 
     late List<Object?> value;
     if (consumedValue is ActualValue<List>) {
-      value = consumedValue.getActualValue(ref);
+      value = consumedValue.getActualValue(origin);
     } else if (consumedValue is List) {
       value = consumedValue;
     } else {
@@ -154,7 +154,7 @@ The consumed $SharedValue: $value
     return value.map<Of>((element) {
       final transformedValue = transformer!.transformValues(
         ZacTransformValue(element),
-        ref,
+        origin,
       );
 
       if (transformedValue is! Of) {
@@ -214,9 +214,9 @@ class ZacInt with _$ZacInt {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacIntConsume;
 
-  int getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  int getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -254,9 +254,9 @@ class ZacDouble with _$ZacDouble {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacDoubleConsume;
 
-  double getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  double getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -291,9 +291,9 @@ class ZacString with _$ZacString {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacStringConsume;
 
-  String getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  String getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -328,9 +328,9 @@ class ZacBool with _$ZacBool {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacBoolConsume;
 
-  bool getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  bool getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -376,9 +376,9 @@ class ZacMap with _$ZacMap {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacMapConsume;
 
-  Map<String, dynamic> getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  Map<String, dynamic> getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -423,9 +423,9 @@ class ZacList with _$ZacList {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacListConsume;
 
-  List<dynamic> getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  List<dynamic> getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -474,9 +474,9 @@ class ZacObject with _$ZacObject {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacObjectConsume;
 
-  Object getValue(ZacRef ref) => map(
-        (obj) => obj.getActualValue(ref),
-        consume: (obj) => obj.getSharedValue(ref),
+  Object getValue(ZacOrigin origin) => map(
+        (obj) => obj.getActualValue(origin),
+        consume: (obj) => obj.getSharedValue(origin),
       );
 }
 
@@ -515,16 +515,14 @@ class ListOfZacWidget with _$ListOfZacWidget {
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ListOfZacWidgetConsume;
 
-  List<Widget> getValue(BuildContext context, WidgetRef ref,
-          ZacInteractionLifetime lifetime) =>
-      map(
+  List<Widget> getValue(ZacOriginWidgetTree origin) => map(
         (obj) => obj
-            .getActualValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, lifetime))
+            .getActualValue(origin)
+            .map((e) => e.buildWidget(origin))
             .toList(),
         consume: (obj) => obj
-            .getSharedValue(ZacRef.widget(ref))
-            .map((e) => e.buildWidget(context, ref, lifetime))
+            .getSharedValue(origin)
+            .map((e) => e.buildWidget(origin))
             .toList(),
       );
 }
@@ -548,8 +546,7 @@ class ZacWidgetConsumerBuilder
   }) = _ZacWidgetConsumerBuilder;
 
   @override
-  Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  Widget buildWidget(ZacOriginWidgetTree origin) {
     return ZacWidgetConsumer(
       builder: this,
     );
@@ -564,9 +561,8 @@ class ZacWidgetConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZacUpdateWidget(
-      builder: (context, ref, lifetime) => builder.map((value) => value
-          .getSharedValue(ZacRef.widget(ref))
-          .buildWidget(context, ref, lifetime)),
-    );
+        builder: (origin) => builder.map(
+              (value) => value.getSharedValue(origin).buildWidget(origin),
+            ));
   }
 }

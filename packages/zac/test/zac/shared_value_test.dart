@@ -4,8 +4,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:zac/src/zac/interactions.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -22,13 +23,13 @@ void main() {
 
     testWidgets('can be transformed and provieded through SharedValueProvider',
         (tester) async {
-      late WidgetRef ref;
+      late ZacOriginWidgetTree origin;
 
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          builder: (c, r, lifetime) {
-            ref = r;
+          builder: (o) {
+            origin = o;
             // ignore returned widget
             return const SizedBox();
           },
@@ -41,7 +42,7 @@ void main() {
       );
 
       expect(
-        ref.read(SharedValue.provider('foo')),
+        origin.ref.read(SharedValue.provider('foo')),
         isFilledSharedValue(isA<FlutterSizedBox>()),
       );
     });
@@ -52,9 +53,9 @@ void main() {
         SharedValueProvider(
           family: 'foo',
           value: 'hello',
-          builder: (c, ref, lifetime) => FlutterText(
+          builder: (o) => FlutterText(
             ZacString.consume('foo', transformer: [_ConcatStr(' world')]),
-          ).buildWidget(c, ref, lifetime),
+          ).buildWidget(o),
         ),
       );
 
@@ -74,9 +75,9 @@ void main() {
             }
           },
           transformer: [ConvertTransformer()],
-          builder: (c, ref, lifetime) => FlutterContainer(
+          builder: (o) => FlutterContainer(
             child: ZacWidgetConsumerBuilder('foo'),
-          ).buildWidget(c, ref, lifetime),
+          ).buildWidget(o),
         ),
       );
 
@@ -84,15 +85,15 @@ void main() {
     });
 
     testWidgets('can be consumed and then transformed #3', (tester) async {
-      late WidgetRef ref;
+      late ZacOriginWidgetTree origin;
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
           family: 'foo',
           value: const ['foo', 'oof'],
-          builder: (c, ref2, lifetime) => LeakContext(
-            cb: (_, r, __) => ref = r,
-          ).buildWidget(c, ref2, lifetime),
+          builder: (ori) => LeakOrigin(
+            cb: (o) => origin = o,
+          ).buildWidget(ori),
         ),
       );
 
@@ -103,7 +104,7 @@ void main() {
               IterableTransformer.map(transformer: [_ConcatStr('bar')]),
               const IterableTransformer.toList()
             ],
-          ).getValue(ZacRef.widget(ref)),
+          ).getValue(origin),
           ['foobar', 'oofbar']);
     });
 
@@ -113,16 +114,16 @@ void main() {
         SharedValueProvider(
           family: 'sharedA',
           value: 'a',
-          builder: (c, ref, lifetime) => SharedValueProvider(
+          builder: (o) => SharedValueProvider(
             family: 'sharedB',
             value: 'b',
-            builder: (c, ref, lifetime) => SharedValueProvider(
+            builder: (o) => SharedValueProvider(
               family: 'sharedC',
               value: 'c',
-              builder: (c, ref, lifetime) => SharedValueProvider(
+              builder: (o) => SharedValueProvider(
                 family: 'sharedA',
                 value: 'AA',
-                builder: (c, ref, lifetime) => FlutterColumn(
+                builder: (o) => FlutterColumn(
                   children: ListOfZacWidget(
                     [
                       FlutterText(ZacString.consume('sharedA')),
@@ -130,7 +131,7 @@ void main() {
                       FlutterText(ZacString.consume('sharedC')),
                     ],
                   ),
-                ).buildWidget(c, ref, lifetime),
+                ).buildWidget(o),
               ),
             ),
           ),
@@ -145,99 +146,96 @@ void main() {
 
     group('getFilled()', () {
       testWidgets('return the provided value', (tester) async {
-        late WidgetRef ref;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: 10,
             family: 'foo',
-            child: LeakContext(
-              cb: (_, r, __) => ref = r,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), ZacRef.widget(ref), 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             10);
       });
 
       testWidgets('also accepts null as provided value', (tester) async {
-        late WidgetRef ref;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (_, r, __) => ref = r,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), ZacRef.widget(ref), 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             isNull);
       });
 
       testWidgets('throws if empty', (tester) async {
-        late WidgetRef ref;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
-          LeakContext(
-            cb: (_, r, __) => ref = r,
+          LeakOrigin(
+            cb: (o) => origin = o,
           ),
         );
 
         expect(
             () => SharedValue.getFilled(
-                const SharedValueConsumeType.read(), ZacRef.widget(ref), 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
     });
 
     group('update()', () {
       testWidgets('throws if empty', (tester) async {
-        late WidgetRef ref;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
-          LeakContext(
-            cb: (_, r, __) => ref = r,
+          LeakOrigin(
+            cb: (o) => origin = o,
           ),
         );
 
-        expect(
-            () =>
-                SharedValue.update(ZacRef.widget(ref), 'foo', (current) => 10),
+        expect(() => SharedValue.update(origin, 'foo', (current) => 10),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
 
       testWidgets('existing value', (tester) async {
-        late WidgetRef ref;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (_, r, __) => ref = r,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
-        SharedValue.update(ZacRef.widget(ref), 'foo', (current) => 10);
+        SharedValue.update(origin, 'foo', (current) => 10);
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), ZacRef.widget(ref), 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             10);
 
-        SharedValue.update(
-            ZacRef.widget(ref), 'foo', (current) => (current as int) + 10);
+        SharedValue.update(origin, 'foo', (current) => (current as int) + 10);
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), ZacRef.widget(ref), 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             20);
       });
 
@@ -249,7 +247,7 @@ void main() {
             value: 1,
             family: 'foo',
             child: ZacExecuteActionsBuilder.once(
-              interactions: ZacInteractions([
+              actions: ZacActions([
                 UpdateSharedValueInteractions.replaceWith(
                   family: 'foo',
                   value: 2,
@@ -274,24 +272,24 @@ void main() {
       test('simple value', () {
         expect(
             [_ConcatStr('bar'), _ConcatStr('baz')]
-                .transformValues(ZacTransformValue('foo'), FakeZacRef()),
+                .transformValues(ZacTransformValue('foo'), FakeZacOrigin()),
             equals('foobarbaz'));
       });
     });
   });
 
-  group('Interactions', () {
+  group('actions', () {
     test('fromJson', () {
       ConverterHelper.convertToType<
           UpdateSharedValueInteractions>(<String, dynamic>{
-        '_converter': 'z:1:Interaction:SharedValue.update',
+        '_converter': 'z:1:SharedValue.update',
         'family': 'fam',
         'transformer': <ZacTransformer>[],
       });
 
       ConverterHelper.convertToType<
           UpdateSharedValueInteractions>(<String, dynamic>{
-        '_converter': 'z:1:Interaction:SharedValue.replaceWith',
+        '_converter': 'z:1:SharedValue.replaceWith',
         'family': 'fam',
         'value': 1,
         'transformer': <ZacTransformer>[],
@@ -309,7 +307,7 @@ void main() {
             children: ListOfZacWidget([
               FlutterText(ZacString.consume('family')),
               ZacExecuteActionsBuilder.once(
-                interactions: ZacInteractions([
+                actions: ZacActions([
                   UpdateSharedValueInteractions(
                     family: 'family',
                     transformer: [_ConcatStr('oof')],
@@ -339,7 +337,7 @@ void main() {
             children: ListOfZacWidget([
               FlutterText(ZacString.consume('family')),
               ZacExecuteActionsBuilder.once(
-                interactions: ZacInteractions([
+                actions: ZacActions([
                   UpdateSharedValueInteractions.replaceWith(
                     family: 'family',
                     value: 'bar',
@@ -375,14 +373,14 @@ void main() {
         SharedValueProvider(
           family: 'shared',
           value: 'foo',
-          builder: (c, ref, lifetime) => FlutterText(
+          builder: (o) => FlutterText(
             ZacString.consume(
               'shared',
               transformer: [_ConcatStr('baz')],
               consumeType:
                   SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
             ),
-          ).buildWidget(c, ref, lifetime),
+          ).buildWidget(o),
         ),
       );
 
@@ -398,7 +396,7 @@ class _ConcatStr implements ZacTransformer {
 
   @override
   Object? transform(
-      ZacTransformValue transformValue, ZacRef ref, ContextBag? extra) {
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag? extra) {
     return (transformValue.value as String) + str;
   }
 }

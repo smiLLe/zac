@@ -1,12 +1,10 @@
-import 'package:zac/src/zac/interactions.dart';
-import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'clip_rect.freezed.dart';
 part 'clip_rect.g.dart';
@@ -29,13 +27,11 @@ class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
   }) = _FlutterClipRect;
 
   @override
-  ClipRect buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
+  ClipRect buildWidget(ZacOriginWidgetTree origin) {
     return ClipRect(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      clipBehavior:
-          clipBehavior?.build(context, ref, lifetime) ?? Clip.hardEdge,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
     );
   }
 }

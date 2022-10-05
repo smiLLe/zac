@@ -1,8 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -33,15 +31,13 @@ class FlutterFractionallySizedBox
   }) = _FlutterFractionallySizedBox;
 
   @override
-  FractionallySizedBox buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  FractionallySizedBox buildWidget(ZacOriginWidgetTree origin) {
     return FractionallySizedBox(
-      key: key?.buildKey(context, ref, lifetime),
-      child: child?.buildWidget(context, ref, lifetime),
-      heightFactor: heightFactor?.getValue(zacRef),
-      widthFactor: widthFactor?.getValue(zacRef),
-      alignment: alignment?.build(context, ref, lifetime) ?? Alignment.center,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      heightFactor: heightFactor?.getValue(origin),
+      widthFactor: widthFactor?.getValue(origin),
+      alignment: alignment?.build(origin) ?? Alignment.center,
     );
   }
 }

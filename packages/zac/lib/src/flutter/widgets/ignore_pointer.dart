@@ -1,7 +1,5 @@
-import 'package:zac/src/zac/interactions.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -31,14 +29,12 @@ class FlutterIgnorePointer
   }) = _FlutterIgnorePointer;
 
   @override
-  IgnorePointer buildWidget(
-      BuildContext context, WidgetRef ref, ZacInteractionLifetime lifetime) {
-    final zacRef = ZacRef.widget(ref);
+  IgnorePointer buildWidget(ZacOriginWidgetTree origin) {
     return IgnorePointer(
-      key: key?.buildKey(context, ref, lifetime),
-      ignoring: ignoring?.getValue(zacRef) ?? true,
-      ignoringSemantics: ignoringSemantics?.getValue(zacRef),
-      child: child?.buildWidget(context, ref, lifetime),
+      key: key?.buildKey(origin),
+      ignoring: ignoring?.getValue(origin) ?? true,
+      ignoringSemantics: ignoringSemantics?.getValue(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

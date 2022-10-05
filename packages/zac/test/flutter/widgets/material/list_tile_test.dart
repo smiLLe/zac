@@ -34,8 +34,8 @@ void main() {
         FlutterScaffold(
             body: FlutterListTile(
           key: FlutterValueKey('FIND_ME'),
-          onTap: LeakUiAction.createActions(onTapCb),
-          onLongPress: LeakUiAction.createActions(onLongPressCb),
+          onTap: LeakAction.createActions(onTapCb),
+          onLongPress: LeakAction.createActions(onLongPressCb),
         )));
 
     final findMe = find.byKey(const ValueKey('FIND_ME'));
@@ -44,8 +44,8 @@ void main() {
     await tester.longPress(findMe);
 
     verifyInOrder([
-      onTapCb(any, any, any, any),
-      onLongPressCb(any, any, any, any),
+      onTapCb(argThat(isAOriginWidgetTree), any),
+      onLongPressCb(argThat(isAOriginWidgetTree), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
