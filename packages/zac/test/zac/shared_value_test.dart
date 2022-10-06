@@ -37,7 +37,7 @@ void main() {
           value: const <String, dynamic>{
             '_converter': 'f:1:SizedBox',
           },
-          transformer: [ConvertTransformer()],
+          transformer: ZacTransformers([ConvertTransformer()]),
         ),
       );
 
@@ -54,7 +54,8 @@ void main() {
           family: 'foo',
           value: 'hello',
           builder: (o) => FlutterText(
-            ZacString.consume('foo', transformer: [_ConcatStr(' world')]),
+            ZacString.consume('foo',
+                transformer: ZacTransformers([_ConcatStr(' world')])),
           ).buildWidget(o),
         ),
       );
@@ -74,7 +75,7 @@ void main() {
               'value': 'FIND_ME',
             }
           },
-          transformer: [ConvertTransformer()],
+          transformer: ZacTransformers([ConvertTransformer()]),
           builder: (o) => FlutterContainer(
             child: ZacWidgetConsumerBuilder('foo'),
           ).buildWidget(o),
@@ -100,10 +101,11 @@ void main() {
       expect(
           ZacList.consume(
             'foo',
-            transformer: [
-              IterableTransformer.map(transformer: [_ConcatStr('bar')]),
+            transformer: ZacTransformers([
+              IterableTransformer.map(
+                  transformer: ZacTransformers([_ConcatStr('bar')])),
               const IterableTransformer.toList()
-            ],
+            ]),
           ).getValue(origin),
           ['foobar', 'oofbar']);
     });
@@ -251,7 +253,7 @@ void main() {
                 UpdateSharedValueInteractions.replaceWith(
                   family: 'foo',
                   value: 2,
-                  transformer: [LeakBagTransformer(cb)],
+                  transformer: ZacTransformers([LeakBagTransformer(cb)]),
                 ),
               ]),
               child: FlutterSizedBox(),
@@ -271,8 +273,8 @@ void main() {
     group('transform()', () {
       test('simple value', () {
         expect(
-            [_ConcatStr('bar'), _ConcatStr('baz')]
-                .transformValues(ZacTransformValue('foo'), FakeZacOrigin()),
+            ZacTransformers([_ConcatStr('bar'), _ConcatStr('baz')])
+                .transform(ZacTransformValue('foo'), FakeZacOrigin()),
             equals('foobarbaz'));
       });
     });
@@ -310,7 +312,7 @@ void main() {
                 actions: ZacActions([
                   UpdateSharedValueInteractions(
                     family: 'family',
-                    transformer: [_ConcatStr('oof')],
+                    transformer: ZacTransformers([_ConcatStr('oof')]),
                   ),
                 ]),
               ),
@@ -341,7 +343,7 @@ void main() {
                   UpdateSharedValueInteractions.replaceWith(
                     family: 'family',
                     value: 'bar',
-                    transformer: [LeakBagTransformer(cb)],
+                    transformer: ZacTransformers([LeakBagTransformer(cb)]),
                   ),
                 ]),
                 child: FlutterSizedBox(),
@@ -376,9 +378,9 @@ void main() {
           builder: (o) => FlutterText(
             ZacString.consume(
               'shared',
-              transformer: [_ConcatStr('baz')],
-              consumeType:
-                  SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
+              transformer: ZacTransformers([_ConcatStr('baz')]),
+              consumeType: SharedValueConsumeType.watch(
+                  select: ZacTransformers([_ConcatStr('bar')])),
             ),
           ).buildWidget(o),
         ),

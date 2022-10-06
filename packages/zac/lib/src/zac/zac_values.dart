@@ -1,4 +1,3 @@
-import 'package:zac/src/zac/origin.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,11 +9,11 @@ Type _typeOf<T>() => T;
 
 mixin ActualValue<Of> {
   Of get value;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 
   Of getActualValue(ZacOrigin origin) {
-    if (true == transformer?.isNotEmpty) {
-      final transformed = transformer!.transformValues(
+    if (true == transformer?.transformers.isNotEmpty) {
+      final transformed = transformer!.transform(
         ZacTransformValue(value),
         origin,
       );
@@ -40,7 +39,7 @@ class ConsumeSharedValueOfError extends StateError {
 mixin ConsumeValue<Of> {
   SharedValueFamily get family;
   SharedValueConsumeType get consumeType;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 
   Of getSharedValue(ZacOrigin origin) {
     final consumedValue = SharedValue.getFilled(consumeType, origin, family);
@@ -61,11 +60,12 @@ $consumedValue
 ''');
     }
 
-    if (value is Of && (null == transformer || true == transformer?.isEmpty)) {
+    if (value is Of &&
+        (null == transformer || true == transformer?.transformers.isEmpty)) {
       return value;
     }
 
-    if (null == transformer || true == transformer?.isEmpty) {
+    if (null == transformer || true == transformer?.transformers.isEmpty) {
       throw ConsumeSharedValueOfError('''
 It was not possible to return a $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
@@ -78,13 +78,14 @@ The consumed $SharedValue: $value
 ''');
     }
 
-    final transformedValue = transformer!.transformValues(
+    final transformedValue = transformer!.transform(
       ZacTransformValue(value),
       origin,
     );
 
     if (transformedValue is! Of) {
-      final alltransformerTypers = transformer!.map((e) => e.runtimeType);
+      final alltransformerTypers =
+          transformer!.transformers.map((e) => e.runtimeType);
       throw ConsumeSharedValueOfError('''
 Unexpected type found after transforming a consumed $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
@@ -108,7 +109,7 @@ $consumedValue
 mixin ConsumeValueList<Of> {
   SharedValueFamily get family;
   SharedValueConsumeType get consumeType;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 
   List<Of> getSharedValue(ZacOrigin origin) {
     final consumedValue = SharedValue.getFilled(
@@ -134,11 +135,11 @@ $consumedValue
     }
 
     if (value.every((element) => element is Of) &&
-        (null == transformer || true == transformer?.isEmpty)) {
+        (null == transformer || true == transformer?.transformers.isEmpty)) {
       return value.cast<Of>();
     }
 
-    if (null == transformer || true == transformer?.isEmpty) {
+    if (null == transformer || true == transformer?.transformers.isEmpty) {
       throw ConsumeSharedValueOfError('''
 It was not possible to return a $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
@@ -152,13 +153,14 @@ The consumed $SharedValue: $value
     }
 
     return value.map<Of>((element) {
-      final transformedValue = transformer!.transformValues(
+      final transformedValue = transformer!.transform(
         ZacTransformValue(element),
         origin,
       );
 
       if (transformedValue is! Of) {
-        final alltransformerTypers = transformer!.map((e) => e.runtimeType);
+        final alltransformerTypers =
+            transformer!.transformers.map((e) => e.runtimeType);
         throw ConsumeSharedValueOfError('''
 Unexpected type found after transforming an item in a consumed $SharedValue List in "$runtimeType" for name "$family".
 The item was of runtimeType: "${element.runtimeType}".
@@ -203,14 +205,14 @@ class ZacInt with _$ZacInt {
   @With<ActualValue<int>>()
   factory ZacInt(
     int value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacIntValue;
 
   @FreezedUnionValue(ZacInt.unionValueConsume)
   @With<ConsumeValue<int>>()
   factory ZacInt.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacIntConsume;
 
@@ -243,14 +245,14 @@ class ZacDouble with _$ZacDouble {
   @With<ActualValue<double>>()
   factory ZacDouble(
     double value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacDoubleValue;
 
   @FreezedUnionValue(ZacDouble.unionValueConsume)
   @With<ConsumeValue<double>>()
   factory ZacDouble.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacDoubleConsume;
 
@@ -280,14 +282,14 @@ class ZacString with _$ZacString {
   @With<ActualValue<String>>()
   factory ZacString(
     String value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacStringValue;
 
   @FreezedUnionValue(ZacString.unionValueConsume)
   @With<ConsumeValue<String>>()
   factory ZacString.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacStringConsume;
 
@@ -317,14 +319,14 @@ class ZacBool with _$ZacBool {
   @With<ActualValue<bool>>()
   factory ZacBool(
     bool value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacBoolValue;
 
   @FreezedUnionValue(ZacBool.unionValueConsume)
   @With<ConsumeValue<bool>>()
   factory ZacBool.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacBoolConsume;
 
@@ -365,14 +367,14 @@ class ZacMap with _$ZacMap {
   @With<ActualValue<Map<String, dynamic>>>()
   factory ZacMap(
     Map<String, dynamic> value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacMapValue;
 
   @FreezedUnionValue(ZacMap.unionValueConsume)
   @With<ConsumeValue<Map<String, dynamic>>>()
   factory ZacMap.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacMapConsume;
 
@@ -412,14 +414,14 @@ class ZacList with _$ZacList {
   @With<ActualValue<List<dynamic>>>()
   factory ZacList(
     List<dynamic> value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacListValue;
 
   @FreezedUnionValue(ZacList.unionValueConsume)
   @With<ConsumeValue<List<dynamic>>>()
   factory ZacList.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacListConsume;
 
@@ -463,14 +465,14 @@ class ZacObject with _$ZacObject {
   @With<ActualValue<Object>>()
   factory ZacObject(
     Object value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ZacObjectValue;
 
   @FreezedUnionValue(ZacObject.unionValueConsume)
   @With<ConsumeValue<Object>>()
   factory ZacObject.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ZacObjectConsume;
 
@@ -504,14 +506,14 @@ class ListOfZacWidget with _$ListOfZacWidget {
   @With<ActualValue<List<FlutterWidget>>>()
   factory ListOfZacWidget(
     List<FlutterWidget> value, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
   }) = ListOfZacWidgetValue;
 
   @FreezedUnionValue(ListOfZacWidget.unionValueConsume)
   @With<ConsumeValueList<FlutterWidget>>()
   factory ListOfZacWidget.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = ListOfZacWidgetConsume;
 
@@ -541,7 +543,7 @@ class ZacWidgetConsumerBuilder
   @With<ConsumeValue<FlutterWidget>>()
   factory ZacWidgetConsumerBuilder(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = _ZacWidgetConsumerBuilder;
 

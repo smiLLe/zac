@@ -46,24 +46,27 @@ void main() {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.map',
-        equals: IterableTransformer.map(transformer: []),
+        equals: IterableTransformer.map(transformer: ZacTransformers([])),
         props: <String, dynamic>{
           'transformer': <Map<String, dynamic>>[],
         },
       );
 
       expect(
-          IterableTransformer.map(transformer: []).transform(
+          IterableTransformer.map(transformer: ZacTransformers([])).transform(
               ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), ContextBag()),
           isA<Iterable<Object?>>());
 
       expect(
-          IterableTransformer.map(transformer: [_ConcatStr('bar')]).transform(
+          IterableTransformer.map(
+              transformer:
+                  ZacTransformers([_ConcatStr('bar')])).transform(
               ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), ContextBag()),
           ['foobar', 'oofbar']);
 
       expect(
-          () => IterableTransformer.map(transformer: [_ConcatStr('bar')])
+          () => IterableTransformer.map(
+                  transformer: ZacTransformers([_ConcatStr('bar')]))
               .transform(ZacTransformValue(55), FakeZacOrigin(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
     });
@@ -585,8 +588,9 @@ void main() {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.map',
-        equals: const MapTransformer.mapper(
-            keyTransformer: [], valueTransformer: []),
+        equals: MapTransformer.mapper(
+            keyTransformer: ZacTransformers(<ZacTransformer>[]),
+            valueTransformer: ZacTransformers([])),
         props: <String, dynamic>{
           'keyTransformer': <Map<String, dynamic>>[],
           'valueTransformer': <Map<String, dynamic>>[],
@@ -602,8 +606,8 @@ void main() {
 
       expect(
           MapTransformer.mapper(
-            keyTransformer: [_ConcatStr('cool')],
-            valueTransformer: [_ConcatStr('hello')],
+            keyTransformer: ZacTransformers([_ConcatStr('cool')]),
+            valueTransformer: ZacTransformers([_ConcatStr('hello')]),
           ).transform(
               ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
               FakeZacOrigin(),
@@ -625,13 +629,13 @@ void main() {
       Object? mergedBagValue;
       late final Object? value;
       MapTransformer.mapper(
-        keyTransformer: [
+        keyTransformer: ZacTransformers([
           CustomTransformer((transformValue, context, bag) {
             value = bag['MapEntry.value'];
             mergedBagValue = bag['extra'];
             return transformValue;
           })
-        ],
+        ]),
       ).transform(
           ZacTransformValue(<String, dynamic>{'foo': 'a'}),
           FakeZacOrigin(),
@@ -643,13 +647,13 @@ void main() {
 
       late final Object? key;
       MapTransformer.mapper(
-        valueTransformer: [
+        valueTransformer: ZacTransformers([
           CustomTransformer((transformValue, context, bag) {
             key = bag['MapEntry.key'];
             mergedBagValue = bag['extra'];
             return transformValue;
           })
-        ],
+        ]),
       ).transform(
           ZacTransformValue(<String, dynamic>{'foo': 'a'}),
           FakeZacOrigin(),

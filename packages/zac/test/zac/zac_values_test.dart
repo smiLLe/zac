@@ -10,7 +10,7 @@ Future<void> _commonConsume<TClass, TVal>({
   required TVal testVal,
   required TClass Function(
     Object family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     SharedValueConsumeType consumeType,
   })
       createConsume,
@@ -25,7 +25,7 @@ Future<void> _commonConsume<TClass, TVal>({
           '_converter': 'z:1:$TClass',
           'value': testVal,
         },
-        transformer: [ConvertTransformer()],
+        transformer: ZacTransformers([ConvertTransformer()]),
         child: LeakOrigin(
           cb: (o) => origin = o,
         ),
@@ -50,11 +50,10 @@ Future<void> _commonConsume<TClass, TVal>({
 
 void _commonCreate<TClass, TVal>({
   required TVal testVal,
-  required TClass Function(TVal value, {List<ZacTransformer>? transformer})
-      create,
+  required TClass Function(TVal value, {ZacTransformers? transformer}) create,
   required TClass Function(
     Object family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     SharedValueConsumeType consumeType,
   })
       createConsume,
@@ -103,7 +102,8 @@ void _commonCreate<TClass, TVal>({
           {'_converter': 'z:1:Transformer:Object.runtimeType'}
         ]
       }),
-      create(testVal, transformer: [ObjectTransformer.runtimeType()]));
+      create(testVal,
+          transformer: ZacTransformers([ObjectTransformer.runtimeType()])));
 
   expect(
       fromJson({
@@ -113,7 +113,8 @@ void _commonCreate<TClass, TVal>({
           {'_converter': 'z:1:Transformer:Object.runtimeType'}
         ]
       }),
-      createConsume('foo', transformer: [ObjectTransformer.runtimeType()]));
+      createConsume('foo',
+          transformer: ZacTransformers([ObjectTransformer.runtimeType()])));
 }
 
 void main() {
@@ -129,15 +130,18 @@ void main() {
         ));
 
     expect(
-        (ZacString('hello', transformer: [
-          StringTransformer.replaceAll(ZacString('hello'), ZacString('world'))
-        ]) as ActualValue<String>)
+        (ZacString('hello',
+                transformer: ZacTransformers([
+                  StringTransformer.replaceAll(
+                      ZacString('hello'), ZacString('world'))
+                ])) as ActualValue<String>)
             .getActualValue(origin),
         'world');
 
     expect(
         () => (ZacString('hello',
-                    transformer: [const StringTransformer.isEmpty()])
+                    transformer:
+                        ZacTransformers([const StringTransformer.isEmpty()]))
                 as ActualValue<String>)
             .getActualValue(origin),
         throwsStateError);
@@ -392,14 +396,14 @@ void main() {
             value: [
               {'_converter': 'f:1:SizedBox'}
             ],
-            transformer: [
+            transformer: ZacTransformers([
               IterableTransformer.map(
-                transformer: [
+                transformer: ZacTransformers([
                   ConvertTransformer(),
-                ],
+                ]),
               ),
               const IterableTransformer.toList(),
-            ],
+            ]),
             child: LeakOrigin(
               cb: (o) {
                 origin = o;
@@ -425,7 +429,7 @@ void main() {
                 {'_converter': 'f:1:SizedBox'}
               ]
             },
-            transformer: [ConvertTransformer()],
+            transformer: ZacTransformers([ConvertTransformer()]),
             child: LeakOrigin(
               cb: (o) {
                 origin = o;

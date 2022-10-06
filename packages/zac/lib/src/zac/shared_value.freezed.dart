@@ -171,11 +171,8 @@ mixin _$UpdateSharedValueInteractions {
 @JsonSerializable(createToJson: false)
 class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
   _$_SharedValueInteractionUpdate(
-      {required this.family,
-      required final List<ZacTransformer> transformer,
-      final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:SharedValue.update',
+      {required this.family, required this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:SharedValue.update',
         super._();
 
   factory _$_SharedValueInteractionUpdate.fromJson(Map<String, dynamic> json) =>
@@ -183,12 +180,8 @@ class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
 
   @override
   final Object family;
-  final List<ZacTransformer> _transformer;
   @override
-  List<ZacTransformer> get transformer {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_transformer);
-  }
+  final ZacTransformers transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -205,7 +198,7 @@ class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
             other is _$_SharedValueInteractionUpdate &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -213,7 +206,7 @@ class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -230,7 +223,7 @@ abstract class _SharedValueInteractionUpdate
     extends UpdateSharedValueInteractions {
   factory _SharedValueInteractionUpdate(
           {required final Object family,
-          required final List<ZacTransformer> transformer}) =
+          required final ZacTransformers transformer}) =
       _$_SharedValueInteractionUpdate;
   _SharedValueInteractionUpdate._() : super._();
 
@@ -239,7 +232,7 @@ abstract class _SharedValueInteractionUpdate
 
   @override
   Object get family;
-  List<ZacTransformer> get transformer;
+  ZacTransformers get transformer;
 }
 
 /// @nodoc
@@ -249,10 +242,9 @@ class _$_SharedValueInteractionReplaceWith
   _$_SharedValueInteractionReplaceWith(
       {required this.family,
       required this.value,
-      final List<ZacTransformer>? transformer,
+      this.transformer,
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:SharedValue.replaceWith',
+      : $type = $type ?? 'z:1:SharedValue.replaceWith',
         super._();
 
   factory _$_SharedValueInteractionReplaceWith.fromJson(
@@ -263,14 +255,8 @@ class _$_SharedValueInteractionReplaceWith
   final Object family;
   @override
   final Object value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -288,7 +274,7 @@ class _$_SharedValueInteractionReplaceWith
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -297,7 +283,7 @@ class _$_SharedValueInteractionReplaceWith
       runtimeType,
       const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -315,7 +301,7 @@ abstract class _SharedValueInteractionReplaceWith
   factory _SharedValueInteractionReplaceWith(
           {required final Object family,
           required final Object value,
-          final List<ZacTransformer>? transformer}) =
+          final ZacTransformers? transformer}) =
       _$_SharedValueInteractionReplaceWith;
   _SharedValueInteractionReplaceWith._() : super._();
 
@@ -326,7 +312,7 @@ abstract class _SharedValueInteractionReplaceWith
   @override
   Object get family;
   Object get value;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 SharedValueConsumeType _$SharedValueConsumeTypeFromJson(
@@ -359,22 +345,14 @@ mixin _$SharedValueConsumeType {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
-  const _$_SharedValueConsumeTypeWatch(
-      {final List<ZacTransformer>? select, final String? $type})
-      : _select = select,
-        $type = $type ?? 'z:1:SharedValueConsume.watch';
+  const _$_SharedValueConsumeTypeWatch({this.select, final String? $type})
+      : $type = $type ?? 'z:1:SharedValueConsume.watch';
 
   factory _$_SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeWatchFromJson(json);
 
-  final List<ZacTransformer>? _select;
   @override
-  List<ZacTransformer>? get select {
-    final value = _select;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? select;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -389,13 +367,13 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueConsumeTypeWatch &&
-            const DeepCollectionEquality().equals(other._select, _select));
+            const DeepCollectionEquality().equals(other.select, select));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_select));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(select));
 
   @override
   @optionalTypeArgs
@@ -408,13 +386,13 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
 }
 
 abstract class _SharedValueConsumeTypeWatch implements SharedValueConsumeType {
-  const factory _SharedValueConsumeTypeWatch(
-      {final List<ZacTransformer>? select}) = _$_SharedValueConsumeTypeWatch;
+  const factory _SharedValueConsumeTypeWatch({final ZacTransformers? select}) =
+      _$_SharedValueConsumeTypeWatch;
 
   factory _SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
       _$_SharedValueConsumeTypeWatch.fromJson;
 
-  List<ZacTransformer>? get select;
+  ZacTransformers? get select;
 }
 
 /// @nodoc
@@ -471,7 +449,7 @@ SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
 mixin _$SharedValueProviderBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   Object? get value => throw _privateConstructorUsedError;
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
 
@@ -488,11 +466,10 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   _$_SharedValueProviderBuilder(
       {this.key,
       required this.value,
-      final List<ZacTransformer>? transformer,
+      this.transformer,
       required this.family,
       required this.child})
-      : _transformer = transformer,
-        super._();
+      : super._();
 
   factory _$_SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueProviderBuilderFromJson(json);
@@ -501,15 +478,8 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   final FlutterKey? key;
   @override
   final Object? value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   final Object family;
   @override
@@ -528,7 +498,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
@@ -539,7 +509,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       runtimeType,
       const DeepCollectionEquality().hash(key),
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(family),
       const DeepCollectionEquality().hash(child));
 
@@ -556,7 +526,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   factory _SharedValueProviderBuilder(
       {final FlutterKey? key,
       required final Object? value,
-      final List<ZacTransformer>? transformer,
+      final ZacTransformers? transformer,
       required final Object family,
       required final FlutterWidget child}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
@@ -569,7 +539,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   Object? get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   @override
   Object get family;
   @override

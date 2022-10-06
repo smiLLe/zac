@@ -139,7 +139,8 @@ void main() {
                   'NEXT',
                   'counter',
                   actions: ZacActions([
-                    StateMachineActions.updateContext(transformer: [_Incr()])
+                    StateMachineActions.updateContext(
+                        transformer: ZacTransformers([_Incr()]))
                   ]),
                 )
               ],

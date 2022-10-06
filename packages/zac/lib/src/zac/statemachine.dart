@@ -182,6 +182,11 @@ StateMachine createStateMachineProvider({
           }
         },
       );
+      isActive = false;
+      for (var cb in callbacks) {
+        cb();
+      }
+      callbacks.clear();
 
       ref.state = ref.state.copyWith.call(
         state: targetNode.state,
@@ -216,7 +221,7 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
 
   @FreezedUnionValue(StateMachineActions.unionValueUpdateContext)
   factory StateMachineActions.updateContext({
-    required List<ZacTransformer> transformer,
+    required ZacTransformers transformer,
   }) = _StateMachineActionsUpdateContext;
 
   @override
@@ -243,10 +248,10 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
         final machineContext = bag.safeGet<MachineContext>(
             key: kBagStateMachineCurrentContext, notFound: null);
         updateContext(
-          obj.transformer.transformValues(
+          obj.transformer.transformWithBag(
             ZacTransformValue(machineContext),
             origin,
-            prefillBag: (innerBag) => innerBag..addEntries(bag.entries),
+            bag,
           ),
         );
       },

@@ -42,7 +42,7 @@ class ZacFlutterGlobalKeyNavigatorState
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
   factory ZacFlutterGlobalKeyNavigatorState.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
@@ -148,7 +148,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   factory RouteFactoryRouteConfig({
     required FlutterRoute route,
     ZacString? provideArgsName,
-    List<ZacTransformer>? transform,
+    ZacTransformers? transform,
   }) = _RouteFactoryConfig;
 }
 

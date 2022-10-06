@@ -36,9 +36,7 @@ _$_StateMachineActionsSend _$$_StateMachineActionsSendFromJson(
 _$_StateMachineActionsUpdateContext
     _$$_StateMachineActionsUpdateContextFromJson(Map<String, dynamic> json) =>
         _$_StateMachineActionsUpdateContext(
-          transformer: (json['transformer'] as List<dynamic>)
-              .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          transformer: ZacTransformers.fromJson(json['transformer'] as Object),
           $type: json['_converter'] as String?,
         );
 

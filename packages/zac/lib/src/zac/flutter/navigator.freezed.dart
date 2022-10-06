@@ -132,11 +132,10 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     extends _ZacFlutterGlobalKeyNavigatorStateConsume
     with ConsumeValue<GlobalKey<NavigatorState>> {
   _$_ZacFlutterGlobalKeyNavigatorStateConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
+      : $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
         super._();
 
   factory _$_ZacFlutterGlobalKeyNavigatorStateConsume.fromJson(
@@ -145,15 +144,8 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -173,7 +165,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
             other is _$_ZacFlutterGlobalKeyNavigatorStateConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -183,7 +175,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -202,7 +194,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
     extends ZacFlutterGlobalKeyNavigatorState
     implements ConsumeValue<GlobalKey<NavigatorState>> {
   factory _ZacFlutterGlobalKeyNavigatorStateConsume(final Object family,
-          {final List<ZacTransformer>? transformer,
+          {final ZacTransformers? transformer,
           final SharedValueConsumeType consumeType}) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume;
   _ZacFlutterGlobalKeyNavigatorStateConsume._() : super._();
@@ -213,7 +205,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
 
   @override
   Object get family;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -304,7 +296,7 @@ RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
 mixin _$RouteFactoryRouteConfig {
   FlutterRoute get route => throw _privateConstructorUsedError;
   ZacString? get provideArgsName => throw _privateConstructorUsedError;
-  List<ZacTransformer>? get transform => throw _privateConstructorUsedError;
+  ZacTransformers? get transform => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -317,11 +309,8 @@ mixin _$RouteFactoryRouteConfig {
 @JsonSerializable(createToJson: false)
 class _$_RouteFactoryConfig extends _RouteFactoryConfig {
   _$_RouteFactoryConfig(
-      {required this.route,
-      this.provideArgsName,
-      final List<ZacTransformer>? transform})
-      : _transform = transform,
-        super._();
+      {required this.route, this.provideArgsName, this.transform})
+      : super._();
 
   factory _$_RouteFactoryConfig.fromJson(Map<String, dynamic> json) =>
       _$$_RouteFactoryConfigFromJson(json);
@@ -330,14 +319,8 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
   final FlutterRoute route;
   @override
   final ZacString? provideArgsName;
-  final List<ZacTransformer>? _transform;
   @override
-  List<ZacTransformer>? get transform {
-    final value = _transform;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transform;
 
   @override
   String toString() {
@@ -352,8 +335,7 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
             const DeepCollectionEquality().equals(other.route, route) &&
             const DeepCollectionEquality()
                 .equals(other.provideArgsName, provideArgsName) &&
-            const DeepCollectionEquality()
-                .equals(other._transform, _transform));
+            const DeepCollectionEquality().equals(other.transform, transform));
   }
 
   @JsonKey(ignore: true)
@@ -362,7 +344,7 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
       runtimeType,
       const DeepCollectionEquality().hash(route),
       const DeepCollectionEquality().hash(provideArgsName),
-      const DeepCollectionEquality().hash(_transform));
+      const DeepCollectionEquality().hash(transform));
 
   @override
   @optionalTypeArgs
@@ -377,7 +359,7 @@ abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   factory _RouteFactoryConfig(
       {required final FlutterRoute route,
       final ZacString? provideArgsName,
-      final List<ZacTransformer>? transform}) = _$_RouteFactoryConfig;
+      final ZacTransformers? transform}) = _$_RouteFactoryConfig;
   _RouteFactoryConfig._() : super._();
 
   factory _RouteFactoryConfig.fromJson(Map<String, dynamic> json) =
@@ -388,7 +370,7 @@ abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   @override
   ZacString? get provideArgsName;
   @override
-  List<ZacTransformer>? get transform;
+  ZacTransformers? get transform;
 }
 
 RouteFactorySingleRoute _$RouteFactorySingleRouteFromJson(

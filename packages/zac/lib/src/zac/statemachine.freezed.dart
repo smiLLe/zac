@@ -561,21 +561,16 @@ abstract class _StateMachineActionsSend extends StateMachineActions {
 class _$_StateMachineActionsUpdateContext
     extends _StateMachineActionsUpdateContext {
   _$_StateMachineActionsUpdateContext(
-      {required final List<ZacTransformer> transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:StateMachine:Action.updateContext',
+      {required this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:StateMachine:Action.updateContext',
         super._();
 
   factory _$_StateMachineActionsUpdateContext.fromJson(
           Map<String, dynamic> json) =>
       _$$_StateMachineActionsUpdateContextFromJson(json);
 
-  final List<ZacTransformer> _transformer;
   @override
-  List<ZacTransformer> get transformer {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_transformer);
-  }
+  final ZacTransformers transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -591,13 +586,13 @@ class _$_StateMachineActionsUpdateContext
         (other.runtimeType == runtimeType &&
             other is _$_StateMachineActionsUpdateContext &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_transformer));
+      runtimeType, const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -612,14 +607,14 @@ class _$_StateMachineActionsUpdateContext
 
 abstract class _StateMachineActionsUpdateContext extends StateMachineActions {
   factory _StateMachineActionsUpdateContext(
-          {required final List<ZacTransformer> transformer}) =
+          {required final ZacTransformers transformer}) =
       _$_StateMachineActionsUpdateContext;
   _StateMachineActionsUpdateContext._() : super._();
 
   factory _StateMachineActionsUpdateContext.fromJson(
       Map<String, dynamic> json) = _$_StateMachineActionsUpdateContext.fromJson;
 
-  List<ZacTransformer> get transformer;
+  ZacTransformers get transformer;
 }
 
 StateMachineProviderBuilder _$StateMachineProviderBuilderFromJson(

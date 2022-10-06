@@ -23,9 +23,9 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateConsume(
           json['family'] as Object,
-          transformer: (json['transformer'] as List<dynamic>?)
-              ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-              .toList(),
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
           consumeType: json['consumeType'] == null
               ? const SharedValueConsumeType.watch()
               : SharedValueConsumeType.fromJson(
@@ -48,9 +48,9 @@ _$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(
       provideArgsName: json['provideArgsName'] == null
           ? null
           : ZacString.fromJson(json['provideArgsName'] as Object),
-      transform: (json['transform'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transform: json['transform'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transform'] as Object),
     );
 
 _$_RouteFactorySingleRoute _$$_RouteFactorySingleRouteFromJson(

@@ -37,7 +37,7 @@ class ZacActions with _$ZacActions {
       return _$ZacActionsFromJson(data);
     }
 
-    /// allow a list of interactions
+    /// allow a list of actions
     else if (data is List) {
       return ZacActions(
           data.cast<Map<String, dynamic>>().map(ZacAction.fromJson).toList());

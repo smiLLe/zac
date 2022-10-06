@@ -43,21 +43,55 @@ abstract class ZacTransformer {
       ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag);
 }
 
-extension ZacTransformerOnList on List<ZacTransformer> {
-  Object? transformValues(
+@defaultConverterFreezed
+class ZacTransformers with _$ZacTransformers {
+  const ZacTransformers._();
+
+  static const String unionValue = 'z:1:Transformers';
+
+  factory ZacTransformers.fromJson(Object data) {
+    /// allow a single transformer or the default implementation
+    if (ConverterHelper.isConverter(data)) {
+      if ((data as Map<String, dynamic>)[converterKey] as String !=
+          ZacTransformers.unionValue) {
+        return ZacTransformers([ZacTransformer.fromJson(data)]);
+      }
+      return _$ZacTransformersFromJson(data);
+    }
+
+    /// allow a list of transformer
+    else if (data is List) {
+      return ZacTransformers(List<Map<String, dynamic>>.from(data)
+          .map(ZacTransformer.fromJson)
+          .toList());
+    }
+
+    throw Exception(
+        'It was not possible to convert to $ZacTransformers from data: $data ');
+  }
+
+  @FreezedUnionValue(ZacTransformers.unionValue)
+  factory ZacTransformers(List<ZacTransformer> transformers) = _ZacTransformers;
+
+  Object? transform(
     ZacTransformValue value,
     ZacOrigin origin, {
     void Function(ContextBag bag)? prefillBag,
   }) {
     final bag = ContextBag();
     prefillBag?.call(bag);
-    final transformedValue =
-        fold<ZacTransformValue>(value, (previousValue, element) {
+    final transformedValue = transformWithBag(value, origin, bag);
+    bag.clear();
+    return transformedValue;
+  }
+
+  Object? transformWithBag(
+      ZacTransformValue value, ZacOrigin origin, ContextBag bag) {
+    return transformers.fold<ZacTransformValue>(value,
+        (previousValue, element) {
       final obj = element.transform(previousValue, origin, bag);
       return ZacTransformValue(obj);
     }).value;
-    bag.clear();
-    return transformedValue;
   }
 }
 
@@ -131,8 +165,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   const factory MapTransformer.mapper({
-    List<ZacTransformer>? keyTransformer,
-    List<ZacTransformer>? valueTransformer,
+    ZacTransformers? keyTransformer,
+    ZacTransformers? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
@@ -170,19 +204,15 @@ The value: $value
         return value.map<dynamic, dynamic>((dynamic key, dynamic value) {
           dynamic updatedKey = key;
           dynamic updatedValue = value;
-          if (true == obj.keyTransformer?.isNotEmpty) {
+          if (true == obj.keyTransformer?.transformers.isNotEmpty) {
+            bag.addKeyValue(kBagTransformerMapEntryValue, value);
             updatedKey = obj.keyTransformer
-                ?.transformValues(ZacTransformValue(key), origin,
-                    prefillBag: (innerBag) => innerBag
-                      ..addEntries(bag.entries)
-                      ..addKeyValue(kBagTransformerMapEntryValue, value));
+                ?.transformWithBag(ZacTransformValue(key), origin, bag);
           }
-          if (true == obj.valueTransformer?.isNotEmpty) {
+          if (true == obj.valueTransformer?.transformers.isNotEmpty) {
+            bag.addKeyValue(kBagTransformerMapEntryKey, key);
             updatedValue = obj.valueTransformer
-                ?.transformValues(ZacTransformValue(value), origin,
-                    prefillBag: (innerBag) => innerBag
-                      ..addEntries(bag.entries)
-                      ..addKeyValue(kBagTransformerMapEntryKey, key));
+                ?.transformWithBag(ZacTransformValue(value), origin, bag);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -228,7 +258,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
-    required List<ZacTransformer> transformer,
+    required ZacTransformers transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)
@@ -288,9 +318,8 @@ The value: $value
 ''');
     }
     return map(
-      map: (obj) => value.map((dynamic e) => obj.transformer.transformValues(
-          ZacTransformValue(e), origin,
-          prefillBag: (innerBag) => innerBag..addEntries(bag.entries))),
+      map: (obj) => value.map((dynamic e) =>
+          obj.transformer.transformWithBag(ZacTransformValue(e), origin, bag)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -377,7 +406,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   @With<ConsumeValue<Object?>>()
   factory ObjectTransformer.equalsSharedValue(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.read()) SharedValueConsumeType consumeType,
   }) = _ObjectEqualsSharedValue;
 
