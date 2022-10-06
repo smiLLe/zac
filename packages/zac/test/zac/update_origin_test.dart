@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
@@ -10,27 +9,25 @@ import '../flutter/models.dart';
 import '../helper.dart';
 
 void main() {
-  testWidgets('UpdateContextConverter()', (tester) async {
-    await testMap(tester, <String, dynamic>{
-      '_converter': 'z:1:UpdateWidget',
-      'key': KeysModel.getValueKey('FINDME'),
-      'child': ChildModel.getSizedBox(key: 'child'),
+  group('UpdateOrigin', () {
+    testWidgets('convert', (tester) async {
+      await testMap(tester, <String, dynamic>{
+        '_converter': 'z:1:UpdateOrigin',
+        'key': KeysModel.getValueKey('FINDME'),
+        'child': ChildModel.getSizedBox(key: 'child'),
+      });
+
+      final findMe = find.byKey(const ValueKey('FINDME'));
+      expect(findMe, findsOneWidget);
+      expect(find.byKey(const ValueKey('child')), findsOneWidget);
     });
 
-    final findMe = find.byKey(const ValueKey('FINDME'));
-    expect(findMe, findsOneWidget);
-    expect(find.byKey(const ValueKey('child')), findsOneWidget);
-  });
-
-  testWidgets('useZacWidgetContext', (tester) async {}, skip: true);
-
-  group('ZacWidgetContext', () {
     testWidgets('can be updated in tree', (tester) async {
       late ZacOriginWidgetTree origin1;
       late ZacOriginWidgetTree origin2;
       await testZacWidget(
         tester,
-        ZacUpdateWidgetBuilder(
+        ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
               origin1 = o;
@@ -48,12 +45,12 @@ void main() {
 
       await testZacWidget(
         tester,
-        ZacUpdateWidgetBuilder(
+        ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
               origin1 = o;
             },
-            child: ZacUpdateWidgetBuilder(
+            child: ZacUpdateOriginBuilder(
               child: LeakOrigin(
                 cb: (o) {
                   origin2 = o;
@@ -77,12 +74,12 @@ void main() {
 
       await testZacWidget(
         tester,
-        ZacUpdateWidgetBuilder(
+        ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
               origin1 = o;
             },
-            child: ZacUpdateWidgetBuilder(
+            child: ZacUpdateOriginBuilder(
               child: LeakOrigin(
                 cb: (o) {
                   origin2 = o;

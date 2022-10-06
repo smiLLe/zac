@@ -223,7 +223,7 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
       return () => mounted = false;
     }, [map, allConverters]);
 
-    return ZacUpdateWidget(
+    return ZacUpdateOrigin(
       builder: (origin) {
         return loadingState.value.map(
           data: (obj) => obj.value.buildWidget(origin),

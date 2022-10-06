@@ -281,7 +281,7 @@ class FlutterPageRouteBuilder
       {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
           wrap}) {
     return PageRouteBuilder<ZacActions?>(
-      pageBuilder: (_, __, ___) => ZacUpdateWidget(
+      pageBuilder: (_, __, ___) => ZacUpdateOrigin(
         builder: (origin) {
           if (null == wrap) {
             return child.buildWidget(origin);

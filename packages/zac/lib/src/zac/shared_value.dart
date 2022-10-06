@@ -249,7 +249,7 @@ class SharedValueProvider extends HookConsumerWidget {
         SharedValue.provider(family).overrideWithProvider(
             AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
       ],
-      child: ZacUpdateWidget(builder: builder),
+      child: ZacUpdateOrigin(builder: builder),
     );
   }
 }

@@ -14,30 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacUpdateWidgetBuilder _$ZacUpdateWidgetBuilderFromJson(
+ZacUpdateOriginBuilder _$ZacUpdateOriginBuilderFromJson(
     Map<String, dynamic> json) {
-  return _ZacUpdateWidgetBuilder.fromJson(json);
+  return _ZacUpdateOriginBuilder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacUpdateWidgetBuilder {
+mixin _$ZacUpdateOriginBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacUpdateWidgetBuilder value) $default,
+    TResult Function(_ZacUpdateOriginBuilder value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacUpdateWidgetBuilder extends _ZacUpdateWidgetBuilder {
-  _$_ZacUpdateWidgetBuilder({this.key, required this.child}) : super._();
+class _$_ZacUpdateOriginBuilder extends _ZacUpdateOriginBuilder {
+  _$_ZacUpdateOriginBuilder({this.key, required this.child}) : super._();
 
-  factory _$_ZacUpdateWidgetBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacUpdateWidgetBuilderFromJson(json);
+  factory _$_ZacUpdateOriginBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacUpdateOriginBuilderFromJson(json);
 
   @override
   final FlutterKey? key;
@@ -46,14 +46,14 @@ class _$_ZacUpdateWidgetBuilder extends _ZacUpdateWidgetBuilder {
 
   @override
   String toString() {
-    return 'ZacUpdateWidgetBuilder(key: $key, child: $child)';
+    return 'ZacUpdateOriginBuilder(key: $key, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacUpdateWidgetBuilder &&
+            other is _$_ZacUpdateOriginBuilder &&
             const DeepCollectionEquality().equals(other.key, key) &&
             const DeepCollectionEquality().equals(other.child, child));
   }
@@ -68,20 +68,20 @@ class _$_ZacUpdateWidgetBuilder extends _ZacUpdateWidgetBuilder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacUpdateWidgetBuilder value) $default,
+    TResult Function(_ZacUpdateOriginBuilder value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacUpdateWidgetBuilder extends ZacUpdateWidgetBuilder {
-  factory _ZacUpdateWidgetBuilder(
+abstract class _ZacUpdateOriginBuilder extends ZacUpdateOriginBuilder {
+  factory _ZacUpdateOriginBuilder(
       {final FlutterKey? key,
-      required final FlutterWidget child}) = _$_ZacUpdateWidgetBuilder;
-  _ZacUpdateWidgetBuilder._() : super._();
+      required final FlutterWidget child}) = _$_ZacUpdateOriginBuilder;
+  _ZacUpdateOriginBuilder._() : super._();
 
-  factory _ZacUpdateWidgetBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ZacUpdateWidgetBuilder.fromJson;
+  factory _ZacUpdateOriginBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ZacUpdateOriginBuilder.fromJson;
 
   @override
   FlutterKey? get key;

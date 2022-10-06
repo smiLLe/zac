@@ -105,7 +105,7 @@ class FlutterMaterialPageRoute
       {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
           wrap}) {
     return MaterialPageRoute<ZacActions?>(
-      builder: (_) => ZacUpdateWidget(
+      builder: (_) => ZacUpdateOrigin(
         builder: (origin) {
           if (null == wrap) {
             return child.buildWidget(origin);
