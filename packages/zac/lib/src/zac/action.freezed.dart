@@ -32,7 +32,7 @@ mixin _$ZacActions {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacActions extends _ZacActions {
-  _$_ZacActions(final List<ZacAction> actions)
+  const _$_ZacActions(final List<ZacAction> actions)
       : _actions = actions,
         super._();
 
@@ -74,8 +74,8 @@ class _$_ZacActions extends _ZacActions {
 }
 
 abstract class _ZacActions extends ZacActions {
-  factory _ZacActions(final List<ZacAction> actions) = _$_ZacActions;
-  _ZacActions._() : super._();
+  const factory _ZacActions(final List<ZacAction> actions) = _$_ZacActions;
+  const _ZacActions._() : super._();
 
   factory _ZacActions.fromJson(Map<String, dynamic> json) =
       _$_ZacActions.fromJson;

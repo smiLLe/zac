@@ -48,7 +48,7 @@ class ZacActions with _$ZacActions {
   }
 
   @FreezedUnionValue(ZacActions.unionValue)
-  factory ZacActions(List<ZacAction> actions) = _ZacActions;
+  const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
   void execute(
     ZacOrigin origin, {
@@ -59,6 +59,17 @@ class ZacActions with _$ZacActions {
         statemachineAction: (obj) => obj.lifetime.isActive())) return;
     final bag = ContextBag();
     prefillBag?.call(bag);
+    executeWithBag(origin, bag);
+    bag.clear();
+  }
+
+  void executeWithBag(
+    ZacOrigin origin,
+    ContextBag bag,
+  ) {
+    if (!origin.map(
+        widgetTree: (obj) => obj.lifetime.isMounted(),
+        statemachineAction: (obj) => obj.lifetime.isActive())) return;
 
     for (var action in actions) {
       if (!origin.map(
@@ -68,7 +79,6 @@ class ZacActions with _$ZacActions {
       }
       action.execute(origin, bag);
     }
-    bag.clear();
   }
 }
 

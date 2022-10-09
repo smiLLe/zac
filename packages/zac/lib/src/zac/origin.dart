@@ -15,7 +15,9 @@ class ZacOrigin with _$ZacOrigin {
   }) = ZacOriginWidgetTree;
 
   factory ZacOrigin.statemachineAction({
-    required AutoDisposeProviderRef<StateMachine> ref,
+    /// @Todo: Chance Object to StateMachine
+    required AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState>
+        ref,
     required ZacOriginLifetimeStateMachineAction lifetime,
   }) = ZacOriginStateMachineAction;
 }

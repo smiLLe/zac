@@ -7,16 +7,20 @@ part of 'statemachine.dart';
 // **************************************************************************
 
 _$_StateNode _$$_StateNodeFromJson(Map<String, dynamic> json) => _$_StateNode(
-      json['state'] as String,
-      (json['on'] as List<dynamic>)
-          .map((e) => Transition.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      state: json['state'] as String,
+      on: (json['on'] as List<dynamic>?)
+              ?.map((e) => Transition.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Transition>[],
+      actions: json['actions'] == null
+          ? null
+          : ZacActions.fromJson(json['actions'] as Object),
     );
 
 _$_Transition _$$_TransitionFromJson(Map<String, dynamic> json) =>
     _$_Transition(
-      json['event'] as String,
-      json['targetState'] as String,
+      event: json['event'] as String,
+      target: json['target'] as String,
       actions: json['actions'] == null
           ? null
           : ZacActions.fromJson(json['actions'] as Object),
@@ -39,6 +43,13 @@ _$_StateMachineActionsUpdateContext
           transformer: ZacTransformers.fromJson(json['transformer'] as Object),
           $type: json['_converter'] as String?,
         );
+
+_$_StateMachineActionsSetState _$$_StateMachineActionsSetStateFromJson(
+        Map<String, dynamic> json) =>
+    _$_StateMachineActionsSetState(
+      json['state'] as String,
+      $type: json['_converter'] as String?,
+    );
 
 _$_StateMachineProviderBuilder _$$_StateMachineProviderBuilderFromJson(
         Map<String, dynamic> json) =>

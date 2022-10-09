@@ -8,8 +8,10 @@ const kBagTransformerMapEntryValue = 'MapEntry.value';
 const kBagTransformerMapEntryKey = 'MapEntry.key';
 const kBagStateMachineSendEvent = 'StateMachine.sendEvent';
 const kBagStateMachineCurrentContext = 'StateMachine.currentContext';
+const kBagStateMachineCurrentState = 'StateMachine.currentState';
 const kBagStateMachineUpdateContext = 'StateMachine.updateContext';
 const kBagStateMachineSendPayload = 'StateMachine.sendPayload';
+const kBagStateMachineSetState = 'StateMachine.setState';
 
 class ContextBag extends DelegatingMap<String, dynamic> {
   ContextBag() : super(<String, dynamic>{});

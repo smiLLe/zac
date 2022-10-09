@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/statemachine.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -17,157 +16,332 @@ import '../helper.dart';
 import '../helper.mocks.dart';
 
 void main() {
-  // group('StateMachine', () {
-  //   test('validate duplicated states', () {
-  //     expect(
-  //         () => StateMachine(state: 'foo', context: null, states: [
-  //               StateNode('foo', []),
-  //               StateNode('foo', []),
-  //               StateNode('bar', []),
-  //             ]).validateUniqueStates(),
-  //         throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
-  //             'error message', contains('Duplicated States found'))));
-  //   });
-
-  //   test('validate transition target', () {
-  //     expect(
-  //         () => StateMachine(
-  //               'foo',
-  //               [
-  //                 StateNode('foo', [Transition('Next', 'baz')]),
-  //                 StateNode('bar', []),
-  //               ],
-  //             ).validateTransitionTargets(),
-  //         throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
-  //             'error message', contains('Invalid Transition target'))));
-  //   });
-
-  //   test('findNodeByState', () {
-  //     expect(
-  //         StateMachine('foo', [
-  //           StateNode('foo', []),
-  //           StateNode('bar', []),
-  //         ]).findNodeByState('foo'),
-  //         StateNode('foo', []));
-
-  //     expect(
-  //         () => StateMachine('foo', [
-  //               StateNode('foo', []),
-  //               StateNode('bar', []),
-  //             ]).findNodeByState('ohh'),
-  //         throwsStateError);
-  //   });
-  // });
-
-  group('Transitions', () {
-    test('findCandidates', () {
-      expect([Transition('Event1', 'foo')].findCandidates('Other'), isEmpty);
+  group('StateMachine', () {
+    test('validate duplicated states', () {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'foo',
+                context: null,
+                nodes: [
+                  StateNode(state: 'foo', on: []),
+                  StateNode(state: 'foo', on: []),
+                  StateNode(state: 'bar', on: []),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
       expect(
-          [
-            Transition('Event1', 'foo'),
-            Transition('Event1', 'bar'),
-            Transition('Event2', 'bar')
-          ].findCandidates('Event1'),
-          [Transition('Event1', 'foo'), Transition('Event1', 'bar')]);
+          () => container
+              .read(StateMachine.provider('machine').notifier)
+              .validateUniqueStates(),
+          throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
+              'error message', contains('Duplicated States found'))));
+    });
+
+    test('validate transition target', () {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'foo',
+                context: null,
+                nodes: [
+                  StateNode(
+                      state: 'foo',
+                      on: [Transition(event: 'Next', target: 'baz')]),
+                  StateNode(state: 'bar', on: []),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
+      expect(
+          () => container
+              .read(StateMachine.provider('machine').notifier)
+              .validateTransitionTargets(),
+          throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
+              'error message', contains('Invalid Transition target'))));
+    });
+
+    test('findNodeByState', () {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'foo',
+                context: null,
+                nodes: [
+                  StateNode(state: 'foo', on: []),
+                  StateNode(state: 'bar', on: []),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
+
+      expect(
+          container
+              .read(StateMachine.provider('machine').notifier)
+              .findNodeByState('foo'),
+          StateNode(state: 'foo', on: []));
+
+      expect(
+          () => container
+              .read(StateMachine.provider('machine').notifier)
+              .findNodeByState('ohh'),
+          throwsStateError);
     });
   });
 
-  group('transition', () {
-    testWidgets('to other state on event', (tester) async {
-      late ZacOriginWidgetTree origin;
-      await testZacWidget(
-        tester,
-        StateMachineProviderBuilder(
-          family: ZacString('machine1'),
-          initialState: ZacString('red'),
-          states: [
-            StateNode(
-              'green',
-              [Transition('NEXT', 'yellow')],
-            ),
-            StateNode(
-              'yellow',
-              [Transition('NEXT', 'red')],
-            ),
-            StateNode(
-              'red',
-              [Transition('NEXT', 'green')],
-            ),
-          ],
-          child: LeakOrigin(
-            cb: (o) => origin = o,
-          ),
-        ),
-      );
-
-      expect(ZacString.consume('machine1.state').getValue(origin), 'red');
-      expect(origin.ref.watch(SharedValue.provider('machine1.context')),
-          SharedValue(null));
-
-      origin.ref
-          .read(statemachineProvider('machine1'))
-          .send('NEXT', const SendPayload.none());
-
-      expect(ZacString.consume('machine1.state').getValue(origin), 'green');
-
-      origin.ref
-          .read(statemachineProvider('machine1'))
-          .send('NEXT', const SendPayload.none());
-
-      expect(ZacString.consume('machine1.state').getValue(origin), 'yellow');
-
-      origin.ref
-          .read(statemachineProvider('machine1'))
-          .send('NEXT', const SendPayload.none());
-
-      expect(ZacString.consume('machine1.state').getValue(origin), 'red');
+  group('Transition', () {
+    test('findCandidates', () {
+      expect(
+          [Transition(event: 'Event1', target: 'foo')].findCandidates('Other'),
+          isEmpty);
+      expect(
+          [
+            Transition(event: 'Event1', target: 'foo'),
+            Transition(event: 'Event1', target: 'bar'),
+            Transition(event: 'Event2', target: 'bar')
+          ].findCandidates('Event1'),
+          [
+            Transition(event: 'Event1', target: 'foo'),
+            Transition(event: 'Event1', target: 'bar')
+          ]);
     });
 
-    testWidgets('may update context', (tester) async {
-      late ZacOriginWidgetTree origin;
-      await testZacWidget(
-        tester,
-        StateMachineProviderBuilder(
-          family: ZacString('machine1'),
-          initialState: ZacString('counter'),
-          initialContext: ZacObject(0),
-          states: [
-            StateNode(
-              'counter',
-              [
-                Transition(
-                  'NEXT',
-                  'counter',
-                  actions: ZacActions([
-                    StateMachineActions.updateContext(
-                        transformer: ZacTransformers([_Incr()]))
-                  ]),
-                )
-              ],
+    test('to other state on event', () async {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                ref: ref,
+                context: null,
+                state: 'red',
+                nodes: [
+                  StateNode(
+                    state: 'green',
+                    on: [Transition(event: 'NEXT', target: 'yellow')],
+                  ),
+                  StateNode(
+                    state: 'yellow',
+                    on: [Transition(event: 'NEXT', target: 'red')],
+                  ),
+                  StateNode(
+                    state: 'red',
+                    on: [Transition(event: 'NEXT', target: 'green')],
+                  ),
+                ],
+              ),
             ),
-          ],
-          child: LeakOrigin(
-            cb: (o) => origin = o,
-          ),
-        ),
+          )
+        ],
       );
 
-      expect(ZacString.consume('machine1.state').getValue(origin), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(origin), 0);
+      final sub = container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
 
-      origin.ref
-          .read(statemachineProvider('machine1'))
+      expect(sub.read().state, 'red');
+      expect(sub.read().context, isNull);
+
+      container
+          .read(StateMachine.provider('machine').notifier)
           .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(origin), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(origin), 1);
+      expect(sub.read().state, 'green');
+      expect(sub.read().context, isNull);
 
-      origin.ref
-          .read(statemachineProvider('machine1'))
-          .send('NEXT', SendPayload(100));
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const SendPayload.none());
 
-      expect(ZacString.consume('machine1.state').getValue(origin), 'counter');
-      expect(ZacInt.consume('machine1.context').getValue(origin), 101);
+      expect(sub.read().state, 'yellow');
+      expect(sub.read().context, isNull);
+
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const SendPayload.none());
+
+      expect(sub.read().state, 'red');
+      expect(sub.read().context, isNull);
+
+      sub.close();
+    });
+
+    group('can execute actions', () {
+      test('and provices some state liftetime features', () async {
+        bool? isActive;
+        final c = Completer<void>();
+        final cb = _MockOnBecomeInactiveCb();
+        final container = ProviderContainer(
+          overrides: [
+            StateMachine.provider('machine').overrideWithProvider(
+              StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+                (ref) => StateMachine(
+                  ref: ref,
+                  context: null,
+                  state: 'a',
+                  nodes: [
+                    StateNode(
+                      state: 'a',
+                      on: [
+                        Transition(
+                          event: 'NEXT',
+                          target: 'b',
+                          actions: ZacActions([
+                            LeakAction((origin, bag) async {
+                              isActive = origin.mapOrNull(
+                                  statemachineAction: (origin) {
+                                origin.lifetime.onBecomeInactive(cb);
+                                return origin.lifetime.isActive();
+                              });
+                              await Future.microtask(() {});
+                              isActive = origin.mapOrNull(
+                                  statemachineAction: (origin) =>
+                                      origin.lifetime.isActive());
+                              c.complete();
+                            }),
+                          ]),
+                        )
+                      ],
+                    ),
+                    StateNode(state: 'b'),
+                  ],
+                ),
+              ),
+            )
+          ],
+        );
+
+        final sub = container.listen(
+          StateMachine.provider('machine'),
+          (previous, next) {},
+        );
+
+        verifyZeroInteractions(cb);
+        container
+            .read(StateMachine.provider('machine').notifier)
+            .send('NEXT', const SendPayload.none());
+
+        expect(isActive, isTrue);
+
+        verify(cb()).called(1);
+        await c.future;
+        expect(isActive, isFalse);
+        verifyNoMoreInteractions(cb);
+
+        sub.close();
+      });
+      test('and may update context', () async {
+        final container = ProviderContainer(
+          overrides: [
+            StateMachine.provider('machine').overrideWithProvider(
+              StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+                (ref) => StateMachine(
+                  ref: ref,
+                  context: 0,
+                  state: 'counter',
+                  nodes: [
+                    StateNode(
+                      state: 'counter',
+                      on: [
+                        Transition(
+                          event: 'NEXT',
+                          target: 'counter',
+                          actions: ZacActions([
+                            StateMachineActions.updateContext(
+                                transformer: ZacTransformers([_Incr()]))
+                          ]),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        );
+
+        final sub = container.listen(
+          StateMachine.provider('machine'),
+          (previous, next) {},
+        );
+
+        expect(sub.read().state, 'counter');
+        expect(sub.read().context, 0);
+
+        container
+            .read(StateMachine.provider('machine').notifier)
+            .send('NEXT', const SendPayload.none());
+
+        expect(sub.read().state, 'counter');
+        expect(sub.read().context, 1);
+
+        container
+            .read(StateMachine.provider('machine').notifier)
+            .send('NEXT', SendPayload(100));
+
+        expect(sub.read().state, 'counter');
+        expect(sub.read().context, 101);
+      });
+
+      test('and may force a different state', () async {
+        final container = ProviderContainer(
+          overrides: [
+            StateMachine.provider('machine').overrideWithProvider(
+              StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+                (ref) => StateMachine(
+                  ref: ref,
+                  context: 0,
+                  state: 'counter',
+                  nodes: [
+                    StateNode(
+                      state: 'counter',
+                      on: [
+                        Transition(
+                          event: 'NEXT',
+                          target: 'counter',
+                          actions: ZacActions(
+                              [StateMachineActions.setState('other')]),
+                        )
+                      ],
+                    ),
+                    StateNode(state: 'other')
+                  ],
+                ),
+              ),
+            )
+          ],
+        );
+
+        final sub = container.listen(
+          StateMachine.provider('machine'),
+          (previous, next) {},
+        );
+
+        expect(sub.read().state, 'counter');
+
+        container
+            .read(StateMachine.provider('machine').notifier)
+            .send('NEXT', const SendPayload.none());
+
+        expect(sub.read().state, 'other');
+      });
     });
   });
 }
@@ -185,4 +359,8 @@ class _Incr implements ZacTransformer {
 
     return (transformValue.value as int) + 1;
   }
+}
+
+class _MockOnBecomeInactiveCb extends Mock {
+  void call();
 }

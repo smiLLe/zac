@@ -21,7 +21,8 @@ mixin _$ZacOrigin {
     required TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)
         widgetTree,
-    required TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    required TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)
         statemachineAction,
   }) =>
@@ -31,7 +32,8 @@ mixin _$ZacOrigin {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
   }) =>
@@ -41,7 +43,8 @@ mixin _$ZacOrigin {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
     required TResult orElse(),
@@ -176,7 +179,8 @@ class _$ZacOriginWidgetTree implements ZacOriginWidgetTree {
     required TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)
         widgetTree,
-    required TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    required TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)
         statemachineAction,
   }) {
@@ -189,7 +193,8 @@ class _$ZacOriginWidgetTree implements ZacOriginWidgetTree {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
   }) {
@@ -202,7 +207,8 @@ class _$ZacOriginWidgetTree implements ZacOriginWidgetTree {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
     required TResult orElse(),
@@ -268,7 +274,7 @@ abstract class _$$ZacOriginStateMachineActionCopyWith<$Res> {
           $Res Function(_$ZacOriginStateMachineAction) then) =
       __$$ZacOriginStateMachineActionCopyWithImpl<$Res>;
   $Res call(
-      {AutoDisposeProviderRef<StateMachine> ref,
+      {AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
       ZacOriginLifetimeStateMachineAction lifetime});
 }
 
@@ -294,7 +300,8 @@ class __$$ZacOriginStateMachineActionCopyWithImpl<$Res>
       ref: ref == freezed
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
-              as AutoDisposeProviderRef<StateMachine>,
+              as AutoDisposeStateNotifierProviderRef<StateMachine,
+                  CurrentState>,
       lifetime: lifetime == freezed
           ? _value.lifetime
           : lifetime // ignore: cast_nullable_to_non_nullable
@@ -308,8 +315,9 @@ class __$$ZacOriginStateMachineActionCopyWithImpl<$Res>
 class _$ZacOriginStateMachineAction implements ZacOriginStateMachineAction {
   _$ZacOriginStateMachineAction({required this.ref, required this.lifetime});
 
+  /// @Todo: Chance Object to StateMachine
   @override
-  final AutoDisposeProviderRef<StateMachine> ref;
+  final AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref;
   @override
   final ZacOriginLifetimeStateMachineAction lifetime;
 
@@ -345,7 +353,8 @@ class _$ZacOriginStateMachineAction implements ZacOriginStateMachineAction {
     required TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)
         widgetTree,
-    required TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    required TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)
         statemachineAction,
   }) {
@@ -358,7 +367,8 @@ class _$ZacOriginStateMachineAction implements ZacOriginStateMachineAction {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
   }) {
@@ -371,7 +381,8 @@ class _$ZacOriginStateMachineAction implements ZacOriginStateMachineAction {
     TResult Function(BuildContext context, WidgetRef ref,
             ZacOriginLifetimeWidgetTree lifetime)?
         widgetTree,
-    TResult Function(AutoDisposeProviderRef<StateMachine> ref,
+    TResult Function(
+            AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref,
             ZacOriginLifetimeStateMachineAction lifetime)?
         statemachineAction,
     required TResult orElse(),
@@ -417,11 +428,14 @@ class _$ZacOriginStateMachineAction implements ZacOriginStateMachineAction {
 
 abstract class ZacOriginStateMachineAction implements ZacOrigin {
   factory ZacOriginStateMachineAction(
-          {required final AutoDisposeProviderRef<StateMachine> ref,
+          {required final AutoDisposeStateNotifierProviderRef<StateMachine,
+                  CurrentState>
+              ref,
           required final ZacOriginLifetimeStateMachineAction lifetime}) =
       _$ZacOriginStateMachineAction;
 
-  AutoDisposeProviderRef<StateMachine> get ref;
+  /// @Todo: Chance Object to StateMachine
+  AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> get ref;
   ZacOriginLifetimeStateMachineAction get lifetime;
   @JsonKey(ignore: true)
   _$$ZacOriginStateMachineActionCopyWith<_$ZacOriginStateMachineAction>

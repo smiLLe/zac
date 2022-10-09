@@ -17,6 +17,7 @@ part 'statemachine.g.dart';
 
 typedef MachineContext = Object?;
 typedef UpdateContext = void Function(MachineContext context);
+typedef SetState = void Function(String state);
 
 @nonConverterFreezed
 class SendPayload with _$SendPayload {
@@ -32,7 +33,11 @@ class StateNode with _$StateNode {
       _$StateNodeFromJson(json);
 
   @FreezedUnionValue(StateNode.unionValue)
-  factory StateNode(String state, List<Transition> on) = _StateNode;
+  factory StateNode({
+    required String state,
+    @Default(<Transition>[]) List<Transition> on,
+    ZacActions? actions,
+  }) = _StateNode;
 }
 
 @defaultConverterFreezed
@@ -43,9 +48,9 @@ class Transition with _$Transition {
       _$TransitionFromJson(json);
 
   @FreezedUnionValue(Transition.unionValue)
-  factory Transition(
-    String event,
-    String targetState, {
+  factory Transition({
+    required String event,
+    required String target,
     ZacActions? actions,
   }) = _Transition;
 }
@@ -54,146 +59,10 @@ class StateMachineValidationError extends StateError {
   StateMachineValidationError(super.message);
 }
 
-@freezed
-class StateMachine with _$StateMachine {
-  StateMachine._();
-
-  factory StateMachine({
-    required String state,
-    required MachineContext context,
-    required List<StateNode> states,
-    required void Function(
-      String event,
-
-      /// Optional payload which will be available as [kBagStateMachineSendPayload]
-      /// and [kBagPayload].
-      SendPayload payload, {
-      void Function(ContextBag bag)? prefillBag,
-    })
-        send,
-  }) = _StateMachine;
-
-  @visibleForTesting
-  void validateTransitionTargets() {
-    for (var node in states) {
-      for (var transition in node.on) {
-        var found = false;
-        for (var targetNode in states) {
-          found = targetNode.state == transition.targetState ? true : found;
-        }
-        if (!found) {
-          throw StateMachineValidationError('''
-Invalid $Transition target.
-It is not possible to transition away from state "${node.state}"
-on event "${transition.event}".
-The target state for event "${transition.event}" is "${transition.targetState}"
-which is not a configured state in the $StateMachine.
-$this
-''');
-        }
-      }
-    }
-  }
-
-  @visibleForTesting
-  void validateUniqueStates() {
-    final states = this.states.map((e) => e.state.toLowerCase());
-    final uniqueStates = states.toSet().toList();
-    if (uniqueStates.length != states.length) {
-      throw StateMachineValidationError('''
-Duplicated States found.
-It is not allowed to define the same state more than once in a $StateMachine.
-Remove the duplicated state: $states
-''');
-    }
-  }
-
-  void validate() {
-    validateUniqueStates();
-    validateTransitionTargets();
-  }
-
-  StateNode findNodeByState(String state) {
-    return states.firstWhere(
-      (element) => element.state == state,
-      orElse: () => throw StateError('''
-Could not find State "$state" in List<$StateNode>.
-$this
-'''),
-    );
-  }
-}
-
 extension XTransitions on Iterable<Transition> {
   Iterable<Transition> findCandidates(String event) {
     return where((transition) => transition.event == event);
   }
-}
-
-final statemachineProvider =
-    AutoDisposeProviderFamily<StateMachine, Object>((_, fam) {
-  throw UnimplementedError('Cannot request StateMachine for family: $fam');
-});
-
-StateMachine createStateMachineProvider({
-  required String initialState,
-  required Object? initialContext,
-  required List<StateNode> states,
-  required AutoDisposeProviderRef<StateMachine> ref,
-}) {
-  ref.listenSelf((previous, next) {});
-
-  return StateMachine(
-    state: initialState,
-    context: initialContext,
-    states: states,
-    send: (event, payload, {prefillBag}) {
-      final curNode = ref.state.findNodeByState(ref.state.state);
-      final candidates = curNode.on.findCandidates(event);
-      if (candidates.isEmpty) return;
-      final transition = candidates.first;
-      final targetNode = ref.state.findNodeByState(transition.targetState);
-
-      MachineContext nextContext = ref.state.context;
-      bool isActive = true;
-      final callbacks = <void Function()>[];
-
-      final origin = ZacOriginStateMachineAction(
-        ref: ref,
-        lifetime: ZacOriginLifetimeStateMachineAction(
-          isActive: () => isActive,
-          onBecomeInactive: callbacks.add,
-        ),
-      );
-      transition.actions?.execute(
-        origin,
-        prefillBag: (bag) {
-          bag
-            ..addKeyValue(kBagStateMachineSendEvent, event)
-            ..addKeyValue(kBagStateMachineCurrentContext, ref.state.context)
-            ..addKeyValue(kBagStateMachineUpdateContext,
-                (MachineContext context) {
-              bag.addKeyValue(
-                  kBagStateMachineCurrentContext, ref.state.context);
-              return nextContext = context;
-            });
-          if (payload is _SendPayload) {
-            bag.setStateMachinePayload(payload.data);
-          }
-        },
-      );
-      isActive = false;
-      for (var cb in callbacks) {
-        cb();
-      }
-      callbacks.clear();
-
-      ref.state = ref.state.copyWith.call(
-        state: targetNode.state,
-        context: nextContext,
-      );
-    },
-  );
 }
 
 @defaultConverterFreezed
@@ -203,6 +72,7 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
   static const String unionValue = 'z:1:StateMachine:Action.send';
   static const String unionValueUpdateContext =
       'z:1:StateMachine:Action.updateContext';
+  static const String unionValueSetState = 'z:1:StateMachine:Action.setState';
 
   factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
       _$StateMachineActionsFromJson(json);
@@ -224,6 +94,10 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
     required ZacTransformers transformer,
   }) = _StateMachineActionsUpdateContext;
 
+  @FreezedUnionValue(StateMachineActions.unionValueSetState)
+  factory StateMachineActions.setState(String state) =
+      _StateMachineActionsSetState;
+
   @override
   void execute(ZacOrigin origin, ContextBag bag) {
     map(
@@ -231,15 +105,15 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
         origin
             .map(
                 widgetTree: (origin) =>
-                    origin.ref.read(statemachineProvider(obj.family)),
+                    origin.ref.read(StateMachine.provider(obj.family).notifier),
                 statemachineAction: (origin) =>
-                    origin.ref.read(statemachineProvider(obj.family)))
+                    origin.ref.read(StateMachine.provider(obj.family).notifier))
             .send(
               obj.event.getValue(origin),
               null == obj.payload
                   ? const SendPayload.none()
                   : SendPayload(obj.payload?.getValue(origin)),
-              prefillBag: (bag) => bag.addEntries(bag.entries),
+              withBag: bag,
             );
       },
       updateContext: (obj) {
@@ -248,13 +122,12 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
         final machineContext = bag.safeGet<MachineContext>(
             key: kBagStateMachineCurrentContext, notFound: null);
         updateContext(
-          obj.transformer.transformWithBag(
-            ZacTransformValue(machineContext),
-            origin,
-            bag,
-          ),
+          obj.transformer
+              .transformWithBag(ZacTransformValue(machineContext), origin, bag),
         );
       },
+      setState: (obj) => bag.safeGet<SetState>(
+          key: kBagStateMachineSetState, notFound: null)(obj.state),
     );
   }
 }
@@ -311,36 +184,286 @@ class StateMachineProvider extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = useMemoized(() {
-      return AutoDisposeProvider<StateMachine>(
-          (ref) => createStateMachineProvider(
-                ref: ref,
-                initialContext: initialContext,
-                initialState: initialState,
-                states: states,
-              ));
+      return AutoDisposeStateNotifierProvider<StateMachine, CurrentState>(
+          (ref) {
+        return StateMachine(
+          ref: ref,
+          context: initialContext,
+          state: initialState,
+          nodes: states,
+        );
+      });
     }, [initialState, initialContext, states]);
 
     return ProviderScope(
       overrides: [
-        statemachineProvider(family).overrideWithProvider(provider),
+        StateMachine.provider(family).overrideWithProvider(provider),
         SharedValue.provider('$family.state')
             .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
           (ref) {
-            return SharedValue(ref.watch(
-                statemachineProvider(family).select((value) => value.state)));
+            return SharedValue(ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.state)));
           },
           // dependencies: [statemachineProvider(family)],
         )),
         SharedValue.provider('$family.context')
             .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
           (ref) {
-            return SharedValue(ref.watch(
-                statemachineProvider(family).select((value) => value.context)));
+            return SharedValue(ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.context)));
           },
           // dependencies: [statemachineProvider(family)],
         )),
       ],
       child: ZacUpdateOrigin(builder: builder),
     );
+  }
+}
+
+@freezed
+class CurrentState with _$CurrentState {
+  factory CurrentState({
+    required String state,
+    required MachineContext context,
+  }) = _CurrentState;
+}
+
+class StateMachine extends StateNotifier<CurrentState> {
+  StateMachine({
+    required String state,
+    required MachineContext context,
+    required this.nodes,
+    required this.ref,
+  }) : super(CurrentState(state: state, context: context)) {
+    assert(() {
+      validateUniqueStates();
+      validateTransitionTargets();
+      return true;
+    }(), '');
+
+    scheduler.schedule(() {
+      session.enter();
+    });
+  }
+
+  static final provider = AutoDisposeStateNotifierProviderFamily<StateMachine,
+      CurrentState, Object>((_, fam) {
+    throw UnimplementedError('Cannot request StateMachine for family: $fam');
+  });
+
+  final List<StateNode> nodes;
+  final AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref;
+  late StateMachineSession session =
+      StateMachineSession(this, state.state, state.context);
+  final StateMachineScheduler scheduler = StateMachineScheduler();
+
+  StateNode findNodeByState(String state) {
+    return nodes.firstWhere(
+      (element) => element.state == state,
+      orElse: () => throw StateError('''
+Could not find State "$state" in List<$StateNode>.
+$this
+'''),
+    );
+  }
+
+  @visibleForTesting
+  void validateTransitionTargets() {
+    for (var node in nodes) {
+      for (var transition in node.on) {
+        var found = false;
+        for (var targetNode in nodes) {
+          found = targetNode.state == transition.target ? true : found;
+        }
+        if (!found) {
+          throw StateMachineValidationError('''
+Invalid $Transition target.
+It is not possible to transition away from state "${node.state}"
+on event "${transition.event}".
+The target state for event "${transition.event}" is "${transition.target}"
+which is not a configured state in the $StateMachine.
+$this
+''');
+        }
+      }
+    }
+  }
+
+  @visibleForTesting
+  void validateUniqueStates() {
+    final states = nodes.map((e) => e.state.toLowerCase());
+    final uniqueStates = states.toSet().toList();
+    if (uniqueStates.length != states.length) {
+      throw StateMachineValidationError('''
+Duplicated States found.
+It is not allowed to define the same state more than once in a $StateMachine.
+Remove the duplicated state: $states
+''');
+    }
+  }
+
+  @override
+  void dispose() {
+    session.dispose();
+    super.dispose();
+  }
+
+  void next(
+      CurrentState Function(String currentState, MachineContext context) cb) {
+    session.dispose();
+
+    scheduler.schedule(() {
+      final nextState = cb(state.state, state.context);
+      state = nextState;
+      session = StateMachineSession(this, nextState.state, nextState.context);
+      session.enter();
+    });
+  }
+
+  void send(
+    String event,
+    SendPayload payload, {
+    ContextBag? withBag,
+  }) {
+    session.send(event, payload, withBag: withBag);
+  }
+}
+
+class StateMachineSession {
+  StateMachineSession(this._machine, this.inState, this.context);
+
+  final StateMachine _machine;
+  final String inState;
+  MachineContext context;
+
+  late final ZacOriginStateMachineAction origin = ZacOriginStateMachineAction(
+    ref: _machine.ref,
+    lifetime: ZacOriginLifetimeStateMachineAction(
+      isActive: () => _isActive,
+      onBecomeInactive: onBecomeInactiveCbs.add,
+    ),
+  );
+
+  final List<void Function()> onBecomeInactiveCbs = [];
+  bool _isActive = true;
+  late final ContextBag _actionsBag = _getBag();
+
+  ContextBag _getBag() {
+    final bag = ContextBag();
+    _fillBag(bag);
+    return bag;
+  }
+
+  void _fillBag(ContextBag bag) {
+    bag
+      ..addKeyValue(kBagStateMachineCurrentContext, context)
+      ..addKeyValue(kBagStateMachineUpdateContext, (MachineContext context) {
+        bag.addKeyValue(kBagStateMachineCurrentContext, context);
+        this.context = context;
+      })
+      ..addKeyValue(kBagStateMachineCurrentState, inState)
+      ..addKeyValue(kBagStateMachineSetState, (String state) {
+        _machine.next((_, __) => CurrentState(state: state, context: context));
+      });
+  }
+
+  @mustCallSuper
+  void dispose() {
+    for (var cb in onBecomeInactiveCbs) {
+      cb();
+    }
+    onBecomeInactiveCbs.clear();
+    _isActive = false;
+    _actionsBag.clear();
+  }
+
+  void enter() {
+    final node = _machine.findNodeByState(inState);
+    node.actions?.executeWithBag(origin, _actionsBag);
+  }
+
+  void send(
+    String event,
+    SendPayload payload, {
+    ContextBag? withBag,
+  }) {
+    if (!_isActive) return;
+
+    final curNode = _machine.findNodeByState(inState);
+    final candidates = curNode.on.findCandidates(event);
+    if (candidates.isEmpty) return;
+    final transition = candidates.first;
+    final targetNode = _machine.findNodeByState(transition.target);
+
+    if (null != transition.actions) {
+      final bag = withBag ?? _getBag();
+
+      bag.addKeyValue(kBagStateMachineSendEvent, event);
+      if (payload is _SendPayload) {
+        bag.setStateMachinePayload(payload.data);
+      }
+      transition.actions?.executeWithBag(origin, bag);
+    }
+
+    if (!_isActive) return;
+    _machine.next(
+        (_, __) => CurrentState(state: targetNode.state, context: context));
+  }
+}
+
+class StateMachineScheduler {
+  StateMachineScheduler();
+  StateMachineScheduler.createAndExecute(void Function() callback) {
+    _process(callback);
+    _flushEvents();
+  }
+  final List<void Function()> _queue = [];
+  bool _processingEvent = false;
+
+  void dispose() {
+    _queue.clear();
+  }
+
+  void schedule(void Function() task) {
+    if (_processingEvent) {
+      _queue.add(task);
+      return;
+    }
+
+    if (_queue.isNotEmpty) {
+      throw Exception(
+          'Event queue should be empty when it is not processing events');
+    }
+
+    _process(task);
+    _flushEvents();
+  }
+
+  void _flushEvents() {
+    if (_queue.isEmpty) return;
+    void Function()? nextCallback = _queue.removeAt(0);
+    while (null != nextCallback) {
+      _process(nextCallback);
+      if (_queue.isEmpty) {
+        nextCallback = null;
+      } else {
+        nextCallback = _queue.removeAt(0);
+      }
+    }
+  }
+
+  void _process(void Function() callback) {
+    _processingEvent = true;
+    try {
+      callback();
+    } catch (e, trace) {
+      // there is no use to keep the future events
+      // as the situation is not anymore the same
+      _queue.clear();
+
+      Error.throwWithStackTrace(e, trace);
+    } finally {
+      _processingEvent = false;
+    }
   }
 }
