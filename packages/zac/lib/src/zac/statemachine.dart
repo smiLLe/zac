@@ -253,8 +253,8 @@ class StateMachine extends StateNotifier<CurrentState> {
 
   final List<StateNode> nodes;
   final AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref;
-  late StateMachineSession session =
-      StateMachineSession(this, state.state, state.context);
+  late StateMachineSession session = StateMachineSession(this, state.state,
+      state.context, 'machine.init', const SendPayload.none());
   final StateMachineScheduler scheduler = StateMachineScheduler();
 
   StateNode findNodeByState(String state) {
@@ -304,18 +304,22 @@ Remove the duplicated state: $states
 
   @override
   void dispose() {
+    scheduler.dispose();
     session.dispose();
     super.dispose();
   }
 
   void next(
-      CurrentState Function(String currentState, MachineContext context) cb) {
+      CurrentState Function(String currentState, MachineContext context) cb,
+      String event,
+      SendPayload payload) {
     session.dispose();
 
     scheduler.schedule(() {
       final nextState = cb(state.state, state.context);
       state = nextState;
-      session = StateMachineSession(this, nextState.state, nextState.context);
+      session = StateMachineSession(
+          this, nextState.state, nextState.context, event, payload);
       session.enter();
     });
   }
@@ -330,10 +334,18 @@ Remove the duplicated state: $states
 }
 
 class StateMachineSession {
-  StateMachineSession(this._machine, this.inState, this.context);
+  StateMachineSession(
+    this._machine,
+    this.inState,
+    this.context,
+    this.onEvent,
+    this.payload,
+  );
 
   final StateMachine _machine;
   final String inState;
+  final String onEvent;
+  final SendPayload payload;
   MachineContext context;
 
   late final ZacOriginStateMachineAction origin = ZacOriginStateMachineAction(
@@ -355,16 +367,24 @@ class StateMachineSession {
   }
 
   void _fillBag(ContextBag bag) {
-    bag
-      ..addKeyValue(kBagStateMachineCurrentContext, context)
-      ..addKeyValue(kBagStateMachineUpdateContext, (MachineContext context) {
+    final pl = payload;
+    bag.addAll(<String, dynamic>{
+      kBagStateMachineCurrentContext: context,
+      kBagStateMachineUpdateContext: (MachineContext context) {
+        if (!_isActive) return;
         bag.addKeyValue(kBagStateMachineCurrentContext, context);
         this.context = context;
-      })
-      ..addKeyValue(kBagStateMachineCurrentState, inState)
-      ..addKeyValue(kBagStateMachineSetState, (String state) {
-        _machine.next((_, __) => CurrentState(state: state, context: context));
-      });
+      },
+      kBagStateMachineCurrentState: inState,
+      kBagStateMachineSetState: (String state) {
+        if (!_isActive) return;
+        _machine.next((_, __) => CurrentState(state: state, context: context),
+            'machine.next', const SendPayload.none());
+      },
+      kBagStateMachineSendEvent: onEvent,
+      if (pl is _SendPayload) kBagStateMachineSendPayload: pl.data,
+      if (pl is _SendPayload) kBagPayload: pl.data,
+    });
   }
 
   @mustCallSuper
@@ -395,19 +415,22 @@ class StateMachineSession {
     final transition = candidates.first;
     final targetNode = _machine.findNodeByState(transition.target);
 
-    if (null != transition.actions) {
+    if (true == transition.actions?.actions.isNotEmpty) {
       final bag = withBag ?? _getBag();
-
-      bag.addKeyValue(kBagStateMachineSendEvent, event);
-      if (payload is _SendPayload) {
-        bag.setStateMachinePayload(payload.data);
-      }
+      bag.addAll(<String, dynamic>{
+        kBagStateMachineSendEvent: event,
+        if (payload is _SendPayload) kBagStateMachineSendPayload: payload.data,
+        if (payload is _SendPayload) kBagPayload: payload.data,
+      });
       transition.actions?.executeWithBag(origin, bag);
+      bag.clear();
     }
 
     if (!_isActive) return;
     _machine.next(
-        (_, __) => CurrentState(state: targetNode.state, context: context));
+        (_, __) => CurrentState(state: targetNode.state, context: context),
+        event,
+        payload);
   }
 }
 
