@@ -16,8 +16,10 @@ part 'statemachine.freezed.dart';
 part 'statemachine.g.dart';
 
 typedef MachineContext = Object?;
-typedef UpdateContext = void Function(MachineContext context);
-typedef SetState = void Function(String state);
+typedef StateMachineBagSetContext = void Function(MachineContext context);
+typedef StateMachineBagGetContext = MachineContext Function();
+typedef StateMachineBagSetState = void Function(String state);
+typedef StateMachineBagGetState = String Function();
 
 @nonConverterFreezed
 class SendPayload with _$SendPayload {
@@ -117,16 +119,16 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
             );
       },
       updateContext: (obj) {
-        final updateContext = bag.safeGet<UpdateContext>(
+        final updateContext = bag.safeGet<StateMachineBagSetContext>(
             key: kBagStateMachineUpdateContext, notFound: null);
-        final machineContext = bag.safeGet<MachineContext>(
+        final getContext = bag.safeGet<StateMachineBagGetContext>(
             key: kBagStateMachineCurrentContext, notFound: null);
         updateContext(
           obj.transformer
-              .transformWithBag(ZacTransformValue(machineContext), origin, bag),
+              .transformWithBag(ZacTransformValue(getContext()), origin, bag),
         );
       },
-      setState: (obj) => bag.safeGet<SetState>(
+      setState: (obj) => bag.safeGet<StateMachineBagSetState>(
           key: kBagStateMachineSetState, notFound: null)(obj.state),
     );
   }
@@ -348,58 +350,60 @@ class StateMachineSession {
   final SendPayload payload;
   MachineContext context;
 
-  late final ZacOriginStateMachineAction origin = ZacOriginStateMachineAction(
-    ref: _machine.ref,
-    lifetime: ZacOriginLifetimeStateMachineAction(
-      isActive: () => _isActive,
-      onBecomeInactive: onBecomeInactiveCbs.add,
-    ),
-  );
-
-  final List<void Function()> onBecomeInactiveCbs = [];
+  late final ZacOriginStateMachineAction _enterStateOrigin =
+      _getOrigin(_enterStateBag.onClear);
+  late final ContextBag _enterStateBag = _getBag();
   bool _isActive = true;
-  late final ContextBag _actionsBag = _getBag();
+
+  ZacOriginStateMachineAction _getOrigin(
+          void Function(void Function() cb) add) =>
+      ZacOriginStateMachineAction(
+        ref: _machine.ref,
+        lifetime: ZacOriginLifetimeStateMachineAction(
+          isActive: () => _isActive,
+          onBecomeInactive: add,
+        ),
+      );
 
   ContextBag _getBag() {
     final bag = ContextBag();
-    _fillBag(bag);
-    return bag;
-  }
-
-  void _fillBag(ContextBag bag) {
     final pl = payload;
+    // ignore: prefer_function_declarations_over_variables
+    final StateMachineBagGetContext bagGetContext = () => context;
+    // ignore: prefer_function_declarations_over_variables
+    final StateMachineBagSetContext bagSetContext = (MachineContext context) {
+      if (!_isActive) return;
+      this.context = context;
+    };
+    // ignore: prefer_function_declarations_over_variables
+    final StateMachineBagGetState bagGetState = () => inState;
+    // ignore: prefer_function_declarations_over_variables
+    final StateMachineBagSetState bagSetState = (String state) {
+      if (!_isActive) return;
+      _machine.next((_, __) => CurrentState(state: state, context: context),
+          'machine.next', const SendPayload.none());
+    };
     bag.addAll(<String, dynamic>{
-      kBagStateMachineCurrentContext: context,
-      kBagStateMachineUpdateContext: (MachineContext context) {
-        if (!_isActive) return;
-        bag.addKeyValue(kBagStateMachineCurrentContext, context);
-        this.context = context;
-      },
-      kBagStateMachineCurrentState: inState,
-      kBagStateMachineSetState: (String state) {
-        if (!_isActive) return;
-        _machine.next((_, __) => CurrentState(state: state, context: context),
-            'machine.next', const SendPayload.none());
-      },
+      kBagStateMachineCurrentContext: bagGetContext,
+      kBagStateMachineUpdateContext: bagSetContext,
+      kBagStateMachineCurrentState: bagGetState,
+      kBagStateMachineSetState: bagSetState,
       kBagStateMachineSendEvent: onEvent,
       if (pl is _SendPayload) kBagStateMachineSendPayload: pl.data,
       if (pl is _SendPayload) kBagPayload: pl.data,
     });
+    return bag;
   }
 
   @mustCallSuper
   void dispose() {
-    for (var cb in onBecomeInactiveCbs) {
-      cb();
-    }
-    onBecomeInactiveCbs.clear();
+    _enterStateBag.clear();
     _isActive = false;
-    _actionsBag.clear();
   }
 
   void enter() {
     final node = _machine.findNodeByState(inState);
-    node.actions?.executeWithBag(origin, _actionsBag);
+    node.actions?.executeWithBag(_enterStateOrigin, _enterStateBag);
   }
 
   void send(
@@ -417,6 +421,7 @@ class StateMachineSession {
 
     if (true == transition.actions?.actions.isNotEmpty) {
       final bag = withBag ?? _getBag();
+      final origin = _getOrigin(bag.onClear);
       bag.addAll(<String, dynamic>{
         kBagStateMachineSendEvent: event,
         if (payload is _SendPayload) kBagStateMachineSendPayload: payload.data,
@@ -426,7 +431,9 @@ class StateMachineSession {
       bag.clear();
     }
 
+    /// An Action might have set another state
     if (!_isActive) return;
+
     _machine.next(
         (_, __) => CurrentState(state: targetNode.state, context: context),
         event,

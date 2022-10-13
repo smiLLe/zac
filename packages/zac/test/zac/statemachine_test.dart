@@ -410,20 +410,20 @@ void main() {
             (ref) => StateMachine(
               ref: ref,
               context: 0,
-              state: 'counter',
+              state: 'a',
               nodes: [
                 StateNode(
-                  state: 'counter',
+                  state: 'a',
                   on: [
                     Transition(
                       event: 'NEXT',
-                      target: 'counter',
-                      actions:
-                          ZacActions([StateMachineActions.setState('other')]),
+                      target: 'b',
+                      actions: ZacActions([StateMachineActions.setState('c')]),
                     )
                   ],
                 ),
-                StateNode(state: 'other')
+                StateNode(state: 'b'),
+                StateNode(state: 'c')
               ],
             ),
           ),
@@ -431,18 +431,22 @@ void main() {
       ],
     );
 
-    final sub = container.listen(
+    final List<String> states = [];
+    final sub = container.listen<CurrentState>(
       StateMachine.provider('machine'),
-      (previous, next) {},
+      (previous, next) {
+        states.add(next.state);
+      },
     );
 
-    expect(sub.read().state, 'counter');
+    expect(sub.read().state, 'a');
 
     container
         .read(StateMachine.provider('machine').notifier)
         .send('NEXT', const SendPayload.none());
 
-    expect(sub.read().state, 'other');
+    expect(sub.read().state, 'c');
+    expect(states, isNot(contains('b')));
   });
 
   test('Actions will execute in correct order in state ', () async {
@@ -583,7 +587,7 @@ void main() {
                   actions: ZacActions(
                     [
                       LeakAction((origin, bag) {
-                        final setState = bag.safeGet<SetState>(
+                        final setState = bag.safeGet<StateMachineBagSetState>(
                           key: kBagStateMachineSetState,
                           notFound: null,
                         );
@@ -627,7 +631,7 @@ void main() {
                   actions: ZacActions(
                     [
                       LeakAction((origin, bag) async {
-                        final setState = bag.safeGet<SetState>(
+                        final setState = bag.safeGet<StateMachineBagSetState>(
                           key: kBagStateMachineSetState,
                           notFound: null,
                         );
@@ -652,6 +656,150 @@ void main() {
     );
     await completer.future;
     expect(sub.read().state, 'b');
+  });
+
+  group('Access Bag content', () {
+    test('in transition action', () {
+      var map = <String, dynamic>{};
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                ref: ref,
+                context: null,
+                state: 'a',
+                nodes: [
+                  StateNode(
+                    state: 'a',
+                    on: [
+                      Transition(
+                        event: 'NEXT',
+                        target: 'b',
+                        actions: ZacActions(
+                          [
+                            LeakAction((origin, bag) async {
+                              map = <String, dynamic>{...bag};
+                            }),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  StateNode(state: 'b', on: [
+                    Transition(
+                      event: 'BACK',
+                      target: 'a',
+                      actions: ZacActions(
+                        [
+                          LeakAction((origin, bag) async {
+                            map = <String, dynamic>{...bag};
+                          }),
+                        ],
+                      ),
+                    )
+                  ]),
+                ],
+              ),
+            ),
+          )
+        ],
+      );
+
+      final sub = container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
+
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const SendPayload.none());
+
+      expect(
+          map['StateMachine.currentContext'], isA<StateMachineBagGetContext>());
+      expect(map['StateMachine.currentState'], isA<StateMachineBagGetState>());
+      expect(
+          map['StateMachine.updateContext'], isA<StateMachineBagSetContext>());
+      expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
+      expect(map['StateMachine.sendEvent'], 'NEXT');
+      expect(map.containsKey('payload'), isFalse);
+      expect(map.containsKey('StateMachine.sendPayload'), isFalse);
+
+      /// back to 'a'
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('BACK', SendPayload('payload stuff'));
+
+      expect(map['StateMachine.sendEvent'], 'BACK');
+      expect(map['payload'], 'payload stuff');
+      expect(map['StateMachine.sendPayload'], 'payload stuff');
+
+      sub.close();
+    });
+
+    test('in state action', () {
+      var map = <String, dynamic>{};
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                ref: ref,
+                context: null,
+                state: 'a',
+                nodes: [
+                  StateNode(
+                    state: 'a',
+                    actions: ZacActions(
+                      [
+                        LeakAction((origin, bag) async {
+                          map = <String, dynamic>{...bag};
+                        }),
+                        StateMachineActions.setState('b'),
+                      ],
+                    ),
+                  ),
+                  StateNode(
+                    state: 'b',
+                    on: [Transition(event: 'BACK', target: 'a')],
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      );
+
+      final sub = container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
+
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const SendPayload.none());
+
+      expect(
+          map['StateMachine.currentContext'], isA<StateMachineBagGetContext>());
+      expect(map['StateMachine.currentState'], isA<StateMachineBagGetState>());
+      expect(
+          map['StateMachine.updateContext'], isA<StateMachineBagSetContext>());
+      expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
+      expect(map['StateMachine.sendEvent'], 'machine.init');
+      expect(map.containsKey('payload'), isFalse);
+      expect(map.containsKey('StateMachine.sendPayload'), isFalse);
+
+      /// back to 'a'
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('BACK', SendPayload('payload stuff'));
+
+      expect(map['StateMachine.sendEvent'], 'BACK');
+      expect(map['payload'], 'payload stuff');
+      expect(map['StateMachine.sendPayload'], 'payload stuff');
+
+      sub.close();
+    });
   });
 }
 
