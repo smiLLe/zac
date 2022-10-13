@@ -863,6 +863,64 @@ void main() {
     });
   });
 
+  group('StateMachineProvider', () {
+    testWidgets('exposes and disposes the StateMachine', (tester) async {
+      late StateMachine machine;
+      await testZacWidget(
+        tester,
+        StateMachineProviderBuilder(
+            family: ZacString('machine'),
+            initialContext: ZacObject(1),
+            initialState: ZacString('a'),
+            states: [
+              StateNode(state: 'a'),
+              StateNode(state: 'b'),
+            ],
+            child: LeakOrigin(
+              cb: (origin) {
+                machine =
+                    origin.ref.watch(StateMachine.provider('machine').notifier);
+              },
+            )),
+      );
+
+      expect(machine.mounted, isTrue);
+
+      await testZacWidget(tester, FlutterSizedBox());
+      expect(machine.mounted, isFalse);
+    });
+
+    testWidgets('exposes the state and context as SharedValues',
+        (tester) async {
+      await testZacWidget(
+        tester,
+        StateMachineProviderBuilder(
+          family: ZacString('machine'),
+          initialContext: ZacObject(1),
+          initialState: ZacString('a'),
+          states: [
+            StateNode(state: 'a'),
+            StateNode(state: 'b'),
+          ],
+          child: FlutterColumn(
+            children: ListOfZacWidget([
+              FlutterText(ZacString.consume('machine.state')),
+              FlutterText(ZacString.consume(
+                'machine.context',
+                transformer: ZacTransformers(
+                  [ObjectTransformer.toString()],
+                ),
+              )),
+            ]),
+          ),
+        ),
+      );
+
+      expect(find.text('a'), findsOneWidget);
+      expect(find.text('1'), findsOneWidget);
+    });
+  });
+
   group('StateMachineScheduler', () {
     test('should process event only once', () {
       int calledCount = 0;

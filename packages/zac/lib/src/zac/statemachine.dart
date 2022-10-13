@@ -167,15 +167,15 @@ class StateMachineProviderBuilder
   }
 }
 
-class StateMachineProvider extends HookConsumerWidget {
+class StateMachineProvider extends StatelessWidget {
   const StateMachineProvider({
     required this.initialState,
     required this.initialContext,
     required this.states,
     required this.family,
     required this.builder,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String initialState;
   final Object? initialContext;
@@ -184,29 +184,24 @@ class StateMachineProvider extends HookConsumerWidget {
   final Widget Function(ZacOriginWidgetTree origin) builder;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final provider = useMemoized(() {
-      return AutoDisposeStateNotifierProvider<StateMachine, CurrentState>(
-          (ref) {
-        return StateMachine(
-          ref: ref,
-          context: initialContext,
-          state: initialState,
-          nodes: states,
-        );
-      });
-    }, [initialState, initialContext, states]);
-
+  Widget build(BuildContext context) {
     return ProviderScope(
       overrides: [
-        StateMachine.provider(family).overrideWithProvider(provider),
+        StateMachine.provider(family).overrideWithProvider(
+            AutoDisposeStateNotifierProvider<StateMachine, CurrentState>((ref) {
+          return StateMachine(
+            ref: ref,
+            context: initialContext,
+            state: initialState,
+            nodes: states,
+          );
+        })),
         SharedValue.provider('$family.state')
             .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
           (ref) {
             return SharedValue(ref.watch(StateMachine.provider(family)
                 .select((curState) => curState.state)));
           },
-          // dependencies: [statemachineProvider(family)],
         )),
         SharedValue.provider('$family.context')
             .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
@@ -214,7 +209,6 @@ class StateMachineProvider extends HookConsumerWidget {
             return SharedValue(ref.watch(StateMachine.provider(family)
                 .select((curState) => curState.context)));
           },
-          // dependencies: [statemachineProvider(family)],
         )),
       ],
       child: ZacUpdateOrigin(builder: builder),

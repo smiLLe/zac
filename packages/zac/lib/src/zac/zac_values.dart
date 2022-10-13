@@ -47,17 +47,8 @@ mixin ConsumeValue<Of> {
     late Object? value;
     if (consumedValue is ActualValue<Object?>) {
       value = consumedValue.getActualValue(origin);
-    } else if (consumedValue is Of) {
-      value = consumedValue;
     } else {
-      throw ConsumeSharedValueOfError('''
-It was not possible to use a consumed $SharedValue in "$runtimeType" for family "$family".
-The expected possible types for the consumed $SharedValue were:
-$Of || ${_typeOf<ActualValue<Of>>()} || ${_typeOf<ActualValue<Object?>>()}
-
-The actual value returned was of runtimeType "${consumedValue.runtimeType}".
-$consumedValue
-''');
+      value = consumedValue;
     }
 
     if (value is Of &&
@@ -69,7 +60,7 @@ $consumedValue
       throw ConsumeSharedValueOfError('''
 It was not possible to return a $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
-It was expected to return a type of: "${_typeOf<Of>()}".
+It was expected to return a type of: "$Of".
 
 This error was created because there are no transformers to use.
 Add a transformer in order to transform the $SharedValue into a type of: "${_typeOf<Of>()}".
