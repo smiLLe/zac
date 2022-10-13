@@ -61,6 +61,10 @@ class StateMachineValidationError extends StateError {
   StateMachineValidationError(super.message);
 }
 
+class StateMachineError extends StateError {
+  StateMachineError(super.message);
+}
+
 extension XTransitions on Iterable<Transition> {
   Iterable<Transition> findCandidates(String event) {
     return where((transition) => transition.event == event);
@@ -330,6 +334,14 @@ Remove the duplicated state: $states
   }) {
     session.send(event, payload, withBag: withBag);
   }
+
+  void trySend(
+    String event,
+    EventPayload payload, {
+    ContextBag? withBag,
+  }) {
+    session.trySend(event, payload, withBag: withBag);
+  }
 }
 
 class StateMachineSession {
@@ -394,30 +406,13 @@ class StateMachineSession {
     return bag;
   }
 
-  @mustCallSuper
-  void dispose() {
-    _enterStateBag.clear();
-    _isActive = false;
-  }
-
-  void enter() {
-    final node = _machine.findNodeByState(inState);
-    node.actions?.executeWithBag(_enterStateOrigin, _enterStateBag);
-  }
-
-  void send(
+  void _transition(
+    Transition transition,
     String event,
     EventPayload payload, {
     ContextBag? withBag,
   }) {
-    if (!_isActive) return;
-
-    final curNode = _machine.findNodeByState(inState);
-    final candidates = curNode.on.findCandidates(event);
-    if (candidates.isEmpty) return;
-    final transition = candidates.first;
     final targetNode = _machine.findNodeByState(transition.target);
-
     if (true == transition.actions?.actions.isNotEmpty) {
       final bag = withBag ?? _getBag();
       final origin = _getOrigin(bag.onClear);
@@ -438,6 +433,54 @@ class StateMachineSession {
         (_, __) => CurrentState(state: targetNode.state, context: context),
         event,
         payload);
+  }
+
+  @mustCallSuper
+  void dispose() {
+    _enterStateBag.clear();
+    _isActive = false;
+  }
+
+  void enter() {
+    final node = _machine.findNodeByState(inState);
+    node.actions?.executeWithBag(_enterStateOrigin, _enterStateBag);
+  }
+
+  void trySend(
+    String event,
+    EventPayload payload, {
+    ContextBag? withBag,
+  }) {
+    assert(_isActive, '''
+It is no longer possible to send event "$event" to the $StateMachine in state "$inState".
+This state and so the $StateMachineSession is no longer active.''');
+    if (!_isActive) return;
+
+    final curNode = _machine.findNodeByState(inState);
+    final candidates = curNode.on.findCandidates(event);
+    if (candidates.isEmpty) return;
+    _transition(candidates.first, event, payload, withBag: withBag);
+  }
+
+  void send(
+    String event,
+    EventPayload payload, {
+    ContextBag? withBag,
+  }) {
+    assert(_isActive, '''
+It is no longer possible to send event "$event" to the $StateMachine in state "$inState".
+This state and so the $StateMachineSession is no longer active.''');
+    if (!_isActive) return;
+
+    final curNode = _machine.findNodeByState(inState);
+    final candidates = curNode.on.findCandidates(event);
+    if (candidates.isEmpty) {
+      throw StateMachineError('''
+An error occurred while sending an event to a $StateMachine.
+There was no transition found for event "$event" in state "$inState".
+Using payload: $payload''');
+    }
+    _transition(candidates.first, event, payload, withBag: withBag);
   }
 }
 

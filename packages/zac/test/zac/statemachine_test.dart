@@ -10,7 +10,6 @@ import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/statemachine.dart';
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
 
@@ -180,6 +179,80 @@ void main() {
     expect(sub.read().context, isNull);
 
     sub.close();
+  });
+
+  test('Send event to disposed machine will assert', () {
+    final container = ProviderContainer(
+      overrides: [
+        StateMachine.provider('machine').overrideWithProvider(
+          StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+            (ref) => StateMachine(
+              ref: ref,
+              context: null,
+              state: 'a',
+              nodes: [
+                StateNode(state: 'a'),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+
+    final sub = container.listen(
+      StateMachine.provider('machine'),
+      (previous, next) {},
+    );
+
+    final machine = container.read(StateMachine.provider('machine').notifier);
+
+    sub.close();
+    container.dispose();
+
+    expect(() => machine.send('IGNORE', const EventPayload.none()),
+        throwsAssertionError);
+    expect(() => machine.trySend('IGNORE', const EventPayload.none()),
+        throwsAssertionError);
+  });
+
+  test('Send event to machine but there is no transition candidate', () {
+    final container = ProviderContainer(
+      overrides: [
+        StateMachine.provider('machine').overrideWithProvider(
+          StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+            (ref) => StateMachine(
+              ref: ref,
+              context: null,
+              state: 'a',
+              nodes: [
+                StateNode(
+                  state: 'a',
+                  on: [Transition(event: 'NEXT', target: 'b')],
+                ),
+                StateNode(state: 'b'),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+
+    container.listen(
+      StateMachine.provider('machine'),
+      (previous, next) {},
+    );
+
+    final machine = container.read(StateMachine.provider('machine').notifier);
+
+    expect(
+        () => machine.send('DOESN_NOT_EXIST', const EventPayload.none()),
+        throwsA(isA<StateMachineError>().having(
+            (p0) => p0.message,
+            'Error message',
+            contains('There was no transition found for event'))));
+
+    expect(() => machine.trySend('DOESN_NOT_EXIST', const EventPayload.none()),
+        returnsNormally);
   });
 
   group('Lifetime of an Action', () {
@@ -404,7 +477,7 @@ void main() {
     expect(sub.read().context, 101);
   });
 
-  test('A Transition Action may force a different state', () async {
+  test('Action during Transition may force a different state', () async {
     final container = ProviderContainer(
       overrides: [
         StateMachine.provider('machine').overrideWithProvider(
@@ -774,10 +847,6 @@ void main() {
         StateMachine.provider('machine'),
         (previous, next) {},
       );
-
-      container
-          .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const EventPayload.none());
 
       expect(map['StateMachine.getContext'], isA<StateMachineBagGetContext>());
       expect(map['StateMachine.getState'], isA<StateMachineBagGetState>());
