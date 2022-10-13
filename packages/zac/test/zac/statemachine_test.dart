@@ -662,11 +662,7 @@ void main() {
                   actions: ZacActions(
                     [
                       LeakAction((origin, bag) {
-                        final setState = bag.safeGet<StateMachineBagSetState>(
-                          key: kBagStateMachineSetState,
-                          notFound: null,
-                        );
-                        setState('b');
+                        bag.getStateMachineSession().nextState('b');
                       }),
                       LeakAction(enterNeverCalled),
                     ],
@@ -706,12 +702,9 @@ void main() {
                   actions: ZacActions(
                     [
                       LeakAction((origin, bag) async {
-                        final setState = bag.safeGet<StateMachineBagSetState>(
-                          key: kBagStateMachineSetState,
-                          notFound: null,
-                        );
+                        final session = bag.getStateMachineSession();
                         await Future.microtask(() {});
-                        setState('b');
+                        session.nextState('b');
                         completer.complete();
                       }),
                     ],
@@ -736,6 +729,7 @@ void main() {
   group('Access Bag content', () {
     test('in transition action', () {
       var map = <String, dynamic>{};
+      StateMachineSession session;
       final container = ProviderContainer(
         overrides: [
           StateMachine.provider('machine').overrideWithProvider(
@@ -754,6 +748,7 @@ void main() {
                         actions: ZacActions(
                           [
                             LeakAction((origin, bag) async {
+                              session = bag.getStateMachineSession();
                               map = <String, dynamic>{...bag};
                             }),
                           ],
@@ -790,28 +785,27 @@ void main() {
           .read(StateMachine.provider('machine').notifier)
           .send('NEXT', const EventPayload.none());
 
-      expect(map['StateMachine.getContext'], isA<StateMachineBagGetContext>());
-      expect(map['StateMachine.getState'], isA<StateMachineBagGetState>());
-      expect(map['StateMachine.setContext'], isA<StateMachineBagSetContext>());
-      expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
-      expect(map['StateMachine.event'], 'NEXT');
+      expect(map['machine.session'], isA<StateMachineSession>());
+      expect(map['machine.sendEvent'], 'NEXT');
       expect(map.containsKey('payload'), isFalse);
-      expect(map.containsKey('StateMachine.eventPayload'), isFalse);
+      expect(map.containsKey('machine.eventPayload'), isFalse);
 
       /// back to 'a'
       container
           .read(StateMachine.provider('machine').notifier)
           .send('BACK', EventPayload('payload stuff'));
 
-      expect(map['StateMachine.event'], 'BACK');
+      expect(map['machine.session'], isA<StateMachineSession>());
+      expect(map['machine.sendEvent'], 'BACK');
       expect(map['payload'], 'payload stuff');
-      expect(map['StateMachine.eventPayload'], 'payload stuff');
+      expect(map['machine.eventPayload'], 'payload stuff');
 
       sub.close();
     });
 
     test('in state action', () {
       var map = <String, dynamic>{};
+      StateMachineSession session;
       final container = ProviderContainer(
         overrides: [
           StateMachine.provider('machine').overrideWithProvider(
@@ -826,6 +820,7 @@ void main() {
                     actions: ZacActions(
                       [
                         LeakAction((origin, bag) async {
+                          session = bag.getStateMachineSession();
                           map = <String, dynamic>{...bag};
                         }),
                         StateMachineActions.setState('b'),
@@ -847,23 +842,18 @@ void main() {
         StateMachine.provider('machine'),
         (previous, next) {},
       );
-
-      expect(map['StateMachine.getContext'], isA<StateMachineBagGetContext>());
-      expect(map['StateMachine.getState'], isA<StateMachineBagGetState>());
-      expect(map['StateMachine.setContext'], isA<StateMachineBagSetContext>());
-      expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
-      expect(map['StateMachine.event'], 'machine.init');
+      expect(map['machine.session'], isA<StateMachineSession>());
       expect(map.containsKey('payload'), isFalse);
-      expect(map.containsKey('StateMachine.eventPayload'), isFalse);
+      expect(map.containsKey('machine.eventPayload'), isFalse);
 
       /// back to 'a'
       container
           .read(StateMachine.provider('machine').notifier)
           .send('BACK', EventPayload('payload stuff'));
 
-      expect(map['StateMachine.event'], 'BACK');
+      expect(map['machine.session'], isA<StateMachineSession>());
       expect(map['payload'], 'payload stuff');
-      expect(map['StateMachine.eventPayload'], 'payload stuff');
+      expect(map['machine.eventPayload'], 'payload stuff');
 
       sub.close();
     });

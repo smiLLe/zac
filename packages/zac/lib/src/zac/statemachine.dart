@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -16,10 +15,6 @@ part 'statemachine.freezed.dart';
 part 'statemachine.g.dart';
 
 typedef MachineContext = Object?;
-typedef StateMachineBagSetContext = void Function(MachineContext context);
-typedef StateMachineBagGetContext = MachineContext Function();
-typedef StateMachineBagSetState = void Function(String state);
-typedef StateMachineBagGetState = String Function();
 
 @nonConverterFreezed
 class EventPayload with _$EventPayload {
@@ -71,6 +66,13 @@ extension XTransitions on Iterable<Transition> {
   }
 }
 
+extension XGetStateMachineSession on ContextBag {
+  StateMachineSession getStateMachineSession() {
+    return safeGet<StateMachineSession>(
+        key: StateMachine.bagSessionKey, notFound: null);
+  }
+}
+
 @defaultConverterFreezed
 class StateMachineActions with _$StateMachineActions implements ZacAction {
   const StateMachineActions._();
@@ -87,11 +89,6 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
   factory StateMachineActions.send({
     required SharedValueFamily family,
     required ZacString event,
-
-    /// Optional payload which will be available as [kBagStateMachineEventPayload]
-    /// and [kBagPayload].
-    /// A payload send by an action will still be available
-    /// through [kBagActionPayload].
     ZacObject? payload,
   }) = _StateMachineActionsSend;
 
@@ -123,17 +120,13 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
             );
       },
       updateContext: (obj) {
-        final updateContext = bag.safeGet<StateMachineBagSetContext>(
-            key: kBagStateMachineSetContext, notFound: null);
-        final getContext = bag.safeGet<StateMachineBagGetContext>(
-            key: kBagStateMachineGetContext, notFound: null);
-        updateContext(
-          obj.transformer
-              .transformWithBag(ZacTransformValue(getContext()), origin, bag),
+        final session = bag.getStateMachineSession();
+        session.setContext(
+          obj.transformer.transformWithBag(
+              ZacTransformValue(session.context), origin, bag),
         );
       },
-      setState: (obj) => bag.safeGet<StateMachineBagSetState>(
-          key: kBagStateMachineSetState, notFound: null)(obj.state),
+      setState: (obj) => bag.getStateMachineSession().nextState(obj.state),
     );
   }
 }
@@ -231,6 +224,9 @@ class CurrentState with _$CurrentState {
 class StateMachine extends StateNotifier<CurrentState> {
   static const String eventInit = 'machine.init';
   static const String eventNext = 'machine.next';
+  static const String bagSessionKey = 'machine.session';
+  static const String bagPayloadKey = 'machine.eventPayload';
+  static const String bagSendEventKey = 'machine.sendEvent';
 
   StateMachine({
     required String state,
@@ -245,7 +241,7 @@ class StateMachine extends StateNotifier<CurrentState> {
     }(), '');
 
     scheduler.schedule(() {
-      session.enter();
+      session._enter();
     });
   }
 
@@ -323,7 +319,7 @@ Remove the duplicated state: $states
       state = nextState;
       session = StateMachineSession(
           this, nextState.state, nextState.context, event, payload);
-      session.enter();
+      session._enter();
     });
   }
 
@@ -348,23 +344,21 @@ class StateMachineSession {
   StateMachineSession(
     this._machine,
     this.inState,
-    this.context,
-    this.onEvent,
-    this.payload,
+    this._context,
+    this.createdByEvent,
+    this.createdFromPayload,
   );
 
   final StateMachine _machine;
   final String inState;
-  final String onEvent;
-  final EventPayload payload;
-  MachineContext context;
+  final String createdByEvent;
+  final EventPayload createdFromPayload;
+  MachineContext _context;
+  MachineContext get context => _context;
 
   late final ZacOriginStateMachineAction _enterStateOrigin =
       _getOrigin(_enterStateBag.onClear);
-  late final ContextBag _enterStateBag = _getBag()
-    ..addAll(<String, dynamic>{
-      kBagStateMachineEvent: onEvent,
-    });
+  late final ContextBag _enterStateBag = _getBag();
   bool _isActive = true;
 
   ZacOriginStateMachineAction _getOrigin(
@@ -379,28 +373,10 @@ class StateMachineSession {
 
   ContextBag _getBag() {
     final bag = ContextBag();
-    final pl = payload;
-    // ignore: prefer_function_declarations_over_variables
-    final StateMachineBagGetContext bagGetContext = () => context;
-    // ignore: prefer_function_declarations_over_variables
-    final StateMachineBagSetContext bagSetContext = (MachineContext context) {
-      if (!_isActive) return;
-      this.context = context;
-    };
-    // ignore: prefer_function_declarations_over_variables
-    final StateMachineBagGetState bagGetState = () => inState;
-    // ignore: prefer_function_declarations_over_variables
-    final StateMachineBagSetState bagSetState = (String state) {
-      if (!_isActive) return;
-      _machine.next((_, __) => CurrentState(state: state, context: context),
-          StateMachine.eventNext, const EventPayload.none());
-    };
+    final pl = createdFromPayload;
     bag.addAll(<String, dynamic>{
-      kBagStateMachineGetContext: bagGetContext,
-      kBagStateMachineSetContext: bagSetContext,
-      kBagStateMachineGetState: bagGetState,
-      kBagStateMachineSetState: bagSetState,
-      if (pl is _EventPayload) kBagStateMachineEventPayload: pl.data,
+      StateMachine.bagSessionKey: this,
+      if (pl is _EventPayload) StateMachine.bagPayloadKey: pl.data,
       if (pl is _EventPayload) kBagPayload: pl.data,
     });
     return bag;
@@ -417,9 +393,8 @@ class StateMachineSession {
       final bag = withBag ?? _getBag();
       final origin = _getOrigin(bag.onClear);
       bag.addAll(<String, dynamic>{
-        kBagStateMachineEvent: event,
-        if (payload is _EventPayload)
-          kBagStateMachineEventPayload: payload.data,
+        StateMachine.bagSendEventKey: event,
+        if (payload is _EventPayload) StateMachine.bagPayloadKey: payload.data,
         if (payload is _EventPayload) kBagPayload: payload.data,
       });
       transition.actions?.executeWithBag(origin, bag);
@@ -430,9 +405,14 @@ class StateMachineSession {
     if (!_isActive) return;
 
     _machine.next(
-        (_, __) => CurrentState(state: targetNode.state, context: context),
+        (_, __) => CurrentState(state: targetNode.state, context: _context),
         event,
         payload);
+  }
+
+  void _enter() {
+    final node = _machine.findNodeByState(inState);
+    node.actions?.executeWithBag(_enterStateOrigin, _enterStateBag);
   }
 
   @mustCallSuper
@@ -441,9 +421,15 @@ class StateMachineSession {
     _isActive = false;
   }
 
-  void enter() {
-    final node = _machine.findNodeByState(inState);
-    node.actions?.executeWithBag(_enterStateOrigin, _enterStateBag);
+  void setContext(MachineContext context) {
+    if (!_isActive) return;
+    _context = context;
+  }
+
+  void nextState(String state) {
+    if (!_isActive) return;
+    _machine.next((_, __) => CurrentState(state: state, context: _context),
+        StateMachine.eventNext, const EventPayload.none());
   }
 
   void trySend(
