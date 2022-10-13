@@ -22,9 +22,9 @@ typedef StateMachineBagSetState = void Function(String state);
 typedef StateMachineBagGetState = String Function();
 
 @nonConverterFreezed
-class SendPayload with _$SendPayload {
-  factory SendPayload(Object? data) = _SendPayload;
-  const factory SendPayload.none() = _SendPayloadNone;
+class EventPayload with _$EventPayload {
+  factory EventPayload(Object? data) = _EventPayload;
+  const factory EventPayload.none() = _EventPayloadNone;
 }
 
 @defaultConverterFreezed
@@ -73,7 +73,7 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
   static const String unionValueUpdateContext =
-      'z:1:StateMachine:Action.updateContext';
+      'z:1:StateMachine:Action.setContext';
   static const String unionValueSetState = 'z:1:StateMachine:Action.setState';
 
   factory StateMachineActions.fromJson(Map<String, dynamic> json) =>
@@ -84,7 +84,7 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
     required SharedValueFamily family,
     required ZacString event,
 
-    /// Optional payload which will be available as [kBagStateMachineSendPayload]
+    /// Optional payload which will be available as [kBagStateMachineEventPayload]
     /// and [kBagPayload].
     /// A payload send by an action will still be available
     /// through [kBagActionPayload].
@@ -113,16 +113,16 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
             .send(
               obj.event.getValue(origin),
               null == obj.payload
-                  ? const SendPayload.none()
-                  : SendPayload(obj.payload?.getValue(origin)),
+                  ? const EventPayload.none()
+                  : EventPayload(obj.payload?.getValue(origin)),
               withBag: bag,
             );
       },
       updateContext: (obj) {
         final updateContext = bag.safeGet<StateMachineBagSetContext>(
-            key: kBagStateMachineUpdateContext, notFound: null);
+            key: kBagStateMachineSetContext, notFound: null);
         final getContext = bag.safeGet<StateMachineBagGetContext>(
-            key: kBagStateMachineCurrentContext, notFound: null);
+            key: kBagStateMachineGetContext, notFound: null);
         updateContext(
           obj.transformer
               .transformWithBag(ZacTransformValue(getContext()), origin, bag),
@@ -231,6 +231,9 @@ class CurrentState with _$CurrentState {
 }
 
 class StateMachine extends StateNotifier<CurrentState> {
+  static const String eventInit = 'machine.init';
+  static const String eventNext = 'machine.next';
+
   StateMachine({
     required String state,
     required MachineContext context,
@@ -256,7 +259,7 @@ class StateMachine extends StateNotifier<CurrentState> {
   final List<StateNode> nodes;
   final AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState> ref;
   late StateMachineSession session = StateMachineSession(this, state.state,
-      state.context, 'machine.init', const SendPayload.none());
+      state.context, StateMachine.eventInit, const EventPayload.none());
   final StateMachineScheduler scheduler = StateMachineScheduler();
 
   StateNode findNodeByState(String state) {
@@ -314,7 +317,7 @@ Remove the duplicated state: $states
   void next(
       CurrentState Function(String currentState, MachineContext context) cb,
       String event,
-      SendPayload payload) {
+      EventPayload payload) {
     session.dispose();
 
     scheduler.schedule(() {
@@ -328,7 +331,7 @@ Remove the duplicated state: $states
 
   void send(
     String event,
-    SendPayload payload, {
+    EventPayload payload, {
     ContextBag? withBag,
   }) {
     session.send(event, payload, withBag: withBag);
@@ -347,12 +350,15 @@ class StateMachineSession {
   final StateMachine _machine;
   final String inState;
   final String onEvent;
-  final SendPayload payload;
+  final EventPayload payload;
   MachineContext context;
 
   late final ZacOriginStateMachineAction _enterStateOrigin =
       _getOrigin(_enterStateBag.onClear);
-  late final ContextBag _enterStateBag = _getBag();
+  late final ContextBag _enterStateBag = _getBag()
+    ..addAll(<String, dynamic>{
+      kBagStateMachineEvent: onEvent,
+    });
   bool _isActive = true;
 
   ZacOriginStateMachineAction _getOrigin(
@@ -381,16 +387,15 @@ class StateMachineSession {
     final StateMachineBagSetState bagSetState = (String state) {
       if (!_isActive) return;
       _machine.next((_, __) => CurrentState(state: state, context: context),
-          'machine.next', const SendPayload.none());
+          StateMachine.eventNext, const EventPayload.none());
     };
     bag.addAll(<String, dynamic>{
-      kBagStateMachineCurrentContext: bagGetContext,
-      kBagStateMachineUpdateContext: bagSetContext,
-      kBagStateMachineCurrentState: bagGetState,
+      kBagStateMachineGetContext: bagGetContext,
+      kBagStateMachineSetContext: bagSetContext,
+      kBagStateMachineGetState: bagGetState,
       kBagStateMachineSetState: bagSetState,
-      kBagStateMachineSendEvent: onEvent,
-      if (pl is _SendPayload) kBagStateMachineSendPayload: pl.data,
-      if (pl is _SendPayload) kBagPayload: pl.data,
+      if (pl is _EventPayload) kBagStateMachineEventPayload: pl.data,
+      if (pl is _EventPayload) kBagPayload: pl.data,
     });
     return bag;
   }
@@ -408,7 +413,7 @@ class StateMachineSession {
 
   void send(
     String event,
-    SendPayload payload, {
+    EventPayload payload, {
     ContextBag? withBag,
   }) {
     if (!_isActive) return;
@@ -423,9 +428,10 @@ class StateMachineSession {
       final bag = withBag ?? _getBag();
       final origin = _getOrigin(bag.onClear);
       bag.addAll(<String, dynamic>{
-        kBagStateMachineSendEvent: event,
-        if (payload is _SendPayload) kBagStateMachineSendPayload: payload.data,
-        if (payload is _SendPayload) kBagPayload: payload.data,
+        kBagStateMachineEvent: event,
+        if (payload is _EventPayload)
+          kBagStateMachineEventPayload: payload.data,
+        if (payload is _EventPayload) kBagPayload: payload.data,
       });
       transition.actions?.executeWithBag(origin, bag);
       bag.clear();

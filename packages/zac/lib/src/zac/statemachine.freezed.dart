@@ -15,33 +15,33 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SendPayload {
+mixin _$EventPayload {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SendPayload value) $default, {
-    required TResult Function(_SendPayloadNone value) none,
+    TResult Function(_EventPayload value) $default, {
+    required TResult Function(_EventPayloadNone value) none,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 
-class _$_SendPayload implements _SendPayload {
-  _$_SendPayload(this.data);
+class _$_EventPayload implements _EventPayload {
+  _$_EventPayload(this.data);
 
   @override
   final Object? data;
 
   @override
   String toString() {
-    return 'SendPayload(data: $data)';
+    return 'EventPayload(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SendPayload &&
+            other is _$_EventPayload &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -52,33 +52,33 @@ class _$_SendPayload implements _SendPayload {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SendPayload value) $default, {
-    required TResult Function(_SendPayloadNone value) none,
+    TResult Function(_EventPayload value) $default, {
+    required TResult Function(_EventPayloadNone value) none,
   }) {
     return $default(this);
   }
 }
 
-abstract class _SendPayload implements SendPayload {
-  factory _SendPayload(final Object? data) = _$_SendPayload;
+abstract class _EventPayload implements EventPayload {
+  factory _EventPayload(final Object? data) = _$_EventPayload;
 
   Object? get data;
 }
 
 /// @nodoc
 
-class _$_SendPayloadNone implements _SendPayloadNone {
-  const _$_SendPayloadNone();
+class _$_EventPayloadNone implements _EventPayloadNone {
+  const _$_EventPayloadNone();
 
   @override
   String toString() {
-    return 'SendPayload.none()';
+    return 'EventPayload.none()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SendPayloadNone);
+        (other.runtimeType == runtimeType && other is _$_EventPayloadNone);
   }
 
   @override
@@ -87,15 +87,15 @@ class _$_SendPayloadNone implements _SendPayloadNone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_SendPayload value) $default, {
-    required TResult Function(_SendPayloadNone value) none,
+    TResult Function(_EventPayload value) $default, {
+    required TResult Function(_EventPayloadNone value) none,
   }) {
     return none(this);
   }
 }
 
-abstract class _SendPayloadNone implements SendPayload {
-  const factory _SendPayloadNone() = _$_SendPayloadNone;
+abstract class _EventPayloadNone implements EventPayload {
+  const factory _EventPayloadNone() = _$_EventPayloadNone;
 }
 
 StateNode _$StateNodeFromJson(Map<String, dynamic> json) {
@@ -274,7 +274,7 @@ StateMachineActions _$StateMachineActionsFromJson(Map<String, dynamic> json) {
   switch (json['_converter']) {
     case 'z:1:StateMachine:Action.send':
       return _StateMachineActionsSend.fromJson(json);
-    case 'z:1:StateMachine:Action.updateContext':
+    case 'z:1:StateMachine:Action.setContext':
       return _StateMachineActionsUpdateContext.fromJson(json);
     case 'z:1:StateMachine:Action.setState':
       return _StateMachineActionsSetState.fromJson(json);
@@ -316,7 +316,7 @@ class _$_StateMachineActionsSend extends _StateMachineActionsSend {
   @override
   final ZacString event;
 
-  /// Optional payload which will be available as [kBagStateMachineSendPayload]
+  /// Optional payload which will be available as [kBagStateMachineEventPayload]
   /// and [kBagPayload].
   /// A payload send by an action will still be available
   /// through [kBagActionPayload].
@@ -374,7 +374,7 @@ abstract class _StateMachineActionsSend extends StateMachineActions {
   Object get family;
   ZacString get event;
 
-  /// Optional payload which will be available as [kBagStateMachineSendPayload]
+  /// Optional payload which will be available as [kBagStateMachineEventPayload]
   /// and [kBagPayload].
   /// A payload send by an action will still be available
   /// through [kBagActionPayload].
@@ -387,7 +387,7 @@ class _$_StateMachineActionsUpdateContext
     extends _StateMachineActionsUpdateContext {
   _$_StateMachineActionsUpdateContext(
       {required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:StateMachine:Action.updateContext',
+      : $type = $type ?? 'z:1:StateMachine:Action.setContext',
         super._();
 
   factory _$_StateMachineActionsUpdateContext.fromJson(

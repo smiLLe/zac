@@ -6,12 +6,12 @@ const kBagSharedValueReplaceWith = 'SharedValue.replaceWith';
 const kBagSharedValueCurrent = 'SharedValue.current';
 const kBagTransformerMapEntryValue = 'MapEntry.value';
 const kBagTransformerMapEntryKey = 'MapEntry.key';
-const kBagStateMachineSendEvent = 'StateMachine.sendEvent';
-const kBagStateMachineCurrentContext = 'StateMachine.currentContext';
-const kBagStateMachineCurrentState = 'StateMachine.currentState';
-const kBagStateMachineUpdateContext = 'StateMachine.updateContext';
-const kBagStateMachineSendPayload = 'StateMachine.sendPayload';
+const kBagStateMachineEvent = 'StateMachine.event';
+const kBagStateMachineGetContext = 'StateMachine.getContext';
+const kBagStateMachineGetState = 'StateMachine.getState';
+const kBagStateMachineSetContext = 'StateMachine.setContext';
 const kBagStateMachineSetState = 'StateMachine.setState';
+const kBagStateMachineEventPayload = 'StateMachine.eventPayload';
 
 class ContextBag extends DelegatingMap<String, dynamic> {
   ContextBag() : super(<String, dynamic>{});
@@ -46,7 +46,7 @@ class ContextBag extends DelegatingMap<String, dynamic> {
   }
 
   void setStateMachinePayload(Object? data) {
-    addKeyValue(kBagStateMachineSendPayload, data);
+    addKeyValue(kBagStateMachineEventPayload, data);
     addKeyValue(kBagPayload, data);
   }
 

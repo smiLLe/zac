@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/converter.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
@@ -158,21 +160,21 @@ void main() {
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     expect(sub.read().state, 'green');
     expect(sub.read().context, isNull);
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     expect(sub.read().state, 'yellow');
     expect(sub.read().context, isNull);
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     expect(sub.read().state, 'red');
     expect(sub.read().context, isNull);
@@ -233,7 +235,7 @@ void main() {
       verifyZeroInteractions(cb);
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const SendPayload.none());
+          .send('NEXT', const EventPayload.none());
 
       expect(isActive, isTrue);
 
@@ -288,7 +290,7 @@ void main() {
 
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const SendPayload.none());
+          .send('NEXT', const EventPayload.none());
 
       expect(lifetime.isActive(), isFalse);
 
@@ -340,7 +342,7 @@ void main() {
 
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const SendPayload.none());
+          .send('NEXT', const EventPayload.none());
 
       expect(lifetime!.isActive(), isFalse);
 
@@ -389,14 +391,14 @@ void main() {
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     expect(sub.read().state, 'counter');
     expect(sub.read().context, 1);
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', SendPayload(100));
+        .send('NEXT', EventPayload(100));
 
     expect(sub.read().state, 'counter');
     expect(sub.read().context, 101);
@@ -443,7 +445,7 @@ void main() {
 
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     expect(sub.read().state, 'c');
     expect(states, isNot(contains('b')));
@@ -502,11 +504,11 @@ void main() {
     //to b
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
     // to a
     container
         .read(StateMachine.provider('machine').notifier)
-        .send('NEXT', const SendPayload.none());
+        .send('NEXT', const EventPayload.none());
 
     verifyInOrder([
       enter1(argThat(isA<ZacOriginStateMachineAction>()),
@@ -713,26 +715,24 @@ void main() {
 
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const SendPayload.none());
+          .send('NEXT', const EventPayload.none());
 
-      expect(
-          map['StateMachine.currentContext'], isA<StateMachineBagGetContext>());
-      expect(map['StateMachine.currentState'], isA<StateMachineBagGetState>());
-      expect(
-          map['StateMachine.updateContext'], isA<StateMachineBagSetContext>());
+      expect(map['StateMachine.getContext'], isA<StateMachineBagGetContext>());
+      expect(map['StateMachine.getState'], isA<StateMachineBagGetState>());
+      expect(map['StateMachine.setContext'], isA<StateMachineBagSetContext>());
       expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
-      expect(map['StateMachine.sendEvent'], 'NEXT');
+      expect(map['StateMachine.event'], 'NEXT');
       expect(map.containsKey('payload'), isFalse);
-      expect(map.containsKey('StateMachine.sendPayload'), isFalse);
+      expect(map.containsKey('StateMachine.eventPayload'), isFalse);
 
       /// back to 'a'
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('BACK', SendPayload('payload stuff'));
+          .send('BACK', EventPayload('payload stuff'));
 
-      expect(map['StateMachine.sendEvent'], 'BACK');
+      expect(map['StateMachine.event'], 'BACK');
       expect(map['payload'], 'payload stuff');
-      expect(map['StateMachine.sendPayload'], 'payload stuff');
+      expect(map['StateMachine.eventPayload'], 'payload stuff');
 
       sub.close();
     });
@@ -777,29 +777,207 @@ void main() {
 
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('NEXT', const SendPayload.none());
+          .send('NEXT', const EventPayload.none());
 
-      expect(
-          map['StateMachine.currentContext'], isA<StateMachineBagGetContext>());
-      expect(map['StateMachine.currentState'], isA<StateMachineBagGetState>());
-      expect(
-          map['StateMachine.updateContext'], isA<StateMachineBagSetContext>());
+      expect(map['StateMachine.getContext'], isA<StateMachineBagGetContext>());
+      expect(map['StateMachine.getState'], isA<StateMachineBagGetState>());
+      expect(map['StateMachine.setContext'], isA<StateMachineBagSetContext>());
       expect(map['StateMachine.setState'], isA<StateMachineBagSetState>());
-      expect(map['StateMachine.sendEvent'], 'machine.init');
+      expect(map['StateMachine.event'], 'machine.init');
       expect(map.containsKey('payload'), isFalse);
-      expect(map.containsKey('StateMachine.sendPayload'), isFalse);
+      expect(map.containsKey('StateMachine.eventPayload'), isFalse);
 
       /// back to 'a'
       container
           .read(StateMachine.provider('machine').notifier)
-          .send('BACK', SendPayload('payload stuff'));
+          .send('BACK', EventPayload('payload stuff'));
 
-      expect(map['StateMachine.sendEvent'], 'BACK');
+      expect(map['StateMachine.event'], 'BACK');
       expect(map['payload'], 'payload stuff');
-      expect(map['StateMachine.sendPayload'], 'payload stuff');
+      expect(map['StateMachine.eventPayload'], 'payload stuff');
 
       sub.close();
     });
+  });
+
+  group('Convert', () {
+    test('StateNode and Transition', () {
+      expect(
+          ConverterHelper.convertToType<StateNode>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine:State',
+            'state': 'a',
+            'on': [
+              {
+                '_converter': 'z:1:StateMachine:Transition',
+                'event': 'NEXT',
+                'target': 'a',
+              }
+            ]
+          }),
+          StateNode(state: 'a', on: [Transition(event: 'NEXT', target: 'a')]));
+    });
+
+    test('StateMachineActions', () {
+      expect(
+          ConverterHelper.convertToType<StateMachineActions>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine:Action.send',
+            'family': 'fam',
+            'event': 'NEXT',
+            'payload': 'foo'
+          }),
+          StateMachineActions.send(
+              family: 'fam',
+              event: ZacString('NEXT'),
+              payload: ZacObject('foo')));
+      expect(
+          ConverterHelper.convertToType<StateMachineActions>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine:Action.setContext',
+            'transformer': <Object?>[]
+          }),
+          StateMachineActions.updateContext(transformer: ZacTransformers([])));
+      expect(
+          ConverterHelper.convertToType<StateMachineActions>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine:Action.setState',
+            'state': 'a',
+          }),
+          StateMachineActions.setState('a'));
+    });
+
+    test('StateMachineProviderBuilder', () {
+      expect(
+          ConverterHelper.convertToType<
+              StateMachineProviderBuilder>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine.provide',
+            'family': 'fam',
+            'initialContext': 5,
+            'initialState': 'a',
+            'states': <Object>[],
+            'child': {'_converter': 'f:1:SizedBox'},
+          }),
+          StateMachineProviderBuilder(
+              family: ZacString('fam'),
+              initialState: ZacString('a'),
+              initialContext: ZacObject(5),
+              states: [],
+              child: FlutterSizedBox()));
+    });
+  });
+
+  group('StateMachineScheduler', () {
+    test('should process event only once', () {
+      int calledCount = 0;
+      final scheduler = StateMachineScheduler();
+
+      scheduler.schedule(() {
+        calledCount++;
+      });
+
+      expect(calledCount, 1);
+    });
+
+    test('should process more than one event', () {
+      int calledCount = 0;
+      final scheduler = StateMachineScheduler();
+
+      scheduler.schedule(() {
+        calledCount++;
+        scheduler.schedule(() {
+          calledCount++;
+        });
+      });
+
+      expect(calledCount, 2);
+    });
+
+    test('should process events in the same order they were hit', () {
+      List<int> order = [];
+      final scheduler = StateMachineScheduler();
+      scheduler.schedule(() {
+        order.add(1);
+        scheduler.schedule(() {
+          order.add(2);
+        });
+        scheduler.schedule(() {
+          order.add(3);
+          scheduler.schedule(() {
+            order.add(5);
+          });
+        });
+        scheduler.schedule(() {
+          order.add(4);
+        });
+      });
+
+      const expectedOrder = [1, 2, 3, 4, 5];
+      expect(order.length, expectedOrder.length);
+      for (int i = 0; i < expectedOrder.length; i++) {
+        expect(order[i], expectedOrder[i]);
+      }
+    });
+
+    test('should recover if error is thrown while processing the queue', () {
+      int calledCount = 0;
+      final scheduler = StateMachineScheduler();
+      expect(
+        () => scheduler.schedule(() {
+          calledCount++;
+          scheduler.schedule(() {
+            calledCount++;
+            throw Exception();
+          });
+        }),
+        throwsException,
+      );
+      scheduler.schedule(() {
+        calledCount++;
+      });
+
+      expect(calledCount, 3);
+    });
+
+    test('should stop processing events if error condition is met', () {
+      int calledCount = 0;
+      final scheduler = StateMachineScheduler();
+      expect(
+        () => scheduler.schedule(() {
+          calledCount++;
+          scheduler.schedule(() {
+            calledCount++;
+            throw Exception();
+          });
+          scheduler.schedule(() {
+            calledCount++;
+          });
+        }),
+        throwsException,
+      );
+
+      expect(calledCount, 2);
+    });
+
+    // test('should discard not processed events in the case of error condition',
+    //     () {
+    //   int calledCount = 0;
+    //   final scheduler = StateMachineScheduler();
+    //   scheduler.initialize();
+    //   expect(
+    //     () => scheduler.schedule(() {
+    //       calledCount++;
+    //       scheduler.schedule(() {
+    //         calledCount++;
+    //         throw Exception();
+    //       });
+    //       scheduler.schedule(() {
+    //         calledCount++;
+    //       });
+    //     }),
+    //     throwsException,
+    //   );
+    //   scheduler.schedule(() {
+    //     calledCount++;
+    //   });
+    //   expect(calledCount, 3);
+    // });
   });
 }
 

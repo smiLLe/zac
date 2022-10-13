@@ -173,6 +173,9 @@ Map<String, Convert> allConverters = const {
   StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
   StateMachineActions.unionValue: StateMachineActions.fromJson,
   StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
+  StateMachineActions.unionValueSetState: StateMachineActions.fromJson,
+  StateNode.unionValue: StateNode.fromJson,
+  Transition.unionValue: Transition.fromJson,
 
   /**
          * Navigator && NavigatorState
