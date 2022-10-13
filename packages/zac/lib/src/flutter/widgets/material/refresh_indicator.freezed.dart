@@ -22,7 +22,7 @@ FlutterRefreshIndicator _$FlutterRefreshIndicatorFromJson(
 /// @nodoc
 mixin _$FlutterRefreshIndicator {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
   ZacDouble? get displacement => throw _privateConstructorUsedError;
   ZacDouble? get edgeOffset => throw _privateConstructorUsedError;
   ZacActions get onRefresh => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final ZacDouble? displacement;
   @override
@@ -144,7 +144,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
 abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   factory _FlutterRefreshIndicator(
           {final FlutterKey? key,
-          required final ZacWidget child,
+          required final FlutterWidget child,
           final ZacDouble? displacement,
           final ZacDouble? edgeOffset,
           required final ZacActions onRefresh,
@@ -163,7 +163,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
   @override
   ZacDouble? get displacement;
   @override

@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +11,7 @@ part 'positioned.freezed.dart';
 part 'positioned.g.dart';
 
 @defaultConverterFreezed
-class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
+class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   const FlutterPositioned._();
 
   static const String unionValue = 'f:1:Positioned';
@@ -31,7 +30,7 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? bottom,
     ZacDouble? width,
     ZacDouble? height,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositioneddirectional;
 
   @FreezedUnionValue(FlutterPositioned.unionValueDirectional)
@@ -44,7 +43,7 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? bottom,
     ZacDouble? width,
     ZacDouble? height,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositioned;
 
   @FreezedUnionValue(FlutterPositioned.unionValueFill)
@@ -54,40 +53,40 @@ class FlutterPositioned with _$FlutterPositioned implements ZacWidget {
     ZacDouble? top,
     ZacDouble? right,
     ZacDouble? bottom,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterPositionedfill;
 
   @override
-  Positioned buildWidget(ZacBuildContext context) {
+  Positioned buildWidget(ZacOriginWidgetTree origin) {
     return map(
       (value) => Positioned(
-        child: value.child.buildWidget(context),
-        key: value.key?.buildKey(context),
-        left: value.left?.getValue(context),
-        top: value.top?.getValue(context),
-        right: value.right?.getValue(context),
-        bottom: value.bottom?.getValue(context),
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
+        child: value.child.buildWidget(origin),
+        key: value.key?.buildKey(origin),
+        left: value.left?.getValue(origin),
+        top: value.top?.getValue(origin),
+        right: value.right?.getValue(origin),
+        bottom: value.bottom?.getValue(origin),
+        width: value.width?.getValue(origin),
+        height: value.height?.getValue(origin),
       ),
       directional: (value) => Positioned.directional(
-        child: value.child.buildWidget(context),
-        textDirection: value.textDirection.build(context),
-        key: value.key?.buildKey(context),
-        start: value.start?.getValue(context),
-        top: value.top?.getValue(context),
-        end: value.end?.getValue(context),
-        bottom: value.bottom?.getValue(context),
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
+        child: value.child.buildWidget(origin),
+        textDirection: value.textDirection.build(origin),
+        key: value.key?.buildKey(origin),
+        start: value.start?.getValue(origin),
+        top: value.top?.getValue(origin),
+        end: value.end?.getValue(origin),
+        bottom: value.bottom?.getValue(origin),
+        width: value.width?.getValue(origin),
+        height: value.height?.getValue(origin),
       ),
       fill: (value) => Positioned.fill(
-        child: value.child.buildWidget(context),
-        key: value.key?.buildKey(context),
-        left: value.left?.getValue(context),
-        top: value.top?.getValue(context),
-        right: value.right?.getValue(context),
-        bottom: value.bottom?.getValue(context),
+        child: value.child.buildWidget(origin),
+        key: value.key?.buildKey(origin),
+        left: value.left?.getValue(origin),
+        top: value.top?.getValue(origin),
+        right: value.right?.getValue(origin),
+        bottom: value.bottom?.getValue(origin),
       ),
     );
   }

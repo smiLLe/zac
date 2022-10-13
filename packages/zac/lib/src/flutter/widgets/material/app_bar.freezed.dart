@@ -21,13 +21,13 @@ FlutterAppBar _$FlutterAppBarFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterAppBar {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get leading => throw _privateConstructorUsedError;
+  FlutterWidget? get leading => throw _privateConstructorUsedError;
   ZacBool? get automaticallyImplyLeading => throw _privateConstructorUsedError;
-  ZacWidget? get title => throw _privateConstructorUsedError;
+  FlutterWidget? get title => throw _privateConstructorUsedError;
   ListOfZacWidget? get actions => throw _privateConstructorUsedError;
-  ZacWidget? get flexibleSpace =>
+  FlutterWidget? get flexibleSpace =>
       throw _privateConstructorUsedError; // PreferredSizeWidget
-  ZacWidget? get bottom => throw _privateConstructorUsedError;
+  FlutterWidget? get bottom => throw _privateConstructorUsedError;
   ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
@@ -93,18 +93,18 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? leading;
+  final FlutterWidget? leading;
   @override
   final ZacBool? automaticallyImplyLeading;
   @override
-  final ZacWidget? title;
+  final FlutterWidget? title;
   @override
   final ListOfZacWidget? actions;
   @override
-  final ZacWidget? flexibleSpace;
+  final FlutterWidget? flexibleSpace;
 // PreferredSizeWidget
   @override
-  final ZacWidget? bottom;
+  final FlutterWidget? bottom;
   @override
   final ZacDouble? elevation;
   @override
@@ -238,12 +238,12 @@ class _$_FlutterAppBar extends _FlutterAppBar {
 abstract class _FlutterAppBar extends FlutterAppBar {
   factory _FlutterAppBar(
           {final FlutterKey? key,
-          final ZacWidget? leading,
+          final FlutterWidget? leading,
           final ZacBool? automaticallyImplyLeading,
-          final ZacWidget? title,
+          final FlutterWidget? title,
           final ListOfZacWidget? actions,
-          final ZacWidget? flexibleSpace,
-          final ZacWidget? bottom,
+          final FlutterWidget? flexibleSpace,
+          final FlutterWidget? bottom,
           final ZacDouble? elevation,
           final FlutterColor? shadowColor,
           final FlutterShapeBorder? shape,
@@ -271,17 +271,17 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get leading;
+  FlutterWidget? get leading;
   @override
   ZacBool? get automaticallyImplyLeading;
   @override
-  ZacWidget? get title;
+  FlutterWidget? get title;
   @override
   ListOfZacWidget? get actions;
   @override
-  ZacWidget? get flexibleSpace;
+  FlutterWidget? get flexibleSpace;
   @override // PreferredSizeWidget
-  ZacWidget? get bottom;
+  FlutterWidget? get bottom;
   @override
   ZacDouble? get elevation;
   @override

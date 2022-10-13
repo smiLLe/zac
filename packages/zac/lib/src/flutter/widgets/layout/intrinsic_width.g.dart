@@ -14,5 +14,5 @@ _$_FlutterIntrinsicWidth _$$_FlutterIntrinsicWidthFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

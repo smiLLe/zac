@@ -12,6 +12,13 @@ _$_ZacTransformValue _$$_ZacTransformValueFromJson(Map<String, dynamic> json) =>
       extra: json['extra'] as Map<String, dynamic>?,
     );
 
+_$_ZacTransformers _$$_ZacTransformersFromJson(Map<String, dynamic> json) =>
+    _$_ZacTransformers(
+      (json['transformers'] as List<dynamic>)
+          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
 _$_Convert _$$_ConvertFromJson(Map<String, dynamic> json) => _$_Convert();
 
 _$_MapValues _$$_MapValuesFromJson(Map<String, dynamic> json) => _$_MapValues(
@@ -56,12 +63,12 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
     );
 
 _$_MapMapper _$$_MapMapperFromJson(Map<String, dynamic> json) => _$_MapMapper(
-      keyTransformer: (json['keyTransformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      valueTransformer: (json['valueTransformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      keyTransformer: json['keyTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['keyTransformer'] as Object),
+      valueTransformer: json['valueTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['valueTransformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -85,9 +92,7 @@ _$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
 
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
-      transformer: (json['transformer'] as List<dynamic>)
-          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -207,9 +212,9 @@ _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.read()
           : SharedValueConsumeType.fromJson(

@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -11,7 +10,7 @@ part 'divider.freezed.dart';
 part 'divider.g.dart';
 
 @defaultConverterFreezed
-class FlutterDivider with _$FlutterDivider implements ZacWidget {
+class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   const FlutterDivider._();
 
   static const String unionValue = 'f:1:Divider';
@@ -30,14 +29,14 @@ class FlutterDivider with _$FlutterDivider implements ZacWidget {
   }) = _FlutterDivider;
 
   @override
-  Divider buildWidget(ZacBuildContext context) {
+  Divider buildWidget(ZacOriginWidgetTree origin) {
     return Divider(
-      key: key?.buildKey(context),
-      height: height?.getValue(context),
-      thickness: thickness?.getValue(context),
-      indent: indent?.getValue(context),
-      endIndent: endIndent?.getValue(context),
-      color: color?.build(context),
+      key: key?.buildKey(origin),
+      height: height?.getValue(origin),
+      thickness: thickness?.getValue(origin),
+      indent: indent?.getValue(origin),
+      endIndent: endIndent?.getValue(origin),
+      color: color?.build(origin),
     );
   }
 }

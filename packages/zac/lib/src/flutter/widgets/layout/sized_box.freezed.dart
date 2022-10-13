@@ -36,7 +36,7 @@ FlutterSizedBox _$FlutterSizedBoxFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterSizedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -67,7 +67,7 @@ class _$_FlutterWidgetSizedBox extends _FlutterWidgetSizedBox {
   @override
   final ZacDouble? height;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -115,7 +115,7 @@ abstract class _FlutterWidgetSizedBox extends FlutterSizedBox {
       {final FlutterKey? key,
       final ZacDouble? width,
       final ZacDouble? height,
-      final ZacWidget? child}) = _$_FlutterWidgetSizedBox;
+      final FlutterWidget? child}) = _$_FlutterWidgetSizedBox;
   _FlutterWidgetSizedBox._() : super._();
 
   factory _FlutterWidgetSizedBox.fromJson(Map<String, dynamic> json) =
@@ -126,7 +126,7 @@ abstract class _FlutterWidgetSizedBox extends FlutterSizedBox {
   ZacDouble? get width;
   ZacDouble? get height;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }
 
 /// @nodoc
@@ -142,7 +142,7 @@ class _$_FlutterWidgetSizedBoxExpand extends _FlutterWidgetSizedBoxExpand {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -184,7 +184,7 @@ class _$_FlutterWidgetSizedBoxExpand extends _FlutterWidgetSizedBoxExpand {
 abstract class _FlutterWidgetSizedBoxExpand extends FlutterSizedBox {
   factory _FlutterWidgetSizedBoxExpand(
       {final FlutterKey? key,
-      final ZacWidget? child}) = _$_FlutterWidgetSizedBoxExpand;
+      final FlutterWidget? child}) = _$_FlutterWidgetSizedBoxExpand;
   _FlutterWidgetSizedBoxExpand._() : super._();
 
   factory _FlutterWidgetSizedBoxExpand.fromJson(Map<String, dynamic> json) =
@@ -193,7 +193,7 @@ abstract class _FlutterWidgetSizedBoxExpand extends FlutterSizedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }
 
 /// @nodoc
@@ -211,7 +211,7 @@ class _$_FlutterWidgetSizedBoxFromSize extends _FlutterWidgetSizedBoxFromSize {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final FlutterSize? size;
 
@@ -257,7 +257,7 @@ class _$_FlutterWidgetSizedBoxFromSize extends _FlutterWidgetSizedBoxFromSize {
 abstract class _FlutterWidgetSizedBoxFromSize extends FlutterSizedBox {
   factory _FlutterWidgetSizedBoxFromSize(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final FlutterSize? size}) = _$_FlutterWidgetSizedBoxFromSize;
   _FlutterWidgetSizedBoxFromSize._() : super._();
 
@@ -267,7 +267,7 @@ abstract class _FlutterWidgetSizedBoxFromSize extends FlutterSizedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   FlutterSize? get size;
 }
 
@@ -284,7 +284,7 @@ class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -326,7 +326,7 @@ class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
 abstract class _FlutterWidgetSizedBoxShrink extends FlutterSizedBox {
   factory _FlutterWidgetSizedBoxShrink(
       {final FlutterKey? key,
-      final ZacWidget? child}) = _$_FlutterWidgetSizedBoxShrink;
+      final FlutterWidget? child}) = _$_FlutterWidgetSizedBoxShrink;
   _FlutterWidgetSizedBoxShrink._() : super._();
 
   factory _FlutterWidgetSizedBoxShrink.fromJson(Map<String, dynamic> json) =
@@ -335,7 +335,7 @@ abstract class _FlutterWidgetSizedBoxShrink extends FlutterSizedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }
 
 /// @nodoc
@@ -352,7 +352,7 @@ class _$_FlutterWidgetSizedBoxSquare extends _FlutterWidgetSizedBoxSquare {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final ZacDouble? dimension;
 
@@ -398,7 +398,7 @@ class _$_FlutterWidgetSizedBoxSquare extends _FlutterWidgetSizedBoxSquare {
 abstract class _FlutterWidgetSizedBoxSquare extends FlutterSizedBox {
   factory _FlutterWidgetSizedBoxSquare(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final ZacDouble? dimension}) = _$_FlutterWidgetSizedBoxSquare;
   _FlutterWidgetSizedBoxSquare._() : super._();
 
@@ -408,6 +408,6 @@ abstract class _FlutterWidgetSizedBoxSquare extends FlutterSizedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   ZacDouble? get dimension;
 }

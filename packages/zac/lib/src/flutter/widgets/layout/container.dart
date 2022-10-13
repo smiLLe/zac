@@ -1,19 +1,17 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'container.freezed.dart';
 part 'container.g.dart';
 
 @defaultConverterFreezed
-class FlutterContainer with _$FlutterContainer implements ZacWidget {
+class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   const FlutterContainer._();
 
   static const String unionValue = 'f:1:Container';
@@ -24,7 +22,7 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
   @FreezedUnionValue(FlutterContainer.unionValue)
   factory FlutterContainer({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     FlutterColor? color,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,
@@ -33,15 +31,15 @@ class FlutterContainer with _$FlutterContainer implements ZacWidget {
   }) = _FlutterContainer;
 
   @override
-  Container buildWidget(ZacBuildContext context) {
+  Container buildWidget(ZacOriginWidgetTree origin) {
     return Container(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      color: color?.build(context),
-      padding: padding?.build(context),
-      margin: margin?.build(context),
-      alignment: alignment?.build(context),
-      decoration: decoration?.build(context),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      color: color?.build(origin),
+      padding: padding?.build(origin),
+      margin: margin?.build(origin),
+      alignment: alignment?.build(origin),
+      decoration: decoration?.build(origin),
     );
   }
 }

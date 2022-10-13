@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -12,7 +11,7 @@ part 'card.freezed.dart';
 part 'card.g.dart';
 
 @defaultConverterFreezed
-class FlutterCard with _$FlutterCard implements ZacWidget {
+class FlutterCard with _$FlutterCard implements FlutterWidget {
   const FlutterCard._();
 
   static const String unionValue = 'f:1:Card';
@@ -30,23 +29,23 @@ class FlutterCard with _$FlutterCard implements ZacWidget {
     ZacBool? borderOnForeground,
     FlutterEdgeInsetsGeometry? margin,
     FlutterClip? clipBehavior,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacBool? semanticContainer,
   }) = _FlutterCard;
 
   @override
-  Card buildWidget(ZacBuildContext context) {
+  Card buildWidget(ZacOriginWidgetTree origin) {
     return Card(
-      key: key?.buildKey(context),
-      color: color?.build(context),
-      shadowColor: shadowColor?.build(context),
-      elevation: elevation?.getValue(context),
-      shape: shape?.build(context),
-      borderOnForeground: borderOnForeground?.getValue(context) ?? true,
-      margin: margin?.build(context),
-      clipBehavior: clipBehavior?.build(context),
-      child: child?.buildWidget(context),
-      semanticContainer: semanticContainer?.getValue(context) ?? true,
+      key: key?.buildKey(origin),
+      color: color?.build(origin),
+      shadowColor: shadowColor?.build(origin),
+      elevation: elevation?.getValue(origin),
+      shape: shape?.build(origin),
+      borderOnForeground: borderOnForeground?.getValue(origin) ?? true,
+      margin: margin?.build(origin),
+      clipBehavior: clipBehavior?.build(origin),
+      child: child?.buildWidget(origin),
+      semanticContainer: semanticContainer?.getValue(origin) ?? true,
     );
   }
 }

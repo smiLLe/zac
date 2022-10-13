@@ -1,7 +1,6 @@
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,7 +14,7 @@ part 'gesture_detector.g.dart';
 @defaultConverterFreezed
 class FlutterGestureDetector
     with _$FlutterGestureDetector
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterGestureDetector._();
 
   static const String unionValue = 'f:1:GestureDetector';
@@ -26,7 +25,7 @@ class FlutterGestureDetector
   @FreezedUnionValue(FlutterGestureDetector.unionValue)
   factory FlutterGestureDetector({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacActions? onTap,
     ZacActions? onSecondaryTap,
     ZacActions? onDoubleTap,
@@ -39,18 +38,18 @@ class FlutterGestureDetector
   }) = _FlutterGestureDetector;
 
   @override
-  GestureDetector buildWidget(ZacBuildContext context) {
+  GestureDetector buildWidget(ZacOriginWidgetTree origin) {
     return GestureDetector(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      behavior: behavior?.build(context),
-      excludeFromSemantics: excludeFromSemantics?.getValue(context) ?? false,
-      onTap: actionsCallback(onTap, context),
-      onSecondaryTap: actionsCallback(onSecondaryTap, context),
-      onDoubleTap: actionsCallback(onDoubleTap, context),
-      onLongPress: actionsCallback(onLongPress, context),
-      onSecondaryLongPress: actionsCallback(onSecondaryLongPress, context),
-      onTertiaryLongPress: actionsCallback(onTertiaryLongPress, context),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      behavior: behavior?.build(origin),
+      excludeFromSemantics: excludeFromSemantics?.getValue(origin) ?? false,
+      onTap: onTap?.createCb(origin),
+      onSecondaryTap: onSecondaryTap?.createCb(origin),
+      onDoubleTap: onDoubleTap?.createCb(origin),
+      onLongPress: onLongPress?.createCb(origin),
+      onSecondaryLongPress: onSecondaryLongPress?.createCb(origin),
+      onTertiaryLongPress: onTertiaryLongPress?.createCb(origin),
     );
   }
 }

@@ -788,7 +788,7 @@ FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
 
 /// @nodoc
 mixin _$FlutterPageRouteBuilder {
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
   FlutterRouteSettings? get settings =>
       throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
@@ -825,7 +825,7 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
       _$$_FlutterPageRouteBuilderFromJson(json);
 
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final FlutterRouteSettings? settings;
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
@@ -893,7 +893,7 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 
 abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   factory _FlutterPageRouteBuilder(
-      {required final ZacWidget child,
+      {required final FlutterWidget child,
       final FlutterRouteSettings? settings,
       final ZacBool? opaque,
       final ZacBool? barrierDismissible,
@@ -907,7 +907,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
       _$_FlutterPageRouteBuilder.fromJson;
 
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
   @override
   FlutterRouteSettings? get settings;
   @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,

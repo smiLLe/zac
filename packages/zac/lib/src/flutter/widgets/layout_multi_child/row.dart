@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,7 @@ part 'row.freezed.dart';
 part 'row.g.dart';
 
 @defaultConverterFreezed
-class FlutterRow with _$FlutterRow implements ZacWidget {
+class FlutterRow with _$FlutterRow implements FlutterWidget {
   const FlutterRow._();
 
   static const String unionValue = 'f:1:Row';
@@ -35,19 +34,19 @@ class FlutterRow with _$FlutterRow implements ZacWidget {
   }) = _FlutterRow;
 
   @override
-  Row buildWidget(ZacBuildContext context) {
+  Row buildWidget(ZacOriginWidgetTree origin) {
     return Row(
-      key: key?.buildKey(context),
+      key: key?.buildKey(origin),
       mainAxisAlignment:
-          mainAxisAlignment?.build(context) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(context) ?? MainAxisSize.max,
+          mainAxisAlignment?.build(origin) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(origin) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.build(context) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(context),
+          crossAxisAlignment?.build(origin) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(origin),
       verticalDirection:
-          verticalDirection?.build(context) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(context),
-      children: children?.getValue(context) ?? const <Widget>[],
+          verticalDirection?.build(origin) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
     );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -40,23 +40,23 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
     ZacDouble? mainAxisExtent,
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
-  SliverGridDelegate build(ZacBuildContext context) {
+  SliverGridDelegate build(ZacOriginWidgetTree origin) {
     return map(
       withFixedCrossAxisCount: (value) =>
           SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        childAspectRatio: value.childAspectRatio?.getValue(context) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(context) ?? 0.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(context),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(context) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(origin) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(origin) ?? 0.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(origin),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(origin) ?? 0.0,
       ),
       withMaxCrossAxisExtent: (value) =>
           SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(context),
-        mainAxisExtent: value.mainAxisExtent?.getValue(context),
-        childAspectRatio: value.childAspectRatio?.getValue(context) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(context) ?? 0.0,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(context) ?? 0.0,
+        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(origin),
+        mainAxisExtent: value.mainAxisExtent?.getValue(origin),
+        childAspectRatio: value.childAspectRatio?.getValue(origin) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(origin) ?? 0.0,
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(origin) ?? 0.0,
       ),
     );
   }

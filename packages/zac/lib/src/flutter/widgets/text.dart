@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -12,7 +11,7 @@ part 'text.freezed.dart';
 part 'text.g.dart';
 
 @defaultConverterFreezed
-class FlutterText with _$FlutterText implements ZacWidget {
+class FlutterText with _$FlutterText implements FlutterWidget {
   const FlutterText._();
 
   static const String unionValue = 'f:1:Text';
@@ -39,22 +38,22 @@ class FlutterText with _$FlutterText implements ZacWidget {
   }) = _FlutterText;
 
   @override
-  Text buildWidget(ZacBuildContext context) {
+  Text buildWidget(ZacOriginWidgetTree origin) {
     return Text(
-      data.getValue(context),
-      key: key?.buildKey(context),
-      style: style?.build(context),
-      strutStyle: strutStyle?.build(context),
-      textAlign: textAlign?.build(context),
-      textDirection: textDirection?.build(context),
-      locale: locale?.build(context),
-      softWrap: softWrap?.getValue(context),
-      overflow: overflow?.build(context),
-      textScaleFactor: textScaleFactor?.getValue(context),
-      maxLines: maxLines?.getValue(context),
-      semanticsLabel: semanticsLabel?.getValue(context),
-      textWidthBasis: textWidthBasis?.build(context),
-      textHeightBehavior: textHeightBehavior?.build(context),
+      data.getValue(origin),
+      key: key?.buildKey(origin),
+      style: style?.build(origin),
+      strutStyle: strutStyle?.build(origin),
+      textAlign: textAlign?.build(origin),
+      textDirection: textDirection?.build(origin),
+      locale: locale?.build(origin),
+      softWrap: softWrap?.getValue(origin),
+      overflow: overflow?.build(origin),
+      textScaleFactor: textScaleFactor?.getValue(origin),
+      maxLines: maxLines?.getValue(origin),
+      semanticsLabel: semanticsLabel?.getValue(origin),
+      textWidthBasis: textWidthBasis?.build(origin),
+      textHeightBehavior: textHeightBehavior?.build(origin),
     );
   }
 }

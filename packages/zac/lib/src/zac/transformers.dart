@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -38,17 +39,57 @@ abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);
 
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra);
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag);
 }
 
-abstract class ZacTransformerExtra {}
+@defaultConverterFreezed
+class ZacTransformers with _$ZacTransformers {
+  const ZacTransformers._();
 
-extension ZacTransformerOnList on List<ZacTransformer> {
-  Object? transformValues(ZacTransformValue value, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
-    return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(previousValue, context, extra);
+  static const String unionValue = 'z:1:Transformers';
+
+  factory ZacTransformers.fromJson(Object data) {
+    /// allow a single transformer or the default implementation
+    if (ConverterHelper.isConverter(data)) {
+      if ((data as Map<String, dynamic>)[converterKey] as String !=
+          ZacTransformers.unionValue) {
+        return ZacTransformers([ZacTransformer.fromJson(data)]);
+      }
+      return _$ZacTransformersFromJson(data);
+    }
+
+    /// allow a list of transformer
+    else if (data is List) {
+      return ZacTransformers(List<Map<String, dynamic>>.from(data)
+          .map(ZacTransformer.fromJson)
+          .toList());
+    }
+
+    throw Exception(
+        'It was not possible to convert to $ZacTransformers from data: $data ');
+  }
+
+  @FreezedUnionValue(ZacTransformers.unionValue)
+  factory ZacTransformers(List<ZacTransformer> transformers) = _ZacTransformers;
+
+  Object? transform(
+    ZacTransformValue value,
+    ZacOrigin origin, {
+    void Function(ContextBag bag)? prefillBag,
+  }) {
+    final bag = ContextBag();
+    prefillBag?.call(bag);
+    final transformedValue = transformWithBag(value, origin, bag);
+    bag.clear();
+    return transformedValue;
+  }
+
+  Object? transformWithBag(
+      ZacTransformValue value, ZacOrigin origin, ContextBag bag) {
+    return transformers.fold<ZacTransformValue>(value,
+        (previousValue, element) {
+      final obj = element.transform(previousValue, origin, bag);
       return ZacTransformValue(obj);
     }).value;
   }
@@ -66,8 +107,8 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   factory ConvertTransformer() = _Convert;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     return ConverterHelper.convertToType<Object>(value);
   }
@@ -124,8 +165,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   const factory MapTransformer.mapper({
-    List<ZacTransformer>? keyTransformer,
-    List<ZacTransformer>? valueTransformer,
+    ZacTransformers? keyTransformer,
+    ZacTransformers? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
@@ -139,8 +180,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapFromStringNullObject;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     if (value is! Map) {
       throw ZacTransformError('''
@@ -157,21 +198,21 @@ The value: $value
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
-      containsKey: (obj) => value.containsKey(obj.key?.getValue(context)),
-      containsValue: (obj) => value.containsValue(obj.value?.getValue(context)),
+      containsKey: (obj) => value.containsKey(obj.key?.getValue(origin)),
+      containsValue: (obj) => value.containsValue(obj.value?.getValue(origin)),
       mapper: (obj) {
         return value.map<dynamic, dynamic>((dynamic key, dynamic value) {
           dynamic updatedKey = key;
           dynamic updatedValue = value;
-          if (true == obj.keyTransformer?.isNotEmpty) {
-            updatedKey = obj.keyTransformer?.transformValues(
-                transformValue.withExtra(key, {'value': value}),
-                context,
-                extra);
+          if (true == obj.keyTransformer?.transformers.isNotEmpty) {
+            bag.addKeyValue(kBagTransformerMapEntryValue, value);
+            updatedKey = obj.keyTransformer
+                ?.transformWithBag(ZacTransformValue(key), origin, bag);
           }
-          if (true == obj.valueTransformer?.isNotEmpty) {
-            updatedValue = obj.valueTransformer?.transformValues(
-                transformValue.withExtra(value, {'key': key}), context, extra);
+          if (true == obj.valueTransformer?.transformers.isNotEmpty) {
+            bag.addKeyValue(kBagTransformerMapEntryKey, key);
+            updatedValue = obj.valueTransformer
+                ?.transformWithBag(ZacTransformValue(value), origin, bag);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -217,7 +258,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
-    required List<ZacTransformer> transformer,
+    required ZacTransformers transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)
@@ -266,8 +307,8 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.take(int count) = _IterableTake;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
@@ -277,8 +318,8 @@ The value: $value
 ''');
     }
     return map(
-      map: (obj) => value.map((dynamic e) => obj.transformer
-          .transformValues(ZacTransformValue(e), context, extra)),
+      map: (obj) => value.map((dynamic e) =>
+          obj.transformer.transformWithBag(ZacTransformValue(e), origin, bag)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -289,7 +330,7 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.getValue(context)),
+      contains: (obj) => value.contains(obj.element?.getValue(origin)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -310,8 +351,8 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.reversed() = _ListReversed;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     if (value is! List) {
       throw ZacTransformError('''
@@ -365,20 +406,20 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   @With<ConsumeValue<Object?>>()
   factory ObjectTransformer.equalsSharedValue(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.read()) SharedValueConsumeType consumeType,
   }) = _ObjectEqualsSharedValue;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     return map(
       isList: (_) => value is List,
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) {
-        final sValue = obj.getSharedValue(context);
+        final sValue = obj.getSharedValue(origin);
         return sValue == value;
       },
       hashCode: (_) => value.hashCode,
@@ -451,8 +492,8 @@ class NumTransformer with _$NumTransformer implements ZacTransformer {
   const factory NumTransformer.isNegative() = _NumIsNegative;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     if (value is! num) {
       throw ZacTransformError('''
@@ -496,8 +537,8 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
   const factory IntTransformer.tryParse() = _IntTryParse;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     return map(
       parse: (obj) {
@@ -558,8 +599,8 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
       ZacString from, ZacString replace) = _StringReplaceAll;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
     if (value is! String) {
       throw ZacTransformError('''
@@ -571,11 +612,11 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.getValue(context)),
+      split: (obj) => value.split(obj.pattern.getValue(origin)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.getValue(context)), obj.replace.getValue(context)),
+          RegExp(obj.from.getValue(origin)), obj.replace.getValue(origin)),
     );
   }
 }
@@ -596,8 +637,8 @@ class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const factory JsonTransformer.decode() = _JsonDencode;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     final value = transformValue.value;
 
     return map(

@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,7 @@ part 'column.freezed.dart';
 part 'column.g.dart';
 
 @defaultConverterFreezed
-class FlutterColumn with _$FlutterColumn implements ZacWidget {
+class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   const FlutterColumn._();
 
   static const String unionValue = 'f:1:Column';
@@ -35,19 +34,19 @@ class FlutterColumn with _$FlutterColumn implements ZacWidget {
   }) = _FlutterColumn;
 
   @override
-  Column buildWidget(ZacBuildContext context) {
+  Column buildWidget(ZacOriginWidgetTree origin) {
     return Column(
-      key: key?.buildKey(context),
+      key: key?.buildKey(origin),
       mainAxisAlignment:
-          mainAxisAlignment?.build(context) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(context) ?? MainAxisSize.max,
+          mainAxisAlignment?.build(origin) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(origin) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.build(context) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(context),
+          crossAxisAlignment?.build(origin) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(origin),
       verticalDirection:
-          verticalDirection?.build(context) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(context),
-      children: children?.getValue(context) ?? const <Widget>[],
+          verticalDirection?.build(origin) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
     );
   }
 }

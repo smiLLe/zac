@@ -1,9 +1,8 @@
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'scroll_physics.freezed.dart';
 part 'scroll_physics.g.dart';
@@ -36,14 +35,14 @@ class FlutterScrollPhysics with _$FlutterScrollPhysics {
           {FlutterScrollPhysics? parent}) =
       _FlutterScrollPhysicsClampingScrollPhysics;
 
-  ScrollPhysics build(ZacBuildContext context) {
+  ScrollPhysics build(ZacOriginWidgetTree origin) {
     return map(
       alwaysScrollable: (value) =>
-          AlwaysScrollableScrollPhysics(parent: parent?.build(context)),
+          AlwaysScrollableScrollPhysics(parent: parent?.build(origin)),
       bouncingScroll: (value) =>
-          BouncingScrollPhysics(parent: parent?.build(context)),
+          BouncingScrollPhysics(parent: parent?.build(origin)),
       clampingScrollPhysics: (value) =>
-          ClampingScrollPhysics(parent: parent?.build(context)),
+          ClampingScrollPhysics(parent: parent?.build(origin)),
     );
   }
 }

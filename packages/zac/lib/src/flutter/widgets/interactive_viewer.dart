@@ -1,8 +1,7 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -15,7 +14,7 @@ part 'interactive_viewer.g.dart';
 @defaultConverterFreezed
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterInteractiveViewer._();
 
   static const String unionValue = 'f:1:InteractiveViewer';
@@ -26,7 +25,7 @@ class FlutterInteractiveViewer
   @FreezedUnionValue(FlutterInteractiveViewer.unionValue)
   factory FlutterInteractiveViewer({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
     FlutterClip? clipBehavior,
     ZacBool? alignPanAxis,
     FlutterEdgeInsets? boundaryMargin,
@@ -42,21 +41,24 @@ class FlutterInteractiveViewer
   }) = _FlutterInteractiveViewer;
 
   @override
-  InteractiveViewer buildWidget(ZacBuildContext context) {
+  InteractiveViewer buildWidget(ZacOriginWidgetTree origin) {
     return InteractiveViewer(
-      key: key?.buildKey(context),
-      child: child.buildWidget(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.getValue(context) ?? false,
-      boundaryMargin: boundaryMargin?.build(context) ?? EdgeInsets.zero,
-      constrained: constrained?.getValue(context) ?? true,
-      maxScale: maxScale?.getValue(context) ?? 2.5,
-      minScale: minScale?.getValue(context) ?? 0.8,
-      onInteractionEnd: actionsCallback1(onInteractionEnd, context),
-      onInteractionStart: actionsCallback1(onInteractionStart, context),
-      onInteractionUpdate: actionsCallback1(onInteractionUpdate, context),
-      panEnabled: panEnabled?.getValue(context) ?? true,
-      scaleEnabled: scaleEnabled?.getValue(context) ?? true,
+      key: key?.buildKey(origin),
+      child: child.buildWidget(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.getValue(origin) ?? false,
+      boundaryMargin: boundaryMargin?.build(origin) ?? EdgeInsets.zero,
+      constrained: constrained?.getValue(origin) ?? true,
+      maxScale: maxScale?.getValue(origin) ?? 2.5,
+      minScale: minScale?.getValue(origin) ?? 0.8,
+      onInteractionEnd:
+          onInteractionEnd?.createCbParam1<ScaleEndDetails>(origin),
+      onInteractionStart:
+          onInteractionStart?.createCbParam1<ScaleStartDetails>(origin),
+      onInteractionUpdate:
+          onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(origin),
+      panEnabled: panEnabled?.getValue(origin) ?? true,
+      scaleEnabled: scaleEnabled?.getValue(origin) ?? true,
       // transformationController: key?.toFlutter(context),
     );
   }

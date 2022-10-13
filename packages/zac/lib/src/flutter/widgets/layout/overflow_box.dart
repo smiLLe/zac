@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +11,7 @@ part 'overflow_box.freezed.dart';
 part 'overflow_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
+class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   const FlutterOverflowBox._();
 
   static const String unionValue = 'f:1:OverflowBox';
@@ -28,19 +27,19 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements ZacWidget {
     ZacDouble? maxWidth,
     ZacDouble? minHeight,
     ZacDouble? maxHeight,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterOverflowBox;
 
   @override
-  OverflowBox buildWidget(ZacBuildContext context) {
+  OverflowBox buildWidget(ZacOriginWidgetTree origin) {
     return OverflowBox(
-      key: key?.buildKey(context),
-      alignment: alignment?.build(context) ?? Alignment.center,
-      minWidth: minWidth?.getValue(context),
-      maxWidth: maxWidth?.getValue(context),
-      minHeight: minHeight?.getValue(context),
-      maxHeight: maxHeight?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      alignment: alignment?.build(origin) ?? Alignment.center,
+      minWidth: minWidth?.getValue(origin),
+      maxWidth: maxWidth?.getValue(origin),
+      minHeight: minHeight?.getValue(origin),
+      maxHeight: maxHeight?.getValue(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

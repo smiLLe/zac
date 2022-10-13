@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +12,7 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @defaultConverterFreezed
-class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
+class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   const FlutterMaterial._();
 
   static const String unionValue = 'f:1:Material';
@@ -24,7 +23,7 @@ class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
   @FreezedUnionValue(FlutterMaterial.unionValue)
   factory FlutterMaterial({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacDouble? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
@@ -37,19 +36,19 @@ class FlutterMaterial with _$FlutterMaterial implements ZacWidget {
   }) = _FlutterMaterial;
 
   @override
-  Material buildWidget(ZacBuildContext context) {
+  Material buildWidget(ZacOriginWidgetTree origin) {
     return Material(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.getValue(context) ?? true,
-      borderRadius: borderRadius?.build(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.none,
-      color: color?.build(context),
-      elevation: elevation?.getValue(context) ?? 0,
-      shadowColor: shadowColor?.build(context),
-      shape: shape?.build(context),
-      textStyle: textStyle?.build(context),
+      borderOnForeground: borderOnForeground?.getValue(origin) ?? true,
+      borderRadius: borderRadius?.build(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
+      color: color?.build(origin),
+      elevation: elevation?.getValue(origin) ?? 0,
+      shadowColor: shadowColor?.build(origin),
+      shape: shape?.build(origin),
+      textStyle: textStyle?.build(origin),
       // type: type?.toFlutter(context),
     );
   }

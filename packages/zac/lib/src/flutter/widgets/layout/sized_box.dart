@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +11,7 @@ part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
+class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   const FlutterSizedBox._();
 
   static const String unionValue = 'f:1:SizedBox';
@@ -29,61 +28,61 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacWidget {
     FlutterKey? key,
     ZacDouble? width,
     ZacDouble? height,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterWidgetSizedBox;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueExpand)
   factory FlutterSizedBox.expand({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterWidgetSizedBoxExpand;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueFromSize)
   factory FlutterSizedBox.fromSize({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     FlutterSize? size,
   }) = _FlutterWidgetSizedBoxFromSize;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueShrink)
   factory FlutterSizedBox.shrink({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterWidgetSizedBoxShrink;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueSquare)
   factory FlutterSizedBox.square({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacDouble? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 
   @override
-  SizedBox buildWidget(ZacBuildContext context) {
+  SizedBox buildWidget(ZacOriginWidgetTree origin) {
     return map(
       (value) => SizedBox(
-        key: value.key?.buildKey(context),
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(origin),
+        width: value.width?.getValue(origin),
+        height: value.height?.getValue(origin),
+        child: value.child?.buildWidget(origin),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        size: value.size?.build(context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
+        size: value.size?.build(origin),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        dimension: value.dimension?.getValue(context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
+        dimension: value.dimension?.getValue(origin),
       ),
     );
   }

@@ -1,17 +1,17 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
 
 @defaultConverterFreezed
-class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
+class FlutterIntrinsicWidth
+    with _$FlutterIntrinsicWidth
+    implements FlutterWidget {
   const FlutterIntrinsicWidth._();
 
   static const String unionValue = 'f:1:IntrinsicWidth';
@@ -22,14 +22,14 @@ class FlutterIntrinsicWidth with _$FlutterIntrinsicWidth implements ZacWidget {
   @FreezedUnionValue(FlutterIntrinsicWidth.unionValue)
   factory FlutterIntrinsicWidth({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterIntrinsicWidth;
 
   @override
-  IntrinsicWidth buildWidget(ZacBuildContext context) {
+  IntrinsicWidth buildWidget(ZacOriginWidgetTree origin) {
     return IntrinsicWidth(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

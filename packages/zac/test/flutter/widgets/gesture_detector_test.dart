@@ -43,10 +43,10 @@ void main() {
     widget.onTertiaryLongPress?.call();
 
     verifyInOrder([
-      onTapCb(any, any),
-      onLongPressCb(any, any),
-      onSecondaryLongPressCb(any, any),
-      onTertiaryLongPressCb(any, any),
+      onTapCb(argThat(isAOriginWidgetTree), any),
+      onLongPressCb(argThat(isAOriginWidgetTree), any),
+      onSecondaryLongPressCb(argThat(isAOriginWidgetTree), any),
+      onTertiaryLongPressCb(argThat(isAOriginWidgetTree), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
@@ -77,7 +77,7 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('FIND_ME')));
     await tester.pumpAndSettle();
 
-    verify(doubleTapCb(any, any)).called(1);
+    verify(doubleTapCb(argThat(isAOriginWidgetTree), any)).called(1);
   });
 
   testWidgets('properties', (tester) async {

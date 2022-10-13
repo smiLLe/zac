@@ -17,22 +17,31 @@ _$EmptySharedValue _$$EmptySharedValueFromJson(Map<String, dynamic> json) =>
       $type: json['_converter'] as String?,
     );
 
-_$_UpdateSharedValueAction _$$_UpdateSharedValueActionFromJson(
+_$_SharedValueInteractionUpdate _$$_SharedValueInteractionUpdateFromJson(
         Map<String, dynamic> json) =>
-    _$_UpdateSharedValueAction(
+    _$_SharedValueInteractionUpdate(
       family: json['family'] as Object,
-      value: json['value'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['_converter'] as String?,
     );
+
+_$_SharedValueInteractionReplaceWith
+    _$$_SharedValueInteractionReplaceWithFromJson(Map<String, dynamic> json) =>
+        _$_SharedValueInteractionReplaceWith(
+          family: json['family'] as Object,
+          value: json['value'] as Object,
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
+          $type: json['_converter'] as String?,
+        );
 
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeWatch(
-      select: (json['select'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      select: json['select'] == null
+          ? null
+          : ZacTransformers.fromJson(json['select'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -49,9 +58,9 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
       value: json['value'],
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       family: json['family'] as Object,
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
     );

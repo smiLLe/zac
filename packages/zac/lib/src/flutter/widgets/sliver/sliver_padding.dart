@@ -1,18 +1,18 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
 
 @defaultConverterFreezed
-class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
+class FlutterSliverPadding
+    with _$FlutterSliverPadding
+    implements FlutterWidget {
   const FlutterSliverPadding._();
 
   static const String unionValue = 'f:1:SliverPadding';
@@ -23,16 +23,16 @@ class FlutterSliverPadding with _$FlutterSliverPadding implements ZacWidget {
   @FreezedUnionValue(FlutterSliverPadding.unionValue)
   factory FlutterSliverPadding({
     FlutterKey? key,
-    ZacWidget? sliver,
+    FlutterWidget? sliver,
     required FlutterEdgeInsetsGeometry padding,
   }) = _FlutterSliverPadding;
 
   @override
-  SliverPadding buildWidget(ZacBuildContext context) {
+  SliverPadding buildWidget(ZacOriginWidgetTree origin) {
     return SliverPadding(
-      key: key?.buildKey(context),
-      sliver: sliver?.buildWidget(context),
-      padding: padding.build(context),
+      key: key?.buildKey(origin),
+      sliver: sliver?.buildWidget(origin),
+      padding: padding.build(origin),
     );
   }
 }

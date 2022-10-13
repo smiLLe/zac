@@ -14,7 +14,7 @@ _$_FlutterDecoratedBox _$$_FlutterDecoratedBoxFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       decoration: FlutterDecoration.fromJson(json['decoration'] as Object),
       position: json['position'] == null
           ? null

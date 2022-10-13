@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LeakAction {
-  void Function(ZacBuildContext, ActionPayload) get cb =>
+  void Function(ZacOrigin, ContextBag) get cb =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -32,7 +32,7 @@ class _$_LeakAction extends _LeakAction {
   _$_LeakAction(this.cb) : super._();
 
   @override
-  final void Function(ZacBuildContext, ActionPayload) cb;
+  final void Function(ZacOrigin, ContextBag) cb;
 
   @override
   String toString() {
@@ -60,12 +60,66 @@ class _$_LeakAction extends _LeakAction {
 }
 
 abstract class _LeakAction extends LeakAction {
-  factory _LeakAction(final void Function(ZacBuildContext, ActionPayload) cb) =
+  factory _LeakAction(final void Function(ZacOrigin, ContextBag) cb) =
       _$_LeakAction;
   _LeakAction._() : super._();
 
   @override
-  void Function(ZacBuildContext, ActionPayload) get cb;
+  void Function(ZacOrigin, ContextBag) get cb;
+}
+
+/// @nodoc
+mixin _$LeakBagContentAction {
+  void Function(Map<String, dynamic>) get cb =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_LeakBagContentAction value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+
+class _$_LeakBagContentAction extends _LeakBagContentAction {
+  _$_LeakBagContentAction(this.cb) : super._();
+
+  @override
+  final void Function(Map<String, dynamic>) cb;
+
+  @override
+  String toString() {
+    return 'LeakBagContentAction(cb: $cb)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LeakBagContentAction &&
+            (identical(other.cb, cb) || other.cb == cb));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, cb);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_LeakBagContentAction value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _LeakBagContentAction extends LeakBagContentAction {
+  factory _LeakBagContentAction(final void Function(Map<String, dynamic>) cb) =
+      _$_LeakBagContentAction;
+  _LeakBagContentAction._() : super._();
+
+  @override
+  void Function(Map<String, dynamic>) get cb;
 }
 
 NoopAction _$NoopActionFromJson(Map<String, dynamic> json) {
@@ -119,65 +173,4 @@ abstract class _NoopAction extends NoopAction {
 
   factory _NoopAction.fromJson(Map<String, dynamic> json) =
       _$_NoopAction.fromJson;
-}
-
-/// @nodoc
-mixin _$LeakContext {
-  void Function(ZacBuildContext) get cb => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LeakContext value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-
-class _$_LeakContext extends _LeakContext {
-  _$_LeakContext({required this.cb, this.child}) : super._();
-
-  @override
-  final void Function(ZacBuildContext) cb;
-  @override
-  final ZacWidget? child;
-
-  @override
-  String toString() {
-    return 'LeakContext(cb: $cb, child: $child)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LeakContext &&
-            (identical(other.cb, cb) || other.cb == cb) &&
-            const DeepCollectionEquality().equals(other.child, child));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, cb, const DeepCollectionEquality().hash(child));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LeakContext value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _LeakContext extends LeakContext {
-  factory _LeakContext(
-      {required final void Function(ZacBuildContext) cb,
-      final ZacWidget? child}) = _$_LeakContext;
-  _LeakContext._() : super._();
-
-  @override
-  void Function(ZacBuildContext) get cb;
-  @override
-  ZacWidget? get child;
 }

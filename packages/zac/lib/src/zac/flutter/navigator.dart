@@ -1,8 +1,9 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -19,7 +20,7 @@ Type _typeOf<T>() => T;
 class ZacFlutterGlobalKeyNavigatorState
     with _$ZacFlutterGlobalKeyNavigatorState
     implements
-        ZacWidget,
+        FlutterWidget,
         GetFlutterNavigatorState,
         FlutterGlobalKeyNavigatorState {
   const ZacFlutterGlobalKeyNavigatorState._();
@@ -33,7 +34,7 @@ class ZacFlutterGlobalKeyNavigatorState
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueProvide)
   factory ZacFlutterGlobalKeyNavigatorState.provide({
     required SharedValueFamily family,
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacString? debugLabel,
   }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
 
@@ -41,12 +42,12 @@ class ZacFlutterGlobalKeyNavigatorState
   @With<ConsumeValue<GlobalKey<NavigatorState>>>()
   factory ZacFlutterGlobalKeyNavigatorState.consume(
     SharedValueFamily family, {
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(ZacOriginWidgetTree origin) {
     return map(
       provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
       consume: (_) => throw StateError(''),
@@ -54,11 +55,11 @@ class ZacFlutterGlobalKeyNavigatorState
   }
 
   @override
-  NavigatorState getNavigatorState(ZacBuildContext context) {
+  NavigatorState getNavigatorState(ZacOrigin origin) {
     return map(
       consume: (obj) {
-        if (null != obj.getSharedValue(context).currentState) {
-          return obj.getSharedValue(context).currentState!;
+        if (null != obj.getSharedValue(origin).currentState) {
+          return obj.getSharedValue(origin).currentState!;
         }
         throw StateError('');
       },
@@ -67,9 +68,9 @@ class ZacFlutterGlobalKeyNavigatorState
   }
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacBuildContext context) {
+  GlobalKey<NavigatorState> buildKey(ZacOrigin origin) {
     return map(
-      consume: (obj) => obj.getSharedValue(context),
+      consume: (obj) => obj.getSharedValue(origin),
       provide: (_) => throw StateError(''),
     );
   }
@@ -84,10 +85,10 @@ class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
+    final origin = useZacOrigin(ref);
     return SharedValueProvider(
       value: GlobalKey<NavigatorState>(
-        debugLabel: builder.debugLabel?.getValue(zacContext),
+        debugLabel: builder.debugLabel?.getValue(origin),
       ),
       family: builder.family,
       builder: builder.child.buildWidget,
@@ -113,21 +114,24 @@ class ZacFlutterNavigatorActions
     GetFlutterNavigatorState? navigatorState,
   }) = _PopUntilRouteName;
 
-  NavigatorState? _getState(ZacBuildContext context) {
+  NavigatorState? _getState(ZacOriginWidgetTree origin) {
     return map(
           popUntilRouteName: (obj) =>
-              obj.navigatorState?.getNavigatorState(context),
+              obj.navigatorState?.getNavigatorState(origin),
         ) ??
-        Navigator.maybeOf(context.context);
+        Navigator.maybeOf(origin.context);
   }
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
-    final state = _getState(context);
+  void execute(ZacOrigin origin, ContextBag bag) {
+    assert(null != origin.mapOrNull(widgetTree: (obj) => obj));
+    origin as ZacOriginWidgetTree;
+
+    final state = _getState(origin);
     if (null == state) return;
 
     /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-    state.popUntil(ModalRoute.withName(routeName.getValue(context)));
+    state.popUntil(ModalRoute.withName(routeName.getValue(origin)));
   }
 }
 
@@ -144,7 +148,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   factory RouteFactoryRouteConfig({
     required FlutterRoute route,
     ZacString? provideArgsName,
-    List<ZacTransformer>? transform,
+    ZacTransformers? transform,
   }) = _RouteFactoryConfig;
 }
 
@@ -166,7 +170,7 @@ class RouteFactorySingleRoute
   }) = _RouteFactorySingleRoute;
 
   @override
-  RouteFactory buildRouteFactory(ZacBuildContext context) {
+  RouteFactory buildRouteFactory(ZacOriginWidgetTree origin) {
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -175,17 +179,17 @@ class RouteFactorySingleRoute
       }
 
       return routeConfig.route.build(
-        context,
-        wrap: (context, zacWidget) {
+        origin,
+        wrap: (origin, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context);
+            return zacWidget.buildWidget(origin);
           }
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
             family: RouteFactoryFromRoutes.providerName(
-              context,
+              origin,
               routeConfig,
               provideArgsNamePrefix,
             ),
@@ -217,15 +221,18 @@ class RouteFactoryFromRoutes
     String? provideArgsNamePrefix,
   }) = _RouteFactoryFromRoutes;
 
-  static String providerName(
-      ZacBuildContext context, RouteFactoryRouteConfig config, String? prefix) {
-    final name = config.provideArgsName?.getValue(context) ??
+  static String providerName(ZacOriginWidgetTree origin,
+      RouteFactoryRouteConfig config, String? prefix) {
+    final name = config.provideArgsName?.getValue(origin) ??
         RouteFactoryFromRoutes.defaultProviderName;
     return '${null == prefix ? "" : "$prefix."}$name';
   }
 
   @override
-  RouteFactory buildRouteFactory(ZacBuildContext context) {
+  RouteFactory buildRouteFactory(ZacOrigin origin) {
+    assert(null != origin.mapOrNull(widgetTree: (obj) => obj));
+    origin as ZacOriginWidgetTree;
+
     return (settings) {
       final name = settings.name;
       if (null == name) {
@@ -237,17 +244,17 @@ class RouteFactoryFromRoutes
       }
       final config = routes[name]!;
       return config.route.build(
-        context,
-        wrap: (context, zacWidget) {
+        origin,
+        wrap: (origin, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(context);
+            return zacWidget.buildWidget(origin);
           }
 
           return SharedValueProvider(
             builder: zacWidget.buildWidget,
             family: RouteFactoryFromRoutes.providerName(
-              context,
+              origin,
               config,
               provideArgsNamePrefix,
             ),

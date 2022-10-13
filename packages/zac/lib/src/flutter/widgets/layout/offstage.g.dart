@@ -16,5 +16,5 @@ _$_FlutterOffstage _$$_FlutterOffstageFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['offstage'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

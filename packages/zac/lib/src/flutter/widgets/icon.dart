@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -11,7 +10,7 @@ part 'icon.freezed.dart';
 part 'icon.g.dart';
 
 @defaultConverterFreezed
-class FlutterIcon with _$FlutterIcon implements ZacWidget {
+class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   const FlutterIcon._();
 
   static const String unionValue = 'f:1:Icon';
@@ -30,14 +29,14 @@ class FlutterIcon with _$FlutterIcon implements ZacWidget {
   }) = _FlutterIcon;
 
   @override
-  Icon buildWidget(ZacBuildContext context) {
+  Icon buildWidget(ZacOriginWidgetTree origin) {
     return Icon(
-      icon?.build(context),
-      key: key?.buildKey(context),
-      color: color?.build(context),
-      size: size?.getValue(context),
-      semanticLabel: semanticLabel?.getValue(context),
-      textDirection: textDirection?.build(context),
+      icon?.build(origin),
+      key: key?.buildKey(origin),
+      color: color?.build(origin),
+      size: size?.getValue(origin),
+      semanticLabel: semanticLabel?.getValue(origin),
+      textDirection: textDirection?.build(origin),
     );
   }
 }
@@ -57,12 +56,12 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(ZacBuildContext context) {
+  IconData build(ZacOriginWidgetTree origin) {
     return IconData(
-      codePoint.getValue(context),
-      fontFamily: fontFamily?.getValue(context),
-      fontPackage: fontPackage?.getValue(context),
-      matchTextDirection: matchTextDirection?.getValue(context) ?? false,
+      codePoint.getValue(origin),
+      fontFamily: fontFamily?.getValue(origin),
+      fontPackage: fontPackage?.getValue(origin),
+      matchTextDirection: matchTextDirection?.getValue(origin) ?? false,
     );
   }
 }
@@ -81,11 +80,11 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
     ZacDouble? size,
   }) = _FlutterIconThemeData;
 
-  IconThemeData build(ZacBuildContext context) {
+  IconThemeData build(ZacOriginWidgetTree origin) {
     return IconThemeData(
-      color: color?.build(context),
-      opacity: opacity?.getValue(context),
-      size: size?.getValue(context),
+      color: color?.build(origin),
+      opacity: opacity?.getValue(origin),
+      size: size?.getValue(origin),
     );
   }
 }

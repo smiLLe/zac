@@ -23,7 +23,7 @@ mixin _$FlutterIgnorePointer {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacBool? get ignoring => throw _privateConstructorUsedError;
   ZacBool? get ignoringSemantics => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -49,7 +49,7 @@ class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
   @override
   final ZacBool? ignoringSemantics;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   String toString() {
@@ -91,7 +91,7 @@ abstract class _FlutterIgnorePointer extends FlutterIgnorePointer {
       {final FlutterKey? key,
       final ZacBool? ignoring,
       final ZacBool? ignoringSemantics,
-      final ZacWidget? child}) = _$_FlutterIgnorePointer;
+      final FlutterWidget? child}) = _$_FlutterIgnorePointer;
   _FlutterIgnorePointer._() : super._();
 
   factory _FlutterIgnorePointer.fromJson(Map<String, dynamic> json) =
@@ -104,5 +104,5 @@ abstract class _FlutterIgnorePointer extends FlutterIgnorePointer {
   @override
   ZacBool? get ignoringSemantics;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }

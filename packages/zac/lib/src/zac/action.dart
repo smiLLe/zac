@@ -1,14 +1,14 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_context.dart';
-import 'package:zac/src/zac/widget_builder.dart';
-import 'package:zac/src/base.dart';
-import 'package:zac/src/converter.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/base.dart';
+import 'package:zac/src/converter.dart';
+import 'package:zac/src/zac/misc.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/widget.dart';
 
 part 'action.freezed.dart';
 part 'action.g.dart';
@@ -18,24 +18,7 @@ abstract class ZacAction {
     return ConverterHelper.convertToType<ZacAction>(data);
   }
 
-  void execute(ZacBuildContext context, ActionPayload payload);
-}
-
-@defaultConverterFreezed
-class ActionPayload with _$ActionPayload {
-  const factory ActionPayload.none() = _ActionPayloadNone;
-  factory ActionPayload(Object? data) = _ActionPayloadWithData;
-}
-
-void Function()? actionsCallback(ZacActions? actions, ZacBuildContext context) {
-  if (null == actions) return null;
-  return () => actions.execute(context, const ActionPayload.none());
-}
-
-void Function(Object? data)? actionsCallback1(
-    ZacActions? actions, ZacBuildContext context) {
-  if (null == actions) return null;
-  return (Object? data) => actions.execute(context, ActionPayload(data));
+  void execute(ZacOrigin origin, ContextBag bag);
 }
 
 @defaultConverterFreezed
@@ -65,21 +48,56 @@ class ZacActions with _$ZacActions {
   }
 
   @FreezedUnionValue(ZacActions.unionValue)
-  factory ZacActions(List<ZacAction> actions) = _ZacActions;
+  const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
-  void execute(ZacBuildContext context, ActionPayload payload) async {
-    if (!context.isMounted()) return;
+  void execute(
+    ZacOrigin origin, {
+    void Function(ContextBag bag)? prefillBag,
+  }) async {
+    if (!origin.map(
+        widgetTree: (obj) => obj.lifetime.isMounted(),
+        statemachineAction: (obj) => obj.lifetime.isActive())) return;
+    final bag = ContextBag();
+    prefillBag?.call(bag);
+    executeWithBag(origin, bag);
+    bag.clear();
+  }
+
+  void executeWithBag(
+    ZacOrigin origin,
+    ContextBag bag,
+  ) {
+    if (!origin.map(
+        widgetTree: (obj) => obj.lifetime.isMounted(),
+        statemachineAction: (obj) => obj.lifetime.isActive())) return;
+
     for (var action in actions) {
-      if (!context.isMounted()) return;
-      action.execute(context, payload);
+      if (!origin.map(
+          widgetTree: (obj) => obj.lifetime.isMounted(),
+          statemachineAction: (obj) => obj.lifetime.isActive())) {
+        return;
+      }
+      action.execute(origin, bag);
     }
+  }
+}
+
+extension Interactions on ZacActions {
+  void Function() createCb(ZacOriginWidgetTree origin) {
+    return () => execute(origin);
+  }
+
+  void Function(T data) createCbParam1<T extends Object?>(
+      ZacOriginWidgetTree origin) {
+    return (T data) => execute(origin,
+        prefillBag: (bag) => bag..addKeyValue(kBagActionPayload, data));
   }
 }
 
 @defaultConverterFreezed
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
-    implements ZacWidget {
+    implements FlutterWidget {
   const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActions.once';
@@ -91,18 +109,18 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
     required ZacActions actions,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacActions actions,
     required SharedValueFamily family,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _ZacExecuteActionsBuilderListen;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(ZacOriginWidgetTree origin) {
     return map(
       once: (obj) => ZacExecuteActionsOnce(
         actions: obj.actions,
@@ -124,15 +142,15 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   final ZacActions actions;
   final SharedValueFamily family;
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
-    SharedValue.listenAndExecuteActions(zacContext, family, actions);
+    final origin = useZacOrigin(ref);
+    SharedValue.listenAndExecuteActions(origin, family, actions);
 
     return null != child
-        ? ZacWidgetBuilder(zacWidget: child!)
+        ? ZacWidget(zacWidget: child!)
         : const SizedBox.shrink();
   }
 }
@@ -143,18 +161,18 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       : super(key: key);
 
   final ZacActions actions;
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
+    final origin = useZacOrigin(ref);
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(zacContext, const ActionPayload.none());
+        actions.execute(origin);
         if (!mounted) return;
         doneState.value = true;
       });
@@ -163,7 +181,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
     if (null == child || !doneState.value) return const SizedBox.shrink();
 
-    return ZacWidgetBuilder(
+    return ZacWidget(
       zacWidget: child!,
     );
   }

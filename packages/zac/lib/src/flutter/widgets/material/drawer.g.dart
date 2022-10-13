@@ -23,7 +23,7 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
           : ZacString.fromJson(json['semanticLabel'] as Object),

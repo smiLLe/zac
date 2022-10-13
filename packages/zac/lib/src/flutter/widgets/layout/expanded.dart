@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +10,7 @@ part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
 @defaultConverterFreezed
-class FlutterExpanded with _$FlutterExpanded implements ZacWidget {
+class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   const FlutterExpanded._();
 
   static const String unionValue = 'f:1:Expanded';
@@ -23,15 +22,15 @@ class FlutterExpanded with _$FlutterExpanded implements ZacWidget {
   factory FlutterExpanded({
     FlutterKey? key,
     ZacInt? flex,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterExpanded;
 
   @override
-  Expanded buildWidget(ZacBuildContext context) {
+  Expanded buildWidget(ZacOriginWidgetTree origin) {
     return Expanded(
-      key: key?.buildKey(context),
-      child: child.buildWidget(context),
-      flex: flex?.getValue(context) ?? 1,
+      key: key?.buildKey(origin),
+      child: child.buildWidget(origin),
+      flex: flex?.getValue(origin) ?? 1,
     );
   }
 }

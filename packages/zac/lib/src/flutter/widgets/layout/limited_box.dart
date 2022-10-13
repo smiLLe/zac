@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +10,7 @@ part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterLimitedBox with _$FlutterLimitedBox implements ZacWidget {
+class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   const FlutterLimitedBox._();
 
   static const String unionValue = 'f:1:LimitedBox';
@@ -24,16 +23,16 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements ZacWidget {
     FlutterKey? key,
     ZacDouble? maxWidth,
     ZacDouble? maxHeight,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterLimitedBox;
 
   @override
-  LimitedBox buildWidget(ZacBuildContext context) {
+  LimitedBox buildWidget(ZacOriginWidgetTree origin) {
     return LimitedBox(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      maxHeight: maxHeight?.getValue(context) ?? double.infinity,
-      maxWidth: maxWidth?.getValue(context) ?? double.infinity,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      maxHeight: maxHeight?.getValue(origin) ?? double.infinity,
+      maxWidth: maxWidth?.getValue(origin) ?? double.infinity,
     );
   }
 }

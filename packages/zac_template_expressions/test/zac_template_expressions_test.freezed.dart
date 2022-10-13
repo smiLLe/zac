@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LeakContext {
   void Function(ZacBuildContext) get cb => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -34,7 +34,7 @@ class _$_LeakContext extends _LeakContext {
   @override
   final void Function(ZacBuildContext) cb;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   String toString() {
@@ -66,11 +66,11 @@ class _$_LeakContext extends _LeakContext {
 abstract class _LeakContext extends LeakContext {
   factory _LeakContext(
       {required final void Function(ZacBuildContext) cb,
-      final ZacWidget? child}) = _$_LeakContext;
+      final FlutterWidget? child}) = _$_LeakContext;
   _LeakContext._() : super._();
 
   @override
   void Function(ZacBuildContext) get cb;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }

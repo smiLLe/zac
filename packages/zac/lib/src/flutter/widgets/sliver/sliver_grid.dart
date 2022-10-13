@@ -1,17 +1,16 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
 
 @defaultConverterFreezed
-class FlutterSliverGrid with _$FlutterSliverGrid implements ZacWidget {
+class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
   const FlutterSliverGrid._();
 
   static const String unionValue = 'f:1:SliverGrid';
@@ -27,11 +26,11 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements ZacWidget {
   }) = _FlutterSliverGrid;
 
   @override
-  SliverGrid buildWidget(ZacBuildContext context) {
+  SliverGrid buildWidget(ZacOriginWidgetTree origin) {
     return SliverGrid(
-      key: key?.buildKey(context),
-      delegate: delegate.build(context),
-      gridDelegate: gridDelegate.build(context),
+      key: key?.buildKey(origin),
+      delegate: delegate.build(origin),
+      gridDelegate: gridDelegate.build(origin),
     );
   }
 }

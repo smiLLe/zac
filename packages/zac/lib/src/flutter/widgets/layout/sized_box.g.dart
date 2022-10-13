@@ -20,7 +20,7 @@ _$_FlutterWidgetSizedBox _$$_FlutterWidgetSizedBoxFromJson(
           : ZacDouble.fromJson(json['height'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -32,7 +32,7 @@ _$_FlutterWidgetSizedBoxExpand _$$_FlutterWidgetSizedBoxExpandFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -44,7 +44,7 @@ _$_FlutterWidgetSizedBoxFromSize _$$_FlutterWidgetSizedBoxFromSizeFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       size: json['size'] == null
           ? null
           : FlutterSize.fromJson(json['size'] as Map<String, dynamic>),
@@ -59,7 +59,7 @@ _$_FlutterWidgetSizedBoxShrink _$$_FlutterWidgetSizedBoxShrinkFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -71,7 +71,7 @@ _$_FlutterWidgetSizedBoxSquare _$$_FlutterWidgetSizedBoxSquareFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
       dimension: json['dimension'] == null
           ? null
           : ZacDouble.fromJson(json['dimension'] as Object),

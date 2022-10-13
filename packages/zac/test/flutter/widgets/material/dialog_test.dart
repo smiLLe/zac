@@ -220,7 +220,7 @@ void main() {
 
       await tester.tap(findMe);
 
-      verify(cb(any, any)).called(1);
+      verify(cb(argThat(isAOriginWidgetTree), any)).called(1);
     });
   });
 }

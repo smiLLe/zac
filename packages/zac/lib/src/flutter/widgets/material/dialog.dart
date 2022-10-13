@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -19,7 +19,7 @@ part 'dialog.freezed.dart';
 part 'dialog.g.dart';
 
 @defaultConverterFreezed
-class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
+class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';
@@ -33,7 +33,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
 
   @FreezedUnionValue(FlutterDialogs.unionValueShowDialog)
   factory FlutterDialogs.showDialog({
-    required ZacWidget child,
+    required FlutterWidget child,
     ZacBool? barrierDismissible,
     FlutterColor? barrierColor,
     ZacString? barrierLabel,
@@ -53,14 +53,14 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterDialogsDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueAlertDialog)
   factory FlutterDialogs.alertDialog({
     FlutterKey? key,
-    ZacWidget? title,
-    ZacWidget? content,
+    FlutterWidget? title,
+    FlutterWidget? content,
     ListOfZacWidget? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -84,7 +84,7 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
-    ZacWidget? title,
+    FlutterWidget? title,
     ListOfZacWidget? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -101,99 +101,99 @@ class FlutterDialogs with _$FlutterDialogs, ZacAction implements ZacWidget {
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialogOption)
   factory FlutterDialogs.simpleDialogOption({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     ZacActions? onPressed,
     FlutterEdgeInsets? padding,
   }) = _FlutterDialogsSimpleDialogOption;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacBuildContext context, ActionPayload payload) {
-    if (!context.isMounted()) return null;
+  FutureOr<ZacActions?> execute(ZacOrigin origin, ContextBag bag) {
+    assert(null != origin.mapOrNull(widgetTree: (obj) => obj));
+    origin as ZacOriginWidgetTree;
+
     return map(
       alertDialog: (_) => throw StateError('Should never happen'),
       dialog: (_) => throw StateError('Should never happen'),
       simpleDialog: (_) => throw StateError('Should never happen'),
       simpleDialogOption: (_) => throw StateError('Should never happen'),
       showDialog: (value) => showDialog<ZacActions?>(
-        context: context.context,
-        builder: (_) => FlutterBuilder(child: value.child).buildWidget(context),
-        routeSettings: value.routeSettings?.build(context),
-        barrierDismissible: value.barrierDismissible?.getValue(context) ?? true,
-        barrierColor: value.barrierColor?.build(context),
-        barrierLabel: value.barrierLabel?.getValue(context),
-        useSafeArea: value.useSafeArea?.getValue(context) ?? true,
-        useRootNavigator: value.useRootNavigator?.getValue(context) ?? true,
+        context: origin.context,
+        builder: (_) => FlutterBuilder(child: value.child).buildWidget(origin),
+        routeSettings: value.routeSettings?.build(origin),
+        barrierDismissible: value.barrierDismissible?.getValue(origin) ?? true,
+        barrierColor: value.barrierColor?.build(origin),
+        barrierLabel: value.barrierLabel?.getValue(origin),
+        useSafeArea: value.useSafeArea?.getValue(origin) ?? true,
+        useRootNavigator: value.useRootNavigator?.getValue(origin) ?? true,
       ),
     );
   }
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
+  Widget buildWidget(ZacOriginWidgetTree origin) {
     return map(
       showDialog: (_) => throw StateError('Should never happen'),
       dialog: (value) => Dialog(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        alignment: value.alignment?.build(context),
-        backgroundColor: value.backgroundColor?.build(context),
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
-        elevation: value.elevation?.getValue(context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
+        alignment: value.alignment?.build(origin),
+        backgroundColor: value.backgroundColor?.build(origin),
+        clipBehavior: value.clipBehavior?.build(origin) ?? Clip.none,
+        elevation: value.elevation?.getValue(origin),
         // insetAnimationCurve: value.insetAnimationCurve?.toFlutter(context),
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
-        insetPadding: value.insetPadding?.build(context),
-        shape: value.shape?.build(context),
+        insetPadding: value.insetPadding?.build(origin),
+        shape: value.shape?.build(origin),
       ),
       alertDialog: (value) => AlertDialog(
-        key: value.key?.buildKey(context),
-        title: value.title?.buildWidget(context),
-        content: value.content?.buildWidget(context),
-        actions: value.actions?.getValue(context) ?? const <Widget>[],
-        actionsAlignment: value.actionsAlignment?.build(context),
+        key: value.key?.buildKey(origin),
+        title: value.title?.buildWidget(origin),
+        content: value.content?.buildWidget(origin),
+        actions: value.actions?.getValue(origin) ?? const <Widget>[],
+        actionsAlignment: value.actionsAlignment?.build(origin),
         actionsOverflowButtonSpacing:
-            value.actionsOverflowButtonSpacing?.getValue(context),
-        actionsOverflowDirection:
-            value.actionsOverflowDirection?.build(context),
-        actionsPadding: value.actionsPadding?.build(context) ?? EdgeInsets.zero,
-        alignment: value.alignment?.build(context),
-        backgroundColor: value.backgroundColor?.build(context),
-        buttonPadding: value.buttonPadding?.build(context),
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
-        contentPadding: value.contentPadding?.build(context) ??
+            value.actionsOverflowButtonSpacing?.getValue(origin),
+        actionsOverflowDirection: value.actionsOverflowDirection?.build(origin),
+        actionsPadding: value.actionsPadding?.build(origin) ?? EdgeInsets.zero,
+        alignment: value.alignment?.build(origin),
+        backgroundColor: value.backgroundColor?.build(origin),
+        buttonPadding: value.buttonPadding?.build(origin),
+        clipBehavior: value.clipBehavior?.build(origin) ?? Clip.none,
+        contentPadding: value.contentPadding?.build(origin) ??
             const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
-        contentTextStyle: value.contentTextStyle?.build(context),
-        elevation: value.elevation?.getValue(context),
-        insetPadding: value.insetPadding?.build(context) ??
+        contentTextStyle: value.contentTextStyle?.build(origin),
+        elevation: value.elevation?.getValue(origin),
+        insetPadding: value.insetPadding?.build(origin) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        scrollable: value.scrollable?.getValue(context) ?? false,
-        semanticLabel: value.semanticLabel?.getValue(context),
-        shape: value.shape?.build(context),
-        titlePadding: value.titlePadding?.build(context),
-        titleTextStyle: value.titleTextStyle?.build(context),
+        scrollable: value.scrollable?.getValue(origin) ?? false,
+        semanticLabel: value.semanticLabel?.getValue(origin),
+        shape: value.shape?.build(origin),
+        titlePadding: value.titlePadding?.build(origin),
+        titleTextStyle: value.titleTextStyle?.build(origin),
       ),
       simpleDialog: (value) => SimpleDialog(
-        key: value.key?.buildKey(context),
-        title: value.title?.buildWidget(context),
-        children: value.children?.getValue(context) ?? const <Widget>[],
-        alignment: value.alignment?.build(context),
-        backgroundColor: value.backgroundColor?.build(context),
-        clipBehavior: value.clipBehavior?.build(context) ?? Clip.none,
-        contentPadding: value.contentPadding?.build(context) ??
+        key: value.key?.buildKey(origin),
+        title: value.title?.buildWidget(origin),
+        children: value.children?.getValue(origin) ?? const <Widget>[],
+        alignment: value.alignment?.build(origin),
+        backgroundColor: value.backgroundColor?.build(origin),
+        clipBehavior: value.clipBehavior?.build(origin) ?? Clip.none,
+        contentPadding: value.contentPadding?.build(origin) ??
             const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-        elevation: value.elevation?.getValue(context),
-        insetPadding: value.insetPadding?.build(context) ??
+        elevation: value.elevation?.getValue(origin),
+        insetPadding: value.insetPadding?.build(origin) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        semanticLabel: value.semanticLabel?.getValue(context),
-        shape: value.shape?.build(context),
-        titlePadding: value.titlePadding?.build(context) ??
+        semanticLabel: value.semanticLabel?.getValue(origin),
+        shape: value.shape?.build(origin),
+        titlePadding: value.titlePadding?.build(origin) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
-        titleTextStyle: value.titleTextStyle?.build(context),
+        titleTextStyle: value.titleTextStyle?.build(origin),
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
-        key: value.key?.buildKey(context),
-        child: value.child?.buildWidget(context),
-        padding: value.padding?.build(context),
-        onPressed: actionsCallback(value.onPressed, context),
+        key: value.key?.buildKey(origin),
+        child: value.child?.buildWidget(origin),
+        padding: value.padding?.build(origin),
+        onPressed: value.onPressed?.createCb(origin),
       ),
     );
   }

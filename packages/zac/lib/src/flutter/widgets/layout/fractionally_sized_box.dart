@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,7 @@ part 'fractionally_sized_box.g.dart';
 @defaultConverterFreezed
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterFractionallySizedBox._();
 
   static const String unionValue = 'f:1:FractionallySizedBox';
@@ -25,20 +24,20 @@ class FlutterFractionallySizedBox
   @FreezedUnionValue(FlutterFractionallySizedBox.unionValue)
   factory FlutterFractionallySizedBox({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     FlutterAlignmentGeometry? alignment,
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
   @override
-  FractionallySizedBox buildWidget(ZacBuildContext context) {
+  FractionallySizedBox buildWidget(ZacOriginWidgetTree origin) {
     return FractionallySizedBox(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      heightFactor: heightFactor?.getValue(context),
-      widthFactor: widthFactor?.getValue(context),
-      alignment: alignment?.build(context) ?? Alignment.center,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      heightFactor: heightFactor?.getValue(origin),
+      widthFactor: widthFactor?.getValue(origin),
+      alignment: alignment?.build(origin) ?? Alignment.center,
     );
   }
 }

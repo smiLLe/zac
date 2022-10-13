@@ -13,22 +13,22 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       leading: json['leading'] == null
           ? null
-          : ZacWidget.fromJson(json['leading'] as Object),
+          : FlutterWidget.fromJson(json['leading'] as Object),
       automaticallyImplyLeading: json['automaticallyImplyLeading'] == null
           ? null
           : ZacBool.fromJson(json['automaticallyImplyLeading'] as Object),
       title: json['title'] == null
           ? null
-          : ZacWidget.fromJson(json['title'] as Object),
+          : FlutterWidget.fromJson(json['title'] as Object),
       actions: json['actions'] == null
           ? null
           : ListOfZacWidget.fromJson(json['actions'] as Object),
       flexibleSpace: json['flexibleSpace'] == null
           ? null
-          : ZacWidget.fromJson(json['flexibleSpace'] as Object),
+          : FlutterWidget.fromJson(json['flexibleSpace'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : ZacWidget.fromJson(json['bottom'] as Object),
+          : FlutterWidget.fromJson(json['bottom'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacDouble.fromJson(json['elevation'] as Object),

@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +10,7 @@ part 'opacity.freezed.dart';
 part 'opacity.g.dart';
 
 @defaultConverterFreezed
-class FlutterOpacity with _$FlutterOpacity implements ZacWidget {
+class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   const FlutterOpacity._();
 
   static const String unionValue = 'f:1:Opacity';
@@ -24,17 +23,16 @@ class FlutterOpacity with _$FlutterOpacity implements ZacWidget {
     FlutterKey? key,
     required ZacDouble opacity,
     ZacBool? alwaysIncludeSemantics,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterOpacity;
 
   @override
-  Opacity buildWidget(ZacBuildContext context) {
+  Opacity buildWidget(ZacOriginWidgetTree origin) {
     return Opacity(
-      key: key?.buildKey(context),
-      opacity: opacity.getValue(context),
-      alwaysIncludeSemantics:
-          alwaysIncludeSemantics?.getValue(context) ?? false,
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      opacity: opacity.getValue(origin),
+      alwaysIncludeSemantics: alwaysIncludeSemantics?.getValue(origin) ?? false,
+      child: child?.buildWidget(origin),
     );
   }
 }

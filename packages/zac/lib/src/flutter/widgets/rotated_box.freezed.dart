@@ -21,7 +21,7 @@ FlutterRotatedBox _$FlutterRotatedBoxFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterRotatedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
   int get quarterTurns => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -43,7 +43,7 @@ class _$_FlutterRotatedBox extends _FlutterRotatedBox {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
   @override
   final int quarterTurns;
 
@@ -83,7 +83,7 @@ class _$_FlutterRotatedBox extends _FlutterRotatedBox {
 abstract class _FlutterRotatedBox extends FlutterRotatedBox {
   factory _FlutterRotatedBox(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       required final int quarterTurns}) = _$_FlutterRotatedBox;
   _FlutterRotatedBox._() : super._();
 
@@ -93,7 +93,7 @@ abstract class _FlutterRotatedBox extends FlutterRotatedBox {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override
   int get quarterTurns;
 }

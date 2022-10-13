@@ -1,8 +1,8 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:flutter/widgets.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/base.dart';
 
@@ -28,20 +28,20 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     ZacBool? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
-  SystemUiOverlayStyle build(ZacBuildContext context) {
+  SystemUiOverlayStyle build(ZacOriginWidgetTree origin) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.build(context),
+      systemNavigationBarColor: systemNavigationBarColor?.build(origin),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(context),
+          systemNavigationBarDividerColor?.build(origin),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(context),
+          systemNavigationBarIconBrightness?.build(origin),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(context),
-      statusBarColor: statusBarColor?.build(context),
-      statusBarBrightness: statusBarBrightness?.build(context),
-      statusBarIconBrightness: statusBarIconBrightness?.build(context),
+          systemNavigationBarContrastEnforced?.getValue(origin),
+      statusBarColor: statusBarColor?.build(origin),
+      statusBarBrightness: statusBarBrightness?.build(origin),
+      statusBarIconBrightness: statusBarIconBrightness?.build(origin),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(context),
+          systemStatusBarContrastEnforced?.getValue(origin),
     );
   }
 }
@@ -79,7 +79,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
   factory FlutterTextInputType.visiblePassword() =
       _FlutterTextInputTypevisiblePassword;
 
-  TextInputType build(ZacBuildContext context) {
+  TextInputType build(ZacOriginWidgetTree origin) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -133,7 +133,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
   factory FlutterTextInputAction.unspecified() =
       _FlutterTextInputActionunspecified;
 
-  TextInputAction build(ZacBuildContext context) {
+  TextInputAction build(ZacOriginWidgetTree origin) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -170,7 +170,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   @FreezedUnionValue('f:1:TextCapitalization.words')
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
-  TextCapitalization build(ZacBuildContext context) {
+  TextCapitalization build(ZacOriginWidgetTree origin) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -193,7 +193,7 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   @FreezedUnionValue('f:1:SmartDashesType.enabled')
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
-  SmartDashesType build(ZacBuildContext context) {
+  SmartDashesType build(ZacOriginWidgetTree origin) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -214,7 +214,7 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   @FreezedUnionValue('f:1:SmartQuotesType.enabled')
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
-  SmartQuotesType build(ZacBuildContext context) {
+  SmartQuotesType build(ZacOriginWidgetTree origin) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,

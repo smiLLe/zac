@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import '../helper.dart';
@@ -21,13 +23,13 @@ void main() {
 
     testWidgets('can be transformed and provieded through SharedValueProvider',
         (tester) async {
-      late ZacBuildContext context;
+      late ZacOriginWidgetTree origin;
 
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
-          builder: (c) {
-            context = c;
+          builder: (o) {
+            origin = o;
             // ignore returned widget
             return const SizedBox();
           },
@@ -35,12 +37,12 @@ void main() {
           value: const <String, dynamic>{
             '_converter': 'f:1:SizedBox',
           },
-          transformer: [ConvertTransformer()],
+          transformer: ZacTransformers([ConvertTransformer()]),
         ),
       );
 
       expect(
-        context.ref.read(SharedValue.provider('foo')),
+        origin.ref.read(SharedValue.provider('foo')),
         isFilledSharedValue(isA<FlutterSizedBox>()),
       );
     });
@@ -51,9 +53,10 @@ void main() {
         SharedValueProvider(
           family: 'foo',
           value: 'hello',
-          builder: (c) => FlutterText(
-            ZacString.consume('foo', transformer: [_ConcatStr(' world')]),
-          ).buildWidget(c),
+          builder: (o) => FlutterText(
+            ZacString.consume('foo',
+                transformer: ZacTransformers([_ConcatStr(' world')])),
+          ).buildWidget(o),
         ),
       );
 
@@ -72,15 +75,10 @@ void main() {
               'value': 'FIND_ME',
             }
           },
-          transformer: [ConvertTransformer()],
-          builder: (c) => FlutterContainer(
-            child: ZacWidget.fromJson(
-              {
-                '_converter': 'z:1:SharedValue.consume',
-                'family': 'foo',
-              },
-            ),
-          ).buildWidget(c),
+          transformer: ZacTransformers([ConvertTransformer()]),
+          builder: (o) => FlutterContainer(
+            child: ZacWidgetConsumerBuilder('foo'),
+          ).buildWidget(o),
         ),
       );
 
@@ -88,26 +86,27 @@ void main() {
     });
 
     testWidgets('can be consumed and then transformed #3', (tester) async {
-      late ZacBuildContext context;
+      late ZacOriginWidgetTree origin;
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
           family: 'foo',
           value: const ['foo', 'oof'],
-          builder: (c) => LeakContext(
-            cb: (c) => context = c,
-          ).buildWidget(c),
+          builder: (ori) => LeakOrigin(
+            cb: (o) => origin = o,
+          ).buildWidget(ori),
         ),
       );
 
       expect(
           ZacList.consume(
             'foo',
-            transformer: [
-              IterableTransformer.map(transformer: [_ConcatStr('bar')]),
+            transformer: ZacTransformers([
+              IterableTransformer.map(
+                  transformer: ZacTransformers([_ConcatStr('bar')])),
               const IterableTransformer.toList()
-            ],
-          ).getValue(context),
+            ]),
+          ).getValue(origin),
           ['foobar', 'oofbar']);
     });
 
@@ -117,16 +116,16 @@ void main() {
         SharedValueProvider(
           family: 'sharedA',
           value: 'a',
-          builder: (c) => SharedValueProvider(
+          builder: (o) => SharedValueProvider(
             family: 'sharedB',
             value: 'b',
-            builder: (c) => SharedValueProvider(
+            builder: (o) => SharedValueProvider(
               family: 'sharedC',
               value: 'c',
-              builder: (c) => SharedValueProvider(
+              builder: (o) => SharedValueProvider(
                 family: 'sharedA',
                 value: 'AA',
-                builder: (c) => FlutterColumn(
+                builder: (o) => FlutterColumn(
                   children: ListOfZacWidget(
                     [
                       FlutterText(ZacString.consume('sharedA')),
@@ -134,7 +133,7 @@ void main() {
                       FlutterText(ZacString.consume('sharedC')),
                     ],
                   ),
-                ).buildWidget(c),
+                ).buildWidget(o),
               ),
             ),
           ),
@@ -149,107 +148,222 @@ void main() {
 
     group('getFilled()', () {
       testWidgets('return the provided value', (tester) async {
-        late ZacBuildContext context;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: 10,
             family: 'foo',
-            child: LeakContext(
-              cb: (c) => context = c,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), context, 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             10);
       });
 
       testWidgets('also accepts null as provided value', (tester) async {
-        late ZacBuildContext context;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (c) => context = c,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), context, 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             isNull);
       });
 
       testWidgets('throws if empty', (tester) async {
-        late ZacBuildContext context;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
-          LeakContext(
-            cb: (c) => context = c,
+          LeakOrigin(
+            cb: (o) => origin = o,
           ),
         );
 
         expect(
             () => SharedValue.getFilled(
-                const SharedValueConsumeType.read(), context, 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
     });
 
     group('update()', () {
       testWidgets('throws if empty', (tester) async {
-        late ZacBuildContext context;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
-          LeakContext(
-            cb: (c) => context = c,
+          LeakOrigin(
+            cb: (o) => origin = o,
           ),
         );
 
-        expect(() => SharedValue.update(context, 'foo', (current) => 10),
+        expect(() => SharedValue.update(origin, 'foo', (current) => 10),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
 
       testWidgets('existing value', (tester) async {
-        late ZacBuildContext context;
+        late ZacOriginWidgetTree origin;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (c) => context = c,
+            child: LeakOrigin(
+              cb: (o) => origin = o,
             ),
           ),
         );
 
-        SharedValue.update(context, 'foo', (current) => 10);
+        SharedValue.update(origin, 'foo', (current) => 10);
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), context, 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             10);
 
-        SharedValue.update(context, 'foo', (current) => (current as int) + 10);
+        SharedValue.update(origin, 'foo', (current) => (current as int) + 10);
         expect(
             SharedValue.getFilled(
-                const SharedValueConsumeType.read(), context, 'foo'),
+                const SharedValueConsumeType.read(), origin, 'foo'),
             20);
+      });
+
+      testWidgets('using Action', (tester) async {
+        final cb = MockLeakBagCb();
+        await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            value: 1,
+            family: 'foo',
+            child: ZacExecuteActionsBuilder.once(
+              actions: ZacActions([
+                UpdateSharedValueInteractions.replaceWith(
+                  family: 'foo',
+                  value: 2,
+                  transformer: ZacTransformers([LeakBagTransformer(cb)]),
+                ),
+              ]),
+              child: FlutterSizedBox(),
+            ),
+          ),
+        );
+
+        verify(cb(argThat(isA<Map<String, dynamic>>()
+                .having((p0) => p0, 'contains SharedValue.replaceWith',
+                    containsPair('SharedValue.replaceWith', 2))
+                .having((p0) => p0, 'contains SharedValue.current',
+                    containsPair('SharedValue.current', 1)))))
+            .called(1);
       });
     });
 
     group('transform()', () {
       test('simple value', () {
         expect(
-            [_ConcatStr('bar'), _ConcatStr('baz')].transformValues(
-                ZacTransformValue('foo'), FakeZacWidgetContext(), null),
+            ZacTransformers([_ConcatStr('bar'), _ConcatStr('baz')])
+                .transform(ZacTransformValue('foo'), FakeZacOrigin()),
             equals('foobarbaz'));
       });
+    });
+  });
+
+  group('actions', () {
+    test('fromJson', () {
+      ConverterHelper.convertToType<
+          UpdateSharedValueInteractions>(<String, dynamic>{
+        '_converter': 'z:1:SharedValue.update',
+        'family': 'fam',
+        'transformer': <ZacTransformer>[],
+      });
+
+      ConverterHelper.convertToType<
+          UpdateSharedValueInteractions>(<String, dynamic>{
+        '_converter': 'z:1:SharedValue.replaceWith',
+        'family': 'fam',
+        'value': 1,
+        'transformer': <ZacTransformer>[],
+      });
+    });
+    testWidgets(
+        'update the SharedValue by updating/tranforming its current value',
+        (tester) async {
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'foo',
+          family: 'family',
+          child: FlutterColumn(
+            children: ListOfZacWidget([
+              FlutterText(ZacString.consume('family')),
+              ZacExecuteActionsBuilder.once(
+                actions: ZacActions([
+                  UpdateSharedValueInteractions(
+                    family: 'family',
+                    transformer: ZacTransformers([_ConcatStr('oof')]),
+                  ),
+                ]),
+              ),
+            ]),
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('foooof'), findsOneWidget);
+    });
+
+    testWidgets('replace the value of the SharedValue with another value',
+        (tester) async {
+      final cb = MockLeakBagCb();
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'foo',
+          family: 'family',
+          child: FlutterColumn(
+            children: ListOfZacWidget([
+              FlutterText(ZacString.consume('family')),
+              ZacExecuteActionsBuilder.once(
+                actions: ZacActions([
+                  UpdateSharedValueInteractions.replaceWith(
+                    family: 'family',
+                    value: 'bar',
+                    transformer: ZacTransformers([LeakBagTransformer(cb)]),
+                  ),
+                ]),
+                child: FlutterSizedBox(),
+              ),
+            ]),
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      verify(cb(argThat(isA<Map<String, dynamic>>()
+              .having((p0) => p0, 'contains SharedValue.replaceWith',
+                  containsPair('SharedValue.replaceWith', 'bar'))
+              .having((p0) => p0, 'contains SharedValue.current',
+                  containsPair('SharedValue.current', 'foo')))))
+          .called(1);
+
+      expect(find.text('bar'), findsOneWidget);
+      verifyNoMoreInteractions(cb);
     });
   });
 
@@ -261,98 +375,18 @@ void main() {
         SharedValueProvider(
           family: 'shared',
           value: 'foo',
-          builder: (c) => FlutterText(
+          builder: (o) => FlutterText(
             ZacString.consume(
               'shared',
-              transformer: [_ConcatStr('baz')],
-              consumeType:
-                  SharedValueConsumeType.watch(select: [_ConcatStr('bar')]),
+              transformer: ZacTransformers([_ConcatStr('baz')]),
+              consumeType: SharedValueConsumeType.watch(
+                  select: ZacTransformers([_ConcatStr('bar')])),
             ),
-          ).buildWidget(c),
+          ).buildWidget(o),
         ),
       );
 
       expect(find.text('foobarbaz'), findsOneWidget);
-    });
-  });
-
-  group('SharedValueInteractionType', () {
-    testWidgets('when provided', (tester) async {
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0]);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: FlutterSizedBox(),
-          transformer: [
-            transformer,
-          ],
-        ),
-      );
-
-      verify(transformer.transform(
-          ZacTransformValue(1),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionProvide>())));
-    });
-
-    testWidgets('when consumed', (tester) async {
-      late ZacBuildContext context;
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0].value);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: LeakContext(
-            cb: (c) => context = c,
-          ),
-        ),
-      );
-
-      ZacInt.consume('foo', transformer: [transformer]).getValue(context);
-
-      verify(transformer.transform(
-          ZacTransformValue(1),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionConsume>())));
-    });
-
-    testWidgets('in action consumed', (tester) async {
-      final transformer = MockTransformerCb();
-      when(transformer.transform(any, any, any))
-          .thenAnswer((i) => i.positionalArguments[0]);
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: 1,
-          family: 'foo',
-          child: ZacExecuteActionsBuilder.once(
-            actions: ZacActions([
-              UpdateSharedValueAction(
-                family: 'foo',
-                value: 2,
-                transformer: [transformer],
-              ),
-            ]),
-            child: FlutterSizedBox(),
-          ),
-        ),
-      );
-
-      verify(transformer.transform(
-          ZacTransformValue(2),
-          argThat(isA<ZacBuildContext>()),
-          argThat(isA<SharedValueTransformerInteractionAction>()
-              .having((p0) => p0.current, 'current', 1))));
     });
   });
 }
@@ -363,8 +397,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag? extra) {
     return (transformValue.value as String) + str;
   }
 }

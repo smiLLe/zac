@@ -1,10 +1,11 @@
 import 'dart:async';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/widgets/material/refresh_indicator.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/update_context.dart';
-import 'package:zac/src/base.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/misc.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
@@ -25,28 +26,30 @@ class FlutterRefreshIndicatorAction
       _FlutterRefreshIndicatorAction;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {
-    payload.map(
-      none: (_) => throw StateError('''
+  void execute(ZacOrigin origin, ContextBag bag) {
+    final completer = bag.safeGet<Completer<void>>(
+      key: kBagActionPayload,
+      notFound: () => throw StateError('''
 There was an error in $FlutterRefreshIndicatorAction where no payload was found.
 It is expected to receive a $Completer from $FlutterRefreshIndicator.
 '''),
-      (payload) {
-        if (payload.data is! Completer<void>) {
-          throw StateError('''
-There was an error in $FlutterRefreshIndicatorAction.
-The payload doest not contain a $Completer.
-Instead got: ${payload.data}
-''');
-        }
-        final c = payload.data as Completer<void>;
-        context.onUnmount(() {
-          if (c.isCompleted) return;
-          c.completeError(const Object());
+    );
+
+    origin.map(
+      widgetTree: (origin) {
+        origin.lifetime.onUnmount(() {
+          if (completer.isCompleted) return;
+          completer.completeError(const Object());
         });
-        if (c.isCompleted) return;
-        c.complete();
+      },
+      statemachineAction: (origin) {
+        origin.lifetime.onBecomeInactive(() {
+          if (completer.isCompleted) return;
+          completer.completeError(const Object());
+        });
       },
     );
+    if (completer.isCompleted) return;
+    completer.complete();
   }
 }

@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -12,7 +11,7 @@ part 'material_app.freezed.dart';
 part 'material_app.g.dart';
 
 @defaultConverterFreezed
-class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
+class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   const FlutterMaterialApp._();
 
   static const String unionValue = 'f:1:MaterialApp';
@@ -25,7 +24,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
     FlutterKey? key,
     FlutterGlobalKeyNavigatorState? navigatorKey,
     // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-    ZacWidget? home,
+    FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
     ZacString? initialRoute,
     FlutterRouteFactory? onGenerateRoute,
@@ -60,30 +59,28 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements ZacWidget {
   }) = _FlutterMaterialApp;
 
   @override
-  MaterialApp buildWidget(ZacBuildContext context) {
+  MaterialApp buildWidget(ZacOriginWidgetTree origin) {
     return MaterialApp(
-      key: key?.buildKey(context),
-      navigatorKey: navigatorKey?.buildKey(context),
-      home: home?.buildWidget(context),
-      initialRoute: initialRoute?.getValue(context),
-      onGenerateRoute: onGenerateRoute?.buildRouteFactory(context),
-      onUnknownRoute: onUnknownRoute?.buildRouteFactory(context),
-      title: title?.getValue(context) ?? '',
-      color: color?.build(context),
-      locale: locale?.build(context),
-      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(context) ?? false,
-      showPerformanceOverlay:
-          showPerformanceOverlay?.getValue(context) ?? false,
+      key: key?.buildKey(origin),
+      navigatorKey: navigatorKey?.buildKey(origin),
+      home: home?.buildWidget(origin),
+      initialRoute: initialRoute?.getValue(origin),
+      onGenerateRoute: onGenerateRoute?.buildRouteFactory(origin),
+      onUnknownRoute: onUnknownRoute?.buildRouteFactory(origin),
+      title: title?.getValue(origin) ?? '',
+      color: color?.build(origin),
+      locale: locale?.build(origin),
+      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(origin) ?? false,
+      showPerformanceOverlay: showPerformanceOverlay?.getValue(origin) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(context) ?? false,
+          checkerboardRasterCacheImages?.getValue(origin) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(context) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.getValue(context) ?? false,
+          checkerboardOffscreenLayers?.getValue(origin) ?? false,
+      showSemanticsDebugger: showSemanticsDebugger?.getValue(origin) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(context) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(context),
-      useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValue(context) ?? false,
+          debugShowCheckedModeBanner?.getValue(origin) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(origin),
+      useInheritedMediaQuery: useInheritedMediaQuery?.getValue(origin) ?? false,
     );
   }
 }

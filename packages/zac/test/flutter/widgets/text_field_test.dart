@@ -88,13 +88,13 @@ void main() {
   });
 
   testWidgets('FlutterTextField() onChanged', (tester) async {
-    final executeCb = MockLeakedActionCb();
+    final cb = MockLeakBagCb();
     await testZacWidget(
       tester,
       FlutterMaterial(
         child: FlutterTextField(
           key: FlutterValueKey('FINDME'),
-          onChanged: ZacActions([LeakAction(executeCb)]),
+          onChanged: ZacActions([LeakBagContentAction(cb)]),
         ),
       ),
     );
@@ -104,7 +104,11 @@ void main() {
     await tester.enterText(findMe, 'hello world');
     await tester.pump();
 
-    verify(executeCb(any, ActionPayload('hello world')));
+    verify(cb(argThat(isA<Map<String, dynamic>>().having(
+            (p0) => p0,
+            'contains action.payload',
+            containsPair('action.payload', 'hello world')))))
+        .called(1);
   });
 
   testWidgets(

@@ -3,10 +3,9 @@
 // Do not manually edit this file.
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:zac/src/zac/action.dart' as _i4;
-import 'package:zac/src/zac/shared_value.dart' as _i5;
-import 'package:zac/src/zac/transformers.dart' as _i6;
-import 'package:zac/src/zac/update_context.dart' as _i3;
+import 'package:zac/src/zac/misc.dart' as _i4;
+import 'package:zac/src/zac/origin.dart' as _i3;
+import 'package:zac/src/zac/transformers.dart' as _i5;
 
 import 'helper.dart' as _i2;
 
@@ -29,68 +28,48 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
   }
 
   @override
-  void call(_i3.ZacBuildContext? context, _i4.ActionPayload? payload) =>
-      super.noSuchMethod(Invocation.method(#call, [context, payload]),
+  void call(_i3.ZacOrigin? origin, _i4.ContextBag? bag) =>
+      super.noSuchMethod(Invocation.method(#call, [origin, bag]),
           returnValueForMissingStub: null);
 }
 
-/// A class which mocks [WhenZacCb].
+/// A class which mocks [LeakBagCb].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockWhenZacCb<T> extends _i1.Mock implements _i2.WhenZacCb<T> {
-  MockWhenZacCb() {
+class MockLeakBagCb extends _i1.Mock implements _i2.LeakBagCb {
+  MockLeakBagCb() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  T? call(_i5.SharedValueTransformerInteraction? obj) =>
-      (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
-}
-
-/// A class which mocks [WhenNotZacCb].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockWhenNotZacCb<T> extends _i1.Mock implements _i2.WhenNotZacCb<T> {
-  MockWhenNotZacCb() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  T? call(_i5.SharedValueTransformerInteraction? obj) =>
-      (super.noSuchMethod(Invocation.method(#call, [obj])) as T?);
-}
-
-/// A class which mocks [LeakeContextCb].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockLeakeContextCb extends _i1.Mock implements _i2.LeakeContextCb {
-  MockLeakeContextCb() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  void call(_i3.ZacBuildContext? context) =>
-      super.noSuchMethod(Invocation.method(#call, [context]),
+  void call(Map<String, dynamic>? bag) =>
+      super.noSuchMethod(Invocation.method(#call, [bag]),
           returnValueForMissingStub: null);
 }
 
-/// A class which mocks [TransformerCb].
+/// A class which mocks [LeakBagTransformer].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTransformerCb extends _i1.Mock implements _i2.TransformerCb {
-  MockTransformerCb() {
+class MockLeakBagTransformer extends _i1.Mock
+    implements _i2.LeakBagTransformer {
+  MockLeakBagTransformer() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  Object? call(_i6.ZacTransformValue? transformValue,
-          _i5.SharedValueTransformerInteraction? interaction) =>
-      (super.noSuchMethod(
-          Invocation.method(#call, [transformValue, interaction])) as Object?);
+  void Function(Map<String, dynamic>) get cb =>
+      (super.noSuchMethod(Invocation.getter(#cb),
+              returnValue: (Map<String, dynamic> bag) {})
+          as void Function(Map<String, dynamic>));
   @override
-  Object? transform(_i6.ZacTransformValue? transformValue,
-          _i3.ZacBuildContext? context, _i6.ZacTransformerExtra? extra) =>
+  Object? call(_i5.ZacTransformValue? transformValue, _i3.ZacOrigin? origin,
+          _i4.ContextBag? bag) =>
       (super.noSuchMethod(
-              Invocation.method(#transform, [transformValue, context, extra]))
+          Invocation.method(#call, [transformValue, origin, bag])) as Object?);
+  @override
+  Object? transform(_i5.ZacTransformValue? transformValue,
+          _i3.ZacOrigin? origin, _i4.ContextBag? bag) =>
+      (super.noSuchMethod(
+              Invocation.method(#transform, [transformValue, origin, bag]))
           as Object?);
 }

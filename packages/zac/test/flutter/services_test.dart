@@ -2,193 +2,229 @@ import 'package:zac/src/flutter/services.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../helper.dart';
 import 'models.dart';
 
 void main() {
   test('FlutterTextInputType', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.datetime'})
-            .build(config),
-        TextInputType.datetime);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.datetime'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.datetime', equals(TextInputType.datetime)),
+    );
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextInputType.emailAddress'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputType.emailAddress',
+          equals(TextInputType.emailAddress)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputType.emailAddress'
-        }).build(config),
-        TextInputType.emailAddress);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.multiline'}).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputType.multiline',
+          equals(TextInputType.multiline)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.multiline'})
-            .build(config),
-        TextInputType.multiline);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.name'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.name', equals(TextInputType.name)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.name'})
-            .build(config),
-        TextInputType.name);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.number'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.number', equals(TextInputType.number)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.number'})
-            .build(config),
-        TextInputType.number);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.phone'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.phone', equals(TextInputType.phone)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.phone'})
-            .build(config),
-        TextInputType.phone);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextInputType.streetAddress'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputType.streetAddress',
+          equals(TextInputType.streetAddress)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputType.streetAddress'
-        }).build(config),
-        TextInputType.streetAddress);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.text'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.text', equals(TextInputType.text)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.text'})
-            .build(config),
-        TextInputType.text);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputType.url'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputType.url', equals(TextInputType.url)),
+    );
 
-    expect(
-        FlutterTextInputType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputType.url'})
-            .build(config),
-        TextInputType.url);
-
-    expect(
-        FlutterTextInputType.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputType.visiblePassword'
-        }).build(config),
-        TextInputType.visiblePassword);
+    fakeBuild<TextInputType>(
+      FlutterTextInputType.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextInputType.visiblePassword'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputType.visiblePassword',
+          equals(TextInputType.visiblePassword)),
+    );
   });
 
   test('FlutterTextInputAction', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextInputAction.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputAction.continueAction'
-        }).build(config),
-        TextInputAction.continueAction);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.done'})
-            .build(config),
-        TextInputAction.done);
-    expect(
-        FlutterTextInputAction.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputAction.emergencyCall'
-        }).build(config),
-        TextInputAction.emergencyCall);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.go'})
-            .build(config),
-        TextInputAction.go);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.join'})
-            .build(config),
-        TextInputAction.join);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.newline'})
-            .build(config),
-        TextInputAction.newline);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.next'})
-            .build(config),
-        TextInputAction.next);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.none'})
-            .build(config),
-        TextInputAction.none);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.previous'})
-            .build(config),
-        TextInputAction.previous);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.route'})
-            .build(config),
-        TextInputAction.route);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.search'})
-            .build(config),
-        TextInputAction.search);
-    expect(
-        FlutterTextInputAction.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextInputAction.send'})
-            .build(config),
-        TextInputAction.send);
-    expect(
-        FlutterTextInputAction.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextInputAction.unspecified'
-        }).build(config),
-        TextInputAction.unspecified);
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextInputAction.continueAction'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputAction.continueAction',
+          equals(TextInputAction.continueAction)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.done'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.done', equals(TextInputAction.done)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextInputAction.emergencyCall'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputAction.emergencyCall',
+          equals(TextInputAction.emergencyCall)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.go'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.go', equals(TextInputAction.go)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.join'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.join', equals(TextInputAction.join)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.newline'}).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputAction.newline',
+          equals(TextInputAction.newline)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.next'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.next', equals(TextInputAction.next)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.none'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.none', equals(TextInputAction.none)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextInputAction.previous'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputAction.previous',
+          equals(TextInputAction.previous)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.route'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.route', equals(TextInputAction.route)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.search'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.search', equals(TextInputAction.search)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextInputAction.send'}).build,
+      (matcher) => matcher.having(
+          (p0) => p0, 'TextInputAction.send', equals(TextInputAction.send)),
+    );
+    fakeBuild<TextInputAction>(
+      FlutterTextInputAction.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextInputAction.unspecified'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextInputAction.unspecified',
+          equals(TextInputAction.unspecified)),
+    );
   });
 
   test('FlutterTextCapitalization', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterTextCapitalization.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextCapitalization.characters'
-        }).build(config),
-        TextCapitalization.characters);
+    fakeBuild<TextCapitalization>(
+      FlutterTextCapitalization.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextCapitalization.characters'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextCapitalization.characters',
+          equals(TextCapitalization.characters)),
+    );
+    fakeBuild<TextCapitalization>(
+      FlutterTextCapitalization.fromJson(
+          <String, dynamic>{'_converter': 'f:1:TextCapitalization.none'}).build,
+      (matcher) => matcher.having((p0) => p0, 'TextCapitalization.none',
+          equals(TextCapitalization.none)),
+    );
 
-    expect(
-        FlutterTextCapitalization.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextCapitalization.none'})
-            .build(config),
-        TextCapitalization.none);
-    expect(
-        FlutterTextCapitalization.fromJson(<String, dynamic>{
-          '_converter': 'f:1:TextCapitalization.sentences'
-        }).build(config),
-        TextCapitalization.sentences);
-    expect(
-        FlutterTextCapitalization.fromJson(
-                <String, dynamic>{'_converter': 'f:1:TextCapitalization.words'})
-            .build(config),
-        TextCapitalization.words);
+    fakeBuild<TextCapitalization>(
+      FlutterTextCapitalization.fromJson(<String, dynamic>{
+        '_converter': 'f:1:TextCapitalization.sentences'
+      }).build,
+      (matcher) => matcher.having((p0) => p0, 'TextCapitalization.sentences',
+          equals(TextCapitalization.sentences)),
+    );
+    fakeBuild<TextCapitalization>(
+      FlutterTextCapitalization.fromJson(
+              <String, dynamic>{'_converter': 'f:1:TextCapitalization.words'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'TextCapitalization.words',
+          equals(TextCapitalization.words)),
+    );
   });
 
   test('FlutterSmartDashesType', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterSmartDashesType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:SmartDashesType.disabled'})
-            .build(config),
-        SmartDashesType.disabled);
-
-    expect(
-        FlutterSmartDashesType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:SmartDashesType.enabled'})
-            .build(config),
-        SmartDashesType.enabled);
+    fakeBuild<SmartDashesType>(
+      FlutterSmartDashesType.fromJson(
+              <String, dynamic>{'_converter': 'f:1:SmartDashesType.disabled'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'SmartDashesType.disabled',
+          equals(SmartDashesType.disabled)),
+    );
+    fakeBuild<SmartDashesType>(
+      FlutterSmartDashesType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:SmartDashesType.enabled'}).build,
+      (matcher) => matcher.having((p0) => p0, 'SmartDashesType.disabled',
+          equals(SmartDashesType.enabled)),
+    );
   });
 
   test('FlutterSmartQuotesType', () {
-    final config = FakeZacContext();
-    expect(
-        FlutterSmartQuotesType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:SmartQuotesType.disabled'})
-            .build(config),
-        SmartQuotesType.disabled);
-
-    expect(
-        FlutterSmartQuotesType.fromJson(
-                <String, dynamic>{'_converter': 'f:1:SmartQuotesType.enabled'})
-            .build(config),
-        SmartQuotesType.enabled);
+    fakeBuild<SmartQuotesType>(
+      FlutterSmartQuotesType.fromJson(
+              <String, dynamic>{'_converter': 'f:1:SmartQuotesType.disabled'})
+          .build,
+      (matcher) => matcher.having((p0) => p0, 'SmartQuotesType.disabled',
+          equals(SmartQuotesType.disabled)),
+    );
+    fakeBuild<SmartQuotesType>(
+      FlutterSmartQuotesType.fromJson(
+          <String, dynamic>{'_converter': 'f:1:SmartQuotesType.enabled'}).build,
+      (matcher) => matcher.having((p0) => p0, 'SmartQuotesType.enabled',
+          equals(SmartQuotesType.enabled)),
+    );
   });
 }

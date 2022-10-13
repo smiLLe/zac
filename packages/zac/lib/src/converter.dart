@@ -3,13 +3,14 @@ import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
+import 'package:zac/src/zac/statemachine.dart';
 import 'package:zac/src/zac/transformers.dart';
 
-import 'package:zac/src/zac/widget_builder.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/update_widget.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -104,7 +105,10 @@ Map<String, Convert> allConverters = const {
          */
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
-  UpdateSharedValueAction.unionValue: UpdateSharedValueAction.fromJson,
+  UpdateSharedValueInteractions.unionValue:
+      UpdateSharedValueInteractions.fromJson,
+  UpdateSharedValueInteractions.unionValueReplaceWith:
+      UpdateSharedValueInteractions.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   IterableTransformer.unionValue: IterableTransformer.fromJson,
   IterableTransformer.unionValueSingle: IterableTransformer.fromJson,
@@ -164,6 +168,15 @@ Map<String, Convert> allConverters = const {
   JsonTransformer.unionValue: JsonTransformer.fromJson,
   JsonTransformer.unionValueDecode: JsonTransformer.fromJson,
 
+  ZacActions.unionValue: ZacActions.fromJson,
+
+  StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
+  StateMachineActions.unionValue: StateMachineActions.fromJson,
+  StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
+  StateMachineActions.unionValueSetState: StateMachineActions.fromJson,
+  StateNode.unionValue: StateNode.fromJson,
+  Transition.unionValue: Transition.fromJson,
+
   /**
          * Navigator && NavigatorState
          */
@@ -215,12 +228,11 @@ Map<String, Convert> allConverters = const {
         * WIDGETS
         */
   /// ZacWidget Classes
-  ZacWidgetBuilderBuilder.unionValue: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueMap: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueIsolate: ZacWidgetBuilderBuilder.fromJson,
-  ZacWidgetBuilderBuilder.unionValueIsolateString:
-      ZacWidgetBuilderBuilder.fromJson,
-  ZacUpdateContextBuilder.unionValue: ZacUpdateContextBuilder.fromJson,
+  ZacWidgetBuilder.unionValue: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueMap: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueIsolate: ZacWidgetBuilder.fromJson,
+  ZacWidgetBuilder.unionValueIsolateString: ZacWidgetBuilder.fromJson,
+  ZacUpdateOriginBuilder.unionValue: ZacUpdateOriginBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValue: ZacExecuteActionsBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValueListen: ZacExecuteActionsBuilder.fromJson,
   SharedValueProviderBuilder.unionValue: SharedValueProviderBuilder.fromJson,
@@ -392,7 +404,8 @@ abstract class ConverterHelper {
 
   static Map<String, dynamic> validateConverter<T>(Object? data) {
     if (!isConverter(data)) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 Could not convert ${data.runtimeType} to $T.
 It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
 Data: "$data"''');
@@ -401,7 +414,8 @@ Data: "$data"''');
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 Error while trying to convert data to $T.
 There is no registered Converter found for "$rt".''');
     }
@@ -415,7 +429,8 @@ There is no registered Converter found for "$rt".''');
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw ConverterError('''
+      throw ConverterError(
+          '''
 An unexpected Builder was returned after convertion of "$rt"
 Expected Builder type: $T
 Actual Builder: "${converted.runtimeType}"

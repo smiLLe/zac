@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,7 +14,7 @@ part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @defaultConverterFreezed
-class FlutterGridView with _$FlutterGridView implements ZacWidget {
+class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   const FlutterGridView._();
 
   static const String unionValue = 'f:1:GridView';
@@ -47,25 +46,25 @@ class FlutterGridView with _$FlutterGridView implements ZacWidget {
   }) = _FlutterGridView;
 
   @override
-  GridView buildWidget(ZacBuildContext context) {
+  GridView buildWidget(ZacOriginWidgetTree origin) {
     return GridView(
-      gridDelegate: gridDelegate.build(context),
-      key: key?.buildKey(context),
-      scrollDirection: scrollDirection?.build(context) ?? Axis.vertical,
-      reverse: reverse?.getValue(context) ?? false,
-      primary: primary?.getValue(context),
-      shrinkWrap: shrinkWrap?.getValue(context) ?? false,
-      padding: padding?.build(context),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(context) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(context) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(context) ?? true,
-      cacheExtent: cacheExtent?.getValue(context),
-      children: children?.getValue(context) ?? const <Widget>[],
-      semanticChildCount: semanticChildCount?.getValue(context),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(context) ??
+      gridDelegate: gridDelegate.build(origin),
+      key: key?.buildKey(origin),
+      scrollDirection: scrollDirection?.build(origin) ?? Axis.vertical,
+      reverse: reverse?.getValue(origin) ?? false,
+      primary: primary?.getValue(origin),
+      shrinkWrap: shrinkWrap?.getValue(origin) ?? false,
+      padding: padding?.build(origin),
+      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(origin) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+      cacheExtent: cacheExtent?.getValue(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
+      semanticChildCount: semanticChildCount?.getValue(origin),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(origin) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(context),
-      clipBehavior: clipBehavior?.build(context) ?? Clip.hardEdge,
+      restorationId: restorationId?.getValue(origin),
+      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
     );
   }
 }

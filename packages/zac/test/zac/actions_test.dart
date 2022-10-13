@@ -1,11 +1,11 @@
 import 'package:zac/src/flutter/all.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/converter.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -14,16 +14,18 @@ import '../helper.mocks.dart';
 void main() {
   test('AnyAction', () {
     expect(
-        ZacAction.fromJson(
+        ZacActions.fromJson(
           <String, dynamic>{
             '_converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child')
           },
         ),
-        FlutterDialogs.showDialog(
-            child: FlutterSizedBox(key: FlutterValueKey('dialog_child'))));
+        ZacActions([
+          FlutterDialogs.showDialog(
+              child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
+        ]));
 
-    expect(() => ZacAction.fromJson(<String, dynamic>{}), throwsConverterError);
+    expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
   });
 
   test('AnyActions', () {
@@ -95,7 +97,7 @@ void main() {
       expect(find.byKey(const ValueKey('child')), findsOneWidget);
     });
 
-    testWidgets('will execute actions', (tester) async {
+    testWidgets('will execute interactions', (tester) async {
       final executeCb = MockLeakedActionCb();
 
       await testZacWidget(
@@ -103,7 +105,7 @@ void main() {
         ZacExecuteActionsBuilder.once(
             actions: LeakAction.createActions(executeCb)),
       );
-      verify(executeCb(any, any)).called(1);
+      verify(executeCb(argThat(isAOriginWidgetTree), any)).called(1);
       await tester.pump();
       await tester.pump();
       await tester.pump();
@@ -137,9 +139,9 @@ void main() {
               actions: ZacActions([const NoopAction()]), family: 'foo'));
     });
 
-    testWidgets('execute actions', (tester) async {
-      late ZacBuildContext context;
-      final cb = MockLeakedActionCb();
+    testWidgets('execute interactions', (tester) async {
+      late ZacOriginWidgetTree origin;
+      final cb = MockLeakBagCb();
 
       await testZacWidget(
         tester,
@@ -147,11 +149,11 @@ void main() {
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            actions: LeakAction.createActions(cb),
+            actions: LeakBagContentAction.createActions(cb),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
-              child: LeakContext(cb: (c) => context = c),
+              child: LeakOrigin(cb: (o) => origin = o),
             ),
           ),
         ),
@@ -159,10 +161,10 @@ void main() {
 
       verifyZeroInteractions(cb);
 
-      SharedValue.update(context, 'shared', (current) => 2);
+      SharedValue.update(origin, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
-      verify(cb(any, ActionPayload(2))).called(1);
+      verify(cb(argThat(containsPair('action.payload', 2)))).called(1);
       verifyNoMoreInteractions(cb);
     });
   });
@@ -199,7 +201,7 @@ void main() {
     testWidgets('simple', (tester) async {
       Map<String, dynamic> page({
         required int number,
-        required List<Map<String, dynamic>> actions,
+        required List<Map<String, dynamic>> interactions,
         required List<Map<String, dynamic>> backActions,
       }) {
         return <String, dynamic>{
@@ -212,7 +214,7 @@ void main() {
               'child': ChildModel.sizedBox,
               'onPressed': {
                 '_converter': 'z:1:Actions',
-                'actions': actions,
+                'actions': interactions,
               }
             },
             {
@@ -232,21 +234,21 @@ void main() {
         tester,
         page(
           number: 1,
-          actions: [
+          interactions: [
             <String, dynamic>{
               '_converter': FlutterNavigatorActions.unionValuePush,
               'route': {
                 '_converter': 'f:1:MaterialPageRoute',
                 'child': page(
                   number: 2,
-                  actions: [
+                  interactions: [
                     <String, dynamic>{
                       '_converter': FlutterNavigatorActions.unionValuePush,
                       'route': {
                         '_converter': 'f:1:MaterialPageRoute',
                         'child': page(
                           number: 3,
-                          actions: [
+                          interactions: [
                             <String, dynamic>{
                               '_converter': FlutterNavigatorActions
                                   .unionValuePushReplacement,
@@ -254,7 +256,7 @@ void main() {
                                 '_converter': 'f:1:MaterialPageRoute',
                                 'child': page(
                                   number: 4,
-                                  actions: [],
+                                  interactions: [],
                                   backActions: [
                                     <String, dynamic>{
                                       '_converter':

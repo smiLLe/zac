@@ -1,6 +1,6 @@
-import 'package:zac/src/zac/any_value.dart';
+import 'package:zac/src/zac/origin.dart';
 
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
@@ -10,7 +10,7 @@ part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @defaultConverterFreezed
-class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
+class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   const FlutterBuilder._();
 
   static const String unionValue = 'f:1:Builder';
@@ -21,16 +21,16 @@ class FlutterBuilder with _$FlutterBuilder implements ZacWidget {
   @FreezedUnionValue(FlutterBuilder.unionValue)
   factory FlutterBuilder({
     FlutterKey? key,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterBuilder;
 
   @override
-  Builder buildWidget(ZacBuildContext context) {
+  Builder buildWidget(ZacOriginWidgetTree origin) {
     return Builder(
-      key: key?.buildKey(context),
+      key: key?.buildKey(origin),
       builder: (_) {
-        return ZacUpdateContext(
-          builder: (context) => child.buildWidget(context),
+        return ZacUpdateOrigin(
+          builder: child.buildWidget,
         );
       },
     );

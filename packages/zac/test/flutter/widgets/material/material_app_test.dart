@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -34,16 +34,16 @@ void main() {
   });
 
   testWidgets('get NavigatorState', (tester) async {
-    late ZacBuildContext context;
+    late ZacOriginWidgetTree origin;
 
     await testWithConverters(
       tester: tester,
-      widget: ZacWidgetBuilder(
+      widget: ZacWidget(
         zacWidget: ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume('foo'),
-            home: LeakContext(cb: (c) => context = c),
+            home: LeakOrigin(cb: (o) => origin = o),
           ),
         ),
       ),
@@ -51,7 +51,7 @@ void main() {
     );
 
     expect(
-        context.ref.read(SharedValue.provider('foo')),
+        origin.ref.read(SharedValue.provider('foo')),
         isA<FilledSharedValue>().having(
             (p0) => p0.data,
             'data',

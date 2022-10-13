@@ -23,7 +23,7 @@ mixin _$FlutterFlexible {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacInt? get flex => throw _privateConstructorUsedError;
   FlutterFlexFit? get fit => throw _privateConstructorUsedError;
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -48,7 +48,7 @@ class _$_FlutterFlexible extends _FlutterFlexible {
   @override
   final FlutterFlexFit? fit;
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
 
   @override
   String toString() {
@@ -89,7 +89,7 @@ abstract class _FlutterFlexible extends FlutterFlexible {
       {final FlutterKey? key,
       final ZacInt? flex,
       final FlutterFlexFit? fit,
-      required final ZacWidget child}) = _$_FlutterFlexible;
+      required final FlutterWidget child}) = _$_FlutterFlexible;
   _FlutterFlexible._() : super._();
 
   factory _FlutterFlexible.fromJson(Map<String, dynamic> json) =
@@ -102,5 +102,5 @@ abstract class _FlutterFlexible extends FlutterFlexible {
   @override
   FlutterFlexFit? get fit;
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
 }

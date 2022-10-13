@@ -29,5 +29,5 @@ _$_FlutterOverflowBox _$$_FlutterOverflowBoxFromJson(
           : ZacDouble.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

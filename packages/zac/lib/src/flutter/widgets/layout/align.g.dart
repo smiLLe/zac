@@ -22,5 +22,5 @@ _$_FlutterAlign _$$_FlutterAlignFromJson(Map<String, dynamic> json) =>
           : ZacDouble.fromJson(json['heightFactor'] as Object),
       child: json['child'] == null
           ? null
-          : ZacWidget.fromJson(json['child'] as Object),
+          : FlutterWidget.fromJson(json['child'] as Object),
     );

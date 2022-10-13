@@ -44,8 +44,8 @@ void main() {
     await tester.longPress(findMe);
 
     verifyInOrder([
-      onTapCb(any, any),
-      onLongPressCb(any, any),
+      onTapCb(argThat(isAOriginWidgetTree), any),
+      onLongPressCb(argThat(isAOriginWidgetTree), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);

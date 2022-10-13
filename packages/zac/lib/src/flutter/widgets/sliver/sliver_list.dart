@@ -1,16 +1,15 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
 
 @defaultConverterFreezed
-class FlutterSliverList with _$FlutterSliverList implements ZacWidget {
+class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   const FlutterSliverList._();
 
   static const String unionValue = 'f:1:SliverList';
@@ -25,10 +24,10 @@ class FlutterSliverList with _$FlutterSliverList implements ZacWidget {
   }) = _FlutterSliverList;
 
   @override
-  SliverList buildWidget(ZacBuildContext context) {
+  SliverList buildWidget(ZacOriginWidgetTree origin) {
     return SliverList(
-      key: key?.buildKey(context),
-      delegate: delegate.build(context),
+      key: key?.buildKey(origin),
+      delegate: delegate.build(origin),
     );
   }
 }

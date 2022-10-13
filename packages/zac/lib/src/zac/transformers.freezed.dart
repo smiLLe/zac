@@ -95,6 +95,78 @@ abstract class _ZacTransformValue extends ZacTransformValue {
   Map<String, Object?>? get extra;
 }
 
+ZacTransformers _$ZacTransformersFromJson(Map<String, dynamic> json) {
+  return _ZacTransformers.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacTransformers {
+  List<ZacTransformer> get transformers => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacTransformers value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacTransformers extends _ZacTransformers {
+  _$_ZacTransformers(final List<ZacTransformer> transformers)
+      : _transformers = transformers,
+        super._();
+
+  factory _$_ZacTransformers.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacTransformersFromJson(json);
+
+  final List<ZacTransformer> _transformers;
+  @override
+  List<ZacTransformer> get transformers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transformers);
+  }
+
+  @override
+  String toString() {
+    return 'ZacTransformers(transformers: $transformers)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacTransformers &&
+            const DeepCollectionEquality()
+                .equals(other._transformers, _transformers));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_transformers));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacTransformers value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacTransformers extends ZacTransformers {
+  factory _ZacTransformers(final List<ZacTransformer> transformers) =
+      _$_ZacTransformers;
+  _ZacTransformers._() : super._();
+
+  factory _ZacTransformers.fromJson(Map<String, dynamic> json) =
+      _$_ZacTransformers.fromJson;
+
+  @override
+  List<ZacTransformer> get transformers;
+}
+
 ConvertTransformer _$ConvertTransformerFromJson(Map<String, dynamic> json) {
   return _Convert.fromJson(json);
 }
@@ -676,34 +748,17 @@ abstract class _MapContainsValue extends MapTransformer {
 @JsonSerializable(createToJson: false)
 class _$_MapMapper extends _MapMapper {
   const _$_MapMapper(
-      {final List<ZacTransformer>? keyTransformer,
-      final List<ZacTransformer>? valueTransformer,
-      final String? $type})
-      : _keyTransformer = keyTransformer,
-        _valueTransformer = valueTransformer,
-        $type = $type ?? 'z:1:Transformer:Map.map',
+      {this.keyTransformer, this.valueTransformer, final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map.map',
         super._();
 
   factory _$_MapMapper.fromJson(Map<String, dynamic> json) =>
       _$$_MapMapperFromJson(json);
 
-  final List<ZacTransformer>? _keyTransformer;
   @override
-  List<ZacTransformer>? get keyTransformer {
-    final value = _keyTransformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<ZacTransformer>? _valueTransformer;
+  final ZacTransformers? keyTransformer;
   @override
-  List<ZacTransformer>? get valueTransformer {
-    final value = _valueTransformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? valueTransformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -719,17 +774,17 @@ class _$_MapMapper extends _MapMapper {
         (other.runtimeType == runtimeType &&
             other is _$_MapMapper &&
             const DeepCollectionEquality()
-                .equals(other._keyTransformer, _keyTransformer) &&
+                .equals(other.keyTransformer, keyTransformer) &&
             const DeepCollectionEquality()
-                .equals(other._valueTransformer, _valueTransformer));
+                .equals(other.valueTransformer, valueTransformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_keyTransformer),
-      const DeepCollectionEquality().hash(_valueTransformer));
+      const DeepCollectionEquality().hash(keyTransformer),
+      const DeepCollectionEquality().hash(valueTransformer));
 
   @override
   @optionalTypeArgs
@@ -754,15 +809,15 @@ class _$_MapMapper extends _MapMapper {
 
 abstract class _MapMapper extends MapTransformer {
   const factory _MapMapper(
-      {final List<ZacTransformer>? keyTransformer,
-      final List<ZacTransformer>? valueTransformer}) = _$_MapMapper;
+      {final ZacTransformers? keyTransformer,
+      final ZacTransformers? valueTransformer}) = _$_MapMapper;
   const _MapMapper._() : super._();
 
   factory _MapMapper.fromJson(Map<String, dynamic> json) =
       _$_MapMapper.fromJson;
 
-  List<ZacTransformer>? get keyTransformer;
-  List<ZacTransformer>? get valueTransformer;
+  ZacTransformers? get keyTransformer;
+  ZacTransformers? get valueTransformer;
 }
 
 /// @nodoc
@@ -1002,21 +1057,15 @@ mixin _$IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableMap extends _IterableMap {
-  _$_IterableMap(
-      {required final List<ZacTransformer> transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:Transformer:Iterable.map',
+  _$_IterableMap({required this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Iterable.map',
         super._();
 
   factory _$_IterableMap.fromJson(Map<String, dynamic> json) =>
       _$$_IterableMapFromJson(json);
 
-  final List<ZacTransformer> _transformer;
   @override
-  List<ZacTransformer> get transformer {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_transformer);
-  }
+  final ZacTransformers transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -1032,13 +1081,13 @@ class _$_IterableMap extends _IterableMap {
         (other.runtimeType == runtimeType &&
             other is _$_IterableMap &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_transformer));
+      runtimeType, const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -1064,14 +1113,14 @@ class _$_IterableMap extends _IterableMap {
 }
 
 abstract class _IterableMap extends IterableTransformer {
-  factory _IterableMap({required final List<ZacTransformer> transformer}) =
+  factory _IterableMap({required final ZacTransformers transformer}) =
       _$_IterableMap;
   _IterableMap._() : super._();
 
   factory _IterableMap.fromJson(Map<String, dynamic> json) =
       _$_IterableMap.fromJson;
 
-  List<ZacTransformer> get transformer;
+  ZacTransformers get transformer;
 }
 
 /// @nodoc
@@ -2351,11 +2400,10 @@ abstract class _ObjectHashCode extends ObjectTransformer {
 class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
     with ConsumeValue<Object> {
   _$_ObjectEqualsSharedValue(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.read(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
+      : $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
         super._();
 
   factory _$_ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =>
@@ -2363,15 +2411,8 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -2391,7 +2432,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
             other is _$_ObjectEqualsSharedValue &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -2401,7 +2442,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -2422,7 +2463,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer
     implements ConsumeValue<Object> {
   factory _ObjectEqualsSharedValue(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
@@ -2430,7 +2471,7 @@ abstract class _ObjectEqualsSharedValue extends ObjectTransformer
       _$_ObjectEqualsSharedValue.fromJson;
 
   Object get family;
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 

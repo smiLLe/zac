@@ -1,9 +1,10 @@
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/widget_builder.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
 import 'package:zac/src/converter.dart';
@@ -17,14 +18,65 @@ import 'package:mockito/mockito.dart';
 part 'helper.freezed.dart';
 part 'helper.g.dart';
 
-class FakeZacWidgetContext extends Fake implements ZacBuildContext {}
+class FakeBuildContext extends Fake implements BuildContext {}
+
+class FakeWidgetRef extends Fake implements WidgetRef {}
+
+class FakeZacOrigin extends Fake implements ZacOrigin {}
+
+class FakeZacOriginWidgetTree extends Fake implements ZacOriginWidgetTree {}
+
+class FakeZacOriginStateMachineAction extends Fake
+    implements ZacOriginStateMachineAction {}
 
 Matcher throwsConverterError = throwsA(isA<ConverterError>());
+
+TypeMatcher<ZacOriginWidgetTree> isAOriginWidgetTree =
+    isA<ZacOriginWidgetTree>();
 
 TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
   return isA<FilledSharedValue>()
       .having((p0) => p0.data, 'FilledSharedValue.data', matcher);
 }
+
+void fakeBuild<T>(
+  Object Function(ZacOriginWidgetTree origin) builder,
+  TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
+) {
+  final origin = FakeZacOriginWidgetTree();
+  expect(builder(origin), isA<T>());
+  expect(builder(origin), matcher(isA<T>()));
+}
+
+// Future<void> testSingleWidget<TWidget>({
+//   required WidgetTester tester,
+//   required Map<String, dynamic> widget,
+// }) async {
+//   await testZacWidget(
+//     tester,
+//     ZacWidgetBuilderBuilder.map(
+//       data: ZacMap(
+//         <String, dynamic>{
+//           '_converter': 'f:1:SizedBox',
+//           'key': {'_converter': 'f:1:ValueKey', 'value': 'THE_PARENT'},
+//           'child': widget,
+//         },
+//       ),
+//     ),
+//   );
+
+//   final finder = find
+//       .descendant(
+//         of: find.byKey(const ValueKey('THE_PARENT')),
+//         matching: find.byWidgetPredicate((widget) => widget is TWidget),
+//       )
+//       .first
+//       .evaluate()
+//       .first
+//       .widget;
+
+//   expect(finder, isA<TWidget>());
+// }
 
 Future<void> testMap(
   WidgetTester tester,
@@ -34,7 +86,7 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetBuilderFromMap(zacMap: ZacMap(data)),
+    ZacWidgetFromMa(zacMap: ZacMap(data)),
     converter: converter,
     useContainer: useContainer,
   );
@@ -42,13 +94,13 @@ Future<void> testMap(
 
 Future<void> testZacWidget(
   WidgetTester tester,
-  ZacWidget zacWidget, {
+  FlutterWidget zacWidget, {
   Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetBuilder(zacWidget: zacWidget),
+    ZacWidget(zacWidget: zacWidget),
     converter: converter,
     useContainer: useContainer,
   );
@@ -89,24 +141,42 @@ Future<void> testWithConverters({
 
 @GenerateMocks([LeakedActionCb])
 class LeakedActionCb extends Mock {
-  void call(ZacBuildContext context, ActionPayload payload);
+  void call(ZacOrigin origin, ContextBag bag);
+}
+
+@GenerateMocks([LeakBagCb])
+class LeakBagCb extends Mock {
+  void call(Map<String, dynamic> bag) {}
 }
 
 @nonConverterFreezed
 class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
-  factory LeakAction(
-          void Function(ZacBuildContext context, ActionPayload payload) cb) =
+  factory LeakAction(void Function(ZacOrigin origin, ContextBag bag) cb) =
       _LeakAction;
 
   static ZacActions createActions(
-          void Function(ZacBuildContext context, ActionPayload payload) cb) =>
+          void Function(ZacOrigin origin, ContextBag bag) cb) =>
       ZacActions([LeakAction(cb)]);
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) =>
-      cb(context, payload);
+  void execute(ZacOrigin origin, ContextBag bag) => cb(origin, bag);
+}
+
+@nonConverterFreezed
+class LeakBagContentAction with _$LeakBagContentAction implements ZacAction {
+  const LeakBagContentAction._();
+
+  factory LeakBagContentAction(void Function(Map<String, dynamic> bag) cb) =
+      _LeakBagContentAction;
+
+  static ZacActions createActions(void Function(Map<String, dynamic> bag) cb) =>
+      ZacActions([LeakBagContentAction(cb)]);
+
+  @override
+  void execute(ZacOrigin origin, ContextBag bag) =>
+      cb(<String, dynamic>{...bag});
 }
 
 @defaultConverterFreezed
@@ -130,50 +200,54 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) {}
+  void execute(ZacOrigin origin, ContextBag bag) {}
 }
 
-@GenerateMocks([WhenZacCb])
-class WhenZacCb<T> extends Mock {
-  T? call(SharedValueTransformerInteraction obj);
+class CustomTransformer implements ZacTransformer {
+  CustomTransformer(this.cb);
+
+  final Object? Function(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) cb;
+
+  @override
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
+    return cb(transformValue, origin, bag);
+  }
 }
 
-@GenerateMocks([WhenNotZacCb])
-class WhenNotZacCb<T> extends Mock {
-  T? call(SharedValueTransformerInteraction obj);
-}
+@GenerateMocks([LeakBagTransformer])
+class LeakBagTransformer extends Mock implements ZacTransformer {
+  LeakBagTransformer(this.cb);
 
-@GenerateMocks([LeakeContextCb])
-class LeakeContextCb extends Mock {
-  void call(ZacBuildContext context);
-}
+  final void Function(Map<String, dynamic> bag) cb;
 
-@GenerateMocks([TransformerCb])
-class TransformerCb extends Mock implements ZacTransformer {
-  Object? call(ZacTransformValue transformValue,
-      SharedValueTransformerInteraction interaction) {
+  Object? call(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
+    cb(<String, dynamic>{...bag});
     return transformValue.value;
   }
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacBuildContext context,
-      ZacTransformerExtra? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
+    cb(<String, dynamic>{...bag});
     return transformValue.value;
   }
 }
 
-@nonConverterFreezed
-class LeakContext with _$LeakContext implements ZacWidget {
-  LeakContext._();
+class LeakOrigin implements FlutterWidget {
+  LeakOrigin({
+    required this.cb,
+    this.child,
+  });
 
-  factory LeakContext({
-    required void Function(ZacBuildContext context) cb,
-    ZacWidget? child,
-  }) = _LeakContext;
+  final void Function(ZacOriginWidgetTree origin) cb;
+  final FlutterWidget? child;
 
   @override
-  Widget buildWidget(ZacBuildContext context) {
-    cb(context);
-    return child?.buildWidget(context) ?? const SizedBox.shrink();
+  Widget buildWidget(ZacOriginWidgetTree origin) {
+    cb(origin);
+    return child?.buildWidget(origin) ?? const SizedBox.shrink();
   }
 }

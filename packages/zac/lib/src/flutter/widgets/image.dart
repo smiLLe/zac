@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -12,7 +11,7 @@ part 'image.freezed.dart';
 part 'image.g.dart';
 
 @defaultConverterFreezed
-class FlutterImage with _$FlutterImage implements ZacWidget {
+class FlutterImage with _$FlutterImage implements FlutterWidget {
   const FlutterImage._();
 
   static const String unionValueNetwork = 'f:1:Image.network';
@@ -78,54 +77,52 @@ class FlutterImage with _$FlutterImage implements ZacWidget {
   }) = _FlutterImageAsset;
 
   @override
-  Image buildWidget(ZacBuildContext context) {
+  Image buildWidget(ZacOriginWidgetTree origin) {
     return map(
       network: (value) => Image.network(
-        value.src.getValue(context),
-        key: value.key?.buildKey(context),
-        scale: value.scale?.getValue(context) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(context),
+        value.src.getValue(origin),
+        key: value.key?.buildKey(origin),
+        scale: value.scale?.getValue(origin) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(origin),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(context) ?? false,
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        color: value.color?.build(context),
-        colorBlendMode: value.colorBlendMode?.build(context),
-        fit: value.fit?.build(context),
-        alignment: value.alignment?.build(context) ?? Alignment.center,
-        repeat: value.repeat?.build(context) ?? ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context),
-        matchTextDirection:
-            value.matchTextDirection?.getValue(context) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(context) ?? false,
-        filterQuality: value.filterQuality?.build(context) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(context) ?? false,
+            value.excludeFromSemantics?.getValue(origin) ?? false,
+        width: value.width?.getValue(origin),
+        height: value.height?.getValue(origin),
+        color: value.color?.build(origin),
+        colorBlendMode: value.colorBlendMode?.build(origin),
+        fit: value.fit?.build(origin),
+        alignment: value.alignment?.build(origin) ?? Alignment.center,
+        repeat: value.repeat?.build(origin) ?? ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(origin),
+        matchTextDirection: value.matchTextDirection?.getValue(origin) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(origin) ?? false,
+        filterQuality: value.filterQuality?.build(origin) ?? FilterQuality.low,
+        isAntiAlias: value.isAntiAlias?.getValue(origin) ?? false,
         headers: value.headers,
-        cacheWidth: value.cacheWidth?.getValue(context),
-        cacheHeight: value.cacheHeight?.getValue(context),
+        cacheWidth: value.cacheWidth?.getValue(origin),
+        cacheHeight: value.cacheHeight?.getValue(origin),
       ),
       asset: (value) => Image.asset(
-        value.name.getValue(context),
-        key: value.key?.buildKey(context),
-        scale: value.scale?.getValue(context) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(context),
+        value.name.getValue(origin),
+        key: value.key?.buildKey(origin),
+        scale: value.scale?.getValue(origin) ?? 1.0,
+        semanticLabel: value.semanticLabel?.getValue(origin),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValue(context) ?? false,
-        width: value.width?.getValue(context),
-        height: value.height?.getValue(context),
-        color: value.color?.build(context),
-        colorBlendMode: value.colorBlendMode?.build(context),
-        fit: value.fit?.build(context),
-        alignment: value.alignment?.build(context) ?? Alignment.center,
-        repeat: value.repeat?.build(context) ?? ImageRepeat.noRepeat,
-        centerSlice: value.centerSlice?.build(context),
-        matchTextDirection:
-            value.matchTextDirection?.getValue(context) ?? false,
-        gaplessPlayback: value.gaplessPlayback?.getValue(context) ?? false,
-        filterQuality: value.filterQuality?.build(context) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValue(context) ?? false,
-        cacheWidth: value.cacheWidth?.getValue(context),
-        cacheHeight: value.cacheHeight?.getValue(context),
+            value.excludeFromSemantics?.getValue(origin) ?? false,
+        width: value.width?.getValue(origin),
+        height: value.height?.getValue(origin),
+        color: value.color?.build(origin),
+        colorBlendMode: value.colorBlendMode?.build(origin),
+        fit: value.fit?.build(origin),
+        alignment: value.alignment?.build(origin) ?? Alignment.center,
+        repeat: value.repeat?.build(origin) ?? ImageRepeat.noRepeat,
+        centerSlice: value.centerSlice?.build(origin),
+        matchTextDirection: value.matchTextDirection?.getValue(origin) ?? false,
+        gaplessPlayback: value.gaplessPlayback?.getValue(origin) ?? false,
+        filterQuality: value.filterQuality?.build(origin) ?? FilterQuality.low,
+        isAntiAlias: value.isAntiAlias?.getValue(origin) ?? false,
+        cacheWidth: value.cacheWidth?.getValue(origin),
+        cacheHeight: value.cacheHeight?.getValue(origin),
       ),
     );
   }

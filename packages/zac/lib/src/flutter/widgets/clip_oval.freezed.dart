@@ -21,7 +21,7 @@ FlutterClipOval _$FlutterClipOvalFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterClipOval {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacWidget? get child =>
+  FlutterWidget? get child =>
       throw _privateConstructorUsedError; // CustomClipper<Rect>? clipper,
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ class _$_FlutterClipOval extends _FlutterClipOval {
   @override
   final FlutterKey? key;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 // CustomClipper<Rect>? clipper,
   @override
   final FlutterClip? clipBehavior;
@@ -84,7 +84,7 @@ class _$_FlutterClipOval extends _FlutterClipOval {
 abstract class _FlutterClipOval extends FlutterClipOval {
   factory _FlutterClipOval(
       {final FlutterKey? key,
-      final ZacWidget? child,
+      final FlutterWidget? child,
       final FlutterClip? clipBehavior}) = _$_FlutterClipOval;
   _FlutterClipOval._() : super._();
 
@@ -94,7 +94,7 @@ abstract class _FlutterClipOval extends FlutterClipOval {
   @override
   FlutterKey? get key;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
   @override // CustomClipper<Rect>? clipper,
   FlutterClip? get clipBehavior;
 }

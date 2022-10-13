@@ -1,17 +1,17 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/origin.dart';
 
 part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
 
 @defaultConverterFreezed
-class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
+class FlutterConstrainedBox
+    with _$FlutterConstrainedBox
+    implements FlutterWidget {
   const FlutterConstrainedBox._();
 
   static const String unionValue = 'f:1:ConstrainedBox';
@@ -23,15 +23,15 @@ class FlutterConstrainedBox with _$FlutterConstrainedBox implements ZacWidget {
   factory FlutterConstrainedBox({
     FlutterKey? key,
     required FlutterBoxConstraints constraints,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterConstrainedBox;
 
   @override
-  ConstrainedBox buildWidget(ZacBuildContext context) {
+  ConstrainedBox buildWidget(ZacOriginWidgetTree origin) {
     return ConstrainedBox(
-      key: key?.buildKey(context),
-      constraints: constraints.build(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      constraints: constraints.build(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,24 +41,24 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
     ZacInt? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegateFixed;
 
-  SliverChildDelegate build(ZacBuildContext context) {
+  SliverChildDelegate build(ZacOriginWidgetTree origin) {
     return map(
       list: (value) => SliverChildListDelegate(
-        children.getValue(context),
+        children.getValue(origin),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(context) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.getValue(context) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(context) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(context) ?? 0,
+            addAutomaticKeepAlives?.getValue(origin) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(origin) ?? 0,
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.getValue(context),
+        children.getValue(origin),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.getValue(context) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.getValue(context) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.getValue(context) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.getValue(context) ?? 0,
+            addAutomaticKeepAlives?.getValue(origin) ?? true,
+        addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
+        addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
+        semanticIndexOffset: semanticIndexOffset?.getValue(origin) ?? 0,
         // semanticIndexCallback:
       ),
     );

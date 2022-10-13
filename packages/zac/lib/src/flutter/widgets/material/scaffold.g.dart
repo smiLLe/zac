@@ -13,28 +13,28 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       appBar: json['appBar'] == null
           ? null
-          : ZacWidget.fromJson(json['appBar'] as Object),
+          : FlutterWidget.fromJson(json['appBar'] as Object),
       body: json['body'] == null
           ? null
-          : ZacWidget.fromJson(json['body'] as Object),
+          : FlutterWidget.fromJson(json['body'] as Object),
       floatingActionButton: json['floatingActionButton'] == null
           ? null
-          : ZacWidget.fromJson(json['floatingActionButton'] as Object),
+          : FlutterWidget.fromJson(json['floatingActionButton'] as Object),
       persistentFooterButtons: json['persistentFooterButtons'] == null
           ? null
           : ListOfZacWidget.fromJson(json['persistentFooterButtons'] as Object),
       drawer: json['drawer'] == null
           ? null
-          : ZacWidget.fromJson(json['drawer'] as Object),
+          : FlutterWidget.fromJson(json['drawer'] as Object),
       endDrawer: json['endDrawer'] == null
           ? null
-          : ZacWidget.fromJson(json['endDrawer'] as Object),
+          : FlutterWidget.fromJson(json['endDrawer'] as Object),
       bottomNavigationBar: json['bottomNavigationBar'] == null
           ? null
-          : ZacWidget.fromJson(json['bottomNavigationBar'] as Object),
+          : FlutterWidget.fromJson(json['bottomNavigationBar'] as Object),
       bottomSheet: json['bottomSheet'] == null
           ? null
-          : ZacWidget.fromJson(json['bottomSheet'] as Object),
+          : FlutterWidget.fromJson(json['bottomSheet'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -94,7 +94,7 @@ _$_FlutterScaffoldShowBodyScrim _$$_FlutterScaffoldShowBodyScrimFromJson(
 _$_FlutterScaffoldShowBottomSheet _$$_FlutterScaffoldShowBottomSheetFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterScaffoldShowBottomSheet(
-      ZacWidget.fromJson(json['child'] as Object),
+      FlutterWidget.fromJson(json['child'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -168,7 +168,7 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      content: ZacWidget.fromJson(json['content'] as Object),
+      content: FlutterWidget.fromJson(json['content'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -238,7 +238,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      content: ZacWidget.fromJson(json['content'] as Object),
+      content: FlutterWidget.fromJson(json['content'] as Object),
       contentTextStyle: json['contentTextStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
@@ -249,7 +249,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
           : ZacDouble.fromJson(json['elevation'] as Object),
       leading: json['leading'] == null
           ? null
-          : ZacWidget.fromJson(json['leading'] as Object),
+          : FlutterWidget.fromJson(json['leading'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(

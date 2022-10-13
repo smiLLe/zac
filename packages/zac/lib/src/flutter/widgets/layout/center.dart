@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +10,7 @@ part 'center.freezed.dart';
 part 'center.g.dart';
 
 @defaultConverterFreezed
-class FlutterCenter with _$FlutterCenter implements ZacWidget {
+class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   const FlutterCenter._();
 
   static const String unionValue = 'f:1:Center';
@@ -24,16 +23,16 @@ class FlutterCenter with _$FlutterCenter implements ZacWidget {
     FlutterKey? key,
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterCenter;
 
   @override
-  Center buildWidget(ZacBuildContext context) {
+  Center buildWidget(ZacOriginWidgetTree origin) {
     return Center(
-      key: key?.buildKey(context),
-      widthFactor: widthFactor?.getValue(context),
-      heightFactor: heightFactor?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      widthFactor: widthFactor?.getValue(origin),
+      heightFactor: heightFactor?.getValue(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

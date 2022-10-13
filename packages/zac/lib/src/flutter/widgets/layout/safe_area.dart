@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -11,7 +10,7 @@ part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
 @defaultConverterFreezed
-class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
+class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   const FlutterSafeArea._();
 
   static const String unionValue = 'f:1:SafeArea';
@@ -28,21 +27,21 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacWidget {
     ZacBool? bottom,
     FlutterEdgeInsets? minimum,
     ZacBool? maintainBottomViewPadding,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _FlutterSafeArea;
 
   @override
-  SafeArea buildWidget(ZacBuildContext context) {
+  SafeArea buildWidget(ZacOriginWidgetTree origin) {
     return SafeArea(
-      child: child.buildWidget(context),
-      key: key?.buildKey(context),
-      left: left?.getValue(context) ?? true,
-      top: top?.getValue(context) ?? true,
-      right: right?.getValue(context) ?? true,
-      bottom: bottom?.getValue(context) ?? true,
-      minimum: minimum?.build(context) ?? EdgeInsets.zero,
+      child: child.buildWidget(origin),
+      key: key?.buildKey(origin),
+      left: left?.getValue(origin) ?? true,
+      top: top?.getValue(origin) ?? true,
+      right: right?.getValue(origin) ?? true,
+      bottom: bottom?.getValue(origin) ?? true,
+      minimum: minimum?.build(origin) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.getValue(context) ?? false,
+          maintainBottomViewPadding?.getValue(origin) ?? false,
     );
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'any_value.dart';
+part of 'zac_values.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -9,18 +9,18 @@ part of 'any_value.dart';
 _$ZacIntValue _$$ZacIntValueFromJson(Map<String, dynamic> json) =>
     _$ZacIntValue(
       json['value'] as int,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacIntConsume _$$ZacIntConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacIntConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -31,18 +31,18 @@ _$ZacIntConsume _$$ZacIntConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacDoubleValue _$$ZacDoubleValueFromJson(Map<String, dynamic> json) =>
     _$ZacDoubleValue(
       (json['value'] as num).toDouble(),
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacDoubleConsume _$$ZacDoubleConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacDoubleConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -53,18 +53,18 @@ _$ZacDoubleConsume _$$ZacDoubleConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacStringValue _$$ZacStringValueFromJson(Map<String, dynamic> json) =>
     _$ZacStringValue(
       json['value'] as String,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacStringConsume _$$ZacStringConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacStringConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -75,18 +75,18 @@ _$ZacStringConsume _$$ZacStringConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacBoolValue _$$ZacBoolValueFromJson(Map<String, dynamic> json) =>
     _$ZacBoolValue(
       json['value'] as bool,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacBoolConsume _$$ZacBoolConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacBoolConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -97,18 +97,18 @@ _$ZacBoolConsume _$$ZacBoolConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacMapValue _$$ZacMapValueFromJson(Map<String, dynamic> json) =>
     _$ZacMapValue(
       json['value'] as Map<String, dynamic>,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacMapConsume _$$ZacMapConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacMapConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -119,18 +119,18 @@ _$ZacMapConsume _$$ZacMapConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacListValue _$$ZacListValueFromJson(Map<String, dynamic> json) =>
     _$ZacListValue(
       json['value'] as List<dynamic>,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacListConsume _$$ZacListConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacListConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -141,18 +141,18 @@ _$ZacListConsume _$$ZacListConsumeFromJson(Map<String, dynamic> json) =>
 _$ZacObjectValue _$$ZacObjectValueFromJson(Map<String, dynamic> json) =>
     _$ZacObjectValue(
       json['value'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
 _$ZacObjectConsume _$$ZacObjectConsumeFromJson(Map<String, dynamic> json) =>
     _$ZacObjectConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -164,11 +164,11 @@ _$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
         Map<String, dynamic> json) =>
     _$ListOfZacWidgetValue(
       (json['value'] as List<dynamic>)
-          .map((e) => ZacWidget.fromJson(e as Object))
+          .map((e) => FlutterWidget.fromJson(e as Object))
           .toList(),
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['_converter'] as String?,
     );
 
@@ -176,9 +176,9 @@ _$ListOfZacWidgetConsume _$$ListOfZacWidgetConsumeFromJson(
         Map<String, dynamic> json) =>
     _$ListOfZacWidgetConsume(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(
@@ -190,9 +190,9 @@ _$_ZacWidgetConsumerBuilder _$$_ZacWidgetConsumerBuilderFromJson(
         Map<String, dynamic> json) =>
     _$_ZacWidgetConsumerBuilder(
       json['family'] as Object,
-      transformer: (json['transformer'] as List<dynamic>?)
-          ?.map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
       consumeType: json['consumeType'] == null
           ? const SharedValueConsumeType.watch()
           : SharedValueConsumeType.fromJson(

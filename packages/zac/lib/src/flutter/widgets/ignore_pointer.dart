@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +10,9 @@ part 'ignore_pointer.freezed.dart';
 part 'ignore_pointer.g.dart';
 
 @defaultConverterFreezed
-class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
+class FlutterIgnorePointer
+    with _$FlutterIgnorePointer
+    implements FlutterWidget {
   const FlutterIgnorePointer._();
 
   static const String unionValue = 'f:1:IgnorePointer';
@@ -24,16 +25,16 @@ class FlutterIgnorePointer with _$FlutterIgnorePointer implements ZacWidget {
     FlutterKey? key,
     ZacBool? ignoring,
     ZacBool? ignoringSemantics,
-    ZacWidget? child,
+    FlutterWidget? child,
   }) = _FlutterIgnorePointer;
 
   @override
-  IgnorePointer buildWidget(ZacBuildContext context) {
+  IgnorePointer buildWidget(ZacOriginWidgetTree origin) {
     return IgnorePointer(
-      key: key?.buildKey(context),
-      ignoring: ignoring?.getValue(context) ?? true,
-      ignoringSemantics: ignoringSemantics?.getValue(context),
-      child: child?.buildWidget(context),
+      key: key?.buildKey(origin),
+      ignoring: ignoring?.getValue(origin) ?? true,
+      ignoringSemantics: ignoringSemantics?.getValue(origin),
+      child: child?.buildWidget(origin),
     );
   }
 }

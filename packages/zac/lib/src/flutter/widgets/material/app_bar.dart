@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,7 +14,7 @@ part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
 
 @defaultConverterFreezed
-class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
+class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   const FlutterAppBar._();
 
   static const String unionValue = 'f:1:AppBar';
@@ -26,13 +25,13 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
   @FreezedUnionValue(FlutterAppBar.unionValue)
   factory FlutterAppBar({
     FlutterKey? key,
-    ZacWidget? leading,
+    FlutterWidget? leading,
     ZacBool? automaticallyImplyLeading,
-    ZacWidget? title,
+    FlutterWidget? title,
     ListOfZacWidget? actions,
-    ZacWidget? flexibleSpace,
+    FlutterWidget? flexibleSpace,
 // PreferredSizeWidget
-    ZacWidget? bottom,
+    FlutterWidget? bottom,
     ZacDouble? elevation,
     FlutterColor? shadowColor,
     FlutterShapeBorder? shape,
@@ -54,9 +53,9 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
   }) = _FlutterAppBar;
 
   @override
-  AppBar buildWidget(ZacBuildContext context) {
+  AppBar buildWidget(ZacOriginWidgetTree origin) {
     assert(() {
-      final w = bottom?.buildWidget(context);
+      final w = bottom?.buildWidget(origin);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -64,34 +63,34 @@ class FlutterAppBar with _$FlutterAppBar implements ZacWidget {
       }
       return true;
     }(), '');
+
     return AppBar(
-      key: key?.buildKey(context),
-      leading: leading?.buildWidget(context),
+      key: key?.buildKey(origin),
+      leading: leading?.buildWidget(origin),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(context) ?? true,
-      title: title?.buildWidget(context),
-      actions: actions?.getValue(context) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(context),
-      bottom: bottom?.buildWidget(context) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(context),
-      shadowColor: shadowColor?.build(context),
-      shape: shape?.build(context),
-      backgroundColor: backgroundColor?.build(context),
-      foregroundColor: foregroundColor?.build(context),
-      iconTheme: iconTheme?.build(context),
-      actionsIconTheme: actionsIconTheme?.build(context),
-      primary: primary?.getValue(context) ?? true,
-      centerTitle: centerTitle?.getValue(context),
-      excludeHeaderSemantics:
-          excludeHeaderSemantics?.getValue(context) ?? false,
-      titleSpacing: titleSpacing?.getValue(context),
-      toolbarOpacity: toolbarOpacity?.getValue(context) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(context) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(context),
-      leadingWidth: leadingWidth?.getValue(context),
-      toolbarTextStyle: toolbarTextStyle?.build(context),
-      titleTextStyle: titleTextStyle?.build(context),
-      systemOverlayStyle: systemOverlayStyle?.build(context),
+          automaticallyImplyLeading?.getValue(origin) ?? true,
+      title: title?.buildWidget(origin),
+      actions: actions?.getValue(origin) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.buildWidget(origin),
+      bottom: bottom?.buildWidget(origin) as PreferredSizeWidget?,
+      elevation: elevation?.getValue(origin),
+      shadowColor: shadowColor?.build(origin),
+      shape: shape?.build(origin),
+      backgroundColor: backgroundColor?.build(origin),
+      foregroundColor: foregroundColor?.build(origin),
+      iconTheme: iconTheme?.build(origin),
+      actionsIconTheme: actionsIconTheme?.build(origin),
+      primary: primary?.getValue(origin) ?? true,
+      centerTitle: centerTitle?.getValue(origin),
+      excludeHeaderSemantics: excludeHeaderSemantics?.getValue(origin) ?? false,
+      titleSpacing: titleSpacing?.getValue(origin),
+      toolbarOpacity: toolbarOpacity?.getValue(origin) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(origin) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(origin),
+      leadingWidth: leadingWidth?.getValue(origin),
+      toolbarTextStyle: toolbarTextStyle?.build(origin),
+      titleTextStyle: titleTextStyle?.build(origin),
+      systemOverlayStyle: systemOverlayStyle?.build(origin),
     );
   }
 }

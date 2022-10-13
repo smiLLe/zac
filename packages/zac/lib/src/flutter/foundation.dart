@@ -1,3 +1,4 @@
+import 'package:zac/src/zac/origin.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,7 +11,7 @@ abstract class FlutterKey {
     return ConverterHelper.convertToType<FlutterKey>(data);
   }
 
-  Key buildKey(ZacBuildContext context);
+  Key buildKey(ZacOriginWidgetTree origin);
 }
 
 abstract class FlutterLocalKey implements FlutterKey {
@@ -19,7 +20,7 @@ abstract class FlutterLocalKey implements FlutterKey {
   }
 
   @override
-  LocalKey buildKey(ZacBuildContext context);
+  LocalKey buildKey(ZacOriginWidgetTree origin);
 }
 
 @defaultConverterFreezed
@@ -35,7 +36,7 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   factory FlutterValueKey(String value) = _FlutterValueKey;
 
   @override
-  ValueKey<String> buildKey(ZacBuildContext config) {
+  ValueKey<String> buildKey(ZacOriginWidgetTree origin) {
     return ValueKey<String>(value);
   }
 }
@@ -46,5 +47,5 @@ abstract class FlutterGlobalKeyNavigatorState implements FlutterKey {
   }
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacBuildContext context);
+  GlobalKey<NavigatorState> buildKey(ZacOriginWidgetTree origin);
 }

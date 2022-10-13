@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -10,7 +9,7 @@ part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
 @defaultConverterFreezed
-class FlutterSpacer with _$FlutterSpacer implements ZacWidget {
+class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   const FlutterSpacer._();
 
   static const String unionValue = 'f:1:Spacer';
@@ -25,10 +24,10 @@ class FlutterSpacer with _$FlutterSpacer implements ZacWidget {
   }) = _FlutterSpacer;
 
   @override
-  Spacer buildWidget(ZacBuildContext context) {
+  Spacer buildWidget(ZacOriginWidgetTree origin) {
     return Spacer(
-      key: key?.buildKey(context),
-      flex: flex?.getValue(context) ?? 1,
+      key: key?.buildKey(origin),
+      flex: flex?.getValue(origin) ?? 1,
     );
   }
 }

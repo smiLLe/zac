@@ -22,7 +22,7 @@ FlutterAspectRatio _$FlutterAspectRatioFromJson(Map<String, dynamic> json) {
 mixin _$FlutterAspectRatio {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacDouble get aspectRatio => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -45,7 +45,7 @@ class _$_FlutterAspectRatio extends _FlutterAspectRatio {
   @override
   final ZacDouble aspectRatio;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @override
   String toString() {
@@ -84,7 +84,7 @@ abstract class _FlutterAspectRatio extends FlutterAspectRatio {
   factory _FlutterAspectRatio(
       {final FlutterKey? key,
       required final ZacDouble aspectRatio,
-      final ZacWidget? child}) = _$_FlutterAspectRatio;
+      final FlutterWidget? child}) = _$_FlutterAspectRatio;
   _FlutterAspectRatio._() : super._();
 
   factory _FlutterAspectRatio.fromJson(Map<String, dynamic> json) =
@@ -95,5 +95,5 @@ abstract class _FlutterAspectRatio extends FlutterAspectRatio {
   @override
   ZacDouble get aspectRatio;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }

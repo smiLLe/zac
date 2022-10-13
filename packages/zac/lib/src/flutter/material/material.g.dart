@@ -38,7 +38,7 @@ _$_FlutterUnderlineInputBorder _$$_FlutterUnderlineInputBorderFromJson(
 _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterMaterialPageRoute(
-      child: ZacWidget.fromJson(json['child'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
       settings: json['settings'] == null
           ? null
           : FlutterRouteSettings.fromJson(

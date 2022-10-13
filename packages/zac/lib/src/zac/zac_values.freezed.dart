@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'any_value.dart';
+part of 'zac_values.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -29,7 +29,7 @@ ZacInt _$ZacIntFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacInt {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -42,10 +42,8 @@ mixin _$ZacInt {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
-  _$ZacIntValue(this.value,
-      {final List<ZacTransformer>? transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacInt',
+  _$ZacIntValue(this.value, {this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:ZacInt',
         super._();
 
   factory _$ZacIntValue.fromJson(Map<String, dynamic> json) =>
@@ -53,14 +51,8 @@ class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
 
   @override
   final int value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -77,7 +69,7 @@ class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
             other is _$ZacIntValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -85,7 +77,7 @@ class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -98,8 +90,8 @@ class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
 }
 
 abstract class ZacIntValue extends ZacInt implements ActualValue<int> {
-  factory ZacIntValue(final int value,
-      {final List<ZacTransformer>? transformer}) = _$ZacIntValue;
+  factory ZacIntValue(final int value, {final ZacTransformers? transformer}) =
+      _$ZacIntValue;
   ZacIntValue._() : super._();
 
   factory ZacIntValue.fromJson(Map<String, dynamic> json) =
@@ -107,18 +99,17 @@ abstract class ZacIntValue extends ZacInt implements ActualValue<int> {
 
   int get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
   _$ZacIntConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacInt.consume',
+      : $type = $type ?? 'z:1:ZacInt.consume',
         super._();
 
   factory _$ZacIntConsume.fromJson(Map<String, dynamic> json) =>
@@ -126,15 +117,8 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -154,7 +138,7 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
             other is _$ZacIntConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -164,7 +148,7 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -179,7 +163,7 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
 
 abstract class ZacIntConsume extends ZacInt implements ConsumeValue<int> {
   factory ZacIntConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacIntConsume;
   ZacIntConsume._() : super._();
 
@@ -188,7 +172,7 @@ abstract class ZacIntConsume extends ZacInt implements ConsumeValue<int> {
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -207,7 +191,7 @@ ZacDouble _$ZacDoubleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacDouble {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -220,10 +204,8 @@ mixin _$ZacDouble {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
-  _$ZacDoubleValue(this.value,
-      {final List<ZacTransformer>? transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacDouble',
+  _$ZacDoubleValue(this.value, {this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:ZacDouble',
         super._();
 
   factory _$ZacDoubleValue.fromJson(Map<String, dynamic> json) =>
@@ -231,14 +213,8 @@ class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
 
   @override
   final double value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -255,7 +231,7 @@ class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
             other is _$ZacDoubleValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -263,7 +239,7 @@ class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -277,7 +253,7 @@ class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
 
 abstract class ZacDoubleValue extends ZacDouble implements ActualValue<double> {
   factory ZacDoubleValue(final double value,
-      {final List<ZacTransformer>? transformer}) = _$ZacDoubleValue;
+      {final ZacTransformers? transformer}) = _$ZacDoubleValue;
   ZacDoubleValue._() : super._();
 
   factory ZacDoubleValue.fromJson(Map<String, dynamic> json) =
@@ -285,18 +261,17 @@ abstract class ZacDoubleValue extends ZacDouble implements ActualValue<double> {
 
   double get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
   _$ZacDoubleConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacDouble.consume',
+      : $type = $type ?? 'z:1:ZacDouble.consume',
         super._();
 
   factory _$ZacDoubleConsume.fromJson(Map<String, dynamic> json) =>
@@ -304,15 +279,8 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -332,7 +300,7 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
             other is _$ZacDoubleConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -342,7 +310,7 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -358,7 +326,7 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
 abstract class ZacDoubleConsume extends ZacDouble
     implements ConsumeValue<double> {
   factory ZacDoubleConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacDoubleConsume;
   ZacDoubleConsume._() : super._();
 
@@ -367,7 +335,7 @@ abstract class ZacDoubleConsume extends ZacDouble
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -386,7 +354,7 @@ ZacString _$ZacStringFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacString {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -399,10 +367,8 @@ mixin _$ZacString {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
-  _$ZacStringValue(this.value,
-      {final List<ZacTransformer>? transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacString',
+  _$ZacStringValue(this.value, {this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:ZacString',
         super._();
 
   factory _$ZacStringValue.fromJson(Map<String, dynamic> json) =>
@@ -410,14 +376,8 @@ class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
 
   @override
   final String value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -434,7 +394,7 @@ class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
             other is _$ZacStringValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -442,7 +402,7 @@ class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -456,7 +416,7 @@ class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
 
 abstract class ZacStringValue extends ZacString implements ActualValue<String> {
   factory ZacStringValue(final String value,
-      {final List<ZacTransformer>? transformer}) = _$ZacStringValue;
+      {final ZacTransformers? transformer}) = _$ZacStringValue;
   ZacStringValue._() : super._();
 
   factory ZacStringValue.fromJson(Map<String, dynamic> json) =
@@ -464,18 +424,17 @@ abstract class ZacStringValue extends ZacString implements ActualValue<String> {
 
   String get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
   _$ZacStringConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacString.consume',
+      : $type = $type ?? 'z:1:ZacString.consume',
         super._();
 
   factory _$ZacStringConsume.fromJson(Map<String, dynamic> json) =>
@@ -483,15 +442,8 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -511,7 +463,7 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
             other is _$ZacStringConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -521,7 +473,7 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -537,7 +489,7 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
 abstract class ZacStringConsume extends ZacString
     implements ConsumeValue<String> {
   factory ZacStringConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacStringConsume;
   ZacStringConsume._() : super._();
 
@@ -546,7 +498,7 @@ abstract class ZacStringConsume extends ZacString
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -565,7 +517,7 @@ ZacBool _$ZacBoolFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacBool {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -578,10 +530,8 @@ mixin _$ZacBool {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
-  _$ZacBoolValue(this.value,
-      {final List<ZacTransformer>? transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacBool',
+  _$ZacBoolValue(this.value, {this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:ZacBool',
         super._();
 
   factory _$ZacBoolValue.fromJson(Map<String, dynamic> json) =>
@@ -589,14 +539,8 @@ class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
 
   @override
   final bool value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -613,7 +557,7 @@ class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
             other is _$ZacBoolValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -621,7 +565,7 @@ class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -634,8 +578,8 @@ class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
 }
 
 abstract class ZacBoolValue extends ZacBool implements ActualValue<bool> {
-  factory ZacBoolValue(final bool value,
-      {final List<ZacTransformer>? transformer}) = _$ZacBoolValue;
+  factory ZacBoolValue(final bool value, {final ZacTransformers? transformer}) =
+      _$ZacBoolValue;
   ZacBoolValue._() : super._();
 
   factory ZacBoolValue.fromJson(Map<String, dynamic> json) =
@@ -643,18 +587,17 @@ abstract class ZacBoolValue extends ZacBool implements ActualValue<bool> {
 
   bool get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
   _$ZacBoolConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacBool.consume',
+      : $type = $type ?? 'z:1:ZacBool.consume',
         super._();
 
   factory _$ZacBoolConsume.fromJson(Map<String, dynamic> json) =>
@@ -662,15 +605,8 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -690,7 +626,7 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
             other is _$ZacBoolConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -700,7 +636,7 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -715,7 +651,7 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
 
 abstract class ZacBoolConsume extends ZacBool implements ConsumeValue<bool> {
   factory ZacBoolConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacBoolConsume;
   ZacBoolConsume._() : super._();
 
@@ -724,7 +660,7 @@ abstract class ZacBoolConsume extends ZacBool implements ConsumeValue<bool> {
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -743,7 +679,7 @@ ZacMap _$ZacMapFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacMap {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -757,9 +693,8 @@ mixin _$ZacMap {
 @JsonSerializable(createToJson: false)
 class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
   _$ZacMapValue(final Map<String, dynamic> value,
-      {final List<ZacTransformer>? transformer, final String? $type})
+      {this.transformer, final String? $type})
       : _value = value,
-        _transformer = transformer,
         $type = $type ?? 'z:1:ZacMap',
         super._();
 
@@ -773,14 +708,8 @@ class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
     return EqualUnmodifiableMapView(_value);
   }
 
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -797,7 +726,7 @@ class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
             other is _$ZacMapValue &&
             const DeepCollectionEquality().equals(other._value, _value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -805,7 +734,7 @@ class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -820,7 +749,7 @@ class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
 abstract class ZacMapValue extends ZacMap
     implements ActualValue<Map<String, dynamic>> {
   factory ZacMapValue(final Map<String, dynamic> value,
-      {final List<ZacTransformer>? transformer}) = _$ZacMapValue;
+      {final ZacTransformers? transformer}) = _$ZacMapValue;
   ZacMapValue._() : super._();
 
   factory ZacMapValue.fromJson(Map<String, dynamic> json) =
@@ -828,7 +757,7 @@ abstract class ZacMapValue extends ZacMap
 
   Map<String, dynamic> get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
@@ -836,11 +765,10 @@ abstract class ZacMapValue extends ZacMap
 class _$ZacMapConsume extends ZacMapConsume
     with ConsumeValue<Map<String, dynamic>> {
   _$ZacMapConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacMap.consume',
+      : $type = $type ?? 'z:1:ZacMap.consume',
         super._();
 
   factory _$ZacMapConsume.fromJson(Map<String, dynamic> json) =>
@@ -848,15 +776,8 @@ class _$ZacMapConsume extends ZacMapConsume
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -876,7 +797,7 @@ class _$ZacMapConsume extends ZacMapConsume
             other is _$ZacMapConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -886,7 +807,7 @@ class _$ZacMapConsume extends ZacMapConsume
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -902,7 +823,7 @@ class _$ZacMapConsume extends ZacMapConsume
 abstract class ZacMapConsume extends ZacMap
     implements ConsumeValue<Map<String, dynamic>> {
   factory ZacMapConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacMapConsume;
   ZacMapConsume._() : super._();
 
@@ -911,7 +832,7 @@ abstract class ZacMapConsume extends ZacMap
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -930,7 +851,7 @@ ZacList _$ZacListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacList {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -944,9 +865,8 @@ mixin _$ZacList {
 @JsonSerializable(createToJson: false)
 class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
   _$ZacListValue(final List<dynamic> value,
-      {final List<ZacTransformer>? transformer, final String? $type})
+      {this.transformer, final String? $type})
       : _value = value,
-        _transformer = transformer,
         $type = $type ?? 'z:1:ZacList',
         super._();
 
@@ -960,14 +880,8 @@ class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
     return EqualUnmodifiableListView(_value);
   }
 
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -984,7 +898,7 @@ class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
             other is _$ZacListValue &&
             const DeepCollectionEquality().equals(other._value, _value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -992,7 +906,7 @@ class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -1007,7 +921,7 @@ class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
 abstract class ZacListValue extends ZacList
     implements ActualValue<List<dynamic>> {
   factory ZacListValue(final List<dynamic> value,
-      {final List<ZacTransformer>? transformer}) = _$ZacListValue;
+      {final ZacTransformers? transformer}) = _$ZacListValue;
   ZacListValue._() : super._();
 
   factory ZacListValue.fromJson(Map<String, dynamic> json) =
@@ -1015,18 +929,17 @@ abstract class ZacListValue extends ZacList
 
   List<dynamic> get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
   _$ZacListConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacList.consume',
+      : $type = $type ?? 'z:1:ZacList.consume',
         super._();
 
   factory _$ZacListConsume.fromJson(Map<String, dynamic> json) =>
@@ -1034,15 +947,8 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -1062,7 +968,7 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
             other is _$ZacListConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -1072,7 +978,7 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -1088,7 +994,7 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
 abstract class ZacListConsume extends ZacList
     implements ConsumeValue<List<dynamic>> {
   factory ZacListConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacListConsume;
   ZacListConsume._() : super._();
 
@@ -1097,7 +1003,7 @@ abstract class ZacListConsume extends ZacList
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -1116,7 +1022,7 @@ ZacObject _$ZacObjectFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacObject {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1129,10 +1035,8 @@ mixin _$ZacObject {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
-  _$ZacObjectValue(this.value,
-      {final List<ZacTransformer>? transformer, final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacObject',
+  _$ZacObjectValue(this.value, {this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:ZacObject',
         super._();
 
   factory _$ZacObjectValue.fromJson(Map<String, dynamic> json) =>
@@ -1140,14 +1044,8 @@ class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
 
   @override
   final Object value;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -1164,7 +1062,7 @@ class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
             other is _$ZacObjectValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -1172,7 +1070,7 @@ class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -1186,7 +1084,7 @@ class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
 
 abstract class ZacObjectValue extends ZacObject implements ActualValue<Object> {
   factory ZacObjectValue(final Object value,
-      {final List<ZacTransformer>? transformer}) = _$ZacObjectValue;
+      {final ZacTransformers? transformer}) = _$ZacObjectValue;
   ZacObjectValue._() : super._();
 
   factory ZacObjectValue.fromJson(Map<String, dynamic> json) =
@@ -1194,18 +1092,17 @@ abstract class ZacObjectValue extends ZacObject implements ActualValue<Object> {
 
   Object get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
   _$ZacObjectConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ZacObject.consume',
+      : $type = $type ?? 'z:1:ZacObject.consume',
         super._();
 
   factory _$ZacObjectConsume.fromJson(Map<String, dynamic> json) =>
@@ -1213,15 +1110,8 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -1241,7 +1131,7 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
             other is _$ZacObjectConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -1251,7 +1141,7 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -1267,7 +1157,7 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
 abstract class ZacObjectConsume extends ZacObject
     implements ConsumeValue<Object> {
   factory ZacObjectConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ZacObjectConsume;
   ZacObjectConsume._() : super._();
 
@@ -1276,7 +1166,7 @@ abstract class ZacObjectConsume extends ZacObject
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -1295,7 +1185,7 @@ ListOfZacWidget _$ListOfZacWidgetFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListOfZacWidget {
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1308,32 +1198,25 @@ mixin _$ListOfZacWidget {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
-    with ActualValue<List<ZacWidget>> {
-  _$ListOfZacWidgetValue(final List<ZacWidget> value,
-      {final List<ZacTransformer>? transformer, final String? $type})
+    with ActualValue<List<FlutterWidget>> {
+  _$ListOfZacWidgetValue(final List<FlutterWidget> value,
+      {this.transformer, final String? $type})
       : _value = value,
-        _transformer = transformer,
         $type = $type ?? 'z:1:ListOfZacWidget',
         super._();
 
   factory _$ListOfZacWidgetValue.fromJson(Map<String, dynamic> json) =>
       _$$ListOfZacWidgetValueFromJson(json);
 
-  final List<ZacWidget> _value;
+  final List<FlutterWidget> _value;
   @override
-  List<ZacWidget> get value {
+  List<FlutterWidget> get value {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_value);
   }
 
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final ZacTransformers? transformer;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -1350,7 +1233,7 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
             other is _$ListOfZacWidgetValue &&
             const DeepCollectionEquality().equals(other._value, _value) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer));
+                .equals(other.transformer, transformer));
   }
 
   @JsonKey(ignore: true)
@@ -1358,7 +1241,7 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_value),
-      const DeepCollectionEquality().hash(_transformer));
+      const DeepCollectionEquality().hash(transformer));
 
   @override
   @optionalTypeArgs
@@ -1371,29 +1254,28 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
 }
 
 abstract class ListOfZacWidgetValue extends ListOfZacWidget
-    implements ActualValue<List<ZacWidget>> {
-  factory ListOfZacWidgetValue(final List<ZacWidget> value,
-      {final List<ZacTransformer>? transformer}) = _$ListOfZacWidgetValue;
+    implements ActualValue<List<FlutterWidget>> {
+  factory ListOfZacWidgetValue(final List<FlutterWidget> value,
+      {final ZacTransformers? transformer}) = _$ListOfZacWidgetValue;
   ListOfZacWidgetValue._() : super._();
 
   factory ListOfZacWidgetValue.fromJson(Map<String, dynamic> json) =
       _$ListOfZacWidgetValue.fromJson;
 
-  List<ZacWidget> get value;
+  List<FlutterWidget> get value;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
-    with ConsumeValueList<ZacWidget> {
+    with ConsumeValueList<FlutterWidget> {
   _$ListOfZacWidgetConsume(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch(),
       final String? $type})
-      : _transformer = transformer,
-        $type = $type ?? 'z:1:ListOfZacWidget.consume',
+      : $type = $type ?? 'z:1:ListOfZacWidget.consume',
         super._();
 
   factory _$ListOfZacWidgetConsume.fromJson(Map<String, dynamic> json) =>
@@ -1401,15 +1283,8 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -1429,7 +1304,7 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
             other is _$ListOfZacWidgetConsume &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -1439,7 +1314,7 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -1453,9 +1328,9 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
 }
 
 abstract class ListOfZacWidgetConsume extends ListOfZacWidget
-    implements ConsumeValueList<ZacWidget> {
+    implements ConsumeValueList<FlutterWidget> {
   factory ListOfZacWidgetConsume(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$ListOfZacWidgetConsume;
   ListOfZacWidgetConsume._() : super._();
 
@@ -1464,7 +1339,7 @@ abstract class ListOfZacWidgetConsume extends ListOfZacWidget
 
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   SharedValueConsumeType get consumeType;
 }
 
@@ -1476,7 +1351,7 @@ ZacWidgetConsumerBuilder _$ZacWidgetConsumerBuilderFromJson(
 /// @nodoc
 mixin _$ZacWidgetConsumerBuilder {
   Object get family => throw _privateConstructorUsedError;
-  List<ZacTransformer>? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
   SharedValueConsumeType get consumeType => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1489,27 +1364,19 @@ mixin _$ZacWidgetConsumerBuilder {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
-    with ConsumeValue<ZacWidget> {
+    with ConsumeValue<FlutterWidget> {
   _$_ZacWidgetConsumerBuilder(this.family,
-      {final List<ZacTransformer>? transformer,
+      {this.transformer,
       this.consumeType = const SharedValueConsumeType.watch()})
-      : _transformer = transformer,
-        super._();
+      : super._();
 
   factory _$_ZacWidgetConsumerBuilder.fromJson(Map<String, dynamic> json) =>
       _$$_ZacWidgetConsumerBuilderFromJson(json);
 
   @override
   final Object family;
-  final List<ZacTransformer>? _transformer;
   @override
-  List<ZacTransformer>? get transformer {
-    final value = _transformer;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacTransformers? transformer;
   @override
   @JsonKey()
   final SharedValueConsumeType consumeType;
@@ -1526,7 +1393,7 @@ class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
             other is _$_ZacWidgetConsumerBuilder &&
             const DeepCollectionEquality().equals(other.family, family) &&
             const DeepCollectionEquality()
-                .equals(other._transformer, _transformer) &&
+                .equals(other.transformer, transformer) &&
             const DeepCollectionEquality()
                 .equals(other.consumeType, consumeType));
   }
@@ -1536,7 +1403,7 @@ class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_transformer),
+      const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(consumeType));
 
   @override
@@ -1549,9 +1416,9 @@ class _$_ZacWidgetConsumerBuilder extends _ZacWidgetConsumerBuilder
 }
 
 abstract class _ZacWidgetConsumerBuilder extends ZacWidgetConsumerBuilder
-    implements ConsumeValue<ZacWidget> {
+    implements ConsumeValue<FlutterWidget> {
   factory _ZacWidgetConsumerBuilder(final Object family,
-      {final List<ZacTransformer>? transformer,
+      {final ZacTransformers? transformer,
       final SharedValueConsumeType consumeType}) = _$_ZacWidgetConsumerBuilder;
   _ZacWidgetConsumerBuilder._() : super._();
 
@@ -1561,7 +1428,7 @@ abstract class _ZacWidgetConsumerBuilder extends ZacWidgetConsumerBuilder
   @override
   Object get family;
   @override
-  List<ZacTransformer>? get transformer;
+  ZacTransformers? get transformer;
   @override
   SharedValueConsumeType get consumeType;
 }

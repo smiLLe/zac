@@ -5,8 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/any_value.dart';
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/misc.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 part 'shared_value.freezed.dart';
@@ -37,8 +38,8 @@ class SharedValue with _$SharedValue {
         empty: (_) => throw AccessEmptySharedValueError(ifEmptyMessage),
       );
 
-  static Object? getFilled(SharedValueConsumeType type, ZacBuildContext context,
-      SharedValueFamily family) {
+  static Object? getFilled(
+      SharedValueConsumeType type, ZacOrigin origin, SharedValueFamily family) {
     final error = '''
 Could not find a $SharedValue for family: "$family".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
@@ -46,28 +47,45 @@ See "$SharedValueProviderBuilder" for more info.
 ''';
     return type.map<Object?>(
       watch: (obj) {
-        if (null == obj.select || true == obj.select?.isEmpty) {
-          return _extractData(
-              context.ref.watch(SharedValue.provider(family)), error);
+        if (null == obj.select || true == obj.select?.transformers.isEmpty) {
+          return origin.map(
+              widgetTree: (origin) => _extractData(
+                  origin.ref.watch(SharedValue.provider(family)), error),
+              statemachineAction: (origin) => _extractData(
+                  origin.ref.watch(SharedValue.provider(family)), error));
         }
 
-        return context.ref.watch(SharedValue.provider(family).select(
-            (sharedValue) => obj.select!.transformValues(
-                ZacTransformValue(_extractData(sharedValue, error)),
-                context,
-                SharedValueTransformerInteraction.consume())));
+        return origin.map(
+            widgetTree: (origin) => origin.ref.watch(SharedValue.provider(family)
+                .select((sharedValue) => obj.select!.transform(
+                    ZacTransformValue(_extractData(sharedValue, error)),
+                    origin))),
+            statemachineAction: (origin) => origin.ref.watch(
+                SharedValue.provider(family).select((sharedValue) => obj.select!
+                    .transform(
+                        ZacTransformValue(_extractData(sharedValue, error)),
+                        origin))));
       },
-      read: (_) => _extractData(context.ref.read(provider(family)), error),
+      read: (_) => origin.map(
+          widgetTree: (origin) => _extractData(
+              origin.ref.read(SharedValue.provider(family)), error),
+          statemachineAction: (origin) => _extractData(
+              origin.ref.read(SharedValue.provider(family)), error)),
     );
   }
 
   static void update(
-    ZacBuildContext context,
+    ZacOrigin origin,
     SharedValueFamily family,
     Object? Function(Object? current) update,
   ) {
-    context.ref
-        .read(SharedValue.provider(family).notifier)
+    origin
+        .map(
+      widgetTree: (origin) =>
+          origin.ref.read(SharedValue.provider(family).notifier),
+      statemachineAction: (origin) =>
+          origin.ref.read(SharedValue.provider(family).notifier),
+    )
         .update((sharedValue) {
       return SharedValue(update(_extractData(sharedValue, '''
 It was not possible to update the $SharedValue "$family",
@@ -77,68 +95,76 @@ in your Widget tree before trying to update the $SharedValue.''')));
     });
   }
 
-  static void listenAndExecuteActions(
-      ZacBuildContext context, SharedValueFamily family, ZacActions actions) {
-    context.ref.listen<SharedValue>(SharedValue.provider(family),
+  static void listenAndExecuteActions(ZacOriginWidgetTree origin,
+      SharedValueFamily family, ZacActions actions) {
+    origin.ref.listen<SharedValue>(SharedValue.provider(family),
         (previous, next) {
-      actions.execute(context, ActionPayload(_extractData(next, '''
-It was not possible to listen for $SharedValue($family) changes and execute actions,
+      actions.execute(
+        origin,
+        prefillBag: (bag) => bag..setActionPayload(_extractData(next, '''
+It was not possible to listen for $SharedValue($family) changes and execute interactions,
 because the $SharedValue did not exist until now.
 Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
-in your Widget tree before trying to update the $SharedValue.''')));
+in your Widget tree before trying to update the $SharedValue.''')),
+      );
     });
   }
 }
 
-@nonConverterFreezed
-class SharedValueTransformerInteraction
-    with _$SharedValueTransformerInteraction
-    implements ZacTransformerExtra {
-  const SharedValueTransformerInteraction._();
-
-  factory SharedValueTransformerInteraction.action({
-    required ActionPayload payload,
-    required Object? current,
-  }) = SharedValueTransformerInteractionAction;
-
-  factory SharedValueTransformerInteraction.consume() =
-      SharedValueTransformerInteractionConsume;
-
-  factory SharedValueTransformerInteraction.provide() =
-      SharedValueTransformerInteractionProvide;
-}
-
 @defaultConverterFreezed
-class UpdateSharedValueAction
-    with _$UpdateSharedValueAction
+class UpdateSharedValueInteractions
+    with _$UpdateSharedValueInteractions
     implements ZacAction {
-  const UpdateSharedValueAction._();
+  const UpdateSharedValueInteractions._();
 
   static const String unionValue = 'z:1:SharedValue.update';
+  static const String unionValueReplaceWith = 'z:1:SharedValue.replaceWith';
 
-  factory UpdateSharedValueAction.fromJson(Map<String, dynamic> json) =>
-      _$UpdateSharedValueActionFromJson(json);
+  factory UpdateSharedValueInteractions.fromJson(Map<String, dynamic> json) =>
+      _$UpdateSharedValueInteractionsFromJson(json);
 
-  @FreezedUnionValue(UpdateSharedValueAction.unionValue)
-  factory UpdateSharedValueAction({
+  @FreezedUnionValue(UpdateSharedValueInteractions.unionValue)
+  factory UpdateSharedValueInteractions({
+    required SharedValueFamily family,
+    required ZacTransformers transformer,
+  }) = _SharedValueInteractionUpdate;
+
+  @FreezedUnionValue(UpdateSharedValueInteractions.unionValueReplaceWith)
+  factory UpdateSharedValueInteractions.replaceWith({
     required SharedValueFamily family,
     required Object value,
-    List<ZacTransformer>? transformer,
-  }) = _UpdateSharedValueAction;
+    ZacTransformers? transformer,
+  }) = _SharedValueInteractionReplaceWith;
 
   @override
-  void execute(ZacBuildContext context, ActionPayload payload) =>
-      SharedValue.update(context, family, (current) {
-        return null == transformer || true == transformer!.isEmpty
-            ? value
-            : transformer!.transformValues(
-                ZacTransformValue(value),
-                context,
-                SharedValueTransformerInteraction.action(
-                  payload: payload,
-                  current: current,
-                ));
-      });
+  void execute(ZacOrigin origin, ContextBag bag) => SharedValue.update(
+        origin,
+        family,
+        (current) => map(
+          (obj) {
+            assert(obj.transformer.transformers.isNotEmpty);
+
+            return obj.transformer.transformWithBag(
+              ZacTransformValue(current),
+              origin,
+              bag,
+            );
+          },
+          replaceWith: (obj) {
+            if (null == obj.transformer ||
+                true == obj.transformer!.transformers.isEmpty) {
+              return obj.value;
+            } else {
+              bag.addAll(<String, dynamic>{
+                kBagSharedValueReplaceWith: obj.value,
+                kBagSharedValueCurrent: current,
+              });
+              return obj.transformer!
+                  .transformWithBag(ZacTransformValue(obj.value), origin, bag);
+            }
+          },
+        ),
+      );
 }
 
 @defaultConverterFreezed
@@ -151,7 +177,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
   const factory SharedValueConsumeType.watch({
-    List<ZacTransformer>? select,
+    ZacTransformers? select,
   }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
@@ -161,7 +187,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 @defaultConverterFreezed
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
-    implements ZacWidget {
+    implements FlutterWidget {
   const SharedValueProviderBuilder._();
   static const String unionValue = 'z:1:SharedValue.provide';
 
@@ -172,15 +198,15 @@ class SharedValueProviderBuilder
   factory SharedValueProviderBuilder({
     FlutterKey? key,
     required Object? value,
-    List<ZacTransformer>? transformer,
+    ZacTransformers? transformer,
     required SharedValueFamily family,
-    required ZacWidget child,
+    required FlutterWidget child,
   }) = _SharedValueProviderBuilder;
 
   @override
-  SharedValueProvider buildWidget(ZacBuildContext context) {
+  SharedValueProvider buildWidget(ZacOriginWidgetTree origin) {
     return SharedValueProvider(
-      key: key?.buildKey(context),
+      key: key?.buildKey(origin),
       transformer: transformer,
       value: value,
       family: family,
@@ -200,18 +226,20 @@ class SharedValueProvider extends HookConsumerWidget {
 
   final Object? value;
   final SharedValueFamily family;
-  final Widget Function(ZacBuildContext context) builder;
-  final List<ZacTransformer>? transformer;
+  final Widget Function(ZacOriginWidgetTree origin) builder;
+  final ZacTransformers? transformer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacBuildContext(ref);
+    final origin = useZacOrigin(ref);
     final provideValue = useMemoized(
       () {
-        return SharedValue(null == transformer || true == transformer!.isEmpty
+        return SharedValue(null == transformer || true == transformer!.transformers .isEmpty
             ? value
-            : transformer!.transformValues(ZacTransformValue(value), zacContext,
-                SharedValueTransformerInteraction.provide()));
+            : transformer!.transform(
+                ZacTransformValue(value),
+                origin,
+              ));
       },
       [value, family, transformer],
     );
@@ -220,7 +248,7 @@ class SharedValueProvider extends HookConsumerWidget {
         SharedValue.provider(family).overrideWithProvider(
             AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
       ],
-      child: ZacUpdateContext(builder: builder),
+      child: ZacUpdateOrigin(builder: builder),
     );
   }
 }

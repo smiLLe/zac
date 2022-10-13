@@ -1,5 +1,7 @@
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
+import 'package:zac/src/zac/origin.dart';
 
 // ignore: constant_identifier_names
 const defaultConverterFreezed = Freezed(
@@ -18,3 +20,24 @@ const nonConverterFreezed = Freezed(
   when: FreezedWhenOptions(when: false, whenOrNull: false, maybeWhen: false),
   copyWith: false,
 );
+
+abstract class FlutterWidget {
+  factory FlutterWidget.fromJson(Object data) =>
+      ConverterHelper.convertToType<FlutterWidget>(data);
+
+  Widget buildWidget(ZacOriginWidgetTree origin);
+}
+
+const consumeUnion = 'z:1:SharedValue.consume';
+
+/// take the generic SharedValue.consume and map it to another converter name.
+Object mapConsumeUnion(String other, Object map) {
+  if (ConverterHelper.isConverter(map)) {
+    final m = map as Map<String, dynamic>;
+    if (m[converterKey] == consumeUnion) {
+      m[converterKey] = other;
+    }
+    return m;
+  }
+  return map;
+}

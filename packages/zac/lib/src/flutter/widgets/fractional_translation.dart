@@ -1,6 +1,5 @@
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,7 @@ part 'fractional_translation.g.dart';
 @defaultConverterFreezed
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation
-    implements ZacWidget {
+    implements FlutterWidget {
   const FlutterFractionalTranslation._();
 
   static const String unionValue = 'f:1:FractionalTranslation';
@@ -25,18 +24,18 @@ class FlutterFractionalTranslation
   @FreezedUnionValue(FlutterFractionalTranslation.unionValue)
   factory FlutterFractionalTranslation({
     FlutterKey? key,
-    ZacWidget? child,
+    FlutterWidget? child,
     required FlutterOffset translation,
     ZacBool? transformHitTests,
   }) = _FlutterFractionalTranslation;
 
   @override
-  FractionalTranslation buildWidget(ZacBuildContext context) {
+  FractionalTranslation buildWidget(ZacOriginWidgetTree origin) {
     return FractionalTranslation(
-      key: key?.buildKey(context),
-      child: child?.buildWidget(context),
-      translation: translation.build(context),
-      transformHitTests: transformHitTests?.getValue(context) ?? true,
+      key: key?.buildKey(origin),
+      child: child?.buildWidget(origin),
+      translation: translation.build(origin),
+      transformHitTests: transformHitTests?.getValue(origin) ?? true,
     );
   }
 }

@@ -14,124 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ActionPayload _$ActionPayloadFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
-    case 'none':
-      return _ActionPayloadNone.fromJson(json);
-    case 'default':
-      return _ActionPayloadWithData.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, '_converter', 'ActionPayload',
-          'Invalid union type "${json['_converter']}"!');
-  }
-}
-
-/// @nodoc
-mixin _$ActionPayload {
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ActionPayloadWithData value) $default, {
-    required TResult Function(_ActionPayloadNone value) none,
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ActionPayloadNone implements _ActionPayloadNone {
-  const _$_ActionPayloadNone({final String? $type}) : $type = $type ?? 'none';
-
-  factory _$_ActionPayloadNone.fromJson(Map<String, dynamic> json) =>
-      _$$_ActionPayloadNoneFromJson(json);
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ActionPayload.none()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionPayloadNone);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ActionPayloadWithData value) $default, {
-    required TResult Function(_ActionPayloadNone value) none,
-  }) {
-    return none(this);
-  }
-}
-
-abstract class _ActionPayloadNone implements ActionPayload {
-  const factory _ActionPayloadNone() = _$_ActionPayloadNone;
-
-  factory _ActionPayloadNone.fromJson(Map<String, dynamic> json) =
-      _$_ActionPayloadNone.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ActionPayloadWithData implements _ActionPayloadWithData {
-  _$_ActionPayloadWithData(this.data, {final String? $type})
-      : $type = $type ?? 'default';
-
-  factory _$_ActionPayloadWithData.fromJson(Map<String, dynamic> json) =>
-      _$$_ActionPayloadWithDataFromJson(json);
-
-  @override
-  final Object? data;
-
-  @JsonKey(name: '_converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ActionPayload(data: $data)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ActionPayloadWithData &&
-            const DeepCollectionEquality().equals(other.data, data));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ActionPayloadWithData value) $default, {
-    required TResult Function(_ActionPayloadNone value) none,
-  }) {
-    return $default(this);
-  }
-}
-
-abstract class _ActionPayloadWithData implements ActionPayload {
-  factory _ActionPayloadWithData(final Object? data) = _$_ActionPayloadWithData;
-
-  factory _ActionPayloadWithData.fromJson(Map<String, dynamic> json) =
-      _$_ActionPayloadWithData.fromJson;
-
-  Object? get data;
-}
-
 ZacActions _$ZacActionsFromJson(Map<String, dynamic> json) {
   return _ZacActions.fromJson(json);
 }
@@ -150,7 +32,7 @@ mixin _$ZacActions {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacActions extends _ZacActions {
-  _$_ZacActions(final List<ZacAction> actions)
+  const _$_ZacActions(final List<ZacAction> actions)
       : _actions = actions,
         super._();
 
@@ -192,8 +74,8 @@ class _$_ZacActions extends _ZacActions {
 }
 
 abstract class _ZacActions extends ZacActions {
-  factory _ZacActions(final List<ZacAction> actions) = _$_ZacActions;
-  _ZacActions._() : super._();
+  const factory _ZacActions(final List<ZacAction> actions) = _$_ZacActions;
+  const _ZacActions._() : super._();
 
   factory _ZacActions.fromJson(Map<String, dynamic> json) =
       _$_ZacActions.fromJson;
@@ -222,7 +104,7 @@ ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
 /// @nodoc
 mixin _$ZacExecuteActionsBuilder {
   ZacActions get actions => throw _privateConstructorUsedError;
-  ZacWidget? get child => throw _privateConstructorUsedError;
+  FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -246,7 +128,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
   @override
   final ZacActions actions;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -285,7 +167,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
 abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderOnce(
       {required final ZacActions actions,
-      final ZacWidget? child}) = _$_ZacExecuteActionsBuilderOnce;
+      final FlutterWidget? child}) = _$_ZacExecuteActionsBuilderOnce;
   _ZacExecuteActionsBuilderOnce._() : super._();
 
   factory _ZacExecuteActionsBuilderOnce.fromJson(Map<String, dynamic> json) =
@@ -294,7 +176,7 @@ abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
   @override
   ZacActions get actions;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }
 
 /// @nodoc
@@ -318,7 +200,7 @@ class _$_ZacExecuteActionsBuilderListen
   @override
   final Object family;
   @override
-  final ZacWidget? child;
+  final FlutterWidget? child;
 
   @JsonKey(name: '_converter')
   final String $type;
@@ -361,7 +243,7 @@ abstract class _ZacExecuteActionsBuilderListen
   factory _ZacExecuteActionsBuilderListen(
       {required final ZacActions actions,
       required final Object family,
-      final ZacWidget? child}) = _$_ZacExecuteActionsBuilderListen;
+      final FlutterWidget? child}) = _$_ZacExecuteActionsBuilderListen;
   _ZacExecuteActionsBuilderListen._() : super._();
 
   factory _ZacExecuteActionsBuilderListen.fromJson(Map<String, dynamic> json) =
@@ -371,5 +253,5 @@ abstract class _ZacExecuteActionsBuilderListen
   ZacActions get actions;
   Object get family;
   @override
-  ZacWidget? get child;
+  FlutterWidget? get child;
 }

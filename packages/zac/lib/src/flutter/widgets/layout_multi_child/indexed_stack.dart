@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/any_value.dart';
-
-import 'package:zac/src/zac/update_context.dart';
+import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,7 @@ part 'indexed_stack.freezed.dart';
 part 'indexed_stack.g.dart';
 
 @defaultConverterFreezed
-class FlutterIndexedStack with _$FlutterIndexedStack implements ZacWidget {
+class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   const FlutterIndexedStack._();
 
   static const String unionValue = 'f:1:IndexedStack';
@@ -33,14 +32,14 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements ZacWidget {
   }) = _FlutterIndexedStack;
 
   @override
-  IndexedStack buildWidget(ZacBuildContext context) {
+  IndexedStack buildWidget(ZacOriginWidgetTree origin) {
     return IndexedStack(
-      key: key?.buildKey(context),
-      alignment: alignment?.build(context) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(context),
-      sizing: sizing?.build(context) ?? StackFit.loose,
-      index: index?.getValue(context),
-      children: children?.getValue(context) ?? const <Widget>[],
+      key: key?.buildKey(origin),
+      alignment: alignment?.build(origin) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(origin),
+      sizing: sizing?.build(origin) ?? StackFit.loose,
+      index: index?.getValue(origin),
+      children: children?.getValue(origin) ?? const <Widget>[],
     );
   }
 }

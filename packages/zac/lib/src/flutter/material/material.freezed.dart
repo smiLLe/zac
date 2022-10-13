@@ -189,7 +189,7 @@ FlutterMaterialPageRoute _$FlutterMaterialPageRouteFromJson(
 
 /// @nodoc
 mixin _$FlutterMaterialPageRoute {
-  ZacWidget get child => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
   FlutterRouteSettings? get settings => throw _privateConstructorUsedError;
   ZacBool? get maintainState => throw _privateConstructorUsedError;
   ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
@@ -215,7 +215,7 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
       _$$_FlutterMaterialPageRouteFromJson(json);
 
   @override
-  final ZacWidget child;
+  final FlutterWidget child;
   @override
   final FlutterRouteSettings? settings;
   @override
@@ -261,7 +261,7 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
 
 abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   factory _FlutterMaterialPageRoute(
-      {required final ZacWidget child,
+      {required final FlutterWidget child,
       final FlutterRouteSettings? settings,
       final ZacBool? maintainState,
       final ZacBool? fullscreenDialog}) = _$_FlutterMaterialPageRoute;
@@ -271,7 +271,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
       _$_FlutterMaterialPageRoute.fromJson;
 
   @override
-  ZacWidget get child;
+  FlutterWidget get child;
   @override
   FlutterRouteSettings? get settings;
   @override
