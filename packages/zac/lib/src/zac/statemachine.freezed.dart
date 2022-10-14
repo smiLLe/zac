@@ -198,6 +198,7 @@ mixin _$Transition {
   String get event => throw _privateConstructorUsedError;
   String get target => throw _privateConstructorUsedError;
   ZacActions? get actions => throw _privateConstructorUsedError;
+  ZacTransformers? get guard => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -209,7 +210,8 @@ mixin _$Transition {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_Transition implements _Transition {
-  _$_Transition({required this.event, required this.target, this.actions});
+  _$_Transition(
+      {required this.event, required this.target, this.actions, this.guard});
 
   factory _$_Transition.fromJson(Map<String, dynamic> json) =>
       _$$_TransitionFromJson(json);
@@ -220,10 +222,12 @@ class _$_Transition implements _Transition {
   final String target;
   @override
   final ZacActions? actions;
+  @override
+  final ZacTransformers? guard;
 
   @override
   String toString() {
-    return 'Transition(event: $event, target: $target, actions: $actions)';
+    return 'Transition(event: $event, target: $target, actions: $actions, guard: $guard)';
   }
 
   @override
@@ -233,7 +237,8 @@ class _$_Transition implements _Transition {
             other is _$_Transition &&
             const DeepCollectionEquality().equals(other.event, event) &&
             const DeepCollectionEquality().equals(other.target, target) &&
-            const DeepCollectionEquality().equals(other.actions, actions));
+            const DeepCollectionEquality().equals(other.actions, actions) &&
+            const DeepCollectionEquality().equals(other.guard, guard));
   }
 
   @JsonKey(ignore: true)
@@ -242,7 +247,8 @@ class _$_Transition implements _Transition {
       runtimeType,
       const DeepCollectionEquality().hash(event),
       const DeepCollectionEquality().hash(target),
-      const DeepCollectionEquality().hash(actions));
+      const DeepCollectionEquality().hash(actions),
+      const DeepCollectionEquality().hash(guard));
 
   @override
   @optionalTypeArgs
@@ -257,7 +263,8 @@ abstract class _Transition implements Transition {
   factory _Transition(
       {required final String event,
       required final String target,
-      final ZacActions? actions}) = _$_Transition;
+      final ZacActions? actions,
+      final ZacTransformers? guard}) = _$_Transition;
 
   factory _Transition.fromJson(Map<String, dynamic> json) =
       _$_Transition.fromJson;
@@ -268,6 +275,8 @@ abstract class _Transition implements Transition {
   String get target;
   @override
   ZacActions? get actions;
+  @override
+  ZacTransformers? get guard;
 }
 
 StateMachineActions _$StateMachineActionsFromJson(Map<String, dynamic> json) {
@@ -315,11 +324,6 @@ class _$_StateMachineActionsSend extends _StateMachineActionsSend {
   final Object family;
   @override
   final ZacString event;
-
-  /// Optional payload which will be available as [kBagStateMachineEventPayload]
-  /// and [kBagPayload].
-  /// A payload send by an action will still be available
-  /// through [kBagActionPayload].
   @override
   final ZacObject? payload;
 
@@ -373,11 +377,6 @@ abstract class _StateMachineActionsSend extends StateMachineActions {
 
   Object get family;
   ZacString get event;
-
-  /// Optional payload which will be available as [kBagStateMachineEventPayload]
-  /// and [kBagPayload].
-  /// A payload send by an action will still be available
-  /// through [kBagActionPayload].
   ZacObject? get payload;
 }
 

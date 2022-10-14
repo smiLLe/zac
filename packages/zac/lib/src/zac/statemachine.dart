@@ -49,6 +49,7 @@ class Transition with _$Transition {
     required String event,
     required String target,
     ZacActions? actions,
+    ZacTransformers? guard,
   }) = _Transition;
 }
 
@@ -58,12 +59,6 @@ class StateMachineValidationError extends StateError {
 
 class StateMachineError extends StateError {
   StateMachineError(super.message);
-}
-
-extension XTransitions on Iterable<Transition> {
-  Iterable<Transition> findCandidates(String event) {
-    return where((transition) => transition.event == event);
-  }
 }
 
 extension XGetStateMachineSession on ContextBag {
@@ -383,11 +378,58 @@ class StateMachineSession {
   }
 
   void _transition(
-    Transition transition,
     String event,
     EventPayload payload, {
     ContextBag? withBag,
+    required bool isTrySend,
   }) {
+    assert(_isActive, '''
+It is no longer possible to send event "$event" to the $StateMachine in state "$inState".
+This state and so the $StateMachineSession is no longer active.''');
+    if (!_isActive) return;
+
+    final bag = withBag ?? _getBag();
+    final origin = _getOrigin(bag.onClear);
+    bag.addAll(<String, dynamic>{
+      StateMachine.bagSendEventKey: event,
+      if (payload is _EventPayload) StateMachine.bagPayloadKey: payload.data,
+      if (payload is _EventPayload) kBagPayload: payload.data,
+    });
+
+    final curNode = _machine.findNodeByState(inState);
+
+    /// transitions that just match the event
+    final allCandidates =
+        curNode.on.where((transition) => transition.event == event);
+
+    if (isTrySend) return;
+
+    if (allCandidates.isEmpty) {
+      throw StateMachineError('''
+An error occurred while sending an event to a $StateMachine.
+There was no transition found for event "$event" in state "$inState".
+Using payload: $payload''');
+    }
+
+    /// filter the candidates by their guard condition
+    final candidatesAfterGuard = allCandidates.where((transition) {
+      final isCandidate = transition.guard
+              ?.transformWithBag(ZacTransformValue(event), origin, bag) ??
+          true;
+
+      if (isCandidate is! bool) {
+        throw StateMachineError('''
+It was not possible to guard a $StateMachine $Transition because the guard
+$ZacTransformers did not return a bool. 
+Instead the transformed value is: $isCandidate
+''');
+      }
+      return isCandidate;
+    });
+
+    if (candidatesAfterGuard.isEmpty) return;
+
+    final transition = candidatesAfterGuard.first;
     final targetNode = _machine.findNodeByState(transition.target);
     if (true == transition.actions?.actions.isNotEmpty) {
       final bag = withBag ?? _getBag();
@@ -437,15 +479,7 @@ class StateMachineSession {
     EventPayload payload, {
     ContextBag? withBag,
   }) {
-    assert(_isActive, '''
-It is no longer possible to send event "$event" to the $StateMachine in state "$inState".
-This state and so the $StateMachineSession is no longer active.''');
-    if (!_isActive) return;
-
-    final curNode = _machine.findNodeByState(inState);
-    final candidates = curNode.on.findCandidates(event);
-    if (candidates.isEmpty) return;
-    _transition(candidates.first, event, payload, withBag: withBag);
+    _transition(event, payload, withBag: withBag, isTrySend: true);
   }
 
   void send(
@@ -453,20 +487,7 @@ This state and so the $StateMachineSession is no longer active.''');
     EventPayload payload, {
     ContextBag? withBag,
   }) {
-    assert(_isActive, '''
-It is no longer possible to send event "$event" to the $StateMachine in state "$inState".
-This state and so the $StateMachineSession is no longer active.''');
-    if (!_isActive) return;
-
-    final curNode = _machine.findNodeByState(inState);
-    final candidates = curNode.on.findCandidates(event);
-    if (candidates.isEmpty) {
-      throw StateMachineError('''
-An error occurred while sending an event to a $StateMachine.
-There was no transition found for event "$event" in state "$inState".
-Using payload: $payload''');
-    }
-    _transition(candidates.first, event, payload, withBag: withBag);
+    _transition(event, payload, withBag: withBag, isTrySend: false);
   }
 }
 

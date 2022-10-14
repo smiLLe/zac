@@ -24,6 +24,9 @@ _$_Transition _$$_TransitionFromJson(Map<String, dynamic> json) =>
       actions: json['actions'] == null
           ? null
           : ZacActions.fromJson(json['actions'] as Object),
+      guard: json['guard'] == null
+          ? null
+          : ZacTransformers.fromJson(json['guard'] as Object),
     );
 
 _$_StateMachineActionsSend _$$_StateMachineActionsSendFromJson(

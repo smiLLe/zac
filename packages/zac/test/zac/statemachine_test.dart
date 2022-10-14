@@ -104,19 +104,135 @@ void main() {
         throwsStateError);
   });
 
-  test('.findCandidates() in a List of Transition', () {
-    expect([Transition(event: 'Event1', target: 'foo')].findCandidates('Other'),
-        isEmpty);
-    expect(
-        [
-          Transition(event: 'Event1', target: 'foo'),
-          Transition(event: 'Event1', target: 'bar'),
-          Transition(event: 'Event2', target: 'bar')
-        ].findCandidates('Event1'),
-        [
-          Transition(event: 'Event1', target: 'foo'),
-          Transition(event: 'Event1', target: 'bar')
-        ]);
+  group('Guarded Transition', () {
+    test(
+        'takes the first transition to return true (or have no guard at all) and match event',
+        () {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'a',
+                context: null,
+                nodes: [
+                  StateNode(
+                    state: 'a',
+                    on: [
+                      Transition(
+                        event: 'NEXT',
+                        target: 'b',
+                        guard: ZacTransformers(
+                          [
+                            CustomTransformer(
+                              (transformValue, origin, bag) {
+                                return false;
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                      Transition(event: 'other', target: 'b'),
+                      Transition(event: 'NEXT', target: 'c'),
+                      Transition(
+                        event: 'NEXT',
+                        target: 'd',
+                        guard: ZacTransformers(
+                          [
+                            CustomTransformer(
+                              (transformValue, origin, bag) {
+                                return true;
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  StateNode(state: 'b'),
+                  StateNode(state: 'c'),
+                  StateNode(state: 'd'),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
+
+      final sub = container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
+
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const EventPayload.none());
+      expect(sub.read().state, 'c');
+    });
+
+    test('does not throw exception if there is no transition left after guard',
+        () {
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'a',
+                context: null,
+                nodes: [
+                  StateNode(
+                    state: 'a',
+                    on: [
+                      Transition(
+                        event: 'NEXT',
+                        target: 'b',
+                        guard: ZacTransformers(
+                          [
+                            CustomTransformer(
+                              (transformValue, origin, bag) {
+                                return false;
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                      Transition(
+                        event: 'NEXT',
+                        target: 'c',
+                        guard: ZacTransformers(
+                          [
+                            CustomTransformer(
+                              (transformValue, origin, bag) {
+                                return false;
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  StateNode(state: 'b'),
+                  StateNode(state: 'c'),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
+
+      container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
+
+      expect(
+          () => container
+              .read(StateMachine.provider('machine').notifier)
+              .send('NEXT', const EventPayload.none()),
+          returnsNormally);
+    });
   });
 
   test('Transition to other state by sending event to the StateMachine',
