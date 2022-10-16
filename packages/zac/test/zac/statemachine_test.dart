@@ -1,12 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/statemachine.dart';
@@ -1025,6 +1028,24 @@ void main() {
   });
 
   group('Convert', () {
+    test('MapStateToWidgetBuilder', () {
+      expect(
+          ConverterHelper.convertToType<
+              MapStateToWidgetBuilder>(<String, dynamic>{
+            '_converter': 'z:1:StateMachine:MapStateToWidget',
+            'family': 'machine',
+            'stateToWidget': <String, dynamic>{
+              'a': {'_converter': 'f:1:SizedBox'}
+            },
+          }),
+          MapStateToWidgetBuilder(
+            family: ZacString('machine'),
+            stateToWidget: <String, FlutterWidget>{
+              'a': FlutterSizedBox(),
+            },
+          ));
+    });
+
     test('StateNode and Transition', () {
       expect(
           ConverterHelper.convertToType<StateNode>(<String, dynamic>{
@@ -1142,6 +1163,96 @@ void main() {
 
       expect(find.text('a'), findsOneWidget);
       expect(find.text('1'), findsOneWidget);
+    });
+  });
+
+  group('MapStateToWidget', () {
+    testWidgets('allows to map a state to a FlutterWidget', (tester) async {
+      late ZacOriginWidgetTree origin;
+      await testZacWidget(
+        tester,
+        StateMachineProviderBuilder(
+          family: ZacString('machine'),
+          initialContext: ZacObject(1),
+          initialState: ZacString('a'),
+          states: [
+            StateNode(state: 'a', on: [Transition(event: 'NEXT', target: 'b')]),
+            StateNode(state: 'b'),
+          ],
+          child: LeakOrigin(
+            cb: (o) => origin = o,
+            child: MapStateToWidgetBuilder(
+              family: ZacString('machine'),
+              stateToWidget: <String, FlutterWidget>{
+                'a': FlutterText(ZacString('in a')),
+                'b': FlutterText(ZacString('in b')),
+              },
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('in a'), findsOneWidget);
+      expect(find.text('in b'), findsNothing);
+      origin.ref
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const EventPayload.none());
+
+      await tester.pump();
+      expect(find.text('in a'), findsNothing);
+      expect(find.text('in b'), findsOneWidget);
+    });
+
+    testWidgets('has a fallback Widget for unmapped states', (tester) async {
+      await testZacWidget(
+        tester,
+        StateMachineProviderBuilder(
+          family: ZacString('machine'),
+          initialContext: ZacObject(1),
+          initialState: ZacString('a'),
+          states: [StateNode(state: 'a')],
+          child: MapStateToWidgetBuilder(
+            family: ZacString('machine'),
+            stateToWidget: <String, FlutterWidget>{},
+            unmappedStateWidget: FlutterSizedBox(
+              key: FlutterValueKey('FIND_ME'),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.byKey(const ValueKey('FIND_ME')), findsOneWidget);
+    });
+
+    testWidgets('will check if mapped states actually exist in StateMachine',
+        (tester) async {
+      late FlutterErrorDetails details;
+      FlutterError.onError = (d) {
+        details = d;
+      };
+      await testZacWidget(
+        tester,
+        StateMachineProviderBuilder(
+          family: ZacString('machine'),
+          initialContext: ZacObject(1),
+          initialState: ZacString('a'),
+          states: [
+            StateNode(state: 'a'),
+            StateNode(state: 'b'),
+          ],
+          child: MapStateToWidgetBuilder(
+            family: ZacString('machine'),
+            stateToWidget: <String, FlutterWidget>{
+              'c': FlutterSizedBox(),
+            },
+          ),
+        ),
+      );
+
+      expect(
+          details.exception,
+          isA<StateMachineError>().having((p0) => p0.message, 'Error message',
+              contains('Trying to map state "c"')));
     });
   });
 

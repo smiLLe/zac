@@ -45,7 +45,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   }) = _FlutterWidgetSizedBoxFromSize;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueShrink)
-  factory FlutterSizedBox.shrink({
+  const factory FlutterSizedBox.shrink({
     FlutterKey? key,
     FlutterWidget? child,
   }) = _FlutterWidgetSizedBoxShrink;

@@ -499,129 +499,6 @@ abstract class _StateMachineActionsSetState extends StateMachineActions {
   String get state;
 }
 
-StateMachineProviderBuilder _$StateMachineProviderBuilderFromJson(
-    Map<String, dynamic> json) {
-  return _StateMachineProviderBuilder.fromJson(json);
-}
-
-/// @nodoc
-mixin _$StateMachineProviderBuilder {
-  FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacString get initialState => throw _privateConstructorUsedError;
-  List<StateNode> get states => throw _privateConstructorUsedError;
-  ZacString get family => throw _privateConstructorUsedError;
-  FlutterWidget get child => throw _privateConstructorUsedError;
-  ZacObject? get initialContext => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_StateMachineProviderBuilder value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_StateMachineProviderBuilder extends _StateMachineProviderBuilder {
-  _$_StateMachineProviderBuilder(
-      {this.key,
-      required this.initialState,
-      required final List<StateNode> states,
-      required this.family,
-      required this.child,
-      this.initialContext})
-      : _states = states,
-        super._();
-
-  factory _$_StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_StateMachineProviderBuilderFromJson(json);
-
-  @override
-  final FlutterKey? key;
-  @override
-  final ZacString initialState;
-  final List<StateNode> _states;
-  @override
-  List<StateNode> get states {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_states);
-  }
-
-  @override
-  final ZacString family;
-  @override
-  final FlutterWidget child;
-  @override
-  final ZacObject? initialContext;
-
-  @override
-  String toString() {
-    return 'StateMachineProviderBuilder(key: $key, initialState: $initialState, states: $states, family: $family, child: $child, initialContext: $initialContext)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StateMachineProviderBuilder &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.initialState, initialState) &&
-            const DeepCollectionEquality().equals(other._states, _states) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.initialContext, initialContext));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(initialState),
-      const DeepCollectionEquality().hash(_states),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(initialContext));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_StateMachineProviderBuilder value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _StateMachineProviderBuilder
-    extends StateMachineProviderBuilder {
-  factory _StateMachineProviderBuilder(
-      {final FlutterKey? key,
-      required final ZacString initialState,
-      required final List<StateNode> states,
-      required final ZacString family,
-      required final FlutterWidget child,
-      final ZacObject? initialContext}) = _$_StateMachineProviderBuilder;
-  _StateMachineProviderBuilder._() : super._();
-
-  factory _StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
-      _$_StateMachineProviderBuilder.fromJson;
-
-  @override
-  FlutterKey? get key;
-  @override
-  ZacString get initialState;
-  @override
-  List<StateNode> get states;
-  @override
-  ZacString get family;
-  @override
-  FlutterWidget get child;
-  @override
-  ZacObject? get initialContext;
-}
-
 /// @nodoc
 mixin _$CurrentState {
   String get state => throw _privateConstructorUsedError;
@@ -748,4 +625,232 @@ abstract class _CurrentState implements CurrentState {
   @JsonKey(ignore: true)
   _$$_CurrentStateCopyWith<_$_CurrentState> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+StateMachineProviderBuilder _$StateMachineProviderBuilderFromJson(
+    Map<String, dynamic> json) {
+  return _StateMachineProviderBuilder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StateMachineProviderBuilder {
+  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacString get initialState => throw _privateConstructorUsedError;
+  List<StateNode> get states => throw _privateConstructorUsedError;
+  ZacString get family => throw _privateConstructorUsedError;
+  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacObject? get initialContext => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateMachineProviderBuilder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_StateMachineProviderBuilder extends _StateMachineProviderBuilder {
+  _$_StateMachineProviderBuilder(
+      {this.key,
+      required this.initialState,
+      required final List<StateNode> states,
+      required this.family,
+      required this.child,
+      this.initialContext})
+      : _states = states,
+        super._();
+
+  factory _$_StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_StateMachineProviderBuilderFromJson(json);
+
+  @override
+  final FlutterKey? key;
+  @override
+  final ZacString initialState;
+  final List<StateNode> _states;
+  @override
+  List<StateNode> get states {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_states);
+  }
+
+  @override
+  final ZacString family;
+  @override
+  final FlutterWidget child;
+  @override
+  final ZacObject? initialContext;
+
+  @override
+  String toString() {
+    return 'StateMachineProviderBuilder(key: $key, initialState: $initialState, states: $states, family: $family, child: $child, initialContext: $initialContext)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StateMachineProviderBuilder &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality()
+                .equals(other.initialState, initialState) &&
+            const DeepCollectionEquality().equals(other._states, _states) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality()
+                .equals(other.initialContext, initialContext));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(initialState),
+      const DeepCollectionEquality().hash(_states),
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(initialContext));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StateMachineProviderBuilder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _StateMachineProviderBuilder
+    extends StateMachineProviderBuilder {
+  factory _StateMachineProviderBuilder(
+      {final FlutterKey? key,
+      required final ZacString initialState,
+      required final List<StateNode> states,
+      required final ZacString family,
+      required final FlutterWidget child,
+      final ZacObject? initialContext}) = _$_StateMachineProviderBuilder;
+  _StateMachineProviderBuilder._() : super._();
+
+  factory _StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
+      _$_StateMachineProviderBuilder.fromJson;
+
+  @override
+  FlutterKey? get key;
+  @override
+  ZacString get initialState;
+  @override
+  List<StateNode> get states;
+  @override
+  ZacString get family;
+  @override
+  FlutterWidget get child;
+  @override
+  ZacObject? get initialContext;
+}
+
+MapStateToWidgetBuilder _$MapStateToWidgetBuilderFromJson(
+    Map<String, dynamic> json) {
+  return _MapStateToWidgetBuilder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$MapStateToWidgetBuilder {
+  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacString get family => throw _privateConstructorUsedError;
+  Map<String, FlutterWidget> get stateToWidget =>
+      throw _privateConstructorUsedError;
+  FlutterWidget? get unmappedStateWidget => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MapStateToWidgetBuilder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapStateToWidgetBuilder extends _MapStateToWidgetBuilder {
+  _$_MapStateToWidgetBuilder(
+      {this.key,
+      required this.family,
+      required final Map<String, FlutterWidget> stateToWidget,
+      this.unmappedStateWidget})
+      : _stateToWidget = stateToWidget,
+        super._();
+
+  factory _$_MapStateToWidgetBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_MapStateToWidgetBuilderFromJson(json);
+
+  @override
+  final FlutterKey? key;
+  @override
+  final ZacString family;
+  final Map<String, FlutterWidget> _stateToWidget;
+  @override
+  Map<String, FlutterWidget> get stateToWidget {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_stateToWidget);
+  }
+
+  @override
+  final FlutterWidget? unmappedStateWidget;
+
+  @override
+  String toString() {
+    return 'MapStateToWidgetBuilder(key: $key, family: $family, stateToWidget: $stateToWidget, unmappedStateWidget: $unmappedStateWidget)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapStateToWidgetBuilder &&
+            const DeepCollectionEquality().equals(other.key, key) &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality()
+                .equals(other._stateToWidget, _stateToWidget) &&
+            const DeepCollectionEquality()
+                .equals(other.unmappedStateWidget, unmappedStateWidget));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(key),
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(_stateToWidget),
+      const DeepCollectionEquality().hash(unmappedStateWidget));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_MapStateToWidgetBuilder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _MapStateToWidgetBuilder extends MapStateToWidgetBuilder {
+  factory _MapStateToWidgetBuilder(
+      {final FlutterKey? key,
+      required final ZacString family,
+      required final Map<String, FlutterWidget> stateToWidget,
+      final FlutterWidget? unmappedStateWidget}) = _$_MapStateToWidgetBuilder;
+  _MapStateToWidgetBuilder._() : super._();
+
+  factory _MapStateToWidgetBuilder.fromJson(Map<String, dynamic> json) =
+      _$_MapStateToWidgetBuilder.fromJson;
+
+  @override
+  FlutterKey? get key;
+  @override
+  ZacString get family;
+  @override
+  Map<String, FlutterWidget> get stateToWidget;
+  @override
+  FlutterWidget? get unmappedStateWidget;
 }

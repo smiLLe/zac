@@ -274,7 +274,8 @@ abstract class _FlutterWidgetSizedBoxFromSize extends FlutterSizedBox {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
-  _$_FlutterWidgetSizedBoxShrink({this.key, this.child, final String? $type})
+  const _$_FlutterWidgetSizedBoxShrink(
+      {this.key, this.child, final String? $type})
       : $type = $type ?? 'f:1:SizedBox.shrink',
         super._();
 
@@ -324,10 +325,10 @@ class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
 }
 
 abstract class _FlutterWidgetSizedBoxShrink extends FlutterSizedBox {
-  factory _FlutterWidgetSizedBoxShrink(
+  const factory _FlutterWidgetSizedBoxShrink(
       {final FlutterKey? key,
       final FlutterWidget? child}) = _$_FlutterWidgetSizedBoxShrink;
-  _FlutterWidgetSizedBoxShrink._() : super._();
+  const _FlutterWidgetSizedBoxShrink._() : super._();
 
   factory _FlutterWidgetSizedBoxShrink.fromJson(Map<String, dynamic> json) =
       _$_FlutterWidgetSizedBoxShrink.fromJson;

@@ -171,6 +171,7 @@ Map<String, Convert> allConverters = const {
   ZacActions.unionValue: ZacActions.fromJson,
 
   StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
+  MapStateToWidgetBuilder.unionValue: MapStateToWidgetBuilder.fromJson,
   StateMachineActions.unionValue: StateMachineActions.fromJson,
   StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
   StateMachineActions.unionValueSetState: StateMachineActions.fromJson,

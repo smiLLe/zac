@@ -3,8 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -118,88 +120,6 @@ class StateMachineActions with _$StateMachineActions implements ZacAction {
         );
       },
       setState: (obj) => bag.getStateMachineSession().nextState(obj.state),
-    );
-  }
-}
-
-@defaultConverterFreezed
-class StateMachineProviderBuilder
-    with _$StateMachineProviderBuilder
-    implements FlutterWidget {
-  const StateMachineProviderBuilder._();
-  static const String unionValue = 'z:1:StateMachine.provide';
-
-  factory StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$StateMachineProviderBuilderFromJson(json);
-
-  @FreezedUnionValue(StateMachineProviderBuilder.unionValue)
-  factory StateMachineProviderBuilder({
-    FlutterKey? key,
-    required ZacString initialState,
-    required List<StateNode> states,
-    required ZacString family,
-    required FlutterWidget child,
-    ZacObject? initialContext,
-  }) = _StateMachineProviderBuilder;
-
-  @override
-  StateMachineProvider buildWidget(ZacOriginWidgetTree origin) {
-    return StateMachineProvider(
-      key: key?.buildKey(origin),
-      initialState: initialState.getValue(origin),
-      initialContext: initialContext?.getValue(origin),
-      states: states,
-      family: family.getValue(origin),
-      builder: child.buildWidget,
-    );
-  }
-}
-
-class StateMachineProvider extends StatelessWidget {
-  const StateMachineProvider({
-    required this.initialState,
-    required this.initialContext,
-    required this.states,
-    required this.family,
-    required this.builder,
-    super.key,
-  });
-
-  final String initialState;
-  final Object? initialContext;
-  final List<StateNode> states;
-  final String family;
-  final Widget Function(ZacOriginWidgetTree origin) builder;
-
-  @override
-  Widget build(BuildContext context) {
-    return ProviderScope(
-      overrides: [
-        StateMachine.provider(family).overrideWithProvider(
-            AutoDisposeStateNotifierProvider<StateMachine, CurrentState>((ref) {
-          return StateMachine(
-            ref: ref,
-            context: initialContext,
-            state: initialState,
-            nodes: states,
-          );
-        })),
-        SharedValue.provider('$family.state')
-            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
-          (ref) {
-            return SharedValue(ref.watch(StateMachine.provider(family)
-                .select((curState) => curState.state)));
-          },
-        )),
-        SharedValue.provider('$family.context')
-            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
-          (ref) {
-            return SharedValue(ref.watch(StateMachine.provider(family)
-                .select((curState) => curState.context)));
-          },
-        )),
-      ],
-      child: ZacUpdateOrigin(builder: builder),
     );
   }
 }
@@ -544,5 +464,160 @@ class StateMachineScheduler {
     } finally {
       _processingEvent = false;
     }
+  }
+}
+
+@defaultConverterFreezed
+class StateMachineProviderBuilder
+    with _$StateMachineProviderBuilder
+    implements FlutterWidget {
+  const StateMachineProviderBuilder._();
+  static const String unionValue = 'z:1:StateMachine.provide';
+
+  factory StateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =>
+      _$StateMachineProviderBuilderFromJson(json);
+
+  @FreezedUnionValue(StateMachineProviderBuilder.unionValue)
+  factory StateMachineProviderBuilder({
+    FlutterKey? key,
+    required ZacString initialState,
+    required List<StateNode> states,
+    required ZacString family,
+    required FlutterWidget child,
+    ZacObject? initialContext,
+  }) = _StateMachineProviderBuilder;
+
+  @override
+  StateMachineProvider buildWidget(ZacOriginWidgetTree origin) {
+    return StateMachineProvider(
+      key: key?.buildKey(origin),
+      initialState: initialState.getValue(origin),
+      initialContext: initialContext?.getValue(origin),
+      states: states,
+      family: family.getValue(origin),
+      builder: child.buildWidget,
+    );
+  }
+}
+
+class StateMachineProvider extends StatelessWidget {
+  const StateMachineProvider({
+    required this.initialState,
+    required this.initialContext,
+    required this.states,
+    required this.family,
+    required this.builder,
+    super.key,
+  });
+
+  final String initialState;
+  final Object? initialContext;
+  final List<StateNode> states;
+  final String family;
+  final Widget Function(ZacOriginWidgetTree origin) builder;
+
+  @override
+  Widget build(BuildContext context) {
+    return ProviderScope(
+      overrides: [
+        StateMachine.provider(family).overrideWithProvider(
+            AutoDisposeStateNotifierProvider<StateMachine, CurrentState>((ref) {
+          return StateMachine(
+            ref: ref,
+            context: initialContext,
+            state: initialState,
+            nodes: states,
+          );
+        })),
+        SharedValue.provider('$family.state')
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+          (ref) {
+            return SharedValue(ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.state)));
+          },
+        )),
+        SharedValue.provider('$family.context')
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+          (ref) {
+            return SharedValue(ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.context)));
+          },
+        )),
+      ],
+      child: ZacUpdateOrigin(builder: builder),
+    );
+  }
+}
+
+@defaultConverterFreezed
+class MapStateToWidgetBuilder
+    with _$MapStateToWidgetBuilder
+    implements FlutterWidget {
+  const MapStateToWidgetBuilder._();
+  static const String unionValue = 'z:1:StateMachine:MapStateToWidget';
+
+  factory MapStateToWidgetBuilder.fromJson(Map<String, dynamic> json) =>
+      _$MapStateToWidgetBuilderFromJson(json);
+
+  @FreezedUnionValue(MapStateToWidgetBuilder.unionValue)
+  factory MapStateToWidgetBuilder({
+    FlutterKey? key,
+    required ZacString family,
+    required Map<String, FlutterWidget> stateToWidget,
+    FlutterWidget? unmappedStateWidget,
+  }) = _MapStateToWidgetBuilder;
+
+  @override
+  MapStateToWidget buildWidget(ZacOriginWidgetTree origin) {
+    return MapStateToWidget(
+      key: key?.buildKey(origin),
+      family: family.getValue(origin),
+      stateToWidget: stateToWidget,
+      unmappedStateWidget:
+          unmappedStateWidget ?? const FlutterSizedBox.shrink(),
+    );
+  }
+}
+
+class MapStateToWidget extends HookConsumerWidget {
+  const MapStateToWidget(
+      {required this.family,
+      required this.stateToWidget,
+      required this.unmappedStateWidget,
+      super.key});
+
+  final String family;
+  final Map<String, FlutterWidget> stateToWidget;
+  final FlutterWidget unmappedStateWidget;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final origin = useZacOrigin(ref);
+    final state = SharedValue.getFilled(
+        const SharedValueConsumeType.watch(), origin, '$family.state');
+
+    /// check if mapped states actually exist in the StateMachine
+    assert(() {
+      final machine = ref.read(StateMachine.provider(family).notifier);
+      for (var searchForState in stateToWidget.keys) {
+        var found = false;
+        for (var node in machine.nodes) {
+          found = node.state == searchForState;
+          if (found) break;
+        }
+        if (!found) {
+          throw StateMachineError('''
+Trying to map state "$searchForState" to a $FlutterWidget in "${MapStateToWidgetBuilder.unionValue}"
+failed because "$searchForState" does not exist in $StateMachine of family "$family".
+''');
+        }
+      }
+      return true;
+    }(), '');
+
+    if (stateToWidget.containsKey(state)) {
+      return stateToWidget[state]!.buildWidget(origin);
+    }
+    return unmappedStateWidget.buildWidget(origin);
   }
 }

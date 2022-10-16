@@ -70,3 +70,18 @@ _$_StateMachineProviderBuilder _$$_StateMachineProviderBuilderFromJson(
           ? null
           : ZacObject.fromJson(json['initialContext'] as Object),
     );
+
+_$_MapStateToWidgetBuilder _$$_MapStateToWidgetBuilderFromJson(
+        Map<String, dynamic> json) =>
+    _$_MapStateToWidgetBuilder(
+      key: json['key'] == null
+          ? null
+          : FlutterKey.fromJson(json['key'] as Object),
+      family: ZacString.fromJson(json['family'] as Object),
+      stateToWidget: (json['stateToWidget'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, FlutterWidget.fromJson(e as Object)),
+      ),
+      unmappedStateWidget: json['unmappedStateWidget'] == null
+          ? null
+          : FlutterWidget.fromJson(json['unmappedStateWidget'] as Object),
+    );
