@@ -16,6 +16,17 @@ part 'statemachine.g.dart';
 
 typedef MachineContext = Object?;
 
+extension XGetStateMachineSession on ContextBag {
+  StateMachineSession getStateMachineSession() {
+    return safeGet<StateMachineSession>(
+        key: StateMachine.bagSessionKey, notFound: null);
+  }
+}
+
+class StateMachineError extends StateError {
+  StateMachineError(super.message);
+}
+
 @nonConverterFreezed
 class EventPayload with _$EventPayload {
   factory EventPayload(Object? data) = _EventPayload;
@@ -51,21 +62,6 @@ class Transition with _$Transition {
     ZacActions? actions,
     ZacTransformers? guard,
   }) = _Transition;
-}
-
-class StateMachineValidationError extends StateError {
-  StateMachineValidationError(super.message);
-}
-
-class StateMachineError extends StateError {
-  StateMachineError(super.message);
-}
-
-extension XGetStateMachineSession on ContextBag {
-  StateMachineSession getStateMachineSession() {
-    return safeGet<StateMachineSession>(
-        key: StateMachine.bagSessionKey, notFound: null);
-  }
 }
 
 @defaultConverterFreezed
@@ -270,7 +266,7 @@ $this
           found = targetNode.state == transition.target ? true : found;
         }
         if (!found) {
-          throw StateMachineValidationError('''
+          throw StateMachineError('''
 Invalid $Transition target.
 It is not possible to transition away from state "${node.state}"
 on event "${transition.event}".
@@ -288,7 +284,7 @@ $this
     final states = nodes.map((e) => e.state.toLowerCase());
     final uniqueStates = states.toSet().toList();
     if (uniqueStates.length != states.length) {
-      throw StateMachineValidationError('''
+      throw StateMachineError('''
 Duplicated States found.
 It is not allowed to define the same state more than once in a $StateMachine.
 Remove the duplicated state: $states
@@ -311,10 +307,13 @@ Remove the duplicated state: $states
 
     scheduler.schedule(() {
       final nextState = cb(state.state, state.context);
-      state = nextState;
-      session = StateMachineSession(
+
+      final nextSession = StateMachineSession(
           this, nextState.state, nextState.context, event, payload);
-      session._enter();
+      session = nextSession;
+      nextSession._enter();
+      if (!nextSession._isActive) return;
+      state = nextState;
     });
   }
 
@@ -414,7 +413,7 @@ Using payload: $payload''');
     /// filter the candidates by their guard condition
     final candidatesAfterGuard = allCandidates.where((transition) {
       final isCandidate = transition.guard
-              ?.transformWithBag(ZacTransformValue(event), origin, bag) ??
+              ?.transformWithBag(ZacTransformValue(context), origin, bag) ??
           true;
 
       if (isCandidate is! bool) {

@@ -40,7 +40,7 @@ void main() {
         () => container
             .read(StateMachine.provider('machine').notifier)
             .validateUniqueStates(),
-        throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
+        throwsA(isA<StateMachineError>().having((p0) => p0.message,
             'error message', contains('Duplicated States found'))));
   });
 
@@ -68,7 +68,7 @@ void main() {
         () => container
             .read(StateMachine.provider('machine').notifier)
             .validateTransitionTargets(),
-        throwsA(isA<StateMachineValidationError>().having((p0) => p0.message,
+        throwsA(isA<StateMachineError>().having((p0) => p0.message,
             'error message', contains('Invalid Transition target'))));
   });
 
@@ -105,6 +105,55 @@ void main() {
   });
 
   group('Guarded Transition', () {
+    test('will use the machine context as payload for transformers', () {
+      MachineContext expectContext;
+      final container = ProviderContainer(
+        overrides: [
+          StateMachine.provider('machine').overrideWithProvider(
+            StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+              (ref) => StateMachine(
+                state: 'a',
+                context: 'THE CONTEXT',
+                nodes: [
+                  StateNode(
+                    state: 'a',
+                    on: [
+                      Transition(
+                        event: 'NEXT',
+                        target: 'b',
+                        guard: ZacTransformers(
+                          [
+                            CustomTransformer(
+                              (transformValue, origin, bag) {
+                                expectContext = transformValue.value;
+                                return true;
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  StateNode(state: 'b'),
+                ],
+                ref: ref,
+              ),
+            ),
+          ),
+        ],
+      );
+
+      container.listen(
+        StateMachine.provider('machine'),
+        (previous, next) {},
+      );
+
+      container
+          .read(StateMachine.provider('machine').notifier)
+          .send('NEXT', const EventPayload.none());
+      expect(expectContext, 'THE CONTEXT');
+    });
+
     test(
         'takes the first transition to return true (or have no guard at all) and match event',
         () {
