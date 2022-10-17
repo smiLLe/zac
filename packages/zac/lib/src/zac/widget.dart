@@ -88,6 +88,7 @@ class ZacWidget extends HookConsumerWidget {
 
   static const String provideErrorFamily = 'ZacWidgetBuilder.error';
 
+  /// TODO: rename this property
   final FlutterWidget zacWidget;
 
   @override

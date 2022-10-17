@@ -3,12 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/zac.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// ignore: depend_on_referenced_packages
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac_template_expressions/zac_template_expressions.dart';
-
-part 'zac_template_expressions_test.freezed.dart';
 
 void _expectFromJson<T>({
   required T Function(Map<String, dynamic> json) fromJson,
@@ -38,7 +34,7 @@ void main() {
     };
   });
 
-  test('Syntax', () {
+  test('Convert ZacTemplateExpressionsSyntax', () {
     _expectFromJson<ZacTemplateExpressionsSyntax>(
       fromJson: ZacTemplateExpressionsSyntax.fromJson,
       converter: 'template_expressions:1:Syntax:Standard',
@@ -46,7 +42,7 @@ void main() {
     );
   });
 
-  testWidgets('Template.process', (tester) async {
+  test('Convert ZacTemplateExpressionsTransformer', () {
     _expectFromJson<ZacTemplateExpressionsTransformer>(
       fromJson: ZacTemplateExpressionsTransformer.fromJson,
       converter: 'template_expressions:1:Transformer:Template.process',
@@ -68,14 +64,16 @@ void main() {
         },
       },
     );
+  });
 
-    late ZacBuildContext context;
+  testWidgets('Template.process', (tester) async {
+    late ZacOrigin origin;
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: ProviderContainer(),
         child: MaterialApp(
-          home: FlutterWidget(
-            zacWidget: LeakContext(cb: (c) => context = c),
+          home: ZacWidget(
+            zacWidget: LeakOrigin(cb: (o) => origin = o),
           ),
         ),
       ),
@@ -83,7 +81,7 @@ void main() {
 
     expect(
         ZacTemplateExpressionsTransformer(expression: r'''${tValue}''')
-            .transform('hello world', context, null),
+            .transform(ZacTransformValue('hello world'), origin, ContextBag()),
         'hello world');
 
     expect(
@@ -92,24 +90,92 @@ void main() {
           context: {
             'hello': ZacObject('hello world'),
           },
-        ).transform(null, context, null),
+        ).transform(ZacTransformValue(null), origin, ContextBag()),
         'hello world');
+
+    expect(
+        ZacTemplateExpressionsTransformer(
+          expression: r'''${bagValue}''',
+        ).transform(ZacTransformValue(null), origin,
+            ContextBag()..addAll(<String, dynamic>{'bagValue': 'YEAH'})),
+        'YEAH');
+  });
+
+  test(
+      'Template.process will add StateMachine state and context to Template context',
+      () {
+    late Object? state;
+    late MachineContext context;
+    final container = ProviderContainer(
+      overrides: [
+        StateMachine.provider('machine').overrideWithProvider(
+          StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
+            (ref) => StateMachine(
+              ref: ref,
+              context: 'the_context',
+              state: 'a',
+              nodes: [
+                StateNode(
+                  state: 'a',
+                  actions: ZacActions(
+                    [
+                      LeakAction(
+                        cb: (origin, bag) {
+                          state = ZacTransformers([
+                            ZacTemplateExpressionsTransformer(
+                              expression: r'''${machine_state}''',
+                            )
+                          ]).transformWithBag(
+                              ZacTransformValue(null), origin, bag);
+
+                          context = ZacTransformers([
+                            ZacTemplateExpressionsTransformer(
+                              expression: r'''${machine_context}''',
+                            )
+                          ]).transformWithBag(
+                              ZacTransformValue(null), origin, bag);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+
+    container.listen(
+      StateMachine.provider('machine'),
+      (previous, next) {},
+    );
+    expect(state, 'a');
+    expect(context, 'the_context');
   });
 }
 
-@nonConverterFreezed
-class LeakContext with _$LeakContext implements FlutterWidget {
-  LeakContext._();
+class LeakOrigin implements FlutterWidget {
+  LeakOrigin({
+    required this.cb,
+    this.child,
+  });
 
-  factory LeakContext({
-    required void Function(ZacBuildContext context) cb,
-    FlutterWidget? child,
-  }) = _LeakContext;
+  final void Function(ZacOriginWidgetTree origin) cb;
+  final FlutterWidget? child;
 
   @override
-  Widget buildWidget(
-      BuildContext context, WidgetRef ref, ZacBuildContext zacContext) {
-    cb(context);
-    return child?.buildWidget(context) ?? const SizedBox.shrink();
+  Widget buildWidget(ZacOriginWidgetTree origin) {
+    cb(origin);
+    return child?.buildWidget(origin) ?? const SizedBox.shrink();
   }
+}
+
+class LeakAction implements ZacAction {
+  LeakAction({required this.cb});
+
+  final void Function(ZacOrigin origin, ContextBag bag) cb;
+
+  @override
+  void execute(ZacOrigin origin, ContextBag bag) => cb(origin, bag);
 }

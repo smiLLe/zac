@@ -22,6 +22,10 @@ class ZacTemplateExpressionsTransformer
     with _$ZacTemplateExpressionsTransformer
     implements ZacTransformer {
   const ZacTemplateExpressionsTransformer._();
+
+  static const String machineState = 'machine_state';
+  static const String machineContext = 'machine_context';
+
   static const String unionValue =
       'template_expressions:1:Transformer:Template.process';
 
@@ -38,7 +42,8 @@ class ZacTemplateExpressionsTransformer
   }) = _ZacTemplateExpressionsTransformer;
 
   @override
-  Object? transform(Object? value, ZacBuildContext context, ContextBag? extra) {
+  Object? transform(
+      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
     return map(
       (obj) {
         final template = Template(
@@ -46,10 +51,23 @@ class ZacTemplateExpressionsTransformer
           syntax: [syntax.map((_) => const StandardExpressionSyntax())],
         );
 
+        /// Add the context and state of a StateMachineSession to context
+        final stateMachineMap = <String, dynamic>{};
+        if (bag.containsKey(StateMachine.bagSessionKey)) {
+          final session =
+              bag[StateMachine.bagSessionKey] as StateMachineSession;
+          stateMachineMap[ZacTemplateExpressionsTransformer.machineContext] =
+              session.context;
+          stateMachineMap[ZacTemplateExpressionsTransformer.machineState] =
+              session.inState;
+        }
+
         final templateContext = obj.context?.map<String, Object?>(
-            (key, value) => MapEntry(key, value.getValue(context)));
+            (key, value) => MapEntry(key, value.getValue(origin)));
         return template.process(context: <dynamic, dynamic>{
-          'tValue': value,
+          'tValue': transformValue.value,
+          if (bag.isNotEmpty) ...bag,
+          if (stateMachineMap.isNotEmpty) ...stateMachineMap,
           if (null != templateContext) ...templateContext,
         });
       },
