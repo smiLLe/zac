@@ -100,7 +100,7 @@ Future<void> testZacWidget(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidget(zacWidget: zacWidget),
+    ZacWidget(widget: zacWidget),
     converter: converter,
     useContainer: useContainer,
   );

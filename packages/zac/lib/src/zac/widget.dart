@@ -60,7 +60,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   Widget buildWidget(ZacOriginWidgetTree origin) {
     return map(
       (obj) => ZacWidget(
-        zacWidget: obj.data,
+        widget: obj.data,
         key: obj.key?.buildKey(origin),
       ),
       map: (obj) => ZacWidgetFromMa(
@@ -84,17 +84,16 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
 }
 
 class ZacWidget extends HookConsumerWidget {
-  const ZacWidget({required this.zacWidget, Key? key}) : super(key: key);
+  const ZacWidget({required this.widget, Key? key}) : super(key: key);
 
-  static const String provideErrorFamily = 'ZacWidgetBuilder.error';
+  static const String provideErrorFamily = 'ZacWidget.error';
 
-  /// TODO: rename this property
-  final FlutterWidget zacWidget;
+  final FlutterWidget widget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final origin = useZacOrigin(ref);
-    return zacWidget.buildWidget(origin);
+    return widget.buildWidget(origin);
   }
 }
 
@@ -109,7 +108,7 @@ class ZacWidgetFromMa extends HookConsumerWidget {
     final map = zacMap.getValue(origin);
     final zacWidget = useMemoized(
         () => ConverterHelper.convertToType<FlutterWidget>(map), [map]);
-    return ZacWidget(zacWidget: zacWidget);
+    return ZacWidget(widget: zacWidget);
   }
 }
 

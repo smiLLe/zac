@@ -73,7 +73,7 @@ void main() {
         container: ProviderContainer(),
         child: MaterialApp(
           home: ZacWidget(
-            zacWidget: LeakOrigin(cb: (o) => origin = o),
+            widget: LeakOrigin(cb: (o) => origin = o),
           ),
         ),
       ),
