@@ -35,20 +35,6 @@ It is expected to receive a $Completer from $FlutterRefreshIndicator.
 '''),
     );
 
-    origin.map(
-      widgetTree: (origin) {
-        origin.lifetime.onUnmount(() {
-          if (completer.isCompleted) return;
-          completer.completeError(const Object());
-        });
-      },
-      statemachineAction: (origin) {
-        origin.lifetime.onBecomeInactive(() {
-          if (completer.isCompleted) return;
-          completer.completeError(const Object());
-        });
-      },
-    );
     if (completer.isCompleted) return;
     completer.complete();
   }

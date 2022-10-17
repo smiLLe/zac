@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/origin.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/base.dart';
@@ -46,10 +47,27 @@ class FlutterRefreshIndicator
       child: child.buildWidget(origin),
       onRefresh: () async {
         final completer = Completer<void>();
-        onRefresh.execute(
-          origin,
-          prefillBag: (bag) => bag..setActionPayload(completer),
+        final bag = ContextBag();
+        bag.setActionPayload(completer);
+        origin.map(
+          widgetTree: (origin) {
+            origin.lifetime.onUnmount(() {
+              if (completer.isCompleted) return;
+              completer.completeError(const Object());
+            });
+          },
+          statemachineAction: (origin) {
+            origin.lifetime.onBecomeInactive(() {
+              if (completer.isCompleted) return;
+              completer.completeError(const Object());
+            });
+          },
         );
+        completer.future.whenComplete(() {
+          bag.clear();
+        });
+
+        onRefresh.executeWithBag(origin, bag);
         return completer.future;
       },
       displacement: displacement?.getValue(origin) ?? 40.0,
