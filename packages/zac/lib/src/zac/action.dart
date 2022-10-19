@@ -18,7 +18,7 @@ abstract class ZacAction {
     return ConverterHelper.convertToType<ZacAction>(data);
   }
 
-  void execute(ZacOrigin origin, ContextBag bag);
+  void execute(ZacContext zacContext, ContextBag bag);
 }
 
 // @freezed
@@ -58,45 +58,39 @@ class ZacActions with _$ZacActions {
   const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
   void execute(
-    ZacOrigin origin, {
+    ZacContext zacContext, {
     void Function(ContextBag bag)? prefillBag,
   }) async {
-    if (!origin.map(
-        widgetTree: (obj) => obj.lifetime.isMounted(),
-        statemachineAction: (obj) => obj.lifetime.isActive())) return;
+    if (!zacContext.isMounted()) return;
     final bag = ContextBag();
     prefillBag?.call(bag);
-    executeWithBag(origin, bag);
+    executeWithBag(zacContext, bag);
     bag.clear();
   }
 
   void executeWithBag(
-    ZacOrigin origin,
+    ZacContext zacContext,
     ContextBag bag,
   ) {
-    if (!origin.map(
-        widgetTree: (obj) => obj.lifetime.isMounted(),
-        statemachineAction: (obj) => obj.lifetime.isActive())) return;
+    if (!zacContext.isMounted()) return;
 
     for (var action in actions) {
-      if (!origin.map(
-          widgetTree: (obj) => obj.lifetime.isMounted(),
-          statemachineAction: (obj) => obj.lifetime.isActive())) {
+      if (!zacContext.isMounted()) {
         return;
       }
-      action.execute(origin, bag);
+      action.execute(zacContext, bag);
     }
   }
 }
 
 extension Interactions on ZacActions {
-  void Function() createCb(ZacOriginWidgetTree origin) {
-    return () => execute(origin);
+  void Function() createCb(ZacContext zacContext) {
+    return () => execute(zacContext);
   }
 
   void Function(T data) createCbParam1<T extends Object?>(
-      ZacOriginWidgetTree origin) {
-    return (T data) => execute(origin,
+      ZacContext zacContext) {
+    return (T data) => execute(zacContext,
         prefillBag: (bag) => bag..addKeyValue(kBagActionPayload, data));
   }
 }
@@ -127,7 +121,7 @@ class ZacExecuteActionsBuilder
   }) = _ZacExecuteActionsBuilderListen;
 
   @override
-  Widget buildWidget(ZacOriginWidgetTree origin) {
+  Widget buildWidget(ZacContext zacContext) {
     return map(
       once: (obj) => ZacExecuteActionsOnce(
         actions: obj.actions,
@@ -153,8 +147,8 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
-    SharedValue.listenAndExecuteActions(origin, family, actions);
+    final zacContext = useZacContext(ref);
+    SharedValue.listenAndExecuteActions(zacContext, family, actions);
 
     return null != child ? ZacWidget(widget: child!) : const SizedBox.shrink();
   }
@@ -170,14 +164,14 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
+    final zacContext = useZacContext(ref);
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(origin);
+        actions.execute(zacContext);
         if (!mounted) return;
         doneState.value = true;
       });

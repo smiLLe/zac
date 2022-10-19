@@ -24,13 +24,13 @@ void main() {
 
     testWidgets('can be transformed and provieded through SharedValueProvider',
         (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
 
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
           builder: (o) {
-            origin = o;
+            zacContext = o;
             // ignore returned widget
             return const SizedBox();
           },
@@ -43,7 +43,7 @@ void main() {
       );
 
       expect(
-        origin.ref.read(SharedValue.provider('foo')),
+        zacContext.ref.read(SharedValue.provider('foo')),
         isSharedValue(isA<FlutterSizedBox>()),
       );
     });
@@ -87,14 +87,14 @@ void main() {
     });
 
     testWidgets('can be consumed and then transformed #3', (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
       await testWithinMaterialApp(
         tester,
         SharedValueProvider(
           family: 'foo',
           value: const ['foo', 'oof'],
           builder: (ori) => LeakOrigin(
-            cb: (o) => origin = o,
+            cb: (o) => zacContext = o,
           ).buildWidget(ori),
         ),
       );
@@ -107,7 +107,7 @@ void main() {
                   transformer: ZacTransformers([_ConcatStr('bar')])),
               const IterableTransformer.toList()
             ]),
-          ).getValue(origin),
+          ).getValue(zacContext),
           ['foobar', 'oofbar']);
     });
 
@@ -149,92 +149,97 @@ void main() {
 
     group('getFilled()', () {
       testWidgets('return the provided value', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: 10,
             family: 'foo',
             child: LeakOrigin(
-              cb: (o) => origin = o,
+              cb: (o) => zacContext = o,
             ),
           ),
         );
 
         expect(
-            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, 'foo'),
             10);
       });
 
       testWidgets('also accepts null as provided value', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
             child: LeakOrigin(
-              cb: (o) => origin = o,
+              cb: (o) => zacContext = o,
             ),
           ),
         );
 
         expect(
-            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, 'foo'),
             isNull);
       });
 
       testWidgets('throws if empty', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           LeakOrigin(
-            cb: (o) => origin = o,
+            cb: (o) => zacContext = o,
           ),
         );
 
         expect(
             () => SharedValue.get(
-                const SharedValueConsumeType.read(), origin, 'foo'),
+                const SharedValueConsumeType.read(), zacContext, 'foo'),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
     });
 
     group('update()', () {
       testWidgets('throws if empty', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           LeakOrigin(
-            cb: (o) => origin = o,
+            cb: (o) => zacContext = o,
           ),
         );
 
-        expect(() => SharedValue.update(origin, 'foo', (current) => 10),
+        expect(() => SharedValue.update(zacContext, 'foo', (current) => 10),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
 
       testWidgets('existing value', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
             child: LeakOrigin(
-              cb: (o) => origin = o,
+              cb: (o) => zacContext = o,
             ),
           ),
         );
 
-        SharedValue.update(origin, 'foo', (current) => 10);
+        SharedValue.update(zacContext, 'foo', (current) => 10);
         expect(
-            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, 'foo'),
             10);
 
-        SharedValue.update(origin, 'foo', (current) => (current as int) + 10);
+        SharedValue.update(
+            zacContext, 'foo', (current) => (current as int) + 10);
         expect(
-            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, 'foo'),
             20);
       });
 
@@ -394,8 +399,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(
-      ZacTransformValue transformValue, ZacOrigin origin, ContextBag? extra) {
+  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
+      ContextBag? extra) {
     return (transformValue.value as String) + str;
   }
 }

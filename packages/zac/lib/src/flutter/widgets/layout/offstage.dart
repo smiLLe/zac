@@ -26,11 +26,11 @@ class FlutterOffstage with _$FlutterOffstage implements FlutterWidget {
   }) = _FlutterOffstage;
 
   @override
-  Offstage buildWidget(ZacOriginWidgetTree origin) {
+  Offstage buildWidget(ZacContext zacContext) {
     return Offstage(
-      key: key?.buildKey(origin),
-      offstage: offstage?.getValue(origin) ?? true,
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      offstage: offstage?.getValue(zacContext) ?? true,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

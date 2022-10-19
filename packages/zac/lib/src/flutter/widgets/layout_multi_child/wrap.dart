@@ -37,21 +37,21 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   }) = _FlutterWrap;
 
   @override
-  Wrap buildWidget(ZacOriginWidgetTree origin) {
+  Wrap buildWidget(ZacContext zacContext) {
     return Wrap(
-      key: key?.buildKey(origin),
-      direction: direction?.build(origin) ?? Axis.horizontal,
-      alignment: alignment?.build(origin) ?? WrapAlignment.start,
-      spacing: spacing?.getValue(origin) ?? 0.0,
-      runAlignment: runAlignment?.build(origin) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.getValue(origin) ?? 0.0,
+      key: key?.buildKey(zacContext),
+      direction: direction?.build(zacContext) ?? Axis.horizontal,
+      alignment: alignment?.build(zacContext) ?? WrapAlignment.start,
+      spacing: spacing?.getValue(zacContext) ?? 0.0,
+      runAlignment: runAlignment?.build(zacContext) ?? WrapAlignment.start,
+      runSpacing: runSpacing?.getValue(zacContext) ?? 0.0,
       crossAxisAlignment:
-          crossAxisAlignment?.build(origin) ?? WrapCrossAlignment.start,
-      textDirection: textDirection?.build(origin),
+          crossAxisAlignment?.build(zacContext) ?? WrapCrossAlignment.start,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.build(origin) ?? VerticalDirection.down,
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
-      children: children?.getValue(origin) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      children: children?.getValue(zacContext) ?? const <Widget>[],
     );
   }
 }

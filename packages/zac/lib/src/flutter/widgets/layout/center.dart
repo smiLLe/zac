@@ -27,12 +27,12 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   }) = _FlutterCenter;
 
   @override
-  Center buildWidget(ZacOriginWidgetTree origin) {
+  Center buildWidget(ZacContext zacContext) {
     return Center(
-      key: key?.buildKey(origin),
-      widthFactor: widthFactor?.getValue(origin),
-      heightFactor: heightFactor?.getValue(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      widthFactor: widthFactor?.getValue(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

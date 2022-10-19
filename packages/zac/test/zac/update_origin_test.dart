@@ -23,37 +23,37 @@ void main() {
     });
 
     testWidgets('can be updated in tree', (tester) async {
-      late ZacOriginWidgetTree origin1;
-      late ZacOriginWidgetTree origin2;
+      late ZacContext zacContext1;
+      late ZacContext zacContext2;
       await testZacWidget(
         tester,
         ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
-              origin1 = o;
+              zacContext1 = o;
             },
             child: LeakOrigin(
               cb: (o) {
-                origin2 = o;
+                zacContext2 = o;
               },
             ),
           ),
         ),
       );
 
-      expect(origin1, equals(origin2));
+      expect(zacContext1, equals(zacContext2));
 
       await testZacWidget(
         tester,
         ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
-              origin1 = o;
+              zacContext1 = o;
             },
             child: ZacUpdateOriginBuilder(
               child: LeakOrigin(
                 cb: (o) {
-                  origin2 = o;
+                  zacContext2 = o;
                 },
               ),
             ),
@@ -61,7 +61,7 @@ void main() {
         ),
       );
 
-      expect(origin1, isNot(equals(origin2)));
+      expect(zacContext1, isNot(equals(zacContext2)));
     });
     testWidgets('Unmount Callback', (tester) async {
       final cb1 = MockUnmountCb();
@@ -69,20 +69,20 @@ void main() {
       final cb3 = MockUnmountCb();
       final cb4 = MockUnmountCb();
 
-      late ZacOriginWidgetTree origin1;
-      late ZacOriginWidgetTree origin2;
+      late ZacContext zacContext1;
+      late ZacContext zacContext2;
 
       await testZacWidget(
         tester,
         ZacUpdateOriginBuilder(
           child: LeakOrigin(
             cb: (o) {
-              origin1 = o;
+              zacContext1 = o;
             },
             child: ZacUpdateOriginBuilder(
               child: LeakOrigin(
                 cb: (o) {
-                  origin2 = o;
+                  zacContext2 = o;
                 },
                 child: FlutterSizedBox(),
               ),
@@ -90,11 +90,11 @@ void main() {
           ),
         ),
       );
-      origin1.lifetime.onUnmount(cb1);
-      origin1.lifetime.onUnmount(cb2);
+      zacContext1.onUnmount(cb1);
+      zacContext1.onUnmount(cb2);
 
-      origin2.lifetime.onUnmount(cb3);
-      origin2.lifetime.onUnmount(cb4);
+      zacContext2.onUnmount(cb3);
+      zacContext2.onUnmount(cb4);
 
       await testZacWidget(
         tester,

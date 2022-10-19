@@ -26,10 +26,10 @@ class ZacUpdateOriginBuilder
   }) = _ZacUpdateOriginBuilder;
 
   @override
-  ZacUpdateOrigin buildWidget(ZacOriginWidgetTree origin) {
+  ZacUpdateOrigin buildWidget(ZacContext zacContext) {
     return ZacUpdateOrigin(
-      builder: (origin) => child.buildWidget(origin),
-      key: key?.buildKey(origin),
+      builder: (zacContext) => child.buildWidget(zacContext),
+      key: key?.buildKey(zacContext),
     );
   }
 }
@@ -37,14 +37,14 @@ class ZacUpdateOriginBuilder
 class ZacUpdateOrigin extends HookConsumerWidget {
   const ZacUpdateOrigin({required this.builder, Key? key}) : super(key: key);
 
-  final Widget Function(ZacOriginWidgetTree origin) builder;
+  final Widget Function(ZacContext zacContext) builder;
 
   @override
   Widget build(
     BuildContext context,
     WidgetRef ref,
   ) {
-    final origin = useZacOrigin(ref);
-    return builder(origin);
+    final zacContext = useZacContext(ref);
+    return builder(zacContext);
   }
 }

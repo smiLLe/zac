@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LeakAction {
-  void Function(ZacOrigin, ContextBag) get cb =>
+  void Function(ZacContext, ContextBag) get cb =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -32,7 +32,7 @@ class _$_LeakAction extends _LeakAction {
   _$_LeakAction(this.cb) : super._();
 
   @override
-  final void Function(ZacOrigin, ContextBag) cb;
+  final void Function(ZacContext, ContextBag) cb;
 
   @override
   String toString() {
@@ -60,12 +60,12 @@ class _$_LeakAction extends _LeakAction {
 }
 
 abstract class _LeakAction extends LeakAction {
-  factory _LeakAction(final void Function(ZacOrigin, ContextBag) cb) =
+  factory _LeakAction(final void Function(ZacContext, ContextBag) cb) =
       _$_LeakAction;
   _LeakAction._() : super._();
 
   @override
-  void Function(ZacOrigin, ContextBag) get cb;
+  void Function(ZacContext, ContextBag) get cb;
 }
 
 /// @nodoc

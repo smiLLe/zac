@@ -34,7 +34,7 @@ void main() {
   });
 
   testWidgets('get NavigatorState', (tester) async {
-    late ZacOriginWidgetTree origin;
+    late ZacContext zacContext;
 
     await testWithConverters(
       tester: tester,
@@ -43,7 +43,7 @@ void main() {
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume('foo'),
-            home: LeakOrigin(cb: (o) => origin = o),
+            home: LeakOrigin(cb: (o) => zacContext = o),
           ),
         ),
       ),
@@ -51,7 +51,7 @@ void main() {
     );
 
     expect(
-        origin.ref.read(SharedValue.provider('foo')),
+        zacContext.ref.read(SharedValue.provider('foo')),
         isA<SharedValueType>().having(
             (p0) => p0,
             'data',

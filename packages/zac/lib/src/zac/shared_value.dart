@@ -31,57 +31,38 @@ See "$SharedValueProviderBuilder" for more info.
     name: 'Zac SharedValue',
   );
 
-  static SharedValueType get(
-      SharedValueConsumeType type, ZacOrigin origin, SharedValueFamily family) {
+  static SharedValueType get(SharedValueConsumeType type, ZacContext zacContext,
+      SharedValueFamily family) {
     return type.map<SharedValueType>(
       watch: (obj) {
         if (null == obj.select || true == obj.select?.transformers.isEmpty) {
-          return origin.map(
-              widgetTree: (origin) => origin.ref
-                  .watch<SharedValueType>(SharedValue.provider(family)),
-              statemachineAction: (origin) =>
-                  origin.ref.watch(SharedValue.provider(family)));
+          return zacContext.ref
+              .watch<SharedValueType>(SharedValue.provider(family));
         }
 
-        return origin.map(
-            widgetTree: (origin) => origin.ref.watch(
-                SharedValue.provider(family).select<SharedValueType>(
-                    (sharedValue) => obj.select!
-                        .transform(ZacTransformValue(sharedValue), origin))),
-            statemachineAction: (origin) => origin.ref.watch(
-                SharedValue.provider(family).select<SharedValueType>(
-                    (sharedValue) =>
-                        obj.select!.transform(ZacTransformValue(sharedValue), origin))));
+        return zacContext.ref.watch(SharedValue.provider(family)
+            .select<SharedValueType>((sharedValue) => obj.select!
+                .transform(ZacTransformValue(sharedValue), zacContext)));
       },
-      read: (_) => origin.map(
-          widgetTree: (origin) =>
-              origin.ref.read<SharedValueType>(SharedValue.provider(family)),
-          statemachineAction: (origin) =>
-              origin.ref.read(SharedValue.provider(family))),
+      read: (_) =>
+          zacContext.ref.read<SharedValueType>(SharedValue.provider(family)),
     );
   }
 
   static void update(
-    ZacOrigin origin,
+    ZacContext zacContext,
     SharedValueFamily family,
     SharedValueType Function(SharedValueType current) update,
   ) {
-    origin
-        .map(
-          widgetTree: (origin) =>
-              origin.ref.read(SharedValue.provider(family).notifier),
-          statemachineAction: (origin) =>
-              origin.ref.read(SharedValue.provider(family).notifier),
-        )
-        .update(update);
+    zacContext.ref.read(SharedValue.provider(family).notifier).update(update);
   }
 
-  static void listenAndExecuteActions(ZacOriginWidgetTree origin,
-      SharedValueFamily family, ZacActions actions) {
-    origin.ref.listen<SharedValueType>(SharedValue.provider(family),
+  static void listenAndExecuteActions(
+      ZacContext zacContext, SharedValueFamily family, ZacActions actions) {
+    zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
       actions.execute(
-        origin,
+        zacContext,
         prefillBag: (bag) => bag..setActionPayload(next),
       );
     });
@@ -114,8 +95,8 @@ class UpdateSharedValueInteractions
   }) = _SharedValueInteractionReplaceWith;
 
   @override
-  void execute(ZacOrigin origin, ContextBag bag) => SharedValue.update(
-        origin,
+  void execute(ZacContext zacContext, ContextBag bag) => SharedValue.update(
+        zacContext,
         family,
         (current) => map(
           (obj) {
@@ -123,7 +104,7 @@ class UpdateSharedValueInteractions
 
             return obj.transformer.transformWithBag(
               ZacTransformValue(current),
-              origin,
+              zacContext,
               bag,
             );
           },
@@ -136,8 +117,8 @@ class UpdateSharedValueInteractions
                 kBagSharedValueReplaceWith: obj.value,
                 kBagSharedValueCurrent: current,
               });
-              return obj.transformer!
-                  .transformWithBag(ZacTransformValue(obj.value), origin, bag);
+              return obj.transformer!.transformWithBag(
+                  ZacTransformValue(obj.value), zacContext, bag);
             }
           },
         ),
@@ -181,9 +162,9 @@ class SharedValueProviderBuilder
   }) = _SharedValueProviderBuilder;
 
   @override
-  SharedValueProvider buildWidget(ZacOriginWidgetTree origin) {
+  SharedValueProvider buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildKey(origin),
+      key: key?.buildKey(zacContext),
       transformer: transformer,
       value: value,
       family: family,
@@ -203,19 +184,19 @@ class SharedValueProvider extends HookConsumerWidget {
 
   final SharedValueType value;
   final SharedValueFamily family;
-  final Widget Function(ZacOriginWidgetTree origin) builder;
+  final Widget Function(ZacContext zacContext) builder;
   final ZacTransformers? transformer;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
+    final zacContext = useZacContext(ref);
     final provideValue = useMemoized(
       () {
         return null == transformer || true == transformer!.transformers.isEmpty
             ? value
             : transformer!.transform(
                 ZacTransformValue(value),
-                origin,
+                zacContext,
               );
       },
       [value, family, transformer],

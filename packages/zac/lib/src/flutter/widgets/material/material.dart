@@ -36,19 +36,19 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   }) = _FlutterMaterial;
 
   @override
-  Material buildWidget(ZacOriginWidgetTree origin) {
+  Material buildWidget(ZacContext zacContext) {
     return Material(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.getValue(origin) ?? true,
-      borderRadius: borderRadius?.build(origin),
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
-      color: color?.build(origin),
-      elevation: elevation?.getValue(origin) ?? 0,
-      shadowColor: shadowColor?.build(origin),
-      shape: shape?.build(origin),
-      textStyle: textStyle?.build(origin),
+      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      borderRadius: borderRadius?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      color: color?.build(zacContext),
+      elevation: elevation?.getValue(zacContext) ?? 0,
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      textStyle: textStyle?.build(zacContext),
       // type: type?.toFlutter(context),
     );
   }

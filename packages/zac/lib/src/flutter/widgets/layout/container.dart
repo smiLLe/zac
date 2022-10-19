@@ -31,15 +31,15 @@ class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   }) = _FlutterContainer;
 
   @override
-  Container buildWidget(ZacOriginWidgetTree origin) {
+  Container buildWidget(ZacContext zacContext) {
     return Container(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      color: color?.build(origin),
-      padding: padding?.build(origin),
-      margin: margin?.build(origin),
-      alignment: alignment?.build(origin),
-      decoration: decoration?.build(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      color: color?.build(zacContext),
+      padding: padding?.build(zacContext),
+      margin: margin?.build(zacContext),
+      alignment: alignment?.build(zacContext),
+      decoration: decoration?.build(zacContext),
     );
   }
 }

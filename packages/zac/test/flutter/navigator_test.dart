@@ -30,17 +30,17 @@ void main() {
     });
 
     testWidgets('provide and read', (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
       await testZacWidget(
         tester,
         ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
-          child: LeakOrigin(cb: (o) => origin = o),
+          child: LeakOrigin(cb: (o) => zacContext = o),
         ),
       );
 
       expect(
-          origin.ref.read(SharedValue.provider('foo')),
+          zacContext.ref.read(SharedValue.provider('foo')),
           isA<SharedValueType>()
               .having((p0) => p0, 'data', isA<GlobalKey<NavigatorState>>()));
     });
@@ -138,7 +138,7 @@ void main() {
       });
 
       testWidgets('provide arguments', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
 
         await testZacWidget(
           tester,
@@ -147,7 +147,7 @@ void main() {
               routeConfig: RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
                   child: LeakOrigin(cb: (o) {
-                    origin = o;
+                    zacContext = o;
                   }),
                 ),
               ),
@@ -175,7 +175,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            origin.ref.read(SharedValue.provider(
+            zacContext.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             22);
       });
@@ -228,7 +228,7 @@ void main() {
       });
 
       testWidgets('provide arguments', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
 
         await testZacWidget(
           tester,
@@ -260,7 +260,7 @@ void main() {
                         )
                       ]),
                       child: LeakOrigin(cb: (o) {
-                        origin = o;
+                        zacContext = o;
                       }),
                     ),
                   ),
@@ -268,7 +268,7 @@ void main() {
                 '/otherother': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: LeakOrigin(cb: (o) {
-                      origin = o;
+                      zacContext = o;
                     }),
                   ),
                 ),
@@ -279,7 +279,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            origin.ref.read(SharedValue.provider(
+            zacContext.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             1);
 
@@ -287,20 +287,20 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(
-            origin.ref.read(SharedValue.provider(
+            zacContext.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
             11);
       });
 
       testWidgets('providerName', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(tester, LeakOrigin(cb: ((o) {
-          origin = o;
+          zacContext = o;
         })));
 
         expect(
             RouteFactoryFromRoutes.providerName(
-              origin,
+              zacContext,
               RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
                   child: FlutterSizedBox(),
@@ -312,7 +312,7 @@ void main() {
 
         expect(
             RouteFactoryFromRoutes.providerName(
-              origin,
+              zacContext,
               RouteFactoryRouteConfig(
                 provideArgsName: ZacString('foo'),
                 route: FlutterMaterialPageRoute(
@@ -325,7 +325,7 @@ void main() {
 
         expect(
             RouteFactoryFromRoutes.providerName(
-                origin,
+                zacContext,
                 RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
                     child: FlutterSizedBox(),
@@ -336,7 +336,7 @@ void main() {
 
         expect(
             RouteFactoryFromRoutes.providerName(
-                origin,
+                zacContext,
                 RouteFactoryRouteConfig(
                   provideArgsName: ZacString('foo'),
                   route: FlutterMaterialPageRoute(

@@ -29,14 +29,14 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   }) = _FlutterDivider;
 
   @override
-  Divider buildWidget(ZacOriginWidgetTree origin) {
+  Divider buildWidget(ZacContext zacContext) {
     return Divider(
-      key: key?.buildKey(origin),
-      height: height?.getValue(origin),
-      thickness: thickness?.getValue(origin),
-      indent: indent?.getValue(origin),
-      endIndent: endIndent?.getValue(origin),
-      color: color?.build(origin),
+      key: key?.buildKey(zacContext),
+      height: height?.getValue(zacContext),
+      thickness: thickness?.getValue(zacContext),
+      indent: indent?.getValue(zacContext),
+      endIndent: endIndent?.getValue(zacContext),
+      color: color?.build(zacContext),
     );
   }
 }

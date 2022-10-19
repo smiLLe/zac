@@ -31,17 +31,17 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   }) = _FlutterSafeArea;
 
   @override
-  SafeArea buildWidget(ZacOriginWidgetTree origin) {
+  SafeArea buildWidget(ZacContext zacContext) {
     return SafeArea(
-      child: child.buildWidget(origin),
-      key: key?.buildKey(origin),
-      left: left?.getValue(origin) ?? true,
-      top: top?.getValue(origin) ?? true,
-      right: right?.getValue(origin) ?? true,
-      bottom: bottom?.getValue(origin) ?? true,
-      minimum: minimum?.build(origin) ?? EdgeInsets.zero,
+      child: child.buildWidget(zacContext),
+      key: key?.buildKey(zacContext),
+      left: left?.getValue(zacContext) ?? true,
+      top: top?.getValue(zacContext) ?? true,
+      right: right?.getValue(zacContext) ?? true,
+      bottom: bottom?.getValue(zacContext) ?? true,
+      minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.getValue(origin) ?? false,
+          maintainBottomViewPadding?.getValue(zacContext) ?? false,
     );
   }
 }

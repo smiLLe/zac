@@ -28,12 +28,12 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   }) = _FlutterFlexible;
 
   @override
-  Flexible buildWidget(ZacOriginWidgetTree origin) {
+  Flexible buildWidget(ZacContext zacContext) {
     return Flexible(
-      key: key?.buildKey(origin),
-      child: child.buildWidget(origin),
-      flex: flex?.getValue(origin) ?? 1,
-      fit: fit?.build(origin) ?? FlexFit.loose,
+      key: key?.buildKey(zacContext),
+      child: child.buildWidget(zacContext),
+      flex: flex?.getValue(zacContext) ?? 1,
+      fit: fit?.build(zacContext) ?? FlexFit.loose,
     );
   }
 }

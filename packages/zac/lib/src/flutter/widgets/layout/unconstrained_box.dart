@@ -32,14 +32,14 @@ class FlutterUnconstrainedBox
   }) = _FlutterUnconstrainedBox;
 
   @override
-  UnconstrainedBox buildWidget(ZacOriginWidgetTree origin) {
+  UnconstrainedBox buildWidget(ZacContext zacContext) {
     return UnconstrainedBox(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      textDirection: textDirection?.build(origin),
-      alignment: alignment?.build(origin) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.build(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(zacContext),
     );
   }
 }

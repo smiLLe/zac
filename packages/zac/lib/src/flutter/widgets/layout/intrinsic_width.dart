@@ -26,10 +26,10 @@ class FlutterIntrinsicWidth
   }) = _FlutterIntrinsicWidth;
 
   @override
-  IntrinsicWidth buildWidget(ZacOriginWidgetTree origin) {
+  IntrinsicWidth buildWidget(ZacContext zacContext) {
     return IntrinsicWidth(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

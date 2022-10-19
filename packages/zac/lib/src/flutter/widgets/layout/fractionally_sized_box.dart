@@ -31,13 +31,13 @@ class FlutterFractionallySizedBox
   }) = _FlutterFractionallySizedBox;
 
   @override
-  FractionallySizedBox buildWidget(ZacOriginWidgetTree origin) {
+  FractionallySizedBox buildWidget(ZacContext zacContext) {
     return FractionallySizedBox(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      heightFactor: heightFactor?.getValue(origin),
-      widthFactor: widthFactor?.getValue(origin),
-      alignment: alignment?.build(origin) ?? Alignment.center,
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
+      widthFactor: widthFactor?.getValue(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
     );
   }
 }

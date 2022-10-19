@@ -26,10 +26,10 @@ class FlutterSliverToBoxAdapter
   }) = _FlutterSliverToBoxAdapter;
 
   @override
-  SliverToBoxAdapter buildWidget(ZacOriginWidgetTree origin) {
+  SliverToBoxAdapter buildWidget(ZacContext zacContext) {
     return SliverToBoxAdapter(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

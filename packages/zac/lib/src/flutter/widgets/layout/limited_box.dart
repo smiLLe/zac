@@ -27,12 +27,12 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   }) = _FlutterLimitedBox;
 
   @override
-  LimitedBox buildWidget(ZacOriginWidgetTree origin) {
+  LimitedBox buildWidget(ZacContext zacContext) {
     return LimitedBox(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      maxHeight: maxHeight?.getValue(origin) ?? double.infinity,
-      maxWidth: maxWidth?.getValue(origin) ?? double.infinity,
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      maxHeight: maxHeight?.getValue(zacContext) ?? double.infinity,
+      maxWidth: maxWidth?.getValue(zacContext) ?? double.infinity,
     );
   }
 }

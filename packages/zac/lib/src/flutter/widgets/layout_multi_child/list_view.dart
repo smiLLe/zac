@@ -47,27 +47,28 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
   }) = _FlutterListView;
 
   @override
-  ListView buildWidget(ZacOriginWidgetTree origin) {
+  ListView buildWidget(ZacContext zacContext) {
     return ListView(
-      key: key?.buildKey(origin),
-      scrollDirection: scrollDirection?.build(origin) ?? Axis.vertical,
-      reverse: reverse?.getValue(origin) ?? false,
-      primary: primary?.getValue(origin),
-      shrinkWrap: shrinkWrap?.getValue(origin) ?? false,
-      padding: padding?.build(origin),
-      itemExtent: itemExtent?.getValue(origin),
-      prototypeItem: prototypeItem?.buildWidget(origin),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.getValue(origin) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(origin) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(origin) ?? true,
-      cacheExtent: cacheExtent?.getValue(origin),
-      children: children?.getValue(origin) ?? const <Widget>[],
-      semanticChildCount: semanticChildCount?.getValue(origin),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(origin) ??
+      key: key?.buildKey(zacContext),
+      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      reverse: reverse?.getValue(zacContext) ?? false,
+      primary: primary?.getValue(zacContext),
+      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      padding: padding?.build(zacContext),
+      itemExtent: itemExtent?.getValue(zacContext),
+      prototypeItem: prototypeItem?.buildWidget(zacContext),
+      addAutomaticKeepAlives:
+          addAutomaticKeepAlives?.getValue(zacContext) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
+      cacheExtent: cacheExtent?.getValue(zacContext),
+      children: children?.getValue(zacContext) ?? const <Widget>[],
+      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(origin),
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
-      physics: physics?.build(origin),
+      restorationId: restorationId?.getValue(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      physics: physics?.build(zacContext),
     );
   }
 }

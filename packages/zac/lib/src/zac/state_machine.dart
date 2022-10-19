@@ -109,13 +109,13 @@ class ZacStateMachineProviderBuilder
   }) = _ZacStateMachineProviderBuilder;
 
   @override
-  ZacStateMachineProvider buildWidget(ZacOriginWidgetTree origin) {
+  ZacStateMachineProvider buildWidget(ZacContext zacContext) {
     return ZacStateMachineProvider(
-      key: key?.buildKey(origin),
-      initialState: initialState.getValue(origin),
-      initialContext: initialContext?.getValue(origin),
+      key: key?.buildKey(zacContext),
+      initialState: initialState.getValue(zacContext),
+      initialContext: initialContext?.getValue(zacContext),
       states: states,
-      family: family.getValue(origin),
+      family: family.getValue(zacContext),
       builder: child.buildWidget,
     );
   }
@@ -132,7 +132,7 @@ class ZacStateMachineProvider extends StatelessWidget {
   });
 
   final String family;
-  final Widget Function(ZacOriginWidgetTree origin) builder;
+  final Widget Function(ZacContext zacContext) builder;
 
   final Map<String, ZacStateConfig> states;
   final String initialState;
@@ -217,14 +217,14 @@ class ZacStateMachineBuildStateBuilder
   }) = _ZacStateMachineBuildStateBuilder;
 
   @override
-  ZacStateMachineBuildState buildWidget(ZacOriginWidgetTree origin) {
+  ZacStateMachineBuildState buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.buildKey(origin),
-      family: family.getValue(origin),
+      key: key?.buildKey(zacContext),
+      family: family.getValue(zacContext),
       states: states,
-      unmappedStateWidget: (origin) =>
-          unmappedStateWidget?.buildWidget(origin) ??
-          (const FlutterSizedBox.shrink()).buildWidget(origin),
+      unmappedStateWidget: (zacContext) =>
+          unmappedStateWidget?.buildWidget(zacContext) ??
+          (const FlutterSizedBox.shrink()).buildWidget(zacContext),
     );
   }
 }
@@ -238,14 +238,14 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
 
   final String family;
   final List<String> states;
-  final Widget Function(ZacOriginWidgetTree origin) unmappedStateWidget;
+  final Widget Function(ZacContext zacContext) unmappedStateWidget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
-    final machine =
-        SharedValue.get(const SharedValueConsumeType.watch(), origin, family)
-            as ZacStateMachine;
+    final zacContext = useZacContext(ref);
+    final machine = SharedValue.get(
+            const SharedValueConsumeType.watch(), zacContext, family)
+        as ZacStateMachine;
 
     /// check if mapped states actually exist in the StateMachine
     assert(() {
@@ -267,8 +267,8 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.widget.buildWidget(origin);
+      return machine.widget.buildWidget(zacContext);
     }
-    return unmappedStateWidget(origin);
+    return unmappedStateWidget(zacContext);
   }
 }

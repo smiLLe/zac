@@ -26,11 +26,11 @@ class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   }) = _FlutterPadding;
 
   @override
-  Padding buildWidget(ZacOriginWidgetTree origin) {
+  Padding buildWidget(ZacContext zacContext) {
     return Padding(
-      key: key?.buildKey(origin),
-      padding: padding.build(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      padding: padding.build(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

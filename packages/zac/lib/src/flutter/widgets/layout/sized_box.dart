@@ -58,31 +58,31 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   }) = _FlutterWidgetSizedBoxSquare;
 
   @override
-  SizedBox buildWidget(ZacOriginWidgetTree origin) {
+  SizedBox buildWidget(ZacContext zacContext) {
     return map(
       (value) => SizedBox(
-        key: value.key?.buildKey(origin),
-        width: value.width?.getValue(origin),
-        height: value.height?.getValue(origin),
-        child: value.child?.buildWidget(origin),
+        key: value.key?.buildKey(zacContext),
+        width: value.width?.getValue(zacContext),
+        height: value.height?.getValue(zacContext),
+        child: value.child?.buildWidget(zacContext),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.buildKey(origin),
-        child: value.child?.buildWidget(origin),
+        key: value.key?.buildKey(zacContext),
+        child: value.child?.buildWidget(zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.buildKey(origin),
-        child: value.child?.buildWidget(origin),
-        size: value.size?.build(origin),
+        key: value.key?.buildKey(zacContext),
+        child: value.child?.buildWidget(zacContext),
+        size: value.size?.build(zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.buildKey(origin),
-        child: value.child?.buildWidget(origin),
+        key: value.key?.buildKey(zacContext),
+        child: value.child?.buildWidget(zacContext),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.buildKey(origin),
-        child: value.child?.buildWidget(origin),
-        dimension: value.dimension?.getValue(origin),
+        key: value.key?.buildKey(zacContext),
+        child: value.child?.buildWidget(zacContext),
+        dimension: value.dimension?.getValue(zacContext),
       ),
     );
   }

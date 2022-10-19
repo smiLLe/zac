@@ -51,28 +51,28 @@ class FlutterSelectableText
   }) = _FlutterSelectableText;
 
   @override
-  SelectableText buildWidget(ZacOriginWidgetTree origin) {
+  SelectableText buildWidget(ZacContext zacContext) {
     return SelectableText(
       data,
-      key: key?.buildKey(origin),
-      style: style?.build(origin),
-      strutStyle: strutStyle?.build(origin),
-      textAlign: textAlign?.build(origin),
-      textDirection: textDirection?.build(origin),
-      textScaleFactor: textScaleFactor?.getValue(origin),
-      showCursor: showCursor?.getValue(origin) ?? false,
-      autofocus: autofocus?.getValue(origin) ?? false,
-      minLines: minLines?.getValue(origin),
-      maxLines: maxLines?.getValue(origin),
-      cursorWidth: cursorWidth?.getValue(origin) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(origin),
-      cursorRadius: cursorRadius?.build(origin),
-      cursorColor: cursorColor?.build(origin),
+      key: key?.buildKey(zacContext),
+      style: style?.build(zacContext),
+      strutStyle: strutStyle?.build(zacContext),
+      textAlign: textAlign?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacContext),
+      showCursor: showCursor?.getValue(zacContext) ?? false,
+      autofocus: autofocus?.getValue(zacContext) ?? false,
+      minLines: minLines?.getValue(zacContext),
+      maxLines: maxLines?.getValue(zacContext),
+      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.getValue(zacContext),
+      cursorRadius: cursorRadius?.build(zacContext),
+      cursorColor: cursorColor?.build(zacContext),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(origin) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(origin),
-      textHeightBehavior: textHeightBehavior?.build(origin),
-      textWidthBasis: textWidthBasis?.build(origin),
+          enableInteractiveSelection?.getValue(zacContext) ?? true,
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textHeightBehavior: textHeightBehavior?.build(zacContext),
+      textWidthBasis: textWidthBasis?.build(zacContext),
     );
   }
 }

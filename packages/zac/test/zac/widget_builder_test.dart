@@ -146,7 +146,7 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
 
       await tester.runAsync(() async {
         await testZacWidget(
@@ -156,7 +156,7 @@ void main() {
               <String, dynamic>{},
             ),
             errorChild: LeakOrigin(
-              cb: (o) => origin = o,
+              cb: (o) => zacContext = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -169,7 +169,8 @@ void main() {
 
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
-      expect(ZacObject.consume('ZacWidget.error').getValue(origin), isNotNull);
+      expect(
+          ZacObject.consume('ZacWidget.error').getValue(zacContext), isNotNull);
     });
   });
 
@@ -213,7 +214,7 @@ void main() {
 
     testWidgets('allow custom error widget with access to the error',
         (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
 
       await tester.runAsync(() async {
         await testZacWidget(
@@ -221,7 +222,7 @@ void main() {
           ZacWidgetBuilder.isolateString(
             data: ZacString('{'),
             errorChild: LeakOrigin(
-              cb: (o) => origin = o,
+              cb: (o) => zacContext = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
               ),
@@ -234,7 +235,8 @@ void main() {
 
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
-      expect(ZacObject.consume('ZacWidget.error').getValue(origin), isNotNull);
+      expect(
+          ZacObject.consume('ZacWidget.error').getValue(zacContext), isNotNull);
     });
   });
 }

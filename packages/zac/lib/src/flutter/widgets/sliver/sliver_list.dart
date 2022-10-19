@@ -24,10 +24,10 @@ class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   }) = _FlutterSliverList;
 
   @override
-  SliverList buildWidget(ZacOriginWidgetTree origin) {
+  SliverList buildWidget(ZacContext zacContext) {
     return SliverList(
-      key: key?.buildKey(origin),
-      delegate: delegate.build(origin),
+      key: key?.buildKey(zacContext),
+      delegate: delegate.build(zacContext),
     );
   }
 }

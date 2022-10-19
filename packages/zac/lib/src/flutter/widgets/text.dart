@@ -38,22 +38,22 @@ class FlutterText with _$FlutterText implements FlutterWidget {
   }) = _FlutterText;
 
   @override
-  Text buildWidget(ZacOriginWidgetTree origin) {
+  Text buildWidget(ZacContext zacContext) {
     return Text(
-      data.getValue(origin),
-      key: key?.buildKey(origin),
-      style: style?.build(origin),
-      strutStyle: strutStyle?.build(origin),
-      textAlign: textAlign?.build(origin),
-      textDirection: textDirection?.build(origin),
-      locale: locale?.build(origin),
-      softWrap: softWrap?.getValue(origin),
-      overflow: overflow?.build(origin),
-      textScaleFactor: textScaleFactor?.getValue(origin),
-      maxLines: maxLines?.getValue(origin),
-      semanticsLabel: semanticsLabel?.getValue(origin),
-      textWidthBasis: textWidthBasis?.build(origin),
-      textHeightBehavior: textHeightBehavior?.build(origin),
+      data.getValue(zacContext),
+      key: key?.buildKey(zacContext),
+      style: style?.build(zacContext),
+      strutStyle: strutStyle?.build(zacContext),
+      textAlign: textAlign?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      locale: locale?.build(zacContext),
+      softWrap: softWrap?.getValue(zacContext),
+      overflow: overflow?.build(zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacContext),
+      maxLines: maxLines?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textWidthBasis: textWidthBasis?.build(zacContext),
+      textHeightBehavior: textHeightBehavior?.build(zacContext),
     );
   }
 }

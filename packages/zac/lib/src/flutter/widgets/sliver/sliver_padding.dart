@@ -28,11 +28,11 @@ class FlutterSliverPadding
   }) = _FlutterSliverPadding;
 
   @override
-  SliverPadding buildWidget(ZacOriginWidgetTree origin) {
+  SliverPadding buildWidget(ZacContext zacContext) {
     return SliverPadding(
-      key: key?.buildKey(origin),
-      sliver: sliver?.buildWidget(origin),
-      padding: padding.build(origin),
+      key: key?.buildKey(zacContext),
+      sliver: sliver?.buildWidget(zacContext),
+      padding: padding.build(zacContext),
     );
   }
 }

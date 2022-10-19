@@ -26,11 +26,11 @@ class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   }) = _FlutterExpanded;
 
   @override
-  Expanded buildWidget(ZacOriginWidgetTree origin) {
+  Expanded buildWidget(ZacContext zacContext) {
     return Expanded(
-      key: key?.buildKey(origin),
-      child: child.buildWidget(origin),
-      flex: flex?.getValue(origin) ?? 1,
+      key: key?.buildKey(zacContext),
+      child: child.buildWidget(zacContext),
+      flex: flex?.getValue(zacContext) ?? 1,
     );
   }
 }

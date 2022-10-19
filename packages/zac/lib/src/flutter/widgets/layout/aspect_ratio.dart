@@ -26,11 +26,11 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   }) = _FlutterAspectRatio;
 
   @override
-  AspectRatio buildWidget(ZacOriginWidgetTree origin) {
+  AspectRatio buildWidget(ZacContext zacContext) {
     return AspectRatio(
-      aspectRatio: aspectRatio.getValue(origin),
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
+      aspectRatio: aspectRatio.getValue(zacContext),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

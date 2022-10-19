@@ -24,10 +24,10 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   }) = _FlutterSpacer;
 
   @override
-  Spacer buildWidget(ZacOriginWidgetTree origin) {
+  Spacer buildWidget(ZacContext zacContext) {
     return Spacer(
-      key: key?.buildKey(origin),
-      flex: flex?.getValue(origin) ?? 1,
+      key: key?.buildKey(zacContext),
+      flex: flex?.getValue(zacContext) ?? 1,
     );
   }
 }

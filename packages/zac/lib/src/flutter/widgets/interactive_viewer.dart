@@ -41,24 +41,24 @@ class FlutterInteractiveViewer
   }) = _FlutterInteractiveViewer;
 
   @override
-  InteractiveViewer buildWidget(ZacOriginWidgetTree origin) {
+  InteractiveViewer buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
-      key: key?.buildKey(origin),
-      child: child.buildWidget(origin),
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.getValue(origin) ?? false,
-      boundaryMargin: boundaryMargin?.build(origin) ?? EdgeInsets.zero,
-      constrained: constrained?.getValue(origin) ?? true,
-      maxScale: maxScale?.getValue(origin) ?? 2.5,
-      minScale: minScale?.getValue(origin) ?? 0.8,
+      key: key?.buildKey(zacContext),
+      child: child.buildWidget(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
+      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.getValue(zacContext) ?? true,
+      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
+      minScale: minScale?.getValue(zacContext) ?? 0.8,
       onInteractionEnd:
-          onInteractionEnd?.createCbParam1<ScaleEndDetails>(origin),
+          onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart:
-          onInteractionStart?.createCbParam1<ScaleStartDetails>(origin),
+          onInteractionStart?.createCbParam1<ScaleStartDetails>(zacContext),
       onInteractionUpdate:
-          onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(origin),
-      panEnabled: panEnabled?.getValue(origin) ?? true,
-      scaleEnabled: scaleEnabled?.getValue(origin) ?? true,
+          onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
+      panEnabled: panEnabled?.getValue(zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
       // transformationController: key?.toFlutter(context),
     );
   }

@@ -27,12 +27,13 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   }) = _FlutterOpacity;
 
   @override
-  Opacity buildWidget(ZacOriginWidgetTree origin) {
+  Opacity buildWidget(ZacContext zacContext) {
     return Opacity(
-      key: key?.buildKey(origin),
-      opacity: opacity.getValue(origin),
-      alwaysIncludeSemantics: alwaysIncludeSemantics?.getValue(origin) ?? false,
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      opacity: opacity.getValue(zacContext),
+      alwaysIncludeSemantics:
+          alwaysIncludeSemantics?.getValue(zacContext) ?? false,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

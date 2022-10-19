@@ -19,7 +19,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   }
 
   @override
-  InputBorder build(ZacOriginWidgetTree origin);
+  InputBorder build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -41,12 +41,12 @@ class FlutterOutlineInputBorder
   }) = _FlutterOutlineInputBorder;
 
   @override
-  OutlineInputBorder build(ZacOriginWidgetTree origin) {
+  OutlineInputBorder build(ZacContext zacContext) {
     return OutlineInputBorder(
-      borderSide: borderSide?.build(origin) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(origin) ??
+      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.getValue(origin) ?? 4.0,
+      gapPadding: gapPadding?.getValue(zacContext) ?? 4.0,
     );
   }
 }
@@ -69,10 +69,10 @@ class FlutterUnderlineInputBorder
   }) = _FlutterUnderlineInputBorder;
 
   @override
-  UnderlineInputBorder build(ZacOriginWidgetTree origin) {
+  UnderlineInputBorder build(ZacContext zacContext) {
     return UnderlineInputBorder(
-      borderSide: borderSide?.build(origin) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(origin) ??
+      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),
@@ -101,21 +101,20 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   @override
-  MaterialPageRoute<ZacActions?> build(ZacOriginWidgetTree origin,
-      {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
-          wrap}) {
+  MaterialPageRoute<ZacActions?> build(ZacContext zacContext,
+      {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap}) {
     return MaterialPageRoute<ZacActions?>(
       builder: (_) => ZacUpdateOrigin(
-        builder: (origin) {
+        builder: (zacContext) {
           if (null == wrap) {
-            return child.buildWidget(origin);
+            return child.buildWidget(zacContext);
           }
-          return wrap(origin, child);
+          return wrap(zacContext, child);
         },
       ),
-      maintainState: maintainState?.getValue(origin) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(origin) ?? false,
-      settings: settings?.build(origin),
+      maintainState: maintainState?.getValue(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
+      settings: settings?.build(zacContext),
     );
   }
 }

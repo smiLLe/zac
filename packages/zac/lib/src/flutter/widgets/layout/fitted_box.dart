@@ -28,13 +28,13 @@ class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   }) = _FlutterFittedBox;
 
   @override
-  FittedBox buildWidget(ZacOriginWidgetTree origin) {
+  FittedBox buildWidget(ZacContext zacContext) {
     return FittedBox(
-      key: key?.buildKey(origin),
-      fit: fit?.build(origin) ?? BoxFit.contain,
-      alignment: alignment?.build(origin) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.none,
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      fit: fit?.build(zacContext) ?? BoxFit.contain,
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

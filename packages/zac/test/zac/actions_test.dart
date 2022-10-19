@@ -140,7 +140,7 @@ void main() {
     });
 
     testWidgets('execute interactions', (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
       final cb = MockLeakBagCb();
 
       await testZacWidget(
@@ -153,7 +153,7 @@ void main() {
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
-              child: LeakOrigin(cb: (o) => origin = o),
+              child: LeakOrigin(cb: (o) => zacContext = o),
             ),
           ),
         ),
@@ -161,7 +161,7 @@ void main() {
 
       verifyZeroInteractions(cb);
 
-      SharedValue.update(origin, 'shared', (current) => 2);
+      SharedValue.update(zacContext, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
       verify(cb(argThat(containsPair('action.payload', 2)))).called(1);

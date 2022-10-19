@@ -28,12 +28,12 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   }) = _FlutterDecoratedBox;
 
   @override
-  DecoratedBox buildWidget(ZacOriginWidgetTree origin) {
+  DecoratedBox buildWidget(ZacContext zacContext) {
     return DecoratedBox(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      decoration: decoration.build(origin),
-      position: position?.build(origin) ?? DecorationPosition.background,
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      decoration: decoration.build(zacContext),
+      position: position?.build(zacContext) ?? DecorationPosition.background,
     );
   }
 }

@@ -35,14 +35,14 @@ class FlutterScrollPhysics with _$FlutterScrollPhysics {
           {FlutterScrollPhysics? parent}) =
       _FlutterScrollPhysicsClampingScrollPhysics;
 
-  ScrollPhysics build(ZacOriginWidgetTree origin) {
+  ScrollPhysics build(ZacContext zacContext) {
     return map(
       alwaysScrollable: (value) =>
-          AlwaysScrollableScrollPhysics(parent: parent?.build(origin)),
+          AlwaysScrollableScrollPhysics(parent: parent?.build(zacContext)),
       bouncingScroll: (value) =>
-          BouncingScrollPhysics(parent: parent?.build(origin)),
+          BouncingScrollPhysics(parent: parent?.build(zacContext)),
       clampingScrollPhysics: (value) =>
-          ClampingScrollPhysics(parent: parent?.build(origin)),
+          ClampingScrollPhysics(parent: parent?.build(zacContext)),
     );
   }
 }

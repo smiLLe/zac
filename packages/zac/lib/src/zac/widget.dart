@@ -57,25 +57,25 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   }) = _ZacWidgetBuilderIsolateString;
 
   @override
-  Widget buildWidget(ZacOriginWidgetTree origin) {
+  Widget buildWidget(ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
         widget: obj.data,
-        key: obj.key?.buildKey(origin),
+        key: obj.key?.buildKey(zacContext),
       ),
       map: (obj) => ZacWidgetFromMa(
         zacMap: obj.data,
-        key: obj.key?.buildKey(origin),
+        key: obj.key?.buildKey(zacContext),
       ),
       isolate: (obj) => ZacWidgetFromMapInIsolate(
         zacMap: obj.data,
-        key: obj.key?.buildKey(origin),
+        key: obj.key?.buildKey(zacContext),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
       isolateString: (obj) => ZacWidgetFromMapInIsolateFromString(
         zacString: obj.data,
-        key: obj.key?.buildKey(origin),
+        key: obj.key?.buildKey(zacContext),
         errorChild: obj.errorChild,
         debugRethrowError: obj.debugRethrowError ?? true,
       ),
@@ -92,8 +92,8 @@ class ZacWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
-    return widget.buildWidget(origin);
+    final zacContext = useZacContext(ref);
+    return widget.buildWidget(zacContext);
   }
 }
 
@@ -104,8 +104,8 @@ class ZacWidgetFromMa extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
-    final map = zacMap.getValue(origin);
+    final zacContext = useZacContext(ref);
+    final map = zacMap.getValue(zacContext);
     final zacWidget = useMemoized(
         () => ConverterHelper.convertToType<FlutterWidget>(map), [map]);
     return ZacWidget(widget: zacWidget);
@@ -135,10 +135,10 @@ class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
+    final zacContext = useZacContext(ref);
     final loadingState =
         useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
-    final data = zacString.getValue(origin);
+    final data = zacString.getValue(zacContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -196,10 +196,10 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
+    final zacContext = useZacContext(ref);
     final loadingState =
         useState<AsyncValue<FlutterWidget>>(const AsyncValue.loading());
-    final map = zacMap.getValue(origin);
+    final map = zacMap.getValue(zacContext);
     useEffect(() {
       loadingState.value = const AsyncValue.loading();
       var mounted = true;
@@ -224,9 +224,9 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
     }, [map, allConverters]);
 
     return ZacUpdateOrigin(
-      builder: (origin) {
+      builder: (zacContext) {
         return loadingState.value.map(
-          data: (obj) => obj.value.buildWidget(origin),
+          data: (obj) => obj.value.buildWidget(zacContext),
           error: (obj) => _ErrorProvide(
             error: obj.error,
             child: errorChild,
@@ -250,7 +250,7 @@ class _ErrorProvide extends StatelessWidget {
     return SharedValueProvider(
       family: ZacWidget.provideErrorFamily,
       value: error,
-      builder: (origin) {
+      builder: (zacContext) {
         Widget err = const SizedBox.shrink();
         assert(() {
           if (null == child) {
@@ -259,7 +259,7 @@ class _ErrorProvide extends StatelessWidget {
           return true;
         }(), '');
         if (null != child) {
-          err = child!.buildWidget(origin);
+          err = child!.buildWidget(zacContext);
         }
 
         return err;
@@ -273,9 +273,9 @@ class _DebugErrorBox extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final origin = useZacOrigin(ref);
-    final val = SharedValue.get(const SharedValueConsumeType.watch(), origin,
-        ZacWidget.provideErrorFamily);
+    final zacContext = useZacContext(ref);
+    final val = SharedValue.get(const SharedValueConsumeType.watch(),
+        zacContext, ZacWidget.provideErrorFamily);
 
     return Container(
       decoration: BoxDecoration(

@@ -43,7 +43,7 @@ class ZacTemplateExpressionsTransformer
 
   @override
   Object? transform(
-      ZacTransformValue transformValue, ZacOrigin origin, ContextBag bag) {
+      ZacTransformValue transformValue, ZacContext zacContext, ContextBag bag) {
     return map(
       (obj) {
         final template = Template(
@@ -63,7 +63,7 @@ class ZacTemplateExpressionsTransformer
         }
 
         final templateContext = obj.context?.map<String, Object?>(
-            (key, value) => MapEntry(key, value.getValue(origin)));
+            (key, value) => MapEntry(key, value.getValue(zacContext)));
         return template.process(context: <dynamic, dynamic>{
           'tValue': transformValue.value,
           if (bag.isNotEmpty) ...bag,

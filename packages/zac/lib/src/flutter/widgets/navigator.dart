@@ -17,9 +17,8 @@ abstract class FlutterRoute {
     return ConverterHelper.convertToType<FlutterRoute>(data);
   }
 
-  Route<ZacActions?> build(ZacOriginWidgetTree origin,
-      {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
-          wrap});
+  Route<ZacActions?> build(ZacContext zacContext,
+      {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap});
 }
 
 abstract class GetFlutterNavigatorState {
@@ -27,7 +26,7 @@ abstract class GetFlutterNavigatorState {
     return ConverterHelper.convertToType<GetFlutterNavigatorState>(data);
   }
 
-  NavigatorState getNavigatorState(ZacOriginWidgetTree origin);
+  NavigatorState getNavigatorState(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -48,10 +47,10 @@ class FlutterNavigatorState
   factory FlutterNavigatorState.root() = _ZacNavigatorStateRoot;
 
   @override
-  NavigatorState getNavigatorState(ZacOriginWidgetTree origin) {
+  NavigatorState getNavigatorState(ZacContext zacContext) {
     return map(
-      closest: (_) => Navigator.of(origin.context, rootNavigator: false),
-      root: (_) => Navigator.of(origin.context, rootNavigator: true),
+      closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
+      root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
     );
   }
 }
@@ -75,14 +74,14 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   }) = _FlutterNavigator;
 
   @override
-  Navigator buildWidget(ZacOriginWidgetTree origin) {
+  Navigator buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.buildKey(origin),
-        onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(origin),
-        onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(origin),
-        initialRoute: obj.initialRoute?.getValue(origin),
-        requestFocus: obj.requestFocus?.getValue(origin) ?? true,
+        key: obj.key?.buildKey(zacContext),
+        onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
+        onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
+        initialRoute: obj.initialRoute?.getValue(zacContext),
+        requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
       ),
     );
   }
@@ -145,94 +144,92 @@ class FlutterNavigatorActions
     ZacActions? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
-  NavigatorState? _getState(ZacOriginWidgetTree origin) {
+  NavigatorState? _getState(ZacContext zacContext) {
     return map(
-          push: (obj) => obj.navigatorState?.getNavigatorState(origin),
-          pushNamed: (obj) => obj.navigatorState?.getNavigatorState(origin),
-          pop: (obj) => obj.navigatorState?.getNavigatorState(origin),
-          maybePop: (obj) => obj.navigatorState?.getNavigatorState(origin),
+          push: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
+          pushNamed: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
+          pop: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
+          maybePop: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
           pushReplacement: (obj) =>
-              obj.navigatorState?.getNavigatorState(origin),
+              obj.navigatorState?.getNavigatorState(zacContext),
           pushReplacementNamed: (obj) =>
-              obj.navigatorState?.getNavigatorState(origin),
+              obj.navigatorState?.getNavigatorState(zacContext),
         ) ??
-        Navigator.maybeOf(origin.context);
+        Navigator.maybeOf(zacContext.context);
   }
 
   @override
-  void execute(ZacOrigin origin, ContextBag bag) {
-    assert(null != origin.mapOrNull(widgetTree: (obj) => obj));
-    origin as ZacOriginWidgetTree;
+  void execute(ZacContext zacContext, ContextBag bag) {
     map(
       push: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return null;
-        state.push(obj.route.build(origin)).then((value) {
+        state.push(obj.route.build(zacContext)).then((value) {
           if (value is ZacActions) {
             value.execute(
-              origin,
+              zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pushNamed: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.getValue(origin),
+          obj.routeName.getValue(zacContext),
           arguments: obj.arguments,
         )
             .then((value) {
           if (value is ZacActions) {
             value.execute(
-              origin,
+              zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pop: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return;
         state.pop(obj.actions);
       },
       maybePop: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return;
         state.maybePop(obj.actions);
       },
       pushReplacement: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.build(origin),
+          obj.route.build(zacContext),
           result: obj.result,
         )
             .then((value) {
           if (value is ZacActions) {
             value.execute(
-              origin,
+              zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
       },
       pushReplacementNamed: (obj) {
-        final state = _getState(origin);
+        final state = _getState(zacContext);
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.getValue(origin),
+          obj.routeName.getValue(zacContext),
           arguments: obj.arguments,
           result: obj.result,
         )
             .then((value) {
           if (value is ZacActions) {
             value.execute(
-              origin,
+              zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
@@ -247,7 +244,7 @@ abstract class FlutterRouteFactory {
     return ConverterHelper.convertToType<FlutterRouteFactory>(data);
   }
 
-  RouteFactory buildRouteFactory(ZacOriginWidgetTree origin);
+  RouteFactory buildRouteFactory(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -277,25 +274,24 @@ class FlutterPageRouteBuilder
   }) = _FlutterPageRouteBuilder;
 
   @override
-  PageRouteBuilder<ZacActions?> build(ZacOriginWidgetTree origin,
-      {Widget Function(ZacOriginWidgetTree origin, FlutterWidget zacWidget)?
-          wrap}) {
+  PageRouteBuilder<ZacActions?> build(ZacContext zacContext,
+      {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap}) {
     return PageRouteBuilder<ZacActions?>(
       pageBuilder: (_, __, ___) => ZacUpdateOrigin(
-        builder: (origin) {
+        builder: (zacContext) {
           if (null == wrap) {
-            return child.buildWidget(origin);
+            return child.buildWidget(zacContext);
           }
-          return wrap(origin, child);
+          return wrap(zacContext, child);
         },
       ),
-      settings: settings?.build(origin),
-      opaque: opaque?.getValue(origin) ?? true,
-      barrierDismissible: barrierDismissible?.getValue(origin) ?? false,
-      barrierColor: barrierColor?.build(origin),
-      barrierLabel: barrierLabel?.getValue(origin),
-      maintainState: maintainState?.getValue(origin) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(origin) ?? false,
+      settings: settings?.build(zacContext),
+      opaque: opaque?.getValue(zacContext) ?? true,
+      barrierDismissible: barrierDismissible?.getValue(zacContext) ?? false,
+      barrierColor: barrierColor?.build(zacContext),
+      barrierLabel: barrierLabel?.getValue(zacContext),
+      maintainState: maintainState?.getValue(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
     );
   }
 }
@@ -315,10 +311,10 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
     Object? arguments,
   }) = _FlutterRouteSettings;
 
-  RouteSettings build(ZacOriginWidgetTree origin) {
+  RouteSettings build(ZacContext zacContext) {
     return RouteSettings(
       arguments: arguments,
-      name: name?.getValue(origin),
+      name: name?.getValue(zacContext),
     );
   }
 }

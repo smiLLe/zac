@@ -11,7 +11,7 @@ abstract class FlutterKey {
     return ConverterHelper.convertToType<FlutterKey>(data);
   }
 
-  Key buildKey(ZacOriginWidgetTree origin);
+  Key buildKey(ZacContext zacContext);
 }
 
 abstract class FlutterLocalKey implements FlutterKey {
@@ -20,7 +20,7 @@ abstract class FlutterLocalKey implements FlutterKey {
   }
 
   @override
-  LocalKey buildKey(ZacOriginWidgetTree origin);
+  LocalKey buildKey(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -36,7 +36,7 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   factory FlutterValueKey(String value) = _FlutterValueKey;
 
   @override
-  ValueKey<String> buildKey(ZacOriginWidgetTree origin) {
+  ValueKey<String> buildKey(ZacContext zacContext) {
     return ValueKey<String>(value);
   }
 }
@@ -47,5 +47,5 @@ abstract class FlutterGlobalKeyNavigatorState implements FlutterKey {
   }
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacOriginWidgetTree origin);
+  GlobalKey<NavigatorState> buildKey(ZacContext zacContext);
 }

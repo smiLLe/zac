@@ -67,13 +67,13 @@ void main() {
   });
 
   testWidgets('Template.process', (tester) async {
-    late ZacOrigin origin;
+    late ZacContext zacContext;
     await tester.pumpWidget(
       UncontrolledProviderScope(
         container: ProviderContainer(),
         child: MaterialApp(
           home: ZacWidget(
-            widget: LeakOrigin(cb: (o) => origin = o),
+            widget: LeakOrigin(cb: (o) => zacContext = o),
           ),
         ),
       ),
@@ -161,21 +161,21 @@ class LeakOrigin implements FlutterWidget {
     this.child,
   });
 
-  final void Function(ZacOriginWidgetTree origin) cb;
+  final void Function(ZacContext zacContext) cb;
   final FlutterWidget? child;
 
   @override
-  Widget buildWidget(ZacOriginWidgetTree origin) {
-    cb(origin);
-    return child?.buildWidget(origin) ?? const SizedBox.shrink();
+  Widget buildWidget(ZacContext zacContext) {
+    cb(zacContext);
+    return child?.buildWidget(zacContext) ?? const SizedBox.shrink();
   }
 }
 
 class LeakAction implements ZacAction {
   LeakAction({required this.cb});
 
-  final void Function(ZacOrigin origin, ContextBag bag) cb;
+  final void Function(ZacContext zacContext, ContextBag bag) cb;
 
   @override
-  void execute(ZacOrigin origin, ContextBag bag) => cb(origin, bag);
+  void execute(ZacContext zacContext, ContextBag bag) => cb(origin, bag);
 }

@@ -30,12 +30,12 @@ class FlutterFractionalTranslation
   }) = _FlutterFractionalTranslation;
 
   @override
-  FractionalTranslation buildWidget(ZacOriginWidgetTree origin) {
+  FractionalTranslation buildWidget(ZacContext zacContext) {
     return FractionalTranslation(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      translation: translation.build(origin),
-      transformHitTests: transformHitTests?.getValue(origin) ?? true,
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      translation: translation.build(zacContext),
+      transformHitTests: transformHitTests?.getValue(zacContext) ?? true,
     );
   }
 }

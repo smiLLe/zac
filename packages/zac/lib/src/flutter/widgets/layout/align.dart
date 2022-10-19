@@ -30,14 +30,14 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   }) = _FlutterAlign;
 
   @override
-  Align buildWidget(ZacOriginWidgetTree origin) {
+  Align buildWidget(ZacContext zacContext) {
     return Align(
-      key: key?.buildKey(origin),
-      alignment: alignment?.build(origin) ?? Alignment.center,
-      widthFactor: widthFactor?.getValue(origin),
-      heightFactor: heightFactor?.getValue(origin),
-      // child: child?.buildWidget(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      widthFactor: widthFactor?.getValue(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
+      // child: child?.buildWidget(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

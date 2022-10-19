@@ -22,7 +22,7 @@ class FlutterBoxShape with _$FlutterBoxShape {
   @FreezedUnionValue('f:1:BoxShape.rectangle')
   factory FlutterBoxShape.rectangle() = _FlutterBoxShapeRectangle;
 
-  BoxShape build(ZacOriginWidgetTree origin) {
+  BoxShape build(ZacContext zacContext) {
     return map(
       circle: (_) => BoxShape.circle,
       rectangle: (_) => BoxShape.rectangle,
@@ -43,7 +43,7 @@ class FlutterAxis with _$FlutterAxis {
   @FreezedUnionValue('f:1:Axis.vertical')
   factory FlutterAxis.vertical() = _FlutterAxisVertical;
 
-  Axis build(ZacOriginWidgetTree origin) {
+  Axis build(ZacContext zacContext) {
     return map(
         horizontal: (_) => Axis.horizontal, vertical: (_) => Axis.vertical);
   }
@@ -62,7 +62,7 @@ class FlutterVerticalDirection with _$FlutterVerticalDirection {
   @FreezedUnionValue('f:1:VerticalDirection.down')
   factory FlutterVerticalDirection.down() = _FlutterVerticalDirectionDown;
 
-  VerticalDirection build(ZacOriginWidgetTree origin) {
+  VerticalDirection build(ZacContext zacContext) {
     return map(
         up: (_) => VerticalDirection.up, down: (_) => VerticalDirection.down);
   }
@@ -87,7 +87,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow {
   @FreezedUnionValue('f:1:TextOverflow.visible')
   factory FlutterTextOverflow.visible() = _FlutterTextOverflowVisible;
 
-  TextOverflow build(ZacOriginWidgetTree origin) {
+  TextOverflow build(ZacContext zacContext) {
     return map(
       clip: (_) => TextOverflow.clip,
       ellipsis: (_) => TextOverflow.ellipsis,
@@ -135,34 +135,34 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacString? package,
   }) = _FlutterStrutStyleFromTextStyle;
 
-  StrutStyle build(ZacOriginWidgetTree origin) {
+  StrutStyle build(ZacContext zacContext) {
     return map(
       (_) => StrutStyle(
-        fontFamily: fontFamily?.getValue(origin),
+        fontFamily: fontFamily?.getValue(zacContext),
         fontFamilyFallback: fontFamilyFallback,
-        fontSize: fontSize?.getValue(origin),
-        height: height?.getValue(origin),
-        leadingDistribution: leadingDistribution?.build(origin),
-        leading: leading?.getValue(origin),
-        fontWeight: fontWeight?.build(origin),
-        fontStyle: fontStyle?.build(origin),
-        forceStrutHeight: forceStrutHeight?.getValue(origin),
-        debugLabel: debugLabel?.getValue(origin),
-        package: package?.getValue(origin),
+        fontSize: fontSize?.getValue(zacContext),
+        height: height?.getValue(zacContext),
+        leadingDistribution: leadingDistribution?.build(zacContext),
+        leading: leading?.getValue(zacContext),
+        fontWeight: fontWeight?.build(zacContext),
+        fontStyle: fontStyle?.build(zacContext),
+        forceStrutHeight: forceStrutHeight?.getValue(zacContext),
+        debugLabel: debugLabel?.getValue(zacContext),
+        package: package?.getValue(zacContext),
       ),
       fromTextStyle: (value) => StrutStyle.fromTextStyle(
-        value.textStyle.build(origin),
-        fontFamily: fontFamily?.getValue(origin),
+        value.textStyle.build(zacContext),
+        fontFamily: fontFamily?.getValue(zacContext),
         fontFamilyFallback: fontFamilyFallback,
-        fontSize: fontSize?.getValue(origin),
-        height: height?.getValue(origin),
-        leadingDistribution: leadingDistribution?.build(origin),
-        leading: leading?.getValue(origin),
-        fontWeight: fontWeight?.build(origin),
-        fontStyle: fontStyle?.build(origin),
-        forceStrutHeight: forceStrutHeight?.getValue(origin),
-        debugLabel: debugLabel?.getValue(origin),
-        package: package?.getValue(origin),
+        fontSize: fontSize?.getValue(zacContext),
+        height: height?.getValue(zacContext),
+        leadingDistribution: leadingDistribution?.build(zacContext),
+        leading: leading?.getValue(zacContext),
+        fontWeight: fontWeight?.build(zacContext),
+        fontStyle: fontStyle?.build(zacContext),
+        forceStrutHeight: forceStrutHeight?.getValue(zacContext),
+        debugLabel: debugLabel?.getValue(zacContext),
+        package: package?.getValue(zacContext),
       ),
     );
   }
@@ -182,7 +182,7 @@ class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
   @FreezedUnionValue('f:1:TextWidthBasis.parent')
   factory FlutterTextWidthBasis.parent() = _FlutterTextWidthBasisParent;
 
-  TextWidthBasis build(ZacOriginWidgetTree origin) {
+  TextWidthBasis build(ZacContext zacContext) {
     return map(
         longestLine: (_) => TextWidthBasis.longestLine,
         parent: (_) => TextWidthBasis.parent);
@@ -217,7 +217,7 @@ class FlutterBoxFit with _$FlutterBoxFit {
   @FreezedUnionValue('f:1:BoxFit.scaleDown')
   factory FlutterBoxFit.scaleDown() = _FlutterBoxFitScaleDown;
 
-  BoxFit build(ZacOriginWidgetTree origin) {
+  BoxFit build(ZacContext zacContext) {
     return map(
       contain: (_) => BoxFit.contain,
       cover: (_) => BoxFit.cover,
@@ -249,7 +249,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat {
   @FreezedUnionValue('f:1:ImageRepeat.repeatY')
   factory FlutterImageRepeat.repeatY() = _FlutterImageRepeatRepeatY;
 
-  ImageRepeat build(ZacOriginWidgetTree origin) {
+  ImageRepeat build(ZacContext zacContext) {
     return map(
       noRepeat: (_) => ImageRepeat.noRepeat,
       repeat: (_) => ImageRepeat.repeat,
@@ -295,31 +295,31 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterTextOverflow? overflow,
   }) = _FlutterTextStyle;
 
-  TextStyle build(ZacOriginWidgetTree origin) {
+  TextStyle build(ZacContext zacContext) {
     return TextStyle(
-      inherit: inherit?.getValue(origin) ?? true,
-      color: color?.build(origin),
-      backgroundColor: backgroundColor?.build(origin),
-      fontSize: fontSize?.getValue(origin),
-      fontWeight: fontWeight?.build(origin),
-      fontStyle: fontStyle?.build(origin),
-      letterSpacing: letterSpacing?.getValue(origin),
-      wordSpacing: wordSpacing?.getValue(origin),
-      textBaseline: textBaseline?.build(origin),
-      height: height?.getValue(origin),
-      leadingDistribution: leadingDistribution?.build(origin),
-      locale: locale?.build(origin),
-      shadows: shadows?.map((e) => e.build(origin)).toList(),
-      fontFeatures: fontFeatures?.map((e) => e.build(origin)).toList(),
-      decoration: decoration?.build(origin),
-      decorationColor: decorationColor?.build(origin),
-      decorationStyle: decorationStyle?.build(origin),
-      decorationThickness: decorationThickness?.getValue(origin),
-      debugLabel: debugLabel?.getValue(origin),
-      fontFamily: fontFamily?.getValue(origin),
+      inherit: inherit?.getValue(zacContext) ?? true,
+      color: color?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      fontSize: fontSize?.getValue(zacContext),
+      fontWeight: fontWeight?.build(zacContext),
+      fontStyle: fontStyle?.build(zacContext),
+      letterSpacing: letterSpacing?.getValue(zacContext),
+      wordSpacing: wordSpacing?.getValue(zacContext),
+      textBaseline: textBaseline?.build(zacContext),
+      height: height?.getValue(zacContext),
+      leadingDistribution: leadingDistribution?.build(zacContext),
+      locale: locale?.build(zacContext),
+      shadows: shadows?.map((e) => e.build(zacContext)).toList(),
+      fontFeatures: fontFeatures?.map((e) => e.build(zacContext)).toList(),
+      decoration: decoration?.build(zacContext),
+      decorationColor: decorationColor?.build(zacContext),
+      decorationStyle: decorationStyle?.build(zacContext),
+      decorationThickness: decorationThickness?.getValue(zacContext),
+      debugLabel: debugLabel?.getValue(zacContext),
+      fontFamily: fontFamily?.getValue(zacContext),
       fontFamilyFallback: fontFamilyFallback,
-      package: package?.getValue(origin),
-      overflow: overflow?.build(origin),
+      package: package?.getValue(zacContext),
+      overflow: overflow?.build(zacContext),
     );
   }
 }
@@ -341,9 +341,9 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
   @FreezedUnionValue('f:1:TextAlignVertical.top')
   factory FlutterTextAlignVertical.top() = _FlutterTextAlignVerticaltop;
 
-  TextAlignVertical build(ZacOriginWidgetTree origin) {
+  TextAlignVertical build(ZacContext zacContext) {
     return map(
-      (value) => TextAlignVertical(y: value.y.getValue(origin)),
+      (value) => TextAlignVertical(y: value.y.getValue(zacContext)),
       bottom: (_) => TextAlignVertical.bottom,
       center: (_) => TextAlignVertical.center,
       top: (_) => TextAlignVertical.top,
@@ -370,13 +370,13 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements FlutterDartUiShadow {
   }) = _FlutterBoxShadow;
 
   @override
-  BoxShadow build(ZacOriginWidgetTree origin) {
+  BoxShadow build(ZacContext zacContext) {
     return BoxShadow(
-      color: color?.build(origin) ?? const Color(0xFF000000),
-      offset: offset?.build(origin) ?? Offset.zero,
-      blurRadius: blurRadius?.getValue(origin) ?? 0.0,
-      spreadRadius: spreadRadius?.getValue(origin) ?? 0.0,
-      blurStyle: blurStyle?.build(origin) ?? BlurStyle.normal,
+      color: color?.build(zacContext) ?? const Color(0xFF000000),
+      offset: offset?.build(zacContext) ?? Offset.zero,
+      blurRadius: blurRadius?.getValue(zacContext) ?? 0.0,
+      spreadRadius: spreadRadius?.getValue(zacContext) ?? 0.0,
+      blurStyle: blurStyle?.build(zacContext) ?? BlurStyle.normal,
     );
   }
 }
@@ -386,7 +386,7 @@ abstract class FlutterAlignmentGeometry {
     return ConverterHelper.convertToType<FlutterAlignmentGeometry>(data);
   }
 
-  AlignmentGeometry build(ZacOriginWidgetTree origin);
+  AlignmentGeometry build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -440,9 +440,10 @@ class FlutterAlignment
   factory FlutterAlignment.topRight() = _FlutterAlignmenttopRight;
 
   @override
-  Alignment build(ZacOriginWidgetTree origin) {
+  Alignment build(ZacContext zacContext) {
     return map(
-      (value) => Alignment(value.x.getValue(origin), value.y.getValue(origin)),
+      (value) =>
+          Alignment(value.x.getValue(zacContext), value.y.getValue(zacContext)),
       bottomCenter: (_) => Alignment.bottomCenter,
       bottomLeft: (_) => Alignment.bottomLeft,
       bottomRight: (_) => Alignment.bottomRight,
@@ -523,10 +524,10 @@ class FlutterAlignmentDirectional
       _FlutterAlignmentDirectionaltopEnd;
 
   @override
-  AlignmentDirectional build(ZacOriginWidgetTree origin) {
+  AlignmentDirectional build(ZacContext zacContext) {
     return map(
       (value) => AlignmentDirectional(
-          value.start.getValue(origin), value.y.getValue(origin)),
+          value.start.getValue(zacContext), value.y.getValue(zacContext)),
       bottomCenter: (_) => AlignmentDirectional.bottomCenter,
       bottomStart: (_) => AlignmentDirectional.bottomStart,
       bottomEnd: (_) => AlignmentDirectional.bottomEnd,
@@ -556,8 +557,8 @@ class FlutterFractionalOffset
       _FlutterFractionalOffset;
 
   @override
-  FractionalOffset build(ZacOriginWidgetTree origin) {
-    return FractionalOffset(dx.getValue(origin), dy.getValue(origin));
+  FractionalOffset build(ZacContext zacContext) {
+    return FractionalOffset(dx.getValue(zacContext), dy.getValue(zacContext));
   }
 }
 
@@ -566,7 +567,7 @@ abstract class FlutterShapeBorder {
     return ConverterHelper.convertToType<FlutterShapeBorder>(data);
   }
 
-  ShapeBorder build(ZacOriginWidgetTree origin);
+  ShapeBorder build(ZacContext zacContext);
 }
 
 abstract class FlutterBoxBorder implements FlutterShapeBorder {
@@ -575,7 +576,7 @@ abstract class FlutterBoxBorder implements FlutterShapeBorder {
   }
 
   @override
-  BoxBorder build(ZacOriginWidgetTree origin);
+  BoxBorder build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -598,12 +599,12 @@ class FlutterBorderDirectional
   }) = _FlutterBorderDirectional;
 
   @override
-  BorderDirectional build(ZacOriginWidgetTree origin) {
+  BorderDirectional build(ZacContext zacContext) {
     return BorderDirectional(
-      top: top?.build(origin) ?? BorderSide.none,
-      start: start?.build(origin) ?? BorderSide.none,
-      bottom: bottom?.build(origin) ?? BorderSide.none,
-      end: end?.build(origin) ?? BorderSide.none,
+      top: top?.build(zacContext) ?? BorderSide.none,
+      start: start?.build(zacContext) ?? BorderSide.none,
+      bottom: bottom?.build(zacContext) ?? BorderSide.none,
+      end: end?.build(zacContext) ?? BorderSide.none,
     );
   }
 }
@@ -634,18 +635,18 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   }) = _FlutterBorderAll;
 
   @override
-  Border build(ZacOriginWidgetTree origin) {
+  Border build(ZacContext zacContext) {
     return map(
       (value) => Border(
-        top: value.top?.build(origin) ?? BorderSide.none,
-        right: value.right?.build(origin) ?? BorderSide.none,
-        bottom: value.bottom?.build(origin) ?? BorderSide.none,
-        left: value.left?.build(origin) ?? BorderSide.none,
+        top: value.top?.build(zacContext) ?? BorderSide.none,
+        right: value.right?.build(zacContext) ?? BorderSide.none,
+        bottom: value.bottom?.build(zacContext) ?? BorderSide.none,
+        left: value.left?.build(zacContext) ?? BorderSide.none,
       ),
       all: (value) => Border.all(
-        color: value.color?.build(origin) ?? const Color(0xFF000000),
-        width: value.width?.getValue(origin) ?? 1.0,
-        style: value.style?.build(origin) ?? BorderStyle.solid,
+        color: value.color?.build(zacContext) ?? const Color(0xFF000000),
+        width: value.width?.getValue(zacContext) ?? 1.0,
+        style: value.style?.build(zacContext) ?? BorderStyle.solid,
       ),
     );
   }
@@ -664,7 +665,7 @@ class FlutterBorderStyle with _$FlutterBorderStyle {
   @FreezedUnionValue('f:1:BorderStyle.solid')
   factory FlutterBorderStyle.solid() = _FlutterBorderStyleSolid;
 
-  BorderStyle build(ZacOriginWidgetTree origin) {
+  BorderStyle build(ZacContext zacContext) {
     return map(
       none: (_) => BorderStyle.none,
       solid: (_) => BorderStyle.solid,
@@ -677,7 +678,7 @@ abstract class FlutterBorderRadiusGeometry {
     return ConverterHelper.convertToType<FlutterBorderRadiusGeometry>(data);
   }
 
-  BorderRadiusGeometry build(ZacOriginWidgetTree origin);
+  BorderRadiusGeometry build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -708,13 +709,14 @@ class FlutterBorderRadius
   }) = _FlutterBorderRadiusHorizontal;
 
   @override
-  BorderRadius build(ZacOriginWidgetTree origin) {
+  BorderRadius build(ZacContext zacContext) {
     return map(
-      all: (value) => BorderRadius.all(value.radius.build(origin)),
-      circular: (value) => BorderRadius.circular(value.radius.getValue(origin)),
+      all: (value) => BorderRadius.all(value.radius.build(zacContext)),
+      circular: (value) =>
+          BorderRadius.circular(value.radius.getValue(zacContext)),
       horizontal: (value) => BorderRadius.horizontal(
-        left: value.left?.build(origin) ?? Radius.zero,
-        right: value.right?.build(origin) ?? Radius.zero,
+        left: value.left?.build(zacContext) ?? Radius.zero,
+        right: value.right?.build(zacContext) ?? Radius.zero,
       ),
     );
   }
@@ -734,11 +736,11 @@ class FlutterBorderSide with _$FlutterBorderSide {
     FlutterBorderStyle? style,
   }) = _FlutterBorderSide;
 
-  BorderSide build(ZacOriginWidgetTree origin) {
+  BorderSide build(ZacContext zacContext) {
     return BorderSide(
-      color: color?.build(origin) ?? const Color(0xFF000000),
-      width: width?.getValue(origin) ?? 1.0,
-      style: style?.build(origin) ?? BorderStyle.solid,
+      color: color?.build(zacContext) ?? const Color(0xFF000000),
+      width: width?.getValue(zacContext) ?? 1.0,
+      style: style?.build(zacContext) ?? BorderStyle.solid,
     );
   }
 }
@@ -749,7 +751,7 @@ abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
   }
 
   @override
-  OutlinedBorder build(ZacOriginWidgetTree origin);
+  OutlinedBorder build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -767,8 +769,8 @@ class FlutterCircleBorder
   factory FlutterCircleBorder({FlutterBorderSide? side}) = _FlutterCircleBorder;
 
   @override
-  CircleBorder build(ZacOriginWidgetTree origin) {
-    return CircleBorder(side: side?.build(origin) ?? BorderSide.none);
+  CircleBorder build(ZacContext zacContext) {
+    return CircleBorder(side: side?.build(zacContext) ?? BorderSide.none);
   }
 }
 
@@ -790,10 +792,10 @@ class FlutterRoundedRectangleBorder
   }) = _FlutterRoundedRectangleBorder;
 
   @override
-  RoundedRectangleBorder build(ZacOriginWidgetTree origin) {
+  RoundedRectangleBorder build(ZacContext zacContext) {
     return RoundedRectangleBorder(
-      side: side?.build(origin) ?? BorderSide.none,
-      borderRadius: borderRadius?.build(origin) ?? BorderRadius.zero,
+      side: side?.build(zacContext) ?? BorderSide.none,
+      borderRadius: borderRadius?.build(zacContext) ?? BorderRadius.zero,
     );
   }
 }
@@ -803,7 +805,7 @@ abstract class FlutterDecoration {
     return ConverterHelper.convertToType<FlutterDecoration>(data);
   }
 
-  Decoration build(ZacOriginWidgetTree origin);
+  Decoration build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -828,14 +830,14 @@ class FlutterBoxDecoration
   }) = _FlutterBoxDecoration;
 
   @override
-  BoxDecoration build(ZacOriginWidgetTree origin) {
+  BoxDecoration build(ZacContext zacContext) {
     return BoxDecoration(
-        color: color?.build(origin),
-        border: border?.build(origin),
-        borderRadius: borderRadius?.build(origin),
-        boxShadow: boxShadow?.map((e) => e.build(origin)).toList(),
-        shape: shape?.build(origin) ?? BoxShape.rectangle,
-        backgroundBlendMode: backgroundBlendMode?.build(origin));
+        color: color?.build(zacContext),
+        border: border?.build(zacContext),
+        borderRadius: borderRadius?.build(zacContext),
+        boxShadow: boxShadow?.map((e) => e.build(zacContext)).toList(),
+        shape: shape?.build(zacContext) ?? BoxShape.rectangle,
+        backgroundBlendMode: backgroundBlendMode?.build(zacContext));
   }
 }
 
@@ -860,11 +862,11 @@ class FlutterShapeDecoration
   }) = _FlutterShapeDecoration;
 
   @override
-  ShapeDecoration build(ZacOriginWidgetTree origin) {
+  ShapeDecoration build(ZacContext zacContext) {
     return ShapeDecoration(
-      color: color?.build(origin),
-      shadows: shadows?.map((e) => e.build(origin)).toList(),
-      shape: shape.build(origin),
+      color: color?.build(zacContext),
+      shadows: shadows?.map((e) => e.build(zacContext)).toList(),
+      shape: shape.build(zacContext),
     );
   }
 }
@@ -874,7 +876,7 @@ abstract class FlutterEdgeInsetsGeometry {
     return ConverterHelper.convertToType<FlutterEdgeInsetsGeometry>(data);
   }
 
-  EdgeInsetsGeometry build(ZacOriginWidgetTree origin);
+  EdgeInsetsGeometry build(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
@@ -908,18 +910,18 @@ class FlutterEdgeInsets
   }) = _FlutterEdgeInsetsOnly;
 
   @override
-  EdgeInsets build(ZacOriginWidgetTree origin) {
+  EdgeInsets build(ZacContext zacContext) {
     return map(
-      all: (value) => EdgeInsets.all(value.value.getValue(origin)),
+      all: (value) => EdgeInsets.all(value.value.getValue(zacContext)),
       symmetric: (value) => EdgeInsets.symmetric(
-        vertical: value.vertical?.getValue(origin) ?? 0.0,
-        horizontal: value.horizontal?.getValue(origin) ?? 0.0,
+        vertical: value.vertical?.getValue(zacContext) ?? 0.0,
+        horizontal: value.horizontal?.getValue(zacContext) ?? 0.0,
       ),
       only: (value) => EdgeInsets.only(
-        left: value.left?.getValue(origin) ?? 0.0,
-        top: value.top?.getValue(origin) ?? 0.0,
-        right: value.right?.getValue(origin) ?? 0.0,
-        bottom: value.bottom?.getValue(origin) ?? 0.0,
+        left: value.left?.getValue(zacContext) ?? 0.0,
+        top: value.top?.getValue(zacContext) ?? 0.0,
+        right: value.right?.getValue(zacContext) ?? 0.0,
+        bottom: value.bottom?.getValue(zacContext) ?? 0.0,
       ),
     );
   }
@@ -951,14 +953,15 @@ class FlutterEdgeInsetsDirectional
   }) = _FlutterEdgeInsetsDirectionalOnly;
 
   @override
-  EdgeInsetsDirectional build(ZacOriginWidgetTree origin) {
+  EdgeInsetsDirectional build(ZacContext zacContext) {
     return map(
-      all: (value) => EdgeInsetsDirectional.all(value.value.getValue(origin)),
+      all: (value) =>
+          EdgeInsetsDirectional.all(value.value.getValue(zacContext)),
       only: (value) => EdgeInsetsDirectional.only(
-        start: value.start?.getValue(origin) ?? 0.0,
-        top: value.top?.getValue(origin) ?? 0.0,
-        end: value.end?.getValue(origin) ?? 0.0,
-        bottom: value.bottom?.getValue(origin) ?? 0.0,
+        start: value.start?.getValue(zacContext) ?? 0.0,
+        top: value.top?.getValue(zacContext) ?? 0.0,
+        end: value.end?.getValue(zacContext) ?? 0.0,
+        bottom: value.bottom?.getValue(zacContext) ?? 0.0,
       ),
     );
   }

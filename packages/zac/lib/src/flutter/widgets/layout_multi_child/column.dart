@@ -34,19 +34,19 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   }) = _FlutterColumn;
 
   @override
-  Column buildWidget(ZacOriginWidgetTree origin) {
+  Column buildWidget(ZacContext zacContext) {
     return Column(
-      key: key?.buildKey(origin),
+      key: key?.buildKey(zacContext),
       mainAxisAlignment:
-          mainAxisAlignment?.build(origin) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(origin) ?? MainAxisSize.max,
+          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.build(origin) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(origin),
+          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.build(origin) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(origin),
-      children: children?.getValue(origin) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(zacContext),
+      children: children?.getValue(zacContext) ?? const <Widget>[],
     );
   }
 }

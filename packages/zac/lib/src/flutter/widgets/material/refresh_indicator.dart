@@ -41,43 +41,33 @@ class FlutterRefreshIndicator
   }) = _FlutterRefreshIndicator;
 
   @override
-  RefreshIndicator buildWidget(ZacOriginWidgetTree origin) {
+  RefreshIndicator buildWidget(ZacContext zacContext) {
     return RefreshIndicator(
-      key: key?.buildKey(origin),
-      child: child.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      child: child.buildWidget(zacContext),
       onRefresh: () async {
         final completer = Completer<void>();
         final bag = ContextBag();
         bag.setActionPayload(completer);
-        origin.map(
-          widgetTree: (origin) {
-            origin.lifetime.onUnmount(() {
-              if (completer.isCompleted) return;
-              completer.completeError(const Object());
-            });
-          },
-          statemachineAction: (origin) {
-            origin.lifetime.onBecomeInactive(() {
-              if (completer.isCompleted) return;
-              completer.completeError(const Object());
-            });
-          },
-        );
+        zacContext.onUnmount(() {
+          if (completer.isCompleted) return;
+          completer.completeError(const Object());
+        });
         completer.future.whenComplete(() {
           bag.clear();
         });
 
-        onRefresh.executeWithBag(origin, bag);
+        onRefresh.executeWithBag(zacContext, bag);
         return completer.future;
       },
-      displacement: displacement?.getValue(origin) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(origin) ?? 0.0,
-      color: color?.build(origin),
-      backgroundColor: backgroundColor?.build(origin),
-      semanticsLabel: semanticsLabel?.getValue(origin),
-      semanticsValue: semanticsValue?.getValue(origin),
+      displacement: displacement?.getValue(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      color: color?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      semanticsValue: semanticsValue?.getValue(zacContext),
       triggerMode:
-          triggerMode?.build(origin) ?? RefreshIndicatorTriggerMode.onEdge,
+          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
     );
   }
 }
@@ -104,7 +94,7 @@ class FlutterRefreshIndicatorTriggerMode
   factory FlutterRefreshIndicatorTriggerMode.anywhere() =
       _FlutterRefreshIndicatorTriggerModeanywhere;
 
-  RefreshIndicatorTriggerMode build(ZacOriginWidgetTree origin) {
+  RefreshIndicatorTriggerMode build(ZacContext zacContext) {
     return map(
       onEdge: (_) => RefreshIndicatorTriggerMode.onEdge,
       anywhere: (_) => RefreshIndicatorTriggerMode.anywhere,

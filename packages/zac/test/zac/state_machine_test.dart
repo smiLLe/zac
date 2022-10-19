@@ -105,9 +105,9 @@ void main() {
           ),
         },
         child: LeakOrigin(
-          cb: (origin) {
+          cb: (zacContext) {
             curMachine = SharedValue.get(
-                const SharedValueConsumeType.watch(), origin, 'machine');
+                const SharedValueConsumeType.watch(), zacContext, 'machine');
           },
         ),
       ),
@@ -151,9 +151,9 @@ void main() {
           ),
         },
         child: LeakOrigin(
-          cb: (origin) {
+          cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), origin, 'machine')
+                    const SharedValueConsumeType.watch(), zacContext, 'machine')
                 as ZacStateMachine;
           },
         ),
@@ -202,9 +202,9 @@ void main() {
           ),
         },
         child: LeakOrigin(
-          cb: (origin) {
+          cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), origin, 'machine')
+                    const SharedValueConsumeType.watch(), zacContext, 'machine')
                 as ZacStateMachine;
           },
         ),
@@ -240,9 +240,9 @@ void main() {
           ),
         },
         child: LeakOrigin(
-          cb: (origin) {
+          cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), origin, 'machine')
+                    const SharedValueConsumeType.watch(), zacContext, 'machine')
                 as ZacStateMachine;
           },
         ),
@@ -288,9 +288,9 @@ void main() {
           ),
         },
         child: LeakOrigin(
-          cb: (origin) {
+          cb: (zacContext) {
             machine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), origin, 'machine')
+                    const SharedValueConsumeType.watch(), zacContext, 'machine')
                 as ZacStateMachine;
           },
           child: ZacStateMachineBuildStateBuilder(

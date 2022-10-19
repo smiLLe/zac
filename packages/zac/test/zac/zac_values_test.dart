@@ -15,7 +15,7 @@ Future<void> _commonConsume<TClass, TVal>({
   })
       createConsume,
 }) async {
-  late ZacOriginWidgetTree origin;
+  late ZacContext zacContext;
 
   await testZacWidget(
       tester,
@@ -27,11 +27,12 @@ Future<void> _commonConsume<TClass, TVal>({
         },
         transformer: ZacTransformers([ConvertTransformer()]),
         child: LeakOrigin(
-          cb: (o) => origin = o,
+          cb: (o) => zacContext = o,
         ),
       ));
 
-  expect((createConsume('foo') as ConsumeValue<TVal>).getSharedValue(origin),
+  expect(
+      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
       testVal);
 
   await testZacWidget(
@@ -40,11 +41,12 @@ Future<void> _commonConsume<TClass, TVal>({
         family: 'foo',
         value: testVal,
         child: LeakOrigin(
-          cb: (o) => origin = o,
+          cb: (o) => zacContext = o,
         ),
       ));
 
-  expect((createConsume('foo') as ConsumeValue<TVal>).getSharedValue(origin),
+  expect(
+      (createConsume('foo') as ConsumeValue<TVal>).getSharedValue(zacContext),
       testVal);
 }
 
@@ -121,12 +123,12 @@ void main() {
   testWidgets(
       'ActualValue.getActualValue() may transform but only to same type',
       (tester) async {
-    late ZacOriginWidgetTree origin;
+    late ZacContext zacContext;
 
     await testZacWidget(
         tester,
         LeakOrigin(
-          cb: (o) => origin = o,
+          cb: (o) => zacContext = o,
         ));
 
     expect(
@@ -135,7 +137,7 @@ void main() {
                   StringTransformer.replaceAll(
                       ZacString('hello'), ZacString('world'))
                 ])) as ActualValue<String>)
-            .getActualValue(origin),
+            .getActualValue(zacContext),
         'world');
 
     expect(
@@ -143,7 +145,7 @@ void main() {
                     transformer:
                         ZacTransformers([const StringTransformer.isEmpty()]))
                 as ActualValue<String>)
-            .getActualValue(origin),
+            .getActualValue(zacContext),
         throwsStateError);
   });
   group('ZacBool', () {
@@ -387,7 +389,7 @@ void main() {
     });
 
     testWidgets('consume', (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
 
       await testZacWidget(
           tester,
@@ -406,18 +408,18 @@ void main() {
             ]),
             child: LeakOrigin(
               cb: (o) {
-                origin = o;
+                zacContext = o;
               },
             ),
           ));
-      expect(ListOfZacWidgetConsume('foo').getSharedValue(origin),
+      expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(
-          ListOfZacWidget.consume('foo').getValue(origin), isA<List<Widget>>());
+      expect(ListOfZacWidget.consume('foo').getValue(zacContext),
+          isA<List<Widget>>());
     });
 
     testWidgets('consume #2', (tester) async {
-      late ZacOriginWidgetTree origin;
+      late ZacContext zacContext;
 
       await testZacWidget(
           tester,
@@ -432,14 +434,14 @@ void main() {
             transformer: ZacTransformers([ConvertTransformer()]),
             child: LeakOrigin(
               cb: (o) {
-                origin = o;
+                zacContext = o;
               },
             ),
           ));
-      expect(ListOfZacWidgetConsume('foo').getSharedValue(origin),
+      expect(ListOfZacWidgetConsume('foo').getSharedValue(zacContext),
           [FlutterSizedBox()]);
-      expect(
-          ListOfZacWidget.consume('foo').getValue(origin), isA<List<Widget>>());
+      expect(ListOfZacWidget.consume('foo').getValue(zacContext),
+          isA<List<Widget>>());
     });
   });
 }

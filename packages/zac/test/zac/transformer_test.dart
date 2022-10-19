@@ -299,12 +299,14 @@ void main() {
               .transform(ZacTransformValue(55), FakeZacOrigin(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
-      late ZacOriginWidgetTree origin;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => origin = o));
+      late ZacContext zacContext;
+      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
 
       expect(
           IterableTransformer.contains(ZacObject('foo')).transform(
-              ZacTransformValue(<String>['foo', 'bar']), origin, ContextBag()),
+              ZacTransformValue(<String>['foo', 'bar']),
+              zacContext,
+              ContextBag()),
           isTrue);
     });
 
@@ -544,13 +546,13 @@ void main() {
               .transform(ZacTransformValue(55), FakeZacOrigin(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
-      late ZacOriginWidgetTree origin;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => origin = o));
+      late ZacContext zacContext;
+      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
 
       expect(
           MapTransformer.containsKey(ZacObject('foo')).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              origin,
+              zacContext,
               ContextBag()),
           isTrue);
     });
@@ -567,13 +569,13 @@ void main() {
               .transform(ZacTransformValue(55), FakeZacOrigin(), ContextBag()),
           throwsA(isA<ZacTransformError>()));
 
-      late ZacOriginWidgetTree origin;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => origin = o));
+      late ZacContext zacContext;
+      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
 
       expect(
           MapTransformer.containsValue(ZacObject(2)).transform(
               ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              origin,
+              zacContext,
               ContextBag()),
           isTrue);
     });
@@ -846,7 +848,7 @@ void main() {
       });
 
       testWidgets('.transform()', (tester) async {
-        late ZacOriginWidgetTree origin;
+        late ZacContext zacContext;
         await testZacWidget(
           tester,
           SharedValueProviderBuilder(
@@ -856,7 +858,7 @@ void main() {
               value: 'foo',
               family: 'shared2',
               child: LeakOrigin(
-                cb: (o) => origin = o,
+                cb: (o) => zacContext = o,
               ),
             ),
           ),
@@ -864,12 +866,12 @@ void main() {
 
         expect(
             ObjectTransformer.equalsSharedValue('shared')
-                .transform(ZacTransformValue(5), origin, ContextBag()),
+                .transform(ZacTransformValue(5), zacContext, ContextBag()),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue('shared2')
-                .transform(ZacTransformValue(5), origin, ContextBag()),
+                .transform(ZacTransformValue(5), zacContext, ContextBag()),
             isFalse);
       });
     });
@@ -1301,8 +1303,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(
-      ZacTransformValue transformValue, ZacOrigin origin, ContextBag? bag) {
+  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
+      ContextBag? bag) {
     return (transformValue.value as String) + str;
   }
 }

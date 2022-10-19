@@ -28,20 +28,20 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     ZacBool? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
-  SystemUiOverlayStyle build(ZacOriginWidgetTree origin) {
+  SystemUiOverlayStyle build(ZacContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.build(origin),
+      systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(origin),
+          systemNavigationBarDividerColor?.build(zacContext),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(origin),
+          systemNavigationBarIconBrightness?.build(zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(origin),
-      statusBarColor: statusBarColor?.build(origin),
-      statusBarBrightness: statusBarBrightness?.build(origin),
-      statusBarIconBrightness: statusBarIconBrightness?.build(origin),
+          systemNavigationBarContrastEnforced?.getValue(zacContext),
+      statusBarColor: statusBarColor?.build(zacContext),
+      statusBarBrightness: statusBarBrightness?.build(zacContext),
+      statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(origin),
+          systemStatusBarContrastEnforced?.getValue(zacContext),
     );
   }
 }
@@ -79,7 +79,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
   factory FlutterTextInputType.visiblePassword() =
       _FlutterTextInputTypevisiblePassword;
 
-  TextInputType build(ZacOriginWidgetTree origin) {
+  TextInputType build(ZacContext zacContext) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -133,7 +133,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
   factory FlutterTextInputAction.unspecified() =
       _FlutterTextInputActionunspecified;
 
-  TextInputAction build(ZacOriginWidgetTree origin) {
+  TextInputAction build(ZacContext zacContext) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -170,7 +170,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   @FreezedUnionValue('f:1:TextCapitalization.words')
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
-  TextCapitalization build(ZacOriginWidgetTree origin) {
+  TextCapitalization build(ZacContext zacContext) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -193,7 +193,7 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   @FreezedUnionValue('f:1:SmartDashesType.enabled')
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
-  SmartDashesType build(ZacOriginWidgetTree origin) {
+  SmartDashesType build(ZacContext zacContext) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -214,7 +214,7 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   @FreezedUnionValue('f:1:SmartQuotesType.enabled')
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
-  SmartQuotesType build(ZacOriginWidgetTree origin) {
+  SmartQuotesType build(ZacContext zacContext) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,

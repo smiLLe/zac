@@ -29,12 +29,12 @@ class FlutterSizedOverflowBox
   }) = _FlutterSizedOverflowBox;
 
   @override
-  SizedOverflowBox buildWidget(ZacOriginWidgetTree origin) {
+  SizedOverflowBox buildWidget(ZacContext zacContext) {
     return SizedOverflowBox(
-      key: key?.buildKey(origin),
-      size: size.build(origin),
-      alignment: alignment?.build(origin) ?? Alignment.center,
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      size: size.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

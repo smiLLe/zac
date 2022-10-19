@@ -25,7 +25,7 @@ abstract class FlutterWidget {
   factory FlutterWidget.fromJson(Object data) =>
       ConverterHelper.convertToType<FlutterWidget>(data);
 
-  Widget buildWidget(ZacOriginWidgetTree origin);
+  Widget buildWidget(ZacContext zacContext);
 }
 
 const consumeUnion = 'z:1:SharedValue.consume';

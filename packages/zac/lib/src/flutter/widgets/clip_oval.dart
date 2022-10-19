@@ -27,11 +27,11 @@ class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   }) = _FlutterClipOval;
 
   @override
-  ClipOval buildWidget(ZacOriginWidgetTree origin) {
+  ClipOval buildWidget(ZacContext zacContext) {
     return ClipOval(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.antiAlias,
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.antiAlias,
     );
   }
 }

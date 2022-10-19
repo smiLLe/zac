@@ -27,11 +27,11 @@ class FlutterConstrainedBox
   }) = _FlutterConstrainedBox;
 
   @override
-  ConstrainedBox buildWidget(ZacOriginWidgetTree origin) {
+  ConstrainedBox buildWidget(ZacContext zacContext) {
     return ConstrainedBox(
-      key: key?.buildKey(origin),
-      constraints: constraints.build(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      constraints: constraints.build(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

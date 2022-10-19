@@ -29,12 +29,12 @@ class FlutterIgnorePointer
   }) = _FlutterIgnorePointer;
 
   @override
-  IgnorePointer buildWidget(ZacOriginWidgetTree origin) {
+  IgnorePointer buildWidget(ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.buildKey(origin),
-      ignoring: ignoring?.getValue(origin) ?? true,
-      ignoringSemantics: ignoringSemantics?.getValue(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      ignoring: ignoring?.getValue(zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.getValue(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

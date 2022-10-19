@@ -29,14 +29,14 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   }) = _FlutterIcon;
 
   @override
-  Icon buildWidget(ZacOriginWidgetTree origin) {
+  Icon buildWidget(ZacContext zacContext) {
     return Icon(
-      icon?.build(origin),
-      key: key?.buildKey(origin),
-      color: color?.build(origin),
-      size: size?.getValue(origin),
-      semanticLabel: semanticLabel?.getValue(origin),
-      textDirection: textDirection?.build(origin),
+      icon?.build(zacContext),
+      key: key?.buildKey(zacContext),
+      color: color?.build(zacContext),
+      size: size?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      textDirection: textDirection?.build(zacContext),
     );
   }
 }
@@ -56,12 +56,12 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(ZacOriginWidgetTree origin) {
+  IconData build(ZacContext zacContext) {
     return IconData(
-      codePoint.getValue(origin),
-      fontFamily: fontFamily?.getValue(origin),
-      fontPackage: fontPackage?.getValue(origin),
-      matchTextDirection: matchTextDirection?.getValue(origin) ?? false,
+      codePoint.getValue(zacContext),
+      fontFamily: fontFamily?.getValue(zacContext),
+      fontPackage: fontPackage?.getValue(zacContext),
+      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
     );
   }
 }
@@ -80,11 +80,11 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
     ZacDouble? size,
   }) = _FlutterIconThemeData;
 
-  IconThemeData build(ZacOriginWidgetTree origin) {
+  IconThemeData build(ZacContext zacContext) {
     return IconThemeData(
-      color: color?.build(origin),
-      opacity: opacity?.getValue(origin),
-      size: size?.getValue(origin),
+      color: color?.build(zacContext),
+      opacity: opacity?.getValue(zacContext),
+      size: size?.getValue(zacContext),
     );
   }
 }

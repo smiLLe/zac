@@ -31,14 +31,14 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   }) = _FlutterDrawer;
 
   @override
-  Drawer buildWidget(ZacOriginWidgetTree origin) {
+  Drawer buildWidget(ZacContext zacContext) {
     return Drawer(
-      key: key?.buildKey(origin),
-      backgroundColor: backgroundColor?.build(origin),
-      child: child?.buildWidget(origin),
-      elevation: elevation?.getValue(origin),
-      semanticLabel: semanticLabel?.getValue(origin),
-      shape: shape?.build(origin),
+      key: key?.buildKey(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      child: child?.buildWidget(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      shape: shape?.build(zacContext),
     );
   }
 }

@@ -34,18 +34,18 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
   }) = _FlutterCard;
 
   @override
-  Card buildWidget(ZacOriginWidgetTree origin) {
+  Card buildWidget(ZacContext zacContext) {
     return Card(
-      key: key?.buildKey(origin),
-      color: color?.build(origin),
-      shadowColor: shadowColor?.build(origin),
-      elevation: elevation?.getValue(origin),
-      shape: shape?.build(origin),
-      borderOnForeground: borderOnForeground?.getValue(origin) ?? true,
-      margin: margin?.build(origin),
-      clipBehavior: clipBehavior?.build(origin),
-      child: child?.buildWidget(origin),
-      semanticContainer: semanticContainer?.getValue(origin) ?? true,
+      key: key?.buildKey(zacContext),
+      color: color?.build(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      shape: shape?.build(zacContext),
+      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      margin: margin?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext),
+      child: child?.buildWidget(zacContext),
+      semanticContainer: semanticContainer?.getValue(zacContext) ?? true,
     );
   }
 }

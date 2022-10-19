@@ -32,14 +32,14 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
   }) = _FlutterStack;
 
   @override
-  Stack buildWidget(ZacOriginWidgetTree origin) {
+  Stack buildWidget(ZacContext zacContext) {
     return Stack(
-      key: key?.buildKey(origin),
-      alignment: alignment?.build(origin) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(origin),
-      fit: fit?.build(origin) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.build(origin) ?? Clip.hardEdge,
-      children: children?.getValue(origin) ?? const <Widget>[],
+      key: key?.buildKey(zacContext),
+      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(zacContext),
+      fit: fit?.build(zacContext) ?? StackFit.loose,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      children: children?.getValue(zacContext) ?? const <Widget>[],
     );
   }
 }

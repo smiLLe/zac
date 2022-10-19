@@ -59,28 +59,32 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   }) = _FlutterMaterialApp;
 
   @override
-  MaterialApp buildWidget(ZacOriginWidgetTree origin) {
+  MaterialApp buildWidget(ZacContext zacContext) {
     return MaterialApp(
-      key: key?.buildKey(origin),
-      navigatorKey: navigatorKey?.buildKey(origin),
-      home: home?.buildWidget(origin),
-      initialRoute: initialRoute?.getValue(origin),
-      onGenerateRoute: onGenerateRoute?.buildRouteFactory(origin),
-      onUnknownRoute: onUnknownRoute?.buildRouteFactory(origin),
-      title: title?.getValue(origin) ?? '',
-      color: color?.build(origin),
-      locale: locale?.build(origin),
-      debugShowMaterialGrid: debugShowMaterialGrid?.getValue(origin) ?? false,
-      showPerformanceOverlay: showPerformanceOverlay?.getValue(origin) ?? false,
+      key: key?.buildKey(zacContext),
+      navigatorKey: navigatorKey?.buildKey(zacContext),
+      home: home?.buildWidget(zacContext),
+      initialRoute: initialRoute?.getValue(zacContext),
+      onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
+      onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
+      title: title?.getValue(zacContext) ?? '',
+      color: color?.build(zacContext),
+      locale: locale?.build(zacContext),
+      debugShowMaterialGrid:
+          debugShowMaterialGrid?.getValue(zacContext) ?? false,
+      showPerformanceOverlay:
+          showPerformanceOverlay?.getValue(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(origin) ?? false,
+          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(origin) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.getValue(origin) ?? false,
+          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
+      showSemanticsDebugger:
+          showSemanticsDebugger?.getValue(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(origin) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(origin),
-      useInheritedMediaQuery: useInheritedMediaQuery?.getValue(origin) ?? false,
+          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(zacContext),
+      useInheritedMediaQuery:
+          useInheritedMediaQuery?.getValue(zacContext) ?? false,
     );
   }
 }

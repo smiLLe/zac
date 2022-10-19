@@ -31,15 +31,15 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   }) = _FlutterOverflowBox;
 
   @override
-  OverflowBox buildWidget(ZacOriginWidgetTree origin) {
+  OverflowBox buildWidget(ZacContext zacContext) {
     return OverflowBox(
-      key: key?.buildKey(origin),
-      alignment: alignment?.build(origin) ?? Alignment.center,
-      minWidth: minWidth?.getValue(origin),
-      maxWidth: maxWidth?.getValue(origin),
-      minHeight: minHeight?.getValue(origin),
-      maxHeight: maxHeight?.getValue(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      minWidth: minWidth?.getValue(zacContext),
+      maxWidth: maxWidth?.getValue(zacContext),
+      minHeight: minHeight?.getValue(zacContext),
+      maxHeight: maxHeight?.getValue(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

@@ -28,7 +28,7 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
   }
 
   @override
-  void call(_i3.ZacOrigin? origin, _i4.ContextBag? bag) =>
+  void call(_i3.ZacContext? origin, _i4.ContextBag? bag) =>
       super.noSuchMethod(Invocation.method(#call, [origin, bag]),
           returnValueForMissingStub: null);
 }
@@ -62,13 +62,13 @@ class MockLeakBagTransformer extends _i1.Mock
               returnValue: (Map<String, dynamic> bag) {})
           as void Function(Map<String, dynamic>));
   @override
-  Object? call(_i5.ZacTransformValue? transformValue, _i3.ZacOrigin? origin,
+  Object? call(_i5.ZacTransformValue? transformValue, _i3.ZacContext? origin,
           _i4.ContextBag? bag) =>
       (super.noSuchMethod(
           Invocation.method(#call, [transformValue, origin, bag])) as Object?);
   @override
   Object? transform(_i5.ZacTransformValue? transformValue,
-          _i3.ZacOrigin? origin, _i4.ContextBag? bag) =>
+          _i3.ZacContext? origin, _i4.ContextBag? bag) =>
       (super.noSuchMethod(
               Invocation.method(#transform, [transformValue, origin, bag]))
           as Object?);

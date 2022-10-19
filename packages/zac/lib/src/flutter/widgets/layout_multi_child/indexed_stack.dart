@@ -32,14 +32,14 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   }) = _FlutterIndexedStack;
 
   @override
-  IndexedStack buildWidget(ZacOriginWidgetTree origin) {
+  IndexedStack buildWidget(ZacContext zacContext) {
     return IndexedStack(
-      key: key?.buildKey(origin),
-      alignment: alignment?.build(origin) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(origin),
-      sizing: sizing?.build(origin) ?? StackFit.loose,
-      index: index?.getValue(origin),
-      children: children?.getValue(origin) ?? const <Widget>[],
+      key: key?.buildKey(zacContext),
+      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(zacContext),
+      sizing: sizing?.build(zacContext) ?? StackFit.loose,
+      index: index?.getValue(zacContext),
+      children: children?.getValue(zacContext) ?? const <Widget>[],
     );
   }
 }

@@ -2,40 +2,20 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/statemachine.dart';
 
 part 'origin.freezed.dart';
 
 @freezed
-class ZacOrigin with _$ZacOrigin {
-  factory ZacOrigin.widgetTree({
+class ZacContext with _$ZacContext {
+  factory ZacContext({
     required BuildContext context,
     required WidgetRef ref,
-    required ZacOriginLifetimeWidgetTree lifetime,
-  }) = ZacOriginWidgetTree;
-
-  factory ZacOrigin.statemachineAction({
-    /// @Todo: Chance Object to StateMachine
-    required AutoDisposeStateNotifierProviderRef<StateMachine, CurrentState>
-        ref,
-    required ZacOriginLifetimeStateMachineAction lifetime,
-  }) = ZacOriginStateMachineAction;
-}
-
-@freezed
-class ZacOriginLifetime with _$ZacOriginLifetime {
-  factory ZacOriginLifetime.widgetTree({
     required bool Function() isMounted,
     required void Function(void Function() cb) onUnmount,
-  }) = ZacOriginLifetimeWidgetTree;
-
-  factory ZacOriginLifetime.statemachineAction({
-    required bool Function() isActive,
-    required void Function(void Function() cb) onBecomeInactive,
-  }) = ZacOriginLifetimeStateMachineAction;
+  }) = _ZacContext;
 }
 
-ZacOriginWidgetTree useZacOrigin(WidgetRef ref) {
+ZacContext useZacContext(WidgetRef ref) {
   final context = useContext();
   final isMounted = useIsMounted();
   final unmountCallbacks = useRef(<void Function()>[]);
@@ -53,12 +33,10 @@ ZacOriginWidgetTree useZacOrigin(WidgetRef ref) {
     [unmountCallbacks.value],
   );
 
-  return ZacOriginWidgetTree(
+  return ZacContext(
     context: context,
     ref: ref,
-    lifetime: ZacOriginLifetimeWidgetTree(
-      isMounted: isMounted,
-      onUnmount: addCb,
-    ),
+    isMounted: isMounted,
+    onUnmount: addCb,
   );
 }

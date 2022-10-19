@@ -34,19 +34,19 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
   }) = _FlutterRow;
 
   @override
-  Row buildWidget(ZacOriginWidgetTree origin) {
+  Row buildWidget(ZacContext zacContext) {
     return Row(
-      key: key?.buildKey(origin),
+      key: key?.buildKey(zacContext),
       mainAxisAlignment:
-          mainAxisAlignment?.build(origin) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(origin) ?? MainAxisSize.max,
+          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.build(origin) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(origin),
+          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.build(origin) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(origin),
-      children: children?.getValue(origin) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(zacContext),
+      children: children?.getValue(zacContext) ?? const <Widget>[],
     );
   }
 }

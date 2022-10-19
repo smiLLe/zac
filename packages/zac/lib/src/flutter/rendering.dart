@@ -26,7 +26,7 @@ class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
   factory FlutterHitTestBehavior.translucent() =
       _FlutterHitTestBehaviortranslucent;
 
-  HitTestBehavior build(ZacOriginWidgetTree origin) {
+  HitTestBehavior build(ZacContext zacContext) {
     return map(
       deferToChild: (_) => HitTestBehavior.deferToChild,
       opaque: (_) => HitTestBehavior.opaque,
@@ -59,7 +59,7 @@ class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
   factory FlutterCrossAxisAlignment.stretch() =
       _FlutterCrossAxisAlignmentStretch;
 
-  CrossAxisAlignment build(ZacOriginWidgetTree origin) {
+  CrossAxisAlignment build(ZacContext zacContext) {
     return map(
       baseline: (_) => CrossAxisAlignment.baseline,
       center: (_) => CrossAxisAlignment.center,
@@ -98,7 +98,7 @@ class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
   factory FlutterMainAxisAlignment.spaceEvenly() =
       _FlutterMainAxisAlignmentEvenly;
 
-  MainAxisAlignment build(ZacOriginWidgetTree origin) {
+  MainAxisAlignment build(ZacContext zacContext) {
     return map(
       start: (_) => MainAxisAlignment.start,
       end: (_) => MainAxisAlignment.end,
@@ -123,7 +123,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize {
   @FreezedUnionValue('f:1:MainAxisSize.max')
   factory FlutterMainAxisSize.max() = _FlutterMainAxisSizeMax;
 
-  MainAxisSize build(ZacOriginWidgetTree origin) {
+  MainAxisSize build(ZacContext zacContext) {
     return map(min: (_) => MainAxisSize.min, max: (_) => MainAxisSize.max);
   }
 }
@@ -141,7 +141,7 @@ class FlutterFlexFit with _$FlutterFlexFit {
   @FreezedUnionValue('f:1:FlexFit.loose')
   factory FlutterFlexFit.loose() = _FlutterFlexFitLoose;
 
-  FlexFit build(ZacOriginWidgetTree origin) {
+  FlexFit build(ZacContext zacContext) {
     return map(tight: (_) => FlexFit.tight, loose: (_) => FlexFit.loose);
   }
 }
@@ -172,7 +172,7 @@ class FlutterWrapAlignment with _$FlutterWrapAlignment {
   @FreezedUnionValue('f:1:WrapAlignment.spaceEvenly')
   factory FlutterWrapAlignment.spaceEvenly() = _FlutterWrapAlignmentSpaceEvenly;
 
-  WrapAlignment build(ZacOriginWidgetTree origin) {
+  WrapAlignment build(ZacContext zacContext) {
     return map(
       center: (_) => WrapAlignment.center,
       end: (_) => WrapAlignment.end,
@@ -200,7 +200,7 @@ class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
   @FreezedUnionValue('f:1:WrapCrossAlignment.start')
   factory FlutterWrapCrossAlignment.start() = _FlutterWrapCrossAlignmentStart;
 
-  WrapCrossAlignment build(ZacOriginWidgetTree origin) {
+  WrapCrossAlignment build(ZacContext zacContext) {
     return map(
       center: (_) => WrapCrossAlignment.center,
       end: (_) => WrapCrossAlignment.end,
@@ -225,7 +225,7 @@ class FlutterStackFit with _$FlutterStackFit {
   @FreezedUnionValue('f:1:StackFit.passthrough')
   factory FlutterStackFit.passthrough() = _FlutterStackFit;
 
-  StackFit build(ZacOriginWidgetTree origin) {
+  StackFit build(ZacContext zacContext) {
     return map(
       expand: (_) => StackFit.expand,
       loose: (_) => StackFit.loose,
@@ -272,25 +272,25 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
       {ZacDouble? width,
       ZacDouble? height}) = _FlutterBoxConstraintsTightForFinite;
 
-  BoxConstraints build(ZacOriginWidgetTree origin) {
+  BoxConstraints build(ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.getValue(origin) ?? 0.0,
-        maxWidth: value.maxWidth?.getValue(origin) ?? double.infinity,
-        minHeight: value.minHeight?.getValue(origin) ?? 0.0,
-        maxHeight: value.maxHeight?.getValue(origin) ?? double.infinity,
+        minWidth: value.minWidth?.getValue(zacContext) ?? 0.0,
+        maxWidth: value.maxWidth?.getValue(zacContext) ?? double.infinity,
+        minHeight: value.minHeight?.getValue(zacContext) ?? 0.0,
+        maxHeight: value.maxHeight?.getValue(zacContext) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.getValue(origin),
-          height: value.height?.getValue(origin)),
-      loose: (value) => BoxConstraints.loose(value.size.build(origin)),
-      tight: (value) => BoxConstraints.tight(value.size.build(origin)),
+          width: value.width?.getValue(zacContext),
+          height: value.height?.getValue(zacContext)),
+      loose: (value) => BoxConstraints.loose(value.size.build(zacContext)),
+      tight: (value) => BoxConstraints.tight(value.size.build(zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.getValue(origin),
-          height: value.height?.getValue(origin)),
+          width: value.width?.getValue(zacContext),
+          height: value.height?.getValue(zacContext)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.getValue(origin) ?? double.infinity,
-        height: value.height?.getValue(origin) ?? double.infinity,
+        width: value.width?.getValue(zacContext) ?? double.infinity,
+        height: value.height?.getValue(zacContext) ?? double.infinity,
       ),
     );
   }
@@ -321,21 +321,21 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
     ZacDouble? mainAxisExtent,
   }) = _FlutterSliverGridDelegateMaxCrossAxisExtent;
 
-  SliverGridDelegate build(ZacOriginWidgetTree origin) {
+  SliverGridDelegate build(ZacContext zacContext) {
     return map(
       fixedCrossAxisCount: (value) => SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(origin) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(origin) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(origin) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(origin),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
       ),
       maxCrossAxisExtent: (value) => SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(origin),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(origin) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(origin) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(origin) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(origin),
+        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
       ),
     );
   }
@@ -354,7 +354,7 @@ class FlutterDecorationPosition with _$FlutterDecorationPosition {
   @FreezedUnionValue('f:1:DecorationPosition.foreground')
   factory FlutterDecorationPosition.foreground() = FlutterDecorationPositionFG;
 
-  DecorationPosition build(ZacOriginWidgetTree origin) {
+  DecorationPosition build(ZacContext zacContext) {
     return map(
       background: (_) => DecorationPosition.background,
       foreground: (_) => DecorationPosition.foreground,

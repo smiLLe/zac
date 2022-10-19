@@ -24,10 +24,10 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   }) = _FlutterRotatedBox;
 
   @override
-  RotatedBox buildWidget(ZacOriginWidgetTree origin) {
+  RotatedBox buildWidget(ZacContext zacContext) {
     return RotatedBox(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
       quarterTurns: quarterTurns,
     );
   }

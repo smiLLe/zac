@@ -53,9 +53,9 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   }) = _FlutterAppBar;
 
   @override
-  AppBar buildWidget(ZacOriginWidgetTree origin) {
+  AppBar buildWidget(ZacContext zacContext) {
     assert(() {
-      final w = bottom?.buildWidget(origin);
+      final w = bottom?.buildWidget(zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -65,32 +65,33 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     }(), '');
 
     return AppBar(
-      key: key?.buildKey(origin),
-      leading: leading?.buildWidget(origin),
+      key: key?.buildKey(zacContext),
+      leading: leading?.buildWidget(zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(origin) ?? true,
-      title: title?.buildWidget(origin),
-      actions: actions?.getValue(origin) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(origin),
-      bottom: bottom?.buildWidget(origin) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(origin),
-      shadowColor: shadowColor?.build(origin),
-      shape: shape?.build(origin),
-      backgroundColor: backgroundColor?.build(origin),
-      foregroundColor: foregroundColor?.build(origin),
-      iconTheme: iconTheme?.build(origin),
-      actionsIconTheme: actionsIconTheme?.build(origin),
-      primary: primary?.getValue(origin) ?? true,
-      centerTitle: centerTitle?.getValue(origin),
-      excludeHeaderSemantics: excludeHeaderSemantics?.getValue(origin) ?? false,
-      titleSpacing: titleSpacing?.getValue(origin),
-      toolbarOpacity: toolbarOpacity?.getValue(origin) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(origin) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(origin),
-      leadingWidth: leadingWidth?.getValue(origin),
-      toolbarTextStyle: toolbarTextStyle?.build(origin),
-      titleTextStyle: titleTextStyle?.build(origin),
-      systemOverlayStyle: systemOverlayStyle?.build(origin),
+          automaticallyImplyLeading?.getValue(zacContext) ?? true,
+      title: title?.buildWidget(zacContext),
+      actions: actions?.getValue(zacContext) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.buildWidget(zacContext),
+      bottom: bottom?.buildWidget(zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.getValue(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      foregroundColor: foregroundColor?.build(zacContext),
+      iconTheme: iconTheme?.build(zacContext),
+      actionsIconTheme: actionsIconTheme?.build(zacContext),
+      primary: primary?.getValue(zacContext) ?? true,
+      centerTitle: centerTitle?.getValue(zacContext),
+      excludeHeaderSemantics:
+          excludeHeaderSemantics?.getValue(zacContext) ?? false,
+      titleSpacing: titleSpacing?.getValue(zacContext),
+      toolbarOpacity: toolbarOpacity?.getValue(zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(zacContext),
+      leadingWidth: leadingWidth?.getValue(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
+      titleTextStyle: titleTextStyle?.build(zacContext),
+      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
     );
   }
 }

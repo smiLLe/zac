@@ -38,18 +38,18 @@ class FlutterGestureDetector
   }) = _FlutterGestureDetector;
 
   @override
-  GestureDetector buildWidget(ZacOriginWidgetTree origin) {
+  GestureDetector buildWidget(ZacContext zacContext) {
     return GestureDetector(
-      key: key?.buildKey(origin),
-      child: child?.buildWidget(origin),
-      behavior: behavior?.build(origin),
-      excludeFromSemantics: excludeFromSemantics?.getValue(origin) ?? false,
-      onTap: onTap?.createCb(origin),
-      onSecondaryTap: onSecondaryTap?.createCb(origin),
-      onDoubleTap: onDoubleTap?.createCb(origin),
-      onLongPress: onLongPress?.createCb(origin),
-      onSecondaryLongPress: onSecondaryLongPress?.createCb(origin),
-      onTertiaryLongPress: onTertiaryLongPress?.createCb(origin),
+      key: key?.buildKey(zacContext),
+      child: child?.buildWidget(zacContext),
+      behavior: behavior?.build(zacContext),
+      excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
+      onTap: onTap?.createCb(zacContext),
+      onSecondaryTap: onSecondaryTap?.createCb(zacContext),
+      onDoubleTap: onDoubleTap?.createCb(zacContext),
+      onLongPress: onLongPress?.createCb(zacContext),
+      onSecondaryLongPress: onSecondaryLongPress?.createCb(zacContext),
+      onTertiaryLongPress: onTertiaryLongPress?.createCb(zacContext),
     );
   }
 }
