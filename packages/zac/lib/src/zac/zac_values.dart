@@ -42,7 +42,7 @@ mixin ConsumeValue<Of> {
   ZacTransformers? get transformer;
 
   Of getSharedValue(ZacOrigin origin) {
-    final consumedValue = SharedValue.getFilled(consumeType, origin, family);
+    final consumedValue = SharedValue.get(consumeType, origin, family);
 
     late Object? value;
     if (consumedValue is ActualValue<Object?>) {
@@ -103,7 +103,7 @@ mixin ConsumeValueList<Of> {
   ZacTransformers? get transformer;
 
   List<Of> getSharedValue(ZacOrigin origin) {
-    final consumedValue = SharedValue.getFilled(
+    final consumedValue = SharedValue.get(
       consumeType,
       origin,
       family,

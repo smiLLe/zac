@@ -18,94 +18,71 @@ class AccessEmptySharedValueError extends StateError {
 }
 
 typedef SharedValueFamily = Object;
+typedef SharedValueType = Object?;
 
-@defaultConverterFreezed
-class SharedValue with _$SharedValue {
-  const SharedValue._();
-
-  factory SharedValue(Object? data) = FilledSharedValue;
-  const factory SharedValue.empty() = EmptySharedValue;
-
+abstract class SharedValue {
   static final provider =
-      StateProvider.family.autoDispose<SharedValue, SharedValueFamily>(
-    (_, __) => const SharedValue.empty(),
-    name: 'Zac SharedValue',
-  );
-
-  static Object? _extractData(SharedValue sharedValue, String ifEmptyMessage) =>
-      sharedValue.map(
-        (obj) => obj.data,
-        empty: (_) => throw AccessEmptySharedValueError(ifEmptyMessage),
-      );
-
-  static Object? getFilled(
-      SharedValueConsumeType type, ZacOrigin origin, SharedValueFamily family) {
-    final error = '''
+      StateProvider.family.autoDispose<SharedValueType, SharedValueFamily>(
+    (_, family) => throw AccessEmptySharedValueError('''
 Could not find a $SharedValue for family: "$family".
 Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
 See "$SharedValueProviderBuilder" for more info.
-''';
-    return type.map<Object?>(
+'''),
+    name: 'Zac SharedValue',
+  );
+
+  static SharedValueType get(
+      SharedValueConsumeType type, ZacOrigin origin, SharedValueFamily family) {
+    return type.map<SharedValueType>(
       watch: (obj) {
         if (null == obj.select || true == obj.select?.transformers.isEmpty) {
           return origin.map(
-              widgetTree: (origin) => _extractData(
-                  origin.ref.watch(SharedValue.provider(family)), error),
-              statemachineAction: (origin) => _extractData(
-                  origin.ref.watch(SharedValue.provider(family)), error));
+              widgetTree: (origin) => origin.ref
+                  .watch<SharedValueType>(SharedValue.provider(family)),
+              statemachineAction: (origin) =>
+                  origin.ref.watch(SharedValue.provider(family)));
         }
 
         return origin.map(
-            widgetTree: (origin) => origin.ref.watch(SharedValue.provider(family)
-                .select((sharedValue) => obj.select!.transform(
-                    ZacTransformValue(_extractData(sharedValue, error)),
-                    origin))),
+            widgetTree: (origin) => origin.ref.watch(
+                SharedValue.provider(family).select<SharedValueType>(
+                    (sharedValue) => obj.select!
+                        .transform(ZacTransformValue(sharedValue), origin))),
             statemachineAction: (origin) => origin.ref.watch(
-                SharedValue.provider(family).select((sharedValue) => obj.select!
-                    .transform(
-                        ZacTransformValue(_extractData(sharedValue, error)),
-                        origin))));
+                SharedValue.provider(family).select<SharedValueType>(
+                    (sharedValue) =>
+                        obj.select!.transform(ZacTransformValue(sharedValue), origin))));
       },
       read: (_) => origin.map(
-          widgetTree: (origin) => _extractData(
-              origin.ref.read(SharedValue.provider(family)), error),
-          statemachineAction: (origin) => _extractData(
-              origin.ref.read(SharedValue.provider(family)), error)),
+          widgetTree: (origin) =>
+              origin.ref.read<SharedValueType>(SharedValue.provider(family)),
+          statemachineAction: (origin) =>
+              origin.ref.read(SharedValue.provider(family))),
     );
   }
 
   static void update(
     ZacOrigin origin,
     SharedValueFamily family,
-    Object? Function(Object? current) update,
+    SharedValueType Function(SharedValueType current) update,
   ) {
     origin
         .map(
-      widgetTree: (origin) =>
-          origin.ref.read(SharedValue.provider(family).notifier),
-      statemachineAction: (origin) =>
-          origin.ref.read(SharedValue.provider(family).notifier),
-    )
-        .update((sharedValue) {
-      return SharedValue(update(_extractData(sharedValue, '''
-It was not possible to update the $SharedValue "$family",
-because the $SharedValue did not exist until now.
-Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
-in your Widget tree before trying to update the $SharedValue.''')));
-    });
+          widgetTree: (origin) =>
+              origin.ref.read(SharedValue.provider(family).notifier),
+          statemachineAction: (origin) =>
+              origin.ref.read(SharedValue.provider(family).notifier),
+        )
+        .update(update);
   }
 
   static void listenAndExecuteActions(ZacOriginWidgetTree origin,
       SharedValueFamily family, ZacActions actions) {
-    origin.ref.listen<SharedValue>(SharedValue.provider(family),
+    origin.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
       actions.execute(
         origin,
-        prefillBag: (bag) => bag..setActionPayload(_extractData(next, '''
-It was not possible to listen for $SharedValue($family) changes and execute interactions,
-because the $SharedValue did not exist until now.
-Consider providing a $SharedValue via "${SharedValueProviderBuilder.unionValue}"
-in your Widget tree before trying to update the $SharedValue.''')),
+        prefillBag: (bag) => bag..setActionPayload(next),
       );
     });
   }
@@ -197,7 +174,7 @@ class SharedValueProviderBuilder
   @FreezedUnionValue(SharedValueProviderBuilder.unionValue)
   factory SharedValueProviderBuilder({
     FlutterKey? key,
-    required Object? value,
+    required SharedValueType value,
     ZacTransformers? transformer,
     required SharedValueFamily family,
     required FlutterWidget child,
@@ -224,7 +201,7 @@ class SharedValueProvider extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  final Object? value;
+  final SharedValueType value;
   final SharedValueFamily family;
   final Widget Function(ZacOriginWidgetTree origin) builder;
   final ZacTransformers? transformer;
@@ -234,19 +211,19 @@ class SharedValueProvider extends HookConsumerWidget {
     final origin = useZacOrigin(ref);
     final provideValue = useMemoized(
       () {
-        return SharedValue(null == transformer || true == transformer!.transformers .isEmpty
+        return null == transformer || true == transformer!.transformers.isEmpty
             ? value
             : transformer!.transform(
                 ZacTransformValue(value),
                 origin,
-              ));
+              );
       },
       [value, family, transformer],
     );
     return ProviderScope(
       overrides: [
         SharedValue.provider(family).overrideWithProvider(
-            AutoDisposeStateProvider<SharedValue>((_) => provideValue)),
+            AutoDisposeStateProvider<SharedValueType>((_) => provideValue)),
       ],
       child: ZacUpdateOrigin(builder: builder),
     );

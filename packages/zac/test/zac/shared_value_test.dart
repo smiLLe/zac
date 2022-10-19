@@ -18,7 +18,8 @@ void main() {
   group('SharedValue', () {
     test('provider default value', () {
       final c = ProviderContainer();
-      expect(c.read(SharedValue.provider('abc')), isA<EmptySharedValue>());
+      expect(() => c.read(SharedValue.provider('abc')),
+          throwsA(isA<AccessEmptySharedValueError>()));
     });
 
     testWidgets('can be transformed and provieded through SharedValueProvider',
@@ -43,7 +44,7 @@ void main() {
 
       expect(
         origin.ref.read(SharedValue.provider('foo')),
-        isFilledSharedValue(isA<FlutterSizedBox>()),
+        isSharedValue(isA<FlutterSizedBox>()),
       );
     });
 
@@ -161,8 +162,7 @@ void main() {
         );
 
         expect(
-            SharedValue.getFilled(
-                const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
             10);
       });
 
@@ -180,8 +180,7 @@ void main() {
         );
 
         expect(
-            SharedValue.getFilled(
-                const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
             isNull);
       });
 
@@ -195,7 +194,7 @@ void main() {
         );
 
         expect(
-            () => SharedValue.getFilled(
+            () => SharedValue.get(
                 const SharedValueConsumeType.read(), origin, 'foo'),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
@@ -230,14 +229,12 @@ void main() {
 
         SharedValue.update(origin, 'foo', (current) => 10);
         expect(
-            SharedValue.getFilled(
-                const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
             10);
 
         SharedValue.update(origin, 'foo', (current) => (current as int) + 10);
         expect(
-            SharedValue.getFilled(
-                const SharedValueConsumeType.read(), origin, 'foo'),
+            SharedValue.get(const SharedValueConsumeType.read(), origin, 'foo'),
             20);
       });
 

@@ -274,8 +274,8 @@ class _DebugErrorBox extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final origin = useZacOrigin(ref);
-    final val = SharedValue.getFilled(const SharedValueConsumeType.watch(),
-        origin, ZacWidget.provideErrorFamily);
+    final val = SharedValue.get(const SharedValueConsumeType.watch(), origin,
+        ZacWidget.provideErrorFamily);
 
     return Container(
       decoration: BoxDecoration(

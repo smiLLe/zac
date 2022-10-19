@@ -41,8 +41,8 @@ void main() {
 
       expect(
           origin.ref.read(SharedValue.provider('foo')),
-          isA<FilledSharedValue>().having(
-              (p0) => p0.data, 'data', isA<GlobalKey<NavigatorState>>()));
+          isA<SharedValueType>()
+              .having((p0) => p0, 'data', isA<GlobalKey<NavigatorState>>()));
     });
   });
 
@@ -177,7 +177,7 @@ void main() {
         expect(
             origin.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
-            SharedValue(22));
+            22);
       });
     });
 
@@ -281,7 +281,7 @@ void main() {
         expect(
             origin.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
-            SharedValue(1));
+            1);
 
         await tester.tap(find.byKey(const ValueKey('press_me')));
         await tester.pumpAndSettle();
@@ -289,7 +289,7 @@ void main() {
         expect(
             origin.ref.read(SharedValue.provider(
                 RouteFactoryFromRoutes.defaultProviderName)),
-            SharedValue(11));
+            11);
       });
 
       testWidgets('providerName', (tester) async {

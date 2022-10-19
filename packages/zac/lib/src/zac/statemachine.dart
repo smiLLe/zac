@@ -6,7 +6,6 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
-import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -530,17 +529,17 @@ class StateMachineProvider extends StatelessWidget {
           );
         })),
         SharedValue.provider('$family.state')
-            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValueType>(
           (ref) {
-            return SharedValue(ref.watch(StateMachine.provider(family)
-                .select((curState) => curState.state)));
+            return ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.state));
           },
         )),
         SharedValue.provider('$family.context')
-            .overrideWithProvider(AutoDisposeStateProvider<SharedValue>(
+            .overrideWithProvider(AutoDisposeStateProvider<SharedValueType>(
           (ref) {
-            return SharedValue(ref.watch(StateMachine.provider(family)
-                .select((curState) => curState.context)));
+            return ref.watch(StateMachine.provider(family)
+                .select((curState) => curState.context));
           },
         )),
       ],
@@ -593,7 +592,7 @@ class MapStateToWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final origin = useZacOrigin(ref);
-    final state = SharedValue.getFilled(
+    final state = SharedValue.get(
         const SharedValueConsumeType.watch(), origin, '$family.state');
 
     /// check if mapped states actually exist in the StateMachine

@@ -52,8 +52,8 @@ void main() {
 
     expect(
         origin.ref.read(SharedValue.provider('foo')),
-        isA<FilledSharedValue>().having(
-            (p0) => p0.data,
+        isA<SharedValueType>().having(
+            (p0) => p0,
             'data',
             isA<GlobalKey<NavigatorState>>()
                 .having((p0) => p0.currentState, 'NavigatorState', isNotNull)));

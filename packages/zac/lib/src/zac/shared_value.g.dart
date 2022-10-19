@@ -6,17 +6,6 @@ part of 'shared_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$FilledSharedValue _$$FilledSharedValueFromJson(Map<String, dynamic> json) =>
-    _$FilledSharedValue(
-      json['data'],
-      $type: json['_converter'] as String?,
-    );
-
-_$EmptySharedValue _$$EmptySharedValueFromJson(Map<String, dynamic> json) =>
-    _$EmptySharedValue(
-      $type: json['_converter'] as String?,
-    );
-
 _$_SharedValueInteractionUpdate _$$_SharedValueInteractionUpdateFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueInteractionUpdate(

@@ -34,9 +34,8 @@ Matcher throwsConverterError = throwsA(isA<ConverterError>());
 TypeMatcher<ZacOriginWidgetTree> isAOriginWidgetTree =
     isA<ZacOriginWidgetTree>();
 
-TypeMatcher<FilledSharedValue> isFilledSharedValue(dynamic matcher) {
-  return isA<FilledSharedValue>()
-      .having((p0) => p0.data, 'FilledSharedValue.data', matcher);
+TypeMatcher<SharedValueType> isSharedValue(dynamic matcher) {
+  return isA<SharedValueType>().having((p0) => p0, 'SharedValueType', matcher);
 }
 
 void fakeBuild<T>(
