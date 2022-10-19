@@ -1,7 +1,7 @@
 export 'src/converter.dart';
 export 'src/base.dart';
 export 'src/zac/misc.dart';
-export 'src/zac/origin.dart';
+export 'src/zac/context.dart';
 export 'src/zac/action.dart';
 export 'src/zac/statemachine.dart';
 export 'src/zac/state_machine.dart';

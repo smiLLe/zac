@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'origin.freezed.dart';
+part 'context.freezed.dart';
 
 @freezed
 class ZacContext with _$ZacContext {

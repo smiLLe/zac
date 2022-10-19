@@ -4,7 +4,7 @@ import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/context.dart';
 
 part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';

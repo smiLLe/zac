@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
-import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/context.dart';
 
 part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';

@@ -3,7 +3,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/context.dart';
 
 part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/zac/origin.dart';
+import 'package:zac/src/zac/context.dart';
 
 // ignore: constant_identifier_names
 const defaultConverterFreezed = Freezed(
