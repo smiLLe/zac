@@ -21,6 +21,13 @@ abstract class ZacAction {
   void execute(ZacOrigin origin, ContextBag bag);
 }
 
+// @freezed
+// class ZacActionPayload with _$ZacActionPayload {
+//   const factory ZacActionPayload() = _ZacActionPayloadNone;
+//   const factory ZacActionPayload.param() = _ZacActionPayloadParam;
+//   const factory ZacActionPayload.param2() = _ZacActionPayloadParam2;
+// }
+
 @defaultConverterFreezed
 class ZacActions with _$ZacActions {
   const ZacActions._();

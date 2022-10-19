@@ -3,6 +3,7 @@ import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
@@ -170,13 +171,20 @@ Map<String, Convert> allConverters = const {
 
   ZacActions.unionValue: ZacActions.fromJson,
 
-  StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
-  MapStateToWidgetBuilder.unionValue: MapStateToWidgetBuilder.fromJson,
-  StateMachineActions.unionValue: StateMachineActions.fromJson,
-  StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
-  StateMachineActions.unionValueSetState: StateMachineActions.fromJson,
-  StateNode.unionValue: StateNode.fromJson,
-  Transition.unionValue: Transition.fromJson,
+  // StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
+  // MapStateToWidgetBuilder.unionValue: MapStateToWidgetBuilder.fromJson,
+  // StateMachineActions.unionValue: StateMachineActions.fromJson,
+  // StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
+  // StateMachineActions.unionValueSetState: StateMachineActions.fromJson,
+  // StateNode.unionValue: StateNode.fromJson,
+  // Transition.unionValue: Transition.fromJson,
+
+  ZacTransition.unionValue: ZacTransition.fromJson,
+  ZacStateConfig.unionValue: ZacStateConfig.fromJson,
+  ZacStateMachineProviderBuilder.unionValue:
+      ZacStateMachineProviderBuilder.fromJson,
+  ZacStateMachineBuildStateBuilder.unionValue:
+      ZacStateMachineBuildStateBuilder.fromJson,
 
   /**
          * Navigator && NavigatorState

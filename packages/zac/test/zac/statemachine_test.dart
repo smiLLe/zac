@@ -9,7 +9,6 @@ import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/origin.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/statemachine.dart';

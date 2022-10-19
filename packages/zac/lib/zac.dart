@@ -4,6 +4,7 @@ export 'src/zac/misc.dart';
 export 'src/zac/origin.dart';
 export 'src/zac/action.dart';
 export 'src/zac/statemachine.dart';
+export 'src/zac/state_machine.dart';
 export 'src/zac/zac_values.dart';
 export 'src/zac/update_widget.dart';
 export 'src/zac/widget.dart';
