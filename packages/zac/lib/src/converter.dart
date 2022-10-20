@@ -7,7 +7,6 @@ import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
-import 'package:zac/src/zac/statemachine.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import 'package:zac/src/zac/widget.dart';
@@ -185,6 +184,8 @@ Map<String, Convert> allConverters = const {
       ZacStateMachineProviderBuilder.fromJson,
   ZacStateMachineBuildStateBuilder.unionValue:
       ZacStateMachineBuildStateBuilder.fromJson,
+  ZacStateMachineActions.unionValue: ZacStateMachineActions.fromJson,
+  ZacStateMachineActions.unionValueTrySend: ZacStateMachineActions.fromJson,
 
   /**
          * Navigator && NavigatorState

@@ -290,7 +290,7 @@ class ZacStateMachineActions
     required ZacString event,
   }) = _ZacStateMachineActionsSend;
 
-  @FreezedUnionValue(ZacStateMachineActions.unionValue)
+  @FreezedUnionValue(ZacStateMachineActions.unionValueTrySend)
   factory ZacStateMachineActions.trySend({
     required SharedValueFamily family,
     required ZacString event,
@@ -304,13 +304,13 @@ class ZacStateMachineActions
         final machine = SharedValue.get(
                 const SharedValueConsumeType.read(), zacContext, obj.family)
             as ZacStateMachine;
-        machine.send(obj.event.getValue(zacContext), payload.paramsInList);
+        machine.send(obj.event.getValue(zacContext), payload.params);
       },
       trySend: (obj) {
         final machine = SharedValue.get(
                 const SharedValueConsumeType.read(), zacContext, obj.family)
             as ZacStateMachine;
-        machine.trySend(obj.event.getValue(zacContext), payload.paramsInList);
+        machine.trySend(obj.event.getValue(zacContext), payload.params);
       },
     );
   }

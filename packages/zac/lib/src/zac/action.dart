@@ -30,9 +30,9 @@ class ZacActionPayload with _$ZacActionPayload {
   factory ZacActionPayload.param2(Object? first, Object? second) =
       _ZacActionPayloadParam2;
 
-  List<Object?>? get paramsInList => map(
+  Object? get params => map(
         (_) => null,
-        param: (obj) => [obj.value],
+        param: (obj) => obj.value,
         param2: (obj) => [obj.first, obj.second],
       );
 }

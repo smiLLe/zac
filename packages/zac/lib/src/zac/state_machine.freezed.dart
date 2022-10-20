@@ -613,7 +613,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
   switch (json['_converter']) {
     case 'z:1:StateMachine:Action.send':
       return _ZacStateMachineActionsSend.fromJson(json);
-    case 'z:1:StateMachine:Action.send':
+    case 'z:1:StateMachine:Action.trySend':
       return _ZacStateMachineActionsTrySend.fromJson(json);
 
     default:
@@ -708,7 +708,7 @@ abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
 class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   _$_ZacStateMachineActionsTrySend(
       {required this.family, required this.event, final String? $type})
-      : $type = $type ?? 'z:1:StateMachine:Action.send',
+      : $type = $type ?? 'z:1:StateMachine:Action.trySend',
         super._();
 
   factory _$_ZacStateMachineActionsTrySend.fromJson(

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/zac_values.dart';
@@ -8,6 +10,73 @@ import 'package:zac/src/zac/zac_values.dart';
 import '../helper.dart';
 
 void main() {
+  group('convert', () {
+    test('Transition', () {
+      expect(
+          () => ConverterHelper.convertToType<ZacTransition>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine:Transition',
+                'event': 'NEXT',
+                'target': 'foo',
+              }),
+          returnsNormally);
+    });
+
+    test('StateConfig', () {
+      expect(
+          () => ConverterHelper.convertToType<ZacStateConfig>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine:StateConfig',
+                'widget': {'_converter': 'f:1:SizedBox'},
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineProvider', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineProviderBuilder>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine.provide',
+                'family': 'machine',
+                'initialState': 'foo',
+                'states': <String, dynamic>{},
+                'child': {'_converter': 'f:1:SizedBox'},
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineBuildState', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineBuildStateBuilder>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine:BuildState',
+                'family': 'machine',
+                'states': <String>[],
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineActions.send', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineActions>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine:Action.send',
+                'family': 'machine',
+                'event': 'NEXT',
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineActions.trySend', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineActions>(<String, dynamic>{
+                '_converter': 'z:1:StateMachine:Action.trySend',
+                'family': 'machine',
+                'event': 'NEXT',
+              }),
+          returnsNormally);
+    });
+  });
+
   test('Get current config in StateMachine', () {
     var machine = ZacStateMachine(
       states: {
@@ -347,5 +416,83 @@ void main() {
         details.exception,
         isA<StateError>().having((p0) => p0.message, 'Error message',
             contains('It is not possible to build a widget for state "b"')));
+  });
+
+  testWidgets('Send an event through an Action', (tester) async {
+    await testZacWidget(
+      tester,
+      ZacStateMachineProviderBuilder(
+        family: ZacString('machine'),
+        initialState: ZacString('a'),
+        states: {
+          'a': ZacStateConfig(
+            widget: ZacExecuteActionsBuilder.once(
+              actions: ZacActions(
+                [
+                  ZacStateMachineActions.send(
+                    family: 'machine',
+                    event: ZacString('NEXT'),
+                  )
+                ],
+              ),
+              child: FlutterSizedBox(),
+            ),
+            on: [ZacTransition(event: 'NEXT', target: 'b')],
+          ),
+          'b': ZacStateConfig(
+            widget: FlutterSizedBox(
+              key: FlutterValueKey('in b'),
+            ),
+          ),
+        },
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacString('machine'),
+          states: ['a', 'b'],
+        ),
+      ),
+    );
+
+    await tester.pump();
+
+    expect(find.byKey(const ValueKey('in b')), findsOneWidget);
+  });
+
+  testWidgets('Trying to send an event through an Action', (tester) async {
+    await testZacWidget(
+      tester,
+      ZacStateMachineProviderBuilder(
+        family: ZacString('machine'),
+        initialState: ZacString('a'),
+        states: {
+          'a': ZacStateConfig(
+            widget: ZacExecuteActionsBuilder.once(
+              actions: ZacActions(
+                [
+                  ZacStateMachineActions.trySend(
+                    family: 'machine',
+                    event: ZacString('NEXT'),
+                  )
+                ],
+              ),
+              child: FlutterSizedBox(),
+            ),
+            on: [ZacTransition(event: 'NEXT', target: 'b')],
+          ),
+          'b': ZacStateConfig(
+            widget: FlutterSizedBox(
+              key: FlutterValueKey('in b'),
+            ),
+          ),
+        },
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacString('machine'),
+          states: ['a', 'b'],
+        ),
+      ),
+    );
+
+    await tester.pump();
+
+    expect(find.byKey(const ValueKey('in b')), findsOneWidget);
   });
 }
