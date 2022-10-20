@@ -108,7 +108,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
 
   @override
   FutureOr<ZacActions?> execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+      ZacActionPayload payload, ZacContext zacContext) {
     return map(
       alertDialog: (_) => throw StateError('Should never happen'),
       dialog: (_) => throw StateError('Should never happen'),

@@ -82,8 +82,7 @@ class FlutterScaffold
   }) = _FlutterScaffoldShowBottomSheet;
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       (_) => throw StateError('Should never happen'),
       showBottomSheet: (value) {
@@ -214,8 +213,7 @@ class FlutterScaffoldMessenger
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(zacContext.context);

@@ -40,6 +40,7 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
           ? null
           : FlutterRefreshIndicatorTriggerMode.fromJson(
               json['triggerMode'] as Map<String, dynamic>),
+      family: json['family'] as Object? ?? FlutterRefreshIndicator.familyName,
     );
 
 _$_FlutterRefreshIndicatorTriggerModeonEdge

@@ -9,6 +9,7 @@ import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_values.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
@@ -69,11 +70,7 @@ See "$SharedValueProviderBuilder" for more info.
       ZacContext zacContext, SharedValueFamily family, ZacActions actions) {
     zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
-      actions.execute(
-        ZacActionPayload.param2(next, previous),
-        zacContext,
-        prefillBag: (bag) => bag..setActionPayload(next),
-      );
+      actions.execute(ZacActionPayload.param2(next, previous), zacContext);
     });
   }
 }
@@ -99,37 +96,29 @@ class UpdateSharedValueInteractions
   @FreezedUnionValue(UpdateSharedValueInteractions.unionValueReplaceWith)
   factory UpdateSharedValueInteractions.replaceWith({
     required SharedValueFamily family,
-    required Object value,
+    required ZacObject value,
     ZacTransformers? transformer,
   }) = _SharedValueInteractionReplaceWith;
 
   @override
-  void execute(
-          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
+  void execute(ZacActionPayload payload, ZacContext zacContext) =>
       SharedValue.update(
         zacContext,
         family,
-        (current) => map(
+        (current) => map<SharedValueType>(
           (obj) {
             assert(obj.transformer.transformers.isNotEmpty);
 
-            return obj.transformer.transformWithBag(
-              ZacTransformValue(current),
-              zacContext,
-              bag,
-            );
+            return obj.transformer
+                .transform(ZacTransformValue(current), zacContext);
           },
           replaceWith: (obj) {
             if (null == obj.transformer ||
                 true == obj.transformer!.transformers.isEmpty) {
               return obj.value;
             } else {
-              bag.addAll(<String, dynamic>{
-                kBagSharedValueReplaceWith: obj.value,
-                kBagSharedValueCurrent: current,
-              });
-              return obj.transformer!.transformWithBag(
-                  ZacTransformValue(obj.value), zacContext, bag);
+              return obj.transformer!
+                  .transform(ZacTransformValue(obj.value), zacContext);
             }
           },
         ),

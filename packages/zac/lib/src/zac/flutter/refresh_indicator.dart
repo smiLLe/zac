@@ -6,6 +6,7 @@ import 'package:zac/src/flutter/widgets/material/refresh_indicator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 
 part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
@@ -26,15 +27,9 @@ class FlutterRefreshIndicatorAction
       _FlutterRefreshIndicatorAction;
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
-    final completer = bag.safeGet<Completer<void>>(
-      key: kBagActionPayload,
-      notFound: () => throw StateError('''
-There was an error in $FlutterRefreshIndicatorAction where no payload was found.
-It is expected to receive a $Completer from $FlutterRefreshIndicator.
-'''),
-    );
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
+    final completer = SharedValue.get(const SharedValueConsumeType.read(),
+        zacContext, FlutterRefreshIndicator.familyName) as Completer<void>;
 
     if (completer.isCompleted) return;
     completer.complete();

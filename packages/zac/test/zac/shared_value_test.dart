@@ -242,34 +242,6 @@ void main() {
                 const SharedValueConsumeType.read(), zacContext, 'foo'),
             20);
       });
-
-      testWidgets('using Action', (tester) async {
-        final cb = MockLeakBagCb();
-        await testZacWidget(
-          tester,
-          SharedValueProviderBuilder(
-            value: 1,
-            family: 'foo',
-            child: ZacExecuteActionsBuilder.once(
-              actions: ZacActions([
-                UpdateSharedValueInteractions.replaceWith(
-                  family: 'foo',
-                  value: 2,
-                  transformer: ZacTransformers([LeakBagTransformer(cb)]),
-                ),
-              ]),
-              child: FlutterSizedBox(),
-            ),
-          ),
-        );
-
-        verify(cb(argThat(isA<Map<String, dynamic>>()
-                .having((p0) => p0, 'contains SharedValue.replaceWith',
-                    containsPair('SharedValue.replaceWith', 2))
-                .having((p0) => p0, 'contains SharedValue.current',
-                    containsPair('SharedValue.current', 1)))))
-            .called(1);
-      });
     });
 
     group('transform()', () {
@@ -330,8 +302,6 @@ void main() {
 
     testWidgets('replace the value of the SharedValue with another value',
         (tester) async {
-      final cb = MockLeakBagCb();
-
       await testZacWidget(
         tester,
         SharedValueProviderBuilder(
@@ -344,8 +314,7 @@ void main() {
                 actions: ZacActions([
                   UpdateSharedValueInteractions.replaceWith(
                     family: 'family',
-                    value: 'bar',
-                    transformer: ZacTransformers([LeakBagTransformer(cb)]),
+                    value: ZacObject('bar'),
                   ),
                 ]),
                 child: FlutterSizedBox(),
@@ -357,15 +326,8 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      verify(cb(argThat(isA<Map<String, dynamic>>()
-              .having((p0) => p0, 'contains SharedValue.replaceWith',
-                  containsPair('SharedValue.replaceWith', 'bar'))
-              .having((p0) => p0, 'contains SharedValue.current',
-                  containsPair('SharedValue.current', 'foo')))))
-          .called(1);
-
       expect(find.text('bar'), findsOneWidget);
-      verifyNoMoreInteractions(cb);
+      ;
     });
   });
 

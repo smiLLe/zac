@@ -46,7 +46,9 @@ void main() {
     );
 
     final widget = find
-        .byKey(const ValueKey('FIND_ME'), skipOffstage: false)
+        .descendant(
+            of: find.byKey(const ValueKey('FIND_ME'), skipOffstage: false),
+            matching: find.byType(RefreshIndicator))
         .evaluate()
         .first
         .widget;
@@ -76,9 +78,8 @@ void main() {
           title: FlutterText(ZacString('Title')),
         ),
         body: FlutterRefreshIndicator(
-          onRefresh: ZacActions([
-            LeakBagContentAction(cb),
-            const FlutterRefreshIndicatorAction(),
+          onRefresh: const ZacActions([
+            FlutterRefreshIndicatorAction(),
           ]),
           key: FlutterValueKey('FIND_ME'),
           child: FlutterListView(
@@ -95,15 +96,6 @@ void main() {
     final findMe = find.byKey(const ValueKey('FIND_ME'));
     await tester.fling(findMe, const Offset(0.0, 300.0), 1000.0);
     await tester.pumpAndSettle();
-
-    verify(cb(argThat(isA<Map<String, dynamic>>().having(
-            (p0) => p0,
-            'contains action.payload',
-            containsPair(
-                'action.payload',
-                isA<Completer>().having((p0) => p0.isCompleted,
-                    'Completer.isCompleted', isTrue))))))
-        .called(1);
 
     handle.dispose();
   });

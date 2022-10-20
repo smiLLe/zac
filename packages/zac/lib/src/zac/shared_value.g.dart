@@ -18,7 +18,7 @@ _$_SharedValueInteractionReplaceWith
     _$$_SharedValueInteractionReplaceWithFromJson(Map<String, dynamic> json) =>
         _$_SharedValueInteractionReplaceWith(
           family: json['family'] as Object,
-          value: json['value'] as Object,
+          value: ZacObject.fromJson(json['value'] as Object),
           transformer: json['transformer'] == null
               ? null
               : ZacTransformers.fromJson(json['transformer'] as Object),

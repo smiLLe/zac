@@ -86,10 +86,10 @@ void main() {
       await tester.pump();
 
       verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(3);
       verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(3);
     });
 
@@ -204,10 +204,10 @@ void main() {
       await tester.pump();
 
       verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(3);
       verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(3);
     });
 

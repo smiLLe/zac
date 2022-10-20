@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -18,6 +21,8 @@ class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
     implements FlutterWidget {
   const FlutterRefreshIndicator._();
+
+  static const String familyName = 'refresh_indicator';
 
   static const String unionValue = 'f:1:RefreshIndicator';
 
@@ -38,37 +43,46 @@ class FlutterRefreshIndicator
     ZacString? semanticsValue,
     ZacDouble? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
+    @Default(FlutterRefreshIndicator.familyName) SharedValueFamily family,
   }) = _FlutterRefreshIndicator;
 
   @override
-  RefreshIndicator buildWidget(ZacContext zacContext) {
-    return RefreshIndicator(
+  Widget buildWidget(ZacContext zacContext) {
+    return ProviderScope(
       key: key?.buildKey(zacContext),
-      child: child.buildWidget(zacContext),
-      onRefresh: () async {
-        final completer = Completer<void>();
-        final bag = ContextBag();
-        bag.setActionPayload(completer);
-        zacContext.onUnmount(() {
-          if (completer.isCompleted) return;
-          completer.completeError(const Object());
-        });
-        completer.future.whenComplete(() {
-          bag.clear();
-        });
-
-        onRefresh.executeWithBag(
-            ZacActionPayload.param(completer), zacContext, bag);
-        return completer.future;
-      },
-      displacement: displacement?.getValue(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
-      color: color?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      semanticsValue: semanticsValue?.getValue(zacContext),
-      triggerMode:
-          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
+      overrides: [
+        SharedValue.provider(family).overrideWithProvider(
+            AutoDisposeStateProvider<SharedValueType>((ref) {
+          final completer = Completer<void>();
+          ref.onDispose(() {
+            if (completer.isCompleted) return;
+            completer.complete();
+          });
+          return completer;
+        })),
+      ],
+      child: ZacUpdateOrigin(
+        builder: (zacContext) {
+          final completer = SharedValue.get(
+                  const SharedValueConsumeType.watch(), zacContext, family)
+              as Completer<void>;
+          return RefreshIndicator(
+            child: child.buildWidget(zacContext),
+            onRefresh: () async {
+              onRefresh.execute(ZacActionPayload.param(completer), zacContext);
+              return completer.future;
+            },
+            displacement: displacement?.getValue(zacContext) ?? 40.0,
+            edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+            color: color?.build(zacContext),
+            backgroundColor: backgroundColor?.build(zacContext),
+            semanticsLabel: semanticsLabel?.getValue(zacContext),
+            semanticsValue: semanticsValue?.getValue(zacContext),
+            triggerMode: triggerMode?.build(zacContext) ??
+                RefreshIndicatorTriggerMode.onEdge,
+          );
+        },
+      ),
     );
   }
 }

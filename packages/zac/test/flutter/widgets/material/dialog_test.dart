@@ -221,7 +221,7 @@ void main() {
 
       await tester.tap(findMe);
 
-      verify(cb(argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+      verify(cb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(1);
     });
   });

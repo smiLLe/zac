@@ -34,6 +34,7 @@ mixin _$FlutterRefreshIndicator {
   ZacDouble? get strokeWidth => throw _privateConstructorUsedError;
   FlutterRefreshIndicatorTriggerMode? get triggerMode =>
       throw _privateConstructorUsedError;
+  Object get family => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -56,7 +57,8 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
       this.semanticsLabel,
       this.semanticsValue,
       this.strokeWidth,
-      this.triggerMode})
+      this.triggerMode,
+      this.family = FlutterRefreshIndicator.familyName})
       : super._();
 
   factory _$_FlutterRefreshIndicator.fromJson(Map<String, dynamic> json) =>
@@ -85,10 +87,13 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   final ZacDouble? strokeWidth;
   @override
   final FlutterRefreshIndicatorTriggerMode? triggerMode;
+  @override
+  @JsonKey()
+  final Object family;
 
   @override
   String toString() {
-    return 'FlutterRefreshIndicator(key: $key, child: $child, displacement: $displacement, edgeOffset: $edgeOffset, onRefresh: $onRefresh, color: $color, backgroundColor: $backgroundColor, semanticsLabel: $semanticsLabel, semanticsValue: $semanticsValue, strokeWidth: $strokeWidth, triggerMode: $triggerMode)';
+    return 'FlutterRefreshIndicator(key: $key, child: $child, displacement: $displacement, edgeOffset: $edgeOffset, onRefresh: $onRefresh, color: $color, backgroundColor: $backgroundColor, semanticsLabel: $semanticsLabel, semanticsValue: $semanticsValue, strokeWidth: $strokeWidth, triggerMode: $triggerMode, family: $family)';
   }
 
   @override
@@ -113,7 +118,8 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
             const DeepCollectionEquality()
                 .equals(other.strokeWidth, strokeWidth) &&
             const DeepCollectionEquality()
-                .equals(other.triggerMode, triggerMode));
+                .equals(other.triggerMode, triggerMode) &&
+            const DeepCollectionEquality().equals(other.family, family));
   }
 
   @JsonKey(ignore: true)
@@ -130,7 +136,8 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
       const DeepCollectionEquality().hash(semanticsLabel),
       const DeepCollectionEquality().hash(semanticsValue),
       const DeepCollectionEquality().hash(strokeWidth),
-      const DeepCollectionEquality().hash(triggerMode));
+      const DeepCollectionEquality().hash(triggerMode),
+      const DeepCollectionEquality().hash(family));
 
   @override
   @optionalTypeArgs
@@ -143,18 +150,18 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
 
 abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   factory _FlutterRefreshIndicator(
-          {final FlutterKey? key,
-          required final FlutterWidget child,
-          final ZacDouble? displacement,
-          final ZacDouble? edgeOffset,
-          required final ZacActions onRefresh,
-          final FlutterColor? color,
-          final FlutterColor? backgroundColor,
-          final ZacString? semanticsLabel,
-          final ZacString? semanticsValue,
-          final ZacDouble? strokeWidth,
-          final FlutterRefreshIndicatorTriggerMode? triggerMode}) =
-      _$_FlutterRefreshIndicator;
+      {final FlutterKey? key,
+      required final FlutterWidget child,
+      final ZacDouble? displacement,
+      final ZacDouble? edgeOffset,
+      required final ZacActions onRefresh,
+      final FlutterColor? color,
+      final FlutterColor? backgroundColor,
+      final ZacString? semanticsLabel,
+      final ZacString? semanticsValue,
+      final ZacDouble? strokeWidth,
+      final FlutterRefreshIndicatorTriggerMode? triggerMode,
+      final Object family}) = _$_FlutterRefreshIndicator;
   _FlutterRefreshIndicator._() : super._();
 
   factory _FlutterRefreshIndicator.fromJson(Map<String, dynamic> json) =
@@ -182,6 +189,8 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   ZacDouble? get strokeWidth;
   @override
   FlutterRefreshIndicatorTriggerMode? get triggerMode;
+  @override
+  Object get family;
 }
 
 FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(

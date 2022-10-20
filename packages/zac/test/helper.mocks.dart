@@ -5,8 +5,8 @@
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/action.dart' as _i3;
 import 'package:zac/src/zac/context.dart' as _i4;
-import 'package:zac/src/zac/misc.dart' as _i5;
-import 'package:zac/src/zac/transformers.dart' as _i6;
+import 'package:zac/src/zac/misc.dart' as _i6;
+import 'package:zac/src/zac/transformers.dart' as _i5;
 
 import 'helper.dart' as _i2;
 
@@ -29,9 +29,8 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
   }
 
   @override
-  void call(_i3.ZacActionPayload? payload, _i4.ZacContext? zacContext,
-          _i5.ContextBag? bag) =>
-      super.noSuchMethod(Invocation.method(#call, [payload, zacContext, bag]),
+  void call(_i3.ZacActionPayload? payload, _i4.ZacContext? zacContext) =>
+      super.noSuchMethod(Invocation.method(#call, [payload, zacContext]),
           returnValueForMissingStub: null);
 }
 
@@ -64,14 +63,14 @@ class MockLeakBagTransformer extends _i1.Mock
               returnValue: (Map<String, dynamic> bag) {})
           as void Function(Map<String, dynamic>));
   @override
-  Object? call(_i6.ZacTransformValue? transformValue,
-          _i4.ZacContext? zacContext, _i5.ContextBag? bag) =>
+  Object? call(_i5.ZacTransformValue? transformValue,
+          _i4.ZacContext? zacContext, _i6.ContextBag? bag) =>
       (super.noSuchMethod(
               Invocation.method(#call, [transformValue, zacContext, bag]))
           as Object?);
   @override
-  Object? transform(_i6.ZacTransformValue? transformValue,
-          _i4.ZacContext? zacContext, _i5.ContextBag? bag) =>
+  Object? transform(_i5.ZacTransformValue? transformValue,
+          _i4.ZacContext? zacContext, _i6.ContextBag? bag) =>
       (super.noSuchMethod(
               Invocation.method(#transform, [transformValue, zacContext, bag]))
           as Object?);

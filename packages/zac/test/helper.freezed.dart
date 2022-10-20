@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LeakAction {
-  void Function(ZacActionPayload, ZacContext, ContextBag) get cb =>
+  void Function(ZacActionPayload, ZacContext) get cb =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -32,7 +32,7 @@ class _$_LeakAction extends _LeakAction {
   _$_LeakAction(this.cb) : super._();
 
   @override
-  final void Function(ZacActionPayload, ZacContext, ContextBag) cb;
+  final void Function(ZacActionPayload, ZacContext) cb;
 
   @override
   String toString() {
@@ -60,67 +60,12 @@ class _$_LeakAction extends _LeakAction {
 }
 
 abstract class _LeakAction extends LeakAction {
-  factory _LeakAction(
-          final void Function(ZacActionPayload, ZacContext, ContextBag) cb) =
+  factory _LeakAction(final void Function(ZacActionPayload, ZacContext) cb) =
       _$_LeakAction;
   _LeakAction._() : super._();
 
   @override
-  void Function(ZacActionPayload, ZacContext, ContextBag) get cb;
-}
-
-/// @nodoc
-mixin _$LeakBagContentAction {
-  void Function(Map<String, dynamic>) get cb =>
-      throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LeakBagContentAction value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-
-class _$_LeakBagContentAction extends _LeakBagContentAction {
-  _$_LeakBagContentAction(this.cb) : super._();
-
-  @override
-  final void Function(Map<String, dynamic>) cb;
-
-  @override
-  String toString() {
-    return 'LeakBagContentAction(cb: $cb)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LeakBagContentAction &&
-            (identical(other.cb, cb) || other.cb == cb));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, cb);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LeakBagContentAction value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _LeakBagContentAction extends LeakBagContentAction {
-  factory _LeakBagContentAction(final void Function(Map<String, dynamic>) cb) =
-      _$_LeakBagContentAction;
-  _LeakBagContentAction._() : super._();
-
-  @override
-  void Function(Map<String, dynamic>) get cb;
+  void Function(ZacActionPayload, ZacContext) get cb;
 }
 
 NoopAction _$NoopActionFromJson(Map<String, dynamic> json) {

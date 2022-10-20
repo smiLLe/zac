@@ -131,7 +131,7 @@ class _$_SharedValueInteractionReplaceWith
   @override
   final Object family;
   @override
-  final Object value;
+  final ZacObject value;
   @override
   final ZacTransformers? transformer;
 
@@ -177,7 +177,7 @@ abstract class _SharedValueInteractionReplaceWith
     extends UpdateSharedValueInteractions {
   factory _SharedValueInteractionReplaceWith(
           {required final Object family,
-          required final Object value,
+          required final ZacObject value,
           final ZacTransformers? transformer}) =
       _$_SharedValueInteractionReplaceWith;
   _SharedValueInteractionReplaceWith._() : super._();
@@ -188,7 +188,7 @@ abstract class _SharedValueInteractionReplaceWith
 
   @override
   Object get family;
-  Object get value;
+  ZacObject get value;
   ZacTransformers? get transformer;
 }
 

@@ -105,8 +105,7 @@ void main() {
         ZacExecuteActionsBuilder.once(
             actions: LeakAction.createActions(executeCb)),
       );
-      verify(executeCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+      verify(executeCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
           .called(1);
       await tester.pump();
       await tester.pump();
@@ -143,7 +142,7 @@ void main() {
 
     testWidgets('execute interactions', (tester) async {
       late ZacContext zacContext;
-      final cb = MockLeakBagCb();
+      final cb = MockLeakedActionCb();
 
       await testZacWidget(
         tester,
@@ -151,7 +150,7 @@ void main() {
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            actions: LeakBagContentAction.createActions(cb),
+            actions: ZacActions([LeakAction(cb)]),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
@@ -166,7 +165,11 @@ void main() {
       SharedValue.update(zacContext, 'shared', (current) => 2);
       await tester.pumpAndSettle();
 
-      verify(cb(argThat(containsPair('action.payload', 2)))).called(1);
+      verify(cb(
+              argThat(isA<ZacActionPayload>()
+                  .having((p0) => p0.params, 'param', [2, 1])),
+              any))
+          .called(1);
       verifyNoMoreInteractions(cb);
     });
   });

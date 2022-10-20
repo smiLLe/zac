@@ -159,8 +159,7 @@ class FlutterNavigatorActions
   }
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       push: (obj) {
         final state = _getState(zacContext);
@@ -170,7 +169,6 @@ class FlutterNavigatorActions
             value.execute(
               const ZacActionPayload(),
               zacContext,
-              prefillBag: (bag) => bag..addEntries(bag.entries),
             );
           }
         });
@@ -185,11 +183,7 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(
-              const ZacActionPayload(),
-              zacContext,
-              prefillBag: (bag) => bag..addEntries(bag.entries),
-            );
+            value.execute(const ZacActionPayload(), zacContext);
           }
         });
       },
@@ -213,11 +207,7 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(
-              const ZacActionPayload(),
-              zacContext,
-              prefillBag: (bag) => bag..addEntries(bag.entries),
-            );
+            value.execute(const ZacActionPayload(), zacContext);
           }
         });
       },
@@ -232,11 +222,7 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (value is ZacActions) {
-            value.execute(
-              const ZacActionPayload(),
-              zacContext,
-              prefillBag: (bag) => bag..addEntries(bag.entries),
-            );
+            value.execute(const ZacActionPayload(), zacContext);
           }
         });
       },

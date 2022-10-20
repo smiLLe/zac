@@ -44,13 +44,12 @@ void main() {
     widget.onTertiaryLongPress?.call();
 
     verifyInOrder([
-      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
-      onLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+      onLongPressCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
       onSecondaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
       onTertiaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
@@ -81,8 +80,7 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('FIND_ME')));
     await tester.pumpAndSettle();
 
-    verify(doubleTapCb(
-            argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+    verify(doubleTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
         .called(1);
   });
 

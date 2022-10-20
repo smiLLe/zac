@@ -136,7 +136,7 @@ Future<void> testWithConverters({
 
 @GenerateMocks([LeakedActionCb])
 class LeakedActionCb extends Mock {
-  void call(ZacActionPayload payload, ZacContext zacContext, ContextBag bag);
+  void call(ZacActionPayload payload, ZacContext zacContext);
 }
 
 @GenerateMocks([LeakBagCb])
@@ -149,36 +149,16 @@ class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
   factory LeakAction(
-      void Function(
-              ZacActionPayload payload, ZacContext zacContext, ContextBag bag)
-          cb) = _LeakAction;
+          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =
+      _LeakAction;
 
   static ZacActions createActions(
-          void Function(ZacActionPayload payload, ZacContext zacContext,
-                  ContextBag bag)
-              cb) =>
+          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =>
       ZacActions([LeakAction(cb)]);
 
   @override
-  void execute(
-          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
-      cb(payload, zacContext, bag);
-}
-
-@nonConverterFreezed
-class LeakBagContentAction with _$LeakBagContentAction implements ZacAction {
-  const LeakBagContentAction._();
-
-  factory LeakBagContentAction(void Function(Map<String, dynamic> bag) cb) =
-      _LeakBagContentAction;
-
-  static ZacActions createActions(void Function(Map<String, dynamic> bag) cb) =>
-      ZacActions([LeakBagContentAction(cb)]);
-
-  @override
-  void execute(
-          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
-      cb(<String, dynamic>{...bag});
+  void execute(ZacActionPayload payload, ZacContext zacContext) =>
+      cb(payload, zacContext);
 }
 
 @defaultConverterFreezed
@@ -202,8 +182,7 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {}
+  void execute(ZacActionPayload payload, ZacContext zacContext) {}
 }
 
 class CustomTransformer implements ZacTransformer {

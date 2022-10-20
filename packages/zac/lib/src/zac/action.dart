@@ -18,7 +18,7 @@ abstract class ZacAction {
     return ConverterHelper.convertToType<ZacAction>(data);
   }
 
-  void execute(ZacActionPayload payload, ZacContext zacContext, ContextBag bag);
+  void execute(ZacActionPayload payload, ZacContext zacContext);
 }
 
 @freezed
@@ -66,30 +66,13 @@ class ZacActions with _$ZacActions {
   @FreezedUnionValue(ZacActions.unionValue)
   const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
-  void execute(
-    ZacActionPayload payload,
-    ZacContext zacContext, {
-    void Function(ContextBag bag)? prefillBag,
-  }) async {
+  void execute(ZacActionPayload payload, ZacContext zacContext) async {
     if (!zacContext.isMounted()) return;
-    final bag = ContextBag();
-    prefillBag?.call(bag);
-    executeWithBag(payload, zacContext, bag);
-    bag.clear();
-  }
-
-  void executeWithBag(
-    ZacActionPayload payload,
-    ZacContext zacContext,
-    ContextBag bag,
-  ) {
-    if (!zacContext.isMounted()) return;
-
     for (var action in actions) {
       if (!zacContext.isMounted()) {
         return;
       }
-      action.execute(payload, zacContext, bag);
+      action.execute(payload, zacContext);
     }
   }
 }
@@ -101,8 +84,7 @@ extension Interactions on ZacActions {
 
   void Function(T data) createCbParam1<T extends Object?>(
       ZacContext zacContext) {
-    return (T data) => execute(ZacActionPayload.param(data), zacContext,
-        prefillBag: (bag) => bag..addKeyValue(kBagActionPayload, data));
+    return (T data) => execute(ZacActionPayload.param(data), zacContext);
   }
 }
 

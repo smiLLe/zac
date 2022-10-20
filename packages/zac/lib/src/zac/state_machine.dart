@@ -297,8 +297,7 @@ class ZacStateMachineActions
   }) = _ZacStateMachineActionsTrySend;
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       send: (obj) {
         final machine = SharedValue.get(

@@ -45,9 +45,8 @@ void main() {
     await tester.longPress(findMe);
 
     verifyInOrder([
-      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
-      onLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+      onLongPressCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
     ]);
 
     verifyNoMoreInteractions(onTapCb);

@@ -123,8 +123,7 @@ class ZacFlutterNavigatorActions
   }
 
   @override
-  void execute(
-      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
     final state = _getState(zacContext);
     if (null == state) return;
 
