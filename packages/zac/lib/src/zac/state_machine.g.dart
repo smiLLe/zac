@@ -53,3 +53,19 @@ _$_ZacStateMachineBuildStateBuilder
               ? null
               : FlutterWidget.fromJson(json['unmappedStateWidget'] as Object),
         );
+
+_$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacStateMachineActionsSend(
+      family: json['family'] as Object,
+      event: ZacString.fromJson(json['event'] as Object),
+      $type: json['_converter'] as String?,
+    );
+
+_$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacStateMachineActionsTrySend(
+      family: json['family'] as Object,
+      event: ZacString.fromJson(json['event'] as Object),
+      $type: json['_converter'] as String?,
+    );

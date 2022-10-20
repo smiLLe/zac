@@ -607,3 +607,164 @@ abstract class _ZacStateMachineBuildStateBuilder
   @override
   FlutterWidget? get unmappedStateWidget;
 }
+
+ZacStateMachineActions _$ZacStateMachineActionsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['_converter']) {
+    case 'z:1:StateMachine:Action.send':
+      return _ZacStateMachineActionsSend.fromJson(json);
+    case 'z:1:StateMachine:Action.send':
+      return _ZacStateMachineActionsTrySend.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          '_converter',
+          'ZacStateMachineActions',
+          'Invalid union type "${json['_converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacStateMachineActions {
+  Object get family => throw _privateConstructorUsedError;
+  ZacString get event => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineActionsSend value) send,
+    required TResult Function(_ZacStateMachineActionsTrySend value) trySend,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
+  _$_ZacStateMachineActionsSend(
+      {required this.family, required this.event, final String? $type})
+      : $type = $type ?? 'z:1:StateMachine:Action.send',
+        super._();
+
+  factory _$_ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineActionsSendFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  final ZacString event;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacStateMachineActions.send(family: $family, event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacStateMachineActionsSend &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality().equals(other.event, event));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(event));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineActionsSend value) send,
+    required TResult Function(_ZacStateMachineActionsTrySend value) trySend,
+  }) {
+    return send(this);
+  }
+}
+
+abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
+  factory _ZacStateMachineActionsSend(
+      {required final Object family,
+      required final ZacString event}) = _$_ZacStateMachineActionsSend;
+  _ZacStateMachineActionsSend._() : super._();
+
+  factory _ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineActionsSend.fromJson;
+
+  @override
+  Object get family;
+  @override
+  ZacString get event;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
+  _$_ZacStateMachineActionsTrySend(
+      {required this.family, required this.event, final String? $type})
+      : $type = $type ?? 'z:1:StateMachine:Action.send',
+        super._();
+
+  factory _$_ZacStateMachineActionsTrySend.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacStateMachineActionsTrySendFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  final ZacString event;
+
+  @JsonKey(name: '_converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacStateMachineActions.trySend(family: $family, event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacStateMachineActionsTrySend &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            const DeepCollectionEquality().equals(other.event, event));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      const DeepCollectionEquality().hash(event));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineActionsSend value) send,
+    required TResult Function(_ZacStateMachineActionsTrySend value) trySend,
+  }) {
+    return trySend(this);
+  }
+}
+
+abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
+  factory _ZacStateMachineActionsTrySend(
+      {required final Object family,
+      required final ZacString event}) = _$_ZacStateMachineActionsTrySend;
+  _ZacStateMachineActionsTrySend._() : super._();
+
+  factory _ZacStateMachineActionsTrySend.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineActionsTrySend.fromJson;
+
+  @override
+  Object get family;
+  @override
+  ZacString get event;
+}

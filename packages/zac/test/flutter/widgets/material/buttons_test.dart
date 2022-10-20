@@ -2,6 +2,7 @@ import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/action.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -84,8 +85,12 @@ void main() {
       await tester.longPress(findMe);
       await tester.pump();
 
-      verify(onPressedCb(argThat(isAOriginWidgetTree), any)).called(3);
-      verify(onLongPressCb(argThat(isAOriginWidgetTree), any)).called(3);
+      verify(onPressedCb(
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+          .called(3);
+      verify(onLongPressCb(
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+          .called(3);
     });
 
     testWidgets('ElevatedButton()', (tester) async {
@@ -198,8 +203,12 @@ void main() {
       await tester.longPress(findMe);
       await tester.pump();
 
-      verify(onPressedCb(argThat(isAOriginWidgetTree), any)).called(3);
-      verify(onLongPressCb(argThat(isAOriginWidgetTree), any)).called(3);
+      verify(onPressedCb(
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+          .called(3);
+      verify(onLongPressCb(
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+          .called(3);
     });
 
     testWidgets('ElevatedButton', (tester) async {

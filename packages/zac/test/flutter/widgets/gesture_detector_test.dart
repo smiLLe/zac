@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/action.dart';
 
 import '../../helper.dart';
 import '../../helper.mocks.dart';
@@ -43,10 +44,13 @@ void main() {
     widget.onTertiaryLongPress?.call();
 
     verifyInOrder([
-      onTapCb(argThat(isAOriginWidgetTree), any),
-      onLongPressCb(argThat(isAOriginWidgetTree), any),
-      onSecondaryLongPressCb(argThat(isAOriginWidgetTree), any),
-      onTertiaryLongPressCb(argThat(isAOriginWidgetTree), any),
+      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onLongPressCb(
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onSecondaryLongPressCb(
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onTertiaryLongPressCb(
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
@@ -77,7 +81,9 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('FIND_ME')));
     await tester.pumpAndSettle();
 
-    verify(doubleTapCb(argThat(isAOriginWidgetTree), any)).called(1);
+    verify(doubleTapCb(
+            argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+        .called(1);
   });
 
   testWidgets('properties', (tester) async {

@@ -57,7 +57,8 @@ class FlutterRefreshIndicator
           bag.clear();
         });
 
-        onRefresh.executeWithBag(zacContext, bag);
+        onRefresh.executeWithBag(
+            ZacActionPayload.param(completer), zacContext, bag);
         return completer.future;
       },
       displacement: displacement?.getValue(zacContext) ?? 40.0,

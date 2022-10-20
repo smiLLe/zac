@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/misc.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
@@ -52,9 +51,9 @@ class ZacStateMachine with _$ZacStateMachine {
   factory ZacStateMachine({
     required Map<String, ZacStateConfig> states,
     required String state,
-    required SharedValueType? context,
-    required void Function(String event, SharedValueType? context) send,
-    required void Function(String event, SharedValueType? context) trySend,
+    required SharedValueType context,
+    required void Function(String event, SharedValueType context) send,
+    required void Function(String event, SharedValueType context) trySend,
   }) = _ZacStateMachine;
 
   ZacStateConfig get config {
@@ -270,5 +269,49 @@ All possible states are "${machine.states.keys.join(', ')}".
       return machine.widget.buildWidget(zacContext);
     }
     return unmappedStateWidget(zacContext);
+  }
+}
+
+@defaultConverterFreezed
+class ZacStateMachineActions
+    with _$ZacStateMachineActions
+    implements ZacAction {
+  const ZacStateMachineActions._();
+
+  static const String unionValue = 'z:1:StateMachine:Action.send';
+  static const String unionValueTrySend = 'z:1:StateMachine:Action.trySend';
+
+  factory ZacStateMachineActions.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateMachineActionsFromJson(json);
+
+  @FreezedUnionValue(ZacStateMachineActions.unionValue)
+  factory ZacStateMachineActions.send({
+    required SharedValueFamily family,
+    required ZacString event,
+  }) = _ZacStateMachineActionsSend;
+
+  @FreezedUnionValue(ZacStateMachineActions.unionValue)
+  factory ZacStateMachineActions.trySend({
+    required SharedValueFamily family,
+    required ZacString event,
+  }) = _ZacStateMachineActionsTrySend;
+
+  @override
+  void execute(
+      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
+    map(
+      send: (obj) {
+        final machine = SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, obj.family)
+            as ZacStateMachine;
+        machine.send(obj.event.getValue(zacContext), payload.paramsInList);
+      },
+      trySend: (obj) {
+        final machine = SharedValue.get(
+                const SharedValueConsumeType.read(), zacContext, obj.family)
+            as ZacStateMachine;
+        machine.trySend(obj.event.getValue(zacContext), payload.paramsInList);
+      },
+    );
   }
 }

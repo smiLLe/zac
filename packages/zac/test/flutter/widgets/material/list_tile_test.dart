@@ -2,6 +2,7 @@ import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/action.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -44,8 +45,9 @@ void main() {
     await tester.longPress(findMe);
 
     verifyInOrder([
-      onTapCb(argThat(isAOriginWidgetTree), any),
-      onLongPressCb(argThat(isAOriginWidgetTree), any),
+      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
+      onLongPressCb(
+          argThat(isA<ZacActionPayload>()), argThat(isZacContext), any),
     ]);
 
     verifyNoMoreInteractions(onTapCb);

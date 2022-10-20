@@ -28,7 +28,7 @@ class FakeZacContext extends Fake implements ZacContext {}
 
 Matcher throwsConverterError = throwsA(isA<ConverterError>());
 
-TypeMatcher<ZacContext> isAOriginWidgetTree = isA<ZacContext>();
+TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
 
 TypeMatcher<SharedValueType> isSharedValue(dynamic matcher) {
   return isA<SharedValueType>().having((p0) => p0, 'SharedValueType', matcher);
@@ -136,7 +136,7 @@ Future<void> testWithConverters({
 
 @GenerateMocks([LeakedActionCb])
 class LeakedActionCb extends Mock {
-  void call(ZacContext zacContext, ContextBag bag);
+  void call(ZacActionPayload payload, ZacContext zacContext, ContextBag bag);
 }
 
 @GenerateMocks([LeakBagCb])
@@ -148,15 +148,21 @@ class LeakBagCb extends Mock {
 class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
-  factory LeakAction(void Function(ZacContext zacContext, ContextBag bag) cb) =
-      _LeakAction;
+  factory LeakAction(
+      void Function(
+              ZacActionPayload payload, ZacContext zacContext, ContextBag bag)
+          cb) = _LeakAction;
 
   static ZacActions createActions(
-          void Function(ZacContext zacContext, ContextBag bag) cb) =>
+          void Function(ZacActionPayload payload, ZacContext zacContext,
+                  ContextBag bag)
+              cb) =>
       ZacActions([LeakAction(cb)]);
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) => cb(zacContext, bag);
+  void execute(
+          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
+      cb(payload, zacContext, bag);
 }
 
 @nonConverterFreezed
@@ -170,7 +176,8 @@ class LeakBagContentAction with _$LeakBagContentAction implements ZacAction {
       ZacActions([LeakBagContentAction(cb)]);
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) =>
+  void execute(
+          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
       cb(<String, dynamic>{...bag});
 }
 
@@ -195,7 +202,8 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) {}
+  void execute(
+      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {}
 }
 
 class CustomTransformer implements ZacTransformer {

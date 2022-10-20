@@ -105,7 +105,9 @@ void main() {
         ZacExecuteActionsBuilder.once(
             actions: LeakAction.createActions(executeCb)),
       );
-      verify(executeCb(argThat(isAOriginWidgetTree), any)).called(1);
+      verify(executeCb(
+              argThat(isA<ZacActionPayload>()), argThat(isZacContext), any))
+          .called(1);
       await tester.pump();
       await tester.pump();
       await tester.pump();

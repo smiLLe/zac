@@ -62,6 +62,7 @@ See "$SharedValueProviderBuilder" for more info.
     zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
       actions.execute(
+        ZacActionPayload.param2(next, previous),
         zacContext,
         prefillBag: (bag) => bag..setActionPayload(next),
       );
@@ -95,7 +96,9 @@ class UpdateSharedValueInteractions
   }) = _SharedValueInteractionReplaceWith;
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) => SharedValue.update(
+  void execute(
+          ZacActionPayload payload, ZacContext zacContext, ContextBag bag) =>
+      SharedValue.update(
         zacContext,
         family,
         (current) => map(

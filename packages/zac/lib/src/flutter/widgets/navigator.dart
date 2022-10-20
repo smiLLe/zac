@@ -159,7 +159,8 @@ class FlutterNavigatorActions
   }
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) {
+  void execute(
+      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
     map(
       push: (obj) {
         final state = _getState(zacContext);
@@ -167,6 +168,7 @@ class FlutterNavigatorActions
         state.push(obj.route.build(zacContext)).then((value) {
           if (value is ZacActions) {
             value.execute(
+              const ZacActionPayload(),
               zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
@@ -184,6 +186,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (value is ZacActions) {
             value.execute(
+              const ZacActionPayload(),
               zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
@@ -211,6 +214,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (value is ZacActions) {
             value.execute(
+              const ZacActionPayload(),
               zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );
@@ -229,6 +233,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (value is ZacActions) {
             value.execute(
+              const ZacActionPayload(),
               zacContext,
               prefillBag: (bag) => bag..addEntries(bag.entries),
             );

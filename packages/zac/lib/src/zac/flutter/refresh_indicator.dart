@@ -26,7 +26,8 @@ class FlutterRefreshIndicatorAction
       _FlutterRefreshIndicatorAction;
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) {
+  void execute(
+      ZacActionPayload payload, ZacContext zacContext, ContextBag bag) {
     final completer = bag.safeGet<Completer<void>>(
       key: kBagActionPayload,
       notFound: () => throw StateError('''

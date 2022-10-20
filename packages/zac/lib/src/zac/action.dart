@@ -18,15 +18,24 @@ abstract class ZacAction {
     return ConverterHelper.convertToType<ZacAction>(data);
   }
 
-  void execute(ZacContext zacContext, ContextBag bag);
+  void execute(ZacActionPayload payload, ZacContext zacContext, ContextBag bag);
 }
 
-// @freezed
-// class ZacActionPayload with _$ZacActionPayload {
-//   const factory ZacActionPayload() = _ZacActionPayloadNone;
-//   const factory ZacActionPayload.param() = _ZacActionPayloadParam;
-//   const factory ZacActionPayload.param2() = _ZacActionPayloadParam2;
-// }
+@freezed
+class ZacActionPayload with _$ZacActionPayload {
+  const ZacActionPayload._();
+
+  const factory ZacActionPayload() = _ZacActionPayloadNone;
+  factory ZacActionPayload.param(Object? value) = _ZacActionPayloadParam;
+  factory ZacActionPayload.param2(Object? first, Object? second) =
+      _ZacActionPayloadParam2;
+
+  List<Object?>? get paramsInList => map(
+        (_) => null,
+        param: (obj) => [obj.value],
+        param2: (obj) => [obj.first, obj.second],
+      );
+}
 
 @defaultConverterFreezed
 class ZacActions with _$ZacActions {
@@ -58,17 +67,19 @@ class ZacActions with _$ZacActions {
   const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
   void execute(
+    ZacActionPayload payload,
     ZacContext zacContext, {
     void Function(ContextBag bag)? prefillBag,
   }) async {
     if (!zacContext.isMounted()) return;
     final bag = ContextBag();
     prefillBag?.call(bag);
-    executeWithBag(zacContext, bag);
+    executeWithBag(payload, zacContext, bag);
     bag.clear();
   }
 
   void executeWithBag(
+    ZacActionPayload payload,
     ZacContext zacContext,
     ContextBag bag,
   ) {
@@ -78,19 +89,19 @@ class ZacActions with _$ZacActions {
       if (!zacContext.isMounted()) {
         return;
       }
-      action.execute(zacContext, bag);
+      action.execute(payload, zacContext, bag);
     }
   }
 }
 
 extension Interactions on ZacActions {
   void Function() createCb(ZacContext zacContext) {
-    return () => execute(zacContext);
+    return () => execute(const ZacActionPayload(), zacContext);
   }
 
   void Function(T data) createCbParam1<T extends Object?>(
       ZacContext zacContext) {
-    return (T data) => execute(zacContext,
+    return (T data) => execute(ZacActionPayload.param(data), zacContext,
         prefillBag: (bag) => bag..addKeyValue(kBagActionPayload, data));
   }
 }
@@ -171,7 +182,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(zacContext);
+        actions.execute(const ZacActionPayload(), zacContext);
         if (!mounted) return;
         doneState.value = true;
       });
