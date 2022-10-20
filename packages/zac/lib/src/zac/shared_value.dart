@@ -43,7 +43,7 @@ See "$SharedValueProviderBuilder" for more info.
 
         return zacContext.ref.watch(SharedValue.provider(family)
             .select<SharedValueType>((sharedValue) => obj.select!
-                .transform(ZacTransformValue(sharedValue), zacContext)));
+                .transform(ZacTransformValue(sharedValue), zacContext, null)));
       },
       read: (_) =>
           zacContext.ref.read<SharedValueType>(SharedValue.provider(family)),
@@ -110,7 +110,7 @@ class UpdateSharedValueInteractions
             assert(obj.transformer.transformers.isNotEmpty);
 
             return obj.transformer
-                .transform(ZacTransformValue(current), zacContext);
+                .transform(ZacTransformValue(current), zacContext, payload);
           },
           replaceWith: (obj) {
             if (null == obj.transformer ||
@@ -118,7 +118,7 @@ class UpdateSharedValueInteractions
               return obj.value;
             } else {
               return obj.transformer!
-                  .transform(ZacTransformValue(obj.value), zacContext);
+                  .transform(ZacTransformValue(obj.value), zacContext, payload);
             }
           },
         ),
@@ -194,10 +194,8 @@ class SharedValueProvider extends HookConsumerWidget {
       () {
         return null == transformer || true == transformer!.transformers.isEmpty
             ? value
-            : transformer!.transform(
-                ZacTransformValue(value),
-                zacContext,
-              );
+            : transformer!
+                .transform(ZacTransformValue(value), zacContext, null);
       },
       [value, family, transformer],
     );

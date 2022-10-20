@@ -189,32 +189,12 @@ class CustomTransformer implements ZacTransformer {
   CustomTransformer(this.cb);
 
   final Object? Function(ZacTransformValue transformValue,
-      ZacContext zacContext, ContextBag bag) cb;
+      ZacContext zacContext, ZacActionPayload? payload) cb;
 
   @override
-  Object? transform(
-      ZacTransformValue transformValue, ZacContext zacContext, ContextBag bag) {
-    return cb(transformValue, zacContext, bag);
-  }
-}
-
-@GenerateMocks([LeakBagTransformer])
-class LeakBagTransformer extends Mock implements ZacTransformer {
-  LeakBagTransformer(this.cb);
-
-  final void Function(Map<String, dynamic> bag) cb;
-
-  Object? call(
-      ZacTransformValue transformValue, ZacContext zacContext, ContextBag bag) {
-    cb(<String, dynamic>{...bag});
-    return transformValue.value;
-  }
-
-  @override
-  Object? transform(
-      ZacTransformValue transformValue, ZacContext zacContext, ContextBag bag) {
-    cb(<String, dynamic>{...bag});
-    return transformValue.value;
+  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
+      ZacActionPayload? payload) {
+    return cb(transformValue, zacContext, payload);
   }
 }
 

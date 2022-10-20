@@ -6,12 +6,6 @@ part of 'transformers.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacTransformValue _$$_ZacTransformValueFromJson(Map<String, dynamic> json) =>
-    _$_ZacTransformValue(
-      json['value'],
-      extra: json['extra'] as Map<String, dynamic>?,
-    );
-
 _$_ZacTransformers _$$_ZacTransformersFromJson(Map<String, dynamic> json) =>
     _$_ZacTransformers(
       (json['transformers'] as List<dynamic>)

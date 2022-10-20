@@ -248,7 +248,7 @@ void main() {
       test('simple value', () {
         expect(
             ZacTransformers([_ConcatStr('bar'), _ConcatStr('baz')])
-                .transform(ZacTransformValue('foo'), FakeZacOrigin()),
+                .transform(ZacTransformValue('foo'), FakeZacOrigin(), null),
             equals('foobarbaz'));
       });
     });
@@ -362,7 +362,7 @@ class _ConcatStr implements ZacTransformer {
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ContextBag? extra) {
+      ZacActionPayload? payload) {
     return (transformValue.value as String) + str;
   }
 }

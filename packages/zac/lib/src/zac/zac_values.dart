@@ -13,10 +13,8 @@ mixin ActualValue<Of> {
 
   Of getActualValue(ZacContext zacContext) {
     if (true == transformer?.transformers.isNotEmpty) {
-      final transformed = transformer!.transform(
-        ZacTransformValue(value),
-        zacContext,
-      );
+      final transformed =
+          transformer!.transform(ZacTransformValue(value), zacContext, null);
 
       if (transformed is! Of) {
         throw StateError('''
@@ -69,10 +67,8 @@ The consumed $SharedValue: $value
 ''');
     }
 
-    final transformedValue = transformer!.transform(
-      ZacTransformValue(value),
-      zacContext,
-    );
+    final transformedValue =
+        transformer!.transform(ZacTransformValue(value), zacContext, null);
 
     if (transformedValue is! Of) {
       final alltransformerTypers =
@@ -144,10 +140,8 @@ The consumed $SharedValue: $value
     }
 
     return value.map<Of>((element) {
-      final transformedValue = transformer!.transform(
-        ZacTransformValue(element),
-        zacContext,
-      );
+      final transformedValue =
+          transformer!.transform(ZacTransformValue(element), zacContext, null);
 
       if (transformedValue is! Of) {
         final alltransformerTypers =

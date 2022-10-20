@@ -14,46 +14,110 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacTransformValue _$ZacTransformValueFromJson(Map<String, dynamic> json) {
-  return _ZacTransformValue.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ZacTransformValue {
   Object? get value => throw _privateConstructorUsedError;
-  Map<String, Object?>? get extra => throw _privateConstructorUsedError;
+  Object? get extra1 => throw _privateConstructorUsedError;
+  Object? get extra2 => throw _privateConstructorUsedError;
+  Object? get extra3 => throw _privateConstructorUsedError;
 
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransformValue value) $default,
-  ) =>
+  @JsonKey(ignore: true)
+  $ZacTransformValueCopyWith<ZacTransformValue> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacTransformValue extends _ZacTransformValue {
-  _$_ZacTransformValue(this.value, {final Map<String, Object?>? extra})
-      : _extra = extra,
-        super._();
+abstract class $ZacTransformValueCopyWith<$Res> {
+  factory $ZacTransformValueCopyWith(
+          ZacTransformValue value, $Res Function(ZacTransformValue) then) =
+      _$ZacTransformValueCopyWithImpl<$Res>;
+  $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
+}
 
-  factory _$_ZacTransformValue.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacTransformValueFromJson(json);
+/// @nodoc
+class _$ZacTransformValueCopyWithImpl<$Res>
+    implements $ZacTransformValueCopyWith<$Res> {
+  _$ZacTransformValueCopyWithImpl(this._value, this._then);
+
+  final ZacTransformValue _value;
+  // ignore: unused_field
+  final $Res Function(ZacTransformValue) _then;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+    Object? extra1 = freezed,
+    Object? extra2 = freezed,
+    Object? extra3 = freezed,
+  }) {
+    return _then(_value.copyWith(
+      value: value == freezed ? _value.value : value,
+      extra1: extra1 == freezed ? _value.extra1 : extra1,
+      extra2: extra2 == freezed ? _value.extra2 : extra2,
+      extra3: extra3 == freezed ? _value.extra3 : extra3,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ZacTransformValueCopyWith<$Res>
+    implements $ZacTransformValueCopyWith<$Res> {
+  factory _$$_ZacTransformValueCopyWith(_$_ZacTransformValue value,
+          $Res Function(_$_ZacTransformValue) then) =
+      __$$_ZacTransformValueCopyWithImpl<$Res>;
+  @override
+  $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
+}
+
+/// @nodoc
+class __$$_ZacTransformValueCopyWithImpl<$Res>
+    extends _$ZacTransformValueCopyWithImpl<$Res>
+    implements _$$_ZacTransformValueCopyWith<$Res> {
+  __$$_ZacTransformValueCopyWithImpl(
+      _$_ZacTransformValue _value, $Res Function(_$_ZacTransformValue) _then)
+      : super(_value, (v) => _then(v as _$_ZacTransformValue));
+
+  @override
+  _$_ZacTransformValue get _value => super._value as _$_ZacTransformValue;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+    Object? extra1 = freezed,
+    Object? extra2 = freezed,
+    Object? extra3 = freezed,
+  }) {
+    return _then(_$_ZacTransformValue(
+      value == freezed ? _value.value : value,
+      extra1 == freezed ? _value.extra1 : extra1,
+      extra2 == freezed ? _value.extra2 : extra2,
+      extra3 == freezed ? _value.extra3 : extra3,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ZacTransformValue extends _ZacTransformValue {
+  _$_ZacTransformValue(this.value,
+      [this.extra1 = null, this.extra2 = null, this.extra3 = null])
+      : super._();
 
   @override
   final Object? value;
-  final Map<String, Object?>? _extra;
   @override
-  Map<String, Object?>? get extra {
-    final value = _extra;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
+  @JsonKey()
+  final Object? extra1;
+  @override
+  @JsonKey()
+  final Object? extra2;
+  @override
+  @JsonKey()
+  final Object? extra3;
 
   @override
   String toString() {
-    return 'ZacTransformValue(value: $value, extra: $extra)';
+    return 'ZacTransformValue(value: $value, extra1: $extra1, extra2: $extra2, extra3: $extra3)';
   }
 
   @override
@@ -62,37 +126,45 @@ class _$_ZacTransformValue extends _ZacTransformValue {
         (other.runtimeType == runtimeType &&
             other is _$_ZacTransformValue &&
             const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other._extra, _extra));
+            const DeepCollectionEquality().equals(other.extra1, extra1) &&
+            const DeepCollectionEquality().equals(other.extra2, extra2) &&
+            const DeepCollectionEquality().equals(other.extra3, extra3));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_extra));
+      const DeepCollectionEquality().hash(extra1),
+      const DeepCollectionEquality().hash(extra2),
+      const DeepCollectionEquality().hash(extra3));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransformValue value) $default,
-  ) {
-    return $default(this);
-  }
+  _$$_ZacTransformValueCopyWith<_$_ZacTransformValue> get copyWith =>
+      __$$_ZacTransformValueCopyWithImpl<_$_ZacTransformValue>(
+          this, _$identity);
 }
 
 abstract class _ZacTransformValue extends ZacTransformValue {
   factory _ZacTransformValue(final Object? value,
-      {final Map<String, Object?>? extra}) = _$_ZacTransformValue;
+      [final Object? extra1,
+      final Object? extra2,
+      final Object? extra3]) = _$_ZacTransformValue;
   _ZacTransformValue._() : super._();
-
-  factory _ZacTransformValue.fromJson(Map<String, dynamic> json) =
-      _$_ZacTransformValue.fromJson;
 
   @override
   Object? get value;
   @override
-  Map<String, Object?>? get extra;
+  Object? get extra1;
+  @override
+  Object? get extra2;
+  @override
+  Object? get extra3;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ZacTransformValueCopyWith<_$_ZacTransformValue> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 ZacTransformers _$ZacTransformersFromJson(Map<String, dynamic> json) {
