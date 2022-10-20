@@ -10,11 +10,11 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterIndexedStack.unionValue,
+        'converter': FlutterIndexedStack.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'alignment': AlignmentModel.geometry_alignment,
         'textDirection': TextModel.textDirection,
-        'sizing': {'_converter': 'f:1:StackFit.passthrough'},
+        'sizing': {'converter': 'f:1:StackFit.passthrough'},
         'index': 1,
         'children': [
           ChildModel.getSizedBox(key: 'child1'),

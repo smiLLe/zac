@@ -9,60 +9,60 @@ part of 'painting.dart';
 _$_FlutterBoxShapeCircle _$$_FlutterBoxShapeCircleFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxShapeCircle(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxShapeRectangle _$$_FlutterBoxShapeRectangleFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxShapeRectangle(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAxisHori _$$_FlutterAxisHoriFromJson(Map<String, dynamic> json) =>
     _$_FlutterAxisHori(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAxisVertical _$$_FlutterAxisVerticalFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAxisVertical(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterVerticalDirectionUp _$$_FlutterVerticalDirectionUpFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterVerticalDirectionUp(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterVerticalDirectionDown _$$_FlutterVerticalDirectionDownFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterVerticalDirectionDown(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextOverflowClip _$$_FlutterTextOverflowClipFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextOverflowClip(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextOverflowEllipsis _$$_FlutterTextOverflowEllipsisFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextOverflowEllipsis(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextOverflowFade _$$_FlutterTextOverflowFadeFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextOverflowFade(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextOverflowVisible _$$_FlutterTextOverflowVisibleFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextOverflowVisible(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterStrutStyle _$$_FlutterStrutStyleFromJson(Map<String, dynamic> json) =>
@@ -103,7 +103,7 @@ _$_FlutterStrutStyle _$$_FlutterStrutStyleFromJson(Map<String, dynamic> json) =>
       package: json['package'] == null
           ? null
           : ZacString.fromJson(json['package'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterStrutStyleFromTextStyle _$$_FlutterStrutStyleFromTextStyleFromJson(
@@ -146,83 +146,83 @@ _$_FlutterStrutStyleFromTextStyle _$$_FlutterStrutStyleFromTextStyleFromJson(
       package: json['package'] == null
           ? null
           : ZacString.fromJson(json['package'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextWidthBasisLongestLine
     _$$_FlutterTextWidthBasisLongestLineFromJson(Map<String, dynamic> json) =>
         _$_FlutterTextWidthBasisLongestLine(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterTextWidthBasisParent _$$_FlutterTextWidthBasisParentFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextWidthBasisParent(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitContain _$$_FlutterBoxFitContainFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxFitContain(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitCover _$$_FlutterBoxFitCoverFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxFitCover(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitFill _$$_FlutterBoxFitFillFromJson(Map<String, dynamic> json) =>
     _$_FlutterBoxFitFill(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitFitHeight _$$_FlutterBoxFitFitHeightFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxFitFitHeight(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitFitWidth _$$_FlutterBoxFitFitWidthFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxFitFitWidth(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitNone _$$_FlutterBoxFitNoneFromJson(Map<String, dynamic> json) =>
     _$_FlutterBoxFitNone(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxFitScaleDown _$$_FlutterBoxFitScaleDownFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxFitScaleDown(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterImageRepeatNoRepeat _$$_FlutterImageRepeatNoRepeatFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterImageRepeatNoRepeat(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterImageRepeatRepeat _$$_FlutterImageRepeatRepeatFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterImageRepeatRepeat(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterImageRepeatRepeatX _$$_FlutterImageRepeatRepeatXFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterImageRepeatRepeatX(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterImageRepeatRepeatY _$$_FlutterImageRepeatRepeatYFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterImageRepeatRepeatY(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
@@ -311,25 +311,25 @@ _$_FlutterTextAlignVertical _$$_FlutterTextAlignVerticalFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextAlignVertical(
       y: ZacDouble.fromJson(json['y'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextAlignVerticalbottom _$$_FlutterTextAlignVerticalbottomFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextAlignVerticalbottom(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextAlignVerticalcenter _$$_FlutterTextAlignVerticalcenterFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextAlignVerticalcenter(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterTextAlignVerticaltop _$$_FlutterTextAlignVerticaltopFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterTextAlignVerticaltop(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBoxShadow _$$_FlutterBoxShadowFromJson(Map<String, dynamic> json) =>
@@ -356,61 +356,61 @@ _$_FlutterAlignment _$$_FlutterAlignmentFromJson(Map<String, dynamic> json) =>
     _$_FlutterAlignment(
       ZacDouble.fromJson(json['x'] as Object),
       ZacDouble.fromJson(json['y'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentbottomCenter _$$_FlutterAlignmentbottomCenterFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentbottomCenter(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentbottomLeft _$$_FlutterAlignmentbottomLeftFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentbottomLeft(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentbottomRight _$$_FlutterAlignmentbottomRightFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentbottomRight(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentcenter _$$_FlutterAlignmentcenterFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentcenter(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentcenterLeft _$$_FlutterAlignmentcenterLeftFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentcenterLeft(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentcenterRight _$$_FlutterAlignmentcenterRightFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmentcenterRight(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmenttopCenter _$$_FlutterAlignmenttopCenterFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmenttopCenter(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmenttopLeft _$$_FlutterAlignmenttopLeftFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmenttopLeft(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmenttopRight _$$_FlutterAlignmenttopRightFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterAlignmenttopRight(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentDirectional _$$_FlutterAlignmentDirectionalFromJson(
@@ -418,68 +418,68 @@ _$_FlutterAlignmentDirectional _$$_FlutterAlignmentDirectionalFromJson(
     _$_FlutterAlignmentDirectional(
       ZacDouble.fromJson(json['start'] as Object),
       ZacDouble.fromJson(json['y'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterAlignmentDirectionalbottomCenter
     _$$_FlutterAlignmentDirectionalbottomCenterFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalbottomCenter(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionalbottomStart
     _$$_FlutterAlignmentDirectionalbottomStartFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalbottomStart(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionalbottomEnd
     _$$_FlutterAlignmentDirectionalbottomEndFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalbottomEnd(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionalcenter
     _$$_FlutterAlignmentDirectionalcenterFromJson(Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalcenter(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionalcenterStart
     _$$_FlutterAlignmentDirectionalcenterStartFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalcenterStart(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionalcenterEnd
     _$$_FlutterAlignmentDirectionalcenterEndFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionalcenterEnd(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionaltopCenter
     _$$_FlutterAlignmentDirectionaltopCenterFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionaltopCenter(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionaltopStart
     _$$_FlutterAlignmentDirectionaltopStartFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionaltopStart(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterAlignmentDirectionaltopEnd
     _$$_FlutterAlignmentDirectionaltopEndFromJson(Map<String, dynamic> json) =>
         _$_FlutterAlignmentDirectionaltopEnd(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterFractionalOffset _$$_FlutterFractionalOffsetFromJson(
@@ -520,7 +520,7 @@ _$_FlutterBorder _$$_FlutterBorderFromJson(Map<String, dynamic> json) =>
       left: json['left'] == null
           ? null
           : FlutterBorderSide.fromJson(json['left'] as Map<String, dynamic>),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderAll _$$_FlutterBorderAllFromJson(Map<String, dynamic> json) =>
@@ -534,33 +534,33 @@ _$_FlutterBorderAll _$$_FlutterBorderAllFromJson(Map<String, dynamic> json) =>
       style: json['style'] == null
           ? null
           : FlutterBorderStyle.fromJson(json['style'] as Map<String, dynamic>),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderStyleNone _$$_FlutterBorderStyleNoneFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBorderStyleNone(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderStyleSolid _$$_FlutterBorderStyleSolidFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBorderStyleSolid(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderRadiusAll _$$_FlutterBorderRadiusAllFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBorderRadiusAll(
       FlutterRadius.fromJson(json['radius'] as Map<String, dynamic>),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderRadiusCircular _$$_FlutterBorderRadiusCircularFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBorderRadiusCircular(
       ZacDouble.fromJson(json['radius'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderRadiusHorizontal _$$_FlutterBorderRadiusHorizontalFromJson(
@@ -572,7 +572,7 @@ _$_FlutterBorderRadiusHorizontal _$$_FlutterBorderRadiusHorizontalFromJson(
       right: json['right'] == null
           ? null
           : FlutterRadius.fromJson(json['right'] as Map<String, dynamic>),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterBorderSide _$$_FlutterBorderSideFromJson(Map<String, dynamic> json) =>
@@ -649,7 +649,7 @@ _$_FlutterEdgeInsetsAll _$$_FlutterEdgeInsetsAllFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterEdgeInsetsAll(
       ZacDouble.fromJson(json['value'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterEdgeInsetsSymmetric _$$_FlutterEdgeInsetsSymmetricFromJson(
@@ -661,7 +661,7 @@ _$_FlutterEdgeInsetsSymmetric _$$_FlutterEdgeInsetsSymmetricFromJson(
       horizontal: json['horizontal'] == null
           ? null
           : ZacDouble.fromJson(json['horizontal'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterEdgeInsetsOnly _$$_FlutterEdgeInsetsOnlyFromJson(
@@ -679,14 +679,14 @@ _$_FlutterEdgeInsetsOnly _$$_FlutterEdgeInsetsOnlyFromJson(
       bottom: json['bottom'] == null
           ? null
           : ZacDouble.fromJson(json['bottom'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterEdgeInsetsDirectionalAll _$$_FlutterEdgeInsetsDirectionalAllFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterEdgeInsetsDirectionalAll(
       ZacDouble.fromJson(json['value'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterEdgeInsetsDirectionalOnly
@@ -704,5 +704,5 @@ _$_FlutterEdgeInsetsDirectionalOnly
           bottom: json['bottom'] == null
               ? null
               : ZacDouble.fromJson(json['bottom'] as Object),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );

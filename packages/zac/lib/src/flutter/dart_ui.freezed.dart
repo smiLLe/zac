@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterColor _$FlutterColorFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Color.fromARGB':
       return _FlutterColorFromARGB.fromJson(json);
     case 'f:1:Color.fromRGBO':
       return _FlutterColorFromRBGO.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterColor',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterColor',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -65,7 +65,7 @@ class _$_FlutterColorFromARGB extends _FlutterColorFromARGB {
   @override
   final int b;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -147,7 +147,7 @@ class _$_FlutterColorFromRBGO extends _FlutterColorFromRBGO {
   @override
   final ZacDouble opacity;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -206,15 +206,15 @@ abstract class _FlutterColorFromRBGO extends FlutterColor {
 }
 
 FlutterOffset _$FlutterOffsetFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Offset':
       return _FlutterOffset.fromJson(json);
     case 'f:1:Offset.fromDirection':
       return _FlutterOffsetFromDirection.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterOffset',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterOffset',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -243,7 +243,7 @@ class _$_FlutterOffset extends _FlutterOffset {
   @override
   final ZacDouble dy;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -305,7 +305,7 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
   @override
   final ZacDouble? distance;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -353,7 +353,7 @@ abstract class _FlutterOffsetFromDirection extends FlutterOffset {
 }
 
 FlutterBlurStyle _$FlutterBlurStyleFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:BlurSyle.inner':
       return _FlutterBlurStyleInner.fromJson(json);
     case 'f:1:BlurSyle.normal':
@@ -364,8 +364,8 @@ FlutterBlurStyle _$FlutterBlurStyleFromJson(Map<String, dynamic> json) {
       return _FlutterBlurStyleSolid.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterBlurStyle',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterBlurStyle',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -391,7 +391,7 @@ class _$_FlutterBlurStyleInner extends _FlutterBlurStyleInner {
   factory _$_FlutterBlurStyleInner.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlurStyleInnerFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -439,7 +439,7 @@ class _$_FlutterBlurStyleNormal extends _FlutterBlurStyleNormal {
   factory _$_FlutterBlurStyleNormal.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlurStyleNormalFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -488,7 +488,7 @@ class _$_FlutterBlurStyleOuter extends _FlutterBlurStyleOuter {
   factory _$_FlutterBlurStyleOuter.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlurStyleOuterFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -536,7 +536,7 @@ class _$_FlutterBlurStyleSolid extends _FlutterBlurStyleSolid {
   factory _$_FlutterBlurStyleSolid.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlurStyleSolidFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -575,15 +575,15 @@ abstract class _FlutterBlurStyleSolid extends FlutterBlurStyle {
 }
 
 FlutterRadius _$FlutterRadiusFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Radius.circular':
       return _FlutterRadiusCircular.fromJson(json);
     case 'f:1:Radius.elliptical':
       return _FlutterRadiusElliptical.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterRadius',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterRadius',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -610,7 +610,7 @@ class _$_FlutterRadiusCircular extends _FlutterRadiusCircular {
   @override
   final ZacDouble radius;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -667,7 +667,7 @@ class _$_FlutterRadiusElliptical extends _FlutterRadiusElliptical {
   @override
   final ZacDouble y;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -714,15 +714,15 @@ abstract class _FlutterRadiusElliptical extends FlutterRadius {
 }
 
 FlutterTextDirection _$FlutterTextDirectionFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextDirection.rtl':
       return _FlutterTextDirectionRtl.fromJson(json);
     case 'f:1:TextDirection.ltr':
       return _FlutterTextDirectionLtr.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterTextDirection',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterTextDirection',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -746,7 +746,7 @@ class _$_FlutterTextDirectionRtl extends _FlutterTextDirectionRtl {
   factory _$_FlutterTextDirectionRtl.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextDirectionRtlFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -793,7 +793,7 @@ class _$_FlutterTextDirectionLtr extends _FlutterTextDirectionLtr {
   factory _$_FlutterTextDirectionLtr.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextDirectionLtrFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -831,7 +831,7 @@ abstract class _FlutterTextDirectionLtr extends FlutterTextDirection {
 }
 
 FlutterClip _$FlutterClipFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Clip.none':
       return _FlutterClipNone.fromJson(json);
     case 'f:1:Clip.antiAlias':
@@ -840,8 +840,8 @@ FlutterClip _$FlutterClipFromJson(Map<String, dynamic> json) {
       return _FlutterClipHardEdge.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterClip',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterClip',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -866,7 +866,7 @@ class _$_FlutterClipNone extends _FlutterClipNone {
   factory _$_FlutterClipNone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterClipNoneFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -913,7 +913,7 @@ class _$_FlutterClipAntiAlias extends _FlutterClipAntiAlias {
   factory _$_FlutterClipAntiAlias.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterClipAntiAliasFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -960,7 +960,7 @@ class _$_FlutterClipHardEdge extends _FlutterClipHardEdge {
   factory _$_FlutterClipHardEdge.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterClipHardEdgeFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -998,15 +998,15 @@ abstract class _FlutterClipHardEdge extends FlutterClip {
 }
 
 FlutterTextBaseline _$FlutterTextBaselineFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextBaseline.alphabetic':
       return _FlutterTextBaselineAlphabetic.fromJson(json);
     case 'f:1:TextBaseline.ideographic':
       return _FlutterTextBaselineIdeographic.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterTextBaseline',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterTextBaseline',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1032,7 +1032,7 @@ class _$_FlutterTextBaselineAlphabetic extends _FlutterTextBaselineAlphabetic {
           Map<String, dynamic> json) =>
       _$$_FlutterTextBaselineAlphabeticFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1082,7 +1082,7 @@ class _$_FlutterTextBaselineIdeographic
           Map<String, dynamic> json) =>
       _$$_FlutterTextBaselineIdeographicFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1121,7 +1121,7 @@ abstract class _FlutterTextBaselineIdeographic extends FlutterTextBaseline {
 }
 
 FlutterFontWeight _$FlutterFontWeightFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:FontWeight.bold':
       return _FlutterFontWeightBold.fromJson(json);
     case 'f:1:FontWeight.normal':
@@ -1146,8 +1146,8 @@ FlutterFontWeight _$FlutterFontWeightFromJson(Map<String, dynamic> json) {
       return _FlutterFontWeightW900.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterFontWeight',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterFontWeight',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1180,7 +1180,7 @@ class _$_FlutterFontWeightBold extends _FlutterFontWeightBold {
   factory _$_FlutterFontWeightBold.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightBoldFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1235,7 +1235,7 @@ class _$_FlutterFontWeightNormal extends _FlutterFontWeightNormal {
   factory _$_FlutterFontWeightNormal.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightNormalFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1291,7 +1291,7 @@ class _$_FlutterFontWeightW100 extends _FlutterFontWeightW100 {
   factory _$_FlutterFontWeightW100.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW100FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1346,7 +1346,7 @@ class _$_FlutterFontWeightW200 extends _FlutterFontWeightW200 {
   factory _$_FlutterFontWeightW200.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW200FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1401,7 +1401,7 @@ class _$_FlutterFontWeightW300 extends _FlutterFontWeightW300 {
   factory _$_FlutterFontWeightW300.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW300FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1456,7 +1456,7 @@ class _$_FlutterFontWeightW400 extends _FlutterFontWeightW400 {
   factory _$_FlutterFontWeightW400.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW400FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1511,7 +1511,7 @@ class _$_FlutterFontWeightW500 extends _FlutterFontWeightW500 {
   factory _$_FlutterFontWeightW500.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW500FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1566,7 +1566,7 @@ class _$_FlutterFontWeightW600 extends _FlutterFontWeightW600 {
   factory _$_FlutterFontWeightW600.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW600FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1621,7 +1621,7 @@ class _$_FlutterFontWeightW700 extends _FlutterFontWeightW700 {
   factory _$_FlutterFontWeightW700.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW700FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1676,7 +1676,7 @@ class _$_FlutterFontWeightW800 extends _FlutterFontWeightW800 {
   factory _$_FlutterFontWeightW800.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW800FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1731,7 +1731,7 @@ class _$_FlutterFontWeightW900 extends _FlutterFontWeightW900 {
   factory _$_FlutterFontWeightW900.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontWeightW900FromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1777,15 +1777,15 @@ abstract class _FlutterFontWeightW900 extends FlutterFontWeight {
 }
 
 FlutterFontStyle _$FlutterFontStyleFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:FontStyle.italic':
       return _FlutterFontStyleItalic.fromJson(json);
     case 'f:1:FontStyle.normal':
       return _FlutterFontStyleNormal.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterFontStyle',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterFontStyle',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1809,7 +1809,7 @@ class _$_FlutterFontStyleItalic extends _FlutterFontStyleItalic {
   factory _$_FlutterFontStyleItalic.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontStyleItalicFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1856,7 +1856,7 @@ class _$_FlutterFontStyleNormal extends _FlutterFontStyleNormal {
   factory _$_FlutterFontStyleNormal.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFontStyleNormalFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1895,7 +1895,7 @@ abstract class _FlutterFontStyleNormal extends FlutterFontStyle {
 
 FlutterTextDecoration _$FlutterTextDecorationFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextDecoration.lineThrough':
       return _FlutterTextDecorationLineThrough.fromJson(json);
     case 'f:1:TextDecoration.none':
@@ -1906,11 +1906,8 @@ FlutterTextDecoration _$FlutterTextDecorationFromJson(
       return _FlutterTextDecorationUnderline.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'FlutterTextDecoration',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterTextDecoration',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1939,7 +1936,7 @@ class _$_FlutterTextDecorationLineThrough
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationLineThroughFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1990,7 +1987,7 @@ class _$_FlutterTextDecorationNone extends _FlutterTextDecorationNone {
   factory _$_FlutterTextDecorationNone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationNoneFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2041,7 +2038,7 @@ class _$_FlutterTextDecorationOverline extends _FlutterTextDecorationOverline {
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationOverlineFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2093,7 +2090,7 @@ class _$_FlutterTextDecorationUnderline
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationUnderlineFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2135,7 +2132,7 @@ abstract class _FlutterTextDecorationUnderline extends FlutterTextDecoration {
 
 FlutterTextLeadingDistribution _$FlutterTextLeadingDistributionFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextLeadingDistribution.even':
       return _FlutterTextLeadingDistributionEven.fromJson(json);
     case 'f:1:TextLeadingDistribution.proportional':
@@ -2144,9 +2141,9 @@ FlutterTextLeadingDistribution _$FlutterTextLeadingDistributionFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterTextLeadingDistribution',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -2173,7 +2170,7 @@ class _$_FlutterTextLeadingDistributionEven
           Map<String, dynamic> json) =>
       _$$_FlutterTextLeadingDistributionEvenFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2226,7 +2223,7 @@ class _$_FlutterTextLeadingDistributionProportional
           Map<String, dynamic> json) =>
       _$$_FlutterTextLeadingDistributionProportionalFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2343,7 +2340,7 @@ abstract class _FlutterLocale extends FlutterLocale {
 }
 
 FlutterFontFeature _$FlutterFontFeatureFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:FontFeature':
       return _FontFeature.fromJson(json);
     case 'f:1:FontFeature.alternative':
@@ -2402,8 +2399,8 @@ FlutterFontFeature _$FlutterFontFeatureFromJson(Map<String, dynamic> json) {
       return _FontFeatureTabularFigures.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterFontFeature',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterFontFeature',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -2469,7 +2466,7 @@ class _$_FontFeature extends _FontFeature {
   @override
   final ZacInt? value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2565,7 +2562,7 @@ class _$_FontFeatureAlternative extends _FontFeatureAlternative {
   @override
   final int value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2655,7 +2652,7 @@ class _$_FontFeatureAlternativeFractions
           Map<String, dynamic> json) =>
       _$$_FontFeatureAlternativeFractionsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2740,7 +2737,7 @@ class _$_FontFeatureCaseSenitiveForms extends _FontFeatureCaseSenitiveForms {
   factory _$_FontFeatureCaseSenitiveForms.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureCaseSenitiveFormsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2827,7 +2824,7 @@ class _$_FontFeatureCharacterVariant extends _FontFeatureCharacterVariant {
   @override
   final int value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -2918,7 +2915,7 @@ class _$_FontFeatureContextualAlternates
           Map<String, dynamic> json) =>
       _$$_FontFeatureContextualAlternatesFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3003,7 +3000,7 @@ class _$_FontFeatureDenominator extends _FontFeatureDenominator {
   factory _$_FontFeatureDenominator.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureDenominatorFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3090,7 +3087,7 @@ class _$_FontFeatureDisable extends _FontFeatureDisable {
   @override
   final String feature;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3181,7 +3178,7 @@ class _$_FontFeatureEnable extends _FontFeatureEnable {
   @override
   final String feature;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3269,7 +3266,7 @@ class _$_FontFeatureFractions extends _FontFeatureFractions {
   factory _$_FontFeatureFractions.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureFractionsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3352,7 +3349,7 @@ class _$_FontFeatureHistoricalForms extends _FontFeatureHistoricalForms {
   factory _$_FontFeatureHistoricalForms.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureHistoricalFormsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3438,7 +3435,7 @@ class _$_FontFeatureHistoricalLigatures
           Map<String, dynamic> json) =>
       _$$_FontFeatureHistoricalLigaturesFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3522,7 +3519,7 @@ class _$_FontFeatureLiningFigures extends _FontFeatureLiningFigures {
   factory _$_FontFeatureLiningFigures.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureLiningFiguresFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3609,7 +3606,7 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
   @override
   final ZacBool? enable;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3701,7 +3698,7 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
   @override
   final ZacInt? value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3790,7 +3787,7 @@ class _$_FontFeatureNumerators extends _FontFeatureNumerators {
   factory _$_FontFeatureNumerators.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureNumeratorsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3873,7 +3870,7 @@ class _$_FontFeatureOldStyleFigures extends _FontFeatureOldStyleFigures {
   factory _$_FontFeatureOldStyleFigures.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureOldStyleFiguresFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -3957,7 +3954,7 @@ class _$_FontFeatureOrdinalForms extends _FontFeatureOrdinalForms {
   factory _$_FontFeatureOrdinalForms.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureOrdinalFormsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4043,7 +4040,7 @@ class _$_FontFeatureProportionalFigures
           Map<String, dynamic> json) =>
       _$$_FontFeatureProportionalFiguresFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4127,7 +4124,7 @@ class _$_FontFeatureRandomize extends _FontFeatureRandomize {
   factory _$_FontFeatureRandomize.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureRandomizeFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4212,7 +4209,7 @@ class _$_FontFeatureScientificInferiors
           Map<String, dynamic> json) =>
       _$$_FontFeatureScientificInferiorsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4296,7 +4293,7 @@ class _$_FontFeatureSlashedZero extends _FontFeatureSlashedZero {
   factory _$_FontFeatureSlashedZero.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureSlashedZeroFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4382,7 +4379,7 @@ class _$_FontFeatureStylisticAlternates
           Map<String, dynamic> json) =>
       _$$_FontFeatureStylisticAlternatesFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4469,7 +4466,7 @@ class _$_FontFeatureStylisticSet extends _FontFeatureStylisticSet {
   @override
   final int value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4558,7 +4555,7 @@ class _$_FontFeatureSubscripts extends _FontFeatureSubscripts {
   factory _$_FontFeatureSubscripts.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureSubscriptsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4641,7 +4638,7 @@ class _$_FontFeatureSuperscripts extends _FontFeatureSuperscripts {
   factory _$_FontFeatureSuperscripts.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureSuperscriptsFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4728,7 +4725,7 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
   @override
   final ZacInt? value;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4816,7 +4813,7 @@ class _$_FontFeatureTabularFigures extends _FontFeatureTabularFigures {
   factory _$_FontFeatureTabularFigures.fromJson(Map<String, dynamic> json) =>
       _$$_FontFeatureTabularFiguresFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4892,7 +4889,7 @@ abstract class _FontFeatureTabularFigures extends FlutterFontFeature {
 
 FlutterTextDecorationStyle _$FlutterTextDecorationStyleFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextDecorationStyle.dashed':
       return _FlutterTextDecorationStyleDashed.fromJson(json);
     case 'f:1:TextDecorationStyle.dotted':
@@ -4907,9 +4904,9 @@ FlutterTextDecorationStyle _$FlutterTextDecorationStyleFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterTextDecorationStyle',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -4938,7 +4935,7 @@ class _$_FlutterTextDecorationStyleDashed
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationStyleDashedFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -4992,7 +4989,7 @@ class _$_FlutterTextDecorationStyleDotted
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationStyleDottedFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5046,7 +5043,7 @@ class _$_FlutterTextDecorationStyleDouble
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationStyleDoubleFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5100,7 +5097,7 @@ class _$_FlutterTextDecorationStyleSolid
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationStyleSolidFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5154,7 +5151,7 @@ class _$_FlutterTextDecorationStyleWavy
           Map<String, dynamic> json) =>
       _$$_FlutterTextDecorationStyleWavyFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5196,7 +5193,7 @@ abstract class _FlutterTextDecorationStyleWavy
 }
 
 FlutterTextAlign _$FlutterTextAlignFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextAlign.center':
       return _FlutterTextAlignCenter.fromJson(json);
     case 'f:1:TextAlign.end':
@@ -5211,8 +5208,8 @@ FlutterTextAlign _$FlutterTextAlignFromJson(Map<String, dynamic> json) {
       return _FlutterTextAlignStart.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterTextAlign',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterTextAlign',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -5240,7 +5237,7 @@ class _$_FlutterTextAlignCenter extends _FlutterTextAlignCenter {
   factory _$_FlutterTextAlignCenter.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignCenterFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5291,7 +5288,7 @@ class _$_FlutterTextAlignEnd extends _FlutterTextAlignEnd {
   factory _$_FlutterTextAlignEnd.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignEndFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5341,7 +5338,7 @@ class _$_FlutterTextAlignJustify extends _FlutterTextAlignJustify {
   factory _$_FlutterTextAlignJustify.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignJustifyFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5392,7 +5389,7 @@ class _$_FlutterTextAlignLeft extends _FlutterTextAlignLeft {
   factory _$_FlutterTextAlignLeft.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignLeftFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5442,7 +5439,7 @@ class _$_FlutterTextAlignRight extends _FlutterTextAlignRight {
   factory _$_FlutterTextAlignRight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignRightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5492,7 +5489,7 @@ class _$_FlutterTextAlignStart extends _FlutterTextAlignStart {
   factory _$_FlutterTextAlignStart.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignStartFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5625,7 +5622,7 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
 }
 
 FlutterBlendMode _$FlutterBlendModeFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:BlendMode.clear':
       return _FlutterBlendModeClear.fromJson(json);
     case 'f:1:BlendMode.color':
@@ -5686,8 +5683,8 @@ FlutterBlendMode _$FlutterBlendModeFromJson(Map<String, dynamic> json) {
       return _FlutterBlendModeXor.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterBlendMode',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterBlendMode',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -5738,7 +5735,7 @@ class _$_FlutterBlendModeClear extends _FlutterBlendModeClear {
   factory _$_FlutterBlendModeClear.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeClearFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5811,7 +5808,7 @@ class _$_FlutterBlendModeColor extends _FlutterBlendModeColor {
   factory _$_FlutterBlendModeColor.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeColorFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5884,7 +5881,7 @@ class _$_FlutterBlendModeColorBurn extends _FlutterBlendModeColorBurn {
   factory _$_FlutterBlendModeColorBurn.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeColorBurnFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -5958,7 +5955,7 @@ class _$_FlutterBlendModeColorDodge extends _FlutterBlendModeColorDodge {
   factory _$_FlutterBlendModeColorDodge.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeColorDodgeFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6032,7 +6029,7 @@ class _$_FlutterBlendModeDarken extends _FlutterBlendModeDarken {
   factory _$_FlutterBlendModeDarken.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDarkenFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6106,7 +6103,7 @@ class _$_FlutterBlendModeDifference extends _FlutterBlendModeDifference {
   factory _$_FlutterBlendModeDifference.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDifferenceFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6180,7 +6177,7 @@ class _$_FlutterBlendModeDst extends _FlutterBlendModeDst {
   factory _$_FlutterBlendModeDst.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDstFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6253,7 +6250,7 @@ class _$_FlutterBlendModeDstATop extends _FlutterBlendModeDstATop {
   factory _$_FlutterBlendModeDstATop.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDstATopFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6327,7 +6324,7 @@ class _$_FlutterBlendModeDstIn extends _FlutterBlendModeDstIn {
   factory _$_FlutterBlendModeDstIn.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDstInFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6400,7 +6397,7 @@ class _$_FlutterBlendModeDstOut extends _FlutterBlendModeDstOut {
   factory _$_FlutterBlendModeDstOut.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDstOutFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6474,7 +6471,7 @@ class _$_FlutterBlendModeDstOver extends _FlutterBlendModeDstOver {
   factory _$_FlutterBlendModeDstOver.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeDstOverFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6548,7 +6545,7 @@ class _$_FlutterBlendModeExclusion extends _FlutterBlendModeExclusion {
   factory _$_FlutterBlendModeExclusion.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeExclusionFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6622,7 +6619,7 @@ class _$_FlutterBlendModeHardLight extends _FlutterBlendModeHardLight {
   factory _$_FlutterBlendModeHardLight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeHardLightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6696,7 +6693,7 @@ class _$_FlutterBlendModeHue extends _FlutterBlendModeHue {
   factory _$_FlutterBlendModeHue.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeHueFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6769,7 +6766,7 @@ class _$_FlutterBlendModeLighten extends _FlutterBlendModeLighten {
   factory _$_FlutterBlendModeLighten.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeLightenFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6843,7 +6840,7 @@ class _$_FlutterBlendModeLuminosity extends _FlutterBlendModeLuminosity {
   factory _$_FlutterBlendModeLuminosity.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeLuminosityFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6917,7 +6914,7 @@ class _$_FlutterBlendModeModulate extends _FlutterBlendModeModulate {
   factory _$_FlutterBlendModeModulate.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeModulateFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -6991,7 +6988,7 @@ class _$_FlutterBlendModeMultiply extends _FlutterBlendModeMultiply {
   factory _$_FlutterBlendModeMultiply.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeMultiplyFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7065,7 +7062,7 @@ class _$_FlutterBlendModeOverlay extends _FlutterBlendModeOverlay {
   factory _$_FlutterBlendModeOverlay.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeOverlayFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7139,7 +7136,7 @@ class _$_FlutterBlendModePlus extends _FlutterBlendModePlus {
   factory _$_FlutterBlendModePlus.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModePlusFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7212,7 +7209,7 @@ class _$_FlutterBlendModeSaturation extends _FlutterBlendModeSaturation {
   factory _$_FlutterBlendModeSaturation.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSaturationFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7286,7 +7283,7 @@ class _$_FlutterBlendModeScreen extends _FlutterBlendModeScreen {
   factory _$_FlutterBlendModeScreen.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeScreenFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7360,7 +7357,7 @@ class _$_FlutterBlendModeSoftLight extends _FlutterBlendModeSoftLight {
   factory _$_FlutterBlendModeSoftLight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSoftLightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7434,7 +7431,7 @@ class _$_FlutterBlendModeSrc extends _FlutterBlendModeSrc {
   factory _$_FlutterBlendModeSrc.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSrcFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7507,7 +7504,7 @@ class _$_FlutterBlendModeSrcATop extends _FlutterBlendModeSrcATop {
   factory _$_FlutterBlendModeSrcATop.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSrcATopFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7581,7 +7578,7 @@ class _$_FlutterBlendModeSrcIn extends _FlutterBlendModeSrcIn {
   factory _$_FlutterBlendModeSrcIn.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSrcInFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7654,7 +7651,7 @@ class _$_FlutterBlendModeSrcOut extends _FlutterBlendModeSrcOut {
   factory _$_FlutterBlendModeSrcOut.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSrcOutFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7728,7 +7725,7 @@ class _$_FlutterBlendModeSrcOver extends _FlutterBlendModeSrcOver {
   factory _$_FlutterBlendModeSrcOver.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeSrcOverFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7802,7 +7799,7 @@ class _$_FlutterBlendModeXor extends _FlutterBlendModeXor {
   factory _$_FlutterBlendModeXor.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBlendModeXorFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7866,7 +7863,7 @@ abstract class _FlutterBlendModeXor extends FlutterBlendMode {
 }
 
 FlutterRect _$FlutterRectFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Rect.fromCenter':
       return _FlutterRectFroMCenter.fromJson(json);
     case 'f:1:Rect.fromCircle':
@@ -7879,8 +7876,8 @@ FlutterRect _$FlutterRectFromJson(Map<String, dynamic> json) {
       return _FlutterRectFromPoints.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterRect',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterRect',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -7918,7 +7915,7 @@ class _$_FlutterRectFroMCenter extends _FlutterRectFroMCenter {
   @override
   final ZacDouble height;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -7988,7 +7985,7 @@ class _$_FlutterRectFromCircle extends _FlutterRectFromCircle {
   @override
   final ZacDouble radius;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8058,7 +8055,7 @@ class _$_FlutterRectFromLTRB extends _FlutterRectFromLTRB {
   @override
   final ZacDouble bottom;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8133,7 +8130,7 @@ class _$_FlutterRectFromLTWH extends _FlutterRectFromLTWH {
   @override
   final ZacDouble height;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8203,7 +8200,7 @@ class _$_FlutterRectFromPoints extends _FlutterRectFromPoints {
   @override
   final FlutterOffset b;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8253,7 +8250,7 @@ abstract class _FlutterRectFromPoints extends FlutterRect {
 }
 
 FlutterFilterQuality _$FlutterFilterQualityFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:FilterQuality.high':
       return _FlutterFilterQualityHigh.fromJson(json);
     case 'f:1:FilterQuality.low':
@@ -8264,8 +8261,8 @@ FlutterFilterQuality _$FlutterFilterQualityFromJson(Map<String, dynamic> json) {
       return _FlutterFilterQualityNone.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterFilterQuality',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterFilterQuality',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -8291,7 +8288,7 @@ class _$_FlutterFilterQualityHigh extends _FlutterFilterQualityHigh {
   factory _$_FlutterFilterQualityHigh.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFilterQualityHighFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8340,7 +8337,7 @@ class _$_FlutterFilterQualityLow extends _FlutterFilterQualityLow {
   factory _$_FlutterFilterQualityLow.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFilterQualityLowFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8389,7 +8386,7 @@ class _$_FlutterFilterQualityMedium extends _FlutterFilterQualityMedium {
   factory _$_FlutterFilterQualityMedium.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFilterQualityMediumFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8438,7 +8435,7 @@ class _$_FlutterFilterQualityNone extends _FlutterFilterQualityNone {
   factory _$_FlutterFilterQualityNone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterFilterQualityNoneFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8478,15 +8475,15 @@ abstract class _FlutterFilterQualityNone extends FlutterFilterQuality {
 }
 
 FlutterBrightness _$FlutterBrightnessFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Brightness.dark':
       return _FlutterBrightnessDark.fromJson(json);
     case 'f:1:Brightness.light':
       return _FlutterBrightnessLight.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterBrightness',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterBrightness',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -8510,7 +8507,7 @@ class _$_FlutterBrightnessDark extends _FlutterBrightnessDark {
   factory _$_FlutterBrightnessDark.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBrightnessDarkFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8556,7 +8553,7 @@ class _$_FlutterBrightnessLight extends _FlutterBrightnessLight {
   factory _$_FlutterBrightnessLight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBrightnessLightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8668,7 +8665,7 @@ abstract class _FlutterSize extends FlutterSize {
 
 FlutterBoxHeightStyle _$FlutterBoxHeightStyleFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:BoxHeightStyle.includeLineSpacingBottom':
       return _FlutterBoxHeightStyleincludeLineSpacingBottom.fromJson(json);
     case 'f:1:BoxHeightStyle.includeLineSpacingMiddle':
@@ -8683,11 +8680,8 @@ FlutterBoxHeightStyle _$FlutterBoxHeightStyleFromJson(
       return _FlutterBoxHeightStyletight.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'FlutterBoxHeightStyle',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterBoxHeightStyle',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -8722,7 +8716,7 @@ class _$_FlutterBoxHeightStyleincludeLineSpacingBottom
           Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStyleincludeLineSpacingBottomFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8783,7 +8777,7 @@ class _$_FlutterBoxHeightStyleincludeLineSpacingMiddle
           Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStyleincludeLineSpacingMiddleFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8844,7 +8838,7 @@ class _$_FlutterBoxHeightStyleincludeLineSpacingTop
           Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStyleincludeLineSpacingTopFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8903,7 +8897,7 @@ class _$_FlutterBoxHeightStylemax extends _FlutterBoxHeightStylemax {
   factory _$_FlutterBoxHeightStylemax.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStylemaxFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -8959,7 +8953,7 @@ class _$_FlutterBoxHeightStylestrut extends _FlutterBoxHeightStylestrut {
   factory _$_FlutterBoxHeightStylestrut.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStylestrutFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -9015,7 +9009,7 @@ class _$_FlutterBoxHeightStyletight extends _FlutterBoxHeightStyletight {
   factory _$_FlutterBoxHeightStyletight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxHeightStyletightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -9062,15 +9056,15 @@ abstract class _FlutterBoxHeightStyletight extends FlutterBoxHeightStyle {
 }
 
 FlutterBoxWidthStyle _$FlutterBoxWidthStyleFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:BoxWidthStyle.max':
       return _FlutterBoxWidthStylemax.fromJson(json);
     case 'f:1:BoxWidthStyle.tight':
       return _FlutterBoxWidthStyletight.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterBoxWidthStyle',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterBoxWidthStyle',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -9094,7 +9088,7 @@ class _$_FlutterBoxWidthStylemax extends _FlutterBoxWidthStylemax {
   factory _$_FlutterBoxWidthStylemax.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxWidthStylemaxFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -9141,7 +9135,7 @@ class _$_FlutterBoxWidthStyletight extends _FlutterBoxWidthStyletight {
   factory _$_FlutterBoxWidthStyletight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxWidthStyletightFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

@@ -36,7 +36,7 @@ void main() {
           },
           family: 'foo',
           value: const <String, dynamic>{
-            '_converter': 'f:1:SizedBox',
+            'converter': 'f:1:SizedBox',
           },
           transformer: ZacTransformers([ConvertTransformer()]),
         ),
@@ -70,9 +70,9 @@ void main() {
         SharedValueProvider(
           family: 'foo',
           value: const {
-            '_converter': 'f:1:SizedBox',
+            'converter': 'f:1:SizedBox',
             'key': {
-              '_converter': 'f:1:ValueKey',
+              'converter': 'f:1:ValueKey',
               'value': 'FIND_ME',
             }
           },
@@ -258,14 +258,14 @@ void main() {
     test('fromJson', () {
       ConverterHelper.convertToType<
           UpdateSharedValueInteractions>(<String, dynamic>{
-        '_converter': 'z:1:SharedValue.update',
+        'converter': 'z:1:SharedValue.update',
         'family': 'fam',
         'transformer': <ZacTransformer>[],
       });
 
       ConverterHelper.convertToType<
           UpdateSharedValueInteractions>(<String, dynamic>{
-        '_converter': 'z:1:SharedValue.replaceWith',
+        'converter': 'z:1:SharedValue.replaceWith',
         'family': 'fam',
         'value': 1,
         'transformer': <ZacTransformer>[],

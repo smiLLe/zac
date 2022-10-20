@@ -68,19 +68,19 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
       restorationId: json['restorationId'] == null
           ? null
           : ZacString.fromJson(json['restorationId'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterScaffoldOpenDrawer _$$_FlutterScaffoldOpenDrawerFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterScaffoldOpenDrawer(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterScaffoldOpenEndDrawer _$$_FlutterScaffoldOpenEndDrawerFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterScaffoldOpenEndDrawer(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterScaffoldShowBodyScrim _$$_FlutterScaffoldShowBodyScrimFromJson(
@@ -88,7 +88,7 @@ _$_FlutterScaffoldShowBodyScrim _$$_FlutterScaffoldShowBodyScrimFromJson(
     _$_FlutterScaffoldShowBodyScrim(
       json['value'] as bool,
       ZacDouble.fromJson(json['opacity'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterScaffoldShowBottomSheet _$$_FlutterScaffoldShowBottomSheetFromJson(
@@ -115,7 +115,7 @@ _$_FlutterScaffoldShowBottomSheet _$$_FlutterScaffoldShowBottomSheetFromJson(
       enableDrag: json['enableDrag'] == null
           ? null
           : ZacBool.fromJson(json['enableDrag'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterScaffoldMessengerShowSnackBar
@@ -123,21 +123,21 @@ _$_FlutterScaffoldMessengerShowSnackBar
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldMessengerShowSnackBar(
           FlutterSnackBar.fromJson(json['snackBar'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScaffoldMessengerhideCurrentSnackBar
     _$$_FlutterScaffoldMessengerhideCurrentSnackBarFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldMessengerhideCurrentSnackBar(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScaffoldMessengerremoveCurrentSnackBar
     _$$_FlutterScaffoldMessengerremoveCurrentSnackBarFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldMessengerremoveCurrentSnackBar(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScaffoldMessengerShowMaterialBanner
@@ -146,21 +146,21 @@ _$_FlutterScaffoldMessengerShowMaterialBanner
         _$_FlutterScaffoldMessengerShowMaterialBanner(
           FlutterMaterialBanner.fromJson(
               json['materialBanner'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScaffoldMessengerHideCurrentMaterialBanner
     _$$_FlutterScaffoldMessengerHideCurrentMaterialBannerFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldMessengerHideCurrentMaterialBanner(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner
     _$$_FlutterScaffoldMessengerRemoveCurrentMaterialBannerFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
@@ -204,13 +204,13 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
 _$_FlutterSnackBarBehaviorFixed _$$_FlutterSnackBarBehaviorFixedFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterSnackBarBehaviorFixed(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterSnackBarBehaviorFloating _$$_FlutterSnackBarBehaviorFloatingFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterSnackBarBehaviorFloating(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(

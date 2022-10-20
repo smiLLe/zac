@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterScaffold _$FlutterScaffoldFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Scaffold':
       return _FlutterScaffold.fromJson(json);
     case 'f:1:Scaffold.openDrawer':
@@ -28,8 +28,8 @@ FlutterScaffold _$FlutterScaffoldFromJson(Map<String, dynamic> json) {
       return _FlutterScaffoldShowBottomSheet.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterScaffold',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterScaffold',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -124,7 +124,7 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   final ZacString? restorationId;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -274,7 +274,7 @@ class _$_FlutterScaffoldOpenDrawer extends _FlutterScaffoldOpenDrawer {
   factory _$_FlutterScaffoldOpenDrawer.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterScaffoldOpenDrawerFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -327,7 +327,7 @@ class _$_FlutterScaffoldOpenEndDrawer extends _FlutterScaffoldOpenEndDrawer {
   factory _$_FlutterScaffoldOpenEndDrawer.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterScaffoldOpenEndDrawerFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -386,7 +386,7 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
   @override
   final ZacDouble opacity;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -473,7 +473,7 @@ class _$_FlutterScaffoldShowBottomSheet
   @override
   final ZacBool? enableDrag;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -551,7 +551,7 @@ abstract class _FlutterScaffoldShowBottomSheet extends FlutterScaffold {
 
 FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:ScaffoldMessenger.showSnackBar':
       return _FlutterScaffoldMessengerShowSnackBar.fromJson(json);
     case 'f:1:ScaffoldMessenger.hideCurrentSnackBar':
@@ -569,9 +569,9 @@ FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterScaffoldMessenger',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -614,7 +614,7 @@ class _$_FlutterScaffoldMessengerShowSnackBar
   @override
   final FlutterSnackBar snackBar;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -684,7 +684,7 @@ class _$_FlutterScaffoldMessengerhideCurrentSnackBar
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerhideCurrentSnackBarFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -750,7 +750,7 @@ class _$_FlutterScaffoldMessengerremoveCurrentSnackBar
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerremoveCurrentSnackBarFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -820,7 +820,7 @@ class _$_FlutterScaffoldMessengerShowMaterialBanner
   @override
   final FlutterMaterialBanner materialBanner;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -892,7 +892,7 @@ class _$_FlutterScaffoldMessengerHideCurrentMaterialBanner
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerHideCurrentMaterialBannerFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -958,7 +958,7 @@ class _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerRemoveCurrentMaterialBannerFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1178,7 +1178,7 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
 
 FlutterSnackBarBehavior _$FlutterSnackBarBehaviorFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:SnackBarBehavior.fixed':
       return _FlutterSnackBarBehaviorFixed.fromJson(json);
     case 'f:1:SnackBarBehavior.floating':
@@ -1187,9 +1187,9 @@ FlutterSnackBarBehavior _$FlutterSnackBarBehaviorFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterSnackBarBehavior',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1213,7 +1213,7 @@ class _$_FlutterSnackBarBehaviorFixed extends _FlutterSnackBarBehaviorFixed {
   factory _$_FlutterSnackBarBehaviorFixed.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterSnackBarBehaviorFixedFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1262,7 +1262,7 @@ class _$_FlutterSnackBarBehaviorFloating
           Map<String, dynamic> json) =>
       _$$_FlutterSnackBarBehaviorFloatingFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

@@ -10,11 +10,11 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterConstrainedBox.unionValue,
+        'converter': FlutterConstrainedBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
         'constraints': {
-          '_converter': 'f:1:BoxConstraints.expand',
+          'converter': 'f:1:BoxConstraints.expand',
           'width': 20,
           'height': 21,
         }

@@ -86,11 +86,11 @@ void main() {
 
   testWidgets('properties', (tester) async {
     await testMap(tester, <String, dynamic>{
-      '_converter': FlutterGestureDetector.unionValue,
+      'converter': FlutterGestureDetector.unionValue,
       'key': KeysModel.getValueKey('FIND_ME'),
       'child': ChildModel.getSizedBox(key: 'test_child'),
       'behavior': {
-        '_converter': 'f:1:HitTestBehavior.deferToChild',
+        'converter': 'f:1:HitTestBehavior.deferToChild',
       },
     });
 

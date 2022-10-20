@@ -29,7 +29,7 @@ _$_FlutterDialogsShowDialog _$$_FlutterDialogsShowDialogFromJson(
           ? null
           : FlutterRouteSettings.fromJson(
               json['routeSettings'] as Map<String, dynamic>),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
@@ -61,7 +61,7 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
@@ -138,7 +138,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
       scrollable: json['scrollable'] == null
           ? null
           : ZacBool.fromJson(json['scrollable'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
@@ -187,7 +187,7 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
       alignment: json['alignment'] == null
           ? null
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterDialogsSimpleDialogOption
@@ -206,5 +206,5 @@ _$_FlutterDialogsSimpleDialogOption
               ? null
               : FlutterEdgeInsets.fromJson(
                   json['padding'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );

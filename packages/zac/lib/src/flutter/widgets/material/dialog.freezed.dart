@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:showDialog':
       return _FlutterDialogsShowDialog.fromJson(json);
     case 'f:1:Dialog':
@@ -28,8 +28,8 @@ FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
       return _FlutterDialogsSimpleDialogOption.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterDialogs',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterDialogs',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -80,7 +80,7 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
   @override
   final FlutterRouteSettings? routeSettings;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -195,7 +195,7 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   final FlutterWidget? child;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -350,7 +350,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final ZacBool? scrollable;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -544,7 +544,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterAlignmentGeometry? alignment;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -669,7 +669,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final FlutterEdgeInsets? padding;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

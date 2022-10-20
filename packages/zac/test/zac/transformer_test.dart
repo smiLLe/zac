@@ -18,13 +18,13 @@ void _expectFromJson<T>({
 }) {
   expect(
       ConverterHelper.convertToType<T>(<String, dynamic>{
-        '_converter': converter,
+        'converter': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
   expect(
       fromJson(<String, dynamic>{
-        '_converter': converter,
+        'converter': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
@@ -35,7 +35,7 @@ void main() {
     expect(
         ConvertTransformer().transform(
             ZacTransformValue({
-              '_converter': 'f:1:SizedBox',
+              'converter': 'f:1:SizedBox',
             }),
             FakeZacOrigin(),
             null),

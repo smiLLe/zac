@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterSliverGridDelegate _$FlutterSliverGridDelegateFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:SliverGridDelegateWithFixedCrossAxisCount':
       return _SliverGridDelegateWithFixedCrossAxisCount.fromJson(json);
     case 'f:1:SliverGridDelegateWithMaxCrossAxisExtent':
@@ -25,9 +25,9 @@ FlutterSliverGridDelegate _$FlutterSliverGridDelegateFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterSliverGridDelegate',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -77,7 +77,7 @@ class _$_SliverGridDelegateWithFixedCrossAxisCount
   @override
   final ZacDouble? mainAxisExtent;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -179,7 +179,7 @@ class _$_SliverGridDelegateWithMaxCrossAxisExtent
   @override
   final ZacDouble? mainAxisExtent;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

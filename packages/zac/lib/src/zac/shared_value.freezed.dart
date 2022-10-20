@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 UpdateSharedValueInteractions _$UpdateSharedValueInteractionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:SharedValue.update':
       return _SharedValueInteractionUpdate.fromJson(json);
     case 'z:1:SharedValue.replaceWith':
@@ -25,9 +25,9 @@ UpdateSharedValueInteractions _$UpdateSharedValueInteractionsFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'UpdateSharedValueInteractions',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -60,7 +60,7 @@ class _$_SharedValueInteractionUpdate extends _SharedValueInteractionUpdate {
   @override
   final ZacTransformers transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -135,7 +135,7 @@ class _$_SharedValueInteractionReplaceWith
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -194,7 +194,7 @@ abstract class _SharedValueInteractionReplaceWith
 
 SharedValueConsumeType _$SharedValueConsumeTypeFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:SharedValueConsume.watch':
       return _SharedValueConsumeTypeWatch.fromJson(json);
     case 'z:1:SharedValueConsume.read':
@@ -203,9 +203,9 @@ SharedValueConsumeType _$SharedValueConsumeTypeFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'SharedValueConsumeType',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -231,7 +231,7 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
   @override
   final ZacTransformers? select;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -281,7 +281,7 @@ class _$_SharedValueConsumeTypeRead implements _SharedValueConsumeTypeRead {
   factory _$_SharedValueConsumeTypeRead.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeReadFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

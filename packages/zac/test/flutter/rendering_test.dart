@@ -7,15 +7,15 @@ import '../helper.dart';
 void main() {
   test('FlutterCrossAxisAlignment', () {
     fakeBuild<CrossAxisAlignment>(
-      FlutterCrossAxisAlignment.fromJson(<String, dynamic>{
-        '_converter': 'f:1:CrossAxisAlignment.baseline'
-      }).build,
+      FlutterCrossAxisAlignment.fromJson(
+              <String, dynamic>{'converter': 'f:1:CrossAxisAlignment.baseline'})
+          .build,
       (matcher) => matcher.having((p0) => p0, 'CrossAxisAlignment.baseline',
           equals(CrossAxisAlignment.baseline)),
     );
     fakeBuild<CrossAxisAlignment>(
       FlutterCrossAxisAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:CrossAxisAlignment.center'})
+              <String, dynamic>{'converter': 'f:1:CrossAxisAlignment.center'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'CrossAxisAlignment.center',
           equals(CrossAxisAlignment.center)),
@@ -23,22 +23,21 @@ void main() {
 
     fakeBuild<CrossAxisAlignment>(
       FlutterCrossAxisAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:CrossAxisAlignment.end'}).build,
+          <String, dynamic>{'converter': 'f:1:CrossAxisAlignment.end'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'CrossAxisAlignment.end', equals(CrossAxisAlignment.end)),
     );
 
     fakeBuild<CrossAxisAlignment>(
       FlutterCrossAxisAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:CrossAxisAlignment.start'})
-          .build,
+          <String, dynamic>{'converter': 'f:1:CrossAxisAlignment.start'}).build,
       (matcher) => matcher.having((p0) => p0, 'CrossAxisAlignment.start',
           equals(CrossAxisAlignment.start)),
     );
 
     fakeBuild<CrossAxisAlignment>(
       FlutterCrossAxisAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:CrossAxisAlignment.stretch'})
+              <String, dynamic>{'converter': 'f:1:CrossAxisAlignment.stretch'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'CrossAxisAlignment.stretch',
           equals(CrossAxisAlignment.stretch)),
@@ -48,13 +47,13 @@ void main() {
   test('FlutterMainAxisSize', () {
     fakeBuild<MainAxisSize>(
       FlutterMainAxisSize.fromJson(
-          <String, dynamic>{'_converter': 'f:1:MainAxisSize.min'}).build,
+          <String, dynamic>{'converter': 'f:1:MainAxisSize.min'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'MainAxisSize.min', equals(MainAxisSize.min)),
     );
     fakeBuild<MainAxisSize>(
       FlutterMainAxisSize.fromJson(
-          <String, dynamic>{'_converter': 'f:1:MainAxisSize.max'}).build,
+          <String, dynamic>{'converter': 'f:1:MainAxisSize.max'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'MainAxisSize.max', equals(MainAxisSize.max)),
     );
@@ -63,28 +62,27 @@ void main() {
   test('FlutterMainAxisAlignment', () {
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:MainAxisAlignment.start'}).build,
+          <String, dynamic>{'converter': 'f:1:MainAxisAlignment.start'}).build,
       (matcher) => matcher.having((p0) => p0, 'MainAxisAlignment.start',
           equals(MainAxisAlignment.start)),
     );
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:MainAxisAlignment.end'}).build,
+          <String, dynamic>{'converter': 'f:1:MainAxisAlignment.end'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'MainAxisAlignment.end', equals(MainAxisAlignment.end)),
     );
 
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:MainAxisAlignment.center'})
-          .build,
+          <String, dynamic>{'converter': 'f:1:MainAxisAlignment.center'}).build,
       (matcher) => matcher.having((p0) => p0, 'MainAxisAlignment.center',
           equals(MainAxisAlignment.center)),
     );
 
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(<String, dynamic>{
-        '_converter': 'f:1:MainAxisAlignment.spaceBetween'
+        'converter': 'f:1:MainAxisAlignment.spaceBetween'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'MainAxisAlignment.spaceBetween',
           equals(MainAxisAlignment.spaceBetween)),
@@ -92,7 +90,7 @@ void main() {
 
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(<String, dynamic>{
-        '_converter': 'f:1:MainAxisAlignment.spaceAround'
+        'converter': 'f:1:MainAxisAlignment.spaceAround'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'MainAxisAlignment.spaceAround',
           equals(MainAxisAlignment.spaceAround)),
@@ -100,7 +98,7 @@ void main() {
 
     fakeBuild<MainAxisAlignment>(
       FlutterMainAxisAlignment.fromJson(<String, dynamic>{
-        '_converter': 'f:1:MainAxisAlignment.spaceEvenly'
+        'converter': 'f:1:MainAxisAlignment.spaceEvenly'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'MainAxisAlignment.spaceEvenly',
           equals(MainAxisAlignment.spaceEvenly)),
@@ -110,13 +108,13 @@ void main() {
   test('FlutterFlexFit', () {
     fakeBuild<FlexFit>(
       FlutterFlexFit.fromJson(
-          <String, dynamic>{'_converter': 'f:1:FlexFit.tight'}).build,
+          <String, dynamic>{'converter': 'f:1:FlexFit.tight'}).build,
       (matcher) =>
           matcher.having((p0) => p0, 'FlexFit.tight', equals(FlexFit.tight)),
     );
     fakeBuild<FlexFit>(
       FlutterFlexFit.fromJson(
-          <String, dynamic>{'_converter': 'f:1:FlexFit.loose'}).build,
+          <String, dynamic>{'converter': 'f:1:FlexFit.loose'}).build,
       (matcher) =>
           matcher.having((p0) => p0, 'FlexFit.loose', equals(FlexFit.loose)),
     );
@@ -125,27 +123,27 @@ void main() {
   test('FlutterWrapAlignment', () {
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:WrapAlignment.start'}).build,
+          <String, dynamic>{'converter': 'f:1:WrapAlignment.start'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'WrapAlignment.start', equals(WrapAlignment.start)),
     );
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:WrapAlignment.end'}).build,
+          <String, dynamic>{'converter': 'f:1:WrapAlignment.end'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'WrapAlignment.end', equals(WrapAlignment.end)),
     );
 
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:WrapAlignment.center'}).build,
+          <String, dynamic>{'converter': 'f:1:WrapAlignment.center'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'WrapAlignment.center', equals(WrapAlignment.center)),
     );
 
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:WrapAlignment.spaceBetween'})
+              <String, dynamic>{'converter': 'f:1:WrapAlignment.spaceBetween'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'WrapAlignment.spaceBetween',
           equals(WrapAlignment.spaceBetween)),
@@ -153,7 +151,7 @@ void main() {
 
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:WrapAlignment.spaceAround'})
+              <String, dynamic>{'converter': 'f:1:WrapAlignment.spaceAround'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'WrapAlignment.spaceAround',
           equals(WrapAlignment.spaceAround)),
@@ -161,7 +159,7 @@ void main() {
 
     fakeBuild<WrapAlignment>(
       FlutterWrapAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:WrapAlignment.spaceEvenly'})
+              <String, dynamic>{'converter': 'f:1:WrapAlignment.spaceEvenly'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'WrapAlignment.spaceEvenly',
           equals(WrapAlignment.spaceEvenly)),
@@ -171,22 +169,21 @@ void main() {
   test('FlutterWrapCrossAlignment', () {
     fakeBuild<WrapCrossAlignment>(
       FlutterWrapCrossAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:WrapCrossAlignment.center'})
+              <String, dynamic>{'converter': 'f:1:WrapCrossAlignment.center'})
           .build,
       (matcher) => matcher.having((p0) => p0, 'WrapCrossAlignment.center',
           equals(WrapCrossAlignment.center)),
     );
     fakeBuild<WrapCrossAlignment>(
       FlutterWrapCrossAlignment.fromJson(
-          <String, dynamic>{'_converter': 'f:1:WrapCrossAlignment.end'}).build,
+          <String, dynamic>{'converter': 'f:1:WrapCrossAlignment.end'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'WrapCrossAlignment.end', equals(WrapCrossAlignment.end)),
     );
 
     fakeBuild<WrapCrossAlignment>(
       FlutterWrapCrossAlignment.fromJson(
-              <String, dynamic>{'_converter': 'f:1:WrapCrossAlignment.start'})
-          .build,
+          <String, dynamic>{'converter': 'f:1:WrapCrossAlignment.start'}).build,
       (matcher) => matcher.having((p0) => p0, 'WrapCrossAlignment.start',
           equals(WrapCrossAlignment.start)),
     );
@@ -195,20 +192,20 @@ void main() {
   test('FlutterStackFit', () {
     fakeBuild<StackFit>(
       FlutterStackFit.fromJson(
-          <String, dynamic>{'_converter': 'f:1:StackFit.expand'}).build,
+          <String, dynamic>{'converter': 'f:1:StackFit.expand'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'StackFit.expand', equals(StackFit.expand)),
     );
     fakeBuild<StackFit>(
       FlutterStackFit.fromJson(
-          <String, dynamic>{'_converter': 'f:1:StackFit.loose'}).build,
+          <String, dynamic>{'converter': 'f:1:StackFit.loose'}).build,
       (matcher) =>
           matcher.having((p0) => p0, 'StackFit.loose', equals(StackFit.loose)),
     );
 
     fakeBuild<StackFit>(
       FlutterStackFit.fromJson(
-          <String, dynamic>{'_converter': 'f:1:StackFit.passthrough'}).build,
+          <String, dynamic>{'converter': 'f:1:StackFit.passthrough'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'StackFit.passthrough', equals(StackFit.passthrough)),
     );
@@ -217,7 +214,7 @@ void main() {
   group('FlutterSliverGridDelegate', () {
     test('FlutterSliverGridDelegateWithFixedCrossAxisCount()', () {
       final data = FlutterSliverGridDelegate.fromJson(<String, dynamic>{
-        '_converter': 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
+        'converter': 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
         'crossAxisCount': 8,
         'mainAxisSpacing': 1,
         'crossAxisSpacing': 2,
@@ -238,7 +235,7 @@ void main() {
 
     test('FlutterSliverGridDelegateWithMaxCrossAxisExtent()', () {
       final data = FlutterSliverGridDelegate.fromJson(<String, dynamic>{
-        '_converter': 'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
+        'converter': 'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
         'maxCrossAxisExtent': 8,
         'mainAxisSpacing': 1,
         'crossAxisSpacing': 2,
@@ -261,22 +258,22 @@ void main() {
   test('FlutterHitTestBehavior', () {
     fakeBuild<HitTestBehavior>(
       FlutterHitTestBehavior.fromJson(<String, dynamic>{
-        '_converter': 'f:1:HitTestBehavior.deferToChild'
+        'converter': 'f:1:HitTestBehavior.deferToChild'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'HitTestBehavior.deferToChild',
           equals(HitTestBehavior.deferToChild)),
     );
     fakeBuild<HitTestBehavior>(
       FlutterHitTestBehavior.fromJson(
-          <String, dynamic>{'_converter': 'f:1:HitTestBehavior.opaque'}).build,
+          <String, dynamic>{'converter': 'f:1:HitTestBehavior.opaque'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'HitTestBehavior.opaque', equals(HitTestBehavior.opaque)),
     );
 
     fakeBuild<HitTestBehavior>(
-      FlutterHitTestBehavior.fromJson(<String, dynamic>{
-        '_converter': 'f:1:HitTestBehavior.translucent'
-      }).build,
+      FlutterHitTestBehavior.fromJson(
+              <String, dynamic>{'converter': 'f:1:HitTestBehavior.translucent'})
+          .build,
       (matcher) => matcher.having((p0) => p0, 'HitTestBehavior.translucent',
           equals(HitTestBehavior.translucent)),
     );
@@ -285,7 +282,7 @@ void main() {
   test('FlutterBoxConstraints', () {
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints',
+        'converter': 'f:1:BoxConstraints',
         'minHeight': 100,
         'maxHeight': 200,
         'minWidth': 300,
@@ -304,7 +301,7 @@ void main() {
 
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints.expand',
+        'converter': 'f:1:BoxConstraints.expand',
         'width': 20,
         'height': 30,
       }).build,
@@ -313,9 +310,9 @@ void main() {
     );
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints.loose',
+        'converter': 'f:1:BoxConstraints.loose',
         'size': {
-          '_converter': 'f:1:Size',
+          'converter': 'f:1:Size',
           'width': 10,
           'height': 20,
         },
@@ -325,9 +322,9 @@ void main() {
     );
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints.tight',
+        'converter': 'f:1:BoxConstraints.tight',
         'size': {
-          '_converter': 'f:1:Size',
+          'converter': 'f:1:Size',
           'width': 10,
           'height': 20,
         },
@@ -338,7 +335,7 @@ void main() {
 
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints.tightFor',
+        'converter': 'f:1:BoxConstraints.tightFor',
         'width': 30,
         'height': 40,
       }).build,
@@ -348,7 +345,7 @@ void main() {
 
     fakeBuild<BoxConstraints>(
       FlutterBoxConstraints.fromJson(<String, dynamic>{
-        '_converter': 'f:1:BoxConstraints.tightForFinite',
+        'converter': 'f:1:BoxConstraints.tightForFinite',
         'width': 30,
         'height': 40,
       }).build,
@@ -360,14 +357,14 @@ void main() {
   test('FlutterDecorationPosition', () {
     fakeBuild<DecorationPosition>(
       FlutterDecorationPosition.fromJson(<String, dynamic>{
-        '_converter': 'f:1:DecorationPosition.background'
+        'converter': 'f:1:DecorationPosition.background'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'DecorationPosition.background',
           equals(DecorationPosition.background)),
     );
     fakeBuild<DecorationPosition>(
       FlutterDecorationPosition.fromJson(<String, dynamic>{
-        '_converter': 'f:1:DecorationPosition.foreground'
+        'converter': 'f:1:DecorationPosition.foreground'
       }).build,
       (matcher) => matcher.having((p0) => p0, 'DecorationPosition.foreground',
           equals(DecorationPosition.foreground)),

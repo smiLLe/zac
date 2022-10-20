@@ -9,13 +9,13 @@ part of 'navigator.dart';
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateClosest(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateRoot(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
@@ -44,7 +44,7 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterNavigatorActionsPushNamed
@@ -56,7 +56,7 @@ _$_FlutterNavigatorActionsPushNamed
               ? null
               : GetFlutterNavigatorState.fromJson(
                   json['navigatorState'] as Object),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
@@ -68,7 +68,7 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
@@ -80,7 +80,7 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_FlutterNavigatorActionsPushReplacement
@@ -95,7 +95,7 @@ _$_FlutterNavigatorActionsPushReplacement
               ? null
               : GetFlutterNavigatorState.fromJson(
                   json['navigatorState'] as Object),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterNavigatorActionsPushReplacementNamed
@@ -111,7 +111,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
           result: json['result'] == null
               ? null
               : ZacActions.fromJson(json['result'] as Object),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(

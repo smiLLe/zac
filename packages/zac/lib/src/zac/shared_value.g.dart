@@ -11,7 +11,7 @@ _$_SharedValueInteractionUpdate _$$_SharedValueInteractionUpdateFromJson(
     _$_SharedValueInteractionUpdate(
       family: json['family'] as Object,
       transformer: ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_SharedValueInteractionReplaceWith
@@ -22,7 +22,7 @@ _$_SharedValueInteractionReplaceWith
           transformer: json['transformer'] == null
               ? null
               : ZacTransformers.fromJson(json['transformer'] as Object),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
@@ -31,13 +31,13 @@ _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
       select: json['select'] == null
           ? null
           : ZacTransformers.fromJson(json['select'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_SharedValueConsumeTypeRead _$$_SharedValueConsumeTypeReadFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeRead(
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(

@@ -12,7 +12,7 @@ _$_ZacWidgetBuilder _$$_ZacWidgetBuilderFromJson(Map<String, dynamic> json) =>
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
       data: FlutterWidget.fromJson(json['data'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacWidgetBuilderMap _$$_ZacWidgetBuilderMapFromJson(
@@ -22,7 +22,7 @@ _$_ZacWidgetBuilderMap _$$_ZacWidgetBuilderMapFromJson(
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
       data: ZacMap.fromJson(json['data'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
@@ -36,7 +36,7 @@ _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
           ? null
           : FlutterWidget.fromJson(json['errorChild'] as Object),
       debugRethrowError: json['debugRethrowError'] as bool?,
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacWidgetBuilderIsolateString _$$_ZacWidgetBuilderIsolateStringFromJson(
@@ -50,5 +50,5 @@ _$_ZacWidgetBuilderIsolateString _$$_ZacWidgetBuilderIsolateStringFromJson(
           ? null
           : FlutterWidget.fromJson(json['errorChild'] as Object),
       debugRethrowError: json['debugRethrowError'] as bool?,
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );

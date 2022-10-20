@@ -12,7 +12,7 @@ void main() {
   group('UpdateOrigin', () {
     testWidgets('convert', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:UpdateOrigin',
+        'converter': 'z:1:UpdateOrigin',
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
       });

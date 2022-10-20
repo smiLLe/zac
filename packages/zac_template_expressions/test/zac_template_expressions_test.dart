@@ -14,13 +14,13 @@ void _expectFromJson<T>({
 }) {
   expect(
       ConverterHelper.convertToType<T>(<String, dynamic>{
-        '_converter': converter,
+        'converter': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
   expect(
       fromJson(<String, dynamic>{
-        '_converter': converter,
+        'converter': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
@@ -58,7 +58,7 @@ void main() {
         'context': {
           'simple': 1,
           'shared': {
-            '_converter': 'z:1:ZacObject.consume',
+            'converter': 'z:1:ZacObject.consume',
             'family': 'fam',
           },
         },

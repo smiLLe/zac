@@ -47,12 +47,12 @@ _$_FlutterRefreshIndicatorTriggerModeonEdge
     _$$_FlutterRefreshIndicatorTriggerModeonEdgeFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterRefreshIndicatorTriggerModeonEdge(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterRefreshIndicatorTriggerModeanywhere
     _$$_FlutterRefreshIndicatorTriggerModeanywhereFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterRefreshIndicatorTriggerModeanywhere(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );

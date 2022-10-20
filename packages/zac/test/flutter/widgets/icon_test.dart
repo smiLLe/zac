@@ -9,7 +9,7 @@ void main() {
   test('IconData', () {
     fakeBuild<IconData>(
       FlutterIconData.fromJson(<String, dynamic>{
-        '_converter': 'f:1:IconData',
+        'converter': 'f:1:IconData',
         'codePoint': 30,
         'fontFamily': 'someFamily',
         'fontPackage': 'somePackage',
@@ -27,16 +27,16 @@ void main() {
   test('Icon', () {
     fakeBuild<Icon>(
       FlutterIcon.fromJson(<String, dynamic>{
-        '_converter': 'f:1:Icon',
+        'converter': 'f:1:Icon',
         'icon': {
-          '_converter': 'f:1:IconData',
+          'converter': 'f:1:IconData',
           'codePoint': 30,
         },
         'key': KeysModel.getValueKey('test_key'),
         'size': 20,
         'color': ColorModel.json,
         'semanticLabel': 'semantic',
-        'textDirection': {'_converter': 'f:1:TextDirection.ltr'}
+        'textDirection': {'converter': 'f:1:TextDirection.ltr'}
       }).buildWidget,
       (matcher) => matcher
           .having((p0) => p0.icon, 'Icon.icon', isA<IconData>())
@@ -51,7 +51,7 @@ void main() {
   test('IconThemeData', () {
     fakeBuild<IconThemeData>(
       FlutterIconThemeData.fromJson(<String, dynamic>{
-        '_converter': 'f:1:IconThemeData',
+        'converter': 'f:1:IconThemeData',
         'color': ColorModel.json,
         'opacity': 0.9,
         'size': 22,

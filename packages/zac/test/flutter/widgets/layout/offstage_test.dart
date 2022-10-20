@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterOffstage.unionValue,
+        'converter': FlutterOffstage.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'offstage': false,
         'child': ChildModel.getSizedBox(key: 'child'),

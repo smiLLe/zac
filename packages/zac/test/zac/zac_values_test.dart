@@ -22,7 +22,7 @@ Future<void> _commonConsume<TClass, TVal>({
       SharedValueProviderBuilder(
         family: 'foo',
         value: {
-          '_converter': 'z:1:$TClass',
+          'converter': 'z:1:$TClass',
           'value': testVal,
         },
         transformer: ZacTransformers([ConvertTransformer()]),
@@ -63,45 +63,45 @@ void _commonCreate<TClass, TVal>({
 }) {
   expect(
       ConverterHelper.convertToType<TClass>({
-        '_converter': 'z:1:$TClass',
+        'converter': 'z:1:$TClass',
         'value': testVal,
       }),
       create(testVal));
 
   expect(
       ConverterHelper.convertToType<TClass>({
-        '_converter': 'z:1:$TClass.consume',
+        'converter': 'z:1:$TClass.consume',
         'family': 'foo',
       }),
       createConsume('foo'));
 
   expect(
       fromJson({
-        '_converter': 'z:1:$TClass',
+        'converter': 'z:1:$TClass',
         'value': testVal,
       }),
       create(testVal));
 
   expect(
       fromJson({
-        '_converter': 'z:1:$TClass.consume',
+        'converter': 'z:1:$TClass.consume',
         'family': 'foo',
       }),
       createConsume('foo', consumeType: const SharedValueConsumeType.watch()));
 
   expect(
       fromJson({
-        '_converter': 'z:1:SharedValue.consume',
+        'converter': 'z:1:SharedValue.consume',
         'family': 'foo',
       }),
       createConsume('foo', consumeType: const SharedValueConsumeType.watch()));
 
   expect(
       fromJson({
-        '_converter': 'z:1:$TClass',
+        'converter': 'z:1:$TClass',
         'value': testVal,
         'transformer': [
-          {'_converter': 'z:1:Transformer:Object.runtimeType'}
+          {'converter': 'z:1:Transformer:Object.runtimeType'}
         ]
       }),
       create(testVal,
@@ -109,10 +109,10 @@ void _commonCreate<TClass, TVal>({
 
   expect(
       fromJson({
-        '_converter': 'z:1:SharedValue.consume',
+        'converter': 'z:1:SharedValue.consume',
         'family': 'foo',
         'transformer': [
-          {'_converter': 'z:1:Transformer:Object.runtimeType'}
+          {'converter': 'z:1:Transformer:Object.runtimeType'}
         ]
       }),
       createConsume('foo',
@@ -318,19 +318,19 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          '_converter': 'z:1:SharedValue.provide',
+          'converter': 'z:1:SharedValue.provide',
           'family': 'foo',
           'value': {
-            '_converter': 'f:1:SizedBox',
+            'converter': 'f:1:SizedBox',
             'key': KeysModel.getValueKey('FINDME'),
           },
           'transformer': [
             {
-              '_converter': 'z:1:Transformer:Converter',
+              'converter': 'z:1:Transformer:Converter',
             }
           ],
           'child': {
-            '_converter': 'z:1:ZacWidget.consume',
+            'converter': 'z:1:ZacWidget.consume',
             'family': 'foo',
           },
         },
@@ -344,44 +344,44 @@ void main() {
     test('fromJson', () {
       expect(
           ListOfZacWidget.fromJson([
-            {'_converter': 'f:1:SizedBox'}
+            {'converter': 'f:1:SizedBox'}
           ]),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ConverterHelper.convertToType<ListOfZacWidget>({
-            '_converter': 'z:1:ListOfZacWidget',
+            'converter': 'z:1:ListOfZacWidget',
             'value': [
-              {'_converter': 'f:1:SizedBox'}
+              {'converter': 'f:1:SizedBox'}
             ],
           }),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ConverterHelper.convertToType<ListOfZacWidget>({
-            '_converter': 'z:1:ListOfZacWidget.consume',
+            'converter': 'z:1:ListOfZacWidget.consume',
             'family': 'foo',
           }),
           ListOfZacWidget.consume('foo'));
 
       expect(
           ListOfZacWidget.fromJson({
-            '_converter': 'z:1:ListOfZacWidget',
+            'converter': 'z:1:ListOfZacWidget',
             'value': [
-              {'_converter': 'f:1:SizedBox'}
+              {'converter': 'f:1:SizedBox'}
             ],
           }),
           ListOfZacWidget([FlutterSizedBox()]));
 
       expect(
           ListOfZacWidget.fromJson({
-            '_converter': 'z:1:ListOfZacWidget.consume',
+            'converter': 'z:1:ListOfZacWidget.consume',
             'family': 'foo',
           }),
           ListOfZacWidget.consume('foo'));
       expect(
           ListOfZacWidget.fromJson({
-            '_converter': 'z:1:SharedValue.consume',
+            'converter': 'z:1:SharedValue.consume',
             'family': 'foo',
           }),
           ListOfZacWidget.consume('foo'));
@@ -396,7 +396,7 @@ void main() {
           SharedValueProviderBuilder(
             family: 'foo',
             value: [
-              {'_converter': 'f:1:SizedBox'}
+              {'converter': 'f:1:SizedBox'}
             ],
             transformer: ZacTransformers([
               IterableTransformer.map(
@@ -426,9 +426,9 @@ void main() {
           SharedValueProviderBuilder(
             family: 'foo',
             value: {
-              '_converter': 'z:1:ListOfZacWidget',
+              'converter': 'z:1:ListOfZacWidget',
               'value': [
-                {'_converter': 'f:1:SizedBox'}
+                {'converter': 'f:1:SizedBox'}
               ]
             },
             transformer: ZacTransformers([ConvertTransformer()]),

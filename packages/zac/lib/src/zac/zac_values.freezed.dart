@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ZacInt _$ZacIntFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacInt':
       return ZacIntValue.fromJson(json);
     case 'z:1:ZacInt.consume':
       return ZacIntConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacInt',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacInt',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -54,7 +54,7 @@ class _$ZacIntValue extends ZacIntValue with ActualValue<int> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -123,7 +123,7 @@ class _$ZacIntConsume extends ZacIntConsume with ConsumeValue<int> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -177,15 +177,15 @@ abstract class ZacIntConsume extends ZacInt implements ConsumeValue<int> {
 }
 
 ZacDouble _$ZacDoubleFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacDouble':
       return ZacDoubleValue.fromJson(json);
     case 'z:1:ZacDouble.consume':
       return ZacDoubleConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacDouble',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacDouble',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -216,7 +216,7 @@ class _$ZacDoubleValue extends ZacDoubleValue with ActualValue<double> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -285,7 +285,7 @@ class _$ZacDoubleConsume extends ZacDoubleConsume with ConsumeValue<double> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -340,15 +340,15 @@ abstract class ZacDoubleConsume extends ZacDouble
 }
 
 ZacString _$ZacStringFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacString':
       return ZacStringValue.fromJson(json);
     case 'z:1:ZacString.consume':
       return ZacStringConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacString',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacString',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -379,7 +379,7 @@ class _$ZacStringValue extends ZacStringValue with ActualValue<String> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -448,7 +448,7 @@ class _$ZacStringConsume extends ZacStringConsume with ConsumeValue<String> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -503,15 +503,15 @@ abstract class ZacStringConsume extends ZacString
 }
 
 ZacBool _$ZacBoolFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacBool':
       return ZacBoolValue.fromJson(json);
     case 'z:1:ZacBool.consume':
       return ZacBoolConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacBool',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacBool',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -542,7 +542,7 @@ class _$ZacBoolValue extends ZacBoolValue with ActualValue<bool> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -611,7 +611,7 @@ class _$ZacBoolConsume extends ZacBoolConsume with ConsumeValue<bool> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -665,15 +665,15 @@ abstract class ZacBoolConsume extends ZacBool implements ConsumeValue<bool> {
 }
 
 ZacMap _$ZacMapFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacMap':
       return ZacMapValue.fromJson(json);
     case 'z:1:ZacMap.consume':
       return ZacMapConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacMap',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacMap',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -711,7 +711,7 @@ class _$ZacMapValue extends ZacMapValue with ActualValue<Map<String, dynamic>> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -782,7 +782,7 @@ class _$ZacMapConsume extends ZacMapConsume
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -837,15 +837,15 @@ abstract class ZacMapConsume extends ZacMap
 }
 
 ZacList _$ZacListFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacList':
       return ZacListValue.fromJson(json);
     case 'z:1:ZacList.consume':
       return ZacListConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacList',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacList',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -883,7 +883,7 @@ class _$ZacListValue extends ZacListValue with ActualValue<List<dynamic>> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -953,7 +953,7 @@ class _$ZacListConsume extends ZacListConsume with ConsumeValue<List<dynamic>> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1008,15 +1008,15 @@ abstract class ZacListConsume extends ZacList
 }
 
 ZacObject _$ZacObjectFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ZacObject':
       return ZacObjectValue.fromJson(json);
     case 'z:1:ZacObject.consume':
       return ZacObjectConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacObject',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacObject',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1047,7 +1047,7 @@ class _$ZacObjectValue extends ZacObjectValue with ActualValue<Object> {
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1116,7 +1116,7 @@ class _$ZacObjectConsume extends ZacObjectConsume with ConsumeValue<Object> {
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1171,15 +1171,15 @@ abstract class ZacObjectConsume extends ZacObject
 }
 
 ListOfZacWidget _$ListOfZacWidgetFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:ListOfZacWidget':
       return ListOfZacWidgetValue.fromJson(json);
     case 'z:1:ListOfZacWidget.consume':
       return ListOfZacWidgetConsume.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ListOfZacWidget',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ListOfZacWidget',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -1218,7 +1218,7 @@ class _$ListOfZacWidgetValue extends ListOfZacWidgetValue
   @override
   final ZacTransformers? transformer;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -1289,7 +1289,7 @@ class _$ListOfZacWidgetConsume extends ListOfZacWidgetConsume
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

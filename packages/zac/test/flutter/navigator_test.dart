@@ -10,7 +10,7 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
-            '_converter': 'z:1:GlobalKeyNavigatorState.provide',
+            'converter': 'z:1:GlobalKeyNavigatorState.provide',
             'family': 'foo',
             'child': ChildModel.sizedBox,
             'debugLabel': 'label',
@@ -23,7 +23,7 @@ void main() {
 
       expect(
           ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
-            '_converter': 'z:1:GlobalKeyNavigatorState.consume',
+            'converter': 'z:1:GlobalKeyNavigatorState.consume',
             'family': 'foo',
           }),
           ZacFlutterGlobalKeyNavigatorState.consume('foo'));
@@ -49,14 +49,14 @@ void main() {
   group('Navigator', () {
     test('.fromJson', () {
       final routeMap = <String, dynamic>{
-        '_converter': 'f:1:MaterialPageRoute',
+        'converter': 'f:1:MaterialPageRoute',
         'child': ChildModel.getSizedBox(key: 'FIND_ME'),
       };
       final route = FlutterMaterialPageRoute(
           child: FlutterSizedBox(key: FlutterValueKey('FIND_ME')));
       expect(
           ConverterHelper.convertToType<FlutterNavigator>({
-            '_converter': 'f:1:Navigator',
+            'converter': 'f:1:Navigator',
             'initialRoute': '/foo',
             'requestFocus': false,
           }),
@@ -64,38 +64,38 @@ void main() {
               initialRoute: ZacString('/foo'), requestFocus: ZacBool(false)));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>({
-            '_converter': 'f:1:Navigator.push',
+            'converter': 'f:1:Navigator.push',
             'route': routeMap,
           }),
           FlutterNavigatorActions.push(route: route));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'_converter': 'f:1:Navigator.pushNamed', 'routeName': '/cool'}),
+              {'converter': 'f:1:Navigator.pushNamed', 'routeName': '/cool'}),
           FlutterNavigatorActions.pushNamed(routeName: ZacString('/cool')));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'_converter': 'f:1:Navigator.pop'}),
+              {'converter': 'f:1:Navigator.pop'}),
           FlutterNavigatorActions.pop());
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'_converter': 'f:1:Navigator.maybePop'}),
+              {'converter': 'f:1:Navigator.maybePop'}),
           FlutterNavigatorActions.maybePop());
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>({
-            '_converter': 'f:1:Navigator.pushReplacement',
+            'converter': 'f:1:Navigator.pushReplacement',
             'route': routeMap,
           }),
           FlutterNavigatorActions.pushReplacement(route: route));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>({
-            '_converter': 'f:1:Navigator.pushReplacementNamed',
+            'converter': 'f:1:Navigator.pushReplacementNamed',
             'routeName': '/cool'
           }),
           FlutterNavigatorActions.pushReplacementNamed(
               routeName: ZacString('/cool')));
       expect(
           ConverterHelper.convertToType<ZacFlutterNavigatorActions>({
-            '_converter': 'z:1:Navigator.popUntilRouteName',
+            'converter': 'z:1:Navigator.popUntilRouteName',
             'routeName': '/cool'
           }),
           ZacFlutterNavigatorActions.popUntilRouteName(
@@ -109,11 +109,11 @@ void main() {
         expect(
             FlutterRouteFactory.fromJson(
               {
-                '_converter': 'z:1:RouteFactorySingleRoute',
+                'converter': 'z:1:RouteFactorySingleRoute',
                 'routeConfig': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   },
                 }
@@ -124,11 +124,11 @@ void main() {
         expect(
             ConverterHelper.convertToType<RouteFactorySingleRoute>(
               {
-                '_converter': 'z:1:RouteFactorySingleRoute',
+                'converter': 'z:1:RouteFactorySingleRoute',
                 'routeConfig': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   },
                 }
@@ -185,19 +185,19 @@ void main() {
       test('fromJson', () {
         expect(
             FlutterRouteFactory.fromJson({
-              '_converter': 'z:1:RouteFactoryFromRoutes',
+              'converter': 'z:1:RouteFactoryFromRoutes',
               'routes': {
                 '/': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   }
                 },
                 '/other': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   }
                 },
@@ -206,19 +206,19 @@ void main() {
             isA<RouteFactoryFromRoutes>());
         expect(
             ConverterHelper.convertToType<RouteFactoryFromRoutes>({
-              '_converter': 'z:1:RouteFactoryFromRoutes',
+              'converter': 'z:1:RouteFactoryFromRoutes',
               'routes': {
                 '/': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   }
                 },
                 '/other': {
-                  '_converter': 'z:1:RouteFactoryRouteConfig',
+                  'converter': 'z:1:RouteFactoryRouteConfig',
                   'route': {
-                    '_converter': 'f:1:MaterialPageRoute',
+                    'converter': 'f:1:MaterialPageRoute',
                     'child': ChildModel.getSizedBox(key: 'FIND_ME'),
                   }
                 },

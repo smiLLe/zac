@@ -59,7 +59,7 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
     _$_ZacStateMachineActionsSend(
       family: json['family'] as Object,
       event: ZacString.fromJson(json['event'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
@@ -67,5 +67,5 @@ _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
     _$_ZacStateMachineActionsTrySend(
       family: json['family'] as Object,
       event: ZacString.fromJson(json['event'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );

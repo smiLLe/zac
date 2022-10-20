@@ -610,7 +610,7 @@ abstract class _ZacStateMachineBuildStateBuilder
 
 ZacStateMachineActions _$ZacStateMachineActionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:StateMachine:Action.send':
       return _ZacStateMachineActionsSend.fromJson(json);
     case 'z:1:StateMachine:Action.trySend':
@@ -619,9 +619,9 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'ZacStateMachineActions',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -654,7 +654,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
   @override
   final ZacString event;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -720,7 +720,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   @override
   final ZacString event;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

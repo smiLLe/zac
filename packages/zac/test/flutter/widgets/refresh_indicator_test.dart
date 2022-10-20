@@ -15,19 +15,19 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterScaffold.unionValue,
+        'converter': FlutterScaffold.unionValue,
         'appBar': {
-          '_converter': FlutterAppBar.unionValue,
+          'converter': FlutterAppBar.unionValue,
           'title': {
-            '_converter': FlutterText.unionValue,
+            'converter': FlutterText.unionValue,
             'data': 'Title',
           },
         },
         'body': {
-          '_converter': FlutterRefreshIndicator.unionValue,
+          'converter': FlutterRefreshIndicator.unionValue,
           'key': KeysModel.getValueKey('FIND_ME'),
           'child': {
-            '_converter': FlutterListView.unionValue,
+            'converter': FlutterListView.unionValue,
             'children': [
               ChildModel.getSizedBox(key: 'child1'),
               ChildModel.getSizedBox(key: 'child2')
@@ -103,7 +103,7 @@ void main() {
   test('convert FlutterRefreshIndicatorAction', () {
     expect(
         ConverterHelper.convertToType<FlutterRefreshIndicatorAction>(
-            {'_converter': 'z:1:RefreshIndicator.complete'}),
+            {'converter': 'z:1:RefreshIndicator.complete'}),
         const FlutterRefreshIndicatorAction());
   });
 }

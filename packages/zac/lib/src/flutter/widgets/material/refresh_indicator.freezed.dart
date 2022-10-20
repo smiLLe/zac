@@ -195,7 +195,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
 
 FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:RefreshIndicatorTriggerMode.onEdge':
       return _FlutterRefreshIndicatorTriggerModeonEdge.fromJson(json);
     case 'f:1:RefreshIndicatorTriggerMode.anywhere':
@@ -204,9 +204,9 @@ FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterRefreshIndicatorTriggerMode',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -234,7 +234,7 @@ class _$_FlutterRefreshIndicatorTriggerModeonEdge
           Map<String, dynamic> json) =>
       _$$_FlutterRefreshIndicatorTriggerModeonEdgeFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -288,7 +288,7 @@ class _$_FlutterRefreshIndicatorTriggerModeanywhere
           Map<String, dynamic> json) =>
       _$$_FlutterRefreshIndicatorTriggerModeanywhereFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

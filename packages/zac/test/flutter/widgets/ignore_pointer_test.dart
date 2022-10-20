@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterIgnorePointer.unionValue,
+        'converter': FlutterIgnorePointer.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'ignoring': false,
         'ignoringSemantics': false,

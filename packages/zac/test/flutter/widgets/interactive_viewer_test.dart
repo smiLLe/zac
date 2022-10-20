@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterInteractiveViewer.unionValue,
+        'converter': FlutterInteractiveViewer.unionValue,
         'key': KeysModel.getValueKey('FIND_ME'),
         'child': ChildModel.getSizedBox(key: 'test_child'),
         'maxScale': 3.0,
@@ -18,7 +18,7 @@ void main() {
         'boundaryMargin': EdgeInsetsModel.geometry_edgeInsetsAll,
         'constrained': false,
         'clipBehavior': {
-          '_converter': 'f:1:Clip.antiAlias',
+          'converter': 'f:1:Clip.antiAlias',
         },
         'panEnabled': false,
         'scaleEnabled': false,

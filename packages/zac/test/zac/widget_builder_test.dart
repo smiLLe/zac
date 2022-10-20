@@ -34,9 +34,9 @@ void main() {
   group('WidgetBuilder', () {
     testWidgets('create from Map', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'f:1:SizedBox',
+        'converter': 'f:1:SizedBox',
         'child': {
-          '_converter': 'f:1:SizedBox',
+          'converter': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('FIND_ME'),
         },
       });
@@ -45,13 +45,13 @@ void main() {
 
     testWidgets('nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:Widget',
+        'converter': 'z:1:Widget',
         'data': {
-          '_converter': 'z:1:Widget',
+          'converter': 'z:1:Widget',
           'data': {
-            '_converter': 'z:1:Widget',
+            'converter': 'z:1:Widget',
             'data': {
-              '_converter': 'f:1:SizedBox',
+              'converter': 'f:1:SizedBox',
               'key': KeysModel.getValueKey('FIND_ME'),
             },
           },
@@ -64,13 +64,13 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          '_converter': 'z:1:Widget.isolate',
+          'converter': 'z:1:Widget.isolate',
           'data': {
-            '_converter': 'z:1:Widget.isolateString',
+            'converter': 'z:1:Widget.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:Widget.isolate',
+              'converter': 'z:1:Widget.isolate',
               'data': {
-                '_converter': 'f:1:SizedBox',
+                'converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
               },
             }),
@@ -83,15 +83,15 @@ void main() {
 
     testWidgets('mixed nested', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:Widget.isolate',
+        'converter': 'z:1:Widget.isolate',
         'data': {
-          '_converter': 'z:1:Widget',
+          'converter': 'z:1:Widget',
           'data': {
-            '_converter': 'z:1:Widget.isolateString',
+            'converter': 'z:1:Widget.isolateString',
             'data': jsonEncode({
-              '_converter': 'z:1:Widget.isolate',
+              'converter': 'z:1:Widget.isolate',
               'data': {
-                '_converter': 'f:1:SizedBox',
+                'converter': 'f:1:SizedBox',
                 'key': KeysModel.getValueKey('FIND_ME'),
               },
             }),

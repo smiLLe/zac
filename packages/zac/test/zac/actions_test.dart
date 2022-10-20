@@ -16,7 +16,7 @@ void main() {
     expect(
         ZacActions.fromJson(
           <String, dynamic>{
-            '_converter': 'f:1:showDialog',
+            'converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child')
           },
         ),
@@ -31,14 +31,14 @@ void main() {
   test('AnyActions', () {
     expect(
         ZacActions.fromJson({
-          '_converter': 'z:1:Actions',
+          'converter': 'z:1:Actions',
           'actions': [
             {
-              '_converter': 'f:1:showDialog',
+              'converter': 'f:1:showDialog',
               'child': ChildModel.getSizedBox(key: 'dialog_child_1')
             },
             {
-              '_converter': 'f:1:showDialog',
+              'converter': 'f:1:showDialog',
               'child': ChildModel.getSizedBox(key: 'dialog_child_1')
             }
           ]
@@ -52,11 +52,11 @@ void main() {
     expect(
         ZacActions.fromJson([
           {
-            '_converter': 'f:1:showDialog',
+            'converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child_1')
           },
           {
-            '_converter': 'f:1:showDialog',
+            'converter': 'f:1:showDialog',
             'child': ChildModel.getSizedBox(key: 'dialog_child_1')
           }
         ]),
@@ -68,7 +68,7 @@ void main() {
         ]));
     expect(
         ZacActions.fromJson({
-          '_converter': 'f:1:showDialog',
+          'converter': 'f:1:showDialog',
           'child': ChildModel.getSizedBox(key: 'dialog_child')
         }),
         ZacActions([
@@ -83,12 +83,12 @@ void main() {
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
-        '_converter': 'z:1:ExecuteActions.once',
+        'converter': 'z:1:ExecuteActions.once',
         'actions': [
-          {'_converter': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
+          {'converter': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
         ],
         'child': {
-          '_converter': 'f:1:SizedBox',
+          'converter': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('child')
         }
       });
@@ -123,7 +123,7 @@ void main() {
       };
       expect(
           ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
-            '_converter': 'z:1:ExecuteActions.listen',
+            'converter': 'z:1:ExecuteActions.listen',
             'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
@@ -132,7 +132,7 @@ void main() {
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
-            '_converter': 'z:1:ExecuteActions.listen',
+            'converter': 'z:1:ExecuteActions.listen',
             'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
@@ -179,13 +179,13 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          '_converter': FlutterElevatedButton.unionValue,
+          'converter': FlutterElevatedButton.unionValue,
           'key': KeysModel.getValueKey('button'),
           'onPressed': {
-            '_converter': 'z:1:Actions',
+            'converter': 'z:1:Actions',
             'actions': [
               {
-                '_converter': FlutterDialogs.unionValueShowDialog,
+                'converter': FlutterDialogs.unionValueShowDialog,
                 'child': ChildModel.getSizedBox(key: 'dialog_child')
               },
             ],
@@ -210,24 +210,24 @@ void main() {
         required List<Map<String, dynamic>> backActions,
       }) {
         return <String, dynamic>{
-          '_converter': FlutterColumn.unionValue,
+          'converter': FlutterColumn.unionValue,
           'children': [
             ChildModel.getSizedBox(key: 'page$number'),
             {
-              '_converter': FlutterElevatedButton.unionValue,
+              'converter': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('page${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                '_converter': 'z:1:Actions',
+                'converter': 'z:1:Actions',
                 'actions': interactions,
               }
             },
             {
-              '_converter': FlutterElevatedButton.unionValue,
+              'converter': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('pageback${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                '_converter': 'z:1:Actions',
+                'converter': 'z:1:Actions',
                 'actions': backActions,
               }
             },
@@ -241,30 +241,30 @@ void main() {
           number: 1,
           interactions: [
             <String, dynamic>{
-              '_converter': FlutterNavigatorActions.unionValuePush,
+              'converter': FlutterNavigatorActions.unionValuePush,
               'route': {
-                '_converter': 'f:1:MaterialPageRoute',
+                'converter': 'f:1:MaterialPageRoute',
                 'child': page(
                   number: 2,
                   interactions: [
                     <String, dynamic>{
-                      '_converter': FlutterNavigatorActions.unionValuePush,
+                      'converter': FlutterNavigatorActions.unionValuePush,
                       'route': {
-                        '_converter': 'f:1:MaterialPageRoute',
+                        'converter': 'f:1:MaterialPageRoute',
                         'child': page(
                           number: 3,
                           interactions: [
                             <String, dynamic>{
-                              '_converter': FlutterNavigatorActions
+                              'converter': FlutterNavigatorActions
                                   .unionValuePushReplacement,
                               'route': {
-                                '_converter': 'f:1:MaterialPageRoute',
+                                'converter': 'f:1:MaterialPageRoute',
                                 'child': page(
                                   number: 4,
                                   interactions: [],
                                   backActions: [
                                     <String, dynamic>{
-                                      '_converter':
+                                      'converter':
                                           FlutterNavigatorActions.unionValuePop,
                                     }
                                   ],
@@ -274,7 +274,7 @@ void main() {
                           ],
                           backActions: [
                             <String, dynamic>{
-                              '_converter':
+                              'converter':
                                   FlutterNavigatorActions.unionValueMaybePop,
                             }
                           ],
@@ -284,7 +284,7 @@ void main() {
                   ],
                   backActions: [
                     <String, dynamic>{
-                      '_converter': FlutterNavigatorActions.unionValuePop,
+                      'converter': FlutterNavigatorActions.unionValuePop,
                     }
                   ],
                 ),

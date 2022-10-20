@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter':
+        'converter':
             FlutterProgressIndicator.unionValueCircularProgressIndicator,
         'key': KeysModel.getValueKey('FINDME'),
         'value': 9,
@@ -50,8 +50,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter':
-            FlutterProgressIndicator.unionValueLinearProgressIndicator,
+        'converter': FlutterProgressIndicator.unionValueLinearProgressIndicator,
         'key': KeysModel.getValueKey('FINDME'),
         'value': 9,
         'backgroundColor': ColorModel.json,

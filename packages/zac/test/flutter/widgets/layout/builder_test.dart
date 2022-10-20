@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterBuilder.unionValue,
+        'converter': FlutterBuilder.unionValue,
         'key': KeysModel.getValueKey('builder'),
         'child': ChildModel.getSizedBox(key: 'child'),
       },

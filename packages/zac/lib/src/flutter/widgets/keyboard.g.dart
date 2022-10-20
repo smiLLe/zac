@@ -10,12 +10,12 @@ _$_FlutterScrollViewKeyboardDismissBehaviorManual
     _$$_FlutterScrollViewKeyboardDismissBehaviorManualFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScrollViewKeyboardDismissBehaviorManual(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScrollViewKeyboardDismissBehaviorOnDrag
     _$$_FlutterScrollViewKeyboardDismissBehaviorOnDragFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterScrollViewKeyboardDismissBehaviorOnDrag(
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );

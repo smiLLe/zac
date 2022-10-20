@@ -394,7 +394,7 @@ Map<String, Convert> allConverters = const {
   FlutterFractionalOffset.unionValue: FlutterFractionalOffset.fromJson,
 };
 
-const converterKey = '_converter';
+const converterKey = 'converter';
 
 class ConverterError extends StateError {
   ConverterError(super.message);

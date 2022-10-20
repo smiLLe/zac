@@ -20,7 +20,7 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );
 
 _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
@@ -31,5 +31,5 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),
-      $type: json['_converter'] as String?,
+      $type: json['converter'] as String?,
     );

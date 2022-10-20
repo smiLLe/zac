@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 ZacFlutterGlobalKeyNavigatorState _$ZacFlutterGlobalKeyNavigatorStateFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:GlobalKeyNavigatorState.provide':
       return _ZacFlutterGlobalKeyNavigatorStateProvide.fromJson(json);
     case 'z:1:GlobalKeyNavigatorState.consume':
@@ -25,9 +25,9 @@ ZacFlutterGlobalKeyNavigatorState _$ZacFlutterGlobalKeyNavigatorStateFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'ZacFlutterGlobalKeyNavigatorState',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -68,7 +68,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
   @override
   final ZacString? debugLabel;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -150,7 +150,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
   @JsonKey()
   final SharedValueConsumeType consumeType;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

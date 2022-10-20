@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterMaterial.unionValue,
+        'converter': FlutterMaterial.unionValue,
         'key': KeysModel.getValueKey('FIND_ME'),
         'borderRadius': BorderRadiusModel.circularJson,
       },
@@ -32,11 +32,11 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterMaterial.unionValue,
+        'converter': FlutterMaterial.unionValue,
         'key': KeysModel.getValueKey('FIND_ME'),
         'child': ChildModel.getSizedBox(key: 'child1'),
         'clipBehavior': {
-          '_converter': 'f:1:Clip.hardEdge',
+          'converter': 'f:1:Clip.hardEdge',
         },
         'color': ColorModel.json,
         'elevation': 21,

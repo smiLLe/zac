@@ -10,7 +10,7 @@ void main() {
     test('FlutterAlignmentGeometry', () {
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValue,
+          'converter': FlutterAlignment.unionValue,
           'x': 10,
           'y': 20,
         }).build,
@@ -21,7 +21,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomCenter,
+          'converter': FlutterAlignment.unionValueBottomCenter,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomCenter),
@@ -29,7 +29,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomLeft,
+          'converter': FlutterAlignment.unionValueBottomLeft,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomLeft),
@@ -37,7 +37,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomRight,
+          'converter': FlutterAlignment.unionValueBottomRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomRight),
@@ -45,14 +45,14 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenter,
+          'converter': FlutterAlignment.unionValueCenter,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'Alignment', Alignment.center),
       );
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenterLeft,
+          'converter': FlutterAlignment.unionValueCenterLeft,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.centerLeft),
@@ -60,7 +60,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenterRight,
+          'converter': FlutterAlignment.unionValueCenterRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.centerRight),
@@ -68,7 +68,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopCenter,
+          'converter': FlutterAlignment.unionValueTopCenter,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.topCenter),
@@ -76,14 +76,14 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopLeft,
+          'converter': FlutterAlignment.unionValueTopLeft,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'Alignment', Alignment.topLeft),
       );
 
       fakeBuild<Alignment>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopRight,
+          'converter': FlutterAlignment.unionValueTopRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.topRight),
@@ -93,7 +93,7 @@ void main() {
     test('FlutterAlignment', () {
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValue,
+          'converter': FlutterAlignment.unionValue,
           'x': 10,
           'y': 20,
         }).build,
@@ -104,7 +104,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomCenter,
+          'converter': FlutterAlignment.unionValueBottomCenter,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomCenter),
@@ -112,7 +112,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomLeft,
+          'converter': FlutterAlignment.unionValueBottomLeft,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomLeft),
@@ -120,7 +120,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueBottomRight,
+          'converter': FlutterAlignment.unionValueBottomRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.bottomRight),
@@ -128,14 +128,14 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenter,
+          'converter': FlutterAlignment.unionValueCenter,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'Alignment', Alignment.center),
       );
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenterLeft,
+          'converter': FlutterAlignment.unionValueCenterLeft,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.centerLeft),
@@ -143,7 +143,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueCenterRight,
+          'converter': FlutterAlignment.unionValueCenterRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.centerRight),
@@ -151,7 +151,7 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopCenter,
+          'converter': FlutterAlignment.unionValueTopCenter,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.topCenter),
@@ -159,14 +159,14 @@ void main() {
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopLeft,
+          'converter': FlutterAlignment.unionValueTopLeft,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'Alignment', Alignment.topLeft),
       );
 
       fakeBuild<Alignment>(
         FlutterAlignment.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignment.unionValueTopRight,
+          'converter': FlutterAlignment.unionValueTopRight,
         }).build,
         (matcher) =>
             matcher.having((p0) => p0, 'Alignment', Alignment.topRight),
@@ -178,7 +178,7 @@ void main() {
     test('FlutterAlignmentGeometry', () {
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValue,
+          'converter': FlutterAlignmentDirectional.unionValue,
           'start': 10,
           'y': 20,
         }).build,
@@ -189,7 +189,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomCenter,
+          'converter': FlutterAlignmentDirectional.unionValueBottomCenter,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.bottomCenter),
@@ -197,7 +197,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomStart,
+          'converter': FlutterAlignmentDirectional.unionValueBottomStart,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.bottomStart),
@@ -205,7 +205,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomEnd,
+          'converter': FlutterAlignmentDirectional.unionValueBottomEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.bottomEnd),
@@ -213,7 +213,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenter,
+          'converter': FlutterAlignmentDirectional.unionValueCenter,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.center),
@@ -221,7 +221,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenterStart,
+          'converter': FlutterAlignmentDirectional.unionValueCenterStart,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.centerStart),
@@ -229,7 +229,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenterEnd,
+          'converter': FlutterAlignmentDirectional.unionValueCenterEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.centerEnd),
@@ -237,7 +237,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopCenter,
+          'converter': FlutterAlignmentDirectional.unionValueTopCenter,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topCenter),
@@ -245,7 +245,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopStart,
+          'converter': FlutterAlignmentDirectional.unionValueTopStart,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topStart),
@@ -253,7 +253,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopEnd,
+          'converter': FlutterAlignmentDirectional.unionValueTopEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topEnd),
@@ -263,7 +263,7 @@ void main() {
     test('FlutterAlignmentDirectional', () {
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValue,
+          'converter': FlutterAlignmentDirectional.unionValue,
           'start': 10,
           'y': 20,
         }).build,
@@ -274,7 +274,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomCenter,
+          'converter': FlutterAlignmentDirectional.unionValueBottomCenter,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.bottomCenter),
@@ -282,7 +282,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomStart,
+          'converter': FlutterAlignmentDirectional.unionValueBottomStart,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.bottomStart),
@@ -290,7 +290,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueBottomEnd,
+          'converter': FlutterAlignmentDirectional.unionValueBottomEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.bottomEnd),
@@ -298,7 +298,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenter,
+          'converter': FlutterAlignmentDirectional.unionValueCenter,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.center),
@@ -306,7 +306,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenterStart,
+          'converter': FlutterAlignmentDirectional.unionValueCenterStart,
         }).build,
         (matcher) => matcher.having((p0) => p0, 'AlignmentDirectional',
             AlignmentDirectional.centerStart),
@@ -314,7 +314,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueCenterEnd,
+          'converter': FlutterAlignmentDirectional.unionValueCenterEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.centerEnd),
@@ -322,7 +322,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopCenter,
+          'converter': FlutterAlignmentDirectional.unionValueTopCenter,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topCenter),
@@ -330,7 +330,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopStart,
+          'converter': FlutterAlignmentDirectional.unionValueTopStart,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topStart),
@@ -338,7 +338,7 @@ void main() {
 
       fakeBuild<AlignmentDirectional>(
         FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          '_converter': FlutterAlignmentDirectional.unionValueTopEnd,
+          'converter': FlutterAlignmentDirectional.unionValueTopEnd,
         }).build,
         (matcher) => matcher.having(
             (p0) => p0, 'AlignmentDirectional', AlignmentDirectional.topEnd),
@@ -350,7 +350,7 @@ void main() {
     testWidgets('FractionalOffset()', (tester) async {
       fakeBuild<FractionalOffset>(
           FlutterAlignmentGeometry.fromJson(<String, dynamic>{
-            '_converter': 'f:1:FractionalOffset',
+            'converter': 'f:1:FractionalOffset',
             'dx': 10,
             'dy': 20,
           }).build,

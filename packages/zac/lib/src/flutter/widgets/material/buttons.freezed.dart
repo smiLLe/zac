@@ -16,18 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterElevatedButton _$FlutterElevatedButtonFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:ElevatedButton':
       return _FlutterElevatedButton.fromJson(json);
     case 'f:1:ElevatedButton.icon':
       return _FlutterElevatedButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'FlutterElevatedButton',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterElevatedButton',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -77,7 +74,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -180,7 +177,7 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -256,18 +253,15 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
 
 FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:OutlinedButton':
       return _FlutterOutlinedButton.fromJson(json);
     case 'f:1:OutlinedButton.icon':
       return _FlutterOutlinedButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'FlutterOutlinedButton',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterOutlinedButton',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -317,7 +311,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -420,7 +414,7 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -495,15 +489,15 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
 }
 
 FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:TextButton':
       return _FlutterTextButton.fromJson(json);
     case 'f:1:TextButton.icon':
       return _FlutterTextButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'FlutterTextButton',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterTextButton',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -553,7 +547,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -656,7 +650,7 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
   @override
   final FlutterClip? clipBehavior;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

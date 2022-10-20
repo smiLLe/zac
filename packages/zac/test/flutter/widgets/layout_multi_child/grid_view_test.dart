@@ -9,10 +9,10 @@ void main() {
   late Map<String, dynamic> map;
   setUp(() {
     map = <String, dynamic>{
-      '_converter': FlutterGridView.unionValue,
+      'converter': FlutterGridView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'gridDelegate': GridDelegateModel.json,
-      'scrollDirection': {'_converter': 'f:1:Axis.horizontal'},
+      'scrollDirection': {'converter': 'f:1:Axis.horizontal'},
       'shrinkWrap': true,
       'reverse': true,
       'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
@@ -27,11 +27,11 @@ void main() {
         ChildModel.getSizedBox(key: 'child2')
       ],
       'clipBehavior': {
-        '_converter': 'f:1:Clip.none',
+        'converter': 'f:1:Clip.none',
       },
       'restorationId': 'resto_id',
       'keyboardDismissBehavior': {
-        '_converter': 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
+        'converter': 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
       },
     };
   });

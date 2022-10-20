@@ -52,8 +52,8 @@ void fakeBuild<T>(
 //     ZacWidgetBuilderBuilder.map(
 //       data: ZacMap(
 //         <String, dynamic>{
-//           '_converter': 'f:1:SizedBox',
-//           'key': {'_converter': 'f:1:ValueKey', 'value': 'THE_PARENT'},
+//           'converter': 'f:1:SizedBox',
+//           'key': {'converter': 'f:1:ValueKey', 'value': 'THE_PARENT'},
 //           'child': widget,
 //         },
 //       ),
@@ -168,10 +168,10 @@ class NoopAction with _$NoopAction implements ZacAction {
   static const String unionValue = 'z:1:test:NoopAction';
 
   static Map<String, dynamic> createActions() => <String, dynamic>{
-        '_converter': 'z:1:Actions',
+        'converter': 'z:1:Actions',
         'actions': [
           {
-            '_converter': NoopAction.unionValue,
+            'converter': NoopAction.unionValue,
           }
         ],
       };

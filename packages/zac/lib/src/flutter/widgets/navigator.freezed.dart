@@ -16,18 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterNavigatorState _$FlutterNavigatorStateFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:NavigatorState.closest':
       return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
       return _ZacNavigatorStateRoot.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          '_converter',
-          'FlutterNavigatorState',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'FlutterNavigatorState',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -51,7 +48,7 @@ class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
   factory _$_ZacNavigatorStateClosest.fromJson(Map<String, dynamic> json) =>
       _$$_ZacNavigatorStateClosestFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -98,7 +95,7 @@ class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
   factory _$_ZacNavigatorStateRoot.fromJson(Map<String, dynamic> json) =>
       _$$_ZacNavigatorStateRootFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -245,7 +242,7 @@ abstract class _FlutterNavigator extends FlutterNavigator {
 
 FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:Navigator.push':
       return _FlutterNavigatorActionsPush.fromJson(json);
     case 'f:1:Navigator.pushNamed':
@@ -262,9 +259,9 @@ FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterNavigatorActions',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -305,7 +302,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
   @override
   final GetFlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -386,7 +383,7 @@ class _$_FlutterNavigatorActionsPushNamed
   @override
   final GetFlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -465,7 +462,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   @override
   final GetFlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -541,7 +538,7 @@ class _$_FlutterNavigatorActionsMaybePop
   @override
   final GetFlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -623,7 +620,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final GetFlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -713,7 +710,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final ZacActions? result;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

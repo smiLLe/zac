@@ -10,7 +10,7 @@ void main() {
     testWidgets('#1', (tester) async {
       fakeBuild<Image>(
         FlutterImage.fromJson(<String, dynamic>{
-          '_converter': FlutterImage.unionValueNetwork,
+          'converter': FlutterImage.unionValueNetwork,
           'key': KeysModel.getValueKey('test_key'),
           'src': 'test_src',
           'scale': 0.9,
@@ -19,23 +19,23 @@ void main() {
           'height': 44,
           'color': ColorModel.json,
           'excludeFromSemantics': true,
-          'colorBlendMode': {'_converter': 'f:1:BlendMode.saturation'},
+          'colorBlendMode': {'converter': 'f:1:BlendMode.saturation'},
           'alignment': AlignmentModel.geometry_alignment,
           'matchTextDirection': true,
           'gaplessPlayback': true,
           'isAntiAlias': true,
           'headers': <String, String>{},
-          'fit': {'_converter': 'f:1:BoxFit.scaleDown'},
-          'repeat': {'_converter': 'f:1:ImageRepeat.repeat'},
+          'fit': {'converter': 'f:1:BoxFit.scaleDown'},
+          'repeat': {'converter': 'f:1:ImageRepeat.repeat'},
           'centerSlice': {
-            '_converter': 'f:1:Rect.fromLTRB',
+            'converter': 'f:1:Rect.fromLTRB',
             'left': 1,
             'top': 2,
             'right': 3,
             'bottom': 4
           },
           'filterQuality': {
-            '_converter': 'f:1:FilterQuality.high',
+            'converter': 'f:1:FilterQuality.high',
           }
         }).buildWidget,
         (matcher) => matcher
@@ -72,7 +72,7 @@ void main() {
     test('#2', () {
       fakeBuild<Image>(
         FlutterImage.fromJson(<String, dynamic>{
-          '_converter': FlutterImage.unionValueNetwork,
+          'converter': FlutterImage.unionValueNetwork,
           'key': KeysModel.getValueKey('test_key'),
           'src': 'test_src',
           'cacheWidth': 11,
@@ -91,7 +91,7 @@ void main() {
     test('#1', () {
       fakeBuild<Image>(
         FlutterImage.fromJson(<String, dynamic>{
-          '_converter': FlutterImage.unionValueAsset,
+          'converter': FlutterImage.unionValueAsset,
           'key': KeysModel.getValueKey('test_key'),
           'name': 'test_name',
           'semanticLabel': 'test_semanticLabel',
@@ -99,23 +99,23 @@ void main() {
           'height': 44,
           'color': ColorModel.json,
           'excludeFromSemantics': true,
-          'colorBlendMode': {'_converter': 'f:1:BlendMode.saturation'},
+          'colorBlendMode': {'converter': 'f:1:BlendMode.saturation'},
           'alignment': AlignmentModel.geometry_alignment,
           'matchTextDirection': true,
           'gaplessPlayback': true,
           'isAntiAlias': true,
           'headers': <String, String>{},
-          'fit': {'_converter': 'f:1:BoxFit.scaleDown'},
-          'repeat': {'_converter': 'f:1:ImageRepeat.repeat'},
+          'fit': {'converter': 'f:1:BoxFit.scaleDown'},
+          'repeat': {'converter': 'f:1:ImageRepeat.repeat'},
           'centerSlice': {
-            '_converter': 'f:1:Rect.fromLTRB',
+            'converter': 'f:1:Rect.fromLTRB',
             'left': 1,
             'top': 2,
             'right': 3,
             'bottom': 4
           },
           'filterQuality': {
-            '_converter': 'f:1:FilterQuality.high',
+            'converter': 'f:1:FilterQuality.high',
           }
         }).buildWidget,
         (matcher) => matcher
@@ -150,7 +150,7 @@ void main() {
     test('#2', () {
       fakeBuild<Image>(
         FlutterImage.fromJson(<String, dynamic>{
-          '_converter': FlutterImage.unionValueAsset,
+          'converter': FlutterImage.unionValueAsset,
           'key': KeysModel.getValueKey('test_key'),
           'name': 'test_name',
           'cacheWidth': 11,

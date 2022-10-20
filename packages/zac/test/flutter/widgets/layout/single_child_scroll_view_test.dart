@@ -10,17 +10,17 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': FlutterSingleChildScrollView.unionValue,
+        'converter': FlutterSingleChildScrollView.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
-        'scrollDirection': {'_converter': 'f:1:Axis.horizontal'},
+        'scrollDirection': {'converter': 'f:1:Axis.horizontal'},
         'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
         'primary': true,
         'clipBehavior': {
-          '_converter': 'f:1:Clip.none',
+          'converter': 'f:1:Clip.none',
         },
         'restorationId': 'resto_id',
         'keyboardDismissBehavior': {
-          '_converter': 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
+          'converter': 'f:1:ScrollViewKeyboardDismissBehavior.onDrag',
         },
         'child': ChildModel.getSizedBox(key: 'child'),
       },

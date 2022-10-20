@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ZacWidgetBuilder _$ZacWidgetBuilderFromJson(Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'z:1:Widget':
       return _ZacWidgetBuilder.fromJson(json);
     case 'z:1:Widget.map':
@@ -26,8 +26,8 @@ ZacWidgetBuilder _$ZacWidgetBuilderFromJson(Map<String, dynamic> json) {
       return _ZacWidgetBuilderIsolateString.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, '_converter', 'ZacWidgetBuilder',
-          'Invalid union type "${json['_converter']}"!');
+      throw CheckedFromJsonException(json, 'converter', 'ZacWidgetBuilder',
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -62,7 +62,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
   @override
   final FlutterWidget data;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -138,7 +138,7 @@ class _$_ZacWidgetBuilderMap extends _ZacWidgetBuilderMap
   @override
   final ZacMap data;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -223,7 +223,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
   @override
   final bool? debugRethrowError;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -321,7 +321,7 @@ class _$_ZacWidgetBuilderIsolateString extends _ZacWidgetBuilderIsolateString
   @override
   final bool? debugRethrowError;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

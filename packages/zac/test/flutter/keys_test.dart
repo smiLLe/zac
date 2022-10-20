@@ -9,7 +9,7 @@ void main() {
   test('FlutterKey', () {
     fakeBuild<ValueKey>(
       FlutterKey.fromJson(<String, dynamic>{
-        '_converter': FlutterValueKey.unionValue,
+        'converter': FlutterValueKey.unionValue,
         'value': 'test_key',
       }).buildKey,
       (matcher) => matcher.having(
@@ -20,7 +20,7 @@ void main() {
   test('FlutterLocalKey', () {
     fakeBuild<ValueKey>(
       FlutterLocalKey.fromJson(<String, dynamic>{
-        '_converter': FlutterValueKey.unionValue,
+        'converter': FlutterValueKey.unionValue,
         'value': 'test_key',
       }).buildKey,
       (matcher) => matcher.having(
@@ -31,7 +31,7 @@ void main() {
   test('FlutterValueKey', () {
     fakeBuild<ValueKey>(
       FlutterValueKey.fromJson(<String, dynamic>{
-        '_converter': FlutterValueKey.unionValue,
+        'converter': FlutterValueKey.unionValue,
         'value': 'test_key',
       }).buildKey,
       (matcher) => matcher.having(

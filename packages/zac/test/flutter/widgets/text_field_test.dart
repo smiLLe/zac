@@ -15,9 +15,9 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        '_converter': 'f:1:Material',
+        'converter': 'f:1:Material',
         'child': {
-          '_converter': 'f:1:TextField',
+          'converter': 'f:1:TextField',
           'key': KeysModel.getValueKey('FINDME'),
           'style': TextModel.textStyle,
           'strutStyle': TextModel.strutStyle,
@@ -30,22 +30,22 @@ void main() {
           'obscureText': true,
           'maxLines': 1,
           'keyboardType': {
-            '_converter': 'f:1:TextInputType.number',
+            'converter': 'f:1:TextInputType.number',
           },
           'textInputAction': {
-            '_converter': 'f:1:TextInputAction.go',
+            'converter': 'f:1:TextInputAction.go',
           },
           'textCapitalization': {
-            '_converter': 'f:1:TextCapitalization.words',
+            'converter': 'f:1:TextCapitalization.words',
           },
           'textAlignVertical': {
-            '_converter': 'f:1:TextAlignVertical.bottom',
+            'converter': 'f:1:TextAlignVertical.bottom',
           },
           'smartDashesType': {
-            '_converter': 'f:1:SmartDashesType.enabled',
+            'converter': 'f:1:SmartDashesType.enabled',
           },
           'selectionHeightStyle': {
-            '_converter': 'f:1:BoxHeightStyle.max',
+            'converter': 'f:1:BoxHeightStyle.max',
           },
         },
       },

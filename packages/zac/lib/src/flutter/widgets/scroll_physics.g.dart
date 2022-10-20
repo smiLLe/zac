@@ -14,7 +14,7 @@ _$_FlutterScrollPhysicsalwaysScrollable
               ? null
               : FlutterScrollPhysics.fromJson(
                   json['parent'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScrollPhysicsBouncingScroll
@@ -24,7 +24,7 @@ _$_FlutterScrollPhysicsBouncingScroll
               ? null
               : FlutterScrollPhysics.fromJson(
                   json['parent'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );
 
 _$_FlutterScrollPhysicsClampingScrollPhysics
@@ -35,5 +35,5 @@ _$_FlutterScrollPhysicsClampingScrollPhysics
               ? null
               : FlutterScrollPhysics.fromJson(
                   json['parent'] as Map<String, dynamic>),
-          $type: json['_converter'] as String?,
+          $type: json['converter'] as String?,
         );

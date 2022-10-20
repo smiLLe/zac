@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 FlutterScrollViewKeyboardDismissBehavior
     _$FlutterScrollViewKeyboardDismissBehaviorFromJson(
         Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:ScrollViewKeyboardDismissBehavior.manual':
       return _FlutterScrollViewKeyboardDismissBehaviorManual.fromJson(json);
     case 'f:1:ScrollViewKeyboardDismissBehavior.onDrag':
@@ -26,9 +26,9 @@ FlutterScrollViewKeyboardDismissBehavior
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterScrollViewKeyboardDismissBehavior',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -58,7 +58,7 @@ class _$_FlutterScrollViewKeyboardDismissBehaviorManual
           Map<String, dynamic> json) =>
       _$$_FlutterScrollViewKeyboardDismissBehaviorManualFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -114,7 +114,7 @@ class _$_FlutterScrollViewKeyboardDismissBehaviorOnDrag
           Map<String, dynamic> json) =>
       _$$_FlutterScrollViewKeyboardDismissBehaviorOnDragFromJson(json);
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override

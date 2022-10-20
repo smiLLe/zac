@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterProgressIndicator _$FlutterProgressIndicatorFromJson(
     Map<String, dynamic> json) {
-  switch (json['_converter']) {
+  switch (json['converter']) {
     case 'f:1:LinearProgressIndicator':
       return _FlutterProgressIndicatorLinear.fromJson(json);
     case 'f:1:CircularProgressIndicator':
@@ -25,9 +25,9 @@ FlutterProgressIndicator _$FlutterProgressIndicatorFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          '_converter',
+          'converter',
           'FlutterProgressIndicator',
-          'Invalid union type "${json['_converter']}"!');
+          'Invalid union type "${json['converter']}"!');
   }
 }
 
@@ -84,7 +84,7 @@ class _$_FlutterProgressIndicatorLinear
   @override
   final ZacString? semanticsValue;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
@@ -197,7 +197,7 @@ class _$_FlutterProgressIndicatorCircular
   @override
   final ZacString? semanticsValue;
 
-  @JsonKey(name: '_converter')
+  @JsonKey(name: 'converter')
   final String $type;
 
   @override
