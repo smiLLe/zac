@@ -3,7 +3,6 @@ export 'src/base.dart';
 export 'src/zac/misc.dart';
 export 'src/zac/context.dart';
 export 'src/zac/action.dart';
-export 'src/zac/statemachine.dart';
 export 'src/zac/state_machine.dart';
 export 'src/zac/zac_values.dart';
 export 'src/zac/update_widget.dart';

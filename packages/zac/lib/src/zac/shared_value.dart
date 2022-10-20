@@ -54,6 +54,14 @@ See "$SharedValueProviderBuilder" for more info.
     SharedValueFamily family,
     SharedValueType Function(SharedValueType current) update,
   ) {
+    assert(() {
+      /// Read the value first in order to trigger the custom exception.
+      /// Otherwise the .update() below will throw a StateError by riverpod.
+      /// This happens since riverpod 2.0 release
+      zacContext.ref.read(SharedValue.provider(family));
+      return true;
+    }(), '');
+
     zacContext.ref.read(SharedValue.provider(family).notifier).update(update);
   }
 

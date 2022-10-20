@@ -155,8 +155,7 @@ class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
           if (!debugRethrowError) return true;
           Error.throwWithStackTrace(error ?? '', stackTrace);
         }(), '');
-        loadingState.value =
-            AsyncValue.error(error ?? '', stackTrace: stackTrace);
+        loadingState.value = AsyncValue.error(error ?? '', stackTrace);
       });
       return () => mounted = false;
     }, [data]);
@@ -216,8 +215,7 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
           if (!debugRethrowError) return true;
           Error.throwWithStackTrace(error ?? '', stackTrace);
         }(), '');
-        loadingState.value =
-            AsyncValue.error(error ?? '', stackTrace: stackTrace);
+        loadingState.value = AsyncValue.error(error ?? '', stackTrace);
       });
 
       return () => mounted = false;
