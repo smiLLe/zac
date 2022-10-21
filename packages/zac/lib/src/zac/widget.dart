@@ -246,6 +246,7 @@ class _ErrorProvide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SharedValueProvider(
+      autoCreate: false,
       family: ZacWidget.provideErrorFamily,
       valueBuilder: (_, __) => error,
       childBuilder: (zacContext) {

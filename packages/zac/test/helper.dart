@@ -213,3 +213,16 @@ class LeakContext implements FlutterWidget {
     return child?.buildWidget(zacContext) ?? const SizedBox.shrink();
   }
 }
+
+class TestBuildCustomWidget implements FlutterWidget {
+  TestBuildCustomWidget(
+    this.cb,
+  );
+
+  final Widget Function(ZacContext zacContext) cb;
+
+  @override
+  Widget buildWidget(ZacContext zacContext) {
+    return cb(zacContext);
+  }
+}

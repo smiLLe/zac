@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mockito/mockito.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
@@ -37,6 +36,37 @@ void main() {
       );
 
       expect(obj, 55);
+    });
+
+    testWidgets(
+        'can be provided and automatically created and kept alive even if it is never listened to',
+        (tester) async {
+      late ZacContext context;
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          autoCreate: true,
+          value: 0,
+          family: 'shared',
+          child: TestBuildCustomWidget((zacContext) {
+            context = zacContext;
+            return TextButton(
+              key: const Key('button'),
+              child: const SizedBox(),
+              onPressed: () {
+                zacContext.ref
+                    .read(SharedValue.provider('shared').notifier)
+                    .state = 10;
+              },
+            );
+          }),
+        ),
+      );
+
+      await tester.tap(find.byKey(const Key('button')));
+      await tester.pump();
+      expect(context.ref.read(SharedValue.provider('shared')), 10);
     });
 
     testWidgets('can be transformed and provieded through SharedValueProvider',

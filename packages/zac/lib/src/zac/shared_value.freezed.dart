@@ -329,6 +329,7 @@ mixin _$SharedValueProviderBuilder {
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
+  bool get autoCreate => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -345,7 +346,8 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       required this.value,
       this.transformer,
       required this.family,
-      required this.child})
+      required this.child,
+      this.autoCreate = false})
       : super._();
 
   factory _$_SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>
@@ -361,10 +363,13 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   final Object family;
   @override
   final FlutterWidget child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
 
   @override
   String toString() {
-    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, family: $family, child: $child)';
+    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, family: $family, child: $child, autoCreate: $autoCreate)';
   }
 
   @override
@@ -377,7 +382,9 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
             const DeepCollectionEquality()
                 .equals(other.transformer, transformer) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality()
+                .equals(other.autoCreate, autoCreate));
   }
 
   @JsonKey(ignore: true)
@@ -388,7 +395,8 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       const DeepCollectionEquality().hash(value),
       const DeepCollectionEquality().hash(transformer),
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child));
+      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(autoCreate));
 
   @override
   @optionalTypeArgs
@@ -405,7 +413,8 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       required final Object? value,
       final ZacTransformers? transformer,
       required final Object family,
-      required final FlutterWidget child}) = _$_SharedValueProviderBuilder;
+      required final FlutterWidget child,
+      final bool autoCreate}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
 
   factory _SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =
@@ -421,4 +430,6 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   Object get family;
   @override
   FlutterWidget get child;
+  @override
+  bool get autoCreate;
 }

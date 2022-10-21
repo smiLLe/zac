@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/zac_values.dart';
@@ -158,7 +164,7 @@ void main() {
     expect(machine.findCandidate('NOT FOUND'), isNull);
   });
 
-  testWidgets('Provide the current state', (tester) async {
+  testWidgets('Provide the current machine', (tester) async {
     Object? curMachine;
     await testZacWidget(
       tester,
@@ -193,6 +199,52 @@ void main() {
                   key: FlutterValueKey('in a'),
                 ))
             .having((p0) => p0.context, 'context', 1));
+  });
+
+  testWidgets(
+      'Provided machine is automatically created and kept alive even if it is never listened to',
+      (tester) async {
+    late ZacContext context;
+    await testZacWidget(
+        tester,
+        ZacStateMachineProviderBuilder(
+          family: ZacString('machine'),
+          initialState: ZacString('a'),
+          states: {
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a'),
+              ),
+              on: [
+                ZacTransition(event: 'NEXT', target: 'b'),
+              ],
+            ),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in b'),
+              ),
+            ),
+          },
+          child: TestBuildCustomWidget((zacContext) {
+            context = zacContext;
+            return TextButton(
+              key: const Key('button'),
+              child: const SizedBox(),
+              onPressed: () {
+                (zacContext.ref.read(SharedValue.provider('machine'))
+                        as ZacStateMachine)
+                    .send('NEXT', null);
+              },
+            );
+          }),
+        ));
+
+    await tester.tap(find.byKey(const Key('button')));
+    await tester.pump();
+    expect(
+        (context.ref.read(SharedValue.provider('machine')) as ZacStateMachine)
+            .state,
+        'b');
   });
 
   testWidgets(

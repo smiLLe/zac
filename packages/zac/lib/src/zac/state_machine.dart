@@ -6,9 +6,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
 
 part 'state_machine.freezed.dart';
@@ -107,91 +105,64 @@ class ZacStateMachineProviderBuilder
     ZacObject? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
-  @override
-  ZacStateMachineProvider buildWidget(ZacContext zacContext) {
-    return ZacStateMachineProvider(
-      key: key?.buildKey(zacContext),
-      initialState: initialState.getValue(zacContext),
-      initialContext: initialContext?.getValue(zacContext),
-      states: states,
-      family: family.getValue(zacContext),
-      builder: child.buildWidget,
-    );
-  }
-}
+  ZacStateMachine _createMachine(
+      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+    int sessionId = 0;
 
-class ZacStateMachineProvider extends StatelessWidget {
-  const ZacStateMachineProvider({
-    required this.initialState,
-    required this.initialContext,
-    required this.states,
-    required this.family,
-    required this.builder,
-    super.key,
-  });
-
-  final String family;
-  final Widget Function(ZacContext zacContext) builder;
-
-  final Map<String, ZacStateConfig> states;
-  final String initialState;
-  final SharedValueType initialContext;
-
-  @override
-  Widget build(BuildContext context) {
-    return ProviderScope(
-      overrides: [
-        SharedValue.provider(family).overrideWithProvider(
-            AutoDisposeStateProvider<SharedValueType>((ref) {
-          int sessionId = 0;
-
-          void Function(String event, SharedValueType? context) getSend({
-            required bool trySend,
-            required int sId,
-          }) {
-            return (event, context) {
-              if (sId != sessionId) {
-                if (trySend) return;
-                throw StateError('''
+    void Function(String event, SharedValueType? context) getSend({
+      required bool trySend,
+      required int sId,
+    }) {
+      return (event, context) {
+        if (sId != sessionId) {
+          if (trySend) return;
+          throw StateError('''
 No longer possible to send event "$event" to $ZacStateMachine.
 It is no longer possible to transition away from the current $ZacStateMachine 
 because there was already a transition.
 ''');
-              }
+        }
 
-              ref.controller.update((curMachine) {
-                curMachine as ZacStateMachine;
+        ref.controller.update((curMachine) {
+          curMachine as ZacStateMachine;
 
-                final transition = curMachine.findCandidate(event);
+          final transition = curMachine.findCandidate(event);
 
-                if (null == transition) return curMachine;
+          if (null == transition) return curMachine;
 
-                final nextSession = ++sessionId;
+          final nextSession = ++sessionId;
 
-                return curMachine.copyWith.call(
-                  state: transition.target,
-                  context: context,
-                  send: getSend(trySend: false, sId: nextSession),
-                  trySend: getSend(trySend: true, sId: nextSession),
-                );
-              });
-            };
-          }
-
-          ref.onDispose(() {
-            sessionId = -1;
-          });
-
-          return ZacStateMachine(
-            states: states,
-            state: initialState,
-            context: initialContext,
-            send: getSend(trySend: false, sId: sessionId),
-            trySend: getSend(trySend: true, sId: sessionId),
+          return curMachine.copyWith.call(
+            state: transition.target,
+            context: context,
+            send: getSend(trySend: false, sId: nextSession),
+            trySend: getSend(trySend: true, sId: nextSession),
           );
-        })),
-      ],
-      child: ZacUpdateContext(builder: builder),
+        });
+      };
+    }
+
+    ref.onDispose(() {
+      sessionId = -1;
+    });
+
+    return ZacStateMachine(
+      states: states,
+      state: initialState.getValue(zacContext),
+      context: initialContext?.getValue(zacContext),
+      send: getSend(trySend: false, sId: sessionId),
+      trySend: getSend(trySend: true, sId: sessionId),
+    );
+  }
+
+  @override
+  Widget buildWidget(ZacContext zacContext) {
+    return SharedValueProvider(
+      key: key?.buildKey(zacContext),
+      family: family.getValue(zacContext),
+      autoCreate: true,
+      childBuilder: child.buildWidget,
+      valueBuilder: _createMachine,
     );
   }
 }

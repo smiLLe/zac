@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -159,6 +158,7 @@ class SharedValueProviderBuilder
     ZacTransformers? transformer,
     required SharedValueFamily family,
     required FlutterWidget child,
+    @Default(false) bool autoCreate,
   }) = _SharedValueProviderBuilder;
 
   SharedValueType valueBuilder(
@@ -175,6 +175,7 @@ class SharedValueProviderBuilder
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: child.buildWidget,
+      autoCreate: autoCreate,
     );
   }
 }
@@ -184,6 +185,7 @@ class SharedValueProvider extends StatelessWidget {
     required this.childBuilder,
     required this.valueBuilder,
     required this.family,
+    required this.autoCreate,
     super.key,
   });
 
@@ -192,6 +194,9 @@ class SharedValueProvider extends StatelessWidget {
   final SharedValueType Function(
       AutoDisposeStateProviderRef<SharedValueType> ref,
       ZacContext zacContext) valueBuilder;
+  final bool autoCreate;
+
+  void _autoCreateListener(SharedValueType? prev, SharedValueType next) {}
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +207,19 @@ class SharedValueProvider extends StatelessWidget {
               AutoDisposeStateProvider<SharedValueType>(
                   (ref) => valueBuilder(ref, zacContext))),
         ],
-        child: ZacUpdateContext(builder: childBuilder),
+        child: ZacUpdateContext(
+          builder: !autoCreate
+              ? childBuilder
+              : (zacContext) {
+                  /// immediately create the AutoDispose Provider and its value
+                  /// and keep it alive as long as possible
+                  zacContext.ref.listen<SharedValueType>(
+                    SharedValue.provider(family),
+                    _autoCreateListener,
+                  );
+                  return childBuilder(zacContext);
+                },
+        ),
       ),
     );
   }
