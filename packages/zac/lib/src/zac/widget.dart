@@ -247,8 +247,8 @@ class _ErrorProvide extends StatelessWidget {
   Widget build(BuildContext context) {
     return SharedValueProvider(
       family: ZacWidget.provideErrorFamily,
-      value: error,
-      builder: (zacContext) {
+      valueBuilder: (_, __) => error,
+      childBuilder: (zacContext) {
         Widget err = const SizedBox.shrink();
         assert(() {
           if (null == child) {

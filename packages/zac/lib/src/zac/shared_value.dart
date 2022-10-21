@@ -146,7 +146,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
     implements FlutterWidget {
-  const SharedValueProviderBuilder._();
+  SharedValueProviderBuilder._();
   static const String unionValue = 'z:1:SharedValue.provide';
 
   factory SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>
@@ -161,50 +161,49 @@ class SharedValueProviderBuilder
     required FlutterWidget child,
   }) = _SharedValueProviderBuilder;
 
+  SharedValueType valueBuilder(
+      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+    return null == transformer || true == transformer!.transformers.isEmpty
+        ? value
+        : transformer!.transform(ZacTransformValue(value), zacContext, null);
+  }
+
   @override
   SharedValueProvider buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
       key: key?.buildKey(zacContext),
-      transformer: transformer,
-      value: value,
+      valueBuilder: valueBuilder,
       family: family,
-      builder: child.buildWidget,
+      childBuilder: child.buildWidget,
     );
   }
 }
 
-class SharedValueProvider extends HookConsumerWidget {
+class SharedValueProvider extends StatelessWidget {
   const SharedValueProvider({
-    required this.value,
-    this.transformer,
+    required this.childBuilder,
+    required this.valueBuilder,
     required this.family,
-    required this.builder,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
-  final SharedValueType value;
+  final Widget Function(ZacContext zacContext) childBuilder;
   final SharedValueFamily family;
-  final Widget Function(ZacContext zacContext) builder;
-  final ZacTransformers? transformer;
+  final SharedValueType Function(
+      AutoDisposeStateProviderRef<SharedValueType> ref,
+      ZacContext zacContext) valueBuilder;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final provideValue = useMemoized(
-      () {
-        return null == transformer || true == transformer!.transformers.isEmpty
-            ? value
-            : transformer!
-                .transform(ZacTransformValue(value), zacContext, null);
-      },
-      [value, family, transformer],
-    );
-    return ProviderScope(
-      overrides: [
-        SharedValue.provider(family).overrideWithProvider(
-            AutoDisposeStateProvider<SharedValueType>((_) => provideValue)),
-      ],
-      child: ZacUpdateOrigin(builder: builder),
+  Widget build(BuildContext context) {
+    return ZacUpdateOrigin(
+      builder: (zacContext) => ProviderScope(
+        overrides: [
+          SharedValue.provider(family).overrideWithProvider(
+              AutoDisposeStateProvider<SharedValueType>(
+                  (ref) => valueBuilder(ref, zacContext))),
+        ],
+        child: ZacUpdateOrigin(builder: childBuilder),
+      ),
     );
   }
 }

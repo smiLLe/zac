@@ -77,21 +77,19 @@ class ZacFlutterGlobalKeyNavigatorState
 }
 
 /// Special Provider that will only share a [GlobalKey] of NavigatorState
-class GlobalKeyNavigatorStateProvider extends HookConsumerWidget {
-  const GlobalKeyNavigatorStateProvider({required this.builder, Key? key})
-      : super(key: key);
+class GlobalKeyNavigatorStateProvider extends StatelessWidget {
+  const GlobalKeyNavigatorStateProvider({required this.builder, super.key});
 
   final _ZacFlutterGlobalKeyNavigatorStateProvide builder;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
+  Widget build(BuildContext context) {
     return SharedValueProvider(
-      value: GlobalKey<NavigatorState>(
+      valueBuilder: (_, zacContext) => GlobalKey<NavigatorState>(
         debugLabel: builder.debugLabel?.getValue(zacContext),
       ),
       family: builder.family,
-      builder: builder.child.buildWidget,
+      childBuilder: builder.child.buildWidget,
     );
   }
 }
@@ -172,7 +170,7 @@ class RouteFactorySingleRoute
       final name = settings.name;
       if (null == name) {
         throw UnimplementedError(
-            '${_typeOf<RouteFactorySingleRoute>()} does currently not support settings without a name');
+            '$RouteFactorySingleRoute does currently not support settings without a name');
       }
 
       return routeConfig.route.build(
@@ -183,8 +181,8 @@ class RouteFactorySingleRoute
             return zacWidget.buildWidget(zacContext);
           }
 
-          return SharedValueProvider(
-            builder: zacWidget.buildWidget,
+          return SharedValueProviderBuilder(
+            child: zacWidget,
             family: RouteFactoryFromRoutes.providerName(
               origin,
               routeConfig,
@@ -192,7 +190,7 @@ class RouteFactorySingleRoute
             ),
             value: args,
             transformer: routeConfig.transform,
-          );
+          ).buildWidget(zacContext);
         },
       );
     };
@@ -245,8 +243,8 @@ class RouteFactoryFromRoutes
             return zacWidget.buildWidget(zacContext);
           }
 
-          return SharedValueProvider(
-            builder: zacWidget.buildWidget,
+          return SharedValueProviderBuilder(
+            child: zacWidget,
             family: RouteFactoryFromRoutes.providerName(
               origin,
               config,
@@ -254,7 +252,7 @@ class RouteFactoryFromRoutes
             ),
             value: args,
             transformer: config.transform,
-          );
+          ).buildWidget(zacContext);
         },
       );
     };
