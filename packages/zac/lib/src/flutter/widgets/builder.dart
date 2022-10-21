@@ -29,7 +29,7 @@ class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
     return Builder(
       key: key?.buildKey(zacContext),
       builder: (_) {
-        return ZacUpdateOrigin(
+        return ZacUpdateContext(
           builder: child.buildWidget,
         );
       },

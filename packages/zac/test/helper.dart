@@ -198,8 +198,8 @@ class CustomTransformer implements ZacTransformer {
   }
 }
 
-class LeakOrigin implements FlutterWidget {
-  LeakOrigin({
+class LeakContext implements FlutterWidget {
+  LeakContext({
     required this.cb,
     this.child,
   });

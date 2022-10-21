@@ -155,7 +155,7 @@ void main() {
             data: ZacMap(
               <String, dynamic>{},
             ),
-            errorChild: LeakOrigin(
+            errorChild: LeakContext(
               cb: (o) => zacContext = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),
@@ -221,7 +221,7 @@ void main() {
           tester,
           ZacWidgetBuilder.isolateString(
             data: ZacString('{'),
-            errorChild: LeakOrigin(
+            errorChild: LeakContext(
               cb: (o) => zacContext = o,
               child: FlutterSizedBox(
                 key: FlutterValueKey('ERROR'),

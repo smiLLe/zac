@@ -43,7 +43,7 @@ void main() {
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume('foo'),
-            home: LeakOrigin(cb: (o) => zacContext = o),
+            home: LeakContext(cb: (o) => zacContext = o),
           ),
         ),
       ),

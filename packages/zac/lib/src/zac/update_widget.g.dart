@@ -6,9 +6,9 @@ part of 'update_widget.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacUpdateOriginBuilder _$$_ZacUpdateOriginBuilderFromJson(
+_$_ZacUpdateContextBuilder _$$_ZacUpdateContextBuilderFromJson(
         Map<String, dynamic> json) =>
-    _$_ZacUpdateOriginBuilder(
+    _$_ZacUpdateContextBuilder(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),

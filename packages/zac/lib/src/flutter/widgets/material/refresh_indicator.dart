@@ -61,7 +61,7 @@ class FlutterRefreshIndicator
           return completer;
         })),
       ],
-      child: ZacUpdateOrigin(
+      child: ZacUpdateContext(
         builder: (zacContext) {
           final completer = SharedValue.get(
                   const SharedValueConsumeType.watch(), zacContext, family)

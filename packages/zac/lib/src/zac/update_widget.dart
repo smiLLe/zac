@@ -9,33 +9,33 @@ part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
 
 @defaultConverterFreezed
-class ZacUpdateOriginBuilder
-    with _$ZacUpdateOriginBuilder
+class ZacUpdateContextBuilder
+    with _$ZacUpdateContextBuilder
     implements FlutterWidget {
-  const ZacUpdateOriginBuilder._();
+  const ZacUpdateContextBuilder._();
 
-  static const String unionValue = 'z:1:UpdateOrigin';
+  static const String unionValue = 'z:1:UpdateContext';
 
-  factory ZacUpdateOriginBuilder.fromJson(Map<String, dynamic> json) =>
-      _$ZacUpdateOriginBuilderFromJson(json);
+  factory ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =>
+      _$ZacUpdateContextBuilderFromJson(json);
 
-  @FreezedUnionValue(ZacUpdateOriginBuilder.unionValue)
-  factory ZacUpdateOriginBuilder({
+  @FreezedUnionValue(ZacUpdateContextBuilder.unionValue)
+  factory ZacUpdateContextBuilder({
     FlutterKey? key,
     required FlutterWidget child,
-  }) = _ZacUpdateOriginBuilder;
+  }) = _ZacUpdateContextBuilder;
 
   @override
-  ZacUpdateOrigin buildWidget(ZacContext zacContext) {
-    return ZacUpdateOrigin(
+  ZacUpdateContext buildWidget(ZacContext zacContext) {
+    return ZacUpdateContext(
       builder: (zacContext) => child.buildWidget(zacContext),
       key: key?.buildKey(zacContext),
     );
   }
 }
 
-class ZacUpdateOrigin extends HookConsumerWidget {
-  const ZacUpdateOrigin({required this.builder, Key? key}) : super(key: key);
+class ZacUpdateContext extends HookConsumerWidget {
+  const ZacUpdateContext({required this.builder, Key? key}) : super(key: key);
 
   final Widget Function(ZacContext zacContext) builder;
 

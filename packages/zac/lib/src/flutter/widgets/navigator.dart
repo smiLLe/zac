@@ -268,7 +268,7 @@ class FlutterPageRouteBuilder
   PageRouteBuilder<ZacActions?> build(ZacContext zacContext,
       {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap}) {
     return PageRouteBuilder<ZacActions?>(
-      pageBuilder: (_, __, ___) => ZacUpdateOrigin(
+      pageBuilder: (_, __, ___) => ZacUpdateContext(
         builder: (zacContext) {
           if (null == wrap) {
             return child.buildWidget(zacContext);

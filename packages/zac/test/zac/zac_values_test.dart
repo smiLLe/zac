@@ -26,7 +26,7 @@ Future<void> _commonConsume<TClass, TVal>({
           'value': testVal,
         },
         transformer: ZacTransformers([ConvertTransformer()]),
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (o) => zacContext = o,
         ),
       ));
@@ -40,7 +40,7 @@ Future<void> _commonConsume<TClass, TVal>({
       SharedValueProviderBuilder(
         family: 'foo',
         value: testVal,
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (o) => zacContext = o,
         ),
       ));
@@ -127,7 +127,7 @@ void main() {
 
     await testZacWidget(
         tester,
-        LeakOrigin(
+        LeakContext(
           cb: (o) => zacContext = o,
         ));
 
@@ -406,7 +406,7 @@ void main() {
               ),
               const IterableTransformer.toList(),
             ]),
-            child: LeakOrigin(
+            child: LeakContext(
               cb: (o) {
                 zacContext = o;
               },
@@ -432,7 +432,7 @@ void main() {
               ]
             },
             transformer: ZacTransformers([ConvertTransformer()]),
-            child: LeakOrigin(
+            child: LeakContext(
               cb: (o) {
                 zacContext = o;
               },

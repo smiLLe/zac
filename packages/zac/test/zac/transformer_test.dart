@@ -293,7 +293,7 @@ void main() {
           throwsA(isA<ZacTransformError>()));
 
       late ZacContext zacContext;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
+      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
           IterableTransformer.contains(ZacObject('foo')).transform(
@@ -526,7 +526,7 @@ void main() {
           throwsA(isA<ZacTransformError>()));
 
       late ZacContext zacContext;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
+      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
           MapTransformer.containsKey(ZacObject('foo')).transform(
@@ -549,7 +549,7 @@ void main() {
           throwsA(isA<ZacTransformError>()));
 
       late ZacContext zacContext;
-      await testZacWidget(tester, LeakOrigin(cb: (o) => zacContext = o));
+      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
           MapTransformer.containsValue(ZacObject(2)).transform(
@@ -819,7 +819,7 @@ void main() {
             child: SharedValueProviderBuilder(
               value: 'foo',
               family: 'shared2',
-              child: LeakOrigin(
+              child: LeakContext(
                 cb: (o) => zacContext = o,
               ),
             ),

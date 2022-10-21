@@ -154,7 +154,7 @@ void main() {
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
-              child: LeakOrigin(cb: (o) => zacContext = o),
+              child: LeakContext(cb: (o) => zacContext = o),
             ),
           ),
         ),

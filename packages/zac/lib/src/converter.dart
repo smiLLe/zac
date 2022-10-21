@@ -242,7 +242,7 @@ Map<String, Convert> allConverters = const {
   ZacWidgetBuilder.unionValueMap: ZacWidgetBuilder.fromJson,
   ZacWidgetBuilder.unionValueIsolate: ZacWidgetBuilder.fromJson,
   ZacWidgetBuilder.unionValueIsolateString: ZacWidgetBuilder.fromJson,
-  ZacUpdateOriginBuilder.unionValue: ZacUpdateOriginBuilder.fromJson,
+  ZacUpdateContextBuilder.unionValue: ZacUpdateContextBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValue: ZacExecuteActionsBuilder.fromJson,
   ZacExecuteActionsBuilder.unionValueListen: ZacExecuteActionsBuilder.fromJson,
   SharedValueProviderBuilder.unionValue: SharedValueProviderBuilder.fromJson,

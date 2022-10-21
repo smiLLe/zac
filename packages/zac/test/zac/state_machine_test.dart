@@ -173,7 +173,7 @@ void main() {
             ),
           ),
         },
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
                 const SharedValueConsumeType.watch(), zacContext, 'machine');
@@ -219,7 +219,7 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'a')],
           ),
         },
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
                     const SharedValueConsumeType.watch(), zacContext, 'machine')
@@ -270,7 +270,7 @@ void main() {
             widget: FlutterSizedBox(),
           ),
         },
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
                     const SharedValueConsumeType.watch(), zacContext, 'machine')
@@ -308,7 +308,7 @@ void main() {
             widget: FlutterSizedBox(),
           ),
         },
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
                     const SharedValueConsumeType.watch(), zacContext, 'machine')
@@ -356,7 +356,7 @@ void main() {
             ),
           ),
         },
-        child: LeakOrigin(
+        child: LeakContext(
           cb: (zacContext) {
             machine = SharedValue.get(
                     const SharedValueConsumeType.watch(), zacContext, 'machine')

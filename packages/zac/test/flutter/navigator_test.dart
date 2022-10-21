@@ -35,7 +35,7 @@ void main() {
         tester,
         ZacFlutterGlobalKeyNavigatorState.provide(
           family: 'foo',
-          child: LeakOrigin(cb: (o) => zacContext = o),
+          child: LeakContext(cb: (o) => zacContext = o),
         ),
       );
 
@@ -146,7 +146,7 @@ void main() {
             onUnknownRoute: RouteFactorySingleRoute(
               routeConfig: RouteFactoryRouteConfig(
                 route: FlutterMaterialPageRoute(
-                  child: LeakOrigin(cb: (o) {
+                  child: LeakContext(cb: (o) {
                     zacContext = o;
                   }),
                 ),
@@ -259,7 +259,7 @@ void main() {
                           arguments: 11,
                         )
                       ]),
-                      child: LeakOrigin(cb: (o) {
+                      child: LeakContext(cb: (o) {
                         zacContext = o;
                       }),
                     ),
@@ -267,7 +267,7 @@ void main() {
                 ),
                 '/otherother': RouteFactoryRouteConfig(
                   route: FlutterMaterialPageRoute(
-                    child: LeakOrigin(cb: (o) {
+                    child: LeakContext(cb: (o) {
                       zacContext = o;
                     }),
                   ),
@@ -294,7 +294,7 @@ void main() {
 
       testWidgets('providerName', (tester) async {
         late ZacContext zacContext;
-        await testZacWidget(tester, LeakOrigin(cb: ((o) {
+        await testZacWidget(tester, LeakContext(cb: ((o) {
           zacContext = o;
         })));
 

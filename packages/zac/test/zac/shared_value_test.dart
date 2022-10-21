@@ -30,7 +30,7 @@ void main() {
         SharedValueProviderBuilder(
           value: 55,
           family: 'foo',
-          child: LeakOrigin(cb: (zacContext) {
+          child: LeakContext(cb: (zacContext) {
             obj = zacContext.ref.watch(SharedValue.provider('foo'));
           }),
         ),
@@ -50,7 +50,7 @@ void main() {
             'converter': 'f:1:SizedBox',
           },
           family: 'foo',
-          child: LeakOrigin(cb: (zacContext) {
+          child: LeakContext(cb: (zacContext) {
             obj = zacContext.ref.watch(SharedValue.provider('foo'));
           }),
           transformer: ZacTransformers([ConvertTransformer()]),
@@ -81,7 +81,7 @@ void main() {
               child: SharedValueProviderBuilder(
                 value: 'AA',
                 family: 'sharedA',
-                child: LeakOrigin(
+                child: LeakContext(
                   cb: (zacContext) {
                     a = zacContext.ref.watch(SharedValue.provider('sharedA'));
                     b = zacContext.ref.watch(SharedValue.provider('sharedB'));
@@ -107,7 +107,7 @@ void main() {
           SharedValueProviderBuilder(
             value: 10,
             family: 'foo',
-            child: LeakOrigin(
+            child: LeakContext(
               cb: (o) => zacContext = o,
             ),
           ),
@@ -126,7 +126,7 @@ void main() {
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakOrigin(
+            child: LeakContext(
               cb: (o) => zacContext = o,
             ),
           ),
@@ -142,7 +142,7 @@ void main() {
         late ZacContext zacContext;
         await testZacWidget(
           tester,
-          LeakOrigin(
+          LeakContext(
             cb: (o) => zacContext = o,
           ),
         );
@@ -159,7 +159,7 @@ void main() {
         late ZacContext zacContext;
         await testZacWidget(
           tester,
-          LeakOrigin(
+          LeakContext(
             cb: (o) => zacContext = o,
           ),
         );
@@ -175,7 +175,7 @@ void main() {
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakOrigin(
+            child: LeakContext(
               cb: (o) => zacContext = o,
             ),
           ),
@@ -293,7 +293,7 @@ void main() {
         SharedValueProviderBuilder(
           value: 'foo',
           family: 'shared',
-          child: LeakOrigin(cb: (zacContext) {
+          child: LeakContext(cb: (zacContext) {
             obj = SharedValue.get(
                 SharedValueConsumeType.watch(
                     select: ZacTransformers([_ConcatStr('bar')])),
