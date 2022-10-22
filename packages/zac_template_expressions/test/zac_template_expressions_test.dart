@@ -49,8 +49,8 @@ void main() {
       equals: ZacTemplateExpressionsTransformer(
         expression: 'expr',
         context: {
-          'simple': ZacObject(1),
-          'shared': ZacObject.consume('fam'),
+          'simple': ZacValue<Object>(1),
+          'shared': ZacValue<Object>.consume('fam'),
         },
       ),
       props: <String, dynamic>{
@@ -58,7 +58,7 @@ void main() {
         'context': {
           'simple': 1,
           'shared': {
-            'converter': 'z:1:ZacObject.consume',
+            'converter': 'z:1:ZacValue<Object>.consume',
             'family': 'fam',
           },
         },
@@ -88,7 +88,7 @@ void main() {
         ZacTemplateExpressionsTransformer(
           expression: r'${hello}',
           context: {
-            'hello': ZacObject('hello world'),
+            'hello': ZacValue<Object>('hello world'),
           },
         ).transform(ZacTransformValue(null), zacContext, null),
         'hello world');

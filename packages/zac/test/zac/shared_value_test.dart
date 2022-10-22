@@ -296,7 +296,7 @@ void main() {
                 actions: ZacActions([
                   UpdateSharedValueInteractions.replaceWith(
                     family: 'family',
-                    value: ZacObject('bar'),
+                    value: ZacValue<Object>.fromJson('bar'),
                   ),
                 ]),
                 child: FlutterSizedBox(),

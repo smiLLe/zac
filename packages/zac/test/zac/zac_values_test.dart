@@ -535,33 +535,33 @@ void main() {
     });
   });
 
-  group('ZacObject', () {
-    test('fromJson', () {
-      _commonCreate<ZacObject, Object>(
-        testVal: 'hello',
-        create: ZacObject.new,
-        createConsume: ZacObject.consume,
-        fromJson: ZacObject.fromJson,
-      );
-      _commonCreate<ZacObject, Object>(
-        testVal: 55,
-        create: ZacObject.new,
-        createConsume: ZacObject.consume,
-        fromJson: ZacObject.fromJson,
-      );
+  // group('ZacValue<Object>', () {
+  //   test('fromJson', () {
+  //     _commonCreate<ZacValue<Object>, Object>(
+  //       testVal: 'hello',
+  //       create: ZacValue<Object>.new,
+  //       createConsume: ZacValue<Object>.consume,
+  //       fromJson: ZacValue<Object>.fromJson,
+  //     );
+  //     _commonCreate<ZacValue<Object>, Object>(
+  //       testVal: 55,
+  //       create: ZacValue<Object>.new,
+  //       createConsume: ZacValue<Object>.consume,
+  //       fromJson: ZacValue<Object>.fromJson,
+  //     );
 
-      expect(ZacObject.fromJson('hello'), ZacObject('hello'));
-      expect(ZacObject.fromJson(55), ZacObject(55));
-    });
+  //     expect(ZacValue<Object>.fromJson('hello'), ZacValue<Object>('hello'));
+  //     expect(ZacValue<Object>.fromJson(55), ZacValue<Object>(55));
+  //   });
 
-    testWidgets('consume', (tester) async {
-      await _commonConsume<ZacObject, Object>(
-        tester: tester,
-        testVal: 55,
-        createConsume: ZacObject.consume,
-      );
-    });
-  });
+  //   testWidgets('consume', (tester) async {
+  //     await _commonConsume<ZacValue<Object>, Object>(
+  //       tester: tester,
+  //       testVal: 55,
+  //       createConsume: ZacValue<Object>.consume,
+  //     );
+  //   });
+  // });
 
   group('ZacWidget', () {
     testWidgets('can be consumed through ZacWidgetConsumer', (tester) async {

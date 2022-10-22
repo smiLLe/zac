@@ -95,7 +95,7 @@ class UpdateSharedValueInteractions
   @FreezedUnionValue(UpdateSharedValueInteractions.unionValueReplaceWith)
   factory UpdateSharedValueInteractions.replaceWith({
     required SharedValueFamily family,
-    required ZacObject value,
+    required ZacValue<Object> value,
     ZacTransformers? transformer,
   }) = _SharedValueInteractionReplaceWith;
 

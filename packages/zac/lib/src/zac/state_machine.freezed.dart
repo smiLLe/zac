@@ -388,7 +388,7 @@ mixin _$ZacStateMachineProviderBuilder {
   ZacValue<String> get initialState => throw _privateConstructorUsedError;
   Map<String, ZacStateConfig> get states => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
-  ZacObject? get initialContext => throw _privateConstructorUsedError;
+  ZacValue<Object>? get initialContext => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -431,7 +431,7 @@ class _$_ZacStateMachineProviderBuilder
   @override
   final FlutterWidget child;
   @override
-  final ZacObject? initialContext;
+  final ZacValue<Object>? initialContext;
 
   @override
   String toString() {
@@ -476,12 +476,13 @@ class _$_ZacStateMachineProviderBuilder
 abstract class _ZacStateMachineProviderBuilder
     extends ZacStateMachineProviderBuilder {
   factory _ZacStateMachineProviderBuilder(
-      {final FlutterKey? key,
-      required final ZacValue<String> family,
-      required final ZacValue<String> initialState,
-      required final Map<String, ZacStateConfig> states,
-      required final FlutterWidget child,
-      final ZacObject? initialContext}) = _$_ZacStateMachineProviderBuilder;
+          {final FlutterKey? key,
+          required final ZacValue<String> family,
+          required final ZacValue<String> initialState,
+          required final Map<String, ZacStateConfig> states,
+          required final FlutterWidget child,
+          final ZacValue<Object>? initialContext}) =
+      _$_ZacStateMachineProviderBuilder;
   _ZacStateMachineProviderBuilder._() : super._();
 
   factory _ZacStateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
@@ -498,7 +499,7 @@ abstract class _ZacStateMachineProviderBuilder
   @override
   FlutterWidget get child;
   @override
-  ZacObject? get initialContext;
+  ZacValue<Object>? get initialContext;
 }
 
 ZacStateMachineBuildStateBuilder _$ZacStateMachineBuildStateBuilderFromJson(

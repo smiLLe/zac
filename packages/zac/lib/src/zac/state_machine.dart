@@ -102,7 +102,7 @@ class ZacStateMachineProviderBuilder
     required ZacValue<String> initialState,
     required Map<String, ZacStateConfig> states,
     required FlutterWidget child,
-    ZacObject? initialContext,
+    ZacValue<Object>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(

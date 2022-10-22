@@ -140,10 +140,11 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacObject? key) = _MapContainsKey;
+  const factory MapTransformer.containsKey(ZacValue<Object>? key) =
+      _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacObject? value) =
+  const factory MapTransformer.containsValue(ZacValue<Object>? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
@@ -278,7 +279,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacObject? element) =
+  const factory IterableTransformer.contains(ZacValue<Object>? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)

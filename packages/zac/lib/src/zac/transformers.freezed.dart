@@ -697,7 +697,7 @@ class _$_MapContainsKey extends _MapContainsKey {
       _$$_MapContainsKeyFromJson(json);
 
   @override
-  final ZacObject? key;
+  final ZacValue<Object>? key;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -742,13 +742,14 @@ class _$_MapContainsKey extends _MapContainsKey {
 }
 
 abstract class _MapContainsKey extends MapTransformer {
-  const factory _MapContainsKey(final ZacObject? key) = _$_MapContainsKey;
+  const factory _MapContainsKey(final ZacValue<Object>? key) =
+      _$_MapContainsKey;
   const _MapContainsKey._() : super._();
 
   factory _MapContainsKey.fromJson(Map<String, dynamic> json) =
       _$_MapContainsKey.fromJson;
 
-  ZacObject? get key;
+  ZacValue<Object>? get key;
 }
 
 /// @nodoc
@@ -762,7 +763,7 @@ class _$_MapContainsValue extends _MapContainsValue {
       _$$_MapContainsValueFromJson(json);
 
   @override
-  final ZacObject? value;
+  final ZacValue<Object>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -807,13 +808,14 @@ class _$_MapContainsValue extends _MapContainsValue {
 }
 
 abstract class _MapContainsValue extends MapTransformer {
-  const factory _MapContainsValue(final ZacObject? value) = _$_MapContainsValue;
+  const factory _MapContainsValue(final ZacValue<Object>? value) =
+      _$_MapContainsValue;
   const _MapContainsValue._() : super._();
 
   factory _MapContainsValue.fromJson(Map<String, dynamic> json) =
       _$_MapContainsValue.fromJson;
 
-  ZacObject? get value;
+  ZacValue<Object>? get value;
 }
 
 /// @nodoc
@@ -1804,7 +1806,7 @@ class _$_IterableContains extends _IterableContains {
       _$$_IterableContainsFromJson(json);
 
   @override
-  final ZacObject? element;
+  final ZacValue<Object>? element;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -1851,14 +1853,14 @@ class _$_IterableContains extends _IterableContains {
 }
 
 abstract class _IterableContains extends IterableTransformer {
-  const factory _IterableContains(final ZacObject? element) =
+  const factory _IterableContains(final ZacValue<Object>? element) =
       _$_IterableContains;
   const _IterableContains._() : super._();
 
   factory _IterableContains.fromJson(Map<String, dynamic> json) =
       _$_IterableContains.fromJson;
 
-  ZacObject? get element;
+  ZacValue<Object>? get element;
 }
 
 /// @nodoc

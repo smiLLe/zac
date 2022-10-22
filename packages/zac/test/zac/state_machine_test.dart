@@ -170,7 +170,7 @@ void main() {
       tester,
       ZacStateMachineProviderBuilder(
         family: ZacValue<String>.fromJson('machine'),
-        initialContext: ZacObject(1),
+        initialContext: ZacValue<Object>.fromJson(1),
         initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
@@ -255,7 +255,7 @@ void main() {
       tester,
       ZacStateMachineProviderBuilder(
         family: ZacValue<String>.fromJson('machine'),
-        initialContext: ZacObject(1),
+        initialContext: ZacValue<Object>.fromJson(1),
         initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
