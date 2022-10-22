@@ -6,6 +6,39 @@ part of 'zac_values.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_ZacValueConsumeSimple<TValue> _$$_ZacValueConsumeSimpleFromJson<TValue>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeSimple<TValue>(
+      value: json['value'],
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacValueConsumeWatch<TValue> _$$_ZacValueConsumeWatchFromJson<TValue>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeWatch<TValue>(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      select: json['select'] == null
+          ? null
+          : ZacTransformers.fromJson(json['select'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacValueConsumeRead<TValue> _$$_ZacValueConsumeReadFromJson<TValue>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeRead<TValue>(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['converter'] as String?,
+    );
+
 _$ZacIntValue _$$ZacIntValueFromJson(Map<String, dynamic> json) =>
     _$ZacIntValue(
       json['value'] as int,
