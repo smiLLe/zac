@@ -21,7 +21,7 @@ _$_ZacWidgetBuilderMap _$$_ZacWidgetBuilderMapFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      data: ZacMap.fromJson(json['data'] as Object),
+      data: ZacValue<Map<dynamic, dynamic>>.fromJson(json['data'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -31,7 +31,7 @@ _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      data: ZacMap.fromJson(json['data'] as Object),
+      data: ZacValue<Map<dynamic, dynamic>>.fromJson(json['data'] as Object),
       errorChild: json['errorChild'] == null
           ? null
           : FlutterWidget.fromJson(json['errorChild'] as Object),

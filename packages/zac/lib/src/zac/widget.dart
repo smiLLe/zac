@@ -37,13 +37,13 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   @FreezedUnionValue(ZacWidgetBuilder.unionValueMap)
   factory ZacWidgetBuilder.map({
     FlutterKey? key,
-    required ZacMap data,
+    required ZacValue<Map> data,
   }) = _ZacWidgetBuilderMap;
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolate)
   factory ZacWidgetBuilder.isolate({
     FlutterKey? key,
-    required ZacMap data,
+    required ZacValue<Map> data,
     FlutterWidget? errorChild,
     bool? debugRethrowError,
   }) = _ZacWidgetBuilderIsolate;
@@ -100,7 +100,7 @@ class ZacWidget extends HookConsumerWidget {
 class ZacWidgetFromMa extends HookConsumerWidget {
   const ZacWidgetFromMa({required this.zacMap, Key? key}) : super(key: key);
 
-  final ZacMap zacMap;
+  final ZacValue<Map> zacMap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -162,7 +162,7 @@ class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
 
     return loadingState.value.map(
       data: (obj) => ZacWidgetFromMapInIsolate(
-        zacMap: ZacMap(obj.value),
+        zacMap: ZacValue<Map>.fromJson(obj.value),
         errorChild: errorChild,
         debugRethrowError: debugRethrowError,
       ),
@@ -189,7 +189,7 @@ class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
         data[0] as Map<String, dynamic>);
   }
 
-  final ZacMap zacMap;
+  final ZacValue<Map> zacMap;
   final FlutterWidget? errorChild;
   final bool debugRethrowError;
 

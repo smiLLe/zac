@@ -111,7 +111,7 @@ void main() {
           await testZacWidget(
             tester,
             ZacWidgetBuilder.isolate(
-              data: ZacMap(
+              data: ZacValue<Map>.fromJson(
                 <String, dynamic>{},
               ),
             ),
@@ -130,7 +130,7 @@ void main() {
         await testZacWidget(
           tester,
           ZacWidgetBuilder.isolate(
-            data: ZacMap(
+            data: ZacValue<Map>.fromJson(
               <String, dynamic>{},
             ),
             debugRethrowError: false,
@@ -152,7 +152,7 @@ void main() {
         await testZacWidget(
           tester,
           ZacWidgetBuilder.isolate(
-            data: ZacMap(
+            data: ZacValue<Map>.fromJson(
               <String, dynamic>{},
             ),
             errorChild: LeakContext(

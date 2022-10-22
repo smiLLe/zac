@@ -136,7 +136,7 @@ class _$_ZacWidgetBuilderMap extends _ZacWidgetBuilderMap
   @override
   final FlutterKey? key;
   @override
-  final ZacMap data;
+  final ZacValue<Map> data;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -187,7 +187,7 @@ class _$_ZacWidgetBuilderMap extends _ZacWidgetBuilderMap
 abstract class _ZacWidgetBuilderMap extends ZacWidgetBuilder {
   factory _ZacWidgetBuilderMap(
       {final FlutterKey? key,
-      required final ZacMap data}) = _$_ZacWidgetBuilderMap;
+      required final ZacValue<Map> data}) = _$_ZacWidgetBuilderMap;
   _ZacWidgetBuilderMap._() : super._();
 
   factory _ZacWidgetBuilderMap.fromJson(Map<String, dynamic> json) =
@@ -195,7 +195,7 @@ abstract class _ZacWidgetBuilderMap extends ZacWidgetBuilder {
 
   @override
   FlutterKey? get key;
-  ZacMap get data;
+  ZacValue<Map> get data;
 }
 
 /// @nodoc
@@ -217,7 +217,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
   @override
   final FlutterKey? key;
   @override
-  final ZacMap data;
+  final ZacValue<Map> data;
   @override
   final FlutterWidget? errorChild;
   @override
@@ -280,7 +280,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
 abstract class _ZacWidgetBuilderIsolate extends ZacWidgetBuilder {
   factory _ZacWidgetBuilderIsolate(
       {final FlutterKey? key,
-      required final ZacMap data,
+      required final ZacValue<Map> data,
       final FlutterWidget? errorChild,
       final bool? debugRethrowError}) = _$_ZacWidgetBuilderIsolate;
   _ZacWidgetBuilderIsolate._() : super._();
@@ -290,7 +290,7 @@ abstract class _ZacWidgetBuilderIsolate extends ZacWidgetBuilder {
 
   @override
   FlutterKey? get key;
-  ZacMap get data;
+  ZacValue<Map> get data;
   FlutterWidget? get errorChild;
   bool? get debugRethrowError;
 }
