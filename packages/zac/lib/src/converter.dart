@@ -82,20 +82,6 @@ Type _typeOf<T>() => T;
 typedef Convert = Object Function(Map<String, dynamic> data);
 
 Map<String, Convert> allConverters = const {
-  ZacInt.unionValue: ZacIntValue.fromJson,
-  ZacInt.unionValueConsume: ZacIntConsume.fromJson,
-  ZacDouble.unionValue: ZacDoubleValue.fromJson,
-  ZacDouble.unionValueConsume: ZacDoubleConsume.fromJson,
-  ZacString.unionValue: ZacStringValue.fromJson,
-  ZacString.unionValueConsume: ZacStringConsume.fromJson,
-  ZacBool.unionValue: ZacBoolValue.fromJson,
-  ZacBool.unionValueConsume: ZacBoolConsume.fromJson,
-  ZacObject.unionValue: ZacObjectValue.fromJson,
-  ZacObject.unionValueConsume: ZacObjectConsume.fromJson,
-  ZacMap.unionValue: ZacMapValue.fromJson,
-  ZacMap.unionValueConsume: ZacMapConsume.fromJson,
-  ZacList.unionValue: ZacListValue.fromJson,
-  ZacList.unionValueConsume: ZacListConsume.fromJson,
   ZacWidgetConsumerBuilder.unionValue: ZacWidgetConsumerBuilder.fromJson,
   ListOfZacWidget.unionValue: ListOfZacWidgetValue.fromJson,
   ListOfZacWidget.unionValueConsume: ListOfZacWidgetConsume.fromJson,
@@ -414,8 +400,7 @@ abstract class ConverterHelper {
 
   static Map<String, dynamic> validateConverter<T>(Object? data) {
     if (!isConverter(data)) {
-      throw ConverterError(
-          '''
+      throw ConverterError('''
 Could not convert ${data.runtimeType} to $T.
 It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
 Data: "$data"''');
@@ -424,8 +409,7 @@ Data: "$data"''');
     final rt = (data as Map<String, dynamic>)[converterKey] as String;
 
     if (!hasExistingConverter(rt)) {
-      throw ConverterError(
-          '''
+      throw ConverterError('''
 Error while trying to convert data to $T.
 There is no registered Converter found for "$rt".''');
     }
@@ -439,8 +423,7 @@ There is no registered Converter found for "$rt".''');
 
     final dynamic converted = allConverters[rt]!(converterMap);
     if (converted is! T) {
-      throw ConverterError(
-          '''
+      throw ConverterError('''
 An unexpected Builder was returned after convertion of "$rt"
 Expected Builder type: $T
 Actual Builder: "${converted.runtimeType}"
