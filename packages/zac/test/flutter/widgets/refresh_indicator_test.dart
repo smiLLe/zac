@@ -75,7 +75,7 @@ void main() {
       tester,
       FlutterScaffold(
         appBar: FlutterAppBar(
-          title: FlutterText(ZacString('Title')),
+          title: FlutterText(ZacValue<String>.fromJson('Title')),
         ),
         body: FlutterRefreshIndicator(
           onRefresh: const ZacActions([

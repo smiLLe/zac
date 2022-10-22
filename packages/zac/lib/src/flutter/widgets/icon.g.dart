@@ -22,7 +22,7 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : FlutterTextDirection.fromJson(
@@ -34,10 +34,10 @@ _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
       ZacValue<int>.fromJson(json['codePoint'] as Object),
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacString.fromJson(json['fontFamily'] as Object),
+          : ZacValue<String>.fromJson(json['fontFamily'] as Object),
       fontPackage: json['fontPackage'] == null
           ? null
-          : ZacString.fromJson(json['fontPackage'] as Object),
+          : ZacValue<String>.fromJson(json['fontPackage'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
           : ZacBool.fromJson(json['matchTextDirection'] as Object),

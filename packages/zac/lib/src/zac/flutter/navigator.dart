@@ -35,7 +35,7 @@ class ZacFlutterGlobalKeyNavigatorState
   factory ZacFlutterGlobalKeyNavigatorState.provide({
     required SharedValueFamily family,
     required FlutterWidget child,
-    ZacString? debugLabel,
+    ZacValue<String>? debugLabel,
   }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
 
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
@@ -109,7 +109,7 @@ class ZacFlutterNavigatorActions
 
   @FreezedUnionValue(ZacFlutterNavigatorActions.unionValuePopUntilRouteName)
   factory ZacFlutterNavigatorActions.popUntilRouteName({
-    required ZacString routeName,
+    required ZacValue<String> routeName,
     GetFlutterNavigatorState? navigatorState,
   }) = _PopUntilRouteName;
 
@@ -143,7 +143,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   @FreezedUnionValue(RouteFactoryRouteConfig.unionValue)
   factory RouteFactoryRouteConfig({
     required FlutterRoute route,
-    ZacString? provideArgsName,
+    ZacValue<String>? provideArgsName,
     ZacTransformers? transform,
   }) = _RouteFactoryConfig;
 }

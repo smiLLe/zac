@@ -35,7 +35,7 @@ class FlutterSingleChildScrollView
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 

@@ -27,10 +27,10 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : ZacDouble.fromJson(json['minHeight'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacString.fromJson(json['semanticsValue'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -55,9 +55,9 @@ _$_FlutterProgressIndicatorCircular
               : ZacDouble.fromJson(json['strokeWidth'] as Object),
           semanticsLabel: json['semanticsLabel'] == null
               ? null
-              : ZacString.fromJson(json['semanticsLabel'] as Object),
+              : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
           semanticsValue: json['semanticsValue'] == null
               ? null
-              : ZacString.fromJson(json['semanticsValue'] as Object),
+              : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
           $type: json['converter'] as String?,
         );

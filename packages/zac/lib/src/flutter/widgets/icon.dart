@@ -24,7 +24,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
     FlutterKey? key,
     ZacDouble? size,
     FlutterColor? color,
-    ZacString? semanticLabel,
+    ZacValue<String>? semanticLabel,
     FlutterTextDirection? textDirection,
   }) = _FlutterIcon;
 
@@ -51,8 +51,8 @@ class FlutterIconData with _$FlutterIconData {
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
     ZacValue<int> codePoint, {
-    ZacString? fontFamily,
-    ZacString? fontPackage,
+    ZacValue<String>? fontFamily,
+    ZacValue<String>? fontPackage,
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 

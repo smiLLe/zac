@@ -122,7 +122,7 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   final ZacBool? endDrawerEnableOpenDragGesture;
   @override
-  final ZacString? restorationId;
+  final ZacValue<String>? restorationId;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -234,7 +234,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
       final ZacDouble? drawerEdgeDragWidth,
       final ZacBool? drawerEnableOpenDragGesture,
       final ZacBool? endDrawerEnableOpenDragGesture,
-      final ZacString? restorationId}) = _$_FlutterScaffold;
+      final ZacValue<String>? restorationId}) = _$_FlutterScaffold;
   _FlutterScaffold._() : super._();
 
   factory _FlutterScaffold.fromJson(Map<String, dynamic> json) =
@@ -261,7 +261,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   ZacDouble? get drawerEdgeDragWidth;
   ZacBool? get drawerEnableOpenDragGesture;
   ZacBool? get endDrawerEnableOpenDragGesture;
-  ZacString? get restorationId;
+  ZacValue<String>? get restorationId;
 }
 
 /// @nodoc

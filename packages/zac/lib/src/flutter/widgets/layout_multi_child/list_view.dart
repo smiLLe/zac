@@ -42,7 +42,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     ZacValue<int>? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
     FlutterClip? clipBehavior,
   }) = _FlutterListView;
 

@@ -183,7 +183,7 @@ void main() {
           await testZacWidget(
             tester,
             ZacWidgetBuilder.isolateString(
-              data: ZacString('{'),
+              data: ZacValue<String>.fromJson('{'),
             ),
           );
           await Future<void>.delayed(const Duration(seconds: 1));
@@ -200,7 +200,7 @@ void main() {
         await testZacWidget(
           tester,
           ZacWidgetBuilder.isolateString(
-            data: ZacString('{'),
+            data: ZacValue<String>.fromJson('{'),
             debugRethrowError: false,
           ),
         );
@@ -220,7 +220,7 @@ void main() {
         await testZacWidget(
           tester,
           ZacWidgetBuilder.isolateString(
-            data: ZacString('{'),
+            data: ZacValue<String>.fromJson('{'),
             errorChild: LeakContext(
               cb: (o) => zacContext = o,
               child: FlutterSizedBox(

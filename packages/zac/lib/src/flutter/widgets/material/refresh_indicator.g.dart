@@ -29,10 +29,10 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacString.fromJson(json['semanticsValue'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
       strokeWidth: json['strokeWidth'] == null
           ? null
           : ZacDouble.fromJson(json['strokeWidth'] as Object),

@@ -1146,19 +1146,20 @@ void main() {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.split',
-        equals: StringTransformer.split(pattern: ZacString(',')),
+        equals:
+            StringTransformer.split(pattern: ZacValue<String>.fromJson(',')),
         props: <String, dynamic>{
           'pattern': ',',
         },
       );
 
       expect(
-          StringTransformer.split(pattern: ZacString(','))
+          StringTransformer.split(pattern: ZacValue<String>.fromJson(','))
               .transform(ZacTransformValue('a,b'), FakeZacOrigin(), null),
           ['a', 'b']);
 
       expect(
-          () => StringTransformer.split(pattern: ZacString(','))
+          () => StringTransformer.split(pattern: ZacValue<String>.fromJson(','))
               .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
@@ -1203,17 +1204,20 @@ void main() {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.replaceAll',
-        equals: StringTransformer.replaceAll(ZacString('xx'), ZacString('yy')),
+        equals: StringTransformer.replaceAll(
+            ZacValue<String>.fromJson('xx'), ZacValue<String>.fromJson('yy')),
         props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
       );
 
       expect(
-          StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
+          StringTransformer.replaceAll(ZacValue<String>.fromJson('xx'),
+                  ZacValue<String>.fromJson('yy'))
               .transform(ZacTransformValue('fooxx'), FakeZacOrigin(), null),
           'fooyy');
 
       expect(
-          () => StringTransformer.replaceAll(ZacString('xx'), ZacString('yy'))
+          () => StringTransformer.replaceAll(ZacValue<String>.fromJson('xx'),
+                  ZacValue<String>.fromJson('yy'))
               .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });

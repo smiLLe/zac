@@ -67,7 +67,7 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['endDrawerEnableOpenDragGesture'] as Object),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
       $type: json['converter'] as String?,
     );
 

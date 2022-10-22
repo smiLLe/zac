@@ -169,9 +169,9 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
+        family: ZacValue<String>.fromJson('machine'),
         initialContext: ZacObject(1),
-        initialState: ZacString('a'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(
@@ -208,8 +208,8 @@ void main() {
     await testZacWidget(
         tester,
         ZacStateMachineProviderBuilder(
-          family: ZacString('machine'),
-          initialState: ZacString('a'),
+          family: ZacValue<String>.fromJson('machine'),
+          initialState: ZacValue<String>.fromJson('a'),
           states: {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
@@ -254,9 +254,9 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
+        family: ZacValue<String>.fromJson('machine'),
         initialContext: ZacObject(1),
-        initialState: ZacString('a'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(
@@ -305,8 +305,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(),
@@ -347,8 +347,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(),
@@ -387,8 +387,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(
@@ -415,7 +415,7 @@ void main() {
                 as ZacStateMachine;
           },
           child: ZacStateMachineBuildStateBuilder(
-            family: ZacString('machine'),
+            family: ZacValue<String>.fromJson('machine'),
             states: ['a', 'b'],
             unmappedStateWidget: FlutterSizedBox(
               key: FlutterValueKey('unmapped'),
@@ -447,8 +447,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: FlutterSizedBox(
@@ -458,7 +458,7 @@ void main() {
           ),
         },
         child: ZacStateMachineBuildStateBuilder(
-          family: ZacString('machine'),
+          family: ZacValue<String>.fromJson('machine'),
           states: ['b'],
         ),
       ),
@@ -474,8 +474,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
@@ -483,7 +483,7 @@ void main() {
                 [
                   ZacStateMachineActions.send(
                     family: 'machine',
-                    event: ZacString('NEXT'),
+                    event: ZacValue<String>.fromJson('NEXT'),
                   )
                 ],
               ),
@@ -498,7 +498,7 @@ void main() {
           ),
         },
         child: ZacStateMachineBuildStateBuilder(
-          family: ZacString('machine'),
+          family: ZacValue<String>.fromJson('machine'),
           states: ['a', 'b'],
         ),
       ),
@@ -513,8 +513,8 @@ void main() {
     await testZacWidget(
       tester,
       ZacStateMachineProviderBuilder(
-        family: ZacString('machine'),
-        initialState: ZacString('a'),
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
         states: {
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
@@ -522,7 +522,7 @@ void main() {
                 [
                   ZacStateMachineActions.trySend(
                     family: 'machine',
-                    event: ZacString('NEXT'),
+                    event: ZacValue<String>.fromJson('NEXT'),
                   )
                 ],
               ),
@@ -537,7 +537,7 @@ void main() {
           ),
         },
         child: ZacStateMachineBuildStateBuilder(
-          family: ZacString('machine'),
+          family: ZacValue<String>.fromJson('machine'),
           states: ['a', 'b'],
         ),
       ),

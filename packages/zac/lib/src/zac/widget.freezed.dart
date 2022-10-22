@@ -315,7 +315,7 @@ class _$_ZacWidgetBuilderIsolateString extends _ZacWidgetBuilderIsolateString
   @override
   final FlutterKey? key;
   @override
-  final ZacString data;
+  final ZacValue<String> data;
   @override
   final FlutterWidget? errorChild;
   @override
@@ -378,7 +378,7 @@ class _$_ZacWidgetBuilderIsolateString extends _ZacWidgetBuilderIsolateString
 abstract class _ZacWidgetBuilderIsolateString extends ZacWidgetBuilder {
   factory _ZacWidgetBuilderIsolateString(
       {final FlutterKey? key,
-      required final ZacString data,
+      required final ZacValue<String> data,
       final FlutterWidget? errorChild,
       final bool? debugRethrowError}) = _$_ZacWidgetBuilderIsolateString;
   _ZacWidgetBuilderIsolateString._() : super._();
@@ -388,7 +388,7 @@ abstract class _ZacWidgetBuilderIsolateString extends ZacWidgetBuilder {
 
   @override
   FlutterKey? get key;
-  ZacString get data;
+  ZacValue<String> get data;
   FlutterWidget? get errorChild;
   bool? get debugRethrowError;
 }

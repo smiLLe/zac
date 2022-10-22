@@ -263,7 +263,7 @@ void main() {
           family: 'family',
           child: FlutterColumn(
             children: ListOfZacWidget([
-              FlutterText(ZacString.consume('family')),
+              FlutterText(ZacValueConsume<String>.watch(family: 'family')),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
                   UpdateSharedValueInteractions(
@@ -291,7 +291,7 @@ void main() {
           family: 'family',
           child: FlutterColumn(
             children: ListOfZacWidget([
-              FlutterText(ZacString.consume('family')),
+              FlutterText(ZacValueConsume<String>.watch(family: 'family')),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
                   UpdateSharedValueInteractions.replaceWith(

@@ -27,7 +27,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
     ZacDouble? elevation,
     FlutterShapeBorder? shape,
     FlutterWidget? child,
-    ZacString? semanticLabel,
+    ZacValue<String>? semanticLabel,
   }) = _FlutterDrawer;
 
   @override

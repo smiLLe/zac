@@ -291,7 +291,7 @@ _$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
 
 _$_StringSplit _$$_StringSplitFromJson(Map<String, dynamic> json) =>
     _$_StringSplit(
-      pattern: ZacString.fromJson(json['pattern'] as Object),
+      pattern: ZacValue<String>.fromJson(json['pattern'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -307,8 +307,8 @@ _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_StringReplaceAll _$$_StringReplaceAllFromJson(Map<String, dynamic> json) =>
     _$_StringReplaceAll(
-      ZacString.fromJson(json['from'] as Object),
-      ZacString.fromJson(json['replace'] as Object),
+      ZacValue<String>.fromJson(json['from'] as Object),
+      ZacValue<String>.fromJson(json['replace'] as Object),
       $type: json['converter'] as String?,
     );
 

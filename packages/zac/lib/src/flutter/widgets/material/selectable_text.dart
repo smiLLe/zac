@@ -44,7 +44,7 @@ class FlutterSelectableText
     // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
     // ScrollPhysics? scrollPhysics,
-    ZacString? semanticsLabel,
+    ZacValue<String>? semanticsLabel,
     FlutterTextHeightBehavior? textHeightBehavior,
     FlutterTextWidthBasis? textWidthBasis,
     // SelectionChangedCallback? onSelectionChanged,

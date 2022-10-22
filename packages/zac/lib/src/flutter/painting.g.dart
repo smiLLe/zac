@@ -69,7 +69,7 @@ _$_FlutterStrutStyle _$$_FlutterStrutStyleFromJson(Map<String, dynamic> json) =>
     _$_FlutterStrutStyle(
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacString.fromJson(json['fontFamily'] as Object),
+          : ZacValue<String>.fromJson(json['fontFamily'] as Object),
       fontFamilyFallback: (json['fontFamilyFallback'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -99,10 +99,10 @@ _$_FlutterStrutStyle _$$_FlutterStrutStyleFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['forceStrutHeight'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
-          : ZacString.fromJson(json['debugLabel'] as Object),
+          : ZacValue<String>.fromJson(json['debugLabel'] as Object),
       package: json['package'] == null
           ? null
-          : ZacString.fromJson(json['package'] as Object),
+          : ZacValue<String>.fromJson(json['package'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -112,7 +112,7 @@ _$_FlutterStrutStyleFromTextStyle _$$_FlutterStrutStyleFromTextStyleFromJson(
       FlutterTextStyle.fromJson(json['textStyle'] as Map<String, dynamic>),
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacString.fromJson(json['fontFamily'] as Object),
+          : ZacValue<String>.fromJson(json['fontFamily'] as Object),
       fontFamilyFallback: (json['fontFamilyFallback'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -142,10 +142,10 @@ _$_FlutterStrutStyleFromTextStyle _$$_FlutterStrutStyleFromTextStyleFromJson(
           : ZacBool.fromJson(json['forceStrutHeight'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
-          : ZacString.fromJson(json['debugLabel'] as Object),
+          : ZacValue<String>.fromJson(json['debugLabel'] as Object),
       package: json['package'] == null
           ? null
-          : ZacString.fromJson(json['package'] as Object),
+          : ZacValue<String>.fromJson(json['package'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -291,16 +291,16 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
           : ZacDouble.fromJson(json['decorationThickness'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
-          : ZacString.fromJson(json['debugLabel'] as Object),
+          : ZacValue<String>.fromJson(json['debugLabel'] as Object),
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacString.fromJson(json['fontFamily'] as Object),
+          : ZacValue<String>.fromJson(json['fontFamily'] as Object),
       fontFamilyFallback: (json['fontFamilyFallback'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       package: json['package'] == null
           ? null
-          : ZacString.fromJson(json['package'] as Object),
+          : ZacValue<String>.fromJson(json['package'] as Object),
       overflow: json['overflow'] == null
           ? null
           : FlutterTextOverflow.fromJson(

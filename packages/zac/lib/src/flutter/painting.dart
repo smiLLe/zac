@@ -106,7 +106,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
 
   @FreezedUnionValue('f:1:StrutStyle')
   factory FlutterStrutStyle({
-    ZacString? fontFamily,
+    ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
     ZacDouble? fontSize,
     ZacDouble? height,
@@ -115,14 +115,14 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacBool? forceStrutHeight,
-    ZacString? debugLabel,
-    ZacString? package,
+    ZacValue<String>? debugLabel,
+    ZacValue<String>? package,
   }) = _FlutterStrutStyle;
 
   @FreezedUnionValue('f:1:StrutStyle.fromTextStyle')
   factory FlutterStrutStyle.fromTextStyle(
     FlutterTextStyle textStyle, {
-    ZacString? fontFamily,
+    ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
     ZacDouble? fontSize,
     ZacDouble? height,
@@ -131,8 +131,8 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacBool? forceStrutHeight,
-    ZacString? debugLabel,
-    ZacString? package,
+    ZacValue<String>? debugLabel,
+    ZacValue<String>? package,
   }) = _FlutterStrutStyleFromTextStyle;
 
   StrutStyle build(ZacContext zacContext) {
@@ -288,10 +288,10 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterColor? decorationColor,
     FlutterTextDecorationStyle? decorationStyle,
     ZacDouble? decorationThickness,
-    ZacString? debugLabel,
-    ZacString? fontFamily,
+    ZacValue<String>? debugLabel,
+    ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
-    ZacString? package,
+    ZacValue<String>? package,
     FlutterTextOverflow? overflow,
   }) = _FlutterTextStyle;
 

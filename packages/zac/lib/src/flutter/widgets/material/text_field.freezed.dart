@@ -39,7 +39,8 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
   ZacBool? get showCursor => throw _privateConstructorUsedError;
   ZacBool? get autofocus => throw _privateConstructorUsedError;
-  ZacString? get obscuringCharacter => throw _privateConstructorUsedError;
+  ZacValue<String>? get obscuringCharacter =>
+      throw _privateConstructorUsedError;
   ZacBool? get obscureText => throw _privateConstructorUsedError;
   ZacBool? get autocorrect => throw _privateConstructorUsedError;
   FlutterSmartDashesType? get smartDashesType =>
@@ -82,7 +83,7 @@ mixin _$FlutterTextField {
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacString? get restorationId => throw _privateConstructorUsedError;
+  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
   ZacBool? get enableIMEPersonalizedLearning =>
       throw _privateConstructorUsedError;
 
@@ -172,7 +173,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBool? autofocus;
   @override
-  final ZacString? obscuringCharacter;
+  final ZacValue<String>? obscuringCharacter;
   @override
   final ZacBool? obscureText;
   @override
@@ -235,7 +236,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacString? restorationId;
+  final ZacValue<String>? restorationId;
   @override
   final ZacBool? enableIMEPersonalizedLearning;
 
@@ -390,7 +391,7 @@ abstract class _FlutterTextField extends FlutterTextField {
       final ZacBool? readOnly,
       final ZacBool? showCursor,
       final ZacBool? autofocus,
-      final ZacString? obscuringCharacter,
+      final ZacValue<String>? obscuringCharacter,
       final ZacBool? obscureText,
       final ZacBool? autocorrect,
       final FlutterSmartDashesType? smartDashesType,
@@ -415,7 +416,7 @@ abstract class _FlutterTextField extends FlutterTextField {
       final ZacBool? enableInteractiveSelection,
       final ZacActions? onTap,
       final FlutterClip? clipBehavior,
-      final ZacString? restorationId,
+      final ZacValue<String>? restorationId,
       final ZacBool? enableIMEPersonalizedLearning}) = _$_FlutterTextField;
   _FlutterTextField._() : super._();
 
@@ -450,7 +451,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBool? get autofocus;
   @override
-  ZacString? get obscuringCharacter;
+  ZacValue<String>? get obscuringCharacter;
   @override
   ZacBool? get obscureText;
   @override
@@ -506,7 +507,7 @@ abstract class _FlutterTextField extends FlutterTextField {
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior;
   @override
-  ZacString? get restorationId;
+  ZacValue<String>? get restorationId;
   @override
   ZacBool? get enableIMEPersonalizedLearning;
 }

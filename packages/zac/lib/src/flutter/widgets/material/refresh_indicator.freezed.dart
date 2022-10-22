@@ -29,8 +29,8 @@ mixin _$FlutterRefreshIndicator {
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacString? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacString? get semanticsValue => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticsValue => throw _privateConstructorUsedError;
   ZacDouble? get strokeWidth => throw _privateConstructorUsedError;
   FlutterRefreshIndicatorTriggerMode? get triggerMode =>
       throw _privateConstructorUsedError;
@@ -80,9 +80,9 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   final FlutterColor? backgroundColor;
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   @override
-  final ZacString? semanticsLabel;
+  final ZacValue<String>? semanticsLabel;
   @override
-  final ZacString? semanticsValue;
+  final ZacValue<String>? semanticsValue;
   @override
   final ZacDouble? strokeWidth;
   @override
@@ -157,8 +157,8 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
       required final ZacActions onRefresh,
       final FlutterColor? color,
       final FlutterColor? backgroundColor,
-      final ZacString? semanticsLabel,
-      final ZacString? semanticsValue,
+      final ZacValue<String>? semanticsLabel,
+      final ZacValue<String>? semanticsValue,
       final ZacDouble? strokeWidth,
       final FlutterRefreshIndicatorTriggerMode? triggerMode,
       final Object family}) = _$_FlutterRefreshIndicator;
@@ -182,9 +182,9 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   FlutterColor? get backgroundColor;
   @override // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacString? get semanticsLabel;
+  ZacValue<String>? get semanticsLabel;
   @override
-  ZacString? get semanticsValue;
+  ZacValue<String>? get semanticsValue;
   @override
   ZacDouble? get strokeWidth;
   @override

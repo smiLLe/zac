@@ -371,7 +371,8 @@ void main() {
         (ZacString('hello',
                 transformer: ZacTransformers([
                   StringTransformer.replaceAll(
-                      ZacString('hello'), ZacString('world'))
+                      ZacValue<String>.fromJson('hello'),
+                      ZacValue<String>.fromJson('world'))
                 ])) as ActualValue<String>)
             .getActualValue(zacContext),
         'world');

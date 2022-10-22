@@ -42,7 +42,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
 // ToolbarOptions? toolbarOptions,
     ZacBool? showCursor,
     ZacBool? autofocus,
-    ZacString? obscuringCharacter,
+    ZacValue<String>? obscuringCharacter,
     ZacBool? obscureText,
     ZacBool? autocorrect,
     FlutterSmartDashesType? smartDashesType,
@@ -80,7 +80,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
     FlutterClip? clipBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
     ZacBool? enableIMEPersonalizedLearning,
   }) = _FlutterTextField;
 

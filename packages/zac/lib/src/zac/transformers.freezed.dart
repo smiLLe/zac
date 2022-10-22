@@ -3544,7 +3544,7 @@ class _$_StringSplit extends _StringSplit {
       _$$_StringSplitFromJson(json);
 
   @override
-  final ZacString pattern;
+  final ZacValue<String> pattern;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3581,14 +3581,14 @@ class _$_StringSplit extends _StringSplit {
 }
 
 abstract class _StringSplit extends StringTransformer {
-  const factory _StringSplit({required final ZacString pattern}) =
+  const factory _StringSplit({required final ZacValue<String> pattern}) =
       _$_StringSplit;
   const _StringSplit._() : super._();
 
   factory _StringSplit.fromJson(Map<String, dynamic> json) =
       _$_StringSplit.fromJson;
 
-  ZacString get pattern;
+  ZacValue<String> get pattern;
 }
 
 /// @nodoc
@@ -3700,9 +3700,9 @@ class _$_StringReplaceAll extends _StringReplaceAll {
       _$$_StringReplaceAllFromJson(json);
 
   @override
-  final ZacString from;
+  final ZacValue<String> from;
   @override
-  final ZacString replace;
+  final ZacValue<String> replace;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3743,14 +3743,15 @@ class _$_StringReplaceAll extends _StringReplaceAll {
 
 abstract class _StringReplaceAll extends StringTransformer {
   const factory _StringReplaceAll(
-      final ZacString from, final ZacString replace) = _$_StringReplaceAll;
+          final ZacValue<String> from, final ZacValue<String> replace) =
+      _$_StringReplaceAll;
   const _StringReplaceAll._() : super._();
 
   factory _StringReplaceAll.fromJson(Map<String, dynamic> json) =
       _$_StringReplaceAll.fromJson;
 
-  ZacString get from;
-  ZacString get replace;
+  ZacValue<String> get from;
+  ZacValue<String> get replace;
 }
 
 JsonTransformer _$JsonTransformerFromJson(Map<String, dynamic> json) {

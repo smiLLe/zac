@@ -69,7 +69,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterKey? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
-    ZacString? initialRoute,
+    ZacValue<String>? initialRoute,
     ZacBool? requestFocus,
   }) = _FlutterNavigator;
 
@@ -112,7 +112,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushNamed)
   factory FlutterNavigatorActions.pushNamed(
-          {required ZacString routeName,
+          {required ZacValue<String> routeName,
           Object? arguments,
           GetFlutterNavigatorState? navigatorState}) =
       _FlutterNavigatorActionsPushNamed;
@@ -138,7 +138,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushReplacementNamed)
   factory FlutterNavigatorActions.pushReplacementNamed({
-    required ZacString routeName,
+    required ZacValue<String> routeName,
     Object? arguments,
     GetFlutterNavigatorState? navigatorState,
     ZacActions? result,
@@ -259,7 +259,7 @@ class FlutterPageRouteBuilder
     ZacBool? opaque,
     ZacBool? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacString? barrierLabel,
+    ZacValue<String>? barrierLabel,
     ZacBool? maintainState,
     ZacBool? fullscreenDialog,
   }) = _FlutterPageRouteBuilder;
@@ -298,7 +298,7 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
 
   @FreezedUnionValue(FlutterRouteSettings.unionValue)
   factory FlutterRouteSettings({
-    ZacString? name,
+    ZacValue<String>? name,
     Object? arguments,
   }) = _FlutterRouteSettings;
 

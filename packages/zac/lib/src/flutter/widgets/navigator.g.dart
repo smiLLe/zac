@@ -31,7 +31,7 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
           : FlutterRouteFactory.fromJson(json['onUnknownRoute'] as Object),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacString.fromJson(json['initialRoute'] as Object),
+          : ZacValue<String>.fromJson(json['initialRoute'] as Object),
       requestFocus: json['requestFocus'] == null
           ? null
           : ZacBool.fromJson(json['requestFocus'] as Object),
@@ -50,7 +50,7 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
 _$_FlutterNavigatorActionsPushNamed
     _$$_FlutterNavigatorActionsPushNamedFromJson(Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushNamed(
-          routeName: ZacString.fromJson(json['routeName'] as Object),
+          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -102,7 +102,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
     _$$_FlutterNavigatorActionsPushReplacementNamedFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushReplacementNamed(
-          routeName: ZacString.fromJson(json['routeName'] as Object),
+          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -133,7 +133,7 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
       barrierLabel: json['barrierLabel'] == null
           ? null
-          : ZacString.fromJson(json['barrierLabel'] as Object),
+          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
       maintainState: json['maintainState'] == null
           ? null
           : ZacBool.fromJson(json['maintainState'] as Object),
@@ -147,6 +147,6 @@ _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
     _$_FlutterRouteSettings(
       name: json['name'] == null
           ? null
-          : ZacString.fromJson(json['name'] as Object),
+          : ZacValue<String>.fromJson(json['name'] as Object),
       arguments: json['arguments'],
     );

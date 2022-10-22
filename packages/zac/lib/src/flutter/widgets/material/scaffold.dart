@@ -56,7 +56,7 @@ class FlutterScaffold
     ZacDouble? drawerEdgeDragWidth,
     ZacBool? drawerEnableOpenDragGesture,
     ZacBool? endDrawerEnableOpenDragGesture,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
   }) = _FlutterScaffold;
 
   @FreezedUnionValue(FlutterScaffold.unionValueOpenDrawer)

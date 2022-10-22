@@ -31,8 +31,8 @@ class FlutterProgressIndicator
     FlutterColor? color,
 // Animation<Color?>? valueColor,
     ZacDouble? minHeight,
-    ZacString? semanticsLabel,
-    ZacString? semanticsValue,
+    ZacValue<String>? semanticsLabel,
+    ZacValue<String>? semanticsValue,
   }) = _FlutterProgressIndicatorLinear;
 
   @FreezedUnionValue(
@@ -44,8 +44,8 @@ class FlutterProgressIndicator
     FlutterColor? color,
     // Animation<Color?>? valueColor,
     ZacDouble? strokeWidth,
-    ZacString? semanticsLabel,
-    ZacString? semanticsValue,
+    ZacValue<String>? semanticsLabel,
+    ZacValue<String>? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
 
   @override

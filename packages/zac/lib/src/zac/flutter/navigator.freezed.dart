@@ -66,7 +66,7 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
   @override
   final FlutterWidget child;
   @override
-  final ZacString? debugLabel;
+  final ZacValue<String>? debugLabel;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -112,7 +112,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
   factory _ZacFlutterGlobalKeyNavigatorStateProvide(
           {required final Object family,
           required final FlutterWidget child,
-          final ZacString? debugLabel}) =
+          final ZacValue<String>? debugLabel}) =
       _$_ZacFlutterGlobalKeyNavigatorStateProvide;
   _ZacFlutterGlobalKeyNavigatorStateProvide._() : super._();
 
@@ -123,7 +123,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
   @override
   Object get family;
   FlutterWidget get child;
-  ZacString? get debugLabel;
+  ZacValue<String>? get debugLabel;
 }
 
 /// @nodoc
@@ -216,7 +216,7 @@ ZacFlutterNavigatorActions _$ZacFlutterNavigatorActionsFromJson(
 
 /// @nodoc
 mixin _$ZacFlutterNavigatorActions {
-  ZacString get routeName => throw _privateConstructorUsedError;
+  ZacValue<String> get routeName => throw _privateConstructorUsedError;
   GetFlutterNavigatorState? get navigatorState =>
       throw _privateConstructorUsedError;
 
@@ -237,7 +237,7 @@ class _$_PopUntilRouteName extends _PopUntilRouteName {
       _$$_PopUntilRouteNameFromJson(json);
 
   @override
-  final ZacString routeName;
+  final ZacValue<String> routeName;
   @override
   final GetFlutterNavigatorState? navigatorState;
 
@@ -274,7 +274,7 @@ class _$_PopUntilRouteName extends _PopUntilRouteName {
 
 abstract class _PopUntilRouteName extends ZacFlutterNavigatorActions {
   factory _PopUntilRouteName(
-      {required final ZacString routeName,
+      {required final ZacValue<String> routeName,
       final GetFlutterNavigatorState? navigatorState}) = _$_PopUntilRouteName;
   _PopUntilRouteName._() : super._();
 
@@ -282,7 +282,7 @@ abstract class _PopUntilRouteName extends ZacFlutterNavigatorActions {
       _$_PopUntilRouteName.fromJson;
 
   @override
-  ZacString get routeName;
+  ZacValue<String> get routeName;
   @override
   GetFlutterNavigatorState? get navigatorState;
 }
@@ -295,7 +295,7 @@ RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(
 /// @nodoc
 mixin _$RouteFactoryRouteConfig {
   FlutterRoute get route => throw _privateConstructorUsedError;
-  ZacString? get provideArgsName => throw _privateConstructorUsedError;
+  ZacValue<String>? get provideArgsName => throw _privateConstructorUsedError;
   ZacTransformers? get transform => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -318,7 +318,7 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
   @override
   final FlutterRoute route;
   @override
-  final ZacString? provideArgsName;
+  final ZacValue<String>? provideArgsName;
   @override
   final ZacTransformers? transform;
 
@@ -358,7 +358,7 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
 abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   factory _RouteFactoryConfig(
       {required final FlutterRoute route,
-      final ZacString? provideArgsName,
+      final ZacValue<String>? provideArgsName,
       final ZacTransformers? transform}) = _$_RouteFactoryConfig;
   _RouteFactoryConfig._() : super._();
 
@@ -368,7 +368,7 @@ abstract class _RouteFactoryConfig extends RouteFactoryRouteConfig {
   @override
   FlutterRoute get route;
   @override
-  ZacString? get provideArgsName;
+  ZacValue<String>? get provideArgsName;
   @override
   ZacTransformers? get transform;
 }

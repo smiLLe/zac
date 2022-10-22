@@ -8,7 +8,7 @@ part of 'text.dart';
 
 _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
     _$_FlutterText(
-      ZacString.fromJson(json['data'] as Object),
+      ZacValue<String>.fromJson(json['data'] as Object),
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
@@ -45,7 +45,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : ZacValue<int>.fromJson(json['maxLines'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
       textWidthBasis: json['textWidthBasis'] == null
           ? null
           : FlutterTextWidthBasis.fromJson(

@@ -40,7 +40,7 @@ class FlutterCustomScrollView
     ZacValue<int>? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
     FlutterClip? clipBehavior,
   }) = _FlutterCustomScrollView;
 

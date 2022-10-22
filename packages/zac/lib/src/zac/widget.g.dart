@@ -45,7 +45,7 @@ _$_ZacWidgetBuilderIsolateString _$$_ZacWidgetBuilderIsolateStringFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      data: ZacString.fromJson(json['data'] as Object),
+      data: ZacValue<String>.fromJson(json['data'] as Object),
       errorChild: json['errorChild'] == null
           ? null
           : FlutterWidget.fromJson(json['errorChild'] as Object),

@@ -25,13 +25,13 @@ mixin _$FlutterMaterialApp {
       throw _privateConstructorUsedError; // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
   FlutterWidget? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
-  ZacString? get initialRoute => throw _privateConstructorUsedError;
+  ZacValue<String>? get initialRoute => throw _privateConstructorUsedError;
   FlutterRouteFactory? get onGenerateRoute =>
       throw _privateConstructorUsedError; // InitialRouteListFactory? onGenerateInitialRoutes,
   FlutterRouteFactory? get onUnknownRoute =>
       throw _privateConstructorUsedError; // List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
 // TransitionBuilder? builder,
-  ZacString? get title =>
+  ZacValue<String>? get title =>
       throw _privateConstructorUsedError; // GenerateAppTitle? onGenerateTitle,
   FlutterColor? get color =>
       throw _privateConstructorUsedError; // ThemeData? theme,
@@ -54,7 +54,7 @@ mixin _$FlutterMaterialApp {
   ZacBool? get debugShowCheckedModeBanner =>
       throw _privateConstructorUsedError; // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
-  ZacString? get restorationScopeId =>
+  ZacValue<String>? get restorationScopeId =>
       throw _privateConstructorUsedError; // ScrollBehavior? scrollBehavior,
   ZacBool? get useInheritedMediaQuery => throw _privateConstructorUsedError;
 
@@ -100,7 +100,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   final FlutterWidget? home;
 // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   @override
-  final ZacString? initialRoute;
+  final ZacValue<String>? initialRoute;
   @override
   final FlutterRouteFactory? onGenerateRoute;
 // InitialRouteListFactory? onGenerateInitialRoutes,
@@ -109,7 +109,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 // List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
 // TransitionBuilder? builder,
   @override
-  final ZacString? title;
+  final ZacValue<String>? title;
 // GenerateAppTitle? onGenerateTitle,
   @override
   final FlutterColor? color;
@@ -139,7 +139,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
   @override
-  final ZacString? restorationScopeId;
+  final ZacValue<String>? restorationScopeId;
 // ScrollBehavior? scrollBehavior,
   @override
   final ZacBool? useInheritedMediaQuery;
@@ -223,10 +223,10 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       {final FlutterKey? key,
       final FlutterGlobalKeyNavigatorState? navigatorKey,
       final FlutterWidget? home,
-      final ZacString? initialRoute,
+      final ZacValue<String>? initialRoute,
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
-      final ZacString? title,
+      final ZacValue<String>? title,
       final FlutterColor? color,
       final FlutterLocale? locale,
       final ZacBool? debugShowMaterialGrid,
@@ -235,7 +235,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       final ZacBool? checkerboardOffscreenLayers,
       final ZacBool? showSemanticsDebugger,
       final ZacBool? debugShowCheckedModeBanner,
-      final ZacString? restorationScopeId,
+      final ZacValue<String>? restorationScopeId,
       final ZacBool? useInheritedMediaQuery}) = _$_FlutterMaterialApp;
   _FlutterMaterialApp._() : super._();
 
@@ -249,14 +249,14 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
   FlutterWidget? get home;
   @override // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
-  ZacString? get initialRoute;
+  ZacValue<String>? get initialRoute;
   @override
   FlutterRouteFactory? get onGenerateRoute;
   @override // InitialRouteListFactory? onGenerateInitialRoutes,
   FlutterRouteFactory? get onUnknownRoute;
   @override // List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
 // TransitionBuilder? builder,
-  ZacString? get title;
+  ZacValue<String>? get title;
   @override // GenerateAppTitle? onGenerateTitle,
   FlutterColor? get color;
   @override // ThemeData? theme,
@@ -282,7 +282,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   ZacBool? get debugShowCheckedModeBanner;
   @override // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
-  ZacString? get restorationScopeId;
+  ZacValue<String>? get restorationScopeId;
   @override // ScrollBehavior? scrollBehavior,
   ZacBool? get useInheritedMediaQuery;
 }

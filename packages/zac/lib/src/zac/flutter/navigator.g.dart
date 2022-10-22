@@ -14,7 +14,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateProvide
           child: FlutterWidget.fromJson(json['child'] as Object),
           debugLabel: json['debugLabel'] == null
               ? null
-              : ZacString.fromJson(json['debugLabel'] as Object),
+              : ZacValue<String>.fromJson(json['debugLabel'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -35,7 +35,7 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
 
 _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
     _$_PopUntilRouteName(
-      routeName: ZacString.fromJson(json['routeName'] as Object),
+      routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
@@ -47,7 +47,7 @@ _$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(
       route: FlutterRoute.fromJson(json['route'] as Object),
       provideArgsName: json['provideArgsName'] == null
           ? null
-          : ZacString.fromJson(json['provideArgsName'] as Object),
+          : ZacValue<String>.fromJson(json['provideArgsName'] as Object),
       transform: json['transform'] == null
           ? null
           : ZacTransformers.fromJson(json['transform'] as Object),

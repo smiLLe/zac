@@ -56,5 +56,5 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
               json['keyboardDismissBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
     );

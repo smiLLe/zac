@@ -61,7 +61,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
               json['keyboardDismissBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

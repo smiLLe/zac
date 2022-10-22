@@ -22,13 +22,13 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
 
   @FreezedUnionValue(FlutterImage.unionValueNetwork)
   factory FlutterImage.network(
-    ZacString src, {
+    ZacValue<String> src, {
     FlutterKey? key,
     ZacDouble? scale,
     // ImageFrameBuilder? frameBuilder,
     // ImageLoadingBuilder? loadingBuilder,
     // ImageErrorWidgetBuilder? errorBuilder,
-    ZacString? semanticLabel,
+    ZacValue<String>? semanticLabel,
     ZacBool? excludeFromSemantics,
     ZacDouble? width,
     ZacDouble? height,
@@ -50,12 +50,12 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
 
   @FreezedUnionValue(FlutterImage.unionValueAsset)
   factory FlutterImage.asset(
-    ZacString name, {
+    ZacValue<String> name, {
     FlutterKey? key,
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-    ZacString? semanticLabel,
+    ZacValue<String>? semanticLabel,
     ZacBool? excludeFromSemantics,
     ZacDouble? scale,
     ZacDouble? width,
@@ -70,7 +70,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     ZacBool? matchTextDirection,
     ZacBool? gaplessPlayback,
     ZacBool? isAntiAlias,
-    ZacString? package,
+    ZacValue<String>? package,
     FlutterFilterQuality? filterQuality,
     ZacValue<int>? cacheWidth,
     ZacValue<int>? cacheHeight,

@@ -57,7 +57,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['autofocus'] as Object),
       obscuringCharacter: json['obscuringCharacter'] == null
           ? null
-          : ZacString.fromJson(json['obscuringCharacter'] as Object),
+          : ZacValue<String>.fromJson(json['obscuringCharacter'] as Object),
       obscureText: json['obscureText'] == null
           ? null
           : ZacBool.fromJson(json['obscureText'] as Object),
@@ -139,7 +139,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
       enableIMEPersonalizedLearning: json['enableIMEPersonalizedLearning'] ==
               null
           ? null

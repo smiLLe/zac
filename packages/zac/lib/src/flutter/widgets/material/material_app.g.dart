@@ -21,7 +21,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterWidget.fromJson(json['home'] as Object),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacString.fromJson(json['initialRoute'] as Object),
+          : ZacValue<String>.fromJson(json['initialRoute'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
           : FlutterRouteFactory.fromJson(json['onGenerateRoute'] as Object),
@@ -30,7 +30,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterRouteFactory.fromJson(json['onUnknownRoute'] as Object),
       title: json['title'] == null
           ? null
-          : ZacString.fromJson(json['title'] as Object),
+          : ZacValue<String>.fromJson(json['title'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
@@ -58,7 +58,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacBool.fromJson(json['debugShowCheckedModeBanner'] as Object),
       restorationScopeId: json['restorationScopeId'] == null
           ? null
-          : ZacString.fromJson(json['restorationScopeId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationScopeId'] as Object),
       useInheritedMediaQuery: json['useInheritedMediaQuery'] == null
           ? null
           : ZacBool.fromJson(json['useInheritedMediaQuery'] as Object),

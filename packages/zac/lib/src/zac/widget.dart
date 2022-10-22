@@ -51,7 +51,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolateString)
   factory ZacWidgetBuilder.isolateString({
     FlutterKey? key,
-    required ZacString data,
+    required ZacValue<String> data,
     FlutterWidget? errorChild,
     bool? debugRethrowError,
   }) = _ZacWidgetBuilderIsolateString;
@@ -120,7 +120,7 @@ class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  final ZacString zacString;
+  final ZacValue<String> zacString;
   final FlutterWidget? errorChild;
   final bool debugRethrowError;
 

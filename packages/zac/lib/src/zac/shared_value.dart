@@ -114,10 +114,12 @@ class UpdateSharedValueInteractions
           replaceWith: (obj) {
             if (null == obj.transformer ||
                 true == obj.transformer!.transformers.isEmpty) {
-              return obj.value;
+              return obj.value.getValue(zacContext);
             } else {
-              return obj.transformer!
-                  .transform(ZacTransformValue(obj.value), zacContext, payload);
+              return obj.transformer!.transform(
+                  ZacTransformValue(obj.value.getValue(zacContext)),
+                  zacContext,
+                  payload);
             }
           },
         ),

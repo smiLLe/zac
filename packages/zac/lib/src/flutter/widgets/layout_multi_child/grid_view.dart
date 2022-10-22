@@ -42,7 +42,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
   }) = _FlutterGridView;
 
   @override

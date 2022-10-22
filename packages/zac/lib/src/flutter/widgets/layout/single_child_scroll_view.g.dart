@@ -33,7 +33,7 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
           : FlutterScrollViewKeyboardDismissBehavior.fromJson(

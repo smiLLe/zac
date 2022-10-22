@@ -25,7 +25,7 @@ mixin _$FlutterDrawer {
   ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
-  ZacString? get semanticLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -60,7 +60,7 @@ class _$_FlutterDrawer extends _FlutterDrawer {
   @override
   final FlutterWidget? child;
   @override
-  final ZacString? semanticLabel;
+  final ZacValue<String>? semanticLabel;
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ abstract class _FlutterDrawer extends FlutterDrawer {
       final ZacDouble? elevation,
       final FlutterShapeBorder? shape,
       final FlutterWidget? child,
-      final ZacString? semanticLabel}) = _$_FlutterDrawer;
+      final ZacValue<String>? semanticLabel}) = _$_FlutterDrawer;
   _FlutterDrawer._() : super._();
 
   factory _FlutterDrawer.fromJson(Map<String, dynamic> json) =
@@ -126,5 +126,5 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   @override
   FlutterWidget? get child;
   @override
-  ZacString? get semanticLabel;
+  ZacValue<String>? get semanticLabel;
 }

@@ -40,7 +40,7 @@ mixin _$FlutterGridView {
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
-  ZacString? get restorationId => throw _privateConstructorUsedError;
+  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -108,7 +108,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
   @override
-  final ZacString? restorationId;
+  final ZacValue<String>? restorationId;
 
   @override
   String toString() {
@@ -196,7 +196,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       final ZacValue<int>? semanticChildCount,
       final FlutterClip? clipBehavior,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-      final ZacString? restorationId}) = _$_FlutterGridView;
+      final ZacValue<String>? restorationId}) = _$_FlutterGridView;
   _FlutterGridView._() : super._();
 
   factory _FlutterGridView.fromJson(Map<String, dynamic> json) =
@@ -233,5 +233,5 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
   @override
-  ZacString? get restorationId;
+  ZacValue<String>? get restorationId;
 }

@@ -45,7 +45,7 @@ mixin _$FlutterSelectableText {
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacString? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
   FlutterTextHeightBehavior? get textHeightBehavior =>
       throw _privateConstructorUsedError;
   FlutterTextWidthBasis? get textWidthBasis =>
@@ -126,7 +126,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
   @override
-  final ZacString? semanticsLabel;
+  final ZacValue<String>? semanticsLabel;
   @override
   final FlutterTextHeightBehavior? textHeightBehavior;
   @override
@@ -226,7 +226,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final FlutterRadius? cursorRadius,
       final FlutterColor? cursorColor,
       final ZacBool? enableInteractiveSelection,
-      final ZacString? semanticsLabel,
+      final ZacValue<String>? semanticsLabel,
       final FlutterTextHeightBehavior? textHeightBehavior,
       final FlutterTextWidthBasis? textWidthBasis}) = _$_FlutterSelectableText;
   _FlutterSelectableText._() : super._();
@@ -271,7 +271,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacString? get semanticsLabel;
+  ZacValue<String>? get semanticsLabel;
   @override
   FlutterTextHeightBehavior? get textHeightBehavior;
   @override

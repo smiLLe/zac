@@ -21,7 +21,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
 
   @FreezedUnionValue(FlutterText.unionValue)
   factory FlutterText(
-    ZacString data, {
+    ZacValue<String> data, {
     FlutterKey? key,
     FlutterTextStyle? style,
     FlutterStrutStyle? strutStyle,
@@ -32,7 +32,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     FlutterTextOverflow? overflow,
     ZacDouble? textScaleFactor,
     ZacValue<int>? maxLines,
-    ZacString? semanticsLabel,
+    ZacValue<String>? semanticsLabel,
     FlutterTextWidthBasis? textWidthBasis,
     FlutterTextHeightBehavior? textHeightBehavior,
   }) = _FlutterText;
