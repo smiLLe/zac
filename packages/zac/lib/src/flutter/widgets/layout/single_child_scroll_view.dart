@@ -27,9 +27,9 @@ class FlutterSingleChildScrollView
   factory FlutterSingleChildScrollView({
     FlutterKey? key,
     FlutterAxis? scrollDirection,
-    ZacBool? reverse,
+    ZacValue<bool>? reverse,
     FlutterEdgeInsetsGeometry? padding,
-    ZacBool? primary,
+    ZacValue<bool>? primary,
     // ScrollPhysics? physics,
     // ScrollController? controller,
     FlutterWidget? child,

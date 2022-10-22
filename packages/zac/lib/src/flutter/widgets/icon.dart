@@ -53,7 +53,7 @@ class FlutterIconData with _$FlutterIconData {
     ZacValue<int> codePoint, {
     ZacValue<String>? fontFamily,
     ZacValue<String>? fontPackage,
-    ZacBool? matchTextDirection,
+    ZacValue<bool>? matchTextDirection,
   }) = _FlutterIconData;
 
   IconData build(ZacContext zacContext) {

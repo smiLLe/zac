@@ -44,19 +44,23 @@ mixin _$FlutterMaterialApp {
 // LocaleListResolutionCallback? localeListResolutionCallback,
 // LocaleResolutionCallback? localeResolutionCallback,
 // Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
-  ZacBool? get debugShowMaterialGrid => throw _privateConstructorUsedError;
-  ZacBool? get showPerformanceOverlay => throw _privateConstructorUsedError;
-  ZacBool? get checkerboardRasterCacheImages =>
+  ZacValue<bool>? get debugShowMaterialGrid =>
       throw _privateConstructorUsedError;
-  ZacBool? get checkerboardOffscreenLayers =>
+  ZacValue<bool>? get showPerformanceOverlay =>
       throw _privateConstructorUsedError;
-  ZacBool? get showSemanticsDebugger => throw _privateConstructorUsedError;
-  ZacBool? get debugShowCheckedModeBanner =>
+  ZacValue<bool>? get checkerboardRasterCacheImages =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get checkerboardOffscreenLayers =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get showSemanticsDebugger =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get debugShowCheckedModeBanner =>
       throw _privateConstructorUsedError; // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
   ZacValue<String>? get restorationScopeId =>
       throw _privateConstructorUsedError; // ScrollBehavior? scrollBehavior,
-  ZacBool? get useInheritedMediaQuery => throw _privateConstructorUsedError;
+  ZacValue<bool>? get useInheritedMediaQuery =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -125,24 +129,24 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 // LocaleResolutionCallback? localeResolutionCallback,
 // Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
   @override
-  final ZacBool? debugShowMaterialGrid;
+  final ZacValue<bool>? debugShowMaterialGrid;
   @override
-  final ZacBool? showPerformanceOverlay;
+  final ZacValue<bool>? showPerformanceOverlay;
   @override
-  final ZacBool? checkerboardRasterCacheImages;
+  final ZacValue<bool>? checkerboardRasterCacheImages;
   @override
-  final ZacBool? checkerboardOffscreenLayers;
+  final ZacValue<bool>? checkerboardOffscreenLayers;
   @override
-  final ZacBool? showSemanticsDebugger;
+  final ZacValue<bool>? showSemanticsDebugger;
   @override
-  final ZacBool? debugShowCheckedModeBanner;
+  final ZacValue<bool>? debugShowCheckedModeBanner;
 // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
   @override
   final ZacValue<String>? restorationScopeId;
 // ScrollBehavior? scrollBehavior,
   @override
-  final ZacBool? useInheritedMediaQuery;
+  final ZacValue<bool>? useInheritedMediaQuery;
 
   @override
   String toString() {
@@ -229,14 +233,14 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       final ZacValue<String>? title,
       final FlutterColor? color,
       final FlutterLocale? locale,
-      final ZacBool? debugShowMaterialGrid,
-      final ZacBool? showPerformanceOverlay,
-      final ZacBool? checkerboardRasterCacheImages,
-      final ZacBool? checkerboardOffscreenLayers,
-      final ZacBool? showSemanticsDebugger,
-      final ZacBool? debugShowCheckedModeBanner,
+      final ZacValue<bool>? debugShowMaterialGrid,
+      final ZacValue<bool>? showPerformanceOverlay,
+      final ZacValue<bool>? checkerboardRasterCacheImages,
+      final ZacValue<bool>? checkerboardOffscreenLayers,
+      final ZacValue<bool>? showSemanticsDebugger,
+      final ZacValue<bool>? debugShowCheckedModeBanner,
       final ZacValue<String>? restorationScopeId,
-      final ZacBool? useInheritedMediaQuery}) = _$_FlutterMaterialApp;
+      final ZacValue<bool>? useInheritedMediaQuery}) = _$_FlutterMaterialApp;
   _FlutterMaterialApp._() : super._();
 
   factory _FlutterMaterialApp.fromJson(Map<String, dynamic> json) =
@@ -269,20 +273,20 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
 // LocaleListResolutionCallback? localeListResolutionCallback,
 // LocaleResolutionCallback? localeResolutionCallback,
 // Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
-  ZacBool? get debugShowMaterialGrid;
+  ZacValue<bool>? get debugShowMaterialGrid;
   @override
-  ZacBool? get showPerformanceOverlay;
+  ZacValue<bool>? get showPerformanceOverlay;
   @override
-  ZacBool? get checkerboardRasterCacheImages;
+  ZacValue<bool>? get checkerboardRasterCacheImages;
   @override
-  ZacBool? get checkerboardOffscreenLayers;
+  ZacValue<bool>? get checkerboardOffscreenLayers;
   @override
-  ZacBool? get showSemanticsDebugger;
+  ZacValue<bool>? get showSemanticsDebugger;
   @override
-  ZacBool? get debugShowCheckedModeBanner;
+  ZacValue<bool>? get debugShowCheckedModeBanner;
   @override // Map<ShortcutActivator, Intent>? shortcuts,
 // Map<Type, Action<Intent>>? actions,
   ZacValue<String>? get restorationScopeId;
   @override // ScrollBehavior? scrollBehavior,
-  ZacBool? get useInheritedMediaQuery;
+  ZacValue<bool>? get useInheritedMediaQuery;
 }

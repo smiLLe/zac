@@ -191,8 +191,8 @@ FlutterMaterialPageRoute _$FlutterMaterialPageRouteFromJson(
 mixin _$FlutterMaterialPageRoute {
   FlutterWidget get child => throw _privateConstructorUsedError;
   FlutterRouteSettings? get settings => throw _privateConstructorUsedError;
-  ZacBool? get maintainState => throw _privateConstructorUsedError;
-  ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacValue<bool>? get maintainState => throw _privateConstructorUsedError;
+  ZacValue<bool>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -219,9 +219,9 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
   @override
   final FlutterRouteSettings? settings;
   @override
-  final ZacBool? maintainState;
+  final ZacValue<bool>? maintainState;
   @override
-  final ZacBool? fullscreenDialog;
+  final ZacValue<bool>? fullscreenDialog;
 
   @override
   String toString() {
@@ -263,8 +263,8 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   factory _FlutterMaterialPageRoute(
       {required final FlutterWidget child,
       final FlutterRouteSettings? settings,
-      final ZacBool? maintainState,
-      final ZacBool? fullscreenDialog}) = _$_FlutterMaterialPageRoute;
+      final ZacValue<bool>? maintainState,
+      final ZacValue<bool>? fullscreenDialog}) = _$_FlutterMaterialPageRoute;
   _FlutterMaterialPageRoute._() : super._();
 
   factory _FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =
@@ -275,7 +275,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   @override
   FlutterRouteSettings? get settings;
   @override
-  ZacBool? get maintainState;
+  ZacValue<bool>? get maintainState;
   @override
-  ZacBool? get fullscreenDialog;
+  ZacValue<bool>? get fullscreenDialog;
 }

@@ -30,7 +30,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
     FlutterTextStyle? textStyle,
     FlutterBorderRadiusGeometry? borderRadius,
     FlutterShapeBorder? shape,
-    ZacBool? borderOnForeground,
+    ZacValue<bool>? borderOnForeground,
     FlutterClip? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;

@@ -23,9 +23,9 @@ FlutterSingleChildScrollView _$FlutterSingleChildScrollViewFromJson(
 mixin _$FlutterSingleChildScrollView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacBool? get reverse => throw _privateConstructorUsedError;
+  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
-  ZacBool? get primary =>
+  ZacValue<bool>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
 // ScrollController? controller,
   FlutterWidget? get child =>
@@ -65,11 +65,11 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacBool? reverse;
+  final ZacValue<bool>? reverse;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
-  final ZacBool? primary;
+  final ZacValue<bool>? primary;
 // ScrollPhysics? physics,
 // ScrollController? controller,
   @override
@@ -135,9 +135,9 @@ abstract class _FlutterSingleChildScrollView
   factory _FlutterSingleChildScrollView(
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
-      final ZacBool? reverse,
+      final ZacValue<bool>? reverse,
       final FlutterEdgeInsetsGeometry? padding,
-      final ZacBool? primary,
+      final ZacValue<bool>? primary,
       final FlutterWidget? child,
       final FlutterClip? clipBehavior,
       final ZacValue<String>? restorationId,
@@ -153,11 +153,11 @@ abstract class _FlutterSingleChildScrollView
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacBool? get reverse;
+  ZacValue<bool>? get reverse;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
-  ZacBool? get primary;
+  ZacValue<bool>? get primary;
   @override // ScrollPhysics? physics,
 // ScrollController? controller,
   FlutterWidget? get child;

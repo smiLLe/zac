@@ -27,7 +27,7 @@ mixin _$FlutterText {
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterLocale? get locale => throw _privateConstructorUsedError;
-  ZacBool? get softWrap => throw _privateConstructorUsedError;
+  ZacValue<bool>? get softWrap => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
   ZacValue<double>? get textScaleFactor => throw _privateConstructorUsedError;
   ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
@@ -81,7 +81,7 @@ class _$_FlutterText extends _FlutterText {
   @override
   final FlutterLocale? locale;
   @override
-  final ZacBool? softWrap;
+  final ZacValue<bool>? softWrap;
   @override
   final FlutterTextOverflow? overflow;
   @override
@@ -163,7 +163,7 @@ abstract class _FlutterText extends FlutterText {
       final FlutterTextAlign? textAlign,
       final FlutterTextDirection? textDirection,
       final FlutterLocale? locale,
-      final ZacBool? softWrap,
+      final ZacValue<bool>? softWrap,
       final FlutterTextOverflow? overflow,
       final ZacValue<double>? textScaleFactor,
       final ZacValue<int>? maxLines,
@@ -190,7 +190,7 @@ abstract class _FlutterText extends FlutterText {
   @override
   FlutterLocale? get locale;
   @override
-  ZacBool? get softWrap;
+  ZacValue<bool>? get softWrap;
   @override
   FlutterTextOverflow? get overflow;
   @override

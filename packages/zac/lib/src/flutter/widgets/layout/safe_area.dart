@@ -21,12 +21,12 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   @FreezedUnionValue(FlutterSafeArea.unionValue)
   factory FlutterSafeArea({
     FlutterKey? key,
-    ZacBool? left,
-    ZacBool? top,
-    ZacBool? right,
-    ZacBool? bottom,
+    ZacValue<bool>? left,
+    ZacValue<bool>? top,
+    ZacValue<bool>? right,
+    ZacValue<bool>? bottom,
     FlutterEdgeInsets? minimum,
-    ZacBool? maintainBottomViewPadding,
+    ZacValue<bool>? maintainBottomViewPadding,
     required FlutterWidget child,
   }) = _FlutterSafeArea;
 

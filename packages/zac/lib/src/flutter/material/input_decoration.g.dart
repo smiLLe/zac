@@ -65,10 +65,10 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : ZacValue<int>.fromJson(json['errorMaxLines'] as Object),
       isCollapsed: json['isCollapsed'] == null
           ? null
-          : ZacBool.fromJson(json['isCollapsed'] as Object),
+          : ZacValue<bool>.fromJson(json['isCollapsed'] as Object),
       isDense: json['isDense'] == null
           ? null
-          : ZacBool.fromJson(json['isDense'] as Object),
+          : ZacValue<bool>.fromJson(json['isDense'] as Object),
       contentPadding: json['contentPadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(
@@ -127,7 +127,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['counterStyle'] as Map<String, dynamic>),
       filled: json['filled'] == null
           ? null
-          : ZacBool.fromJson(json['filled'] as Object),
+          : ZacValue<bool>.fromJson(json['filled'] as Object),
       fillColor: json['fillColor'] == null
           ? null
           : FlutterColor.fromJson(json['fillColor'] as Map<String, dynamic>),
@@ -157,13 +157,13 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterInputBorder.fromJson(json['border'] as Object),
       enabled: json['enabled'] == null
           ? null
-          : ZacBool.fromJson(json['enabled'] as Object),
+          : ZacValue<bool>.fromJson(json['enabled'] as Object),
       semanticCounterText: json['semanticCounterText'] == null
           ? null
           : ZacValue<String>.fromJson(json['semanticCounterText'] as Object),
       alignLabelWithHint: json['alignLabelWithHint'] == null
           ? null
-          : ZacBool.fromJson(json['alignLabelWithHint'] as Object),
+          : ZacValue<bool>.fromJson(json['alignLabelWithHint'] as Object),
       constraints: json['constraints'] == null
           ? null
           : FlutterBoxConstraints.fromJson(

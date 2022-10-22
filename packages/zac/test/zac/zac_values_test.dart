@@ -202,6 +202,8 @@ void main() {
     expect(ZacValue<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
     expect(ZacValue<double>.fromJson(4),
         ZacValueConsume<double>.simple(value: 4.0));
+    expect(ZacValue<bool>.fromJson(false),
+        ZacValueConsume<bool>.simple(value: false));
   });
 
   test('Create a ZacValueRead', () {
@@ -255,6 +257,8 @@ void main() {
         ZacValueRead<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
     expect(ZacValueRead<double>.fromJson(4),
         ZacValueConsume<double>.simple(value: 4.0));
+    expect(ZacValueRead<bool>.fromJson(false),
+        ZacValueConsume<bool>.simple(value: false));
   });
 
   test(

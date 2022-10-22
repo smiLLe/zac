@@ -68,15 +68,15 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
   @override
   final FlutterWidget child;
   @override
-  final ZacBool? barrierDismissible;
+  final ZacValue<bool>? barrierDismissible;
   @override
   final FlutterColor? barrierColor;
   @override
   final ZacValue<String>? barrierLabel;
   @override
-  final ZacBool? useSafeArea;
+  final ZacValue<bool>? useSafeArea;
   @override
-  final ZacBool? useRootNavigator;
+  final ZacValue<bool>? useRootNavigator;
   @override
   final FlutterRouteSettings? routeSettings;
 
@@ -137,11 +137,11 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
 abstract class _FlutterDialogsShowDialog extends FlutterDialogs {
   factory _FlutterDialogsShowDialog(
       {required final FlutterWidget child,
-      final ZacBool? barrierDismissible,
+      final ZacValue<bool>? barrierDismissible,
       final FlutterColor? barrierColor,
       final ZacValue<String>? barrierLabel,
-      final ZacBool? useSafeArea,
-      final ZacBool? useRootNavigator,
+      final ZacValue<bool>? useSafeArea,
+      final ZacValue<bool>? useRootNavigator,
       final FlutterRouteSettings? routeSettings}) = _$_FlutterDialogsShowDialog;
   _FlutterDialogsShowDialog._() : super._();
 
@@ -149,11 +149,11 @@ abstract class _FlutterDialogsShowDialog extends FlutterDialogs {
       _$_FlutterDialogsShowDialog.fromJson;
 
   FlutterWidget get child;
-  ZacBool? get barrierDismissible;
+  ZacValue<bool>? get barrierDismissible;
   FlutterColor? get barrierColor;
   ZacValue<String>? get barrierLabel;
-  ZacBool? get useSafeArea;
-  ZacBool? get useRootNavigator;
+  ZacValue<bool>? get useSafeArea;
+  ZacValue<bool>? get useRootNavigator;
   FlutterRouteSettings? get routeSettings;
 }
 
@@ -348,7 +348,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacBool? scrollable;
+  final ZacValue<bool>? scrollable;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -464,7 +464,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
       final FlutterAlignmentGeometry? alignment,
-      final ZacBool? scrollable}) = _$_FlutterDialogsAlertDialog;
+      final ZacValue<bool>? scrollable}) = _$_FlutterDialogsAlertDialog;
   _FlutterDialogsAlertDialog._() : super._();
 
   factory _FlutterDialogsAlertDialog.fromJson(Map<String, dynamic> json) =
@@ -490,7 +490,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterClip? get clipBehavior;
   FlutterShapeBorder? get shape;
   FlutterAlignmentGeometry? get alignment;
-  ZacBool? get scrollable;
+  ZacValue<bool>? get scrollable;
 }
 
 /// @nodoc

@@ -40,7 +40,7 @@ _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
           : ZacValue<String>.fromJson(json['fontPackage'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
-          : ZacBool.fromJson(json['matchTextDirection'] as Object),
+          : ZacValue<bool>.fromJson(json['matchTextDirection'] as Object),
     );
 
 _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(

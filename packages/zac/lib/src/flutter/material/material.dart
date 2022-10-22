@@ -96,8 +96,8 @@ class FlutterMaterialPageRoute
   factory FlutterMaterialPageRoute({
     required FlutterWidget child,
     FlutterRouteSettings? settings,
-    ZacBool? maintainState,
-    ZacBool? fullscreenDialog,
+    ZacValue<bool>? maintainState,
+    ZacValue<bool>? fullscreenDialog,
   }) = _FlutterMaterialPageRoute;
 
   @override

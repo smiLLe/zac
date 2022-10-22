@@ -114,7 +114,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacValue<double>? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
-    ZacBool? forceStrutHeight,
+    ZacValue<bool>? forceStrutHeight,
     ZacValue<String>? debugLabel,
     ZacValue<String>? package,
   }) = _FlutterStrutStyle;
@@ -130,7 +130,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacValue<double>? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
-    ZacBool? forceStrutHeight,
+    ZacValue<bool>? forceStrutHeight,
     ZacValue<String>? debugLabel,
     ZacValue<String>? package,
   }) = _FlutterStrutStyleFromTextStyle;
@@ -268,7 +268,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
 
   @FreezedUnionValue('f:1:TextStyle')
   factory FlutterTextStyle({
-    ZacBool? inherit,
+    ZacValue<bool>? inherit,
     FlutterColor? color,
     FlutterColor? backgroundColor,
     ZacValue<double>? fontSize,

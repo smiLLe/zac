@@ -26,7 +26,7 @@ class FlutterFractionalTranslation
     FlutterKey? key,
     FlutterWidget? child,
     required FlutterOffset translation,
-    ZacBool? transformHitTests,
+    ZacValue<bool>? transformHitTests,
   }) = _FlutterFractionalTranslation;
 
   @override

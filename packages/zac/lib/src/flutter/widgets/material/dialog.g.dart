@@ -12,7 +12,7 @@ _$_FlutterDialogsShowDialog _$$_FlutterDialogsShowDialogFromJson(
       child: FlutterWidget.fromJson(json['child'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacBool.fromJson(json['barrierDismissible'] as Object),
+          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
@@ -21,10 +21,10 @@ _$_FlutterDialogsShowDialog _$$_FlutterDialogsShowDialogFromJson(
           : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
       useSafeArea: json['useSafeArea'] == null
           ? null
-          : ZacBool.fromJson(json['useSafeArea'] as Object),
+          : ZacValue<bool>.fromJson(json['useSafeArea'] as Object),
       useRootNavigator: json['useRootNavigator'] == null
           ? null
-          : ZacBool.fromJson(json['useRootNavigator'] as Object),
+          : ZacValue<bool>.fromJson(json['useRootNavigator'] as Object),
       routeSettings: json['routeSettings'] == null
           ? null
           : FlutterRouteSettings.fromJson(
@@ -138,7 +138,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       scrollable: json['scrollable'] == null
           ? null
-          : ZacBool.fromJson(json['scrollable'] as Object),
+          : ZacValue<bool>.fromJson(json['scrollable'] as Object),
       $type: json['converter'] as String?,
     );
 

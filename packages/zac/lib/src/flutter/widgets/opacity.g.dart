@@ -14,7 +14,7 @@ _$_FlutterOpacity _$$_FlutterOpacityFromJson(Map<String, dynamic> json) =>
       opacity: ZacValue<double>.fromJson(json['opacity'] as Object),
       alwaysIncludeSemantics: json['alwaysIncludeSemantics'] == null
           ? null
-          : ZacBool.fromJson(json['alwaysIncludeSemantics'] as Object),
+          : ZacValue<bool>.fromJson(json['alwaysIncludeSemantics'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

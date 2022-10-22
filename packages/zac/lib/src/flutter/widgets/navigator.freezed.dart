@@ -142,7 +142,7 @@ mixin _$FlutterNavigator {
       throw _privateConstructorUsedError;
   FlutterRouteFactory? get onUnknownRoute => throw _privateConstructorUsedError;
   ZacValue<String>? get initialRoute => throw _privateConstructorUsedError;
-  ZacBool? get requestFocus => throw _privateConstructorUsedError;
+  ZacValue<bool>? get requestFocus => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -174,7 +174,7 @@ class _$_FlutterNavigator extends _FlutterNavigator {
   @override
   final ZacValue<String>? initialRoute;
   @override
-  final ZacBool? requestFocus;
+  final ZacValue<bool>? requestFocus;
 
   @override
   String toString() {
@@ -222,7 +222,7 @@ abstract class _FlutterNavigator extends FlutterNavigator {
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
       final ZacValue<String>? initialRoute,
-      final ZacBool? requestFocus}) = _$_FlutterNavigator;
+      final ZacValue<bool>? requestFocus}) = _$_FlutterNavigator;
   _FlutterNavigator._() : super._();
 
   factory _FlutterNavigator.fromJson(Map<String, dynamic> json) =
@@ -237,7 +237,7 @@ abstract class _FlutterNavigator extends FlutterNavigator {
   @override
   ZacValue<String>? get initialRoute;
   @override
-  ZacBool? get requestFocus;
+  ZacValue<bool>? get requestFocus;
 }
 
 FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
@@ -790,12 +790,12 @@ mixin _$FlutterPageRouteBuilder {
       throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacBool? get opaque => throw _privateConstructorUsedError;
-  ZacBool? get barrierDismissible => throw _privateConstructorUsedError;
+  ZacValue<bool>? get opaque => throw _privateConstructorUsedError;
+  ZacValue<bool>? get barrierDismissible => throw _privateConstructorUsedError;
   FlutterColor? get barrierColor => throw _privateConstructorUsedError;
   ZacValue<String>? get barrierLabel => throw _privateConstructorUsedError;
-  ZacBool? get maintainState => throw _privateConstructorUsedError;
-  ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacValue<bool>? get maintainState => throw _privateConstructorUsedError;
+  ZacValue<bool>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -829,17 +829,17 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
   @override
-  final ZacBool? opaque;
+  final ZacValue<bool>? opaque;
   @override
-  final ZacBool? barrierDismissible;
+  final ZacValue<bool>? barrierDismissible;
   @override
   final FlutterColor? barrierColor;
   @override
   final ZacValue<String>? barrierLabel;
   @override
-  final ZacBool? maintainState;
+  final ZacValue<bool>? maintainState;
   @override
-  final ZacBool? fullscreenDialog;
+  final ZacValue<bool>? fullscreenDialog;
 
   @override
   String toString() {
@@ -892,12 +892,12 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   factory _FlutterPageRouteBuilder(
       {required final FlutterWidget child,
       final FlutterRouteSettings? settings,
-      final ZacBool? opaque,
-      final ZacBool? barrierDismissible,
+      final ZacValue<bool>? opaque,
+      final ZacValue<bool>? barrierDismissible,
       final FlutterColor? barrierColor,
       final ZacValue<String>? barrierLabel,
-      final ZacBool? maintainState,
-      final ZacBool? fullscreenDialog}) = _$_FlutterPageRouteBuilder;
+      final ZacValue<bool>? maintainState,
+      final ZacValue<bool>? fullscreenDialog}) = _$_FlutterPageRouteBuilder;
   _FlutterPageRouteBuilder._() : super._();
 
   factory _FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =
@@ -910,17 +910,17 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacBool? get opaque;
+  ZacValue<bool>? get opaque;
   @override
-  ZacBool? get barrierDismissible;
+  ZacValue<bool>? get barrierDismissible;
   @override
   FlutterColor? get barrierColor;
   @override
   ZacValue<String>? get barrierLabel;
   @override
-  ZacBool? get maintainState;
+  ZacValue<bool>? get maintainState;
   @override
-  ZacBool? get fullscreenDialog;
+  ZacValue<bool>? get fullscreenDialog;
 }
 
 FlutterRouteSettings _$FlutterRouteSettingsFromJson(Map<String, dynamic> json) {

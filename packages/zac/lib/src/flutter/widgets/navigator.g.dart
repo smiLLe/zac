@@ -34,7 +34,7 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
           : ZacValue<String>.fromJson(json['initialRoute'] as Object),
       requestFocus: json['requestFocus'] == null
           ? null
-          : ZacBool.fromJson(json['requestFocus'] as Object),
+          : ZacValue<bool>.fromJson(json['requestFocus'] as Object),
     );
 
 _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
@@ -124,10 +124,10 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
               json['settings'] as Map<String, dynamic>),
       opaque: json['opaque'] == null
           ? null
-          : ZacBool.fromJson(json['opaque'] as Object),
+          : ZacValue<bool>.fromJson(json['opaque'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacBool.fromJson(json['barrierDismissible'] as Object),
+          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
@@ -136,10 +136,10 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
           : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacBool.fromJson(json['maintainState'] as Object),
+          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
     );
 
 _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(

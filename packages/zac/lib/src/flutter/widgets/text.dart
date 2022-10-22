@@ -28,7 +28,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     FlutterTextAlign? textAlign,
     FlutterTextDirection? textDirection,
     FlutterLocale? locale,
-    ZacBool? softWrap,
+    ZacValue<bool>? softWrap,
     FlutterTextOverflow? overflow,
     ZacValue<double>? textScaleFactor,
     ZacValue<int>? maxLines,

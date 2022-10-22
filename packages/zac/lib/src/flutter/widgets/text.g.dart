@@ -32,7 +32,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       softWrap: json['softWrap'] == null
           ? null
-          : ZacBool.fromJson(json['softWrap'] as Object),
+          : ZacValue<bool>.fromJson(json['softWrap'] as Object),
       overflow: json['overflow'] == null
           ? null
           : FlutterTextOverflow.fromJson(

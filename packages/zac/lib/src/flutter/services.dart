@@ -21,11 +21,11 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     FlutterColor? systemNavigationBarColor,
     FlutterColor? systemNavigationBarDividerColor,
     FlutterBrightness? systemNavigationBarIconBrightness,
-    ZacBool? systemNavigationBarContrastEnforced,
+    ZacValue<bool>? systemNavigationBarContrastEnforced,
     FlutterColor? statusBarColor,
     FlutterBrightness? statusBarBrightness,
     FlutterBrightness? statusBarIconBrightness,
-    ZacBool? systemStatusBarContrastEnforced,
+    ZacValue<bool>? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle build(ZacContext zacContext) {

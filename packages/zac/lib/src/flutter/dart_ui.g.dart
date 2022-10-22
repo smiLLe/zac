@@ -333,7 +333,7 @@ _$_FontFeatureLocaleAware _$$_FontFeatureLocaleAwareFromJson(
     _$_FontFeatureLocaleAware(
       enable: json['enable'] == null
           ? null
-          : ZacBool.fromJson(json['enable'] as Object),
+          : ZacValue<bool>.fromJson(json['enable'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -498,10 +498,10 @@ _$_FlutterTextHeightBehavior _$$_FlutterTextHeightBehaviorFromJson(
     _$_FlutterTextHeightBehavior(
       applyHeightToFirstAscent: json['applyHeightToFirstAscent'] == null
           ? null
-          : ZacBool.fromJson(json['applyHeightToFirstAscent'] as Object),
+          : ZacValue<bool>.fromJson(json['applyHeightToFirstAscent'] as Object),
       applyHeightToLastDescent: json['applyHeightToLastDescent'] == null
           ? null
-          : ZacBool.fromJson(json['applyHeightToLastDescent'] as Object),
+          : ZacValue<bool>.fromJson(json['applyHeightToLastDescent'] as Object),
       leadingDistribution: json['leadingDistribution'] == null
           ? null
           : FlutterTextLeadingDistribution.fromJson(

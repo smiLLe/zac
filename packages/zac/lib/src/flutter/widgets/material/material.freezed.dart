@@ -29,7 +29,7 @@ mixin _$FlutterMaterial {
   FlutterBorderRadiusGeometry? get borderRadius =>
       throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
-  ZacBool? get borderOnForeground => throw _privateConstructorUsedError;
+  ZacValue<bool>? get borderOnForeground => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -75,7 +75,7 @@ class _$_FlutterMaterial extends _FlutterMaterial {
   @override
   final FlutterShapeBorder? shape;
   @override
-  final ZacBool? borderOnForeground;
+  final ZacValue<bool>? borderOnForeground;
   @override
   final FlutterClip? clipBehavior;
 
@@ -139,7 +139,7 @@ abstract class _FlutterMaterial extends FlutterMaterial {
       final FlutterTextStyle? textStyle,
       final FlutterBorderRadiusGeometry? borderRadius,
       final FlutterShapeBorder? shape,
-      final ZacBool? borderOnForeground,
+      final ZacValue<bool>? borderOnForeground,
       final FlutterClip? clipBehavior}) = _$_FlutterMaterial;
   _FlutterMaterial._() : super._();
 
@@ -163,7 +163,7 @@ abstract class _FlutterMaterial extends FlutterMaterial {
   @override
   FlutterShapeBorder? get shape;
   @override
-  ZacBool? get borderOnForeground;
+  ZacValue<bool>? get borderOnForeground;
   @override
   FlutterClip? get clipBehavior;
 }

@@ -386,7 +386,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
   factory FlutterFontFeature.liningFigures() = _FontFeatureLiningFigures;
 
   @FreezedUnionValue('f:1:FontFeature.localeAware')
-  factory FlutterFontFeature.localeAware({ZacBool? enable}) =
+  factory FlutterFontFeature.localeAware({ZacValue<bool>? enable}) =
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
@@ -555,8 +555,8 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
 
   @FreezedUnionValue('f:1:TextHeightBehavior')
   factory FlutterTextHeightBehavior({
-    ZacBool? applyHeightToFirstAscent,
-    ZacBool? applyHeightToLastDescent,
+    ZacValue<bool>? applyHeightToFirstAscent,
+    ZacValue<bool>? applyHeightToLastDescent,
     FlutterTextLeadingDistribution? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 

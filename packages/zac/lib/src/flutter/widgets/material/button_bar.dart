@@ -28,7 +28,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
     ZacValue<double>? buttonMinWidth,
     ZacValue<double>? buttonHeight,
     FlutterEdgeInsetsGeometry? buttonPadding,
-    ZacBool? buttonAlignedDropdown,
+    ZacValue<bool>? buttonAlignedDropdown,
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
     FlutterVerticalDirection? overflowDirection,
     ZacValue<double>? overflowButtonSpacing,

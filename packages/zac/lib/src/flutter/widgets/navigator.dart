@@ -70,7 +70,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
     ZacValue<String>? initialRoute,
-    ZacBool? requestFocus,
+    ZacValue<bool>? requestFocus,
   }) = _FlutterNavigator;
 
   @override
@@ -256,12 +256,12 @@ class FlutterPageRouteBuilder
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-    ZacBool? opaque,
-    ZacBool? barrierDismissible,
+    ZacValue<bool>? opaque,
+    ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
     ZacValue<String>? barrierLabel,
-    ZacBool? maintainState,
-    ZacBool? fullscreenDialog,
+    ZacValue<bool>? maintainState,
+    ZacValue<bool>? fullscreenDialog,
   }) = _FlutterPageRouteBuilder;
 
   @override

@@ -39,27 +39,30 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       debugShowMaterialGrid: json['debugShowMaterialGrid'] == null
           ? null
-          : ZacBool.fromJson(json['debugShowMaterialGrid'] as Object),
+          : ZacValue<bool>.fromJson(json['debugShowMaterialGrid'] as Object),
       showPerformanceOverlay: json['showPerformanceOverlay'] == null
           ? null
-          : ZacBool.fromJson(json['showPerformanceOverlay'] as Object),
-      checkerboardRasterCacheImages: json['checkerboardRasterCacheImages'] ==
-              null
-          ? null
-          : ZacBool.fromJson(json['checkerboardRasterCacheImages'] as Object),
+          : ZacValue<bool>.fromJson(json['showPerformanceOverlay'] as Object),
+      checkerboardRasterCacheImages:
+          json['checkerboardRasterCacheImages'] == null
+              ? null
+              : ZacValue<bool>.fromJson(
+                  json['checkerboardRasterCacheImages'] as Object),
       checkerboardOffscreenLayers: json['checkerboardOffscreenLayers'] == null
           ? null
-          : ZacBool.fromJson(json['checkerboardOffscreenLayers'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['checkerboardOffscreenLayers'] as Object),
       showSemanticsDebugger: json['showSemanticsDebugger'] == null
           ? null
-          : ZacBool.fromJson(json['showSemanticsDebugger'] as Object),
+          : ZacValue<bool>.fromJson(json['showSemanticsDebugger'] as Object),
       debugShowCheckedModeBanner: json['debugShowCheckedModeBanner'] == null
           ? null
-          : ZacBool.fromJson(json['debugShowCheckedModeBanner'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['debugShowCheckedModeBanner'] as Object),
       restorationScopeId: json['restorationScopeId'] == null
           ? null
           : ZacValue<String>.fromJson(json['restorationScopeId'] as Object),
       useInheritedMediaQuery: json['useInheritedMediaQuery'] == null
           ? null
-          : ZacBool.fromJson(json['useInheritedMediaQuery'] as Object),
+          : ZacValue<bool>.fromJson(json['useInheritedMediaQuery'] as Object),
     );

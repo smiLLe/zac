@@ -34,11 +34,11 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
   @FreezedUnionValue(FlutterDialogs.unionValueShowDialog)
   factory FlutterDialogs.showDialog({
     required FlutterWidget child,
-    ZacBool? barrierDismissible,
+    ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
     ZacValue<String>? barrierLabel,
-    ZacBool? useSafeArea,
-    ZacBool? useRootNavigator,
+    ZacValue<bool>? useSafeArea,
+    ZacValue<bool>? useRootNavigator,
     FlutterRouteSettings? routeSettings,
   }) = _FlutterDialogsShowDialog;
 
@@ -78,7 +78,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacBool? scrollable,
+    ZacValue<bool>? scrollable,
   }) = _FlutterDialogsAlertDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)

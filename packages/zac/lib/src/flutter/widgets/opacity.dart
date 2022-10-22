@@ -22,7 +22,7 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   factory FlutterOpacity({
     FlutterKey? key,
     required ZacValue<double> opacity,
-    ZacBool? alwaysIncludeSemantics,
+    ZacValue<bool>? alwaysIncludeSemantics,
     FlutterWidget? child,
   }) = _FlutterOpacity;
 

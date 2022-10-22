@@ -3605,7 +3605,7 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
       _$$_FontFeatureLocaleAwareFromJson(json);
 
   @override
-  final ZacBool? enable;
+  final ZacValue<bool>? enable;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3676,14 +3676,14 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
 }
 
 abstract class _FontFeatureLocaleAware extends FlutterFontFeature {
-  factory _FontFeatureLocaleAware({final ZacBool? enable}) =
+  factory _FontFeatureLocaleAware({final ZacValue<bool>? enable}) =
       _$_FontFeatureLocaleAware;
   _FontFeatureLocaleAware._() : super._();
 
   factory _FontFeatureLocaleAware.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureLocaleAware.fromJson;
 
-  ZacBool? get enable;
+  ZacValue<bool>? get enable;
 }
 
 /// @nodoc
@@ -5537,8 +5537,10 @@ FlutterTextHeightBehavior _$FlutterTextHeightBehaviorFromJson(
 
 /// @nodoc
 mixin _$FlutterTextHeightBehavior {
-  ZacBool? get applyHeightToFirstAscent => throw _privateConstructorUsedError;
-  ZacBool? get applyHeightToLastDescent => throw _privateConstructorUsedError;
+  ZacValue<bool>? get applyHeightToFirstAscent =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get applyHeightToLastDescent =>
+      throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
 
@@ -5562,9 +5564,9 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
       _$$_FlutterTextHeightBehaviorFromJson(json);
 
   @override
-  final ZacBool? applyHeightToFirstAscent;
+  final ZacValue<bool>? applyHeightToFirstAscent;
   @override
-  final ZacBool? applyHeightToLastDescent;
+  final ZacValue<bool>? applyHeightToLastDescent;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
 
@@ -5605,8 +5607,8 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
 
 abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
   factory _FlutterTextHeightBehavior(
-          {final ZacBool? applyHeightToFirstAscent,
-          final ZacBool? applyHeightToLastDescent,
+          {final ZacValue<bool>? applyHeightToFirstAscent,
+          final ZacValue<bool>? applyHeightToLastDescent,
           final FlutterTextLeadingDistribution? leadingDistribution}) =
       _$_FlutterTextHeightBehavior;
   _FlutterTextHeightBehavior._() : super._();
@@ -5615,9 +5617,9 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
       _$_FlutterTextHeightBehavior.fromJson;
 
   @override
-  ZacBool? get applyHeightToFirstAscent;
+  ZacValue<bool>? get applyHeightToFirstAscent;
   @override
-  ZacBool? get applyHeightToLastDescent;
+  ZacValue<bool>? get applyHeightToLastDescent;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
 }

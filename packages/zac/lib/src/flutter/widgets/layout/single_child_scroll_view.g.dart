@@ -18,13 +18,13 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
               json['scrollDirection'] as Map<String, dynamic>),
       reverse: json['reverse'] == null
           ? null
-          : ZacBool.fromJson(json['reverse'] as Object),
+          : ZacValue<bool>.fromJson(json['reverse'] as Object),
       padding: json['padding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
       primary: json['primary'] == null
           ? null
-          : ZacBool.fromJson(json['primary'] as Object),
+          : ZacValue<bool>.fromJson(json['primary'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),
