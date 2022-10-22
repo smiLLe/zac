@@ -39,6 +39,41 @@ _$_ZacValueConsumeRead<TValue> _$$_ZacValueConsumeReadFromJson<TValue>(
       $type: json['converter'] as String?,
     );
 
+_$_ZacValueListConsumeSimple<TValue>
+    _$$_ZacValueListConsumeSimpleFromJson<TValue>(Map<String, dynamic> json) =>
+        _$_ZacValueListConsumeSimple<TValue>(
+          value: (json['value'] as List<dynamic>)
+              .map((e) => ZacValue<TValue>.fromJson(e as Object))
+              .toList(),
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
+          $type: json['converter'] as String?,
+        );
+
+_$_ZacValueListConsumeWatch<TValue>
+    _$$_ZacValueListConsumeWatchFromJson<TValue>(Map<String, dynamic> json) =>
+        _$_ZacValueListConsumeWatch<TValue>(
+          family: json['family'] as Object,
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
+          select: json['select'] == null
+              ? null
+              : ZacTransformers.fromJson(json['select'] as Object),
+          $type: json['converter'] as String?,
+        );
+
+_$_ZacValueListConsumeRead<TValue> _$$_ZacValueListConsumeReadFromJson<TValue>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueListConsumeRead<TValue>(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['converter'] as String?,
+    );
+
 _$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
         Map<String, dynamic> json) =>
     _$ListOfZacWidgetValue(

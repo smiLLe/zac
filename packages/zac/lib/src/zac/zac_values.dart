@@ -11,7 +11,35 @@ const zacValueConverter = 'z:1:SharedValue';
 const zacValueConverterWatch = 'z:1:SharedValue.watch';
 const zacValueConverterRead = 'z:1:SharedValue.read';
 
-ZacValue<TValue> allFromJson<TValue>(Object data,
+ZacValueList<TValue> zacValueListFromJson<TValue>(
+    Object data,
+    ZacValueList<TValue> Function(String converter, Map<String, dynamic> data)
+        cb) {
+  /// simple list
+  if (data is List) {
+    return ZacValueListConsume<TValue>.simple(
+      value: List<ZacValue<TValue>>.from(List<Object>.from(data)
+          .map((e) => ZacValue<TValue>.fromJson(e))
+          .toList()),
+    );
+  }
+
+  /// actual ZacValueList Type
+  else if (ConverterHelper.isConverter(data) &&
+      [zacValueConverter, zacValueConverterWatch, zacValueConverterRead]
+          .contains((data as Map<String, dynamic>)[converterKey] as String)) {
+    final name = data[converterKey] as String;
+    return cb(name, data);
+  }
+
+  throw StateError('''
+It was not possible to create a "${_typeOf<ZacValueList<TValue>>()}"
+or "${_typeOf<ZacValueListRead<TValue>>()}" because the data given is not supported.
+The following data was used:
+$data"''');
+}
+
+ZacValue<TValue> zacValueFromJson<TValue>(Object data,
     ZacValue<TValue> Function(String converter, Map<String, dynamic> data) cb) {
   if (TValue == DateTime && data is String) {
     return ZacValueConsume<TValue>.simple(value: DateTime.parse(data));
@@ -56,7 +84,7 @@ $data"''');
 
 abstract class ZacValueRead<TValue> {
   factory ZacValueRead.fromJson(Object data) {
-    return allFromJson<TValue>(data, (converter, data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
       switch (converter) {
         case zacValueConverter:
           return ZacValueConsume<TValue>.fromJson(data);
@@ -76,7 +104,7 @@ $data"''');
 
 abstract class ZacValue<TValue> implements ZacValueRead<TValue> {
   factory ZacValue.fromJson(Object data) {
-    return allFromJson<TValue>(data, (converter, data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
       switch (converter) {
         case zacValueConverter:
           return ZacValueConsume<TValue>.fromJson(data);
@@ -240,6 +268,173 @@ $consumedValue
         watch: (_) => _getShared(zacContext),
         read: (_) => _getShared(zacContext),
       );
+}
+
+abstract class ZacValueListRead<TValue> {
+  factory ZacValueListRead.fromJson(Object data) {
+    return zacValueListFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverter:
+          return ZacValueListConsume<TValue>.fromJson(data);
+        case zacValueConverterRead:
+          return ZacValueListConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacValueListRead<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    });
+  }
+
+  List<TValue> getValue(ZacContext zacContext);
+}
+
+abstract class ZacValueList<TValue> implements ZacValueListRead<TValue> {
+  factory ZacValueList.fromJson(Object data) {
+    return zacValueListFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverter:
+          return ZacValueListConsume<TValue>.fromJson(data);
+        case zacValueConverterRead:
+          return ZacValueListConsume<TValue>.fromJson(data);
+        case zacValueConverterWatch:
+          return ZacValueListConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacValueList<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    });
+  }
+
+  @override
+  List<TValue> getValue(ZacContext zacContext);
+}
+
+@defaultConverterFreezed
+class ZacValueListConsume<TValue>
+    with _$ZacValueListConsume<TValue>
+    implements ZacValueList<TValue> {
+  ZacValueListConsume._();
+
+  factory ZacValueListConsume.fromJson(Map<String, dynamic> json) =>
+      _$ZacValueListConsumeFromJson<TValue>(json);
+
+  @FreezedUnionValue(zacValueConverter)
+  factory ZacValueListConsume.simple({
+    required List<ZacValue<TValue>> value,
+    ZacTransformers? transformer,
+  }) = _ZacValueListConsumeSimple<TValue>;
+
+  @FreezedUnionValue(zacValueConverterWatch)
+  factory ZacValueListConsume.watch({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+  }) = _ZacValueListConsumeWatch<TValue>;
+
+  @FreezedUnionValue(zacValueConverterRead)
+  factory ZacValueListConsume.read({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+  }) = _ZacValueListConsumeRead<TValue>;
+
+  SharedValueConsumeType get type => map(
+        simple: (_) => throw StateError('must never happen'),
+        watch: (obj) => SharedValueConsumeType.watch(select: obj.select),
+        read: (_) => const SharedValueConsumeType.read(),
+      );
+
+  SharedValueFamily get family => map(
+        simple: (_) => throw StateError('must never happen'),
+        watch: (obj) => obj.family,
+        read: (obj) => obj.family,
+      );
+
+  List<TValue> _getSimple(
+      ZacContext zacContext, _ZacValueListConsumeSimple<TValue> simple) {
+    final list = simple.value.map((e) => e.getValue(zacContext)).toList();
+    if (true == transformer?.transformers.isNotEmpty) {
+      final transformed =
+          transformer!.transform(ZacTransformValue(list), zacContext, null);
+
+      if (transformed is! List<TValue>) {
+        throw StateError('''
+It was not possible to return a value of type ${_typeOf<List<TValue>>()} in ${_typeOf<ZacValueListConsume<TValue>>()}.
+Instead the returned value was of runtimeType ${transformed.runtimeType}.
+Value: $transformed''');
+      }
+      return transformed;
+    }
+
+    return list;
+  }
+
+  List<TValue> _getShared(ZacContext zacContext) {
+    final consumedValue = SharedValue.get(type, zacContext, family);
+
+    late List<Object?> value;
+    if (consumedValue is ZacValueList<List>) {
+      value = consumedValue.getValue(zacContext);
+    } else if (consumedValue is List) {
+      value = consumedValue;
+    }
+
+    if (value.every((element) => element is TValue) &&
+        (null == transformer || true == transformer?.transformers.isEmpty)) {
+      return value.cast<TValue>();
+    }
+
+    if (null == transformer || true == transformer?.transformers.isEmpty) {
+      throw StateError('''
+It was not possible to return a $SharedValue in "$runtimeType" for family "$family".
+The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
+It was expected to return a type of: "${_typeOf<List<TValue>>()}".
+
+This error was created because there are no transformers to use.
+Add a transformer in order to transform the $SharedValue into a type of: "${_typeOf<List<TValue>>()}".
+
+The consumed $SharedValue: $value
+''');
+    }
+
+    return value.map<TValue>((element) {
+      final transformedValue =
+          transformer!.transform(ZacTransformValue(element), zacContext, null);
+
+      if (transformedValue is! TValue) {
+        final alltransformerTypers =
+            transformer!.transformers.map((e) => e.runtimeType);
+        throw StateError('''
+Unexpected type found after transforming an item in a consumed $SharedValue List in "$runtimeType" for name "$family".
+The item was of runtimeType: "${element.runtimeType}".
+The item after transformation was of runtimeType: "${transformedValue.runtimeType}".
+The expected type was: "${_typeOf<TValue>()}".
+The following transformer were used: 
+${alltransformerTypers.join(' > ')}
+
+The transformed value:
+$transformedValue
+
+The item:
+$element
+''');
+      }
+
+      return transformedValue;
+    }).toList();
+  }
+
+  @override
+  List<TValue> getValue(ZacContext zacContext) {
+    return map(
+      simple: (obj) => _getSimple(zacContext, obj),
+      watch: (obj) => _getShared(zacContext),
+      read: (obj) => _getShared(zacContext),
+    );
+  }
 }
 
 mixin ActualValue<Of> {
