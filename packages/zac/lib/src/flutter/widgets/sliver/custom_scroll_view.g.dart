@@ -40,7 +40,7 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
           : ZacValue<double>.fromJson(json['cacheExtent'] as Object),
       slivers: json['slivers'] == null
           ? null
-          : ListOfZacWidget.fromJson(json['slivers'] as Object),
+          : ZacValueList<FlutterWidget>.fromJson(json['slivers'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
           : ZacValue<int>.fromJson(json['semanticChildCount'] as Object),

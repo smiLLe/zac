@@ -37,7 +37,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     ZacValue<bool>? addRepaintBoundaries,
     ZacValue<bool>? addSemanticIndexes,
     ZacValue<double>? cacheExtent,
-    ListOfZacWidget? children,
+    ZacValueList<FlutterWidget>? children,
     ZacValue<int>? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
@@ -60,7 +60,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
       addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
       addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
       cacheExtent: cacheExtent?.getValue(zacContext),
-      children: children?.getValue(zacContext) ?? const <Widget>[],
+      children: children?.getWidgets(zacContext) ?? const <Widget>[],
       semanticChildCount: semanticChildCount?.getValue(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,

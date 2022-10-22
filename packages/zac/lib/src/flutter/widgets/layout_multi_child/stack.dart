@@ -28,7 +28,7 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterStackFit? fit,
     FlutterClip? clipBehavior,
-    ListOfZacWidget? children,
+    ZacValueList<FlutterWidget>? children,
   }) = _FlutterStack;
 
   @override
@@ -39,7 +39,7 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
       textDirection: textDirection?.build(zacContext),
       fit: fit?.build(zacContext) ?? StackFit.loose,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      children: children?.getValue(zacContext) ?? const <Widget>[],
+      children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }
 }

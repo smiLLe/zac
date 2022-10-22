@@ -25,7 +25,8 @@ mixin _$FlutterAppBar {
   ZacValue<bool>? get automaticallyImplyLeading =>
       throw _privateConstructorUsedError;
   FlutterWidget? get title => throw _privateConstructorUsedError;
-  ListOfZacWidget? get actions => throw _privateConstructorUsedError;
+  ZacValueList<FlutterWidget>? get actions =>
+      throw _privateConstructorUsedError;
   FlutterWidget? get flexibleSpace =>
       throw _privateConstructorUsedError; // PreferredSizeWidget
   FlutterWidget? get bottom => throw _privateConstructorUsedError;
@@ -101,7 +102,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterWidget? title;
   @override
-  final ListOfZacWidget? actions;
+  final ZacValueList<FlutterWidget>? actions;
   @override
   final FlutterWidget? flexibleSpace;
 // PreferredSizeWidget
@@ -243,7 +244,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final FlutterWidget? leading,
           final ZacValue<bool>? automaticallyImplyLeading,
           final FlutterWidget? title,
-          final ListOfZacWidget? actions,
+          final ZacValueList<FlutterWidget>? actions,
           final FlutterWidget? flexibleSpace,
           final FlutterWidget? bottom,
           final ZacValue<double>? elevation,
@@ -279,7 +280,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   FlutterWidget? get title;
   @override
-  ListOfZacWidget? get actions;
+  ZacValueList<FlutterWidget>? get actions;
   @override
   FlutterWidget? get flexibleSpace;
   @override // PreferredSizeWidget

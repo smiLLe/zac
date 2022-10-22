@@ -22,7 +22,8 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['floatingActionButton'] as Object),
       persistentFooterButtons: json['persistentFooterButtons'] == null
           ? null
-          : ListOfZacWidget.fromJson(json['persistentFooterButtons'] as Object),
+          : ZacValueList<FlutterWidget>.fromJson(
+              json['persistentFooterButtons'] as Object),
       drawer: json['drawer'] == null
           ? null
           : FlutterWidget.fromJson(json['drawer'] as Object),
@@ -245,7 +246,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
           ? null
           : FlutterTextStyle.fromJson(
               json['contentTextStyle'] as Map<String, dynamic>),
-      actions: ListOfZacWidget.fromJson(json['actions'] as Object),
+      actions: ZacValueList<FlutterWidget>.fromJson(json['actions'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double>.fromJson(json['elevation'] as Object),

@@ -25,7 +25,8 @@ mixin _$FlutterIndexedStack {
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterStackFit? get sizing => throw _privateConstructorUsedError;
   ZacValue<int>? get index => throw _privateConstructorUsedError;
-  ListOfZacWidget? get children => throw _privateConstructorUsedError;
+  ZacValueList<FlutterWidget>? get children =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -60,7 +61,7 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
   @override
   final ZacValue<int>? index;
   @override
-  final ListOfZacWidget? children;
+  final ZacValueList<FlutterWidget>? children;
 
   @override
   String toString() {
@@ -108,7 +109,7 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
       final FlutterTextDirection? textDirection,
       final FlutterStackFit? sizing,
       final ZacValue<int>? index,
-      final ListOfZacWidget? children}) = _$_FlutterIndexedStack;
+      final ZacValueList<FlutterWidget>? children}) = _$_FlutterIndexedStack;
   _FlutterIndexedStack._() : super._();
 
   factory _FlutterIndexedStack.fromJson(Map<String, dynamic> json) =
@@ -125,5 +126,5 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   @override
   ZacValue<int>? get index;
   @override
-  ListOfZacWidget? get children;
+  ZacValueList<FlutterWidget>? get children;
 }

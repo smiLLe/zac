@@ -83,8 +83,6 @@ typedef Convert = Object Function(Map<String, dynamic> data);
 
 Map<String, Convert> allConverters = const {
   ZacWidgetConsumerBuilder.unionValue: ZacWidgetConsumerBuilder.fromJson,
-  ListOfZacWidget.unionValue: ListOfZacWidgetValue.fromJson,
-  ListOfZacWidget.unionValueConsume: ListOfZacWidgetConsume.fromJson,
 
   /**
          * SharedValue

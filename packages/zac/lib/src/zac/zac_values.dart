@@ -313,6 +313,12 @@ $data"''');
   List<TValue> getValue(ZacContext zacContext);
 }
 
+extension ZacValueListFlutterWidget on ZacValueList<FlutterWidget> {
+  List<Widget> getWidgets(ZacContext zacContext) {
+    return getValue(zacContext).map((e) => e.buildWidget(zacContext)).toList();
+  }
+}
+
 @defaultConverterFreezed
 class ZacValueListConsume<TValue>
     with _$ZacValueListConsume<TValue>
@@ -595,53 +601,6 @@ $element
       return transformedValue;
     }).toList();
   }
-}
-
-@defaultConverterFreezed
-class ListOfZacWidget with _$ListOfZacWidget {
-  const ListOfZacWidget._();
-
-  static const String unionValue = 'z:1:ListOfZacWidget';
-  static const String unionValueConsume = 'z:1:ListOfZacWidget.consume';
-
-  factory ListOfZacWidget.fromJson(Object data) {
-    if (data is List<dynamic>) {
-      return ListOfZacWidgetValue.fromJson(<String, dynamic>{
-        converterKey: ListOfZacWidget.unionValue,
-        'value': data
-      });
-    }
-
-    return ConverterHelper.convertToType<ListOfZacWidget>(
-      mapConsumeUnion(ListOfZacWidget.unionValueConsume, data),
-    );
-  }
-
-  @FreezedUnionValue(ListOfZacWidget.unionValue)
-  @With<ActualValue<List<FlutterWidget>>>()
-  factory ListOfZacWidget(
-    List<FlutterWidget> value, {
-    ZacTransformers? transformer,
-  }) = ListOfZacWidgetValue;
-
-  @FreezedUnionValue(ListOfZacWidget.unionValueConsume)
-  @With<ConsumeValueList<FlutterWidget>>()
-  factory ListOfZacWidget.consume(
-    SharedValueFamily family, {
-    ZacTransformers? transformer,
-    @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
-  }) = ListOfZacWidgetConsume;
-
-  List<Widget> getValue(ZacContext zacContext) => map(
-        (obj) => obj
-            .getActualValue(zacContext)
-            .map((e) => e.buildWidget(zacContext))
-            .toList(),
-        consume: (obj) => obj
-            .getSharedValue(zacContext)
-            .map((e) => e.buildWidget(zacContext))
-            .toList(),
-      );
 }
 
 @defaultConverterFreezed

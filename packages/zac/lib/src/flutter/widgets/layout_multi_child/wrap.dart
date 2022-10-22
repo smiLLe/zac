@@ -33,7 +33,7 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterVerticalDirection? verticalDirection,
     FlutterClip? clipBehavior,
-    ListOfZacWidget? children,
+    ZacValueList<FlutterWidget>? children,
   }) = _FlutterWrap;
 
   @override
@@ -51,7 +51,7 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
       verticalDirection:
           verticalDirection?.build(zacContext) ?? VerticalDirection.down,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      children: children?.getValue(zacContext) ?? const <Widget>[],
+      children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }
 }

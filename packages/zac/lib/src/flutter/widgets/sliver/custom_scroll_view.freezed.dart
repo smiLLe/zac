@@ -32,7 +32,8 @@ mixin _$FlutterCustomScrollView {
   FlutterKey? get center => throw _privateConstructorUsedError;
   ZacValue<double>? get anchor => throw _privateConstructorUsedError;
   ZacValue<double>? get cacheExtent => throw _privateConstructorUsedError;
-  ListOfZacWidget? get slivers => throw _privateConstructorUsedError;
+  ZacValueList<FlutterWidget>? get slivers =>
+      throw _privateConstructorUsedError;
   ZacValue<int>? get semanticChildCount =>
       throw _privateConstructorUsedError; // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
@@ -91,7 +92,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   @override
   final ZacValue<double>? cacheExtent;
   @override
-  final ListOfZacWidget? slivers;
+  final ZacValueList<FlutterWidget>? slivers;
   @override
   final ZacValue<int>? semanticChildCount;
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -174,7 +175,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       final FlutterKey? center,
       final ZacValue<double>? anchor,
       final ZacValue<double>? cacheExtent,
-      final ListOfZacWidget? slivers,
+      final ZacValueList<FlutterWidget>? slivers,
       final ZacValue<int>? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
       final ZacValue<String>? restorationId,
@@ -203,7 +204,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   @override
   ZacValue<double>? get cacheExtent;
   @override
-  ListOfZacWidget? get slivers;
+  ZacValueList<FlutterWidget>? get slivers;
   @override
   ZacValue<int>? get semanticChildCount;
   @override // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,

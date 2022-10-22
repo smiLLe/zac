@@ -28,7 +28,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     FlutterWidget? leading,
     ZacValue<bool>? automaticallyImplyLeading,
     FlutterWidget? title,
-    ListOfZacWidget? actions,
+    ZacValueList<FlutterWidget>? actions,
     FlutterWidget? flexibleSpace,
 // PreferredSizeWidget
     FlutterWidget? bottom,
@@ -70,7 +70,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
       automaticallyImplyLeading:
           automaticallyImplyLeading?.getValue(zacContext) ?? true,
       title: title?.buildWidget(zacContext),
-      actions: actions?.getValue(zacContext) ?? const <Widget>[],
+      actions: actions?.getWidgets(zacContext) ?? const <Widget>[],
       flexibleSpace: flexibleSpace?.buildWidget(zacContext),
       bottom: bottom?.buildWidget(zacContext) as PreferredSizeWidget?,
       elevation: elevation?.getValue(zacContext),

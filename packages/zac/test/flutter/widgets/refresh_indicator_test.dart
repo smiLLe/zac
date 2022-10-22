@@ -83,7 +83,7 @@ void main() {
           ]),
           key: FlutterValueKey('FIND_ME'),
           child: FlutterListView(
-            children: ListOfZacWidget(
+            children: ZacValueList<FlutterWidget>.fromJson(
               [
                 FlutterSizedBox(key: FlutterValueKey('child1')),
               ],

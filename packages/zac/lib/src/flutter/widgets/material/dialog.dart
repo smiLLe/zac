@@ -61,7 +61,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
     FlutterKey? key,
     FlutterWidget? title,
     FlutterWidget? content,
-    ListOfZacWidget? actions,
+    ZacValueList<FlutterWidget>? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
@@ -85,7 +85,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
     FlutterWidget? title,
-    ListOfZacWidget? children,
+    ZacValueList<FlutterWidget>? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
@@ -149,7 +149,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
         key: value.key?.buildKey(zacContext),
         title: value.title?.buildWidget(zacContext),
         content: value.content?.buildWidget(zacContext),
-        actions: value.actions?.getValue(zacContext) ?? const <Widget>[],
+        actions: value.actions?.getWidgets(zacContext) ?? const <Widget>[],
         actionsAlignment: value.actionsAlignment?.build(zacContext),
         actionsOverflowButtonSpacing:
             value.actionsOverflowButtonSpacing?.getValue(zacContext),
@@ -176,7 +176,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
       simpleDialog: (value) => SimpleDialog(
         key: value.key?.buildKey(zacContext),
         title: value.title?.buildWidget(zacContext),
-        children: value.children?.getValue(zacContext) ?? const <Widget>[],
+        children: value.children?.getWidgets(zacContext) ?? const <Widget>[],
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,

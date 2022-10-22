@@ -40,5 +40,5 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<double>.fromJson(json['overflowButtonSpacing'] as Object),
       children: json['children'] == null
           ? null
-          : ListOfZacWidget.fromJson(json['children'] as Object),
+          : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
     );

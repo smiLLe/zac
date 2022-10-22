@@ -74,32 +74,6 @@ _$_ZacValueListConsumeRead<TValue> _$$_ZacValueListConsumeReadFromJson<TValue>(
       $type: json['converter'] as String?,
     );
 
-_$ListOfZacWidgetValue _$$ListOfZacWidgetValueFromJson(
-        Map<String, dynamic> json) =>
-    _$ListOfZacWidgetValue(
-      (json['value'] as List<dynamic>)
-          .map((e) => FlutterWidget.fromJson(e as Object))
-          .toList(),
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
-    );
-
-_$ListOfZacWidgetConsume _$$ListOfZacWidgetConsumeFromJson(
-        Map<String, dynamic> json) =>
-    _$ListOfZacWidgetConsume(
-      json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      consumeType: json['consumeType'] == null
-          ? const SharedValueConsumeType.watch()
-          : SharedValueConsumeType.fromJson(
-              json['consumeType'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
-    );
-
 _$_ZacWidgetConsumerBuilder _$$_ZacWidgetConsumerBuilderFromJson(
         Map<String, dynamic> json) =>
     _$_ZacWidgetConsumerBuilder(

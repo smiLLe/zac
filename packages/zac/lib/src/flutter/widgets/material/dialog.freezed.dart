@@ -314,7 +314,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterWidget? content;
   @override
-  final ListOfZacWidget? actions;
+  final ZacValueList<FlutterWidget>? actions;
   @override
   final FlutterEdgeInsetsGeometry? titlePadding;
   @override
@@ -447,7 +447,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       {final FlutterKey? key,
       final FlutterWidget? title,
       final FlutterWidget? content,
-      final ListOfZacWidget? actions,
+      final ZacValueList<FlutterWidget>? actions,
       final FlutterEdgeInsetsGeometry? titlePadding,
       final FlutterTextStyle? titleTextStyle,
       final FlutterEdgeInsetsGeometry? contentPadding,
@@ -473,7 +473,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterKey? get key;
   FlutterWidget? get title;
   FlutterWidget? get content;
-  ListOfZacWidget? get actions;
+  ZacValueList<FlutterWidget>? get actions;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;
@@ -522,7 +522,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterWidget? title;
   @override
-  final ListOfZacWidget? children;
+  final ZacValueList<FlutterWidget>? children;
   @override
   final FlutterEdgeInsetsGeometry? titlePadding;
   @override
@@ -615,7 +615,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialog(
           {final FlutterKey? key,
           final FlutterWidget? title,
-          final ListOfZacWidget? children,
+          final ZacValueList<FlutterWidget>? children,
           final FlutterEdgeInsetsGeometry? titlePadding,
           final FlutterTextStyle? titleTextStyle,
           final FlutterEdgeInsetsGeometry? contentPadding,
@@ -634,7 +634,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
 
   FlutterKey? get key;
   FlutterWidget? get title;
-  ListOfZacWidget? get children;
+  ZacValueList<FlutterWidget>? get children;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;

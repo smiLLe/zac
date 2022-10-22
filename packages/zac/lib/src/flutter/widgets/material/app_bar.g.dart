@@ -23,7 +23,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['title'] as Object),
       actions: json['actions'] == null
           ? null
-          : ListOfZacWidget.fromJson(json['actions'] as Object),
+          : ZacValueList<FlutterWidget>.fromJson(json['actions'] as Object),
       flexibleSpace: json['flexibleSpace'] == null
           ? null
           : FlutterWidget.fromJson(json['flexibleSpace'] as Object),

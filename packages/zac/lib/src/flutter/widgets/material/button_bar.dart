@@ -32,7 +32,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
     FlutterVerticalDirection? overflowDirection,
     ZacValue<double>? overflowButtonSpacing,
-    ListOfZacWidget? children,
+    ZacValueList<FlutterWidget>? children,
   }) = _FlutterButtonBar;
 
   @override
@@ -49,7 +49,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
       overflowDirection: overflowDirection?.build(zacContext),
       overflowButtonSpacing: overflowButtonSpacing?.getValue(zacContext),
-      children: children?.getValue(zacContext) ?? const <Widget>[],
+      children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }
 }
