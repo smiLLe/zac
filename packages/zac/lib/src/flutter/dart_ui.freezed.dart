@@ -2464,7 +2464,7 @@ class _$_FontFeature extends _FontFeature {
   @override
   final String feature;
   @override
-  final ZacInt? value;
+  final ZacValue<int>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2538,7 +2538,7 @@ class _$_FontFeature extends _FontFeature {
 }
 
 abstract class _FontFeature extends FlutterFontFeature {
-  factory _FontFeature(final String feature, [final ZacInt? value]) =
+  factory _FontFeature(final String feature, [final ZacValue<int>? value]) =
       _$_FontFeature;
   _FontFeature._() : super._();
 
@@ -2546,7 +2546,7 @@ abstract class _FontFeature extends FlutterFontFeature {
       _$_FontFeature.fromJson;
 
   String get feature;
-  ZacInt? get value;
+  ZacValue<int>? get value;
 }
 
 /// @nodoc
@@ -3696,7 +3696,7 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
       _$$_FontFeatureNotationalFormsFromJson(json);
 
   @override
-  final ZacInt? value;
+  final ZacValue<int>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3767,14 +3767,14 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
 }
 
 abstract class _FontFeatureNotationalForms extends FlutterFontFeature {
-  factory _FontFeatureNotationalForms([final ZacInt? value]) =
+  factory _FontFeatureNotationalForms([final ZacValue<int>? value]) =
       _$_FontFeatureNotationalForms;
   _FontFeatureNotationalForms._() : super._();
 
   factory _FontFeatureNotationalForms.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureNotationalForms.fromJson;
 
-  ZacInt? get value;
+  ZacValue<int>? get value;
 }
 
 /// @nodoc
@@ -4723,7 +4723,7 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
       _$$_FontFeatureSwashFromJson(json);
 
   @override
-  final ZacInt? value;
+  final ZacValue<int>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4794,13 +4794,13 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
 }
 
 abstract class _FontFeatureSwash extends FlutterFontFeature {
-  factory _FontFeatureSwash([final ZacInt? value]) = _$_FontFeatureSwash;
+  factory _FontFeatureSwash([final ZacValue<int>? value]) = _$_FontFeatureSwash;
   _FontFeatureSwash._() : super._();
 
   factory _FontFeatureSwash.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureSwash.fromJson;
 
-  ZacInt? get value;
+  ZacValue<int>? get value;
 }
 
 /// @nodoc

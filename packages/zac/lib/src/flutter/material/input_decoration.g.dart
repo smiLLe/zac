@@ -38,7 +38,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['helperStyle'] as Map<String, dynamic>),
       helperMaxLines: json['helperMaxLines'] == null
           ? null
-          : ZacInt.fromJson(json['helperMaxLines'] as Object),
+          : ZacValue<int>.fromJson(json['helperMaxLines'] as Object),
       hintText: json['hintText'] == null
           ? null
           : ZacString.fromJson(json['hintText'] as Object),
@@ -52,7 +52,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['hintTextDirection'] as Map<String, dynamic>),
       hintMaxLines: json['hintMaxLines'] == null
           ? null
-          : ZacInt.fromJson(json['hintMaxLines'] as Object),
+          : ZacValue<int>.fromJson(json['hintMaxLines'] as Object),
       errorText: json['errorText'] == null
           ? null
           : ZacString.fromJson(json['errorText'] as Object),
@@ -62,7 +62,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['errorStyle'] as Map<String, dynamic>),
       errorMaxLines: json['errorMaxLines'] == null
           ? null
-          : ZacInt.fromJson(json['errorMaxLines'] as Object),
+          : ZacValue<int>.fromJson(json['errorMaxLines'] as Object),
       isCollapsed: json['isCollapsed'] == null
           ? null
           : ZacBool.fromJson(json['isCollapsed'] as Object),

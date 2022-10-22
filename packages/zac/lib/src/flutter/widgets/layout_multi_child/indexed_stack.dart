@@ -27,7 +27,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
     FlutterAlignmentGeometry? alignment,
     FlutterTextDirection? textDirection,
     FlutterStackFit? sizing,
-    ZacInt? index,
+    ZacValue<int>? index,
     ListOfZacWidget? children,
   }) = _FlutterIndexedStack;
 

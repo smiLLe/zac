@@ -37,7 +37,7 @@ class FlutterCustomScrollView
     ZacDouble? anchor,
     ZacDouble? cacheExtent,
     ListOfZacWidget? slivers,
-    ZacInt? semanticChildCount,
+    ZacValue<int>? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
     ZacString? restorationId,

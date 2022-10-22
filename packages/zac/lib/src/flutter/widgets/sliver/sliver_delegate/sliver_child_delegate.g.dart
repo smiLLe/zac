@@ -21,7 +21,7 @@ _$_FlutterSliverChildListDelegate _$$_FlutterSliverChildListDelegateFromJson(
           : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
       semanticIndexOffset: json['semanticIndexOffset'] == null
           ? null
-          : ZacInt.fromJson(json['semanticIndexOffset'] as Object),
+          : ZacValue<int>.fromJson(json['semanticIndexOffset'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -41,6 +41,6 @@ _$_FlutterSliverChildListDelegateFixed
               : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
           semanticIndexOffset: json['semanticIndexOffset'] == null
               ? null
-              : ZacInt.fromJson(json['semanticIndexOffset'] as Object),
+              : ZacValue<int>.fromJson(json['semanticIndexOffset'] as Object),
           $type: json['converter'] as String?,
         );

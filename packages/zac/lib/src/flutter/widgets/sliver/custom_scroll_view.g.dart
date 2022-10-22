@@ -43,7 +43,7 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
           : ListOfZacWidget.fromJson(json['slivers'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
-          : ZacInt.fromJson(json['semanticChildCount'] as Object),
+          : ZacValue<int>.fromJson(json['semanticChildCount'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
           : FlutterScrollViewKeyboardDismissBehavior.fromJson(

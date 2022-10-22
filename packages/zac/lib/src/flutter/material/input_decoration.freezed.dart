@@ -30,15 +30,15 @@ mixin _$FlutterInputDecoration {
       throw _privateConstructorUsedError;
   ZacString? get helperText => throw _privateConstructorUsedError;
   FlutterTextStyle? get helperStyle => throw _privateConstructorUsedError;
-  ZacInt? get helperMaxLines => throw _privateConstructorUsedError;
+  ZacValue<int>? get helperMaxLines => throw _privateConstructorUsedError;
   ZacString? get hintText => throw _privateConstructorUsedError;
   FlutterTextStyle? get hintStyle => throw _privateConstructorUsedError;
   FlutterTextDirection? get hintTextDirection =>
       throw _privateConstructorUsedError;
-  ZacInt? get hintMaxLines => throw _privateConstructorUsedError;
+  ZacValue<int>? get hintMaxLines => throw _privateConstructorUsedError;
   ZacString? get errorText => throw _privateConstructorUsedError;
   FlutterTextStyle? get errorStyle => throw _privateConstructorUsedError;
-  ZacInt? get errorMaxLines =>
+  ZacValue<int>? get errorMaxLines =>
       throw _privateConstructorUsedError; // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   ZacBool? get isCollapsed => throw _privateConstructorUsedError;
@@ -159,7 +159,7 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterTextStyle? helperStyle;
   @override
-  final ZacInt? helperMaxLines;
+  final ZacValue<int>? helperMaxLines;
   @override
   final ZacString? hintText;
   @override
@@ -167,13 +167,13 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterTextDirection? hintTextDirection;
   @override
-  final ZacInt? hintMaxLines;
+  final ZacValue<int>? hintMaxLines;
   @override
   final ZacString? errorText;
   @override
   final FlutterTextStyle? errorStyle;
   @override
-  final ZacInt? errorMaxLines;
+  final ZacValue<int>? errorMaxLines;
 // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   @override
@@ -407,14 +407,14 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       final FlutterTextStyle? floatingLabelStyle,
       final ZacString? helperText,
       final FlutterTextStyle? helperStyle,
-      final ZacInt? helperMaxLines,
+      final ZacValue<int>? helperMaxLines,
       final ZacString? hintText,
       final FlutterTextStyle? hintStyle,
       final FlutterTextDirection? hintTextDirection,
-      final ZacInt? hintMaxLines,
+      final ZacValue<int>? hintMaxLines,
       final ZacString? errorText,
       final FlutterTextStyle? errorStyle,
-      final ZacInt? errorMaxLines,
+      final ZacValue<int>? errorMaxLines,
       final ZacBool? isCollapsed,
       final ZacBool? isDense,
       final FlutterEdgeInsetsGeometry? contentPadding,
@@ -469,7 +469,7 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterTextStyle? get helperStyle;
   @override
-  ZacInt? get helperMaxLines;
+  ZacValue<int>? get helperMaxLines;
   @override
   ZacString? get hintText;
   @override
@@ -477,13 +477,13 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterTextDirection? get hintTextDirection;
   @override
-  ZacInt? get hintMaxLines;
+  ZacValue<int>? get hintMaxLines;
   @override
   ZacString? get errorText;
   @override
   FlutterTextStyle? get errorStyle;
   @override
-  ZacInt? get errorMaxLines;
+  ZacValue<int>? get errorMaxLines;
   @override // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   ZacBool? get isCollapsed;

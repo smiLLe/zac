@@ -49,8 +49,8 @@ mixin _$FlutterImage {
   ZacBool? get gaplessPlayback => throw _privateConstructorUsedError;
   FlutterFilterQuality? get filterQuality => throw _privateConstructorUsedError;
   ZacBool? get isAntiAlias => throw _privateConstructorUsedError;
-  ZacInt? get cacheWidth => throw _privateConstructorUsedError;
-  ZacInt? get cacheHeight => throw _privateConstructorUsedError;
+  ZacValue<int>? get cacheWidth => throw _privateConstructorUsedError;
+  ZacValue<int>? get cacheHeight => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -139,9 +139,9 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   }
 
   @override
-  final ZacInt? cacheWidth;
+  final ZacValue<int>? cacheWidth;
   @override
-  final ZacInt? cacheHeight;
+  final ZacValue<int>? cacheHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -243,8 +243,8 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
       final FlutterFilterQuality? filterQuality,
       final ZacBool? isAntiAlias,
       final Map<String, String>? headers,
-      final ZacInt? cacheWidth,
-      final ZacInt? cacheHeight}) = _$_FlutterImageNetowrk;
+      final ZacValue<int>? cacheWidth,
+      final ZacValue<int>? cacheHeight}) = _$_FlutterImageNetowrk;
   _FlutterImageNetowrk._() : super._();
 
   factory _FlutterImageNetowrk.fromJson(Map<String, dynamic> json) =
@@ -287,9 +287,9 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   ZacBool? get isAntiAlias;
   Map<String, String>? get headers;
   @override
-  ZacInt? get cacheWidth;
+  ZacValue<int>? get cacheWidth;
   @override
-  ZacInt? get cacheHeight;
+  ZacValue<int>? get cacheHeight;
 }
 
 /// @nodoc
@@ -363,9 +363,9 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final FlutterFilterQuality? filterQuality;
   @override
-  final ZacInt? cacheWidth;
+  final ZacValue<int>? cacheWidth;
   @override
-  final ZacInt? cacheHeight;
+  final ZacValue<int>? cacheHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -467,8 +467,8 @@ abstract class _FlutterImageAsset extends FlutterImage {
       final ZacBool? isAntiAlias,
       final ZacString? package,
       final FlutterFilterQuality? filterQuality,
-      final ZacInt? cacheWidth,
-      final ZacInt? cacheHeight}) = _$_FlutterImageAsset;
+      final ZacValue<int>? cacheWidth,
+      final ZacValue<int>? cacheHeight}) = _$_FlutterImageAsset;
   _FlutterImageAsset._() : super._();
 
   factory _FlutterImageAsset.fromJson(Map<String, dynamic> json) =
@@ -511,7 +511,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   FlutterFilterQuality? get filterQuality;
   @override
-  ZacInt? get cacheWidth;
+  ZacValue<int>? get cacheWidth;
   @override
-  ZacInt? get cacheHeight;
+  ZacValue<int>? get cacheHeight;
 }

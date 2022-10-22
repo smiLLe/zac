@@ -27,7 +27,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-    ZacInt? semanticIndexOffset,
+    ZacValue<int>? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegate;
 
   @FreezedUnionValue(
@@ -38,7 +38,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-    ZacInt? semanticIndexOffset,
+    ZacValue<int>? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegateFixed;
 
   SliverChildDelegate build(ZacContext zacContext) {

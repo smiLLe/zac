@@ -77,16 +77,16 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['enableSuggestions'] as Object),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacInt.fromJson(json['maxLines'] as Object),
+          : ZacValue<int>.fromJson(json['maxLines'] as Object),
       minLines: json['minLines'] == null
           ? null
-          : ZacInt.fromJson(json['minLines'] as Object),
+          : ZacValue<int>.fromJson(json['minLines'] as Object),
       expands: json['expands'] == null
           ? null
           : ZacBool.fromJson(json['expands'] as Object),
       maxLength: json['maxLength'] == null
           ? null
-          : ZacInt.fromJson(json['maxLength'] as Object),
+          : ZacValue<int>.fromJson(json['maxLength'] as Object),
       onChanged: json['onChanged'] == null
           ? null
           : ZacActions.fromJson(json['onChanged'] as Object),

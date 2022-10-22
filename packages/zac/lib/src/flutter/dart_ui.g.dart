@@ -247,7 +247,9 @@ _$_FlutterLocale _$$_FlutterLocaleFromJson(Map<String, dynamic> json) =>
 _$_FontFeature _$$_FontFeatureFromJson(Map<String, dynamic> json) =>
     _$_FontFeature(
       json['feature'] as String,
-      json['value'] == null ? null : ZacInt.fromJson(json['value'] as Object),
+      json['value'] == null
+          ? null
+          : ZacValue<int>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 
@@ -338,7 +340,9 @@ _$_FontFeatureLocaleAware _$$_FontFeatureLocaleAwareFromJson(
 _$_FontFeatureNotationalForms _$$_FontFeatureNotationalFormsFromJson(
         Map<String, dynamic> json) =>
     _$_FontFeatureNotationalForms(
-      json['value'] == null ? null : ZacInt.fromJson(json['value'] as Object),
+      json['value'] == null
+          ? null
+          : ZacValue<int>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 
@@ -411,7 +415,9 @@ _$_FontFeatureSuperscripts _$$_FontFeatureSuperscriptsFromJson(
 
 _$_FontFeatureSwash _$$_FontFeatureSwashFromJson(Map<String, dynamic> json) =>
     _$_FontFeatureSwash(
-      json['value'] == null ? null : ZacInt.fromJson(json['value'] as Object),
+      json['value'] == null
+          ? null
+          : ZacValue<int>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 

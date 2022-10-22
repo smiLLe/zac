@@ -20,7 +20,7 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   @FreezedUnionValue(FlutterSpacer.unionValue)
   factory FlutterSpacer({
     FlutterKey? key,
-    ZacInt? flex,
+    ZacValue<int>? flex,
   }) = _FlutterSpacer;
 
   @override

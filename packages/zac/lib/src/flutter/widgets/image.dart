@@ -44,8 +44,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     FlutterFilterQuality? filterQuality,
     ZacBool? isAntiAlias,
     Map<String, String>? headers,
-    ZacInt? cacheWidth,
-    ZacInt? cacheHeight,
+    ZacValue<int>? cacheWidth,
+    ZacValue<int>? cacheHeight,
   }) = _FlutterImageNetowrk;
 
   @FreezedUnionValue(FlutterImage.unionValueAsset)
@@ -72,8 +72,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     ZacBool? isAntiAlias,
     ZacString? package,
     FlutterFilterQuality? filterQuality,
-    ZacInt? cacheWidth,
-    ZacInt? cacheHeight,
+    ZacValue<int>? cacheWidth,
+    ZacValue<int>? cacheHeight,
   }) = _FlutterImageAsset;
 
   @override

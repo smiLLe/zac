@@ -46,7 +46,7 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
           : ListOfZacWidget.fromJson(json['children'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
-          : ZacInt.fromJson(json['semanticChildCount'] as Object),
+          : ZacValue<int>.fromJson(json['semanticChildCount'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

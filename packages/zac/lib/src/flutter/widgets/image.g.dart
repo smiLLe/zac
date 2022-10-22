@@ -65,10 +65,10 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
       ),
       cacheWidth: json['cacheWidth'] == null
           ? null
-          : ZacInt.fromJson(json['cacheWidth'] as Object),
+          : ZacValue<int>.fromJson(json['cacheWidth'] as Object),
       cacheHeight: json['cacheHeight'] == null
           ? null
-          : ZacInt.fromJson(json['cacheHeight'] as Object),
+          : ZacValue<int>.fromJson(json['cacheHeight'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -130,9 +130,9 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
               json['filterQuality'] as Map<String, dynamic>),
       cacheWidth: json['cacheWidth'] == null
           ? null
-          : ZacInt.fromJson(json['cacheWidth'] as Object),
+          : ZacValue<int>.fromJson(json['cacheWidth'] as Object),
       cacheHeight: json['cacheHeight'] == null
           ? null
-          : ZacInt.fromJson(json['cacheHeight'] as Object),
+          : ZacValue<int>.fromJson(json['cacheHeight'] as Object),
       $type: json['converter'] as String?,
     );

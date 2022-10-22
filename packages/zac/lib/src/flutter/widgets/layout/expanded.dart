@@ -21,7 +21,7 @@ class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   @FreezedUnionValue(FlutterExpanded.unionValue)
   factory FlutterExpanded({
     FlutterKey? key,
-    ZacInt? flex,
+    ZacValue<int>? flex,
     required FlutterWidget child,
   }) = _FlutterExpanded;
 

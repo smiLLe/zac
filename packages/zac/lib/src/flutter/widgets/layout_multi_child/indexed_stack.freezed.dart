@@ -24,7 +24,7 @@ mixin _$FlutterIndexedStack {
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterStackFit? get sizing => throw _privateConstructorUsedError;
-  ZacInt? get index => throw _privateConstructorUsedError;
+  ZacValue<int>? get index => throw _privateConstructorUsedError;
   ListOfZacWidget? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -58,7 +58,7 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
   @override
   final FlutterStackFit? sizing;
   @override
-  final ZacInt? index;
+  final ZacValue<int>? index;
   @override
   final ListOfZacWidget? children;
 
@@ -107,7 +107,7 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
       final FlutterAlignmentGeometry? alignment,
       final FlutterTextDirection? textDirection,
       final FlutterStackFit? sizing,
-      final ZacInt? index,
+      final ZacValue<int>? index,
       final ListOfZacWidget? children}) = _$_FlutterIndexedStack;
   _FlutterIndexedStack._() : super._();
 
@@ -123,7 +123,7 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   @override
   FlutterStackFit? get sizing;
   @override
-  ZacInt? get index;
+  ZacValue<int>? get index;
   @override
   ListOfZacWidget? get children;
 }

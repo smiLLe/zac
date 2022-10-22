@@ -47,10 +47,10 @@ mixin _$FlutterTextField {
   FlutterSmartQuotesType? get smartQuotesType =>
       throw _privateConstructorUsedError;
   ZacBool? get enableSuggestions => throw _privateConstructorUsedError;
-  ZacInt? get maxLines => throw _privateConstructorUsedError;
-  ZacInt? get minLines => throw _privateConstructorUsedError;
+  ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
+  ZacValue<int>? get minLines => throw _privateConstructorUsedError;
   ZacBool? get expands => throw _privateConstructorUsedError;
-  ZacInt? get maxLength =>
+  ZacValue<int>? get maxLength =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onChanged,
   ZacActions? get onChanged =>
       throw _privateConstructorUsedError; // VoidCallback? onEditingComplete,
@@ -184,13 +184,13 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBool? enableSuggestions;
   @override
-  final ZacInt? maxLines;
+  final ZacValue<int>? maxLines;
   @override
-  final ZacInt? minLines;
+  final ZacValue<int>? minLines;
   @override
   final ZacBool? expands;
   @override
-  final ZacInt? maxLength;
+  final ZacValue<int>? maxLength;
 // ValueChanged<String>? onChanged,
   @override
   final ZacActions? onChanged;
@@ -396,10 +396,10 @@ abstract class _FlutterTextField extends FlutterTextField {
       final FlutterSmartDashesType? smartDashesType,
       final FlutterSmartQuotesType? smartQuotesType,
       final ZacBool? enableSuggestions,
-      final ZacInt? maxLines,
-      final ZacInt? minLines,
+      final ZacValue<int>? maxLines,
+      final ZacValue<int>? minLines,
       final ZacBool? expands,
-      final ZacInt? maxLength,
+      final ZacValue<int>? maxLength,
       final ZacActions? onChanged,
       final ZacActions? onEditingComplete,
       final ZacActions? onSubmitted,
@@ -462,13 +462,13 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBool? get enableSuggestions;
   @override
-  ZacInt? get maxLines;
+  ZacValue<int>? get maxLines;
   @override
-  ZacInt? get minLines;
+  ZacValue<int>? get minLines;
   @override
   ZacBool? get expands;
   @override
-  ZacInt? get maxLength;
+  ZacValue<int>? get maxLength;
   @override // ValueChanged<String>? onChanged,
   ZacActions? get onChanged;
   @override // VoidCallback? onEditingComplete,

@@ -31,7 +31,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     ZacBool? softWrap,
     FlutterTextOverflow? overflow,
     ZacDouble? textScaleFactor,
-    ZacInt? maxLines,
+    ZacValue<int>? maxLines,
     ZacString? semanticsLabel,
     FlutterTextWidthBasis? textWidthBasis,
     FlutterTextHeightBehavior? textHeightBehavior,

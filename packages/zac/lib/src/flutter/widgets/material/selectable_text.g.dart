@@ -39,10 +39,10 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : ZacBool.fromJson(json['autofocus'] as Object),
       minLines: json['minLines'] == null
           ? null
-          : ZacInt.fromJson(json['minLines'] as Object),
+          : ZacValue<int>.fromJson(json['minLines'] as Object),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacInt.fromJson(json['maxLines'] as Object),
+          : ZacValue<int>.fromJson(json['maxLines'] as Object),
       cursorWidth: json['cursorWidth'] == null
           ? null
           : ZacDouble.fromJson(json['cursorWidth'] as Object),

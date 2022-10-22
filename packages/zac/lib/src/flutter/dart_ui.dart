@@ -339,7 +339,8 @@ class FlutterFontFeature with _$FlutterFontFeature {
       _$FlutterFontFeatureFromJson(json);
 
   @FreezedUnionValue('f:1:FontFeature')
-  factory FlutterFontFeature(String feature, [ZacInt? value]) = _FontFeature;
+  factory FlutterFontFeature(String feature, [ZacValue<int>? value]) =
+      _FontFeature;
 
   @FreezedUnionValue('f:1:FontFeature.alternative')
   factory FlutterFontFeature.alternative(int value) = _FontFeatureAlternative;
@@ -387,7 +388,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
-  factory FlutterFontFeature.notationalForms([ZacInt? value]) =
+  factory FlutterFontFeature.notationalForms([ZacValue<int>? value]) =
       _FontFeatureNotationalForms;
 
   @FreezedUnionValue('f:1:FontFeature.numerators')
@@ -427,7 +428,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
   factory FlutterFontFeature.superscripts() = _FontFeatureSuperscripts;
 
   @FreezedUnionValue('f:1:FontFeature.swash')
-  factory FlutterFontFeature.swash([ZacInt? value]) = _FontFeatureSwash;
+  factory FlutterFontFeature.swash([ZacValue<int>? value]) = _FontFeatureSwash;
 
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
