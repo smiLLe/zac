@@ -37,7 +37,7 @@ class FlutterOutlineInputBorder
   factory FlutterOutlineInputBorder({
     FlutterBorderSide? borderSide,
     FlutterBorderRadius? borderRadius,
-    ZacDouble? gapPadding,
+    ZacValue<double>? gapPadding,
   }) = _FlutterOutlineInputBorder;
 
   @override

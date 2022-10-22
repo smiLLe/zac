@@ -108,10 +108,10 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
   factory FlutterStrutStyle({
     ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
-    ZacDouble? fontSize,
-    ZacDouble? height,
+    ZacValue<double>? fontSize,
+    ZacValue<double>? height,
     FlutterTextLeadingDistribution? leadingDistribution,
-    ZacDouble? leading,
+    ZacValue<double>? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacBool? forceStrutHeight,
@@ -124,10 +124,10 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     FlutterTextStyle textStyle, {
     ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
-    ZacDouble? fontSize,
-    ZacDouble? height,
+    ZacValue<double>? fontSize,
+    ZacValue<double>? height,
     FlutterTextLeadingDistribution? leadingDistribution,
-    ZacDouble? leading,
+    ZacValue<double>? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacBool? forceStrutHeight,
@@ -271,13 +271,13 @@ class FlutterTextStyle with _$FlutterTextStyle {
     ZacBool? inherit,
     FlutterColor? color,
     FlutterColor? backgroundColor,
-    ZacDouble? fontSize,
+    ZacValue<double>? fontSize,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
-    ZacDouble? letterSpacing,
-    ZacDouble? wordSpacing,
+    ZacValue<double>? letterSpacing,
+    ZacValue<double>? wordSpacing,
     FlutterTextBaseline? textBaseline,
-    ZacDouble? height,
+    ZacValue<double>? height,
     FlutterTextLeadingDistribution? leadingDistribution,
     FlutterLocale? locale,
 // Paint? foreground,
@@ -287,7 +287,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterTextDecoration? decoration,
     FlutterColor? decorationColor,
     FlutterTextDecorationStyle? decorationStyle,
-    ZacDouble? decorationThickness,
+    ZacValue<double>? decorationThickness,
     ZacValue<String>? debugLabel,
     ZacValue<String>? fontFamily,
     List<String>? fontFamilyFallback,
@@ -332,7 +332,7 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
       _$FlutterTextAlignVerticalFromJson(json);
 
   @FreezedUnionValue('f:1:TextAlignVertical')
-  factory FlutterTextAlignVertical({required ZacDouble y}) =
+  factory FlutterTextAlignVertical({required ZacValue<double> y}) =
       _FlutterTextAlignVertical;
   @FreezedUnionValue('f:1:TextAlignVertical.bottom')
   factory FlutterTextAlignVertical.bottom() = _FlutterTextAlignVerticalbottom;
@@ -364,8 +364,8 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements FlutterDartUiShadow {
   factory FlutterBoxShadow({
     FlutterColor? color,
     FlutterOffset? offset,
-    ZacDouble? blurRadius,
-    ZacDouble? spreadRadius,
+    ZacValue<double>? blurRadius,
+    ZacValue<double>? spreadRadius,
     FlutterBlurStyle? blurStyle,
   }) = _FlutterBoxShadow;
 
@@ -410,7 +410,8 @@ class FlutterAlignment
       _$FlutterAlignmentFromJson(json);
 
   @FreezedUnionValue(FlutterAlignment.unionValue)
-  factory FlutterAlignment(ZacDouble x, ZacDouble y) = _FlutterAlignment;
+  factory FlutterAlignment(ZacValue<double> x, ZacValue<double> y) =
+      _FlutterAlignment;
 
   @FreezedUnionValue(FlutterAlignment.unionValueBottomCenter)
   factory FlutterAlignment.bottomCenter() = _FlutterAlignmentbottomCenter;
@@ -484,7 +485,8 @@ class FlutterAlignmentDirectional
       _$FlutterAlignmentDirectionalFromJson(json);
 
   @FreezedUnionValue(FlutterAlignmentDirectional.unionValue)
-  factory FlutterAlignmentDirectional(ZacDouble start, ZacDouble y) =
+  factory FlutterAlignmentDirectional(
+          ZacValue<double> start, ZacValue<double> y) =
       _FlutterAlignmentDirectional;
 
   @FreezedUnionValue(FlutterAlignmentDirectional.unionValueBottomCenter)
@@ -553,7 +555,7 @@ class FlutterFractionalOffset
       _$FlutterFractionalOffsetFromJson(json);
 
   @FreezedUnionValue(FlutterFractionalOffset.unionValue)
-  factory FlutterFractionalOffset(ZacDouble dx, ZacDouble dy) =
+  factory FlutterFractionalOffset(ZacValue<double> dx, ZacValue<double> dy) =
       _FlutterFractionalOffset;
 
   @override
@@ -630,7 +632,7 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   @FreezedUnionValue(FlutterBorder.unionValueAll)
   factory FlutterBorder.all({
     FlutterColor? color,
-    ZacDouble? width,
+    ZacValue<double>? width,
     FlutterBorderStyle? style,
   }) = _FlutterBorderAll;
 
@@ -699,7 +701,7 @@ class FlutterBorderRadius
       _FlutterBorderRadiusAll;
 
   @FreezedUnionValue(FlutterBorderRadius.unionValueCircular)
-  factory FlutterBorderRadius.circular(ZacDouble radius) =
+  factory FlutterBorderRadius.circular(ZacValue<double> radius) =
       _FlutterBorderRadiusCircular;
 
   @FreezedUnionValue(FlutterBorderRadius.unionValueHorizontal)
@@ -732,7 +734,7 @@ class FlutterBorderSide with _$FlutterBorderSide {
   @FreezedUnionValue('f:1:BorderSide')
   factory FlutterBorderSide({
     FlutterColor? color,
-    ZacDouble? width,
+    ZacValue<double>? width,
     FlutterBorderStyle? style,
   }) = _FlutterBorderSide;
 
@@ -893,20 +895,20 @@ class FlutterEdgeInsets
       _$FlutterEdgeInsetsFromJson(json);
 
   @FreezedUnionValue(FlutterEdgeInsets.unionValueAll)
-  factory FlutterEdgeInsets.all(ZacDouble value) = _FlutterEdgeInsetsAll;
+  factory FlutterEdgeInsets.all(ZacValue<double> value) = _FlutterEdgeInsetsAll;
 
   @FreezedUnionValue(FlutterEdgeInsets.unionValueSymmetric)
   factory FlutterEdgeInsets.symmetric({
-    ZacDouble? vertical,
-    ZacDouble? horizontal,
+    ZacValue<double>? vertical,
+    ZacValue<double>? horizontal,
   }) = _FlutterEdgeInsetsSymmetric;
 
   @FreezedUnionValue(FlutterEdgeInsets.unionValueOnly)
   factory FlutterEdgeInsets.only({
-    ZacDouble? left,
-    ZacDouble? top,
-    ZacDouble? right,
-    ZacDouble? bottom,
+    ZacValue<double>? left,
+    ZacValue<double>? top,
+    ZacValue<double>? right,
+    ZacValue<double>? bottom,
   }) = _FlutterEdgeInsetsOnly;
 
   @override
@@ -941,15 +943,15 @@ class FlutterEdgeInsetsDirectional
       _$FlutterEdgeInsetsDirectionalFromJson(json);
 
   @FreezedUnionValue(FlutterEdgeInsetsDirectional.unionValueAll)
-  factory FlutterEdgeInsetsDirectional.all(ZacDouble value) =
+  factory FlutterEdgeInsetsDirectional.all(ZacValue<double> value) =
       _FlutterEdgeInsetsDirectionalAll;
 
   @FreezedUnionValue(FlutterEdgeInsetsDirectional.unionValueOnly)
   factory FlutterEdgeInsetsDirectional.only({
-    ZacDouble? start,
-    ZacDouble? top,
-    ZacDouble? end,
-    ZacDouble? bottom,
+    ZacValue<double>? start,
+    ZacValue<double>? top,
+    ZacValue<double>? end,
+    ZacValue<double>? bottom,
   }) = _FlutterEdgeInsetsDirectionalOnly;
 
   @override

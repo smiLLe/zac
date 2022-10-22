@@ -17,7 +17,7 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacDouble.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object),
       shape: json['shape'] == null
           ? null
           : FlutterShapeBorder.fromJson(json['shape'] as Object),

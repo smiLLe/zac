@@ -1899,13 +1899,13 @@ class _$_FlutterBoxConstraints extends _FlutterBoxConstraints {
       _$$_FlutterBoxConstraintsFromJson(json);
 
   @override
-  final ZacDouble? minWidth;
+  final ZacValue<double>? minWidth;
   @override
-  final ZacDouble? maxWidth;
+  final ZacValue<double>? maxWidth;
   @override
-  final ZacDouble? minHeight;
+  final ZacValue<double>? minHeight;
   @override
-  final ZacDouble? maxHeight;
+  final ZacValue<double>? maxHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -1952,19 +1952,19 @@ class _$_FlutterBoxConstraints extends _FlutterBoxConstraints {
 
 abstract class _FlutterBoxConstraints extends FlutterBoxConstraints {
   factory _FlutterBoxConstraints(
-      {final ZacDouble? minWidth,
-      final ZacDouble? maxWidth,
-      final ZacDouble? minHeight,
-      final ZacDouble? maxHeight}) = _$_FlutterBoxConstraints;
+      {final ZacValue<double>? minWidth,
+      final ZacValue<double>? maxWidth,
+      final ZacValue<double>? minHeight,
+      final ZacValue<double>? maxHeight}) = _$_FlutterBoxConstraints;
   _FlutterBoxConstraints._() : super._();
 
   factory _FlutterBoxConstraints.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraints.fromJson;
 
-  ZacDouble? get minWidth;
-  ZacDouble? get maxWidth;
-  ZacDouble? get minHeight;
-  ZacDouble? get maxHeight;
+  ZacValue<double>? get minWidth;
+  ZacValue<double>? get maxWidth;
+  ZacValue<double>? get minHeight;
+  ZacValue<double>? get maxHeight;
 }
 
 /// @nodoc
@@ -1978,9 +1978,9 @@ class _$_FlutterBoxConstraintsExpand extends _FlutterBoxConstraintsExpand {
       _$$_FlutterBoxConstraintsExpandFromJson(json);
 
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2023,15 +2023,15 @@ class _$_FlutterBoxConstraintsExpand extends _FlutterBoxConstraintsExpand {
 
 abstract class _FlutterBoxConstraintsExpand extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsExpand(
-      {final ZacDouble? width,
-      final ZacDouble? height}) = _$_FlutterBoxConstraintsExpand;
+      {final ZacValue<double>? width,
+      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsExpand;
   _FlutterBoxConstraintsExpand._() : super._();
 
   factory _FlutterBoxConstraintsExpand.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsExpand.fromJson;
 
-  ZacDouble? get width;
-  ZacDouble? get height;
+  ZacValue<double>? get width;
+  ZacValue<double>? get height;
 }
 
 /// @nodoc
@@ -2167,9 +2167,9 @@ class _$_FlutterBoxConstraintsTightFor extends _FlutterBoxConstraintsTightFor {
       _$$_FlutterBoxConstraintsTightForFromJson(json);
 
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2212,15 +2212,15 @@ class _$_FlutterBoxConstraintsTightFor extends _FlutterBoxConstraintsTightFor {
 
 abstract class _FlutterBoxConstraintsTightFor extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsTightFor(
-      {final ZacDouble? width,
-      final ZacDouble? height}) = _$_FlutterBoxConstraintsTightFor;
+      {final ZacValue<double>? width,
+      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsTightFor;
   _FlutterBoxConstraintsTightFor._() : super._();
 
   factory _FlutterBoxConstraintsTightFor.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsTightFor.fromJson;
 
-  ZacDouble? get width;
-  ZacDouble? get height;
+  ZacValue<double>? get width;
+  ZacValue<double>? get height;
 }
 
 /// @nodoc
@@ -2237,9 +2237,9 @@ class _$_FlutterBoxConstraintsTightForFinite
       _$$_FlutterBoxConstraintsTightForFiniteFromJson(json);
 
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2283,16 +2283,16 @@ class _$_FlutterBoxConstraintsTightForFinite
 abstract class _FlutterBoxConstraintsTightForFinite
     extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsTightForFinite(
-      {final ZacDouble? width,
-      final ZacDouble? height}) = _$_FlutterBoxConstraintsTightForFinite;
+      {final ZacValue<double>? width,
+      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsTightForFinite;
   _FlutterBoxConstraintsTightForFinite._() : super._();
 
   factory _FlutterBoxConstraintsTightForFinite.fromJson(
           Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsTightForFinite.fromJson;
 
-  ZacDouble? get width;
-  ZacDouble? get height;
+  ZacValue<double>? get width;
+  ZacValue<double>? get height;
 }
 
 FlutterSliverGridDelegate _$FlutterSliverGridDelegateFromJson(
@@ -2314,10 +2314,10 @@ FlutterSliverGridDelegate _$FlutterSliverGridDelegateFromJson(
 
 /// @nodoc
 mixin _$FlutterSliverGridDelegate {
-  ZacDouble? get mainAxisSpacing => throw _privateConstructorUsedError;
-  ZacDouble? get crossAxisSpacing => throw _privateConstructorUsedError;
-  ZacDouble? get childAspectRatio => throw _privateConstructorUsedError;
-  ZacDouble? get mainAxisExtent => throw _privateConstructorUsedError;
+  ZacValue<double>? get mainAxisSpacing => throw _privateConstructorUsedError;
+  ZacValue<double>? get crossAxisSpacing => throw _privateConstructorUsedError;
+  ZacValue<double>? get childAspectRatio => throw _privateConstructorUsedError;
+  ZacValue<double>? get mainAxisExtent => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -2352,13 +2352,13 @@ class _$_FlutterSliverGridDelegateFixedCrossAxisCount
   @override
   final int crossAxisCount;
   @override
-  final ZacDouble? mainAxisSpacing;
+  final ZacValue<double>? mainAxisSpacing;
   @override
-  final ZacDouble? crossAxisSpacing;
+  final ZacValue<double>? crossAxisSpacing;
   @override
-  final ZacDouble? childAspectRatio;
+  final ZacValue<double>? childAspectRatio;
   @override
-  final ZacDouble? mainAxisExtent;
+  final ZacValue<double>? mainAxisExtent;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2413,10 +2413,10 @@ abstract class _FlutterSliverGridDelegateFixedCrossAxisCount
     extends FlutterSliverGridDelegate {
   factory _FlutterSliverGridDelegateFixedCrossAxisCount(
           {required final int crossAxisCount,
-          final ZacDouble? mainAxisSpacing,
-          final ZacDouble? crossAxisSpacing,
-          final ZacDouble? childAspectRatio,
-          final ZacDouble? mainAxisExtent}) =
+          final ZacValue<double>? mainAxisSpacing,
+          final ZacValue<double>? crossAxisSpacing,
+          final ZacValue<double>? childAspectRatio,
+          final ZacValue<double>? mainAxisExtent}) =
       _$_FlutterSliverGridDelegateFixedCrossAxisCount;
   _FlutterSliverGridDelegateFixedCrossAxisCount._() : super._();
 
@@ -2426,13 +2426,13 @@ abstract class _FlutterSliverGridDelegateFixedCrossAxisCount
 
   int get crossAxisCount;
   @override
-  ZacDouble? get mainAxisSpacing;
+  ZacValue<double>? get mainAxisSpacing;
   @override
-  ZacDouble? get crossAxisSpacing;
+  ZacValue<double>? get crossAxisSpacing;
   @override
-  ZacDouble? get childAspectRatio;
+  ZacValue<double>? get childAspectRatio;
   @override
-  ZacDouble? get mainAxisExtent;
+  ZacValue<double>? get mainAxisExtent;
 }
 
 /// @nodoc
@@ -2454,15 +2454,15 @@ class _$_FlutterSliverGridDelegateMaxCrossAxisExtent
       _$$_FlutterSliverGridDelegateMaxCrossAxisExtentFromJson(json);
 
   @override
-  final ZacDouble maxCrossAxisExtent;
+  final ZacValue<double> maxCrossAxisExtent;
   @override
-  final ZacDouble? mainAxisSpacing;
+  final ZacValue<double>? mainAxisSpacing;
   @override
-  final ZacDouble? crossAxisSpacing;
+  final ZacValue<double>? crossAxisSpacing;
   @override
-  final ZacDouble? childAspectRatio;
+  final ZacValue<double>? childAspectRatio;
   @override
-  final ZacDouble? mainAxisExtent;
+  final ZacValue<double>? mainAxisExtent;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2516,11 +2516,11 @@ class _$_FlutterSliverGridDelegateMaxCrossAxisExtent
 abstract class _FlutterSliverGridDelegateMaxCrossAxisExtent
     extends FlutterSliverGridDelegate {
   factory _FlutterSliverGridDelegateMaxCrossAxisExtent(
-          {required final ZacDouble maxCrossAxisExtent,
-          final ZacDouble? mainAxisSpacing,
-          final ZacDouble? crossAxisSpacing,
-          final ZacDouble? childAspectRatio,
-          final ZacDouble? mainAxisExtent}) =
+          {required final ZacValue<double> maxCrossAxisExtent,
+          final ZacValue<double>? mainAxisSpacing,
+          final ZacValue<double>? crossAxisSpacing,
+          final ZacValue<double>? childAspectRatio,
+          final ZacValue<double>? mainAxisExtent}) =
       _$_FlutterSliverGridDelegateMaxCrossAxisExtent;
   _FlutterSliverGridDelegateMaxCrossAxisExtent._() : super._();
 
@@ -2528,15 +2528,15 @@ abstract class _FlutterSliverGridDelegateMaxCrossAxisExtent
           Map<String, dynamic> json) =
       _$_FlutterSliverGridDelegateMaxCrossAxisExtent.fromJson;
 
-  ZacDouble get maxCrossAxisExtent;
+  ZacValue<double> get maxCrossAxisExtent;
   @override
-  ZacDouble? get mainAxisSpacing;
+  ZacValue<double>? get mainAxisSpacing;
   @override
-  ZacDouble? get crossAxisSpacing;
+  ZacValue<double>? get crossAxisSpacing;
   @override
-  ZacDouble? get childAspectRatio;
+  ZacValue<double>? get childAspectRatio;
   @override
-  ZacDouble? get mainAxisExtent;
+  ZacValue<double>? get mainAxisExtent;
 }
 
 FlutterDecorationPosition _$FlutterDecorationPositionFromJson(

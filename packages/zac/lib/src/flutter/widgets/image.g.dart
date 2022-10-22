@@ -15,7 +15,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       scale: json['scale'] == null
           ? null
-          : ZacDouble.fromJson(json['scale'] as Object),
+          : ZacValue<double>.fromJson(json['scale'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
           : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
@@ -24,10 +24,10 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacBool.fromJson(json['excludeFromSemantics'] as Object),
       width: json['width'] == null
           ? null
-          : ZacDouble.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacDouble.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(json['height'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
@@ -86,13 +86,13 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['excludeFromSemantics'] as Object),
       scale: json['scale'] == null
           ? null
-          : ZacDouble.fromJson(json['scale'] as Object),
+          : ZacValue<double>.fromJson(json['scale'] as Object),
       width: json['width'] == null
           ? null
-          : ZacDouble.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacDouble.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(json['height'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),

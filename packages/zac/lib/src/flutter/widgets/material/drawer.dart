@@ -24,7 +24,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   factory FlutterDrawer({
     FlutterKey? key,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterShapeBorder? shape,
     FlutterWidget? child,
     ZacValue<String>? semanticLabel,

@@ -198,6 +198,10 @@ void main() {
         () => ZacValue<int>.fromJson(() {}),
         throwsA(isA<StateError>().having((p0) => p0.message, 'error',
             contains('because the data given is not supported'))));
+
+    expect(ZacValue<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
+    expect(ZacValue<double>.fromJson(4),
+        ZacValueConsume<double>.simple(value: 4.0));
   });
 
   test('Create a ZacValueRead', () {
@@ -246,6 +250,11 @@ void main() {
         () => ZacValueRead<int>.fromJson(() {}),
         throwsA(isA<StateError>().having((p0) => p0.message, 'error',
             contains('because the data given is not supported'))));
+
+    expect(
+        ZacValueRead<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
+    expect(ZacValueRead<double>.fromJson(4),
+        ZacValueConsume<double>.simple(value: 4.0));
   });
 
   test(

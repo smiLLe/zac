@@ -243,16 +243,16 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 
   @FreezedUnionValue('f:1:BoxConstraints')
   factory FlutterBoxConstraints({
-    ZacDouble? minWidth,
-    ZacDouble? maxWidth,
-    ZacDouble? minHeight,
-    ZacDouble? maxHeight,
+    ZacValue<double>? minWidth,
+    ZacValue<double>? maxWidth,
+    ZacValue<double>? minHeight,
+    ZacValue<double>? maxHeight,
   }) = _FlutterBoxConstraints;
 
   @FreezedUnionValue('f:1:BoxConstraints.expand')
   factory FlutterBoxConstraints.expand({
-    ZacDouble? width,
-    ZacDouble? height,
+    ZacValue<double>? width,
+    ZacValue<double>? height,
   }) = _FlutterBoxConstraintsExpand;
 
   @FreezedUnionValue('f:1:BoxConstraints.loose')
@@ -265,12 +265,13 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 
   @FreezedUnionValue('f:1:BoxConstraints.tightFor')
   factory FlutterBoxConstraints.tightFor(
-      {ZacDouble? width, ZacDouble? height}) = _FlutterBoxConstraintsTightFor;
+      {ZacValue<double>? width,
+      ZacValue<double>? height}) = _FlutterBoxConstraintsTightFor;
 
   @FreezedUnionValue('f:1:BoxConstraints.tightForFinite')
   factory FlutterBoxConstraints.tightForFinite(
-      {ZacDouble? width,
-      ZacDouble? height}) = _FlutterBoxConstraintsTightForFinite;
+      {ZacValue<double>? width,
+      ZacValue<double>? height}) = _FlutterBoxConstraintsTightForFinite;
 
   BoxConstraints build(ZacContext zacContext) {
     return map(
@@ -306,19 +307,19 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
   @FreezedUnionValue('f:1:SliverGridDelegateWithFixedCrossAxisCount')
   factory FlutterSliverGridDelegate.fixedCrossAxisCount({
     required int crossAxisCount,
-    ZacDouble? mainAxisSpacing,
-    ZacDouble? crossAxisSpacing,
-    ZacDouble? childAspectRatio,
-    ZacDouble? mainAxisExtent,
+    ZacValue<double>? mainAxisSpacing,
+    ZacValue<double>? crossAxisSpacing,
+    ZacValue<double>? childAspectRatio,
+    ZacValue<double>? mainAxisExtent,
   }) = _FlutterSliverGridDelegateFixedCrossAxisCount;
 
   @FreezedUnionValue('f:1:SliverGridDelegateWithMaxCrossAxisExtent')
   factory FlutterSliverGridDelegate.maxCrossAxisExtent({
-    required ZacDouble maxCrossAxisExtent,
-    ZacDouble? mainAxisSpacing,
-    ZacDouble? crossAxisSpacing,
-    ZacDouble? childAspectRatio,
-    ZacDouble? mainAxisExtent,
+    required ZacValue<double> maxCrossAxisExtent,
+    ZacValue<double>? mainAxisSpacing,
+    ZacValue<double>? crossAxisSpacing,
+    ZacValue<double>? childAspectRatio,
+    ZacValue<double>? mainAxisExtent,
   }) = _FlutterSliverGridDelegateMaxCrossAxisExtent;
 
   SliverGridDelegate build(ZacContext zacContext) {

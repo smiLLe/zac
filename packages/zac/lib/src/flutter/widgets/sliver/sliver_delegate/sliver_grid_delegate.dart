@@ -24,20 +24,20 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
       .unionValueSliverGridDelegateWithFixedCrossAxisCount)
   factory FlutterSliverGridDelegate.withFixedCrossAxisCount({
     required int crossAxisCount,
-    ZacDouble? mainAxisSpacing,
-    ZacDouble? crossAxisSpacing,
-    ZacDouble? childAspectRatio,
-    ZacDouble? mainAxisExtent,
+    ZacValue<double>? mainAxisSpacing,
+    ZacValue<double>? crossAxisSpacing,
+    ZacValue<double>? childAspectRatio,
+    ZacValue<double>? mainAxisExtent,
   }) = _SliverGridDelegateWithFixedCrossAxisCount;
 
   @FreezedUnionValue(FlutterSliverGridDelegate
       .unionValueSliverGridDelegateWithMaxCrossAxisExtent)
   factory FlutterSliverGridDelegate.withMaxCrossAxisExtent({
-    required ZacDouble maxCrossAxisExtent,
-    ZacDouble? mainAxisSpacing,
-    ZacDouble? crossAxisSpacing,
-    ZacDouble? childAspectRatio,
-    ZacDouble? mainAxisExtent,
+    required ZacValue<double> maxCrossAxisExtent,
+    ZacValue<double>? mainAxisSpacing,
+    ZacValue<double>? crossAxisSpacing,
+    ZacValue<double>? childAspectRatio,
+    ZacValue<double>? mainAxisExtent,
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
   SliverGridDelegate build(ZacContext zacContext) {

@@ -79,11 +79,11 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['enableFeedback'] as Object),
       horizontalTitleGap: json['horizontalTitleGap'] == null
           ? null
-          : ZacDouble.fromJson(json['horizontalTitleGap'] as Object),
+          : ZacValue<double>.fromJson(json['horizontalTitleGap'] as Object),
       minVerticalPadding: json['minVerticalPadding'] == null
           ? null
-          : ZacDouble.fromJson(json['minVerticalPadding'] as Object),
+          : ZacValue<double>.fromJson(json['minVerticalPadding'] as Object),
       minLeadingWidth: json['minLeadingWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['minLeadingWidth'] as Object),
+          : ZacValue<double>.fromJson(json['minLeadingWidth'] as Object),
     );

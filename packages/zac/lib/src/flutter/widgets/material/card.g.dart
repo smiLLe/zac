@@ -19,7 +19,7 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacDouble.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object),
       shape: json['shape'] == null
           ? null
           : FlutterShapeBorder.fromJson(json['shape'] as Object),

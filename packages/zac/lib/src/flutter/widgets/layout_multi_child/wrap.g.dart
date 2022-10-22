@@ -20,10 +20,10 @@ _$_FlutterWrap _$$_FlutterWrapFromJson(Map<String, dynamic> json) =>
               json['alignment'] as Map<String, dynamic>),
       spacing: json['spacing'] == null
           ? null
-          : ZacDouble.fromJson(json['spacing'] as Object),
+          : ZacValue<double>.fromJson(json['spacing'] as Object),
       runSpacing: json['runSpacing'] == null
           ? null
-          : ZacDouble.fromJson(json['runSpacing'] as Object),
+          : ZacValue<double>.fromJson(json['runSpacing'] as Object),
       runAlignment: json['runAlignment'] == null
           ? null
           : FlutterWrapAlignment.fromJson(

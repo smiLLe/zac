@@ -23,8 +23,8 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   factory FlutterAlign({
     FlutterKey? key,
     FlutterAlignmentGeometry? alignment,
-    ZacDouble? widthFactor,
-    ZacDouble? heightFactor,
+    ZacValue<double>? widthFactor,
+    ZacValue<double>? heightFactor,
     // @ZacWidgetNullableConverter() ZacWidget? child,
     FlutterWidget? child,
   }) = _FlutterAlign;

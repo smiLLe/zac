@@ -34,7 +34,7 @@ FlutterProgressIndicator _$FlutterProgressIndicatorFromJson(
 /// @nodoc
 mixin _$FlutterProgressIndicator {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble? get value => throw _privateConstructorUsedError;
+  ZacValue<double>? get value => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
@@ -71,14 +71,14 @@ class _$_FlutterProgressIndicatorLinear
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? value;
+  final ZacValue<double>? value;
   @override
   final FlutterColor? backgroundColor;
   @override
   final FlutterColor? color;
 // Animation<Color?>? valueColor,
   @override
-  final ZacDouble? minHeight;
+  final ZacValue<double>? minHeight;
   @override
   final ZacValue<String>? semanticsLabel;
   @override
@@ -135,10 +135,10 @@ abstract class _FlutterProgressIndicatorLinear
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorLinear(
           {final FlutterKey? key,
-          final ZacDouble? value,
+          final ZacValue<double>? value,
           final FlutterColor? backgroundColor,
           final FlutterColor? color,
-          final ZacDouble? minHeight,
+          final ZacValue<double>? minHeight,
           final ZacValue<String>? semanticsLabel,
           final ZacValue<String>? semanticsValue}) =
       _$_FlutterProgressIndicatorLinear;
@@ -150,12 +150,12 @@ abstract class _FlutterProgressIndicatorLinear
   @override
   FlutterKey? get key;
   @override
-  ZacDouble? get value;
+  ZacValue<double>? get value;
   @override
   FlutterColor? get backgroundColor;
   @override
   FlutterColor? get color; // Animation<Color?>? valueColor,
-  ZacDouble? get minHeight;
+  ZacValue<double>? get minHeight;
   @override
   ZacValue<String>? get semanticsLabel;
   @override
@@ -185,14 +185,14 @@ class _$_FlutterProgressIndicatorCircular
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? value;
+  final ZacValue<double>? value;
   @override
   final FlutterColor? backgroundColor;
   @override
   final FlutterColor? color;
 // Animation<Color?>? valueColor,
   @override
-  final ZacDouble? strokeWidth;
+  final ZacValue<double>? strokeWidth;
   @override
   final ZacValue<String>? semanticsLabel;
   @override
@@ -250,10 +250,10 @@ abstract class _FlutterProgressIndicatorCircular
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorCircular(
           {final FlutterKey? key,
-          final ZacDouble? value,
+          final ZacValue<double>? value,
           final FlutterColor? backgroundColor,
           final FlutterColor? color,
-          final ZacDouble? strokeWidth,
+          final ZacValue<double>? strokeWidth,
           final ZacValue<String>? semanticsLabel,
           final ZacValue<String>? semanticsValue}) =
       _$_FlutterProgressIndicatorCircular;
@@ -265,12 +265,12 @@ abstract class _FlutterProgressIndicatorCircular
   @override
   FlutterKey? get key;
   @override
-  ZacDouble? get value;
+  ZacValue<double>? get value;
   @override
   FlutterColor? get backgroundColor;
   @override
   FlutterColor? get color; // Animation<Color?>? valueColor,
-  ZacDouble? get strokeWidth;
+  ZacValue<double>? get strokeWidth;
   @override
   ZacValue<String>? get semanticsLabel;
   @override

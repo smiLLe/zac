@@ -32,8 +32,8 @@ FlutterPositioned _$FlutterPositionedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterPositioned {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble? get top => throw _privateConstructorUsedError;
-  ZacDouble? get bottom => throw _privateConstructorUsedError;
+  ZacValue<double>? get top => throw _privateConstructorUsedError;
+  ZacValue<double>? get bottom => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -67,17 +67,17 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? left;
+  final ZacValue<double>? left;
   @override
-  final ZacDouble? top;
+  final ZacValue<double>? top;
   @override
-  final ZacDouble? right;
+  final ZacValue<double>? right;
   @override
-  final ZacDouble? bottom;
+  final ZacValue<double>? bottom;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterWidget child;
 
@@ -131,12 +131,12 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
 abstract class _FlutterPositioneddirectional extends FlutterPositioned {
   factory _FlutterPositioneddirectional(
       {final FlutterKey? key,
-      final ZacDouble? left,
-      final ZacDouble? top,
-      final ZacDouble? right,
-      final ZacDouble? bottom,
-      final ZacDouble? width,
-      final ZacDouble? height,
+      final ZacValue<double>? left,
+      final ZacValue<double>? top,
+      final ZacValue<double>? right,
+      final ZacValue<double>? bottom,
+      final ZacValue<double>? width,
+      final ZacValue<double>? height,
       required final FlutterWidget child}) = _$_FlutterPositioneddirectional;
   _FlutterPositioneddirectional._() : super._();
 
@@ -145,14 +145,14 @@ abstract class _FlutterPositioneddirectional extends FlutterPositioned {
 
   @override
   FlutterKey? get key;
-  ZacDouble? get left;
+  ZacValue<double>? get left;
   @override
-  ZacDouble? get top;
-  ZacDouble? get right;
+  ZacValue<double>? get top;
+  ZacValue<double>? get right;
   @override
-  ZacDouble? get bottom;
-  ZacDouble? get width;
-  ZacDouble? get height;
+  ZacValue<double>? get bottom;
+  ZacValue<double>? get width;
+  ZacValue<double>? get height;
   @override
   FlutterWidget get child;
 }
@@ -182,17 +182,17 @@ class _$_FlutterPositioned extends _FlutterPositioned {
   @override
   final FlutterTextDirection textDirection;
   @override
-  final ZacDouble? start;
+  final ZacValue<double>? start;
   @override
-  final ZacDouble? top;
+  final ZacValue<double>? top;
   @override
-  final ZacDouble? end;
+  final ZacValue<double>? end;
   @override
-  final ZacDouble? bottom;
+  final ZacValue<double>? bottom;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterWidget child;
 
@@ -250,12 +250,12 @@ abstract class _FlutterPositioned extends FlutterPositioned {
   factory _FlutterPositioned(
       {final FlutterKey? key,
       required final FlutterTextDirection textDirection,
-      final ZacDouble? start,
-      final ZacDouble? top,
-      final ZacDouble? end,
-      final ZacDouble? bottom,
-      final ZacDouble? width,
-      final ZacDouble? height,
+      final ZacValue<double>? start,
+      final ZacValue<double>? top,
+      final ZacValue<double>? end,
+      final ZacValue<double>? bottom,
+      final ZacValue<double>? width,
+      final ZacValue<double>? height,
       required final FlutterWidget child}) = _$_FlutterPositioned;
   _FlutterPositioned._() : super._();
 
@@ -265,14 +265,14 @@ abstract class _FlutterPositioned extends FlutterPositioned {
   @override
   FlutterKey? get key;
   FlutterTextDirection get textDirection;
-  ZacDouble? get start;
+  ZacValue<double>? get start;
   @override
-  ZacDouble? get top;
-  ZacDouble? get end;
+  ZacValue<double>? get top;
+  ZacValue<double>? get end;
   @override
-  ZacDouble? get bottom;
-  ZacDouble? get width;
-  ZacDouble? get height;
+  ZacValue<double>? get bottom;
+  ZacValue<double>? get width;
+  ZacValue<double>? get height;
   @override
   FlutterWidget get child;
 }
@@ -297,13 +297,13 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? left;
+  final ZacValue<double>? left;
   @override
-  final ZacDouble? top;
+  final ZacValue<double>? top;
   @override
-  final ZacDouble? right;
+  final ZacValue<double>? right;
   @override
-  final ZacDouble? bottom;
+  final ZacValue<double>? bottom;
   @override
   final FlutterWidget child;
 
@@ -353,10 +353,10 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
 abstract class _FlutterPositionedfill extends FlutterPositioned {
   factory _FlutterPositionedfill(
       {final FlutterKey? key,
-      final ZacDouble? left,
-      final ZacDouble? top,
-      final ZacDouble? right,
-      final ZacDouble? bottom,
+      final ZacValue<double>? left,
+      final ZacValue<double>? top,
+      final ZacValue<double>? right,
+      final ZacValue<double>? bottom,
       required final FlutterWidget child}) = _$_FlutterPositionedfill;
   _FlutterPositionedfill._() : super._();
 
@@ -365,12 +365,12 @@ abstract class _FlutterPositionedfill extends FlutterPositioned {
 
   @override
   FlutterKey? get key;
-  ZacDouble? get left;
+  ZacValue<double>? get left;
   @override
-  ZacDouble? get top;
-  ZacDouble? get right;
+  ZacValue<double>? get top;
+  ZacValue<double>? get right;
   @override
-  ZacDouble? get bottom;
+  ZacValue<double>? get bottom;
   @override
   FlutterWidget get child;
 }

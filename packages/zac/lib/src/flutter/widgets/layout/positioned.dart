@@ -24,12 +24,12 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   @FreezedUnionValue(FlutterPositioned.unionValue)
   factory FlutterPositioned({
     FlutterKey? key,
-    ZacDouble? left,
-    ZacDouble? top,
-    ZacDouble? right,
-    ZacDouble? bottom,
-    ZacDouble? width,
-    ZacDouble? height,
+    ZacValue<double>? left,
+    ZacValue<double>? top,
+    ZacValue<double>? right,
+    ZacValue<double>? bottom,
+    ZacValue<double>? width,
+    ZacValue<double>? height,
     required FlutterWidget child,
   }) = _FlutterPositioneddirectional;
 
@@ -37,22 +37,22 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   factory FlutterPositioned.directional({
     FlutterKey? key,
     required FlutterTextDirection textDirection,
-    ZacDouble? start,
-    ZacDouble? top,
-    ZacDouble? end,
-    ZacDouble? bottom,
-    ZacDouble? width,
-    ZacDouble? height,
+    ZacValue<double>? start,
+    ZacValue<double>? top,
+    ZacValue<double>? end,
+    ZacValue<double>? bottom,
+    ZacValue<double>? width,
+    ZacValue<double>? height,
     required FlutterWidget child,
   }) = _FlutterPositioned;
 
   @FreezedUnionValue(FlutterPositioned.unionValueFill)
   factory FlutterPositioned.fill({
     FlutterKey? key,
-    ZacDouble? left,
-    ZacDouble? top,
-    ZacDouble? right,
-    ZacDouble? bottom,
+    ZacValue<double>? left,
+    ZacValue<double>? top,
+    ZacValue<double>? right,
+    ZacValue<double>? bottom,
     required FlutterWidget child,
   }) = _FlutterPositionedfill;
 

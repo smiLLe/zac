@@ -30,7 +30,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     FlutterLocale? locale,
     ZacBool? softWrap,
     FlutterTextOverflow? overflow,
-    ZacDouble? textScaleFactor,
+    ZacValue<double>? textScaleFactor,
     ZacValue<int>? maxLines,
     ZacValue<String>? semanticsLabel,
     FlutterTextWidthBasis? textWidthBasis,

@@ -48,9 +48,9 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
     FlutterColor? tileColor,
     FlutterColor? selectedTileColor,
     ZacBool? enableFeedback,
-    ZacDouble? horizontalTitleGap,
-    ZacDouble? minVerticalPadding,
-    ZacDouble? minLeadingWidth,
+    ZacValue<double>? horizontalTitleGap,
+    ZacValue<double>? minVerticalPadding,
+    ZacValue<double>? minLeadingWidth,
   }) = _FlutterListTile;
 
   @override

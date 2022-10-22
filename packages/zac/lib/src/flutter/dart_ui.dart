@@ -30,7 +30,7 @@ class FlutterColor with _$FlutterColor {
     required int r,
     required int g,
     required int b,
-    required ZacDouble opacity,
+    required ZacValue<double> opacity,
   }) = _FlutterColorFromRBGO;
 
   Color build(ZacContext zacContext) {
@@ -54,12 +54,13 @@ class FlutterOffset with _$FlutterOffset {
       _$FlutterOffsetFromJson(json);
 
   @FreezedUnionValue('f:1:Offset')
-  factory FlutterOffset(ZacDouble dx, ZacDouble dy) = _FlutterOffset;
+  factory FlutterOffset(ZacValue<double> dx, ZacValue<double> dy) =
+      _FlutterOffset;
 
   @FreezedUnionValue('f:1:Offset.fromDirection')
   factory FlutterOffset.fromDirection(
-      {required ZacDouble direction,
-      ZacDouble? distance}) = _FlutterOffsetFromDirection;
+      {required ZacValue<double> direction,
+      ZacValue<double>? distance}) = _FlutterOffsetFromDirection;
 
   Offset build(ZacContext zacContext) {
     return map(
@@ -109,10 +110,11 @@ class FlutterRadius with _$FlutterRadius {
       _$FlutterRadiusFromJson(json);
 
   @FreezedUnionValue('f:1:Radius.circular')
-  factory FlutterRadius.circular(ZacDouble radius) = _FlutterRadiusCircular;
+  factory FlutterRadius.circular(ZacValue<double> radius) =
+      _FlutterRadiusCircular;
 
   @FreezedUnionValue('f:1:Radius.elliptical')
-  factory FlutterRadius.elliptical(ZacDouble x, ZacDouble y) =
+  factory FlutterRadius.elliptical(ZacValue<double> x, ZacValue<double> y) =
       _FlutterRadiusElliptical;
 
   Radius build(ZacContext zacContext) {
@@ -709,25 +711,23 @@ class FlutterRect with _$FlutterRect {
   @FreezedUnionValue('f:1:Rect.fromCenter')
   factory FlutterRect.fromCenter({
     required FlutterOffset center,
-    required ZacDouble width,
-    required ZacDouble height,
+    required ZacValue<double> width,
+    required ZacValue<double> height,
   }) = _FlutterRectFroMCenter;
 
   @FreezedUnionValue('f:1:Rect.fromCircle')
   factory FlutterRect.fromCircle({
     required FlutterOffset center,
-    required ZacDouble radius,
+    required ZacValue<double> radius,
   }) = _FlutterRectFromCircle;
 
   @FreezedUnionValue('f:1:Rect.fromLTRB')
-  factory FlutterRect.fromLTRB(
-          ZacDouble left, ZacDouble top, ZacDouble right, ZacDouble bottom) =
-      _FlutterRectFromLTRB;
+  factory FlutterRect.fromLTRB(ZacValue<double> left, ZacValue<double> top,
+      ZacValue<double> right, ZacValue<double> bottom) = _FlutterRectFromLTRB;
 
   @FreezedUnionValue('f:1:Rect.fromLTWH')
-  factory FlutterRect.fromLTWH(
-          ZacDouble left, ZacDouble top, ZacDouble width, ZacDouble height) =
-      _FlutterRectFromLTWH;
+  factory FlutterRect.fromLTWH(ZacValue<double> left, ZacValue<double> top,
+      ZacValue<double> width, ZacValue<double> height) = _FlutterRectFromLTWH;
 
   @FreezedUnionValue('f:1:Rect.fromPoints')
   factory FlutterRect.fromPoints(FlutterOffset a, FlutterOffset b) =
@@ -814,8 +814,8 @@ class FlutterSize with _$FlutterSize {
 
   @FreezedUnionValue('f:1:Size')
   factory FlutterSize(
-    ZacDouble width,
-    ZacDouble height,
+    ZacValue<double> width,
+    ZacValue<double> height,
   ) = _FlutterSize;
 
   Size build(ZacContext zacContext) {
@@ -905,7 +905,7 @@ class DartUiShadow with _$DartUiShadow implements FlutterDartUiShadow {
   factory DartUiShadow({
     FlutterColor? color,
     FlutterOffset? offset,
-    ZacDouble? blurRadius,
+    ZacValue<double>? blurRadius,
   }) = _DartUiShadow;
 
   @override

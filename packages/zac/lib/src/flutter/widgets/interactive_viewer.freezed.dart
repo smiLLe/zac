@@ -27,8 +27,8 @@ mixin _$FlutterInteractiveViewer {
   ZacBool? get alignPanAxis => throw _privateConstructorUsedError;
   FlutterEdgeInsets? get boundaryMargin => throw _privateConstructorUsedError;
   ZacBool? get constrained => throw _privateConstructorUsedError;
-  ZacDouble? get maxScale => throw _privateConstructorUsedError;
-  ZacDouble? get minScale => throw _privateConstructorUsedError;
+  ZacValue<double>? get maxScale => throw _privateConstructorUsedError;
+  ZacValue<double>? get minScale => throw _privateConstructorUsedError;
   ZacActions? get onInteractionEnd => throw _privateConstructorUsedError;
   ZacActions? get onInteractionStart => throw _privateConstructorUsedError;
   ZacActions? get onInteractionUpdate => throw _privateConstructorUsedError;
@@ -77,9 +77,9 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacBool? constrained;
   @override
-  final ZacDouble? maxScale;
+  final ZacValue<double>? maxScale;
   @override
-  final ZacDouble? minScale;
+  final ZacValue<double>? minScale;
   @override
   final ZacActions? onInteractionEnd;
   @override
@@ -160,8 +160,8 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       final ZacBool? alignPanAxis,
       final FlutterEdgeInsets? boundaryMargin,
       final ZacBool? constrained,
-      final ZacDouble? maxScale,
-      final ZacDouble? minScale,
+      final ZacValue<double>? maxScale,
+      final ZacValue<double>? minScale,
       final ZacActions? onInteractionEnd,
       final ZacActions? onInteractionStart,
       final ZacActions? onInteractionUpdate,
@@ -185,9 +185,9 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacBool? get constrained;
   @override
-  ZacDouble? get maxScale;
+  ZacValue<double>? get maxScale;
   @override
-  ZacDouble? get minScale;
+  ZacValue<double>? get minScale;
   @override
   ZacActions? get onInteractionEnd;
   @override

@@ -15,6 +15,10 @@ ZacValue<TValue> allFromJson<TValue>(Object data,
     ZacValue<TValue> Function(String converter, Map<String, dynamic> data) cb) {
   if (TValue == DateTime && data is String) {
     return ZacValueConsume<TValue>.simple(value: DateTime.parse(data));
+  } else if (TValue == int && data is double) {
+    return ZacValueConsume<TValue>.simple(value: data.toInt());
+  } else if (TValue == double && data is int) {
+    return ZacValueConsume<TValue>.simple(value: data.toDouble());
   }
 
   /// any simple value. also allow non converter Map or List

@@ -28,14 +28,14 @@ mixin _$FlutterSelectableText {
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  ZacDouble? get textScaleFactor => throw _privateConstructorUsedError;
+  ZacValue<double>? get textScaleFactor => throw _privateConstructorUsedError;
   ZacBool? get showCursor => throw _privateConstructorUsedError;
   ZacBool? get autofocus =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
   ZacValue<int>? get minLines => throw _privateConstructorUsedError;
   ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
-  ZacDouble? get cursorWidth => throw _privateConstructorUsedError;
-  ZacDouble? get cursorHeight => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorWidth => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
   FlutterColor? get cursorColor =>
       throw _privateConstructorUsedError; // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
@@ -99,7 +99,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final FlutterTextDirection? textDirection;
   @override
-  final ZacDouble? textScaleFactor;
+  final ZacValue<double>? textScaleFactor;
   @override
   final ZacBool? showCursor;
   @override
@@ -110,9 +110,9 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final ZacValue<int>? maxLines;
   @override
-  final ZacDouble? cursorWidth;
+  final ZacValue<double>? cursorWidth;
   @override
-  final ZacDouble? cursorHeight;
+  final ZacValue<double>? cursorHeight;
   @override
   final FlutterRadius? cursorRadius;
   @override
@@ -216,13 +216,13 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
       final FlutterTextDirection? textDirection,
-      final ZacDouble? textScaleFactor,
+      final ZacValue<double>? textScaleFactor,
       final ZacBool? showCursor,
       final ZacBool? autofocus,
       final ZacValue<int>? minLines,
       final ZacValue<int>? maxLines,
-      final ZacDouble? cursorWidth,
-      final ZacDouble? cursorHeight,
+      final ZacValue<double>? cursorWidth,
+      final ZacValue<double>? cursorHeight,
       final FlutterRadius? cursorRadius,
       final FlutterColor? cursorColor,
       final ZacBool? enableInteractiveSelection,
@@ -247,7 +247,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   FlutterTextDirection? get textDirection;
   @override
-  ZacDouble? get textScaleFactor;
+  ZacValue<double>? get textScaleFactor;
   @override
   ZacBool? get showCursor;
   @override
@@ -257,9 +257,9 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   ZacValue<int>? get maxLines;
   @override
-  ZacDouble? get cursorWidth;
+  ZacValue<double>? get cursorWidth;
   @override
-  ZacDouble? get cursorHeight;
+  ZacValue<double>? get cursorHeight;
   @override
   FlutterRadius? get cursorRadius;
   @override

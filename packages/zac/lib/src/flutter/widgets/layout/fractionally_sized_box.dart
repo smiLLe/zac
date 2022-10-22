@@ -26,8 +26,8 @@ class FlutterFractionallySizedBox
     FlutterKey? key,
     FlutterWidget? child,
     FlutterAlignmentGeometry? alignment,
-    ZacDouble? widthFactor,
-    ZacDouble? heightFactor,
+    ZacValue<double>? widthFactor,
+    ZacValue<double>? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
   @override

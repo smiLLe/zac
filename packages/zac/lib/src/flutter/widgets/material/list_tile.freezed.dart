@@ -47,9 +47,11 @@ mixin _$FlutterListTile {
   FlutterColor? get tileColor => throw _privateConstructorUsedError;
   FlutterColor? get selectedTileColor => throw _privateConstructorUsedError;
   ZacBool? get enableFeedback => throw _privateConstructorUsedError;
-  ZacDouble? get horizontalTitleGap => throw _privateConstructorUsedError;
-  ZacDouble? get minVerticalPadding => throw _privateConstructorUsedError;
-  ZacDouble? get minLeadingWidth => throw _privateConstructorUsedError;
+  ZacValue<double>? get horizontalTitleGap =>
+      throw _privateConstructorUsedError;
+  ZacValue<double>? get minVerticalPadding =>
+      throw _privateConstructorUsedError;
+  ZacValue<double>? get minLeadingWidth => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -141,11 +143,11 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final ZacBool? enableFeedback;
   @override
-  final ZacDouble? horizontalTitleGap;
+  final ZacValue<double>? horizontalTitleGap;
   @override
-  final ZacDouble? minVerticalPadding;
+  final ZacValue<double>? minVerticalPadding;
   @override
-  final ZacDouble? minLeadingWidth;
+  final ZacValue<double>? minLeadingWidth;
 
   @override
   String toString() {
@@ -259,9 +261,9 @@ abstract class _FlutterListTile extends FlutterListTile {
       final FlutterColor? tileColor,
       final FlutterColor? selectedTileColor,
       final ZacBool? enableFeedback,
-      final ZacDouble? horizontalTitleGap,
-      final ZacDouble? minVerticalPadding,
-      final ZacDouble? minLeadingWidth}) = _$_FlutterListTile;
+      final ZacValue<double>? horizontalTitleGap,
+      final ZacValue<double>? minVerticalPadding,
+      final ZacValue<double>? minLeadingWidth}) = _$_FlutterListTile;
   _FlutterListTile._() : super._();
 
   factory _FlutterListTile.fromJson(Map<String, dynamic> json) =
@@ -312,9 +314,9 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   ZacBool? get enableFeedback;
   @override
-  ZacDouble? get horizontalTitleGap;
+  ZacValue<double>? get horizontalTitleGap;
   @override
-  ZacDouble? get minVerticalPadding;
+  ZacValue<double>? get minVerticalPadding;
   @override
-  ZacDouble? get minLeadingWidth;
+  ZacValue<double>? get minLeadingWidth;
 }

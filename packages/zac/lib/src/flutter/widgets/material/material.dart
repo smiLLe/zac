@@ -24,7 +24,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   factory FlutterMaterial({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
     FlutterTextStyle? textStyle,

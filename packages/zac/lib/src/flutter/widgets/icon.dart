@@ -22,7 +22,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   factory FlutterIcon(
     FlutterIconData? icon, {
     FlutterKey? key,
-    ZacDouble? size,
+    ZacValue<double>? size,
     FlutterColor? color,
     ZacValue<String>? semanticLabel,
     FlutterTextDirection? textDirection,
@@ -76,8 +76,8 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
   @FreezedUnionValue('f:1:IconThemeData')
   factory FlutterIconThemeData({
     FlutterColor? color,
-    ZacDouble? opacity,
-    ZacDouble? size,
+    ZacValue<double>? opacity,
+    ZacValue<double>? size,
   }) = _FlutterIconThemeData;
 
   IconThemeData build(ZacContext zacContext) {

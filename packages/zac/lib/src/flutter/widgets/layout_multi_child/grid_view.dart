@@ -36,7 +36,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     ZacBool? addAutomaticKeepAlives,
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,
-    ZacDouble? cacheExtent,
+    ZacValue<double>? cacheExtent,
     ListOfZacWidget? children,
     ZacValue<int>? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,

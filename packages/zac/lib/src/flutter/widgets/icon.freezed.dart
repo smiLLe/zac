@@ -22,7 +22,7 @@ FlutterIcon _$FlutterIconFromJson(Map<String, dynamic> json) {
 mixin _$FlutterIcon {
   FlutterIconData? get icon => throw _privateConstructorUsedError;
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble? get size => throw _privateConstructorUsedError;
+  ZacValue<double>? get size => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ class _$_FlutterIcon extends _FlutterIcon {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? size;
+  final ZacValue<double>? size;
   @override
   final FlutterColor? color;
   @override
@@ -100,7 +100,7 @@ class _$_FlutterIcon extends _FlutterIcon {
 abstract class _FlutterIcon extends FlutterIcon {
   factory _FlutterIcon(final FlutterIconData? icon,
       {final FlutterKey? key,
-      final ZacDouble? size,
+      final ZacValue<double>? size,
       final FlutterColor? color,
       final ZacValue<String>? semanticLabel,
       final FlutterTextDirection? textDirection}) = _$_FlutterIcon;
@@ -114,7 +114,7 @@ abstract class _FlutterIcon extends FlutterIcon {
   @override
   FlutterKey? get key;
   @override
-  ZacDouble? get size;
+  ZacValue<double>? get size;
   @override
   FlutterColor? get color;
   @override
@@ -224,8 +224,8 @@ FlutterIconThemeData _$FlutterIconThemeDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterIconThemeData {
   FlutterColor? get color => throw _privateConstructorUsedError;
-  ZacDouble? get opacity => throw _privateConstructorUsedError;
-  ZacDouble? get size => throw _privateConstructorUsedError;
+  ZacValue<double>? get opacity => throw _privateConstructorUsedError;
+  ZacValue<double>? get size => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -245,9 +245,9 @@ class _$_FlutterIconThemeData extends _FlutterIconThemeData {
   @override
   final FlutterColor? color;
   @override
-  final ZacDouble? opacity;
+  final ZacValue<double>? opacity;
   @override
-  final ZacDouble? size;
+  final ZacValue<double>? size;
 
   @override
   String toString() {
@@ -284,8 +284,8 @@ class _$_FlutterIconThemeData extends _FlutterIconThemeData {
 abstract class _FlutterIconThemeData extends FlutterIconThemeData {
   factory _FlutterIconThemeData(
       {final FlutterColor? color,
-      final ZacDouble? opacity,
-      final ZacDouble? size}) = _$_FlutterIconThemeData;
+      final ZacValue<double>? opacity,
+      final ZacValue<double>? size}) = _$_FlutterIconThemeData;
   _FlutterIconThemeData._() : super._();
 
   factory _FlutterIconThemeData.fromJson(Map<String, dynamic> json) =
@@ -294,7 +294,7 @@ abstract class _FlutterIconThemeData extends FlutterIconThemeData {
   @override
   FlutterColor? get color;
   @override
-  ZacDouble? get opacity;
+  ZacValue<double>? get opacity;
   @override
-  ZacDouble? get size;
+  ZacValue<double>? get size;
 }

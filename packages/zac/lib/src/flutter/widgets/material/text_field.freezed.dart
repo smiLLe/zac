@@ -61,8 +61,8 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError; // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   ZacBool? get enabled => throw _privateConstructorUsedError;
-  ZacDouble? get cursorWidth => throw _privateConstructorUsedError;
-  ZacDouble? get cursorHeight => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorWidth => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
   FlutterColor? get cursorColor => throw _privateConstructorUsedError;
   FlutterBoxHeightStyle? get selectionHeightStyle =>
@@ -206,9 +206,9 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBool? enabled;
   @override
-  final ZacDouble? cursorWidth;
+  final ZacValue<double>? cursorWidth;
   @override
-  final ZacDouble? cursorHeight;
+  final ZacValue<double>? cursorHeight;
   @override
   final FlutterRadius? cursorRadius;
   @override
@@ -405,8 +405,8 @@ abstract class _FlutterTextField extends FlutterTextField {
       final ZacActions? onEditingComplete,
       final ZacActions? onSubmitted,
       final ZacBool? enabled,
-      final ZacDouble? cursorWidth,
-      final ZacDouble? cursorHeight,
+      final ZacValue<double>? cursorWidth,
+      final ZacValue<double>? cursorHeight,
       final FlutterRadius? cursorRadius,
       final FlutterColor? cursorColor,
       final FlutterBoxHeightStyle? selectionHeightStyle,
@@ -480,9 +480,9 @@ abstract class _FlutterTextField extends FlutterTextField {
 // List<TextInputFormatter>? inputFormatters,
   ZacBool? get enabled;
   @override
-  ZacDouble? get cursorWidth;
+  ZacValue<double>? get cursorWidth;
   @override
-  ZacDouble? get cursorHeight;
+  ZacValue<double>? get cursorHeight;
   @override
   FlutterRadius? get cursorRadius;
   @override

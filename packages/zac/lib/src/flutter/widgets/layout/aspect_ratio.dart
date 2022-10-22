@@ -21,7 +21,7 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   @FreezedUnionValue(FlutterAspectRatio.unionValue)
   factory FlutterAspectRatio({
     FlutterKey? key,
-    required ZacDouble aspectRatio,
+    required ZacValue<double> aspectRatio,
     FlutterWidget? child,
   }) = _FlutterAspectRatio;
 

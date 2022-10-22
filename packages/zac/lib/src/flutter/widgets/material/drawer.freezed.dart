@@ -22,7 +22,7 @@ FlutterDrawer _$FlutterDrawerFromJson(Map<String, dynamic> json) {
 mixin _$FlutterDrawer {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
-  ZacDouble? get elevation => throw _privateConstructorUsedError;
+  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
   ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ class _$_FlutterDrawer extends _FlutterDrawer {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterShapeBorder? shape;
   @override
@@ -106,7 +106,7 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   factory _FlutterDrawer(
       {final FlutterKey? key,
       final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterShapeBorder? shape,
       final FlutterWidget? child,
       final ZacValue<String>? semanticLabel}) = _$_FlutterDrawer;
@@ -120,7 +120,7 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   @override
   FlutterColor? get backgroundColor;
   @override
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   @override
   FlutterShapeBorder? get shape;
   @override

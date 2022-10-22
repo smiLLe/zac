@@ -21,7 +21,7 @@ FlutterAspectRatio _$FlutterAspectRatioFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterAspectRatio {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble get aspectRatio => throw _privateConstructorUsedError;
+  ZacValue<double> get aspectRatio => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -43,7 +43,7 @@ class _$_FlutterAspectRatio extends _FlutterAspectRatio {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble aspectRatio;
+  final ZacValue<double> aspectRatio;
   @override
   final FlutterWidget? child;
 
@@ -83,7 +83,7 @@ class _$_FlutterAspectRatio extends _FlutterAspectRatio {
 abstract class _FlutterAspectRatio extends FlutterAspectRatio {
   factory _FlutterAspectRatio(
       {final FlutterKey? key,
-      required final ZacDouble aspectRatio,
+      required final ZacValue<double> aspectRatio,
       final FlutterWidget? child}) = _$_FlutterAspectRatio;
   _FlutterAspectRatio._() : super._();
 
@@ -93,7 +93,7 @@ abstract class _FlutterAspectRatio extends FlutterAspectRatio {
   @override
   FlutterKey? get key;
   @override
-  ZacDouble get aspectRatio;
+  ZacValue<double> get aspectRatio;
   @override
   FlutterWidget? get child;
 }

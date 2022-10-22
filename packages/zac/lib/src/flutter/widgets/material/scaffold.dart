@@ -53,7 +53,7 @@ class FlutterScaffold
     ZacBool? extendBody,
     ZacBool? extendBodyBehindAppBar,
     FlutterColor? drawerScrimColor,
-    ZacDouble? drawerEdgeDragWidth,
+    ZacValue<double>? drawerEdgeDragWidth,
     ZacBool? drawerEnableOpenDragGesture,
     ZacBool? endDrawerEnableOpenDragGesture,
     ZacValue<String>? restorationId,
@@ -66,14 +66,14 @@ class FlutterScaffold
   factory FlutterScaffold.openEndDrawer() = _FlutterScaffoldOpenEndDrawer;
 
   @FreezedUnionValue(FlutterScaffold.unionValueShowBodyScrim)
-  factory FlutterScaffold.showBodyScrim(bool value, ZacDouble opacity) =
+  factory FlutterScaffold.showBodyScrim(bool value, ZacValue<double> opacity) =
       _FlutterScaffoldShowBodyScrim;
 
   @FreezedUnionValue(FlutterScaffold.unionValueShowBottomSheet)
   factory FlutterScaffold.showBottomSheet(
     FlutterWidget child, {
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterShapeBorder? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
@@ -271,10 +271,10 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
     FlutterKey? key,
     required FlutterWidget content,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,
-    ZacDouble? width,
+    ZacValue<double>? width,
     FlutterShapeBorder? shape,
     FlutterSnackBarBehavior? behavior,
     FlutterSnackBarAction? action,
@@ -375,7 +375,7 @@ class FlutterMaterialBanner
     required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
     required ListOfZacWidget actions,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     required FlutterWidget? leading,
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,

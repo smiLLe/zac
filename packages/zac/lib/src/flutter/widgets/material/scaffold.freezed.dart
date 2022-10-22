@@ -116,7 +116,7 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   final FlutterColor? drawerScrimColor;
   @override
-  final ZacDouble? drawerEdgeDragWidth;
+  final ZacValue<double>? drawerEdgeDragWidth;
   @override
   final ZacBool? drawerEnableOpenDragGesture;
   @override
@@ -231,7 +231,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
       final ZacBool? extendBody,
       final ZacBool? extendBodyBehindAppBar,
       final FlutterColor? drawerScrimColor,
-      final ZacDouble? drawerEdgeDragWidth,
+      final ZacValue<double>? drawerEdgeDragWidth,
       final ZacBool? drawerEnableOpenDragGesture,
       final ZacBool? endDrawerEnableOpenDragGesture,
       final ZacValue<String>? restorationId}) = _$_FlutterScaffold;
@@ -258,7 +258,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   ZacBool? get extendBody;
   ZacBool? get extendBodyBehindAppBar;
   FlutterColor? get drawerScrimColor;
-  ZacDouble? get drawerEdgeDragWidth;
+  ZacValue<double>? get drawerEdgeDragWidth;
   ZacBool? get drawerEnableOpenDragGesture;
   ZacBool? get endDrawerEnableOpenDragGesture;
   ZacValue<String>? get restorationId;
@@ -384,7 +384,7 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
   @override
   final bool value;
   @override
-  final ZacDouble opacity;
+  final ZacValue<double> opacity;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -428,7 +428,7 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
 
 abstract class _FlutterScaffoldShowBodyScrim extends FlutterScaffold {
   factory _FlutterScaffoldShowBodyScrim(
-          final bool value, final ZacDouble opacity) =
+          final bool value, final ZacValue<double> opacity) =
       _$_FlutterScaffoldShowBodyScrim;
   _FlutterScaffoldShowBodyScrim._() : super._();
 
@@ -436,7 +436,7 @@ abstract class _FlutterScaffoldShowBodyScrim extends FlutterScaffold {
       _$_FlutterScaffoldShowBodyScrim.fromJson;
 
   bool get value;
-  ZacDouble get opacity;
+  ZacValue<double> get opacity;
 }
 
 /// @nodoc
@@ -463,7 +463,7 @@ class _$_FlutterScaffoldShowBottomSheet
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterShapeBorder? shape;
   @override
@@ -530,7 +530,7 @@ class _$_FlutterScaffoldShowBottomSheet
 abstract class _FlutterScaffoldShowBottomSheet extends FlutterScaffold {
   factory _FlutterScaffoldShowBottomSheet(final FlutterWidget child,
       {final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterShapeBorder? shape,
       final FlutterClip? clipBehavior,
       final FlutterBoxConstraints? constraints,
@@ -542,7 +542,7 @@ abstract class _FlutterScaffoldShowBottomSheet extends FlutterScaffold {
 
   FlutterWidget get child;
   FlutterColor? get backgroundColor;
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   FlutterShapeBorder? get shape;
   FlutterClip? get clipBehavior;
   FlutterBoxConstraints? get constraints;
@@ -1021,10 +1021,10 @@ mixin _$FlutterSnackBar {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget get content => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
-  ZacDouble? get elevation => throw _privateConstructorUsedError;
+  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get margin => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
-  ZacDouble? get width => throw _privateConstructorUsedError;
+  ZacValue<double>? get width => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   FlutterSnackBarBehavior? get behavior => throw _privateConstructorUsedError;
   FlutterSnackBarAction? get action =>
@@ -1066,13 +1066,13 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterEdgeInsetsGeometry? margin;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
   final FlutterShapeBorder? shape;
   @override
@@ -1138,10 +1138,10 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
       {final FlutterKey? key,
       required final FlutterWidget content,
       final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterEdgeInsetsGeometry? margin,
       final FlutterEdgeInsetsGeometry? padding,
-      final ZacDouble? width,
+      final ZacValue<double>? width,
       final FlutterShapeBorder? shape,
       final FlutterSnackBarBehavior? behavior,
       final FlutterSnackBarAction? action,
@@ -1158,13 +1158,13 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
   @override
   FlutterColor? get backgroundColor;
   @override
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   @override
   FlutterEdgeInsetsGeometry? get margin;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
-  ZacDouble? get width;
+  ZacValue<double>? get width;
   @override
   FlutterShapeBorder? get shape;
   @override
@@ -1418,7 +1418,7 @@ mixin _$FlutterMaterialBanner {
   FlutterWidget get content => throw _privateConstructorUsedError;
   FlutterTextStyle? get contentTextStyle => throw _privateConstructorUsedError;
   ListOfZacWidget get actions => throw _privateConstructorUsedError;
-  ZacDouble? get elevation => throw _privateConstructorUsedError;
+  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
   FlutterWidget? get leading => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
@@ -1465,7 +1465,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
   @override
   final ListOfZacWidget actions;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterWidget? leading;
   @override
@@ -1539,7 +1539,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
       required final FlutterWidget content,
       final FlutterTextStyle? contentTextStyle,
       required final ListOfZacWidget actions,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       required final FlutterWidget? leading,
       final FlutterColor? backgroundColor,
       final FlutterEdgeInsetsGeometry? padding,
@@ -1560,7 +1560,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   @override
   ListOfZacWidget get actions;
   @override
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   @override
   FlutterWidget? get leading;
   @override

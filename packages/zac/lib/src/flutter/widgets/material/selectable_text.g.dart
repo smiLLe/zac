@@ -30,7 +30,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['textDirection'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacDouble.fromJson(json['textScaleFactor'] as Object),
+          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
       showCursor: json['showCursor'] == null
           ? null
           : ZacBool.fromJson(json['showCursor'] as Object),
@@ -45,10 +45,10 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : ZacValue<int>.fromJson(json['maxLines'] as Object),
       cursorWidth: json['cursorWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['cursorWidth'] as Object),
+          : ZacValue<double>.fromJson(json['cursorWidth'] as Object),
       cursorHeight: json['cursorHeight'] == null
           ? null
-          : ZacDouble.fromJson(json['cursorHeight'] as Object),
+          : ZacValue<double>.fromJson(json['cursorHeight'] as Object),
       cursorRadius: json['cursorRadius'] == null
           ? null
           : FlutterRadius.fromJson(

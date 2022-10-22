@@ -191,16 +191,16 @@ _$_FlutterBoxConstraints _$$_FlutterBoxConstraintsFromJson(
     _$_FlutterBoxConstraints(
       minWidth: json['minWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['minWidth'] as Object),
+          : ZacValue<double>.fromJson(json['minWidth'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['maxWidth'] as Object),
+          : ZacValue<double>.fromJson(json['maxWidth'] as Object),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacDouble.fromJson(json['minHeight'] as Object),
+          : ZacValue<double>.fromJson(json['minHeight'] as Object),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacDouble.fromJson(json['maxHeight'] as Object),
+          : ZacValue<double>.fromJson(json['maxHeight'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -209,10 +209,10 @@ _$_FlutterBoxConstraintsExpand _$$_FlutterBoxConstraintsExpandFromJson(
     _$_FlutterBoxConstraintsExpand(
       width: json['width'] == null
           ? null
-          : ZacDouble.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacDouble.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(json['height'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -235,10 +235,10 @@ _$_FlutterBoxConstraintsTightFor _$$_FlutterBoxConstraintsTightForFromJson(
     _$_FlutterBoxConstraintsTightFor(
       width: json['width'] == null
           ? null
-          : ZacDouble.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacDouble.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(json['height'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -248,10 +248,10 @@ _$_FlutterBoxConstraintsTightForFinite
         _$_FlutterBoxConstraintsTightForFinite(
           width: json['width'] == null
               ? null
-              : ZacDouble.fromJson(json['width'] as Object),
+              : ZacValue<double>.fromJson(json['width'] as Object),
           height: json['height'] == null
               ? null
-              : ZacDouble.fromJson(json['height'] as Object),
+              : ZacValue<double>.fromJson(json['height'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -262,16 +262,16 @@ _$_FlutterSliverGridDelegateFixedCrossAxisCount
           crossAxisCount: json['crossAxisCount'] as int,
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacDouble.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacDouble.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacDouble.fromJson(json['childAspectRatio'] as Object),
+              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacDouble.fromJson(json['mainAxisExtent'] as Object),
+              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -280,19 +280,19 @@ _$_FlutterSliverGridDelegateMaxCrossAxisExtent
             Map<String, dynamic> json) =>
         _$_FlutterSliverGridDelegateMaxCrossAxisExtent(
           maxCrossAxisExtent:
-              ZacDouble.fromJson(json['maxCrossAxisExtent'] as Object),
+              ZacValue<double>.fromJson(json['maxCrossAxisExtent'] as Object),
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacDouble.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacDouble.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacDouble.fromJson(json['childAspectRatio'] as Object),
+              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacDouble.fromJson(json['mainAxisExtent'] as Object),
+              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
           $type: json['converter'] as String?,
         );
 

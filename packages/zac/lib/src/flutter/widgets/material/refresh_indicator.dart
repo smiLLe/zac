@@ -33,15 +33,15 @@ class FlutterRefreshIndicator
   factory FlutterRefreshIndicator({
     FlutterKey? key,
     required FlutterWidget child,
-    ZacDouble? displacement,
-    ZacDouble? edgeOffset,
+    ZacValue<double>? displacement,
+    ZacValue<double>? edgeOffset,
     required ZacActions onRefresh,
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
     ZacValue<String>? semanticsLabel,
     ZacValue<String>? semanticsValue,
-    ZacDouble? strokeWidth,
+    ZacValue<double>? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
     @Default(FlutterRefreshIndicator.familyName) SharedValueFamily family,
   }) = _FlutterRefreshIndicator;

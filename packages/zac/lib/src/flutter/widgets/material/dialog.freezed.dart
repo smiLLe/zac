@@ -181,7 +181,7 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
   @override
@@ -252,7 +252,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
   factory _FlutterDialogsDialog(
       {final FlutterKey? key,
       final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterEdgeInsets? insetPadding,
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
@@ -265,7 +265,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
 
   FlutterKey? get key;
   FlutterColor? get backgroundColor;
-  ZacDouble?
+  ZacValue<double>?
       get elevation; // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
   FlutterEdgeInsets? get insetPadding;
@@ -330,13 +330,13 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterVerticalDirection? actionsOverflowDirection;
   @override
-  final ZacDouble? actionsOverflowButtonSpacing;
+  final ZacValue<double>? actionsOverflowButtonSpacing;
   @override
   final FlutterEdgeInsetsGeometry? buttonPadding;
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final ZacValue<String>? semanticLabel;
   @override
@@ -455,10 +455,10 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       final FlutterEdgeInsetsGeometry? actionsPadding,
       final FlutterMainAxisAlignment? actionsAlignment,
       final FlutterVerticalDirection? actionsOverflowDirection,
-      final ZacDouble? actionsOverflowButtonSpacing,
+      final ZacValue<double>? actionsOverflowButtonSpacing,
       final FlutterEdgeInsetsGeometry? buttonPadding,
       final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final ZacValue<String>? semanticLabel,
       final FlutterEdgeInsets? insetPadding,
       final FlutterClip? clipBehavior,
@@ -481,10 +481,10 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterEdgeInsetsGeometry? get actionsPadding;
   FlutterMainAxisAlignment? get actionsAlignment;
   FlutterVerticalDirection? get actionsOverflowDirection;
-  ZacDouble? get actionsOverflowButtonSpacing;
+  ZacValue<double>? get actionsOverflowButtonSpacing;
   FlutterEdgeInsetsGeometry? get buttonPadding;
   FlutterColor? get backgroundColor;
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   ZacValue<String>? get semanticLabel;
   FlutterEdgeInsets? get insetPadding;
   FlutterClip? get clipBehavior;
@@ -532,7 +532,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final ZacValue<String>? semanticLabel;
   @override
@@ -620,7 +620,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
           final FlutterTextStyle? titleTextStyle,
           final FlutterEdgeInsetsGeometry? contentPadding,
           final FlutterColor? backgroundColor,
-          final ZacDouble? elevation,
+          final ZacValue<double>? elevation,
           final ZacValue<String>? semanticLabel,
           final FlutterEdgeInsets? insetPadding,
           final FlutterClip? clipBehavior,
@@ -639,7 +639,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;
   FlutterColor? get backgroundColor;
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   ZacValue<String>? get semanticLabel;
   FlutterEdgeInsets? get insetPadding;
   FlutterClip? get clipBehavior;
