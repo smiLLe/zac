@@ -81,77 +81,69 @@ void main() {
 
     expect(
         ZacTemplateExpressionsTransformer(expression: r'''${tValue}''')
-            .transform(ZacTransformValue('hello world'), origin, ContextBag()),
+            .transform(ZacTransformValue('hello world'), zacContext, null),
         'hello world');
 
     expect(
         ZacTemplateExpressionsTransformer(
-          expression: r'''${hello}''',
+          expression: r'${hello}',
           context: {
             'hello': ZacObject('hello world'),
           },
-        ).transform(ZacTransformValue(null), origin, ContextBag()),
+        ).transform(ZacTransformValue(null), zacContext, null),
         'hello world');
 
     expect(
         ZacTemplateExpressionsTransformer(
-          expression: r'''${bagValue}''',
-        ).transform(ZacTransformValue(null), origin,
-            ContextBag()..addAll(<String, dynamic>{'bagValue': 'YEAH'})),
+          expression: r'''${payload}''',
+        ).transform(ZacTransformValue(null), zacContext,
+            ZacActionPayload.param('YEAH')),
         'YEAH');
   });
 
-  test(
+  testWidgets(
       'Template.process will add StateMachine state and context to Template context',
-      () {
-    late Object? state;
-    late MachineContext context;
-    final container = ProviderContainer(
-      overrides: [
-        StateMachine.provider('machine').overrideWithProvider(
-          StateNotifierProvider.autoDispose<StateMachine, CurrentState>(
-            (ref) => StateMachine(
-              ref: ref,
-              context: 'the_context',
-              state: 'a',
-              nodes: [
-                StateNode(
-                  state: 'a',
-                  actions: ZacActions(
-                    [
-                      LeakAction(
-                        cb: (origin, bag) {
-                          state = ZacTransformers([
-                            ZacTemplateExpressionsTransformer(
-                              expression: r'''${machine_state}''',
-                            )
-                          ]).transformWithBag(
-                              ZacTransformValue(null), origin, bag);
-
-                          context = ZacTransformers([
-                            ZacTemplateExpressionsTransformer(
-                              expression: r'''${machine_context}''',
-                            )
-                          ]).transformWithBag(
-                              ZacTransformValue(null), origin, bag);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+      (tester) async {
+    late ZacContext zacContext;
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: ProviderContainer(),
+        child: MaterialApp(
+          home: ZacWidget(
+            widget: LeakOrigin(cb: (o) => zacContext = o),
           ),
-        )
-      ],
+        ),
+      ),
+    );
+    final machine = ZacStateMachine(
+      states: {
+        'a': ZacStateConfig(
+          widget: FlutterSizedBox(
+            key: FlutterValueKey('in a'),
+          ),
+        ),
+      },
+      state: 'a',
+      context: 1,
+      send: (event, context) {},
+      trySend: (event, context) {},
     );
 
-    container.listen(
-      StateMachine.provider('machine'),
-      (previous, next) {},
-    );
-    expect(state, 'a');
-    expect(context, 'the_context');
+    expect(
+        ZacTransformers([
+          ZacTemplateExpressionsTransformer(
+            expression: r'''${machine_state}''',
+          )
+        ]).transform(ZacTransformValue(machine), zacContext, null),
+        'a');
+
+    expect(
+        ZacTransformers([
+          ZacTemplateExpressionsTransformer(
+            expression: r'${machine_context}',
+          )
+        ]).transform(ZacTransformValue(machine), zacContext, null),
+        '1');
   });
 }
 
@@ -174,8 +166,9 @@ class LeakOrigin implements FlutterWidget {
 class LeakAction implements ZacAction {
   LeakAction({required this.cb});
 
-  final void Function(ZacContext zacContext, ContextBag bag) cb;
+  final void Function(ZacActionPayload payload, ZacContext zacContext) cb;
 
   @override
-  void execute(ZacContext zacContext, ContextBag bag) => cb(origin, bag);
+  void execute(ZacActionPayload payload, ZacContext zacContext) =>
+      cb(payload, zacContext);
 }

@@ -85,7 +85,7 @@ class GlobalKeyNavigatorStateProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SharedValueProvider(
-      autoCreate: false,
+      autoCreate: true,
       valueBuilder: (_, zacContext) => GlobalKey<NavigatorState>(
         debugLabel: builder.debugLabel?.getValue(zacContext),
       ),
