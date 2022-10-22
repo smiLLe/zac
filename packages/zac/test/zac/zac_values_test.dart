@@ -1,3 +1,4 @@
+import 'package:riverpod/riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -153,7 +154,7 @@ void _commonCreate<TClass, TVal>({
 }
 
 void main() {
-  test('ZacValue', () {
+  test('Create a ZacValue', () {
     expect(ZacValue<int>.fromJson(5), ZacValueConsume<int>.simple(value: 5));
 
     expect(
@@ -199,7 +200,7 @@ void main() {
             contains('because the data given is not supported'))));
   });
 
-  test('ZacValueRead', () {
+  test('Create a ZacValueRead', () {
     expect(
         ZacValueRead<int>.fromJson(5), ZacValueConsume<int>.simple(value: 5));
 
@@ -291,6 +292,68 @@ void main() {
         () => ZacValueConsume<Object>.fromJson(
             <String, dynamic>{'converter': 'z:1:SharedValue', 'value': 'foo'}),
         returnsNormally);
+  });
+
+  testWidgets('Read/Watch an exposed value', (tester) async {
+    late ZacContext zacContext;
+
+    await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          family: 'shared',
+          value: 5,
+          child: LeakContext(
+            cb: (o) => zacContext = o,
+          ),
+        ));
+
+    expect(
+        ZacValueConsume<int>.watch(family: 'shared').getValue(zacContext), 5);
+    expect(ZacValueConsume<int>.read(family: 'shared').getValue(zacContext), 5);
+
+    expect(
+        ZacValueConsume<String>.watch(
+                family: 'shared',
+                transformer: ZacTransformers([ObjectTransformer.toString()]))
+            .getValue(zacContext),
+        '5');
+
+    expect(
+        () => ZacValueConsume<String>.watch(
+              family: 'shared',
+            ).getValue(zacContext),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to return a SharedValue in '))));
+
+    expect(
+        () => ZacValueConsume<int>.watch(
+                family: 'shared',
+                transformer: ZacTransformers([ObjectTransformer.toString()]))
+            .getValue(zacContext),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('Unexpected type found after transforming a consumed'))));
+
+    expect(
+        ZacValueConsume<String>.read(
+                family: 'shared',
+                transformer: ZacTransformers([ObjectTransformer.toString()]))
+            .getValue(zacContext),
+        '5');
+
+    expect(
+        () => ZacValueConsume<String>.read(
+              family: 'shared',
+            ).getValue(zacContext),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to return a SharedValue in '))));
+
+    expect(
+        () => ZacValueConsume<int>.read(
+                family: 'shared',
+                transformer: ZacTransformers([ObjectTransformer.toString()]))
+            .getValue(zacContext),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('Unexpected type found after transforming a consumed'))));
   });
 
   testWidgets(

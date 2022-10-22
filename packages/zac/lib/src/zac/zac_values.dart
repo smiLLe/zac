@@ -170,7 +170,7 @@ Value: $transformed''');
 
     if (simple.value is! TValue) {
       throw StateError('''
-The  ${_typeOf<ZacValueConsume<TValue>>()} does not hold a value of $TValue.
+The ${_typeOf<ZacValueConsume<TValue>>()} does not hold a value of $TValue.
 Instead it holds a ${simple.value.runtimeType}.''');
     }
 
@@ -181,8 +181,8 @@ Instead it holds a ${simple.value.runtimeType}.''');
     final consumedValue = SharedValue.get(type, zacContext, family);
 
     late Object? value;
-    if (consumedValue is ActualValue<Object?>) {
-      value = consumedValue.getActualValue(zacContext);
+    if (consumedValue is ZacValue<Object?>) {
+      value = consumedValue.getValue(zacContext);
     } else {
       value = consumedValue;
     }
@@ -193,7 +193,7 @@ Instead it holds a ${simple.value.runtimeType}.''');
     }
 
     if (null == transformer || true == transformer?.transformers.isEmpty) {
-      throw ConsumeSharedValueOfError('''
+      throw StateError('''
 It was not possible to return a $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
 It was expected to return a type of: "$TValue".
@@ -211,7 +211,7 @@ The consumed $SharedValue: $value
     if (transformedValue is! TValue) {
       final alltransformerTypers =
           transformer!.transformers.map((e) => e.runtimeType);
-      throw ConsumeSharedValueOfError('''
+      throw StateError('''
 Unexpected type found after transforming a consumed $SharedValue in "$runtimeType" for family "$family".
 The consumed $SharedValue was of runtimeType: "${value.runtimeType}".
 The $SharedValue after transformation was of runtimeType: "${transformedValue.runtimeType}".
