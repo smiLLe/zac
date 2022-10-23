@@ -17,11 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 ZacValueConsume<TValue> _$ZacValueConsumeFromJson<TValue>(
     Map<String, dynamic> json) {
   switch (json['converter']) {
-    case 'z:1:SharedValue':
+    case 'z:1:ZacValue':
       return _ZacValueConsumeSimple<TValue>.fromJson(json);
-    case 'z:1:SharedValue.watch':
+    case 'z:1:ZacValue.watch':
       return _ZacValueConsumeWatch<TValue>.fromJson(json);
-    case 'z:1:SharedValue.read':
+    case 'z:1:ZacValue.read':
       return _ZacValueConsumeRead<TValue>.fromJson(json);
 
     default:
@@ -48,7 +48,7 @@ mixin _$ZacValueConsume<TValue> {
 class _$_ZacValueConsumeSimple<TValue> extends _ZacValueConsumeSimple<TValue> {
   _$_ZacValueConsumeSimple(
       {required this.value, this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:SharedValue',
+      : $type = $type ?? 'z:1:ZacValue',
         super._();
 
   factory _$_ZacValueConsumeSimple.fromJson(Map<String, dynamic> json) =>
@@ -117,7 +117,7 @@ class _$_ZacValueConsumeWatch<TValue> extends _ZacValueConsumeWatch<TValue> {
       this.transformer,
       this.select,
       final String? $type})
-      : $type = $type ?? 'z:1:SharedValue.watch',
+      : $type = $type ?? 'z:1:ZacValue.watch',
         super._();
 
   factory _$_ZacValueConsumeWatch.fromJson(Map<String, dynamic> json) =>
@@ -189,7 +189,7 @@ abstract class _ZacValueConsumeWatch<TValue> extends ZacValueConsume<TValue> {
 class _$_ZacValueConsumeRead<TValue> extends _ZacValueConsumeRead<TValue> {
   _$_ZacValueConsumeRead(
       {required this.family, this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:SharedValue.read',
+      : $type = $type ?? 'z:1:ZacValue.read',
         super._();
 
   factory _$_ZacValueConsumeRead.fromJson(Map<String, dynamic> json) =>
@@ -253,11 +253,11 @@ abstract class _ZacValueConsumeRead<TValue> extends ZacValueConsume<TValue> {
 ZacValueListConsume<TValue> _$ZacValueListConsumeFromJson<TValue>(
     Map<String, dynamic> json) {
   switch (json['converter']) {
-    case 'z:1:SharedValue':
+    case 'z:1:ZacValue':
       return _ZacValueListConsumeSimple<TValue>.fromJson(json);
-    case 'z:1:SharedValue.watch':
+    case 'z:1:ZacValue.watch':
       return _ZacValueListConsumeWatch<TValue>.fromJson(json);
-    case 'z:1:SharedValue.read':
+    case 'z:1:ZacValue.read':
       return _ZacValueListConsumeRead<TValue>.fromJson(json);
 
     default:
@@ -288,7 +288,7 @@ class _$_ZacValueListConsumeSimple<TValue>
       this.transformer,
       final String? $type})
       : _value = value,
-        $type = $type ?? 'z:1:SharedValue',
+        $type = $type ?? 'z:1:ZacValue',
         super._();
 
   factory _$_ZacValueListConsumeSimple.fromJson(Map<String, dynamic> json) =>
@@ -365,7 +365,7 @@ class _$_ZacValueListConsumeWatch<TValue>
       this.transformer,
       this.select,
       final String? $type})
-      : $type = $type ?? 'z:1:SharedValue.watch',
+      : $type = $type ?? 'z:1:ZacValue.watch',
         super._();
 
   factory _$_ZacValueListConsumeWatch.fromJson(Map<String, dynamic> json) =>
@@ -439,7 +439,7 @@ class _$_ZacValueListConsumeRead<TValue>
     extends _ZacValueListConsumeRead<TValue> {
   _$_ZacValueListConsumeRead(
       {required this.family, this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:SharedValue.read',
+      : $type = $type ?? 'z:1:ZacValue.read',
         super._();
 
   factory _$_ZacValueListConsumeRead.fromJson(Map<String, dynamic> json) =>
@@ -499,4 +499,79 @@ abstract class _ZacValueListConsumeRead<TValue>
   Object get family;
   @override
   ZacTransformers? get transformer;
+}
+
+ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
+  return _ZacValueActionsAsPayload.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacValueActions {
+  ZacValueRead<Object?> get value => throw _privateConstructorUsedError;
+  ZacActions get actions => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacValueActionsAsPayload value) asPayload,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
+  _$_ZacValueActionsAsPayload({required this.value, required this.actions})
+      : super._();
+
+  factory _$_ZacValueActionsAsPayload.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueActionsAsPayloadFromJson(json);
+
+  @override
+  final ZacValueRead<Object?> value;
+  @override
+  final ZacActions actions;
+
+  @override
+  String toString() {
+    return 'ZacValueActions.asPayload(value: $value, actions: $actions)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueActionsAsPayload &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other.actions, actions));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(actions));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacValueActionsAsPayload value) asPayload,
+  }) {
+    return asPayload(this);
+  }
+}
+
+abstract class _ZacValueActionsAsPayload extends ZacValueActions {
+  factory _ZacValueActionsAsPayload(
+      {required final ZacValueRead<Object?> value,
+      required final ZacActions actions}) = _$_ZacValueActionsAsPayload;
+  _ZacValueActionsAsPayload._() : super._();
+
+  factory _ZacValueActionsAsPayload.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueActionsAsPayload.fromJson;
+
+  @override
+  ZacValueRead<Object?> get value;
+  @override
+  ZacActions get actions;
 }

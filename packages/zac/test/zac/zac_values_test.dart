@@ -1,6 +1,4 @@
-import 'package:riverpod/riverpod.dart';
 import 'package:zac/zac.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -45,19 +43,19 @@ void main() {
 
     expect(
         ZacValue<int>.fromJson(
-            <String, dynamic>{'converter': 'z:1:SharedValue', 'value': 5}),
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
         ZacValueConsume<int>.simple(value: 5));
 
     expect(
         ZacValue<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.watch',
+          'converter': 'z:1:ZacValue.watch',
           'family': 'shared'
         }),
         ZacValueConsume<int>.watch(family: 'shared'));
 
     expect(
         ZacValue<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.read',
+          'converter': 'z:1:ZacValue.read',
           'family': 'shared'
         }),
         ZacValueConsume<int>.read(family: 'shared'));
@@ -98,12 +96,12 @@ void main() {
 
     expect(
         ZacValueRead<int>.fromJson(
-            <String, dynamic>{'converter': 'z:1:SharedValue', 'value': 5}),
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
         ZacValueConsume<int>.simple(value: 5));
 
     expect(
         () => ZacValueRead<int>.fromJson(<String, dynamic>{
-              'converter': 'z:1:SharedValue.watch',
+              'converter': 'z:1:ZacValue.watch',
               'family': 'shared'
             }),
         throwsA(isA<StateError>().having((p0) => p0.message, 'error',
@@ -111,7 +109,7 @@ void main() {
 
     expect(
         ZacValueRead<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.read',
+          'converter': 'z:1:ZacValue.read',
           'family': 'shared'
         }),
         ZacValueConsume<int>.read(family: 'shared'));
@@ -152,7 +150,7 @@ void main() {
       () {
     expect(
         () => ZacValueConsume<int>.fromJson(<String, dynamic>{
-              'converter': 'z:1:SharedValue',
+              'converter': 'z:1:ZacValue',
               'value': 'not valid'
             }),
         throwsA(isA<StateError>().having((p0) => p0.message, 'error',
@@ -160,7 +158,7 @@ void main() {
 
     expect(
         () => ZacValueConsume<int>.fromJson(<String, dynamic>{
-              'converter': 'z:1:SharedValue',
+              'converter': 'z:1:ZacValue',
               'value': 'not valid',
               'transformer': <Object?>[]
             }),
@@ -169,7 +167,7 @@ void main() {
 
     expect(
         () => ZacValueConsume<int>.fromJson(<String, dynamic>{
-              'converter': 'z:1:SharedValue',
+              'converter': 'z:1:ZacValue',
               'value': 'not valid',
               'transformer': <Object?>[
                 {'converter': 'z:1:Transformer:Object.toString'}
@@ -179,17 +177,17 @@ void main() {
 
     expect(
         () => ZacValueConsume<Object?>.fromJson(
-            <String, dynamic>{'converter': 'z:1:SharedValue', 'value': 'foo'}),
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 'foo'}),
         returnsNormally);
 
     expect(
         () => ZacValueConsume<Object?>.fromJson(
-            <String, dynamic>{'converter': 'z:1:SharedValue', 'value': null}),
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': null}),
         returnsNormally);
 
     expect(
         () => ZacValueConsume<Object>.fromJson(
-            <String, dynamic>{'converter': 'z:1:SharedValue', 'value': 'foo'}),
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 'foo'}),
         returnsNormally);
   });
 
@@ -268,21 +266,21 @@ void main() {
 
     expect(
         ZacValueList<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue',
+          'converter': 'z:1:ZacValue',
           'value': [5]
         }),
         ZacValueListConsume<int>.simple(value: [ZacValue<int>.fromJson(5)]));
 
     expect(
         ZacValueList<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.read',
+          'converter': 'z:1:ZacValue.read',
           'family': 'shared'
         }),
         ZacValueListConsume<int>.read(family: 'shared'));
 
     expect(
         ZacValueList<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.watch',
+          'converter': 'z:1:ZacValue.watch',
           'family': 'shared'
         }),
         ZacValueListConsume<int>.watch(family: 'shared'));
@@ -301,14 +299,14 @@ void main() {
 
     expect(
         ZacValueListRead<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue',
+          'converter': 'z:1:ZacValue',
           'value': [5]
         }),
         ZacValueListConsume<int>.simple(value: [ZacValue<int>.fromJson(5)]));
 
     expect(
         ZacValueListRead<int>.fromJson(<String, dynamic>{
-          'converter': 'z:1:SharedValue.read',
+          'converter': 'z:1:ZacValue.read',
           'family': 'shared'
         }),
         ZacValueListConsume<int>.read(family: 'shared'));
@@ -382,5 +380,36 @@ void main() {
             'error',
             contains(
                 'Unexpected type found after transforming an item in a consumed'))));
+  });
+
+  testWidgets('pick a ZacValue and pass it to new actions as payload',
+      (tester) async {
+    expect(
+        () => ConverterHelper.convertToType<ZacValueActions>(<String, dynamic>{
+              'converter': 'z:1:ZacValue.asActionPayload',
+              'value': 5,
+              'actions': <Object>[],
+            }),
+        returnsNormally);
+
+    late ZacActionPayload payload;
+    await testZacWidget(
+      tester,
+      ZacExecuteActionsBuilder.once(
+        actions: ZacActions([
+          ZacValueActions.asPayload(
+            value: ZacValue<String>.fromJson('hello'),
+            actions: ZacActions([
+              LeakAction(
+                (p, zacContext) => payload = p,
+              )
+            ]),
+          ),
+        ]),
+        child: FlutterSizedBox(),
+      ),
+    );
+
+    expect(payload, ZacActionPayload.param('hello'));
   });
 }

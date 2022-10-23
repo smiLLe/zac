@@ -807,7 +807,7 @@ void main() {
               value: ZacValueConsume<Object?>.read(family: 'shared')),
           props: <String, dynamic>{
             'value': {
-              'converter': 'z:1:SharedValue.read',
+              'converter': 'z:1:ZacValue.read',
               'family': 'shared',
             }
           },

@@ -75,43 +75,45 @@ See "$SharedValueProviderBuilder" for more info.
 }
 
 @defaultConverterFreezed
-class UpdateSharedValueInteractions
-    with _$UpdateSharedValueInteractions
-    implements ZacAction {
-  const UpdateSharedValueInteractions._();
+class SharedValueActions with _$SharedValueActions implements ZacAction {
+  const SharedValueActions._();
 
   static const String unionValue = 'z:1:SharedValue.update';
   static const String unionValueReplaceWith = 'z:1:SharedValue.replaceWith';
 
-  factory UpdateSharedValueInteractions.fromJson(Map<String, dynamic> json) =>
-      _$UpdateSharedValueInteractionsFromJson(json);
+  factory SharedValueActions.fromJson(Map<String, dynamic> json) =>
+      _$SharedValueActionsFromJson(json);
 
-  @FreezedUnionValue(UpdateSharedValueInteractions.unionValue)
-  factory UpdateSharedValueInteractions({
+  @FreezedUnionValue(SharedValueActions.unionValue)
+  factory SharedValueActions({
     required SharedValueFamily family,
     required ZacTransformers transformer,
-  }) = _SharedValueInteractionUpdate;
+  }) = _SharedValueActionsUpdate;
 
-  @FreezedUnionValue(UpdateSharedValueInteractions.unionValueReplaceWith)
-  factory UpdateSharedValueInteractions.replaceWith({
+  @FreezedUnionValue(SharedValueActions.unionValueReplaceWith)
+  factory SharedValueActions.replaceWith({
     required SharedValueFamily family,
     required ZacValue<Object> value,
     ZacTransformers? transformer,
-  }) = _SharedValueInteractionReplaceWith;
+  }) = _SharedValueActionsReplaceWith;
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) =>
-      SharedValue.update(
-        zacContext,
-        family,
-        (current) => map<SharedValueType>(
-          (obj) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) => map((obj) {
+        SharedValue.update(
+          zacContext,
+          obj.family,
+          (current) {
             assert(obj.transformer.transformers.isNotEmpty);
 
             return obj.transformer
                 .transform(ZacTransformValue(current), zacContext, payload);
           },
-          replaceWith: (obj) {
+        );
+      }, replaceWith: (obj) {
+        SharedValue.update(
+          zacContext,
+          obj.family,
+          (current) {
             if (null == obj.transformer ||
                 true == obj.transformer!.transformers.isEmpty) {
               return obj.value.getValue(zacContext);
@@ -122,8 +124,8 @@ class UpdateSharedValueInteractions
                   payload);
             }
           },
-        ),
-      );
+        );
+      });
 }
 
 @defaultConverterFreezed

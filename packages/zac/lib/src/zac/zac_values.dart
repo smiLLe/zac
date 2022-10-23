@@ -7,9 +7,9 @@ part 'zac_values.g.dart';
 
 Type _typeOf<T>() => T;
 
-const zacValueConverter = 'z:1:SharedValue';
-const zacValueConverterWatch = 'z:1:SharedValue.watch';
-const zacValueConverterRead = 'z:1:SharedValue.read';
+const zacValueConverter = 'z:1:ZacValue';
+const zacValueConverterWatch = 'z:1:ZacValue.watch';
+const zacValueConverterRead = 'z:1:ZacValue.read';
 
 ZacValueList<TValue> zacValueListFromJson<TValue>(
     Object data,
@@ -439,6 +439,32 @@ $element
       simple: (obj) => _getSimple(zacContext, obj),
       watch: (obj) => _getShared(zacContext),
       read: (obj) => _getShared(zacContext),
+    );
+  }
+}
+
+@defaultConverterFreezed
+class ZacValueActions with _$ZacValueActions implements ZacAction {
+  const ZacValueActions._();
+
+  static const String unionValue = 'z:1:ZacValue.asActionPayload';
+
+  factory ZacValueActions.fromJson(Map<String, dynamic> json) =>
+      _$ZacValueActionsFromJson(json);
+
+  @FreezedUnionValue(ZacValueActions.unionValue)
+  factory ZacValueActions.asPayload({
+    required ZacValueRead<Object?> value,
+    required ZacActions actions,
+  }) = _ZacValueActionsAsPayload;
+
+  @override
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
+    map(
+      asPayload: (obj) {
+        final val = obj.value.getValue(zacContext);
+        obj.actions.execute(ZacActionPayload.param(val), zacContext);
+      },
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_values.dart';
 
 part 'state_machine.freezed.dart';
@@ -282,6 +283,44 @@ class ZacStateMachineActions
             as ZacStateMachine;
         machine.trySend(obj.event.getValue(zacContext), payload.params);
       },
+    );
+  }
+}
+
+@defaultConverterFreezed
+class ZacStateMachineTransformer
+    with _$ZacStateMachineTransformer
+    implements ZacTransformer {
+  const ZacStateMachineTransformer._();
+
+  static const String unionValue = 'z:1:StateMachine:Transformer.pickState';
+  static const String unionValuePickContext =
+      'z:1:StateMachine:Transformer.pickContext';
+
+  factory ZacStateMachineTransformer.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateMachineTransformerFromJson(json);
+
+  @FreezedUnionValue(ZacStateMachineTransformer.unionValue)
+  factory ZacStateMachineTransformer.pickState() =
+      _ZacStateMachineTransformerPickState;
+
+  @FreezedUnionValue(ZacStateMachineTransformer.unionValuePickContext)
+  factory ZacStateMachineTransformer.pickContext() =
+      _ZacStateMachineTransformerPickContext;
+
+  @override
+  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
+      ZacActionPayload? payload) {
+    final value = transformValue.value;
+    if (value is! ZacStateMachine) {
+      throw StateError('''
+The $ZacStateMachineTransformer expected a transformer value of $ZacStateMachine
+but instead got: $value''');
+    }
+
+    return map(
+      pickState: (_) => value.state,
+      pickContext: (_) => value.context,
     );
   }
 }

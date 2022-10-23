@@ -770,3 +770,140 @@ abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   @override
   ZacValue<String> get event;
 }
+
+ZacStateMachineTransformer _$ZacStateMachineTransformerFromJson(
+    Map<String, dynamic> json) {
+  switch (json['converter']) {
+    case 'z:1:StateMachine:Transformer.pickState':
+      return _ZacStateMachineTransformerPickState.fromJson(json);
+    case 'z:1:StateMachine:Transformer.pickContext':
+      return _ZacStateMachineTransformerPickContext.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'converter',
+          'ZacStateMachineTransformer',
+          'Invalid union type "${json['converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacStateMachineTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineTransformerPickState value)
+        pickState,
+    required TResult Function(_ZacStateMachineTransformerPickContext value)
+        pickContext,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacStateMachineTransformerPickState
+    extends _ZacStateMachineTransformerPickState {
+  _$_ZacStateMachineTransformerPickState({final String? $type})
+      : $type = $type ?? 'z:1:StateMachine:Transformer.pickState',
+        super._();
+
+  factory _$_ZacStateMachineTransformerPickState.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacStateMachineTransformerPickStateFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacStateMachineTransformer.pickState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacStateMachineTransformerPickState);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineTransformerPickState value)
+        pickState,
+    required TResult Function(_ZacStateMachineTransformerPickContext value)
+        pickContext,
+  }) {
+    return pickState(this);
+  }
+}
+
+abstract class _ZacStateMachineTransformerPickState
+    extends ZacStateMachineTransformer {
+  factory _ZacStateMachineTransformerPickState() =
+      _$_ZacStateMachineTransformerPickState;
+  _ZacStateMachineTransformerPickState._() : super._();
+
+  factory _ZacStateMachineTransformerPickState.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacStateMachineTransformerPickState.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacStateMachineTransformerPickContext
+    extends _ZacStateMachineTransformerPickContext {
+  _$_ZacStateMachineTransformerPickContext({final String? $type})
+      : $type = $type ?? 'z:1:StateMachine:Transformer.pickContext',
+        super._();
+
+  factory _$_ZacStateMachineTransformerPickContext.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacStateMachineTransformerPickContextFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacStateMachineTransformer.pickContext()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacStateMachineTransformerPickContext);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacStateMachineTransformerPickState value)
+        pickState,
+    required TResult Function(_ZacStateMachineTransformerPickContext value)
+        pickContext,
+  }) {
+    return pickContext(this);
+  }
+}
+
+abstract class _ZacStateMachineTransformerPickContext
+    extends ZacStateMachineTransformer {
+  factory _ZacStateMachineTransformerPickContext() =
+      _$_ZacStateMachineTransformerPickContext;
+  _ZacStateMachineTransformerPickContext._() : super._();
+
+  factory _ZacStateMachineTransformerPickContext.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacStateMachineTransformerPickContext.fromJson;
+}

@@ -239,15 +239,13 @@ void main() {
 
   group('actions', () {
     test('fromJson', () {
-      ConverterHelper.convertToType<
-          UpdateSharedValueInteractions>(<String, dynamic>{
+      ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
         'converter': 'z:1:SharedValue.update',
         'family': 'fam',
         'transformer': <ZacTransformer>[],
       });
 
-      ConverterHelper.convertToType<
-          UpdateSharedValueInteractions>(<String, dynamic>{
+      ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
         'converter': 'z:1:SharedValue.replaceWith',
         'family': 'fam',
         'value': 1,
@@ -267,7 +265,7 @@ void main() {
               FlutterText(ZacValueConsume<String>.watch(family: 'family')),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
-                  UpdateSharedValueInteractions(
+                  SharedValueActions(
                     family: 'family',
                     transformer: ZacTransformers([_ConcatStr('oof')]),
                   ),
@@ -295,7 +293,7 @@ void main() {
               FlutterText(ZacValueConsume<String>.watch(family: 'family')),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
-                  UpdateSharedValueInteractions.replaceWith(
+                  SharedValueActions.replaceWith(
                     family: 'family',
                     value: ZacValue<Object>.fromJson('bar'),
                   ),
@@ -310,7 +308,6 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('bar'), findsOneWidget);
-      ;
     });
   });
 

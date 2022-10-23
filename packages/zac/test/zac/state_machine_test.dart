@@ -1,16 +1,12 @@
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_values.dart';
 
 import '../helper.dart';
@@ -78,6 +74,24 @@ void main() {
                 'converter': 'z:1:StateMachine:Action.trySend',
                 'family': 'machine',
                 'event': 'NEXT',
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineTransformer.pickState', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineTransformer>(<String, dynamic>{
+                'converter': 'z:1:StateMachine:Transformer.pickState',
+              }),
+          returnsNormally);
+    });
+
+    test('ZacStateMachineTransformer.pickContext', () {
+      expect(
+          () => ConverterHelper.convertToType<
+                  ZacStateMachineTransformer>(<String, dynamic>{
+                'converter': 'z:1:StateMachine:Transformer.pickContext',
               }),
           returnsNormally);
     });
@@ -546,5 +560,59 @@ void main() {
     await tester.pump();
 
     expect(find.byKey(const ValueKey('in b')), findsOneWidget);
+  });
+
+  test('Let a transformer pick and return the state of a StateMachine ', () {
+    expect(
+        ZacStateMachineTransformer.pickState().transform(
+            ZacTransformValue(ZacStateMachine(
+              states: {
+                'a': ZacStateConfig(
+                    widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+              },
+              context: null,
+              state: 'a',
+              send: (event, context) {},
+              trySend: (event, context) {},
+            )),
+            FakeZacContext(),
+            null),
+        'a');
+
+    expect(
+        () => ZacStateMachineTransformer.pickState()
+            .transform(ZacTransformValue('FAIL'), FakeZacContext(), null),
+        throwsA(isA<StateError>().having(
+            (p0) => p0.message,
+            'Error',
+            contains(
+                'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
+  });
+
+  test('Let a transformer pick and return the context of a StateMachine ', () {
+    expect(
+        ZacStateMachineTransformer.pickContext().transform(
+            ZacTransformValue(ZacStateMachine(
+              states: {
+                'a': ZacStateConfig(
+                    widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+              },
+              context: 'hello',
+              state: 'a',
+              send: (event, context) {},
+              trySend: (event, context) {},
+            )),
+            FakeZacContext(),
+            null),
+        'hello');
+
+    expect(
+        () => ZacStateMachineTransformer.pickContext()
+            .transform(ZacTransformValue('FAIL'), FakeZacContext(), null),
+        throwsA(isA<StateError>().having(
+            (p0) => p0.message,
+            'Error',
+            contains(
+                'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
   });
 }

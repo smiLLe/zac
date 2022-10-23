@@ -80,15 +80,15 @@ import 'package:zac/src/flutter/widgets/text.dart';
 typedef Convert = Object Function(Map<String, dynamic> data);
 
 Map<String, Convert> allConverters = const {
+  ZacValueActions.unionValue: ZacValueActions.fromJson,
+
   /**
          * SharedValue
          */
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
-  UpdateSharedValueInteractions.unionValue:
-      UpdateSharedValueInteractions.fromJson,
-  UpdateSharedValueInteractions.unionValueReplaceWith:
-      UpdateSharedValueInteractions.fromJson,
+  SharedValueActions.unionValue: SharedValueActions.fromJson,
+  SharedValueActions.unionValueReplaceWith: SharedValueActions.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   IterableTransformer.unionValue: IterableTransformer.fromJson,
   IterableTransformer.unionValueSingle: IterableTransformer.fromJson,
@@ -150,14 +150,6 @@ Map<String, Convert> allConverters = const {
 
   ZacActions.unionValue: ZacActions.fromJson,
 
-  // StateMachineProviderBuilder.unionValue: StateMachineProviderBuilder.fromJson,
-  // MapStateToWidgetBuilder.unionValue: MapStateToWidgetBuilder.fromJson,
-  // StateMachineActions.unionValue: StateMachineActions.fromJson,
-  // StateMachineActions.unionValueUpdateContext: StateMachineActions.fromJson,
-  // StateMachineActions.unionValueSetState: StateMachineActions.fromJson,
-  // StateNode.unionValue: StateNode.fromJson,
-  // Transition.unionValue: Transition.fromJson,
-
   ZacTransition.unionValue: ZacTransition.fromJson,
   ZacStateConfig.unionValue: ZacStateConfig.fromJson,
   ZacStateMachineProviderBuilder.unionValue:
@@ -166,6 +158,9 @@ Map<String, Convert> allConverters = const {
       ZacStateMachineBuildStateBuilder.fromJson,
   ZacStateMachineActions.unionValue: ZacStateMachineActions.fromJson,
   ZacStateMachineActions.unionValueTrySend: ZacStateMachineActions.fromJson,
+  ZacStateMachineTransformer.unionValue: ZacStateMachineTransformer.fromJson,
+  ZacStateMachineTransformer.unionValuePickContext:
+      ZacStateMachineTransformer.fromJson,
 
   /**
          * Navigator && NavigatorState
