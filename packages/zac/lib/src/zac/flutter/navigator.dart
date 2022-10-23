@@ -14,8 +14,6 @@ import 'package:zac/src/zac/transformers.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
-Type _typeOf<T>() => T;
-
 @defaultConverterFreezed
 class ZacFlutterGlobalKeyNavigatorState
     with _$ZacFlutterGlobalKeyNavigatorState

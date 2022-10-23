@@ -67,7 +67,6 @@ class FlutterRefreshIndicator
                   const SharedValueConsumeType.watch(), zacContext, family)
               as Completer<void>;
           return RefreshIndicator(
-            child: child.buildWidget(zacContext),
             onRefresh: () async {
               onRefresh.execute(ZacActionPayload.param(completer), zacContext);
               return completer.future;
@@ -80,6 +79,7 @@ class FlutterRefreshIndicator
             semanticsValue: semanticsValue?.getValue(zacContext),
             triggerMode: triggerMode?.build(zacContext) ??
                 RefreshIndicatorTriggerMode.onEdge,
+            child: child.buildWidget(zacContext),
           );
         },
       ),

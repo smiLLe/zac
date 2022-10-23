@@ -518,7 +518,7 @@ void main() {
         'converter': 'f:1:FontFeature.subscripts',
       }).build,
       (matcher) => matcher.having((p0) => p0, 'FontFeature.subscripts',
-          equals(FontFeature.subscripts())),
+          equals(const FontFeature.subscripts())),
     );
 
     fakeBuild<FontFeature>(

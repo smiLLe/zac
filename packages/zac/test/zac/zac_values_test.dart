@@ -2,7 +2,6 @@ import 'package:zac/zac.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../flutter/models.dart';
 import '../helper.dart';
 
 part 'zac_values_test.freezed.dart';

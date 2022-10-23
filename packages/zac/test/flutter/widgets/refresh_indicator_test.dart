@@ -1,13 +1,8 @@
-import 'dart:async';
-
-import 'package:zac/src/zac/flutter/refresh_indicator.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 
 import '../../helper.dart';
-import '../../helper.mocks.dart';
 import '../models.dart';
 
 void main() {
@@ -70,7 +65,6 @@ void main() {
 
   testWidgets('FlutterRefreshIndicator interaction', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
-    final cb = MockLeakBagCb();
     await testZacWidget(
       tester,
       FlutterScaffold(

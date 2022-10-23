@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../helper.dart';
-import 'models.dart';
 
 void main() {
   test('FlutterTextInputType', () {

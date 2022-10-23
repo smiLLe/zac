@@ -128,7 +128,7 @@ void main() {
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([const NoopAction()]), family: 'foo'));
+              actions: const ZacActions([NoopAction()]), family: 'foo'));
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
@@ -137,7 +137,7 @@ void main() {
             'actions': NoopAction.createActions(),
           }),
           ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([const NoopAction()]), family: 'foo'));
+              actions: const ZacActions([NoopAction()]), family: 'foo'));
     });
 
     testWidgets('execute interactions', (tester) async {

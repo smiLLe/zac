@@ -12,7 +12,6 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import '../helper.dart';
-import '../helper.mocks.dart';
 
 void main() {
   group('SharedValue', () {

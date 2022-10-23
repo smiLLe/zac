@@ -39,7 +39,6 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   Material buildWidget(ZacContext zacContext) {
     return Material(
       key: key?.buildKey(zacContext),
-      child: child?.buildWidget(zacContext),
       // animationDuration: key?.toFlutter(context),
       borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
       borderRadius: borderRadius?.build(zacContext),
@@ -49,6 +48,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
       shadowColor: shadowColor?.build(zacContext),
       shape: shape?.build(zacContext),
       textStyle: textStyle?.build(zacContext),
+      child: child?.buildWidget(zacContext),
       // type: type?.toFlutter(context),
     );
   }

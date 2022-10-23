@@ -35,10 +35,10 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
     return Drawer(
       key: key?.buildKey(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
-      child: child?.buildWidget(zacContext),
       elevation: elevation?.getValue(zacContext),
       semanticLabel: semanticLabel?.getValue(zacContext),
       shape: shape?.build(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

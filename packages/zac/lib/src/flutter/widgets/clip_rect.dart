@@ -30,8 +30,8 @@ class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
   ClipRect buildWidget(ZacContext zacContext) {
     return ClipRect(
       key: key?.buildKey(zacContext),
-      child: child?.buildWidget(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

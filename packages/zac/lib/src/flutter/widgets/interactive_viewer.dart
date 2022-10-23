@@ -44,7 +44,6 @@ class FlutterInteractiveViewer
   InteractiveViewer buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
       key: key?.buildKey(zacContext),
-      child: child.buildWidget(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
       boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
@@ -59,6 +58,7 @@ class FlutterInteractiveViewer
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
       panEnabled: panEnabled?.getValue(zacContext) ?? true,
       scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
+      child: child.buildWidget(zacContext),
       // transformationController: key?.toFlutter(context),
     );
   }

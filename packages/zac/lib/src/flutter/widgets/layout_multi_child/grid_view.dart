@@ -60,12 +60,12 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
       addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
       addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
       cacheExtent: cacheExtent?.getValue(zacContext),
-      children: children?.getWidgets(zacContext) ?? const <Widget>[],
       semanticChildCount: semanticChildCount?.getValue(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.getValue(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }
 }

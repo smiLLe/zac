@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/painting.dart';
 
 import '../helper.dart';
-import 'models.dart';
 
 void main() {
   group('FlutterEdgeInsets', () {
