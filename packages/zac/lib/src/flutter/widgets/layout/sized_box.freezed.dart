@@ -82,20 +82,15 @@ class _$_FlutterWidgetSizedBox extends _FlutterWidgetSizedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWidgetSizedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, width, height, child);
 
   @override
   @optionalTypeArgs
@@ -157,16 +152,13 @@ class _$_FlutterWidgetSizedBoxExpand extends _FlutterWidgetSizedBoxExpand {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWidgetSizedBoxExpand &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, child);
 
   @override
   @optionalTypeArgs
@@ -228,18 +220,14 @@ class _$_FlutterWidgetSizedBoxFromSize extends _FlutterWidgetSizedBoxFromSize {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWidgetSizedBoxFromSize &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, key, child, size);
 
   @override
   @optionalTypeArgs
@@ -300,16 +288,13 @@ class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWidgetSizedBoxShrink &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, child);
 
   @override
   @optionalTypeArgs
@@ -370,18 +355,15 @@ class _$_FlutterWidgetSizedBoxSquare extends _FlutterWidgetSizedBoxSquare {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWidgetSizedBoxSquare &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.dimension, dimension));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.dimension, dimension) ||
+                other.dimension == dimension));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(dimension));
+  int get hashCode => Object.hash(runtimeType, key, child, dimension);
 
   @override
   @optionalTypeArgs

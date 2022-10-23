@@ -53,16 +53,13 @@ class _$_FlutterSpacer extends _FlutterSpacer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSpacer &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.flex, flex));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.flex, flex) || other.flex == flex));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(flex));
+  int get hashCode => Object.hash(runtimeType, key, flex);
 
   @override
   @optionalTypeArgs

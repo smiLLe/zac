@@ -58,19 +58,15 @@ class _$_FlutterConstrainedBox extends _FlutterConstrainedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterConstrainedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.constraints, constraints) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.constraints, constraints) ||
+                other.constraints == constraints) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(constraints),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, constraints, child);
 
   @override
   @optionalTypeArgs

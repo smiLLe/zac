@@ -1920,20 +1920,20 @@ class _$_FlutterBoxConstraints extends _FlutterBoxConstraints {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraints &&
-            const DeepCollectionEquality().equals(other.minWidth, minWidth) &&
-            const DeepCollectionEquality().equals(other.maxWidth, maxWidth) &&
-            const DeepCollectionEquality().equals(other.minHeight, minHeight) &&
-            const DeepCollectionEquality().equals(other.maxHeight, maxHeight));
+            (identical(other.minWidth, minWidth) ||
+                other.minWidth == minWidth) &&
+            (identical(other.maxWidth, maxWidth) ||
+                other.maxWidth == maxWidth) &&
+            (identical(other.minHeight, minHeight) ||
+                other.minHeight == minHeight) &&
+            (identical(other.maxHeight, maxHeight) ||
+                other.maxHeight == maxHeight));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(minWidth),
-      const DeepCollectionEquality().hash(maxWidth),
-      const DeepCollectionEquality().hash(minHeight),
-      const DeepCollectionEquality().hash(maxHeight));
+  int get hashCode =>
+      Object.hash(runtimeType, minWidth, maxWidth, minHeight, maxHeight);
 
   @override
   @optionalTypeArgs
@@ -1995,16 +1995,13 @@ class _$_FlutterBoxConstraintsExpand extends _FlutterBoxConstraintsExpand {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraintsExpand &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, width, height);
 
   @override
   @optionalTypeArgs
@@ -2060,13 +2057,12 @@ class _$_FlutterBoxConstraintsLoose extends _FlutterBoxConstraintsLoose {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraintsLoose &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @override
   @optionalTypeArgs
@@ -2120,13 +2116,12 @@ class _$_FlutterBoxConstraintsTight extends _FlutterBoxConstraintsTight {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraintsTight &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @override
   @optionalTypeArgs
@@ -2184,16 +2179,13 @@ class _$_FlutterBoxConstraintsTightFor extends _FlutterBoxConstraintsTightFor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraintsTightFor &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, width, height);
 
   @override
   @optionalTypeArgs
@@ -2254,16 +2246,13 @@ class _$_FlutterBoxConstraintsTightForFinite
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxConstraintsTightForFinite &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, width, height);
 
   @override
   @optionalTypeArgs
@@ -2373,27 +2362,22 @@ class _$_FlutterSliverGridDelegateFixedCrossAxisCount
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverGridDelegateFixedCrossAxisCount &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisCount, crossAxisCount) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSpacing, mainAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisSpacing, crossAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.childAspectRatio, childAspectRatio) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisExtent, mainAxisExtent));
+            (identical(other.crossAxisCount, crossAxisCount) ||
+                other.crossAxisCount == crossAxisCount) &&
+            (identical(other.mainAxisSpacing, mainAxisSpacing) ||
+                other.mainAxisSpacing == mainAxisSpacing) &&
+            (identical(other.crossAxisSpacing, crossAxisSpacing) ||
+                other.crossAxisSpacing == crossAxisSpacing) &&
+            (identical(other.childAspectRatio, childAspectRatio) ||
+                other.childAspectRatio == childAspectRatio) &&
+            (identical(other.mainAxisExtent, mainAxisExtent) ||
+                other.mainAxisExtent == mainAxisExtent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(crossAxisCount),
-      const DeepCollectionEquality().hash(mainAxisSpacing),
-      const DeepCollectionEquality().hash(crossAxisSpacing),
-      const DeepCollectionEquality().hash(childAspectRatio),
-      const DeepCollectionEquality().hash(mainAxisExtent));
+  int get hashCode => Object.hash(runtimeType, crossAxisCount, mainAxisSpacing,
+      crossAxisSpacing, childAspectRatio, mainAxisExtent);
 
   @override
   @optionalTypeArgs
@@ -2477,27 +2461,22 @@ class _$_FlutterSliverGridDelegateMaxCrossAxisExtent
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverGridDelegateMaxCrossAxisExtent &&
-            const DeepCollectionEquality()
-                .equals(other.maxCrossAxisExtent, maxCrossAxisExtent) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSpacing, mainAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisSpacing, crossAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.childAspectRatio, childAspectRatio) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisExtent, mainAxisExtent));
+            (identical(other.maxCrossAxisExtent, maxCrossAxisExtent) ||
+                other.maxCrossAxisExtent == maxCrossAxisExtent) &&
+            (identical(other.mainAxisSpacing, mainAxisSpacing) ||
+                other.mainAxisSpacing == mainAxisSpacing) &&
+            (identical(other.crossAxisSpacing, crossAxisSpacing) ||
+                other.crossAxisSpacing == crossAxisSpacing) &&
+            (identical(other.childAspectRatio, childAspectRatio) ||
+                other.childAspectRatio == childAspectRatio) &&
+            (identical(other.mainAxisExtent, mainAxisExtent) ||
+                other.mainAxisExtent == mainAxisExtent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(maxCrossAxisExtent),
-      const DeepCollectionEquality().hash(mainAxisSpacing),
-      const DeepCollectionEquality().hash(crossAxisSpacing),
-      const DeepCollectionEquality().hash(childAspectRatio),
-      const DeepCollectionEquality().hash(mainAxisExtent));
+  int get hashCode => Object.hash(runtimeType, maxCrossAxisExtent,
+      mainAxisSpacing, crossAxisSpacing, childAspectRatio, mainAxisExtent);
 
   @override
   @optionalTypeArgs

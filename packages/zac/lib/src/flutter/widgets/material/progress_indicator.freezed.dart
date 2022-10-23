@@ -97,29 +97,23 @@ class _$_FlutterProgressIndicatorLinear
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterProgressIndicatorLinear &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.minHeight, minHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsLabel, semanticsLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsValue, semanticsValue));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.minHeight, minHeight) ||
+                other.minHeight == minHeight) &&
+            (identical(other.semanticsLabel, semanticsLabel) ||
+                other.semanticsLabel == semanticsLabel) &&
+            (identical(other.semanticsValue, semanticsValue) ||
+                other.semanticsValue == semanticsValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(minHeight),
-      const DeepCollectionEquality().hash(semanticsLabel),
-      const DeepCollectionEquality().hash(semanticsValue));
+  int get hashCode => Object.hash(runtimeType, key, value, backgroundColor,
+      color, minHeight, semanticsLabel, semanticsValue);
 
   @override
   @optionalTypeArgs
@@ -211,30 +205,23 @@ class _$_FlutterProgressIndicatorCircular
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterProgressIndicatorCircular &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.strokeWidth, strokeWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsLabel, semanticsLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsValue, semanticsValue));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.strokeWidth, strokeWidth) ||
+                other.strokeWidth == strokeWidth) &&
+            (identical(other.semanticsLabel, semanticsLabel) ||
+                other.semanticsLabel == semanticsLabel) &&
+            (identical(other.semanticsValue, semanticsValue) ||
+                other.semanticsValue == semanticsValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(strokeWidth),
-      const DeepCollectionEquality().hash(semanticsLabel),
-      const DeepCollectionEquality().hash(semanticsValue));
+  int get hashCode => Object.hash(runtimeType, key, value, backgroundColor,
+      color, strokeWidth, semanticsLabel, semanticsValue);
 
   @override
   @optionalTypeArgs

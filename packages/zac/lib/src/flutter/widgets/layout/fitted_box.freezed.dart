@@ -64,23 +64,19 @@ class _$_FlutterFittedBox extends _FlutterFittedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterFittedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.fit, fit) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.fit, fit) || other.fit == fit) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(fit),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, key, fit, alignment, clipBehavior, child);
 
   @override
   @optionalTypeArgs

@@ -92,34 +92,35 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSingleChildScrollView &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollDirection, scrollDirection) &&
-            const DeepCollectionEquality().equals(other.reverse, reverse) &&
-            const DeepCollectionEquality().equals(other.padding, padding) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationId, restorationId) &&
-            const DeepCollectionEquality().equals(
-                other.keyboardDismissBehavior, keyboardDismissBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.scrollDirection, scrollDirection) ||
+                other.scrollDirection == scrollDirection) &&
+            (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.restorationId, restorationId) ||
+                other.restorationId == restorationId) &&
+            (identical(
+                    other.keyboardDismissBehavior, keyboardDismissBehavior) ||
+                other.keyboardDismissBehavior == keyboardDismissBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(scrollDirection),
-      const DeepCollectionEquality().hash(reverse),
-      const DeepCollectionEquality().hash(padding),
-      const DeepCollectionEquality().hash(primary),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(restorationId),
-      const DeepCollectionEquality().hash(keyboardDismissBehavior));
+      key,
+      scrollDirection,
+      reverse,
+      padding,
+      primary,
+      child,
+      clipBehavior,
+      restorationId,
+      keyboardDismissBehavior);
 
   @override
   @optionalTypeArgs

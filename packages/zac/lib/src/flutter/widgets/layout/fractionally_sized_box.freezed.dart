@@ -69,24 +69,20 @@ class _$_FlutterFractionallySizedBox extends _FlutterFractionallySizedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterFractionallySizedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.widthFactor, widthFactor) &&
-            const DeepCollectionEquality()
-                .equals(other.heightFactor, heightFactor));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.widthFactor, widthFactor) ||
+                other.widthFactor == widthFactor) &&
+            (identical(other.heightFactor, heightFactor) ||
+                other.heightFactor == heightFactor));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(widthFactor),
-      const DeepCollectionEquality().hash(heightFactor));
+      runtimeType, key, child, alignment, widthFactor, heightFactor);
 
   @override
   @optionalTypeArgs

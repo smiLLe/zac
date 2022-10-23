@@ -128,60 +128,62 @@ class _$_FlutterListView extends _FlutterListView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterListView &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollDirection, scrollDirection) &&
-            const DeepCollectionEquality().equals(other.reverse, reverse) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality().equals(other.physics, physics) &&
-            const DeepCollectionEquality()
-                .equals(other.shrinkWrap, shrinkWrap) &&
-            const DeepCollectionEquality().equals(other.padding, padding) &&
-            const DeepCollectionEquality()
-                .equals(other.itemExtent, itemExtent) &&
-            const DeepCollectionEquality()
-                .equals(other.prototypeItem, prototypeItem) &&
-            const DeepCollectionEquality()
-                .equals(other.addAutomaticKeepAlives, addAutomaticKeepAlives) &&
-            const DeepCollectionEquality()
-                .equals(other.addRepaintBoundaries, addRepaintBoundaries) &&
-            const DeepCollectionEquality()
-                .equals(other.addSemanticIndexes, addSemanticIndexes) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheExtent, cacheExtent) &&
-            const DeepCollectionEquality().equals(other.children, children) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticChildCount, semanticChildCount) &&
-            const DeepCollectionEquality().equals(
-                other.keyboardDismissBehavior, keyboardDismissBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationId, restorationId) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.scrollDirection, scrollDirection) ||
+                other.scrollDirection == scrollDirection) &&
+            (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.physics, physics) || other.physics == physics) &&
+            (identical(other.shrinkWrap, shrinkWrap) ||
+                other.shrinkWrap == shrinkWrap) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.itemExtent, itemExtent) ||
+                other.itemExtent == itemExtent) &&
+            (identical(other.prototypeItem, prototypeItem) ||
+                other.prototypeItem == prototypeItem) &&
+            (identical(other.addAutomaticKeepAlives, addAutomaticKeepAlives) ||
+                other.addAutomaticKeepAlives == addAutomaticKeepAlives) &&
+            (identical(other.addRepaintBoundaries, addRepaintBoundaries) ||
+                other.addRepaintBoundaries == addRepaintBoundaries) &&
+            (identical(other.addSemanticIndexes, addSemanticIndexes) ||
+                other.addSemanticIndexes == addSemanticIndexes) &&
+            (identical(other.cacheExtent, cacheExtent) ||
+                other.cacheExtent == cacheExtent) &&
+            (identical(other.children, children) ||
+                other.children == children) &&
+            (identical(other.semanticChildCount, semanticChildCount) ||
+                other.semanticChildCount == semanticChildCount) &&
+            (identical(
+                    other.keyboardDismissBehavior, keyboardDismissBehavior) ||
+                other.keyboardDismissBehavior == keyboardDismissBehavior) &&
+            (identical(other.restorationId, restorationId) ||
+                other.restorationId == restorationId) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(scrollDirection),
-      const DeepCollectionEquality().hash(reverse),
-      const DeepCollectionEquality().hash(primary),
-      const DeepCollectionEquality().hash(physics),
-      const DeepCollectionEquality().hash(shrinkWrap),
-      const DeepCollectionEquality().hash(padding),
-      const DeepCollectionEquality().hash(itemExtent),
-      const DeepCollectionEquality().hash(prototypeItem),
-      const DeepCollectionEquality().hash(addAutomaticKeepAlives),
-      const DeepCollectionEquality().hash(addRepaintBoundaries),
-      const DeepCollectionEquality().hash(addSemanticIndexes),
-      const DeepCollectionEquality().hash(cacheExtent),
-      const DeepCollectionEquality().hash(children),
-      const DeepCollectionEquality().hash(semanticChildCount),
-      const DeepCollectionEquality().hash(keyboardDismissBehavior),
-      const DeepCollectionEquality().hash(restorationId),
-      const DeepCollectionEquality().hash(clipBehavior));
+      key,
+      scrollDirection,
+      reverse,
+      primary,
+      physics,
+      shrinkWrap,
+      padding,
+      itemExtent,
+      prototypeItem,
+      addAutomaticKeepAlives,
+      addRepaintBoundaries,
+      addSemanticIndexes,
+      cacheExtent,
+      children,
+      semanticChildCount,
+      keyboardDismissBehavior,
+      restorationId,
+      clipBehavior);
 
   @override
   @optionalTypeArgs

@@ -96,39 +96,41 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterButtonBar &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSize, mainAxisSize) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonMinWidth, buttonMinWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonHeight, buttonHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonPadding, buttonPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonAlignedDropdown, buttonAlignedDropdown) &&
-            const DeepCollectionEquality()
-                .equals(other.overflowDirection, overflowDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.overflowButtonSpacing, overflowButtonSpacing) &&
-            const DeepCollectionEquality().equals(other.children, children));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.mainAxisSize, mainAxisSize) ||
+                other.mainAxisSize == mainAxisSize) &&
+            (identical(other.buttonMinWidth, buttonMinWidth) ||
+                other.buttonMinWidth == buttonMinWidth) &&
+            (identical(other.buttonHeight, buttonHeight) ||
+                other.buttonHeight == buttonHeight) &&
+            (identical(other.buttonPadding, buttonPadding) ||
+                other.buttonPadding == buttonPadding) &&
+            (identical(other.buttonAlignedDropdown, buttonAlignedDropdown) ||
+                other.buttonAlignedDropdown == buttonAlignedDropdown) &&
+            (identical(other.overflowDirection, overflowDirection) ||
+                other.overflowDirection == overflowDirection) &&
+            (identical(other.overflowButtonSpacing, overflowButtonSpacing) ||
+                other.overflowButtonSpacing == overflowButtonSpacing) &&
+            (identical(other.children, children) ||
+                other.children == children));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(mainAxisSize),
-      const DeepCollectionEquality().hash(buttonMinWidth),
-      const DeepCollectionEquality().hash(buttonHeight),
-      const DeepCollectionEquality().hash(buttonPadding),
-      const DeepCollectionEquality().hash(buttonAlignedDropdown),
-      const DeepCollectionEquality().hash(overflowDirection),
-      const DeepCollectionEquality().hash(overflowButtonSpacing),
-      const DeepCollectionEquality().hash(children));
+      key,
+      alignment,
+      mainAxisSize,
+      buttonMinWidth,
+      buttonHeight,
+      buttonPadding,
+      buttonAlignedDropdown,
+      overflowDirection,
+      overflowButtonSpacing,
+      children);
 
   @override
   @optionalTypeArgs

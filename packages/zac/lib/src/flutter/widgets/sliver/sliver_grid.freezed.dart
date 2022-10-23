@@ -59,19 +59,16 @@ class _$_FlutterSliverGrid extends _FlutterSliverGrid {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverGrid &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.delegate, delegate) &&
-            const DeepCollectionEquality()
-                .equals(other.gridDelegate, gridDelegate));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.delegate, delegate) ||
+                other.delegate == delegate) &&
+            (identical(other.gridDelegate, gridDelegate) ||
+                other.gridDelegate == gridDelegate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(delegate),
-      const DeepCollectionEquality().hash(gridDelegate));
+  int get hashCode => Object.hash(runtimeType, key, delegate, gridDelegate);
 
   @override
   @optionalTypeArgs

@@ -73,25 +73,21 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIndexedStack &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.sizing, sizing) &&
-            const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality().equals(other.children, children));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.sizing, sizing) || other.sizing == sizing) &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.children, children) ||
+                other.children == children));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(sizing),
-      const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(children));
+      runtimeType, key, alignment, textDirection, sizing, index, children);
 
   @override
   @optionalTypeArgs

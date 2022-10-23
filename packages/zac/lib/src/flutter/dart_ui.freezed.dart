@@ -78,20 +78,15 @@ class _$_FlutterColorFromARGB extends _FlutterColorFromARGB {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterColorFromARGB &&
-            const DeepCollectionEquality().equals(other.a, a) &&
-            const DeepCollectionEquality().equals(other.r, r) &&
-            const DeepCollectionEquality().equals(other.g, g) &&
-            const DeepCollectionEquality().equals(other.b, b));
+            (identical(other.a, a) || other.a == a) &&
+            (identical(other.r, r) || other.r == r) &&
+            (identical(other.g, g) || other.g == g) &&
+            (identical(other.b, b) || other.b == b));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(a),
-      const DeepCollectionEquality().hash(r),
-      const DeepCollectionEquality().hash(g),
-      const DeepCollectionEquality().hash(b));
+  int get hashCode => Object.hash(runtimeType, a, r, g, b);
 
   @override
   @optionalTypeArgs
@@ -160,20 +155,15 @@ class _$_FlutterColorFromRBGO extends _FlutterColorFromRBGO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterColorFromRBGO &&
-            const DeepCollectionEquality().equals(other.r, r) &&
-            const DeepCollectionEquality().equals(other.g, g) &&
-            const DeepCollectionEquality().equals(other.b, b) &&
-            const DeepCollectionEquality().equals(other.opacity, opacity));
+            (identical(other.r, r) || other.r == r) &&
+            (identical(other.g, g) || other.g == g) &&
+            (identical(other.b, b) || other.b == b) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(r),
-      const DeepCollectionEquality().hash(g),
-      const DeepCollectionEquality().hash(b),
-      const DeepCollectionEquality().hash(opacity));
+  int get hashCode => Object.hash(runtimeType, r, g, b, opacity);
 
   @override
   @optionalTypeArgs
@@ -256,16 +246,13 @@ class _$_FlutterOffset extends _FlutterOffset {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOffset &&
-            const DeepCollectionEquality().equals(other.dx, dx) &&
-            const DeepCollectionEquality().equals(other.dy, dy));
+            (identical(other.dx, dx) || other.dx == dx) &&
+            (identical(other.dy, dy) || other.dy == dy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(dx),
-      const DeepCollectionEquality().hash(dy));
+  int get hashCode => Object.hash(runtimeType, dx, dy);
 
   @override
   @optionalTypeArgs
@@ -318,16 +305,15 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOffsetFromDirection &&
-            const DeepCollectionEquality().equals(other.direction, direction) &&
-            const DeepCollectionEquality().equals(other.distance, distance));
+            (identical(other.direction, direction) ||
+                other.direction == direction) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(direction),
-      const DeepCollectionEquality().hash(distance));
+  int get hashCode => Object.hash(runtimeType, direction, distance);
 
   @override
   @optionalTypeArgs
@@ -623,13 +609,12 @@ class _$_FlutterRadiusCircular extends _FlutterRadiusCircular {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRadiusCircular &&
-            const DeepCollectionEquality().equals(other.radius, radius));
+            (identical(other.radius, radius) || other.radius == radius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(radius));
+  int get hashCode => Object.hash(runtimeType, radius);
 
   @override
   @optionalTypeArgs
@@ -680,16 +665,13 @@ class _$_FlutterRadiusElliptical extends _FlutterRadiusElliptical {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRadiusElliptical &&
-            const DeepCollectionEquality().equals(other.x, x) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(x),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, x, y);
 
   @override
   @optionalTypeArgs
@@ -2304,18 +2286,15 @@ class _$_FlutterLocale extends _FlutterLocale {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterLocale &&
-            const DeepCollectionEquality()
-                .equals(other.languageCode, languageCode) &&
-            const DeepCollectionEquality()
-                .equals(other.countryCode, countryCode));
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(languageCode),
-      const DeepCollectionEquality().hash(countryCode));
+  int get hashCode => Object.hash(runtimeType, languageCode, countryCode);
 
   @override
   @optionalTypeArgs
@@ -2480,16 +2459,13 @@ class _$_FontFeature extends _FontFeature {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeature &&
-            const DeepCollectionEquality().equals(other.feature, feature) &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.feature, feature) || other.feature == feature) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(feature),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, feature, value);
 
   @override
   @optionalTypeArgs
@@ -2576,13 +2552,12 @@ class _$_FontFeatureAlternative extends _FontFeatureAlternative {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureAlternative &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -2838,13 +2813,12 @@ class _$_FontFeatureCharacterVariant extends _FontFeatureCharacterVariant {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureCharacterVariant &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -3101,13 +3075,12 @@ class _$_FontFeatureDisable extends _FontFeatureDisable {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureDisable &&
-            const DeepCollectionEquality().equals(other.feature, feature));
+            (identical(other.feature, feature) || other.feature == feature));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(feature));
+  int get hashCode => Object.hash(runtimeType, feature);
 
   @override
   @optionalTypeArgs
@@ -3192,13 +3165,12 @@ class _$_FontFeatureEnable extends _FontFeatureEnable {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureEnable &&
-            const DeepCollectionEquality().equals(other.feature, feature));
+            (identical(other.feature, feature) || other.feature == feature));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(feature));
+  int get hashCode => Object.hash(runtimeType, feature);
 
   @override
   @optionalTypeArgs
@@ -3620,13 +3592,12 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureLocaleAware &&
-            const DeepCollectionEquality().equals(other.enable, enable));
+            (identical(other.enable, enable) || other.enable == enable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(enable));
+  int get hashCode => Object.hash(runtimeType, enable);
 
   @override
   @optionalTypeArgs
@@ -3712,13 +3683,12 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureNotationalForms &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -4480,13 +4450,12 @@ class _$_FontFeatureStylisticSet extends _FontFeatureStylisticSet {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureStylisticSet &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -4739,13 +4708,12 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FontFeatureSwash &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -5580,21 +5548,20 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextHeightBehavior &&
-            const DeepCollectionEquality().equals(
-                other.applyHeightToFirstAscent, applyHeightToFirstAscent) &&
-            const DeepCollectionEquality().equals(
-                other.applyHeightToLastDescent, applyHeightToLastDescent) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingDistribution, leadingDistribution));
+            (identical(
+                    other.applyHeightToFirstAscent, applyHeightToFirstAscent) ||
+                other.applyHeightToFirstAscent == applyHeightToFirstAscent) &&
+            (identical(
+                    other.applyHeightToLastDescent, applyHeightToLastDescent) ||
+                other.applyHeightToLastDescent == applyHeightToLastDescent) &&
+            (identical(other.leadingDistribution, leadingDistribution) ||
+                other.leadingDistribution == leadingDistribution));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(applyHeightToFirstAscent),
-      const DeepCollectionEquality().hash(applyHeightToLastDescent),
-      const DeepCollectionEquality().hash(leadingDistribution));
+  int get hashCode => Object.hash(runtimeType, applyHeightToFirstAscent,
+      applyHeightToLastDescent, leadingDistribution);
 
   @override
   @optionalTypeArgs
@@ -7931,18 +7898,14 @@ class _$_FlutterRectFroMCenter extends _FlutterRectFroMCenter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRectFroMCenter &&
-            const DeepCollectionEquality().equals(other.center, center) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.center, center) || other.center == center) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(center),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, center, width, height);
 
   @override
   @optionalTypeArgs
@@ -8001,16 +7964,13 @@ class _$_FlutterRectFromCircle extends _FlutterRectFromCircle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRectFromCircle &&
-            const DeepCollectionEquality().equals(other.center, center) &&
-            const DeepCollectionEquality().equals(other.radius, radius));
+            (identical(other.center, center) || other.center == center) &&
+            (identical(other.radius, radius) || other.radius == radius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(center),
-      const DeepCollectionEquality().hash(radius));
+  int get hashCode => Object.hash(runtimeType, center, radius);
 
   @override
   @optionalTypeArgs
@@ -8071,20 +8031,15 @@ class _$_FlutterRectFromLTRB extends _FlutterRectFromLTRB {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRectFromLTRB &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom));
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom));
+  int get hashCode => Object.hash(runtimeType, left, top, right, bottom);
 
   @override
   @optionalTypeArgs
@@ -8149,20 +8104,15 @@ class _$_FlutterRectFromLTWH extends _FlutterRectFromLTWH {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRectFromLTWH &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, left, top, width, height);
 
   @override
   @optionalTypeArgs
@@ -8222,16 +8172,13 @@ class _$_FlutterRectFromPoints extends _FlutterRectFromPoints {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRectFromPoints &&
-            const DeepCollectionEquality().equals(other.a, a) &&
-            const DeepCollectionEquality().equals(other.b, b));
+            (identical(other.a, a) || other.a == a) &&
+            (identical(other.b, b) || other.b == b));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(a),
-      const DeepCollectionEquality().hash(b));
+  int get hashCode => Object.hash(runtimeType, a, b);
 
   @override
   @optionalTypeArgs
@@ -8638,16 +8585,13 @@ class _$_FlutterSize extends _FlutterSize {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSize &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, width, height);
 
   @override
   @optionalTypeArgs
@@ -9224,19 +9168,15 @@ class _$_DartUiShadow extends _DartUiShadow {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DartUiShadow &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.offset, offset) &&
-            const DeepCollectionEquality()
-                .equals(other.blurRadius, blurRadius));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.blurRadius, blurRadius) ||
+                other.blurRadius == blurRadius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(offset),
-      const DeepCollectionEquality().hash(blurRadius));
+  int get hashCode => Object.hash(runtimeType, color, offset, blurRadius);
 
   @override
   @optionalTypeArgs

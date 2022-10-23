@@ -58,19 +58,15 @@ class _$_FlutterClipOval extends _FlutterClipOval {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterClipOval &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(clipBehavior));
+  int get hashCode => Object.hash(runtimeType, key, child, clipBehavior);
 
   @override
   @optionalTypeArgs

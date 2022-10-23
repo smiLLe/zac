@@ -76,26 +76,24 @@ class _$_FlutterOverflowBox extends _FlutterOverflowBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOverflowBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.minWidth, minWidth) &&
-            const DeepCollectionEquality().equals(other.maxWidth, maxWidth) &&
-            const DeepCollectionEquality().equals(other.minHeight, minHeight) &&
-            const DeepCollectionEquality().equals(other.maxHeight, maxHeight) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.minWidth, minWidth) ||
+                other.minWidth == minWidth) &&
+            (identical(other.maxWidth, maxWidth) ||
+                other.maxWidth == maxWidth) &&
+            (identical(other.minHeight, minHeight) ||
+                other.minHeight == minHeight) &&
+            (identical(other.maxHeight, maxHeight) ||
+                other.maxHeight == maxHeight) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(minWidth),
-      const DeepCollectionEquality().hash(maxWidth),
-      const DeepCollectionEquality().hash(minHeight),
-      const DeepCollectionEquality().hash(maxHeight),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, alignment, minWidth,
+      maxWidth, minHeight, maxHeight, child);
 
   @override
   @optionalTypeArgs

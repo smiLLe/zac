@@ -159,73 +159,80 @@ class _$_FlutterListTile extends _FlutterListTile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterListTile &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.leading, leading) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.subtitle, subtitle) &&
-            const DeepCollectionEquality().equals(other.trailing, trailing) &&
-            const DeepCollectionEquality()
-                .equals(other.isThreeLine, isThreeLine) &&
-            const DeepCollectionEquality().equals(other.dense, dense) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedColor, selectedColor) &&
-            const DeepCollectionEquality().equals(other.iconColor, iconColor) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.contentPadding, contentPadding) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled) &&
-            const DeepCollectionEquality().equals(other.onTap, onTap) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.selected, selected) &&
-            const DeepCollectionEquality()
-                .equals(other.focusColor, focusColor) &&
-            const DeepCollectionEquality()
-                .equals(other.hoverColor, hoverColor) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality().equals(other.tileColor, tileColor) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedTileColor, selectedTileColor) &&
-            const DeepCollectionEquality()
-                .equals(other.enableFeedback, enableFeedback) &&
-            const DeepCollectionEquality()
-                .equals(other.horizontalTitleGap, horizontalTitleGap) &&
-            const DeepCollectionEquality()
-                .equals(other.minVerticalPadding, minVerticalPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.minLeadingWidth, minLeadingWidth));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.leading, leading) || other.leading == leading) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.subtitle, subtitle) ||
+                other.subtitle == subtitle) &&
+            (identical(other.trailing, trailing) ||
+                other.trailing == trailing) &&
+            (identical(other.isThreeLine, isThreeLine) ||
+                other.isThreeLine == isThreeLine) &&
+            (identical(other.dense, dense) || other.dense == dense) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.selectedColor, selectedColor) ||
+                other.selectedColor == selectedColor) &&
+            (identical(other.iconColor, iconColor) ||
+                other.iconColor == iconColor) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.contentPadding, contentPadding) ||
+                other.contentPadding == contentPadding) &&
+            (identical(other.enabled, enabled) || other.enabled == enabled) &&
+            (identical(other.onTap, onTap) || other.onTap == onTap) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.selected, selected) ||
+                other.selected == selected) &&
+            (identical(other.focusColor, focusColor) ||
+                other.focusColor == focusColor) &&
+            (identical(other.hoverColor, hoverColor) ||
+                other.hoverColor == hoverColor) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.tileColor, tileColor) ||
+                other.tileColor == tileColor) &&
+            (identical(other.selectedTileColor, selectedTileColor) ||
+                other.selectedTileColor == selectedTileColor) &&
+            (identical(other.enableFeedback, enableFeedback) ||
+                other.enableFeedback == enableFeedback) &&
+            (identical(other.horizontalTitleGap, horizontalTitleGap) ||
+                other.horizontalTitleGap == horizontalTitleGap) &&
+            (identical(other.minVerticalPadding, minVerticalPadding) ||
+                other.minVerticalPadding == minVerticalPadding) &&
+            (identical(other.minLeadingWidth, minLeadingWidth) ||
+                other.minLeadingWidth == minLeadingWidth));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(leading),
-        const DeepCollectionEquality().hash(title),
-        const DeepCollectionEquality().hash(subtitle),
-        const DeepCollectionEquality().hash(trailing),
-        const DeepCollectionEquality().hash(isThreeLine),
-        const DeepCollectionEquality().hash(dense),
-        const DeepCollectionEquality().hash(shape),
-        const DeepCollectionEquality().hash(selectedColor),
-        const DeepCollectionEquality().hash(iconColor),
-        const DeepCollectionEquality().hash(textColor),
-        const DeepCollectionEquality().hash(contentPadding),
-        const DeepCollectionEquality().hash(enabled),
-        const DeepCollectionEquality().hash(onTap),
-        const DeepCollectionEquality().hash(onLongPress),
-        const DeepCollectionEquality().hash(selected),
-        const DeepCollectionEquality().hash(focusColor),
-        const DeepCollectionEquality().hash(hoverColor),
-        const DeepCollectionEquality().hash(autofocus),
-        const DeepCollectionEquality().hash(tileColor),
-        const DeepCollectionEquality().hash(selectedTileColor),
-        const DeepCollectionEquality().hash(enableFeedback),
-        const DeepCollectionEquality().hash(horizontalTitleGap),
-        const DeepCollectionEquality().hash(minVerticalPadding),
-        const DeepCollectionEquality().hash(minLeadingWidth)
+        key,
+        leading,
+        title,
+        subtitle,
+        trailing,
+        isThreeLine,
+        dense,
+        shape,
+        selectedColor,
+        iconColor,
+        textColor,
+        contentPadding,
+        enabled,
+        onTap,
+        onLongPress,
+        selected,
+        focusColor,
+        hoverColor,
+        autofocus,
+        tileColor,
+        selectedTileColor,
+        enableFeedback,
+        horizontalTitleGap,
+        minVerticalPadding,
+        minLeadingWidth
       ]);
 
   @override

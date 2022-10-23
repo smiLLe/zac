@@ -54,16 +54,13 @@ class _$_FlutterIntrinsicWidth extends _FlutterIntrinsicWidth {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIntrinsicWidth &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, child);
 
   @override
   @optionalTypeArgs

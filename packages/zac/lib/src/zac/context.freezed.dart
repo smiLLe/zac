@@ -31,7 +31,8 @@ mixin _$ZacContext {
 abstract class $ZacContextCopyWith<$Res> {
   factory $ZacContextCopyWith(
           ZacContext value, $Res Function(ZacContext) then) =
-      _$ZacContextCopyWithImpl<$Res>;
+      _$ZacContextCopyWithImpl<$Res, ZacContext>;
+  @useResult
   $Res call(
       {BuildContext context,
       WidgetRef ref,
@@ -40,38 +41,41 @@ abstract class $ZacContextCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ZacContextCopyWithImpl<$Res> implements $ZacContextCopyWith<$Res> {
+class _$ZacContextCopyWithImpl<$Res, $Val extends ZacContext>
+    implements $ZacContextCopyWith<$Res> {
   _$ZacContextCopyWithImpl(this._value, this._then);
 
-  final ZacContext _value;
   // ignore: unused_field
-  final $Res Function(ZacContext) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? context = freezed,
-    Object? ref = freezed,
-    Object? isMounted = freezed,
-    Object? onUnmount = freezed,
+    Object? context = null,
+    Object? ref = null,
+    Object? isMounted = null,
+    Object? onUnmount = null,
   }) {
     return _then(_value.copyWith(
-      context: context == freezed
+      context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
-      ref: ref == freezed
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as WidgetRef,
-      isMounted: isMounted == freezed
+      isMounted: null == isMounted
           ? _value.isMounted
           : isMounted // ignore: cast_nullable_to_non_nullable
               as bool Function(),
-      onUnmount: onUnmount == freezed
+      onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
               as void Function(void Function()),
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +86,7 @@ abstract class _$$_ZacContextCopyWith<$Res>
           _$_ZacContext value, $Res Function(_$_ZacContext) then) =
       __$$_ZacContextCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {BuildContext context,
       WidgetRef ref,
@@ -90,36 +95,35 @@ abstract class _$$_ZacContextCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ZacContextCopyWithImpl<$Res> extends _$ZacContextCopyWithImpl<$Res>
+class __$$_ZacContextCopyWithImpl<$Res>
+    extends _$ZacContextCopyWithImpl<$Res, _$_ZacContext>
     implements _$$_ZacContextCopyWith<$Res> {
   __$$_ZacContextCopyWithImpl(
       _$_ZacContext _value, $Res Function(_$_ZacContext) _then)
-      : super(_value, (v) => _then(v as _$_ZacContext));
+      : super(_value, _then);
 
-  @override
-  _$_ZacContext get _value => super._value as _$_ZacContext;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? context = freezed,
-    Object? ref = freezed,
-    Object? isMounted = freezed,
-    Object? onUnmount = freezed,
+    Object? context = null,
+    Object? ref = null,
+    Object? isMounted = null,
+    Object? onUnmount = null,
   }) {
     return _then(_$_ZacContext(
-      context: context == freezed
+      context: null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
-      ref: ref == freezed
+      ref: null == ref
           ? _value.ref
           : ref // ignore: cast_nullable_to_non_nullable
               as WidgetRef,
-      isMounted: isMounted == freezed
+      isMounted: null == isMounted
           ? _value.isMounted
           : isMounted // ignore: cast_nullable_to_non_nullable
               as bool Function(),
-      onUnmount: onUnmount == freezed
+      onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
               as void Function(void Function()),
@@ -155,8 +159,8 @@ class _$_ZacContext implements _ZacContext {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacContext &&
-            const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality().equals(other.ref, ref) &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.ref, ref) || other.ref == ref) &&
             (identical(other.isMounted, isMounted) ||
                 other.isMounted == isMounted) &&
             (identical(other.onUnmount, onUnmount) ||
@@ -164,15 +168,12 @@ class _$_ZacContext implements _ZacContext {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(ref),
-      isMounted,
-      onUnmount);
+  int get hashCode =>
+      Object.hash(runtimeType, context, ref, isMounted, onUnmount);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ZacContextCopyWith<_$_ZacContext> get copyWith =>
       __$$_ZacContextCopyWithImpl<_$_ZacContext>(this, _$identity);
 }

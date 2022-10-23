@@ -57,18 +57,14 @@ class _$_FlutterSliverPadding extends _FlutterSliverPadding {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverPadding &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.sliver, sliver) &&
-            const DeepCollectionEquality().equals(other.padding, padding));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.sliver, sliver) || other.sliver == sliver) &&
+            (identical(other.padding, padding) || other.padding == padding));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(sliver),
-      const DeepCollectionEquality().hash(padding));
+  int get hashCode => Object.hash(runtimeType, key, sliver, padding);
 
   @override
   @optionalTypeArgs

@@ -71,24 +71,18 @@ class _$_ZacValueTest implements _ZacValueTest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueTest &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.simple, simple) &&
-            const DeepCollectionEquality().equals(other.watch, watch) &&
-            const DeepCollectionEquality().equals(other.read, read) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.custom, custom));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.simple, simple) || other.simple == simple) &&
+            (identical(other.watch, watch) || other.watch == watch) &&
+            (identical(other.read, read) || other.read == read) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.custom, custom) || other.custom == custom));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(simple),
-      const DeepCollectionEquality().hash(watch),
-      const DeepCollectionEquality().hash(read),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(custom));
+  int get hashCode =>
+      Object.hash(runtimeType, value, simple, watch, read, date, custom);
 
   @override
   @optionalTypeArgs
@@ -168,18 +162,14 @@ class _$_ZacValueReadTest implements _ZacValueReadTest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueReadTest &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.simple, simple) &&
-            const DeepCollectionEquality().equals(other.read, read));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.simple, simple) || other.simple == simple) &&
+            (identical(other.read, read) || other.read == read));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(simple),
-      const DeepCollectionEquality().hash(read));
+  int get hashCode => Object.hash(runtimeType, value, simple, read);
 
   @override
   @optionalTypeArgs

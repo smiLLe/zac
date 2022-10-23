@@ -62,20 +62,16 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSizedOverflowBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(size),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, size, alignment, child);
 
   @override
   @optionalTypeArgs

@@ -50,13 +50,12 @@ class _$_FlutterValueKey extends _FlutterValueKey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterValueKey &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs

@@ -72,26 +72,21 @@ class _$_FlutterDrawer extends _FlutterDrawer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDrawer &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(semanticLabel));
+  int get hashCode => Object.hash(runtimeType, key, backgroundColor, elevation,
+      shape, child, semanticLabel);
 
   @override
   @optionalTypeArgs

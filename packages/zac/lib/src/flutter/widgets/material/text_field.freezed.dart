@@ -250,121 +250,131 @@ class _$_FlutterTextField extends _FlutterTextField {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextField &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.decoration, decoration) &&
-            const DeepCollectionEquality()
-                .equals(other.keyboardType, keyboardType) &&
-            const DeepCollectionEquality()
-                .equals(other.textInputAction, textInputAction) &&
-            const DeepCollectionEquality()
-                .equals(other.textCapitalization, textCapitalization) &&
-            const DeepCollectionEquality().equals(other.style, style) &&
-            const DeepCollectionEquality()
-                .equals(other.strutStyle, strutStyle) &&
-            const DeepCollectionEquality().equals(other.textAlign, textAlign) &&
-            const DeepCollectionEquality()
-                .equals(other.textAlignVertical, textAlignVertical) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.readOnly, readOnly) &&
-            const DeepCollectionEquality()
-                .equals(other.showCursor, showCursor) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.obscuringCharacter, obscuringCharacter) &&
-            const DeepCollectionEquality()
-                .equals(other.obscureText, obscureText) &&
-            const DeepCollectionEquality()
-                .equals(other.autocorrect, autocorrect) &&
-            const DeepCollectionEquality()
-                .equals(other.smartDashesType, smartDashesType) &&
-            const DeepCollectionEquality()
-                .equals(other.smartQuotesType, smartQuotesType) &&
-            const DeepCollectionEquality()
-                .equals(other.enableSuggestions, enableSuggestions) &&
-            const DeepCollectionEquality().equals(other.maxLines, maxLines) &&
-            const DeepCollectionEquality().equals(other.minLines, minLines) &&
-            const DeepCollectionEquality().equals(other.expands, expands) &&
-            const DeepCollectionEquality().equals(other.maxLength, maxLength) &&
-            const DeepCollectionEquality().equals(other.onChanged, onChanged) &&
-            const DeepCollectionEquality()
-                .equals(other.onEditingComplete, onEditingComplete) &&
-            const DeepCollectionEquality()
-                .equals(other.onSubmitted, onSubmitted) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorWidth, cursorWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorHeight, cursorHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorRadius, cursorRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorColor, cursorColor) &&
-            const DeepCollectionEquality()
-                .equals(other.selectionHeightStyle, selectionHeightStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.selectionWidthStyle, selectionWidthStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.keyboardAppearance, keyboardAppearance) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollPadding, scrollPadding) &&
-            const DeepCollectionEquality().equals(
-                other.enableInteractiveSelection, enableInteractiveSelection) &&
-            const DeepCollectionEquality().equals(other.onTap, onTap) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationId, restorationId) &&
-            const DeepCollectionEquality().equals(
-                other.enableIMEPersonalizedLearning,
-                enableIMEPersonalizedLearning));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.decoration, decoration) ||
+                other.decoration == decoration) &&
+            (identical(other.keyboardType, keyboardType) ||
+                other.keyboardType == keyboardType) &&
+            (identical(other.textInputAction, textInputAction) ||
+                other.textInputAction == textInputAction) &&
+            (identical(other.textCapitalization, textCapitalization) ||
+                other.textCapitalization == textCapitalization) &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.strutStyle, strutStyle) ||
+                other.strutStyle == strutStyle) &&
+            (identical(other.textAlign, textAlign) ||
+                other.textAlign == textAlign) &&
+            (identical(other.textAlignVertical, textAlignVertical) ||
+                other.textAlignVertical == textAlignVertical) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.readOnly, readOnly) ||
+                other.readOnly == readOnly) &&
+            (identical(other.showCursor, showCursor) ||
+                other.showCursor == showCursor) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.obscuringCharacter, obscuringCharacter) ||
+                other.obscuringCharacter == obscuringCharacter) &&
+            (identical(other.obscureText, obscureText) ||
+                other.obscureText == obscureText) &&
+            (identical(other.autocorrect, autocorrect) ||
+                other.autocorrect == autocorrect) &&
+            (identical(other.smartDashesType, smartDashesType) ||
+                other.smartDashesType == smartDashesType) &&
+            (identical(other.smartQuotesType, smartQuotesType) ||
+                other.smartQuotesType == smartQuotesType) &&
+            (identical(other.enableSuggestions, enableSuggestions) ||
+                other.enableSuggestions == enableSuggestions) &&
+            (identical(other.maxLines, maxLines) ||
+                other.maxLines == maxLines) &&
+            (identical(other.minLines, minLines) ||
+                other.minLines == minLines) &&
+            (identical(other.expands, expands) || other.expands == expands) &&
+            (identical(other.maxLength, maxLength) ||
+                other.maxLength == maxLength) &&
+            (identical(other.onChanged, onChanged) ||
+                other.onChanged == onChanged) &&
+            (identical(other.onEditingComplete, onEditingComplete) ||
+                other.onEditingComplete == onEditingComplete) &&
+            (identical(other.onSubmitted, onSubmitted) ||
+                other.onSubmitted == onSubmitted) &&
+            (identical(other.enabled, enabled) || other.enabled == enabled) &&
+            (identical(other.cursorWidth, cursorWidth) ||
+                other.cursorWidth == cursorWidth) &&
+            (identical(other.cursorHeight, cursorHeight) ||
+                other.cursorHeight == cursorHeight) &&
+            (identical(other.cursorRadius, cursorRadius) ||
+                other.cursorRadius == cursorRadius) &&
+            (identical(other.cursorColor, cursorColor) ||
+                other.cursorColor == cursorColor) &&
+            (identical(other.selectionHeightStyle, selectionHeightStyle) ||
+                other.selectionHeightStyle == selectionHeightStyle) &&
+            (identical(other.selectionWidthStyle, selectionWidthStyle) ||
+                other.selectionWidthStyle == selectionWidthStyle) &&
+            (identical(other.keyboardAppearance, keyboardAppearance) ||
+                other.keyboardAppearance == keyboardAppearance) &&
+            (identical(other.scrollPadding, scrollPadding) ||
+                other.scrollPadding == scrollPadding) &&
+            (identical(other.enableInteractiveSelection,
+                    enableInteractiveSelection) ||
+                other.enableInteractiveSelection ==
+                    enableInteractiveSelection) &&
+            (identical(other.onTap, onTap) || other.onTap == onTap) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.restorationId, restorationId) ||
+                other.restorationId == restorationId) &&
+            (identical(other.enableIMEPersonalizedLearning,
+                    enableIMEPersonalizedLearning) ||
+                other.enableIMEPersonalizedLearning ==
+                    enableIMEPersonalizedLearning));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(decoration),
-        const DeepCollectionEquality().hash(keyboardType),
-        const DeepCollectionEquality().hash(textInputAction),
-        const DeepCollectionEquality().hash(textCapitalization),
-        const DeepCollectionEquality().hash(style),
-        const DeepCollectionEquality().hash(strutStyle),
-        const DeepCollectionEquality().hash(textAlign),
-        const DeepCollectionEquality().hash(textAlignVertical),
-        const DeepCollectionEquality().hash(textDirection),
-        const DeepCollectionEquality().hash(readOnly),
-        const DeepCollectionEquality().hash(showCursor),
-        const DeepCollectionEquality().hash(autofocus),
-        const DeepCollectionEquality().hash(obscuringCharacter),
-        const DeepCollectionEquality().hash(obscureText),
-        const DeepCollectionEquality().hash(autocorrect),
-        const DeepCollectionEquality().hash(smartDashesType),
-        const DeepCollectionEquality().hash(smartQuotesType),
-        const DeepCollectionEquality().hash(enableSuggestions),
-        const DeepCollectionEquality().hash(maxLines),
-        const DeepCollectionEquality().hash(minLines),
-        const DeepCollectionEquality().hash(expands),
-        const DeepCollectionEquality().hash(maxLength),
-        const DeepCollectionEquality().hash(onChanged),
-        const DeepCollectionEquality().hash(onEditingComplete),
-        const DeepCollectionEquality().hash(onSubmitted),
-        const DeepCollectionEquality().hash(enabled),
-        const DeepCollectionEquality().hash(cursorWidth),
-        const DeepCollectionEquality().hash(cursorHeight),
-        const DeepCollectionEquality().hash(cursorRadius),
-        const DeepCollectionEquality().hash(cursorColor),
-        const DeepCollectionEquality().hash(selectionHeightStyle),
-        const DeepCollectionEquality().hash(selectionWidthStyle),
-        const DeepCollectionEquality().hash(keyboardAppearance),
-        const DeepCollectionEquality().hash(scrollPadding),
-        const DeepCollectionEquality().hash(enableInteractiveSelection),
-        const DeepCollectionEquality().hash(onTap),
-        const DeepCollectionEquality().hash(clipBehavior),
-        const DeepCollectionEquality().hash(restorationId),
-        const DeepCollectionEquality().hash(enableIMEPersonalizedLearning)
+        key,
+        decoration,
+        keyboardType,
+        textInputAction,
+        textCapitalization,
+        style,
+        strutStyle,
+        textAlign,
+        textAlignVertical,
+        textDirection,
+        readOnly,
+        showCursor,
+        autofocus,
+        obscuringCharacter,
+        obscureText,
+        autocorrect,
+        smartDashesType,
+        smartQuotesType,
+        enableSuggestions,
+        maxLines,
+        minLines,
+        expands,
+        maxLength,
+        onChanged,
+        onEditingComplete,
+        onSubmitted,
+        enabled,
+        cursorWidth,
+        cursorHeight,
+        cursorRadius,
+        cursorColor,
+        selectionHeightStyle,
+        selectionWidthStyle,
+        keyboardAppearance,
+        scrollPadding,
+        enableInteractiveSelection,
+        onTap,
+        clipBehavior,
+        restorationId,
+        enableIMEPersonalizedLearning
       ]);
 
   @override

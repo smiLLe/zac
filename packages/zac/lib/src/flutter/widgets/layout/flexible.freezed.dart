@@ -60,20 +60,15 @@ class _$_FlutterFlexible extends _FlutterFlexible {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterFlexible &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.flex, flex) &&
-            const DeepCollectionEquality().equals(other.fit, fit) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.flex, flex) || other.flex == flex) &&
+            (identical(other.fit, fit) || other.fit == fit) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(flex),
-      const DeepCollectionEquality().hash(fit),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, flex, fit, child);
 
   @override
   @optionalTypeArgs

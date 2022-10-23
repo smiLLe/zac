@@ -90,38 +90,39 @@ class _$_FlutterGestureDetector extends _FlutterGestureDetector {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterGestureDetector &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.onTap, onTap) &&
-            const DeepCollectionEquality()
-                .equals(other.onSecondaryTap, onSecondaryTap) &&
-            const DeepCollectionEquality()
-                .equals(other.onDoubleTap, onDoubleTap) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality()
-                .equals(other.onSecondaryLongPress, onSecondaryLongPress) &&
-            const DeepCollectionEquality()
-                .equals(other.onTertiaryLongPress, onTertiaryLongPress) &&
-            const DeepCollectionEquality().equals(other.behavior, behavior) &&
-            const DeepCollectionEquality()
-                .equals(other.excludeFromSemantics, excludeFromSemantics));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.onTap, onTap) || other.onTap == onTap) &&
+            (identical(other.onSecondaryTap, onSecondaryTap) ||
+                other.onSecondaryTap == onSecondaryTap) &&
+            (identical(other.onDoubleTap, onDoubleTap) ||
+                other.onDoubleTap == onDoubleTap) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.onSecondaryLongPress, onSecondaryLongPress) ||
+                other.onSecondaryLongPress == onSecondaryLongPress) &&
+            (identical(other.onTertiaryLongPress, onTertiaryLongPress) ||
+                other.onTertiaryLongPress == onTertiaryLongPress) &&
+            (identical(other.behavior, behavior) ||
+                other.behavior == behavior) &&
+            (identical(other.excludeFromSemantics, excludeFromSemantics) ||
+                other.excludeFromSemantics == excludeFromSemantics));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(onTap),
-      const DeepCollectionEquality().hash(onSecondaryTap),
-      const DeepCollectionEquality().hash(onDoubleTap),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(onSecondaryLongPress),
-      const DeepCollectionEquality().hash(onTertiaryLongPress),
-      const DeepCollectionEquality().hash(behavior),
-      const DeepCollectionEquality().hash(excludeFromSemantics));
+      key,
+      child,
+      onTap,
+      onSecondaryTap,
+      onDoubleTap,
+      onLongPress,
+      onSecondaryLongPress,
+      onTertiaryLongPress,
+      behavior,
+      excludeFromSemantics);
 
   @override
   @optionalTypeArgs

@@ -76,27 +76,21 @@ class _$_FlutterContainer extends _FlutterContainer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterContainer &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.margin, margin) &&
-            const DeepCollectionEquality().equals(other.padding, padding) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.decoration, decoration));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.decoration, decoration) ||
+                other.decoration == decoration));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(margin),
-      const DeepCollectionEquality().hash(padding),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(decoration));
+      runtimeType, key, child, color, margin, padding, alignment, decoration);
 
   @override
   @optionalTypeArgs

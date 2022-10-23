@@ -61,21 +61,18 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDecoratedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.decoration, decoration) &&
-            const DeepCollectionEquality().equals(other.position, position));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.decoration, decoration) ||
+                other.decoration == decoration) &&
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(decoration),
-      const DeepCollectionEquality().hash(position));
+  int get hashCode =>
+      Object.hash(runtimeType, key, child, decoration, position);
 
   @override
   @optionalTypeArgs

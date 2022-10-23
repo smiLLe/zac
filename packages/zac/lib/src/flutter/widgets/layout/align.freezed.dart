@@ -70,24 +70,20 @@ class _$_FlutterAlign extends _FlutterAlign {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterAlign &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.widthFactor, widthFactor) &&
-            const DeepCollectionEquality()
-                .equals(other.heightFactor, heightFactor) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.widthFactor, widthFactor) ||
+                other.widthFactor == widthFactor) &&
+            (identical(other.heightFactor, heightFactor) ||
+                other.heightFactor == heightFactor) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(widthFactor),
-      const DeepCollectionEquality().hash(heightFactor),
-      const DeepCollectionEquality().hash(child));
+      runtimeType, key, alignment, widthFactor, heightFactor, child);
 
   @override
   @optionalTypeArgs

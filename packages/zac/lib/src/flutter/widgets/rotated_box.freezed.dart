@@ -57,19 +57,15 @@ class _$_FlutterRotatedBox extends _FlutterRotatedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRotatedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.quarterTurns, quarterTurns));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.quarterTurns, quarterTurns) ||
+                other.quarterTurns == quarterTurns));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(quarterTurns));
+  int get hashCode => Object.hash(runtimeType, key, child, quarterTurns);
 
   @override
   @optionalTypeArgs

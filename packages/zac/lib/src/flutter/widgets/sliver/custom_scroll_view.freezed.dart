@@ -113,47 +113,48 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterCustomScrollView &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollDirection, scrollDirection) &&
-            const DeepCollectionEquality().equals(other.reverse, reverse) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality().equals(other.physics, physics) &&
-            const DeepCollectionEquality()
-                .equals(other.shrinkWrap, shrinkWrap) &&
-            const DeepCollectionEquality().equals(other.center, center) &&
-            const DeepCollectionEquality().equals(other.anchor, anchor) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheExtent, cacheExtent) &&
-            const DeepCollectionEquality().equals(other.slivers, slivers) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticChildCount, semanticChildCount) &&
-            const DeepCollectionEquality().equals(
-                other.keyboardDismissBehavior, keyboardDismissBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationId, restorationId) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.scrollDirection, scrollDirection) ||
+                other.scrollDirection == scrollDirection) &&
+            (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.physics, physics) || other.physics == physics) &&
+            (identical(other.shrinkWrap, shrinkWrap) ||
+                other.shrinkWrap == shrinkWrap) &&
+            (identical(other.center, center) || other.center == center) &&
+            (identical(other.anchor, anchor) || other.anchor == anchor) &&
+            (identical(other.cacheExtent, cacheExtent) ||
+                other.cacheExtent == cacheExtent) &&
+            (identical(other.slivers, slivers) || other.slivers == slivers) &&
+            (identical(other.semanticChildCount, semanticChildCount) ||
+                other.semanticChildCount == semanticChildCount) &&
+            (identical(
+                    other.keyboardDismissBehavior, keyboardDismissBehavior) ||
+                other.keyboardDismissBehavior == keyboardDismissBehavior) &&
+            (identical(other.restorationId, restorationId) ||
+                other.restorationId == restorationId) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(scrollDirection),
-      const DeepCollectionEquality().hash(reverse),
-      const DeepCollectionEquality().hash(primary),
-      const DeepCollectionEquality().hash(physics),
-      const DeepCollectionEquality().hash(shrinkWrap),
-      const DeepCollectionEquality().hash(center),
-      const DeepCollectionEquality().hash(anchor),
-      const DeepCollectionEquality().hash(cacheExtent),
-      const DeepCollectionEquality().hash(slivers),
-      const DeepCollectionEquality().hash(semanticChildCount),
-      const DeepCollectionEquality().hash(keyboardDismissBehavior),
-      const DeepCollectionEquality().hash(restorationId),
-      const DeepCollectionEquality().hash(clipBehavior));
+      key,
+      scrollDirection,
+      reverse,
+      primary,
+      physics,
+      shrinkWrap,
+      center,
+      anchor,
+      cacheExtent,
+      slivers,
+      semanticChildCount,
+      keyboardDismissBehavior,
+      restorationId,
+      clipBehavior);
 
   @override
   @optionalTypeArgs

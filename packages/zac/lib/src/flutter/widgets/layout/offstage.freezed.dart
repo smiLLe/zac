@@ -56,18 +56,15 @@ class _$_FlutterOffstage extends _FlutterOffstage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOffstage &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.offstage, offstage) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.offstage, offstage) ||
+                other.offstage == offstage) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(offstage),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, offstage, child);
 
   @override
   @optionalTypeArgs

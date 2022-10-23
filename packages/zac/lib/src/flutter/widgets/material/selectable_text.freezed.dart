@@ -142,62 +142,68 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSelectableText &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.style, style) &&
-            const DeepCollectionEquality()
-                .equals(other.strutStyle, strutStyle) &&
-            const DeepCollectionEquality().equals(other.textAlign, textAlign) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.textScaleFactor, textScaleFactor) &&
-            const DeepCollectionEquality()
-                .equals(other.showCursor, showCursor) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality().equals(other.minLines, minLines) &&
-            const DeepCollectionEquality().equals(other.maxLines, maxLines) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorWidth, cursorWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorHeight, cursorHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorRadius, cursorRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.cursorColor, cursorColor) &&
-            const DeepCollectionEquality().equals(
-                other.enableInteractiveSelection, enableInteractiveSelection) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsLabel, semanticsLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.textHeightBehavior, textHeightBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.textWidthBasis, textWidthBasis));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.strutStyle, strutStyle) ||
+                other.strutStyle == strutStyle) &&
+            (identical(other.textAlign, textAlign) ||
+                other.textAlign == textAlign) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.textScaleFactor, textScaleFactor) ||
+                other.textScaleFactor == textScaleFactor) &&
+            (identical(other.showCursor, showCursor) ||
+                other.showCursor == showCursor) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.minLines, minLines) ||
+                other.minLines == minLines) &&
+            (identical(other.maxLines, maxLines) ||
+                other.maxLines == maxLines) &&
+            (identical(other.cursorWidth, cursorWidth) ||
+                other.cursorWidth == cursorWidth) &&
+            (identical(other.cursorHeight, cursorHeight) ||
+                other.cursorHeight == cursorHeight) &&
+            (identical(other.cursorRadius, cursorRadius) ||
+                other.cursorRadius == cursorRadius) &&
+            (identical(other.cursorColor, cursorColor) ||
+                other.cursorColor == cursorColor) &&
+            (identical(other.enableInteractiveSelection,
+                    enableInteractiveSelection) ||
+                other.enableInteractiveSelection ==
+                    enableInteractiveSelection) &&
+            (identical(other.semanticsLabel, semanticsLabel) ||
+                other.semanticsLabel == semanticsLabel) &&
+            (identical(other.textHeightBehavior, textHeightBehavior) ||
+                other.textHeightBehavior == textHeightBehavior) &&
+            (identical(other.textWidthBasis, textWidthBasis) ||
+                other.textWidthBasis == textWidthBasis));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(data),
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(style),
-        const DeepCollectionEquality().hash(strutStyle),
-        const DeepCollectionEquality().hash(textAlign),
-        const DeepCollectionEquality().hash(textDirection),
-        const DeepCollectionEquality().hash(textScaleFactor),
-        const DeepCollectionEquality().hash(showCursor),
-        const DeepCollectionEquality().hash(autofocus),
-        const DeepCollectionEquality().hash(minLines),
-        const DeepCollectionEquality().hash(maxLines),
-        const DeepCollectionEquality().hash(cursorWidth),
-        const DeepCollectionEquality().hash(cursorHeight),
-        const DeepCollectionEquality().hash(cursorRadius),
-        const DeepCollectionEquality().hash(cursorColor),
-        const DeepCollectionEquality().hash(enableInteractiveSelection),
-        const DeepCollectionEquality().hash(semanticsLabel),
-        const DeepCollectionEquality().hash(textHeightBehavior),
-        const DeepCollectionEquality().hash(textWidthBasis)
+        data,
+        key,
+        style,
+        strutStyle,
+        textAlign,
+        textDirection,
+        textScaleFactor,
+        showCursor,
+        autofocus,
+        minLines,
+        maxLines,
+        cursorWidth,
+        cursorHeight,
+        cursorRadius,
+        cursorColor,
+        enableInteractiveSelection,
+        semanticsLabel,
+        textHeightBehavior,
+        textWidthBasis
       ]);
 
   @override

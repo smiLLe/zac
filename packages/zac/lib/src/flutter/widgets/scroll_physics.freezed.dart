@@ -73,13 +73,12 @@ class _$_FlutterScrollPhysicsalwaysScrollable
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScrollPhysicsalwaysScrollable &&
-            const DeepCollectionEquality().equals(other.parent, parent));
+            (identical(other.parent, parent) || other.parent == parent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(parent));
+  int get hashCode => Object.hash(runtimeType, parent);
 
   @override
   @optionalTypeArgs
@@ -138,13 +137,12 @@ class _$_FlutterScrollPhysicsBouncingScroll
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScrollPhysicsBouncingScroll &&
-            const DeepCollectionEquality().equals(other.parent, parent));
+            (identical(other.parent, parent) || other.parent == parent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(parent));
+  int get hashCode => Object.hash(runtimeType, parent);
 
   @override
   @optionalTypeArgs
@@ -204,13 +202,12 @@ class _$_FlutterScrollPhysicsClampingScrollPhysics
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScrollPhysicsClampingScrollPhysics &&
-            const DeepCollectionEquality().equals(other.parent, parent));
+            (identical(other.parent, parent) || other.parent == parent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(parent));
+  int get hashCode => Object.hash(runtimeType, parent);
 
   @override
   @optionalTypeArgs

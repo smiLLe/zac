@@ -252,141 +252,147 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterInputDecoration &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.iconColor, iconColor) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.labelText, labelText) &&
-            const DeepCollectionEquality()
-                .equals(other.labelStyle, labelStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.floatingLabelStyle, floatingLabelStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.helperText, helperText) &&
-            const DeepCollectionEquality()
-                .equals(other.helperStyle, helperStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.helperMaxLines, helperMaxLines) &&
-            const DeepCollectionEquality().equals(other.hintText, hintText) &&
-            const DeepCollectionEquality().equals(other.hintStyle, hintStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.hintTextDirection, hintTextDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.hintMaxLines, hintMaxLines) &&
-            const DeepCollectionEquality().equals(other.errorText, errorText) &&
-            const DeepCollectionEquality()
-                .equals(other.errorStyle, errorStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMaxLines, errorMaxLines) &&
-            const DeepCollectionEquality()
-                .equals(other.isCollapsed, isCollapsed) &&
-            const DeepCollectionEquality().equals(other.isDense, isDense) &&
-            const DeepCollectionEquality()
-                .equals(other.contentPadding, contentPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.prefixIcon, prefixIcon) &&
-            const DeepCollectionEquality()
-                .equals(other.prefixIconConstraints, prefixIconConstraints) &&
-            const DeepCollectionEquality().equals(other.prefix, prefix) &&
-            const DeepCollectionEquality()
-                .equals(other.prefixText, prefixText) &&
-            const DeepCollectionEquality()
-                .equals(other.prefixStyle, prefixStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.prefixIconColor, prefixIconColor) &&
-            const DeepCollectionEquality()
-                .equals(other.suffixIcon, suffixIcon) &&
-            const DeepCollectionEquality().equals(other.suffix, suffix) &&
-            const DeepCollectionEquality()
-                .equals(other.suffixText, suffixText) &&
-            const DeepCollectionEquality()
-                .equals(other.suffixStyle, suffixStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.suffixIconColor, suffixIconColor) &&
-            const DeepCollectionEquality()
-                .equals(other.suffixIconConstraints, suffixIconConstraints) &&
-            const DeepCollectionEquality().equals(other.counter, counter) &&
-            const DeepCollectionEquality()
-                .equals(other.counterText, counterText) &&
-            const DeepCollectionEquality()
-                .equals(other.counterStyle, counterStyle) &&
-            const DeepCollectionEquality().equals(other.filled, filled) &&
-            const DeepCollectionEquality().equals(other.fillColor, fillColor) &&
-            const DeepCollectionEquality()
-                .equals(other.focusColor, focusColor) &&
-            const DeepCollectionEquality()
-                .equals(other.hoverColor, hoverColor) &&
-            const DeepCollectionEquality()
-                .equals(other.errorBorder, errorBorder) &&
-            const DeepCollectionEquality()
-                .equals(other.focusedBorder, focusedBorder) &&
-            const DeepCollectionEquality()
-                .equals(other.focusedErrorBorder, focusedErrorBorder) &&
-            const DeepCollectionEquality()
-                .equals(other.disabledBorder, disabledBorder) &&
-            const DeepCollectionEquality()
-                .equals(other.enabledBorder, enabledBorder) &&
-            const DeepCollectionEquality().equals(other.border, border) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticCounterText, semanticCounterText) &&
-            const DeepCollectionEquality()
-                .equals(other.alignLabelWithHint, alignLabelWithHint) &&
-            const DeepCollectionEquality()
-                .equals(other.constraints, constraints));
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.iconColor, iconColor) ||
+                other.iconColor == iconColor) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.labelText, labelText) ||
+                other.labelText == labelText) &&
+            (identical(other.labelStyle, labelStyle) ||
+                other.labelStyle == labelStyle) &&
+            (identical(other.floatingLabelStyle, floatingLabelStyle) ||
+                other.floatingLabelStyle == floatingLabelStyle) &&
+            (identical(other.helperText, helperText) ||
+                other.helperText == helperText) &&
+            (identical(other.helperStyle, helperStyle) ||
+                other.helperStyle == helperStyle) &&
+            (identical(other.helperMaxLines, helperMaxLines) ||
+                other.helperMaxLines == helperMaxLines) &&
+            (identical(other.hintText, hintText) ||
+                other.hintText == hintText) &&
+            (identical(other.hintStyle, hintStyle) ||
+                other.hintStyle == hintStyle) &&
+            (identical(other.hintTextDirection, hintTextDirection) ||
+                other.hintTextDirection == hintTextDirection) &&
+            (identical(other.hintMaxLines, hintMaxLines) ||
+                other.hintMaxLines == hintMaxLines) &&
+            (identical(other.errorText, errorText) ||
+                other.errorText == errorText) &&
+            (identical(other.errorStyle, errorStyle) ||
+                other.errorStyle == errorStyle) &&
+            (identical(other.errorMaxLines, errorMaxLines) ||
+                other.errorMaxLines == errorMaxLines) &&
+            (identical(other.isCollapsed, isCollapsed) ||
+                other.isCollapsed == isCollapsed) &&
+            (identical(other.isDense, isDense) || other.isDense == isDense) &&
+            (identical(other.contentPadding, contentPadding) ||
+                other.contentPadding == contentPadding) &&
+            (identical(other.prefixIcon, prefixIcon) ||
+                other.prefixIcon == prefixIcon) &&
+            (identical(other.prefixIconConstraints, prefixIconConstraints) ||
+                other.prefixIconConstraints == prefixIconConstraints) &&
+            (identical(other.prefix, prefix) || other.prefix == prefix) &&
+            (identical(other.prefixText, prefixText) ||
+                other.prefixText == prefixText) &&
+            (identical(other.prefixStyle, prefixStyle) ||
+                other.prefixStyle == prefixStyle) &&
+            (identical(other.prefixIconColor, prefixIconColor) ||
+                other.prefixIconColor == prefixIconColor) &&
+            (identical(other.suffixIcon, suffixIcon) ||
+                other.suffixIcon == suffixIcon) &&
+            (identical(other.suffix, suffix) || other.suffix == suffix) &&
+            (identical(other.suffixText, suffixText) ||
+                other.suffixText == suffixText) &&
+            (identical(other.suffixStyle, suffixStyle) ||
+                other.suffixStyle == suffixStyle) &&
+            (identical(other.suffixIconColor, suffixIconColor) ||
+                other.suffixIconColor == suffixIconColor) &&
+            (identical(other.suffixIconConstraints, suffixIconConstraints) ||
+                other.suffixIconConstraints == suffixIconConstraints) &&
+            (identical(other.counter, counter) || other.counter == counter) &&
+            (identical(other.counterText, counterText) ||
+                other.counterText == counterText) &&
+            (identical(other.counterStyle, counterStyle) ||
+                other.counterStyle == counterStyle) &&
+            (identical(other.filled, filled) || other.filled == filled) &&
+            (identical(other.fillColor, fillColor) ||
+                other.fillColor == fillColor) &&
+            (identical(other.focusColor, focusColor) ||
+                other.focusColor == focusColor) &&
+            (identical(other.hoverColor, hoverColor) ||
+                other.hoverColor == hoverColor) &&
+            (identical(other.errorBorder, errorBorder) ||
+                other.errorBorder == errorBorder) &&
+            (identical(other.focusedBorder, focusedBorder) ||
+                other.focusedBorder == focusedBorder) &&
+            (identical(other.focusedErrorBorder, focusedErrorBorder) ||
+                other.focusedErrorBorder == focusedErrorBorder) &&
+            (identical(other.disabledBorder, disabledBorder) ||
+                other.disabledBorder == disabledBorder) &&
+            (identical(other.enabledBorder, enabledBorder) ||
+                other.enabledBorder == enabledBorder) &&
+            (identical(other.border, border) || other.border == border) &&
+            (identical(other.enabled, enabled) || other.enabled == enabled) &&
+            (identical(other.semanticCounterText, semanticCounterText) ||
+                other.semanticCounterText == semanticCounterText) &&
+            (identical(other.alignLabelWithHint, alignLabelWithHint) ||
+                other.alignLabelWithHint == alignLabelWithHint) &&
+            (identical(other.constraints, constraints) ||
+                other.constraints == constraints));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(icon),
-        const DeepCollectionEquality().hash(iconColor),
-        const DeepCollectionEquality().hash(label),
-        const DeepCollectionEquality().hash(labelText),
-        const DeepCollectionEquality().hash(labelStyle),
-        const DeepCollectionEquality().hash(floatingLabelStyle),
-        const DeepCollectionEquality().hash(helperText),
-        const DeepCollectionEquality().hash(helperStyle),
-        const DeepCollectionEquality().hash(helperMaxLines),
-        const DeepCollectionEquality().hash(hintText),
-        const DeepCollectionEquality().hash(hintStyle),
-        const DeepCollectionEquality().hash(hintTextDirection),
-        const DeepCollectionEquality().hash(hintMaxLines),
-        const DeepCollectionEquality().hash(errorText),
-        const DeepCollectionEquality().hash(errorStyle),
-        const DeepCollectionEquality().hash(errorMaxLines),
-        const DeepCollectionEquality().hash(isCollapsed),
-        const DeepCollectionEquality().hash(isDense),
-        const DeepCollectionEquality().hash(contentPadding),
-        const DeepCollectionEquality().hash(prefixIcon),
-        const DeepCollectionEquality().hash(prefixIconConstraints),
-        const DeepCollectionEquality().hash(prefix),
-        const DeepCollectionEquality().hash(prefixText),
-        const DeepCollectionEquality().hash(prefixStyle),
-        const DeepCollectionEquality().hash(prefixIconColor),
-        const DeepCollectionEquality().hash(suffixIcon),
-        const DeepCollectionEquality().hash(suffix),
-        const DeepCollectionEquality().hash(suffixText),
-        const DeepCollectionEquality().hash(suffixStyle),
-        const DeepCollectionEquality().hash(suffixIconColor),
-        const DeepCollectionEquality().hash(suffixIconConstraints),
-        const DeepCollectionEquality().hash(counter),
-        const DeepCollectionEquality().hash(counterText),
-        const DeepCollectionEquality().hash(counterStyle),
-        const DeepCollectionEquality().hash(filled),
-        const DeepCollectionEquality().hash(fillColor),
-        const DeepCollectionEquality().hash(focusColor),
-        const DeepCollectionEquality().hash(hoverColor),
-        const DeepCollectionEquality().hash(errorBorder),
-        const DeepCollectionEquality().hash(focusedBorder),
-        const DeepCollectionEquality().hash(focusedErrorBorder),
-        const DeepCollectionEquality().hash(disabledBorder),
-        const DeepCollectionEquality().hash(enabledBorder),
-        const DeepCollectionEquality().hash(border),
-        const DeepCollectionEquality().hash(enabled),
-        const DeepCollectionEquality().hash(semanticCounterText),
-        const DeepCollectionEquality().hash(alignLabelWithHint),
-        const DeepCollectionEquality().hash(constraints)
+        icon,
+        iconColor,
+        label,
+        labelText,
+        labelStyle,
+        floatingLabelStyle,
+        helperText,
+        helperStyle,
+        helperMaxLines,
+        hintText,
+        hintStyle,
+        hintTextDirection,
+        hintMaxLines,
+        errorText,
+        errorStyle,
+        errorMaxLines,
+        isCollapsed,
+        isDense,
+        contentPadding,
+        prefixIcon,
+        prefixIconConstraints,
+        prefix,
+        prefixText,
+        prefixStyle,
+        prefixIconColor,
+        suffixIcon,
+        suffix,
+        suffixText,
+        suffixStyle,
+        suffixIconColor,
+        suffixIconConstraints,
+        counter,
+        counterText,
+        counterStyle,
+        filled,
+        fillColor,
+        focusColor,
+        hoverColor,
+        errorBorder,
+        focusedBorder,
+        focusedErrorBorder,
+        disabledBorder,
+        enabledBorder,
+        border,
+        enabled,
+        semanticCounterText,
+        alignLabelWithHint,
+        constraints
       ]);
 
   @override

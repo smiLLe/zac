@@ -88,40 +88,44 @@ class _$_FlutterSystemUiOverlayStyle extends _FlutterSystemUiOverlayStyle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSystemUiOverlayStyle &&
-            const DeepCollectionEquality().equals(
-                other.systemNavigationBarColor, systemNavigationBarColor) &&
-            const DeepCollectionEquality().equals(
-                other.systemNavigationBarDividerColor,
-                systemNavigationBarDividerColor) &&
-            const DeepCollectionEquality().equals(
-                other.systemNavigationBarIconBrightness,
-                systemNavigationBarIconBrightness) &&
-            const DeepCollectionEquality().equals(
-                other.systemNavigationBarContrastEnforced,
-                systemNavigationBarContrastEnforced) &&
-            const DeepCollectionEquality()
-                .equals(other.statusBarColor, statusBarColor) &&
-            const DeepCollectionEquality()
-                .equals(other.statusBarBrightness, statusBarBrightness) &&
-            const DeepCollectionEquality().equals(
-                other.statusBarIconBrightness, statusBarIconBrightness) &&
-            const DeepCollectionEquality().equals(
-                other.systemStatusBarContrastEnforced,
-                systemStatusBarContrastEnforced));
+            (identical(other.systemNavigationBarColor, systemNavigationBarColor) ||
+                other.systemNavigationBarColor == systemNavigationBarColor) &&
+            (identical(other.systemNavigationBarDividerColor,
+                    systemNavigationBarDividerColor) ||
+                other.systemNavigationBarDividerColor ==
+                    systemNavigationBarDividerColor) &&
+            (identical(other.systemNavigationBarIconBrightness,
+                    systemNavigationBarIconBrightness) ||
+                other.systemNavigationBarIconBrightness ==
+                    systemNavigationBarIconBrightness) &&
+            (identical(other.systemNavigationBarContrastEnforced,
+                    systemNavigationBarContrastEnforced) ||
+                other.systemNavigationBarContrastEnforced ==
+                    systemNavigationBarContrastEnforced) &&
+            (identical(other.statusBarColor, statusBarColor) ||
+                other.statusBarColor == statusBarColor) &&
+            (identical(other.statusBarBrightness, statusBarBrightness) ||
+                other.statusBarBrightness == statusBarBrightness) &&
+            (identical(other.statusBarIconBrightness, statusBarIconBrightness) ||
+                other.statusBarIconBrightness == statusBarIconBrightness) &&
+            (identical(other.systemStatusBarContrastEnforced,
+                    systemStatusBarContrastEnforced) ||
+                other.systemStatusBarContrastEnforced ==
+                    systemStatusBarContrastEnforced));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(systemNavigationBarColor),
-      const DeepCollectionEquality().hash(systemNavigationBarDividerColor),
-      const DeepCollectionEquality().hash(systemNavigationBarIconBrightness),
-      const DeepCollectionEquality().hash(systemNavigationBarContrastEnforced),
-      const DeepCollectionEquality().hash(statusBarColor),
-      const DeepCollectionEquality().hash(statusBarBrightness),
-      const DeepCollectionEquality().hash(statusBarIconBrightness),
-      const DeepCollectionEquality().hash(systemStatusBarContrastEnforced));
+      systemNavigationBarColor,
+      systemNavigationBarDividerColor,
+      systemNavigationBarIconBrightness,
+      systemNavigationBarContrastEnforced,
+      statusBarColor,
+      statusBarBrightness,
+      statusBarIconBrightness,
+      systemStatusBarContrastEnforced);
 
   @override
   @optionalTypeArgs

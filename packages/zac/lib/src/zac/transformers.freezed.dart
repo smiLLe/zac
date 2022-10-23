@@ -30,19 +30,22 @@ mixin _$ZacTransformValue {
 abstract class $ZacTransformValueCopyWith<$Res> {
   factory $ZacTransformValueCopyWith(
           ZacTransformValue value, $Res Function(ZacTransformValue) then) =
-      _$ZacTransformValueCopyWithImpl<$Res>;
+      _$ZacTransformValueCopyWithImpl<$Res, ZacTransformValue>;
+  @useResult
   $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
 }
 
 /// @nodoc
-class _$ZacTransformValueCopyWithImpl<$Res>
+class _$ZacTransformValueCopyWithImpl<$Res, $Val extends ZacTransformValue>
     implements $ZacTransformValueCopyWith<$Res> {
   _$ZacTransformValueCopyWithImpl(this._value, this._then);
 
-  final ZacTransformValue _value;
   // ignore: unused_field
-  final $Res Function(ZacTransformValue) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = freezed,
@@ -51,11 +54,11 @@ class _$ZacTransformValueCopyWithImpl<$Res>
     Object? extra3 = freezed,
   }) {
     return _then(_value.copyWith(
-      value: value == freezed ? _value.value : value,
-      extra1: extra1 == freezed ? _value.extra1 : extra1,
-      extra2: extra2 == freezed ? _value.extra2 : extra2,
-      extra3: extra3 == freezed ? _value.extra3 : extra3,
-    ));
+      value: freezed == value ? _value.value : value,
+      extra1: freezed == extra1 ? _value.extra1 : extra1,
+      extra2: freezed == extra2 ? _value.extra2 : extra2,
+      extra3: freezed == extra3 ? _value.extra3 : extra3,
+    ) as $Val);
   }
 }
 
@@ -66,20 +69,19 @@ abstract class _$$_ZacTransformValueCopyWith<$Res>
           $Res Function(_$_ZacTransformValue) then) =
       __$$_ZacTransformValueCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
 }
 
 /// @nodoc
 class __$$_ZacTransformValueCopyWithImpl<$Res>
-    extends _$ZacTransformValueCopyWithImpl<$Res>
+    extends _$ZacTransformValueCopyWithImpl<$Res, _$_ZacTransformValue>
     implements _$$_ZacTransformValueCopyWith<$Res> {
   __$$_ZacTransformValueCopyWithImpl(
       _$_ZacTransformValue _value, $Res Function(_$_ZacTransformValue) _then)
-      : super(_value, (v) => _then(v as _$_ZacTransformValue));
+      : super(_value, _then);
 
-  @override
-  _$_ZacTransformValue get _value => super._value as _$_ZacTransformValue;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = freezed,
@@ -88,10 +90,10 @@ class __$$_ZacTransformValueCopyWithImpl<$Res>
     Object? extra3 = freezed,
   }) {
     return _then(_$_ZacTransformValue(
-      value == freezed ? _value.value : value,
-      extra1 == freezed ? _value.extra1 : extra1,
-      extra2 == freezed ? _value.extra2 : extra2,
-      extra3 == freezed ? _value.extra3 : extra3,
+      freezed == value ? _value.value : value,
+      freezed == extra1 ? _value.extra1 : extra1,
+      freezed == extra2 ? _value.extra2 : extra2,
+      freezed == extra3 ? _value.extra3 : extra3,
     ));
   }
 }
@@ -141,6 +143,7 @@ class _$_ZacTransformValue extends _ZacTransformValue {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ZacTransformValueCopyWith<_$_ZacTransformValue> get copyWith =>
       __$$_ZacTransformValueCopyWithImpl<_$_ZacTransformValue>(
           this, _$identity);
@@ -712,13 +715,12 @@ class _$_MapContainsKey extends _MapContainsKey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapContainsKey &&
-            const DeepCollectionEquality().equals(other.key, key));
+            (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(key));
+  int get hashCode => Object.hash(runtimeType, key);
 
   @override
   @optionalTypeArgs
@@ -778,13 +780,12 @@ class _$_MapContainsValue extends _MapContainsValue {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapContainsValue &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -847,18 +848,16 @@ class _$_MapMapper extends _MapMapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapMapper &&
-            const DeepCollectionEquality()
-                .equals(other.keyTransformer, keyTransformer) &&
-            const DeepCollectionEquality()
-                .equals(other.valueTransformer, valueTransformer));
+            (identical(other.keyTransformer, keyTransformer) ||
+                other.keyTransformer == keyTransformer) &&
+            (identical(other.valueTransformer, valueTransformer) ||
+                other.valueTransformer == valueTransformer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(keyTransformer),
-      const DeepCollectionEquality().hash(valueTransformer));
+  int get hashCode =>
+      Object.hash(runtimeType, keyTransformer, valueTransformer);
 
   @override
   @optionalTypeArgs
@@ -1154,14 +1153,13 @@ class _$_IterableMap extends _IterableMap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableMap &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(transformer));
+  int get hashCode => Object.hash(runtimeType, transformer);
 
   @override
   @optionalTypeArgs
@@ -1754,13 +1752,13 @@ class _$_IterableJoin extends _IterableJoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableJoin &&
-            const DeepCollectionEquality().equals(other.separator, separator));
+            (identical(other.separator, separator) ||
+                other.separator == separator));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(separator));
+  int get hashCode => Object.hash(runtimeType, separator);
 
   @override
   @optionalTypeArgs
@@ -1821,13 +1819,12 @@ class _$_IterableContains extends _IterableContains {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableContains &&
-            const DeepCollectionEquality().equals(other.element, element));
+            (identical(other.element, element) || other.element == element));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(element));
+  int get hashCode => Object.hash(runtimeType, element);
 
   @override
   @optionalTypeArgs
@@ -1889,13 +1886,12 @@ class _$_IterableElementAt extends _IterableElementAt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableElementAt &&
-            const DeepCollectionEquality().equals(other.index, index));
+            (identical(other.index, index) || other.index == index));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(index));
+  int get hashCode => Object.hash(runtimeType, index);
 
   @override
   @optionalTypeArgs
@@ -1956,13 +1952,12 @@ class _$_IterableSkip extends _IterableSkip {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableSkip &&
-            const DeepCollectionEquality().equals(other.count, count));
+            (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(count));
+  int get hashCode => Object.hash(runtimeType, count);
 
   @override
   @optionalTypeArgs
@@ -2023,13 +2018,12 @@ class _$_IterableTake extends _IterableTake {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableTake &&
-            const DeepCollectionEquality().equals(other.count, count));
+            (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(count));
+  int get hashCode => Object.hash(runtimeType, count);
 
   @override
   @optionalTypeArgs
@@ -2495,13 +2489,12 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectEqualsSharedValue &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -3542,13 +3535,12 @@ class _$_StringSplit extends _StringSplit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StringSplit &&
-            const DeepCollectionEquality().equals(other.pattern, pattern));
+            (identical(other.pattern, pattern) || other.pattern == pattern));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pattern));
+  int get hashCode => Object.hash(runtimeType, pattern);
 
   @override
   @optionalTypeArgs
@@ -3700,16 +3692,13 @@ class _$_StringReplaceAll extends _StringReplaceAll {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StringReplaceAll &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.replace, replace));
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.replace, replace) || other.replace == replace));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(replace));
+  int get hashCode => Object.hash(runtimeType, from, replace);
 
   @override
   @optionalTypeArgs

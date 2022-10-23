@@ -59,21 +59,18 @@ class _$_FlutterOutlineInputBorder extends _FlutterOutlineInputBorder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOutlineInputBorder &&
-            const DeepCollectionEquality()
-                .equals(other.borderSide, borderSide) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.gapPadding, gapPadding));
+            (identical(other.borderSide, borderSide) ||
+                other.borderSide == borderSide) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.gapPadding, gapPadding) ||
+                other.gapPadding == gapPadding));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(borderSide),
-      const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(gapPadding));
+  int get hashCode =>
+      Object.hash(runtimeType, borderSide, borderRadius, gapPadding);
 
   @override
   @optionalTypeArgs
@@ -143,18 +140,15 @@ class _$_FlutterUnderlineInputBorder extends _FlutterUnderlineInputBorder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterUnderlineInputBorder &&
-            const DeepCollectionEquality()
-                .equals(other.borderSide, borderSide) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius));
+            (identical(other.borderSide, borderSide) ||
+                other.borderSide == borderSide) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(borderSide),
-      const DeepCollectionEquality().hash(borderRadius));
+  int get hashCode => Object.hash(runtimeType, borderSide, borderRadius);
 
   @override
   @optionalTypeArgs
@@ -233,22 +227,19 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterMaterialPageRoute &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.settings, settings) &&
-            const DeepCollectionEquality()
-                .equals(other.maintainState, maintainState) &&
-            const DeepCollectionEquality()
-                .equals(other.fullscreenDialog, fullscreenDialog));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.settings, settings) ||
+                other.settings == settings) &&
+            (identical(other.maintainState, maintainState) ||
+                other.maintainState == maintainState) &&
+            (identical(other.fullscreenDialog, fullscreenDialog) ||
+                other.fullscreenDialog == fullscreenDialog));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(settings),
-      const DeepCollectionEquality().hash(maintainState),
-      const DeepCollectionEquality().hash(fullscreenDialog));
+      runtimeType, child, settings, maintainState, fullscreenDialog);
 
   @override
   @optionalTypeArgs

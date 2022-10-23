@@ -90,27 +90,22 @@ class _$_SliverGridDelegateWithFixedCrossAxisCount
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SliverGridDelegateWithFixedCrossAxisCount &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisCount, crossAxisCount) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSpacing, mainAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisSpacing, crossAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.childAspectRatio, childAspectRatio) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisExtent, mainAxisExtent));
+            (identical(other.crossAxisCount, crossAxisCount) ||
+                other.crossAxisCount == crossAxisCount) &&
+            (identical(other.mainAxisSpacing, mainAxisSpacing) ||
+                other.mainAxisSpacing == mainAxisSpacing) &&
+            (identical(other.crossAxisSpacing, crossAxisSpacing) ||
+                other.crossAxisSpacing == crossAxisSpacing) &&
+            (identical(other.childAspectRatio, childAspectRatio) ||
+                other.childAspectRatio == childAspectRatio) &&
+            (identical(other.mainAxisExtent, mainAxisExtent) ||
+                other.mainAxisExtent == mainAxisExtent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(crossAxisCount),
-      const DeepCollectionEquality().hash(mainAxisSpacing),
-      const DeepCollectionEquality().hash(crossAxisSpacing),
-      const DeepCollectionEquality().hash(childAspectRatio),
-      const DeepCollectionEquality().hash(mainAxisExtent));
+  int get hashCode => Object.hash(runtimeType, crossAxisCount, mainAxisSpacing,
+      crossAxisSpacing, childAspectRatio, mainAxisExtent);
 
   @override
   @optionalTypeArgs
@@ -192,27 +187,22 @@ class _$_SliverGridDelegateWithMaxCrossAxisExtent
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SliverGridDelegateWithMaxCrossAxisExtent &&
-            const DeepCollectionEquality()
-                .equals(other.maxCrossAxisExtent, maxCrossAxisExtent) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSpacing, mainAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisSpacing, crossAxisSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.childAspectRatio, childAspectRatio) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisExtent, mainAxisExtent));
+            (identical(other.maxCrossAxisExtent, maxCrossAxisExtent) ||
+                other.maxCrossAxisExtent == maxCrossAxisExtent) &&
+            (identical(other.mainAxisSpacing, mainAxisSpacing) ||
+                other.mainAxisSpacing == mainAxisSpacing) &&
+            (identical(other.crossAxisSpacing, crossAxisSpacing) ||
+                other.crossAxisSpacing == crossAxisSpacing) &&
+            (identical(other.childAspectRatio, childAspectRatio) ||
+                other.childAspectRatio == childAspectRatio) &&
+            (identical(other.mainAxisExtent, mainAxisExtent) ||
+                other.mainAxisExtent == mainAxisExtent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(maxCrossAxisExtent),
-      const DeepCollectionEquality().hash(mainAxisSpacing),
-      const DeepCollectionEquality().hash(crossAxisSpacing),
-      const DeepCollectionEquality().hash(childAspectRatio),
-      const DeepCollectionEquality().hash(mainAxisExtent));
+  int get hashCode => Object.hash(runtimeType, maxCrossAxisExtent,
+      mainAxisSpacing, crossAxisSpacing, childAspectRatio, mainAxisExtent);
 
   @override
   @optionalTypeArgs

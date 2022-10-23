@@ -62,22 +62,18 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterFractionalTranslation &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.translation, translation) &&
-            const DeepCollectionEquality()
-                .equals(other.transformHitTests, transformHitTests));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.translation, translation) ||
+                other.translation == translation) &&
+            (identical(other.transformHitTests, transformHitTests) ||
+                other.transformHitTests == transformHitTests));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(translation),
-      const DeepCollectionEquality().hash(transformHitTests));
+  int get hashCode =>
+      Object.hash(runtimeType, key, child, translation, transformHitTests);
 
   @override
   @optionalTypeArgs

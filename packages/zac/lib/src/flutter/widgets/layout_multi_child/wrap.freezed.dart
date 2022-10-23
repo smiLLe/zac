@@ -95,40 +95,43 @@ class _$_FlutterWrap extends _FlutterWrap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterWrap &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.direction, direction) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.spacing, spacing) &&
-            const DeepCollectionEquality()
-                .equals(other.runSpacing, runSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.runAlignment, runAlignment) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisAlignment, crossAxisAlignment) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.verticalDirection, verticalDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.children, children));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.direction, direction) ||
+                other.direction == direction) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.spacing, spacing) || other.spacing == spacing) &&
+            (identical(other.runSpacing, runSpacing) ||
+                other.runSpacing == runSpacing) &&
+            (identical(other.runAlignment, runAlignment) ||
+                other.runAlignment == runAlignment) &&
+            (identical(other.crossAxisAlignment, crossAxisAlignment) ||
+                other.crossAxisAlignment == crossAxisAlignment) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.verticalDirection, verticalDirection) ||
+                other.verticalDirection == verticalDirection) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.children, children) ||
+                other.children == children));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(direction),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(spacing),
-      const DeepCollectionEquality().hash(runSpacing),
-      const DeepCollectionEquality().hash(runAlignment),
-      const DeepCollectionEquality().hash(crossAxisAlignment),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(verticalDirection),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(children));
+      key,
+      direction,
+      alignment,
+      spacing,
+      runSpacing,
+      runAlignment,
+      crossAxisAlignment,
+      textDirection,
+      verticalDirection,
+      clipBehavior,
+      children);
 
   @override
   @optionalTypeArgs

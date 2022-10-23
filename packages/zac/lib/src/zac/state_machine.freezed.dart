@@ -53,16 +53,13 @@ class _$_ZacTransition implements _ZacTransition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacTransition &&
-            const DeepCollectionEquality().equals(other.event, event) &&
-            const DeepCollectionEquality().equals(other.target, target));
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.target, target) || other.target == target));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(target));
+  int get hashCode => Object.hash(runtimeType, event, target);
 
   @override
   @optionalTypeArgs
@@ -134,16 +131,14 @@ class _$_ZacStateConfig implements _ZacStateConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateConfig &&
-            const DeepCollectionEquality().equals(other.widget, widget) &&
+            (identical(other.widget, widget) || other.widget == widget) &&
             const DeepCollectionEquality().equals(other._on, _on));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(widget),
-      const DeepCollectionEquality().hash(_on));
+      runtimeType, widget, const DeepCollectionEquality().hash(_on));
 
   @override
   @optionalTypeArgs
@@ -186,7 +181,8 @@ mixin _$ZacStateMachine {
 abstract class $ZacStateMachineCopyWith<$Res> {
   factory $ZacStateMachineCopyWith(
           ZacStateMachine value, $Res Function(ZacStateMachine) then) =
-      _$ZacStateMachineCopyWithImpl<$Res>;
+      _$ZacStateMachineCopyWithImpl<$Res, ZacStateMachine>;
+  @useResult
   $Res call(
       {Map<String, ZacStateConfig> states,
       String state,
@@ -196,41 +192,43 @@ abstract class $ZacStateMachineCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ZacStateMachineCopyWithImpl<$Res>
+class _$ZacStateMachineCopyWithImpl<$Res, $Val extends ZacStateMachine>
     implements $ZacStateMachineCopyWith<$Res> {
   _$ZacStateMachineCopyWithImpl(this._value, this._then);
 
-  final ZacStateMachine _value;
   // ignore: unused_field
-  final $Res Function(ZacStateMachine) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? states = freezed,
-    Object? state = freezed,
+    Object? states = null,
+    Object? state = null,
     Object? context = freezed,
-    Object? send = freezed,
-    Object? trySend = freezed,
+    Object? send = null,
+    Object? trySend = null,
   }) {
     return _then(_value.copyWith(
-      states: states == freezed
+      states: null == states
           ? _value.states
           : states // ignore: cast_nullable_to_non_nullable
               as Map<String, ZacStateConfig>,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      context: context == freezed ? _value.context : context,
-      send: send == freezed
+      context: freezed == context ? _value.context : context,
+      send: null == send
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
-      trySend: trySend == freezed
+      trySend: null == trySend
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
-    ));
+    ) as $Val);
   }
 }
 
@@ -241,6 +239,7 @@ abstract class _$$_ZacStateMachineCopyWith<$Res>
           _$_ZacStateMachine value, $Res Function(_$_ZacStateMachine) then) =
       __$$_ZacStateMachineCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Map<String, ZacStateConfig> states,
       String state,
@@ -251,38 +250,36 @@ abstract class _$$_ZacStateMachineCopyWith<$Res>
 
 /// @nodoc
 class __$$_ZacStateMachineCopyWithImpl<$Res>
-    extends _$ZacStateMachineCopyWithImpl<$Res>
+    extends _$ZacStateMachineCopyWithImpl<$Res, _$_ZacStateMachine>
     implements _$$_ZacStateMachineCopyWith<$Res> {
   __$$_ZacStateMachineCopyWithImpl(
       _$_ZacStateMachine _value, $Res Function(_$_ZacStateMachine) _then)
-      : super(_value, (v) => _then(v as _$_ZacStateMachine));
+      : super(_value, _then);
 
-  @override
-  _$_ZacStateMachine get _value => super._value as _$_ZacStateMachine;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? states = freezed,
-    Object? state = freezed,
+    Object? states = null,
+    Object? state = null,
     Object? context = freezed,
-    Object? send = freezed,
-    Object? trySend = freezed,
+    Object? send = null,
+    Object? trySend = null,
   }) {
     return _then(_$_ZacStateMachine(
-      states: states == freezed
+      states: null == states
           ? _value._states
           : states // ignore: cast_nullable_to_non_nullable
               as Map<String, ZacStateConfig>,
-      state: state == freezed
+      state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
               as String,
-      context: context == freezed ? _value.context : context,
-      send: send == freezed
+      context: freezed == context ? _value.context : context,
+      send: null == send
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
-      trySend: trySend == freezed
+      trySend: null == trySend
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
@@ -329,7 +326,7 @@ class _$_ZacStateMachine extends _ZacStateMachine {
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachine &&
             const DeepCollectionEquality().equals(other._states, _states) &&
-            const DeepCollectionEquality().equals(other.state, state) &&
+            (identical(other.state, state) || other.state == state) &&
             const DeepCollectionEquality().equals(other.context, context) &&
             (identical(other.send, send) || other.send == send) &&
             (identical(other.trySend, trySend) || other.trySend == trySend));
@@ -339,13 +336,14 @@ class _$_ZacStateMachine extends _ZacStateMachine {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_states),
-      const DeepCollectionEquality().hash(state),
+      state,
       const DeepCollectionEquality().hash(context),
       send,
       trySend);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ZacStateMachineCopyWith<_$_ZacStateMachine> get copyWith =>
       __$$_ZacStateMachineCopyWithImpl<_$_ZacStateMachine>(this, _$identity);
 }
@@ -443,26 +441,20 @@ class _$_ZacStateMachineProviderBuilder
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineProviderBuilder &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.initialState, initialState) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.initialState, initialState) ||
+                other.initialState == initialState) &&
             const DeepCollectionEquality().equals(other._states, _states) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.initialContext, initialContext));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.initialContext, initialContext) ||
+                other.initialContext == initialContext));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(initialState),
-      const DeepCollectionEquality().hash(_states),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(initialContext));
+  int get hashCode => Object.hash(runtimeType, key, family, initialState,
+      const DeepCollectionEquality().hash(_states), child, initialContext);
 
   @override
   @optionalTypeArgs
@@ -561,21 +553,17 @@ class _$_ZacStateMachineBuildStateBuilder
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineBuildStateBuilder &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.family, family) || other.family == family) &&
             const DeepCollectionEquality().equals(other._states, _states) &&
-            const DeepCollectionEquality()
-                .equals(other.unmappedStateWidget, unmappedStateWidget));
+            (identical(other.unmappedStateWidget, unmappedStateWidget) ||
+                other.unmappedStateWidget == unmappedStateWidget));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(_states),
-      const DeepCollectionEquality().hash(unmappedStateWidget));
+  int get hashCode => Object.hash(runtimeType, key, family,
+      const DeepCollectionEquality().hash(_states), unmappedStateWidget);
 
   @override
   @optionalTypeArgs
@@ -669,15 +657,13 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsSend &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.event, event));
+            (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(event));
+      runtimeType, const DeepCollectionEquality().hash(family), event);
 
   @override
   @optionalTypeArgs
@@ -735,15 +721,13 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsTrySend &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.event, event));
+            (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(event));
+      runtimeType, const DeepCollectionEquality().hash(family), event);
 
   @override
   @optionalTypeArgs

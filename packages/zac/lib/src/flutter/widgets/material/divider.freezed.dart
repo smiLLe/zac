@@ -72,24 +72,20 @@ class _$_FlutterDivider extends _FlutterDivider {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDivider &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.thickness, thickness) &&
-            const DeepCollectionEquality().equals(other.indent, indent) &&
-            const DeepCollectionEquality().equals(other.endIndent, endIndent) &&
-            const DeepCollectionEquality().equals(other.color, color));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.thickness, thickness) ||
+                other.thickness == thickness) &&
+            (identical(other.indent, indent) || other.indent == indent) &&
+            (identical(other.endIndent, endIndent) ||
+                other.endIndent == endIndent) &&
+            (identical(other.color, color) || other.color == color));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(thickness),
-      const DeepCollectionEquality().hash(indent),
-      const DeepCollectionEquality().hash(endIndent),
-      const DeepCollectionEquality().hash(color));
+      runtimeType, key, height, thickness, indent, endIndent, color);
 
   @override
   @optionalTypeArgs

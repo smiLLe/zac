@@ -94,26 +94,22 @@ class _$_FlutterSliverChildListDelegate
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverChildListDelegate &&
-            const DeepCollectionEquality().equals(other.children, children) &&
-            const DeepCollectionEquality()
-                .equals(other.addAutomaticKeepAlives, addAutomaticKeepAlives) &&
-            const DeepCollectionEquality()
-                .equals(other.addRepaintBoundaries, addRepaintBoundaries) &&
-            const DeepCollectionEquality()
-                .equals(other.addSemanticIndexes, addSemanticIndexes) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticIndexOffset, semanticIndexOffset));
+            (identical(other.children, children) ||
+                other.children == children) &&
+            (identical(other.addAutomaticKeepAlives, addAutomaticKeepAlives) ||
+                other.addAutomaticKeepAlives == addAutomaticKeepAlives) &&
+            (identical(other.addRepaintBoundaries, addRepaintBoundaries) ||
+                other.addRepaintBoundaries == addRepaintBoundaries) &&
+            (identical(other.addSemanticIndexes, addSemanticIndexes) ||
+                other.addSemanticIndexes == addSemanticIndexes) &&
+            (identical(other.semanticIndexOffset, semanticIndexOffset) ||
+                other.semanticIndexOffset == semanticIndexOffset));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(children),
-      const DeepCollectionEquality().hash(addAutomaticKeepAlives),
-      const DeepCollectionEquality().hash(addRepaintBoundaries),
-      const DeepCollectionEquality().hash(addSemanticIndexes),
-      const DeepCollectionEquality().hash(semanticIndexOffset));
+  int get hashCode => Object.hash(runtimeType, children, addAutomaticKeepAlives,
+      addRepaintBoundaries, addSemanticIndexes, semanticIndexOffset);
 
   @override
   @optionalTypeArgs
@@ -194,26 +190,22 @@ class _$_FlutterSliverChildListDelegateFixed
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverChildListDelegateFixed &&
-            const DeepCollectionEquality().equals(other.children, children) &&
-            const DeepCollectionEquality()
-                .equals(other.addAutomaticKeepAlives, addAutomaticKeepAlives) &&
-            const DeepCollectionEquality()
-                .equals(other.addRepaintBoundaries, addRepaintBoundaries) &&
-            const DeepCollectionEquality()
-                .equals(other.addSemanticIndexes, addSemanticIndexes) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticIndexOffset, semanticIndexOffset));
+            (identical(other.children, children) ||
+                other.children == children) &&
+            (identical(other.addAutomaticKeepAlives, addAutomaticKeepAlives) ||
+                other.addAutomaticKeepAlives == addAutomaticKeepAlives) &&
+            (identical(other.addRepaintBoundaries, addRepaintBoundaries) ||
+                other.addRepaintBoundaries == addRepaintBoundaries) &&
+            (identical(other.addSemanticIndexes, addSemanticIndexes) ||
+                other.addSemanticIndexes == addSemanticIndexes) &&
+            (identical(other.semanticIndexOffset, semanticIndexOffset) ||
+                other.semanticIndexOffset == semanticIndexOffset));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(children),
-      const DeepCollectionEquality().hash(addAutomaticKeepAlives),
-      const DeepCollectionEquality().hash(addRepaintBoundaries),
-      const DeepCollectionEquality().hash(addSemanticIndexes),
-      const DeepCollectionEquality().hash(semanticIndexOffset));
+  int get hashCode => Object.hash(runtimeType, children, addAutomaticKeepAlives,
+      addRepaintBoundaries, addSemanticIndexes, semanticIndexOffset);
 
   @override
   @optionalTypeArgs

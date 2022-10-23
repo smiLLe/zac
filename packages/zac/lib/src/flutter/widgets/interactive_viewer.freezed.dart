@@ -101,47 +101,49 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterInteractiveViewer &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.alignPanAxis, alignPanAxis) &&
-            const DeepCollectionEquality()
-                .equals(other.boundaryMargin, boundaryMargin) &&
-            const DeepCollectionEquality()
-                .equals(other.constrained, constrained) &&
-            const DeepCollectionEquality().equals(other.maxScale, maxScale) &&
-            const DeepCollectionEquality().equals(other.minScale, minScale) &&
-            const DeepCollectionEquality()
-                .equals(other.onInteractionEnd, onInteractionEnd) &&
-            const DeepCollectionEquality()
-                .equals(other.onInteractionStart, onInteractionStart) &&
-            const DeepCollectionEquality()
-                .equals(other.onInteractionUpdate, onInteractionUpdate) &&
-            const DeepCollectionEquality()
-                .equals(other.panEnabled, panEnabled) &&
-            const DeepCollectionEquality()
-                .equals(other.scaleEnabled, scaleEnabled));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.alignPanAxis, alignPanAxis) ||
+                other.alignPanAxis == alignPanAxis) &&
+            (identical(other.boundaryMargin, boundaryMargin) ||
+                other.boundaryMargin == boundaryMargin) &&
+            (identical(other.constrained, constrained) ||
+                other.constrained == constrained) &&
+            (identical(other.maxScale, maxScale) ||
+                other.maxScale == maxScale) &&
+            (identical(other.minScale, minScale) ||
+                other.minScale == minScale) &&
+            (identical(other.onInteractionEnd, onInteractionEnd) ||
+                other.onInteractionEnd == onInteractionEnd) &&
+            (identical(other.onInteractionStart, onInteractionStart) ||
+                other.onInteractionStart == onInteractionStart) &&
+            (identical(other.onInteractionUpdate, onInteractionUpdate) ||
+                other.onInteractionUpdate == onInteractionUpdate) &&
+            (identical(other.panEnabled, panEnabled) ||
+                other.panEnabled == panEnabled) &&
+            (identical(other.scaleEnabled, scaleEnabled) ||
+                other.scaleEnabled == scaleEnabled));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(alignPanAxis),
-      const DeepCollectionEquality().hash(boundaryMargin),
-      const DeepCollectionEquality().hash(constrained),
-      const DeepCollectionEquality().hash(maxScale),
-      const DeepCollectionEquality().hash(minScale),
-      const DeepCollectionEquality().hash(onInteractionEnd),
-      const DeepCollectionEquality().hash(onInteractionStart),
-      const DeepCollectionEquality().hash(onInteractionUpdate),
-      const DeepCollectionEquality().hash(panEnabled),
-      const DeepCollectionEquality().hash(scaleEnabled));
+      key,
+      child,
+      clipBehavior,
+      alignPanAxis,
+      boundaryMargin,
+      constrained,
+      maxScale,
+      minScale,
+      onInteractionEnd,
+      onInteractionStart,
+      onInteractionUpdate,
+      panEnabled,
+      scaleEnabled);
 
   @override
   @optionalTypeArgs

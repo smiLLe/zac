@@ -25,9 +25,9 @@ mixin _$ZacActionPayload {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(Object? value)? param,
-    TResult Function(Object? first, Object? second)? param2,
+    TResult? Function()? $default, {
+    TResult? Function(Object? value)? param,
+    TResult? Function(Object? first, Object? second)? param2,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$ZacActionPayload {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_ZacActionPayloadNone value)? $default, {
-    TResult Function(_ZacActionPayloadParam value)? param,
-    TResult Function(_ZacActionPayloadParam2 value)? param2,
+    TResult? Function(_ZacActionPayloadNone value)? $default, {
+    TResult? Function(_ZacActionPayloadParam value)? param,
+    TResult? Function(_ZacActionPayloadParam2 value)? param2,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,18 @@ mixin _$ZacActionPayload {
 abstract class $ZacActionPayloadCopyWith<$Res> {
   factory $ZacActionPayloadCopyWith(
           ZacActionPayload value, $Res Function(ZacActionPayload) then) =
-      _$ZacActionPayloadCopyWithImpl<$Res>;
+      _$ZacActionPayloadCopyWithImpl<$Res, ZacActionPayload>;
 }
 
 /// @nodoc
-class _$ZacActionPayloadCopyWithImpl<$Res>
+class _$ZacActionPayloadCopyWithImpl<$Res, $Val extends ZacActionPayload>
     implements $ZacActionPayloadCopyWith<$Res> {
   _$ZacActionPayloadCopyWithImpl(this._value, this._then);
 
-  final ZacActionPayload _value;
   // ignore: unused_field
-  final $Res Function(ZacActionPayload) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +89,11 @@ abstract class _$$_ZacActionPayloadNoneCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ZacActionPayloadNoneCopyWithImpl<$Res>
-    extends _$ZacActionPayloadCopyWithImpl<$Res>
+    extends _$ZacActionPayloadCopyWithImpl<$Res, _$_ZacActionPayloadNone>
     implements _$$_ZacActionPayloadNoneCopyWith<$Res> {
   __$$_ZacActionPayloadNoneCopyWithImpl(_$_ZacActionPayloadNone _value,
       $Res Function(_$_ZacActionPayloadNone) _then)
-      : super(_value, (v) => _then(v as _$_ZacActionPayloadNone));
-
-  @override
-  _$_ZacActionPayloadNone get _value => super._value as _$_ZacActionPayloadNone;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -130,9 +128,9 @@ class _$_ZacActionPayloadNone extends _ZacActionPayloadNone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(Object? value)? param,
-    TResult Function(Object? first, Object? second)? param2,
+    TResult? Function()? $default, {
+    TResult? Function(Object? value)? param,
+    TResult? Function(Object? first, Object? second)? param2,
   }) {
     return $default?.call();
   }
@@ -164,9 +162,9 @@ class _$_ZacActionPayloadNone extends _ZacActionPayloadNone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_ZacActionPayloadNone value)? $default, {
-    TResult Function(_ZacActionPayloadParam value)? param,
-    TResult Function(_ZacActionPayloadParam2 value)? param2,
+    TResult? Function(_ZacActionPayloadNone value)? $default, {
+    TResult? Function(_ZacActionPayloadParam value)? param,
+    TResult? Function(_ZacActionPayloadParam2 value)? param2,
   }) {
     return $default?.call(this);
   }
@@ -196,27 +194,25 @@ abstract class _$$_ZacActionPayloadParamCopyWith<$Res> {
   factory _$$_ZacActionPayloadParamCopyWith(_$_ZacActionPayloadParam value,
           $Res Function(_$_ZacActionPayloadParam) then) =
       __$$_ZacActionPayloadParamCopyWithImpl<$Res>;
+  @useResult
   $Res call({Object? value});
 }
 
 /// @nodoc
 class __$$_ZacActionPayloadParamCopyWithImpl<$Res>
-    extends _$ZacActionPayloadCopyWithImpl<$Res>
+    extends _$ZacActionPayloadCopyWithImpl<$Res, _$_ZacActionPayloadParam>
     implements _$$_ZacActionPayloadParamCopyWith<$Res> {
   __$$_ZacActionPayloadParamCopyWithImpl(_$_ZacActionPayloadParam _value,
       $Res Function(_$_ZacActionPayloadParam) _then)
-      : super(_value, (v) => _then(v as _$_ZacActionPayloadParam));
+      : super(_value, _then);
 
-  @override
-  _$_ZacActionPayloadParam get _value =>
-      super._value as _$_ZacActionPayloadParam;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = freezed,
   }) {
     return _then(_$_ZacActionPayloadParam(
-      value == freezed ? _value.value : value,
+      freezed == value ? _value.value : value,
     ));
   }
 }
@@ -248,6 +244,7 @@ class _$_ZacActionPayloadParam extends _ZacActionPayloadParam {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ZacActionPayloadParamCopyWith<_$_ZacActionPayloadParam> get copyWith =>
       __$$_ZacActionPayloadParamCopyWithImpl<_$_ZacActionPayloadParam>(
           this, _$identity);
@@ -265,9 +262,9 @@ class _$_ZacActionPayloadParam extends _ZacActionPayloadParam {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(Object? value)? param,
-    TResult Function(Object? first, Object? second)? param2,
+    TResult? Function()? $default, {
+    TResult? Function(Object? value)? param,
+    TResult? Function(Object? first, Object? second)? param2,
   }) {
     return param?.call(value);
   }
@@ -299,9 +296,9 @@ class _$_ZacActionPayloadParam extends _ZacActionPayloadParam {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_ZacActionPayloadNone value)? $default, {
-    TResult Function(_ZacActionPayloadParam value)? param,
-    TResult Function(_ZacActionPayloadParam2 value)? param2,
+    TResult? Function(_ZacActionPayloadNone value)? $default, {
+    TResult? Function(_ZacActionPayloadParam value)? param,
+    TResult? Function(_ZacActionPayloadParam2 value)? param2,
   }) {
     return param?.call(this);
   }
@@ -337,29 +334,27 @@ abstract class _$$_ZacActionPayloadParam2CopyWith<$Res> {
   factory _$$_ZacActionPayloadParam2CopyWith(_$_ZacActionPayloadParam2 value,
           $Res Function(_$_ZacActionPayloadParam2) then) =
       __$$_ZacActionPayloadParam2CopyWithImpl<$Res>;
+  @useResult
   $Res call({Object? first, Object? second});
 }
 
 /// @nodoc
 class __$$_ZacActionPayloadParam2CopyWithImpl<$Res>
-    extends _$ZacActionPayloadCopyWithImpl<$Res>
+    extends _$ZacActionPayloadCopyWithImpl<$Res, _$_ZacActionPayloadParam2>
     implements _$$_ZacActionPayloadParam2CopyWith<$Res> {
   __$$_ZacActionPayloadParam2CopyWithImpl(_$_ZacActionPayloadParam2 _value,
       $Res Function(_$_ZacActionPayloadParam2) _then)
-      : super(_value, (v) => _then(v as _$_ZacActionPayloadParam2));
+      : super(_value, _then);
 
-  @override
-  _$_ZacActionPayloadParam2 get _value =>
-      super._value as _$_ZacActionPayloadParam2;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? first = freezed,
     Object? second = freezed,
   }) {
     return _then(_$_ZacActionPayloadParam2(
-      first == freezed ? _value.first : first,
-      second == freezed ? _value.second : second,
+      freezed == first ? _value.first : first,
+      freezed == second ? _value.second : second,
     ));
   }
 }
@@ -396,6 +391,7 @@ class _$_ZacActionPayloadParam2 extends _ZacActionPayloadParam2 {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ZacActionPayloadParam2CopyWith<_$_ZacActionPayloadParam2> get copyWith =>
       __$$_ZacActionPayloadParam2CopyWithImpl<_$_ZacActionPayloadParam2>(
           this, _$identity);
@@ -413,9 +409,9 @@ class _$_ZacActionPayloadParam2 extends _ZacActionPayloadParam2 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function(Object? value)? param,
-    TResult Function(Object? first, Object? second)? param2,
+    TResult? Function()? $default, {
+    TResult? Function(Object? value)? param,
+    TResult? Function(Object? first, Object? second)? param2,
   }) {
     return param2?.call(first, second);
   }
@@ -447,9 +443,9 @@ class _$_ZacActionPayloadParam2 extends _ZacActionPayloadParam2 {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_ZacActionPayloadNone value)? $default, {
-    TResult Function(_ZacActionPayloadParam value)? param,
-    TResult Function(_ZacActionPayloadParam2 value)? param2,
+    TResult? Function(_ZacActionPayloadNone value)? $default, {
+    TResult? Function(_ZacActionPayloadParam value)? param,
+    TResult? Function(_ZacActionPayloadParam2 value)? param2,
   }) {
     return param2?.call(this);
   }
@@ -610,16 +606,13 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacExecuteActionsBuilderOnce &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, actions, child);
 
   @override
   @optionalTypeArgs
@@ -682,18 +675,15 @@ class _$_ZacExecuteActionsBuilderListen
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacExecuteActionsBuilderListen &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child));
+      runtimeType, actions, const DeepCollectionEquality().hash(family), child);
 
   @override
   @optionalTypeArgs

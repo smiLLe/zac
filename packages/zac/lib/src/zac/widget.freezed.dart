@@ -84,16 +84,13 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilder &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, key, data);
 
   @override
   @optionalTypeArgs
@@ -160,16 +157,13 @@ class _$_ZacWidgetBuilderMap extends _ZacWidgetBuilderMap
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilderMap &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, key, data);
 
   @override
   @optionalTypeArgs
@@ -247,22 +241,18 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilderIsolate &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality()
-                .equals(other.errorChild, errorChild) &&
-            const DeepCollectionEquality()
-                .equals(other.debugRethrowError, debugRethrowError));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.errorChild, errorChild) ||
+                other.errorChild == errorChild) &&
+            (identical(other.debugRethrowError, debugRethrowError) ||
+                other.debugRethrowError == debugRethrowError));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(errorChild),
-      const DeepCollectionEquality().hash(debugRethrowError));
+  int get hashCode =>
+      Object.hash(runtimeType, key, data, errorChild, debugRethrowError);
 
   @override
   @optionalTypeArgs
@@ -345,22 +335,18 @@ class _$_ZacWidgetBuilderIsolateString extends _ZacWidgetBuilderIsolateString
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacWidgetBuilderIsolateString &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality()
-                .equals(other.errorChild, errorChild) &&
-            const DeepCollectionEquality()
-                .equals(other.debugRethrowError, debugRethrowError));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.errorChild, errorChild) ||
+                other.errorChild == errorChild) &&
+            (identical(other.debugRethrowError, debugRethrowError) ||
+                other.debugRethrowError == debugRethrowError));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(errorChild),
-      const DeepCollectionEquality().hash(debugRethrowError));
+  int get hashCode =>
+      Object.hash(runtimeType, key, data, errorChild, debugRethrowError);
 
   @override
   @optionalTypeArgs

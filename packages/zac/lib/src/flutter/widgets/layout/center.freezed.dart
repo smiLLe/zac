@@ -60,22 +60,18 @@ class _$_FlutterCenter extends _FlutterCenter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterCenter &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.widthFactor, widthFactor) &&
-            const DeepCollectionEquality()
-                .equals(other.heightFactor, heightFactor) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.widthFactor, widthFactor) ||
+                other.widthFactor == widthFactor) &&
+            (identical(other.heightFactor, heightFactor) ||
+                other.heightFactor == heightFactor) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(widthFactor),
-      const DeepCollectionEquality().hash(heightFactor),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, key, widthFactor, heightFactor, child);
 
   @override
   @optionalTypeArgs

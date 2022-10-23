@@ -73,27 +73,22 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterUnconstrainedBox &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.constrainedAxis, constrainedAxis) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.constrainedAxis, constrainedAxis) ||
+                other.constrainedAxis == constrainedAxis) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(constrainedAxis),
-      const DeepCollectionEquality().hash(clipBehavior));
+  int get hashCode => Object.hash(runtimeType, key, child, textDirection,
+      alignment, constrainedAxis, clipBehavior);
 
   @override
   @optionalTypeArgs

@@ -65,21 +65,17 @@ class _$_FlutterOpacity extends _FlutterOpacity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOpacity &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.opacity, opacity) &&
-            const DeepCollectionEquality()
-                .equals(other.alwaysIncludeSemantics, alwaysIncludeSemantics) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity) &&
+            (identical(other.alwaysIncludeSemantics, alwaysIncludeSemantics) ||
+                other.alwaysIncludeSemantics == alwaysIncludeSemantics) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(opacity),
-      const DeepCollectionEquality().hash(alwaysIncludeSemantics),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, key, opacity, alwaysIncludeSemantics, child);
 
   @override
   @optionalTypeArgs

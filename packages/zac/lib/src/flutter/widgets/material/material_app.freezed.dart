@@ -158,60 +158,64 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterMaterialApp &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorKey, navigatorKey) &&
-            const DeepCollectionEquality().equals(other.home, home) &&
-            const DeepCollectionEquality()
-                .equals(other.initialRoute, initialRoute) &&
-            const DeepCollectionEquality()
-                .equals(other.onGenerateRoute, onGenerateRoute) &&
-            const DeepCollectionEquality()
-                .equals(other.onUnknownRoute, onUnknownRoute) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality()
-                .equals(other.debugShowMaterialGrid, debugShowMaterialGrid) &&
-            const DeepCollectionEquality()
-                .equals(other.showPerformanceOverlay, showPerformanceOverlay) &&
-            const DeepCollectionEquality().equals(
-                other.checkerboardRasterCacheImages,
-                checkerboardRasterCacheImages) &&
-            const DeepCollectionEquality().equals(
-                other.checkerboardOffscreenLayers,
-                checkerboardOffscreenLayers) &&
-            const DeepCollectionEquality()
-                .equals(other.showSemanticsDebugger, showSemanticsDebugger) &&
-            const DeepCollectionEquality().equals(
-                other.debugShowCheckedModeBanner, debugShowCheckedModeBanner) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationScopeId, restorationScopeId) &&
-            const DeepCollectionEquality()
-                .equals(other.useInheritedMediaQuery, useInheritedMediaQuery));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.navigatorKey, navigatorKey) ||
+                other.navigatorKey == navigatorKey) &&
+            (identical(other.home, home) || other.home == home) &&
+            (identical(other.initialRoute, initialRoute) ||
+                other.initialRoute == initialRoute) &&
+            (identical(other.onGenerateRoute, onGenerateRoute) ||
+                other.onGenerateRoute == onGenerateRoute) &&
+            (identical(other.onUnknownRoute, onUnknownRoute) ||
+                other.onUnknownRoute == onUnknownRoute) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.debugShowMaterialGrid, debugShowMaterialGrid) ||
+                other.debugShowMaterialGrid == debugShowMaterialGrid) &&
+            (identical(other.showPerformanceOverlay, showPerformanceOverlay) ||
+                other.showPerformanceOverlay == showPerformanceOverlay) &&
+            (identical(other.checkerboardRasterCacheImages,
+                    checkerboardRasterCacheImages) ||
+                other.checkerboardRasterCacheImages ==
+                    checkerboardRasterCacheImages) &&
+            (identical(other.checkerboardOffscreenLayers,
+                    checkerboardOffscreenLayers) ||
+                other.checkerboardOffscreenLayers ==
+                    checkerboardOffscreenLayers) &&
+            (identical(other.showSemanticsDebugger, showSemanticsDebugger) ||
+                other.showSemanticsDebugger == showSemanticsDebugger) &&
+            (identical(other.debugShowCheckedModeBanner,
+                    debugShowCheckedModeBanner) ||
+                other.debugShowCheckedModeBanner ==
+                    debugShowCheckedModeBanner) &&
+            (identical(other.restorationScopeId, restorationScopeId) ||
+                other.restorationScopeId == restorationScopeId) &&
+            (identical(other.useInheritedMediaQuery, useInheritedMediaQuery) ||
+                other.useInheritedMediaQuery == useInheritedMediaQuery));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(navigatorKey),
-      const DeepCollectionEquality().hash(home),
-      const DeepCollectionEquality().hash(initialRoute),
-      const DeepCollectionEquality().hash(onGenerateRoute),
-      const DeepCollectionEquality().hash(onUnknownRoute),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(locale),
-      const DeepCollectionEquality().hash(debugShowMaterialGrid),
-      const DeepCollectionEquality().hash(showPerformanceOverlay),
-      const DeepCollectionEquality().hash(checkerboardRasterCacheImages),
-      const DeepCollectionEquality().hash(checkerboardOffscreenLayers),
-      const DeepCollectionEquality().hash(showSemanticsDebugger),
-      const DeepCollectionEquality().hash(debugShowCheckedModeBanner),
-      const DeepCollectionEquality().hash(restorationScopeId),
-      const DeepCollectionEquality().hash(useInheritedMediaQuery));
+      key,
+      navigatorKey,
+      home,
+      initialRoute,
+      onGenerateRoute,
+      onUnknownRoute,
+      title,
+      color,
+      locale,
+      debugShowMaterialGrid,
+      showPerformanceOverlay,
+      checkerboardRasterCacheImages,
+      checkerboardOffscreenLayers,
+      showSemanticsDebugger,
+      debugShowCheckedModeBanner,
+      restorationScopeId,
+      useInheritedMediaQuery);
 
   @override
   @optionalTypeArgs

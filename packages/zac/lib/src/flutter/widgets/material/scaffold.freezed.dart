@@ -137,65 +137,70 @@ class _$_FlutterScaffold extends _FlutterScaffold {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScaffold &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.appBar, appBar) &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality()
-                .equals(other.floatingActionButton, floatingActionButton) &&
-            const DeepCollectionEquality().equals(
-                other.persistentFooterButtons, persistentFooterButtons) &&
-            const DeepCollectionEquality().equals(other.drawer, drawer) &&
-            const DeepCollectionEquality().equals(other.endDrawer, endDrawer) &&
-            const DeepCollectionEquality()
-                .equals(other.bottomNavigationBar, bottomNavigationBar) &&
-            const DeepCollectionEquality()
-                .equals(other.bottomSheet, bottomSheet) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(
-                other.resizeToAvoidBottomInset, resizeToAvoidBottomInset) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality()
-                .equals(other.extendBody, extendBody) &&
-            const DeepCollectionEquality()
-                .equals(other.extendBodyBehindAppBar, extendBodyBehindAppBar) &&
-            const DeepCollectionEquality()
-                .equals(other.drawerScrimColor, drawerScrimColor) &&
-            const DeepCollectionEquality()
-                .equals(other.drawerEdgeDragWidth, drawerEdgeDragWidth) &&
-            const DeepCollectionEquality().equals(
-                other.drawerEnableOpenDragGesture,
-                drawerEnableOpenDragGesture) &&
-            const DeepCollectionEquality().equals(
-                other.endDrawerEnableOpenDragGesture,
-                endDrawerEnableOpenDragGesture) &&
-            const DeepCollectionEquality()
-                .equals(other.restorationId, restorationId));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.appBar, appBar) || other.appBar == appBar) &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.floatingActionButton, floatingActionButton) ||
+                other.floatingActionButton == floatingActionButton) &&
+            (identical(
+                    other.persistentFooterButtons, persistentFooterButtons) ||
+                other.persistentFooterButtons == persistentFooterButtons) &&
+            (identical(other.drawer, drawer) || other.drawer == drawer) &&
+            (identical(other.endDrawer, endDrawer) ||
+                other.endDrawer == endDrawer) &&
+            (identical(other.bottomNavigationBar, bottomNavigationBar) ||
+                other.bottomNavigationBar == bottomNavigationBar) &&
+            (identical(other.bottomSheet, bottomSheet) ||
+                other.bottomSheet == bottomSheet) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(
+                    other.resizeToAvoidBottomInset, resizeToAvoidBottomInset) ||
+                other.resizeToAvoidBottomInset == resizeToAvoidBottomInset) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.extendBody, extendBody) ||
+                other.extendBody == extendBody) &&
+            (identical(other.extendBodyBehindAppBar, extendBodyBehindAppBar) ||
+                other.extendBodyBehindAppBar == extendBodyBehindAppBar) &&
+            (identical(other.drawerScrimColor, drawerScrimColor) ||
+                other.drawerScrimColor == drawerScrimColor) &&
+            (identical(other.drawerEdgeDragWidth, drawerEdgeDragWidth) ||
+                other.drawerEdgeDragWidth == drawerEdgeDragWidth) &&
+            (identical(other.drawerEnableOpenDragGesture,
+                    drawerEnableOpenDragGesture) ||
+                other.drawerEnableOpenDragGesture ==
+                    drawerEnableOpenDragGesture) &&
+            (identical(other.endDrawerEnableOpenDragGesture,
+                    endDrawerEnableOpenDragGesture) ||
+                other.endDrawerEnableOpenDragGesture ==
+                    endDrawerEnableOpenDragGesture) &&
+            (identical(other.restorationId, restorationId) ||
+                other.restorationId == restorationId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(appBar),
-        const DeepCollectionEquality().hash(body),
-        const DeepCollectionEquality().hash(floatingActionButton),
-        const DeepCollectionEquality().hash(persistentFooterButtons),
-        const DeepCollectionEquality().hash(drawer),
-        const DeepCollectionEquality().hash(endDrawer),
-        const DeepCollectionEquality().hash(bottomNavigationBar),
-        const DeepCollectionEquality().hash(bottomSheet),
-        const DeepCollectionEquality().hash(backgroundColor),
-        const DeepCollectionEquality().hash(resizeToAvoidBottomInset),
-        const DeepCollectionEquality().hash(primary),
-        const DeepCollectionEquality().hash(extendBody),
-        const DeepCollectionEquality().hash(extendBodyBehindAppBar),
-        const DeepCollectionEquality().hash(drawerScrimColor),
-        const DeepCollectionEquality().hash(drawerEdgeDragWidth),
-        const DeepCollectionEquality().hash(drawerEnableOpenDragGesture),
-        const DeepCollectionEquality().hash(endDrawerEnableOpenDragGesture),
-        const DeepCollectionEquality().hash(restorationId)
+        key,
+        appBar,
+        body,
+        floatingActionButton,
+        persistentFooterButtons,
+        drawer,
+        endDrawer,
+        bottomNavigationBar,
+        bottomSheet,
+        backgroundColor,
+        resizeToAvoidBottomInset,
+        primary,
+        extendBody,
+        extendBodyBehindAppBar,
+        drawerScrimColor,
+        drawerEdgeDragWidth,
+        drawerEnableOpenDragGesture,
+        endDrawerEnableOpenDragGesture,
+        restorationId
       ]);
 
   @override
@@ -399,16 +404,13 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScaffoldShowBodyScrim &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.opacity, opacity));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(opacity));
+  int get hashCode => Object.hash(runtimeType, value, opacity);
 
   @override
   @optionalTypeArgs
@@ -486,30 +488,24 @@ class _$_FlutterScaffoldShowBottomSheet
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScaffoldShowBottomSheet &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality()
-                .equals(other.constraints, constraints) &&
-            const DeepCollectionEquality()
-                .equals(other.enableDrag, enableDrag));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.constraints, constraints) ||
+                other.constraints == constraints) &&
+            (identical(other.enableDrag, enableDrag) ||
+                other.enableDrag == enableDrag));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(constraints),
-      const DeepCollectionEquality().hash(enableDrag));
+  int get hashCode => Object.hash(runtimeType, child, backgroundColor,
+      elevation, shape, clipBehavior, constraints, enableDrag);
 
   @override
   @optionalTypeArgs
@@ -627,13 +623,13 @@ class _$_FlutterScaffoldMessengerShowSnackBar
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScaffoldMessengerShowSnackBar &&
-            const DeepCollectionEquality().equals(other.snackBar, snackBar));
+            (identical(other.snackBar, snackBar) ||
+                other.snackBar == snackBar));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(snackBar));
+  int get hashCode => Object.hash(runtimeType, snackBar);
 
   @override
   @optionalTypeArgs
@@ -833,14 +829,13 @@ class _$_FlutterScaffoldMessengerShowMaterialBanner
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterScaffoldMessengerShowMaterialBanner &&
-            const DeepCollectionEquality()
-                .equals(other.materialBanner, materialBanner));
+            (identical(other.materialBanner, materialBanner) ||
+                other.materialBanner == materialBanner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(materialBanner));
+  int get hashCode => Object.hash(runtimeType, materialBanner);
 
   @override
   @optionalTypeArgs
@@ -1094,35 +1089,27 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSnackBar &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.margin, margin) &&
-            const DeepCollectionEquality().equals(other.padding, padding) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality().equals(other.behavior, behavior) &&
-            const DeepCollectionEquality().equals(other.action, action) &&
-            const DeepCollectionEquality().equals(other.onVisible, onVisible));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.behavior, behavior) ||
+                other.behavior == behavior) &&
+            (identical(other.action, action) || other.action == action) &&
+            (identical(other.onVisible, onVisible) ||
+                other.onVisible == onVisible));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(margin),
-      const DeepCollectionEquality().hash(padding),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(behavior),
-      const DeepCollectionEquality().hash(action),
-      const DeepCollectionEquality().hash(onVisible));
+  int get hashCode => Object.hash(runtimeType, key, content, backgroundColor,
+      elevation, margin, padding, width, shape, behavior, action, onVisible);
 
   @override
   @optionalTypeArgs
@@ -1356,23 +1343,20 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSnackBarAction &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.textColor, textColor) &&
-            const DeepCollectionEquality()
-                .equals(other.disabledTextColor, disabledTextColor) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.textColor, textColor) ||
+                other.textColor == textColor) &&
+            (identical(other.disabledTextColor, disabledTextColor) ||
+                other.disabledTextColor == disabledTextColor) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(disabledTextColor),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(onPressed));
+      runtimeType, key, textColor, disabledTextColor, label, onPressed);
 
   @override
   @optionalTypeArgs
@@ -1491,38 +1475,40 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterMaterialBanner &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality()
-                .equals(other.contentTextStyle, contentTextStyle) &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.leading, leading) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.padding, padding) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingPadding, leadingPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.forceActionsBelow, forceActionsBelow) &&
-            const DeepCollectionEquality().equals(other.onVisible, onVisible));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.contentTextStyle, contentTextStyle) ||
+                other.contentTextStyle == contentTextStyle) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.leading, leading) || other.leading == leading) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.padding, padding) || other.padding == padding) &&
+            (identical(other.leadingPadding, leadingPadding) ||
+                other.leadingPadding == leadingPadding) &&
+            (identical(other.forceActionsBelow, forceActionsBelow) ||
+                other.forceActionsBelow == forceActionsBelow) &&
+            (identical(other.onVisible, onVisible) ||
+                other.onVisible == onVisible));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(contentTextStyle),
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(leading),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(padding),
-      const DeepCollectionEquality().hash(leadingPadding),
-      const DeepCollectionEquality().hash(forceActionsBelow),
-      const DeepCollectionEquality().hash(onVisible));
+      key,
+      content,
+      contentTextStyle,
+      actions,
+      elevation,
+      leading,
+      backgroundColor,
+      padding,
+      leadingPadding,
+      forceActionsBelow,
+      onVisible);
 
   @override
   @optionalTypeArgs

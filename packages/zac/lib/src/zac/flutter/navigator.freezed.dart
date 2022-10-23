@@ -80,18 +80,15 @@ class _$_ZacFlutterGlobalKeyNavigatorStateProvide
         (other.runtimeType == runtimeType &&
             other is _$_ZacFlutterGlobalKeyNavigatorStateProvide &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(debugLabel));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(family), child, debugLabel);
 
   @override
   @optionalTypeArgs
@@ -152,13 +149,12 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacFlutterGlobalKeyNavigatorStateConsume &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -228,17 +224,15 @@ class _$_PopUntilRouteName extends _PopUntilRouteName {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PopUntilRouteName &&
-            const DeepCollectionEquality().equals(other.routeName, routeName) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.routeName, routeName) ||
+                other.routeName == routeName) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeName),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, routeName, navigatorState);
 
   @override
   @optionalTypeArgs
@@ -310,19 +304,17 @@ class _$_RouteFactoryConfig extends _RouteFactoryConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RouteFactoryConfig &&
-            const DeepCollectionEquality().equals(other.route, route) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsName, provideArgsName) &&
-            const DeepCollectionEquality().equals(other.transform, transform));
+            (identical(other.route, route) || other.route == route) &&
+            (identical(other.provideArgsName, provideArgsName) ||
+                other.provideArgsName == provideArgsName) &&
+            (identical(other.transform, transform) ||
+                other.transform == transform));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(route),
-      const DeepCollectionEquality().hash(provideArgsName),
-      const DeepCollectionEquality().hash(transform));
+  int get hashCode =>
+      Object.hash(runtimeType, route, provideArgsName, transform);
 
   @override
   @optionalTypeArgs
@@ -393,18 +385,16 @@ class _$_RouteFactorySingleRoute extends _RouteFactorySingleRoute {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RouteFactorySingleRoute &&
-            const DeepCollectionEquality()
-                .equals(other.routeConfig, routeConfig) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsNamePrefix, provideArgsNamePrefix));
+            (identical(other.routeConfig, routeConfig) ||
+                other.routeConfig == routeConfig) &&
+            (identical(other.provideArgsNamePrefix, provideArgsNamePrefix) ||
+                other.provideArgsNamePrefix == provideArgsNamePrefix));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeConfig),
-      const DeepCollectionEquality().hash(provideArgsNamePrefix));
+  int get hashCode =>
+      Object.hash(runtimeType, routeConfig, provideArgsNamePrefix);
 
   @override
   @optionalTypeArgs
@@ -481,16 +471,14 @@ class _$_RouteFactoryFromRoutes extends _RouteFactoryFromRoutes {
         (other.runtimeType == runtimeType &&
             other is _$_RouteFactoryFromRoutes &&
             const DeepCollectionEquality().equals(other._routes, _routes) &&
-            const DeepCollectionEquality()
-                .equals(other.provideArgsNamePrefix, provideArgsNamePrefix));
+            (identical(other.provideArgsNamePrefix, provideArgsNamePrefix) ||
+                other.provideArgsNamePrefix == provideArgsNamePrefix));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_routes),
-      const DeepCollectionEquality().hash(provideArgsNamePrefix));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_routes), provideArgsNamePrefix);
 
   @override
   @optionalTypeArgs

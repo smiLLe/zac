@@ -88,36 +88,37 @@ class _$_FlutterCard extends _FlutterCard {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterCard &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.shadowColor, shadowColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.borderOnForeground, borderOnForeground) &&
-            const DeepCollectionEquality().equals(other.margin, margin) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticContainer, semanticContainer));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.shadowColor, shadowColor) ||
+                other.shadowColor == shadowColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.borderOnForeground, borderOnForeground) ||
+                other.borderOnForeground == borderOnForeground) &&
+            (identical(other.margin, margin) || other.margin == margin) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.semanticContainer, semanticContainer) ||
+                other.semanticContainer == semanticContainer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(shadowColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(borderOnForeground),
-      const DeepCollectionEquality().hash(margin),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(semanticContainer));
+      key,
+      color,
+      shadowColor,
+      elevation,
+      shape,
+      borderOnForeground,
+      margin,
+      clipBehavior,
+      child,
+      semanticContainer);
 
   @override
   @optionalTypeArgs

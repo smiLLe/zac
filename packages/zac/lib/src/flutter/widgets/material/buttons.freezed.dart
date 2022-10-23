@@ -87,26 +87,22 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterElevatedButton &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+      runtimeType, key, child, onPressed, onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs
@@ -190,28 +186,23 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterElevatedButtonIcon &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+  int get hashCode => Object.hash(runtimeType, key, icon, label, onPressed,
+      onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs
@@ -324,26 +315,22 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOutlinedButton &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+      runtimeType, key, child, onPressed, onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs
@@ -427,28 +414,23 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterOutlinedButtonIcon &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+  int get hashCode => Object.hash(runtimeType, key, icon, label, onPressed,
+      onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs
@@ -560,26 +542,22 @@ class _$_FlutterTextButton extends _FlutterTextButton {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextButton &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+      runtimeType, key, child, onPressed, onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs
@@ -663,28 +641,23 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextButtonIcon &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality()
-                .equals(other.onLongPress, onLongPress) &&
-            const DeepCollectionEquality().equals(other.autofocus, autofocus) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.onLongPress, onLongPress) ||
+                other.onLongPress == onLongPress) &&
+            (identical(other.autofocus, autofocus) ||
+                other.autofocus == autofocus) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(onLongPress),
-      const DeepCollectionEquality().hash(autofocus),
-      const DeepCollectionEquality().hash(clipBehavior));
+  int get hashCode => Object.hash(runtimeType, key, icon, label, onPressed,
+      onLongPress, autofocus, clipBehavior);
 
   @override
   @optionalTypeArgs

@@ -69,16 +69,14 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueActionsUpdate &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer));
+      runtimeType, const DeepCollectionEquality().hash(family), transformer);
 
   @override
   @optionalTypeArgs
@@ -141,18 +139,15 @@ class _$_SharedValueActionsReplaceWith extends _SharedValueActionsReplaceWith {
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueActionsReplaceWith &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(transformer));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(family), value, transformer);
 
   @override
   @optionalTypeArgs
@@ -232,13 +227,12 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueConsumeTypeWatch &&
-            const DeepCollectionEquality().equals(other.select, select));
+            (identical(other.select, select) || other.select == select));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(select));
+  int get hashCode => Object.hash(runtimeType, select);
 
   @override
   @optionalTypeArgs
@@ -365,26 +359,26 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SharedValueProviderBuilder &&
-            const DeepCollectionEquality().equals(other.key, key) &&
+            (identical(other.key, key) || other.key == key) &&
             const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.autoCreate, autoCreate));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
+      key,
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(transformer),
+      transformer,
       const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(autoCreate));
+      child,
+      autoCreate);
 
   @override
   @optionalTypeArgs

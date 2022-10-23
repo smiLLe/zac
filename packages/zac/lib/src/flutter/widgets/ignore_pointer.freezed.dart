@@ -61,21 +61,18 @@ class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIgnorePointer &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.ignoring, ignoring) &&
-            const DeepCollectionEquality()
-                .equals(other.ignoringSemantics, ignoringSemantics) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.ignoring, ignoring) ||
+                other.ignoring == ignoring) &&
+            (identical(other.ignoringSemantics, ignoringSemantics) ||
+                other.ignoringSemantics == ignoringSemantics) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(ignoring),
-      const DeepCollectionEquality().hash(ignoringSemantics),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, key, ignoring, ignoringSemantics, child);
 
   @override
   @optionalTypeArgs

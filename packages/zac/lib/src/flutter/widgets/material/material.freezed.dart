@@ -89,36 +89,38 @@ class _$_FlutterMaterial extends _FlutterMaterial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterMaterial &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.shadowColor, shadowColor) &&
-            const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.borderOnForeground, borderOnForeground) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.shadowColor, shadowColor) ||
+                other.shadowColor == shadowColor) &&
+            (identical(other.textStyle, textStyle) ||
+                other.textStyle == textStyle) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.borderOnForeground, borderOnForeground) ||
+                other.borderOnForeground == borderOnForeground) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(shadowColor),
-      const DeepCollectionEquality().hash(textStyle),
-      const DeepCollectionEquality().hash(borderRadius),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(borderOnForeground),
-      const DeepCollectionEquality().hash(clipBehavior));
+      key,
+      child,
+      elevation,
+      color,
+      shadowColor,
+      textStyle,
+      borderRadius,
+      shape,
+      borderOnForeground,
+      clipBehavior);
 
   @override
   @optionalTypeArgs

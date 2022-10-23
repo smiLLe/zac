@@ -155,78 +155,81 @@ class _$_FlutterAppBar extends _FlutterAppBar {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterAppBar &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.leading, leading) &&
-            const DeepCollectionEquality().equals(
-                other.automaticallyImplyLeading, automaticallyImplyLeading) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality()
-                .equals(other.flexibleSpace, flexibleSpace) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality()
-                .equals(other.shadowColor, shadowColor) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.foregroundColor, foregroundColor) &&
-            const DeepCollectionEquality().equals(other.iconTheme, iconTheme) &&
-            const DeepCollectionEquality()
-                .equals(other.actionsIconTheme, actionsIconTheme) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality()
-                .equals(other.centerTitle, centerTitle) &&
-            const DeepCollectionEquality()
-                .equals(other.excludeHeaderSemantics, excludeHeaderSemantics) &&
-            const DeepCollectionEquality()
-                .equals(other.titleSpacing, titleSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.toolbarOpacity, toolbarOpacity) &&
-            const DeepCollectionEquality()
-                .equals(other.bottomOpacity, bottomOpacity) &&
-            const DeepCollectionEquality()
-                .equals(other.toolbarHeight, toolbarHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingWidth, leadingWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.toolbarTextStyle, toolbarTextStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.titleTextStyle, titleTextStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.systemOverlayStyle, systemOverlayStyle));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.leading, leading) || other.leading == leading) &&
+            (identical(other.automaticallyImplyLeading,
+                    automaticallyImplyLeading) ||
+                other.automaticallyImplyLeading == automaticallyImplyLeading) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.flexibleSpace, flexibleSpace) ||
+                other.flexibleSpace == flexibleSpace) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.shadowColor, shadowColor) ||
+                other.shadowColor == shadowColor) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.foregroundColor, foregroundColor) ||
+                other.foregroundColor == foregroundColor) &&
+            (identical(other.iconTheme, iconTheme) ||
+                other.iconTheme == iconTheme) &&
+            (identical(other.actionsIconTheme, actionsIconTheme) ||
+                other.actionsIconTheme == actionsIconTheme) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.centerTitle, centerTitle) ||
+                other.centerTitle == centerTitle) &&
+            (identical(other.excludeHeaderSemantics, excludeHeaderSemantics) ||
+                other.excludeHeaderSemantics == excludeHeaderSemantics) &&
+            (identical(other.titleSpacing, titleSpacing) ||
+                other.titleSpacing == titleSpacing) &&
+            (identical(other.toolbarOpacity, toolbarOpacity) ||
+                other.toolbarOpacity == toolbarOpacity) &&
+            (identical(other.bottomOpacity, bottomOpacity) ||
+                other.bottomOpacity == bottomOpacity) &&
+            (identical(other.toolbarHeight, toolbarHeight) ||
+                other.toolbarHeight == toolbarHeight) &&
+            (identical(other.leadingWidth, leadingWidth) ||
+                other.leadingWidth == leadingWidth) &&
+            (identical(other.toolbarTextStyle, toolbarTextStyle) ||
+                other.toolbarTextStyle == toolbarTextStyle) &&
+            (identical(other.titleTextStyle, titleTextStyle) ||
+                other.titleTextStyle == titleTextStyle) &&
+            (identical(other.systemOverlayStyle, systemOverlayStyle) ||
+                other.systemOverlayStyle == systemOverlayStyle));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(leading),
-        const DeepCollectionEquality().hash(automaticallyImplyLeading),
-        const DeepCollectionEquality().hash(title),
-        const DeepCollectionEquality().hash(actions),
-        const DeepCollectionEquality().hash(flexibleSpace),
-        const DeepCollectionEquality().hash(bottom),
-        const DeepCollectionEquality().hash(elevation),
-        const DeepCollectionEquality().hash(shadowColor),
-        const DeepCollectionEquality().hash(shape),
-        const DeepCollectionEquality().hash(backgroundColor),
-        const DeepCollectionEquality().hash(foregroundColor),
-        const DeepCollectionEquality().hash(iconTheme),
-        const DeepCollectionEquality().hash(actionsIconTheme),
-        const DeepCollectionEquality().hash(primary),
-        const DeepCollectionEquality().hash(centerTitle),
-        const DeepCollectionEquality().hash(excludeHeaderSemantics),
-        const DeepCollectionEquality().hash(titleSpacing),
-        const DeepCollectionEquality().hash(toolbarOpacity),
-        const DeepCollectionEquality().hash(bottomOpacity),
-        const DeepCollectionEquality().hash(toolbarHeight),
-        const DeepCollectionEquality().hash(leadingWidth),
-        const DeepCollectionEquality().hash(toolbarTextStyle),
-        const DeepCollectionEquality().hash(titleTextStyle),
-        const DeepCollectionEquality().hash(systemOverlayStyle)
+        key,
+        leading,
+        automaticallyImplyLeading,
+        title,
+        actions,
+        flexibleSpace,
+        bottom,
+        elevation,
+        shadowColor,
+        shape,
+        backgroundColor,
+        foregroundColor,
+        iconTheme,
+        actionsIconTheme,
+        primary,
+        centerTitle,
+        excludeHeaderSemantics,
+        titleSpacing,
+        toolbarOpacity,
+        bottomOpacity,
+        toolbarHeight,
+        leadingWidth,
+        toolbarTextStyle,
+        titleTextStyle,
+        systemOverlayStyle
       ]);
 
   @override

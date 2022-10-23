@@ -73,16 +73,14 @@ class _$_ZacValueConsumeSimple<TValue> extends _ZacValueConsumeSimple<TValue> {
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueConsumeSimple<TValue> &&
             const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(transformer));
+      runtimeType, const DeepCollectionEquality().hash(value), transformer);
 
   @override
   @optionalTypeArgs
@@ -144,18 +142,15 @@ class _$_ZacValueConsumeWatch<TValue> extends _ZacValueConsumeWatch<TValue> {
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueConsumeWatch<TValue> &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer) &&
-            const DeepCollectionEquality().equals(other.select, select));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
+            (identical(other.select, select) || other.select == select));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer),
-      const DeepCollectionEquality().hash(select));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(family), transformer, select);
 
   @override
   @optionalTypeArgs
@@ -214,16 +209,14 @@ class _$_ZacValueConsumeRead<TValue> extends _ZacValueConsumeRead<TValue> {
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueConsumeRead<TValue> &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer));
+      runtimeType, const DeepCollectionEquality().hash(family), transformer);
 
   @override
   @optionalTypeArgs
@@ -318,16 +311,14 @@ class _$_ZacValueListConsumeSimple<TValue>
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueListConsumeSimple<TValue> &&
             const DeepCollectionEquality().equals(other._value, _value) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_value),
-      const DeepCollectionEquality().hash(transformer));
+      runtimeType, const DeepCollectionEquality().hash(_value), transformer);
 
   @override
   @optionalTypeArgs
@@ -392,18 +383,15 @@ class _$_ZacValueListConsumeWatch<TValue>
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueListConsumeWatch<TValue> &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer) &&
-            const DeepCollectionEquality().equals(other.select, select));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
+            (identical(other.select, select) || other.select == select));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer),
-      const DeepCollectionEquality().hash(select));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(family), transformer, select);
 
   @override
   @optionalTypeArgs
@@ -464,16 +452,14 @@ class _$_ZacValueListConsumeRead<TValue>
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueListConsumeRead<TValue> &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer));
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer));
+      runtimeType, const DeepCollectionEquality().hash(family), transformer);
 
   @override
   @optionalTypeArgs
@@ -541,16 +527,13 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacValueActionsAsPayload &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.actions, actions));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.actions, actions) || other.actions == actions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(actions));
+  int get hashCode => Object.hash(runtimeType, value, actions);
 
   @override
   @optionalTypeArgs

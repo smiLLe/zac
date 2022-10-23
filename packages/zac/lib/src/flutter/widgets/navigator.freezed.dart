@@ -186,26 +186,21 @@ class _$_FlutterNavigator extends _FlutterNavigator {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigator &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.onGenerateRoute, onGenerateRoute) &&
-            const DeepCollectionEquality()
-                .equals(other.onUnknownRoute, onUnknownRoute) &&
-            const DeepCollectionEquality()
-                .equals(other.initialRoute, initialRoute) &&
-            const DeepCollectionEquality()
-                .equals(other.requestFocus, requestFocus));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.onGenerateRoute, onGenerateRoute) ||
+                other.onGenerateRoute == onGenerateRoute) &&
+            (identical(other.onUnknownRoute, onUnknownRoute) ||
+                other.onUnknownRoute == onUnknownRoute) &&
+            (identical(other.initialRoute, initialRoute) ||
+                other.initialRoute == initialRoute) &&
+            (identical(other.requestFocus, requestFocus) ||
+                other.requestFocus == requestFocus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(onGenerateRoute),
-      const DeepCollectionEquality().hash(onUnknownRoute),
-      const DeepCollectionEquality().hash(initialRoute),
-      const DeepCollectionEquality().hash(requestFocus));
+  int get hashCode => Object.hash(runtimeType, key, onGenerateRoute,
+      onUnknownRoute, initialRoute, requestFocus);
 
   @override
   @optionalTypeArgs
@@ -315,17 +310,14 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPush &&
-            const DeepCollectionEquality().equals(other.route, route) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.route, route) || other.route == route) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(route),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, route, navigatorState);
 
   @override
   @optionalTypeArgs
@@ -396,19 +388,17 @@ class _$_FlutterNavigatorActionsPushNamed
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPushNamed &&
-            const DeepCollectionEquality().equals(other.routeName, routeName) &&
+            (identical(other.routeName, routeName) ||
+                other.routeName == routeName) &&
             const DeepCollectionEquality().equals(other.arguments, arguments) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeName),
-      const DeepCollectionEquality().hash(arguments),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, routeName,
+      const DeepCollectionEquality().hash(arguments), navigatorState);
 
   @override
   @optionalTypeArgs
@@ -475,17 +465,14 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPop &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, actions, navigatorState);
 
   @override
   @optionalTypeArgs
@@ -551,17 +538,14 @@ class _$_FlutterNavigatorActionsMaybePop
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsMaybePop &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(actions),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, actions, navigatorState);
 
   @override
   @optionalTypeArgs
@@ -633,19 +617,15 @@ class _$_FlutterNavigatorActionsPushReplacement
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPushReplacement &&
-            const DeepCollectionEquality().equals(other.route, route) &&
-            const DeepCollectionEquality().equals(other.result, result) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState));
+            (identical(other.route, route) || other.route == route) &&
+            (identical(other.result, result) || other.result == result) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(route),
-      const DeepCollectionEquality().hash(result),
-      const DeepCollectionEquality().hash(navigatorState));
+  int get hashCode => Object.hash(runtimeType, route, result, navigatorState);
 
   @override
   @optionalTypeArgs
@@ -723,21 +703,18 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterNavigatorActionsPushReplacementNamed &&
-            const DeepCollectionEquality().equals(other.routeName, routeName) &&
+            (identical(other.routeName, routeName) ||
+                other.routeName == routeName) &&
             const DeepCollectionEquality().equals(other.arguments, arguments) &&
-            const DeepCollectionEquality()
-                .equals(other.navigatorState, navigatorState) &&
-            const DeepCollectionEquality().equals(other.result, result));
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState) &&
+            (identical(other.result, result) || other.result == result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(routeName),
-      const DeepCollectionEquality().hash(arguments),
-      const DeepCollectionEquality().hash(navigatorState),
-      const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(runtimeType, routeName,
+      const DeepCollectionEquality().hash(arguments), navigatorState, result);
 
   @override
   @optionalTypeArgs
@@ -851,33 +828,34 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterPageRouteBuilder &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.settings, settings) &&
-            const DeepCollectionEquality().equals(other.opaque, opaque) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierDismissible, barrierDismissible) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierColor, barrierColor) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierLabel, barrierLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.maintainState, maintainState) &&
-            const DeepCollectionEquality()
-                .equals(other.fullscreenDialog, fullscreenDialog));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.settings, settings) ||
+                other.settings == settings) &&
+            (identical(other.opaque, opaque) || other.opaque == opaque) &&
+            (identical(other.barrierDismissible, barrierDismissible) ||
+                other.barrierDismissible == barrierDismissible) &&
+            (identical(other.barrierColor, barrierColor) ||
+                other.barrierColor == barrierColor) &&
+            (identical(other.barrierLabel, barrierLabel) ||
+                other.barrierLabel == barrierLabel) &&
+            (identical(other.maintainState, maintainState) ||
+                other.maintainState == maintainState) &&
+            (identical(other.fullscreenDialog, fullscreenDialog) ||
+                other.fullscreenDialog == fullscreenDialog));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(settings),
-      const DeepCollectionEquality().hash(opaque),
-      const DeepCollectionEquality().hash(barrierDismissible),
-      const DeepCollectionEquality().hash(barrierColor),
-      const DeepCollectionEquality().hash(barrierLabel),
-      const DeepCollectionEquality().hash(maintainState),
-      const DeepCollectionEquality().hash(fullscreenDialog));
+      child,
+      settings,
+      opaque,
+      barrierDismissible,
+      barrierColor,
+      barrierLabel,
+      maintainState,
+      fullscreenDialog);
 
   @override
   @optionalTypeArgs
@@ -962,16 +940,14 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRouteSettings &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other.arguments, arguments));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(arguments));
+      runtimeType, name, const DeepCollectionEquality().hash(arguments));
 
   @override
   @optionalTypeArgs

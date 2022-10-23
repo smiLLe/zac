@@ -67,26 +67,20 @@ class _$_FlutterIcon extends _FlutterIcon {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIcon &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection));
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(size),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(semanticLabel),
-      const DeepCollectionEquality().hash(textDirection));
+      runtimeType, icon, key, size, color, semanticLabel, textDirection);
 
   @override
   @optionalTypeArgs
@@ -170,23 +164,20 @@ class _$_FlutterIconData extends _FlutterIconData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIconData &&
-            const DeepCollectionEquality().equals(other.codePoint, codePoint) &&
-            const DeepCollectionEquality()
-                .equals(other.fontFamily, fontFamily) &&
-            const DeepCollectionEquality()
-                .equals(other.fontPackage, fontPackage) &&
-            const DeepCollectionEquality()
-                .equals(other.matchTextDirection, matchTextDirection));
+            (identical(other.codePoint, codePoint) ||
+                other.codePoint == codePoint) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
+            (identical(other.fontPackage, fontPackage) ||
+                other.fontPackage == fontPackage) &&
+            (identical(other.matchTextDirection, matchTextDirection) ||
+                other.matchTextDirection == matchTextDirection));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(codePoint),
-      const DeepCollectionEquality().hash(fontFamily),
-      const DeepCollectionEquality().hash(fontPackage),
-      const DeepCollectionEquality().hash(matchTextDirection));
+      runtimeType, codePoint, fontFamily, fontPackage, matchTextDirection);
 
   @override
   @optionalTypeArgs
@@ -259,18 +250,14 @@ class _$_FlutterIconThemeData extends _FlutterIconThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterIconThemeData &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.opacity, opacity) &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(opacity),
-      const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, color, opacity, size);
 
   @override
   @optionalTypeArgs

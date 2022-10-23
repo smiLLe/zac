@@ -157,62 +157,63 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterImageNetowrk &&
-            const DeepCollectionEquality().equals(other.src, src) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.scale, scale) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.excludeFromSemantics, excludeFromSemantics) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.colorBlendMode, colorBlendMode) &&
-            const DeepCollectionEquality().equals(other.fit, fit) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.repeat, repeat) &&
-            const DeepCollectionEquality()
-                .equals(other.centerSlice, centerSlice) &&
-            const DeepCollectionEquality()
-                .equals(other.matchTextDirection, matchTextDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.gaplessPlayback, gaplessPlayback) &&
-            const DeepCollectionEquality()
-                .equals(other.filterQuality, filterQuality) &&
-            const DeepCollectionEquality()
-                .equals(other.isAntiAlias, isAntiAlias) &&
+            (identical(other.src, src) || other.src == src) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.scale, scale) || other.scale == scale) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel) &&
+            (identical(other.excludeFromSemantics, excludeFromSemantics) ||
+                other.excludeFromSemantics == excludeFromSemantics) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.colorBlendMode, colorBlendMode) ||
+                other.colorBlendMode == colorBlendMode) &&
+            (identical(other.fit, fit) || other.fit == fit) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.repeat, repeat) || other.repeat == repeat) &&
+            (identical(other.centerSlice, centerSlice) ||
+                other.centerSlice == centerSlice) &&
+            (identical(other.matchTextDirection, matchTextDirection) ||
+                other.matchTextDirection == matchTextDirection) &&
+            (identical(other.gaplessPlayback, gaplessPlayback) ||
+                other.gaplessPlayback == gaplessPlayback) &&
+            (identical(other.filterQuality, filterQuality) ||
+                other.filterQuality == filterQuality) &&
+            (identical(other.isAntiAlias, isAntiAlias) ||
+                other.isAntiAlias == isAntiAlias) &&
             const DeepCollectionEquality().equals(other._headers, _headers) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheWidth, cacheWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheHeight, cacheHeight));
+            (identical(other.cacheWidth, cacheWidth) ||
+                other.cacheWidth == cacheWidth) &&
+            (identical(other.cacheHeight, cacheHeight) ||
+                other.cacheHeight == cacheHeight));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(src),
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(scale),
-        const DeepCollectionEquality().hash(semanticLabel),
-        const DeepCollectionEquality().hash(excludeFromSemantics),
-        const DeepCollectionEquality().hash(width),
-        const DeepCollectionEquality().hash(height),
-        const DeepCollectionEquality().hash(color),
-        const DeepCollectionEquality().hash(colorBlendMode),
-        const DeepCollectionEquality().hash(fit),
-        const DeepCollectionEquality().hash(alignment),
-        const DeepCollectionEquality().hash(repeat),
-        const DeepCollectionEquality().hash(centerSlice),
-        const DeepCollectionEquality().hash(matchTextDirection),
-        const DeepCollectionEquality().hash(gaplessPlayback),
-        const DeepCollectionEquality().hash(filterQuality),
-        const DeepCollectionEquality().hash(isAntiAlias),
+        src,
+        key,
+        scale,
+        semanticLabel,
+        excludeFromSemantics,
+        width,
+        height,
+        color,
+        colorBlendMode,
+        fit,
+        alignment,
+        repeat,
+        centerSlice,
+        matchTextDirection,
+        gaplessPlayback,
+        filterQuality,
+        isAntiAlias,
         const DeepCollectionEquality().hash(_headers),
-        const DeepCollectionEquality().hash(cacheWidth),
-        const DeepCollectionEquality().hash(cacheHeight)
+        cacheWidth,
+        cacheHeight
       ]);
 
   @override
@@ -381,62 +382,63 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterImageAsset &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.excludeFromSemantics, excludeFromSemantics) &&
-            const DeepCollectionEquality().equals(other.scale, scale) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.colorBlendMode, colorBlendMode) &&
-            const DeepCollectionEquality().equals(other.fit, fit) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.repeat, repeat) &&
-            const DeepCollectionEquality()
-                .equals(other.centerSlice, centerSlice) &&
-            const DeepCollectionEquality()
-                .equals(other.matchTextDirection, matchTextDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.gaplessPlayback, gaplessPlayback) &&
-            const DeepCollectionEquality()
-                .equals(other.isAntiAlias, isAntiAlias) &&
-            const DeepCollectionEquality().equals(other.package, package) &&
-            const DeepCollectionEquality()
-                .equals(other.filterQuality, filterQuality) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheWidth, cacheWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.cacheHeight, cacheHeight));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel) &&
+            (identical(other.excludeFromSemantics, excludeFromSemantics) ||
+                other.excludeFromSemantics == excludeFromSemantics) &&
+            (identical(other.scale, scale) || other.scale == scale) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.colorBlendMode, colorBlendMode) ||
+                other.colorBlendMode == colorBlendMode) &&
+            (identical(other.fit, fit) || other.fit == fit) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.repeat, repeat) || other.repeat == repeat) &&
+            (identical(other.centerSlice, centerSlice) ||
+                other.centerSlice == centerSlice) &&
+            (identical(other.matchTextDirection, matchTextDirection) ||
+                other.matchTextDirection == matchTextDirection) &&
+            (identical(other.gaplessPlayback, gaplessPlayback) ||
+                other.gaplessPlayback == gaplessPlayback) &&
+            (identical(other.isAntiAlias, isAntiAlias) ||
+                other.isAntiAlias == isAntiAlias) &&
+            (identical(other.package, package) || other.package == package) &&
+            (identical(other.filterQuality, filterQuality) ||
+                other.filterQuality == filterQuality) &&
+            (identical(other.cacheWidth, cacheWidth) ||
+                other.cacheWidth == cacheWidth) &&
+            (identical(other.cacheHeight, cacheHeight) ||
+                other.cacheHeight == cacheHeight));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(semanticLabel),
-        const DeepCollectionEquality().hash(excludeFromSemantics),
-        const DeepCollectionEquality().hash(scale),
-        const DeepCollectionEquality().hash(width),
-        const DeepCollectionEquality().hash(height),
-        const DeepCollectionEquality().hash(color),
-        const DeepCollectionEquality().hash(colorBlendMode),
-        const DeepCollectionEquality().hash(fit),
-        const DeepCollectionEquality().hash(alignment),
-        const DeepCollectionEquality().hash(repeat),
-        const DeepCollectionEquality().hash(centerSlice),
-        const DeepCollectionEquality().hash(matchTextDirection),
-        const DeepCollectionEquality().hash(gaplessPlayback),
-        const DeepCollectionEquality().hash(isAntiAlias),
-        const DeepCollectionEquality().hash(package),
-        const DeepCollectionEquality().hash(filterQuality),
-        const DeepCollectionEquality().hash(cacheWidth),
-        const DeepCollectionEquality().hash(cacheHeight)
+        name,
+        key,
+        semanticLabel,
+        excludeFromSemantics,
+        scale,
+        width,
+        height,
+        color,
+        colorBlendMode,
+        fit,
+        alignment,
+        repeat,
+        centerSlice,
+        matchTextDirection,
+        gaplessPlayback,
+        isAntiAlias,
+        package,
+        filterQuality,
+        cacheWidth,
+        cacheHeight
       ]);
 
   @override

@@ -57,19 +57,15 @@ class _$_FlutterAspectRatio extends _FlutterAspectRatio {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterAspectRatio &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.aspectRatio, aspectRatio) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.aspectRatio, aspectRatio) ||
+                other.aspectRatio == aspectRatio) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(aspectRatio),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, aspectRatio, child);
 
   @override
   @optionalTypeArgs

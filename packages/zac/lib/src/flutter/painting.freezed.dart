@@ -694,40 +694,42 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterStrutStyle &&
-            const DeepCollectionEquality()
-                .equals(other.fontFamily, fontFamily) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
             const DeepCollectionEquality()
                 .equals(other._fontFamilyFallback, _fontFamilyFallback) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingDistribution, leadingDistribution) &&
-            const DeepCollectionEquality().equals(other.leading, leading) &&
-            const DeepCollectionEquality()
-                .equals(other.fontWeight, fontWeight) &&
-            const DeepCollectionEquality().equals(other.fontStyle, fontStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.forceStrutHeight, forceStrutHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel) &&
-            const DeepCollectionEquality().equals(other.package, package));
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.leadingDistribution, leadingDistribution) ||
+                other.leadingDistribution == leadingDistribution) &&
+            (identical(other.leading, leading) || other.leading == leading) &&
+            (identical(other.fontWeight, fontWeight) ||
+                other.fontWeight == fontWeight) &&
+            (identical(other.fontStyle, fontStyle) ||
+                other.fontStyle == fontStyle) &&
+            (identical(other.forceStrutHeight, forceStrutHeight) ||
+                other.forceStrutHeight == forceStrutHeight) &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
+            (identical(other.package, package) || other.package == package));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(fontFamily),
+      fontFamily,
       const DeepCollectionEquality().hash(_fontFamilyFallback),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(leadingDistribution),
-      const DeepCollectionEquality().hash(leading),
-      const DeepCollectionEquality().hash(fontWeight),
-      const DeepCollectionEquality().hash(fontStyle),
-      const DeepCollectionEquality().hash(forceStrutHeight),
-      const DeepCollectionEquality().hash(debugLabel),
-      const DeepCollectionEquality().hash(package));
+      fontSize,
+      height,
+      leadingDistribution,
+      leading,
+      fontWeight,
+      fontStyle,
+      forceStrutHeight,
+      debugLabel,
+      package);
 
   @override
   @optionalTypeArgs
@@ -852,42 +854,45 @@ class _$_FlutterStrutStyleFromTextStyle
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterStrutStyleFromTextStyle &&
-            const DeepCollectionEquality().equals(other.textStyle, textStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.fontFamily, fontFamily) &&
+            (identical(other.textStyle, textStyle) ||
+                other.textStyle == textStyle) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
             const DeepCollectionEquality()
                 .equals(other._fontFamilyFallback, _fontFamilyFallback) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingDistribution, leadingDistribution) &&
-            const DeepCollectionEquality().equals(other.leading, leading) &&
-            const DeepCollectionEquality()
-                .equals(other.fontWeight, fontWeight) &&
-            const DeepCollectionEquality().equals(other.fontStyle, fontStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.forceStrutHeight, forceStrutHeight) &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel) &&
-            const DeepCollectionEquality().equals(other.package, package));
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.leadingDistribution, leadingDistribution) ||
+                other.leadingDistribution == leadingDistribution) &&
+            (identical(other.leading, leading) || other.leading == leading) &&
+            (identical(other.fontWeight, fontWeight) ||
+                other.fontWeight == fontWeight) &&
+            (identical(other.fontStyle, fontStyle) ||
+                other.fontStyle == fontStyle) &&
+            (identical(other.forceStrutHeight, forceStrutHeight) ||
+                other.forceStrutHeight == forceStrutHeight) &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
+            (identical(other.package, package) || other.package == package));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(textStyle),
-      const DeepCollectionEquality().hash(fontFamily),
+      textStyle,
+      fontFamily,
       const DeepCollectionEquality().hash(_fontFamilyFallback),
-      const DeepCollectionEquality().hash(fontSize),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(leadingDistribution),
-      const DeepCollectionEquality().hash(leading),
-      const DeepCollectionEquality().hash(fontWeight),
-      const DeepCollectionEquality().hash(fontStyle),
-      const DeepCollectionEquality().hash(forceStrutHeight),
-      const DeepCollectionEquality().hash(debugLabel),
-      const DeepCollectionEquality().hash(package));
+      fontSize,
+      height,
+      leadingDistribution,
+      leading,
+      fontWeight,
+      fontStyle,
+      forceStrutHeight,
+      debugLabel,
+      package);
 
   @override
   @optionalTypeArgs
@@ -1849,72 +1854,75 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextStyle &&
-            const DeepCollectionEquality().equals(other.inherit, inherit) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.fontSize, fontSize) &&
-            const DeepCollectionEquality()
-                .equals(other.fontWeight, fontWeight) &&
-            const DeepCollectionEquality().equals(other.fontStyle, fontStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.letterSpacing, letterSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.wordSpacing, wordSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.textBaseline, textBaseline) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality()
-                .equals(other.leadingDistribution, leadingDistribution) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
+            (identical(other.inherit, inherit) || other.inherit == inherit) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.fontWeight, fontWeight) ||
+                other.fontWeight == fontWeight) &&
+            (identical(other.fontStyle, fontStyle) ||
+                other.fontStyle == fontStyle) &&
+            (identical(other.letterSpacing, letterSpacing) ||
+                other.letterSpacing == letterSpacing) &&
+            (identical(other.wordSpacing, wordSpacing) ||
+                other.wordSpacing == wordSpacing) &&
+            (identical(other.textBaseline, textBaseline) ||
+                other.textBaseline == textBaseline) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.leadingDistribution, leadingDistribution) ||
+                other.leadingDistribution == leadingDistribution) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
             const DeepCollectionEquality().equals(other._shadows, _shadows) &&
             const DeepCollectionEquality()
                 .equals(other._fontFeatures, _fontFeatures) &&
-            const DeepCollectionEquality()
-                .equals(other.decoration, decoration) &&
-            const DeepCollectionEquality()
-                .equals(other.decorationColor, decorationColor) &&
-            const DeepCollectionEquality()
-                .equals(other.decorationStyle, decorationStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.decorationThickness, decorationThickness) &&
-            const DeepCollectionEquality()
-                .equals(other.debugLabel, debugLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.fontFamily, fontFamily) &&
+            (identical(other.decoration, decoration) ||
+                other.decoration == decoration) &&
+            (identical(other.decorationColor, decorationColor) ||
+                other.decorationColor == decorationColor) &&
+            (identical(other.decorationStyle, decorationStyle) ||
+                other.decorationStyle == decorationStyle) &&
+            (identical(other.decorationThickness, decorationThickness) ||
+                other.decorationThickness == decorationThickness) &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
             const DeepCollectionEquality()
                 .equals(other._fontFamilyFallback, _fontFamilyFallback) &&
-            const DeepCollectionEquality().equals(other.package, package) &&
-            const DeepCollectionEquality().equals(other.overflow, overflow));
+            (identical(other.package, package) || other.package == package) &&
+            (identical(other.overflow, overflow) ||
+                other.overflow == overflow));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(inherit),
-        const DeepCollectionEquality().hash(color),
-        const DeepCollectionEquality().hash(backgroundColor),
-        const DeepCollectionEquality().hash(fontSize),
-        const DeepCollectionEquality().hash(fontWeight),
-        const DeepCollectionEquality().hash(fontStyle),
-        const DeepCollectionEquality().hash(letterSpacing),
-        const DeepCollectionEquality().hash(wordSpacing),
-        const DeepCollectionEquality().hash(textBaseline),
-        const DeepCollectionEquality().hash(height),
-        const DeepCollectionEquality().hash(leadingDistribution),
-        const DeepCollectionEquality().hash(locale),
+        inherit,
+        color,
+        backgroundColor,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        letterSpacing,
+        wordSpacing,
+        textBaseline,
+        height,
+        leadingDistribution,
+        locale,
         const DeepCollectionEquality().hash(_shadows),
         const DeepCollectionEquality().hash(_fontFeatures),
-        const DeepCollectionEquality().hash(decoration),
-        const DeepCollectionEquality().hash(decorationColor),
-        const DeepCollectionEquality().hash(decorationStyle),
-        const DeepCollectionEquality().hash(decorationThickness),
-        const DeepCollectionEquality().hash(debugLabel),
-        const DeepCollectionEquality().hash(fontFamily),
+        decoration,
+        decorationColor,
+        decorationStyle,
+        decorationThickness,
+        debugLabel,
+        fontFamily,
         const DeepCollectionEquality().hash(_fontFamilyFallback),
-        const DeepCollectionEquality().hash(package),
-        const DeepCollectionEquality().hash(overflow)
+        package,
+        overflow
       ]);
 
   @override
@@ -2064,13 +2072,12 @@ class _$_FlutterTextAlignVertical extends _FlutterTextAlignVertical {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterTextAlignVertical &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, y);
 
   @override
   @optionalTypeArgs
@@ -2302,24 +2309,20 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxShadow &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.offset, offset) &&
-            const DeepCollectionEquality()
-                .equals(other.blurRadius, blurRadius) &&
-            const DeepCollectionEquality()
-                .equals(other.spreadRadius, spreadRadius) &&
-            const DeepCollectionEquality().equals(other.blurStyle, blurStyle));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.blurRadius, blurRadius) ||
+                other.blurRadius == blurRadius) &&
+            (identical(other.spreadRadius, spreadRadius) ||
+                other.spreadRadius == spreadRadius) &&
+            (identical(other.blurStyle, blurStyle) ||
+                other.blurStyle == blurStyle));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(offset),
-      const DeepCollectionEquality().hash(blurRadius),
-      const DeepCollectionEquality().hash(spreadRadius),
-      const DeepCollectionEquality().hash(blurStyle));
+      runtimeType, color, offset, blurRadius, spreadRadius, blurStyle);
 
   @override
   @optionalTypeArgs
@@ -2429,16 +2432,13 @@ class _$_FlutterAlignment extends _FlutterAlignment {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterAlignment &&
-            const DeepCollectionEquality().equals(other.x, x) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(x),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, x, y);
 
   @override
   @optionalTypeArgs
@@ -3051,16 +3051,13 @@ class _$_FlutterAlignmentDirectional extends _FlutterAlignmentDirectional {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterAlignmentDirectional &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, start, y);
 
   @override
   @optionalTypeArgs
@@ -3744,16 +3741,13 @@ class _$_FlutterFractionalOffset extends _FlutterFractionalOffset {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterFractionalOffset &&
-            const DeepCollectionEquality().equals(other.dx, dx) &&
-            const DeepCollectionEquality().equals(other.dy, dy));
+            (identical(other.dx, dx) || other.dx == dx) &&
+            (identical(other.dy, dy) || other.dy == dy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(dx),
-      const DeepCollectionEquality().hash(dy));
+  int get hashCode => Object.hash(runtimeType, dx, dy);
 
   @override
   @optionalTypeArgs
@@ -3826,20 +3820,15 @@ class _$_FlutterBorderDirectional extends _FlutterBorderDirectional {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderDirectional &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.end, end));
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(end));
+  int get hashCode => Object.hash(runtimeType, top, start, bottom, end);
 
   @override
   @optionalTypeArgs
@@ -3927,20 +3916,15 @@ class _$_FlutterBorder extends _FlutterBorder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorder &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.left, left));
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.left, left) || other.left == left));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(left));
+  int get hashCode => Object.hash(runtimeType, top, right, bottom, left);
 
   @override
   @optionalTypeArgs
@@ -3999,18 +3983,14 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderAll &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.style, style));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.style, style) || other.style == style));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(style));
+  int get hashCode => Object.hash(runtimeType, color, width, style);
 
   @override
   @optionalTypeArgs
@@ -4206,13 +4186,12 @@ class _$_FlutterBorderRadiusAll extends _FlutterBorderRadiusAll {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderRadiusAll &&
-            const DeepCollectionEquality().equals(other.radius, radius));
+            (identical(other.radius, radius) || other.radius == radius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(radius));
+  int get hashCode => Object.hash(runtimeType, radius);
 
   @override
   @optionalTypeArgs
@@ -4262,13 +4241,12 @@ class _$_FlutterBorderRadiusCircular extends _FlutterBorderRadiusCircular {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderRadiusCircular &&
-            const DeepCollectionEquality().equals(other.radius, radius));
+            (identical(other.radius, radius) || other.radius == radius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(radius));
+  int get hashCode => Object.hash(runtimeType, radius);
 
   @override
   @optionalTypeArgs
@@ -4321,16 +4299,13 @@ class _$_FlutterBorderRadiusHorizontal extends _FlutterBorderRadiusHorizontal {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderRadiusHorizontal &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.right, right));
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.right, right) || other.right == right));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(right));
+  int get hashCode => Object.hash(runtimeType, left, right);
 
   @override
   @optionalTypeArgs
@@ -4398,18 +4373,14 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBorderSide &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.style, style));
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.style, style) || other.style == style));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(style));
+  int get hashCode => Object.hash(runtimeType, color, width, style);
 
   @override
   @optionalTypeArgs
@@ -4474,13 +4445,12 @@ class _$_FlutterCircleBorder extends _FlutterCircleBorder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterCircleBorder &&
-            const DeepCollectionEquality().equals(other.side, side));
+            (identical(other.side, side) || other.side == side));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(side));
+  int get hashCode => Object.hash(runtimeType, side);
 
   @override
   @optionalTypeArgs
@@ -4545,17 +4515,14 @@ class _$_FlutterRoundedRectangleBorder extends _FlutterRoundedRectangleBorder {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRoundedRectangleBorder &&
-            const DeepCollectionEquality().equals(other.side, side) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius));
+            (identical(other.side, side) || other.side == side) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(side),
-      const DeepCollectionEquality().hash(borderRadius));
+  int get hashCode => Object.hash(runtimeType, side, borderRadius);
 
   @override
   @optionalTypeArgs
@@ -4651,27 +4618,27 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterBoxDecoration &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality().equals(other.border, border) &&
-            const DeepCollectionEquality()
-                .equals(other.borderRadius, borderRadius) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.border, border) || other.border == border) &&
+            (identical(other.borderRadius, borderRadius) ||
+                other.borderRadius == borderRadius) &&
             const DeepCollectionEquality()
                 .equals(other._boxShadow, _boxShadow) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundBlendMode, backgroundBlendMode));
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.backgroundBlendMode, backgroundBlendMode) ||
+                other.backgroundBlendMode == backgroundBlendMode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(border),
-      const DeepCollectionEquality().hash(borderRadius),
+      color,
+      border,
+      borderRadius,
       const DeepCollectionEquality().hash(_boxShadow),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(backgroundBlendMode));
+      shape,
+      backgroundBlendMode);
 
   @override
   @optionalTypeArgs
@@ -4768,18 +4735,15 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterShapeDecoration &&
-            const DeepCollectionEquality().equals(other.color, color) &&
+            (identical(other.color, color) || other.color == color) &&
             const DeepCollectionEquality().equals(other._shadows, _shadows) &&
-            const DeepCollectionEquality().equals(other.shape, shape));
+            (identical(other.shape, shape) || other.shape == shape));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(_shadows),
-      const DeepCollectionEquality().hash(shape));
+      runtimeType, color, const DeepCollectionEquality().hash(_shadows), shape);
 
   @override
   @optionalTypeArgs
@@ -4861,13 +4825,12 @@ class _$_FlutterEdgeInsetsAll extends _FlutterEdgeInsetsAll {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterEdgeInsetsAll &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -4920,17 +4883,15 @@ class _$_FlutterEdgeInsetsSymmetric extends _FlutterEdgeInsetsSymmetric {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterEdgeInsetsSymmetric &&
-            const DeepCollectionEquality().equals(other.vertical, vertical) &&
-            const DeepCollectionEquality()
-                .equals(other.horizontal, horizontal));
+            (identical(other.vertical, vertical) ||
+                other.vertical == vertical) &&
+            (identical(other.horizontal, horizontal) ||
+                other.horizontal == horizontal));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(vertical),
-      const DeepCollectionEquality().hash(horizontal));
+  int get hashCode => Object.hash(runtimeType, vertical, horizontal);
 
   @override
   @optionalTypeArgs
@@ -4989,20 +4950,15 @@ class _$_FlutterEdgeInsetsOnly extends _FlutterEdgeInsetsOnly {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterEdgeInsetsOnly &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom));
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom));
+  int get hashCode => Object.hash(runtimeType, left, top, right, bottom);
 
   @override
   @optionalTypeArgs
@@ -5087,13 +5043,12 @@ class _$_FlutterEdgeInsetsDirectionalAll
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterEdgeInsetsDirectionalAll &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @override
   @optionalTypeArgs
@@ -5152,20 +5107,15 @@ class _$_FlutterEdgeInsetsDirectionalOnly
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterEdgeInsetsDirectionalOnly &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.end, end) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom));
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.end, end) || other.end == end) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(end),
-      const DeepCollectionEquality().hash(bottom));
+  int get hashCode => Object.hash(runtimeType, start, top, end, bottom);
 
   @override
   @optionalTypeArgs

@@ -53,16 +53,14 @@ class _$_FlutterSliverList extends _FlutterSliverList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSliverList &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.delegate, delegate));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.delegate, delegate) ||
+                other.delegate == delegate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(delegate));
+  int get hashCode => Object.hash(runtimeType, key, delegate);
 
   @override
   @optionalTypeArgs

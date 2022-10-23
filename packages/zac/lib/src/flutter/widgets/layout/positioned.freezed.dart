@@ -94,28 +94,20 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterPositioneddirectional &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(child));
+      runtimeType, key, left, top, right, bottom, width, height, child);
 
   @override
   @optionalTypeArgs
@@ -209,31 +201,22 @@ class _$_FlutterPositioned extends _FlutterPositioned {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterPositioned &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.start, start) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.end, end) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.end, end) || other.end == end) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(start),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(end),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, textDirection, start, top,
+      end, bottom, width, height, child);
 
   @override
   @optionalTypeArgs
@@ -320,24 +303,18 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterPositionedfill &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode =>
+      Object.hash(runtimeType, key, left, top, right, bottom, child);
 
   @override
   @optionalTypeArgs

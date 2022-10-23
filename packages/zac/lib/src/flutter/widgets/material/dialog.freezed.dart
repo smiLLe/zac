@@ -93,32 +93,25 @@ class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDialogsShowDialog &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierDismissible, barrierDismissible) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierColor, barrierColor) &&
-            const DeepCollectionEquality()
-                .equals(other.barrierLabel, barrierLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.useSafeArea, useSafeArea) &&
-            const DeepCollectionEquality()
-                .equals(other.useRootNavigator, useRootNavigator) &&
-            const DeepCollectionEquality()
-                .equals(other.routeSettings, routeSettings));
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.barrierDismissible, barrierDismissible) ||
+                other.barrierDismissible == barrierDismissible) &&
+            (identical(other.barrierColor, barrierColor) ||
+                other.barrierColor == barrierColor) &&
+            (identical(other.barrierLabel, barrierLabel) ||
+                other.barrierLabel == barrierLabel) &&
+            (identical(other.useSafeArea, useSafeArea) ||
+                other.useSafeArea == useSafeArea) &&
+            (identical(other.useRootNavigator, useRootNavigator) ||
+                other.useRootNavigator == useRootNavigator) &&
+            (identical(other.routeSettings, routeSettings) ||
+                other.routeSettings == routeSettings));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(barrierDismissible),
-      const DeepCollectionEquality().hash(barrierColor),
-      const DeepCollectionEquality().hash(barrierLabel),
-      const DeepCollectionEquality().hash(useSafeArea),
-      const DeepCollectionEquality().hash(useRootNavigator),
-      const DeepCollectionEquality().hash(routeSettings));
+  int get hashCode => Object.hash(runtimeType, child, barrierDismissible,
+      barrierColor, barrierLabel, useSafeArea, useRootNavigator, routeSettings);
 
   @override
   @optionalTypeArgs
@@ -208,31 +201,25 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDialogsDialog &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality()
-                .equals(other.insetPadding, insetPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.insetPadding, insetPadding) ||
+                other.insetPadding == insetPadding) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(insetPadding),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, backgroundColor, elevation,
+      insetPadding, clipBehavior, shape, alignment, child);
 
   @override
   @optionalTypeArgs
@@ -363,69 +350,73 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDialogsAlertDialog &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
-            const DeepCollectionEquality()
-                .equals(other.titlePadding, titlePadding) &&
-            const DeepCollectionEquality()
-                .equals(other.titleTextStyle, titleTextStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.contentPadding, contentPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.contentTextStyle, contentTextStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.actionsPadding, actionsPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.actionsAlignment, actionsAlignment) &&
-            const DeepCollectionEquality().equals(
-                other.actionsOverflowDirection, actionsOverflowDirection) &&
-            const DeepCollectionEquality().equals(
-                other.actionsOverflowButtonSpacing,
-                actionsOverflowButtonSpacing) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonPadding, buttonPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.insetPadding, insetPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollable, scrollable));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.titlePadding, titlePadding) ||
+                other.titlePadding == titlePadding) &&
+            (identical(other.titleTextStyle, titleTextStyle) ||
+                other.titleTextStyle == titleTextStyle) &&
+            (identical(other.contentPadding, contentPadding) ||
+                other.contentPadding == contentPadding) &&
+            (identical(other.contentTextStyle, contentTextStyle) ||
+                other.contentTextStyle == contentTextStyle) &&
+            (identical(other.actionsPadding, actionsPadding) ||
+                other.actionsPadding == actionsPadding) &&
+            (identical(other.actionsAlignment, actionsAlignment) ||
+                other.actionsAlignment == actionsAlignment) &&
+            (identical(
+                    other.actionsOverflowDirection, actionsOverflowDirection) ||
+                other.actionsOverflowDirection == actionsOverflowDirection) &&
+            (identical(other.actionsOverflowButtonSpacing,
+                    actionsOverflowButtonSpacing) ||
+                other.actionsOverflowButtonSpacing ==
+                    actionsOverflowButtonSpacing) &&
+            (identical(other.buttonPadding, buttonPadding) ||
+                other.buttonPadding == buttonPadding) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel) &&
+            (identical(other.insetPadding, insetPadding) ||
+                other.insetPadding == insetPadding) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.scrollable, scrollable) ||
+                other.scrollable == scrollable));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(key),
-        const DeepCollectionEquality().hash(title),
-        const DeepCollectionEquality().hash(content),
-        const DeepCollectionEquality().hash(actions),
-        const DeepCollectionEquality().hash(titlePadding),
-        const DeepCollectionEquality().hash(titleTextStyle),
-        const DeepCollectionEquality().hash(contentPadding),
-        const DeepCollectionEquality().hash(contentTextStyle),
-        const DeepCollectionEquality().hash(actionsPadding),
-        const DeepCollectionEquality().hash(actionsAlignment),
-        const DeepCollectionEquality().hash(actionsOverflowDirection),
-        const DeepCollectionEquality().hash(actionsOverflowButtonSpacing),
-        const DeepCollectionEquality().hash(buttonPadding),
-        const DeepCollectionEquality().hash(backgroundColor),
-        const DeepCollectionEquality().hash(elevation),
-        const DeepCollectionEquality().hash(semanticLabel),
-        const DeepCollectionEquality().hash(insetPadding),
-        const DeepCollectionEquality().hash(clipBehavior),
-        const DeepCollectionEquality().hash(shape),
-        const DeepCollectionEquality().hash(alignment),
-        const DeepCollectionEquality().hash(scrollable)
+        key,
+        title,
+        content,
+        actions,
+        titlePadding,
+        titleTextStyle,
+        contentPadding,
+        contentTextStyle,
+        actionsPadding,
+        actionsAlignment,
+        actionsOverflowDirection,
+        actionsOverflowButtonSpacing,
+        buttonPadding,
+        backgroundColor,
+        elevation,
+        semanticLabel,
+        insetPadding,
+        clipBehavior,
+        shape,
+        alignment,
+        scrollable
       ]);
 
   @override
@@ -557,45 +548,48 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDialogsSimpleDialog &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.children, children) &&
-            const DeepCollectionEquality()
-                .equals(other.titlePadding, titlePadding) &&
-            const DeepCollectionEquality()
-                .equals(other.titleTextStyle, titleTextStyle) &&
-            const DeepCollectionEquality()
-                .equals(other.contentPadding, contentPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality().equals(other.elevation, elevation) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticLabel, semanticLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.insetPadding, insetPadding) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.shape, shape) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.children, children) ||
+                other.children == children) &&
+            (identical(other.titlePadding, titlePadding) ||
+                other.titlePadding == titlePadding) &&
+            (identical(other.titleTextStyle, titleTextStyle) ||
+                other.titleTextStyle == titleTextStyle) &&
+            (identical(other.contentPadding, contentPadding) ||
+                other.contentPadding == contentPadding) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.elevation, elevation) ||
+                other.elevation == elevation) &&
+            (identical(other.semanticLabel, semanticLabel) ||
+                other.semanticLabel == semanticLabel) &&
+            (identical(other.insetPadding, insetPadding) ||
+                other.insetPadding == insetPadding) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.shape, shape) || other.shape == shape) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(children),
-      const DeepCollectionEquality().hash(titlePadding),
-      const DeepCollectionEquality().hash(titleTextStyle),
-      const DeepCollectionEquality().hash(contentPadding),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(elevation),
-      const DeepCollectionEquality().hash(semanticLabel),
-      const DeepCollectionEquality().hash(insetPadding),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(shape),
-      const DeepCollectionEquality().hash(alignment));
+      key,
+      title,
+      children,
+      titlePadding,
+      titleTextStyle,
+      contentPadding,
+      backgroundColor,
+      elevation,
+      semanticLabel,
+      insetPadding,
+      clipBehavior,
+      shape,
+      alignment);
 
   @override
   @optionalTypeArgs
@@ -682,20 +676,16 @@ class _$_FlutterDialogsSimpleDialogOption
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterDialogsSimpleDialogOption &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality().equals(other.onPressed, onPressed) &&
-            const DeepCollectionEquality().equals(other.padding, padding));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.onPressed, onPressed) ||
+                other.onPressed == onPressed) &&
+            (identical(other.padding, padding) || other.padding == padding));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(onPressed),
-      const DeepCollectionEquality().hash(padding));
+  int get hashCode => Object.hash(runtimeType, key, child, onPressed, padding);
 
   @override
   @optionalTypeArgs

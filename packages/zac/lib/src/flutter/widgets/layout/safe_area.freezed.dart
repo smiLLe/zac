@@ -81,29 +81,22 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterSafeArea &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.top, top) &&
-            const DeepCollectionEquality().equals(other.right, right) &&
-            const DeepCollectionEquality().equals(other.bottom, bottom) &&
-            const DeepCollectionEquality().equals(other.minimum, minimum) &&
-            const DeepCollectionEquality().equals(
-                other.maintainBottomViewPadding, maintainBottomViewPadding) &&
-            const DeepCollectionEquality().equals(other.child, child));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.top, top) || other.top == top) &&
+            (identical(other.right, right) || other.right == right) &&
+            (identical(other.bottom, bottom) || other.bottom == bottom) &&
+            (identical(other.minimum, minimum) || other.minimum == minimum) &&
+            (identical(other.maintainBottomViewPadding,
+                    maintainBottomViewPadding) ||
+                other.maintainBottomViewPadding == maintainBottomViewPadding) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(top),
-      const DeepCollectionEquality().hash(right),
-      const DeepCollectionEquality().hash(bottom),
-      const DeepCollectionEquality().hash(minimum),
-      const DeepCollectionEquality().hash(maintainBottomViewPadding),
-      const DeepCollectionEquality().hash(child));
+  int get hashCode => Object.hash(runtimeType, key, left, top, right, bottom,
+      minimum, maintainBottomViewPadding, child);
 
   @override
   @optionalTypeArgs

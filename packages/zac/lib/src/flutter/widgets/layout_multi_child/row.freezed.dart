@@ -84,34 +84,35 @@ class _$_FlutterRow extends _FlutterRow {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRow &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisAlignment, mainAxisAlignment) &&
-            const DeepCollectionEquality()
-                .equals(other.mainAxisSize, mainAxisSize) &&
-            const DeepCollectionEquality()
-                .equals(other.crossAxisAlignment, crossAxisAlignment) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.verticalDirection, verticalDirection) &&
-            const DeepCollectionEquality()
-                .equals(other.textBaseline, textBaseline) &&
-            const DeepCollectionEquality().equals(other.children, children));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.mainAxisAlignment, mainAxisAlignment) ||
+                other.mainAxisAlignment == mainAxisAlignment) &&
+            (identical(other.mainAxisSize, mainAxisSize) ||
+                other.mainAxisSize == mainAxisSize) &&
+            (identical(other.crossAxisAlignment, crossAxisAlignment) ||
+                other.crossAxisAlignment == crossAxisAlignment) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.verticalDirection, verticalDirection) ||
+                other.verticalDirection == verticalDirection) &&
+            (identical(other.textBaseline, textBaseline) ||
+                other.textBaseline == textBaseline) &&
+            (identical(other.children, children) ||
+                other.children == children));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(mainAxisAlignment),
-      const DeepCollectionEquality().hash(mainAxisSize),
-      const DeepCollectionEquality().hash(crossAxisAlignment),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(verticalDirection),
-      const DeepCollectionEquality().hash(textBaseline),
-      const DeepCollectionEquality().hash(children));
+      key,
+      mainAxisAlignment,
+      mainAxisSize,
+      crossAxisAlignment,
+      textDirection,
+      verticalDirection,
+      textBaseline,
+      children);
 
   @override
   @optionalTypeArgs

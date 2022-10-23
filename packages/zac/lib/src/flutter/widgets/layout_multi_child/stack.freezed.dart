@@ -73,26 +73,22 @@ class _$_FlutterStack extends _FlutterStack {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterStack &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.alignment, alignment) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.fit, fit) &&
-            const DeepCollectionEquality()
-                .equals(other.clipBehavior, clipBehavior) &&
-            const DeepCollectionEquality().equals(other.children, children));
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.fit, fit) || other.fit == fit) &&
+            (identical(other.clipBehavior, clipBehavior) ||
+                other.clipBehavior == clipBehavior) &&
+            (identical(other.children, children) ||
+                other.children == children));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(alignment),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(fit),
-      const DeepCollectionEquality().hash(clipBehavior),
-      const DeepCollectionEquality().hash(children));
+      runtimeType, key, alignment, textDirection, fit, clipBehavior, children);
 
   @override
   @optionalTypeArgs

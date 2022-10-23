@@ -105,46 +105,50 @@ class _$_FlutterText extends _FlutterText {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterText &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.style, style) &&
-            const DeepCollectionEquality()
-                .equals(other.strutStyle, strutStyle) &&
-            const DeepCollectionEquality().equals(other.textAlign, textAlign) &&
-            const DeepCollectionEquality()
-                .equals(other.textDirection, textDirection) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality().equals(other.softWrap, softWrap) &&
-            const DeepCollectionEquality().equals(other.overflow, overflow) &&
-            const DeepCollectionEquality()
-                .equals(other.textScaleFactor, textScaleFactor) &&
-            const DeepCollectionEquality().equals(other.maxLines, maxLines) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsLabel, semanticsLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.textWidthBasis, textWidthBasis) &&
-            const DeepCollectionEquality()
-                .equals(other.textHeightBehavior, textHeightBehavior));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.style, style) || other.style == style) &&
+            (identical(other.strutStyle, strutStyle) ||
+                other.strutStyle == strutStyle) &&
+            (identical(other.textAlign, textAlign) ||
+                other.textAlign == textAlign) &&
+            (identical(other.textDirection, textDirection) ||
+                other.textDirection == textDirection) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.softWrap, softWrap) ||
+                other.softWrap == softWrap) &&
+            (identical(other.overflow, overflow) ||
+                other.overflow == overflow) &&
+            (identical(other.textScaleFactor, textScaleFactor) ||
+                other.textScaleFactor == textScaleFactor) &&
+            (identical(other.maxLines, maxLines) ||
+                other.maxLines == maxLines) &&
+            (identical(other.semanticsLabel, semanticsLabel) ||
+                other.semanticsLabel == semanticsLabel) &&
+            (identical(other.textWidthBasis, textWidthBasis) ||
+                other.textWidthBasis == textWidthBasis) &&
+            (identical(other.textHeightBehavior, textHeightBehavior) ||
+                other.textHeightBehavior == textHeightBehavior));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(data),
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(style),
-      const DeepCollectionEquality().hash(strutStyle),
-      const DeepCollectionEquality().hash(textAlign),
-      const DeepCollectionEquality().hash(textDirection),
-      const DeepCollectionEquality().hash(locale),
-      const DeepCollectionEquality().hash(softWrap),
-      const DeepCollectionEquality().hash(overflow),
-      const DeepCollectionEquality().hash(textScaleFactor),
-      const DeepCollectionEquality().hash(maxLines),
-      const DeepCollectionEquality().hash(semanticsLabel),
-      const DeepCollectionEquality().hash(textWidthBasis),
-      const DeepCollectionEquality().hash(textHeightBehavior));
+      data,
+      key,
+      style,
+      strutStyle,
+      textAlign,
+      textDirection,
+      locale,
+      softWrap,
+      overflow,
+      textScaleFactor,
+      maxLines,
+      semanticsLabel,
+      textWidthBasis,
+      textHeightBehavior);
 
   @override
   @optionalTypeArgs

@@ -101,24 +101,25 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRefreshIndicator &&
-            const DeepCollectionEquality().equals(other.key, key) &&
-            const DeepCollectionEquality().equals(other.child, child) &&
-            const DeepCollectionEquality()
-                .equals(other.displacement, displacement) &&
-            const DeepCollectionEquality()
-                .equals(other.edgeOffset, edgeOffset) &&
-            const DeepCollectionEquality().equals(other.onRefresh, onRefresh) &&
-            const DeepCollectionEquality().equals(other.color, color) &&
-            const DeepCollectionEquality()
-                .equals(other.backgroundColor, backgroundColor) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsLabel, semanticsLabel) &&
-            const DeepCollectionEquality()
-                .equals(other.semanticsValue, semanticsValue) &&
-            const DeepCollectionEquality()
-                .equals(other.strokeWidth, strokeWidth) &&
-            const DeepCollectionEquality()
-                .equals(other.triggerMode, triggerMode) &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.displacement, displacement) ||
+                other.displacement == displacement) &&
+            (identical(other.edgeOffset, edgeOffset) ||
+                other.edgeOffset == edgeOffset) &&
+            (identical(other.onRefresh, onRefresh) ||
+                other.onRefresh == onRefresh) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.backgroundColor, backgroundColor) ||
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.semanticsLabel, semanticsLabel) ||
+                other.semanticsLabel == semanticsLabel) &&
+            (identical(other.semanticsValue, semanticsValue) ||
+                other.semanticsValue == semanticsValue) &&
+            (identical(other.strokeWidth, strokeWidth) ||
+                other.strokeWidth == strokeWidth) &&
+            (identical(other.triggerMode, triggerMode) ||
+                other.triggerMode == triggerMode) &&
             const DeepCollectionEquality().equals(other.family, family));
   }
 
@@ -126,17 +127,17 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(key),
-      const DeepCollectionEquality().hash(child),
-      const DeepCollectionEquality().hash(displacement),
-      const DeepCollectionEquality().hash(edgeOffset),
-      const DeepCollectionEquality().hash(onRefresh),
-      const DeepCollectionEquality().hash(color),
-      const DeepCollectionEquality().hash(backgroundColor),
-      const DeepCollectionEquality().hash(semanticsLabel),
-      const DeepCollectionEquality().hash(semanticsValue),
-      const DeepCollectionEquality().hash(strokeWidth),
-      const DeepCollectionEquality().hash(triggerMode),
+      key,
+      child,
+      displacement,
+      edgeOffset,
+      onRefresh,
+      color,
+      backgroundColor,
+      semanticsLabel,
+      semanticsValue,
+      strokeWidth,
+      triggerMode,
       const DeepCollectionEquality().hash(family));
 
   @override
