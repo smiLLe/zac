@@ -22,7 +22,8 @@ ZacTemplateExpressionsTransformer _$ZacTemplateExpressionsTransformerFromJson(
 /// @nodoc
 mixin _$ZacTemplateExpressionsTransformer {
   String get expression => throw _privateConstructorUsedError;
-  Map<String, ZacObject>? get context => throw _privateConstructorUsedError;
+  Map<String, ZacValueRead<Object>>? get context =>
+      throw _privateConstructorUsedError;
   ZacTemplateExpressionsSyntax get syntax => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -38,7 +39,7 @@ class _$_ZacTemplateExpressionsTransformer
     extends _ZacTemplateExpressionsTransformer {
   _$_ZacTemplateExpressionsTransformer(
       {required this.expression,
-      final Map<String, ZacObject>? context,
+      final Map<String, ZacValueRead<Object>>? context,
       this.syntax = const ZacTemplateExpressionsSyntax()})
       : _context = context,
         super._();
@@ -49,9 +50,9 @@ class _$_ZacTemplateExpressionsTransformer
 
   @override
   final String expression;
-  final Map<String, ZacObject>? _context;
+  final Map<String, ZacValueRead<Object>>? _context;
   @override
-  Map<String, ZacObject>? get context {
+  Map<String, ZacValueRead<Object>>? get context {
     final value = _context;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -99,7 +100,7 @@ abstract class _ZacTemplateExpressionsTransformer
     extends ZacTemplateExpressionsTransformer {
   factory _ZacTemplateExpressionsTransformer(
           {required final String expression,
-          final Map<String, ZacObject>? context,
+          final Map<String, ZacValueRead<Object>>? context,
           final ZacTemplateExpressionsSyntax syntax}) =
       _$_ZacTemplateExpressionsTransformer;
   _ZacTemplateExpressionsTransformer._() : super._();
@@ -111,7 +112,7 @@ abstract class _ZacTemplateExpressionsTransformer
   @override
   String get expression;
   @override
-  Map<String, ZacObject>? get context;
+  Map<String, ZacValueRead<Object>>? get context;
   @override
   ZacTemplateExpressionsSyntax get syntax;
 }

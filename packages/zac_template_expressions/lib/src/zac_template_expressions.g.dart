@@ -11,7 +11,7 @@ _$_ZacTemplateExpressionsTransformer
         _$_ZacTemplateExpressionsTransformer(
           expression: json['expression'] as String,
           context: (json['context'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, ZacObject.fromJson(e as Object)),
+            (k, e) => MapEntry(k, ZacValueRead<Object>.fromJson(e as Object)),
           ),
           syntax: json['syntax'] == null
               ? const ZacTemplateExpressionsSyntax()

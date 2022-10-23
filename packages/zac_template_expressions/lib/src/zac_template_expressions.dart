@@ -36,7 +36,7 @@ class ZacTemplateExpressionsTransformer
   @FreezedUnionValue(ZacTemplateExpressionsTransformer.unionValue)
   factory ZacTemplateExpressionsTransformer({
     required String expression,
-    Map<String, ZacValue<Object>>? context,
+    Map<String, ZacValueRead<Object>>? context,
     @Default(ZacTemplateExpressionsSyntax())
         ZacTemplateExpressionsSyntax syntax,
   }) = _ZacTemplateExpressionsTransformer;
