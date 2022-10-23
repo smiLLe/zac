@@ -73,19 +73,16 @@ class _$_ZacTemplateExpressionsTransformer
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacTemplateExpressionsTransformer &&
-            const DeepCollectionEquality()
-                .equals(other.expression, expression) &&
+            (identical(other.expression, expression) ||
+                other.expression == expression) &&
             const DeepCollectionEquality().equals(other._context, _context) &&
-            const DeepCollectionEquality().equals(other.syntax, syntax));
+            (identical(other.syntax, syntax) || other.syntax == syntax));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(expression),
-      const DeepCollectionEquality().hash(_context),
-      const DeepCollectionEquality().hash(syntax));
+  int get hashCode => Object.hash(runtimeType, expression,
+      const DeepCollectionEquality().hash(_context), syntax);
 
   @override
   @optionalTypeArgs

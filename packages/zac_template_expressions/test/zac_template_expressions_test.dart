@@ -58,7 +58,7 @@ void main() {
         'context': {
           'simple': 1,
           'shared': {
-            'converter': 'z:1:SharedValue.read',
+            'converter': 'z:1:ZacValue.read',
             'family': 'fam',
           },
         },
