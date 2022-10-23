@@ -31,7 +31,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   @FreezedUnionValue(ZacWidgetBuilder.unionValue)
   factory ZacWidgetBuilder({
     FlutterKey? key,
-    required FlutterWidget data,
+    required ZacValue<FlutterWidget> data,
   }) = _ZacWidgetBuilder;
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValueMap)
@@ -60,7 +60,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   Widget buildWidget(ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
-        widget: obj.data,
+        widget: obj.data.getValue(zacContext),
         key: obj.key?.buildKey(zacContext),
       ),
       map: (obj) => ZacWidgetFromMa(

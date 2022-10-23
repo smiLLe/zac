@@ -2471,12 +2471,8 @@ abstract class _ObjectHashCode extends ObjectTransformer {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
-    with ConsumeValue<Object> {
-  _$_ObjectEqualsSharedValue(this.family,
-      {this.transformer,
-      this.consumeType = const SharedValueConsumeType.read(),
-      final String? $type})
+class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
+  _$_ObjectEqualsSharedValue({required this.value, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
         super._();
 
@@ -2484,19 +2480,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final Object family;
-  @override
-  final ZacTransformers? transformer;
-  @override
-  @JsonKey()
-  final SharedValueConsumeType consumeType;
+  final ZacValueRead<Object?> value;
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.equalsSharedValue(family: $family, transformer: $transformer, consumeType: $consumeType)';
+    return 'ObjectTransformer.equalsSharedValue(value: $value)';
   }
 
   @override
@@ -2504,20 +2495,13 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectEqualsSharedValue &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer) &&
-            const DeepCollectionEquality()
-                .equals(other.consumeType, consumeType));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer),
-      const DeepCollectionEquality().hash(consumeType));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @override
   @optionalTypeArgs
@@ -2534,19 +2518,16 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue
   }
 }
 
-abstract class _ObjectEqualsSharedValue extends ObjectTransformer
-    implements ConsumeValue<Object> {
-  factory _ObjectEqualsSharedValue(final Object family,
-      {final ZacTransformers? transformer,
-      final SharedValueConsumeType consumeType}) = _$_ObjectEqualsSharedValue;
+abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
+  factory _ObjectEqualsSharedValue(
+          {required final ZacValueRead<Object?> value}) =
+      _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  Object get family;
-  ZacTransformers? get transformer;
-  SharedValueConsumeType get consumeType;
+  ZacValueRead<Object?> get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

@@ -803,10 +803,13 @@ void main() {
         _expectFromJson<ObjectTransformer>(
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
-          equals: ObjectTransformer.equalsSharedValue('shared',
-              consumeType: const SharedValueConsumeType.read()),
+          equals: ObjectTransformer.equalsSharedValue(
+              value: ZacValueConsume<Object?>.read(family: 'shared')),
           props: <String, dynamic>{
-            'family': 'shared',
+            'value': {
+              'converter': 'z:1:SharedValue.read',
+              'family': 'shared',
+            }
           },
         );
       });
@@ -829,12 +832,14 @@ void main() {
         );
 
         expect(
-            ObjectTransformer.equalsSharedValue('shared')
+            ObjectTransformer.equalsSharedValue(
+                    value: ZacValueConsume<Object?>.watch(family: 'shared'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isTrue);
 
         expect(
-            ObjectTransformer.equalsSharedValue('shared2')
+            ObjectTransformer.equalsSharedValue(
+                    value: ZacValueConsume<Object?>.watch(family: 'shared2'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isFalse);
       });

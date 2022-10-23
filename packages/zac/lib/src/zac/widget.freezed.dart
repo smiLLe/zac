@@ -60,7 +60,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget data;
+  final ZacValue<FlutterWidget> data;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -111,7 +111,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
 abstract class _ZacWidgetBuilder extends ZacWidgetBuilder {
   factory _ZacWidgetBuilder(
       {final FlutterKey? key,
-      required final FlutterWidget data}) = _$_ZacWidgetBuilder;
+      required final ZacValue<FlutterWidget> data}) = _$_ZacWidgetBuilder;
   _ZacWidgetBuilder._() : super._();
 
   factory _ZacWidgetBuilder.fromJson(Map<String, dynamic> json) =
@@ -119,7 +119,7 @@ abstract class _ZacWidgetBuilder extends ZacWidgetBuilder {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get data;
+  ZacValue<FlutterWidget> get data;
 }
 
 /// @nodoc

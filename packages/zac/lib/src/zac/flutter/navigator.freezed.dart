@@ -33,8 +33,6 @@ ZacFlutterGlobalKeyNavigatorState _$ZacFlutterGlobalKeyNavigatorStateFromJson(
 
 /// @nodoc
 mixin _$ZacFlutterGlobalKeyNavigatorState {
-  Object get family => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacFlutterGlobalKeyNavigatorStateProvide value)
@@ -120,7 +118,6 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
           Map<String, dynamic> json) =
       _$_ZacFlutterGlobalKeyNavigatorStateProvide.fromJson;
 
-  @override
   Object get family;
   FlutterWidget get child;
   ZacValue<String>? get debugLabel;
@@ -129,12 +126,9 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateProvide
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacFlutterGlobalKeyNavigatorStateConsume
-    extends _ZacFlutterGlobalKeyNavigatorStateConsume
-    with ConsumeValue<GlobalKey<NavigatorState>> {
-  _$_ZacFlutterGlobalKeyNavigatorStateConsume(this.family,
-      {this.transformer,
-      this.consumeType = const SharedValueConsumeType.watch(),
-      final String? $type})
+    extends _ZacFlutterGlobalKeyNavigatorStateConsume {
+  _$_ZacFlutterGlobalKeyNavigatorStateConsume(
+      {required this.value, final String? $type})
       : $type = $type ?? 'z:1:GlobalKeyNavigatorState.consume',
         super._();
 
@@ -143,19 +137,14 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
       _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(json);
 
   @override
-  final Object family;
-  @override
-  final ZacTransformers? transformer;
-  @override
-  @JsonKey()
-  final SharedValueConsumeType consumeType;
+  final ZacValue<GlobalKey<NavigatorState>> value;
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'ZacFlutterGlobalKeyNavigatorState.consume(family: $family, transformer: $transformer, consumeType: $consumeType)';
+    return 'ZacFlutterGlobalKeyNavigatorState.consume(value: $value)';
   }
 
   @override
@@ -163,20 +152,13 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacFlutterGlobalKeyNavigatorStateConsume &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            const DeepCollectionEquality()
-                .equals(other.transformer, transformer) &&
-            const DeepCollectionEquality()
-                .equals(other.consumeType, consumeType));
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      const DeepCollectionEquality().hash(transformer),
-      const DeepCollectionEquality().hash(consumeType));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
   @override
   @optionalTypeArgs
@@ -191,11 +173,9 @@ class _$_ZacFlutterGlobalKeyNavigatorStateConsume
 }
 
 abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
-    extends ZacFlutterGlobalKeyNavigatorState
-    implements ConsumeValue<GlobalKey<NavigatorState>> {
-  factory _ZacFlutterGlobalKeyNavigatorStateConsume(final Object family,
-          {final ZacTransformers? transformer,
-          final SharedValueConsumeType consumeType}) =
+    extends ZacFlutterGlobalKeyNavigatorState {
+  factory _ZacFlutterGlobalKeyNavigatorStateConsume(
+          {required final ZacValue<GlobalKey<NavigatorState>> value}) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume;
   _ZacFlutterGlobalKeyNavigatorStateConsume._() : super._();
 
@@ -203,10 +183,7 @@ abstract class _ZacFlutterGlobalKeyNavigatorStateConsume
           Map<String, dynamic> json) =
       _$_ZacFlutterGlobalKeyNavigatorStateConsume.fromJson;
 
-  @override
-  Object get family;
-  ZacTransformers? get transformer;
-  SharedValueConsumeType get consumeType;
+  ZacValue<GlobalKey<NavigatorState>> get value;
 }
 
 ZacFlutterNavigatorActions _$ZacFlutterNavigatorActionsFromJson(
@@ -217,7 +194,7 @@ ZacFlutterNavigatorActions _$ZacFlutterNavigatorActionsFromJson(
 /// @nodoc
 mixin _$ZacFlutterNavigatorActions {
   ZacValue<String> get routeName => throw _privateConstructorUsedError;
-  GetFlutterNavigatorState? get navigatorState =>
+  ZacValue<GetFlutterNavigatorState>? get navigatorState =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -239,7 +216,7 @@ class _$_PopUntilRouteName extends _PopUntilRouteName {
   @override
   final ZacValue<String> routeName;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final ZacValue<GetFlutterNavigatorState>? navigatorState;
 
   @override
   String toString() {
@@ -274,8 +251,9 @@ class _$_PopUntilRouteName extends _PopUntilRouteName {
 
 abstract class _PopUntilRouteName extends ZacFlutterNavigatorActions {
   factory _PopUntilRouteName(
-      {required final ZacValue<String> routeName,
-      final GetFlutterNavigatorState? navigatorState}) = _$_PopUntilRouteName;
+          {required final ZacValue<String> routeName,
+          final ZacValue<GetFlutterNavigatorState>? navigatorState}) =
+      _$_PopUntilRouteName;
   _PopUntilRouteName._() : super._();
 
   factory _PopUntilRouteName.fromJson(Map<String, dynamic> json) =
@@ -284,7 +262,7 @@ abstract class _PopUntilRouteName extends ZacFlutterNavigatorActions {
   @override
   ZacValue<String> get routeName;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  ZacValue<GetFlutterNavigatorState>? get navigatorState;
 }
 
 RouteFactoryRouteConfig _$RouteFactoryRouteConfigFromJson(

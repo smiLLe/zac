@@ -22,14 +22,8 @@ _$_ZacFlutterGlobalKeyNavigatorStateConsume
     _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(
             Map<String, dynamic> json) =>
         _$_ZacFlutterGlobalKeyNavigatorStateConsume(
-          json['family'] as Object,
-          transformer: json['transformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
-          consumeType: json['consumeType'] == null
-              ? const SharedValueConsumeType.watch()
-              : SharedValueConsumeType.fromJson(
-                  json['consumeType'] as Map<String, dynamic>),
+          value: ZacValue<GlobalKey<NavigatorState>>.fromJson(
+              json['value'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -38,7 +32,8 @@ _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
       routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
+          : ZacValue<GetFlutterNavigatorState>.fromJson(
+              json['navigatorState'] as Object),
     );
 
 _$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(

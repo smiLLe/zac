@@ -73,16 +73,3 @@ _$_ZacValueListConsumeRead<TValue> _$$_ZacValueListConsumeReadFromJson<TValue>(
           : ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['converter'] as String?,
     );
-
-_$_ZacWidgetConsumerBuilder _$$_ZacWidgetConsumerBuilderFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacWidgetConsumerBuilder(
-      json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      consumeType: json['consumeType'] == null
-          ? const SharedValueConsumeType.watch()
-          : SharedValueConsumeType.fromJson(
-              json['consumeType'] as Map<String, dynamic>),
-    );

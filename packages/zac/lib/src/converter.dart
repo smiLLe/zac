@@ -77,13 +77,9 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_padding.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 
-Type _typeOf<T>() => T;
-
 typedef Convert = Object Function(Map<String, dynamic> data);
 
 Map<String, Convert> allConverters = const {
-  ZacWidgetConsumerBuilder.unionValue: ZacWidgetConsumerBuilder.fromJson,
-
   /**
          * SharedValue
          */

@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
@@ -39,17 +39,29 @@ class ZacFlutterGlobalKeyNavigatorState
   }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
 
   @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
-  @With<ConsumeValue<GlobalKey<NavigatorState>>>()
-  factory ZacFlutterGlobalKeyNavigatorState.consume(
-    SharedValueFamily family, {
-    ZacTransformers? transformer,
-    @Default(SharedValueConsumeType.watch()) SharedValueConsumeType consumeType,
+  factory ZacFlutterGlobalKeyNavigatorState.consume({
+    required ZacValue<GlobalKey<NavigatorState>> value,
   }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
+
+  SharedValueType _valueBuilder(
+      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+    return GlobalKey<NavigatorState>(
+      debugLabel: map(
+        provide: (obj) => obj.debugLabel?.getValue(zacContext),
+        consume: (_) => null,
+      ),
+    );
+  }
 
   @override
   Widget buildWidget(ZacContext zacContext) {
     return map(
-      provide: (obj) => GlobalKeyNavigatorStateProvider(builder: obj),
+      provide: (obj) => SharedValueProvider(
+        autoCreate: true,
+        valueBuilder: _valueBuilder,
+        family: obj.family,
+        childBuilder: obj.child.buildWidget,
+      ),
       consume: (_) => throw StateError(''),
     );
   }
@@ -58,8 +70,9 @@ class ZacFlutterGlobalKeyNavigatorState
   NavigatorState getNavigatorState(ZacContext zacContext) {
     return map(
       consume: (obj) {
-        if (null != obj.getSharedValue(zacContext).currentState) {
-          return obj.getSharedValue(zacContext).currentState!;
+        final key = obj.value.getValue(zacContext);
+        if (null != key.currentState) {
+          return key.currentState!;
         }
         throw StateError('');
       },
@@ -70,27 +83,8 @@ class ZacFlutterGlobalKeyNavigatorState
   @override
   GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
     return map(
-      consume: (obj) => obj.getSharedValue(zacContext),
+      consume: (obj) => obj.value.getValue(zacContext),
       provide: (_) => throw StateError(''),
-    );
-  }
-}
-
-/// Special Provider that will only share a [GlobalKey] of NavigatorState
-class GlobalKeyNavigatorStateProvider extends StatelessWidget {
-  const GlobalKeyNavigatorStateProvider({required this.builder, super.key});
-
-  final _ZacFlutterGlobalKeyNavigatorStateProvide builder;
-
-  @override
-  Widget build(BuildContext context) {
-    return SharedValueProvider(
-      autoCreate: true,
-      valueBuilder: (_, zacContext) => GlobalKey<NavigatorState>(
-        debugLabel: builder.debugLabel?.getValue(zacContext),
-      ),
-      family: builder.family,
-      childBuilder: builder.child.buildWidget,
     );
   }
 }
@@ -110,13 +104,16 @@ class ZacFlutterNavigatorActions
   @FreezedUnionValue(ZacFlutterNavigatorActions.unionValuePopUntilRouteName)
   factory ZacFlutterNavigatorActions.popUntilRouteName({
     required ZacValue<String> routeName,
-    GetFlutterNavigatorState? navigatorState,
+    ZacValue<GetFlutterNavigatorState>? navigatorState,
   }) = _PopUntilRouteName;
 
   NavigatorState? _getState(ZacContext zacContext) {
     return map(
-          popUntilRouteName: (obj) =>
-              obj.navigatorState?.getNavigatorState(zacContext),
+          popUntilRouteName: (obj) {
+            return obj.navigatorState
+                ?.getValue(zacContext)
+                .getNavigatorState(zacContext);
+          },
         ) ??
         Navigator.maybeOf(zacContext.context);
   }

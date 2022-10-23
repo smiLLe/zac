@@ -388,11 +388,8 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   factory ObjectTransformer.hashCode() = _ObjectHashCode;
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
-  @With<ConsumeValue<Object?>>()
-  factory ObjectTransformer.equalsSharedValue(
-    SharedValueFamily family, {
-    ZacTransformers? transformer,
-    @Default(SharedValueConsumeType.read()) SharedValueConsumeType consumeType,
+  factory ObjectTransformer.equalsSharedValue({
+    required ZacValueRead<Object?> value,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -403,10 +400,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isList: (_) => value is List,
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
-      equalsSharedValue: (obj) {
-        final sValue = obj.getSharedValue(zacContext);
-        return sValue == value;
-      },
+      equalsSharedValue: (obj) => obj.value.getValue(zacContext) == value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
       toString: (_) => value.toString(),

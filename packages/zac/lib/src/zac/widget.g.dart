@@ -11,7 +11,7 @@ _$_ZacWidgetBuilder _$$_ZacWidgetBuilderFromJson(Map<String, dynamic> json) =>
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      data: FlutterWidget.fromJson(json['data'] as Object),
+      data: ZacValue<FlutterWidget>.fromJson(json['data'] as Object),
       $type: json['converter'] as String?,
     );
 

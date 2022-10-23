@@ -207,14 +207,7 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      consumeType: json['consumeType'] == null
-          ? const SharedValueConsumeType.read()
-          : SharedValueConsumeType.fromJson(
-              json['consumeType'] as Map<String, dynamic>),
+      value: ZacValueRead<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

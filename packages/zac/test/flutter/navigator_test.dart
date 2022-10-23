@@ -24,9 +24,11 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
             'converter': 'z:1:GlobalKeyNavigatorState.consume',
-            'family': 'foo',
+            'value': {'converter': 'z:1:SharedValue.watch', 'family': 'foo'}
           }),
-          ZacFlutterGlobalKeyNavigatorState.consume('foo'));
+          ZacFlutterGlobalKeyNavigatorState.consume(
+              value: ZacValueConsume<GlobalKey<NavigatorState>>.watch(
+                  family: 'foo')));
     });
 
     testWidgets('provide and read', (tester) async {
