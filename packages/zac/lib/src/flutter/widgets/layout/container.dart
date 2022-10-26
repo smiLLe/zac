@@ -34,12 +34,12 @@ class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   Container buildWidget(ZacContext zacContext) {
     return Container(
       key: key?.buildKey(zacContext),
-      child: child?.buildWidget(zacContext),
       color: color?.build(zacContext),
       padding: padding?.build(zacContext),
       margin: margin?.build(zacContext),
       alignment: alignment?.build(zacContext),
       decoration: decoration?.build(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }

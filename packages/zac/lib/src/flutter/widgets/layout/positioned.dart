@@ -60,7 +60,6 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   Positioned buildWidget(ZacContext zacContext) {
     return map(
       (value) => Positioned(
-        child: value.child.buildWidget(zacContext),
         key: value.key?.buildKey(zacContext),
         left: value.left?.getValue(zacContext),
         top: value.top?.getValue(zacContext),
@@ -68,9 +67,9 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
         bottom: value.bottom?.getValue(zacContext),
         width: value.width?.getValue(zacContext),
         height: value.height?.getValue(zacContext),
+        child: value.child.buildWidget(zacContext),
       ),
       directional: (value) => Positioned.directional(
-        child: value.child.buildWidget(zacContext),
         textDirection: value.textDirection.build(zacContext),
         key: value.key?.buildKey(zacContext),
         start: value.start?.getValue(zacContext),
@@ -79,14 +78,15 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
         bottom: value.bottom?.getValue(zacContext),
         width: value.width?.getValue(zacContext),
         height: value.height?.getValue(zacContext),
+        child: value.child.buildWidget(zacContext),
       ),
       fill: (value) => Positioned.fill(
-        child: value.child.buildWidget(zacContext),
         key: value.key?.buildKey(zacContext),
         left: value.left?.getValue(zacContext),
         top: value.top?.getValue(zacContext),
         right: value.right?.getValue(zacContext),
         bottom: value.bottom?.getValue(zacContext),
+        child: value.child.buildWidget(zacContext),
       ),
     );
   }

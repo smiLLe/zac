@@ -34,10 +34,10 @@ class FlutterFractionallySizedBox
   FractionallySizedBox buildWidget(ZacContext zacContext) {
     return FractionallySizedBox(
       key: key?.buildKey(zacContext),
-      child: child?.buildWidget(zacContext),
       heightFactor: heightFactor?.getValue(zacContext),
       widthFactor: widthFactor?.getValue(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.buildWidget(zacContext),
     );
   }
 }

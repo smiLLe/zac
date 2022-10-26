@@ -135,7 +135,6 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
       showDialog: (_) => throw StateError('Should never happen'),
       dialog: (value) => Dialog(
         key: value.key?.buildKey(zacContext),
-        child: value.child?.buildWidget(zacContext),
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
@@ -144,6 +143,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
         insetPadding: value.insetPadding?.build(zacContext),
         shape: value.shape?.build(zacContext),
+        child: value.child?.buildWidget(zacContext),
       ),
       alertDialog: (value) => AlertDialog(
         key: value.key?.buildKey(zacContext),
@@ -176,7 +176,6 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
       simpleDialog: (value) => SimpleDialog(
         key: value.key?.buildKey(zacContext),
         title: value.title?.buildWidget(zacContext),
-        children: value.children?.getWidgets(zacContext) ?? const <Widget>[],
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
@@ -190,12 +189,13 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
         titlePadding: value.titlePadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
         titleTextStyle: value.titleTextStyle?.build(zacContext),
+        children: value.children?.getWidgets(zacContext) ?? const <Widget>[],
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
         key: value.key?.buildKey(zacContext),
-        child: value.child?.buildWidget(zacContext),
         padding: value.padding?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
+        child: value.child?.buildWidget(zacContext),
       ),
     );
   }

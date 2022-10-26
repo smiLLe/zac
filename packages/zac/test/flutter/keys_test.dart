@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/foundation.dart';
 
 import '../helper.dart';
-import 'models.dart';
 
 void main() {
   test('FlutterKey', () {

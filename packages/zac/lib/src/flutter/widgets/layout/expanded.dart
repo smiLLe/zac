@@ -29,8 +29,8 @@ class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   Expanded buildWidget(ZacContext zacContext) {
     return Expanded(
       key: key?.buildKey(zacContext),
-      child: child.buildWidget(zacContext),
       flex: flex?.getValue(zacContext) ?? 1,
+      child: child.buildWidget(zacContext),
     );
   }
 }

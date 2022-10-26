@@ -33,7 +33,6 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   @override
   SafeArea buildWidget(ZacContext zacContext) {
     return SafeArea(
-      child: child.buildWidget(zacContext),
       key: key?.buildKey(zacContext),
       left: left?.getValue(zacContext) ?? true,
       top: top?.getValue(zacContext) ?? true,
@@ -42,6 +41,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
       minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
           maintainBottomViewPadding?.getValue(zacContext) ?? false,
+      child: child.buildWidget(zacContext),
     );
   }
 }

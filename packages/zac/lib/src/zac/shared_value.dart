@@ -98,7 +98,9 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   }) = _SharedValueActionsReplaceWith;
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) => map((obj) {
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
+    map(
+      (obj) {
         SharedValue.update(
           zacContext,
           obj.family,
@@ -109,7 +111,8 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
                 .transform(ZacTransformValue(current), zacContext, payload);
           },
         );
-      }, replaceWith: (obj) {
+      },
+      replaceWith: (obj) {
         SharedValue.update(
           zacContext,
           obj.family,
@@ -125,7 +128,9 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
             }
           },
         );
-      });
+      },
+    );
+  }
 }
 
 @defaultConverterFreezed

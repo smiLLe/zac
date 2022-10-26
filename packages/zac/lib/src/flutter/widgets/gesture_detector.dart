@@ -41,7 +41,6 @@ class FlutterGestureDetector
   GestureDetector buildWidget(ZacContext zacContext) {
     return GestureDetector(
       key: key?.buildKey(zacContext),
-      child: child?.buildWidget(zacContext),
       behavior: behavior?.build(zacContext),
       excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
       onTap: onTap?.createCb(zacContext),
@@ -50,6 +49,7 @@ class FlutterGestureDetector
       onLongPress: onLongPress?.createCb(zacContext),
       onSecondaryLongPress: onSecondaryLongPress?.createCb(zacContext),
       onTertiaryLongPress: onTertiaryLongPress?.createCb(zacContext),
+      child: child?.buildWidget(zacContext),
     );
   }
 }
