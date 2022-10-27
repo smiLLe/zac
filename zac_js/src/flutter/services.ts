@@ -136,3 +136,14 @@ class SmartQuotesType extends ZacConverter {
         return new SmartQuotesType({ converter: 'f:1:SmartQuotesType.enabled' })
     }
 }
+class ScrollViewKeyboardDismissBehavior extends ZacConverter {
+    private constructor(data: ZacConverterType) {
+        super(data);
+    }
+    static manual() {
+        return new ScrollViewKeyboardDismissBehavior({ converter: 'f:1:ScrollViewKeyboardDismissBehavior.manual' })
+    }
+    static onDrag() {
+        return new ScrollViewKeyboardDismissBehavior({ converter: 'f:1:ScrollViewKeyboardDismissBehavior.onDrag' })
+    }
+}
