@@ -1,6 +1,7 @@
-import { FlutterWidget, SharedValueFamily, ValidTypes, ZacTransformers, ZacValue } from "../base";
+import { FlutterWidget, SharedValueFamily, ValidTypes, ZacTransformers } from "../base";
 import { Key } from "../flutter/foundation";
 import { ZacAction } from "./action";
+import { ZacValue } from "./zac_value";
 
 export class SharedValueActions extends ZacAction {
     static update(data: {
