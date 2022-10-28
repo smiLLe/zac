@@ -25,15 +25,22 @@ export abstract class ZacConverter {
 
 export abstract class FlutterWidget extends ZacConverter { }
 
-export class ZacValue<T> extends ZacConverter {
-    private constructor(data: ZacConverterType) {
-        super(data);
-    }
-
+export class ZacValueRead<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
     // ZacValue<int> to ZacValue<string> will result in an error.
     private ignoredProp: T | undefined;
 
+    static read(data: {
+        family: SharedValueFamily
+    }) {
+        return new ZacValue({
+            converter: 'z:1:ZacValue.read',
+            ...data,
+        });
+    }
+}
+
+export class ZacValue<T> extends ZacValueRead<T> {
     static new<T extends ValidTypes>(data: {
         value: T,
         transformer?: ZacTransformers,
@@ -48,15 +55,6 @@ export class ZacValue<T> extends ZacConverter {
     }) {
         return new ZacValue({
             converter: 'z:1:ZacValue.watch',
-            ...data,
-        });
-    }
-
-    static read(data: {
-        family: SharedValueFamily
-    }) {
-        return new ZacValue({
-            converter: 'z:1:ZacValue.read',
             ...data,
         });
     }
