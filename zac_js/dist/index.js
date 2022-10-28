@@ -16,3 +16,4 @@ export * from './zac/shared_value';
 export * from './zac/state_machine';
 export * from './zac/update_widget';
 export * from './zac/widget';
+export * from './zac_template_expressions';
