@@ -2,7 +2,8 @@ export type DartInt = number;
 
 export type DartDouble = number;
 
-export type ValidTypes = null | ZacConverter | ZacConverterType | DartInt | DartDouble | string | boolean | { [key: string]: ValidTypes } | Array<ValidTypes>;
+export type ValidTypes = null | ZacConverter | ZacConverterType | DartInt | DartDouble | string
+    | boolean | Array<ValidTypes> | { [key: string]: ValidTypes };
 
 export type SharedValueFamily = DartInt | DartDouble | string;
 
@@ -45,7 +46,7 @@ export class ZacValue<T> extends ZacConverter {
     }) {
         return new ZacValue({
             converter: 'z:1:ZacValue.watch',
-            value: data,
+            ...data,
         });
     }
 
@@ -54,7 +55,7 @@ export class ZacValue<T> extends ZacConverter {
     }) {
         return new ZacValue({
             converter: 'z:1:ZacValue.read',
-            value: data,
+            ...data,
         });
     }
 }

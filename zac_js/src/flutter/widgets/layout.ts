@@ -1,4 +1,11 @@
-class Align extends FlutterWidget {
+import { DartDouble, DartInt, FlutterWidget, ZacConverterType, ZacValue } from "../../base";
+import { Clip, Color, Size, TextDirection } from "../dart_ui";
+import { Key } from "../foundation";
+import { Axis, BoxFit, EdgeInsets, FlutterAlignmentGeometry, FlutterDecoration, FlutterEdgeInsetsGeometry } from "../painting";
+import { BoxConstraints, FlexFit } from "../rendering";
+import { ScrollViewKeyboardDismissBehavior } from "../services";
+
+export class Align extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -13,7 +20,7 @@ class Align extends FlutterWidget {
         return new Align({ converter: 'f:1:Align', ...data })
     }
 }
-class AspectRatio extends FlutterWidget {
+export class AspectRatio extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -26,7 +33,7 @@ class AspectRatio extends FlutterWidget {
         return new AspectRatio({ converter: 'f:1:AspectRatio', ...data })
     }
 }
-class Center extends FlutterWidget {
+export class Center extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -40,7 +47,7 @@ class Center extends FlutterWidget {
         return new Center({ converter: 'f:1:Center', ...data })
     }
 }
-class ConstrainedBox extends FlutterWidget {
+export class ConstrainedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -53,7 +60,7 @@ class ConstrainedBox extends FlutterWidget {
         return new ConstrainedBox({ converter: 'f:1:ConstrainedBox', ...data })
     }
 }
-class Container extends FlutterWidget {
+export class Container extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -70,7 +77,7 @@ class Container extends FlutterWidget {
         return new Container({ converter: 'f:1:Container', ...data })
     }
 }
-class Expanded extends FlutterWidget {
+export class Expanded extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -83,7 +90,7 @@ class Expanded extends FlutterWidget {
         return new Expanded({ converter: 'f:1:Expanded', ...data })
     }
 }
-class FittedBox extends FlutterWidget {
+export class FittedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -98,7 +105,7 @@ class FittedBox extends FlutterWidget {
         return new FittedBox({ converter: 'f:1:FittedBox', ...data })
     }
 }
-class Flexible extends FlutterWidget {
+export class Flexible extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -112,7 +119,7 @@ class Flexible extends FlutterWidget {
         return new Flexible({ converter: 'f:1:Flexible', ...data })
     }
 }
-class FractionallySizedBox extends FlutterWidget {
+export class FractionallySizedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -127,7 +134,7 @@ class FractionallySizedBox extends FlutterWidget {
         return new FractionallySizedBox({ converter: 'f:1:FractionallySizedBox', ...data })
     }
 }
-class IntrinsicHeight extends FlutterWidget {
+export class IntrinsicHeight extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -139,7 +146,7 @@ class IntrinsicHeight extends FlutterWidget {
         return new IntrinsicHeight({ converter: 'f:1:IntrinsicHeight', ...data })
     }
 }
-class IntrinsicWidth extends FlutterWidget {
+export class IntrinsicWidth extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -151,7 +158,7 @@ class IntrinsicWidth extends FlutterWidget {
         return new IntrinsicWidth({ converter: 'f:1:IntrinsicWidth', ...data })
     }
 }
-class LimitedBox extends FlutterWidget {
+export class LimitedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -165,7 +172,7 @@ class LimitedBox extends FlutterWidget {
         return new LimitedBox({ converter: 'f:1:LimitedBox', ...data })
     }
 }
-class Offstage extends FlutterWidget {
+export class Offstage extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -178,7 +185,7 @@ class Offstage extends FlutterWidget {
         return new Offstage({ converter: 'f:1:Offstage', ...data })
     }
 }
-class OverflowBox extends FlutterWidget {
+export class OverflowBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -195,7 +202,7 @@ class OverflowBox extends FlutterWidget {
         return new OverflowBox({ converter: 'f:1:OverflowBox', ...data })
     }
 }
-class Padding extends FlutterWidget {
+export class Padding extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -208,7 +215,7 @@ class Padding extends FlutterWidget {
         return new Padding({ converter: 'f:1:Padding', ...data })
     }
 }
-class Positioned extends FlutterWidget {
+export class Positioned extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -251,7 +258,7 @@ class Positioned extends FlutterWidget {
         return new Positioned({ converter: 'f:1:Positioned.fill', ...data })
     }
 }
-class SafeArea extends FlutterWidget {
+export class SafeArea extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -269,7 +276,7 @@ class SafeArea extends FlutterWidget {
         return new SafeArea({ converter: 'f:1:SafeArea', ...data })
     }
 }
-class SingleChildScrollView extends FlutterWidget {
+export class SingleChildScrollView extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -288,7 +295,7 @@ class SingleChildScrollView extends FlutterWidget {
         return new SingleChildScrollView({ converter: 'f:1:SingleChildScrollView', ...data })
     }
 }
-class SizedBox extends FlutterWidget {
+export class SizedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -332,7 +339,7 @@ class SizedBox extends FlutterWidget {
         return new SizedBox({ converter: 'f:1:SizedBox.square', ...data })
     }
 }
-class SizedOverflowBox extends FlutterWidget {
+export class SizedOverflowBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -346,7 +353,7 @@ class SizedOverflowBox extends FlutterWidget {
         return new SizedOverflowBox({ converter: 'f:1:SizedOverflowBox', ...data })
     }
 }
-class Spacer extends FlutterWidget {
+export class Spacer extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -358,7 +365,7 @@ class Spacer extends FlutterWidget {
         return new Spacer({ converter: 'f:1:Spacer', ...data })
     }
 }
-class UnconstrainedBox extends FlutterWidget {
+export class UnconstrainedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
