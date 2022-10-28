@@ -1,4 +1,7 @@
-class HitTestBehavior extends ZacConverter {
+import { DartDouble, DartInt, ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { Size } from "./dart_ui";
+
+export class HitTestBehavior extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -16,7 +19,7 @@ class HitTestBehavior extends ZacConverter {
     }
 }
 
-class CrossAxisAlignment extends ZacConverter {
+export class CrossAxisAlignment extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -42,7 +45,7 @@ class CrossAxisAlignment extends ZacConverter {
     }
 }
 
-class MainAxisAlignment extends ZacConverter {
+export class MainAxisAlignment extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -72,7 +75,7 @@ class MainAxisAlignment extends ZacConverter {
     }
 }
 
-class MainAxisSize extends ZacConverter {
+export class MainAxisSize extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -86,7 +89,7 @@ class MainAxisSize extends ZacConverter {
     }
 }
 
-class FlexFit extends ZacConverter {
+export class FlexFit extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -98,7 +101,7 @@ class FlexFit extends ZacConverter {
     }
 }
 
-class WrapAlignment extends ZacConverter {
+export class WrapAlignment extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -121,7 +124,7 @@ class WrapAlignment extends ZacConverter {
         return new WrapAlignment({ converter: 'f:1:WrapAlignment.spaceEvenly' })
     }
 }
-class WrapCrossAlignment extends ZacConverter {
+export class WrapCrossAlignment extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -135,7 +138,7 @@ class WrapCrossAlignment extends ZacConverter {
         return new WrapCrossAlignment({ converter: 'f:1:WrapCrossAlignment.start' })
     }
 }
-class StackFit extends ZacConverter {
+export class StackFit extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -149,7 +152,7 @@ class StackFit extends ZacConverter {
         return new StackFit({ converter: 'f:1:StackFit.passthrough' })
     }
 }
-class BoxConstraints extends ZacConverter {
+export class BoxConstraints extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -190,7 +193,7 @@ class BoxConstraints extends ZacConverter {
         return new BoxConstraints({ converter: 'f:1:BoxConstraints.tightForFinite', ...data })
     }
 }
-class SliverGridDelegate extends ZacConverter {
+export class SliverGridDelegate extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -214,7 +217,7 @@ class SliverGridDelegate extends ZacConverter {
         return new SliverGridDelegate({ converter: 'f:1:SliverGridDelegateWithMaxCrossAxisExtent', ...data })
     }
 }
-class DecorationPosition extends ZacConverter {
+export class DecorationPosition extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }

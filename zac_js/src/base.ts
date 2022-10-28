@@ -1,15 +1,17 @@
-type DartInt = number;
+export type DartInt = number;
 
-type DartDouble = number;
+export type DartDouble = number;
 
-type ValidTypes = ZacConverter | DartInt | DartDouble | string | boolean | { [key: string]: ValidTypes } | Array<ValidTypes>;
+export type ValidTypes = null | ZacConverter | ZacConverterType | DartInt | DartDouble | string | boolean | { [key: string]: ValidTypes } | Array<ValidTypes>;
 
-interface ZacConverterType {
-    [key: string]: ValidTypes
+export type SharedValueFamily = DartInt | DartDouble | string;
+
+export interface ZacConverterType {
+    [key: string]: ValidTypes | undefined
     converter: string;
 }
 
-abstract class ZacConverter {
+export abstract class ZacConverter {
     private data: ZacConverterType;
     constructor(data: ZacConverterType) {
         this.data = data;
@@ -20,9 +22,9 @@ abstract class ZacConverter {
     }
 }
 
-abstract class FlutterWidget extends ZacConverter { }
+export abstract class FlutterWidget extends ZacConverter { }
 
-class ZacValue<T> extends ZacConverter {
+export class ZacValue<T> extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -39,7 +41,7 @@ class ZacValue<T> extends ZacConverter {
     }
 
     static watch(data: {
-        family: string
+        family: SharedValueFamily
     }) {
         return new ZacValue({
             converter: 'z:1:ZacValue.watch',
@@ -48,7 +50,7 @@ class ZacValue<T> extends ZacConverter {
     }
 
     static read(data: {
-        family: string
+        family: SharedValueFamily
     }) {
         return new ZacValue({
             converter: 'z:1:ZacValue.read',

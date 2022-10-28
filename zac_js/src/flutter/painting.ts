@@ -1,4 +1,7 @@
-class BoxShape extends ZacConverter {
+import { DartDouble, ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { BlendMode, BlurStyle, Color, DartUiShadow, FlutterDartUiShadow, FontFeature, FontStyle, FontWeight, Locale, Offset, Radius, TextBaseline, TextDecoration, TextDecorationStyle, TextLeadingDistribution } from "./dart_ui";
+
+export class BoxShape extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -12,7 +15,7 @@ class BoxShape extends ZacConverter {
     }
 }
 
-class Axis extends ZacConverter {
+export class Axis extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -26,7 +29,7 @@ class Axis extends ZacConverter {
     }
 }
 
-class VerticalDirection extends ZacConverter {
+export class VerticalDirection extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -40,7 +43,7 @@ class VerticalDirection extends ZacConverter {
     }
 }
 
-class TextOverflow extends ZacConverter {
+export class TextOverflow extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -62,7 +65,7 @@ class TextOverflow extends ZacConverter {
     }
 }
 
-class StrutStyle extends ZacConverter {
+export class StrutStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -101,7 +104,7 @@ class StrutStyle extends ZacConverter {
     }
 }
 
-class TextWidthBasis extends ZacConverter {
+export class TextWidthBasis extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -113,7 +116,7 @@ class TextWidthBasis extends ZacConverter {
     }
 }
 
-class BoxFit extends ZacConverter {
+export class BoxFit extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -141,7 +144,7 @@ class BoxFit extends ZacConverter {
 }
 
 
-class ImageRepeat extends ZacConverter {
+export class ImageRepeat extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -159,7 +162,7 @@ class ImageRepeat extends ZacConverter {
     }
 }
 
-class TextStyle extends ZacConverter {
+export class TextStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -192,7 +195,7 @@ class TextStyle extends ZacConverter {
     }
 }
 
-class TextAlignVertical extends ZacConverter {
+export class TextAlignVertical extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -216,7 +219,7 @@ class TextAlignVertical extends ZacConverter {
     }
 }
 
-class BoxShadow extends FlutterDartUiShadow {
+export class BoxShadow extends FlutterDartUiShadow {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -232,10 +235,9 @@ class BoxShadow extends FlutterDartUiShadow {
     }
 }
 
-abstract class FlutterAlignmentGeometry extends ZacConverter { }
+export abstract class FlutterAlignmentGeometry extends ZacConverter { }
 
-
-class Alignment extends FlutterAlignmentGeometry {
+export class Alignment extends FlutterAlignmentGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -283,7 +285,7 @@ class Alignment extends FlutterAlignmentGeometry {
     }
 }
 
-class AlignmentDirectional extends FlutterAlignmentGeometry {
+export class AlignmentDirectional extends FlutterAlignmentGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -331,7 +333,7 @@ class AlignmentDirectional extends FlutterAlignmentGeometry {
     }
 }
 
-class FractionalOffset extends FlutterAlignmentGeometry {
+export class FractionalOffset extends FlutterAlignmentGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -344,10 +346,10 @@ class FractionalOffset extends FlutterAlignmentGeometry {
 }
 
 
-abstract class FlutterShapeBorder extends ZacConverter { }
-abstract class FlutterBoxBorder extends FlutterShapeBorder { }
+export abstract class FlutterShapeBorder extends ZacConverter { }
+export abstract class FlutterBoxBorder extends FlutterShapeBorder { }
 
-class BorderDirectional extends FlutterBoxBorder {
+export class BorderDirectional extends FlutterBoxBorder {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -362,7 +364,7 @@ class BorderDirectional extends FlutterBoxBorder {
     }
 }
 
-class Border extends FlutterBoxBorder {
+export class Border extends FlutterBoxBorder {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -385,7 +387,7 @@ class Border extends FlutterBoxBorder {
     }
 }
 
-class BorderStyle extends FlutterBoxBorder {
+export class BorderStyle extends FlutterBoxBorder {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -399,9 +401,9 @@ class BorderStyle extends FlutterBoxBorder {
     }
 }
 
-abstract class FlutterBorderRadiusGeometry extends ZacConverter { }
+export abstract class FlutterBorderRadiusGeometry extends ZacConverter { }
 
-class BorderRadius extends FlutterBorderRadiusGeometry {
+export class BorderRadius extends FlutterBorderRadiusGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -426,7 +428,7 @@ class BorderRadius extends FlutterBorderRadiusGeometry {
     }
 }
 
-class BorderSide extends ZacConverter {
+export class BorderSide extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -440,9 +442,9 @@ class BorderSide extends ZacConverter {
     }
 }
 
-abstract class FlutterOutlinedBorder extends FlutterShapeBorder { }
+export abstract class FlutterOutlinedBorder extends FlutterShapeBorder { }
 
-class CircleBorder extends FlutterOutlinedBorder {
+export class CircleBorder extends FlutterOutlinedBorder {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -454,7 +456,7 @@ class CircleBorder extends FlutterOutlinedBorder {
     }
 }
 
-class RoundedRectangleBorder extends FlutterOutlinedBorder {
+export class RoundedRectangleBorder extends FlutterOutlinedBorder {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -467,9 +469,9 @@ class RoundedRectangleBorder extends FlutterOutlinedBorder {
     }
 }
 
-abstract class FlutterDecoration extends ZacConverter { }
+export abstract class FlutterDecoration extends ZacConverter { }
 
-class BoxDecoration extends FlutterDecoration {
+export class BoxDecoration extends FlutterDecoration {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -486,7 +488,7 @@ class BoxDecoration extends FlutterDecoration {
     }
 }
 
-class ShapeDecoration extends FlutterDecoration {
+export class ShapeDecoration extends FlutterDecoration {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -500,9 +502,9 @@ class ShapeDecoration extends FlutterDecoration {
     }
 }
 
-abstract class FlutterEdgeInsetsGeometry extends ZacConverter { }
+export abstract class FlutterEdgeInsetsGeometry extends ZacConverter { }
 
-class EdgeInsets extends FlutterEdgeInsetsGeometry {
+export class EdgeInsets extends FlutterEdgeInsetsGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -530,7 +532,7 @@ class EdgeInsets extends FlutterEdgeInsetsGeometry {
     }
 }
 
-class EdgeInsetsDirectional extends FlutterEdgeInsetsGeometry {
+export class EdgeInsetsDirectional extends FlutterEdgeInsetsGeometry {
     private constructor(data: ZacConverterType) {
         super(data);
     }

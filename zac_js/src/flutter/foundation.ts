@@ -1,8 +1,10 @@
-abstract class Key extends ZacConverter { }
-abstract class LocalKey extends Key { }
-abstract class GlobalKeyNavigatorState extends Key { }
+import { ZacConverter, ZacConverterType } from "../base";
 
-class ValueKey extends ZacConverter {
+export abstract class Key extends ZacConverter { }
+export abstract class LocalKey extends Key { }
+export abstract class GlobalKeyNavigatorState extends Key { }
+
+export class ValueKey extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }

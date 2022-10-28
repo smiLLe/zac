@@ -1,4 +1,6 @@
-class Color extends ZacConverter {
+import { DartDouble, DartInt, ZacConverter, ZacConverterType, ZacValue } from "../base";
+
+export class Color extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -28,7 +30,7 @@ class Color extends ZacConverter {
     }
 }
 
-class Offset extends ZacConverter {
+export class Offset extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -47,7 +49,7 @@ class Offset extends ZacConverter {
         })
     }
 }
-class BlurStyle extends ZacConverter {
+export class BlurStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -69,7 +71,7 @@ class BlurStyle extends ZacConverter {
     }
 }
 
-class Radius extends ZacConverter {
+export class Radius extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -83,7 +85,7 @@ class Radius extends ZacConverter {
     }
 }
 
-class TextDirection extends ZacConverter {
+export class TextDirection extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -98,7 +100,7 @@ class TextDirection extends ZacConverter {
 
 }
 
-class Clip extends ZacConverter {
+export class Clip extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -116,7 +118,7 @@ class Clip extends ZacConverter {
     }
 }
 
-class TextBaseline extends ZacConverter {
+export class TextBaseline extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -130,7 +132,7 @@ class TextBaseline extends ZacConverter {
     }
 }
 
-class FontWeight extends ZacConverter {
+export class FontWeight extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -179,7 +181,7 @@ class FontWeight extends ZacConverter {
     }
 }
 
-class FontStyle extends ZacConverter {
+export class FontStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -193,7 +195,7 @@ class FontStyle extends ZacConverter {
     }
 }
 
-class TextDecoration extends ZacConverter {
+export class TextDecoration extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -215,7 +217,7 @@ class TextDecoration extends ZacConverter {
     }
 }
 
-class TextLeadingDistribution extends ZacConverter {
+export class TextLeadingDistribution extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -229,7 +231,7 @@ class TextLeadingDistribution extends ZacConverter {
     }
 }
 
-class Locale extends ZacConverter {
+export class Locale extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -241,7 +243,7 @@ class Locale extends ZacConverter {
     }
 }
 
-class FontFeature extends ZacConverter {
+export class FontFeature extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -363,7 +365,7 @@ class FontFeature extends ZacConverter {
     }
 }
 
-class TextDecorationStyle extends ZacConverter {
+export class TextDecorationStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -389,7 +391,7 @@ class TextDecorationStyle extends ZacConverter {
     }
 }
 
-class TextAlign extends ZacConverter {
+export class TextAlign extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -419,7 +421,7 @@ class TextAlign extends ZacConverter {
     }
 }
 
-class TextHeightBehavior extends ZacConverter {
+export class TextHeightBehavior extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -433,7 +435,7 @@ class TextHeightBehavior extends ZacConverter {
     }
 }
 
-class BlendMode extends ZacConverter {
+export class BlendMode extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -551,7 +553,7 @@ class BlendMode extends ZacConverter {
     }
 }
 
-class Rect extends ZacConverter {
+export class Rect extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -592,7 +594,7 @@ class Rect extends ZacConverter {
     }
 }
 
-class FilterQuality extends ZacConverter {
+export class FilterQuality extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -614,7 +616,7 @@ class FilterQuality extends ZacConverter {
     }
 }
 
-class Brightness extends ZacConverter {
+export class Brightness extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -628,7 +630,7 @@ class Brightness extends ZacConverter {
     }
 }
 
-class Size extends ZacConverter {
+export class Size extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -642,7 +644,7 @@ class Size extends ZacConverter {
     }
 }
 
-class BoxHeightStyle extends ZacConverter {
+export class BoxHeightStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -672,7 +674,7 @@ class BoxHeightStyle extends ZacConverter {
     }
 }
 
-class BoxWidthStyle extends ZacConverter {
+export class BoxWidthStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -686,9 +688,9 @@ class BoxWidthStyle extends ZacConverter {
     }
 }
 
-abstract class FlutterDartUiShadow extends ZacConverter { }
+export abstract class FlutterDartUiShadow extends ZacConverter { }
 
-class DartUiShadow extends FlutterDartUiShadow {
+export class DartUiShadow extends FlutterDartUiShadow {
     private constructor(data: ZacConverterType) {
         super(data);
     }

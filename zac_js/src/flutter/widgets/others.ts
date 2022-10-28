@@ -1,4 +1,11 @@
-class Builder extends FlutterWidget {
+import { DartDouble, DartInt, FlutterWidget, ZacConverter, ZacConverterType, ZacValue } from "../../base";
+import { ZacActions } from "../../zac/action";
+import { BlendMode, Clip, Color, FilterQuality, Locale, Offset, Rect, TextAlign, TextDirection, TextHeightBehavior } from "../dart_ui";
+import { Key } from "../foundation";
+import { BoxFit, EdgeInsets, FlutterAlignmentGeometry, FlutterDecoration, ImageRepeat, StrutStyle, TextOverflow, TextStyle, TextWidthBasis } from "../painting";
+import { DecorationPosition, HitTestBehavior } from "../rendering";
+
+export class Builder extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -10,7 +17,7 @@ class Builder extends FlutterWidget {
         return new Builder({ converter: 'f:1:Builder', ...data })
     }
 }
-class ClipOval extends FlutterWidget {
+export class ClipOval extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -23,7 +30,7 @@ class ClipOval extends FlutterWidget {
         return new ClipOval({ converter: 'f:1:ClipOval', ...data })
     }
 }
-class ClipRect extends FlutterWidget {
+export class ClipRect extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -36,7 +43,7 @@ class ClipRect extends FlutterWidget {
         return new ClipRect({ converter: 'f:1:ClipRect', ...data })
     }
 }
-class DecoratedBox extends FlutterWidget {
+export class DecoratedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -50,7 +57,7 @@ class DecoratedBox extends FlutterWidget {
         return new DecoratedBox({ converter: 'f:1:DecoratedBox', ...data })
     }
 }
-class FractionalTranslation extends FlutterWidget {
+export class FractionalTranslation extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -64,7 +71,7 @@ class FractionalTranslation extends FlutterWidget {
         return new FractionalTranslation({ converter: 'f:1:FractionalTranslation', ...data })
     }
 }
-class GestureDetector extends FlutterWidget {
+export class GestureDetector extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -84,7 +91,7 @@ class GestureDetector extends FlutterWidget {
         return new GestureDetector({ converter: 'f:1:GestureDetector', ...data })
     }
 }
-class Icon extends FlutterWidget {
+export class Icon extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -100,7 +107,7 @@ class Icon extends FlutterWidget {
         return new Icon({ converter: 'f:1:Icon', ...data })
     }
 }
-class IconData extends FlutterWidget {
+export class IconData extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -114,7 +121,7 @@ class IconData extends FlutterWidget {
         return new IconData({ converter: 'f:1:IconData', ...data })
     }
 }
-class IgnorePointer extends FlutterWidget {
+export class IgnorePointer extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -128,7 +135,7 @@ class IgnorePointer extends FlutterWidget {
         return new IgnorePointer({ converter: 'f:1:IgnorePointer', ...data })
     }
 }
-class FlutterImage extends FlutterWidget {
+export class FlutterImage extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -184,7 +191,7 @@ class FlutterImage extends FlutterWidget {
         return new FlutterImage({ converter: 'f:1:Image.asset', ...data })
     }
 }
-class InteractiveViewer extends FlutterWidget {
+export class InteractiveViewer extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -207,7 +214,7 @@ class InteractiveViewer extends FlutterWidget {
         return new InteractiveViewer({ converter: 'f:1:InteractiveViewer', ...data })
     }
 }
-class Opacity extends FlutterWidget {
+export class Opacity extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -221,7 +228,7 @@ class Opacity extends FlutterWidget {
         return new Opacity({ converter: 'f:1:Opacity', ...data })
     }
 }
-class RotatedBox extends FlutterWidget {
+export class RotatedBox extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -234,9 +241,9 @@ class RotatedBox extends FlutterWidget {
         return new RotatedBox({ converter: 'f:1:RotatedBox', ...data })
     }
 }
-abstract class ScrollPhysics extends ZacConverter { }
+export abstract class ScrollPhysics extends ZacConverter { }
 
-class AlwaysScrollableScrollPhysics extends ScrollPhysics {
+export class AlwaysScrollableScrollPhysics extends ScrollPhysics {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -247,7 +254,7 @@ class AlwaysScrollableScrollPhysics extends ScrollPhysics {
         return new AlwaysScrollableScrollPhysics({ converter: 'f:1:AlwaysScrollableScrollPhysics', ...data })
     }
 }
-class BouncingScrollPhysics extends ScrollPhysics {
+export class BouncingScrollPhysics extends ScrollPhysics {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -258,7 +265,7 @@ class BouncingScrollPhysics extends ScrollPhysics {
         return new BouncingScrollPhysics({ converter: 'f:1:BouncingScrollPhysics', ...data })
     }
 }
-class ClampingScrollPhysics extends ScrollPhysics {
+export class ClampingScrollPhysics extends ScrollPhysics {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -269,7 +276,7 @@ class ClampingScrollPhysics extends ScrollPhysics {
         return new ClampingScrollPhysics({ converter: 'f:1:ClampingScrollPhysics', ...data })
     }
 }
-class FlutterText extends FlutterWidget {
+export class FlutterText extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
     }

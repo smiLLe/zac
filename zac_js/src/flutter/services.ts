@@ -1,4 +1,7 @@
-class SystemUiOverlayStyle extends ZacConverter {
+import { ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { Brightness, Color } from "./dart_ui";
+
+export class SystemUiOverlayStyle extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -15,7 +18,7 @@ class SystemUiOverlayStyle extends ZacConverter {
         return new SystemUiOverlayStyle({ converter: 'f:1:SystemUiOverlayStyle', ...data })
     }
 }
-class TextInputType extends ZacConverter {
+export class TextInputType extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -53,7 +56,7 @@ class TextInputType extends ZacConverter {
         return new TextInputType({ converter: 'f:1:TextInputType.visiblePassword' })
     }
 }
-class TextInputAction extends ZacConverter {
+export class TextInputAction extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -97,7 +100,7 @@ class TextInputAction extends ZacConverter {
         return new TextInputAction({ converter: 'f:1:TextInputAction.unspecified' })
     }
 }
-class TextCapitalization extends ZacConverter {
+export class TextCapitalization extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -114,7 +117,7 @@ class TextCapitalization extends ZacConverter {
         return new TextCapitalization({ converter: 'f:1:TextCapitalization.words' })
     }
 }
-class SmartDashesType extends ZacConverter {
+export class SmartDashesType extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -125,7 +128,7 @@ class SmartDashesType extends ZacConverter {
         return new SmartDashesType({ converter: 'f:1:SmartDashesType.enabled' })
     }
 }
-class SmartQuotesType extends ZacConverter {
+export class SmartQuotesType extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
@@ -136,7 +139,7 @@ class SmartQuotesType extends ZacConverter {
         return new SmartQuotesType({ converter: 'f:1:SmartQuotesType.enabled' })
     }
 }
-class ScrollViewKeyboardDismissBehavior extends ZacConverter {
+export class ScrollViewKeyboardDismissBehavior extends ZacConverter {
     private constructor(data: ZacConverterType) {
         super(data);
     }
