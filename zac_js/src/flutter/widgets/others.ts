@@ -121,6 +121,15 @@ export class IconData extends FlutterWidget {
         return new IconData({ converter: 'f:1:IconData', ...data })
     }
 }
+export class IconThemeData extends FlutterWidget {
+    static new(data: {
+        color?: Color,
+        opacity?: ZacValue<DartDouble>,
+        size?: ZacValue<DartDouble>,
+    }) {
+        return new IconThemeData({ converter: 'f:1:IconThemeData', ...data })
+    }
+}
 export class IgnorePointer extends FlutterWidget {
     private constructor(data: ZacConverterType) {
         super(data);
