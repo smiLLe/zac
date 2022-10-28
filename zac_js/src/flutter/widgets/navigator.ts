@@ -1,5 +1,6 @@
-import { FlutterWidget, ValidTypes, ZacConverter, ZacValue } from "../../base";
+import { FlutterWidget, ValidTypes, ZacConverter } from "../../base";
 import { ZacAction, ZacActions } from "../../zac/action";
+import { ZacValue } from "../../zac/zac_value";
 import { Color } from "../dart_ui";
 import { Key } from "../foundation";
 

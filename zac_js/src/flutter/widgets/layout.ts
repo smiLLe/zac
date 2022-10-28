@@ -1,4 +1,5 @@
-import { DartDouble, DartInt, FlutterWidget, ZacConverterType, ZacValue } from "../../base";
+import { DartDouble, DartInt, FlutterWidget, ZacConverterType } from "../../base";
+import { ZacValue } from "../../zac/zac_value";
 import { Clip, Color, Size, TextDirection } from "../dart_ui";
 import { Key } from "../foundation";
 import { Axis, BoxFit, EdgeInsets, FlutterAlignmentGeometry, FlutterDecoration, FlutterEdgeInsetsGeometry } from "../painting";

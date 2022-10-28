@@ -1,4 +1,5 @@
-import { ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { ZacConverter, ZacConverterType } from "../base";
+import { ZacValue } from "../zac/zac_value";
 import { Brightness, Color } from "./dart_ui";
 
 export class SystemUiOverlayStyle extends ZacConverter {

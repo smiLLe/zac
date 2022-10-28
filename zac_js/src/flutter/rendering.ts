@@ -1,4 +1,5 @@
-import { DartDouble, DartInt, ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { DartDouble, DartInt, ZacConverter, ZacConverterType } from "../base";
+import { ZacValue } from "../zac/zac_value";
 import { Size } from "./dart_ui";
 
 export class HitTestBehavior extends ZacConverter {

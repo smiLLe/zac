@@ -1,4 +1,5 @@
-import { DartDouble, ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { DartDouble, ZacConverter, ZacConverterType } from "../base";
+import { ZacValue } from "../zac/zac_value";
 import { BlendMode, BlurStyle, Color, DartUiShadow, FlutterDartUiShadow, FontFeature, FontStyle, FontWeight, Locale, Offset, Radius, TextBaseline, TextDecoration, TextDecorationStyle, TextLeadingDistribution } from "./dart_ui";
 
 export class BoxShape extends ZacConverter {

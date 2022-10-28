@@ -1,5 +1,6 @@
-import { FlutterWidget, ZacConverterType, ZacValue } from "../base";
+import { FlutterWidget, ZacConverterType } from "../base";
 import { Key } from "../flutter/foundation";
+import { ZacValue } from "./zac_value";
 
 export class ZacWidgetBuilder extends FlutterWidget {
     static new(data: {

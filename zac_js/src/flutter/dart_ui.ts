@@ -1,4 +1,5 @@
-import { DartDouble, DartInt, ZacConverter, ZacConverterType, ZacValue } from "../base";
+import { DartDouble, DartInt, ZacConverter, ZacConverterType } from "../base";
+import { ZacValue } from "../zac/zac_value";
 
 export class Color extends ZacConverter {
     private constructor(data: ZacConverterType) {

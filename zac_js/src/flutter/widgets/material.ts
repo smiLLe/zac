@@ -1,5 +1,6 @@
-import { DartDouble, DartInt, FlutterWidget, SharedValueFamily, ZacConverter, ZacValue, ZacValueList } from "../../base";
+import { DartDouble, DartInt, FlutterWidget, SharedValueFamily, ZacConverter } from "../../base";
 import { ZacAction, ZacActions } from "../../zac/action";
+import { ZacValue, ZacValueList } from "../../zac/zac_value";
 import { BoxHeightStyle, BoxWidthStyle, Brightness, Clip, Color, Locale, Radius, TextAlign, TextDirection, TextHeightBehavior } from "../dart_ui";
 import { GlobalKeyNavigatorState, Key } from "../foundation";
 import { InputDecoration } from "../material";
