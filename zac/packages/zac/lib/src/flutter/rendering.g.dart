@@ -302,8 +302,8 @@ _$_FlutterDecorationPositionBG _$$_FlutterDecorationPositionBGFromJson(
       $type: json['converter'] as String?,
     );
 
-_$FlutterDecorationPositionFG _$$FlutterDecorationPositionFGFromJson(
+_$_FlutterDecorationPositionFG _$$_FlutterDecorationPositionFGFromJson(
         Map<String, dynamic> json) =>
-    _$FlutterDecorationPositionFG(
+    _$_FlutterDecorationPositionFG(
       $type: json['converter'] as String?,
     );

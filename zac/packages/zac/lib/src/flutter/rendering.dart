@@ -353,7 +353,7 @@ class FlutterDecorationPosition with _$FlutterDecorationPosition {
   factory FlutterDecorationPosition.background() = _FlutterDecorationPositionBG;
 
   @FreezedUnionValue('f:1:DecorationPosition.foreground')
-  factory FlutterDecorationPosition.foreground() = FlutterDecorationPositionFG;
+  factory FlutterDecorationPosition.foreground() = _FlutterDecorationPositionFG;
 
   DecorationPosition build(ZacContext zacContext) {
     return map(

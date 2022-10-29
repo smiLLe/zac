@@ -2524,7 +2524,7 @@ FlutterDecorationPosition _$FlutterDecorationPositionFromJson(
     case 'f:1:DecorationPosition.background':
       return _FlutterDecorationPositionBG.fromJson(json);
     case 'f:1:DecorationPosition.foreground':
-      return FlutterDecorationPositionFG.fromJson(json);
+      return _FlutterDecorationPositionFG.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -2540,7 +2540,7 @@ mixin _$FlutterDecorationPosition {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FlutterDecorationPositionBG value) background,
-    required TResult Function(FlutterDecorationPositionFG value) foreground,
+    required TResult Function(_FlutterDecorationPositionFG value) foreground,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -2578,7 +2578,7 @@ class _$_FlutterDecorationPositionBG extends _FlutterDecorationPositionBG {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FlutterDecorationPositionBG value) background,
-    required TResult Function(FlutterDecorationPositionFG value) foreground,
+    required TResult Function(_FlutterDecorationPositionFG value) foreground,
   }) {
     return background(this);
   }
@@ -2594,13 +2594,13 @@ abstract class _FlutterDecorationPositionBG extends FlutterDecorationPosition {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$FlutterDecorationPositionFG extends FlutterDecorationPositionFG {
-  _$FlutterDecorationPositionFG({final String? $type})
+class _$_FlutterDecorationPositionFG extends _FlutterDecorationPositionFG {
+  _$_FlutterDecorationPositionFG({final String? $type})
       : $type = $type ?? 'f:1:DecorationPosition.foreground',
         super._();
 
-  factory _$FlutterDecorationPositionFG.fromJson(Map<String, dynamic> json) =>
-      _$$FlutterDecorationPositionFGFromJson(json);
+  factory _$_FlutterDecorationPositionFG.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterDecorationPositionFGFromJson(json);
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2614,7 +2614,7 @@ class _$FlutterDecorationPositionFG extends FlutterDecorationPositionFG {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FlutterDecorationPositionFG);
+            other is _$_FlutterDecorationPositionFG);
   }
 
   @JsonKey(ignore: true)
@@ -2625,16 +2625,16 @@ class _$FlutterDecorationPositionFG extends FlutterDecorationPositionFG {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FlutterDecorationPositionBG value) background,
-    required TResult Function(FlutterDecorationPositionFG value) foreground,
+    required TResult Function(_FlutterDecorationPositionFG value) foreground,
   }) {
     return foreground(this);
   }
 }
 
-abstract class FlutterDecorationPositionFG extends FlutterDecorationPosition {
-  factory FlutterDecorationPositionFG() = _$FlutterDecorationPositionFG;
-  FlutterDecorationPositionFG._() : super._();
+abstract class _FlutterDecorationPositionFG extends FlutterDecorationPosition {
+  factory _FlutterDecorationPositionFG() = _$_FlutterDecorationPositionFG;
+  _FlutterDecorationPositionFG._() : super._();
 
-  factory FlutterDecorationPositionFG.fromJson(Map<String, dynamic> json) =
-      _$FlutterDecorationPositionFG.fromJson;
+  factory _FlutterDecorationPositionFG.fromJson(Map<String, dynamic> json) =
+      _$_FlutterDecorationPositionFG.fromJson;
 }
