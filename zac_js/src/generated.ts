@@ -1,20 +1,22 @@
-import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter, ZacTransformer } from "./base"
-import { ZacAction, ZacActions } from "./zac/action"
+import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
 import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
+export abstract class FlutterWidget extends ZacConverter { }
 export abstract class FlutterDartUiShadow extends ZacConverter { }
 export abstract class FlutterKey extends ZacConverter { }
-export abstract class FlutterLocalKey extends FlutterKey { }
+export abstract class FlutterLocalKey extends ZacConverter implements FlutterKey { }
 export abstract class FlutterAlignmentGeometry extends ZacConverter { }
 export abstract class FlutterShapeBorder extends ZacConverter { }
-export abstract class FlutterBoxBorder extends FlutterShapeBorder { }
+export abstract class FlutterBoxBorder extends ZacConverter implements FlutterShapeBorder { }
 export abstract class FlutterBorderRadiusGeometry extends ZacConverter { }
-export abstract class FlutterOutlinedBorder extends FlutterShapeBorder { }
+export abstract class FlutterOutlinedBorder extends ZacConverter implements FlutterShapeBorder { }
 export abstract class FlutterDecoration extends ZacConverter { }
 export abstract class FlutterEdgeInsetsGeometry extends ZacConverter { }
 export abstract class FlutterRoute extends ZacConverter { }
 export abstract class FlutterRouteFactory extends ZacConverter { }
-export abstract class FlutterInputBorder extends FlutterShapeBorder { }
+export abstract class ZacAction extends ZacConverter { }
+export abstract class FlutterInputBorder extends ZacConverter implements FlutterShapeBorder { }
+export abstract class ZacTransformer extends ZacConverter { }
 export class FlutterColor extends ZacConverter {
   static fromARGB(data: {
     a: DartInt,
@@ -869,7 +871,7 @@ export class FlutterBoxWidthStyle extends ZacConverter {
     })
   }
 }
-export class DartUiShadow extends FlutterDartUiShadow {
+export class DartUiShadow extends ZacConverter implements FlutterDartUiShadow {
   static new(data: {
     color?: FlutterColor,
     offset?: FlutterOffset,
@@ -881,7 +883,7 @@ export class DartUiShadow extends FlutterDartUiShadow {
     })
   }
 }
-export class FlutterValueKey extends FlutterLocalKey {
+export class FlutterValueKey extends ZacConverter implements FlutterLocalKey {
   static new(data: { value: string }) {
     return new FlutterValueKey({
       converter: 'f:1:ValueKey',
@@ -889,22 +891,22 @@ export class FlutterValueKey extends FlutterLocalKey {
     })
   }
 }
-export class FlutterWrapCrossAlignment extends ZacConverter {
-  static center() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.center'
+export class FlutterStackFit extends ZacConverter {
+  static expand() {
+    return new FlutterStackFit({
+      converter: 'f:1:StackFit.expand'
 
     })
   }
-  static end() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.end'
+  static loose() {
+    return new FlutterStackFit({
+      converter: 'f:1:StackFit.loose'
 
     })
   }
-  static start() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.start'
+  static passthrough() {
+    return new FlutterStackFit({
+      converter: 'f:1:StackFit.passthrough'
 
     })
   }
@@ -1158,7 +1160,7 @@ export class FlutterTextAlignVertical extends ZacConverter {
     })
   }
 }
-export class FlutterBoxShadow extends FlutterDartUiShadow {
+export class FlutterBoxShadow extends ZacConverter implements FlutterDartUiShadow {
   static new(data: {
     color?: FlutterColor,
     offset?: FlutterOffset,
@@ -1172,7 +1174,7 @@ export class FlutterBoxShadow extends FlutterDartUiShadow {
     })
   }
 }
-export class FlutterAlignment extends FlutterAlignmentGeometry {
+export class FlutterAlignment extends ZacConverter implements FlutterAlignmentGeometry {
   static new(data: {
     x: ZacValue<DartDouble>,
     y: ZacValue<DartDouble>
@@ -1237,7 +1239,7 @@ export class FlutterAlignment extends FlutterAlignmentGeometry {
     })
   }
 }
-export class FlutterAlignmentDirectional extends FlutterAlignmentGeometry {
+export class FlutterAlignmentDirectional extends ZacConverter implements FlutterAlignmentGeometry {
   static new(data: {
     start: ZacValue<DartDouble>,
     y: ZacValue<DartDouble>
@@ -1302,7 +1304,7 @@ export class FlutterAlignmentDirectional extends FlutterAlignmentGeometry {
     })
   }
 }
-export class FlutterFractionalOffset extends FlutterAlignmentGeometry {
+export class FlutterFractionalOffset extends ZacConverter implements FlutterAlignmentGeometry {
   static new(data: {
     dx: ZacValue<DartDouble>,
     dy: ZacValue<DartDouble>
@@ -1313,7 +1315,7 @@ export class FlutterFractionalOffset extends FlutterAlignmentGeometry {
     })
   }
 }
-export class FlutterBorderDirectional extends FlutterBoxBorder {
+export class FlutterBorderDirectional extends ZacConverter implements FlutterBoxBorder {
   static new(data: {
     top?: FlutterBorderSide,
     start?: FlutterBorderSide,
@@ -1326,7 +1328,7 @@ export class FlutterBorderDirectional extends FlutterBoxBorder {
     })
   }
 }
-export class FlutterBorder extends FlutterBoxBorder {
+export class FlutterBorder extends ZacConverter implements FlutterBoxBorder {
   static new(data: {
     top?: FlutterBorderSide,
     right?: FlutterBorderSide,
@@ -1363,7 +1365,7 @@ export class FlutterBorderStyle extends ZacConverter {
     })
   }
 }
-export class FlutterBorderRadius extends FlutterBorderRadiusGeometry {
+export class FlutterBorderRadius extends ZacConverter implements FlutterBorderRadiusGeometry {
   static all(data: { radius: FlutterRadius }) {
     return new FlutterBorderRadius({
       converter: 'f:1:BorderRadius.all',
@@ -1398,7 +1400,7 @@ export class FlutterBorderSide extends ZacConverter {
     })
   }
 }
-export class FlutterCircleBorder extends FlutterOutlinedBorder {
+export class FlutterCircleBorder extends ZacConverter implements FlutterOutlinedBorder {
   static new(data: { side?: FlutterBorderSide }) {
     return new FlutterCircleBorder({
       converter: 'f:1:CircleBorder',
@@ -1406,7 +1408,7 @@ export class FlutterCircleBorder extends FlutterOutlinedBorder {
     })
   }
 }
-export class FlutterRoundedRectangleBorder extends FlutterOutlinedBorder {
+export class FlutterRoundedRectangleBorder extends ZacConverter implements FlutterOutlinedBorder {
   static new(data: {
     side?: FlutterBorderSide,
     borderRadius?: FlutterBorderRadiusGeometry
@@ -1417,7 +1419,7 @@ export class FlutterRoundedRectangleBorder extends FlutterOutlinedBorder {
     })
   }
 }
-export class FlutterBoxDecoration extends FlutterDecoration {
+export class FlutterBoxDecoration extends ZacConverter implements FlutterDecoration {
   static new(data: {
     color?: FlutterColor,
     border?: FlutterBoxBorder,
@@ -1432,7 +1434,7 @@ export class FlutterBoxDecoration extends FlutterDecoration {
     })
   }
 }
-export class FlutterShapeDecoration extends FlutterDecoration {
+export class FlutterShapeDecoration extends ZacConverter implements FlutterDecoration {
   static new(data: {
     color?: FlutterColor,
     shadows?: Array<FlutterBoxShadow>,
@@ -1444,7 +1446,7 @@ export class FlutterShapeDecoration extends FlutterDecoration {
     })
   }
 }
-export class FlutterEdgeInsets extends FlutterEdgeInsetsGeometry {
+export class FlutterEdgeInsets extends ZacConverter implements FlutterEdgeInsetsGeometry {
   static all(data: { value: ZacValue<DartDouble> }) {
     return new FlutterEdgeInsets({
       converter: 'f:1:EdgeInsets.all',
@@ -1472,7 +1474,7 @@ export class FlutterEdgeInsets extends FlutterEdgeInsetsGeometry {
     })
   }
 }
-export class FlutterEdgeInsetsDirectional extends FlutterEdgeInsetsGeometry {
+export class FlutterEdgeInsetsDirectional extends ZacConverter implements FlutterEdgeInsetsGeometry {
   static all(data: { value: ZacValue<DartDouble> }) {
     return new FlutterEdgeInsetsDirectional({
       converter: 'f:1:EdgeInsetsDirectional.all',
@@ -1647,22 +1649,22 @@ export class FlutterWrapAlignment extends ZacConverter {
     })
   }
 }
-export class FlutterStackFit extends ZacConverter {
-  static expand() {
-    return new FlutterStackFit({
-      converter: 'f:1:StackFit.expand'
+export class FlutterWrapCrossAlignment extends ZacConverter {
+  static center() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.center'
 
     })
   }
-  static loose() {
-    return new FlutterStackFit({
-      converter: 'f:1:StackFit.loose'
+  static end() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.end'
 
     })
   }
-  static passthrough() {
-    return new FlutterStackFit({
-      converter: 'f:1:StackFit.passthrough'
+  static start() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.start'
 
     })
   }
@@ -1952,12 +1954,12 @@ export class FlutterSmartQuotesType extends ZacConverter {
     })
   }
 }
-export class ZacStateMachineProviderBuilder extends FlutterWidget {
+export class ZacStateMachineProviderBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     family: ZacValue<string>,
     initialState: ZacValue<string>,
-    states: { [key: string]: ZacStateConfig },
+    states: Record<string, ZacStateConfig>,
     child: FlutterWidget,
     initialContext?: ZacValue<ValidTypes>
   }) {
@@ -1967,7 +1969,7 @@ export class ZacStateMachineProviderBuilder extends FlutterWidget {
     })
   }
 }
-export class ZacUpdateContextBuilder extends FlutterWidget {
+export class ZacUpdateContextBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget
@@ -1978,7 +1980,20 @@ export class ZacUpdateContextBuilder extends FlutterWidget {
     })
   }
 }
-export class ZacWidgetBuilder extends FlutterWidget {
+export class ZacStateMachineBuildStateBuilder extends ZacConverter implements FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    family: ZacValue<string>,
+    states: Array<string>,
+    unmappedStateWidget?: FlutterWidget
+  }) {
+    return new ZacStateMachineBuildStateBuilder({
+      converter: 'z:1:StateMachine:BuildState',
+      ...data
+    })
+  }
+}
+export class ZacWidgetBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     data: ZacValue<FlutterWidget>
@@ -1990,7 +2005,7 @@ export class ZacWidgetBuilder extends FlutterWidget {
   }
   static map(data: {
     key?: FlutterKey,
-    data: ZacValue<{ [key: string | number]: ValidTypes }>
+    data: ZacValue<Record<string, ValidTypes>>
   }) {
     return new ZacWidgetBuilder({
       converter: 'z:1:Widget.map',
@@ -1999,7 +2014,7 @@ export class ZacWidgetBuilder extends FlutterWidget {
   }
   static isolate(data: {
     key?: FlutterKey,
-    data: ZacValue<{ [key: string | number]: ValidTypes }>,
+    data: ZacValue<Record<string, ValidTypes>>,
     errorChild?: FlutterWidget,
     debugRethrowError?: boolean
   }) {
@@ -2020,20 +2035,7 @@ export class ZacWidgetBuilder extends FlutterWidget {
     })
   }
 }
-export class ZacStateMachineBuildStateBuilder extends FlutterWidget {
-  static new(data: {
-    key?: FlutterKey,
-    family: ZacValue<string>,
-    states: Array<string>,
-    unmappedStateWidget?: FlutterWidget
-  }) {
-    return new ZacStateMachineBuildStateBuilder({
-      converter: 'z:1:StateMachine:BuildState',
-      ...data
-    })
-  }
-}
-export class ZacExecuteActionsBuilder extends FlutterWidget {
+export class ZacExecuteActionsBuilder extends ZacConverter implements FlutterWidget {
   static once(data: {
     actions: ZacActions,
     child?: FlutterWidget
@@ -2054,7 +2056,7 @@ export class ZacExecuteActionsBuilder extends FlutterWidget {
     })
   }
 }
-export class SharedValueProviderBuilder extends FlutterWidget {
+export class SharedValueProviderBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     value: ValidTypes,
@@ -2069,7 +2071,7 @@ export class SharedValueProviderBuilder extends FlutterWidget {
     })
   }
 }
-export class FlutterClipRect extends FlutterWidget {
+export class FlutterClipRect extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2081,7 +2083,7 @@ export class FlutterClipRect extends FlutterWidget {
     })
   }
 }
-export class FlutterDecoratedBox extends FlutterWidget {
+export class FlutterDecoratedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2094,7 +2096,7 @@ export class FlutterDecoratedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterFractionalTranslation extends FlutterWidget {
+export class FlutterFractionalTranslation extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2107,7 +2109,7 @@ export class FlutterFractionalTranslation extends FlutterWidget {
     })
   }
 }
-export class FlutterGestureDetector extends FlutterWidget {
+export class FlutterGestureDetector extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2126,7 +2128,7 @@ export class FlutterGestureDetector extends FlutterWidget {
     })
   }
 }
-export class FlutterIcon extends FlutterWidget {
+export class FlutterIcon extends ZacConverter implements FlutterWidget {
   static new(data: {
     icon: FlutterIconData,
     key?: FlutterKey,
@@ -2166,7 +2168,7 @@ export class FlutterIconThemeData extends ZacConverter {
     })
   }
 }
-export class FlutterIgnorePointer extends FlutterWidget {
+export class FlutterIgnorePointer extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     ignoring?: ZacValue<boolean>,
@@ -2179,7 +2181,7 @@ export class FlutterIgnorePointer extends FlutterWidget {
     })
   }
 }
-export class FlutterImage extends FlutterWidget {
+export class FlutterImage extends ZacConverter implements FlutterWidget {
   static network(data: {
     src: ZacValue<string>,
     key?: FlutterKey,
@@ -2198,7 +2200,7 @@ export class FlutterImage extends FlutterWidget {
     gaplessPlayback?: ZacValue<boolean>,
     filterQuality?: FlutterFilterQuality,
     isAntiAlias?: ZacValue<boolean>,
-    headers?: { [key: string]: string },
+    headers?: Record<string, string>,
     cacheWidth?: ZacValue<DartInt>,
     cacheHeight?: ZacValue<DartInt>
   }) {
@@ -2235,7 +2237,7 @@ export class FlutterImage extends FlutterWidget {
     })
   }
 }
-export class FlutterInteractiveViewer extends FlutterWidget {
+export class FlutterInteractiveViewer extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget,
@@ -2271,7 +2273,7 @@ export class FlutterScrollViewKeyboardDismissBehavior extends ZacConverter {
     })
   }
 }
-export class FlutterAlign extends FlutterWidget {
+export class FlutterAlign extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     alignment?: FlutterAlignmentGeometry,
@@ -2285,7 +2287,7 @@ export class FlutterAlign extends FlutterWidget {
     })
   }
 }
-export class FlutterAspectRatio extends FlutterWidget {
+export class FlutterAspectRatio extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     aspectRatio: ZacValue<DartDouble>,
@@ -2297,7 +2299,7 @@ export class FlutterAspectRatio extends FlutterWidget {
     })
   }
 }
-export class FlutterCenter extends FlutterWidget {
+export class FlutterCenter extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     widthFactor?: ZacValue<DartDouble>,
@@ -2310,7 +2312,7 @@ export class FlutterCenter extends FlutterWidget {
     })
   }
 }
-export class FlutterConstrainedBox extends FlutterWidget {
+export class FlutterConstrainedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     constraints: FlutterBoxConstraints,
@@ -2322,7 +2324,7 @@ export class FlutterConstrainedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterContainer extends FlutterWidget {
+export class FlutterContainer extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2338,7 +2340,7 @@ export class FlutterContainer extends FlutterWidget {
     })
   }
 }
-export class FlutterExpanded extends FlutterWidget {
+export class FlutterExpanded extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     flex?: ZacValue<DartInt>,
@@ -2350,7 +2352,7 @@ export class FlutterExpanded extends FlutterWidget {
     })
   }
 }
-export class FlutterFittedBox extends FlutterWidget {
+export class FlutterFittedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     fit?: FlutterBoxFit,
@@ -2364,7 +2366,7 @@ export class FlutterFittedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterFlexible extends FlutterWidget {
+export class FlutterFlexible extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     flex?: ZacValue<DartInt>,
@@ -2377,7 +2379,7 @@ export class FlutterFlexible extends FlutterWidget {
     })
   }
 }
-export class FlutterFractionallySizedBox extends FlutterWidget {
+export class FlutterFractionallySizedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2391,7 +2393,7 @@ export class FlutterFractionallySizedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterIntrinsicHeight extends FlutterWidget {
+export class FlutterIntrinsicHeight extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget
@@ -2402,7 +2404,7 @@ export class FlutterIntrinsicHeight extends FlutterWidget {
     })
   }
 }
-export class FlutterIntrinsicWidth extends FlutterWidget {
+export class FlutterIntrinsicWidth extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget
@@ -2413,7 +2415,7 @@ export class FlutterIntrinsicWidth extends FlutterWidget {
     })
   }
 }
-export class FlutterLimitedBox extends FlutterWidget {
+export class FlutterLimitedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     maxWidth?: ZacValue<DartDouble>,
@@ -2426,7 +2428,7 @@ export class FlutterLimitedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterOffstage extends FlutterWidget {
+export class FlutterOffstage extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     offstage?: ZacValue<boolean>,
@@ -2438,7 +2440,7 @@ export class FlutterOffstage extends FlutterWidget {
     })
   }
 }
-export class FlutterOverflowBox extends FlutterWidget {
+export class FlutterOverflowBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     alignment?: FlutterAlignmentGeometry,
@@ -2454,7 +2456,7 @@ export class FlutterOverflowBox extends FlutterWidget {
     })
   }
 }
-export class FlutterPadding extends FlutterWidget {
+export class FlutterPadding extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     padding: FlutterEdgeInsetsGeometry,
@@ -2466,7 +2468,7 @@ export class FlutterPadding extends FlutterWidget {
     })
   }
 }
-export class FlutterPositioned extends FlutterWidget {
+export class FlutterPositioned extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     left?: ZacValue<DartDouble>,
@@ -2512,7 +2514,7 @@ export class FlutterPositioned extends FlutterWidget {
     })
   }
 }
-export class FlutterSafeArea extends FlutterWidget {
+export class FlutterSafeArea extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     left?: ZacValue<boolean>,
@@ -2529,7 +2531,7 @@ export class FlutterSafeArea extends FlutterWidget {
     })
   }
 }
-export class FlutterSingleChildScrollView extends FlutterWidget {
+export class FlutterSingleChildScrollView extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     scrollDirection?: FlutterAxis,
@@ -2547,7 +2549,7 @@ export class FlutterSingleChildScrollView extends FlutterWidget {
     })
   }
 }
-export class FlutterSizedBox extends FlutterWidget {
+export class FlutterSizedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     width?: ZacValue<DartDouble>,
@@ -2598,7 +2600,7 @@ export class FlutterSizedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterSizedOverflowBox extends FlutterWidget {
+export class FlutterSizedOverflowBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     size: FlutterSize,
@@ -2611,7 +2613,7 @@ export class FlutterSizedOverflowBox extends FlutterWidget {
     })
   }
 }
-export class FlutterSpacer extends FlutterWidget {
+export class FlutterSpacer extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     flex?: ZacValue<DartInt>
@@ -2622,7 +2624,7 @@ export class FlutterSpacer extends FlutterWidget {
     })
   }
 }
-export class FlutterUnconstrainedBox extends FlutterWidget {
+export class FlutterUnconstrainedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -2637,7 +2639,7 @@ export class FlutterUnconstrainedBox extends FlutterWidget {
     })
   }
 }
-export class FlutterColumn extends FlutterWidget {
+export class FlutterColumn extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     mainAxisAlignment?: FlutterMainAxisAlignment,
@@ -2654,7 +2656,7 @@ export class FlutterColumn extends FlutterWidget {
     })
   }
 }
-export class FlutterGridView extends FlutterWidget {
+export class FlutterGridView extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     scrollDirection?: FlutterAxis,
@@ -2679,7 +2681,7 @@ export class FlutterGridView extends FlutterWidget {
     })
   }
 }
-export class FlutterIndexedStack extends FlutterWidget {
+export class FlutterIndexedStack extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     alignment?: FlutterAlignmentGeometry,
@@ -2694,7 +2696,7 @@ export class FlutterIndexedStack extends FlutterWidget {
     })
   }
 }
-export class FlutterListView extends FlutterWidget {
+export class FlutterListView extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     scrollDirection?: FlutterAxis,
@@ -2721,7 +2723,7 @@ export class FlutterListView extends FlutterWidget {
     })
   }
 }
-export class FlutterRow extends FlutterWidget {
+export class FlutterRow extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     mainAxisAlignment?: FlutterMainAxisAlignment,
@@ -2738,7 +2740,7 @@ export class FlutterRow extends FlutterWidget {
     })
   }
 }
-export class FlutterStack extends FlutterWidget {
+export class FlutterStack extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     alignment?: FlutterAlignmentGeometry,
@@ -2753,7 +2755,7 @@ export class FlutterStack extends FlutterWidget {
     })
   }
 }
-export class FlutterWrap extends FlutterWidget {
+export class FlutterWrap extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     direction?: FlutterAxis,
@@ -2773,7 +2775,7 @@ export class FlutterWrap extends FlutterWidget {
     })
   }
 }
-export class FlutterAppBar extends FlutterWidget {
+export class FlutterAppBar extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     leading?: FlutterWidget,
@@ -2807,7 +2809,7 @@ export class FlutterAppBar extends FlutterWidget {
     })
   }
 }
-export class FlutterElevatedButton extends FlutterWidget {
+export class FlutterElevatedButton extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget,
@@ -2836,7 +2838,7 @@ export class FlutterElevatedButton extends FlutterWidget {
     })
   }
 }
-export class FlutterOutlinedButton extends FlutterWidget {
+export class FlutterOutlinedButton extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget,
@@ -2865,7 +2867,7 @@ export class FlutterOutlinedButton extends FlutterWidget {
     })
   }
 }
-export class FlutterTextButton extends FlutterWidget {
+export class FlutterTextButton extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget,
@@ -2894,7 +2896,7 @@ export class FlutterTextButton extends FlutterWidget {
     })
   }
 }
-export class FlutterButtonBar extends FlutterWidget {
+export class FlutterButtonBar extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     alignment?: FlutterMainAxisAlignment,
@@ -2913,7 +2915,7 @@ export class FlutterButtonBar extends FlutterWidget {
     })
   }
 }
-export class FlutterCard extends FlutterWidget {
+export class FlutterCard extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     color?: FlutterColor,
@@ -2932,7 +2934,7 @@ export class FlutterCard extends FlutterWidget {
     })
   }
 }
-export class FlutterDialogs extends FlutterWidget {
+export class FlutterDialogs extends ZacConverter implements FlutterWidget {
   static dialog(data: {
     key?: FlutterKey,
     backgroundColor?: FlutterColor,
@@ -3008,7 +3010,7 @@ export class FlutterDialogs extends FlutterWidget {
     })
   }
 }
-export class FlutterDialogActions extends ZacAction {
+export class FlutterDialogActions extends ZacConverter implements ZacAction {
   static showDialog(data: {
     child: FlutterWidget,
     barrierDismissible?: ZacValue<boolean>,
@@ -3024,7 +3026,22 @@ export class FlutterDialogActions extends ZacAction {
     })
   }
 }
-export class FlutterClipOval extends FlutterWidget {
+export class FlutterDivider extends ZacConverter implements FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    height?: ZacValue<DartDouble>,
+    thickness?: ZacValue<DartDouble>,
+    indent?: ZacValue<DartDouble>,
+    endIndent?: ZacValue<DartDouble>,
+    color?: FlutterColor
+  }) {
+    return new FlutterDivider({
+      converter: 'f:1:Divider',
+      ...data
+    })
+  }
+}
+export class FlutterClipOval extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -3036,22 +3053,7 @@ export class FlutterClipOval extends FlutterWidget {
     })
   }
 }
-export class FlutterDrawer extends FlutterWidget {
-  static new(data: {
-    key?: FlutterKey,
-    backgroundColor?: FlutterColor,
-    elevation?: ZacValue<DartDouble>,
-    shape?: FlutterShapeBorder,
-    child?: FlutterWidget,
-    semanticLabel?: ZacValue<string>
-  }) {
-    return new FlutterDrawer({
-      converter: 'f:1:Drawer',
-      ...data
-    })
-  }
-}
-export class FlutterListTile extends FlutterWidget {
+export class FlutterListTile extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     leading?: FlutterWidget,
@@ -3085,7 +3087,7 @@ export class FlutterListTile extends FlutterWidget {
     })
   }
 }
-export class FlutterMaterial extends FlutterWidget {
+export class FlutterMaterial extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -3104,7 +3106,7 @@ export class FlutterMaterial extends FlutterWidget {
     })
   }
 }
-export class FlutterMaterialApp extends FlutterWidget {
+export class FlutterMaterialApp extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     navigatorKey?: ZacValue<any /*GlobalKey<NavigatorState>*/>,
@@ -3130,7 +3132,7 @@ export class FlutterMaterialApp extends FlutterWidget {
     })
   }
 }
-export class FlutterProgressIndicator extends FlutterWidget {
+export class FlutterProgressIndicator extends ZacConverter implements FlutterWidget {
   static linear(data: {
     key?: FlutterKey,
     value?: ZacValue<DartDouble>,
@@ -3160,7 +3162,7 @@ export class FlutterProgressIndicator extends FlutterWidget {
     })
   }
 }
-export class FlutterRefreshIndicator extends FlutterWidget {
+export class FlutterRefreshIndicator extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget,
@@ -3195,7 +3197,7 @@ export class FlutterRefreshIndicatorTriggerMode extends ZacConverter {
     })
   }
 }
-export class FlutterScaffold extends FlutterWidget {
+export class FlutterScaffold extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     appBar?: FlutterWidget,
@@ -3223,7 +3225,7 @@ export class FlutterScaffold extends FlutterWidget {
     })
   }
 }
-export class FlutterScaffoldActions extends ZacAction {
+export class FlutterScaffoldActions extends ZacConverter implements ZacAction {
   static openDrawer() {
     return new FlutterScaffoldActions({
       converter: 'f:1:Scaffold.openDrawer'
@@ -3260,7 +3262,7 @@ export class FlutterScaffoldActions extends ZacAction {
     })
   }
 }
-export class FlutterScaffoldMessenger extends ZacAction {
+export class FlutterScaffoldMessenger extends ZacConverter implements ZacAction {
   static showSnackBar(data: { snackBar: FlutterSnackBar }) {
     return new FlutterScaffoldMessenger({
       converter: 'f:1:ScaffoldMessenger.showSnackBar',
@@ -3298,7 +3300,7 @@ export class FlutterScaffoldMessenger extends ZacAction {
     })
   }
 }
-export class FlutterSnackBar extends FlutterWidget {
+export class FlutterSnackBar extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     content: FlutterWidget,
@@ -3332,7 +3334,7 @@ export class FlutterSnackBarBehavior extends ZacConverter {
     })
   }
 }
-export class FlutterSnackBarAction extends FlutterWidget {
+export class FlutterSnackBarAction extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     textColor?: FlutterColor,
@@ -3346,7 +3348,7 @@ export class FlutterSnackBarAction extends FlutterWidget {
     })
   }
 }
-export class FlutterMaterialBanner extends FlutterWidget {
+export class FlutterMaterialBanner extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     content: FlutterWidget,
@@ -3366,7 +3368,7 @@ export class FlutterMaterialBanner extends FlutterWidget {
     })
   }
 }
-export class FlutterSelectableText extends FlutterWidget {
+export class FlutterSelectableText extends ZacConverter implements FlutterWidget {
   static new(data: {
     data: string,
     key?: FlutterKey,
@@ -3394,7 +3396,7 @@ export class FlutterSelectableText extends FlutterWidget {
     })
   }
 }
-export class FlutterTextField extends FlutterWidget {
+export class FlutterTextField extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     decoration?: FlutterInputDecoration,
@@ -3463,7 +3465,7 @@ export class FlutterNavigatorState extends ZacConverter {
     })
   }
 }
-export class FlutterNavigator extends FlutterWidget {
+export class FlutterNavigator extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     onGenerateRoute?: FlutterRouteFactory,
@@ -3477,7 +3479,7 @@ export class FlutterNavigator extends FlutterWidget {
     })
   }
 }
-export class FlutterNavigatorActions extends ZacAction {
+export class FlutterNavigatorActions extends ZacConverter implements ZacAction {
   static push(data: {
     route: FlutterRoute,
     navigatorState?: FlutterNavigatorState
@@ -3537,7 +3539,7 @@ export class FlutterNavigatorActions extends ZacAction {
     })
   }
 }
-export class FlutterPageRouteBuilder extends FlutterRoute {
+export class FlutterPageRouteBuilder extends ZacConverter implements FlutterRoute {
   static new(data: {
     child: FlutterWidget,
     settings?: FlutterRouteSettings,
@@ -3565,7 +3567,7 @@ export class FlutterRouteSettings extends ZacConverter {
     })
   }
 }
-export class FlutterOpacity extends FlutterWidget {
+export class FlutterOpacity extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     opacity: ZacValue<DartDouble>,
@@ -3578,7 +3580,7 @@ export class FlutterOpacity extends FlutterWidget {
     })
   }
 }
-export class FlutterRotatedBox extends FlutterWidget {
+export class FlutterRotatedBox extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget,
@@ -3610,7 +3612,7 @@ export class FlutterScrollPhysics extends ZacConverter {
     })
   }
 }
-export class FlutterCustomScrollView extends FlutterWidget {
+export class FlutterCustomScrollView extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     scrollDirection?: FlutterAxis,
@@ -3685,7 +3687,7 @@ export class FlutterSliverGridDelegate extends ZacConverter {
     })
   }
 }
-export class FlutterSliverGrid extends FlutterWidget {
+export class FlutterSliverGrid extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     delegate: FlutterSliverChildDelegate,
@@ -3697,7 +3699,7 @@ export class FlutterSliverGrid extends FlutterWidget {
     })
   }
 }
-export class FlutterSliverList extends FlutterWidget {
+export class FlutterSliverList extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     delegate: FlutterSliverChildDelegate
@@ -3708,7 +3710,7 @@ export class FlutterSliverList extends FlutterWidget {
     })
   }
 }
-export class FlutterSliverPadding extends FlutterWidget {
+export class FlutterSliverPadding extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     sliver?: FlutterWidget,
@@ -3720,7 +3722,7 @@ export class FlutterSliverPadding extends FlutterWidget {
     })
   }
 }
-export class FlutterSliverToBoxAdapter extends FlutterWidget {
+export class FlutterSliverToBoxAdapter extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child?: FlutterWidget
@@ -3731,7 +3733,7 @@ export class FlutterSliverToBoxAdapter extends FlutterWidget {
     })
   }
 }
-export class FlutterText extends FlutterWidget {
+export class FlutterText extends ZacConverter implements FlutterWidget {
   static new(data: {
     data: ZacValue<string>,
     key?: FlutterKey,
@@ -3754,7 +3756,7 @@ export class FlutterText extends FlutterWidget {
     })
   }
 }
-export class FlutterBuilder extends FlutterWidget {
+export class FlutterBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget
@@ -3765,22 +3767,34 @@ export class FlutterBuilder extends FlutterWidget {
     })
   }
 }
-export class FlutterDivider extends FlutterWidget {
+export class FlutterDrawer extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    height?: ZacValue<DartDouble>,
-    thickness?: ZacValue<DartDouble>,
-    indent?: ZacValue<DartDouble>,
-    endIndent?: ZacValue<DartDouble>,
-    color?: FlutterColor
+    backgroundColor?: FlutterColor,
+    elevation?: ZacValue<DartDouble>,
+    shape?: FlutterShapeBorder,
+    child?: FlutterWidget,
+    semanticLabel?: ZacValue<string>
   }) {
-    return new FlutterDivider({
-      converter: 'f:1:Divider',
+    return new FlutterDrawer({
+      converter: 'f:1:Drawer',
       ...data
     })
   }
 }
-export class ZacFlutterNavigatorActions extends ZacAction {
+export class ZacFlutterGlobalKeyNavigatorStateProvider extends ZacConverter implements FlutterWidget {
+  static new(data: {
+    family: ValidTypes,
+    child: FlutterWidget,
+    debugLabel?: ZacValue<string>
+  }) {
+    return new ZacFlutterGlobalKeyNavigatorStateProvider({
+      converter: 'z:1:GlobalKeyNavigatorStateProvider',
+      ...data
+    })
+  }
+}
+export class ZacFlutterNavigatorActions extends ZacConverter implements ZacAction {
   static popUntilRouteName(data: {
     routeName: ZacValue<string>,
     navigatorState?: FlutterNavigatorState
@@ -3803,7 +3817,7 @@ export class RouteFactoryRouteConfig extends ZacConverter {
     })
   }
 }
-export class RouteFactorySingleRoute extends FlutterRouteFactory {
+export class RouteFactorySingleRoute extends ZacConverter implements FlutterRouteFactory {
   static new(data: {
     routeConfig: RouteFactoryRouteConfig,
     provideArgsNamePrefix?: string
@@ -3814,9 +3828,9 @@ export class RouteFactorySingleRoute extends FlutterRouteFactory {
     })
   }
 }
-export class RouteFactoryFromRoutes extends FlutterRouteFactory {
+export class RouteFactoryFromRoutes extends ZacConverter implements FlutterRouteFactory {
   static new(data: {
-    routes: { [key: string]: RouteFactoryRouteConfig },
+    routes: Record<string, RouteFactoryRouteConfig>,
     provideArgsNamePrefix?: string
   }) {
     return new RouteFactoryFromRoutes({
@@ -3825,7 +3839,7 @@ export class RouteFactoryFromRoutes extends FlutterRouteFactory {
     })
   }
 }
-export class FlutterRefreshIndicatorAction extends ZacAction {
+export class FlutterRefreshIndicatorAction extends ZacConverter implements ZacAction {
   static new() {
     return new FlutterRefreshIndicatorAction({
       converter: 'z:1:RefreshIndicator.complete'
@@ -3833,7 +3847,7 @@ export class FlutterRefreshIndicatorAction extends ZacAction {
     })
   }
 }
-export class SharedValueActions extends ZacAction {
+export class SharedValueActions extends ZacConverter implements ZacAction {
   static new(data: {
     family: ValidTypes,
     transformer: ZacTransformers
@@ -3868,7 +3882,7 @@ export class SharedValueConsumeType extends ZacConverter {
     })
   }
 }
-export class ZacValueActions extends ZacAction {
+export class ZacValueActions extends ZacConverter implements ZacAction {
   static asPayload(data: {
     value: ZacValueRead<ValidTypes>,
     actions: ZacActions
@@ -3901,7 +3915,7 @@ export class ZacStateConfig extends ZacConverter {
     })
   }
 }
-export class FlutterMaterialPageRoute extends FlutterRoute {
+export class FlutterMaterialPageRoute extends ZacConverter implements FlutterRoute {
   static new(data: {
     child: FlutterWidget,
     settings?: FlutterRouteSettings,
@@ -3914,7 +3928,7 @@ export class FlutterMaterialPageRoute extends FlutterRoute {
     })
   }
 }
-export class FlutterUnderlineInputBorder extends FlutterInputBorder {
+export class FlutterUnderlineInputBorder extends ZacConverter implements FlutterInputBorder {
   static new(data: {
     borderSide?: FlutterBorderSide,
     borderRadius?: FlutterBorderRadius
@@ -3925,7 +3939,7 @@ export class FlutterUnderlineInputBorder extends FlutterInputBorder {
     })
   }
 }
-export class ZacStateMachineActions extends ZacAction {
+export class ZacStateMachineActions extends ZacConverter implements ZacAction {
   static send(data: {
     family: ValidTypes,
     event: ZacValue<string>
@@ -3945,7 +3959,7 @@ export class ZacStateMachineActions extends ZacAction {
     })
   }
 }
-export class ZacStateMachineTransformer extends ZacTransformer {
+export class ZacStateMachineTransformer extends ZacConverter implements ZacTransformer {
   static pickState() {
     return new ZacStateMachineTransformer({
       converter: 'z:1:StateMachine:Transformer.pickState'
@@ -3967,7 +3981,7 @@ export class ZacTransformers extends ZacConverter {
     })
   }
 }
-export class ConvertTransformer extends ZacTransformer {
+export class ConvertTransformer extends ZacConverter implements ZacTransformer {
   static new() {
     return new ConvertTransformer({
       converter: 'z:1:Transformer:Converter'
@@ -3975,7 +3989,7 @@ export class ConvertTransformer extends ZacTransformer {
     })
   }
 }
-export class MapTransformer extends ZacTransformer {
+export class MapTransformer extends ZacConverter implements ZacTransformer {
   static values() {
     return new MapTransformer({
       converter: 'z:1:Transformer:Map.values'
@@ -4052,7 +4066,7 @@ export class MapTransformer extends ZacTransformer {
     })
   }
 }
-export class IterableTransformer extends ZacTransformer {
+export class IterableTransformer extends ZacConverter implements ZacTransformer {
   static map(data: { transformer: ZacTransformers }) {
     return new IterableTransformer({
       converter: 'z:1:Transformer:Iterable.map',
@@ -4144,7 +4158,7 @@ export class IterableTransformer extends ZacTransformer {
     })
   }
 }
-export class ListTransformer extends ZacTransformer {
+export class ListTransformer extends ZacConverter implements ZacTransformer {
   static reversed() {
     return new ListTransformer({
       converter: 'z:1:Transformer:List.reversed'
@@ -4152,7 +4166,7 @@ export class ListTransformer extends ZacTransformer {
     })
   }
 }
-export class ObjectTransformer extends ZacTransformer {
+export class ObjectTransformer extends ZacConverter implements ZacTransformer {
   static isList() {
     return new ObjectTransformer({
       converter: 'z:1:Transformer:Object.isList'
@@ -4196,7 +4210,7 @@ export class ObjectTransformer extends ZacTransformer {
     })
   }
 }
-export class NumTransformer extends ZacTransformer {
+export class NumTransformer extends ZacConverter implements ZacTransformer {
   static toDouble() {
     return new NumTransformer({
       converter: 'z:1:Transformer:num.toDouble'
@@ -4276,7 +4290,7 @@ export class NumTransformer extends ZacTransformer {
     })
   }
 }
-export class IntTransformer extends ZacTransformer {
+export class IntTransformer extends ZacConverter implements ZacTransformer {
   static parse() {
     return new IntTransformer({
       converter: 'z:1:Transformer:int.parse'
@@ -4290,7 +4304,7 @@ export class IntTransformer extends ZacTransformer {
     })
   }
 }
-export class StringTransformer extends ZacTransformer {
+export class StringTransformer extends ZacConverter implements ZacTransformer {
   static length_() {
     return new StringTransformer({
       converter: 'z:1:Transformer:String.length'
@@ -4325,7 +4339,7 @@ export class StringTransformer extends ZacTransformer {
     })
   }
 }
-export class JsonTransformer extends ZacTransformer {
+export class JsonTransformer extends ZacConverter implements ZacTransformer {
   static encode() {
     return new JsonTransformer({
       converter: 'z:1:Transformer:Json.encode'
@@ -4339,7 +4353,7 @@ export class JsonTransformer extends ZacTransformer {
     })
   }
 }
-export class FlutterOutlineInputBorder extends FlutterInputBorder {
+export class FlutterOutlineInputBorder extends ZacConverter implements FlutterInputBorder {
   static new(data: {
     borderSide?: FlutterBorderSide,
     borderRadius?: FlutterBorderRadius,
@@ -4408,14 +4422,10 @@ export class FlutterInputDecoration extends ZacConverter {
     })
   }
 }
-export class ZacFlutterGlobalKeyNavigatorStateProvider extends FlutterWidget {
-  static new(data: {
-    family: ValidTypes,
-    child: FlutterWidget,
-    debugLabel?: ZacValue<string>
-  }) {
-    return new ZacFlutterGlobalKeyNavigatorStateProvider({
-      converter: 'z:1:GlobalKeyNavigatorStateProvider',
+export class ZacActions extends ZacConverter {
+  static new(data: { actions: Array<ZacAction> }) {
+    return new ZacActions({
+      converter: 'z:1:Actions',
       ...data
     })
   }

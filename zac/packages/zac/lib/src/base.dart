@@ -36,6 +36,7 @@ const nonConverterFreezed = Freezed(
   copyWith: false,
 );
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterWidget {
   factory FlutterWidget.fromJson(Object data) =>
       ConverterHelper.convertToType<FlutterWidget>(data);

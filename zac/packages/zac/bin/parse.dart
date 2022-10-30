@@ -53,28 +53,22 @@ void main() async {
         '${Directory.current.path}${Platform.pathSeparator}${[
       'zac_js',
       'src',
-      'test.ts'
+      'generated.ts'
     ].join(Platform.pathSeparator)}');
     writeFile.createSync();
-    await writeFile.writeAsString('''
-import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter, ZacTransformer } from "./base"
-import { ZacAction, ZacActions } from "./zac/action"
-import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
-
-${allFiles.abstracts.join('\n')}
-${allFiles.builders.join('\n')}''');
+    await writeFile.writeAsString(allFiles.toString());
   }
 }
 
 /// Map "simple" Dart types to TS types
 String getMappedType(String dartType) {
-  /// for example Map<string, dynamic> to {[key: string | number]: ValidTypes}}
+  /// for example Map<string, dynamic> to a Typescript Record<>
   if (dartType.startsWith('Map<')) {
     final parts =
         dartType.replaceAll('Map<', '').replaceAll('>', '').split(',');
     final mappedParts =
         parts.map((e) => e.trim()).map((e) => getMappedType(e)).toList();
-    return '{[key: string | number]: ${mappedParts[1]}}';
+    return 'Record<string, ${mappedParts[1]}>';
   }
 
   switch (dartType) {
@@ -107,11 +101,45 @@ String getMappedType(String dartType) {
   }
 }
 
+String mapDartTypeToTypescript(AllFiles allFiles, DartType type) {
+  if (type is! InterfaceType) {
+    throw Error();
+  }
+  var name = type.getDisplayString(withNullability: false);
+  if (type.typeArguments.isNotEmpty) {
+    name = name.split('<').first;
+  }
+
+  switch (name) {
+    case 'bool':
+      return 'boolean';
+    case 'String':
+    case 'DateTime':
+      return 'string';
+    case 'double':
+      return 'DartDouble';
+    case 'int':
+      return 'DartInt';
+    case 'dynamic':
+    case 'Object':
+      return 'ValidTypes';
+    case 'Map':
+      return 'Record';
+    case 'List':
+      return 'Array';
+    default:
+      if (allFiles.allKnownTypes.contains(name)) {
+        return name;
+      }
+      return 'any';
+  }
+}
+
 /// Map DartTypes with generics like List<T>, Map<T, T>, SomeClass<T>
 /// to Typescript Types
 String getMappedTypeWithTypeArgs(String dartType, List<DartType> types) {
   if (dartType == 'Map' && types.length == 2) {
-    return '{[key: string]: ${getMappedType(types[1].getDisplayString(withNullability: true))}}';
+    return 'Record<string, ${getMappedType(types[1].getDisplayString(withNullability: true))}>';
   }
   if (dartType == 'List' && types.length == 1) {
     return 'Array<${getMappedType(types[0].getDisplayString(withNullability: true))}>';
@@ -123,6 +151,9 @@ String getMappedTypeWithTypeArgs(String dartType, List<DartType> types) {
     return 'Array<${getMappedType(types[0].getDisplayString(withNullability: true))}>';
   }
 
+  // print(
+  //     '${types.first.getDisplayString(withNullability: false)}: ${types.first is InterfaceType} ${(types.first as InterfaceType).typeArguments.map((e) => e.getDisplayString(withNullability: false)).join('++')}');
+
   return '$dartType<${types.map((e) {
     return getMappedType(e.getDisplayString(withNullability: true));
   }).join(',')}>';
@@ -132,6 +163,15 @@ class AllFiles {
   final Iterable<OneFile> files;
 
   AllFiles(this.files);
+
+  late final Iterable<String> allKnownTypes =
+      files.fold(<String>[], (previousValue, oneFile) {
+    final allInFile = [
+      ...oneFile.abstracts.map((tsClass) => tsClass.className),
+      ...oneFile.builders.map((tsClass) => tsClass.className)
+    ];
+    return [...previousValue, ...allInFile];
+  });
 
   late final Iterable<TsAbstractClass> abstracts = files
       .where((oneFile) => oneFile.abstracts.isNotEmpty)
@@ -146,6 +186,16 @@ class AllFiles {
     return [...previousValue, ...element.builders];
   }).toList()
     ..sort((a, b) => a.order.compareTo(b.order));
+
+  @override
+  String toString() {
+    return '''
+import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
+import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
+
+${abstracts.join('\n')}
+${builders.join('\n')}''';
+  }
 }
 
 class OneFile {
@@ -154,63 +204,59 @@ class OneFile {
 
   OneFile(this.lib, this.origin);
 
-  late final Iterable<TsAbstractClass> abstracts = lib.element.topLevelElements
+  late final Iterable<ClassElement> tsClasses = lib.element.topLevelElements
       .whereType<ClassElement>()
       .where((cls) => !cls.displayName.startsWith('_'))
+      .where((cls) => cls.metadata
+          .where((element) =>
+              element
+                  .computeConstantValue()
+                  ?.type
+                  ?.getDisplayString(withNullability: false) ==
+              'TsClass')
+          .isNotEmpty);
+
+  late final Iterable<TsAbstractClass> abstracts = tsClasses
       .where((cls) => cls.isAbstract)
-      .where((cls) => cls.metadata
-          .where((element) =>
-              element
-                  .computeConstantValue()
-                  ?.type
-                  ?.getDisplayString(withNullability: false) ==
-              'TsClass')
-          .isNotEmpty) // free
-      .map((cls) {
-    final order = cls.metadata
-        .map((e) => e.computeConstantValue())
-        .where((e) =>
-            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
-        .map((e) => e?.getField('order')?.toIntValue())
-        .first;
-    if (null == order) {
-      throw Error();
-    }
-    return TsAbstractClass(cls, order);
-  });
+      .map((cls) => TsAbstractClass(cls));
 
-  late final Iterable<TsClass> builders = lib.element.topLevelElements
-      .whereType<ClassElement>()
-      .where((cls) => !cls.displayName.startsWith('_'))
-      .where((cls) => !cls.isAbstract)
-      .where((cls) => cls.metadata
-          .where((element) =>
-              element
-                  .computeConstantValue()
-                  ?.type
-                  ?.getDisplayString(withNullability: false) ==
-              'TsClass')
-          .isNotEmpty) // free
-      .map((cls) {
-    final order = cls.metadata
-        .map((e) => e.computeConstantValue())
-        .where((e) =>
-            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
-        .map((e) => e?.getField('order')?.toIntValue())
-        .first;
-    if (null == order) {
-      throw Error();
-    }
-
-    return TsClass(cls, order);
-  });
+  late final Iterable<TsClass> builders =
+      tsClasses.where((cls) => !cls.isAbstract).map((cls) => TsClass(cls));
 }
 
-class TsClass {
-  final ClassElement element;
-  final int order;
+class TsAbstractClass {
+  TsAbstractClass(this.element) {
+    final o = element.metadata
+        .map((e) => e.computeConstantValue())
+        .where((e) =>
+            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
+        .map((e) => e?.getField('order')?.toIntValue())
+        .first;
+    if (null == o) {
+      throw Error();
+    }
+    order = o;
+  }
 
-  TsClass(this.element, this.order);
+  final ClassElement element;
+  late final int order;
+
+  late final String className = element.displayName;
+
+  late final List<String> implements = element.interfaces.isEmpty
+      ? <String>[]
+      : element.interfaces
+          .map((e) => e.getDisplayString(withNullability: false))
+          .toList();
+
+  @override
+  String toString() {
+    return 'export abstract class $className extends ZacConverter${implements.isEmpty ? '' : ' implements ${implements.join(', ')}'} {}';
+  }
+}
+
+class TsClass extends TsAbstractClass {
+  TsClass(super.element);
 
   /// fixes reserved Typescript names
   /// or create a name for base constructor
@@ -226,14 +272,6 @@ class TsClass {
         return ctor.name;
     }
   }
-
-  late final String className = element.displayName;
-
-  late final String implements = element.interfaces.isEmpty
-      ? 'ZacConverter'
-      : element.interfaces
-          .map((e) => e.getDisplayString(withNullability: false))
-          .join(',');
 
   late final Iterable<String> staticCtors = element.constructors.where((ctor) {
     return !(!ctor.isFactory ||
@@ -280,17 +318,8 @@ static ${ctorName(ctor)}(${params.isNotEmpty ? 'data: {${params.join(',\n')}}' :
   @override
   String toString() {
     return '''
-export ${element.isAbstract ? 'abstract ' : ''}class $className extends $implements {
+export class $className extends ZacConverter${implements.isEmpty ? '' : ' implements ${implements.join(', ')}'} {
   ${staticCtors.join('\n')}
 }''';
-  }
-}
-
-class TsAbstractClass extends TsClass {
-  TsAbstractClass(super.element, super.order);
-
-  @override
-  String toString() {
-    return 'export abstract class $className extends $implements {}';
   }
 }

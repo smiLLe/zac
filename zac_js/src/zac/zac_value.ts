@@ -1,7 +1,5 @@
-import { SharedValueFamily, ValidTypes, ZacConverter, ZacTransformers } from "../base";
-import { ZacAction, ZacActions } from "./action";
-
-
+import { SharedValueFamily, ValidTypes, ZacConverter } from "../base";
+import { ZacTransformers } from "../generated";
 
 export class ZacValueRead<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
@@ -79,11 +77,11 @@ export class ZacValueList<T> extends ZacValueListRead<T> {
 
 }
 
-export class ZacValueActions extends ZacAction {
-    static asActionPayload(data: {
-        value: ZacValueRead<ValidTypes>,
-        actions: ZacActions
-    }) {
-        return new ZacValueActions({ converter: 'z:1:ZacValue.asActionPayload', ...data })
-    }
-}
+// export class ZacValueActions extends ZacAction {
+//     static asActionPayload(data: {
+//         value: ZacValueRead<ValidTypes>,
+//         actions: ZacActions
+//     }) {
+//         return new ZacValueActions({ converter: 'z:1:ZacValue.asActionPayload', ...data })
+//     }
+// }

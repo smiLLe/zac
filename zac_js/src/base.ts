@@ -23,17 +23,17 @@ export abstract class ZacConverter {
     }
 }
 
-export abstract class FlutterWidget extends ZacConverter { }
+// export abstract class FlutterWidget extends ZacConverter { }
 
-export abstract class ZacTransformer extends ZacConverter { }
+// export abstract class ZacTransformer extends ZacConverter { }
 
-export class ZacTransformers extends ZacConverter {
-    static new(data: {
-        transformers: Array<ZacTransformer>
-    }) {
-        return new ZacTransformers({
-            converter: 'z:1:ZacValue',
-            ...data
-        });
-    }
-}
+// export class ZacTransformers extends ZacConverter {
+//     static new(data: {
+//         transformers: Array<ZacTransformer>
+//     }) {
+//         return new ZacTransformers({
+//             converter: 'z:1:ZacValue',
+//             ...data
+//         });
+//     }
+// }

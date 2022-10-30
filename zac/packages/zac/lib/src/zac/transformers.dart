@@ -26,6 +26,7 @@ class ZacTransformValue with _$ZacTransformValue {
   ]) = _ZacTransformValue;
 }
 
+@TsClass()
 abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);

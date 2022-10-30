@@ -13,6 +13,7 @@ import 'package:zac/src/zac/widget.dart';
 part 'action.freezed.dart';
 part 'action.g.dart';
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class ZacAction {
   factory ZacAction.fromJson(Map<String, dynamic> data) {
     return ConverterHelper.convertToType<ZacAction>(data);
@@ -38,6 +39,7 @@ class ZacActionPayload with _$ZacActionPayload {
 }
 
 @defaultConverterFreezed
+@TsClass()
 class ZacActions with _$ZacActions {
   const ZacActions._();
 
