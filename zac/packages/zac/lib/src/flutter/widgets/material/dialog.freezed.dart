@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
-    case 'f:1:showDialog':
-      return _FlutterDialogsShowDialog.fromJson(json);
     case 'f:1:Dialog':
       return _FlutterDialogsDialog.fromJson(json);
     case 'f:1:AlertDialog':
@@ -35,9 +33,10 @@ FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDialogs {
+  FlutterKey? get key => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
     required TResult Function(_FlutterDialogsDialog value) dialog,
     required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
     required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
@@ -45,109 +44,6 @@ mixin _$FlutterDialogs {
         simpleDialogOption,
   }) =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_FlutterDialogsShowDialog extends _FlutterDialogsShowDialog {
-  _$_FlutterDialogsShowDialog(
-      {required this.child,
-      this.barrierDismissible,
-      this.barrierColor,
-      this.barrierLabel,
-      this.useSafeArea,
-      this.useRootNavigator,
-      this.routeSettings,
-      final String? $type})
-      : $type = $type ?? 'f:1:showDialog',
-        super._();
-
-  factory _$_FlutterDialogsShowDialog.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterDialogsShowDialogFromJson(json);
-
-  @override
-  final FlutterWidget child;
-  @override
-  final ZacValue<bool>? barrierDismissible;
-  @override
-  final FlutterColor? barrierColor;
-  @override
-  final ZacValue<String>? barrierLabel;
-  @override
-  final ZacValue<bool>? useSafeArea;
-  @override
-  final ZacValue<bool>? useRootNavigator;
-  @override
-  final FlutterRouteSettings? routeSettings;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterDialogs.showDialog(child: $child, barrierDismissible: $barrierDismissible, barrierColor: $barrierColor, barrierLabel: $barrierLabel, useSafeArea: $useSafeArea, useRootNavigator: $useRootNavigator, routeSettings: $routeSettings)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FlutterDialogsShowDialog &&
-            (identical(other.child, child) || other.child == child) &&
-            (identical(other.barrierDismissible, barrierDismissible) ||
-                other.barrierDismissible == barrierDismissible) &&
-            (identical(other.barrierColor, barrierColor) ||
-                other.barrierColor == barrierColor) &&
-            (identical(other.barrierLabel, barrierLabel) ||
-                other.barrierLabel == barrierLabel) &&
-            (identical(other.useSafeArea, useSafeArea) ||
-                other.useSafeArea == useSafeArea) &&
-            (identical(other.useRootNavigator, useRootNavigator) ||
-                other.useRootNavigator == useRootNavigator) &&
-            (identical(other.routeSettings, routeSettings) ||
-                other.routeSettings == routeSettings));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, child, barrierDismissible,
-      barrierColor, barrierLabel, useSafeArea, useRootNavigator, routeSettings);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
-    required TResult Function(_FlutterDialogsDialog value) dialog,
-    required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
-    required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
-    required TResult Function(_FlutterDialogsSimpleDialogOption value)
-        simpleDialogOption,
-  }) {
-    return showDialog(this);
-  }
-}
-
-abstract class _FlutterDialogsShowDialog extends FlutterDialogs {
-  factory _FlutterDialogsShowDialog(
-      {required final FlutterWidget child,
-      final ZacValue<bool>? barrierDismissible,
-      final FlutterColor? barrierColor,
-      final ZacValue<String>? barrierLabel,
-      final ZacValue<bool>? useSafeArea,
-      final ZacValue<bool>? useRootNavigator,
-      final FlutterRouteSettings? routeSettings}) = _$_FlutterDialogsShowDialog;
-  _FlutterDialogsShowDialog._() : super._();
-
-  factory _FlutterDialogsShowDialog.fromJson(Map<String, dynamic> json) =
-      _$_FlutterDialogsShowDialog.fromJson;
-
-  FlutterWidget get child;
-  ZacValue<bool>? get barrierDismissible;
-  FlutterColor? get barrierColor;
-  ZacValue<String>? get barrierLabel;
-  ZacValue<bool>? get useSafeArea;
-  ZacValue<bool>? get useRootNavigator;
-  FlutterRouteSettings? get routeSettings;
 }
 
 /// @nodoc
@@ -224,7 +120,6 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
     required TResult Function(_FlutterDialogsDialog value) dialog,
     required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
     required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
@@ -250,6 +145,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
   factory _FlutterDialogsDialog.fromJson(Map<String, dynamic> json) =
       _$_FlutterDialogsDialog.fromJson;
 
+  @override
   FlutterKey? get key;
   FlutterColor? get backgroundColor;
   ZacValue<double>?
@@ -422,7 +318,6 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
     required TResult Function(_FlutterDialogsDialog value) dialog,
     required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
     required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
@@ -461,6 +356,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   factory _FlutterDialogsAlertDialog.fromJson(Map<String, dynamic> json) =
       _$_FlutterDialogsAlertDialog.fromJson;
 
+  @override
   FlutterKey? get key;
   FlutterWidget? get title;
   FlutterWidget? get content;
@@ -594,7 +490,6 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
     required TResult Function(_FlutterDialogsDialog value) dialog,
     required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
     required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
@@ -626,6 +521,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialog.fromJson(Map<String, dynamic> json) =
       _$_FlutterDialogsSimpleDialog.fromJson;
 
+  @override
   FlutterKey? get key;
   FlutterWidget? get title;
   ZacValueList<FlutterWidget>? get children;
@@ -690,7 +586,6 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterDialogsShowDialog value) showDialog,
     required TResult Function(_FlutterDialogsDialog value) dialog,
     required TResult Function(_FlutterDialogsAlertDialog value) alertDialog,
     required TResult Function(_FlutterDialogsSimpleDialog value) simpleDialog,
@@ -712,8 +607,133 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialogOption.fromJson(
       Map<String, dynamic> json) = _$_FlutterDialogsSimpleDialogOption.fromJson;
 
+  @override
   FlutterKey? get key;
   FlutterWidget? get child;
   ZacActions? get onPressed;
   FlutterEdgeInsets? get padding;
+}
+
+FlutterDialogActions _$FlutterDialogActionsFromJson(Map<String, dynamic> json) {
+  return _FlutterDialogActionsShowDialog.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterDialogActions {
+  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<bool>? get barrierDismissible => throw _privateConstructorUsedError;
+  FlutterColor? get barrierColor => throw _privateConstructorUsedError;
+  ZacValue<String>? get barrierLabel => throw _privateConstructorUsedError;
+  ZacValue<bool>? get useSafeArea => throw _privateConstructorUsedError;
+  ZacValue<bool>? get useRootNavigator => throw _privateConstructorUsedError;
+  FlutterRouteSettings? get routeSettings => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterDialogActionsShowDialog value) showDialog,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterDialogActionsShowDialog
+    extends _FlutterDialogActionsShowDialog {
+  _$_FlutterDialogActionsShowDialog(
+      {required this.child,
+      this.barrierDismissible,
+      this.barrierColor,
+      this.barrierLabel,
+      this.useSafeArea,
+      this.useRootNavigator,
+      this.routeSettings})
+      : super._();
+
+  factory _$_FlutterDialogActionsShowDialog.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterDialogActionsShowDialogFromJson(json);
+
+  @override
+  final FlutterWidget child;
+  @override
+  final ZacValue<bool>? barrierDismissible;
+  @override
+  final FlutterColor? barrierColor;
+  @override
+  final ZacValue<String>? barrierLabel;
+  @override
+  final ZacValue<bool>? useSafeArea;
+  @override
+  final ZacValue<bool>? useRootNavigator;
+  @override
+  final FlutterRouteSettings? routeSettings;
+
+  @override
+  String toString() {
+    return 'FlutterDialogActions.showDialog(child: $child, barrierDismissible: $barrierDismissible, barrierColor: $barrierColor, barrierLabel: $barrierLabel, useSafeArea: $useSafeArea, useRootNavigator: $useRootNavigator, routeSettings: $routeSettings)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterDialogActionsShowDialog &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.barrierDismissible, barrierDismissible) ||
+                other.barrierDismissible == barrierDismissible) &&
+            (identical(other.barrierColor, barrierColor) ||
+                other.barrierColor == barrierColor) &&
+            (identical(other.barrierLabel, barrierLabel) ||
+                other.barrierLabel == barrierLabel) &&
+            (identical(other.useSafeArea, useSafeArea) ||
+                other.useSafeArea == useSafeArea) &&
+            (identical(other.useRootNavigator, useRootNavigator) ||
+                other.useRootNavigator == useRootNavigator) &&
+            (identical(other.routeSettings, routeSettings) ||
+                other.routeSettings == routeSettings));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, child, barrierDismissible,
+      barrierColor, barrierLabel, useSafeArea, useRootNavigator, routeSettings);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterDialogActionsShowDialog value) showDialog,
+  }) {
+    return showDialog(this);
+  }
+}
+
+abstract class _FlutterDialogActionsShowDialog extends FlutterDialogActions {
+  factory _FlutterDialogActionsShowDialog(
+          {required final FlutterWidget child,
+          final ZacValue<bool>? barrierDismissible,
+          final FlutterColor? barrierColor,
+          final ZacValue<String>? barrierLabel,
+          final ZacValue<bool>? useSafeArea,
+          final ZacValue<bool>? useRootNavigator,
+          final FlutterRouteSettings? routeSettings}) =
+      _$_FlutterDialogActionsShowDialog;
+  _FlutterDialogActionsShowDialog._() : super._();
+
+  factory _FlutterDialogActionsShowDialog.fromJson(Map<String, dynamic> json) =
+      _$_FlutterDialogActionsShowDialog.fromJson;
+
+  @override
+  FlutterWidget get child;
+  @override
+  ZacValue<bool>? get barrierDismissible;
+  @override
+  FlutterColor? get barrierColor;
+  @override
+  ZacValue<String>? get barrierLabel;
+  @override
+  ZacValue<bool>? get useSafeArea;
+  @override
+  ZacValue<bool>? get useRootNavigator;
+  @override
+  FlutterRouteSettings? get routeSettings;
 }

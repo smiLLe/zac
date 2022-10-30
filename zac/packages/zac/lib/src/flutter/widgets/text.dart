@@ -11,6 +11,7 @@ part 'text.freezed.dart';
 part 'text.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterText with _$FlutterText implements FlutterWidget {
   const FlutterText._();
 

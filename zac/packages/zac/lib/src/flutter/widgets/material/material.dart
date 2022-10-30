@@ -12,6 +12,7 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   const FlutterMaterial._();
 

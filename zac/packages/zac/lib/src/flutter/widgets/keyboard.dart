@@ -7,6 +7,7 @@ part 'keyboard.freezed.dart';
 part 'keyboard.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterScrollViewKeyboardDismissBehavior
     with _$FlutterScrollViewKeyboardDismissBehavior {
   const FlutterScrollViewKeyboardDismissBehavior._();

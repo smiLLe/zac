@@ -12,6 +12,7 @@ part 'interactive_viewer.freezed.dart';
 part 'interactive_viewer.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
     implements FlutterWidget {

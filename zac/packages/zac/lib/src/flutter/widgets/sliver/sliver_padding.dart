@@ -10,6 +10,7 @@ part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSliverPadding
     with _$FlutterSliverPadding
     implements FlutterWidget {

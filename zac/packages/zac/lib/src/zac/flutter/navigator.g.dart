@@ -6,25 +6,15 @@ part of 'navigator.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacFlutterGlobalKeyNavigatorStateProvide
-    _$$_ZacFlutterGlobalKeyNavigatorStateProvideFromJson(
+_$_ZacFlutterGlobalKeyNavigatorStateProvider
+    _$$_ZacFlutterGlobalKeyNavigatorStateProviderFromJson(
             Map<String, dynamic> json) =>
-        _$_ZacFlutterGlobalKeyNavigatorStateProvide(
+        _$_ZacFlutterGlobalKeyNavigatorStateProvider(
           family: json['family'] as Object,
           child: FlutterWidget.fromJson(json['child'] as Object),
           debugLabel: json['debugLabel'] == null
               ? null
               : ZacValue<String>.fromJson(json['debugLabel'] as Object),
-          $type: json['converter'] as String?,
-        );
-
-_$_ZacFlutterGlobalKeyNavigatorStateConsume
-    _$$_ZacFlutterGlobalKeyNavigatorStateConsumeFromJson(
-            Map<String, dynamic> json) =>
-        _$_ZacFlutterGlobalKeyNavigatorStateConsume(
-          value: ZacValue<GlobalKey<NavigatorState>>.fromJson(
-              json['value'] as Object),
-          $type: json['converter'] as String?,
         );
 
 _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
@@ -32,8 +22,8 @@ _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
       routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : ZacValue<GetFlutterNavigatorState>.fromJson(
-              json['navigatorState'] as Object),
+          : FlutterNavigatorState.fromJson(
+              json['navigatorState'] as Map<String, dynamic>),
     );
 
 _$_RouteFactoryConfig _$$_RouteFactoryConfigFromJson(

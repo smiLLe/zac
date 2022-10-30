@@ -14,7 +14,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       navigatorKey: json['navigatorKey'] == null
           ? null
-          : FlutterGlobalKeyNavigatorState.fromJson(
+          : ZacValue<GlobalKey<NavigatorState>>.fromJson(
               json['navigatorKey'] as Object),
       home: json['home'] == null
           ? null

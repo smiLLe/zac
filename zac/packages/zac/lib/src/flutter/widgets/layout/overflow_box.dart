@@ -11,6 +11,7 @@ part 'overflow_box.freezed.dart';
 part 'overflow_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   const FlutterOverflowBox._();
 

@@ -11,6 +11,7 @@ part 'positioned.freezed.dart';
 part 'positioned.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   const FlutterPositioned._();
 

@@ -13,6 +13,7 @@ part 'row.freezed.dart';
 part 'row.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterRow with _$FlutterRow implements FlutterWidget {
   const FlutterRow._();
 

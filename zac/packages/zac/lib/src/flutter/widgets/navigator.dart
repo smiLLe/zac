@@ -12,6 +12,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterRoute {
   factory FlutterRoute.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterRoute>(data);
@@ -21,21 +22,13 @@ abstract class FlutterRoute {
       {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap});
 }
 
-abstract class GetFlutterNavigatorState {
-  factory GetFlutterNavigatorState.fromJson(Object data) {
-    return ConverterHelper.convertToType<GetFlutterNavigatorState>(data);
-  }
-
-  NavigatorState getNavigatorState(ZacContext zacContext);
-}
-
 @defaultConverterFreezed
-class FlutterNavigatorState
-    with _$FlutterNavigatorState
-    implements GetFlutterNavigatorState {
+@TsClass(order: tsOrderFlutterWidget)
+class FlutterNavigatorState with _$FlutterNavigatorState {
   const FlutterNavigatorState._();
   static const String unionValueClosest = 'f:1:NavigatorState.closest';
   static const String unionValueRoot = 'f:1:NavigatorState.root';
+  static const String unionValueShared = 'z:1:NavigatorState.shared';
 
   factory FlutterNavigatorState.fromJson(Map<String, dynamic> json) =>
       _$FlutterNavigatorStateFromJson(json);
@@ -46,16 +39,28 @@ class FlutterNavigatorState
   @FreezedUnionValue(FlutterNavigatorState.unionValueRoot)
   factory FlutterNavigatorState.root() = _ZacNavigatorStateRoot;
 
-  @override
+  @FreezedUnionValue(FlutterNavigatorState.unionValueRoot)
+  factory FlutterNavigatorState.shared({
+    required ZacValue<GlobalKey<NavigatorState>> value,
+  }) = _ZacNavigatorStateSharedValue;
+
   NavigatorState getNavigatorState(ZacContext zacContext) {
     return map(
       closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
       root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
+      shared: (obj) {
+        final key = obj.value.getValue(zacContext);
+        if (null != key.currentState) {
+          return key.currentState!;
+        }
+        throw StateError('');
+      },
     );
   }
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   const FlutterNavigator._();
 
@@ -88,6 +93,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
     implements ZacAction {
@@ -108,39 +114,39 @@ class FlutterNavigatorActions
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePush)
   factory FlutterNavigatorActions.push(
       {required FlutterRoute route,
-      GetFlutterNavigatorState? navigatorState}) = _FlutterNavigatorActionsPush;
+      FlutterNavigatorState? navigatorState}) = _FlutterNavigatorActionsPush;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushNamed)
   factory FlutterNavigatorActions.pushNamed(
           {required ZacValue<String> routeName,
           Object? arguments,
-          GetFlutterNavigatorState? navigatorState}) =
+          FlutterNavigatorState? navigatorState}) =
       _FlutterNavigatorActionsPushNamed;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePop)
   factory FlutterNavigatorActions.pop({
     ZacActions? actions,
-    GetFlutterNavigatorState? navigatorState,
+    FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValueMaybePop)
   factory FlutterNavigatorActions.maybePop({
     ZacActions? actions,
-    GetFlutterNavigatorState? navigatorState,
+    FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushReplacement)
   factory FlutterNavigatorActions.pushReplacement({
     required FlutterRoute route,
     ZacActions? result,
-    GetFlutterNavigatorState? navigatorState,
+    FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushReplacementNamed)
   factory FlutterNavigatorActions.pushReplacementNamed({
     required ZacValue<String> routeName,
     Object? arguments,
-    GetFlutterNavigatorState? navigatorState,
+    FlutterNavigatorState? navigatorState,
     ZacActions? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
@@ -230,6 +236,7 @@ class FlutterNavigatorActions
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterRouteFactory {
   factory FlutterRouteFactory.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterRouteFactory>(data);
@@ -239,6 +246,7 @@ abstract class FlutterRouteFactory {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
     implements FlutterRoute {
@@ -288,6 +296,7 @@ class FlutterPageRouteBuilder
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterRouteSettings with _$FlutterRouteSettings {
   const FlutterRouteSettings._();
 

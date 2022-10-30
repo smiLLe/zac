@@ -176,10 +176,9 @@ Map<String, Convert> allConverters = const {
       FlutterNavigatorActions.fromJson,
   FlutterNavigatorState.unionValueClosest: FlutterNavigatorState.fromJson,
   FlutterNavigatorState.unionValueRoot: FlutterNavigatorState.fromJson,
-  ZacFlutterGlobalKeyNavigatorState.unionValueConsume:
-      ZacFlutterGlobalKeyNavigatorState.fromJson,
-  ZacFlutterGlobalKeyNavigatorState.unionValueProvide:
-      ZacFlutterGlobalKeyNavigatorState.fromJson,
+  FlutterNavigatorState.unionValueShared: FlutterNavigatorState.fromJson,
+  ZacFlutterGlobalKeyNavigatorStateProvider.unionValue:
+      ZacFlutterGlobalKeyNavigatorStateProvider.fromJson,
   RouteFactoryFromRoutes.unionValue: RouteFactoryFromRoutes.fromJson,
   RouteFactorySingleRoute.unionValue: RouteFactorySingleRoute.fromJson,
   RouteFactoryRouteConfig.unionValue: RouteFactoryRouteConfig.fromJson,
@@ -189,11 +188,14 @@ Map<String, Convert> allConverters = const {
   /**
          * ACTIONS
          */
-  FlutterDialogs.unionValueShowDialog: FlutterDialogs.fromJson,
-  FlutterScaffold.unionValueOpenDrawer: FlutterScaffold.fromJson,
-  FlutterScaffold.unionValueOpenEndDrawer: FlutterScaffold.fromJson,
-  FlutterScaffold.unionValueShowBodyScrim: FlutterScaffold.fromJson,
-  FlutterScaffold.unionValueShowBottomSheet: FlutterScaffold.fromJson,
+  FlutterDialogActions.unionValue: FlutterDialogActions.fromJson,
+  FlutterScaffoldActions.unionValueOpenDrawer: FlutterScaffoldActions.fromJson,
+  FlutterScaffoldActions.unionValueOpenEndDrawer:
+      FlutterScaffoldActions.fromJson,
+  FlutterScaffoldActions.unionValueShowBodyScrim:
+      FlutterScaffoldActions.fromJson,
+  FlutterScaffoldActions.unionValueShowBottomSheet:
+      FlutterScaffoldActions.fromJson,
   FlutterScaffoldMessenger.unionValueShowSnackBar:
       FlutterScaffoldMessenger.fromJson,
   FlutterScaffoldMessenger.unionValueHideCurrentSnackBar:

@@ -3,6 +3,21 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 
+const tsOrderLast = 10000;
+const tsOrderFlutterWidget = 9999;
+const tsOrderZacWidget = 9998;
+const tsOrderDartClasses = 9002;
+const tsOrderDartFoundation = 9001;
+const tsOrderDartUi = 9000;
+const tsOrderFlutterAbstractsB = 8501;
+const tsOrderFlutterAbstractsA = 8500;
+
+class TsClass {
+  const TsClass({int? order}) : order = order ?? tsOrderLast;
+
+  final int order;
+}
+
 // ignore: constant_identifier_names
 const defaultConverterFreezed = Freezed(
   fromJson: true,

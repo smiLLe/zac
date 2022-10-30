@@ -10,6 +10,7 @@ part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   const FlutterFittedBox._();
 

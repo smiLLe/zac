@@ -21,7 +21,7 @@ void main() {
           },
         ),
         ZacActions([
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
         ]));
 
@@ -44,9 +44,9 @@ void main() {
           ]
         }),
         ZacActions([
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
         ]));
     expect(
@@ -61,9 +61,9 @@ void main() {
           }
         ]),
         ZacActions([
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
         ]));
     expect(
@@ -72,7 +72,7 @@ void main() {
           'child': ChildModel.getSizedBox(key: 'dialog_child')
         }),
         ZacActions([
-          FlutterDialogs.showDialog(
+          FlutterDialogActions.showDialog(
               child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
         ]));
 
@@ -185,7 +185,7 @@ void main() {
             'converter': 'z:1:Actions',
             'actions': [
               {
-                'converter': FlutterDialogs.unionValueShowDialog,
+                'converter': 'f:1:showDialog',
                 'child': ChildModel.getSizedBox(key: 'dialog_child')
               },
             ],

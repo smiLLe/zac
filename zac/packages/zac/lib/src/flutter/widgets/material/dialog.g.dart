@@ -6,32 +6,6 @@ part of 'dialog.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FlutterDialogsShowDialog _$$_FlutterDialogsShowDialogFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterDialogsShowDialog(
-      child: FlutterWidget.fromJson(json['child'] as Object),
-      barrierDismissible: json['barrierDismissible'] == null
-          ? null
-          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
-      barrierColor: json['barrierColor'] == null
-          ? null
-          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
-      barrierLabel: json['barrierLabel'] == null
-          ? null
-          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
-      useSafeArea: json['useSafeArea'] == null
-          ? null
-          : ZacValue<bool>.fromJson(json['useSafeArea'] as Object),
-      useRootNavigator: json['useRootNavigator'] == null
-          ? null
-          : ZacValue<bool>.fromJson(json['useRootNavigator'] as Object),
-      routeSettings: json['routeSettings'] == null
-          ? null
-          : FlutterRouteSettings.fromJson(
-              json['routeSettings'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
-    );
-
 _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterDialogsDialog(
@@ -209,3 +183,28 @@ _$_FlutterDialogsSimpleDialogOption
                   json['padding'] as Map<String, dynamic>),
           $type: json['converter'] as String?,
         );
+
+_$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
+        Map<String, dynamic> json) =>
+    _$_FlutterDialogActionsShowDialog(
+      child: FlutterWidget.fromJson(json['child'] as Object),
+      barrierDismissible: json['barrierDismissible'] == null
+          ? null
+          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
+      barrierColor: json['barrierColor'] == null
+          ? null
+          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
+      barrierLabel: json['barrierLabel'] == null
+          ? null
+          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
+      useSafeArea: json['useSafeArea'] == null
+          ? null
+          : ZacValue<bool>.fromJson(json['useSafeArea'] as Object),
+      useRootNavigator: json['useRootNavigator'] == null
+          ? null
+          : ZacValue<bool>.fromJson(json['useRootNavigator'] as Object),
+      routeSettings: json['routeSettings'] == null
+          ? null
+          : FlutterRouteSettings.fromJson(
+              json['routeSettings'] as Map<String, dynamic>),
+    );

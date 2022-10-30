@@ -10,6 +10,7 @@ part 'ignore_pointer.freezed.dart';
 part 'ignore_pointer.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterIgnorePointer
     with _$FlutterIgnorePointer
     implements FlutterWidget {

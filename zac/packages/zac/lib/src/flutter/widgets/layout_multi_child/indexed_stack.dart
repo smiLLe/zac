@@ -13,6 +13,7 @@ part 'indexed_stack.freezed.dart';
 part 'indexed_stack.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   const FlutterIndexedStack._();
 

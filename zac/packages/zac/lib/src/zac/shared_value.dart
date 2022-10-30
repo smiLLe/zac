@@ -75,6 +75,7 @@ See "$SharedValueProviderBuilder" for more info.
 }
 
 @defaultConverterFreezed
+@TsClass()
 class SharedValueActions with _$SharedValueActions implements ZacAction {
   const SharedValueActions._();
 
@@ -134,6 +135,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
 }
 
 @defaultConverterFreezed
+@TsClass()
 class SharedValueConsumeType with _$SharedValueConsumeType {
   static const String unionValue = 'z:1:SharedValueConsume.watch';
   static const String unionValueRead = 'z:1:SharedValueConsume.read';
@@ -151,6 +153,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderZacWidget)
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
     implements FlutterWidget {

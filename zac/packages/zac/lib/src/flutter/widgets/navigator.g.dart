@@ -18,6 +18,14 @@ _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
       $type: json['converter'] as String?,
     );
 
+_$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacNavigatorStateSharedValue(
+      value:
+          ZacValue<GlobalKey<NavigatorState>>.fromJson(json['value'] as Object),
+      $type: json['converter'] as String?,
+    );
+
 _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
     _$_FlutterNavigator(
       key: json['key'] == null
@@ -43,7 +51,8 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
       route: FlutterRoute.fromJson(json['route'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
+          : FlutterNavigatorState.fromJson(
+              json['navigatorState'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
 
@@ -54,8 +63,8 @@ _$_FlutterNavigatorActionsPushNamed
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
-              : GetFlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Object),
+              : FlutterNavigatorState.fromJson(
+                  json['navigatorState'] as Map<String, dynamic>),
           $type: json['converter'] as String?,
         );
 
@@ -67,7 +76,8 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
           : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
+          : FlutterNavigatorState.fromJson(
+              json['navigatorState'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
 
@@ -79,7 +89,8 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
           : ZacActions.fromJson(json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : GetFlutterNavigatorState.fromJson(json['navigatorState'] as Object),
+          : FlutterNavigatorState.fromJson(
+              json['navigatorState'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
 
@@ -93,8 +104,8 @@ _$_FlutterNavigatorActionsPushReplacement
               : ZacActions.fromJson(json['result'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
-              : GetFlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Object),
+              : FlutterNavigatorState.fromJson(
+                  json['navigatorState'] as Map<String, dynamic>),
           $type: json['converter'] as String?,
         );
 
@@ -106,8 +117,8 @@ _$_FlutterNavigatorActionsPushReplacementNamed
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
-              : GetFlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Object),
+              : FlutterNavigatorState.fromJson(
+                  json['navigatorState'] as Map<String, dynamic>),
           result: json['result'] == null
               ? null
               : ZacActions.fromJson(json['result'] as Object),

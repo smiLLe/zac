@@ -9,6 +9,7 @@ part 'sliver_grid_delegate.freezed.dart';
 part 'sliver_grid_delegate.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
   const FlutterSliverGridDelegate._();
 

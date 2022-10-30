@@ -9,6 +9,7 @@ part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
     implements FlutterWidget {

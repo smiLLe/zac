@@ -8,6 +8,7 @@ part 'scroll_physics.freezed.dart';
 part 'scroll_physics.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterScrollPhysics with _$FlutterScrollPhysics {
   const FlutterScrollPhysics._();
 

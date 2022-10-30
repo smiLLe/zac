@@ -9,6 +9,7 @@ part 'sliver_to_box_adapter.freezed.dart';
 part 'sliver_to_box_adapter.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
     implements FlutterWidget {

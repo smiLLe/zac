@@ -89,6 +89,7 @@ extension Interactions on ZacActions {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderZacWidget)
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
     implements FlutterWidget {

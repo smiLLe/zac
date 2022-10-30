@@ -11,6 +11,7 @@ part 'unconstrained_box.freezed.dart';
 part 'unconstrained_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
     implements FlutterWidget {

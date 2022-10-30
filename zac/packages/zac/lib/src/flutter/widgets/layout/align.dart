@@ -11,6 +11,7 @@ part 'align.freezed.dart';
 part 'align.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   const FlutterAlign._();
 

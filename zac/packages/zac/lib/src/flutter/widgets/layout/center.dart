@@ -10,6 +10,7 @@ part 'center.freezed.dart';
 part 'center.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   const FlutterCenter._();
 

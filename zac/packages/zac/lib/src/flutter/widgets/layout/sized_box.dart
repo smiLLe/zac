@@ -11,6 +11,7 @@ part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   const FlutterSizedBox._();
 

@@ -11,6 +11,7 @@ part 'flexible.freezed.dart';
 part 'flexible.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   const FlutterFlexible._();
 

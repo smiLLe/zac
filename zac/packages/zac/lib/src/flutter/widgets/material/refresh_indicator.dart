@@ -17,6 +17,7 @@ part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
     implements FlutterWidget {
@@ -88,6 +89,7 @@ class FlutterRefreshIndicator
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterRefreshIndicatorTriggerMode
     with _$FlutterRefreshIndicatorTriggerMode {
   const FlutterRefreshIndicatorTriggerMode._();

@@ -13,6 +13,7 @@ part 'wrap.freezed.dart';
 part 'wrap.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   const FlutterWrap._();
 

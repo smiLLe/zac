@@ -9,6 +9,7 @@ part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   const FlutterSliverList._();
 

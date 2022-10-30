@@ -11,6 +11,7 @@ part 'fractionally_sized_box.freezed.dart';
 part 'fractionally_sized_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox
     implements FlutterWidget {

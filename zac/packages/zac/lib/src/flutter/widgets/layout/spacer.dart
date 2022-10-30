@@ -9,6 +9,7 @@ part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   const FlutterSpacer._();
 

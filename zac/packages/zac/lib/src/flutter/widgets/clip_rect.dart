@@ -10,6 +10,7 @@ part 'clip_rect.freezed.dart';
 part 'clip_rect.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
   const FlutterClipRect._();
 

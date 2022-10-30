@@ -255,47 +255,6 @@ _$_FlutterBoxConstraintsTightForFinite
           $type: json['converter'] as String?,
         );
 
-_$_FlutterSliverGridDelegateFixedCrossAxisCount
-    _$$_FlutterSliverGridDelegateFixedCrossAxisCountFromJson(
-            Map<String, dynamic> json) =>
-        _$_FlutterSliverGridDelegateFixedCrossAxisCount(
-          crossAxisCount: json['crossAxisCount'] as int,
-          mainAxisSpacing: json['mainAxisSpacing'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
-          crossAxisSpacing: json['crossAxisSpacing'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
-          childAspectRatio: json['childAspectRatio'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
-          mainAxisExtent: json['mainAxisExtent'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['converter'] as String?,
-        );
-
-_$_FlutterSliverGridDelegateMaxCrossAxisExtent
-    _$$_FlutterSliverGridDelegateMaxCrossAxisExtentFromJson(
-            Map<String, dynamic> json) =>
-        _$_FlutterSliverGridDelegateMaxCrossAxisExtent(
-          maxCrossAxisExtent:
-              ZacValue<double>.fromJson(json['maxCrossAxisExtent'] as Object),
-          mainAxisSpacing: json['mainAxisSpacing'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
-          crossAxisSpacing: json['crossAxisSpacing'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
-          childAspectRatio: json['childAspectRatio'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
-          mainAxisExtent: json['mainAxisExtent'] == null
-              ? null
-              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['converter'] as String?,
-        );
-
 _$_FlutterDecorationPositionBG _$$_FlutterDecorationPositionBGFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterDecorationPositionBG(

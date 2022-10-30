@@ -10,6 +10,7 @@ part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   const FlutterLimitedBox._();
 

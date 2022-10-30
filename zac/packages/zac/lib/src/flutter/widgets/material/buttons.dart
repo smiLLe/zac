@@ -12,6 +12,7 @@ part 'buttons.freezed.dart';
 part 'buttons.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterElevatedButton
     with _$FlutterElevatedButton
     implements FlutterWidget {
@@ -69,6 +70,7 @@ class FlutterElevatedButton
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterOutlinedButton
     with _$FlutterOutlinedButton
     implements FlutterWidget {
@@ -126,6 +128,7 @@ class FlutterOutlinedButton
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
   const FlutterTextButton._();
 

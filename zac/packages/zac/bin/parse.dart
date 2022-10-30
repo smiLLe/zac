@@ -10,20 +10,6 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 
 void main() async {
-  final cur = Directory.current;
-  final cur2 = Directory.current.parent.path;
-
-  final file = File('${Directory.current.path}${Platform.pathSeparator}${[
-    'zac',
-    'packages',
-    'zac',
-    'lib',
-    'src',
-    'flutter',
-    // 'foundation.dart'
-    'dart_ui.dart'
-  ].join(Platform.pathSeparator)}');
-
   final ctxColl = AnalysisContextCollection(includedPaths: [
     File('${Directory.current.path}${Platform.pathSeparator}${[
       'zac',
@@ -31,10 +17,10 @@ void main() async {
       'zac',
       'lib',
       'src',
-      'flutter'
     ].join(Platform.pathSeparator)}')
         .path
   ]);
+
   for (var ctx in ctxColl.contexts) {
     final fileSystemEntities = Directory.fromUri(
             File('${Directory.current.path}${Platform.pathSeparator}${[
@@ -43,26 +29,25 @@ void main() async {
       'zac',
       'lib',
       'src',
-      'flutter',
     ].join(Platform.pathSeparator)}')
                 .uri)
         .listSync(recursive: true)
         .whereType<File>()
         .where((file) => !(file.path.contains('.g.dart') ||
             file.path.contains('.freezed.dart') ||
-            file.path.contains('all.dart')))
+            file.path.contains('${Platform.pathSeparator}all.dart')))
         .toList();
 
-    final contents = await Future.wait([
+    final filesToCreate = await Future.wait([
       ...fileSystemEntities.map((file) async {
         final lib = (await ctx.currentSession.getResolvedLibrary(file.path))
             as ResolvedLibraryResult;
 
-        return '''
-/// FROM: ${file.uri.pathSegments.last}
-${contentFromLib(lib).join('\n')}''';
+        return OneFile(lib, file.uri.pathSegments.last);
       })
     ]);
+
+    final allFiles = AllFiles(filesToCreate);
 
     final writeFile = File(
         '${Directory.current.path}${Platform.pathSeparator}${[
@@ -72,16 +57,26 @@ ${contentFromLib(lib).join('\n')}''';
     ].join(Platform.pathSeparator)}');
     writeFile.createSync();
     await writeFile.writeAsString('''
-import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter } from "./base"
+import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter, ZacTransformer } from "./base"
 import { ZacAction, ZacActions } from "./zac/action"
-import { ZacValue, ZacValueList } from "./zac/zac_value"
+import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
-${contents.join('\n')}''');
+${allFiles.abstracts.join('\n')}
+${allFiles.builders.join('\n')}''');
   }
 }
 
 /// Map "simple" Dart types to TS types
 String getMappedType(String dartType) {
+  /// for example Map<string, dynamic> to {[key: string | number]: ValidTypes}}
+  if (dartType.startsWith('Map<')) {
+    final parts =
+        dartType.replaceAll('Map<', '').replaceAll('>', '').split(',');
+    final mappedParts =
+        parts.map((e) => e.trim()).map((e) => getMappedType(e)).toList();
+    return '{[key: string | number]: ${mappedParts[1]}}';
+  }
+
   switch (dartType) {
     case 'bool':
       return 'boolean';
@@ -105,6 +100,8 @@ String getMappedType(String dartType) {
     case 'Object':
     case 'Object?':
       return 'ValidTypes';
+    case 'GlobalKey<NavigatorState>':
+      return 'any /*$dartType*/';
     default:
       return dartType;
   }
@@ -131,63 +128,169 @@ String getMappedTypeWithTypeArgs(String dartType, List<DartType> types) {
   }).join(',')}>';
 }
 
-Iterable<String> contentFromLib(ResolvedLibraryResult lib) {
-  final classes = lib.element.topLevelElements.whereType<ClassElement>();
-  return classes.where((cls) => !cls.displayName.startsWith('_')).map((cls) {
-    final className = cls.displayName;
+class AllFiles {
+  final Iterable<OneFile> files;
 
-    final implements = cls.interfaces.isEmpty
-        ? 'ZacConverter'
-        : cls.interfaces
-            .map((e) => e.getDisplayString(withNullability: false))
-            .join(',');
+  AllFiles(this.files);
 
-    final staticCtors = cls.constructors.where((ctor) {
-      return !(!ctor.isFactory ||
-          ctor.name == 'fromJson' ||
-          null == ctor.redirectedConstructor);
-    }).map((ctor) {
-      final name = ctor.name.isEmpty ? 'new' : ctor.name;
-      String? unionValue = ctor.metadata
-          .map((e) => e.computeConstantValue())
-          .firstWhere((element) =>
-              element?.type?.getDisplayString(withNullability: false) ==
-              'FreezedUnionValue')
-          ?.getField('value')
-          ?.toStringValue();
+  late final Iterable<TsAbstractClass> abstracts = files
+      .where((oneFile) => oneFile.abstracts.isNotEmpty)
+      .fold<Iterable<TsAbstractClass>>([], (previousValue, element) {
+    return [...previousValue, ...element.abstracts];
+  }).toList()
+    ..sort((a, b) => a.order.compareTo(b.order));
 
-      final params = ctor.parameters.map((param) {
-        if (param.type is! InterfaceType) {
-          throw Error();
-        }
+  late final Iterable<TsClass> builders = files
+      .where((oneFile) => oneFile.builders.isNotEmpty)
+      .fold<Iterable<TsClass>>([], (previousValue, element) {
+    return [...previousValue, ...element.builders];
+  }).toList()
+    ..sort((a, b) => a.order.compareTo(b.order));
+}
 
-        final t = param.type as InterfaceType;
+class OneFile {
+  final ResolvedLibraryResult lib;
+  final String origin;
 
-        /// Everything that has no generic like: int, SomeClass, string...
-        if (t.typeArguments.isEmpty) {
-          return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedType(t.getDisplayString(withNullability: false))}';
-        }
+  OneFile(this.lib, this.origin);
 
-        /// Here classes with generics like ZacValue<XYZ, ABC>
+  late final Iterable<TsAbstractClass> abstracts = lib.element.topLevelElements
+      .whereType<ClassElement>()
+      .where((cls) => !cls.displayName.startsWith('_'))
+      .where((cls) => cls.isAbstract)
+      .where((cls) => cls.metadata
+          .where((element) =>
+              element
+                  .computeConstantValue()
+                  ?.type
+                  ?.getDisplayString(withNullability: false) ==
+              'TsClass')
+          .isNotEmpty) // free
+      .map((cls) {
+    final order = cls.metadata
+        .map((e) => e.computeConstantValue())
+        .where((e) =>
+            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
+        .map((e) => e?.getField('order')?.toIntValue())
+        .first;
+    if (null == order) {
+      throw Error();
+    }
+    return TsAbstractClass(cls, order);
+  });
 
-        /// ZacValue<double> into ZacValue
-        final typeName =
-            param.type.getDisplayString(withNullability: false).split('<')[0];
+  late final Iterable<TsClass> builders = lib.element.topLevelElements
+      .whereType<ClassElement>()
+      .where((cls) => !cls.displayName.startsWith('_'))
+      .where((cls) => !cls.isAbstract)
+      .where((cls) => cls.metadata
+          .where((element) =>
+              element
+                  .computeConstantValue()
+                  ?.type
+                  ?.getDisplayString(withNullability: false) ==
+              'TsClass')
+          .isNotEmpty) // free
+      .map((cls) {
+    final order = cls.metadata
+        .map((e) => e.computeConstantValue())
+        .where((e) =>
+            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
+        .map((e) => e?.getField('order')?.toIntValue())
+        .first;
+    if (null == order) {
+      throw Error();
+    }
 
-        return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedTypeWithTypeArgs(typeName, t.typeArguments)}';
-      });
-      return '''
-static $name(${params.isNotEmpty ? 'data: {${params.join(',\n')}}' : ''}) {
+    return TsClass(cls, order);
+  });
+}
+
+class TsClass {
+  final ClassElement element;
+  final int order;
+
+  TsClass(this.element, this.order);
+
+  /// fixes reserved Typescript names
+  /// or create a name for base constructor
+  String ctorName(ConstructorElement ctor) {
+    switch (ctor.name) {
+      case '':
+        return 'new';
+      case 'length':
+        return 'length_';
+      case 'name':
+        return 'name_';
+      default:
+        return ctor.name;
+    }
+  }
+
+  late final String className = element.displayName;
+
+  late final String implements = element.interfaces.isEmpty
+      ? 'ZacConverter'
+      : element.interfaces
+          .map((e) => e.getDisplayString(withNullability: false))
+          .join(',');
+
+  late final Iterable<String> staticCtors = element.constructors.where((ctor) {
+    return !(!ctor.isFactory ||
+        ctor.name == 'fromJson' ||
+        null == ctor.redirectedConstructor);
+  }).map((ctor) {
+    String? unionValue = ctor.metadata
+        .map((e) => e.computeConstantValue())
+        .firstWhere((element) =>
+            element?.type?.getDisplayString(withNullability: false) ==
+            'FreezedUnionValue')
+        ?.getField('value')
+        ?.toStringValue();
+
+    final params = ctor.parameters.map((param) {
+      if (param.type is! InterfaceType) {
+        throw Error();
+      }
+
+      final t = param.type as InterfaceType;
+
+      /// Everything that has no generic like: int, SomeClass, string...
+      if (t.typeArguments.isEmpty) {
+        return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedType(t.getDisplayString(withNullability: false))}';
+      }
+
+      /// Here classes with generics like ZacValue<XYZ, ABC>
+
+      /// ZacValue<double> into ZacValue
+      final typeName =
+          param.type.getDisplayString(withNullability: false).split('<')[0];
+
+      return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedTypeWithTypeArgs(typeName, t.typeArguments)}';
+    });
+    return '''
+static ${ctorName(ctor)}(${params.isNotEmpty ? 'data: {${params.join(',\n')}}' : ''}) {
   return new $className({
     converter: '$unionValue'${params.isNotEmpty ? ',' : ''}
     ${params.isNotEmpty ? '...data' : ''}
   })
 }''';
-    });
+  });
 
+  @override
+  String toString() {
     return '''
-export ${cls.isAbstract ? 'abstract ' : ''}class $className extends $implements {
+export ${element.isAbstract ? 'abstract ' : ''}class $className extends $implements {
   ${staticCtors.join('\n')}
 }''';
-  });
+  }
+}
+
+class TsAbstractClass extends TsClass {
+  TsAbstractClass(super.element, super.order);
+
+  @override
+  String toString() {
+    return 'export abstract class $className extends $implements {}';
+  }
 }

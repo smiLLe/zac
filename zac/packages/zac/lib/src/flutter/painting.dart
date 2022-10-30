@@ -10,6 +10,7 @@ part 'painting.freezed.dart';
 part 'painting.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBoxShape with _$FlutterBoxShape {
   const FlutterBoxShape._();
 
@@ -31,6 +32,7 @@ class FlutterBoxShape with _$FlutterBoxShape {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterAxis with _$FlutterAxis {
   const FlutterAxis._();
 
@@ -50,6 +52,7 @@ class FlutterAxis with _$FlutterAxis {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterVerticalDirection with _$FlutterVerticalDirection {
   const FlutterVerticalDirection._();
 
@@ -69,6 +72,7 @@ class FlutterVerticalDirection with _$FlutterVerticalDirection {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterTextOverflow with _$FlutterTextOverflow {
   const FlutterTextOverflow._();
 
@@ -98,6 +102,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterStrutStyle with _$FlutterStrutStyle {
   const FlutterStrutStyle._();
 
@@ -169,6 +174,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
   const FlutterTextWidthBasis._();
 
@@ -190,6 +196,7 @@ class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBoxFit with _$FlutterBoxFit {
   const FlutterBoxFit._();
 
@@ -231,6 +238,7 @@ class FlutterBoxFit with _$FlutterBoxFit {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterImageRepeat with _$FlutterImageRepeat {
   const FlutterImageRepeat._();
 
@@ -260,6 +268,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterTextStyle with _$FlutterTextStyle {
   const FlutterTextStyle._();
 
@@ -325,6 +334,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
   const FlutterTextAlignVertical._();
 
@@ -352,6 +362,7 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBoxShadow with _$FlutterBoxShadow implements FlutterDartUiShadow {
   const FlutterBoxShadow._();
 
@@ -381,6 +392,7 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements FlutterDartUiShadow {
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterAlignmentGeometry {
   factory FlutterAlignmentGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterAlignmentGeometry>(data);
@@ -390,6 +402,7 @@ abstract class FlutterAlignmentGeometry {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterAlignment
     with _$FlutterAlignment
     implements FlutterAlignmentGeometry {
@@ -459,6 +472,7 @@ class FlutterAlignment
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterAlignmentDirectional
     with _$FlutterAlignmentDirectional
     implements FlutterAlignmentGeometry {
@@ -544,6 +558,7 @@ class FlutterAlignmentDirectional
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterFractionalOffset
     with _$FlutterFractionalOffset
     implements FlutterAlignmentGeometry {
@@ -564,6 +579,7 @@ class FlutterFractionalOffset
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterShapeBorder {
   factory FlutterShapeBorder.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterShapeBorder>(data);
@@ -572,6 +588,7 @@ abstract class FlutterShapeBorder {
   ShapeBorder build(ZacContext zacContext);
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterBoxBorder implements FlutterShapeBorder {
   factory FlutterBoxBorder.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterBoxBorder>(data);
@@ -582,6 +599,7 @@ abstract class FlutterBoxBorder implements FlutterShapeBorder {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBorderDirectional
     with _$FlutterBorderDirectional
     implements FlutterBoxBorder {
@@ -612,6 +630,7 @@ class FlutterBorderDirectional
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   const FlutterBorder._();
 
@@ -655,6 +674,7 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBorderStyle with _$FlutterBorderStyle {
   const FlutterBorderStyle._();
 
@@ -675,6 +695,7 @@ class FlutterBorderStyle with _$FlutterBorderStyle {
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterBorderRadiusGeometry {
   factory FlutterBorderRadiusGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterBorderRadiusGeometry>(data);
@@ -684,6 +705,7 @@ abstract class FlutterBorderRadiusGeometry {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBorderRadius
     with _$FlutterBorderRadius
     implements FlutterBorderRadiusGeometry {
@@ -725,6 +747,7 @@ class FlutterBorderRadius
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBorderSide with _$FlutterBorderSide {
   const FlutterBorderSide._();
 
@@ -747,6 +770,7 @@ class FlutterBorderSide with _$FlutterBorderSide {
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
   factory FlutterOutlinedBorder.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterOutlinedBorder>(data);
@@ -757,6 +781,7 @@ abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterCircleBorder
     with _$FlutterCircleBorder
     implements FlutterOutlinedBorder {
@@ -777,6 +802,7 @@ class FlutterCircleBorder
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterRoundedRectangleBorder
     with _$FlutterRoundedRectangleBorder
     implements FlutterOutlinedBorder {
@@ -802,6 +828,7 @@ class FlutterRoundedRectangleBorder
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterDecoration {
   factory FlutterDecoration.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterDecoration>(data);
@@ -811,6 +838,7 @@ abstract class FlutterDecoration {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBoxDecoration
     with _$FlutterBoxDecoration
     implements FlutterDecoration {
@@ -844,6 +872,7 @@ class FlutterBoxDecoration
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterShapeDecoration
     with _$FlutterShapeDecoration
     implements FlutterDecoration {
@@ -873,6 +902,7 @@ class FlutterShapeDecoration
   }
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterEdgeInsetsGeometry {
   factory FlutterEdgeInsetsGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterEdgeInsetsGeometry>(data);
@@ -882,6 +912,7 @@ abstract class FlutterEdgeInsetsGeometry {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterEdgeInsets
     with _$FlutterEdgeInsets
     implements FlutterEdgeInsetsGeometry {
@@ -930,6 +961,7 @@ class FlutterEdgeInsets
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterEdgeInsetsDirectional
     with _$FlutterEdgeInsetsDirectional
     implements FlutterEdgeInsetsGeometry {

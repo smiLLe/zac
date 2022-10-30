@@ -10,6 +10,7 @@ part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   const FlutterClipOval._();
 

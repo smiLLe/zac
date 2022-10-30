@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
-import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_values.dart';
@@ -40,12 +40,11 @@ void main() {
     await testWithConverters(
       tester: tester,
       widget: ZacWidget(
-        widget: ZacFlutterGlobalKeyNavigatorState.provide(
+        widget: ZacFlutterGlobalKeyNavigatorStateProvider(
           family: 'foo',
           child: FlutterMaterialApp(
-            navigatorKey: ZacFlutterGlobalKeyNavigatorState.consume(
-                value: ZacValueConsume<GlobalKey<NavigatorState>>.watch(
-                    family: 'foo')),
+            navigatorKey:
+                ZacValueConsume<GlobalKey<NavigatorState>>.watch(family: 'foo'),
             home: LeakContext(cb: (o) => zacContext = o),
           ),
         ),

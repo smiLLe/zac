@@ -15,37 +15,47 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterScaffold _$FlutterScaffoldFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
-    case 'f:1:Scaffold':
-      return _FlutterScaffold.fromJson(json);
-    case 'f:1:Scaffold.openDrawer':
-      return _FlutterScaffoldOpenDrawer.fromJson(json);
-    case 'f:1:Scaffold.openEndDrawer':
-      return _FlutterScaffoldOpenEndDrawer.fromJson(json);
-    case 'f:1:Scaffold.showBodyScrim':
-      return _FlutterScaffoldShowBodyScrim.fromJson(json);
-    case 'f:1:Scaffold.showBottomSheet':
-      return _FlutterScaffoldShowBottomSheet.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterScaffold',
-          'Invalid union type "${json['converter']}"!');
-  }
+  return _FlutterScaffold.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterScaffold {
+  FlutterKey? get key =>
+      throw _privateConstructorUsedError; // PreferredSizeWidget?
+  FlutterWidget? get appBar => throw _privateConstructorUsedError;
+  FlutterWidget? get body => throw _privateConstructorUsedError;
+  FlutterWidget? get floatingActionButton =>
+      throw _privateConstructorUsedError; // FloatingActionButtonLocation? floatingActionButtonLocation,
+// FloatingActionButtonAnimator? floatingActionButtonAnimator,
+  ZacValueList<FlutterWidget>? get persistentFooterButtons =>
+      throw _privateConstructorUsedError;
+  FlutterWidget? get drawer =>
+      throw _privateConstructorUsedError; // DrawerCallback? onDrawerChanged,
+  FlutterWidget? get endDrawer =>
+      throw _privateConstructorUsedError; // DrawerCallback? onEndDrawerChanged,
+  FlutterWidget? get bottomNavigationBar => throw _privateConstructorUsedError;
+  FlutterWidget? get bottomSheet => throw _privateConstructorUsedError;
+  FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
+  ZacValue<bool>? get resizeToAvoidBottomInset =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get primary =>
+      throw _privateConstructorUsedError; // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
+  ZacValue<bool>? get extendBody => throw _privateConstructorUsedError;
+  ZacValue<bool>? get extendBodyBehindAppBar =>
+      throw _privateConstructorUsedError;
+  FlutterColor? get drawerScrimColor => throw _privateConstructorUsedError;
+  ZacValue<double>? get drawerEdgeDragWidth =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get drawerEnableOpenDragGesture =>
+      throw _privateConstructorUsedError;
+  ZacValue<bool>? get endDrawerEnableOpenDragGesture =>
+      throw _privateConstructorUsedError;
+  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
-        openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
-        showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
-        showBottomSheet,
-  }) =>
+    TResult Function(_FlutterScaffold value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
@@ -71,10 +81,8 @@ class _$_FlutterScaffold extends _FlutterScaffold {
       this.drawerEdgeDragWidth,
       this.drawerEnableOpenDragGesture,
       this.endDrawerEnableOpenDragGesture,
-      this.restorationId,
-      final String? $type})
-      : $type = $type ?? 'f:1:Scaffold',
-        super._();
+      this.restorationId})
+      : super._();
 
   factory _$_FlutterScaffold.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterScaffoldFromJson(json);
@@ -123,9 +131,6 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   final ZacValue<bool>? endDrawerEnableOpenDragGesture;
   @override
   final ZacValue<String>? restorationId;
-
-  @JsonKey(name: 'converter')
-  final String $type;
 
   @override
   String toString() {
@@ -206,15 +211,8 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
-        openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
-        showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
-        showBottomSheet,
-  }) {
+    TResult Function(_FlutterScaffold value) $default,
+  ) {
     return $default(this);
   }
 }
@@ -245,53 +243,109 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   factory _FlutterScaffold.fromJson(Map<String, dynamic> json) =
       _$_FlutterScaffold.fromJson;
 
-  FlutterKey? get key; // PreferredSizeWidget?
+  @override
+  FlutterKey? get key;
+  @override // PreferredSizeWidget?
   FlutterWidget? get appBar;
+  @override
   FlutterWidget? get body;
-  FlutterWidget?
-      get floatingActionButton; // FloatingActionButtonLocation? floatingActionButtonLocation,
+  @override
+  FlutterWidget? get floatingActionButton;
+  @override // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
   ZacValueList<FlutterWidget>? get persistentFooterButtons;
-  FlutterWidget? get drawer; // DrawerCallback? onDrawerChanged,
-  FlutterWidget? get endDrawer; // DrawerCallback? onEndDrawerChanged,
+  @override
+  FlutterWidget? get drawer;
+  @override // DrawerCallback? onDrawerChanged,
+  FlutterWidget? get endDrawer;
+  @override // DrawerCallback? onEndDrawerChanged,
   FlutterWidget? get bottomNavigationBar;
+  @override
   FlutterWidget? get bottomSheet;
+  @override
   FlutterColor? get backgroundColor;
+  @override
   ZacValue<bool>? get resizeToAvoidBottomInset;
-  ZacValue<bool>?
-      get primary; // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
+  @override
+  ZacValue<bool>? get primary;
+  @override // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
   ZacValue<bool>? get extendBody;
+  @override
   ZacValue<bool>? get extendBodyBehindAppBar;
+  @override
   FlutterColor? get drawerScrimColor;
+  @override
   ZacValue<double>? get drawerEdgeDragWidth;
+  @override
   ZacValue<bool>? get drawerEnableOpenDragGesture;
+  @override
   ZacValue<bool>? get endDrawerEnableOpenDragGesture;
+  @override
   ZacValue<String>? get restorationId;
+}
+
+FlutterScaffoldActions _$FlutterScaffoldActionsFromJson(
+    Map<String, dynamic> json) {
+  switch (json['converter']) {
+    case 'f:1:Scaffold.openDrawer':
+      return _FlutterScaffoldActionsOpenDrawer.fromJson(json);
+    case 'f:1:Scaffold.openEndDrawer':
+      return _FlutterScaffoldActionsOpenEndDrawer.fromJson(json);
+    case 'f:1:Scaffold.showBodyScrim':
+      return _FlutterScaffoldActionsShowBodyScrim.fromJson(json);
+    case 'f:1:Scaffold.showBottomSheet':
+      return _FlutterScaffoldActionsShowBottomSheet.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'converter',
+          'FlutterScaffoldActions',
+          'Invalid union type "${json['converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterScaffoldActions {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterScaffoldActionsOpenDrawer value)
+        openDrawer,
+    required TResult Function(_FlutterScaffoldActionsOpenEndDrawer value)
+        openEndDrawer,
+    required TResult Function(_FlutterScaffoldActionsShowBodyScrim value)
+        showBodyScrim,
+    required TResult Function(_FlutterScaffoldActionsShowBottomSheet value)
+        showBottomSheet,
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterScaffoldOpenDrawer extends _FlutterScaffoldOpenDrawer {
-  _$_FlutterScaffoldOpenDrawer({final String? $type})
+class _$_FlutterScaffoldActionsOpenDrawer
+    extends _FlutterScaffoldActionsOpenDrawer {
+  _$_FlutterScaffoldActionsOpenDrawer({final String? $type})
       : $type = $type ?? 'f:1:Scaffold.openDrawer',
         super._();
 
-  factory _$_FlutterScaffoldOpenDrawer.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterScaffoldOpenDrawerFromJson(json);
+  factory _$_FlutterScaffoldActionsOpenDrawer.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterScaffoldActionsOpenDrawerFromJson(json);
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterScaffold.openDrawer()';
+    return 'FlutterScaffoldActions.openDrawer()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterScaffoldOpenDrawer);
+            other is _$_FlutterScaffoldActionsOpenDrawer);
   }
 
   @JsonKey(ignore: true)
@@ -300,51 +354,55 @@ class _$_FlutterScaffoldOpenDrawer extends _FlutterScaffoldOpenDrawer {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterScaffoldActionsOpenDrawer value)
+        openDrawer,
+    required TResult Function(_FlutterScaffoldActionsOpenEndDrawer value)
         openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
+    required TResult Function(_FlutterScaffoldActionsShowBodyScrim value)
         showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
+    required TResult Function(_FlutterScaffoldActionsShowBottomSheet value)
         showBottomSheet,
   }) {
     return openDrawer(this);
   }
 }
 
-abstract class _FlutterScaffoldOpenDrawer extends FlutterScaffold {
-  factory _FlutterScaffoldOpenDrawer() = _$_FlutterScaffoldOpenDrawer;
-  _FlutterScaffoldOpenDrawer._() : super._();
+abstract class _FlutterScaffoldActionsOpenDrawer
+    extends FlutterScaffoldActions {
+  factory _FlutterScaffoldActionsOpenDrawer() =
+      _$_FlutterScaffoldActionsOpenDrawer;
+  _FlutterScaffoldActionsOpenDrawer._() : super._();
 
-  factory _FlutterScaffoldOpenDrawer.fromJson(Map<String, dynamic> json) =
-      _$_FlutterScaffoldOpenDrawer.fromJson;
+  factory _FlutterScaffoldActionsOpenDrawer.fromJson(
+      Map<String, dynamic> json) = _$_FlutterScaffoldActionsOpenDrawer.fromJson;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterScaffoldOpenEndDrawer extends _FlutterScaffoldOpenEndDrawer {
-  _$_FlutterScaffoldOpenEndDrawer({final String? $type})
+class _$_FlutterScaffoldActionsOpenEndDrawer
+    extends _FlutterScaffoldActionsOpenEndDrawer {
+  _$_FlutterScaffoldActionsOpenEndDrawer({final String? $type})
       : $type = $type ?? 'f:1:Scaffold.openEndDrawer',
         super._();
 
-  factory _$_FlutterScaffoldOpenEndDrawer.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterScaffoldOpenEndDrawerFromJson(json);
+  factory _$_FlutterScaffoldActionsOpenEndDrawer.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterScaffoldActionsOpenEndDrawerFromJson(json);
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'FlutterScaffold.openEndDrawer()';
+    return 'FlutterScaffoldActions.openEndDrawer()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterScaffoldOpenEndDrawer);
+            other is _$_FlutterScaffoldActionsOpenEndDrawer);
   }
 
   @JsonKey(ignore: true)
@@ -353,38 +411,43 @@ class _$_FlutterScaffoldOpenEndDrawer extends _FlutterScaffoldOpenEndDrawer {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterScaffoldActionsOpenDrawer value)
+        openDrawer,
+    required TResult Function(_FlutterScaffoldActionsOpenEndDrawer value)
         openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
+    required TResult Function(_FlutterScaffoldActionsShowBodyScrim value)
         showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
+    required TResult Function(_FlutterScaffoldActionsShowBottomSheet value)
         showBottomSheet,
   }) {
     return openEndDrawer(this);
   }
 }
 
-abstract class _FlutterScaffoldOpenEndDrawer extends FlutterScaffold {
-  factory _FlutterScaffoldOpenEndDrawer() = _$_FlutterScaffoldOpenEndDrawer;
-  _FlutterScaffoldOpenEndDrawer._() : super._();
+abstract class _FlutterScaffoldActionsOpenEndDrawer
+    extends FlutterScaffoldActions {
+  factory _FlutterScaffoldActionsOpenEndDrawer() =
+      _$_FlutterScaffoldActionsOpenEndDrawer;
+  _FlutterScaffoldActionsOpenEndDrawer._() : super._();
 
-  factory _FlutterScaffoldOpenEndDrawer.fromJson(Map<String, dynamic> json) =
-      _$_FlutterScaffoldOpenEndDrawer.fromJson;
+  factory _FlutterScaffoldActionsOpenEndDrawer.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterScaffoldActionsOpenEndDrawer.fromJson;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
-  _$_FlutterScaffoldShowBodyScrim(this.value, this.opacity,
+class _$_FlutterScaffoldActionsShowBodyScrim
+    extends _FlutterScaffoldActionsShowBodyScrim {
+  _$_FlutterScaffoldActionsShowBodyScrim(this.value, this.opacity,
       {final String? $type})
       : $type = $type ?? 'f:1:Scaffold.showBodyScrim',
         super._();
 
-  factory _$_FlutterScaffoldShowBodyScrim.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterScaffoldShowBodyScrimFromJson(json);
+  factory _$_FlutterScaffoldActionsShowBodyScrim.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterScaffoldActionsShowBodyScrimFromJson(json);
 
   @override
   final bool value;
@@ -396,14 +459,14 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
 
   @override
   String toString() {
-    return 'FlutterScaffold.showBodyScrim(value: $value, opacity: $opacity)';
+    return 'FlutterScaffoldActions.showBodyScrim(value: $value, opacity: $opacity)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterScaffoldShowBodyScrim &&
+            other is _$_FlutterScaffoldActionsShowBodyScrim &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.opacity, opacity) || other.opacity == opacity));
   }
@@ -414,28 +477,30 @@ class _$_FlutterScaffoldShowBodyScrim extends _FlutterScaffoldShowBodyScrim {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterScaffoldActionsOpenDrawer value)
+        openDrawer,
+    required TResult Function(_FlutterScaffoldActionsOpenEndDrawer value)
         openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
+    required TResult Function(_FlutterScaffoldActionsShowBodyScrim value)
         showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
+    required TResult Function(_FlutterScaffoldActionsShowBottomSheet value)
         showBottomSheet,
   }) {
     return showBodyScrim(this);
   }
 }
 
-abstract class _FlutterScaffoldShowBodyScrim extends FlutterScaffold {
-  factory _FlutterScaffoldShowBodyScrim(
+abstract class _FlutterScaffoldActionsShowBodyScrim
+    extends FlutterScaffoldActions {
+  factory _FlutterScaffoldActionsShowBodyScrim(
           final bool value, final ZacValue<double> opacity) =
-      _$_FlutterScaffoldShowBodyScrim;
-  _FlutterScaffoldShowBodyScrim._() : super._();
+      _$_FlutterScaffoldActionsShowBodyScrim;
+  _FlutterScaffoldActionsShowBodyScrim._() : super._();
 
-  factory _FlutterScaffoldShowBodyScrim.fromJson(Map<String, dynamic> json) =
-      _$_FlutterScaffoldShowBodyScrim.fromJson;
+  factory _FlutterScaffoldActionsShowBodyScrim.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterScaffoldActionsShowBodyScrim.fromJson;
 
   bool get value;
   ZacValue<double> get opacity;
@@ -443,9 +508,9 @@ abstract class _FlutterScaffoldShowBodyScrim extends FlutterScaffold {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterScaffoldShowBottomSheet
-    extends _FlutterScaffoldShowBottomSheet {
-  _$_FlutterScaffoldShowBottomSheet(this.child,
+class _$_FlutterScaffoldActionsShowBottomSheet
+    extends _FlutterScaffoldActionsShowBottomSheet {
+  _$_FlutterScaffoldActionsShowBottomSheet(this.child,
       {this.backgroundColor,
       this.elevation,
       this.shape,
@@ -456,9 +521,9 @@ class _$_FlutterScaffoldShowBottomSheet
       : $type = $type ?? 'f:1:Scaffold.showBottomSheet',
         super._();
 
-  factory _$_FlutterScaffoldShowBottomSheet.fromJson(
+  factory _$_FlutterScaffoldActionsShowBottomSheet.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterScaffoldShowBottomSheetFromJson(json);
+      _$$_FlutterScaffoldActionsShowBottomSheetFromJson(json);
 
   @override
   final FlutterWidget child;
@@ -480,14 +545,14 @@ class _$_FlutterScaffoldShowBottomSheet
 
   @override
   String toString() {
-    return 'FlutterScaffold.showBottomSheet(child: $child, backgroundColor: $backgroundColor, elevation: $elevation, shape: $shape, clipBehavior: $clipBehavior, constraints: $constraints, enableDrag: $enableDrag)';
+    return 'FlutterScaffoldActions.showBottomSheet(child: $child, backgroundColor: $backgroundColor, elevation: $elevation, shape: $shape, clipBehavior: $clipBehavior, constraints: $constraints, enableDrag: $enableDrag)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterScaffoldShowBottomSheet &&
+            other is _$_FlutterScaffoldActionsShowBottomSheet &&
             (identical(other.child, child) || other.child == child) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
@@ -509,32 +574,35 @@ class _$_FlutterScaffoldShowBottomSheet
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterScaffold value) $default, {
-    required TResult Function(_FlutterScaffoldOpenDrawer value) openDrawer,
-    required TResult Function(_FlutterScaffoldOpenEndDrawer value)
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterScaffoldActionsOpenDrawer value)
+        openDrawer,
+    required TResult Function(_FlutterScaffoldActionsOpenEndDrawer value)
         openEndDrawer,
-    required TResult Function(_FlutterScaffoldShowBodyScrim value)
+    required TResult Function(_FlutterScaffoldActionsShowBodyScrim value)
         showBodyScrim,
-    required TResult Function(_FlutterScaffoldShowBottomSheet value)
+    required TResult Function(_FlutterScaffoldActionsShowBottomSheet value)
         showBottomSheet,
   }) {
     return showBottomSheet(this);
   }
 }
 
-abstract class _FlutterScaffoldShowBottomSheet extends FlutterScaffold {
-  factory _FlutterScaffoldShowBottomSheet(final FlutterWidget child,
-      {final FlutterColor? backgroundColor,
-      final ZacValue<double>? elevation,
-      final FlutterShapeBorder? shape,
-      final FlutterClip? clipBehavior,
-      final FlutterBoxConstraints? constraints,
-      final ZacValue<bool>? enableDrag}) = _$_FlutterScaffoldShowBottomSheet;
-  _FlutterScaffoldShowBottomSheet._() : super._();
+abstract class _FlutterScaffoldActionsShowBottomSheet
+    extends FlutterScaffoldActions {
+  factory _FlutterScaffoldActionsShowBottomSheet(final FlutterWidget child,
+          {final FlutterColor? backgroundColor,
+          final ZacValue<double>? elevation,
+          final FlutterShapeBorder? shape,
+          final FlutterClip? clipBehavior,
+          final FlutterBoxConstraints? constraints,
+          final ZacValue<bool>? enableDrag}) =
+      _$_FlutterScaffoldActionsShowBottomSheet;
+  _FlutterScaffoldActionsShowBottomSheet._() : super._();
 
-  factory _FlutterScaffoldShowBottomSheet.fromJson(Map<String, dynamic> json) =
-      _$_FlutterScaffoldShowBottomSheet.fromJson;
+  factory _FlutterScaffoldActionsShowBottomSheet.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterScaffoldActionsShowBottomSheet.fromJson;
 
   FlutterWidget get child;
   FlutterColor? get backgroundColor;

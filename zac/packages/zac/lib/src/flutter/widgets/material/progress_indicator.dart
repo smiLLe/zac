@@ -10,6 +10,7 @@ part 'progress_indicator.freezed.dart';
 part 'progress_indicator.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterProgressIndicator
     with _$FlutterProgressIndicator
     implements FlutterWidget {

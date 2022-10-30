@@ -21,6 +21,8 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
       return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
       return _ZacNavigatorStateRoot.fromJson(json);
+    case 'f:1:NavigatorState.root':
+      return _ZacNavigatorStateSharedValue.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'converter', 'FlutterNavigatorState',
@@ -34,6 +36,7 @@ mixin _$FlutterNavigatorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +75,7 @@ class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
   }) {
     return closest(this);
   }
@@ -118,6 +122,7 @@ class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
   }) {
     return root(this);
   }
@@ -129,6 +134,62 @@ abstract class _ZacNavigatorStateRoot extends FlutterNavigatorState {
 
   factory _ZacNavigatorStateRoot.fromJson(Map<String, dynamic> json) =
       _$_ZacNavigatorStateRoot.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
+  _$_ZacNavigatorStateSharedValue({required this.value, final String? $type})
+      : $type = $type ?? 'f:1:NavigatorState.root',
+        super._();
+
+  factory _$_ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNavigatorStateSharedValueFromJson(json);
+
+  @override
+  final ZacValue<GlobalKey<NavigatorState>> value;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterNavigatorState.shared(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacNavigatorStateSharedValue &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacNavigatorStateClosest value) closest,
+    required TResult Function(_ZacNavigatorStateRoot value) root,
+    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
+  }) {
+    return shared(this);
+  }
+}
+
+abstract class _ZacNavigatorStateSharedValue extends FlutterNavigatorState {
+  factory _ZacNavigatorStateSharedValue(
+          {required final ZacValue<GlobalKey<NavigatorState>> value}) =
+      _$_ZacNavigatorStateSharedValue;
+  _ZacNavigatorStateSharedValue._() : super._();
+
+  factory _ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =
+      _$_ZacNavigatorStateSharedValue.fromJson;
+
+  ZacValue<GlobalKey<NavigatorState>> get value;
 }
 
 FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
@@ -262,7 +323,7 @@ FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
 
 /// @nodoc
 mixin _$FlutterNavigatorActions {
-  GetFlutterNavigatorState? get navigatorState =>
+  FlutterNavigatorState? get navigatorState =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -295,7 +356,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
   @override
   final FlutterRoute route;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -340,7 +401,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
 abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush(
           {required final FlutterRoute route,
-          final GetFlutterNavigatorState? navigatorState}) =
+          final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPush;
   _FlutterNavigatorActionsPush._() : super._();
 
@@ -349,7 +410,7 @@ abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
 
   FlutterRoute get route;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -373,7 +434,7 @@ class _$_FlutterNavigatorActionsPushNamed
   @override
   final Object? arguments;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -423,7 +484,7 @@ abstract class _FlutterNavigatorActionsPushNamed
   factory _FlutterNavigatorActionsPushNamed(
           {required final ZacValue<String> routeName,
           final Object? arguments,
-          final GetFlutterNavigatorState? navigatorState}) =
+          final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushNamed;
   _FlutterNavigatorActionsPushNamed._() : super._();
 
@@ -433,7 +494,7 @@ abstract class _FlutterNavigatorActionsPushNamed
   ZacValue<String> get routeName;
   Object? get arguments;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -450,7 +511,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   @override
   final ZacActions? actions;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -495,7 +556,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
 abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop(
           {final ZacActions? actions,
-          final GetFlutterNavigatorState? navigatorState}) =
+          final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPop;
   _FlutterNavigatorActionsPop._() : super._();
 
@@ -504,7 +565,7 @@ abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
 
   ZacActions? get actions;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -523,7 +584,7 @@ class _$_FlutterNavigatorActionsMaybePop
   @override
   final ZacActions? actions;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -569,7 +630,7 @@ abstract class _FlutterNavigatorActionsMaybePop
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsMaybePop(
           {final ZacActions? actions,
-          final GetFlutterNavigatorState? navigatorState}) =
+          final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsMaybePop;
   _FlutterNavigatorActionsMaybePop._() : super._();
 
@@ -578,7 +639,7 @@ abstract class _FlutterNavigatorActionsMaybePop
 
   ZacActions? get actions;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -602,7 +663,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final ZacActions? result;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -650,7 +711,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
   factory _FlutterNavigatorActionsPushReplacement(
           {required final FlutterRoute route,
           final ZacActions? result,
-          final GetFlutterNavigatorState? navigatorState}) =
+          final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
   _FlutterNavigatorActionsPushReplacement._() : super._();
 
@@ -661,7 +722,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
   FlutterRoute get route;
   ZacActions? get result;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
 }
 
 /// @nodoc
@@ -686,7 +747,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final Object? arguments;
   @override
-  final GetFlutterNavigatorState? navigatorState;
+  final FlutterNavigatorState? navigatorState;
   @override
   final ZacActions? result;
 
@@ -739,7 +800,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   factory _FlutterNavigatorActionsPushReplacementNamed(
           {required final ZacValue<String> routeName,
           final Object? arguments,
-          final GetFlutterNavigatorState? navigatorState,
+          final FlutterNavigatorState? navigatorState,
           final ZacActions? result}) =
       _$_FlutterNavigatorActionsPushReplacementNamed;
   _FlutterNavigatorActionsPushReplacementNamed._() : super._();
@@ -751,7 +812,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   ZacValue<String> get routeName;
   Object? get arguments;
   @override
-  GetFlutterNavigatorState? get navigatorState;
+  FlutterNavigatorState? get navigatorState;
   ZacActions? get result;
 }
 

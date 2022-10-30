@@ -444,6 +444,7 @@ $element
 }
 
 @defaultConverterFreezed
+@TsClass()
 class ZacValueActions with _$ZacValueActions implements ZacAction {
   const ZacValueActions._();
 

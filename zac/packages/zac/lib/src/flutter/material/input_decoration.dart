@@ -12,6 +12,7 @@ part 'input_decoration.freezed.dart';
 part 'input_decoration.g.dart';
 
 @defaultConverterFreezed
+@TsClass()
 class FlutterInputDecoration with _$FlutterInputDecoration {
   const FlutterInputDecoration._();
 

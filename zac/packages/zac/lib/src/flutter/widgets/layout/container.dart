@@ -11,6 +11,7 @@ part 'container.freezed.dart';
 part 'container.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   const FlutterContainer._();
 

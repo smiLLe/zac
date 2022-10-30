@@ -10,6 +10,7 @@ part 'aspect_ratio.freezed.dart';
 part 'aspect_ratio.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   const FlutterAspectRatio._();
 

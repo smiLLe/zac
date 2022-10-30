@@ -8,6 +8,7 @@ part 'sliver_child_delegate.freezed.dart';
 part 'sliver_child_delegate.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   const FlutterSliverChildDelegate._();
 

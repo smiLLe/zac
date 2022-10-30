@@ -9,6 +9,7 @@ part 'rendering.freezed.dart';
 part 'rendering.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
   const FlutterHitTestBehavior._();
 
@@ -36,6 +37,7 @@ class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
   const FlutterCrossAxisAlignment._();
 
@@ -71,6 +73,7 @@ class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
   const FlutterMainAxisAlignment._();
 
@@ -111,6 +114,7 @@ class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterMainAxisSize with _$FlutterMainAxisSize {
   const FlutterMainAxisSize._();
 
@@ -129,6 +133,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterFlexFit with _$FlutterFlexFit {
   const FlutterFlexFit._();
 
@@ -147,6 +152,7 @@ class FlutterFlexFit with _$FlutterFlexFit {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterWrapAlignment with _$FlutterWrapAlignment {
   const FlutterWrapAlignment._();
 
@@ -185,6 +191,7 @@ class FlutterWrapAlignment with _$FlutterWrapAlignment {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
   const FlutterWrapCrossAlignment._();
 
@@ -210,6 +217,7 @@ class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterStackFit with _$FlutterStackFit {
   const FlutterStackFit._();
 
@@ -235,6 +243,7 @@ class FlutterStackFit with _$FlutterStackFit {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterBoxConstraints with _$FlutterBoxConstraints {
   const FlutterBoxConstraints._();
 
@@ -298,51 +307,7 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 }
 
 @defaultConverterFreezed
-class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
-  const FlutterSliverGridDelegate._();
-
-  factory FlutterSliverGridDelegate.fromJson(Map<String, dynamic> json) =>
-      _$FlutterSliverGridDelegateFromJson(json);
-
-  @FreezedUnionValue('f:1:SliverGridDelegateWithFixedCrossAxisCount')
-  factory FlutterSliverGridDelegate.fixedCrossAxisCount({
-    required int crossAxisCount,
-    ZacValue<double>? mainAxisSpacing,
-    ZacValue<double>? crossAxisSpacing,
-    ZacValue<double>? childAspectRatio,
-    ZacValue<double>? mainAxisExtent,
-  }) = _FlutterSliverGridDelegateFixedCrossAxisCount;
-
-  @FreezedUnionValue('f:1:SliverGridDelegateWithMaxCrossAxisExtent')
-  factory FlutterSliverGridDelegate.maxCrossAxisExtent({
-    required ZacValue<double> maxCrossAxisExtent,
-    ZacValue<double>? mainAxisSpacing,
-    ZacValue<double>? crossAxisSpacing,
-    ZacValue<double>? childAspectRatio,
-    ZacValue<double>? mainAxisExtent,
-  }) = _FlutterSliverGridDelegateMaxCrossAxisExtent;
-
-  SliverGridDelegate build(ZacContext zacContext) {
-    return map(
-      fixedCrossAxisCount: (value) => SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: value.crossAxisCount,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
-      ),
-      maxCrossAxisExtent: (value) => SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
-      ),
-    );
-  }
-}
-
-@defaultConverterFreezed
+@TsClass(order: tsOrderDartClasses)
 class FlutterDecorationPosition with _$FlutterDecorationPosition {
   const FlutterDecorationPosition._();
 

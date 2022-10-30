@@ -19,28 +19,17 @@ part 'dialog.freezed.dart';
 part 'dialog.g.dart';
 
 @defaultConverterFreezed
-class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
+@TsClass(order: tsOrderFlutterWidget)
+class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';
   static const String unionValueAlertDialog = 'f:1:AlertDialog';
   static const String unionValueSimpleDialog = 'f:1:SimpleDialog';
   static const String unionValueSimpleDialogOption = 'f:1:SimpleDialogOption';
-  static const String unionValueShowDialog = 'f:1:showDialog';
 
   factory FlutterDialogs.fromJson(Map<String, dynamic> json) =>
       _$FlutterDialogsFromJson(json);
-
-  @FreezedUnionValue(FlutterDialogs.unionValueShowDialog)
-  factory FlutterDialogs.showDialog({
-    required FlutterWidget child,
-    ZacValue<bool>? barrierDismissible,
-    FlutterColor? barrierColor,
-    ZacValue<String>? barrierLabel,
-    ZacValue<bool>? useSafeArea,
-    ZacValue<bool>? useRootNavigator,
-    FlutterRouteSettings? routeSettings,
-  }) = _FlutterDialogsShowDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueDialog)
   factory FlutterDialogs.dialog({
@@ -107,32 +96,8 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
   }) = _FlutterDialogsSimpleDialogOption;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacActionPayload payload, ZacContext zacContext) {
-    return map(
-      alertDialog: (_) => throw StateError('Should never happen'),
-      dialog: (_) => throw StateError('Should never happen'),
-      simpleDialog: (_) => throw StateError('Should never happen'),
-      simpleDialogOption: (_) => throw StateError('Should never happen'),
-      showDialog: (value) => showDialog<ZacActions?>(
-        context: zacContext.context,
-        builder: (_) =>
-            FlutterBuilder(child: value.child).buildWidget(zacContext),
-        routeSettings: value.routeSettings?.build(zacContext),
-        barrierDismissible:
-            value.barrierDismissible?.getValue(zacContext) ?? true,
-        barrierColor: value.barrierColor?.build(zacContext),
-        barrierLabel: value.barrierLabel?.getValue(zacContext),
-        useSafeArea: value.useSafeArea?.getValue(zacContext) ?? true,
-        useRootNavigator: value.useRootNavigator?.getValue(zacContext) ?? true,
-      ),
-    );
-  }
-
-  @override
   Widget buildWidget(ZacContext zacContext) {
     return map(
-      showDialog: (_) => throw StateError('Should never happen'),
       dialog: (value) => Dialog(
         key: value.key?.buildKey(zacContext),
         alignment: value.alignment?.build(zacContext),
@@ -196,6 +161,47 @@ class FlutterDialogs with _$FlutterDialogs implements ZacAction, FlutterWidget {
         padding: value.padding?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         child: value.child?.buildWidget(zacContext),
+      ),
+    );
+  }
+}
+
+@defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
+class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
+  const FlutterDialogActions._();
+
+  static const String unionValue = 'f:1:showDialog';
+
+  factory FlutterDialogActions.fromJson(Map<String, dynamic> json) =>
+      _$FlutterDialogActionsFromJson(json);
+
+  @FreezedUnionValue(FlutterDialogActions.unionValue)
+  factory FlutterDialogActions.showDialog({
+    required FlutterWidget child,
+    ZacValue<bool>? barrierDismissible,
+    FlutterColor? barrierColor,
+    ZacValue<String>? barrierLabel,
+    ZacValue<bool>? useSafeArea,
+    ZacValue<bool>? useRootNavigator,
+    FlutterRouteSettings? routeSettings,
+  }) = _FlutterDialogActionsShowDialog;
+
+  @override
+  FutureOr<ZacActions?> execute(
+      ZacActionPayload payload, ZacContext zacContext) {
+    return map(
+      showDialog: (value) => showDialog<ZacActions?>(
+        context: zacContext.context,
+        builder: (_) =>
+            FlutterBuilder(child: value.child).buildWidget(zacContext),
+        routeSettings: value.routeSettings?.build(zacContext),
+        barrierDismissible:
+            value.barrierDismissible?.getValue(zacContext) ?? true,
+        barrierColor: value.barrierColor?.build(zacContext),
+        barrierLabel: value.barrierLabel?.getValue(zacContext),
+        useSafeArea: value.useSafeArea?.getValue(zacContext) ?? true,
+        useRootNavigator: value.useRootNavigator?.getValue(zacContext) ?? true,
       ),
     );
   }

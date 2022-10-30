@@ -8,6 +8,7 @@ part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   const FlutterRotatedBox._();
 

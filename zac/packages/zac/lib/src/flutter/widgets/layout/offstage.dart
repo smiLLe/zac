@@ -10,6 +10,7 @@ part 'offstage.freezed.dart';
 part 'offstage.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterOffstage with _$FlutterOffstage implements FlutterWidget {
   const FlutterOffstage._();
 

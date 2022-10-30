@@ -1,8 +1,20 @@
-import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter } from "./base"
+import { DartDouble, DartInt, FlutterWidget, ValidTypes, ZacConverter, ZacTransformer } from "./base"
 import { ZacAction, ZacActions } from "./zac/action"
-import { ZacValue, ZacValueList } from "./zac/zac_value"
+import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
-/// FROM: dart_ui.dart
+export abstract class FlutterDartUiShadow extends ZacConverter { }
+export abstract class FlutterKey extends ZacConverter { }
+export abstract class FlutterLocalKey extends FlutterKey { }
+export abstract class FlutterAlignmentGeometry extends ZacConverter { }
+export abstract class FlutterShapeBorder extends ZacConverter { }
+export abstract class FlutterBoxBorder extends FlutterShapeBorder { }
+export abstract class FlutterBorderRadiusGeometry extends ZacConverter { }
+export abstract class FlutterOutlinedBorder extends FlutterShapeBorder { }
+export abstract class FlutterDecoration extends ZacConverter { }
+export abstract class FlutterEdgeInsetsGeometry extends ZacConverter { }
+export abstract class FlutterRoute extends ZacConverter { }
+export abstract class FlutterRouteFactory extends ZacConverter { }
+export abstract class FlutterInputBorder extends FlutterShapeBorder { }
 export class FlutterColor extends ZacConverter {
   static fromARGB(data: {
     a: DartInt,
@@ -857,9 +869,6 @@ export class FlutterBoxWidthStyle extends ZacConverter {
     })
   }
 }
-export abstract class FlutterDartUiShadow extends ZacConverter {
-
-}
 export class DartUiShadow extends FlutterDartUiShadow {
   static new(data: {
     color?: FlutterColor,
@@ -872,13 +881,6 @@ export class DartUiShadow extends FlutterDartUiShadow {
     })
   }
 }
-/// FROM: foundation.dart
-export abstract class FlutterKey extends ZacConverter {
-
-}
-export abstract class FlutterLocalKey extends FlutterKey {
-
-}
 export class FlutterValueKey extends FlutterLocalKey {
   static new(data: { value: string }) {
     return new FlutterValueKey({
@@ -887,108 +889,26 @@ export class FlutterValueKey extends FlutterLocalKey {
     })
   }
 }
-export abstract class FlutterGlobalKeyNavigatorState extends FlutterKey {
+export class FlutterWrapCrossAlignment extends ZacConverter {
+  static center() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.center'
 
-}
-/// FROM: input_decoration.dart
-export class FlutterInputDecoration extends ZacConverter {
-  static new(data: {
-    icon?: FlutterWidget,
-    iconColor?: FlutterColor,
-    label?: FlutterWidget,
-    labelText?: ZacValue<string>,
-    labelStyle?: FlutterTextStyle,
-    floatingLabelStyle?: FlutterTextStyle,
-    helperText?: ZacValue<string>,
-    helperStyle?: FlutterTextStyle,
-    helperMaxLines?: ZacValue<DartInt>,
-    hintText?: ZacValue<string>,
-    hintStyle?: FlutterTextStyle,
-    hintTextDirection?: FlutterTextDirection,
-    hintMaxLines?: ZacValue<DartInt>,
-    errorText?: ZacValue<string>,
-    errorStyle?: FlutterTextStyle,
-    errorMaxLines?: ZacValue<DartInt>,
-    isCollapsed?: ZacValue<boolean>,
-    isDense?: ZacValue<boolean>,
-    contentPadding?: FlutterEdgeInsetsGeometry,
-    prefixIcon?: FlutterWidget,
-    prefixIconConstraints?: FlutterBoxConstraints,
-    prefix?: FlutterWidget,
-    prefixText?: ZacValue<string>,
-    prefixStyle?: FlutterTextStyle,
-    prefixIconColor?: FlutterColor,
-    suffixIcon?: FlutterWidget,
-    suffix?: FlutterWidget,
-    suffixText?: ZacValue<string>,
-    suffixStyle?: FlutterTextStyle,
-    suffixIconColor?: FlutterColor,
-    suffixIconConstraints?: FlutterBoxConstraints,
-    counter?: FlutterWidget,
-    counterText?: ZacValue<string>,
-    counterStyle?: FlutterTextStyle,
-    filled?: ZacValue<boolean>,
-    fillColor?: FlutterColor,
-    focusColor?: FlutterColor,
-    hoverColor?: FlutterColor,
-    errorBorder?: FlutterInputBorder,
-    focusedBorder?: FlutterInputBorder,
-    focusedErrorBorder?: FlutterInputBorder,
-    disabledBorder?: FlutterInputBorder,
-    enabledBorder?: FlutterInputBorder,
-    border?: FlutterInputBorder,
-    enabled?: ZacValue<boolean>,
-    semanticCounterText?: ZacValue<string>,
-    alignLabelWithHint?: ZacValue<boolean>,
-    constraints?: FlutterBoxConstraints
-  }) {
-    return new FlutterInputDecoration({
-      converter: 'f:1:InputDecoration',
-      ...data
     })
   }
-}
-/// FROM: material.dart
-export abstract class FlutterInputBorder extends FlutterShapeBorder {
+  static end() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.end'
 
-}
-export class FlutterOutlineInputBorder extends FlutterInputBorder {
-  static new(data: {
-    borderSide?: FlutterBorderSide,
-    borderRadius?: FlutterBorderRadius,
-    gapPadding?: ZacValue<DartDouble>
-  }) {
-    return new FlutterOutlineInputBorder({
-      converter: 'f:1:OutlineInputBorder',
-      ...data
+    })
+  }
+  static start() {
+    return new FlutterWrapCrossAlignment({
+      converter: 'f:1:WrapCrossAlignment.start'
+
     })
   }
 }
-export class FlutterUnderlineInputBorder extends FlutterInputBorder {
-  static new(data: {
-    borderSide?: FlutterBorderSide,
-    borderRadius?: FlutterBorderRadius
-  }) {
-    return new FlutterUnderlineInputBorder({
-      converter: 'f:1:OutlineInputBorder',
-      ...data
-    })
-  }
-}
-export class FlutterMaterialPageRoute extends FlutterRoute {
-  static new(data: {
-    child: FlutterWidget,
-    settings?: FlutterRouteSettings,
-    maintainState?: ZacValue<boolean>,
-    fullscreenDialog?: ZacValue<boolean>
-  }) {
-    return new FlutterMaterialPageRoute({
-      converter: 'f:1:MaterialPageRoute',
-      ...data
-    })
-  }
-}
-/// FROM: painting.dart
 export class FlutterBoxShape extends ZacConverter {
   static circle() {
     return new FlutterBoxShape({
@@ -1252,9 +1172,6 @@ export class FlutterBoxShadow extends FlutterDartUiShadow {
     })
   }
 }
-export abstract class FlutterAlignmentGeometry extends ZacConverter {
-
-}
 export class FlutterAlignment extends FlutterAlignmentGeometry {
   static new(data: {
     x: ZacValue<DartDouble>,
@@ -1396,12 +1313,6 @@ export class FlutterFractionalOffset extends FlutterAlignmentGeometry {
     })
   }
 }
-export abstract class FlutterShapeBorder extends ZacConverter {
-
-}
-export abstract class FlutterBoxBorder extends FlutterShapeBorder {
-
-}
 export class FlutterBorderDirectional extends FlutterBoxBorder {
   static new(data: {
     top?: FlutterBorderSide,
@@ -1452,9 +1363,6 @@ export class FlutterBorderStyle extends ZacConverter {
     })
   }
 }
-export abstract class FlutterBorderRadiusGeometry extends ZacConverter {
-
-}
 export class FlutterBorderRadius extends FlutterBorderRadiusGeometry {
   static all(data: { radius: FlutterRadius }) {
     return new FlutterBorderRadius({
@@ -1490,9 +1398,6 @@ export class FlutterBorderSide extends ZacConverter {
     })
   }
 }
-export abstract class FlutterOutlinedBorder extends FlutterShapeBorder {
-
-}
 export class FlutterCircleBorder extends FlutterOutlinedBorder {
   static new(data: { side?: FlutterBorderSide }) {
     return new FlutterCircleBorder({
@@ -1511,9 +1416,6 @@ export class FlutterRoundedRectangleBorder extends FlutterOutlinedBorder {
       ...data
     })
   }
-}
-export abstract class FlutterDecoration extends ZacConverter {
-
 }
 export class FlutterBoxDecoration extends FlutterDecoration {
   static new(data: {
@@ -1541,9 +1443,6 @@ export class FlutterShapeDecoration extends FlutterDecoration {
       ...data
     })
   }
-}
-export abstract class FlutterEdgeInsetsGeometry extends ZacConverter {
-
 }
 export class FlutterEdgeInsets extends FlutterEdgeInsetsGeometry {
   static all(data: { value: ZacValue<DartDouble> }) {
@@ -1592,7 +1491,6 @@ export class FlutterEdgeInsetsDirectional extends FlutterEdgeInsetsGeometry {
     })
   }
 }
-/// FROM: rendering.dart
 export class FlutterHitTestBehavior extends ZacConverter {
   static deferToChild() {
     return new FlutterHitTestBehavior({
@@ -1749,26 +1647,6 @@ export class FlutterWrapAlignment extends ZacConverter {
     })
   }
 }
-export class FlutterWrapCrossAlignment extends ZacConverter {
-  static center() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.center'
-
-    })
-  }
-  static end() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.end'
-
-    })
-  }
-  static start() {
-    return new FlutterWrapCrossAlignment({
-      converter: 'f:1:WrapCrossAlignment.start'
-
-    })
-  }
-}
 export class FlutterStackFit extends ZacConverter {
   static expand() {
     return new FlutterStackFit({
@@ -1841,32 +1719,6 @@ export class FlutterBoxConstraints extends ZacConverter {
     })
   }
 }
-export class FlutterSliverGridDelegate extends ZacConverter {
-  static fixedCrossAxisCount(data: {
-    crossAxisCount: DartInt,
-    mainAxisSpacing?: ZacValue<DartDouble>,
-    crossAxisSpacing?: ZacValue<DartDouble>,
-    childAspectRatio?: ZacValue<DartDouble>,
-    mainAxisExtent?: ZacValue<DartDouble>
-  }) {
-    return new FlutterSliverGridDelegate({
-      converter: 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
-      ...data
-    })
-  }
-  static maxCrossAxisExtent(data: {
-    maxCrossAxisExtent: ZacValue<DartDouble>,
-    mainAxisSpacing?: ZacValue<DartDouble>,
-    crossAxisSpacing?: ZacValue<DartDouble>,
-    childAspectRatio?: ZacValue<DartDouble>,
-    mainAxisExtent?: ZacValue<DartDouble>
-  }) {
-    return new FlutterSliverGridDelegate({
-      converter: 'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
-      ...data
-    })
-  }
-}
 export class FlutterDecorationPosition extends ZacConverter {
   static background() {
     return new FlutterDecorationPosition({
@@ -1881,7 +1733,6 @@ export class FlutterDecorationPosition extends ZacConverter {
     })
   }
 }
-/// FROM: services.dart
 export class FlutterSystemUiOverlayStyle extends ZacConverter {
   static new(data: {
     systemNavigationBarColor?: FlutterColor,
@@ -1918,7 +1769,7 @@ export class FlutterTextInputType extends ZacConverter {
 
     })
   }
-  static name() {
+  static name_() {
     return new FlutterTextInputType({
       converter: 'f:1:TextInputType.name'
 
@@ -2101,32 +1952,123 @@ export class FlutterSmartQuotesType extends ZacConverter {
     })
   }
 }
-/// FROM: builder.dart
-export class FlutterBuilder extends FlutterWidget {
+export class ZacStateMachineProviderBuilder extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    family: ZacValue<string>,
+    initialState: ZacValue<string>,
+    states: { [key: string]: ZacStateConfig },
+    child: FlutterWidget,
+    initialContext?: ZacValue<ValidTypes>
+  }) {
+    return new ZacStateMachineProviderBuilder({
+      converter: 'z:1:StateMachine.provide',
+      ...data
+    })
+  }
+}
+export class ZacUpdateContextBuilder extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     child: FlutterWidget
   }) {
-    return new FlutterBuilder({
-      converter: 'f:1:Builder',
+    return new ZacUpdateContextBuilder({
+      converter: 'z:1:UpdateContext',
       ...data
     })
   }
 }
-/// FROM: clip_oval.dart
-export class FlutterClipOval extends FlutterWidget {
+export class ZacWidgetBuilder extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    child?: FlutterWidget,
-    clipBehavior?: FlutterClip
+    data: ZacValue<FlutterWidget>
   }) {
-    return new FlutterClipOval({
-      converter: 'f:1:ClipOval',
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget',
+      ...data
+    })
+  }
+  static map(data: {
+    key?: FlutterKey,
+    data: ZacValue<{ [key: string | number]: ValidTypes }>
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.map',
+      ...data
+    })
+  }
+  static isolate(data: {
+    key?: FlutterKey,
+    data: ZacValue<{ [key: string | number]: ValidTypes }>,
+    errorChild?: FlutterWidget,
+    debugRethrowError?: boolean
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.isolate',
+      ...data
+    })
+  }
+  static isolateString(data: {
+    key?: FlutterKey,
+    data: ZacValue<string>,
+    errorChild?: FlutterWidget,
+    debugRethrowError?: boolean
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.isolateString',
       ...data
     })
   }
 }
-/// FROM: clip_rect.dart
+export class ZacStateMachineBuildStateBuilder extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    family: ZacValue<string>,
+    states: Array<string>,
+    unmappedStateWidget?: FlutterWidget
+  }) {
+    return new ZacStateMachineBuildStateBuilder({
+      converter: 'z:1:StateMachine:BuildState',
+      ...data
+    })
+  }
+}
+export class ZacExecuteActionsBuilder extends FlutterWidget {
+  static once(data: {
+    actions: ZacActions,
+    child?: FlutterWidget
+  }) {
+    return new ZacExecuteActionsBuilder({
+      converter: 'z:1:ExecuteActions.once',
+      ...data
+    })
+  }
+  static listen(data: {
+    actions: ZacActions,
+    family: ValidTypes,
+    child?: FlutterWidget
+  }) {
+    return new ZacExecuteActionsBuilder({
+      converter: 'z:1:ExecuteActions.listen',
+      ...data
+    })
+  }
+}
+export class SharedValueProviderBuilder extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    value: ValidTypes,
+    transformer?: ZacTransformers,
+    family: ValidTypes,
+    child: FlutterWidget,
+    autoCreate?: boolean
+  }) {
+    return new SharedValueProviderBuilder({
+      converter: 'z:1:SharedValue.provide',
+      ...data
+    })
+  }
+}
 export class FlutterClipRect extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2139,7 +2081,6 @@ export class FlutterClipRect extends FlutterWidget {
     })
   }
 }
-/// FROM: decorated_box.dart
 export class FlutterDecoratedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2153,7 +2094,6 @@ export class FlutterDecoratedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: fractional_translation.dart
 export class FlutterFractionalTranslation extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2167,7 +2107,6 @@ export class FlutterFractionalTranslation extends FlutterWidget {
     })
   }
 }
-/// FROM: gesture_detector.dart
 export class FlutterGestureDetector extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2187,7 +2126,6 @@ export class FlutterGestureDetector extends FlutterWidget {
     })
   }
 }
-/// FROM: icon.dart
 export class FlutterIcon extends FlutterWidget {
   static new(data: {
     icon: FlutterIconData,
@@ -2228,7 +2166,6 @@ export class FlutterIconThemeData extends ZacConverter {
     })
   }
 }
-/// FROM: ignore_pointer.dart
 export class FlutterIgnorePointer extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2242,7 +2179,6 @@ export class FlutterIgnorePointer extends FlutterWidget {
     })
   }
 }
-/// FROM: image.dart
 export class FlutterImage extends FlutterWidget {
   static network(data: {
     src: ZacValue<string>,
@@ -2299,7 +2235,6 @@ export class FlutterImage extends FlutterWidget {
     })
   }
 }
-/// FROM: interactive_viewer.dart
 export class FlutterInteractiveViewer extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2322,7 +2257,6 @@ export class FlutterInteractiveViewer extends FlutterWidget {
     })
   }
 }
-/// FROM: keyboard.dart
 export class FlutterScrollViewKeyboardDismissBehavior extends ZacConverter {
   static manual() {
     return new FlutterScrollViewKeyboardDismissBehavior({
@@ -2337,7 +2271,6 @@ export class FlutterScrollViewKeyboardDismissBehavior extends ZacConverter {
     })
   }
 }
-/// FROM: align.dart
 export class FlutterAlign extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2352,7 +2285,6 @@ export class FlutterAlign extends FlutterWidget {
     })
   }
 }
-/// FROM: aspect_ratio.dart
 export class FlutterAspectRatio extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2365,7 +2297,6 @@ export class FlutterAspectRatio extends FlutterWidget {
     })
   }
 }
-/// FROM: center.dart
 export class FlutterCenter extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2379,7 +2310,6 @@ export class FlutterCenter extends FlutterWidget {
     })
   }
 }
-/// FROM: constrained_box.dart
 export class FlutterConstrainedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2392,7 +2322,6 @@ export class FlutterConstrainedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: container.dart
 export class FlutterContainer extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2409,7 +2338,6 @@ export class FlutterContainer extends FlutterWidget {
     })
   }
 }
-/// FROM: expanded.dart
 export class FlutterExpanded extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2422,7 +2350,6 @@ export class FlutterExpanded extends FlutterWidget {
     })
   }
 }
-/// FROM: fitted_box.dart
 export class FlutterFittedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2437,7 +2364,6 @@ export class FlutterFittedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: flexible.dart
 export class FlutterFlexible extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2451,7 +2377,6 @@ export class FlutterFlexible extends FlutterWidget {
     })
   }
 }
-/// FROM: fractionally_sized_box.dart
 export class FlutterFractionallySizedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2466,7 +2391,6 @@ export class FlutterFractionallySizedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: intrinsic_height.dart
 export class FlutterIntrinsicHeight extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2478,7 +2402,6 @@ export class FlutterIntrinsicHeight extends FlutterWidget {
     })
   }
 }
-/// FROM: intrinsic_width.dart
 export class FlutterIntrinsicWidth extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2490,7 +2413,6 @@ export class FlutterIntrinsicWidth extends FlutterWidget {
     })
   }
 }
-/// FROM: limited_box.dart
 export class FlutterLimitedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2504,7 +2426,6 @@ export class FlutterLimitedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: offstage.dart
 export class FlutterOffstage extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2517,7 +2438,6 @@ export class FlutterOffstage extends FlutterWidget {
     })
   }
 }
-/// FROM: overflow_box.dart
 export class FlutterOverflowBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2534,7 +2454,6 @@ export class FlutterOverflowBox extends FlutterWidget {
     })
   }
 }
-/// FROM: padding.dart
 export class FlutterPadding extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2547,7 +2466,6 @@ export class FlutterPadding extends FlutterWidget {
     })
   }
 }
-/// FROM: positioned.dart
 export class FlutterPositioned extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2594,7 +2512,6 @@ export class FlutterPositioned extends FlutterWidget {
     })
   }
 }
-/// FROM: safe_area.dart
 export class FlutterSafeArea extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2612,7 +2529,6 @@ export class FlutterSafeArea extends FlutterWidget {
     })
   }
 }
-/// FROM: single_child_scroll_view.dart
 export class FlutterSingleChildScrollView extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2631,7 +2547,6 @@ export class FlutterSingleChildScrollView extends FlutterWidget {
     })
   }
 }
-/// FROM: sized_box.dart
 export class FlutterSizedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2683,7 +2598,6 @@ export class FlutterSizedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: sized_overflow_box.dart
 export class FlutterSizedOverflowBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2697,7 +2611,6 @@ export class FlutterSizedOverflowBox extends FlutterWidget {
     })
   }
 }
-/// FROM: spacer.dart
 export class FlutterSpacer extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2709,7 +2622,6 @@ export class FlutterSpacer extends FlutterWidget {
     })
   }
 }
-/// FROM: unconstrained_box.dart
 export class FlutterUnconstrainedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2725,7 +2637,6 @@ export class FlutterUnconstrainedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: column.dart
 export class FlutterColumn extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2743,7 +2654,6 @@ export class FlutterColumn extends FlutterWidget {
     })
   }
 }
-/// FROM: grid_view.dart
 export class FlutterGridView extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2769,7 +2679,6 @@ export class FlutterGridView extends FlutterWidget {
     })
   }
 }
-/// FROM: indexed_stack.dart
 export class FlutterIndexedStack extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2785,7 +2694,6 @@ export class FlutterIndexedStack extends FlutterWidget {
     })
   }
 }
-/// FROM: list_view.dart
 export class FlutterListView extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2813,7 +2721,6 @@ export class FlutterListView extends FlutterWidget {
     })
   }
 }
-/// FROM: row.dart
 export class FlutterRow extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2831,7 +2738,6 @@ export class FlutterRow extends FlutterWidget {
     })
   }
 }
-/// FROM: stack.dart
 export class FlutterStack extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2847,7 +2753,6 @@ export class FlutterStack extends FlutterWidget {
     })
   }
 }
-/// FROM: wrap.dart
 export class FlutterWrap extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2868,7 +2773,6 @@ export class FlutterWrap extends FlutterWidget {
     })
   }
 }
-/// FROM: app_bar.dart
 export class FlutterAppBar extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2903,7 +2807,6 @@ export class FlutterAppBar extends FlutterWidget {
     })
   }
 }
-/// FROM: buttons.dart
 export class FlutterElevatedButton extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -2991,7 +2894,6 @@ export class FlutterTextButton extends FlutterWidget {
     })
   }
 }
-/// FROM: button_bar.dart
 export class FlutterButtonBar extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3011,7 +2913,6 @@ export class FlutterButtonBar extends FlutterWidget {
     })
   }
 }
-/// FROM: card.dart
 export class FlutterCard extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3031,22 +2932,7 @@ export class FlutterCard extends FlutterWidget {
     })
   }
 }
-/// FROM: dialog.dart
-export class FlutterDialogs extends ZacAction, FlutterWidget {
-  static showDialog(data: {
-    child: FlutterWidget,
-    barrierDismissible?: ZacValue<boolean>,
-    barrierColor?: FlutterColor,
-    barrierLabel?: ZacValue<string>,
-    useSafeArea?: ZacValue<boolean>,
-    useRootNavigator?: ZacValue<boolean>,
-    routeSettings?: FlutterRouteSettings
-  }) {
-    return new FlutterDialogs({
-      converter: 'f:1:showDialog',
-      ...data
-    })
-  }
+export class FlutterDialogs extends FlutterWidget {
   static dialog(data: {
     key?: FlutterKey,
     backgroundColor?: FlutterColor,
@@ -3122,23 +3008,34 @@ export class FlutterDialogs extends ZacAction, FlutterWidget {
     })
   }
 }
-/// FROM: divider.dart
-export class FlutterDivider extends FlutterWidget {
-  static new(data: {
-    key?: FlutterKey,
-    height?: ZacValue<DartDouble>,
-    thickness?: ZacValue<DartDouble>,
-    indent?: ZacValue<DartDouble>,
-    endIndent?: ZacValue<DartDouble>,
-    color?: FlutterColor
+export class FlutterDialogActions extends ZacAction {
+  static showDialog(data: {
+    child: FlutterWidget,
+    barrierDismissible?: ZacValue<boolean>,
+    barrierColor?: FlutterColor,
+    barrierLabel?: ZacValue<string>,
+    useSafeArea?: ZacValue<boolean>,
+    useRootNavigator?: ZacValue<boolean>,
+    routeSettings?: FlutterRouteSettings
   }) {
-    return new FlutterDivider({
-      converter: 'f:1:Divider',
+    return new FlutterDialogActions({
+      converter: 'f:1:showDialog',
       ...data
     })
   }
 }
-/// FROM: drawer.dart
+export class FlutterClipOval extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    child?: FlutterWidget,
+    clipBehavior?: FlutterClip
+  }) {
+    return new FlutterClipOval({
+      converter: 'f:1:ClipOval',
+      ...data
+    })
+  }
+}
 export class FlutterDrawer extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3154,7 +3051,6 @@ export class FlutterDrawer extends FlutterWidget {
     })
   }
 }
-/// FROM: list_tile.dart
 export class FlutterListTile extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3189,7 +3085,6 @@ export class FlutterListTile extends FlutterWidget {
     })
   }
 }
-/// FROM: material.dart
 export class FlutterMaterial extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3209,11 +3104,10 @@ export class FlutterMaterial extends FlutterWidget {
     })
   }
 }
-/// FROM: material_app.dart
 export class FlutterMaterialApp extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    navigatorKey?: FlutterGlobalKeyNavigatorState,
+    navigatorKey?: ZacValue<any /*GlobalKey<NavigatorState>*/>,
     home?: FlutterWidget,
     initialRoute?: ZacValue<string>,
     onGenerateRoute?: FlutterRouteFactory,
@@ -3236,7 +3130,6 @@ export class FlutterMaterialApp extends FlutterWidget {
     })
   }
 }
-/// FROM: progress_indicator.dart
 export class FlutterProgressIndicator extends FlutterWidget {
   static linear(data: {
     key?: FlutterKey,
@@ -3267,7 +3160,6 @@ export class FlutterProgressIndicator extends FlutterWidget {
     })
   }
 }
-/// FROM: refresh_indicator.dart
 export class FlutterRefreshIndicator extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3303,8 +3195,7 @@ export class FlutterRefreshIndicatorTriggerMode extends ZacConverter {
     })
   }
 }
-/// FROM: scaffold.dart
-export class FlutterScaffold extends ZacAction, FlutterWidget {
+export class FlutterScaffold extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
     appBar?: FlutterWidget,
@@ -3331,14 +3222,16 @@ export class FlutterScaffold extends ZacAction, FlutterWidget {
       ...data
     })
   }
+}
+export class FlutterScaffoldActions extends ZacAction {
   static openDrawer() {
-    return new FlutterScaffold({
+    return new FlutterScaffoldActions({
       converter: 'f:1:Scaffold.openDrawer'
 
     })
   }
   static openEndDrawer() {
-    return new FlutterScaffold({
+    return new FlutterScaffoldActions({
       converter: 'f:1:Scaffold.openEndDrawer'
 
     })
@@ -3347,7 +3240,7 @@ export class FlutterScaffold extends ZacAction, FlutterWidget {
     value: boolean,
     opacity: ZacValue<DartDouble>
   }) {
-    return new FlutterScaffold({
+    return new FlutterScaffoldActions({
       converter: 'f:1:Scaffold.showBodyScrim',
       ...data
     })
@@ -3361,7 +3254,7 @@ export class FlutterScaffold extends ZacAction, FlutterWidget {
     constraints?: FlutterBoxConstraints,
     enableDrag?: ZacValue<boolean>
   }) {
-    return new FlutterScaffold({
+    return new FlutterScaffoldActions({
       converter: 'f:1:Scaffold.showBottomSheet',
       ...data
     })
@@ -3473,7 +3366,6 @@ export class FlutterMaterialBanner extends FlutterWidget {
     })
   }
 }
-/// FROM: selectable_text.dart
 export class FlutterSelectableText extends FlutterWidget {
   static new(data: {
     data: string,
@@ -3502,7 +3394,6 @@ export class FlutterSelectableText extends FlutterWidget {
     })
   }
 }
-/// FROM: text_field.dart
 export class FlutterTextField extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3552,14 +3443,7 @@ export class FlutterTextField extends FlutterWidget {
     })
   }
 }
-/// FROM: navigator.dart
-export abstract class FlutterRoute extends ZacConverter {
-
-}
-export abstract class GetFlutterNavigatorState extends ZacConverter {
-
-}
-export class FlutterNavigatorState extends GetFlutterNavigatorState {
+export class FlutterNavigatorState extends ZacConverter {
   static closest() {
     return new FlutterNavigatorState({
       converter: 'f:1:NavigatorState.closest'
@@ -3570,6 +3454,12 @@ export class FlutterNavigatorState extends GetFlutterNavigatorState {
     return new FlutterNavigatorState({
       converter: 'f:1:NavigatorState.root'
 
+    })
+  }
+  static shared(data: { value: ZacValue<any /*GlobalKey<NavigatorState>*/> }) {
+    return new FlutterNavigatorState({
+      converter: 'f:1:NavigatorState.root',
+      ...data
     })
   }
 }
@@ -3590,7 +3480,7 @@ export class FlutterNavigator extends FlutterWidget {
 export class FlutterNavigatorActions extends ZacAction {
   static push(data: {
     route: FlutterRoute,
-    navigatorState?: GetFlutterNavigatorState
+    navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
       converter: 'f:1:Navigator.push',
@@ -3600,7 +3490,7 @@ export class FlutterNavigatorActions extends ZacAction {
   static pushNamed(data: {
     routeName: ZacValue<string>,
     arguments?: ValidTypes,
-    navigatorState?: GetFlutterNavigatorState
+    navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
       converter: 'f:1:Navigator.pushNamed',
@@ -3609,7 +3499,7 @@ export class FlutterNavigatorActions extends ZacAction {
   }
   static pop(data: {
     actions?: ZacActions,
-    navigatorState?: GetFlutterNavigatorState
+    navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
       converter: 'f:1:Navigator.pop',
@@ -3618,7 +3508,7 @@ export class FlutterNavigatorActions extends ZacAction {
   }
   static maybePop(data: {
     actions?: ZacActions,
-    navigatorState?: GetFlutterNavigatorState
+    navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
       converter: 'f:1:Navigator.maybePop',
@@ -3628,7 +3518,7 @@ export class FlutterNavigatorActions extends ZacAction {
   static pushReplacement(data: {
     route: FlutterRoute,
     result?: ZacActions,
-    navigatorState?: GetFlutterNavigatorState
+    navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
       converter: 'f:1:Navigator.pushReplacement',
@@ -3638,7 +3528,7 @@ export class FlutterNavigatorActions extends ZacAction {
   static pushReplacementNamed(data: {
     routeName: ZacValue<string>,
     arguments?: ValidTypes,
-    navigatorState?: GetFlutterNavigatorState,
+    navigatorState?: FlutterNavigatorState,
     result?: ZacActions
   }) {
     return new FlutterNavigatorActions({
@@ -3646,9 +3536,6 @@ export class FlutterNavigatorActions extends ZacAction {
       ...data
     })
   }
-}
-export abstract class FlutterRouteFactory extends ZacConverter {
-
 }
 export class FlutterPageRouteBuilder extends FlutterRoute {
   static new(data: {
@@ -3678,7 +3565,6 @@ export class FlutterRouteSettings extends ZacConverter {
     })
   }
 }
-/// FROM: opacity.dart
 export class FlutterOpacity extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3692,7 +3578,6 @@ export class FlutterOpacity extends FlutterWidget {
     })
   }
 }
-/// FROM: rotated_box.dart
 export class FlutterRotatedBox extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3705,7 +3590,6 @@ export class FlutterRotatedBox extends FlutterWidget {
     })
   }
 }
-/// FROM: scroll_physics.dart
 export class FlutterScrollPhysics extends ZacConverter {
   static alwaysScrollable(data: { parent?: FlutterScrollPhysics }) {
     return new FlutterScrollPhysics({
@@ -3726,7 +3610,6 @@ export class FlutterScrollPhysics extends ZacConverter {
     })
   }
 }
-/// FROM: custom_scroll_view.dart
 export class FlutterCustomScrollView extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3750,7 +3633,6 @@ export class FlutterCustomScrollView extends FlutterWidget {
     })
   }
 }
-/// FROM: sliver_child_delegate.dart
 export class FlutterSliverChildDelegate extends ZacConverter {
   static list(data: {
     children: ZacValueList<FlutterWidget>,
@@ -3777,7 +3659,6 @@ export class FlutterSliverChildDelegate extends ZacConverter {
     })
   }
 }
-/// FROM: sliver_grid_delegate.dart
 export class FlutterSliverGridDelegate extends ZacConverter {
   static withFixedCrossAxisCount(data: {
     crossAxisCount: DartInt,
@@ -3804,7 +3685,6 @@ export class FlutterSliverGridDelegate extends ZacConverter {
     })
   }
 }
-/// FROM: sliver_grid.dart
 export class FlutterSliverGrid extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3817,7 +3697,6 @@ export class FlutterSliverGrid extends FlutterWidget {
     })
   }
 }
-/// FROM: sliver_list.dart
 export class FlutterSliverList extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3829,7 +3708,6 @@ export class FlutterSliverList extends FlutterWidget {
     })
   }
 }
-/// FROM: sliver_padding.dart
 export class FlutterSliverPadding extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3842,7 +3720,6 @@ export class FlutterSliverPadding extends FlutterWidget {
     })
   }
 }
-/// FROM: sliver_to_box_adapter.dart
 export class FlutterSliverToBoxAdapter extends FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -3854,7 +3731,6 @@ export class FlutterSliverToBoxAdapter extends FlutterWidget {
     })
   }
 }
-/// FROM: text.dart
 export class FlutterText extends FlutterWidget {
   static new(data: {
     data: ZacValue<string>,
@@ -3874,6 +3750,672 @@ export class FlutterText extends FlutterWidget {
   }) {
     return new FlutterText({
       converter: 'f:1:Text',
+      ...data
+    })
+  }
+}
+export class FlutterBuilder extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    child: FlutterWidget
+  }) {
+    return new FlutterBuilder({
+      converter: 'f:1:Builder',
+      ...data
+    })
+  }
+}
+export class FlutterDivider extends FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    height?: ZacValue<DartDouble>,
+    thickness?: ZacValue<DartDouble>,
+    indent?: ZacValue<DartDouble>,
+    endIndent?: ZacValue<DartDouble>,
+    color?: FlutterColor
+  }) {
+    return new FlutterDivider({
+      converter: 'f:1:Divider',
+      ...data
+    })
+  }
+}
+export class ZacFlutterNavigatorActions extends ZacAction {
+  static popUntilRouteName(data: {
+    routeName: ZacValue<string>,
+    navigatorState?: FlutterNavigatorState
+  }) {
+    return new ZacFlutterNavigatorActions({
+      converter: 'z:1:Navigator.popUntilRouteName',
+      ...data
+    })
+  }
+}
+export class RouteFactoryRouteConfig extends ZacConverter {
+  static new(data: {
+    route: FlutterRoute,
+    provideArgsName?: ZacValue<string>,
+    transform?: ZacTransformers
+  }) {
+    return new RouteFactoryRouteConfig({
+      converter: 'z:1:RouteFactoryRouteConfig',
+      ...data
+    })
+  }
+}
+export class RouteFactorySingleRoute extends FlutterRouteFactory {
+  static new(data: {
+    routeConfig: RouteFactoryRouteConfig,
+    provideArgsNamePrefix?: string
+  }) {
+    return new RouteFactorySingleRoute({
+      converter: 'z:1:RouteFactorySingleRoute',
+      ...data
+    })
+  }
+}
+export class RouteFactoryFromRoutes extends FlutterRouteFactory {
+  static new(data: {
+    routes: { [key: string]: RouteFactoryRouteConfig },
+    provideArgsNamePrefix?: string
+  }) {
+    return new RouteFactoryFromRoutes({
+      converter: 'z:1:RouteFactoryFromRoutes',
+      ...data
+    })
+  }
+}
+export class FlutterRefreshIndicatorAction extends ZacAction {
+  static new() {
+    return new FlutterRefreshIndicatorAction({
+      converter: 'z:1:RefreshIndicator.complete'
+
+    })
+  }
+}
+export class SharedValueActions extends ZacAction {
+  static new(data: {
+    family: ValidTypes,
+    transformer: ZacTransformers
+  }) {
+    return new SharedValueActions({
+      converter: 'z:1:SharedValue.update',
+      ...data
+    })
+  }
+  static replaceWith(data: {
+    family: ValidTypes,
+    value: ZacValue<ValidTypes>,
+    transformer?: ZacTransformers
+  }) {
+    return new SharedValueActions({
+      converter: 'z:1:SharedValue.replaceWith',
+      ...data
+    })
+  }
+}
+export class SharedValueConsumeType extends ZacConverter {
+  static watch(data: { select?: ZacTransformers }) {
+    return new SharedValueConsumeType({
+      converter: 'z:1:SharedValueConsume.watch',
+      ...data
+    })
+  }
+  static read() {
+    return new SharedValueConsumeType({
+      converter: 'z:1:SharedValueConsume.read'
+
+    })
+  }
+}
+export class ZacValueActions extends ZacAction {
+  static asPayload(data: {
+    value: ZacValueRead<ValidTypes>,
+    actions: ZacActions
+  }) {
+    return new ZacValueActions({
+      converter: 'z:1:ZacValue.asActionPayload',
+      ...data
+    })
+  }
+}
+export class ZacTransition extends ZacConverter {
+  static new(data: {
+    event: string,
+    target: string
+  }) {
+    return new ZacTransition({
+      converter: 'z:1:StateMachine:Transition',
+      ...data
+    })
+  }
+}
+export class ZacStateConfig extends ZacConverter {
+  static new(data: {
+    widget: FlutterWidget,
+    on?: Array<ZacTransition>
+  }) {
+    return new ZacStateConfig({
+      converter: 'z:1:StateMachine:StateConfig',
+      ...data
+    })
+  }
+}
+export class FlutterMaterialPageRoute extends FlutterRoute {
+  static new(data: {
+    child: FlutterWidget,
+    settings?: FlutterRouteSettings,
+    maintainState?: ZacValue<boolean>,
+    fullscreenDialog?: ZacValue<boolean>
+  }) {
+    return new FlutterMaterialPageRoute({
+      converter: 'f:1:MaterialPageRoute',
+      ...data
+    })
+  }
+}
+export class FlutterUnderlineInputBorder extends FlutterInputBorder {
+  static new(data: {
+    borderSide?: FlutterBorderSide,
+    borderRadius?: FlutterBorderRadius
+  }) {
+    return new FlutterUnderlineInputBorder({
+      converter: 'f:1:OutlineInputBorder',
+      ...data
+    })
+  }
+}
+export class ZacStateMachineActions extends ZacAction {
+  static send(data: {
+    family: ValidTypes,
+    event: ZacValue<string>
+  }) {
+    return new ZacStateMachineActions({
+      converter: 'z:1:StateMachine:Action.send',
+      ...data
+    })
+  }
+  static trySend(data: {
+    family: ValidTypes,
+    event: ZacValue<string>
+  }) {
+    return new ZacStateMachineActions({
+      converter: 'z:1:StateMachine:Action.trySend',
+      ...data
+    })
+  }
+}
+export class ZacStateMachineTransformer extends ZacTransformer {
+  static pickState() {
+    return new ZacStateMachineTransformer({
+      converter: 'z:1:StateMachine:Transformer.pickState'
+
+    })
+  }
+  static pickContext() {
+    return new ZacStateMachineTransformer({
+      converter: 'z:1:StateMachine:Transformer.pickContext'
+
+    })
+  }
+}
+export class ZacTransformers extends ZacConverter {
+  static new(data: { transformers: Array<ZacTransformer> }) {
+    return new ZacTransformers({
+      converter: 'z:1:Transformers',
+      ...data
+    })
+  }
+}
+export class ConvertTransformer extends ZacTransformer {
+  static new() {
+    return new ConvertTransformer({
+      converter: 'z:1:Transformer:Converter'
+
+    })
+  }
+}
+export class MapTransformer extends ZacTransformer {
+  static values() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.values'
+
+    })
+  }
+  static keys() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.keys'
+
+    })
+  }
+  static entries() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.entries'
+
+    })
+  }
+  static length_() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.length'
+
+    })
+  }
+  static isEmpty() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.isEmpty'
+
+    })
+  }
+  static isNotEmpty() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.isNotEmpty'
+
+    })
+  }
+  static containsKey(data: { key: ZacValue<ValidTypes> }) {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.containsKey',
+      ...data
+    })
+  }
+  static containsValue(data: { value: ZacValue<ValidTypes> }) {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.containsValue',
+      ...data
+    })
+  }
+  static mapper(data: {
+    keyTransformer?: ZacTransformers,
+    valueTransformer?: ZacTransformers
+  }) {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map.map',
+      ...data
+    })
+  }
+  static fromObjectObject() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map<Object, Object>.from'
+
+    })
+  }
+  static fromStringObject() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map<String, Object>.from'
+
+    })
+  }
+  static fromStringNullObject() {
+    return new MapTransformer({
+      converter: 'z:1:Transformer:Map<String, Object?>.from'
+
+    })
+  }
+}
+export class IterableTransformer extends ZacTransformer {
+  static map(data: { transformer: ZacTransformers }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.map',
+      ...data
+    })
+  }
+  static single() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.single'
+
+    })
+  }
+  static first() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.first'
+
+    })
+  }
+  static last() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.last'
+
+    })
+  }
+  static length_() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.length'
+
+    })
+  }
+  static isEmpty() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.isEmpty'
+
+    })
+  }
+  static isNotEmpty() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.isNotEmpty'
+
+    })
+  }
+  static toList() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.toList'
+
+    })
+  }
+  static toSet() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.toSet'
+
+    })
+  }
+  static toString() {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.toString'
+
+    })
+  }
+  static join(data: { separator?: string }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.join',
+      ...data
+    })
+  }
+  static contains(data: { element: ZacValue<ValidTypes> }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.contains',
+      ...data
+    })
+  }
+  static elementAt(data: { index: DartInt }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.elementAt',
+      ...data
+    })
+  }
+  static skip(data: { count: DartInt }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.skip',
+      ...data
+    })
+  }
+  static take(data: { count: DartInt }) {
+    return new IterableTransformer({
+      converter: 'z:1:Transformer:Iterable.take',
+      ...data
+    })
+  }
+}
+export class ListTransformer extends ZacTransformer {
+  static reversed() {
+    return new ListTransformer({
+      converter: 'z:1:Transformer:List.reversed'
+
+    })
+  }
+}
+export class ObjectTransformer extends ZacTransformer {
+  static isList() {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.isList'
+
+    })
+  }
+  static isMap() {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.isMap'
+
+    })
+  }
+  static equals(data: { other: ValidTypes }) {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.equals',
+      ...data
+    })
+  }
+  static toString() {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.toString'
+
+    })
+  }
+  static runtimeType() {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.runtimeType'
+
+    })
+  }
+  static hashCode() {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.hashCode'
+
+    })
+  }
+  static equalsSharedValue(data: { value: ZacValueRead<ValidTypes> }) {
+    return new ObjectTransformer({
+      converter: 'z:1:Transformer:Object.equalsSharedValue',
+      ...data
+    })
+  }
+}
+export class NumTransformer extends ZacTransformer {
+  static toDouble() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.toDouble'
+
+    })
+  }
+  static toInt() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.toInt'
+
+    })
+  }
+  static abs() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.abs'
+
+    })
+  }
+  static ceil() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.ceil'
+
+    })
+  }
+  static ceilToDouble() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.ceilToDouble'
+
+    })
+  }
+  static floor() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.floor'
+
+    })
+  }
+  static floorToDouble() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.floorToDouble'
+
+    })
+  }
+  static round() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.round'
+
+    })
+  }
+  static roundToDouble() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.roundToDouble'
+
+    })
+  }
+  static isFinite() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.isFinite'
+
+    })
+  }
+  static isInfinite() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.isInfinite'
+
+    })
+  }
+  static isNan() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.isNan'
+
+    })
+  }
+  static isNegative() {
+    return new NumTransformer({
+      converter: 'z:1:Transformer:num.isNegative'
+
+    })
+  }
+}
+export class IntTransformer extends ZacTransformer {
+  static parse() {
+    return new IntTransformer({
+      converter: 'z:1:Transformer:int.parse'
+
+    })
+  }
+  static tryParse() {
+    return new IntTransformer({
+      converter: 'z:1:Transformer:int.tryParse'
+
+    })
+  }
+}
+export class StringTransformer extends ZacTransformer {
+  static length_() {
+    return new StringTransformer({
+      converter: 'z:1:Transformer:String.length'
+
+    })
+  }
+  static split(data: { pattern: ZacValue<string> }) {
+    return new StringTransformer({
+      converter: 'z:1:Transformer:String.split',
+      ...data
+    })
+  }
+  static isEmpty() {
+    return new StringTransformer({
+      converter: 'z:1:Transformer:String.isEmpty'
+
+    })
+  }
+  static isNotEmpty() {
+    return new StringTransformer({
+      converter: 'z:1:Transformer:String.isNotEmpty'
+
+    })
+  }
+  static replaceAll(data: {
+    from: ZacValue<string>,
+    replace: ZacValue<string>
+  }) {
+    return new StringTransformer({
+      converter: 'z:1:Transformer:String.replaceAll',
+      ...data
+    })
+  }
+}
+export class JsonTransformer extends ZacTransformer {
+  static encode() {
+    return new JsonTransformer({
+      converter: 'z:1:Transformer:Json.encode'
+
+    })
+  }
+  static decode() {
+    return new JsonTransformer({
+      converter: 'z:1:Transformer:Json.decode'
+
+    })
+  }
+}
+export class FlutterOutlineInputBorder extends FlutterInputBorder {
+  static new(data: {
+    borderSide?: FlutterBorderSide,
+    borderRadius?: FlutterBorderRadius,
+    gapPadding?: ZacValue<DartDouble>
+  }) {
+    return new FlutterOutlineInputBorder({
+      converter: 'f:1:OutlineInputBorder',
+      ...data
+    })
+  }
+}
+export class FlutterInputDecoration extends ZacConverter {
+  static new(data: {
+    icon?: FlutterWidget,
+    iconColor?: FlutterColor,
+    label?: FlutterWidget,
+    labelText?: ZacValue<string>,
+    labelStyle?: FlutterTextStyle,
+    floatingLabelStyle?: FlutterTextStyle,
+    helperText?: ZacValue<string>,
+    helperStyle?: FlutterTextStyle,
+    helperMaxLines?: ZacValue<DartInt>,
+    hintText?: ZacValue<string>,
+    hintStyle?: FlutterTextStyle,
+    hintTextDirection?: FlutterTextDirection,
+    hintMaxLines?: ZacValue<DartInt>,
+    errorText?: ZacValue<string>,
+    errorStyle?: FlutterTextStyle,
+    errorMaxLines?: ZacValue<DartInt>,
+    isCollapsed?: ZacValue<boolean>,
+    isDense?: ZacValue<boolean>,
+    contentPadding?: FlutterEdgeInsetsGeometry,
+    prefixIcon?: FlutterWidget,
+    prefixIconConstraints?: FlutterBoxConstraints,
+    prefix?: FlutterWidget,
+    prefixText?: ZacValue<string>,
+    prefixStyle?: FlutterTextStyle,
+    prefixIconColor?: FlutterColor,
+    suffixIcon?: FlutterWidget,
+    suffix?: FlutterWidget,
+    suffixText?: ZacValue<string>,
+    suffixStyle?: FlutterTextStyle,
+    suffixIconColor?: FlutterColor,
+    suffixIconConstraints?: FlutterBoxConstraints,
+    counter?: FlutterWidget,
+    counterText?: ZacValue<string>,
+    counterStyle?: FlutterTextStyle,
+    filled?: ZacValue<boolean>,
+    fillColor?: FlutterColor,
+    focusColor?: FlutterColor,
+    hoverColor?: FlutterColor,
+    errorBorder?: FlutterInputBorder,
+    focusedBorder?: FlutterInputBorder,
+    focusedErrorBorder?: FlutterInputBorder,
+    disabledBorder?: FlutterInputBorder,
+    enabledBorder?: FlutterInputBorder,
+    border?: FlutterInputBorder,
+    enabled?: ZacValue<boolean>,
+    semanticCounterText?: ZacValue<string>,
+    alignLabelWithHint?: ZacValue<boolean>,
+    constraints?: FlutterBoxConstraints
+  }) {
+    return new FlutterInputDecoration({
+      converter: 'f:1:InputDecoration',
+      ...data
+    })
+  }
+}
+export class ZacFlutterGlobalKeyNavigatorStateProvider extends FlutterWidget {
+  static new(data: {
+    family: ValidTypes,
+    child: FlutterWidget,
+    debugLabel?: ZacValue<string>
+  }) {
+    return new ZacFlutterGlobalKeyNavigatorStateProvider({
+      converter: 'z:1:GlobalKeyNavigatorStateProvider',
       ...data
     })
   }

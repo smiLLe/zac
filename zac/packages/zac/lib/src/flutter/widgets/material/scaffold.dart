@@ -15,17 +15,11 @@ part 'scaffold.freezed.dart';
 part 'scaffold.g.dart';
 
 @defaultConverterFreezed
-class FlutterScaffold
-    with _$FlutterScaffold
-    implements ZacAction, FlutterWidget {
+@TsClass(order: tsOrderFlutterWidget)
+class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
   const FlutterScaffold._();
 
   static const String unionValue = 'f:1:Scaffold';
-  static const String unionValueOpenDrawer = 'f:1:Scaffold.openDrawer';
-  static const String unionValueOpenEndDrawer = 'f:1:Scaffold.openEndDrawer';
-  static const String unionValueShowBodyScrim = 'f:1:Scaffold.showBodyScrim';
-  static const String unionValueShowBottomSheet =
-      'f:1:Scaffold.showBottomSheet';
 
   factory FlutterScaffold.fromJson(Map<String, dynamic> json) =>
       _$FlutterScaffoldFromJson(json);
@@ -59,18 +53,71 @@ class FlutterScaffold
     ZacValue<String>? restorationId,
   }) = _FlutterScaffold;
 
-  @FreezedUnionValue(FlutterScaffold.unionValueOpenDrawer)
-  factory FlutterScaffold.openDrawer() = _FlutterScaffoldOpenDrawer;
+  @override
+  Widget buildWidget(ZacContext zacContext) {
+    return map(
+      (value) => Scaffold(
+        key: value.key?.buildKey(zacContext),
+        body: value.body?.buildWidget(zacContext),
+        floatingActionButton:
+            value.floatingActionButton?.buildWidget(zacContext),
+        persistentFooterButtons:
+            value.persistentFooterButtons?.getWidgets(zacContext),
+        appBar: value.appBar?.buildWidget(zacContext) as PreferredSizeWidget?,
+        drawer: value.drawer?.buildWidget(zacContext),
+        endDrawer: value.endDrawer?.buildWidget(zacContext),
+        bottomNavigationBar: value.bottomNavigationBar?.buildWidget(zacContext),
+        bottomSheet: value.bottomSheet?.buildWidget(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        resizeToAvoidBottomInset:
+            value.resizeToAvoidBottomInset?.getValue(zacContext),
+        primary: value.primary?.getValue(zacContext) ?? true,
+        extendBody: value.extendBody?.getValue(zacContext) ?? false,
+        extendBodyBehindAppBar:
+            value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
+        drawerScrimColor: value.drawerScrimColor?.build(zacContext),
+        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacContext),
+        drawerEnableOpenDragGesture:
+            value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+        endDrawerEnableOpenDragGesture:
+            value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+        restorationId: value.restorationId?.getValue(zacContext),
+      ),
+    );
+  }
+}
 
-  @FreezedUnionValue(FlutterScaffold.unionValueOpenEndDrawer)
-  factory FlutterScaffold.openEndDrawer() = _FlutterScaffoldOpenEndDrawer;
+@defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
+class FlutterScaffoldActions
+    with _$FlutterScaffoldActions
+    implements ZacAction {
+  const FlutterScaffoldActions._();
 
-  @FreezedUnionValue(FlutterScaffold.unionValueShowBodyScrim)
-  factory FlutterScaffold.showBodyScrim(bool value, ZacValue<double> opacity) =
-      _FlutterScaffoldShowBodyScrim;
+  static const String unionValueOpenDrawer = 'f:1:Scaffold.openDrawer';
+  static const String unionValueOpenEndDrawer = 'f:1:Scaffold.openEndDrawer';
+  static const String unionValueShowBodyScrim = 'f:1:Scaffold.showBodyScrim';
+  static const String unionValueShowBottomSheet =
+      'f:1:Scaffold.showBottomSheet';
 
-  @FreezedUnionValue(FlutterScaffold.unionValueShowBottomSheet)
-  factory FlutterScaffold.showBottomSheet(
+  factory FlutterScaffoldActions.fromJson(Map<String, dynamic> json) =>
+      _$FlutterScaffoldActionsFromJson(json);
+
+  @FreezedUnionValue(FlutterScaffoldActions.unionValueOpenDrawer)
+  factory FlutterScaffoldActions.openDrawer() =
+      _FlutterScaffoldActionsOpenDrawer;
+
+  @FreezedUnionValue(FlutterScaffoldActions.unionValueOpenEndDrawer)
+  factory FlutterScaffoldActions.openEndDrawer() =
+      _FlutterScaffoldActionsOpenEndDrawer;
+
+  @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBodyScrim)
+  factory FlutterScaffoldActions.showBodyScrim(
+          bool value, ZacValue<double> opacity) =
+      _FlutterScaffoldActionsShowBodyScrim;
+
+  @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBottomSheet)
+  factory FlutterScaffoldActions.showBottomSheet(
     FlutterWidget child, {
     FlutterColor? backgroundColor,
     ZacValue<double>? elevation,
@@ -79,12 +126,11 @@ class FlutterScaffold
     FlutterBoxConstraints? constraints,
     ZacValue<bool>? enableDrag,
 // AnimationController? transitionAnimationController,
-  }) = _FlutterScaffoldShowBottomSheet;
+  }) = _FlutterScaffoldActionsShowBottomSheet;
 
   @override
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
-      (_) => throw StateError('Should never happen'),
       showBottomSheet: (value) {
         final state = Scaffold.maybeOf(zacContext.context);
         if (null == state) return;
@@ -119,46 +165,10 @@ class FlutterScaffold
       },
     );
   }
-
-  @override
-  Widget buildWidget(ZacContext zacContext) {
-    return map(
-      (value) => Scaffold(
-        key: value.key?.buildKey(zacContext),
-        body: value.body?.buildWidget(zacContext),
-        floatingActionButton:
-            value.floatingActionButton?.buildWidget(zacContext),
-        persistentFooterButtons:
-            value.persistentFooterButtons?.getWidgets(zacContext),
-        appBar: value.appBar?.buildWidget(zacContext) as PreferredSizeWidget?,
-        drawer: value.drawer?.buildWidget(zacContext),
-        endDrawer: value.endDrawer?.buildWidget(zacContext),
-        bottomNavigationBar: value.bottomNavigationBar?.buildWidget(zacContext),
-        bottomSheet: value.bottomSheet?.buildWidget(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
-        resizeToAvoidBottomInset:
-            value.resizeToAvoidBottomInset?.getValue(zacContext),
-        primary: value.primary?.getValue(zacContext) ?? true,
-        extendBody: value.extendBody?.getValue(zacContext) ?? false,
-        extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
-        drawerScrimColor: value.drawerScrimColor?.build(zacContext),
-        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacContext),
-        drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
-        endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
-        restorationId: value.restorationId?.getValue(zacContext),
-      ),
-      openDrawer: (_) => throw StateError('Should never happen'),
-      openEndDrawer: (_) => throw StateError('Should never happen'),
-      showBodyScrim: (_) => throw StateError('Should never happen'),
-      showBottomSheet: (_) => throw StateError('Should never happen'),
-    );
-  }
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
     implements ZacAction {
@@ -258,6 +268,7 @@ class FlutterScaffoldMessenger
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   const FlutterSnackBar._();
 
@@ -306,6 +317,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
   const FlutterSnackBarBehavior._();
 
@@ -327,6 +339,7 @@ class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterSnackBarAction
     with _$FlutterSnackBarAction
     implements FlutterWidget {
@@ -359,6 +372,7 @@ class FlutterSnackBarAction
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterMaterialBanner
     with _$FlutterMaterialBanner
     implements FlutterWidget {

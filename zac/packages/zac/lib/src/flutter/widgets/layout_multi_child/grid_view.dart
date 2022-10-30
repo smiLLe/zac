@@ -1,3 +1,4 @@
+import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_values.dart';
 import 'package:flutter/widgets.dart';
@@ -7,13 +8,13 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/rendering.dart';
 import 'package:zac/src/flutter/widgets/keyboard.dart';
 
 part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   const FlutterGridView._();
 

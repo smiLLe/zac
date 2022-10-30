@@ -102,7 +102,7 @@ void main() {
               'converter': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': FlutterScaffold.unionValueOpenDrawer,
+                  'converter': 'f:1:Scaffold.openDrawer',
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
                 },
               ],
@@ -138,7 +138,7 @@ void main() {
               'converter': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': FlutterScaffold.unionValueOpenEndDrawer,
+                  'converter': 'f:1:Scaffold.openEndDrawer',
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
                 },
               ],
@@ -173,7 +173,7 @@ void main() {
               'converter': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': FlutterScaffold.unionValueShowBodyScrim,
+                  'converter': 'f:1:Scaffold.showBodyScrim',
                   'value': true,
                   'opacity': 0.33,
                 },
@@ -213,7 +213,7 @@ void main() {
               'converter': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': FlutterScaffold.unionValueShowBottomSheet,
+                  'converter': 'f:1:Scaffold.showBottomSheet',
                   'child': ChildModel.getSizedBox(key: 'child')
                 },
               ],

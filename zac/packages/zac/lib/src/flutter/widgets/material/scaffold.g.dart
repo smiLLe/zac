@@ -71,55 +71,58 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
       restorationId: json['restorationId'] == null
           ? null
           : ZacValue<String>.fromJson(json['restorationId'] as Object),
-      $type: json['converter'] as String?,
     );
 
-_$_FlutterScaffoldOpenDrawer _$$_FlutterScaffoldOpenDrawerFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterScaffoldOpenDrawer(
-      $type: json['converter'] as String?,
-    );
+_$_FlutterScaffoldActionsOpenDrawer
+    _$$_FlutterScaffoldActionsOpenDrawerFromJson(Map<String, dynamic> json) =>
+        _$_FlutterScaffoldActionsOpenDrawer(
+          $type: json['converter'] as String?,
+        );
 
-_$_FlutterScaffoldOpenEndDrawer _$$_FlutterScaffoldOpenEndDrawerFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterScaffoldOpenEndDrawer(
-      $type: json['converter'] as String?,
-    );
+_$_FlutterScaffoldActionsOpenEndDrawer
+    _$$_FlutterScaffoldActionsOpenEndDrawerFromJson(
+            Map<String, dynamic> json) =>
+        _$_FlutterScaffoldActionsOpenEndDrawer(
+          $type: json['converter'] as String?,
+        );
 
-_$_FlutterScaffoldShowBodyScrim _$$_FlutterScaffoldShowBodyScrimFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterScaffoldShowBodyScrim(
-      json['value'] as bool,
-      ZacValue<double>.fromJson(json['opacity'] as Object),
-      $type: json['converter'] as String?,
-    );
+_$_FlutterScaffoldActionsShowBodyScrim
+    _$$_FlutterScaffoldActionsShowBodyScrimFromJson(
+            Map<String, dynamic> json) =>
+        _$_FlutterScaffoldActionsShowBodyScrim(
+          json['value'] as bool,
+          ZacValue<double>.fromJson(json['opacity'] as Object),
+          $type: json['converter'] as String?,
+        );
 
-_$_FlutterScaffoldShowBottomSheet _$$_FlutterScaffoldShowBottomSheetFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterScaffoldShowBottomSheet(
-      FlutterWidget.fromJson(json['child'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
-      constraints: json['constraints'] == null
-          ? null
-          : FlutterBoxConstraints.fromJson(
-              json['constraints'] as Map<String, dynamic>),
-      enableDrag: json['enableDrag'] == null
-          ? null
-          : ZacValue<bool>.fromJson(json['enableDrag'] as Object),
-      $type: json['converter'] as String?,
-    );
+_$_FlutterScaffoldActionsShowBottomSheet
+    _$$_FlutterScaffoldActionsShowBottomSheetFromJson(
+            Map<String, dynamic> json) =>
+        _$_FlutterScaffoldActionsShowBottomSheet(
+          FlutterWidget.fromJson(json['child'] as Object),
+          backgroundColor: json['backgroundColor'] == null
+              ? null
+              : FlutterColor.fromJson(
+                  json['backgroundColor'] as Map<String, dynamic>),
+          elevation: json['elevation'] == null
+              ? null
+              : ZacValue<double>.fromJson(json['elevation'] as Object),
+          shape: json['shape'] == null
+              ? null
+              : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          clipBehavior: json['clipBehavior'] == null
+              ? null
+              : FlutterClip.fromJson(
+                  json['clipBehavior'] as Map<String, dynamic>),
+          constraints: json['constraints'] == null
+              ? null
+              : FlutterBoxConstraints.fromJson(
+                  json['constraints'] as Map<String, dynamic>),
+          enableDrag: json['enableDrag'] == null
+              ? null
+              : ZacValue<bool>.fromJson(json['enableDrag'] as Object),
+          $type: json['converter'] as String?,
+        );
 
 _$_FlutterScaffoldMessengerShowSnackBar
     _$$_FlutterScaffoldMessengerShowSnackBarFromJson(

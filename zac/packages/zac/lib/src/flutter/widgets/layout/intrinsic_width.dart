@@ -9,6 +9,7 @@ part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterIntrinsicWidth
     with _$FlutterIntrinsicWidth
     implements FlutterWidget {

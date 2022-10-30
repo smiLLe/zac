@@ -17,6 +17,7 @@ part 'widget.freezed.dart';
 part 'widget.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderZacWidget)
 class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   const ZacWidgetBuilder._();
 

@@ -11,6 +11,7 @@ part 'material_app.freezed.dart';
 part 'material_app.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   const FlutterMaterialApp._();
 
@@ -22,7 +23,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
     FlutterKey? key,
-    FlutterGlobalKeyNavigatorState? navigatorKey,
+    ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
     // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
     FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -62,7 +63,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   MaterialApp buildWidget(ZacContext zacContext) {
     return MaterialApp(
       key: key?.buildKey(zacContext),
-      navigatorKey: navigatorKey?.buildKey(zacContext),
+      navigatorKey: navigatorKey?.getValue(zacContext),
       home: home?.buildWidget(zacContext),
       initialRoute: initialRoute?.getValue(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),

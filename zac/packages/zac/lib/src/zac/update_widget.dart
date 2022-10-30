@@ -9,6 +9,7 @@ part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderZacWidget)
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder
     implements FlutterWidget {

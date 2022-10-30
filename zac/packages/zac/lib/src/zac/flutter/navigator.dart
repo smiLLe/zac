@@ -6,7 +6,6 @@ import 'package:zac/src/zac/zac_values.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -15,38 +14,29 @@ part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
 @defaultConverterFreezed
-class ZacFlutterGlobalKeyNavigatorState
-    with _$ZacFlutterGlobalKeyNavigatorState
-    implements
-        FlutterWidget,
-        GetFlutterNavigatorState,
-        FlutterGlobalKeyNavigatorState {
-  const ZacFlutterGlobalKeyNavigatorState._();
-  static const String unionValueConsume = 'z:1:GlobalKeyNavigatorState.consume';
-  static const String unionValueProvide = 'z:1:GlobalKeyNavigatorState.provide';
+@TsClass()
+class ZacFlutterGlobalKeyNavigatorStateProvider
+    with _$ZacFlutterGlobalKeyNavigatorStateProvider
+    implements FlutterWidget {
+  const ZacFlutterGlobalKeyNavigatorStateProvider._();
+  static const String unionValue = 'z:1:GlobalKeyNavigatorStateProvider';
 
-  factory ZacFlutterGlobalKeyNavigatorState.fromJson(
+  factory ZacFlutterGlobalKeyNavigatorStateProvider.fromJson(
           Map<String, dynamic> json) =>
-      _$ZacFlutterGlobalKeyNavigatorStateFromJson(json);
+      _$ZacFlutterGlobalKeyNavigatorStateProviderFromJson(json);
 
-  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueProvide)
-  factory ZacFlutterGlobalKeyNavigatorState.provide({
+  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorStateProvider.unionValue)
+  factory ZacFlutterGlobalKeyNavigatorStateProvider({
     required SharedValueFamily family,
     required FlutterWidget child,
     ZacValue<String>? debugLabel,
-  }) = _ZacFlutterGlobalKeyNavigatorStateProvide;
-
-  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorState.unionValueConsume)
-  factory ZacFlutterGlobalKeyNavigatorState.consume({
-    required ZacValue<GlobalKey<NavigatorState>> value,
-  }) = _ZacFlutterGlobalKeyNavigatorStateConsume;
+  }) = _ZacFlutterGlobalKeyNavigatorStateProvider;
 
   SharedValueType _valueBuilder(
       AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
     return GlobalKey<NavigatorState>(
       debugLabel: map(
-        provide: (obj) => obj.debugLabel?.getValue(zacContext),
-        consume: (_) => null,
+        (obj) => obj.debugLabel?.getValue(zacContext),
       ),
     );
   }
@@ -54,40 +44,18 @@ class ZacFlutterGlobalKeyNavigatorState
   @override
   Widget buildWidget(ZacContext zacContext) {
     return map(
-      provide: (obj) => SharedValueProvider(
+      (obj) => SharedValueProvider(
         autoCreate: true,
         valueBuilder: _valueBuilder,
         family: obj.family,
         childBuilder: obj.child.buildWidget,
       ),
-      consume: (_) => throw StateError(''),
-    );
-  }
-
-  @override
-  NavigatorState getNavigatorState(ZacContext zacContext) {
-    return map(
-      consume: (obj) {
-        final key = obj.value.getValue(zacContext);
-        if (null != key.currentState) {
-          return key.currentState!;
-        }
-        throw StateError('');
-      },
-      provide: (_) => throw StateError(''),
-    );
-  }
-
-  @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
-    return map(
-      consume: (obj) => obj.value.getValue(zacContext),
-      provide: (_) => throw StateError(''),
     );
   }
 }
 
 @defaultConverterFreezed
+@TsClass()
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
     implements ZacAction {
@@ -102,15 +70,13 @@ class ZacFlutterNavigatorActions
   @FreezedUnionValue(ZacFlutterNavigatorActions.unionValuePopUntilRouteName)
   factory ZacFlutterNavigatorActions.popUntilRouteName({
     required ZacValue<String> routeName,
-    ZacValue<GetFlutterNavigatorState>? navigatorState,
+    FlutterNavigatorState? navigatorState,
   }) = _PopUntilRouteName;
 
   NavigatorState? _getState(ZacContext zacContext) {
     return map(
           popUntilRouteName: (obj) {
-            return obj.navigatorState
-                ?.getValue(zacContext)
-                .getNavigatorState(zacContext);
+            return obj.navigatorState?.getNavigatorState(zacContext);
           },
         ) ??
         Navigator.maybeOf(zacContext.context);
@@ -127,6 +93,7 @@ class ZacFlutterNavigatorActions
 }
 
 @defaultConverterFreezed
+@TsClass()
 class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   const RouteFactoryRouteConfig._();
 
@@ -144,6 +111,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
 }
 
 @defaultConverterFreezed
+@TsClass()
 class RouteFactorySingleRoute
     with _$RouteFactorySingleRoute
     implements FlutterRouteFactory {
@@ -194,6 +162,7 @@ class RouteFactorySingleRoute
 }
 
 @defaultConverterFreezed
+@TsClass()
 class RouteFactoryFromRoutes
     with _$RouteFactoryFromRoutes
     implements FlutterRouteFactory {

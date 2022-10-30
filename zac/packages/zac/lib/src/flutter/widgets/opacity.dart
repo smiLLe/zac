@@ -10,6 +10,7 @@ part 'opacity.freezed.dart';
 part 'opacity.g.dart';
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderFlutterWidget)
 class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   const FlutterOpacity._();
 

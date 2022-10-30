@@ -6,36 +6,37 @@ import '../flutter/models.dart';
 import '../helper.dart';
 
 void main() {
+  test('fromJson', () {
+    expect(
+        ConverterHelper.convertToType<
+            ZacFlutterGlobalKeyNavigatorStateProvider>({
+          'converter': 'z:1:GlobalKeyNavigatorStateProvider',
+          'family': 'foo',
+          'child': ChildModel.sizedBox,
+          'debugLabel': 'label',
+        }),
+        ZacFlutterGlobalKeyNavigatorStateProvider(
+          family: 'foo',
+          child: FlutterSizedBox(),
+          debugLabel: ZacValue<String>.fromJson('label'),
+        ));
+
+    expect(
+        ConverterHelper.convertToType<FlutterNavigatorState>({
+          'converter': 'z:1:NavigatorState.shared',
+          'value': {'converter': 'z:1:ZacValue.watch', 'family': 'foo'}
+        }),
+        FlutterNavigatorState.shared(
+            value: ZacValueConsume<GlobalKey<NavigatorState>>.watch(
+                family: 'foo')));
+  });
+
   group('ZacFlutterGlobalKeyNavigatorState', () {
-    test('fromJson', () {
-      expect(
-          ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
-            'converter': 'z:1:GlobalKeyNavigatorState.provide',
-            'family': 'foo',
-            'child': ChildModel.sizedBox,
-            'debugLabel': 'label',
-          }),
-          ZacFlutterGlobalKeyNavigatorState.provide(
-            family: 'foo',
-            child: FlutterSizedBox(),
-            debugLabel: ZacValue<String>.fromJson('label'),
-          ));
-
-      expect(
-          ConverterHelper.convertToType<ZacFlutterGlobalKeyNavigatorState>({
-            'converter': 'z:1:GlobalKeyNavigatorState.consume',
-            'value': {'converter': 'z:1:ZacValue.watch', 'family': 'foo'}
-          }),
-          ZacFlutterGlobalKeyNavigatorState.consume(
-              value: ZacValueConsume<GlobalKey<NavigatorState>>.watch(
-                  family: 'foo')));
-    });
-
     testWidgets('provide and read', (tester) async {
       late ZacContext zacContext;
       await testZacWidget(
         tester,
-        ZacFlutterGlobalKeyNavigatorState.provide(
+        ZacFlutterGlobalKeyNavigatorStateProvider(
           family: 'foo',
           child: LeakContext(cb: (o) => zacContext = o),
         ),

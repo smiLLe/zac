@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'foundation.freezed.dart';
 part 'foundation.g.dart';
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterKey {
   factory FlutterKey.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterKey>(data);
@@ -13,6 +14,7 @@ abstract class FlutterKey {
   Key buildKey(ZacContext zacContext);
 }
 
+@TsClass(order: tsOrderFlutterAbstractsA)
 abstract class FlutterLocalKey implements FlutterKey {
   factory FlutterLocalKey.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterLocalKey>(data);
@@ -23,6 +25,7 @@ abstract class FlutterLocalKey implements FlutterKey {
 }
 
 @defaultConverterFreezed
+@TsClass(order: tsOrderDartFoundation)
 class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   const FlutterValueKey._();
 
@@ -38,13 +41,4 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   ValueKey<String> buildKey(ZacContext zacContext) {
     return ValueKey<String>(value);
   }
-}
-
-abstract class FlutterGlobalKeyNavigatorState implements FlutterKey {
-  factory FlutterGlobalKeyNavigatorState.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>(data);
-  }
-
-  @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext);
 }
