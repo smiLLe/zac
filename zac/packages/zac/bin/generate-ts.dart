@@ -11,20 +11,15 @@ import 'package:args/args.dart';
 
 void main(List<String> args) async {
   final parser = ArgParser();
-  parser.addMultiOption('path');
-  parser.addOption('outFile');
-  final argResult = parser.parse(args);
-
-  if (argResult['path'] is! List<String>) {
-    throw Error();
-  }
-
-  if (argResult['outFile'] is! String) {
-    throw Error();
-  }
-
-  final paths = argResult['path'] as List<String>;
-  final outFile = argResult['outFile'] as String;
+  late final List<String> paths;
+  late final String outFile;
+  parser.addMultiOption('path', callback: (list) => paths = list);
+  parser.addOption(
+    'outFile',
+    mandatory: true,
+    callback: (str) => outFile = str ?? 'UNKNOWN PATH',
+  );
+  parser.parse(args);
 
   final ctxColl = AnalysisContextCollection(includedPaths: paths);
 
