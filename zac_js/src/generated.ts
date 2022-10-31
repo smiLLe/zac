@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
+import { DartDouble, DartInt, DartDateTime, ZacTypes, ZacConverter } from "./base"
 import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
 export abstract class FlutterWidget extends ZacConverter { }
@@ -1962,7 +1962,7 @@ export class ZacStateMachineProviderBuilder extends ZacConverter implements Flut
     initialState: ZacValue<string>,
     states: Record<string, ZacStateConfig>,
     child: FlutterWidget,
-    initialContext?: ZacValue<ValidTypes>
+    initialContext?: ZacValue<ZacTypes>
   }) {
     return new ZacStateMachineProviderBuilder({
       converter: 'z:1:StateMachine.provide',
@@ -2039,9 +2039,9 @@ export class ZacStateMachineBuildStateBuilder extends ZacConverter implements Fl
 export class SharedValueProviderBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    value: ValidTypes | null,
+    value: ZacTypes | null,
     transformer?: ZacTransformers,
-    family: ValidTypes,
+    family: ZacTypes,
     child: FlutterWidget,
     autoCreate: boolean
   }) {
@@ -2063,7 +2063,7 @@ export class ZacExecuteActionsBuilder extends ZacConverter implements FlutterWid
   }
   static listen(data: {
     actions: ZacActions,
-    family: ValidTypes,
+    family: ZacTypes,
     child?: FlutterWidget
   }) {
     return new ZacExecuteActionsBuilder({
@@ -3172,7 +3172,7 @@ export class FlutterRefreshIndicator extends ZacConverter implements FlutterWidg
     semanticsValue?: ZacValue<string>,
     strokeWidth?: ZacValue<DartDouble>,
     triggerMode?: FlutterRefreshIndicatorTriggerMode,
-    family: ValidTypes
+    family: ZacTypes
   }) {
     return new FlutterRefreshIndicator({
       converter: 'f:1:RefreshIndicator',
@@ -3488,7 +3488,7 @@ export class FlutterNavigatorActions extends ZacConverter implements ZacAction {
   }
   static pushNamed(data: {
     routeName: ZacValue<string>,
-    arguments?: ValidTypes,
+    arguments?: ZacTypes,
     navigatorState?: FlutterNavigatorState
   }) {
     return new FlutterNavigatorActions({
@@ -3526,7 +3526,7 @@ export class FlutterNavigatorActions extends ZacConverter implements ZacAction {
   }
   static pushReplacementNamed(data: {
     routeName: ZacValue<string>,
-    arguments?: ValidTypes,
+    arguments?: ZacTypes,
     navigatorState?: FlutterNavigatorState,
     result?: ZacActions
   }) {
@@ -3556,7 +3556,7 @@ export class FlutterPageRouteBuilder extends ZacConverter implements FlutterRout
 export class FlutterRouteSettings extends ZacConverter {
   static new(data: {
     name?: ZacValue<string>,
-    arguments?: ValidTypes
+    arguments?: ZacTypes
   }) {
     return new FlutterRouteSettings({
       converter: 'f:1:RouteSettings',
@@ -3785,7 +3785,7 @@ export class FlutterDrawer extends ZacConverter implements FlutterWidget {
 }
 export class ZacFlutterGlobalKeyNavigatorStateProvider extends ZacConverter implements FlutterWidget {
   static new(data: {
-    family: ValidTypes,
+    family: ZacTypes,
     child: FlutterWidget,
     debugLabel?: ZacValue<string>
   }) {
@@ -3850,7 +3850,7 @@ export class FlutterRefreshIndicatorAction extends ZacConverter implements ZacAc
 }
 export class SharedValueActions extends ZacConverter implements ZacAction {
   static new(data: {
-    family: ValidTypes,
+    family: ZacTypes,
     transformer: ZacTransformers
   }) {
     return new SharedValueActions({
@@ -3859,8 +3859,8 @@ export class SharedValueActions extends ZacConverter implements ZacAction {
     })
   }
   static replaceWith(data: {
-    family: ValidTypes,
-    value: ZacValue<ValidTypes>,
+    family: ZacTypes,
+    value: ZacValue<ZacTypes>,
     transformer?: ZacTransformers
   }) {
     return new SharedValueActions({
@@ -3885,7 +3885,7 @@ export class SharedValueConsumeType extends ZacConverter {
 }
 export class ZacValueActions extends ZacConverter implements ZacAction {
   static asPayload(data: {
-    value: ZacValueRead<ValidTypes | null>,
+    value: ZacValueRead<ZacTypes | null>,
     actions: ZacActions
   }) {
     return new ZacValueActions({
@@ -3942,7 +3942,7 @@ export class FlutterUnderlineInputBorder extends ZacConverter implements Flutter
 }
 export class ZacStateMachineActions extends ZacConverter implements ZacAction {
   static send(data: {
-    family: ValidTypes,
+    family: ZacTypes,
     event: ZacValue<string>
   }) {
     return new ZacStateMachineActions({
@@ -3951,7 +3951,7 @@ export class ZacStateMachineActions extends ZacConverter implements ZacAction {
     })
   }
   static trySend(data: {
-    family: ValidTypes,
+    family: ZacTypes,
     event: ZacValue<string>
   }) {
     return new ZacStateMachineActions({
@@ -4027,13 +4027,13 @@ export class MapTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static containsKey(data: { key: ZacValue<ValidTypes> | null }) {
+  static containsKey(data: { key: ZacValue<ZacTypes> | null }) {
     return new MapTransformer({
       converter: 'z:1:Transformer:Map.containsKey',
       ...data
     })
   }
-  static containsValue(data: { value: ZacValue<ValidTypes> | null }) {
+  static containsValue(data: { value: ZacValue<ZacTypes> | null }) {
     return new MapTransformer({
       converter: 'z:1:Transformer:Map.containsValue',
       ...data
@@ -4134,7 +4134,7 @@ export class IterableTransformer extends ZacConverter implements ZacTransformer 
       ...data
     })
   }
-  static contains(data: { element: ZacValue<ValidTypes> | null }) {
+  static contains(data: { element: ZacValue<ZacTypes> | null }) {
     return new IterableTransformer({
       converter: 'z:1:Transformer:Iterable.contains',
       ...data
@@ -4180,7 +4180,7 @@ export class ObjectTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static equals(data: { other: ValidTypes | null }) {
+  static equals(data: { other: ZacTypes | null }) {
     return new ObjectTransformer({
       converter: 'z:1:Transformer:Object.equals',
       ...data
@@ -4204,7 +4204,7 @@ export class ObjectTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static equalsSharedValue(data: { value: ZacValueRead<ValidTypes | null> }) {
+  static equalsSharedValue(data: { value: ZacValueRead<ZacTypes | null> }) {
     return new ObjectTransformer({
       converter: 'z:1:Transformer:Object.equalsSharedValue',
       ...data
@@ -4434,7 +4434,7 @@ export class ZacActions extends ZacConverter {
 export class TsTest extends ZacConverter {
   static new(data: {
     reqButOpt: DartInt | null,
-    someDate: string,
+    someDate: DartDateTime,
     reqInt: ZacValue<DartInt>,
     optionalInt?: ZacValue<DartInt>,
     deep1?: ZacValue<ZacValue<ZacValue<DartInt>>>,

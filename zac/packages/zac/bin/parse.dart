@@ -1,11 +1,9 @@
+// ignore_for_file:  depend_on_referenced_packages
+
 import 'dart:io';
 
 import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
-import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/results.dart';
-import 'package:analyzer/dart/analysis/session.dart';
-import 'package:analyzer/dart/analysis/utilities.dart';
-import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 
@@ -83,15 +81,16 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
     case 'bool':
       return 'boolean${opt()}';
     case 'String':
-    case 'DateTime':
       return 'string${opt()}';
+    case 'DateTime':
+      return 'DartDateTime${opt()}';
     case 'double':
       return 'DartDouble${opt()}';
     case 'int':
       return 'DartInt${opt()}';
     case 'dynamic':
     case 'Object':
-      return 'ValidTypes${opt()}';
+      return 'ZacTypes${opt()}';
     case 'Map':
       return 'Record<string, ${mapDartTypeToTypescript(allFiles, type.typeArguments.last, depth + 1)}>${opt()}';
     case 'List':
@@ -144,16 +143,6 @@ class AllFiles {
     return [...previousValue, ...element.builders];
   }).toList()
     ..sort((a, b) => a.order.compareTo(b.order));
-
-  @override
-  String toString() {
-    return '''
-import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
-import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
-
-${abstracts.join('\n')}
-${builders.join('\n')}''';
-  }
 }
 
 class OneFile {
@@ -206,11 +195,6 @@ class TsAbstractClass {
       : element.interfaces
           .map((e) => e.getDisplayString(withNullability: false))
           .toList();
-
-  @override
-  String toString() {
-    return 'export abstract class $className extends ZacConverter${implements.isEmpty ? '' : ' implements ${implements.join(', ')}'} {}';
-  }
 }
 
 class TsClass extends TsAbstractClass {
@@ -311,7 +295,7 @@ export class ${b.className} extends ZacConverter${b.implements.isEmpty ? '' : ' 
 
     return '''
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
+import { DartDouble, DartInt, DartDateTime, ZacTypes, ZacConverter } from "./base"
 import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
 $abstractsTpl

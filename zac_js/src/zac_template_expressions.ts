@@ -1,10 +1,10 @@
-import { ValidTypes, ZacTransformer } from "./base";
+import { ZacTypes, ZacTransformer } from "./base";
 import { ZacValueRead } from "./zac/zac_value";
 
 export class ZacTemplateExpressionsTransformer extends ZacTransformer {
     static process(data: {
         expression: string,
-        context?: { [key: string]: ZacValueRead<ValidTypes> },
+        context?: { [key: string]: ZacValueRead<ZacTypes> },
         syntax?:
         ZacTemplateExpressionsSyntax,
     }) {

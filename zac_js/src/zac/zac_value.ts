@@ -1,4 +1,4 @@
-import { SharedValueFamily, ValidTypes, ZacConverter } from "../base";
+import { SharedValueFamily, ZacTypes, ZacConverter } from "../base";
 import { ZacTransformers } from "../generated";
 
 export class ZacValueRead<T> extends ZacConverter {
@@ -17,11 +17,11 @@ export class ZacValueRead<T> extends ZacConverter {
 }
 
 export class ZacValue<T> extends ZacValueRead<T> {
-    static new<T extends ValidTypes>(data: {
+    static new<T extends ZacTypes>(data: {
         value: T,
         transformer?: ZacTransformers,
     }) {
-        return new ZacValueList<T>({
+        return new ZacValue<T>({
             converter: 'z:1:ZacValue',
             ...data,
         });
@@ -54,7 +54,7 @@ export class ZacValueListRead<T> extends ZacConverter {
 
 
 export class ZacValueList<T> extends ZacValueListRead<T> {
-    static new<T extends ValidTypes>(data: {
+    static new<T extends ZacTypes>(data: {
         value: Array<ZacValue<T>>,
         transformer?: ZacTransformers,
     }) {
