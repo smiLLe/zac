@@ -2394,13 +2394,14 @@ export class FractionallySizedBox extends ZacConverter implements Widget {
     })
   }
 }
-export class IntrinsicHeight extends ZacConverter implements Widget {
+export class ClipOval extends ZacConverter implements Widget {
   static new(data: {
     key?: Key,
-    child?: Widget
+    child?: Widget,
+    clipBehavior?: Clip
   }) {
-    return new IntrinsicHeight({
-      converter: 'f:1:IntrinsicHeight',
+    return new ClipOval({
+      converter: 'f:1:ClipOval',
       ...data
     })
   }
@@ -2741,14 +2742,21 @@ export class Row extends ZacConverter implements Widget {
     })
   }
 }
-export class ClipOval extends ZacConverter implements Widget {
+export class Material extends ZacConverter implements Widget {
   static new(data: {
     key?: Key,
     child?: Widget,
+    elevation?: ZacValue<DartDouble>,
+    color?: Color,
+    shadowColor?: Color,
+    textStyle?: TextStyle,
+    borderRadius?: BorderRadiusGeometry,
+    shape?: ShapeBorder,
+    borderOnForeground?: ZacValue<boolean>,
     clipBehavior?: Clip
   }) {
-    return new ClipOval({
-      converter: 'f:1:ClipOval',
+    return new Material({
+      converter: 'f:1:Material',
       ...data
     })
   }
@@ -3039,13 +3047,17 @@ export class Divider extends ZacConverter implements Widget {
     })
   }
 }
-export class Builder extends ZacConverter implements Widget {
+export class Drawer extends ZacConverter implements Widget {
   static new(data: {
     key?: Key,
-    child: Widget
+    backgroundColor?: Color,
+    elevation?: ZacValue<DartDouble>,
+    shape?: ShapeBorder,
+    child?: Widget,
+    semanticLabel?: ZacValue<string>
   }) {
-    return new Builder({
-      converter: 'f:1:Builder',
+    return new Drawer({
+      converter: 'f:1:Drawer',
       ...data
     })
   }
@@ -3084,21 +3096,13 @@ export class ListTile extends ZacConverter implements Widget {
     })
   }
 }
-export class Material extends ZacConverter implements Widget {
+export class Builder extends ZacConverter implements Widget {
   static new(data: {
     key?: Key,
-    child?: Widget,
-    elevation?: ZacValue<DartDouble>,
-    color?: Color,
-    shadowColor?: Color,
-    textStyle?: TextStyle,
-    borderRadius?: BorderRadiusGeometry,
-    shape?: ShapeBorder,
-    borderOnForeground?: ZacValue<boolean>,
-    clipBehavior?: Clip
+    child: Widget
   }) {
-    return new Material({
-      converter: 'f:1:Material',
+    return new Builder({
+      converter: 'f:1:Builder',
       ...data
     })
   }
@@ -3768,17 +3772,13 @@ export class Stack extends ZacConverter implements Widget {
     })
   }
 }
-export class Drawer extends ZacConverter implements Widget {
+export class IntrinsicHeight extends ZacConverter implements Widget {
   static new(data: {
     key?: Key,
-    backgroundColor?: Color,
-    elevation?: ZacValue<DartDouble>,
-    shape?: ShapeBorder,
-    child?: Widget,
-    semanticLabel?: ZacValue<string>
+    child?: Widget
   }) {
-    return new Drawer({
-      converter: 'f:1:Drawer',
+    return new IntrinsicHeight({
+      converter: 'f:1:IntrinsicHeight',
       ...data
     })
   }
@@ -3883,14 +3883,11 @@ export class SharedValueConsumeType extends ZacConverter {
     })
   }
 }
-export class ZacValueActions extends ZacConverter implements ZacAction {
-  static asPayload(data: {
-    value: ZacValueRead<ZacTypes | null>,
-    actions: ZacActions
-  }) {
-    return new ZacValueActions({
-      converter: 'z:1:ZacValue.asActionPayload',
-      ...data
+export class ZacTemplateExpressionsSyntax extends ZacConverter {
+  static new() {
+    return new ZacTemplateExpressionsSyntax({
+      converter: 'template_expressions:1:Syntax:Standard'
+
     })
   }
 }
@@ -4419,6 +4416,29 @@ export class InputDecoration extends ZacConverter {
   }) {
     return new InputDecoration({
       converter: 'f:1:InputDecoration',
+      ...data
+    })
+  }
+}
+export class ZacValueActions extends ZacConverter implements ZacAction {
+  static asPayload(data: {
+    value: ZacValueRead<ZacTypes | null>,
+    actions: ZacActions
+  }) {
+    return new ZacValueActions({
+      converter: 'z:1:ZacValue.asActionPayload',
+      ...data
+    })
+  }
+}
+export class ZacTemplateExpressionsTransformer extends ZacConverter implements ZacTransformer {
+  static new(data: {
+    expression: string,
+    context?: Record<string, ZacValueRead<ZacTypes>>,
+    syntax: ZacTemplateExpressionsSyntax
+  }) {
+    return new ZacTemplateExpressionsTransformer({
+      converter: 'template_expressions:1:Transformer:Template.process',
       ...data
     })
   }

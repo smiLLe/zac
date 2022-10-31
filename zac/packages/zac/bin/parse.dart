@@ -2,59 +2,54 @@
 
 import 'dart:io';
 
+import 'package:analyzer/dart/analysis/analysis_context.dart';
 import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
+import 'package:args/args.dart';
 
-void main() async {
-  final ctxColl = AnalysisContextCollection(includedPaths: [
-    File('${Directory.current.path}${Platform.pathSeparator}${[
-      'zac',
-      'packages',
-      'zac',
-      'lib',
-      'src',
-    ].join(Platform.pathSeparator)}')
-        .path
-  ]);
+void main(List<String> args) async {
+  final parser = ArgParser();
+  parser.addMultiOption('path');
+  parser.addOption('outFile');
+  final argResult = parser.parse(args);
+
+  if (argResult['path'] is! List<String>) {
+    throw Error();
+  }
+
+  if (argResult['outFile'] is! String) {
+    throw Error();
+  }
+
+  final paths = argResult['path'] as List<String>;
+  final outFile = argResult['outFile'] as String;
+
+  final ctxColl = AnalysisContextCollection(includedPaths: paths);
 
   for (var ctx in ctxColl.contexts) {
-    final fileSystemEntities = Directory.fromUri(
-            File('${Directory.current.path}${Platform.pathSeparator}${[
-      'zac',
-      'packages',
-      'zac',
-      'lib',
-      'src',
-    ].join(Platform.pathSeparator)}')
-                .uri)
-        .listSync(recursive: true)
-        .whereType<File>()
-        .where((file) => !(file.path.contains('.g.dart') ||
-            file.path.contains('.freezed.dart')))
-        .toList();
+    final listOfAllFiles = (await Future.wait(paths
+            .map((path) => Uri.directory(path))
+            .map((uri) => filesToCreate(ctx, uri))))
+        .fold<List<OneFile>>([], (previousValue, element) {
+      return [...previousValue, ...element];
+    });
 
-    final filesToCreate = await Future.wait([
-      ...fileSystemEntities.map((file) async {
-        final lib = (await ctx.currentSession.getResolvedLibrary(file.path))
-            as ResolvedLibraryResult;
+    final allFiles = AllFiles(listOfAllFiles);
 
-        return OneFile(lib, file.uri.pathSegments.last);
-      })
-    ]);
-
-    final allFiles = AllFiles(filesToCreate);
-
-    final writeFile = File(
-        '${Directory.current.path}${Platform.pathSeparator}${[
-      'zac_js',
-      'src',
-      'generated.ts'
-    ].join(Platform.pathSeparator)}');
+    final writeFile = File(outFile);
     writeFile.createSync();
     await writeFile.writeAsString(Template(allFiles).toString());
   }
+}
+
+String cleanUpFlutterPrefix(String name) {
+  if (name.startsWith('Flutter')) {
+    return name.substring('Flutter'.length);
+  }
+
+  return name;
 }
 
 String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
@@ -109,6 +104,26 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
       }
       return 'any';
   }
+}
+
+Future<List<OneFile>> filesToCreate(AnalysisContext ctx, Uri uri) async {
+  final fileSystemEntities = Directory.fromUri(uri)
+      .listSync(recursive: true)
+      .whereType<File>()
+      .where((file) =>
+          file.path.endsWith('.dart') &&
+          !((file.path.contains('.g.dart') ||
+              file.path.contains('.freezed.dart'))))
+      .toList();
+
+  return await Future.wait([
+    ...fileSystemEntities.map((file) async {
+      final lib = (await ctx.currentSession.getResolvedLibrary(file.path))
+          as ResolvedLibraryResult;
+
+      return OneFile(lib, file.uri.pathSegments.last);
+    })
+  ]);
 }
 
 class AllFiles {
@@ -198,14 +213,6 @@ class TsAbstractClass {
           .map((e) =>
               cleanUpFlutterPrefix(e.getDisplayString(withNullability: false)))
           .toList();
-}
-
-String cleanUpFlutterPrefix(String name) {
-  if (name.startsWith('Flutter')) {
-    return name.substring('Flutter'.length);
-  }
-
-  return name;
 }
 
 class TsClass extends TsAbstractClass {

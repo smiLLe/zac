@@ -9,7 +9,15 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/parse.dart"
+            "program": "zac/packages/zac/bin/parse.dart",
+            "args": [
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
+                "--outFile",
+                "${workspaceFolder}\\zac_js\\src\\generated.ts",
+            ],
         }
     ]
 }
