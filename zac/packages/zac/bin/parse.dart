@@ -32,8 +32,7 @@ void main() async {
         .listSync(recursive: true)
         .whereType<File>()
         .where((file) => !(file.path.contains('.g.dart') ||
-            file.path.contains('.freezed.dart') ||
-            file.path.contains('${Platform.pathSeparator}all.dart')))
+            file.path.contains('.freezed.dart')))
         .toList();
 
     final filesToCreate = await Future.wait([
@@ -70,6 +69,7 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
   if (type.typeArguments.isNotEmpty) {
     name = name.split('<').first;
   }
+  name = cleanUpFlutterPrefix(name);
   String opt() {
     if (depth == 0) return '';
     return type.getDisplayString(withNullability: true).endsWith('?')
@@ -188,13 +188,24 @@ class TsAbstractClass {
   final ClassElement element;
   late final int order;
 
-  late final String className = element.displayName;
+  late final String className = () {
+    return cleanUpFlutterPrefix(element.displayName);
+  }();
 
   late final List<String> implements = element.interfaces.isEmpty
       ? <String>[]
       : element.interfaces
-          .map((e) => e.getDisplayString(withNullability: false))
+          .map((e) =>
+              cleanUpFlutterPrefix(e.getDisplayString(withNullability: false)))
           .toList();
+}
+
+String cleanUpFlutterPrefix(String name) {
+  if (name.startsWith('Flutter')) {
+    return name.substring('Flutter'.length);
+  }
+
+  return name;
 }
 
 class TsClass extends TsAbstractClass {

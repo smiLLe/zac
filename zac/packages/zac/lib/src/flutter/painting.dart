@@ -291,7 +291,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterLocale? locale,
 // Paint? foreground,
 // Paint? background,
-    List<FlutterDartUiShadow>? shadows,
+    List<DartShadow>? shadows,
     List<FlutterFontFeature>? fontFeatures,
     FlutterTextDecoration? decoration,
     FlutterColor? decorationColor,
@@ -363,7 +363,7 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
 
 @defaultConverterFreezed
 @TsClass(order: tsOrderDartClasses)
-class FlutterBoxShadow with _$FlutterBoxShadow implements FlutterDartUiShadow {
+class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
   const FlutterBoxShadow._();
 
   static const String unionValue = 'f:1:BoxShadow';

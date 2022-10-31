@@ -10,7 +10,7 @@ import 'models.dart';
 void main() {
   test('Shadow', () {
     fakeBuild<Shadow>(
-      FlutterDartUiShadow.fromJson(<String, dynamic>{
+      FlutterShadow.fromJson(<String, dynamic>{
         'converter': 'f:1:Shadow',
         'color': ColorModel.json,
         'offset': OffsetModel.json,
@@ -28,7 +28,7 @@ void main() {
 
   test('BoxShadow', () {
     fakeBuild<Shadow>(
-      FlutterDartUiShadow.fromJson(<String, dynamic>{
+      FlutterShadow.fromJson(<String, dynamic>{
         'converter': FlutterBoxShadow.unionValue,
         ...BoxShadowModel.json,
       }).build,

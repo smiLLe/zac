@@ -9126,30 +9126,31 @@ abstract class _FlutterBoxWidthStyletight extends FlutterBoxWidthStyle {
       _$_FlutterBoxWidthStyletight.fromJson;
 }
 
-DartUiShadow _$DartUiShadowFromJson(Map<String, dynamic> json) {
-  return _DartUiShadow.fromJson(json);
+FlutterShadow _$FlutterShadowFromJson(Map<String, dynamic> json) {
+  return _FlutterShadowShadow.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DartUiShadow {
+mixin _$FlutterShadow {
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
   ZacValue<double>? get blurRadius => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_DartUiShadow value) $default,
+    TResult Function(_FlutterShadowShadow value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_DartUiShadow extends _DartUiShadow {
-  _$_DartUiShadow({this.color, this.offset, this.blurRadius}) : super._();
+class _$_FlutterShadowShadow extends _FlutterShadowShadow {
+  _$_FlutterShadowShadow({this.color, this.offset, this.blurRadius})
+      : super._();
 
-  factory _$_DartUiShadow.fromJson(Map<String, dynamic> json) =>
-      _$$_DartUiShadowFromJson(json);
+  factory _$_FlutterShadowShadow.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterShadowShadowFromJson(json);
 
   @override
   final FlutterColor? color;
@@ -9160,14 +9161,14 @@ class _$_DartUiShadow extends _DartUiShadow {
 
   @override
   String toString() {
-    return 'DartUiShadow(color: $color, offset: $offset, blurRadius: $blurRadius)';
+    return 'FlutterShadow(color: $color, offset: $offset, blurRadius: $blurRadius)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DartUiShadow &&
+            other is _$_FlutterShadowShadow &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.blurRadius, blurRadius) ||
@@ -9181,21 +9182,21 @@ class _$_DartUiShadow extends _DartUiShadow {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_DartUiShadow value) $default,
+    TResult Function(_FlutterShadowShadow value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _DartUiShadow extends DartUiShadow {
-  factory _DartUiShadow(
+abstract class _FlutterShadowShadow extends FlutterShadow {
+  factory _FlutterShadowShadow(
       {final FlutterColor? color,
       final FlutterOffset? offset,
-      final ZacValue<double>? blurRadius}) = _$_DartUiShadow;
-  _DartUiShadow._() : super._();
+      final ZacValue<double>? blurRadius}) = _$_FlutterShadowShadow;
+  _FlutterShadowShadow._() : super._();
 
-  factory _DartUiShadow.fromJson(Map<String, dynamic> json) =
-      _$_DartUiShadow.fromJson;
+  factory _FlutterShadowShadow.fromJson(Map<String, dynamic> json) =
+      _$_FlutterShadowShadow.fromJson;
 
   @override
   FlutterColor? get color;

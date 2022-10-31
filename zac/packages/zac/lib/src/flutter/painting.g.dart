@@ -269,7 +269,7 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
           ? null
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       shadows: (json['shadows'] as List<dynamic>?)
-          ?.map((e) => FlutterDartUiShadow.fromJson(e as Object))
+          ?.map((e) => DartShadow.fromJson(e as Object))
           .toList(),
       fontFeatures: (json['fontFeatures'] as List<dynamic>?)
           ?.map((e) => FlutterFontFeature.fromJson(e as Map<String, dynamic>))

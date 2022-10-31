@@ -366,7 +366,7 @@ Map<String, Convert> allConverters = const {
       FlutterEdgeInsetsDirectional.fromJson,
   FlutterMaterialPageRoute.unionValue: FlutterMaterialPageRoute.fromJson,
   FlutterPageRouteBuilder.unionValue: FlutterPageRouteBuilder.fromJson,
-  DartUiShadow.unionValue: DartUiShadow.fromJson,
+  FlutterShadow.unionValue: FlutterShadow.fromJson,
   FlutterBoxShadow.unionValue: FlutterBoxShadow.fromJson,
   FlutterFractionalOffset.unionValue: FlutterFractionalOffset.fromJson,
 };

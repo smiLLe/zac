@@ -908,9 +908,9 @@ class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
 }
 
 @TsClass(order: tsOrderFlutterAbstractsA)
-abstract class FlutterDartUiShadow {
-  factory FlutterDartUiShadow.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterDartUiShadow>(data);
+abstract class DartShadow {
+  factory DartShadow.fromJson(Object data) {
+    return ConverterHelper.convertToType<DartShadow>(data);
   }
 
   Shadow build(ZacContext zacContext);
@@ -918,20 +918,20 @@ abstract class FlutterDartUiShadow {
 
 @defaultConverterFreezed
 @TsClass(order: tsOrderDartUi)
-class DartUiShadow with _$DartUiShadow implements FlutterDartUiShadow {
-  const DartUiShadow._();
+class FlutterShadow with _$FlutterShadow implements DartShadow {
+  const FlutterShadow._();
 
   static const String unionValue = 'f:1:Shadow';
 
-  factory DartUiShadow.fromJson(Map<String, dynamic> json) =>
-      _$DartUiShadowFromJson(json);
+  factory FlutterShadow.fromJson(Map<String, dynamic> json) =>
+      _$FlutterShadowFromJson(json);
 
-  @FreezedUnionValue(DartUiShadow.unionValue)
-  factory DartUiShadow({
+  @FreezedUnionValue(FlutterShadow.unionValue)
+  factory FlutterShadow({
     FlutterColor? color,
     FlutterOffset? offset,
     ZacValue<double>? blurRadius,
-  }) = _DartUiShadow;
+  }) = _FlutterShadowShadow;
 
   @override
   Shadow build(ZacContext zacContext) {

@@ -820,8 +820,9 @@ _$_FlutterBoxWidthStyletight _$$_FlutterBoxWidthStyletightFromJson(
       $type: json['converter'] as String?,
     );
 
-_$_DartUiShadow _$$_DartUiShadowFromJson(Map<String, dynamic> json) =>
-    _$_DartUiShadow(
+_$_FlutterShadowShadow _$$_FlutterShadowShadowFromJson(
+        Map<String, dynamic> json) =>
+    _$_FlutterShadowShadow(
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),

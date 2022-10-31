@@ -1715,7 +1715,7 @@ mixin _$FlutterTextStyle {
   FlutterLocale? get locale =>
       throw _privateConstructorUsedError; // Paint? foreground,
 // Paint? background,
-  List<FlutterDartUiShadow>? get shadows => throw _privateConstructorUsedError;
+  List<DartShadow>? get shadows => throw _privateConstructorUsedError;
   List<FlutterFontFeature>? get fontFeatures =>
       throw _privateConstructorUsedError;
   FlutterTextDecoration? get decoration => throw _privateConstructorUsedError;
@@ -1753,7 +1753,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       this.height,
       this.leadingDistribution,
       this.locale,
-      final List<FlutterDartUiShadow>? shadows,
+      final List<DartShadow>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       this.decoration,
       this.decorationColor,
@@ -1798,11 +1798,11 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   final FlutterLocale? locale;
 // Paint? foreground,
 // Paint? background,
-  final List<FlutterDartUiShadow>? _shadows;
+  final List<DartShadow>? _shadows;
 // Paint? foreground,
 // Paint? background,
   @override
-  List<FlutterDartUiShadow>? get shadows {
+  List<DartShadow>? get shadows {
     final value = _shadows;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -1948,7 +1948,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacValue<double>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
       final FlutterLocale? locale,
-      final List<FlutterDartUiShadow>? shadows,
+      final List<DartShadow>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       final FlutterTextDecoration? decoration,
       final FlutterColor? decorationColor,
@@ -1990,7 +1990,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   FlutterLocale? get locale;
   @override // Paint? foreground,
 // Paint? background,
-  List<FlutterDartUiShadow>? get shadows;
+  List<DartShadow>? get shadows;
   @override
   List<FlutterFontFeature>? get fontFeatures;
   @override
