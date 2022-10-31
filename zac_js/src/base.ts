@@ -9,6 +9,8 @@ export type ZacConverterType = { [key: string]: ZacTypes | null | undefined } & 
     converter: string;
 }
 
+export type SharedValueFamily = string | number;
+
 export abstract class ZacConverter {
     private data: ZacConverterType;
     constructor(data: ZacConverterType) {
