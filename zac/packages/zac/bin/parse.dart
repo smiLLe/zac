@@ -56,52 +56,15 @@ void main() async {
       'generated.ts'
     ].join(Platform.pathSeparator)}');
     writeFile.createSync();
-    await writeFile.writeAsString(allFiles.toString());
+    await writeFile.writeAsString(Template(allFiles).toString());
   }
 }
 
-/// Map "simple" Dart types to TS types
-String getMappedType(String dartType) {
-  /// for example Map<string, dynamic> to a Typescript Record<>
-  if (dartType.startsWith('Map<')) {
-    final parts =
-        dartType.replaceAll('Map<', '').replaceAll('>', '').split(',');
-    final mappedParts =
-        parts.map((e) => e.trim()).map((e) => getMappedType(e)).toList();
-    return 'Record<string, ${mappedParts[1]}>';
+String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
+    [int depth = 0]) {
+  if (type is DynamicType) {
+    return 'any';
   }
-
-  switch (dartType) {
-    case 'bool':
-      return 'boolean';
-    case 'bool?':
-      return 'boolean?';
-    case 'String':
-    case 'DateTime':
-      return 'string';
-    case 'String?':
-    case 'DateTime?':
-      return 'string?';
-    case 'double':
-      return 'DartDouble';
-    case 'double?':
-      return 'DartDouble?';
-    case 'int':
-      return 'DartInt';
-    case 'int?':
-      return 'DartInt?';
-    case 'dynamic':
-    case 'Object':
-    case 'Object?':
-      return 'ValidTypes';
-    case 'GlobalKey<NavigatorState>':
-      return 'any /*$dartType*/';
-    default:
-      return dartType;
-  }
-}
-
-String mapDartTypeToTypescript(AllFiles allFiles, DartType type) {
   if (type is! InterfaceType) {
     throw Error();
   }
@@ -109,54 +72,44 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type) {
   if (type.typeArguments.isNotEmpty) {
     name = name.split('<').first;
   }
+  String opt() {
+    if (depth == 0) return '';
+    return type.getDisplayString(withNullability: true).endsWith('?')
+        ? ' | null'
+        : '';
+  }
 
   switch (name) {
     case 'bool':
-      return 'boolean';
+      return 'boolean${opt()}';
     case 'String':
     case 'DateTime':
-      return 'string';
+      return 'string${opt()}';
     case 'double':
-      return 'DartDouble';
+      return 'DartDouble${opt()}';
     case 'int':
-      return 'DartInt';
+      return 'DartInt${opt()}';
     case 'dynamic':
     case 'Object':
-      return 'ValidTypes';
+      return 'ValidTypes${opt()}';
     case 'Map':
-      return 'Record';
+      return 'Record<string, ${mapDartTypeToTypescript(allFiles, type.typeArguments.last, depth + 1)}>${opt()}';
     case 'List':
-      return 'Array';
+    case 'Set':
+    case 'Iterable':
+      return 'Array<${mapDartTypeToTypescript(allFiles, type.typeArguments.first, depth + 1)}>${opt()}';
     default:
       if (allFiles.allKnownTypes.contains(name)) {
-        return name;
+        if (type.typeArguments.isEmpty) {
+          return '$name${opt()}';
+        }
+
+        return '$name<${type.typeArguments.map((subType) {
+          return mapDartTypeToTypescript(allFiles, subType, depth + 1);
+        }).join(',')}>${opt()}';
       }
       return 'any';
   }
-}
-
-/// Map DartTypes with generics like List<T>, Map<T, T>, SomeClass<T>
-/// to Typescript Types
-String getMappedTypeWithTypeArgs(String dartType, List<DartType> types) {
-  if (dartType == 'Map' && types.length == 2) {
-    return 'Record<string, ${getMappedType(types[1].getDisplayString(withNullability: true))}>';
-  }
-  if (dartType == 'List' && types.length == 1) {
-    return 'Array<${getMappedType(types[0].getDisplayString(withNullability: true))}>';
-  }
-  if (dartType == 'Iterable' && types.length == 1) {
-    return 'Array<${getMappedType(types[0].getDisplayString(withNullability: true))}>';
-  }
-  if (dartType == 'Set' && types.length == 1) {
-    return 'Array<${getMappedType(types[0].getDisplayString(withNullability: true))}>';
-  }
-
-  // print(
-  //     '${types.first.getDisplayString(withNullability: false)}: ${types.first is InterfaceType} ${(types.first as InterfaceType).typeArguments.map((e) => e.getDisplayString(withNullability: false)).join('++')}');
-
-  return '$dartType<${types.map((e) {
-    return getMappedType(e.getDisplayString(withNullability: true));
-  }).join(',')}>';
 }
 
 class AllFiles {
@@ -164,14 +117,19 @@ class AllFiles {
 
   AllFiles(this.files);
 
-  late final Iterable<String> allKnownTypes =
-      files.fold(<String>[], (previousValue, oneFile) {
-    final allInFile = [
-      ...oneFile.abstracts.map((tsClass) => tsClass.className),
-      ...oneFile.builders.map((tsClass) => tsClass.className)
-    ];
-    return [...previousValue, ...allInFile];
-  });
+  late final Iterable<String> allKnownTypes = [
+    'ZacValue',
+    'ZacValueRead',
+    'ZacValueList',
+    'ZacValueListRead',
+    ...files.fold(<String>[], (previousValue, oneFile) {
+      final allInFile = [
+        ...oneFile.abstracts.map((tsClass) => tsClass.className),
+        ...oneFile.builders.map((tsClass) => tsClass.className)
+      ];
+      return [...previousValue, ...allInFile];
+    })
+  ];
 
   late final Iterable<TsAbstractClass> abstracts = files
       .where((oneFile) => oneFile.abstracts.isNotEmpty)
@@ -258,10 +216,23 @@ class TsAbstractClass {
 class TsClass extends TsAbstractClass {
   TsClass(super.element);
 
+  /// all Freezed UnionValues and their factory constructor
+  late final Iterable<UnionValueCtor> unionValueCtor =
+      element.constructors.where((ctor) {
+    return !(!ctor.isFactory ||
+        ctor.name == 'fromJson' ||
+        null == ctor.redirectedConstructor);
+  }).map((ctor) => UnionValueCtor(ctor));
+}
+
+class UnionValueCtor {
+  UnionValueCtor(this.element);
+  final ConstructorElement element;
+
   /// fixes reserved Typescript names
   /// or create a name for base constructor
-  String ctorName(ConstructorElement ctor) {
-    switch (ctor.name) {
+  late final String name = () {
+    switch (element.name) {
       case '':
         return 'new';
       case 'length':
@@ -269,57 +240,82 @@ class TsClass extends TsAbstractClass {
       case 'name':
         return 'name_';
       default:
-        return ctor.name;
+        return element.name;
     }
-  }
+  }();
 
-  late final Iterable<String> staticCtors = element.constructors.where((ctor) {
-    return !(!ctor.isFactory ||
-        ctor.name == 'fromJson' ||
-        null == ctor.redirectedConstructor);
-  }).map((ctor) {
-    String? unionValue = ctor.metadata
+  /// f:1:SizedBox etc
+  late final String unionValue = () {
+    final uv = element.metadata
         .map((e) => e.computeConstantValue())
         .firstWhere((element) =>
             element?.type?.getDisplayString(withNullability: false) ==
             'FreezedUnionValue')
         ?.getField('value')
         ?.toStringValue();
+    if (null == uv) {
+      throw StateError('UnionValue must not be null');
+    }
+    return uv;
+  }();
+}
 
-    final params = ctor.parameters.map((param) {
-      if (param.type is! InterfaceType) {
-        throw Error();
-      }
-
-      final t = param.type as InterfaceType;
-
-      /// Everything that has no generic like: int, SomeClass, string...
-      if (t.typeArguments.isEmpty) {
-        return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedType(t.getDisplayString(withNullability: false))}';
-      }
-
-      /// Here classes with generics like ZacValue<XYZ, ABC>
-
-      /// ZacValue<double> into ZacValue
-      final typeName =
-          param.type.getDisplayString(withNullability: false).split('<')[0];
-
-      return '${param.displayName}${param.isOptional ? '?' : ''}: ${getMappedTypeWithTypeArgs(typeName, t.typeArguments)}';
-    });
-    return '''
-static ${ctorName(ctor)}(${params.isNotEmpty ? 'data: {${params.join(',\n')}}' : ''}) {
-  return new $className({
-    converter: '$unionValue'${params.isNotEmpty ? ',' : ''}
-    ${params.isNotEmpty ? '...data' : ''}
-  })
-}''';
-  });
+class Template {
+  Template(this.allFiles);
+  final AllFiles allFiles;
 
   @override
   String toString() {
-    return '''
-export class $className extends ZacConverter${implements.isEmpty ? '' : ' implements ${implements.join(', ')}'} {
-  ${staticCtors.join('\n')}
+    final abstractsTpl = allFiles.abstracts.map((abs) {
+      return 'export abstract class ${abs.className} extends ZacConverter${abs.implements.isEmpty ? '' : ' implements ${abs.implements.join(', ')}'} {}';
+    }).join('\n');
+
+    final builderTpl = allFiles.builders.map((b) {
+      final mappedCtor = b.unionValueCtor.map((ctor) {
+        final mappedParams = ctor.element.parameters.map((paramEle) {
+          final mappedType = mapDartTypeToTypescript(allFiles, paramEle.type);
+
+          /// This will allow a param to be required but still to accept null
+          /// param: string | null
+          /// In Dart this could be {required String? param}
+          ///
+          /// But it will also allow a param to be completely optional
+          /// param?: string
+          /// In Dart this could be {String? param}
+          ///
+          /// Also the analyzers isOptional could not be used here because
+          /// isOptional is false when Dart uses {required String? param}
+          /// So just check if the type ends with an ? and assume it is Optional
+          final isOptional = paramEle.type
+              .getDisplayString(withNullability: true)
+              .endsWith('?');
+          var paramNameOpt = (!paramEle.isRequired && isOptional) ? '?' : '';
+          var orNull = (paramEle.isRequired && isOptional) ? ' | null' : '';
+
+          return '${paramEle.displayName}$paramNameOpt: $mappedType$orNull';
+        });
+
+        return '''
+static ${ctor.name}(${mappedParams.isNotEmpty ? 'data: {${mappedParams.join(',\n')}}' : ''}) {
+  return new ${b.className}({
+    converter: '${ctor.unionValue}'${mappedParams.isNotEmpty ? ',' : ''}
+    ${mappedParams.isNotEmpty ? '...data' : ''}
+  })
 }''';
+      });
+      return '''
+export class ${b.className} extends ZacConverter${b.implements.isEmpty ? '' : ' implements ${b.implements.join(', ')}'} {
+  ${mappedCtor.join('\n')}
+}''';
+    }).join('\n');
+
+    return '''
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
+import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
+
+$abstractsTpl
+$builderTpl
+''';
   }
 }

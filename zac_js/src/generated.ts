@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DartDouble, DartInt, ValidTypes, ZacConverter } from "./base"
 import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
 
@@ -907,6 +908,20 @@ export class FlutterStackFit extends ZacConverter {
   static passthrough() {
     return new FlutterStackFit({
       converter: 'f:1:StackFit.passthrough'
+
+    })
+  }
+}
+export class FlutterSmartDashesType extends ZacConverter {
+  static disabled() {
+    return new FlutterSmartDashesType({
+      converter: 'f:1:SmartDashesType.disabled'
+
+    })
+  }
+  static enabled() {
+    return new FlutterSmartDashesType({
+      converter: 'f:1:SmartDashesType.enabled'
 
     })
   }
@@ -1926,20 +1941,6 @@ export class FlutterTextCapitalization extends ZacConverter {
     })
   }
 }
-export class FlutterSmartDashesType extends ZacConverter {
-  static disabled() {
-    return new FlutterSmartDashesType({
-      converter: 'f:1:SmartDashesType.disabled'
-
-    })
-  }
-  static enabled() {
-    return new FlutterSmartDashesType({
-      converter: 'f:1:SmartDashesType.enabled'
-
-    })
-  }
-}
 export class FlutterSmartQuotesType extends ZacConverter {
   static disabled() {
     return new FlutterSmartQuotesType({
@@ -1969,6 +1970,48 @@ export class ZacStateMachineProviderBuilder extends ZacConverter implements Flut
     })
   }
 }
+export class ZacWidgetBuilder extends ZacConverter implements FlutterWidget {
+  static new(data: {
+    key?: FlutterKey,
+    data: ZacValue<FlutterWidget>
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget',
+      ...data
+    })
+  }
+  static map(data: {
+    key?: FlutterKey,
+    data: ZacValue<Record<string, any>>
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.map',
+      ...data
+    })
+  }
+  static isolate(data: {
+    key?: FlutterKey,
+    data: ZacValue<Record<string, any>>,
+    errorChild?: FlutterWidget,
+    debugRethrowError?: boolean
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.isolate',
+      ...data
+    })
+  }
+  static isolateString(data: {
+    key?: FlutterKey,
+    data: ZacValue<string>,
+    errorChild?: FlutterWidget,
+    debugRethrowError?: boolean
+  }) {
+    return new ZacWidgetBuilder({
+      converter: 'z:1:Widget.isolateString',
+      ...data
+    })
+  }
+}
 export class ZacUpdateContextBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
@@ -1993,44 +2036,17 @@ export class ZacStateMachineBuildStateBuilder extends ZacConverter implements Fl
     })
   }
 }
-export class ZacWidgetBuilder extends ZacConverter implements FlutterWidget {
+export class SharedValueProviderBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    data: ZacValue<FlutterWidget>
+    value: ValidTypes | null,
+    transformer?: ZacTransformers,
+    family: ValidTypes,
+    child: FlutterWidget,
+    autoCreate: boolean
   }) {
-    return new ZacWidgetBuilder({
-      converter: 'z:1:Widget',
-      ...data
-    })
-  }
-  static map(data: {
-    key?: FlutterKey,
-    data: ZacValue<Record<string, ValidTypes>>
-  }) {
-    return new ZacWidgetBuilder({
-      converter: 'z:1:Widget.map',
-      ...data
-    })
-  }
-  static isolate(data: {
-    key?: FlutterKey,
-    data: ZacValue<Record<string, ValidTypes>>,
-    errorChild?: FlutterWidget,
-    debugRethrowError?: boolean
-  }) {
-    return new ZacWidgetBuilder({
-      converter: 'z:1:Widget.isolate',
-      ...data
-    })
-  }
-  static isolateString(data: {
-    key?: FlutterKey,
-    data: ZacValue<string>,
-    errorChild?: FlutterWidget,
-    debugRethrowError?: boolean
-  }) {
-    return new ZacWidgetBuilder({
-      converter: 'z:1:Widget.isolateString',
+    return new SharedValueProviderBuilder({
+      converter: 'z:1:SharedValue.provide',
       ...data
     })
   }
@@ -2052,21 +2068,6 @@ export class ZacExecuteActionsBuilder extends ZacConverter implements FlutterWid
   }) {
     return new ZacExecuteActionsBuilder({
       converter: 'z:1:ExecuteActions.listen',
-      ...data
-    })
-  }
-}
-export class SharedValueProviderBuilder extends ZacConverter implements FlutterWidget {
-  static new(data: {
-    key?: FlutterKey,
-    value: ValidTypes,
-    transformer?: ZacTransformers,
-    family: ValidTypes,
-    child: FlutterWidget,
-    autoCreate?: boolean
-  }) {
-    return new SharedValueProviderBuilder({
-      converter: 'z:1:SharedValue.provide',
       ...data
     })
   }
@@ -2130,7 +2131,7 @@ export class FlutterGestureDetector extends ZacConverter implements FlutterWidge
 }
 export class FlutterIcon extends ZacConverter implements FlutterWidget {
   static new(data: {
-    icon: FlutterIconData,
+    icon: FlutterIconData | null,
     key?: FlutterKey,
     size?: ZacValue<DartDouble>,
     color?: FlutterColor,
@@ -2740,17 +2741,14 @@ export class FlutterRow extends ZacConverter implements FlutterWidget {
     })
   }
 }
-export class FlutterStack extends ZacConverter implements FlutterWidget {
+export class FlutterClipOval extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    alignment?: FlutterAlignmentGeometry,
-    textDirection?: FlutterTextDirection,
-    fit?: FlutterStackFit,
-    clipBehavior?: FlutterClip,
-    children?: ZacValueList<FlutterWidget>
+    child?: FlutterWidget,
+    clipBehavior?: FlutterClip
   }) {
-    return new FlutterStack({
-      converter: 'f:1:Stack',
+    return new FlutterClipOval({
+      converter: 'f:1:ClipOval',
       ...data
     })
   }
@@ -2812,7 +2810,7 @@ export class FlutterAppBar extends ZacConverter implements FlutterWidget {
 export class FlutterElevatedButton extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    child: FlutterWidget,
+    child: FlutterWidget | null,
     onPressed?: ZacActions,
     onLongPress?: ZacActions,
     autofocus?: ZacValue<boolean>,
@@ -3041,14 +3039,13 @@ export class FlutterDivider extends ZacConverter implements FlutterWidget {
     })
   }
 }
-export class FlutterClipOval extends ZacConverter implements FlutterWidget {
+export class FlutterBuilder extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    child?: FlutterWidget,
-    clipBehavior?: FlutterClip
+    child: FlutterWidget
   }) {
-    return new FlutterClipOval({
-      converter: 'f:1:ClipOval',
+    return new FlutterBuilder({
+      converter: 'f:1:Builder',
       ...data
     })
   }
@@ -3109,7 +3106,7 @@ export class FlutterMaterial extends ZacConverter implements FlutterWidget {
 export class FlutterMaterialApp extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    navigatorKey?: ZacValue<any /*GlobalKey<NavigatorState>*/>,
+    navigatorKey?: ZacValue<any>,
     home?: FlutterWidget,
     initialRoute?: ZacValue<string>,
     onGenerateRoute?: FlutterRouteFactory,
@@ -3175,7 +3172,7 @@ export class FlutterRefreshIndicator extends ZacConverter implements FlutterWidg
     semanticsValue?: ZacValue<string>,
     strokeWidth?: ZacValue<DartDouble>,
     triggerMode?: FlutterRefreshIndicatorTriggerMode,
-    family?: ValidTypes
+    family: ValidTypes
   }) {
     return new FlutterRefreshIndicator({
       converter: 'f:1:RefreshIndicator',
@@ -3340,7 +3337,7 @@ export class FlutterSnackBarAction extends ZacConverter implements FlutterWidget
     textColor?: FlutterColor,
     disabledTextColor?: FlutterColor,
     label: string,
-    onPressed: ZacActions
+    onPressed: ZacActions | null
   }) {
     return new FlutterSnackBarAction({
       converter: 'f:1:SnackBarAction',
@@ -3355,7 +3352,7 @@ export class FlutterMaterialBanner extends ZacConverter implements FlutterWidget
     contentTextStyle?: FlutterTextStyle,
     actions: ZacValueList<FlutterWidget>,
     elevation?: ZacValue<DartDouble>,
-    leading: FlutterWidget,
+    leading: FlutterWidget | null,
     backgroundColor?: FlutterColor,
     padding?: FlutterEdgeInsetsGeometry,
     leadingPadding?: FlutterEdgeInsetsGeometry,
@@ -3458,7 +3455,7 @@ export class FlutterNavigatorState extends ZacConverter {
 
     })
   }
-  static shared(data: { value: ZacValue<any /*GlobalKey<NavigatorState>*/> }) {
+  static shared(data: { value: ZacValue<any> }) {
     return new FlutterNavigatorState({
       converter: 'f:1:NavigatorState.root',
       ...data
@@ -3756,13 +3753,17 @@ export class FlutterText extends ZacConverter implements FlutterWidget {
     })
   }
 }
-export class FlutterBuilder extends ZacConverter implements FlutterWidget {
+export class FlutterStack extends ZacConverter implements FlutterWidget {
   static new(data: {
     key?: FlutterKey,
-    child: FlutterWidget
+    alignment?: FlutterAlignmentGeometry,
+    textDirection?: FlutterTextDirection,
+    fit?: FlutterStackFit,
+    clipBehavior?: FlutterClip,
+    children?: ZacValueList<FlutterWidget>
   }) {
-    return new FlutterBuilder({
-      converter: 'f:1:Builder',
+    return new FlutterStack({
+      converter: 'f:1:Stack',
       ...data
     })
   }
@@ -3884,7 +3885,7 @@ export class SharedValueConsumeType extends ZacConverter {
 }
 export class ZacValueActions extends ZacConverter implements ZacAction {
   static asPayload(data: {
-    value: ZacValueRead<ValidTypes>,
+    value: ZacValueRead<ValidTypes | null>,
     actions: ZacActions
   }) {
     return new ZacValueActions({
@@ -3907,7 +3908,7 @@ export class ZacTransition extends ZacConverter {
 export class ZacStateConfig extends ZacConverter {
   static new(data: {
     widget: FlutterWidget,
-    on?: Array<ZacTransition>
+    on: Array<ZacTransition>
   }) {
     return new ZacStateConfig({
       converter: 'z:1:StateMachine:StateConfig',
@@ -4026,13 +4027,13 @@ export class MapTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static containsKey(data: { key: ZacValue<ValidTypes> }) {
+  static containsKey(data: { key: ZacValue<ValidTypes> | null }) {
     return new MapTransformer({
       converter: 'z:1:Transformer:Map.containsKey',
       ...data
     })
   }
-  static containsValue(data: { value: ZacValue<ValidTypes> }) {
+  static containsValue(data: { value: ZacValue<ValidTypes> | null }) {
     return new MapTransformer({
       converter: 'z:1:Transformer:Map.containsValue',
       ...data
@@ -4133,7 +4134,7 @@ export class IterableTransformer extends ZacConverter implements ZacTransformer 
       ...data
     })
   }
-  static contains(data: { element: ZacValue<ValidTypes> }) {
+  static contains(data: { element: ZacValue<ValidTypes> | null }) {
     return new IterableTransformer({
       converter: 'z:1:Transformer:Iterable.contains',
       ...data
@@ -4179,7 +4180,7 @@ export class ObjectTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static equals(data: { other: ValidTypes }) {
+  static equals(data: { other: ValidTypes | null }) {
     return new ObjectTransformer({
       converter: 'z:1:Transformer:Object.equals',
       ...data
@@ -4203,7 +4204,7 @@ export class ObjectTransformer extends ZacConverter implements ZacTransformer {
 
     })
   }
-  static equalsSharedValue(data: { value: ZacValueRead<ValidTypes> }) {
+  static equalsSharedValue(data: { value: ZacValueRead<ValidTypes | null> }) {
     return new ObjectTransformer({
       converter: 'z:1:Transformer:Object.equalsSharedValue',
       ...data
@@ -4426,6 +4427,21 @@ export class ZacActions extends ZacConverter {
   static new(data: { actions: Array<ZacAction> }) {
     return new ZacActions({
       converter: 'z:1:Actions',
+      ...data
+    })
+  }
+}
+export class TsTest extends ZacConverter {
+  static new(data: {
+    reqButOpt: DartInt | null,
+    someDate: string,
+    reqInt: ZacValue<DartInt>,
+    optionalInt?: ZacValue<DartInt>,
+    deep1?: ZacValue<ZacValue<ZacValue<DartInt>>>,
+    deep2: ZacValue<ZacValue<ZacValue<DartInt> | null>> | null
+  }) {
+    return new TsTest({
+      converter: 'f:1:BoxShape.circle',
       ...data
     })
   }
