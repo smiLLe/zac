@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "parse",
+            "name": "generate-ts",
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/parse.dart",
+            "program": "zac/packages/zac/bin/generate-ts.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
