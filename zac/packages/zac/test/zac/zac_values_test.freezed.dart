@@ -125,9 +125,9 @@ ZacValueReadTest _$ZacValueReadTestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacValueReadTest {
-  ZacValueRead<int> get value => throw _privateConstructorUsedError;
-  ZacValueRead<int> get simple => throw _privateConstructorUsedError;
-  ZacValueRead<int> get read => throw _privateConstructorUsedError;
+  ZacValueOrRead<int> get value => throw _privateConstructorUsedError;
+  ZacValueOrRead<int> get simple => throw _privateConstructorUsedError;
+  ZacValueOrRead<int> get read => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -146,11 +146,11 @@ class _$_ZacValueReadTest implements _ZacValueReadTest {
       _$$_ZacValueReadTestFromJson(json);
 
   @override
-  final ZacValueRead<int> value;
+  final ZacValueOrRead<int> value;
   @override
-  final ZacValueRead<int> simple;
+  final ZacValueOrRead<int> simple;
   @override
-  final ZacValueRead<int> read;
+  final ZacValueOrRead<int> read;
 
   @override
   String toString() {
@@ -182,17 +182,17 @@ class _$_ZacValueReadTest implements _ZacValueReadTest {
 
 abstract class _ZacValueReadTest implements ZacValueReadTest {
   factory _ZacValueReadTest(
-      {required final ZacValueRead<int> value,
-      required final ZacValueRead<int> simple,
-      required final ZacValueRead<int> read}) = _$_ZacValueReadTest;
+      {required final ZacValueOrRead<int> value,
+      required final ZacValueOrRead<int> simple,
+      required final ZacValueOrRead<int> read}) = _$_ZacValueReadTest;
 
   factory _ZacValueReadTest.fromJson(Map<String, dynamic> json) =
       _$_ZacValueReadTest.fromJson;
 
   @override
-  ZacValueRead<int> get value;
+  ZacValueOrRead<int> get value;
   @override
-  ZacValueRead<int> get simple;
+  ZacValueOrRead<int> get simple;
   @override
-  ZacValueRead<int> get read;
+  ZacValueOrRead<int> get read;
 }

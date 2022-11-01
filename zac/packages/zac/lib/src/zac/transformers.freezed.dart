@@ -2474,7 +2474,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final ZacValueRead<Object?> value;
+  final ZacValueOrRead<Object?> value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2513,14 +2513,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
 
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
   factory _ObjectEqualsSharedValue(
-          {required final ZacValueRead<Object?> value}) =
+          {required final ZacValueOrRead<Object?> value}) =
       _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  ZacValueRead<Object?> get value;
+  ZacValueOrRead<Object?> get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

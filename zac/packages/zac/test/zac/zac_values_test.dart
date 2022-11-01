@@ -30,16 +30,110 @@ class ZacValueReadTest with _$ZacValueReadTest {
       _$ZacValueReadTestFromJson(json);
 
   factory ZacValueReadTest({
-    required ZacValueRead<int> value,
-    required ZacValueRead<int> simple,
-    required ZacValueRead<int> read,
+    required ZacValueOrRead<int> value,
+    required ZacValueOrRead<int> simple,
+    required ZacValueOrRead<int> read,
   }) = _ZacValueReadTest;
 }
 
 void main() {
-  test('Create a ZacValue', () {
-    expect(ZacValue<int>.fromJson(5), ZacValueConsume<int>.simple(value: 5));
+  test('zacValueFromJson', () {
+    expect(
+        zacValueFromJson<bool>(true, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<bool>.simple(value: true));
+    expect(
+        zacValueFromJson<int>(5, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<int>.simple(value: 5));
+    expect(
+        zacValueFromJson<int>(5.1, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<int>.simple(value: 5));
 
+    expect(
+        zacValueFromJson<double>(5.0, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<double>.simple(value: 5.0));
+    expect(
+        zacValueFromJson<double>(5, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<double>.simple(value: 5.0));
+
+    final now = DateTime.now();
+    expect(
+        zacValueFromJson<DateTime>(now.toIso8601String(), (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<DateTime>.simple(value: now));
+
+    expect(
+        zacValueFromJson<String>('hello', (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<String>.simple(value: 'hello'));
+
+    expect(
+        zacValueFromJson<Map>({'foo': 'bar'}, (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<Map>.simple(value: {'foo': 'bar'}));
+
+    expect(
+        zacValueFromJson<List>(['a', 1], (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<List>.simple(value: ['a', 1]));
+
+    expect(
+        zacValueFromJson<FlutterSizedBox>({'converter': 'f:1:SizedBox'},
+            (converter, data) {
+          throw Exception();
+        }, null.runtimeType),
+        ZacValueConsume<FlutterSizedBox>.simple(value: FlutterSizedBox()));
+
+    /// callback is called because of converter name
+    expect(
+        zacValueFromJson<int>({'converter': 'z:1:ZacValue'}, (converter, data) {
+          return ZacValueConsume<int>.simple(value: 55);
+        }, null.runtimeType),
+        ZacValueConsume<int>.simple(value: 55));
+
+    /// callback is called because of converter name
+    expect(
+        zacValueFromJson<int>({'converter': 'z:1:ZacValue.watch'},
+            (converter, data) {
+          return ZacValueConsume<int>.watch(family: 'foo');
+        }, null.runtimeType),
+        ZacValueConsume<int>.watch(family: 'foo'));
+
+    /// callback is called because of converter name
+    expect(
+        zacValueFromJson<int>({'converter': 'z:1:ZacValue.read'},
+            (converter, data) {
+          return ZacValueConsume<int>.read(family: 'foo');
+        }, null.runtimeType),
+        ZacValueConsume<int>.read(family: 'foo'));
+
+    // ignore: prefer_function_declarations_over_variables
+    final unwanted = () {};
+    expect(
+        () => zacValueFromJson<int>(unwanted, (converter, data) {
+              throw Exception();
+            }, unwanted.runtimeType),
+        throwsA(isA<StateError>().having(
+            (p0) => p0.message,
+            'error',
+            contains(
+                'It was not possible to create a "${unwanted.runtimeType}" because the data given is not supported'))));
+  });
+
+  test('Create a ZacValue', () {
     expect(
         ZacValue<int>.fromJson(
             <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
@@ -58,90 +152,120 @@ void main() {
           'family': 'shared'
         }),
         ZacValueConsume<int>.read(family: 'shared'));
-
-    final now = DateTime.now();
-    expect(ZacValue<DateTime>.fromJson(now.toString()),
-        ZacValueConsume<DateTime>.simple(value: now));
-
-    expect(
-        ZacValue<Map<String, dynamic>>.fromJson(
-            <String, dynamic>{'foo': 'bar'}),
-        ZacValueConsume<Map<String, dynamic>>.simple(
-            value: <String, dynamic>{'foo': 'bar'}));
-
-    expect(ZacValue<List>.fromJson(<dynamic>[1, 'foo']),
-        ZacValueConsume<List>.simple(value: <dynamic>[1, 'foo']));
-
-    expect(
-        ZacValue<FlutterWidget>.fromJson(
-            <String, dynamic>{'converter': 'f:1:SizedBox'}),
-        ZacValueConsume<FlutterWidget>.simple(value: FlutterSizedBox()));
-
-    expect(
-        () => ZacValue<int>.fromJson(() {}),
-        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
-            contains('because the data given is not supported'))));
-
-    expect(ZacValue<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
-    expect(ZacValue<double>.fromJson(4),
-        ZacValueConsume<double>.simple(value: 4.0));
-    expect(ZacValue<bool>.fromJson(false),
-        ZacValueConsume<bool>.simple(value: false));
   });
 
-  test('Create a ZacValueRead', () {
+  test('Create a ZacValueOrRead', () {
     expect(
-        ZacValueRead<int>.fromJson(5), ZacValueConsume<int>.simple(value: 5));
-
-    expect(
-        ZacValueRead<int>.fromJson(
+        ZacValueOrRead<int>.fromJson(
             <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
         ZacValueConsume<int>.simple(value: 5));
 
     expect(
-        () => ZacValueRead<int>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValue.watch',
-              'family': 'shared'
-            }),
-        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
-            contains('It was not possible to create "ZacValueRead<int>"'))));
-
-    expect(
-        ZacValueRead<int>.fromJson(<String, dynamic>{
+        ZacValueOrRead<int>.fromJson(<String, dynamic>{
           'converter': 'z:1:ZacValue.read',
           'family': 'shared'
         }),
         ZacValueConsume<int>.read(family: 'shared'));
 
-    final now = DateTime.now();
-    expect(ZacValueRead<DateTime>.fromJson(now.toString()),
-        ZacValueConsume<DateTime>.simple(value: now));
-
     expect(
-        ZacValueRead<Map<String, dynamic>>.fromJson(
-            <String, dynamic>{'foo': 'bar'}),
-        ZacValueConsume<Map<String, dynamic>>.simple(
-            value: <String, dynamic>{'foo': 'bar'}));
-
-    expect(ZacValueRead<List>.fromJson(<dynamic>[1, 'foo']),
-        ZacValueConsume<List>.simple(value: <dynamic>[1, 'foo']));
-
-    expect(
-        ZacValueRead<FlutterWidget>.fromJson(
-            <String, dynamic>{'converter': 'f:1:SizedBox'}),
-        ZacValueConsume<FlutterWidget>.simple(value: FlutterSizedBox()));
-
-    expect(
-        () => ZacValueRead<int>.fromJson(() {}),
+        () => ZacValueOrRead<int>.fromJson(<String, dynamic>{
+              'converter': 'z:1:ZacValue.watch',
+              'family': 'shared'
+            }),
         throwsA(isA<StateError>().having((p0) => p0.message, 'error',
-            contains('because the data given is not supported'))));
+            contains('It was not possible to create "ZacValueOrRead<int>"'))));
+  });
+
+  test('Create a ZacValueOrWatch', () {
+    expect(
+        ZacValueOrWatch<int>.fromJson(
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
+        ZacValueConsume<int>.simple(value: 5));
 
     expect(
-        ZacValueRead<int>.fromJson(4.1), ZacValueConsume<int>.simple(value: 4));
-    expect(ZacValueRead<double>.fromJson(4),
-        ZacValueConsume<double>.simple(value: 4.0));
-    expect(ZacValueRead<bool>.fromJson(false),
-        ZacValueConsume<bool>.simple(value: false));
+        ZacValueOrWatch<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.watch',
+          'family': 'shared'
+        }),
+        ZacValueConsume<int>.watch(family: 'shared'));
+
+    expect(
+        () => ZacValueOrWatch<int>.fromJson(<String, dynamic>{
+              'converter': 'z:1:ZacValue.read',
+              'family': 'shared'
+            }),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to create "ZacValueOrWatch<int>"'))));
+  });
+
+  test('Create a ZacFamilyRead', () {
+    expect(
+        ZacFamilyRead<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.read',
+          'family': 'shared'
+        }),
+        ZacValueConsume<int>.read(family: 'shared'));
+
+    expect(
+        () => ZacFamilyRead<int>.fromJson(
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to create "ZacFamilyRead<int>"'))));
+
+    expect(
+        () => ZacFamilyRead<int>.fromJson(<String, dynamic>{
+              'converter': 'z:1:ZacValue.watch',
+              'family': 'shared'
+            }),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to create "ZacFamilyRead<int>"'))));
+  });
+
+  test('Create a ZacFamilyWatch', () {
+    expect(
+        ZacFamilyWatch<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.watch',
+          'family': 'shared'
+        }),
+        ZacValueConsume<int>.watch(family: 'shared'));
+
+    expect(
+        () => ZacFamilyWatch<int>.fromJson(
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to create "ZacFamilyWatch<int>"'))));
+
+    expect(
+        () => ZacFamilyWatch<int>.fromJson(<String, dynamic>{
+              'converter': 'z:1:ZacValue.read',
+              'family': 'shared'
+            }),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error',
+            contains('It was not possible to create "ZacFamilyWatch<int>"'))));
+  });
+
+  test('Create a ZacFamilyReadOrWatch', () {
+    expect(
+        ZacFamilyReadOrWatch<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.watch',
+          'family': 'shared'
+        }),
+        ZacValueConsume<int>.watch(family: 'shared'));
+    expect(
+        ZacFamilyReadOrWatch<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.read',
+          'family': 'shared'
+        }),
+        ZacValueConsume<int>.read(family: 'shared'));
+
+    expect(
+        () => ZacFamilyReadOrWatch<int>.fromJson(
+            <String, dynamic>{'converter': 'z:1:ZacValue', 'value': 5}),
+        throwsA(isA<StateError>().having(
+            (p0) => p0.message,
+            'error',
+            contains(
+                'It was not possible to create "ZacFamilyReadOrWatch<int>"'))));
   });
 
   test(

@@ -22,7 +22,7 @@ _$_ZacValueTest _$$_ZacValueTestFromJson(Map<String, dynamic> json) =>
 
 _$_ZacValueReadTest _$$_ZacValueReadTestFromJson(Map<String, dynamic> json) =>
     _$_ZacValueReadTest(
-      value: ZacValueRead<int>.fromJson(json['value'] as Object),
-      simple: ZacValueRead<int>.fromJson(json['simple'] as Object),
-      read: ZacValueRead<int>.fromJson(json['read'] as Object),
+      value: ZacValueOrRead<int>.fromJson(json['value'] as Object),
+      simple: ZacValueOrRead<int>.fromJson(json['simple'] as Object),
+      read: ZacValueOrRead<int>.fromJson(json['read'] as Object),
     );

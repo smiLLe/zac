@@ -394,7 +394,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacValueRead<Object?> value,
+    required ZacValueOrRead<Object?> value,
   }) = _ObjectEqualsSharedValue;
 
   @override

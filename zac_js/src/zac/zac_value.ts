@@ -9,7 +9,7 @@ export class ZacValueRead<T> extends ZacConverter {
     static read(data: {
         family: SharedValueFamily
     }) {
-        return new ZacValue({
+        return new ZacValueRead<ZacTypes>({
             converter: 'z:1:ZacValue.read',
             ...data,
         });
@@ -29,7 +29,7 @@ export class ZacValue<T> extends ZacValueRead<T> {
     static watch(data: {
         family: SharedValueFamily
     }) {
-        return new ZacValue({
+        return new ZacValue<ZacTypes>({
             converter: 'z:1:ZacValue.watch',
             ...data,
         });
@@ -45,7 +45,7 @@ export class ZacValueListRead<T> extends ZacConverter {
         family: SharedValueFamily,
         transformer?: ZacTransformers
     }) {
-        return new ZacValueList({
+        return new ZacValueList<ZacTypes>({
             converter: 'z:1:ZacValue.read',
             ...data,
         });
@@ -69,19 +69,10 @@ export class ZacValueList<T> extends ZacValueListRead<T> {
         transformer?: ZacTransformers,
         select?: ZacTransformers,
     }) {
-        return new ZacValueList({
+        return new ZacValueList<ZacTypes>({
             converter: 'z:1:ZacValue.watch',
             ...data,
         });
     }
 
 }
-
-// export class ZacValueActions extends ZacAction {
-//     static asActionPayload(data: {
-//         value: ZacValueRead<ValidTypes>,
-//         actions: ZacActions
-//     }) {
-//         return new ZacValueActions({ converter: 'z:1:ZacValue.asActionPayload', ...data })
-//     }
-// }

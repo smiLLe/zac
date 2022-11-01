@@ -77,6 +77,6 @@ _$_ZacValueListConsumeRead<TValue> _$$_ZacValueListConsumeReadFromJson<TValue>(
 _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_ZacValueActionsAsPayload(
-      value: ZacValueRead<Object?>.fromJson(json['value'] as Object),
+      value: ZacValueOrRead<Object?>.fromJson(json['value'] as Object),
       actions: ZacActions.fromJson(json['actions'] as Object),
     );

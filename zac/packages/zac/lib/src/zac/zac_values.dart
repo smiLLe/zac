@@ -39,8 +39,12 @@ The following data was used:
 $data"''');
 }
 
-ZacValue<TValue> zacValueFromJson<TValue>(Object data,
-    ZacValue<TValue> Function(String converter, Map<String, dynamic> data) cb) {
+ZacValueConsume<TValue> zacValueFromJson<TValue>(
+    Object data,
+    ZacValueConsume<TValue> Function(
+            String converter, Map<String, dynamic> data)
+        cb,
+    Type inType) {
   if (TValue == DateTime && data is String) {
     return ZacValueConsume<TValue>.simple(value: DateTime.parse(data));
   } else if (TValue == int && data is double) {
@@ -76,14 +80,13 @@ ZacValue<TValue> zacValueFromJson<TValue>(Object data,
   }
 
   throw StateError('''
-It was not possible to create a "${_typeOf<ZacValue<TValue>>()}"
-or "${_typeOf<ZacValueRead<TValue>>()}" because the data given is not supported.
+It was not possible to create a "$inType" because the data given is not supported.
 The following data was used:
 $data"''');
 }
 
-abstract class ZacValueRead<TValue> {
-  factory ZacValueRead.fromJson(Object data) {
+abstract class ZacValueOrRead<TValue> {
+  factory ZacValueOrRead.fromJson(Object data) {
     return zacValueFromJson<TValue>(data, (converter, data) {
       switch (converter) {
         case zacValueConverter:
@@ -92,17 +95,94 @@ abstract class ZacValueRead<TValue> {
           return ZacValueConsume<TValue>.fromJson(data);
         default:
           throw StateError('''
-It was not possible to create "${_typeOf<ZacValueRead<TValue>>()}".
+It was not possible to create "${_typeOf<ZacValueOrRead<TValue>>()}".
 The following data was used:
 $data"''');
       }
-    });
+    }, _typeOf<ZacValueOrRead<TValue>>());
   }
 
   TValue getValue(ZacContext zacContext);
 }
 
-abstract class ZacValue<TValue> implements ZacValueRead<TValue> {
+abstract class ZacValueOrWatch<TValue> {
+  factory ZacValueOrWatch.fromJson(Object data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverter:
+          return ZacValueConsume<TValue>.fromJson(data);
+        case zacValueConverterWatch:
+          return ZacValueConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacValueOrWatch<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    }, _typeOf<ZacValueOrWatch<TValue>>());
+  }
+
+  TValue getValue(ZacContext zacContext);
+}
+
+abstract class ZacFamilyRead<TValue> {
+  factory ZacFamilyRead.fromJson(Object data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverterRead:
+          return ZacValueConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacFamilyRead<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    }, _typeOf<ZacFamilyRead<TValue>>());
+  }
+
+  TValue getValue(ZacContext zacContext);
+}
+
+abstract class ZacFamilyWatch<TValue> {
+  factory ZacFamilyWatch.fromJson(Object data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverterWatch:
+          return ZacValueConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacFamilyWatch<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    }, _typeOf<ZacFamilyWatch<TValue>>());
+  }
+
+  TValue getValue(ZacContext zacContext);
+}
+
+abstract class ZacFamilyReadOrWatch<TValue> {
+  factory ZacFamilyReadOrWatch.fromJson(Object data) {
+    return zacValueFromJson<TValue>(data, (converter, data) {
+      switch (converter) {
+        case zacValueConverterRead:
+          return ZacValueConsume<TValue>.fromJson(data);
+        case zacValueConverterWatch:
+          return ZacValueConsume<TValue>.fromJson(data);
+        default:
+          throw StateError('''
+It was not possible to create "${_typeOf<ZacFamilyReadOrWatch<TValue>>()}".
+The following data was used:
+$data"''');
+      }
+    }, _typeOf<ZacFamilyReadOrWatch<TValue>>());
+  }
+
+  TValue getValue(ZacContext zacContext);
+}
+
+abstract class ZacValue<TValue>
+    implements ZacValueOrRead<TValue>, ZacValueOrWatch<TValue> {
   factory ZacValue.fromJson(Object data) {
     return zacValueFromJson<TValue>(data, (converter, data) {
       switch (converter) {
@@ -118,7 +198,7 @@ It was not possible to create "${_typeOf<ZacValue<TValue>>()}".
 The following data was used:
 $data"''');
       }
-    });
+    }, _typeOf<ZacValue<TValue>>());
   }
 
   @override
@@ -132,7 +212,13 @@ extension _XZacValueConsumeSimple<TValue> on _ZacValueConsumeSimple<TValue> {
 @defaultConverterFreezed
 class ZacValueConsume<TValue>
     with _$ZacValueConsume<TValue>
-    implements ZacValue<TValue> {
+    implements
+        ZacValue<TValue>,
+        ZacValueOrRead<TValue>,
+        ZacValueOrWatch<TValue>,
+        ZacFamilyRead<TValue>,
+        ZacFamilyWatch<TValue>,
+        ZacFamilyReadOrWatch<TValue> {
   ZacValueConsume._();
 
   factory ZacValueConsume.fromJson(Map<String, dynamic> json) {
@@ -455,7 +541,7 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
 
   @FreezedUnionValue(ZacValueActions.unionValue)
   factory ZacValueActions.asPayload({
-    required ZacValueRead<Object?> value,
+    required ZacValueOrRead<Object?> value,
     required ZacActions actions,
   }) = _ZacValueActionsAsPayload;
 

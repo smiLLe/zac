@@ -207,7 +207,7 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      value: ZacValueRead<Object?>.fromJson(json['value'] as Object),
+      value: ZacValueOrRead<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

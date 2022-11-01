@@ -493,7 +493,7 @@ ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacValueActions {
-  ZacValueRead<Object?> get value => throw _privateConstructorUsedError;
+  ZacValueOrRead<Object?> get value => throw _privateConstructorUsedError;
   ZacActions get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -513,7 +513,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
       _$$_ZacValueActionsAsPayloadFromJson(json);
 
   @override
-  final ZacValueRead<Object?> value;
+  final ZacValueOrRead<Object?> value;
   @override
   final ZacActions actions;
 
@@ -546,7 +546,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
 
 abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   factory _ZacValueActionsAsPayload(
-      {required final ZacValueRead<Object?> value,
+      {required final ZacValueOrRead<Object?> value,
       required final ZacActions actions}) = _$_ZacValueActionsAsPayload;
   _ZacValueActionsAsPayload._() : super._();
 
@@ -554,7 +554,7 @@ abstract class _ZacValueActionsAsPayload extends ZacValueActions {
       _$_ZacValueActionsAsPayload.fromJson;
 
   @override
-  ZacValueRead<Object?> get value;
+  ZacValueOrRead<Object?> get value;
   @override
   ZacActions get actions;
 }
