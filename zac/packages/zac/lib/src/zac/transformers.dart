@@ -5,7 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -185,9 +185,10 @@ The value: $value
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
-      containsKey: (obj) => value.containsKey(obj.key?.getValue(zacContext)),
-      containsValue: (obj) =>
-          value.containsValue(obj.value?.getValue(zacContext)),
+      containsKey: (obj) => value.containsKey(obj.key
+          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+      containsValue: (obj) => value.containsValue(obj.value
+          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
             value.entries.map<MapEntry<dynamic, dynamic>>((entry) {
@@ -239,6 +240,8 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
       'z:1:Transformer:Iterable.elementAt';
   static const String unionValueSkip = 'z:1:Transformer:Iterable.skip';
   static const String unionValueTake = 'z:1:Transformer:Iterable.take';
+  static const String unionValueFromFlutterWidget =
+      'z:1:Transformer:Iterable<FlutterWidget>.from';
 
   factory IterableTransformer.fromJson(Map<String, dynamic> json) =>
       _$IterableTransformerFromJson(json);
@@ -318,7 +321,8 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.getValue(zacContext)),
+      contains: (obj) => value.contains(obj.element
+          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -331,6 +335,8 @@ The value: $value
 class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.reversed';
+  static const String unionValueFromFlutterWidget =
+      'z:1:Transformer:List<FlutterWidget>.from';
 
   factory ListTransformer.fromJson(Map<String, dynamic> json) =>
       _$ListTransformerFromJson(json);
@@ -338,6 +344,9 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(ListTransformer.unionValue)
   const factory ListTransformer.reversed() = _ListReversed;
+
+  @FreezedUnionValue(ListTransformer.unionValueFromFlutterWidget)
+  const factory ListTransformer.fromFlutterWidget() = _ListFromFlutterWidget;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -353,6 +362,7 @@ The value: $value
 
     return map(
       reversed: (_) => value.reversed,
+      fromFlutterWidget: (_) => List<FlutterWidget>.from(value),
     );
   }
 }
@@ -394,7 +404,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacValueOrRead<Object?> value,
+    required ZacValue<Object?> value,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -405,7 +415,10 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isList: (_) => value is List,
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
-      equalsSharedValue: (obj) => obj.value.getValue(zacContext) == value,
+      equalsSharedValue: (obj) =>
+          obj.value
+              .getValue(zacContext, prefered: ZacValuePreferedConsume.read) ==
+          value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
       toString: (_) => value.toString(),
@@ -599,12 +612,15 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.getValue(zacContext)),
+      split: (obj) => value.split(obj.pattern
+          .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.getValue(zacContext)),
-          obj.replace.getValue(zacContext)),
+          RegExp(obj.from
+              .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          obj.replace
+              .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
     );
   }
 }

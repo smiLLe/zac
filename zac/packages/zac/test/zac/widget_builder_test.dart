@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/widget.dart';
 
 import '../flutter/models.dart';
@@ -170,7 +170,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacValueConsume<Object>.watch(family: 'ZacWidget.error')
+          ZacValue<Object>.consume(family: 'ZacWidget.error')
               .getValue(zacContext),
           isNotNull);
     });
@@ -238,7 +238,7 @@ void main() {
       await tester.pump();
       expect(find.byKey(const ValueKey('ERROR')), findsOneWidget);
       expect(
-          ZacValueConsume<Object>.watch(family: 'ZacWidget.error')
+          ZacValue<Object>.consume(family: 'ZacWidget.error')
               .getValue(zacContext),
           isNotNull);
     });

@@ -8,7 +8,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';

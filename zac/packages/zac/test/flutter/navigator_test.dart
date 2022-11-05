@@ -24,11 +24,10 @@ void main() {
     expect(
         ConverterHelper.convertToType<FlutterNavigatorState>({
           'converter': 'z:1:NavigatorState.shared',
-          'value': {'converter': 'z:1:ZacValue.watch', 'family': 'foo'}
+          'value': {'converter': 'z:1:ZacValue.consume', 'family': 'foo'}
         }),
         FlutterNavigatorState.shared(
-            value: ZacValueConsume<GlobalKey<NavigatorState>>.watch(
-                family: 'foo')));
+            value: ZacValue<GlobalKey<NavigatorState>>.consume(family: 'foo')));
   });
 
   group('ZacFlutterGlobalKeyNavigatorState', () {

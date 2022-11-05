@@ -4,7 +4,7 @@ import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/state_machine.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/flutter/refresh_indicator.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -88,7 +88,6 @@ Map<String, Convert> allConverters = const {
   SharedValueConsumeType.unionValue: SharedValueConsumeType.fromJson,
   SharedValueConsumeType.unionValueRead: SharedValueConsumeType.fromJson,
   SharedValueActions.unionValue: SharedValueActions.fromJson,
-  SharedValueActions.unionValueReplaceWith: SharedValueActions.fromJson,
   ConvertTransformer.unionValue: ConvertTransformer.fromJson,
   IterableTransformer.unionValue: IterableTransformer.fromJson,
   IterableTransformer.unionValueSingle: IterableTransformer.fromJson,
@@ -106,6 +105,7 @@ Map<String, Convert> allConverters = const {
   IterableTransformer.unionValueSkip: IterableTransformer.fromJson,
   IterableTransformer.unionValueTake: IterableTransformer.fromJson,
   ListTransformer.unionValue: ListTransformer.fromJson,
+  ListTransformer.unionValueFromFlutterWidget: ListTransformer.fromJson,
   MapTransformer.unionValue: MapTransformer.fromJson,
   MapTransformer.unionValueKeys: MapTransformer.fromJson,
   MapTransformer.unionValueEntries: MapTransformer.fromJson,

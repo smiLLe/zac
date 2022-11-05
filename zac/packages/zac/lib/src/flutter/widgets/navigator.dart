@@ -1,7 +1,7 @@
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
@@ -39,7 +39,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
   @FreezedUnionValue(FlutterNavigatorState.unionValueRoot)
   factory FlutterNavigatorState.root() = _ZacNavigatorStateRoot;
 
-  @FreezedUnionValue(FlutterNavigatorState.unionValueRoot)
+  @FreezedUnionValue(FlutterNavigatorState.unionValueShared)
   factory FlutterNavigatorState.shared({
     required ZacValue<GlobalKey<NavigatorState>> value,
   }) = _ZacNavigatorStateSharedValue;

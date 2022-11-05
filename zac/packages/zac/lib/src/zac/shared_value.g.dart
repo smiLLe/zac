@@ -10,19 +10,13 @@ _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueActionsUpdate(
       family: json['family'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
-    );
-
-_$_SharedValueActionsReplaceWith _$$_SharedValueActionsReplaceWithFromJson(
-        Map<String, dynamic> json) =>
-    _$_SharedValueActionsReplaceWith(
-      family: json['family'] as Object,
-      value: ZacValue<Object>.fromJson(json['value'] as Object),
       transformer: json['transformer'] == null
           ? null
           : ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
+      itemTransformer: json['itemTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+      ifNoPayloadTakeCurrent: json['ifNoPayloadTakeCurrent'] as bool? ?? false,
     );
 
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
@@ -50,6 +44,9 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
       transformer: json['transformer'] == null
           ? null
           : ZacTransformers.fromJson(json['transformer'] as Object),
+      itemTransformer: json['itemTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
       family: json['family'] as Object,
       child: FlutterWidget.fromJson(json['child'] as Object),
       autoCreate: json['autoCreate'] as bool? ?? false,

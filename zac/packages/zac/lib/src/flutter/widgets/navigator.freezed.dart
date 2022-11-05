@@ -21,7 +21,7 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
       return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
       return _ZacNavigatorStateRoot.fromJson(json);
-    case 'f:1:NavigatorState.root':
+    case 'z:1:NavigatorState.shared':
       return _ZacNavigatorStateSharedValue.fromJson(json);
 
     default:
@@ -140,7 +140,7 @@ abstract class _ZacNavigatorStateRoot extends FlutterNavigatorState {
 @JsonSerializable(createToJson: false)
 class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
   _$_ZacNavigatorStateSharedValue({required this.value, final String? $type})
-      : $type = $type ?? 'f:1:NavigatorState.root',
+      : $type = $type ?? 'z:1:NavigatorState.shared',
         super._();
 
   factory _$_ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =>

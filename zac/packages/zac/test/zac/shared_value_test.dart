@@ -6,7 +6,7 @@ import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -91,6 +91,42 @@ void main() {
         obj,
         isSharedValue(isA<FlutterSizedBox>()),
       );
+    });
+
+    testWidgets('apply itemTransformer on List', (tester) async {
+      late dynamic obj;
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: ['foo', 'a'],
+          itemTransformer: ZacTransformers([const StringTransformer.length()]),
+          family: 'shared',
+          child: LeakContext(cb: (zacContext) {
+            obj = zacContext.ref.watch(SharedValue.provider('shared'));
+          }),
+        ),
+      );
+
+      expect(obj, [3, 1]);
+    });
+
+    testWidgets('apply itemTransformer on Map', (tester) async {
+      late dynamic obj;
+
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: {'foo': 'a'},
+          itemTransformer: ZacTransformers([const StringTransformer.length()]),
+          family: 'shared',
+          child: LeakContext(cb: (zacContext) {
+            obj = zacContext.ref.watch(SharedValue.provider('shared'));
+          }),
+        ),
+      );
+
+      expect(obj, {'foo': 1});
     });
 
     testWidgets('nested', (tester) async {
@@ -236,23 +272,31 @@ void main() {
     });
   });
 
-  group('actions', () {
+  group('SharedValueActions', () {
     test('fromJson', () {
-      ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
-        'converter': 'z:1:SharedValue.update',
-        'family': 'fam',
-        'transformer': <ZacTransformer>[],
-      });
+      expect(
+          ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
+            'converter': 'z:1:SharedValue.update',
+            'family': 'fam',
+            'transformer': <ZacTransformer>[],
+          }),
+          SharedValueActions.update(
+            family: 'fam',
+            ifNoPayloadTakeCurrent: false,
+            transformer: ZacTransformers([]),
+          ));
 
-      ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
-        'converter': 'z:1:SharedValue.replaceWith',
-        'family': 'fam',
-        'value': 1,
-        'transformer': <ZacTransformer>[],
-      });
+      expect(
+          ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
+            'converter': 'z:1:SharedValue.update',
+            'family': 'fam',
+            'ifNoPayloadTakeCurrent': true,
+          }),
+          SharedValueActions.update(
+              family: 'fam', ifNoPayloadTakeCurrent: true));
     });
-    testWidgets(
-        'update the SharedValue by updating/tranforming its current value',
+
+    testWidgets('may update the SharedValue if no payload is present',
         (tester) async {
       await testZacWidget(
         tester,
@@ -261,12 +305,52 @@ void main() {
           family: 'family',
           child: FlutterColumn(
             children: ZacValueList<FlutterWidget>.fromJson([
-              FlutterText(ZacValueConsume<String>.watch(family: 'family')),
+              FlutterText(
+                ZacValue<String>.consume(
+                  family: 'family',
+                  transformer: ZacTransformers([
+                    CustomTransformer(
+                      (transformValue, zacContext, payload) {
+                        if (null == transformValue.value) return 'IS NULL';
+                        return transformValue.value;
+                      },
+                    )
+                  ]),
+                ),
+              ),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
-                  SharedValueActions(
+                  SharedValueActions.update(family: 'family'),
+                ]),
+              ),
+            ]),
+          ),
+        ),
+      );
+      expect(find.text('foo'), findsOneWidget);
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('IS NULL'), findsOneWidget);
+    });
+
+    testWidgets(
+        'may update the SharedValue by using its current value if no payload is present',
+        (tester) async {
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'foo',
+          family: 'family',
+          child: FlutterColumn(
+            children: ZacValueList<FlutterWidget>.fromJson([
+              FlutterText(ZacValue<String>.consume(family: 'family')),
+              ZacExecuteActionsBuilder.once(
+                actions: ZacActions([
+                  SharedValueActions.update(
                     family: 'family',
                     transformer: ZacTransformers([_ConcatStr('oof')]),
+                    ifNoPayloadTakeCurrent: true,
                   ),
                 ]),
               ),
@@ -280,33 +364,173 @@ void main() {
       expect(find.text('foooof'), findsOneWidget);
     });
 
-    testWidgets('replace the value of the SharedValue with another value',
+    testWidgets(
+        'may transform child items in a List before updating the SharedValue',
         (tester) async {
       await testZacWidget(
         tester,
         SharedValueProviderBuilder(
-          value: 'foo',
+          value: ['a', 'b'],
           family: 'family',
           child: FlutterColumn(
             children: ZacValueList<FlutterWidget>.fromJson([
-              FlutterText(ZacValueConsume<String>.watch(family: 'family')),
+              FlutterText(ZacValue<String>.consume(
+                family: 'family',
+                transformer: ZacTransformers(
+                    [const IterableTransformer.join(separator: ', ')]),
+              )),
               ZacExecuteActionsBuilder.once(
                 actions: ZacActions([
-                  SharedValueActions.replaceWith(
+                  SharedValueActions.update(
                     family: 'family',
-                    value: ZacValue<Object>.fromJson('bar'),
+                    itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+                    ifNoPayloadTakeCurrent: true,
                   ),
                 ]),
-                child: FlutterSizedBox(),
               ),
             ]),
           ),
         ),
       );
 
+      expect(find.text('a, b'), findsOneWidget);
       await tester.pumpAndSettle();
 
-      expect(find.text('bar'), findsOneWidget);
+      expect(find.text('afoo, bfoo'), findsOneWidget);
+    });
+
+    testWidgets(
+        'may transform child items in a List before updating the SharedValue from payload',
+        (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          /// this value is not relevant for this test because the action will
+          /// provide a new value
+          value: ['ignore'],
+          family: 'family',
+          child: FlutterColumn(
+            children: ZacValueList<FlutterWidget>.fromJson([
+              FlutterText(ZacValue<String>.consume(
+                family: 'family',
+                transformer: ZacTransformers(
+                    [const IterableTransformer.join(separator: ', ')]),
+              )),
+              LeakContext(cb: (c) => zacContext = c),
+            ]),
+          ),
+        ),
+      );
+
+      ZacActions([
+        SharedValueActions.update(
+          family: 'family',
+          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+        ),
+      ]).execute(
+        ZacActionPayload.param(['a', 'b']),
+        zacContext,
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('afoo, bfoo'), findsOneWidget);
+    });
+
+    testWidgets(
+        'may transform child items in a List before updating the SharedValue from payload with two params',
+        (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          /// this value is not relevant for this test because the action will
+          /// provide a new value
+          value: [
+            ['ignore'],
+            ['ignore']
+          ],
+          family: 'family',
+          child: FlutterColumn(
+            children: ZacValueList<FlutterWidget>.fromJson([
+              FlutterText(ZacValue<String>.consume(
+                family: 'family',
+                transformer: ZacTransformers([
+                  const IterableTransformer.first(),
+                  const IterableTransformer.join(separator: ', ')
+                ]),
+              )),
+              FlutterText(ZacValue<String>.consume(
+                family: 'family',
+                transformer: ZacTransformers([
+                  const IterableTransformer.last(),
+                  const IterableTransformer.join(separator: ', ')
+                ]),
+              )),
+              LeakContext(cb: (c) => zacContext = c),
+            ]),
+          ),
+        ),
+      );
+
+      ZacActions([
+        SharedValueActions.update(
+          family: 'family',
+          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+        ),
+      ]).execute(
+        ZacActionPayload.param2(['a', 'b'], ['c', 'd']),
+        zacContext,
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('afoo, bfoo'), findsOneWidget);
+      expect(find.text('cfoo, dfoo'), findsOneWidget);
+    });
+
+    testWidgets(
+        'may transform value items in a Map before updating the SharedValue from payload',
+        (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          /// this value is not relevant for this test because the action will
+          /// provide a new value
+          value: {'ignore': 'ignore'},
+          family: 'family',
+          child: FlutterColumn(
+            children: ZacValueList<FlutterWidget>.fromJson([
+              FlutterText(ZacValue<String>.consume(
+                family: 'family',
+                transformer: ZacTransformers([
+                  const MapTransformer.values(),
+                  const IterableTransformer.join(separator: ', ')
+                ]),
+              )),
+              LeakContext(cb: (c) => zacContext = c),
+            ]),
+          ),
+        ),
+      );
+
+      ZacActions([
+        SharedValueActions.update(
+          family: 'family',
+          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+        ),
+      ]).execute(
+        ZacActionPayload.param(
+          {'ignore': 'a', 'ignore2': 'b'},
+        ),
+        zacContext,
+      );
+
+      await tester.pumpAndSettle();
+
+      expect(find.text('afoo, bfoo'), findsOneWidget);
     });
   });
 

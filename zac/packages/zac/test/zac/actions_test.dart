@@ -80,6 +80,13 @@ void main() {
     expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
   });
 
+  test('ActionPayload can expose the values as list', () {
+    expect(const ZacActionPayload().paramsAsList, <Object?>[]);
+    expect(ZacActionPayload.param('foo').paramsAsList, <Object?>['foo']);
+    expect(ZacActionPayload.param2('foo', 'bar').paramsAsList,
+        <Object?>['foo', 'bar']);
+  });
+
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{

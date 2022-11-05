@@ -171,7 +171,15 @@ _$_IterableTake _$$_IterableTakeFromJson(Map<String, dynamic> json) =>
     );
 
 _$_ListReversed _$$_ListReversedFromJson(Map<String, dynamic> json) =>
-    _$_ListReversed();
+    _$_ListReversed(
+      $type: json['converter'] as String?,
+    );
+
+_$_ListFromFlutterWidget _$$_ListFromFlutterWidgetFromJson(
+        Map<String, dynamic> json) =>
+    _$_ListFromFlutterWidget(
+      $type: json['converter'] as String?,
+    );
 
 _$_ObjectIsList _$$_ObjectIsListFromJson(Map<String, dynamic> json) =>
     _$_ObjectIsList(
@@ -207,7 +215,7 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      value: ZacValueOrRead<Object?>.fromJson(json['value'] as Object),
+      value: ZacValue<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

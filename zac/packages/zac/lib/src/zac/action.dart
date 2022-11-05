@@ -36,6 +36,11 @@ class ZacActionPayload with _$ZacActionPayload {
         param: (obj) => obj.value,
         param2: (obj) => [obj.first, obj.second],
       );
+  List<Object?> get paramsAsList => map(
+        (_) => [],
+        param: (obj) => [obj.value],
+        param2: (obj) => [obj.first, obj.second],
+      );
 }
 
 @defaultConverterFreezed

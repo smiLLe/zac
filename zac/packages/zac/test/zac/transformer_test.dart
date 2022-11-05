@@ -1,8 +1,9 @@
+import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -378,6 +379,26 @@ void main() {
 
       expect(
           () => const ListTransformer.reversed()
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.List<FlutterWidget>.from', () {
+      _expectFromJson<ListTransformer>(
+        fromJson: ListTransformer.fromJson,
+        converter: 'z:1:Transformer:List<FlutterWidget>.from',
+        equals: const ListTransformer.fromFlutterWidget(),
+      );
+
+      expect(
+          const ListTransformer.fromFlutterWidget().transform(
+              ZacTransformValue(<Object?>[FlutterSizedBox()]),
+              FakeZacOrigin(),
+              null),
+          isA<List<FlutterWidget>>());
+
+      expect(
+          () => const ListTransformer.fromFlutterWidget()
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
@@ -804,10 +825,10 @@ void main() {
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
           equals: ObjectTransformer.equalsSharedValue(
-              value: ZacValueConsume<Object?>.read(family: 'shared')),
+              value: ZacValue<Object?>.consume(family: 'shared')),
           props: <String, dynamic>{
             'value': {
-              'converter': 'z:1:ZacValue.read',
+              'converter': 'z:1:ZacValue.consume',
               'family': 'shared',
             }
           },
@@ -833,13 +854,13 @@ void main() {
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValueConsume<Object?>.watch(family: 'shared'))
+                    value: ZacValue<Object?>.consume(family: 'shared'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValueConsume<Object?>.watch(family: 'shared2'))
+                    value: ZacValue<Object?>.consume(family: 'shared2'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isFalse);
       });

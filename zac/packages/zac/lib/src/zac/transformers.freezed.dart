@@ -2059,7 +2059,16 @@ abstract class _IterableTake extends IterableTransformer {
 }
 
 ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
-  return _ListReversed.fromJson(json);
+  switch (json['converter']) {
+    case 'z:1:Transformer:List.reversed':
+      return _ListReversed.fromJson(json);
+    case 'z:1:Transformer:List<FlutterWidget>.from':
+      return _ListFromFlutterWidget.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'converter', 'ListTransformer',
+          'Invalid union type "${json['converter']}"!');
+  }
 }
 
 /// @nodoc
@@ -2067,6 +2076,7 @@ mixin _$ListTransformer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
+    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -2074,10 +2084,15 @@ mixin _$ListTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ListReversed extends _ListReversed {
-  const _$_ListReversed() : super._();
+  const _$_ListReversed({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:List.reversed',
+        super._();
 
   factory _$_ListReversed.fromJson(Map<String, dynamic> json) =>
       _$$_ListReversedFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
 
   @override
   String toString() {
@@ -2098,6 +2113,7 @@ class _$_ListReversed extends _ListReversed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
+    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
   }) {
     return reversed(this);
   }
@@ -2109,6 +2125,52 @@ abstract class _ListReversed extends ListTransformer {
 
   factory _ListReversed.fromJson(Map<String, dynamic> json) =
       _$_ListReversed.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ListFromFlutterWidget extends _ListFromFlutterWidget {
+  const _$_ListFromFlutterWidget({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:List<FlutterWidget>.from',
+        super._();
+
+  factory _$_ListFromFlutterWidget.fromJson(Map<String, dynamic> json) =>
+      _$$_ListFromFlutterWidgetFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ListTransformer.fromFlutterWidget()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ListFromFlutterWidget);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ListReversed value) reversed,
+    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
+  }) {
+    return fromFlutterWidget(this);
+  }
+}
+
+abstract class _ListFromFlutterWidget extends ListTransformer {
+  const factory _ListFromFlutterWidget() = _$_ListFromFlutterWidget;
+  const _ListFromFlutterWidget._() : super._();
+
+  factory _ListFromFlutterWidget.fromJson(Map<String, dynamic> json) =
+      _$_ListFromFlutterWidget.fromJson;
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
@@ -2474,7 +2536,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final ZacValueOrRead<Object?> value;
+  final ZacValue<Object?> value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2512,15 +2574,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
 }
 
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
-  factory _ObjectEqualsSharedValue(
-          {required final ZacValueOrRead<Object?> value}) =
+  factory _ObjectEqualsSharedValue({required final ZacValue<Object?> value}) =
       _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  ZacValueOrRead<Object?> get value;
+  ZacValue<Object?> get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

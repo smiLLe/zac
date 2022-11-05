@@ -6,7 +6,7 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/zac/zac_values.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -44,7 +44,7 @@ void main() {
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey:
-                ZacValueConsume<GlobalKey<NavigatorState>>.watch(family: 'foo'),
+                ZacValue<GlobalKey<NavigatorState>>.consume(family: 'foo'),
             home: LeakContext(cb: (o) => zacContext = o),
           ),
         ),

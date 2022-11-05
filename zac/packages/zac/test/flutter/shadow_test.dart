@@ -28,7 +28,7 @@ void main() {
 
   test('BoxShadow', () {
     fakeBuild<Shadow>(
-      FlutterShadow.fromJson(<String, dynamic>{
+      FlutterBoxShadow.fromJson(<String, dynamic>{
         'converter': FlutterBoxShadow.unionValue,
         ...BoxShadowModel.json,
       }).build,
