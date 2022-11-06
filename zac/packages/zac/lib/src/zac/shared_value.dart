@@ -236,9 +236,9 @@ class SharedValueProvider extends StatelessWidget {
     return ZacUpdateContext(
       builder: (zacContext) => ProviderScope(
         overrides: [
-          SharedValue.provider(family).overrideWithProvider(
-              AutoDisposeStateProvider<SharedValueType>(
-                  (ref) => valueBuilder(ref, zacContext))),
+          SharedValue.provider(family).overrideWith(
+            (ref) => valueBuilder(ref, zacContext),
+          ),
         ],
         child: ZacUpdateContext(
           builder: !autoCreate
