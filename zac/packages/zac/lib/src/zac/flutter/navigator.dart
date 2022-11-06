@@ -88,7 +88,8 @@ class ZacFlutterNavigatorActions
     if (null == state) return;
 
     /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-    state.popUntil(ModalRoute.withName(routeName.getValue(zacContext)));
+    state.popUntil(ModalRoute.withName(routeName.getValue(zacContext,
+        prefered: ZacValuePreferedConsume.read)));
   }
 }
 

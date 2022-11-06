@@ -188,20 +188,25 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   }) = _FlutterDialogActionsShowDialog;
 
   @override
-  FutureOr<ZacActions?> execute(
-      ZacActionPayload payload, ZacContext zacContext) {
-    return map(
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
+    map(
       showDialog: (value) => showDialog<ZacActions?>(
         context: zacContext.context,
         builder: (_) =>
             FlutterBuilder(child: value.child).buildWidget(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),
-        barrierDismissible:
-            value.barrierDismissible?.getValue(zacContext) ?? true,
+        barrierDismissible: value.barrierDismissible?.getValue(zacContext,
+                prefered: ZacValuePreferedConsume.read) ??
+            true,
         barrierColor: value.barrierColor?.build(zacContext),
-        barrierLabel: value.barrierLabel?.getValue(zacContext),
-        useSafeArea: value.useSafeArea?.getValue(zacContext) ?? true,
-        useRootNavigator: value.useRootNavigator?.getValue(zacContext) ?? true,
+        barrierLabel: value.barrierLabel
+            ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+        useSafeArea: value.useSafeArea?.getValue(zacContext,
+                prefered: ZacValuePreferedConsume.read) ??
+            true,
+        useRootNavigator: value.useRootNavigator?.getValue(zacContext,
+                prefered: ZacValuePreferedConsume.read) ??
+            true,
       ),
     );
   }
