@@ -112,9 +112,30 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
           return '$name${opt()}';
         }
 
-        return '$name<${type.typeArguments.map((subType) {
+        final mappedTypes = type.typeArguments.map((subType) {
           return mapDartTypeToTypescript(allFiles, subType, depth + 1);
-        }).join(',')}>${opt()}';
+        });
+
+        /// This will map a f.e. ZacValue<double>
+        /// to Typescript: ZacValue<DartDouble> | DartDouble
+        if ('ZacValue' == name || 'ZacValueList' == name) {
+          late String unionTypes;
+          switch (name) {
+            case 'ZacValue':
+              unionTypes = mappedTypes.join(' | ');
+              break;
+            case 'ZacValueList':
+              unionTypes = 'Array<${mappedTypes.join(' | ')}>';
+              break;
+            default:
+              throw Error();
+          }
+          final zacValueTypes = mappedTypes.join(',');
+
+          return '$name<$zacValueTypes> | $unionTypes${opt()}';
+        }
+
+        return '$name<${mappedTypes.join(',')}>${opt()}';
       }
       return 'any';
   }
