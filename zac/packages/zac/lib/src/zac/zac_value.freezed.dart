@@ -185,9 +185,9 @@ abstract class _ZacValueConsume<T> extends ZacValue<T> {
 
 ZacValueList<T> _$ZacValueListFromJson<T>(Map<String, dynamic> json) {
   switch (json['converter']) {
-    case 'z:1:ZacValue':
+    case 'z:1:ZacValueList':
       return _ZacValueList<T>.fromJson(json);
-    case 'z:1:ZacValue.consume':
+    case 'z:1:ZacValueList.consume':
       return _ZacValueListConsume<T>.fromJson(json);
 
     default:
@@ -216,7 +216,7 @@ class _$_ZacValueList<T> extends _ZacValueList<T> {
       this.transformer,
       final String? $type})
       : _values = values,
-        $type = $type ?? 'z:1:ZacValue',
+        $type = $type ?? 'z:1:ZacValueList',
         super._();
 
   factory _$_ZacValueList.fromJson(Map<String, dynamic> json) =>
@@ -288,7 +288,7 @@ class _$_ZacValueListConsume<T> extends _ZacValueListConsume<T> {
       this.select,
       this.forceConsume,
       final String? $type})
-      : $type = $type ?? 'z:1:ZacValue.consume',
+      : $type = $type ?? 'z:1:ZacValueList.consume',
         super._();
 
   factory _$_ZacValueListConsume.fromJson(Map<String, dynamic> json) =>

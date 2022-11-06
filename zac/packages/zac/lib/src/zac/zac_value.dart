@@ -12,9 +12,6 @@ part 'zac_value.g.dart';
 
 Type _typeOf<T>() => T;
 
-const zacValueConverter = 'z:1:ZacValue';
-const zacValueConverterConsume = 'z:1:ZacValue.consume';
-
 enum ZacValuePreferedConsume { watch, read }
 
 extension _XZacValue<T> on _ZacValue<T> {
@@ -31,23 +28,25 @@ extension ZacValueListFlutterWidget on ZacValueList<FlutterWidget> {
 class ZacValue<T> with _$ZacValue<T> {
   const ZacValue._();
 
+  static const String unionValue = 'z:1:ZacValue';
+  static const String unionValueConsume = 'z:1:ZacValue.consume';
+
   factory ZacValue.fromJson(Object? data) {
     late Map<String, dynamic> json;
     if (ConverterHelper.isConverter(data) &&
-        [zacValueConverter, zacValueConverterConsume]
+        [ZacValue.unionValue, ZacValue.unionValueConsume]
             .contains((data as Map<String, dynamic>)[converterKey] as String)) {
       json = data;
     } else {
       json = <String, dynamic>{
-        'converter': zacValueConverter,
+        'converter': ZacValue.unionValue,
         'value': data,
       };
     }
 
-    /// we don't have Map or List gerneric types so we ignore the mapping.
-    /// This will also ignore converting Map into f.e. FlutterWidget,
-    /// so having a simple Map value is still possible.
-    if (json[converterKey] == zacValueConverter && T != Map && T != List) {
+    /// List or Map values should not map their items and the items should remain
+    /// dynamic/Object?.
+    if (json[converterKey] == ZacValue.unionValue && T != Map && T != List) {
       json['value'] = _mapValue<T>(data: json['value']);
     }
 
@@ -66,13 +65,13 @@ $json''');
     return zacValue;
   }
 
-  @FreezedUnionValue(zacValueConverter)
+  @FreezedUnionValue(ZacValue.unionValue)
   factory ZacValue({
     required Object? value,
     ZacTransformers? transformer,
   }) = _ZacValue<T>;
 
-  @FreezedUnionValue(zacValueConverterConsume)
+  @FreezedUnionValue(ZacValue.unionValueConsume)
   factory ZacValue.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -190,19 +189,22 @@ $consumedValue
 class ZacValueList<T> with _$ZacValueList<T> {
   const ZacValueList._();
 
+  static const String unionValue = 'z:1:ZacValueList';
+  static const String unionValueConsume = 'z:1:ZacValueList.consume';
+
   factory ZacValueList.fromJson(Object? data) {
     late Map<String, dynamic> json;
     if (data is List) {
       json = <String, dynamic>{
-        'converter': zacValueConverter,
+        'converter': ZacValueList.unionValue,
         'values': List<Object?>.from(data),
       };
     } else if (ConverterHelper.isConverter(data) &&
-        [zacValueConverter, zacValueConverterConsume]
+        [ZacValueList.unionValue, ZacValueList.unionValueConsume]
             .contains((data as Map<String, dynamic>)[converterKey] as String)) {
       json = data;
 
-      if (json[converterKey] == zacValueConverter) {
+      if (json[converterKey] == ZacValueList.unionValue) {
         if (json['values'] is! List) {
           throw StateError(
               'The values property in ${_typeOf<ZacValueList<T>>()} was no List: $json');
@@ -214,7 +216,7 @@ class ZacValueList<T> with _$ZacValueList<T> {
           'Unsupported type in ${_typeOf<ZacValueList<T>>()}. $data');
     }
 
-    if (json[converterKey] == zacValueConverter) {
+    if (json[converterKey] == ZacValueList.unionValue) {
       json['values'] = (json['values'] as List<Object?>)
           .map<Object?>((Object? e) => _mapValue<T>(data: e))
           .toList();
@@ -240,13 +242,13 @@ $json''');
     return zacValueList;
   }
 
-  @FreezedUnionValue(zacValueConverter)
+  @FreezedUnionValue(ZacValueList.unionValue)
   factory ZacValueList({
     required List<Object?> values,
     ZacTransformers? transformer,
   }) = _ZacValueList<T>;
 
-  @FreezedUnionValue(zacValueConverterConsume)
+  @FreezedUnionValue(ZacValueList.unionValueConsume)
   factory ZacValueList.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,

@@ -371,12 +371,17 @@ void main() {
 
     expect(
         ZacValueList<FlutterSizedBox>.fromJson({
-          'converter': 'z:1:ZacValue',
+          'converter': 'z:1:ZacValueList',
           'values': [
             {'converter': 'f:1:SizedBox'}
           ]
         }),
         ZacValueList<FlutterSizedBox>(values: [FlutterSizedBox()]));
+
+    expect(
+        ZacValueList<String>.fromJson(
+            {'converter': 'z:1:ZacValueList.consume', 'family': 'fam'}),
+        ZacValueList<String>.consume(family: 'fam'));
 
     expect(
         () => ZacValueList<bool>.fromJson(false),
@@ -399,7 +404,7 @@ void main() {
             (p0) => p0.message,
             'error message',
             contains(
-                'It was not possible to create a "ZacValueList<int>" from "z:1:ZacValue".'))));
+                'It was not possible to create a "ZacValueList<int>" from "z:1:ZacValueList".'))));
   });
 
   group('Consume SharedValue as ZacValueList', () {
