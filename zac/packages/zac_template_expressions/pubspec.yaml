@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   template_expressions: ^1.1.6+2
+  json_annotation: ^4.6.0
   zac:
 
 dev_dependencies:

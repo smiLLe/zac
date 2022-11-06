@@ -50,7 +50,7 @@ void main() {
         expression: 'expr',
         context: {
           'simple': ZacValue<Object>.fromJson(1),
-          'shared': ZacValueConsume<Object>.read(family: 'fam'),
+          'shared': ZacValue<Object>.consume(family: 'fam'),
         },
       ),
       props: <String, dynamic>{
@@ -58,7 +58,7 @@ void main() {
         'context': {
           'simple': 1,
           'shared': {
-            'converter': 'z:1:ZacValue.read',
+            'converter': 'z:1:ZacValue.consume',
             'family': 'fam',
           },
         },
