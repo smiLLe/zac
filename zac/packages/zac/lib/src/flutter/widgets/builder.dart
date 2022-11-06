@@ -10,7 +10,7 @@ part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   const FlutterBuilder._();
 

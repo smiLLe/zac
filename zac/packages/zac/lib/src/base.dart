@@ -3,21 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 
-const tsOrderLast = 10000;
-const tsOrderFlutterWidget = 9999;
-const tsOrderZacWidget = 9998;
-const tsOrderDartClasses = 9002;
-const tsOrderDartFoundation = 9001;
-const tsOrderDartUi = 9000;
-const tsOrderFlutterAbstractsB = 8501;
-const tsOrderFlutterAbstractsA = 8500;
-
-class TsClass {
-  const TsClass({int? order}) : order = order ?? tsOrderLast;
-
-  final int order;
-}
-
 // ignore: constant_identifier_names
 const defaultConverterFreezed = Freezed(
   fromJson: true,
@@ -36,7 +21,7 @@ const nonConverterFreezed = Freezed(
   copyWith: false,
 );
 
-@TsClass(order: tsOrderFlutterAbstractsA)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class FlutterWidget {
   factory FlutterWidget.fromJson(Object data) =>
       ConverterHelper.convertToType<FlutterWidget>(data);
@@ -56,4 +41,21 @@ Object mapConsumeUnion(String other, Object map) {
     return m;
   }
   return map;
+}
+
+const zacGenerateOrderLast = 10000;
+const zacGenerateOrderFlutterWidget = 9999;
+const zacGenerateOrderZacWidget = 9998;
+const zacGenerateOrderDartClasses = 9002;
+const zacGenerateOrderDartFoundation = 9001;
+const zacGenerateOrderDartUi = 9000;
+const zacGenerateOrderFlutterAbstractsB = 8501;
+const zacGenerateOrderFlutterAbstractsA = 8500;
+
+/// Annotation class for Builders or other classes in order to create
+/// zac libraries or other helper classes
+class ZacGenerate {
+  const ZacGenerate({int? order}) : order = order ?? zacGenerateOrderLast;
+
+  final int order;
 }

@@ -10,7 +10,7 @@ part 'services.freezed.dart';
 part 'services.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
   const FlutterSystemUiOverlayStyle._();
 
@@ -48,7 +48,7 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextInputType with _$FlutterTextInputType {
   const FlutterTextInputType._();
 
@@ -99,7 +99,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextInputAction with _$FlutterTextInputAction {
   const FlutterTextInputAction._();
 
@@ -156,7 +156,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextCapitalization with _$FlutterTextCapitalization {
   const FlutterTextCapitalization._();
 
@@ -185,7 +185,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSmartDashesType with _$FlutterSmartDashesType {
   const FlutterSmartDashesType._();
 
@@ -207,7 +207,7 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartClasses)
+@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   const FlutterSmartQuotesType._();
 

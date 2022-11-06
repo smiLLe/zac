@@ -14,7 +14,7 @@ part 'list_view.freezed.dart';
 part 'list_view.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListView with _$FlutterListView implements FlutterWidget {
   const FlutterListView._();
 

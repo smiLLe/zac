@@ -9,6 +9,8 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:args/args.dart';
 
+const String classAnnotation = 'ZacGenerate';
+
 void main(List<String> args) async {
   final parser = ArgParser();
   late final List<String> paths;
@@ -187,7 +189,7 @@ class OneFile {
                   .computeConstantValue()
                   ?.type
                   ?.getDisplayString(withNullability: false) ==
-              'TsClass')
+              classAnnotation)
           .isNotEmpty);
 
   late final Iterable<TsAbstractClass> abstracts = tsClasses
@@ -203,7 +205,8 @@ class TsAbstractClass {
     final o = element.metadata
         .map((e) => e.computeConstantValue())
         .where((e) =>
-            e?.type?.getDisplayString(withNullability: false) == 'TsClass')
+            e?.type?.getDisplayString(withNullability: false) ==
+            classAnnotation)
         .map((e) => e?.getField('order')?.toIntValue())
         .first;
     if (null == o) {

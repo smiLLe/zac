@@ -12,7 +12,7 @@ part 'gesture_detector.freezed.dart';
 part 'gesture_detector.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGestureDetector
     with _$FlutterGestureDetector
     implements FlutterWidget {

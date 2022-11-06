@@ -14,7 +14,7 @@ part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   const FlutterGridView._();
 

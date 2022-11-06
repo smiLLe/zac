@@ -9,7 +9,7 @@ part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterConstrainedBox
     with _$FlutterConstrainedBox
     implements FlutterWidget {

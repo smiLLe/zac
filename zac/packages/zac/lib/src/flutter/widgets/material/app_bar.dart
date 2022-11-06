@@ -14,7 +14,7 @@ part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   const FlutterAppBar._();
 

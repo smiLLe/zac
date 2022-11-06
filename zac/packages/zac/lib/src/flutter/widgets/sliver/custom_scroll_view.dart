@@ -13,7 +13,7 @@ part 'custom_scroll_view.freezed.dart';
 part 'custom_scroll_view.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView
     implements FlutterWidget {

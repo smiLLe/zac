@@ -11,7 +11,7 @@ part 'image.freezed.dart';
 part 'image.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterImage with _$FlutterImage implements FlutterWidget {
   const FlutterImage._();
 

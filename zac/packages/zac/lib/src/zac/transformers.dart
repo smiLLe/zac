@@ -26,7 +26,7 @@ class ZacTransformValue with _$ZacTransformValue {
   ]) = _ZacTransformValue;
 }
 
-@TsClass()
+@ZacGenerate()
 abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);
@@ -36,7 +36,7 @@ abstract class ZacTransformer {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacTransformers with _$ZacTransformers {
   const ZacTransformers._();
 
@@ -80,7 +80,7 @@ class ZacTransformers with _$ZacTransformers {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   const ConvertTransformer._();
   static const String unionValue = 'z:1:Transformer:Converter';
@@ -100,7 +100,7 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class MapTransformer with _$MapTransformer implements ZacTransformer {
   const MapTransformer._();
   static const String unionValue = 'z:1:Transformer:Map.values';
@@ -220,7 +220,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const IterableTransformer._();
   static const String unionValue = 'z:1:Transformer:Iterable.map';
@@ -331,7 +331,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.reversed';
@@ -368,7 +368,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
   static const String unionValue = 'z:1:Transformer:Object.isList';
@@ -427,7 +427,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class NumTransformer with _$NumTransformer implements ZacTransformer {
   const NumTransformer._();
   static const String unionValue = 'z:1:Transformer:num.toDouble';
@@ -520,7 +520,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class IntTransformer with _$IntTransformer implements ZacTransformer {
   const IntTransformer._();
   static const String unionValue = 'z:1:Transformer:int.parse';
@@ -567,7 +567,7 @@ Value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class StringTransformer with _$StringTransformer implements ZacTransformer {
   const StringTransformer._();
   static const String unionValue = 'z:1:Transformer:String.length';
@@ -626,7 +626,7 @@ The value: $value
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const JsonTransformer._();
   static const String unionValue = 'z:1:Transformer:Json.encode';

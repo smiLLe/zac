@@ -5,7 +5,7 @@ part 'ts_test.freezed.dart';
 part 'ts_test.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderLast + 1)
+@ZacGenerate(order: zacGenerateOrderLast + 1)
 class TsTest with _$TsTest {
   const TsTest._();
 

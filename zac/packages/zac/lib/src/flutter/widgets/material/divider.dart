@@ -10,7 +10,7 @@ part 'divider.freezed.dart';
 part 'divider.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   const FlutterDivider._();
 

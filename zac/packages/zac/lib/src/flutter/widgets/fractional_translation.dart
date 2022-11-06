@@ -11,7 +11,7 @@ part 'fractional_translation.freezed.dart';
 part 'fractional_translation.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation
     implements FlutterWidget {

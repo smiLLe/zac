@@ -12,7 +12,7 @@ part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class FlutterRefreshIndicatorAction
     with _$FlutterRefreshIndicatorAction
     implements ZacAction {

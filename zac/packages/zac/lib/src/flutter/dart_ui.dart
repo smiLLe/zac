@@ -11,7 +11,7 @@ part 'dart_ui.freezed.dart';
 part 'dart_ui.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterColor with _$FlutterColor {
   const FlutterColor._();
 
@@ -48,7 +48,7 @@ class FlutterColor with _$FlutterColor {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterOffset with _$FlutterOffset {
   const FlutterOffset._();
 
@@ -76,7 +76,7 @@ class FlutterOffset with _$FlutterOffset {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBlurStyle with _$FlutterBlurStyle {
   const FlutterBlurStyle._();
 
@@ -106,7 +106,7 @@ class FlutterBlurStyle with _$FlutterBlurStyle {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterRadius with _$FlutterRadius {
   const FlutterRadius._();
 
@@ -131,7 +131,7 @@ class FlutterRadius with _$FlutterRadius {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDirection with _$FlutterTextDirection {
   const FlutterTextDirection._();
 
@@ -150,7 +150,7 @@ class FlutterTextDirection with _$FlutterTextDirection {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterClip with _$FlutterClip {
   const FlutterClip._();
 
@@ -176,7 +176,7 @@ class FlutterClip with _$FlutterClip {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextBaseline with _$FlutterTextBaseline {
   const FlutterTextBaseline._();
 
@@ -197,7 +197,7 @@ class FlutterTextBaseline with _$FlutterTextBaseline {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontWeight with _$FlutterFontWeight {
   const FlutterFontWeight._();
 
@@ -255,7 +255,7 @@ class FlutterFontWeight with _$FlutterFontWeight {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontStyle with _$FlutterFontStyle {
   const FlutterFontStyle._();
 
@@ -275,7 +275,7 @@ class FlutterFontStyle with _$FlutterFontStyle {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecoration with _$FlutterTextDecoration {
   const FlutterTextDecoration._();
 
@@ -306,7 +306,7 @@ class FlutterTextDecoration with _$FlutterTextDecoration {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextLeadingDistribution with _$FlutterTextLeadingDistribution {
   const FlutterTextLeadingDistribution._();
 
@@ -329,7 +329,7 @@ class FlutterTextLeadingDistribution with _$FlutterTextLeadingDistribution {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterLocale with _$FlutterLocale {
   const FlutterLocale._();
 
@@ -346,7 +346,7 @@ class FlutterLocale with _$FlutterLocale {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontFeature with _$FlutterFontFeature {
   const FlutterFontFeature._();
 
@@ -487,7 +487,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecorationStyle with _$FlutterTextDecorationStyle {
   const FlutterTextDecorationStyle._();
 
@@ -524,7 +524,7 @@ class FlutterTextDecorationStyle with _$FlutterTextDecorationStyle {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextAlign with _$FlutterTextAlign {
   const FlutterTextAlign._();
 
@@ -562,7 +562,7 @@ class FlutterTextAlign with _$FlutterTextAlign {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
   const FlutterTextHeightBehavior._();
 
@@ -589,7 +589,7 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBlendMode with _$FlutterBlendMode {
   const FlutterBlendMode._();
 
@@ -719,7 +719,7 @@ class FlutterBlendMode with _$FlutterBlendMode {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterRect with _$FlutterRect {
   const FlutterRect._();
 
@@ -777,7 +777,7 @@ class FlutterRect with _$FlutterRect {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFilterQuality with _$FlutterFilterQuality {
   const FlutterFilterQuality._();
 
@@ -807,7 +807,7 @@ class FlutterFilterQuality with _$FlutterFilterQuality {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBrightness with _$FlutterBrightness {
   const FlutterBrightness._();
 
@@ -826,7 +826,7 @@ class FlutterBrightness with _$FlutterBrightness {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterSize with _$FlutterSize {
   const FlutterSize._();
 
@@ -845,7 +845,7 @@ class FlutterSize with _$FlutterSize {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxHeightStyle with _$FlutterBoxHeightStyle {
   const FlutterBoxHeightStyle._();
 
@@ -886,7 +886,7 @@ class FlutterBoxHeightStyle with _$FlutterBoxHeightStyle {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
   const FlutterBoxWidthStyle._();
 
@@ -907,7 +907,7 @@ class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
   }
 }
 
-@TsClass(order: tsOrderFlutterAbstractsA)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class DartShadow {
   factory DartShadow.fromJson(Object data) {
     return ConverterHelper.convertToType<DartShadow>(data);
@@ -917,7 +917,7 @@ abstract class DartShadow {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderDartUi)
+@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterShadow with _$FlutterShadow implements DartShadow {
   const FlutterShadow._();
 

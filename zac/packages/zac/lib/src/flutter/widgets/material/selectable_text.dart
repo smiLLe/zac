@@ -7,7 +7,7 @@ part 'selectable_text.freezed.dart';
 part 'selectable_text.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSelectableText
     with _$FlutterSelectableText
     implements FlutterWidget {

@@ -381,7 +381,7 @@ Object? _mapValue<TValue>({required Object? data}) {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacValueActions with _$ZacValueActions implements ZacAction {
   const ZacValueActions._();
 

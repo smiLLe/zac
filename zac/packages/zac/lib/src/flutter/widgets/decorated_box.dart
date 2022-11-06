@@ -11,7 +11,7 @@ part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   const FlutterDecoratedBox._();
 

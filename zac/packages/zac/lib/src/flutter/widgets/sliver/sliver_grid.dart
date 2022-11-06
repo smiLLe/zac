@@ -10,7 +10,7 @@ part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
   const FlutterSliverGrid._();
 

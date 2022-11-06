@@ -14,7 +14,7 @@ part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacFlutterGlobalKeyNavigatorStateProvider
     with _$ZacFlutterGlobalKeyNavigatorStateProvider
     implements FlutterWidget {
@@ -55,7 +55,7 @@ class ZacFlutterGlobalKeyNavigatorStateProvider
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
     implements ZacAction {
@@ -94,7 +94,7 @@ class ZacFlutterNavigatorActions
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   const RouteFactoryRouteConfig._();
 
@@ -112,7 +112,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class RouteFactorySingleRoute
     with _$RouteFactorySingleRoute
     implements FlutterRouteFactory {
@@ -163,7 +163,7 @@ class RouteFactorySingleRoute
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class RouteFactoryFromRoutes
     with _$RouteFactoryFromRoutes
     implements FlutterRouteFactory {

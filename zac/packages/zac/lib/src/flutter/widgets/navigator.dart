@@ -12,7 +12,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
-@TsClass(order: tsOrderFlutterAbstractsA)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class FlutterRoute {
   factory FlutterRoute.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterRoute>(data);
@@ -23,7 +23,7 @@ abstract class FlutterRoute {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorState with _$FlutterNavigatorState {
   const FlutterNavigatorState._();
   static const String unionValueClosest = 'f:1:NavigatorState.closest';
@@ -60,7 +60,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   const FlutterNavigator._();
 
@@ -93,7 +93,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
     implements ZacAction {
@@ -238,7 +238,7 @@ class FlutterNavigatorActions
   }
 }
 
-@TsClass(order: tsOrderFlutterAbstractsA)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class FlutterRouteFactory {
   factory FlutterRouteFactory.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterRouteFactory>(data);
@@ -248,7 +248,7 @@ abstract class FlutterRouteFactory {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
     implements FlutterRoute {
@@ -298,7 +298,7 @@ class FlutterPageRouteBuilder
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRouteSettings with _$FlutterRouteSettings {
   const FlutterRouteSettings._();
 

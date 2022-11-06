@@ -10,7 +10,7 @@ part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   const FlutterExpanded._();
 

@@ -10,7 +10,7 @@ part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   const FlutterLimitedBox._();
 

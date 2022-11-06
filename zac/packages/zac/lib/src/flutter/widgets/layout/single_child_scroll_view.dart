@@ -13,7 +13,7 @@ part 'single_child_scroll_view.freezed.dart';
 part 'single_child_scroll_view.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSingleChildScrollView
     with _$FlutterSingleChildScrollView
     implements FlutterWidget {

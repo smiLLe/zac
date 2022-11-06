@@ -13,7 +13,7 @@ import 'package:zac/src/zac/widget.dart';
 part 'action.freezed.dart';
 part 'action.g.dart';
 
-@TsClass(order: tsOrderFlutterAbstractsA)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class ZacAction {
   factory ZacAction.fromJson(Map<String, dynamic> data) {
     return ConverterHelper.convertToType<ZacAction>(data);
@@ -44,7 +44,7 @@ class ZacActionPayload with _$ZacActionPayload {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacActions with _$ZacActions {
   const ZacActions._();
 
@@ -96,7 +96,7 @@ extension Interactions on ZacActions {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderZacWidget)
+@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
     implements FlutterWidget {

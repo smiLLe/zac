@@ -10,7 +10,7 @@ part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSizedOverflowBox
     with _$FlutterSizedOverflowBox
     implements FlutterWidget {

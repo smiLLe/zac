@@ -15,7 +15,7 @@ part 'scaffold.freezed.dart';
 part 'scaffold.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
   const FlutterScaffold._();
 
@@ -88,7 +88,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffoldActions
     with _$FlutterScaffoldActions
     implements ZacAction {
@@ -172,7 +172,7 @@ class FlutterScaffoldActions
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
     implements ZacAction {
@@ -272,7 +272,7 @@ class FlutterScaffoldMessenger
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   const FlutterSnackBar._();
 
@@ -321,7 +321,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
   const FlutterSnackBarBehavior._();
 
@@ -343,7 +343,7 @@ class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarAction
     with _$FlutterSnackBarAction
     implements FlutterWidget {
@@ -376,7 +376,7 @@ class FlutterSnackBarAction
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialBanner
     with _$FlutterMaterialBanner
     implements FlutterWidget {

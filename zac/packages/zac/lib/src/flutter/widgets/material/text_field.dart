@@ -16,7 +16,7 @@ part 'text_field.freezed.dart';
 part 'text_field.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   const FlutterTextField._();
 

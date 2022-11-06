@@ -14,7 +14,7 @@ part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacTransition with _$ZacTransition {
   static const String unionValue = 'z:1:StateMachine:Transition';
 
@@ -31,7 +31,7 @@ class ZacTransition with _$ZacTransition {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacStateConfig with _$ZacStateConfig {
   static const String unionValue = 'z:1:StateMachine:StateConfig';
 
@@ -89,7 +89,7 @@ Could not find State "$state" in $this'''),
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderZacWidget)
+@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineProviderBuilder
     with _$ZacStateMachineProviderBuilder
     implements FlutterWidget {
@@ -172,7 +172,7 @@ because there was already a transition.
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderZacWidget)
+@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineBuildStateBuilder
     with _$ZacStateMachineBuildStateBuilder
     implements FlutterWidget {
@@ -249,7 +249,7 @@ All possible states are "${machine.states.keys.join(', ')}".
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacStateMachineActions
     with _$ZacStateMachineActions
     implements ZacAction {
@@ -299,7 +299,7 @@ class ZacStateMachineActions
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class ZacStateMachineTransformer
     with _$ZacStateMachineTransformer
     implements ZacTransformer {

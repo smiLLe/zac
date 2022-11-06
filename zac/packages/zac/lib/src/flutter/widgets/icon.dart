@@ -10,7 +10,7 @@ part 'icon.freezed.dart';
 part 'icon.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   const FlutterIcon._();
 
@@ -43,7 +43,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIconData with _$FlutterIconData {
   const FlutterIconData._();
 
@@ -69,7 +69,7 @@ class FlutterIconData with _$FlutterIconData {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIconThemeData with _$FlutterIconThemeData {
   const FlutterIconThemeData._();
 

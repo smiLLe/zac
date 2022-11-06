@@ -13,7 +13,7 @@ import 'package:zac/src/base.dart';
 part 'material.freezed.dart';
 part 'material.g.dart';
 
-@TsClass(order: tsOrderFlutterAbstractsB)
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB)
 abstract class FlutterInputBorder implements FlutterShapeBorder {
   factory FlutterInputBorder.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterInputBorder>(data);
@@ -24,7 +24,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
     implements FlutterInputBorder {
@@ -54,7 +54,7 @@ class FlutterOutlineInputBorder
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
     implements FlutterInputBorder {
@@ -85,7 +85,7 @@ class FlutterUnderlineInputBorder
 }
 
 @defaultConverterFreezed
-@TsClass()
+@ZacGenerate()
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute
     implements FlutterRoute {

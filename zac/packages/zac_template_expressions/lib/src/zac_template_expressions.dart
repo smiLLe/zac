@@ -18,7 +18,7 @@ class ZacTemplateExpressionsTransformerError extends ZacTransformError {
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderLast)
+@ZacGenerate(order: zacGenerateOrderLast)
 class ZacTemplateExpressionsTransformer
     with _$ZacTemplateExpressionsTransformer
     implements ZacTransformer {
@@ -75,7 +75,7 @@ class ZacTemplateExpressionsTransformer
 }
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderLast)
+@ZacGenerate(order: zacGenerateOrderLast)
 class ZacTemplateExpressionsSyntax with _$ZacTemplateExpressionsSyntax {
   const ZacTemplateExpressionsSyntax._();
   static const String unionValue = 'template_expressions:1:Syntax:Standard';

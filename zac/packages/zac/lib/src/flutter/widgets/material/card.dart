@@ -11,7 +11,7 @@ part 'card.freezed.dart';
 part 'card.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCard with _$FlutterCard implements FlutterWidget {
   const FlutterCard._();
 

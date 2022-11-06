@@ -12,7 +12,7 @@ part 'list_tile.freezed.dart';
 part 'list_tile.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   const FlutterListTile._();
 

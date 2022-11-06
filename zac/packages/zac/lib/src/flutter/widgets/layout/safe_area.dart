@@ -10,7 +10,7 @@ part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   const FlutterSafeArea._();
 

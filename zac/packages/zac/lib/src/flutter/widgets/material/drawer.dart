@@ -12,7 +12,7 @@ part 'drawer.freezed.dart';
 part 'drawer.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   const FlutterDrawer._();
 

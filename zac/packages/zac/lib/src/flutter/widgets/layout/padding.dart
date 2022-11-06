@@ -10,7 +10,7 @@ part 'padding.freezed.dart';
 part 'padding.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   const FlutterPadding._();
 

@@ -13,7 +13,7 @@ part 'column.freezed.dart';
 part 'column.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   const FlutterColumn._();
 

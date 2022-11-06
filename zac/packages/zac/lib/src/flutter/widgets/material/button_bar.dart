@@ -11,7 +11,7 @@ part 'button_bar.freezed.dart';
 part 'button_bar.g.dart';
 
 @defaultConverterFreezed
-@TsClass(order: tsOrderFlutterWidget)
+@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
   const FlutterButtonBar._();
 
