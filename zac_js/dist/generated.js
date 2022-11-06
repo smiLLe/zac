@@ -1875,7 +1875,7 @@ export class NavigatorState extends ZacConverter {
         });
     }
     static shared(data) {
-        return new NavigatorState(Object.assign({ converter: 'f:1:NavigatorState.root' }, data));
+        return new NavigatorState(Object.assign({ converter: 'z:1:NavigatorState.shared' }, data));
     }
 }
 export class Navigator extends ZacConverter {
@@ -2023,11 +2023,8 @@ export class RefreshIndicatorAction extends ZacConverter {
     }
 }
 export class SharedValueActions extends ZacConverter {
-    static new(data) {
+    static update(data) {
         return new SharedValueActions(Object.assign({ converter: 'z:1:SharedValue.update' }, data));
-    }
-    static replaceWith(data) {
-        return new SharedValueActions(Object.assign({ converter: 'z:1:SharedValue.replaceWith' }, data));
     }
 }
 export class SharedValueConsumeType extends ZacConverter {
@@ -2224,6 +2221,11 @@ export class ListTransformer extends ZacConverter {
     static reversed() {
         return new ListTransformer({
             converter: 'z:1:Transformer:List.reversed'
+        });
+    }
+    static fromFlutterWidget() {
+        return new ListTransformer({
+            converter: 'z:1:Transformer:List<FlutterWidget>.from'
         });
     }
 }

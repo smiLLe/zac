@@ -1,5 +1,5 @@
 import { DartDouble, DartInt, DartDateTime, ZacTypes, ZacConverter } from "./base";
-import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value";
+import { ZacValue, ZacValueList } from "./zac/zac_value";
 export declare abstract class Widget extends ZacConverter {
 }
 export declare abstract class DartShadow extends ZacConverter {
@@ -711,6 +711,7 @@ export declare class SharedValueProviderBuilder extends ZacConverter implements 
         key?: Key;
         value: ZacTypes | null;
         transformer?: ZacTransformers;
+        itemTransformer?: ZacTransformers;
         family: ZacTypes;
         child: Widget;
         autoCreate: boolean;
@@ -1891,14 +1892,11 @@ export declare class RefreshIndicatorAction extends ZacConverter implements ZacA
     static new(): RefreshIndicatorAction;
 }
 export declare class SharedValueActions extends ZacConverter implements ZacAction {
-    static new(data: {
+    static update(data: {
         family: ZacTypes;
-        transformer: ZacTransformers;
-    }): SharedValueActions;
-    static replaceWith(data: {
-        family: ZacTypes;
-        value: ZacValue<ZacTypes>;
         transformer?: ZacTransformers;
+        itemTransformer?: ZacTransformers;
+        ifNoPayloadTakeCurrent?: boolean;
     }): SharedValueActions;
 }
 export declare class SharedValueConsumeType extends ZacConverter {
@@ -2010,6 +2008,7 @@ export declare class IterableTransformer extends ZacConverter implements ZacTran
 }
 export declare class ListTransformer extends ZacConverter implements ZacTransformer {
     static reversed(): ListTransformer;
+    static fromFlutterWidget(): ListTransformer;
 }
 export declare class ObjectTransformer extends ZacConverter implements ZacTransformer {
     static isList(): ObjectTransformer;
@@ -2021,7 +2020,7 @@ export declare class ObjectTransformer extends ZacConverter implements ZacTransf
     static runtimeType(): ObjectTransformer;
     static hashCode(): ObjectTransformer;
     static equalsSharedValue(data: {
-        value: ZacValueRead<ZacTypes | null>;
+        value: ZacValue<ZacTypes | null>;
     }): ObjectTransformer;
 }
 export declare class NumTransformer extends ZacConverter implements ZacTransformer {
@@ -2120,14 +2119,14 @@ export declare class InputDecoration extends ZacConverter {
 }
 export declare class ZacValueActions extends ZacConverter implements ZacAction {
     static asPayload(data: {
-        value: ZacValueRead<ZacTypes | null>;
+        value: ZacValue<ZacTypes | null>;
         actions: ZacActions;
     }): ZacValueActions;
 }
 export declare class ZacTemplateExpressionsTransformer extends ZacConverter implements ZacTransformer {
     static new(data: {
         expression: string;
-        context?: Record<string, ZacValueRead<ZacTypes>>;
+        context?: Record<string, ZacValue<ZacTypes>>;
         syntax: ZacTemplateExpressionsSyntax;
     }): ZacTemplateExpressionsTransformer;
 }

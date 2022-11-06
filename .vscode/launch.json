@@ -17,6 +17,8 @@
                 "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
                 "--outFile",
                 "${workspaceFolder}\\zac_js\\src\\generated.ts",
+                "--jsRoot",
+                "${workspaceFolder}\\zac_js"
             ],
         }
     ]

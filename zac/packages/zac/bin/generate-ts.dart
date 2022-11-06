@@ -13,11 +13,17 @@ void main(List<String> args) async {
   final parser = ArgParser();
   late final List<String> paths;
   late final String outFile;
+  late final String jsRoot;
   parser.addMultiOption('path', callback: (list) => paths = list);
   parser.addOption(
     'outFile',
     mandatory: true,
     callback: (str) => outFile = str ?? 'UNKNOWN PATH',
+  );
+  parser.addOption(
+    'jsRoot',
+    mandatory: true,
+    callback: (str) => jsRoot = str ?? 'UNKNOWN PATH',
   );
   parser.parse(args);
 
@@ -32,10 +38,21 @@ void main(List<String> args) async {
     });
 
     final allFiles = AllFiles(listOfAllFiles);
-
     final writeFile = File(outFile);
     writeFile.createSync();
     await writeFile.writeAsString(Template(allFiles).toString());
+    await Process.run(
+      'npm run transpile',
+      [],
+      workingDirectory: jsRoot,
+      runInShell: true,
+    );
+    await Process.run(
+      'npm run pretty',
+      [],
+      workingDirectory: jsRoot,
+      runInShell: true,
+    );
   }
 }
 
