@@ -32,6 +32,10 @@ export declare abstract class InputBorder extends ZacConverter implements ShapeB
 }
 export declare abstract class ZacTransformer extends ZacConverter {
 }
+export declare class ZacValueConsumeType extends ZacConverter {
+    static read(): ZacValueConsumeType;
+    static watch(): ZacValueConsumeType;
+}
 export declare class Color extends ZacConverter {
     static fromARGB(data: {
         a: DartInt;
@@ -286,14 +290,35 @@ export declare class ValueKey extends ZacConverter implements LocalKey {
         value: string;
     }): ValueKey;
 }
-export declare class StackFit extends ZacConverter {
-    static expand(): StackFit;
-    static loose(): StackFit;
-    static passthrough(): StackFit;
+export declare class BoxConstraints extends ZacConverter {
+    static new(data: {
+        minWidth?: ZacValue<DartDouble> | DartDouble;
+        maxWidth?: ZacValue<DartDouble> | DartDouble;
+        minHeight?: ZacValue<DartDouble> | DartDouble;
+        maxHeight?: ZacValue<DartDouble> | DartDouble;
+    }): BoxConstraints;
+    static expand(data: {
+        width?: ZacValue<DartDouble> | DartDouble;
+        height?: ZacValue<DartDouble> | DartDouble;
+    }): BoxConstraints;
+    static loose(data: {
+        size: Size;
+    }): BoxConstraints;
+    static tight(data: {
+        size: Size;
+    }): BoxConstraints;
+    static tightFor(data: {
+        width?: ZacValue<DartDouble> | DartDouble;
+        height?: ZacValue<DartDouble> | DartDouble;
+    }): BoxConstraints;
+    static tightForFinite(data: {
+        width?: ZacValue<DartDouble> | DartDouble;
+        height?: ZacValue<DartDouble> | DartDouble;
+    }): BoxConstraints;
 }
-export declare class SmartDashesType extends ZacConverter {
-    static disabled(): SmartDashesType;
-    static enabled(): SmartDashesType;
+export declare class SmartQuotesType extends ZacConverter {
+    static disabled(): SmartQuotesType;
+    static enabled(): SmartQuotesType;
 }
 export declare class BoxShape extends ZacConverter {
     static circle(): BoxShape;
@@ -580,31 +605,10 @@ export declare class WrapCrossAlignment extends ZacConverter {
     static end(): WrapCrossAlignment;
     static start(): WrapCrossAlignment;
 }
-export declare class BoxConstraints extends ZacConverter {
-    static new(data: {
-        minWidth?: ZacValue<DartDouble> | DartDouble;
-        maxWidth?: ZacValue<DartDouble> | DartDouble;
-        minHeight?: ZacValue<DartDouble> | DartDouble;
-        maxHeight?: ZacValue<DartDouble> | DartDouble;
-    }): BoxConstraints;
-    static expand(data: {
-        width?: ZacValue<DartDouble> | DartDouble;
-        height?: ZacValue<DartDouble> | DartDouble;
-    }): BoxConstraints;
-    static loose(data: {
-        size: Size;
-    }): BoxConstraints;
-    static tight(data: {
-        size: Size;
-    }): BoxConstraints;
-    static tightFor(data: {
-        width?: ZacValue<DartDouble> | DartDouble;
-        height?: ZacValue<DartDouble> | DartDouble;
-    }): BoxConstraints;
-    static tightForFinite(data: {
-        width?: ZacValue<DartDouble> | DartDouble;
-        height?: ZacValue<DartDouble> | DartDouble;
-    }): BoxConstraints;
+export declare class StackFit extends ZacConverter {
+    static expand(): StackFit;
+    static loose(): StackFit;
+    static passthrough(): StackFit;
 }
 export declare class DecorationPosition extends ZacConverter {
     static background(): DecorationPosition;
@@ -656,19 +660,17 @@ export declare class TextCapitalization extends ZacConverter {
     static sentences(): TextCapitalization;
     static words(): TextCapitalization;
 }
-export declare class SmartQuotesType extends ZacConverter {
-    static disabled(): SmartQuotesType;
-    static enabled(): SmartQuotesType;
+export declare class SmartDashesType extends ZacConverter {
+    static disabled(): SmartDashesType;
+    static enabled(): SmartDashesType;
 }
-export declare class ZacStateMachineProviderBuilder extends ZacConverter implements Widget {
+export declare class ZacStateMachineBuildStateBuilder extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
         family: ZacValue<string> | string;
-        initialState: ZacValue<string> | string;
-        states: Record<string, ZacStateConfig>;
-        child: Widget;
-        initialContext?: ZacValue<ZacTypes> | ZacTypes;
-    }): ZacStateMachineProviderBuilder;
+        states: Array<string>;
+        unmappedStateWidget?: Widget;
+    }): ZacStateMachineBuildStateBuilder;
 }
 export declare class ZacWidgetBuilder extends ZacConverter implements Widget {
     static new(data: {
@@ -698,14 +700,6 @@ export declare class ZacUpdateContextBuilder extends ZacConverter implements Wid
         child: Widget;
     }): ZacUpdateContextBuilder;
 }
-export declare class ZacStateMachineBuildStateBuilder extends ZacConverter implements Widget {
-    static new(data: {
-        key?: Key;
-        family: ZacValue<string> | string;
-        states: Array<string>;
-        unmappedStateWidget?: Widget;
-    }): ZacStateMachineBuildStateBuilder;
-}
 export declare class SharedValueProviderBuilder extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
@@ -717,6 +711,16 @@ export declare class SharedValueProviderBuilder extends ZacConverter implements 
         autoCreate: boolean;
     }): SharedValueProviderBuilder;
 }
+export declare class ZacStateMachineProviderBuilder extends ZacConverter implements Widget {
+    static new(data: {
+        key?: Key;
+        family: ZacValue<string> | string;
+        initialState: ZacValue<string> | string;
+        states: Record<string, ZacStateConfig>;
+        child: Widget;
+        initialContext?: ZacValue<ZacTypes> | ZacTypes;
+    }): ZacStateMachineProviderBuilder;
+}
 export declare class ZacExecuteActionsBuilder extends ZacConverter implements Widget {
     static once(data: {
         actions: ZacActions;
@@ -727,13 +731,6 @@ export declare class ZacExecuteActionsBuilder extends ZacConverter implements Wi
         family: ZacTypes;
         child?: Widget;
     }): ZacExecuteActionsBuilder;
-}
-export declare class ClipRect extends ZacConverter implements Widget {
-    static new(data: {
-        key?: Key;
-        child?: Widget;
-        clipBehavior?: Clip;
-    }): ClipRect;
 }
 export declare class DecoratedBox extends ZacConverter implements Widget {
     static new(data: {
@@ -940,12 +937,11 @@ export declare class FractionallySizedBox extends ZacConverter implements Widget
         heightFactor?: ZacValue<DartDouble> | DartDouble;
     }): FractionallySizedBox;
 }
-export declare class ClipOval extends ZacConverter implements Widget {
+export declare class IntrinsicHeight extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
         child?: Widget;
-        clipBehavior?: Clip;
-    }): ClipOval;
+    }): IntrinsicHeight;
 }
 export declare class IntrinsicWidth extends ZacConverter implements Widget {
     static new(data: {
@@ -1168,34 +1164,22 @@ export declare class Row extends ZacConverter implements Widget {
         children?: ZacValueList<Widget> | Array<Widget>;
     }): Row;
 }
-export declare class Material extends ZacConverter implements Widget {
+export declare class Stack extends ZacConverter implements Widget {
+    static new(data: {
+        key?: Key;
+        alignment?: AlignmentGeometry;
+        textDirection?: TextDirection;
+        fit?: StackFit;
+        clipBehavior?: Clip;
+        children?: ZacValueList<Widget> | Array<Widget>;
+    }): Stack;
+}
+export declare class ClipRect extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
         child?: Widget;
-        elevation?: ZacValue<DartDouble> | DartDouble;
-        color?: Color;
-        shadowColor?: Color;
-        textStyle?: TextStyle;
-        borderRadius?: BorderRadiusGeometry;
-        shape?: ShapeBorder;
-        borderOnForeground?: ZacValue<boolean> | boolean;
         clipBehavior?: Clip;
-    }): Material;
-}
-export declare class Wrap extends ZacConverter implements Widget {
-    static new(data: {
-        key?: Key;
-        direction?: Axis;
-        alignment?: WrapAlignment;
-        spacing?: ZacValue<DartDouble> | DartDouble;
-        runSpacing?: ZacValue<DartDouble> | DartDouble;
-        runAlignment?: WrapAlignment;
-        crossAxisAlignment?: WrapCrossAlignment;
-        textDirection?: TextDirection;
-        verticalDirection?: VerticalDirection;
-        clipBehavior?: Clip;
-        children?: ZacValueList<Widget> | Array<Widget>;
-    }): Wrap;
+    }): ClipRect;
 }
 export declare class AppBar extends ZacConverter implements Widget {
     static new(data: {
@@ -1427,32 +1411,26 @@ export declare class ListTile extends ZacConverter implements Widget {
         minLeadingWidth?: ZacValue<DartDouble> | DartDouble;
     }): ListTile;
 }
-export declare class Builder extends ZacConverter implements Widget {
+export declare class Material extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
-        child: Widget;
-    }): Builder;
-}
-export declare class MaterialApp extends ZacConverter implements Widget {
-    static new(data: {
-        key?: Key;
-        navigatorKey?: ZacValue<any> | any;
-        home?: Widget;
-        initialRoute?: ZacValue<string> | string;
-        onGenerateRoute?: RouteFactory;
-        onUnknownRoute?: RouteFactory;
-        title?: ZacValue<string> | string;
+        child?: Widget;
+        elevation?: ZacValue<DartDouble> | DartDouble;
         color?: Color;
-        locale?: Locale;
-        debugShowMaterialGrid?: ZacValue<boolean> | boolean;
-        showPerformanceOverlay?: ZacValue<boolean> | boolean;
-        checkerboardRasterCacheImages?: ZacValue<boolean> | boolean;
-        checkerboardOffscreenLayers?: ZacValue<boolean> | boolean;
-        showSemanticsDebugger?: ZacValue<boolean> | boolean;
-        debugShowCheckedModeBanner?: ZacValue<boolean> | boolean;
-        restorationScopeId?: ZacValue<string> | string;
-        useInheritedMediaQuery?: ZacValue<boolean> | boolean;
-    }): MaterialApp;
+        shadowColor?: Color;
+        textStyle?: TextStyle;
+        borderRadius?: BorderRadiusGeometry;
+        shape?: ShapeBorder;
+        borderOnForeground?: ZacValue<boolean> | boolean;
+        clipBehavior?: Clip;
+    }): Material;
+}
+export declare class ClipOval extends ZacConverter implements Widget {
+    static new(data: {
+        key?: Key;
+        child?: Widget;
+        clipBehavior?: Clip;
+    }): ClipOval;
 }
 export declare class ProgressIndicator extends ZacConverter implements Widget {
     static linear(data: {
@@ -1840,28 +1818,47 @@ export declare class Text extends ZacConverter implements Widget {
         textHeightBehavior?: TextHeightBehavior;
     }): Text;
 }
-export declare class Stack extends ZacConverter implements Widget {
+export declare class Builder extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
-        alignment?: AlignmentGeometry;
+        child: Widget;
+    }): Builder;
+}
+export declare class Wrap extends ZacConverter implements Widget {
+    static new(data: {
+        key?: Key;
+        direction?: Axis;
+        alignment?: WrapAlignment;
+        spacing?: ZacValue<DartDouble> | DartDouble;
+        runSpacing?: ZacValue<DartDouble> | DartDouble;
+        runAlignment?: WrapAlignment;
+        crossAxisAlignment?: WrapCrossAlignment;
         textDirection?: TextDirection;
-        fit?: StackFit;
+        verticalDirection?: VerticalDirection;
         clipBehavior?: Clip;
         children?: ZacValueList<Widget> | Array<Widget>;
-    }): Stack;
+    }): Wrap;
 }
-export declare class IntrinsicHeight extends ZacConverter implements Widget {
+export declare class MaterialApp extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
-        child?: Widget;
-    }): IntrinsicHeight;
-}
-export declare class ZacFlutterGlobalKeyNavigatorStateProvider extends ZacConverter implements Widget {
-    static new(data: {
-        family: ZacTypes;
-        child: Widget;
-        debugLabel?: ZacValue<string> | string;
-    }): ZacFlutterGlobalKeyNavigatorStateProvider;
+        navigatorKey?: ZacValue<any> | any;
+        home?: Widget;
+        initialRoute?: ZacValue<string> | string;
+        onGenerateRoute?: RouteFactory;
+        onUnknownRoute?: RouteFactory;
+        title?: ZacValue<string> | string;
+        color?: Color;
+        locale?: Locale;
+        debugShowMaterialGrid?: ZacValue<boolean> | boolean;
+        showPerformanceOverlay?: ZacValue<boolean> | boolean;
+        checkerboardRasterCacheImages?: ZacValue<boolean> | boolean;
+        checkerboardOffscreenLayers?: ZacValue<boolean> | boolean;
+        showSemanticsDebugger?: ZacValue<boolean> | boolean;
+        debugShowCheckedModeBanner?: ZacValue<boolean> | boolean;
+        restorationScopeId?: ZacValue<string> | string;
+        useInheritedMediaQuery?: ZacValue<boolean> | boolean;
+    }): MaterialApp;
 }
 export declare class ZacFlutterNavigatorActions extends ZacConverter implements ZacAction {
     static popUntilRouteName(data: {
@@ -1905,8 +1902,10 @@ export declare class SharedValueConsumeType extends ZacConverter {
     }): SharedValueConsumeType;
     static read(): SharedValueConsumeType;
 }
-export declare class ZacTemplateExpressionsSyntax extends ZacConverter {
-    static new(): ZacTemplateExpressionsSyntax;
+export declare class ZacActions extends ZacConverter {
+    static new(data: {
+        actions: Array<ZacAction>;
+    }): ZacActions;
 }
 export declare class ZacTransition extends ZacConverter {
     static new(data: {
@@ -1920,6 +1919,9 @@ export declare class ZacStateConfig extends ZacConverter {
         on: Array<ZacTransition>;
     }): ZacStateConfig;
 }
+export declare class ZacTemplateExpressionsSyntax extends ZacConverter {
+    static new(): ZacTemplateExpressionsSyntax;
+}
 export declare class MaterialPageRoute extends ZacConverter implements Route {
     static new(data: {
         child: Widget;
@@ -1927,12 +1929,6 @@ export declare class MaterialPageRoute extends ZacConverter implements Route {
         maintainState?: ZacValue<boolean> | boolean;
         fullscreenDialog?: ZacValue<boolean> | boolean;
     }): MaterialPageRoute;
-}
-export declare class UnderlineInputBorder extends ZacConverter implements InputBorder {
-    static new(data: {
-        borderSide?: BorderSide;
-        borderRadius?: BorderRadius;
-    }): UnderlineInputBorder;
 }
 export declare class ZacStateMachineActions extends ZacConverter implements ZacAction {
     static send(data: {
@@ -2058,6 +2054,12 @@ export declare class JsonTransformer extends ZacConverter implements ZacTransfor
     static encode(): JsonTransformer;
     static decode(): JsonTransformer;
 }
+export declare class UnderlineInputBorder extends ZacConverter implements InputBorder {
+    static new(data: {
+        borderSide?: BorderSide;
+        borderRadius?: BorderRadius;
+    }): UnderlineInputBorder;
+}
 export declare class OutlineInputBorder extends ZacConverter implements InputBorder {
     static new(data: {
         borderSide?: BorderSide;
@@ -2130,10 +2132,12 @@ export declare class ZacTemplateExpressionsTransformer extends ZacConverter impl
         syntax: ZacTemplateExpressionsSyntax;
     }): ZacTemplateExpressionsTransformer;
 }
-export declare class ZacActions extends ZacConverter {
+export declare class ZacFlutterGlobalKeyNavigatorStateProvider extends ZacConverter implements Widget {
     static new(data: {
-        actions: Array<ZacAction>;
-    }): ZacActions;
+        family: ZacTypes;
+        child: Widget;
+        debugLabel?: ZacValue<string> | string;
+    }): ZacFlutterGlobalKeyNavigatorStateProvider;
 }
 export declare class TsTest extends ZacConverter {
     static new(data: {

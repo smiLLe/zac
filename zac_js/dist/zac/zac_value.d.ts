@@ -1,6 +1,5 @@
 import { SharedValueFamily, ZacTypes, ZacConverter } from "../base";
-import { ZacTransformers } from "../generated";
-declare type ZacValuePreferedConsume = "watch" | "read";
+import { ZacTransformers, ZacValueConsumeType } from "../generated";
 export declare class ZacValue<T> extends ZacConverter {
     private ignoredProp;
     static new<T extends ZacTypes>(data: {
@@ -11,7 +10,7 @@ export declare class ZacValue<T> extends ZacConverter {
         family: SharedValueFamily;
         transformer?: ZacTransformers;
         select?: ZacTransformers;
-        forceConsume?: ZacValuePreferedConsume;
+        forceConsume?: ZacValueConsumeType;
     }): ZacValue<ZacTypes>;
 }
 export declare class ZacValueList<T> extends ZacConverter {
@@ -24,7 +23,6 @@ export declare class ZacValueList<T> extends ZacConverter {
         family: SharedValueFamily;
         transformer?: ZacTransformers;
         select?: ZacTransformers;
-        forceConsume?: ZacValuePreferedConsume;
+        forceConsume?: ZacValueConsumeType;
     }): ZacValue<ZacTypes>;
 }
-export {};

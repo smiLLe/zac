@@ -31,31 +31,30 @@ void main(List<String> args) async {
 
   final ctxColl = AnalysisContextCollection(includedPaths: paths);
 
-  for (var ctx in ctxColl.contexts) {
-    final listOfAllFiles = (await Future.wait(paths
-            .map((path) => Uri.directory(path))
-            .map((uri) => filesToCreate(ctx, uri))))
-        .fold<List<OneFile>>([], (previousValue, element) {
-      return [...previousValue, ...element];
-    });
-
-    final allFiles = AllFiles(listOfAllFiles);
-    final writeFile = File(outFile);
-    writeFile.createSync();
-    await writeFile.writeAsString(Template(allFiles).toString());
-    await Process.run(
-      'npm run transpile',
-      [],
-      workingDirectory: jsRoot,
-      runInShell: true,
-    );
-    await Process.run(
-      'npm run pretty',
-      [],
-      workingDirectory: jsRoot,
-      runInShell: true,
-    );
+  final listOfAllFiles = <OneFile>[];
+  for (var path in paths) {
+    final ctx = ctxColl.contextFor(path);
+    final files = await filesToCreate(ctx, Uri.directory(path));
+    listOfAllFiles.addAll(files);
   }
+
+  final allFiles = AllFiles(listOfAllFiles);
+  final writeFile = File(outFile);
+  writeFile.createSync();
+  await writeFile.writeAsString(Template(allFiles).toString());
+
+  await Process.run(
+    'npm run transpile',
+    [],
+    workingDirectory: jsRoot,
+    runInShell: true,
+  );
+  await Process.run(
+    'npm run pretty',
+    [],
+    workingDirectory: jsRoot,
+    runInShell: true,
+  );
 }
 
 String cleanUpFlutterPrefix(String name) {
@@ -168,9 +167,7 @@ class AllFiles {
 
   late final Iterable<String> allKnownTypes = [
     'ZacValue',
-    'ZacValueRead',
     'ZacValueList',
-    'ZacValueListRead',
     ...files.fold(<String>[], (previousValue, oneFile) {
       final allInFile = [
         ...oneFile.abstracts.map((tsClass) => tsClass.className),

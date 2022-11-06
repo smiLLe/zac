@@ -185,7 +185,7 @@ class FlutterNavigatorActions
         state
             .pushNamed(
           obj.routeName
-              .getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+              .getValue(zacContext, prefered: const ZacValueConsumeType.read()),
           arguments: obj.arguments,
         )
             .then((value) {
@@ -224,7 +224,7 @@ class FlutterNavigatorActions
         state
             .pushReplacementNamed(
           obj.routeName
-              .getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+              .getValue(zacContext, prefered: const ZacValueConsumeType.read()),
           arguments: obj.arguments,
           result: obj.result,
         )

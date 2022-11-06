@@ -14,6 +14,123 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ZacValueConsumeType _$ZacValueConsumeTypeFromJson(Map<String, dynamic> json) {
+  switch (json['converter']) {
+    case 'z:1:ZacValueConsume.read':
+      return _ZacValueConsumeTypeRead.fromJson(json);
+    case 'z:1:ZacValueConsume.watch':
+      return _ZacValueConsumeTypeWatch.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'converter', 'ZacValueConsumeType',
+          'Invalid union type "${json['converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacValueConsumeType {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacValueConsumeTypeRead value) read,
+    required TResult Function(_ZacValueConsumeTypeWatch value) watch,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueConsumeTypeRead extends _ZacValueConsumeTypeRead {
+  const _$_ZacValueConsumeTypeRead({final String? $type})
+      : $type = $type ?? 'z:1:ZacValueConsume.read',
+        super._();
+
+  factory _$_ZacValueConsumeTypeRead.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueConsumeTypeReadFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacValueConsumeType.read()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueConsumeTypeRead);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacValueConsumeTypeRead value) read,
+    required TResult Function(_ZacValueConsumeTypeWatch value) watch,
+  }) {
+    return read(this);
+  }
+}
+
+abstract class _ZacValueConsumeTypeRead extends ZacValueConsumeType {
+  const factory _ZacValueConsumeTypeRead() = _$_ZacValueConsumeTypeRead;
+  const _ZacValueConsumeTypeRead._() : super._();
+
+  factory _ZacValueConsumeTypeRead.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueConsumeTypeRead.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueConsumeTypeWatch extends _ZacValueConsumeTypeWatch {
+  const _$_ZacValueConsumeTypeWatch({final String? $type})
+      : $type = $type ?? 'z:1:ZacValueConsume.watch',
+        super._();
+
+  factory _$_ZacValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueConsumeTypeWatchFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacValueConsumeType.watch()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueConsumeTypeWatch);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacValueConsumeTypeRead value) read,
+    required TResult Function(_ZacValueConsumeTypeWatch value) watch,
+  }) {
+    return watch(this);
+  }
+}
+
+abstract class _ZacValueConsumeTypeWatch extends ZacValueConsumeType {
+  const factory _ZacValueConsumeTypeWatch() = _$_ZacValueConsumeTypeWatch;
+  const _ZacValueConsumeTypeWatch._() : super._();
+
+  factory _ZacValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueConsumeTypeWatch.fromJson;
+}
+
 ZacValue<T> _$ZacValueFromJson<T>(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:ZacValue':
@@ -123,7 +240,7 @@ class _$_ZacValueConsume<T> extends _ZacValueConsume<T> {
   @override
   final ZacTransformers? select;
   @override
-  final ZacValuePreferedConsume? forceConsume;
+  final ZacValueConsumeType? forceConsume;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -170,7 +287,7 @@ abstract class _ZacValueConsume<T> extends ZacValue<T> {
       {required final Object family,
       final ZacTransformers? transformer,
       final ZacTransformers? select,
-      final ZacValuePreferedConsume? forceConsume}) = _$_ZacValueConsume<T>;
+      final ZacValueConsumeType? forceConsume}) = _$_ZacValueConsume<T>;
   _ZacValueConsume._() : super._();
 
   factory _ZacValueConsume.fromJson(Map<String, dynamic> json) =
@@ -180,7 +297,7 @@ abstract class _ZacValueConsume<T> extends ZacValue<T> {
   @override
   ZacTransformers? get transformer;
   ZacTransformers? get select;
-  ZacValuePreferedConsume? get forceConsume;
+  ZacValueConsumeType? get forceConsume;
 }
 
 ZacValueList<T> _$ZacValueListFromJson<T>(Map<String, dynamic> json) {
@@ -301,7 +418,7 @@ class _$_ZacValueListConsume<T> extends _ZacValueListConsume<T> {
   @override
   final ZacTransformers? select;
   @override
-  final ZacValuePreferedConsume? forceConsume;
+  final ZacValueConsumeType? forceConsume;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -348,7 +465,7 @@ abstract class _ZacValueListConsume<T> extends ZacValueList<T> {
       {required final Object family,
       final ZacTransformers? transformer,
       final ZacTransformers? select,
-      final ZacValuePreferedConsume? forceConsume}) = _$_ZacValueListConsume<T>;
+      final ZacValueConsumeType? forceConsume}) = _$_ZacValueListConsume<T>;
   _ZacValueListConsume._() : super._();
 
   factory _ZacValueListConsume.fromJson(Map<String, dynamic> json) =
@@ -358,7 +475,7 @@ abstract class _ZacValueListConsume<T> extends ZacValueList<T> {
   @override
   ZacTransformers? get transformer;
   ZacTransformers? get select;
-  ZacValuePreferedConsume? get forceConsume;
+  ZacValueConsumeType? get forceConsume;
 }
 
 ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {

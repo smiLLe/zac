@@ -139,8 +139,8 @@ class FlutterScaffoldActions
           backgroundColor: value.backgroundColor?.build(zacContext),
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
-          elevation: value.elevation
-              ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+          elevation: value.elevation?.getValue(zacContext,
+              prefered: const ZacValueConsumeType.read()),
           shape: value.shape?.build(zacContext),
           // transitionAnimationController:
         );
@@ -164,8 +164,8 @@ class FlutterScaffoldActions
         if (null == state) return null;
         state.showBodyScrim(
             value.value,
-            value.opacity
-                .getValue(zacContext, prefered: ZacValuePreferedConsume.read));
+            value.opacity.getValue(zacContext,
+                prefered: const ZacValueConsumeType.read()));
       },
     );
   }

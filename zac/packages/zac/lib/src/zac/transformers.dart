@@ -186,9 +186,9 @@ The value: $value
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
       containsKey: (obj) => value.containsKey(obj.key
-          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
       containsValue: (obj) => value.containsValue(obj.value
-          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
             value.entries.map<MapEntry<dynamic, dynamic>>((entry) {
@@ -322,7 +322,7 @@ The value: $value
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
       contains: (obj) => value.contains(obj.element
-          ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -416,8 +416,8 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isMap: (_) => value is Map,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value
-              .getValue(zacContext, prefered: ZacValuePreferedConsume.read) ==
+          obj.value.getValue(zacContext,
+              prefered: const ZacValueConsumeType.read()) ==
           value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
@@ -613,14 +613,14 @@ The value: $value
     return map(
       length: (_) => value.length,
       split: (obj) => value.split(obj.pattern
-          .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          .getValue(zacContext, prefered: const ZacValueConsumeType.read())),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from
-              .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
-          obj.replace
-              .getValue(zacContext, prefered: ZacValuePreferedConsume.read)),
+          RegExp(obj.from.getValue(zacContext,
+              prefered: const ZacValueConsumeType.read())),
+          obj.replace.getValue(zacContext,
+              prefered: const ZacValueConsumeType.read())),
     );
   }
 }

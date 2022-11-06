@@ -1,7 +1,5 @@
 import { SharedValueFamily, ZacTypes, ZacConverter } from "../base";
-import { ZacTransformers } from "../generated";
-
-type ZacValuePreferedConsume = "watch" | "read";
+import { ZacTransformers, ZacValueConsumeType } from "../generated";
 
 export class ZacValue<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
@@ -21,7 +19,7 @@ export class ZacValue<T> extends ZacConverter {
         family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
-        forceConsume?: ZacValuePreferedConsume,
+        forceConsume?: ZacValueConsumeType,
     }) {
         return new ZacValue<ZacTypes>({
             converter: 'z:1:ZacValue.consume',
@@ -47,7 +45,7 @@ export class ZacValueList<T> extends ZacConverter {
         family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
-        forceConsume?: ZacValuePreferedConsume,
+        forceConsume?: ZacValueConsumeType,
     }) {
         return new ZacValue<ZacTypes>({
             converter: 'z:1:ZacValueList.consume',

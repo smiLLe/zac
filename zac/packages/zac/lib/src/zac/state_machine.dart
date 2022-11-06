@@ -281,8 +281,8 @@ class ZacStateMachineActions
                 const SharedValueConsumeType.read(), zacContext, obj.family)
             as ZacStateMachine;
         machine.send(
-            obj.event
-                .getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+            obj.event.getValue(zacContext,
+                prefered: const ZacValueConsumeType.read()),
             payload.params);
       },
       trySend: (obj) {
@@ -290,8 +290,8 @@ class ZacStateMachineActions
                 const SharedValueConsumeType.read(), zacContext, obj.family)
             as ZacStateMachine;
         machine.trySend(
-            obj.event
-                .getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+            obj.event.getValue(zacContext,
+                prefered: const ZacValueConsumeType.read()),
             payload.params);
       },
     );

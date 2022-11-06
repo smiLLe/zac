@@ -51,6 +51,7 @@ const zacGenerateOrderDartFoundation = 9001;
 const zacGenerateOrderDartUi = 9000;
 const zacGenerateOrderFlutterAbstractsB = 8501;
 const zacGenerateOrderFlutterAbstractsA = 8500;
+const zacGenerateOrderFirst = 8000;
 
 /// Annotation class for Builders or other classes in order to create
 /// zac libraries or other helper classes

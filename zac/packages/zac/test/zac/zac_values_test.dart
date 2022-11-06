@@ -51,10 +51,10 @@ void main() {
         ZacValue<int>.fromJson({
           'converter': 'z:1:ZacValue.consume',
           'family': 'fam',
-          'forceConsume': 'read'
+          'forceConsume': {'converter': 'z:1:ZacValueConsume.read'}
         }),
         ZacValue<int>.consume(
-            family: 'fam', forceConsume: ZacValuePreferedConsume.read));
+            family: 'fam', forceConsume: const ZacValueConsumeType.read()));
 
     expect(
         () => ZacValue<int>.fromJson(<String, dynamic>{
@@ -142,7 +142,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.watch,
+                  forceConsume: const ZacValueConsumeType.watch(),
                 ),
               ),
             ),
@@ -169,7 +169,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                 ),
               ),
             ),
@@ -196,7 +196,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.watch,
+                  forceConsume: const ZacValueConsumeType.watch(),
                   transformer: ZacTransformers([
                     const StringTransformer.length(),
                     ObjectTransformer.toString()
@@ -227,7 +227,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                   transformer: ZacTransformers([
                     const StringTransformer.length(),
                     ObjectTransformer.toString()
@@ -259,7 +259,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.watch,
+                  forceConsume: const ZacValueConsumeType.watch(),
                   select: ZacTransformers([const StringTransformer.length()]),
                   transformer: ZacTransformers([ObjectTransformer.toString()]),
                 ),
@@ -289,7 +289,7 @@ void main() {
               child: FlutterText(
                 ZacValue<String>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                   select: ZacTransformers([const StringTransformer.length()]),
                   transformer: ZacTransformers([ObjectTransformer.toString()]),
                 ),
@@ -403,10 +403,10 @@ void main() {
         ZacValueList<String>.fromJson({
           'converter': 'z:1:ZacValueList.consume',
           'family': 'fam',
-          'forceConsume': 'read'
+          'forceConsume': {'converter': 'z:1:ZacValueConsume.read'}
         }),
         ZacValueList<String>.consume(
-            family: 'fam', forceConsume: ZacValuePreferedConsume.read));
+            family: 'fam', forceConsume: const ZacValueConsumeType.read()));
 
     expect(
         () => ZacValueList<bool>.fromJson(false),
@@ -488,7 +488,7 @@ void main() {
               child: FlutterColumn(
                 children: ZacValueList<FlutterWidget>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.watch,
+                  forceConsume: const ZacValueConsumeType.watch(),
                 ),
               ),
             ),
@@ -525,7 +525,7 @@ void main() {
               child: FlutterColumn(
                 children: ZacValueList<FlutterWidget>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                 ),
               ),
             ),
@@ -611,7 +611,7 @@ void main() {
               child: FlutterColumn(
                 children: ZacValueList<FlutterWidget>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                   transformer: ZacTransformers(
                     [
                       const IterableTransformer.take(1),
@@ -708,7 +708,7 @@ void main() {
               child: FlutterColumn(
                 children: ZacValueList<FlutterWidget>.consume(
                   family: 'shared',
-                  forceConsume: ZacValuePreferedConsume.read,
+                  forceConsume: const ZacValueConsumeType.read(),
                   select: ZacTransformers(
                     [
                       const IterableTransformer.take(1),

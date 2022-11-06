@@ -196,16 +196,16 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
             FlutterBuilder(child: value.child).buildWidget(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),
         barrierDismissible: value.barrierDismissible?.getValue(zacContext,
-                prefered: ZacValuePreferedConsume.read) ??
+                prefered: const ZacValueConsumeType.read()) ??
             true,
         barrierColor: value.barrierColor?.build(zacContext),
         barrierLabel: value.barrierLabel
-            ?.getValue(zacContext, prefered: ZacValuePreferedConsume.read),
+            ?.getValue(zacContext, prefered: const ZacValueConsumeType.read()),
         useSafeArea: value.useSafeArea?.getValue(zacContext,
-                prefered: ZacValuePreferedConsume.read) ??
+                prefered: const ZacValueConsumeType.read()) ??
             true,
         useRootNavigator: value.useRootNavigator?.getValue(zacContext,
-                prefered: ZacValuePreferedConsume.read) ??
+                prefered: const ZacValueConsumeType.read()) ??
             true,
       ),
     );

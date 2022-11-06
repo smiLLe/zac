@@ -6,6 +6,18 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_ZacValueConsumeTypeRead _$$_ZacValueConsumeTypeReadFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeTypeRead(
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacValueConsumeTypeWatch _$$_ZacValueConsumeTypeWatchFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeTypeWatch(
+      $type: json['converter'] as String?,
+    );
+
 _$_ZacValue<T> _$$_ZacValueFromJson<T>(Map<String, dynamic> json) =>
     _$_ZacValue<T>(
       value: json['value'],
@@ -25,15 +37,12 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T>(
       select: json['select'] == null
           ? null
           : ZacTransformers.fromJson(json['select'] as Object),
-      forceConsume: $enumDecodeNullable(
-          _$ZacValuePreferedConsumeEnumMap, json['forceConsume']),
+      forceConsume: json['forceConsume'] == null
+          ? null
+          : ZacValueConsumeType.fromJson(
+              json['forceConsume'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
-
-const _$ZacValuePreferedConsumeEnumMap = {
-  ZacValuePreferedConsume.watch: 'watch',
-  ZacValuePreferedConsume.read: 'read',
-};
 
 _$_ZacValueList<T> _$$_ZacValueListFromJson<T>(Map<String, dynamic> json) =>
     _$_ZacValueList<T>(
@@ -54,8 +63,10 @@ _$_ZacValueListConsume<T> _$$_ZacValueListConsumeFromJson<T>(
       select: json['select'] == null
           ? null
           : ZacTransformers.fromJson(json['select'] as Object),
-      forceConsume: $enumDecodeNullable(
-          _$ZacValuePreferedConsumeEnumMap, json['forceConsume']),
+      forceConsume: json['forceConsume'] == null
+          ? null
+          : ZacValueConsumeType.fromJson(
+              json['forceConsume'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
 

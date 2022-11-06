@@ -12,7 +12,23 @@ part 'zac_value.g.dart';
 
 Type _typeOf<T>() => T;
 
-enum ZacValuePreferedConsume { watch, read }
+@defaultConverterFreezed
+@ZacGenerate(order: zacGenerateOrderFirst)
+class ZacValueConsumeType with _$ZacValueConsumeType {
+  const ZacValueConsumeType._();
+
+  static const String unionValue = 'z:1:ZacValueConsume.watch';
+  static const String unionValueRead = 'z:1:ZacValueConsume.read';
+
+  factory ZacValueConsumeType.fromJson(Map<String, dynamic> json) =>
+      _$ZacValueConsumeTypeFromJson(json);
+
+  @FreezedUnionValue(ZacValueConsumeType.unionValueRead)
+  const factory ZacValueConsumeType.read() = _ZacValueConsumeTypeRead;
+
+  @FreezedUnionValue(ZacValueConsumeType.unionValue)
+  const factory ZacValueConsumeType.watch() = _ZacValueConsumeTypeWatch;
+}
 
 extension _XZacValue<T> on _ZacValue<T> {
   bool get valueIsTValue => value is T;
@@ -76,7 +92,7 @@ $json''');
     required SharedValueFamily family,
     ZacTransformers? transformer,
     ZacTransformers? select,
-    ZacValuePreferedConsume? forceConsume,
+    ZacValueConsumeType? forceConsume,
   }) = _ZacValueConsume<T>;
 
   T _getSimple(ZacContext zacContext, _ZacValue<T> simple) {
@@ -103,33 +119,33 @@ Instead it holds a ${simple.value.runtimeType}.''');
   }
 
   T _getShared(ZacContext zacContext, _ZacValueConsume<T> consume,
-      ZacValuePreferedConsume prefered) {
-    late Object? consumedValue;
-    switch (consume.forceConsume ?? prefered) {
-      case ZacValuePreferedConsume.watch:
+      ZacValueConsumeType prefered) {
+    final consumedValue =
+        (consume.forceConsume ?? prefered).map<SharedValueType>(
+      read: (_) {
         if (null == consume.select) {
-          consumedValue = zacContext.ref
-              .watch<SharedValueType>(SharedValue.provider(consume.family));
-        } else {
-          consumedValue = zacContext.ref.watch<SharedValueType>(
-              SharedValue.provider(consume.family).select((value) => consume
-                  .select!
-                  .transform(ZacTransformValue(value), zacContext, null)));
-        }
-        break;
-      case ZacValuePreferedConsume.read:
-        if (null == consume.select) {
-          consumedValue = zacContext.ref
+          return zacContext.ref
               .read<SharedValueType>(SharedValue.provider(consume.family));
         } else {
-          consumedValue = consume.select!.transform(
+          return consume.select!.transform(
               ZacTransformValue(zacContext.ref
                   .read<SharedValueType>(SharedValue.provider(consume.family))),
               zacContext,
               null);
         }
-        break;
-    }
+      },
+      watch: (_) {
+        if (null == consume.select) {
+          return zacContext.ref
+              .watch<SharedValueType>(SharedValue.provider(consume.family));
+        } else {
+          return zacContext.ref.watch<SharedValueType>(
+              SharedValue.provider(consume.family).select((value) => consume
+                  .select!
+                  .transform(ZacTransformValue(value), zacContext, null)));
+        }
+      },
+    );
 
     if (consumedValue is T &&
         (null == transformer || true == transformer?.transformers.isEmpty)) {
@@ -176,7 +192,7 @@ $consumedValue
 
   T getValue(
     ZacContext zacContext, {
-    ZacValuePreferedConsume prefered = ZacValuePreferedConsume.watch,
+    ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
   }) {
     return map<T>(
       (obj) => _getSimple(zacContext, obj),
@@ -253,7 +269,7 @@ $json''');
     required SharedValueFamily family,
     ZacTransformers? transformer,
     ZacTransformers? select,
-    ZacValuePreferedConsume? forceConsume,
+    ZacValueConsumeType? forceConsume,
   }) = _ZacValueListConsume<T>;
 
   List<T> _getSimple(ZacContext zacContext, _ZacValueList<T> simple) {
@@ -274,33 +290,33 @@ Value: $transformed''');
   }
 
   List<T> _getShared(ZacContext zacContext, _ZacValueListConsume<T> consume,
-      ZacValuePreferedConsume prefered) {
-    late Object? consumedValue;
-    switch (consume.forceConsume ?? prefered) {
-      case ZacValuePreferedConsume.watch:
+      ZacValueConsumeType prefered) {
+    final consumedValue =
+        (consume.forceConsume ?? prefered).map<SharedValueType>(
+      read: (_) {
         if (null == consume.select) {
-          consumedValue = zacContext.ref
-              .watch<SharedValueType>(SharedValue.provider(consume.family));
-        } else {
-          consumedValue = zacContext.ref.watch<SharedValueType>(
-              SharedValue.provider(consume.family).select((value) => consume
-                  .select!
-                  .transform(ZacTransformValue(value), zacContext, null)));
-        }
-        break;
-      case ZacValuePreferedConsume.read:
-        if (null == consume.select) {
-          consumedValue = zacContext.ref
+          return zacContext.ref
               .read<SharedValueType>(SharedValue.provider(consume.family));
         } else {
-          consumedValue = consume.select!.transform(
+          return consume.select!.transform(
               ZacTransformValue(zacContext.ref
                   .read<SharedValueType>(SharedValue.provider(consume.family))),
               zacContext,
               null);
         }
-        break;
-    }
+      },
+      watch: (_) {
+        if (null == consume.select) {
+          return zacContext.ref
+              .watch<SharedValueType>(SharedValue.provider(consume.family));
+        } else {
+          return zacContext.ref.watch<SharedValueType>(
+              SharedValue.provider(consume.family).select((value) => consume
+                  .select!
+                  .transform(ZacTransformValue(value), zacContext, null)));
+        }
+      },
+    );
 
     if (consumedValue is! List) {
       throw StateError('''
@@ -354,7 +370,7 @@ $consumedValue
 
   List<T> getValue(
     ZacContext zacContext, {
-    ZacValuePreferedConsume prefered = ZacValuePreferedConsume.watch,
+    ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
   }) {
     return map<List<T>>(
       (obj) => _getSimple(zacContext, obj),
@@ -401,7 +417,7 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
     map(
       asPayload: (obj) {
         final val = obj.value
-            .getValue(zacContext, prefered: ZacValuePreferedConsume.read);
+            .getValue(zacContext, prefered: const ZacValueConsumeType.read());
         obj.actions.execute(ZacActionPayload.param(val), zacContext);
       },
     );
