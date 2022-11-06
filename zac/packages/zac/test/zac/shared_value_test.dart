@@ -38,35 +38,56 @@ void main() {
       expect(obj, 55);
     });
 
-    testWidgets(
-        'can be provided and automatically created and kept alive even if it is never listened to',
-        (tester) async {
-      late ZacContext context;
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
+    testWidgets('is automatically kept alive', (tester) async {
+      var i = 0;
+      late ZacContext zacContext;
+      await tester.pumpWidget(MaterialApp(
+        home: SharedValueProvider(
           autoCreate: true,
-          value: 0,
           family: 'shared',
-          child: TestBuildCustomWidget((zacContext) {
-            context = zacContext;
-            return TextButton(
-              key: const Key('button'),
-              child: const SizedBox(),
-              onPressed: () {
-                zacContext.ref
-                    .read(SharedValue.provider('shared').notifier)
-                    .state = 10;
-              },
-            );
-          }),
+          valueBuilder: (ref, zacContext) {
+            ++i;
+            return 0;
+          },
+          childBuilder: (c) {
+            zacContext = c;
+            return const SizedBox();
+          },
         ),
-      );
+      ));
 
-      await tester.tap(find.byKey(const Key('button')));
+      zacContext.ref.read(SharedValue.provider('shared'));
+
       await tester.pump();
-      expect(context.ref.read(SharedValue.provider('shared')), 10);
+
+      zacContext.ref.read(SharedValue.provider('shared'));
+      expect(i, 1);
+    });
+
+    testWidgets('is not automatically kept alive', (tester) async {
+      var i = 0;
+      late ZacContext zacContext;
+      await tester.pumpWidget(MaterialApp(
+        home: SharedValueProvider(
+          autoCreate: false,
+          family: 'shared',
+          valueBuilder: (ref, zacContext) {
+            ++i;
+            return 0;
+          },
+          childBuilder: (c) {
+            zacContext = c;
+            return const SizedBox();
+          },
+        ),
+      ));
+
+      zacContext.ref.read(SharedValue.provider('shared'));
+
+      await tester.pump();
+
+      zacContext.ref.read(SharedValue.provider('shared'));
+      expect(i, 2);
     });
 
     testWidgets('can be transformed and provieded through SharedValueProvider',

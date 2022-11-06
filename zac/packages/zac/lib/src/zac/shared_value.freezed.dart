@@ -269,7 +269,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       this.itemTransformer,
       required this.family,
       required this.child,
-      this.autoCreate = false})
+      this.autoCreate = true})
       : super._();
 
   factory _$_SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>

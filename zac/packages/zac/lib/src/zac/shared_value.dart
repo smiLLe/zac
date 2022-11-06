@@ -8,7 +8,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
@@ -175,7 +174,7 @@ class SharedValueProviderBuilder
     ZacTransformers? itemTransformer,
     required SharedValueFamily family,
     required FlutterWidget child,
-    @Default(false) bool autoCreate,
+    @Default(true) bool autoCreate,
   }) = _SharedValueProviderBuilder;
 
   SharedValueType valueBuilder(
@@ -229,7 +228,8 @@ class SharedValueProvider extends StatelessWidget {
       ZacContext zacContext) valueBuilder;
   final bool autoCreate;
 
-  void _autoCreateListener(SharedValueType? prev, SharedValueType next) {}
+  static void _autoCreateListener(
+      SharedValueType? prev, SharedValueType next) {}
 
   @override
   Widget build(BuildContext context) {

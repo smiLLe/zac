@@ -49,5 +49,5 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
           : ZacTransformers.fromJson(json['itemTransformer'] as Object),
       family: json['family'] as Object,
       child: FlutterWidget.fromJson(json['child'] as Object),
-      autoCreate: json['autoCreate'] as bool? ?? false,
+      autoCreate: json['autoCreate'] as bool? ?? true,
     );
