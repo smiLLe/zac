@@ -1,7 +1,8 @@
 name: zac_template_expressions
-description: Zac Transformer for package "template_expressions"
-version: 0.0.1
-homepage: https://github.com/smiLLe/zac
+description: Zac Builders/Transformer for package "template_expressions"
+version: 0.1.0-dev.4
+homepage: https://github.com/smiLLe/zac/tree/main/zac/packages/zac_template_expressions
+repository: https://github.com/smiLLe/zac/tree/main/zac/packages/zac_template_expressions
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -12,7 +13,7 @@ dependencies:
     sdk: flutter
   template_expressions: ^1.1.6+2
   json_annotation: ^4.6.0
-  zac:
+  zac: 0.1.0-dev.4
 
 dev_dependencies:
   flutter_test:

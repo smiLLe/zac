@@ -81,7 +81,7 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetFromMa(zacMap: ZacValue<Map>.fromJson(data)),
+    ZacWidgetFromMap(zacMap: ZacValue<Map>.fromJson(data)),
     converter: converter,
     useContainer: useContainer,
   );

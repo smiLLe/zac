@@ -64,7 +64,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
         widget: obj.data.getValue(zacContext),
         key: obj.key?.buildKey(zacContext),
       ),
-      map: (obj) => ZacWidgetFromMa(
+      map: (obj) => ZacWidgetFromMap(
         zacMap: obj.data,
         key: obj.key?.buildKey(zacContext),
       ),
@@ -98,8 +98,8 @@ class ZacWidget extends HookConsumerWidget {
   }
 }
 
-class ZacWidgetFromMa extends HookConsumerWidget {
-  const ZacWidgetFromMa({required this.zacMap, Key? key}) : super(key: key);
+class ZacWidgetFromMap extends HookConsumerWidget {
+  const ZacWidgetFromMap({required this.zacMap, Key? key}) : super(key: key);
 
   final ZacValue<Map> zacMap;
 
