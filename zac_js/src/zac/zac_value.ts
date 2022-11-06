@@ -1,22 +1,13 @@
 import { SharedValueFamily, ZacTypes, ZacConverter } from "../base";
 import { ZacTransformers } from "../generated";
 
-export class ZacValueRead<T> extends ZacConverter {
+type ZacValuePreferedConsume = "watch" | "read";
+
+export class ZacValue<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
     // ZacValue<int> to ZacValue<string> will result in an error.
     private ignoredProp: T | undefined;
 
-    static read(data: {
-        family: SharedValueFamily
-    }) {
-        return new ZacValueRead<ZacTypes>({
-            converter: 'z:1:ZacValue.read',
-            ...data,
-        });
-    }
-}
-
-export class ZacValue<T> extends ZacValueRead<T> {
     static new<T extends ZacTypes>(data: {
         value: T,
         transformer?: ZacTransformers,
@@ -26,53 +17,41 @@ export class ZacValue<T> extends ZacValueRead<T> {
             ...data,
         });
     }
-    static watch(data: {
+    static consume(data: {
         family: SharedValueFamily
+        transformer?: ZacTransformers,
+        select?: ZacTransformers,
+        forceConsume?: ZacValuePreferedConsume,
     }) {
         return new ZacValue<ZacTypes>({
-            converter: 'z:1:ZacValue.watch',
+            converter: 'z:1:ZacValue.consume',
             ...data,
         });
     }
 }
-
-export class ZacValueListRead<T> extends ZacConverter {
+export class ZacValueList<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
     // ZacValue<int> to ZacValue<string> will result in an error.
     private ignoredProp: T | undefined;
 
-    static read(data: {
-        family: SharedValueFamily,
-        transformer?: ZacTransformers
-    }) {
-        return new ZacValueList<ZacTypes>({
-            converter: 'z:1:ZacValue.read',
-            ...data,
-        });
-    }
-}
-
-
-export class ZacValueList<T> extends ZacValueListRead<T> {
     static new<T extends ZacTypes>(data: {
-        value: Array<ZacValue<T>>,
+        value: Array<T>,
         transformer?: ZacTransformers,
     }) {
-        return new ZacValueList<T>({
-            converter: 'z:1:ZacValue',
+        return new ZacValue<T>({
+            converter: 'z:1:ZacValueList',
             ...data,
         });
     }
-
-    static watch(data: {
-        family: SharedValueFamily,
+    static consume(data: {
+        family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
+        forceConsume?: ZacValuePreferedConsume,
     }) {
-        return new ZacValueList<ZacTypes>({
-            converter: 'z:1:ZacValue.watch',
+        return new ZacValue<ZacTypes>({
+            converter: 'z:1:ZacValueList.consume',
             ...data,
         });
     }
-
 }

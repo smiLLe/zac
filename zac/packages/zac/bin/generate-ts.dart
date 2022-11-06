@@ -309,7 +309,7 @@ export class ${b.className} extends ZacConverter${b.implements.isEmpty ? '' : ' 
     return '''
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DartDouble, DartInt, DartDateTime, ZacTypes, ZacConverter } from "./base"
-import { ZacValue, ZacValueList, ZacValueRead } from "./zac/zac_value"
+import { ZacValue, ZacValueList } from "./zac/zac_value"
 
 $abstractsTpl
 $builderTpl

@@ -41,6 +41,22 @@ void main() {
         ZacValue<FlutterSizedBox>(value: FlutterSizedBox()));
 
     expect(
+        ZacValue<int>.fromJson({
+          'converter': 'z:1:ZacValue.consume',
+          'family': 'fam',
+        }),
+        ZacValue<int>.consume(family: 'fam'));
+
+    expect(
+        ZacValue<int>.fromJson({
+          'converter': 'z:1:ZacValue.consume',
+          'family': 'fam',
+          'forceConsume': 'read'
+        }),
+        ZacValue<int>.consume(
+            family: 'fam', forceConsume: ZacValuePreferedConsume.read));
+
+    expect(
         () => ZacValue<int>.fromJson(<String, dynamic>{
               'converter': 'z:1:ZacValue',
               'value': 'not valid'
@@ -382,6 +398,15 @@ void main() {
         ZacValueList<String>.fromJson(
             {'converter': 'z:1:ZacValueList.consume', 'family': 'fam'}),
         ZacValueList<String>.consume(family: 'fam'));
+
+    expect(
+        ZacValueList<String>.fromJson({
+          'converter': 'z:1:ZacValueList.consume',
+          'family': 'fam',
+          'forceConsume': 'read'
+        }),
+        ZacValueList<String>.consume(
+            family: 'fam', forceConsume: ZacValuePreferedConsume.read));
 
     expect(
         () => ZacValueList<bool>.fromJson(false),
