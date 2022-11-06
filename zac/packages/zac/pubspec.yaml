@@ -1,0 +1,32 @@
+name: zac
+description: Dynamically create Widgets based on JSON
+version: 0.1.0-dev.3
+homepage: https://github.com/smiLLe/zac
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.6.0
+  flutter_hooks: ^0.18.5+1
+  riverpod: ^2.1.1
+  hooks_riverpod: ^2.1.1
+  collection: ^1.16.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  analyzer: ">=4.6.0 <6.0.0"
+  flutter_lints: ^2.0.0
+  freezed: ^2.2.0
+  json_serializable: ^6.3.2
+  build_runner: ^2.2.0
+  mockito: ^5.1.0
+  args: ^2.3.1
+
+
+flutter:
