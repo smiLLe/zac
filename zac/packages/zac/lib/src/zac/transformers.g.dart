@@ -86,6 +86,17 @@ _$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
       $type: json['converter'] as String?,
     );
 
+_$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
+      ZacValue<String>.fromJson(json['key'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_MapFromStringFlutterWidget _$$_MapFromStringFlutterWidgetFromJson(
+        Map<String, dynamic> json) =>
+    _$_MapFromStringFlutterWidget(
+      $type: json['converter'] as String?,
+    );
+
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
       transformer: ZacTransformers.fromJson(json['transformer'] as Object),

@@ -361,9 +361,6 @@ void main() {
   testWidgets('Create ZacValueList', (tester) async {
     final now = DateTime.now();
 
-    expect(ZacValueList<String?>.fromJson([null]),
-        ZacValueList<String?>(values: [null]));
-
     expect(ZacValueList<bool>.fromJson([false]),
         ZacValueList<bool>(values: [false]));
 
@@ -430,6 +427,31 @@ void main() {
             'error message',
             contains(
                 'It was not possible to create a "ZacValueList<int>" from "z:1:ZacValueList".'))));
+
+    late ZacContext zacContext;
+    await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'c',
+          family: 'shared',
+          child: LeakContext(cb: (c) {
+            zacContext = c;
+          }),
+        ));
+
+    expect(
+        ZacValueList<String>.fromJson([
+          'a',
+          {
+            'converter': 'z:1:ZacValue',
+            'value': 'b',
+          },
+          {
+            'converter': 'z:1:ZacValue.consume',
+            'family': 'shared',
+          },
+        ]).getValue(zacContext),
+        ['a', 'b', 'c']);
   });
 
   group('Consume SharedValue as ZacValueList', () {
@@ -778,12 +800,463 @@ void main() {
       expect(
           () =>
               ZacValueList<int>.consume(family: 'shared').getValue(zacContext),
-          throwsA(isA<StateError>().having(
+          throwsA(isA<AssertionError>().having(
               (p0) => p0.message,
               'error message',
               contains(
                   'It was not possible to return a SharedValue in "ZacValueList<int>" for family "shared".'))));
     });
+  });
+
+  testWidgets('Create ZacValueMap', (tester) async {
+    final now = DateTime.now();
+
+    expect(ZacValueMap<bool>.fromJson({'a': false}),
+        ZacValueMap<bool>(values: {'a': false}));
+
+    expect(ZacValueMap<int>.fromJson({'a': 5, 'b': 5.1}),
+        ZacValueMap<int>(values: {'a': 5, 'b': 5}));
+
+    expect(ZacValueMap<double>.fromJson({'a': 5, 'b': 5.1}),
+        ZacValueMap<double>(values: {'a': 5.0, 'b': 5.1}));
+
+    expect(ZacValueMap<String>.fromJson({'a': 'hello'}),
+        ZacValueMap<String>(values: {'a': 'hello'}));
+
+    expect(ZacValueMap<DateTime>.fromJson({'a': now.toIso8601String()}),
+        ZacValueMap<DateTime>(values: {'a': now}));
+
+    expect(
+        ZacValueMap<FlutterSizedBox>.fromJson({
+          'a': {'converter': 'f:1:SizedBox'}
+        }),
+        ZacValueMap<FlutterSizedBox>(values: {'a': FlutterSizedBox()}));
+
+    expect(
+        ZacValueMap<FlutterSizedBox>.fromJson({
+          'converter': 'z:1:ZacValueMap',
+          'values': {
+            'a': {'converter': 'f:1:SizedBox'}
+          }
+        }),
+        ZacValueMap<FlutterSizedBox>(values: {'a': FlutterSizedBox()}));
+
+    expect(
+        ZacValueMap<String>.fromJson(
+            {'converter': 'z:1:ZacValueMap.consume', 'family': 'fam'}),
+        ZacValueMap<String>.consume(family: 'fam'));
+
+    expect(
+        ZacValueMap<String>.fromJson({
+          'converter': 'z:1:ZacValueMap.consume',
+          'family': 'fam',
+          'forceConsume': {'converter': 'z:1:ZacValueConsume.read'}
+        }),
+        ZacValueMap<String>.consume(
+            family: 'fam', forceConsume: const ZacValueConsumeType.read()));
+
+    expect(
+        () => ZacValueMap<bool>.fromJson(false),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+            contains('Unsupported type in ZacValueMap<bool>'))));
+
+    expect(
+        () => ZacValueMap<bool>.fromJson(5),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+            contains('Unsupported type in ZacValueMap<bool>'))));
+
+    expect(
+        () => ZacValueMap<bool>.fromJson(<dynamic>[]),
+        throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+            contains('Unsupported type in ZacValueMap<bool>'))));
+
+    expect(
+        () => ZacValueMap<int>.fromJson({'a': 'a', 'b': 5}),
+        throwsA(isA<AssertionError>().having(
+            (p0) => p0.message,
+            'error message',
+            contains(
+                'It was not possible to create a "ZacValueMap<int>" from "z:1:ZacValueMap".'))));
+
+    late ZacContext zacContext;
+    await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 'c',
+          family: 'shared',
+          child: LeakContext(cb: (c) {
+            zacContext = c;
+          }),
+        ));
+
+    expect(
+        ZacValueMap<String>.fromJson({
+          'a': 'a',
+          'b': {
+            'converter': 'z:1:ZacValue',
+            'value': 'b',
+          },
+          'c': {
+            'converter': 'z:1:ZacValue.consume',
+            'family': 'shared',
+          },
+        }).getValue(zacContext),
+        {'a': 'a', 'b': 'b', 'c': 'c'});
+  });
+
+  group('Consume SharedValue as ZacValueMap', () {
+    testWidgets('which will watch for value updates by default',
+        (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(
+          tester,
+          SharedValueProviderBuilder(
+            family: 'shared',
+            value: {
+              'a': {'converter': 'f:1:Text', 'data': 'hello'}
+            },
+            itemTransformer: ZacTransformers([ConvertTransformer()]),
+            transformer: ZacTransformers(
+                [const MapTransformer.fromStringFlutterWidget()]),
+            autoCreate: true,
+            child: LeakContext(
+              cb: (c) => zacContext = c,
+            ),
+          ));
+
+      expect(
+          ZacValueMap<FlutterWidget>.consume(family: 'shared')
+              .getValue(zacContext),
+          {'a': FlutterText(ZacValue<String>.fromJson('hello'))});
+
+      SharedValue.update(
+          zacContext,
+          'shared',
+          (current) => <String, FlutterWidget>{
+                'a': FlutterText(ZacValue<String>(value: 'hello world'))
+              });
+      await tester.pumpAndSettle();
+
+      expect(
+          ZacValueMap<FlutterWidget>.consume(family: 'shared')
+              .getValue(zacContext),
+          {'a': FlutterText(ZacValue<String>.fromJson('hello world'))});
+    });
+
+    // testWidgets('which can force to watch for value update', (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               forceConsume: const ZacValueConsumeType.watch(),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world'))
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello world'), findsOneWidget);
+    // });
+
+    // testWidgets('which can read the value once', (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               forceConsume: const ZacValueConsumeType.read(),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world'))
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello'), findsOneWidget);
+    //   expect(find.text('hello world'), findsNothing);
+    // });
+
+    // testWidgets('which can transform the value and watch it', (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'},
+    //           {'converter': 'f:1:Text', 'data': 'world'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               transformer: ZacTransformers(
+    //                 [
+    //                   const IterableTransformer.take(1),
+    //                   const IterableTransformer.toList(),
+    //                   const ListTransformer.fromFlutterWidget()
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world')),
+    //             FlutterText(ZacValue<String>(value: 'foo bar')),
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello'), findsNothing);
+    //   expect(find.text('foo bar'), findsNothing);
+    //   expect(find.text('hello world'), findsOneWidget);
+    // });
+
+    // testWidgets('which can transform the value and read it', (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'},
+    //           {'converter': 'f:1:Text', 'data': 'world'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               forceConsume: const ZacValueConsumeType.read(),
+    //               transformer: ZacTransformers(
+    //                 [
+    //                   const IterableTransformer.take(1),
+    //                   const IterableTransformer.toList(),
+    //                   const ListTransformer.fromFlutterWidget()
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world')),
+    //             FlutterText(ZacValue<String>(value: 'foo bar')),
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello'), findsOneWidget);
+    //   expect(find.text('foo bar'), findsNothing);
+    //   expect(find.text('hello world'), findsNothing);
+    // });
+
+    // testWidgets('which can select a subset of the value and watch it',
+    //     (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'},
+    //           {'converter': 'f:1:Text', 'data': 'world'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               select: ZacTransformers(
+    //                 [
+    //                   const IterableTransformer.take(1),
+    //                   const IterableTransformer.toList(),
+    //                   const ListTransformer.fromFlutterWidget()
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world')),
+    //             FlutterText(ZacValue<String>(value: 'foo bar')),
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello'), findsNothing);
+    //   expect(find.text('foo bar'), findsNothing);
+    //   expect(find.text('hello world'), findsOneWidget);
+    // });
+
+    // testWidgets('which can select a subset of the value and read it',
+    //     (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: [
+    //           {'converter': 'f:1:Text', 'data': 'hello'},
+    //           {'converter': 'f:1:Text', 'data': 'world'}
+    //         ],
+    //         itemTransformer: ZacTransformers([ConvertTransformer()]),
+    //         transformer:
+    //             ZacTransformers([const ListTransformer.fromFlutterWidget()]),
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //           child: FlutterColumn(
+    //             children: ZacValueList<FlutterWidget>.consume(
+    //               family: 'shared',
+    //               forceConsume: const ZacValueConsumeType.read(),
+    //               select: ZacTransformers(
+    //                 [
+    //                   const IterableTransformer.take(1),
+    //                   const IterableTransformer.toList(),
+    //                   const ListTransformer.fromFlutterWidget()
+    //                 ],
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ));
+
+    //   expect(find.text('hello'), findsOneWidget);
+
+    //   SharedValue.update(
+    //       zacContext,
+    //       'shared',
+    //       (current) => <FlutterWidget>[
+    //             FlutterText(ZacValue<String>(value: 'hello world')),
+    //             FlutterText(ZacValue<String>(value: 'foo bar')),
+    //           ]);
+    //   await tester.pumpAndSettle();
+
+    //   expect(find.text('hello'), findsOneWidget);
+    //   expect(find.text('foo bar'), findsNothing);
+    //   expect(find.text('hello world'), findsNothing);
+    // });
+
+    // testWidgets('will throw if the consumed value is no list', (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: 'no list',
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //         ),
+    //       ));
+
+    //   expect(
+    //       () => ZacValueList<String>.consume(family: 'shared')
+    //           .getValue(zacContext),
+    //       throwsA(isA<StateError>().having(
+    //           (p0) => p0.message,
+    //           'error message',
+    //           contains(
+    //               'It was not possible to return a "ZacValueList<String>" because the consumed value was no List'))));
+    // });
+
+    // testWidgets(
+    //     'will throw if the consumed value does not match the requested type and cannot be transformed',
+    //     (tester) async {
+    //   late ZacContext zacContext;
+    //   await testZacWidget(
+    //       tester,
+    //       SharedValueProviderBuilder(
+    //         family: 'shared',
+    //         value: ['hello'],
+    //         autoCreate: true,
+    //         child: LeakContext(
+    //           cb: (c) => zacContext = c,
+    //         ),
+    //       ));
+
+    //   expect(
+    //       () =>
+    //           ZacValueList<int>.consume(family: 'shared').getValue(zacContext),
+    //       throwsA(isA<AssertionError>().having(
+    //           (p0) => p0.message,
+    //           'error message',
+    //           contains(
+    //               'It was not possible to return a SharedValue in "ZacValueList<int>" for family "shared".'))));
+    // });
   });
 
   testWidgets('pick a ZacValue and pass it to new actions as payload',

@@ -8,24 +8,24 @@ import {
 } from "./base";
 import { ZacValue, ZacValueList } from "./zac/zac_value";
 
-export abstract class Widget extends ZacConverter { }
-export abstract class DartShadow extends ZacConverter { }
-export abstract class Key extends ZacConverter { }
-export abstract class LocalKey extends ZacConverter implements Key { }
-export abstract class AlignmentGeometry extends ZacConverter { }
-export abstract class ShapeBorder extends ZacConverter { }
-export abstract class BoxBorder extends ZacConverter implements ShapeBorder { }
-export abstract class BorderRadiusGeometry extends ZacConverter { }
+export abstract class Widget extends ZacConverter {}
+export abstract class DartShadow extends ZacConverter {}
+export abstract class Key extends ZacConverter {}
+export abstract class LocalKey extends ZacConverter implements Key {}
+export abstract class AlignmentGeometry extends ZacConverter {}
+export abstract class ShapeBorder extends ZacConverter {}
+export abstract class BoxBorder extends ZacConverter implements ShapeBorder {}
+export abstract class BorderRadiusGeometry extends ZacConverter {}
 export abstract class OutlinedBorder
   extends ZacConverter
-  implements ShapeBorder { }
-export abstract class Decoration extends ZacConverter { }
-export abstract class EdgeInsetsGeometry extends ZacConverter { }
-export abstract class Route extends ZacConverter { }
-export abstract class RouteFactory extends ZacConverter { }
-export abstract class ZacAction extends ZacConverter { }
-export abstract class InputBorder extends ZacConverter implements ShapeBorder { }
-export abstract class ZacTransformer extends ZacConverter { }
+  implements ShapeBorder {}
+export abstract class Decoration extends ZacConverter {}
+export abstract class EdgeInsetsGeometry extends ZacConverter {}
+export abstract class Route extends ZacConverter {}
+export abstract class RouteFactory extends ZacConverter {}
+export abstract class ZacAction extends ZacConverter {}
+export abstract class InputBorder extends ZacConverter implements ShapeBorder {}
+export abstract class ZacTransformer extends ZacConverter {}
 export class ZacValueConsumeType extends ZacConverter {
   static read() {
     return new ZacValueConsumeType({
@@ -1119,7 +1119,8 @@ export class Alignment extends ZacConverter implements AlignmentGeometry {
 }
 export class AlignmentDirectional
   extends ZacConverter
-  implements AlignmentGeometry {
+  implements AlignmentGeometry
+{
   static new(data: {
     start: ZacValue<DartDouble> | DartDouble;
     y: ZacValue<DartDouble> | DartDouble;
@@ -1177,7 +1178,8 @@ export class AlignmentDirectional
 }
 export class FractionalOffset
   extends ZacConverter
-  implements AlignmentGeometry {
+  implements AlignmentGeometry
+{
   static new(data: {
     dx: ZacValue<DartDouble> | DartDouble;
     dy: ZacValue<DartDouble> | DartDouble;
@@ -1278,7 +1280,8 @@ export class CircleBorder extends ZacConverter implements OutlinedBorder {
 }
 export class RoundedRectangleBorder
   extends ZacConverter
-  implements OutlinedBorder {
+  implements OutlinedBorder
+{
   static new(data: { side?: BorderSide; borderRadius?: BorderRadiusGeometry }) {
     return new RoundedRectangleBorder({
       converter: "f:1:RoundedRectangleBorder",
@@ -1343,7 +1346,8 @@ export class EdgeInsets extends ZacConverter implements EdgeInsetsGeometry {
 }
 export class EdgeInsetsDirectional
   extends ZacConverter
-  implements EdgeInsetsGeometry {
+  implements EdgeInsetsGeometry
+{
   static all(data: { value: ZacValue<DartDouble> | DartDouble }) {
     return new EdgeInsetsDirectional({
       converter: "f:1:EdgeInsetsDirectional.all",
@@ -1791,7 +1795,8 @@ export class ZacWidgetBuilder extends ZacConverter implements Widget {
 }
 export class ZacStateMachineBuildStateBuilder
   extends ZacConverter
-  implements Widget {
+  implements Widget
+{
   static new(data: {
     key?: Key;
     family: ZacValue<string> | string;
@@ -1830,7 +1835,8 @@ export class SharedValueProviderBuilder extends ZacConverter implements Widget {
 }
 export class ZacStateMachineProviderBuilder
   extends ZacConverter
-  implements Widget {
+  implements Widget
+{
   static new(data: {
     key?: Key;
     family: ZacValue<string> | string;
@@ -3505,7 +3511,8 @@ export class IntrinsicHeight extends ZacConverter implements Widget {
 }
 export class ZacFlutterNavigatorActions
   extends ZacConverter
-  implements ZacAction {
+  implements ZacAction
+{
   static popUntilRouteName(data: {
     routeName: ZacValue<string> | string;
     navigatorState?: NavigatorState;
@@ -3530,7 +3537,8 @@ export class RouteFactoryRouteConfig extends ZacConverter {
 }
 export class RouteFactorySingleRoute
   extends ZacConverter
-  implements RouteFactory {
+  implements RouteFactory
+{
   static new(data: {
     routeConfig: RouteFactoryRouteConfig;
     provideArgsNamePrefix?: string;
@@ -3543,7 +3551,8 @@ export class RouteFactorySingleRoute
 }
 export class RouteFactoryFromRoutes
   extends ZacConverter
-  implements RouteFactory {
+  implements RouteFactory
+{
   static new(data: {
     routes: Record<string, RouteFactoryRouteConfig>;
     provideArgsNamePrefix?: string;
@@ -3647,7 +3656,8 @@ export class ZacStateMachineActions extends ZacConverter implements ZacAction {
 }
 export class ZacStateMachineTransformer
   extends ZacConverter
-  implements ZacTransformer {
+  implements ZacTransformer
+{
   static pickState() {
     return new ZacStateMachineTransformer({
       converter: "z:1:StateMachine:Transformer.pickState",
@@ -3741,10 +3751,22 @@ export class MapTransformer extends ZacConverter implements ZacTransformer {
       converter: "z:1:Transformer:Map<String, Object?>.from",
     });
   }
+  static key(data: { key: ZacValue<string> | string }) {
+    return new MapTransformer({
+      converter: "z:1:Transformer:Map[key]",
+      ...data,
+    });
+  }
+  static fromStringFlutterWidget() {
+    return new MapTransformer({
+      converter: "z:1:Transformer:Map<String, FlutterWidget>.from",
+    });
+  }
 }
 export class IterableTransformer
   extends ZacConverter
-  implements ZacTransformer {
+  implements ZacTransformer
+{
   static map(data: { transformer: ZacTransformers }) {
     return new IterableTransformer({
       converter: "z:1:Transformer:Iterable.map",
@@ -3848,6 +3870,36 @@ export class ObjectTransformer extends ZacConverter implements ZacTransformer {
   static isMap() {
     return new ObjectTransformer({
       converter: "z:1:Transformer:Object.isMap",
+    });
+  }
+  static isBool() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isBool",
+    });
+  }
+  static isString() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isString",
+    });
+  }
+  static isDouble() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isDouble",
+    });
+  }
+  static isInt() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isInt",
+    });
+  }
+  static isFlutterWidget() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isFlutterWidget",
+    });
+  }
+  static isNull() {
+    return new ObjectTransformer({
+      converter: "z:1:Transformer:Object.isNull",
     });
   }
   static equals(data: { other: ZacTypes | null }) {
@@ -4093,7 +4145,8 @@ export class ZacValueActions extends ZacConverter implements ZacAction {
 }
 export class ZacTemplateExpressionsTransformer
   extends ZacConverter
-  implements ZacTransformer {
+  implements ZacTransformer
+{
   static new(data: {
     expression: string;
     context?: Record<string, ZacValue<ZacTypes> | ZacTypes>;
@@ -4107,7 +4160,8 @@ export class ZacTemplateExpressionsTransformer
 }
 export class ZacFlutterGlobalKeyNavigatorStateProvider
   extends ZacConverter
-  implements Widget {
+  implements Widget
+{
   static new(data: {
     family: ZacTypes;
     child: Widget;

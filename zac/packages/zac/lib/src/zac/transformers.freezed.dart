@@ -320,6 +320,10 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
       return _MapFromStringObject.fromJson(json);
     case 'z:1:Transformer:Map<String, Object?>.from':
       return _MapFromStringNullObject.fromJson(json);
+    case 'z:1:Transformer:Map[key]':
+      return _MapKey.fromJson(json);
+    case 'z:1:Transformer:Map<String, FlutterWidget>.from':
+      return _MapFromStringFlutterWidget.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'converter', 'MapTransformer',
@@ -344,6 +348,9 @@ mixin _$MapTransformer {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -392,6 +399,9 @@ class _$_MapValues extends _MapValues {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return values(this);
   }
@@ -449,6 +459,9 @@ class _$_MapKeys extends _MapKeys {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return keys(this);
   }
@@ -505,6 +518,9 @@ class _$_MapEntries extends _MapEntries {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return entries(this);
   }
@@ -562,6 +578,9 @@ class _$_MapLength extends _MapLength {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return length(this);
   }
@@ -619,6 +638,9 @@ class _$_MapIsEmpty extends _MapIsEmpty {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return isEmpty(this);
   }
@@ -676,6 +698,9 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return isNotEmpty(this);
   }
@@ -738,6 +763,9 @@ class _$_MapContainsKey extends _MapContainsKey {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return containsKey(this);
   }
@@ -803,6 +831,9 @@ class _$_MapContainsValue extends _MapContainsValue {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return containsValue(this);
   }
@@ -875,6 +906,9 @@ class _$_MapMapper extends _MapMapper {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return mapper(this);
   }
@@ -937,6 +971,9 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return fromObjectObject(this);
   }
@@ -994,6 +1031,9 @@ class _$_MapFromStringObject extends _MapFromStringObject {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return fromStringObject(this);
   }
@@ -1052,6 +1092,9 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
     required TResult Function(_MapFromStringObject value) fromStringObject,
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
   }) {
     return fromStringNullObject(this);
   }
@@ -1063,6 +1106,133 @@ abstract class _MapFromStringNullObject extends MapTransformer {
 
   factory _MapFromStringNullObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromStringNullObject.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapKey extends _MapKey {
+  const _$_MapKey(this.key, {final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map[key]',
+        super._();
+
+  factory _$_MapKey.fromJson(Map<String, dynamic> json) =>
+      _$$_MapKeyFromJson(json);
+
+  @override
+  final ZacValue<String> key;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.key(key: $key)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapKey &&
+            (identical(other.key, key) || other.key == key));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, key);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
+  }) {
+    return key(this);
+  }
+}
+
+abstract class _MapKey extends MapTransformer {
+  const factory _MapKey(final ZacValue<String> key) = _$_MapKey;
+  const _MapKey._() : super._();
+
+  factory _MapKey.fromJson(Map<String, dynamic> json) = _$_MapKey.fromJson;
+
+  ZacValue<String> get key;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapFromStringFlutterWidget extends _MapFromStringFlutterWidget {
+  const _$_MapFromStringFlutterWidget({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map<String, FlutterWidget>.from',
+        super._();
+
+  factory _$_MapFromStringFlutterWidget.fromJson(Map<String, dynamic> json) =>
+      _$$_MapFromStringFlutterWidgetFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.fromStringFlutterWidget()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapFromStringFlutterWidget);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
+  }) {
+    return fromStringFlutterWidget(this);
+  }
+}
+
+abstract class _MapFromStringFlutterWidget extends MapTransformer {
+  const factory _MapFromStringFlutterWidget() = _$_MapFromStringFlutterWidget;
+  const _MapFromStringFlutterWidget._() : super._();
+
+  factory _MapFromStringFlutterWidget.fromJson(Map<String, dynamic> json) =
+      _$_MapFromStringFlutterWidget.fromJson;
 }
 
 IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {

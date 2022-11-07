@@ -118,6 +118,8 @@ Map<String, Convert> allConverters = const {
   MapTransformer.unionValueFromObjectObject: MapTransformer.fromJson,
   MapTransformer.unionValueFromStringNullObject: MapTransformer.fromJson,
   MapTransformer.unionValueFromStringObject: MapTransformer.fromJson,
+  MapTransformer.unionValueFromStringFlutterWidget: MapTransformer.fromJson,
+  MapTransformer.unionValueKey: MapTransformer.fromJson,
   NumTransformer.unionValue: NumTransformer.fromJson,
   NumTransformer.unionValueToInt: NumTransformer.fromJson,
   NumTransformer.unionValueAbs: NumTransformer.fromJson,

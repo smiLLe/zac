@@ -12,6 +12,13 @@ part 'zac_value.g.dart';
 
 Type _typeOf<T>() => T;
 
+abstract class ZacGetValue {
+  Object? getValue(
+    ZacContext zacContext, {
+    ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
+  });
+}
+
 @defaultConverterFreezed
 @ZacGenerate(order: zacGenerateOrderFirst)
 class ZacValueConsumeType with _$ZacValueConsumeType {
@@ -41,7 +48,7 @@ extension ZacValueListFlutterWidget on ZacValueList<FlutterWidget> {
 }
 
 @defaultConverterFreezed
-class ZacValue<T> with _$ZacValue<T> {
+class ZacValue<T> with _$ZacValue<T> implements ZacGetValue {
   const ZacValue._();
 
   static const String unionValue = 'z:1:ZacValue';
@@ -95,7 +102,8 @@ $json''');
     ZacValueConsumeType? forceConsume,
   }) = _ZacValueConsume<T>;
 
-  T _getSimple(ZacContext zacContext, _ZacValue<T> simple) {
+  T _getSimple(ZacContext zacContext, _ZacValue<T> simple,
+      ZacValueConsumeType prefered) {
     if (true == transformer?.transformers.isNotEmpty) {
       final transformed = transformer!
           .transform(ZacTransformValue(simple.value), zacContext, null);
@@ -190,19 +198,20 @@ $consumedValue
     return transformedValue;
   }
 
+  @override
   T getValue(
     ZacContext zacContext, {
     ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
   }) {
     return map<T>(
-      (obj) => _getSimple(zacContext, obj),
+      (obj) => _getSimple(zacContext, obj, prefered),
       consume: (obj) => _getShared(zacContext, obj, prefered),
     );
   }
 }
 
 @defaultConverterFreezed
-class ZacValueList<T> with _$ZacValueList<T> {
+class ZacValueList<T> with _$ZacValueList<T> implements ZacGetValue {
   const ZacValueList._();
 
   static const String unionValue = 'z:1:ZacValueList';
@@ -210,6 +219,7 @@ class ZacValueList<T> with _$ZacValueList<T> {
 
   factory ZacValueList.fromJson(Object? data) {
     late Map<String, dynamic> json;
+
     if (data is List) {
       json = <String, dynamic>{
         'converter': ZacValueList.unionValue,
@@ -233,9 +243,17 @@ class ZacValueList<T> with _$ZacValueList<T> {
     }
 
     if (json[converterKey] == ZacValueList.unionValue) {
-      json['values'] = (json['values'] as List<Object?>)
-          .map<Object?>((Object? e) => _mapValue<T>(data: e))
-          .toList();
+      json['values'] =
+          (json['values'] as List<Object?>).map<Object?>((Object? item) {
+        /// allow ZacValue
+        if (ConverterHelper.isConverter(item) &&
+            [ZacValue.unionValue, ZacValue.unionValueConsume].contains(
+                (item as Map<String, dynamic>)[converterKey] as String)) {
+          return ZacValue<T>.fromJson(item);
+        }
+
+        return _mapValue<T>(data: item);
+      }).toList();
     }
 
     final zacValueList = _$ZacValueListFromJson<T>(json);
@@ -244,12 +262,16 @@ class ZacValueList<T> with _$ZacValueList<T> {
           true == zacValueList.transformer?.transformers.isNotEmpty) {
         return true;
       }
-      final typedList = zacValueList.values.whereType<T>();
-      if (typedList.length != zacValueList.values.length) {
+
+      final zacValues = zacValueList.values.whereType<ZacValue<T>>();
+      final typeValues = zacValueList.values.whereType<T>();
+
+      if (zacValueList.values.length !=
+          (zacValues.length + typeValues.length)) {
         throw AssertionError('''
 It was not possible to create a "${_typeOf<ZacValueList<T>>()}" from "${json[converterKey]}".
-Not all values were of the expected  type "$T".
-Either set all values to "$T" or add a transformer.
+Not all values were of the expected  type "$T" or "${_typeOf<ZacValue<T>>()}".
+No transformers were used.
 $json''');
       }
       return true;
@@ -272,27 +294,58 @@ $json''');
     ZacValueConsumeType? forceConsume,
   }) = _ZacValueListConsume<T>;
 
-  List<T> _getSimple(ZacContext zacContext, _ZacValueList<T> simple) {
-    if (true == transformer?.transformers.isNotEmpty) {
-      final transformed = transformer!
-          .transform(ZacTransformValue(simple.values), zacContext, null);
-
-      if (transformed is! List<T>) {
-        throw StateError('''
-It was not possible to return a value of type ${List<T>} in ${_typeOf<ZacValueList<T>>()}.
-Instead the returned value was of runtimeType ${transformed.runtimeType}.
-Value: $transformed''');
-      }
-      return transformed;
+  List<Object?> _expectList(Object? obj) {
+    if (obj is! List) {
+      throw StateError('''
+It was not possible to return a "${_typeOf<ZacValueList<T>>()}" because the consumed value was no List.
+Instead it was: $obj
+''');
     }
 
-    return List<T>.from(simple.values);
+    return obj;
+  }
+
+  List<Object?> _mapValues(Iterable<Object?> values, ZacContext zacContext,
+      ZacValueConsumeType prefered) {
+    return values.map((e) {
+      if (e is! ZacGetValue) return e;
+      return e.getValue(zacContext, prefered: prefered);
+    }).toList();
+  }
+
+  List<T> _getSimple(ZacContext zacContext, _ZacValueList<T> simple,
+      {required ZacValueConsumeType prefered}) {
+    var list = _mapValues(simple.values, zacContext, prefered);
+
+    list = _expectList(
+        transformer?.transform(ZacTransformValue(list), zacContext, null) ??
+            list);
+
+    assert(() {
+      for (var element in list) {
+        if (element is T) continue;
+        final alltransformerTypers =
+            transformer?.transformers.map((e) => e.runtimeType);
+        final transformerError = null == alltransformerTypers ||
+                alltransformerTypers.isEmpty
+            ? 'No transformers were used on the List.'
+            : 'Transformers used on List: "${alltransformerTypers.join(' > ')}"';
+        throw AssertionError('''
+It was not possible to return a $SharedValue in "${_typeOf<ZacValueList<T>>()}".
+At least one element (${element.runtimeType}) in the List was not of type $T.
+$transformerError
+The element: $element''');
+      }
+      return true;
+    }(), '');
+
+    return List<T>.from(list);
   }
 
   List<T> _getShared(ZacContext zacContext, _ZacValueListConsume<T> consume,
       ZacValueConsumeType prefered) {
-    final consumedValue =
-        (consume.forceConsume ?? prefered).map<SharedValueType>(
+    var list =
+        _expectList((consume.forceConsume ?? prefered).map<SharedValueType>(
       read: (_) {
         if (null == consume.select) {
           return zacContext.ref
@@ -316,64 +369,242 @@ Value: $transformed''');
                   .transform(ZacTransformValue(value), zacContext, null)));
         }
       },
-    );
+    ));
 
-    if (consumedValue is! List) {
-      throw StateError('''
-It was not possible to return a "${_typeOf<ZacValueList<T>>()}" because the consumed value was no List.
-Instead it was: $consumedValue
-''');
-    }
+    list = _mapValues(list, zacContext, prefered);
 
-    if (consumedValue is List<T> &&
-        (null == transformer || true == transformer?.transformers.isEmpty)) {
-      return consumedValue;
-    }
+    list = _expectList(
+        transformer?.transform(ZacTransformValue(list), zacContext, null) ??
+            list);
 
-    if (null == transformer || true == transformer?.transformers.isEmpty) {
-      throw StateError('''
+    assert(() {
+      for (var element in list) {
+        if (element is T) continue;
+        final alltransformerTypers =
+            transformer?.transformers.map((e) => e.runtimeType);
+        final transformerError = null == alltransformerTypers ||
+                alltransformerTypers.isEmpty
+            ? 'No transformers were used on the List.'
+            : 'Transformers used on List: "${alltransformerTypers.join(' > ')}"';
+        throw AssertionError('''
 It was not possible to return a $SharedValue in "${_typeOf<ZacValueList<T>>()}" for family "${consume.family}".
-The consumed $SharedValue was of runtimeType: "${consumedValue.runtimeType}".
-It was expected to return a type of: "${List<T>}".
+At least one element (${element.runtimeType}) in the List was not of type $T.
+$transformerError
+The element: $element''');
+      }
+      return true;
+    }(), '');
 
-This error was created because there are no transformers to use.
-Add a transformer in order to transform the $SharedValue into a type of: "$T".
-
-The consumed $SharedValue: $consumedValue
-''');
-    }
-
-    final transformedValue = transformer!
-        .transform(ZacTransformValue(consumedValue), zacContext, null);
-
-    if (transformedValue is! List<T>) {
-      final alltransformerTypers =
-          transformer!.transformers.map((e) => e.runtimeType);
-      throw StateError('''
-Unexpected type found after transforming a consumed $SharedValue in "${_typeOf<ZacValueList<T>>()}" for family "${consume.family}".
-The consumed $SharedValue was of runtimeType: "${consumedValue.runtimeType}".
-The $SharedValue after transformation was of runtimeType: "${transformedValue.runtimeType}".
-The expected type was: "${List<T>}".
-The following transformer were used: 
-${alltransformerTypers.join(' > ')}
-
-The transformed value:
-$transformedValue
-
-The consumed $SharedValue:
-$consumedValue
-''');
-    }
-
-    return transformedValue;
+    return List<T>.from(list);
   }
 
+  @override
   List<T> getValue(
     ZacContext zacContext, {
     ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
   }) {
     return map<List<T>>(
-      (obj) => _getSimple(zacContext, obj),
+      (obj) => _getSimple(zacContext, obj, prefered: prefered),
+      consume: (obj) => _getShared(zacContext, obj, prefered),
+    );
+  }
+}
+
+@defaultConverterFreezed
+class ZacValueMap<T> with _$ZacValueMap<T> implements ZacGetValue {
+  const ZacValueMap._();
+
+  static const String unionValue = 'z:1:ZacValueMap';
+  static const String unionValueConsume = 'z:1:ZacValueMap.consume';
+
+  factory ZacValueMap.fromJson(Object? data) {
+    late Map<String, dynamic> json;
+
+    if (data is Map && !ConverterHelper.isConverter(data)) {
+      json = <String, dynamic>{
+        'converter': ZacValueMap.unionValue,
+        'values': Map<String, Object?>.from(data),
+      };
+    } else if (ConverterHelper.isConverter(data) &&
+        [ZacValueMap.unionValue, ZacValueMap.unionValueConsume]
+            .contains((data as Map<String, dynamic>)[converterKey] as String)) {
+      json = data;
+
+      if (json[converterKey] == ZacValueMap.unionValue) {
+        if (json['values'] is! Map) {
+          throw StateError(
+              'The values property in ${_typeOf<ZacValueMap<T>>()} was no Map: $json');
+        }
+        json['values'] = Map<String, Object?>.from(json['values'] as Map);
+      }
+    } else {
+      throw StateError(
+          'Unsupported type in ${_typeOf<ZacValueMap<T>>()}. $data');
+    }
+
+    if (json[converterKey] == ZacValueMap.unionValue) {
+      json['values'] = (json['values'] as Map<String, Object?>)
+          .map<String, Object?>((String key, Object? value) {
+        /// allow ZacValue
+        if (ConverterHelper.isConverter(value) &&
+            [ZacValue.unionValue, ZacValue.unionValueConsume].contains(
+                (value as Map<String, dynamic>)[converterKey] as String)) {
+          return MapEntry(key, ZacValue<T>.fromJson(value));
+        }
+
+        return MapEntry(key, _mapValue<T>(data: value));
+      });
+    }
+
+    final zacValueMap = _$ZacValueMapFromJson<T>(json);
+    assert(() {
+      if (zacValueMap is! _ZacValueMap<T> ||
+          true == zacValueMap.transformer?.transformers.isNotEmpty) {
+        return true;
+      }
+
+      final zacValues = zacValueMap.values.values.whereType<ZacValue<T>>();
+      final typeValues = zacValueMap.values.values.whereType<T>();
+
+      if (zacValueMap.values.length != (zacValues.length + typeValues.length)) {
+        throw AssertionError('''
+It was not possible to create a "${_typeOf<ZacValueMap<T>>()}" from "${json[converterKey]}".
+Not all values were of the expected  type "$T" or "${_typeOf<ZacValue<T>>()}".
+No transformers were used.
+$json''');
+      }
+      return true;
+    }(), '');
+
+    return zacValueMap;
+  }
+
+  @FreezedUnionValue(ZacValueMap.unionValue)
+  factory ZacValueMap({
+    required Map<String, Object?> values,
+    ZacTransformers? transformer,
+  }) = _ZacValueMap<T>;
+
+  @FreezedUnionValue(ZacValueMap.unionValueConsume)
+  factory ZacValueMap.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    ZacValueConsumeType? forceConsume,
+  }) = _ZacValueMapConsume<T>;
+
+  Map<String, Object?> _expectMap(Object? obj) {
+    if (obj is! Map<String, Object?>) {
+      throw StateError('''
+It was not possible to return a "${_typeOf<ZacValueMap<T>>()}" because the consumed value was no Map.
+Instead it was: $obj
+''');
+    }
+
+    return obj;
+  }
+
+  Map<String, Object?> _mapValues(Map<String, dynamic> map,
+      ZacContext zacContext, ZacValueConsumeType prefered) {
+    return map.map((key, Object? value) {
+      if (value is! ZacGetValue) return MapEntry<String, Object?>(key, value);
+      return MapEntry<String, Object?>(
+          key, value.getValue(zacContext, prefered: prefered));
+    });
+  }
+
+  Map<String, T> _getSimple(ZacContext zacContext, _ZacValueMap<T> simple,
+      {required ZacValueConsumeType prefered}) {
+    var map = _mapValues(simple.values, zacContext, prefered);
+
+    map = _expectMap(
+        transformer?.transform(ZacTransformValue(map), zacContext, null) ??
+            map);
+
+    assert(() {
+      for (var element in map.values) {
+        if (element is T) continue;
+        final alltransformerTypers =
+            transformer?.transformers.map((e) => e.runtimeType);
+        final transformerError = null == alltransformerTypers ||
+                alltransformerTypers.isEmpty
+            ? 'No transformers were used on the Map.'
+            : 'Transformers used on Map: "${alltransformerTypers.join(' > ')}"';
+        throw AssertionError('''
+It was not possible to return a $SharedValue in "${_typeOf<ZacValueMap<T>>()}".
+At least one element (${element.runtimeType}) in the Map was not of type $T.
+$transformerError
+The element: $element''');
+      }
+      return true;
+    }(), '');
+
+    return Map<String, T>.from(map);
+  }
+
+  Map<String, T> _getShared(ZacContext zacContext,
+      _ZacValueMapConsume<T> consume, ZacValueConsumeType prefered) {
+    var map =
+        _expectMap((consume.forceConsume ?? prefered).map<SharedValueType>(
+      read: (_) {
+        if (null == consume.select) {
+          return zacContext.ref
+              .read<SharedValueType>(SharedValue.provider(consume.family));
+        } else {
+          return consume.select!.transform(
+              ZacTransformValue(zacContext.ref
+                  .read<SharedValueType>(SharedValue.provider(consume.family))),
+              zacContext,
+              null);
+        }
+      },
+      watch: (_) {
+        if (null == consume.select) {
+          return zacContext.ref
+              .watch<SharedValueType>(SharedValue.provider(consume.family));
+        } else {
+          return zacContext.ref.watch<SharedValueType>(
+              SharedValue.provider(consume.family).select((value) => consume
+                  .select!
+                  .transform(ZacTransformValue(value), zacContext, null)));
+        }
+      },
+    ));
+
+    map = _mapValues(map, zacContext, prefered);
+
+    map = _expectMap(
+        transformer?.transform(ZacTransformValue(map), zacContext, null) ??
+            map);
+
+    assert(() {
+      for (var element in map.values) {
+        if (element is T) continue;
+        final alltransformerTypers =
+            transformer?.transformers.map((e) => e.runtimeType);
+        final transformerError = null == alltransformerTypers ||
+                alltransformerTypers.isEmpty
+            ? 'No transformers were used on the Map.'
+            : 'Transformers used on Map: "${alltransformerTypers.join(' > ')}"';
+        throw AssertionError('''
+It was not possible to return a $SharedValue in "${_typeOf<ZacValueList<T>>()}" for family "${consume.family}".
+At least one element (${element.runtimeType}) in the Map was not of type $T.
+$transformerError
+The element: $element''');
+      }
+      return true;
+    }(), '');
+
+    return Map<String, T>.from(map);
+  }
+
+  @override
+  Map<String, T> getValue(
+    ZacContext zacContext, {
+    ZacValueConsumeType prefered = const ZacValueConsumeType.watch(),
+  }) {
+    return map<Map<String, T>>(
+      (obj) => _getSimple(zacContext, obj, prefered: prefered),
       consume: (obj) => _getShared(zacContext, obj, prefered),
     );
   }

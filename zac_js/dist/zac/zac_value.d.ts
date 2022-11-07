@@ -16,7 +16,22 @@ export declare class ZacValue<T> extends ZacConverter {
 export declare class ZacValueList<T> extends ZacConverter {
     private ignoredProp;
     static new<T extends ZacTypes>(data: {
-        value: Array<T>;
+        values: Array<T | ZacValue<T>>;
+        transformer?: ZacTransformers;
+    }): ZacValueList<T>;
+    static consume(data: {
+        family: SharedValueFamily;
+        transformer?: ZacTransformers;
+        select?: ZacTransformers;
+        forceConsume?: ZacValueConsumeType;
+    }): ZacValueList<ZacTypes>;
+}
+export declare class ZacValueMap<T> extends ZacConverter {
+    private ignoredProp;
+    static new<T extends ZacTypes>(data: {
+        values: {
+            [key: string]: T | ZacValue<T>;
+        };
         transformer?: ZacTransformers;
     }): ZacValue<T>;
     static consume(data: {
@@ -24,5 +39,5 @@ export declare class ZacValueList<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: ZacValueConsumeType;
-    }): ZacValue<ZacTypes>;
+    }): ZacValueMap<ZacTypes>;
 }

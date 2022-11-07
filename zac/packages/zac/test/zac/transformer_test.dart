@@ -710,6 +710,48 @@ void main() {
               null),
           isA<Map<String, Object>>());
     });
+
+    test('.from() of type <String, FlutterWidget>', () {
+      _expectFromJson<MapTransformer>(
+        fromJson: MapTransformer.fromJson,
+        converter: 'z:1:Transformer:Map<String, FlutterWidget>.from',
+        equals: const MapTransformer.fromStringFlutterWidget(),
+      );
+
+      expect(
+          () => const MapTransformer.fromStringFlutterWidget()
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          const MapTransformer.fromStringFlutterWidget().transform(
+              ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
+              FakeZacOrigin(),
+              null),
+          isA<Map<String, FlutterWidget>>());
+    });
+
+    test('get value in map from key', () {
+      _expectFromJson<MapTransformer>(
+          fromJson: MapTransformer.fromJson,
+          converter: 'z:1:Transformer:Map[key]',
+          equals: MapTransformer.key(ZacValue<String>.fromJson('nameOfKey')),
+          props: <String, dynamic>{
+            'key': 'nameOfKey',
+          });
+
+      expect(
+          () => MapTransformer.key(ZacValue<String>.fromJson('nameOfKey'))
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          MapTransformer.key(ZacValue<String>.fromJson('foo')).transform(
+              ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
+              FakeZacOrigin(),
+              null),
+          isA<FlutterWidget>());
+    });
   });
 
   group('Object', () {

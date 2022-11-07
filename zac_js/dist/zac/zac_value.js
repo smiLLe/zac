@@ -9,9 +9,17 @@ export class ZacValue extends ZacConverter {
 }
 export class ZacValueList extends ZacConverter {
     static new(data) {
-        return new ZacValue(Object.assign({ converter: 'z:1:ZacValueList' }, data));
+        return new ZacValueList(Object.assign({ converter: 'z:1:ZacValueList' }, data));
     }
     static consume(data) {
-        return new ZacValue(Object.assign({ converter: 'z:1:ZacValueList.consume' }, data));
+        return new ZacValueList(Object.assign({ converter: 'z:1:ZacValueList.consume' }, data));
+    }
+}
+export class ZacValueMap extends ZacConverter {
+    static new(data) {
+        return new ZacValue(Object.assign({ converter: 'z:1:ZacValueMap' }, data));
+    }
+    static consume(data) {
+        return new ZacValueMap(Object.assign({ converter: 'z:1:ZacValueMap.consume' }, data));
     }
 }

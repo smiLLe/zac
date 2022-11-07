@@ -33,10 +33,10 @@ export class ZacValueList<T> extends ZacConverter {
     private ignoredProp: T | undefined;
 
     static new<T extends ZacTypes>(data: {
-        value: Array<T>,
+        values: Array<T | ZacValue<T>>,
         transformer?: ZacTransformers,
     }) {
-        return new ZacValue<T>({
+        return new ZacValueList<T>({
             converter: 'z:1:ZacValueList',
             ...data,
         });
@@ -47,8 +47,34 @@ export class ZacValueList<T> extends ZacConverter {
         select?: ZacTransformers,
         forceConsume?: ZacValueConsumeType,
     }) {
-        return new ZacValue<ZacTypes>({
+        return new ZacValueList<ZacTypes>({
             converter: 'z:1:ZacValueList.consume',
+            ...data,
+        });
+    }
+}
+export class ZacValueMap<T> extends ZacConverter {
+    // The generic has to be used in some way so that assigning
+    // ZacValue<int> to ZacValue<string> will result in an error.
+    private ignoredProp: T | undefined;
+
+    static new<T extends ZacTypes>(data: {
+        values: { [key: string]: T | ZacValue<T> },
+        transformer?: ZacTransformers,
+    }) {
+        return new ZacValue<T>({
+            converter: 'z:1:ZacValueMap',
+            ...data,
+        });
+    }
+    static consume(data: {
+        family: SharedValueFamily
+        transformer?: ZacTransformers,
+        select?: ZacTransformers,
+        forceConsume?: ZacValueConsumeType,
+    }) {
+        return new ZacValueMap<ZacTypes>({
+            converter: 'z:1:ZacValueMap.consume',
             ...data,
         });
     }

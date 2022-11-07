@@ -1972,6 +1972,10 @@ export declare class MapTransformer extends ZacConverter implements ZacTransform
     static fromObjectObject(): MapTransformer;
     static fromStringObject(): MapTransformer;
     static fromStringNullObject(): MapTransformer;
+    static key(data: {
+        key: ZacValue<string> | string;
+    }): MapTransformer;
+    static fromStringFlutterWidget(): MapTransformer;
 }
 export declare class IterableTransformer extends ZacConverter implements ZacTransformer {
     static map(data: {
@@ -2009,6 +2013,12 @@ export declare class ListTransformer extends ZacConverter implements ZacTransfor
 export declare class ObjectTransformer extends ZacConverter implements ZacTransformer {
     static isList(): ObjectTransformer;
     static isMap(): ObjectTransformer;
+    static isBool(): ObjectTransformer;
+    static isString(): ObjectTransformer;
+    static isDouble(): ObjectTransformer;
+    static isInt(): ObjectTransformer;
+    static isFlutterWidget(): ObjectTransformer;
+    static isNull(): ObjectTransformer;
     static equals(data: {
         other: ZacTypes | null;
     }): ObjectTransformer;

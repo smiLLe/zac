@@ -478,6 +478,184 @@ abstract class _ZacValueListConsume<T> extends ZacValueList<T> {
   ZacValueConsumeType? get forceConsume;
 }
 
+ZacValueMap<T> _$ZacValueMapFromJson<T>(Map<String, dynamic> json) {
+  switch (json['converter']) {
+    case 'z:1:ZacValueMap':
+      return _ZacValueMap<T>.fromJson(json);
+    case 'z:1:ZacValueMap.consume':
+      return _ZacValueMapConsume<T>.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'converter', 'ZacValueMap',
+          'Invalid union type "${json['converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacValueMap<T> {
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueMap<T> value) $default, {
+    required TResult Function(_ZacValueMapConsume<T> value) consume,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueMap<T> extends _ZacValueMap<T> {
+  _$_ZacValueMap(
+      {required final Map<String, Object?> values,
+      this.transformer,
+      final String? $type})
+      : _values = values,
+        $type = $type ?? 'z:1:ZacValueMap',
+        super._();
+
+  factory _$_ZacValueMap.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueMapFromJson(json);
+
+  final Map<String, Object?> _values;
+  @override
+  Map<String, Object?> get values {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_values);
+  }
+
+  @override
+  final ZacTransformers? transformer;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacValueMap<$T>(values: $values, transformer: $transformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueMap<T> &&
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_values), transformer);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueMap<T> value) $default, {
+    required TResult Function(_ZacValueMapConsume<T> value) consume,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacValueMap<T> extends ZacValueMap<T> {
+  factory _ZacValueMap(
+      {required final Map<String, Object?> values,
+      final ZacTransformers? transformer}) = _$_ZacValueMap<T>;
+  _ZacValueMap._() : super._();
+
+  factory _ZacValueMap.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueMap<T>.fromJson;
+
+  Map<String, Object?> get values;
+  @override
+  ZacTransformers? get transformer;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueMapConsume<T> extends _ZacValueMapConsume<T> {
+  _$_ZacValueMapConsume(
+      {required this.family,
+      this.transformer,
+      this.select,
+      this.forceConsume,
+      final String? $type})
+      : $type = $type ?? 'z:1:ZacValueMap.consume',
+        super._();
+
+  factory _$_ZacValueMapConsume.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueMapConsumeFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  final ZacTransformers? transformer;
+  @override
+  final ZacTransformers? select;
+  @override
+  final ZacValueConsumeType? forceConsume;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacValueMap<$T>.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueMapConsume<T> &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
+            (identical(other.select, select) || other.select == select) &&
+            (identical(other.forceConsume, forceConsume) ||
+                other.forceConsume == forceConsume));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      transformer,
+      select,
+      forceConsume);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueMap<T> value) $default, {
+    required TResult Function(_ZacValueMapConsume<T> value) consume,
+  }) {
+    return consume(this);
+  }
+}
+
+abstract class _ZacValueMapConsume<T> extends ZacValueMap<T> {
+  factory _ZacValueMapConsume(
+      {required final Object family,
+      final ZacTransformers? transformer,
+      final ZacTransformers? select,
+      final ZacValueConsumeType? forceConsume}) = _$_ZacValueMapConsume<T>;
+  _ZacValueMapConsume._() : super._();
+
+  factory _ZacValueMapConsume.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueMapConsume<T>.fromJson;
+
+  Object get family;
+  @override
+  ZacTransformers? get transformer;
+  ZacTransformers? get select;
+  ZacValueConsumeType? get forceConsume;
+}
+
 ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
   return _ZacValueActionsAsPayload.fromJson(json);
 }

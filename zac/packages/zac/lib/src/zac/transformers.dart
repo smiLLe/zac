@@ -119,6 +119,9 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       'z:1:Transformer:Map<String, Object>.from';
   static const String unionValueFromStringNullObject =
       'z:1:Transformer:Map<String, Object?>.from';
+  static const String unionValueFromStringFlutterWidget =
+      'z:1:Transformer:Map<String, FlutterWidget>.from';
+  static const String unionValueKey = 'z:1:Transformer:Map[key]';
 
   factory MapTransformer.fromJson(Map<String, dynamic> json) =>
       _$MapTransformerFromJson(json);
@@ -165,6 +168,13 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   @FreezedUnionValue(MapTransformer.unionValueFromStringNullObject)
   const factory MapTransformer.fromStringNullObject() =
       _MapFromStringNullObject;
+
+  @FreezedUnionValue(MapTransformer.unionValueKey)
+  const factory MapTransformer.key(ZacValue<String> key) = _MapKey;
+
+  @FreezedUnionValue(MapTransformer.unionValueFromStringFlutterWidget)
+  const factory MapTransformer.fromStringFlutterWidget() =
+      _MapFromStringFlutterWidget;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -214,6 +224,14 @@ The value: $value
       },
       fromStringObject: (_) {
         return Map<String, Object>.from(value);
+      },
+      key: (obj) {
+        final key = obj.key
+            .getValue(zacContext, prefered: const ZacValueConsumeType.read());
+        return value[key];
+      },
+      fromStringFlutterWidget: (_) {
+        return Map<String, FlutterWidget>.from(value);
       },
     );
   }

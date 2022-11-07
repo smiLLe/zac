@@ -2158,6 +2158,14 @@ export class MapTransformer extends ZacConverter {
             converter: 'z:1:Transformer:Map<String, Object?>.from'
         });
     }
+    static key(data) {
+        return new MapTransformer(Object.assign({ converter: 'z:1:Transformer:Map[key]' }, data));
+    }
+    static fromStringFlutterWidget() {
+        return new MapTransformer({
+            converter: 'z:1:Transformer:Map<String, FlutterWidget>.from'
+        });
+    }
 }
 export class IterableTransformer extends ZacConverter {
     static map(data) {
@@ -2245,6 +2253,36 @@ export class ObjectTransformer extends ZacConverter {
     static isMap() {
         return new ObjectTransformer({
             converter: 'z:1:Transformer:Object.isMap'
+        });
+    }
+    static isBool() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isBool'
+        });
+    }
+    static isString() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isString'
+        });
+    }
+    static isDouble() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isDouble'
+        });
+    }
+    static isInt() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isInt'
+        });
+    }
+    static isFlutterWidget() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isFlutterWidget'
+        });
+    }
+    static isNull() {
+        return new ObjectTransformer({
+            converter: 'z:1:Transformer:Object.isNull'
         });
     }
     static equals(data) {
