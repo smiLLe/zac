@@ -371,8 +371,22 @@ The value: $value
 @ZacGenerate()
 class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
+
   static const String unionValue = 'z:1:Transformer:Object.isList';
   static const String unionValueIsMap = 'z:1:Transformer:Object.isMap';
+  static const String unionValueIsBool = 'z:1:Transformer:Object.isBool';
+  static const String unionValueIsString = 'z:1:Transformer:Object.isString';
+  static const String unionValueIsDouble = 'z:1:Transformer:Object.isDouble';
+  static const String unionValueIsInt = 'z:1:Transformer:Object.isInt';
+  static const String unionValueIsFlutterWidget =
+      'z:1:Transformer:Object.isFlutterWidget';
+  static const String unionValueIsNull = 'z:1:Transformer:Object.isNull';
+  static const String unionValueAsBool = 'z:1:Transformer:Object.asBool';
+  static const String unionValueAsString = 'z:1:Transformer:Object.asString';
+  static const String unionValueAsInt = 'z:1:Transformer:Object.asInt';
+  static const String unionValueAsDouble = 'z:1:Transformer:Object.asDouble';
+  static const String unionValueAsFlutterWidget =
+      'z:1:Transformer:Object.asFlutterWidget';
   static const String unionValueEquals = 'z:1:Transformer:Object.equals';
   static const String unionValueEqualsSharedValue =
       'z:1:Transformer:Object.equalsSharedValue';
@@ -389,6 +403,24 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsMap)
   factory ObjectTransformer.isMap() = _ObjectIsMap;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsBool)
+  factory ObjectTransformer.isBool() = _ObjectIsBool;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsString)
+  factory ObjectTransformer.isString() = _ObjectIsString;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsDouble)
+  factory ObjectTransformer.isDouble() = _ObjectIsDouble;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsInt)
+  factory ObjectTransformer.isInt() = _ObjectIsInt;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsFlutterWidget)
+  factory ObjectTransformer.isFlutterWidget() = _ObjectIsFlutterWidget;
+
+  @FreezedUnionValue(ObjectTransformer.unionValueIsNull)
+  factory ObjectTransformer.isNull() = _ObjectIsNull;
 
   @FreezedUnionValue(ObjectTransformer.unionValueEquals)
   factory ObjectTransformer.equals({required Object? other}) = _ObjectEquals;
@@ -414,6 +446,12 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
     return map(
       isList: (_) => value is List,
       isMap: (_) => value is Map,
+      isBool: (_) => value is bool,
+      isString: (_) => value is String,
+      isInt: (_) => value is int,
+      isDouble: (_) => value is double,
+      isFlutterWidget: (_) => value is FlutterWidget,
+      isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
           obj.value.getValue(zacContext,

@@ -2179,6 +2179,18 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsList.fromJson(json);
     case 'z:1:Transformer:Object.isMap':
       return _ObjectIsMap.fromJson(json);
+    case 'z:1:Transformer:Object.isBool':
+      return _ObjectIsBool.fromJson(json);
+    case 'z:1:Transformer:Object.isString':
+      return _ObjectIsString.fromJson(json);
+    case 'z:1:Transformer:Object.isDouble':
+      return _ObjectIsDouble.fromJson(json);
+    case 'z:1:Transformer:Object.isInt':
+      return _ObjectIsInt.fromJson(json);
+    case 'z:1:Transformer:Object.isFlutterWidget':
+      return _ObjectIsFlutterWidget.fromJson(json);
+    case 'z:1:Transformer:Object.isNull':
+      return _ObjectIsNull.fromJson(json);
     case 'z:1:Transformer:Object.equals':
       return _ObjectEquals.fromJson(json);
     case 'z:1:Transformer:Object.toString':
@@ -2202,6 +2214,12 @@ mixin _$ObjectTransformer {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2244,6 +2262,12 @@ class _$_ObjectIsList extends _ObjectIsList {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2295,6 +2319,12 @@ class _$_ObjectIsMap extends _ObjectIsMap {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2311,6 +2341,348 @@ abstract class _ObjectIsMap extends ObjectTransformer {
 
   factory _ObjectIsMap.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsMap.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsBool extends _ObjectIsBool {
+  _$_ObjectIsBool({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isBool',
+        super._();
+
+  factory _$_ObjectIsBool.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsBoolFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isBool()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsBool);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isBool(this);
+  }
+}
+
+abstract class _ObjectIsBool extends ObjectTransformer {
+  factory _ObjectIsBool() = _$_ObjectIsBool;
+  _ObjectIsBool._() : super._();
+
+  factory _ObjectIsBool.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsBool.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsString extends _ObjectIsString {
+  _$_ObjectIsString({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isString',
+        super._();
+
+  factory _$_ObjectIsString.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsStringFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isString()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsString);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isString(this);
+  }
+}
+
+abstract class _ObjectIsString extends ObjectTransformer {
+  factory _ObjectIsString() = _$_ObjectIsString;
+  _ObjectIsString._() : super._();
+
+  factory _ObjectIsString.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsString.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsDouble extends _ObjectIsDouble {
+  _$_ObjectIsDouble({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isDouble',
+        super._();
+
+  factory _$_ObjectIsDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsDoubleFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isDouble()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsDouble);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isDouble(this);
+  }
+}
+
+abstract class _ObjectIsDouble extends ObjectTransformer {
+  factory _ObjectIsDouble() = _$_ObjectIsDouble;
+  _ObjectIsDouble._() : super._();
+
+  factory _ObjectIsDouble.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsDouble.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsInt extends _ObjectIsInt {
+  _$_ObjectIsInt({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isInt',
+        super._();
+
+  factory _$_ObjectIsInt.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsIntFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isInt()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsInt);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isInt(this);
+  }
+}
+
+abstract class _ObjectIsInt extends ObjectTransformer {
+  factory _ObjectIsInt() = _$_ObjectIsInt;
+  _ObjectIsInt._() : super._();
+
+  factory _ObjectIsInt.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsInt.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsFlutterWidget extends _ObjectIsFlutterWidget {
+  _$_ObjectIsFlutterWidget({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isFlutterWidget',
+        super._();
+
+  factory _$_ObjectIsFlutterWidget.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsFlutterWidgetFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isFlutterWidget()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsFlutterWidget);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isFlutterWidget(this);
+  }
+}
+
+abstract class _ObjectIsFlutterWidget extends ObjectTransformer {
+  factory _ObjectIsFlutterWidget() = _$_ObjectIsFlutterWidget;
+  _ObjectIsFlutterWidget._() : super._();
+
+  factory _ObjectIsFlutterWidget.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsFlutterWidget.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsNull extends _ObjectIsNull {
+  _$_ObjectIsNull({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isNull',
+        super._();
+
+  factory _$_ObjectIsNull.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsNullFromJson(json);
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isNull()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsNull);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isNull(this);
+  }
+}
+
+abstract class _ObjectIsNull extends ObjectTransformer {
+  factory _ObjectIsNull() = _$_ObjectIsNull;
+  _ObjectIsNull._() : super._();
+
+  factory _ObjectIsNull.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsNull.fromJson;
 }
 
 /// @nodoc
@@ -2352,6 +2724,12 @@ class _$_ObjectEquals extends _ObjectEquals {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2405,6 +2783,12 @@ class _$_ObjectToString extends _ObjectToString {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2456,6 +2840,12 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2507,6 +2897,12 @@ class _$_ObjectHashCode extends _ObjectHashCode {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2563,6 +2959,12 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
     required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
+    required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,

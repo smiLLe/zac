@@ -749,6 +749,105 @@ void main() {
           isFalse);
     });
 
+    test('.isBool()', () {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isBool',
+        equals: ObjectTransformer.isBool(),
+      );
+
+      expect(
+          ObjectTransformer.isBool()
+              .transform(ZacTransformValue(true), FakeZacOrigin(), null),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isBool()
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          isFalse);
+    });
+
+    test('.isString()', () {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isString',
+        equals: ObjectTransformer.isString(),
+      );
+
+      expect(
+          ObjectTransformer.isString()
+              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isString()
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          isFalse);
+    });
+
+    test('.isDouble()', () {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isDouble',
+        equals: ObjectTransformer.isDouble(),
+      );
+
+      expect(
+          ObjectTransformer.isDouble()
+              .transform(ZacTransformValue(5.6), FakeZacOrigin(), null),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isDouble()
+              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
+          isFalse);
+
+      expect(
+          ObjectTransformer.isDouble()
+              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
+          isFalse);
+    });
+
+    test('.isInt()', () {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isInt',
+        equals: ObjectTransformer.isInt(),
+      );
+
+      expect(
+          ObjectTransformer.isInt()
+              .transform(ZacTransformValue(5.6), FakeZacOrigin(), null),
+          isFalse);
+
+      expect(
+          ObjectTransformer.isInt()
+              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isInt()
+              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
+          isFalse);
+    });
+
+    test('.isNull()', () {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isNull',
+        equals: ObjectTransformer.isNull(),
+      );
+      expect(
+          ObjectTransformer.isNull()
+              .transform(ZacTransformValue(null), FakeZacOrigin(), null),
+          isTrue);
+
+      expect(
+          ObjectTransformer.isNull()
+              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
+          isFalse);
+    });
+
     test('.equals()', () {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,

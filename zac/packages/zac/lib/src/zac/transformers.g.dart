@@ -191,6 +191,37 @@ _$_ObjectIsMap _$$_ObjectIsMapFromJson(Map<String, dynamic> json) =>
       $type: json['converter'] as String?,
     );
 
+_$_ObjectIsBool _$$_ObjectIsBoolFromJson(Map<String, dynamic> json) =>
+    _$_ObjectIsBool(
+      $type: json['converter'] as String?,
+    );
+
+_$_ObjectIsString _$$_ObjectIsStringFromJson(Map<String, dynamic> json) =>
+    _$_ObjectIsString(
+      $type: json['converter'] as String?,
+    );
+
+_$_ObjectIsDouble _$$_ObjectIsDoubleFromJson(Map<String, dynamic> json) =>
+    _$_ObjectIsDouble(
+      $type: json['converter'] as String?,
+    );
+
+_$_ObjectIsInt _$$_ObjectIsIntFromJson(Map<String, dynamic> json) =>
+    _$_ObjectIsInt(
+      $type: json['converter'] as String?,
+    );
+
+_$_ObjectIsFlutterWidget _$$_ObjectIsFlutterWidgetFromJson(
+        Map<String, dynamic> json) =>
+    _$_ObjectIsFlutterWidget(
+      $type: json['converter'] as String?,
+    );
+
+_$_ObjectIsNull _$$_ObjectIsNullFromJson(Map<String, dynamic> json) =>
+    _$_ObjectIsNull(
+      $type: json['converter'] as String?,
+    );
+
 _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
     _$_ObjectEquals(
       other: json['other'],
