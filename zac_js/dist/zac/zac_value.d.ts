@@ -1,8 +1,9 @@
-import { SharedValueFamily, ZacTypes, ZacConverter } from "../base";
+import { SharedValueFamily, ZacConverter, DartDateTime, DartDouble, DartInt } from "../base";
 import { ZacTransformers, ZacValueConsumeType } from "../generated";
+declare type ZacValueTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValue<T> extends ZacConverter {
     private ignoredProp;
-    static new<T extends ZacTypes>(data: {
+    static new<T extends ZacValueTypes>(data: {
         value: T;
         transformer?: ZacTransformers;
     }): ZacValue<T>;
@@ -11,11 +12,12 @@ export declare class ZacValue<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: ZacValueConsumeType;
-    }): ZacValue<ZacTypes>;
+    }): ZacValue<ZacValueTypes>;
 }
+declare type ZacValueListTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValueList<T> extends ZacConverter {
     private ignoredProp;
-    static new<T extends ZacTypes>(data: {
+    static new<T extends ZacValueListTypes>(data: {
         values: Array<T | ZacValue<T>>;
         transformer?: ZacTransformers;
     }): ZacValueList<T>;
@@ -24,20 +26,22 @@ export declare class ZacValueList<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: ZacValueConsumeType;
-    }): ZacValueList<ZacTypes>;
+    }): ZacValueList<ZacValueListTypes>;
 }
+declare type ZacValueMapTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValueMap<T> extends ZacConverter {
     private ignoredProp;
-    static new<T extends ZacTypes>(data: {
+    static new<T extends ZacValueMapTypes>(data: {
         values: {
             [key: string]: T | ZacValue<T>;
         };
         transformer?: ZacTransformers;
-    }): ZacValue<T>;
+    }): ZacValueMap<T>;
     static consume(data: {
         family: SharedValueFamily;
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: ZacValueConsumeType;
-    }): ZacValueMap<ZacTypes>;
+    }): ZacValueMap<ZacValueMapTypes>;
 }
+export {};

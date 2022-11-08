@@ -17,7 +17,7 @@ export class ZacValueList extends ZacConverter {
 }
 export class ZacValueMap extends ZacConverter {
     static new(data) {
-        return new ZacValue(Object.assign({ converter: 'z:1:ZacValueMap' }, data));
+        return new ZacValueMap(Object.assign({ converter: 'z:1:ZacValueMap' }, data));
     }
     static consume(data) {
         return new ZacValueMap(Object.assign({ converter: 'z:1:ZacValueMap.consume' }, data));
