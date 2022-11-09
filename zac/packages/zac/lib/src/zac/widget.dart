@@ -1,19 +1,17 @@
 import 'dart:convert';
 
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 part 'widget.freezed.dart';
 part 'widget.g.dart';
@@ -58,8 +56,8 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   }
 }
 
-class ZacWidget extends StatelessWidget {
-  ZacWidget({required this.data, Key? key})
+class ZacWidget extends HookWidget {
+  const ZacWidget({required this.data, Key? key})
       : assert(data is String ||
             data is Map<String, dynamic> ||
             data is FlutterWidget),
@@ -67,32 +65,32 @@ class ZacWidget extends StatelessWidget {
 
   final Object data;
 
-  late final FlutterWidget flutterWidget = () {
-    if (data is FlutterWidget) return data as FlutterWidget;
-
-    late Map<String, dynamic> map;
-    final obj = data;
-    if (obj is String) {
-      final dynamic json = jsonDecode(obj);
-      if (json is! Map<String, dynamic>) {
-        throw StateError(
-            'Could not convert String to ${Map<String, dynamic>} in $ZacWidget. $json');
-      }
-      map = json;
-    } else if (obj is Map<String, dynamic>) {
-      map = obj;
-    } else {
-      throw StateError(
-          'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
-    }
-
-    return ConverterHelper.convertToType<FlutterWidget>(map);
-  }();
-
   @override
   Widget build(
     BuildContext context,
   ) {
+    final flutterWidget = useMemoized(() {
+      if (data is FlutterWidget) return data as FlutterWidget;
+
+      late Map<String, dynamic> map;
+      final obj = data;
+      if (obj is String) {
+        final dynamic json = jsonDecode(obj);
+        if (json is! Map<String, dynamic>) {
+          throw StateError(
+              'Could not convert String to ${Map<String, dynamic>} in $ZacWidget. $json');
+        }
+        map = json;
+      } else if (obj is Map<String, dynamic>) {
+        map = obj;
+      } else {
+        throw StateError(
+            'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
+      }
+
+      return ConverterHelper.convertToType<FlutterWidget>(map);
+    }, [data]);
+
     return ZacUpdateContext(
       builder: (zacContext) => flutterWidget.buildWidget(zacContext),
     );
@@ -140,7 +138,7 @@ class ZacWidgetIsolated extends StatelessWidget {
             map = await compute(
               _parseJson,
               data as String,
-              debugLabel: 'compute.data',
+              debugLabel: '$ZacWidgetIsolated.parseJson',
             );
           } else if (data is Map<String, dynamic>) {
             map = data as Map<String, dynamic>;
@@ -151,7 +149,7 @@ class ZacWidgetIsolated extends StatelessWidget {
           return compute(
             _convert,
             [map, allConverters],
-            debugLabel: 'compute.data',
+            debugLabel: '$ZacWidgetIsolated.convertFlutterWidget',
           );
         })
       ],
@@ -160,7 +158,8 @@ class ZacWidgetIsolated extends StatelessWidget {
           final val = ref.watch(provider);
           return val.map<Widget>(
             data: (obj) => ZacUpdateContext(
-                builder: (zacContext) => obj.value.buildWidget(zacContext)),
+              builder: (zacContext) => obj.value.buildWidget(zacContext),
+            ),
             error: (obj) {
               return ZacUpdateContext(builder: (zacContext) {
                 FlutterWidget error =
