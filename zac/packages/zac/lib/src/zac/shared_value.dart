@@ -87,22 +87,14 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   factory SharedValueActions.update({
     required SharedValueFamily family,
     ZacTransformers? transformer,
-    ZacTransformers? itemTransformer,
     @Default(false) bool? ifNoPayloadTakeCurrent,
   }) = _SharedValueActionsUpdate;
 
   SharedValueType _updateTransformItems(Object? value, ZacActionPayload payload,
       ZacContext zacContext, _SharedValueActionsUpdate obj) {
-    if (value is List && null != obj.itemTransformer) {
-      return value.map((Object? item) => obj.itemTransformer!
-          .transform(ZacTransformValue(item), zacContext, payload));
-    } else if (value is Map<String, Object?> && null != obj.itemTransformer) {
-      return value.map((key, value) => MapEntry<String, Object?>(
-          key,
-          obj.itemTransformer!
-              .transform(ZacTransformValue(value), zacContext, payload)));
-    }
-    return value;
+    return transformer?.transform(
+            ZacTransformValue(value), zacContext, payload) ??
+        value;
   }
 
   @override
@@ -110,7 +102,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
     map(
       update: (obj) {
         SharedValue.update(zacContext, obj.family, (current) {
-          SharedValueType value = payload.map(
+          return payload.map(
             (_) => true == obj.ifNoPayloadTakeCurrent
                 ? _updateTransformItems(current, payload, zacContext, obj)
                 : null,
@@ -123,14 +115,6 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
               ];
             },
           );
-
-          if (null == obj.transformer ||
-              true == obj.transformer!.transformers.isEmpty) {
-            return value;
-          } else {
-            return obj.transformer!
-                .transform(ZacTransformValue(value), zacContext, payload);
-          }
         });
       },
     );
@@ -171,7 +155,6 @@ class SharedValueProviderBuilder
     FlutterKey? key,
     required SharedValueType value,
     ZacTransformers? transformer,
-    ZacTransformers? itemTransformer,
     required SharedValueFamily family,
     required FlutterWidget child,
     @Default(true) bool autoCreate,
@@ -179,24 +162,10 @@ class SharedValueProviderBuilder
 
   SharedValueType valueBuilder(
       AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
-    late Object? val = value;
-    if (val is List && true == itemTransformer?.transformers.isNotEmpty) {
-      val = val
-          .map((dynamic item) => itemTransformer!
-              .transform(ZacTransformValue(item), zacContext, null))
-          .toList();
-    } else if (val is Map && true == itemTransformer?.transformers.isNotEmpty) {
-      val = val.map<String, Object?>((dynamic key, dynamic item) =>
-          MapEntry<String, Object?>(
-              key as String,
-              itemTransformer!
-                  .transform(ZacTransformValue(item), zacContext, null)));
-    }
-
     if (null == transformer || true == transformer!.transformers.isEmpty) {
-      return val;
+      return value;
     } else {
-      return transformer!.transform(ZacTransformValue(val), zacContext, null);
+      return transformer!.transform(ZacTransformValue(value), zacContext, null);
     }
   }
 

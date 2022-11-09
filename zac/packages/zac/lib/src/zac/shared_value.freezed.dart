@@ -22,7 +22,6 @@ SharedValueActions _$SharedValueActionsFromJson(Map<String, dynamic> json) {
 mixin _$SharedValueActions {
   Object get family => throw _privateConstructorUsedError;
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get itemTransformer => throw _privateConstructorUsedError;
   bool? get ifNoPayloadTakeCurrent => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -38,7 +37,6 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   _$_SharedValueActionsUpdate(
       {required this.family,
       this.transformer,
-      this.itemTransformer,
       this.ifNoPayloadTakeCurrent = false})
       : super._();
 
@@ -50,14 +48,12 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   @override
   final ZacTransformers? transformer;
   @override
-  final ZacTransformers? itemTransformer;
-  @override
   @JsonKey()
   final bool? ifNoPayloadTakeCurrent;
 
   @override
   String toString() {
-    return 'SharedValueActions.update(family: $family, transformer: $transformer, itemTransformer: $itemTransformer, ifNoPayloadTakeCurrent: $ifNoPayloadTakeCurrent)';
+    return 'SharedValueActions.update(family: $family, transformer: $transformer, ifNoPayloadTakeCurrent: $ifNoPayloadTakeCurrent)';
   }
 
   @override
@@ -68,8 +64,6 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
             const DeepCollectionEquality().equals(other.family, family) &&
             (identical(other.transformer, transformer) ||
                 other.transformer == transformer) &&
-            (identical(other.itemTransformer, itemTransformer) ||
-                other.itemTransformer == itemTransformer) &&
             (identical(other.ifNoPayloadTakeCurrent, ifNoPayloadTakeCurrent) ||
                 other.ifNoPayloadTakeCurrent == ifNoPayloadTakeCurrent));
   }
@@ -80,7 +74,6 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
       runtimeType,
       const DeepCollectionEquality().hash(family),
       transformer,
-      itemTransformer,
       ifNoPayloadTakeCurrent);
 
   @override
@@ -96,7 +89,6 @@ abstract class _SharedValueActionsUpdate extends SharedValueActions {
   factory _SharedValueActionsUpdate(
       {required final Object family,
       final ZacTransformers? transformer,
-      final ZacTransformers? itemTransformer,
       final bool? ifNoPayloadTakeCurrent}) = _$_SharedValueActionsUpdate;
   _SharedValueActionsUpdate._() : super._();
 
@@ -107,8 +99,6 @@ abstract class _SharedValueActionsUpdate extends SharedValueActions {
   Object get family;
   @override
   ZacTransformers? get transformer;
-  @override
-  ZacTransformers? get itemTransformer;
   @override
   bool? get ifNoPayloadTakeCurrent;
 }
@@ -247,7 +237,6 @@ mixin _$SharedValueProviderBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
   Object? get value => throw _privateConstructorUsedError;
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get itemTransformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
   bool get autoCreate => throw _privateConstructorUsedError;
@@ -266,7 +255,6 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       {this.key,
       required this.value,
       this.transformer,
-      this.itemTransformer,
       required this.family,
       required this.child,
       this.autoCreate = true})
@@ -282,8 +270,6 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   @override
   final ZacTransformers? transformer;
   @override
-  final ZacTransformers? itemTransformer;
-  @override
   final Object family;
   @override
   final FlutterWidget child;
@@ -293,7 +279,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
 
   @override
   String toString() {
-    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, itemTransformer: $itemTransformer, family: $family, child: $child, autoCreate: $autoCreate)';
+    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, family: $family, child: $child, autoCreate: $autoCreate)';
   }
 
   @override
@@ -305,8 +291,6 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
             const DeepCollectionEquality().equals(other.value, value) &&
             (identical(other.transformer, transformer) ||
                 other.transformer == transformer) &&
-            (identical(other.itemTransformer, itemTransformer) ||
-                other.itemTransformer == itemTransformer) &&
             const DeepCollectionEquality().equals(other.family, family) &&
             (identical(other.child, child) || other.child == child) &&
             (identical(other.autoCreate, autoCreate) ||
@@ -320,7 +304,6 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       key,
       const DeepCollectionEquality().hash(value),
       transformer,
-      itemTransformer,
       const DeepCollectionEquality().hash(family),
       child,
       autoCreate);
@@ -339,7 +322,6 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       {final FlutterKey? key,
       required final Object? value,
       final ZacTransformers? transformer,
-      final ZacTransformers? itemTransformer,
       required final Object family,
       required final FlutterWidget child,
       final bool autoCreate}) = _$_SharedValueProviderBuilder;
@@ -354,8 +336,6 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   Object? get value;
   @override
   ZacTransformers? get transformer;
-  @override
-  ZacTransformers? get itemTransformer;
   @override
   Object get family;
   @override

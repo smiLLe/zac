@@ -114,42 +114,6 @@ void main() {
       );
     });
 
-    testWidgets('apply itemTransformer on List', (tester) async {
-      late dynamic obj;
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: ['foo', 'a'],
-          itemTransformer: ZacTransformers([const StringTransformer.length()]),
-          family: 'shared',
-          child: LeakContext(cb: (zacContext) {
-            obj = zacContext.ref.watch(SharedValue.provider('shared'));
-          }),
-        ),
-      );
-
-      expect(obj, [3, 1]);
-    });
-
-    testWidgets('apply itemTransformer on Map', (tester) async {
-      late dynamic obj;
-
-      await testZacWidget(
-        tester,
-        SharedValueProviderBuilder(
-          value: {'foo': 'a'},
-          itemTransformer: ZacTransformers([const StringTransformer.length()]),
-          family: 'shared',
-          child: LeakContext(cb: (zacContext) {
-            obj = zacContext.ref.watch(SharedValue.provider('shared'));
-          }),
-        ),
-      );
-
-      expect(obj, {'foo': 1});
-    });
-
     testWidgets('nested', (tester) async {
       dynamic a;
       dynamic b;
@@ -404,7 +368,10 @@ void main() {
                 actions: ZacActions([
                   SharedValueActions.update(
                     family: 'family',
-                    itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+                    transformer: ZacTransformers([
+                      IterableTransformer.map(
+                          transformer: ZacTransformers([_ConcatStr('foo')]))
+                    ]),
                     ifNoPayloadTakeCurrent: true,
                   ),
                 ]),
@@ -447,7 +414,10 @@ void main() {
       ZacActions([
         SharedValueActions.update(
           family: 'family',
-          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+          transformer: ZacTransformers([
+            IterableTransformer.map(
+                transformer: ZacTransformers([_ConcatStr('foo')]))
+          ]),
         ),
       ]).execute(
         ZacActionPayload.param(['a', 'b']),
@@ -498,7 +468,10 @@ void main() {
       ZacActions([
         SharedValueActions.update(
           family: 'family',
-          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+          transformer: ZacTransformers([
+            IterableTransformer.map(
+                transformer: ZacTransformers([_ConcatStr('foo')]))
+          ]),
         ),
       ]).execute(
         ZacActionPayload.param2(['a', 'b'], ['c', 'd']),
@@ -540,7 +513,11 @@ void main() {
       ZacActions([
         SharedValueActions.update(
           family: 'family',
-          itemTransformer: ZacTransformers([_ConcatStr('foo')]),
+          transformer: ZacTransformers([
+            MapTransformer.mapper(
+              valueTransformer: ZacTransformers([_ConcatStr('foo')]),
+            )
+          ]),
         ),
       ]).execute(
         ZacActionPayload.param(

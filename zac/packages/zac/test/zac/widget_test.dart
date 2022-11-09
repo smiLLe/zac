@@ -1,12 +1,6 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/zac.dart';
-
-import '../flutter/models.dart';
-import '../helper.dart';
 
 void main() {
   Future<void> pumpUntilFound(
@@ -88,10 +82,36 @@ void main() {
     });
   });
 
+  testWidgets('Nested WidgetBuilder', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: ZacUpdateContext(builder: (zacContext) {
+        return ZacWidgetBuilder.fromJson(<String, dynamic>{
+          'converter': 'z:1:Widget.isolate',
+          'data': {
+            'converter': 'f:1:SizedBox',
+            'child': {
+              'converter': 'z:1:Widget',
+              'data': {
+                'converter': 'z:1:Widget.isolate',
+                'data': {
+                  'converter': 'f:1:Text',
+                  'data': 'hello',
+                }
+              }
+            },
+          }
+        }).buildWidget(zacContext);
+      }),
+    ));
+
+    await pumpUntilFound(tester, find.text('hello'));
+    expect(find.text('hello'), findsOneWidget);
+  });
+
   test('ZacWidget only support few types for data property', () {
     expect(() => ZacWidget(data: 5), throwsAssertionError);
-    expect(() => ZacWidget(data: 'foo'), returnsNormally);
-    expect(() => ZacWidget(data: const <String, dynamic>{}), returnsNormally);
+    expect(() => const ZacWidget(data: 'foo'), returnsNormally);
+    expect(() => const ZacWidget(data: <String, dynamic>{}), returnsNormally);
     expect(() => ZacWidget(data: FlutterSizedBox()), returnsNormally);
   });
 

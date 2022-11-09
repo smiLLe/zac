@@ -1797,7 +1797,6 @@ export class SharedValueProviderBuilder extends ZacConverter implements Widget {
     key?: Key;
     value: ZacTypes | null;
     transformer?: ZacTransformers;
-    itemTransformer?: ZacTransformers;
     family: ZacTypes;
     child: Widget;
     autoCreate: boolean;
@@ -3549,7 +3548,6 @@ export class SharedValueActions extends ZacConverter implements ZacAction {
   static update(data: {
     family: ZacTypes;
     transformer?: ZacTransformers;
-    itemTransformer?: ZacTransformers;
     ifNoPayloadTakeCurrent?: boolean;
   }) {
     return new SharedValueActions({
