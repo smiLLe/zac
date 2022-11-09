@@ -379,7 +379,7 @@ The value: $value
     }
 
     return map(
-      reversed: (_) => value.reversed,
+      reversed: (_) => value.reversed.toList(),
       fromFlutterWidget: (_) => List<FlutterWidget>.from(value),
     );
   }
