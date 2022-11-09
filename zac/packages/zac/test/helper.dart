@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
@@ -81,7 +82,7 @@ Future<void> testMap(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidgetFromMap(zacMap: ZacValue<Map>.fromJson(data)),
+    ZacWidget(data: data),
     converter: converter,
     useContainer: useContainer,
   );
@@ -95,7 +96,7 @@ Future<void> testZacWidget(
 }) async {
   return testWithinMaterialApp(
     tester,
-    ZacWidget(widget: zacWidget),
+    ZacWidget(data: zacWidget),
     converter: converter,
     useContainer: useContainer,
   );

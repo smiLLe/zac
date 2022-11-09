@@ -1755,40 +1755,15 @@ export class SmartDashesType extends ZacConverter {
   }
 }
 export class ZacWidgetBuilder extends ZacConverter implements Widget {
-  static new(data: { key?: Key; data: ZacValue<Widget> | Widget }) {
+  static new(data: { key?: Key; data: ZacTypes }) {
     return new ZacWidgetBuilder({
       converter: "z:1:Widget",
       ...data,
     });
   }
-  static map(data: {
-    key?: Key;
-    data: ZacValue<Record<string, any>> | Record<string, any>;
-  }) {
-    return new ZacWidgetBuilder({
-      converter: "z:1:Widget.map",
-      ...data,
-    });
-  }
-  static isolate(data: {
-    key?: Key;
-    data: ZacValue<Record<string, any>> | Record<string, any>;
-    errorChild?: Widget;
-    debugRethrowError?: boolean;
-  }) {
+  static isolate(data: { key?: Key; data: ZacTypes; errorChild?: Widget }) {
     return new ZacWidgetBuilder({
       converter: "z:1:Widget.isolate",
-      ...data,
-    });
-  }
-  static isolateString(data: {
-    key?: Key;
-    data: ZacValue<string> | string;
-    errorChild?: Widget;
-    debugRethrowError?: boolean;
-  }) {
-    return new ZacWidgetBuilder({
-      converter: "z:1:Widget.isolateString",
       ...data,
     });
   }

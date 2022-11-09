@@ -1413,14 +1413,8 @@ export class ZacWidgetBuilder extends ZacConverter {
     static new(data) {
         return new ZacWidgetBuilder(Object.assign({ converter: 'z:1:Widget' }, data));
     }
-    static map(data) {
-        return new ZacWidgetBuilder(Object.assign({ converter: 'z:1:Widget.map' }, data));
-    }
     static isolate(data) {
         return new ZacWidgetBuilder(Object.assign({ converter: 'z:1:Widget.isolate' }, data));
-    }
-    static isolateString(data) {
-        return new ZacWidgetBuilder(Object.assign({ converter: 'z:1:Widget.isolateString' }, data));
     }
 }
 export class ZacStateMachineBuildStateBuilder extends ZacConverter {

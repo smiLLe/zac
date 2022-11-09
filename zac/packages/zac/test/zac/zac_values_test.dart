@@ -381,6 +381,8 @@ void main() {
   });
 
   test('Create ZacValueList', () {
+    expect(ZacValueList<int>.fromJson([1]), ZacValueList<int>(data: [1]));
+
     expect(
         ZacValueList<int>.fromJson({
           'converter': 'z:1:ZacValueList',

@@ -40,7 +40,7 @@ void main() {
     await testWithConverters(
       tester: tester,
       widget: ZacWidget(
-        widget: ZacFlutterGlobalKeyNavigatorStateProvider(
+        data: ZacFlutterGlobalKeyNavigatorStateProvider(
           family: 'foo',
           child: FlutterMaterialApp(
             navigatorKey:

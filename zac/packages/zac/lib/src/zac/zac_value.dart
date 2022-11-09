@@ -247,13 +247,20 @@ class ZacValueList<T> with _$ZacValueList<T> {
   }) = _ZacValueListConsume<T>;
 
   factory ZacValueList.fromJson(Object data) {
-    if (!_isZacValueListConverter(data)) {
+    late Map<String, dynamic> json;
+    if (data is List) {
+      json = <String, dynamic>{
+        'converter': ZacValueList.unionValue,
+        'data': data,
+      };
+    } else if (_isZacValueListConverter(data)) {
+      json = data as Map<String, dynamic>;
+    } else {
       throw StateError('Unsupported data type in ${ZacValueList<T>}: $data');
     }
-    data as Map<String, dynamic>;
 
-    if (data[converterKey] == ZacValueList.unionValue) {
-      data['data'] = (data['data'] as List<Object?>).map<Object?>(
+    if (json[converterKey] == ZacValueList.unionValue) {
+      json['data'] = (json['data'] as List<Object?>).map<Object?>(
         (Object? value) {
           if (_isZacValueConverter(value)) {
             return ZacValue<T>.fromJson(value as Map<String, dynamic>);
@@ -263,7 +270,7 @@ class ZacValueList<T> with _$ZacValueList<T> {
       ).toList();
     }
 
-    return _$ZacValueListFromJson<T>(data);
+    return _$ZacValueListFromJson<T>(json);
   }
 
   List<T> getValue(ZacContext zacContext,

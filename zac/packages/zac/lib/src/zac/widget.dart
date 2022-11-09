@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,9 +24,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   const ZacWidgetBuilder._();
 
   static const String unionValue = 'z:1:Widget';
-  static const String unionValueMap = 'z:1:Widget.map';
   static const String unionValueIsolate = 'z:1:Widget.isolate';
-  static const String unionValueIsolateString = 'z:1:Widget.isolateString';
 
   factory ZacWidgetBuilder.fromJson(Map<String, dynamic> json) =>
       _$ZacWidgetBuilderFromJson(json);
@@ -32,260 +32,167 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   @FreezedUnionValue(ZacWidgetBuilder.unionValue)
   factory ZacWidgetBuilder({
     FlutterKey? key,
-    required ZacValue<FlutterWidget> data,
+    required Object data,
   }) = _ZacWidgetBuilder;
-
-  @FreezedUnionValue(ZacWidgetBuilder.unionValueMap)
-  factory ZacWidgetBuilder.map({
-    FlutterKey? key,
-    required ZacValue<Map> data,
-  }) = _ZacWidgetBuilderMap;
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolate)
   factory ZacWidgetBuilder.isolate({
     FlutterKey? key,
-    required ZacValue<Map> data,
+    required Object data,
     FlutterWidget? errorChild,
-    bool? debugRethrowError,
   }) = _ZacWidgetBuilderIsolate;
-
-  @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolateString)
-  factory ZacWidgetBuilder.isolateString({
-    FlutterKey? key,
-    required ZacValue<String> data,
-    FlutterWidget? errorChild,
-    bool? debugRethrowError,
-  }) = _ZacWidgetBuilderIsolateString;
 
   @override
   Widget buildWidget(ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
-        widget: obj.data.getValue(zacContext),
+        data: obj.data,
         key: obj.key?.buildKey(zacContext),
       ),
-      map: (obj) => ZacWidgetFromMap(
-        zacMap: obj.data,
-        key: obj.key?.buildKey(zacContext),
-      ),
-      isolate: (obj) => ZacWidgetFromMapInIsolate(
-        zacMap: obj.data,
+      isolate: (obj) => ZacWidgetIsolated(
+        data: obj.data,
         key: obj.key?.buildKey(zacContext),
         errorChild: obj.errorChild,
-        debugRethrowError: obj.debugRethrowError ?? true,
-      ),
-      isolateString: (obj) => ZacWidgetFromMapInIsolateFromString(
-        zacString: obj.data,
-        key: obj.key?.buildKey(zacContext),
-        errorChild: obj.errorChild,
-        debugRethrowError: obj.debugRethrowError ?? true,
       ),
     );
   }
 }
 
-class ZacWidget extends HookConsumerWidget {
-  const ZacWidget({required this.widget, Key? key}) : super(key: key);
+class ZacWidget extends StatelessWidget {
+  ZacWidget({required this.data, Key? key})
+      : assert(data is String ||
+            data is Map<String, dynamic> ||
+            data is FlutterWidget),
+        super(key: key);
 
-  static const String provideErrorFamily = 'ZacWidget.error';
+  final Object data;
 
-  final FlutterWidget widget;
+  late final FlutterWidget flutterWidget = () {
+    if (data is FlutterWidget) return data as FlutterWidget;
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    return widget.buildWidget(zacContext);
-  }
-}
-
-class ZacWidgetFromMap extends HookConsumerWidget {
-  const ZacWidgetFromMap({required this.zacMap, Key? key}) : super(key: key);
-
-  final ZacValue<Map> zacMap;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final map = zacMap.getValue(zacContext);
-    final zacWidget = useMemoized(
-        () => ConverterHelper.convertToType<FlutterWidget>(map), [map]);
-    return ZacWidget(widget: zacWidget);
-  }
-}
-
-class ZacWidgetFromMapInIsolateFromString extends HookConsumerWidget {
-  const ZacWidgetFromMapInIsolateFromString({
-    required this.zacString,
-    required this.errorChild,
-    required this.debugRethrowError,
-    Key? key,
-  }) : super(key: key);
-
-  final ZacValue<String> zacString;
-  final FlutterWidget? errorChild;
-  final bool debugRethrowError;
-
-  static Future<Map<String, dynamic>> _parseJson(String encodedJson) async {
-    final Object? data = jsonDecode(encodedJson);
-    if (data is! Map<String, dynamic>) {
-      throw Exception('');
+    late Map<String, dynamic> map;
+    final obj = data;
+    if (obj is String) {
+      final dynamic json = jsonDecode(obj);
+      if (json is! Map<String, dynamic>) {
+        throw StateError(
+            'Could not convert String to ${Map<String, dynamic>} in $ZacWidget. $json');
+      }
+      map = json;
+    } else if (obj is Map<String, dynamic>) {
+      map = obj;
+    } else {
+      throw StateError(
+          'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
     }
 
-    return data;
-  }
+    return ConverterHelper.convertToType<FlutterWidget>(map);
+  }();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final loadingState =
-        useState<AsyncValue<Map<String, dynamic>>>(const AsyncValue.loading());
-    final data = zacString.getValue(zacContext);
-    useEffect(() {
-      loadingState.value = const AsyncValue.loading();
-      var mounted = true;
-      compute(
-        _parseJson,
-        data,
-        debugLabel: 'compute.data',
-      ).then((value) {
-        if (!mounted) return;
-        loadingState.value = AsyncValue.data(value);
-      }).onError((error, stackTrace) {
-        if (!mounted) return;
-        assert(() {
-          if (!debugRethrowError) return true;
-          Error.throwWithStackTrace(error ?? '', stackTrace);
-        }(), '');
-        loadingState.value = AsyncValue.error(error ?? '', stackTrace);
-      });
-      return () => mounted = false;
-    }, [data]);
-
-    return loadingState.value.map(
-      data: (obj) => ZacWidgetFromMapInIsolate(
-        zacMap: ZacValue<Map>.fromJson(obj.value),
-        errorChild: errorChild,
-        debugRethrowError: debugRethrowError,
-      ),
-      error: (obj) => _ErrorProvide(
-        error: obj.error,
-        child: errorChild,
-      ),
-      loading: (obj) => const SizedBox.shrink(),
+  Widget build(
+    BuildContext context,
+  ) {
+    return ZacUpdateContext(
+      builder: (zacContext) => flutterWidget.buildWidget(zacContext),
     );
   }
 }
 
-class ZacWidgetFromMapInIsolate extends HookConsumerWidget {
-  const ZacWidgetFromMapInIsolate({
-    required this.zacMap,
-    required this.errorChild,
-    required this.debugRethrowError,
-    Key? key,
-  }) : super(key: key);
+class ZacWidgetIsolated extends StatelessWidget {
+  const ZacWidgetIsolated({required this.data, this.errorChild, Key? key})
+      : assert(data is String || data is Map<String, dynamic>),
+        super(key: key);
 
-  static Future<FlutterWidget> _isolateConvert(List<Object?> data) async {
+  final Object? data;
+  final FlutterWidget? errorChild;
+
+  static AutoDisposeFutureProvider<FlutterWidget> provider =
+      FutureProvider.autoDispose<FlutterWidget>(
+    (_) {
+      throw StateError('');
+    },
+    name: 'Zac Isolated Widget',
+  );
+
+  static Future<Map<String, dynamic>> _parseJson(String encodedJson) async {
+    final dynamic result = jsonDecode(encodedJson);
+    if (result is! Map<String, dynamic>) {
+      throw StateError(
+          'Could not convert String to ${Map<String, dynamic>} in $ZacWidgetIsolated. $encodedJson');
+    }
+    return result;
+  }
+
+  static Future<FlutterWidget> _convert(List<Object?> data) async {
     allConverters = data[1] as Map<String, Convert>;
     return ConverterHelper.convertToType<FlutterWidget>(
         data[0] as Map<String, dynamic>);
   }
 
-  final ZacValue<Map> zacMap;
-  final FlutterWidget? errorChild;
-  final bool debugRethrowError;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final loadingState =
-        useState<AsyncValue<FlutterWidget>>(const AsyncValue.loading());
-    final map = zacMap.getValue(zacContext);
-    useEffect(() {
-      loadingState.value = const AsyncValue.loading();
-      var mounted = true;
-      compute(
-        _isolateConvert,
-        [map, allConverters],
-        debugLabel: 'compute.data',
-      ).then((value) {
-        if (!mounted) return;
-        loadingState.value = AsyncValue.data(value);
-      }).onError((error, stackTrace) {
-        if (!mounted) return;
-        assert(() {
-          if (!debugRethrowError) return true;
-          Error.throwWithStackTrace(error ?? '', stackTrace);
-        }(), '');
-        loadingState.value = AsyncValue.error(error ?? '', stackTrace);
-      });
-
-      return () => mounted = false;
-    }, [map, allConverters]);
-
-    return ZacUpdateContext(
-      builder: (zacContext) {
-        return loadingState.value.map(
-          data: (obj) => obj.value.buildWidget(zacContext),
-          error: (obj) => _ErrorProvide(
-            error: obj.error,
-            child: errorChild,
-          ),
-          loading: (obj) => const SizedBox.shrink(),
-        );
-      },
-    );
-  }
-}
-
-class _ErrorProvide extends StatelessWidget {
-  const _ErrorProvide({required this.error, required this.child, Key? key})
-      : super(key: key);
-
-  final Object error;
-  final FlutterWidget? child;
-
   @override
   Widget build(BuildContext context) {
-    return SharedValueProvider(
-      autoCreate: false,
-      family: ZacWidget.provideErrorFamily,
-      valueBuilder: (_, __) => error,
-      childBuilder: (zacContext) {
-        Widget err = const SizedBox.shrink();
-        assert(() {
-          if (null == child) {
-            err = const _DebugErrorBox();
+    return ProviderScope(
+      overrides: [
+        provider.overrideWith((ref) async {
+          late Map<String, dynamic> map;
+          if (data is String) {
+            map = await compute(
+              _parseJson,
+              data as String,
+              debugLabel: 'compute.data',
+            );
+          } else if (data is Map<String, dynamic>) {
+            map = data as Map<String, dynamic>;
+          } else {
+            throw StateError(
+                'Data is not String or ${Map<String, dynamic>} in $ZacWidgetIsolated. $data');
           }
-          return true;
-        }(), '');
-        if (null != child) {
-          err = child!.buildWidget(zacContext);
-        }
-
-        return err;
-      },
-    );
-  }
-}
-
-class _DebugErrorBox extends HookConsumerWidget {
-  const _DebugErrorBox({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final val = SharedValue.get(const SharedValueConsumeType.watch(),
-        zacContext, ZacWidget.provideErrorFamily);
-
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.red,
-          width: 3.0,
-        ),
+          return compute(
+            _convert,
+            [map, allConverters],
+            debugLabel: 'compute.data',
+          );
+        })
+      ],
+      child: Consumer(
+        builder: (context, ref, _) {
+          final val = ref.watch(provider);
+          return val.map<Widget>(
+            data: (obj) => ZacUpdateContext(
+                builder: (zacContext) => obj.value.buildWidget(zacContext)),
+            error: (obj) {
+              return ZacUpdateContext(builder: (zacContext) {
+                FlutterWidget error =
+                    errorChild ?? const FlutterSizedBox.shrink();
+                assert(() {
+                  if (null != errorChild) return true;
+                  error = FlutterContainer(
+                    decoration: FlutterBoxDecoration(
+                      border: FlutterBorder.all(
+                        color: FlutterColor.fromRGBO(
+                          r: 244,
+                          g: 67,
+                          b: 54,
+                          opacity: ZacValue<double>.fromJson(1.0),
+                        ),
+                        width: ZacValue<double>.fromJson(3.0),
+                      ),
+                    ),
+                    padding:
+                        FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0)),
+                    child: FlutterText(ZacValue<String>.fromJson(
+                        'ERROR IN $ZacWidgetIsolated:\n${obj.error}')),
+                  );
+                  return true;
+                }(), '');
+                return error.buildWidget(zacContext);
+              });
+            },
+            loading: (obj) => const SizedBox.shrink(),
+          );
+        },
       ),
-      padding: const EdgeInsets.all(8.0),
-      child: Text('ERROR IN $ZacWidget:\n$val'),
     );
   }
 }

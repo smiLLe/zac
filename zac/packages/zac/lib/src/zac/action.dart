@@ -151,7 +151,7 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
     final zacContext = useZacContext(ref);
     SharedValue.listenAndExecuteActions(zacContext, family, actions);
 
-    return null != child ? ZacWidget(widget: child!) : const SizedBox.shrink();
+    return null != child ? ZacWidget(data: child!) : const SizedBox.shrink();
   }
 }
 
@@ -182,7 +182,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
     if (null == child || !doneState.value) return const SizedBox.shrink();
 
     return ZacWidget(
-      widget: child!,
+      data: child!,
     );
   }
 }

@@ -667,23 +667,12 @@ export declare class SmartDashesType extends ZacConverter {
 export declare class ZacWidgetBuilder extends ZacConverter implements Widget {
     static new(data: {
         key?: Key;
-        data: ZacValue<Widget> | Widget;
-    }): ZacWidgetBuilder;
-    static map(data: {
-        key?: Key;
-        data: ZacValue<Record<string, any>> | Record<string, any>;
+        data: ZacTypes;
     }): ZacWidgetBuilder;
     static isolate(data: {
         key?: Key;
-        data: ZacValue<Record<string, any>> | Record<string, any>;
+        data: ZacTypes;
         errorChild?: Widget;
-        debugRethrowError?: boolean;
-    }): ZacWidgetBuilder;
-    static isolateString(data: {
-        key?: Key;
-        data: ZacValue<string> | string;
-        errorChild?: Widget;
-        debugRethrowError?: boolean;
     }): ZacWidgetBuilder;
 }
 export declare class ZacStateMachineBuildStateBuilder extends ZacConverter implements Widget {
