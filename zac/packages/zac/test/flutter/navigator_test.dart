@@ -8,44 +8,13 @@ import '../helper.dart';
 void main() {
   test('fromJson', () {
     expect(
-        ConverterHelper.convertToType<
-            ZacFlutterGlobalKeyNavigatorStateProvider>({
-          'converter': 'z:1:GlobalKeyNavigatorStateProvider',
-          'family': 'foo',
-          'child': ChildModel.sizedBox,
-          'debugLabel': 'label',
-        }),
-        ZacFlutterGlobalKeyNavigatorStateProvider(
-          family: 'foo',
-          child: FlutterSizedBox(),
-          debugLabel: ZacValue<String>.fromJson('label'),
-        ));
-
-    expect(
         ConverterHelper.convertToType<FlutterNavigatorState>({
           'converter': 'z:1:NavigatorState.shared',
           'value': {'converter': 'z:1:ZacValue.consume', 'family': 'foo'}
         }),
         FlutterNavigatorState.shared(
-            value: ZacValue<GlobalKey<NavigatorState>>.consume(family: 'foo')));
-  });
-
-  group('ZacFlutterGlobalKeyNavigatorState', () {
-    testWidgets('provide and read', (tester) async {
-      late ZacContext zacContext;
-      await testZacWidget(
-        tester,
-        ZacFlutterGlobalKeyNavigatorStateProvider(
-          family: 'foo',
-          child: LeakContext(cb: (o) => zacContext = o),
-        ),
-      );
-
-      expect(
-          zacContext.ref.read(SharedValue.provider('foo')),
-          isA<SharedValueType>()
-              .having((p0) => p0, 'data', isA<GlobalKey<NavigatorState>>()));
-    });
+            value: ZacValue<FlutterGlobalKeyNavigatorState>.consume(
+                family: 'foo')));
   });
 
   group('Navigator', () {

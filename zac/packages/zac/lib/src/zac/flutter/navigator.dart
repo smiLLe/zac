@@ -15,47 +15,6 @@ part 'navigator.g.dart';
 
 @defaultConverterFreezed
 @ZacGenerate()
-class ZacFlutterGlobalKeyNavigatorStateProvider
-    with _$ZacFlutterGlobalKeyNavigatorStateProvider
-    implements FlutterWidget {
-  const ZacFlutterGlobalKeyNavigatorStateProvider._();
-  static const String unionValue = 'z:1:GlobalKeyNavigatorStateProvider';
-
-  factory ZacFlutterGlobalKeyNavigatorStateProvider.fromJson(
-          Map<String, dynamic> json) =>
-      _$ZacFlutterGlobalKeyNavigatorStateProviderFromJson(json);
-
-  @FreezedUnionValue(ZacFlutterGlobalKeyNavigatorStateProvider.unionValue)
-  factory ZacFlutterGlobalKeyNavigatorStateProvider({
-    required SharedValueFamily family,
-    required FlutterWidget child,
-    ZacValue<String>? debugLabel,
-  }) = _ZacFlutterGlobalKeyNavigatorStateProvider;
-
-  SharedValueType _valueBuilder(
-      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
-    return GlobalKey<NavigatorState>(
-      debugLabel: map(
-        (obj) => obj.debugLabel?.getValue(zacContext),
-      ),
-    );
-  }
-
-  @override
-  Widget buildWidget(ZacContext zacContext) {
-    return map(
-      (obj) => SharedValueProvider(
-        autoCreate: true,
-        valueBuilder: _valueBuilder,
-        family: obj.family,
-        childBuilder: obj.child.buildWidget,
-      ),
-    );
-  }
-}
-
-@defaultConverterFreezed
-@ZacGenerate()
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
     implements ZacAction {

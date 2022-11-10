@@ -6,17 +6,6 @@ part of 'navigator.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacFlutterGlobalKeyNavigatorStateProvider
-    _$$_ZacFlutterGlobalKeyNavigatorStateProviderFromJson(
-            Map<String, dynamic> json) =>
-        _$_ZacFlutterGlobalKeyNavigatorStateProvider(
-          family: json['family'] as Object,
-          child: FlutterWidget.fromJson(json['child'] as Object),
-          debugLabel: json['debugLabel'] == null
-              ? null
-              : ZacValue<String>.fromJson(json['debugLabel'] as Object),
-        );
-
 _$_PopUntilRouteName _$$_PopUntilRouteNameFromJson(Map<String, dynamic> json) =>
     _$_PopUntilRouteName(
       routeName: ZacValue<String>.fromJson(json['routeName'] as Object),

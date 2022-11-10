@@ -23,7 +23,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
     FlutterKey? key,
-    ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
+    ZacValue<FlutterGlobalKeyNavigatorState>? navigatorKey,
     // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
     FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -63,7 +63,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   MaterialApp buildWidget(ZacContext zacContext) {
     return MaterialApp(
       key: key?.buildKey(zacContext),
-      navigatorKey: navigatorKey?.getValue(zacContext),
+      navigatorKey: navigatorKey?.getValue(zacContext).buildKey(zacContext),
       home: home?.buildWidget(zacContext),
       initialRoute: initialRoute?.getValue(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),

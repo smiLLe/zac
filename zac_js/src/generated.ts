@@ -12,6 +12,10 @@ export abstract class Widget extends ZacConverter {}
 export abstract class DartShadow extends ZacConverter {}
 export abstract class Key extends ZacConverter {}
 export abstract class LocalKey extends ZacConverter implements Key {}
+export abstract class GlobalKey extends ZacConverter implements Key {}
+export abstract class GlobalKeyNavigatorState
+  extends ZacConverter
+  implements GlobalKey {}
 export abstract class AlignmentGeometry extends ZacConverter {}
 export abstract class ShapeBorder extends ZacConverter {}
 export abstract class BoxBorder extends ZacConverter implements ShapeBorder {}
@@ -26,18 +30,6 @@ export abstract class RouteFactory extends ZacConverter {}
 export abstract class ZacAction extends ZacConverter {}
 export abstract class InputBorder extends ZacConverter implements ShapeBorder {}
 export abstract class ZacTransformer extends ZacConverter {}
-export class ZacValueConsumeType extends ZacConverter {
-  static read() {
-    return new ZacValueConsumeType({
-      converter: "z:1:ZacValueConsume.read",
-    });
-  }
-  static watch() {
-    return new ZacValueConsumeType({
-      converter: "z:1:ZacValueConsume.watch",
-    });
-  }
-}
 export class Color extends ZacConverter {
   static fromARGB(data: { a: DartInt; r: DartInt; g: DartInt; b: DartInt }) {
     return new Color({
@@ -795,6 +787,17 @@ export class ValueKey extends ZacConverter implements LocalKey {
     });
   }
 }
+export class GlobalKeyNavigatorStateBuilder
+  extends ZacConverter
+  implements GlobalKeyNavigatorState
+{
+  static new(data: { debugLabel?: string }) {
+    return new GlobalKeyNavigatorStateBuilder({
+      converter: "f:1:GlobalKey<NavigatorState>",
+      ...data,
+    });
+  }
+}
 export class StackFit extends ZacConverter {
   static expand() {
     return new StackFit({
@@ -812,15 +815,15 @@ export class StackFit extends ZacConverter {
     });
   }
 }
-export class SmartQuotesType extends ZacConverter {
+export class SmartDashesType extends ZacConverter {
   static disabled() {
-    return new SmartQuotesType({
-      converter: "f:1:SmartQuotesType.disabled",
+    return new SmartDashesType({
+      converter: "f:1:SmartDashesType.disabled",
     });
   }
   static enabled() {
-    return new SmartQuotesType({
-      converter: "f:1:SmartQuotesType.enabled",
+    return new SmartDashesType({
+      converter: "f:1:SmartDashesType.enabled",
     });
   }
 }
@@ -1742,68 +1745,15 @@ export class TextCapitalization extends ZacConverter {
     });
   }
 }
-export class SmartDashesType extends ZacConverter {
+export class SmartQuotesType extends ZacConverter {
   static disabled() {
-    return new SmartDashesType({
-      converter: "f:1:SmartDashesType.disabled",
+    return new SmartQuotesType({
+      converter: "f:1:SmartQuotesType.disabled",
     });
   }
   static enabled() {
-    return new SmartDashesType({
-      converter: "f:1:SmartDashesType.enabled",
-    });
-  }
-}
-export class ZacWidgetBuilder extends ZacConverter implements Widget {
-  static new(data: { key?: Key; data: ZacTypes }) {
-    return new ZacWidgetBuilder({
-      converter: "z:1:Widget",
-      ...data,
-    });
-  }
-  static isolate(data: { key?: Key; data: ZacTypes; errorChild?: Widget }) {
-    return new ZacWidgetBuilder({
-      converter: "z:1:Widget.isolate",
-      ...data,
-    });
-  }
-}
-export class ZacStateMachineBuildStateBuilder
-  extends ZacConverter
-  implements Widget
-{
-  static new(data: {
-    key?: Key;
-    family: ZacValue<string> | string;
-    states: Array<string>;
-    unmappedStateWidget?: Widget;
-  }) {
-    return new ZacStateMachineBuildStateBuilder({
-      converter: "z:1:StateMachine:BuildState",
-      ...data,
-    });
-  }
-}
-export class ZacUpdateContextBuilder extends ZacConverter implements Widget {
-  static new(data: { key?: Key; child: Widget }) {
-    return new ZacUpdateContextBuilder({
-      converter: "z:1:UpdateContext",
-      ...data,
-    });
-  }
-}
-export class SharedValueProviderBuilder extends ZacConverter implements Widget {
-  static new(data: {
-    key?: Key;
-    value: ZacTypes | null;
-    transformer?: ZacTransformers;
-    family: ZacTypes;
-    child: Widget;
-    autoCreate: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      converter: "z:1:SharedValue.provide",
-      ...data,
+    return new SmartQuotesType({
+      converter: "f:1:SmartQuotesType.enabled",
     });
   }
 }
@@ -1825,6 +1775,59 @@ export class ZacStateMachineProviderBuilder
     });
   }
 }
+export class ZacWidgetBuilder extends ZacConverter implements Widget {
+  static new(data: { key?: Key; data: ZacTypes }) {
+    return new ZacWidgetBuilder({
+      converter: "z:1:Widget",
+      ...data,
+    });
+  }
+  static isolate(data: { key?: Key; data: ZacTypes; errorChild?: Widget }) {
+    return new ZacWidgetBuilder({
+      converter: "z:1:Widget.isolate",
+      ...data,
+    });
+  }
+}
+export class ZacUpdateContextBuilder extends ZacConverter implements Widget {
+  static new(data: { key?: Key; child: Widget }) {
+    return new ZacUpdateContextBuilder({
+      converter: "z:1:UpdateContext",
+      ...data,
+    });
+  }
+}
+export class ZacStateMachineBuildStateBuilder
+  extends ZacConverter
+  implements Widget
+{
+  static new(data: {
+    key?: Key;
+    family: ZacValue<string> | string;
+    states: Array<string>;
+    unmappedStateWidget?: Widget;
+  }) {
+    return new ZacStateMachineBuildStateBuilder({
+      converter: "z:1:StateMachine:BuildState",
+      ...data,
+    });
+  }
+}
+export class SharedValueProviderBuilder extends ZacConverter implements Widget {
+  static new(data: {
+    key?: Key;
+    value: ZacTypes | null;
+    transformer?: ZacTransformers;
+    family: ZacTypes;
+    child: Widget;
+    autoCreate: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      converter: "z:1:SharedValue.provide",
+      ...data,
+    });
+  }
+}
 export class ZacExecuteActionsBuilder extends ZacConverter implements Widget {
   static once(data: { actions: ZacActions; child?: Widget }) {
     return new ZacExecuteActionsBuilder({
@@ -1839,6 +1842,14 @@ export class ZacExecuteActionsBuilder extends ZacConverter implements Widget {
   }) {
     return new ZacExecuteActionsBuilder({
       converter: "z:1:ExecuteActions.listen",
+      ...data,
+    });
+  }
+}
+export class ClipRect extends ZacConverter implements Widget {
+  static new(data: { key?: Key; child?: Widget; clipBehavior?: Clip }) {
+    return new ClipRect({
+      converter: "f:1:ClipRect",
       ...data,
     });
   }
@@ -2147,10 +2158,10 @@ export class FractionallySizedBox extends ZacConverter implements Widget {
     });
   }
 }
-export class ClipRect extends ZacConverter implements Widget {
-  static new(data: { key?: Key; child?: Widget; clipBehavior?: Clip }) {
-    return new ClipRect({
-      converter: "f:1:ClipRect",
+export class IntrinsicHeight extends ZacConverter implements Widget {
+  static new(data: { key?: Key; child?: Widget }) {
+    return new IntrinsicHeight({
+      converter: "f:1:IntrinsicHeight",
       ...data,
     });
   }
@@ -2471,36 +2482,30 @@ export class Row extends ZacConverter implements Widget {
     });
   }
 }
-export class Stack extends ZacConverter implements Widget {
-  static new(data: {
-    key?: Key;
-    alignment?: AlignmentGeometry;
-    textDirection?: TextDirection;
-    fit?: StackFit;
-    clipBehavior?: Clip;
-    children?: ZacValueList<Widget> | Array<Widget>;
-  }) {
-    return new Stack({
-      converter: "f:1:Stack",
+export class ClipOval extends ZacConverter implements Widget {
+  static new(data: { key?: Key; child?: Widget; clipBehavior?: Clip }) {
+    return new ClipOval({
+      converter: "f:1:ClipOval",
       ...data,
     });
   }
 }
-export class Material extends ZacConverter implements Widget {
+export class Wrap extends ZacConverter implements Widget {
   static new(data: {
     key?: Key;
-    child?: Widget;
-    elevation?: ZacValue<DartDouble> | DartDouble;
-    color?: Color;
-    shadowColor?: Color;
-    textStyle?: TextStyle;
-    borderRadius?: BorderRadiusGeometry;
-    shape?: ShapeBorder;
-    borderOnForeground?: ZacValue<boolean> | boolean;
+    direction?: Axis;
+    alignment?: WrapAlignment;
+    spacing?: ZacValue<DartDouble> | DartDouble;
+    runSpacing?: ZacValue<DartDouble> | DartDouble;
+    runAlignment?: WrapAlignment;
+    crossAxisAlignment?: WrapCrossAlignment;
+    textDirection?: TextDirection;
+    verticalDirection?: VerticalDirection;
     clipBehavior?: Clip;
+    children?: ZacValueList<Widget> | Array<Widget>;
   }) {
-    return new Material({
-      converter: "f:1:Material",
+    return new Wrap({
+      converter: "f:1:Wrap",
       ...data,
     });
   }
@@ -2771,17 +2776,10 @@ export class Divider extends ZacConverter implements Widget {
     });
   }
 }
-export class Drawer extends ZacConverter implements Widget {
-  static new(data: {
-    key?: Key;
-    backgroundColor?: Color;
-    elevation?: ZacValue<DartDouble> | DartDouble;
-    shape?: ShapeBorder;
-    child?: Widget;
-    semanticLabel?: ZacValue<string> | string;
-  }) {
-    return new Drawer({
-      converter: "f:1:Drawer",
+export class Builder extends ZacConverter implements Widget {
+  static new(data: { key?: Key; child: Widget }) {
+    return new Builder({
+      converter: "f:1:Builder",
       ...data,
     });
   }
@@ -2820,10 +2818,21 @@ export class ListTile extends ZacConverter implements Widget {
     });
   }
 }
-export class ClipOval extends ZacConverter implements Widget {
-  static new(data: { key?: Key; child?: Widget; clipBehavior?: Clip }) {
-    return new ClipOval({
-      converter: "f:1:ClipOval",
+export class Material extends ZacConverter implements Widget {
+  static new(data: {
+    key?: Key;
+    child?: Widget;
+    elevation?: ZacValue<DartDouble> | DartDouble;
+    color?: Color;
+    shadowColor?: Color;
+    textStyle?: TextStyle;
+    borderRadius?: BorderRadiusGeometry;
+    shape?: ShapeBorder;
+    borderOnForeground?: ZacValue<boolean> | boolean;
+    clipBehavior?: Clip;
+  }) {
+    return new Material({
+      converter: "f:1:Material",
       ...data,
     });
   }
@@ -2831,7 +2840,7 @@ export class ClipOval extends ZacConverter implements Widget {
 export class MaterialApp extends ZacConverter implements Widget {
   static new(data: {
     key?: Key;
-    navigatorKey?: ZacValue<any> | any;
+    navigatorKey?: ZacValue<GlobalKeyNavigatorState> | GlobalKeyNavigatorState;
     home?: Widget;
     initialRoute?: ZacValue<string> | string;
     onGenerateRoute?: RouteFactory;
@@ -3168,7 +3177,9 @@ export class NavigatorState extends ZacConverter {
       converter: "f:1:NavigatorState.root",
     });
   }
-  static shared(data: { value: ZacValue<any> | any }) {
+  static shared(data: {
+    value: ZacValue<GlobalKeyNavigatorState> | GlobalKeyNavigatorState;
+  }) {
     return new NavigatorState({
       converter: "z:1:NavigatorState.shared",
       ...data,
@@ -3447,38 +3458,32 @@ export class Text extends ZacConverter implements Widget {
     });
   }
 }
-export class Builder extends ZacConverter implements Widget {
-  static new(data: { key?: Key; child: Widget }) {
-    return new Builder({
-      converter: "f:1:Builder",
-      ...data,
-    });
-  }
-}
-export class Wrap extends ZacConverter implements Widget {
+export class Stack extends ZacConverter implements Widget {
   static new(data: {
     key?: Key;
-    direction?: Axis;
-    alignment?: WrapAlignment;
-    spacing?: ZacValue<DartDouble> | DartDouble;
-    runSpacing?: ZacValue<DartDouble> | DartDouble;
-    runAlignment?: WrapAlignment;
-    crossAxisAlignment?: WrapCrossAlignment;
+    alignment?: AlignmentGeometry;
     textDirection?: TextDirection;
-    verticalDirection?: VerticalDirection;
+    fit?: StackFit;
     clipBehavior?: Clip;
     children?: ZacValueList<Widget> | Array<Widget>;
   }) {
-    return new Wrap({
-      converter: "f:1:Wrap",
+    return new Stack({
+      converter: "f:1:Stack",
       ...data,
     });
   }
 }
-export class IntrinsicHeight extends ZacConverter implements Widget {
-  static new(data: { key?: Key; child?: Widget }) {
-    return new IntrinsicHeight({
-      converter: "f:1:IntrinsicHeight",
+export class Drawer extends ZacConverter implements Widget {
+  static new(data: {
+    key?: Key;
+    backgroundColor?: Color;
+    elevation?: ZacValue<DartDouble> | DartDouble;
+    shape?: ShapeBorder;
+    child?: Widget;
+    semanticLabel?: ZacValue<string> | string;
+  }) {
+    return new Drawer({
+      converter: "f:1:Drawer",
       ...data,
     });
   }
@@ -3569,11 +3574,10 @@ export class SharedValueConsumeType extends ZacConverter {
     });
   }
 }
-export class ZacActions extends ZacConverter {
-  static new(data: { actions: Array<ZacAction> }) {
-    return new ZacActions({
-      converter: "z:1:Actions",
-      ...data,
+export class ZacTemplateExpressionsSyntax extends ZacConverter {
+  static new() {
+    return new ZacTemplateExpressionsSyntax({
+      converter: "template_expressions:1:Syntax:Standard",
     });
   }
 }
@@ -3593,13 +3597,6 @@ export class ZacStateConfig extends ZacConverter {
     });
   }
 }
-export class ZacTemplateExpressionsSyntax extends ZacConverter {
-  static new() {
-    return new ZacTemplateExpressionsSyntax({
-      converter: "template_expressions:1:Syntax:Standard",
-    });
-  }
-}
 export class MaterialPageRoute extends ZacConverter implements Route {
   static new(data: {
     child: Widget;
@@ -3609,6 +3606,14 @@ export class MaterialPageRoute extends ZacConverter implements Route {
   }) {
     return new MaterialPageRoute({
       converter: "f:1:MaterialPageRoute",
+      ...data,
+    });
+  }
+}
+export class UnderlineInputBorder extends ZacConverter implements InputBorder {
+  static new(data: { borderSide?: BorderSide; borderRadius?: BorderRadius }) {
+    return new UnderlineInputBorder({
+      converter: "f:1:OutlineInputBorder",
       ...data,
     });
   }
@@ -4028,14 +4033,6 @@ export class JsonTransformer extends ZacConverter implements ZacTransformer {
     });
   }
 }
-export class UnderlineInputBorder extends ZacConverter implements InputBorder {
-  static new(data: { borderSide?: BorderSide; borderRadius?: BorderRadius }) {
-    return new UnderlineInputBorder({
-      converter: "f:1:OutlineInputBorder",
-      ...data,
-    });
-  }
-}
 export class OutlineInputBorder extends ZacConverter implements InputBorder {
   static new(data: {
     borderSide?: BorderSide;
@@ -4131,17 +4128,10 @@ export class ZacTemplateExpressionsTransformer
     });
   }
 }
-export class ZacFlutterGlobalKeyNavigatorStateProvider
-  extends ZacConverter
-  implements Widget
-{
-  static new(data: {
-    family: ZacTypes;
-    child: Widget;
-    debugLabel?: ZacValue<string> | string;
-  }) {
-    return new ZacFlutterGlobalKeyNavigatorStateProvider({
-      converter: "z:1:GlobalKeyNavigatorStateProvider",
+export class ZacActions extends ZacConverter {
+  static new(data: { actions: Array<ZacAction> }) {
+    return new ZacActions({
+      converter: "z:1:Actions",
       ...data,
     });
   }

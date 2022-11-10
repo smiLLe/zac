@@ -185,8 +185,6 @@ Map<String, Convert> allConverters = const {
   FlutterNavigatorState.unionValueClosest: FlutterNavigatorState.fromJson,
   FlutterNavigatorState.unionValueRoot: FlutterNavigatorState.fromJson,
   FlutterNavigatorState.unionValueShared: FlutterNavigatorState.fromJson,
-  ZacFlutterGlobalKeyNavigatorStateProvider.unionValue:
-      ZacFlutterGlobalKeyNavigatorStateProvider.fromJson,
   RouteFactoryFromRoutes.unionValue: RouteFactoryFromRoutes.fromJson,
   RouteFactorySingleRoute.unionValue: RouteFactorySingleRoute.fromJson,
   RouteFactoryRouteConfig.unionValue: RouteFactoryRouteConfig.fromJson,
@@ -321,6 +319,8 @@ Map<String, Convert> allConverters = const {
          * OTHERS
          */
   FlutterValueKey.unionValue: FlutterValueKey.fromJson,
+  FlutterGlobalKeyNavigatorStateBuilder.unionValue:
+      FlutterGlobalKeyNavigatorStateBuilder.fromJson,
   FlutterAlignment.unionValue: FlutterAlignment.fromJson,
   FlutterAlignment.unionValueBottomCenter: FlutterAlignment.fromJson,
   FlutterAlignment.unionValueBottomLeft: FlutterAlignment.fromJson,

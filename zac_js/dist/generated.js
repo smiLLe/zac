@@ -8,6 +8,10 @@ export class Key extends ZacConverter {
 }
 export class LocalKey extends ZacConverter {
 }
+export class GlobalKey extends ZacConverter {
+}
+export class GlobalKeyNavigatorState extends ZacConverter {
+}
 export class AlignmentGeometry extends ZacConverter {
 }
 export class ShapeBorder extends ZacConverter {
@@ -31,18 +35,6 @@ export class ZacAction extends ZacConverter {
 export class InputBorder extends ZacConverter {
 }
 export class ZacTransformer extends ZacConverter {
-}
-export class ZacValueConsumeType extends ZacConverter {
-    static read() {
-        return new ZacValueConsumeType({
-            converter: 'z:1:ZacValueConsume.read'
-        });
-    }
-    static watch() {
-        return new ZacValueConsumeType({
-            converter: 'z:1:ZacValueConsume.watch'
-        });
-    }
 }
 export class Color extends ZacConverter {
     static fromARGB(data) {
@@ -684,6 +676,11 @@ export class ValueKey extends ZacConverter {
         return new ValueKey(Object.assign({ converter: 'f:1:ValueKey' }, data));
     }
 }
+export class GlobalKeyNavigatorStateBuilder extends ZacConverter {
+    static new(data) {
+        return new GlobalKeyNavigatorStateBuilder(Object.assign({ converter: 'f:1:GlobalKey<NavigatorState>' }, data));
+    }
+}
 export class StackFit extends ZacConverter {
     static expand() {
         return new StackFit({
@@ -701,15 +698,15 @@ export class StackFit extends ZacConverter {
         });
     }
 }
-export class SmartQuotesType extends ZacConverter {
+export class SmartDashesType extends ZacConverter {
     static disabled() {
-        return new SmartQuotesType({
-            converter: 'f:1:SmartQuotesType.disabled'
+        return new SmartDashesType({
+            converter: 'f:1:SmartDashesType.disabled'
         });
     }
     static enabled() {
-        return new SmartQuotesType({
-            converter: 'f:1:SmartQuotesType.enabled'
+        return new SmartDashesType({
+            converter: 'f:1:SmartDashesType.enabled'
         });
     }
 }
@@ -1397,16 +1394,21 @@ export class TextCapitalization extends ZacConverter {
         });
     }
 }
-export class SmartDashesType extends ZacConverter {
+export class SmartQuotesType extends ZacConverter {
     static disabled() {
-        return new SmartDashesType({
-            converter: 'f:1:SmartDashesType.disabled'
+        return new SmartQuotesType({
+            converter: 'f:1:SmartQuotesType.disabled'
         });
     }
     static enabled() {
-        return new SmartDashesType({
-            converter: 'f:1:SmartDashesType.enabled'
+        return new SmartQuotesType({
+            converter: 'f:1:SmartQuotesType.enabled'
         });
+    }
+}
+export class ZacStateMachineProviderBuilder extends ZacConverter {
+    static new(data) {
+        return new ZacStateMachineProviderBuilder(Object.assign({ converter: 'z:1:StateMachine.provide' }, data));
     }
 }
 export class ZacWidgetBuilder extends ZacConverter {
@@ -1417,24 +1419,19 @@ export class ZacWidgetBuilder extends ZacConverter {
         return new ZacWidgetBuilder(Object.assign({ converter: 'z:1:Widget.isolate' }, data));
     }
 }
-export class ZacStateMachineBuildStateBuilder extends ZacConverter {
-    static new(data) {
-        return new ZacStateMachineBuildStateBuilder(Object.assign({ converter: 'z:1:StateMachine:BuildState' }, data));
-    }
-}
 export class ZacUpdateContextBuilder extends ZacConverter {
     static new(data) {
         return new ZacUpdateContextBuilder(Object.assign({ converter: 'z:1:UpdateContext' }, data));
     }
 }
+export class ZacStateMachineBuildStateBuilder extends ZacConverter {
+    static new(data) {
+        return new ZacStateMachineBuildStateBuilder(Object.assign({ converter: 'z:1:StateMachine:BuildState' }, data));
+    }
+}
 export class SharedValueProviderBuilder extends ZacConverter {
     static new(data) {
         return new SharedValueProviderBuilder(Object.assign({ converter: 'z:1:SharedValue.provide' }, data));
-    }
-}
-export class ZacStateMachineProviderBuilder extends ZacConverter {
-    static new(data) {
-        return new ZacStateMachineProviderBuilder(Object.assign({ converter: 'z:1:StateMachine.provide' }, data));
     }
 }
 export class ZacExecuteActionsBuilder extends ZacConverter {
@@ -1443,6 +1440,11 @@ export class ZacExecuteActionsBuilder extends ZacConverter {
     }
     static listen(data) {
         return new ZacExecuteActionsBuilder(Object.assign({ converter: 'z:1:ExecuteActions.listen' }, data));
+    }
+}
+export class ClipRect extends ZacConverter {
+    static new(data) {
+        return new ClipRect(Object.assign({ converter: 'f:1:ClipRect' }, data));
     }
 }
 export class DecoratedBox extends ZacConverter {
@@ -1550,9 +1552,9 @@ export class FractionallySizedBox extends ZacConverter {
         return new FractionallySizedBox(Object.assign({ converter: 'f:1:FractionallySizedBox' }, data));
     }
 }
-export class ClipRect extends ZacConverter {
+export class IntrinsicHeight extends ZacConverter {
     static new(data) {
-        return new ClipRect(Object.assign({ converter: 'f:1:ClipRect' }, data));
+        return new IntrinsicHeight(Object.assign({ converter: 'f:1:IntrinsicHeight' }, data));
     }
 }
 export class IntrinsicWidth extends ZacConverter {
@@ -1658,14 +1660,14 @@ export class Row extends ZacConverter {
         return new Row(Object.assign({ converter: 'f:1:Row' }, data));
     }
 }
-export class Stack extends ZacConverter {
+export class ClipOval extends ZacConverter {
     static new(data) {
-        return new Stack(Object.assign({ converter: 'f:1:Stack' }, data));
+        return new ClipOval(Object.assign({ converter: 'f:1:ClipOval' }, data));
     }
 }
-export class Material extends ZacConverter {
+export class Wrap extends ZacConverter {
     static new(data) {
-        return new Material(Object.assign({ converter: 'f:1:Material' }, data));
+        return new Wrap(Object.assign({ converter: 'f:1:Wrap' }, data));
     }
 }
 export class AppBar extends ZacConverter {
@@ -1731,9 +1733,9 @@ export class Divider extends ZacConverter {
         return new Divider(Object.assign({ converter: 'f:1:Divider' }, data));
     }
 }
-export class Drawer extends ZacConverter {
+export class Builder extends ZacConverter {
     static new(data) {
-        return new Drawer(Object.assign({ converter: 'f:1:Drawer' }, data));
+        return new Builder(Object.assign({ converter: 'f:1:Builder' }, data));
     }
 }
 export class ListTile extends ZacConverter {
@@ -1741,9 +1743,9 @@ export class ListTile extends ZacConverter {
         return new ListTile(Object.assign({ converter: 'f:1:ListTile' }, data));
     }
 }
-export class ClipOval extends ZacConverter {
+export class Material extends ZacConverter {
     static new(data) {
-        return new ClipOval(Object.assign({ converter: 'f:1:ClipOval' }, data));
+        return new Material(Object.assign({ converter: 'f:1:Material' }, data));
     }
 }
 export class MaterialApp extends ZacConverter {
@@ -1981,19 +1983,14 @@ export class Text extends ZacConverter {
         return new Text(Object.assign({ converter: 'f:1:Text' }, data));
     }
 }
-export class Builder extends ZacConverter {
+export class Stack extends ZacConverter {
     static new(data) {
-        return new Builder(Object.assign({ converter: 'f:1:Builder' }, data));
+        return new Stack(Object.assign({ converter: 'f:1:Stack' }, data));
     }
 }
-export class Wrap extends ZacConverter {
+export class Drawer extends ZacConverter {
     static new(data) {
-        return new Wrap(Object.assign({ converter: 'f:1:Wrap' }, data));
-    }
-}
-export class IntrinsicHeight extends ZacConverter {
-    static new(data) {
-        return new IntrinsicHeight(Object.assign({ converter: 'f:1:IntrinsicHeight' }, data));
+        return new Drawer(Object.assign({ converter: 'f:1:Drawer' }, data));
     }
 }
 export class ZacFlutterNavigatorActions extends ZacConverter {
@@ -2038,9 +2035,11 @@ export class SharedValueConsumeType extends ZacConverter {
         });
     }
 }
-export class ZacActions extends ZacConverter {
-    static new(data) {
-        return new ZacActions(Object.assign({ converter: 'z:1:Actions' }, data));
+export class ZacTemplateExpressionsSyntax extends ZacConverter {
+    static new() {
+        return new ZacTemplateExpressionsSyntax({
+            converter: 'template_expressions:1:Syntax:Standard'
+        });
     }
 }
 export class ZacTransition extends ZacConverter {
@@ -2053,16 +2052,14 @@ export class ZacStateConfig extends ZacConverter {
         return new ZacStateConfig(Object.assign({ converter: 'z:1:StateMachine:StateConfig' }, data));
     }
 }
-export class ZacTemplateExpressionsSyntax extends ZacConverter {
-    static new() {
-        return new ZacTemplateExpressionsSyntax({
-            converter: 'template_expressions:1:Syntax:Standard'
-        });
-    }
-}
 export class MaterialPageRoute extends ZacConverter {
     static new(data) {
         return new MaterialPageRoute(Object.assign({ converter: 'f:1:MaterialPageRoute' }, data));
+    }
+}
+export class UnderlineInputBorder extends ZacConverter {
+    static new(data) {
+        return new UnderlineInputBorder(Object.assign({ converter: 'f:1:OutlineInputBorder' }, data));
     }
 }
 export class ZacStateMachineActions extends ZacConverter {
@@ -2415,11 +2412,6 @@ export class JsonTransformer extends ZacConverter {
         });
     }
 }
-export class UnderlineInputBorder extends ZacConverter {
-    static new(data) {
-        return new UnderlineInputBorder(Object.assign({ converter: 'f:1:OutlineInputBorder' }, data));
-    }
-}
 export class OutlineInputBorder extends ZacConverter {
     static new(data) {
         return new OutlineInputBorder(Object.assign({ converter: 'f:1:OutlineInputBorder' }, data));
@@ -2440,8 +2432,8 @@ export class ZacTemplateExpressionsTransformer extends ZacConverter {
         return new ZacTemplateExpressionsTransformer(Object.assign({ converter: 'template_expressions:1:Transformer:Template.process' }, data));
     }
 }
-export class ZacFlutterGlobalKeyNavigatorStateProvider extends ZacConverter {
+export class ZacActions extends ZacConverter {
     static new(data) {
-        return new ZacFlutterGlobalKeyNavigatorStateProvider(Object.assign({ converter: 'z:1:GlobalKeyNavigatorStateProvider' }, data));
+        return new ZacActions(Object.assign({ converter: 'z:1:Actions' }, data));
     }
 }

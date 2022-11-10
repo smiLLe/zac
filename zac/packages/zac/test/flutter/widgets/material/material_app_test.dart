@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:zac/src/flutter/widgets/material/material_app.dart';
-import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/flutter/navigator.dart';
-import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -32,32 +25,5 @@ void main() {
         widget,
         isA<MaterialApp>()
             .having((p0) => p0.home, 'MaterialApp.home', isA<SizedBox>()));
-  });
-
-  testWidgets('get NavigatorState', (tester) async {
-    late ZacContext zacContext;
-
-    await testWithConverters(
-      tester: tester,
-      widget: ZacWidget(
-        data: ZacFlutterGlobalKeyNavigatorStateProvider(
-          family: 'foo',
-          child: FlutterMaterialApp(
-            navigatorKey:
-                ZacValue<GlobalKey<NavigatorState>>.consume(family: 'foo'),
-            home: LeakContext(cb: (o) => zacContext = o),
-          ),
-        ),
-      ),
-      container: ProviderContainer(),
-    );
-
-    expect(
-        zacContext.ref.read(SharedValue.provider('foo')),
-        isA<SharedValueType>().having(
-            (p0) => p0,
-            'data',
-            isA<GlobalKey<NavigatorState>>()
-                .having((p0) => p0.currentState, 'NavigatorState', isNotNull)));
   });
 }

@@ -42,7 +42,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 
   @FreezedUnionValue(FlutterNavigatorState.unionValueShared)
   factory FlutterNavigatorState.shared({
-    required ZacValue<GlobalKey<NavigatorState>> value,
+    required ZacValue<FlutterGlobalKeyNavigatorState> value,
   }) = _ZacNavigatorStateSharedValue;
 
   NavigatorState getNavigatorState(ZacContext zacContext) {
@@ -50,7 +50,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
       closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
       root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
       shared: (obj) {
-        final key = obj.value.getValue(zacContext);
+        final key = obj.value.getValue(zacContext).buildKey(zacContext);
         if (null != key.currentState) {
           return key.currentState!;
         }
