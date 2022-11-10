@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/flutter/widgets/layout_multi_child/list_view.dart';
+import 'package:zac/src/flutter/widgets/scroll_controller.dart';
+import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -118,5 +123,36 @@ void main() {
                 ScrollViewKeyboardDismissBehavior.onDrag)
             .having((p0) => p0.physics, 'ListView.physics',
                 isA<AlwaysScrollableScrollPhysics>()));
+  });
+
+  testWidgets('FlutterListView() consumes the ScrollController',
+      (tester) async {
+    late ZacContext zacContext;
+    final ctrl = ScrollController();
+    await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          childBuilder: (c) {
+            zacContext = c;
+            return FlutterListView(
+              key: FlutterValueKey('LIST_VIEW'),
+              controller:
+                  ZacValue<FlutterScrollController>.consume(family: 'shared'),
+            ).buildWidget(zacContext);
+          },
+          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
+          family: 'shared',
+          autoCreate: true,
+        ));
+
+    final findMe = find.byKey(const ValueKey('LIST_VIEW'));
+    expect(findMe, findsOneWidget);
+
+    final widget = findMe.evaluate().first.widget;
+
+    expect(
+        widget,
+        isA<ListView>()
+            .having((p0) => p0.controller, 'ListView.controller', ctrl));
   });
 }

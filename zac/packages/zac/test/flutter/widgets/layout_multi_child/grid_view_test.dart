@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/layout_multi_child/grid_view.dart';
+import 'package:zac/src/flutter/widgets/scroll_controller.dart';
+import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
+import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -71,5 +77,38 @@ void main() {
                 (p0) => p0.keyboardDismissBehavior,
                 'GridView.keyboardDismissBehavior',
                 ScrollViewKeyboardDismissBehavior.onDrag));
+  });
+
+  testWidgets('FlutterGridView() consumes the ScrollController',
+      (tester) async {
+    late ZacContext zacContext;
+    final ctrl = ScrollController();
+    await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          childBuilder: (c) {
+            zacContext = c;
+            return FlutterGridView(
+              key: FlutterValueKey('GRID_VIEW'),
+              gridDelegate: FlutterSliverGridDelegate.withFixedCrossAxisCount(
+                  crossAxisCount: 5),
+              controller:
+                  ZacValue<FlutterScrollController>.consume(family: 'shared'),
+            ).buildWidget(zacContext);
+          },
+          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
+          family: 'shared',
+          autoCreate: true,
+        ));
+
+    final findMe = find.byKey(const ValueKey('GRID_VIEW'));
+    expect(findMe, findsOneWidget);
+
+    final widget = findMe.evaluate().first.widget;
+
+    expect(
+        widget,
+        isA<GridView>()
+            .having((p0) => p0.controller, 'GridView.controller', ctrl));
   });
 }

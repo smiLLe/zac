@@ -29,6 +29,7 @@ export abstract class Route extends ZacConverter {}
 export abstract class RouteFactory extends ZacConverter {}
 export abstract class ZacAction extends ZacConverter {}
 export abstract class InputBorder extends ZacConverter implements ShapeBorder {}
+export abstract class ScrollController extends ZacConverter {}
 export abstract class ZacTransformer extends ZacConverter {}
 export class Color extends ZacConverter {
   static fromARGB(data: { a: DartInt; r: DartInt; g: DartInt; b: DartInt }) {
@@ -2293,6 +2294,7 @@ export class SingleChildScrollView extends ZacConverter implements Widget {
     reverse?: ZacValue<boolean> | boolean;
     padding?: EdgeInsetsGeometry;
     primary?: ZacValue<boolean> | boolean;
+    controller?: ZacValue<ScrollController> | ScrollController;
     child?: Widget;
     clipBehavior?: Clip;
     restorationId?: ZacValue<string> | string;
@@ -2403,6 +2405,7 @@ export class GridView extends ZacConverter implements Widget {
     key?: Key;
     scrollDirection?: Axis;
     reverse?: ZacValue<boolean> | boolean;
+    controller?: ZacValue<ScrollController> | ScrollController;
     primary?: ZacValue<boolean> | boolean;
     shrinkWrap?: ZacValue<boolean> | boolean;
     padding?: EdgeInsetsGeometry;
@@ -2443,6 +2446,7 @@ export class ListView extends ZacConverter implements Widget {
     key?: Key;
     scrollDirection?: Axis;
     reverse?: ZacValue<boolean> | boolean;
+    controller?: ZacValue<ScrollController> | ScrollController;
     primary?: ZacValue<boolean> | boolean;
     physics?: ScrollPhysics;
     shrinkWrap?: ZacValue<boolean> | boolean;
@@ -3156,6 +3160,7 @@ export class TextField extends ZacConverter implements Widget {
     scrollPadding?: EdgeInsets;
     enableInteractiveSelection?: ZacValue<boolean> | boolean;
     onTap?: ZacActions;
+    scrollController?: ZacValue<ScrollController> | ScrollController;
     clipBehavior?: Clip;
     restorationId?: ZacValue<string> | string;
     enableIMEPersonalizedLearning?: ZacValue<boolean> | boolean;
@@ -3325,6 +3330,7 @@ export class CustomScrollView extends ZacConverter implements Widget {
     key?: Key;
     scrollDirection?: Axis;
     reverse?: ZacValue<boolean> | boolean;
+    controller?: ZacValue<ScrollController> | ScrollController;
     primary?: ZacValue<boolean> | boolean;
     physics?: ScrollPhysics;
     shrinkWrap?: ZacValue<boolean> | boolean;

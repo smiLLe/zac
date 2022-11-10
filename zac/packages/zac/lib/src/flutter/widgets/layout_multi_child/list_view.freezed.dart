@@ -22,8 +22,9 @@ FlutterListView _$FlutterListViewFromJson(Map<String, dynamic> json) {
 mixin _$FlutterListView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse =>
-      throw _privateConstructorUsedError; // ScrollController? controller,
+  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacValue<FlutterScrollController>? get controller =>
+      throw _privateConstructorUsedError;
   ZacValue<bool>? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
   ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
@@ -59,6 +60,7 @@ class _$_FlutterListView extends _FlutterListView {
       {this.key,
       this.scrollDirection,
       this.reverse,
+      this.controller,
       this.primary,
       this.physics,
       this.shrinkWrap,
@@ -85,7 +87,8 @@ class _$_FlutterListView extends _FlutterListView {
   final FlutterAxis? scrollDirection;
   @override
   final ZacValue<bool>? reverse;
-// ScrollController? controller,
+  @override
+  final ZacValue<FlutterScrollController>? controller;
   @override
   final ZacValue<bool>? primary;
   @override
@@ -120,7 +123,7 @@ class _$_FlutterListView extends _FlutterListView {
 
   @override
   String toString() {
-    return 'FlutterListView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, primary: $primary, physics: $physics, shrinkWrap: $shrinkWrap, padding: $padding, itemExtent: $itemExtent, prototypeItem: $prototypeItem, addAutomaticKeepAlives: $addAutomaticKeepAlives, addRepaintBoundaries: $addRepaintBoundaries, addSemanticIndexes: $addSemanticIndexes, cacheExtent: $cacheExtent, children: $children, semanticChildCount: $semanticChildCount, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId, clipBehavior: $clipBehavior)';
+    return 'FlutterListView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, controller: $controller, primary: $primary, physics: $physics, shrinkWrap: $shrinkWrap, padding: $padding, itemExtent: $itemExtent, prototypeItem: $prototypeItem, addAutomaticKeepAlives: $addAutomaticKeepAlives, addRepaintBoundaries: $addRepaintBoundaries, addSemanticIndexes: $addSemanticIndexes, cacheExtent: $cacheExtent, children: $children, semanticChildCount: $semanticChildCount, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId, clipBehavior: $clipBehavior)';
   }
 
   @override
@@ -132,6 +135,8 @@ class _$_FlutterListView extends _FlutterListView {
             (identical(other.scrollDirection, scrollDirection) ||
                 other.scrollDirection == scrollDirection) &&
             (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
             (identical(other.primary, primary) || other.primary == primary) &&
             (identical(other.physics, physics) || other.physics == physics) &&
             (identical(other.shrinkWrap, shrinkWrap) ||
@@ -164,26 +169,28 @@ class _$_FlutterListView extends _FlutterListView {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      key,
-      scrollDirection,
-      reverse,
-      primary,
-      physics,
-      shrinkWrap,
-      padding,
-      itemExtent,
-      prototypeItem,
-      addAutomaticKeepAlives,
-      addRepaintBoundaries,
-      addSemanticIndexes,
-      cacheExtent,
-      children,
-      semanticChildCount,
-      keyboardDismissBehavior,
-      restorationId,
-      clipBehavior);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        key,
+        scrollDirection,
+        reverse,
+        controller,
+        primary,
+        physics,
+        shrinkWrap,
+        padding,
+        itemExtent,
+        prototypeItem,
+        addAutomaticKeepAlives,
+        addRepaintBoundaries,
+        addSemanticIndexes,
+        cacheExtent,
+        children,
+        semanticChildCount,
+        keyboardDismissBehavior,
+        restorationId,
+        clipBehavior
+      ]);
 
   @override
   @optionalTypeArgs
@@ -199,6 +206,7 @@ abstract class _FlutterListView extends FlutterListView {
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool>? reverse,
+      final ZacValue<FlutterScrollController>? controller,
       final ZacValue<bool>? primary,
       final FlutterScrollPhysics? physics,
       final ZacValue<bool>? shrinkWrap,
@@ -225,7 +233,9 @@ abstract class _FlutterListView extends FlutterListView {
   FlutterAxis? get scrollDirection;
   @override
   ZacValue<bool>? get reverse;
-  @override // ScrollController? controller,
+  @override
+  ZacValue<FlutterScrollController>? get controller;
+  @override
   ZacValue<bool>? get primary;
   @override
   FlutterScrollPhysics? get physics;

@@ -79,8 +79,8 @@ mixin _$FlutterTextField {
   ZacActions? get onTap =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-// ScrollController? scrollController,
-// ScrollPhysics? scrollPhysics,
+  ZacValue<FlutterScrollController>? get scrollController =>
+      throw _privateConstructorUsedError; // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
@@ -135,6 +135,7 @@ class _$_FlutterTextField extends _FlutterTextField {
       this.scrollPadding,
       this.enableInteractiveSelection,
       this.onTap,
+      this.scrollController,
       this.clipBehavior,
       this.restorationId,
       this.enableIMEPersonalizedLearning})
@@ -230,7 +231,8 @@ class _$_FlutterTextField extends _FlutterTextField {
   final ZacActions? onTap;
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-// ScrollController? scrollController,
+  @override
+  final ZacValue<FlutterScrollController>? scrollController;
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   @override
@@ -242,7 +244,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 
   @override
   String toString() {
-    return 'FlutterTextField(key: $key, decoration: $decoration, keyboardType: $keyboardType, textInputAction: $textInputAction, textCapitalization: $textCapitalization, style: $style, strutStyle: $strutStyle, textAlign: $textAlign, textAlignVertical: $textAlignVertical, textDirection: $textDirection, readOnly: $readOnly, showCursor: $showCursor, autofocus: $autofocus, obscuringCharacter: $obscuringCharacter, obscureText: $obscureText, autocorrect: $autocorrect, smartDashesType: $smartDashesType, smartQuotesType: $smartQuotesType, enableSuggestions: $enableSuggestions, maxLines: $maxLines, minLines: $minLines, expands: $expands, maxLength: $maxLength, onChanged: $onChanged, onEditingComplete: $onEditingComplete, onSubmitted: $onSubmitted, enabled: $enabled, cursorWidth: $cursorWidth, cursorHeight: $cursorHeight, cursorRadius: $cursorRadius, cursorColor: $cursorColor, selectionHeightStyle: $selectionHeightStyle, selectionWidthStyle: $selectionWidthStyle, keyboardAppearance: $keyboardAppearance, scrollPadding: $scrollPadding, enableInteractiveSelection: $enableInteractiveSelection, onTap: $onTap, clipBehavior: $clipBehavior, restorationId: $restorationId, enableIMEPersonalizedLearning: $enableIMEPersonalizedLearning)';
+    return 'FlutterTextField(key: $key, decoration: $decoration, keyboardType: $keyboardType, textInputAction: $textInputAction, textCapitalization: $textCapitalization, style: $style, strutStyle: $strutStyle, textAlign: $textAlign, textAlignVertical: $textAlignVertical, textDirection: $textDirection, readOnly: $readOnly, showCursor: $showCursor, autofocus: $autofocus, obscuringCharacter: $obscuringCharacter, obscureText: $obscureText, autocorrect: $autocorrect, smartDashesType: $smartDashesType, smartQuotesType: $smartQuotesType, enableSuggestions: $enableSuggestions, maxLines: $maxLines, minLines: $minLines, expands: $expands, maxLength: $maxLength, onChanged: $onChanged, onEditingComplete: $onEditingComplete, onSubmitted: $onSubmitted, enabled: $enabled, cursorWidth: $cursorWidth, cursorHeight: $cursorHeight, cursorRadius: $cursorRadius, cursorColor: $cursorColor, selectionHeightStyle: $selectionHeightStyle, selectionWidthStyle: $selectionWidthStyle, keyboardAppearance: $keyboardAppearance, scrollPadding: $scrollPadding, enableInteractiveSelection: $enableInteractiveSelection, onTap: $onTap, scrollController: $scrollController, clipBehavior: $clipBehavior, restorationId: $restorationId, enableIMEPersonalizedLearning: $enableIMEPersonalizedLearning)';
   }
 
   @override
@@ -321,6 +323,8 @@ class _$_FlutterTextField extends _FlutterTextField {
                 other.enableInteractiveSelection ==
                     enableInteractiveSelection) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
+            (identical(other.scrollController, scrollController) ||
+                other.scrollController == scrollController) &&
             (identical(other.clipBehavior, clipBehavior) ||
                 other.clipBehavior == clipBehavior) &&
             (identical(other.restorationId, restorationId) ||
@@ -372,6 +376,7 @@ class _$_FlutterTextField extends _FlutterTextField {
         scrollPadding,
         enableInteractiveSelection,
         onTap,
+        scrollController,
         clipBehavior,
         restorationId,
         enableIMEPersonalizedLearning
@@ -425,6 +430,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final FlutterEdgeInsets? scrollPadding,
           final ZacValue<bool>? enableInteractiveSelection,
           final ZacActions? onTap,
+          final ZacValue<FlutterScrollController>? scrollController,
           final FlutterClip? clipBehavior,
           final ZacValue<String>? restorationId,
           final ZacValue<bool>? enableIMEPersonalizedLearning}) =
@@ -513,8 +519,8 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacActions? get onTap;
   @override // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-// ScrollController? scrollController,
-// ScrollPhysics? scrollPhysics,
+  ZacValue<FlutterScrollController>? get scrollController;
+  @override // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior;
   @override

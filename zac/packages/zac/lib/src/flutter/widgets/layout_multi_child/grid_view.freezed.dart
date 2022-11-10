@@ -22,8 +22,9 @@ FlutterGridView _$FlutterGridViewFromJson(Map<String, dynamic> json) {
 mixin _$FlutterGridView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse =>
-      throw _privateConstructorUsedError; // ScrollController? controller,
+  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacValue<FlutterScrollController>? get controller =>
+      throw _privateConstructorUsedError;
   ZacValue<bool>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
   ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
@@ -59,6 +60,7 @@ class _$_FlutterGridView extends _FlutterGridView {
       {this.key,
       this.scrollDirection,
       this.reverse,
+      this.controller,
       this.primary,
       this.shrinkWrap,
       this.padding,
@@ -83,7 +85,8 @@ class _$_FlutterGridView extends _FlutterGridView {
   final FlutterAxis? scrollDirection;
   @override
   final ZacValue<bool>? reverse;
-// ScrollController? controller,
+  @override
+  final ZacValue<FlutterScrollController>? controller;
   @override
   final ZacValue<bool>? primary;
 // ScrollPhysics? physics,
@@ -115,7 +118,7 @@ class _$_FlutterGridView extends _FlutterGridView {
 
   @override
   String toString() {
-    return 'FlutterGridView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, primary: $primary, shrinkWrap: $shrinkWrap, padding: $padding, gridDelegate: $gridDelegate, addAutomaticKeepAlives: $addAutomaticKeepAlives, addRepaintBoundaries: $addRepaintBoundaries, addSemanticIndexes: $addSemanticIndexes, cacheExtent: $cacheExtent, children: $children, semanticChildCount: $semanticChildCount, clipBehavior: $clipBehavior, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId)';
+    return 'FlutterGridView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, controller: $controller, primary: $primary, shrinkWrap: $shrinkWrap, padding: $padding, gridDelegate: $gridDelegate, addAutomaticKeepAlives: $addAutomaticKeepAlives, addRepaintBoundaries: $addRepaintBoundaries, addSemanticIndexes: $addSemanticIndexes, cacheExtent: $cacheExtent, children: $children, semanticChildCount: $semanticChildCount, clipBehavior: $clipBehavior, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId)';
   }
 
   @override
@@ -127,6 +130,8 @@ class _$_FlutterGridView extends _FlutterGridView {
             (identical(other.scrollDirection, scrollDirection) ||
                 other.scrollDirection == scrollDirection) &&
             (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
             (identical(other.primary, primary) || other.primary == primary) &&
             (identical(other.shrinkWrap, shrinkWrap) ||
                 other.shrinkWrap == shrinkWrap) &&
@@ -161,6 +166,7 @@ class _$_FlutterGridView extends _FlutterGridView {
       key,
       scrollDirection,
       reverse,
+      controller,
       primary,
       shrinkWrap,
       padding,
@@ -189,6 +195,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool>? reverse,
+      final ZacValue<FlutterScrollController>? controller,
       final ZacValue<bool>? primary,
       final ZacValue<bool>? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
@@ -213,7 +220,9 @@ abstract class _FlutterGridView extends FlutterGridView {
   FlutterAxis? get scrollDirection;
   @override
   ZacValue<bool>? get reverse;
-  @override // ScrollController? controller,
+  @override
+  ZacValue<FlutterScrollController>? get controller;
+  @override
   ZacValue<bool>? get primary;
   @override // ScrollPhysics? physics,
   ZacValue<bool>? get shrinkWrap;

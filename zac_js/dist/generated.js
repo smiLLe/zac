@@ -34,6 +34,8 @@ export class ZacAction extends ZacConverter {
 }
 export class InputBorder extends ZacConverter {
 }
+export class ScrollController extends ZacConverter {
+}
 export class ZacTransformer extends ZacConverter {
 }
 export class Color extends ZacConverter {

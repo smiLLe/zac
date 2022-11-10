@@ -8,6 +8,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
+import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -77,7 +78,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
     ZacActions? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-// ScrollController? scrollController,
+    ZacValue<FlutterScrollController>? scrollController,
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
     FlutterClip? clipBehavior,
@@ -134,6 +135,9 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       onTap: onTap?.createCb(zacContext),
       onEditingComplete: onEditingComplete?.createCb(zacContext),
       onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),
+      scrollController: scrollController
+          ?.getValue(zacContext)
+          .getScrollController(zacContext),
     );
   }
 }

@@ -111,6 +111,39 @@ void main() {
         .called(1);
   });
 
+  testWidgets('FlutterTextField() consumes the ScrollController',
+      (tester) async {
+    late ZacContext zacContext;
+    final ctrl = ScrollController();
+    await testWithinMaterialApp(
+        tester,
+        SharedValueProvider(
+          childBuilder: (c) {
+            zacContext = c;
+            return Material(
+              child: FlutterTextField(
+                key: FlutterValueKey('TEXTFIELD'),
+                scrollController:
+                    ZacValue<FlutterScrollController>.consume(family: 'shared'),
+              ).buildWidget(zacContext),
+            );
+          },
+          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
+          family: 'shared',
+          autoCreate: true,
+        ));
+
+    final findMe = find.byKey(const ValueKey('TEXTFIELD'));
+    expect(findMe, findsOneWidget);
+
+    final widget = findMe.evaluate().first.widget;
+
+    expect(
+        widget,
+        isA<TextField>().having(
+            (p0) => p0.scrollController, 'TextField.scrollController', ctrl));
+  });
+
   testWidgets(
     'FlutterTextField() onTap',
     (tester) async {},

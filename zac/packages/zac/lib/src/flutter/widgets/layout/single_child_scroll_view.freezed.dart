@@ -27,7 +27,8 @@ mixin _$FlutterSingleChildScrollView {
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   ZacValue<bool>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
-// ScrollController? controller,
+  ZacValue<FlutterScrollController>? get controller =>
+      throw _privateConstructorUsedError;
   FlutterWidget? get child =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
       this.reverse,
       this.padding,
       this.primary,
+      this.controller,
       this.child,
       this.clipBehavior,
       this.restorationId,
@@ -71,7 +73,8 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
   @override
   final ZacValue<bool>? primary;
 // ScrollPhysics? physics,
-// ScrollController? controller,
+  @override
+  final ZacValue<FlutterScrollController>? controller;
   @override
   final FlutterWidget? child;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -84,7 +87,7 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
 
   @override
   String toString() {
-    return 'FlutterSingleChildScrollView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, padding: $padding, primary: $primary, child: $child, clipBehavior: $clipBehavior, restorationId: $restorationId, keyboardDismissBehavior: $keyboardDismissBehavior)';
+    return 'FlutterSingleChildScrollView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, padding: $padding, primary: $primary, controller: $controller, child: $child, clipBehavior: $clipBehavior, restorationId: $restorationId, keyboardDismissBehavior: $keyboardDismissBehavior)';
   }
 
   @override
@@ -98,6 +101,8 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
             (identical(other.reverse, reverse) || other.reverse == reverse) &&
             (identical(other.padding, padding) || other.padding == padding) &&
             (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
             (identical(other.child, child) || other.child == child) &&
             (identical(other.clipBehavior, clipBehavior) ||
                 other.clipBehavior == clipBehavior) &&
@@ -117,6 +122,7 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
       reverse,
       padding,
       primary,
+      controller,
       child,
       clipBehavior,
       restorationId,
@@ -139,6 +145,7 @@ abstract class _FlutterSingleChildScrollView
       final ZacValue<bool>? reverse,
       final FlutterEdgeInsetsGeometry? padding,
       final ZacValue<bool>? primary,
+      final ZacValue<FlutterScrollController>? controller,
       final FlutterWidget? child,
       final FlutterClip? clipBehavior,
       final ZacValue<String>? restorationId,
@@ -160,7 +167,8 @@ abstract class _FlutterSingleChildScrollView
   @override
   ZacValue<bool>? get primary;
   @override // ScrollPhysics? physics,
-// ScrollController? controller,
+  ZacValue<FlutterScrollController>? get controller;
+  @override
   FlutterWidget? get child;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterClip? get clipBehavior;

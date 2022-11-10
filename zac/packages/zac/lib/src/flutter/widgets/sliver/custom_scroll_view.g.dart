@@ -19,6 +19,10 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
       reverse: json['reverse'] == null
           ? null
           : ZacValue<bool>.fromJson(json['reverse'] as Object),
+      controller: json['controller'] == null
+          ? null
+          : ZacValue<FlutterScrollController>.fromJson(
+              json['controller'] as Object),
       primary: json['primary'] == null
           ? null
           : ZacValue<bool>.fromJson(json['primary'] as Object),

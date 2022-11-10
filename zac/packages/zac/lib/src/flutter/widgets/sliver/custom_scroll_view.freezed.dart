@@ -23,8 +23,9 @@ FlutterCustomScrollView _$FlutterCustomScrollViewFromJson(
 mixin _$FlutterCustomScrollView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse =>
-      throw _privateConstructorUsedError; // ScrollController? controller,
+  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacValue<FlutterScrollController>? get controller =>
+      throw _privateConstructorUsedError;
   ZacValue<bool>? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics =>
       throw _privateConstructorUsedError; // FlutterScrollBehavior? scrollBehavior,
@@ -55,6 +56,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
       {this.key,
       this.scrollDirection,
       this.reverse,
+      this.controller,
       this.primary,
       this.physics,
       this.shrinkWrap,
@@ -77,7 +79,8 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   final FlutterAxis? scrollDirection;
   @override
   final ZacValue<bool>? reverse;
-// ScrollController? controller,
+  @override
+  final ZacValue<FlutterScrollController>? controller;
   @override
   final ZacValue<bool>? primary;
   @override
@@ -105,7 +108,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
 
   @override
   String toString() {
-    return 'FlutterCustomScrollView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, primary: $primary, physics: $physics, shrinkWrap: $shrinkWrap, center: $center, anchor: $anchor, cacheExtent: $cacheExtent, slivers: $slivers, semanticChildCount: $semanticChildCount, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId, clipBehavior: $clipBehavior)';
+    return 'FlutterCustomScrollView(key: $key, scrollDirection: $scrollDirection, reverse: $reverse, controller: $controller, primary: $primary, physics: $physics, shrinkWrap: $shrinkWrap, center: $center, anchor: $anchor, cacheExtent: $cacheExtent, slivers: $slivers, semanticChildCount: $semanticChildCount, keyboardDismissBehavior: $keyboardDismissBehavior, restorationId: $restorationId, clipBehavior: $clipBehavior)';
   }
 
   @override
@@ -117,6 +120,8 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
             (identical(other.scrollDirection, scrollDirection) ||
                 other.scrollDirection == scrollDirection) &&
             (identical(other.reverse, reverse) || other.reverse == reverse) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
             (identical(other.primary, primary) || other.primary == primary) &&
             (identical(other.physics, physics) || other.physics == physics) &&
             (identical(other.shrinkWrap, shrinkWrap) ||
@@ -144,6 +149,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
       key,
       scrollDirection,
       reverse,
+      controller,
       primary,
       physics,
       shrinkWrap,
@@ -170,6 +176,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool>? reverse,
+      final ZacValue<FlutterScrollController>? controller,
       final ZacValue<bool>? primary,
       final FlutterScrollPhysics? physics,
       final ZacValue<bool>? shrinkWrap,
@@ -192,7 +199,9 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   FlutterAxis? get scrollDirection;
   @override
   ZacValue<bool>? get reverse;
-  @override // ScrollController? controller,
+  @override
+  ZacValue<FlutterScrollController>? get controller;
+  @override
   ZacValue<bool>? get primary;
   @override
   FlutterScrollPhysics? get physics;
