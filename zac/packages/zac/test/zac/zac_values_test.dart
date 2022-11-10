@@ -198,7 +198,7 @@ void main() {
           child: FlutterText(
             ZacValue<String>.consume(
               family: 'shared',
-              forceConsume: const ZacValueConsumeType.read(),
+              forceConsume: const SharedValueConsumeType.read(),
             ),
           ),
         ),
@@ -611,7 +611,7 @@ void main() {
           child: FlutterColumn(
             children: ZacValueList<FlutterWidget>.consume(
               family: 'shared',
-              forceConsume: const ZacValueConsumeType.read(),
+              forceConsume: const SharedValueConsumeType.read(),
             ),
           ),
         ),

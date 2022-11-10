@@ -219,8 +219,11 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     final machine = SharedValue.get(
-            const SharedValueConsumeType.watch(), zacContext, family)
-        as ZacStateMachine;
+      zacContext: zacContext,
+      consumeType: const SharedValueConsumeType.watch(),
+      family: family,
+      select: null,
+    ) as ZacStateMachine;
 
     /// check if mapped states actually exist in the StateMachine
     assert(() {
@@ -278,20 +281,26 @@ class ZacStateMachineActions
     map(
       send: (obj) {
         final machine = SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, obj.family)
-            as ZacStateMachine;
+          zacContext: zacContext,
+          consumeType: const SharedValueConsumeType.read(),
+          family: obj.family,
+          select: null,
+        ) as ZacStateMachine;
         machine.send(
             obj.event.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()),
+                prefered: const SharedValueConsumeType.read()),
             payload.params);
       },
       trySend: (obj) {
         final machine = SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, obj.family)
-            as ZacStateMachine;
+          zacContext: zacContext,
+          consumeType: const SharedValueConsumeType.read(),
+          family: obj.family,
+          select: null,
+        ) as ZacStateMachine;
         machine.trySend(
             obj.event.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()),
+                prefered: const SharedValueConsumeType.read()),
             payload.params);
       },
     );

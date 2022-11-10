@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/base.dart';
@@ -140,7 +141,7 @@ class FlutterScaffoldActions
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
           elevation: value.elevation?.getValue(zacContext,
-              prefered: const ZacValueConsumeType.read()),
+              prefered: const SharedValueConsumeType.read()),
           shape: value.shape?.build(zacContext),
           // transitionAnimationController:
         );
@@ -165,7 +166,7 @@ class FlutterScaffoldActions
         state.showBodyScrim(
             value.value,
             value.opacity.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()));
+                prefered: const SharedValueConsumeType.read()));
       },
     );
   }

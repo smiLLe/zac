@@ -57,7 +57,7 @@ class ZacTemplateExpressionsTransformer
                 key,
                 value.getValue(
                   zacContext,
-                  prefered: const ZacValueConsumeType.read(),
+                  prefered: const SharedValueConsumeType.read(),
                 )));
         return template.process(context: <dynamic, dynamic>{
           'tValue': transformValue.value,

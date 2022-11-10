@@ -29,8 +29,12 @@ class FlutterRefreshIndicatorAction
 
   @override
   void execute(ZacActionPayload payload, ZacContext zacContext) {
-    final completer = SharedValue.get(const SharedValueConsumeType.read(),
-        zacContext, FlutterRefreshIndicator.familyName) as Completer<void>;
+    final completer = SharedValue.get(
+      zacContext: zacContext,
+      consumeType: const SharedValueConsumeType.read(),
+      family: FlutterRefreshIndicator.familyName,
+      select: null,
+    ) as Completer<void>;
 
     if (completer.isCompleted) return;
     completer.complete();

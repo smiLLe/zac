@@ -89,7 +89,7 @@ class ZacFlutterNavigatorActions
 
     /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
     state.popUntil(ModalRoute.withName(routeName.getValue(zacContext,
-        prefered: const ZacValueConsumeType.read())));
+        prefered: const SharedValueConsumeType.read())));
   }
 }
 

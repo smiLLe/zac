@@ -166,7 +166,11 @@ void main() {
 
         expect(
             SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, 'foo'),
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.read(),
+              family: 'foo',
+              select: null,
+            ),
             10);
       });
 
@@ -185,7 +189,11 @@ void main() {
 
         expect(
             SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, 'foo'),
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.read(),
+              family: 'foo',
+              select: null,
+            ),
             isNull);
       });
 
@@ -200,7 +208,11 @@ void main() {
 
         expect(
             () => SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, 'foo'),
+                  zacContext: zacContext,
+                  consumeType: const SharedValueConsumeType.read(),
+                  family: 'foo',
+                  select: null,
+                ),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
     });
@@ -235,14 +247,22 @@ void main() {
         SharedValue.update(zacContext, 'foo', (current) => 10);
         expect(
             SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, 'foo'),
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.read(),
+              family: 'foo',
+              select: null,
+            ),
             10);
 
         SharedValue.update(
             zacContext, 'foo', (current) => (current as int) + 10);
         expect(
             SharedValue.get(
-                const SharedValueConsumeType.read(), zacContext, 'foo'),
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.read(),
+              family: 'foo',
+              select: null,
+            ),
             20);
       });
     });
@@ -544,10 +564,11 @@ void main() {
           family: 'shared',
           child: LeakContext(cb: (zacContext) {
             obj = SharedValue.get(
-                SharedValueConsumeType.watch(
-                    select: ZacTransformers([_ConcatStr('bar')])),
-                zacContext,
-                'shared');
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'shared',
+              select: ZacTransformers([_ConcatStr('bar')]),
+            );
           }),
         ),
       );

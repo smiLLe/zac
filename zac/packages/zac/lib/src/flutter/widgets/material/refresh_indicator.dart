@@ -63,8 +63,11 @@ class FlutterRefreshIndicator
         onRefresh: () async {
           zacContext.ref.invalidate(SharedValue.provider(family));
           final completer = SharedValue.get(
-                  const SharedValueConsumeType.read(), zacContext, family)
-              as Completer<void>;
+            consumeType: const SharedValueConsumeType.read(),
+            zacContext: zacContext,
+            family: family,
+            select: null,
+          ) as Completer<void>;
           onRefresh.execute(ZacActionPayload.param(completer), zacContext);
           return completer.future;
         },

@@ -27,7 +27,7 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T>(
           : ZacTransformers.fromJson(json['select'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
-          : ZacValueConsumeType.fromJson(
+          : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
@@ -53,7 +53,7 @@ _$_ZacValueMapConsume<T> _$$_ZacValueMapConsumeFromJson<T>(
           : ZacTransformers.fromJson(json['select'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
-          : ZacValueConsumeType.fromJson(
+          : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
@@ -79,20 +79,8 @@ _$_ZacValueListConsume<T> _$$_ZacValueListConsumeFromJson<T>(
           : ZacTransformers.fromJson(json['select'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
-          : ZacValueConsumeType.fromJson(
+          : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacValueConsumeTypeRead _$$_ZacValueConsumeTypeReadFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacValueConsumeTypeRead(
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacValueConsumeTypeWatch _$$_ZacValueConsumeTypeWatchFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacValueConsumeTypeWatch(
       $type: json['converter'] as String?,
     );
 

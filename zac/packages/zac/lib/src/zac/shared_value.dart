@@ -30,21 +30,35 @@ See "$SharedValueProviderBuilder" for more info.
     name: 'Zac SharedValue',
   );
 
-  static SharedValueType get(SharedValueConsumeType type, ZacContext zacContext,
-      SharedValueFamily family) {
-    return type.map<SharedValueType>(
-      watch: (obj) {
-        if (null == obj.select || true == obj.select?.transformers.isEmpty) {
+  static SharedValueType get({
+    required ZacContext zacContext,
+    required ZacTransformers? select,
+    required SharedValueConsumeType consumeType,
+    required SharedValueFamily family,
+  }) {
+    return consumeType.map<SharedValueType>(
+      read: (_) {
+        if (null == select) {
+          return zacContext.ref
+              .read<SharedValueType>(SharedValue.provider(family));
+        } else {
+          return select.transform(
+              ZacTransformValue(zacContext.ref
+                  .read<SharedValueType>(SharedValue.provider(family))),
+              zacContext,
+              null);
+        }
+      },
+      watch: (_) {
+        if (null == select) {
           return zacContext.ref
               .watch<SharedValueType>(SharedValue.provider(family));
+        } else {
+          return zacContext.ref.watch<SharedValueType>(
+              SharedValue.provider(family).select((value) => select.transform(
+                  ZacTransformValue(value), zacContext, null)));
         }
-
-        return zacContext.ref.watch(SharedValue.provider(family)
-            .select<SharedValueType>((sharedValue) => obj.select!
-                .transform(ZacTransformValue(sharedValue), zacContext, null)));
       },
-      read: (_) =>
-          zacContext.ref.read<SharedValueType>(SharedValue.provider(family)),
     );
   }
 

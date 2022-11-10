@@ -196,7 +196,11 @@ void main() {
         child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
-                const SharedValueConsumeType.watch(), zacContext, 'machine');
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            );
           },
         ),
       ),
@@ -288,8 +292,11 @@ void main() {
         child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), zacContext, 'machine')
-                as ZacStateMachine;
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            ) as ZacStateMachine;
           },
         ),
       ),
@@ -339,8 +346,11 @@ void main() {
         child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), zacContext, 'machine')
-                as ZacStateMachine;
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            ) as ZacStateMachine;
           },
         ),
       ),
@@ -377,8 +387,11 @@ void main() {
         child: LeakContext(
           cb: (zacContext) {
             curMachine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), zacContext, 'machine')
-                as ZacStateMachine;
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            ) as ZacStateMachine;
           },
         ),
       ),
@@ -425,8 +438,11 @@ void main() {
         child: LeakContext(
           cb: (zacContext) {
             machine = SharedValue.get(
-                    const SharedValueConsumeType.watch(), zacContext, 'machine')
-                as ZacStateMachine;
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            ) as ZacStateMachine;
           },
           child: ZacStateMachineBuildStateBuilder(
             family: ZacValue<String>.fromJson('machine'),

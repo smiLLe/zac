@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/update_widget.dart';
@@ -184,8 +185,8 @@ class FlutterNavigatorActions
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName
-              .getValue(zacContext, prefered: const ZacValueConsumeType.read()),
+          obj.routeName.getValue(zacContext,
+              prefered: const SharedValueConsumeType.read()),
           arguments: obj.arguments,
         )
             .then((value) {
@@ -223,8 +224,8 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName
-              .getValue(zacContext, prefered: const ZacValueConsumeType.read()),
+          obj.routeName.getValue(zacContext,
+              prefered: const SharedValueConsumeType.read()),
           arguments: obj.arguments,
           result: obj.result,
         )

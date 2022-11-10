@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:flutter/material.dart';
@@ -196,16 +197,16 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
             FlutterBuilder(child: value.child).buildWidget(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),
         barrierDismissible: value.barrierDismissible?.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()) ??
+                prefered: const SharedValueConsumeType.read()) ??
             true,
         barrierColor: value.barrierColor?.build(zacContext),
-        barrierLabel: value.barrierLabel
-            ?.getValue(zacContext, prefered: const ZacValueConsumeType.read()),
+        barrierLabel: value.barrierLabel?.getValue(zacContext,
+            prefered: const SharedValueConsumeType.read()),
         useSafeArea: value.useSafeArea?.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()) ??
+                prefered: const SharedValueConsumeType.read()) ??
             true,
         useRootNavigator: value.useRootNavigator?.getValue(zacContext,
-                prefered: const ZacValueConsumeType.read()) ??
+                prefered: const SharedValueConsumeType.read()) ??
             true,
       ),
     );

@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'transformers.freezed.dart';
@@ -195,10 +196,11 @@ The value: $value
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       length: (_) => value.length,
-      containsKey: (obj) => value.containsKey(obj.key
-          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
-      containsValue: (obj) => value.containsValue(obj.value
-          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
+      containsKey: (obj) => value.containsKey(obj.key?.getValue(zacContext,
+          prefered: const SharedValueConsumeType.read())),
+      containsValue: (obj) => value.containsValue(obj.value?.getValue(
+          zacContext,
+          prefered: const SharedValueConsumeType.read())),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
             value.entries.map<MapEntry<dynamic, dynamic>>((entry) {
@@ -226,8 +228,8 @@ The value: $value
         return Map<String, Object>.from(value);
       },
       key: (obj) {
-        final key = obj.key
-            .getValue(zacContext, prefered: const ZacValueConsumeType.read());
+        final key = obj.key.getValue(zacContext,
+            prefered: const SharedValueConsumeType.read());
         return value[key];
       },
       fromStringFlutterWidget: (_) {
@@ -339,8 +341,8 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element
-          ?.getValue(zacContext, prefered: const ZacValueConsumeType.read())),
+      contains: (obj) => value.contains(obj.element?.getValue(zacContext,
+          prefered: const SharedValueConsumeType.read())),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -473,7 +475,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
           obj.value.getValue(zacContext,
-              prefered: const ZacValueConsumeType.read()) ==
+              prefered: const SharedValueConsumeType.read()) ==
           value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
@@ -669,14 +671,14 @@ The value: $value
     return map(
       length: (_) => value.length,
       split: (obj) => value.split(obj.pattern
-          .getValue(zacContext, prefered: const ZacValueConsumeType.read())),
+          .getValue(zacContext, prefered: const SharedValueConsumeType.read())),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
           RegExp(obj.from.getValue(zacContext,
-              prefered: const ZacValueConsumeType.read())),
+              prefered: const SharedValueConsumeType.read())),
           obj.replace.getValue(zacContext,
-              prefered: const ZacValueConsumeType.read())),
+              prefered: const SharedValueConsumeType.read())),
     );
   }
 }
