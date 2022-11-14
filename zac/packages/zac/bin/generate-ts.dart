@@ -168,6 +168,7 @@ class AllFiles {
   late final Iterable<String> allKnownTypes = [
     'ZacValue',
     'ZacValueList',
+    'ZacValueConsumeOnly',
     ...files.fold(<String>[], (previousValue, oneFile) {
       final allInFile = [
         ...oneFile.abstracts.map((tsClass) => tsClass.className),
@@ -182,14 +183,16 @@ class AllFiles {
       .fold<Iterable<TsAbstractClass>>([], (previousValue, element) {
     return [...previousValue, ...element.abstracts];
   }).toList()
-    ..sort((a, b) => a.order.compareTo(b.order));
+    ..sort((a, b) => a.order.compareTo(b.order))
+    ..sort((a, b) => a.className.compareTo(b.className));
 
   late final Iterable<TsClass> builders = files
       .where((oneFile) => oneFile.builders.isNotEmpty)
       .fold<Iterable<TsClass>>([], (previousValue, element) {
     return [...previousValue, ...element.builders];
   }).toList()
-    ..sort((a, b) => a.order.compareTo(b.order));
+    ..sort((a, b) => a.order.compareTo(b.order))
+    ..sort((a, b) => a.className.compareTo(b.className));
 }
 
 class OneFile {
@@ -200,6 +203,7 @@ class OneFile {
 
   late final Iterable<ClassElement> tsClasses = lib.element.topLevelElements
       .whereType<ClassElement>()
+      .where((cls) => !cls.isPrivate)
       .where((cls) => !cls.displayName.startsWith('_'))
       .where((cls) => cls.metadata
           .where((element) =>
@@ -240,9 +244,24 @@ class TsAbstractClass {
     return cleanUpFlutterPrefix(element.displayName);
   }();
 
+  late final String classNameWithTypes = () {
+    return cleanUpFlutterPrefix(
+        element.thisType.getDisplayString(withNullability: false));
+  }();
+
   late final List<String> implements = element.interfaces.isEmpty
       ? <String>[]
       : element.interfaces
+
+          /// only accept classes that are marked with the classAnnotation
+          .where((element) {
+            return element.element2.metadata
+                .map((e) => e.computeConstantValue())
+                .where((e) =>
+                    e?.type?.getDisplayString(withNullability: false) ==
+                    classAnnotation)
+                .isNotEmpty;
+          })
           .map((e) =>
               cleanUpFlutterPrefix(e.getDisplayString(withNullability: false)))
           .toList();
@@ -299,10 +318,27 @@ class Template {
   Template(this.allFiles);
   final AllFiles allFiles;
 
+  /// Will produce a TS Class property like
+  /// private ignoredProp1?: T;
+  ///
+  /// Classes with Type Params have to use the Type Param somehow or otherwise
+  /// TypeScript will complain of an "unused" Type Param.
+  String getIgnoredProp(TsAbstractClass cls) {
+    if (cls.element.typeParameters.isEmpty) return '';
+    int i = 1;
+
+    return cls.element.typeParameters.map((e) {
+      return 'private ignoredProp${i++}?: ${e.getDisplayString(withNullability: false)};';
+    }).join('\n');
+  }
+
   @override
   String toString() {
     final abstractsTpl = allFiles.abstracts.map((abs) {
-      return 'export abstract class ${abs.className} extends ZacConverter${abs.implements.isEmpty ? '' : ' implements ${abs.implements.join(', ')}'} {}';
+      return '''
+export abstract class ${abs.classNameWithTypes} extends ZacConverter${abs.implements.isEmpty ? '' : ' implements ${abs.implements.join(', ')}'} {
+  ${getIgnoredProp(abs)}
+}''';
     }).join('\n');
 
     final builderTpl = allFiles.builders.map((b) {
@@ -347,7 +383,7 @@ export class ${b.className} extends ZacConverter${b.implements.isEmpty ? '' : ' 
     return '''
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DartDouble, DartInt, DartDateTime, ZacTypes, ZacConverter } from "./base"
-import { ZacValue, ZacValueList } from "./zac/zac_value"
+import { ZacValue, ZacValueList, ZacValueConsumeOnly } from "./zac/zac_value"
 
 $abstractsTpl
 $builderTpl

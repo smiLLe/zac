@@ -626,6 +626,25 @@ void main() {
     expect(find.text('hello world'), findsNothing);
   });
 
+  test('Create ZacValueConsumeOnly', () {
+    expect(
+        ZacValueConsumeOnly<int>.fromJson(<String, dynamic>{
+          'converter': 'z:1:ZacValue.consume',
+          'family': 'shared',
+        }),
+        ZacValueConsumeOnly<int>(ZacValue<int>.consume(family: 'shared')
+            .map((value) => throw Error(), consume: (obj) => obj)));
+
+    expect(
+        () => ZacValueConsumeOnly<int>.fromJson(
+            {'converter': 'z:1:ZacValue', 'data': 5}),
+        throwsA(isA<StateError>().having(
+            (p0) => p0.message,
+            'error messages',
+            contains(
+                'Something very bad happend. ZacValueConsumeOnly<int> must always contain a _ZacValueConsume<int>'))));
+  });
+
   testWidgets('pick a ZacValue and pass it to new actions as payload',
       (tester) async {
     expect(

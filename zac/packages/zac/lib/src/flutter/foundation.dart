@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:zac/zac.dart';
-import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'foundation.freezed.dart';
@@ -43,35 +43,30 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   }
 }
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterGlobalKey implements FlutterKey {}
-
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterGlobalKeyNavigatorState implements FlutterGlobalKey {
+abstract class FlutterGlobalKey<T extends State<StatefulWidget>>
+    implements FlutterKey {
   @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext);
+  GlobalKey<T> buildKey(ZacContext zacContext);
 }
 
 @defaultConverterFreezed
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
-class FlutterGlobalKeyNavigatorStateBuilder
-    with _$FlutterGlobalKeyNavigatorStateBuilder
-    implements FlutterGlobalKeyNavigatorState {
-  FlutterGlobalKeyNavigatorStateBuilder._();
+class FlutterGlobalKeyNavigatorState
+    with _$FlutterGlobalKeyNavigatorState
+    implements FlutterGlobalKey<NavigatorState> {
+  FlutterGlobalKeyNavigatorState._();
 
   static const String unionValue = 'f:1:GlobalKey<NavigatorState>';
 
-  factory FlutterGlobalKeyNavigatorStateBuilder.fromJson(
-          Map<String, dynamic> json) =>
-      _$FlutterGlobalKeyNavigatorStateBuilderFromJson(json);
+  factory FlutterGlobalKeyNavigatorState.fromJson(Map<String, dynamic> json) =>
+      _$FlutterGlobalKeyNavigatorStateFromJson(json);
 
-  @FreezedUnionValue(FlutterGlobalKeyNavigatorStateBuilder.unionValue)
-  factory FlutterGlobalKeyNavigatorStateBuilder({String? debugLabel}) =
-      _FlutterGlobalKeyNavigatorStateBuilder;
+  @FreezedUnionValue(FlutterGlobalKeyNavigatorState.unionValue)
+  factory FlutterGlobalKeyNavigatorState({String? debugLabel}) =
+      _FlutterGlobalKeyNavigatorState;
 
-  late final GlobalKey<NavigatorState> key = () {
-    return GlobalKey<NavigatorState>(debugLabel: debugLabel);
-  }();
+  late final GlobalKey<NavigatorState> key =
+      GlobalKey<NavigatorState>(debugLabel: debugLabel);
 
   @override
   GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
@@ -79,21 +74,28 @@ class FlutterGlobalKeyNavigatorStateBuilder
   }
 }
 
-/// This class is not meant to be used as a Builder and cannot be converted.
-/// Instead an application must create this class in their code and should
-/// manually provide it as a [SharedValue] so that it can be consumed
-/// by a [ZacValue]<[FlutterGlobalKeyNavigatorState]>
-@nonConverterFreezed
-class ZacGlobalKeyNavigatorState
-    with _$ZacGlobalKeyNavigatorState
-    implements FlutterGlobalKeyNavigatorState {
-  const ZacGlobalKeyNavigatorState._();
+@defaultConverterFreezed
+@ZacGenerate(order: zacGenerateOrderDartFoundation)
+class FlutterGlobalKeyScaffoldMessengerState
+    with _$FlutterGlobalKeyScaffoldMessengerState
+    implements FlutterGlobalKey<ScaffoldMessengerState> {
+  FlutterGlobalKeyScaffoldMessengerState._();
 
-  factory ZacGlobalKeyNavigatorState(GlobalKey<NavigatorState> key) =
-      _ZacGlobalKeyNavigatorState;
+  static const String unionValue = 'f:1:GlobalKey<ScaffoldMessengerState>';
+
+  factory FlutterGlobalKeyScaffoldMessengerState.fromJson(
+          Map<String, dynamic> json) =>
+      _$FlutterGlobalKeyScaffoldMessengerStateFromJson(json);
+
+  @FreezedUnionValue(FlutterGlobalKeyScaffoldMessengerState.unionValue)
+  factory FlutterGlobalKeyScaffoldMessengerState({String? debugLabel}) =
+      _FlutterGlobalKeyScaffoldMessengerState;
+
+  late final GlobalKey<ScaffoldMessengerState> key =
+      GlobalKey<ScaffoldMessengerState>(debugLabel: debugLabel);
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
+  GlobalKey<ScaffoldMessengerState> buildKey(ZacContext zacContext) {
     return key;
   }
 }

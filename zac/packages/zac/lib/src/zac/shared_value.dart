@@ -30,6 +30,28 @@ See "$SharedValueProviderBuilder" for more info.
     name: 'Zac SharedValue',
   );
 
+  static T getTyped<T>({
+    required ZacContext zacContext,
+    required ZacTransformers? select,
+    required SharedValueConsumeType consumeType,
+    required SharedValueFamily family,
+  }) {
+    final value = SharedValue.get(
+      zacContext: zacContext,
+      select: select,
+      consumeType: consumeType,
+      family: family,
+    );
+    if (value is! T) {
+      throw StateError('''
+It was not possible to get a $SharedValue of type $T from family "$family".
+The type of the $SharedValue was ${value.runtimeType}.
+The $SharedValue: $value''');
+    }
+
+    return value;
+  }
+
   static SharedValueType get({
     required ZacContext zacContext,
     required ZacTransformers? select,
@@ -136,7 +158,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
 }
 
 @defaultConverterFreezed
-@ZacGenerate()
+@ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueConsumeType with _$SharedValueConsumeType {
   static const String unionValue = 'z:1:SharedValueConsume.watch';
   static const String unionValueRead = 'z:1:SharedValueConsume.read';
@@ -145,9 +167,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
       _$SharedValueConsumeTypeFromJson(json);
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
-  const factory SharedValueConsumeType.watch({
-    ZacTransformers? select,
-  }) = _SharedValueConsumeTypeWatch;
+  const factory SharedValueConsumeType.watch() = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
   const factory SharedValueConsumeType.read() = _SharedValueConsumeTypeRead;

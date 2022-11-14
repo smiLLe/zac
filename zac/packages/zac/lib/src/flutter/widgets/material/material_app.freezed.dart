@@ -21,8 +21,10 @@ FlutterMaterialApp _$FlutterMaterialAppFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterMaterialApp {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<FlutterGlobalKeyNavigatorState>? get navigatorKey =>
-      throw _privateConstructorUsedError; // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+  ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? get navigatorKey =>
+      throw _privateConstructorUsedError;
+  ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+      get scaffoldMessengerKey => throw _privateConstructorUsedError;
   FlutterWidget? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   ZacValue<String>? get initialRoute => throw _privateConstructorUsedError;
@@ -75,6 +77,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   _$_FlutterMaterialApp(
       {this.key,
       this.navigatorKey,
+      this.scaffoldMessengerKey,
       this.home,
       this.initialRoute,
       this.onGenerateRoute,
@@ -98,8 +101,10 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<FlutterGlobalKeyNavigatorState>? navigatorKey;
-// GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+  final ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? navigatorKey;
+  @override
+  final ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+      scaffoldMessengerKey;
   @override
   final FlutterWidget? home;
 // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -150,7 +155,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 
   @override
   String toString() {
-    return 'FlutterMaterialApp(key: $key, navigatorKey: $navigatorKey, home: $home, initialRoute: $initialRoute, onGenerateRoute: $onGenerateRoute, onUnknownRoute: $onUnknownRoute, title: $title, color: $color, locale: $locale, debugShowMaterialGrid: $debugShowMaterialGrid, showPerformanceOverlay: $showPerformanceOverlay, checkerboardRasterCacheImages: $checkerboardRasterCacheImages, checkerboardOffscreenLayers: $checkerboardOffscreenLayers, showSemanticsDebugger: $showSemanticsDebugger, debugShowCheckedModeBanner: $debugShowCheckedModeBanner, restorationScopeId: $restorationScopeId, useInheritedMediaQuery: $useInheritedMediaQuery)';
+    return 'FlutterMaterialApp(key: $key, navigatorKey: $navigatorKey, scaffoldMessengerKey: $scaffoldMessengerKey, home: $home, initialRoute: $initialRoute, onGenerateRoute: $onGenerateRoute, onUnknownRoute: $onUnknownRoute, title: $title, color: $color, locale: $locale, debugShowMaterialGrid: $debugShowMaterialGrid, showPerformanceOverlay: $showPerformanceOverlay, checkerboardRasterCacheImages: $checkerboardRasterCacheImages, checkerboardOffscreenLayers: $checkerboardOffscreenLayers, showSemanticsDebugger: $showSemanticsDebugger, debugShowCheckedModeBanner: $debugShowCheckedModeBanner, restorationScopeId: $restorationScopeId, useInheritedMediaQuery: $useInheritedMediaQuery)';
   }
 
   @override
@@ -161,6 +166,8 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
             (identical(other.key, key) || other.key == key) &&
             (identical(other.navigatorKey, navigatorKey) ||
                 other.navigatorKey == navigatorKey) &&
+            (identical(other.scaffoldMessengerKey, scaffoldMessengerKey) ||
+                other.scaffoldMessengerKey == scaffoldMessengerKey) &&
             (identical(other.home, home) || other.home == home) &&
             (identical(other.initialRoute, initialRoute) ||
                 other.initialRoute == initialRoute) &&
@@ -201,6 +208,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
       runtimeType,
       key,
       navigatorKey,
+      scaffoldMessengerKey,
       home,
       initialRoute,
       onGenerateRoute,
@@ -229,7 +237,9 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
       {final FlutterKey? key,
-      final ZacValue<FlutterGlobalKeyNavigatorState>? navigatorKey,
+      final ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? navigatorKey,
+      final ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+          scaffoldMessengerKey,
       final FlutterWidget? home,
       final ZacValue<String>? initialRoute,
       final FlutterRouteFactory? onGenerateRoute,
@@ -253,8 +263,11 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<FlutterGlobalKeyNavigatorState>? get navigatorKey;
-  @override // GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+  ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? get navigatorKey;
+  @override
+  ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+      get scaffoldMessengerKey;
+  @override
   FlutterWidget? get home;
   @override // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
   ZacValue<String>? get initialRoute;

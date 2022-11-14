@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -215,6 +217,85 @@ void main() {
                 ),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
+    });
+
+    testWidgets('request a typed value or throw', (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: 5,
+          family: 'shared',
+          child: LeakContext(
+            cb: (o) => zacContext = o,
+          ),
+        ),
+      );
+
+      expect(
+          SharedValue.getTyped<int>(
+            zacContext: zacContext,
+            consumeType: const SharedValueConsumeType.read(),
+            family: 'shared',
+            select: null,
+          ),
+          5);
+
+      expect(
+          () => SharedValue.getTyped<String>(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.read(),
+                family: 'shared',
+                select: null,
+              ),
+          throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+              contains('The type of the SharedValue was int.'))));
+    });
+
+    testWidgets('request a typed value or throw #2', (tester) async {
+      late ZacContext zacContext;
+      final completer = Completer<int>();
+      await testZacWidget(
+        tester,
+        SharedValueProviderBuilder(
+          value: completer,
+          family: 'shared',
+          child: LeakContext(
+            cb: (o) => zacContext = o,
+          ),
+        ),
+      );
+
+      expect(
+          SharedValue.getTyped<Completer<int>>(
+            zacContext: zacContext,
+            consumeType: const SharedValueConsumeType.read(),
+            family: 'shared',
+            select: null,
+          ),
+          completer);
+
+      expect(
+          SharedValue.getTyped<Completer<Object?>>(
+            zacContext: zacContext,
+            consumeType: const SharedValueConsumeType.read(),
+            family: 'shared',
+            select: null,
+          ),
+          completer);
+
+      expect(
+          () => SharedValue.getTyped<Completer<String>>(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.read(),
+                family: 'shared',
+                select: null,
+              ),
+          throwsA(isA<StateError>().having(
+              (p0) => p0.message,
+              'error message',
+              contains(
+                  'It was not possible to get a SharedValue of type Completer<String> from family "shared".'))));
     });
 
     group('update()', () {

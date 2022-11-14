@@ -40,7 +40,10 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
           ? null
           : FlutterRefreshIndicatorTriggerMode.fromJson(
               json['triggerMode'] as Map<String, dynamic>),
-      family: json['family'] as Object? ?? FlutterRefreshIndicator.familyName,
+      onRefreshCompleter: json['onRefreshCompleter'] == null
+          ? null
+          : ZacValueConsumeOnly<DartCompleterVoid>.fromJson(
+              json['onRefreshCompleter'] as Object),
     );
 
 _$_FlutterRefreshIndicatorTriggerModeonEdge

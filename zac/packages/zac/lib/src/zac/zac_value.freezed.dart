@@ -14,6 +14,72 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ZacValueConsumeOnly<T> _$ZacValueConsumeOnlyFromJson<T>(
+    Map<String, dynamic> json) {
+  return _ZacValueConsumeOnly<T>.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacValueConsumeOnly<T> {
+  ZacValue<T> get zacValue => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueConsumeOnly<T> value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacValueConsumeOnly<T> extends _ZacValueConsumeOnly<T> {
+  _$_ZacValueConsumeOnly(this.zacValue) : super._();
+
+  factory _$_ZacValueConsumeOnly.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueConsumeOnlyFromJson(json);
+
+  @override
+  final ZacValue<T> zacValue;
+
+  @override
+  String toString() {
+    return 'ZacValueConsumeOnly<$T>(zacValue: $zacValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacValueConsumeOnly<T> &&
+            (identical(other.zacValue, zacValue) ||
+                other.zacValue == zacValue));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, zacValue);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueConsumeOnly<T> value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacValueConsumeOnly<T> extends ZacValueConsumeOnly<T> {
+  factory _ZacValueConsumeOnly(final ZacValue<T> zacValue) =
+      _$_ZacValueConsumeOnly<T>;
+  _ZacValueConsumeOnly._() : super._();
+
+  factory _ZacValueConsumeOnly.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueConsumeOnly<T>.fromJson;
+
+  @override
+  ZacValue<T> get zacValue;
+}
+
 ZacValue<T> _$ZacValueFromJson<T>(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:ZacValue':

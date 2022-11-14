@@ -34,7 +34,8 @@ mixin _$FlutterRefreshIndicator {
   ZacValue<double>? get strokeWidth => throw _privateConstructorUsedError;
   FlutterRefreshIndicatorTriggerMode? get triggerMode =>
       throw _privateConstructorUsedError;
-  Object get family => throw _privateConstructorUsedError;
+  ZacValueConsumeOnly<DartCompleterVoid>? get onRefreshCompleter =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -58,7 +59,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
       this.semanticsValue,
       this.strokeWidth,
       this.triggerMode,
-      this.family = FlutterRefreshIndicator.familyName})
+      this.onRefreshCompleter})
       : super._();
 
   factory _$_FlutterRefreshIndicator.fromJson(Map<String, dynamic> json) =>
@@ -88,12 +89,11 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final FlutterRefreshIndicatorTriggerMode? triggerMode;
   @override
-  @JsonKey()
-  final Object family;
+  final ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter;
 
   @override
   String toString() {
-    return 'FlutterRefreshIndicator(key: $key, child: $child, displacement: $displacement, edgeOffset: $edgeOffset, onRefresh: $onRefresh, color: $color, backgroundColor: $backgroundColor, semanticsLabel: $semanticsLabel, semanticsValue: $semanticsValue, strokeWidth: $strokeWidth, triggerMode: $triggerMode, family: $family)';
+    return 'FlutterRefreshIndicator(key: $key, child: $child, displacement: $displacement, edgeOffset: $edgeOffset, onRefresh: $onRefresh, color: $color, backgroundColor: $backgroundColor, semanticsLabel: $semanticsLabel, semanticsValue: $semanticsValue, strokeWidth: $strokeWidth, triggerMode: $triggerMode, onRefreshCompleter: $onRefreshCompleter)';
   }
 
   @override
@@ -120,7 +120,8 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
                 other.strokeWidth == strokeWidth) &&
             (identical(other.triggerMode, triggerMode) ||
                 other.triggerMode == triggerMode) &&
-            const DeepCollectionEquality().equals(other.family, family));
+            (identical(other.onRefreshCompleter, onRefreshCompleter) ||
+                other.onRefreshCompleter == onRefreshCompleter));
   }
 
   @JsonKey(ignore: true)
@@ -138,7 +139,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
       semanticsValue,
       strokeWidth,
       triggerMode,
-      const DeepCollectionEquality().hash(family));
+      onRefreshCompleter);
 
   @override
   @optionalTypeArgs
@@ -151,18 +152,19 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
 
 abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   factory _FlutterRefreshIndicator(
-      {final FlutterKey? key,
-      required final FlutterWidget child,
-      final ZacValue<double>? displacement,
-      final ZacValue<double>? edgeOffset,
-      required final ZacActions onRefresh,
-      final FlutterColor? color,
-      final FlutterColor? backgroundColor,
-      final ZacValue<String>? semanticsLabel,
-      final ZacValue<String>? semanticsValue,
-      final ZacValue<double>? strokeWidth,
-      final FlutterRefreshIndicatorTriggerMode? triggerMode,
-      final Object family}) = _$_FlutterRefreshIndicator;
+          {final FlutterKey? key,
+          required final FlutterWidget child,
+          final ZacValue<double>? displacement,
+          final ZacValue<double>? edgeOffset,
+          required final ZacActions onRefresh,
+          final FlutterColor? color,
+          final FlutterColor? backgroundColor,
+          final ZacValue<String>? semanticsLabel,
+          final ZacValue<String>? semanticsValue,
+          final ZacValue<double>? strokeWidth,
+          final FlutterRefreshIndicatorTriggerMode? triggerMode,
+          final ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter}) =
+      _$_FlutterRefreshIndicator;
   _FlutterRefreshIndicator._() : super._();
 
   factory _FlutterRefreshIndicator.fromJson(Map<String, dynamic> json) =
@@ -191,7 +193,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   FlutterRefreshIndicatorTriggerMode? get triggerMode;
   @override
-  Object get family;
+  ZacValueConsumeOnly<DartCompleterVoid>? get onRefreshCompleter;
 }
 
 FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/zac/action.dart';
 
 import 'package:zac/src/zac/context.dart';
@@ -21,8 +22,6 @@ class FlutterRefreshIndicator
     implements FlutterWidget {
   const FlutterRefreshIndicator._();
 
-  static const String familyName = 'refresh_indicator';
-
   static const String unionValue = 'f:1:RefreshIndicator';
 
   factory FlutterRefreshIndicator.fromJson(Map<String, dynamic> json) =>
@@ -42,45 +41,34 @@ class FlutterRefreshIndicator
     ZacValue<String>? semanticsValue,
     ZacValue<double>? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
-    @Default(FlutterRefreshIndicator.familyName) SharedValueFamily family,
+    ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   @override
   Widget buildWidget(ZacContext zacContext) {
-    return SharedValueProvider(
-      key: key?.buildKey(zacContext),
-      autoCreate: true,
-      family: family,
-      valueBuilder: (ref, zacContext) {
-        final completer = Completer<void>();
-        ref.onDispose(() {
-          if (completer.isCompleted) return;
-          completer.complete();
-        });
-        return completer;
+    return RefreshIndicator(
+      onRefresh: () async {
+        if (null == onRefreshCompleter) {
+          onRefresh.execute(const ZacActionPayload(), zacContext);
+          return Future.value(null);
+        }
+
+        zacContext.ref
+            .invalidate(SharedValue.provider(onRefreshCompleter!.family));
+        final completer =
+            onRefreshCompleter!.getValue(zacContext).getCompleter();
+        onRefresh.execute(ZacActionPayload.param(completer), zacContext);
+        return completer.future;
       },
-      childBuilder: (zacContext) => RefreshIndicator(
-        onRefresh: () async {
-          zacContext.ref.invalidate(SharedValue.provider(family));
-          final completer = SharedValue.get(
-            consumeType: const SharedValueConsumeType.read(),
-            zacContext: zacContext,
-            family: family,
-            select: null,
-          ) as Completer<void>;
-          onRefresh.execute(ZacActionPayload.param(completer), zacContext);
-          return completer.future;
-        },
-        displacement: displacement?.getValue(zacContext) ?? 40.0,
-        edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
-        color: color?.build(zacContext),
-        backgroundColor: backgroundColor?.build(zacContext),
-        semanticsLabel: semanticsLabel?.getValue(zacContext),
-        semanticsValue: semanticsValue?.getValue(zacContext),
-        triggerMode: triggerMode?.build(zacContext) ??
-            RefreshIndicatorTriggerMode.onEdge,
-        child: child.buildWidget(zacContext),
-      ),
+      displacement: displacement?.getValue(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      color: color?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      semanticsValue: semanticsValue?.getValue(zacContext),
+      triggerMode:
+          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
+      child: child.buildWidget(zacContext),
     );
   }
 }

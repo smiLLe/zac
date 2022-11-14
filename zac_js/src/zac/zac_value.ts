@@ -1,7 +1,26 @@
 import { SharedValueFamily, ZacConverter, DartDateTime, DartDouble, DartInt } from "../base";
-import { ZacTransformers, ZacValueConsumeType } from "../generated";
+import { ZacTransformers, SharedValueConsumeType } from "../generated";
 
 type ZacValueTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
+
+export class ZacValueConsumeOnly<T> extends ZacConverter {
+    // The generic has to be used in some way so that assigning
+    // ZacValue<int> to ZacValue<string> will result in an error.
+    private ignoredProp: T | undefined;
+
+    static new(data: {
+        family: SharedValueFamily
+        transformer?: ZacTransformers,
+        select?: ZacTransformers,
+        forceConsume?: SharedValueConsumeType,
+    }) {
+        return new ZacValueConsumeOnly<ZacValueTypes>({
+            converter: 'z:1:ZacValue.consume',
+            ...data,
+        });
+    }
+}
+
 
 export class ZacValue<T> extends ZacConverter {
     // The generic has to be used in some way so that assigning
@@ -21,7 +40,7 @@ export class ZacValue<T> extends ZacConverter {
         family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
-        forceConsume?: ZacValueConsumeType,
+        forceConsume?: SharedValueConsumeType,
     }) {
         return new ZacValue<ZacValueTypes>({
             converter: 'z:1:ZacValue.consume',
@@ -50,7 +69,7 @@ export class ZacValueList<T> extends ZacConverter {
         family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
-        forceConsume?: ZacValueConsumeType,
+        forceConsume?: SharedValueConsumeType,
     }) {
         return new ZacValueList<ZacValueListTypes>({
             converter: 'z:1:ZacValueList.consume',
@@ -79,7 +98,7 @@ export class ZacValueMap<T> extends ZacConverter {
         family: SharedValueFamily
         transformer?: ZacTransformers,
         select?: ZacTransformers,
-        forceConsume?: ZacValueConsumeType,
+        forceConsume?: SharedValueConsumeType,
     }) {
         return new ZacValueMap<ZacValueMapTypes>({
             converter: 'z:1:ZacValueMap.consume',

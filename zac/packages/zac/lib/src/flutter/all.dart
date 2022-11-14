@@ -70,3 +70,4 @@ export 'widgets/sliver/sliver_padding.dart';
 export 'widgets/sliver/sliver_to_box_adapter.dart';
 export 'widgets/text.dart';
 export 'widgets/scroll_controller.dart';
+export 'completer.dart';

@@ -1,3 +1,4 @@
+import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/flutter/painting.dart';
@@ -6,7 +7,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/flutter/navigator.dart';
-import 'package:zac/src/zac/flutter/refresh_indicator.dart';
 import 'package:zac/src/zac/transformers.dart';
 
 import 'package:zac/src/zac/widget.dart';
@@ -158,6 +158,9 @@ Map<String, Convert> allConverters = const {
 
   ZacActions.unionValue: ZacActions.fromJson,
 
+  ZacCompleterProviderBuilder.unionValue: ZacCompleterProviderBuilder.fromJson,
+  ZacCompleterActions.unionValueCompleteVoid: ZacCompleterActions.fromJson,
+
   ZacTransition.unionValue: ZacTransition.fromJson,
   ZacStateConfig.unionValue: ZacStateConfig.fromJson,
   ZacStateMachineProviderBuilder.unionValue:
@@ -214,8 +217,6 @@ Map<String, Convert> allConverters = const {
       FlutterScaffoldMessenger.fromJson,
   FlutterScaffoldMessenger.unionValueRemoveCurrentMaterialBanner:
       FlutterScaffoldMessenger.fromJson,
-  FlutterRefreshIndicatorAction.unionValue:
-      FlutterRefreshIndicatorAction.fromJson,
 
   /**
         * WIDGETS
@@ -319,8 +320,6 @@ Map<String, Convert> allConverters = const {
          * OTHERS
          */
   FlutterValueKey.unionValue: FlutterValueKey.fromJson,
-  FlutterGlobalKeyNavigatorStateBuilder.unionValue:
-      FlutterGlobalKeyNavigatorStateBuilder.fromJson,
   FlutterAlignment.unionValue: FlutterAlignment.fromJson,
   FlutterAlignment.unionValueBottomCenter: FlutterAlignment.fromJson,
   FlutterAlignment.unionValueBottomLeft: FlutterAlignment.fromJson,
@@ -375,6 +374,11 @@ Map<String, Convert> allConverters = const {
   FlutterShadow.unionValue: FlutterShadow.fromJson,
   FlutterBoxShadow.unionValue: FlutterBoxShadow.fromJson,
   FlutterFractionalOffset.unionValue: FlutterFractionalOffset.fromJson,
+  FlutterGlobalKeyNavigatorState.unionValue:
+      FlutterGlobalKeyNavigatorState.fromJson,
+  FlutterGlobalKeyScaffoldMessengerState.unionValue:
+      FlutterGlobalKeyScaffoldMessengerState.fromJson,
+  DartCompleterVoidBuilder.unionValue: DartCompleterVoidBuilder.fromJson,
 };
 
 const converterKey = 'converter';

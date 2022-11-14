@@ -40,36 +40,51 @@ void main() {
     );
   });
 
-  group('FlutterGlobalKeyNavigatorState', () {
-    testWidgets('Can be create/converted to builder', (tester) async {
-      late ZacContext zacContext;
-      await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-      expect(
-          ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
-            'converter': 'f:1:GlobalKey<NavigatorState>',
-          }),
-          isA<FlutterGlobalKeyNavigatorStateBuilder>());
+  testWidgets('Create FlutterGlobalKeyNavigatorState', (tester) async {
+    late ZacContext zacContext;
+    await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
+          'converter': 'f:1:GlobalKey<NavigatorState>',
+        }),
+        isA<FlutterGlobalKeyNavigatorState>());
 
-      expect(
-          ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
-            'converter': 'f:1:GlobalKey<NavigatorState>',
-            'debugLabel': 'foo',
-          }),
-          isA<FlutterGlobalKeyNavigatorStateBuilder>()
-              .having((p0) => p0.debugLabel, 'debugLabel', 'foo'));
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
+          'converter': 'f:1:GlobalKey<NavigatorState>',
+          'debugLabel': 'foo',
+        }),
+        isA<FlutterGlobalKeyNavigatorState>()
+            .having((p0) => p0.debugLabel, 'debugLabel', 'foo'));
 
-      expect(
-          ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
-            'converter': 'f:1:GlobalKey<NavigatorState>',
-          }).buildKey(zacContext),
-          isA<GlobalKey<NavigatorState>>());
-    });
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyNavigatorState>({
+          'converter': 'f:1:GlobalKey<NavigatorState>',
+        }).buildKey(zacContext),
+        isA<GlobalKey<NavigatorState>>());
+  });
 
-    testWidgets('Can be manually created', (tester) async {
-      late ZacContext zacContext;
-      await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-      final key = GlobalKey<NavigatorState>(debugLabel: 'foo');
-      expect(ZacGlobalKeyNavigatorState(key).buildKey(zacContext), key);
-    });
+  testWidgets('Create FlutterGlobalKeyScaffoldMessengerState', (tester) async {
+    late ZacContext zacContext;
+    await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyScaffoldMessengerState>({
+          'converter': 'f:1:GlobalKey<ScaffoldMessengerState>',
+        }),
+        isA<FlutterGlobalKeyScaffoldMessengerState>());
+
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyScaffoldMessengerState>({
+          'converter': 'f:1:GlobalKey<ScaffoldMessengerState>',
+          'debugLabel': 'foo',
+        }),
+        isA<FlutterGlobalKeyScaffoldMessengerState>()
+            .having((p0) => p0.debugLabel, 'debugLabel', 'foo'));
+
+    expect(
+        ConverterHelper.convertToType<FlutterGlobalKeyScaffoldMessengerState>({
+          'converter': 'f:1:GlobalKey<ScaffoldMessengerState>',
+        }).buildKey(zacContext),
+        isA<GlobalKey<ScaffoldMessengerState>>());
   });
 }

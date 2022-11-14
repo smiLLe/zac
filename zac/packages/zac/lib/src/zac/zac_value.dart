@@ -40,6 +40,35 @@ bool _isZacValueMapConverter(Object data) {
 }
 
 @defaultConverterFreezed
+class ZacValueConsumeOnly<T> with _$ZacValueConsumeOnly<T> {
+  const ZacValueConsumeOnly._();
+
+  @FreezedUnionValue(ZacValue.unionValueConsume)
+  factory ZacValueConsumeOnly(ZacValue<T> zacValue) = _ZacValueConsumeOnly<T>;
+
+  factory ZacValueConsumeOnly.fromJson(Object data) {
+    final zacValue = ZacValueConsumeOnly<T>(ZacValue<T>.fromJson(data));
+    if (zacValue.zacValue is! _ZacValueConsume<T>) {
+      throw StateError('''
+Something very bad happend. ${ZacValueConsumeOnly<T>} must always contain a ${_ZacValueConsume<T>}.
+Invalid data: $data''');
+    }
+    return zacValue;
+  }
+
+  SharedValueFamily get family => map((obj) => obj.zacValue.map(
+        (value) => throw StateError('must never happen'),
+        consume: (obj) => obj.family,
+      ));
+
+  T getValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    return map((obj) => obj.zacValue.getValue(zacContext));
+  }
+}
+
+@defaultConverterFreezed
 class ZacValue<T> with _$ZacValue<T> {
   const ZacValue._();
 

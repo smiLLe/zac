@@ -133,34 +133,30 @@ mixin _$SharedValueConsumeType {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
-  const _$_SharedValueConsumeTypeWatch({this.select, final String? $type})
+  const _$_SharedValueConsumeTypeWatch({final String? $type})
       : $type = $type ?? 'z:1:SharedValueConsume.watch';
 
   factory _$_SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeWatchFromJson(json);
-
-  @override
-  final ZacTransformers? select;
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'SharedValueConsumeType.watch(select: $select)';
+    return 'SharedValueConsumeType.watch()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SharedValueConsumeTypeWatch &&
-            (identical(other.select, select) || other.select == select));
+            other is _$_SharedValueConsumeTypeWatch);
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, select);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -173,13 +169,10 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
 }
 
 abstract class _SharedValueConsumeTypeWatch implements SharedValueConsumeType {
-  const factory _SharedValueConsumeTypeWatch({final ZacTransformers? select}) =
-      _$_SharedValueConsumeTypeWatch;
+  const factory _SharedValueConsumeTypeWatch() = _$_SharedValueConsumeTypeWatch;
 
   factory _SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
       _$_SharedValueConsumeTypeWatch.fromJson;
-
-  ZacTransformers? get select;
 }
 
 /// @nodoc

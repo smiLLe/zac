@@ -6,6 +6,12 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_ZacValueConsumeOnly<T> _$$_ZacValueConsumeOnlyFromJson<T>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueConsumeOnly<T>(
+      ZacValue<T>.fromJson(json['zacValue'] as Object),
+    );
+
 _$_ZacValue<T> _$$_ZacValueFromJson<T>(Map<String, dynamic> json) =>
     _$_ZacValue<T>(
       data: json['data'],
