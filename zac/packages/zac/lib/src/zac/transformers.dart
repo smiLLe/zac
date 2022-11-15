@@ -719,3 +719,30 @@ The value: $value
     );
   }
 }
+
+@freezedZacBuilder
+@ZacGenerate()
+class BoolTransformer with _$BoolTransformer implements ZacTransformer {
+  const BoolTransformer._();
+  static const String unionValue = 'z:1:Transformer:Bool.negate';
+
+  factory BoolTransformer.fromJson(Map<String, dynamic> json) =>
+      _$BoolTransformerFromJson(json);
+
+  @FreezedUnionValue(BoolTransformer.unionValue)
+  const factory BoolTransformer.negate() = _BoolTransformerNegate;
+
+  @override
+  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
+      ZacActionPayload? payload) {
+    final value = transformValue.value;
+    if (value is! bool) {
+      throw ZacTransformError(
+          '$BoolTransformer could not use the value because it is no bool but "$value"');
+    }
+
+    return map(
+      negate: (_) => !value,
+    );
+  }
+}

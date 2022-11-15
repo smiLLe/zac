@@ -1424,6 +1424,26 @@ void main() {
           throwsA(isA<ZacTransformError>()));
     });
   });
+
+  group('Bool', () {
+    test('.negate()', () {
+      _expectFromJson<BoolTransformer>(
+        fromJson: BoolTransformer.fromJson,
+        converter: 'z:1:Transformer:Bool.negate',
+        equals: const BoolTransformer.negate(),
+      );
+
+      expect(
+          const BoolTransformer.negate()
+              .transform(ZacTransformValue(false), FakeZacOrigin(), null),
+          true);
+
+      expect(
+          () => const JsonTransformer.decode()
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+    });
+  });
 }
 
 class _ConcatStr implements ZacTransformer {

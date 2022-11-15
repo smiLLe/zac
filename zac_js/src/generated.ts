@@ -384,6 +384,13 @@ export class BlurStyle extends ZacConverter {
     });
   }
 }
+export class BoolTransformer extends ZacConverter implements ZacTransformer {
+  static negate() {
+    return new BoolTransformer({
+      converter: "z:1:Transformer:Bool.negate",
+    });
+  }
+}
 export class Border extends ZacConverter implements BoxBorder {
   static new(data: {
     top?: BorderSide;
@@ -3871,7 +3878,7 @@ export class UnconstrainedBox extends ZacConverter implements Widget {
 export class UnderlineInputBorder extends ZacConverter implements InputBorder {
   static new(data: { borderSide?: BorderSide; borderRadius?: BorderRadius }) {
     return new UnderlineInputBorder({
-      converter: "f:1:OutlineInputBorder",
+      converter: "f:1:UnderlineInputBorder",
       ...data,
     });
   }
@@ -3988,6 +3995,18 @@ export class ZacCompleterProviderBuilder
   static asVoid(data: { child: ZacValue<Widget> | Widget; family: ZacTypes }) {
     return new ZacCompleterProviderBuilder({
       converter: "z:1:CompleterProvider.void",
+      ...data,
+    });
+  }
+}
+export class ZacControlFlowAction extends ZacConverter implements ZacAction {
+  static ifCond(data: {
+    condition: Array<ZacTransformers>;
+    ifTrue: ZacActions;
+    ifFalse?: ZacActions;
+  }) {
+    return new ZacControlFlowAction({
+      converter: "z:1:ControlFlowAction.if",
       ...data,
     });
   }

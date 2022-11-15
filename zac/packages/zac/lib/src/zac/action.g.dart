@@ -33,3 +33,15 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
           : FlutterWidget.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
+
+_$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacControlFlowActionIf(
+      condition: (json['condition'] as List<dynamic>)
+          .map((e) => ZacTransformers.fromJson(e as Object))
+          .toList(),
+      ifTrue: ZacActions.fromJson(json['ifTrue'] as Object),
+      ifFalse: json['ifFalse'] == null
+          ? null
+          : ZacActions.fromJson(json['ifFalse'] as Object),
+    );

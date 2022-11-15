@@ -366,3 +366,7 @@ _$_JsonDencode _$$_JsonDencodeFromJson(Map<String, dynamic> json) =>
     _$_JsonDencode(
       $type: json['converter'] as String?,
     );
+
+_$_BoolTransformerNegate _$$_BoolTransformerNegateFromJson(
+        Map<String, dynamic> json) =>
+    _$_BoolTransformerNegate();

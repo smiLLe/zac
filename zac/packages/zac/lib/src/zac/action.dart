@@ -8,6 +8,7 @@ import 'package:zac/src/converter.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 
 part 'action.freezed.dart';
@@ -183,6 +184,54 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
     return ZacWidget(
       data: child!,
+    );
+  }
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderLast)
+class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
+  const ZacControlFlowAction._();
+
+  static const String unionValue = 'z:1:ControlFlowAction.if';
+
+  factory ZacControlFlowAction.fromJson(Map<String, dynamic> json) =>
+      _$ZacControlFlowActionFromJson(json);
+
+  @FreezedUnionValue(ZacControlFlowAction.unionValue)
+  factory ZacControlFlowAction.ifCond({
+    required List<ZacTransformers> condition,
+    required ZacActions ifTrue,
+    ZacActions? ifFalse,
+  }) = _ZacControlFlowActionIf;
+
+  @override
+  void execute(ZacActionPayload payload, ZacContext zacContext) {
+    map(
+      ifCond: (obj) {
+        final val = payload.map(
+          (value) {
+            throw StateError(
+                'It is not possible to execute "${ZacControlFlowAction.unionValue}". The $ZacActionPayload was empty');
+          },
+          param: (obj) => obj.params,
+          param2: (obj) => obj.params,
+        );
+        final trueOfFalse =
+            condition.fold<bool>(true, (previousValue, element) {
+          final cond =
+              element.transform(ZacTransformValue(val), zacContext, payload);
+
+          if (cond is! bool) {
+            throw StateError(
+                'It is not possible to execute "${ZacControlFlowAction.unionValue}". The $ZacTransformers condition did not result in a bool but "$cond"');
+          }
+
+          return cond && previousValue;
+        });
+
+        (trueOfFalse ? obj.ifTrue : obj.ifFalse)?.execute(payload, zacContext);
+      },
     );
   }
 }

@@ -152,6 +152,9 @@ export declare class BlurStyle extends ZacConverter {
     static outer(): BlurStyle;
     static solid(): BlurStyle;
 }
+export declare class BoolTransformer extends ZacConverter implements ZacTransformer {
+    static negate(): BoolTransformer;
+}
 export declare class Border extends ZacConverter implements BoxBorder {
     static new(data: {
         top?: BorderSide;
@@ -2054,6 +2057,13 @@ export declare class ZacCompleterProviderBuilder extends ZacConverter implements
         child: ZacValue<Widget> | Widget;
         family: ZacTypes;
     }): ZacCompleterProviderBuilder;
+}
+export declare class ZacControlFlowAction extends ZacConverter implements ZacAction {
+    static ifCond(data: {
+        condition: Array<ZacTransformers>;
+        ifTrue: ZacActions;
+        ifFalse?: ZacActions;
+    }): ZacControlFlowAction;
 }
 export declare class ZacExecuteActionsBuilder extends ZacConverter implements Widget {
     static once(data: {

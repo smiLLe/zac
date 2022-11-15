@@ -4473,3 +4473,56 @@ abstract class _JsonDencode extends JsonTransformer {
   factory _JsonDencode.fromJson(Map<String, dynamic> json) =
       _$_JsonDencode.fromJson;
 }
+
+BoolTransformer _$BoolTransformerFromJson(Map<String, dynamic> json) {
+  return _BoolTransformerNegate.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BoolTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_BoolTransformerNegate value) negate,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_BoolTransformerNegate extends _BoolTransformerNegate {
+  const _$_BoolTransformerNegate() : super._();
+
+  factory _$_BoolTransformerNegate.fromJson(Map<String, dynamic> json) =>
+      _$$_BoolTransformerNegateFromJson(json);
+
+  @override
+  String toString() {
+    return 'BoolTransformer.negate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_BoolTransformerNegate);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_BoolTransformerNegate value) negate,
+  }) {
+    return negate(this);
+  }
+}
+
+abstract class _BoolTransformerNegate extends BoolTransformer {
+  const factory _BoolTransformerNegate() = _$_BoolTransformerNegate;
+  const _BoolTransformerNegate._() : super._();
+
+  factory _BoolTransformerNegate.fromJson(Map<String, dynamic> json) =
+      _$_BoolTransformerNegate.fromJson;
+}

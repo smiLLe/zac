@@ -332,6 +332,13 @@ export class BlurStyle extends ZacConverter {
         });
     }
 }
+export class BoolTransformer extends ZacConverter {
+    static negate() {
+        return new BoolTransformer({
+            converter: 'z:1:Transformer:Bool.negate'
+        });
+    }
+}
 export class Border extends ZacConverter {
     static new(data) {
         return new Border(Object.assign({ converter: 'f:1:Border' }, data));
@@ -2277,7 +2284,7 @@ export class UnconstrainedBox extends ZacConverter {
 }
 export class UnderlineInputBorder extends ZacConverter {
     static new(data) {
-        return new UnderlineInputBorder(Object.assign({ converter: 'f:1:OutlineInputBorder' }, data));
+        return new UnderlineInputBorder(Object.assign({ converter: 'f:1:UnderlineInputBorder' }, data));
     }
 }
 export class ValueKey extends ZacConverter {
@@ -2364,6 +2371,11 @@ export class ZacCompleterActions extends ZacConverter {
 export class ZacCompleterProviderBuilder extends ZacConverter {
     static asVoid(data) {
         return new ZacCompleterProviderBuilder(Object.assign({ converter: 'z:1:CompleterProvider.void' }, data));
+    }
+}
+export class ZacControlFlowAction extends ZacConverter {
+    static ifCond(data) {
+        return new ZacControlFlowAction(Object.assign({ converter: 'z:1:ControlFlowAction.if' }, data));
     }
 }
 export class ZacExecuteActionsBuilder extends ZacConverter {
