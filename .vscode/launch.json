@@ -9,7 +9,7 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/generate-ts.dart",
+            "program": "zac/packages/zac/bin/generate_ts.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
@@ -26,7 +26,7 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/generate-converter.dart",
+            "program": "zac/packages/zac/bin/generate_converter.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
