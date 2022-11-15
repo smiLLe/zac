@@ -10,7 +10,7 @@ import 'package:zac/src/zac/context.dart';
 part 'container.freezed.dart';
 part 'container.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   const FlutterContainer._();

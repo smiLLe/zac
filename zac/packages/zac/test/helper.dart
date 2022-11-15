@@ -144,7 +144,7 @@ class LeakBagCb extends Mock {
   void call(Map<String, dynamic> bag) {}
 }
 
-@nonConverterFreezed
+@freezedZacDefaults
 class LeakAction with _$LeakAction implements ZacAction {
   const LeakAction._();
 
@@ -161,7 +161,7 @@ class LeakAction with _$LeakAction implements ZacAction {
       cb(payload, zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class NoopAction with _$NoopAction implements ZacAction {
   const NoopAction._();
 

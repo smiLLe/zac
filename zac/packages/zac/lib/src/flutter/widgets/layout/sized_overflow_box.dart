@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSizedOverflowBox
     with _$FlutterSizedOverflowBox

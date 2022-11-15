@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   const FlutterSizedBox._();

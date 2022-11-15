@@ -14,7 +14,7 @@ import 'package:zac/src/flutter/widgets/scroll_physics.dart';
 part 'list_view.freezed.dart';
 part 'list_view.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListView with _$FlutterListView implements FlutterWidget {
   const FlutterListView._();

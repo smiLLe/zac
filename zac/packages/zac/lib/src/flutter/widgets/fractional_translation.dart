@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'fractional_translation.freezed.dart';
 part 'fractional_translation.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation

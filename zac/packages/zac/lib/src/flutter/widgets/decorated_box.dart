@@ -10,7 +10,7 @@ import 'package:zac/src/zac/context.dart';
 part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   const FlutterDecoratedBox._();

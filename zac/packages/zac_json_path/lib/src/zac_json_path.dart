@@ -10,7 +10,7 @@ Map<String, Convert> zacJsonPathConverter = const {
   ZacJsonPathTransformer.unionValue: ZacJsonPathTransformer.fromJson,
 };
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class ZacJsonPathTransformer
     with _$ZacJsonPathTransformer
     implements ZacTransformer {

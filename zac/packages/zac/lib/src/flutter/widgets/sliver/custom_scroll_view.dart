@@ -13,7 +13,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'custom_scroll_view.freezed.dart';
 part 'custom_scroll_view.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView

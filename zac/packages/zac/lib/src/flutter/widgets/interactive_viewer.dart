@@ -11,7 +11,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'interactive_viewer.freezed.dart';
 part 'interactive_viewer.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer

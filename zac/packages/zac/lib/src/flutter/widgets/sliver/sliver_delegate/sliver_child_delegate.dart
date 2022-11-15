@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sliver_child_delegate.freezed.dart';
 part 'sliver_child_delegate.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   const FlutterSliverChildDelegate._();

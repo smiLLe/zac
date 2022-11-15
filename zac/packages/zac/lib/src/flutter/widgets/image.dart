@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/painting.dart';
 part 'image.freezed.dart';
 part 'image.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterImage with _$FlutterImage implements FlutterWidget {
   const FlutterImage._();

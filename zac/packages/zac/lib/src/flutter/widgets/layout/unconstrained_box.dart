@@ -10,7 +10,7 @@ import 'package:zac/src/zac/context.dart';
 part 'unconstrained_box.freezed.dart';
 part 'unconstrained_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox

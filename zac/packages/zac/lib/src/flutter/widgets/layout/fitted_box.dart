@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   const FlutterFittedBox._();

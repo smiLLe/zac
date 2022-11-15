@@ -39,7 +39,7 @@ bool _isZacValueMapConverter(Object data) {
       .contains(data['converter']);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class ZacValueConsumeOnly<T> with _$ZacValueConsumeOnly<T> {
   const ZacValueConsumeOnly._();
 
@@ -68,7 +68,7 @@ Invalid data: $data''');
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class ZacValue<T> with _$ZacValue<T> {
   const ZacValue._();
 
@@ -165,7 +165,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class ZacValueMap<T> with _$ZacValueMap<T> {
   const ZacValueMap._();
 
@@ -256,7 +256,7 @@ extension ZacValueListFlutterWidget on ZacValueList<FlutterWidget> {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 class ZacValueList<T> with _$ZacValueList<T> {
   const ZacValueList._();
 
@@ -374,7 +374,7 @@ Object? _mapValue<TValue>({required Object? data}) {
   return data;
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacValueActions with _$ZacValueActions implements ZacAction {
   const ZacValueActions._();

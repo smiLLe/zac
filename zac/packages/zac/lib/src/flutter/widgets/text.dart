@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/painting.dart';
 part 'text.freezed.dart';
 part 'text.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterText with _$FlutterText implements FlutterWidget {
   const FlutterText._();

@@ -12,7 +12,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'column.freezed.dart';
 part 'column.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   const FlutterColumn._();

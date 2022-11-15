@@ -23,7 +23,7 @@ abstract class DartCompleterVoid implements DartCompleter<void> {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class DartCompleterVoidBuilder
     with _$DartCompleterVoidBuilder
@@ -44,7 +44,7 @@ class DartCompleterVoidBuilder
   Completer<void> getCompleter() => _c;
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacCompleterProviderBuilder
     with _$ZacCompleterProviderBuilder
@@ -117,7 +117,7 @@ class ZacCompleterProvider<T> extends StatelessWidget {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
   ZacCompleterActions._();

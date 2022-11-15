@@ -13,7 +13,7 @@ import 'package:zac/src/zac/zac_value.dart';
 part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacTransition with _$ZacTransition {
   static const String unionValue = 'z:1:StateMachine:Transition';
@@ -30,7 +30,7 @@ class ZacTransition with _$ZacTransition {
   }) = _ZacTransition;
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacStateConfig with _$ZacStateConfig {
   static const String unionValue = 'z:1:StateMachine:StateConfig';
@@ -88,7 +88,7 @@ Could not find State "$state" in $this'''),
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineProviderBuilder
     with _$ZacStateMachineProviderBuilder
@@ -171,7 +171,7 @@ because there was already a transition.
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineBuildStateBuilder
     with _$ZacStateMachineBuildStateBuilder
@@ -251,7 +251,7 @@ All possible states are "${machine.states.keys.join(', ')}".
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacStateMachineActions
     with _$ZacStateMachineActions
@@ -307,7 +307,7 @@ class ZacStateMachineActions
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacStateMachineTransformer
     with _$ZacStateMachineTransformer

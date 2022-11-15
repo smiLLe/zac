@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
   const FlutterSliverGrid._();

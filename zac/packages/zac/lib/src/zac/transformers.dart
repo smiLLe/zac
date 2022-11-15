@@ -36,7 +36,7 @@ abstract class ZacTransformer {
       ZacActionPayload? payload);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacTransformers with _$ZacTransformers {
   const ZacTransformers._();
@@ -80,7 +80,7 @@ class ZacTransformers with _$ZacTransformers {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   const ConvertTransformer._();
@@ -100,7 +100,7 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class MapTransformer with _$MapTransformer implements ZacTransformer {
   const MapTransformer._();
@@ -239,7 +239,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const IterableTransformer._();
@@ -350,7 +350,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
@@ -387,7 +387,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
@@ -484,7 +484,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class NumTransformer with _$NumTransformer implements ZacTransformer {
   const NumTransformer._();
@@ -577,7 +577,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class IntTransformer with _$IntTransformer implements ZacTransformer {
   const IntTransformer._();
@@ -624,7 +624,7 @@ Value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class StringTransformer with _$StringTransformer implements ZacTransformer {
   const StringTransformer._();
@@ -683,7 +683,7 @@ The value: $value
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const JsonTransformer._();

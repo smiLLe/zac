@@ -11,7 +11,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'drawer.freezed.dart';
 part 'drawer.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   const FlutterDrawer._();

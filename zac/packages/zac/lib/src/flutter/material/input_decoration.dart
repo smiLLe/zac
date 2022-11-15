@@ -11,7 +11,7 @@ import 'package:zac/src/base.dart';
 part 'input_decoration.freezed.dart';
 part 'input_decoration.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class FlutterInputDecoration with _$FlutterInputDecoration {
   const FlutterInputDecoration._();

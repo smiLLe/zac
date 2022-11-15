@@ -16,7 +16,7 @@ import 'package:zac/src/zac/zac_value.dart';
 part 'text_field.freezed.dart';
 part 'text_field.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   const FlutterTextField._();

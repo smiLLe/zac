@@ -17,7 +17,7 @@ class ZacTemplateExpressionsTransformerError extends ZacTransformError {
   ZacTemplateExpressionsTransformerError(super.message);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderLast)
 class ZacTemplateExpressionsTransformer
     with _$ZacTemplateExpressionsTransformer
@@ -74,7 +74,7 @@ class ZacTemplateExpressionsTransformer
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderLast)
 class ZacTemplateExpressionsSyntax with _$ZacTemplateExpressionsSyntax {
   const ZacTemplateExpressionsSyntax._();

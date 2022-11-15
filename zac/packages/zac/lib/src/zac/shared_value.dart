@@ -109,7 +109,7 @@ The $SharedValue: $value''');
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class SharedValueActions with _$SharedValueActions implements ZacAction {
   const SharedValueActions._();
@@ -157,7 +157,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueConsumeType with _$SharedValueConsumeType {
   static const String unionValue = 'z:1:SharedValueConsume.watch';
@@ -173,7 +173,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
   const factory SharedValueConsumeType.read() = _SharedValueConsumeTypeRead;
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder

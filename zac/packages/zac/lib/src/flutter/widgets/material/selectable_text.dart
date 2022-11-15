@@ -6,7 +6,7 @@ import '../../../../../zac.dart';
 part 'selectable_text.freezed.dart';
 part 'selectable_text.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSelectableText
     with _$FlutterSelectableText

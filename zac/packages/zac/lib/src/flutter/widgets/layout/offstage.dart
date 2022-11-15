@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'offstage.freezed.dart';
 part 'offstage.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOffstage with _$FlutterOffstage implements FlutterWidget {
   const FlutterOffstage._();

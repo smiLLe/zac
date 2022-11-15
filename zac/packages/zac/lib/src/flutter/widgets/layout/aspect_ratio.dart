@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'aspect_ratio.freezed.dart';
 part 'aspect_ratio.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   const FlutterAspectRatio._();

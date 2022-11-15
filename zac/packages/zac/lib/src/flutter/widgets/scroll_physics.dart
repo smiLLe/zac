@@ -7,7 +7,7 @@ import 'package:zac/src/zac/context.dart';
 part 'scroll_physics.freezed.dart';
 part 'scroll_physics.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScrollPhysics with _$FlutterScrollPhysics {
   const FlutterScrollPhysics._();

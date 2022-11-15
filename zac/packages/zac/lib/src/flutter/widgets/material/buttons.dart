@@ -11,7 +11,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'buttons.freezed.dart';
 part 'buttons.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterElevatedButton
     with _$FlutterElevatedButton
@@ -69,7 +69,7 @@ class FlutterElevatedButton
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOutlinedButton
     with _$FlutterOutlinedButton
@@ -127,7 +127,7 @@ class FlutterOutlinedButton
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
   const FlutterTextButton._();

@@ -7,7 +7,7 @@ import 'package:zac/src/zac/context.dart';
 part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   const FlutterRotatedBox._();

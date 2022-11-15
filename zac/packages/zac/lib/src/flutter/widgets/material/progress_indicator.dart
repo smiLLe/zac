@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'progress_indicator.freezed.dart';
 part 'progress_indicator.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterProgressIndicator
     with _$FlutterProgressIndicator

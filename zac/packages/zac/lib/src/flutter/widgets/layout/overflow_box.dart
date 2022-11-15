@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'overflow_box.freezed.dart';
 part 'overflow_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   const FlutterOverflowBox._();

@@ -8,7 +8,7 @@ import 'package:zac/src/zac/context.dart';
 part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder

@@ -8,7 +8,7 @@ import 'package:zac/src/zac/context.dart';
 part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight

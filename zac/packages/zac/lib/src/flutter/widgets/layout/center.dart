@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'center.freezed.dart';
 part 'center.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   const FlutterCenter._();

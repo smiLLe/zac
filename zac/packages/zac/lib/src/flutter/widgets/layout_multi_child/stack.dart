@@ -12,7 +12,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'stack.freezed.dart';
 part 'stack.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterStack with _$FlutterStack implements FlutterWidget {
   const FlutterStack._();

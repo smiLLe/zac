@@ -23,7 +23,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   InputBorder build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
@@ -53,7 +53,7 @@ class FlutterOutlineInputBorder
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
@@ -84,7 +84,7 @@ class FlutterUnderlineInputBorder
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute

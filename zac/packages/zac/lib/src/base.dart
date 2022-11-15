@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 
-// ignore: constant_identifier_names
-const defaultConverterFreezed = Freezed(
+const freezedZacBuilder = Freezed(
   fromJson: true,
   toJson: false,
   map: FreezedMapOptions(map: true, mapOrNull: false, maybeMap: false),
@@ -13,7 +12,7 @@ const defaultConverterFreezed = Freezed(
   unionKey: converterKey,
 );
 
-const nonConverterFreezed = Freezed(
+const freezedZacDefaults = Freezed(
   fromJson: false,
   toJson: false,
   map: FreezedMapOptions(map: true, mapOrNull: false, maybeMap: false),

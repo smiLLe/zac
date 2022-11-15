@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'padding.freezed.dart';
 part 'padding.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   const FlutterPadding._();

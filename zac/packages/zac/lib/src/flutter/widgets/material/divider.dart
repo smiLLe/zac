@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'divider.freezed.dart';
 part 'divider.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   const FlutterDivider._();

@@ -11,7 +11,7 @@ import 'package:zac/src/zac/zac_value.dart';
 part 'list_tile.freezed.dart';
 part 'list_tile.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   const FlutterListTile._();

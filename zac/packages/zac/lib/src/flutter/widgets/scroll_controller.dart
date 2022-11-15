@@ -13,7 +13,7 @@ abstract class FlutterScrollController {
 /// Instead an application must create this class in their code and should
 /// manually provide it as a [SharedValue] so that it can be consumed
 /// by a [ZacValue]<[ZacScrollController]>
-@nonConverterFreezed
+@freezedZacDefaults
 class ZacScrollController
     with _$ZacScrollController
     implements FlutterScrollController {

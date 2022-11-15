@@ -12,7 +12,7 @@ import 'package:zac/src/zac/transformers.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacFlutterNavigatorActions
     with _$ZacFlutterNavigatorActions
@@ -51,7 +51,7 @@ class ZacFlutterNavigatorActions
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   const RouteFactoryRouteConfig._();
@@ -69,7 +69,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   }) = _RouteFactoryConfig;
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class RouteFactorySingleRoute
     with _$RouteFactorySingleRoute
@@ -120,7 +120,7 @@ class RouteFactorySingleRoute
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class RouteFactoryFromRoutes
     with _$RouteFactoryFromRoutes

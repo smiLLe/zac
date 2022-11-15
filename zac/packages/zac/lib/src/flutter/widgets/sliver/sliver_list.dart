@@ -8,7 +8,7 @@ import 'package:zac/src/zac/context.dart';
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   const FlutterSliverList._();

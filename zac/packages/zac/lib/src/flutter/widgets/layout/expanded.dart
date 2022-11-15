@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   const FlutterExpanded._();

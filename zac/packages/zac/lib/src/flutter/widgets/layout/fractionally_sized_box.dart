@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'fractionally_sized_box.freezed.dart';
 part 'fractionally_sized_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox

@@ -11,7 +11,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'gesture_detector.freezed.dart';
 part 'gesture_detector.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGestureDetector
     with _$FlutterGestureDetector

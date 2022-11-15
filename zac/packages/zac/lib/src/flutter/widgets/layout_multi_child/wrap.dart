@@ -12,7 +12,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'wrap.freezed.dart';
 part 'wrap.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   const FlutterWrap._();

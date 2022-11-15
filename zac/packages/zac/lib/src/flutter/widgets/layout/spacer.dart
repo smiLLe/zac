@@ -8,7 +8,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   const FlutterSpacer._();

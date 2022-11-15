@@ -11,7 +11,7 @@ import 'package:zac/src/flutter/painting.dart';
 part 'material.freezed.dart';
 part 'material.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   const FlutterMaterial._();

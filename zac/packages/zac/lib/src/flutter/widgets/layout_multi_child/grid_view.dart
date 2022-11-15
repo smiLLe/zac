@@ -14,7 +14,7 @@ import 'package:zac/src/flutter/widgets/keyboard.dart';
 part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   const FlutterGridView._();

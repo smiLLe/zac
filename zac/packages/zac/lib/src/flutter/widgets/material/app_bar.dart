@@ -13,7 +13,7 @@ import 'package:zac/src/flutter/services.dart';
 part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   const FlutterAppBar._();

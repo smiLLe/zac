@@ -10,7 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'card.freezed.dart';
 part 'card.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCard with _$FlutterCard implements FlutterWidget {
   const FlutterCard._();

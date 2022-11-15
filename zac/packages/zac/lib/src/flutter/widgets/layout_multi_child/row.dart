@@ -12,7 +12,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'row.freezed.dart';
 part 'row.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRow with _$FlutterRow implements FlutterWidget {
   const FlutterRow._();

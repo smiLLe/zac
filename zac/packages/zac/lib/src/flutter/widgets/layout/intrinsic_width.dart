@@ -8,7 +8,7 @@ import 'package:zac/src/zac/context.dart';
 part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicWidth
     with _$FlutterIntrinsicWidth

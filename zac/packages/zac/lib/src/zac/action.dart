@@ -43,7 +43,7 @@ class ZacActionPayload with _$ZacActionPayload {
       );
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate()
 class ZacActions with _$ZacActions {
   const ZacActions._();
@@ -95,7 +95,7 @@ extension Interactions on ZacActions {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder

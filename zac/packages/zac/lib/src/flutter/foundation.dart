@@ -24,7 +24,7 @@ abstract class FlutterLocalKey implements FlutterKey {
   LocalKey buildKey(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   const FlutterValueKey._();
@@ -49,7 +49,7 @@ abstract class FlutterGlobalKey<T extends State<StatefulWidget>>
   GlobalKey<T> buildKey(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyNavigatorState
     with _$FlutterGlobalKeyNavigatorState
@@ -74,7 +74,7 @@ class FlutterGlobalKeyNavigatorState
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyScaffoldMessengerState
     with _$FlutterGlobalKeyScaffoldMessengerState

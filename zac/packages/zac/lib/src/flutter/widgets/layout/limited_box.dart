@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   const FlutterLimitedBox._();

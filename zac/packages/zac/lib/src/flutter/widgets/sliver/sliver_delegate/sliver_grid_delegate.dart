@@ -8,7 +8,7 @@ import 'package:zac/src/base.dart';
 part 'sliver_grid_delegate.freezed.dart';
 part 'sliver_grid_delegate.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
   const FlutterSliverGridDelegate._();

@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   const FlutterSafeArea._();

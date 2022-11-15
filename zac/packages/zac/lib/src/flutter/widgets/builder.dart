@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'builder.freezed.dart';
 part 'builder.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   const FlutterBuilder._();

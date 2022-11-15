@@ -13,7 +13,7 @@ import 'package:zac/src/flutter/widgets/keyboard.dart';
 part 'single_child_scroll_view.freezed.dart';
 part 'single_child_scroll_view.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSingleChildScrollView
     with _$FlutterSingleChildScrollView

@@ -9,7 +9,7 @@ import 'package:zac/src/base.dart';
 part 'painting.freezed.dart';
 part 'painting.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxShape with _$FlutterBoxShape {
   const FlutterBoxShape._();
@@ -31,7 +31,7 @@ class FlutterBoxShape with _$FlutterBoxShape {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAxis with _$FlutterAxis {
   const FlutterAxis._();
@@ -51,7 +51,7 @@ class FlutterAxis with _$FlutterAxis {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterVerticalDirection with _$FlutterVerticalDirection {
   const FlutterVerticalDirection._();
@@ -71,7 +71,7 @@ class FlutterVerticalDirection with _$FlutterVerticalDirection {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextOverflow with _$FlutterTextOverflow {
   const FlutterTextOverflow._();
@@ -101,7 +101,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterStrutStyle with _$FlutterStrutStyle {
   const FlutterStrutStyle._();
@@ -173,7 +173,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
   const FlutterTextWidthBasis._();
@@ -195,7 +195,7 @@ class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxFit with _$FlutterBoxFit {
   const FlutterBoxFit._();
@@ -237,7 +237,7 @@ class FlutterBoxFit with _$FlutterBoxFit {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterImageRepeat with _$FlutterImageRepeat {
   const FlutterImageRepeat._();
@@ -267,7 +267,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextStyle with _$FlutterTextStyle {
   const FlutterTextStyle._();
@@ -333,7 +333,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
   const FlutterTextAlignVertical._();
@@ -361,7 +361,7 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
   const FlutterBoxShadow._();
@@ -401,7 +401,7 @@ abstract class FlutterAlignmentGeometry {
   AlignmentGeometry build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAlignment
     with _$FlutterAlignment
@@ -471,7 +471,7 @@ class FlutterAlignment
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAlignmentDirectional
     with _$FlutterAlignmentDirectional
@@ -557,7 +557,7 @@ class FlutterAlignmentDirectional
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterFractionalOffset
     with _$FlutterFractionalOffset
@@ -598,7 +598,7 @@ abstract class FlutterBoxBorder implements FlutterShapeBorder {
   BoxBorder build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderDirectional
     with _$FlutterBorderDirectional
@@ -629,7 +629,7 @@ class FlutterBorderDirectional
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   const FlutterBorder._();
@@ -673,7 +673,7 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderStyle with _$FlutterBorderStyle {
   const FlutterBorderStyle._();
@@ -704,7 +704,7 @@ abstract class FlutterBorderRadiusGeometry {
   BorderRadiusGeometry build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderRadius
     with _$FlutterBorderRadius
@@ -746,7 +746,7 @@ class FlutterBorderRadius
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderSide with _$FlutterBorderSide {
   const FlutterBorderSide._();
@@ -780,7 +780,7 @@ abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
   OutlinedBorder build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterCircleBorder
     with _$FlutterCircleBorder
@@ -801,7 +801,7 @@ class FlutterCircleBorder
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterRoundedRectangleBorder
     with _$FlutterRoundedRectangleBorder
@@ -837,7 +837,7 @@ abstract class FlutterDecoration {
   Decoration build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxDecoration
     with _$FlutterBoxDecoration
@@ -871,7 +871,7 @@ class FlutterBoxDecoration
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterShapeDecoration
     with _$FlutterShapeDecoration
@@ -911,7 +911,7 @@ abstract class FlutterEdgeInsetsGeometry {
   EdgeInsetsGeometry build(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsets
     with _$FlutterEdgeInsets
@@ -960,7 +960,7 @@ class FlutterEdgeInsets
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsetsDirectional
     with _$FlutterEdgeInsetsDirectional

@@ -15,7 +15,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
@@ -73,7 +73,7 @@ class FlutterRefreshIndicator
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicatorTriggerMode
     with _$FlutterRefreshIndicatorTriggerMode {

@@ -23,7 +23,7 @@ abstract class FlutterRoute {
       {Widget Function(ZacContext zacContext, FlutterWidget zacWidget)? wrap});
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorState with _$FlutterNavigatorState {
   const FlutterNavigatorState._();
@@ -60,7 +60,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   const FlutterNavigator._();
@@ -93,7 +93,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
@@ -248,7 +248,7 @@ abstract class FlutterRouteFactory {
   RouteFactory buildRouteFactory(ZacContext zacContext);
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
@@ -298,7 +298,7 @@ class FlutterPageRouteBuilder
   }
 }
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRouteSettings with _$FlutterRouteSettings {
   const FlutterRouteSettings._();

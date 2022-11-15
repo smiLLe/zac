@@ -10,7 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'button_bar.freezed.dart';
 part 'button_bar.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
   const FlutterButtonBar._();

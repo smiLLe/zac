@@ -9,7 +9,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'opacity.freezed.dart';
 part 'opacity.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   const FlutterOpacity._();

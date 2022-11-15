@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverPadding
     with _$FlutterSliverPadding

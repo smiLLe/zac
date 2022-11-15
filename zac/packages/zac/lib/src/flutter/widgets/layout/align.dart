@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'align.freezed.dart';
 part 'align.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   const FlutterAlign._();

@@ -9,7 +9,7 @@ import 'package:zac/src/zac/context.dart';
 part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   const FlutterClipOval._();

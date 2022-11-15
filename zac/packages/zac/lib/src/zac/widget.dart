@@ -16,7 +16,7 @@ import 'package:zac/src/converter.dart';
 part 'widget.freezed.dart';
 part 'widget.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   const ZacWidgetBuilder._();

@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/foundation.dart';
 part 'positioned.freezed.dart';
 part 'positioned.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   const FlutterPositioned._();

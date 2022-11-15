@@ -8,7 +8,7 @@ import 'package:zac/src/zac/context.dart';
 part 'sliver_to_box_adapter.freezed.dart';
 part 'sliver_to_box_adapter.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter

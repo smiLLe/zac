@@ -10,7 +10,7 @@ import 'package:zac/src/flutter/rendering.dart';
 part 'flexible.freezed.dart';
 part 'flexible.g.dart';
 
-@defaultConverterFreezed
+@freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   const FlutterFlexible._();
