@@ -55,6 +55,7 @@ class ZacStateMachine with _$ZacStateMachine {
     required SharedValueType context,
     required void Function(String event, SharedValueType context) send,
     required void Function(String event, SharedValueType context) trySend,
+    required bool Function() isActive,
   }) = _ZacStateMachine;
 
   ZacStateConfig get config {
@@ -141,6 +142,7 @@ because there was already a transition.
             context: context,
             send: getSend(trySend: false, sId: nextSession),
             trySend: getSend(trySend: true, sId: nextSession),
+            isActive: () => nextSession == sessionId,
           );
         });
       };
@@ -156,6 +158,7 @@ because there was already a transition.
       context: initialContext?.getValue(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
+      isActive: () => sessionId == 0,
     );
   }
 

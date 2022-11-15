@@ -171,6 +171,7 @@ mixin _$ZacStateMachine {
   void Function(String, Object?) get send => throw _privateConstructorUsedError;
   void Function(String, Object?) get trySend =>
       throw _privateConstructorUsedError;
+  bool Function() get isActive => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ZacStateMachineCopyWith<ZacStateMachine> get copyWith =>
@@ -188,7 +189,8 @@ abstract class $ZacStateMachineCopyWith<$Res> {
       String state,
       Object? context,
       void Function(String, Object?) send,
-      void Function(String, Object?) trySend});
+      void Function(String, Object?) trySend,
+      bool Function() isActive});
 }
 
 /// @nodoc
@@ -209,6 +211,7 @@ class _$ZacStateMachineCopyWithImpl<$Res, $Val extends ZacStateMachine>
     Object? context = freezed,
     Object? send = null,
     Object? trySend = null,
+    Object? isActive = null,
   }) {
     return _then(_value.copyWith(
       states: null == states
@@ -228,6 +231,10 @@ class _$ZacStateMachineCopyWithImpl<$Res, $Val extends ZacStateMachine>
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool Function(),
     ) as $Val);
   }
 }
@@ -245,7 +252,8 @@ abstract class _$$_ZacStateMachineCopyWith<$Res>
       String state,
       Object? context,
       void Function(String, Object?) send,
-      void Function(String, Object?) trySend});
+      void Function(String, Object?) trySend,
+      bool Function() isActive});
 }
 
 /// @nodoc
@@ -264,6 +272,7 @@ class __$$_ZacStateMachineCopyWithImpl<$Res>
     Object? context = freezed,
     Object? send = null,
     Object? trySend = null,
+    Object? isActive = null,
   }) {
     return _then(_$_ZacStateMachine(
       states: null == states
@@ -283,6 +292,10 @@ class __$$_ZacStateMachineCopyWithImpl<$Res>
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
               as void Function(String, Object?),
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool Function(),
     ));
   }
 }
@@ -295,7 +308,8 @@ class _$_ZacStateMachine extends _ZacStateMachine {
       required this.state,
       required this.context,
       required this.send,
-      required this.trySend})
+      required this.trySend,
+      required this.isActive})
       : _states = states,
         super._();
 
@@ -314,10 +328,12 @@ class _$_ZacStateMachine extends _ZacStateMachine {
   final void Function(String, Object?) send;
   @override
   final void Function(String, Object?) trySend;
+  @override
+  final bool Function() isActive;
 
   @override
   String toString() {
-    return 'ZacStateMachine(states: $states, state: $state, context: $context, send: $send, trySend: $trySend)';
+    return 'ZacStateMachine(states: $states, state: $state, context: $context, send: $send, trySend: $trySend, isActive: $isActive)';
   }
 
   @override
@@ -329,7 +345,9 @@ class _$_ZacStateMachine extends _ZacStateMachine {
             (identical(other.state, state) || other.state == state) &&
             const DeepCollectionEquality().equals(other.context, context) &&
             (identical(other.send, send) || other.send == send) &&
-            (identical(other.trySend, trySend) || other.trySend == trySend));
+            (identical(other.trySend, trySend) || other.trySend == trySend) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
   }
 
   @override
@@ -339,7 +357,8 @@ class _$_ZacStateMachine extends _ZacStateMachine {
       state,
       const DeepCollectionEquality().hash(context),
       send,
-      trySend);
+      trySend,
+      isActive);
 
   @JsonKey(ignore: true)
   @override
@@ -350,12 +369,12 @@ class _$_ZacStateMachine extends _ZacStateMachine {
 
 abstract class _ZacStateMachine extends ZacStateMachine {
   factory _ZacStateMachine(
-          {required final Map<String, ZacStateConfig> states,
-          required final String state,
-          required final Object? context,
-          required final void Function(String, Object?) send,
-          required final void Function(String, Object?) trySend}) =
-      _$_ZacStateMachine;
+      {required final Map<String, ZacStateConfig> states,
+      required final String state,
+      required final Object? context,
+      required final void Function(String, Object?) send,
+      required final void Function(String, Object?) trySend,
+      required final bool Function() isActive}) = _$_ZacStateMachine;
   _ZacStateMachine._() : super._();
 
   @override
@@ -368,6 +387,8 @@ abstract class _ZacStateMachine extends ZacStateMachine {
   void Function(String, Object?) get send;
   @override
   void Function(String, Object?) get trySend;
+  @override
+  bool Function() get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_ZacStateMachineCopyWith<_$_ZacStateMachine> get copyWith =>

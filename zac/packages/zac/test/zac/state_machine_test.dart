@@ -107,6 +107,7 @@ void main() {
       state: 'a',
       send: (event, context) {},
       trySend: (event, context) {},
+      isActive: () => true,
     );
 
     expect(machine.config,
@@ -132,6 +133,7 @@ void main() {
       state: 'a',
       send: (event, context) {},
       trySend: (event, context) {},
+      isActive: () => true,
     );
 
     expect(machine.widget, FlutterSizedBox(key: FlutterValueKey('a')));
@@ -147,6 +149,7 @@ void main() {
       state: 'a',
       send: (event, context) {},
       trySend: (event, context) {},
+      isActive: () => true,
     );
 
     expect(machine.findConfigByState('a'),
@@ -171,6 +174,7 @@ void main() {
       state: 'a',
       send: (event, context) {},
       trySend: (event, context) {},
+      isActive: () => true,
     );
 
     expect(machine.findCandidate('NEXT'),
@@ -406,6 +410,48 @@ void main() {
     expect(() => curMachine.trySend('NEXT', null), returnsNormally);
   });
 
+  testWidgets('Check StateMachine for being active', (tester) async {
+    final List<ZacStateMachine> machines = [];
+    await testZacWidget(
+      tester,
+      ZacStateMachineProviderBuilder(
+        family: ZacValue<String>.fromJson('machine'),
+        initialState: ZacValue<String>.fromJson('a'),
+        states: {
+          'a': ZacStateConfig(
+            widget: FlutterSizedBox(),
+            on: [
+              ZacTransition(event: 'NEXT', target: 'b'),
+            ],
+          ),
+          'b': ZacStateConfig(
+            widget: FlutterSizedBox(),
+          ),
+        },
+        child: LeakContext(
+          cb: (zacContext) {
+            machines.add(SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+              select: null,
+            ) as ZacStateMachine);
+          },
+        ),
+      ),
+    );
+
+    expect(machines[0].isActive(), isTrue);
+    machines[0].send('NEXT', null);
+    await tester.pump();
+    expect(machines[0].isActive(), isFalse);
+    expect(machines[1].isActive(), isTrue);
+
+    /// dispose
+    await testZacWidget(tester, FlutterSizedBox());
+    expect(machines[1].isActive(), isFalse);
+  });
+
   testWidgets(
       'BuildState will build the StateConfig attached widget when in specified state',
       (tester) async {
@@ -590,6 +636,7 @@ void main() {
               state: 'a',
               send: (event, context) {},
               trySend: (event, context) {},
+              isActive: () => true,
             )),
             FakeZacContext(),
             null),
@@ -617,6 +664,7 @@ void main() {
               state: 'a',
               send: (event, context) {},
               trySend: (event, context) {},
+              isActive: () => true,
             )),
             FakeZacContext(),
             null),
