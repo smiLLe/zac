@@ -1,4 +1,3 @@
-import 'package:zac/src/all_converter.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 
@@ -123,7 +122,7 @@ Future<void> testWithConverters({
   required ProviderContainer container,
   Map<String, Convert>? converter,
 }) async {
-  allConverters = {...allConverters, ...(converter ?? <String, Convert>{})};
+  allConverter = {...allConverter, ...(converter ?? <String, Convert>{})};
 
   return tester.pumpWidget(
     UncontrolledProviderScope(

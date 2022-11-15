@@ -1,4 +1,3 @@
-export 'src/all_converter.dart';
 export 'src/converter.dart';
 export 'src/base.dart';
 export 'src/zac/context.dart';

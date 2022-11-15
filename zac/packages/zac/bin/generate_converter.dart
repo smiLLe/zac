@@ -14,6 +14,7 @@ void main(List<String> args) async {
   final parser = ArgParser();
   late final String path;
   late final String outFile;
+  late final String varName;
   parser.addOption(
     'path',
     mandatory: true,
@@ -22,7 +23,12 @@ void main(List<String> args) async {
   parser.addOption(
     'outFile',
     mandatory: true,
-    callback: (str) => outFile = str ?? 'UNKNOWN PATH',
+    callback: (str) => outFile = str ?? 'NO FILE',
+  );
+  parser.addOption(
+    'varName',
+    mandatory: true,
+    callback: (str) => varName = str ?? '#######',
   );
   parser.parse(args);
 
@@ -41,9 +47,7 @@ void main(List<String> args) async {
   await writeFile.writeAsString('''
 ${allImports.join('\n')}
 
-typedef Convert = Object Function(Map<String, dynamic> data);
-
-Map<String, Convert> allConverters = const {
+Map<String, Object Function(Map<String, dynamic> data)> $varName = const {
 ${allConverter.join(',\n')}
 };''');
 

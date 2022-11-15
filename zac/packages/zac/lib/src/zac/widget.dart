@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:zac/src/all_converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -123,7 +122,7 @@ class ZacWidgetIsolated extends StatelessWidget {
   }
 
   static Future<FlutterWidget> _convert(List<Object?> data) async {
-    allConverters = data[1] as Map<String, Convert>;
+    allConverter = data[1] as Map<String, Convert>;
     return ConverterHelper.convertToType<FlutterWidget>(
         data[0] as Map<String, dynamic>);
   }
@@ -148,7 +147,7 @@ class ZacWidgetIsolated extends StatelessWidget {
           }
           return compute(
             _convert,
-            [map, allConverters],
+            [map, allConverter],
             debugLabel: '$ZacWidgetIsolated.convertFlutterWidget',
           );
         })

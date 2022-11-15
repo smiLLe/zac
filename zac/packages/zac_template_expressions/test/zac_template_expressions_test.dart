@@ -28,9 +28,9 @@ void _expectFromJson<T>({
 
 void main() {
   setUp(() {
-    allConverters = {
-      ...allConverters,
-      ...zacTemplateExpressionsConverter,
+    allConverter = {
+      ...allConverter,
+      ...zacTemplateExpressionConverter,
     };
   });
 

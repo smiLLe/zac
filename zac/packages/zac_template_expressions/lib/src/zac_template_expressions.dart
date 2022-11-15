@@ -6,13 +6,6 @@ import 'package:template_expressions/template_expressions.dart';
 part 'zac_template_expressions.freezed.dart';
 part 'zac_template_expressions.g.dart';
 
-Map<String, Convert> zacTemplateExpressionsConverter = const {
-  ZacTemplateExpressionsTransformer.unionValue:
-      ZacTemplateExpressionsTransformer.fromJson,
-  ZacTemplateExpressionsSyntax.unionValue:
-      ZacTemplateExpressionsSyntax.fromJson,
-};
-
 class ZacTemplateExpressionsTransformerError extends ZacTransformError {
   ZacTemplateExpressionsTransformerError(super.message);
 }

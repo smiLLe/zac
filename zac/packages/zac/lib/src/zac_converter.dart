@@ -82,9 +82,7 @@ import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
-typedef Convert = Object Function(Map<String, dynamic> data);
-
-Map<String, Convert> allConverters = const {
+Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'd:1:Completer<void>': DartCompleterVoidBuilder.fromJson,
   'f:1:AlertDialog': FlutterDialogs.fromJson,
   'f:1:Align': FlutterAlign.fromJson,
