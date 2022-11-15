@@ -65,7 +65,7 @@ class FlutterUnderlineInputBorder
   factory FlutterUnderlineInputBorder.fromJson(Map<String, dynamic> json) =>
       _$FlutterUnderlineInputBorderFromJson(json);
 
-  @FreezedUnionValue(FlutterOutlineInputBorder.unionValue)
+  @FreezedUnionValue(FlutterUnderlineInputBorder.unionValue)
   factory FlutterUnderlineInputBorder({
     FlutterBorderSide? borderSide,
     FlutterBorderRadius? borderRadius,
