@@ -4044,7 +4044,10 @@ export class ZacFlutterNavigatorActions
   }
 }
 export class ZacStateConfig extends ZacConverter {
-  static new(data: { widget: Widget; on: Array<ZacTransition> }) {
+  static new(data: {
+    widget: ZacValue<Widget> | Widget;
+    on: Array<ZacTransition>;
+  }) {
     return new ZacStateConfig({
       converter: "z:1:StateMachine:StateConfig",
       ...data,

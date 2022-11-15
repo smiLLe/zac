@@ -25,8 +25,6 @@ class ZacTransition with _$ZacTransition {
   factory ZacTransition({
     required String event,
     required String target,
-    // ZacActions? actions,
-    // ZacTransformers? guard,
   }) = _ZacTransition;
 }
 
@@ -40,7 +38,7 @@ class ZacStateConfig with _$ZacStateConfig {
 
   @FreezedUnionValue(ZacStateConfig.unionValue)
   factory ZacStateConfig({
-    required FlutterWidget widget,
+    required ZacValue<FlutterWidget> widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
 }
@@ -69,7 +67,9 @@ All configured states are "${states.keys.join(', ')}".
     return states[state]!;
   }
 
-  FlutterWidget get widget => config.widget;
+  FlutterWidget getWidget(ZacContext zacContext) {
+    return config.widget.getValue(zacContext);
+  }
 
   ZacStateConfig findConfigByState(String state) {
     return states.entries
@@ -248,7 +248,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.widget.buildWidget(zacContext);
+      return machine.getWidget(zacContext).buildWidget(zacContext);
     }
     return unmappedStateWidget(zacContext);
   }

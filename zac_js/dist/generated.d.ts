@@ -2084,7 +2084,7 @@ export declare class ZacFlutterNavigatorActions extends ZacConverter implements 
 }
 export declare class ZacStateConfig extends ZacConverter {
     static new(data: {
-        widget: Widget;
+        widget: ZacValue<Widget> | Widget;
         on: Array<ZacTransition>;
     }): ZacStateConfig;
 }
