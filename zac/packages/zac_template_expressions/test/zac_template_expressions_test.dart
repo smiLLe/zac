@@ -118,8 +118,10 @@ void main() {
     final machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-          widget: FlutterSizedBox(
-            key: FlutterValueKey('in a'),
+          widget: ZacValue<FlutterWidget>(
+            data: FlutterSizedBox(
+              key: FlutterValueKey('in a'),
+            ),
           ),
         ),
       },
@@ -127,6 +129,7 @@ void main() {
       context: 1,
       send: (event, context) {},
       trySend: (event, context) {},
+      isActive: () => true,
     );
 
     expect(
