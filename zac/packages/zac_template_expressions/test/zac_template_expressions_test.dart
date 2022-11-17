@@ -48,18 +48,21 @@ void main() {
       converter: 'template_expressions:1:Transformer:Template.process',
       equals: ZacTemplateExpressionsTransformer(
         expression: 'expr',
-        context: {
-          'simple': ZacValue<Object>.fromJson(1),
+        context: ZacValueMap<Object>(data: {
+          'simple': 1,
           'shared': ZacValue<Object>.consume(family: 'fam'),
-        },
+        }),
       ),
       props: <String, dynamic>{
         'expression': 'expr',
         'context': {
-          'simple': 1,
-          'shared': {
-            'converter': 'z:1:ZacValue.consume',
-            'family': 'fam',
+          'converter': 'z:1:ZacValueMap',
+          'data': {
+            'simple': 1,
+            'shared': {
+              'converter': 'z:1:ZacValue.consume',
+              'family': 'fam',
+            },
           },
         },
       },
@@ -87,9 +90,12 @@ void main() {
     expect(
         ZacTemplateExpressionsTransformer(
           expression: r'${hello}',
-          context: {
-            'hello': ZacValue<Object>.fromJson('hello world'),
-          },
+          context: ZacValueMap<Object>.fromJson({
+            'converter': 'z:1:ZacValueMap',
+            'data': {
+              'hello': 'hello world',
+            },
+          }),
         ).transform(ZacTransformValue(null), zacContext, null),
         'hello world');
 

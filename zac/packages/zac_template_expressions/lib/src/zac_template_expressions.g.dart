@@ -10,9 +10,9 @@ _$_ZacTemplateExpressionsTransformer
     _$$_ZacTemplateExpressionsTransformerFromJson(Map<String, dynamic> json) =>
         _$_ZacTemplateExpressionsTransformer(
           expression: json['expression'] as String,
-          context: (json['context'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, ZacValue<Object>.fromJson(e as Object)),
-          ),
+          context: json['context'] == null
+              ? null
+              : ZacValueMap<Object>.fromJson(json['context'] as Object),
           syntax: json['syntax'] == null
               ? const ZacTemplateExpressionsSyntax()
               : ZacTemplateExpressionsSyntax.fromJson(

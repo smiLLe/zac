@@ -22,8 +22,7 @@ ZacTemplateExpressionsTransformer _$ZacTemplateExpressionsTransformerFromJson(
 /// @nodoc
 mixin _$ZacTemplateExpressionsTransformer {
   String get expression => throw _privateConstructorUsedError;
-  Map<String, ZacValue<Object>>? get context =>
-      throw _privateConstructorUsedError;
+  ZacValueMap<Object>? get context => throw _privateConstructorUsedError;
   ZacTemplateExpressionsSyntax get syntax => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -39,10 +38,9 @@ class _$_ZacTemplateExpressionsTransformer
     extends _ZacTemplateExpressionsTransformer {
   _$_ZacTemplateExpressionsTransformer(
       {required this.expression,
-      final Map<String, ZacValue<Object>>? context,
+      this.context,
       this.syntax = const ZacTemplateExpressionsSyntax()})
-      : _context = context,
-        super._();
+      : super._();
 
   factory _$_ZacTemplateExpressionsTransformer.fromJson(
           Map<String, dynamic> json) =>
@@ -50,15 +48,8 @@ class _$_ZacTemplateExpressionsTransformer
 
   @override
   final String expression;
-  final Map<String, ZacValue<Object>>? _context;
   @override
-  Map<String, ZacValue<Object>>? get context {
-    final value = _context;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
-
+  final ZacValueMap<Object>? context;
   @override
   @JsonKey()
   final ZacTemplateExpressionsSyntax syntax;
@@ -75,14 +66,13 @@ class _$_ZacTemplateExpressionsTransformer
             other is _$_ZacTemplateExpressionsTransformer &&
             (identical(other.expression, expression) ||
                 other.expression == expression) &&
-            const DeepCollectionEquality().equals(other._context, _context) &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.syntax, syntax) || other.syntax == syntax));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, expression,
-      const DeepCollectionEquality().hash(_context), syntax);
+  int get hashCode => Object.hash(runtimeType, expression, context, syntax);
 
   @override
   @optionalTypeArgs
@@ -97,7 +87,7 @@ abstract class _ZacTemplateExpressionsTransformer
     extends ZacTemplateExpressionsTransformer {
   factory _ZacTemplateExpressionsTransformer(
           {required final String expression,
-          final Map<String, ZacValue<Object>>? context,
+          final ZacValueMap<Object>? context,
           final ZacTemplateExpressionsSyntax syntax}) =
       _$_ZacTemplateExpressionsTransformer;
   _ZacTemplateExpressionsTransformer._() : super._();
@@ -109,7 +99,7 @@ abstract class _ZacTemplateExpressionsTransformer
   @override
   String get expression;
   @override
-  Map<String, ZacValue<Object>>? get context;
+  ZacValueMap<Object>? get context;
   @override
   ZacTemplateExpressionsSyntax get syntax;
 }

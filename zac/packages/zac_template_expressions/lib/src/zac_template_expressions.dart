@@ -30,7 +30,7 @@ class ZacTemplateExpressionsTransformer
   @FreezedUnionValue(ZacTemplateExpressionsTransformer.unionValue)
   factory ZacTemplateExpressionsTransformer({
     required String expression,
-    Map<String, ZacValue<Object>>? context,
+    ZacValueMap<Object>? context,
     @Default(ZacTemplateExpressionsSyntax())
         ZacTemplateExpressionsSyntax syntax,
   }) = _ZacTemplateExpressionsTransformer;
@@ -45,13 +45,11 @@ class ZacTemplateExpressionsTransformer
           syntax: [syntax.map((_) => const StandardExpressionSyntax())],
         );
 
-        final templateContext =
-            obj.context?.map<String, Object?>((key, value) => MapEntry(
-                key,
-                value.getValue(
-                  zacContext,
-                  prefered: const SharedValueConsumeType.read(),
-                )));
+        final templateContext = obj.context?.getValue(
+          zacContext,
+          prefered: const SharedValueConsumeType.read(),
+        );
+
         return template.process(context: <dynamic, dynamic>{
           'tValue': transformValue.value,
           if (transformValue.value is ZacStateMachine) ...<String, dynamic>{
