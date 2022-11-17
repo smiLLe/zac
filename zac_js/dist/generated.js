@@ -1737,6 +1737,9 @@ export class SharedValueActions extends ZacConverter {
     static update(data) {
         return new SharedValueActions(Object.assign({ converter: 'z:1:SharedValue.update' }, data));
     }
+    static invalidate(data) {
+        return new SharedValueActions(Object.assign({ converter: 'z:1:SharedValue.invalidate' }, data));
+    }
 }
 export class SharedValueConsumeType extends ZacConverter {
     static watch() {

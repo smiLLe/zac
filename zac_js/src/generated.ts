@@ -2992,6 +2992,12 @@ export class SharedValueActions extends ZacConverter implements ZacAction {
       ...data,
     });
   }
+  static invalidate(data: { family: ZacTypes }) {
+    return new SharedValueActions({
+      converter: "z:1:SharedValue.invalidate",
+      ...data,
+    });
+  }
 }
 export class SharedValueConsumeType extends ZacConverter {
   static watch() {

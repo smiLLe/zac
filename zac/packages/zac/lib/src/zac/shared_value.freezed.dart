@@ -15,18 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SharedValueActions _$SharedValueActionsFromJson(Map<String, dynamic> json) {
-  return _SharedValueActionsUpdate.fromJson(json);
+  switch (json['converter']) {
+    case 'z:1:SharedValue.update':
+      return _SharedValueActionsUpdate.fromJson(json);
+    case 'z:1:SharedValue.invalidate':
+      return _SharedValueActionsRefresh.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'converter', 'SharedValueActions',
+          'Invalid union type "${json['converter']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$SharedValueActions {
   Object get family => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  bool? get ifNoPayloadTakeCurrent => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SharedValueActionsUpdate value) update,
+    required TResult Function(_SharedValueActionsRefresh value) invalidate,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -37,8 +45,10 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   _$_SharedValueActionsUpdate(
       {required this.family,
       this.transformer,
-      this.ifNoPayloadTakeCurrent = false})
-      : super._();
+      this.ifNoPayloadTakeCurrent = false,
+      final String? $type})
+      : $type = $type ?? 'z:1:SharedValue.update',
+        super._();
 
   factory _$_SharedValueActionsUpdate.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueActionsUpdateFromJson(json);
@@ -50,6 +60,9 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   @override
   @JsonKey()
   final bool? ifNoPayloadTakeCurrent;
+
+  @JsonKey(name: 'converter')
+  final String $type;
 
   @override
   String toString() {
@@ -80,6 +93,7 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_SharedValueActionsUpdate value) update,
+    required TResult Function(_SharedValueActionsRefresh value) invalidate,
   }) {
     return update(this);
   }
@@ -97,10 +111,64 @@ abstract class _SharedValueActionsUpdate extends SharedValueActions {
 
   @override
   Object get family;
-  @override
   ZacTransformers? get transformer;
-  @override
   bool? get ifNoPayloadTakeCurrent;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_SharedValueActionsRefresh extends _SharedValueActionsRefresh {
+  _$_SharedValueActionsRefresh({required this.family, final String? $type})
+      : $type = $type ?? 'z:1:SharedValue.invalidate',
+        super._();
+
+  factory _$_SharedValueActionsRefresh.fromJson(Map<String, dynamic> json) =>
+      _$$_SharedValueActionsRefreshFromJson(json);
+
+  @override
+  final Object family;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueActions.invalidate(family: $family)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SharedValueActionsRefresh &&
+            const DeepCollectionEquality().equals(other.family, family));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(family));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SharedValueActionsUpdate value) update,
+    required TResult Function(_SharedValueActionsRefresh value) invalidate,
+  }) {
+    return invalidate(this);
+  }
+}
+
+abstract class _SharedValueActionsRefresh extends SharedValueActions {
+  factory _SharedValueActionsRefresh({required final Object family}) =
+      _$_SharedValueActionsRefresh;
+  _SharedValueActionsRefresh._() : super._();
+
+  factory _SharedValueActionsRefresh.fromJson(Map<String, dynamic> json) =
+      _$_SharedValueActionsRefresh.fromJson;
+
+  @override
+  Object get family;
 }
 
 SharedValueConsumeType _$SharedValueConsumeTypeFromJson(

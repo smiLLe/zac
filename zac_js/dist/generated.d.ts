@@ -1551,6 +1551,9 @@ export declare class SharedValueActions extends ZacConverter implements ZacActio
         transformer?: ZacTransformers;
         ifNoPayloadTakeCurrent?: boolean;
     }): SharedValueActions;
+    static invalidate(data: {
+        family: ZacTypes;
+    }): SharedValueActions;
 }
 export declare class SharedValueConsumeType extends ZacConverter {
     static watch(): SharedValueConsumeType;

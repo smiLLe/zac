@@ -115,6 +115,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   const SharedValueActions._();
 
   static const String unionValue = 'z:1:SharedValue.update';
+  static const String unionValueInvalidate = 'z:1:SharedValue.invalidate';
 
   factory SharedValueActions.fromJson(Map<String, dynamic> json) =>
       _$SharedValueActionsFromJson(json);
@@ -126,10 +127,15 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
     @Default(false) bool? ifNoPayloadTakeCurrent,
   }) = _SharedValueActionsUpdate;
 
+  @FreezedUnionValue(SharedValueActions.unionValueInvalidate)
+  factory SharedValueActions.invalidate({
+    required SharedValueFamily family,
+  }) = _SharedValueActionsRefresh;
+
   SharedValueType _updateTransformItems(Object? value, ZacActionPayload payload,
       ZacContext zacContext, _SharedValueActionsUpdate obj) {
-    return transformer?.transform(
-            ZacTransformValue(value), zacContext, payload) ??
+    return obj.transformer
+            ?.transform(ZacTransformValue(value), zacContext, payload) ??
         value;
   }
 
@@ -152,6 +158,9 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
             },
           );
         });
+      },
+      invalidate: (obj) {
+        zacContext.ref.invalidate(SharedValue.provider(family));
       },
     );
   }

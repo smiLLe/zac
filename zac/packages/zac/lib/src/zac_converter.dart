@@ -500,6 +500,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:RouteFactoryFromRoutes': RouteFactoryFromRoutes.fromJson,
   'z:1:RouteFactoryRouteConfig': RouteFactoryRouteConfig.fromJson,
   'z:1:RouteFactorySingleRoute': RouteFactorySingleRoute.fromJson,
+  'z:1:SharedValue.invalidate': SharedValueActions.fromJson,
   'z:1:SharedValue.provide': SharedValueProviderBuilder.fromJson,
   'z:1:SharedValue.update': SharedValueActions.fromJson,
   'z:1:SharedValueConsume.read': SharedValueConsumeType.fromJson,
