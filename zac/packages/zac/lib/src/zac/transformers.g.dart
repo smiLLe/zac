@@ -91,6 +91,13 @@ _$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
       $type: json['converter'] as String?,
     );
 
+_$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
+    _$_MapSetValueForKey(
+      value: ZacValue<Object?>.fromJson(json['value'] as Object),
+      key: ZacValue<String>.fromJson(json['key'] as Object),
+      $type: json['converter'] as String?,
+    );
+
 _$_MapFromStringFlutterWidget _$$_MapFromStringFlutterWidgetFromJson(
         Map<String, dynamic> json) =>
     _$_MapFromStringFlutterWidget(
@@ -189,6 +196,11 @@ _$_ListReversed _$$_ListReversedFromJson(Map<String, dynamic> json) =>
 _$_ListFromFlutterWidget _$$_ListFromFlutterWidgetFromJson(
         Map<String, dynamic> json) =>
     _$_ListFromFlutterWidget(
+      $type: json['converter'] as String?,
+    );
+
+_$_ListAdd _$$_ListAddFromJson(Map<String, dynamic> json) => _$_ListAdd(
+      ZacValue<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

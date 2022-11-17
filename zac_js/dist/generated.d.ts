@@ -985,6 +985,9 @@ export declare class ListTile extends ZacConverter implements Widget {
 export declare class ListTransformer extends ZacConverter implements ZacTransformer {
     static reversed(): ListTransformer;
     static fromFlutterWidget(): ListTransformer;
+    static add(data: {
+        value: ZacValue<ZacTypes | null> | ZacTypes | null;
+    }): ListTransformer;
 }
 export declare class ListView extends ZacConverter implements Widget {
     static new(data: {
@@ -1048,6 +1051,10 @@ export declare class MapTransformer extends ZacConverter implements ZacTransform
     static fromStringObject(): MapTransformer;
     static fromStringNullObject(): MapTransformer;
     static key(data: {
+        key: ZacValue<string> | string;
+    }): MapTransformer;
+    static setValueForKey(data: {
+        value: ZacValue<ZacTypes | null> | ZacTypes | null;
         key: ZacValue<string> | string;
     }): MapTransformer;
     static fromStringFlutterWidget(): MapTransformer;

@@ -322,6 +322,8 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
       return _MapFromStringNullObject.fromJson(json);
     case 'z:1:Transformer:Map[key]':
       return _MapKey.fromJson(json);
+    case 'z:1:Transformer:Map.setValueForKey':
+      return _MapSetValueForKey.fromJson(json);
     case 'z:1:Transformer:Map<String, FlutterWidget>.from':
       return _MapFromStringFlutterWidget.fromJson(json);
 
@@ -349,6 +351,7 @@ mixin _$MapTransformer {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) =>
@@ -400,6 +403,7 @@ class _$_MapValues extends _MapValues {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -460,6 +464,7 @@ class _$_MapKeys extends _MapKeys {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -519,6 +524,7 @@ class _$_MapEntries extends _MapEntries {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -579,6 +585,7 @@ class _$_MapLength extends _MapLength {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -639,6 +646,7 @@ class _$_MapIsEmpty extends _MapIsEmpty {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -699,6 +707,7 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -764,6 +773,7 @@ class _$_MapContainsKey extends _MapContainsKey {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -832,6 +842,7 @@ class _$_MapContainsValue extends _MapContainsValue {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -907,6 +918,7 @@ class _$_MapMapper extends _MapMapper {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -972,6 +984,7 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -1032,6 +1045,7 @@ class _$_MapFromStringObject extends _MapFromStringObject {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -1093,6 +1107,7 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -1158,6 +1173,7 @@ class _$_MapKey extends _MapKey {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -1171,6 +1187,81 @@ abstract class _MapKey extends MapTransformer {
 
   factory _MapKey.fromJson(Map<String, dynamic> json) = _$_MapKey.fromJson;
 
+  ZacValue<String> get key;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_MapSetValueForKey extends _MapSetValueForKey {
+  const _$_MapSetValueForKey(
+      {required this.value, required this.key, final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Map.setValueForKey',
+        super._();
+
+  factory _$_MapSetValueForKey.fromJson(Map<String, dynamic> json) =>
+      _$$_MapSetValueForKeyFromJson(json);
+
+  @override
+  final ZacValue<Object?> value;
+  @override
+  final ZacValue<String> key;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MapTransformer.setValueForKey(value: $value, key: $key)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MapSetValueForKey &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.key, key) || other.key == key));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value, key);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MapValues value) values,
+    required TResult Function(_MapKeys value) keys,
+    required TResult Function(_MapEntries value) entries,
+    required TResult Function(_MapLength value) length,
+    required TResult Function(_MapIsEmpty value) isEmpty,
+    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
+    required TResult Function(_MapContainsKey value) containsKey,
+    required TResult Function(_MapContainsValue value) containsValue,
+    required TResult Function(_MapMapper value) mapper,
+    required TResult Function(_MapFromObjectObject value) fromObjectObject,
+    required TResult Function(_MapFromStringObject value) fromStringObject,
+    required TResult Function(_MapFromStringNullObject value)
+        fromStringNullObject,
+    required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
+    required TResult Function(_MapFromStringFlutterWidget value)
+        fromStringFlutterWidget,
+  }) {
+    return setValueForKey(this);
+  }
+}
+
+abstract class _MapSetValueForKey extends MapTransformer {
+  const factory _MapSetValueForKey(
+      {required final ZacValue<Object?> value,
+      required final ZacValue<String> key}) = _$_MapSetValueForKey;
+  const _MapSetValueForKey._() : super._();
+
+  factory _MapSetValueForKey.fromJson(Map<String, dynamic> json) =
+      _$_MapSetValueForKey.fromJson;
+
+  ZacValue<Object?> get value;
   ZacValue<String> get key;
 }
 
@@ -1220,6 +1311,7 @@ class _$_MapFromStringFlutterWidget extends _MapFromStringFlutterWidget {
     required TResult Function(_MapFromStringNullObject value)
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
+    required TResult Function(_MapSetValueForKey value) setValueForKey,
     required TResult Function(_MapFromStringFlutterWidget value)
         fromStringFlutterWidget,
   }) {
@@ -2234,6 +2326,8 @@ ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
       return _ListReversed.fromJson(json);
     case 'z:1:Transformer:List<FlutterWidget>.from':
       return _ListFromFlutterWidget.fromJson(json);
+    case 'z:1:Transformer:List.add':
+      return _ListAdd.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'converter', 'ListTransformer',
@@ -2247,6 +2341,7 @@ mixin _$ListTransformer {
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
     required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
+    required TResult Function(_ListAdd value) add,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -2284,6 +2379,7 @@ class _$_ListReversed extends _ListReversed {
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
     required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
+    required TResult Function(_ListAdd value) add,
   }) {
     return reversed(this);
   }
@@ -2330,6 +2426,7 @@ class _$_ListFromFlutterWidget extends _ListFromFlutterWidget {
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
     required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
+    required TResult Function(_ListAdd value) add,
   }) {
     return fromFlutterWidget(this);
   }
@@ -2341,6 +2438,59 @@ abstract class _ListFromFlutterWidget extends ListTransformer {
 
   factory _ListFromFlutterWidget.fromJson(Map<String, dynamic> json) =
       _$_ListFromFlutterWidget.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ListAdd extends _ListAdd {
+  const _$_ListAdd(this.value, {final String? $type})
+      : $type = $type ?? 'z:1:Transformer:List.add',
+        super._();
+
+  factory _$_ListAdd.fromJson(Map<String, dynamic> json) =>
+      _$$_ListAddFromJson(json);
+
+  @override
+  final ZacValue<Object?> value;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ListTransformer.add(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ListAdd &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ListReversed value) reversed,
+    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
+    required TResult Function(_ListAdd value) add,
+  }) {
+    return add(this);
+  }
+}
+
+abstract class _ListAdd extends ListTransformer {
+  const factory _ListAdd(final ZacValue<Object?> value) = _$_ListAdd;
+  const _ListAdd._() : super._();
+
+  factory _ListAdd.fromJson(Map<String, dynamic> json) = _$_ListAdd.fromJson;
+
+  ZacValue<Object?> get value;
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {

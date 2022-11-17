@@ -201,8 +201,8 @@ class ZacStateMachineBuildStateBuilder
       family: family.getValue(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          unmappedStateWidget?.buildWidget(zacContext) ??
-          (const FlutterSizedBox.shrink()).buildWidget(zacContext),
+          (unmappedStateWidget ?? const FlutterSizedBox.shrink())
+              .buildWidget(zacContext),
     );
   }
 }

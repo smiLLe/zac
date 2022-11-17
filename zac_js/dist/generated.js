@@ -1188,6 +1188,9 @@ export class ListTransformer extends ZacConverter {
             converter: 'z:1:Transformer:List<FlutterWidget>.from'
         });
     }
+    static add(data) {
+        return new ListTransformer(Object.assign({ converter: 'z:1:Transformer:List.add' }, data));
+    }
 }
 export class ListView extends ZacConverter {
     static new(data) {
@@ -1300,6 +1303,9 @@ export class MapTransformer extends ZacConverter {
     }
     static key(data) {
         return new MapTransformer(Object.assign({ converter: 'z:1:Transformer:Map[key]' }, data));
+    }
+    static setValueForKey(data) {
+        return new MapTransformer(Object.assign({ converter: 'z:1:Transformer:Map.setValueForKey' }, data));
     }
     static fromStringFlutterWidget() {
         return new MapTransformer({

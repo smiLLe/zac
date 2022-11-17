@@ -1932,6 +1932,12 @@ export class ListTransformer extends ZacConverter implements ZacTransformer {
       converter: "z:1:Transformer:List<FlutterWidget>.from",
     });
   }
+  static add(data: { value: ZacValue<ZacTypes | null> | ZacTypes | null }) {
+    return new ListTransformer({
+      converter: "z:1:Transformer:List.add",
+      ...data,
+    });
+  }
 }
 export class ListView extends ZacConverter implements Widget {
   static new(data: {
@@ -2083,6 +2089,15 @@ export class MapTransformer extends ZacConverter implements ZacTransformer {
   static key(data: { key: ZacValue<string> | string }) {
     return new MapTransformer({
       converter: "z:1:Transformer:Map[key]",
+      ...data,
+    });
+  }
+  static setValueForKey(data: {
+    value: ZacValue<ZacTypes | null> | ZacTypes | null;
+    key: ZacValue<string> | string;
+  }) {
+    return new MapTransformer({
+      converter: "z:1:Transformer:Map.setValueForKey",
       ...data,
     });
   }

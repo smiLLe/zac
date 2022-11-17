@@ -402,6 +402,26 @@ void main() {
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
+
+    test('.add', () {
+      _expectFromJson<ListTransformer>(
+          fromJson: ListTransformer.fromJson,
+          converter: 'z:1:Transformer:List.add',
+          equals: ListTransformer.add(ZacValue<Object?>(data: 'hello')),
+          props: <String, dynamic>{
+            'value': 'hello',
+          });
+
+      expect(
+          ListTransformer.add(ZacValue<Object?>(data: 'hello')).transform(
+              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
+          ['foo', 'bar', 'hello']);
+
+      expect(
+          () => ListTransformer.add(ZacValue<Object?>(data: 'hello'))
+              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+    });
   });
 
   group('Map', () {
@@ -751,6 +771,35 @@ void main() {
               FakeZacOrigin(),
               null),
           isA<FlutterWidget>());
+    });
+
+    test('set value in map for key', () {
+      _expectFromJson<MapTransformer>(
+          fromJson: MapTransformer.fromJson,
+          converter: 'z:1:Transformer:Map.setValueForKey',
+          equals: MapTransformer.setValueForKey(
+            key: ZacValue<String>.fromJson('nameOfKey'),
+            value: ZacValue<Object?>.fromJson('hello'),
+          ),
+          props: <String, dynamic>{
+            'key': 'nameOfKey',
+            'value': 'hello',
+          });
+
+      expect(
+          () => MapTransformer.setValueForKey(
+                key: ZacValue<String>.fromJson('nameOfKey'),
+                value: ZacValue<Object?>.fromJson('hello'),
+              ).transform(ZacTransformValue(55), FakeZacOrigin(), null),
+          throwsA(isA<ZacTransformError>()));
+
+      expect(
+          MapTransformer.setValueForKey(
+            key: ZacValue<String>.fromJson('nameOfKey'),
+            value: ZacValue<Object?>.fromJson('hello'),
+          ).transform(ZacTransformValue(<String, dynamic>{'a': 'a'}),
+              FakeZacOrigin(), null),
+          <String, dynamic>{'a': 'a', 'nameOfKey': 'hello'});
     });
   });
 

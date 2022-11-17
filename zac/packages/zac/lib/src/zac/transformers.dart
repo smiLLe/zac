@@ -123,6 +123,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   static const String unionValueFromStringFlutterWidget =
       'z:1:Transformer:Map<String, FlutterWidget>.from';
   static const String unionValueKey = 'z:1:Transformer:Map[key]';
+  static const String unionValueSetValueForKey =
+      'z:1:Transformer:Map.setValueForKey';
 
   factory MapTransformer.fromJson(Map<String, dynamic> json) =>
       _$MapTransformerFromJson(json);
@@ -173,6 +175,12 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   @FreezedUnionValue(MapTransformer.unionValueKey)
   const factory MapTransformer.key(ZacValue<String> key) = _MapKey;
 
+  @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
+  const factory MapTransformer.setValueForKey({
+    required ZacValue<Object?> value,
+    required ZacValue<String> key,
+  }) = _MapSetValueForKey;
+
   @FreezedUnionValue(MapTransformer.unionValueFromStringFlutterWidget)
   const factory MapTransformer.fromStringFlutterWidget() =
       _MapFromStringFlutterWidget;
@@ -180,30 +188,30 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
       ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! Map) {
+    final theMap = transformValue.value;
+    if (theMap is! Map) {
       throw ZacTransformError('''
 There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of Map but instead we got a "${value.runtimeType}".
-The value: $value
+The value was expected to be a type of Map but instead we got a "${theMap.runtimeType}".
+The value: $theMap
 ''');
     }
 
     return map(
-      values: (_) => value.values,
-      keys: (_) => value.keys,
-      entries: (_) => value.entries,
-      isEmpty: (_) => value.isEmpty,
-      isNotEmpty: (_) => value.isNotEmpty,
-      length: (_) => value.length,
-      containsKey: (obj) => value.containsKey(obj.key?.getValue(zacContext,
+      values: (_) => theMap.values,
+      keys: (_) => theMap.keys,
+      entries: (_) => theMap.entries,
+      isEmpty: (_) => theMap.isEmpty,
+      isNotEmpty: (_) => theMap.isNotEmpty,
+      length: (_) => theMap.length,
+      containsKey: (obj) => theMap.containsKey(obj.key?.getValue(zacContext,
           prefered: const SharedValueConsumeType.read())),
-      containsValue: (obj) => value.containsValue(obj.value?.getValue(
+      containsValue: (obj) => theMap.containsValue(obj.value?.getValue(
           zacContext,
           prefered: const SharedValueConsumeType.read())),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
-            value.entries.map<MapEntry<dynamic, dynamic>>((entry) {
+            theMap.entries.map<MapEntry<dynamic, dynamic>>((entry) {
           dynamic updatedKey = entry.key;
           dynamic updatedValue = entry.value;
           if (true == obj.keyTransformer?.transformers.isNotEmpty) {
@@ -219,21 +227,31 @@ The value: $value
         }));
       },
       fromObjectObject: (_) {
-        return Map<Object, Object>.from(value);
+        return Map<Object, Object>.from(theMap);
       },
       fromStringNullObject: (_) {
-        return Map<String, Object?>.from(value);
+        return Map<String, Object?>.from(theMap);
       },
       fromStringObject: (_) {
-        return Map<String, Object>.from(value);
+        return Map<String, Object>.from(theMap);
       },
       key: (obj) {
         final key = obj.key.getValue(zacContext,
             prefered: const SharedValueConsumeType.read());
-        return value[key];
+        return theMap[key];
+      },
+      setValueForKey: (obj) {
+        final value = obj.value.getValue(zacContext,
+            prefered: const SharedValueConsumeType.read());
+
+        final key = obj.key.getValue(zacContext,
+            prefered: const SharedValueConsumeType.read());
+
+        theMap[key] = value;
+        return theMap;
       },
       fromStringFlutterWidget: (_) {
-        return Map<String, FlutterWidget>.from(value);
+        return Map<String, FlutterWidget>.from(theMap);
       },
     );
   }
@@ -328,6 +346,7 @@ The value was expected to be a type of Iterable but instead we got a "${value.ru
 The value: $value
 ''');
     }
+
     return map(
       map: (obj) => value.map((dynamic e) =>
           obj.transformer.transform(ZacTransformValue(e), zacContext, payload)),
@@ -357,6 +376,7 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   static const String unionValue = 'z:1:Transformer:List.reversed';
   static const String unionValueFromFlutterWidget =
       'z:1:Transformer:List<FlutterWidget>.from';
+  static const String unionValueAdd = 'z:1:Transformer:List.add';
 
   factory ListTransformer.fromJson(Map<String, dynamic> json) =>
       _$ListTransformerFromJson(json);
@@ -367,6 +387,9 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ListTransformer.unionValueFromFlutterWidget)
   const factory ListTransformer.fromFlutterWidget() = _ListFromFlutterWidget;
+
+  @FreezedUnionValue(ListTransformer.unionValueAdd)
+  const factory ListTransformer.add(ZacValue<Object?> value) = _ListAdd;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -383,6 +406,14 @@ The value: $value
     return map(
       reversed: (_) => value.reversed.toList(),
       fromFlutterWidget: (_) => List<FlutterWidget>.from(value),
+      add: (obj) {
+        value.add(obj.value.getValue(
+          zacContext,
+          prefered: const SharedValueConsumeType.read(),
+        ));
+
+        return value;
+      },
     );
   }
 }
