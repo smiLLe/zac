@@ -238,8 +238,25 @@ void main() {
             consumeType: const SharedValueConsumeType.read(),
             family: 'shared',
             select: null,
+            transformer: null,
           ),
           5);
+
+      expect(
+          SharedValue.getTyped<String>(
+            zacContext: zacContext,
+            consumeType: const SharedValueConsumeType.read(),
+            family: 'shared',
+            select: null,
+            transformer: ZacTransformers([
+              CustomTransformer(
+                (transformValue, zacContext, payload) {
+                  return transformValue.value.toString();
+                },
+              )
+            ]),
+          ),
+          '5');
 
       expect(
           () => SharedValue.getTyped<String>(
@@ -247,9 +264,13 @@ void main() {
                 consumeType: const SharedValueConsumeType.read(),
                 family: 'shared',
                 select: null,
+                transformer: null,
               ),
-          throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
-              contains('The type of the SharedValue was int.'))));
+          throwsA(isA<StateError>().having(
+              (p0) => p0.message,
+              'error message',
+              contains(
+                  'It was not possible to get a SharedValue of type String from family "shared".'))));
     });
 
     testWidgets('request a typed value or throw #2', (tester) async {
@@ -272,6 +293,7 @@ void main() {
             consumeType: const SharedValueConsumeType.read(),
             family: 'shared',
             select: null,
+            transformer: null,
           ),
           completer);
 
@@ -281,6 +303,7 @@ void main() {
             consumeType: const SharedValueConsumeType.read(),
             family: 'shared',
             select: null,
+            transformer: null,
           ),
           completer);
 
@@ -290,6 +313,7 @@ void main() {
                 consumeType: const SharedValueConsumeType.read(),
                 family: 'shared',
                 select: null,
+                transformer: null,
               ),
           throwsA(isA<StateError>().having(
               (p0) => p0.message,

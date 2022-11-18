@@ -12,6 +12,71 @@ import 'package:zac/src/zac/transformers.dart';
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
 
+mixin SharedValueConsume<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+  T getSharedValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTyped<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    return value;
+  }
+}
+
+mixin SharedValueConsumeList<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get itemTransformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+
+  List<T> getSharedValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    var list = SharedValue.getTyped<List<dynamic>>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    if (list is List<T>) return list;
+
+    Object? transformed;
+
+    if (null != itemTransformer) {
+      transformed = list
+          .map((dynamic e) => itemTransformer!.transform(
+              ZacTransformValue(e), zacContext, const ZacActionPayload()))
+          .toList();
+    }
+
+    if (list is List<T>) return list;
+
+    transformed = transformer?.transform(ZacTransformValue(transformed),
+            zacContext, const ZacActionPayload()) ??
+        transformer;
+
+    if (transformed is List<T>) return transformed;
+
+    if (transformed is! List) {
+      throw StateError('');
+    }
+
+    return List<T>.from(transformed);
+  }
+}
+
 class AccessEmptySharedValueError extends StateError {
   AccessEmptySharedValueError(super.message);
 }
@@ -33,6 +98,7 @@ See "$SharedValueProviderBuilder" for more info.
   static T getTyped<T>({
     required ZacContext zacContext,
     required ZacTransformers? select,
+    required ZacTransformers? transformer,
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
   }) {
@@ -42,14 +108,27 @@ See "$SharedValueProviderBuilder" for more info.
       consumeType: consumeType,
       family: family,
     );
-    if (value is! T) {
-      throw StateError('''
-It was not possible to get a $SharedValue of type $T from family "$family".
-The type of the $SharedValue was ${value.runtimeType}.
-The $SharedValue: $value''');
+
+    if (value is T && true != transformer?.transformers.isNotEmpty) {
+      return value;
     }
 
-    return value;
+    final transformedValue =
+        transformer?.transform(ZacTransformValue(value), zacContext, null) ??
+            value;
+
+    if (transformedValue is! T) {
+      final transformerErr =
+          transformer?.transformers.map((e) => e.runtimeType) ?? [];
+
+      throw StateError('''
+It was not possible to get a $SharedValue of type $T from family "$family".
+The value is of type "${transformedValue.runtimeType}".
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+The value: $transformedValue''');
+    }
+
+    return transformedValue;
   }
 
   static SharedValueType get({

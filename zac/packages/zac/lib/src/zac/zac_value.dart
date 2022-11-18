@@ -10,6 +10,422 @@ import 'package:zac/src/zac/transformers.dart';
 part 'zac_value.freezed.dart';
 part 'zac_value.g.dart';
 
+mixin ZacGetValueList<T> {
+  List<T> getValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    if (this is ZacSimpleValueList<T>) {
+      return (this as ZacSimpleValueList<T>).items;
+    } else if (this is ZacValueTranformableList<T>) {
+      return (this as ZacValueTranformableList<T>)
+          .getTransformedValue(zacContext);
+    } else if (this is SharedValueConsumeList<T>) {
+      return (this as SharedValueConsumeList<T>).getSharedValue(zacContext);
+    }
+    throw StateError('''
+${ZacGetValueList<T>} could not return a list because $this did not implement one
+of the following classes: ${ZacGetValueList<T>}, ${ZacValueTranformableList<T>}, ${SharedValueConsumeList<T>}''');
+  }
+}
+
+mixin ZacSimpleValueList<T> {
+  List<T> get items;
+}
+
+mixin ZacValueTranformableList<T> {
+  List<Object> get items;
+  ZacTransformers? get transformer;
+  ZacTransformers? get itemTransformer;
+
+  List<T> getTransformedValue(ZacContext zacContext) {
+    Object? transformed;
+    if (null != itemTransformer) {
+      transformed = items
+          .map((dynamic e) => itemTransformer!.transform(
+              ZacTransformValue(e), zacContext, const ZacActionPayload()))
+          .toList();
+    }
+
+    if (transformed is List<T>) return transformed;
+
+    transformed = transformer?.transform(ZacTransformValue(transformed),
+            zacContext, const ZacActionPayload()) ??
+        transformed;
+
+    if (transformed is List<T>) return transformed;
+
+    if (transformed is! List) {
+      final transformerErr =
+          transformer?.transformers.map((e) => e.runtimeType) ?? [];
+
+      throw StateError('''
+It was not possible to get a list of type $T in $this.
+The value is of type "${transformed.runtimeType}".
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+The value: $transformed''');
+    }
+
+    return List<T>.from(transformed);
+  }
+}
+
+mixin ZacGetValue<T> {
+  T getValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    if (this is ZacSimpleValue<T>) {
+      return (this as ZacSimpleValue<T>).value;
+    } else if (this is ZacValueTranformable<T>) {
+      return (this as ZacValueTranformable<T>).getTransformedValue(zacContext);
+    } else if (this is SharedValueConsume<T>) {
+      return (this as SharedValueConsume<T>)
+          .getSharedValue(zacContext, prefered: prefered);
+    }
+    throw StateError('''
+${ZacGetValue<T>} could not return a value because $this did not implement one
+of the following classes: ${ZacSimpleValue<T>}, ${ZacValueTranformable<T>}, ${SharedValueConsume<T>}''');
+  }
+}
+
+mixin ZacSimpleValue<T> {
+  T get value;
+}
+
+mixin ZacValueTranformable<T> {
+  Object get value;
+  ZacTransformers get transformer;
+
+  T getTransformedValue(ZacContext zacContext) {
+    final transformedValue =
+        transformer.transform(ZacTransformValue(value), zacContext, null);
+    if (transformedValue is! T) {
+      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+      throw StateError('''
+It was not possible to get a value of type $T in $this.
+The value is of type "${transformedValue.runtimeType}".
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+The value: $transformedValue''');
+    }
+
+    return transformedValue;
+  }
+}
+
+bool _assertIsBuilder<T>(Map<String, dynamic> json) {
+  assert(() {
+    ConverterHelper.validateConverter<T>(json);
+    return true;
+  }(), '');
+  return true;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacInt with _$ZacInt, ZacGetValue<int> {
+  const ZacInt._();
+
+  static const String unionValue = 'z:1:int';
+
+  factory ZacInt.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is num) {
+      json['converter'] = ZacInt.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacInt>(json), '');
+
+    if (json['converter'] == ZacInt.unionValue && json['value'] is double) {
+      json['value'] = (json['value'] as double).toInt();
+    }
+
+    return _$ZacIntFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacInt.unionValue)
+  @With<ZacSimpleValue<int>>()
+  factory ZacInt({required int value}) = _ZacInt;
+
+  @FreezedUnionValue('z:1:int.transformable')
+  @With<ZacValueTranformable<int>>()
+  factory ZacInt.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacIntTransformable;
+
+  @FreezedUnionValue('z:1:int.consume')
+  @With<SharedValueConsume<int>>()
+  factory ZacInt.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacIntConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacDouble with _$ZacDouble, ZacGetValue<double> {
+  const ZacDouble._();
+
+  static const String unionValue = 'z:1:double';
+
+  factory ZacDouble.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is num) {
+      json['converter'] = ZacDouble.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacDouble>(json), '');
+
+    if (json['converter'] == ZacDouble.unionValue && json['value'] is int) {
+      json['value'] = (json['value'] as int).toDouble();
+    }
+
+    return _$ZacDoubleFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacDouble.unionValue)
+  @With<ZacSimpleValue<double>>()
+  factory ZacDouble({required double value}) = _ZacDouble;
+
+  @FreezedUnionValue('z:1:double.transformable')
+  @With<ZacValueTranformable<double>>()
+  factory ZacDouble.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacDoubleTransformable;
+
+  @FreezedUnionValue('z:1:double.consume')
+  @With<SharedValueConsume<double>>()
+  factory ZacDouble.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacDoubleConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacNum with _$ZacNum, ZacGetValue<num> {
+  const ZacNum._();
+
+  static const String unionValue = 'z:1:num';
+
+  factory ZacNum.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is num) {
+      json['converter'] = ZacNum.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacNum>(json), '');
+
+    return _$ZacNumFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacNum.unionValue)
+  @With<ZacSimpleValue<num>>()
+  factory ZacNum({required num value}) = _ZacNum;
+
+  @FreezedUnionValue('z:1:num.transformable')
+  @With<ZacValueTranformable<num>>()
+  factory ZacNum.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacNumTransformable;
+
+  @FreezedUnionValue('z:1:num.consume')
+  @With<SharedValueConsume<num>>()
+  factory ZacNum.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacNumConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacString with _$ZacString, ZacGetValue<String> {
+  const ZacString._();
+
+  static const String unionValue = 'z:1:String';
+
+  factory ZacString.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is String) {
+      json['converter'] = ZacString.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacString>(json), '');
+
+    return _$ZacStringFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacString.unionValue)
+  @With<ZacSimpleValue<String>>()
+  factory ZacString({required String value}) = _ZacString;
+
+  @FreezedUnionValue('z:1:String.transformable')
+  @With<ZacValueTranformable<String>>()
+  factory ZacString.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacStringTransformable;
+
+  @FreezedUnionValue('z:1:String.consume')
+  @With<SharedValueConsume<String>>()
+  factory ZacString.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacStringConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacBool with _$ZacBool, ZacGetValue<bool> {
+  const ZacBool._();
+
+  static const String unionValue = 'z:1:bool';
+
+  factory ZacBool.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is bool) {
+      json['converter'] = ZacBool.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacBool>(json), '');
+
+    return _$ZacBoolFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacBool.unionValue)
+  @With<ZacSimpleValue<bool>>()
+  factory ZacBool({required bool value}) = _ZacBool;
+
+  @FreezedUnionValue('z:1:bool.transformable')
+  @With<ZacValueTranformable<bool>>()
+  factory ZacBool.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacBoolTransformable;
+
+  @FreezedUnionValue('z:1:bool.consume')
+  @With<SharedValueConsume<bool>>()
+  factory ZacBool.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacBoolConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacDateTime with _$ZacDateTime, ZacGetValue<DateTime> {
+  const ZacDateTime._();
+
+  static const String unionValue = 'z:1:DateTime';
+
+  factory ZacDateTime.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is String) {
+      json['converter'] = ZacDateTime.unionValue;
+      json['value'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacDateTime>(json), '');
+
+    return _$ZacDateTimeFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacDateTime.unionValue)
+  @With<ZacSimpleValue<DateTime>>()
+  factory ZacDateTime({required DateTime value}) = _ZacDateTime;
+
+  @FreezedUnionValue('z:1:DateTime.transformable')
+  @With<ZacValueTranformable<DateTime>>()
+  factory ZacDateTime.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacDateTimeTransformable;
+
+  @FreezedUnionValue('z:1:DateTime.consume')
+  @With<SharedValueConsume<DateTime>>()
+  factory ZacDateTime.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacDateTimeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacListOfFlutterWidget
+    with _$ZacListOfFlutterWidget, ZacGetValueList<FlutterWidget> {
+  const ZacListOfFlutterWidget._();
+
+  static const String unionValue = 'z:1:List<FlutterWidget>';
+
+  factory ZacListOfFlutterWidget.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is List) {
+      json['converter'] = ZacListOfFlutterWidget.unionValue;
+      json['items'] = data;
+    } else if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    }
+
+    assert(_assertIsBuilder<ZacListOfFlutterWidget>(json), '');
+
+    return _$ZacListOfFlutterWidgetFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacListOfFlutterWidget.unionValue)
+  @With<ZacSimpleValueList<FlutterWidget>>()
+  factory ZacListOfFlutterWidget({required List<FlutterWidget> items}) =
+      _ZacListOfFlutterWidget;
+
+  @FreezedUnionValue('z:1:List<FlutterWidget>.transformable')
+  @With<ZacValueTranformableList<FlutterWidget>>()
+  factory ZacListOfFlutterWidget.transformable({
+    required List<Object> items,
+    ZacTransformers? transformer,
+    ZacTransformers? itemTransformer,
+  }) = _ZacListOfFlutterWidgetTransformable;
+
+  @FreezedUnionValue('z:1:List<FlutterWidget>.consume')
+  @With<SharedValueConsumeList<FlutterWidget>>()
+  factory ZacListOfFlutterWidget.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? itemTransformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacListOfFlutterWidgetSharedValue;
+}
+
 bool _isConverterButNotZacValue(Object data) {
   if (!ConverterHelper.isConverter(data)) return false;
   data as Map<String, dynamic>;
