@@ -585,6 +585,27 @@ void main() {
     });
   });
 
+  group('ZacObject', () {
+    test('can be created', () {
+      expectSimpleValue<ZacObject, Object>(
+        converter: 'z:1:Object',
+        value: 'anything',
+        create: ZacObject.new,
+        fromJson: ZacObject.fromJson,
+      );
+
+      expectTransformable<ZacObject, Object>(
+        converter: 'z:1:Object.transformable',
+        create: ZacObject.transformable,
+      );
+
+      expectShared<ZacObject, Object>(
+        converter: 'z:1:Object.consume',
+        create: ZacObject.consume,
+      );
+    });
+  });
+
   group('ZacDateTime', () {
     test('can be created', () {
       final now = DateTime.now();
@@ -1305,34 +1326,34 @@ void main() {
                 'Something very bad happend. ZacValueConsumeOnly<int> must always contain a _ZacValueConsume<int>'))));
   });
 
-  testWidgets('pick a ZacValue and pass it to new actions as payload',
-      (tester) async {
-    expect(
-        () => ConverterHelper.convertToType<ZacValueActions>(<String, dynamic>{
-              'converter': 'z:1:ZacValue.asActionPayload',
-              'value': 5,
-              'actions': <Object>[],
-            }),
-        returnsNormally);
+  // testWidgets('pick a ZacValue and pass it to new actions as payload',
+  //     (tester) async {
+  //   expect(
+  //       () => ConverterHelper.convertToType<ZacValueActions>(<String, dynamic>{
+  //             'converter': 'z:1:ZacValue.asActionPayload',
+  //             'value': 5,
+  //             'actions': <Object>[],
+  //           }),
+  //       returnsNormally);
 
-    late ZacActionPayload payload;
-    await testZacWidget(
-      tester,
-      ZacExecuteActionsBuilder.once(
-        actions: ZacActions([
-          ZacValueActions.asPayload(
-            value: ZacValue<String>.fromJson('hello'),
-            actions: ZacActions([
-              LeakAction(
-                (p, zacContext) => payload = p,
-              )
-            ]),
-          ),
-        ]),
-        child: FlutterSizedBox(),
-      ),
-    );
+  //   late ZacActionPayload payload;
+  //   await testZacWidget(
+  //     tester,
+  //     ZacExecuteActionsBuilder.once(
+  //       actions: ZacActions([
+  //         ZacValueActions.asPayload(
+  //           value: ZacValue<String>.fromJson('hello'),
+  //           actions: ZacActions([
+  //             LeakAction(
+  //               (p, zacContext) => payload = p,
+  //             )
+  //           ]),
+  //         ),
+  //       ]),
+  //       child: FlutterSizedBox(),
+  //     ),
+  //   );
 
-    expect(payload, ZacActionPayload.param('hello'));
-  });
+  //   expect(payload, ZacActionPayload.param('hello'));
+  // });
 }

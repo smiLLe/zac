@@ -156,6 +156,36 @@ _$_ZacBoolConsumeSharedValue _$$_ZacBoolConsumeSharedValueFromJson(
       $type: json['converter'] as String?,
     );
 
+_$_ZacObject _$$_ZacObjectFromJson(Map<String, dynamic> json) => _$_ZacObject(
+      value: json['value'] as Object,
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacObjectTransformable _$$_ZacObjectTransformableFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacObjectTransformable(
+      value: json['value'] as Object,
+      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacObjectConsumeSharedValue _$$_ZacObjectConsumeSharedValueFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacObjectConsumeSharedValue(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      select: json['select'] == null
+          ? null
+          : ZacTransformers.fromJson(json['select'] as Object),
+      forceConsume: json['forceConsume'] == null
+          ? null
+          : SharedValueConsumeType.fromJson(
+              json['forceConsume'] as Map<String, dynamic>),
+      $type: json['converter'] as String?,
+    );
+
 _$_ZacDateTime _$$_ZacDateTimeFromJson(Map<String, dynamic> json) =>
     _$_ZacDateTime(
       value: DateTime.parse(json['value'] as String),
@@ -318,6 +348,6 @@ _$_ZacValueListConsume<T> _$$_ZacValueListConsumeFromJson<T>(
 _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_ZacValueActionsAsPayload(
-      value: ZacValue<Object?>.fromJson(json['value'] as Object),
+      value: ZacObject.fromJson(json['value'] as Object),
       actions: ZacActions.fromJson(json['actions'] as Object),
     );

@@ -340,6 +340,48 @@ class ZacBool with _$ZacBool, ZacGetValue<bool> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacObject with _$ZacObject, ZacGetValue<Object> {
+  const ZacObject._();
+
+  static const String unionValue = 'z:1:Object';
+
+  factory ZacObject.fromJson(Object data) {
+    final json = <String, dynamic>{};
+    if (data is Map<String, dynamic>) {
+      json.addAll(data);
+    } else {
+      json['converter'] = ZacObject.unionValue;
+      json['value'] = data;
+    }
+
+    assert(_assertIsBuilder<ZacObject>(json), '');
+
+    return _$ZacObjectFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacObject.unionValue)
+  @With<ZacSimpleValue<Object>>()
+  factory ZacObject({required Object value}) = _ZacObject;
+
+  @FreezedUnionValue('z:1:Object.transformable')
+  @With<ZacValueTranformable<Object>>()
+  factory ZacObject.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacObjectTransformable;
+
+  @FreezedUnionValue('z:1:Object.consume')
+  @With<SharedValueConsume<Object>>()
+  factory ZacObject.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacObjectConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacDateTime with _$ZacDateTime, ZacGetValue<DateTime> {
   const ZacDateTime._();
 
@@ -802,7 +844,7 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
 
   @FreezedUnionValue(ZacValueActions.unionValue)
   factory ZacValueActions.asPayload({
-    required ZacValue<Object?> value,
+    required ZacObject value,
     required ZacActions actions,
   }) = _ZacValueActionsAsPayload;
 
