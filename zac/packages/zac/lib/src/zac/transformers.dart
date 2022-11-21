@@ -11,6 +11,184 @@ import 'package:zac/src/zac/zac_value.dart';
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
 
+abstract class TransformObjectHelper {
+  static T simple<T>({
+    required Object fromValue,
+    required ZacContext zacContext,
+    required ZacTransformers? transformer,
+  }) {
+    if (fromValue is T && true != transformer?.transformers.isNotEmpty) {
+      return fromValue as T;
+    }
+
+    if (null == transformer || transformer.transformers.isEmpty) {
+      throw StateError('''
+It was not possible to return a value of type $T because there were no transformer.
+The value of type ${fromValue.runtimeType} was expected to be transformed.
+$fromValue''');
+    }
+
+    final Object? transformedValue =
+        transformer.transform(ZacTransformValue(fromValue), zacContext, null);
+
+    if (transformedValue is! T) {
+      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+      throw StateError('''
+It was not possible to return a value of type $T after transformers were applied.
+Type of value before transformation: ${fromValue.runtimeType}
+Type of value after transformation: ${transformedValue.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $fromValue
+Value after: $transformedValue''');
+    }
+
+    return transformedValue;
+  }
+
+  static T? simpleOrNull<T>({
+    required Object? fromValue,
+    required ZacContext zacContext,
+    required ZacTransformers? transformer,
+  }) {
+    if (null == fromValue && true != transformer?.transformers.isNotEmpty) {
+      return null;
+    }
+
+    if (fromValue is T && true != transformer?.transformers.isNotEmpty) {
+      return fromValue;
+    }
+
+    if (null == transformer || transformer.transformers.isEmpty) {
+      throw StateError('''
+It was not possible to return a value of type $T because there were no transformer.
+The value of type ${fromValue.runtimeType} was expected to be transformed.
+$fromValue''');
+    }
+
+    final Object? transformedValue =
+        transformer.transform(ZacTransformValue(fromValue), zacContext, null);
+
+    if (null == transformedValue) {
+      return null;
+    }
+
+    if (transformedValue is T?) {
+      return transformedValue as T?;
+    }
+
+    if (transformedValue is T) {
+      return transformedValue as T;
+    }
+
+    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+    throw StateError('''
+It was not possible to return a value of type $T? after transformers were applied.
+Type of value before transformation: ${fromValue.runtimeType}
+Type of value after transformation: ${transformedValue.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $fromValue
+Value after: $transformedValue''');
+  }
+
+  static List<T> list<T>({
+    required List<dynamic> fromValue,
+    required ZacContext zacContext,
+    required ZacTransformers? transformer,
+    required ZacTransformers? itemTransformer,
+  }) {
+    if (null == transformer && null == itemTransformer) {
+      return List<T>.from(fromValue);
+    }
+
+    List<dynamic> transformedItems = null == itemTransformer
+        ? fromValue
+        : fromValue
+            .map((dynamic e) => itemTransformer.transform(
+                ZacTransformValue(e), zacContext, const ZacActionPayload()))
+            .toList();
+
+    if (null == transformer || transformer.transformers.isEmpty) {
+      return List<T>.from(transformedItems);
+    }
+
+    final transformed = transformer.transform(
+        ZacTransformValue(transformedItems),
+        zacContext,
+        const ZacActionPayload());
+
+    if (transformed is List) {
+      if (transformed is List<T>) return transformed;
+
+      return List<T>.from(transformedItems);
+    }
+
+    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+    throw StateError('''
+It was not possible to return a List<$T> after transformers were applied.
+Type of value before transformation: ${transformedItems.runtimeType}
+Type of value after transformation: ${transformed.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $transformedItems
+Value after: $transformed''');
+  }
+
+  static List<T>? listOrNull<T>({
+    required List<dynamic>? fromValue,
+    required ZacContext zacContext,
+    required ZacTransformers? transformer,
+    required ZacTransformers? itemTransformer,
+  }) {
+    if (null == fromValue && null == transformer && null == itemTransformer) {
+      return null;
+    }
+
+    if (null != fromValue && null == transformer && null == itemTransformer) {
+      return List<T>.from(fromValue);
+    }
+
+    fromValue as List<dynamic>;
+
+    List<dynamic> transformedItems = null == itemTransformer
+        ? fromValue
+        : fromValue
+            .map((dynamic e) => itemTransformer.transform(
+                ZacTransformValue(e), zacContext, const ZacActionPayload()))
+            .toList();
+
+    if (null == transformer || transformer.transformers.isEmpty) {
+      return List<T>.from(transformedItems);
+    }
+
+    final transformed = transformer.transform(
+        ZacTransformValue(transformedItems),
+        zacContext,
+        const ZacActionPayload());
+
+    if (null == transformed) {
+      return null;
+    }
+
+    if (transformed is List) {
+      if (transformed is List<T>) return transformed;
+
+      return List<T>.from(transformedItems);
+    }
+
+    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+    throw StateError('''
+It was not possible to return a List<$T> or null after transformers were applied.
+Type of value before transformation: ${transformedItems.runtimeType}
+Type of value after transformation: ${transformed.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $transformedItems
+Value after: $transformed''');
+  }
+}
+
 class ZacTransformError extends StateError {
   ZacTransformError(super.message);
 }

@@ -186,6 +186,37 @@ _$_ZacObjectConsumeSharedValue _$$_ZacObjectConsumeSharedValueFromJson(
       $type: json['converter'] as String?,
     );
 
+_$_ZacFlutterWidget _$$_ZacFlutterWidgetFromJson(Map<String, dynamic> json) =>
+    _$_ZacFlutterWidget(
+      value: FlutterWidget.fromJson(json['value'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacFlutterWidgetTransformable _$$_ZacFlutterWidgetTransformableFromJson(
+        Map<String, dynamic> json) =>
+    _$_ZacFlutterWidgetTransformable(
+      value: json['value'] as Object,
+      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacFlutterWidgetConsumeSharedValue
+    _$$_ZacFlutterWidgetConsumeSharedValueFromJson(Map<String, dynamic> json) =>
+        _$_ZacFlutterWidgetConsumeSharedValue(
+          family: json['family'] as Object,
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
+          select: json['select'] == null
+              ? null
+              : ZacTransformers.fromJson(json['select'] as Object),
+          forceConsume: json['forceConsume'] == null
+              ? null
+              : SharedValueConsumeType.fromJson(
+                  json['forceConsume'] as Map<String, dynamic>),
+          $type: json['converter'] as String?,
+        );
+
 _$_ZacDateTime _$$_ZacDateTimeFromJson(Map<String, dynamic> json) =>
     _$_ZacDateTime(
       value: DateTime.parse(json['value'] as String),

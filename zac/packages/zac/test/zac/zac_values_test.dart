@@ -86,7 +86,7 @@ void expectSharedList<Builder, Value>({
   expect(
       ConverterHelper.convertToType<Builder>(
           {'converter': converter, 'family': 'shared'}),
-      isA<SharedValueConsumeList<Value>>());
+      isA<ZacValueConsumeList<Value>>());
   expect(
       ConverterHelper.convertToType<Builder>(
           {'converter': converter, 'family': 'shared'}),
@@ -100,28 +100,29 @@ void expectSharedList<Builder, Value>({
 
 void expectSimpleValue<Builder, Value>({
   required String converter,
-  required Value value,
+  required Object jsonValue,
+  required Value expectValue,
   required Builder Function({required Value value}) create,
   required Builder Function(Object data) fromJson,
 }) {
-  expect(fromJson(value as Object), create(value: value));
+  expect(fromJson(jsonValue as Object), create(value: expectValue));
 
   expect(
       ConverterHelper.convertToType<Builder>({
         'converter': converter,
-        'value': value,
+        'value': jsonValue,
       }),
-      create(value: value));
+      create(value: expectValue));
   expect(
       ConverterHelper.convertToType<Builder>({
         'converter': converter,
-        'value': value,
+        'value': jsonValue,
       }),
       isA<ZacSimpleValue<Value>>());
   expect(
       ConverterHelper.convertToType<Builder>({
         'converter': converter,
-        'value': value,
+        'value': jsonValue,
       }),
       isA<ZacGetValue<Value>>());
 }
@@ -172,7 +173,7 @@ void expectShared<Builder, Value>({
   expect(
       ConverterHelper.convertToType<Builder>(
           {'converter': converter, 'family': 'shared'}),
-      isA<SharedValueConsume<Value>>());
+      isA<ZacValueConsume<Value>>());
   expect(
       ConverterHelper.convertToType<Builder>(
           {'converter': converter, 'family': 'shared'}),
@@ -222,7 +223,7 @@ class TestZacSimpleValueList<T> with ZacSimpleValueList<T>, ZacGetValueList<T> {
   TestZacSimpleValueList(this.items);
 }
 
-class TestSharedValueConsume<T> with SharedValueConsume<T>, ZacGetValue<T> {
+class TestSharedValueConsume<T> with ZacValueConsume<T>, ZacGetValue<T> {
   @override
   final SharedValueFamily family;
 
@@ -240,7 +241,7 @@ class TestSharedValueConsume<T> with SharedValueConsume<T>, ZacGetValue<T> {
 }
 
 class TestSharedValueConsumeList<T>
-    with SharedValueConsumeList<T>, ZacGetValueList<T> {
+    with ZacValueConsumeList<T>, ZacGetValueList<T> {
   @override
   final SharedValueFamily family;
 
@@ -343,7 +344,7 @@ void main() {
   });
 
   group('ZacValueTranformable', () {
-    testWidgets('will return the transformed value', (tester) async {
+    testWidgets('.getTransformedValue()', (tester) async {
       late ZacContext zacContext;
       await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
       expect(
@@ -358,12 +359,23 @@ void main() {
                   'hello')
               .getTransformedValue(zacContext),
           5);
+    });
 
+    testWidgets('.getTransformedValueOrNull()', (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
       expect(
-          () => TestZacGetValue<int>(ZacTransformers([]), 'hello')
-              .getTransformedValue(zacContext),
-          throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
-              contains('It was not possible to get a value of type int in'))));
+          TestZacGetValue<String>(
+                  ZacTransformers([
+                    CustomTransformer(
+                      (transformValue, zacContext, payload) {
+                        return null;
+                      },
+                    )
+                  ]),
+                  'hello')
+              .getTransformedValueOrNull(zacContext),
+          null);
     });
 
     testWidgets('will return the transformed value from ZacGetValue<T>',
@@ -382,11 +394,24 @@ void main() {
                   'hello')
               .getValue(zacContext),
           5);
+
+      expect(
+          TestZacGetValue<int>(
+                  ZacTransformers([
+                    CustomTransformer(
+                      (transformValue, zacContext, payload) {
+                        return null;
+                      },
+                    )
+                  ]),
+                  'hello')
+              .getValueOrNull(zacContext),
+          null);
     });
   });
 
   group('ZacValueTranformableList', () {
-    testWidgets('will return the transformed value', (tester) async {
+    testWidgets('.getTransformedValue()', (tester) async {
       late ZacContext zacContext;
       await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
       expect(
@@ -407,21 +432,23 @@ void main() {
               ]),
               ['hello']).getTransformedValue(zacContext),
           [5]);
+    });
 
-      /// what if transformer does not return a list
+    testWidgets('.getTransformedValueOrNull()', (tester) async {
+      late ZacContext zacContext;
+      await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
       expect(
-          () => TestZacGetValueList<int>(
+          TestZacGetValueList<int>(
               ZacTransformers([
                 CustomTransformer(
                   (transformValue, zacContext, payload) {
-                    return 'NO LIST';
+                    return null;
                   },
                 )
               ]),
-              ZacTransformers([]),
-              ['hello']).getTransformedValue(zacContext),
-          throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
-              contains('It was not possible to get a list of type int in'))));
+              null,
+              ['hello']).getTransformedValueOrNull(zacContext),
+          null);
     });
 
     testWidgets('will return the transformed value from ZacGetValueList<T>',
@@ -446,6 +473,19 @@ void main() {
               ]),
               ['hello']).getValue(zacContext),
           [5]);
+
+      expect(
+          TestZacGetValueList<String>(
+              ZacTransformers([
+                CustomTransformer(
+                  (transformValue, zacContext, payload) {
+                    return null;
+                  },
+                )
+              ]),
+              null,
+              ['hello']).getValueOrNull(zacContext),
+          null);
     });
   });
 
@@ -453,7 +493,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacInt, int>(
         converter: 'z:1:int',
-        value: 1,
+        jsonValue: 1,
+        expectValue: 1,
         create: ZacInt.new,
         fromJson: ZacInt.fromJson,
       );
@@ -494,7 +535,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacDouble, double>(
         converter: 'z:1:double',
-        value: 5.1,
+        jsonValue: 5.1,
+        expectValue: 5.1,
         create: ZacDouble.new,
         fromJson: ZacDouble.fromJson,
       );
@@ -523,7 +565,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacNum, num>(
         converter: 'z:1:num',
-        value: 5.1,
+        jsonValue: 5.1,
+        expectValue: 5.1,
         create: ZacNum.new,
         fromJson: ZacNum.fromJson,
       );
@@ -547,7 +590,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacString, String>(
         converter: 'z:1:String',
-        value: 'hello',
+        jsonValue: 'hello',
+        expectValue: 'hello',
         create: ZacString.new,
         fromJson: ZacString.fromJson,
       );
@@ -568,7 +612,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacBool, bool>(
         converter: 'z:1:bool',
-        value: false,
+        jsonValue: false,
+        expectValue: false,
         create: ZacBool.new,
         fromJson: ZacBool.fromJson,
       );
@@ -589,7 +634,8 @@ void main() {
     test('can be created', () {
       expectSimpleValue<ZacObject, Object>(
         converter: 'z:1:Object',
-        value: 'anything',
+        jsonValue: 'anything',
+        expectValue: 'anything',
         create: ZacObject.new,
         fromJson: ZacObject.fromJson,
       );
@@ -602,6 +648,28 @@ void main() {
       expectShared<ZacObject, Object>(
         converter: 'z:1:Object.consume',
         create: ZacObject.consume,
+      );
+    });
+  });
+
+  group('ZacFlutterWidget', () {
+    test('can be created', () {
+      expectSimpleValue<ZacFlutterWidget, FlutterWidget>(
+        converter: 'z:1:FlutterWidget',
+        jsonValue: <String, dynamic>{'converter': 'f:1:SizedBox'},
+        expectValue: FlutterSizedBox(),
+        create: ZacFlutterWidget.new,
+        fromJson: ZacFlutterWidget.fromJson,
+      );
+
+      expectTransformable<ZacFlutterWidget, FlutterWidget>(
+        converter: 'z:1:FlutterWidget.transformable',
+        create: ZacFlutterWidget.transformable,
+      );
+
+      expectShared<ZacFlutterWidget, FlutterWidget>(
+        converter: 'z:1:FlutterWidget.consume',
+        create: ZacFlutterWidget.consume,
       );
     });
   });
@@ -654,7 +722,7 @@ void main() {
       expect(
           ConverterHelper.convertToType<ZacDateTime>(
               {'converter': 'z:1:DateTime.consume', 'family': 'shared'}),
-          isA<SharedValueConsume<DateTime>>());
+          isA<ZacValueConsume<DateTime>>());
 
       expect(
           ZacDateTime.fromJson(now.toIso8601String()), ZacDateTime(value: now));

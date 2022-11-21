@@ -1,3 +1,4 @@
+import 'package:zac/src/base.dart';
 import 'package:zac/src/zac_converter.dart';
 
 typedef Convert = Object Function(Map<String, dynamic> data);

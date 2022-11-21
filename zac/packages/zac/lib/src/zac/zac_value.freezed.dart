@@ -161,7 +161,7 @@ abstract class _ZacIntTransformable extends ZacInt
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
-    with SharedValueConsume<int> {
+    with ZacValueConsume<int> {
   _$_ZacIntConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -225,7 +225,7 @@ class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
 }
 
 abstract class _ZacIntConsumeSharedValue extends ZacInt
-    implements SharedValueConsume<int> {
+    implements ZacValueConsume<int> {
   factory _ZacIntConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -391,7 +391,7 @@ abstract class _ZacDoubleTransformable extends ZacDouble
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
-    with SharedValueConsume<double> {
+    with ZacValueConsume<double> {
   _$_ZacDoubleConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -455,7 +455,7 @@ class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
 }
 
 abstract class _ZacDoubleConsumeSharedValue extends ZacDouble
-    implements SharedValueConsume<double> {
+    implements ZacValueConsume<double> {
   factory _ZacDoubleConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -620,7 +620,7 @@ abstract class _ZacNumTransformable extends ZacNum
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
-    with SharedValueConsume<num> {
+    with ZacValueConsume<num> {
   _$_ZacNumConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -684,7 +684,7 @@ class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
 }
 
 abstract class _ZacNumConsumeSharedValue extends ZacNum
-    implements SharedValueConsume<num> {
+    implements ZacValueConsume<num> {
   factory _ZacNumConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -850,7 +850,7 @@ abstract class _ZacStringTransformable extends ZacString
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
-    with SharedValueConsume<String> {
+    with ZacValueConsume<String> {
   _$_ZacStringConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -914,7 +914,7 @@ class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
 }
 
 abstract class _ZacStringConsumeSharedValue extends ZacString
-    implements SharedValueConsume<String> {
+    implements ZacValueConsume<String> {
   factory _ZacStringConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1079,7 +1079,7 @@ abstract class _ZacBoolTransformable extends ZacBool
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
-    with SharedValueConsume<bool> {
+    with ZacValueConsume<bool> {
   _$_ZacBoolConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1143,7 +1143,7 @@ class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
 }
 
 abstract class _ZacBoolConsumeSharedValue extends ZacBool
-    implements SharedValueConsume<bool> {
+    implements ZacValueConsume<bool> {
   factory _ZacBoolConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1310,7 +1310,7 @@ abstract class _ZacObjectTransformable extends ZacObject
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
-    with SharedValueConsume<Object> {
+    with ZacValueConsume<Object> {
   _$_ZacObjectConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1374,7 +1374,7 @@ class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
 }
 
 abstract class _ZacObjectConsumeSharedValue extends ZacObject
-    implements SharedValueConsume<Object> {
+    implements ZacValueConsume<Object> {
   factory _ZacObjectConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1385,6 +1385,252 @@ abstract class _ZacObjectConsumeSharedValue extends ZacObject
 
   factory _ZacObjectConsumeSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ZacObjectConsumeSharedValue.fromJson;
+
+  Object get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+}
+
+ZacFlutterWidget _$ZacFlutterWidgetFromJson(Map<String, dynamic> json) {
+  switch (json['converter']) {
+    case 'z:1:FlutterWidget':
+      return _ZacFlutterWidget.fromJson(json);
+    case 'z:1:FlutterWidget.transformable':
+      return _ZacFlutterWidgetTransformable.fromJson(json);
+    case 'z:1:FlutterWidget.consume':
+      return _ZacFlutterWidgetConsumeSharedValue.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'converter', 'ZacFlutterWidget',
+          'Invalid union type "${json['converter']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacFlutterWidget {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacFlutterWidget value) $default, {
+    required TResult Function(_ZacFlutterWidgetTransformable value)
+        transformable,
+    required TResult Function(_ZacFlutterWidgetConsumeSharedValue value)
+        consume,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacFlutterWidget extends _ZacFlutterWidget
+    with ZacSimpleValue<FlutterWidget> {
+  _$_ZacFlutterWidget({required this.value, final String? $type})
+      : $type = $type ?? 'z:1:FlutterWidget',
+        super._();
+
+  factory _$_ZacFlutterWidget.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacFlutterWidgetFromJson(json);
+
+  @override
+  final FlutterWidget value;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacFlutterWidget(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacFlutterWidget &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacFlutterWidget value) $default, {
+    required TResult Function(_ZacFlutterWidgetTransformable value)
+        transformable,
+    required TResult Function(_ZacFlutterWidgetConsumeSharedValue value)
+        consume,
+  }) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacFlutterWidget extends ZacFlutterWidget
+    implements ZacSimpleValue<FlutterWidget> {
+  factory _ZacFlutterWidget({required final FlutterWidget value}) =
+      _$_ZacFlutterWidget;
+  _ZacFlutterWidget._() : super._();
+
+  factory _ZacFlutterWidget.fromJson(Map<String, dynamic> json) =
+      _$_ZacFlutterWidget.fromJson;
+
+  FlutterWidget get value;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacFlutterWidgetTransformable extends _ZacFlutterWidgetTransformable
+    with ZacValueTranformable<FlutterWidget> {
+  _$_ZacFlutterWidgetTransformable(
+      {required this.value, required this.transformer, final String? $type})
+      : $type = $type ?? 'z:1:FlutterWidget.transformable',
+        super._();
+
+  factory _$_ZacFlutterWidgetTransformable.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacFlutterWidgetTransformableFromJson(json);
+
+  @override
+  final Object value;
+  @override
+  final ZacTransformers transformer;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacFlutterWidget.transformable(value: $value, transformer: $transformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacFlutterWidgetTransformable &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(value), transformer);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacFlutterWidget value) $default, {
+    required TResult Function(_ZacFlutterWidgetTransformable value)
+        transformable,
+    required TResult Function(_ZacFlutterWidgetConsumeSharedValue value)
+        consume,
+  }) {
+    return transformable(this);
+  }
+}
+
+abstract class _ZacFlutterWidgetTransformable extends ZacFlutterWidget
+    implements ZacValueTranformable<FlutterWidget> {
+  factory _ZacFlutterWidgetTransformable(
+          {required final Object value,
+          required final ZacTransformers transformer}) =
+      _$_ZacFlutterWidgetTransformable;
+  _ZacFlutterWidgetTransformable._() : super._();
+
+  factory _ZacFlutterWidgetTransformable.fromJson(Map<String, dynamic> json) =
+      _$_ZacFlutterWidgetTransformable.fromJson;
+
+  Object get value;
+  ZacTransformers get transformer;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacFlutterWidgetConsumeSharedValue
+    extends _ZacFlutterWidgetConsumeSharedValue
+    with ZacValueConsume<FlutterWidget> {
+  _$_ZacFlutterWidgetConsumeSharedValue(
+      {required this.family,
+      this.transformer,
+      this.select,
+      this.forceConsume,
+      final String? $type})
+      : $type = $type ?? 'z:1:FlutterWidget.consume',
+        super._();
+
+  factory _$_ZacFlutterWidgetConsumeSharedValue.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacFlutterWidgetConsumeSharedValueFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  final ZacTransformers? transformer;
+  @override
+  final ZacTransformers? select;
+  @override
+  final SharedValueConsumeType? forceConsume;
+
+  @JsonKey(name: 'converter')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacFlutterWidget.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacFlutterWidgetConsumeSharedValue &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
+            (identical(other.select, select) || other.select == select) &&
+            (identical(other.forceConsume, forceConsume) ||
+                other.forceConsume == forceConsume));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      transformer,
+      select,
+      forceConsume);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacFlutterWidget value) $default, {
+    required TResult Function(_ZacFlutterWidgetTransformable value)
+        transformable,
+    required TResult Function(_ZacFlutterWidgetConsumeSharedValue value)
+        consume,
+  }) {
+    return consume(this);
+  }
+}
+
+abstract class _ZacFlutterWidgetConsumeSharedValue extends ZacFlutterWidget
+    implements ZacValueConsume<FlutterWidget> {
+  factory _ZacFlutterWidgetConsumeSharedValue(
+          {required final Object family,
+          final ZacTransformers? transformer,
+          final ZacTransformers? select,
+          final SharedValueConsumeType? forceConsume}) =
+      _$_ZacFlutterWidgetConsumeSharedValue;
+  _ZacFlutterWidgetConsumeSharedValue._() : super._();
+
+  factory _ZacFlutterWidgetConsumeSharedValue.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacFlutterWidgetConsumeSharedValue.fromJson;
 
   Object get family;
   ZacTransformers? get transformer;
@@ -1542,7 +1788,7 @@ abstract class _ZacDateTimeTransformable extends ZacDateTime
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
-    with SharedValueConsume<DateTime> {
+    with ZacValueConsume<DateTime> {
   _$_ZacDateTimeSharedValue(
       {required this.family,
       this.transformer,
@@ -1606,7 +1852,7 @@ class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
 }
 
 abstract class _ZacDateTimeSharedValue extends ZacDateTime
-    implements SharedValueConsume<DateTime> {
+    implements ZacValueConsume<DateTime> {
   factory _ZacDateTimeSharedValue(
       {required final Object family,
       final ZacTransformers? transformer,
@@ -1812,7 +2058,7 @@ abstract class _ZacListOfFlutterWidgetTransformable
 @JsonSerializable(createToJson: false)
 class _$_ZacListOfFlutterWidgetSharedValue
     extends _ZacListOfFlutterWidgetSharedValue
-    with SharedValueConsumeList<FlutterWidget> {
+    with ZacValueConsumeList<FlutterWidget> {
   _$_ZacListOfFlutterWidgetSharedValue(
       {required this.family,
       this.transformer,
@@ -1884,7 +2130,7 @@ class _$_ZacListOfFlutterWidgetSharedValue
 }
 
 abstract class _ZacListOfFlutterWidgetSharedValue extends ZacListOfFlutterWidget
-    implements SharedValueConsumeList<FlutterWidget> {
+    implements ZacValueConsumeList<FlutterWidget> {
   factory _ZacListOfFlutterWidgetSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,

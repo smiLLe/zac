@@ -257,20 +257,6 @@ void main() {
             ]),
           ),
           '5');
-
-      expect(
-          () => SharedValue.getTyped<String>(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.read(),
-                family: 'shared',
-                select: null,
-                transformer: null,
-              ),
-          throwsA(isA<StateError>().having(
-              (p0) => p0.message,
-              'error message',
-              contains(
-                  'It was not possible to get a SharedValue of type String from family "shared".'))));
     });
 
     testWidgets('request a typed value or throw #2', (tester) async {
@@ -306,20 +292,6 @@ void main() {
             transformer: null,
           ),
           completer);
-
-      expect(
-          () => SharedValue.getTyped<Completer<String>>(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.read(),
-                family: 'shared',
-                select: null,
-                transformer: null,
-              ),
-          throwsA(isA<StateError>().having(
-              (p0) => p0.message,
-              'error message',
-              contains(
-                  'It was not possible to get a SharedValue of type Completer<String> from family "shared".'))));
     });
 
     group('update()', () {

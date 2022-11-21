@@ -19,12 +19,28 @@ mixin ZacGetValueList<T> {
     } else if (this is ZacValueTranformableList<T>) {
       return (this as ZacValueTranformableList<T>)
           .getTransformedValue(zacContext);
-    } else if (this is SharedValueConsumeList<T>) {
-      return (this as SharedValueConsumeList<T>).getSharedValue(zacContext);
+    } else if (this is ZacValueConsumeList<T>) {
+      return (this as ZacValueConsumeList<T>).getSharedValue(zacContext);
     }
     throw StateError('''
 ${ZacGetValueList<T>} could not return a list because $this did not implement one
-of the following classes: ${ZacGetValueList<T>}, ${ZacValueTranformableList<T>}, ${SharedValueConsumeList<T>}''');
+of the following classes: ${ZacGetValueList<T>}, ${ZacValueTranformableList<T>}, ${ZacValueConsumeList<T>}''');
+  }
+
+  List<T>? getValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    if (this is ZacSimpleValueList<T>) {
+      return (this as ZacSimpleValueList<T>).items;
+    } else if (this is ZacValueTranformableList<T>) {
+      return (this as ZacValueTranformableList<T>)
+          .getTransformedValueOrNull(zacContext);
+    } else if (this is ZacValueConsumeList<T>) {
+      return (this as ZacValueConsumeList<T>).getSharedValueOrNull(zacContext);
+    }
+    throw StateError('''
+${ZacGetValueList<T>} could not return a list because $this did not implement one
+of the following classes: ${ZacGetValueList<T>}, ${ZacValueTranformableList<T>}, ${ZacValueConsumeList<T>}''');
   }
 }
 
@@ -38,34 +54,55 @@ mixin ZacValueTranformableList<T> {
   ZacTransformers? get itemTransformer;
 
   List<T> getTransformedValue(ZacContext zacContext) {
-    Object? transformed;
-    if (null != itemTransformer) {
-      transformed = items
-          .map((dynamic e) => itemTransformer!.transform(
-              ZacTransformValue(e), zacContext, const ZacActionPayload()))
-          .toList();
-    }
+    return TransformObjectHelper.list<T>(
+      fromValue: items,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+      zacContext: zacContext,
+    );
+  }
 
-    if (transformed is List<T>) return transformed;
+  List<T>? getTransformedValueOrNull(ZacContext zacContext) {
+    return TransformObjectHelper.listOrNull<T>(
+      fromValue: items,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+      zacContext: zacContext,
+    );
+  }
+}
 
-    transformed = transformer?.transform(ZacTransformValue(transformed),
-            zacContext, const ZacActionPayload()) ??
-        transformed;
+mixin ZacValueConsumeList<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get itemTransformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
 
-    if (transformed is List<T>) return transformed;
+  List<T> getSharedValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    return SharedValue.getTypedList<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+    );
+  }
 
-    if (transformed is! List) {
-      final transformerErr =
-          transformer?.transformers.map((e) => e.runtimeType) ?? [];
-
-      throw StateError('''
-It was not possible to get a list of type $T in $this.
-The value is of type "${transformed.runtimeType}".
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-The value: $transformed''');
-    }
-
-    return List<T>.from(transformed);
+  List<T>? getSharedValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    return SharedValue.getTypedListOrNull<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+    );
   }
 }
 
@@ -77,13 +114,30 @@ mixin ZacGetValue<T> {
       return (this as ZacSimpleValue<T>).value;
     } else if (this is ZacValueTranformable<T>) {
       return (this as ZacValueTranformable<T>).getTransformedValue(zacContext);
-    } else if (this is SharedValueConsume<T>) {
-      return (this as SharedValueConsume<T>)
+    } else if (this is ZacValueConsume<T>) {
+      return (this as ZacValueConsume<T>)
           .getSharedValue(zacContext, prefered: prefered);
     }
     throw StateError('''
 ${ZacGetValue<T>} could not return a value because $this did not implement one
-of the following classes: ${ZacSimpleValue<T>}, ${ZacValueTranformable<T>}, ${SharedValueConsume<T>}''');
+of the following classes: ${ZacSimpleValue<T>}, ${ZacValueTranformable<T>}, ${ZacValueConsume<T>}''');
+  }
+
+  T? getValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    if (this is ZacSimpleValue<T>) {
+      return (this as ZacSimpleValue<T>).value;
+    } else if (this is ZacValueTranformable<T>) {
+      return (this as ZacValueTranformable<T>)
+          .getTransformedValueOrNull(zacContext);
+    } else if (this is ZacValueConsume<T>) {
+      return (this as ZacValueConsume<T>)
+          .getSharedValueOrNull(zacContext, prefered: prefered);
+    }
+    throw StateError('''
+${ZacGetValue<T>} could not return a value because $this did not implement one
+of the following classes: ${ZacSimpleValue<T>}, ${ZacValueTranformable<T>}, ${ZacValueConsume<T>}''');
   }
 }
 
@@ -96,19 +150,53 @@ mixin ZacValueTranformable<T> {
   ZacTransformers get transformer;
 
   T getTransformedValue(ZacContext zacContext) {
-    final transformedValue =
-        transformer.transform(ZacTransformValue(value), zacContext, null);
-    if (transformedValue is! T) {
-      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+    return TransformObjectHelper.simple<T>(
+      fromValue: value,
+      transformer: transformer,
+      zacContext: zacContext,
+    );
+  }
 
-      throw StateError('''
-It was not possible to get a value of type $T in $this.
-The value is of type "${transformedValue.runtimeType}".
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-The value: $transformedValue''');
-    }
+  T? getTransformedValueOrNull(ZacContext zacContext) {
+    return TransformObjectHelper.simpleOrNull<T>(
+      fromValue: value,
+      transformer: transformer,
+      zacContext: zacContext,
+    );
+  }
+}
 
-    return transformedValue;
+mixin ZacValueConsume<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+  T getSharedValue(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTyped<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    return value;
+  }
+
+  T? getSharedValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType prefered =
+          const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTyped<T?>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? prefered),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    return value;
   }
 }
 
@@ -157,7 +245,7 @@ class ZacInt with _$ZacInt, ZacGetValue<int> {
   }) = _ZacIntTransformable;
 
   @FreezedUnionValue('z:1:int.consume')
-  @With<SharedValueConsume<int>>()
+  @With<ZacValueConsume<int>>()
   factory ZacInt.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -203,7 +291,7 @@ class ZacDouble with _$ZacDouble, ZacGetValue<double> {
   }) = _ZacDoubleTransformable;
 
   @FreezedUnionValue('z:1:double.consume')
-  @With<SharedValueConsume<double>>()
+  @With<ZacValueConsume<double>>()
   factory ZacDouble.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -245,7 +333,7 @@ class ZacNum with _$ZacNum, ZacGetValue<num> {
   }) = _ZacNumTransformable;
 
   @FreezedUnionValue('z:1:num.consume')
-  @With<SharedValueConsume<num>>()
+  @With<ZacValueConsume<num>>()
   factory ZacNum.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -287,7 +375,7 @@ class ZacString with _$ZacString, ZacGetValue<String> {
   }) = _ZacStringTransformable;
 
   @FreezedUnionValue('z:1:String.consume')
-  @With<SharedValueConsume<String>>()
+  @With<ZacValueConsume<String>>()
   factory ZacString.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -329,7 +417,7 @@ class ZacBool with _$ZacBool, ZacGetValue<bool> {
   }) = _ZacBoolTransformable;
 
   @FreezedUnionValue('z:1:bool.consume')
-  @With<SharedValueConsume<bool>>()
+  @With<ZacValueConsume<bool>>()
   factory ZacBool.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -371,13 +459,60 @@ class ZacObject with _$ZacObject, ZacGetValue<Object> {
   }) = _ZacObjectTransformable;
 
   @FreezedUnionValue('z:1:Object.consume')
-  @With<SharedValueConsume<Object>>()
+  @With<ZacValueConsume<Object>>()
   factory ZacObject.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
     ZacTransformers? select,
     SharedValueConsumeType? forceConsume,
   }) = _ZacObjectConsumeSharedValue;
+}
+
+@freezedZacBuilder
+@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacFlutterWidget with _$ZacFlutterWidget, ZacGetValue<FlutterWidget> {
+  const ZacFlutterWidget._();
+
+  static const String unionValue = 'z:1:FlutterWidget';
+  static const String unionValueTransformable =
+      'z:1:FlutterWidget.transformable';
+  static const String unionValueConsume = 'z:1:FlutterWidget.consume';
+
+  factory ZacFlutterWidget.fromJson(Object data) {
+    data as Map<String, dynamic>;
+    final json = <String, dynamic>{};
+    final converter = (data['converter'] as String);
+    if (converter != ZacFlutterWidget.unionValue &&
+        converter != ZacFlutterWidget.unionValueTransformable &&
+        converter != ZacFlutterWidget.unionValueConsume) {
+      json['converter'] = ZacFlutterWidget.unionValue;
+      json['value'] = data;
+    } else {
+      json.addAll(data);
+    }
+
+    return _$ZacFlutterWidgetFromJson(json);
+  }
+
+  @FreezedUnionValue(ZacFlutterWidget.unionValue)
+  @With<ZacSimpleValue<FlutterWidget>>()
+  factory ZacFlutterWidget({required FlutterWidget value}) = _ZacFlutterWidget;
+
+  @FreezedUnionValue(ZacFlutterWidget.unionValueTransformable)
+  @With<ZacValueTranformable<FlutterWidget>>()
+  factory ZacFlutterWidget.transformable({
+    required Object value,
+    required ZacTransformers transformer,
+  }) = _ZacFlutterWidgetTransformable;
+
+  @FreezedUnionValue(ZacFlutterWidget.unionValueConsume)
+  @With<ZacValueConsume<FlutterWidget>>()
+  factory ZacFlutterWidget.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacFlutterWidgetConsumeSharedValue;
 }
 
 @freezedZacBuilder
@@ -413,7 +548,7 @@ class ZacDateTime with _$ZacDateTime, ZacGetValue<DateTime> {
   }) = _ZacDateTimeTransformable;
 
   @FreezedUnionValue('z:1:DateTime.consume')
-  @With<SharedValueConsume<DateTime>>()
+  @With<ZacValueConsume<DateTime>>()
   factory ZacDateTime.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -458,7 +593,7 @@ class ZacListOfFlutterWidget
   }) = _ZacListOfFlutterWidgetTransformable;
 
   @FreezedUnionValue('z:1:List<FlutterWidget>.consume')
-  @With<SharedValueConsumeList<FlutterWidget>>()
+  @With<ZacValueConsumeList<FlutterWidget>>()
   factory ZacListOfFlutterWidget.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
