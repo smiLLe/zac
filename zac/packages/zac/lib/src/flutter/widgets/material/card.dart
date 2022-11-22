@@ -27,11 +27,11 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
     FlutterColor? shadowColor,
     ZacDouble? elevation,
     FlutterShapeBorder? shape,
-    ZacValue<bool>? borderOnForeground,
+    ZacBool? borderOnForeground,
     FlutterEdgeInsetsGeometry? margin,
     FlutterClip? clipBehavior,
     FlutterWidget? child,
-    ZacValue<bool>? semanticContainer,
+    ZacBool? semanticContainer,
   }) = _FlutterCard;
 
   @override
@@ -42,10 +42,11 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
       shadowColor: shadowColor?.build(zacContext),
       elevation: elevation?.getValueOrNull(zacContext),
       shape: shape?.build(zacContext),
-      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      borderOnForeground:
+          borderOnForeground?.getValueOrNull(zacContext) ?? true,
       margin: margin?.build(zacContext),
       clipBehavior: clipBehavior?.build(zacContext),
-      semanticContainer: semanticContainer?.getValue(zacContext) ?? true,
+      semanticContainer: semanticContainer?.getValueOrNull(zacContext) ?? true,
       child: child?.buildWidget(zacContext),
     );
   }

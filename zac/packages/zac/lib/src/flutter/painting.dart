@@ -119,7 +119,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacDouble? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
-    ZacValue<bool>? forceStrutHeight,
+    ZacBool? forceStrutHeight,
     ZacString? debugLabel,
     ZacString? package,
   }) = _FlutterStrutStyle;
@@ -135,7 +135,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacDouble? leading,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
-    ZacValue<bool>? forceStrutHeight,
+    ZacBool? forceStrutHeight,
     ZacString? debugLabel,
     ZacString? package,
   }) = _FlutterStrutStyleFromTextStyle;
@@ -151,7 +151,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
         leading: leading?.getValueOrNull(zacContext),
         fontWeight: fontWeight?.build(zacContext),
         fontStyle: fontStyle?.build(zacContext),
-        forceStrutHeight: forceStrutHeight?.getValue(zacContext),
+        forceStrutHeight: forceStrutHeight?.getValueOrNull(zacContext),
         debugLabel: debugLabel?.getValueOrNull(zacContext),
         package: package?.getValueOrNull(zacContext),
       ),
@@ -165,7 +165,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
         leading: leading?.getValueOrNull(zacContext),
         fontWeight: fontWeight?.build(zacContext),
         fontStyle: fontStyle?.build(zacContext),
-        forceStrutHeight: forceStrutHeight?.getValue(zacContext),
+        forceStrutHeight: forceStrutHeight?.getValueOrNull(zacContext),
         debugLabel: debugLabel?.getValueOrNull(zacContext),
         package: package?.getValueOrNull(zacContext),
       ),
@@ -277,7 +277,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
 
   @FreezedUnionValue('f:1:TextStyle')
   factory FlutterTextStyle({
-    ZacValue<bool>? inherit,
+    ZacBool? inherit,
     FlutterColor? color,
     FlutterColor? backgroundColor,
     ZacDouble? fontSize,
@@ -306,7 +306,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
 
   TextStyle build(ZacContext zacContext) {
     return TextStyle(
-      inherit: inherit?.getValue(zacContext) ?? true,
+      inherit: inherit?.getValueOrNull(zacContext) ?? true,
       color: color?.build(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
       fontSize: fontSize?.getValueOrNull(zacContext),

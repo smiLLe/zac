@@ -29,8 +29,8 @@ mixin _$FlutterSelectableText {
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   ZacDouble? get textScaleFactor => throw _privateConstructorUsedError;
-  ZacValue<bool>? get showCursor => throw _privateConstructorUsedError;
-  ZacValue<bool>? get autofocus =>
+  ZacBool? get showCursor => throw _privateConstructorUsedError;
+  ZacBool? get autofocus =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
   ZacInt? get minLines => throw _privateConstructorUsedError;
   ZacInt? get maxLines => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ mixin _$FlutterSelectableText {
       throw _privateConstructorUsedError; // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool>? get enableInteractiveSelection =>
+  ZacBool? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
@@ -101,9 +101,9 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final ZacDouble? textScaleFactor;
   @override
-  final ZacValue<bool>? showCursor;
+  final ZacBool? showCursor;
   @override
-  final ZacValue<bool>? autofocus;
+  final ZacBool? autofocus;
 // ToolbarOptions? toolbarOptions,
   @override
   final ZacInt? minLines;
@@ -121,7 +121,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacValue<bool>? enableInteractiveSelection;
+  final ZacBool? enableInteractiveSelection;
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
@@ -223,15 +223,15 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final FlutterTextAlign? textAlign,
       final FlutterTextDirection? textDirection,
       final ZacDouble? textScaleFactor,
-      final ZacValue<bool>? showCursor,
-      final ZacValue<bool>? autofocus,
+      final ZacBool? showCursor,
+      final ZacBool? autofocus,
       final ZacInt? minLines,
       final ZacInt? maxLines,
       final ZacDouble? cursorWidth,
       final ZacDouble? cursorHeight,
       final FlutterRadius? cursorRadius,
       final FlutterColor? cursorColor,
-      final ZacValue<bool>? enableInteractiveSelection,
+      final ZacBool? enableInteractiveSelection,
       final ZacString? semanticsLabel,
       final FlutterTextHeightBehavior? textHeightBehavior,
       final FlutterTextWidthBasis? textWidthBasis}) = _$_FlutterSelectableText;
@@ -255,9 +255,9 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   ZacDouble? get textScaleFactor;
   @override
-  ZacValue<bool>? get showCursor;
+  ZacBool? get showCursor;
   @override
-  ZacValue<bool>? get autofocus;
+  ZacBool? get autofocus;
   @override // ToolbarOptions? toolbarOptions,
   ZacInt? get minLines;
   @override
@@ -273,7 +273,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool>? get enableInteractiveSelection;
+  ZacBool? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,

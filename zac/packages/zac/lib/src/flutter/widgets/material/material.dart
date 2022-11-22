@@ -31,7 +31,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
     FlutterTextStyle? textStyle,
     FlutterBorderRadiusGeometry? borderRadius,
     FlutterShapeBorder? shape,
-    ZacValue<bool>? borderOnForeground,
+    ZacBool? borderOnForeground,
     FlutterClip? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
@@ -41,7 +41,8 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
     return Material(
       key: key?.buildKey(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      borderOnForeground:
+          borderOnForeground?.getValueOrNull(zacContext) ?? true,
       borderRadius: borderRadius?.build(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
       color: color?.build(zacContext),

@@ -35,11 +35,9 @@ FlutterSliverChildDelegate _$FlutterSliverChildDelegateFromJson(
 mixin _$FlutterSliverChildDelegate {
   ZacValueList<FlutterWidget> get children =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addAutomaticKeepAlives =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addRepaintBoundaries =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addSemanticIndexes =>
+  ZacBool? get addAutomaticKeepAlives => throw _privateConstructorUsedError;
+  ZacBool? get addRepaintBoundaries => throw _privateConstructorUsedError;
+  ZacBool? get addSemanticIndexes =>
       throw _privateConstructorUsedError; // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   ZacInt? get semanticIndexOffset => throw _privateConstructorUsedError;
 
@@ -72,11 +70,11 @@ class _$_FlutterSliverChildListDelegate
   @override
   final ZacValueList<FlutterWidget> children;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacBool? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacBool? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacBool? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
   final ZacInt? semanticIndexOffset;
@@ -126,9 +124,9 @@ abstract class _FlutterSliverChildListDelegate
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegate(
       final ZacValueList<FlutterWidget> children,
-      {final ZacValue<bool>? addAutomaticKeepAlives,
-      final ZacValue<bool>? addRepaintBoundaries,
-      final ZacValue<bool>? addSemanticIndexes,
+      {final ZacBool? addAutomaticKeepAlives,
+      final ZacBool? addRepaintBoundaries,
+      final ZacBool? addSemanticIndexes,
       final ZacInt? semanticIndexOffset}) = _$_FlutterSliverChildListDelegate;
   _FlutterSliverChildListDelegate._() : super._();
 
@@ -138,11 +136,11 @@ abstract class _FlutterSliverChildListDelegate
   @override
   ZacValueList<FlutterWidget> get children;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacBool? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacBool? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacBool? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   ZacInt? get semanticIndexOffset;
 }
@@ -167,11 +165,11 @@ class _$_FlutterSliverChildListDelegateFixed
   @override
   final ZacValueList<FlutterWidget> children;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacBool? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacBool? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacBool? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
   final ZacInt? semanticIndexOffset;
@@ -221,9 +219,9 @@ abstract class _FlutterSliverChildListDelegateFixed
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegateFixed(
           final ZacValueList<FlutterWidget> children,
-          {final ZacValue<bool>? addAutomaticKeepAlives,
-          final ZacValue<bool>? addRepaintBoundaries,
-          final ZacValue<bool>? addSemanticIndexes,
+          {final ZacBool? addAutomaticKeepAlives,
+          final ZacBool? addRepaintBoundaries,
+          final ZacBool? addSemanticIndexes,
           final ZacInt? semanticIndexOffset}) =
       _$_FlutterSliverChildListDelegateFixed;
   _FlutterSliverChildListDelegateFixed._() : super._();
@@ -235,11 +233,11 @@ abstract class _FlutterSliverChildListDelegateFixed
   @override
   ZacValueList<FlutterWidget> get children;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacBool? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacBool? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacBool? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   ZacInt? get semanticIndexOffset;
 }

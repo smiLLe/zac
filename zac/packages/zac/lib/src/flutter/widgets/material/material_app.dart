@@ -47,17 +47,17 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
     // LocaleListResolutionCallback? localeListResolutionCallback,
     // LocaleResolutionCallback? localeResolutionCallback,
     // Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
-    ZacValue<bool>? debugShowMaterialGrid,
-    ZacValue<bool>? showPerformanceOverlay,
-    ZacValue<bool>? checkerboardRasterCacheImages,
-    ZacValue<bool>? checkerboardOffscreenLayers,
-    ZacValue<bool>? showSemanticsDebugger,
-    ZacValue<bool>? debugShowCheckedModeBanner,
+    ZacBool? debugShowMaterialGrid,
+    ZacBool? showPerformanceOverlay,
+    ZacBool? checkerboardRasterCacheImages,
+    ZacBool? checkerboardOffscreenLayers,
+    ZacBool? showSemanticsDebugger,
+    ZacBool? debugShowCheckedModeBanner,
     // Map<ShortcutActivator, Intent>? shortcuts,
     // Map<Type, Action<Intent>>? actions,
     ZacString? restorationScopeId,
     // ScrollBehavior? scrollBehavior,
-    ZacValue<bool>? useInheritedMediaQuery,
+    ZacBool? useInheritedMediaQuery,
   }) = _FlutterMaterialApp;
 
   @override
@@ -76,20 +76,20 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
       color: color?.build(zacContext),
       locale: locale?.build(zacContext),
       debugShowMaterialGrid:
-          debugShowMaterialGrid?.getValue(zacContext) ?? false,
+          debugShowMaterialGrid?.getValueOrNull(zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.getValue(zacContext) ?? false,
+          showPerformanceOverlay?.getValueOrNull(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
+          checkerboardRasterCacheImages?.getValueOrNull(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
+          checkerboardOffscreenLayers?.getValueOrNull(zacContext) ?? false,
       showSemanticsDebugger:
-          showSemanticsDebugger?.getValue(zacContext) ?? false,
+          showSemanticsDebugger?.getValueOrNull(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
+          debugShowCheckedModeBanner?.getValueOrNull(zacContext) ?? true,
       restorationScopeId: restorationScopeId?.getValueOrNull(zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValue(zacContext) ?? false,
+          useInheritedMediaQuery?.getValueOrNull(zacContext) ?? false,
     );
   }
 }

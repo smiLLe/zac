@@ -36,18 +36,16 @@ mixin _$FlutterScaffold {
   FlutterWidget? get bottomNavigationBar => throw _privateConstructorUsedError;
   FlutterWidget? get bottomSheet => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<bool>? get resizeToAvoidBottomInset =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary =>
+  ZacBool? get resizeToAvoidBottomInset => throw _privateConstructorUsedError;
+  ZacBool? get primary =>
       throw _privateConstructorUsedError; // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool>? get extendBody => throw _privateConstructorUsedError;
-  ZacValue<bool>? get extendBodyBehindAppBar =>
-      throw _privateConstructorUsedError;
+  ZacBool? get extendBody => throw _privateConstructorUsedError;
+  ZacBool? get extendBodyBehindAppBar => throw _privateConstructorUsedError;
   FlutterColor? get drawerScrimColor => throw _privateConstructorUsedError;
   ZacDouble? get drawerEdgeDragWidth => throw _privateConstructorUsedError;
-  ZacValue<bool>? get drawerEnableOpenDragGesture =>
+  ZacBool? get drawerEnableOpenDragGesture =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get endDrawerEnableOpenDragGesture =>
+  ZacBool? get endDrawerEnableOpenDragGesture =>
       throw _privateConstructorUsedError;
   ZacString? get restorationId => throw _privateConstructorUsedError;
 
@@ -112,22 +110,22 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacValue<bool>? resizeToAvoidBottomInset;
+  final ZacBool? resizeToAvoidBottomInset;
   @override
-  final ZacValue<bool>? primary;
+  final ZacBool? primary;
 // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacValue<bool>? extendBody;
+  final ZacBool? extendBody;
   @override
-  final ZacValue<bool>? extendBodyBehindAppBar;
+  final ZacBool? extendBodyBehindAppBar;
   @override
   final FlutterColor? drawerScrimColor;
   @override
   final ZacDouble? drawerEdgeDragWidth;
   @override
-  final ZacValue<bool>? drawerEnableOpenDragGesture;
+  final ZacBool? drawerEnableOpenDragGesture;
   @override
-  final ZacValue<bool>? endDrawerEnableOpenDragGesture;
+  final ZacBool? endDrawerEnableOpenDragGesture;
   @override
   final ZacString? restorationId;
 
@@ -228,14 +226,14 @@ abstract class _FlutterScaffold extends FlutterScaffold {
       final FlutterWidget? bottomNavigationBar,
       final FlutterWidget? bottomSheet,
       final FlutterColor? backgroundColor,
-      final ZacValue<bool>? resizeToAvoidBottomInset,
-      final ZacValue<bool>? primary,
-      final ZacValue<bool>? extendBody,
-      final ZacValue<bool>? extendBodyBehindAppBar,
+      final ZacBool? resizeToAvoidBottomInset,
+      final ZacBool? primary,
+      final ZacBool? extendBody,
+      final ZacBool? extendBodyBehindAppBar,
       final FlutterColor? drawerScrimColor,
       final ZacDouble? drawerEdgeDragWidth,
-      final ZacValue<bool>? drawerEnableOpenDragGesture,
-      final ZacValue<bool>? endDrawerEnableOpenDragGesture,
+      final ZacBool? drawerEnableOpenDragGesture,
+      final ZacBool? endDrawerEnableOpenDragGesture,
       final ZacString? restorationId}) = _$_FlutterScaffold;
   _FlutterScaffold._() : super._();
 
@@ -264,21 +262,21 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   @override
   FlutterColor? get backgroundColor;
   @override
-  ZacValue<bool>? get resizeToAvoidBottomInset;
+  ZacBool? get resizeToAvoidBottomInset;
   @override
-  ZacValue<bool>? get primary;
+  ZacBool? get primary;
   @override // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool>? get extendBody;
+  ZacBool? get extendBody;
   @override
-  ZacValue<bool>? get extendBodyBehindAppBar;
+  ZacBool? get extendBodyBehindAppBar;
   @override
   FlutterColor? get drawerScrimColor;
   @override
   ZacDouble? get drawerEdgeDragWidth;
   @override
-  ZacValue<bool>? get drawerEnableOpenDragGesture;
+  ZacBool? get drawerEnableOpenDragGesture;
   @override
-  ZacValue<bool>? get endDrawerEnableOpenDragGesture;
+  ZacBool? get endDrawerEnableOpenDragGesture;
   @override
   ZacString? get restorationId;
 }
@@ -537,7 +535,7 @@ class _$_FlutterScaffoldActionsShowBottomSheet
   @override
   final FlutterBoxConstraints? constraints;
   @override
-  final ZacValue<bool>? enableDrag;
+  final ZacBool? enableDrag;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -590,13 +588,12 @@ class _$_FlutterScaffoldActionsShowBottomSheet
 abstract class _FlutterScaffoldActionsShowBottomSheet
     extends FlutterScaffoldActions {
   factory _FlutterScaffoldActionsShowBottomSheet(final FlutterWidget child,
-          {final FlutterColor? backgroundColor,
-          final ZacDouble? elevation,
-          final FlutterShapeBorder? shape,
-          final FlutterClip? clipBehavior,
-          final FlutterBoxConstraints? constraints,
-          final ZacValue<bool>? enableDrag}) =
-      _$_FlutterScaffoldActionsShowBottomSheet;
+      {final FlutterColor? backgroundColor,
+      final ZacDouble? elevation,
+      final FlutterShapeBorder? shape,
+      final FlutterClip? clipBehavior,
+      final FlutterBoxConstraints? constraints,
+      final ZacBool? enableDrag}) = _$_FlutterScaffoldActionsShowBottomSheet;
   _FlutterScaffoldActionsShowBottomSheet._() : super._();
 
   factory _FlutterScaffoldActionsShowBottomSheet.fromJson(
@@ -609,7 +606,7 @@ abstract class _FlutterScaffoldActionsShowBottomSheet
   FlutterShapeBorder? get shape;
   FlutterClip? get clipBehavior;
   FlutterBoxConstraints? get constraints;
-  ZacValue<bool>? get enableDrag;
+  ZacBool? get enableDrag;
 }
 
 FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
@@ -1475,7 +1472,7 @@ mixin _$FlutterMaterialBanner {
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get leadingPadding =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get forceActionsBelow =>
+  ZacBool? get forceActionsBelow =>
       throw _privateConstructorUsedError; // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   ZacActions? get onVisible => throw _privateConstructorUsedError;
@@ -1526,7 +1523,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
   @override
   final FlutterEdgeInsetsGeometry? leadingPadding;
   @override
-  final ZacValue<bool>? forceActionsBelow;
+  final ZacBool? forceActionsBelow;
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   @override
@@ -1597,7 +1594,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
       final FlutterColor? backgroundColor,
       final FlutterEdgeInsetsGeometry? padding,
       final FlutterEdgeInsetsGeometry? leadingPadding,
-      final ZacValue<bool>? forceActionsBelow,
+      final ZacBool? forceActionsBelow,
       final ZacActions? onVisible}) = _$_FlutterMaterialBanner;
   _FlutterMaterialBanner._() : super._();
 
@@ -1623,7 +1620,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   @override
   FlutterEdgeInsetsGeometry? get leadingPadding;
   @override
-  ZacValue<bool>? get forceActionsBelow;
+  ZacBool? get forceActionsBelow;
   @override // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   ZacActions? get onVisible;

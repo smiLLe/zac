@@ -231,7 +231,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacValue<bool>? scrollable;
+  final ZacBool? scrollable;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -350,7 +350,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
       final FlutterAlignmentGeometry? alignment,
-      final ZacValue<bool>? scrollable}) = _$_FlutterDialogsAlertDialog;
+      final ZacBool? scrollable}) = _$_FlutterDialogsAlertDialog;
   _FlutterDialogsAlertDialog._() : super._();
 
   factory _FlutterDialogsAlertDialog.fromJson(Map<String, dynamic> json) =
@@ -377,7 +377,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterClip? get clipBehavior;
   FlutterShapeBorder? get shape;
   FlutterAlignmentGeometry? get alignment;
-  ZacValue<bool>? get scrollable;
+  ZacBool? get scrollable;
 }
 
 /// @nodoc
@@ -621,11 +621,11 @@ FlutterDialogActions _$FlutterDialogActionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterDialogActions {
   FlutterWidget get child => throw _privateConstructorUsedError;
-  ZacValue<bool>? get barrierDismissible => throw _privateConstructorUsedError;
+  ZacBool? get barrierDismissible => throw _privateConstructorUsedError;
   FlutterColor? get barrierColor => throw _privateConstructorUsedError;
   ZacString? get barrierLabel => throw _privateConstructorUsedError;
-  ZacValue<bool>? get useSafeArea => throw _privateConstructorUsedError;
-  ZacValue<bool>? get useRootNavigator => throw _privateConstructorUsedError;
+  ZacBool? get useSafeArea => throw _privateConstructorUsedError;
+  ZacBool? get useRootNavigator => throw _privateConstructorUsedError;
   FlutterRouteSettings? get routeSettings => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -656,15 +656,15 @@ class _$_FlutterDialogActionsShowDialog
   @override
   final FlutterWidget child;
   @override
-  final ZacValue<bool>? barrierDismissible;
+  final ZacBool? barrierDismissible;
   @override
   final FlutterColor? barrierColor;
   @override
   final ZacString? barrierLabel;
   @override
-  final ZacValue<bool>? useSafeArea;
+  final ZacBool? useSafeArea;
   @override
-  final ZacValue<bool>? useRootNavigator;
+  final ZacBool? useRootNavigator;
   @override
   final FlutterRouteSettings? routeSettings;
 
@@ -710,11 +710,11 @@ class _$_FlutterDialogActionsShowDialog
 abstract class _FlutterDialogActionsShowDialog extends FlutterDialogActions {
   factory _FlutterDialogActionsShowDialog(
           {required final FlutterWidget child,
-          final ZacValue<bool>? barrierDismissible,
+          final ZacBool? barrierDismissible,
           final FlutterColor? barrierColor,
           final ZacString? barrierLabel,
-          final ZacValue<bool>? useSafeArea,
-          final ZacValue<bool>? useRootNavigator,
+          final ZacBool? useSafeArea,
+          final ZacBool? useRootNavigator,
           final FlutterRouteSettings? routeSettings}) =
       _$_FlutterDialogActionsShowDialog;
   _FlutterDialogActionsShowDialog._() : super._();
@@ -725,15 +725,15 @@ abstract class _FlutterDialogActionsShowDialog extends FlutterDialogActions {
   @override
   FlutterWidget get child;
   @override
-  ZacValue<bool>? get barrierDismissible;
+  ZacBool? get barrierDismissible;
   @override
   FlutterColor? get barrierColor;
   @override
   ZacString? get barrierLabel;
   @override
-  ZacValue<bool>? get useSafeArea;
+  ZacBool? get useSafeArea;
   @override
-  ZacValue<bool>? get useRootNavigator;
+  ZacBool? get useRootNavigator;
   @override
   FlutterRouteSettings? get routeSettings;
 }

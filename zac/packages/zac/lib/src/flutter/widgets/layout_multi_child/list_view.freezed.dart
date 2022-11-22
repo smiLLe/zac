@@ -22,20 +22,18 @@ FlutterListView _$FlutterListViewFromJson(Map<String, dynamic> json) {
 mixin _$FlutterListView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacBool? get reverse => throw _privateConstructorUsedError;
   ZacValue<FlutterScrollController>? get controller =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary => throw _privateConstructorUsedError;
+  ZacBool? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
-  ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
+  ZacBool? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   ZacDouble? get itemExtent => throw _privateConstructorUsedError;
   FlutterWidget? get prototypeItem => throw _privateConstructorUsedError;
-  ZacValue<bool>? get addAutomaticKeepAlives =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addRepaintBoundaries =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addSemanticIndexes => throw _privateConstructorUsedError;
+  ZacBool? get addAutomaticKeepAlives => throw _privateConstructorUsedError;
+  ZacBool? get addRepaintBoundaries => throw _privateConstructorUsedError;
+  ZacBool? get addSemanticIndexes => throw _privateConstructorUsedError;
   ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get children =>
       throw _privateConstructorUsedError;
@@ -86,15 +84,15 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacValue<bool>? reverse;
+  final ZacBool? reverse;
   @override
   final ZacValue<FlutterScrollController>? controller;
   @override
-  final ZacValue<bool>? primary;
+  final ZacBool? primary;
   @override
   final FlutterScrollPhysics? physics;
   @override
-  final ZacValue<bool>? shrinkWrap;
+  final ZacBool? shrinkWrap;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
@@ -102,11 +100,11 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final FlutterWidget? prototypeItem;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacBool? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacBool? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacBool? addSemanticIndexes;
   @override
   final ZacDouble? cacheExtent;
   @override
@@ -205,17 +203,17 @@ abstract class _FlutterListView extends FlutterListView {
   factory _FlutterListView(
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
-      final ZacValue<bool>? reverse,
+      final ZacBool? reverse,
       final ZacValue<FlutterScrollController>? controller,
-      final ZacValue<bool>? primary,
+      final ZacBool? primary,
       final FlutterScrollPhysics? physics,
-      final ZacValue<bool>? shrinkWrap,
+      final ZacBool? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
       final ZacDouble? itemExtent,
       final FlutterWidget? prototypeItem,
-      final ZacValue<bool>? addAutomaticKeepAlives,
-      final ZacValue<bool>? addRepaintBoundaries,
-      final ZacValue<bool>? addSemanticIndexes,
+      final ZacBool? addAutomaticKeepAlives,
+      final ZacBool? addRepaintBoundaries,
+      final ZacBool? addSemanticIndexes,
       final ZacDouble? cacheExtent,
       final ZacValueList<FlutterWidget>? children,
       final ZacInt? semanticChildCount,
@@ -232,15 +230,15 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacValue<bool>? get reverse;
+  ZacBool? get reverse;
   @override
   ZacValue<FlutterScrollController>? get controller;
   @override
-  ZacValue<bool>? get primary;
+  ZacBool? get primary;
   @override
   FlutterScrollPhysics? get physics;
   @override
-  ZacValue<bool>? get shrinkWrap;
+  ZacBool? get shrinkWrap;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
@@ -248,11 +246,11 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   FlutterWidget? get prototypeItem;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacBool? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacBool? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacBool? get addSemanticIndexes;
   @override
   ZacDouble? get cacheExtent;
   @override

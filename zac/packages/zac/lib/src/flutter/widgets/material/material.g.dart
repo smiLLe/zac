@@ -36,7 +36,7 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
       borderOnForeground: json['borderOnForeground'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['borderOnForeground'] as Object),
+          : ZacBool.fromJson(json['borderOnForeground'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

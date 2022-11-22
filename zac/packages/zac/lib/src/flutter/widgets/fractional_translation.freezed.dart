@@ -24,7 +24,7 @@ mixin _$FlutterFractionalTranslation {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
   FlutterOffset get translation => throw _privateConstructorUsedError;
-  ZacValue<bool>? get transformHitTests => throw _privateConstructorUsedError;
+  ZacBool? get transformHitTests => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,7 +50,7 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
   @override
   final FlutterOffset translation;
   @override
-  final ZacValue<bool>? transformHitTests;
+  final ZacBool? transformHitTests;
 
   @override
   String toString() {
@@ -87,11 +87,10 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
 abstract class _FlutterFractionalTranslation
     extends FlutterFractionalTranslation {
   factory _FlutterFractionalTranslation(
-          {final FlutterKey? key,
-          final FlutterWidget? child,
-          required final FlutterOffset translation,
-          final ZacValue<bool>? transformHitTests}) =
-      _$_FlutterFractionalTranslation;
+      {final FlutterKey? key,
+      final FlutterWidget? child,
+      required final FlutterOffset translation,
+      final ZacBool? transformHitTests}) = _$_FlutterFractionalTranslation;
   _FlutterFractionalTranslation._() : super._();
 
   factory _FlutterFractionalTranslation.fromJson(Map<String, dynamic> json) =
@@ -104,5 +103,5 @@ abstract class _FlutterFractionalTranslation
   @override
   FlutterOffset get translation;
   @override
-  ZacValue<bool>? get transformHitTests;
+  ZacBool? get transformHitTests;
 }

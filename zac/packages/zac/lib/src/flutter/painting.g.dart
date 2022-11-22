@@ -96,7 +96,7 @@ _$_FlutterStrutStyle _$$_FlutterStrutStyleFromJson(Map<String, dynamic> json) =>
               json['fontStyle'] as Map<String, dynamic>),
       forceStrutHeight: json['forceStrutHeight'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['forceStrutHeight'] as Object),
+          : ZacBool.fromJson(json['forceStrutHeight'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
           : ZacString.fromJson(json['debugLabel'] as Object),
@@ -139,7 +139,7 @@ _$_FlutterStrutStyleFromTextStyle _$$_FlutterStrutStyleFromTextStyleFromJson(
               json['fontStyle'] as Map<String, dynamic>),
       forceStrutHeight: json['forceStrutHeight'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['forceStrutHeight'] as Object),
+          : ZacBool.fromJson(json['forceStrutHeight'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
           : ZacString.fromJson(json['debugLabel'] as Object),
@@ -229,7 +229,7 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
     _$_FlutterTextStyle(
       inherit: json['inherit'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['inherit'] as Object),
+          : ZacBool.fromJson(json['inherit'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),

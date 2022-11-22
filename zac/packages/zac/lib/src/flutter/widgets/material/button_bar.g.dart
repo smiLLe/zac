@@ -30,7 +30,7 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
           : FlutterEdgeInsetsGeometry.fromJson(json['buttonPadding'] as Object),
       buttonAlignedDropdown: json['buttonAlignedDropdown'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['buttonAlignedDropdown'] as Object),
+          : ZacBool.fromJson(json['buttonAlignedDropdown'] as Object),
       overflowDirection: json['overflowDirection'] == null
           ? null
           : FlutterVerticalDirection.fromJson(

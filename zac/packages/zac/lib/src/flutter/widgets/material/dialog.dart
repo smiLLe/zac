@@ -66,7 +66,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<bool>? scrollable,
+    ZacBool? scrollable,
   }) = _FlutterDialogsAlertDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
@@ -131,7 +131,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         elevation: value.elevation?.getValueOrNull(zacContext),
         insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        scrollable: value.scrollable?.getValue(zacContext) ?? false,
+        scrollable: value.scrollable?.getValueOrNull(zacContext) ?? false,
         semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
         shape: value.shape?.build(zacContext),
         titlePadding: value.titlePadding?.build(zacContext),
@@ -178,11 +178,11 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   @FreezedUnionValue(FlutterDialogActions.unionValue)
   factory FlutterDialogActions.showDialog({
     required FlutterWidget child,
-    ZacValue<bool>? barrierDismissible,
+    ZacBool? barrierDismissible,
     FlutterColor? barrierColor,
     ZacString? barrierLabel,
-    ZacValue<bool>? useSafeArea,
-    ZacValue<bool>? useRootNavigator,
+    ZacBool? useSafeArea,
+    ZacBool? useRootNavigator,
     FlutterRouteSettings? routeSettings,
   }) = _FlutterDialogActionsShowDialog;
 
@@ -194,16 +194,16 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
         builder: (_) =>
             FlutterBuilder(child: value.child).buildWidget(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),
-        barrierDismissible: value.barrierDismissible?.getValue(zacContext,
+        barrierDismissible: value.barrierDismissible?.getValueOrNull(zacContext,
                 prefered: const SharedValueConsumeType.read()) ??
             true,
         barrierColor: value.barrierColor?.build(zacContext),
         barrierLabel: value.barrierLabel?.getValueOrNull(zacContext,
             prefered: const SharedValueConsumeType.read()),
-        useSafeArea: value.useSafeArea?.getValue(zacContext,
+        useSafeArea: value.useSafeArea?.getValueOrNull(zacContext,
                 prefered: const SharedValueConsumeType.read()) ??
             true,
-        useRootNavigator: value.useRootNavigator?.getValue(zacContext,
+        useRootNavigator: value.useRootNavigator?.getValueOrNull(zacContext,
                 prefered: const SharedValueConsumeType.read()) ??
             true,
       ),

@@ -22,8 +22,7 @@ FlutterAppBar _$FlutterAppBarFromJson(Map<String, dynamic> json) {
 mixin _$FlutterAppBar {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget? get leading => throw _privateConstructorUsedError;
-  ZacValue<bool>? get automaticallyImplyLeading =>
-      throw _privateConstructorUsedError;
+  ZacBool? get automaticallyImplyLeading => throw _privateConstructorUsedError;
   FlutterWidget? get title => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get actions =>
       throw _privateConstructorUsedError;
@@ -38,10 +37,9 @@ mixin _$FlutterAppBar {
   FlutterIconThemeData? get iconTheme => throw _privateConstructorUsedError;
   FlutterIconThemeData? get actionsIconTheme =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary => throw _privateConstructorUsedError;
-  ZacValue<bool>? get centerTitle => throw _privateConstructorUsedError;
-  ZacValue<bool>? get excludeHeaderSemantics =>
-      throw _privateConstructorUsedError;
+  ZacBool? get primary => throw _privateConstructorUsedError;
+  ZacBool? get centerTitle => throw _privateConstructorUsedError;
+  ZacBool? get excludeHeaderSemantics => throw _privateConstructorUsedError;
   ZacDouble? get titleSpacing => throw _privateConstructorUsedError;
   ZacDouble? get toolbarOpacity => throw _privateConstructorUsedError;
   ZacDouble? get bottomOpacity => throw _privateConstructorUsedError;
@@ -98,7 +96,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterWidget? leading;
   @override
-  final ZacValue<bool>? automaticallyImplyLeading;
+  final ZacBool? automaticallyImplyLeading;
   @override
   final FlutterWidget? title;
   @override
@@ -123,11 +121,11 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterIconThemeData? actionsIconTheme;
   @override
-  final ZacValue<bool>? primary;
+  final ZacBool? primary;
   @override
-  final ZacValue<bool>? centerTitle;
+  final ZacBool? centerTitle;
   @override
-  final ZacValue<bool>? excludeHeaderSemantics;
+  final ZacBool? excludeHeaderSemantics;
   @override
   final ZacDouble? titleSpacing;
   @override
@@ -245,7 +243,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   factory _FlutterAppBar(
           {final FlutterKey? key,
           final FlutterWidget? leading,
-          final ZacValue<bool>? automaticallyImplyLeading,
+          final ZacBool? automaticallyImplyLeading,
           final FlutterWidget? title,
           final ZacValueList<FlutterWidget>? actions,
           final FlutterWidget? flexibleSpace,
@@ -257,9 +255,9 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final FlutterColor? foregroundColor,
           final FlutterIconThemeData? iconTheme,
           final FlutterIconThemeData? actionsIconTheme,
-          final ZacValue<bool>? primary,
-          final ZacValue<bool>? centerTitle,
-          final ZacValue<bool>? excludeHeaderSemantics,
+          final ZacBool? primary,
+          final ZacBool? centerTitle,
+          final ZacBool? excludeHeaderSemantics,
           final ZacDouble? titleSpacing,
           final ZacDouble? toolbarOpacity,
           final ZacDouble? bottomOpacity,
@@ -279,7 +277,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   FlutterWidget? get leading;
   @override
-  ZacValue<bool>? get automaticallyImplyLeading;
+  ZacBool? get automaticallyImplyLeading;
   @override
   FlutterWidget? get title;
   @override
@@ -303,11 +301,11 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   FlutterIconThemeData? get actionsIconTheme;
   @override
-  ZacValue<bool>? get primary;
+  ZacBool? get primary;
   @override
-  ZacValue<bool>? get centerTitle;
+  ZacBool? get centerTitle;
   @override
-  ZacValue<bool>? get excludeHeaderSemantics;
+  ZacBool? get excludeHeaderSemantics;
   @override
   ZacDouble? get titleSpacing;
   @override

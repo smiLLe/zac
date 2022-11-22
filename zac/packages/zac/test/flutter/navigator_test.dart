@@ -33,7 +33,7 @@ void main() {
           }),
           FlutterNavigator(
               initialRoute: ZacString.fromJson('/foo'),
-              requestFocus: ZacValue<bool>.fromJson(false)));
+              requestFocus: ZacBool.fromJson(false)));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>({
             'converter': 'f:1:Navigator.push',

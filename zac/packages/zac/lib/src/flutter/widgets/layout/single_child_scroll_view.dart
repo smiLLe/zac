@@ -29,9 +29,9 @@ class FlutterSingleChildScrollView
   factory FlutterSingleChildScrollView({
     FlutterKey? key,
     FlutterAxis? scrollDirection,
-    ZacValue<bool>? reverse,
+    ZacBool? reverse,
     FlutterEdgeInsetsGeometry? padding,
-    ZacValue<bool>? primary,
+    ZacBool? primary,
     // ScrollPhysics? physics,
     ZacValue<FlutterScrollController>? controller,
     FlutterWidget? child,
@@ -46,9 +46,9 @@ class FlutterSingleChildScrollView
     return SingleChildScrollView(
       key: key?.buildKey(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacContext) ?? false,
+      reverse: reverse?.getValueOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
-      primary: primary?.getValue(zacContext),
+      primary: primary?.getValueOrNull(zacContext),
       controller:
           controller?.getValue(zacContext).getScrollController(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,

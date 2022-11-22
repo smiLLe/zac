@@ -45,8 +45,8 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
               json['settings'] as Map<String, dynamic>),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
+          : ZacBool.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
+          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
     );

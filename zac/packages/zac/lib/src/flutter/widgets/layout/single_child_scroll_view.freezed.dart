@@ -23,9 +23,9 @@ FlutterSingleChildScrollView _$FlutterSingleChildScrollViewFromJson(
 mixin _$FlutterSingleChildScrollView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacBool? get reverse => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary =>
+  ZacBool? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
   ZacValue<FlutterScrollController>? get controller =>
       throw _privateConstructorUsedError;
@@ -67,11 +67,11 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacValue<bool>? reverse;
+  final ZacBool? reverse;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
-  final ZacValue<bool>? primary;
+  final ZacBool? primary;
 // ScrollPhysics? physics,
   @override
   final ZacValue<FlutterScrollController>? controller;
@@ -142,9 +142,9 @@ abstract class _FlutterSingleChildScrollView
   factory _FlutterSingleChildScrollView(
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
-      final ZacValue<bool>? reverse,
+      final ZacBool? reverse,
       final FlutterEdgeInsetsGeometry? padding,
-      final ZacValue<bool>? primary,
+      final ZacBool? primary,
       final ZacValue<FlutterScrollController>? controller,
       final FlutterWidget? child,
       final FlutterClip? clipBehavior,
@@ -161,11 +161,11 @@ abstract class _FlutterSingleChildScrollView
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacValue<bool>? get reverse;
+  ZacBool? get reverse;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
-  ZacValue<bool>? get primary;
+  ZacBool? get primary;
   @override // ScrollPhysics? physics,
   ZacValue<FlutterScrollController>? get controller;
   @override

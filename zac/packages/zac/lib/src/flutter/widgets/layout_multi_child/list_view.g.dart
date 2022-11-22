@@ -17,21 +17,21 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
               json['scrollDirection'] as Map<String, dynamic>),
       reverse: json['reverse'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['reverse'] as Object),
+          : ZacBool.fromJson(json['reverse'] as Object),
       controller: json['controller'] == null
           ? null
           : ZacValue<FlutterScrollController>.fromJson(
               json['controller'] as Object),
       primary: json['primary'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['primary'] as Object),
+          : ZacBool.fromJson(json['primary'] as Object),
       physics: json['physics'] == null
           ? null
           : FlutterScrollPhysics.fromJson(
               json['physics'] as Map<String, dynamic>),
       shrinkWrap: json['shrinkWrap'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['shrinkWrap'] as Object),
+          : ZacBool.fromJson(json['shrinkWrap'] as Object),
       padding: json['padding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
@@ -43,13 +43,13 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['prototypeItem'] as Object),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addAutomaticKeepAlives'] as Object),
+          : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
       addRepaintBoundaries: json['addRepaintBoundaries'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addRepaintBoundaries'] as Object),
+          : ZacBool.fromJson(json['addRepaintBoundaries'] as Object),
       addSemanticIndexes: json['addSemanticIndexes'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
+          : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
       cacheExtent: json['cacheExtent'] == null
           ? null
           : ZacDouble.fromJson(json['cacheExtent'] as Object),

@@ -22,20 +22,18 @@ FlutterGridView _$FlutterGridViewFromJson(Map<String, dynamic> json) {
 mixin _$FlutterGridView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacBool? get reverse => throw _privateConstructorUsedError;
   ZacValue<FlutterScrollController>? get controller =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary =>
+  ZacBool? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
-  ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
+  ZacBool? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   FlutterSliverGridDelegate get gridDelegate =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addAutomaticKeepAlives =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addRepaintBoundaries =>
-      throw _privateConstructorUsedError;
-  ZacValue<bool>? get addSemanticIndexes => throw _privateConstructorUsedError;
+  ZacBool? get addAutomaticKeepAlives => throw _privateConstructorUsedError;
+  ZacBool? get addRepaintBoundaries => throw _privateConstructorUsedError;
+  ZacBool? get addSemanticIndexes => throw _privateConstructorUsedError;
   ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get children =>
       throw _privateConstructorUsedError;
@@ -84,24 +82,24 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacValue<bool>? reverse;
+  final ZacBool? reverse;
   @override
   final ZacValue<FlutterScrollController>? controller;
   @override
-  final ZacValue<bool>? primary;
+  final ZacBool? primary;
 // ScrollPhysics? physics,
   @override
-  final ZacValue<bool>? shrinkWrap;
+  final ZacBool? shrinkWrap;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
   final FlutterSliverGridDelegate gridDelegate;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacBool? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacBool? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacBool? addSemanticIndexes;
   @override
   final ZacDouble? cacheExtent;
   @override
@@ -194,15 +192,15 @@ abstract class _FlutterGridView extends FlutterGridView {
   factory _FlutterGridView(
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
-      final ZacValue<bool>? reverse,
+      final ZacBool? reverse,
       final ZacValue<FlutterScrollController>? controller,
-      final ZacValue<bool>? primary,
-      final ZacValue<bool>? shrinkWrap,
+      final ZacBool? primary,
+      final ZacBool? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
       required final FlutterSliverGridDelegate gridDelegate,
-      final ZacValue<bool>? addAutomaticKeepAlives,
-      final ZacValue<bool>? addRepaintBoundaries,
-      final ZacValue<bool>? addSemanticIndexes,
+      final ZacBool? addAutomaticKeepAlives,
+      final ZacBool? addRepaintBoundaries,
+      final ZacBool? addSemanticIndexes,
       final ZacDouble? cacheExtent,
       final ZacValueList<FlutterWidget>? children,
       final ZacInt? semanticChildCount,
@@ -219,23 +217,23 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacValue<bool>? get reverse;
+  ZacBool? get reverse;
   @override
   ZacValue<FlutterScrollController>? get controller;
   @override
-  ZacValue<bool>? get primary;
+  ZacBool? get primary;
   @override // ScrollPhysics? physics,
-  ZacValue<bool>? get shrinkWrap;
+  ZacBool? get shrinkWrap;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
   FlutterSliverGridDelegate get gridDelegate;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacBool? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacBool? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacBool? get addSemanticIndexes;
   @override
   ZacDouble? get cacheExtent;
   @override

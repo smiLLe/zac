@@ -22,11 +22,11 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     FlutterColor? systemNavigationBarColor,
     FlutterColor? systemNavigationBarDividerColor,
     FlutterBrightness? systemNavigationBarIconBrightness,
-    ZacValue<bool>? systemNavigationBarContrastEnforced,
+    ZacBool? systemNavigationBarContrastEnforced,
     FlutterColor? statusBarColor,
     FlutterBrightness? statusBarBrightness,
     FlutterBrightness? statusBarIconBrightness,
-    ZacValue<bool>? systemStatusBarContrastEnforced,
+    ZacBool? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle build(ZacContext zacContext) {
@@ -37,12 +37,12 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
       systemNavigationBarIconBrightness:
           systemNavigationBarIconBrightness?.build(zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(zacContext),
+          systemNavigationBarContrastEnforced?.getValueOrNull(zacContext),
       statusBarColor: statusBarColor?.build(zacContext),
       statusBarBrightness: statusBarBrightness?.build(zacContext),
       statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(zacContext),
+          systemStatusBarContrastEnforced?.getValueOrNull(zacContext),
     );
   }
 }

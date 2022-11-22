@@ -16,8 +16,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['leading'] as Object),
       automaticallyImplyLeading: json['automaticallyImplyLeading'] == null
           ? null
-          : ZacValue<bool>.fromJson(
-              json['automaticallyImplyLeading'] as Object),
+          : ZacBool.fromJson(json['automaticallyImplyLeading'] as Object),
       title: json['title'] == null
           ? null
           : FlutterWidget.fromJson(json['title'] as Object),
@@ -57,13 +56,13 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
               json['actionsIconTheme'] as Map<String, dynamic>),
       primary: json['primary'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['primary'] as Object),
+          : ZacBool.fromJson(json['primary'] as Object),
       centerTitle: json['centerTitle'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['centerTitle'] as Object),
+          : ZacBool.fromJson(json['centerTitle'] as Object),
       excludeHeaderSemantics: json['excludeHeaderSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['excludeHeaderSemantics'] as Object),
+          : ZacBool.fromJson(json['excludeHeaderSemantics'] as Object),
       titleSpacing: json['titleSpacing'] == null
           ? null
           : ZacDouble.fromJson(json['titleSpacing'] as Object),

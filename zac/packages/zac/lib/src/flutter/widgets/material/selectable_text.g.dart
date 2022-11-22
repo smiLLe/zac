@@ -33,10 +33,10 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : ZacDouble.fromJson(json['textScaleFactor'] as Object),
       showCursor: json['showCursor'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['showCursor'] as Object),
+          : ZacBool.fromJson(json['showCursor'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacBool.fromJson(json['autofocus'] as Object),
       minLines: json['minLines'] == null
           ? null
           : ZacInt.fromJson(json['minLines'] as Object),
@@ -58,8 +58,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : FlutterColor.fromJson(json['cursorColor'] as Map<String, dynamic>),
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
-          : ZacValue<bool>.fromJson(
-              json['enableInteractiveSelection'] as Object),
+          : ZacBool.fromJson(json['enableInteractiveSelection'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
           : ZacString.fromJson(json['semanticsLabel'] as Object),

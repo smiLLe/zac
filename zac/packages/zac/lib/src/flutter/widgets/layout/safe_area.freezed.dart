@@ -21,13 +21,12 @@ FlutterSafeArea _$FlutterSafeAreaFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterSafeArea {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<bool>? get left => throw _privateConstructorUsedError;
-  ZacValue<bool>? get top => throw _privateConstructorUsedError;
-  ZacValue<bool>? get right => throw _privateConstructorUsedError;
-  ZacValue<bool>? get bottom => throw _privateConstructorUsedError;
+  ZacBool? get left => throw _privateConstructorUsedError;
+  ZacBool? get top => throw _privateConstructorUsedError;
+  ZacBool? get right => throw _privateConstructorUsedError;
+  ZacBool? get bottom => throw _privateConstructorUsedError;
   FlutterEdgeInsets? get minimum => throw _privateConstructorUsedError;
-  ZacValue<bool>? get maintainBottomViewPadding =>
-      throw _privateConstructorUsedError;
+  ZacBool? get maintainBottomViewPadding => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -57,17 +56,17 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<bool>? left;
+  final ZacBool? left;
   @override
-  final ZacValue<bool>? top;
+  final ZacBool? top;
   @override
-  final ZacValue<bool>? right;
+  final ZacBool? right;
   @override
-  final ZacValue<bool>? bottom;
+  final ZacBool? bottom;
   @override
   final FlutterEdgeInsets? minimum;
   @override
-  final ZacValue<bool>? maintainBottomViewPadding;
+  final ZacBool? maintainBottomViewPadding;
   @override
   final FlutterWidget child;
 
@@ -110,12 +109,12 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
 abstract class _FlutterSafeArea extends FlutterSafeArea {
   factory _FlutterSafeArea(
       {final FlutterKey? key,
-      final ZacValue<bool>? left,
-      final ZacValue<bool>? top,
-      final ZacValue<bool>? right,
-      final ZacValue<bool>? bottom,
+      final ZacBool? left,
+      final ZacBool? top,
+      final ZacBool? right,
+      final ZacBool? bottom,
       final FlutterEdgeInsets? minimum,
-      final ZacValue<bool>? maintainBottomViewPadding,
+      final ZacBool? maintainBottomViewPadding,
       required final FlutterWidget child}) = _$_FlutterSafeArea;
   _FlutterSafeArea._() : super._();
 
@@ -125,17 +124,17 @@ abstract class _FlutterSafeArea extends FlutterSafeArea {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<bool>? get left;
+  ZacBool? get left;
   @override
-  ZacValue<bool>? get top;
+  ZacBool? get top;
   @override
-  ZacValue<bool>? get right;
+  ZacBool? get right;
   @override
-  ZacValue<bool>? get bottom;
+  ZacBool? get bottom;
   @override
   FlutterEdgeInsets? get minimum;
   @override
-  ZacValue<bool>? get maintainBottomViewPadding;
+  ZacBool? get maintainBottomViewPadding;
   @override
   FlutterWidget get child;
 }

@@ -21,7 +21,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacString.fromJson(json['semanticLabel'] as Object),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['excludeFromSemantics'] as Object),
+          : ZacBool.fromJson(json['excludeFromSemantics'] as Object),
       width: json['width'] == null
           ? null
           : ZacDouble.fromJson(json['width'] as Object),
@@ -49,17 +49,17 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : FlutterRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['matchTextDirection'] as Object),
+          : ZacBool.fromJson(json['matchTextDirection'] as Object),
       gaplessPlayback: json['gaplessPlayback'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['gaplessPlayback'] as Object),
+          : ZacBool.fromJson(json['gaplessPlayback'] as Object),
       filterQuality: json['filterQuality'] == null
           ? null
           : FlutterFilterQuality.fromJson(
               json['filterQuality'] as Map<String, dynamic>),
       isAntiAlias: json['isAntiAlias'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['isAntiAlias'] as Object),
+          : ZacBool.fromJson(json['isAntiAlias'] as Object),
       headers: (json['headers'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
@@ -83,7 +83,7 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacString.fromJson(json['semanticLabel'] as Object),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['excludeFromSemantics'] as Object),
+          : ZacBool.fromJson(json['excludeFromSemantics'] as Object),
       scale: json['scale'] == null
           ? null
           : ZacDouble.fromJson(json['scale'] as Object),
@@ -114,13 +114,13 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : FlutterRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['matchTextDirection'] as Object),
+          : ZacBool.fromJson(json['matchTextDirection'] as Object),
       gaplessPlayback: json['gaplessPlayback'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['gaplessPlayback'] as Object),
+          : ZacBool.fromJson(json['gaplessPlayback'] as Object),
       isAntiAlias: json['isAntiAlias'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['isAntiAlias'] as Object),
+          : ZacBool.fromJson(json['isAntiAlias'] as Object),
       package: json['package'] == null
           ? null
           : ZacString.fromJson(json['package'] as Object),

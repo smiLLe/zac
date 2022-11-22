@@ -396,7 +396,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
   factory FlutterFontFeature.liningFigures() = _FontFeatureLiningFigures;
 
   @FreezedUnionValue('f:1:FontFeature.localeAware')
-  factory FlutterFontFeature.localeAware({ZacValue<bool>? enable}) =
+  factory FlutterFontFeature.localeAware({ZacBool? enable}) =
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
@@ -462,7 +462,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       historicalLigatures: (value) => const FontFeature.historicalLigatures(),
       liningFigures: (value) => const FontFeature.liningFigures(),
       localeAware: (value) => FontFeature.localeAware(
-          enable: value.enable?.getValue(zacContext) ?? true),
+          enable: value.enable?.getValueOrNull(zacContext) ?? true),
       notationalForms: (value) => FontFeature.notationalForms(
           value.value?.getValueOrNull(zacContext) ?? 1),
       numerators: (value) => const FontFeature.numerators(),
@@ -568,17 +568,17 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
 
   @FreezedUnionValue('f:1:TextHeightBehavior')
   factory FlutterTextHeightBehavior({
-    ZacValue<bool>? applyHeightToFirstAscent,
-    ZacValue<bool>? applyHeightToLastDescent,
+    ZacBool? applyHeightToFirstAscent,
+    ZacBool? applyHeightToLastDescent,
     FlutterTextLeadingDistribution? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
   TextHeightBehavior build(ZacContext zacContext) {
     return TextHeightBehavior(
       applyHeightToFirstAscent:
-          applyHeightToFirstAscent?.getValue(zacContext) ?? true,
+          applyHeightToFirstAscent?.getValueOrNull(zacContext) ?? true,
       applyHeightToLastDescent:
-          applyHeightToLastDescent?.getValue(zacContext) ?? true,
+          applyHeightToLastDescent?.getValueOrNull(zacContext) ?? true,
       leadingDistribution: leadingDistribution?.build(zacContext) ??
           TextLeadingDistribution.proportional,
     );

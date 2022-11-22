@@ -24,16 +24,16 @@ mixin _$FlutterInteractiveViewer {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValue<bool>? get alignPanAxis => throw _privateConstructorUsedError;
+  ZacBool? get alignPanAxis => throw _privateConstructorUsedError;
   FlutterEdgeInsets? get boundaryMargin => throw _privateConstructorUsedError;
-  ZacValue<bool>? get constrained => throw _privateConstructorUsedError;
+  ZacBool? get constrained => throw _privateConstructorUsedError;
   ZacDouble? get maxScale => throw _privateConstructorUsedError;
   ZacDouble? get minScale => throw _privateConstructorUsedError;
   ZacActions? get onInteractionEnd => throw _privateConstructorUsedError;
   ZacActions? get onInteractionStart => throw _privateConstructorUsedError;
   ZacActions? get onInteractionUpdate => throw _privateConstructorUsedError;
-  ZacValue<bool>? get panEnabled => throw _privateConstructorUsedError;
-  ZacValue<bool>? get scaleEnabled => throw _privateConstructorUsedError;
+  ZacBool? get panEnabled => throw _privateConstructorUsedError;
+  ZacBool? get scaleEnabled => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -71,11 +71,11 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacValue<bool>? alignPanAxis;
+  final ZacBool? alignPanAxis;
   @override
   final FlutterEdgeInsets? boundaryMargin;
   @override
-  final ZacValue<bool>? constrained;
+  final ZacBool? constrained;
   @override
   final ZacDouble? maxScale;
   @override
@@ -87,9 +87,9 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacActions? onInteractionUpdate;
   @override
-  final ZacValue<bool>? panEnabled;
+  final ZacBool? panEnabled;
   @override
-  final ZacValue<bool>? scaleEnabled;
+  final ZacBool? scaleEnabled;
 
   @override
   String toString() {
@@ -159,16 +159,16 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       {final FlutterKey? key,
       required final FlutterWidget child,
       final FlutterClip? clipBehavior,
-      final ZacValue<bool>? alignPanAxis,
+      final ZacBool? alignPanAxis,
       final FlutterEdgeInsets? boundaryMargin,
-      final ZacValue<bool>? constrained,
+      final ZacBool? constrained,
       final ZacDouble? maxScale,
       final ZacDouble? minScale,
       final ZacActions? onInteractionEnd,
       final ZacActions? onInteractionStart,
       final ZacActions? onInteractionUpdate,
-      final ZacValue<bool>? panEnabled,
-      final ZacValue<bool>? scaleEnabled}) = _$_FlutterInteractiveViewer;
+      final ZacBool? panEnabled,
+      final ZacBool? scaleEnabled}) = _$_FlutterInteractiveViewer;
   _FlutterInteractiveViewer._() : super._();
 
   factory _FlutterInteractiveViewer.fromJson(Map<String, dynamic> json) =
@@ -181,11 +181,11 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   FlutterClip? get clipBehavior;
   @override
-  ZacValue<bool>? get alignPanAxis;
+  ZacBool? get alignPanAxis;
   @override
   FlutterEdgeInsets? get boundaryMargin;
   @override
-  ZacValue<bool>? get constrained;
+  ZacBool? get constrained;
   @override
   ZacDouble? get maxScale;
   @override
@@ -197,7 +197,7 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacActions? get onInteractionUpdate;
   @override
-  ZacValue<bool>? get panEnabled;
+  ZacBool? get panEnabled;
   @override
-  ZacValue<bool>? get scaleEnabled;
+  ZacBool? get scaleEnabled;
 }

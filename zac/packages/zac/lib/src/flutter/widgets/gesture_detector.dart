@@ -34,7 +34,7 @@ class FlutterGestureDetector
     ZacActions? onSecondaryLongPress,
     ZacActions? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
-    ZacValue<bool>? excludeFromSemantics,
+    ZacBool? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) = _FlutterGestureDetector;
 
@@ -43,7 +43,8 @@ class FlutterGestureDetector
     return GestureDetector(
       key: key?.buildKey(zacContext),
       behavior: behavior?.build(zacContext),
-      excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
+      excludeFromSemantics:
+          excludeFromSemantics?.getValueOrNull(zacContext) ?? false,
       onTap: onTap?.createCb(zacContext),
       onSecondaryTap: onSecondaryTap?.createCb(zacContext),
       onDoubleTap: onDoubleTap?.createCb(zacContext),

@@ -27,7 +27,7 @@ class FlutterFractionalTranslation
     FlutterKey? key,
     FlutterWidget? child,
     required FlutterOffset translation,
-    ZacValue<bool>? transformHitTests,
+    ZacBool? transformHitTests,
   }) = _FlutterFractionalTranslation;
 
   @override
@@ -35,7 +35,7 @@ class FlutterFractionalTranslation
     return FractionalTranslation(
       key: key?.buildKey(zacContext),
       translation: translation.build(zacContext),
-      transformHitTests: transformHitTests?.getValue(zacContext) ?? true,
+      transformHitTests: transformHitTests?.getValueOrNull(zacContext) ?? true,
       child: child?.buildWidget(zacContext),
     );
   }

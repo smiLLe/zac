@@ -42,15 +42,15 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     FlutterWidget? bottomNavigationBar,
     FlutterWidget? bottomSheet,
     FlutterColor? backgroundColor,
-    ZacValue<bool>? resizeToAvoidBottomInset,
-    ZacValue<bool>? primary,
+    ZacBool? resizeToAvoidBottomInset,
+    ZacBool? primary,
     // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-    ZacValue<bool>? extendBody,
-    ZacValue<bool>? extendBodyBehindAppBar,
+    ZacBool? extendBody,
+    ZacBool? extendBodyBehindAppBar,
     FlutterColor? drawerScrimColor,
     ZacDouble? drawerEdgeDragWidth,
-    ZacValue<bool>? drawerEnableOpenDragGesture,
-    ZacValue<bool>? endDrawerEnableOpenDragGesture,
+    ZacBool? drawerEnableOpenDragGesture,
+    ZacBool? endDrawerEnableOpenDragGesture,
     ZacString? restorationId,
   }) = _FlutterScaffold;
 
@@ -72,17 +72,19 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         backgroundColor: value.backgroundColor?.build(zacContext),
         resizeToAvoidBottomInset:
             value.resizeToAvoidBottomInset?.getValue(zacContext),
-        primary: value.primary?.getValue(zacContext) ?? true,
-        extendBody: value.extendBody?.getValue(zacContext) ?? false,
+        primary: value.primary?.getValueOrNull(zacContext) ?? true,
+        extendBody: value.extendBody?.getValueOrNull(zacContext) ?? false,
         extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
+            value.extendBodyBehindAppBar?.getValueOrNull(zacContext) ?? false,
         drawerScrimColor: value.drawerScrimColor?.build(zacContext),
         drawerEdgeDragWidth:
             value.drawerEdgeDragWidth?.getValueOrNull(zacContext),
         drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+            value.drawerEnableOpenDragGesture?.getValueOrNull(zacContext) ??
+                true,
         endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+            value.endDrawerEnableOpenDragGesture?.getValueOrNull(zacContext) ??
+                true,
         restorationId: value.restorationId?.getValueOrNull(zacContext),
       ),
     );
@@ -125,7 +127,7 @@ class FlutterScaffoldActions
     FlutterShapeBorder? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
-    ZacValue<bool>? enableDrag,
+    ZacBool? enableDrag,
 // AnimationController? transitionAnimationController,
   }) = _FlutterScaffoldActionsShowBottomSheet;
 
@@ -143,6 +145,7 @@ class FlutterScaffoldActions
           elevation: value.elevation?.getValueOrNull(zacContext,
               prefered: const SharedValueConsumeType.read()),
           shape: value.shape?.build(zacContext),
+          enableDrag: value.enableDrag?.getValueOrNull(zacContext),
           // transitionAnimationController:
         );
       },
@@ -399,7 +402,7 @@ class FlutterMaterialBanner
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,
     FlutterEdgeInsetsGeometry? leadingPadding,
-    ZacValue<bool>? forceActionsBelow,
+    ZacBool? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
     ZacActions? onVisible,
@@ -415,7 +418,7 @@ class FlutterMaterialBanner
       backgroundColor: backgroundColor?.build(zacContext),
       contentTextStyle: contentTextStyle?.build(zacContext),
       elevation: elevation?.getValue(zacContext),
-      forceActionsBelow: forceActionsBelow?.getValue(zacContext) ?? false,
+      forceActionsBelow: forceActionsBelow?.getValueOrNull(zacContext) ?? false,
       leading: leading?.buildWidget(zacContext),
       leadingPadding: leadingPadding?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),

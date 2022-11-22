@@ -30,7 +30,7 @@ class FlutterElevatedButton
     required FlutterWidget? child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButton;
 
@@ -41,7 +41,7 @@ class FlutterElevatedButton
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
 
@@ -52,7 +52,7 @@ class FlutterElevatedButton
         key: value.key?.buildKey(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child?.buildWidget(zacContext),
       ),
@@ -62,7 +62,7 @@ class FlutterElevatedButton
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),
         label: value.label.buildWidget(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
@@ -88,7 +88,7 @@ class FlutterOutlinedButton
     required FlutterWidget child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButton;
 
@@ -99,7 +99,7 @@ class FlutterOutlinedButton
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
 
@@ -110,7 +110,7 @@ class FlutterOutlinedButton
         key: value.key?.buildKey(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.buildWidget(zacContext),
       ),
@@ -120,7 +120,7 @@ class FlutterOutlinedButton
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),
         label: value.label.buildWidget(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
@@ -144,7 +144,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
     required FlutterWidget child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButton;
 
@@ -155,7 +155,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool>? autofocus,
+    ZacBool? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButtonIcon;
 
@@ -166,7 +166,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
         key: value.key?.buildKey(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.buildWidget(zacContext),
       ),
@@ -176,7 +176,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),
         label: value.label.buildWidget(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        autofocus: value.autofocus?.getValueOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );

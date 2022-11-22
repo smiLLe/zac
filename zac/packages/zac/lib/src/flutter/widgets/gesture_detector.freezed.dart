@@ -30,8 +30,7 @@ mixin _$FlutterGestureDetector {
   ZacActions? get onSecondaryLongPress => throw _privateConstructorUsedError;
   ZacActions? get onTertiaryLongPress => throw _privateConstructorUsedError;
   FlutterHitTestBehavior? get behavior => throw _privateConstructorUsedError;
-  ZacValue<bool>? get excludeFromSemantics =>
-      throw _privateConstructorUsedError;
+  ZacBool? get excludeFromSemantics => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -78,7 +77,7 @@ class _$_FlutterGestureDetector extends _FlutterGestureDetector {
   @override
   final FlutterHitTestBehavior? behavior;
   @override
-  final ZacValue<bool>? excludeFromSemantics;
+  final ZacBool? excludeFromSemantics;
 
   @override
   String toString() {
@@ -144,7 +143,7 @@ abstract class _FlutterGestureDetector extends FlutterGestureDetector {
       final ZacActions? onSecondaryLongPress,
       final ZacActions? onTertiaryLongPress,
       final FlutterHitTestBehavior? behavior,
-      final ZacValue<bool>? excludeFromSemantics}) = _$_FlutterGestureDetector;
+      final ZacBool? excludeFromSemantics}) = _$_FlutterGestureDetector;
   _FlutterGestureDetector._() : super._();
 
   factory _FlutterGestureDetector.fromJson(Map<String, dynamic> json) =
@@ -169,5 +168,5 @@ abstract class _FlutterGestureDetector extends FlutterGestureDetector {
   @override
   FlutterHitTestBehavior? get behavior;
   @override
-  ZacValue<bool>? get excludeFromSemantics;
+  ZacBool? get excludeFromSemantics;
 }

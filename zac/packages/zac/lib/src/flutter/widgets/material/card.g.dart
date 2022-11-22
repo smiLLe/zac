@@ -25,7 +25,7 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
       borderOnForeground: json['borderOnForeground'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['borderOnForeground'] as Object),
+          : ZacBool.fromJson(json['borderOnForeground'] as Object),
       margin: json['margin'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['margin'] as Object),
@@ -37,5 +37,5 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['child'] as Object),
       semanticContainer: json['semanticContainer'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['semanticContainer'] as Object),
+          : ZacBool.fromJson(json['semanticContainer'] as Object),
     );

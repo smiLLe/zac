@@ -18,21 +18,21 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
               json['scrollDirection'] as Map<String, dynamic>),
       reverse: json['reverse'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['reverse'] as Object),
+          : ZacBool.fromJson(json['reverse'] as Object),
       controller: json['controller'] == null
           ? null
           : ZacValue<FlutterScrollController>.fromJson(
               json['controller'] as Object),
       primary: json['primary'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['primary'] as Object),
+          : ZacBool.fromJson(json['primary'] as Object),
       physics: json['physics'] == null
           ? null
           : FlutterScrollPhysics.fromJson(
               json['physics'] as Map<String, dynamic>),
       shrinkWrap: json['shrinkWrap'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['shrinkWrap'] as Object),
+          : ZacBool.fromJson(json['shrinkWrap'] as Object),
       center: json['center'] == null
           ? null
           : FlutterKey.fromJson(json['center'] as Object),

@@ -35,21 +35,21 @@ mixin _$FlutterTextField {
   FlutterTextAlignVertical? get textAlignVertical =>
       throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get readOnly =>
+  ZacBool? get readOnly =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
-  ZacValue<bool>? get showCursor => throw _privateConstructorUsedError;
-  ZacValue<bool>? get autofocus => throw _privateConstructorUsedError;
+  ZacBool? get showCursor => throw _privateConstructorUsedError;
+  ZacBool? get autofocus => throw _privateConstructorUsedError;
   ZacString? get obscuringCharacter => throw _privateConstructorUsedError;
-  ZacValue<bool>? get obscureText => throw _privateConstructorUsedError;
-  ZacValue<bool>? get autocorrect => throw _privateConstructorUsedError;
+  ZacBool? get obscureText => throw _privateConstructorUsedError;
+  ZacBool? get autocorrect => throw _privateConstructorUsedError;
   FlutterSmartDashesType? get smartDashesType =>
       throw _privateConstructorUsedError;
   FlutterSmartQuotesType? get smartQuotesType =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get enableSuggestions => throw _privateConstructorUsedError;
+  ZacBool? get enableSuggestions => throw _privateConstructorUsedError;
   ZacInt? get maxLines => throw _privateConstructorUsedError;
   ZacInt? get minLines => throw _privateConstructorUsedError;
-  ZacValue<bool>? get expands => throw _privateConstructorUsedError;
+  ZacBool? get expands => throw _privateConstructorUsedError;
   ZacInt? get maxLength =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onChanged,
   ZacActions? get onChanged =>
@@ -59,7 +59,7 @@ mixin _$FlutterTextField {
   ZacActions? get onSubmitted =>
       throw _privateConstructorUsedError; // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
-  ZacValue<bool>? get enabled => throw _privateConstructorUsedError;
+  ZacBool? get enabled => throw _privateConstructorUsedError;
   ZacDouble? get cursorWidth => throw _privateConstructorUsedError;
   ZacDouble? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
@@ -72,7 +72,7 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError;
   FlutterEdgeInsets? get scrollPadding =>
       throw _privateConstructorUsedError; // DragStartBehavior? dragStartBehavior,
-  ZacValue<bool>? get enableInteractiveSelection =>
+  ZacBool? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
   ZacActions? get onTap =>
@@ -83,7 +83,7 @@ mixin _$FlutterTextField {
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
   ZacString? get restorationId => throw _privateConstructorUsedError;
-  ZacValue<bool>? get enableIMEPersonalizedLearning =>
+  ZacBool? get enableIMEPersonalizedLearning =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -166,30 +166,30 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterTextDirection? textDirection;
   @override
-  final ZacValue<bool>? readOnly;
+  final ZacBool? readOnly;
 // ToolbarOptions? toolbarOptions,
   @override
-  final ZacValue<bool>? showCursor;
+  final ZacBool? showCursor;
   @override
-  final ZacValue<bool>? autofocus;
+  final ZacBool? autofocus;
   @override
   final ZacString? obscuringCharacter;
   @override
-  final ZacValue<bool>? obscureText;
+  final ZacBool? obscureText;
   @override
-  final ZacValue<bool>? autocorrect;
+  final ZacBool? autocorrect;
   @override
   final FlutterSmartDashesType? smartDashesType;
   @override
   final FlutterSmartQuotesType? smartQuotesType;
   @override
-  final ZacValue<bool>? enableSuggestions;
+  final ZacBool? enableSuggestions;
   @override
   final ZacInt? maxLines;
   @override
   final ZacInt? minLines;
   @override
-  final ZacValue<bool>? expands;
+  final ZacBool? expands;
   @override
   final ZacInt? maxLength;
 // ValueChanged<String>? onChanged,
@@ -204,7 +204,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   @override
-  final ZacValue<bool>? enabled;
+  final ZacBool? enabled;
   @override
   final ZacDouble? cursorWidth;
   @override
@@ -223,7 +223,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   final FlutterEdgeInsets? scrollPadding;
 // DragStartBehavior? dragStartBehavior,
   @override
-  final ZacValue<bool>? enableInteractiveSelection;
+  final ZacBool? enableInteractiveSelection;
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
   @override
@@ -239,7 +239,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacString? restorationId;
   @override
-  final ZacValue<bool>? enableIMEPersonalizedLearning;
+  final ZacBool? enableIMEPersonalizedLearning;
 
   @override
   String toString() {
@@ -392,48 +392,47 @@ class _$_FlutterTextField extends _FlutterTextField {
 
 abstract class _FlutterTextField extends FlutterTextField {
   factory _FlutterTextField(
-          {final FlutterKey? key,
-          final FlutterInputDecoration? decoration,
-          final FlutterTextInputType? keyboardType,
-          final FlutterTextInputAction? textInputAction,
-          final FlutterTextCapitalization? textCapitalization,
-          final FlutterTextStyle? style,
-          final FlutterStrutStyle? strutStyle,
-          final FlutterTextAlign? textAlign,
-          final FlutterTextAlignVertical? textAlignVertical,
-          final FlutterTextDirection? textDirection,
-          final ZacValue<bool>? readOnly,
-          final ZacValue<bool>? showCursor,
-          final ZacValue<bool>? autofocus,
-          final ZacString? obscuringCharacter,
-          final ZacValue<bool>? obscureText,
-          final ZacValue<bool>? autocorrect,
-          final FlutterSmartDashesType? smartDashesType,
-          final FlutterSmartQuotesType? smartQuotesType,
-          final ZacValue<bool>? enableSuggestions,
-          final ZacInt? maxLines,
-          final ZacInt? minLines,
-          final ZacValue<bool>? expands,
-          final ZacInt? maxLength,
-          final ZacActions? onChanged,
-          final ZacActions? onEditingComplete,
-          final ZacActions? onSubmitted,
-          final ZacValue<bool>? enabled,
-          final ZacDouble? cursorWidth,
-          final ZacDouble? cursorHeight,
-          final FlutterRadius? cursorRadius,
-          final FlutterColor? cursorColor,
-          final FlutterBoxHeightStyle? selectionHeightStyle,
-          final FlutterBoxWidthStyle? selectionWidthStyle,
-          final FlutterBrightness? keyboardAppearance,
-          final FlutterEdgeInsets? scrollPadding,
-          final ZacValue<bool>? enableInteractiveSelection,
-          final ZacActions? onTap,
-          final ZacValue<FlutterScrollController>? scrollController,
-          final FlutterClip? clipBehavior,
-          final ZacString? restorationId,
-          final ZacValue<bool>? enableIMEPersonalizedLearning}) =
-      _$_FlutterTextField;
+      {final FlutterKey? key,
+      final FlutterInputDecoration? decoration,
+      final FlutterTextInputType? keyboardType,
+      final FlutterTextInputAction? textInputAction,
+      final FlutterTextCapitalization? textCapitalization,
+      final FlutterTextStyle? style,
+      final FlutterStrutStyle? strutStyle,
+      final FlutterTextAlign? textAlign,
+      final FlutterTextAlignVertical? textAlignVertical,
+      final FlutterTextDirection? textDirection,
+      final ZacBool? readOnly,
+      final ZacBool? showCursor,
+      final ZacBool? autofocus,
+      final ZacString? obscuringCharacter,
+      final ZacBool? obscureText,
+      final ZacBool? autocorrect,
+      final FlutterSmartDashesType? smartDashesType,
+      final FlutterSmartQuotesType? smartQuotesType,
+      final ZacBool? enableSuggestions,
+      final ZacInt? maxLines,
+      final ZacInt? minLines,
+      final ZacBool? expands,
+      final ZacInt? maxLength,
+      final ZacActions? onChanged,
+      final ZacActions? onEditingComplete,
+      final ZacActions? onSubmitted,
+      final ZacBool? enabled,
+      final ZacDouble? cursorWidth,
+      final ZacDouble? cursorHeight,
+      final FlutterRadius? cursorRadius,
+      final FlutterColor? cursorColor,
+      final FlutterBoxHeightStyle? selectionHeightStyle,
+      final FlutterBoxWidthStyle? selectionWidthStyle,
+      final FlutterBrightness? keyboardAppearance,
+      final FlutterEdgeInsets? scrollPadding,
+      final ZacBool? enableInteractiveSelection,
+      final ZacActions? onTap,
+      final ZacValue<FlutterScrollController>? scrollController,
+      final FlutterClip? clipBehavior,
+      final ZacString? restorationId,
+      final ZacBool? enableIMEPersonalizedLearning}) = _$_FlutterTextField;
   _FlutterTextField._() : super._();
 
   factory _FlutterTextField.fromJson(Map<String, dynamic> json) =
@@ -461,29 +460,29 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterTextDirection? get textDirection;
   @override
-  ZacValue<bool>? get readOnly;
+  ZacBool? get readOnly;
   @override // ToolbarOptions? toolbarOptions,
-  ZacValue<bool>? get showCursor;
+  ZacBool? get showCursor;
   @override
-  ZacValue<bool>? get autofocus;
+  ZacBool? get autofocus;
   @override
   ZacString? get obscuringCharacter;
   @override
-  ZacValue<bool>? get obscureText;
+  ZacBool? get obscureText;
   @override
-  ZacValue<bool>? get autocorrect;
+  ZacBool? get autocorrect;
   @override
   FlutterSmartDashesType? get smartDashesType;
   @override
   FlutterSmartQuotesType? get smartQuotesType;
   @override
-  ZacValue<bool>? get enableSuggestions;
+  ZacBool? get enableSuggestions;
   @override
   ZacInt? get maxLines;
   @override
   ZacInt? get minLines;
   @override
-  ZacValue<bool>? get expands;
+  ZacBool? get expands;
   @override
   ZacInt? get maxLength;
   @override // ValueChanged<String>? onChanged,
@@ -494,7 +493,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacActions? get onSubmitted;
   @override // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
-  ZacValue<bool>? get enabled;
+  ZacBool? get enabled;
   @override
   ZacDouble? get cursorWidth;
   @override
@@ -512,7 +511,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterEdgeInsets? get scrollPadding;
   @override // DragStartBehavior? dragStartBehavior,
-  ZacValue<bool>? get enableInteractiveSelection;
+  ZacBool? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
   ZacActions? get onTap;
@@ -525,5 +524,5 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacString? get restorationId;
   @override
-  ZacValue<bool>? get enableIMEPersonalizedLearning;
+  ZacBool? get enableIMEPersonalizedLearning;
 }

@@ -76,7 +76,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
     ZacString? initialRoute,
-    ZacValue<bool>? requestFocus,
+    ZacBool? requestFocus,
   }) = _FlutterNavigator;
 
   @override
@@ -87,7 +87,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
         onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
         initialRoute: obj.initialRoute?.getValueOrNull(zacContext),
-        requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
+        requestFocus: obj.requestFocus?.getValueOrNull(zacContext) ?? true,
       ),
     );
   }
@@ -267,12 +267,12 @@ class FlutterPageRouteBuilder
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-    ZacValue<bool>? opaque,
-    ZacValue<bool>? barrierDismissible,
+    ZacBool? opaque,
+    ZacBool? barrierDismissible,
     FlutterColor? barrierColor,
     ZacString? barrierLabel,
-    ZacValue<bool>? maintainState,
-    ZacValue<bool>? fullscreenDialog,
+    ZacBool? maintainState,
+    ZacBool? fullscreenDialog,
   }) = _FlutterPageRouteBuilder;
 
   @override
@@ -288,12 +288,13 @@ class FlutterPageRouteBuilder
         },
       ),
       settings: settings?.build(zacContext),
-      opaque: opaque?.getValue(zacContext) ?? true,
-      barrierDismissible: barrierDismissible?.getValue(zacContext) ?? false,
+      opaque: opaque?.getValueOrNull(zacContext) ?? true,
+      barrierDismissible:
+          barrierDismissible?.getValueOrNull(zacContext) ?? false,
       barrierColor: barrierColor?.build(zacContext),
       barrierLabel: barrierLabel?.getValueOrNull(zacContext),
-      maintainState: maintainState?.getValue(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
+      maintainState: maintainState?.getValueOrNull(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValueOrNull(zacContext) ?? false,
     );
   }
 }

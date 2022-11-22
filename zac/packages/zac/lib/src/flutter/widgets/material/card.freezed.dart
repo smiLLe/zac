@@ -25,11 +25,11 @@ mixin _$FlutterCard {
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
   ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
-  ZacValue<bool>? get borderOnForeground => throw _privateConstructorUsedError;
+  ZacBool? get borderOnForeground => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get margin => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
-  ZacValue<bool>? get semanticContainer => throw _privateConstructorUsedError;
+  ZacBool? get semanticContainer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -68,7 +68,7 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final FlutterShapeBorder? shape;
   @override
-  final ZacValue<bool>? borderOnForeground;
+  final ZacBool? borderOnForeground;
   @override
   final FlutterEdgeInsetsGeometry? margin;
   @override
@@ -76,7 +76,7 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final FlutterWidget? child;
   @override
-  final ZacValue<bool>? semanticContainer;
+  final ZacBool? semanticContainer;
 
   @override
   String toString() {
@@ -136,11 +136,11 @@ abstract class _FlutterCard extends FlutterCard {
       final FlutterColor? shadowColor,
       final ZacDouble? elevation,
       final FlutterShapeBorder? shape,
-      final ZacValue<bool>? borderOnForeground,
+      final ZacBool? borderOnForeground,
       final FlutterEdgeInsetsGeometry? margin,
       final FlutterClip? clipBehavior,
       final FlutterWidget? child,
-      final ZacValue<bool>? semanticContainer}) = _$_FlutterCard;
+      final ZacBool? semanticContainer}) = _$_FlutterCard;
   _FlutterCard._() : super._();
 
   factory _FlutterCard.fromJson(Map<String, dynamic> json) =
@@ -157,7 +157,7 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   FlutterShapeBorder? get shape;
   @override
-  ZacValue<bool>? get borderOnForeground;
+  ZacBool? get borderOnForeground;
   @override
   FlutterEdgeInsetsGeometry? get margin;
   @override
@@ -165,5 +165,5 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   FlutterWidget? get child;
   @override
-  ZacValue<bool>? get semanticContainer;
+  ZacBool? get semanticContainer;
 }

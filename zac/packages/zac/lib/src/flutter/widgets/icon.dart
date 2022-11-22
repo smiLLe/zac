@@ -55,7 +55,7 @@ class FlutterIconData with _$FlutterIconData {
     ZacInt codePoint, {
     ZacString? fontFamily,
     ZacString? fontPackage,
-    ZacValue<bool>? matchTextDirection,
+    ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
   IconData build(ZacContext zacContext) {
@@ -63,7 +63,8 @@ class FlutterIconData with _$FlutterIconData {
       codePoint.getValue(zacContext),
       fontFamily: fontFamily?.getValue(zacContext),
       fontPackage: fontPackage?.getValue(zacContext),
-      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
+      matchTextDirection:
+          matchTextDirection?.getValueOrNull(zacContext) ?? false,
     );
   }
 }

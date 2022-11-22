@@ -12,13 +12,13 @@ _$_FlutterSliverChildListDelegate _$$_FlutterSliverChildListDelegateFromJson(
       ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addAutomaticKeepAlives'] as Object),
+          : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
       addRepaintBoundaries: json['addRepaintBoundaries'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addRepaintBoundaries'] as Object),
+          : ZacBool.fromJson(json['addRepaintBoundaries'] as Object),
       addSemanticIndexes: json['addSemanticIndexes'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
+          : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
       semanticIndexOffset: json['semanticIndexOffset'] == null
           ? null
           : ZacInt.fromJson(json['semanticIndexOffset'] as Object),
@@ -32,14 +32,13 @@ _$_FlutterSliverChildListDelegateFixed
           ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
           addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
               ? null
-              : ZacValue<bool>.fromJson(
-                  json['addAutomaticKeepAlives'] as Object),
+              : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
           addRepaintBoundaries: json['addRepaintBoundaries'] == null
               ? null
-              : ZacValue<bool>.fromJson(json['addRepaintBoundaries'] as Object),
+              : ZacBool.fromJson(json['addRepaintBoundaries'] as Object),
           addSemanticIndexes: json['addSemanticIndexes'] == null
               ? null
-              : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
+              : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
           semanticIndexOffset: json['semanticIndexOffset'] == null
               ? null
               : ZacInt.fromJson(json['semanticIndexOffset'] as Object),

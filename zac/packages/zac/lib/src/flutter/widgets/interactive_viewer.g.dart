@@ -18,14 +18,14 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       alignPanAxis: json['alignPanAxis'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['alignPanAxis'] as Object),
+          : ZacBool.fromJson(json['alignPanAxis'] as Object),
       boundaryMargin: json['boundaryMargin'] == null
           ? null
           : FlutterEdgeInsets.fromJson(
               json['boundaryMargin'] as Map<String, dynamic>),
       constrained: json['constrained'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['constrained'] as Object),
+          : ZacBool.fromJson(json['constrained'] as Object),
       maxScale: json['maxScale'] == null
           ? null
           : ZacDouble.fromJson(json['maxScale'] as Object),
@@ -43,8 +43,8 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
           : ZacActions.fromJson(json['onInteractionUpdate'] as Object),
       panEnabled: json['panEnabled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['panEnabled'] as Object),
+          : ZacBool.fromJson(json['panEnabled'] as Object),
       scaleEnabled: json['scaleEnabled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['scaleEnabled'] as Object),
+          : ZacBool.fromJson(json['scaleEnabled'] as Object),
     );

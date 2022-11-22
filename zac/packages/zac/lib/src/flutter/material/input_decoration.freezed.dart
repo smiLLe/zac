@@ -41,8 +41,8 @@ mixin _$FlutterInputDecoration {
   ZacInt? get errorMaxLines =>
       throw _privateConstructorUsedError; // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
-  ZacValue<bool>? get isCollapsed => throw _privateConstructorUsedError;
-  ZacValue<bool>? get isDense => throw _privateConstructorUsedError;
+  ZacBool? get isCollapsed => throw _privateConstructorUsedError;
+  ZacBool? get isDense => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get contentPadding =>
       throw _privateConstructorUsedError;
   FlutterWidget? get prefixIcon => throw _privateConstructorUsedError;
@@ -62,7 +62,7 @@ mixin _$FlutterInputDecoration {
   FlutterWidget? get counter => throw _privateConstructorUsedError;
   ZacString? get counterText => throw _privateConstructorUsedError;
   FlutterTextStyle? get counterStyle => throw _privateConstructorUsedError;
-  ZacValue<bool>? get filled => throw _privateConstructorUsedError;
+  ZacBool? get filled => throw _privateConstructorUsedError;
   FlutterColor? get fillColor => throw _privateConstructorUsedError;
   FlutterColor? get focusColor => throw _privateConstructorUsedError;
   FlutterColor? get hoverColor => throw _privateConstructorUsedError;
@@ -73,9 +73,9 @@ mixin _$FlutterInputDecoration {
   FlutterInputBorder? get disabledBorder => throw _privateConstructorUsedError;
   FlutterInputBorder? get enabledBorder => throw _privateConstructorUsedError;
   FlutterInputBorder? get border => throw _privateConstructorUsedError;
-  ZacValue<bool>? get enabled => throw _privateConstructorUsedError;
+  ZacBool? get enabled => throw _privateConstructorUsedError;
   ZacString? get semanticCounterText => throw _privateConstructorUsedError;
-  ZacValue<bool>? get alignLabelWithHint => throw _privateConstructorUsedError;
+  ZacBool? get alignLabelWithHint => throw _privateConstructorUsedError;
   FlutterBoxConstraints? get constraints => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -177,9 +177,9 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
 // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   @override
-  final ZacValue<bool>? isCollapsed;
+  final ZacBool? isCollapsed;
   @override
-  final ZacValue<bool>? isDense;
+  final ZacBool? isDense;
   @override
   final FlutterEdgeInsetsGeometry? contentPadding;
   @override
@@ -213,7 +213,7 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterTextStyle? counterStyle;
   @override
-  final ZacValue<bool>? filled;
+  final ZacBool? filled;
   @override
   final FlutterColor? fillColor;
   @override
@@ -233,11 +233,11 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final FlutterInputBorder? border;
   @override
-  final ZacValue<bool>? enabled;
+  final ZacBool? enabled;
   @override
   final ZacString? semanticCounterText;
   @override
-  final ZacValue<bool>? alignLabelWithHint;
+  final ZacBool? alignLabelWithHint;
   @override
   final FlutterBoxConstraints? constraints;
 
@@ -421,8 +421,8 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       final ZacString? errorText,
       final FlutterTextStyle? errorStyle,
       final ZacInt? errorMaxLines,
-      final ZacValue<bool>? isCollapsed,
-      final ZacValue<bool>? isDense,
+      final ZacBool? isCollapsed,
+      final ZacBool? isDense,
       final FlutterEdgeInsetsGeometry? contentPadding,
       final FlutterWidget? prefixIcon,
       final FlutterBoxConstraints? prefixIconConstraints,
@@ -439,7 +439,7 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       final FlutterWidget? counter,
       final ZacString? counterText,
       final FlutterTextStyle? counterStyle,
-      final ZacValue<bool>? filled,
+      final ZacBool? filled,
       final FlutterColor? fillColor,
       final FlutterColor? focusColor,
       final FlutterColor? hoverColor,
@@ -449,9 +449,9 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       final FlutterInputBorder? disabledBorder,
       final FlutterInputBorder? enabledBorder,
       final FlutterInputBorder? border,
-      final ZacValue<bool>? enabled,
+      final ZacBool? enabled,
       final ZacString? semanticCounterText,
-      final ZacValue<bool>? alignLabelWithHint,
+      final ZacBool? alignLabelWithHint,
       final FlutterBoxConstraints? constraints}) = _$_FlutterInputDecoration;
   _FlutterInputDecoration._() : super._();
 
@@ -492,9 +492,9 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   ZacInt? get errorMaxLines;
   @override // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
-  ZacValue<bool>? get isCollapsed;
+  ZacBool? get isCollapsed;
   @override
-  ZacValue<bool>? get isDense;
+  ZacBool? get isDense;
   @override
   FlutterEdgeInsetsGeometry? get contentPadding;
   @override
@@ -528,7 +528,7 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterTextStyle? get counterStyle;
   @override
-  ZacValue<bool>? get filled;
+  ZacBool? get filled;
   @override
   FlutterColor? get fillColor;
   @override
@@ -548,11 +548,11 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   FlutterInputBorder? get border;
   @override
-  ZacValue<bool>? get enabled;
+  ZacBool? get enabled;
   @override
   ZacString? get semanticCounterText;
   @override
-  ZacValue<bool>? get alignLabelWithHint;
+  ZacBool? get alignLabelWithHint;
   @override
   FlutterBoxConstraints? get constraints;
 }

@@ -615,7 +615,7 @@ mixin _$FlutterStrutStyle {
   ZacDouble? get leading => throw _privateConstructorUsedError;
   FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
   FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
-  ZacValue<bool>? get forceStrutHeight => throw _privateConstructorUsedError;
+  ZacBool? get forceStrutHeight => throw _privateConstructorUsedError;
   ZacString? get debugLabel => throw _privateConstructorUsedError;
   ZacString? get package => throw _privateConstructorUsedError;
 
@@ -675,7 +675,7 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
   @override
   final FlutterFontStyle? fontStyle;
   @override
-  final ZacValue<bool>? forceStrutHeight;
+  final ZacBool? forceStrutHeight;
   @override
   final ZacString? debugLabel;
   @override
@@ -752,7 +752,7 @@ abstract class _FlutterStrutStyle extends FlutterStrutStyle {
       final ZacDouble? leading,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
-      final ZacValue<bool>? forceStrutHeight,
+      final ZacBool? forceStrutHeight,
       final ZacString? debugLabel,
       final ZacString? package}) = _$_FlutterStrutStyle;
   _FlutterStrutStyle._() : super._();
@@ -777,7 +777,7 @@ abstract class _FlutterStrutStyle extends FlutterStrutStyle {
   @override
   FlutterFontStyle? get fontStyle;
   @override
-  ZacValue<bool>? get forceStrutHeight;
+  ZacBool? get forceStrutHeight;
   @override
   ZacString? get debugLabel;
   @override
@@ -835,7 +835,7 @@ class _$_FlutterStrutStyleFromTextStyle
   @override
   final FlutterFontStyle? fontStyle;
   @override
-  final ZacValue<bool>? forceStrutHeight;
+  final ZacBool? forceStrutHeight;
   @override
   final ZacString? debugLabel;
   @override
@@ -915,7 +915,7 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
       final ZacDouble? leading,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
-      final ZacValue<bool>? forceStrutHeight,
+      final ZacBool? forceStrutHeight,
       final ZacString? debugLabel,
       final ZacString? package}) = _$_FlutterStrutStyleFromTextStyle;
   _FlutterStrutStyleFromTextStyle._() : super._();
@@ -941,7 +941,7 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
   @override
   FlutterFontStyle? get fontStyle;
   @override
-  ZacValue<bool>? get forceStrutHeight;
+  ZacBool? get forceStrutHeight;
   @override
   ZacString? get debugLabel;
   @override
@@ -1700,7 +1700,7 @@ FlutterTextStyle _$FlutterTextStyleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterTextStyle {
-  ZacValue<bool>? get inherit => throw _privateConstructorUsedError;
+  ZacBool? get inherit => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   ZacDouble? get fontSize => throw _privateConstructorUsedError;
@@ -1772,7 +1772,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       _$$_FlutterTextStyleFromJson(json);
 
   @override
-  final ZacValue<bool>? inherit;
+  final ZacBool? inherit;
   @override
   final FlutterColor? color;
   @override
@@ -1935,7 +1935,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
 
 abstract class _FlutterTextStyle extends FlutterTextStyle {
   factory _FlutterTextStyle(
-      {final ZacValue<bool>? inherit,
+      {final ZacBool? inherit,
       final FlutterColor? color,
       final FlutterColor? backgroundColor,
       final ZacDouble? fontSize,
@@ -1964,7 +1964,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       _$_FlutterTextStyle.fromJson;
 
   @override
-  ZacValue<bool>? get inherit;
+  ZacBool? get inherit;
   @override
   FlutterColor? get color;
   @override
