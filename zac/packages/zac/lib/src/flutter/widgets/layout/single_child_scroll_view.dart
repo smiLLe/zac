@@ -33,7 +33,7 @@ class FlutterSingleChildScrollView
     FlutterEdgeInsetsGeometry? padding,
     ZacBool? primary,
     // ScrollPhysics? physics,
-    ZacValue<FlutterScrollController>? controller,
+    FlutterScrollController? controller,
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
@@ -49,8 +49,7 @@ class FlutterSingleChildScrollView
       reverse: reverse?.getValueOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
       primary: primary?.getValueOrNull(zacContext),
-      controller:
-          controller?.getValue(zacContext).getScrollController(zacContext),
+      controller: controller?.getValueOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       restorationId: restorationId?.getValueOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??

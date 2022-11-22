@@ -64,6 +64,7 @@ import 'package:zac/src/flutter/widgets/material/text_field.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/flutter/widgets/opacity.dart';
 import 'package:zac/src/flutter/widgets/rotated_box.dart';
+import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/flutter/widgets/scroll_physics.dart';
 import 'package:zac/src/flutter/widgets/sliver/custom_scroll_view.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
@@ -512,6 +513,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:RouteFactoryFromRoutes': RouteFactoryFromRoutes.fromJson,
   'z:1:RouteFactoryRouteConfig': RouteFactoryRouteConfig.fromJson,
   'z:1:RouteFactorySingleRoute': RouteFactorySingleRoute.fromJson,
+  'z:1:ScrollController.consume': FlutterScrollController.fromJson,
   'z:1:SharedValue.invalidate': SharedValueActions.fromJson,
   'z:1:SharedValue.provide': SharedValueProviderBuilder.fromJson,
   'z:1:SharedValue.update': SharedValueActions.fromJson,

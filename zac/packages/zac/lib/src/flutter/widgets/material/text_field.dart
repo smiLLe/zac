@@ -78,7 +78,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
     ZacActions? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-    ZacValue<FlutterScrollController>? scrollController,
+    FlutterScrollController? scrollController,
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
     FlutterClip? clipBehavior,
@@ -135,9 +135,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       onTap: onTap?.createCb(zacContext),
       onEditingComplete: onEditingComplete?.createCb(zacContext),
       onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),
-      scrollController: scrollController
-          ?.getValue(zacContext)
-          .getScrollController(zacContext),
+      scrollController: scrollController?.getValueOrNull(zacContext),
     );
   }
 }

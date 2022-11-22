@@ -27,8 +27,8 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : ZacBool.fromJson(json['primary'] as Object),
       controller: json['controller'] == null
           ? null
-          : ZacValue<FlutterScrollController>.fromJson(
-              json['controller'] as Object),
+          : FlutterScrollController.fromJson(
+              json['controller'] as Map<String, dynamic>),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

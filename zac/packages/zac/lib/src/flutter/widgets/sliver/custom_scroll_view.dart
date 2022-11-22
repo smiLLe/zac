@@ -30,7 +30,7 @@ class FlutterCustomScrollView
     FlutterKey? key,
     FlutterAxis? scrollDirection,
     ZacBool? reverse,
-    ZacValue<FlutterScrollController>? controller,
+    FlutterScrollController? controller,
     ZacBool? primary,
     FlutterScrollPhysics? physics,
 // FlutterScrollBehavior? scrollBehavior,
@@ -53,8 +53,7 @@ class FlutterCustomScrollView
       slivers: slivers?.getWidgets(zacContext) ?? const <Widget>[],
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.getValueOrNull(zacContext) ?? false,
-      controller:
-          controller?.getValue(zacContext).getScrollController(zacContext),
+      controller: controller?.getValueOrNull(zacContext),
       primary: primary?.getValueOrNull(zacContext),
       physics: physics?.build(zacContext),
       shrinkWrap: shrinkWrap?.getValueOrNull(zacContext) ?? false,

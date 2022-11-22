@@ -1,40 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
-import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/zac_value.dart';
-
-import '../helper.dart';
+import '../zac/zac_values_test.dart';
 
 void main() {
-  testWidgets('ZacScrollController Can be manually created', (tester) async {
-    late ZacContext zacContext;
-    await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-    final ctrl = ScrollController();
-    expect(ZacScrollController(ctrl).getScrollController(zacContext), ctrl);
+  test('can be created', () {
+    expectCreateShared<FlutterScrollController, ScrollController>(
+      converter: 'z:1:ScrollController.consume',
+      create: FlutterScrollController.consume,
+    );
   });
 
-  testWidgets('ZacScrollController can be consumed by ZacValue',
-      (tester) async {
-    late ZacContext zacContext;
+  testWidgets('will return correct value', (tester) async {
     final ctrl = ScrollController();
-    await testWithinMaterialApp(
-        tester,
-        SharedValueProvider(
-          childBuilder: (c) {
-            zacContext = c;
-            return const SizedBox.shrink();
-          },
-          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
-          family: 'shared',
-          autoCreate: true,
-        ));
-
-    expect(
-        ZacValue<FlutterScrollController>.consume(family: 'shared')
-            .getValue(zacContext)
-            .getScrollController(zacContext),
-        ctrl);
+    await expectShared<ScrollController>(
+      tester: tester,
+      createBuilder: FlutterScrollController.consume,
+      expectValue: ctrl,
+    );
   });
 }

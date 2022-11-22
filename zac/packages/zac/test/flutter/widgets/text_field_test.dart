@@ -124,11 +124,11 @@ void main() {
               child: FlutterTextField(
                 key: FlutterValueKey('TEXTFIELD'),
                 scrollController:
-                    ZacValue<FlutterScrollController>.consume(family: 'shared'),
+                    FlutterScrollController.consume(family: 'shared'),
               ).buildWidget(zacContext),
             );
           },
-          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
+          valueBuilder: (ref, zacContext) => ctrl,
           family: 'shared',
           autoCreate: true,
         ));

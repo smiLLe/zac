@@ -134,11 +134,10 @@ void main() {
             zacContext = c;
             return FlutterListView(
               key: FlutterValueKey('LIST_VIEW'),
-              controller:
-                  ZacValue<FlutterScrollController>.consume(family: 'shared'),
+              controller: FlutterScrollController.consume(family: 'shared'),
             ).buildWidget(zacContext);
           },
-          valueBuilder: (ref, zacContext) => ZacScrollController(ctrl),
+          valueBuilder: (ref, zacContext) => ctrl,
           family: 'shared',
           autoCreate: true,
         ));

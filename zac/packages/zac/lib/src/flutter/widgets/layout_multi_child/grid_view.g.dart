@@ -20,8 +20,8 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
           : ZacBool.fromJson(json['reverse'] as Object),
       controller: json['controller'] == null
           ? null
-          : ZacValue<FlutterScrollController>.fromJson(
-              json['controller'] as Object),
+          : FlutterScrollController.fromJson(
+              json['controller'] as Map<String, dynamic>),
       primary: json['primary'] == null
           ? null
           : ZacBool.fromJson(json['primary'] as Object),

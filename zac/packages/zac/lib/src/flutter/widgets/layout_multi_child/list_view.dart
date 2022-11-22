@@ -29,7 +29,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     FlutterKey? key,
     FlutterAxis? scrollDirection,
     ZacBool? reverse,
-    ZacValue<FlutterScrollController>? controller,
+    FlutterScrollController? controller,
     ZacBool? primary,
     FlutterScrollPhysics? physics,
     ZacBool? shrinkWrap,
@@ -54,8 +54,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       key: key?.buildKey(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.getValueOrNull(zacContext) ?? false,
-      controller:
-          controller?.getValue(zacContext).getScrollController(zacContext),
+      controller: controller?.getValueOrNull(zacContext),
       primary: primary?.getValueOrNull(zacContext),
       shrinkWrap: shrinkWrap?.getValueOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),

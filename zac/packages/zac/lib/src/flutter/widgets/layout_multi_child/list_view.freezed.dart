@@ -23,8 +23,7 @@ mixin _$FlutterListView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacBool? get reverse => throw _privateConstructorUsedError;
-  ZacValue<FlutterScrollController>? get controller =>
-      throw _privateConstructorUsedError;
+  FlutterScrollController? get controller => throw _privateConstructorUsedError;
   ZacBool? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
   ZacBool? get shrinkWrap => throw _privateConstructorUsedError;
@@ -86,7 +85,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacBool? reverse;
   @override
-  final ZacValue<FlutterScrollController>? controller;
+  final FlutterScrollController? controller;
   @override
   final ZacBool? primary;
   @override
@@ -204,7 +203,7 @@ abstract class _FlutterListView extends FlutterListView {
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
       final ZacBool? reverse,
-      final ZacValue<FlutterScrollController>? controller,
+      final FlutterScrollController? controller,
       final ZacBool? primary,
       final FlutterScrollPhysics? physics,
       final ZacBool? shrinkWrap,
@@ -232,7 +231,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacBool? get reverse;
   @override
-  ZacValue<FlutterScrollController>? get controller;
+  FlutterScrollController? get controller;
   @override
   ZacBool? get primary;
   @override
