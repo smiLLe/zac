@@ -28,7 +28,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
     FlutterAlignmentGeometry? alignment,
     FlutterTextDirection? textDirection,
     FlutterStackFit? sizing,
-    ZacValue<int>? index,
+    ZacInt? index,
     ZacValueList<FlutterWidget>? children,
   }) = _FlutterIndexedStack;
 
@@ -39,7 +39,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
       alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
       textDirection: textDirection?.build(zacContext),
       sizing: sizing?.build(zacContext) ?? StackFit.loose,
-      index: index?.getValue(zacContext),
+      index: index?.getValueOrNull(zacContext),
       children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }

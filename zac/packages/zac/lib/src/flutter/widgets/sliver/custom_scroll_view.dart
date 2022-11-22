@@ -39,7 +39,7 @@ class FlutterCustomScrollView
     ZacValue<double>? anchor,
     ZacValue<double>? cacheExtent,
     ZacValueList<FlutterWidget>? slivers,
-    ZacValue<int>? semanticChildCount,
+    ZacInt? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
     ZacValue<String>? restorationId,
@@ -61,7 +61,7 @@ class FlutterCustomScrollView
       center: center?.buildKey(zacContext),
       anchor: anchor?.getValue(zacContext) ?? 0.0,
       cacheExtent: cacheExtent?.getValue(zacContext),
-      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      semanticChildCount: semanticChildCount?.getValueOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.getValue(zacContext),

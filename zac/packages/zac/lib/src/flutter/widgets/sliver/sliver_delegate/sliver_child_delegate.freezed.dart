@@ -41,7 +41,7 @@ mixin _$FlutterSliverChildDelegate {
       throw _privateConstructorUsedError;
   ZacValue<bool>? get addSemanticIndexes =>
       throw _privateConstructorUsedError; // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset => throw _privateConstructorUsedError;
+  ZacInt? get semanticIndexOffset => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -79,7 +79,7 @@ class _$_FlutterSliverChildListDelegate
   final ZacValue<bool>? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
-  final ZacValue<int>? semanticIndexOffset;
+  final ZacInt? semanticIndexOffset;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -125,12 +125,11 @@ class _$_FlutterSliverChildListDelegate
 abstract class _FlutterSliverChildListDelegate
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegate(
-          final ZacValueList<FlutterWidget> children,
-          {final ZacValue<bool>? addAutomaticKeepAlives,
-          final ZacValue<bool>? addRepaintBoundaries,
-          final ZacValue<bool>? addSemanticIndexes,
-          final ZacValue<int>? semanticIndexOffset}) =
-      _$_FlutterSliverChildListDelegate;
+      final ZacValueList<FlutterWidget> children,
+      {final ZacValue<bool>? addAutomaticKeepAlives,
+      final ZacValue<bool>? addRepaintBoundaries,
+      final ZacValue<bool>? addSemanticIndexes,
+      final ZacInt? semanticIndexOffset}) = _$_FlutterSliverChildListDelegate;
   _FlutterSliverChildListDelegate._() : super._();
 
   factory _FlutterSliverChildListDelegate.fromJson(Map<String, dynamic> json) =
@@ -145,7 +144,7 @@ abstract class _FlutterSliverChildListDelegate
   @override
   ZacValue<bool>? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset;
+  ZacInt? get semanticIndexOffset;
 }
 
 /// @nodoc
@@ -175,7 +174,7 @@ class _$_FlutterSliverChildListDelegateFixed
   final ZacValue<bool>? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
-  final ZacValue<int>? semanticIndexOffset;
+  final ZacInt? semanticIndexOffset;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -225,7 +224,7 @@ abstract class _FlutterSliverChildListDelegateFixed
           {final ZacValue<bool>? addAutomaticKeepAlives,
           final ZacValue<bool>? addRepaintBoundaries,
           final ZacValue<bool>? addSemanticIndexes,
-          final ZacValue<int>? semanticIndexOffset}) =
+          final ZacInt? semanticIndexOffset}) =
       _$_FlutterSliverChildListDelegateFixed;
   _FlutterSliverChildListDelegateFixed._() : super._();
 
@@ -242,5 +241,5 @@ abstract class _FlutterSliverChildListDelegateFixed
   @override
   ZacValue<bool>? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset;
+  ZacInt? get semanticIndexOffset;
 }

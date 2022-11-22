@@ -31,7 +31,7 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
 
 _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
     _$_FlutterIconData(
-      ZacValue<int>.fromJson(json['codePoint'] as Object),
+      ZacInt.fromJson(json['codePoint'] as Object),
       fontFamily: json['fontFamily'] == null
           ? null
           : ZacValue<String>.fromJson(json['fontFamily'] as Object),

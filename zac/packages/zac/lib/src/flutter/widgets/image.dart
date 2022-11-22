@@ -45,8 +45,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     FlutterFilterQuality? filterQuality,
     ZacValue<bool>? isAntiAlias,
     Map<String, String>? headers,
-    ZacValue<int>? cacheWidth,
-    ZacValue<int>? cacheHeight,
+    ZacInt? cacheWidth,
+    ZacInt? cacheHeight,
   }) = _FlutterImageNetowrk;
 
   @FreezedUnionValue(FlutterImage.unionValueAsset)
@@ -73,8 +73,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     ZacValue<bool>? isAntiAlias,
     ZacValue<String>? package,
     FlutterFilterQuality? filterQuality,
-    ZacValue<int>? cacheWidth,
-    ZacValue<int>? cacheHeight,
+    ZacInt? cacheWidth,
+    ZacInt? cacheHeight,
   }) = _FlutterImageAsset;
 
   @override
@@ -102,8 +102,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
             value.filterQuality?.build(zacContext) ?? FilterQuality.low,
         isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
         headers: value.headers,
-        cacheWidth: value.cacheWidth?.getValue(zacContext),
-        cacheHeight: value.cacheHeight?.getValue(zacContext),
+        cacheWidth: value.cacheWidth?.getValueOrNull(zacContext),
+        cacheHeight: value.cacheHeight?.getValueOrNull(zacContext),
       ),
       asset: (value) => Image.asset(
         value.name.getValue(zacContext),
@@ -126,8 +126,8 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         filterQuality:
             value.filterQuality?.build(zacContext) ?? FilterQuality.low,
         isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
-        cacheWidth: value.cacheWidth?.getValue(zacContext),
-        cacheHeight: value.cacheHeight?.getValue(zacContext),
+        cacheWidth: value.cacheWidth?.getValueOrNull(zacContext),
+        cacheHeight: value.cacheHeight?.getValueOrNull(zacContext),
       ),
     );
   }

@@ -32,8 +32,8 @@ mixin _$FlutterSelectableText {
   ZacValue<bool>? get showCursor => throw _privateConstructorUsedError;
   ZacValue<bool>? get autofocus =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
-  ZacValue<int>? get minLines => throw _privateConstructorUsedError;
-  ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
+  ZacInt? get minLines => throw _privateConstructorUsedError;
+  ZacInt? get maxLines => throw _privateConstructorUsedError;
   ZacValue<double>? get cursorWidth => throw _privateConstructorUsedError;
   ZacValue<double>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
@@ -106,9 +106,9 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   final ZacValue<bool>? autofocus;
 // ToolbarOptions? toolbarOptions,
   @override
-  final ZacValue<int>? minLines;
+  final ZacInt? minLines;
   @override
-  final ZacValue<int>? maxLines;
+  final ZacInt? maxLines;
   @override
   final ZacValue<double>? cursorWidth;
   @override
@@ -225,8 +225,8 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final ZacValue<double>? textScaleFactor,
       final ZacValue<bool>? showCursor,
       final ZacValue<bool>? autofocus,
-      final ZacValue<int>? minLines,
-      final ZacValue<int>? maxLines,
+      final ZacInt? minLines,
+      final ZacInt? maxLines,
       final ZacValue<double>? cursorWidth,
       final ZacValue<double>? cursorHeight,
       final FlutterRadius? cursorRadius,
@@ -259,9 +259,9 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   ZacValue<bool>? get autofocus;
   @override // ToolbarOptions? toolbarOptions,
-  ZacValue<int>? get minLines;
+  ZacInt? get minLines;
   @override
-  ZacValue<int>? get maxLines;
+  ZacInt? get maxLines;
   @override
   ZacValue<double>? get cursorWidth;
   @override

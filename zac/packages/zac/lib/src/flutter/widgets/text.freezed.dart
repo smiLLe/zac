@@ -30,7 +30,7 @@ mixin _$FlutterText {
   ZacValue<bool>? get softWrap => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
   ZacValue<double>? get textScaleFactor => throw _privateConstructorUsedError;
-  ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
+  ZacInt? get maxLines => throw _privateConstructorUsedError;
   ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
   FlutterTextWidthBasis? get textWidthBasis =>
       throw _privateConstructorUsedError;
@@ -87,7 +87,7 @@ class _$_FlutterText extends _FlutterText {
   @override
   final ZacValue<double>? textScaleFactor;
   @override
-  final ZacValue<int>? maxLines;
+  final ZacInt? maxLines;
   @override
   final ZacValue<String>? semanticsLabel;
   @override
@@ -170,7 +170,7 @@ abstract class _FlutterText extends FlutterText {
       final ZacValue<bool>? softWrap,
       final FlutterTextOverflow? overflow,
       final ZacValue<double>? textScaleFactor,
-      final ZacValue<int>? maxLines,
+      final ZacInt? maxLines,
       final ZacValue<String>? semanticsLabel,
       final FlutterTextWidthBasis? textWidthBasis,
       final FlutterTextHeightBehavior? textHeightBehavior}) = _$_FlutterText;
@@ -200,7 +200,7 @@ abstract class _FlutterText extends FlutterText {
   @override
   ZacValue<double>? get textScaleFactor;
   @override
-  ZacValue<int>? get maxLines;
+  ZacInt? get maxLines;
   @override
   ZacValue<String>? get semanticsLabel;
   @override

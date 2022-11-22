@@ -24,7 +24,7 @@ _$_FlutterIndexedStack _$$_FlutterIndexedStackFromJson(
           : FlutterStackFit.fromJson(json['sizing'] as Map<String, dynamic>),
       index: json['index'] == null
           ? null
-          : ZacValue<int>.fromJson(json['index'] as Object),
+          : ZacInt.fromJson(json['index'] as Object),
       children: json['children'] == null
           ? null
           : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),

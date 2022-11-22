@@ -21,14 +21,14 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   @FreezedUnionValue(FlutterSpacer.unionValue)
   factory FlutterSpacer({
     FlutterKey? key,
-    ZacValue<int>? flex,
+    ZacInt? flex,
   }) = _FlutterSpacer;
 
   @override
   Spacer buildWidget(ZacContext zacContext) {
     return Spacer(
       key: key?.buildKey(zacContext),
-      flex: flex?.getValue(zacContext) ?? 1,
+      flex: flex?.getValueOrNull(zacContext) ?? 1,
     );
   }
 }

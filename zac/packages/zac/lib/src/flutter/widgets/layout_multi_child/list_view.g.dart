@@ -58,7 +58,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
-          : ZacValue<int>.fromJson(json['semanticChildCount'] as Object),
+          : ZacInt.fromJson(json['semanticChildCount'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
           : FlutterScrollViewKeyboardDismissBehavior.fromJson(

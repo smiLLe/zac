@@ -52,7 +52,7 @@ class FlutterIconData with _$FlutterIconData {
 
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
-    ZacValue<int> codePoint, {
+    ZacInt codePoint, {
     ZacValue<String>? fontFamily,
     ZacValue<String>? fontPackage,
     ZacValue<bool>? matchTextDirection,

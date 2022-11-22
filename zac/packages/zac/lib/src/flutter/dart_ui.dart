@@ -354,8 +354,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       _$FlutterFontFeatureFromJson(json);
 
   @FreezedUnionValue('f:1:FontFeature')
-  factory FlutterFontFeature(String feature, [ZacValue<int>? value]) =
-      _FontFeature;
+  factory FlutterFontFeature(String feature, [ZacInt? value]) = _FontFeature;
 
   @FreezedUnionValue('f:1:FontFeature.alternative')
   factory FlutterFontFeature.alternative(int value) = _FontFeatureAlternative;
@@ -403,7 +402,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
-  factory FlutterFontFeature.notationalForms([ZacValue<int>? value]) =
+  factory FlutterFontFeature.notationalForms([ZacInt? value]) =
       _FontFeatureNotationalForms;
 
   @FreezedUnionValue('f:1:FontFeature.numerators')
@@ -443,15 +442,15 @@ class FlutterFontFeature with _$FlutterFontFeature {
   factory FlutterFontFeature.superscripts() = _FontFeatureSuperscripts;
 
   @FreezedUnionValue('f:1:FontFeature.swash')
-  factory FlutterFontFeature.swash([ZacValue<int>? value]) = _FontFeatureSwash;
+  factory FlutterFontFeature.swash([ZacInt? value]) = _FontFeatureSwash;
 
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
 
   FontFeature build(ZacContext zacContext) {
     return map(
-      (value) =>
-          FontFeature(value.feature, value.value?.getValue(zacContext) ?? 1),
+      (value) => FontFeature(
+          value.feature, value.value?.getValueOrNull(zacContext) ?? 1),
       alternative: (value) => FontFeature.alternative(value.value),
       alternativeFractions: (value) => const FontFeature.alternativeFractions(),
       caseSensitiveForms: (value) => const FontFeature.caseSensitiveForms(),
@@ -466,8 +465,8 @@ class FlutterFontFeature with _$FlutterFontFeature {
       liningFigures: (value) => const FontFeature.liningFigures(),
       localeAware: (value) => FontFeature.localeAware(
           enable: value.enable?.getValue(zacContext) ?? true),
-      notationalForms: (value) =>
-          FontFeature.notationalForms(value.value?.getValue(zacContext) ?? 1),
+      notationalForms: (value) => FontFeature.notationalForms(
+          value.value?.getValueOrNull(zacContext) ?? 1),
       numerators: (value) => const FontFeature.numerators(),
       oldstyleFigures: (value) => const FontFeature.oldstyleFigures(),
       ordinalForms: (value) => const FontFeature.ordinalForms(),
@@ -480,7 +479,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       subscripts: (value) => const FontFeature.subscripts(),
       superscripts: (value) => const FontFeature.superscripts(),
       swash: (value) =>
-          FontFeature.swash(value.value?.getValue(zacContext) ?? 1),
+          FontFeature.swash(value.value?.getValueOrNull(zacContext) ?? 1),
       tabularFigures: (value) => const FontFeature.tabularFigures(),
     );
   }
