@@ -76,7 +76,7 @@ ZacCompleterProviderBuilder _$ZacCompleterProviderBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacCompleterProviderBuilder {
-  ZacValue<FlutterWidget> get child => throw _privateConstructorUsedError;
+  ZacFlutterWidget get child => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -99,7 +99,7 @@ class _$_ZacCompleterProviderBuilderVoid
       _$$_ZacCompleterProviderBuilderVoidFromJson(json);
 
   @override
-  final ZacValue<FlutterWidget> child;
+  final ZacFlutterWidget child;
   @override
   final Object family;
 
@@ -134,7 +134,7 @@ class _$_ZacCompleterProviderBuilderVoid
 abstract class _ZacCompleterProviderBuilderVoid
     extends ZacCompleterProviderBuilder {
   factory _ZacCompleterProviderBuilderVoid(
-      {required final ZacValue<FlutterWidget> child,
+      {required final ZacFlutterWidget child,
       required final Object family}) = _$_ZacCompleterProviderBuilderVoid;
   _ZacCompleterProviderBuilderVoid._() : super._();
 
@@ -142,7 +142,7 @@ abstract class _ZacCompleterProviderBuilderVoid
       _$_ZacCompleterProviderBuilderVoid.fromJson;
 
   @override
-  ZacValue<FlutterWidget> get child;
+  ZacFlutterWidget get child;
   @override
   Object get family;
 }

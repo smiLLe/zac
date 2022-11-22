@@ -124,8 +124,8 @@ void main() {
     final machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-          widget: ZacValue<FlutterWidget>(
-            data: FlutterSizedBox(
+          widget: ZacFlutterWidget(
+            value: FlutterSizedBox(
               key: FlutterValueKey('in a'),
             ),
           ),

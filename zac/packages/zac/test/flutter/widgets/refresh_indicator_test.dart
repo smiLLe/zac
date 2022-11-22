@@ -109,8 +109,8 @@ void main() {
         body: ZacWidget(
           data: ZacCompleterProviderBuilder.asVoid(
             family: 'shared',
-            child: ZacValue<FlutterWidget>(
-              data: FlutterRefreshIndicator(
+            child: ZacFlutterWidget(
+              value: FlutterRefreshIndicator(
                 onRefresh: ZacActions([
                   LeakAction(cb),
                   ZacCompleterActions.completeVoid(

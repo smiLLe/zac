@@ -14,7 +14,7 @@ _$_ZacTransition _$$_ZacTransitionFromJson(Map<String, dynamic> json) =>
 
 _$_ZacStateConfig _$$_ZacStateConfigFromJson(Map<String, dynamic> json) =>
     _$_ZacStateConfig(
-      widget: ZacValue<FlutterWidget>.fromJson(json['widget'] as Object),
+      widget: ZacFlutterWidget.fromJson(json['widget'] as Object),
       on: (json['on'] as List<dynamic>?)
               ?.map((e) => ZacTransition.fromJson(e as Map<String, dynamic>))
               .toList() ??

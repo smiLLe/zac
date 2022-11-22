@@ -38,7 +38,7 @@ class ZacStateConfig with _$ZacStateConfig {
 
   @FreezedUnionValue(ZacStateConfig.unionValue)
   factory ZacStateConfig({
-    required ZacValue<FlutterWidget> widget,
+    required ZacFlutterWidget widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
 }

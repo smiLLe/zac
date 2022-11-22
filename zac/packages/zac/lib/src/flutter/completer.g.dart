@@ -13,7 +13,7 @@ _$_DartCompleterVoidBuilder _$$_DartCompleterVoidBuilderFromJson(
 _$_ZacCompleterProviderBuilderVoid _$$_ZacCompleterProviderBuilderVoidFromJson(
         Map<String, dynamic> json) =>
     _$_ZacCompleterProviderBuilderVoid(
-      child: ZacValue<FlutterWidget>.fromJson(json['child'] as Object),
+      child: ZacFlutterWidget.fromJson(json['child'] as Object),
       family: json['family'] as Object,
     );
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
@@ -102,11 +101,11 @@ void main() {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('a')))),
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('a')))),
         'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('b'))))
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('b'))))
       },
       context: null,
       state: 'a',
@@ -118,15 +117,15 @@ void main() {
     expect(
         machine.config,
         ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('a')))));
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('a')))));
 
     machine = machine.copyWith.call(state: 'b');
     expect(
         machine.config,
         ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('b')))));
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('b')))));
 
     machine = machine.copyWith.call(state: 'c');
     expect(
@@ -141,8 +140,8 @@ void main() {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('a')))),
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('a')))),
       },
       context: null,
       state: 'a',
@@ -159,11 +158,11 @@ void main() {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('a')))),
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('a')))),
         'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('b'))))
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('b'))))
       },
       context: null,
       state: 'a',
@@ -175,29 +174,29 @@ void main() {
     expect(
         machine.findConfigByState('a'),
         ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('a')))));
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('a')))));
     expect(
         machine.findConfigByState('b'),
         ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('b')))));
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('b')))));
   });
 
   test('Find a transition candidate for event in a StateMachine', () {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-          widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(key: FlutterValueKey('a'))),
+          widget: ZacFlutterWidget(
+              value: FlutterSizedBox(key: FlutterValueKey('a'))),
           on: [
             ZacTransition(event: 'NEXT', target: 'b'),
             ZacTransition(event: 'NEXT', target: 'c')
           ],
         ),
         'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(key: FlutterValueKey('b'))))
+            widget: ZacFlutterWidget(
+                value: FlutterSizedBox(key: FlutterValueKey('b'))))
       },
       context: null,
       state: 'a',
@@ -222,8 +221,8 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
             ),
@@ -267,8 +266,8 @@ void main() {
           initialState: ZacString.fromJson('a'),
           states: {
             'a': ZacStateConfig(
-              widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(
+              widget: ZacFlutterWidget(
+                value: FlutterSizedBox(
                   key: FlutterValueKey('in a'),
                 ),
               ),
@@ -277,8 +276,8 @@ void main() {
               ],
             ),
             'b': ZacStateConfig(
-              widget: ZacValue<FlutterWidget>(
-                data: FlutterSizedBox(
+              widget: ZacFlutterWidget(
+                value: FlutterSizedBox(
                   key: FlutterValueKey('in b'),
                 ),
               ),
@@ -318,16 +317,16 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
             ),
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
             ),
@@ -375,17 +374,17 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
             on: [
               ZacTransition(event: 'NEXT', target: 'b'),
               ZacTransition(event: 'OTHER', target: 'c'),
             ],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
           ),
           'c': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
           ),
         },
         child: LeakContext(
@@ -420,13 +419,13 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
             on: [
               ZacTransition(event: 'NEXT', target: 'b'),
             ],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
           ),
         },
         child: LeakContext(
@@ -460,13 +459,13 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
             on: [
               ZacTransition(event: 'NEXT', target: 'b'),
             ],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(data: FlutterSizedBox()),
+            widget: ZacFlutterWidget(value: FlutterSizedBox()),
           ),
         },
         child: LeakContext(
@@ -505,24 +504,24 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
             ),
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in b'),
               ),
             ),
             on: [ZacTransition(event: 'NEXT', target: 'c')],
           ),
           'c': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in c'),
               ),
             ),
@@ -574,8 +573,8 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
             ),
@@ -603,8 +602,8 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: ZacExecuteActionsBuilder.once(
+            widget: ZacFlutterWidget(
+              value: ZacExecuteActionsBuilder.once(
                 actions: ZacActions(
                   [
                     ZacStateMachineActions.send(
@@ -619,8 +618,8 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in b'),
               ),
             ),
@@ -646,8 +645,8 @@ void main() {
         initialState: ZacString.fromJson('a'),
         states: {
           'a': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: ZacExecuteActionsBuilder.once(
+            widget: ZacFlutterWidget(
+              value: ZacExecuteActionsBuilder.once(
                 actions: ZacActions(
                   [
                     ZacStateMachineActions.trySend(
@@ -662,8 +661,8 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
           'b': ZacStateConfig(
-            widget: ZacValue<FlutterWidget>(
-              data: FlutterSizedBox(
+            widget: ZacFlutterWidget(
+              value: FlutterSizedBox(
                 key: FlutterValueKey('in b'),
               ),
             ),
@@ -687,8 +686,8 @@ void main() {
             ZacTransformValue(ZacStateMachine(
               states: {
                 'a': ZacStateConfig(
-                    widget: ZacValue<FlutterWidget>(
-                        data: FlutterSizedBox(key: FlutterValueKey('a')))),
+                    widget: ZacFlutterWidget(
+                        value: FlutterSizedBox(key: FlutterValueKey('a')))),
               },
               context: null,
               state: 'a',
@@ -716,8 +715,8 @@ void main() {
             ZacTransformValue(ZacStateMachine(
               states: {
                 'a': ZacStateConfig(
-                    widget: ZacValue<FlutterWidget>(
-                        data: FlutterSizedBox(key: FlutterValueKey('a')))),
+                    widget: ZacFlutterWidget(
+                        value: FlutterSizedBox(key: FlutterValueKey('a')))),
               },
               context: 'hello',
               state: 'a',

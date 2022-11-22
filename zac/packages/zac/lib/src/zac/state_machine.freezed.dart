@@ -90,7 +90,7 @@ ZacStateConfig _$ZacStateConfigFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacStateConfig {
-  ZacValue<FlutterWidget> get widget => throw _privateConstructorUsedError;
+  ZacFlutterWidget get widget => throw _privateConstructorUsedError;
   List<ZacTransition> get on => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -112,7 +112,7 @@ class _$_ZacStateConfig implements _ZacStateConfig {
       _$$_ZacStateConfigFromJson(json);
 
   @override
-  final ZacValue<FlutterWidget> widget;
+  final ZacFlutterWidget widget;
   final List<ZacTransition> _on;
   @override
   @JsonKey()
@@ -151,14 +151,14 @@ class _$_ZacStateConfig implements _ZacStateConfig {
 
 abstract class _ZacStateConfig implements ZacStateConfig {
   factory _ZacStateConfig(
-      {required final ZacValue<FlutterWidget> widget,
+      {required final ZacFlutterWidget widget,
       final List<ZacTransition> on}) = _$_ZacStateConfig;
 
   factory _ZacStateConfig.fromJson(Map<String, dynamic> json) =
       _$_ZacStateConfig.fromJson;
 
   @override
-  ZacValue<FlutterWidget> get widget;
+  ZacFlutterWidget get widget;
   @override
   List<ZacTransition> get on;
 }
