@@ -50,7 +50,7 @@ void main() {
         expression: 'expr',
         context: ZacValueMap<Object>(data: {
           'simple': 1,
-          'shared': ZacValue<Object>.consume(family: 'fam'),
+          'shared': ZacObject.consume(family: 'fam'),
         }),
       ),
       props: <String, dynamic>{

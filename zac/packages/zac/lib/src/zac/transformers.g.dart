@@ -44,9 +44,7 @@ _$_MapIsNotEmpty _$$_MapIsNotEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_MapContainsKey _$$_MapContainsKeyFromJson(Map<String, dynamic> json) =>
     _$_MapContainsKey(
-      json['key'] == null
-          ? null
-          : ZacValue<Object>.fromJson(json['key'] as Object),
+      json['key'] == null ? null : ZacObject.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -54,7 +52,7 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
     _$_MapContainsValue(
       json['value'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['value'] as Object),
+          : ZacObject.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -93,7 +91,7 @@ _$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
 
 _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
     _$_MapSetValueForKey(
-      value: ZacValue<Object?>.fromJson(json['value'] as Object),
+      value: ZacObject.fromJson(json['value'] as Object),
       key: ZacString.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
@@ -166,7 +164,7 @@ _$_IterableContains _$$_IterableContainsFromJson(Map<String, dynamic> json) =>
     _$_IterableContains(
       json['element'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['element'] as Object),
+          : ZacObject.fromJson(json['element'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -200,7 +198,7 @@ _$_ListFromFlutterWidget _$$_ListFromFlutterWidgetFromJson(
     );
 
 _$_ListAdd _$$_ListAddFromJson(Map<String, dynamic> json) => _$_ListAdd(
-      ZacValue<Object?>.fromJson(json['value'] as Object),
+      ZacObject.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -269,7 +267,7 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      value: ZacValue<Object?>.fromJson(json['value'] as Object),
+      value: ZacObject.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

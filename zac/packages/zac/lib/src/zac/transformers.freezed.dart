@@ -734,7 +734,7 @@ class _$_MapContainsKey extends _MapContainsKey {
       _$$_MapContainsKeyFromJson(json);
 
   @override
-  final ZacValue<Object>? key;
+  final ZacObject? key;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -782,14 +782,13 @@ class _$_MapContainsKey extends _MapContainsKey {
 }
 
 abstract class _MapContainsKey extends MapTransformer {
-  const factory _MapContainsKey(final ZacValue<Object>? key) =
-      _$_MapContainsKey;
+  const factory _MapContainsKey(final ZacObject? key) = _$_MapContainsKey;
   const _MapContainsKey._() : super._();
 
   factory _MapContainsKey.fromJson(Map<String, dynamic> json) =
       _$_MapContainsKey.fromJson;
 
-  ZacValue<Object>? get key;
+  ZacObject? get key;
 }
 
 /// @nodoc
@@ -803,7 +802,7 @@ class _$_MapContainsValue extends _MapContainsValue {
       _$$_MapContainsValueFromJson(json);
 
   @override
-  final ZacValue<Object>? value;
+  final ZacObject? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -851,14 +850,13 @@ class _$_MapContainsValue extends _MapContainsValue {
 }
 
 abstract class _MapContainsValue extends MapTransformer {
-  const factory _MapContainsValue(final ZacValue<Object>? value) =
-      _$_MapContainsValue;
+  const factory _MapContainsValue(final ZacObject? value) = _$_MapContainsValue;
   const _MapContainsValue._() : super._();
 
   factory _MapContainsValue.fromJson(Map<String, dynamic> json) =
       _$_MapContainsValue.fromJson;
 
-  ZacValue<Object>? get value;
+  ZacObject? get value;
 }
 
 /// @nodoc
@@ -1202,7 +1200,7 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
       _$$_MapSetValueForKeyFromJson(json);
 
   @override
-  final ZacValue<Object?> value;
+  final ZacObject value;
   @override
   final ZacString key;
 
@@ -1254,14 +1252,14 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
 
 abstract class _MapSetValueForKey extends MapTransformer {
   const factory _MapSetValueForKey(
-      {required final ZacValue<Object?> value,
+      {required final ZacObject value,
       required final ZacString key}) = _$_MapSetValueForKey;
   const _MapSetValueForKey._() : super._();
 
   factory _MapSetValueForKey.fromJson(Map<String, dynamic> json) =
       _$_MapSetValueForKey.fromJson;
 
-  ZacValue<Object?> get value;
+  ZacObject get value;
   ZacString get key;
 }
 
@@ -2066,7 +2064,7 @@ class _$_IterableContains extends _IterableContains {
       _$$_IterableContainsFromJson(json);
 
   @override
-  final ZacValue<Object>? element;
+  final ZacObject? element;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2112,14 +2110,14 @@ class _$_IterableContains extends _IterableContains {
 }
 
 abstract class _IterableContains extends IterableTransformer {
-  const factory _IterableContains(final ZacValue<Object>? element) =
+  const factory _IterableContains(final ZacObject? element) =
       _$_IterableContains;
   const _IterableContains._() : super._();
 
   factory _IterableContains.fromJson(Map<String, dynamic> json) =
       _$_IterableContains.fromJson;
 
-  ZacValue<Object>? get element;
+  ZacObject? get element;
 }
 
 /// @nodoc
@@ -2451,7 +2449,7 @@ class _$_ListAdd extends _ListAdd {
       _$$_ListAddFromJson(json);
 
   @override
-  final ZacValue<Object?> value;
+  final ZacObject value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2485,12 +2483,12 @@ class _$_ListAdd extends _ListAdd {
 }
 
 abstract class _ListAdd extends ListTransformer {
-  const factory _ListAdd(final ZacValue<Object?> value) = _$_ListAdd;
+  const factory _ListAdd(final ZacObject value) = _$_ListAdd;
   const _ListAdd._() : super._();
 
   factory _ListAdd.fromJson(Map<String, dynamic> json) = _$_ListAdd.fromJson;
 
-  ZacValue<Object?> get value;
+  ZacObject get value;
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
@@ -3252,7 +3250,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final ZacValue<Object?> value;
+  final ZacObject value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3296,14 +3294,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
 }
 
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
-  factory _ObjectEqualsSharedValue({required final ZacValue<Object?> value}) =
+  factory _ObjectEqualsSharedValue({required final ZacObject value}) =
       _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  ZacValue<Object?> get value;
+  ZacObject get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

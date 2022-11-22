@@ -326,11 +326,10 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacValue<Object>? key) =
-      _MapContainsKey;
+  const factory MapTransformer.containsKey(ZacObject? key) = _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacValue<Object>? value) =
+  const factory MapTransformer.containsValue(ZacObject? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
@@ -355,7 +354,7 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
   const factory MapTransformer.setValueForKey({
-    required ZacValue<Object?> value,
+    required ZacObject value,
     required ZacString key,
   }) = _MapSetValueForKey;
 
@@ -382,9 +381,10 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.getValue(zacContext,
+      containsKey: (obj) => theMap.containsKey(obj.key?.getValueOrNull(
+          zacContext,
           prefered: const SharedValueConsumeType.read())),
-      containsValue: (obj) => theMap.containsValue(obj.value?.getValue(
+      containsValue: (obj) => theMap.containsValue(obj.value?.getValueOrNull(
           zacContext,
           prefered: const SharedValueConsumeType.read())),
       mapper: (obj) {
@@ -501,7 +501,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacValue<Object>? element) =
+  const factory IterableTransformer.contains(ZacObject? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
@@ -538,7 +538,7 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.getValue(zacContext,
+      contains: (obj) => value.contains(obj.element?.getValueOrNull(zacContext,
           prefered: const SharedValueConsumeType.read())),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
@@ -567,7 +567,7 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.fromFlutterWidget() = _ListFromFlutterWidget;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
-  const factory ListTransformer.add(ZacValue<Object?> value) = _ListAdd;
+  const factory ListTransformer.add(ZacObject value) = _ListAdd;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -665,7 +665,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacValue<Object?> value,
+    required ZacObject value,
   }) = _ObjectEqualsSharedValue;
 
   @override

@@ -107,7 +107,7 @@ class ZacStateMachineProviderBuilder
     required ZacString initialState,
     required Map<String, ZacStateConfig> states,
     required FlutterWidget child,
-    ZacValue<Object>? initialContext,
+    ZacObject? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
@@ -155,7 +155,7 @@ because there was already a transition.
     return ZacStateMachine(
       states: states,
       state: initialState.getValue(zacContext),
-      context: initialContext?.getValue(zacContext),
+      context: initialContext?.getValueOrNull(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
