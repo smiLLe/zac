@@ -114,12 +114,11 @@ void main() {
                 onRefresh: ZacActions([
                   LeakAction(cb),
                   ZacCompleterActions.completeVoid(
-                      completer: ZacValueConsumeOnly<DartCompleter<dynamic>>(
-                          ZacValue.consume(family: 'shared')))
+                      completer: DartCompleterVoid.consume(family: 'shared'))
                 ]),
                 onRefreshCompleter:
-                    ZacValueConsumeOnly<DartCompleterVoid>.fromJson({
-                  'converter': 'z:1:ZacValue.consume',
+                    DartCompleterVoid.fromJson(<String, dynamic>{
+                  'converter': 'z:1:Completer<void>.consume',
                   'family': 'shared',
                 }),
                 child: FlutterListView(

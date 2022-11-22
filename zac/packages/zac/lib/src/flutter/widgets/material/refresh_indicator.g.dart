@@ -42,8 +42,8 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
               json['triggerMode'] as Map<String, dynamic>),
       onRefreshCompleter: json['onRefreshCompleter'] == null
           ? null
-          : ZacValueConsumeOnly<DartCompleterVoid>.fromJson(
-              json['onRefreshCompleter'] as Object),
+          : DartCompleterVoid.fromJson(
+              json['onRefreshCompleter'] as Map<String, dynamic>),
     );
 
 _$_FlutterRefreshIndicatorTriggerModeonEdge

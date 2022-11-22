@@ -3,45 +3,32 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'completer.freezed.dart';
 part 'completer.g.dart';
 
-abstract class DartCompleter<T> {
-  Completer<T> getCompleter();
-}
-
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB)
-abstract class DartCompleterVoid implements DartCompleter<void> {
-  factory DartCompleterVoid.fromJson(Map<String, dynamic> json) {
-    return ConverterHelper.convertToType<DartCompleterVoid>(json);
-  }
-}
-
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
-class DartCompleterVoidBuilder
-    with _$DartCompleterVoidBuilder
-    implements DartCompleterVoid {
-  DartCompleterVoidBuilder._();
+class DartCompleterVoid with _$DartCompleterVoid, ZacGetValue<Completer<void>> {
+  const DartCompleterVoid._();
 
-  static const String unionValue = 'd:1:Completer<void>';
+  factory DartCompleterVoid.fromJson(Map<String, dynamic> json) =>
+      _$DartCompleterVoidFromJson(json);
 
-  factory DartCompleterVoidBuilder.fromJson(Map<String, dynamic> json) =>
-      _$DartCompleterVoidBuilderFromJson(json);
-
-  @FreezedUnionValue(DartCompleterVoidBuilder.unionValue)
-  factory DartCompleterVoidBuilder() = _DartCompleterVoidBuilder;
-
-  late final Completer<void> _c = Completer<void>();
-
-  @override
-  Completer<void> getCompleter() => _c;
+  @FreezedUnionValue('z:1:Completer<void>.consume')
+  @Implements<ZacValueConsume<Completer<void>>>()
+  @With<ZacValueConsumeImpl<Completer<void>>>()
+  factory DartCompleterVoid.consume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  }) = _DartCompleterVoidConsumeSharedValue;
 }
 
 @freezedZacBuilder
@@ -68,7 +55,7 @@ class ZacCompleterProviderBuilder
       asVoid: (value) => ZacCompleterProvider<void>(
         childBuilder: (zacContext) =>
             value.child.getValue(zacContext).buildWidget(zacContext),
-        completerBuilder: () => DartCompleterVoidBuilder(),
+        completerBuilder: () => Completer<void>(),
         disposeComplete: (completer) => completer.complete(null),
         family: family,
       ),
@@ -89,7 +76,7 @@ class ZacCompleterProvider<T> extends StatelessWidget {
   final SharedValueFamily family;
 
   /// Always return a new Completer instance when this function is called
-  final DartCompleter<T> Function() completerBuilder;
+  final Completer<T> Function() completerBuilder;
 
   /// Must call .complete() or .completeError(). This is only called when the
   /// provider is going to be disposed and is meant to "cleanUp" the Completer
@@ -101,15 +88,14 @@ class ZacCompleterProvider<T> extends StatelessWidget {
     return SharedValueProvider(
       childBuilder: childBuilder,
       valueBuilder: (ref, zacContext) {
-        final dartCompleter = completerBuilder();
-        final completer = dartCompleter.getCompleter();
+        final completer = completerBuilder();
         ref.onDispose(() {
           if (completer.isCompleted) return;
           disposeComplete(completer);
           assert(completer.isCompleted,
               '${Completer<T>} was not completed in disposeComplete callback');
         });
-        return dartCompleter;
+        return completer;
       },
       family: family,
       autoCreate: true,
@@ -130,14 +116,14 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
 
   @FreezedUnionValue(ZacCompleterActions.unionValueCompleteVoid)
   factory ZacCompleterActions.completeVoid({
-    required ZacValueConsumeOnly<DartCompleter<dynamic>> completer,
+    required DartCompleterVoid completer,
   }) = _ZacCompleterActionsVoid;
 
   @override
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       completeVoid: (obj) {
-        final completer = obj.completer.getValue(zacContext).getCompleter();
+        final completer = obj.completer.getValue(zacContext);
         if (completer.isCompleted) return;
         completer.complete();
       },

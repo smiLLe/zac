@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/zac/action.dart';
@@ -10,8 +9,25 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
+import '../zac/zac_values_test.dart';
 
 void main() {
+  group('DartCompleterVoid', () {
+    test('can be created', () {
+      expectCreateShared<DartCompleterVoid, Completer<void>>(
+        converter: 'z:1:Completer<void>.consume',
+        create: DartCompleterVoid.consume,
+      );
+    });
+
+    testWidgets('will return correct value', (tester) async {
+      await expectShared<Completer<void>>(
+        tester: tester,
+        createBuilder: DartCompleterVoid.consume,
+        expectValue: Completer<void>(),
+      );
+    });
+  });
   test('Create Provider from json', () {
     expect(
         ConverterHelper.convertToType<ZacCompleterProviderBuilder>({
@@ -32,21 +48,18 @@ void main() {
     late ZacContext zacContext;
     await testWithinMaterialApp(
         tester,
-        ZacCompleterProvider<int>(
+        ZacCompleterProvider<void>(
           childBuilder: (c) {
             zacContext = c;
             return const SizedBox.shrink();
           },
           family: 'shared',
-          completerBuilder: () => _IntCompleter(),
+          completerBuilder: () => Completer<void>(),
           disposeComplete: (completer) => completer.complete(0),
         ));
 
-    expect(
-        ZacValue<DartCompleter<int>>.consume(family: 'shared')
-            .getValue(zacContext)
-            .getCompleter(),
-        isA<Completer<int>>());
+    expect(DartCompleterVoid.consume(family: 'shared').getValue(zacContext),
+        isA<Completer<void>>());
   });
 
   testWidgets(
@@ -55,20 +68,19 @@ void main() {
     late ZacContext zacContext;
     await testWithinMaterialApp(
         tester,
-        ZacCompleterProvider<int>(
+        ZacCompleterProvider<void>(
           key: const ValueKey('a'),
           childBuilder: (c) {
             zacContext = c;
             return const SizedBox.shrink();
           },
           family: 'shared',
-          completerBuilder: () => _IntCompleter(),
-          disposeComplete: (completer) => completer.complete(0),
+          completerBuilder: () => Completer<void>(),
+          disposeComplete: (completer) => completer.complete(),
         ));
 
-    final completer = ZacValue<DartCompleter<int>>.consume(family: 'shared')
-        .getValue(zacContext)
-        .getCompleter();
+    final completer =
+        DartCompleterVoid.consume(family: 'shared').getValue(zacContext);
 
     await tester.pumpWidget(const SizedBox());
 
@@ -87,10 +99,7 @@ void main() {
           family: 'shared',
         ));
 
-    expect(
-        ZacValue<DartCompleter<dynamic>>.consume(family: 'shared')
-            .getValue(zacContext)
-            .getCompleter(),
+    expect(DartCompleterVoid.consume(family: 'shared').getValue(zacContext),
         isA<Completer<void>>());
   });
 
@@ -99,13 +108,12 @@ void main() {
         ConverterHelper.convertToType<ZacCompleterActions>({
           'converter': 'z:1:CompleterAction.completeVoid',
           'completer': {
-            'converter': 'z:1:ZacValue.consume',
+            'converter': 'z:1:Completer<void>.consume',
             'family': 'shared',
           },
         }),
         ZacCompleterActions.completeVoid(
-            completer: ZacValueConsumeOnly<DartCompleter<dynamic>>(
-                ZacValue.consume(family: 'shared'))));
+            completer: DartCompleterVoid.consume(family: 'shared')));
   });
 
   testWidgets('Complete a Completer<void> using ZacCompleterActions',
@@ -120,21 +128,13 @@ void main() {
           family: 'shared',
         ));
 
-    final completer = ZacValue<DartCompleter<dynamic>>.consume(family: 'shared')
-        .getValue(zacContext)
-        .getCompleter();
+    final completer =
+        DartCompleterVoid.consume(family: 'shared').getValue(zacContext);
 
     ZacCompleterActions.completeVoid(
-            completer: ZacValueConsumeOnly<DartCompleter<dynamic>>(
-                ZacValue.consume(family: 'shared')))
+            completer: DartCompleterVoid.consume(family: 'shared'))
         .execute(const ZacActionPayload(), zacContext);
 
     expect(completer.isCompleted, isTrue);
   });
-}
-
-class _IntCompleter extends DartCompleter<int> {
-  final Completer<int> completer = Completer<int>();
-  @override
-  Completer<int> getCompleter() => completer;
 }

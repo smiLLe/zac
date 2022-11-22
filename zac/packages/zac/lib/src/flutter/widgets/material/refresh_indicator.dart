@@ -41,7 +41,7 @@ class FlutterRefreshIndicator
     ZacString? semanticsValue,
     ZacDouble? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
-    ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter,
+    DartCompleterVoid? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   @override
@@ -55,8 +55,7 @@ class FlutterRefreshIndicator
 
         zacContext.ref
             .invalidate(SharedValue.provider(onRefreshCompleter!.family));
-        final completer =
-            onRefreshCompleter!.getValue(zacContext).getCompleter();
+        final completer = onRefreshCompleter!.getValue(zacContext);
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },

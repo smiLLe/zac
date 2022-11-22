@@ -84,7 +84,6 @@ import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
-  'd:1:Completer<void>': DartCompleterVoidBuilder.fromJson,
   'f:1:AlertDialog': FlutterDialogs.fromJson,
   'f:1:Align': FlutterAlign.fromJson,
   'f:1:Alignment': FlutterAlignment.fromJson,
@@ -491,6 +490,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'f:1:WrapCrossAlignment.start': FlutterWrapCrossAlignment.fromJson,
   'f:1:showDialog': FlutterDialogActions.fromJson,
   'z:1:Actions': ZacActions.fromJson,
+  'z:1:Completer<void>.consume': DartCompleterVoid.fromJson,
   'z:1:CompleterAction.completeVoid': ZacCompleterActions.fromJson,
   'z:1:CompleterProvider.void': ZacCompleterProviderBuilder.fromJson,
   'z:1:ControlFlowAction.if': ZacControlFlowAction.fromJson,
