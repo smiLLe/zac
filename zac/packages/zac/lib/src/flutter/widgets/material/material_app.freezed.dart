@@ -23,7 +23,7 @@ mixin _$FlutterMaterialApp {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? get navigatorKey =>
       throw _privateConstructorUsedError;
-  ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+  ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>?
       get scaffoldMessengerKey => throw _privateConstructorUsedError;
   FlutterWidget? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -103,7 +103,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   @override
   final ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? navigatorKey;
   @override
-  final ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+  final ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>?
       scaffoldMessengerKey;
   @override
   final FlutterWidget? home;
@@ -238,7 +238,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
       {final FlutterKey? key,
       final ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? navigatorKey,
-      final ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+      final ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>?
           scaffoldMessengerKey,
       final FlutterWidget? home,
       final ZacValue<String>? initialRoute,
@@ -265,7 +265,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override
   ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? get navigatorKey;
   @override
-  ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+  ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>?
       get scaffoldMessengerKey;
   @override
   FlutterWidget? get home;

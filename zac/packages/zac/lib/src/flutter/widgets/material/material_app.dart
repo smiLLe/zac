@@ -24,7 +24,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   factory FlutterMaterialApp({
     FlutterKey? key,
     ZacValueConsumeOnly<FlutterGlobalKeyNavigatorState>? navigatorKey,
-    ZacValueConsumeOnly<FlutterGlobalKeyScaffoldMessengerState>?
+    ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>?
         scaffoldMessengerKey,
     FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -65,8 +65,9 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
     return MaterialApp(
       key: key?.buildKey(zacContext),
       navigatorKey: navigatorKey?.getValue(zacContext).buildKey(zacContext),
-      scaffoldMessengerKey:
-          scaffoldMessengerKey?.getValue(zacContext).buildKey(zacContext),
+      scaffoldMessengerKey: scaffoldMessengerKey
+          ?.getSharedValueOrNull(zacContext)
+          ?.buildKey(zacContext),
       home: home?.buildWidget(zacContext),
       initialRoute: initialRoute?.getValue(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),

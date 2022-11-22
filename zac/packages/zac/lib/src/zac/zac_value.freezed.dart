@@ -161,7 +161,7 @@ abstract class _ZacIntTransformable extends ZacInt
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
-    with ZacValueConsume<int> {
+    with ZacValueConsumeImpl<int> {
   _$_ZacIntConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -225,7 +225,7 @@ class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
 }
 
 abstract class _ZacIntConsumeSharedValue extends ZacInt
-    implements ZacValueConsume<int> {
+    implements ZacValueConsume<int>, ZacValueConsumeImpl<int> {
   factory _ZacIntConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -391,7 +391,7 @@ abstract class _ZacDoubleTransformable extends ZacDouble
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
-    with ZacValueConsume<double> {
+    with ZacValueConsumeImpl<double> {
   _$_ZacDoubleConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -455,7 +455,7 @@ class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
 }
 
 abstract class _ZacDoubleConsumeSharedValue extends ZacDouble
-    implements ZacValueConsume<double> {
+    implements ZacValueConsume<double>, ZacValueConsumeImpl<double> {
   factory _ZacDoubleConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -620,7 +620,7 @@ abstract class _ZacNumTransformable extends ZacNum
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
-    with ZacValueConsume<num> {
+    with ZacValueConsumeImpl<num> {
   _$_ZacNumConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -684,7 +684,7 @@ class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
 }
 
 abstract class _ZacNumConsumeSharedValue extends ZacNum
-    implements ZacValueConsume<num> {
+    implements ZacValueConsume<num>, ZacValueConsumeImpl<num> {
   factory _ZacNumConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -850,7 +850,7 @@ abstract class _ZacStringTransformable extends ZacString
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
-    with ZacValueConsume<String> {
+    with ZacValueConsumeImpl<String> {
   _$_ZacStringConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -914,7 +914,7 @@ class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
 }
 
 abstract class _ZacStringConsumeSharedValue extends ZacString
-    implements ZacValueConsume<String> {
+    implements ZacValueConsume<String>, ZacValueConsumeImpl<String> {
   factory _ZacStringConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1079,7 +1079,7 @@ abstract class _ZacBoolTransformable extends ZacBool
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
-    with ZacValueConsume<bool> {
+    with ZacValueConsumeImpl<bool> {
   _$_ZacBoolConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1143,7 +1143,7 @@ class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
 }
 
 abstract class _ZacBoolConsumeSharedValue extends ZacBool
-    implements ZacValueConsume<bool> {
+    implements ZacValueConsume<bool>, ZacValueConsumeImpl<bool> {
   factory _ZacBoolConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1310,7 +1310,7 @@ abstract class _ZacObjectTransformable extends ZacObject
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
-    with ZacValueConsume<Object> {
+    with ZacValueConsumeImpl<Object> {
   _$_ZacObjectConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1374,7 +1374,7 @@ class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
 }
 
 abstract class _ZacObjectConsumeSharedValue extends ZacObject
-    implements ZacValueConsume<Object> {
+    implements ZacValueConsume<Object>, ZacValueConsumeImpl<Object> {
   factory _ZacObjectConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1552,7 +1552,7 @@ abstract class _ZacFlutterWidgetTransformable extends ZacFlutterWidget
 @JsonSerializable(createToJson: false)
 class _$_ZacFlutterWidgetConsumeSharedValue
     extends _ZacFlutterWidgetConsumeSharedValue
-    with ZacValueConsume<FlutterWidget> {
+    with ZacValueConsumeImpl<FlutterWidget> {
   _$_ZacFlutterWidgetConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1619,7 +1619,9 @@ class _$_ZacFlutterWidgetConsumeSharedValue
 }
 
 abstract class _ZacFlutterWidgetConsumeSharedValue extends ZacFlutterWidget
-    implements ZacValueConsume<FlutterWidget> {
+    implements
+        ZacValueConsume<FlutterWidget>,
+        ZacValueConsumeImpl<FlutterWidget> {
   factory _ZacFlutterWidgetConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1788,7 +1790,7 @@ abstract class _ZacDateTimeTransformable extends ZacDateTime
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
-    with ZacValueConsume<DateTime> {
+    with ZacValueConsumeImpl<DateTime> {
   _$_ZacDateTimeSharedValue(
       {required this.family,
       this.transformer,
@@ -1852,7 +1854,7 @@ class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
 }
 
 abstract class _ZacDateTimeSharedValue extends ZacDateTime
-    implements ZacValueConsume<DateTime> {
+    implements ZacValueConsume<DateTime>, ZacValueConsumeImpl<DateTime> {
   factory _ZacDateTimeSharedValue(
       {required final Object family,
       final ZacTransformers? transformer,

@@ -18,8 +18,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
               json['navigatorKey'] as Object),
       scaffoldMessengerKey: json['scaffoldMessengerKey'] == null
           ? null
-          : ZacValueConsumeOnly<
-                  FlutterGlobalKeyScaffoldMessengerState>.fromJson(
+          : ZacValueConsume<FlutterGlobalKeyScaffoldMessengerState>.fromJson(
               json['scaffoldMessengerKey'] as Object),
       home: json['home'] == null
           ? null

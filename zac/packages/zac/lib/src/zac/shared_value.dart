@@ -70,6 +70,10 @@ See "$SharedValueProviderBuilder" for more info.
       family: family,
     );
 
+    if (null == value) {
+      return null;
+    }
+
     return TransformObjectHelper.simpleOrNull<T>(
       fromValue: value,
       zacContext: zacContext,
@@ -116,6 +120,10 @@ See "$SharedValueProviderBuilder" for more info.
       consumeType: consumeType,
       family: family,
     );
+
+    if (null == value) {
+      return null;
+    }
 
     value as List<dynamic>;
 
