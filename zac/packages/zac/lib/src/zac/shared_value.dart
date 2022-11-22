@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -298,7 +299,7 @@ class SharedValueProviderBuilder
   }
 }
 
-class SharedValueProvider extends StatelessWidget {
+class SharedValueProvider extends HookConsumerWidget {
   const SharedValueProvider({
     required this.childBuilder,
     required this.valueBuilder,
@@ -318,28 +319,45 @@ class SharedValueProvider extends StatelessWidget {
       SharedValueType? prev, SharedValueType next) {}
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final parentContainer = ProviderScope.containerOf(context);
+    final zacContext = useZacContext(ref);
+    final override = useMemoized(() {
+      return SharedValue.provider(family).overrideWith(
+        (ref) => valueBuilder(ref, zacContext),
+      );
+    }, [valueBuilder, zacContext]);
+
+    final container = useMemoized(() {
+      return ProviderContainer(
+        parent: parentContainer,
+        overrides: [override],
+      );
+    }, [parentContainer, override]);
+
+    useEffect(() {
+      return container.dispose;
+    }, [container]);
+
     return ZacUpdateContext(
-      builder: (zacContext) => ProviderScope(
-        overrides: [
-          SharedValue.provider(family).overrideWith(
-            (ref) => valueBuilder(ref, zacContext),
+      builder: (zacContext) {
+        return UncontrolledProviderScope(
+          container: container,
+          child: ZacUpdateContext(
+            builder: !autoCreate
+                ? childBuilder
+                : (zacContext) {
+                    /// immediately create the AutoDispose Provider and its value
+                    /// and keep it alive as long as possible
+                    zacContext.ref.listen<SharedValueType>(
+                      SharedValue.provider(family),
+                      _autoCreateListener,
+                    );
+                    return childBuilder(zacContext);
+                  },
           ),
-        ],
-        child: ZacUpdateContext(
-          builder: !autoCreate
-              ? childBuilder
-              : (zacContext) {
-                  /// immediately create the AutoDispose Provider and its value
-                  /// and keep it alive as long as possible
-                  zacContext.ref.listen<SharedValueType>(
-                    SharedValue.provider(family),
-                    _autoCreateListener,
-                  );
-                  return childBuilder(zacContext);
-                },
-        ),
-      ),
+        );
+      },
     );
   }
 }

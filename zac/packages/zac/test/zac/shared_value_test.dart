@@ -43,18 +43,20 @@ void main() {
     testWidgets('is automatically kept alive', (tester) async {
       var i = 0;
       late ZacContext zacContext;
-      await tester.pumpWidget(MaterialApp(
-        home: SharedValueProvider(
-          autoCreate: true,
-          family: 'shared',
-          valueBuilder: (ref, zacContext) {
-            ++i;
-            return 0;
-          },
-          childBuilder: (c) {
-            zacContext = c;
-            return const SizedBox();
-          },
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: true,
+            family: 'shared',
+            valueBuilder: (ref, zacContext) {
+              ++i;
+              return 0;
+            },
+            childBuilder: (c) {
+              zacContext = c;
+              return const SizedBox();
+            },
+          ),
         ),
       ));
 
@@ -69,18 +71,20 @@ void main() {
     testWidgets('is not automatically kept alive', (tester) async {
       var i = 0;
       late ZacContext zacContext;
-      await tester.pumpWidget(MaterialApp(
-        home: SharedValueProvider(
-          autoCreate: false,
-          family: 'shared',
-          valueBuilder: (ref, zacContext) {
-            ++i;
-            return 0;
-          },
-          childBuilder: (c) {
-            zacContext = c;
-            return const SizedBox();
-          },
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: false,
+            family: 'shared',
+            valueBuilder: (ref, zacContext) {
+              ++i;
+              return 0;
+            },
+            childBuilder: (c) {
+              zacContext = c;
+              return const SizedBox();
+            },
+          ),
         ),
       ));
 
