@@ -34,7 +34,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   factory FlutterDialogs.dialog({
     FlutterKey? key,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
     FlutterEdgeInsets? insetPadding,
@@ -57,10 +57,10 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsetsGeometry? actionsPadding,
     FlutterMainAxisAlignment? actionsAlignment,
     FlutterVerticalDirection? actionsOverflowDirection,
-    ZacValue<double>? actionsOverflowButtonSpacing,
+    ZacDouble? actionsOverflowButtonSpacing,
     FlutterEdgeInsetsGeometry? buttonPadding,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     ZacValue<String>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
@@ -78,7 +78,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     ZacValue<String>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
@@ -102,7 +102,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValueOrNull(zacContext),
         // insetAnimationCurve: value.insetAnimationCurve?.toFlutter(context),
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
         insetPadding: value.insetPadding?.build(zacContext),
@@ -116,7 +116,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         actions: value.actions?.getWidgets(zacContext) ?? const <Widget>[],
         actionsAlignment: value.actionsAlignment?.build(zacContext),
         actionsOverflowButtonSpacing:
-            value.actionsOverflowButtonSpacing?.getValue(zacContext),
+            value.actionsOverflowButtonSpacing?.getValueOrNull(zacContext),
         actionsOverflowDirection:
             value.actionsOverflowDirection?.build(zacContext),
         actionsPadding:
@@ -128,7 +128,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         contentPadding: value.contentPadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
         contentTextStyle: value.contentTextStyle?.build(zacContext),
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValueOrNull(zacContext),
         insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         scrollable: value.scrollable?.getValue(zacContext) ?? false,
@@ -145,7 +145,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         contentPadding: value.contentPadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-        elevation: value.elevation?.getValue(zacContext),
+        elevation: value.elevation?.getValueOrNull(zacContext),
         insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         semanticLabel: value.semanticLabel?.getValue(zacContext),

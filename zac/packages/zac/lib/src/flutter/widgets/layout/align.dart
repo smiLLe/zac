@@ -24,8 +24,8 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   factory FlutterAlign({
     FlutterKey? key,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<double>? widthFactor,
-    ZacValue<double>? heightFactor,
+    ZacDouble? widthFactor,
+    ZacDouble? heightFactor,
     // @ZacWidgetNullableConverter() ZacWidget? child,
     FlutterWidget? child,
   }) = _FlutterAlign;
@@ -35,8 +35,8 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
     return Align(
       key: key?.buildKey(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.getValue(zacContext),
-      heightFactor: heightFactor?.getValue(zacContext),
+      widthFactor: widthFactor?.getValueOrNull(zacContext),
+      heightFactor: heightFactor?.getValueOrNull(zacContext),
       // child: child?.buildWidget(zacContext),
       child: child?.buildWidget(zacContext),
     );

@@ -101,10 +101,10 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool>.fromJson(json['enabled'] as Object),
       cursorWidth: json['cursorWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorWidth'] as Object),
+          : ZacDouble.fromJson(json['cursorWidth'] as Object),
       cursorHeight: json['cursorHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorHeight'] as Object),
+          : ZacDouble.fromJson(json['cursorHeight'] as Object),
       cursorRadius: json['cursorRadius'] == null
           ? null
           : FlutterRadius.fromJson(

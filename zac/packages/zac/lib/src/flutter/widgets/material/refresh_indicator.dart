@@ -31,15 +31,15 @@ class FlutterRefreshIndicator
   factory FlutterRefreshIndicator({
     FlutterKey? key,
     required FlutterWidget child,
-    ZacValue<double>? displacement,
-    ZacValue<double>? edgeOffset,
+    ZacDouble? displacement,
+    ZacDouble? edgeOffset,
     required ZacActions onRefresh,
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
     ZacValue<String>? semanticsLabel,
     ZacValue<String>? semanticsValue,
-    ZacValue<double>? strokeWidth,
+    ZacDouble? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
     ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
@@ -60,12 +60,14 @@ class FlutterRefreshIndicator
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
-      displacement: displacement?.getValue(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      displacement: displacement?.getValueOrNull(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.getValueOrNull(zacContext) ?? 0.0,
       color: color?.build(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
       semanticsLabel: semanticsLabel?.getValue(zacContext),
       semanticsValue: semanticsValue?.getValue(zacContext),
+      strokeWidth: strokeWidth?.getValueOrNull(zacContext) ??
+          RefreshProgressIndicator.defaultStrokeWidth,
       triggerMode:
           triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
       child: child.buildWidget(zacContext),

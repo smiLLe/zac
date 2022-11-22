@@ -30,7 +30,7 @@ mixin _$FlutterAppBar {
   FlutterWidget? get flexibleSpace =>
       throw _privateConstructorUsedError; // PreferredSizeWidget
   FlutterWidget? get bottom => throw _privateConstructorUsedError;
-  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
+  ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
@@ -42,11 +42,11 @@ mixin _$FlutterAppBar {
   ZacValue<bool>? get centerTitle => throw _privateConstructorUsedError;
   ZacValue<bool>? get excludeHeaderSemantics =>
       throw _privateConstructorUsedError;
-  ZacValue<double>? get titleSpacing => throw _privateConstructorUsedError;
-  ZacValue<double>? get toolbarOpacity => throw _privateConstructorUsedError;
-  ZacValue<double>? get bottomOpacity => throw _privateConstructorUsedError;
-  ZacValue<double>? get toolbarHeight => throw _privateConstructorUsedError;
-  ZacValue<double>? get leadingWidth => throw _privateConstructorUsedError;
+  ZacDouble? get titleSpacing => throw _privateConstructorUsedError;
+  ZacDouble? get toolbarOpacity => throw _privateConstructorUsedError;
+  ZacDouble? get bottomOpacity => throw _privateConstructorUsedError;
+  ZacDouble? get toolbarHeight => throw _privateConstructorUsedError;
+  ZacDouble? get leadingWidth => throw _privateConstructorUsedError;
   FlutterTextStyle? get toolbarTextStyle => throw _privateConstructorUsedError;
   FlutterTextStyle? get titleTextStyle => throw _privateConstructorUsedError;
   FlutterSystemUiOverlayStyle? get systemOverlayStyle =>
@@ -109,7 +109,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterWidget? bottom;
   @override
-  final ZacValue<double>? elevation;
+  final ZacDouble? elevation;
   @override
   final FlutterColor? shadowColor;
   @override
@@ -129,15 +129,15 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final ZacValue<bool>? excludeHeaderSemantics;
   @override
-  final ZacValue<double>? titleSpacing;
+  final ZacDouble? titleSpacing;
   @override
-  final ZacValue<double>? toolbarOpacity;
+  final ZacDouble? toolbarOpacity;
   @override
-  final ZacValue<double>? bottomOpacity;
+  final ZacDouble? bottomOpacity;
   @override
-  final ZacValue<double>? toolbarHeight;
+  final ZacDouble? toolbarHeight;
   @override
-  final ZacValue<double>? leadingWidth;
+  final ZacDouble? leadingWidth;
   @override
   final FlutterTextStyle? toolbarTextStyle;
   @override
@@ -250,7 +250,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final ZacValueList<FlutterWidget>? actions,
           final FlutterWidget? flexibleSpace,
           final FlutterWidget? bottom,
-          final ZacValue<double>? elevation,
+          final ZacDouble? elevation,
           final FlutterColor? shadowColor,
           final FlutterShapeBorder? shape,
           final FlutterColor? backgroundColor,
@@ -260,11 +260,11 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final ZacValue<bool>? primary,
           final ZacValue<bool>? centerTitle,
           final ZacValue<bool>? excludeHeaderSemantics,
-          final ZacValue<double>? titleSpacing,
-          final ZacValue<double>? toolbarOpacity,
-          final ZacValue<double>? bottomOpacity,
-          final ZacValue<double>? toolbarHeight,
-          final ZacValue<double>? leadingWidth,
+          final ZacDouble? titleSpacing,
+          final ZacDouble? toolbarOpacity,
+          final ZacDouble? bottomOpacity,
+          final ZacDouble? toolbarHeight,
+          final ZacDouble? leadingWidth,
           final FlutterTextStyle? toolbarTextStyle,
           final FlutterTextStyle? titleTextStyle,
           final FlutterSystemUiOverlayStyle? systemOverlayStyle}) =
@@ -289,7 +289,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override // PreferredSizeWidget
   FlutterWidget? get bottom;
   @override
-  ZacValue<double>? get elevation;
+  ZacDouble? get elevation;
   @override
   FlutterColor? get shadowColor;
   @override
@@ -309,15 +309,15 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   ZacValue<bool>? get excludeHeaderSemantics;
   @override
-  ZacValue<double>? get titleSpacing;
+  ZacDouble? get titleSpacing;
   @override
-  ZacValue<double>? get toolbarOpacity;
+  ZacDouble? get toolbarOpacity;
   @override
-  ZacValue<double>? get bottomOpacity;
+  ZacDouble? get bottomOpacity;
   @override
-  ZacValue<double>? get toolbarHeight;
+  ZacDouble? get toolbarHeight;
   @override
-  ZacValue<double>? get leadingWidth;
+  ZacDouble? get leadingWidth;
   @override
   FlutterTextStyle? get toolbarTextStyle;
   @override

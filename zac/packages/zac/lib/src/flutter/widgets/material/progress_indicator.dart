@@ -27,11 +27,11 @@ class FlutterProgressIndicator
   @FreezedUnionValue(FlutterProgressIndicator.unionValueLinearProgressIndicator)
   factory FlutterProgressIndicator.linear({
     FlutterKey? key,
-    ZacValue<double>? value,
+    ZacDouble? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,
 // Animation<Color?>? valueColor,
-    ZacValue<double>? minHeight,
+    ZacDouble? minHeight,
     ZacValue<String>? semanticsLabel,
     ZacValue<String>? semanticsValue,
   }) = _FlutterProgressIndicatorLinear;
@@ -40,11 +40,11 @@ class FlutterProgressIndicator
       FlutterProgressIndicator.unionValueCircularProgressIndicator)
   factory FlutterProgressIndicator.circular({
     FlutterKey? key,
-    ZacValue<double>? value,
+    ZacDouble? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,
     // Animation<Color?>? valueColor,
-    ZacValue<double>? strokeWidth,
+    ZacDouble? strokeWidth,
     ZacValue<String>? semanticsLabel,
     ZacValue<String>? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
@@ -54,19 +54,19 @@ class FlutterProgressIndicator
     return map(
       linear: (value) => LinearProgressIndicator(
         key: value.key?.buildKey(zacContext),
-        value: value.value?.getValue(zacContext),
+        value: value.value?.getValueOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
-        minHeight: value.minHeight?.getValue(zacContext),
+        minHeight: value.minHeight?.getValueOrNull(zacContext),
         semanticsLabel: value.semanticsLabel?.getValue(zacContext),
         semanticsValue: value.semanticsValue?.getValue(zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
         key: value.key?.buildKey(zacContext),
-        value: value.value?.getValue(zacContext),
+        value: value.value?.getValueOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
-        strokeWidth: value.strokeWidth?.getValue(zacContext) ?? 4.0,
+        strokeWidth: value.strokeWidth?.getValueOrNull(zacContext) ?? 4.0,
         semanticsLabel: value.semanticsLabel?.getValue(zacContext),
         semanticsValue: value.semanticsValue?.getValue(zacContext),
       ),

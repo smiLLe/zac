@@ -13,16 +13,16 @@ _$_SliverGridDelegateWithFixedCrossAxisCount
           crossAxisCount: json['crossAxisCount'] as int,
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacDouble.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacDouble.fromJson(json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
+              : ZacDouble.fromJson(json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
+              : ZacDouble.fromJson(json['mainAxisExtent'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -31,18 +31,18 @@ _$_SliverGridDelegateWithMaxCrossAxisExtent
             Map<String, dynamic> json) =>
         _$_SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent:
-              ZacValue<double>.fromJson(json['maxCrossAxisExtent'] as Object),
+              ZacDouble.fromJson(json['maxCrossAxisExtent'] as Object),
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacValue<double>.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacDouble.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacValue<double>.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacDouble.fromJson(json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacValue<double>.fromJson(json['childAspectRatio'] as Object),
+              : ZacDouble.fromJson(json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacValue<double>.fromJson(json['mainAxisExtent'] as Object),
+              : ZacDouble.fromJson(json['mainAxisExtent'] as Object),
           $type: json['converter'] as String?,
         );

@@ -25,7 +25,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   factory FlutterDrawer({
     FlutterKey? key,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     FlutterShapeBorder? shape,
     FlutterWidget? child,
     ZacValue<String>? semanticLabel,
@@ -36,7 +36,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
     return Drawer(
       key: key?.buildKey(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
-      elevation: elevation?.getValue(zacContext),
+      elevation: elevation?.getValueOrNull(zacContext),
       semanticLabel: semanticLabel?.getValue(zacContext),
       shape: shape?.build(zacContext),
       child: child?.buildWidget(zacContext),

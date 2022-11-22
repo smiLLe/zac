@@ -26,13 +26,13 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
     FlutterMainAxisAlignment? alignment,
     FlutterMainAxisSize? mainAxisSize,
 // FlutterButtonTextTheme? buttonTextTheme,
-    ZacValue<double>? buttonMinWidth,
-    ZacValue<double>? buttonHeight,
+    ZacDouble? buttonMinWidth,
+    ZacDouble? buttonHeight,
     FlutterEdgeInsetsGeometry? buttonPadding,
     ZacValue<bool>? buttonAlignedDropdown,
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
     FlutterVerticalDirection? overflowDirection,
-    ZacValue<double>? overflowButtonSpacing,
+    ZacDouble? overflowButtonSpacing,
     ZacValueList<FlutterWidget>? children,
   }) = _FlutterButtonBar;
 
@@ -43,13 +43,13 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
       alignment: alignment?.build(zacContext),
       mainAxisSize: mainAxisSize?.build(zacContext),
 // FlutterButtonTextTheme? buttonTextTheme,
-      buttonMinWidth: buttonMinWidth?.getValue(zacContext),
-      buttonHeight: buttonHeight?.getValue(zacContext),
+      buttonMinWidth: buttonMinWidth?.getValueOrNull(zacContext),
+      buttonHeight: buttonHeight?.getValueOrNull(zacContext),
       buttonPadding: buttonPadding?.build(zacContext),
       buttonAlignedDropdown: buttonAlignedDropdown?.getValue(zacContext),
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
       overflowDirection: overflowDirection?.build(zacContext),
-      overflowButtonSpacing: overflowButtonSpacing?.getValue(zacContext),
+      overflowButtonSpacing: overflowButtonSpacing?.getValueOrNull(zacContext),
       children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }

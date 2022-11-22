@@ -252,16 +252,16 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 
   @FreezedUnionValue('f:1:BoxConstraints')
   factory FlutterBoxConstraints({
-    ZacValue<double>? minWidth,
-    ZacValue<double>? maxWidth,
-    ZacValue<double>? minHeight,
-    ZacValue<double>? maxHeight,
+    ZacDouble? minWidth,
+    ZacDouble? maxWidth,
+    ZacDouble? minHeight,
+    ZacDouble? maxHeight,
   }) = _FlutterBoxConstraints;
 
   @FreezedUnionValue('f:1:BoxConstraints.expand')
   factory FlutterBoxConstraints.expand({
-    ZacValue<double>? width,
-    ZacValue<double>? height,
+    ZacDouble? width,
+    ZacDouble? height,
   }) = _FlutterBoxConstraintsExpand;
 
   @FreezedUnionValue('f:1:BoxConstraints.loose')
@@ -274,33 +274,33 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
 
   @FreezedUnionValue('f:1:BoxConstraints.tightFor')
   factory FlutterBoxConstraints.tightFor(
-      {ZacValue<double>? width,
-      ZacValue<double>? height}) = _FlutterBoxConstraintsTightFor;
+      {ZacDouble? width, ZacDouble? height}) = _FlutterBoxConstraintsTightFor;
 
   @FreezedUnionValue('f:1:BoxConstraints.tightForFinite')
   factory FlutterBoxConstraints.tightForFinite(
-      {ZacValue<double>? width,
-      ZacValue<double>? height}) = _FlutterBoxConstraintsTightForFinite;
+      {ZacDouble? width,
+      ZacDouble? height}) = _FlutterBoxConstraintsTightForFinite;
 
   BoxConstraints build(ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.getValue(zacContext) ?? 0.0,
-        maxWidth: value.maxWidth?.getValue(zacContext) ?? double.infinity,
-        minHeight: value.minHeight?.getValue(zacContext) ?? 0.0,
-        maxHeight: value.maxHeight?.getValue(zacContext) ?? double.infinity,
+        minWidth: value.minWidth?.getValueOrNull(zacContext) ?? 0.0,
+        maxWidth: value.maxWidth?.getValueOrNull(zacContext) ?? double.infinity,
+        minHeight: value.minHeight?.getValueOrNull(zacContext) ?? 0.0,
+        maxHeight:
+            value.maxHeight?.getValueOrNull(zacContext) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.getValueOrNull(zacContext),
+          height: value.height?.getValueOrNull(zacContext)),
       loose: (value) => BoxConstraints.loose(value.size.build(zacContext)),
       tight: (value) => BoxConstraints.tight(value.size.build(zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.getValueOrNull(zacContext),
+          height: value.height?.getValueOrNull(zacContext)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.getValue(zacContext) ?? double.infinity,
-        height: value.height?.getValue(zacContext) ?? double.infinity,
+        width: value.width?.getValueOrNull(zacContext) ?? double.infinity,
+        height: value.height?.getValueOrNull(zacContext) ?? double.infinity,
       ),
     );
   }

@@ -31,8 +31,8 @@ class FlutterInteractiveViewer
     ZacValue<bool>? alignPanAxis,
     FlutterEdgeInsets? boundaryMargin,
     ZacValue<bool>? constrained,
-    ZacValue<double>? maxScale,
-    ZacValue<double>? minScale,
+    ZacDouble? maxScale,
+    ZacDouble? minScale,
     ZacActions? onInteractionEnd,
     ZacActions? onInteractionStart,
     ZacActions? onInteractionUpdate,
@@ -49,8 +49,8 @@ class FlutterInteractiveViewer
       alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
       boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
       constrained: constrained?.getValue(zacContext) ?? true,
-      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
-      minScale: minScale?.getValue(zacContext) ?? 0.8,
+      maxScale: maxScale?.getValueOrNull(zacContext) ?? 2.5,
+      minScale: minScale?.getValueOrNull(zacContext) ?? 0.8,
       onInteractionEnd:
           onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart:

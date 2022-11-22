@@ -28,10 +28,10 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
           : ZacValue<bool>.fromJson(json['constrained'] as Object),
       maxScale: json['maxScale'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxScale'] as Object),
+          : ZacDouble.fromJson(json['maxScale'] as Object),
       minScale: json['minScale'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minScale'] as Object),
+          : ZacDouble.fromJson(json['minScale'] as Object),
       onInteractionEnd: json['onInteractionEnd'] == null
           ? null
           : ZacActions.fromJson(json['onInteractionEnd'] as Object),

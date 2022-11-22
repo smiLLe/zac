@@ -23,15 +23,15 @@ FlutterRefreshIndicator _$FlutterRefreshIndicatorFromJson(
 mixin _$FlutterRefreshIndicator {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget get child => throw _privateConstructorUsedError;
-  ZacValue<double>? get displacement => throw _privateConstructorUsedError;
-  ZacValue<double>? get edgeOffset => throw _privateConstructorUsedError;
+  ZacDouble? get displacement => throw _privateConstructorUsedError;
+  ZacDouble? get edgeOffset => throw _privateConstructorUsedError;
   ZacActions get onRefresh => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
   ZacValue<String>? get semanticsValue => throw _privateConstructorUsedError;
-  ZacValue<double>? get strokeWidth => throw _privateConstructorUsedError;
+  ZacDouble? get strokeWidth => throw _privateConstructorUsedError;
   FlutterRefreshIndicatorTriggerMode? get triggerMode =>
       throw _privateConstructorUsedError;
   ZacValueConsumeOnly<DartCompleterVoid>? get onRefreshCompleter =>
@@ -70,9 +70,9 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final FlutterWidget child;
   @override
-  final ZacValue<double>? displacement;
+  final ZacDouble? displacement;
   @override
-  final ZacValue<double>? edgeOffset;
+  final ZacDouble? edgeOffset;
   @override
   final ZacActions onRefresh;
   @override
@@ -85,7 +85,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final ZacValue<String>? semanticsValue;
   @override
-  final ZacValue<double>? strokeWidth;
+  final ZacDouble? strokeWidth;
   @override
   final FlutterRefreshIndicatorTriggerMode? triggerMode;
   @override
@@ -154,14 +154,14 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   factory _FlutterRefreshIndicator(
           {final FlutterKey? key,
           required final FlutterWidget child,
-          final ZacValue<double>? displacement,
-          final ZacValue<double>? edgeOffset,
+          final ZacDouble? displacement,
+          final ZacDouble? edgeOffset,
           required final ZacActions onRefresh,
           final FlutterColor? color,
           final FlutterColor? backgroundColor,
           final ZacValue<String>? semanticsLabel,
           final ZacValue<String>? semanticsValue,
-          final ZacValue<double>? strokeWidth,
+          final ZacDouble? strokeWidth,
           final FlutterRefreshIndicatorTriggerMode? triggerMode,
           final ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter}) =
       _$_FlutterRefreshIndicator;
@@ -175,9 +175,9 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   FlutterWidget get child;
   @override
-  ZacValue<double>? get displacement;
+  ZacDouble? get displacement;
   @override
-  ZacValue<double>? get edgeOffset;
+  ZacDouble? get edgeOffset;
   @override
   ZacActions get onRefresh;
   @override
@@ -189,7 +189,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   ZacValue<String>? get semanticsValue;
   @override
-  ZacValue<double>? get strokeWidth;
+  ZacDouble? get strokeWidth;
   @override
   FlutterRefreshIndicatorTriggerMode? get triggerMode;
   @override

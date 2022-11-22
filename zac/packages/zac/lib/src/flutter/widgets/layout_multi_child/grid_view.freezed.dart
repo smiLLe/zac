@@ -36,7 +36,7 @@ mixin _$FlutterGridView {
   ZacValue<bool>? get addRepaintBoundaries =>
       throw _privateConstructorUsedError;
   ZacValue<bool>? get addSemanticIndexes => throw _privateConstructorUsedError;
-  ZacValue<double>? get cacheExtent => throw _privateConstructorUsedError;
+  ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get children =>
       throw _privateConstructorUsedError;
   ZacInt? get semanticChildCount =>
@@ -103,7 +103,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacValue<bool>? addSemanticIndexes;
   @override
-  final ZacValue<double>? cacheExtent;
+  final ZacDouble? cacheExtent;
   @override
   final ZacValueList<FlutterWidget>? children;
   @override
@@ -203,7 +203,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       final ZacValue<bool>? addAutomaticKeepAlives,
       final ZacValue<bool>? addRepaintBoundaries,
       final ZacValue<bool>? addSemanticIndexes,
-      final ZacValue<double>? cacheExtent,
+      final ZacDouble? cacheExtent,
       final ZacValueList<FlutterWidget>? children,
       final ZacInt? semanticChildCount,
       final FlutterClip? clipBehavior,
@@ -237,7 +237,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacValue<bool>? get addSemanticIndexes;
   @override
-  ZacValue<double>? get cacheExtent;
+  ZacDouble? get cacheExtent;
   @override
   ZacValueList<FlutterWidget>? get children;
   @override

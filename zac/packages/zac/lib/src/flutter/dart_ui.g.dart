@@ -22,24 +22,24 @@ _$_FlutterColorFromRBGO _$$_FlutterColorFromRBGOFromJson(
       r: json['r'] as int,
       g: json['g'] as int,
       b: json['b'] as int,
-      opacity: ZacValue<double>.fromJson(json['opacity'] as Object),
+      opacity: ZacDouble.fromJson(json['opacity'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_FlutterOffset _$$_FlutterOffsetFromJson(Map<String, dynamic> json) =>
     _$_FlutterOffset(
-      ZacValue<double>.fromJson(json['dx'] as Object),
-      ZacValue<double>.fromJson(json['dy'] as Object),
+      ZacDouble.fromJson(json['dx'] as Object),
+      ZacDouble.fromJson(json['dy'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_FlutterOffsetFromDirection _$$_FlutterOffsetFromDirectionFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterOffsetFromDirection(
-      direction: ZacValue<double>.fromJson(json['direction'] as Object),
+      direction: ZacDouble.fromJson(json['direction'] as Object),
       distance: json['distance'] == null
           ? null
-          : ZacValue<double>.fromJson(json['distance'] as Object),
+          : ZacDouble.fromJson(json['distance'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -70,15 +70,15 @@ _$_FlutterBlurStyleSolid _$$_FlutterBlurStyleSolidFromJson(
 _$_FlutterRadiusCircular _$$_FlutterRadiusCircularFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRadiusCircular(
-      ZacValue<double>.fromJson(json['radius'] as Object),
+      ZacDouble.fromJson(json['radius'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_FlutterRadiusElliptical _$$_FlutterRadiusEllipticalFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRadiusElliptical(
-      ZacValue<double>.fromJson(json['x'] as Object),
-      ZacValue<double>.fromJson(json['y'] as Object),
+      ZacDouble.fromJson(json['x'] as Object),
+      ZacDouble.fromJson(json['y'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -680,8 +680,8 @@ _$_FlutterRectFroMCenter _$$_FlutterRectFroMCenterFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRectFroMCenter(
       center: FlutterOffset.fromJson(json['center'] as Map<String, dynamic>),
-      width: ZacValue<double>.fromJson(json['width'] as Object),
-      height: ZacValue<double>.fromJson(json['height'] as Object),
+      width: ZacDouble.fromJson(json['width'] as Object),
+      height: ZacDouble.fromJson(json['height'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -689,27 +689,27 @@ _$_FlutterRectFromCircle _$$_FlutterRectFromCircleFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRectFromCircle(
       center: FlutterOffset.fromJson(json['center'] as Map<String, dynamic>),
-      radius: ZacValue<double>.fromJson(json['radius'] as Object),
+      radius: ZacDouble.fromJson(json['radius'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_FlutterRectFromLTRB _$$_FlutterRectFromLTRBFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRectFromLTRB(
-      ZacValue<double>.fromJson(json['left'] as Object),
-      ZacValue<double>.fromJson(json['top'] as Object),
-      ZacValue<double>.fromJson(json['right'] as Object),
-      ZacValue<double>.fromJson(json['bottom'] as Object),
+      ZacDouble.fromJson(json['left'] as Object),
+      ZacDouble.fromJson(json['top'] as Object),
+      ZacDouble.fromJson(json['right'] as Object),
+      ZacDouble.fromJson(json['bottom'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_FlutterRectFromLTWH _$$_FlutterRectFromLTWHFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRectFromLTWH(
-      ZacValue<double>.fromJson(json['left'] as Object),
-      ZacValue<double>.fromJson(json['top'] as Object),
-      ZacValue<double>.fromJson(json['width'] as Object),
-      ZacValue<double>.fromJson(json['height'] as Object),
+      ZacDouble.fromJson(json['left'] as Object),
+      ZacDouble.fromJson(json['top'] as Object),
+      ZacDouble.fromJson(json['width'] as Object),
+      ZacDouble.fromJson(json['height'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -759,8 +759,8 @@ _$_FlutterBrightnessLight _$$_FlutterBrightnessLightFromJson(
 
 _$_FlutterSize _$$_FlutterSizeFromJson(Map<String, dynamic> json) =>
     _$_FlutterSize(
-      ZacValue<double>.fromJson(json['width'] as Object),
-      ZacValue<double>.fromJson(json['height'] as Object),
+      ZacDouble.fromJson(json['width'] as Object),
+      ZacDouble.fromJson(json['height'] as Object),
     );
 
 _$_FlutterBoxHeightStyleincludeLineSpacingBottom
@@ -825,5 +825,5 @@ _$_FlutterShadowShadow _$$_FlutterShadowShadowFromJson(
           : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
       blurRadius: json['blurRadius'] == null
           ? null
-          : ZacValue<double>.fromJson(json['blurRadius'] as Object),
+          : ZacDouble.fromJson(json['blurRadius'] as Object),
     );

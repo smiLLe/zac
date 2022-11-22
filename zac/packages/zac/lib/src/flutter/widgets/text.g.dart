@@ -39,7 +39,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
               json['overflow'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
+          : ZacDouble.fromJson(json['textScaleFactor'] as Object),
       maxLines: json['maxLines'] == null
           ? null
           : ZacInt.fromJson(json['maxLines'] as Object),

@@ -25,7 +25,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   factory FlutterMaterial({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
     FlutterTextStyle? textStyle,
@@ -45,7 +45,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
       borderRadius: borderRadius?.build(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
       color: color?.build(zacContext),
-      elevation: elevation?.getValue(zacContext) ?? 0,
+      elevation: elevation?.getValueOrNull(zacContext) ?? 0,
       shadowColor: shadowColor?.build(zacContext),
       shape: shape?.build(zacContext),
       textStyle: textStyle?.build(zacContext),

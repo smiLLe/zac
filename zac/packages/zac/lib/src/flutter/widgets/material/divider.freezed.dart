@@ -21,10 +21,10 @@ FlutterDivider _$FlutterDividerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterDivider {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<double>? get height => throw _privateConstructorUsedError;
-  ZacValue<double>? get thickness => throw _privateConstructorUsedError;
-  ZacValue<double>? get indent => throw _privateConstructorUsedError;
-  ZacValue<double>? get endIndent => throw _privateConstructorUsedError;
+  ZacDouble? get height => throw _privateConstructorUsedError;
+  ZacDouble? get thickness => throw _privateConstructorUsedError;
+  ZacDouble? get indent => throw _privateConstructorUsedError;
+  ZacDouble? get endIndent => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -52,13 +52,13 @@ class _$_FlutterDivider extends _FlutterDivider {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
   @override
-  final ZacValue<double>? thickness;
+  final ZacDouble? thickness;
   @override
-  final ZacValue<double>? indent;
+  final ZacDouble? indent;
   @override
-  final ZacValue<double>? endIndent;
+  final ZacDouble? endIndent;
   @override
   final FlutterColor? color;
 
@@ -99,10 +99,10 @@ class _$_FlutterDivider extends _FlutterDivider {
 abstract class _FlutterDivider extends FlutterDivider {
   factory _FlutterDivider(
       {final FlutterKey? key,
-      final ZacValue<double>? height,
-      final ZacValue<double>? thickness,
-      final ZacValue<double>? indent,
-      final ZacValue<double>? endIndent,
+      final ZacDouble? height,
+      final ZacDouble? thickness,
+      final ZacDouble? indent,
+      final ZacDouble? endIndent,
       final FlutterColor? color}) = _$_FlutterDivider;
   _FlutterDivider._() : super._();
 
@@ -112,13 +112,13 @@ abstract class _FlutterDivider extends FlutterDivider {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<double>? get height;
+  ZacDouble? get height;
   @override
-  ZacValue<double>? get thickness;
+  ZacDouble? get thickness;
   @override
-  ZacValue<double>? get indent;
+  ZacDouble? get indent;
   @override
-  ZacValue<double>? get endIndent;
+  ZacDouble? get endIndent;
   @override
   FlutterColor? get color;
 }

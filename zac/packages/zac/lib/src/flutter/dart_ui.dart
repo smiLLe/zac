@@ -31,7 +31,7 @@ class FlutterColor with _$FlutterColor {
     required int r,
     required int g,
     required int b,
-    required ZacValue<double> opacity,
+    required ZacDouble opacity,
   }) = _FlutterColorFromRBGO;
 
   Color build(ZacContext zacContext) {
@@ -56,13 +56,12 @@ class FlutterOffset with _$FlutterOffset {
       _$FlutterOffsetFromJson(json);
 
   @FreezedUnionValue('f:1:Offset')
-  factory FlutterOffset(ZacValue<double> dx, ZacValue<double> dy) =
-      _FlutterOffset;
+  factory FlutterOffset(ZacDouble dx, ZacDouble dy) = _FlutterOffset;
 
   @FreezedUnionValue('f:1:Offset.fromDirection')
   factory FlutterOffset.fromDirection(
-      {required ZacValue<double> direction,
-      ZacValue<double>? distance}) = _FlutterOffsetFromDirection;
+      {required ZacDouble direction,
+      ZacDouble? distance}) = _FlutterOffsetFromDirection;
 
   Offset build(ZacContext zacContext) {
     return map(
@@ -70,7 +69,7 @@ class FlutterOffset with _$FlutterOffset {
           Offset(value.dx.getValue(zacContext), value.dy.getValue(zacContext)),
       fromDirection: (value) => Offset.fromDirection(
           value.direction.getValue(zacContext),
-          value.distance?.getValue(zacContext) ?? 1.0),
+          value.distance?.getValueOrNull(zacContext) ?? 1.0),
     );
   }
 }
@@ -114,11 +113,10 @@ class FlutterRadius with _$FlutterRadius {
       _$FlutterRadiusFromJson(json);
 
   @FreezedUnionValue('f:1:Radius.circular')
-  factory FlutterRadius.circular(ZacValue<double> radius) =
-      _FlutterRadiusCircular;
+  factory FlutterRadius.circular(ZacDouble radius) = _FlutterRadiusCircular;
 
   @FreezedUnionValue('f:1:Radius.elliptical')
-  factory FlutterRadius.elliptical(ZacValue<double> x, ZacValue<double> y) =
+  factory FlutterRadius.elliptical(ZacDouble x, ZacDouble y) =
       _FlutterRadiusElliptical;
 
   Radius build(ZacContext zacContext) {
@@ -728,23 +726,25 @@ class FlutterRect with _$FlutterRect {
   @FreezedUnionValue('f:1:Rect.fromCenter')
   factory FlutterRect.fromCenter({
     required FlutterOffset center,
-    required ZacValue<double> width,
-    required ZacValue<double> height,
+    required ZacDouble width,
+    required ZacDouble height,
   }) = _FlutterRectFroMCenter;
 
   @FreezedUnionValue('f:1:Rect.fromCircle')
   factory FlutterRect.fromCircle({
     required FlutterOffset center,
-    required ZacValue<double> radius,
+    required ZacDouble radius,
   }) = _FlutterRectFromCircle;
 
   @FreezedUnionValue('f:1:Rect.fromLTRB')
-  factory FlutterRect.fromLTRB(ZacValue<double> left, ZacValue<double> top,
-      ZacValue<double> right, ZacValue<double> bottom) = _FlutterRectFromLTRB;
+  factory FlutterRect.fromLTRB(
+          ZacDouble left, ZacDouble top, ZacDouble right, ZacDouble bottom) =
+      _FlutterRectFromLTRB;
 
   @FreezedUnionValue('f:1:Rect.fromLTWH')
-  factory FlutterRect.fromLTWH(ZacValue<double> left, ZacValue<double> top,
-      ZacValue<double> width, ZacValue<double> height) = _FlutterRectFromLTWH;
+  factory FlutterRect.fromLTWH(
+          ZacDouble left, ZacDouble top, ZacDouble width, ZacDouble height) =
+      _FlutterRectFromLTWH;
 
   @FreezedUnionValue('f:1:Rect.fromPoints')
   factory FlutterRect.fromPoints(FlutterOffset a, FlutterOffset b) =
@@ -834,8 +834,8 @@ class FlutterSize with _$FlutterSize {
 
   @FreezedUnionValue('f:1:Size')
   factory FlutterSize(
-    ZacValue<double> width,
-    ZacValue<double> height,
+    ZacDouble width,
+    ZacDouble height,
   ) = _FlutterSize;
 
   Size build(ZacContext zacContext) {
@@ -929,7 +929,7 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   factory FlutterShadow({
     FlutterColor? color,
     FlutterOffset? offset,
-    ZacValue<double>? blurRadius,
+    ZacDouble? blurRadius,
   }) = _FlutterShadowShadow;
 
   @override
@@ -937,7 +937,7 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
     return Shadow(
       color: color?.build(zacContext) ?? const Color(0xFF000000),
       offset: offset?.build(zacContext) ?? Offset.zero,
-      blurRadius: blurRadius?.getValue(zacContext) ?? 0.0,
+      blurRadius: blurRadius?.getValueOrNull(zacContext) ?? 0.0,
     );
   }
 }

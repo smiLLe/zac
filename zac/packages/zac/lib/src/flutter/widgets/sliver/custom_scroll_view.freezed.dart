@@ -31,8 +31,8 @@ mixin _$FlutterCustomScrollView {
       throw _privateConstructorUsedError; // FlutterScrollBehavior? scrollBehavior,
   ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterKey? get center => throw _privateConstructorUsedError;
-  ZacValue<double>? get anchor => throw _privateConstructorUsedError;
-  ZacValue<double>? get cacheExtent => throw _privateConstructorUsedError;
+  ZacDouble? get anchor => throw _privateConstructorUsedError;
+  ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get slivers =>
       throw _privateConstructorUsedError;
   ZacInt? get semanticChildCount =>
@@ -91,9 +91,9 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   @override
   final FlutterKey? center;
   @override
-  final ZacValue<double>? anchor;
+  final ZacDouble? anchor;
   @override
-  final ZacValue<double>? cacheExtent;
+  final ZacDouble? cacheExtent;
   @override
   final ZacValueList<FlutterWidget>? slivers;
   @override
@@ -181,8 +181,8 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       final FlutterScrollPhysics? physics,
       final ZacValue<bool>? shrinkWrap,
       final FlutterKey? center,
-      final ZacValue<double>? anchor,
-      final ZacValue<double>? cacheExtent,
+      final ZacDouble? anchor,
+      final ZacDouble? cacheExtent,
       final ZacValueList<FlutterWidget>? slivers,
       final ZacInt? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
@@ -210,9 +210,9 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   @override
   FlutterKey? get center;
   @override
-  ZacValue<double>? get anchor;
+  ZacDouble? get anchor;
   @override
-  ZacValue<double>? get cacheExtent;
+  ZacDouble? get cacheExtent;
   @override
   ZacValueList<FlutterWidget>? get slivers;
   @override

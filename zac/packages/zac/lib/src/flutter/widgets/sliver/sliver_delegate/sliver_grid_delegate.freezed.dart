@@ -33,10 +33,10 @@ FlutterSliverGridDelegate _$FlutterSliverGridDelegateFromJson(
 
 /// @nodoc
 mixin _$FlutterSliverGridDelegate {
-  ZacValue<double>? get mainAxisSpacing => throw _privateConstructorUsedError;
-  ZacValue<double>? get crossAxisSpacing => throw _privateConstructorUsedError;
-  ZacValue<double>? get childAspectRatio => throw _privateConstructorUsedError;
-  ZacValue<double>? get mainAxisExtent => throw _privateConstructorUsedError;
+  ZacDouble? get mainAxisSpacing => throw _privateConstructorUsedError;
+  ZacDouble? get crossAxisSpacing => throw _privateConstructorUsedError;
+  ZacDouble? get childAspectRatio => throw _privateConstructorUsedError;
+  ZacDouble? get mainAxisExtent => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -69,13 +69,13 @@ class _$_SliverGridDelegateWithFixedCrossAxisCount
   @override
   final int crossAxisCount;
   @override
-  final ZacValue<double>? mainAxisSpacing;
+  final ZacDouble? mainAxisSpacing;
   @override
-  final ZacValue<double>? crossAxisSpacing;
+  final ZacDouble? crossAxisSpacing;
   @override
-  final ZacValue<double>? childAspectRatio;
+  final ZacDouble? childAspectRatio;
   @override
-  final ZacValue<double>? mainAxisExtent;
+  final ZacDouble? mainAxisExtent;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -123,10 +123,10 @@ abstract class _SliverGridDelegateWithFixedCrossAxisCount
     extends FlutterSliverGridDelegate {
   factory _SliverGridDelegateWithFixedCrossAxisCount(
           {required final int crossAxisCount,
-          final ZacValue<double>? mainAxisSpacing,
-          final ZacValue<double>? crossAxisSpacing,
-          final ZacValue<double>? childAspectRatio,
-          final ZacValue<double>? mainAxisExtent}) =
+          final ZacDouble? mainAxisSpacing,
+          final ZacDouble? crossAxisSpacing,
+          final ZacDouble? childAspectRatio,
+          final ZacDouble? mainAxisExtent}) =
       _$_SliverGridDelegateWithFixedCrossAxisCount;
   _SliverGridDelegateWithFixedCrossAxisCount._() : super._();
 
@@ -136,13 +136,13 @@ abstract class _SliverGridDelegateWithFixedCrossAxisCount
 
   int get crossAxisCount;
   @override
-  ZacValue<double>? get mainAxisSpacing;
+  ZacDouble? get mainAxisSpacing;
   @override
-  ZacValue<double>? get crossAxisSpacing;
+  ZacDouble? get crossAxisSpacing;
   @override
-  ZacValue<double>? get childAspectRatio;
+  ZacDouble? get childAspectRatio;
   @override
-  ZacValue<double>? get mainAxisExtent;
+  ZacDouble? get mainAxisExtent;
 }
 
 /// @nodoc
@@ -164,15 +164,15 @@ class _$_SliverGridDelegateWithMaxCrossAxisExtent
       _$$_SliverGridDelegateWithMaxCrossAxisExtentFromJson(json);
 
   @override
-  final ZacValue<double> maxCrossAxisExtent;
+  final ZacDouble maxCrossAxisExtent;
   @override
-  final ZacValue<double>? mainAxisSpacing;
+  final ZacDouble? mainAxisSpacing;
   @override
-  final ZacValue<double>? crossAxisSpacing;
+  final ZacDouble? crossAxisSpacing;
   @override
-  final ZacValue<double>? childAspectRatio;
+  final ZacDouble? childAspectRatio;
   @override
-  final ZacValue<double>? mainAxisExtent;
+  final ZacDouble? mainAxisExtent;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -219,11 +219,11 @@ class _$_SliverGridDelegateWithMaxCrossAxisExtent
 abstract class _SliverGridDelegateWithMaxCrossAxisExtent
     extends FlutterSliverGridDelegate {
   factory _SliverGridDelegateWithMaxCrossAxisExtent(
-          {required final ZacValue<double> maxCrossAxisExtent,
-          final ZacValue<double>? mainAxisSpacing,
-          final ZacValue<double>? crossAxisSpacing,
-          final ZacValue<double>? childAspectRatio,
-          final ZacValue<double>? mainAxisExtent}) =
+          {required final ZacDouble maxCrossAxisExtent,
+          final ZacDouble? mainAxisSpacing,
+          final ZacDouble? crossAxisSpacing,
+          final ZacDouble? childAspectRatio,
+          final ZacDouble? mainAxisExtent}) =
       _$_SliverGridDelegateWithMaxCrossAxisExtent;
   _SliverGridDelegateWithMaxCrossAxisExtent._() : super._();
 
@@ -231,13 +231,13 @@ abstract class _SliverGridDelegateWithMaxCrossAxisExtent
           Map<String, dynamic> json) =
       _$_SliverGridDelegateWithMaxCrossAxisExtent.fromJson;
 
-  ZacValue<double> get maxCrossAxisExtent;
+  ZacDouble get maxCrossAxisExtent;
   @override
-  ZacValue<double>? get mainAxisSpacing;
+  ZacDouble? get mainAxisSpacing;
   @override
-  ZacValue<double>? get crossAxisSpacing;
+  ZacDouble? get crossAxisSpacing;
   @override
-  ZacValue<double>? get childAspectRatio;
+  ZacDouble? get childAspectRatio;
   @override
-  ZacValue<double>? get mainAxisExtent;
+  ZacDouble? get mainAxisExtent;
 }

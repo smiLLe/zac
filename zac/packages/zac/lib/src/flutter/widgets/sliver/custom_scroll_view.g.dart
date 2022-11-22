@@ -38,10 +38,10 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
           : FlutterKey.fromJson(json['center'] as Object),
       anchor: json['anchor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['anchor'] as Object),
+          : ZacDouble.fromJson(json['anchor'] as Object),
       cacheExtent: json['cacheExtent'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cacheExtent'] as Object),
+          : ZacDouble.fromJson(json['cacheExtent'] as Object),
       slivers: json['slivers'] == null
           ? null
           : ZacValueList<FlutterWidget>.fromJson(json['slivers'] as Object),

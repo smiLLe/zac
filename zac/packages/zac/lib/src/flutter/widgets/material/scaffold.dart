@@ -48,7 +48,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     ZacValue<bool>? extendBody,
     ZacValue<bool>? extendBodyBehindAppBar,
     FlutterColor? drawerScrimColor,
-    ZacValue<double>? drawerEdgeDragWidth,
+    ZacDouble? drawerEdgeDragWidth,
     ZacValue<bool>? drawerEnableOpenDragGesture,
     ZacValue<bool>? endDrawerEnableOpenDragGesture,
     ZacValue<String>? restorationId,
@@ -77,7 +77,8 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         extendBodyBehindAppBar:
             value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
         drawerScrimColor: value.drawerScrimColor?.build(zacContext),
-        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacContext),
+        drawerEdgeDragWidth:
+            value.drawerEdgeDragWidth?.getValueOrNull(zacContext),
         drawerEnableOpenDragGesture:
             value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
         endDrawerEnableOpenDragGesture:
@@ -113,15 +114,14 @@ class FlutterScaffoldActions
       _FlutterScaffoldActionsOpenEndDrawer;
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBodyScrim)
-  factory FlutterScaffoldActions.showBodyScrim(
-          bool value, ZacValue<double> opacity) =
+  factory FlutterScaffoldActions.showBodyScrim(bool value, ZacDouble opacity) =
       _FlutterScaffoldActionsShowBodyScrim;
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBottomSheet)
   factory FlutterScaffoldActions.showBottomSheet(
     FlutterWidget child, {
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     FlutterShapeBorder? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
@@ -140,7 +140,7 @@ class FlutterScaffoldActions
           backgroundColor: value.backgroundColor?.build(zacContext),
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
-          elevation: value.elevation?.getValue(zacContext,
+          elevation: value.elevation?.getValueOrNull(zacContext,
               prefered: const SharedValueConsumeType.read()),
           shape: value.shape?.build(zacContext),
           // transitionAnimationController:
@@ -287,10 +287,10 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
     FlutterKey? key,
     required FlutterWidget content,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,
-    ZacValue<double>? width,
+    ZacDouble? width,
     FlutterShapeBorder? shape,
     FlutterSnackBarBehavior? behavior,
     FlutterSnackBarAction? action,
@@ -394,7 +394,7 @@ class FlutterMaterialBanner
     required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
     required ZacValueList<FlutterWidget> actions,
-    ZacValue<double>? elevation,
+    ZacDouble? elevation,
     required FlutterWidget? leading,
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,

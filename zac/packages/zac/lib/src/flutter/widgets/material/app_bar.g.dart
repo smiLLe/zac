@@ -32,7 +32,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['bottom'] as Object),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacDouble.fromJson(json['elevation'] as Object),
       shadowColor: json['shadowColor'] == null
           ? null
           : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
@@ -66,19 +66,19 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool>.fromJson(json['excludeHeaderSemantics'] as Object),
       titleSpacing: json['titleSpacing'] == null
           ? null
-          : ZacValue<double>.fromJson(json['titleSpacing'] as Object),
+          : ZacDouble.fromJson(json['titleSpacing'] as Object),
       toolbarOpacity: json['toolbarOpacity'] == null
           ? null
-          : ZacValue<double>.fromJson(json['toolbarOpacity'] as Object),
+          : ZacDouble.fromJson(json['toolbarOpacity'] as Object),
       bottomOpacity: json['bottomOpacity'] == null
           ? null
-          : ZacValue<double>.fromJson(json['bottomOpacity'] as Object),
+          : ZacDouble.fromJson(json['bottomOpacity'] as Object),
       toolbarHeight: json['toolbarHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['toolbarHeight'] as Object),
+          : ZacDouble.fromJson(json['toolbarHeight'] as Object),
       leadingWidth: json['leadingWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['leadingWidth'] as Object),
+          : ZacDouble.fromJson(json['leadingWidth'] as Object),
       toolbarTextStyle: json['toolbarTextStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(

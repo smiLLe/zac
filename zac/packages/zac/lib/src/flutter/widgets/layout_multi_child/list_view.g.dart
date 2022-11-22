@@ -37,7 +37,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
       itemExtent: json['itemExtent'] == null
           ? null
-          : ZacValue<double>.fromJson(json['itemExtent'] as Object),
+          : ZacDouble.fromJson(json['itemExtent'] as Object),
       prototypeItem: json['prototypeItem'] == null
           ? null
           : FlutterWidget.fromJson(json['prototypeItem'] as Object),
@@ -52,7 +52,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
       cacheExtent: json['cacheExtent'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cacheExtent'] as Object),
+          : ZacDouble.fromJson(json['cacheExtent'] as Object),
       children: json['children'] == null
           ? null
           : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),

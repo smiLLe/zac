@@ -30,15 +30,15 @@ FlutterImage _$FlutterImageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterImage {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<double>? get scale =>
+  ZacDouble? get scale =>
       throw _privateConstructorUsedError; // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
   ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
   ZacValue<bool>? get excludeFromSemantics =>
       throw _privateConstructorUsedError;
-  ZacValue<double>? get width => throw _privateConstructorUsedError;
-  ZacValue<double>? get height => throw _privateConstructorUsedError;
+  ZacDouble? get width => throw _privateConstructorUsedError;
+  ZacDouble? get height => throw _privateConstructorUsedError;
   FlutterColor? get color =>
       throw _privateConstructorUsedError; // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode => throw _privateConstructorUsedError;
@@ -97,7 +97,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<double>? scale;
+  final ZacDouble? scale;
 // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
@@ -106,9 +106,9 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final ZacValue<bool>? excludeFromSemantics;
   @override
-  final ZacValue<double>? width;
+  final ZacDouble? width;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
   @override
   final FlutterColor? color;
 // Animation<double>? opacity,
@@ -229,11 +229,11 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
 abstract class _FlutterImageNetowrk extends FlutterImage {
   factory _FlutterImageNetowrk(final ZacValue<String> src,
       {final FlutterKey? key,
-      final ZacValue<double>? scale,
+      final ZacDouble? scale,
       final ZacValue<String>? semanticLabel,
       final ZacValue<bool>? excludeFromSemantics,
-      final ZacValue<double>? width,
-      final ZacValue<double>? height,
+      final ZacDouble? width,
+      final ZacDouble? height,
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
@@ -256,7 +256,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<double>? get scale;
+  ZacDouble? get scale;
   @override // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
@@ -264,9 +264,9 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   ZacValue<bool>? get excludeFromSemantics;
   @override
-  ZacValue<double>? get width;
+  ZacDouble? get width;
   @override
-  ZacValue<double>? get height;
+  ZacDouble? get height;
   @override
   FlutterColor? get color;
   @override // Animation<double>? opacity,
@@ -336,11 +336,11 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacValue<bool>? excludeFromSemantics;
   @override
-  final ZacValue<double>? scale;
+  final ZacDouble? scale;
   @override
-  final ZacValue<double>? width;
+  final ZacDouble? width;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
   @override
   final FlutterColor? color;
 // Animation<double>? opacity,
@@ -456,9 +456,9 @@ abstract class _FlutterImageAsset extends FlutterImage {
       {final FlutterKey? key,
       final ZacValue<String>? semanticLabel,
       final ZacValue<bool>? excludeFromSemantics,
-      final ZacValue<double>? scale,
-      final ZacValue<double>? width,
-      final ZacValue<double>? height,
+      final ZacDouble? scale,
+      final ZacDouble? width,
+      final ZacDouble? height,
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
@@ -487,11 +487,11 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   ZacValue<bool>? get excludeFromSemantics;
   @override
-  ZacValue<double>? get scale;
+  ZacDouble? get scale;
   @override
-  ZacValue<double>? get width;
+  ZacDouble? get width;
   @override
-  ZacValue<double>? get height;
+  ZacDouble? get height;
   @override
   FlutterColor? get color;
   @override // Animation<double>? opacity,

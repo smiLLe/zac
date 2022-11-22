@@ -25,20 +25,20 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
       .unionValueSliverGridDelegateWithFixedCrossAxisCount)
   factory FlutterSliverGridDelegate.withFixedCrossAxisCount({
     required int crossAxisCount,
-    ZacValue<double>? mainAxisSpacing,
-    ZacValue<double>? crossAxisSpacing,
-    ZacValue<double>? childAspectRatio,
-    ZacValue<double>? mainAxisExtent,
+    ZacDouble? mainAxisSpacing,
+    ZacDouble? crossAxisSpacing,
+    ZacDouble? childAspectRatio,
+    ZacDouble? mainAxisExtent,
   }) = _SliverGridDelegateWithFixedCrossAxisCount;
 
   @FreezedUnionValue(FlutterSliverGridDelegate
       .unionValueSliverGridDelegateWithMaxCrossAxisExtent)
   factory FlutterSliverGridDelegate.withMaxCrossAxisExtent({
-    required ZacValue<double> maxCrossAxisExtent,
-    ZacValue<double>? mainAxisSpacing,
-    ZacValue<double>? crossAxisSpacing,
-    ZacValue<double>? childAspectRatio,
-    ZacValue<double>? mainAxisExtent,
+    required ZacDouble maxCrossAxisExtent,
+    ZacDouble? mainAxisSpacing,
+    ZacDouble? crossAxisSpacing,
+    ZacDouble? childAspectRatio,
+    ZacDouble? mainAxisExtent,
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
   SliverGridDelegate build(ZacContext zacContext) {
@@ -46,18 +46,24 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
       withFixedCrossAxisCount: (value) =>
           SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
+        childAspectRatio:
+            value.childAspectRatio?.getValueOrNull(zacContext) ?? 1.0,
+        crossAxisSpacing:
+            value.crossAxisSpacing?.getValueOrNull(zacContext) ?? 0.0,
+        mainAxisExtent: value.mainAxisExtent?.getValueOrNull(zacContext),
+        mainAxisSpacing:
+            value.mainAxisSpacing?.getValueOrNull(zacContext) ?? 0.0,
       ),
       withMaxCrossAxisExtent: (value) =>
           SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
-        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
-        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
-        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
+        mainAxisExtent: value.mainAxisExtent?.getValueOrNull(zacContext),
+        childAspectRatio:
+            value.childAspectRatio?.getValueOrNull(zacContext) ?? 1.0,
+        crossAxisSpacing:
+            value.crossAxisSpacing?.getValueOrNull(zacContext) ?? 0.0,
+        mainAxisSpacing:
+            value.mainAxisSpacing?.getValueOrNull(zacContext) ?? 0.0,
       ),
     );
   }

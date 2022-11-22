@@ -16,7 +16,7 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       size: json['size'] == null
           ? null
-          : ZacValue<double>.fromJson(json['size'] as Object),
+          : ZacDouble.fromJson(json['size'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
@@ -51,8 +51,8 @@ _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       opacity: json['opacity'] == null
           ? null
-          : ZacValue<double>.fromJson(json['opacity'] as Object),
+          : ZacDouble.fromJson(json['opacity'] as Object),
       size: json['size'] == null
           ? null
-          : ZacValue<double>.fromJson(json['size'] as Object),
+          : ZacDouble.fromJson(json['size'] as Object),
     );

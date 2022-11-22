@@ -22,10 +22,10 @@ FlutterOverflowBox _$FlutterOverflowBoxFromJson(Map<String, dynamic> json) {
 mixin _$FlutterOverflowBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
-  ZacValue<double>? get minWidth => throw _privateConstructorUsedError;
-  ZacValue<double>? get maxWidth => throw _privateConstructorUsedError;
-  ZacValue<double>? get minHeight => throw _privateConstructorUsedError;
-  ZacValue<double>? get maxHeight => throw _privateConstructorUsedError;
+  ZacDouble? get minWidth => throw _privateConstructorUsedError;
+  ZacDouble? get maxWidth => throw _privateConstructorUsedError;
+  ZacDouble? get minHeight => throw _privateConstructorUsedError;
+  ZacDouble? get maxHeight => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -56,13 +56,13 @@ class _$_FlutterOverflowBox extends _FlutterOverflowBox {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacValue<double>? minWidth;
+  final ZacDouble? minWidth;
   @override
-  final ZacValue<double>? maxWidth;
+  final ZacDouble? maxWidth;
   @override
-  final ZacValue<double>? minHeight;
+  final ZacDouble? minHeight;
   @override
-  final ZacValue<double>? maxHeight;
+  final ZacDouble? maxHeight;
   @override
   final FlutterWidget? child;
 
@@ -108,10 +108,10 @@ abstract class _FlutterOverflowBox extends FlutterOverflowBox {
   factory _FlutterOverflowBox(
       {final FlutterKey? key,
       final FlutterAlignmentGeometry? alignment,
-      final ZacValue<double>? minWidth,
-      final ZacValue<double>? maxWidth,
-      final ZacValue<double>? minHeight,
-      final ZacValue<double>? maxHeight,
+      final ZacDouble? minWidth,
+      final ZacDouble? maxWidth,
+      final ZacDouble? minHeight,
+      final ZacDouble? maxHeight,
       final FlutterWidget? child}) = _$_FlutterOverflowBox;
   _FlutterOverflowBox._() : super._();
 
@@ -123,13 +123,13 @@ abstract class _FlutterOverflowBox extends FlutterOverflowBox {
   @override
   FlutterAlignmentGeometry? get alignment;
   @override
-  ZacValue<double>? get minWidth;
+  ZacDouble? get minWidth;
   @override
-  ZacValue<double>? get maxWidth;
+  ZacDouble? get maxWidth;
   @override
-  ZacValue<double>? get minHeight;
+  ZacDouble? get minHeight;
   @override
-  ZacValue<double>? get maxHeight;
+  ZacDouble? get maxHeight;
   @override
   FlutterWidget? get child;
 }

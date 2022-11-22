@@ -27,8 +27,8 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   @FreezedUnionValue(FlutterSizedBox.unionValue)
   factory FlutterSizedBox({
     FlutterKey? key,
-    ZacValue<double>? width,
-    ZacValue<double>? height,
+    ZacDouble? width,
+    ZacDouble? height,
     FlutterWidget? child,
   }) = _FlutterWidgetSizedBox;
 
@@ -55,7 +55,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   factory FlutterSizedBox.square({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacValue<double>? dimension,
+    ZacDouble? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 
   @override
@@ -63,8 +63,8 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
     return map(
       (value) => SizedBox(
         key: value.key?.buildKey(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
+        width: value.width?.getValueOrNull(zacContext),
+        height: value.height?.getValueOrNull(zacContext),
         child: value.child?.buildWidget(zacContext),
       ),
       expand: (value) => SizedBox.expand(
@@ -82,7 +82,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
       ),
       square: (value) => SizedBox.square(
         key: value.key?.buildKey(zacContext),
-        dimension: value.dimension?.getValue(zacContext),
+        dimension: value.dimension?.getValueOrNull(zacContext),
         child: value.child?.buildWidget(zacContext),
       ),
     );

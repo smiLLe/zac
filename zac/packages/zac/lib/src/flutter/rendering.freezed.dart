@@ -1899,13 +1899,13 @@ class _$_FlutterBoxConstraints extends _FlutterBoxConstraints {
       _$$_FlutterBoxConstraintsFromJson(json);
 
   @override
-  final ZacValue<double>? minWidth;
+  final ZacDouble? minWidth;
   @override
-  final ZacValue<double>? maxWidth;
+  final ZacDouble? maxWidth;
   @override
-  final ZacValue<double>? minHeight;
+  final ZacDouble? minHeight;
   @override
-  final ZacValue<double>? maxHeight;
+  final ZacDouble? maxHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -1952,19 +1952,19 @@ class _$_FlutterBoxConstraints extends _FlutterBoxConstraints {
 
 abstract class _FlutterBoxConstraints extends FlutterBoxConstraints {
   factory _FlutterBoxConstraints(
-      {final ZacValue<double>? minWidth,
-      final ZacValue<double>? maxWidth,
-      final ZacValue<double>? minHeight,
-      final ZacValue<double>? maxHeight}) = _$_FlutterBoxConstraints;
+      {final ZacDouble? minWidth,
+      final ZacDouble? maxWidth,
+      final ZacDouble? minHeight,
+      final ZacDouble? maxHeight}) = _$_FlutterBoxConstraints;
   _FlutterBoxConstraints._() : super._();
 
   factory _FlutterBoxConstraints.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraints.fromJson;
 
-  ZacValue<double>? get minWidth;
-  ZacValue<double>? get maxWidth;
-  ZacValue<double>? get minHeight;
-  ZacValue<double>? get maxHeight;
+  ZacDouble? get minWidth;
+  ZacDouble? get maxWidth;
+  ZacDouble? get minHeight;
+  ZacDouble? get maxHeight;
 }
 
 /// @nodoc
@@ -1978,9 +1978,9 @@ class _$_FlutterBoxConstraintsExpand extends _FlutterBoxConstraintsExpand {
       _$$_FlutterBoxConstraintsExpandFromJson(json);
 
   @override
-  final ZacValue<double>? width;
+  final ZacDouble? width;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2020,15 +2020,15 @@ class _$_FlutterBoxConstraintsExpand extends _FlutterBoxConstraintsExpand {
 
 abstract class _FlutterBoxConstraintsExpand extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsExpand(
-      {final ZacValue<double>? width,
-      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsExpand;
+      {final ZacDouble? width,
+      final ZacDouble? height}) = _$_FlutterBoxConstraintsExpand;
   _FlutterBoxConstraintsExpand._() : super._();
 
   factory _FlutterBoxConstraintsExpand.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsExpand.fromJson;
 
-  ZacValue<double>? get width;
-  ZacValue<double>? get height;
+  ZacDouble? get width;
+  ZacDouble? get height;
 }
 
 /// @nodoc
@@ -2162,9 +2162,9 @@ class _$_FlutterBoxConstraintsTightFor extends _FlutterBoxConstraintsTightFor {
       _$$_FlutterBoxConstraintsTightForFromJson(json);
 
   @override
-  final ZacValue<double>? width;
+  final ZacDouble? width;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2204,15 +2204,15 @@ class _$_FlutterBoxConstraintsTightFor extends _FlutterBoxConstraintsTightFor {
 
 abstract class _FlutterBoxConstraintsTightFor extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsTightFor(
-      {final ZacValue<double>? width,
-      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsTightFor;
+      {final ZacDouble? width,
+      final ZacDouble? height}) = _$_FlutterBoxConstraintsTightFor;
   _FlutterBoxConstraintsTightFor._() : super._();
 
   factory _FlutterBoxConstraintsTightFor.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsTightFor.fromJson;
 
-  ZacValue<double>? get width;
-  ZacValue<double>? get height;
+  ZacDouble? get width;
+  ZacDouble? get height;
 }
 
 /// @nodoc
@@ -2229,9 +2229,9 @@ class _$_FlutterBoxConstraintsTightForFinite
       _$$_FlutterBoxConstraintsTightForFiniteFromJson(json);
 
   @override
-  final ZacValue<double>? width;
+  final ZacDouble? width;
   @override
-  final ZacValue<double>? height;
+  final ZacDouble? height;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2272,16 +2272,16 @@ class _$_FlutterBoxConstraintsTightForFinite
 abstract class _FlutterBoxConstraintsTightForFinite
     extends FlutterBoxConstraints {
   factory _FlutterBoxConstraintsTightForFinite(
-      {final ZacValue<double>? width,
-      final ZacValue<double>? height}) = _$_FlutterBoxConstraintsTightForFinite;
+      {final ZacDouble? width,
+      final ZacDouble? height}) = _$_FlutterBoxConstraintsTightForFinite;
   _FlutterBoxConstraintsTightForFinite._() : super._();
 
   factory _FlutterBoxConstraintsTightForFinite.fromJson(
           Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsTightForFinite.fromJson;
 
-  ZacValue<double>? get width;
-  ZacValue<double>? get height;
+  ZacDouble? get width;
+  ZacDouble? get height;
 }
 
 FlutterDecorationPosition _$FlutterDecorationPositionFromJson(

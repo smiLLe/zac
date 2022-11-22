@@ -29,14 +29,14 @@ mixin _$FlutterListView {
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
   ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
-  ZacValue<double>? get itemExtent => throw _privateConstructorUsedError;
+  ZacDouble? get itemExtent => throw _privateConstructorUsedError;
   FlutterWidget? get prototypeItem => throw _privateConstructorUsedError;
   ZacValue<bool>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
   ZacValue<bool>? get addRepaintBoundaries =>
       throw _privateConstructorUsedError;
   ZacValue<bool>? get addSemanticIndexes => throw _privateConstructorUsedError;
-  ZacValue<double>? get cacheExtent => throw _privateConstructorUsedError;
+  ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<FlutterWidget>? get children =>
       throw _privateConstructorUsedError;
   ZacInt? get semanticChildCount =>
@@ -98,7 +98,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
-  final ZacValue<double>? itemExtent;
+  final ZacDouble? itemExtent;
   @override
   final FlutterWidget? prototypeItem;
   @override
@@ -108,7 +108,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacValue<bool>? addSemanticIndexes;
   @override
-  final ZacValue<double>? cacheExtent;
+  final ZacDouble? cacheExtent;
   @override
   final ZacValueList<FlutterWidget>? children;
   @override
@@ -211,12 +211,12 @@ abstract class _FlutterListView extends FlutterListView {
       final FlutterScrollPhysics? physics,
       final ZacValue<bool>? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
-      final ZacValue<double>? itemExtent,
+      final ZacDouble? itemExtent,
       final FlutterWidget? prototypeItem,
       final ZacValue<bool>? addAutomaticKeepAlives,
       final ZacValue<bool>? addRepaintBoundaries,
       final ZacValue<bool>? addSemanticIndexes,
-      final ZacValue<double>? cacheExtent,
+      final ZacDouble? cacheExtent,
       final ZacValueList<FlutterWidget>? children,
       final ZacInt? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
@@ -244,7 +244,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
-  ZacValue<double>? get itemExtent;
+  ZacDouble? get itemExtent;
   @override
   FlutterWidget? get prototypeItem;
   @override
@@ -254,7 +254,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<bool>? get addSemanticIndexes;
   @override
-  ZacValue<double>? get cacheExtent;
+  ZacDouble? get cacheExtent;
   @override
   ZacValueList<FlutterWidget>? get children;
   @override

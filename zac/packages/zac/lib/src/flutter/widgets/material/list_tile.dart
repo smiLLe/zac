@@ -49,9 +49,9 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
     FlutterColor? tileColor,
     FlutterColor? selectedTileColor,
     ZacValue<bool>? enableFeedback,
-    ZacValue<double>? horizontalTitleGap,
-    ZacValue<double>? minVerticalPadding,
-    ZacValue<double>? minLeadingWidth,
+    ZacDouble? horizontalTitleGap,
+    ZacDouble? minVerticalPadding,
+    ZacDouble? minLeadingWidth,
   }) = _FlutterListTile;
 
   @override
@@ -83,9 +83,9 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
       tileColor: tileColor?.build(zacContext),
       selectedTileColor: selectedTileColor?.build(zacContext),
       enableFeedback: enableFeedback?.getValue(zacContext),
-      horizontalTitleGap: horizontalTitleGap?.getValue(zacContext),
-      minVerticalPadding: minVerticalPadding?.getValue(zacContext),
-      minLeadingWidth: minLeadingWidth?.getValue(zacContext),
+      horizontalTitleGap: horizontalTitleGap?.getValueOrNull(zacContext),
+      minVerticalPadding: minVerticalPadding?.getValueOrNull(zacContext),
+      minLeadingWidth: minLeadingWidth?.getValueOrNull(zacContext),
     );
   }
 }

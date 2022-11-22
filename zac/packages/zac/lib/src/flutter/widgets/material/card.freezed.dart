@@ -23,7 +23,7 @@ mixin _$FlutterCard {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
-  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
+  ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   ZacValue<bool>? get borderOnForeground => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get margin => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final FlutterColor? shadowColor;
   @override
-  final ZacValue<double>? elevation;
+  final ZacDouble? elevation;
   @override
   final FlutterShapeBorder? shape;
   @override
@@ -134,7 +134,7 @@ abstract class _FlutterCard extends FlutterCard {
       {final FlutterKey? key,
       final FlutterColor? color,
       final FlutterColor? shadowColor,
-      final ZacValue<double>? elevation,
+      final ZacDouble? elevation,
       final FlutterShapeBorder? shape,
       final ZacValue<bool>? borderOnForeground,
       final FlutterEdgeInsetsGeometry? margin,
@@ -153,7 +153,7 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   FlutterColor? get shadowColor;
   @override
-  ZacValue<double>? get elevation;
+  ZacDouble? get elevation;
   @override
   FlutterShapeBorder? get shape;
   @override

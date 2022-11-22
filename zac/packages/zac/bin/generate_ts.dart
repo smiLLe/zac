@@ -115,7 +115,7 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
           return mapDartTypeToTypescript(allFiles, subType, depth + 1);
         });
 
-        /// This will map a f.e. ZacValue<double>
+        /// This will map a f.e. ZacDouble
         /// to Typescript: ZacValue<DartDouble> | DartDouble
         if ('ZacValue' == name || 'ZacValueList' == name) {
           late String unionTypes;
