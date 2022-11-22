@@ -111,7 +111,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
 
   @FreezedUnionValue('f:1:StrutStyle')
   factory FlutterStrutStyle({
-    ZacValue<String>? fontFamily,
+    ZacString? fontFamily,
     List<String>? fontFamilyFallback,
     ZacDouble? fontSize,
     ZacDouble? height,
@@ -120,14 +120,14 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacValue<bool>? forceStrutHeight,
-    ZacValue<String>? debugLabel,
-    ZacValue<String>? package,
+    ZacString? debugLabel,
+    ZacString? package,
   }) = _FlutterStrutStyle;
 
   @FreezedUnionValue('f:1:StrutStyle.fromTextStyle')
   factory FlutterStrutStyle.fromTextStyle(
     FlutterTextStyle textStyle, {
-    ZacValue<String>? fontFamily,
+    ZacString? fontFamily,
     List<String>? fontFamilyFallback,
     ZacDouble? fontSize,
     ZacDouble? height,
@@ -136,14 +136,14 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacValue<bool>? forceStrutHeight,
-    ZacValue<String>? debugLabel,
-    ZacValue<String>? package,
+    ZacString? debugLabel,
+    ZacString? package,
   }) = _FlutterStrutStyleFromTextStyle;
 
   StrutStyle build(ZacContext zacContext) {
     return map(
       (_) => StrutStyle(
-        fontFamily: fontFamily?.getValue(zacContext),
+        fontFamily: fontFamily?.getValueOrNull(zacContext),
         fontFamilyFallback: fontFamilyFallback,
         fontSize: fontSize?.getValueOrNull(zacContext),
         height: height?.getValueOrNull(zacContext),
@@ -152,12 +152,12 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
         fontWeight: fontWeight?.build(zacContext),
         fontStyle: fontStyle?.build(zacContext),
         forceStrutHeight: forceStrutHeight?.getValue(zacContext),
-        debugLabel: debugLabel?.getValue(zacContext),
-        package: package?.getValue(zacContext),
+        debugLabel: debugLabel?.getValueOrNull(zacContext),
+        package: package?.getValueOrNull(zacContext),
       ),
       fromTextStyle: (value) => StrutStyle.fromTextStyle(
         value.textStyle.build(zacContext),
-        fontFamily: fontFamily?.getValue(zacContext),
+        fontFamily: fontFamily?.getValueOrNull(zacContext),
         fontFamilyFallback: fontFamilyFallback,
         fontSize: fontSize?.getValueOrNull(zacContext),
         height: height?.getValueOrNull(zacContext),
@@ -166,8 +166,8 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
         fontWeight: fontWeight?.build(zacContext),
         fontStyle: fontStyle?.build(zacContext),
         forceStrutHeight: forceStrutHeight?.getValue(zacContext),
-        debugLabel: debugLabel?.getValue(zacContext),
-        package: package?.getValue(zacContext),
+        debugLabel: debugLabel?.getValueOrNull(zacContext),
+        package: package?.getValueOrNull(zacContext),
       ),
     );
   }
@@ -297,10 +297,10 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterColor? decorationColor,
     FlutterTextDecorationStyle? decorationStyle,
     ZacDouble? decorationThickness,
-    ZacValue<String>? debugLabel,
-    ZacValue<String>? fontFamily,
+    ZacString? debugLabel,
+    ZacString? fontFamily,
     List<String>? fontFamilyFallback,
-    ZacValue<String>? package,
+    ZacString? package,
     FlutterTextOverflow? overflow,
   }) = _FlutterTextStyle;
 
@@ -324,10 +324,10 @@ class FlutterTextStyle with _$FlutterTextStyle {
       decorationColor: decorationColor?.build(zacContext),
       decorationStyle: decorationStyle?.build(zacContext),
       decorationThickness: decorationThickness?.getValueOrNull(zacContext),
-      debugLabel: debugLabel?.getValue(zacContext),
-      fontFamily: fontFamily?.getValue(zacContext),
+      debugLabel: debugLabel?.getValueOrNull(zacContext),
+      fontFamily: fontFamily?.getValueOrNull(zacContext),
       fontFamilyFallback: fontFamilyFallback,
-      package: package?.getValue(zacContext),
+      package: package?.getValueOrNull(zacContext),
       overflow: overflow?.build(zacContext),
     );
   }

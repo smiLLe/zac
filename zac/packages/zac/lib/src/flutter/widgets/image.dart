@@ -23,13 +23,13 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
 
   @FreezedUnionValue(FlutterImage.unionValueNetwork)
   factory FlutterImage.network(
-    ZacValue<String> src, {
+    ZacString src, {
     FlutterKey? key,
     ZacDouble? scale,
     // ImageFrameBuilder? frameBuilder,
     // ImageLoadingBuilder? loadingBuilder,
     // ImageErrorWidgetBuilder? errorBuilder,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
     ZacValue<bool>? excludeFromSemantics,
     ZacDouble? width,
     ZacDouble? height,
@@ -51,12 +51,12 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
 
   @FreezedUnionValue(FlutterImage.unionValueAsset)
   factory FlutterImage.asset(
-    ZacValue<String> name, {
+    ZacString name, {
     FlutterKey? key,
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
     ZacValue<bool>? excludeFromSemantics,
     ZacDouble? scale,
     ZacDouble? width,
@@ -71,7 +71,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     ZacValue<bool>? matchTextDirection,
     ZacValue<bool>? gaplessPlayback,
     ZacValue<bool>? isAntiAlias,
-    ZacValue<String>? package,
+    ZacString? package,
     FlutterFilterQuality? filterQuality,
     ZacInt? cacheWidth,
     ZacInt? cacheHeight,
@@ -84,7 +84,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         value.src.getValue(zacContext),
         key: value.key?.buildKey(zacContext),
         scale: value.scale?.getValueOrNull(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
         excludeFromSemantics:
             value.excludeFromSemantics?.getValue(zacContext) ?? false,
         width: value.width?.getValueOrNull(zacContext),
@@ -109,7 +109,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         value.name.getValue(zacContext),
         key: value.key?.buildKey(zacContext),
         scale: value.scale?.getValueOrNull(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
         excludeFromSemantics:
             value.excludeFromSemantics?.getValue(zacContext) ?? false,
         width: value.width?.getValueOrNull(zacContext),
@@ -128,6 +128,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         isAntiAlias: value.isAntiAlias?.getValue(zacContext) ?? false,
         cacheWidth: value.cacheWidth?.getValueOrNull(zacContext),
         cacheHeight: value.cacheHeight?.getValueOrNull(zacContext),
+        package: value.package?.getValueOrNull(zacContext),
       ),
     );
   }

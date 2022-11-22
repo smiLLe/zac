@@ -178,7 +178,7 @@ class ZacWidgetIsolated extends StatelessWidget {
                       ),
                     ),
                     padding: FlutterEdgeInsets.all(ZacDouble.fromJson(8.0)),
-                    child: FlutterText(ZacValue<String>.fromJson(
+                    child: FlutterText(ZacString.fromJson(
                         'ERROR IN $ZacWidgetIsolated:\n${obj.error}')),
                   );
                   return true;

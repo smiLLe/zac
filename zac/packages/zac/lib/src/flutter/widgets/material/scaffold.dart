@@ -51,7 +51,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     ZacDouble? drawerEdgeDragWidth,
     ZacValue<bool>? drawerEnableOpenDragGesture,
     ZacValue<bool>? endDrawerEnableOpenDragGesture,
-    ZacValue<String>? restorationId,
+    ZacString? restorationId,
   }) = _FlutterScaffold;
 
   @override
@@ -83,7 +83,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
             value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
         endDrawerEnableOpenDragGesture:
             value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
-        restorationId: value.restorationId?.getValue(zacContext),
+        restorationId: value.restorationId?.getValueOrNull(zacContext),
       ),
     );
   }

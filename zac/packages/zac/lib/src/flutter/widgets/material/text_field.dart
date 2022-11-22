@@ -44,7 +44,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
 // ToolbarOptions? toolbarOptions,
     ZacValue<bool>? showCursor,
     ZacValue<bool>? autofocus,
-    ZacValue<String>? obscuringCharacter,
+    ZacString? obscuringCharacter,
     ZacValue<bool>? obscureText,
     ZacValue<bool>? autocorrect,
     FlutterSmartDashesType? smartDashesType,
@@ -82,7 +82,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
     FlutterClip? clipBehavior,
-    ZacValue<String>? restorationId,
+    ZacString? restorationId,
     ZacValue<bool>? enableIMEPersonalizedLearning,
   }) = _FlutterTextField;
 
@@ -97,7 +97,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       readOnly: readOnly?.getValue(zacContext) ?? false,
       showCursor: showCursor?.getValue(zacContext),
       autofocus: autofocus?.getValue(zacContext) ?? false,
-      obscuringCharacter: obscuringCharacter?.getValue(zacContext) ?? '•',
+      obscuringCharacter: obscuringCharacter?.getValueOrNull(zacContext) ?? '•',
       obscureText: obscureText?.getValue(zacContext) ?? false,
       autocorrect: autocorrect?.getValue(zacContext) ?? true,
       enableSuggestions: enableSuggestions?.getValue(zacContext) ?? true,
@@ -116,7 +116,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       enableInteractiveSelection:
           enableInteractiveSelection?.getValue(zacContext) ?? true,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValueOrNull(zacContext),
       enableIMEPersonalizedLearning:
           enableIMEPersonalizedLearning?.getValue(zacContext) ?? true,
       onChanged: onChanged?.createCbParam1<String>(zacContext),

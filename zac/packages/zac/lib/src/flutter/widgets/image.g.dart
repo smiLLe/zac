@@ -9,7 +9,7 @@ part of 'image.dart';
 _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterImageNetowrk(
-      ZacValue<String>.fromJson(json['src'] as Object),
+      ZacString.fromJson(json['src'] as Object),
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
@@ -18,7 +18,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacDouble.fromJson(json['scale'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
+          : ZacString.fromJson(json['semanticLabel'] as Object),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
           : ZacValue<bool>.fromJson(json['excludeFromSemantics'] as Object),
@@ -74,13 +74,13 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
 
 _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
     _$_FlutterImageAsset(
-      ZacValue<String>.fromJson(json['name'] as Object),
+      ZacString.fromJson(json['name'] as Object),
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
+          : ZacString.fromJson(json['semanticLabel'] as Object),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
           : ZacValue<bool>.fromJson(json['excludeFromSemantics'] as Object),
@@ -123,7 +123,7 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool>.fromJson(json['isAntiAlias'] as Object),
       package: json['package'] == null
           ? null
-          : ZacValue<String>.fromJson(json['package'] as Object),
+          : ZacString.fromJson(json['package'] as Object),
       filterQuality: json['filterQuality'] == null
           ? null
           : FlutterFilterQuality.fromJson(

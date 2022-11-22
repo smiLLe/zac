@@ -28,7 +28,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
     ZacDouble? elevation,
     FlutterShapeBorder? shape,
     FlutterWidget? child,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
   }) = _FlutterDrawer;
 
   @override
@@ -37,7 +37,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
       key: key?.buildKey(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
       elevation: elevation?.getValueOrNull(zacContext),
-      semanticLabel: semanticLabel?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValueOrNull(zacContext),
       shape: shape?.build(zacContext),
       child: child?.buildWidget(zacContext),
     );

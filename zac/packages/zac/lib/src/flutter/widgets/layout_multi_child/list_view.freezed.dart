@@ -43,7 +43,7 @@ mixin _$FlutterListView {
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
-  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
+  ZacString? get restorationId => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -117,7 +117,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
   @override
-  final ZacValue<String>? restorationId;
+  final ZacString? restorationId;
   @override
   final FlutterClip? clipBehavior;
 
@@ -220,7 +220,7 @@ abstract class _FlutterListView extends FlutterListView {
       final ZacValueList<FlutterWidget>? children,
       final ZacInt? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-      final ZacValue<String>? restorationId,
+      final ZacString? restorationId,
       final FlutterClip? clipBehavior}) = _$_FlutterListView;
   _FlutterListView._() : super._();
 
@@ -262,7 +262,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
   @override
-  ZacValue<String>? get restorationId;
+  ZacString? get restorationId;
   @override
   FlutterClip? get clipBehavior;
 }

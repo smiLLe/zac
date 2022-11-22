@@ -902,7 +902,7 @@ void main() {
   //     ZacExecuteActionsBuilder.once(
   //       actions: ZacActions([
   //         ZacValueActions.asPayload(
-  //           value: ZacValue<String>.fromJson('hello'),
+  //           value: ZacString.fromJson('hello'),
   //           actions: ZacActions([
   //             LeakAction(
   //               (p, zacContext) => payload = p,

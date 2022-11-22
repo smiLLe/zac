@@ -28,13 +28,13 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
         scaffoldMessengerKey,
     FlutterWidget? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
-    ZacValue<String>? initialRoute,
+    ZacString? initialRoute,
     FlutterRouteFactory? onGenerateRoute,
     // InitialRouteListFactory? onGenerateInitialRoutes,
     FlutterRouteFactory? onUnknownRoute,
     // List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
     // TransitionBuilder? builder,
-    ZacValue<String>? title,
+    ZacString? title,
     // GenerateAppTitle? onGenerateTitle,
     FlutterColor? color,
     // ThemeData? theme,
@@ -55,7 +55,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
     ZacValue<bool>? debugShowCheckedModeBanner,
     // Map<ShortcutActivator, Intent>? shortcuts,
     // Map<Type, Action<Intent>>? actions,
-    ZacValue<String>? restorationScopeId,
+    ZacString? restorationScopeId,
     // ScrollBehavior? scrollBehavior,
     ZacValue<bool>? useInheritedMediaQuery,
   }) = _FlutterMaterialApp;
@@ -69,10 +69,10 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
           ?.getSharedValueOrNull(zacContext)
           ?.buildKey(zacContext),
       home: home?.buildWidget(zacContext),
-      initialRoute: initialRoute?.getValue(zacContext),
+      initialRoute: initialRoute?.getValueOrNull(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
       onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
-      title: title?.getValue(zacContext) ?? '',
+      title: title?.getValueOrNull(zacContext) ?? '',
       color: color?.build(zacContext),
       locale: locale?.build(zacContext),
       debugShowMaterialGrid:
@@ -87,7 +87,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
           showSemanticsDebugger?.getValue(zacContext) ?? false,
       debugShowCheckedModeBanner:
           debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(zacContext),
+      restorationScopeId: restorationScopeId?.getValueOrNull(zacContext),
       useInheritedMediaQuery:
           useInheritedMediaQuery?.getValue(zacContext) ?? false,
     );

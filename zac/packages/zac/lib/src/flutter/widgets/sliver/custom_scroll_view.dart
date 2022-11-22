@@ -42,7 +42,7 @@ class FlutterCustomScrollView
     ZacInt? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacValue<String>? restorationId,
+    ZacString? restorationId,
     FlutterClip? clipBehavior,
   }) = _FlutterCustomScrollView;
 
@@ -64,7 +64,7 @@ class FlutterCustomScrollView
       semanticChildCount: semanticChildCount?.getValueOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValueOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
     );
   }

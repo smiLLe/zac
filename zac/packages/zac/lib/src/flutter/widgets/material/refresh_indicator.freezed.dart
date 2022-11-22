@@ -29,8 +29,8 @@ mixin _$FlutterRefreshIndicator {
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacValue<String>? get semanticsValue => throw _privateConstructorUsedError;
+  ZacString? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacString? get semanticsValue => throw _privateConstructorUsedError;
   ZacDouble? get strokeWidth => throw _privateConstructorUsedError;
   FlutterRefreshIndicatorTriggerMode? get triggerMode =>
       throw _privateConstructorUsedError;
@@ -81,9 +81,9 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   final FlutterColor? backgroundColor;
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   @override
-  final ZacValue<String>? semanticsLabel;
+  final ZacString? semanticsLabel;
   @override
-  final ZacValue<String>? semanticsValue;
+  final ZacString? semanticsValue;
   @override
   final ZacDouble? strokeWidth;
   @override
@@ -159,8 +159,8 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
           required final ZacActions onRefresh,
           final FlutterColor? color,
           final FlutterColor? backgroundColor,
-          final ZacValue<String>? semanticsLabel,
-          final ZacValue<String>? semanticsValue,
+          final ZacString? semanticsLabel,
+          final ZacString? semanticsValue,
           final ZacDouble? strokeWidth,
           final FlutterRefreshIndicatorTriggerMode? triggerMode,
           final ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter}) =
@@ -185,9 +185,9 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   FlutterColor? get backgroundColor;
   @override // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacValue<String>? get semanticsLabel;
+  ZacString? get semanticsLabel;
   @override
-  ZacValue<String>? get semanticsValue;
+  ZacString? get semanticsValue;
   @override
   ZacDouble? get strokeWidth;
   @override

@@ -44,7 +44,7 @@ class FlutterSelectableText
     // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
     // ScrollPhysics? scrollPhysics,
-    ZacValue<String>? semanticsLabel,
+    ZacString? semanticsLabel,
     FlutterTextHeightBehavior? textHeightBehavior,
     FlutterTextWidthBasis? textWidthBasis,
     // SelectionChangedCallback? onSelectionChanged,
@@ -70,7 +70,7 @@ class FlutterSelectableText
       cursorColor: cursorColor?.build(zacContext),
       enableInteractiveSelection:
           enableInteractiveSelection?.getValue(zacContext) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValueOrNull(zacContext),
       textHeightBehavior: textHeightBehavior?.build(zacContext),
       textWidthBasis: textWidthBasis?.build(zacContext),
     );

@@ -24,7 +24,7 @@ mixin _$FlutterIcon {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacDouble? get size => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
-  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
+  ZacString? get semanticLabel => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -53,7 +53,7 @@ class _$_FlutterIcon extends _FlutterIcon {
   @override
   final FlutterColor? color;
   @override
-  final ZacValue<String>? semanticLabel;
+  final ZacString? semanticLabel;
   @override
   final FlutterTextDirection? textDirection;
 
@@ -96,7 +96,7 @@ abstract class _FlutterIcon extends FlutterIcon {
       {final FlutterKey? key,
       final ZacDouble? size,
       final FlutterColor? color,
-      final ZacValue<String>? semanticLabel,
+      final ZacString? semanticLabel,
       final FlutterTextDirection? textDirection}) = _$_FlutterIcon;
   _FlutterIcon._() : super._();
 
@@ -112,7 +112,7 @@ abstract class _FlutterIcon extends FlutterIcon {
   @override
   FlutterColor? get color;
   @override
-  ZacValue<String>? get semanticLabel;
+  ZacString? get semanticLabel;
   @override
   FlutterTextDirection? get textDirection;
 }
@@ -124,8 +124,8 @@ FlutterIconData _$FlutterIconDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterIconData {
   ZacInt get codePoint => throw _privateConstructorUsedError;
-  ZacValue<String>? get fontFamily => throw _privateConstructorUsedError;
-  ZacValue<String>? get fontPackage => throw _privateConstructorUsedError;
+  ZacString? get fontFamily => throw _privateConstructorUsedError;
+  ZacString? get fontPackage => throw _privateConstructorUsedError;
   ZacValue<bool>? get matchTextDirection => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -148,9 +148,9 @@ class _$_FlutterIconData extends _FlutterIconData {
   @override
   final ZacInt codePoint;
   @override
-  final ZacValue<String>? fontFamily;
+  final ZacString? fontFamily;
   @override
-  final ZacValue<String>? fontPackage;
+  final ZacString? fontPackage;
   @override
   final ZacValue<bool>? matchTextDirection;
 
@@ -190,8 +190,8 @@ class _$_FlutterIconData extends _FlutterIconData {
 
 abstract class _FlutterIconData extends FlutterIconData {
   factory _FlutterIconData(final ZacInt codePoint,
-      {final ZacValue<String>? fontFamily,
-      final ZacValue<String>? fontPackage,
+      {final ZacString? fontFamily,
+      final ZacString? fontPackage,
       final ZacValue<bool>? matchTextDirection}) = _$_FlutterIconData;
   _FlutterIconData._() : super._();
 
@@ -201,9 +201,9 @@ abstract class _FlutterIconData extends FlutterIconData {
   @override
   ZacInt get codePoint;
   @override
-  ZacValue<String>? get fontFamily;
+  ZacString? get fontFamily;
   @override
-  ZacValue<String>? get fontPackage;
+  ZacString? get fontPackage;
   @override
   ZacValue<bool>? get matchTextDirection;
 }

@@ -45,7 +45,7 @@ See "$SharedValueProviderBuilder" for more info.
       family: family,
     );
 
-    if (null == value) {
+    if (null == value && true != transformer?.transformers.isNotEmpty) {
       throw StateError('$SharedValue must not be null');
     }
 
@@ -70,7 +70,7 @@ See "$SharedValueProviderBuilder" for more info.
       family: family,
     );
 
-    if (null == value) {
+    if (null == value && true != transformer?.transformers.isNotEmpty) {
       return null;
     }
 
@@ -95,6 +95,10 @@ See "$SharedValueProviderBuilder" for more info.
       consumeType: consumeType,
       family: family,
     );
+
+    if (null == value && true != transformer?.transformers.isNotEmpty) {
+      throw StateError('$SharedValue must not be null');
+    }
 
     value as List<dynamic>;
 
@@ -121,7 +125,7 @@ See "$SharedValueProviderBuilder" for more info.
       family: family,
     );
 
-    if (null == value) {
+    if (null == value && true != transformer?.transformers.isNotEmpty) {
       return null;
     }
 

@@ -37,8 +37,8 @@ class FlutterRefreshIndicator
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
+    ZacString? semanticsLabel,
+    ZacString? semanticsValue,
     ZacDouble? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
     ZacValueConsumeOnly<DartCompleterVoid>? onRefreshCompleter,
@@ -64,8 +64,8 @@ class FlutterRefreshIndicator
       edgeOffset: edgeOffset?.getValueOrNull(zacContext) ?? 0.0,
       color: color?.build(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      semanticsValue: semanticsValue?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValueOrNull(zacContext),
+      semanticsValue: semanticsValue?.getValueOrNull(zacContext),
       strokeWidth: strokeWidth?.getValueOrNull(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
       triggerMode:

@@ -20,7 +20,7 @@ FlutterText _$FlutterTextFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterText {
-  ZacValue<String> get data => throw _privateConstructorUsedError;
+  ZacString get data => throw _privateConstructorUsedError;
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterTextStyle? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ mixin _$FlutterText {
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
   ZacDouble? get textScaleFactor => throw _privateConstructorUsedError;
   ZacInt? get maxLines => throw _privateConstructorUsedError;
-  ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacString? get semanticsLabel => throw _privateConstructorUsedError;
   FlutterTextWidthBasis? get textWidthBasis =>
       throw _privateConstructorUsedError;
   FlutterTextHeightBehavior? get textHeightBehavior =>
@@ -67,7 +67,7 @@ class _$_FlutterText extends _FlutterText {
       _$$_FlutterTextFromJson(json);
 
   @override
-  final ZacValue<String> data;
+  final ZacString data;
   @override
   final FlutterKey? key;
   @override
@@ -89,7 +89,7 @@ class _$_FlutterText extends _FlutterText {
   @override
   final ZacInt? maxLines;
   @override
-  final ZacValue<String>? semanticsLabel;
+  final ZacString? semanticsLabel;
   @override
   final FlutterTextWidthBasis? textWidthBasis;
   @override
@@ -160,7 +160,7 @@ class _$_FlutterText extends _FlutterText {
 }
 
 abstract class _FlutterText extends FlutterText {
-  factory _FlutterText(final ZacValue<String> data,
+  factory _FlutterText(final ZacString data,
       {final FlutterKey? key,
       final FlutterTextStyle? style,
       final FlutterStrutStyle? strutStyle,
@@ -171,7 +171,7 @@ abstract class _FlutterText extends FlutterText {
       final FlutterTextOverflow? overflow,
       final ZacDouble? textScaleFactor,
       final ZacInt? maxLines,
-      final ZacValue<String>? semanticsLabel,
+      final ZacString? semanticsLabel,
       final FlutterTextWidthBasis? textWidthBasis,
       final FlutterTextHeightBehavior? textHeightBehavior}) = _$_FlutterText;
   _FlutterText._() : super._();
@@ -180,7 +180,7 @@ abstract class _FlutterText extends FlutterText {
       _$_FlutterText.fromJson;
 
   @override
-  ZacValue<String> get data;
+  ZacString get data;
   @override
   FlutterKey? get key;
   @override
@@ -202,7 +202,7 @@ abstract class _FlutterText extends FlutterText {
   @override
   ZacInt? get maxLines;
   @override
-  ZacValue<String>? get semanticsLabel;
+  ZacString? get semanticsLabel;
   @override
   FlutterTextWidthBasis? get textWidthBasis;
   @override

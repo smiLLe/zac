@@ -32,8 +32,8 @@ class FlutterProgressIndicator
     FlutterColor? color,
 // Animation<Color?>? valueColor,
     ZacDouble? minHeight,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
+    ZacString? semanticsLabel,
+    ZacString? semanticsValue,
   }) = _FlutterProgressIndicatorLinear;
 
   @FreezedUnionValue(
@@ -45,8 +45,8 @@ class FlutterProgressIndicator
     FlutterColor? color,
     // Animation<Color?>? valueColor,
     ZacDouble? strokeWidth,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
+    ZacString? semanticsLabel,
+    ZacString? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
 
   @override
@@ -58,8 +58,8 @@ class FlutterProgressIndicator
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
         minHeight: value.minHeight?.getValueOrNull(zacContext),
-        semanticsLabel: value.semanticsLabel?.getValue(zacContext),
-        semanticsValue: value.semanticsValue?.getValue(zacContext),
+        semanticsLabel: value.semanticsLabel?.getValueOrNull(zacContext),
+        semanticsValue: value.semanticsValue?.getValueOrNull(zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
         key: value.key?.buildKey(zacContext),
@@ -67,8 +67,8 @@ class FlutterProgressIndicator
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
         strokeWidth: value.strokeWidth?.getValueOrNull(zacContext) ?? 4.0,
-        semanticsLabel: value.semanticsLabel?.getValue(zacContext),
-        semanticsValue: value.semanticsValue?.getValue(zacContext),
+        semanticsLabel: value.semanticsLabel?.getValueOrNull(zacContext),
+        semanticsValue: value.semanticsValue?.getValueOrNull(zacContext),
       ),
     );
   }

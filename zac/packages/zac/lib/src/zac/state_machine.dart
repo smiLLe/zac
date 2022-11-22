@@ -103,8 +103,8 @@ class ZacStateMachineProviderBuilder
   @FreezedUnionValue(ZacStateMachineProviderBuilder.unionValue)
   factory ZacStateMachineProviderBuilder({
     FlutterKey? key,
-    required ZacValue<String> family,
-    required ZacValue<String> initialState,
+    required ZacString family,
+    required ZacString initialState,
     required Map<String, ZacStateConfig> states,
     required FlutterWidget child,
     ZacValue<Object>? initialContext,
@@ -189,7 +189,7 @@ class ZacStateMachineBuildStateBuilder
   @FreezedUnionValue(ZacStateMachineBuildStateBuilder.unionValue)
   factory ZacStateMachineBuildStateBuilder({
     FlutterKey? key,
-    required ZacValue<String> family,
+    required ZacString family,
     required List<String> states,
     FlutterWidget? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
@@ -270,13 +270,13 @@ class ZacStateMachineActions
   @FreezedUnionValue(ZacStateMachineActions.unionValue)
   factory ZacStateMachineActions.send({
     required SharedValueFamily family,
-    required ZacValue<String> event,
+    required ZacString event,
   }) = _ZacStateMachineActionsSend;
 
   @FreezedUnionValue(ZacStateMachineActions.unionValueTrySend)
   factory ZacStateMachineActions.trySend({
     required SharedValueFamily family,
-    required ZacValue<String> event,
+    required ZacString event,
   }) = _ZacStateMachineActionsTrySend;
 
   @override

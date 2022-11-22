@@ -61,7 +61,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsetsGeometry? buttonPadding,
     FlutterColor? backgroundColor,
     ZacDouble? elevation,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
@@ -79,7 +79,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsetsGeometry? contentPadding,
     FlutterColor? backgroundColor,
     ZacDouble? elevation,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
@@ -132,7 +132,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         scrollable: value.scrollable?.getValue(zacContext) ?? false,
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
         shape: value.shape?.build(zacContext),
         titlePadding: value.titlePadding?.build(zacContext),
         titleTextStyle: value.titleTextStyle?.build(zacContext),
@@ -148,7 +148,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         elevation: value.elevation?.getValueOrNull(zacContext),
         insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        semanticLabel: value.semanticLabel?.getValue(zacContext),
+        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
         shape: value.shape?.build(zacContext),
         titlePadding: value.titlePadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
@@ -180,7 +180,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
     required FlutterWidget child,
     ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacValue<String>? barrierLabel,
+    ZacString? barrierLabel,
     ZacValue<bool>? useSafeArea,
     ZacValue<bool>? useRootNavigator,
     FlutterRouteSettings? routeSettings,
@@ -198,7 +198,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
                 prefered: const SharedValueConsumeType.read()) ??
             true,
         barrierColor: value.barrierColor?.build(zacContext),
-        barrierLabel: value.barrierLabel?.getValue(zacContext,
+        barrierLabel: value.barrierLabel?.getValueOrNull(zacContext,
             prefered: const SharedValueConsumeType.read()),
         useSafeArea: value.useSafeArea?.getValue(zacContext,
                 prefered: const SharedValueConsumeType.read()) ??

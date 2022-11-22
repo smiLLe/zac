@@ -27,7 +27,7 @@ class ZacFlutterNavigatorActions
 
   @FreezedUnionValue(ZacFlutterNavigatorActions.unionValuePopUntilRouteName)
   factory ZacFlutterNavigatorActions.popUntilRouteName({
-    required ZacValue<String> routeName,
+    required ZacString routeName,
     FlutterNavigatorState? navigatorState,
   }) = _PopUntilRouteName;
 
@@ -64,7 +64,7 @@ class RouteFactoryRouteConfig with _$RouteFactoryRouteConfig {
   @FreezedUnionValue(RouteFactoryRouteConfig.unionValue)
   factory RouteFactoryRouteConfig({
     required FlutterRoute route,
-    ZacValue<String>? provideArgsName,
+    ZacString? provideArgsName,
     ZacTransformers? transform,
   }) = _RouteFactoryConfig;
 }
@@ -142,7 +142,7 @@ class RouteFactoryFromRoutes
 
   static String providerName(
       ZacContext zacContext, RouteFactoryRouteConfig config, String? prefix) {
-    final name = config.provideArgsName?.getValue(zacContext) ??
+    final name = config.provideArgsName?.getValueOrNull(zacContext) ??
         RouteFactoryFromRoutes.defaultProviderName;
     return '${null == prefix ? "" : "$prefix."}$name';
   }

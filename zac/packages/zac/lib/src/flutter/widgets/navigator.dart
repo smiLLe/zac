@@ -75,7 +75,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterKey? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
-    ZacValue<String>? initialRoute,
+    ZacString? initialRoute,
     ZacValue<bool>? requestFocus,
   }) = _FlutterNavigator;
 
@@ -86,7 +86,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
         key: obj.key?.buildKey(zacContext),
         onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
-        initialRoute: obj.initialRoute?.getValue(zacContext),
+        initialRoute: obj.initialRoute?.getValueOrNull(zacContext),
         requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
       ),
     );
@@ -119,7 +119,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushNamed)
   factory FlutterNavigatorActions.pushNamed(
-          {required ZacValue<String> routeName,
+          {required ZacString routeName,
           Object? arguments,
           FlutterNavigatorState? navigatorState}) =
       _FlutterNavigatorActionsPushNamed;
@@ -145,7 +145,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue(FlutterNavigatorActions.unionValuePushReplacementNamed)
   factory FlutterNavigatorActions.pushReplacementNamed({
-    required ZacValue<String> routeName,
+    required ZacString routeName,
     Object? arguments,
     FlutterNavigatorState? navigatorState,
     ZacActions? result,
@@ -270,7 +270,7 @@ class FlutterPageRouteBuilder
     ZacValue<bool>? opaque,
     ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacValue<String>? barrierLabel,
+    ZacString? barrierLabel,
     ZacValue<bool>? maintainState,
     ZacValue<bool>? fullscreenDialog,
   }) = _FlutterPageRouteBuilder;
@@ -291,7 +291,7 @@ class FlutterPageRouteBuilder
       opaque: opaque?.getValue(zacContext) ?? true,
       barrierDismissible: barrierDismissible?.getValue(zacContext) ?? false,
       barrierColor: barrierColor?.build(zacContext),
-      barrierLabel: barrierLabel?.getValue(zacContext),
+      barrierLabel: barrierLabel?.getValueOrNull(zacContext),
       maintainState: maintainState?.getValue(zacContext) ?? true,
       fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
     );
@@ -310,14 +310,14 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
 
   @FreezedUnionValue(FlutterRouteSettings.unionValue)
   factory FlutterRouteSettings({
-    ZacValue<String>? name,
+    ZacString? name,
     Object? arguments,
   }) = _FlutterRouteSettings;
 
   RouteSettings build(ZacContext zacContext) {
     return RouteSettings(
       arguments: arguments,
-      name: name?.getValue(zacContext),
+      name: name?.getValueOrNull(zacContext),
     );
   }
 }

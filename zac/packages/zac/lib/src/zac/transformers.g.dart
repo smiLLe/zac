@@ -87,14 +87,14 @@ _$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
     );
 
 _$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
-      ZacValue<String>.fromJson(json['key'] as Object),
+      ZacString.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
     _$_MapSetValueForKey(
       value: ZacValue<Object?>.fromJson(json['value'] as Object),
-      key: ZacValue<String>.fromJson(json['key'] as Object),
+      key: ZacString.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -348,7 +348,7 @@ _$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
 
 _$_StringSplit _$$_StringSplitFromJson(Map<String, dynamic> json) =>
     _$_StringSplit(
-      pattern: ZacValue<String>.fromJson(json['pattern'] as Object),
+      pattern: ZacString.fromJson(json['pattern'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -364,8 +364,8 @@ _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_StringReplaceAll _$$_StringReplaceAllFromJson(Map<String, dynamic> json) =>
     _$_StringReplaceAll(
-      ZacValue<String>.fromJson(json['from'] as Object),
-      ZacValue<String>.fromJson(json['replace'] as Object),
+      ZacString.fromJson(json['from'] as Object),
+      ZacString.fromJson(json['replace'] as Object),
       $type: json['converter'] as String?,
     );
 

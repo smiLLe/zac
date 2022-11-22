@@ -39,8 +39,7 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
   ZacValue<bool>? get showCursor => throw _privateConstructorUsedError;
   ZacValue<bool>? get autofocus => throw _privateConstructorUsedError;
-  ZacValue<String>? get obscuringCharacter =>
-      throw _privateConstructorUsedError;
+  ZacString? get obscuringCharacter => throw _privateConstructorUsedError;
   ZacValue<bool>? get obscureText => throw _privateConstructorUsedError;
   ZacValue<bool>? get autocorrect => throw _privateConstructorUsedError;
   FlutterSmartDashesType? get smartDashesType =>
@@ -83,7 +82,7 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError; // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
+  ZacString? get restorationId => throw _privateConstructorUsedError;
   ZacValue<bool>? get enableIMEPersonalizedLearning =>
       throw _privateConstructorUsedError;
 
@@ -174,7 +173,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacValue<bool>? autofocus;
   @override
-  final ZacValue<String>? obscuringCharacter;
+  final ZacString? obscuringCharacter;
   @override
   final ZacValue<bool>? obscureText;
   @override
@@ -238,7 +237,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacValue<String>? restorationId;
+  final ZacString? restorationId;
   @override
   final ZacValue<bool>? enableIMEPersonalizedLearning;
 
@@ -406,7 +405,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacValue<bool>? readOnly,
           final ZacValue<bool>? showCursor,
           final ZacValue<bool>? autofocus,
-          final ZacValue<String>? obscuringCharacter,
+          final ZacString? obscuringCharacter,
           final ZacValue<bool>? obscureText,
           final ZacValue<bool>? autocorrect,
           final FlutterSmartDashesType? smartDashesType,
@@ -432,7 +431,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacActions? onTap,
           final ZacValue<FlutterScrollController>? scrollController,
           final FlutterClip? clipBehavior,
-          final ZacValue<String>? restorationId,
+          final ZacString? restorationId,
           final ZacValue<bool>? enableIMEPersonalizedLearning}) =
       _$_FlutterTextField;
   _FlutterTextField._() : super._();
@@ -468,7 +467,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacValue<bool>? get autofocus;
   @override
-  ZacValue<String>? get obscuringCharacter;
+  ZacString? get obscuringCharacter;
   @override
   ZacValue<bool>? get obscureText;
   @override
@@ -524,7 +523,7 @@ abstract class _FlutterTextField extends FlutterTextField {
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior;
   @override
-  ZacValue<String>? get restorationId;
+  ZacString? get restorationId;
   @override
   ZacValue<bool>? get enableIMEPersonalizedLearning;
 }

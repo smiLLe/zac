@@ -49,7 +49,7 @@ mixin _$FlutterScaffold {
       throw _privateConstructorUsedError;
   ZacValue<bool>? get endDrawerEnableOpenDragGesture =>
       throw _privateConstructorUsedError;
-  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
+  ZacString? get restorationId => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -129,7 +129,7 @@ class _$_FlutterScaffold extends _FlutterScaffold {
   @override
   final ZacValue<bool>? endDrawerEnableOpenDragGesture;
   @override
-  final ZacValue<String>? restorationId;
+  final ZacString? restorationId;
 
   @override
   String toString() {
@@ -236,7 +236,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
       final ZacDouble? drawerEdgeDragWidth,
       final ZacValue<bool>? drawerEnableOpenDragGesture,
       final ZacValue<bool>? endDrawerEnableOpenDragGesture,
-      final ZacValue<String>? restorationId}) = _$_FlutterScaffold;
+      final ZacString? restorationId}) = _$_FlutterScaffold;
   _FlutterScaffold._() : super._();
 
   factory _FlutterScaffold.fromJson(Map<String, dynamic> json) =
@@ -280,7 +280,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   @override
   ZacValue<bool>? get endDrawerEnableOpenDragGesture;
   @override
-  ZacValue<String>? get restorationId;
+  ZacString? get restorationId;
 }
 
 FlutterScaffoldActions _$FlutterScaffoldActionsFromJson(

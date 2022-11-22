@@ -37,7 +37,7 @@ class FlutterSingleChildScrollView
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
-    ZacValue<String>? restorationId,
+    ZacString? restorationId,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
@@ -52,7 +52,7 @@ class FlutterSingleChildScrollView
       controller:
           controller?.getValue(zacContext).getScrollController(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValueOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
       child: child?.buildWidget(zacContext),

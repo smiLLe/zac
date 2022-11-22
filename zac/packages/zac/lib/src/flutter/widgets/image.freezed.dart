@@ -34,7 +34,7 @@ mixin _$FlutterImage {
       throw _privateConstructorUsedError; // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
+  ZacString? get semanticLabel => throw _privateConstructorUsedError;
   ZacValue<bool>? get excludeFromSemantics =>
       throw _privateConstructorUsedError;
   ZacDouble? get width => throw _privateConstructorUsedError;
@@ -93,7 +93,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
       _$$_FlutterImageNetowrkFromJson(json);
 
   @override
-  final ZacValue<String> src;
+  final ZacString src;
   @override
   final FlutterKey? key;
   @override
@@ -102,7 +102,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
   @override
-  final ZacValue<String>? semanticLabel;
+  final ZacString? semanticLabel;
   @override
   final ZacValue<bool>? excludeFromSemantics;
   @override
@@ -227,10 +227,10 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
 }
 
 abstract class _FlutterImageNetowrk extends FlutterImage {
-  factory _FlutterImageNetowrk(final ZacValue<String> src,
+  factory _FlutterImageNetowrk(final ZacString src,
       {final FlutterKey? key,
       final ZacDouble? scale,
-      final ZacValue<String>? semanticLabel,
+      final ZacString? semanticLabel,
       final ZacValue<bool>? excludeFromSemantics,
       final ZacDouble? width,
       final ZacDouble? height,
@@ -252,7 +252,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   factory _FlutterImageNetowrk.fromJson(Map<String, dynamic> json) =
       _$_FlutterImageNetowrk.fromJson;
 
-  ZacValue<String> get src;
+  ZacString get src;
   @override
   FlutterKey? get key;
   @override
@@ -260,7 +260,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacValue<String>? get semanticLabel;
+  ZacString? get semanticLabel;
   @override
   ZacValue<bool>? get excludeFromSemantics;
   @override
@@ -325,14 +325,14 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
       _$$_FlutterImageAssetFromJson(json);
 
   @override
-  final ZacValue<String> name;
+  final ZacString name;
   @override
   final FlutterKey? key;
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
   @override
-  final ZacValue<String>? semanticLabel;
+  final ZacString? semanticLabel;
   @override
   final ZacValue<bool>? excludeFromSemantics;
   @override
@@ -361,7 +361,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacValue<bool>? isAntiAlias;
   @override
-  final ZacValue<String>? package;
+  final ZacString? package;
   @override
   final FlutterFilterQuality? filterQuality;
   @override
@@ -452,9 +452,9 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
 }
 
 abstract class _FlutterImageAsset extends FlutterImage {
-  factory _FlutterImageAsset(final ZacValue<String> name,
+  factory _FlutterImageAsset(final ZacString name,
       {final FlutterKey? key,
-      final ZacValue<String>? semanticLabel,
+      final ZacString? semanticLabel,
       final ZacValue<bool>? excludeFromSemantics,
       final ZacDouble? scale,
       final ZacDouble? width,
@@ -468,7 +468,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
       final ZacValue<bool>? matchTextDirection,
       final ZacValue<bool>? gaplessPlayback,
       final ZacValue<bool>? isAntiAlias,
-      final ZacValue<String>? package,
+      final ZacString? package,
       final FlutterFilterQuality? filterQuality,
       final ZacInt? cacheWidth,
       final ZacInt? cacheHeight}) = _$_FlutterImageAsset;
@@ -477,13 +477,13 @@ abstract class _FlutterImageAsset extends FlutterImage {
   factory _FlutterImageAsset.fromJson(Map<String, dynamic> json) =
       _$_FlutterImageAsset.fromJson;
 
-  ZacValue<String> get name;
+  ZacString get name;
   @override
   FlutterKey? get key;
   @override // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacValue<String>? get semanticLabel;
+  ZacString? get semanticLabel;
   @override
   ZacValue<bool>? get excludeFromSemantics;
   @override
@@ -510,7 +510,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
   ZacValue<bool>? get gaplessPlayback;
   @override
   ZacValue<bool>? get isAntiAlias;
-  ZacValue<String>? get package;
+  ZacString? get package;
   @override
   FlutterFilterQuality? get filterQuality;
   @override

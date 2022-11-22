@@ -13,12 +13,12 @@ part 'transformers.g.dart';
 
 abstract class TransformObjectHelper {
   static T simple<T>({
-    required Object fromValue,
+    required Object? fromValue,
     required ZacContext zacContext,
     required ZacTransformers? transformer,
   }) {
     if (fromValue is T && true != transformer?.transformers.isNotEmpty) {
-      return fromValue as T;
+      return fromValue;
     }
 
     if (null == transformer || transformer.transformers.isEmpty) {
@@ -351,12 +351,12 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapFromStringNullObject;
 
   @FreezedUnionValue(MapTransformer.unionValueKey)
-  const factory MapTransformer.key(ZacValue<String> key) = _MapKey;
+  const factory MapTransformer.key(ZacString key) = _MapKey;
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
   const factory MapTransformer.setValueForKey({
     required ZacValue<Object?> value,
-    required ZacValue<String> key,
+    required ZacString key,
   }) = _MapSetValueForKey;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringFlutterWidget)
@@ -852,7 +852,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   const factory StringTransformer.length() = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  const factory StringTransformer.split({required ZacValue<String> pattern}) =
+  const factory StringTransformer.split({required ZacString pattern}) =
       _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
@@ -863,7 +863,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
   const factory StringTransformer.replaceAll(
-      ZacValue<String> from, ZacValue<String> replace) = _StringReplaceAll;
+      ZacString from, ZacString replace) = _StringReplaceAll;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,

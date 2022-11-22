@@ -26,5 +26,5 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['child'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
+          : ZacString.fromJson(json['semanticLabel'] as Object),
     );

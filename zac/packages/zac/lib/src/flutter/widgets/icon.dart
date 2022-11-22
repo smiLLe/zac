@@ -25,7 +25,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
     FlutterKey? key,
     ZacDouble? size,
     FlutterColor? color,
-    ZacValue<String>? semanticLabel,
+    ZacString? semanticLabel,
     FlutterTextDirection? textDirection,
   }) = _FlutterIcon;
 
@@ -36,7 +36,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
       key: key?.buildKey(zacContext),
       color: color?.build(zacContext),
       size: size?.getValueOrNull(zacContext),
-      semanticLabel: semanticLabel?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValueOrNull(zacContext),
       textDirection: textDirection?.build(zacContext),
     );
   }
@@ -53,8 +53,8 @@ class FlutterIconData with _$FlutterIconData {
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
     ZacInt codePoint, {
-    ZacValue<String>? fontFamily,
-    ZacValue<String>? fontPackage,
+    ZacString? fontFamily,
+    ZacString? fontPackage,
     ZacValue<bool>? matchTextDirection,
   }) = _FlutterIconData;
 

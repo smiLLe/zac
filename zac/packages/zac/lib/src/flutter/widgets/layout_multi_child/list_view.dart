@@ -44,7 +44,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     ZacInt? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacValue<String>? restorationId,
+    ZacString? restorationId,
     FlutterClip? clipBehavior,
   }) = _FlutterListView;
 
@@ -69,7 +69,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       semanticChildCount: semanticChildCount?.getValueOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacContext),
+      restorationId: restorationId?.getValueOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       physics: physics?.build(zacContext),
       children: children?.getWidgets(zacContext) ?? const <Widget>[],

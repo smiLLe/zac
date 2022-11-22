@@ -32,7 +32,7 @@ void main() {
             'requestFocus': false,
           }),
           FlutterNavigator(
-              initialRoute: ZacValue<String>.fromJson('/foo'),
+              initialRoute: ZacString.fromJson('/foo'),
               requestFocus: ZacValue<bool>.fromJson(false)));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>({
@@ -44,7 +44,7 @@ void main() {
           ConverterHelper.convertToType<FlutterNavigatorActions>(
               {'converter': 'f:1:Navigator.pushNamed', 'routeName': '/cool'}),
           FlutterNavigatorActions.pushNamed(
-              routeName: ZacValue<String>.fromJson('/cool')));
+              routeName: ZacString.fromJson('/cool')));
       expect(
           ConverterHelper.convertToType<FlutterNavigatorActions>(
               {'converter': 'f:1:Navigator.pop'}),
@@ -65,14 +65,14 @@ void main() {
             'routeName': '/cool'
           }),
           FlutterNavigatorActions.pushReplacementNamed(
-              routeName: ZacValue<String>.fromJson('/cool')));
+              routeName: ZacString.fromJson('/cool')));
       expect(
           ConverterHelper.convertToType<ZacFlutterNavigatorActions>({
             'converter': 'z:1:Navigator.popUntilRouteName',
             'routeName': '/cool'
           }),
           ZacFlutterNavigatorActions.popUntilRouteName(
-              routeName: ZacValue<String>.fromJson('/cool')));
+              routeName: ZacString.fromJson('/cool')));
     });
   });
 
@@ -133,7 +133,7 @@ void main() {
                       actions: ZacActions(
                         [
                           FlutterNavigatorActions.pushNamed(
-                            routeName: ZacValue<String>.fromJson('/other'),
+                            routeName: ZacString.fromJson('/other'),
                             arguments: 22,
                           )
                         ],
@@ -214,7 +214,7 @@ void main() {
                       actions: ZacActions(
                         [
                           FlutterNavigatorActions.pushNamed(
-                            routeName: ZacValue<String>.fromJson('/other'),
+                            routeName: ZacString.fromJson('/other'),
                             arguments: 1,
                           )
                         ],
@@ -228,7 +228,7 @@ void main() {
                       key: FlutterValueKey('press_me'),
                       onPressed: ZacActions([
                         FlutterNavigatorActions.pushNamed(
-                          routeName: ZacValue<String>.fromJson('/otherother'),
+                          routeName: ZacString.fromJson('/otherother'),
                           arguments: 11,
                         )
                       ]),
@@ -287,7 +287,7 @@ void main() {
             RouteFactoryFromRoutes.providerName(
               zacContext,
               RouteFactoryRouteConfig(
-                provideArgsName: ZacValue<String>.fromJson('foo'),
+                provideArgsName: ZacString.fromJson('foo'),
                 route: FlutterMaterialPageRoute(
                   child: FlutterSizedBox(),
                 ),
@@ -311,7 +311,7 @@ void main() {
             RouteFactoryFromRoutes.providerName(
                 zacContext,
                 RouteFactoryRouteConfig(
-                  provideArgsName: ZacValue<String>.fromJson('foo'),
+                  provideArgsName: ZacString.fromJson('foo'),
                   route: FlutterMaterialPageRoute(
                     child: FlutterSizedBox(),
                   ),

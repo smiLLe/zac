@@ -62,7 +62,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['enableInteractiveSelection'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacString.fromJson(json['semanticsLabel'] as Object),
       textHeightBehavior: json['textHeightBehavior'] == null
           ? null
           : FlutterTextHeightBehavior.fromJson(
