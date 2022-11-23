@@ -271,9 +271,6 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'f:1:FractionalTranslation': FlutterFractionalTranslation.fromJson,
   'f:1:FractionallySizedBox': FlutterFractionallySizedBox.fromJson,
   'f:1:GestureDetector': FlutterGestureDetector.fromJson,
-  'f:1:GlobalKey<NavigatorState>': FlutterGlobalKeyNavigatorState.fromJson,
-  'f:1:GlobalKey<ScaffoldMessengerState>':
-      FlutterGlobalKeyScaffoldMessengerState.fromJson,
   'f:1:GridView': FlutterGridView.fromJson,
   'f:1:HitTestBehavior.deferToChild': FlutterHitTestBehavior.fromJson,
   'f:1:HitTestBehavior.opaque': FlutterHitTestBehavior.fromJson,
@@ -502,6 +499,10 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:FlutterWidget': ZacFlutterWidget.fromJson,
   'z:1:FlutterWidget.consume': ZacFlutterWidget.fromJson,
   'z:1:FlutterWidget.transformable': ZacFlutterWidget.fromJson,
+  'z:1:GlobalKey<NavigatorState>.consume':
+      FlutterGlobalKeyNavigatorState.fromJson,
+  'z:1:GlobalKey<ScaffoldMessengerState>.consume':
+      FlutterGlobalKeyScaffoldMessengerState.fromJson,
   'z:1:List<FlutterWidget>': ZacListOfFlutterWidget.fromJson,
   'z:1:List<FlutterWidget>.consume': ZacListOfFlutterWidget.fromJson,
   'z:1:List<FlutterWidget>.transformable': ZacListOfFlutterWidget.fromJson,
@@ -510,6 +511,9 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:Object': ZacObject.fromJson,
   'z:1:Object.consume': ZacObject.fromJson,
   'z:1:Object.transformable': ZacObject.fromJson,
+  'z:1:ProvideKey:GlobalKey<NavigatorState>': ZacProvideFlutterKey.fromJson,
+  'z:1:ProvideKey:GlobalKey<ScaffoldMessengerState>':
+      ZacProvideFlutterKey.fromJson,
   'z:1:RouteFactoryFromRoutes': RouteFactoryFromRoutes.fromJson,
   'z:1:RouteFactoryRouteConfig': RouteFactoryRouteConfig.fromJson,
   'z:1:RouteFactorySingleRoute': RouteFactorySingleRoute.fromJson,
@@ -603,6 +607,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:Transformer:num.toInt': NumTransformer.fromJson,
   'z:1:Transformers': ZacTransformers.fromJson,
   'z:1:UpdateContext': ZacUpdateContextBuilder.fromJson,
+  'z:1:ValueKey.consume': FlutterValueKey.fromJson,
   'z:1:Widget': ZacWidgetBuilder.fromJson,
   'z:1:Widget.isolate': ZacWidgetBuilder.fromJson,
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
