@@ -1,3 +1,4 @@
+export 'src/zac/zac_builder.dart';
 export 'src/converter.dart';
 export 'src/base.dart';
 export 'src/zac/context.dart';

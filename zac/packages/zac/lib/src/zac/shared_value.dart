@@ -196,6 +196,39 @@ See "$SharedValueProviderBuilder" for more info.
   }
 }
 
+mixin ConsumeSharedValue<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+
+  T consumeValue(ZacContext zacContext,
+      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTyped<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? type),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    return value;
+  }
+
+  T? consumeValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTypedOrNull<T?>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? type),
+      family: family,
+      select: select,
+      transformer: transformer,
+    );
+
+    return value;
+  }
+}
+
 @freezedZacBuilder
 @ZacGenerate()
 class SharedValueActions with _$SharedValueActions implements ZacAction {

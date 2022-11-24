@@ -94,7 +94,7 @@ abstract class _FlutterValueKey extends FlutterValueKey {
 @JsonSerializable(createToJson: false)
 class _$_FlutterValueKeyConsumeSharedValue
     extends _FlutterValueKeyConsumeSharedValue
-    with ZacValueConsumeImpl<ValueKey<String>> {
+    with ConsumeSharedValue<ValueKey<String>> {
   _$_FlutterValueKeyConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -158,9 +158,7 @@ class _$_FlutterValueKeyConsumeSharedValue
 }
 
 abstract class _FlutterValueKeyConsumeSharedValue extends FlutterValueKey
-    implements
-        ZacValueConsume<ValueKey<String>>,
-        ZacValueConsumeImpl<ValueKey<String>> {
+    implements ConsumeSharedValue<ValueKey<String>> {
   factory _FlutterValueKeyConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -202,7 +200,7 @@ mixin _$FlutterGlobalKeyNavigatorState {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_FlutterGlobalKeyNavigatorState extends _FlutterGlobalKeyNavigatorState
-    with ZacValueConsumeImpl<GlobalKey<NavigatorState>> {
+    with ConsumeSharedValue<GlobalKey<NavigatorState>> {
   _$_FlutterGlobalKeyNavigatorState(
       {required this.family, this.transformer, this.select, this.forceConsume})
       : super._();
@@ -258,9 +256,7 @@ class _$_FlutterGlobalKeyNavigatorState extends _FlutterGlobalKeyNavigatorState
 
 abstract class _FlutterGlobalKeyNavigatorState
     extends FlutterGlobalKeyNavigatorState
-    implements
-        ZacValueConsume<GlobalKey<NavigatorState>>,
-        ZacValueConsumeImpl<GlobalKey<NavigatorState>> {
+    implements ConsumeSharedValue<GlobalKey<NavigatorState>> {
   factory _FlutterGlobalKeyNavigatorState(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -308,7 +304,7 @@ mixin _$FlutterGlobalKeyScaffoldMessengerState {
 @JsonSerializable(createToJson: false)
 class _$_FlutterGlobalKeyScaffoldMessengerState
     extends _FlutterGlobalKeyScaffoldMessengerState
-    with ZacValueConsumeImpl<GlobalKey<ScaffoldMessengerState>> {
+    with ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>> {
   _$_FlutterGlobalKeyScaffoldMessengerState(
       {required this.family, this.transformer, this.select, this.forceConsume})
       : super._();
@@ -365,9 +361,7 @@ class _$_FlutterGlobalKeyScaffoldMessengerState
 
 abstract class _FlutterGlobalKeyScaffoldMessengerState
     extends FlutterGlobalKeyScaffoldMessengerState
-    implements
-        ZacValueConsume<GlobalKey<ScaffoldMessengerState>>,
-        ZacValueConsumeImpl<GlobalKey<ScaffoldMessengerState>> {
+    implements ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>> {
   factory _FlutterGlobalKeyScaffoldMessengerState(
           {required final Object family,
           final ZacTransformers? transformer,

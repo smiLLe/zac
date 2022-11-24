@@ -1,104 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/zac.dart';
 
 import '../helper.dart';
-import '../zac/zac_values_test.dart';
 
 void main() {
   group('FlutterValueKey', () {
-    test('can be created', () {
-      expect(
-          ConverterHelper.convertToType<FlutterValueKey>({
-            'converter': 'f:1:ValueKey',
-            'value': 'foo',
-          }),
-          FlutterValueKey('foo'));
+    test('can be created from json', () {
+      final json = {
+        'converter': 'f:1:ValueKey',
+        'value': 'foo',
+      };
+      expectConvert<FlutterValueKey>(
+        json: json,
+        expected: FlutterValueKey('foo'),
+      );
+      expectConvertIsA<FlutterValueKey, FlutterLocalKey>(json: json);
+      expectConvertIsA<FlutterValueKey, FlutterKey>(json: json);
 
-      expect(
-          ConverterHelper.convertToType<FlutterValueKey>({
-            'converter': 'f:1:ValueKey',
-            'value': 'foo',
-          }),
-          isA<FlutterLocalKey>());
-
-      expect(
-          ConverterHelper.convertToType<FlutterValueKey>({
-            'converter': 'f:1:ValueKey',
-            'value': 'foo',
-          }),
-          isA<FlutterKey>());
-
-      expectCreateShared<FlutterValueKey, ValueKey<String>>(
+      expectConvertConsumeSharedValue<FlutterValueKey, ValueKey<String>>(
         converter: 'z:1:ValueKey.consume',
         create: FlutterValueKey.consume,
       );
     });
 
     testWidgets('will return correct value', (tester) async {
-      late ZacContext zacContext;
+      await expectValueFromZacBuilder<FlutterValueKey, Key>(
+        tester: tester,
+        builder: FlutterValueKey('hello'),
+        expectValue: const ValueKey('hello'),
+        expectValueOrNull: const ValueKey('hello'),
+      );
 
-      await tester.pumpWidget(ProviderScope(
-        child: ZacWidget(data: LeakContext(cb: (c) => zacContext = c)),
-      ));
-
-      expect(FlutterValueKey('foo').getKey(zacContext),
-          const ValueKey<String>('foo'));
-      expect(FlutterValueKey('foo').getKeyOrNull(zacContext),
-          const ValueKey<String>('foo'));
-
-      await expectShared<ValueKey<String>>(
+      await expectConsumedValueFromZacBuilder<Key, ValueKey<String>>(
         tester: tester,
         createBuilder: FlutterValueKey.consume,
-        expectValue: const ValueKey<String>('foo'),
+        expectValue: const ValueKey('hello'),
+        sharedValue: const ValueKey('hello'),
       );
     });
   });
 
   group('FlutterGlobalKeyNavigatorState', () {
-    test('can be created', () {
-      expectCreateShared<FlutterGlobalKeyNavigatorState,
+    test('can be created from json', () {
+      final json = {
+        'converter': 'z:1:GlobalKey<NavigatorState>.consume',
+        'family': 'fam',
+      };
+      expectConvertIsA<FlutterGlobalKeyNavigatorState, FlutterKey>(json: json);
+
+      expectConvertConsumeSharedValue<FlutterGlobalKeyNavigatorState,
           GlobalKey<NavigatorState>>(
         converter: 'z:1:GlobalKey<NavigatorState>.consume',
         create: FlutterGlobalKeyNavigatorState.consume,
       );
-
-      expect(FlutterGlobalKeyNavigatorState.consume(family: 'foo'),
-          isA<FlutterKey>());
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectShared<GlobalKey<NavigatorState>>(
+      await expectConsumedValueFromZacBuilder<Key, GlobalKey<NavigatorState>>(
         tester: tester,
         createBuilder: FlutterGlobalKeyNavigatorState.consume,
-        expectValue: GlobalKey<NavigatorState>(),
+        expectValue: GlobalKey<NavigatorState>(debugLabel: 'label'),
+        sharedValue: GlobalKey<NavigatorState>(debugLabel: 'label'),
       );
     });
   });
 
   group('FlutterGlobalKeyScaffoldMessengerState', () {
     test('can be created', () {
-      expectCreateShared<FlutterGlobalKeyScaffoldMessengerState,
+      final json = {
+        'converter': 'z:1:GlobalKey<ScaffoldMessengerState>.consume',
+        'family': 'fam',
+      };
+      expectConvertIsA<FlutterGlobalKeyScaffoldMessengerState, FlutterKey>(
+          json: json);
+
+      expectConvertConsumeSharedValue<FlutterGlobalKeyScaffoldMessengerState,
           GlobalKey<ScaffoldMessengerState>>(
         converter: 'z:1:GlobalKey<ScaffoldMessengerState>.consume',
         create: FlutterGlobalKeyScaffoldMessengerState.consume,
       );
-
-      expect(FlutterGlobalKeyScaffoldMessengerState.consume(family: 'foo'),
-          isA<FlutterKey>());
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectShared<GlobalKey<ScaffoldMessengerState>>(
+      await expectConsumedValueFromZacBuilder<Key,
+          GlobalKey<ScaffoldMessengerState>>(
         tester: tester,
         createBuilder: FlutterGlobalKeyScaffoldMessengerState.consume,
-        expectValue: GlobalKey<ScaffoldMessengerState>(),
+        expectValue: GlobalKey<ScaffoldMessengerState>(debugLabel: 'label'),
+        sharedValue: GlobalKey<ScaffoldMessengerState>(debugLabel: 'label'),
       );
     });
   });

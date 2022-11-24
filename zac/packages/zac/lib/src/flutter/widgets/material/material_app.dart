@@ -63,8 +63,8 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   MaterialApp buildWidget(ZacContext zacContext) {
     return MaterialApp(
       key: key?.buildKey(zacContext),
-      navigatorKey: navigatorKey?.getValueOrNull(zacContext),
-      scaffoldMessengerKey: scaffoldMessengerKey?.getValueOrNull(zacContext),
+      navigatorKey: navigatorKey?.buildOrNull(zacContext),
+      scaffoldMessengerKey: scaffoldMessengerKey?.buildOrNull(zacContext),
       home: home?.buildWidget(zacContext),
       initialRoute: initialRoute?.getValueOrNull(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
