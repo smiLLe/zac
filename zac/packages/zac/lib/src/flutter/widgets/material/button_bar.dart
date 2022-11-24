@@ -43,13 +43,13 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
       alignment: alignment?.build(zacContext),
       mainAxisSize: mainAxisSize?.build(zacContext),
 // FlutterButtonTextTheme? buttonTextTheme,
-      buttonMinWidth: buttonMinWidth?.getValueOrNull(zacContext),
-      buttonHeight: buttonHeight?.getValueOrNull(zacContext),
+      buttonMinWidth: buttonMinWidth?.buildOrNull(zacContext),
+      buttonHeight: buttonHeight?.buildOrNull(zacContext),
       buttonPadding: buttonPadding?.build(zacContext),
-      buttonAlignedDropdown: buttonAlignedDropdown?.getValueOrNull(zacContext),
+      buttonAlignedDropdown: buttonAlignedDropdown?.buildOrNull(zacContext),
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
       overflowDirection: overflowDirection?.build(zacContext),
-      overflowButtonSpacing: overflowButtonSpacing?.getValueOrNull(zacContext),
+      overflowButtonSpacing: overflowButtonSpacing?.buildOrNull(zacContext),
       children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }

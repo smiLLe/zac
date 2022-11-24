@@ -35,7 +35,7 @@ class FlutterFractionalTranslation
     return FractionalTranslation(
       key: key?.buildKey(zacContext),
       translation: translation.build(zacContext),
-      transformHitTests: transformHitTests?.getValueOrNull(zacContext) ?? true,
+      transformHitTests: transformHitTests?.buildOrNull(zacContext) ?? true,
       child: child?.buildWidget(zacContext),
     );
   }

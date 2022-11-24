@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
@@ -46,8 +47,12 @@ class ZacFlutterNavigatorActions
     if (null == state) return;
 
     /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-    state.popUntil(ModalRoute.withName(routeName.getValue(zacContext,
-        prefered: const SharedValueConsumeType.read())));
+    state.popUntil(ModalRoute.withName(routeName.build(
+      zacContext,
+      onConsume: const ZacBuilderConsume(
+        type: SharedValueConsumeType.read(),
+      ),
+    )));
   }
 }
 
@@ -142,7 +147,7 @@ class RouteFactoryFromRoutes
 
   static String providerName(
       ZacContext zacContext, RouteFactoryRouteConfig config, String? prefix) {
-    final name = config.provideArgsName?.getValueOrNull(zacContext) ??
+    final name = config.provideArgsName?.buildOrNull(zacContext) ??
         RouteFactoryFromRoutes.defaultProviderName;
     return '${null == prefix ? "" : "$prefix."}$name';
   }

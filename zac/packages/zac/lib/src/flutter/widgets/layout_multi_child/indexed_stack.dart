@@ -39,7 +39,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
       alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
       textDirection: textDirection?.build(zacContext),
       sizing: sizing?.build(zacContext) ?? StackFit.loose,
-      index: index?.getValueOrNull(zacContext),
+      index: index?.buildOrNull(zacContext),
       children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );
   }

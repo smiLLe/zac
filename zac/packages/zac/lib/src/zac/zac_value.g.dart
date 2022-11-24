@@ -11,14 +11,6 @@ _$_ZacInt _$$_ZacIntFromJson(Map<String, dynamic> json) => _$_ZacInt(
       $type: json['converter'] as String?,
     );
 
-_$_ZacIntTransformable _$$_ZacIntTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacIntTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
-    );
-
 _$_ZacIntConsumeSharedValue _$$_ZacIntConsumeSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacIntConsumeSharedValue(
@@ -38,14 +30,6 @@ _$_ZacIntConsumeSharedValue _$$_ZacIntConsumeSharedValueFromJson(
 
 _$_ZacDouble _$$_ZacDoubleFromJson(Map<String, dynamic> json) => _$_ZacDouble(
       value: (json['value'] as num).toDouble(),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacDoubleTransformable _$$_ZacDoubleTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacDoubleTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -71,14 +55,6 @@ _$_ZacNum _$$_ZacNumFromJson(Map<String, dynamic> json) => _$_ZacNum(
       $type: json['converter'] as String?,
     );
 
-_$_ZacNumTransformable _$$_ZacNumTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacNumTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
-    );
-
 _$_ZacNumConsumeSharedValue _$$_ZacNumConsumeSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNumConsumeSharedValue(
@@ -98,14 +74,6 @@ _$_ZacNumConsumeSharedValue _$$_ZacNumConsumeSharedValueFromJson(
 
 _$_ZacString _$$_ZacStringFromJson(Map<String, dynamic> json) => _$_ZacString(
       value: json['value'] as String,
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacStringTransformable _$$_ZacStringTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacStringTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -131,14 +99,6 @@ _$_ZacBool _$$_ZacBoolFromJson(Map<String, dynamic> json) => _$_ZacBool(
       $type: json['converter'] as String?,
     );
 
-_$_ZacBoolTransformable _$$_ZacBoolTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacBoolTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
-      $type: json['converter'] as String?,
-    );
-
 _$_ZacBoolConsumeSharedValue _$$_ZacBoolConsumeSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacBoolConsumeSharedValue(
@@ -158,14 +118,6 @@ _$_ZacBoolConsumeSharedValue _$$_ZacBoolConsumeSharedValueFromJson(
 
 _$_ZacObject _$$_ZacObjectFromJson(Map<String, dynamic> json) => _$_ZacObject(
       value: json['value'] as Object,
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacObjectTransformable _$$_ZacObjectTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacObjectTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -220,14 +172,6 @@ _$_ZacFlutterWidgetConsumeSharedValue
 _$_ZacDateTime _$$_ZacDateTimeFromJson(Map<String, dynamic> json) =>
     _$_ZacDateTime(
       value: DateTime.parse(json['value'] as String),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacDateTimeTransformable _$$_ZacDateTimeTransformableFromJson(
-        Map<String, dynamic> json) =>
-    _$_ZacDateTimeTransformable(
-      value: json['value'] as Object,
-      transformer: ZacTransformers.fromJson(json['transformer'] as Object),
       $type: json['converter'] as String?,
     );
 

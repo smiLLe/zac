@@ -41,12 +41,11 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
     return Material(
       key: key?.buildKey(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground:
-          borderOnForeground?.getValueOrNull(zacContext) ?? true,
+      borderOnForeground: borderOnForeground?.buildOrNull(zacContext) ?? true,
       borderRadius: borderRadius?.build(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
       color: color?.build(zacContext),
-      elevation: elevation?.getValueOrNull(zacContext) ?? 0,
+      elevation: elevation?.buildOrNull(zacContext) ?? 0,
       shadowColor: shadowColor?.build(zacContext),
       shape: shape?.build(zacContext),
       textStyle: textStyle?.build(zacContext),

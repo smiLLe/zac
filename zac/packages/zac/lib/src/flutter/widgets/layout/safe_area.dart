@@ -35,13 +35,13 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   SafeArea buildWidget(ZacContext zacContext) {
     return SafeArea(
       key: key?.buildKey(zacContext),
-      left: left?.getValueOrNull(zacContext) ?? true,
-      top: top?.getValueOrNull(zacContext) ?? true,
-      right: right?.getValueOrNull(zacContext) ?? true,
-      bottom: bottom?.getValueOrNull(zacContext) ?? true,
+      left: left?.buildOrNull(zacContext) ?? true,
+      top: top?.buildOrNull(zacContext) ?? true,
+      right: right?.buildOrNull(zacContext) ?? true,
+      bottom: bottom?.buildOrNull(zacContext) ?? true,
       minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.getValueOrNull(zacContext) ?? false,
+          maintainBottomViewPadding?.buildOrNull(zacContext) ?? false,
       child: child.buildWidget(zacContext),
     );
   }

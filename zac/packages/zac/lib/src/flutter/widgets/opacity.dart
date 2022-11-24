@@ -31,9 +31,9 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   Opacity buildWidget(ZacContext zacContext) {
     return Opacity(
       key: key?.buildKey(zacContext),
-      opacity: opacity.getValue(zacContext),
+      opacity: opacity.build(zacContext),
       alwaysIncludeSemantics:
-          alwaysIncludeSemantics?.getValueOrNull(zacContext) ?? false,
+          alwaysIncludeSemantics?.buildOrNull(zacContext) ?? false,
       child: child?.buildWidget(zacContext),
     );
   }

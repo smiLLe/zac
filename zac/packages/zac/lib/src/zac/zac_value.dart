@@ -6,9 +6,38 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'zac_value.freezed.dart';
 part 'zac_value.g.dart';
+
+mixin ZV<T> on ZacBuilder<T> {
+  @override
+  T build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    if (this is ZacSimpleValue<T>) {
+      return (this as ZacSimpleValue<T>).value;
+    } else if (this is ConsumeSharedValue<T>) {
+      return (this as ConsumeSharedValue<T>)
+          .buildConsume(zacContext, onConsume);
+    }
+
+    throw StateError('Could not return $T in $this');
+  }
+
+  @override
+  T? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    if (this is ZacSimpleValue<T>) {
+      return (this as ZacSimpleValue<T>).value;
+    } else if (this is ConsumeSharedValue<T>) {
+      return (this as ConsumeSharedValue<T>)
+          .buildConsumeOrNull(zacContext, onConsume);
+    }
+
+    throw StateError('Could not return $T in $this');
+  }
+}
 
 mixin ZacGetValueList<T> {
   List<T> getValue(ZacContext zacContext,
@@ -225,7 +254,7 @@ bool _assertIsBuilder<T>(Map<String, dynamic> json) {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacInt with _$ZacInt, ZacGetValue<int> {
+class ZacInt with _$ZacInt, ZacBuilder<int>, ZV<int> {
   const ZacInt._();
 
   static const String unionValue = 'z:1:int';
@@ -252,16 +281,8 @@ class ZacInt with _$ZacInt, ZacGetValue<int> {
   @With<ZacSimpleValue<int>>()
   factory ZacInt({required int value}) = _ZacInt;
 
-  @FreezedUnionValue('z:1:int.transformable')
-  @With<ZacValueTranformable<int>>()
-  factory ZacInt.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacIntTransformable;
-
   @FreezedUnionValue('z:1:int.consume')
-  @Implements<ZacValueConsume<int>>()
-  @With<ZacValueConsumeImpl<int>>()
+  @With<ConsumeSharedValue<int>>()
   factory ZacInt.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -272,7 +293,7 @@ class ZacInt with _$ZacInt, ZacGetValue<int> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacDouble with _$ZacDouble, ZacGetValue<double> {
+class ZacDouble with _$ZacDouble, ZacBuilder<double>, ZV<double> {
   const ZacDouble._();
 
   static const String unionValue = 'z:1:double';
@@ -299,16 +320,8 @@ class ZacDouble with _$ZacDouble, ZacGetValue<double> {
   @With<ZacSimpleValue<double>>()
   factory ZacDouble({required double value}) = _ZacDouble;
 
-  @FreezedUnionValue('z:1:double.transformable')
-  @With<ZacValueTranformable<double>>()
-  factory ZacDouble.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacDoubleTransformable;
-
   @FreezedUnionValue('z:1:double.consume')
-  @Implements<ZacValueConsume<double>>()
-  @With<ZacValueConsumeImpl<double>>()
+  @With<ConsumeSharedValue<double>>()
   factory ZacDouble.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -319,7 +332,7 @@ class ZacDouble with _$ZacDouble, ZacGetValue<double> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacNum with _$ZacNum, ZacGetValue<num> {
+class ZacNum with _$ZacNum, ZacBuilder<num>, ZV<num> {
   const ZacNum._();
 
   static const String unionValue = 'z:1:num';
@@ -342,16 +355,8 @@ class ZacNum with _$ZacNum, ZacGetValue<num> {
   @With<ZacSimpleValue<num>>()
   factory ZacNum({required num value}) = _ZacNum;
 
-  @FreezedUnionValue('z:1:num.transformable')
-  @With<ZacValueTranformable<num>>()
-  factory ZacNum.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacNumTransformable;
-
   @FreezedUnionValue('z:1:num.consume')
-  @Implements<ZacValueConsume<num>>()
-  @With<ZacValueConsumeImpl<num>>()
+  @With<ConsumeSharedValue<num>>()
   factory ZacNum.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -362,7 +367,7 @@ class ZacNum with _$ZacNum, ZacGetValue<num> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacString with _$ZacString, ZacGetValue<String> {
+class ZacString with _$ZacString, ZacBuilder<String>, ZV<String> {
   const ZacString._();
 
   static const String unionValue = 'z:1:String';
@@ -385,16 +390,8 @@ class ZacString with _$ZacString, ZacGetValue<String> {
   @With<ZacSimpleValue<String>>()
   factory ZacString({required String value}) = _ZacString;
 
-  @FreezedUnionValue('z:1:String.transformable')
-  @With<ZacValueTranformable<String>>()
-  factory ZacString.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacStringTransformable;
-
   @FreezedUnionValue('z:1:String.consume')
-  @Implements<ZacValueConsume<String>>()
-  @With<ZacValueConsumeImpl<String>>()
+  @With<ConsumeSharedValue<String>>()
   factory ZacString.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -405,7 +402,7 @@ class ZacString with _$ZacString, ZacGetValue<String> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacBool with _$ZacBool, ZacGetValue<bool> {
+class ZacBool with _$ZacBool, ZacBuilder<bool>, ZV<bool> {
   const ZacBool._();
 
   static const String unionValue = 'z:1:bool';
@@ -428,16 +425,8 @@ class ZacBool with _$ZacBool, ZacGetValue<bool> {
   @With<ZacSimpleValue<bool>>()
   factory ZacBool({required bool value}) = _ZacBool;
 
-  @FreezedUnionValue('z:1:bool.transformable')
-  @With<ZacValueTranformable<bool>>()
-  factory ZacBool.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacBoolTransformable;
-
   @FreezedUnionValue('z:1:bool.consume')
-  @Implements<ZacValueConsume<bool>>()
-  @With<ZacValueConsumeImpl<bool>>()
+  @With<ConsumeSharedValue<bool>>()
   factory ZacBool.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -448,7 +437,7 @@ class ZacBool with _$ZacBool, ZacGetValue<bool> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacObject with _$ZacObject, ZacGetValue<Object> {
+class ZacObject with _$ZacObject, ZacBuilder<Object>, ZV<Object> {
   const ZacObject._();
 
   static const String unionValue = 'z:1:Object';
@@ -471,16 +460,8 @@ class ZacObject with _$ZacObject, ZacGetValue<Object> {
   @With<ZacSimpleValue<Object>>()
   factory ZacObject({required Object value}) = _ZacObject;
 
-  @FreezedUnionValue('z:1:Object.transformable')
-  @With<ZacValueTranformable<Object>>()
-  factory ZacObject.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacObjectTransformable;
-
   @FreezedUnionValue('z:1:Object.consume')
-  @Implements<ZacValueConsume<Object>>()
-  @With<ZacValueConsumeImpl<Object>>()
+  @With<ConsumeSharedValue<Object>>()
   factory ZacObject.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -539,7 +520,7 @@ class ZacFlutterWidget with _$ZacFlutterWidget, ZacGetValue<FlutterWidget> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacDateTime with _$ZacDateTime, ZacGetValue<DateTime> {
+class ZacDateTime with _$ZacDateTime, ZacBuilder<DateTime>, ZV<DateTime> {
   const ZacDateTime._();
 
   static const String unionValue = 'z:1:DateTime';
@@ -562,16 +543,8 @@ class ZacDateTime with _$ZacDateTime, ZacGetValue<DateTime> {
   @With<ZacSimpleValue<DateTime>>()
   factory ZacDateTime({required DateTime value}) = _ZacDateTime;
 
-  @FreezedUnionValue('z:1:DateTime.transformable')
-  @With<ZacValueTranformable<DateTime>>()
-  factory ZacDateTime.transformable({
-    required Object value,
-    required ZacTransformers transformer,
-  }) = _ZacDateTimeTransformable;
-
   @FreezedUnionValue('z:1:DateTime.consume')
-  @Implements<ZacValueConsume<DateTime>>()
-  @With<ZacValueConsumeImpl<DateTime>>()
+  @With<ConsumeSharedValue<DateTime>>()
   factory ZacDateTime.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -1010,8 +983,11 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       asPayload: (obj) {
-        final val = obj.value.getValue(zacContext,
-            prefered: const SharedValueConsumeType.read());
+        final val = obj.value.build(
+          zacContext,
+          onConsume:
+              const ZacBuilderConsume(type: SharedValueConsumeType.read()),
+        );
         obj.actions.execute(ZacActionPayload.param(val), zacContext);
       },
     );

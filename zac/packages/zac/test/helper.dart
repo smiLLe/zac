@@ -29,6 +29,13 @@ void expectConvert<Builder>({
   expect(ConverterHelper.convertToType<Builder>(json), expected);
 }
 
+void expectConvertToZacBuilder<Builder, Value>({
+  required Object? json,
+  required ZacBuilder<Value> expected,
+}) {
+  expect(ConverterHelper.convertToType<Builder>(json), expected);
+}
+
 void expectConvertIsA<Builder, IsA>({
   required Object? json,
 }) {

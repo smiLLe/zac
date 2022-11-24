@@ -443,284 +443,212 @@ void main() {
   });
 
   group('ZacInt', () {
-    test('can be created', () {
-      expectCreateSimple<ZacInt, int>(
-        converter: 'z:1:int',
-        jsonValue: 1,
-        expectValue: 1,
-        create: ZacInt.new,
-        fromJson: ZacInt.fromJson,
-      );
+    test('can be created from json', () {
+      expect(ZacInt.fromJson(5), ZacInt(value: 5));
 
-      expectCreateTransformable<ZacInt, int>(
-        converter: 'z:1:int.transformable',
-        create: ZacInt.transformable,
-      );
+      expect(ZacInt.fromJson(5.1), ZacInt(value: 5));
 
-      expectCreateShared<ZacInt, int>(
+      expectConvertToZacBuilder<ZacInt, int>(json: {
+        'converter': 'z:1:int',
+        'value': 5,
+      }, expected: ZacInt(value: 5));
+
+      expectConvertToZacBuilder<ZacInt, int>(json: {
+        'converter': 'z:1:int',
+        'value': 5.1,
+      }, expected: ZacInt(value: 5));
+
+      expectConvertConsumeSharedValue<ZacInt, int>(
         converter: 'z:1:int.consume',
         create: ZacInt.consume,
       );
-
-      /// convert double to int
-      expect(
-          ConverterHelper.convertToType<ZacInt>({
-            'converter': 'z:1:int',
-            'value': 1.1,
-          }),
-          ZacInt(value: 1));
-
-      /// do not convert double to int if ZacInt is transformable
-      expect(
-          ConverterHelper.convertToType<ZacInt>({
-            'converter': 'z:1:int.transformable',
-            'value': 5.1,
-            'transformer': <Object?>[]
-          }),
-          ZacInt.transformable(
-            value: 5.1,
-            transformer: ZacTransformers([]),
-          ));
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<int>(
+      await expectValueFromZacBuilder<ZacInt, int>(
         tester: tester,
-        createBuilder: ZacInt.new,
+        builder: ZacInt(value: 5),
         expectValue: 5,
+        expectValueOrNull: 5,
       );
 
-      await expectTransformable<int>(
-        tester: tester,
-        createBuilder: ZacInt.transformable,
-        expectValue: 5,
-      );
-
-      await expectShared<int>(
+      await expectConsumedValueFromZacBuilder<int, int>(
         tester: tester,
         createBuilder: ZacInt.consume,
         expectValue: 5,
+        sharedValue: 5,
       );
     });
   });
 
   group('ZacDouble', () {
     test('can be created', () {
-      expectCreateSimple<ZacDouble, double>(
-        converter: 'z:1:double',
-        jsonValue: 5.1,
-        expectValue: 5.1,
-        create: ZacDouble.new,
-        fromJson: ZacDouble.fromJson,
-      );
+      expect(ZacDouble.fromJson(5), ZacDouble(value: 5.0));
 
-      expectCreateTransformable<ZacDouble, double>(
-        converter: 'z:1:double.transformable',
-        create: ZacDouble.transformable,
-      );
+      expect(ZacDouble.fromJson(5.1), ZacDouble(value: 5.1));
 
-      expectCreateShared<ZacDouble, double>(
+      expectConvertToZacBuilder<ZacDouble, double>(json: {
+        'converter': 'z:1:double',
+        'value': 5,
+      }, expected: ZacDouble(value: 5.0));
+
+      expectConvertToZacBuilder<ZacDouble, double>(json: {
+        'converter': 'z:1:double',
+        'value': 5.1,
+      }, expected: ZacDouble(value: 5.1));
+
+      expectConvertConsumeSharedValue<ZacDouble, double>(
         converter: 'z:1:double.consume',
         create: ZacDouble.consume,
       );
-
-      /// convert int to double
-      expect(
-          ConverterHelper.convertToType<ZacDouble>({
-            'converter': 'z:1:double',
-            'value': 1,
-          }),
-          ZacDouble(value: 1.0));
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<double>(
+      await expectValueFromZacBuilder<ZacDouble, double>(
         tester: tester,
-        createBuilder: ZacDouble.new,
+        builder: ZacDouble(value: 5.1),
         expectValue: 5.1,
+        expectValueOrNull: 5.1,
       );
 
-      await expectTransformable<double>(
-        tester: tester,
-        createBuilder: ZacDouble.transformable,
-        expectValue: 5.1,
-      );
-
-      await expectShared<double>(
+      await expectConsumedValueFromZacBuilder<double, double>(
         tester: tester,
         createBuilder: ZacDouble.consume,
         expectValue: 5.1,
+        sharedValue: 5.1,
       );
     });
   });
 
   group('ZacNum', () {
     test('can be created', () {
-      expectCreateSimple<ZacNum, num>(
-        converter: 'z:1:num',
-        jsonValue: 5.1,
-        expectValue: 5.1,
-        create: ZacNum.new,
-        fromJson: ZacNum.fromJson,
-      );
+      expect(ZacNum.fromJson(5), ZacNum(value: 5));
 
-      expectCreateTransformable<ZacNum, num>(
-        converter: 'z:1:num.transformable',
-        create: ZacNum.transformable,
-      );
+      expect(ZacNum.fromJson(5.1), ZacNum(value: 5.1));
 
-      expectCreateShared<ZacNum, num>(
+      expectConvertToZacBuilder<ZacNum, num>(json: {
+        'converter': 'z:1:num',
+        'value': 5,
+      }, expected: ZacNum(value: 5));
+
+      expectConvertToZacBuilder<ZacNum, num>(json: {
+        'converter': 'z:1:num',
+        'value': 5.1,
+      }, expected: ZacNum(value: 5.1));
+
+      expectConvertConsumeSharedValue<ZacNum, num>(
         converter: 'z:1:num.consume',
         create: ZacNum.consume,
       );
-
-      expect(ZacNum.fromJson(5.1), ZacNum(value: 5.1));
-      expect(ZacNum.fromJson(5), ZacNum(value: 5));
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<num>(
+      await expectValueFromZacBuilder<ZacNum, num>(
         tester: tester,
-        createBuilder: ZacNum.new,
-        expectValue: 5.1,
+        builder: ZacNum(value: 5),
+        expectValue: 5,
+        expectValueOrNull: 5,
       );
 
-      await expectTransformable<num>(
-        tester: tester,
-        createBuilder: ZacNum.transformable,
-        expectValue: 5.1,
-      );
-
-      await expectShared<num>(
+      await expectConsumedValueFromZacBuilder<num, num>(
         tester: tester,
         createBuilder: ZacNum.consume,
-        expectValue: 5.1,
+        expectValue: 5,
+        sharedValue: 5,
       );
     });
   });
 
   group('ZacString', () {
     test('can be created', () {
-      expectCreateSimple<ZacString, String>(
-        converter: 'z:1:String',
-        jsonValue: 'hello',
-        expectValue: 'hello',
-        create: ZacString.new,
-        fromJson: ZacString.fromJson,
-      );
+      expect(ZacString.fromJson('hello'), ZacString(value: 'hello'));
 
-      expectCreateTransformable<ZacString, String>(
-        converter: 'z:1:String.transformable',
-        create: ZacString.transformable,
-      );
+      expectConvertToZacBuilder<ZacString, String>(json: {
+        'converter': 'z:1:String',
+        'value': 'hello',
+      }, expected: ZacString(value: 'hello'));
 
-      expectCreateShared<ZacString, String>(
+      expectConvertConsumeSharedValue<ZacString, String>(
         converter: 'z:1:String.consume',
         create: ZacString.consume,
       );
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<String>(
+      await expectValueFromZacBuilder<ZacString, String>(
         tester: tester,
-        createBuilder: ZacString.new,
+        builder: ZacString(value: 'hello'),
         expectValue: 'hello',
+        expectValueOrNull: 'hello',
       );
 
-      await expectTransformable<String>(
-        tester: tester,
-        createBuilder: ZacString.transformable,
-        expectValue: 'hello',
-      );
-
-      await expectShared<String>(
+      await expectConsumedValueFromZacBuilder<String, String>(
         tester: tester,
         createBuilder: ZacString.consume,
         expectValue: 'hello',
+        sharedValue: 'hello',
       );
     });
   });
 
   group('ZacBool', () {
     test('can be created', () {
-      expectCreateSimple<ZacBool, bool>(
-        converter: 'z:1:bool',
-        jsonValue: false,
-        expectValue: false,
-        create: ZacBool.new,
-        fromJson: ZacBool.fromJson,
-      );
+      expectConvertToZacBuilder<ZacBool, bool>(json: {
+        'converter': 'z:1:bool',
+        'value': false,
+      }, expected: ZacBool(value: false));
 
-      expectCreateTransformable<ZacBool, bool>(
-        converter: 'z:1:bool.transformable',
-        create: ZacBool.transformable,
-      );
-
-      expectCreateShared<ZacBool, bool>(
+      expectConvertConsumeSharedValue<ZacBool, bool>(
         converter: 'z:1:bool.consume',
         create: ZacBool.consume,
       );
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<bool>(
+      await expectValueFromZacBuilder<ZacBool, bool>(
         tester: tester,
-        createBuilder: ZacBool.new,
+        builder: ZacBool(value: false),
         expectValue: false,
+        expectValueOrNull: false,
       );
 
-      await expectTransformable<bool>(
-        tester: tester,
-        createBuilder: ZacBool.transformable,
-        expectValue: false,
-      );
-
-      await expectShared<bool>(
+      await expectConsumedValueFromZacBuilder<bool, bool>(
         tester: tester,
         createBuilder: ZacBool.consume,
         expectValue: false,
+        sharedValue: false,
       );
     });
   });
 
   group('ZacObject', () {
     test('can be created', () {
-      expectCreateSimple<ZacObject, Object>(
-        converter: 'z:1:Object',
-        jsonValue: 'anything',
-        expectValue: 'anything',
-        create: ZacObject.new,
-        fromJson: ZacObject.fromJson,
-      );
+      final obj = Object();
+      expectConvertToZacBuilder<ZacObject, Object>(json: {
+        'converter': 'z:1:Object',
+        'value': obj,
+      }, expected: ZacObject(value: obj));
 
-      expectCreateTransformable<ZacObject, Object>(
-        converter: 'z:1:Object.transformable',
-        create: ZacObject.transformable,
-      );
-
-      expectCreateShared<ZacObject, Object>(
+      expectConvertConsumeSharedValue<ZacObject, Object>(
         converter: 'z:1:Object.consume',
         create: ZacObject.consume,
       );
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<Object>(
+      final obj = Object();
+      await expectValueFromZacBuilder<ZacObject, Object>(
         tester: tester,
-        createBuilder: ZacObject.new,
-        expectValue: Object(),
+        builder: ZacObject(value: obj),
+        expectValue: obj,
+        expectValueOrNull: obj,
       );
 
-      await expectTransformable<Object>(
-        tester: tester,
-        createBuilder: ZacObject.transformable,
-        expectValue: Object(),
-      );
-
-      await expectShared<Object>(
+      await expectConsumedValueFromZacBuilder<Object, Object>(
         tester: tester,
         createBuilder: ZacObject.consume,
-        expectValue: Object(),
+        expectValue: obj,
+        sharedValue: obj,
       );
     });
   });
@@ -771,73 +699,33 @@ void main() {
     test('can be created', () {
       final now = DateTime.now();
       expect(
-          ConverterHelper.convertToType<ZacDateTime>({
-            'converter': 'z:1:DateTime',
-            'value': now.toIso8601String(),
-          }),
-          ZacDateTime(value: now));
-
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>({
-            'converter': 'z:1:DateTime',
-            'value': now.toIso8601String(),
-          }),
-          isA<ZacSimpleValue<DateTime>>());
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>({
-            'converter': 'z:1:DateTime',
-            'value': now.toIso8601String(),
-          }),
-          isA<ZacGetValue<DateTime>>());
-
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>({
-            'converter': 'z:1:DateTime.transformable',
-            'value': 'WHO CARES',
-            'transformer': <Object?>[]
-          }),
-          isA<ZacValueTranformable<DateTime>>());
-
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>({
-            'converter': 'z:1:DateTime.transformable',
-            'value': 'WHO CARES',
-            'transformer': <Object?>[]
-          }),
-          ZacDateTime.transformable(
-              value: 'WHO CARES', transformer: ZacTransformers([])));
-
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>(
-              {'converter': 'z:1:DateTime.consume', 'family': 'shared'}),
-          ZacDateTime.consume(family: 'shared'));
-
-      expect(
-          ConverterHelper.convertToType<ZacDateTime>(
-              {'converter': 'z:1:DateTime.consume', 'family': 'shared'}),
-          isA<ZacValueConsume<DateTime>>());
-
-      expect(
           ZacDateTime.fromJson(now.toIso8601String()), ZacDateTime(value: now));
+
+      expectConvertToZacBuilder<ZacDateTime, DateTime>(json: {
+        'converter': 'z:1:DateTime',
+        'value': now.toIso8601String(),
+      }, expected: ZacDateTime(value: now));
+
+      expectConvertConsumeSharedValue<ZacDateTime, DateTime>(
+        converter: 'z:1:DateTime.consume',
+        create: ZacDateTime.consume,
+      );
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectSimple<DateTime>(
+      final now = DateTime.now();
+      await expectValueFromZacBuilder<ZacDateTime, DateTime>(
         tester: tester,
-        createBuilder: ZacDateTime.new,
-        expectValue: DateTime.now(),
+        builder: ZacDateTime(value: now),
+        expectValue: now,
+        expectValueOrNull: now,
       );
 
-      await expectTransformable<DateTime>(
-        tester: tester,
-        createBuilder: ZacDateTime.transformable,
-        expectValue: DateTime.now(),
-      );
-
-      await expectShared<DateTime>(
+      await expectConsumedValueFromZacBuilder<DateTime, DateTime>(
         tester: tester,
         createBuilder: ZacDateTime.consume,
-        expectValue: DateTime.now(),
+        expectValue: now,
+        sharedValue: now,
       );
     });
   });

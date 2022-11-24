@@ -63,8 +63,8 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
     return map(
       (value) => SizedBox(
         key: value.key?.buildKey(zacContext),
-        width: value.width?.getValueOrNull(zacContext),
-        height: value.height?.getValueOrNull(zacContext),
+        width: value.width?.buildOrNull(zacContext),
+        height: value.height?.buildOrNull(zacContext),
         child: value.child?.buildWidget(zacContext),
       ),
       expand: (value) => SizedBox.expand(
@@ -82,7 +82,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
       ),
       square: (value) => SizedBox.square(
         key: value.key?.buildKey(zacContext),
-        dimension: value.dimension?.getValueOrNull(zacContext),
+        dimension: value.dimension?.buildOrNull(zacContext),
         child: value.child?.buildWidget(zacContext),
       ),
     );

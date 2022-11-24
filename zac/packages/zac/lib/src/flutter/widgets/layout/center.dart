@@ -31,8 +31,8 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   Center buildWidget(ZacContext zacContext) {
     return Center(
       key: key?.buildKey(zacContext),
-      widthFactor: widthFactor?.getValueOrNull(zacContext),
-      heightFactor: heightFactor?.getValueOrNull(zacContext),
+      widthFactor: widthFactor?.buildOrNull(zacContext),
+      heightFactor: heightFactor?.buildOrNull(zacContext),
       child: child?.buildWidget(zacContext),
     );
   }

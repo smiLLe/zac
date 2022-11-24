@@ -41,7 +41,7 @@ class FlutterColor with _$FlutterColor {
       },
       fromRGBO: (value) {
         return Color.fromRGBO(
-            value.r, value.g, value.b, value.opacity.getValue(zacContext));
+            value.r, value.g, value.b, value.opacity.build(zacContext));
       },
     );
   }
@@ -65,11 +65,10 @@ class FlutterOffset with _$FlutterOffset {
 
   Offset build(ZacContext zacContext) {
     return map(
-      (value) =>
-          Offset(value.dx.getValue(zacContext), value.dy.getValue(zacContext)),
+      (value) => Offset(value.dx.build(zacContext), value.dy.build(zacContext)),
       fromDirection: (value) => Offset.fromDirection(
-          value.direction.getValue(zacContext),
-          value.distance?.getValueOrNull(zacContext) ?? 1.0),
+          value.direction.build(zacContext),
+          value.distance?.buildOrNull(zacContext) ?? 1.0),
     );
   }
 }
@@ -121,9 +120,9 @@ class FlutterRadius with _$FlutterRadius {
 
   Radius build(ZacContext zacContext) {
     return map(
-      circular: (value) => Radius.circular(value.radius.getValue(zacContext)),
+      circular: (value) => Radius.circular(value.radius.build(zacContext)),
       elliptical: (value) => Radius.elliptical(
-          value.x.getValue(zacContext), value.y.getValue(zacContext)),
+          value.x.build(zacContext), value.y.build(zacContext)),
     );
   }
 }
@@ -447,8 +446,8 @@ class FlutterFontFeature with _$FlutterFontFeature {
 
   FontFeature build(ZacContext zacContext) {
     return map(
-      (value) => FontFeature(
-          value.feature, value.value?.getValueOrNull(zacContext) ?? 1),
+      (value) =>
+          FontFeature(value.feature, value.value?.buildOrNull(zacContext) ?? 1),
       alternative: (value) => FontFeature.alternative(value.value),
       alternativeFractions: (value) => const FontFeature.alternativeFractions(),
       caseSensitiveForms: (value) => const FontFeature.caseSensitiveForms(),
@@ -462,9 +461,9 @@ class FlutterFontFeature with _$FlutterFontFeature {
       historicalLigatures: (value) => const FontFeature.historicalLigatures(),
       liningFigures: (value) => const FontFeature.liningFigures(),
       localeAware: (value) => FontFeature.localeAware(
-          enable: value.enable?.getValueOrNull(zacContext) ?? true),
+          enable: value.enable?.buildOrNull(zacContext) ?? true),
       notationalForms: (value) => FontFeature.notationalForms(
-          value.value?.getValueOrNull(zacContext) ?? 1),
+          value.value?.buildOrNull(zacContext) ?? 1),
       numerators: (value) => const FontFeature.numerators(),
       oldstyleFigures: (value) => const FontFeature.oldstyleFigures(),
       ordinalForms: (value) => const FontFeature.ordinalForms(),
@@ -477,7 +476,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
       subscripts: (value) => const FontFeature.subscripts(),
       superscripts: (value) => const FontFeature.superscripts(),
       swash: (value) =>
-          FontFeature.swash(value.value?.getValueOrNull(zacContext) ?? 1),
+          FontFeature.swash(value.value?.buildOrNull(zacContext) ?? 1),
       tabularFigures: (value) => const FontFeature.tabularFigures(),
     );
   }
@@ -576,9 +575,9 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
   TextHeightBehavior build(ZacContext zacContext) {
     return TextHeightBehavior(
       applyHeightToFirstAscent:
-          applyHeightToFirstAscent?.getValueOrNull(zacContext) ?? true,
+          applyHeightToFirstAscent?.buildOrNull(zacContext) ?? true,
       applyHeightToLastDescent:
-          applyHeightToLastDescent?.getValueOrNull(zacContext) ?? true,
+          applyHeightToLastDescent?.buildOrNull(zacContext) ?? true,
       leadingDistribution: leadingDistribution?.build(zacContext) ??
           TextLeadingDistribution.proportional,
     );
@@ -754,21 +753,21 @@ class FlutterRect with _$FlutterRect {
     return map(
       fromCenter: (value) => Rect.fromCenter(
           center: value.center.build(zacContext),
-          width: value.width.getValue(zacContext),
-          height: value.height.getValue(zacContext)),
+          width: value.width.build(zacContext),
+          height: value.height.build(zacContext)),
       fromCircle: (value) => Rect.fromCircle(
           center: value.center.build(zacContext),
-          radius: value.radius.getValue(zacContext)),
+          radius: value.radius.build(zacContext)),
       fromLTRB: (value) => Rect.fromLTRB(
-          value.left.getValue(zacContext),
-          value.top.getValue(zacContext),
-          value.right.getValue(zacContext),
-          value.bottom.getValue(zacContext)),
+          value.left.build(zacContext),
+          value.top.build(zacContext),
+          value.right.build(zacContext),
+          value.bottom.build(zacContext)),
       fromLTWH: (value) => Rect.fromLTWH(
-          value.left.getValue(zacContext),
-          value.top.getValue(zacContext),
-          value.width.getValue(zacContext),
-          value.height.getValue(zacContext)),
+          value.left.build(zacContext),
+          value.top.build(zacContext),
+          value.width.build(zacContext),
+          value.height.build(zacContext)),
       fromPoints: (value) =>
           Rect.fromPoints(value.a.build(zacContext), value.b.build(zacContext)),
     );
@@ -839,7 +838,7 @@ class FlutterSize with _$FlutterSize {
   ) = _FlutterSize;
 
   Size build(ZacContext zacContext) {
-    return Size(width.getValue(zacContext), height.getValue(zacContext));
+    return Size(width.build(zacContext), height.build(zacContext));
   }
 }
 
@@ -937,7 +936,7 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
     return Shadow(
       color: color?.build(zacContext) ?? const Color(0xFF000000),
       offset: offset?.build(zacContext) ?? Offset.zero,
-      blurRadius: blurRadius?.getValueOrNull(zacContext) ?? 0.0,
+      blurRadius: blurRadius?.buildOrNull(zacContext) ?? 0.0,
     );
   }
 }

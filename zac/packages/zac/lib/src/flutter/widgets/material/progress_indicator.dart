@@ -54,21 +54,21 @@ class FlutterProgressIndicator
     return map(
       linear: (value) => LinearProgressIndicator(
         key: value.key?.buildKey(zacContext),
-        value: value.value?.getValueOrNull(zacContext),
+        value: value.value?.buildOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
-        minHeight: value.minHeight?.getValueOrNull(zacContext),
-        semanticsLabel: value.semanticsLabel?.getValueOrNull(zacContext),
-        semanticsValue: value.semanticsValue?.getValueOrNull(zacContext),
+        minHeight: value.minHeight?.buildOrNull(zacContext),
+        semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
+        semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
         key: value.key?.buildKey(zacContext),
-        value: value.value?.getValueOrNull(zacContext),
+        value: value.value?.buildOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
-        strokeWidth: value.strokeWidth?.getValueOrNull(zacContext) ?? 4.0,
-        semanticsLabel: value.semanticsLabel?.getValueOrNull(zacContext),
-        semanticsValue: value.semanticsValue?.getValueOrNull(zacContext),
+        strokeWidth: value.strokeWidth?.buildOrNull(zacContext) ?? 4.0,
+        semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
+        semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
       ),
     );
   }

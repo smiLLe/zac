@@ -53,22 +53,21 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
       gridDelegate: gridDelegate.build(zacContext),
       key: key?.buildKey(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValueOrNull(zacContext) ?? false,
+      reverse: reverse?.buildOrNull(zacContext) ?? false,
       controller: controller?.buildOrNull(zacContext),
-      primary: primary?.getValueOrNull(zacContext),
-      shrinkWrap: shrinkWrap?.getValueOrNull(zacContext) ?? false,
+      primary: primary?.buildOrNull(zacContext),
+      shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
       addAutomaticKeepAlives:
-          addAutomaticKeepAlives?.getValueOrNull(zacContext) ?? true,
+          addAutomaticKeepAlives?.buildOrNull(zacContext) ?? true,
       addRepaintBoundaries:
-          addRepaintBoundaries?.getValueOrNull(zacContext) ?? true,
-      addSemanticIndexes:
-          addSemanticIndexes?.getValueOrNull(zacContext) ?? true,
-      cacheExtent: cacheExtent?.getValueOrNull(zacContext),
-      semanticChildCount: semanticChildCount?.getValueOrNull(zacContext),
+          addRepaintBoundaries?.buildOrNull(zacContext) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.buildOrNull(zacContext) ?? true,
+      cacheExtent: cacheExtent?.buildOrNull(zacContext),
+      semanticChildCount: semanticChildCount?.buildOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValueOrNull(zacContext),
+      restorationId: restorationId?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       children: children?.getWidgets(zacContext) ?? const <Widget>[],
     );

@@ -1,6 +1,7 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/base.dart';
@@ -71,21 +72,19 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         bottomSheet: value.bottomSheet?.buildWidget(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         resizeToAvoidBottomInset:
-            value.resizeToAvoidBottomInset?.getValue(zacContext),
-        primary: value.primary?.getValueOrNull(zacContext) ?? true,
-        extendBody: value.extendBody?.getValueOrNull(zacContext) ?? false,
+            value.resizeToAvoidBottomInset?.buildOrNull(zacContext),
+        primary: value.primary?.buildOrNull(zacContext) ?? true,
+        extendBody: value.extendBody?.buildOrNull(zacContext) ?? false,
         extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.getValueOrNull(zacContext) ?? false,
+            value.extendBodyBehindAppBar?.buildOrNull(zacContext) ?? false,
         drawerScrimColor: value.drawerScrimColor?.build(zacContext),
-        drawerEdgeDragWidth:
-            value.drawerEdgeDragWidth?.getValueOrNull(zacContext),
+        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.buildOrNull(zacContext),
         drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.getValueOrNull(zacContext) ??
-                true,
+            value.drawerEnableOpenDragGesture?.buildOrNull(zacContext) ?? true,
         endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.getValueOrNull(zacContext) ??
+            value.endDrawerEnableOpenDragGesture?.buildOrNull(zacContext) ??
                 true,
-        restorationId: value.restorationId?.getValueOrNull(zacContext),
+        restorationId: value.restorationId?.buildOrNull(zacContext),
       ),
     );
   }
@@ -142,10 +141,11 @@ class FlutterScaffoldActions
           backgroundColor: value.backgroundColor?.build(zacContext),
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
-          elevation: value.elevation?.getValueOrNull(zacContext,
-              prefered: const SharedValueConsumeType.read()),
+          elevation: value.elevation?.buildOrNull(zacContext,
+              onConsume:
+                  const ZacBuilderConsume(type: SharedValueConsumeType.read())),
           shape: value.shape?.build(zacContext),
-          enableDrag: value.enableDrag?.getValueOrNull(zacContext),
+          enableDrag: value.enableDrag?.buildOrNull(zacContext),
           // transitionAnimationController:
         );
       },
@@ -168,8 +168,9 @@ class FlutterScaffoldActions
         if (null == state) return null;
         state.showBodyScrim(
             value.value,
-            value.opacity.getValue(zacContext,
-                prefered: const SharedValueConsumeType.read()));
+            value.opacity.build(zacContext,
+                onConsume: const ZacBuilderConsume(
+                    type: SharedValueConsumeType.read())));
       },
     );
   }
@@ -314,12 +315,12 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
       behavior: behavior?.build(zacContext),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
-      elevation: elevation?.getValue(zacContext),
+      elevation: elevation?.build(zacContext),
       margin: margin?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),
       padding: padding?.build(zacContext),
       shape: shape?.build(zacContext),
-      width: width?.getValue(zacContext),
+      width: width?.build(zacContext),
     );
   }
 }
@@ -417,8 +418,8 @@ class FlutterMaterialBanner
       // animation: ,
       backgroundColor: backgroundColor?.build(zacContext),
       contentTextStyle: contentTextStyle?.build(zacContext),
-      elevation: elevation?.getValue(zacContext),
-      forceActionsBelow: forceActionsBelow?.getValueOrNull(zacContext) ?? false,
+      elevation: elevation?.build(zacContext),
+      forceActionsBelow: forceActionsBelow?.buildOrNull(zacContext) ?? false,
       leading: leading?.buildWidget(zacContext),
       leadingPadding: leadingPadding?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),

@@ -59,13 +59,13 @@ class FlutterRefreshIndicator
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
-      displacement: displacement?.getValueOrNull(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.getValueOrNull(zacContext) ?? 0.0,
+      displacement: displacement?.buildOrNull(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.buildOrNull(zacContext) ?? 0.0,
       color: color?.build(zacContext),
       backgroundColor: backgroundColor?.build(zacContext),
-      semanticsLabel: semanticsLabel?.getValueOrNull(zacContext),
-      semanticsValue: semanticsValue?.getValueOrNull(zacContext),
-      strokeWidth: strokeWidth?.getValueOrNull(zacContext) ??
+      semanticsLabel: semanticsLabel?.buildOrNull(zacContext),
+      semanticsValue: semanticsValue?.buildOrNull(zacContext),
+      strokeWidth: strokeWidth?.buildOrNull(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
       triggerMode:
           triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,

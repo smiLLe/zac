@@ -35,8 +35,8 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
     return Align(
       key: key?.buildKey(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.getValueOrNull(zacContext),
-      heightFactor: heightFactor?.getValueOrNull(zacContext),
+      widthFactor: widthFactor?.buildOrNull(zacContext),
+      heightFactor: heightFactor?.buildOrNull(zacContext),
       // child: child?.buildWidget(zacContext),
       child: child?.buildWidget(zacContext),
     );

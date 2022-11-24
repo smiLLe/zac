@@ -48,7 +48,7 @@ class FlutterOutlineInputBorder
       borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
       borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.getValueOrNull(zacContext) ?? 4.0,
+      gapPadding: gapPadding?.buildOrNull(zacContext) ?? 4.0,
     );
   }
 }
@@ -116,8 +116,8 @@ class FlutterMaterialPageRoute
           return wrap(zacContext, child);
         },
       ),
-      maintainState: maintainState?.getValueOrNull(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValueOrNull(zacContext) ?? false,
+      maintainState: maintainState?.buildOrNull(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.buildOrNull(zacContext) ?? false,
       settings: settings?.build(zacContext),
     );
   }

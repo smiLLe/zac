@@ -18,8 +18,6 @@ ZacInt _$ZacIntFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:int':
       return _ZacInt.fromJson(json);
-    case 'z:1:int.transformable':
-      return _ZacIntTransformable.fromJson(json);
     case 'z:1:int.consume':
       return _ZacIntConsumeSharedValue.fromJson(json);
 
@@ -34,7 +32,6 @@ mixin _$ZacInt {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacInt value) $default, {
-    required TResult Function(_ZacIntTransformable value) transformable,
     required TResult Function(_ZacIntConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -77,7 +74,6 @@ class _$_ZacInt extends _ZacInt with ZacSimpleValue<int> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacInt value) $default, {
-    required TResult Function(_ZacIntTransformable value) transformable,
     required TResult Function(_ZacIntConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -95,73 +91,8 @@ abstract class _ZacInt extends ZacInt implements ZacSimpleValue<int> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacIntTransformable extends _ZacIntTransformable
-    with ZacValueTranformable<int> {
-  _$_ZacIntTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:int.transformable',
-        super._();
-
-  factory _$_ZacIntTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacIntTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacInt.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacIntTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacInt value) $default, {
-    required TResult Function(_ZacIntTransformable value) transformable,
-    required TResult Function(_ZacIntConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacIntTransformable extends ZacInt
-    implements ZacValueTranformable<int> {
-  factory _ZacIntTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacIntTransformable;
-  _ZacIntTransformable._() : super._();
-
-  factory _ZacIntTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacIntTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
-    with ZacValueConsumeImpl<int> {
+    with ConsumeSharedValue<int> {
   _$_ZacIntConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -217,7 +148,6 @@ class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacInt value) $default, {
-    required TResult Function(_ZacIntTransformable value) transformable,
     required TResult Function(_ZacIntConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -225,7 +155,7 @@ class _$_ZacIntConsumeSharedValue extends _ZacIntConsumeSharedValue
 }
 
 abstract class _ZacIntConsumeSharedValue extends ZacInt
-    implements ZacValueConsume<int>, ZacValueConsumeImpl<int> {
+    implements ConsumeSharedValue<int> {
   factory _ZacIntConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -247,8 +177,6 @@ ZacDouble _$ZacDoubleFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:double':
       return _ZacDouble.fromJson(json);
-    case 'z:1:double.transformable':
-      return _ZacDoubleTransformable.fromJson(json);
     case 'z:1:double.consume':
       return _ZacDoubleConsumeSharedValue.fromJson(json);
 
@@ -263,7 +191,6 @@ mixin _$ZacDouble {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDouble value) $default, {
-    required TResult Function(_ZacDoubleTransformable value) transformable,
     required TResult Function(_ZacDoubleConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -306,7 +233,6 @@ class _$_ZacDouble extends _ZacDouble with ZacSimpleValue<double> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDouble value) $default, {
-    required TResult Function(_ZacDoubleTransformable value) transformable,
     required TResult Function(_ZacDoubleConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -325,73 +251,8 @@ abstract class _ZacDouble extends ZacDouble implements ZacSimpleValue<double> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacDoubleTransformable extends _ZacDoubleTransformable
-    with ZacValueTranformable<double> {
-  _$_ZacDoubleTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:double.transformable',
-        super._();
-
-  factory _$_ZacDoubleTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacDoubleTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacDouble.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacDoubleTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacDouble value) $default, {
-    required TResult Function(_ZacDoubleTransformable value) transformable,
-    required TResult Function(_ZacDoubleConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacDoubleTransformable extends ZacDouble
-    implements ZacValueTranformable<double> {
-  factory _ZacDoubleTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacDoubleTransformable;
-  _ZacDoubleTransformable._() : super._();
-
-  factory _ZacDoubleTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacDoubleTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
-    with ZacValueConsumeImpl<double> {
+    with ConsumeSharedValue<double> {
   _$_ZacDoubleConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -447,7 +308,6 @@ class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDouble value) $default, {
-    required TResult Function(_ZacDoubleTransformable value) transformable,
     required TResult Function(_ZacDoubleConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -455,7 +315,7 @@ class _$_ZacDoubleConsumeSharedValue extends _ZacDoubleConsumeSharedValue
 }
 
 abstract class _ZacDoubleConsumeSharedValue extends ZacDouble
-    implements ZacValueConsume<double>, ZacValueConsumeImpl<double> {
+    implements ConsumeSharedValue<double> {
   factory _ZacDoubleConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -477,8 +337,6 @@ ZacNum _$ZacNumFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:num':
       return _ZacNum.fromJson(json);
-    case 'z:1:num.transformable':
-      return _ZacNumTransformable.fromJson(json);
     case 'z:1:num.consume':
       return _ZacNumConsumeSharedValue.fromJson(json);
 
@@ -493,7 +351,6 @@ mixin _$ZacNum {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacNum value) $default, {
-    required TResult Function(_ZacNumTransformable value) transformable,
     required TResult Function(_ZacNumConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -536,7 +393,6 @@ class _$_ZacNum extends _ZacNum with ZacSimpleValue<num> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacNum value) $default, {
-    required TResult Function(_ZacNumTransformable value) transformable,
     required TResult Function(_ZacNumConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -554,73 +410,8 @@ abstract class _ZacNum extends ZacNum implements ZacSimpleValue<num> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacNumTransformable extends _ZacNumTransformable
-    with ZacValueTranformable<num> {
-  _$_ZacNumTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:num.transformable',
-        super._();
-
-  factory _$_ZacNumTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacNumTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacNum.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacNumTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacNum value) $default, {
-    required TResult Function(_ZacNumTransformable value) transformable,
-    required TResult Function(_ZacNumConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacNumTransformable extends ZacNum
-    implements ZacValueTranformable<num> {
-  factory _ZacNumTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacNumTransformable;
-  _ZacNumTransformable._() : super._();
-
-  factory _ZacNumTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacNumTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
-    with ZacValueConsumeImpl<num> {
+    with ConsumeSharedValue<num> {
   _$_ZacNumConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -676,7 +467,6 @@ class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacNum value) $default, {
-    required TResult Function(_ZacNumTransformable value) transformable,
     required TResult Function(_ZacNumConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -684,7 +474,7 @@ class _$_ZacNumConsumeSharedValue extends _ZacNumConsumeSharedValue
 }
 
 abstract class _ZacNumConsumeSharedValue extends ZacNum
-    implements ZacValueConsume<num>, ZacValueConsumeImpl<num> {
+    implements ConsumeSharedValue<num> {
   factory _ZacNumConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -706,8 +496,6 @@ ZacString _$ZacStringFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:String':
       return _ZacString.fromJson(json);
-    case 'z:1:String.transformable':
-      return _ZacStringTransformable.fromJson(json);
     case 'z:1:String.consume':
       return _ZacStringConsumeSharedValue.fromJson(json);
 
@@ -722,7 +510,6 @@ mixin _$ZacString {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacString value) $default, {
-    required TResult Function(_ZacStringTransformable value) transformable,
     required TResult Function(_ZacStringConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -765,7 +552,6 @@ class _$_ZacString extends _ZacString with ZacSimpleValue<String> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacString value) $default, {
-    required TResult Function(_ZacStringTransformable value) transformable,
     required TResult Function(_ZacStringConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -784,73 +570,8 @@ abstract class _ZacString extends ZacString implements ZacSimpleValue<String> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStringTransformable extends _ZacStringTransformable
-    with ZacValueTranformable<String> {
-  _$_ZacStringTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:String.transformable',
-        super._();
-
-  factory _$_ZacStringTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacStringTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacString.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacStringTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacString value) $default, {
-    required TResult Function(_ZacStringTransformable value) transformable,
-    required TResult Function(_ZacStringConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacStringTransformable extends ZacString
-    implements ZacValueTranformable<String> {
-  factory _ZacStringTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacStringTransformable;
-  _ZacStringTransformable._() : super._();
-
-  factory _ZacStringTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacStringTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
-    with ZacValueConsumeImpl<String> {
+    with ConsumeSharedValue<String> {
   _$_ZacStringConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -906,7 +627,6 @@ class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacString value) $default, {
-    required TResult Function(_ZacStringTransformable value) transformable,
     required TResult Function(_ZacStringConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -914,7 +634,7 @@ class _$_ZacStringConsumeSharedValue extends _ZacStringConsumeSharedValue
 }
 
 abstract class _ZacStringConsumeSharedValue extends ZacString
-    implements ZacValueConsume<String>, ZacValueConsumeImpl<String> {
+    implements ConsumeSharedValue<String> {
   factory _ZacStringConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -936,8 +656,6 @@ ZacBool _$ZacBoolFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:bool':
       return _ZacBool.fromJson(json);
-    case 'z:1:bool.transformable':
-      return _ZacBoolTransformable.fromJson(json);
     case 'z:1:bool.consume':
       return _ZacBoolConsumeSharedValue.fromJson(json);
 
@@ -952,7 +670,6 @@ mixin _$ZacBool {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacBool value) $default, {
-    required TResult Function(_ZacBoolTransformable value) transformable,
     required TResult Function(_ZacBoolConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -995,7 +712,6 @@ class _$_ZacBool extends _ZacBool with ZacSimpleValue<bool> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacBool value) $default, {
-    required TResult Function(_ZacBoolTransformable value) transformable,
     required TResult Function(_ZacBoolConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -1013,73 +729,8 @@ abstract class _ZacBool extends ZacBool implements ZacSimpleValue<bool> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacBoolTransformable extends _ZacBoolTransformable
-    with ZacValueTranformable<bool> {
-  _$_ZacBoolTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:bool.transformable',
-        super._();
-
-  factory _$_ZacBoolTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacBoolTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacBool.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacBoolTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacBool value) $default, {
-    required TResult Function(_ZacBoolTransformable value) transformable,
-    required TResult Function(_ZacBoolConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacBoolTransformable extends ZacBool
-    implements ZacValueTranformable<bool> {
-  factory _ZacBoolTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacBoolTransformable;
-  _ZacBoolTransformable._() : super._();
-
-  factory _ZacBoolTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacBoolTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
-    with ZacValueConsumeImpl<bool> {
+    with ConsumeSharedValue<bool> {
   _$_ZacBoolConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1135,7 +786,6 @@ class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacBool value) $default, {
-    required TResult Function(_ZacBoolTransformable value) transformable,
     required TResult Function(_ZacBoolConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -1143,7 +793,7 @@ class _$_ZacBoolConsumeSharedValue extends _ZacBoolConsumeSharedValue
 }
 
 abstract class _ZacBoolConsumeSharedValue extends ZacBool
-    implements ZacValueConsume<bool>, ZacValueConsumeImpl<bool> {
+    implements ConsumeSharedValue<bool> {
   factory _ZacBoolConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1165,8 +815,6 @@ ZacObject _$ZacObjectFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:Object':
       return _ZacObject.fromJson(json);
-    case 'z:1:Object.transformable':
-      return _ZacObjectTransformable.fromJson(json);
     case 'z:1:Object.consume':
       return _ZacObjectConsumeSharedValue.fromJson(json);
 
@@ -1181,7 +829,6 @@ mixin _$ZacObject {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacObject value) $default, {
-    required TResult Function(_ZacObjectTransformable value) transformable,
     required TResult Function(_ZacObjectConsumeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -1225,7 +872,6 @@ class _$_ZacObject extends _ZacObject with ZacSimpleValue<Object> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacObject value) $default, {
-    required TResult Function(_ZacObjectTransformable value) transformable,
     required TResult Function(_ZacObjectConsumeSharedValue value) consume,
   }) {
     return $default(this);
@@ -1244,73 +890,8 @@ abstract class _ZacObject extends ZacObject implements ZacSimpleValue<Object> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacObjectTransformable extends _ZacObjectTransformable
-    with ZacValueTranformable<Object> {
-  _$_ZacObjectTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:Object.transformable',
-        super._();
-
-  factory _$_ZacObjectTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacObjectTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacObject.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacObjectTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacObject value) $default, {
-    required TResult Function(_ZacObjectTransformable value) transformable,
-    required TResult Function(_ZacObjectConsumeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacObjectTransformable extends ZacObject
-    implements ZacValueTranformable<Object> {
-  factory _ZacObjectTransformable(
-      {required final Object value,
-      required final ZacTransformers transformer}) = _$_ZacObjectTransformable;
-  _ZacObjectTransformable._() : super._();
-
-  factory _ZacObjectTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacObjectTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
-    with ZacValueConsumeImpl<Object> {
+    with ConsumeSharedValue<Object> {
   _$_ZacObjectConsumeSharedValue(
       {required this.family,
       this.transformer,
@@ -1366,7 +947,6 @@ class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacObject value) $default, {
-    required TResult Function(_ZacObjectTransformable value) transformable,
     required TResult Function(_ZacObjectConsumeSharedValue value) consume,
   }) {
     return consume(this);
@@ -1374,7 +954,7 @@ class _$_ZacObjectConsumeSharedValue extends _ZacObjectConsumeSharedValue
 }
 
 abstract class _ZacObjectConsumeSharedValue extends ZacObject
-    implements ZacValueConsume<Object>, ZacValueConsumeImpl<Object> {
+    implements ConsumeSharedValue<Object> {
   factory _ZacObjectConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
@@ -1644,8 +1224,6 @@ ZacDateTime _$ZacDateTimeFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:DateTime':
       return _ZacDateTime.fromJson(json);
-    case 'z:1:DateTime.transformable':
-      return _ZacDateTimeTransformable.fromJson(json);
     case 'z:1:DateTime.consume':
       return _ZacDateTimeSharedValue.fromJson(json);
 
@@ -1660,7 +1238,6 @@ mixin _$ZacDateTime {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDateTime value) $default, {
-    required TResult Function(_ZacDateTimeTransformable value) transformable,
     required TResult Function(_ZacDateTimeSharedValue value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -1703,7 +1280,6 @@ class _$_ZacDateTime extends _ZacDateTime with ZacSimpleValue<DateTime> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDateTime value) $default, {
-    required TResult Function(_ZacDateTimeTransformable value) transformable,
     required TResult Function(_ZacDateTimeSharedValue value) consume,
   }) {
     return $default(this);
@@ -1723,74 +1299,8 @@ abstract class _ZacDateTime extends ZacDateTime
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacDateTimeTransformable extends _ZacDateTimeTransformable
-    with ZacValueTranformable<DateTime> {
-  _$_ZacDateTimeTransformable(
-      {required this.value, required this.transformer, final String? $type})
-      : $type = $type ?? 'z:1:DateTime.transformable',
-        super._();
-
-  factory _$_ZacDateTimeTransformable.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacDateTimeTransformableFromJson(json);
-
-  @override
-  final Object value;
-  @override
-  final ZacTransformers transformer;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacDateTime.transformable(value: $value, transformer: $transformer)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacDateTimeTransformable &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(value), transformer);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacDateTime value) $default, {
-    required TResult Function(_ZacDateTimeTransformable value) transformable,
-    required TResult Function(_ZacDateTimeSharedValue value) consume,
-  }) {
-    return transformable(this);
-  }
-}
-
-abstract class _ZacDateTimeTransformable extends ZacDateTime
-    implements ZacValueTranformable<DateTime> {
-  factory _ZacDateTimeTransformable(
-          {required final Object value,
-          required final ZacTransformers transformer}) =
-      _$_ZacDateTimeTransformable;
-  _ZacDateTimeTransformable._() : super._();
-
-  factory _ZacDateTimeTransformable.fromJson(Map<String, dynamic> json) =
-      _$_ZacDateTimeTransformable.fromJson;
-
-  Object get value;
-  ZacTransformers get transformer;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
 class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
-    with ZacValueConsumeImpl<DateTime> {
+    with ConsumeSharedValue<DateTime> {
   _$_ZacDateTimeSharedValue(
       {required this.family,
       this.transformer,
@@ -1846,7 +1356,6 @@ class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ZacDateTime value) $default, {
-    required TResult Function(_ZacDateTimeTransformable value) transformable,
     required TResult Function(_ZacDateTimeSharedValue value) consume,
   }) {
     return consume(this);
@@ -1854,7 +1363,7 @@ class _$_ZacDateTimeSharedValue extends _ZacDateTimeSharedValue
 }
 
 abstract class _ZacDateTimeSharedValue extends ZacDateTime
-    implements ZacValueConsume<DateTime>, ZacValueConsumeImpl<DateTime> {
+    implements ConsumeSharedValue<DateTime> {
   factory _ZacDateTimeSharedValue(
       {required final Object family,
       final ZacTransformers? transformer,

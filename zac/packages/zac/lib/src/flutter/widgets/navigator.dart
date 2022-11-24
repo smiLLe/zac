@@ -2,6 +2,7 @@ import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/update_widget.dart';
@@ -86,8 +87,8 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
         key: obj.key?.buildKey(zacContext),
         onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
-        initialRoute: obj.initialRoute?.getValueOrNull(zacContext),
-        requestFocus: obj.requestFocus?.getValueOrNull(zacContext) ?? true,
+        initialRoute: obj.initialRoute?.buildOrNull(zacContext),
+        requestFocus: obj.requestFocus?.buildOrNull(zacContext) ?? true,
       ),
     );
   }
@@ -185,8 +186,12 @@ class FlutterNavigatorActions
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.getValue(zacContext,
-              prefered: const SharedValueConsumeType.read()),
+          obj.routeName.build(
+            zacContext,
+            onConsume: const ZacBuilderConsume(
+              type: SharedValueConsumeType.read(),
+            ),
+          ),
           arguments: obj.arguments,
         )
             .then((value) {
@@ -224,8 +229,12 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.getValue(zacContext,
-              prefered: const SharedValueConsumeType.read()),
+          obj.routeName.build(
+            zacContext,
+            onConsume: const ZacBuilderConsume(
+              type: SharedValueConsumeType.read(),
+            ),
+          ),
           arguments: obj.arguments,
           result: obj.result,
         )
@@ -288,13 +297,12 @@ class FlutterPageRouteBuilder
         },
       ),
       settings: settings?.build(zacContext),
-      opaque: opaque?.getValueOrNull(zacContext) ?? true,
-      barrierDismissible:
-          barrierDismissible?.getValueOrNull(zacContext) ?? false,
+      opaque: opaque?.buildOrNull(zacContext) ?? true,
+      barrierDismissible: barrierDismissible?.buildOrNull(zacContext) ?? false,
       barrierColor: barrierColor?.build(zacContext),
-      barrierLabel: barrierLabel?.getValueOrNull(zacContext),
-      maintainState: maintainState?.getValueOrNull(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValueOrNull(zacContext) ?? false,
+      barrierLabel: barrierLabel?.buildOrNull(zacContext),
+      maintainState: maintainState?.buildOrNull(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.buildOrNull(zacContext) ?? false,
     );
   }
 }
@@ -318,7 +326,7 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
   RouteSettings build(ZacContext zacContext) {
     return RouteSettings(
       arguments: arguments,
-      name: name?.getValueOrNull(zacContext),
+      name: name?.buildOrNull(zacContext),
     );
   }
 }

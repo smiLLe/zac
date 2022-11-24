@@ -8,6 +8,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'state_machine.freezed.dart';
@@ -154,8 +155,8 @@ because there was already a transition.
 
     return ZacStateMachine(
       states: states,
-      state: initialState.getValue(zacContext),
-      context: initialContext?.getValueOrNull(zacContext),
+      state: initialState.build(zacContext),
+      context: initialContext?.buildOrNull(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
@@ -166,7 +167,7 @@ because there was already a transition.
   Widget buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
       key: key?.buildKey(zacContext),
-      family: family.getValue(zacContext),
+      family: family.build(zacContext),
       autoCreate: true,
       childBuilder: child.buildWidget,
       valueBuilder: _createMachine,
@@ -198,7 +199,7 @@ class ZacStateMachineBuildStateBuilder
   ZacStateMachineBuildState buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
       key: key?.buildKey(zacContext),
-      family: family.getValue(zacContext),
+      family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
           (unmappedStateWidget ?? const FlutterSizedBox.shrink())
@@ -290,8 +291,12 @@ class ZacStateMachineActions
           select: null,
         ) as ZacStateMachine;
         machine.send(
-            obj.event.getValue(zacContext,
-                prefered: const SharedValueConsumeType.read()),
+            obj.event.build(
+              zacContext,
+              onConsume: const ZacBuilderConsume(
+                type: SharedValueConsumeType.read(),
+              ),
+            ),
             payload.params);
       },
       trySend: (obj) {
@@ -302,8 +307,12 @@ class ZacStateMachineActions
           select: null,
         ) as ZacStateMachine;
         machine.trySend(
-            obj.event.getValue(zacContext,
-                prefered: const SharedValueConsumeType.read()),
+            obj.event.build(
+              zacContext,
+              onConsume: const ZacBuilderConsume(
+                type: SharedValueConsumeType.read(),
+              ),
+            ),
             payload.params);
       },
     );

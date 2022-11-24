@@ -31,8 +31,8 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   LimitedBox buildWidget(ZacContext zacContext) {
     return LimitedBox(
       key: key?.buildKey(zacContext),
-      maxHeight: maxHeight?.getValueOrNull(zacContext) ?? double.infinity,
-      maxWidth: maxWidth?.getValueOrNull(zacContext) ?? double.infinity,
+      maxHeight: maxHeight?.buildOrNull(zacContext) ?? double.infinity,
+      maxWidth: maxWidth?.buildOrNull(zacContext) ?? double.infinity,
       child: child?.buildWidget(zacContext),
     );
   }

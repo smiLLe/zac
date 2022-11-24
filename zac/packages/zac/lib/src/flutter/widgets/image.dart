@@ -81,14 +81,14 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
   Image buildWidget(ZacContext zacContext) {
     return map(
       network: (value) => Image.network(
-        value.src.getValue(zacContext),
+        value.src.build(zacContext),
         key: value.key?.buildKey(zacContext),
-        scale: value.scale?.getValueOrNull(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
+        scale: value.scale?.buildOrNull(zacContext) ?? 1.0,
+        semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValueOrNull(zacContext) ?? false,
-        width: value.width?.getValueOrNull(zacContext),
-        height: value.height?.getValueOrNull(zacContext),
+            value.excludeFromSemantics?.buildOrNull(zacContext) ?? false,
+        width: value.width?.buildOrNull(zacContext),
+        height: value.height?.buildOrNull(zacContext),
         color: value.color?.build(zacContext),
         colorBlendMode: value.colorBlendMode?.build(zacContext),
         fit: value.fit?.build(zacContext),
@@ -96,25 +96,25 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         repeat: value.repeat?.build(zacContext) ?? ImageRepeat.noRepeat,
         centerSlice: value.centerSlice?.build(zacContext),
         matchTextDirection:
-            value.matchTextDirection?.getValueOrNull(zacContext) ?? false,
+            value.matchTextDirection?.buildOrNull(zacContext) ?? false,
         gaplessPlayback:
-            value.gaplessPlayback?.getValueOrNull(zacContext) ?? false,
+            value.gaplessPlayback?.buildOrNull(zacContext) ?? false,
         filterQuality:
             value.filterQuality?.build(zacContext) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValueOrNull(zacContext) ?? false,
+        isAntiAlias: value.isAntiAlias?.buildOrNull(zacContext) ?? false,
         headers: value.headers,
-        cacheWidth: value.cacheWidth?.getValueOrNull(zacContext),
-        cacheHeight: value.cacheHeight?.getValueOrNull(zacContext),
+        cacheWidth: value.cacheWidth?.buildOrNull(zacContext),
+        cacheHeight: value.cacheHeight?.buildOrNull(zacContext),
       ),
       asset: (value) => Image.asset(
-        value.name.getValue(zacContext),
+        value.name.build(zacContext),
         key: value.key?.buildKey(zacContext),
-        scale: value.scale?.getValueOrNull(zacContext) ?? 1.0,
-        semanticLabel: value.semanticLabel?.getValueOrNull(zacContext),
+        scale: value.scale?.buildOrNull(zacContext) ?? 1.0,
+        semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
         excludeFromSemantics:
-            value.excludeFromSemantics?.getValueOrNull(zacContext) ?? false,
-        width: value.width?.getValueOrNull(zacContext),
-        height: value.height?.getValueOrNull(zacContext),
+            value.excludeFromSemantics?.buildOrNull(zacContext) ?? false,
+        width: value.width?.buildOrNull(zacContext),
+        height: value.height?.buildOrNull(zacContext),
         color: value.color?.build(zacContext),
         colorBlendMode: value.colorBlendMode?.build(zacContext),
         fit: value.fit?.build(zacContext),
@@ -122,15 +122,15 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         repeat: value.repeat?.build(zacContext) ?? ImageRepeat.noRepeat,
         centerSlice: value.centerSlice?.build(zacContext),
         matchTextDirection:
-            value.matchTextDirection?.getValueOrNull(zacContext) ?? false,
+            value.matchTextDirection?.buildOrNull(zacContext) ?? false,
         gaplessPlayback:
-            value.gaplessPlayback?.getValueOrNull(zacContext) ?? false,
+            value.gaplessPlayback?.buildOrNull(zacContext) ?? false,
         filterQuality:
             value.filterQuality?.build(zacContext) ?? FilterQuality.low,
-        isAntiAlias: value.isAntiAlias?.getValueOrNull(zacContext) ?? false,
-        cacheWidth: value.cacheWidth?.getValueOrNull(zacContext),
-        cacheHeight: value.cacheHeight?.getValueOrNull(zacContext),
-        package: value.package?.getValueOrNull(zacContext),
+        isAntiAlias: value.isAntiAlias?.buildOrNull(zacContext) ?? false,
+        cacheWidth: value.cacheWidth?.buildOrNull(zacContext),
+        cacheHeight: value.cacheHeight?.buildOrNull(zacContext),
+        package: value.package?.buildOrNull(zacContext),
       ),
     );
   }

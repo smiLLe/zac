@@ -43,9 +43,9 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
       key: key?.buildKey(zacContext),
       direction: direction?.build(zacContext) ?? Axis.horizontal,
       alignment: alignment?.build(zacContext) ?? WrapAlignment.start,
-      spacing: spacing?.getValueOrNull(zacContext) ?? 0.0,
+      spacing: spacing?.buildOrNull(zacContext) ?? 0.0,
       runAlignment: runAlignment?.build(zacContext) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.getValueOrNull(zacContext) ?? 0.0,
+      runSpacing: runSpacing?.buildOrNull(zacContext) ?? 0.0,
       crossAxisAlignment:
           crossAxisAlignment?.build(zacContext) ?? WrapCrossAlignment.start,
       textDirection: textDirection?.build(zacContext),

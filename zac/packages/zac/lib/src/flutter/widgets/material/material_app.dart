@@ -66,27 +66,27 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
       navigatorKey: navigatorKey?.buildOrNull(zacContext),
       scaffoldMessengerKey: scaffoldMessengerKey?.buildOrNull(zacContext),
       home: home?.buildWidget(zacContext),
-      initialRoute: initialRoute?.getValueOrNull(zacContext),
+      initialRoute: initialRoute?.buildOrNull(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
       onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
-      title: title?.getValueOrNull(zacContext) ?? '',
+      title: title?.buildOrNull(zacContext) ?? '',
       color: color?.build(zacContext),
       locale: locale?.build(zacContext),
       debugShowMaterialGrid:
-          debugShowMaterialGrid?.getValueOrNull(zacContext) ?? false,
+          debugShowMaterialGrid?.buildOrNull(zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.getValueOrNull(zacContext) ?? false,
+          showPerformanceOverlay?.buildOrNull(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValueOrNull(zacContext) ?? false,
+          checkerboardRasterCacheImages?.buildOrNull(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValueOrNull(zacContext) ?? false,
+          checkerboardOffscreenLayers?.buildOrNull(zacContext) ?? false,
       showSemanticsDebugger:
-          showSemanticsDebugger?.getValueOrNull(zacContext) ?? false,
+          showSemanticsDebugger?.buildOrNull(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValueOrNull(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.getValueOrNull(zacContext),
+          debugShowCheckedModeBanner?.buildOrNull(zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.buildOrNull(zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValueOrNull(zacContext) ?? false,
+          useInheritedMediaQuery?.buildOrNull(zacContext) ?? false,
     );
   }
 }

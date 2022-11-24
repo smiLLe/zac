@@ -35,8 +35,8 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
       icon?.build(zacContext),
       key: key?.buildKey(zacContext),
       color: color?.build(zacContext),
-      size: size?.getValueOrNull(zacContext),
-      semanticLabel: semanticLabel?.getValueOrNull(zacContext),
+      size: size?.buildOrNull(zacContext),
+      semanticLabel: semanticLabel?.buildOrNull(zacContext),
       textDirection: textDirection?.build(zacContext),
     );
   }
@@ -60,11 +60,10 @@ class FlutterIconData with _$FlutterIconData {
 
   IconData build(ZacContext zacContext) {
     return IconData(
-      codePoint.getValue(zacContext),
-      fontFamily: fontFamily?.getValue(zacContext),
-      fontPackage: fontPackage?.getValue(zacContext),
-      matchTextDirection:
-          matchTextDirection?.getValueOrNull(zacContext) ?? false,
+      codePoint.build(zacContext),
+      fontFamily: fontFamily?.build(zacContext),
+      fontPackage: fontPackage?.build(zacContext),
+      matchTextDirection: matchTextDirection?.buildOrNull(zacContext) ?? false,
     );
   }
 }
@@ -87,8 +86,8 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
   IconThemeData build(ZacContext zacContext) {
     return IconThemeData(
       color: color?.build(zacContext),
-      opacity: opacity?.getValue(zacContext),
-      size: size?.getValue(zacContext),
+      opacity: opacity?.build(zacContext),
+      size: size?.build(zacContext),
     );
   }
 }

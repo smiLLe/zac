@@ -46,12 +46,12 @@ class FlutterSingleChildScrollView
     return SingleChildScrollView(
       key: key?.buildKey(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValueOrNull(zacContext) ?? false,
+      reverse: reverse?.buildOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
-      primary: primary?.getValueOrNull(zacContext),
+      primary: primary?.buildOrNull(zacContext),
       controller: controller?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValueOrNull(zacContext),
+      restorationId: restorationId?.buildOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
       child: child?.buildWidget(zacContext),

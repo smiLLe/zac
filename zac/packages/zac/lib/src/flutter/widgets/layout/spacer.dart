@@ -28,7 +28,7 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   Spacer buildWidget(ZacContext zacContext) {
     return Spacer(
       key: key?.buildKey(zacContext),
-      flex: flex?.getValueOrNull(zacContext) ?? 1,
+      flex: flex?.buildOrNull(zacContext) ?? 1,
     );
   }
 }

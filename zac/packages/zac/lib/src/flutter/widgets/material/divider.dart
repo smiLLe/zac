@@ -33,10 +33,10 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   Divider buildWidget(ZacContext zacContext) {
     return Divider(
       key: key?.buildKey(zacContext),
-      height: height?.getValueOrNull(zacContext),
-      thickness: thickness?.getValueOrNull(zacContext),
-      indent: indent?.getValueOrNull(zacContext),
-      endIndent: endIndent?.getValueOrNull(zacContext),
+      height: height?.buildOrNull(zacContext),
+      thickness: thickness?.buildOrNull(zacContext),
+      indent: indent?.buildOrNull(zacContext),
+      endIndent: endIndent?.buildOrNull(zacContext),
       color: color?.build(zacContext),
     );
   }
