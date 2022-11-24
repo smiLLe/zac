@@ -39,7 +39,7 @@ mixin _$FlutterScrollController {
 @JsonSerializable(createToJson: false)
 class _$_ScrollControllerConsumeSharedValue
     extends _ScrollControllerConsumeSharedValue
-    with ZacValueConsumeImpl<ScrollController> {
+    with ConsumeSharedValue<ScrollController> {
   _$_ScrollControllerConsumeSharedValue(
       {required this.family, this.transformer, this.select, this.forceConsume})
       : super._();
@@ -96,9 +96,7 @@ class _$_ScrollControllerConsumeSharedValue
 
 abstract class _ScrollControllerConsumeSharedValue
     extends FlutterScrollController
-    implements
-        ZacValueConsume<ScrollController>,
-        ZacValueConsumeImpl<ScrollController> {
+    implements ConsumeSharedValue<ScrollController> {
   factory _ScrollControllerConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,

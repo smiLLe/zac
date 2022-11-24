@@ -9,22 +9,23 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
-import '../zac/zac_values_test.dart';
 
 void main() {
   group('DartCompleterVoid', () {
     test('can be created', () {
-      expectCreateShared<DartCompleterVoid, Completer<void>>(
+      expectConvertConsumeSharedValue<DartCompleterVoid, Completer<void>>(
         converter: 'z:1:Completer<void>.consume',
         create: DartCompleterVoid.consume,
       );
     });
 
     testWidgets('will return correct value', (tester) async {
-      await expectShared<Completer<void>>(
+      final val = Completer<void>();
+      await expectConsumedValueFromZacBuilder<Completer<void>, Completer<void>>(
         tester: tester,
         createBuilder: DartCompleterVoid.consume,
-        expectValue: Completer<void>(),
+        expectValue: val,
+        sharedValue: val,
       );
     });
   });
@@ -58,7 +59,7 @@ void main() {
           disposeComplete: (completer) => completer.complete(0),
         ));
 
-    expect(DartCompleterVoid.consume(family: 'shared').getValue(zacContext),
+    expect(DartCompleterVoid.consume(family: 'shared').build(zacContext),
         isA<Completer<void>>());
   });
 
@@ -80,7 +81,7 @@ void main() {
         ));
 
     final completer =
-        DartCompleterVoid.consume(family: 'shared').getValue(zacContext);
+        DartCompleterVoid.consume(family: 'shared').build(zacContext);
 
     await tester.pumpWidget(const SizedBox());
 
@@ -99,7 +100,7 @@ void main() {
           family: 'shared',
         ));
 
-    expect(DartCompleterVoid.consume(family: 'shared').getValue(zacContext),
+    expect(DartCompleterVoid.consume(family: 'shared').build(zacContext),
         isA<Completer<void>>());
   });
 
@@ -129,7 +130,7 @@ void main() {
         ));
 
     final completer =
-        DartCompleterVoid.consume(family: 'shared').getValue(zacContext);
+        DartCompleterVoid.consume(family: 'shared').build(zacContext);
 
     ZacCompleterActions.completeVoid(
             completer: DartCompleterVoid.consume(family: 'shared'))

@@ -7,6 +7,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'completer.freezed.dart';
@@ -14,21 +15,32 @@ part 'completer.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
-class DartCompleterVoid with _$DartCompleterVoid, ZacGetValue<Completer<void>> {
+class DartCompleterVoid with _$DartCompleterVoid, ZacBuilder<Completer<void>> {
   const DartCompleterVoid._();
 
   factory DartCompleterVoid.fromJson(Map<String, dynamic> json) =>
       _$DartCompleterVoidFromJson(json);
 
   @FreezedUnionValue('z:1:Completer<void>.consume')
-  @Implements<ZacValueConsume<Completer<void>>>()
-  @With<ZacValueConsumeImpl<Completer<void>>>()
+  @With<ConsumeSharedValue<Completer<void>>>()
   factory DartCompleterVoid.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
     ZacTransformers? select,
     SharedValueConsumeType? forceConsume,
   }) = _DartCompleterVoidConsumeSharedValue;
+
+  @override
+  Completer<void> build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return map(consume: (obj) => obj.buildConsume(zacContext, onConsume));
+  }
+
+  @override
+  Completer<void>? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return map(consume: (obj) => obj.buildConsumeOrNull(zacContext, onConsume));
+  }
 }
 
 @freezedZacBuilder
@@ -123,7 +135,7 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       completeVoid: (obj) {
-        final completer = obj.completer.getValue(zacContext);
+        final completer = obj.completer.build(zacContext);
         if (completer.isCompleted) return;
         completer.complete();
       },

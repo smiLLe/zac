@@ -135,7 +135,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       onTap: onTap?.createCb(zacContext),
       onEditingComplete: onEditingComplete?.createCb(zacContext),
       onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),
-      scrollController: scrollController?.getValueOrNull(zacContext),
+      scrollController: scrollController?.buildOrNull(zacContext),
     );
   }
 }

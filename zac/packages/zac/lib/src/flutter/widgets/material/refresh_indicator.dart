@@ -55,7 +55,7 @@ class FlutterRefreshIndicator
 
         zacContext.ref
             .invalidate(SharedValue.provider(onRefreshCompleter!.family));
-        final completer = onRefreshCompleter!.getValue(zacContext);
+        final completer = onRefreshCompleter!.build(zacContext);
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },

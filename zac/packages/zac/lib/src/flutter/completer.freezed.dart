@@ -38,7 +38,7 @@ mixin _$DartCompleterVoid {
 @JsonSerializable(createToJson: false)
 class _$_DartCompleterVoidConsumeSharedValue
     extends _DartCompleterVoidConsumeSharedValue
-    with ZacValueConsumeImpl<Completer<void>> {
+    with ConsumeSharedValue<Completer<void>> {
   _$_DartCompleterVoidConsumeSharedValue(
       {required this.family, this.transformer, this.select, this.forceConsume})
       : super._();
@@ -94,9 +94,7 @@ class _$_DartCompleterVoidConsumeSharedValue
 }
 
 abstract class _DartCompleterVoidConsumeSharedValue extends DartCompleterVoid
-    implements
-        ZacValueConsume<Completer<void>>,
-        ZacValueConsumeImpl<Completer<void>> {
+    implements ConsumeSharedValue<Completer<void>> {
   factory _DartCompleterVoidConsumeSharedValue(
           {required final Object family,
           final ZacTransformers? transformer,
