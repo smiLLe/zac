@@ -1,5 +1,6 @@
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,7 @@ part 'painting.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxShape with _$FlutterBoxShape {
+class FlutterBoxShape with _$FlutterBoxShape, ZacBuilder<BoxShape> {
   const FlutterBoxShape._();
 
   factory FlutterBoxShape.fromJson(Map<String, dynamic> json) =>
@@ -23,17 +24,29 @@ class FlutterBoxShape with _$FlutterBoxShape {
   @FreezedUnionValue('f:1:BoxShape.rectangle')
   factory FlutterBoxShape.rectangle() = _FlutterBoxShapeRectangle;
 
-  BoxShape build(ZacContext zacContext) {
+  BoxShape _build(ZacContext zacContext) {
     return map(
       circle: (_) => BoxShape.circle,
       rectangle: (_) => BoxShape.rectangle,
     );
   }
+
+  @override
+  BoxShape build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxShape? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterAxis with _$FlutterAxis {
+class FlutterAxis with _$FlutterAxis, ZacBuilder<Axis> {
   const FlutterAxis._();
 
   factory FlutterAxis.fromJson(Map<String, dynamic> json) =>
@@ -45,15 +58,28 @@ class FlutterAxis with _$FlutterAxis {
   @FreezedUnionValue('f:1:Axis.vertical')
   factory FlutterAxis.vertical() = _FlutterAxisVertical;
 
-  Axis build(ZacContext zacContext) {
+  Axis _build(ZacContext zacContext) {
     return map(
         horizontal: (_) => Axis.horizontal, vertical: (_) => Axis.vertical);
+  }
+
+  @override
+  Axis build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Axis? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterVerticalDirection with _$FlutterVerticalDirection {
+class FlutterVerticalDirection
+    with _$FlutterVerticalDirection, ZacBuilder<VerticalDirection> {
   const FlutterVerticalDirection._();
 
   factory FlutterVerticalDirection.fromJson(Map<String, dynamic> json) =>
@@ -65,15 +91,27 @@ class FlutterVerticalDirection with _$FlutterVerticalDirection {
   @FreezedUnionValue('f:1:VerticalDirection.down')
   factory FlutterVerticalDirection.down() = _FlutterVerticalDirectionDown;
 
-  VerticalDirection build(ZacContext zacContext) {
+  VerticalDirection _build(ZacContext zacContext) {
     return map(
         up: (_) => VerticalDirection.up, down: (_) => VerticalDirection.down);
+  }
+
+  @override
+  VerticalDirection build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  VerticalDirection? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextOverflow with _$FlutterTextOverflow {
+class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuilder<TextOverflow> {
   const FlutterTextOverflow._();
 
   factory FlutterTextOverflow.fromJson(Map<String, dynamic> json) =>
@@ -91,7 +129,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow {
   @FreezedUnionValue('f:1:TextOverflow.visible')
   factory FlutterTextOverflow.visible() = _FlutterTextOverflowVisible;
 
-  TextOverflow build(ZacContext zacContext) {
+  TextOverflow _build(ZacContext zacContext) {
     return map(
       clip: (_) => TextOverflow.clip,
       ellipsis: (_) => TextOverflow.ellipsis,
@@ -99,11 +137,23 @@ class FlutterTextOverflow with _$FlutterTextOverflow {
       visible: (_) => TextOverflow.visible,
     );
   }
+
+  @override
+  TextOverflow build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextOverflow? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterStrutStyle with _$FlutterStrutStyle {
+class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuilder<StrutStyle> {
   const FlutterStrutStyle._();
 
   factory FlutterStrutStyle.fromJson(Map<String, dynamic> json) =>
@@ -140,7 +190,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
     ZacString? package,
   }) = _FlutterStrutStyleFromTextStyle;
 
-  StrutStyle build(ZacContext zacContext) {
+  StrutStyle _build(ZacContext zacContext) {
     return map(
       (_) => StrutStyle(
         fontFamily: fontFamily?.buildOrNull(zacContext),
@@ -171,11 +221,24 @@ class FlutterStrutStyle with _$FlutterStrutStyle {
       ),
     );
   }
+
+  @override
+  StrutStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  StrutStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
+class FlutterTextWidthBasis
+    with _$FlutterTextWidthBasis, ZacBuilder<TextWidthBasis> {
   const FlutterTextWidthBasis._();
 
   factory FlutterTextWidthBasis.fromJson(Map<String, dynamic> json) =>
@@ -188,16 +251,28 @@ class FlutterTextWidthBasis with _$FlutterTextWidthBasis {
   @FreezedUnionValue('f:1:TextWidthBasis.parent')
   factory FlutterTextWidthBasis.parent() = _FlutterTextWidthBasisParent;
 
-  TextWidthBasis build(ZacContext zacContext) {
+  TextWidthBasis _build(ZacContext zacContext) {
     return map(
         longestLine: (_) => TextWidthBasis.longestLine,
         parent: (_) => TextWidthBasis.parent);
+  }
+
+  @override
+  TextWidthBasis build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextWidthBasis? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxFit with _$FlutterBoxFit {
+class FlutterBoxFit with _$FlutterBoxFit, ZacBuilder<BoxFit> {
   const FlutterBoxFit._();
 
   factory FlutterBoxFit.fromJson(Map<String, dynamic> json) =>
@@ -224,7 +299,7 @@ class FlutterBoxFit with _$FlutterBoxFit {
   @FreezedUnionValue('f:1:BoxFit.scaleDown')
   factory FlutterBoxFit.scaleDown() = _FlutterBoxFitScaleDown;
 
-  BoxFit build(ZacContext zacContext) {
+  BoxFit _build(ZacContext zacContext) {
     return map(
       contain: (_) => BoxFit.contain,
       cover: (_) => BoxFit.cover,
@@ -235,11 +310,23 @@ class FlutterBoxFit with _$FlutterBoxFit {
       scaleDown: (_) => BoxFit.scaleDown,
     );
   }
+
+  @override
+  BoxFit build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxFit? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterImageRepeat with _$FlutterImageRepeat {
+class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuilder<ImageRepeat> {
   const FlutterImageRepeat._();
 
   factory FlutterImageRepeat.fromJson(Map<String, dynamic> json) =>
@@ -257,7 +344,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat {
   @FreezedUnionValue('f:1:ImageRepeat.repeatY')
   factory FlutterImageRepeat.repeatY() = _FlutterImageRepeatRepeatY;
 
-  ImageRepeat build(ZacContext zacContext) {
+  ImageRepeat _build(ZacContext zacContext) {
     return map(
       noRepeat: (_) => ImageRepeat.noRepeat,
       repeat: (_) => ImageRepeat.repeat,
@@ -265,11 +352,23 @@ class FlutterImageRepeat with _$FlutterImageRepeat {
       repeatY: (_) => ImageRepeat.repeatY,
     );
   }
+
+  @override
+  ImageRepeat build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  ImageRepeat? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextStyle with _$FlutterTextStyle {
+class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
   const FlutterTextStyle._();
 
   factory FlutterTextStyle.fromJson(Map<String, dynamic> json) =>
@@ -304,7 +403,7 @@ class FlutterTextStyle with _$FlutterTextStyle {
     FlutterTextOverflow? overflow,
   }) = _FlutterTextStyle;
 
-  TextStyle build(ZacContext zacContext) {
+  TextStyle _build(ZacContext zacContext) {
     return TextStyle(
       inherit: inherit?.buildOrNull(zacContext) ?? true,
       color: color?.build(zacContext),
@@ -331,11 +430,24 @@ class FlutterTextStyle with _$FlutterTextStyle {
       overflow: overflow?.build(zacContext),
     );
   }
+
+  @override
+  TextStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
+class FlutterTextAlignVertical
+    with _$FlutterTextAlignVertical, ZacBuilder<TextAlignVertical> {
   const FlutterTextAlignVertical._();
 
   factory FlutterTextAlignVertical.fromJson(Map<String, dynamic> json) =>
@@ -351,7 +463,7 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
   @FreezedUnionValue('f:1:TextAlignVertical.top')
   factory FlutterTextAlignVertical.top() = _FlutterTextAlignVerticaltop;
 
-  TextAlignVertical build(ZacContext zacContext) {
+  TextAlignVertical _build(ZacContext zacContext) {
     return map(
       (value) => TextAlignVertical(y: value.y.build(zacContext)),
       bottom: (_) => TextAlignVertical.bottom,
@@ -359,11 +471,25 @@ class FlutterTextAlignVertical with _$FlutterTextAlignVertical {
       top: (_) => TextAlignVertical.top,
     );
   }
+
+  @override
+  TextAlignVertical build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextAlignVertical? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
+class FlutterBoxShadow
+    with _$FlutterBoxShadow
+    implements DartShadow, ZacBuilder<BoxShadow> {
   const FlutterBoxShadow._();
 
   static const String unionValue = 'f:1:BoxShadow';
@@ -380,8 +506,7 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
     FlutterBlurStyle? blurStyle,
   }) = _FlutterBoxShadow;
 
-  @override
-  BoxShadow build(ZacContext zacContext) {
+  BoxShadow _build(ZacContext zacContext) {
     return BoxShadow(
       color: color?.build(zacContext) ?? const Color(0xFF000000),
       offset: offset?.build(zacContext) ?? Offset.zero,
@@ -390,15 +515,25 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
       blurStyle: blurStyle?.build(zacContext) ?? BlurStyle.normal,
     );
   }
+
+  @override
+  BoxShadow build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxShadow? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterAlignmentGeometry {
+abstract class FlutterAlignmentGeometry with ZacBuilder<AlignmentGeometry> {
   factory FlutterAlignmentGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterAlignmentGeometry>(data);
   }
-
-  AlignmentGeometry build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -452,8 +587,7 @@ class FlutterAlignment
   @FreezedUnionValue(FlutterAlignment.unionValueTopRight)
   factory FlutterAlignment.topRight() = _FlutterAlignmenttopRight;
 
-  @override
-  Alignment build(ZacContext zacContext) {
+  Alignment _build(ZacContext zacContext) {
     return map(
       (value) =>
           Alignment(value.x.build(zacContext), value.y.build(zacContext)),
@@ -467,6 +601,18 @@ class FlutterAlignment
       topLeft: (_) => Alignment.topLeft,
       topRight: (_) => Alignment.topRight,
     );
+  }
+
+  @override
+  Alignment build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Alignment? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -537,8 +683,7 @@ class FlutterAlignmentDirectional
   factory FlutterAlignmentDirectional.topEnd() =
       _FlutterAlignmentDirectionaltopEnd;
 
-  @override
-  AlignmentDirectional build(ZacContext zacContext) {
+  AlignmentDirectional _build(ZacContext zacContext) {
     return map(
       (value) => AlignmentDirectional(
           value.start.build(zacContext), value.y.build(zacContext)),
@@ -552,6 +697,18 @@ class FlutterAlignmentDirectional
       topStart: (_) => AlignmentDirectional.topStart,
       topEnd: (_) => AlignmentDirectional.topEnd,
     );
+  }
+
+  @override
+  AlignmentDirectional build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  AlignmentDirectional? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -571,19 +728,28 @@ class FlutterFractionalOffset
   factory FlutterFractionalOffset(ZacDouble dx, ZacDouble dy) =
       _FlutterFractionalOffset;
 
-  @override
-  FractionalOffset build(ZacContext zacContext) {
+  FractionalOffset _build(ZacContext zacContext) {
     return FractionalOffset(dx.build(zacContext), dy.build(zacContext));
+  }
+
+  @override
+  FractionalOffset build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FractionalOffset? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterShapeBorder {
+abstract class FlutterShapeBorder with ZacBuilder<ShapeBorder> {
   factory FlutterShapeBorder.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterShapeBorder>(data);
   }
-
-  ShapeBorder build(ZacContext zacContext);
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
@@ -593,7 +759,12 @@ abstract class FlutterBoxBorder implements FlutterShapeBorder {
   }
 
   @override
-  BoxBorder build(ZacContext zacContext);
+  BoxBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+
+  @override
+  BoxBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
 }
 
 @freezedZacBuilder
@@ -616,14 +787,25 @@ class FlutterBorderDirectional
     FlutterBorderSide? end,
   }) = _FlutterBorderDirectional;
 
-  @override
-  BorderDirectional build(ZacContext zacContext) {
+  BorderDirectional _build(ZacContext zacContext) {
     return BorderDirectional(
       top: top?.build(zacContext) ?? BorderSide.none,
       start: start?.build(zacContext) ?? BorderSide.none,
       bottom: bottom?.build(zacContext) ?? BorderSide.none,
       end: end?.build(zacContext) ?? BorderSide.none,
     );
+  }
+
+  @override
+  BorderDirectional build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BorderDirectional? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -653,8 +835,7 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
     FlutterBorderStyle? style,
   }) = _FlutterBorderAll;
 
-  @override
-  Border build(ZacContext zacContext) {
+  Border _build(ZacContext zacContext) {
     return map(
       (value) => Border(
         top: value.top?.build(zacContext) ?? BorderSide.none,
@@ -669,11 +850,23 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
       ),
     );
   }
+
+  @override
+  Border build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Border? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBorderStyle with _$FlutterBorderStyle {
+class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuilder<BorderStyle> {
   const FlutterBorderStyle._();
 
   factory FlutterBorderStyle.fromJson(Map<String, dynamic> json) =>
@@ -685,21 +878,32 @@ class FlutterBorderStyle with _$FlutterBorderStyle {
   @FreezedUnionValue('f:1:BorderStyle.solid')
   factory FlutterBorderStyle.solid() = _FlutterBorderStyleSolid;
 
-  BorderStyle build(ZacContext zacContext) {
+  BorderStyle _build(ZacContext zacContext) {
     return map(
       none: (_) => BorderStyle.none,
       solid: (_) => BorderStyle.solid,
     );
   }
+
+  @override
+  BorderStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BorderStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterBorderRadiusGeometry {
+abstract class FlutterBorderRadiusGeometry
+    with ZacBuilder<BorderRadiusGeometry> {
   factory FlutterBorderRadiusGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterBorderRadiusGeometry>(data);
   }
-
-  BorderRadiusGeometry build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -730,8 +934,7 @@ class FlutterBorderRadius
     FlutterRadius? right,
   }) = _FlutterBorderRadiusHorizontal;
 
-  @override
-  BorderRadius build(ZacContext zacContext) {
+  BorderRadius _build(ZacContext zacContext) {
     return map(
       all: (value) => BorderRadius.all(value.radius.build(zacContext)),
       circular: (value) =>
@@ -742,11 +945,23 @@ class FlutterBorderRadius
       ),
     );
   }
+
+  @override
+  BorderRadius build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BorderRadius? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBorderSide with _$FlutterBorderSide {
+class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
   const FlutterBorderSide._();
 
   factory FlutterBorderSide.fromJson(Map<String, dynamic> json) =>
@@ -759,12 +974,24 @@ class FlutterBorderSide with _$FlutterBorderSide {
     FlutterBorderStyle? style,
   }) = _FlutterBorderSide;
 
-  BorderSide build(ZacContext zacContext) {
+  BorderSide _build(ZacContext zacContext) {
     return BorderSide(
       color: color?.build(zacContext) ?? const Color(0xFF000000),
       width: width?.buildOrNull(zacContext) ?? 1.0,
       style: style?.build(zacContext) ?? BorderStyle.solid,
     );
+  }
+
+  @override
+  BorderSide build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BorderSide? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -775,7 +1002,12 @@ abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
   }
 
   @override
-  OutlinedBorder build(ZacContext zacContext);
+  ShapeBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+
+  @override
+  ShapeBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
 }
 
 @freezedZacBuilder
@@ -793,9 +1025,20 @@ class FlutterCircleBorder
   @FreezedUnionValue(FlutterCircleBorder.unionValue)
   factory FlutterCircleBorder({FlutterBorderSide? side}) = _FlutterCircleBorder;
 
-  @override
-  CircleBorder build(ZacContext zacContext) {
+  CircleBorder _build(ZacContext zacContext) {
     return CircleBorder(side: side?.build(zacContext) ?? BorderSide.none);
+  }
+
+  @override
+  CircleBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  CircleBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -817,22 +1060,31 @@ class FlutterRoundedRectangleBorder
     FlutterBorderRadiusGeometry? borderRadius,
   }) = _FlutterRoundedRectangleBorder;
 
-  @override
-  RoundedRectangleBorder build(ZacContext zacContext) {
+  RoundedRectangleBorder _build(ZacContext zacContext) {
     return RoundedRectangleBorder(
       side: side?.build(zacContext) ?? BorderSide.none,
       borderRadius: borderRadius?.build(zacContext) ?? BorderRadius.zero,
     );
   }
+
+  @override
+  ShapeBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  ShapeBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterDecoration {
+abstract class FlutterDecoration with ZacBuilder<Decoration> {
   factory FlutterDecoration.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterDecoration>(data);
   }
-
-  Decoration build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -857,8 +1109,7 @@ class FlutterBoxDecoration
     FlutterBlendMode? backgroundBlendMode,
   }) = _FlutterBoxDecoration;
 
-  @override
-  BoxDecoration build(ZacContext zacContext) {
+  BoxDecoration _build(ZacContext zacContext) {
     return BoxDecoration(
         color: color?.build(zacContext),
         border: border?.build(zacContext),
@@ -866,6 +1117,18 @@ class FlutterBoxDecoration
         boxShadow: boxShadow?.map((e) => e.build(zacContext)).toList(),
         shape: shape?.build(zacContext) ?? BoxShape.rectangle,
         backgroundBlendMode: backgroundBlendMode?.build(zacContext));
+  }
+
+  @override
+  BoxDecoration build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxDecoration? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -890,23 +1153,32 @@ class FlutterShapeDecoration
     required FlutterShapeBorder shape,
   }) = _FlutterShapeDecoration;
 
-  @override
-  ShapeDecoration build(ZacContext zacContext) {
+  ShapeDecoration _build(ZacContext zacContext) {
     return ShapeDecoration(
       color: color?.build(zacContext),
       shadows: shadows?.map((e) => e.build(zacContext)).toList(),
       shape: shape.build(zacContext),
     );
   }
+
+  @override
+  ShapeDecoration build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  ShapeDecoration? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterEdgeInsetsGeometry {
+abstract class FlutterEdgeInsetsGeometry with ZacBuilder<EdgeInsetsGeometry> {
   factory FlutterEdgeInsetsGeometry.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterEdgeInsetsGeometry>(data);
   }
-
-  EdgeInsetsGeometry build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -940,8 +1212,7 @@ class FlutterEdgeInsets
     ZacDouble? bottom,
   }) = _FlutterEdgeInsetsOnly;
 
-  @override
-  EdgeInsets build(ZacContext zacContext) {
+  EdgeInsets _build(ZacContext zacContext) {
     return map(
       all: (value) => EdgeInsets.all(value.value.build(zacContext)),
       symmetric: (value) => EdgeInsets.symmetric(
@@ -955,6 +1226,18 @@ class FlutterEdgeInsets
         bottom: value.bottom?.buildOrNull(zacContext) ?? 0.0,
       ),
     );
+  }
+
+  @override
+  EdgeInsets build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  EdgeInsets? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -984,8 +1267,7 @@ class FlutterEdgeInsetsDirectional
     ZacDouble? bottom,
   }) = _FlutterEdgeInsetsDirectionalOnly;
 
-  @override
-  EdgeInsetsDirectional build(ZacContext zacContext) {
+  EdgeInsetsDirectional _build(ZacContext zacContext) {
     return map(
       all: (value) => EdgeInsetsDirectional.all(value.value.build(zacContext)),
       only: (value) => EdgeInsetsDirectional.only(
@@ -995,5 +1277,17 @@ class FlutterEdgeInsetsDirectional
         bottom: value.bottom?.buildOrNull(zacContext) ?? 0.0,
       ),
     );
+  }
+
+  @override
+  EdgeInsetsDirectional build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  EdgeInsetsDirectional? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

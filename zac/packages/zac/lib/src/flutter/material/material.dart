@@ -4,6 +4,7 @@ import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,7 +21,12 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   }
 
   @override
-  InputBorder build(ZacContext zacContext);
+  InputBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+
+  @override
+  InputBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
 }
 
 @freezedZacBuilder
@@ -42,14 +48,25 @@ class FlutterOutlineInputBorder
     ZacDouble? gapPadding,
   }) = _FlutterOutlineInputBorder;
 
-  @override
-  OutlineInputBorder build(ZacContext zacContext) {
+  OutlineInputBorder _build(ZacContext zacContext) {
     return OutlineInputBorder(
       borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
       borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
       gapPadding: gapPadding?.buildOrNull(zacContext) ?? 4.0,
     );
+  }
+
+  @override
+  OutlineInputBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  OutlineInputBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -71,8 +88,7 @@ class FlutterUnderlineInputBorder
     FlutterBorderRadius? borderRadius,
   }) = _FlutterUnderlineInputBorder;
 
-  @override
-  UnderlineInputBorder build(ZacContext zacContext) {
+  UnderlineInputBorder _build(ZacContext zacContext) {
     return UnderlineInputBorder(
       borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
       borderRadius: borderRadius?.build(zacContext) ??
@@ -81,6 +97,18 @@ class FlutterUnderlineInputBorder
             topRight: Radius.circular(4.0),
           ),
     );
+  }
+
+  @override
+  UnderlineInputBorder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  UnderlineInputBorder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 

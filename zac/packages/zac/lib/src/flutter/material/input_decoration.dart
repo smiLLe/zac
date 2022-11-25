@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/material/material.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/rendering.dart';
@@ -13,7 +14,8 @@ part 'input_decoration.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate()
-class FlutterInputDecoration with _$FlutterInputDecoration {
+class FlutterInputDecoration
+    with _$FlutterInputDecoration, ZacBuilder<InputDecoration> {
   const FlutterInputDecoration._();
 
   factory FlutterInputDecoration.fromJson(Map<String, dynamic> json) =>
@@ -73,7 +75,7 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
     FlutterBoxConstraints? constraints,
   }) = _FlutterInputDecoration;
 
-  InputDecoration build(ZacContext zacContext) {
+  InputDecoration _build(ZacContext zacContext) {
     return InputDecoration(
       icon: icon?.buildOrNull(zacContext),
       iconColor: iconColor?.build(zacContext),
@@ -124,5 +126,17 @@ class FlutterInputDecoration with _$FlutterInputDecoration {
       alignLabelWithHint: alignLabelWithHint?.buildOrNull(zacContext),
       constraints: constraints?.build(zacContext),
     );
+  }
+
+  @override
+  InputDecoration build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  InputDecoration? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
