@@ -37,7 +37,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   @override
   Column buildWidget(ZacContext zacContext) {
     return Column(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       mainAxisAlignment:
           mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
       mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,

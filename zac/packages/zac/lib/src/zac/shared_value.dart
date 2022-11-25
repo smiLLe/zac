@@ -371,7 +371,7 @@ class SharedValueProviderBuilder
   @override
   SharedValueProvider buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: child.buildWidget,

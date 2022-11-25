@@ -29,7 +29,7 @@ class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   @override
   Padding buildWidget(ZacContext zacContext) {
     return Padding(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       padding: padding.build(zacContext),
       child: child?.buildWidget(zacContext),
     );

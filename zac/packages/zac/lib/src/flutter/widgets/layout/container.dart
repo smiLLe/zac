@@ -34,7 +34,7 @@ class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   @override
   Container buildWidget(ZacContext zacContext) {
     return Container(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       color: color?.build(zacContext),
       padding: padding?.build(zacContext),
       margin: margin?.build(zacContext),

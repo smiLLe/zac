@@ -49,7 +49,7 @@ class FlutterElevatedButton
   ElevatedButton buildWidget(ZacContext zacContext) {
     return map(
       (value) => ElevatedButton(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
@@ -57,7 +57,7 @@ class FlutterElevatedButton
         child: value.child?.buildWidget(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),
@@ -107,7 +107,7 @@ class FlutterOutlinedButton
   OutlinedButton buildWidget(ZacContext zacContext) {
     return map(
       (value) => OutlinedButton(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
@@ -115,7 +115,7 @@ class FlutterOutlinedButton
         child: value.child.buildWidget(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),
@@ -163,7 +163,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
   TextButton buildWidget(ZacContext zacContext) {
     return map(
       (value) => TextButton(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
@@ -171,7 +171,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
         child: value.child.buildWidget(zacContext),
       ),
       icon: (value) => TextButton.icon(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
         icon: value.icon.buildWidget(zacContext),

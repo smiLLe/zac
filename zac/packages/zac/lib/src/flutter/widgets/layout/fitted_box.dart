@@ -31,7 +31,7 @@ class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   @override
   FittedBox buildWidget(ZacContext zacContext) {
     return FittedBox(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       fit: fit?.build(zacContext) ?? BoxFit.contain,
       alignment: alignment?.build(zacContext) ?? Alignment.center,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,

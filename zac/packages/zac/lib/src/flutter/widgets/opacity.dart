@@ -30,7 +30,7 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
   @override
   Opacity buildWidget(ZacContext zacContext) {
     return Opacity(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       opacity: opacity.build(zacContext),
       alwaysIncludeSemantics:
           alwaysIncludeSemantics?.buildOrNull(zacContext) ?? false,

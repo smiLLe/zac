@@ -54,7 +54,7 @@ class FlutterSelectableText
   SelectableText buildWidget(ZacContext zacContext) {
     return SelectableText(
       data,
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       style: style?.build(zacContext),
       strutStyle: strutStyle?.build(zacContext),
       textAlign: textAlign?.build(zacContext),

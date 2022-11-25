@@ -35,7 +35,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   @override
   IndexedStack buildWidget(ZacContext zacContext) {
     return IndexedStack(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
       textDirection: textDirection?.build(zacContext),
       sizing: sizing?.build(zacContext) ?? StackFit.loose,

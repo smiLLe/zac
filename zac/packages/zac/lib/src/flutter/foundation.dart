@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/zac.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,9 +10,6 @@ abstract class FlutterKey with ZacBuilder<Key> {
   factory FlutterKey.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterKey>(data);
   }
-
-  @Deprecated('')
-  Key buildKey(ZacContext zacContext);
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
@@ -21,10 +17,6 @@ abstract class FlutterLocalKey implements FlutterKey {
   factory FlutterLocalKey.fromJson(Object data) {
     return ConverterHelper.convertToType<FlutterLocalKey>(data);
   }
-
-  @override
-  @Deprecated('')
-  LocalKey buildKey(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -46,14 +38,6 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
     ZacTransformers? select,
     SharedValueConsumeType? forceConsume,
   }) = _FlutterValueKeyConsumeSharedValue;
-
-  @override
-  ValueKey<String> buildKey(ZacContext zacContext) {
-    return map(
-      (obj) => ValueKey<String>(obj.value),
-      consume: (obj) => throw StateError('must never happen'),
-    );
-  }
 
   @override
   ValueKey<String> build(ZacContext zacContext,
@@ -94,11 +78,6 @@ class FlutterGlobalKeyNavigatorState
   }) = _FlutterGlobalKeyNavigatorState;
 
   @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
-    throw StateError('DEPRECATED');
-  }
-
-  @override
   GlobalKey<NavigatorState> build(ZacContext zacContext,
           {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) =>
       map(
@@ -132,11 +111,6 @@ class FlutterGlobalKeyScaffoldMessengerState
     ZacTransformers? select,
     SharedValueConsumeType? forceConsume,
   }) = _FlutterGlobalKeyScaffoldMessengerState;
-
-  @override
-  GlobalKey<NavigatorState> buildKey(ZacContext zacContext) {
-    throw StateError('DEPRECATED');
-  }
 
   @override
   GlobalKey<ScaffoldMessengerState> build(ZacContext zacContext,

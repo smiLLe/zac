@@ -34,7 +34,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   @override
   SafeArea buildWidget(ZacContext zacContext) {
     return SafeArea(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       left: left?.buildOrNull(zacContext) ?? true,
       top: top?.buildOrNull(zacContext) ?? true,
       right: right?.buildOrNull(zacContext) ?? true,

@@ -84,7 +84,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   Navigator buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.buildKey(zacContext),
+        key: obj.key?.buildOrNull(zacContext),
         onGenerateRoute: obj.onGenerateRoute?.buildRouteFactory(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.buildRouteFactory(zacContext),
         initialRoute: obj.initialRoute?.buildOrNull(zacContext),

@@ -30,7 +30,7 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   @override
   Center buildWidget(ZacContext zacContext) {
     return Center(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       widthFactor: widthFactor?.buildOrNull(zacContext),
       heightFactor: heightFactor?.buildOrNull(zacContext),
       child: child?.buildWidget(zacContext),

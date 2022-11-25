@@ -31,7 +31,7 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   @override
   Flexible buildWidget(ZacContext zacContext) {
     return Flexible(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       flex: flex?.buildOrNull(zacContext) ?? 1,
       fit: fit?.build(zacContext) ?? FlexFit.loose,
       child: child.buildWidget(zacContext),

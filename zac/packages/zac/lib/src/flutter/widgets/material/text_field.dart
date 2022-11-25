@@ -89,7 +89,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   @override
   TextField buildWidget(ZacContext zacContext) {
     return TextField(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       style: style?.build(zacContext),
       strutStyle: strutStyle?.build(zacContext),
       textAlign: textAlign?.build(zacContext) ?? TextAlign.start,

@@ -62,7 +62,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   @override
   MaterialApp buildWidget(ZacContext zacContext) {
     return MaterialApp(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       navigatorKey: navigatorKey?.buildOrNull(zacContext),
       scaffoldMessengerKey: scaffoldMessengerKey?.buildOrNull(zacContext),
       home: home?.buildWidget(zacContext),

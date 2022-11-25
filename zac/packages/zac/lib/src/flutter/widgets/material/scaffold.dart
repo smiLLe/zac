@@ -59,7 +59,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
   Widget buildWidget(ZacContext zacContext) {
     return map(
       (value) => Scaffold(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         body: value.body?.buildWidget(zacContext),
         floatingActionButton:
             value.floatingActionButton?.buildWidget(zacContext),
@@ -308,7 +308,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   SnackBar buildWidget(ZacContext zacContext) {
     return SnackBar(
       content: content.buildWidget(zacContext),
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       action: action?.buildWidget(zacContext),
       // animation: key?.toFlutter(context),
       backgroundColor: backgroundColor?.build(zacContext),
@@ -371,7 +371,7 @@ class FlutterSnackBarAction
   @override
   SnackBarAction buildWidget(ZacContext zacContext) {
     return SnackBarAction(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       label: label,
       onPressed: onPressed?.createCb(zacContext) ?? () {},
       disabledTextColor: disabledTextColor?.build(zacContext),
@@ -414,7 +414,7 @@ class FlutterMaterialBanner
     return MaterialBanner(
       content: content.buildWidget(zacContext),
       actions: actions.build(zacContext),
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       // animation: ,
       backgroundColor: backgroundColor?.build(zacContext),
       contentTextStyle: contentTextStyle?.build(zacContext),

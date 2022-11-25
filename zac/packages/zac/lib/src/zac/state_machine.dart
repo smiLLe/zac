@@ -166,7 +166,7 @@ because there was already a transition.
   @override
   Widget buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       family: family.build(zacContext),
       autoCreate: true,
       childBuilder: child.buildWidget,
@@ -198,7 +198,7 @@ class ZacStateMachineBuildStateBuilder
   @override
   ZacStateMachineBuildState buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>

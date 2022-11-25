@@ -35,7 +35,7 @@ class FlutterUnconstrainedBox
   @override
   UnconstrainedBox buildWidget(ZacContext zacContext) {
     return UnconstrainedBox(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       textDirection: textDirection?.build(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,

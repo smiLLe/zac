@@ -32,7 +32,7 @@ class FlutterIgnorePointer
   @override
   IgnorePointer buildWidget(ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       ignoring: ignoring?.buildOrNull(zacContext) ?? true,
       ignoringSemantics: ignoringSemantics?.buildOrNull(zacContext),
       child: child?.buildWidget(zacContext),

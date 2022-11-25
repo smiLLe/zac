@@ -66,7 +66,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     }(), '');
 
     return AppBar(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       leading: leading?.buildWidget(zacContext),
       automaticallyImplyLeading:
           automaticallyImplyLeading?.buildOrNull(zacContext) ?? true,

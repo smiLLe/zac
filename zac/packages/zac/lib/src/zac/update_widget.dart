@@ -30,7 +30,7 @@ class ZacUpdateContextBuilder
   ZacUpdateContext buildWidget(ZacContext zacContext) {
     return ZacUpdateContext(
       builder: (zacContext) => child.buildWidget(zacContext),
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
     );
   }
 }

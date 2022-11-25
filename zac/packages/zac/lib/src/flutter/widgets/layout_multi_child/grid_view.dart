@@ -51,7 +51,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   GridView buildWidget(ZacContext zacContext) {
     return GridView(
       gridDelegate: gridDelegate.build(zacContext),
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
       controller: controller?.buildOrNull(zacContext),

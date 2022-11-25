@@ -82,7 +82,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     return map(
       network: (value) => Image.network(
         value.src.build(zacContext),
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         scale: value.scale?.buildOrNull(zacContext) ?? 1.0,
         semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
         excludeFromSemantics:
@@ -108,7 +108,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
       ),
       asset: (value) => Image.asset(
         value.name.build(zacContext),
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         scale: value.scale?.buildOrNull(zacContext) ?? 1.0,
         semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
         excludeFromSemantics:

@@ -44,11 +44,11 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
-        key: obj.key?.buildKey(zacContext),
+        key: obj.key?.buildOrNull(zacContext),
       ),
       isolate: (obj) => ZacWidgetIsolated(
         data: obj.data,
-        key: obj.key?.buildKey(zacContext),
+        key: obj.key?.buildOrNull(zacContext),
         errorChild: obj.errorChild,
       ),
     );

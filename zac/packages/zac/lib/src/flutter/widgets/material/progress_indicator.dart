@@ -53,7 +53,7 @@ class FlutterProgressIndicator
   ProgressIndicator buildWidget(ZacContext zacContext) {
     return map(
       linear: (value) => LinearProgressIndicator(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         value: value.value?.buildOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),
@@ -62,7 +62,7 @@ class FlutterProgressIndicator
         semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         value: value.value?.buildOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         color: value.color?.build(zacContext),

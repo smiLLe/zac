@@ -87,7 +87,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   Widget buildWidget(ZacContext zacContext) {
     return map(
       dialog: (value) => Dialog(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
@@ -99,7 +99,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         child: value.child?.buildWidget(zacContext),
       ),
       alertDialog: (value) => AlertDialog(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         title: value.title?.buildWidget(zacContext),
         content: value.content?.buildWidget(zacContext),
         actions: value.actions?.buildOrNull(zacContext) ?? const <Widget>[],
@@ -127,7 +127,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         titleTextStyle: value.titleTextStyle?.build(zacContext),
       ),
       simpleDialog: (value) => SimpleDialog(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         title: value.title?.buildWidget(zacContext),
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
@@ -145,7 +145,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         children: value.children?.buildOrNull(zacContext) ?? const <Widget>[],
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
-        key: value.key?.buildKey(zacContext),
+        key: value.key?.buildOrNull(zacContext),
         padding: value.padding?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         child: value.child?.buildWidget(zacContext),

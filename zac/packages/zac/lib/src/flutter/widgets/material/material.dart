@@ -39,7 +39,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   @override
   Material buildWidget(ZacContext zacContext) {
     return Material(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       // animationDuration: key?.toFlutter(context),
       borderOnForeground: borderOnForeground?.buildOrNull(zacContext) ?? true,
       borderRadius: borderRadius?.build(zacContext),

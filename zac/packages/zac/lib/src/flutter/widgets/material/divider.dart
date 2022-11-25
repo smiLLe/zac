@@ -32,7 +32,7 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   @override
   Divider buildWidget(ZacContext zacContext) {
     return Divider(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       height: height?.buildOrNull(zacContext),
       thickness: thickness?.buildOrNull(zacContext),
       indent: indent?.buildOrNull(zacContext),

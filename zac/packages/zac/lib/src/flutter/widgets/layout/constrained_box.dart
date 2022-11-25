@@ -30,7 +30,7 @@ class FlutterConstrainedBox
   @override
   ConstrainedBox buildWidget(ZacContext zacContext) {
     return ConstrainedBox(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       constraints: constraints.build(zacContext),
       child: child?.buildWidget(zacContext),
     );

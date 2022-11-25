@@ -49,7 +49,7 @@ class FlutterCustomScrollView
   @override
   CustomScrollView buildWidget(ZacContext zacContext) {
     return CustomScrollView(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       slivers: slivers?.buildOrNull(zacContext) ?? const <Widget>[],
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
@@ -57,7 +57,7 @@ class FlutterCustomScrollView
       primary: primary?.buildOrNull(zacContext),
       physics: physics?.build(zacContext),
       shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
-      center: center?.buildKey(zacContext),
+      center: center?.buildOrNull(zacContext),
       anchor: anchor?.buildOrNull(zacContext) ?? 0.0,
       cacheExtent: cacheExtent?.buildOrNull(zacContext),
       semanticChildCount: semanticChildCount?.buildOrNull(zacContext),

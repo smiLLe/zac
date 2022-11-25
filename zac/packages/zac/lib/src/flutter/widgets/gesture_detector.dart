@@ -41,7 +41,7 @@ class FlutterGestureDetector
   @override
   GestureDetector buildWidget(ZacContext zacContext) {
     return GestureDetector(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       behavior: behavior?.build(zacContext),
       excludeFromSemantics:
           excludeFromSemantics?.buildOrNull(zacContext) ?? false,

@@ -44,7 +44,7 @@ class FlutterSingleChildScrollView
   @override
   SingleChildScrollView buildWidget(ZacContext zacContext) {
     return SingleChildScrollView(
-      key: key?.buildKey(zacContext),
+      key: key?.buildOrNull(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
