@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,7 @@ part 'dart_ui.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterColor with _$FlutterColor {
+class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
   const FlutterColor._();
 
   factory FlutterColor.fromJson(Map<String, dynamic> json) =>
@@ -34,7 +35,7 @@ class FlutterColor with _$FlutterColor {
     required ZacDouble opacity,
   }) = _FlutterColorFromRBGO;
 
-  Color build(ZacContext zacContext) {
+  Color _build(ZacContext zacContext) {
     return map(
       fromARGB: (value) {
         return Color.fromARGB(value.a, value.r, value.g, value.b);
@@ -45,11 +46,23 @@ class FlutterColor with _$FlutterColor {
       },
     );
   }
+
+  @override
+  Color build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Color? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterOffset with _$FlutterOffset {
+class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
   const FlutterOffset._();
 
   factory FlutterOffset.fromJson(Map<String, dynamic> json) =>
@@ -63,7 +76,7 @@ class FlutterOffset with _$FlutterOffset {
       {required ZacDouble direction,
       ZacDouble? distance}) = _FlutterOffsetFromDirection;
 
-  Offset build(ZacContext zacContext) {
+  Offset _build(ZacContext zacContext) {
     return map(
       (value) => Offset(value.dx.build(zacContext), value.dy.build(zacContext)),
       fromDirection: (value) => Offset.fromDirection(
@@ -71,29 +84,41 @@ class FlutterOffset with _$FlutterOffset {
           value.distance?.buildOrNull(zacContext) ?? 1.0),
     );
   }
+
+  @override
+  Offset build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Offset? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBlurStyle with _$FlutterBlurStyle {
+class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
   const FlutterBlurStyle._();
 
   factory FlutterBlurStyle.fromJson(Map<String, dynamic> json) =>
       _$FlutterBlurStyleFromJson(json);
 
-  @FreezedUnionValue('f:1:BlurSyle.inner')
+  @FreezedUnionValue('f:1:BlurStyle.inner')
   factory FlutterBlurStyle.inner() = _FlutterBlurStyleInner;
 
-  @FreezedUnionValue('f:1:BlurSyle.normal')
+  @FreezedUnionValue('f:1:BlurStyle.normal')
   factory FlutterBlurStyle.normal() = _FlutterBlurStyleNormal;
 
-  @FreezedUnionValue('f:1:BlurSyle.outer')
+  @FreezedUnionValue('f:1:BlurStyle.outer')
   factory FlutterBlurStyle.outer() = _FlutterBlurStyleOuter;
 
-  @FreezedUnionValue('f:1:BlurSyle.solid')
+  @FreezedUnionValue('f:1:BlurStyle.solid')
   factory FlutterBlurStyle.solid() = _FlutterBlurStyleSolid;
 
-  BlurStyle build(ZacContext zacContext) {
+  BlurStyle _build(ZacContext zacContext) {
     return map(
       inner: (_) => BlurStyle.inner,
       normal: (_) => BlurStyle.normal,
@@ -101,11 +126,23 @@ class FlutterBlurStyle with _$FlutterBlurStyle {
       solid: (_) => BlurStyle.solid,
     );
   }
+
+  @override
+  build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterRadius with _$FlutterRadius {
+class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
   const FlutterRadius._();
 
   factory FlutterRadius.fromJson(Map<String, dynamic> json) =>
@@ -118,18 +155,31 @@ class FlutterRadius with _$FlutterRadius {
   factory FlutterRadius.elliptical(ZacDouble x, ZacDouble y) =
       _FlutterRadiusElliptical;
 
-  Radius build(ZacContext zacContext) {
+  Radius _build(ZacContext zacContext) {
     return map(
       circular: (value) => Radius.circular(value.radius.build(zacContext)),
       elliptical: (value) => Radius.elliptical(
           value.x.build(zacContext), value.y.build(zacContext)),
     );
   }
+
+  @override
+  Radius build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Radius? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextDirection with _$FlutterTextDirection {
+class FlutterTextDirection
+    with _$FlutterTextDirection, ZacBuilder<TextDirection> {
   const FlutterTextDirection._();
 
   factory FlutterTextDirection.fromJson(Map<String, dynamic> json) =>
@@ -141,14 +191,26 @@ class FlutterTextDirection with _$FlutterTextDirection {
   @FreezedUnionValue('f:1:TextDirection.ltr')
   factory FlutterTextDirection.ltr() = _FlutterTextDirectionLtr;
 
-  TextDirection build(ZacContext zacContext) {
+  TextDirection _build(ZacContext zacContext) {
     return map(ltr: (_) => TextDirection.ltr, rtl: (_) => TextDirection.rtl);
+  }
+
+  @override
+  TextDirection build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextDirection? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterClip with _$FlutterClip {
+class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
   const FlutterClip._();
 
   factory FlutterClip.fromJson(Map<String, dynamic> json) =>
@@ -163,18 +225,30 @@ class FlutterClip with _$FlutterClip {
   @FreezedUnionValue('f:1:Clip.hardEdge')
   factory FlutterClip.hardEdge() = _FlutterClipHardEdge;
 
-  Clip build(ZacContext zacContext) {
+  Clip _build(ZacContext zacContext) {
     return map(
       none: (_) => Clip.none,
       antiAlias: (_) => Clip.antiAlias,
       hardEdge: (_) => Clip.hardEdge,
     );
   }
+
+  @override
+  Clip build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Clip? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextBaseline with _$FlutterTextBaseline {
+class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuilder<TextBaseline> {
   const FlutterTextBaseline._();
 
   factory FlutterTextBaseline.fromJson(Map<String, dynamic> json) =>
@@ -186,16 +260,28 @@ class FlutterTextBaseline with _$FlutterTextBaseline {
   @FreezedUnionValue('f:1:TextBaseline.ideographic')
   factory FlutterTextBaseline.ideographic() = _FlutterTextBaselineIdeographic;
 
-  TextBaseline build(ZacContext zacContext) {
+  TextBaseline _build(ZacContext zacContext) {
     return map(
         alphabetic: (_) => TextBaseline.alphabetic,
         ideographic: (_) => TextBaseline.ideographic);
+  }
+
+  @override
+  TextBaseline build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextBaseline? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontWeight with _$FlutterFontWeight {
+class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
   const FlutterFontWeight._();
 
   factory FlutterFontWeight.fromJson(Map<String, dynamic> json) =>
@@ -234,7 +320,7 @@ class FlutterFontWeight with _$FlutterFontWeight {
   @FreezedUnionValue('f:1:FontWeight.w900')
   factory FlutterFontWeight.w900() = _FlutterFontWeightW900;
 
-  FontWeight build(ZacContext zacContext) {
+  FontWeight _build(ZacContext zacContext) {
     return map(
       bold: (_) => FontWeight.bold,
       normal: (_) => FontWeight.normal,
@@ -249,11 +335,23 @@ class FlutterFontWeight with _$FlutterFontWeight {
       w900: (_) => FontWeight.w900,
     );
   }
+
+  @override
+  FontWeight build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FontWeight? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontStyle with _$FlutterFontStyle {
+class FlutterFontStyle with _$FlutterFontStyle, ZacBuilder<FontStyle> {
   const FlutterFontStyle._();
 
   factory FlutterFontStyle.fromJson(Map<String, dynamic> json) =>
@@ -265,15 +363,28 @@ class FlutterFontStyle with _$FlutterFontStyle {
   @FreezedUnionValue('f:1:FontStyle.normal')
   factory FlutterFontStyle.normal() = _FlutterFontStyleNormal;
 
-  FontStyle build(ZacContext zacContext) {
+  FontStyle _build(ZacContext zacContext) {
     return map(
         italic: (_) => FontStyle.italic, normal: (_) => FontStyle.normal);
+  }
+
+  @override
+  FontStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FontStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextDecoration with _$FlutterTextDecoration {
+class FlutterTextDecoration
+    with _$FlutterTextDecoration, ZacBuilder<TextDecoration> {
   const FlutterTextDecoration._();
 
   factory FlutterTextDecoration.fromJson(Map<String, dynamic> json) =>
@@ -292,7 +403,7 @@ class FlutterTextDecoration with _$FlutterTextDecoration {
   @FreezedUnionValue('f:1:TextDecoration.underline')
   factory FlutterTextDecoration.underline() = _FlutterTextDecorationUnderline;
 
-  TextDecoration build(ZacContext zacContext) {
+  TextDecoration _build(ZacContext zacContext) {
     return map(
       lineThrough: (_) => TextDecoration.lineThrough,
       none: (_) => TextDecoration.none,
@@ -300,11 +411,24 @@ class FlutterTextDecoration with _$FlutterTextDecoration {
       underline: (_) => TextDecoration.underline,
     );
   }
+
+  @override
+  TextDecoration build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextDecoration? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextLeadingDistribution with _$FlutterTextLeadingDistribution {
+class FlutterTextLeadingDistribution
+    with _$FlutterTextLeadingDistribution, ZacBuilder<TextLeadingDistribution> {
   const FlutterTextLeadingDistribution._();
 
   factory FlutterTextLeadingDistribution.fromJson(Map<String, dynamic> json) =>
@@ -318,16 +442,28 @@ class FlutterTextLeadingDistribution with _$FlutterTextLeadingDistribution {
   factory FlutterTextLeadingDistribution.proportional() =
       _FlutterTextLeadingDistributionProportional;
 
-  TextLeadingDistribution build(ZacContext zacContext) {
+  TextLeadingDistribution _build(ZacContext zacContext) {
     return map(
         even: (_) => TextLeadingDistribution.even,
         proportional: (_) => TextLeadingDistribution.proportional);
+  }
+
+  @override
+  TextLeadingDistribution build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextLeadingDistribution? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterLocale with _$FlutterLocale {
+class FlutterLocale with _$FlutterLocale, ZacBuilder<Locale> {
   const FlutterLocale._();
 
   factory FlutterLocale.fromJson(Map<String, dynamic> json) =>
@@ -337,14 +473,26 @@ class FlutterLocale with _$FlutterLocale {
   factory FlutterLocale(String languageCode, [String? countryCode]) =
       _FlutterLocale;
 
-  Locale build(ZacContext zacContext) {
+  Locale _build(ZacContext zacContext) {
     return Locale(languageCode, countryCode);
+  }
+
+  @override
+  Locale build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Locale? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontFeature with _$FlutterFontFeature {
+class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   const FlutterFontFeature._();
 
   factory FlutterFontFeature.fromJson(Map<String, dynamic> json) =>
@@ -444,7 +592,7 @@ class FlutterFontFeature with _$FlutterFontFeature {
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
 
-  FontFeature build(ZacContext zacContext) {
+  FontFeature _build(ZacContext zacContext) {
     return map(
       (value) =>
           FontFeature(value.feature, value.value?.buildOrNull(zacContext) ?? 1),
@@ -480,11 +628,24 @@ class FlutterFontFeature with _$FlutterFontFeature {
       tabularFigures: (value) => const FontFeature.tabularFigures(),
     );
   }
+
+  @override
+  FontFeature build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FontFeature? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextDecorationStyle with _$FlutterTextDecorationStyle {
+class FlutterTextDecorationStyle
+    with _$FlutterTextDecorationStyle, ZacBuilder<TextDecorationStyle> {
   const FlutterTextDecorationStyle._();
 
   factory FlutterTextDecorationStyle.fromJson(Map<String, dynamic> json) =>
@@ -508,7 +669,7 @@ class FlutterTextDecorationStyle with _$FlutterTextDecorationStyle {
   @FreezedUnionValue('f:1:TextDecorationStyle.wavy')
   factory FlutterTextDecorationStyle.wavy() = _FlutterTextDecorationStyleWavy;
 
-  TextDecorationStyle build(ZacContext zacContext) {
+  TextDecorationStyle _build(ZacContext zacContext) {
     return map(
       dashed: (_) => TextDecorationStyle.dashed,
       dotted: (_) => TextDecorationStyle.dotted,
@@ -517,11 +678,23 @@ class FlutterTextDecorationStyle with _$FlutterTextDecorationStyle {
       wavy: (_) => TextDecorationStyle.wavy,
     );
   }
+
+  @override
+  TextDecorationStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextDecorationStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextAlign with _$FlutterTextAlign {
+class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
   const FlutterTextAlign._();
 
   factory FlutterTextAlign.fromJson(Map<String, dynamic> json) =>
@@ -545,7 +718,7 @@ class FlutterTextAlign with _$FlutterTextAlign {
   @FreezedUnionValue('f:1:TextAlign.start')
   factory FlutterTextAlign.start() = _FlutterTextAlignStart;
 
-  TextAlign build(ZacContext zacContext) {
+  TextAlign _build(ZacContext zacContext) {
     return map(
       center: (_) => TextAlign.center,
       end: (_) => TextAlign.end,
@@ -555,11 +728,24 @@ class FlutterTextAlign with _$FlutterTextAlign {
       start: (_) => TextAlign.start,
     );
   }
+
+  @override
+  TextAlign build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextAlign? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
+class FlutterTextHeightBehavior
+    with _$FlutterTextHeightBehavior, ZacBuilder<TextHeightBehavior> {
   const FlutterTextHeightBehavior._();
 
   factory FlutterTextHeightBehavior.fromJson(Map<String, dynamic> json) =>
@@ -572,7 +758,7 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
     FlutterTextLeadingDistribution? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
-  TextHeightBehavior build(ZacContext zacContext) {
+  TextHeightBehavior _build(ZacContext zacContext) {
     return TextHeightBehavior(
       applyHeightToFirstAscent:
           applyHeightToFirstAscent?.buildOrNull(zacContext) ?? true,
@@ -582,11 +768,23 @@ class FlutterTextHeightBehavior with _$FlutterTextHeightBehavior {
           TextLeadingDistribution.proportional,
     );
   }
+
+  @override
+  TextHeightBehavior build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextHeightBehavior? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBlendMode with _$FlutterBlendMode {
+class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
   const FlutterBlendMode._();
 
   factory FlutterBlendMode.fromJson(Map<String, dynamic> json) =>
@@ -679,7 +877,7 @@ class FlutterBlendMode with _$FlutterBlendMode {
   @FreezedUnionValue('f:1:BlendMode.xor')
   factory FlutterBlendMode.xor() = _FlutterBlendModeXor;
 
-  BlendMode build(ZacContext zacContext) {
+  BlendMode _build(ZacContext zacContext) {
     return map(
       clear: (_) => BlendMode.clear,
       color: (_) => BlendMode.color,
@@ -712,11 +910,23 @@ class FlutterBlendMode with _$FlutterBlendMode {
       xor: (_) => BlendMode.xor,
     );
   }
+
+  @override
+  BlendMode build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BlendMode? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterRect with _$FlutterRect {
+class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
   const FlutterRect._();
 
   factory FlutterRect.fromJson(Map<String, dynamic> json) =>
@@ -749,7 +959,7 @@ class FlutterRect with _$FlutterRect {
   factory FlutterRect.fromPoints(FlutterOffset a, FlutterOffset b) =
       _FlutterRectFromPoints;
 
-  Rect build(ZacContext zacContext) {
+  Rect _build(ZacContext zacContext) {
     return map(
       fromCenter: (value) => Rect.fromCenter(
           center: value.center.build(zacContext),
@@ -772,11 +982,24 @@ class FlutterRect with _$FlutterRect {
           Rect.fromPoints(value.a.build(zacContext), value.b.build(zacContext)),
     );
   }
+
+  @override
+  Rect build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Rect? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFilterQuality with _$FlutterFilterQuality {
+class FlutterFilterQuality
+    with _$FlutterFilterQuality, ZacBuilder<FilterQuality> {
   const FlutterFilterQuality._();
 
   factory FlutterFilterQuality.fromJson(Map<String, dynamic> json) =>
@@ -794,7 +1017,7 @@ class FlutterFilterQuality with _$FlutterFilterQuality {
   @FreezedUnionValue('f:1:FilterQuality.none')
   factory FlutterFilterQuality.none() = _FlutterFilterQualityNone;
 
-  FilterQuality build(ZacContext zacContext) {
+  FilterQuality _build(ZacContext zacContext) {
     return map(
       high: (_) => FilterQuality.high,
       low: (_) => FilterQuality.low,
@@ -802,11 +1025,23 @@ class FlutterFilterQuality with _$FlutterFilterQuality {
       none: (_) => FilterQuality.none,
     );
   }
+
+  @override
+  FilterQuality build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FilterQuality? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBrightness with _$FlutterBrightness {
+class FlutterBrightness with _$FlutterBrightness, ZacBuilder<Brightness> {
   const FlutterBrightness._();
 
   factory FlutterBrightness.fromJson(Map<String, dynamic> json) =>
@@ -818,14 +1053,26 @@ class FlutterBrightness with _$FlutterBrightness {
   @FreezedUnionValue('f:1:Brightness.light')
   factory FlutterBrightness.light() = _FlutterBrightnessLight;
 
-  Brightness build(ZacContext zacContext) {
+  Brightness _build(ZacContext zacContext) {
     return map(light: (_) => Brightness.light, dark: (_) => Brightness.dark);
+  }
+
+  @override
+  Brightness build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Brightness? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterSize with _$FlutterSize {
+class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
   const FlutterSize._();
 
   factory FlutterSize.fromJson(Map<String, dynamic> json) =>
@@ -837,14 +1084,27 @@ class FlutterSize with _$FlutterSize {
     ZacDouble height,
   ) = _FlutterSize;
 
-  Size build(ZacContext zacContext) {
+  Size _build(ZacContext zacContext) {
     return Size(width.build(zacContext), height.build(zacContext));
+  }
+
+  @override
+  Size build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Size? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBoxHeightStyle with _$FlutterBoxHeightStyle {
+class FlutterBoxHeightStyle
+    with _$FlutterBoxHeightStyle, ZacBuilder<BoxHeightStyle> {
   const FlutterBoxHeightStyle._();
 
   factory FlutterBoxHeightStyle.fromJson(Map<String, dynamic> json) =>
@@ -871,7 +1131,7 @@ class FlutterBoxHeightStyle with _$FlutterBoxHeightStyle {
   @FreezedUnionValue('f:1:BoxHeightStyle.tight')
   factory FlutterBoxHeightStyle.tight() = _FlutterBoxHeightStyletight;
 
-  BoxHeightStyle build(ZacContext zacContext) {
+  BoxHeightStyle _build(ZacContext zacContext) {
     return map(
       includeLineSpacingBottom: (_) => BoxHeightStyle.includeLineSpacingBottom,
       includeLineSpacingMiddle: (_) => BoxHeightStyle.includeLineSpacingMiddle,
@@ -881,11 +1141,24 @@ class FlutterBoxHeightStyle with _$FlutterBoxHeightStyle {
       tight: (_) => BoxHeightStyle.tight,
     );
   }
+
+  @override
+  BoxHeightStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxHeightStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
+class FlutterBoxWidthStyle
+    with _$FlutterBoxWidthStyle, ZacBuilder<BoxWidthStyle> {
   const FlutterBoxWidthStyle._();
 
   factory FlutterBoxWidthStyle.fromJson(Map<String, dynamic> json) =>
@@ -897,21 +1170,31 @@ class FlutterBoxWidthStyle with _$FlutterBoxWidthStyle {
   @FreezedUnionValue('f:1:BoxWidthStyle.tight')
   factory FlutterBoxWidthStyle.tight() = _FlutterBoxWidthStyletight;
 
-  BoxWidthStyle build(ZacContext zacContext) {
+  BoxWidthStyle _build(ZacContext zacContext) {
     return map(
       max: (_) => BoxWidthStyle.max,
       tight: (_) => BoxWidthStyle.tight,
     );
   }
+
+  @override
+  BoxWidthStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxWidthStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class DartShadow {
+abstract class DartShadow with ZacBuilder<Shadow> {
   factory DartShadow.fromJson(Object data) {
     return ConverterHelper.convertToType<DartShadow>(data);
   }
-
-  Shadow build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -932,11 +1215,23 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   }) = _FlutterShadowShadow;
 
   @override
-  Shadow build(ZacContext zacContext) {
+  Shadow _build(ZacContext zacContext) {
     return Shadow(
       color: color?.build(zacContext) ?? const Color(0xFF000000),
       offset: offset?.build(zacContext) ?? Offset.zero,
       blurRadius: blurRadius?.buildOrNull(zacContext) ?? 0.0,
     );
+  }
+
+  @override
+  Shadow build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  Shadow? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

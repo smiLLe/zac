@@ -146,7 +146,7 @@ abstract class BoxDecorationModel {
 
 abstract class BlurStyleModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:BlurSyle.inner',
+    'converter': 'f:1:BlurStyle.inner',
   };
 
   static const BlurStyle equals = BlurStyle.inner;

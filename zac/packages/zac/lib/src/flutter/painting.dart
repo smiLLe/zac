@@ -487,9 +487,7 @@ class FlutterTextAlignVertical
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxShadow
-    with _$FlutterBoxShadow
-    implements DartShadow, ZacBuilder<BoxShadow> {
+class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
   const FlutterBoxShadow._();
 
   static const String unionValue = 'f:1:BoxShadow';

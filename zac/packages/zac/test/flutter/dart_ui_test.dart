@@ -56,27 +56,27 @@ void main() {
   test('FlutterBlurStyle', () {
     fakeBuild<BlurStyle>(
       FlutterBlurStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BlurSyle.inner'}).build,
+          <String, dynamic>{'converter': 'f:1:BlurStyle.inner'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BlurStyle.inner', equals(BlurStyle.inner)),
     );
     fakeBuild<BlurStyle>(
       FlutterBlurStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BlurSyle.normal'}).build,
+          <String, dynamic>{'converter': 'f:1:BlurStyle.normal'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BlurStyle.normal', equals(BlurStyle.normal)),
     );
 
     fakeBuild<BlurStyle>(
       FlutterBlurStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BlurSyle.outer'}).build,
+          <String, dynamic>{'converter': 'f:1:BlurStyle.outer'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BlurStyle.outer', equals(BlurStyle.outer)),
     );
 
     fakeBuild<BlurStyle>(
       FlutterBlurStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BlurSyle.solid'}).build,
+          <String, dynamic>{'converter': 'f:1:BlurStyle.solid'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BlurStyle.solid', equals(BlurStyle.solid)),
     );

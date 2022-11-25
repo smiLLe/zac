@@ -340,13 +340,13 @@ abstract class _FlutterOffsetFromDirection extends FlutterOffset {
 
 FlutterBlurStyle _$FlutterBlurStyleFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
-    case 'f:1:BlurSyle.inner':
+    case 'f:1:BlurStyle.inner':
       return _FlutterBlurStyleInner.fromJson(json);
-    case 'f:1:BlurSyle.normal':
+    case 'f:1:BlurStyle.normal':
       return _FlutterBlurStyleNormal.fromJson(json);
-    case 'f:1:BlurSyle.outer':
+    case 'f:1:BlurStyle.outer':
       return _FlutterBlurStyleOuter.fromJson(json);
-    case 'f:1:BlurSyle.solid':
+    case 'f:1:BlurStyle.solid':
       return _FlutterBlurStyleSolid.fromJson(json);
 
     default:
@@ -371,7 +371,7 @@ mixin _$FlutterBlurStyle {
 @JsonSerializable(createToJson: false)
 class _$_FlutterBlurStyleInner extends _FlutterBlurStyleInner {
   _$_FlutterBlurStyleInner({final String? $type})
-      : $type = $type ?? 'f:1:BlurSyle.inner',
+      : $type = $type ?? 'f:1:BlurStyle.inner',
         super._();
 
   factory _$_FlutterBlurStyleInner.fromJson(Map<String, dynamic> json) =>
@@ -419,7 +419,7 @@ abstract class _FlutterBlurStyleInner extends FlutterBlurStyle {
 @JsonSerializable(createToJson: false)
 class _$_FlutterBlurStyleNormal extends _FlutterBlurStyleNormal {
   _$_FlutterBlurStyleNormal({final String? $type})
-      : $type = $type ?? 'f:1:BlurSyle.normal',
+      : $type = $type ?? 'f:1:BlurStyle.normal',
         super._();
 
   factory _$_FlutterBlurStyleNormal.fromJson(Map<String, dynamic> json) =>
@@ -468,7 +468,7 @@ abstract class _FlutterBlurStyleNormal extends FlutterBlurStyle {
 @JsonSerializable(createToJson: false)
 class _$_FlutterBlurStyleOuter extends _FlutterBlurStyleOuter {
   _$_FlutterBlurStyleOuter({final String? $type})
-      : $type = $type ?? 'f:1:BlurSyle.outer',
+      : $type = $type ?? 'f:1:BlurStyle.outer',
         super._();
 
   factory _$_FlutterBlurStyleOuter.fromJson(Map<String, dynamic> json) =>
@@ -516,7 +516,7 @@ abstract class _FlutterBlurStyleOuter extends FlutterBlurStyle {
 @JsonSerializable(createToJson: false)
 class _$_FlutterBlurStyleSolid extends _FlutterBlurStyleSolid {
   _$_FlutterBlurStyleSolid({final String? $type})
-      : $type = $type ?? 'f:1:BlurSyle.solid',
+      : $type = $type ?? 'f:1:BlurStyle.solid',
         super._();
 
   factory _$_FlutterBlurStyleSolid.fromJson(Map<String, dynamic> json) =>
