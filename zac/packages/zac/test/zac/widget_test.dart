@@ -43,7 +43,7 @@ void main() {
             'converter': 'f:1:Text',
             'data': 'hello',
           }
-        }).buildWidget(zacContext);
+        }).build(zacContext);
       }),
     ));
     expect(find.text('hello'), findsOneWidget);
@@ -73,7 +73,7 @@ void main() {
               'converter': 'f:1:Text',
               'data': 'hello',
             }
-          }).buildWidget(zacContext);
+          }).build(zacContext);
         }),
       ));
 
@@ -100,7 +100,7 @@ void main() {
               }
             },
           }
-        }).buildWidget(zacContext);
+        }).build(zacContext);
       }),
     ));
 

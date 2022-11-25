@@ -56,7 +56,7 @@ void main() {
           },
           family: 'shared',
           completerBuilder: () => Completer<void>(),
-          disposeComplete: (completer) => completer.complete(0),
+          disposeComplete: (completer) => completer.complete(),
         ));
 
     expect(DartCompleterVoid.consume(family: 'shared').build(zacContext),

@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -34,8 +35,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterColumn;
 
-  @override
-  Column buildWidget(ZacContext zacContext) {
+  Column _buildWidget(ZacContext zacContext) {
     return Column(
       key: key?.buildOrNull(zacContext),
       mainAxisAlignment:
@@ -49,5 +49,17 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
       textBaseline: textBaseline?.build(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  Column build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Column? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -34,8 +35,7 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
     ZacBool? semanticContainer,
   }) = _FlutterCard;
 
-  @override
-  Card buildWidget(ZacContext zacContext) {
+  Card _buildWidget(ZacContext zacContext) {
     return Card(
       key: key?.buildOrNull(zacContext),
       color: color?.build(zacContext),
@@ -46,7 +46,19 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
       margin: margin?.build(zacContext),
       clipBehavior: clipBehavior?.build(zacContext),
       semanticContainer: semanticContainer?.buildOrNull(zacContext) ?? true,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  Card build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Card? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
@@ -26,19 +27,29 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
     FlutterAlignmentGeometry? alignment,
     ZacDouble? widthFactor,
     ZacDouble? heightFactor,
-    // @ZacWidgetNullableConverter() ZacWidget? child,
     FlutterWidget? child,
   }) = _FlutterAlign;
 
-  @override
   Align buildWidget(ZacContext zacContext) {
     return Align(
       key: key?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
       widthFactor: widthFactor?.buildOrNull(zacContext),
       heightFactor: heightFactor?.buildOrNull(zacContext),
-      // child: child?.buildWidget(zacContext),
-      child: child?.buildWidget(zacContext),
+      // child: child?.buildOrNull(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  Align build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return buildWidget(zacContext);
+  }
+
+  @override
+  Align? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return buildWidget(zacContext);
   }
 }

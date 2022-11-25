@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,8 +32,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
     required FlutterWidget child,
   }) = _FlutterSafeArea;
 
-  @override
-  SafeArea buildWidget(ZacContext zacContext) {
+  SafeArea _buildWidget(ZacContext zacContext) {
     return SafeArea(
       key: key?.buildOrNull(zacContext),
       left: left?.buildOrNull(zacContext) ?? true,
@@ -42,7 +42,19 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
       minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
           maintainBottomViewPadding?.buildOrNull(zacContext) ?? false,
-      child: child.buildWidget(zacContext),
+      child: child.build(zacContext),
     );
+  }
+
+  @override
+  SafeArea build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SafeArea? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

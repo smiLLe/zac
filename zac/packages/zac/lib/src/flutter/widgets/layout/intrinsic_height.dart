@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
@@ -26,11 +27,22 @@ class FlutterIntrinsicHeight
     FlutterWidget? child,
   }) = _FlutterIntrinsicHeight;
 
-  @override
-  IntrinsicHeight buildWidget(ZacContext zacContext) {
+  IntrinsicHeight _buildWidget(ZacContext zacContext) {
     return IntrinsicHeight(
       key: key?.buildOrNull(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  IntrinsicHeight build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  IntrinsicHeight? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

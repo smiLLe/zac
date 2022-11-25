@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -77,8 +78,7 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     ZacInt? cacheHeight,
   }) = _FlutterImageAsset;
 
-  @override
-  Image buildWidget(ZacContext zacContext) {
+  Image _buildWidget(ZacContext zacContext) {
     return map(
       network: (value) => Image.network(
         value.src.build(zacContext),
@@ -133,5 +133,17 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
         package: value.package?.buildOrNull(zacContext),
       ),
     );
+  }
+
+  @override
+  Image build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Image? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

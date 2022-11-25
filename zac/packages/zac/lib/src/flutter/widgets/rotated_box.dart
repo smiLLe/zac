@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
@@ -24,12 +25,23 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
     required int quarterTurns,
   }) = _FlutterRotatedBox;
 
-  @override
-  RotatedBox buildWidget(ZacContext zacContext) {
+  RotatedBox _buildWidget(ZacContext zacContext) {
     return RotatedBox(
       key: key?.buildOrNull(zacContext),
       quarterTurns: quarterTurns,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  RotatedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  RotatedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

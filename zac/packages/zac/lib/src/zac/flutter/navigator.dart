@@ -106,7 +106,7 @@ class RouteFactorySingleRoute
         wrap: (origin, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(zacContext);
+            return zacWidget.build(zacContext);
           }
 
           return SharedValueProviderBuilder(
@@ -118,7 +118,7 @@ class RouteFactorySingleRoute
             ),
             value: args,
             transformer: routeConfig.transform,
-          ).buildWidget(zacContext);
+          ).build(zacContext);
         },
       );
     };
@@ -169,7 +169,7 @@ class RouteFactoryFromRoutes
         wrap: (origin, zacWidget) {
           final args = settings.arguments;
           if (null == args) {
-            return zacWidget.buildWidget(zacContext);
+            return zacWidget.build(zacContext);
           }
 
           return SharedValueProviderBuilder(
@@ -181,7 +181,7 @@ class RouteFactoryFromRoutes
             ),
             value: args,
             transformer: config.transform,
-          ).buildWidget(zacContext);
+          ).build(zacContext);
         },
       );
     };

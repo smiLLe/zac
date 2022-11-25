@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,13 +28,24 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
     FlutterWidget? child,
   }) = _FlutterLimitedBox;
 
-  @override
-  LimitedBox buildWidget(ZacContext zacContext) {
+  LimitedBox _buildWidget(ZacContext zacContext) {
     return LimitedBox(
       key: key?.buildOrNull(zacContext),
       maxHeight: maxHeight?.buildOrNull(zacContext) ?? double.infinity,
       maxWidth: maxWidth?.buildOrNull(zacContext) ?? double.infinity,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  LimitedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  LimitedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

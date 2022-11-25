@@ -153,8 +153,7 @@ class ZacProvideFlutterKey
 
   Widget childBuilder(ZacContext zacContext) => child.build(zacContext);
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
       valueBuilder: (ref, zacContext) {
         return map<Key>(
@@ -168,5 +167,17 @@ class ZacProvideFlutterKey
       family: family,
       autoCreate: true,
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

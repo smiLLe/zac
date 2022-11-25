@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -47,8 +48,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     ZacString? restorationId,
   }) = _FlutterGridView;
 
-  @override
-  GridView buildWidget(ZacContext zacContext) {
+  GridView _buildWidget(ZacContext zacContext) {
     return GridView(
       gridDelegate: gridDelegate.build(zacContext),
       key: key?.buildOrNull(zacContext),
@@ -71,5 +71,17 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  GridView build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  GridView? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

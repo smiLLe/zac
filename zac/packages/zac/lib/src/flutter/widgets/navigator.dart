@@ -80,8 +80,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     ZacBool? requestFocus,
   }) = _FlutterNavigator;
 
-  @override
-  Navigator buildWidget(ZacContext zacContext) {
+  Navigator _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
         key: obj.key?.buildOrNull(zacContext),
@@ -91,6 +90,18 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
         requestFocus: obj.requestFocus?.buildOrNull(zacContext) ?? true,
       ),
     );
+  }
+
+  @override
+  Navigator build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Navigator? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -291,7 +302,7 @@ class FlutterPageRouteBuilder
       pageBuilder: (_, __, ___) => ZacUpdateContext(
         builder: (zacContext) {
           if (null == wrap) {
-            return child.buildWidget(zacContext);
+            return child.build(zacContext);
           }
           return wrap(zacContext, child);
         },

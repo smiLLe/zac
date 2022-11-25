@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -57,8 +58,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
     required FlutterWidget child,
   }) = _FlutterPositionedfill;
 
-  @override
-  Positioned buildWidget(ZacContext zacContext) {
+  Positioned _buildWidget(ZacContext zacContext) {
     return map(
       (value) => Positioned(
         key: value.key?.buildOrNull(zacContext),
@@ -68,7 +68,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
         bottom: value.bottom?.buildOrNull(zacContext),
         width: value.width?.buildOrNull(zacContext),
         height: value.height?.buildOrNull(zacContext),
-        child: value.child.buildWidget(zacContext),
+        child: value.child.build(zacContext),
       ),
       directional: (value) => Positioned.directional(
         textDirection: value.textDirection.build(zacContext),
@@ -79,7 +79,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
         bottom: value.bottom?.buildOrNull(zacContext),
         width: value.width?.buildOrNull(zacContext),
         height: value.height?.buildOrNull(zacContext),
-        child: value.child.buildWidget(zacContext),
+        child: value.child.build(zacContext),
       ),
       fill: (value) => Positioned.fill(
         key: value.key?.buildOrNull(zacContext),
@@ -87,8 +87,20 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
         top: value.top?.buildOrNull(zacContext),
         right: value.right?.buildOrNull(zacContext),
         bottom: value.bottom?.buildOrNull(zacContext),
-        child: value.child.buildWidget(zacContext),
+        child: value.child.build(zacContext),
       ),
     );
+  }
+
+  @override
+  Positioned build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Positioned? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

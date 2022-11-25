@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -58,33 +59,44 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
     ZacDouble? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 
-  @override
-  SizedBox buildWidget(ZacContext zacContext) {
+  SizedBox _buildWidget(ZacContext zacContext) {
     return map(
       (value) => SizedBox(
         key: value.key?.buildOrNull(zacContext),
         width: value.width?.buildOrNull(zacContext),
         height: value.height?.buildOrNull(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       expand: (value) => SizedBox.expand(
         key: value.key?.buildOrNull(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
         key: value.key?.buildOrNull(zacContext),
         size: value.size?.build(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
         key: value.key?.buildOrNull(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       square: (value) => SizedBox.square(
         key: value.key?.buildOrNull(zacContext),
         dimension: value.dimension?.buildOrNull(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
     );
+  }
+
+  @override
+  SizedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SizedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

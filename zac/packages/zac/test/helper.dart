@@ -352,10 +352,21 @@ class LeakContext implements FlutterWidget {
   final void Function(ZacContext zacContext) cb;
   final FlutterWidget? child;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     cb(zacContext);
-    return child?.buildWidget(zacContext) ?? const SizedBox.shrink();
+    return child?.buildOrNull(zacContext) ?? const SizedBox.shrink();
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -366,8 +377,19 @@ class TestBuildCustomWidget implements FlutterWidget {
 
   final Widget Function(ZacContext zacContext) cb;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return cb(zacContext);
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

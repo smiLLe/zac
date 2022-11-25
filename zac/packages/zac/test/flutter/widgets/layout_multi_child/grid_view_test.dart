@@ -6,7 +6,6 @@ import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -93,7 +92,7 @@ void main() {
               gridDelegate: FlutterSliverGridDelegate.withFixedCrossAxisCount(
                   crossAxisCount: 5),
               controller: FlutterScrollController.consume(family: 'shared'),
-            ).buildWidget(zacContext);
+            ).build(zacContext);
           },
           valueBuilder: (ref, zacContext) => ctrl,
           family: 'shared',

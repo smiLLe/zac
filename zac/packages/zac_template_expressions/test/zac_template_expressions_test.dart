@@ -165,10 +165,9 @@ class LeakOrigin implements FlutterWidget {
   final void Function(ZacContext zacContext) cb;
   final FlutterWidget? child;
 
-  @override
   Widget buildWidget(ZacContext zacContext) {
     cb(zacContext);
-    return child?.buildWidget(zacContext) ?? const SizedBox.shrink();
+    return child?._buildWidget(zacContext) ?? const SizedBox.shrink();
   }
 }
 

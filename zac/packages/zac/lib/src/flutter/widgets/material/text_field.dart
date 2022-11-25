@@ -11,6 +11,7 @@ import 'package:zac/src/flutter/services.dart';
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'text_field.freezed.dart';
@@ -86,8 +87,7 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
     ZacBool? enableIMEPersonalizedLearning,
   }) = _FlutterTextField;
 
-  @override
-  TextField buildWidget(ZacContext zacContext) {
+  TextField _buildWidget(ZacContext zacContext) {
     return TextField(
       key: key?.buildOrNull(zacContext),
       style: style?.build(zacContext),
@@ -137,5 +137,17 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),
       scrollController: scrollController?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  TextField build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  TextField? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

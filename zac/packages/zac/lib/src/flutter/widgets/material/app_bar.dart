@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/widgets/icon.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -53,10 +54,9 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     FlutterSystemUiOverlayStyle? systemOverlayStyle,
   }) = _FlutterAppBar;
 
-  @override
-  AppBar buildWidget(ZacContext zacContext) {
+  AppBar _buildWidget(ZacContext zacContext) {
     assert(() {
-      final w = bottom?.buildWidget(zacContext);
+      final w = bottom?.buildOrNull(zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -67,13 +67,13 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
 
     return AppBar(
       key: key?.buildOrNull(zacContext),
-      leading: leading?.buildWidget(zacContext),
+      leading: leading?.buildOrNull(zacContext),
       automaticallyImplyLeading:
           automaticallyImplyLeading?.buildOrNull(zacContext) ?? true,
-      title: title?.buildWidget(zacContext),
+      title: title?.buildOrNull(zacContext),
       actions: actions?.buildOrNull(zacContext) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildWidget(zacContext),
-      bottom: bottom?.buildWidget(zacContext) as PreferredSizeWidget?,
+      flexibleSpace: flexibleSpace?.buildOrNull(zacContext),
+      bottom: bottom?.buildOrNull(zacContext) as PreferredSizeWidget?,
       elevation: elevation?.buildOrNull(zacContext),
       shadowColor: shadowColor?.build(zacContext),
       shape: shape?.build(zacContext),
@@ -94,5 +94,17 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
       titleTextStyle: titleTextStyle?.build(zacContext),
       systemOverlayStyle: systemOverlayStyle?.build(zacContext),
     );
+  }
+
+  @override
+  AppBar build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  AppBar? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
@@ -27,12 +28,23 @@ class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
     FlutterClip? clipBehavior,
   }) = _FlutterClipOval;
 
-  @override
-  ClipOval buildWidget(ZacContext zacContext) {
+  ClipOval _buildWidget(ZacContext zacContext) {
     return ClipOval(
       key: key?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.antiAlias,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  ClipOval build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ClipOval? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

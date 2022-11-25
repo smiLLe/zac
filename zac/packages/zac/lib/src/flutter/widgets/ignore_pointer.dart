@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,13 +30,24 @@ class FlutterIgnorePointer
     FlutterWidget? child,
   }) = _FlutterIgnorePointer;
 
-  @override
-  IgnorePointer buildWidget(ZacContext zacContext) {
+  IgnorePointer _buildWidget(ZacContext zacContext) {
     return IgnorePointer(
       key: key?.buildOrNull(zacContext),
       ignoring: ignoring?.buildOrNull(zacContext) ?? true,
       ignoringSemantics: ignoringSemantics?.buildOrNull(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  IgnorePointer build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  IgnorePointer? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

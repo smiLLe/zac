@@ -6,6 +6,7 @@ import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'unconstrained_box.freezed.dart';
 part 'unconstrained_box.g.dart';
@@ -32,15 +33,26 @@ class FlutterUnconstrainedBox
     FlutterClip? clipBehavior,
   }) = _FlutterUnconstrainedBox;
 
-  @override
-  UnconstrainedBox buildWidget(ZacContext zacContext) {
+  UnconstrainedBox _buildWidget(ZacContext zacContext) {
     return UnconstrainedBox(
       key: key?.buildOrNull(zacContext),
       textDirection: textDirection?.build(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
       constrainedAxis: constrainedAxis?.build(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  UnconstrainedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  UnconstrainedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

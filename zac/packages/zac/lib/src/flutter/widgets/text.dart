@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -38,8 +39,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     FlutterTextHeightBehavior? textHeightBehavior,
   }) = _FlutterText;
 
-  @override
-  Text buildWidget(ZacContext zacContext) {
+  Text _buildWidget(ZacContext zacContext) {
     return Text(
       data.build(zacContext),
       key: key?.buildOrNull(zacContext),
@@ -56,5 +56,17 @@ class FlutterText with _$FlutterText implements FlutterWidget {
       textWidthBasis: textWidthBasis?.build(zacContext),
       textHeightBehavior: textHeightBehavior?.build(zacContext),
     );
+  }
+
+  @override
+  Text build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Text? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

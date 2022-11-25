@@ -111,7 +111,7 @@ class FlutterMaterialPageRoute
       builder: (_) => ZacUpdateContext(
         builder: (zacContext) {
           if (null == wrap) {
-            return child.buildWidget(zacContext);
+            return child.build(zacContext);
           }
           return wrap(zacContext, child);
         },

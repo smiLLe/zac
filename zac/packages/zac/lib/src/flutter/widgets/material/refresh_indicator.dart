@@ -5,6 +5,7 @@ import 'package:zac/src/zac/action.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -44,8 +45,7 @@ class FlutterRefreshIndicator
     DartCompleterVoid? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  RefreshIndicator _buildWidget(ZacContext zacContext) {
     return RefreshIndicator(
       onRefresh: () async {
         if (null == onRefreshCompleter) {
@@ -69,8 +69,20 @@ class FlutterRefreshIndicator
           RefreshProgressIndicator.defaultStrokeWidth,
       triggerMode:
           triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
-      child: child.buildWidget(zacContext),
+      child: child.build(zacContext),
     );
+  }
+
+  @override
+  RefreshIndicator build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  RefreshIndicator? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 

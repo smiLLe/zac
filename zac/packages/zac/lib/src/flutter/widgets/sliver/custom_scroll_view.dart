@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
@@ -47,24 +48,16 @@ class FlutterCustomScrollView
   }) = _FlutterCustomScrollView;
 
   @override
-  CustomScrollView buildWidget(ZacContext zacContext) {
-    return CustomScrollView(
-      key: key?.buildOrNull(zacContext),
-      slivers: slivers?.buildOrNull(zacContext) ?? const <Widget>[],
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.buildOrNull(zacContext) ?? false,
-      controller: controller?.buildOrNull(zacContext),
-      primary: primary?.buildOrNull(zacContext),
-      physics: physics?.build(zacContext),
-      shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
-      center: center?.buildOrNull(zacContext),
-      anchor: anchor?.buildOrNull(zacContext) ?? 0.0,
-      cacheExtent: cacheExtent?.buildOrNull(zacContext),
-      semanticChildCount: semanticChildCount?.buildOrNull(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
-          ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-    );
+  CustomScrollView build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+  @override
+  CustomScrollView? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    // TODO: implement buildOrNull
+    throw UnimplementedError();
   }
 }

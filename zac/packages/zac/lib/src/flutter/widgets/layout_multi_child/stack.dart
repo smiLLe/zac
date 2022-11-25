@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,8 +33,7 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterStack;
 
-  @override
-  Stack buildWidget(ZacContext zacContext) {
+  Stack _buildWidget(ZacContext zacContext) {
     return Stack(
       key: key?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
@@ -42,5 +42,17 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  Stack build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Stack? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,14 +28,25 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
     FlutterWidget? child,
   }) = _FlutterOpacity;
 
-  @override
-  Opacity buildWidget(ZacContext zacContext) {
+  Opacity _buildWidget(ZacContext zacContext) {
     return Opacity(
       key: key?.buildOrNull(zacContext),
       opacity: opacity.build(zacContext),
       alwaysIncludeSemantics:
           alwaysIncludeSemantics?.buildOrNull(zacContext) ?? false,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  Opacity build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Opacity? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

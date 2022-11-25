@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,8 +42,7 @@ class FlutterSingleChildScrollView
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
-  @override
-  SingleChildScrollView buildWidget(ZacContext zacContext) {
+  SingleChildScrollView _buildWidget(ZacContext zacContext) {
     return SingleChildScrollView(
       key: key?.buildOrNull(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
@@ -54,7 +54,19 @@ class FlutterSingleChildScrollView
       restorationId: restorationId?.buildOrNull(zacContext),
       keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  SingleChildScrollView build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SingleChildScrollView? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

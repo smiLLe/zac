@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,13 +28,24 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
     FlutterWidget? child,
   }) = _FlutterCenter;
 
-  @override
-  Center buildWidget(ZacContext zacContext) {
+  Center _buildWidget(ZacContext zacContext) {
     return Center(
       key: key?.buildOrNull(zacContext),
       widthFactor: widthFactor?.buildOrNull(zacContext),
       heightFactor: heightFactor?.buildOrNull(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  Center build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Center? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

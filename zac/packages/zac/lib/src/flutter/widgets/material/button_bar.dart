@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -36,8 +37,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterButtonBar;
 
-  @override
-  ButtonBar buildWidget(ZacContext zacContext) {
+  ButtonBar _buildWidget(ZacContext zacContext) {
     return ButtonBar(
       key: key?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext),
@@ -52,5 +52,17 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
       overflowButtonSpacing: overflowButtonSpacing?.buildOrNull(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  ButtonBar build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ButtonBar? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

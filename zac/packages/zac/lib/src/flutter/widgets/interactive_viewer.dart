@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -41,8 +42,7 @@ class FlutterInteractiveViewer
 // TransformationController? transformationController,
   }) = _FlutterInteractiveViewer;
 
-  @override
-  InteractiveViewer buildWidget(ZacContext zacContext) {
+  InteractiveViewer _buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
       key: key?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
@@ -59,8 +59,20 @@ class FlutterInteractiveViewer
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
       panEnabled: panEnabled?.buildOrNull(zacContext) ?? true,
       scaleEnabled: scaleEnabled?.buildOrNull(zacContext) ?? true,
-      child: child.buildWidget(zacContext),
+      child: child.build(zacContext),
       // transformationController: key?.toFlutter(context),
     );
+  }
+
+  @override
+  InteractiveViewer build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  InteractiveViewer? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

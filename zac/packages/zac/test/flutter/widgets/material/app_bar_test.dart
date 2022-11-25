@@ -39,7 +39,7 @@ void main() {
         'toolbarTextStyle': TextModel.textStyle,
         'titleTextStyle': TextModel.textStyle,
         'systemOverlayStyle': SystemUiOverlayStyleModel.json,
-      }).buildWidget,
+      }).build,
       (matcher) => matcher
           .having((p0) => p0.automaticallyImplyLeading,
               'AppBar.automaticallyImplyLeading', isFalse)

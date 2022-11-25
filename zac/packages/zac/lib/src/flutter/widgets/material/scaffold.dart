@@ -55,21 +55,20 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     ZacString? restorationId,
   }) = _FlutterScaffold;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Scaffold _buildWidget(ZacContext zacContext) {
     return map(
       (value) => Scaffold(
         key: value.key?.buildOrNull(zacContext),
-        body: value.body?.buildWidget(zacContext),
+        body: value.body?.buildOrNull(zacContext),
         floatingActionButton:
-            value.floatingActionButton?.buildWidget(zacContext),
+            value.floatingActionButton?.buildOrNull(zacContext),
         persistentFooterButtons:
             value.persistentFooterButtons?.buildOrNull(zacContext),
-        appBar: value.appBar?.buildWidget(zacContext) as PreferredSizeWidget?,
-        drawer: value.drawer?.buildWidget(zacContext),
-        endDrawer: value.endDrawer?.buildWidget(zacContext),
-        bottomNavigationBar: value.bottomNavigationBar?.buildWidget(zacContext),
-        bottomSheet: value.bottomSheet?.buildWidget(zacContext),
+        appBar: value.appBar?.buildOrNull(zacContext) as PreferredSizeWidget?,
+        drawer: value.drawer?.buildOrNull(zacContext),
+        endDrawer: value.endDrawer?.buildOrNull(zacContext),
+        bottomNavigationBar: value.bottomNavigationBar?.buildOrNull(zacContext),
+        bottomSheet: value.bottomSheet?.buildOrNull(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         resizeToAvoidBottomInset:
             value.resizeToAvoidBottomInset?.buildOrNull(zacContext),
@@ -87,6 +86,18 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         restorationId: value.restorationId?.buildOrNull(zacContext),
       ),
     );
+  }
+
+  @override
+  Scaffold build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Scaffold? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -137,7 +148,7 @@ class FlutterScaffoldActions
         final state = Scaffold.maybeOf(zacContext.context);
         if (null == state) return;
         state.showBottomSheet<void>(
-          (_) => FlutterBuilder(child: value.child).buildWidget(zacContext),
+          (_) => FlutterBuilder(child: value.child).build(zacContext),
           backgroundColor: value.backgroundColor?.build(zacContext),
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
@@ -239,7 +250,9 @@ class FlutterScaffoldMessenger
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
-        state.showSnackBar(value.snackBar.buildWidget(zacContext));
+        state.showSnackBar(value.snackBar.build(zacContext,
+            onConsume:
+                const ZacBuilderConsume(type: SharedValueConsumeType.read())));
       },
       hideCurrentSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(zacContext.context);
@@ -258,7 +271,9 @@ class FlutterScaffoldMessenger
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
-        state.showMaterialBanner(value.materialBanner.buildWidget(zacContext));
+        state.showMaterialBanner(value.materialBanner.build(zacContext,
+            onConsume:
+                const ZacBuilderConsume(type: SharedValueConsumeType.read())));
       },
       hideCurrentMaterialBanner: (value) {
         final state = ScaffoldMessenger.maybeOf(zacContext.context);
@@ -304,12 +319,11 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
-  @override
-  SnackBar buildWidget(ZacContext zacContext) {
+  SnackBar _buildWidget(ZacContext zacContext) {
     return SnackBar(
-      content: content.buildWidget(zacContext),
+      content: content.build(zacContext),
       key: key?.buildOrNull(zacContext),
-      action: action?.buildWidget(zacContext),
+      action: action?.buildOrNull(zacContext),
       // animation: key?.toFlutter(context),
       backgroundColor: backgroundColor?.build(zacContext),
       behavior: behavior?.build(zacContext),
@@ -322,6 +336,18 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
       shape: shape?.build(zacContext),
       width: width?.build(zacContext),
     );
+  }
+
+  @override
+  SnackBar build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SnackBar? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -368,8 +394,7 @@ class FlutterSnackBarAction
     required ZacActions? onPressed,
   }) = _FlutterSnackBarAction;
 
-  @override
-  SnackBarAction buildWidget(ZacContext zacContext) {
+  SnackBarAction _buildWidget(ZacContext zacContext) {
     return SnackBarAction(
       key: key?.buildOrNull(zacContext),
       label: label,
@@ -377,6 +402,18 @@ class FlutterSnackBarAction
       disabledTextColor: disabledTextColor?.build(zacContext),
       textColor: textColor?.build(zacContext),
     );
+  }
+
+  @override
+  SnackBarAction build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SnackBarAction? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -409,10 +446,9 @@ class FlutterMaterialBanner
     ZacActions? onVisible,
   }) = _FlutterMaterialBanner;
 
-  @override
-  MaterialBanner buildWidget(ZacContext zacContext) {
+  MaterialBanner _buildWidget(ZacContext zacContext) {
     return MaterialBanner(
-      content: content.buildWidget(zacContext),
+      content: content.build(zacContext),
       actions: actions.build(zacContext),
       key: key?.buildOrNull(zacContext),
       // animation: ,
@@ -420,11 +456,23 @@ class FlutterMaterialBanner
       contentTextStyle: contentTextStyle?.build(zacContext),
       elevation: elevation?.build(zacContext),
       forceActionsBelow: forceActionsBelow?.buildOrNull(zacContext) ?? false,
-      leading: leading?.buildWidget(zacContext),
+      leading: leading?.buildOrNull(zacContext),
       leadingPadding: leadingPadding?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
       padding: padding?.build(zacContext),
     );
+  }
+
+  @override
+  MaterialBanner build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  MaterialBanner? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

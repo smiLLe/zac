@@ -5,6 +5,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';
@@ -29,13 +30,24 @@ class FlutterSizedOverflowBox
     FlutterWidget? child,
   }) = _FlutterSizedOverflowBox;
 
-  @override
-  SizedOverflowBox buildWidget(ZacContext zacContext) {
+  SizedOverflowBox _buildWidget(ZacContext zacContext) {
     return SizedOverflowBox(
       key: key?.buildOrNull(zacContext),
       size: size.build(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  SizedOverflowBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SizedOverflowBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

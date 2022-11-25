@@ -37,7 +37,7 @@ void main() {
         'color': ColorModel.json,
         'semanticLabel': 'semantic',
         'textDirection': {'converter': 'f:1:TextDirection.ltr'}
-      }).buildWidget,
+      }).build,
       (matcher) => matcher
           .having((p0) => p0.icon, 'Icon.icon', isA<IconData>())
           .having((p0) => p0.size, 'Icon.size', equals(20))

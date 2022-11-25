@@ -9,6 +9,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
@@ -368,15 +369,28 @@ class SharedValueProviderBuilder
     }
   }
 
-  @override
-  SharedValueProvider buildWidget(ZacContext zacContext) {
+  Widget _childBuilder(ZacContext zacContext) => child.build(zacContext);
+
+  SharedValueProvider _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
       key: key?.buildOrNull(zacContext),
       valueBuilder: valueBuilder,
       family: family,
-      childBuilder: child.buildWidget,
+      childBuilder: _childBuilder,
       autoCreate: autoCreate,
     );
+  }
+
+  @override
+  SharedValueProvider build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SharedValueProvider? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -421,7 +435,9 @@ class SharedValueProvider extends HookConsumerWidget {
     }, [container]);
 
     return ZacUpdateContext(
-      builder: (zacContext) {
+      builder: (
+        zacContext,
+      ) {
         return UncontrolledProviderScope(
           container: container,
           child: ZacUpdateContext(

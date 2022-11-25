@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,8 +33,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterIndexedStack;
 
-  @override
-  IndexedStack buildWidget(ZacContext zacContext) {
+  IndexedStack _buildWidget(ZacContext zacContext) {
     return IndexedStack(
       key: key?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
@@ -42,5 +42,17 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
       index: index?.buildOrNull(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  IndexedStack build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  IndexedStack? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

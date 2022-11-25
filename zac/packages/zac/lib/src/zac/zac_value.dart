@@ -383,7 +383,7 @@ class ZacFlutterWidget
 
   @override
   Widget buildItem(ZacContext zacContext, FlutterWidget item) =>
-      item.buildWidget(zacContext);
+      item.build(zacContext);
 }
 
 @freezedZacBuilder
@@ -468,7 +468,7 @@ class ZacListOfFlutterWidget
   @override
   Widget buildItem(ZacContext zacContext, FlutterWidget item,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return item.buildWidget(zacContext);
+    return item.build(zacContext);
   }
 }
 

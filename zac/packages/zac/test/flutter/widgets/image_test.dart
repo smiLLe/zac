@@ -37,7 +37,7 @@ void main() {
           'filterQuality': {
             'converter': 'f:1:FilterQuality.high',
           }
-        }).buildWidget,
+        }).build,
         (matcher) => matcher
             .having(
                 (p0) => (p0.image as NetworkImage).url, 'Image.src', 'test_src')
@@ -77,7 +77,7 @@ void main() {
           'src': 'test_src',
           'cacheWidth': 11,
           'cacheHeight': 22,
-        }).buildWidget,
+        }).build,
         (matcher) => matcher
             .having(
                 (p0) => (p0.image as ResizeImage).width, 'Image.cacheWidth', 11)
@@ -117,7 +117,7 @@ void main() {
           'filterQuality': {
             'converter': 'f:1:FilterQuality.high',
           }
-        }).buildWidget,
+        }).build,
         (matcher) => matcher
             .having((p0) => (p0.image as ExactAssetImage).assetName,
                 'Image.name', 'test_name')
@@ -155,7 +155,7 @@ void main() {
           'name': 'test_name',
           'cacheWidth': 11,
           'cacheHeight': 22,
-        }).buildWidget,
+        }).build,
         (matcher) => matcher
             .having(
                 (p0) => (p0.image as ResizeImage).width, 'Image.cacheWidth', 11)

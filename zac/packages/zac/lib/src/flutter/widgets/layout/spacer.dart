@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,11 +25,22 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
     ZacInt? flex,
   }) = _FlutterSpacer;
 
-  @override
-  Spacer buildWidget(ZacContext zacContext) {
+  Spacer _buildWidget(ZacContext zacContext) {
     return Spacer(
       key: key?.buildOrNull(zacContext),
       flex: flex?.buildOrNull(zacContext) ?? 1,
     );
+  }
+
+  @override
+  Spacer build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Spacer? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

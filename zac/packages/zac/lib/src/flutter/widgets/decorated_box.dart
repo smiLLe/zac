@@ -6,6 +6,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
@@ -28,13 +29,24 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
     FlutterDecorationPosition? position,
   }) = _FlutterDecoratedBox;
 
-  @override
-  DecoratedBox buildWidget(ZacContext zacContext) {
+  DecoratedBox _buildWidget(ZacContext zacContext) {
     return DecoratedBox(
       key: key?.buildOrNull(zacContext),
       decoration: decoration.build(zacContext),
       position: position?.build(zacContext) ?? DecorationPosition.background,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  DecoratedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  DecoratedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -61,8 +61,7 @@ class ZacCompleterProviderBuilder
     required SharedValueFamily family,
   }) = _ZacCompleterProviderBuilderVoid;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return map(
       asVoid: (value) => ZacCompleterProvider<void>(
         childBuilder: (zacContext) => value.child.build(zacContext),
@@ -71,6 +70,18 @@ class ZacCompleterProviderBuilder
         family: family,
       ),
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 

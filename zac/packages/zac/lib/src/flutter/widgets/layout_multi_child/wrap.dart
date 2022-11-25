@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -37,8 +38,7 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterWrap;
 
-  @override
-  Wrap buildWidget(ZacContext zacContext) {
+  Wrap _buildWidget(ZacContext zacContext) {
     return Wrap(
       key: key?.buildOrNull(zacContext),
       direction: direction?.build(zacContext) ?? Axis.horizontal,
@@ -54,5 +54,17 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  Wrap build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Wrap? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

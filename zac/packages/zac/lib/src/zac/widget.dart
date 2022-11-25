@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/update_widget.dart';
@@ -39,8 +40,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
     FlutterWidget? errorChild,
   }) = _ZacWidgetBuilderIsolate;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
@@ -52,6 +52,18 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
         errorChild: obj.errorChild,
       ),
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -91,7 +103,7 @@ class ZacWidget extends HookWidget {
     }, [data]);
 
     return ZacUpdateContext(
-      builder: (zacContext) => flutterWidget.buildWidget(zacContext),
+      builder: flutterWidget.build,
     );
   }
 }
@@ -157,7 +169,7 @@ class ZacWidgetIsolated extends StatelessWidget {
           final val = ref.watch(provider);
           return val.map<Widget>(
             data: (obj) => ZacUpdateContext(
-              builder: (zacContext) => obj.value.buildWidget(zacContext),
+              builder: obj.value.build,
             ),
             error: (obj) {
               return ZacUpdateContext(builder: (zacContext) {
@@ -183,7 +195,7 @@ class ZacWidgetIsolated extends StatelessWidget {
                   );
                   return true;
                 }(), '');
-                return error.buildWidget(zacContext);
+                return error.build(zacContext);
               });
             },
             loading: (obj) => const SizedBox.shrink(),

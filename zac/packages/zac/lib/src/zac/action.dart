@@ -10,6 +10,7 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'action.freezed.dart';
 part 'action.g.dart';
@@ -122,8 +123,7 @@ class ZacExecuteActionsBuilder
     FlutterWidget? child,
   }) = _ZacExecuteActionsBuilderListen;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return map(
       once: (obj) => ZacExecuteActionsOnce(
         actions: obj.actions,
@@ -135,6 +135,18 @@ class ZacExecuteActionsBuilder
         child: obj.child,
       ),
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 

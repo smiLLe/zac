@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -38,8 +39,7 @@ class FlutterGestureDetector
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) = _FlutterGestureDetector;
 
-  @override
-  GestureDetector buildWidget(ZacContext zacContext) {
+  GestureDetector _buildWidget(ZacContext zacContext) {
     return GestureDetector(
       key: key?.buildOrNull(zacContext),
       behavior: behavior?.build(zacContext),
@@ -51,7 +51,19 @@ class FlutterGestureDetector
       onLongPress: onLongPress?.createCb(zacContext),
       onSecondaryLongPress: onSecondaryLongPress?.createCb(zacContext),
       onTertiaryLongPress: onTertiaryLongPress?.createCb(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  GestureDetector build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  GestureDetector? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,8 +30,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
     FlutterTextDirection? textDirection,
   }) = _FlutterIcon;
 
-  @override
-  Icon buildWidget(ZacContext zacContext) {
+  Icon _buildWidget(ZacContext zacContext) {
     return Icon(
       icon?.build(zacContext),
       key: key?.buildOrNull(zacContext),
@@ -39,6 +39,18 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
       semanticLabel: semanticLabel?.buildOrNull(zacContext),
       textDirection: textDirection?.build(zacContext),
     );
+  }
+
+  @override
+  Icon build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Icon? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 

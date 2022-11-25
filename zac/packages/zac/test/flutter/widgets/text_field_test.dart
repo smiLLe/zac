@@ -125,7 +125,7 @@ void main() {
                 key: FlutterValueKey('TEXTFIELD'),
                 scrollController:
                     FlutterScrollController.consume(family: 'shared'),
-              ).buildWidget(zacContext),
+              ).build(zacContext),
             );
           },
           valueBuilder: (ref, zacContext) => ctrl,

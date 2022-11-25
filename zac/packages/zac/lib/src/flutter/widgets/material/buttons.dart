@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -45,8 +46,7 @@ class FlutterElevatedButton
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
 
-  @override
-  ElevatedButton buildWidget(ZacContext zacContext) {
+  ElevatedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => ElevatedButton(
         key: value.key?.buildOrNull(zacContext),
@@ -54,18 +54,30 @@ class FlutterElevatedButton
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
         key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.buildWidget(zacContext),
-        label: value.label.buildWidget(zacContext),
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
+  }
+
+  @override
+  ElevatedButton build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ElevatedButton? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -103,8 +115,7 @@ class FlutterOutlinedButton
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
 
-  @override
-  OutlinedButton buildWidget(ZacContext zacContext) {
+  OutlinedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => OutlinedButton(
         key: value.key?.buildOrNull(zacContext),
@@ -112,18 +123,30 @@ class FlutterOutlinedButton
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child.buildWidget(zacContext),
+        child: value.child.build(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
         key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.buildWidget(zacContext),
-        label: value.label.buildWidget(zacContext),
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
+  }
+
+  @override
+  OutlinedButton build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  OutlinedButton? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -159,8 +182,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
     FlutterClip? clipBehavior,
   }) = _FlutterTextButtonIcon;
 
-  @override
-  TextButton buildWidget(ZacContext zacContext) {
+  TextButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => TextButton(
         key: value.key?.buildOrNull(zacContext),
@@ -168,17 +190,29 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
         onLongPress: value.onLongPress?.createCb(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child.buildWidget(zacContext),
+        child: value.child.build(zacContext),
       ),
       icon: (value) => TextButton.icon(
         key: value.key?.buildOrNull(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.buildWidget(zacContext),
-        label: value.label.buildWidget(zacContext),
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
         autofocus: value.autofocus?.buildOrNull(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
+  }
+
+  @override
+  TextButton build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  TextButton? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

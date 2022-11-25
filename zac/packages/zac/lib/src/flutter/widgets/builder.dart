@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'builder.freezed.dart';
 part 'builder.g.dart';
@@ -25,15 +26,28 @@ class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
     required FlutterWidget child,
   }) = _FlutterBuilder;
 
-  @override
-  Builder buildWidget(ZacContext zacContext) {
+  Widget _builder(ZacContext zacContext) => child.build(zacContext);
+
+  Builder _buildWidget(ZacContext zacContext) {
     return Builder(
       key: key?.buildOrNull(zacContext),
       builder: (_) {
         return ZacUpdateContext(
-          builder: child.buildWidget,
+          builder: _builder,
         );
       },
     );
+  }
+
+  @override
+  Builder build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Builder? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

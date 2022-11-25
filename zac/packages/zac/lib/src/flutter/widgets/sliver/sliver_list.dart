@@ -4,6 +4,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
@@ -24,11 +25,22 @@ class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
     required FlutterSliverChildDelegate delegate,
   }) = _FlutterSliverList;
 
-  @override
-  SliverList buildWidget(ZacContext zacContext) {
+  SliverList _buildWidget(ZacContext zacContext) {
     return SliverList(
       key: key?.buildOrNull(zacContext),
       delegate: delegate.build(zacContext),
     );
+  }
+
+  @override
+  SliverList build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SliverList? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

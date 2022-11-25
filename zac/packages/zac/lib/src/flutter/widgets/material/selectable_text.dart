@@ -50,8 +50,7 @@ class FlutterSelectableText
     // SelectionChangedCallback? onSelectionChanged,
   }) = _FlutterSelectableText;
 
-  @override
-  SelectableText buildWidget(ZacContext zacContext) {
+  SelectableText _buildWidget(ZacContext zacContext) {
     return SelectableText(
       data,
       key: key?.buildOrNull(zacContext),
@@ -74,5 +73,17 @@ class FlutterSelectableText
       textHeightBehavior: textHeightBehavior?.build(zacContext),
       textWidthBasis: textWidthBasis?.build(zacContext),
     );
+  }
+
+  @override
+  SelectableText build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SelectableText? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

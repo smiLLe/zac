@@ -83,8 +83,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsets? padding,
   }) = _FlutterDialogsSimpleDialogOption;
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return map(
       dialog: (value) => Dialog(
         key: value.key?.buildOrNull(zacContext),
@@ -96,12 +95,12 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
         insetPadding: value.insetPadding?.build(zacContext),
         shape: value.shape?.build(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
       alertDialog: (value) => AlertDialog(
         key: value.key?.buildOrNull(zacContext),
-        title: value.title?.buildWidget(zacContext),
-        content: value.content?.buildWidget(zacContext),
+        title: value.title?.buildOrNull(zacContext),
+        content: value.content?.buildOrNull(zacContext),
         actions: value.actions?.buildOrNull(zacContext) ?? const <Widget>[],
         actionsAlignment: value.actionsAlignment?.build(zacContext),
         actionsOverflowButtonSpacing:
@@ -128,7 +127,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
       ),
       simpleDialog: (value) => SimpleDialog(
         key: value.key?.buildOrNull(zacContext),
-        title: value.title?.buildWidget(zacContext),
+        title: value.title?.buildOrNull(zacContext),
         alignment: value.alignment?.build(zacContext),
         backgroundColor: value.backgroundColor?.build(zacContext),
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
@@ -148,9 +147,21 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         key: value.key?.buildOrNull(zacContext),
         padding: value.padding?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
-        child: value.child?.buildWidget(zacContext),
+        child: value.child?.buildOrNull(zacContext),
       ),
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -180,8 +191,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
     map(
       showDialog: (value) => showDialog<ZacActions?>(
         context: zacContext.context,
-        builder: (_) =>
-            FlutterBuilder(child: value.child).buildWidget(zacContext),
+        builder: (_) => FlutterBuilder(child: value.child).build(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),
         barrierDismissible: value.barrierDismissible?.buildOrNull(
               zacContext,

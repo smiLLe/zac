@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,13 +31,24 @@ class FlutterFractionalTranslation
     ZacBool? transformHitTests,
   }) = _FlutterFractionalTranslation;
 
-  @override
-  FractionalTranslation buildWidget(ZacContext zacContext) {
+  FractionalTranslation _buildWidget(ZacContext zacContext) {
     return FractionalTranslation(
       key: key?.buildOrNull(zacContext),
       translation: translation.build(zacContext),
       transformHitTests: transformHitTests?.buildOrNull(zacContext) ?? true,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  FractionalTranslation build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  FractionalTranslation? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

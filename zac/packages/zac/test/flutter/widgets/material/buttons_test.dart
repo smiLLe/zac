@@ -253,7 +253,7 @@ void main() {
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
           'clipBehavior': {'converter': 'f:1:Clip.antiAlias'}
-        }).buildWidget,
+        }).build,
         (matcher) => matcher.havingValueKey('test_key').having(
             (p0) => p0.clipBehavior,
             'ElevatedButton.clipBehavior',

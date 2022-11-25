@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
@@ -26,11 +27,22 @@ class FlutterIntrinsicWidth
     FlutterWidget? child,
   }) = _FlutterIntrinsicWidth;
 
-  @override
-  IntrinsicWidth buildWidget(ZacContext zacContext) {
+  IntrinsicWidth _buildWidget(ZacContext zacContext) {
     return IntrinsicWidth(
       key: key?.buildOrNull(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  IntrinsicWidth build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  IntrinsicWidth? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

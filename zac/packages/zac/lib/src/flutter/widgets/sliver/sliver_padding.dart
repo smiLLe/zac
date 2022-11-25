@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
@@ -28,12 +29,23 @@ class FlutterSliverPadding
     required FlutterEdgeInsetsGeometry padding,
   }) = _FlutterSliverPadding;
 
-  @override
-  SliverPadding buildWidget(ZacContext zacContext) {
+  SliverPadding _buildWidget(ZacContext zacContext) {
     return SliverPadding(
       key: key?.buildOrNull(zacContext),
-      sliver: sliver?.buildWidget(zacContext),
+      sliver: sliver?.buildOrNull(zacContext),
       padding: padding.build(zacContext),
     );
+  }
+
+  @override
+  SliverPadding build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SliverPadding? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

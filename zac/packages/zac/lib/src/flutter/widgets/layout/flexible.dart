@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,13 +29,24 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
     required FlutterWidget child,
   }) = _FlutterFlexible;
 
-  @override
-  Flexible buildWidget(ZacContext zacContext) {
+  Flexible _buildWidget(ZacContext zacContext) {
     return Flexible(
       key: key?.buildOrNull(zacContext),
       flex: flex?.buildOrNull(zacContext) ?? 1,
       fit: fit?.build(zacContext) ?? FlexFit.loose,
-      child: child.buildWidget(zacContext),
+      child: child.build(zacContext),
     );
+  }
+
+  @override
+  Flexible build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Flexible? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

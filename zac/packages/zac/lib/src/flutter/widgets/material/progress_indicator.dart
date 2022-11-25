@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -49,8 +50,7 @@ class FlutterProgressIndicator
     ZacString? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
 
-  @override
-  ProgressIndicator buildWidget(ZacContext zacContext) {
+  ProgressIndicator _buildWidget(ZacContext zacContext) {
     return map(
       linear: (value) => LinearProgressIndicator(
         key: value.key?.buildOrNull(zacContext),
@@ -71,5 +71,17 @@ class FlutterProgressIndicator
         semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
       ),
     );
+  }
+
+  @override
+  ProgressIndicator build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ProgressIndicator? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

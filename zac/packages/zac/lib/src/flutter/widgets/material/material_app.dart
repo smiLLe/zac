@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -59,13 +60,12 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
     ZacBool? useInheritedMediaQuery,
   }) = _FlutterMaterialApp;
 
-  @override
-  MaterialApp buildWidget(ZacContext zacContext) {
+  MaterialApp _buildWidget(ZacContext zacContext) {
     return MaterialApp(
       key: key?.buildOrNull(zacContext),
       navigatorKey: navigatorKey?.buildOrNull(zacContext),
       scaffoldMessengerKey: scaffoldMessengerKey?.buildOrNull(zacContext),
-      home: home?.buildWidget(zacContext),
+      home: home?.buildOrNull(zacContext),
       initialRoute: initialRoute?.buildOrNull(zacContext),
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
       onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
@@ -88,5 +88,17 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
       useInheritedMediaQuery:
           useInheritedMediaQuery?.buildOrNull(zacContext) ?? false,
     );
+  }
+
+  @override
+  MaterialApp build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  MaterialApp? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

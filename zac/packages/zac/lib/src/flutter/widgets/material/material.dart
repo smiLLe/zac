@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -36,8 +37,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
 
-  @override
-  Material buildWidget(ZacContext zacContext) {
+  Material _buildWidget(ZacContext zacContext) {
     return Material(
       key: key?.buildOrNull(zacContext),
       // animationDuration: key?.toFlutter(context),
@@ -49,8 +49,20 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
       shadowColor: shadowColor?.build(zacContext),
       shape: shape?.build(zacContext),
       textStyle: textStyle?.build(zacContext),
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
       // type: type?.toFlutter(context),
     );
+  }
+
+  @override
+  Material build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Material? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

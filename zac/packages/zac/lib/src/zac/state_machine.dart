@@ -163,15 +163,26 @@ because there was already a transition.
     );
   }
 
-  @override
-  Widget buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
       key: key?.buildOrNull(zacContext),
       family: family.build(zacContext),
       autoCreate: true,
-      childBuilder: child.buildWidget,
+      childBuilder: child.build,
       valueBuilder: _createMachine,
     );
+  }
+
+  @override
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Widget? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -195,16 +206,27 @@ class ZacStateMachineBuildStateBuilder
     FlutterWidget? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
 
-  @override
-  ZacStateMachineBuildState buildWidget(ZacContext zacContext) {
+  ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
       key: key?.buildOrNull(zacContext),
       family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
           (unmappedStateWidget ?? const FlutterSizedBox.shrink())
-              .buildWidget(zacContext),
+              .build(zacContext),
     );
+  }
+
+  @override
+  ZacStateMachineBuildState build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ZacStateMachineBuildState? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 
@@ -249,7 +271,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.getWidget(zacContext).buildWidget(zacContext);
+      return machine.getWidget(zacContext).build(zacContext);
     }
     return unmappedStateWidget(zacContext);
   }

@@ -4,6 +4,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
@@ -26,12 +27,23 @@ class ZacUpdateContextBuilder
     required FlutterWidget child,
   }) = _ZacUpdateContextBuilder;
 
-  @override
-  ZacUpdateContext buildWidget(ZacContext zacContext) {
+  ZacUpdateContext _buildWidget(ZacContext zacContext) {
     return ZacUpdateContext(
-      builder: (zacContext) => child.buildWidget(zacContext),
+      builder: child.build,
       key: key?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  ZacUpdateContext build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ZacUpdateContext? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
 

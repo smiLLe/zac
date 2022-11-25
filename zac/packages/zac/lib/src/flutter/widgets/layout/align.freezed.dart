@@ -23,8 +23,7 @@ mixin _$FlutterAlign {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   ZacDouble? get widthFactor => throw _privateConstructorUsedError;
-  ZacDouble? get heightFactor =>
-      throw _privateConstructorUsedError; // @ZacWidgetNullableConverter() ZacWidget? child,
+  ZacDouble? get heightFactor => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -56,7 +55,6 @@ class _$_FlutterAlign extends _FlutterAlign {
   final ZacDouble? widthFactor;
   @override
   final ZacDouble? heightFactor;
-// @ZacWidgetNullableConverter() ZacWidget? child,
   @override
   final FlutterWidget? child;
 
@@ -114,6 +112,6 @@ abstract class _FlutterAlign extends FlutterAlign {
   ZacDouble? get widthFactor;
   @override
   ZacDouble? get heightFactor;
-  @override // @ZacWidgetNullableConverter() ZacWidget? child,
+  @override
   FlutterWidget? get child;
 }

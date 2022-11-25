@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -34,8 +35,7 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
     ZacListOfFlutterWidget? children,
   }) = _FlutterRow;
 
-  @override
-  Row buildWidget(ZacContext zacContext) {
+  Row _buildWidget(ZacContext zacContext) {
     return Row(
       key: key?.buildOrNull(zacContext),
       mainAxisAlignment:
@@ -49,5 +49,17 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
       textBaseline: textBaseline?.build(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  Row build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  Row? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

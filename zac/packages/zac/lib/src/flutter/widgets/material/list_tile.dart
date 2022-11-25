@@ -6,6 +6,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 part 'list_tile.freezed.dart';
@@ -54,14 +55,13 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
     ZacDouble? minLeadingWidth,
   }) = _FlutterListTile;
 
-  @override
-  ListTile buildWidget(ZacContext zacContext) {
+  ListTile _buildWidget(ZacContext zacContext) {
     return ListTile(
       key: key?.buildOrNull(zacContext),
-      leading: leading?.buildWidget(zacContext),
-      title: title?.buildWidget(zacContext),
-      subtitle: subtitle?.buildWidget(zacContext),
-      trailing: trailing?.buildWidget(zacContext),
+      leading: leading?.buildOrNull(zacContext),
+      title: title?.buildOrNull(zacContext),
+      subtitle: subtitle?.buildOrNull(zacContext),
+      trailing: trailing?.buildOrNull(zacContext),
       isThreeLine: isThreeLine?.buildOrNull(zacContext) ?? false,
       dense: dense?.buildOrNull(zacContext),
 // FlutterVisualDensity? visualDensity,
@@ -87,5 +87,17 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
       minVerticalPadding: minVerticalPadding?.buildOrNull(zacContext),
       minLeadingWidth: minLeadingWidth?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  ListTile build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ListTile? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

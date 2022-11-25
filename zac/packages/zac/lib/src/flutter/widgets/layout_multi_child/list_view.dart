@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -48,8 +49,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     FlutterClip? clipBehavior,
   }) = _FlutterListView;
 
-  @override
-  ListView buildWidget(ZacContext zacContext) {
+  ListView _buildWidget(ZacContext zacContext) {
     return ListView(
       key: key?.buildOrNull(zacContext),
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
@@ -59,7 +59,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
       padding: padding?.build(zacContext),
       itemExtent: itemExtent?.buildOrNull(zacContext),
-      prototypeItem: prototypeItem?.buildWidget(zacContext),
+      prototypeItem: prototypeItem?.buildOrNull(zacContext),
       addAutomaticKeepAlives:
           addAutomaticKeepAlives?.buildOrNull(zacContext) ?? true,
       addRepaintBoundaries:
@@ -74,5 +74,17 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       physics: physics?.build(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
+  }
+
+  @override
+  ListView build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  ListView? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

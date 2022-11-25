@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,14 +32,25 @@ class FlutterFractionallySizedBox
     ZacDouble? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
-  @override
-  FractionallySizedBox buildWidget(ZacContext zacContext) {
+  FractionallySizedBox _buildWidget(ZacContext zacContext) {
     return FractionallySizedBox(
       key: key?.buildOrNull(zacContext),
       heightFactor: heightFactor?.buildOrNull(zacContext),
       widthFactor: widthFactor?.buildOrNull(zacContext),
       alignment: alignment?.build(zacContext) ?? Alignment.center,
-      child: child?.buildWidget(zacContext),
+      child: child?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  FractionallySizedBox build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  FractionallySizedBox? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }

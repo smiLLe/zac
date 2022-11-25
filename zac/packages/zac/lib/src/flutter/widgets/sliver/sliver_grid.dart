@@ -5,6 +5,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
@@ -26,12 +27,23 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
     required FlutterSliverGridDelegate gridDelegate,
   }) = _FlutterSliverGrid;
 
-  @override
-  SliverGrid buildWidget(ZacContext zacContext) {
+  SliverGrid _buildWidget(ZacContext zacContext) {
     return SliverGrid(
       key: key?.buildOrNull(zacContext),
       delegate: delegate.build(zacContext),
       gridDelegate: gridDelegate.build(zacContext),
     );
+  }
+
+  @override
+  SliverGrid build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
+  }
+
+  @override
+  SliverGrid? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _buildWidget(zacContext);
   }
 }
