@@ -45,5 +45,5 @@ _$_FlutterWrap _$$_FlutterWrapFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       children: json['children'] == null
           ? null
-          : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
+          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
     );

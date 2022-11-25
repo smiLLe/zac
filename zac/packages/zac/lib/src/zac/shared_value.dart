@@ -229,6 +229,42 @@ mixin ConsumeSharedValue<T> {
   }
 }
 
+mixin ConsumeSharedValueList<T> {
+  SharedValueFamily get family;
+  ZacTransformers? get transformer;
+  ZacTransformers? get itemTransformer;
+  ZacTransformers? get select;
+  SharedValueConsumeType? get forceConsume;
+
+  List<T> consumeValue(ZacContext zacContext,
+      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTypedList<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? type),
+      family: family,
+      select: select,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+    );
+
+    return value;
+  }
+
+  List<T>? consumeValueOrNull(ZacContext zacContext,
+      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.getTypedListOrNull<T>(
+      zacContext: zacContext,
+      consumeType: (forceConsume ?? type),
+      family: family,
+      select: select,
+      transformer: transformer,
+      itemTransformer: itemTransformer,
+    );
+
+    return value;
+  }
+}
+
 @freezedZacBuilder
 @ZacGenerate()
 class SharedValueActions with _$SharedValueActions implements ZacAction {

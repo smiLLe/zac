@@ -13,8 +13,7 @@ void main() {
           'value': {'converter': 'z:1:ZacValue.consume', 'family': 'foo'}
         }),
         FlutterNavigatorState.shared(
-            value: ZacValue<FlutterGlobalKeyNavigatorState>.consume(
-                family: 'foo')));
+            value: FlutterGlobalKeyNavigatorState.consume(family: 'foo')));
   });
 
   group('Navigator', () {

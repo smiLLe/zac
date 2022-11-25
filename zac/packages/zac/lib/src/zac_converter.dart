@@ -493,24 +493,20 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:ControlFlowAction.if': ZacControlFlowAction.fromJson,
   'z:1:DateTime': ZacDateTime.fromJson,
   'z:1:DateTime.consume': ZacDateTime.fromJson,
-  'z:1:DateTime.transformable': ZacDateTime.fromJson,
   'z:1:ExecuteActions.listen': ZacExecuteActionsBuilder.fromJson,
   'z:1:ExecuteActions.once': ZacExecuteActionsBuilder.fromJson,
   'z:1:FlutterWidget': ZacFlutterWidget.fromJson,
   'z:1:FlutterWidget.consume': ZacFlutterWidget.fromJson,
-  'z:1:FlutterWidget.transformable': ZacFlutterWidget.fromJson,
   'z:1:GlobalKey<NavigatorState>.consume':
       FlutterGlobalKeyNavigatorState.fromJson,
   'z:1:GlobalKey<ScaffoldMessengerState>.consume':
       FlutterGlobalKeyScaffoldMessengerState.fromJson,
   'z:1:List<FlutterWidget>': ZacListOfFlutterWidget.fromJson,
   'z:1:List<FlutterWidget>.consume': ZacListOfFlutterWidget.fromJson,
-  'z:1:List<FlutterWidget>.transformable': ZacListOfFlutterWidget.fromJson,
   'z:1:Navigator.popUntilRouteName': ZacFlutterNavigatorActions.fromJson,
   'z:1:NavigatorState.shared': FlutterNavigatorState.fromJson,
   'z:1:Object': ZacObject.fromJson,
   'z:1:Object.consume': ZacObject.fromJson,
-  'z:1:Object.transformable': ZacObject.fromJson,
   'z:1:ProvideKey:GlobalKey<NavigatorState>': ZacProvideFlutterKey.fromJson,
   'z:1:ProvideKey:GlobalKey<ScaffoldMessengerState>':
       ZacProvideFlutterKey.fromJson,
@@ -534,7 +530,6 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:StateMachine:Transition': ZacTransition.fromJson,
   'z:1:String': ZacString.fromJson,
   'z:1:String.consume': ZacString.fromJson,
-  'z:1:String.transformable': ZacString.fromJson,
   'z:1:Transformer:Bool.negate': BoolTransformer.fromJson,
   'z:1:Transformer:Converter': ConvertTransformer.fromJson,
   'z:1:Transformer:Iterable.contains': IterableTransformer.fromJson,
@@ -613,14 +608,10 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
   'z:1:bool': ZacBool.fromJson,
   'z:1:bool.consume': ZacBool.fromJson,
-  'z:1:bool.transformable': ZacBool.fromJson,
   'z:1:double': ZacDouble.fromJson,
   'z:1:double.consume': ZacDouble.fromJson,
-  'z:1:double.transformable': ZacDouble.fromJson,
   'z:1:int': ZacInt.fromJson,
   'z:1:int.consume': ZacInt.fromJson,
-  'z:1:int.transformable': ZacInt.fromJson,
   'z:1:num': ZacNum.fromJson,
-  'z:1:num.consume': ZacNum.fromJson,
-  'z:1:num.transformable': ZacNum.fromJson
+  'z:1:num.consume': ZacNum.fromJson
 };

@@ -69,7 +69,7 @@ All configured states are "${states.keys.join(', ')}".
   }
 
   FlutterWidget getWidget(ZacContext zacContext) {
-    return config.widget.getValue(zacContext);
+    return config.widget.getVal(zacContext);
   }
 
   ZacStateConfig findConfigByState(String state) {

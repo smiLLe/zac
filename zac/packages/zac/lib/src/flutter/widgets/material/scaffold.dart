@@ -35,7 +35,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     FlutterWidget? floatingActionButton,
     // FloatingActionButtonLocation? floatingActionButtonLocation,
     // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-    ZacValueList<FlutterWidget>? persistentFooterButtons,
+    ZacListOfFlutterWidget? persistentFooterButtons,
     FlutterWidget? drawer,
     // DrawerCallback? onDrawerChanged,
     FlutterWidget? endDrawer,
@@ -64,7 +64,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         floatingActionButton:
             value.floatingActionButton?.buildWidget(zacContext),
         persistentFooterButtons:
-            value.persistentFooterButtons?.getWidgets(zacContext),
+            value.persistentFooterButtons?.buildOrNull(zacContext),
         appBar: value.appBar?.buildWidget(zacContext) as PreferredSizeWidget?,
         drawer: value.drawer?.buildWidget(zacContext),
         endDrawer: value.endDrawer?.buildWidget(zacContext),
@@ -397,7 +397,7 @@ class FlutterMaterialBanner
     FlutterKey? key,
     required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
-    required ZacValueList<FlutterWidget> actions,
+    required ZacListOfFlutterWidget actions,
     ZacDouble? elevation,
     required FlutterWidget? leading,
     FlutterColor? backgroundColor,
@@ -413,7 +413,7 @@ class FlutterMaterialBanner
   MaterialBanner buildWidget(ZacContext zacContext) {
     return MaterialBanner(
       content: content.buildWidget(zacContext),
-      actions: actions.getWidgets(zacContext),
+      actions: actions.build(zacContext),
       key: key?.buildKey(zacContext),
       // animation: ,
       backgroundColor: backgroundColor?.build(zacContext),

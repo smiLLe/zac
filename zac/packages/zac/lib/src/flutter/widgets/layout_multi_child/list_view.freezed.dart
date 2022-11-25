@@ -34,8 +34,7 @@ mixin _$FlutterListView {
   ZacBool? get addRepaintBoundaries => throw _privateConstructorUsedError;
   ZacBool? get addSemanticIndexes => throw _privateConstructorUsedError;
   ZacDouble? get cacheExtent => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget>? get children =>
-      throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
   ZacInt? get semanticChildCount =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
@@ -107,7 +106,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacDouble? cacheExtent;
   @override
-  final ZacValueList<FlutterWidget>? children;
+  final ZacListOfFlutterWidget? children;
   @override
   final ZacInt? semanticChildCount;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -214,7 +213,7 @@ abstract class _FlutterListView extends FlutterListView {
       final ZacBool? addRepaintBoundaries,
       final ZacBool? addSemanticIndexes,
       final ZacDouble? cacheExtent,
-      final ZacValueList<FlutterWidget>? children,
+      final ZacListOfFlutterWidget? children,
       final ZacInt? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
       final ZacString? restorationId,
@@ -253,7 +252,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacDouble? get cacheExtent;
   @override
-  ZacValueList<FlutterWidget>? get children;
+  ZacListOfFlutterWidget? get children;
   @override
   ZacInt? get semanticChildCount;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,

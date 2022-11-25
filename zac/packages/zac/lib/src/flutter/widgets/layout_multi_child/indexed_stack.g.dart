@@ -27,5 +27,5 @@ _$_FlutterIndexedStack _$$_FlutterIndexedStackFromJson(
           : ZacInt.fromJson(json['index'] as Object),
       children: json['children'] == null
           ? null
-          : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
+          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
     );

@@ -147,7 +147,7 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
       _$$_ZacNavigatorStateSharedValueFromJson(json);
 
   @override
-  final ZacValue<FlutterGlobalKeyNavigatorState> value;
+  final FlutterGlobalKeyNavigatorState value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -182,14 +182,14 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
 
 abstract class _ZacNavigatorStateSharedValue extends FlutterNavigatorState {
   factory _ZacNavigatorStateSharedValue(
-          {required final ZacValue<FlutterGlobalKeyNavigatorState> value}) =
+          {required final FlutterGlobalKeyNavigatorState value}) =
       _$_ZacNavigatorStateSharedValue;
   _ZacNavigatorStateSharedValue._() : super._();
 
   factory _ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ZacNavigatorStateSharedValue.fromJson;
 
-  ZacValue<FlutterGlobalKeyNavigatorState> get value;
+  FlutterGlobalKeyNavigatorState get value;
 }
 
 FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {

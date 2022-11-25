@@ -62,6 +62,26 @@ void expectConvertConsumeSharedValue<Builder, Value>({
       create(family: 'shared'));
 }
 
+void expectConvertConsumeListSharedValue<Builder, Value>({
+  required String converter,
+  required Builder Function({
+    required Object family,
+    ZacTransformers? transformer,
+    ZacTransformers? select,
+    SharedValueConsumeType? forceConsume,
+  })
+      create,
+}) {
+  expect(
+      ConverterHelper.convertToType<Builder>(
+          {'converter': converter, 'family': 'shared'}),
+      isA<ConsumeSharedValueList<Value>>());
+  expect(
+      ConverterHelper.convertToType<Builder>(
+          {'converter': converter, 'family': 'shared'}),
+      create(family: 'shared'));
+}
+
 Future<void>
     expectValueFromZacBuilder<Builder extends ZacBuilder<Value>, Value>({
   required WidgetTester tester,

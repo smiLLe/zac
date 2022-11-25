@@ -425,7 +425,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(
                   ZacString.consume(
                     family: 'family',
@@ -464,7 +464,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(ZacString.consume(family: 'family')),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
@@ -494,7 +494,7 @@ void main() {
             value: ['a', 'b'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(ZacString.consume(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -535,7 +535,7 @@ void main() {
             value: ['ignore'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(ZacString.consume(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -580,7 +580,7 @@ void main() {
             ],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(ZacString.consume(
                   family: 'family',
                   transformer: ZacTransformers([
@@ -632,7 +632,7 @@ void main() {
             value: {'ignore': 'ignore'},
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<FlutterWidget>.fromJson([
+              children: ZacListOfFlutterWidget(items: [
                 FlutterText(ZacString.consume(
                   family: 'family',
                   transformer: ZacTransformers([

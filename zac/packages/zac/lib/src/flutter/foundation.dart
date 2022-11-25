@@ -177,6 +177,8 @@ class ZacProvideFlutterKey
     String? debugLabel,
   }) = _ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState;
 
+  Widget childBuilder(ZacContext zacContext) => child.build(zacContext);
+
   @override
   Widget buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
@@ -188,7 +190,7 @@ class ZacProvideFlutterKey
               GlobalKey<ScaffoldMessengerState>(debugLabel: obj.debugLabel),
         );
       },
-      childBuilder: child.getValue(zacContext).buildWidget,
+      childBuilder: childBuilder,
       family: family,
       autoCreate: true,
     );

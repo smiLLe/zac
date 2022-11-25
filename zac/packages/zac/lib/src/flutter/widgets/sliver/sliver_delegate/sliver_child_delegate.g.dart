@@ -9,7 +9,7 @@ part of 'sliver_child_delegate.dart';
 _$_FlutterSliverChildListDelegate _$$_FlutterSliverChildListDelegateFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterSliverChildListDelegate(
-      ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
+      ZacListOfFlutterWidget.fromJson(json['children'] as Object),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
           ? null
           : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
@@ -29,7 +29,7 @@ _$_FlutterSliverChildListDelegateFixed
     _$$_FlutterSliverChildListDelegateFixedFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterSliverChildListDelegateFixed(
-          ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
+          ZacListOfFlutterWidget.fromJson(json['children'] as Object),
           addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
               ? null
               : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),

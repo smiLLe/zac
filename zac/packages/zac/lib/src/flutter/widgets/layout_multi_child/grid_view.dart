@@ -39,7 +39,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,
     ZacDouble? cacheExtent,
-    ZacValueList<FlutterWidget>? children,
+    ZacListOfFlutterWidget? children,
     ZacInt? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
@@ -69,7 +69,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
           ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      children: children?.getWidgets(zacContext) ?? const <Widget>[],
+      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }
 }

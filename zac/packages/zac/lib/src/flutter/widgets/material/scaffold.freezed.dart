@@ -27,7 +27,7 @@ mixin _$FlutterScaffold {
   FlutterWidget? get floatingActionButton =>
       throw _privateConstructorUsedError; // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-  ZacValueList<FlutterWidget>? get persistentFooterButtons =>
+  ZacListOfFlutterWidget? get persistentFooterButtons =>
       throw _privateConstructorUsedError;
   FlutterWidget? get drawer =>
       throw _privateConstructorUsedError; // DrawerCallback? onDrawerChanged,
@@ -96,7 +96,7 @@ class _$_FlutterScaffold extends _FlutterScaffold {
 // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
   @override
-  final ZacValueList<FlutterWidget>? persistentFooterButtons;
+  final ZacListOfFlutterWidget? persistentFooterButtons;
   @override
   final FlutterWidget? drawer;
 // DrawerCallback? onDrawerChanged,
@@ -220,7 +220,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
       final FlutterWidget? appBar,
       final FlutterWidget? body,
       final FlutterWidget? floatingActionButton,
-      final ZacValueList<FlutterWidget>? persistentFooterButtons,
+      final ZacListOfFlutterWidget? persistentFooterButtons,
       final FlutterWidget? drawer,
       final FlutterWidget? endDrawer,
       final FlutterWidget? bottomNavigationBar,
@@ -250,7 +250,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
   FlutterWidget? get floatingActionButton;
   @override // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-  ZacValueList<FlutterWidget>? get persistentFooterButtons;
+  ZacListOfFlutterWidget? get persistentFooterButtons;
   @override
   FlutterWidget? get drawer;
   @override // DrawerCallback? onDrawerChanged,
@@ -1465,7 +1465,7 @@ mixin _$FlutterMaterialBanner {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget get content => throw _privateConstructorUsedError;
   FlutterTextStyle? get contentTextStyle => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget> get actions => throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget get actions => throw _privateConstructorUsedError;
   ZacDouble? get elevation => throw _privateConstructorUsedError;
   FlutterWidget? get leading => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
@@ -1511,7 +1511,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
   @override
   final FlutterTextStyle? contentTextStyle;
   @override
-  final ZacValueList<FlutterWidget> actions;
+  final ZacListOfFlutterWidget actions;
   @override
   final ZacDouble? elevation;
   @override
@@ -1588,7 +1588,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
       {final FlutterKey? key,
       required final FlutterWidget content,
       final FlutterTextStyle? contentTextStyle,
-      required final ZacValueList<FlutterWidget> actions,
+      required final ZacListOfFlutterWidget actions,
       final ZacDouble? elevation,
       required final FlutterWidget? leading,
       final FlutterColor? backgroundColor,
@@ -1608,7 +1608,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   @override
   FlutterTextStyle? get contentTextStyle;
   @override
-  ZacValueList<FlutterWidget> get actions;
+  ZacListOfFlutterWidget get actions;
   @override
   ZacDouble? get elevation;
   @override

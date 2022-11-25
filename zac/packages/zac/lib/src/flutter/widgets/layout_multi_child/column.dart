@@ -31,7 +31,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterVerticalDirection? verticalDirection,
     FlutterTextBaseline? textBaseline,
-    ZacValueList<FlutterWidget>? children,
+    ZacListOfFlutterWidget? children,
   }) = _FlutterColumn;
 
   @override
@@ -47,7 +47,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
       verticalDirection:
           verticalDirection?.build(zacContext) ?? VerticalDirection.down,
       textBaseline: textBaseline?.build(zacContext),
-      children: children?.getWidgets(zacContext) ?? const <Widget>[],
+      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }
 }

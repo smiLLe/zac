@@ -38,7 +38,7 @@ class FlutterCustomScrollView
     FlutterKey? center,
     ZacDouble? anchor,
     ZacDouble? cacheExtent,
-    ZacValueList<FlutterWidget>? slivers,
+    ZacListOfFlutterWidget? slivers,
     ZacInt? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
@@ -50,7 +50,7 @@ class FlutterCustomScrollView
   CustomScrollView buildWidget(ZacContext zacContext) {
     return CustomScrollView(
       key: key?.buildKey(zacContext),
-      slivers: slivers?.getWidgets(zacContext) ?? const <Widget>[],
+      slivers: slivers?.buildOrNull(zacContext) ?? const <Widget>[],
       scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
       controller: controller?.buildOrNull(zacContext),

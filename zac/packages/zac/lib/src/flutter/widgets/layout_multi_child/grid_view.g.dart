@@ -47,7 +47,7 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
           : ZacDouble.fromJson(json['cacheExtent'] as Object),
       children: json['children'] == null
           ? null
-          : ZacValueList<FlutterWidget>.fromJson(json['children'] as Object),
+          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
           : ZacInt.fromJson(json['semanticChildCount'] as Object),

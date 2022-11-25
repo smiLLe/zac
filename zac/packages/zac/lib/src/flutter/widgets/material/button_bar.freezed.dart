@@ -33,8 +33,7 @@ mixin _$FlutterButtonBar {
   FlutterVerticalDirection? get overflowDirection =>
       throw _privateConstructorUsedError;
   ZacDouble? get overflowButtonSpacing => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget>? get children =>
-      throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -83,7 +82,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
   @override
   final ZacDouble? overflowButtonSpacing;
   @override
-  final ZacValueList<FlutterWidget>? children;
+  final ZacListOfFlutterWidget? children;
 
   @override
   String toString() {
@@ -151,7 +150,7 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
       final ZacBool? buttonAlignedDropdown,
       final FlutterVerticalDirection? overflowDirection,
       final ZacDouble? overflowButtonSpacing,
-      final ZacValueList<FlutterWidget>? children}) = _$_FlutterButtonBar;
+      final ZacListOfFlutterWidget? children}) = _$_FlutterButtonBar;
   _FlutterButtonBar._() : super._();
 
   factory _FlutterButtonBar.fromJson(Map<String, dynamic> json) =
@@ -176,5 +175,5 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
   @override
   ZacDouble? get overflowButtonSpacing;
   @override
-  ZacValueList<FlutterWidget>? get children;
+  ZacListOfFlutterWidget? get children;
 }

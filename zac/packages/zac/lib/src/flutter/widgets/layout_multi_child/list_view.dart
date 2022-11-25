@@ -40,7 +40,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     ZacBool? addRepaintBoundaries,
     ZacBool? addSemanticIndexes,
     ZacDouble? cacheExtent,
-    ZacValueList<FlutterWidget>? children,
+    ZacListOfFlutterWidget? children,
     ZacInt? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
@@ -72,7 +72,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       restorationId: restorationId?.buildOrNull(zacContext),
       clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
       physics: physics?.build(zacContext),
-      children: children?.getWidgets(zacContext) ?? const <Widget>[],
+      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }
 }

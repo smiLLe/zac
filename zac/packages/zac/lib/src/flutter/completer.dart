@@ -65,8 +65,7 @@ class ZacCompleterProviderBuilder
   Widget buildWidget(ZacContext zacContext) {
     return map(
       asVoid: (value) => ZacCompleterProvider<void>(
-        childBuilder: (zacContext) =>
-            value.child.getValue(zacContext).buildWidget(zacContext),
+        childBuilder: (zacContext) => value.child.build(zacContext),
         completerBuilder: () => Completer<void>(),
         disposeComplete: (completer) => completer.complete(null),
         family: family,

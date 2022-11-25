@@ -25,8 +25,7 @@ mixin _$FlutterStack {
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterStackFit? get fit => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget>? get children =>
-      throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -61,7 +60,7 @@ class _$_FlutterStack extends _FlutterStack {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacValueList<FlutterWidget>? children;
+  final ZacListOfFlutterWidget? children;
 
   @override
   String toString() {
@@ -106,7 +105,7 @@ abstract class _FlutterStack extends FlutterStack {
       final FlutterTextDirection? textDirection,
       final FlutterStackFit? fit,
       final FlutterClip? clipBehavior,
-      final ZacValueList<FlutterWidget>? children}) = _$_FlutterStack;
+      final ZacListOfFlutterWidget? children}) = _$_FlutterStack;
   _FlutterStack._() : super._();
 
   factory _FlutterStack.fromJson(Map<String, dynamic> json) =
@@ -123,5 +122,5 @@ abstract class _FlutterStack extends FlutterStack {
   @override
   FlutterClip? get clipBehavior;
   @override
-  ZacValueList<FlutterWidget>? get children;
+  ZacListOfFlutterWidget? get children;
 }

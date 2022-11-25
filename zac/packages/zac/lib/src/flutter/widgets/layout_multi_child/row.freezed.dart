@@ -30,8 +30,7 @@ mixin _$FlutterRow {
   FlutterVerticalDirection? get verticalDirection =>
       throw _privateConstructorUsedError;
   FlutterTextBaseline? get textBaseline => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget>? get children =>
-      throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -72,7 +71,7 @@ class _$_FlutterRow extends _FlutterRow {
   @override
   final FlutterTextBaseline? textBaseline;
   @override
-  final ZacValueList<FlutterWidget>? children;
+  final ZacListOfFlutterWidget? children;
 
   @override
   String toString() {
@@ -132,7 +131,7 @@ abstract class _FlutterRow extends FlutterRow {
       final FlutterTextDirection? textDirection,
       final FlutterVerticalDirection? verticalDirection,
       final FlutterTextBaseline? textBaseline,
-      final ZacValueList<FlutterWidget>? children}) = _$_FlutterRow;
+      final ZacListOfFlutterWidget? children}) = _$_FlutterRow;
   _FlutterRow._() : super._();
 
   factory _FlutterRow.fromJson(Map<String, dynamic> json) =
@@ -153,5 +152,5 @@ abstract class _FlutterRow extends FlutterRow {
   @override
   FlutterTextBaseline? get textBaseline;
   @override
-  ZacValueList<FlutterWidget>? get children;
+  ZacListOfFlutterWidget? get children;
 }

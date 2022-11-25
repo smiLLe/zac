@@ -31,7 +31,7 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterVerticalDirection? verticalDirection,
     FlutterTextBaseline? textBaseline,
-    ZacValueList<FlutterWidget>? children,
+    ZacListOfFlutterWidget? children,
   }) = _FlutterRow;
 
   @override
@@ -47,7 +47,7 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
       verticalDirection:
           verticalDirection?.build(zacContext) ?? VerticalDirection.down,
       textBaseline: textBaseline?.build(zacContext),
-      children: children?.getWidgets(zacContext) ?? const <Widget>[],
+      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }
 }

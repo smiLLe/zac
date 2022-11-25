@@ -38,7 +38,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterKey? key,
     FlutterWidget? title,
     FlutterWidget? content,
-    ZacValueList<FlutterWidget>? actions,
+    ZacListOfFlutterWidget? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
@@ -62,7 +62,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
     FlutterWidget? title,
-    ZacValueList<FlutterWidget>? children,
+    ZacListOfFlutterWidget? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
@@ -102,7 +102,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         key: value.key?.buildKey(zacContext),
         title: value.title?.buildWidget(zacContext),
         content: value.content?.buildWidget(zacContext),
-        actions: value.actions?.getWidgets(zacContext) ?? const <Widget>[],
+        actions: value.actions?.buildOrNull(zacContext) ?? const <Widget>[],
         actionsAlignment: value.actionsAlignment?.build(zacContext),
         actionsOverflowButtonSpacing:
             value.actionsOverflowButtonSpacing?.buildOrNull(zacContext),
@@ -142,7 +142,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
         titlePadding: value.titlePadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
         titleTextStyle: value.titleTextStyle?.build(zacContext),
-        children: value.children?.getWidgets(zacContext) ?? const <Widget>[],
+        children: value.children?.buildOrNull(zacContext) ?? const <Widget>[],
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
         key: value.key?.buildKey(zacContext),

@@ -30,3 +30,14 @@ extension ConsumeZacBuilder<T> on ConsumeSharedValue<T> {
     return consumeValueOrNull(zacContext, type: onConsume.type);
   }
 }
+
+extension ConsumeListZacBuilder<T> on ConsumeSharedValueList<T> {
+  List<T> buildConsume(ZacContext zacContext, ZacBuilderConsume onConsume) {
+    return consumeValue(zacContext, type: onConsume.type);
+  }
+
+  List<T>? buildConsumeOrNull(
+      ZacContext zacContext, ZacBuilderConsume onConsume) {
+    return consumeValueOrNull(zacContext, type: onConsume.type);
+  }
+}

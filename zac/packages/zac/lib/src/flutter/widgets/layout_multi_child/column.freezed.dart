@@ -30,8 +30,7 @@ mixin _$FlutterColumn {
   FlutterVerticalDirection? get verticalDirection =>
       throw _privateConstructorUsedError;
   FlutterTextBaseline? get textBaseline => throw _privateConstructorUsedError;
-  ZacValueList<FlutterWidget>? get children =>
-      throw _privateConstructorUsedError;
+  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -72,7 +71,7 @@ class _$_FlutterColumn extends _FlutterColumn {
   @override
   final FlutterTextBaseline? textBaseline;
   @override
-  final ZacValueList<FlutterWidget>? children;
+  final ZacListOfFlutterWidget? children;
 
   @override
   String toString() {
@@ -132,7 +131,7 @@ abstract class _FlutterColumn extends FlutterColumn {
       final FlutterTextDirection? textDirection,
       final FlutterVerticalDirection? verticalDirection,
       final FlutterTextBaseline? textBaseline,
-      final ZacValueList<FlutterWidget>? children}) = _$_FlutterColumn;
+      final ZacListOfFlutterWidget? children}) = _$_FlutterColumn;
   _FlutterColumn._() : super._();
 
   factory _FlutterColumn.fromJson(Map<String, dynamic> json) =
@@ -153,5 +152,5 @@ abstract class _FlutterColumn extends FlutterColumn {
   @override
   FlutterTextBaseline? get textBaseline;
   @override
-  ZacValueList<FlutterWidget>? get children;
+  ZacListOfFlutterWidget? get children;
 }
