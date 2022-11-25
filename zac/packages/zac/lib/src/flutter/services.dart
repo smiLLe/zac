@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,8 @@ part 'services.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
+class FlutterSystemUiOverlayStyle
+    with _$FlutterSystemUiOverlayStyle, ZacBuilder<SystemUiOverlayStyle> {
   const FlutterSystemUiOverlayStyle._();
 
   factory FlutterSystemUiOverlayStyle.fromJson(Map<String, dynamic> json) =>
@@ -29,7 +31,7 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
     ZacBool? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
-  SystemUiOverlayStyle build(ZacContext zacContext) {
+  SystemUiOverlayStyle _build(ZacContext zacContext) {
     return SystemUiOverlayStyle(
       systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
       systemNavigationBarDividerColor:
@@ -45,11 +47,24 @@ class FlutterSystemUiOverlayStyle with _$FlutterSystemUiOverlayStyle {
           systemStatusBarContrastEnforced?.buildOrNull(zacContext),
     );
   }
+
+  @override
+  SystemUiOverlayStyle build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  SystemUiOverlayStyle? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextInputType with _$FlutterTextInputType {
+class FlutterTextInputType
+    with _$FlutterTextInputType, ZacBuilder<TextInputType> {
   const FlutterTextInputType._();
 
   factory FlutterTextInputType.fromJson(Map<String, dynamic> json) =>
@@ -81,7 +96,7 @@ class FlutterTextInputType with _$FlutterTextInputType {
   factory FlutterTextInputType.visiblePassword() =
       _FlutterTextInputTypevisiblePassword;
 
-  TextInputType build(ZacContext zacContext) {
+  TextInputType _build(ZacContext zacContext) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -96,11 +111,24 @@ class FlutterTextInputType with _$FlutterTextInputType {
       visiblePassword: (_) => TextInputType.visiblePassword,
     );
   }
+
+  @override
+  TextInputType build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextInputType? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextInputAction with _$FlutterTextInputAction {
+class FlutterTextInputAction
+    with _$FlutterTextInputAction, ZacBuilder<TextInputAction> {
   const FlutterTextInputAction._();
 
   factory FlutterTextInputAction.fromJson(Map<String, dynamic> json) =>
@@ -136,7 +164,7 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
   factory FlutterTextInputAction.unspecified() =
       _FlutterTextInputActionunspecified;
 
-  TextInputAction build(ZacContext zacContext) {
+  TextInputAction _build(ZacContext zacContext) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -153,11 +181,24 @@ class FlutterTextInputAction with _$FlutterTextInputAction {
       unspecified: (_) => TextInputAction.unspecified,
     );
   }
+
+  @override
+  TextInputAction build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextInputAction? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextCapitalization with _$FlutterTextCapitalization {
+class FlutterTextCapitalization
+    with _$FlutterTextCapitalization, ZacBuilder<TextCapitalization> {
   const FlutterTextCapitalization._();
 
   factory FlutterTextCapitalization.fromJson(Map<String, dynamic> json) =>
@@ -174,7 +215,7 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
   @FreezedUnionValue('f:1:TextCapitalization.words')
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
-  TextCapitalization build(ZacContext zacContext) {
+  TextCapitalization _build(ZacContext zacContext) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -182,11 +223,24 @@ class FlutterTextCapitalization with _$FlutterTextCapitalization {
       words: (_) => TextCapitalization.words,
     );
   }
+
+  @override
+  TextCapitalization build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  TextCapitalization? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterSmartDashesType with _$FlutterSmartDashesType {
+class FlutterSmartDashesType
+    with _$FlutterSmartDashesType, ZacBuilder<SmartDashesType> {
   const FlutterSmartDashesType._();
 
   factory FlutterSmartDashesType.fromJson(Map<String, dynamic> json) =>
@@ -198,17 +252,30 @@ class FlutterSmartDashesType with _$FlutterSmartDashesType {
   @FreezedUnionValue('f:1:SmartDashesType.enabled')
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
-  SmartDashesType build(ZacContext zacContext) {
+  SmartDashesType _build(ZacContext zacContext) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
     );
   }
+
+  @override
+  SmartDashesType build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  SmartDashesType? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
+class FlutterSmartQuotesType
+    with _$FlutterSmartQuotesType, ZacBuilder<SmartQuotesType> {
   const FlutterSmartQuotesType._();
 
   factory FlutterSmartQuotesType.fromJson(Map<String, dynamic> json) =>
@@ -220,10 +287,22 @@ class FlutterSmartQuotesType with _$FlutterSmartQuotesType {
   @FreezedUnionValue('f:1:SmartQuotesType.enabled')
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
-  SmartQuotesType build(ZacContext zacContext) {
+  SmartQuotesType _build(ZacContext zacContext) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,
     );
+  }
+
+  @override
+  SmartQuotesType build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  SmartQuotesType? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

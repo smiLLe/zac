@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,7 +11,8 @@ part 'rendering.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
+class FlutterHitTestBehavior
+    with _$FlutterHitTestBehavior, ZacBuilder<HitTestBehavior> {
   const FlutterHitTestBehavior._();
 
   factory FlutterHitTestBehavior.fromJson(Map<String, dynamic> json) =>
@@ -27,18 +29,31 @@ class FlutterHitTestBehavior with _$FlutterHitTestBehavior {
   factory FlutterHitTestBehavior.translucent() =
       _FlutterHitTestBehaviortranslucent;
 
-  HitTestBehavior build(ZacContext zacContext) {
+  HitTestBehavior _build(ZacContext zacContext) {
     return map(
       deferToChild: (_) => HitTestBehavior.deferToChild,
       opaque: (_) => HitTestBehavior.opaque,
       translucent: (_) => HitTestBehavior.translucent,
     );
   }
+
+  @override
+  HitTestBehavior build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  HitTestBehavior? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
+class FlutterCrossAxisAlignment
+    with _$FlutterCrossAxisAlignment, ZacBuilder<CrossAxisAlignment> {
   const FlutterCrossAxisAlignment._();
 
   factory FlutterCrossAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -61,7 +76,7 @@ class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
   factory FlutterCrossAxisAlignment.stretch() =
       _FlutterCrossAxisAlignmentStretch;
 
-  CrossAxisAlignment build(ZacContext zacContext) {
+  CrossAxisAlignment _build(ZacContext zacContext) {
     return map(
       baseline: (_) => CrossAxisAlignment.baseline,
       center: (_) => CrossAxisAlignment.center,
@@ -70,11 +85,24 @@ class FlutterCrossAxisAlignment with _$FlutterCrossAxisAlignment {
       stretch: (_) => CrossAxisAlignment.stretch,
     );
   }
+
+  @override
+  CrossAxisAlignment build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  CrossAxisAlignment? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
+class FlutterMainAxisAlignment
+    with _$FlutterMainAxisAlignment, ZacBuilder<MainAxisAlignment> {
   const FlutterMainAxisAlignment._();
 
   factory FlutterMainAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -101,7 +129,7 @@ class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
   factory FlutterMainAxisAlignment.spaceEvenly() =
       _FlutterMainAxisAlignmentEvenly;
 
-  MainAxisAlignment build(ZacContext zacContext) {
+  MainAxisAlignment _build(ZacContext zacContext) {
     return map(
       start: (_) => MainAxisAlignment.start,
       end: (_) => MainAxisAlignment.end,
@@ -111,11 +139,23 @@ class FlutterMainAxisAlignment with _$FlutterMainAxisAlignment {
       spaceEvenly: (_) => MainAxisAlignment.spaceEvenly,
     );
   }
+
+  @override
+  MainAxisAlignment build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  MainAxisAlignment? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterMainAxisSize with _$FlutterMainAxisSize {
+class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
   const FlutterMainAxisSize._();
 
   factory FlutterMainAxisSize.fromJson(Map<String, dynamic> json) =>
@@ -127,14 +167,26 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize {
   @FreezedUnionValue('f:1:MainAxisSize.max')
   factory FlutterMainAxisSize.max() = _FlutterMainAxisSizeMax;
 
-  MainAxisSize build(ZacContext zacContext) {
+  MainAxisSize _build(ZacContext zacContext) {
     return map(min: (_) => MainAxisSize.min, max: (_) => MainAxisSize.max);
+  }
+
+  @override
+  MainAxisSize build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  MainAxisSize? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterFlexFit with _$FlutterFlexFit {
+class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
   const FlutterFlexFit._();
 
   factory FlutterFlexFit.fromJson(Map<String, dynamic> json) =>
@@ -146,14 +198,27 @@ class FlutterFlexFit with _$FlutterFlexFit {
   @FreezedUnionValue('f:1:FlexFit.loose')
   factory FlutterFlexFit.loose() = _FlutterFlexFitLoose;
 
-  FlexFit build(ZacContext zacContext) {
+  FlexFit _build(ZacContext zacContext) {
     return map(tight: (_) => FlexFit.tight, loose: (_) => FlexFit.loose);
+  }
+
+  @override
+  FlexFit build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  FlexFit? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterWrapAlignment with _$FlutterWrapAlignment {
+class FlutterWrapAlignment
+    with _$FlutterWrapAlignment, ZacBuilder<WrapAlignment> {
   const FlutterWrapAlignment._();
 
   factory FlutterWrapAlignment.fromJson(Map<String, dynamic> json) =>
@@ -178,7 +243,7 @@ class FlutterWrapAlignment with _$FlutterWrapAlignment {
   @FreezedUnionValue('f:1:WrapAlignment.spaceEvenly')
   factory FlutterWrapAlignment.spaceEvenly() = _FlutterWrapAlignmentSpaceEvenly;
 
-  WrapAlignment build(ZacContext zacContext) {
+  WrapAlignment _build(ZacContext zacContext) {
     return map(
       center: (_) => WrapAlignment.center,
       end: (_) => WrapAlignment.end,
@@ -188,11 +253,24 @@ class FlutterWrapAlignment with _$FlutterWrapAlignment {
       start: (_) => WrapAlignment.start,
     );
   }
+
+  @override
+  WrapAlignment build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  WrapAlignment? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
+class FlutterWrapCrossAlignment
+    with _$FlutterWrapCrossAlignment, ZacBuilder<WrapCrossAlignment> {
   const FlutterWrapCrossAlignment._();
 
   factory FlutterWrapCrossAlignment.fromJson(Map<String, dynamic> json) =>
@@ -207,18 +285,30 @@ class FlutterWrapCrossAlignment with _$FlutterWrapCrossAlignment {
   @FreezedUnionValue('f:1:WrapCrossAlignment.start')
   factory FlutterWrapCrossAlignment.start() = _FlutterWrapCrossAlignmentStart;
 
-  WrapCrossAlignment build(ZacContext zacContext) {
+  WrapCrossAlignment _build(ZacContext zacContext) {
     return map(
       center: (_) => WrapCrossAlignment.center,
       end: (_) => WrapCrossAlignment.end,
       start: (_) => WrapCrossAlignment.start,
     );
   }
+
+  @override
+  WrapCrossAlignment build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  WrapCrossAlignment? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterStackFit with _$FlutterStackFit {
+class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
   const FlutterStackFit._();
 
   factory FlutterStackFit.fromJson(Map<String, dynamic> json) =>
@@ -233,18 +323,31 @@ class FlutterStackFit with _$FlutterStackFit {
   @FreezedUnionValue('f:1:StackFit.passthrough')
   factory FlutterStackFit.passthrough() = _FlutterStackFit;
 
-  StackFit build(ZacContext zacContext) {
+  StackFit _build(ZacContext zacContext) {
     return map(
       expand: (_) => StackFit.expand,
       loose: (_) => StackFit.loose,
       passthrough: (_) => StackFit.passthrough,
     );
   }
+
+  @override
+  StackFit build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  StackFit? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxConstraints with _$FlutterBoxConstraints {
+class FlutterBoxConstraints
+    with _$FlutterBoxConstraints, ZacBuilder<BoxConstraints> {
   const FlutterBoxConstraints._();
 
   factory FlutterBoxConstraints.fromJson(Map<String, dynamic> json) =>
@@ -281,7 +384,7 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
       {ZacDouble? width,
       ZacDouble? height}) = _FlutterBoxConstraintsTightForFinite;
 
-  BoxConstraints build(ZacContext zacContext) {
+  BoxConstraints _build(ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
         minWidth: value.minWidth?.buildOrNull(zacContext) ?? 0.0,
@@ -303,11 +406,24 @@ class FlutterBoxConstraints with _$FlutterBoxConstraints {
       ),
     );
   }
+
+  @override
+  BoxConstraints build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  BoxConstraints? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterDecorationPosition with _$FlutterDecorationPosition {
+class FlutterDecorationPosition
+    with _$FlutterDecorationPosition, ZacBuilder<DecorationPosition> {
   const FlutterDecorationPosition._();
 
   factory FlutterDecorationPosition.fromJson(Map<String, dynamic> json) =>
@@ -319,10 +435,22 @@ class FlutterDecorationPosition with _$FlutterDecorationPosition {
   @FreezedUnionValue('f:1:DecorationPosition.foreground')
   factory FlutterDecorationPosition.foreground() = _FlutterDecorationPositionFG;
 
-  DecorationPosition build(ZacContext zacContext) {
+  DecorationPosition _build(ZacContext zacContext) {
     return map(
       background: (_) => DecorationPosition.background,
       foreground: (_) => DecorationPosition.foreground,
     );
+  }
+
+  @override
+  DecorationPosition build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  DecorationPosition? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
