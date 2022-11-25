@@ -55,8 +55,8 @@ class FlutterProgressIndicator
       linear: (value) => LinearProgressIndicator(
         key: value.key?.buildOrNull(zacContext),
         value: value.value?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
-        color: value.color?.build(zacContext),
+        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
+        color: value.color?.buildOrNull(zacContext),
         minHeight: value.minHeight?.buildOrNull(zacContext),
         semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
         semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
@@ -64,8 +64,8 @@ class FlutterProgressIndicator
       circular: (value) => CircularProgressIndicator(
         key: value.key?.buildOrNull(zacContext),
         value: value.value?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
-        color: value.color?.build(zacContext),
+        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
+        color: value.color?.buildOrNull(zacContext),
         strokeWidth: value.strokeWidth?.buildOrNull(zacContext) ?? 4.0,
         semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
         semanticsValue: value.semanticsValue?.buildOrNull(zacContext),

@@ -90,10 +90,10 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
   TextField _buildWidget(ZacContext zacContext) {
     return TextField(
       key: key?.buildOrNull(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext) ?? TextAlign.start,
-      textDirection: textDirection?.build(zacContext),
+      style: style?.buildOrNull(zacContext),
+      strutStyle: strutStyle?.buildOrNull(zacContext),
+      textAlign: textAlign?.buildOrNull(zacContext) ?? TextAlign.start,
+      textDirection: textDirection?.buildOrNull(zacContext),
       readOnly: readOnly?.buildOrNull(zacContext) ?? false,
       showCursor: showCursor?.buildOrNull(zacContext),
       autofocus: autofocus?.buildOrNull(zacContext) ?? false,
@@ -108,30 +108,31 @@ class FlutterTextField with _$FlutterTextField implements FlutterWidget {
       enabled: enabled?.buildOrNull(zacContext),
       cursorWidth: cursorWidth?.buildOrNull(zacContext) ?? 2.0,
       cursorHeight: cursorHeight?.buildOrNull(zacContext),
-      cursorRadius: cursorRadius?.build(zacContext),
-      cursorColor: cursorColor?.build(zacContext),
-      keyboardAppearance: keyboardAppearance?.build(zacContext),
+      cursorRadius: cursorRadius?.buildOrNull(zacContext),
+      cursorColor: cursorColor?.buildOrNull(zacContext),
+      keyboardAppearance: keyboardAppearance?.buildOrNull(zacContext),
       scrollPadding:
-          scrollPadding?.build(zacContext) ?? const EdgeInsets.all(20.0),
+          scrollPadding?.buildOrNull(zacContext) ?? const EdgeInsets.all(20.0),
       enableInteractiveSelection:
           enableInteractiveSelection?.buildOrNull(zacContext) ?? true,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
       restorationId: restorationId?.buildOrNull(zacContext),
       enableIMEPersonalizedLearning:
           enableIMEPersonalizedLearning?.buildOrNull(zacContext) ?? true,
       onChanged: onChanged?.createCbParam1<String>(zacContext),
-      decoration: decoration?.build(zacContext) ?? const InputDecoration(),
-      keyboardType: keyboardType?.build(zacContext),
-      textInputAction: textInputAction?.build(zacContext),
-      textCapitalization:
-          textCapitalization?.build(zacContext) ?? TextCapitalization.none,
-      textAlignVertical: textAlignVertical?.build(zacContext),
-      smartDashesType: smartDashesType?.build(zacContext),
-      smartQuotesType: smartQuotesType?.build(zacContext),
+      decoration:
+          decoration?.buildOrNull(zacContext) ?? const InputDecoration(),
+      keyboardType: keyboardType?.buildOrNull(zacContext),
+      textInputAction: textInputAction?.buildOrNull(zacContext),
+      textCapitalization: textCapitalization?.buildOrNull(zacContext) ??
+          TextCapitalization.none,
+      textAlignVertical: textAlignVertical?.buildOrNull(zacContext),
+      smartDashesType: smartDashesType?.buildOrNull(zacContext),
+      smartQuotesType: smartQuotesType?.buildOrNull(zacContext),
       selectionHeightStyle:
-          selectionHeightStyle?.build(zacContext) ?? BoxHeightStyle.tight,
+          selectionHeightStyle?.buildOrNull(zacContext) ?? BoxHeightStyle.tight,
       selectionWidthStyle:
-          selectionWidthStyle?.build(zacContext) ?? BoxWidthStyle.tight,
+          selectionWidthStyle?.buildOrNull(zacContext) ?? BoxWidthStyle.tight,
       onTap: onTap?.createCb(zacContext),
       onEditingComplete: onEditingComplete?.createCb(zacContext),
       onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),

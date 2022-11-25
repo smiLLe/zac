@@ -32,12 +32,12 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
 
   Icon _buildWidget(ZacContext zacContext) {
     return Icon(
-      icon?.build(zacContext),
+      icon?.buildOrNull(zacContext),
       key: key?.buildOrNull(zacContext),
-      color: color?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
       size: size?.buildOrNull(zacContext),
       semanticLabel: semanticLabel?.buildOrNull(zacContext),
-      textDirection: textDirection?.build(zacContext),
+      textDirection: textDirection?.buildOrNull(zacContext),
     );
   }
 
@@ -56,7 +56,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterIconData with _$FlutterIconData {
+class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
   const FlutterIconData._();
 
   factory FlutterIconData.fromJson(Map<String, dynamic> json) =>
@@ -70,19 +70,32 @@ class FlutterIconData with _$FlutterIconData {
     ZacBool? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData build(ZacContext zacContext) {
+  IconData _build(ZacContext zacContext) {
     return IconData(
       codePoint.build(zacContext),
-      fontFamily: fontFamily?.build(zacContext),
-      fontPackage: fontPackage?.build(zacContext),
+      fontFamily: fontFamily?.buildOrNull(zacContext),
+      fontPackage: fontPackage?.buildOrNull(zacContext),
       matchTextDirection: matchTextDirection?.buildOrNull(zacContext) ?? false,
     );
+  }
+
+  @override
+  IconData build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  IconData? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterIconThemeData with _$FlutterIconThemeData {
+class FlutterIconThemeData
+    with _$FlutterIconThemeData, ZacBuilder<IconThemeData> {
   const FlutterIconThemeData._();
 
   factory FlutterIconThemeData.fromJson(Map<String, dynamic> json) =>
@@ -95,11 +108,23 @@ class FlutterIconThemeData with _$FlutterIconThemeData {
     ZacDouble? size,
   }) = _FlutterIconThemeData;
 
-  IconThemeData build(ZacContext zacContext) {
+  IconThemeData _build(ZacContext zacContext) {
     return IconThemeData(
-      color: color?.build(zacContext),
-      opacity: opacity?.build(zacContext),
-      size: size?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
+      opacity: opacity?.buildOrNull(zacContext),
+      size: size?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  IconThemeData build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  IconThemeData? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

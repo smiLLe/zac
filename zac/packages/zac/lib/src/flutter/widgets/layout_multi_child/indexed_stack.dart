@@ -36,9 +36,10 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   IndexedStack _buildWidget(ZacContext zacContext) {
     return IndexedStack(
       key: key?.buildOrNull(zacContext),
-      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(zacContext),
-      sizing: sizing?.build(zacContext) ?? StackFit.loose,
+      alignment:
+          alignment?.buildOrNull(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.buildOrNull(zacContext),
+      sizing: sizing?.buildOrNull(zacContext) ?? StackFit.loose,
       index: index?.buildOrNull(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );

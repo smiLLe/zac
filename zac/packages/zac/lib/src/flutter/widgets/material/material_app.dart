@@ -70,8 +70,8 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
       onGenerateRoute: onGenerateRoute?.buildRouteFactory(zacContext),
       onUnknownRoute: onUnknownRoute?.buildRouteFactory(zacContext),
       title: title?.buildOrNull(zacContext) ?? '',
-      color: color?.build(zacContext),
-      locale: locale?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
+      locale: locale?.buildOrNull(zacContext),
       debugShowMaterialGrid:
           debugShowMaterialGrid?.buildOrNull(zacContext) ?? false,
       showPerformanceOverlay:

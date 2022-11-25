@@ -37,7 +37,7 @@ class FlutterFractionallySizedBox
       key: key?.buildOrNull(zacContext),
       heightFactor: heightFactor?.buildOrNull(zacContext),
       widthFactor: widthFactor?.buildOrNull(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
       child: child?.buildOrNull(zacContext),
     );
   }

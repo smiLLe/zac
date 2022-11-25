@@ -31,7 +31,7 @@ class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   ClipOval _buildWidget(ZacContext zacContext) {
     return ClipOval(
       key: key?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.antiAlias,
+      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.antiAlias,
       child: child?.buildOrNull(zacContext),
     );
   }

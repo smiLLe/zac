@@ -61,14 +61,14 @@ class FlutterRefreshIndicator
       },
       displacement: displacement?.buildOrNull(zacContext) ?? 40.0,
       edgeOffset: edgeOffset?.buildOrNull(zacContext) ?? 0.0,
-      color: color?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
+      backgroundColor: backgroundColor?.buildOrNull(zacContext),
       semanticsLabel: semanticsLabel?.buildOrNull(zacContext),
       semanticsValue: semanticsValue?.buildOrNull(zacContext),
       strokeWidth: strokeWidth?.buildOrNull(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
-      triggerMode:
-          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
+      triggerMode: triggerMode?.buildOrNull(zacContext) ??
+          RefreshIndicatorTriggerMode.onEdge,
       child: child.build(zacContext),
     );
   }
@@ -89,7 +89,9 @@ class FlutterRefreshIndicator
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicatorTriggerMode
-    with _$FlutterRefreshIndicatorTriggerMode {
+    with
+        _$FlutterRefreshIndicatorTriggerMode,
+        ZacBuilder<RefreshIndicatorTriggerMode> {
   const FlutterRefreshIndicatorTriggerMode._();
 
   static const String unionValueOnEdge =
@@ -109,10 +111,22 @@ class FlutterRefreshIndicatorTriggerMode
   factory FlutterRefreshIndicatorTriggerMode.anywhere() =
       _FlutterRefreshIndicatorTriggerModeanywhere;
 
-  RefreshIndicatorTriggerMode build(ZacContext zacContext) {
+  RefreshIndicatorTriggerMode _build(ZacContext zacContext) {
     return map(
       onEdge: (_) => RefreshIndicatorTriggerMode.onEdge,
       anywhere: (_) => RefreshIndicatorTriggerMode.anywhere,
     );
+  }
+
+  @override
+  RefreshIndicatorTriggerMode build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  RefreshIndicatorTriggerMode? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

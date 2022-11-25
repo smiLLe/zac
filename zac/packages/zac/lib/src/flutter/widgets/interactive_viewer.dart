@@ -45,9 +45,10 @@ class FlutterInteractiveViewer
   InteractiveViewer _buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
       key: key?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
       alignPanAxis: alignPanAxis?.buildOrNull(zacContext) ?? false,
-      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
+      boundaryMargin:
+          boundaryMargin?.buildOrNull(zacContext) ?? EdgeInsets.zero,
       constrained: constrained?.buildOrNull(zacContext) ?? true,
       maxScale: maxScale?.buildOrNull(zacContext) ?? 2.5,
       minScale: minScale?.buildOrNull(zacContext) ?? 0.8,

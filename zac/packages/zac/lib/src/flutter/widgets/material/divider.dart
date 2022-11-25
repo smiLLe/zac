@@ -37,7 +37,7 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
       thickness: thickness?.buildOrNull(zacContext),
       indent: indent?.buildOrNull(zacContext),
       endIndent: endIndent?.buildOrNull(zacContext),
-      color: color?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
     );
   }
 

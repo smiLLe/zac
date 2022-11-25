@@ -33,7 +33,7 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
     return Flexible(
       key: key?.buildOrNull(zacContext),
       flex: flex?.buildOrNull(zacContext) ?? 1,
-      fit: fit?.build(zacContext) ?? FlexFit.loose,
+      fit: fit?.buildOrNull(zacContext) ?? FlexFit.loose,
       child: child.build(zacContext),
     );
   }

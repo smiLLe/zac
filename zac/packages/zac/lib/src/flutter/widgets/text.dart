@@ -43,18 +43,18 @@ class FlutterText with _$FlutterText implements FlutterWidget {
     return Text(
       data.build(zacContext),
       key: key?.buildOrNull(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
-      locale: locale?.build(zacContext),
+      style: style?.buildOrNull(zacContext),
+      strutStyle: strutStyle?.buildOrNull(zacContext),
+      textAlign: textAlign?.buildOrNull(zacContext),
+      textDirection: textDirection?.buildOrNull(zacContext),
+      locale: locale?.buildOrNull(zacContext),
       softWrap: softWrap?.buildOrNull(zacContext),
-      overflow: overflow?.build(zacContext),
+      overflow: overflow?.buildOrNull(zacContext),
       textScaleFactor: textScaleFactor?.buildOrNull(zacContext),
       maxLines: maxLines?.buildOrNull(zacContext),
       semanticsLabel: semanticsLabel?.buildOrNull(zacContext),
-      textWidthBasis: textWidthBasis?.build(zacContext),
-      textHeightBehavior: textHeightBehavior?.build(zacContext),
+      textWidthBasis: textWidthBasis?.buildOrNull(zacContext),
+      textHeightBehavior: textHeightBehavior?.buildOrNull(zacContext),
     );
   }
 

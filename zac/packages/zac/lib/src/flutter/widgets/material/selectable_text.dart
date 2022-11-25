@@ -54,10 +54,10 @@ class FlutterSelectableText
     return SelectableText(
       data,
       key: key?.buildOrNull(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
+      style: style?.buildOrNull(zacContext),
+      strutStyle: strutStyle?.buildOrNull(zacContext),
+      textAlign: textAlign?.buildOrNull(zacContext),
+      textDirection: textDirection?.buildOrNull(zacContext),
       textScaleFactor: textScaleFactor?.buildOrNull(zacContext),
       showCursor: showCursor?.buildOrNull(zacContext) ?? false,
       autofocus: autofocus?.buildOrNull(zacContext) ?? false,
@@ -65,13 +65,13 @@ class FlutterSelectableText
       maxLines: maxLines?.buildOrNull(zacContext),
       cursorWidth: cursorWidth?.buildOrNull(zacContext) ?? 2.0,
       cursorHeight: cursorHeight?.buildOrNull(zacContext),
-      cursorRadius: cursorRadius?.build(zacContext),
-      cursorColor: cursorColor?.build(zacContext),
+      cursorRadius: cursorRadius?.buildOrNull(zacContext),
+      cursorColor: cursorColor?.buildOrNull(zacContext),
       enableInteractiveSelection:
           enableInteractiveSelection?.buildOrNull(zacContext) ?? true,
       semanticsLabel: semanticsLabel?.buildOrNull(zacContext),
-      textHeightBehavior: textHeightBehavior?.build(zacContext),
-      textWidthBasis: textWidthBasis?.build(zacContext),
+      textHeightBehavior: textHeightBehavior?.buildOrNull(zacContext),
+      textWidthBasis: textWidthBasis?.buildOrNull(zacContext),
     );
   }
 

@@ -69,14 +69,14 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
         endDrawer: value.endDrawer?.buildOrNull(zacContext),
         bottomNavigationBar: value.bottomNavigationBar?.buildOrNull(zacContext),
         bottomSheet: value.bottomSheet?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
+        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
         resizeToAvoidBottomInset:
             value.resizeToAvoidBottomInset?.buildOrNull(zacContext),
         primary: value.primary?.buildOrNull(zacContext) ?? true,
         extendBody: value.extendBody?.buildOrNull(zacContext) ?? false,
         extendBodyBehindAppBar:
             value.extendBodyBehindAppBar?.buildOrNull(zacContext) ?? false,
-        drawerScrimColor: value.drawerScrimColor?.build(zacContext),
+        drawerScrimColor: value.drawerScrimColor?.buildOrNull(zacContext),
         drawerEdgeDragWidth: value.drawerEdgeDragWidth?.buildOrNull(zacContext),
         drawerEnableOpenDragGesture:
             value.drawerEnableOpenDragGesture?.buildOrNull(zacContext) ?? true,
@@ -149,13 +149,13 @@ class FlutterScaffoldActions
         if (null == state) return;
         state.showBottomSheet<void>(
           (_) => FlutterBuilder(child: value.child).build(zacContext),
-          backgroundColor: value.backgroundColor?.build(zacContext),
-          clipBehavior: value.clipBehavior?.build(zacContext),
-          constraints: value.constraints?.build(zacContext),
+          backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
+          clipBehavior: value.clipBehavior?.buildOrNull(zacContext),
+          constraints: value.constraints?.buildOrNull(zacContext),
           elevation: value.elevation?.buildOrNull(zacContext,
               onConsume:
                   const ZacBuilderConsume(type: SharedValueConsumeType.read())),
-          shape: value.shape?.build(zacContext),
+          shape: value.shape?.buildOrNull(zacContext),
           enableDrag: value.enableDrag?.buildOrNull(zacContext),
           // transitionAnimationController:
         );
@@ -325,16 +325,16 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
       key: key?.buildOrNull(zacContext),
       action: action?.buildOrNull(zacContext),
       // animation: key?.toFlutter(context),
-      backgroundColor: backgroundColor?.build(zacContext),
-      behavior: behavior?.build(zacContext),
+      backgroundColor: backgroundColor?.buildOrNull(zacContext),
+      behavior: behavior?.buildOrNull(zacContext),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
-      elevation: elevation?.build(zacContext),
-      margin: margin?.build(zacContext),
+      elevation: elevation?.buildOrNull(zacContext),
+      margin: margin?.buildOrNull(zacContext),
       onVisible: onVisible?.createCb(zacContext),
-      padding: padding?.build(zacContext),
-      shape: shape?.build(zacContext),
-      width: width?.build(zacContext),
+      padding: padding?.buildOrNull(zacContext),
+      shape: shape?.buildOrNull(zacContext),
+      width: width?.buildOrNull(zacContext),
     );
   }
 
@@ -353,7 +353,8 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
+class FlutterSnackBarBehavior
+    with _$FlutterSnackBarBehavior, ZacBuilder<SnackBarBehavior> {
   const FlutterSnackBarBehavior._();
 
   factory FlutterSnackBarBehavior.fromJson(Map<String, dynamic> json) =>
@@ -365,11 +366,23 @@ class FlutterSnackBarBehavior with _$FlutterSnackBarBehavior {
   @FreezedUnionValue('f:1:SnackBarBehavior.floating')
   factory FlutterSnackBarBehavior.floating() = _FlutterSnackBarBehaviorFloating;
 
-  SnackBarBehavior build(ZacContext zacContext) {
+  SnackBarBehavior _build(ZacContext zacContext) {
     return map(
       fixed: (_) => SnackBarBehavior.fixed,
       floating: (_) => SnackBarBehavior.floating,
     );
+  }
+
+  @override
+  SnackBarBehavior build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  SnackBarBehavior? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
 
@@ -399,8 +412,8 @@ class FlutterSnackBarAction
       key: key?.buildOrNull(zacContext),
       label: label,
       onPressed: onPressed?.createCb(zacContext) ?? () {},
-      disabledTextColor: disabledTextColor?.build(zacContext),
-      textColor: textColor?.build(zacContext),
+      disabledTextColor: disabledTextColor?.buildOrNull(zacContext),
+      textColor: textColor?.buildOrNull(zacContext),
     );
   }
 
@@ -452,15 +465,15 @@ class FlutterMaterialBanner
       actions: actions.build(zacContext),
       key: key?.buildOrNull(zacContext),
       // animation: ,
-      backgroundColor: backgroundColor?.build(zacContext),
-      contentTextStyle: contentTextStyle?.build(zacContext),
-      elevation: elevation?.build(zacContext),
+      backgroundColor: backgroundColor?.buildOrNull(zacContext),
+      contentTextStyle: contentTextStyle?.buildOrNull(zacContext),
+      elevation: elevation?.buildOrNull(zacContext),
       forceActionsBelow: forceActionsBelow?.buildOrNull(zacContext) ?? false,
       leading: leading?.buildOrNull(zacContext),
-      leadingPadding: leadingPadding?.build(zacContext),
+      leadingPadding: leadingPadding?.buildOrNull(zacContext),
       onVisible: onVisible?.createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
-      padding: padding?.build(zacContext),
+      padding: padding?.buildOrNull(zacContext),
     );
   }
 

@@ -42,7 +42,7 @@ class FlutterGestureDetector
   GestureDetector _buildWidget(ZacContext zacContext) {
     return GestureDetector(
       key: key?.buildOrNull(zacContext),
-      behavior: behavior?.build(zacContext),
+      behavior: behavior?.buildOrNull(zacContext),
       excludeFromSemantics:
           excludeFromSemantics?.buildOrNull(zacContext) ?? false,
       onTap: onTap?.createCb(zacContext),

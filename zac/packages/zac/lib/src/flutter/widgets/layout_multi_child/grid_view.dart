@@ -52,12 +52,13 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     return GridView(
       gridDelegate: gridDelegate.build(zacContext),
       key: key?.buildOrNull(zacContext),
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      scrollDirection:
+          scrollDirection?.buildOrNull(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
       controller: controller?.buildOrNull(zacContext),
       primary: primary?.buildOrNull(zacContext),
       shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
-      padding: padding?.build(zacContext),
+      padding: padding?.buildOrNull(zacContext),
       addAutomaticKeepAlives:
           addAutomaticKeepAlives?.buildOrNull(zacContext) ?? true,
       addRepaintBoundaries:
@@ -65,10 +66,11 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
       addSemanticIndexes: addSemanticIndexes?.buildOrNull(zacContext) ?? true,
       cacheExtent: cacheExtent?.buildOrNull(zacContext),
       semanticChildCount: semanticChildCount?.buildOrNull(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
-          ScrollViewKeyboardDismissBehavior.manual,
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.buildOrNull(zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }

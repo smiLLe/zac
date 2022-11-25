@@ -75,12 +75,12 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
       flexibleSpace: flexibleSpace?.buildOrNull(zacContext),
       bottom: bottom?.buildOrNull(zacContext) as PreferredSizeWidget?,
       elevation: elevation?.buildOrNull(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
-      shape: shape?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      foregroundColor: foregroundColor?.build(zacContext),
-      iconTheme: iconTheme?.build(zacContext),
-      actionsIconTheme: actionsIconTheme?.build(zacContext),
+      shadowColor: shadowColor?.buildOrNull(zacContext),
+      shape: shape?.buildOrNull(zacContext),
+      backgroundColor: backgroundColor?.buildOrNull(zacContext),
+      foregroundColor: foregroundColor?.buildOrNull(zacContext),
+      iconTheme: iconTheme?.buildOrNull(zacContext),
+      actionsIconTheme: actionsIconTheme?.buildOrNull(zacContext),
       primary: primary?.buildOrNull(zacContext) ?? true,
       centerTitle: centerTitle?.buildOrNull(zacContext),
       excludeHeaderSemantics:
@@ -90,9 +90,9 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
       bottomOpacity: bottomOpacity?.buildOrNull(zacContext) ?? 1.0,
       toolbarHeight: toolbarHeight?.buildOrNull(zacContext),
       leadingWidth: leadingWidth?.buildOrNull(zacContext),
-      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
-      titleTextStyle: titleTextStyle?.build(zacContext),
-      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.buildOrNull(zacContext),
+      titleTextStyle: titleTextStyle?.buildOrNull(zacContext),
+      systemOverlayStyle: systemOverlayStyle?.buildOrNull(zacContext),
     );
   }
 

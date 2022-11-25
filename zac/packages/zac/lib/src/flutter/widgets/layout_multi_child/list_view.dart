@@ -52,12 +52,13 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
   ListView _buildWidget(ZacContext zacContext) {
     return ListView(
       key: key?.buildOrNull(zacContext),
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      scrollDirection:
+          scrollDirection?.buildOrNull(zacContext) ?? Axis.vertical,
       reverse: reverse?.buildOrNull(zacContext) ?? false,
       controller: controller?.buildOrNull(zacContext),
       primary: primary?.buildOrNull(zacContext),
       shrinkWrap: shrinkWrap?.buildOrNull(zacContext) ?? false,
-      padding: padding?.build(zacContext),
+      padding: padding?.buildOrNull(zacContext),
       itemExtent: itemExtent?.buildOrNull(zacContext),
       prototypeItem: prototypeItem?.buildOrNull(zacContext),
       addAutomaticKeepAlives:
@@ -67,11 +68,12 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
       addSemanticIndexes: addSemanticIndexes?.buildOrNull(zacContext) ?? true,
       cacheExtent: cacheExtent?.buildOrNull(zacContext),
       semanticChildCount: semanticChildCount?.buildOrNull(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
-          ScrollViewKeyboardDismissBehavior.manual,
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.buildOrNull(zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      physics: physics?.build(zacContext),
+      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
+      physics: physics?.buildOrNull(zacContext),
       children: children?.buildOrNull(zacContext) ?? const <Widget>[],
     );
   }

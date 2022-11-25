@@ -73,7 +73,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
       ),
       fromSize: (value) => SizedBox.fromSize(
         key: value.key?.buildOrNull(zacContext),
-        size: value.size?.build(zacContext),
+        size: value.size?.buildOrNull(zacContext),
         child: value.child?.buildOrNull(zacContext),
       ),
       shrink: (value) => SizedBox.shrink(

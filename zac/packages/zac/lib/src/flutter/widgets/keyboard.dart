@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'keyboard.freezed.dart';
 part 'keyboard.g.dart';
@@ -9,7 +10,9 @@ part 'keyboard.g.dart';
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScrollViewKeyboardDismissBehavior
-    with _$FlutterScrollViewKeyboardDismissBehavior {
+    with
+        _$FlutterScrollViewKeyboardDismissBehavior,
+        ZacBuilder<ScrollViewKeyboardDismissBehavior> {
   const FlutterScrollViewKeyboardDismissBehavior._();
 
   factory FlutterScrollViewKeyboardDismissBehavior.fromJson(
@@ -24,9 +27,21 @@ class FlutterScrollViewKeyboardDismissBehavior
   factory FlutterScrollViewKeyboardDismissBehavior.onDrag() =
       _FlutterScrollViewKeyboardDismissBehaviorOnDrag;
 
-  ScrollViewKeyboardDismissBehavior build(ZacContext zacContext) {
+  ScrollViewKeyboardDismissBehavior _build(ZacContext zacContext) {
     return map(
         manual: (_) => ScrollViewKeyboardDismissBehavior.manual,
         onDrag: (_) => ScrollViewKeyboardDismissBehavior.onDrag);
+  }
+
+  @override
+  ScrollViewKeyboardDismissBehavior build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  ScrollViewKeyboardDismissBehavior? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }

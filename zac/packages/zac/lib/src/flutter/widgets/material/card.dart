@@ -38,13 +38,13 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
   Card _buildWidget(ZacContext zacContext) {
     return Card(
       key: key?.buildOrNull(zacContext),
-      color: color?.build(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
+      color: color?.buildOrNull(zacContext),
+      shadowColor: shadowColor?.buildOrNull(zacContext),
       elevation: elevation?.buildOrNull(zacContext),
-      shape: shape?.build(zacContext),
+      shape: shape?.buildOrNull(zacContext),
       borderOnForeground: borderOnForeground?.buildOrNull(zacContext) ?? true,
-      margin: margin?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext),
+      margin: margin?.buildOrNull(zacContext),
+      clipBehavior: clipBehavior?.buildOrNull(zacContext),
       semanticContainer: semanticContainer?.buildOrNull(zacContext) ?? true,
       child: child?.buildOrNull(zacContext),
     );

@@ -764,7 +764,7 @@ class FlutterTextHeightBehavior
           applyHeightToFirstAscent?.buildOrNull(zacContext) ?? true,
       applyHeightToLastDescent:
           applyHeightToLastDescent?.buildOrNull(zacContext) ?? true,
-      leadingDistribution: leadingDistribution?.build(zacContext) ??
+      leadingDistribution: leadingDistribution?.buildOrNull(zacContext) ??
           TextLeadingDistribution.proportional,
     );
   }
@@ -1217,8 +1217,8 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   @override
   Shadow _build(ZacContext zacContext) {
     return Shadow(
-      color: color?.build(zacContext) ?? const Color(0xFF000000),
-      offset: offset?.build(zacContext) ?? Offset.zero,
+      color: color?.buildOrNull(zacContext) ?? const Color(0xFF000000),
+      offset: offset?.buildOrNull(zacContext) ?? Offset.zero,
       blurRadius: blurRadius?.buildOrNull(zacContext) ?? 0.0,
     );
   }

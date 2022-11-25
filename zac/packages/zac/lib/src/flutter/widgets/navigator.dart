@@ -307,10 +307,10 @@ class FlutterPageRouteBuilder
           return wrap(zacContext, child);
         },
       ),
-      settings: settings?.build(zacContext),
+      settings: settings?.buildOrNull(zacContext),
       opaque: opaque?.buildOrNull(zacContext) ?? true,
       barrierDismissible: barrierDismissible?.buildOrNull(zacContext) ?? false,
-      barrierColor: barrierColor?.build(zacContext),
+      barrierColor: barrierColor?.buildOrNull(zacContext),
       barrierLabel: barrierLabel?.buildOrNull(zacContext),
       maintainState: maintainState?.buildOrNull(zacContext) ?? true,
       fullscreenDialog: fullscreenDialog?.buildOrNull(zacContext) ?? false,
@@ -320,7 +320,8 @@ class FlutterPageRouteBuilder
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterRouteSettings with _$FlutterRouteSettings {
+class FlutterRouteSettings
+    with _$FlutterRouteSettings, ZacBuilder<RouteSettings> {
   const FlutterRouteSettings._();
 
   factory FlutterRouteSettings.fromJson(Map<String, dynamic> json) =>
@@ -334,10 +335,22 @@ class FlutterRouteSettings with _$FlutterRouteSettings {
     Object? arguments,
   }) = _FlutterRouteSettings;
 
-  RouteSettings build(ZacContext zacContext) {
+  RouteSettings _build(ZacContext zacContext) {
     return RouteSettings(
       arguments: arguments,
       name: name?.buildOrNull(zacContext),
     );
+  }
+
+  @override
+  RouteSettings build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
+  }
+
+  @override
+  RouteSettings? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return _build(zacContext);
   }
 }
