@@ -28,10 +28,12 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacString.fromJson(json['initialRoute'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
-          : FlutterRouteFactory.fromJson(json['onGenerateRoute'] as Object),
+          : FlutterRouteFactory.fromJson(
+              json['onGenerateRoute'] as Map<String, dynamic>),
       onUnknownRoute: json['onUnknownRoute'] == null
           ? null
-          : FlutterRouteFactory.fromJson(json['onUnknownRoute'] as Object),
+          : FlutterRouteFactory.fromJson(
+              json['onUnknownRoute'] as Map<String, dynamic>),
       title: json['title'] == null
           ? null
           : ZacString.fromJson(json['title'] as Object),

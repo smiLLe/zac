@@ -1214,7 +1214,6 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
     ZacDouble? blurRadius,
   }) = _FlutterShadowShadow;
 
-  @override
   Shadow _build(ZacContext zacContext) {
     return Shadow(
       color: color?.buildOrNull(zacContext) ?? const Color(0xFF000000),

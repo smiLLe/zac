@@ -18,6 +18,16 @@ import 'package:zac/src/zac/zac_builder.dart';
 part 'helper.freezed.dart';
 part 'helper.g.dart';
 
+void expectInConverter(Object obj, Convert fn) {
+  if (obj is! String && obj is! List<String>) throw Error();
+
+  List<String> items = obj is String ? [obj] : obj as List<String>;
+  for (var item in items) {
+    expect(allConverter.containsKey(item), isTrue);
+    expect(allConverter[item], fn);
+  }
+}
+
 TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
   return isA<ZacBuilder<T>>();
 }

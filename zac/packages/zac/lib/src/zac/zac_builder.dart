@@ -1,11 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
+import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 
 part 'zac_builder.freezed.dart';
 
 abstract class ZacBuilder<T> {
+  factory ZacBuilder.fromJson(Map<String, dynamic> json) {
+    return ConverterHelper.convertToType<ZacBuilder<T>>(json);
+  }
+
   T build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
 

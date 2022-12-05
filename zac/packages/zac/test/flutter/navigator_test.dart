@@ -6,318 +6,164 @@ import '../flutter/models.dart';
 import '../helper.dart';
 
 void main() {
-  test('fromJson', () {
-    expect(
-        ConverterHelper.convertToType<FlutterNavigatorState>({
-          'converter': 'z:1:NavigatorState.shared',
-          'value': {'converter': 'z:1:ZacValue.consume', 'family': 'foo'}
-        }),
-        FlutterNavigatorState.shared(
-            value: FlutterGlobalKeyNavigatorState.consume(family: 'foo')));
+  test('Is registered converter', () {
+    expectInConverter([
+      'f:1:NavigatorState.closest',
+      'f:1:NavigatorState.root',
+      'z:1:NavigatorState.shared'
+    ], FlutterNavigatorState.fromJson);
+
+    expectInConverter(
+        'f:1:MaterialPageRoute', FlutterMaterialPageRoute.fromJson);
+
+    expectInConverter('f:1:PageRouteBuilder', FlutterPageRouteBuilder.fromJson);
+
+    expectInConverter('f:1:Navigator', FlutterNavigator.fromJson);
+
+    expectInConverter([
+      'f:1:Navigator.push',
+      'f:1:Navigator.pushNamed',
+      'f:1:Navigator.pop',
+      'f:1:Navigator.maybePop',
+      'f:1:Navigator.pushReplacement',
+      'f:1:Navigator.pushReplacementNamed',
+      'z:1:Navigator.popUntilRouteName',
+    ], FlutterNavigatorActions.fromJson);
+
+    expectInConverter('f:1:RouteFactory', FlutterRouteFactory.fromJson);
+
+    expectInConverter('f:1:RouteSettings', FlutterRouteSettings.fromJson);
   });
 
-  group('Navigator', () {
-    test('.fromJson', () {
-      final routeMap = <String, dynamic>{
-        'converter': 'f:1:MaterialPageRoute',
-        'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-      };
-      final route = FlutterMaterialPageRoute(
-          child: FlutterSizedBox(key: FlutterValueKey('FIND_ME')));
-      expect(
-          ConverterHelper.convertToType<FlutterNavigator>({
-            'converter': 'f:1:Navigator',
-            'initialRoute': '/foo',
-            'requestFocus': false,
-          }),
-          FlutterNavigator(
-              initialRoute: ZacString.fromJson('/foo'),
-              requestFocus: ZacBool.fromJson(false)));
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>({
-            'converter': 'f:1:Navigator.push',
-            'route': routeMap,
-          }),
-          FlutterNavigatorActions.push(route: route));
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'converter': 'f:1:Navigator.pushNamed', 'routeName': '/cool'}),
-          FlutterNavigatorActions.pushNamed(
-              routeName: ZacString.fromJson('/cool')));
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'converter': 'f:1:Navigator.pop'}),
-          FlutterNavigatorActions.pop());
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>(
-              {'converter': 'f:1:Navigator.maybePop'}),
-          FlutterNavigatorActions.maybePop());
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>({
-            'converter': 'f:1:Navigator.pushReplacement',
-            'route': routeMap,
-          }),
-          FlutterNavigatorActions.pushReplacement(route: route));
-      expect(
-          ConverterHelper.convertToType<FlutterNavigatorActions>({
-            'converter': 'f:1:Navigator.pushReplacementNamed',
-            'routeName': '/cool'
-          }),
-          FlutterNavigatorActions.pushReplacementNamed(
-              routeName: ZacString.fromJson('/cool')));
-      expect(
-          ConverterHelper.convertToType<ZacFlutterNavigatorActions>({
-            'converter': 'z:1:Navigator.popUntilRouteName',
-            'routeName': '/cool'
-          }),
-          ZacFlutterNavigatorActions.popUntilRouteName(
-              routeName: ZacString.fromJson('/cool')));
-    });
-  });
-
-  group('FlutterRouteFactory', () {
-    group('RouteFactorySingleRoute', () {
-      test('fromJson', () {
-        expect(
-            FlutterRouteFactory.fromJson(
-              {
-                'converter': 'z:1:RouteFactorySingleRoute',
-                'routeConfig': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  },
-                }
-              },
-            ),
-            isA<RouteFactorySingleRoute>());
-
-        expect(
-            ConverterHelper.convertToType<RouteFactorySingleRoute>(
-              {
-                'converter': 'z:1:RouteFactorySingleRoute',
-                'routeConfig': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  },
-                }
-              },
-            ),
-            isA<RouteFactorySingleRoute>());
-      });
-
-      testWidgets('provide arguments', (tester) async {
-        late ZacContext zacContext;
-
-        await testZacWidget(
-          tester,
-          FlutterNavigator(
-            onUnknownRoute: RouteFactorySingleRoute(
-              routeConfig: RouteFactoryRouteConfig(
-                route: FlutterMaterialPageRoute(
-                  child: LeakContext(cb: (o) {
-                    zacContext = o;
-                  }),
-                ),
-              ),
-            ),
-            onGenerateRoute: RouteFactoryFromRoutes(
-              routes: {
-                '/': RouteFactoryRouteConfig(
-                  route: FlutterMaterialPageRoute(
-                    child: ZacExecuteActionsBuilder.once(
-                      actions: ZacActions(
-                        [
-                          FlutterNavigatorActions.pushNamed(
-                            routeName: ZacString.fromJson('/other'),
-                            arguments: 22,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              },
-            ),
-          ),
-        );
-        await tester.pumpAndSettle();
-
-        expect(
-            zacContext.ref.read(SharedValue.provider(
-                RouteFactoryFromRoutes.defaultProviderName)),
-            22);
-      });
-    });
-
-    group('RouteFactoryFromRoutes', () {
-      test('fromJson', () {
-        expect(
-            FlutterRouteFactory.fromJson({
-              'converter': 'z:1:RouteFactoryFromRoutes',
-              'routes': {
-                '/': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  }
-                },
-                '/other': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  }
-                },
+  group('navigation', () {
+    testWidgets('simple', (tester) async {
+      Map<String, dynamic> page({
+        required int number,
+        required List<Map<String, dynamic>> interactions,
+        required List<Map<String, dynamic>> backActions,
+      }) {
+        return <String, dynamic>{
+          'converter': FlutterColumn.unionValue,
+          'children': [
+            ChildModel.getSizedBox(key: 'page$number'),
+            {
+              'converter': FlutterElevatedButton.unionValue,
+              'key': KeysModel.getValueKey('page${number}_button'),
+              'child': ChildModel.sizedBox,
+              'onPressed': {
+                'converter': 'z:1:Actions',
+                'actions': interactions,
               }
-            }),
-            isA<RouteFactoryFromRoutes>());
-        expect(
-            ConverterHelper.convertToType<RouteFactoryFromRoutes>({
-              'converter': 'z:1:RouteFactoryFromRoutes',
-              'routes': {
-                '/': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  }
-                },
-                '/other': {
-                  'converter': 'z:1:RouteFactoryRouteConfig',
-                  'route': {
-                    'converter': 'f:1:MaterialPageRoute',
-                    'child': ChildModel.getSizedBox(key: 'FIND_ME'),
-                  }
-                },
+            },
+            {
+              'converter': FlutterElevatedButton.unionValue,
+              'key': KeysModel.getValueKey('pageback${number}_button'),
+              'child': ChildModel.sizedBox,
+              'onPressed': {
+                'converter': 'z:1:Actions',
+                'actions': backActions,
               }
-            }),
-            isA<RouteFactoryFromRoutes>());
-      });
+            },
+          ]
+        };
+      }
 
-      testWidgets('provide arguments', (tester) async {
-        late ZacContext zacContext;
-
-        await testZacWidget(
-          tester,
-          FlutterNavigator(
-            onGenerateRoute: RouteFactoryFromRoutes(
-              routes: {
-                '/': RouteFactoryRouteConfig(
-                  route: FlutterMaterialPageRoute(
-                    child: ZacExecuteActionsBuilder.once(
-                      actions: ZacActions(
-                        [
-                          FlutterNavigatorActions.pushNamed(
-                            routeName: ZacString.fromJson('/other'),
-                            arguments: 1,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+      await testMap(
+        tester,
+        page(
+          number: 1,
+          interactions: [
+            <String, dynamic>{
+              'converter': 'f:1:Navigator.push',
+              'route': {
+                'converter': 'f:1:MaterialPageRoute',
+                'child': page(
+                  number: 2,
+                  interactions: [
+                    <String, dynamic>{
+                      'converter': 'f:1:Navigator.push',
+                      'route': {
+                        'converter': 'f:1:MaterialPageRoute',
+                        'child': page(
+                          number: 3,
+                          interactions: [
+                            <String, dynamic>{
+                              'converter': 'f:1:Navigator.pushReplacement',
+                              'route': {
+                                'converter': 'f:1:MaterialPageRoute',
+                                'child': page(
+                                  number: 4,
+                                  interactions: [],
+                                  backActions: [
+                                    <String, dynamic>{
+                                      'converter': 'f:1:Navigator.maybePop',
+                                    }
+                                  ],
+                                ),
+                              },
+                            },
+                          ],
+                          backActions: [
+                            <String, dynamic>{
+                              'converter': 'f:1:Navigator.maybePop',
+                            }
+                          ],
+                        ),
+                      }
+                    },
+                  ],
+                  backActions: [
+                    <String, dynamic>{
+                      'converter': 'f:1:Navigator.pop',
+                    }
+                  ],
                 ),
-                '/other': RouteFactoryRouteConfig(
-                  route: FlutterMaterialPageRoute(
-                    child: FlutterTextButton(
-                      key: FlutterValueKey('press_me'),
-                      onPressed: ZacActions([
-                        FlutterNavigatorActions.pushNamed(
-                          routeName: ZacString.fromJson('/otherother'),
-                          arguments: 11,
-                        )
-                      ]),
-                      child: LeakContext(cb: (o) {
-                        zacContext = o;
-                      }),
-                    ),
-                  ),
-                ),
-                '/otherother': RouteFactoryRouteConfig(
-                  route: FlutterMaterialPageRoute(
-                    child: LeakContext(cb: (o) {
-                      zacContext = o;
-                    }),
-                  ),
-                ),
-              },
-            ),
-          ),
-        );
-        await tester.pumpAndSettle();
+              }
+            },
+          ],
+          backActions: [],
+        ),
+      );
 
-        expect(
-            zacContext.ref.read(SharedValue.provider(
-                RouteFactoryFromRoutes.defaultProviderName)),
-            1);
+      expect(find.byKey(const ValueKey('page4')), findsNothing);
+      expect(find.byKey(const ValueKey('page3')), findsNothing);
+      expect(find.byKey(const ValueKey('page2')), findsNothing);
+      expect(find.byKey(const ValueKey('page1')), findsOneWidget);
 
-        await tester.tap(find.byKey(const ValueKey('press_me')));
-        await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('page1_button')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('page4')), findsNothing);
+      expect(find.byKey(const ValueKey('page3')), findsNothing);
+      expect(find.byKey(const ValueKey('page2')), findsOneWidget);
+      expect(find.byKey(const ValueKey('page1')), findsNothing);
 
-        expect(
-            zacContext.ref.read(SharedValue.provider(
-                RouteFactoryFromRoutes.defaultProviderName)),
-            11);
-      });
+      await tester.tap(find.byKey(const ValueKey('page2_button')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('page4')), findsNothing);
+      expect(find.byKey(const ValueKey('page3')), findsOneWidget);
+      expect(find.byKey(const ValueKey('page2')), findsNothing);
+      expect(find.byKey(const ValueKey('page1')), findsNothing);
 
-      testWidgets('providerName', (tester) async {
-        late ZacContext zacContext;
-        await testZacWidget(tester, LeakContext(cb: ((o) {
-          zacContext = o;
-        })));
+      await tester.tap(find.byKey(const ValueKey('page3_button')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('page4')), findsOneWidget);
+      expect(find.byKey(const ValueKey('page3')), findsNothing);
+      expect(find.byKey(const ValueKey('page2')), findsNothing);
+      expect(find.byKey(const ValueKey('page1')), findsNothing);
 
-        expect(
-            RouteFactoryFromRoutes.providerName(
-              zacContext,
-              RouteFactoryRouteConfig(
-                route: FlutterMaterialPageRoute(
-                  child: FlutterSizedBox(),
-                ),
-              ),
-              null,
-            ),
-            RouteFactoryFromRoutes.defaultProviderName);
+      await tester.tap(find.byKey(const ValueKey('pageback4_button')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('page4')), findsNothing);
+      expect(find.byKey(const ValueKey('page3')), findsNothing);
+      expect(find.byKey(const ValueKey('page2')), findsOneWidget);
+      expect(find.byKey(const ValueKey('page1')), findsNothing);
 
-        expect(
-            RouteFactoryFromRoutes.providerName(
-              zacContext,
-              RouteFactoryRouteConfig(
-                provideArgsName: ZacString.fromJson('foo'),
-                route: FlutterMaterialPageRoute(
-                  child: FlutterSizedBox(),
-                ),
-              ),
-              null,
-            ),
-            'foo');
-
-        expect(
-            RouteFactoryFromRoutes.providerName(
-                zacContext,
-                RouteFactoryRouteConfig(
-                  route: FlutterMaterialPageRoute(
-                    child: FlutterSizedBox(),
-                  ),
-                ),
-                'prefix'),
-            'prefix.${RouteFactoryFromRoutes.defaultProviderName}');
-
-        expect(
-            RouteFactoryFromRoutes.providerName(
-                zacContext,
-                RouteFactoryRouteConfig(
-                  provideArgsName: ZacString.fromJson('foo'),
-                  route: FlutterMaterialPageRoute(
-                    child: FlutterSizedBox(),
-                  ),
-                ),
-                'prefix'),
-            'prefix.foo');
-      });
+      await tester.tap(find.byKey(const ValueKey('pageback2_button')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('page4')), findsNothing);
+      expect(find.byKey(const ValueKey('page3')), findsNothing);
+      expect(find.byKey(const ValueKey('page2')), findsNothing);
+      expect(find.byKey(const ValueKey('page1')), findsOneWidget);
     });
   });
 }

@@ -6,6 +6,56 @@ part of 'navigator.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
+        Map<String, dynamic> json) =>
+    _$_FlutterMaterialPageRoute(
+      settings: json['settings'] == null
+          ? null
+          : FlutterRouteSettings.fromJson(
+              json['settings'] as Map<String, dynamic>),
+      maintainState: json['maintainState'] == null
+          ? null
+          : ZacBool.fromJson(json['maintainState'] as Object),
+      fullscreenDialog: json['fullscreenDialog'] == null
+          ? null
+          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
+      nameOfSharedArguments: json['nameOfSharedArguments'] == null
+          ? null
+          : ZacString.fromJson(json['nameOfSharedArguments'] as Object),
+    );
+
+_$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
+        Map<String, dynamic> json) =>
+    _$_FlutterPageRouteBuilder(
+      settings: json['settings'] == null
+          ? null
+          : FlutterRouteSettings.fromJson(
+              json['settings'] as Map<String, dynamic>),
+      opaque: json['opaque'] == null
+          ? null
+          : ZacBool.fromJson(json['opaque'] as Object),
+      barrierDismissible: json['barrierDismissible'] == null
+          ? null
+          : ZacBool.fromJson(json['barrierDismissible'] as Object),
+      barrierColor: json['barrierColor'] == null
+          ? null
+          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
+      barrierLabel: json['barrierLabel'] == null
+          ? null
+          : ZacString.fromJson(json['barrierLabel'] as Object),
+      maintainState: json['maintainState'] == null
+          ? null
+          : ZacBool.fromJson(json['maintainState'] as Object),
+      fullscreenDialog: json['fullscreenDialog'] == null
+          ? null
+          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+      child: FlutterWidget.fromJson(json['child'] as Object),
+      nameOfSharedArguments: json['nameOfSharedArguments'] == null
+          ? null
+          : ZacString.fromJson(json['nameOfSharedArguments'] as Object),
+    );
+
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateClosest(
@@ -33,10 +83,12 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
-          : FlutterRouteFactory.fromJson(json['onGenerateRoute'] as Object),
+          : FlutterRouteFactory.fromJson(
+              json['onGenerateRoute'] as Map<String, dynamic>),
       onUnknownRoute: json['onUnknownRoute'] == null
           ? null
-          : FlutterRouteFactory.fromJson(json['onUnknownRoute'] as Object),
+          : FlutterRouteFactory.fromJson(
+              json['onUnknownRoute'] as Map<String, dynamic>),
       initialRoute: json['initialRoute'] == null
           ? null
           : ZacString.fromJson(json['initialRoute'] as Object),
@@ -125,32 +177,28 @@ _$_FlutterNavigatorActionsPushReplacementNamed
           $type: json['converter'] as String?,
         );
 
-_$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
+_$_FlutterNavigatorActionsPopUntilRouteName
+    _$$_FlutterNavigatorActionsPopUntilRouteNameFromJson(
+            Map<String, dynamic> json) =>
+        _$_FlutterNavigatorActionsPopUntilRouteName(
+          routeName: ZacString.fromJson(json['routeName'] as Object),
+          navigatorState: json['navigatorState'] == null
+              ? null
+              : FlutterNavigatorState.fromJson(
+                  json['navigatorState'] as Map<String, dynamic>),
+          $type: json['converter'] as String?,
+        );
+
+_$_FlutterRouteFactory _$$_FlutterRouteFactoryFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterPageRouteBuilder(
-      child: FlutterWidget.fromJson(json['child'] as Object),
-      settings: json['settings'] == null
-          ? null
-          : FlutterRouteSettings.fromJson(
-              json['settings'] as Map<String, dynamic>),
-      opaque: json['opaque'] == null
-          ? null
-          : ZacBool.fromJson(json['opaque'] as Object),
-      barrierDismissible: json['barrierDismissible'] == null
-          ? null
-          : ZacBool.fromJson(json['barrierDismissible'] as Object),
-      barrierColor: json['barrierColor'] == null
-          ? null
-          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
-      barrierLabel: json['barrierLabel'] == null
-          ? null
-          : ZacString.fromJson(json['barrierLabel'] as Object),
-      maintainState: json['maintainState'] == null
-          ? null
-          : ZacBool.fromJson(json['maintainState'] as Object),
-      fullscreenDialog: json['fullscreenDialog'] == null
-          ? null
-          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+    _$_FlutterRouteFactory(
+      routes: (json['routes'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, FlutterRoute.fromJson(e as Object)),
+      ),
+      familyNameOfArguments:
+          (json['familyNameOfArguments'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ),
     );
 
 _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
@@ -159,5 +207,7 @@ _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
       name: json['name'] == null
           ? null
           : ZacString.fromJson(json['name'] as Object),
-      arguments: json['arguments'],
+      arguments: json['arguments'] == null
+          ? null
+          : ZacObject.fromJson(json['arguments'] as Object),
     );

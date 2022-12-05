@@ -9,5 +9,4 @@ export 'src/zac/update_widget.dart';
 export 'src/zac/widget.dart';
 export 'src/zac/shared_value.dart';
 export 'src/zac/transformers.dart';
-export 'src/zac/flutter/navigator.dart';
 export 'src/flutter/all.dart';

@@ -34,19 +34,3 @@ _$_FlutterUnderlineInputBorder _$$_FlutterUnderlineInputBorderFromJson(
           : FlutterBorderRadius.fromJson(
               json['borderRadius'] as Map<String, dynamic>),
     );
-
-_$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterMaterialPageRoute(
-      child: FlutterWidget.fromJson(json['child'] as Object),
-      settings: json['settings'] == null
-          ? null
-          : FlutterRouteSettings.fromJson(
-              json['settings'] as Map<String, dynamic>),
-      maintainState: json['maintainState'] == null
-          ? null
-          : ZacBool.fromJson(json['maintainState'] as Object),
-      fullscreenDialog: json['fullscreenDialog'] == null
-          ? null
-          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
-    );

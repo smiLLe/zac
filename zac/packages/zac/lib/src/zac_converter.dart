@@ -75,7 +75,6 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_padding.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/flutter/navigator.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -140,10 +139,10 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'f:1:BlendMode.srcOut': FlutterBlendMode.fromJson,
   'f:1:BlendMode.srcOver': FlutterBlendMode.fromJson,
   'f:1:BlendMode.xor': FlutterBlendMode.fromJson,
-  'f:1:BlurSyle.inner': FlutterBlurStyle.fromJson,
-  'f:1:BlurSyle.normal': FlutterBlurStyle.fromJson,
-  'f:1:BlurSyle.outer': FlutterBlurStyle.fromJson,
-  'f:1:BlurSyle.solid': FlutterBlurStyle.fromJson,
+  'f:1:BlurStyle.inner': FlutterBlurStyle.fromJson,
+  'f:1:BlurStyle.normal': FlutterBlurStyle.fromJson,
+  'f:1:BlurStyle.outer': FlutterBlurStyle.fromJson,
+  'f:1:BlurStyle.solid': FlutterBlurStyle.fromJson,
   'f:1:Border': FlutterBorder.fromJson,
   'f:1:Border.all': FlutterBorder.fromJson,
   'f:1:BorderDirectional': FlutterBorderDirectional.fromJson,
@@ -343,6 +342,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
       FlutterRefreshIndicatorTriggerMode.fromJson,
   'f:1:RotatedBox': FlutterRotatedBox.fromJson,
   'f:1:RoundedRectangleBorder': FlutterRoundedRectangleBorder.fromJson,
+  'f:1:RouteFactory': FlutterRouteFactory.fromJson,
   'f:1:RouteSettings': FlutterRouteSettings.fromJson,
   'f:1:Row': FlutterRow.fromJson,
   'f:1:SafeArea': FlutterSafeArea.fromJson,
@@ -503,16 +503,13 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
       FlutterGlobalKeyScaffoldMessengerState.fromJson,
   'z:1:List<FlutterWidget>': ZacListOfFlutterWidget.fromJson,
   'z:1:List<FlutterWidget>.consume': ZacListOfFlutterWidget.fromJson,
-  'z:1:Navigator.popUntilRouteName': ZacFlutterNavigatorActions.fromJson,
+  'z:1:Navigator.popUntilRouteName': FlutterNavigatorActions.fromJson,
   'z:1:NavigatorState.shared': FlutterNavigatorState.fromJson,
   'z:1:Object': ZacObject.fromJson,
   'z:1:Object.consume': ZacObject.fromJson,
   'z:1:ProvideKey:GlobalKey<NavigatorState>': ZacProvideFlutterKey.fromJson,
   'z:1:ProvideKey:GlobalKey<ScaffoldMessengerState>':
       ZacProvideFlutterKey.fromJson,
-  'z:1:RouteFactoryFromRoutes': RouteFactoryFromRoutes.fromJson,
-  'z:1:RouteFactoryRouteConfig': RouteFactoryRouteConfig.fromJson,
-  'z:1:RouteFactorySingleRoute': RouteFactorySingleRoute.fromJson,
   'z:1:ScrollController.consume': FlutterScrollController.fromJson,
   'z:1:SharedValue.invalidate': SharedValueActions.fromJson,
   'z:1:SharedValue.provide': SharedValueProviderBuilder.fromJson,

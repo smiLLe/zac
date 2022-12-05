@@ -14,6 +14,296 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+FlutterMaterialPageRoute _$FlutterMaterialPageRouteFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterMaterialPageRoute.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterMaterialPageRoute {
+  FlutterRouteSettings? get settings => throw _privateConstructorUsedError;
+  ZacBool? get maintainState => throw _privateConstructorUsedError;
+  ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
+
+  /// Used instead of WidgetBuilder builder
+  FlutterWidget get child => throw _privateConstructorUsedError;
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  ZacString? get nameOfSharedArguments => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterMaterialPageRoute value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
+  _$_FlutterMaterialPageRoute(
+      {this.settings,
+      this.maintainState,
+      this.fullscreenDialog,
+      required this.child,
+      this.nameOfSharedArguments})
+      : super._();
+
+  factory _$_FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterMaterialPageRouteFromJson(json);
+
+  @override
+  final FlutterRouteSettings? settings;
+  @override
+  final ZacBool? maintainState;
+  @override
+  final ZacBool? fullscreenDialog;
+
+  /// Used instead of WidgetBuilder builder
+  @override
+  final FlutterWidget child;
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  @override
+  final ZacString? nameOfSharedArguments;
+
+  @override
+  String toString() {
+    return 'FlutterMaterialPageRoute(settings: $settings, maintainState: $maintainState, fullscreenDialog: $fullscreenDialog, child: $child, nameOfSharedArguments: $nameOfSharedArguments)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterMaterialPageRoute &&
+            (identical(other.settings, settings) ||
+                other.settings == settings) &&
+            (identical(other.maintainState, maintainState) ||
+                other.maintainState == maintainState) &&
+            (identical(other.fullscreenDialog, fullscreenDialog) ||
+                other.fullscreenDialog == fullscreenDialog) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.nameOfSharedArguments, nameOfSharedArguments) ||
+                other.nameOfSharedArguments == nameOfSharedArguments));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, settings, maintainState,
+      fullscreenDialog, child, nameOfSharedArguments);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterMaterialPageRoute value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
+  factory _FlutterMaterialPageRoute(
+      {final FlutterRouteSettings? settings,
+      final ZacBool? maintainState,
+      final ZacBool? fullscreenDialog,
+      required final FlutterWidget child,
+      final ZacString? nameOfSharedArguments}) = _$_FlutterMaterialPageRoute;
+  _FlutterMaterialPageRoute._() : super._();
+
+  factory _FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =
+      _$_FlutterMaterialPageRoute.fromJson;
+
+  @override
+  FlutterRouteSettings? get settings;
+  @override
+  ZacBool? get maintainState;
+  @override
+  ZacBool? get fullscreenDialog;
+  @override
+
+  /// Used instead of WidgetBuilder builder
+  FlutterWidget get child;
+  @override
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  ZacString? get nameOfSharedArguments;
+}
+
+FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterPageRouteBuilder.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterPageRouteBuilder {
+  FlutterRouteSettings? get settings =>
+      throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
+// Duration transitionDuration = const Duration(milliseconds: 300),
+// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
+  ZacBool? get opaque => throw _privateConstructorUsedError;
+  ZacBool? get barrierDismissible => throw _privateConstructorUsedError;
+  FlutterColor? get barrierColor => throw _privateConstructorUsedError;
+  ZacString? get barrierLabel => throw _privateConstructorUsedError;
+  ZacBool? get maintainState => throw _privateConstructorUsedError;
+  ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
+
+  /// Used instead of WidgetBuilder builder
+  FlutterWidget get child => throw _privateConstructorUsedError;
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  ZacString? get nameOfSharedArguments => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterPageRouteBuilder value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
+  _$_FlutterPageRouteBuilder(
+      {this.settings,
+      this.opaque,
+      this.barrierDismissible,
+      this.barrierColor,
+      this.barrierLabel,
+      this.maintainState,
+      this.fullscreenDialog,
+      required this.child,
+      this.nameOfSharedArguments})
+      : super._();
+
+  factory _$_FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterPageRouteBuilderFromJson(json);
+
+  @override
+  final FlutterRouteSettings? settings;
+//     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
+// Duration transitionDuration = const Duration(milliseconds: 300),
+// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
+  @override
+  final ZacBool? opaque;
+  @override
+  final ZacBool? barrierDismissible;
+  @override
+  final FlutterColor? barrierColor;
+  @override
+  final ZacString? barrierLabel;
+  @override
+  final ZacBool? maintainState;
+  @override
+  final ZacBool? fullscreenDialog;
+
+  /// Used instead of WidgetBuilder builder
+  @override
+  final FlutterWidget child;
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  @override
+  final ZacString? nameOfSharedArguments;
+
+  @override
+  String toString() {
+    return 'FlutterPageRouteBuilder(settings: $settings, opaque: $opaque, barrierDismissible: $barrierDismissible, barrierColor: $barrierColor, barrierLabel: $barrierLabel, maintainState: $maintainState, fullscreenDialog: $fullscreenDialog, child: $child, nameOfSharedArguments: $nameOfSharedArguments)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterPageRouteBuilder &&
+            (identical(other.settings, settings) ||
+                other.settings == settings) &&
+            (identical(other.opaque, opaque) || other.opaque == opaque) &&
+            (identical(other.barrierDismissible, barrierDismissible) ||
+                other.barrierDismissible == barrierDismissible) &&
+            (identical(other.barrierColor, barrierColor) ||
+                other.barrierColor == barrierColor) &&
+            (identical(other.barrierLabel, barrierLabel) ||
+                other.barrierLabel == barrierLabel) &&
+            (identical(other.maintainState, maintainState) ||
+                other.maintainState == maintainState) &&
+            (identical(other.fullscreenDialog, fullscreenDialog) ||
+                other.fullscreenDialog == fullscreenDialog) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.nameOfSharedArguments, nameOfSharedArguments) ||
+                other.nameOfSharedArguments == nameOfSharedArguments));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      settings,
+      opaque,
+      barrierDismissible,
+      barrierColor,
+      barrierLabel,
+      maintainState,
+      fullscreenDialog,
+      child,
+      nameOfSharedArguments);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterPageRouteBuilder value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
+  factory _FlutterPageRouteBuilder(
+      {final FlutterRouteSettings? settings,
+      final ZacBool? opaque,
+      final ZacBool? barrierDismissible,
+      final FlutterColor? barrierColor,
+      final ZacString? barrierLabel,
+      final ZacBool? maintainState,
+      final ZacBool? fullscreenDialog,
+      required final FlutterWidget child,
+      final ZacString? nameOfSharedArguments}) = _$_FlutterPageRouteBuilder;
+  _FlutterPageRouteBuilder._() : super._();
+
+  factory _FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =
+      _$_FlutterPageRouteBuilder.fromJson;
+
+  @override
+  FlutterRouteSettings? get settings;
+  @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
+// Duration transitionDuration = const Duration(milliseconds: 300),
+// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
+  ZacBool? get opaque;
+  @override
+  ZacBool? get barrierDismissible;
+  @override
+  FlutterColor? get barrierColor;
+  @override
+  ZacString? get barrierLabel;
+  @override
+  ZacBool? get maintainState;
+  @override
+  ZacBool? get fullscreenDialog;
+  @override
+
+  /// Used instead of WidgetBuilder builder
+  FlutterWidget get child;
+  @override
+
+  /// [FlutterRouteSettings] arguments are shared using this name or as a
+  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  ZacString? get nameOfSharedArguments;
+}
+
 FlutterNavigatorState _$FlutterNavigatorStateFromJson(
     Map<String, dynamic> json) {
   switch (json['converter']) {
@@ -311,6 +601,8 @@ FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
       return _FlutterNavigatorActionsPushReplacement.fromJson(json);
     case 'f:1:Navigator.pushReplacementNamed':
       return _FlutterNavigatorActionsPushReplacementNamed.fromJson(json);
+    case 'z:1:Navigator.popUntilRouteName':
+      return _FlutterNavigatorActionsPopUntilRouteName.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -338,6 +630,8 @@ mixin _$FlutterNavigatorActions {
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -393,6 +687,8 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return push(this);
   }
@@ -474,6 +770,8 @@ class _$_FlutterNavigatorActionsPushNamed
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return pushNamed(this);
   }
@@ -548,6 +846,8 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return pop(this);
   }
@@ -621,6 +921,8 @@ class _$_FlutterNavigatorActionsMaybePop
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return maybePop(this);
   }
@@ -701,6 +1003,8 @@ class _$_FlutterNavigatorActionsPushReplacement
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return pushReplacement(this);
   }
@@ -790,6 +1094,8 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
     required TResult Function(
             _FlutterNavigatorActionsPushReplacementNamed value)
         pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
   }) {
     return pushReplacementNamed(this);
   }
@@ -816,150 +1122,186 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   ZacActions? get result;
 }
 
-FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
-    Map<String, dynamic> json) {
-  return _FlutterPageRouteBuilder.fromJson(json);
-}
-
-/// @nodoc
-mixin _$FlutterPageRouteBuilder {
-  FlutterWidget get child => throw _privateConstructorUsedError;
-  FlutterRouteSettings? get settings =>
-      throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
-// Duration transitionDuration = const Duration(milliseconds: 300),
-// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacBool? get opaque => throw _privateConstructorUsedError;
-  ZacBool? get barrierDismissible => throw _privateConstructorUsedError;
-  FlutterColor? get barrierColor => throw _privateConstructorUsedError;
-  ZacString? get barrierLabel => throw _privateConstructorUsedError;
-  ZacBool? get maintainState => throw _privateConstructorUsedError;
-  ZacBool? get fullscreenDialog => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterPageRouteBuilder value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
-  _$_FlutterPageRouteBuilder(
-      {required this.child,
-      this.settings,
-      this.opaque,
-      this.barrierDismissible,
-      this.barrierColor,
-      this.barrierLabel,
-      this.maintainState,
-      this.fullscreenDialog})
-      : super._();
+class _$_FlutterNavigatorActionsPopUntilRouteName
+    extends _FlutterNavigatorActionsPopUntilRouteName {
+  _$_FlutterNavigatorActionsPopUntilRouteName(
+      {required this.routeName, this.navigatorState, final String? $type})
+      : $type = $type ?? 'z:1:Navigator.popUntilRouteName',
+        super._();
 
-  factory _$_FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_FlutterPageRouteBuilderFromJson(json);
+  factory _$_FlutterNavigatorActionsPopUntilRouteName.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_FlutterNavigatorActionsPopUntilRouteNameFromJson(json);
 
   @override
-  final FlutterWidget child;
+  final ZacString routeName;
   @override
-  final FlutterRouteSettings? settings;
-//     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
-// Duration transitionDuration = const Duration(milliseconds: 300),
-// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  @override
-  final ZacBool? opaque;
-  @override
-  final ZacBool? barrierDismissible;
-  @override
-  final FlutterColor? barrierColor;
-  @override
-  final ZacString? barrierLabel;
-  @override
-  final ZacBool? maintainState;
-  @override
-  final ZacBool? fullscreenDialog;
+  final FlutterNavigatorState? navigatorState;
+
+  @JsonKey(name: 'converter')
+  final String $type;
 
   @override
   String toString() {
-    return 'FlutterPageRouteBuilder(child: $child, settings: $settings, opaque: $opaque, barrierDismissible: $barrierDismissible, barrierColor: $barrierColor, barrierLabel: $barrierLabel, maintainState: $maintainState, fullscreenDialog: $fullscreenDialog)';
+    return 'FlutterNavigatorActions.popUntilRouteName(routeName: $routeName, navigatorState: $navigatorState)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterPageRouteBuilder &&
-            (identical(other.child, child) || other.child == child) &&
-            (identical(other.settings, settings) ||
-                other.settings == settings) &&
-            (identical(other.opaque, opaque) || other.opaque == opaque) &&
-            (identical(other.barrierDismissible, barrierDismissible) ||
-                other.barrierDismissible == barrierDismissible) &&
-            (identical(other.barrierColor, barrierColor) ||
-                other.barrierColor == barrierColor) &&
-            (identical(other.barrierLabel, barrierLabel) ||
-                other.barrierLabel == barrierLabel) &&
-            (identical(other.maintainState, maintainState) ||
-                other.maintainState == maintainState) &&
-            (identical(other.fullscreenDialog, fullscreenDialog) ||
-                other.fullscreenDialog == fullscreenDialog));
+            other is _$_FlutterNavigatorActionsPopUntilRouteName &&
+            (identical(other.routeName, routeName) ||
+                other.routeName == routeName) &&
+            (identical(other.navigatorState, navigatorState) ||
+                other.navigatorState == navigatorState));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, routeName, navigatorState);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FlutterNavigatorActionsPush value) push,
+    required TResult Function(_FlutterNavigatorActionsPushNamed value)
+        pushNamed,
+    required TResult Function(_FlutterNavigatorActionsPop value) pop,
+    required TResult Function(_FlutterNavigatorActionsMaybePop value) maybePop,
+    required TResult Function(_FlutterNavigatorActionsPushReplacement value)
+        pushReplacement,
+    required TResult Function(
+            _FlutterNavigatorActionsPushReplacementNamed value)
+        pushReplacementNamed,
+    required TResult Function(_FlutterNavigatorActionsPopUntilRouteName value)
+        popUntilRouteName,
+  }) {
+    return popUntilRouteName(this);
+  }
+}
+
+abstract class _FlutterNavigatorActionsPopUntilRouteName
+    extends FlutterNavigatorActions {
+  factory _FlutterNavigatorActionsPopUntilRouteName(
+          {required final ZacString routeName,
+          final FlutterNavigatorState? navigatorState}) =
+      _$_FlutterNavigatorActionsPopUntilRouteName;
+  _FlutterNavigatorActionsPopUntilRouteName._() : super._();
+
+  factory _FlutterNavigatorActionsPopUntilRouteName.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterNavigatorActionsPopUntilRouteName.fromJson;
+
+  ZacString get routeName;
+  @override
+  FlutterNavigatorState? get navigatorState;
+}
+
+FlutterRouteFactory _$FlutterRouteFactoryFromJson(Map<String, dynamic> json) {
+  return _FlutterRouteFactory.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FlutterRouteFactory {
+  Map<String, FlutterRoute> get routes => throw _privateConstructorUsedError;
+
+  /// Key of the map equals the route name. Value of the map equals the
+  /// [SharedValue] family.
+  Map<String, String>? get familyNameOfArguments =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterRouteFactory value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_FlutterRouteFactory extends _FlutterRouteFactory {
+  _$_FlutterRouteFactory(
+      {required final Map<String, FlutterRoute> routes,
+      required final Map<String, String>? familyNameOfArguments})
+      : _routes = routes,
+        _familyNameOfArguments = familyNameOfArguments,
+        super._();
+
+  factory _$_FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterRouteFactoryFromJson(json);
+
+  final Map<String, FlutterRoute> _routes;
+  @override
+  Map<String, FlutterRoute> get routes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_routes);
+  }
+
+  /// Key of the map equals the route name. Value of the map equals the
+  /// [SharedValue] family.
+  final Map<String, String>? _familyNameOfArguments;
+
+  /// Key of the map equals the route name. Value of the map equals the
+  /// [SharedValue] family.
+  @override
+  Map<String, String>? get familyNameOfArguments {
+    final value = _familyNameOfArguments;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  @override
+  String toString() {
+    return 'FlutterRouteFactory(routes: $routes, familyNameOfArguments: $familyNameOfArguments)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FlutterRouteFactory &&
+            const DeepCollectionEquality().equals(other._routes, _routes) &&
+            const DeepCollectionEquality()
+                .equals(other._familyNameOfArguments, _familyNameOfArguments));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      child,
-      settings,
-      opaque,
-      barrierDismissible,
-      barrierColor,
-      barrierLabel,
-      maintainState,
-      fullscreenDialog);
+      const DeepCollectionEquality().hash(_routes),
+      const DeepCollectionEquality().hash(_familyNameOfArguments));
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterPageRouteBuilder value) $default,
+    TResult Function(_FlutterRouteFactory value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
-  factory _FlutterPageRouteBuilder(
-      {required final FlutterWidget child,
-      final FlutterRouteSettings? settings,
-      final ZacBool? opaque,
-      final ZacBool? barrierDismissible,
-      final FlutterColor? barrierColor,
-      final ZacString? barrierLabel,
-      final ZacBool? maintainState,
-      final ZacBool? fullscreenDialog}) = _$_FlutterPageRouteBuilder;
-  _FlutterPageRouteBuilder._() : super._();
+abstract class _FlutterRouteFactory extends FlutterRouteFactory {
+  factory _FlutterRouteFactory(
+          {required final Map<String, FlutterRoute> routes,
+          required final Map<String, String>? familyNameOfArguments}) =
+      _$_FlutterRouteFactory;
+  _FlutterRouteFactory._() : super._();
 
-  factory _FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =
-      _$_FlutterPageRouteBuilder.fromJson;
+  factory _FlutterRouteFactory.fromJson(Map<String, dynamic> json) =
+      _$_FlutterRouteFactory.fromJson;
 
   @override
-  FlutterWidget get child;
+  Map<String, FlutterRoute> get routes;
   @override
-  FlutterRouteSettings? get settings;
-  @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
-// Duration transitionDuration = const Duration(milliseconds: 300),
-// Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacBool? get opaque;
-  @override
-  ZacBool? get barrierDismissible;
-  @override
-  FlutterColor? get barrierColor;
-  @override
-  ZacString? get barrierLabel;
-  @override
-  ZacBool? get maintainState;
-  @override
-  ZacBool? get fullscreenDialog;
+
+  /// Key of the map equals the route name. Value of the map equals the
+  /// [SharedValue] family.
+  Map<String, String>? get familyNameOfArguments;
 }
 
 FlutterRouteSettings _$FlutterRouteSettingsFromJson(Map<String, dynamic> json) {
@@ -969,7 +1311,7 @@ FlutterRouteSettings _$FlutterRouteSettingsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterRouteSettings {
   ZacString? get name => throw _privateConstructorUsedError;
-  Object? get arguments => throw _privateConstructorUsedError;
+  ZacObject? get arguments => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -989,7 +1331,7 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
   @override
   final ZacString? name;
   @override
-  final Object? arguments;
+  final ZacObject? arguments;
 
   @override
   String toString() {
@@ -1002,13 +1344,13 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
         (other.runtimeType == runtimeType &&
             other is _$_FlutterRouteSettings &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other.arguments, arguments));
+            (identical(other.arguments, arguments) ||
+                other.arguments == arguments));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(arguments));
+  int get hashCode => Object.hash(runtimeType, name, arguments);
 
   @override
   @optionalTypeArgs
@@ -1022,7 +1364,7 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
 abstract class _FlutterRouteSettings extends FlutterRouteSettings {
   factory _FlutterRouteSettings(
       {final ZacString? name,
-      final Object? arguments}) = _$_FlutterRouteSettings;
+      final ZacObject? arguments}) = _$_FlutterRouteSettings;
   _FlutterRouteSettings._() : super._();
 
   factory _FlutterRouteSettings.fromJson(Map<String, dynamic> json) =
@@ -1031,5 +1373,5 @@ abstract class _FlutterRouteSettings extends FlutterRouteSettings {
   @override
   ZacString? get name;
   @override
-  Object? get arguments;
+  ZacObject? get arguments;
 }
