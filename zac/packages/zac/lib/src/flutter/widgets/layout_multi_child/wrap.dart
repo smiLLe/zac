@@ -25,16 +25,16 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
 
   @FreezedUnionValue(FlutterWrap.unionValue)
   factory FlutterWrap({
-    FlutterKey? key,
-    FlutterAxis? direction,
-    FlutterWrapAlignment? alignment,
-    ZacDouble? spacing,
-    ZacDouble? runSpacing,
-    FlutterWrapAlignment? runAlignment,
-    FlutterWrapCrossAlignment? crossAxisAlignment,
-    FlutterTextDirection? textDirection,
-    FlutterVerticalDirection? verticalDirection,
-    FlutterClip? clipBehavior,
+    ZacValue<Key>? key,
+    ZacValue<Axis>? direction,
+    ZacValue<WrapAlignment>? alignment,
+    ZacValue<double>? spacing,
+    ZacValue<double>? runSpacing,
+    ZacValue<WrapAlignment>? runAlignment,
+    ZacValue<WrapCrossAlignment>? crossAxisAlignment,
+    ZacValue<TextDirection>? textDirection,
+    ZacValue<VerticalDirection>? verticalDirection,
+    ZacValue<Clip>? clipBehavior,
     ZacListOfFlutterWidget? children,
   }) = _FlutterWrap;
 

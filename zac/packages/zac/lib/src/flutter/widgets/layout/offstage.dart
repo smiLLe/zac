@@ -23,7 +23,7 @@ class FlutterOffstage with _$FlutterOffstage implements FlutterWidget {
   @FreezedUnionValue(FlutterOffstage.unionValue)
   factory FlutterOffstage({
     FlutterKey? key,
-    ZacBool? offstage,
+    ZacValue<bool>? offstage,
     FlutterWidget? child,
   }) = _FlutterOffstage;
 

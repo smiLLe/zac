@@ -26,7 +26,7 @@ _$_DartCompleterVoidConsumeSharedValue
 _$_ZacCompleterProviderBuilderVoid _$$_ZacCompleterProviderBuilderVoidFromJson(
         Map<String, dynamic> json) =>
     _$_ZacCompleterProviderBuilderVoid(
-      child: ZacFlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       family: json['family'] as Object,
     );
 

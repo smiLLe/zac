@@ -31,7 +31,7 @@ class FlutterElevatedButton
     required FlutterWidget? child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButton;
 
@@ -42,7 +42,7 @@ class FlutterElevatedButton
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
 
@@ -100,7 +100,7 @@ class FlutterOutlinedButton
     required FlutterWidget child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButton;
 
@@ -111,7 +111,7 @@ class FlutterOutlinedButton
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
 
@@ -167,7 +167,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
     required FlutterWidget child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButton;
 
@@ -178,7 +178,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
     required FlutterWidget label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacBool? autofocus,
+    ZacValue<bool>? autofocus,
     FlutterClip? clipBehavior,
   }) = _FlutterTextButtonIcon;
 

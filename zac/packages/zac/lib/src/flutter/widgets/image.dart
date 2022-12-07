@@ -24,16 +24,16 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
 
   @FreezedUnionValue(FlutterImage.unionValueNetwork)
   factory FlutterImage.network(
-    ZacString src, {
+    ZacValue<String> src, {
     FlutterKey? key,
-    ZacDouble? scale,
+    ZacValue<double>? scale,
     // ImageFrameBuilder? frameBuilder,
     // ImageLoadingBuilder? loadingBuilder,
     // ImageErrorWidgetBuilder? errorBuilder,
-    ZacString? semanticLabel,
-    ZacBool? excludeFromSemantics,
-    ZacDouble? width,
-    ZacDouble? height,
+    ZacValue<String>? semanticLabel,
+    ZacValue<bool>? excludeFromSemantics,
+    ZacValue<double>? width,
+    ZacValue<double>? height,
     FlutterColor? color,
     // Animation<double>? opacity,
     FlutterBlendMode? colorBlendMode,
@@ -41,27 +41,27 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     FlutterAlignmentGeometry? alignment,
     FlutterImageRepeat? repeat,
     FlutterRect? centerSlice,
-    ZacBool? matchTextDirection,
-    ZacBool? gaplessPlayback,
+    ZacValue<bool>? matchTextDirection,
+    ZacValue<bool>? gaplessPlayback,
     FlutterFilterQuality? filterQuality,
-    ZacBool? isAntiAlias,
+    ZacValue<bool>? isAntiAlias,
     Map<String, String>? headers,
-    ZacInt? cacheWidth,
-    ZacInt? cacheHeight,
+    ZacValue<int>? cacheWidth,
+    ZacValue<int>? cacheHeight,
   }) = _FlutterImageNetowrk;
 
   @FreezedUnionValue(FlutterImage.unionValueAsset)
   factory FlutterImage.asset(
-    ZacString name, {
+    ZacValue<String> name, {
     FlutterKey? key,
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-    ZacString? semanticLabel,
-    ZacBool? excludeFromSemantics,
-    ZacDouble? scale,
-    ZacDouble? width,
-    ZacDouble? height,
+    ZacValue<String>? semanticLabel,
+    ZacValue<bool>? excludeFromSemantics,
+    ZacValue<double>? scale,
+    ZacValue<double>? width,
+    ZacValue<double>? height,
     FlutterColor? color,
 // Animation<double>? opacity,
     FlutterBlendMode? colorBlendMode,
@@ -69,13 +69,13 @@ class FlutterImage with _$FlutterImage implements FlutterWidget {
     FlutterAlignmentGeometry? alignment,
     FlutterImageRepeat? repeat,
     FlutterRect? centerSlice,
-    ZacBool? matchTextDirection,
-    ZacBool? gaplessPlayback,
-    ZacBool? isAntiAlias,
-    ZacString? package,
+    ZacValue<bool>? matchTextDirection,
+    ZacValue<bool>? gaplessPlayback,
+    ZacValue<bool>? isAntiAlias,
+    ZacValue<String>? package,
     FlutterFilterQuality? filterQuality,
-    ZacInt? cacheWidth,
-    ZacInt? cacheHeight,
+    ZacValue<int>? cacheWidth,
+    ZacValue<int>? cacheHeight,
   }) = _FlutterImageAsset;
 
   Image _buildWidget(ZacContext zacContext) {

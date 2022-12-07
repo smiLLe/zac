@@ -22,14 +22,14 @@ FlutterMaterial _$FlutterMaterialFromJson(Map<String, dynamic> json) {
 mixin _$FlutterMaterial {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
-  ZacDouble? get elevation => throw _privateConstructorUsedError;
+  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
   FlutterTextStyle? get textStyle => throw _privateConstructorUsedError;
   FlutterBorderRadiusGeometry? get borderRadius =>
       throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
-  ZacBool? get borderOnForeground => throw _privateConstructorUsedError;
+  ZacValue<bool>? get borderOnForeground => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -63,7 +63,7 @@ class _$_FlutterMaterial extends _FlutterMaterial {
   @override
   final FlutterWidget? child;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterColor? color;
   @override
@@ -75,7 +75,7 @@ class _$_FlutterMaterial extends _FlutterMaterial {
   @override
   final FlutterShapeBorder? shape;
   @override
-  final ZacBool? borderOnForeground;
+  final ZacValue<bool>? borderOnForeground;
   @override
   final FlutterClip? clipBehavior;
 
@@ -135,13 +135,13 @@ abstract class _FlutterMaterial extends FlutterMaterial {
   factory _FlutterMaterial(
       {final FlutterKey? key,
       final FlutterWidget? child,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterColor? color,
       final FlutterColor? shadowColor,
       final FlutterTextStyle? textStyle,
       final FlutterBorderRadiusGeometry? borderRadius,
       final FlutterShapeBorder? shape,
-      final ZacBool? borderOnForeground,
+      final ZacValue<bool>? borderOnForeground,
       final FlutterClip? clipBehavior}) = _$_FlutterMaterial;
   _FlutterMaterial._() : super._();
 
@@ -153,7 +153,7 @@ abstract class _FlutterMaterial extends FlutterMaterial {
   @override
   FlutterWidget? get child;
   @override
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   @override
   FlutterColor? get color;
   @override
@@ -165,7 +165,7 @@ abstract class _FlutterMaterial extends FlutterMaterial {
   @override
   FlutterShapeBorder? get shape;
   @override
-  ZacBool? get borderOnForeground;
+  ZacValue<bool>? get borderOnForeground;
   @override
   FlutterClip? get clipBehavior;
 }

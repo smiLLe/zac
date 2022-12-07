@@ -43,16 +43,16 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     FlutterWidget? bottomNavigationBar,
     FlutterWidget? bottomSheet,
     FlutterColor? backgroundColor,
-    ZacBool? resizeToAvoidBottomInset,
-    ZacBool? primary,
+    ZacValue<bool>? resizeToAvoidBottomInset,
+    ZacValue<bool>? primary,
     // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-    ZacBool? extendBody,
-    ZacBool? extendBodyBehindAppBar,
+    ZacValue<bool>? extendBody,
+    ZacValue<bool>? extendBodyBehindAppBar,
     FlutterColor? drawerScrimColor,
-    ZacDouble? drawerEdgeDragWidth,
-    ZacBool? drawerEnableOpenDragGesture,
-    ZacBool? endDrawerEnableOpenDragGesture,
-    ZacString? restorationId,
+    ZacValue<double>? drawerEdgeDragWidth,
+    ZacValue<bool>? drawerEnableOpenDragGesture,
+    ZacValue<bool>? endDrawerEnableOpenDragGesture,
+    ZacValue<String>? restorationId,
   }) = _FlutterScaffold;
 
   Scaffold _buildWidget(ZacContext zacContext) {
@@ -126,18 +126,19 @@ class FlutterScaffoldActions
       _FlutterScaffoldActionsOpenEndDrawer;
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBodyScrim)
-  factory FlutterScaffoldActions.showBodyScrim(bool value, ZacDouble opacity) =
+  factory FlutterScaffoldActions.showBodyScrim(
+          bool value, ZacValue<double> opacity) =
       _FlutterScaffoldActionsShowBodyScrim;
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBottomSheet)
   factory FlutterScaffoldActions.showBottomSheet(
     FlutterWidget child, {
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterShapeBorder? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
-    ZacBool? enableDrag,
+    ZacValue<bool>? enableDrag,
 // AnimationController? transitionAnimationController,
   }) = _FlutterScaffoldActionsShowBottomSheet;
 
@@ -306,10 +307,10 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
     FlutterKey? key,
     required FlutterWidget content,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,
-    ZacDouble? width,
+    ZacValue<double>? width,
     FlutterShapeBorder? shape,
     FlutterSnackBarBehavior? behavior,
     FlutterSnackBarAction? action,
@@ -448,12 +449,12 @@ class FlutterMaterialBanner
     required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
     required ZacListOfFlutterWidget actions,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     required FlutterWidget? leading,
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,
     FlutterEdgeInsetsGeometry? leadingPadding,
-    ZacBool? forceActionsBelow,
+    ZacValue<bool>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
     ZacActions? onVisible,

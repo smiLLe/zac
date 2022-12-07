@@ -22,9 +22,9 @@ FlutterIcon _$FlutterIconFromJson(Map<String, dynamic> json) {
 mixin _$FlutterIcon {
   FlutterIconData? get icon => throw _privateConstructorUsedError;
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble? get size => throw _privateConstructorUsedError;
+  ZacValue<double>? get size => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
-  ZacString? get semanticLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -49,11 +49,11 @@ class _$_FlutterIcon extends _FlutterIcon {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? size;
+  final ZacValue<double>? size;
   @override
   final FlutterColor? color;
   @override
-  final ZacString? semanticLabel;
+  final ZacValue<String>? semanticLabel;
   @override
   final FlutterTextDirection? textDirection;
 
@@ -94,9 +94,9 @@ class _$_FlutterIcon extends _FlutterIcon {
 abstract class _FlutterIcon extends FlutterIcon {
   factory _FlutterIcon(final FlutterIconData? icon,
       {final FlutterKey? key,
-      final ZacDouble? size,
+      final ZacValue<double>? size,
       final FlutterColor? color,
-      final ZacString? semanticLabel,
+      final ZacValue<String>? semanticLabel,
       final FlutterTextDirection? textDirection}) = _$_FlutterIcon;
   _FlutterIcon._() : super._();
 
@@ -108,11 +108,11 @@ abstract class _FlutterIcon extends FlutterIcon {
   @override
   FlutterKey? get key;
   @override
-  ZacDouble? get size;
+  ZacValue<double>? get size;
   @override
   FlutterColor? get color;
   @override
-  ZacString? get semanticLabel;
+  ZacValue<String>? get semanticLabel;
   @override
   FlutterTextDirection? get textDirection;
 }
@@ -123,10 +123,10 @@ FlutterIconData _$FlutterIconDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterIconData {
-  ZacInt get codePoint => throw _privateConstructorUsedError;
-  ZacString? get fontFamily => throw _privateConstructorUsedError;
-  ZacString? get fontPackage => throw _privateConstructorUsedError;
-  ZacBool? get matchTextDirection => throw _privateConstructorUsedError;
+  ZacValue<int> get codePoint => throw _privateConstructorUsedError;
+  ZacValue<String>? get fontFamily => throw _privateConstructorUsedError;
+  ZacValue<String>? get fontPackage => throw _privateConstructorUsedError;
+  ZacValue<bool>? get matchTextDirection => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -146,13 +146,13 @@ class _$_FlutterIconData extends _FlutterIconData {
       _$$_FlutterIconDataFromJson(json);
 
   @override
-  final ZacInt codePoint;
+  final ZacValue<int> codePoint;
   @override
-  final ZacString? fontFamily;
+  final ZacValue<String>? fontFamily;
   @override
-  final ZacString? fontPackage;
+  final ZacValue<String>? fontPackage;
   @override
-  final ZacBool? matchTextDirection;
+  final ZacValue<bool>? matchTextDirection;
 
   @override
   String toString() {
@@ -189,23 +189,23 @@ class _$_FlutterIconData extends _FlutterIconData {
 }
 
 abstract class _FlutterIconData extends FlutterIconData {
-  factory _FlutterIconData(final ZacInt codePoint,
-      {final ZacString? fontFamily,
-      final ZacString? fontPackage,
-      final ZacBool? matchTextDirection}) = _$_FlutterIconData;
+  factory _FlutterIconData(final ZacValue<int> codePoint,
+      {final ZacValue<String>? fontFamily,
+      final ZacValue<String>? fontPackage,
+      final ZacValue<bool>? matchTextDirection}) = _$_FlutterIconData;
   _FlutterIconData._() : super._();
 
   factory _FlutterIconData.fromJson(Map<String, dynamic> json) =
       _$_FlutterIconData.fromJson;
 
   @override
-  ZacInt get codePoint;
+  ZacValue<int> get codePoint;
   @override
-  ZacString? get fontFamily;
+  ZacValue<String>? get fontFamily;
   @override
-  ZacString? get fontPackage;
+  ZacValue<String>? get fontPackage;
   @override
-  ZacBool? get matchTextDirection;
+  ZacValue<bool>? get matchTextDirection;
 }
 
 FlutterIconThemeData _$FlutterIconThemeDataFromJson(Map<String, dynamic> json) {
@@ -215,8 +215,8 @@ FlutterIconThemeData _$FlutterIconThemeDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterIconThemeData {
   FlutterColor? get color => throw _privateConstructorUsedError;
-  ZacDouble? get opacity => throw _privateConstructorUsedError;
-  ZacDouble? get size => throw _privateConstructorUsedError;
+  ZacValue<double>? get opacity => throw _privateConstructorUsedError;
+  ZacValue<double>? get size => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -236,9 +236,9 @@ class _$_FlutterIconThemeData extends _FlutterIconThemeData {
   @override
   final FlutterColor? color;
   @override
-  final ZacDouble? opacity;
+  final ZacValue<double>? opacity;
   @override
-  final ZacDouble? size;
+  final ZacValue<double>? size;
 
   @override
   String toString() {
@@ -271,8 +271,8 @@ class _$_FlutterIconThemeData extends _FlutterIconThemeData {
 abstract class _FlutterIconThemeData extends FlutterIconThemeData {
   factory _FlutterIconThemeData(
       {final FlutterColor? color,
-      final ZacDouble? opacity,
-      final ZacDouble? size}) = _$_FlutterIconThemeData;
+      final ZacValue<double>? opacity,
+      final ZacValue<double>? size}) = _$_FlutterIconThemeData;
   _FlutterIconThemeData._() : super._();
 
   factory _FlutterIconThemeData.fromJson(Map<String, dynamic> json) =
@@ -281,7 +281,7 @@ abstract class _FlutterIconThemeData extends FlutterIconThemeData {
   @override
   FlutterColor? get color;
   @override
-  ZacDouble? get opacity;
+  ZacValue<double>? get opacity;
   @override
-  ZacDouble? get size;
+  ZacValue<double>? get size;
 }

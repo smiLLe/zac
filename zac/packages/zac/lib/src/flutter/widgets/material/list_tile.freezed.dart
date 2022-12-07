@@ -25,8 +25,8 @@ mixin _$FlutterListTile {
   FlutterWidget? get title => throw _privateConstructorUsedError;
   FlutterWidget? get subtitle => throw _privateConstructorUsedError;
   FlutterWidget? get trailing => throw _privateConstructorUsedError;
-  ZacBool? get isThreeLine => throw _privateConstructorUsedError;
-  ZacBool? get dense =>
+  ZacValue<bool>? get isThreeLine => throw _privateConstructorUsedError;
+  ZacValue<bool>? get dense =>
       throw _privateConstructorUsedError; // FlutterVisualDensity? visualDensity,
   FlutterShapeBorder? get shape =>
       throw _privateConstructorUsedError; // FlutterListTileStyle? style,
@@ -35,21 +35,23 @@ mixin _$FlutterListTile {
   FlutterColor? get textColor => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get contentPadding =>
       throw _privateConstructorUsedError;
-  ZacBool? get enabled => throw _privateConstructorUsedError;
+  ZacValue<bool>? get enabled => throw _privateConstructorUsedError;
   ZacActions? get onTap => throw _privateConstructorUsedError;
   ZacActions? get onLongPress =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
-  ZacBool? get selected => throw _privateConstructorUsedError;
+  ZacValue<bool>? get selected => throw _privateConstructorUsedError;
   FlutterColor? get focusColor => throw _privateConstructorUsedError;
   FlutterColor? get hoverColor =>
       throw _privateConstructorUsedError; // FocusNode? focusNode,
-  ZacBool? get autofocus => throw _privateConstructorUsedError;
+  ZacValue<bool>? get autofocus => throw _privateConstructorUsedError;
   FlutterColor? get tileColor => throw _privateConstructorUsedError;
   FlutterColor? get selectedTileColor => throw _privateConstructorUsedError;
-  ZacBool? get enableFeedback => throw _privateConstructorUsedError;
-  ZacDouble? get horizontalTitleGap => throw _privateConstructorUsedError;
-  ZacDouble? get minVerticalPadding => throw _privateConstructorUsedError;
-  ZacDouble? get minLeadingWidth => throw _privateConstructorUsedError;
+  ZacValue<bool>? get enableFeedback => throw _privateConstructorUsedError;
+  ZacValue<double>? get horizontalTitleGap =>
+      throw _privateConstructorUsedError;
+  ZacValue<double>? get minVerticalPadding =>
+      throw _privateConstructorUsedError;
+  ZacValue<double>? get minLeadingWidth => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -103,9 +105,9 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final FlutterWidget? trailing;
   @override
-  final ZacBool? isThreeLine;
+  final ZacValue<bool>? isThreeLine;
   @override
-  final ZacBool? dense;
+  final ZacValue<bool>? dense;
 // FlutterVisualDensity? visualDensity,
   @override
   final FlutterShapeBorder? shape;
@@ -119,33 +121,33 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final FlutterEdgeInsetsGeometry? contentPadding;
   @override
-  final ZacBool? enabled;
+  final ZacValue<bool>? enabled;
   @override
   final ZacActions? onTap;
   @override
   final ZacActions? onLongPress;
 // MouseCursor? mouseCursor,
   @override
-  final ZacBool? selected;
+  final ZacValue<bool>? selected;
   @override
   final FlutterColor? focusColor;
   @override
   final FlutterColor? hoverColor;
 // FocusNode? focusNode,
   @override
-  final ZacBool? autofocus;
+  final ZacValue<bool>? autofocus;
   @override
   final FlutterColor? tileColor;
   @override
   final FlutterColor? selectedTileColor;
   @override
-  final ZacBool? enableFeedback;
+  final ZacValue<bool>? enableFeedback;
   @override
-  final ZacDouble? horizontalTitleGap;
+  final ZacValue<double>? horizontalTitleGap;
   @override
-  final ZacDouble? minVerticalPadding;
+  final ZacValue<double>? minVerticalPadding;
   @override
-  final ZacDouble? minLeadingWidth;
+  final ZacValue<double>? minLeadingWidth;
 
   @override
   String toString() {
@@ -249,26 +251,26 @@ abstract class _FlutterListTile extends FlutterListTile {
       final FlutterWidget? title,
       final FlutterWidget? subtitle,
       final FlutterWidget? trailing,
-      final ZacBool? isThreeLine,
-      final ZacBool? dense,
+      final ZacValue<bool>? isThreeLine,
+      final ZacValue<bool>? dense,
       final FlutterShapeBorder? shape,
       final FlutterColor? selectedColor,
       final FlutterColor? iconColor,
       final FlutterColor? textColor,
       final FlutterEdgeInsetsGeometry? contentPadding,
-      final ZacBool? enabled,
+      final ZacValue<bool>? enabled,
       final ZacActions? onTap,
       final ZacActions? onLongPress,
-      final ZacBool? selected,
+      final ZacValue<bool>? selected,
       final FlutterColor? focusColor,
       final FlutterColor? hoverColor,
-      final ZacBool? autofocus,
+      final ZacValue<bool>? autofocus,
       final FlutterColor? tileColor,
       final FlutterColor? selectedTileColor,
-      final ZacBool? enableFeedback,
-      final ZacDouble? horizontalTitleGap,
-      final ZacDouble? minVerticalPadding,
-      final ZacDouble? minLeadingWidth}) = _$_FlutterListTile;
+      final ZacValue<bool>? enableFeedback,
+      final ZacValue<double>? horizontalTitleGap,
+      final ZacValue<double>? minVerticalPadding,
+      final ZacValue<double>? minLeadingWidth}) = _$_FlutterListTile;
   _FlutterListTile._() : super._();
 
   factory _FlutterListTile.fromJson(Map<String, dynamic> json) =
@@ -285,9 +287,9 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   FlutterWidget? get trailing;
   @override
-  ZacBool? get isThreeLine;
+  ZacValue<bool>? get isThreeLine;
   @override
-  ZacBool? get dense;
+  ZacValue<bool>? get dense;
   @override // FlutterVisualDensity? visualDensity,
   FlutterShapeBorder? get shape;
   @override // FlutterListTileStyle? style,
@@ -299,29 +301,29 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   FlutterEdgeInsetsGeometry? get contentPadding;
   @override
-  ZacBool? get enabled;
+  ZacValue<bool>? get enabled;
   @override
   ZacActions? get onTap;
   @override
   ZacActions? get onLongPress;
   @override // MouseCursor? mouseCursor,
-  ZacBool? get selected;
+  ZacValue<bool>? get selected;
   @override
   FlutterColor? get focusColor;
   @override
   FlutterColor? get hoverColor;
   @override // FocusNode? focusNode,
-  ZacBool? get autofocus;
+  ZacValue<bool>? get autofocus;
   @override
   FlutterColor? get tileColor;
   @override
   FlutterColor? get selectedTileColor;
   @override
-  ZacBool? get enableFeedback;
+  ZacValue<bool>? get enableFeedback;
   @override
-  ZacDouble? get horizontalTitleGap;
+  ZacValue<double>? get horizontalTitleGap;
   @override
-  ZacDouble? get minVerticalPadding;
+  ZacValue<double>? get minVerticalPadding;
   @override
-  ZacDouble? get minLeadingWidth;
+  ZacValue<double>? get minLeadingWidth;
 }

@@ -12,16 +12,16 @@ _$_FlutterSliverChildListDelegate _$$_FlutterSliverChildListDelegateFromJson(
       ZacListOfFlutterWidget.fromJson(json['children'] as Object),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
           ? null
-          : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
+          : ZacValue<bool>.fromJson(json['addAutomaticKeepAlives'] as Object),
       addRepaintBoundaries: json['addRepaintBoundaries'] == null
           ? null
-          : ZacBool.fromJson(json['addRepaintBoundaries'] as Object),
+          : ZacValue<bool>.fromJson(json['addRepaintBoundaries'] as Object),
       addSemanticIndexes: json['addSemanticIndexes'] == null
           ? null
-          : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
+          : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
       semanticIndexOffset: json['semanticIndexOffset'] == null
           ? null
-          : ZacInt.fromJson(json['semanticIndexOffset'] as Object),
+          : ZacValue<int>.fromJson(json['semanticIndexOffset'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -32,15 +32,16 @@ _$_FlutterSliverChildListDelegateFixed
           ZacListOfFlutterWidget.fromJson(json['children'] as Object),
           addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
               ? null
-              : ZacBool.fromJson(json['addAutomaticKeepAlives'] as Object),
+              : ZacValue<bool>.fromJson(
+                  json['addAutomaticKeepAlives'] as Object),
           addRepaintBoundaries: json['addRepaintBoundaries'] == null
               ? null
-              : ZacBool.fromJson(json['addRepaintBoundaries'] as Object),
+              : ZacValue<bool>.fromJson(json['addRepaintBoundaries'] as Object),
           addSemanticIndexes: json['addSemanticIndexes'] == null
               ? null
-              : ZacBool.fromJson(json['addSemanticIndexes'] as Object),
+              : ZacValue<bool>.fromJson(json['addSemanticIndexes'] as Object),
           semanticIndexOffset: json['semanticIndexOffset'] == null
               ? null
-              : ZacInt.fromJson(json['semanticIndexOffset'] as Object),
+              : ZacValue<int>.fromJson(json['semanticIndexOffset'] as Object),
           $type: json['converter'] as String?,
         );

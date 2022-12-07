@@ -28,24 +28,24 @@ mixin _$FlutterSelectableText {
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  ZacDouble? get textScaleFactor => throw _privateConstructorUsedError;
-  ZacBool? get showCursor => throw _privateConstructorUsedError;
-  ZacBool? get autofocus =>
+  ZacValue<double>? get textScaleFactor => throw _privateConstructorUsedError;
+  ZacValue<bool>? get showCursor => throw _privateConstructorUsedError;
+  ZacValue<bool>? get autofocus =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
-  ZacInt? get minLines => throw _privateConstructorUsedError;
-  ZacInt? get maxLines => throw _privateConstructorUsedError;
-  ZacDouble? get cursorWidth => throw _privateConstructorUsedError;
-  ZacDouble? get cursorHeight => throw _privateConstructorUsedError;
+  ZacValue<int>? get minLines => throw _privateConstructorUsedError;
+  ZacValue<int>? get maxLines => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorWidth => throw _privateConstructorUsedError;
+  ZacValue<double>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
   FlutterColor? get cursorColor =>
       throw _privateConstructorUsedError; // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacBool? get enableInteractiveSelection =>
+  ZacValue<bool>? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacString? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticsLabel => throw _privateConstructorUsedError;
   FlutterTextHeightBehavior? get textHeightBehavior =>
       throw _privateConstructorUsedError;
   FlutterTextWidthBasis? get textWidthBasis =>
@@ -99,20 +99,20 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final FlutterTextDirection? textDirection;
   @override
-  final ZacDouble? textScaleFactor;
+  final ZacValue<double>? textScaleFactor;
   @override
-  final ZacBool? showCursor;
+  final ZacValue<bool>? showCursor;
   @override
-  final ZacBool? autofocus;
+  final ZacValue<bool>? autofocus;
 // ToolbarOptions? toolbarOptions,
   @override
-  final ZacInt? minLines;
+  final ZacValue<int>? minLines;
   @override
-  final ZacInt? maxLines;
+  final ZacValue<int>? maxLines;
   @override
-  final ZacDouble? cursorWidth;
+  final ZacValue<double>? cursorWidth;
   @override
-  final ZacDouble? cursorHeight;
+  final ZacValue<double>? cursorHeight;
   @override
   final FlutterRadius? cursorRadius;
   @override
@@ -121,12 +121,12 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacBool? enableInteractiveSelection;
+  final ZacValue<bool>? enableInteractiveSelection;
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
   @override
-  final ZacString? semanticsLabel;
+  final ZacValue<String>? semanticsLabel;
   @override
   final FlutterTextHeightBehavior? textHeightBehavior;
   @override
@@ -222,17 +222,17 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
       final FlutterTextDirection? textDirection,
-      final ZacDouble? textScaleFactor,
-      final ZacBool? showCursor,
-      final ZacBool? autofocus,
-      final ZacInt? minLines,
-      final ZacInt? maxLines,
-      final ZacDouble? cursorWidth,
-      final ZacDouble? cursorHeight,
+      final ZacValue<double>? textScaleFactor,
+      final ZacValue<bool>? showCursor,
+      final ZacValue<bool>? autofocus,
+      final ZacValue<int>? minLines,
+      final ZacValue<int>? maxLines,
+      final ZacValue<double>? cursorWidth,
+      final ZacValue<double>? cursorHeight,
       final FlutterRadius? cursorRadius,
       final FlutterColor? cursorColor,
-      final ZacBool? enableInteractiveSelection,
-      final ZacString? semanticsLabel,
+      final ZacValue<bool>? enableInteractiveSelection,
+      final ZacValue<String>? semanticsLabel,
       final FlutterTextHeightBehavior? textHeightBehavior,
       final FlutterTextWidthBasis? textWidthBasis}) = _$_FlutterSelectableText;
   _FlutterSelectableText._() : super._();
@@ -253,19 +253,19 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   FlutterTextDirection? get textDirection;
   @override
-  ZacDouble? get textScaleFactor;
+  ZacValue<double>? get textScaleFactor;
   @override
-  ZacBool? get showCursor;
+  ZacValue<bool>? get showCursor;
   @override
-  ZacBool? get autofocus;
+  ZacValue<bool>? get autofocus;
   @override // ToolbarOptions? toolbarOptions,
-  ZacInt? get minLines;
+  ZacValue<int>? get minLines;
   @override
-  ZacInt? get maxLines;
+  ZacValue<int>? get maxLines;
   @override
-  ZacDouble? get cursorWidth;
+  ZacValue<double>? get cursorWidth;
   @override
-  ZacDouble? get cursorHeight;
+  ZacValue<double>? get cursorHeight;
   @override
   FlutterRadius? get cursorRadius;
   @override
@@ -273,11 +273,11 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacBool? get enableInteractiveSelection;
+  ZacValue<bool>? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacString? get semanticsLabel;
+  ZacValue<String>? get semanticsLabel;
   @override
   FlutterTextHeightBehavior? get textHeightBehavior;
   @override

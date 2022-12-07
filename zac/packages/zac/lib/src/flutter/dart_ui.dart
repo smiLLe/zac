@@ -32,7 +32,7 @@ class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
     required int r,
     required int g,
     required int b,
-    required ZacDouble opacity,
+    required ZacValue<double> opacity,
   }) = _FlutterColorFromRBGO;
 
   Color _build(ZacContext zacContext) {
@@ -69,12 +69,13 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
       _$FlutterOffsetFromJson(json);
 
   @FreezedUnionValue('f:1:Offset')
-  factory FlutterOffset(ZacDouble dx, ZacDouble dy) = _FlutterOffset;
+  factory FlutterOffset(ZacValue<double> dx, ZacValue<double> dy) =
+      _FlutterOffset;
 
   @FreezedUnionValue('f:1:Offset.fromDirection')
   factory FlutterOffset.fromDirection(
-      {required ZacDouble direction,
-      ZacDouble? distance}) = _FlutterOffsetFromDirection;
+      {required ZacValue<double> direction,
+      ZacValue<double>? distance}) = _FlutterOffsetFromDirection;
 
   Offset _build(ZacContext zacContext) {
     return map(
@@ -149,10 +150,11 @@ class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
       _$FlutterRadiusFromJson(json);
 
   @FreezedUnionValue('f:1:Radius.circular')
-  factory FlutterRadius.circular(ZacDouble radius) = _FlutterRadiusCircular;
+  factory FlutterRadius.circular(ZacValue<double> radius) =
+      _FlutterRadiusCircular;
 
   @FreezedUnionValue('f:1:Radius.elliptical')
-  factory FlutterRadius.elliptical(ZacDouble x, ZacDouble y) =
+  factory FlutterRadius.elliptical(ZacValue<double> x, ZacValue<double> y) =
       _FlutterRadiusElliptical;
 
   Radius _build(ZacContext zacContext) {
@@ -499,7 +501,8 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       _$FlutterFontFeatureFromJson(json);
 
   @FreezedUnionValue('f:1:FontFeature')
-  factory FlutterFontFeature(String feature, [ZacInt? value]) = _FontFeature;
+  factory FlutterFontFeature(String feature, [ZacValue<int>? value]) =
+      _FontFeature;
 
   @FreezedUnionValue('f:1:FontFeature.alternative')
   factory FlutterFontFeature.alternative(int value) = _FontFeatureAlternative;
@@ -543,11 +546,11 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   factory FlutterFontFeature.liningFigures() = _FontFeatureLiningFigures;
 
   @FreezedUnionValue('f:1:FontFeature.localeAware')
-  factory FlutterFontFeature.localeAware({ZacBool? enable}) =
+  factory FlutterFontFeature.localeAware({ZacValue<bool>? enable}) =
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
-  factory FlutterFontFeature.notationalForms([ZacInt? value]) =
+  factory FlutterFontFeature.notationalForms([ZacValue<int>? value]) =
       _FontFeatureNotationalForms;
 
   @FreezedUnionValue('f:1:FontFeature.numerators')
@@ -587,7 +590,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   factory FlutterFontFeature.superscripts() = _FontFeatureSuperscripts;
 
   @FreezedUnionValue('f:1:FontFeature.swash')
-  factory FlutterFontFeature.swash([ZacInt? value]) = _FontFeatureSwash;
+  factory FlutterFontFeature.swash([ZacValue<int>? value]) = _FontFeatureSwash;
 
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
@@ -753,8 +756,8 @@ class FlutterTextHeightBehavior
 
   @FreezedUnionValue('f:1:TextHeightBehavior')
   factory FlutterTextHeightBehavior({
-    ZacBool? applyHeightToFirstAscent,
-    ZacBool? applyHeightToLastDescent,
+    ZacValue<bool>? applyHeightToFirstAscent,
+    ZacValue<bool>? applyHeightToLastDescent,
     FlutterTextLeadingDistribution? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
@@ -935,25 +938,23 @@ class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
   @FreezedUnionValue('f:1:Rect.fromCenter')
   factory FlutterRect.fromCenter({
     required FlutterOffset center,
-    required ZacDouble width,
-    required ZacDouble height,
+    required ZacValue<double> width,
+    required ZacValue<double> height,
   }) = _FlutterRectFroMCenter;
 
   @FreezedUnionValue('f:1:Rect.fromCircle')
   factory FlutterRect.fromCircle({
     required FlutterOffset center,
-    required ZacDouble radius,
+    required ZacValue<double> radius,
   }) = _FlutterRectFromCircle;
 
   @FreezedUnionValue('f:1:Rect.fromLTRB')
-  factory FlutterRect.fromLTRB(
-          ZacDouble left, ZacDouble top, ZacDouble right, ZacDouble bottom) =
-      _FlutterRectFromLTRB;
+  factory FlutterRect.fromLTRB(ZacValue<double> left, ZacValue<double> top,
+      ZacValue<double> right, ZacValue<double> bottom) = _FlutterRectFromLTRB;
 
   @FreezedUnionValue('f:1:Rect.fromLTWH')
-  factory FlutterRect.fromLTWH(
-          ZacDouble left, ZacDouble top, ZacDouble width, ZacDouble height) =
-      _FlutterRectFromLTWH;
+  factory FlutterRect.fromLTWH(ZacValue<double> left, ZacValue<double> top,
+      ZacValue<double> width, ZacValue<double> height) = _FlutterRectFromLTWH;
 
   @FreezedUnionValue('f:1:Rect.fromPoints')
   factory FlutterRect.fromPoints(FlutterOffset a, FlutterOffset b) =
@@ -1080,8 +1081,8 @@ class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
 
   @FreezedUnionValue('f:1:Size')
   factory FlutterSize(
-    ZacDouble width,
-    ZacDouble height,
+    ZacValue<double> width,
+    ZacValue<double> height,
   ) = _FlutterSize;
 
   Size _build(ZacContext zacContext) {
@@ -1211,7 +1212,7 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   factory FlutterShadow({
     FlutterColor? color,
     FlutterOffset? offset,
-    ZacDouble? blurRadius,
+    ZacValue<double>? blurRadius,
   }) = _FlutterShadowShadow;
 
   Shadow _build(ZacContext zacContext) {

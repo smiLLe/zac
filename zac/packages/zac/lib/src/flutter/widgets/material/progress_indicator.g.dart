@@ -14,7 +14,7 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       value: json['value'] == null
           ? null
-          : ZacDouble.fromJson(json['value'] as Object),
+          : ZacValue<double>.fromJson(json['value'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -24,13 +24,13 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacDouble.fromJson(json['minHeight'] as Object),
+          : ZacValue<double>.fromJson(json['minHeight'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacString.fromJson(json['semanticsValue'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -42,7 +42,7 @@ _$_FlutterProgressIndicatorCircular
               : FlutterKey.fromJson(json['key'] as Object),
           value: json['value'] == null
               ? null
-              : ZacDouble.fromJson(json['value'] as Object),
+              : ZacValue<double>.fromJson(json['value'] as Object),
           backgroundColor: json['backgroundColor'] == null
               ? null
               : FlutterColor.fromJson(
@@ -52,12 +52,12 @@ _$_FlutterProgressIndicatorCircular
               : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
           strokeWidth: json['strokeWidth'] == null
               ? null
-              : ZacDouble.fromJson(json['strokeWidth'] as Object),
+              : ZacValue<double>.fromJson(json['strokeWidth'] as Object),
           semanticsLabel: json['semanticsLabel'] == null
               ? null
-              : ZacString.fromJson(json['semanticsLabel'] as Object),
+              : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
           semanticsValue: json['semanticsValue'] == null
               ? null
-              : ZacString.fromJson(json['semanticsValue'] as Object),
+              : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
           $type: json['converter'] as String?,
         );

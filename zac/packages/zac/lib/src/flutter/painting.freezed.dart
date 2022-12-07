@@ -606,18 +606,18 @@ FlutterStrutStyle _$FlutterStrutStyleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterStrutStyle {
-  ZacString? get fontFamily => throw _privateConstructorUsedError;
+  ZacValue<String>? get fontFamily => throw _privateConstructorUsedError;
   List<String>? get fontFamilyFallback => throw _privateConstructorUsedError;
-  ZacDouble? get fontSize => throw _privateConstructorUsedError;
-  ZacDouble? get height => throw _privateConstructorUsedError;
+  ZacValue<double>? get fontSize => throw _privateConstructorUsedError;
+  ZacValue<double>? get height => throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
-  ZacDouble? get leading => throw _privateConstructorUsedError;
+  ZacValue<double>? get leading => throw _privateConstructorUsedError;
   FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
   FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
-  ZacBool? get forceStrutHeight => throw _privateConstructorUsedError;
-  ZacString? get debugLabel => throw _privateConstructorUsedError;
-  ZacString? get package => throw _privateConstructorUsedError;
+  ZacValue<bool>? get forceStrutHeight => throw _privateConstructorUsedError;
+  ZacValue<String>? get debugLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get package => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -652,7 +652,7 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
       _$$_FlutterStrutStyleFromJson(json);
 
   @override
-  final ZacString? fontFamily;
+  final ZacValue<String>? fontFamily;
   final List<String>? _fontFamilyFallback;
   @override
   List<String>? get fontFamilyFallback {
@@ -663,23 +663,23 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
   }
 
   @override
-  final ZacDouble? fontSize;
+  final ZacValue<double>? fontSize;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
   @override
-  final ZacDouble? leading;
+  final ZacValue<double>? leading;
   @override
   final FlutterFontWeight? fontWeight;
   @override
   final FlutterFontStyle? fontStyle;
   @override
-  final ZacBool? forceStrutHeight;
+  final ZacValue<bool>? forceStrutHeight;
   @override
-  final ZacString? debugLabel;
+  final ZacValue<String>? debugLabel;
   @override
-  final ZacString? package;
+  final ZacValue<String>? package;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -744,44 +744,44 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
 
 abstract class _FlutterStrutStyle extends FlutterStrutStyle {
   factory _FlutterStrutStyle(
-      {final ZacString? fontFamily,
+      {final ZacValue<String>? fontFamily,
       final List<String>? fontFamilyFallback,
-      final ZacDouble? fontSize,
-      final ZacDouble? height,
+      final ZacValue<double>? fontSize,
+      final ZacValue<double>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
-      final ZacDouble? leading,
+      final ZacValue<double>? leading,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
-      final ZacBool? forceStrutHeight,
-      final ZacString? debugLabel,
-      final ZacString? package}) = _$_FlutterStrutStyle;
+      final ZacValue<bool>? forceStrutHeight,
+      final ZacValue<String>? debugLabel,
+      final ZacValue<String>? package}) = _$_FlutterStrutStyle;
   _FlutterStrutStyle._() : super._();
 
   factory _FlutterStrutStyle.fromJson(Map<String, dynamic> json) =
       _$_FlutterStrutStyle.fromJson;
 
   @override
-  ZacString? get fontFamily;
+  ZacValue<String>? get fontFamily;
   @override
   List<String>? get fontFamilyFallback;
   @override
-  ZacDouble? get fontSize;
+  ZacValue<double>? get fontSize;
   @override
-  ZacDouble? get height;
+  ZacValue<double>? get height;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
   @override
-  ZacDouble? get leading;
+  ZacValue<double>? get leading;
   @override
   FlutterFontWeight? get fontWeight;
   @override
   FlutterFontStyle? get fontStyle;
   @override
-  ZacBool? get forceStrutHeight;
+  ZacValue<bool>? get forceStrutHeight;
   @override
-  ZacString? get debugLabel;
+  ZacValue<String>? get debugLabel;
   @override
-  ZacString? get package;
+  ZacValue<String>? get package;
 }
 
 /// @nodoc
@@ -812,7 +812,7 @@ class _$_FlutterStrutStyleFromTextStyle
   @override
   final FlutterTextStyle textStyle;
   @override
-  final ZacString? fontFamily;
+  final ZacValue<String>? fontFamily;
   final List<String>? _fontFamilyFallback;
   @override
   List<String>? get fontFamilyFallback {
@@ -823,23 +823,23 @@ class _$_FlutterStrutStyleFromTextStyle
   }
 
   @override
-  final ZacDouble? fontSize;
+  final ZacValue<double>? fontSize;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
   @override
-  final ZacDouble? leading;
+  final ZacValue<double>? leading;
   @override
   final FlutterFontWeight? fontWeight;
   @override
   final FlutterFontStyle? fontStyle;
   @override
-  final ZacBool? forceStrutHeight;
+  final ZacValue<bool>? forceStrutHeight;
   @override
-  final ZacString? debugLabel;
+  final ZacValue<String>? debugLabel;
   @override
-  final ZacString? package;
+  final ZacValue<String>? package;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -907,17 +907,17 @@ class _$_FlutterStrutStyleFromTextStyle
 
 abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
   factory _FlutterStrutStyleFromTextStyle(final FlutterTextStyle textStyle,
-      {final ZacString? fontFamily,
+      {final ZacValue<String>? fontFamily,
       final List<String>? fontFamilyFallback,
-      final ZacDouble? fontSize,
-      final ZacDouble? height,
+      final ZacValue<double>? fontSize,
+      final ZacValue<double>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
-      final ZacDouble? leading,
+      final ZacValue<double>? leading,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
-      final ZacBool? forceStrutHeight,
-      final ZacString? debugLabel,
-      final ZacString? package}) = _$_FlutterStrutStyleFromTextStyle;
+      final ZacValue<bool>? forceStrutHeight,
+      final ZacValue<String>? debugLabel,
+      final ZacValue<String>? package}) = _$_FlutterStrutStyleFromTextStyle;
   _FlutterStrutStyleFromTextStyle._() : super._();
 
   factory _FlutterStrutStyleFromTextStyle.fromJson(Map<String, dynamic> json) =
@@ -925,27 +925,27 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
 
   FlutterTextStyle get textStyle;
   @override
-  ZacString? get fontFamily;
+  ZacValue<String>? get fontFamily;
   @override
   List<String>? get fontFamilyFallback;
   @override
-  ZacDouble? get fontSize;
+  ZacValue<double>? get fontSize;
   @override
-  ZacDouble? get height;
+  ZacValue<double>? get height;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
   @override
-  ZacDouble? get leading;
+  ZacValue<double>? get leading;
   @override
   FlutterFontWeight? get fontWeight;
   @override
   FlutterFontStyle? get fontStyle;
   @override
-  ZacBool? get forceStrutHeight;
+  ZacValue<bool>? get forceStrutHeight;
   @override
-  ZacString? get debugLabel;
+  ZacValue<String>? get debugLabel;
   @override
-  ZacString? get package;
+  ZacValue<String>? get package;
 }
 
 FlutterTextWidthBasis _$FlutterTextWidthBasisFromJson(
@@ -1700,16 +1700,16 @@ FlutterTextStyle _$FlutterTextStyleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterTextStyle {
-  ZacBool? get inherit => throw _privateConstructorUsedError;
+  ZacValue<bool>? get inherit => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
-  ZacDouble? get fontSize => throw _privateConstructorUsedError;
+  ZacValue<double>? get fontSize => throw _privateConstructorUsedError;
   FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
   FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
-  ZacDouble? get letterSpacing => throw _privateConstructorUsedError;
-  ZacDouble? get wordSpacing => throw _privateConstructorUsedError;
+  ZacValue<double>? get letterSpacing => throw _privateConstructorUsedError;
+  ZacValue<double>? get wordSpacing => throw _privateConstructorUsedError;
   FlutterTextBaseline? get textBaseline => throw _privateConstructorUsedError;
-  ZacDouble? get height => throw _privateConstructorUsedError;
+  ZacValue<double>? get height => throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
   FlutterLocale? get locale =>
@@ -1722,11 +1722,12 @@ mixin _$FlutterTextStyle {
   FlutterColor? get decorationColor => throw _privateConstructorUsedError;
   FlutterTextDecorationStyle? get decorationStyle =>
       throw _privateConstructorUsedError;
-  ZacDouble? get decorationThickness => throw _privateConstructorUsedError;
-  ZacString? get debugLabel => throw _privateConstructorUsedError;
-  ZacString? get fontFamily => throw _privateConstructorUsedError;
+  ZacValue<double>? get decorationThickness =>
+      throw _privateConstructorUsedError;
+  ZacValue<String>? get debugLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get fontFamily => throw _privateConstructorUsedError;
   List<String>? get fontFamilyFallback => throw _privateConstructorUsedError;
-  ZacString? get package => throw _privateConstructorUsedError;
+  ZacValue<String>? get package => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1772,25 +1773,25 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       _$$_FlutterTextStyleFromJson(json);
 
   @override
-  final ZacBool? inherit;
+  final ZacValue<bool>? inherit;
   @override
   final FlutterColor? color;
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? fontSize;
+  final ZacValue<double>? fontSize;
   @override
   final FlutterFontWeight? fontWeight;
   @override
   final FlutterFontStyle? fontStyle;
   @override
-  final ZacDouble? letterSpacing;
+  final ZacValue<double>? letterSpacing;
   @override
-  final ZacDouble? wordSpacing;
+  final ZacValue<double>? wordSpacing;
   @override
   final FlutterTextBaseline? textBaseline;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
   @override
@@ -1824,11 +1825,11 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final FlutterTextDecorationStyle? decorationStyle;
   @override
-  final ZacDouble? decorationThickness;
+  final ZacValue<double>? decorationThickness;
   @override
-  final ZacString? debugLabel;
+  final ZacValue<String>? debugLabel;
   @override
-  final ZacString? fontFamily;
+  final ZacValue<String>? fontFamily;
   final List<String>? _fontFamilyFallback;
   @override
   List<String>? get fontFamilyFallback {
@@ -1839,7 +1840,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   }
 
   @override
-  final ZacString? package;
+  final ZacValue<String>? package;
   @override
   final FlutterTextOverflow? overflow;
 
@@ -1935,16 +1936,16 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
 
 abstract class _FlutterTextStyle extends FlutterTextStyle {
   factory _FlutterTextStyle(
-      {final ZacBool? inherit,
+      {final ZacValue<bool>? inherit,
       final FlutterColor? color,
       final FlutterColor? backgroundColor,
-      final ZacDouble? fontSize,
+      final ZacValue<double>? fontSize,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
-      final ZacDouble? letterSpacing,
-      final ZacDouble? wordSpacing,
+      final ZacValue<double>? letterSpacing,
+      final ZacValue<double>? wordSpacing,
       final FlutterTextBaseline? textBaseline,
-      final ZacDouble? height,
+      final ZacValue<double>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
       final FlutterLocale? locale,
       final List<DartShadow>? shadows,
@@ -1952,11 +1953,11 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final FlutterTextDecoration? decoration,
       final FlutterColor? decorationColor,
       final FlutterTextDecorationStyle? decorationStyle,
-      final ZacDouble? decorationThickness,
-      final ZacString? debugLabel,
-      final ZacString? fontFamily,
+      final ZacValue<double>? decorationThickness,
+      final ZacValue<String>? debugLabel,
+      final ZacValue<String>? fontFamily,
       final List<String>? fontFamilyFallback,
-      final ZacString? package,
+      final ZacValue<String>? package,
       final FlutterTextOverflow? overflow}) = _$_FlutterTextStyle;
   _FlutterTextStyle._() : super._();
 
@@ -1964,25 +1965,25 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       _$_FlutterTextStyle.fromJson;
 
   @override
-  ZacBool? get inherit;
+  ZacValue<bool>? get inherit;
   @override
   FlutterColor? get color;
   @override
   FlutterColor? get backgroundColor;
   @override
-  ZacDouble? get fontSize;
+  ZacValue<double>? get fontSize;
   @override
   FlutterFontWeight? get fontWeight;
   @override
   FlutterFontStyle? get fontStyle;
   @override
-  ZacDouble? get letterSpacing;
+  ZacValue<double>? get letterSpacing;
   @override
-  ZacDouble? get wordSpacing;
+  ZacValue<double>? get wordSpacing;
   @override
   FlutterTextBaseline? get textBaseline;
   @override
-  ZacDouble? get height;
+  ZacValue<double>? get height;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
   @override
@@ -1999,15 +2000,15 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   FlutterTextDecorationStyle? get decorationStyle;
   @override
-  ZacDouble? get decorationThickness;
+  ZacValue<double>? get decorationThickness;
   @override
-  ZacString? get debugLabel;
+  ZacValue<String>? get debugLabel;
   @override
-  ZacString? get fontFamily;
+  ZacValue<String>? get fontFamily;
   @override
   List<String>? get fontFamilyFallback;
   @override
-  ZacString? get package;
+  ZacValue<String>? get package;
   @override
   FlutterTextOverflow? get overflow;
 }
@@ -2056,7 +2057,7 @@ class _$_FlutterTextAlignVertical extends _FlutterTextAlignVertical {
       _$$_FlutterTextAlignVerticalFromJson(json);
 
   @override
-  final ZacDouble y;
+  final ZacValue<double> y;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2091,14 +2092,14 @@ class _$_FlutterTextAlignVertical extends _FlutterTextAlignVertical {
 }
 
 abstract class _FlutterTextAlignVertical extends FlutterTextAlignVertical {
-  factory _FlutterTextAlignVertical({required final ZacDouble y}) =
+  factory _FlutterTextAlignVertical({required final ZacValue<double> y}) =
       _$_FlutterTextAlignVertical;
   _FlutterTextAlignVertical._() : super._();
 
   factory _FlutterTextAlignVertical.fromJson(Map<String, dynamic> json) =
       _$_FlutterTextAlignVertical.fromJson;
 
-  ZacDouble get y;
+  ZacValue<double> get y;
 }
 
 /// @nodoc
@@ -2262,8 +2263,8 @@ FlutterBoxShadow _$FlutterBoxShadowFromJson(Map<String, dynamic> json) {
 mixin _$FlutterBoxShadow {
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
-  ZacDouble? get blurRadius => throw _privateConstructorUsedError;
-  ZacDouble? get spreadRadius => throw _privateConstructorUsedError;
+  ZacValue<double>? get blurRadius => throw _privateConstructorUsedError;
+  ZacValue<double>? get spreadRadius => throw _privateConstructorUsedError;
   FlutterBlurStyle? get blurStyle => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -2292,9 +2293,9 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
   @override
   final FlutterOffset? offset;
   @override
-  final ZacDouble? blurRadius;
+  final ZacValue<double>? blurRadius;
   @override
-  final ZacDouble? spreadRadius;
+  final ZacValue<double>? spreadRadius;
   @override
   final FlutterBlurStyle? blurStyle;
 
@@ -2336,8 +2337,8 @@ abstract class _FlutterBoxShadow extends FlutterBoxShadow {
   factory _FlutterBoxShadow(
       {final FlutterColor? color,
       final FlutterOffset? offset,
-      final ZacDouble? blurRadius,
-      final ZacDouble? spreadRadius,
+      final ZacValue<double>? blurRadius,
+      final ZacValue<double>? spreadRadius,
       final FlutterBlurStyle? blurStyle}) = _$_FlutterBoxShadow;
   _FlutterBoxShadow._() : super._();
 
@@ -2349,9 +2350,9 @@ abstract class _FlutterBoxShadow extends FlutterBoxShadow {
   @override
   FlutterOffset? get offset;
   @override
-  ZacDouble? get blurRadius;
+  ZacValue<double>? get blurRadius;
   @override
-  ZacDouble? get spreadRadius;
+  ZacValue<double>? get spreadRadius;
   @override
   FlutterBlurStyle? get blurStyle;
 }
@@ -2414,9 +2415,9 @@ class _$_FlutterAlignment extends _FlutterAlignment {
       _$$_FlutterAlignmentFromJson(json);
 
   @override
-  final ZacDouble x;
+  final ZacValue<double> x;
   @override
-  final ZacDouble y;
+  final ZacValue<double> y;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2458,15 +2459,15 @@ class _$_FlutterAlignment extends _FlutterAlignment {
 }
 
 abstract class _FlutterAlignment extends FlutterAlignment {
-  factory _FlutterAlignment(final ZacDouble x, final ZacDouble y) =
-      _$_FlutterAlignment;
+  factory _FlutterAlignment(
+      final ZacValue<double> x, final ZacValue<double> y) = _$_FlutterAlignment;
   _FlutterAlignment._() : super._();
 
   factory _FlutterAlignment.fromJson(Map<String, dynamic> json) =
       _$_FlutterAlignment.fromJson;
 
-  ZacDouble get x;
-  ZacDouble get y;
+  ZacValue<double> get x;
+  ZacValue<double> get y;
 }
 
 /// @nodoc
@@ -3033,9 +3034,9 @@ class _$_FlutterAlignmentDirectional extends _FlutterAlignmentDirectional {
       _$$_FlutterAlignmentDirectionalFromJson(json);
 
   @override
-  final ZacDouble start;
+  final ZacValue<double> start;
   @override
-  final ZacDouble y;
+  final ZacValue<double> y;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3086,15 +3087,15 @@ class _$_FlutterAlignmentDirectional extends _FlutterAlignmentDirectional {
 abstract class _FlutterAlignmentDirectional
     extends FlutterAlignmentDirectional {
   factory _FlutterAlignmentDirectional(
-          final ZacDouble start, final ZacDouble y) =
+          final ZacValue<double> start, final ZacValue<double> y) =
       _$_FlutterAlignmentDirectional;
   _FlutterAlignmentDirectional._() : super._();
 
   factory _FlutterAlignmentDirectional.fromJson(Map<String, dynamic> json) =
       _$_FlutterAlignmentDirectional.fromJson;
 
-  ZacDouble get start;
-  ZacDouble get y;
+  ZacValue<double> get start;
+  ZacValue<double> get y;
 }
 
 /// @nodoc
@@ -3707,8 +3708,8 @@ FlutterFractionalOffset _$FlutterFractionalOffsetFromJson(
 
 /// @nodoc
 mixin _$FlutterFractionalOffset {
-  ZacDouble get dx => throw _privateConstructorUsedError;
-  ZacDouble get dy => throw _privateConstructorUsedError;
+  ZacValue<double> get dx => throw _privateConstructorUsedError;
+  ZacValue<double> get dy => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -3726,9 +3727,9 @@ class _$_FlutterFractionalOffset extends _FlutterFractionalOffset {
       _$$_FlutterFractionalOffsetFromJson(json);
 
   @override
-  final ZacDouble dx;
+  final ZacValue<double> dx;
   @override
-  final ZacDouble dy;
+  final ZacValue<double> dy;
 
   @override
   String toString() {
@@ -3758,7 +3759,8 @@ class _$_FlutterFractionalOffset extends _FlutterFractionalOffset {
 }
 
 abstract class _FlutterFractionalOffset extends FlutterFractionalOffset {
-  factory _FlutterFractionalOffset(final ZacDouble dx, final ZacDouble dy) =
+  factory _FlutterFractionalOffset(
+          final ZacValue<double> dx, final ZacValue<double> dy) =
       _$_FlutterFractionalOffset;
   _FlutterFractionalOffset._() : super._();
 
@@ -3766,9 +3768,9 @@ abstract class _FlutterFractionalOffset extends FlutterFractionalOffset {
       _$_FlutterFractionalOffset.fromJson;
 
   @override
-  ZacDouble get dx;
+  ZacValue<double> get dx;
   @override
-  ZacDouble get dy;
+  ZacValue<double> get dy;
 }
 
 FlutterBorderDirectional _$FlutterBorderDirectionalFromJson(
@@ -3964,7 +3966,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
   @override
   final FlutterColor? color;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
   final FlutterBorderStyle? style;
 
@@ -4003,7 +4005,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
 abstract class _FlutterBorderAll extends FlutterBorder {
   factory _FlutterBorderAll(
       {final FlutterColor? color,
-      final ZacDouble? width,
+      final ZacValue<double>? width,
       final FlutterBorderStyle? style}) = _$_FlutterBorderAll;
   _FlutterBorderAll._() : super._();
 
@@ -4011,7 +4013,7 @@ abstract class _FlutterBorderAll extends FlutterBorder {
       _$_FlutterBorderAll.fromJson;
 
   FlutterColor? get color;
-  ZacDouble? get width;
+  ZacValue<double>? get width;
   FlutterBorderStyle? get style;
 }
 
@@ -4224,7 +4226,7 @@ class _$_FlutterBorderRadiusCircular extends _FlutterBorderRadiusCircular {
       _$$_FlutterBorderRadiusCircularFromJson(json);
 
   @override
-  final ZacDouble radius;
+  final ZacValue<double> radius;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4258,14 +4260,14 @@ class _$_FlutterBorderRadiusCircular extends _FlutterBorderRadiusCircular {
 }
 
 abstract class _FlutterBorderRadiusCircular extends FlutterBorderRadius {
-  factory _FlutterBorderRadiusCircular(final ZacDouble radius) =
+  factory _FlutterBorderRadiusCircular(final ZacValue<double> radius) =
       _$_FlutterBorderRadiusCircular;
   _FlutterBorderRadiusCircular._() : super._();
 
   factory _FlutterBorderRadiusCircular.fromJson(Map<String, dynamic> json) =
       _$_FlutterBorderRadiusCircular.fromJson;
 
-  ZacDouble get radius;
+  ZacValue<double> get radius;
 }
 
 /// @nodoc
@@ -4336,7 +4338,7 @@ FlutterBorderSide _$FlutterBorderSideFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterBorderSide {
   FlutterColor? get color => throw _privateConstructorUsedError;
-  ZacDouble? get width => throw _privateConstructorUsedError;
+  ZacValue<double>? get width => throw _privateConstructorUsedError;
   FlutterBorderStyle? get style => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -4357,7 +4359,7 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
   @override
   final FlutterColor? color;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
   final FlutterBorderStyle? style;
 
@@ -4392,7 +4394,7 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
 abstract class _FlutterBorderSide extends FlutterBorderSide {
   factory _FlutterBorderSide(
       {final FlutterColor? color,
-      final ZacDouble? width,
+      final ZacValue<double>? width,
       final FlutterBorderStyle? style}) = _$_FlutterBorderSide;
   _FlutterBorderSide._() : super._();
 
@@ -4402,7 +4404,7 @@ abstract class _FlutterBorderSide extends FlutterBorderSide {
   @override
   FlutterColor? get color;
   @override
-  ZacDouble? get width;
+  ZacValue<double>? get width;
   @override
   FlutterBorderStyle? get style;
 }
@@ -4808,7 +4810,7 @@ class _$_FlutterEdgeInsetsAll extends _FlutterEdgeInsetsAll {
       _$$_FlutterEdgeInsetsAllFromJson(json);
 
   @override
-  final ZacDouble value;
+  final ZacValue<double> value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4842,14 +4844,14 @@ class _$_FlutterEdgeInsetsAll extends _FlutterEdgeInsetsAll {
 }
 
 abstract class _FlutterEdgeInsetsAll extends FlutterEdgeInsets {
-  factory _FlutterEdgeInsetsAll(final ZacDouble value) =
+  factory _FlutterEdgeInsetsAll(final ZacValue<double> value) =
       _$_FlutterEdgeInsetsAll;
   _FlutterEdgeInsetsAll._() : super._();
 
   factory _FlutterEdgeInsetsAll.fromJson(Map<String, dynamic> json) =
       _$_FlutterEdgeInsetsAll.fromJson;
 
-  ZacDouble get value;
+  ZacValue<double> get value;
 }
 
 /// @nodoc
@@ -4864,9 +4866,9 @@ class _$_FlutterEdgeInsetsSymmetric extends _FlutterEdgeInsetsSymmetric {
       _$$_FlutterEdgeInsetsSymmetricFromJson(json);
 
   @override
-  final ZacDouble? vertical;
+  final ZacValue<double>? vertical;
   @override
-  final ZacDouble? horizontal;
+  final ZacValue<double>? horizontal;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4904,15 +4906,15 @@ class _$_FlutterEdgeInsetsSymmetric extends _FlutterEdgeInsetsSymmetric {
 
 abstract class _FlutterEdgeInsetsSymmetric extends FlutterEdgeInsets {
   factory _FlutterEdgeInsetsSymmetric(
-      {final ZacDouble? vertical,
-      final ZacDouble? horizontal}) = _$_FlutterEdgeInsetsSymmetric;
+      {final ZacValue<double>? vertical,
+      final ZacValue<double>? horizontal}) = _$_FlutterEdgeInsetsSymmetric;
   _FlutterEdgeInsetsSymmetric._() : super._();
 
   factory _FlutterEdgeInsetsSymmetric.fromJson(Map<String, dynamic> json) =
       _$_FlutterEdgeInsetsSymmetric.fromJson;
 
-  ZacDouble? get vertical;
-  ZacDouble? get horizontal;
+  ZacValue<double>? get vertical;
+  ZacValue<double>? get horizontal;
 }
 
 /// @nodoc
@@ -4927,13 +4929,13 @@ class _$_FlutterEdgeInsetsOnly extends _FlutterEdgeInsetsOnly {
       _$$_FlutterEdgeInsetsOnlyFromJson(json);
 
   @override
-  final ZacDouble? left;
+  final ZacValue<double>? left;
   @override
-  final ZacDouble? top;
+  final ZacValue<double>? top;
   @override
-  final ZacDouble? right;
+  final ZacValue<double>? right;
   @override
-  final ZacDouble? bottom;
+  final ZacValue<double>? bottom;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4971,19 +4973,19 @@ class _$_FlutterEdgeInsetsOnly extends _FlutterEdgeInsetsOnly {
 
 abstract class _FlutterEdgeInsetsOnly extends FlutterEdgeInsets {
   factory _FlutterEdgeInsetsOnly(
-      {final ZacDouble? left,
-      final ZacDouble? top,
-      final ZacDouble? right,
-      final ZacDouble? bottom}) = _$_FlutterEdgeInsetsOnly;
+      {final ZacValue<double>? left,
+      final ZacValue<double>? top,
+      final ZacValue<double>? right,
+      final ZacValue<double>? bottom}) = _$_FlutterEdgeInsetsOnly;
   _FlutterEdgeInsetsOnly._() : super._();
 
   factory _FlutterEdgeInsetsOnly.fromJson(Map<String, dynamic> json) =
       _$_FlutterEdgeInsetsOnly.fromJson;
 
-  ZacDouble? get left;
-  ZacDouble? get top;
-  ZacDouble? get right;
-  ZacDouble? get bottom;
+  ZacValue<double>? get left;
+  ZacValue<double>? get top;
+  ZacValue<double>? get right;
+  ZacValue<double>? get bottom;
 }
 
 FlutterEdgeInsetsDirectional _$FlutterEdgeInsetsDirectionalFromJson(
@@ -5026,7 +5028,7 @@ class _$_FlutterEdgeInsetsDirectionalAll
       _$$_FlutterEdgeInsetsDirectionalAllFromJson(json);
 
   @override
-  final ZacDouble value;
+  final ZacValue<double> value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -5060,14 +5062,14 @@ class _$_FlutterEdgeInsetsDirectionalAll
 
 abstract class _FlutterEdgeInsetsDirectionalAll
     extends FlutterEdgeInsetsDirectional {
-  factory _FlutterEdgeInsetsDirectionalAll(final ZacDouble value) =
+  factory _FlutterEdgeInsetsDirectionalAll(final ZacValue<double> value) =
       _$_FlutterEdgeInsetsDirectionalAll;
   _FlutterEdgeInsetsDirectionalAll._() : super._();
 
   factory _FlutterEdgeInsetsDirectionalAll.fromJson(Map<String, dynamic> json) =
       _$_FlutterEdgeInsetsDirectionalAll.fromJson;
 
-  ZacDouble get value;
+  ZacValue<double> get value;
 }
 
 /// @nodoc
@@ -5084,13 +5086,13 @@ class _$_FlutterEdgeInsetsDirectionalOnly
       _$$_FlutterEdgeInsetsDirectionalOnlyFromJson(json);
 
   @override
-  final ZacDouble? start;
+  final ZacValue<double>? start;
   @override
-  final ZacDouble? top;
+  final ZacValue<double>? top;
   @override
-  final ZacDouble? end;
+  final ZacValue<double>? end;
   @override
-  final ZacDouble? bottom;
+  final ZacValue<double>? bottom;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -5128,17 +5130,17 @@ class _$_FlutterEdgeInsetsDirectionalOnly
 abstract class _FlutterEdgeInsetsDirectionalOnly
     extends FlutterEdgeInsetsDirectional {
   factory _FlutterEdgeInsetsDirectionalOnly(
-      {final ZacDouble? start,
-      final ZacDouble? top,
-      final ZacDouble? end,
-      final ZacDouble? bottom}) = _$_FlutterEdgeInsetsDirectionalOnly;
+      {final ZacValue<double>? start,
+      final ZacValue<double>? top,
+      final ZacValue<double>? end,
+      final ZacValue<double>? bottom}) = _$_FlutterEdgeInsetsDirectionalOnly;
   _FlutterEdgeInsetsDirectionalOnly._() : super._();
 
   factory _FlutterEdgeInsetsDirectionalOnly.fromJson(
       Map<String, dynamic> json) = _$_FlutterEdgeInsetsDirectionalOnly.fromJson;
 
-  ZacDouble? get start;
-  ZacDouble? get top;
-  ZacDouble? get end;
-  ZacDouble? get bottom;
+  ZacValue<double>? get start;
+  ZacValue<double>? get top;
+  ZacValue<double>? get end;
+  ZacValue<double>? get bottom;
 }

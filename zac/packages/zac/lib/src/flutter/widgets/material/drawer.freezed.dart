@@ -22,10 +22,10 @@ FlutterDrawer _$FlutterDrawerFromJson(Map<String, dynamic> json) {
 mixin _$FlutterDrawer {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
-  ZacDouble? get elevation => throw _privateConstructorUsedError;
+  ZacValue<double>? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
-  ZacString? get semanticLabel => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -54,13 +54,13 @@ class _$_FlutterDrawer extends _FlutterDrawer {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacDouble? elevation;
+  final ZacValue<double>? elevation;
   @override
   final FlutterShapeBorder? shape;
   @override
   final FlutterWidget? child;
   @override
-  final ZacString? semanticLabel;
+  final ZacValue<String>? semanticLabel;
 
   @override
   String toString() {
@@ -101,10 +101,10 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   factory _FlutterDrawer(
       {final FlutterKey? key,
       final FlutterColor? backgroundColor,
-      final ZacDouble? elevation,
+      final ZacValue<double>? elevation,
       final FlutterShapeBorder? shape,
       final FlutterWidget? child,
-      final ZacString? semanticLabel}) = _$_FlutterDrawer;
+      final ZacValue<String>? semanticLabel}) = _$_FlutterDrawer;
   _FlutterDrawer._() : super._();
 
   factory _FlutterDrawer.fromJson(Map<String, dynamic> json) =
@@ -115,11 +115,11 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   @override
   FlutterColor? get backgroundColor;
   @override
-  ZacDouble? get elevation;
+  ZacValue<double>? get elevation;
   @override
   FlutterShapeBorder? get shape;
   @override
   FlutterWidget? get child;
   @override
-  ZacString? get semanticLabel;
+  ZacValue<String>? get semanticLabel;
 }

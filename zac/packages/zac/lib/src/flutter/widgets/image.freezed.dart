@@ -30,14 +30,15 @@ FlutterImage _$FlutterImageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterImage {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble? get scale =>
+  ZacValue<double>? get scale =>
       throw _privateConstructorUsedError; // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacString? get semanticLabel => throw _privateConstructorUsedError;
-  ZacBool? get excludeFromSemantics => throw _privateConstructorUsedError;
-  ZacDouble? get width => throw _privateConstructorUsedError;
-  ZacDouble? get height => throw _privateConstructorUsedError;
+  ZacValue<String>? get semanticLabel => throw _privateConstructorUsedError;
+  ZacValue<bool>? get excludeFromSemantics =>
+      throw _privateConstructorUsedError;
+  ZacValue<double>? get width => throw _privateConstructorUsedError;
+  ZacValue<double>? get height => throw _privateConstructorUsedError;
   FlutterColor? get color =>
       throw _privateConstructorUsedError; // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode => throw _privateConstructorUsedError;
@@ -45,12 +46,12 @@ mixin _$FlutterImage {
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   FlutterImageRepeat? get repeat => throw _privateConstructorUsedError;
   FlutterRect? get centerSlice => throw _privateConstructorUsedError;
-  ZacBool? get matchTextDirection => throw _privateConstructorUsedError;
-  ZacBool? get gaplessPlayback => throw _privateConstructorUsedError;
+  ZacValue<bool>? get matchTextDirection => throw _privateConstructorUsedError;
+  ZacValue<bool>? get gaplessPlayback => throw _privateConstructorUsedError;
   FlutterFilterQuality? get filterQuality => throw _privateConstructorUsedError;
-  ZacBool? get isAntiAlias => throw _privateConstructorUsedError;
-  ZacInt? get cacheWidth => throw _privateConstructorUsedError;
-  ZacInt? get cacheHeight => throw _privateConstructorUsedError;
+  ZacValue<bool>? get isAntiAlias => throw _privateConstructorUsedError;
+  ZacValue<int>? get cacheWidth => throw _privateConstructorUsedError;
+  ZacValue<int>? get cacheHeight => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -92,22 +93,22 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
       _$$_FlutterImageNetowrkFromJson(json);
 
   @override
-  final ZacString src;
+  final ZacValue<String> src;
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble? scale;
+  final ZacValue<double>? scale;
 // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
   @override
-  final ZacString? semanticLabel;
+  final ZacValue<String>? semanticLabel;
   @override
-  final ZacBool? excludeFromSemantics;
+  final ZacValue<bool>? excludeFromSemantics;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterColor? color;
 // Animation<double>? opacity,
@@ -122,13 +123,13 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final FlutterRect? centerSlice;
   @override
-  final ZacBool? matchTextDirection;
+  final ZacValue<bool>? matchTextDirection;
   @override
-  final ZacBool? gaplessPlayback;
+  final ZacValue<bool>? gaplessPlayback;
   @override
   final FlutterFilterQuality? filterQuality;
   @override
-  final ZacBool? isAntiAlias;
+  final ZacValue<bool>? isAntiAlias;
   final Map<String, String>? _headers;
   @override
   Map<String, String>? get headers {
@@ -139,9 +140,9 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   }
 
   @override
-  final ZacInt? cacheWidth;
+  final ZacValue<int>? cacheWidth;
   @override
-  final ZacInt? cacheHeight;
+  final ZacValue<int>? cacheHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -226,46 +227,46 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
 }
 
 abstract class _FlutterImageNetowrk extends FlutterImage {
-  factory _FlutterImageNetowrk(final ZacString src,
+  factory _FlutterImageNetowrk(final ZacValue<String> src,
       {final FlutterKey? key,
-      final ZacDouble? scale,
-      final ZacString? semanticLabel,
-      final ZacBool? excludeFromSemantics,
-      final ZacDouble? width,
-      final ZacDouble? height,
+      final ZacValue<double>? scale,
+      final ZacValue<String>? semanticLabel,
+      final ZacValue<bool>? excludeFromSemantics,
+      final ZacValue<double>? width,
+      final ZacValue<double>? height,
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
       final FlutterAlignmentGeometry? alignment,
       final FlutterImageRepeat? repeat,
       final FlutterRect? centerSlice,
-      final ZacBool? matchTextDirection,
-      final ZacBool? gaplessPlayback,
+      final ZacValue<bool>? matchTextDirection,
+      final ZacValue<bool>? gaplessPlayback,
       final FlutterFilterQuality? filterQuality,
-      final ZacBool? isAntiAlias,
+      final ZacValue<bool>? isAntiAlias,
       final Map<String, String>? headers,
-      final ZacInt? cacheWidth,
-      final ZacInt? cacheHeight}) = _$_FlutterImageNetowrk;
+      final ZacValue<int>? cacheWidth,
+      final ZacValue<int>? cacheHeight}) = _$_FlutterImageNetowrk;
   _FlutterImageNetowrk._() : super._();
 
   factory _FlutterImageNetowrk.fromJson(Map<String, dynamic> json) =
       _$_FlutterImageNetowrk.fromJson;
 
-  ZacString get src;
+  ZacValue<String> get src;
   @override
   FlutterKey? get key;
   @override
-  ZacDouble? get scale;
+  ZacValue<double>? get scale;
   @override // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacString? get semanticLabel;
+  ZacValue<String>? get semanticLabel;
   @override
-  ZacBool? get excludeFromSemantics;
+  ZacValue<bool>? get excludeFromSemantics;
   @override
-  ZacDouble? get width;
+  ZacValue<double>? get width;
   @override
-  ZacDouble? get height;
+  ZacValue<double>? get height;
   @override
   FlutterColor? get color;
   @override // Animation<double>? opacity,
@@ -279,18 +280,18 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   FlutterRect? get centerSlice;
   @override
-  ZacBool? get matchTextDirection;
+  ZacValue<bool>? get matchTextDirection;
   @override
-  ZacBool? get gaplessPlayback;
+  ZacValue<bool>? get gaplessPlayback;
   @override
   FlutterFilterQuality? get filterQuality;
   @override
-  ZacBool? get isAntiAlias;
+  ZacValue<bool>? get isAntiAlias;
   Map<String, String>? get headers;
   @override
-  ZacInt? get cacheWidth;
+  ZacValue<int>? get cacheWidth;
   @override
-  ZacInt? get cacheHeight;
+  ZacValue<int>? get cacheHeight;
 }
 
 /// @nodoc
@@ -324,22 +325,22 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
       _$$_FlutterImageAssetFromJson(json);
 
   @override
-  final ZacString name;
+  final ZacValue<String> name;
   @override
   final FlutterKey? key;
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
   @override
-  final ZacString? semanticLabel;
+  final ZacValue<String>? semanticLabel;
   @override
-  final ZacBool? excludeFromSemantics;
+  final ZacValue<bool>? excludeFromSemantics;
   @override
-  final ZacDouble? scale;
+  final ZacValue<double>? scale;
   @override
-  final ZacDouble? width;
+  final ZacValue<double>? width;
   @override
-  final ZacDouble? height;
+  final ZacValue<double>? height;
   @override
   final FlutterColor? color;
 // Animation<double>? opacity,
@@ -354,19 +355,19 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final FlutterRect? centerSlice;
   @override
-  final ZacBool? matchTextDirection;
+  final ZacValue<bool>? matchTextDirection;
   @override
-  final ZacBool? gaplessPlayback;
+  final ZacValue<bool>? gaplessPlayback;
   @override
-  final ZacBool? isAntiAlias;
+  final ZacValue<bool>? isAntiAlias;
   @override
-  final ZacString? package;
+  final ZacValue<String>? package;
   @override
   final FlutterFilterQuality? filterQuality;
   @override
-  final ZacInt? cacheWidth;
+  final ZacValue<int>? cacheWidth;
   @override
-  final ZacInt? cacheHeight;
+  final ZacValue<int>? cacheHeight;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -451,46 +452,46 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
 }
 
 abstract class _FlutterImageAsset extends FlutterImage {
-  factory _FlutterImageAsset(final ZacString name,
+  factory _FlutterImageAsset(final ZacValue<String> name,
       {final FlutterKey? key,
-      final ZacString? semanticLabel,
-      final ZacBool? excludeFromSemantics,
-      final ZacDouble? scale,
-      final ZacDouble? width,
-      final ZacDouble? height,
+      final ZacValue<String>? semanticLabel,
+      final ZacValue<bool>? excludeFromSemantics,
+      final ZacValue<double>? scale,
+      final ZacValue<double>? width,
+      final ZacValue<double>? height,
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
       final FlutterAlignmentGeometry? alignment,
       final FlutterImageRepeat? repeat,
       final FlutterRect? centerSlice,
-      final ZacBool? matchTextDirection,
-      final ZacBool? gaplessPlayback,
-      final ZacBool? isAntiAlias,
-      final ZacString? package,
+      final ZacValue<bool>? matchTextDirection,
+      final ZacValue<bool>? gaplessPlayback,
+      final ZacValue<bool>? isAntiAlias,
+      final ZacValue<String>? package,
       final FlutterFilterQuality? filterQuality,
-      final ZacInt? cacheWidth,
-      final ZacInt? cacheHeight}) = _$_FlutterImageAsset;
+      final ZacValue<int>? cacheWidth,
+      final ZacValue<int>? cacheHeight}) = _$_FlutterImageAsset;
   _FlutterImageAsset._() : super._();
 
   factory _FlutterImageAsset.fromJson(Map<String, dynamic> json) =
       _$_FlutterImageAsset.fromJson;
 
-  ZacString get name;
+  ZacValue<String> get name;
   @override
   FlutterKey? get key;
   @override // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
-  ZacString? get semanticLabel;
+  ZacValue<String>? get semanticLabel;
   @override
-  ZacBool? get excludeFromSemantics;
+  ZacValue<bool>? get excludeFromSemantics;
   @override
-  ZacDouble? get scale;
+  ZacValue<double>? get scale;
   @override
-  ZacDouble? get width;
+  ZacValue<double>? get width;
   @override
-  ZacDouble? get height;
+  ZacValue<double>? get height;
   @override
   FlutterColor? get color;
   @override // Animation<double>? opacity,
@@ -504,16 +505,16 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   FlutterRect? get centerSlice;
   @override
-  ZacBool? get matchTextDirection;
+  ZacValue<bool>? get matchTextDirection;
   @override
-  ZacBool? get gaplessPlayback;
+  ZacValue<bool>? get gaplessPlayback;
   @override
-  ZacBool? get isAntiAlias;
-  ZacString? get package;
+  ZacValue<bool>? get isAntiAlias;
+  ZacValue<String>? get package;
   @override
   FlutterFilterQuality? get filterQuality;
   @override
-  ZacInt? get cacheWidth;
+  ZacValue<int>? get cacheWidth;
   @override
-  ZacInt? get cacheHeight;
+  ZacValue<int>? get cacheHeight;
 }

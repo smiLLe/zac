@@ -21,23 +21,23 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
               json['mainAxisSize'] as Map<String, dynamic>),
       buttonMinWidth: json['buttonMinWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['buttonMinWidth'] as Object),
+          : ZacValue<double>.fromJson(json['buttonMinWidth'] as Object),
       buttonHeight: json['buttonHeight'] == null
           ? null
-          : ZacDouble.fromJson(json['buttonHeight'] as Object),
+          : ZacValue<double>.fromJson(json['buttonHeight'] as Object),
       buttonPadding: json['buttonPadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['buttonPadding'] as Object),
       buttonAlignedDropdown: json['buttonAlignedDropdown'] == null
           ? null
-          : ZacBool.fromJson(json['buttonAlignedDropdown'] as Object),
+          : ZacValue<bool>.fromJson(json['buttonAlignedDropdown'] as Object),
       overflowDirection: json['overflowDirection'] == null
           ? null
           : FlutterVerticalDirection.fromJson(
               json['overflowDirection'] as Map<String, dynamic>),
       overflowButtonSpacing: json['overflowButtonSpacing'] == null
           ? null
-          : ZacDouble.fromJson(json['overflowButtonSpacing'] as Object),
+          : ZacValue<double>.fromJson(json['overflowButtonSpacing'] as Object),
       children: json['children'] == null
           ? null
           : ZacListOfFlutterWidget.fromJson(json['children'] as Object),

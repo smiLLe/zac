@@ -16,13 +16,13 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       size: json['size'] == null
           ? null
-          : ZacDouble.fromJson(json['size'] as Object),
+          : ZacValue<double>.fromJson(json['size'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : FlutterTextDirection.fromJson(
@@ -31,16 +31,16 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
 
 _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
     _$_FlutterIconData(
-      ZacInt.fromJson(json['codePoint'] as Object),
+      ZacValue<int>.fromJson(json['codePoint'] as Object),
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacString.fromJson(json['fontFamily'] as Object),
+          : ZacValue<String>.fromJson(json['fontFamily'] as Object),
       fontPackage: json['fontPackage'] == null
           ? null
-          : ZacString.fromJson(json['fontPackage'] as Object),
+          : ZacValue<String>.fromJson(json['fontPackage'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
-          : ZacBool.fromJson(json['matchTextDirection'] as Object),
+          : ZacValue<bool>.fromJson(json['matchTextDirection'] as Object),
     );
 
 _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
@@ -51,8 +51,8 @@ _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       opacity: json['opacity'] == null
           ? null
-          : ZacDouble.fromJson(json['opacity'] as Object),
+          : ZacValue<double>.fromJson(json['opacity'] as Object),
       size: json['size'] == null
           ? null
-          : ZacDouble.fromJson(json['size'] as Object),
+          : ZacValue<double>.fromJson(json['size'] as Object),
     );

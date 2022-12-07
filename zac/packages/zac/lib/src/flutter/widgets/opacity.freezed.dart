@@ -21,8 +21,9 @@ FlutterOpacity _$FlutterOpacityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterOpacity {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacDouble get opacity => throw _privateConstructorUsedError;
-  ZacBool? get alwaysIncludeSemantics => throw _privateConstructorUsedError;
+  ZacValue<double> get opacity => throw _privateConstructorUsedError;
+  ZacValue<bool>? get alwaysIncludeSemantics =>
+      throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -48,9 +49,9 @@ class _$_FlutterOpacity extends _FlutterOpacity {
   @override
   final FlutterKey? key;
   @override
-  final ZacDouble opacity;
+  final ZacValue<double> opacity;
   @override
-  final ZacBool? alwaysIncludeSemantics;
+  final ZacValue<bool>? alwaysIncludeSemantics;
   @override
   final FlutterWidget? child;
 
@@ -88,8 +89,8 @@ class _$_FlutterOpacity extends _FlutterOpacity {
 abstract class _FlutterOpacity extends FlutterOpacity {
   factory _FlutterOpacity(
       {final FlutterKey? key,
-      required final ZacDouble opacity,
-      final ZacBool? alwaysIncludeSemantics,
+      required final ZacValue<double> opacity,
+      final ZacValue<bool>? alwaysIncludeSemantics,
       final FlutterWidget? child}) = _$_FlutterOpacity;
   _FlutterOpacity._() : super._();
 
@@ -99,9 +100,9 @@ abstract class _FlutterOpacity extends FlutterOpacity {
   @override
   FlutterKey? get key;
   @override
-  ZacDouble get opacity;
+  ZacValue<double> get opacity;
   @override
-  ZacBool? get alwaysIncludeSemantics;
+  ZacValue<bool>? get alwaysIncludeSemantics;
   @override
   FlutterWidget? get child;
 }

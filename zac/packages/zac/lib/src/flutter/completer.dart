@@ -57,7 +57,7 @@ class ZacCompleterProviderBuilder
 
   @FreezedUnionValue(ZacCompleterProviderBuilder.unionValue)
   factory ZacCompleterProviderBuilder.asVoid({
-    required ZacFlutterWidget child,
+    required ZacValue<Widget> child,
     required SharedValueFamily family,
   }) = _ZacCompleterProviderBuilderVoid;
 

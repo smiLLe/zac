@@ -397,7 +397,7 @@ void main() {
             family: 'shared',
             child: LeakContext(
               cb: (c) => zacContext = c,
-              child: FlutterText(ZacString.consume(family: 'shared')),
+              child: FlutterText(ZacValue<String>.consume(family: 'shared')),
             ),
           ),
         );
@@ -426,7 +426,7 @@ void main() {
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
                 FlutterText(
-                  ZacString.consume(
+                  ZacValue<String>.consume(
                     family: 'family',
                     transformer: ZacTransformers([
                       CustomTransformer(
@@ -464,7 +464,7 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacString.consume(family: 'family')),
+                FlutterText(ZacValue<String>.consume(family: 'family')),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
                     SharedValueActions.update(
@@ -494,7 +494,7 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacString.consume(
+                FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
@@ -535,7 +535,7 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacString.consume(
+                FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
@@ -580,14 +580,14 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacString.consume(
+                FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.first(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
                 )),
-                FlutterText(ZacString.consume(
+                FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.last(),
@@ -632,7 +632,7 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacString.consume(
+                FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const MapTransformer.values(),

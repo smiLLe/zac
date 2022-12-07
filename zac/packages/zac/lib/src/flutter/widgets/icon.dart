@@ -24,9 +24,9 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   factory FlutterIcon(
     FlutterIconData? icon, {
     FlutterKey? key,
-    ZacDouble? size,
+    ZacValue<double>? size,
     FlutterColor? color,
-    ZacString? semanticLabel,
+    ZacValue<String>? semanticLabel,
     FlutterTextDirection? textDirection,
   }) = _FlutterIcon;
 
@@ -64,10 +64,10 @@ class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
 
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
-    ZacInt codePoint, {
-    ZacString? fontFamily,
-    ZacString? fontPackage,
-    ZacBool? matchTextDirection,
+    ZacValue<int> codePoint, {
+    ZacValue<String>? fontFamily,
+    ZacValue<String>? fontPackage,
+    ZacValue<bool>? matchTextDirection,
   }) = _FlutterIconData;
 
   IconData _build(ZacContext zacContext) {
@@ -104,8 +104,8 @@ class FlutterIconThemeData
   @FreezedUnionValue('f:1:IconThemeData')
   factory FlutterIconThemeData({
     FlutterColor? color,
-    ZacDouble? opacity,
-    ZacDouble? size,
+    ZacValue<double>? opacity,
+    ZacValue<double>? size,
   }) = _FlutterIconThemeData;
 
   IconThemeData _build(ZacContext zacContext) {

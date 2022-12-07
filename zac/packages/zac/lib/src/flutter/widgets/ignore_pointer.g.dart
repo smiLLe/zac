@@ -14,10 +14,10 @@ _$_FlutterIgnorePointer _$$_FlutterIgnorePointerFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       ignoring: json['ignoring'] == null
           ? null
-          : ZacBool.fromJson(json['ignoring'] as Object),
+          : ZacValue<bool>.fromJson(json['ignoring'] as Object),
       ignoringSemantics: json['ignoringSemantics'] == null
           ? null
-          : ZacBool.fromJson(json['ignoringSemantics'] as Object),
+          : ZacValue<bool>.fromJson(json['ignoringSemantics'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

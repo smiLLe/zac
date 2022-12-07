@@ -26,13 +26,13 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   factory FlutterMaterial({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
     FlutterTextStyle? textStyle,
     FlutterBorderRadiusGeometry? borderRadius,
     FlutterShapeBorder? shape,
-    ZacBool? borderOnForeground,
+    ZacValue<bool>? borderOnForeground,
     FlutterClip? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;

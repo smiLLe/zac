@@ -18,43 +18,43 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
               json['scrollDirection'] as Map<String, dynamic>),
       reverse: json['reverse'] == null
           ? null
-          : ZacBool.fromJson(json['reverse'] as Object),
+          : ZacValue<bool>.fromJson(json['reverse'] as Object),
       controller: json['controller'] == null
           ? null
           : FlutterScrollController.fromJson(
               json['controller'] as Map<String, dynamic>),
       primary: json['primary'] == null
           ? null
-          : ZacBool.fromJson(json['primary'] as Object),
+          : ZacValue<bool>.fromJson(json['primary'] as Object),
       physics: json['physics'] == null
           ? null
           : FlutterScrollPhysics.fromJson(
               json['physics'] as Map<String, dynamic>),
       shrinkWrap: json['shrinkWrap'] == null
           ? null
-          : ZacBool.fromJson(json['shrinkWrap'] as Object),
+          : ZacValue<bool>.fromJson(json['shrinkWrap'] as Object),
       center: json['center'] == null
           ? null
           : FlutterKey.fromJson(json['center'] as Object),
       anchor: json['anchor'] == null
           ? null
-          : ZacDouble.fromJson(json['anchor'] as Object),
+          : ZacValue<double>.fromJson(json['anchor'] as Object),
       cacheExtent: json['cacheExtent'] == null
           ? null
-          : ZacDouble.fromJson(json['cacheExtent'] as Object),
+          : ZacValue<double>.fromJson(json['cacheExtent'] as Object),
       slivers: json['slivers'] == null
           ? null
           : ZacListOfFlutterWidget.fromJson(json['slivers'] as Object),
       semanticChildCount: json['semanticChildCount'] == null
           ? null
-          : ZacInt.fromJson(json['semanticChildCount'] as Object),
+          : ZacValue<int>.fromJson(json['semanticChildCount'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
           : FlutterScrollViewKeyboardDismissBehavior.fromJson(
               json['keyboardDismissBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacString.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationId'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

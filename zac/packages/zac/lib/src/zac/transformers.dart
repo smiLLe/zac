@@ -327,10 +327,11 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacObject? key) = _MapContainsKey;
+  const factory MapTransformer.containsKey(ZacValue<Object>? key) =
+      _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacObject? value) =
+  const factory MapTransformer.containsValue(ZacValue<Object>? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
@@ -351,12 +352,12 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapFromStringNullObject;
 
   @FreezedUnionValue(MapTransformer.unionValueKey)
-  const factory MapTransformer.key(ZacString key) = _MapKey;
+  const factory MapTransformer.key(ZacValue<String> key) = _MapKey;
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
   const factory MapTransformer.setValueForKey({
-    required ZacObject value,
-    required ZacString key,
+    required ZacValue<Object> value,
+    required ZacValue<String> key,
   }) = _MapSetValueForKey;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringFlutterWidget)
@@ -515,7 +516,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacObject? element) =
+  const factory IterableTransformer.contains(ZacValue<Object>? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
@@ -583,7 +584,7 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.fromFlutterWidget() = _ListFromFlutterWidget;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
-  const factory ListTransformer.add(ZacObject value) = _ListAdd;
+  const factory ListTransformer.add(ZacValue<Object> value) = _ListAdd;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -682,7 +683,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacObject value,
+    required ZacValue<Object> value,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -872,7 +873,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   const factory StringTransformer.length() = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  const factory StringTransformer.split({required ZacString pattern}) =
+  const factory StringTransformer.split({required ZacValue<String> pattern}) =
       _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
@@ -883,7 +884,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
   const factory StringTransformer.replaceAll(
-      ZacString from, ZacString replace) = _StringReplaceAll;
+      ZacValue<String> from, ZacValue<String> replace) = _StringReplaceAll;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,

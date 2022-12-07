@@ -400,7 +400,7 @@ ZacProvideFlutterKey _$ZacProvideFlutterKeyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacProvideFlutterKey {
-  ZacFlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
   String? get debugLabel => throw _privateConstructorUsedError;
 
@@ -432,7 +432,7 @@ class _$_ZacProvideFlutterKeyGlobalNavigatorState
       _$$_ZacProvideFlutterKeyGlobalNavigatorStateFromJson(json);
 
   @override
-  final ZacFlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   final Object family;
   @override
@@ -478,7 +478,7 @@ class _$_ZacProvideFlutterKeyGlobalNavigatorState
 abstract class _ZacProvideFlutterKeyGlobalNavigatorState
     extends ZacProvideFlutterKey {
   factory _ZacProvideFlutterKeyGlobalNavigatorState(
-      {required final ZacFlutterWidget child,
+      {required final ZacValue<Widget> child,
       required final Object family,
       final String? debugLabel}) = _$_ZacProvideFlutterKeyGlobalNavigatorState;
   _ZacProvideFlutterKeyGlobalNavigatorState._() : super._();
@@ -488,7 +488,7 @@ abstract class _ZacProvideFlutterKeyGlobalNavigatorState
       _$_ZacProvideFlutterKeyGlobalNavigatorState.fromJson;
 
   @override
-  ZacFlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   Object get family;
   @override
@@ -512,7 +512,7 @@ class _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState
       _$$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerStateFromJson(json);
 
   @override
-  final ZacFlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   final Object family;
   @override
@@ -558,7 +558,7 @@ class _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState
 abstract class _ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState
     extends ZacProvideFlutterKey {
   factory _ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState(
-          {required final ZacFlutterWidget child,
+          {required final ZacValue<Widget> child,
           required final Object family,
           final String? debugLabel}) =
       _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState;
@@ -569,7 +569,7 @@ abstract class _ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState
       _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState.fromJson;
 
   @override
-  ZacFlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   Object get family;
   @override

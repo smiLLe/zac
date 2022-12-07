@@ -23,10 +23,10 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   @FreezedUnionValue(FlutterDivider.unionValue)
   factory FlutterDivider({
     FlutterKey? key,
-    ZacDouble? height,
-    ZacDouble? thickness,
-    ZacDouble? indent,
-    ZacDouble? endIndent,
+    ZacValue<double>? height,
+    ZacValue<double>? thickness,
+    ZacValue<double>? indent,
+    ZacValue<double>? endIndent,
     FlutterColor? color,
   }) = _FlutterDivider;
 

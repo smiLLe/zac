@@ -15,10 +15,10 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       child: FlutterWidget.fromJson(json['child'] as Object),
       displacement: json['displacement'] == null
           ? null
-          : ZacDouble.fromJson(json['displacement'] as Object),
+          : ZacValue<double>.fromJson(json['displacement'] as Object),
       edgeOffset: json['edgeOffset'] == null
           ? null
-          : ZacDouble.fromJson(json['edgeOffset'] as Object),
+          : ZacValue<double>.fromJson(json['edgeOffset'] as Object),
       onRefresh: ZacActions.fromJson(json['onRefresh'] as Object),
       color: json['color'] == null
           ? null
@@ -29,13 +29,13 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacString.fromJson(json['semanticsValue'] as Object),
+          : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
       strokeWidth: json['strokeWidth'] == null
           ? null
-          : ZacDouble.fromJson(json['strokeWidth'] as Object),
+          : ZacValue<double>.fromJson(json['strokeWidth'] as Object),
       triggerMode: json['triggerMode'] == null
           ? null
           : FlutterRefreshIndicatorTriggerMode.fromJson(

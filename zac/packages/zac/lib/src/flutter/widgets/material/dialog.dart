@@ -23,7 +23,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   factory FlutterDialogs.dialog({
     FlutterKey? key,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
+    ZacValue<double>? elevation,
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
     FlutterEdgeInsets? insetPadding,
@@ -46,16 +46,16 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsetsGeometry? actionsPadding,
     FlutterMainAxisAlignment? actionsAlignment,
     FlutterVerticalDirection? actionsOverflowDirection,
-    ZacDouble? actionsOverflowButtonSpacing,
+    ZacValue<double>? actionsOverflowButtonSpacing,
     FlutterEdgeInsetsGeometry? buttonPadding,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
-    ZacString? semanticLabel,
+    ZacValue<double>? elevation,
+    ZacValue<String>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacBool? scrollable,
+    ZacValue<bool>? scrollable,
   }) = _FlutterDialogsAlertDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
@@ -67,8 +67,8 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
     FlutterColor? backgroundColor,
-    ZacDouble? elevation,
-    ZacString? semanticLabel,
+    ZacValue<double>? elevation,
+    ZacValue<String>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
@@ -178,11 +178,11 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   @FreezedUnionValue(FlutterDialogActions.unionValue)
   factory FlutterDialogActions.showDialog({
     required FlutterWidget child,
-    ZacBool? barrierDismissible,
+    ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacString? barrierLabel,
-    ZacBool? useSafeArea,
-    ZacBool? useRootNavigator,
+    ZacValue<String>? barrierLabel,
+    ZacValue<bool>? useSafeArea,
+    ZacValue<bool>? useRootNavigator,
     FlutterRouteSettings? routeSettings,
   }) = _FlutterDialogActionsShowDialog;
 

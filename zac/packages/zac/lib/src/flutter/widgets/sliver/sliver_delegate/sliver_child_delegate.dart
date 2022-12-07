@@ -24,22 +24,22 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
       FlutterSliverChildDelegate.unionValueSliverChildListDelegate)
   factory FlutterSliverChildDelegate.list(
     ZacListOfFlutterWidget children, {
-    ZacBool? addAutomaticKeepAlives,
-    ZacBool? addRepaintBoundaries,
-    ZacBool? addSemanticIndexes,
+    ZacValue<bool>? addAutomaticKeepAlives,
+    ZacValue<bool>? addRepaintBoundaries,
+    ZacValue<bool>? addSemanticIndexes,
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-    ZacInt? semanticIndexOffset,
+    ZacValue<int>? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegate;
 
   @FreezedUnionValue(
       FlutterSliverChildDelegate.unionValueSliverChildListDelegateFixed)
   factory FlutterSliverChildDelegate.listFixed(
     ZacListOfFlutterWidget children, {
-    ZacBool? addAutomaticKeepAlives,
-    ZacBool? addRepaintBoundaries,
-    ZacBool? addSemanticIndexes,
+    ZacValue<bool>? addAutomaticKeepAlives,
+    ZacValue<bool>? addRepaintBoundaries,
+    ZacValue<bool>? addSemanticIndexes,
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-    ZacInt? semanticIndexOffset,
+    ZacValue<int>? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegateFixed;
 
   SliverChildDelegate build(ZacContext zacContext) {

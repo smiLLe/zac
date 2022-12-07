@@ -66,7 +66,7 @@ _$_ZacProvideFlutterKeyGlobalNavigatorState
     _$$_ZacProvideFlutterKeyGlobalNavigatorStateFromJson(
             Map<String, dynamic> json) =>
         _$_ZacProvideFlutterKeyGlobalNavigatorState(
-          child: ZacFlutterWidget.fromJson(json['child'] as Object),
+          child: ZacValue<Widget>.fromJson(json['child'] as Object),
           family: json['family'] as Object,
           debugLabel: json['debugLabel'] as String?,
           $type: json['converter'] as String?,
@@ -76,7 +76,7 @@ _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState
     _$$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerStateFromJson(
             Map<String, dynamic> json) =>
         _$_ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState(
-          child: ZacFlutterWidget.fromJson(json['child'] as Object),
+          child: ZacValue<Widget>.fromJson(json['child'] as Object),
           family: json['family'] as Object,
           debugLabel: json['debugLabel'] as String?,
           $type: json['converter'] as String?,

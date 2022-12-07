@@ -567,7 +567,7 @@ ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
 /// @nodoc
 mixin _$ZacExecuteActionsBuilder {
   ZacActions get actions => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -591,7 +591,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
   @override
   final ZacActions actions;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget>? child;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -627,7 +627,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
 abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderOnce(
       {required final ZacActions actions,
-      final FlutterWidget? child}) = _$_ZacExecuteActionsBuilderOnce;
+      final ZacValue<Widget>? child}) = _$_ZacExecuteActionsBuilderOnce;
   _ZacExecuteActionsBuilderOnce._() : super._();
 
   factory _ZacExecuteActionsBuilderOnce.fromJson(Map<String, dynamic> json) =
@@ -636,7 +636,7 @@ abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
   @override
   ZacActions get actions;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget>? get child;
 }
 
 /// @nodoc
@@ -660,7 +660,7 @@ class _$_ZacExecuteActionsBuilderListen
   @override
   final Object family;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget>? child;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -700,7 +700,7 @@ abstract class _ZacExecuteActionsBuilderListen
   factory _ZacExecuteActionsBuilderListen(
       {required final ZacActions actions,
       required final Object family,
-      final FlutterWidget? child}) = _$_ZacExecuteActionsBuilderListen;
+      final ZacValue<Widget>? child}) = _$_ZacExecuteActionsBuilderListen;
   _ZacExecuteActionsBuilderListen._() : super._();
 
   factory _ZacExecuteActionsBuilderListen.fromJson(Map<String, dynamic> json) =
@@ -710,7 +710,7 @@ abstract class _ZacExecuteActionsBuilderListen
   ZacActions get actions;
   Object get family;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget>? get child;
 }
 
 ZacControlFlowAction _$ZacControlFlowActionFromJson(Map<String, dynamic> json) {

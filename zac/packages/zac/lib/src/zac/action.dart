@@ -11,6 +11,7 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'action.freezed.dart';
 part 'action.g.dart';
@@ -113,14 +114,14 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
     required ZacActions actions,
-    FlutterWidget? child,
+    ZacValue<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacActions actions,
     required SharedValueFamily family,
-    FlutterWidget? child,
+    ZacValue<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
 
   Widget _buildWidget(ZacContext zacContext) {
@@ -157,7 +158,7 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   final ZacActions actions;
   final SharedValueFamily family;
-  final FlutterWidget? child;
+  final ZacValue<Widget>? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -174,7 +175,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       : super(key: key);
 
   final ZacActions actions;
-  final FlutterWidget? child;
+  final ZacValue<Widget>? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -106,7 +106,7 @@ void main() {
             'debugLabel': 'label',
           }),
           ZacProvideFlutterKey.navigatorState(
-            child: ZacFlutterWidget(value: FlutterSizedBox()),
+            child: ZacValue<Widget>.builder(builder: FlutterSizedBox()),
             family: 'shared',
             debugLabel: 'label',
           ));
@@ -121,7 +121,7 @@ void main() {
             'debugLabel': 'label',
           }),
           ZacProvideFlutterKey.scaffoldMessengerState(
-            child: ZacFlutterWidget(value: FlutterSizedBox()),
+            child: ZacValue<Widget>.builder(builder: FlutterSizedBox()),
             family: 'shared',
             debugLabel: 'label',
           ));
@@ -135,8 +135,8 @@ void main() {
         child: ZacWidget(
           data: ZacProvideFlutterKey.scaffoldMessengerState(
             family: 'shared',
-            child: ZacFlutterWidget(
-              value: TestBuildCustomWidget(
+            child: ZacValue<Widget>.builder(
+              builder: TestBuildCustomWidget(
                 (zacContext) {
                   sharedValue =
                       zacContext.ref.watch(SharedValue.provider('shared'));
@@ -158,8 +158,8 @@ void main() {
         child: ZacWidget(
           data: ZacProvideFlutterKey.navigatorState(
             family: 'shared',
-            child: ZacFlutterWidget(
-              value: TestBuildCustomWidget(
+            child: ZacValue<Widget>.builder(
+              builder: TestBuildCustomWidget(
                 (zacContext) {
                   sharedValue =
                       zacContext.ref.watch(SharedValue.provider('shared'));

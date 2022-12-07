@@ -71,7 +71,7 @@ class ZacWidget extends HookWidget {
   const ZacWidget({required this.data, Key? key})
       : assert(data is String ||
             data is Map<String, dynamic> ||
-            data is FlutterWidget),
+            data is ZacBuilder<Widget>),
         super(key: key);
 
   final Object data;
@@ -81,7 +81,7 @@ class ZacWidget extends HookWidget {
     BuildContext context,
   ) {
     final flutterWidget = useMemoized(() {
-      if (data is FlutterWidget) return data as FlutterWidget;
+      if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
       late Map<String, dynamic> map;
       final obj = data;
@@ -184,13 +184,14 @@ class ZacWidgetIsolated extends StatelessWidget {
                           r: 244,
                           g: 67,
                           b: 54,
-                          opacity: ZacDouble.fromJson(1.0),
+                          opacity: ZacValue<double>.fromJson(1.0),
                         ),
-                        width: ZacDouble.fromJson(3.0),
+                        width: ZacValue<double>.fromJson(3.0),
                       ),
                     ),
-                    padding: FlutterEdgeInsets.all(ZacDouble.fromJson(8.0)),
-                    child: FlutterText(ZacString.fromJson(
+                    padding:
+                        FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0)),
+                    child: FlutterText(ZacValue<String>.fromJson(
                         'ERROR IN $ZacWidgetIsolated:\n${obj.error}')),
                   );
                   return true;

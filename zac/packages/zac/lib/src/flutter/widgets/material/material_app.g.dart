@@ -25,7 +25,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterWidget.fromJson(json['home'] as Object),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacString.fromJson(json['initialRoute'] as Object),
+          : ZacValue<String>.fromJson(json['initialRoute'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
           : FlutterRouteFactory.fromJson(
@@ -36,7 +36,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
               json['onUnknownRoute'] as Map<String, dynamic>),
       title: json['title'] == null
           ? null
-          : ZacString.fromJson(json['title'] as Object),
+          : ZacValue<String>.fromJson(json['title'] as Object),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
@@ -45,27 +45,30 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       debugShowMaterialGrid: json['debugShowMaterialGrid'] == null
           ? null
-          : ZacBool.fromJson(json['debugShowMaterialGrid'] as Object),
+          : ZacValue<bool>.fromJson(json['debugShowMaterialGrid'] as Object),
       showPerformanceOverlay: json['showPerformanceOverlay'] == null
           ? null
-          : ZacBool.fromJson(json['showPerformanceOverlay'] as Object),
-      checkerboardRasterCacheImages: json['checkerboardRasterCacheImages'] ==
-              null
-          ? null
-          : ZacBool.fromJson(json['checkerboardRasterCacheImages'] as Object),
+          : ZacValue<bool>.fromJson(json['showPerformanceOverlay'] as Object),
+      checkerboardRasterCacheImages:
+          json['checkerboardRasterCacheImages'] == null
+              ? null
+              : ZacValue<bool>.fromJson(
+                  json['checkerboardRasterCacheImages'] as Object),
       checkerboardOffscreenLayers: json['checkerboardOffscreenLayers'] == null
           ? null
-          : ZacBool.fromJson(json['checkerboardOffscreenLayers'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['checkerboardOffscreenLayers'] as Object),
       showSemanticsDebugger: json['showSemanticsDebugger'] == null
           ? null
-          : ZacBool.fromJson(json['showSemanticsDebugger'] as Object),
+          : ZacValue<bool>.fromJson(json['showSemanticsDebugger'] as Object),
       debugShowCheckedModeBanner: json['debugShowCheckedModeBanner'] == null
           ? null
-          : ZacBool.fromJson(json['debugShowCheckedModeBanner'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['debugShowCheckedModeBanner'] as Object),
       restorationScopeId: json['restorationScopeId'] == null
           ? null
-          : ZacString.fromJson(json['restorationScopeId'] as Object),
+          : ZacValue<String>.fromJson(json['restorationScopeId'] as Object),
       useInheritedMediaQuery: json['useInheritedMediaQuery'] == null
           ? null
-          : ZacBool.fromJson(json['useInheritedMediaQuery'] as Object),
+          : ZacValue<bool>.fromJson(json['useInheritedMediaQuery'] as Object),
     );

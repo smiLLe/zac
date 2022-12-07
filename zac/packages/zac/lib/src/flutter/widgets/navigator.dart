@@ -41,15 +41,15 @@ class FlutterMaterialPageRoute
   @FreezedUnionValue('f:1:MaterialPageRoute')
   factory FlutterMaterialPageRoute({
     FlutterRouteSettings? settings,
-    ZacBool? maintainState,
-    ZacBool? fullscreenDialog,
+    ZacValue<bool>? maintainState,
+    ZacValue<bool>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
     required FlutterWidget child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
-    ZacString? nameOfSharedArguments,
+    ZacValue<String>? nameOfSharedArguments,
   }) = _FlutterMaterialPageRoute;
 
   MaterialPageRoute<Object?> _build(
@@ -130,19 +130,19 @@ class FlutterPageRouteBuilder
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-    ZacBool? opaque,
-    ZacBool? barrierDismissible,
+    ZacValue<bool>? opaque,
+    ZacValue<bool>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacString? barrierLabel,
-    ZacBool? maintainState,
-    ZacBool? fullscreenDialog,
+    ZacValue<String>? barrierLabel,
+    ZacValue<bool>? maintainState,
+    ZacValue<bool>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
     required FlutterWidget child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
-    ZacString? nameOfSharedArguments,
+    ZacValue<String>? nameOfSharedArguments,
   }) = _FlutterPageRouteBuilder;
 
   PageRouteBuilder<Object?> _build(
@@ -255,8 +255,8 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterKey? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
-    ZacString? initialRoute,
-    ZacBool? requestFocus,
+    ZacValue<String>? initialRoute,
+    ZacValue<bool>? requestFocus,
   }) = _FlutterNavigator;
 
   Navigator _buildWidget(ZacContext zacContext) {
@@ -301,7 +301,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pushNamed')
   factory FlutterNavigatorActions.pushNamed(
-          {required ZacString routeName,
+          {required ZacValue<String> routeName,
           Object? arguments,
           FlutterNavigatorState? navigatorState}) =
       _FlutterNavigatorActionsPushNamed;
@@ -327,7 +327,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pushReplacementNamed')
   factory FlutterNavigatorActions.pushReplacementNamed({
-    required ZacString routeName,
+    required ZacValue<String> routeName,
     Object? arguments,
     FlutterNavigatorState? navigatorState,
     ZacActions? result,
@@ -335,7 +335,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')
   factory FlutterNavigatorActions.popUntilRouteName({
-    required ZacString routeName,
+    required ZacValue<String> routeName,
     FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPopUntilRouteName;
 
@@ -512,8 +512,8 @@ class FlutterRouteSettings
 
   @FreezedUnionValue('f:1:RouteSettings')
   factory FlutterRouteSettings({
-    ZacString? name,
-    ZacObject? arguments,
+    ZacValue<String>? name,
+    ZacValue<Object>? arguments,
   }) = _FlutterRouteSettings;
 
   RouteSettings _build(ZacContext zacContext) {

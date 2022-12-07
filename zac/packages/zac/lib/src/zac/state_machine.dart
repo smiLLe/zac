@@ -39,7 +39,7 @@ class ZacStateConfig with _$ZacStateConfig {
 
   @FreezedUnionValue(ZacStateConfig.unionValue)
   factory ZacStateConfig({
-    required ZacFlutterWidget widget,
+    required ZacValue<Widget> widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
 }
@@ -68,8 +68,8 @@ All configured states are "${states.keys.join(', ')}".
     return states[state]!;
   }
 
-  FlutterWidget getWidget(ZacContext zacContext) {
-    return config.widget.getVal(zacContext);
+  ZacValue<Widget> getWidget(ZacContext zacContext) {
+    return config.widget;
   }
 
   ZacStateConfig findConfigByState(String state) {
@@ -104,11 +104,11 @@ class ZacStateMachineProviderBuilder
   @FreezedUnionValue(ZacStateMachineProviderBuilder.unionValue)
   factory ZacStateMachineProviderBuilder({
     FlutterKey? key,
-    required ZacString family,
-    required ZacString initialState,
+    required ZacValue<String> family,
+    required ZacValue<String> initialState,
     required Map<String, ZacStateConfig> states,
     required FlutterWidget child,
-    ZacObject? initialContext,
+    ZacValue<Object>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
@@ -201,7 +201,7 @@ class ZacStateMachineBuildStateBuilder
   @FreezedUnionValue(ZacStateMachineBuildStateBuilder.unionValue)
   factory ZacStateMachineBuildStateBuilder({
     FlutterKey? key,
-    required ZacString family,
+    required ZacValue<String> family,
     required List<String> states,
     FlutterWidget? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
@@ -293,13 +293,13 @@ class ZacStateMachineActions
   @FreezedUnionValue(ZacStateMachineActions.unionValue)
   factory ZacStateMachineActions.send({
     required SharedValueFamily family,
-    required ZacString event,
+    required ZacValue<String> event,
   }) = _ZacStateMachineActionsSend;
 
   @FreezedUnionValue(ZacStateMachineActions.unionValueTrySend)
   factory ZacStateMachineActions.trySend({
     required SharedValueFamily family,
-    required ZacString event,
+    required ZacValue<String> event,
   }) = _ZacStateMachineActionsTrySend;
 
   @override

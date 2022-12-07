@@ -40,7 +40,7 @@ void main() {
           }
         }),
         ZacCompleterProviderBuilder.asVoid(
-          child: ZacFlutterWidget.fromJson({'converter': 'f:1:SizedBox'}),
+          child: ZacValue<Widget>.fromJson({'converter': 'f:1:SizedBox'}),
           family: 'shared',
         ));
   });
@@ -94,7 +94,7 @@ void main() {
     await testZacWidget(
         tester,
         ZacCompleterProviderBuilder.asVoid(
-          child: ZacFlutterWidget(value: LeakContext(cb: (c) {
+          child: ZacValue<Widget>.builder(builder: LeakContext(cb: (c) {
             zacContext = c;
           })),
           family: 'shared',
@@ -123,7 +123,7 @@ void main() {
     await testZacWidget(
         tester,
         ZacCompleterProviderBuilder.asVoid(
-          child: ZacFlutterWidget(value: LeakContext(cb: (c) {
+          child: ZacValue<Widget>.builder(builder: LeakContext(cb: (c) {
             zacContext = c;
           })),
           family: 'shared',

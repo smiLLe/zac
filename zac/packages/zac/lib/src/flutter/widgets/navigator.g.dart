@@ -15,14 +15,14 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
               json['settings'] as Map<String, dynamic>),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacBool.fromJson(json['maintainState'] as Object),
+          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
       child: FlutterWidget.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacString.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacValue<String>.fromJson(json['nameOfSharedArguments'] as Object),
     );
 
 _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
@@ -34,26 +34,26 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
               json['settings'] as Map<String, dynamic>),
       opaque: json['opaque'] == null
           ? null
-          : ZacBool.fromJson(json['opaque'] as Object),
+          : ZacValue<bool>.fromJson(json['opaque'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacBool.fromJson(json['barrierDismissible'] as Object),
+          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
       barrierLabel: json['barrierLabel'] == null
           ? null
-          : ZacString.fromJson(json['barrierLabel'] as Object),
+          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacBool.fromJson(json['maintainState'] as Object),
+          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacBool.fromJson(json['fullscreenDialog'] as Object),
+          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
       child: FlutterWidget.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacString.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacValue<String>.fromJson(json['nameOfSharedArguments'] as Object),
     );
 
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
@@ -91,10 +91,10 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
               json['onUnknownRoute'] as Map<String, dynamic>),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacString.fromJson(json['initialRoute'] as Object),
+          : ZacValue<String>.fromJson(json['initialRoute'] as Object),
       requestFocus: json['requestFocus'] == null
           ? null
-          : ZacBool.fromJson(json['requestFocus'] as Object),
+          : ZacValue<bool>.fromJson(json['requestFocus'] as Object),
     );
 
 _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
@@ -111,7 +111,7 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
 _$_FlutterNavigatorActionsPushNamed
     _$$_FlutterNavigatorActionsPushNamedFromJson(Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushNamed(
-          routeName: ZacString.fromJson(json['routeName'] as Object),
+          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -165,7 +165,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
     _$$_FlutterNavigatorActionsPushReplacementNamedFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushReplacementNamed(
-          routeName: ZacString.fromJson(json['routeName'] as Object),
+          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -181,7 +181,7 @@ _$_FlutterNavigatorActionsPopUntilRouteName
     _$$_FlutterNavigatorActionsPopUntilRouteNameFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPopUntilRouteName(
-          routeName: ZacString.fromJson(json['routeName'] as Object),
+          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
               : FlutterNavigatorState.fromJson(
@@ -206,8 +206,8 @@ _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
     _$_FlutterRouteSettings(
       name: json['name'] == null
           ? null
-          : ZacString.fromJson(json['name'] as Object),
+          : ZacValue<String>.fromJson(json['name'] as Object),
       arguments: json['arguments'] == null
           ? null
-          : ZacObject.fromJson(json['arguments'] as Object),
+          : ZacValue<Object>.fromJson(json['arguments'] as Object),
     );

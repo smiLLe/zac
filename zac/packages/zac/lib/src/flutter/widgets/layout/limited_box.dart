@@ -23,8 +23,8 @@ class FlutterLimitedBox with _$FlutterLimitedBox implements FlutterWidget {
   @FreezedUnionValue(FlutterLimitedBox.unionValue)
   factory FlutterLimitedBox({
     FlutterKey? key,
-    ZacDouble? maxWidth,
-    ZacDouble? maxHeight,
+    ZacValue<double>? maxWidth,
+    ZacValue<double>? maxHeight,
     FlutterWidget? child,
   }) = _FlutterLimitedBox;
 

@@ -30,15 +30,15 @@ class FlutterSingleChildScrollView
   factory FlutterSingleChildScrollView({
     FlutterKey? key,
     FlutterAxis? scrollDirection,
-    ZacBool? reverse,
+    ZacValue<bool>? reverse,
     FlutterEdgeInsetsGeometry? padding,
-    ZacBool? primary,
+    ZacValue<bool>? primary,
     // ScrollPhysics? physics,
     FlutterScrollController? controller,
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
-    ZacString? restorationId,
+    ZacValue<String>? restorationId,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 

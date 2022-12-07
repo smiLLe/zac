@@ -18,7 +18,7 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacDouble.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
           : FlutterEdgeInsets.fromJson(
@@ -82,7 +82,8 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['actionsOverflowDirection'] as Map<String, dynamic>),
       actionsOverflowButtonSpacing: json['actionsOverflowButtonSpacing'] == null
           ? null
-          : ZacDouble.fromJson(json['actionsOverflowButtonSpacing'] as Object),
+          : ZacValue<double>.fromJson(
+              json['actionsOverflowButtonSpacing'] as Object),
       buttonPadding: json['buttonPadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['buttonPadding'] as Object),
@@ -92,10 +93,10 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacDouble.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
           : FlutterEdgeInsets.fromJson(
@@ -111,7 +112,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       scrollable: json['scrollable'] == null
           ? null
-          : ZacBool.fromJson(json['scrollable'] as Object),
+          : ZacValue<bool>.fromJson(json['scrollable'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -144,10 +145,10 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacDouble.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacString.fromJson(json['semanticLabel'] as Object),
+          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
           : FlutterEdgeInsets.fromJson(
@@ -189,19 +190,19 @@ _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
       child: FlutterWidget.fromJson(json['child'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacBool.fromJson(json['barrierDismissible'] as Object),
+          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
       barrierLabel: json['barrierLabel'] == null
           ? null
-          : ZacString.fromJson(json['barrierLabel'] as Object),
+          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
       useSafeArea: json['useSafeArea'] == null
           ? null
-          : ZacBool.fromJson(json['useSafeArea'] as Object),
+          : ZacValue<bool>.fromJson(json['useSafeArea'] as Object),
       useRootNavigator: json['useRootNavigator'] == null
           ? null
-          : ZacBool.fromJson(json['useRootNavigator'] as Object),
+          : ZacValue<bool>.fromJson(json['useRootNavigator'] as Object),
       routeSettings: json['routeSettings'] == null
           ? null
           : FlutterRouteSettings.fromJson(

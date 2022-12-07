@@ -139,14 +139,14 @@ class ZacProvideFlutterKey
 
   @FreezedUnionValue('z:1:ProvideKey:GlobalKey<NavigatorState>')
   factory ZacProvideFlutterKey.navigatorState({
-    required ZacFlutterWidget child,
+    required ZacValue<Widget> child,
     required SharedValueFamily family,
     String? debugLabel,
   }) = _ZacProvideFlutterKeyGlobalNavigatorState;
 
   @FreezedUnionValue('z:1:ProvideKey:GlobalKey<ScaffoldMessengerState>')
   factory ZacProvideFlutterKey.scaffoldMessengerState({
-    required ZacFlutterWidget child,
+    required ZacValue<Widget> child,
     required SharedValueFamily family,
     String? debugLabel,
   }) = _ZacProvideFlutterKeyGlobalKeyScaffoldMessengerState;
