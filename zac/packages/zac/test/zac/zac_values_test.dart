@@ -1,11 +1,150 @@
 import 'package:flutter/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../helper.dart';
 
+class _TestBuilder implements ZacBuilder<String> {
+  final String? str;
+
+  _TestBuilder(this.str);
+
+  factory _TestBuilder.fromJson(Map<String, dynamic> data) {
+    return _TestBuilder(data['str'] as String?);
+  }
+
+  @override
+  String build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return str!;
+  }
+
+  @override
+  String? buildOrNull(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return str;
+  }
+}
+
+Matcher _throwsOnInvalidData<T>() {
+  return throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+      contains('It was not possible to convert data to ZacValue<$T>.')));
+}
+
 void main() {
+  test('ZacValue is in converters', () {
+    expectInConverter(
+        ['z:1:ZacValue.builder', 'z:1:ZacValue.value', 'z:1:ZacValue.consume'],
+        ZacValue.fromJson);
+  });
+
+  test('Explicitly create ZacValue.value', () {
+    expect(
+        ZacValue<int>.fromJson({
+          'converter': 'z:1:ZacValue.value',
+          'value': 4,
+        }),
+        ZacValue<int>.value(value: 4));
+  });
+
+  group('ZacValue.builder', () {
+    test('cCan be explicitly created', () {
+      expect(
+          ZacValue<Widget>.fromJson({
+            'converter': 'z:1:ZacValue.builder',
+            'builder': {'converter': 'f:1:SizedBox'},
+          }),
+          ZacValue<Widget>.builder(builder: FlutterSizedBox()));
+    });
+
+    test('can be created through a registered converter', () {
+      expect(ZacValue<Widget>.fromJson({'converter': 'f:1:SizedBox'}),
+          ZacValue<Widget>.builder(builder: FlutterSizedBox()));
+    });
+
+    test(
+        '.builder may return a value of a different type but will then require a transformer',
+        () {
+      allConverter = {...allConverter, 'test': _TestBuilder.fromJson};
+      expect(
+          () => ZacValue<int>.fromJson({
+                'converter': 'z:1:ZacValue.builder',
+                'builder': {'converter': 'test', 'str': 'hello'},
+                'transformer': [
+                  {'converter': 'z:1:Transformer:String.length'}
+                ]
+              }),
+          returnsNormally);
+    });
+
+    test(
+        'will throw if a builder does not return a value of T and has no transformer',
+        () {
+      allConverter = {...allConverter, 'test': _TestBuilder.fromJson};
+
+      expect(
+          () => ZacValue<int>.fromJson({
+                'converter': 'z:1:ZacValue.builder',
+                'builder': {'converter': 'test', 'str': 'hello'},
+              }),
+          throwsAssertionError);
+    });
+  });
+
+  test('Explicitly create ZacValue.consume', () {
+    expect(
+        ZacValue<Widget>.fromJson({
+          'converter': 'z:1:ZacValue.consume',
+          'family': 'shared',
+        }),
+        ZacValue<Widget>.consume(family: 'shared'));
+  });
+
+  test('ZacValue<num>', () {
+    expect(ZacValue<num>.fromJson(5), ZacValue<num>.value(value: 5));
+    expect(ZacValue<num>.fromJson(5.1), ZacValue<num>.value(value: 5.1));
+    expect(() => ZacValue<num>.fromJson(''), _throwsOnInvalidData<num>());
+  });
+
+  test('ZacValue<int>', () {
+    expect(ZacValue<int>.fromJson(5), ZacValue<int>.value(value: 5));
+    expect(ZacValue<int>.fromJson(5.1), ZacValue<int>.value(value: 5));
+    expect(() => ZacValue<int>.fromJson(''), _throwsOnInvalidData<int>());
+  });
+
+  test('ZacValue<double>', () {
+    expect(ZacValue<double>.fromJson(5), ZacValue<double>.value(value: 5.0));
+    expect(ZacValue<double>.fromJson(5.1), ZacValue<double>.value(value: 5.1));
+    expect(() => ZacValue<double>.fromJson(''), _throwsOnInvalidData<double>());
+  });
+
+  test('ZacValue<String>', () {
+    expect(
+        ZacValue<String>.fromJson('foo'), ZacValue<String>.value(value: 'foo'));
+    expect(() => ZacValue<String>.fromJson(1), _throwsOnInvalidData<String>());
+  });
+
+  test('ZacValue<bool>', () {
+    expect(ZacValue<bool>.fromJson(false), ZacValue<bool>.value(value: false));
+    expect(() => ZacValue<bool>.fromJson(1), _throwsOnInvalidData<bool>());
+  });
+
+  test('ZacValue<DateTime>', () {
+    final now = DateTime.now();
+    expect(ZacValue<DateTime>.fromJson(now.toIso8601String()),
+        ZacValue<DateTime>.value(value: now));
+    expect(
+        () => ZacValue<DateTime>.fromJson(1), _throwsOnInvalidData<DateTime>());
+  });
+
+  test('ZacValue<Object>', () {
+    final now = DateTime.now();
+    expect(ZacValue<Object>.fromJson(now.toIso8601String()),
+        ZacValue<Object>.value(value: now.toIso8601String()));
+
+    expect(ZacValue<Object>.fromJson(5.1), ZacValue<Object>.value(value: 5.1));
+  });
+
   // group('ZacInt', () {
   //   test('can be created from json', () {
   //     expect(ZacInt.fromJson(5), ZacInt(value: 5));

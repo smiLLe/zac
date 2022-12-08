@@ -128,7 +128,22 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
     if (isConverter &&
         ['z:1:ZacValue.builder', 'z:1:ZacValue.value', 'z:1:ZacValue.consume']
             .contains((data as Map<String, dynamic>)['converter'])) {
-      return _$ZacValueFromJson(data);
+      final zV = _$ZacValueFromJson<T>(data);
+      assert(() {
+        if (zV is _ZacValueBuilder<T>) {
+          if (zV.builder is! ZacBuilder<T> &&
+              true != zV.transformer?.transformers.isNotEmpty) {
+            throw AssertionError('''
+It was not possible to create ${ZacValue<T>}.
+The return type was expected to be $T which the builder should return.
+Otherwise a transformer is required but none was provided.
+The builder was of type ${zV.builder.runtimeType}.
+''');
+          }
+        }
+        return true;
+      }());
+      return zV;
     } else if (isConverter) {
       return ZacValue.builder(
         builder: ConverterHelper.convertToType<ZacBuilder<T>>(data),
@@ -189,14 +204,14 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
         throw StateError('');
       },
       consume: (obj) {
-        return SharedValue.getTyped<T>(
+        return SharedValue.getTyped<ZacBuilder<T>>(
           zacContext: zacContext,
           consumeType:
               (obj.forceConsume ?? const SharedValueConsumeType.watch()),
           family: obj.family,
           select: obj.select,
           transformer: obj.transformer,
-        );
+        ).build(zacContext);
       },
     );
   }
@@ -215,14 +230,14 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
         throw StateError('');
       },
       consume: (obj) {
-        return SharedValue.getTypedOrNull<T>(
+        return SharedValue.getTypedOrNull<ZacBuilder<T?>>(
           zacContext: zacContext,
           consumeType:
               (obj.forceConsume ?? const SharedValueConsumeType.watch()),
           family: obj.family,
           select: obj.select,
           transformer: obj.transformer,
-        );
+        )?.buildOrNull(zacContext);
       },
     );
   }
