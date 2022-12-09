@@ -146,30 +146,36 @@ See "$SharedValueProviderBuilder" for more info.
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
   }) {
-    return consumeType.map<SharedValueType>(
+    final consumedValue = consumeType.map<Object?>(
       read: (_) {
-        if (null == select) {
-          return zacContext.ref
-              .read<SharedValueType>(SharedValue.provider(family));
-        } else {
-          return select.transform(
-              ZacTransformValue(zacContext.ref
-                  .read<SharedValueType>(SharedValue.provider(family))),
-              zacContext,
-              null);
+        final value =
+            zacContext.ref.read<Object?>(SharedValue.provider(family));
+        if (value is ZacBuilder) {
+          return value;
         }
+        return select?.transform(ZacTransformValue(value), zacContext,
+                const ZacActionPayload()) ??
+            value;
       },
       watch: (_) {
-        if (null == select) {
-          return zacContext.ref
-              .watch<SharedValueType>(SharedValue.provider(family));
-        } else {
-          return zacContext.ref.watch<SharedValueType>(
-              SharedValue.provider(family).select((value) => select.transform(
-                  ZacTransformValue(value), zacContext, null)));
-        }
+        return zacContext.ref
+            .watch<Object?>(SharedValue.provider(family).select((value) {
+          if (value is ZacBuilder) {
+            return value;
+          }
+          return select?.transform(ZacTransformValue(value), zacContext,
+                  const ZacActionPayload()) ??
+              value;
+        }));
       },
     );
+
+    return consumedValue is ZacBuilder<Object>
+        ? consumedValue.build(
+            zacContext,
+            onConsume: ZacBuilderConsume(type: consumeType),
+          )
+        : consumedValue;
   }
 
   static void update(

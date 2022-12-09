@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -24,13 +25,29 @@ Provide the $ZacBuilder first.'''),
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
     required ZacTransformers? transformer,
+    required ZacTransformers? select,
   }) {
     final consumedValue = consumeType.map<Object?>(
       read: (_) {
-        return zacContext.ref.read<Object?>(SharedValue.provider(family));
+        final value =
+            zacContext.ref.read<Object?>(SharedValue.provider(family));
+        if (value is ZacBuilder) {
+          return value;
+        }
+        return select?.transform(ZacTransformValue(value), zacContext,
+                const ZacActionPayload()) ??
+            value;
       },
       watch: (_) {
-        return zacContext.ref.watch<Object?>(SharedValue.provider(family));
+        return zacContext.ref
+            .watch<Object?>(SharedValue.provider(family).select((value) {
+          if (value is ZacBuilder) {
+            return value;
+          }
+          return select?.transform(ZacTransformValue(value), zacContext,
+                  const ZacActionPayload()) ??
+              value;
+        }));
       },
     );
 

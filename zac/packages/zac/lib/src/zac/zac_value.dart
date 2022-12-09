@@ -204,14 +204,14 @@ The builder was of type ${zV.builder.runtimeType}.
         throw StateError('');
       },
       consume: (obj) {
-        return SharedValue.getTyped<ZacBuilder<T>>(
+        return SharedValue.getTyped<T>(
           zacContext: zacContext,
           consumeType:
               (obj.forceConsume ?? const SharedValueConsumeType.watch()),
           family: obj.family,
           select: obj.select,
           transformer: obj.transformer,
-        ).build(zacContext);
+        );
       },
     );
   }
@@ -230,14 +230,14 @@ The builder was of type ${zV.builder.runtimeType}.
         throw StateError('');
       },
       consume: (obj) {
-        return SharedValue.getTypedOrNull<ZacBuilder<T?>>(
+        return SharedValue.getTypedOrNull<T?>(
           zacContext: zacContext,
           consumeType:
               (obj.forceConsume ?? const SharedValueConsumeType.watch()),
           family: obj.family,
           select: obj.select,
           transformer: obj.transformer,
-        )?.buildOrNull(zacContext);
+        );
       },
     );
   }
