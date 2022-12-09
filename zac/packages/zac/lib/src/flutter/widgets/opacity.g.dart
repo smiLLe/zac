@@ -11,10 +11,12 @@ _$_FlutterOpacity _$$_FlutterOpacityFromJson(Map<String, dynamic> json) =>
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      opacity: ZacValue<double>.fromJson(json['opacity'] as Object),
+      opacity: ZacValue<double>.fromJson(
+          json['opacity'] as Object, (value) => (value as num).toDouble()),
       alwaysIncludeSemantics: json['alwaysIncludeSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['alwaysIncludeSemantics'] as Object),
+          : ZacValue<bool>.fromJson(json['alwaysIncludeSemantics'] as Object,
+              (value) => value as bool),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

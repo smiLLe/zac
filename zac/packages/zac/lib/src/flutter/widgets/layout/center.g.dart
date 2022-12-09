@@ -13,10 +13,12 @@ _$_FlutterCenter _$$_FlutterCenterFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       widthFactor: json['widthFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['widthFactor'] as Object),
+          : ZacValue<double>.fromJson(json['widthFactor'] as Object,
+              (value) => (value as num).toDouble()),
       heightFactor: json['heightFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['heightFactor'] as Object),
+          : ZacValue<double>.fromJson(json['heightFactor'] as Object,
+              (value) => (value as num).toDouble()),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

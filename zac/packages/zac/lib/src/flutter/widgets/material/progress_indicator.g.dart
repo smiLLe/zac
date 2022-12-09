@@ -14,7 +14,8 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       value: json['value'] == null
           ? null
-          : ZacValue<double>.fromJson(json['value'] as Object),
+          : ZacValue<double>.fromJson(
+              json['value'] as Object, (value) => (value as num).toDouble()),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -24,13 +25,16 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minHeight'] as Object),
+          : ZacValue<double>.fromJson(json['minHeight'] as Object,
+              (value) => (value as num).toDouble()),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(
+              json['semanticsLabel'] as Object, (value) => value as String),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
+          : ZacValue<String>.fromJson(
+              json['semanticsValue'] as Object, (value) => value as String),
       $type: json['converter'] as String?,
     );
 
@@ -42,7 +46,8 @@ _$_FlutterProgressIndicatorCircular
               : FlutterKey.fromJson(json['key'] as Object),
           value: json['value'] == null
               ? null
-              : ZacValue<double>.fromJson(json['value'] as Object),
+              : ZacValue<double>.fromJson(json['value'] as Object,
+                  (value) => (value as num).toDouble()),
           backgroundColor: json['backgroundColor'] == null
               ? null
               : FlutterColor.fromJson(
@@ -52,12 +57,15 @@ _$_FlutterProgressIndicatorCircular
               : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
           strokeWidth: json['strokeWidth'] == null
               ? null
-              : ZacValue<double>.fromJson(json['strokeWidth'] as Object),
+              : ZacValue<double>.fromJson(json['strokeWidth'] as Object,
+                  (value) => (value as num).toDouble()),
           semanticsLabel: json['semanticsLabel'] == null
               ? null
-              : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+              : ZacValue<String>.fromJson(
+                  json['semanticsLabel'] as Object, (value) => value as String),
           semanticsValue: json['semanticsValue'] == null
               ? null
-              : ZacValue<String>.fromJson(json['semanticsValue'] as Object),
+              : ZacValue<String>.fromJson(
+                  json['semanticsValue'] as Object, (value) => value as String),
           $type: json['converter'] as String?,
         );

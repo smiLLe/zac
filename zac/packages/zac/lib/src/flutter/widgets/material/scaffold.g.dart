@@ -42,35 +42,43 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
               json['backgroundColor'] as Map<String, dynamic>),
       resizeToAvoidBottomInset: json['resizeToAvoidBottomInset'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['resizeToAvoidBottomInset'] as Object),
+          : ZacValue<bool>.fromJson(json['resizeToAvoidBottomInset'] as Object,
+              (value) => value as bool),
       primary: json['primary'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['primary'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['primary'] as Object, (value) => value as bool),
       extendBody: json['extendBody'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['extendBody'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['extendBody'] as Object, (value) => value as bool),
       extendBodyBehindAppBar: json['extendBodyBehindAppBar'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['extendBodyBehindAppBar'] as Object),
+          : ZacValue<bool>.fromJson(json['extendBodyBehindAppBar'] as Object,
+              (value) => value as bool),
       drawerScrimColor: json['drawerScrimColor'] == null
           ? null
           : FlutterColor.fromJson(
               json['drawerScrimColor'] as Map<String, dynamic>),
       drawerEdgeDragWidth: json['drawerEdgeDragWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['drawerEdgeDragWidth'] as Object),
+          : ZacValue<double>.fromJson(json['drawerEdgeDragWidth'] as Object,
+              (value) => (value as num).toDouble()),
       drawerEnableOpenDragGesture: json['drawerEnableOpenDragGesture'] == null
           ? null
           : ZacValue<bool>.fromJson(
-              json['drawerEnableOpenDragGesture'] as Object),
+              json['drawerEnableOpenDragGesture'] as Object,
+              (value) => value as bool),
       endDrawerEnableOpenDragGesture:
           json['endDrawerEnableOpenDragGesture'] == null
               ? null
               : ZacValue<bool>.fromJson(
-                  json['endDrawerEnableOpenDragGesture'] as Object),
+                  json['endDrawerEnableOpenDragGesture'] as Object,
+                  (value) => value as bool),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacValue<String>.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(
+              json['restorationId'] as Object, (value) => value as String),
     );
 
 _$_FlutterScaffoldActionsOpenDrawer
@@ -91,7 +99,8 @@ _$_FlutterScaffoldActionsShowBodyScrim
             Map<String, dynamic> json) =>
         _$_FlutterScaffoldActionsShowBodyScrim(
           json['value'] as bool,
-          ZacValue<double>.fromJson(json['opacity'] as Object),
+          ZacValue<double>.fromJson(
+              json['opacity'] as Object, (value) => (value as num).toDouble()),
           $type: json['converter'] as String?,
         );
 
@@ -106,7 +115,8 @@ _$_FlutterScaffoldActionsShowBottomSheet
                   json['backgroundColor'] as Map<String, dynamic>),
           elevation: json['elevation'] == null
               ? null
-              : ZacValue<double>.fromJson(json['elevation'] as Object),
+              : ZacValue<double>.fromJson(json['elevation'] as Object,
+                  (value) => (value as num).toDouble()),
           shape: json['shape'] == null
               ? null
               : FlutterShapeBorder.fromJson(json['shape'] as Object),
@@ -120,7 +130,8 @@ _$_FlutterScaffoldActionsShowBottomSheet
                   json['constraints'] as Map<String, dynamic>),
           enableDrag: json['enableDrag'] == null
               ? null
-              : ZacValue<bool>.fromJson(json['enableDrag'] as Object),
+              : ZacValue<bool>.fromJson(
+                  json['enableDrag'] as Object, (value) => value as bool),
           $type: json['converter'] as String?,
         );
 
@@ -181,7 +192,8 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object,
+              (value) => (value as num).toDouble()),
       margin: json['margin'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['margin'] as Object),
@@ -190,7 +202,8 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
           : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(
+              json['width'] as Object, (value) => (value as num).toDouble()),
       shape: json['shape'] == null
           ? null
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
@@ -252,7 +265,8 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
       actions: ZacListOfFlutterWidget.fromJson(json['actions'] as Object),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object,
+              (value) => (value as num).toDouble()),
       leading: json['leading'] == null
           ? null
           : FlutterWidget.fromJson(json['leading'] as Object),
@@ -269,7 +283,8 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
               json['leadingPadding'] as Object),
       forceActionsBelow: json['forceActionsBelow'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['forceActionsBelow'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['forceActionsBelow'] as Object, (value) => value as bool),
       onVisible: json['onVisible'] == null
           ? null
           : ZacActions.fromJson(json['onVisible'] as Object),

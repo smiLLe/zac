@@ -13,7 +13,8 @@ _$_FlutterOffstage _$$_FlutterOffstageFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       offstage: json['offstage'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['offstage'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['offstage'] as Object, (value) => value as bool),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

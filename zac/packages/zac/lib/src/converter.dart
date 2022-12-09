@@ -12,6 +12,38 @@ class ConverterError extends StateError {
 }
 
 abstract class ConverterHelper {
+  static T ifRegisteredBuilder<T extends Object?>(
+    Object? data, {
+    required T Function(Map<String, dynamic> map, String converterName) cb,
+    required T Function() orElse,
+  }) {
+    if (!isConverter(data)) {
+      return orElse();
+    }
+    final name = (data as Map<String, dynamic>)[converterKey] as String;
+    if (!hasExistingConverter(name)) {
+      return orElse();
+    }
+
+    return cb(data, name);
+  }
+
+  static void ifRegisteredBuilderCb(
+    Object? data, {
+    void Function(Map<String, dynamic> map, String converterName)? cb,
+    void Function()? orElse,
+  }) {
+    if (!isConverter(data)) {
+      return orElse?.call();
+    }
+    final name = (data as Map<String, dynamic>)[converterKey] as String;
+    if (!hasExistingConverter(name)) {
+      return orElse?.call();
+    }
+
+    return cb?.call(data, name);
+  }
+
   static bool isConverter(Object? data) {
     if (data is! Map<String, dynamic>) return false;
     return data.containsKey(converterKey) &&

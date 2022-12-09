@@ -17,7 +17,8 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
               json['backgroundColor'] as Map<String, dynamic>),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object,
+              (value) => (value as num).toDouble()),
       shape: json['shape'] == null
           ? null
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
@@ -26,5 +27,6 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['child'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticLabel'] as Object),
+          : ZacValue<String>.fromJson(
+              json['semanticLabel'] as Object, (value) => value as String),
     );

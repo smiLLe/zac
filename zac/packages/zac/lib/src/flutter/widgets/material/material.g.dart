@@ -16,7 +16,8 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['child'] as Object),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object,
+              (value) => (value as num).toDouble()),
       color: json['color'] == null
           ? null
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
@@ -36,7 +37,8 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
       borderOnForeground: json['borderOnForeground'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['borderOnForeground'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['borderOnForeground'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

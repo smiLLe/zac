@@ -14,22 +14,28 @@ _$_FlutterPositioneddirectional _$$_FlutterPositioneddirectionalFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
-          : ZacValue<double>.fromJson(json['left'] as Object),
+          : ZacValue<double>.fromJson(
+              json['left'] as Object, (value) => (value as num).toDouble()),
       top: json['top'] == null
           ? null
-          : ZacValue<double>.fromJson(json['top'] as Object),
+          : ZacValue<double>.fromJson(
+              json['top'] as Object, (value) => (value as num).toDouble()),
       right: json['right'] == null
           ? null
-          : ZacValue<double>.fromJson(json['right'] as Object),
+          : ZacValue<double>.fromJson(
+              json['right'] as Object, (value) => (value as num).toDouble()),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double>.fromJson(json['bottom'] as Object),
+          : ZacValue<double>.fromJson(
+              json['bottom'] as Object, (value) => (value as num).toDouble()),
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(
+              json['width'] as Object, (value) => (value as num).toDouble()),
       height: json['height'] == null
           ? null
-          : ZacValue<double>.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(
+              json['height'] as Object, (value) => (value as num).toDouble()),
       child: FlutterWidget.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
@@ -43,22 +49,28 @@ _$_FlutterPositioned _$$_FlutterPositionedFromJson(Map<String, dynamic> json) =>
           json['textDirection'] as Map<String, dynamic>),
       start: json['start'] == null
           ? null
-          : ZacValue<double>.fromJson(json['start'] as Object),
+          : ZacValue<double>.fromJson(
+              json['start'] as Object, (value) => (value as num).toDouble()),
       top: json['top'] == null
           ? null
-          : ZacValue<double>.fromJson(json['top'] as Object),
+          : ZacValue<double>.fromJson(
+              json['top'] as Object, (value) => (value as num).toDouble()),
       end: json['end'] == null
           ? null
-          : ZacValue<double>.fromJson(json['end'] as Object),
+          : ZacValue<double>.fromJson(
+              json['end'] as Object, (value) => (value as num).toDouble()),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double>.fromJson(json['bottom'] as Object),
+          : ZacValue<double>.fromJson(
+              json['bottom'] as Object, (value) => (value as num).toDouble()),
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(
+              json['width'] as Object, (value) => (value as num).toDouble()),
       height: json['height'] == null
           ? null
-          : ZacValue<double>.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(
+              json['height'] as Object, (value) => (value as num).toDouble()),
       child: FlutterWidget.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
@@ -71,16 +83,20 @@ _$_FlutterPositionedfill _$$_FlutterPositionedfillFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
-          : ZacValue<double>.fromJson(json['left'] as Object),
+          : ZacValue<double>.fromJson(
+              json['left'] as Object, (value) => (value as num).toDouble()),
       top: json['top'] == null
           ? null
-          : ZacValue<double>.fromJson(json['top'] as Object),
+          : ZacValue<double>.fromJson(
+              json['top'] as Object, (value) => (value as num).toDouble()),
       right: json['right'] == null
           ? null
-          : ZacValue<double>.fromJson(json['right'] as Object),
+          : ZacValue<double>.fromJson(
+              json['right'] as Object, (value) => (value as num).toDouble()),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double>.fromJson(json['bottom'] as Object),
+          : ZacValue<double>.fromJson(
+              json['bottom'] as Object, (value) => (value as num).toDouble()),
       child: FlutterWidget.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );

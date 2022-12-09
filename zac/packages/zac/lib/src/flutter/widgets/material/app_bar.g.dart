@@ -16,8 +16,8 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['leading'] as Object),
       automaticallyImplyLeading: json['automaticallyImplyLeading'] == null
           ? null
-          : ZacValue<bool>.fromJson(
-              json['automaticallyImplyLeading'] as Object),
+          : ZacValue<bool>.fromJson(json['automaticallyImplyLeading'] as Object,
+              (value) => value as bool),
       title: json['title'] == null
           ? null
           : FlutterWidget.fromJson(json['title'] as Object),
@@ -32,7 +32,8 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['bottom'] as Object),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double>.fromJson(json['elevation'] as Object),
+          : ZacValue<double>.fromJson(json['elevation'] as Object,
+              (value) => (value as num).toDouble()),
       shadowColor: json['shadowColor'] == null
           ? null
           : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
@@ -57,28 +58,36 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
               json['actionsIconTheme'] as Map<String, dynamic>),
       primary: json['primary'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['primary'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['primary'] as Object, (value) => value as bool),
       centerTitle: json['centerTitle'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['centerTitle'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['centerTitle'] as Object, (value) => value as bool),
       excludeHeaderSemantics: json['excludeHeaderSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['excludeHeaderSemantics'] as Object),
+          : ZacValue<bool>.fromJson(json['excludeHeaderSemantics'] as Object,
+              (value) => value as bool),
       titleSpacing: json['titleSpacing'] == null
           ? null
-          : ZacValue<double>.fromJson(json['titleSpacing'] as Object),
+          : ZacValue<double>.fromJson(json['titleSpacing'] as Object,
+              (value) => (value as num).toDouble()),
       toolbarOpacity: json['toolbarOpacity'] == null
           ? null
-          : ZacValue<double>.fromJson(json['toolbarOpacity'] as Object),
+          : ZacValue<double>.fromJson(json['toolbarOpacity'] as Object,
+              (value) => (value as num).toDouble()),
       bottomOpacity: json['bottomOpacity'] == null
           ? null
-          : ZacValue<double>.fromJson(json['bottomOpacity'] as Object),
+          : ZacValue<double>.fromJson(json['bottomOpacity'] as Object,
+              (value) => (value as num).toDouble()),
       toolbarHeight: json['toolbarHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['toolbarHeight'] as Object),
+          : ZacValue<double>.fromJson(json['toolbarHeight'] as Object,
+              (value) => (value as num).toDouble()),
       leadingWidth: json['leadingWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['leadingWidth'] as Object),
+          : ZacValue<double>.fromJson(json['leadingWidth'] as Object,
+              (value) => (value as num).toDouble()),
       toolbarTextStyle: json['toolbarTextStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(

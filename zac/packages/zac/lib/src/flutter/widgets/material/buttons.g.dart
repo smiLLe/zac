@@ -23,7 +23,8 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
@@ -46,7 +47,8 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
@@ -68,7 +70,8 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
@@ -91,7 +94,8 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
@@ -112,7 +116,8 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
@@ -135,7 +140,8 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

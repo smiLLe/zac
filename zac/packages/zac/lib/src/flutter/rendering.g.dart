@@ -191,16 +191,20 @@ _$_FlutterBoxConstraints _$$_FlutterBoxConstraintsFromJson(
     _$_FlutterBoxConstraints(
       minWidth: json['minWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minWidth'] as Object),
+          : ZacValue<double>.fromJson(
+              json['minWidth'] as Object, (value) => (value as num).toDouble()),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxWidth'] as Object),
+          : ZacValue<double>.fromJson(
+              json['maxWidth'] as Object, (value) => (value as num).toDouble()),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minHeight'] as Object),
+          : ZacValue<double>.fromJson(json['minHeight'] as Object,
+              (value) => (value as num).toDouble()),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxHeight'] as Object),
+          : ZacValue<double>.fromJson(json['maxHeight'] as Object,
+              (value) => (value as num).toDouble()),
       $type: json['converter'] as String?,
     );
 
@@ -209,10 +213,12 @@ _$_FlutterBoxConstraintsExpand _$$_FlutterBoxConstraintsExpandFromJson(
     _$_FlutterBoxConstraintsExpand(
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(
+              json['width'] as Object, (value) => (value as num).toDouble()),
       height: json['height'] == null
           ? null
-          : ZacValue<double>.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(
+              json['height'] as Object, (value) => (value as num).toDouble()),
       $type: json['converter'] as String?,
     );
 
@@ -235,10 +241,12 @@ _$_FlutterBoxConstraintsTightFor _$$_FlutterBoxConstraintsTightForFromJson(
     _$_FlutterBoxConstraintsTightFor(
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(json['width'] as Object),
+          : ZacValue<double>.fromJson(
+              json['width'] as Object, (value) => (value as num).toDouble()),
       height: json['height'] == null
           ? null
-          : ZacValue<double>.fromJson(json['height'] as Object),
+          : ZacValue<double>.fromJson(
+              json['height'] as Object, (value) => (value as num).toDouble()),
       $type: json['converter'] as String?,
     );
 
@@ -248,10 +256,12 @@ _$_FlutterBoxConstraintsTightForFinite
         _$_FlutterBoxConstraintsTightForFinite(
           width: json['width'] == null
               ? null
-              : ZacValue<double>.fromJson(json['width'] as Object),
+              : ZacValue<double>.fromJson(json['width'] as Object,
+                  (value) => (value as num).toDouble()),
           height: json['height'] == null
               ? null
-              : ZacValue<double>.fromJson(json['height'] as Object),
+              : ZacValue<double>.fromJson(json['height'] as Object,
+                  (value) => (value as num).toDouble()),
           $type: json['converter'] as String?,
         );
 

@@ -8,7 +8,8 @@ part of 'text.dart';
 
 _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
     _$_FlutterText(
-      ZacValue<String>.fromJson(json['data'] as Object),
+      ZacValue<String>.fromJson(
+          json['data'] as Object, (value) => value as String),
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
@@ -32,20 +33,24 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       softWrap: json['softWrap'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['softWrap'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['softWrap'] as Object, (value) => value as bool),
       overflow: json['overflow'] == null
           ? null
           : FlutterTextOverflow.fromJson(
               json['overflow'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
+          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object,
+              (value) => (value as num).toDouble()),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLines'] as Object),
+          : ZacValue<int>.fromJson(
+              json['maxLines'] as Object, (value) => value as int),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(
+              json['semanticsLabel'] as Object, (value) => value as String),
       textWidthBasis: json['textWidthBasis'] == null
           ? null
           : FlutterTextWidthBasis.fromJson(

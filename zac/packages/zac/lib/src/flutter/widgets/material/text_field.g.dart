@@ -48,22 +48,28 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['textDirection'] as Map<String, dynamic>),
       readOnly: json['readOnly'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['readOnly'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['readOnly'] as Object, (value) => value as bool),
       showCursor: json['showCursor'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['showCursor'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['showCursor'] as Object, (value) => value as bool),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       obscuringCharacter: json['obscuringCharacter'] == null
           ? null
-          : ZacValue<String>.fromJson(json['obscuringCharacter'] as Object),
+          : ZacValue<String>.fromJson(
+              json['obscuringCharacter'] as Object, (value) => value as String),
       obscureText: json['obscureText'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['obscureText'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['obscureText'] as Object, (value) => value as bool),
       autocorrect: json['autocorrect'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autocorrect'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autocorrect'] as Object, (value) => value as bool),
       smartDashesType: json['smartDashesType'] == null
           ? null
           : FlutterSmartDashesType.fromJson(
@@ -74,19 +80,24 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['smartQuotesType'] as Map<String, dynamic>),
       enableSuggestions: json['enableSuggestions'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enableSuggestions'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['enableSuggestions'] as Object, (value) => value as bool),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLines'] as Object),
+          : ZacValue<int>.fromJson(
+              json['maxLines'] as Object, (value) => value as int),
       minLines: json['minLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['minLines'] as Object),
+          : ZacValue<int>.fromJson(
+              json['minLines'] as Object, (value) => value as int),
       expands: json['expands'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['expands'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['expands'] as Object, (value) => value as bool),
       maxLength: json['maxLength'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLength'] as Object),
+          : ZacValue<int>.fromJson(
+              json['maxLength'] as Object, (value) => value as int),
       onChanged: json['onChanged'] == null
           ? null
           : ZacActions.fromJson(json['onChanged'] as Object),
@@ -98,13 +109,16 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['onSubmitted'] as Object),
       enabled: json['enabled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enabled'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['enabled'] as Object, (value) => value as bool),
       cursorWidth: json['cursorWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorWidth'] as Object),
+          : ZacValue<double>.fromJson(json['cursorWidth'] as Object,
+              (value) => (value as num).toDouble()),
       cursorHeight: json['cursorHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorHeight'] as Object),
+          : ZacValue<double>.fromJson(json['cursorHeight'] as Object,
+              (value) => (value as num).toDouble()),
       cursorRadius: json['cursorRadius'] == null
           ? null
           : FlutterRadius.fromJson(
@@ -131,7 +145,8 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
           : ZacValue<bool>.fromJson(
-              json['enableInteractiveSelection'] as Object),
+              json['enableInteractiveSelection'] as Object,
+              (value) => value as bool),
       onTap: json['onTap'] == null
           ? null
           : ZacActions.fromJson(json['onTap'] as Object),
@@ -144,10 +159,12 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       restorationId: json['restorationId'] == null
           ? null
-          : ZacValue<String>.fromJson(json['restorationId'] as Object),
+          : ZacValue<String>.fromJson(
+              json['restorationId'] as Object, (value) => value as String),
       enableIMEPersonalizedLearning:
           json['enableIMEPersonalizedLearning'] == null
               ? null
               : ZacValue<bool>.fromJson(
-                  json['enableIMEPersonalizedLearning'] as Object),
+                  json['enableIMEPersonalizedLearning'] as Object,
+                  (value) => value as bool),
     );

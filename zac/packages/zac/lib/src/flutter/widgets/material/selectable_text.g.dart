@@ -30,25 +30,32 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['textDirection'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
+          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object,
+              (value) => (value as num).toDouble()),
       showCursor: json['showCursor'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['showCursor'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['showCursor'] as Object, (value) => value as bool),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       minLines: json['minLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['minLines'] as Object),
+          : ZacValue<int>.fromJson(
+              json['minLines'] as Object, (value) => value as int),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLines'] as Object),
+          : ZacValue<int>.fromJson(
+              json['maxLines'] as Object, (value) => value as int),
       cursorWidth: json['cursorWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorWidth'] as Object),
+          : ZacValue<double>.fromJson(json['cursorWidth'] as Object,
+              (value) => (value as num).toDouble()),
       cursorHeight: json['cursorHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorHeight'] as Object),
+          : ZacValue<double>.fromJson(json['cursorHeight'] as Object,
+              (value) => (value as num).toDouble()),
       cursorRadius: json['cursorRadius'] == null
           ? null
           : FlutterRadius.fromJson(
@@ -59,10 +66,12 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
           : ZacValue<bool>.fromJson(
-              json['enableInteractiveSelection'] as Object),
+              json['enableInteractiveSelection'] as Object,
+              (value) => value as bool),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String>.fromJson(
+              json['semanticsLabel'] as Object, (value) => value as String),
       textHeightBehavior: json['textHeightBehavior'] == null
           ? null
           : FlutterTextHeightBehavior.fromJson(

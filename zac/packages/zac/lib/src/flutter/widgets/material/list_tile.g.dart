@@ -25,10 +25,12 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : FlutterWidget.fromJson(json['trailing'] as Object),
       isThreeLine: json['isThreeLine'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['isThreeLine'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['isThreeLine'] as Object, (value) => value as bool),
       dense: json['dense'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['dense'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['dense'] as Object, (value) => value as bool),
       shape: json['shape'] == null
           ? null
           : FlutterShapeBorder.fromJson(json['shape'] as Object),
@@ -48,7 +50,8 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
               json['contentPadding'] as Object),
       enabled: json['enabled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enabled'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['enabled'] as Object, (value) => value as bool),
       onTap: json['onTap'] == null
           ? null
           : ZacActions.fromJson(json['onTap'] as Object),
@@ -57,7 +60,8 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['onLongPress'] as Object),
       selected: json['selected'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['selected'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['selected'] as Object, (value) => value as bool),
       focusColor: json['focusColor'] == null
           ? null
           : FlutterColor.fromJson(json['focusColor'] as Map<String, dynamic>),
@@ -66,7 +70,8 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : FlutterColor.fromJson(json['hoverColor'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['autofocus'] as Object, (value) => value as bool),
       tileColor: json['tileColor'] == null
           ? null
           : FlutterColor.fromJson(json['tileColor'] as Map<String, dynamic>),
@@ -76,14 +81,18 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
               json['selectedTileColor'] as Map<String, dynamic>),
       enableFeedback: json['enableFeedback'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enableFeedback'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['enableFeedback'] as Object, (value) => value as bool),
       horizontalTitleGap: json['horizontalTitleGap'] == null
           ? null
-          : ZacValue<double>.fromJson(json['horizontalTitleGap'] as Object),
+          : ZacValue<double>.fromJson(json['horizontalTitleGap'] as Object,
+              (value) => (value as num).toDouble()),
       minVerticalPadding: json['minVerticalPadding'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minVerticalPadding'] as Object),
+          : ZacValue<double>.fromJson(json['minVerticalPadding'] as Object,
+              (value) => (value as num).toDouble()),
       minLeadingWidth: json['minLeadingWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minLeadingWidth'] as Object),
+          : ZacValue<double>.fromJson(json['minLeadingWidth'] as Object,
+              (value) => (value as num).toDouble()),
     );

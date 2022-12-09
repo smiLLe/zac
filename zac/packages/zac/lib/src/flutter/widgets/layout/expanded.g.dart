@@ -13,6 +13,7 @@ _$_FlutterExpanded _$$_FlutterExpandedFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       flex: json['flex'] == null
           ? null
-          : ZacValue<int>.fromJson(json['flex'] as Object),
+          : ZacValue<int>.fromJson(
+              json['flex'] as Object, (value) => value as int),
       child: FlutterWidget.fromJson(json['child'] as Object),
     );

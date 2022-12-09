@@ -19,7 +19,8 @@ _$_FlutterOutlineInputBorder _$$_FlutterOutlineInputBorderFromJson(
               json['borderRadius'] as Map<String, dynamic>),
       gapPadding: json['gapPadding'] == null
           ? null
-          : ZacValue<double>.fromJson(json['gapPadding'] as Object),
+          : ZacValue<double>.fromJson(json['gapPadding'] as Object,
+              (value) => (value as num).toDouble()),
     );
 
 _$_FlutterUnderlineInputBorder _$$_FlutterUnderlineInputBorderFromJson(

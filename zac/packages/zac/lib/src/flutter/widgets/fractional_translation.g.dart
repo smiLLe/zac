@@ -19,5 +19,6 @@ _$_FlutterFractionalTranslation _$$_FlutterFractionalTranslationFromJson(
           FlutterOffset.fromJson(json['translation'] as Map<String, dynamic>),
       transformHitTests: json['transformHitTests'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['transformHitTests'] as Object),
+          : ZacValue<bool>.fromJson(
+              json['transformHitTests'] as Object, (value) => value as bool),
     );
