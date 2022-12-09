@@ -20,10 +20,8 @@ _$_FlutterFractionallySizedBox _$$_FlutterFractionallySizedBoxFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       widthFactor: json['widthFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['widthFactor'] as Object,
-              (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['widthFactor'] as Object),
       heightFactor: json['heightFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['heightFactor'] as Object,
-              (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['heightFactor'] as Object),
     );

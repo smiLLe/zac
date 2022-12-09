@@ -13,12 +13,10 @@ _$_FlutterLimitedBox _$$_FlutterLimitedBoxFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(
-              json['maxWidth'] as Object, (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['maxWidth'] as Object),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxHeight'] as Object,
-              (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

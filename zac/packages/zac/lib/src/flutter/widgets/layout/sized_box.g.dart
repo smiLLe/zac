@@ -14,12 +14,10 @@ _$_FlutterWidgetSizedBox _$$_FlutterWidgetSizedBoxFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       width: json['width'] == null
           ? null
-          : ZacValue<double>.fromJson(
-              json['width'] as Object, (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacValue<double>.fromJson(
-              json['height'] as Object, (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['height'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),
@@ -76,7 +74,6 @@ _$_FlutterWidgetSizedBoxSquare _$$_FlutterWidgetSizedBoxSquareFromJson(
           : FlutterWidget.fromJson(json['child'] as Object),
       dimension: json['dimension'] == null
           ? null
-          : ZacValue<double>.fromJson(json['dimension'] as Object,
-              (value) => (value as num).toDouble()),
+          : ZacValue<double>.fromJson(json['dimension'] as Object),
       $type: json['converter'] as String?,
     );

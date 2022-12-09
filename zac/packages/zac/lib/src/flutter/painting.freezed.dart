@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'painting.dart';
 
@@ -658,6 +658,8 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
   List<String>? get fontFamilyFallback {
     final value = _fontFamilyFallback;
     if (value == null) return null;
+    if (_fontFamilyFallback is EqualUnmodifiableListView)
+      return _fontFamilyFallback;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -818,6 +820,8 @@ class _$_FlutterStrutStyleFromTextStyle
   List<String>? get fontFamilyFallback {
     final value = _fontFamilyFallback;
     if (value == null) return null;
+    if (_fontFamilyFallback is EqualUnmodifiableListView)
+      return _fontFamilyFallback;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1805,6 +1809,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   List<DartShadow>? get shadows {
     final value = _shadows;
     if (value == null) return null;
+    if (_shadows is EqualUnmodifiableListView) return _shadows;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1814,6 +1819,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   List<FlutterFontFeature>? get fontFeatures {
     final value = _fontFeatures;
     if (value == null) return null;
+    if (_fontFeatures is EqualUnmodifiableListView) return _fontFeatures;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1835,6 +1841,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   List<String>? get fontFamilyFallback {
     final value = _fontFamilyFallback;
     if (value == null) return null;
+    if (_fontFamilyFallback is EqualUnmodifiableListView)
+      return _fontFamilyFallback;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -4599,6 +4607,7 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
   List<FlutterBoxShadow>? get boxShadow {
     final value = _boxShadow;
     if (value == null) return null;
+    if (_boxShadow is EqualUnmodifiableListView) return _boxShadow;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -4718,6 +4727,7 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
   List<FlutterBoxShadow>? get shadows {
     final value = _shadows;
     if (value == null) return null;
+    if (_shadows is EqualUnmodifiableListView) return _shadows;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }

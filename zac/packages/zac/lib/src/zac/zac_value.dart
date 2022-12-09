@@ -145,83 +145,16 @@ The data used: $json.''');
   Object toJson(T object) => throw StateError('not supported');
 }
 
-class _BuilderConverter<T>
-    implements JsonConverter<ZacBuilder<dynamic>, Object> {
-  const _BuilderConverter();
-
-  @override
-  ZacBuilder<dynamic> fromJson(Object json) {
-    print('AAAAAAAAAAAAAAAAA');
-    assert(() {
-      /// Check if item can be converted
-      ConverterHelper.ifRegisteredBuilderCb(
-        json,
-        orElse: () {
-          throw StateError('''
-It was not possible to create ${ZacValue<T>}.
-The error was probably created by using "${ZacValue.unionFromBuilder}" converter.
-The data could not be converted as no valid converter was found.
-This will fail on production.
-The data: $json''');
-        },
-      );
-
-      print('BBBBBBBBBBBBBBBBBBBBBB');
-
-      final builder = ConverterHelper.convertToType<Object?>(json);
-      if (builder is! ZacBuilder<T>) {
-        throw StateError('''
-It was not possible to create ${ZacValue<T>}.
-The error was probably created by using "${ZacValue.unionFromBuilder}" converter.
-The created builder was not an instance of ${ZacBuilder<T>}.
-This will fail on production.
-The builder: $builder''');
-      }
-      return true;
-    }());
-    return ConverterHelper.convertToType<ZacBuilder<T>>(json);
-  }
-
-  @override
-  Object toJson(ZacBuilder<dynamic> object) =>
-      throw StateError('not supported');
-}
-
-class _BuilderListConverter<T> implements JsonConverter<ZacBuilder<T>, Object> {
-  const _BuilderListConverter();
-
-  @override
-  ZacBuilder<T> fromJson(Object json) {
-    assert(() {
-      /// Check if item can be converted
-      ConverterHelper.ifRegisteredBuilderCb(json, orElse: () {
-        throw StateError('''
-It was not possible to create ${ZacValueList<T>}.
-The error was probably created by using "${ZacValueList.unionFromBuilder}" converter.
-There was at least one item in the list that can not be converted to an instance of ${ZacBuilder<T>}.
-This will fail on production.
-The item: $json''');
-      });
-      return true;
-    }());
-    return ConverterHelper.convertToType<ZacBuilder<T>>(json);
-  }
-
-  @override
-  Object toJson(ZacBuilder<T> object) => throw StateError('not supported');
-}
-
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
+  const ZacValue._();
+
   static const String unionFromValue = 'z:1:ZacValue.value';
   static const String unionFromBuilder = 'z:1:ZacValue.builder';
   static const String unionFromSharedValue = 'z:1:ZacValue.consume';
 
-  factory ZacValue.fromJson(
-    Object data,
-    T Function(Object? json) fromJsonT,
-  ) {
+  factory ZacValue.fromJson(Object data) {
     final isConverter = ConverterHelper.isConverter(data);
     if (isConverter &&
         [
@@ -257,23 +190,15 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
         'It was not possible to create ${ZacValue<T>} from data: $data');
   }
 
-  static T _choiceListFromJson<T>(Object data) {
-    return data as T;
-    // return ConverterHelper.convertToType<ZacBuilder<T>>(data);
-  }
-
-  @FreezedUnionValue(ZacValue.unionFromBuilder)
-  // @JsonSerializable(genericArgumentFactories: true, createToJson: false)
-  factory ZacValue.builder({
-    // required ZacBuilder<T> builder,
-    // @JsonKey(fromJson: _choiceListFromJson) required ZacBuilder<T> builder,
-    @_BuilderConverter<T>() required ZacBuilder<T> builder,
-  }) = _ZacValueBuilder<T>;
-
   @FreezedUnionValue(ZacValue.unionFromValue)
   factory ZacValue.value({
     @_ValueConverter() required T value,
   }) = _ZacValueValue<T>;
+
+  @FreezedUnionValue(ZacValue.unionFromBuilder)
+  factory ZacValue.builder({
+    required ZacBuilder<T> builder,
+  }) = _ZacValueBuilder<T>;
 
   @FreezedUnionValue(ZacValue.unionFromSharedValue)
   factory ZacValue.consume({
@@ -338,15 +263,15 @@ class ZacValueList<T> with _$ZacValueList<T> implements ZacBuilder<List<T>> {
   factory ZacValueList.fromJson(Map<String, dynamic> json) =>
       _$ZacValueListFromJson(json);
 
-  @FreezedUnionValue(ZacValue.unionFromBuilder)
-  factory ZacValueList.builder({
-    @_BuilderListConverter() required List<ZacBuilder<T>> items,
-  }) = _ZacValueListBuilder<T>;
-
   @FreezedUnionValue(ZacValue.unionFromValue)
   factory ZacValueList.value({
     @_ValueListConverter() required List<T> items,
   }) = _ZacValueListValue<T>;
+
+  @FreezedUnionValue(ZacValue.unionFromBuilder)
+  factory ZacValueList.builder({
+    required List<ZacBuilder<T>> items,
+  }) = _ZacValueListBuilder<T>;
 
   @FreezedUnionValue(ZacValue.unionFromSharedValue)
   factory ZacValueList.consume({

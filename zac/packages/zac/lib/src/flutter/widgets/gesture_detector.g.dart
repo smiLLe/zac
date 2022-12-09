@@ -39,6 +39,5 @@ _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
               json['behavior'] as Map<String, dynamic>),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
-          : ZacValue<bool>.fromJson(
-              json['excludeFromSemantics'] as Object, (value) => value as bool),
+          : ZacValue<bool>.fromJson(json['excludeFromSemantics'] as Object),
     );

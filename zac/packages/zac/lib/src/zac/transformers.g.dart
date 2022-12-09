@@ -46,8 +46,7 @@ _$_MapContainsKey _$$_MapContainsKeyFromJson(Map<String, dynamic> json) =>
     _$_MapContainsKey(
       json['key'] == null
           ? null
-          : ZacValue<Object>.fromJson(
-              json['key'] as Object, (value) => value as Object),
+          : ZacValue<Object>.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -55,8 +54,7 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
     _$_MapContainsValue(
       json['value'] == null
           ? null
-          : ZacValue<Object>.fromJson(
-              json['value'] as Object, (value) => value as Object),
+          : ZacValue<Object>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -89,17 +87,14 @@ _$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
     );
 
 _$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
-      ZacValue<String>.fromJson(
-          json['key'] as Object, (value) => value as String),
+      ZacValue<String>.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
 _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
     _$_MapSetValueForKey(
-      value: ZacValue<Object>.fromJson(
-          json['value'] as Object, (value) => value as Object),
-      key: ZacValue<String>.fromJson(
-          json['key'] as Object, (value) => value as String),
+      value: ZacValue<Object>.fromJson(json['value'] as Object),
+      key: ZacValue<String>.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -171,8 +166,7 @@ _$_IterableContains _$$_IterableContainsFromJson(Map<String, dynamic> json) =>
     _$_IterableContains(
       json['element'] == null
           ? null
-          : ZacValue<Object>.fromJson(
-              json['element'] as Object, (value) => value as Object),
+          : ZacValue<Object>.fromJson(json['element'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -206,8 +200,7 @@ _$_ListFromFlutterWidget _$$_ListFromFlutterWidgetFromJson(
     );
 
 _$_ListAdd _$$_ListAddFromJson(Map<String, dynamic> json) => _$_ListAdd(
-      ZacValue<Object>.fromJson(
-          json['value'] as Object, (value) => value as Object),
+      ZacValue<Object>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -276,8 +269,7 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      value: ZacValue<Object>.fromJson(
-          json['value'] as Object, (value) => value as Object),
+      value: ZacValue<Object>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -356,8 +348,7 @@ _$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
 
 _$_StringSplit _$$_StringSplitFromJson(Map<String, dynamic> json) =>
     _$_StringSplit(
-      pattern: ZacValue<String>.fromJson(
-          json['pattern'] as Object, (value) => value as String),
+      pattern: ZacValue<String>.fromJson(json['pattern'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -373,10 +364,8 @@ _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_StringReplaceAll _$$_StringReplaceAllFromJson(Map<String, dynamic> json) =>
     _$_StringReplaceAll(
-      ZacValue<String>.fromJson(
-          json['from'] as Object, (value) => value as String),
-      ZacValue<String>.fromJson(
-          json['replace'] as Object, (value) => value as String),
+      ZacValue<String>.fromJson(json['from'] as Object),
+      ZacValue<String>.fromJson(json['replace'] as Object),
       $type: json['converter'] as String?,
     );
 

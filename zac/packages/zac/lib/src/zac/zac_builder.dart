@@ -9,9 +9,33 @@ part 'zac_builder.freezed.dart';
 typedef ZacSharedBuilder = ZacBuilder<Object>;
 
 abstract class ZacBuilder<T> {
-  // factory ZacBuilder.fromJson(Map<String, dynamic> json) {
-  //   return ConverterHelper.convertToType<ZacBuilder<T>>(json);
-  // }
+  factory ZacBuilder.fromJson(Map<String, dynamic> json) {
+    assert(() {
+      /// Check if item can be converted
+      ConverterHelper.ifRegisteredBuilderCb(
+        json,
+        orElse: () {
+          throw StateError('''
+It was not possible to create an instance of ${ZacBuilder<T>} from JSON.
+The data could not be converted as no valid converter was found
+or the given JSON was of an unsupported type.
+This will fail on production.
+The data: $json''');
+        },
+      );
+
+      final builder = ConverterHelper.convertToType<Object?>(json);
+      if (builder is! ZacBuilder<T>) {
+        throw StateError('''
+It was not possible to create ${ZacBuilder<T>} because the created builder
+was not an instance of ${ZacBuilder<T>}.
+This will fail on production.
+The builder: $builder''');
+      }
+      return true;
+    }());
+    return ConverterHelper.convertToType<ZacBuilder<T>>(json);
+  }
 
   T build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
