@@ -22,26 +22,26 @@ FlutterListView _$FlutterListViewFromJson(Map<String, dynamic> json) {
 mixin _$FlutterListView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool>? get reverse => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   FlutterScrollController? get controller => throw _privateConstructorUsedError;
-  ZacValue<bool>? get primary => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
-  ZacValue<bool>? get shrinkWrap => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
-  ZacValue<double>? get itemExtent => throw _privateConstructorUsedError;
+  ZacValue<double?>? get itemExtent => throw _privateConstructorUsedError;
   FlutterWidget? get prototypeItem => throw _privateConstructorUsedError;
-  ZacValue<bool>? get addAutomaticKeepAlives =>
+  ZacValue<bool?>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addRepaintBoundaries =>
+  ZacValue<bool?>? get addRepaintBoundaries =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addSemanticIndexes => throw _privateConstructorUsedError;
-  ZacValue<double>? get cacheExtent => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get addSemanticIndexes => throw _privateConstructorUsedError;
+  ZacValue<double?>? get cacheExtent => throw _privateConstructorUsedError;
   ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
-  ZacValue<int>? get semanticChildCount =>
+  ZacValue<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
-  ZacValue<String>? get restorationId => throw _privateConstructorUsedError;
+  ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -84,38 +84,38 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacValue<bool>? reverse;
+  final ZacValue<bool?>? reverse;
   @override
   final FlutterScrollController? controller;
   @override
-  final ZacValue<bool>? primary;
+  final ZacValue<bool?>? primary;
   @override
   final FlutterScrollPhysics? physics;
   @override
-  final ZacValue<bool>? shrinkWrap;
+  final ZacValue<bool?>? shrinkWrap;
   @override
   final FlutterEdgeInsetsGeometry? padding;
   @override
-  final ZacValue<double>? itemExtent;
+  final ZacValue<double?>? itemExtent;
   @override
   final FlutterWidget? prototypeItem;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacValue<bool?>? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacValue<bool?>? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacValue<bool?>? addSemanticIndexes;
   @override
-  final ZacValue<double>? cacheExtent;
+  final ZacValue<double?>? cacheExtent;
   @override
   final ZacListOfFlutterWidget? children;
   @override
-  final ZacValue<int>? semanticChildCount;
+  final ZacValue<int?>? semanticChildCount;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
   final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
   @override
-  final ZacValue<String>? restorationId;
+  final ZacValue<String?>? restorationId;
   @override
   final FlutterClip? clipBehavior;
 
@@ -203,22 +203,22 @@ abstract class _FlutterListView extends FlutterListView {
   factory _FlutterListView(
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
-      final ZacValue<bool>? reverse,
+      final ZacValue<bool?>? reverse,
       final FlutterScrollController? controller,
-      final ZacValue<bool>? primary,
+      final ZacValue<bool?>? primary,
       final FlutterScrollPhysics? physics,
-      final ZacValue<bool>? shrinkWrap,
+      final ZacValue<bool?>? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
-      final ZacValue<double>? itemExtent,
+      final ZacValue<double?>? itemExtent,
       final FlutterWidget? prototypeItem,
-      final ZacValue<bool>? addAutomaticKeepAlives,
-      final ZacValue<bool>? addRepaintBoundaries,
-      final ZacValue<bool>? addSemanticIndexes,
-      final ZacValue<double>? cacheExtent,
+      final ZacValue<bool?>? addAutomaticKeepAlives,
+      final ZacValue<bool?>? addRepaintBoundaries,
+      final ZacValue<bool?>? addSemanticIndexes,
+      final ZacValue<double?>? cacheExtent,
       final ZacListOfFlutterWidget? children,
-      final ZacValue<int>? semanticChildCount,
+      final ZacValue<int?>? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-      final ZacValue<String>? restorationId,
+      final ZacValue<String?>? restorationId,
       final FlutterClip? clipBehavior}) = _$_FlutterListView;
   _FlutterListView._() : super._();
 
@@ -230,37 +230,37 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacValue<bool>? get reverse;
+  ZacValue<bool?>? get reverse;
   @override
   FlutterScrollController? get controller;
   @override
-  ZacValue<bool>? get primary;
+  ZacValue<bool?>? get primary;
   @override
   FlutterScrollPhysics? get physics;
   @override
-  ZacValue<bool>? get shrinkWrap;
+  ZacValue<bool?>? get shrinkWrap;
   @override
   FlutterEdgeInsetsGeometry? get padding;
   @override
-  ZacValue<double>? get itemExtent;
+  ZacValue<double?>? get itemExtent;
   @override
   FlutterWidget? get prototypeItem;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacValue<bool?>? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacValue<bool?>? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacValue<bool?>? get addSemanticIndexes;
   @override
-  ZacValue<double>? get cacheExtent;
+  ZacValue<double?>? get cacheExtent;
   @override
   ZacListOfFlutterWidget? get children;
   @override
-  ZacValue<int>? get semanticChildCount;
+  ZacValue<int?>? get semanticChildCount;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
   @override
-  ZacValue<String>? get restorationId;
+  ZacValue<String?>? get restorationId;
   @override
   FlutterClip? get clipBehavior;
 }

@@ -30,33 +30,31 @@ class FlutterSingleChildScrollView
   factory FlutterSingleChildScrollView({
     FlutterKey? key,
     FlutterAxis? scrollDirection,
-    ZacValue<bool>? reverse,
+    ZacValue<bool?>? reverse,
     FlutterEdgeInsetsGeometry? padding,
-    ZacValue<bool>? primary,
+    ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     FlutterScrollController? controller,
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
-    ZacValue<String>? restorationId,
+    ZacValue<String?>? restorationId,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
   SingleChildScrollView _buildWidget(ZacContext zacContext) {
     return SingleChildScrollView(
-      key: key?.buildOrNull(zacContext),
-      scrollDirection:
-          scrollDirection?.buildOrNull(zacContext) ?? Axis.vertical,
-      reverse: reverse?.buildOrNull(zacContext) ?? false,
-      padding: padding?.buildOrNull(zacContext),
-      primary: primary?.buildOrNull(zacContext),
-      controller: controller?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.buildOrNull(zacContext),
-      keyboardDismissBehavior:
-          keyboardDismissBehavior?.buildOrNull(zacContext) ??
-              ScrollViewKeyboardDismissBehavior.manual,
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(zacContext) ?? false,
+      padding: padding?.build(zacContext),
+      primary: primary?.build(zacContext),
+      controller: controller?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.build(zacContext),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
+          ScrollViewKeyboardDismissBehavior.manual,
+      child: child?.build(zacContext),
     );
   }
 

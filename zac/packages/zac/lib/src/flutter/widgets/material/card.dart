@@ -26,27 +26,27 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
     FlutterKey? key,
     FlutterColor? color,
     FlutterColor? shadowColor,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     FlutterShapeBorder? shape,
-    ZacValue<bool>? borderOnForeground,
+    ZacValue<bool?>? borderOnForeground,
     FlutterEdgeInsetsGeometry? margin,
     FlutterClip? clipBehavior,
     FlutterWidget? child,
-    ZacValue<bool>? semanticContainer,
+    ZacValue<bool?>? semanticContainer,
   }) = _FlutterCard;
 
   Card _buildWidget(ZacContext zacContext) {
     return Card(
-      key: key?.buildOrNull(zacContext),
-      color: color?.buildOrNull(zacContext),
-      shadowColor: shadowColor?.buildOrNull(zacContext),
-      elevation: elevation?.buildOrNull(zacContext),
-      shape: shape?.buildOrNull(zacContext),
-      borderOnForeground: borderOnForeground?.buildOrNull(zacContext) ?? true,
-      margin: margin?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.buildOrNull(zacContext),
-      semanticContainer: semanticContainer?.buildOrNull(zacContext) ?? true,
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      color: color?.build(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      elevation: elevation?.build(zacContext),
+      shape: shape?.build(zacContext),
+      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
+      margin: margin?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext),
+      semanticContainer: semanticContainer?.build(zacContext) ?? true,
+      child: child?.build(zacContext),
     );
   }
 

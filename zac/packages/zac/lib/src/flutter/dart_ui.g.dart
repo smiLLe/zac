@@ -39,7 +39,7 @@ _$_FlutterOffsetFromDirection _$$_FlutterOffsetFromDirectionFromJson(
       direction: ZacValue<double>.fromJson(json['direction'] as Object),
       distance: json['distance'] == null
           ? null
-          : ZacValue<double>.fromJson(json['distance'] as Object),
+          : ZacValue<double?>.fromJson(json['distance'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -249,7 +249,7 @@ _$_FontFeature _$$_FontFeatureFromJson(Map<String, dynamic> json) =>
       json['feature'] as String,
       json['value'] == null
           ? null
-          : ZacValue<int>.fromJson(json['value'] as Object),
+          : ZacValue<int?>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 
@@ -333,7 +333,7 @@ _$_FontFeatureLocaleAware _$$_FontFeatureLocaleAwareFromJson(
     _$_FontFeatureLocaleAware(
       enable: json['enable'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enable'] as Object),
+          : ZacValue<bool?>.fromJson(json['enable'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -342,7 +342,7 @@ _$_FontFeatureNotationalForms _$$_FontFeatureNotationalFormsFromJson(
     _$_FontFeatureNotationalForms(
       json['value'] == null
           ? null
-          : ZacValue<int>.fromJson(json['value'] as Object),
+          : ZacValue<int?>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 
@@ -417,7 +417,7 @@ _$_FontFeatureSwash _$$_FontFeatureSwashFromJson(Map<String, dynamic> json) =>
     _$_FontFeatureSwash(
       json['value'] == null
           ? null
-          : ZacValue<int>.fromJson(json['value'] as Object),
+          : ZacValue<int?>.fromJson(json['value'] as Object),
       json['converter'] as String?,
     );
 
@@ -498,10 +498,12 @@ _$_FlutterTextHeightBehavior _$$_FlutterTextHeightBehaviorFromJson(
     _$_FlutterTextHeightBehavior(
       applyHeightToFirstAscent: json['applyHeightToFirstAscent'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['applyHeightToFirstAscent'] as Object),
+          : ZacValue<bool?>.fromJson(
+              json['applyHeightToFirstAscent'] as Object),
       applyHeightToLastDescent: json['applyHeightToLastDescent'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['applyHeightToLastDescent'] as Object),
+          : ZacValue<bool?>.fromJson(
+              json['applyHeightToLastDescent'] as Object),
       leadingDistribution: json['leadingDistribution'] == null
           ? null
           : FlutterTextLeadingDistribution.fromJson(
@@ -831,5 +833,5 @@ _$_FlutterShadowShadow _$$_FlutterShadowShadowFromJson(
           : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
       blurRadius: json['blurRadius'] == null
           ? null
-          : ZacValue<double>.fromJson(json['blurRadius'] as Object),
+          : ZacValue<double?>.fromJson(json['blurRadius'] as Object),
     );

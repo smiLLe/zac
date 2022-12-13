@@ -32,20 +32,20 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
       softWrap: json['softWrap'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['softWrap'] as Object),
+          : ZacValue<bool?>.fromJson(json['softWrap'] as Object),
       overflow: json['overflow'] == null
           ? null
           : FlutterTextOverflow.fromJson(
               json['overflow'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
+          : ZacValue<double?>.fromJson(json['textScaleFactor'] as Object),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLines'] as Object),
+          : ZacValue<int?>.fromJson(json['maxLines'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),
       textWidthBasis: json['textWidthBasis'] == null
           ? null
           : FlutterTextWidthBasis.fromJson(

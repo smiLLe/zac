@@ -28,47 +28,47 @@ class FlutterProgressIndicator
   @FreezedUnionValue(FlutterProgressIndicator.unionValueLinearProgressIndicator)
   factory FlutterProgressIndicator.linear({
     FlutterKey? key,
-    ZacValue<double>? value,
+    ZacValue<double?>? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,
 // Animation<Color?>? valueColor,
-    ZacValue<double>? minHeight,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
+    ZacValue<double?>? minHeight,
+    ZacValue<String?>? semanticsLabel,
+    ZacValue<String?>? semanticsValue,
   }) = _FlutterProgressIndicatorLinear;
 
   @FreezedUnionValue(
       FlutterProgressIndicator.unionValueCircularProgressIndicator)
   factory FlutterProgressIndicator.circular({
     FlutterKey? key,
-    ZacValue<double>? value,
+    ZacValue<double?>? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,
     // Animation<Color?>? valueColor,
-    ZacValue<double>? strokeWidth,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
+    ZacValue<double?>? strokeWidth,
+    ZacValue<String?>? semanticsLabel,
+    ZacValue<String?>? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
 
   ProgressIndicator _buildWidget(ZacContext zacContext) {
     return map(
       linear: (value) => LinearProgressIndicator(
-        key: value.key?.buildOrNull(zacContext),
-        value: value.value?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-        color: value.color?.buildOrNull(zacContext),
-        minHeight: value.minHeight?.buildOrNull(zacContext),
-        semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
-        semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        value: value.value?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        color: value.color?.build(zacContext),
+        minHeight: value.minHeight?.build(zacContext),
+        semanticsLabel: value.semanticsLabel?.build(zacContext),
+        semanticsValue: value.semanticsValue?.build(zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
-        key: value.key?.buildOrNull(zacContext),
-        value: value.value?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-        color: value.color?.buildOrNull(zacContext),
-        strokeWidth: value.strokeWidth?.buildOrNull(zacContext) ?? 4.0,
-        semanticsLabel: value.semanticsLabel?.buildOrNull(zacContext),
-        semanticsValue: value.semanticsValue?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        value: value.value?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        color: value.color?.build(zacContext),
+        strokeWidth: value.strokeWidth?.build(zacContext) ?? 4.0,
+        semanticsLabel: value.semanticsLabel?.build(zacContext),
+        semanticsValue: value.semanticsValue?.build(zacContext),
       ),
     );
   }

@@ -29,7 +29,7 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
 
   SliverGrid _buildWidget(ZacContext zacContext) {
     return SliverGrid(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       delegate: delegate.build(zacContext),
       gridDelegate: gridDelegate.build(zacContext),
     );

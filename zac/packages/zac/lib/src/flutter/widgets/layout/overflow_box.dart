@@ -25,22 +25,22 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
   factory FlutterOverflowBox({
     FlutterKey? key,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<double>? minWidth,
-    ZacValue<double>? maxWidth,
-    ZacValue<double>? minHeight,
-    ZacValue<double>? maxHeight,
+    ZacValue<double?>? minWidth,
+    ZacValue<double?>? maxWidth,
+    ZacValue<double?>? minHeight,
+    ZacValue<double?>? maxHeight,
     FlutterWidget? child,
   }) = _FlutterOverflowBox;
 
   OverflowBox _buildWidget(ZacContext zacContext) {
     return OverflowBox(
-      key: key?.buildOrNull(zacContext),
-      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
-      minWidth: minWidth?.buildOrNull(zacContext),
-      maxWidth: maxWidth?.buildOrNull(zacContext),
-      minHeight: minHeight?.buildOrNull(zacContext),
-      maxHeight: maxHeight?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      minWidth: minWidth?.build(zacContext),
+      maxWidth: maxWidth?.build(zacContext),
+      minHeight: minHeight?.build(zacContext),
+      maxHeight: maxHeight?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

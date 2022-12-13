@@ -421,7 +421,7 @@ class SharedValueProviderBuilder
 
   SharedValueProvider _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: _childBuilder,

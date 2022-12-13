@@ -43,47 +43,45 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
     FlutterWidget? bottomNavigationBar,
     FlutterWidget? bottomSheet,
     FlutterColor? backgroundColor,
-    ZacValue<bool>? resizeToAvoidBottomInset,
-    ZacValue<bool>? primary,
+    ZacValue<bool?>? resizeToAvoidBottomInset,
+    ZacValue<bool?>? primary,
     // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-    ZacValue<bool>? extendBody,
-    ZacValue<bool>? extendBodyBehindAppBar,
+    ZacValue<bool?>? extendBody,
+    ZacValue<bool?>? extendBodyBehindAppBar,
     FlutterColor? drawerScrimColor,
-    ZacValue<double>? drawerEdgeDragWidth,
-    ZacValue<bool>? drawerEnableOpenDragGesture,
-    ZacValue<bool>? endDrawerEnableOpenDragGesture,
-    ZacValue<String>? restorationId,
+    ZacValue<double?>? drawerEdgeDragWidth,
+    ZacValue<bool?>? drawerEnableOpenDragGesture,
+    ZacValue<bool?>? endDrawerEnableOpenDragGesture,
+    ZacValue<String?>? restorationId,
   }) = _FlutterScaffold;
 
   Scaffold _buildWidget(ZacContext zacContext) {
     return map(
       (value) => Scaffold(
-        key: value.key?.buildOrNull(zacContext),
-        body: value.body?.buildOrNull(zacContext),
-        floatingActionButton:
-            value.floatingActionButton?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        body: value.body?.build(zacContext),
+        floatingActionButton: value.floatingActionButton?.build(zacContext),
         persistentFooterButtons:
-            value.persistentFooterButtons?.buildOrNull(zacContext),
-        appBar: value.appBar?.buildOrNull(zacContext) as PreferredSizeWidget?,
-        drawer: value.drawer?.buildOrNull(zacContext),
-        endDrawer: value.endDrawer?.buildOrNull(zacContext),
-        bottomNavigationBar: value.bottomNavigationBar?.buildOrNull(zacContext),
-        bottomSheet: value.bottomSheet?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
+            value.persistentFooterButtons?.build(zacContext),
+        appBar: value.appBar?.build(zacContext) as PreferredSizeWidget?,
+        drawer: value.drawer?.build(zacContext),
+        endDrawer: value.endDrawer?.build(zacContext),
+        bottomNavigationBar: value.bottomNavigationBar?.build(zacContext),
+        bottomSheet: value.bottomSheet?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
         resizeToAvoidBottomInset:
-            value.resizeToAvoidBottomInset?.buildOrNull(zacContext),
-        primary: value.primary?.buildOrNull(zacContext) ?? true,
-        extendBody: value.extendBody?.buildOrNull(zacContext) ?? false,
+            value.resizeToAvoidBottomInset?.build(zacContext),
+        primary: value.primary?.build(zacContext) ?? true,
+        extendBody: value.extendBody?.build(zacContext) ?? false,
         extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.buildOrNull(zacContext) ?? false,
-        drawerScrimColor: value.drawerScrimColor?.buildOrNull(zacContext),
-        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.buildOrNull(zacContext),
+            value.extendBodyBehindAppBar?.build(zacContext) ?? false,
+        drawerScrimColor: value.drawerScrimColor?.build(zacContext),
+        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.build(zacContext),
         drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.buildOrNull(zacContext) ?? true,
+            value.drawerEnableOpenDragGesture?.build(zacContext) ?? true,
         endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.buildOrNull(zacContext) ??
-                true,
-        restorationId: value.restorationId?.buildOrNull(zacContext),
+            value.endDrawerEnableOpenDragGesture?.build(zacContext) ?? true,
+        restorationId: value.restorationId?.build(zacContext),
       ),
     );
   }
@@ -134,11 +132,11 @@ class FlutterScaffoldActions
   factory FlutterScaffoldActions.showBottomSheet(
     FlutterWidget child, {
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     FlutterShapeBorder? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
-    ZacValue<bool>? enableDrag,
+    ZacValue<bool?>? enableDrag,
 // AnimationController? transitionAnimationController,
   }) = _FlutterScaffoldActionsShowBottomSheet;
 
@@ -150,14 +148,14 @@ class FlutterScaffoldActions
         if (null == state) return;
         state.showBottomSheet<void>(
           (_) => FlutterBuilder(child: value.child).build(zacContext),
-          backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-          clipBehavior: value.clipBehavior?.buildOrNull(zacContext),
-          constraints: value.constraints?.buildOrNull(zacContext),
-          elevation: value.elevation?.buildOrNull(zacContext,
+          backgroundColor: value.backgroundColor?.build(zacContext),
+          clipBehavior: value.clipBehavior?.build(zacContext),
+          constraints: value.constraints?.build(zacContext),
+          elevation: value.elevation?.build(zacContext,
               onConsume:
                   const ZacBuilderConsume(type: SharedValueConsumeType.read())),
-          shape: value.shape?.buildOrNull(zacContext),
-          enableDrag: value.enableDrag?.buildOrNull(zacContext),
+          shape: value.shape?.build(zacContext),
+          enableDrag: value.enableDrag?.build(zacContext),
           // transitionAnimationController:
         );
       },
@@ -307,10 +305,10 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
     FlutterKey? key,
     required FlutterWidget content,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,
-    ZacValue<double>? width,
+    ZacValue<double?>? width,
     FlutterShapeBorder? shape,
     FlutterSnackBarBehavior? behavior,
     FlutterSnackBarAction? action,
@@ -323,19 +321,19 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   SnackBar _buildWidget(ZacContext zacContext) {
     return SnackBar(
       content: content.build(zacContext),
-      key: key?.buildOrNull(zacContext),
-      action: action?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      action: action?.build(zacContext),
       // animation: key?.toFlutter(context),
-      backgroundColor: backgroundColor?.buildOrNull(zacContext),
-      behavior: behavior?.buildOrNull(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      behavior: behavior?.build(zacContext),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
-      elevation: elevation?.buildOrNull(zacContext),
-      margin: margin?.buildOrNull(zacContext),
+      elevation: elevation?.build(zacContext),
+      margin: margin?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),
-      padding: padding?.buildOrNull(zacContext),
-      shape: shape?.buildOrNull(zacContext),
-      width: width?.buildOrNull(zacContext),
+      padding: padding?.build(zacContext),
+      shape: shape?.build(zacContext),
+      width: width?.build(zacContext),
     );
   }
 
@@ -410,11 +408,11 @@ class FlutterSnackBarAction
 
   SnackBarAction _buildWidget(ZacContext zacContext) {
     return SnackBarAction(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       label: label,
       onPressed: onPressed?.createCb(zacContext) ?? () {},
-      disabledTextColor: disabledTextColor?.buildOrNull(zacContext),
-      textColor: textColor?.buildOrNull(zacContext),
+      disabledTextColor: disabledTextColor?.build(zacContext),
+      textColor: textColor?.build(zacContext),
     );
   }
 
@@ -449,12 +447,12 @@ class FlutterMaterialBanner
     required FlutterWidget content,
     FlutterTextStyle? contentTextStyle,
     required ZacListOfFlutterWidget actions,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     required FlutterWidget? leading,
     FlutterColor? backgroundColor,
     FlutterEdgeInsetsGeometry? padding,
     FlutterEdgeInsetsGeometry? leadingPadding,
-    ZacValue<bool>? forceActionsBelow,
+    ZacValue<bool?>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
     ZacActions? onVisible,
@@ -464,17 +462,17 @@ class FlutterMaterialBanner
     return MaterialBanner(
       content: content.build(zacContext),
       actions: actions.build(zacContext),
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       // animation: ,
-      backgroundColor: backgroundColor?.buildOrNull(zacContext),
-      contentTextStyle: contentTextStyle?.buildOrNull(zacContext),
-      elevation: elevation?.buildOrNull(zacContext),
-      forceActionsBelow: forceActionsBelow?.buildOrNull(zacContext) ?? false,
-      leading: leading?.buildOrNull(zacContext),
-      leadingPadding: leadingPadding?.buildOrNull(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      contentTextStyle: contentTextStyle?.build(zacContext),
+      elevation: elevation?.build(zacContext),
+      forceActionsBelow: forceActionsBelow?.build(zacContext) ?? false,
+      leading: leading?.build(zacContext),
+      leadingPadding: leadingPadding?.build(zacContext),
       onVisible: onVisible?.createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
-      padding: padding?.buildOrNull(zacContext),
+      padding: padding?.build(zacContext),
     );
   }
 

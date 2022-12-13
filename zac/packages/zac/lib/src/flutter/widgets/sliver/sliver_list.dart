@@ -27,7 +27,7 @@ class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
 
   SliverList _buildWidget(ZacContext zacContext) {
     return SliverList(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       delegate: delegate.build(zacContext),
     );
   }

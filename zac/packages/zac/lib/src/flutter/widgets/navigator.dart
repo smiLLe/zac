@@ -41,15 +41,15 @@ class FlutterMaterialPageRoute
   @FreezedUnionValue('f:1:MaterialPageRoute')
   factory FlutterMaterialPageRoute({
     FlutterRouteSettings? settings,
-    ZacValue<bool>? maintainState,
-    ZacValue<bool>? fullscreenDialog,
+    ZacValue<bool?>? maintainState,
+    ZacValue<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
     required FlutterWidget child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
-    ZacValue<String>? nameOfSharedArguments,
+    ZacValue<String?>? nameOfSharedArguments,
   }) = _FlutterMaterialPageRoute;
 
   MaterialPageRoute<Object?> _build(
@@ -65,12 +65,11 @@ class FlutterMaterialPageRoute
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.buildOrNull(zacContext, onConsume: onConsume),
+      settings: settings?.build(zacContext, onConsume: onConsume),
       fullscreenDialog:
-          fullscreenDialog?.buildOrNull(zacContext, onConsume: onConsume) ??
-              false,
+          fullscreenDialog?.build(zacContext, onConsume: onConsume) ?? false,
       maintainState:
-          maintainState?.buildOrNull(zacContext, onConsume: onConsume) ?? true,
+          maintainState?.build(zacContext, onConsume: onConsume) ?? true,
     );
   }
 
@@ -80,7 +79,7 @@ class FlutterMaterialPageRoute
     return _build(
       zacContext,
       onConsume,
-      familyName: nameOfSharedArguments?.buildOrNull(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
     );
@@ -92,7 +91,7 @@ class FlutterMaterialPageRoute
     return _build(
       zacContext,
       onConsume,
-      familyName: nameOfSharedArguments?.buildOrNull(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
     );
@@ -130,19 +129,19 @@ class FlutterPageRouteBuilder
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-    ZacValue<bool>? opaque,
-    ZacValue<bool>? barrierDismissible,
+    ZacValue<bool?>? opaque,
+    ZacValue<bool?>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacValue<String>? barrierLabel,
-    ZacValue<bool>? maintainState,
-    ZacValue<bool>? fullscreenDialog,
+    ZacValue<String?>? barrierLabel,
+    ZacValue<bool?>? maintainState,
+    ZacValue<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
     required FlutterWidget child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
-    ZacValue<String>? nameOfSharedArguments,
+    ZacValue<String?>? nameOfSharedArguments,
   }) = _FlutterPageRouteBuilder;
 
   PageRouteBuilder<Object?> _build(
@@ -158,13 +157,13 @@ class FlutterPageRouteBuilder
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.buildOrNull(zacContext),
-      opaque: opaque?.buildOrNull(zacContext) ?? true,
-      barrierDismissible: barrierDismissible?.buildOrNull(zacContext) ?? false,
-      barrierColor: barrierColor?.buildOrNull(zacContext),
-      barrierLabel: barrierLabel?.buildOrNull(zacContext),
-      maintainState: maintainState?.buildOrNull(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.buildOrNull(zacContext) ?? false,
+      settings: settings?.build(zacContext),
+      opaque: opaque?.build(zacContext) ?? true,
+      barrierDismissible: barrierDismissible?.build(zacContext) ?? false,
+      barrierColor: barrierColor?.build(zacContext),
+      barrierLabel: barrierLabel?.build(zacContext),
+      maintainState: maintainState?.build(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
     );
   }
 
@@ -174,7 +173,7 @@ class FlutterPageRouteBuilder
     return _build(
       zacContext,
       onConsume,
-      familyName: nameOfSharedArguments?.buildOrNull(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
     );
@@ -186,7 +185,7 @@ class FlutterPageRouteBuilder
     return _build(
       zacContext,
       onConsume,
-      familyName: nameOfSharedArguments?.buildOrNull(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
     );
@@ -255,18 +254,18 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
     FlutterKey? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
-    ZacValue<String>? initialRoute,
-    ZacValue<bool>? requestFocus,
+    ZacValue<String?>? initialRoute,
+    ZacValue<bool?>? requestFocus,
   }) = _FlutterNavigator;
 
   Navigator _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.buildOrNull(zacContext),
-        onGenerateRoute: obj.onGenerateRoute?.buildOrNull(zacContext),
-        onUnknownRoute: obj.onUnknownRoute?.buildOrNull(zacContext),
-        initialRoute: obj.initialRoute?.buildOrNull(zacContext),
-        requestFocus: obj.requestFocus?.buildOrNull(zacContext) ?? true,
+        key: obj.key?.build(zacContext),
+        onGenerateRoute: obj.onGenerateRoute?.build(zacContext),
+        onUnknownRoute: obj.onUnknownRoute?.build(zacContext),
+        initialRoute: obj.initialRoute?.build(zacContext),
+        requestFocus: obj.requestFocus?.build(zacContext) ?? true,
       ),
     );
   }
@@ -512,14 +511,14 @@ class FlutterRouteSettings
 
   @FreezedUnionValue('f:1:RouteSettings')
   factory FlutterRouteSettings({
-    ZacValue<String>? name,
-    ZacValue<Object>? arguments,
+    ZacValue<String?>? name,
+    ZacValue<Object?>? arguments,
   }) = _FlutterRouteSettings;
 
   RouteSettings _build(ZacContext zacContext) {
     return RouteSettings(
-      arguments: arguments?.buildOrNull(zacContext),
-      name: name?.buildOrNull(zacContext),
+      arguments: arguments?.build(zacContext),
+      name: name?.build(zacContext),
     );
   }
 

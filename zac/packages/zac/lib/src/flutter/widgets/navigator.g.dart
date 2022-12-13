@@ -15,14 +15,14 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
               json['settings'] as Map<String, dynamic>),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
+          : ZacValue<bool?>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
+          : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
       child: FlutterWidget.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacValue<String>.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
     );
 
 _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
@@ -34,26 +34,26 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
               json['settings'] as Map<String, dynamic>),
       opaque: json['opaque'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['opaque'] as Object),
+          : ZacValue<bool?>.fromJson(json['opaque'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['barrierDismissible'] as Object),
+          : ZacValue<bool?>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
           : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
       barrierLabel: json['barrierLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['barrierLabel'] as Object),
+          : ZacValue<String?>.fromJson(json['barrierLabel'] as Object),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['maintainState'] as Object),
+          : ZacValue<bool?>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['fullscreenDialog'] as Object),
+          : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
       child: FlutterWidget.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacValue<String>.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
     );
 
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
@@ -91,10 +91,10 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
               json['onUnknownRoute'] as Map<String, dynamic>),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacValue<String>.fromJson(json['initialRoute'] as Object),
+          : ZacValue<String?>.fromJson(json['initialRoute'] as Object),
       requestFocus: json['requestFocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['requestFocus'] as Object),
+          : ZacValue<bool?>.fromJson(json['requestFocus'] as Object),
     );
 
 _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
@@ -206,8 +206,8 @@ _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
     _$_FlutterRouteSettings(
       name: json['name'] == null
           ? null
-          : ZacValue<String>.fromJson(json['name'] as Object),
+          : ZacValue<String?>.fromJson(json['name'] as Object),
       arguments: json['arguments'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['arguments'] as Object),
+          : ZacValue<Object?>.fromJson(json['arguments'] as Object),
     );

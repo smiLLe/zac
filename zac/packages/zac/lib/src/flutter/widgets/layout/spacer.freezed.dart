@@ -21,7 +21,7 @@ FlutterSpacer _$FlutterSpacerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterSpacer {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<int>? get flex => throw _privateConstructorUsedError;
+  ZacValue<int?>? get flex => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -41,7 +41,7 @@ class _$_FlutterSpacer extends _FlutterSpacer {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<int>? flex;
+  final ZacValue<int?>? flex;
 
   @override
   String toString() {
@@ -71,7 +71,7 @@ class _$_FlutterSpacer extends _FlutterSpacer {
 }
 
 abstract class _FlutterSpacer extends FlutterSpacer {
-  factory _FlutterSpacer({final FlutterKey? key, final ZacValue<int>? flex}) =
+  factory _FlutterSpacer({final FlutterKey? key, final ZacValue<int?>? flex}) =
       _$_FlutterSpacer;
   _FlutterSpacer._() : super._();
 
@@ -81,5 +81,5 @@ abstract class _FlutterSpacer extends FlutterSpacer {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<int>? get flex;
+  ZacValue<int?>? get flex;
 }

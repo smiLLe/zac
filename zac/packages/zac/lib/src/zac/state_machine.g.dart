@@ -36,7 +36,7 @@ _$_ZacStateMachineProviderBuilder _$$_ZacStateMachineProviderBuilderFromJson(
       child: FlutterWidget.fromJson(json['child'] as Object),
       initialContext: json['initialContext'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['initialContext'] as Object),
+          : ZacValue<Object?>.fromJson(json['initialContext'] as Object),
     );
 
 _$_ZacStateMachineBuildStateBuilder

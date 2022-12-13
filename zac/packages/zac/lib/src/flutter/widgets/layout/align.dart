@@ -25,19 +25,19 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   factory FlutterAlign({
     FlutterKey? key,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<double>? widthFactor,
-    ZacValue<double>? heightFactor,
+    ZacValue<double?>? widthFactor,
+    ZacValue<double?>? heightFactor,
     FlutterWidget? child,
   }) = _FlutterAlign;
 
   Align buildWidget(ZacContext zacContext) {
     return Align(
-      key: key?.buildOrNull(zacContext),
-      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.buildOrNull(zacContext),
-      heightFactor: heightFactor?.buildOrNull(zacContext),
-      // child: child?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      widthFactor: widthFactor?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
+      // child: child?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

@@ -290,7 +290,7 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
   @override
   final ZacValue<double> direction;
   @override
-  final ZacValue<double>? distance;
+  final ZacValue<double?>? distance;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -328,14 +328,14 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
 abstract class _FlutterOffsetFromDirection extends FlutterOffset {
   factory _FlutterOffsetFromDirection(
       {required final ZacValue<double> direction,
-      final ZacValue<double>? distance}) = _$_FlutterOffsetFromDirection;
+      final ZacValue<double?>? distance}) = _$_FlutterOffsetFromDirection;
   _FlutterOffsetFromDirection._() : super._();
 
   factory _FlutterOffsetFromDirection.fromJson(Map<String, dynamic> json) =
       _$_FlutterOffsetFromDirection.fromJson;
 
   ZacValue<double> get direction;
-  ZacValue<double>? get distance;
+  ZacValue<double?>? get distance;
 }
 
 FlutterBlurStyle _$FlutterBlurStyleFromJson(Map<String, dynamic> json) {
@@ -2444,7 +2444,7 @@ class _$_FontFeature extends _FontFeature {
   @override
   final String feature;
   @override
-  final ZacValue<int>? value;
+  final ZacValue<int?>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -2515,7 +2515,7 @@ class _$_FontFeature extends _FontFeature {
 }
 
 abstract class _FontFeature extends FlutterFontFeature {
-  factory _FontFeature(final String feature, [final ZacValue<int>? value]) =
+  factory _FontFeature(final String feature, [final ZacValue<int?>? value]) =
       _$_FontFeature;
   _FontFeature._() : super._();
 
@@ -2523,7 +2523,7 @@ abstract class _FontFeature extends FlutterFontFeature {
       _$_FontFeature.fromJson;
 
   String get feature;
-  ZacValue<int>? get value;
+  ZacValue<int?>? get value;
 }
 
 /// @nodoc
@@ -3577,7 +3577,7 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
       _$$_FontFeatureLocaleAwareFromJson(json);
 
   @override
-  final ZacValue<bool>? enable;
+  final ZacValue<bool?>? enable;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3647,14 +3647,14 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
 }
 
 abstract class _FontFeatureLocaleAware extends FlutterFontFeature {
-  factory _FontFeatureLocaleAware({final ZacValue<bool>? enable}) =
+  factory _FontFeatureLocaleAware({final ZacValue<bool?>? enable}) =
       _$_FontFeatureLocaleAware;
   _FontFeatureLocaleAware._() : super._();
 
   factory _FontFeatureLocaleAware.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureLocaleAware.fromJson;
 
-  ZacValue<bool>? get enable;
+  ZacValue<bool?>? get enable;
 }
 
 /// @nodoc
@@ -3668,7 +3668,7 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
       _$$_FontFeatureNotationalFormsFromJson(json);
 
   @override
-  final ZacValue<int>? value;
+  final ZacValue<int?>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3738,14 +3738,14 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
 }
 
 abstract class _FontFeatureNotationalForms extends FlutterFontFeature {
-  factory _FontFeatureNotationalForms([final ZacValue<int>? value]) =
+  factory _FontFeatureNotationalForms([final ZacValue<int?>? value]) =
       _$_FontFeatureNotationalForms;
   _FontFeatureNotationalForms._() : super._();
 
   factory _FontFeatureNotationalForms.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureNotationalForms.fromJson;
 
-  ZacValue<int>? get value;
+  ZacValue<int?>? get value;
 }
 
 /// @nodoc
@@ -4693,7 +4693,7 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
       _$$_FontFeatureSwashFromJson(json);
 
   @override
-  final ZacValue<int>? value;
+  final ZacValue<int?>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4763,13 +4763,14 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
 }
 
 abstract class _FontFeatureSwash extends FlutterFontFeature {
-  factory _FontFeatureSwash([final ZacValue<int>? value]) = _$_FontFeatureSwash;
+  factory _FontFeatureSwash([final ZacValue<int?>? value]) =
+      _$_FontFeatureSwash;
   _FontFeatureSwash._() : super._();
 
   factory _FontFeatureSwash.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureSwash.fromJson;
 
-  ZacValue<int>? get value;
+  ZacValue<int?>? get value;
 }
 
 /// @nodoc
@@ -5505,9 +5506,9 @@ FlutterTextHeightBehavior _$FlutterTextHeightBehaviorFromJson(
 
 /// @nodoc
 mixin _$FlutterTextHeightBehavior {
-  ZacValue<bool>? get applyHeightToFirstAscent =>
+  ZacValue<bool?>? get applyHeightToFirstAscent =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get applyHeightToLastDescent =>
+  ZacValue<bool?>? get applyHeightToLastDescent =>
       throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
@@ -5532,9 +5533,9 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
       _$$_FlutterTextHeightBehaviorFromJson(json);
 
   @override
-  final ZacValue<bool>? applyHeightToFirstAscent;
+  final ZacValue<bool?>? applyHeightToFirstAscent;
   @override
-  final ZacValue<bool>? applyHeightToLastDescent;
+  final ZacValue<bool?>? applyHeightToLastDescent;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
 
@@ -5574,8 +5575,8 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
 
 abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
   factory _FlutterTextHeightBehavior(
-          {final ZacValue<bool>? applyHeightToFirstAscent,
-          final ZacValue<bool>? applyHeightToLastDescent,
+          {final ZacValue<bool?>? applyHeightToFirstAscent,
+          final ZacValue<bool?>? applyHeightToLastDescent,
           final FlutterTextLeadingDistribution? leadingDistribution}) =
       _$_FlutterTextHeightBehavior;
   _FlutterTextHeightBehavior._() : super._();
@@ -5584,9 +5585,9 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
       _$_FlutterTextHeightBehavior.fromJson;
 
   @override
-  ZacValue<bool>? get applyHeightToFirstAscent;
+  ZacValue<bool?>? get applyHeightToFirstAscent;
   @override
-  ZacValue<bool>? get applyHeightToLastDescent;
+  ZacValue<bool?>? get applyHeightToLastDescent;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
 }
@@ -9134,7 +9135,7 @@ FlutterShadow _$FlutterShadowFromJson(Map<String, dynamic> json) {
 mixin _$FlutterShadow {
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
-  ZacValue<double>? get blurRadius => throw _privateConstructorUsedError;
+  ZacValue<double?>? get blurRadius => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -9157,7 +9158,7 @@ class _$_FlutterShadowShadow extends _FlutterShadowShadow {
   @override
   final FlutterOffset? offset;
   @override
-  final ZacValue<double>? blurRadius;
+  final ZacValue<double?>? blurRadius;
 
   @override
   String toString() {
@@ -9192,7 +9193,7 @@ abstract class _FlutterShadowShadow extends FlutterShadow {
   factory _FlutterShadowShadow(
       {final FlutterColor? color,
       final FlutterOffset? offset,
-      final ZacValue<double>? blurRadius}) = _$_FlutterShadowShadow;
+      final ZacValue<double?>? blurRadius}) = _$_FlutterShadowShadow;
   _FlutterShadowShadow._() : super._();
 
   factory _FlutterShadowShadow.fromJson(Map<String, dynamic> json) =
@@ -9203,5 +9204,5 @@ abstract class _FlutterShadowShadow extends FlutterShadow {
   @override
   FlutterOffset? get offset;
   @override
-  ZacValue<double>? get blurRadius;
+  ZacValue<double?>? get blurRadius;
 }

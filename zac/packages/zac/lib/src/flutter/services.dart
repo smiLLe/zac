@@ -24,28 +24,27 @@ class FlutterSystemUiOverlayStyle
     FlutterColor? systemNavigationBarColor,
     FlutterColor? systemNavigationBarDividerColor,
     FlutterBrightness? systemNavigationBarIconBrightness,
-    ZacValue<bool>? systemNavigationBarContrastEnforced,
+    ZacValue<bool?>? systemNavigationBarContrastEnforced,
     FlutterColor? statusBarColor,
     FlutterBrightness? statusBarBrightness,
     FlutterBrightness? statusBarIconBrightness,
-    ZacValue<bool>? systemStatusBarContrastEnforced,
+    ZacValue<bool?>? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle _build(ZacContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor:
-          systemNavigationBarColor?.buildOrNull(zacContext),
+      systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.buildOrNull(zacContext),
+          systemNavigationBarDividerColor?.build(zacContext),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.buildOrNull(zacContext),
+          systemNavigationBarIconBrightness?.build(zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.buildOrNull(zacContext),
-      statusBarColor: statusBarColor?.buildOrNull(zacContext),
-      statusBarBrightness: statusBarBrightness?.buildOrNull(zacContext),
-      statusBarIconBrightness: statusBarIconBrightness?.buildOrNull(zacContext),
+          systemNavigationBarContrastEnforced?.build(zacContext),
+      statusBarColor: statusBarColor?.build(zacContext),
+      statusBarBrightness: statusBarBrightness?.build(zacContext),
+      statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.buildOrNull(zacContext),
+          systemStatusBarContrastEnforced?.build(zacContext),
     );
   }
 

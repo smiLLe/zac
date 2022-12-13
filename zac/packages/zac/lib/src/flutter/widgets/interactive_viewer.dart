@@ -29,37 +29,36 @@ class FlutterInteractiveViewer
     FlutterKey? key,
     required FlutterWidget child,
     FlutterClip? clipBehavior,
-    ZacValue<bool>? alignPanAxis,
+    ZacValue<bool?>? alignPanAxis,
     FlutterEdgeInsets? boundaryMargin,
-    ZacValue<bool>? constrained,
-    ZacValue<double>? maxScale,
-    ZacValue<double>? minScale,
+    ZacValue<bool?>? constrained,
+    ZacValue<double?>? maxScale,
+    ZacValue<double?>? minScale,
     ZacActions? onInteractionEnd,
     ZacActions? onInteractionStart,
     ZacActions? onInteractionUpdate,
-    ZacValue<bool>? panEnabled,
-    ZacValue<bool>? scaleEnabled,
+    ZacValue<bool?>? panEnabled,
+    ZacValue<bool?>? scaleEnabled,
 // TransformationController? transformationController,
   }) = _FlutterInteractiveViewer;
 
   InteractiveViewer _buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
-      key: key?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.buildOrNull(zacContext) ?? false,
-      boundaryMargin:
-          boundaryMargin?.buildOrNull(zacContext) ?? EdgeInsets.zero,
-      constrained: constrained?.buildOrNull(zacContext) ?? true,
-      maxScale: maxScale?.buildOrNull(zacContext) ?? 2.5,
-      minScale: minScale?.buildOrNull(zacContext) ?? 0.8,
+      key: key?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.build(zacContext) ?? false,
+      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.build(zacContext) ?? true,
+      maxScale: maxScale?.build(zacContext) ?? 2.5,
+      minScale: minScale?.build(zacContext) ?? 0.8,
       onInteractionEnd:
           onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart:
           onInteractionStart?.createCbParam1<ScaleStartDetails>(zacContext),
       onInteractionUpdate:
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
-      panEnabled: panEnabled?.buildOrNull(zacContext) ?? true,
-      scaleEnabled: scaleEnabled?.buildOrNull(zacContext) ?? true,
+      panEnabled: panEnabled?.build(zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
       child: child.build(zacContext),
       // transformationController: key?.toFlutter(context),
     );

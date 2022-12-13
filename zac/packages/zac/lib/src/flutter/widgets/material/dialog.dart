@@ -23,7 +23,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   factory FlutterDialogs.dialog({
     FlutterKey? key,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
     FlutterEdgeInsets? insetPadding,
@@ -46,16 +46,16 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterEdgeInsetsGeometry? actionsPadding,
     FlutterMainAxisAlignment? actionsAlignment,
     FlutterVerticalDirection? actionsOverflowDirection,
-    ZacValue<double>? actionsOverflowButtonSpacing,
+    ZacValue<double?>? actionsOverflowButtonSpacing,
     FlutterEdgeInsetsGeometry? buttonPadding,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
-    ZacValue<String>? semanticLabel,
+    ZacValue<double?>? elevation,
+    ZacValue<String?>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<bool>? scrollable,
+    ZacValue<bool?>? scrollable,
   }) = _FlutterDialogsAlertDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
@@ -67,8 +67,8 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
     FlutterColor? backgroundColor,
-    ZacValue<double>? elevation,
-    ZacValue<String>? semanticLabel,
+    ZacValue<double?>? elevation,
+    ZacValue<String?>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
@@ -86,68 +86,68 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   Widget _buildWidget(ZacContext zacContext) {
     return map(
       dialog: (value) => Dialog(
-        key: value.key?.buildOrNull(zacContext),
-        alignment: value.alignment?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-        clipBehavior: value.clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-        elevation: value.elevation?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        alignment: value.alignment?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        elevation: value.elevation?.build(zacContext),
         // insetAnimationCurve: value.insetAnimationCurve?.toFlutter(context),
         // insetAnimationDuration: value.insetAnimationDuration?.toFlutter(context),
-        insetPadding: value.insetPadding?.buildOrNull(zacContext),
-        shape: value.shape?.buildOrNull(zacContext),
-        child: value.child?.buildOrNull(zacContext),
+        insetPadding: value.insetPadding?.build(zacContext),
+        shape: value.shape?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
       alertDialog: (value) => AlertDialog(
-        key: value.key?.buildOrNull(zacContext),
-        title: value.title?.buildOrNull(zacContext),
-        content: value.content?.buildOrNull(zacContext),
-        actions: value.actions?.buildOrNull(zacContext) ?? const <Widget>[],
-        actionsAlignment: value.actionsAlignment?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        title: value.title?.build(zacContext),
+        content: value.content?.build(zacContext),
+        actions: value.actions?.build(zacContext) ?? const <Widget>[],
+        actionsAlignment: value.actionsAlignment?.build(zacContext),
         actionsOverflowButtonSpacing:
-            value.actionsOverflowButtonSpacing?.buildOrNull(zacContext),
+            value.actionsOverflowButtonSpacing?.build(zacContext),
         actionsOverflowDirection:
-            value.actionsOverflowDirection?.buildOrNull(zacContext),
+            value.actionsOverflowDirection?.build(zacContext),
         actionsPadding:
-            value.actionsPadding?.buildOrNull(zacContext) ?? EdgeInsets.zero,
-        alignment: value.alignment?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-        buttonPadding: value.buttonPadding?.buildOrNull(zacContext),
-        clipBehavior: value.clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-        contentPadding: value.contentPadding?.buildOrNull(zacContext) ??
+            value.actionsPadding?.build(zacContext) ?? EdgeInsets.zero,
+        alignment: value.alignment?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        buttonPadding: value.buttonPadding?.build(zacContext),
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        contentPadding: value.contentPadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
-        contentTextStyle: value.contentTextStyle?.buildOrNull(zacContext),
-        elevation: value.elevation?.buildOrNull(zacContext),
-        insetPadding: value.insetPadding?.buildOrNull(zacContext) ??
+        contentTextStyle: value.contentTextStyle?.build(zacContext),
+        elevation: value.elevation?.build(zacContext),
+        insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        scrollable: value.scrollable?.buildOrNull(zacContext) ?? false,
-        semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
-        shape: value.shape?.buildOrNull(zacContext),
-        titlePadding: value.titlePadding?.buildOrNull(zacContext),
-        titleTextStyle: value.titleTextStyle?.buildOrNull(zacContext),
+        scrollable: value.scrollable?.build(zacContext) ?? false,
+        semanticLabel: value.semanticLabel?.build(zacContext),
+        shape: value.shape?.build(zacContext),
+        titlePadding: value.titlePadding?.build(zacContext),
+        titleTextStyle: value.titleTextStyle?.build(zacContext),
       ),
       simpleDialog: (value) => SimpleDialog(
-        key: value.key?.buildOrNull(zacContext),
-        title: value.title?.buildOrNull(zacContext),
-        alignment: value.alignment?.buildOrNull(zacContext),
-        backgroundColor: value.backgroundColor?.buildOrNull(zacContext),
-        clipBehavior: value.clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-        contentPadding: value.contentPadding?.buildOrNull(zacContext) ??
+        key: value.key?.build(zacContext),
+        title: value.title?.build(zacContext),
+        alignment: value.alignment?.build(zacContext),
+        backgroundColor: value.backgroundColor?.build(zacContext),
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        contentPadding: value.contentPadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-        elevation: value.elevation?.buildOrNull(zacContext),
-        insetPadding: value.insetPadding?.buildOrNull(zacContext) ??
+        elevation: value.elevation?.build(zacContext),
+        insetPadding: value.insetPadding?.build(zacContext) ??
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-        semanticLabel: value.semanticLabel?.buildOrNull(zacContext),
-        shape: value.shape?.buildOrNull(zacContext),
-        titlePadding: value.titlePadding?.buildOrNull(zacContext) ??
+        semanticLabel: value.semanticLabel?.build(zacContext),
+        shape: value.shape?.build(zacContext),
+        titlePadding: value.titlePadding?.build(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
-        titleTextStyle: value.titleTextStyle?.buildOrNull(zacContext),
-        children: value.children?.buildOrNull(zacContext) ?? const <Widget>[],
+        titleTextStyle: value.titleTextStyle?.build(zacContext),
+        children: value.children?.build(zacContext) ?? const <Widget>[],
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
-        key: value.key?.buildOrNull(zacContext),
-        padding: value.padding?.buildOrNull(zacContext),
+        key: value.key?.build(zacContext),
+        padding: value.padding?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
-        child: value.child?.buildOrNull(zacContext),
+        child: value.child?.build(zacContext),
       ),
     );
   }
@@ -172,11 +172,11 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   @FreezedUnionValue(FlutterDialogActions.unionValue)
   factory FlutterDialogActions.showDialog({
     required FlutterWidget child,
-    ZacValue<bool>? barrierDismissible,
+    ZacValue<bool?>? barrierDismissible,
     FlutterColor? barrierColor,
-    ZacValue<String>? barrierLabel,
-    ZacValue<bool>? useSafeArea,
-    ZacValue<bool>? useRootNavigator,
+    ZacValue<String?>? barrierLabel,
+    ZacValue<bool?>? useSafeArea,
+    ZacValue<bool?>? useRootNavigator,
     FlutterRouteSettings? routeSettings,
   }) = _FlutterDialogActionsShowDialog;
 
@@ -186,27 +186,27 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
       showDialog: (value) => showDialog<ZacActions?>(
         context: zacContext.context,
         builder: (_) => FlutterBuilder(child: value.child).build(zacContext),
-        routeSettings: value.routeSettings?.buildOrNull(zacContext),
-        barrierDismissible: value.barrierDismissible?.buildOrNull(
+        routeSettings: value.routeSettings?.build(zacContext),
+        barrierDismissible: value.barrierDismissible?.build(
               zacContext,
               onConsume:
                   const ZacBuilderConsume(type: SharedValueConsumeType.read()),
             ) ??
             true,
-        barrierColor: value.barrierColor?.buildOrNull(zacContext),
-        barrierLabel: value.barrierLabel?.buildOrNull(
+        barrierColor: value.barrierColor?.build(zacContext),
+        barrierLabel: value.barrierLabel?.build(
           zacContext,
           onConsume: const ZacBuilderConsume(
             type: SharedValueConsumeType.read(),
           ),
         ),
-        useSafeArea: value.useSafeArea?.buildOrNull(
+        useSafeArea: value.useSafeArea?.build(
               zacContext,
               onConsume:
                   const ZacBuilderConsume(type: SharedValueConsumeType.read()),
             ) ??
             true,
-        useRootNavigator: value.useRootNavigator?.buildOrNull(
+        useRootNavigator: value.useRootNavigator?.build(
               zacContext,
               onConsume:
                   const ZacBuilderConsume(type: SharedValueConsumeType.read()),

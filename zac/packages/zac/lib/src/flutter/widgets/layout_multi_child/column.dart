@@ -37,17 +37,17 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
 
   Column _buildWidget(ZacContext zacContext) {
     return Column(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       mainAxisAlignment:
-          mainAxisAlignment?.buildOrNull(zacContext) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.buildOrNull(zacContext) ?? MainAxisSize.max,
-      crossAxisAlignment: crossAxisAlignment?.buildOrNull(zacContext) ??
-          CrossAxisAlignment.center,
-      textDirection: textDirection?.buildOrNull(zacContext),
+          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
+      crossAxisAlignment:
+          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.buildOrNull(zacContext) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.buildOrNull(zacContext),
-      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(zacContext),
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

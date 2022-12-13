@@ -27,7 +27,7 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
       systemNavigationBarContrastEnforced:
           json['systemNavigationBarContrastEnforced'] == null
               ? null
-              : ZacValue<bool>.fromJson(
+              : ZacValue<bool?>.fromJson(
                   json['systemNavigationBarContrastEnforced'] as Object),
       statusBarColor: json['statusBarColor'] == null
           ? null
@@ -44,7 +44,7 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
       systemStatusBarContrastEnforced:
           json['systemStatusBarContrastEnforced'] == null
               ? null
-              : ZacValue<bool>.fromJson(
+              : ZacValue<bool?>.fromJson(
                   json['systemStatusBarContrastEnforced'] as Object),
     );
 

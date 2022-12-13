@@ -17,16 +17,16 @@ _$_FlutterOverflowBox _$$_FlutterOverflowBoxFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       minWidth: json['minWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minWidth'] as Object),
+          : ZacValue<double?>.fromJson(json['minWidth'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxWidth'] as Object),
+          : ZacValue<double?>.fromJson(json['maxWidth'] as Object),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['minHeight'] as Object),
+          : ZacValue<double?>.fromJson(json['minHeight'] as Object),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['maxHeight'] as Object),
+          : ZacValue<double?>.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
           : FlutterWidget.fromJson(json['child'] as Object),

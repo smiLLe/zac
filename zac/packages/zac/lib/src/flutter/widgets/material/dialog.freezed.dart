@@ -70,7 +70,7 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacValue<double>? elevation;
+  final ZacValue<double?>? elevation;
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
   @override
@@ -134,7 +134,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
   factory _FlutterDialogsDialog(
       {final FlutterKey? key,
       final FlutterColor? backgroundColor,
-      final ZacValue<double>? elevation,
+      final ZacValue<double?>? elevation,
       final FlutterEdgeInsets? insetPadding,
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
@@ -148,7 +148,7 @@ abstract class _FlutterDialogsDialog extends FlutterDialogs {
   @override
   FlutterKey? get key;
   FlutterColor? get backgroundColor;
-  ZacValue<double>?
+  ZacValue<double?>?
       get elevation; // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
   FlutterEdgeInsets? get insetPadding;
@@ -213,15 +213,15 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterVerticalDirection? actionsOverflowDirection;
   @override
-  final ZacValue<double>? actionsOverflowButtonSpacing;
+  final ZacValue<double?>? actionsOverflowButtonSpacing;
   @override
   final FlutterEdgeInsetsGeometry? buttonPadding;
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacValue<double>? elevation;
+  final ZacValue<double?>? elevation;
   @override
-  final ZacValue<String>? semanticLabel;
+  final ZacValue<String?>? semanticLabel;
   @override
   final FlutterEdgeInsets? insetPadding;
   @override
@@ -231,7 +231,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
-  final ZacValue<bool>? scrollable;
+  final ZacValue<bool?>? scrollable;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -341,16 +341,16 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       final FlutterEdgeInsetsGeometry? actionsPadding,
       final FlutterMainAxisAlignment? actionsAlignment,
       final FlutterVerticalDirection? actionsOverflowDirection,
-      final ZacValue<double>? actionsOverflowButtonSpacing,
+      final ZacValue<double?>? actionsOverflowButtonSpacing,
       final FlutterEdgeInsetsGeometry? buttonPadding,
       final FlutterColor? backgroundColor,
-      final ZacValue<double>? elevation,
-      final ZacValue<String>? semanticLabel,
+      final ZacValue<double?>? elevation,
+      final ZacValue<String?>? semanticLabel,
       final FlutterEdgeInsets? insetPadding,
       final FlutterClip? clipBehavior,
       final FlutterShapeBorder? shape,
       final FlutterAlignmentGeometry? alignment,
-      final ZacValue<bool>? scrollable}) = _$_FlutterDialogsAlertDialog;
+      final ZacValue<bool?>? scrollable}) = _$_FlutterDialogsAlertDialog;
   _FlutterDialogsAlertDialog._() : super._();
 
   factory _FlutterDialogsAlertDialog.fromJson(Map<String, dynamic> json) =
@@ -368,16 +368,16 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterEdgeInsetsGeometry? get actionsPadding;
   FlutterMainAxisAlignment? get actionsAlignment;
   FlutterVerticalDirection? get actionsOverflowDirection;
-  ZacValue<double>? get actionsOverflowButtonSpacing;
+  ZacValue<double?>? get actionsOverflowButtonSpacing;
   FlutterEdgeInsetsGeometry? get buttonPadding;
   FlutterColor? get backgroundColor;
-  ZacValue<double>? get elevation;
-  ZacValue<String>? get semanticLabel;
+  ZacValue<double?>? get elevation;
+  ZacValue<String?>? get semanticLabel;
   FlutterEdgeInsets? get insetPadding;
   FlutterClip? get clipBehavior;
   FlutterShapeBorder? get shape;
   FlutterAlignmentGeometry? get alignment;
-  ZacValue<bool>? get scrollable;
+  ZacValue<bool?>? get scrollable;
 }
 
 /// @nodoc
@@ -419,9 +419,9 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterColor? backgroundColor;
   @override
-  final ZacValue<double>? elevation;
+  final ZacValue<double?>? elevation;
   @override
-  final ZacValue<String>? semanticLabel;
+  final ZacValue<String?>? semanticLabel;
   @override
   final FlutterEdgeInsets? insetPadding;
   @override
@@ -509,8 +509,8 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
           final FlutterTextStyle? titleTextStyle,
           final FlutterEdgeInsetsGeometry? contentPadding,
           final FlutterColor? backgroundColor,
-          final ZacValue<double>? elevation,
-          final ZacValue<String>? semanticLabel,
+          final ZacValue<double?>? elevation,
+          final ZacValue<String?>? semanticLabel,
           final FlutterEdgeInsets? insetPadding,
           final FlutterClip? clipBehavior,
           final FlutterShapeBorder? shape,
@@ -529,8 +529,8 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;
   FlutterColor? get backgroundColor;
-  ZacValue<double>? get elevation;
-  ZacValue<String>? get semanticLabel;
+  ZacValue<double?>? get elevation;
+  ZacValue<String?>? get semanticLabel;
   FlutterEdgeInsets? get insetPadding;
   FlutterClip? get clipBehavior;
   FlutterShapeBorder? get shape;
@@ -621,11 +621,11 @@ FlutterDialogActions _$FlutterDialogActionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterDialogActions {
   FlutterWidget get child => throw _privateConstructorUsedError;
-  ZacValue<bool>? get barrierDismissible => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get barrierDismissible => throw _privateConstructorUsedError;
   FlutterColor? get barrierColor => throw _privateConstructorUsedError;
-  ZacValue<String>? get barrierLabel => throw _privateConstructorUsedError;
-  ZacValue<bool>? get useSafeArea => throw _privateConstructorUsedError;
-  ZacValue<bool>? get useRootNavigator => throw _privateConstructorUsedError;
+  ZacValue<String?>? get barrierLabel => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get useSafeArea => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get useRootNavigator => throw _privateConstructorUsedError;
   FlutterRouteSettings? get routeSettings => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -656,15 +656,15 @@ class _$_FlutterDialogActionsShowDialog
   @override
   final FlutterWidget child;
   @override
-  final ZacValue<bool>? barrierDismissible;
+  final ZacValue<bool?>? barrierDismissible;
   @override
   final FlutterColor? barrierColor;
   @override
-  final ZacValue<String>? barrierLabel;
+  final ZacValue<String?>? barrierLabel;
   @override
-  final ZacValue<bool>? useSafeArea;
+  final ZacValue<bool?>? useSafeArea;
   @override
-  final ZacValue<bool>? useRootNavigator;
+  final ZacValue<bool?>? useRootNavigator;
   @override
   final FlutterRouteSettings? routeSettings;
 
@@ -710,11 +710,11 @@ class _$_FlutterDialogActionsShowDialog
 abstract class _FlutterDialogActionsShowDialog extends FlutterDialogActions {
   factory _FlutterDialogActionsShowDialog(
           {required final FlutterWidget child,
-          final ZacValue<bool>? barrierDismissible,
+          final ZacValue<bool?>? barrierDismissible,
           final FlutterColor? barrierColor,
-          final ZacValue<String>? barrierLabel,
-          final ZacValue<bool>? useSafeArea,
-          final ZacValue<bool>? useRootNavigator,
+          final ZacValue<String?>? barrierLabel,
+          final ZacValue<bool?>? useSafeArea,
+          final ZacValue<bool?>? useRootNavigator,
           final FlutterRouteSettings? routeSettings}) =
       _$_FlutterDialogActionsShowDialog;
   _FlutterDialogActionsShowDialog._() : super._();
@@ -725,15 +725,15 @@ abstract class _FlutterDialogActionsShowDialog extends FlutterDialogActions {
   @override
   FlutterWidget get child;
   @override
-  ZacValue<bool>? get barrierDismissible;
+  ZacValue<bool?>? get barrierDismissible;
   @override
   FlutterColor? get barrierColor;
   @override
-  ZacValue<String>? get barrierLabel;
+  ZacValue<String?>? get barrierLabel;
   @override
-  ZacValue<bool>? get useSafeArea;
+  ZacValue<bool?>? get useSafeArea;
   @override
-  ZacValue<bool>? get useRootNavigator;
+  ZacValue<bool?>? get useRootNavigator;
   @override
   FlutterRouteSettings? get routeSettings;
 }

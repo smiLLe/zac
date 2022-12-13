@@ -35,13 +35,12 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
 
   Stack _buildWidget(ZacContext zacContext) {
     return Stack(
-      key: key?.buildOrNull(zacContext),
-      alignment:
-          alignment?.buildOrNull(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.buildOrNull(zacContext),
-      fit: fit?.buildOrNull(zacContext) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.hardEdge,
-      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(zacContext),
+      fit: fit?.build(zacContext) ?? StackFit.loose,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

@@ -265,11 +265,13 @@ void main() {
     test('<num>', () {
       expect(ZacValue<num>.fromJson(5), ZacValue<num>(5));
       expect(ZacValue<num>.fromJson(5.1), ZacValue<num>(5.1));
+      expect(ZacValue<num?>.fromJson(5), ZacValue<num?>(5));
       expect(() => ZacValue<num>.fromJson(''), _throwsOnInvalidData<num>());
     });
 
     test('<int>', () {
       expect(ZacValue<int>.fromJson(5), ZacValue<int>(5));
+      expect(ZacValue<int?>.fromJson(5), ZacValue<int?>(5));
       expect(ZacValue<int>.fromJson(5.1), ZacValue<int>(5));
       expect(() => ZacValue<int>.fromJson(''), _throwsOnInvalidData<int>());
     });
@@ -277,18 +279,21 @@ void main() {
     test('<double>', () {
       expect(ZacValue<double>.fromJson(5), ZacValue<double>(5.0));
       expect(ZacValue<double>.fromJson(5.1), ZacValue<double>(5.1));
+      expect(ZacValue<double?>.fromJson(5.1), ZacValue<double?>(5.1));
       expect(
           () => ZacValue<double>.fromJson(''), _throwsOnInvalidData<double>());
     });
 
     test('<String>', () {
       expect(ZacValue<String>.fromJson('foo'), ZacValue<String>('foo'));
+      expect(ZacValue<String?>.fromJson('foo'), ZacValue<String?>('foo'));
       expect(
           () => ZacValue<String>.fromJson(1), _throwsOnInvalidData<String>());
     });
 
     test('<bool>', () {
       expect(ZacValue<bool>.fromJson(false), ZacValue<bool>(false));
+      expect(ZacValue<bool?>.fromJson(false), ZacValue<bool?>(false));
       expect(() => ZacValue<bool>.fromJson(1), _throwsOnInvalidData<bool>());
     });
 

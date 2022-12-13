@@ -32,15 +32,15 @@ class FlutterRefreshIndicator
   factory FlutterRefreshIndicator({
     FlutterKey? key,
     required FlutterWidget child,
-    ZacValue<double>? displacement,
-    ZacValue<double>? edgeOffset,
+    ZacValue<double?>? displacement,
+    ZacValue<double?>? edgeOffset,
     required ZacActions onRefresh,
     FlutterColor? color,
     FlutterColor? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-    ZacValue<String>? semanticsLabel,
-    ZacValue<String>? semanticsValue,
-    ZacValue<double>? strokeWidth,
+    ZacValue<String?>? semanticsLabel,
+    ZacValue<String?>? semanticsValue,
+    ZacValue<double?>? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
     DartCompleterVoid? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
@@ -59,16 +59,16 @@ class FlutterRefreshIndicator
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
-      displacement: displacement?.buildOrNull(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.buildOrNull(zacContext) ?? 0.0,
-      color: color?.buildOrNull(zacContext),
-      backgroundColor: backgroundColor?.buildOrNull(zacContext),
-      semanticsLabel: semanticsLabel?.buildOrNull(zacContext),
-      semanticsValue: semanticsValue?.buildOrNull(zacContext),
-      strokeWidth: strokeWidth?.buildOrNull(zacContext) ??
+      displacement: displacement?.build(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.build(zacContext) ?? 0.0,
+      color: color?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      semanticsLabel: semanticsLabel?.build(zacContext),
+      semanticsValue: semanticsValue?.build(zacContext),
+      strokeWidth: strokeWidth?.build(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
-      triggerMode: triggerMode?.buildOrNull(zacContext) ??
-          RefreshIndicatorTriggerMode.onEdge,
+      triggerMode:
+          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
       child: child.build(zacContext),
     );
   }

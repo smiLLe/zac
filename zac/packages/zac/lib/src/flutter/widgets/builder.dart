@@ -30,7 +30,7 @@ class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
 
   Builder _buildWidget(ZacContext zacContext) {
     return Builder(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       builder: (_) {
         return ZacUpdateContext(
           builder: _builder,

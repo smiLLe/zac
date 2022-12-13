@@ -29,9 +29,9 @@ class FlutterPadding with _$FlutterPadding implements FlutterWidget {
 
   Padding _buildWidget(ZacContext zacContext) {
     return Padding(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       padding: padding.build(zacContext),
-      child: child?.buildOrNull(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

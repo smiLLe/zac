@@ -34,13 +34,13 @@ FlutterSliverChildDelegate _$FlutterSliverChildDelegateFromJson(
 /// @nodoc
 mixin _$FlutterSliverChildDelegate {
   ZacListOfFlutterWidget get children => throw _privateConstructorUsedError;
-  ZacValue<bool>? get addAutomaticKeepAlives =>
+  ZacValue<bool?>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addRepaintBoundaries =>
+  ZacValue<bool?>? get addRepaintBoundaries =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get addSemanticIndexes =>
+  ZacValue<bool?>? get addSemanticIndexes =>
       throw _privateConstructorUsedError; // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset => throw _privateConstructorUsedError;
+  ZacValue<int?>? get semanticIndexOffset => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -71,14 +71,14 @@ class _$_FlutterSliverChildListDelegate
   @override
   final ZacListOfFlutterWidget children;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacValue<bool?>? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacValue<bool?>? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacValue<bool?>? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
-  final ZacValue<int>? semanticIndexOffset;
+  final ZacValue<int?>? semanticIndexOffset;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -124,10 +124,10 @@ class _$_FlutterSliverChildListDelegate
 abstract class _FlutterSliverChildListDelegate
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegate(final ZacListOfFlutterWidget children,
-          {final ZacValue<bool>? addAutomaticKeepAlives,
-          final ZacValue<bool>? addRepaintBoundaries,
-          final ZacValue<bool>? addSemanticIndexes,
-          final ZacValue<int>? semanticIndexOffset}) =
+          {final ZacValue<bool?>? addAutomaticKeepAlives,
+          final ZacValue<bool?>? addRepaintBoundaries,
+          final ZacValue<bool?>? addSemanticIndexes,
+          final ZacValue<int?>? semanticIndexOffset}) =
       _$_FlutterSliverChildListDelegate;
   _FlutterSliverChildListDelegate._() : super._();
 
@@ -137,13 +137,13 @@ abstract class _FlutterSliverChildListDelegate
   @override
   ZacListOfFlutterWidget get children;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacValue<bool?>? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacValue<bool?>? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacValue<bool?>? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset;
+  ZacValue<int?>? get semanticIndexOffset;
 }
 
 /// @nodoc
@@ -166,14 +166,14 @@ class _$_FlutterSliverChildListDelegateFixed
   @override
   final ZacListOfFlutterWidget children;
   @override
-  final ZacValue<bool>? addAutomaticKeepAlives;
+  final ZacValue<bool?>? addAutomaticKeepAlives;
   @override
-  final ZacValue<bool>? addRepaintBoundaries;
+  final ZacValue<bool?>? addRepaintBoundaries;
   @override
-  final ZacValue<bool>? addSemanticIndexes;
+  final ZacValue<bool?>? addSemanticIndexes;
 // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
   @override
-  final ZacValue<int>? semanticIndexOffset;
+  final ZacValue<int?>? semanticIndexOffset;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -220,10 +220,10 @@ abstract class _FlutterSliverChildListDelegateFixed
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegateFixed(
           final ZacListOfFlutterWidget children,
-          {final ZacValue<bool>? addAutomaticKeepAlives,
-          final ZacValue<bool>? addRepaintBoundaries,
-          final ZacValue<bool>? addSemanticIndexes,
-          final ZacValue<int>? semanticIndexOffset}) =
+          {final ZacValue<bool?>? addAutomaticKeepAlives,
+          final ZacValue<bool?>? addRepaintBoundaries,
+          final ZacValue<bool?>? addSemanticIndexes,
+          final ZacValue<int?>? semanticIndexOffset}) =
       _$_FlutterSliverChildListDelegateFixed;
   _FlutterSliverChildListDelegateFixed._() : super._();
 
@@ -234,11 +234,11 @@ abstract class _FlutterSliverChildListDelegateFixed
   @override
   ZacListOfFlutterWidget get children;
   @override
-  ZacValue<bool>? get addAutomaticKeepAlives;
+  ZacValue<bool?>? get addAutomaticKeepAlives;
   @override
-  ZacValue<bool>? get addRepaintBoundaries;
+  ZacValue<bool?>? get addRepaintBoundaries;
   @override
-  ZacValue<bool>? get addSemanticIndexes;
+  ZacValue<bool?>? get addSemanticIndexes;
   @override // SemanticIndexCallback semanticIndexCallback = _kDefaultSemanticIndexCallback,
-  ZacValue<int>? get semanticIndexOffset;
+  ZacValue<int?>? get semanticIndexOffset;
 }

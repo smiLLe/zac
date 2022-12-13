@@ -28,27 +28,27 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   factory FlutterAppBar({
     FlutterKey? key,
     FlutterWidget? leading,
-    ZacValue<bool>? automaticallyImplyLeading,
+    ZacValue<bool?>? automaticallyImplyLeading,
     FlutterWidget? title,
     ZacListOfFlutterWidget? actions,
     FlutterWidget? flexibleSpace,
 // PreferredSizeWidget
     FlutterWidget? bottom,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     FlutterColor? shadowColor,
     FlutterShapeBorder? shape,
     FlutterColor? backgroundColor,
     FlutterColor? foregroundColor,
     FlutterIconThemeData? iconTheme,
     FlutterIconThemeData? actionsIconTheme,
-    ZacValue<bool>? primary,
-    ZacValue<bool>? centerTitle,
-    ZacValue<bool>? excludeHeaderSemantics,
-    ZacValue<double>? titleSpacing,
-    ZacValue<double>? toolbarOpacity,
-    ZacValue<double>? bottomOpacity,
-    ZacValue<double>? toolbarHeight,
-    ZacValue<double>? leadingWidth,
+    ZacValue<bool?>? primary,
+    ZacValue<bool?>? centerTitle,
+    ZacValue<bool?>? excludeHeaderSemantics,
+    ZacValue<double?>? titleSpacing,
+    ZacValue<double?>? toolbarOpacity,
+    ZacValue<double?>? bottomOpacity,
+    ZacValue<double?>? toolbarHeight,
+    ZacValue<double?>? leadingWidth,
     FlutterTextStyle? toolbarTextStyle,
     FlutterTextStyle? titleTextStyle,
     FlutterSystemUiOverlayStyle? systemOverlayStyle,
@@ -56,7 +56,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
 
   AppBar _buildWidget(ZacContext zacContext) {
     assert(() {
-      final w = bottom?.buildOrNull(zacContext);
+      final w = bottom?.build(zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -66,33 +66,33 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     }(), '');
 
     return AppBar(
-      key: key?.buildOrNull(zacContext),
-      leading: leading?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      leading: leading?.build(zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.buildOrNull(zacContext) ?? true,
-      title: title?.buildOrNull(zacContext),
-      actions: actions?.buildOrNull(zacContext) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.buildOrNull(zacContext),
-      bottom: bottom?.buildOrNull(zacContext) as PreferredSizeWidget?,
-      elevation: elevation?.buildOrNull(zacContext),
-      shadowColor: shadowColor?.buildOrNull(zacContext),
-      shape: shape?.buildOrNull(zacContext),
-      backgroundColor: backgroundColor?.buildOrNull(zacContext),
-      foregroundColor: foregroundColor?.buildOrNull(zacContext),
-      iconTheme: iconTheme?.buildOrNull(zacContext),
-      actionsIconTheme: actionsIconTheme?.buildOrNull(zacContext),
-      primary: primary?.buildOrNull(zacContext) ?? true,
-      centerTitle: centerTitle?.buildOrNull(zacContext),
+          automaticallyImplyLeading?.build(zacContext) ?? true,
+      title: title?.build(zacContext),
+      actions: actions?.build(zacContext) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.build(zacContext),
+      bottom: bottom?.build(zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.build(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      foregroundColor: foregroundColor?.build(zacContext),
+      iconTheme: iconTheme?.build(zacContext),
+      actionsIconTheme: actionsIconTheme?.build(zacContext),
+      primary: primary?.build(zacContext) ?? true,
+      centerTitle: centerTitle?.build(zacContext),
       excludeHeaderSemantics:
-          excludeHeaderSemantics?.buildOrNull(zacContext) ?? false,
-      titleSpacing: titleSpacing?.buildOrNull(zacContext),
-      toolbarOpacity: toolbarOpacity?.buildOrNull(zacContext) ?? 1.0,
-      bottomOpacity: bottomOpacity?.buildOrNull(zacContext) ?? 1.0,
-      toolbarHeight: toolbarHeight?.buildOrNull(zacContext),
-      leadingWidth: leadingWidth?.buildOrNull(zacContext),
-      toolbarTextStyle: toolbarTextStyle?.buildOrNull(zacContext),
-      titleTextStyle: titleTextStyle?.buildOrNull(zacContext),
-      systemOverlayStyle: systemOverlayStyle?.buildOrNull(zacContext),
+          excludeHeaderSemantics?.build(zacContext) ?? false,
+      titleSpacing: titleSpacing?.build(zacContext),
+      toolbarOpacity: toolbarOpacity?.build(zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.build(zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.build(zacContext),
+      leadingWidth: leadingWidth?.build(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
+      titleTextStyle: titleTextStyle?.build(zacContext),
+      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
     );
   }
 

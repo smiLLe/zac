@@ -27,9 +27,9 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
 
   RotatedBox _buildWidget(ZacContext zacContext) {
     return RotatedBox(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       quarterTurns: quarterTurns,
-      child: child?.buildOrNull(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

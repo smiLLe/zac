@@ -30,25 +30,25 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['textDirection'] as Map<String, dynamic>),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
-          : ZacValue<double>.fromJson(json['textScaleFactor'] as Object),
+          : ZacValue<double?>.fromJson(json['textScaleFactor'] as Object),
       showCursor: json['showCursor'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['showCursor'] as Object),
+          : ZacValue<bool?>.fromJson(json['showCursor'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['autofocus'] as Object),
+          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       minLines: json['minLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['minLines'] as Object),
+          : ZacValue<int?>.fromJson(json['minLines'] as Object),
       maxLines: json['maxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['maxLines'] as Object),
+          : ZacValue<int?>.fromJson(json['maxLines'] as Object),
       cursorWidth: json['cursorWidth'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorWidth'] as Object),
+          : ZacValue<double?>.fromJson(json['cursorWidth'] as Object),
       cursorHeight: json['cursorHeight'] == null
           ? null
-          : ZacValue<double>.fromJson(json['cursorHeight'] as Object),
+          : ZacValue<double?>.fromJson(json['cursorHeight'] as Object),
       cursorRadius: json['cursorRadius'] == null
           ? null
           : FlutterRadius.fromJson(
@@ -58,11 +58,11 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : FlutterColor.fromJson(json['cursorColor'] as Map<String, dynamic>),
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
-          : ZacValue<bool>.fromJson(
+          : ZacValue<bool?>.fromJson(
               json['enableInteractiveSelection'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticsLabel'] as Object),
+          : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),
       textHeightBehavior: json['textHeightBehavior'] == null
           ? null
           : FlutterTextHeightBehavior.fromJson(

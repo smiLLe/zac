@@ -111,7 +111,7 @@ Future<void>
 
   await tester.pumpWidget(ProviderScope(
     child: ZacWidget(data: LeakContext(cb: (zacContext) {
-      obj = builder.buildOrNull(zacContext);
+      obj = builder.build(zacContext);
     })),
   ));
 
@@ -162,7 +162,7 @@ Future<void> expectConsumedValueFromZacBuilder<Value, SharedValue>({
         family: 'shared',
         child: LeakContext(
           cb: (zacContext) {
-            obj = builder.buildOrNull(zacContext);
+            obj = builder.build(zacContext);
           },
         ),
       ),
@@ -364,7 +364,7 @@ class LeakContext implements FlutterWidget {
 
   Widget _buildWidget(ZacContext zacContext) {
     cb(zacContext);
-    return child?.buildOrNull(zacContext) ?? const SizedBox.shrink();
+    return child?.build(zacContext) ?? const SizedBox.shrink();
   }
 
   @override

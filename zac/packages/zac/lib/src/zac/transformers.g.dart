@@ -46,7 +46,7 @@ _$_MapContainsKey _$$_MapContainsKeyFromJson(Map<String, dynamic> json) =>
     _$_MapContainsKey(
       json['key'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['key'] as Object),
+          : ZacValue<Object?>.fromJson(json['key'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -54,7 +54,7 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
     _$_MapContainsValue(
       json['value'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['value'] as Object),
+          : ZacValue<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -166,7 +166,7 @@ _$_IterableContains _$$_IterableContainsFromJson(Map<String, dynamic> json) =>
     _$_IterableContains(
       json['element'] == null
           ? null
-          : ZacValue<Object>.fromJson(json['element'] as Object),
+          : ZacValue<Object?>.fromJson(json['element'] as Object),
       $type: json['converter'] as String?,
     );
 

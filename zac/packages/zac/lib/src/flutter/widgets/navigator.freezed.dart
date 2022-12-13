@@ -22,15 +22,15 @@ FlutterMaterialPageRoute _$FlutterMaterialPageRouteFromJson(
 /// @nodoc
 mixin _$FlutterMaterialPageRoute {
   FlutterRouteSettings? get settings => throw _privateConstructorUsedError;
-  ZacValue<bool>? get maintainState => throw _privateConstructorUsedError;
-  ZacValue<bool>? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get maintainState => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
   FlutterWidget get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
-  ZacValue<String>? get nameOfSharedArguments =>
+  ZacValue<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -57,9 +57,9 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
   @override
   final FlutterRouteSettings? settings;
   @override
-  final ZacValue<bool>? maintainState;
+  final ZacValue<bool?>? maintainState;
   @override
-  final ZacValue<bool>? fullscreenDialog;
+  final ZacValue<bool?>? fullscreenDialog;
 
   /// Used instead of WidgetBuilder builder
   @override
@@ -68,7 +68,7 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
   @override
-  final ZacValue<String>? nameOfSharedArguments;
+  final ZacValue<String?>? nameOfSharedArguments;
 
   @override
   String toString() {
@@ -108,10 +108,10 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
 abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   factory _FlutterMaterialPageRoute(
           {final FlutterRouteSettings? settings,
-          final ZacValue<bool>? maintainState,
-          final ZacValue<bool>? fullscreenDialog,
+          final ZacValue<bool?>? maintainState,
+          final ZacValue<bool?>? fullscreenDialog,
           required final FlutterWidget child,
-          final ZacValue<String>? nameOfSharedArguments}) =
+          final ZacValue<String?>? nameOfSharedArguments}) =
       _$_FlutterMaterialPageRoute;
   _FlutterMaterialPageRoute._() : super._();
 
@@ -121,9 +121,9 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   @override
   FlutterRouteSettings? get settings;
   @override
-  ZacValue<bool>? get maintainState;
+  ZacValue<bool?>? get maintainState;
   @override
-  ZacValue<bool>? get fullscreenDialog;
+  ZacValue<bool?>? get fullscreenDialog;
   @override
 
   /// Used instead of WidgetBuilder builder
@@ -132,7 +132,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
-  ZacValue<String>? get nameOfSharedArguments;
+  ZacValue<String?>? get nameOfSharedArguments;
 }
 
 FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
@@ -146,19 +146,19 @@ mixin _$FlutterPageRouteBuilder {
       throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacValue<bool>? get opaque => throw _privateConstructorUsedError;
-  ZacValue<bool>? get barrierDismissible => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get opaque => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get barrierDismissible => throw _privateConstructorUsedError;
   FlutterColor? get barrierColor => throw _privateConstructorUsedError;
-  ZacValue<String>? get barrierLabel => throw _privateConstructorUsedError;
-  ZacValue<bool>? get maintainState => throw _privateConstructorUsedError;
-  ZacValue<bool>? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacValue<String?>? get barrierLabel => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get maintainState => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
   FlutterWidget get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
-  ZacValue<String>? get nameOfSharedArguments =>
+  ZacValue<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -192,17 +192,17 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
   @override
-  final ZacValue<bool>? opaque;
+  final ZacValue<bool?>? opaque;
   @override
-  final ZacValue<bool>? barrierDismissible;
+  final ZacValue<bool?>? barrierDismissible;
   @override
   final FlutterColor? barrierColor;
   @override
-  final ZacValue<String>? barrierLabel;
+  final ZacValue<String?>? barrierLabel;
   @override
-  final ZacValue<bool>? maintainState;
+  final ZacValue<bool?>? maintainState;
   @override
-  final ZacValue<bool>? fullscreenDialog;
+  final ZacValue<bool?>? fullscreenDialog;
 
   /// Used instead of WidgetBuilder builder
   @override
@@ -211,7 +211,7 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
   @override
-  final ZacValue<String>? nameOfSharedArguments;
+  final ZacValue<String?>? nameOfSharedArguments;
 
   @override
   String toString() {
@@ -267,14 +267,14 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   factory _FlutterPageRouteBuilder(
           {final FlutterRouteSettings? settings,
-          final ZacValue<bool>? opaque,
-          final ZacValue<bool>? barrierDismissible,
+          final ZacValue<bool?>? opaque,
+          final ZacValue<bool?>? barrierDismissible,
           final FlutterColor? barrierColor,
-          final ZacValue<String>? barrierLabel,
-          final ZacValue<bool>? maintainState,
-          final ZacValue<bool>? fullscreenDialog,
+          final ZacValue<String?>? barrierLabel,
+          final ZacValue<bool?>? maintainState,
+          final ZacValue<bool?>? fullscreenDialog,
           required final FlutterWidget child,
-          final ZacValue<String>? nameOfSharedArguments}) =
+          final ZacValue<String?>? nameOfSharedArguments}) =
       _$_FlutterPageRouteBuilder;
   _FlutterPageRouteBuilder._() : super._();
 
@@ -286,17 +286,17 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacValue<bool>? get opaque;
+  ZacValue<bool?>? get opaque;
   @override
-  ZacValue<bool>? get barrierDismissible;
+  ZacValue<bool?>? get barrierDismissible;
   @override
   FlutterColor? get barrierColor;
   @override
-  ZacValue<String>? get barrierLabel;
+  ZacValue<String?>? get barrierLabel;
   @override
-  ZacValue<bool>? get maintainState;
+  ZacValue<bool?>? get maintainState;
   @override
-  ZacValue<bool>? get fullscreenDialog;
+  ZacValue<bool?>? get fullscreenDialog;
   @override
 
   /// Used instead of WidgetBuilder builder
@@ -305,7 +305,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
-  ZacValue<String>? get nameOfSharedArguments;
+  ZacValue<String?>? get nameOfSharedArguments;
 }
 
 FlutterNavigatorState _$FlutterNavigatorStateFromJson(
@@ -496,8 +496,8 @@ mixin _$FlutterNavigator {
   FlutterRouteFactory? get onGenerateRoute =>
       throw _privateConstructorUsedError;
   FlutterRouteFactory? get onUnknownRoute => throw _privateConstructorUsedError;
-  ZacValue<String>? get initialRoute => throw _privateConstructorUsedError;
-  ZacValue<bool>? get requestFocus => throw _privateConstructorUsedError;
+  ZacValue<String?>? get initialRoute => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get requestFocus => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -527,9 +527,9 @@ class _$_FlutterNavigator extends _FlutterNavigator {
   @override
   final FlutterRouteFactory? onUnknownRoute;
   @override
-  final ZacValue<String>? initialRoute;
+  final ZacValue<String?>? initialRoute;
   @override
-  final ZacValue<bool>? requestFocus;
+  final ZacValue<bool?>? requestFocus;
 
   @override
   String toString() {
@@ -571,8 +571,8 @@ abstract class _FlutterNavigator extends FlutterNavigator {
       {final FlutterKey? key,
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
-      final ZacValue<String>? initialRoute,
-      final ZacValue<bool>? requestFocus}) = _$_FlutterNavigator;
+      final ZacValue<String?>? initialRoute,
+      final ZacValue<bool?>? requestFocus}) = _$_FlutterNavigator;
   _FlutterNavigator._() : super._();
 
   factory _FlutterNavigator.fromJson(Map<String, dynamic> json) =
@@ -585,9 +585,9 @@ abstract class _FlutterNavigator extends FlutterNavigator {
   @override
   FlutterRouteFactory? get onUnknownRoute;
   @override
-  ZacValue<String>? get initialRoute;
+  ZacValue<String?>? get initialRoute;
   @override
-  ZacValue<bool>? get requestFocus;
+  ZacValue<bool?>? get requestFocus;
 }
 
 FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
@@ -1317,8 +1317,8 @@ FlutterRouteSettings _$FlutterRouteSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRouteSettings {
-  ZacValue<String>? get name => throw _privateConstructorUsedError;
-  ZacValue<Object>? get arguments => throw _privateConstructorUsedError;
+  ZacValue<String?>? get name => throw _privateConstructorUsedError;
+  ZacValue<Object?>? get arguments => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1336,9 +1336,9 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
       _$$_FlutterRouteSettingsFromJson(json);
 
   @override
-  final ZacValue<String>? name;
+  final ZacValue<String?>? name;
   @override
-  final ZacValue<Object>? arguments;
+  final ZacValue<Object?>? arguments;
 
   @override
   String toString() {
@@ -1370,15 +1370,15 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
 
 abstract class _FlutterRouteSettings extends FlutterRouteSettings {
   factory _FlutterRouteSettings(
-      {final ZacValue<String>? name,
-      final ZacValue<Object>? arguments}) = _$_FlutterRouteSettings;
+      {final ZacValue<String?>? name,
+      final ZacValue<Object?>? arguments}) = _$_FlutterRouteSettings;
   _FlutterRouteSettings._() : super._();
 
   factory _FlutterRouteSettings.fromJson(Map<String, dynamic> json) =
       _$_FlutterRouteSettings.fromJson;
 
   @override
-  ZacValue<String>? get name;
+  ZacValue<String?>? get name;
   @override
-  ZacValue<Object>? get arguments;
+  ZacValue<Object?>? get arguments;
 }

@@ -21,7 +21,7 @@ FlutterOffstage _$FlutterOffstageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterOffstage {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  ZacValue<bool>? get offstage => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get offstage => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -42,7 +42,7 @@ class _$_FlutterOffstage extends _FlutterOffstage {
   @override
   final FlutterKey? key;
   @override
-  final ZacValue<bool>? offstage;
+  final ZacValue<bool?>? offstage;
   @override
   final FlutterWidget? child;
 
@@ -78,7 +78,7 @@ class _$_FlutterOffstage extends _FlutterOffstage {
 abstract class _FlutterOffstage extends FlutterOffstage {
   factory _FlutterOffstage(
       {final FlutterKey? key,
-      final ZacValue<bool>? offstage,
+      final ZacValue<bool?>? offstage,
       final FlutterWidget? child}) = _$_FlutterOffstage;
   _FlutterOffstage._() : super._();
 
@@ -88,7 +88,7 @@ abstract class _FlutterOffstage extends FlutterOffstage {
   @override
   FlutterKey? get key;
   @override
-  ZacValue<bool>? get offstage;
+  ZacValue<bool?>? get offstage;
   @override
   FlutterWidget? get child;
 }

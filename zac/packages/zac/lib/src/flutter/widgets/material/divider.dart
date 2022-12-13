@@ -23,21 +23,21 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   @FreezedUnionValue(FlutterDivider.unionValue)
   factory FlutterDivider({
     FlutterKey? key,
-    ZacValue<double>? height,
-    ZacValue<double>? thickness,
-    ZacValue<double>? indent,
-    ZacValue<double>? endIndent,
+    ZacValue<double?>? height,
+    ZacValue<double?>? thickness,
+    ZacValue<double?>? indent,
+    ZacValue<double?>? endIndent,
     FlutterColor? color,
   }) = _FlutterDivider;
 
   Divider _buildWidget(ZacContext zacContext) {
     return Divider(
-      key: key?.buildOrNull(zacContext),
-      height: height?.buildOrNull(zacContext),
-      thickness: thickness?.buildOrNull(zacContext),
-      indent: indent?.buildOrNull(zacContext),
-      endIndent: endIndent?.buildOrNull(zacContext),
-      color: color?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      height: height?.build(zacContext),
+      thickness: thickness?.build(zacContext),
+      indent: indent?.build(zacContext),
+      endIndent: endIndent?.build(zacContext),
+      color: color?.build(zacContext),
     );
   }
 

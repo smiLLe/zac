@@ -23,17 +23,17 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
   @FreezedUnionValue(FlutterCenter.unionValue)
   factory FlutterCenter({
     FlutterKey? key,
-    ZacValue<double>? widthFactor,
-    ZacValue<double>? heightFactor,
+    ZacValue<double?>? widthFactor,
+    ZacValue<double?>? heightFactor,
     FlutterWidget? child,
   }) = _FlutterCenter;
 
   Center _buildWidget(ZacContext zacContext) {
     return Center(
-      key: key?.buildOrNull(zacContext),
-      widthFactor: widthFactor?.buildOrNull(zacContext),
-      heightFactor: heightFactor?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      widthFactor: widthFactor?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

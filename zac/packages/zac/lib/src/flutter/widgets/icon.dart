@@ -24,20 +24,20 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   factory FlutterIcon(
     FlutterIconData? icon, {
     FlutterKey? key,
-    ZacValue<double>? size,
+    ZacValue<double?>? size,
     FlutterColor? color,
-    ZacValue<String>? semanticLabel,
+    ZacValue<String?>? semanticLabel,
     FlutterTextDirection? textDirection,
   }) = _FlutterIcon;
 
   Icon _buildWidget(ZacContext zacContext) {
     return Icon(
-      icon?.buildOrNull(zacContext),
-      key: key?.buildOrNull(zacContext),
-      color: color?.buildOrNull(zacContext),
-      size: size?.buildOrNull(zacContext),
-      semanticLabel: semanticLabel?.buildOrNull(zacContext),
-      textDirection: textDirection?.buildOrNull(zacContext),
+      icon?.build(zacContext),
+      key: key?.build(zacContext),
+      color: color?.build(zacContext),
+      size: size?.build(zacContext),
+      semanticLabel: semanticLabel?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
     );
   }
 
@@ -65,17 +65,17 @@ class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
     ZacValue<int> codePoint, {
-    ZacValue<String>? fontFamily,
-    ZacValue<String>? fontPackage,
-    ZacValue<bool>? matchTextDirection,
+    ZacValue<String?>? fontFamily,
+    ZacValue<String?>? fontPackage,
+    ZacValue<bool?>? matchTextDirection,
   }) = _FlutterIconData;
 
   IconData _build(ZacContext zacContext) {
     return IconData(
       codePoint.build(zacContext),
-      fontFamily: fontFamily?.buildOrNull(zacContext),
-      fontPackage: fontPackage?.buildOrNull(zacContext),
-      matchTextDirection: matchTextDirection?.buildOrNull(zacContext) ?? false,
+      fontFamily: fontFamily?.build(zacContext),
+      fontPackage: fontPackage?.build(zacContext),
+      matchTextDirection: matchTextDirection?.build(zacContext) ?? false,
     );
   }
 
@@ -104,15 +104,15 @@ class FlutterIconThemeData
   @FreezedUnionValue('f:1:IconThemeData')
   factory FlutterIconThemeData({
     FlutterColor? color,
-    ZacValue<double>? opacity,
-    ZacValue<double>? size,
+    ZacValue<double?>? opacity,
+    ZacValue<double?>? size,
   }) = _FlutterIconThemeData;
 
   IconThemeData _build(ZacContext zacContext) {
     return IconThemeData(
-      color: color?.buildOrNull(zacContext),
-      opacity: opacity?.buildOrNull(zacContext),
-      size: size?.buildOrNull(zacContext),
+      color: color?.build(zacContext),
+      opacity: opacity?.build(zacContext),
+      size: size?.build(zacContext),
     );
   }
 

@@ -26,30 +26,30 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   factory FlutterMaterial({
     FlutterKey? key,
     FlutterWidget? child,
-    ZacValue<double>? elevation,
+    ZacValue<double?>? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
     FlutterTextStyle? textStyle,
     FlutterBorderRadiusGeometry? borderRadius,
     FlutterShapeBorder? shape,
-    ZacValue<bool>? borderOnForeground,
+    ZacValue<bool?>? borderOnForeground,
     FlutterClip? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
 
   Material _buildWidget(ZacContext zacContext) {
     return Material(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.buildOrNull(zacContext) ?? true,
-      borderRadius: borderRadius?.buildOrNull(zacContext),
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-      color: color?.buildOrNull(zacContext),
-      elevation: elevation?.buildOrNull(zacContext) ?? 0,
-      shadowColor: shadowColor?.buildOrNull(zacContext),
-      shape: shape?.buildOrNull(zacContext),
-      textStyle: textStyle?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
+      borderRadius: borderRadius?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      color: color?.build(zacContext),
+      elevation: elevation?.build(zacContext) ?? 0,
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      textStyle: textStyle?.build(zacContext),
+      child: child?.build(zacContext),
       // type: type?.toFlutter(context),
     );
   }

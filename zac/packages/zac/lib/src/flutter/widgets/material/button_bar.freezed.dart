@@ -24,15 +24,15 @@ mixin _$FlutterButtonBar {
   FlutterMainAxisAlignment? get alignment => throw _privateConstructorUsedError;
   FlutterMainAxisSize? get mainAxisSize =>
       throw _privateConstructorUsedError; // FlutterButtonTextTheme? buttonTextTheme,
-  ZacValue<double>? get buttonMinWidth => throw _privateConstructorUsedError;
-  ZacValue<double>? get buttonHeight => throw _privateConstructorUsedError;
+  ZacValue<double?>? get buttonMinWidth => throw _privateConstructorUsedError;
+  ZacValue<double?>? get buttonHeight => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get buttonPadding =>
       throw _privateConstructorUsedError;
-  ZacValue<bool>? get buttonAlignedDropdown =>
+  ZacValue<bool?>? get buttonAlignedDropdown =>
       throw _privateConstructorUsedError; // FlutterButtonBarLayoutBehavior? layoutBehavior,
   FlutterVerticalDirection? get overflowDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<double>? get overflowButtonSpacing =>
+  ZacValue<double?>? get overflowButtonSpacing =>
       throw _privateConstructorUsedError;
   ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
 
@@ -70,18 +70,18 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
   final FlutterMainAxisSize? mainAxisSize;
 // FlutterButtonTextTheme? buttonTextTheme,
   @override
-  final ZacValue<double>? buttonMinWidth;
+  final ZacValue<double?>? buttonMinWidth;
   @override
-  final ZacValue<double>? buttonHeight;
+  final ZacValue<double?>? buttonHeight;
   @override
   final FlutterEdgeInsetsGeometry? buttonPadding;
   @override
-  final ZacValue<bool>? buttonAlignedDropdown;
+  final ZacValue<bool?>? buttonAlignedDropdown;
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
   @override
   final FlutterVerticalDirection? overflowDirection;
   @override
-  final ZacValue<double>? overflowButtonSpacing;
+  final ZacValue<double?>? overflowButtonSpacing;
   @override
   final ZacListOfFlutterWidget? children;
 
@@ -145,12 +145,12 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
       {final FlutterKey? key,
       final FlutterMainAxisAlignment? alignment,
       final FlutterMainAxisSize? mainAxisSize,
-      final ZacValue<double>? buttonMinWidth,
-      final ZacValue<double>? buttonHeight,
+      final ZacValue<double?>? buttonMinWidth,
+      final ZacValue<double?>? buttonHeight,
       final FlutterEdgeInsetsGeometry? buttonPadding,
-      final ZacValue<bool>? buttonAlignedDropdown,
+      final ZacValue<bool?>? buttonAlignedDropdown,
       final FlutterVerticalDirection? overflowDirection,
-      final ZacValue<double>? overflowButtonSpacing,
+      final ZacValue<double?>? overflowButtonSpacing,
       final ZacListOfFlutterWidget? children}) = _$_FlutterButtonBar;
   _FlutterButtonBar._() : super._();
 
@@ -164,17 +164,17 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
   @override
   FlutterMainAxisSize? get mainAxisSize;
   @override // FlutterButtonTextTheme? buttonTextTheme,
-  ZacValue<double>? get buttonMinWidth;
+  ZacValue<double?>? get buttonMinWidth;
   @override
-  ZacValue<double>? get buttonHeight;
+  ZacValue<double?>? get buttonHeight;
   @override
   FlutterEdgeInsetsGeometry? get buttonPadding;
   @override
-  ZacValue<bool>? get buttonAlignedDropdown;
+  ZacValue<bool?>? get buttonAlignedDropdown;
   @override // FlutterButtonBarLayoutBehavior? layoutBehavior,
   FlutterVerticalDirection? get overflowDirection;
   @override
-  ZacValue<double>? get overflowButtonSpacing;
+  ZacValue<double?>? get overflowButtonSpacing;
   @override
   ZacListOfFlutterWidget? get children;
 }

@@ -29,8 +29,8 @@ class FlutterSliverToBoxAdapter
 
   SliverToBoxAdapter _buildWidget(ZacContext zacContext) {
     return SliverToBoxAdapter(
-      key: key?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

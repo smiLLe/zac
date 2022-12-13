@@ -32,10 +32,10 @@ class FlutterSizedOverflowBox
 
   SizedOverflowBox _buildWidget(ZacContext zacContext) {
     return SizedOverflowBox(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       size: size.build(zacContext),
-      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
-      child: child?.buildOrNull(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.build(zacContext),
     );
   }
 

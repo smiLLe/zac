@@ -35,12 +35,12 @@ class FlutterUnconstrainedBox
 
   UnconstrainedBox _buildWidget(ZacContext zacContext) {
     return UnconstrainedBox(
-      key: key?.buildOrNull(zacContext),
-      textDirection: textDirection?.buildOrNull(zacContext),
-      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

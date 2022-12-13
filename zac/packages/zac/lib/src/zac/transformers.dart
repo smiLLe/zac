@@ -325,11 +325,11 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacValue<Object>? key) =
+  const factory MapTransformer.containsKey(ZacValue<Object?>? key) =
       _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacValue<Object>? value) =
+  const factory MapTransformer.containsValue(ZacValue<Object?>? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
@@ -381,11 +381,11 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.buildOrNull(
+      containsKey: (obj) => theMap.containsKey(obj.key?.build(
         zacContext,
         onConsume: const ZacBuilderConsume(type: SharedValueConsumeType.read()),
       )),
-      containsValue: (obj) => theMap.containsValue(obj.value?.buildOrNull(
+      containsValue: (obj) => theMap.containsValue(obj.value?.build(
         zacContext,
         onConsume: const ZacBuilderConsume(type: SharedValueConsumeType.read()),
       )),
@@ -514,7 +514,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacValue<Object>? element) =
+  const factory IterableTransformer.contains(ZacValue<Object?>? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
@@ -551,7 +551,7 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.buildOrNull(
+      contains: (obj) => value.contains(obj.element?.build(
         zacContext,
         onConsume: const ZacBuilderConsume(type: SharedValueConsumeType.read()),
       )),

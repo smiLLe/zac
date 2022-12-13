@@ -11,6 +11,8 @@ import 'package:zac/src/zac/zac_builder.dart';
 part 'zac_value.freezed.dart';
 part 'zac_value.g.dart';
 
+bool isType<T, Y>() => T == Y;
+
 mixin ZacSimpleValueList<T> {
   List<T> get items;
 }
@@ -154,19 +156,21 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
         'converter': ZacValue.unionFromValue,
         'value': data,
       });
-    } else if (T == Object) {
+    } else if (isType<T, Object>() || isType<T, Object?>()) {
       return ZacValue<T>(data as T);
-    } else if (T == int && data is num) {
+    } else if ((isType<T, int>() || isType<T, int?>()) && data is num) {
       return ZacValue<T>(data.toInt() as T);
-    } else if (T == double && data is num) {
+    } else if ((isType<T, double>() || isType<T, double?>()) && data is num) {
       return ZacValue<T>(data.toDouble() as T);
-    } else if (T == num && data is num) {
+    } else if ((isType<T, num>() || isType<T, num?>()) && data is num) {
       return ZacValue<T>(data as T);
-    } else if (T == String && data is String) {
+    } else if ((isType<T, String>() || isType<T, String?>()) &&
+        data is String) {
       return ZacValue<T>(data as T);
-    } else if (T == bool && data is bool) {
+    } else if ((isType<T, bool>() || isType<T, bool?>()) && data is bool) {
       return ZacValue<T>(data as T);
-    } else if (T == DateTime && data is String) {
+    } else if ((isType<T, DateTime>() || isType<T, DateTime?>()) &&
+        data is String) {
       return ZacValue<T>(DateTime.parse(data) as T);
     } else if (data is T) {
       return ZacValue<T>(data as T);

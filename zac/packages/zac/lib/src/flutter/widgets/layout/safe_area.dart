@@ -23,25 +23,25 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   @FreezedUnionValue(FlutterSafeArea.unionValue)
   factory FlutterSafeArea({
     FlutterKey? key,
-    ZacValue<bool>? left,
-    ZacValue<bool>? top,
-    ZacValue<bool>? right,
-    ZacValue<bool>? bottom,
+    ZacValue<bool?>? left,
+    ZacValue<bool?>? top,
+    ZacValue<bool?>? right,
+    ZacValue<bool?>? bottom,
     FlutterEdgeInsets? minimum,
-    ZacValue<bool>? maintainBottomViewPadding,
+    ZacValue<bool?>? maintainBottomViewPadding,
     required FlutterWidget child,
   }) = _FlutterSafeArea;
 
   SafeArea _buildWidget(ZacContext zacContext) {
     return SafeArea(
-      key: key?.buildOrNull(zacContext),
-      left: left?.buildOrNull(zacContext) ?? true,
-      top: top?.buildOrNull(zacContext) ?? true,
-      right: right?.buildOrNull(zacContext) ?? true,
-      bottom: bottom?.buildOrNull(zacContext) ?? true,
-      minimum: minimum?.buildOrNull(zacContext) ?? EdgeInsets.zero,
+      key: key?.build(zacContext),
+      left: left?.build(zacContext) ?? true,
+      top: top?.build(zacContext) ?? true,
+      right: right?.build(zacContext) ?? true,
+      bottom: bottom?.build(zacContext) ?? true,
+      minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.buildOrNull(zacContext) ?? false,
+          maintainBottomViewPadding?.build(zacContext) ?? false,
       child: child.build(zacContext),
     );
   }

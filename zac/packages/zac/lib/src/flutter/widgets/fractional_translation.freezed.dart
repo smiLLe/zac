@@ -24,7 +24,7 @@ mixin _$FlutterFractionalTranslation {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
   FlutterOffset get translation => throw _privateConstructorUsedError;
-  ZacValue<bool>? get transformHitTests => throw _privateConstructorUsedError;
+  ZacValue<bool?>? get transformHitTests => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,7 +50,7 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
   @override
   final FlutterOffset translation;
   @override
-  final ZacValue<bool>? transformHitTests;
+  final ZacValue<bool?>? transformHitTests;
 
   @override
   String toString() {
@@ -90,7 +90,7 @@ abstract class _FlutterFractionalTranslation
           {final FlutterKey? key,
           final FlutterWidget? child,
           required final FlutterOffset translation,
-          final ZacValue<bool>? transformHitTests}) =
+          final ZacValue<bool?>? transformHitTests}) =
       _$_FlutterFractionalTranslation;
   _FlutterFractionalTranslation._() : super._();
 
@@ -104,5 +104,5 @@ abstract class _FlutterFractionalTranslation
   @override
   FlutterOffset get translation;
   @override
-  ZacValue<bool>? get transformHitTests;
+  ZacValue<bool?>? get transformHitTests;
 }

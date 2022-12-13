@@ -25,17 +25,17 @@ class FlutterIgnorePointer
   @FreezedUnionValue(FlutterIgnorePointer.unionValue)
   factory FlutterIgnorePointer({
     FlutterKey? key,
-    ZacValue<bool>? ignoring,
-    ZacValue<bool>? ignoringSemantics,
+    ZacValue<bool?>? ignoring,
+    ZacValue<bool?>? ignoringSemantics,
     FlutterWidget? child,
   }) = _FlutterIgnorePointer;
 
   IgnorePointer _buildWidget(ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.buildOrNull(zacContext),
-      ignoring: ignoring?.buildOrNull(zacContext) ?? true,
-      ignoringSemantics: ignoringSemantics?.buildOrNull(zacContext),
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      ignoring: ignoring?.build(zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

@@ -26,8 +26,8 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
     ZacValue<Key>? key,
     ZacValue<Axis>? direction,
     ZacValue<WrapAlignment>? alignment,
-    ZacValue<double>? spacing,
-    ZacValue<double>? runSpacing,
+    ZacValue<double?>? spacing,
+    ZacValue<double?>? runSpacing,
     ZacValue<WrapAlignment>? runAlignment,
     ZacValue<WrapCrossAlignment>? crossAxisAlignment,
     FlutterTextDirection? textDirection,
@@ -38,20 +38,19 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
 
   Wrap _buildWidget(ZacContext zacContext) {
     return Wrap(
-      key: key?.buildOrNull(zacContext),
-      direction: direction?.buildOrNull(zacContext) ?? Axis.horizontal,
-      alignment: alignment?.buildOrNull(zacContext) ?? WrapAlignment.start,
-      spacing: spacing?.buildOrNull(zacContext) ?? 0.0,
-      runAlignment:
-          runAlignment?.buildOrNull(zacContext) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.buildOrNull(zacContext) ?? 0.0,
-      crossAxisAlignment: crossAxisAlignment?.buildOrNull(zacContext) ??
-          WrapCrossAlignment.start,
-      textDirection: textDirection?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      direction: direction?.build(zacContext) ?? Axis.horizontal,
+      alignment: alignment?.build(zacContext) ?? WrapAlignment.start,
+      spacing: spacing?.build(zacContext) ?? 0.0,
+      runAlignment: runAlignment?.build(zacContext) ?? WrapAlignment.start,
+      runSpacing: runSpacing?.build(zacContext) ?? 0.0,
+      crossAxisAlignment:
+          crossAxisAlignment?.build(zacContext) ?? WrapCrossAlignment.start,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.buildOrNull(zacContext) ?? VerticalDirection.down,
-      clipBehavior: clipBehavior?.buildOrNull(zacContext) ?? Clip.none,
-      children: children?.buildOrNull(zacContext) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

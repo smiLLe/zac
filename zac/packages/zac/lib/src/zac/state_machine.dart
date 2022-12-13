@@ -108,7 +108,7 @@ class ZacStateMachineProviderBuilder
     required ZacValue<String> initialState,
     required Map<String, ZacStateConfig> states,
     required FlutterWidget child,
-    ZacValue<Object>? initialContext,
+    ZacValue<Object?>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
@@ -156,7 +156,7 @@ because there was already a transition.
     return ZacStateMachine(
       states: states,
       state: initialState.build(zacContext),
-      context: initialContext?.buildOrNull(zacContext),
+      context: initialContext?.build(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
@@ -165,7 +165,7 @@ because there was already a transition.
 
   Widget _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       family: family.build(zacContext),
       autoCreate: true,
       childBuilder: child.build,
@@ -202,7 +202,7 @@ class ZacStateMachineBuildStateBuilder
 
   ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>

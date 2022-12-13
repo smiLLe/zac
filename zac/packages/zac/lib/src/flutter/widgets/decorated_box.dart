@@ -31,11 +31,10 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
 
   DecoratedBox _buildWidget(ZacContext zacContext) {
     return DecoratedBox(
-      key: key?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
       decoration: decoration.build(zacContext),
-      position:
-          position?.buildOrNull(zacContext) ?? DecorationPosition.background,
-      child: child?.buildOrNull(zacContext),
+      position: position?.build(zacContext) ?? DecorationPosition.background,
+      child: child?.build(zacContext),
     );
   }
 

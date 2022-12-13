@@ -75,14 +75,14 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
   @FreezedUnionValue('f:1:Offset.fromDirection')
   factory FlutterOffset.fromDirection(
       {required ZacValue<double> direction,
-      ZacValue<double>? distance}) = _FlutterOffsetFromDirection;
+      ZacValue<double?>? distance}) = _FlutterOffsetFromDirection;
 
   Offset _build(ZacContext zacContext) {
     return map(
       (value) => Offset(value.dx.build(zacContext), value.dy.build(zacContext)),
       fromDirection: (value) => Offset.fromDirection(
           value.direction.build(zacContext),
-          value.distance?.buildOrNull(zacContext) ?? 1.0),
+          value.distance?.build(zacContext) ?? 1.0),
     );
   }
 
@@ -495,7 +495,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       _$FlutterFontFeatureFromJson(json);
 
   @FreezedUnionValue('f:1:FontFeature')
-  factory FlutterFontFeature(String feature, [ZacValue<int>? value]) =
+  factory FlutterFontFeature(String feature, [ZacValue<int?>? value]) =
       _FontFeature;
 
   @FreezedUnionValue('f:1:FontFeature.alternative')
@@ -540,11 +540,11 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   factory FlutterFontFeature.liningFigures() = _FontFeatureLiningFigures;
 
   @FreezedUnionValue('f:1:FontFeature.localeAware')
-  factory FlutterFontFeature.localeAware({ZacValue<bool>? enable}) =
+  factory FlutterFontFeature.localeAware({ZacValue<bool?>? enable}) =
       _FontFeatureLocaleAware;
 
   @FreezedUnionValue('f:1:FontFeature.notationalForms')
-  factory FlutterFontFeature.notationalForms([ZacValue<int>? value]) =
+  factory FlutterFontFeature.notationalForms([ZacValue<int?>? value]) =
       _FontFeatureNotationalForms;
 
   @FreezedUnionValue('f:1:FontFeature.numerators')
@@ -584,7 +584,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   factory FlutterFontFeature.superscripts() = _FontFeatureSuperscripts;
 
   @FreezedUnionValue('f:1:FontFeature.swash')
-  factory FlutterFontFeature.swash([ZacValue<int>? value]) = _FontFeatureSwash;
+  factory FlutterFontFeature.swash([ZacValue<int?>? value]) = _FontFeatureSwash;
 
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
@@ -592,7 +592,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   FontFeature _build(ZacContext zacContext) {
     return map(
       (value) =>
-          FontFeature(value.feature, value.value?.buildOrNull(zacContext) ?? 1),
+          FontFeature(value.feature, value.value?.build(zacContext) ?? 1),
       alternative: (value) => FontFeature.alternative(value.value),
       alternativeFractions: (value) => const FontFeature.alternativeFractions(),
       caseSensitiveForms: (value) => const FontFeature.caseSensitiveForms(),
@@ -606,9 +606,9 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       historicalLigatures: (value) => const FontFeature.historicalLigatures(),
       liningFigures: (value) => const FontFeature.liningFigures(),
       localeAware: (value) => FontFeature.localeAware(
-          enable: value.enable?.buildOrNull(zacContext) ?? true),
-      notationalForms: (value) => FontFeature.notationalForms(
-          value.value?.buildOrNull(zacContext) ?? 1),
+          enable: value.enable?.build(zacContext) ?? true),
+      notationalForms: (value) =>
+          FontFeature.notationalForms(value.value?.build(zacContext) ?? 1),
       numerators: (value) => const FontFeature.numerators(),
       oldstyleFigures: (value) => const FontFeature.oldstyleFigures(),
       ordinalForms: (value) => const FontFeature.ordinalForms(),
@@ -620,8 +620,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       stylisticSet: (value) => FontFeature.stylisticSet(value.value),
       subscripts: (value) => const FontFeature.subscripts(),
       superscripts: (value) => const FontFeature.superscripts(),
-      swash: (value) =>
-          FontFeature.swash(value.value?.buildOrNull(zacContext) ?? 1),
+      swash: (value) => FontFeature.swash(value.value?.build(zacContext) ?? 1),
       tabularFigures: (value) => const FontFeature.tabularFigures(),
     );
   }
@@ -750,18 +749,18 @@ class FlutterTextHeightBehavior
 
   @FreezedUnionValue('f:1:TextHeightBehavior')
   factory FlutterTextHeightBehavior({
-    ZacValue<bool>? applyHeightToFirstAscent,
-    ZacValue<bool>? applyHeightToLastDescent,
+    ZacValue<bool?>? applyHeightToFirstAscent,
+    ZacValue<bool?>? applyHeightToLastDescent,
     FlutterTextLeadingDistribution? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
   TextHeightBehavior _build(ZacContext zacContext) {
     return TextHeightBehavior(
       applyHeightToFirstAscent:
-          applyHeightToFirstAscent?.buildOrNull(zacContext) ?? true,
+          applyHeightToFirstAscent?.build(zacContext) ?? true,
       applyHeightToLastDescent:
-          applyHeightToLastDescent?.buildOrNull(zacContext) ?? true,
-      leadingDistribution: leadingDistribution?.buildOrNull(zacContext) ??
+          applyHeightToLastDescent?.build(zacContext) ?? true,
+      leadingDistribution: leadingDistribution?.build(zacContext) ??
           TextLeadingDistribution.proportional,
     );
   }
@@ -1206,14 +1205,14 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   factory FlutterShadow({
     FlutterColor? color,
     FlutterOffset? offset,
-    ZacValue<double>? blurRadius,
+    ZacValue<double?>? blurRadius,
   }) = _FlutterShadowShadow;
 
   Shadow _build(ZacContext zacContext) {
     return Shadow(
-      color: color?.buildOrNull(zacContext) ?? const Color(0xFF000000),
-      offset: offset?.buildOrNull(zacContext) ?? Offset.zero,
-      blurRadius: blurRadius?.buildOrNull(zacContext) ?? 0.0,
+      color: color?.build(zacContext) ?? const Color(0xFF000000),
+      offset: offset?.build(zacContext) ?? Offset.zero,
+      blurRadius: blurRadius?.build(zacContext) ?? 0.0,
     );
   }
 

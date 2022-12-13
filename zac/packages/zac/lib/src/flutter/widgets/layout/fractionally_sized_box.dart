@@ -28,17 +28,17 @@ class FlutterFractionallySizedBox
     FlutterKey? key,
     FlutterWidget? child,
     FlutterAlignmentGeometry? alignment,
-    ZacValue<double>? widthFactor,
-    ZacValue<double>? heightFactor,
+    ZacValue<double?>? widthFactor,
+    ZacValue<double?>? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
   FractionallySizedBox _buildWidget(ZacContext zacContext) {
     return FractionallySizedBox(
-      key: key?.buildOrNull(zacContext),
-      heightFactor: heightFactor?.buildOrNull(zacContext),
-      widthFactor: widthFactor?.buildOrNull(zacContext),
-      alignment: alignment?.buildOrNull(zacContext) ?? Alignment.center,
-      child: child?.buildOrNull(zacContext),
+      key: key?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
+      widthFactor: widthFactor?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.build(zacContext),
     );
   }
 

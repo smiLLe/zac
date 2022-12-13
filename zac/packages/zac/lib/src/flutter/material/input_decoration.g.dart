@@ -20,7 +20,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterWidget.fromJson(json['label'] as Object),
       labelText: json['labelText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['labelText'] as Object),
+          : ZacValue<String?>.fromJson(json['labelText'] as Object),
       labelStyle: json['labelStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
@@ -31,17 +31,17 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['floatingLabelStyle'] as Map<String, dynamic>),
       helperText: json['helperText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['helperText'] as Object),
+          : ZacValue<String?>.fromJson(json['helperText'] as Object),
       helperStyle: json['helperStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
               json['helperStyle'] as Map<String, dynamic>),
       helperMaxLines: json['helperMaxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['helperMaxLines'] as Object),
+          : ZacValue<int?>.fromJson(json['helperMaxLines'] as Object),
       hintText: json['hintText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['hintText'] as Object),
+          : ZacValue<String?>.fromJson(json['hintText'] as Object),
       hintStyle: json['hintStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
@@ -52,23 +52,23 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
               json['hintTextDirection'] as Map<String, dynamic>),
       hintMaxLines: json['hintMaxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['hintMaxLines'] as Object),
+          : ZacValue<int?>.fromJson(json['hintMaxLines'] as Object),
       errorText: json['errorText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['errorText'] as Object),
+          : ZacValue<String?>.fromJson(json['errorText'] as Object),
       errorStyle: json['errorStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
               json['errorStyle'] as Map<String, dynamic>),
       errorMaxLines: json['errorMaxLines'] == null
           ? null
-          : ZacValue<int>.fromJson(json['errorMaxLines'] as Object),
+          : ZacValue<int?>.fromJson(json['errorMaxLines'] as Object),
       isCollapsed: json['isCollapsed'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['isCollapsed'] as Object),
+          : ZacValue<bool?>.fromJson(json['isCollapsed'] as Object),
       isDense: json['isDense'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['isDense'] as Object),
+          : ZacValue<bool?>.fromJson(json['isDense'] as Object),
       contentPadding: json['contentPadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(
@@ -85,7 +85,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterWidget.fromJson(json['prefix'] as Object),
       prefixText: json['prefixText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['prefixText'] as Object),
+          : ZacValue<String?>.fromJson(json['prefixText'] as Object),
       prefixStyle: json['prefixStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
@@ -102,7 +102,7 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterWidget.fromJson(json['suffix'] as Object),
       suffixText: json['suffixText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['suffixText'] as Object),
+          : ZacValue<String?>.fromJson(json['suffixText'] as Object),
       suffixStyle: json['suffixStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
@@ -120,14 +120,14 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterWidget.fromJson(json['counter'] as Object),
       counterText: json['counterText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['counterText'] as Object),
+          : ZacValue<String?>.fromJson(json['counterText'] as Object),
       counterStyle: json['counterStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
               json['counterStyle'] as Map<String, dynamic>),
       filled: json['filled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['filled'] as Object),
+          : ZacValue<bool?>.fromJson(json['filled'] as Object),
       fillColor: json['fillColor'] == null
           ? null
           : FlutterColor.fromJson(json['fillColor'] as Map<String, dynamic>),
@@ -157,13 +157,13 @@ _$_FlutterInputDecoration _$$_FlutterInputDecorationFromJson(
           : FlutterInputBorder.fromJson(json['border'] as Object),
       enabled: json['enabled'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['enabled'] as Object),
+          : ZacValue<bool?>.fromJson(json['enabled'] as Object),
       semanticCounterText: json['semanticCounterText'] == null
           ? null
-          : ZacValue<String>.fromJson(json['semanticCounterText'] as Object),
+          : ZacValue<String?>.fromJson(json['semanticCounterText'] as Object),
       alignLabelWithHint: json['alignLabelWithHint'] == null
           ? null
-          : ZacValue<bool>.fromJson(json['alignLabelWithHint'] as Object),
+          : ZacValue<bool?>.fromJson(json['alignLabelWithHint'] as Object),
       constraints: json['constraints'] == null
           ? null
           : FlutterBoxConstraints.fromJson(

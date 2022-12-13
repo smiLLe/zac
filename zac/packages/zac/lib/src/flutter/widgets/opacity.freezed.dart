@@ -22,7 +22,7 @@ FlutterOpacity _$FlutterOpacityFromJson(Map<String, dynamic> json) {
 mixin _$FlutterOpacity {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacValue<double> get opacity => throw _privateConstructorUsedError;
-  ZacValue<bool>? get alwaysIncludeSemantics =>
+  ZacValue<bool?>? get alwaysIncludeSemantics =>
       throw _privateConstructorUsedError;
   FlutterWidget? get child => throw _privateConstructorUsedError;
 
@@ -51,7 +51,7 @@ class _$_FlutterOpacity extends _FlutterOpacity {
   @override
   final ZacValue<double> opacity;
   @override
-  final ZacValue<bool>? alwaysIncludeSemantics;
+  final ZacValue<bool?>? alwaysIncludeSemantics;
   @override
   final FlutterWidget? child;
 
@@ -90,7 +90,7 @@ abstract class _FlutterOpacity extends FlutterOpacity {
   factory _FlutterOpacity(
       {final FlutterKey? key,
       required final ZacValue<double> opacity,
-      final ZacValue<bool>? alwaysIncludeSemantics,
+      final ZacValue<bool?>? alwaysIncludeSemantics,
       final FlutterWidget? child}) = _$_FlutterOpacity;
   _FlutterOpacity._() : super._();
 
@@ -102,7 +102,7 @@ abstract class _FlutterOpacity extends FlutterOpacity {
   @override
   ZacValue<double> get opacity;
   @override
-  ZacValue<bool>? get alwaysIncludeSemantics;
+  ZacValue<bool?>? get alwaysIncludeSemantics;
   @override
   FlutterWidget? get child;
 }

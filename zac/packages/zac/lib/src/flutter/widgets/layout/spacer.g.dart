@@ -13,5 +13,5 @@ _$_FlutterSpacer _$$_FlutterSpacerFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       flex: json['flex'] == null
           ? null
-          : ZacValue<int>.fromJson(json['flex'] as Object),
+          : ZacValue<int?>.fromJson(json['flex'] as Object),
     );

@@ -23,8 +23,8 @@ mixin _$FlutterWrap {
   ZacValue<Key>? get key => throw _privateConstructorUsedError;
   ZacValue<Axis>? get direction => throw _privateConstructorUsedError;
   ZacValue<WrapAlignment>? get alignment => throw _privateConstructorUsedError;
-  ZacValue<double>? get spacing => throw _privateConstructorUsedError;
-  ZacValue<double>? get runSpacing => throw _privateConstructorUsedError;
+  ZacValue<double?>? get spacing => throw _privateConstructorUsedError;
+  ZacValue<double?>? get runSpacing => throw _privateConstructorUsedError;
   ZacValue<WrapAlignment>? get runAlignment =>
       throw _privateConstructorUsedError;
   ZacValue<WrapCrossAlignment>? get crossAxisAlignment =>
@@ -69,9 +69,9 @@ class _$_FlutterWrap extends _FlutterWrap {
   @override
   final ZacValue<WrapAlignment>? alignment;
   @override
-  final ZacValue<double>? spacing;
+  final ZacValue<double?>? spacing;
   @override
-  final ZacValue<double>? runSpacing;
+  final ZacValue<double?>? runSpacing;
   @override
   final ZacValue<WrapAlignment>? runAlignment;
   @override
@@ -147,8 +147,8 @@ abstract class _FlutterWrap extends FlutterWrap {
       {final ZacValue<Key>? key,
       final ZacValue<Axis>? direction,
       final ZacValue<WrapAlignment>? alignment,
-      final ZacValue<double>? spacing,
-      final ZacValue<double>? runSpacing,
+      final ZacValue<double?>? spacing,
+      final ZacValue<double?>? runSpacing,
       final ZacValue<WrapAlignment>? runAlignment,
       final ZacValue<WrapCrossAlignment>? crossAxisAlignment,
       final FlutterTextDirection? textDirection,
@@ -167,9 +167,9 @@ abstract class _FlutterWrap extends FlutterWrap {
   @override
   ZacValue<WrapAlignment>? get alignment;
   @override
-  ZacValue<double>? get spacing;
+  ZacValue<double?>? get spacing;
   @override
-  ZacValue<double>? get runSpacing;
+  ZacValue<double?>? get runSpacing;
   @override
   ZacValue<WrapAlignment>? get runAlignment;
   @override
