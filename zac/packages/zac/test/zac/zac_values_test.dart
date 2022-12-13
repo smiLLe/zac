@@ -66,8 +66,7 @@ void main() {
             throwsA(isA<StateError>().having(
                 (p0) => p0.message,
                 'error messages',
-                contains(
-                    'The created builder was not an instance of ZacBuilder<int>'))));
+                contains('It was not possible to create ZacBuilder<int>'))));
       });
     });
 
@@ -179,6 +178,111 @@ void main() {
 
       expect(
           ZacValue<Object>.fromJson(5.1), ZacValue<Object>.value(value: 5.1));
+    });
+  });
+
+  group('ZacValueList', () {
+    test('Is in converters', () {
+      expectInConverter(['z:1:ZacValueList', 'z:1:ZacValueList.consume'],
+          ZacValueList.fromJson);
+    });
+
+    test('can be created using simple values', () {
+      expect(
+          ZacValueList<int>.fromJson(<String, dynamic>{
+            'converter': 'z:1:ZacValueList',
+            'items': [4],
+          }),
+          ZacValueList<int>.value(items: [4]));
+
+      expect(
+          ZacValueList<String>.fromJson(<String, dynamic>{
+            'converter': 'z:1:ZacValueList',
+            'items': ['a', 'b'],
+          }),
+          ZacValueList<String>.value(items: ['a', 'b']));
+    });
+
+    test('can be created using ZacBuilder', () {
+      expect(
+          ZacValueList<Widget>.fromJson(<String, dynamic>{
+            'converter': 'z:1:ZacValueList',
+            'items': [
+              {'converter': 'f:1:SizedBox'}
+            ],
+          }),
+          ZacValueList<Widget>.value(items: [FlutterSizedBox()]));
+    });
+
+    group('.consume', () {
+      test('can be created', () {
+        expect(
+            ZacValueList<Widget>.fromJson(<String, dynamic>{
+              'converter': 'z:1:ZacValueList.consume',
+              'family': 'shared',
+            }),
+            ZacValueList<Widget>.consume(family: 'shared'));
+      });
+
+      testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
+        await tester.pumpWidget(
+          ProviderScope(
+            child: MaterialApp(
+              home: ZacWidget(
+                data: SharedValueProviderBuilder(
+                  value: [
+                    FlutterSizedBox(
+                      key: FlutterValueKey('FIND_ME_2'),
+                    )
+                  ],
+                  family: 'shared',
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      return Column(
+                        children: ZacValueList<Widget>.consume(family: 'shared')
+                            .build(zacContext),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+
+        expect(find.byKey(const ValueKey('FIND_ME_2')), findsOneWidget);
+      });
+
+      testWidgets('can consume a String', (tester) async {
+        await tester.pumpWidget(
+          ProviderScope(
+            child: MaterialApp(
+              home: Material(
+                child: ZacWidget(
+                  data: SharedValueProviderBuilder(
+                    value: ['hello', 'world'],
+                    family: 'shared',
+                    child: TestBuildCustomWidget(
+                      (zacContext) {
+                        return Column(
+                          children: [
+                            ...ZacValueList<String>.consume(family: 'shared')
+                                .build(zacContext)
+                                .map((e) => Text(e))
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+
+        expect(find.text('hello'), findsOneWidget);
+        expect(find.text('world'), findsOneWidget);
+      });
     });
   });
 

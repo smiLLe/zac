@@ -112,33 +112,21 @@ class _ValueConverter<T> implements JsonConverter<T, Object> {
   const _ValueConverter();
 
   @override
-  T fromJson(Object json) {
-    if (json is! T) {
-      throw StateError('''
-It was not possible to create ${ZacValue<T>}.
-The error was probably created by using "${ZacValue.unionFromValue}" converter.
-The data used: $json.''');
-    }
-    return json as T;
-  }
-
-  @override
-  Object toJson(T object) => throw StateError('not supported');
-}
-
-class _ValueListConverter<T> implements JsonConverter<T, Object> {
-  const _ValueListConverter();
-
-  @override
-  T fromJson(Object json) {
-    if (json is! T) {
-      throw StateError('''
-It was not possible to create ${ZacValueList<T>}.
-The error was probably created by using "${ZacValueList.unionFromValue}" converter.
-There was at least one item in the list that was not an instance of $T.
-The data used: $json.''');
-    }
-    return json as T;
+  T fromJson(Object data) {
+    return ConverterHelper.ifRegisteredBuilder(
+      data,
+      cb: (map, converterName) {
+        return ConverterHelper.convertToType<Object>(map);
+      },
+      orElse: () => data,
+    ) as T;
+//     if (json is! T) {
+//       throw StateError('''
+// It was not possible to create ${ZacValue<T>}.
+// The error was probably created by using "${ZacValue.unionFromValue}" converter.
+// The data used: $json.''');
+//     }
+//     return json as T;
   }
 
   @override
@@ -256,24 +244,42 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
 class ZacValueList<T> with _$ZacValueList<T> implements ZacBuilder<List<T>> {
   const ZacValueList._();
 
-  static const String unionFromValue = 'z:1:ZacValueList.value';
-  static const String unionFromBuilder = 'z:1:ZacValueList.builder';
+  static const String unionFromValue = 'z:1:ZacValueList';
   static const String unionFromSharedValue = 'z:1:ZacValueList.consume';
 
-  factory ZacValueList.fromJson(Map<String, dynamic> json) =>
-      _$ZacValueListFromJson(json);
+  factory ZacValueList.fromJson(Map<String, dynamic> json) {
+    return ConverterHelper.ifRegisteredBuilder<ZacValueList<T>>(
+      json,
+      cb: (map, converterName) {
+        if (converterName == ZacValueList.unionFromValue) {
+          map['items'] =
+              (map['items'] as List<dynamic>).map<Object>((dynamic e) {
+            return ConverterHelper.ifRegisteredBuilder(
+              e,
+              cb: (map, converterName) {
+                return ConverterHelper.convertToType<ZacBuilder<T>>(map);
+              },
+              orElse: () {
+                if (e is! T) {
+                  throw StateError('');
+                }
+                return e as Object;
+              },
+            );
+          }).toList();
+        }
+        return _$ZacValueListFromJson<T>(map);
+      },
+      orElse: () => throw StateError('unsupported'),
+    );
+  }
 
-  @FreezedUnionValue(ZacValue.unionFromValue)
+  @FreezedUnionValue(ZacValueList.unionFromValue)
   factory ZacValueList.value({
-    @_ValueListConverter() required List<T> items,
+    required List<Object> items,
   }) = _ZacValueListValue<T>;
 
-  @FreezedUnionValue(ZacValue.unionFromBuilder)
-  factory ZacValueList.builder({
-    required List<ZacBuilder<T>> items,
-  }) = _ZacValueListBuilder<T>;
-
-  @FreezedUnionValue(ZacValue.unionFromSharedValue)
+  @FreezedUnionValue(ZacValueList.unionFromSharedValue)
   factory ZacValueList.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
@@ -282,25 +288,72 @@ class ZacValueList<T> with _$ZacValueList<T> implements ZacBuilder<List<T>> {
     SharedValueConsumeType? forceConsume,
   }) = _ZacValueListConsume<T>;
 
+  X _consume<X>({
+    required List<Object?> consumedValue,
+    required ZacContext zacContext,
+    required ZacBuilderConsume onConsume,
+    required ZacTransformers? transformer,
+    required ZacTransformers? itemTransformer,
+  }) {
+    final list = [
+      ...consumedValue.map<T>((dynamic e) {
+        final value = e is ZacBuilder<Object?>
+            ? e.build(zacContext, onConsume: onConsume)
+            : e as Object?;
+        return TransformObjectHelper.simple<T>(
+          fromValue: value,
+          zacContext: zacContext,
+          transformer: itemTransformer,
+        );
+      })
+    ];
+
+    final transformedList = transformer?.transform(
+            ZacTransformValue(list), zacContext, const ZacActionPayload()) ??
+        list;
+
+    if (transformedList is! X) {
+      throw StateError('');
+    }
+
+    return list as X;
+  }
+
   @override
   List<T> build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return map<List<T>>(
-      value: (obj) => obj.items,
-      builder: (obj) {
-        return obj.items
-            .map((e) => e.build(zacContext, onConsume: onConsume))
-            .toList();
-      },
+      value: (obj) => [
+        ...obj.items.map((Object e) {
+          if (e is! T && e is! ZacBuilder) {
+            throw StateError('');
+          }
+          if (e is ZacBuilder) {
+            final Object? val = e.build(zacContext, onConsume: onConsume);
+            assert(val is T);
+            return val as T;
+          }
+          return e as T;
+        })
+      ],
       consume: (obj) {
-        return SharedValue.getTypedList<T>(
+        final consumedValue = SharedValue.get(
           zacContext: zacContext,
-          consumeType:
-              (obj.forceConsume ?? const SharedValueConsumeType.watch()),
-          family: obj.family,
           select: obj.select,
-          transformer: obj.transformer,
+          consumeType: obj.forceConsume ?? onConsume.type,
+          family: obj.family,
+        );
+
+        if (consumedValue is! List) {
+          throw StateError('Unexpected $SharedValue: $consumedValue');
+        }
+
+        return _consume<List<T>>(
+          consumedValue: consumedValue,
+          zacContext: zacContext,
+          onConsume: onConsume,
           itemTransformer: obj.itemTransformer,
+          transformer: obj.transformer,
         );
       },
     );
@@ -310,21 +363,39 @@ class ZacValueList<T> with _$ZacValueList<T> implements ZacBuilder<List<T>> {
   List<T>? buildOrNull(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return map<List<T>?>(
-      value: (obj) => obj.items,
-      builder: (obj) {
-        return obj.items
-            .map((e) => e.build(zacContext, onConsume: onConsume))
-            .toList();
-      },
+      value: (obj) => [
+        ...obj.items.map((Object e) {
+          if (e is! T && e is! ZacBuilder) {
+            throw StateError('');
+          }
+          if (e is ZacBuilder) {
+            final Object? val = e.build(zacContext, onConsume: onConsume);
+            assert(val is T);
+            return val as T;
+          }
+          return e as T;
+        })
+      ],
       consume: (obj) {
-        return SharedValue.getTypedListOrNull<T>(
+        final consumedValue = SharedValue.get(
           zacContext: zacContext,
-          consumeType:
-              (obj.forceConsume ?? const SharedValueConsumeType.watch()),
-          family: obj.family,
           select: obj.select,
-          transformer: obj.transformer,
+          consumeType: obj.forceConsume ?? onConsume.type,
+          family: obj.family,
+        );
+        if (null == consumedValue) {
+          return null;
+        }
+        if (consumedValue is! List) {
+          throw StateError('Unexpected $SharedValue: $consumedValue');
+        }
+
+        return _consume<List<T>?>(
+          consumedValue: consumedValue,
+          zacContext: zacContext,
+          onConsume: onConsume,
           itemTransformer: obj.itemTransformer,
+          transformer: obj.transformer,
         );
       },
     );

@@ -28,9 +28,9 @@ The data: $json''');
       if (builder is! ZacBuilder<T>) {
         throw StateError('''
 It was not possible to create ${ZacBuilder<T>} because the created builder
-was not an instance of ${ZacBuilder<T>}.
+was of a different type.
 This will fail on production.
-The builder: $builder''');
+Created builder: $builder''');
       }
       return true;
     }());

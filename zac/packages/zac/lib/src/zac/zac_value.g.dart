@@ -39,18 +39,7 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T>(
 _$_ZacValueListValue<T> _$$_ZacValueListValueFromJson<T>(
         Map<String, dynamic> json) =>
     _$_ZacValueListValue<T>(
-      items: (json['items'] as List<dynamic>)
-          .map((e) => _ValueListConverter<T>().fromJson(e as Object))
-          .toList(),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacValueListBuilder<T> _$$_ZacValueListBuilderFromJson<T>(
-        Map<String, dynamic> json) =>
-    _$_ZacValueListBuilder<T>(
-      items: (json['items'] as List<dynamic>)
-          .map((e) => ZacBuilder<T>.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      items: (json['items'] as List<dynamic>).map((e) => e as Object).toList(),
       $type: json['converter'] as String?,
     );
 

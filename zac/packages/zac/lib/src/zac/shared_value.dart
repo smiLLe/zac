@@ -90,7 +90,7 @@ See "$SharedValueProviderBuilder" for more info.
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
   }) {
-    final value = SharedValue.get(
+    final value = SharedValue.getList(
       zacContext: zacContext,
       select: select,
       consumeType: consumeType,
@@ -101,10 +101,8 @@ See "$SharedValueProviderBuilder" for more info.
       throw StateError('$SharedValue must not be null');
     }
 
-    value as List<dynamic>;
-
     return TransformObjectHelper.list<T>(
-      fromValue: value,
+      fromValue: value!,
       zacContext: zacContext,
       transformer: transformer,
       itemTransformer: itemTransformer,
@@ -119,7 +117,7 @@ See "$SharedValueProviderBuilder" for more info.
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
   }) {
-    final value = SharedValue.get(
+    final value = SharedValue.getList(
       zacContext: zacContext,
       select: select,
       consumeType: consumeType,
@@ -129,8 +127,6 @@ See "$SharedValueProviderBuilder" for more info.
     if (null == value && true != transformer?.transformers.isNotEmpty) {
       return null;
     }
-
-    value as List<dynamic>;
 
     return TransformObjectHelper.listOrNull<T>(
       fromValue: value,
@@ -176,6 +172,52 @@ See "$SharedValueProviderBuilder" for more info.
             onConsume: ZacBuilderConsume(type: consumeType),
           )
         : consumedValue;
+  }
+
+  static List<Object>? getList({
+    required ZacContext zacContext,
+    required ZacTransformers? select,
+    required SharedValueConsumeType consumeType,
+    required SharedValueFamily family,
+  }) {
+    final consumedValue = consumeType.map<Object?>(
+      read: (_) {
+        final value =
+            zacContext.ref.read<Object?>(SharedValue.provider(family));
+        if (value is ZacBuilder) {
+          return value;
+        }
+        return select?.transform(ZacTransformValue(value), zacContext,
+                const ZacActionPayload()) ??
+            value;
+      },
+      watch: (_) {
+        return zacContext.ref
+            .watch<Object?>(SharedValue.provider(family).select((value) {
+          if (value is ZacBuilder) {
+            return value;
+          }
+          return select?.transform(ZacTransformValue(value), zacContext,
+                  const ZacActionPayload()) ??
+              value;
+        }));
+      },
+    );
+
+    if (consumedValue is! List) {
+      throw StateError('Unexpected $SharedValue: $consumedValue');
+    }
+
+    return [
+      ...consumedValue.map((dynamic e) {
+        return e is ZacBuilder<Object>
+            ? e.build(
+                zacContext,
+                onConsume: ZacBuilderConsume(type: consumeType),
+              )
+            : e as Object;
+      })
+    ];
   }
 
   static void update(

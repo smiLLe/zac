@@ -32,15 +32,17 @@ _$_FlutterWrap _$$_FlutterWrapFromJson(Map<String, dynamic> json) =>
               json['crossAxisAlignment'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : ZacValue<dynamic>.fromJson(json['textDirection'] as Object),
+          : FlutterTextDirection.fromJson(
+              json['textDirection'] as Map<String, dynamic>),
       verticalDirection: json['verticalDirection'] == null
           ? null
           : ZacValue<VerticalDirection>.fromJson(
               json['verticalDirection'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<dynamic>.fromJson(json['clipBehavior'] as Object),
+          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       children: json['children'] == null
           ? null
-          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
+          : ZacValueList<Widget>.fromJson(
+              json['children'] as Map<String, dynamic>),
     );

@@ -94,7 +94,7 @@ Value after: $transformedValue''');
   }
 
   static List<T> list<T>({
-    required List<dynamic> fromValue,
+    required List<Object> fromValue,
     required ZacContext zacContext,
     required ZacTransformers? transformer,
     required ZacTransformers? itemTransformer,
@@ -137,7 +137,7 @@ Value after: $transformed''');
   }
 
   static List<T>? listOrNull<T>({
-    required List<dynamic>? fromValue,
+    required List<Object>? fromValue,
     required ZacContext zacContext,
     required ZacTransformers? transformer,
     required ZacTransformers? itemTransformer,
@@ -150,12 +150,10 @@ Value after: $transformed''');
       return List<T>.from(fromValue);
     }
 
-    fromValue as List<dynamic>;
-
     List<dynamic> transformedItems = null == itemTransformer
-        ? fromValue
-        : fromValue
-            .map((dynamic e) => itemTransformer.transform(
+        ? fromValue!
+        : fromValue!
+            .map((Object e) => itemTransformer.transform(
                 ZacTransformValue(e), zacContext, const ZacActionPayload()))
             .toList();
 

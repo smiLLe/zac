@@ -597,5 +597,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
   'z:1:ZacValue.builder': ZacValue.fromJson,
   'z:1:ZacValue.consume': ZacValue.fromJson,
-  'z:1:ZacValue.value': ZacValue.fromJson
+  'z:1:ZacValue.value': ZacValue.fromJson,
+  'z:1:ZacValueList': ZacValueList.fromJson,
+  'z:1:ZacValueList.consume': ZacValueList.fromJson
 };

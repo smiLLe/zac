@@ -29,12 +29,11 @@ mixin _$FlutterWrap {
       throw _privateConstructorUsedError;
   ZacValue<WrapCrossAlignment>? get crossAxisAlignment =>
       throw _privateConstructorUsedError;
-  ZacValue<TextDirection>? get textDirection =>
-      throw _privateConstructorUsedError;
+  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   ZacValue<VerticalDirection>? get verticalDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<Clip>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
+  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValueList<Widget>? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -78,13 +77,13 @@ class _$_FlutterWrap extends _FlutterWrap {
   @override
   final ZacValue<WrapCrossAlignment>? crossAxisAlignment;
   @override
-  final ZacValue<TextDirection>? textDirection;
+  final FlutterTextDirection? textDirection;
   @override
   final ZacValue<VerticalDirection>? verticalDirection;
   @override
-  final ZacValue<Clip>? clipBehavior;
+  final FlutterClip? clipBehavior;
   @override
-  final ZacListOfFlutterWidget? children;
+  final ZacValueList<Widget>? children;
 
   @override
   String toString() {
@@ -152,10 +151,10 @@ abstract class _FlutterWrap extends FlutterWrap {
       final ZacValue<double>? runSpacing,
       final ZacValue<WrapAlignment>? runAlignment,
       final ZacValue<WrapCrossAlignment>? crossAxisAlignment,
-      final ZacValue<TextDirection>? textDirection,
+      final FlutterTextDirection? textDirection,
       final ZacValue<VerticalDirection>? verticalDirection,
-      final ZacValue<Clip>? clipBehavior,
-      final ZacListOfFlutterWidget? children}) = _$_FlutterWrap;
+      final FlutterClip? clipBehavior,
+      final ZacValueList<Widget>? children}) = _$_FlutterWrap;
   _FlutterWrap._() : super._();
 
   factory _FlutterWrap.fromJson(Map<String, dynamic> json) =
@@ -176,11 +175,11 @@ abstract class _FlutterWrap extends FlutterWrap {
   @override
   ZacValue<WrapCrossAlignment>? get crossAxisAlignment;
   @override
-  ZacValue<TextDirection>? get textDirection;
+  FlutterTextDirection? get textDirection;
   @override
   ZacValue<VerticalDirection>? get verticalDirection;
   @override
-  ZacValue<Clip>? get clipBehavior;
+  FlutterClip? get clipBehavior;
   @override
-  ZacListOfFlutterWidget? get children;
+  ZacValueList<Widget>? get children;
 }
