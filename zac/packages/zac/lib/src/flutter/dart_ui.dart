@@ -133,12 +133,6 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return _build(zacContext);
   }
-
-  @override
-  buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
 }
 
 @freezedZacBuilder

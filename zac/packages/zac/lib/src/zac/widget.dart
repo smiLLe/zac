@@ -59,12 +59,6 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return _buildWidget(zacContext);
   }
-
-  @override
-  Widget? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
 }
 
 class ZacWidget extends HookWidget {

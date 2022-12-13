@@ -39,10 +39,6 @@ Created builder: $builder''');
 
   T build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
-
-  /// Implementations may allow a SharedValue to return null
-  T? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
 }
 
 @freezedZacDefaults

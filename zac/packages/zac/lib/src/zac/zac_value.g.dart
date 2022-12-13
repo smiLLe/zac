@@ -6,20 +6,14 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValueValue<T> _$$_ZacValueValueFromJson<T>(Map<String, dynamic> json) =>
-    _$_ZacValueValue<T>(
-      value: _ValueConverter<T>().fromJson(json['value'] as Object),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacValueBuilder<T> _$$_ZacValueBuilderFromJson<T>(
+_$_ZacValueValue<T> _$$_ZacValueValueFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValueBuilder<T>(
-      builder: ZacBuilder<T>.fromJson(json['builder'] as Map<String, dynamic>),
+    _$_ZacValueValue<T>(
+      json['value'],
       $type: json['converter'] as String?,
     );
 
-_$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T>(
+_$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
     _$_ZacValueConsume<T>(
       family: json['family'] as Object,

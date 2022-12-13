@@ -227,7 +227,7 @@ void main() {
 
       expect(
           TransformObjectHelper.list<int>(
-            fromValue: <dynamic>[5],
+            fromValue: <Object>[5],
             zacContext: zacContext,
             transformer: null,
             itemTransformer: null,
@@ -236,7 +236,7 @@ void main() {
 
       expect(
           () => TransformObjectHelper.list<int>(
-                fromValue: <dynamic>['foo'],
+                fromValue: <Object>['foo'],
                 zacContext: zacContext,
                 transformer: null,
                 itemTransformer: null,
@@ -245,7 +245,7 @@ void main() {
 
       expect(
           TransformObjectHelper.list<int>(
-            fromValue: <dynamic>['hello'],
+            fromValue: <Object>['hello'],
             zacContext: zacContext,
             transformer: null,
             itemTransformer: ZacTransformers([
@@ -260,7 +260,7 @@ void main() {
 
       expect(
           TransformObjectHelper.list<int>(
-            fromValue: <dynamic>[5],
+            fromValue: <Object>[5],
             zacContext: zacContext,
             transformer: ZacTransformers([
               CustomTransformer(
@@ -275,7 +275,7 @@ void main() {
 
       expect(
           TransformObjectHelper.list<int>(
-            fromValue: <dynamic>['hello'],
+            fromValue: <Object>['hello'],
             zacContext: zacContext,
             transformer: ZacTransformers([
               CustomTransformer(
@@ -296,7 +296,7 @@ void main() {
 
       expect(
           () => TransformObjectHelper.list<int>(
-                fromValue: <dynamic>[5],
+                fromValue: <Object>[5],
                 zacContext: zacContext,
                 transformer: ZacTransformers([
                   CustomTransformer(
@@ -328,7 +328,7 @@ void main() {
 
       expect(
           TransformObjectHelper.listOrNull<int>(
-            fromValue: <dynamic>[5],
+            fromValue: <Object>[5],
             zacContext: zacContext,
             transformer: ZacTransformers([
               CustomTransformer(
@@ -352,7 +352,7 @@ void main() {
 
       expect(
           TransformObjectHelper.listOrNull<int>(
-            fromValue: <dynamic>[5],
+            fromValue: <Object>[5],
             zacContext: zacContext,
             transformer: null,
             itemTransformer: null,
@@ -361,7 +361,7 @@ void main() {
 
       expect(
           () => TransformObjectHelper.listOrNull<int>(
-                fromValue: <dynamic>['foo'],
+                fromValue: <Object>['foo'],
                 zacContext: zacContext,
                 transformer: null,
                 itemTransformer: null,
@@ -370,7 +370,7 @@ void main() {
 
       expect(
           TransformObjectHelper.listOrNull<int>(
-            fromValue: <dynamic>['hello'],
+            fromValue: <Object>['hello'],
             zacContext: zacContext,
             transformer: null,
             itemTransformer: ZacTransformers([
@@ -385,7 +385,7 @@ void main() {
 
       expect(
           TransformObjectHelper.listOrNull<int>(
-            fromValue: <dynamic>[5],
+            fromValue: <Object>[5],
             zacContext: zacContext,
             transformer: ZacTransformers([
               CustomTransformer(
@@ -400,7 +400,7 @@ void main() {
 
       expect(
           TransformObjectHelper.listOrNull<int>(
-            fromValue: <dynamic>['hello'],
+            fromValue: <Object>['hello'],
             zacContext: zacContext,
             transformer: ZacTransformers([
               CustomTransformer(
@@ -421,7 +421,7 @@ void main() {
 
       expect(
           () => TransformObjectHelper.listOrNull<int>(
-                fromValue: <dynamic>[5],
+                fromValue: <Object>[5],
                 zacContext: zacContext,
                 transformer: ZacTransformers([
                   CustomTransformer(
@@ -814,18 +814,18 @@ void main() {
       _expectFromJson<ListTransformer>(
           fromJson: ListTransformer.fromJson,
           converter: 'z:1:Transformer:List.add',
-          equals: ListTransformer.add(ZacValue<Object>.value(value: 'hello')),
+          equals: ListTransformer.add(ZacValue<Object>('hello')),
           props: <String, dynamic>{
             'value': 'hello',
           });
 
       expect(
-          ListTransformer.add(ZacValue<Object>.value(value: 'hello')).transform(
+          ListTransformer.add(ZacValue<Object>('hello')).transform(
               ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
           ['foo', 'bar', 'hello']);
 
       expect(
-          () => ListTransformer.add(ZacValue<Object>.value(value: 'hello'))
+          () => ListTransformer.add(ZacValue<Object>('hello'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });

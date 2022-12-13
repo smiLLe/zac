@@ -143,12 +143,6 @@ class ZacExecuteActionsBuilder
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return _buildWidget(zacContext);
   }
-
-  @override
-  Widget? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
 }
 
 class ZacExecuteActionsListen extends HookConsumerWidget {

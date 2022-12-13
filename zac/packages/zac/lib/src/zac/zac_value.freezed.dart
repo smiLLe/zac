@@ -14,12 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacValue<T> _$ZacValueFromJson<T>(Map<String, dynamic> json) {
+ZacValue<T> _$ZacValueFromJson<T extends Object?>(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:ZacValue.value':
       return _ZacValueValue<T>.fromJson(json);
-    case 'z:1:ZacValue.builder':
-      return _ZacValueBuilder<T>.fromJson(json);
     case 'z:1:ZacValue.consume':
       return _ZacValueConsume<T>.fromJson(json);
 
@@ -30,11 +28,10 @@ ZacValue<T> _$ZacValueFromJson<T>(Map<String, dynamic> json) {
 }
 
 /// @nodoc
-mixin _$ZacValue<T> {
+mixin _$ZacValue<T extends Object?> {
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacValueValue<T> value) value,
-    required TResult Function(_ZacValueBuilder<T> value) builder,
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueValue<T> value) $default, {
     required TResult Function(_ZacValueConsume<T> value) consume,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,9 +39,8 @@ mixin _$ZacValue<T> {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacValueValue<T> extends _ZacValueValue<T> {
-  _$_ZacValueValue(
-      {@_ValueConverter() required this.value, final String? $type})
+class _$_ZacValueValue<T extends Object?> extends _ZacValueValue<T> {
+  _$_ZacValueValue(this.value, {final String? $type})
       : $type = $type ?? 'z:1:ZacValue.value',
         super._();
 
@@ -52,15 +48,14 @@ class _$_ZacValueValue<T> extends _ZacValueValue<T> {
       _$$_ZacValueValueFromJson(json);
 
   @override
-  @_ValueConverter()
-  final T value;
+  final Object? value;
 
   @JsonKey(name: 'converter')
   final String $type;
 
   @override
   String toString() {
-    return 'ZacValue<$T>.value(value: $value)';
+    return 'ZacValue<$T>(value: $value)';
   }
 
   @override
@@ -78,85 +73,27 @@ class _$_ZacValueValue<T> extends _ZacValueValue<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacValueValue<T> value) value,
-    required TResult Function(_ZacValueBuilder<T> value) builder,
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueValue<T> value) $default, {
     required TResult Function(_ZacValueConsume<T> value) consume,
   }) {
-    return value(this);
+    return $default(this);
   }
 }
 
-abstract class _ZacValueValue<T> extends ZacValue<T> {
-  factory _ZacValueValue({@_ValueConverter() required final T value}) =
-      _$_ZacValueValue<T>;
+abstract class _ZacValueValue<T extends Object?> extends ZacValue<T> {
+  factory _ZacValueValue(final Object? value) = _$_ZacValueValue<T>;
   _ZacValueValue._() : super._();
 
   factory _ZacValueValue.fromJson(Map<String, dynamic> json) =
       _$_ZacValueValue<T>.fromJson;
 
-  @_ValueConverter()
-  T get value;
+  Object? get value;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacValueBuilder<T> extends _ZacValueBuilder<T> {
-  _$_ZacValueBuilder({required this.builder, final String? $type})
-      : $type = $type ?? 'z:1:ZacValue.builder',
-        super._();
-
-  factory _$_ZacValueBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueBuilderFromJson(json);
-
-  @override
-  final ZacBuilder<T> builder;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacValue<$T>.builder(builder: $builder)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacValueBuilder<T> &&
-            (identical(other.builder, builder) || other.builder == builder));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, builder);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacValueValue<T> value) value,
-    required TResult Function(_ZacValueBuilder<T> value) builder,
-    required TResult Function(_ZacValueConsume<T> value) consume,
-  }) {
-    return builder(this);
-  }
-}
-
-abstract class _ZacValueBuilder<T> extends ZacValue<T> {
-  factory _ZacValueBuilder({required final ZacBuilder<T> builder}) =
-      _$_ZacValueBuilder<T>;
-  _ZacValueBuilder._() : super._();
-
-  factory _ZacValueBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ZacValueBuilder<T>.fromJson;
-
-  ZacBuilder<T> get builder;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacValueConsume<T> extends _ZacValueConsume<T> {
+class _$_ZacValueConsume<T extends Object?> extends _ZacValueConsume<T> {
   _$_ZacValueConsume(
       {required this.family,
       this.transformer,
@@ -210,16 +147,15 @@ class _$_ZacValueConsume<T> extends _ZacValueConsume<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacValueValue<T> value) value,
-    required TResult Function(_ZacValueBuilder<T> value) builder,
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueValue<T> value) $default, {
     required TResult Function(_ZacValueConsume<T> value) consume,
   }) {
     return consume(this);
   }
 }
 
-abstract class _ZacValueConsume<T> extends ZacValue<T> {
+abstract class _ZacValueConsume<T extends Object?> extends ZacValue<T> {
   factory _ZacValueConsume(
       {required final Object family,
       final ZacTransformers? transformer,

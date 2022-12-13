@@ -135,11 +135,10 @@ class _ValueConverter<T> implements JsonConverter<T, Object> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
+class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
   const ZacValue._();
 
   static const String unionFromValue = 'z:1:ZacValue.value';
-  static const String unionFromBuilder = 'z:1:ZacValue.builder';
   static const String unionFromSharedValue = 'z:1:ZacValue.consume';
 
   factory ZacValue.fromJson(Object data) {
@@ -147,31 +146,30 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
     if (isConverter &&
         [
           ZacValue.unionFromValue,
-          ZacValue.unionFromBuilder,
           ZacValue.unionFromSharedValue,
         ].contains((data as Map<String, dynamic>)['converter'])) {
       return _$ZacValueFromJson<T>(data);
     } else if (isConverter) {
       return _$ZacValueFromJson<T>(<String, dynamic>{
-        'converter': ZacValue.unionFromBuilder,
-        'builder': data,
+        'converter': ZacValue.unionFromValue,
+        'value': data,
       });
     } else if (T == Object) {
-      return ZacValue<T>.value(value: data as T);
+      return ZacValue<T>(data as T);
     } else if (T == int && data is num) {
-      return ZacValue<T>.value(value: data.toInt() as T);
+      return ZacValue<T>(data.toInt() as T);
     } else if (T == double && data is num) {
-      return ZacValue<T>.value(value: data.toDouble() as T);
+      return ZacValue<T>(data.toDouble() as T);
     } else if (T == num && data is num) {
-      return ZacValue<T>.value(value: data as T);
+      return ZacValue<T>(data as T);
     } else if (T == String && data is String) {
-      return ZacValue<T>.value(value: data as T);
+      return ZacValue<T>(data as T);
     } else if (T == bool && data is bool) {
-      return ZacValue<T>.value(value: data as T);
+      return ZacValue<T>(data as T);
     } else if (T == DateTime && data is String) {
-      return ZacValue<T>.value(value: DateTime.parse(data) as T);
+      return ZacValue<T>(DateTime.parse(data) as T);
     } else if (data is T) {
-      return ZacValue<T>.value(value: data as T);
+      return ZacValue<T>(data as T);
     }
 
     throw StateError(
@@ -179,14 +177,7 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
   }
 
   @FreezedUnionValue(ZacValue.unionFromValue)
-  factory ZacValue.value({
-    @_ValueConverter() required T value,
-  }) = _ZacValueValue<T>;
-
-  @FreezedUnionValue(ZacValue.unionFromBuilder)
-  factory ZacValue.builder({
-    required ZacBuilder<T> builder,
-  }) = _ZacValueBuilder<T>;
+  factory ZacValue(Object? value) = _ZacValueValue<T>;
 
   @FreezedUnionValue(ZacValue.unionFromSharedValue)
   factory ZacValue.consume({
@@ -200,44 +191,77 @@ class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
   T build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return map<T>(
-      value: (obj) => obj.value,
-      builder: (obj) {
-        return obj.builder.build(zacContext, onConsume: onConsume);
+      (obj) {
+        if (null is T && null == obj.value) return null as T;
+        if (obj.value is T) return obj.value as T;
+        if (obj.value is ZacBuilder<T>) {
+          return (obj.value as ZacBuilder<T>).build(
+            zacContext,
+            onConsume: onConsume,
+          );
+        }
+        throw StateError('''
+It was not possible to return a value of type $T from ${ZacValue<T>}.build().
+The value: ${obj.value}''');
       },
       consume: (obj) {
-        return SharedValue.getTyped<T>(
+        final value = SharedValue.get(
           zacContext: zacContext,
-          consumeType:
-              (obj.forceConsume ?? const SharedValueConsumeType.watch()),
-          family: obj.family,
           select: obj.select,
-          transformer: obj.transformer,
+          consumeType: (obj.forceConsume ?? onConsume.type),
+          family: obj.family,
         );
-      },
-    );
-  }
 
-  @override
-  T? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return map<T?>(
-      value: (obj) => obj.value,
-      builder: (obj) {
-        return obj.builder.buildOrNull(zacContext, onConsume: onConsume);
-      },
-      consume: (obj) {
-        return SharedValue.getTypedOrNull<T>(
-          zacContext: zacContext,
-          consumeType:
-              (obj.forceConsume ?? const SharedValueConsumeType.watch()),
-          family: obj.family,
-          select: obj.select,
-          transformer: obj.transformer,
-        );
+        final transformer = obj.transformer;
+
+        if (null == value) {
+          if (null is T && true != transformer?.transformers.isNotEmpty) {
+            return null as T;
+          } else if (null is! T &&
+              true != transformer?.transformers.isNotEmpty) {
+            throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValue<T>}.build()
+because the value is null and there are no transformers added.''');
+          }
+        }
+
+        if (value is T && true != transformer?.transformers.isNotEmpty) {
+          return value;
+        }
+
+        if (null == transformer || transformer.transformers.isEmpty) {
+          throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValue<T>}.build()
+because there were no transformer.
+The value of type ${value.runtimeType} was expected to be transformed.
+$value''');
+        }
+
+        final transformedVal =
+            transformer.transform(ZacTransformValue(value), zacContext, null);
+        if (transformedVal is! T) {
+          final transformerErr =
+              transformer.transformers.map((e) => e.runtimeType);
+
+          throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValue<T>} 
+after transformers were applied.
+Type of value before transformation: ${value.runtimeType}
+Type of value after transformation: ${transformedVal.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $value
+Value after: $transformedVal''');
+        }
+
+        return transformedVal;
       },
     );
   }
 }
+
+// @freezedZacBuilder
+// @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
+class ZacValueIterable<T extends Object?, X extends Iterable<T>?> {}
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
