@@ -30,7 +30,7 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterStackFit? fit,
     FlutterClip? clipBehavior,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterStack;
 
   Stack _buildWidget(ZacContext zacContext) {

@@ -41,7 +41,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     ZacValue<bool?>? addRepaintBoundaries,
     ZacValue<bool?>? addSemanticIndexes,
     ZacValue<double?>? cacheExtent,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
     ZacValue<int?>? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,

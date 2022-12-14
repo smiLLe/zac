@@ -424,8 +424,8 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(FlutterText(
                   ZacValue<String>.consume(
                     family: 'family',
                     transformer: ZacTransformers([
@@ -437,11 +437,13 @@ void main() {
                       )
                     ]),
                   ),
-                ),
-                ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
-                    SharedValueActions.update(family: 'family'),
-                  ]),
+                )),
+                ZacValue<Widget>.builder(
+                  ZacExecuteActionsBuilder.once(
+                    actions: ZacActions([
+                      SharedValueActions.update(family: 'family'),
+                    ]),
+                  ),
                 ),
               ]),
             ),
@@ -463,16 +465,19 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacValue<String>.consume(family: 'family')),
-                ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
-                    SharedValueActions.update(
-                      family: 'family',
-                      transformer: ZacTransformers([_ConcatStr('oof')]),
-                      ifNoPayloadTakeCurrent: true,
-                    ),
-                  ]),
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(
+                    FlutterText(ZacValue<String>.consume(family: 'family'))),
+                ZacValue<Widget>.builder(
+                  ZacExecuteActionsBuilder.once(
+                    actions: ZacActions([
+                      SharedValueActions.update(
+                        family: 'family',
+                        transformer: ZacTransformers([_ConcatStr('oof')]),
+                        ifNoPayloadTakeCurrent: true,
+                      ),
+                    ]),
+                  ),
                 ),
               ]),
             ),
@@ -493,13 +498,13 @@ void main() {
             value: ['a', 'b'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacValue<String>.consume(
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
-                )),
-                ZacExecuteActionsBuilder.once(
+                ))),
+                ZacValue<Widget>.builder(ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
                     SharedValueActions.update(
                       family: 'family',
@@ -510,7 +515,7 @@ void main() {
                       ifNoPayloadTakeCurrent: true,
                     ),
                   ]),
-                ),
+                )),
               ]),
             ),
           ),
@@ -534,13 +539,14 @@ void main() {
             value: ['ignore'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacValue<String>.consume(
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
-                )),
-                LeakContext(cb: (c) => zacContext = c),
+                ))),
+                ZacValue<Widget>.builder(
+                    LeakContext(cb: (c) => zacContext = c)),
               ]),
             ),
           ),
@@ -579,22 +585,23 @@ void main() {
             ],
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacValue<String>.consume(
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.first(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )),
-                FlutterText(ZacValue<String>.consume(
+                ))),
+                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.last(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )),
-                LeakContext(cb: (c) => zacContext = c),
+                ))),
+                ZacValue<Widget>.builder(
+                    LeakContext(cb: (c) => zacContext = c)),
               ]),
             ),
           ),
@@ -631,15 +638,16 @@ void main() {
             value: {'ignore': 'ignore'},
             family: 'family',
             child: FlutterColumn(
-              children: ZacListOfFlutterWidget(items: [
-                FlutterText(ZacValue<String>.consume(
+              children: ZacValueList<Widget, List<Widget>?>(items: [
+                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
                   family: 'family',
                   transformer: ZacTransformers([
                     const MapTransformer.values(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )),
-                LeakContext(cb: (c) => zacContext = c),
+                ))),
+                ZacValue<Widget>.builder(
+                    LeakContext(cb: (c) => zacContext = c)),
               ]),
             ),
           ),

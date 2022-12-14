@@ -32,7 +32,7 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterVerticalDirection? verticalDirection,
     FlutterTextBaseline? textBaseline,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterRow;
 
   Row _buildWidget(ZacContext zacContext) {

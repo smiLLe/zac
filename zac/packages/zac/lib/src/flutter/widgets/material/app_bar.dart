@@ -30,7 +30,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
     FlutterWidget? leading,
     ZacValue<bool?>? automaticallyImplyLeading,
     FlutterWidget? title,
-    ZacListOfFlutterWidget? actions,
+    ZacValueList<Widget, List<Widget>?>? actions,
     FlutterWidget? flexibleSpace,
 // PreferredSizeWidget
     FlutterWidget? bottom,

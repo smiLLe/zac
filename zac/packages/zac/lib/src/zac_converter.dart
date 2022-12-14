@@ -497,8 +497,6 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
       FlutterGlobalKeyNavigatorState.fromJson,
   'z:1:GlobalKey<ScaffoldMessengerState>.consume':
       FlutterGlobalKeyScaffoldMessengerState.fromJson,
-  'z:1:List<FlutterWidget>': ZacListOfFlutterWidget.fromJson,
-  'z:1:List<FlutterWidget>.consume': ZacListOfFlutterWidget.fromJson,
   'z:1:Navigator.popUntilRouteName': FlutterNavigatorActions.fromJson,
   'z:1:NavigatorState.shared': FlutterNavigatorState.fromJson,
   'z:1:ProvideKey:GlobalKey<NavigatorState>': ZacProvideFlutterKey.fromJson,

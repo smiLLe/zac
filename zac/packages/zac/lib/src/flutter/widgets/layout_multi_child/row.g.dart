@@ -37,5 +37,6 @@ _$_FlutterRow _$$_FlutterRowFromJson(Map<String, dynamic> json) =>
               json['textBaseline'] as Map<String, dynamic>),
       children: json['children'] == null
           ? null
-          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
+          : ZacValueList<Widget, List<Widget>?>.fromJson(
+              json['children'] as Object),
     );

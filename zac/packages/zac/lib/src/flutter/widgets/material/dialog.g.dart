@@ -52,7 +52,8 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : FlutterWidget.fromJson(json['content'] as Object),
       actions: json['actions'] == null
           ? null
-          : ZacListOfFlutterWidget.fromJson(json['actions'] as Object),
+          : ZacValueList<Widget, List<Widget>?>.fromJson(
+              json['actions'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['titlePadding'] as Object),
@@ -127,7 +128,8 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
           : FlutterWidget.fromJson(json['title'] as Object),
       children: json['children'] == null
           ? null
-          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
+          : ZacValueList<Widget, List<Widget>?>.fromJson(
+              json['children'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
           : FlutterEdgeInsetsGeometry.fromJson(json['titlePadding'] as Object),

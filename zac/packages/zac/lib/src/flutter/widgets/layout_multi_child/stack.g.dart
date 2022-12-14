@@ -26,5 +26,6 @@ _$_FlutterStack _$$_FlutterStackFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       children: json['children'] == null
           ? null
-          : ZacListOfFlutterWidget.fromJson(json['children'] as Object),
+          : ZacValueList<Widget, List<Widget>?>.fromJson(
+              json['children'] as Object),
     );

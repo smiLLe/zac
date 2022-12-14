@@ -417,199 +417,13 @@ abstract class _ZacValueListConsume<T extends Object?, X extends List<T>?>
   SharedValueConsumeType? get forceConsume;
 }
 
-ZacListOfFlutterWidget _$ZacListOfFlutterWidgetFromJson(
-    Map<String, dynamic> json) {
-  switch (json['converter']) {
-    case 'z:1:List<FlutterWidget>':
-      return _ZacListOfFlutterWidget.fromJson(json);
-    case 'z:1:List<FlutterWidget>.consume':
-      return _ZacListOfFlutterWidgetSharedValue.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'ZacListOfFlutterWidget',
-          'Invalid union type "${json['converter']}"!');
-  }
-}
-
-/// @nodoc
-mixin _$ZacListOfFlutterWidget {
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacListOfFlutterWidget value) $default, {
-    required TResult Function(_ZacListOfFlutterWidgetSharedValue value) consume,
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacListOfFlutterWidget extends _ZacListOfFlutterWidget
-    with ZacSimpleValueList<FlutterWidget> {
-  _$_ZacListOfFlutterWidget(
-      {required final List<FlutterWidget> items, final String? $type})
-      : _items = items,
-        $type = $type ?? 'z:1:List<FlutterWidget>',
-        super._();
-
-  factory _$_ZacListOfFlutterWidget.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacListOfFlutterWidgetFromJson(json);
-
-  final List<FlutterWidget> _items;
-  @override
-  List<FlutterWidget> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacListOfFlutterWidget(items: $items)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacListOfFlutterWidget &&
-            const DeepCollectionEquality().equals(other._items, _items));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacListOfFlutterWidget value) $default, {
-    required TResult Function(_ZacListOfFlutterWidgetSharedValue value) consume,
-  }) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacListOfFlutterWidget extends ZacListOfFlutterWidget
-    implements ZacSimpleValueList<FlutterWidget> {
-  factory _ZacListOfFlutterWidget({required final List<FlutterWidget> items}) =
-      _$_ZacListOfFlutterWidget;
-  _ZacListOfFlutterWidget._() : super._();
-
-  factory _ZacListOfFlutterWidget.fromJson(Map<String, dynamic> json) =
-      _$_ZacListOfFlutterWidget.fromJson;
-
-  List<FlutterWidget> get items;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacListOfFlutterWidgetSharedValue
-    extends _ZacListOfFlutterWidgetSharedValue
-    with ConsumeSharedValueList<FlutterWidget> {
-  _$_ZacListOfFlutterWidgetSharedValue(
-      {required this.family,
-      this.transformer,
-      this.itemTransformer,
-      this.select,
-      this.forceConsume,
-      final String? $type})
-      : $type = $type ?? 'z:1:List<FlutterWidget>.consume',
-        super._();
-
-  factory _$_ZacListOfFlutterWidgetSharedValue.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacListOfFlutterWidgetSharedValueFromJson(json);
-
-  @override
-  final Object family;
-  @override
-  final ZacTransformers? transformer;
-  @override
-  final ZacTransformers? itemTransformer;
-  @override
-  final ZacTransformers? select;
-  @override
-  final SharedValueConsumeType? forceConsume;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacListOfFlutterWidget.consume(family: $family, transformer: $transformer, itemTransformer: $itemTransformer, select: $select, forceConsume: $forceConsume)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacListOfFlutterWidgetSharedValue &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.itemTransformer, itemTransformer) ||
-                other.itemTransformer == itemTransformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      transformer,
-      itemTransformer,
-      select,
-      forceConsume);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacListOfFlutterWidget value) $default, {
-    required TResult Function(_ZacListOfFlutterWidgetSharedValue value) consume,
-  }) {
-    return consume(this);
-  }
-}
-
-abstract class _ZacListOfFlutterWidgetSharedValue extends ZacListOfFlutterWidget
-    implements ConsumeSharedValueList<FlutterWidget> {
-  factory _ZacListOfFlutterWidgetSharedValue(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? itemTransformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_ZacListOfFlutterWidgetSharedValue;
-  _ZacListOfFlutterWidgetSharedValue._() : super._();
-
-  factory _ZacListOfFlutterWidgetSharedValue.fromJson(
-          Map<String, dynamic> json) =
-      _$_ZacListOfFlutterWidgetSharedValue.fromJson;
-
-  Object get family;
-  ZacTransformers? get transformer;
-  ZacTransformers? get itemTransformer;
-  ZacTransformers? get select;
-  SharedValueConsumeType? get forceConsume;
-}
-
 ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
   return _ZacValueActionsAsPayload.fromJson(json);
 }
 
 /// @nodoc
 mixin _$ZacValueActions {
-  ZacValue<Object> get value => throw _privateConstructorUsedError;
+  ZacValue<Object?> get value => throw _privateConstructorUsedError;
   ZacActions get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -629,7 +443,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
       _$$_ZacValueActionsAsPayloadFromJson(json);
 
   @override
-  final ZacValue<Object> value;
+  final ZacValue<Object?> value;
   @override
   final ZacActions actions;
 
@@ -662,7 +476,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
 
 abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   factory _ZacValueActionsAsPayload(
-      {required final ZacValue<Object> value,
+      {required final ZacValue<Object?> value,
       required final ZacActions actions}) = _$_ZacValueActionsAsPayload;
   _ZacValueActionsAsPayload._() : super._();
 
@@ -670,7 +484,7 @@ abstract class _ZacValueActionsAsPayload extends ZacValueActions {
       _$_ZacValueActionsAsPayload.fromJson;
 
   @override
-  ZacValue<Object> get value;
+  ZacValue<Object?> get value;
   @override
   ZacActions get actions;
 }

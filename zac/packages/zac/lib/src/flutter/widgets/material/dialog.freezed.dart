@@ -197,7 +197,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final FlutterWidget? content;
   @override
-  final ZacListOfFlutterWidget? actions;
+  final ZacValueList<Widget, List<Widget>?>? actions;
   @override
   final FlutterEdgeInsetsGeometry? titlePadding;
   @override
@@ -333,7 +333,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       {final FlutterKey? key,
       final FlutterWidget? title,
       final FlutterWidget? content,
-      final ZacListOfFlutterWidget? actions,
+      final ZacValueList<Widget, List<Widget>?>? actions,
       final FlutterEdgeInsetsGeometry? titlePadding,
       final FlutterTextStyle? titleTextStyle,
       final FlutterEdgeInsetsGeometry? contentPadding,
@@ -360,7 +360,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   FlutterKey? get key;
   FlutterWidget? get title;
   FlutterWidget? get content;
-  ZacListOfFlutterWidget? get actions;
+  ZacValueList<Widget, List<Widget>?>? get actions;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;
@@ -409,7 +409,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final FlutterWidget? title;
   @override
-  final ZacListOfFlutterWidget? children;
+  final ZacValueList<Widget, List<Widget>?>? children;
   @override
   final FlutterEdgeInsetsGeometry? titlePadding;
   @override
@@ -504,7 +504,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialog(
           {final FlutterKey? key,
           final FlutterWidget? title,
-          final ZacListOfFlutterWidget? children,
+          final ZacValueList<Widget, List<Widget>?>? children,
           final FlutterEdgeInsetsGeometry? titlePadding,
           final FlutterTextStyle? titleTextStyle,
           final FlutterEdgeInsetsGeometry? contentPadding,
@@ -524,7 +524,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   @override
   FlutterKey? get key;
   FlutterWidget? get title;
-  ZacListOfFlutterWidget? get children;
+  ZacValueList<Widget, List<Widget>?>? get children;
   FlutterEdgeInsetsGeometry? get titlePadding;
   FlutterTextStyle? get titleTextStyle;
   FlutterEdgeInsetsGeometry? get contentPadding;

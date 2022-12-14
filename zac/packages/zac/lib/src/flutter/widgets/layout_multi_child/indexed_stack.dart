@@ -30,7 +30,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterStackFit? sizing,
     ZacValue<int?>? index,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterIndexedStack;
 
   IndexedStack _buildWidget(ZacContext zacContext) {

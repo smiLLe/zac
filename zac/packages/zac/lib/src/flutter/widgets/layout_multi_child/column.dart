@@ -32,7 +32,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
     FlutterTextDirection? textDirection,
     FlutterVerticalDirection? verticalDirection,
     FlutterTextBaseline? textBaseline,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterColumn;
 
   Column _buildWidget(ZacContext zacContext) {

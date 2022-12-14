@@ -34,7 +34,8 @@ mixin _$FlutterButtonBar {
       throw _privateConstructorUsedError;
   ZacValue<double?>? get overflowButtonSpacing =>
       throw _privateConstructorUsedError;
-  ZacListOfFlutterWidget? get children => throw _privateConstructorUsedError;
+  ZacValueList<Widget, List<Widget>?>? get children =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -83,7 +84,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
   @override
   final ZacValue<double?>? overflowButtonSpacing;
   @override
-  final ZacListOfFlutterWidget? children;
+  final ZacValueList<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -142,16 +143,17 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
 
 abstract class _FlutterButtonBar extends FlutterButtonBar {
   factory _FlutterButtonBar(
-      {final FlutterKey? key,
-      final FlutterMainAxisAlignment? alignment,
-      final FlutterMainAxisSize? mainAxisSize,
-      final ZacValue<double?>? buttonMinWidth,
-      final ZacValue<double?>? buttonHeight,
-      final FlutterEdgeInsetsGeometry? buttonPadding,
-      final ZacValue<bool?>? buttonAlignedDropdown,
-      final FlutterVerticalDirection? overflowDirection,
-      final ZacValue<double?>? overflowButtonSpacing,
-      final ZacListOfFlutterWidget? children}) = _$_FlutterButtonBar;
+          {final FlutterKey? key,
+          final FlutterMainAxisAlignment? alignment,
+          final FlutterMainAxisSize? mainAxisSize,
+          final ZacValue<double?>? buttonMinWidth,
+          final ZacValue<double?>? buttonHeight,
+          final FlutterEdgeInsetsGeometry? buttonPadding,
+          final ZacValue<bool?>? buttonAlignedDropdown,
+          final FlutterVerticalDirection? overflowDirection,
+          final ZacValue<double?>? overflowButtonSpacing,
+          final ZacValueList<Widget, List<Widget>?>? children}) =
+      _$_FlutterButtonBar;
   _FlutterButtonBar._() : super._();
 
   factory _FlutterButtonBar.fromJson(Map<String, dynamic> json) =
@@ -176,5 +178,5 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
   @override
   ZacValue<double?>? get overflowButtonSpacing;
   @override
-  ZacListOfFlutterWidget? get children;
+  ZacValueList<Widget, List<Widget>?>? get children;
 }

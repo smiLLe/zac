@@ -38,7 +38,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterKey? key,
     FlutterWidget? title,
     FlutterWidget? content,
-    ZacListOfFlutterWidget? actions,
+    ZacValueList<Widget, List<Widget>?>? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,
@@ -62,7 +62,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
     FlutterWidget? title,
-    ZacListOfFlutterWidget? children,
+    ZacValueList<Widget, List<Widget>?>? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
     FlutterEdgeInsetsGeometry? contentPadding,

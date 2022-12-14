@@ -23,7 +23,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   @FreezedUnionValue(
       FlutterSliverChildDelegate.unionValueSliverChildListDelegate)
   factory FlutterSliverChildDelegate.list(
-    ZacListOfFlutterWidget children, {
+    ZacValueList<Widget, List<Widget>> children, {
     ZacValue<bool?>? addAutomaticKeepAlives,
     ZacValue<bool?>? addRepaintBoundaries,
     ZacValue<bool?>? addSemanticIndexes,
@@ -34,7 +34,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
   @FreezedUnionValue(
       FlutterSliverChildDelegate.unionValueSliverChildListDelegateFixed)
   factory FlutterSliverChildDelegate.listFixed(
-    ZacListOfFlutterWidget children, {
+    ZacValueList<Widget, List<Widget>> children, {
     ZacValue<bool?>? addAutomaticKeepAlives,
     ZacValue<bool?>? addRepaintBoundaries,
     ZacValue<bool?>? addSemanticIndexes,
