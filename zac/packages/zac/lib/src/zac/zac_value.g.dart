@@ -6,10 +6,17 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValueValue<T> _$$_ZacValueValueFromJson<T extends Object?>(
+_$_ZacValueBuiltIn<T> _$$_ZacValueBuiltInFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValueValue<T>(
-      json['value'],
+    _$_ZacValueBuiltIn<T>(
+      _BuiltInValueConverter<T>().fromJson(json['value'] as Object),
+      $type: json['converter'] as String?,
+    );
+
+_$_ZacValueFromBuilder<T> _$$_ZacValueFromBuilderFromJson<T extends Object?>(
+        Map<String, dynamic> json) =>
+    _$_ZacValueFromBuilder<T>(
+      ZacBuilder<T>.fromJson(json['value'] as Map<String, dynamic>),
       $type: json['converter'] as String?,
     );
 
@@ -30,32 +37,36 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
       $type: json['converter'] as String?,
     );
 
-_$_ZacValueListValue<T> _$$_ZacValueListValueFromJson<T>(
-        Map<String, dynamic> json) =>
-    _$_ZacValueListValue<T>(
-      items: (json['items'] as List<dynamic>).map((e) => e as Object).toList(),
-      $type: json['converter'] as String?,
-    );
+_$_ZacValueList<T, X>
+    _$$_ZacValueListFromJson<T extends Object?, X extends List<T>?>(
+            Map<String, dynamic> json) =>
+        _$_ZacValueList<T, X>(
+          items: (json['items'] as List<dynamic>)
+              .map((e) => ZacValue<T>.fromJson(e as Object))
+              .toList(),
+          $type: json['converter'] as String?,
+        );
 
-_$_ZacValueListConsume<T> _$$_ZacValueListConsumeFromJson<T>(
-        Map<String, dynamic> json) =>
-    _$_ZacValueListConsume<T>(
-      family: json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      itemTransformer: json['itemTransformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
-      select: json['select'] == null
-          ? null
-          : ZacTransformers.fromJson(json['select'] as Object),
-      forceConsume: json['forceConsume'] == null
-          ? null
-          : SharedValueConsumeType.fromJson(
-              json['forceConsume'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
-    );
+_$_ZacValueListConsume<T, X>
+    _$$_ZacValueListConsumeFromJson<T extends Object?, X extends List<T>?>(
+            Map<String, dynamic> json) =>
+        _$_ZacValueListConsume<T, X>(
+          family: json['family'] as Object,
+          transformer: json['transformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['transformer'] as Object),
+          itemTransformer: json['itemTransformer'] == null
+              ? null
+              : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+          select: json['select'] == null
+              ? null
+              : ZacTransformers.fromJson(json['select'] as Object),
+          forceConsume: json['forceConsume'] == null
+              ? null
+              : SharedValueConsumeType.fromJson(
+                  json['forceConsume'] as Map<String, dynamic>),
+          $type: json['converter'] as String?,
+        );
 
 _$_ZacListOfFlutterWidget _$$_ZacListOfFlutterWidgetFromJson(
         Map<String, dynamic> json) =>

@@ -689,7 +689,7 @@ void main() {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.contains',
-        equals: IterableTransformer.contains(ZacValue<Object>.fromJson('foo')),
+        equals: IterableTransformer.contains(ZacValue<Object?>.fromJson('foo')),
         props: <String, dynamic>{
           'element': 'foo',
         },
@@ -966,7 +966,7 @@ void main() {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.containsKey',
-          equals: MapTransformer.containsKey(ZacValue<Object>.fromJson('foo')),
+          equals: MapTransformer.containsKey(ZacValue<Object?>.fromJson('foo')),
           props: <String, dynamic>{'key': 'foo'});
 
       expect(
@@ -990,7 +990,7 @@ void main() {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.containsValue',
-          equals: MapTransformer.containsValue(ZacValue<Object>.fromJson(2)),
+          equals: MapTransformer.containsValue(ZacValue<Object?>.fromJson(2)),
           props: <String, dynamic>{'value': 2});
 
       expect(

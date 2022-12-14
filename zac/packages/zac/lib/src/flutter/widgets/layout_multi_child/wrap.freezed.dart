@@ -33,7 +33,8 @@ mixin _$FlutterWrap {
   ZacValue<VerticalDirection>? get verticalDirection =>
       throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValueList<Widget>? get children => throw _privateConstructorUsedError;
+  ZacValueList<Widget, List<Widget>?>? get children =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -83,7 +84,7 @@ class _$_FlutterWrap extends _FlutterWrap {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final ZacValueList<Widget>? children;
+  final ZacValueList<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -154,7 +155,7 @@ abstract class _FlutterWrap extends FlutterWrap {
       final FlutterTextDirection? textDirection,
       final ZacValue<VerticalDirection>? verticalDirection,
       final FlutterClip? clipBehavior,
-      final ZacValueList<Widget>? children}) = _$_FlutterWrap;
+      final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterWrap;
   _FlutterWrap._() : super._();
 
   factory _FlutterWrap.fromJson(Map<String, dynamic> json) =
@@ -181,5 +182,5 @@ abstract class _FlutterWrap extends FlutterWrap {
   @override
   FlutterClip? get clipBehavior;
   @override
-  ZacValueList<Widget>? get children;
+  ZacValueList<Widget, List<Widget>?>? get children;
 }

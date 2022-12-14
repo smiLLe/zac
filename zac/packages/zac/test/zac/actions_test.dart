@@ -331,7 +331,7 @@ void main() {
           child: ZacExecuteActionsBuilder.listen(
             actions: ZacActions([LeakAction(cb)]),
             family: 'shared',
-            child: ZacValue<Widget>(
+            child: ZacValue<Widget>.builder(
               FlutterSizedBox(
                 key: FlutterValueKey('child'),
                 child: LeakContext(cb: (o) => zacContext = o),

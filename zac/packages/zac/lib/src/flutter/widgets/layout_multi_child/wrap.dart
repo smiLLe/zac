@@ -33,7 +33,7 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
     FlutterTextDirection? textDirection,
     ZacValue<VerticalDirection>? verticalDirection,
     FlutterClip? clipBehavior,
-    ZacValueList<Widget>? children,
+    ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterWrap;
 
   Wrap _buildWidget(ZacContext zacContext) {

@@ -94,7 +94,7 @@ void main() {
     await testZacWidget(
         tester,
         ZacCompleterProviderBuilder.asVoid(
-          child: ZacValue<Widget>(LeakContext(cb: (c) {
+          child: ZacValue<Widget>.builder(LeakContext(cb: (c) {
             zacContext = c;
           })),
           family: 'shared',
@@ -123,7 +123,7 @@ void main() {
     await testZacWidget(
         tester,
         ZacCompleterProviderBuilder.asVoid(
-          child: ZacValue<Widget>(LeakContext(cb: (c) {
+          child: ZacValue<Widget>.builder(LeakContext(cb: (c) {
             zacContext = c;
           })),
           family: 'shared',
