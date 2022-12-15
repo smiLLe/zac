@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/zac/action.dart';
 
 import 'package:zac/src/zac/context.dart';
@@ -42,7 +40,7 @@ class FlutterRefreshIndicator
     ZacValue<String?>? semanticsValue,
     ZacValue<double?>? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
-    ZacCompleterVoidProvider? onRefreshCompleter,
+    ZacValue<Completer>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   RefreshIndicator _buildWidget(ZacContext zacContext) {
@@ -53,9 +51,15 @@ class FlutterRefreshIndicator
           return Future.value(null);
         }
 
-        zacContext.ref
-            .invalidate(SharedValue.provider(onRefreshCompleter!.family));
+        onRefreshCompleter!.map(
+          (_) {},
+          builder: (_) {},
+          consume: (obj) {
+            zacContext.ref.invalidate(SharedValue.provider(obj.family));
+          },
+        );
         final completer = onRefreshCompleter!.build(zacContext);
+
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },

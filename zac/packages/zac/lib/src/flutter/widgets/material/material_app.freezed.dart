@@ -21,9 +21,9 @@ FlutterMaterialApp _$FlutterMaterialAppFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterMaterialApp {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterGlobalKeyNavigatorState? get navigatorKey =>
+  ZacValue<GlobalKey<NavigatorState>>? get navigatorKey =>
       throw _privateConstructorUsedError;
-  FlutterGlobalKeyScaffoldMessengerState? get scaffoldMessengerKey =>
+  ZacValue<GlobalKey<ScaffoldMessengerState>>? get scaffoldMessengerKey =>
       throw _privateConstructorUsedError;
   FlutterWidget? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -101,9 +101,9 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   @override
   final FlutterKey? key;
   @override
-  final FlutterGlobalKeyNavigatorState? navigatorKey;
+  final ZacValue<GlobalKey<NavigatorState>>? navigatorKey;
   @override
-  final FlutterGlobalKeyScaffoldMessengerState? scaffoldMessengerKey;
+  final ZacValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey;
   @override
   final FlutterWidget? home;
 // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -236,8 +236,8 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
       {final FlutterKey? key,
-      final FlutterGlobalKeyNavigatorState? navigatorKey,
-      final FlutterGlobalKeyScaffoldMessengerState? scaffoldMessengerKey,
+      final ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
+      final ZacValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
       final FlutterWidget? home,
       final ZacValue<String?>? initialRoute,
       final FlutterRouteFactory? onGenerateRoute,
@@ -261,9 +261,9 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override
   FlutterKey? get key;
   @override
-  FlutterGlobalKeyNavigatorState? get navigatorKey;
+  ZacValue<GlobalKey<NavigatorState>>? get navigatorKey;
   @override
-  FlutterGlobalKeyScaffoldMessengerState? get scaffoldMessengerKey;
+  ZacValue<GlobalKey<ScaffoldMessengerState>>? get scaffoldMessengerKey;
   @override
   FlutterWidget? get home;
   @override // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},

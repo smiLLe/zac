@@ -103,26 +103,23 @@ void main() {
   testWidgets('Execute onRefresh with custom completer', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
     final cb = MockLeakedActionCb();
+
     await testWithinMaterialApp(
       tester,
       Scaffold(
         appBar: AppBar(title: const Text('Title')),
         body: ZacWidget(
-          data: ZacCompleterProviderBuilder.asVoid(
+          data: ZacCompleterVoidProvider(
             family: 'shared',
             child: ZacValue<Widget>.builder(
               FlutterRefreshIndicator(
                 onRefresh: ZacActions([
                   LeakAction(cb),
                   ZacCompleterActions.completeVoid(
-                      completer:
-                          ZacCompleterVoidProvider.consume(family: 'shared'))
+                      completer: ZacValue<Completer>.consume(family: 'shared'))
                 ]),
                 onRefreshCompleter:
-                    ZacCompleterVoidProvider.fromJson(<String, dynamic>{
-                  'converter': 'z:1:Completer<void>.consume',
-                  'family': 'shared',
-                }),
+                    ZacValue<Completer>.consume(family: 'shared'),
                 child: FlutterListView(
                   children: ZacValueList<Widget, List<Widget>?>(
                     items: [

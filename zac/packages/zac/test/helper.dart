@@ -52,46 +52,6 @@ void expectConvertIsA<Builder, IsA>({
   expect(ConverterHelper.convertToType<Builder>(json), isA<IsA>());
 }
 
-void expectConvertConsumeSharedValue<Builder, Value>({
-  required String converter,
-  required Builder Function({
-    required Object family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  })
-      create,
-}) {
-  expect(
-      ConverterHelper.convertToType<Builder>(
-          {'converter': converter, 'family': 'shared'}),
-      isA<ConsumeSharedValue<Value>>());
-  expect(
-      ConverterHelper.convertToType<Builder>(
-          {'converter': converter, 'family': 'shared'}),
-      create(family: 'shared'));
-}
-
-void expectConvertConsumeListSharedValue<Builder, Value>({
-  required String converter,
-  required Builder Function({
-    required Object family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  })
-      create,
-}) {
-  expect(
-      ConverterHelper.convertToType<Builder>(
-          {'converter': converter, 'family': 'shared'}),
-      isA<ConsumeSharedValueList<Value>>());
-  expect(
-      ConverterHelper.convertToType<Builder>(
-          {'converter': converter, 'family': 'shared'}),
-      create(family: 'shared'));
-}
-
 Future<void>
     expectValueFromZacBuilder<Builder extends ZacBuilder<Value>, Value>({
   required WidgetTester tester,
@@ -117,60 +77,6 @@ Future<void>
 
   expect(obj, isA<Value?>());
   expect(obj, expectValueOrNull);
-}
-
-Future<void> expectConsumedValueFromZacBuilder<Value, SharedValue>({
-  required WidgetTester tester,
-  required Object Function({
-    required Object family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  })
-      createBuilder,
-  required Value expectValue,
-  required SharedValue sharedValue,
-}) async {
-  dynamic obj;
-  final builder = createBuilder(family: 'shared');
-  expect(builder, isA<ConsumeSharedValue<SharedValue>>());
-  expect(builder, isAZacBuilder<Value>());
-
-  builder as ZacBuilder<Value>;
-
-  await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(
-      data: SharedValueProviderBuilder(
-        value: expectValue,
-        family: 'shared',
-        child: LeakContext(
-          cb: (zacContext) {
-            obj = builder.build(zacContext);
-          },
-        ),
-      ),
-    ),
-  ));
-
-  expect(obj, isA<Value>());
-  expect(obj, expectValue);
-
-  await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(
-      data: SharedValueProviderBuilder(
-        value: null,
-        family: 'shared',
-        child: LeakContext(
-          cb: (zacContext) {
-            obj = builder.build(zacContext);
-          },
-        ),
-      ),
-    ),
-  ));
-
-  expect(obj, isA<Value?>());
-  expect(obj, isNull);
 }
 
 class FakeBuildContext extends Fake implements BuildContext {}
