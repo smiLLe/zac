@@ -6,18 +6,18 @@ part of 'scroll_controller.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ScrollControllerConsumeSharedValue
-    _$$_ScrollControllerConsumeSharedValueFromJson(Map<String, dynamic> json) =>
-        _$_ScrollControllerConsumeSharedValue(
-          family: json['family'] as Object,
-          transformer: json['transformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
-          select: json['select'] == null
-              ? null
-              : ZacTransformers.fromJson(json['select'] as Object),
-          forceConsume: json['forceConsume'] == null
-              ? null
-              : SharedValueConsumeType.fromJson(
-                  json['forceConsume'] as Map<String, dynamic>),
-        );
+_$_ScrollControllerProvide _$$_ScrollControllerProvideFromJson(
+        Map<String, dynamic> json) =>
+    _$_ScrollControllerProvide(
+      initialScrollOffset: json['initialScrollOffset'] == null
+          ? null
+          : ZacValue<double?>.fromJson(json['initialScrollOffset'] as Object),
+      keepScrollOffset: json['keepScrollOffset'] == null
+          ? null
+          : ZacValue<bool?>.fromJson(json['keepScrollOffset'] as Object),
+      debugLabel: json['debugLabel'] == null
+          ? null
+          : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
+      family: json['family'],
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+    );

@@ -42,7 +42,7 @@ class FlutterRefreshIndicator
     ZacValue<String?>? semanticsValue,
     ZacValue<double?>? strokeWidth,
     FlutterRefreshIndicatorTriggerMode? triggerMode,
-    DartCompleterVoid? onRefreshCompleter,
+    ZacCompleterVoidProvider? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   RefreshIndicator _buildWidget(ZacContext zacContext) {

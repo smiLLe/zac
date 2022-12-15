@@ -223,7 +223,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 
   @FreezedUnionValue('z:1:NavigatorState.shared')
   factory FlutterNavigatorState.shared({
-    required FlutterGlobalKeyNavigatorState value,
+    required ZacValue<GlobalKey<NavigatorState>> value,
   }) = _ZacNavigatorStateSharedValue;
 
   NavigatorState getNavigatorState(ZacContext zacContext) {

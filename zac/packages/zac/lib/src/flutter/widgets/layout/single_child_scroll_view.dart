@@ -34,7 +34,7 @@ class FlutterSingleChildScrollView
     FlutterEdgeInsetsGeometry? padding,
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
-    FlutterScrollController? controller,
+    ZacValue<ScrollController?>? controller,
     FlutterWidget? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,

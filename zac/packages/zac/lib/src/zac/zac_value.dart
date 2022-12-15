@@ -104,10 +104,7 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
         return obj.value;
       },
       builder: (obj) {
-        return obj.value.build(
-          zacContext,
-          onConsume: onConsume,
-        );
+        return obj.value.build(zacContext);
       },
       consume: (obj) {
         final value = SharedValue.get(
@@ -311,9 +308,8 @@ Value after: $transformedVal''');
 
         final list = [
           ...consumedValue.map<T>((dynamic e) {
-            final value = e is ZacBuilder<Object?>
-                ? e.build(zacContext, onConsume: onConsume)
-                : e as Object?;
+            final value =
+                e is ZacBuilder<Object?> ? e.build(zacContext) : e as Object?;
             return _transformItem(
               value: value,
               zacContext: zacContext,

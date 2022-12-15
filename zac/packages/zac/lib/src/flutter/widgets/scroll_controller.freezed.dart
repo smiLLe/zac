@@ -16,105 +16,109 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterScrollController _$FlutterScrollControllerFromJson(
     Map<String, dynamic> json) {
-  return _ScrollControllerConsumeSharedValue.fromJson(json);
+  return _ScrollControllerProvide.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterScrollController {
-  Object get family => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get select => throw _privateConstructorUsedError;
-  SharedValueConsumeType? get forceConsume =>
+  ZacValue<double?>? get initialScrollOffset =>
       throw _privateConstructorUsedError;
+  ZacValue<bool?>? get keepScrollOffset => throw _privateConstructorUsedError;
+  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
+  Object? get family => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ScrollControllerConsumeSharedValue value)
-        consume,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_ScrollControllerProvide value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ScrollControllerConsumeSharedValue
-    extends _ScrollControllerConsumeSharedValue
-    with ConsumeSharedValue<ScrollController> {
-  _$_ScrollControllerConsumeSharedValue(
-      {required this.family, this.transformer, this.select, this.forceConsume})
+class _$_ScrollControllerProvide extends _ScrollControllerProvide {
+  _$_ScrollControllerProvide(
+      {this.initialScrollOffset,
+      this.keepScrollOffset,
+      this.debugLabel,
+      this.family,
+      required this.child})
       : super._();
 
-  factory _$_ScrollControllerConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ScrollControllerConsumeSharedValueFromJson(json);
+  factory _$_ScrollControllerProvide.fromJson(Map<String, dynamic> json) =>
+      _$$_ScrollControllerProvideFromJson(json);
 
   @override
-  final Object family;
+  final ZacValue<double?>? initialScrollOffset;
   @override
-  final ZacTransformers? transformer;
+  final ZacValue<bool?>? keepScrollOffset;
   @override
-  final ZacTransformers? select;
+  final ZacValue<String?>? debugLabel;
   @override
-  final SharedValueConsumeType? forceConsume;
+  final Object? family;
+  @override
+  final ZacValue<Widget> child;
 
   @override
   String toString() {
-    return 'FlutterScrollController.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
+    return 'FlutterScrollController(initialScrollOffset: $initialScrollOffset, keepScrollOffset: $keepScrollOffset, debugLabel: $debugLabel, family: $family, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ScrollControllerConsumeSharedValue &&
+            other is _$_ScrollControllerProvide &&
+            (identical(other.initialScrollOffset, initialScrollOffset) ||
+                other.initialScrollOffset == initialScrollOffset) &&
+            (identical(other.keepScrollOffset, keepScrollOffset) ||
+                other.keepScrollOffset == keepScrollOffset) &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      initialScrollOffset,
+      keepScrollOffset,
+      debugLabel,
       const DeepCollectionEquality().hash(family),
-      transformer,
-      select,
-      forceConsume);
+      child);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ScrollControllerConsumeSharedValue value)
-        consume,
-  }) {
-    return consume(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_ScrollControllerProvide value) $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _ScrollControllerConsumeSharedValue
-    extends FlutterScrollController
-    implements ConsumeSharedValue<ScrollController> {
-  factory _ScrollControllerConsumeSharedValue(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_ScrollControllerConsumeSharedValue;
-  _ScrollControllerConsumeSharedValue._() : super._();
+abstract class _ScrollControllerProvide extends FlutterScrollController {
+  factory _ScrollControllerProvide(
+      {final ZacValue<double?>? initialScrollOffset,
+      final ZacValue<bool?>? keepScrollOffset,
+      final ZacValue<String?>? debugLabel,
+      final Object? family,
+      required final ZacValue<Widget> child}) = _$_ScrollControllerProvide;
+  _ScrollControllerProvide._() : super._();
 
-  factory _ScrollControllerConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =
-      _$_ScrollControllerConsumeSharedValue.fromJson;
+  factory _ScrollControllerProvide.fromJson(Map<String, dynamic> json) =
+      _$_ScrollControllerProvide.fromJson;
 
   @override
-  Object get family;
+  ZacValue<double?>? get initialScrollOffset;
   @override
-  ZacTransformers? get transformer;
+  ZacValue<bool?>? get keepScrollOffset;
   @override
-  ZacTransformers? get select;
+  ZacValue<String?>? get debugLabel;
   @override
-  SharedValueConsumeType? get forceConsume;
+  Object? get family;
+  @override
+  ZacValue<Widget> get child;
 }

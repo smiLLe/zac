@@ -115,10 +115,11 @@ void main() {
                 onRefresh: ZacActions([
                   LeakAction(cb),
                   ZacCompleterActions.completeVoid(
-                      completer: DartCompleterVoid.consume(family: 'shared'))
+                      completer:
+                          ZacCompleterVoidProvider.consume(family: 'shared'))
                 ]),
                 onRefreshCompleter:
-                    DartCompleterVoid.fromJson(<String, dynamic>{
+                    ZacCompleterVoidProvider.fromJson(<String, dynamic>{
                   'converter': 'z:1:Completer<void>.consume',
                   'family': 'shared',
                 }),

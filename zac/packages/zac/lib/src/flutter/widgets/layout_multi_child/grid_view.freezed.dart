@@ -23,7 +23,8 @@ mixin _$FlutterGridView {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
-  FlutterScrollController? get controller => throw _privateConstructorUsedError;
+  ZacValue<ScrollController?>? get controller =>
+      throw _privateConstructorUsedError;
   ZacValue<bool?>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
@@ -85,7 +86,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacValue<bool?>? reverse;
   @override
-  final FlutterScrollController? controller;
+  final ZacValue<ScrollController?>? controller;
   @override
   final ZacValue<bool?>? primary;
 // ScrollPhysics? physics,
@@ -194,7 +195,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       {final FlutterKey? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool?>? reverse,
-      final FlutterScrollController? controller,
+      final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
       final ZacValue<bool?>? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
@@ -220,7 +221,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacValue<bool?>? get reverse;
   @override
-  FlutterScrollController? get controller;
+  ZacValue<ScrollController?>? get controller;
   @override
   ZacValue<bool?>? get primary;
   @override // ScrollPhysics? physics,

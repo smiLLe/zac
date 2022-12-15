@@ -124,31 +124,30 @@ void main() {
 
   testWidgets('FlutterListView() consumes the ScrollController',
       (tester) async {
-    late ZacContext zacContext;
-    final ctrl = ScrollController();
-    await testWithinMaterialApp(
-        tester,
-        SharedValueProvider(
-          childBuilder: (c) {
-            zacContext = c;
-            return FlutterListView(
-              key: FlutterValueKey('LIST_VIEW'),
-              controller: FlutterScrollController.consume(family: 'shared'),
-            ).build(zacContext);
+    await testMap(
+      tester,
+      <String, dynamic>{
+        'converter': 'z:1:ScrollController.provide',
+        'child': {
+          'converter': 'f:1:Material',
+          'child': {
+            'converter': 'f:1:ListView',
+            'key': KeysModel.getValueKey('FINDME'),
+            'controller': {
+              'converter': 'z:1:ZacValue.consume',
+              'family': 'Zac.ScrollController',
+            },
           },
-          valueBuilder: (ref, zacContext) => ctrl,
-          family: 'shared',
-          autoCreate: true,
-        ));
-
-    final findMe = find.byKey(const ValueKey('LIST_VIEW'));
-    expect(findMe, findsOneWidget);
+        },
+      },
+    );
+    final findMe = find.byKey(const ValueKey('FINDME'));
 
     final widget = findMe.evaluate().first.widget;
 
     expect(
         widget,
-        isA<ListView>()
-            .having((p0) => p0.controller, 'ListView.controller', ctrl));
+        isA<ListView>().having((p0) => p0.controller,
+            'FlutterListView.controller', isA<ScrollController>()));
   });
 }

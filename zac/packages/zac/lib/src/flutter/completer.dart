@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -15,67 +15,39 @@ part 'completer.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
-class DartCompleterVoid with _$DartCompleterVoid, ZacBuilder<Completer<void>> {
-  const DartCompleterVoid._();
+class ZacCompleterVoidProvider
+    with _$ZacCompleterVoidProvider, ZacBuilder<Widget> {
+  const ZacCompleterVoidProvider._();
 
-  factory DartCompleterVoid.fromJson(Map<String, dynamic> json) =>
-      _$DartCompleterVoidFromJson(json);
+  factory ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =>
+      _$ZacCompleterVoidProviderFromJson(json);
 
-  @FreezedUnionValue('z:1:Completer<void>.consume')
-  @With<ConsumeSharedValue<Completer<void>>>()
-  factory DartCompleterVoid.consume({
+  @FreezedUnionValue('z:1:Completer<void>.provide')
+  factory ZacCompleterVoidProvider({
     required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  }) = _DartCompleterVoidConsumeSharedValue;
-
-  @override
-  Completer<void> build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return map(consume: (obj) => obj.buildConsume(zacContext, onConsume));
-  }
-
-  @override
-  Completer<void>? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return map(consume: (obj) => obj.buildConsumeOrNull(zacContext, onConsume));
-  }
-}
-
-@freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
-class ZacCompleterProviderBuilder
-    with _$ZacCompleterProviderBuilder
-    implements FlutterWidget {
-  ZacCompleterProviderBuilder._();
-
-  static const String unionValue = 'z:1:CompleterProvider.void';
-
-  factory ZacCompleterProviderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$ZacCompleterProviderBuilderFromJson(json);
-
-  @FreezedUnionValue(ZacCompleterProviderBuilder.unionValue)
-  factory ZacCompleterProviderBuilder.asVoid({
     required ZacValue<Widget> child,
-    required SharedValueFamily family,
-  }) = _ZacCompleterProviderBuilderVoid;
+  }) = _ZacCompleterVoidProvider;
 
-  Widget _buildWidget(ZacContext zacContext) {
-    return map(
-      asVoid: (value) => ZacCompleterProvider<void>(
-        childBuilder: (zacContext) => value.child.build(zacContext),
-        completerBuilder: () => Completer<void>(),
-        disposeComplete: (completer) => completer.complete(null),
-        family: family,
-      ),
-    );
+  Completer<void> _valueBuilder(
+      AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
+    return map((_) => Completer<void>());
   }
 
+  Widget _childBuilder(ZacContext zacContext) => map(
+        (obj) => obj.child.build(zacContext),
+      );
+
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
+  Widget build(ZacContext zacContext) {
+    return map(
+      (obj) {
+        return SharedValueProvider(
+          childBuilder: _childBuilder,
+          valueBuilder: _valueBuilder,
+          family: obj.family,
+        );
+      },
+    );
   }
 }
 
@@ -124,15 +96,12 @@ class ZacCompleterProvider<T> extends StatelessWidget {
 class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
   ZacCompleterActions._();
 
-  static const String unionValueCompleteVoid =
-      'z:1:CompleterAction.completeVoid';
-
   factory ZacCompleterActions.fromJson(Map<String, dynamic> json) =>
       _$ZacCompleterActionsFromJson(json);
 
-  @FreezedUnionValue(ZacCompleterActions.unionValueCompleteVoid)
+  @FreezedUnionValue('z:1:Completer<void>.complete')
   factory ZacCompleterActions.completeVoid({
-    required DartCompleterVoid completer,
+    required ZacValue<Completer> completer,
   }) = _ZacCompleterActionsVoid;
 
   @override

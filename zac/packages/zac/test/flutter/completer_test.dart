@@ -13,9 +13,10 @@ import '../helper.dart';
 void main() {
   group('DartCompleterVoid', () {
     test('can be created', () {
-      expectConvertConsumeSharedValue<DartCompleterVoid, Completer<void>>(
+      expectConvertConsumeSharedValue<ZacCompleterVoidProvider,
+          Completer<void>>(
         converter: 'z:1:Completer<void>.consume',
-        create: DartCompleterVoid.consume,
+        create: ZacCompleterVoidProvider.consume,
       );
     });
 
@@ -23,7 +24,7 @@ void main() {
       final val = Completer<void>();
       await expectConsumedValueFromZacBuilder<Completer<void>, Completer<void>>(
         tester: tester,
-        createBuilder: DartCompleterVoid.consume,
+        createBuilder: ZacCompleterVoidProvider.consume,
         expectValue: val,
         sharedValue: val,
       );
@@ -59,7 +60,7 @@ void main() {
           disposeComplete: (completer) => completer.complete(),
         ));
 
-    expect(DartCompleterVoid.consume(family: 'shared').build(zacContext),
+    expect(ZacCompleterVoidProvider.consume(family: 'shared').build(zacContext),
         isA<Completer<void>>());
   });
 
@@ -81,7 +82,7 @@ void main() {
         ));
 
     final completer =
-        DartCompleterVoid.consume(family: 'shared').build(zacContext);
+        ZacCompleterVoidProvider.consume(family: 'shared').build(zacContext);
 
     await tester.pumpWidget(const SizedBox());
 
@@ -100,7 +101,7 @@ void main() {
           family: 'shared',
         ));
 
-    expect(DartCompleterVoid.consume(family: 'shared').build(zacContext),
+    expect(ZacCompleterVoidProvider.consume(family: 'shared').build(zacContext),
         isA<Completer<void>>());
   });
 
@@ -114,7 +115,7 @@ void main() {
           },
         }),
         ZacCompleterActions.completeVoid(
-            completer: DartCompleterVoid.consume(family: 'shared')));
+            completer: ZacCompleterVoidProvider.consume(family: 'shared')));
   });
 
   testWidgets('Complete a Completer<void> using ZacCompleterActions',
@@ -130,10 +131,10 @@ void main() {
         ));
 
     final completer =
-        DartCompleterVoid.consume(family: 'shared').build(zacContext);
+        ZacCompleterVoidProvider.consume(family: 'shared').build(zacContext);
 
     ZacCompleterActions.completeVoid(
-            completer: DartCompleterVoid.consume(family: 'shared'))
+            completer: ZacCompleterVoidProvider.consume(family: 'shared'))
         .execute(const ZacActionPayload(), zacContext);
 
     expect(completer.isCompleted, isTrue);

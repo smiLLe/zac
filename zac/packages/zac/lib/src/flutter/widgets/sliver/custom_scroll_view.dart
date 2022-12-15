@@ -31,7 +31,7 @@ class FlutterCustomScrollView
     FlutterKey? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
-    FlutterScrollController? controller,
+    ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
     FlutterScrollPhysics? physics,
 // FlutterScrollBehavior? scrollBehavior,

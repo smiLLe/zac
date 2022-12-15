@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
+import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
 
 void main() {
-  test('can be created', () {
-    expectConvertConsumeSharedValue<FlutterScrollController, ScrollController>(
-      converter: 'z:1:ScrollController.consume',
-      create: FlutterScrollController.consume,
+  testWidgets('Provide ScrollController', (tester) async {
+    late ZacContext zacContext;
+    await tester.pumpWidget(
+      ProviderScope(
+        child: ZacWidget(
+          data: FlutterScrollController(
+            child: ZacValue<Widget>.builder(
+              LeakContext(
+                cb: (z) => zacContext = z,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
-  });
 
-  testWidgets('will return correct value', (tester) async {
-    final ctrl = ScrollController();
-    await expectConsumedValueFromZacBuilder<ScrollController, ScrollController>(
-      tester: tester,
-      createBuilder: FlutterScrollController.consume,
-      expectValue: ctrl,
-      sharedValue: ctrl,
-    );
+    expect(
+        ZacValue<ScrollController>.consume(
+                family: FlutterScrollController.familyName)
+            .build(zacContext),
+        isA<ScrollController>());
   });
 }

@@ -113,35 +113,31 @@ void main() {
 
   testWidgets('FlutterTextField() consumes the ScrollController',
       (tester) async {
-    late ZacContext zacContext;
-    final ctrl = ScrollController();
-    await testWithinMaterialApp(
-        tester,
-        SharedValueProvider(
-          childBuilder: (c) {
-            zacContext = c;
-            return Material(
-              child: FlutterTextField(
-                key: FlutterValueKey('TEXTFIELD'),
-                scrollController:
-                    FlutterScrollController.consume(family: 'shared'),
-              ).build(zacContext),
-            );
+    await testMap(
+      tester,
+      <String, dynamic>{
+        'converter': 'z:1:ScrollController.provide',
+        'child': {
+          'converter': 'f:1:Material',
+          'child': {
+            'converter': 'f:1:TextField',
+            'key': KeysModel.getValueKey('FINDME'),
+            'scrollController': {
+              'converter': 'z:1:ZacValue.consume',
+              'family': 'Zac.ScrollController',
+            },
           },
-          valueBuilder: (ref, zacContext) => ctrl,
-          family: 'shared',
-          autoCreate: true,
-        ));
-
-    final findMe = find.byKey(const ValueKey('TEXTFIELD'));
-    expect(findMe, findsOneWidget);
+        },
+      },
+    );
+    final findMe = find.byKey(const ValueKey('FINDME'));
 
     final widget = findMe.evaluate().first.widget;
 
     expect(
         widget,
-        isA<TextField>().having(
-            (p0) => p0.scrollController, 'TextField.scrollController', ctrl));
+        isA<TextField>().having((p0) => p0.scrollController,
+            'TextField.scrollController', isA<ScrollController>()));
   });
 
   testWidgets(

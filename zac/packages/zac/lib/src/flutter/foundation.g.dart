@@ -9,57 +9,28 @@ part of 'foundation.dart';
 _$_FlutterValueKey _$$_FlutterValueKeyFromJson(Map<String, dynamic> json) =>
     _$_FlutterValueKey(
       json['value'] as String,
-      $type: json['converter'] as String?,
     );
 
-_$_FlutterValueKeyConsumeSharedValue
-    _$$_FlutterValueKeyConsumeSharedValueFromJson(Map<String, dynamic> json) =>
-        _$_FlutterValueKeyConsumeSharedValue(
+_$_FlutterGlobalKeyNavigatorStateProvide
+    _$$_FlutterGlobalKeyNavigatorStateProvideFromJson(
+            Map<String, dynamic> json) =>
+        _$_FlutterGlobalKeyNavigatorStateProvide(
+          debugLabel: json['debugLabel'] == null
+              ? null
+              : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
           family: json['family'] as Object,
-          transformer: json['transformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
-          select: json['select'] == null
-              ? null
-              : ZacTransformers.fromJson(json['select'] as Object),
-          forceConsume: json['forceConsume'] == null
-              ? null
-              : SharedValueConsumeType.fromJson(
-                  json['forceConsume'] as Map<String, dynamic>),
-          $type: json['converter'] as String?,
+          child: ZacValue<Widget>.fromJson(json['child'] as Object),
         );
 
-_$_FlutterGlobalKeyNavigatorState _$$_FlutterGlobalKeyNavigatorStateFromJson(
-        Map<String, dynamic> json) =>
-    _$_FlutterGlobalKeyNavigatorState(
-      family: json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      select: json['select'] == null
-          ? null
-          : ZacTransformers.fromJson(json['select'] as Object),
-      forceConsume: json['forceConsume'] == null
-          ? null
-          : SharedValueConsumeType.fromJson(
-              json['forceConsume'] as Map<String, dynamic>),
-    );
-
-_$_FlutterGlobalKeyScaffoldMessengerState
-    _$$_FlutterGlobalKeyScaffoldMessengerStateFromJson(
+_$_FlutterGlobalKeyScaffoldMessengerStateProvide
+    _$$_FlutterGlobalKeyScaffoldMessengerStateProvideFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterGlobalKeyScaffoldMessengerState(
+        _$_FlutterGlobalKeyScaffoldMessengerStateProvide(
+          debugLabel: json['debugLabel'] == null
+              ? null
+              : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
           family: json['family'] as Object,
-          transformer: json['transformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
-          select: json['select'] == null
-              ? null
-              : ZacTransformers.fromJson(json['select'] as Object),
-          forceConsume: json['forceConsume'] == null
-              ? null
-              : SharedValueConsumeType.fromJson(
-                  json['forceConsume'] as Map<String, dynamic>),
+          child: ZacValue<Widget>.fromJson(json['child'] as Object),
         );
 
 _$_ZacProvideFlutterKeyGlobalNavigatorState

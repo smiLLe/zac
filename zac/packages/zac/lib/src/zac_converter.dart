@@ -487,7 +487,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'f:1:WrapCrossAlignment.start': FlutterWrapCrossAlignment.fromJson,
   'f:1:showDialog': FlutterDialogActions.fromJson,
   'z:1:Actions': ZacActions.fromJson,
-  'z:1:Completer<void>.consume': DartCompleterVoid.fromJson,
+  'z:1:Completer<void>.consume': ZacCompleterVoidProvider.fromJson,
   'z:1:CompleterAction.completeVoid': ZacCompleterActions.fromJson,
   'z:1:CompleterProvider.void': ZacCompleterProviderBuilder.fromJson,
   'z:1:ControlFlowAction.if': ZacControlFlowAction.fromJson,
@@ -502,7 +502,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:ProvideKey:GlobalKey<NavigatorState>': ZacProvideFlutterKey.fromJson,
   'z:1:ProvideKey:GlobalKey<ScaffoldMessengerState>':
       ZacProvideFlutterKey.fromJson,
-  'z:1:ScrollController.consume': FlutterScrollController.fromJson,
+  'z:1:ScrollController.provide': FlutterScrollController.fromJson,
   'z:1:SharedValue.invalidate': SharedValueActions.fromJson,
   'z:1:SharedValue.provide': SharedValueProviderBuilder.fromJson,
   'z:1:SharedValue.update': SharedValueActions.fromJson,

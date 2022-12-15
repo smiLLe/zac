@@ -42,10 +42,7 @@ void main() {
   });
 
   testWidgets('FlutterGridView()', (tester) async {
-    await testMap(
-      tester,
-      map,
-    );
+    await testMap(tester, map);
     final findMe = find.byKey(const ValueKey('FINDME'));
     expect(findMe, findsOneWidget);
     expect(find.byKey(const ValueKey('child1')), findsOneWidget);
@@ -78,35 +75,29 @@ void main() {
                 ScrollViewKeyboardDismissBehavior.onDrag));
   });
 
-  testWidgets('FlutterGridView() consumes the ScrollController',
-      (tester) async {
-    late ZacContext zacContext;
-    final ctrl = ScrollController();
-    await testWithinMaterialApp(
-        tester,
-        SharedValueProvider(
-          childBuilder: (c) {
-            zacContext = c;
-            return FlutterGridView(
-              key: FlutterValueKey('GRID_VIEW'),
-              gridDelegate: FlutterSliverGridDelegate.withFixedCrossAxisCount(
-                  crossAxisCount: 5),
-              controller: FlutterScrollController.consume(family: 'shared'),
-            ).build(zacContext);
+  testWidgets('FlutterGridView consumes ScrollController', (tester) async {
+    await testMap(
+      tester,
+      <String, dynamic>{
+        'converter': 'z:1:ScrollController.provide',
+        'child': {
+          'converter': 'f:1:GridView',
+          'key': KeysModel.getValueKey('FINDME'),
+          'gridDelegate': GridDelegateModel.json,
+          'controller': {
+            'converter': 'z:1:ZacValue.consume',
+            'family': 'Zac.ScrollController',
           },
-          valueBuilder: (ref, zacContext) => ctrl,
-          family: 'shared',
-          autoCreate: true,
-        ));
-
-    final findMe = find.byKey(const ValueKey('GRID_VIEW'));
-    expect(findMe, findsOneWidget);
+        },
+      },
+    );
+    final findMe = find.byKey(const ValueKey('FINDME'));
 
     final widget = findMe.evaluate().first.widget;
 
     expect(
         widget,
-        isA<GridView>()
-            .having((p0) => p0.controller, 'GridView.controller', ctrl));
+        isA<GridView>().having((p0) => p0.controller, 'GridView.controller',
+            isA<ScrollController>()));
   });
 }

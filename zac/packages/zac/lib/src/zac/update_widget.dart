@@ -53,10 +53,7 @@ class ZacUpdateContext extends HookConsumerWidget {
   final Widget Function(ZacContext zacContext) builder;
 
   @override
-  Widget build(
-    BuildContext context,
-    WidgetRef ref,
-  ) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     return builder(zacContext);
   }

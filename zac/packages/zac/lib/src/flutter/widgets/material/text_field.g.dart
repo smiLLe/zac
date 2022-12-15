@@ -137,8 +137,8 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['onTap'] as Object),
       scrollController: json['scrollController'] == null
           ? null
-          : FlutterScrollController.fromJson(
-              json['scrollController'] as Map<String, dynamic>),
+          : ZacValue<ScrollController?>.fromJson(
+              json['scrollController'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

@@ -1,4 +1,3 @@
-import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -30,7 +29,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
     FlutterKey? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
-    FlutterScrollController? controller,
+    ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     ZacValue<bool?>? shrinkWrap,

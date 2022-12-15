@@ -79,7 +79,7 @@ mixin _$FlutterTextField {
   ZacActions? get onTap =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-  FlutterScrollController? get scrollController =>
+  ZacValue<ScrollController?>? get scrollController =>
       throw _privateConstructorUsedError; // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
@@ -232,7 +232,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
   @override
-  final FlutterScrollController? scrollController;
+  final ZacValue<ScrollController?>? scrollController;
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   @override
@@ -430,7 +430,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final FlutterEdgeInsets? scrollPadding,
           final ZacValue<bool?>? enableInteractiveSelection,
           final ZacActions? onTap,
-          final FlutterScrollController? scrollController,
+          final ZacValue<ScrollController?>? scrollController,
           final FlutterClip? clipBehavior,
           final ZacValue<String?>? restorationId,
           final ZacValue<bool?>? enableIMEPersonalizedLearning}) =
@@ -519,7 +519,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacActions? get onTap;
   @override // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
-  FlutterScrollController? get scrollController;
+  ZacValue<ScrollController?>? get scrollController;
   @override // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   FlutterClip? get clipBehavior;

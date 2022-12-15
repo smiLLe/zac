@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,30 +31,11 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
   @FreezedUnionValue('f:1:ValueKey')
   factory FlutterValueKey(String value) = _FlutterValueKey;
 
-  @FreezedUnionValue('z:1:ValueKey.consume')
-  @With<ConsumeSharedValue<ValueKey<String>>>()
-  factory FlutterValueKey.consume({
-    required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  }) = _FlutterValueKeyConsumeSharedValue;
-
   @override
   ValueKey<String> build(ZacContext zacContext,
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return map(
       (obj) => ValueKey<String>(obj.value),
-      consume: (obj) => obj.buildConsume(zacContext, onConsume),
-    );
-  }
-
-  @override
-  ValueKey<String>? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return map(
-      (obj) => ValueKey<String>(obj.value),
-      consume: (obj) => obj.buildConsumeOrNull(zacContext, onConsume),
     );
   }
 }
@@ -62,69 +44,87 @@ class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyNavigatorState
     with _$FlutterGlobalKeyNavigatorState
-    implements FlutterKey {
+    implements ZacBuilder<Widget> {
   FlutterGlobalKeyNavigatorState._();
 
   factory FlutterGlobalKeyNavigatorState.fromJson(Map<String, dynamic> json) =>
       _$FlutterGlobalKeyNavigatorStateFromJson(json);
 
-  @FreezedUnionValue('z:1:GlobalKey<NavigatorState>.consume')
-  @With<ConsumeSharedValue<GlobalKey<NavigatorState>>>()
-  factory FlutterGlobalKeyNavigatorState.consume({
+  @FreezedUnionValue('z:1:GlobalKey<NavigatorState>.provide')
+  factory FlutterGlobalKeyNavigatorState({
+    ZacValue<String?>? debugLabel,
     required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  }) = _FlutterGlobalKeyNavigatorState;
+    required ZacValue<Widget> child,
+  }) = _FlutterGlobalKeyNavigatorStateProvide;
 
-  @override
-  GlobalKey<NavigatorState> build(ZacContext zacContext,
-          {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) =>
-      map(
-        consume: (obj) => obj.buildConsume(zacContext, onConsume),
+  GlobalKey<NavigatorState> _valueBuilder(
+      AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
+    return map((obj) => GlobalKey<NavigatorState>(
+          debugLabel: obj.debugLabel?.build(zacContext),
+        ));
+  }
+
+  Widget _childBuilder(ZacContext zacContext) => map(
+        (obj) => obj.child.build(zacContext),
       );
 
   @override
-  GlobalKey<NavigatorState>? buildOrNull(ZacContext zacContext,
-          {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) =>
-      map(
-        consume: (obj) => obj.buildConsumeOrNull(zacContext, onConsume),
-      );
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return map(
+      (obj) {
+        return SharedValueProvider(
+          childBuilder: _childBuilder,
+          valueBuilder: _valueBuilder,
+          family: obj.family,
+        );
+      },
+    );
+  }
 }
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyScaffoldMessengerState
     with _$FlutterGlobalKeyScaffoldMessengerState
-    implements FlutterKey {
+    implements ZacBuilder<Widget> {
   FlutterGlobalKeyScaffoldMessengerState._();
 
   factory FlutterGlobalKeyScaffoldMessengerState.fromJson(
           Map<String, dynamic> json) =>
       _$FlutterGlobalKeyScaffoldMessengerStateFromJson(json);
 
-  @FreezedUnionValue('z:1:GlobalKey<ScaffoldMessengerState>.consume')
-  @With<ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>>()
-  factory FlutterGlobalKeyScaffoldMessengerState.consume({
+  @FreezedUnionValue('z:1:GlobalKey<ScaffoldMessengerState>.provide')
+  factory FlutterGlobalKeyScaffoldMessengerState({
+    ZacValue<String?>? debugLabel,
     required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? select,
-    SharedValueConsumeType? forceConsume,
-  }) = _FlutterGlobalKeyScaffoldMessengerState;
+    required ZacValue<Widget> child,
+  }) = _FlutterGlobalKeyScaffoldMessengerStateProvide;
 
-  @override
-  GlobalKey<ScaffoldMessengerState> build(ZacContext zacContext,
-          {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) =>
-      map(
-        consume: (obj) => obj.buildConsume(zacContext, onConsume),
+  GlobalKey<ScaffoldMessengerState> _valueBuilder(
+      AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
+    return map((obj) => GlobalKey<ScaffoldMessengerState>(
+          debugLabel: obj.debugLabel?.build(zacContext),
+        ));
+  }
+
+  Widget _childBuilder(ZacContext zacContext) => map(
+        (obj) => obj.child.build(zacContext),
       );
 
   @override
-  GlobalKey<ScaffoldMessengerState>? buildOrNull(ZacContext zacContext,
-          {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) =>
-      map(
-        consume: (obj) => obj.buildConsumeOrNull(zacContext, onConsume),
-      );
+  Widget build(ZacContext zacContext,
+      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+    return map(
+      (obj) {
+        return SharedValueProvider(
+          childBuilder: _childBuilder,
+          valueBuilder: _valueBuilder,
+          family: obj.family,
+        );
+      },
+    );
+  }
 }
 
 @freezedZacBuilder

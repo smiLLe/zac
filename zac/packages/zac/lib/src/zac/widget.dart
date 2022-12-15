@@ -93,7 +93,7 @@ class ZacWidget extends HookWidget {
             'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
       }
 
-      return ConverterHelper.convertToType<FlutterWidget>(map);
+      return ConverterHelper.convertToType<ZacBuilder<Widget>>(map);
     }, [data]);
 
     return ZacUpdateContext(

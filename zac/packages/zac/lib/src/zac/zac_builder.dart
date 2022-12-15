@@ -37,8 +37,7 @@ Created builder: $builder''');
     return ConverterHelper.convertToType<ZacBuilder<T>>(json);
   }
 
-  T build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+  T build(ZacContext zacContext);
 }
 
 @freezedZacDefaults
@@ -46,25 +45,4 @@ class ZacBuilderConsume with _$ZacBuilderConsume {
   const factory ZacBuilderConsume({
     @Default(SharedValueConsumeType.watch()) SharedValueConsumeType type,
   }) = _ZacBuilderConsume;
-}
-
-extension ConsumeZacBuilder<T> on ConsumeSharedValue<T> {
-  T buildConsume(ZacContext zacContext, ZacBuilderConsume onConsume) {
-    return consumeValue(zacContext, type: onConsume.type);
-  }
-
-  T? buildConsumeOrNull(ZacContext zacContext, ZacBuilderConsume onConsume) {
-    return consumeValueOrNull(zacContext, type: onConsume.type);
-  }
-}
-
-extension ConsumeListZacBuilder<T> on ConsumeSharedValueList<T> {
-  List<T> buildConsume(ZacContext zacContext, ZacBuilderConsume onConsume) {
-    return consumeValue(zacContext, type: onConsume.type);
-  }
-
-  List<T>? buildConsumeOrNull(
-      ZacContext zacContext, ZacBuilderConsume onConsume) {
-    return consumeValueOrNull(zacContext, type: onConsume.type);
-  }
 }

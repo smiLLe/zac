@@ -71,8 +71,8 @@ _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
 _$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateSharedValue(
-      value: FlutterGlobalKeyNavigatorState.fromJson(
-          json['value'] as Map<String, dynamic>),
+      value:
+          ZacValue<GlobalKey<NavigatorState>>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

@@ -27,7 +27,8 @@ mixin _$FlutterSingleChildScrollView {
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   ZacValue<bool?>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
-  FlutterScrollController? get controller => throw _privateConstructorUsedError;
+  ZacValue<ScrollController?>? get controller =>
+      throw _privateConstructorUsedError;
   FlutterWidget? get child =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
@@ -73,7 +74,7 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
   final ZacValue<bool?>? primary;
 // ScrollPhysics? physics,
   @override
-  final FlutterScrollController? controller;
+  final ZacValue<ScrollController?>? controller;
   @override
   final FlutterWidget? child;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -144,7 +145,7 @@ abstract class _FlutterSingleChildScrollView
       final ZacValue<bool?>? reverse,
       final FlutterEdgeInsetsGeometry? padding,
       final ZacValue<bool?>? primary,
-      final FlutterScrollController? controller,
+      final ZacValue<ScrollController?>? controller,
       final FlutterWidget? child,
       final FlutterClip? clipBehavior,
       final ZacValue<String?>? restorationId,
@@ -166,7 +167,7 @@ abstract class _FlutterSingleChildScrollView
   @override
   ZacValue<bool?>? get primary;
   @override // ScrollPhysics? physics,
-  FlutterScrollController? get controller;
+  ZacValue<ScrollController?>? get controller;
   @override
   FlutterWidget? get child;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,

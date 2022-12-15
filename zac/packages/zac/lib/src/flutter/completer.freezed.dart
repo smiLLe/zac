@@ -14,185 +14,78 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DartCompleterVoid _$DartCompleterVoidFromJson(Map<String, dynamic> json) {
-  return _DartCompleterVoidConsumeSharedValue.fromJson(json);
+ZacCompleterVoidProvider _$ZacCompleterVoidProviderFromJson(
+    Map<String, dynamic> json) {
+  return _ZacCompleterVoidProvider.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DartCompleterVoid {
+mixin _$ZacCompleterVoidProvider {
   Object get family => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get select => throw _privateConstructorUsedError;
-  SharedValueConsumeType? get forceConsume =>
-      throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_DartCompleterVoidConsumeSharedValue value)
-        consume,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacCompleterVoidProvider value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_DartCompleterVoidConsumeSharedValue
-    extends _DartCompleterVoidConsumeSharedValue
-    with ConsumeSharedValue<Completer<void>> {
-  _$_DartCompleterVoidConsumeSharedValue(
-      {required this.family, this.transformer, this.select, this.forceConsume})
+class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
+  _$_ZacCompleterVoidProvider({required this.family, required this.child})
       : super._();
 
-  factory _$_DartCompleterVoidConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_DartCompleterVoidConsumeSharedValueFromJson(json);
+  factory _$_ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacCompleterVoidProviderFromJson(json);
 
   @override
   final Object family;
-  @override
-  final ZacTransformers? transformer;
-  @override
-  final ZacTransformers? select;
-  @override
-  final SharedValueConsumeType? forceConsume;
-
-  @override
-  String toString() {
-    return 'DartCompleterVoid.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_DartCompleterVoidConsumeSharedValue &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      transformer,
-      select,
-      forceConsume);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_DartCompleterVoidConsumeSharedValue value)
-        consume,
-  }) {
-    return consume(this);
-  }
-}
-
-abstract class _DartCompleterVoidConsumeSharedValue extends DartCompleterVoid
-    implements ConsumeSharedValue<Completer<void>> {
-  factory _DartCompleterVoidConsumeSharedValue(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_DartCompleterVoidConsumeSharedValue;
-  _DartCompleterVoidConsumeSharedValue._() : super._();
-
-  factory _DartCompleterVoidConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =
-      _$_DartCompleterVoidConsumeSharedValue.fromJson;
-
-  @override
-  Object get family;
-  @override
-  ZacTransformers? get transformer;
-  @override
-  ZacTransformers? get select;
-  @override
-  SharedValueConsumeType? get forceConsume;
-}
-
-ZacCompleterProviderBuilder _$ZacCompleterProviderBuilderFromJson(
-    Map<String, dynamic> json) {
-  return _ZacCompleterProviderBuilderVoid.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ZacCompleterProviderBuilder {
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
-  Object get family => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacCompleterProviderBuilderVoid value) asVoid,
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacCompleterProviderBuilderVoid
-    extends _ZacCompleterProviderBuilderVoid {
-  _$_ZacCompleterProviderBuilderVoid(
-      {required this.child, required this.family})
-      : super._();
-
-  factory _$_ZacCompleterProviderBuilderVoid.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacCompleterProviderBuilderVoidFromJson(json);
-
   @override
   final ZacValue<Widget> child;
-  @override
-  final Object family;
 
   @override
   String toString() {
-    return 'ZacCompleterProviderBuilder.asVoid(child: $child, family: $family)';
+    return 'ZacCompleterVoidProvider(family: $family, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacCompleterProviderBuilderVoid &&
-            (identical(other.child, child) || other.child == child) &&
-            const DeepCollectionEquality().equals(other.family, family));
+            other is _$_ZacCompleterVoidProvider &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, child, const DeepCollectionEquality().hash(family));
+      runtimeType, const DeepCollectionEquality().hash(family), child);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacCompleterProviderBuilderVoid value) asVoid,
-  }) {
-    return asVoid(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacCompleterVoidProvider value) $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _ZacCompleterProviderBuilderVoid
-    extends ZacCompleterProviderBuilder {
-  factory _ZacCompleterProviderBuilderVoid(
-      {required final ZacValue<Widget> child,
-      required final Object family}) = _$_ZacCompleterProviderBuilderVoid;
-  _ZacCompleterProviderBuilderVoid._() : super._();
+abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
+  factory _ZacCompleterVoidProvider(
+      {required final Object family,
+      required final ZacValue<Widget> child}) = _$_ZacCompleterVoidProvider;
+  _ZacCompleterVoidProvider._() : super._();
 
-  factory _ZacCompleterProviderBuilderVoid.fromJson(Map<String, dynamic> json) =
-      _$_ZacCompleterProviderBuilderVoid.fromJson;
+  factory _ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =
+      _$_ZacCompleterVoidProvider.fromJson;
 
-  @override
-  ZacValue<Widget> get child;
   @override
   Object get family;
+  @override
+  ZacValue<Widget> get child;
 }
 
 ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {
@@ -201,7 +94,7 @@ ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacCompleterActions {
-  DartCompleterVoid get completer => throw _privateConstructorUsedError;
+  ZacValue<Completer> get completer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -219,7 +112,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
       _$$_ZacCompleterActionsVoidFromJson(json);
 
   @override
-  final DartCompleterVoid completer;
+  final ZacValue<Completer> completer;
 
   @override
   String toString() {
@@ -250,7 +143,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
 
 abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
   factory _ZacCompleterActionsVoid(
-          {required final DartCompleterVoid completer}) =
+          {required final ZacValue<Completer> completer}) =
       _$_ZacCompleterActionsVoid;
   _ZacCompleterActionsVoid._() : super._();
 
@@ -258,5 +151,5 @@ abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
       _$_ZacCompleterActionsVoid.fromJson;
 
   @override
-  DartCompleterVoid get completer;
+  ZacValue<Completer> get completer;
 }

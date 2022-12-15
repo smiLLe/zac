@@ -167,10 +167,7 @@ See "$SharedValueProviderBuilder" for more info.
     );
 
     return consumedValue is ZacBuilder<Object>
-        ? consumedValue.build(
-            zacContext,
-            onConsume: ZacBuilderConsume(type: consumeType),
-          )
+        ? consumedValue.build(zacContext)
         : consumedValue;
   }
 
@@ -210,12 +207,7 @@ See "$SharedValueProviderBuilder" for more info.
 
     return [
       ...consumedValue.map((dynamic e) {
-        return e is ZacBuilder<Object>
-            ? e.build(
-                zacContext,
-                onConsume: ZacBuilderConsume(type: consumeType),
-              )
-            : e as Object;
+        return e is ZacBuilder<Object> ? e.build(zacContext) : e as Object;
       })
     ];
   }
@@ -242,75 +234,6 @@ See "$SharedValueProviderBuilder" for more info.
         (previous, next) {
       actions.execute(ZacActionPayload.param2(next, previous), zacContext);
     });
-  }
-}
-
-mixin ConsumeSharedValue<T> {
-  SharedValueFamily get family;
-  ZacTransformers? get transformer;
-  ZacTransformers? get select;
-  SharedValueConsumeType? get forceConsume;
-
-  T consumeValue(ZacContext zacContext,
-      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
-    final value = SharedValue.getTyped<T>(
-      zacContext: zacContext,
-      consumeType: (forceConsume ?? type),
-      family: family,
-      select: select,
-      transformer: transformer,
-    );
-
-    return value;
-  }
-
-  T? consumeValueOrNull(ZacContext zacContext,
-      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
-    final value = SharedValue.getTypedOrNull<T?>(
-      zacContext: zacContext,
-      consumeType: (forceConsume ?? type),
-      family: family,
-      select: select,
-      transformer: transformer,
-    );
-
-    return value;
-  }
-}
-
-mixin ConsumeSharedValueList<T> {
-  SharedValueFamily get family;
-  ZacTransformers? get transformer;
-  ZacTransformers? get itemTransformer;
-  ZacTransformers? get select;
-  SharedValueConsumeType? get forceConsume;
-
-  List<T> consumeValue(ZacContext zacContext,
-      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
-    final value = SharedValue.getTypedList<T>(
-      zacContext: zacContext,
-      consumeType: (forceConsume ?? type),
-      family: family,
-      select: select,
-      transformer: transformer,
-      itemTransformer: itemTransformer,
-    );
-
-    return value;
-  }
-
-  List<T>? consumeValueOrNull(ZacContext zacContext,
-      {SharedValueConsumeType type = const SharedValueConsumeType.watch()}) {
-    final value = SharedValue.getTypedListOrNull<T>(
-      zacContext: zacContext,
-      consumeType: (forceConsume ?? type),
-      family: family,
-      select: select,
-      transformer: transformer,
-      itemTransformer: itemTransformer,
-    );
-
-    return value;
   }
 }
 
@@ -434,12 +357,6 @@ class SharedValueProviderBuilder
       {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
     return _buildWidget(zacContext);
   }
-
-  @override
-  SharedValueProvider? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
 }
 
 class SharedValueProvider extends HookConsumerWidget {
@@ -447,7 +364,7 @@ class SharedValueProvider extends HookConsumerWidget {
     required this.childBuilder,
     required this.valueBuilder,
     required this.family,
-    required this.autoCreate,
+    this.autoCreate = true,
     super.key,
   });
 
@@ -483,9 +400,7 @@ class SharedValueProvider extends HookConsumerWidget {
     }, [container]);
 
     return ZacUpdateContext(
-      builder: (
-        zacContext,
-      ) {
+      builder: (zacContext) {
         return UncontrolledProviderScope(
           container: container,
           child: ZacUpdateContext(

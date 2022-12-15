@@ -15,43 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterValueKey _$FlutterValueKeyFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
-    case 'f:1:ValueKey':
-      return _FlutterValueKey.fromJson(json);
-    case 'z:1:ValueKey.consume':
-      return _FlutterValueKeyConsumeSharedValue.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterValueKey',
-          'Invalid union type "${json['converter']}"!');
-  }
+  return _FlutterValueKey.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterValueKey {
+  String get value => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterValueKey value) $default, {
-    required TResult Function(_FlutterValueKeyConsumeSharedValue value) consume,
-  }) =>
+    TResult Function(_FlutterValueKey value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_FlutterValueKey extends _FlutterValueKey {
-  _$_FlutterValueKey(this.value, {final String? $type})
-      : $type = $type ?? 'f:1:ValueKey',
-        super._();
+  _$_FlutterValueKey(this.value) : super._();
 
   factory _$_FlutterValueKey.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterValueKeyFromJson(json);
 
   @override
   final String value;
-
-  @JsonKey(name: 'converter')
-  final String $type;
 
   @override
   String toString() {
@@ -73,9 +60,8 @@ class _$_FlutterValueKey extends _FlutterValueKey {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterValueKey value) $default, {
-    required TResult Function(_FlutterValueKeyConsumeSharedValue value) consume,
-  }) {
+    TResult Function(_FlutterValueKey value) $default,
+  ) {
     return $default(this);
   }
 }
@@ -87,301 +73,187 @@ abstract class _FlutterValueKey extends FlutterValueKey {
   factory _FlutterValueKey.fromJson(Map<String, dynamic> json) =
       _$_FlutterValueKey.fromJson;
 
+  @override
   String get value;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_FlutterValueKeyConsumeSharedValue
-    extends _FlutterValueKeyConsumeSharedValue
-    with ConsumeSharedValue<ValueKey<String>> {
-  _$_FlutterValueKeyConsumeSharedValue(
-      {required this.family,
-      this.transformer,
-      this.select,
-      this.forceConsume,
-      final String? $type})
-      : $type = $type ?? 'z:1:ValueKey.consume',
-        super._();
-
-  factory _$_FlutterValueKeyConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_FlutterValueKeyConsumeSharedValueFromJson(json);
-
-  @override
-  final Object family;
-  @override
-  final ZacTransformers? transformer;
-  @override
-  final ZacTransformers? select;
-  @override
-  final SharedValueConsumeType? forceConsume;
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'FlutterValueKey.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FlutterValueKeyConsumeSharedValue &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      transformer,
-      select,
-      forceConsume);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_FlutterValueKey value) $default, {
-    required TResult Function(_FlutterValueKeyConsumeSharedValue value) consume,
-  }) {
-    return consume(this);
-  }
-}
-
-abstract class _FlutterValueKeyConsumeSharedValue extends FlutterValueKey
-    implements ConsumeSharedValue<ValueKey<String>> {
-  factory _FlutterValueKeyConsumeSharedValue(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_FlutterValueKeyConsumeSharedValue;
-  _FlutterValueKeyConsumeSharedValue._() : super._();
-
-  factory _FlutterValueKeyConsumeSharedValue.fromJson(
-          Map<String, dynamic> json) =
-      _$_FlutterValueKeyConsumeSharedValue.fromJson;
-
-  Object get family;
-  ZacTransformers? get transformer;
-  ZacTransformers? get select;
-  SharedValueConsumeType? get forceConsume;
 }
 
 FlutterGlobalKeyNavigatorState _$FlutterGlobalKeyNavigatorStateFromJson(
     Map<String, dynamic> json) {
-  return _FlutterGlobalKeyNavigatorState.fromJson(json);
+  return _FlutterGlobalKeyNavigatorStateProvide.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterGlobalKeyNavigatorState {
+  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get select => throw _privateConstructorUsedError;
-  SharedValueConsumeType? get forceConsume =>
-      throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterGlobalKeyNavigatorState value) consume,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterGlobalKeyNavigatorStateProvide value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterGlobalKeyNavigatorState extends _FlutterGlobalKeyNavigatorState
-    with ConsumeSharedValue<GlobalKey<NavigatorState>> {
-  _$_FlutterGlobalKeyNavigatorState(
-      {required this.family, this.transformer, this.select, this.forceConsume})
+class _$_FlutterGlobalKeyNavigatorStateProvide
+    extends _FlutterGlobalKeyNavigatorStateProvide {
+  _$_FlutterGlobalKeyNavigatorStateProvide(
+      {this.debugLabel, required this.family, required this.child})
       : super._();
 
-  factory _$_FlutterGlobalKeyNavigatorState.fromJson(
+  factory _$_FlutterGlobalKeyNavigatorStateProvide.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterGlobalKeyNavigatorStateFromJson(json);
+      _$$_FlutterGlobalKeyNavigatorStateProvideFromJson(json);
 
+  @override
+  final ZacValue<String?>? debugLabel;
   @override
   final Object family;
   @override
-  final ZacTransformers? transformer;
-  @override
-  final ZacTransformers? select;
-  @override
-  final SharedValueConsumeType? forceConsume;
+  final ZacValue<Widget> child;
 
   @override
   String toString() {
-    return 'FlutterGlobalKeyNavigatorState.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
+    return 'FlutterGlobalKeyNavigatorState(debugLabel: $debugLabel, family: $family, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterGlobalKeyNavigatorState &&
+            other is _$_FlutterGlobalKeyNavigatorStateProvide &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      transformer,
-      select,
-      forceConsume);
+  int get hashCode => Object.hash(runtimeType, debugLabel,
+      const DeepCollectionEquality().hash(family), child);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterGlobalKeyNavigatorState value) consume,
-  }) {
-    return consume(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterGlobalKeyNavigatorStateProvide value) $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _FlutterGlobalKeyNavigatorState
-    extends FlutterGlobalKeyNavigatorState
-    implements ConsumeSharedValue<GlobalKey<NavigatorState>> {
-  factory _FlutterGlobalKeyNavigatorState(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_FlutterGlobalKeyNavigatorState;
-  _FlutterGlobalKeyNavigatorState._() : super._();
+abstract class _FlutterGlobalKeyNavigatorStateProvide
+    extends FlutterGlobalKeyNavigatorState {
+  factory _FlutterGlobalKeyNavigatorStateProvide(
+          {final ZacValue<String?>? debugLabel,
+          required final Object family,
+          required final ZacValue<Widget> child}) =
+      _$_FlutterGlobalKeyNavigatorStateProvide;
+  _FlutterGlobalKeyNavigatorStateProvide._() : super._();
 
-  factory _FlutterGlobalKeyNavigatorState.fromJson(Map<String, dynamic> json) =
-      _$_FlutterGlobalKeyNavigatorState.fromJson;
+  factory _FlutterGlobalKeyNavigatorStateProvide.fromJson(
+          Map<String, dynamic> json) =
+      _$_FlutterGlobalKeyNavigatorStateProvide.fromJson;
 
+  @override
+  ZacValue<String?>? get debugLabel;
   @override
   Object get family;
   @override
-  ZacTransformers? get transformer;
-  @override
-  ZacTransformers? get select;
-  @override
-  SharedValueConsumeType? get forceConsume;
+  ZacValue<Widget> get child;
 }
 
 FlutterGlobalKeyScaffoldMessengerState
     _$FlutterGlobalKeyScaffoldMessengerStateFromJson(
         Map<String, dynamic> json) {
-  return _FlutterGlobalKeyScaffoldMessengerState.fromJson(json);
+  return _FlutterGlobalKeyScaffoldMessengerStateProvide.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterGlobalKeyScaffoldMessengerState {
+  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  ZacTransformers? get select => throw _privateConstructorUsedError;
-  SharedValueConsumeType? get forceConsume =>
-      throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterGlobalKeyScaffoldMessengerState value)
-        consume,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterGlobalKeyScaffoldMessengerStateProvide value)
+        $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterGlobalKeyScaffoldMessengerState
-    extends _FlutterGlobalKeyScaffoldMessengerState
-    with ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>> {
-  _$_FlutterGlobalKeyScaffoldMessengerState(
-      {required this.family, this.transformer, this.select, this.forceConsume})
+class _$_FlutterGlobalKeyScaffoldMessengerStateProvide
+    extends _FlutterGlobalKeyScaffoldMessengerStateProvide {
+  _$_FlutterGlobalKeyScaffoldMessengerStateProvide(
+      {this.debugLabel, required this.family, required this.child})
       : super._();
 
-  factory _$_FlutterGlobalKeyScaffoldMessengerState.fromJson(
+  factory _$_FlutterGlobalKeyScaffoldMessengerStateProvide.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterGlobalKeyScaffoldMessengerStateFromJson(json);
+      _$$_FlutterGlobalKeyScaffoldMessengerStateProvideFromJson(json);
 
+  @override
+  final ZacValue<String?>? debugLabel;
   @override
   final Object family;
   @override
-  final ZacTransformers? transformer;
-  @override
-  final ZacTransformers? select;
-  @override
-  final SharedValueConsumeType? forceConsume;
+  final ZacValue<Widget> child;
 
   @override
   String toString() {
-    return 'FlutterGlobalKeyScaffoldMessengerState.consume(family: $family, transformer: $transformer, select: $select, forceConsume: $forceConsume)';
+    return 'FlutterGlobalKeyScaffoldMessengerState(debugLabel: $debugLabel, family: $family, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterGlobalKeyScaffoldMessengerState &&
+            other is _$_FlutterGlobalKeyScaffoldMessengerStateProvide &&
+            (identical(other.debugLabel, debugLabel) ||
+                other.debugLabel == debugLabel) &&
             const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.transformer, transformer) ||
-                other.transformer == transformer) &&
-            (identical(other.select, select) || other.select == select) &&
-            (identical(other.forceConsume, forceConsume) ||
-                other.forceConsume == forceConsume));
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(family),
-      transformer,
-      select,
-      forceConsume);
+  int get hashCode => Object.hash(runtimeType, debugLabel,
+      const DeepCollectionEquality().hash(family), child);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FlutterGlobalKeyScaffoldMessengerState value)
-        consume,
-  }) {
-    return consume(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_FlutterGlobalKeyScaffoldMessengerStateProvide value)
+        $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _FlutterGlobalKeyScaffoldMessengerState
-    extends FlutterGlobalKeyScaffoldMessengerState
-    implements ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>> {
-  factory _FlutterGlobalKeyScaffoldMessengerState(
-          {required final Object family,
-          final ZacTransformers? transformer,
-          final ZacTransformers? select,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_FlutterGlobalKeyScaffoldMessengerState;
-  _FlutterGlobalKeyScaffoldMessengerState._() : super._();
+abstract class _FlutterGlobalKeyScaffoldMessengerStateProvide
+    extends FlutterGlobalKeyScaffoldMessengerState {
+  factory _FlutterGlobalKeyScaffoldMessengerStateProvide(
+          {final ZacValue<String?>? debugLabel,
+          required final Object family,
+          required final ZacValue<Widget> child}) =
+      _$_FlutterGlobalKeyScaffoldMessengerStateProvide;
+  _FlutterGlobalKeyScaffoldMessengerStateProvide._() : super._();
 
-  factory _FlutterGlobalKeyScaffoldMessengerState.fromJson(
+  factory _FlutterGlobalKeyScaffoldMessengerStateProvide.fromJson(
           Map<String, dynamic> json) =
-      _$_FlutterGlobalKeyScaffoldMessengerState.fromJson;
+      _$_FlutterGlobalKeyScaffoldMessengerStateProvide.fromJson;
 
+  @override
+  ZacValue<String?>? get debugLabel;
   @override
   Object get family;
   @override
-  ZacTransformers? get transformer;
-  @override
-  ZacTransformers? get select;
-  @override
-  SharedValueConsumeType? get forceConsume;
+  ZacValue<Widget> get child;
 }
 
 ZacProvideFlutterKey _$ZacProvideFlutterKeyFromJson(Map<String, dynamic> json) {
