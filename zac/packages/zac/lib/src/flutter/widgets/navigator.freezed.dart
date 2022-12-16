@@ -26,7 +26,7 @@ mixin _$FlutterMaterialPageRoute {
   ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -63,7 +63,7 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
 
   /// Used instead of WidgetBuilder builder
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -110,7 +110,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
           {final FlutterRouteSettings? settings,
           final ZacValue<bool?>? maintainState,
           final ZacValue<bool?>? fullscreenDialog,
-          required final FlutterWidget child,
+          required final ZacValue<Widget> child,
           final ZacValue<String?>? nameOfSharedArguments}) =
       _$_FlutterMaterialPageRoute;
   _FlutterMaterialPageRoute._() : super._();
@@ -127,7 +127,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   @override
 
   /// Used instead of WidgetBuilder builder
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
@@ -154,7 +154,7 @@ mixin _$FlutterPageRouteBuilder {
   ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -206,7 +206,7 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 
   /// Used instead of WidgetBuilder builder
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -273,7 +273,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
           final ZacValue<String?>? barrierLabel,
           final ZacValue<bool?>? maintainState,
           final ZacValue<bool?>? fullscreenDialog,
-          required final FlutterWidget child,
+          required final ZacValue<Widget> child,
           final ZacValue<String?>? nameOfSharedArguments}) =
       _$_FlutterPageRouteBuilder;
   _FlutterPageRouteBuilder._() : super._();
@@ -300,7 +300,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   @override
 
   /// Used instead of WidgetBuilder builder
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a

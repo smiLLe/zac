@@ -19,5 +19,5 @@ _$_FlutterCenter _$$_FlutterCenterFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['heightFactor'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

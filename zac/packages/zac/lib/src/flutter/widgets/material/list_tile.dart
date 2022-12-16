@@ -14,7 +14,7 @@ part 'list_tile.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterListTile with _$FlutterListTile implements FlutterWidget {
+class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
   const FlutterListTile._();
 
   static const String unionValue = 'f:1:ListTile';
@@ -25,10 +25,10 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   @FreezedUnionValue(FlutterListTile.unionValue)
   factory FlutterListTile({
     FlutterKey? key,
-    FlutterWidget? leading,
-    FlutterWidget? title,
-    FlutterWidget? subtitle,
-    FlutterWidget? trailing,
+    ZacValue<Widget?>? leading,
+    ZacValue<Widget?>? title,
+    ZacValue<Widget?>? subtitle,
+    ZacValue<Widget?>? trailing,
     ZacValue<bool?>? isThreeLine,
     ZacValue<bool?>? dense,
 // FlutterVisualDensity? visualDensity,

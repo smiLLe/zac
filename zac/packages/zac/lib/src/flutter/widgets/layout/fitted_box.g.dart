@@ -22,5 +22,5 @@ _$_FlutterFittedBox _$$_FlutterFittedBoxFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

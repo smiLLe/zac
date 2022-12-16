@@ -21,7 +21,7 @@ FlutterClipRect _$FlutterClipRectFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterClipRect {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget? get child =>
+  ZacValue<Widget?>? get child =>
       throw _privateConstructorUsedError; // CustomClipper<Rect>? clipper,
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ class _$_FlutterClipRect extends _FlutterClipRect {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 // CustomClipper<Rect>? clipper,
   @override
   final FlutterClip? clipBehavior;
@@ -80,7 +80,7 @@ class _$_FlutterClipRect extends _FlutterClipRect {
 abstract class _FlutterClipRect extends FlutterClipRect {
   factory _FlutterClipRect(
       {final FlutterKey? key,
-      final FlutterWidget? child,
+      final ZacValue<Widget?>? child,
       final FlutterClip? clipBehavior}) = _$_FlutterClipRect;
   _FlutterClipRect._() : super._();
 
@@ -90,7 +90,7 @@ abstract class _FlutterClipRect extends FlutterClipRect {
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override // CustomClipper<Rect>? clipper,
   FlutterClip? get clipBehavior;
 }

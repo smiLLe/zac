@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../helper.dart';
 import '../../helper.mocks.dart';
@@ -21,7 +22,7 @@ void main() {
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: FlutterSizedBox(),
+        child: ZacValue<Widget>.builder(FlutterSizedBox()),
         onTap: LeakAction.createActions(onTapCb),
         onLongPress: LeakAction.createActions(onLongPressCb),
         onSecondaryLongPress: LeakAction.createActions(onSecondaryLongPressCb),
@@ -65,7 +66,7 @@ void main() {
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: FlutterSizedBox(),
+        child: ZacValue<Widget>.builder(FlutterSizedBox()),
         onDoubleTap: LeakAction.createActions(doubleTapCb),
       ),
     );

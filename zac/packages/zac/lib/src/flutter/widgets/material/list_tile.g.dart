@@ -13,16 +13,16 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       leading: json['leading'] == null
           ? null
-          : FlutterWidget.fromJson(json['leading'] as Object),
+          : ZacValue<Widget?>.fromJson(json['leading'] as Object),
       title: json['title'] == null
           ? null
-          : FlutterWidget.fromJson(json['title'] as Object),
+          : ZacValue<Widget?>.fromJson(json['title'] as Object),
       subtitle: json['subtitle'] == null
           ? null
-          : FlutterWidget.fromJson(json['subtitle'] as Object),
+          : ZacValue<Widget?>.fromJson(json['subtitle'] as Object),
       trailing: json['trailing'] == null
           ? null
-          : FlutterWidget.fromJson(json['trailing'] as Object),
+          : ZacValue<Widget?>.fromJson(json['trailing'] as Object),
       isThreeLine: json['isThreeLine'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['isThreeLine'] as Object),

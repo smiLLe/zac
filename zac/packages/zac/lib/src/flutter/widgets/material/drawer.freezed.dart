@@ -24,7 +24,7 @@ mixin _$FlutterDrawer {
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
   FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   ZacValue<String?>? get semanticLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -58,7 +58,7 @@ class _$_FlutterDrawer extends _FlutterDrawer {
   @override
   final FlutterShapeBorder? shape;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
   @override
   final ZacValue<String?>? semanticLabel;
 
@@ -103,7 +103,7 @@ abstract class _FlutterDrawer extends FlutterDrawer {
       final FlutterColor? backgroundColor,
       final ZacValue<double?>? elevation,
       final FlutterShapeBorder? shape,
-      final FlutterWidget? child,
+      final ZacValue<Widget?>? child,
       final ZacValue<String?>? semanticLabel}) = _$_FlutterDrawer;
   _FlutterDrawer._() : super._();
 
@@ -119,7 +119,7 @@ abstract class _FlutterDrawer extends FlutterDrawer {
   @override
   FlutterShapeBorder? get shape;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override
   ZacValue<String?>? get semanticLabel;
 }

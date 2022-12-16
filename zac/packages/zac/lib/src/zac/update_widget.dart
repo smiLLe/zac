@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
@@ -13,7 +14,7 @@ part 'update_widget.g.dart';
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder
-    implements FlutterWidget {
+    implements ZacBuilder<ZacUpdateContext> {
   const ZacUpdateContextBuilder._();
 
   static const String unionValue = 'z:1:UpdateContext';
@@ -24,7 +25,7 @@ class ZacUpdateContextBuilder
   @FreezedUnionValue(ZacUpdateContextBuilder.unionValue)
   factory ZacUpdateContextBuilder({
     FlutterKey? key,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _ZacUpdateContextBuilder;
 
   ZacUpdateContext _buildWidget(ZacContext zacContext) {

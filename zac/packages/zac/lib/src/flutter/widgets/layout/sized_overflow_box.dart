@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'sized_overflow_box.freezed.dart';
 part 'sized_overflow_box.g.dart';
@@ -14,7 +15,7 @@ part 'sized_overflow_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSizedOverflowBox
     with _$FlutterSizedOverflowBox
-    implements FlutterWidget {
+    implements ZacBuilder<SizedOverflowBox> {
   const FlutterSizedOverflowBox._();
 
   static const String unionValue = 'f:1:SizedOverflowBox';
@@ -27,7 +28,7 @@ class FlutterSizedOverflowBox
     FlutterKey? key,
     required FlutterSize size,
     FlutterAlignmentGeometry? alignment,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterSizedOverflowBox;
 
   SizedOverflowBox _buildWidget(ZacContext zacContext) {

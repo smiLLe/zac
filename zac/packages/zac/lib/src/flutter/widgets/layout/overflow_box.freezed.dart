@@ -26,7 +26,7 @@ mixin _$FlutterOverflowBox {
   ZacValue<double?>? get maxWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get minHeight => throw _privateConstructorUsedError;
   ZacValue<double?>? get maxHeight => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -64,7 +64,7 @@ class _$_FlutterOverflowBox extends _FlutterOverflowBox {
   @override
   final ZacValue<double?>? maxHeight;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -112,7 +112,7 @@ abstract class _FlutterOverflowBox extends FlutterOverflowBox {
       final ZacValue<double?>? maxWidth,
       final ZacValue<double?>? minHeight,
       final ZacValue<double?>? maxHeight,
-      final FlutterWidget? child}) = _$_FlutterOverflowBox;
+      final ZacValue<Widget?>? child}) = _$_FlutterOverflowBox;
   _FlutterOverflowBox._() : super._();
 
   factory _FlutterOverflowBox.fromJson(Map<String, dynamic> json) =
@@ -131,5 +131,5 @@ abstract class _FlutterOverflowBox extends FlutterOverflowBox {
   @override
   ZacValue<double?>? get maxHeight;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

@@ -34,7 +34,7 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
           : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -46,10 +46,10 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       title: json['title'] == null
           ? null
-          : FlutterWidget.fromJson(json['title'] as Object),
+          : ZacValue<Widget?>.fromJson(json['title'] as Object),
       content: json['content'] == null
           ? null
-          : FlutterWidget.fromJson(json['content'] as Object),
+          : ZacValue<Widget?>.fromJson(json['content'] as Object),
       actions: json['actions'] == null
           ? null
           : ZacValueList<Widget, List<Widget>?>.fromJson(
@@ -125,7 +125,7 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       title: json['title'] == null
           ? null
-          : FlutterWidget.fromJson(json['title'] as Object),
+          : ZacValue<Widget?>.fromJson(json['title'] as Object),
       children: json['children'] == null
           ? null
           : ZacValueList<Widget, List<Widget>?>.fromJson(
@@ -175,7 +175,7 @@ _$_FlutterDialogsSimpleDialogOption
               : FlutterKey.fromJson(json['key'] as Object),
           child: json['child'] == null
               ? null
-              : FlutterWidget.fromJson(json['child'] as Object),
+              : ZacValue<Widget?>.fromJson(json['child'] as Object),
           onPressed: json['onPressed'] == null
               ? null
               : ZacActions.fromJson(json['onPressed'] as Object),
@@ -189,7 +189,7 @@ _$_FlutterDialogsSimpleDialogOption
 _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterDialogActionsShowDialog(
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['barrierDismissible'] as Object),

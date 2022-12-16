@@ -12,7 +12,7 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),

@@ -28,7 +28,7 @@ mixin _$FlutterSafeArea {
   FlutterEdgeInsets? get minimum => throw _privateConstructorUsedError;
   ZacValue<bool?>? get maintainBottomViewPadding =>
       throw _privateConstructorUsedError;
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -69,7 +69,7 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
   @override
   final ZacValue<bool?>? maintainBottomViewPadding;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
 
   @override
   String toString() {
@@ -116,7 +116,7 @@ abstract class _FlutterSafeArea extends FlutterSafeArea {
       final ZacValue<bool?>? bottom,
       final FlutterEdgeInsets? minimum,
       final ZacValue<bool?>? maintainBottomViewPadding,
-      required final FlutterWidget child}) = _$_FlutterSafeArea;
+      required final ZacValue<Widget> child}) = _$_FlutterSafeArea;
   _FlutterSafeArea._() : super._();
 
   factory _FlutterSafeArea.fromJson(Map<String, dynamic> json) =
@@ -137,5 +137,5 @@ abstract class _FlutterSafeArea extends FlutterSafeArea {
   @override
   ZacValue<bool?>? get maintainBottomViewPadding;
   @override
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
 }

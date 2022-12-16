@@ -25,7 +25,7 @@ void main() {
   testWidgets('Build a FlutterWidget from ZacWidget', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: ZacWidget(
-        data: FlutterWidget.fromJson({
+        data: ZacBuilder<Widget>.fromJson(<String, dynamic>{
           'converter': 'f:1:Text',
           'data': 'hello',
         }),

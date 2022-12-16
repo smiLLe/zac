@@ -5,12 +5,14 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 part 'clip_rect.freezed.dart';
 part 'clip_rect.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
+class FlutterClipRect with _$FlutterClipRect implements ZacBuilder<ClipRect> {
   const FlutterClipRect._();
 
   static const String unionValue = 'f:1:ClipRect';
@@ -21,7 +23,7 @@ class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
   @FreezedUnionValue(FlutterClipRect.unionValue)
   factory FlutterClipRect({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
     FlutterClip? clipBehavior,
   }) = _FlutterClipRect;

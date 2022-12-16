@@ -5,13 +5,15 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'clip_oval.freezed.dart';
 part 'clip_oval.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
+class FlutterClipOval with _$FlutterClipOval implements ZacBuilder<ClipOval> {
   const FlutterClipOval._();
 
   static const String unionValue = 'f:1:ClipOval';
@@ -22,7 +24,7 @@ class FlutterClipOval with _$FlutterClipOval implements FlutterWidget {
   @FreezedUnionValue(FlutterClipOval.unionValue)
   factory FlutterClipOval({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
     FlutterClip? clipBehavior,
   }) = _FlutterClipOval;

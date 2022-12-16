@@ -6,13 +6,17 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'container.freezed.dart';
 part 'container.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterContainer with _$FlutterContainer implements FlutterWidget {
+class FlutterContainer
+    with _$FlutterContainer
+    implements ZacBuilder<Container> {
   const FlutterContainer._();
 
   static const String unionValue = 'f:1:Container';
@@ -23,7 +27,7 @@ class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   @FreezedUnionValue(FlutterContainer.unionValue)
   factory FlutterContainer({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     FlutterColor? color,
     FlutterEdgeInsetsGeometry? margin,
     FlutterEdgeInsetsGeometry? padding,

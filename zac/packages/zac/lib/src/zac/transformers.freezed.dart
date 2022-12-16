@@ -325,8 +325,6 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
       return _MapKey.fromJson(json);
     case 'z:1:Transformer:Map.setValueForKey':
       return _MapSetValueForKey.fromJson(json);
-    case 'z:1:Transformer:Map<String, FlutterWidget>.from':
-      return _MapFromStringFlutterWidget.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'converter', 'MapTransformer',
@@ -353,8 +351,6 @@ mixin _$MapTransformer {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -405,8 +401,6 @@ class _$_MapValues extends _MapValues {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return values(this);
   }
@@ -466,8 +460,6 @@ class _$_MapKeys extends _MapKeys {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return keys(this);
   }
@@ -526,8 +518,6 @@ class _$_MapEntries extends _MapEntries {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return entries(this);
   }
@@ -587,8 +577,6 @@ class _$_MapLength extends _MapLength {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return length(this);
   }
@@ -648,8 +636,6 @@ class _$_MapIsEmpty extends _MapIsEmpty {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return isEmpty(this);
   }
@@ -709,8 +695,6 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return isNotEmpty(this);
   }
@@ -775,8 +759,6 @@ class _$_MapContainsKey extends _MapContainsKey {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return containsKey(this);
   }
@@ -844,8 +826,6 @@ class _$_MapContainsValue extends _MapContainsValue {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return containsValue(this);
   }
@@ -920,8 +900,6 @@ class _$_MapMapper extends _MapMapper {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return mapper(this);
   }
@@ -986,8 +964,6 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return fromObjectObject(this);
   }
@@ -1047,8 +1023,6 @@ class _$_MapFromStringObject extends _MapFromStringObject {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return fromStringObject(this);
   }
@@ -1109,8 +1083,6 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return fromStringNullObject(this);
   }
@@ -1175,8 +1147,6 @@ class _$_MapKey extends _MapKey {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return key(this);
   }
@@ -1246,8 +1216,6 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
         fromStringNullObject,
     required TResult Function(_MapKey value) key,
     required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
   }) {
     return setValueForKey(this);
   }
@@ -1264,68 +1232,6 @@ abstract class _MapSetValueForKey extends MapTransformer {
 
   ZacValue<Object> get value;
   ZacValue<String> get key;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_MapFromStringFlutterWidget extends _MapFromStringFlutterWidget {
-  const _$_MapFromStringFlutterWidget({final String? $type})
-      : $type = $type ?? 'z:1:Transformer:Map<String, FlutterWidget>.from',
-        super._();
-
-  factory _$_MapFromStringFlutterWidget.fromJson(Map<String, dynamic> json) =>
-      _$$_MapFromStringFlutterWidgetFromJson(json);
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'MapTransformer.fromStringFlutterWidget()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_MapFromStringFlutterWidget);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_MapValues value) values,
-    required TResult Function(_MapKeys value) keys,
-    required TResult Function(_MapEntries value) entries,
-    required TResult Function(_MapLength value) length,
-    required TResult Function(_MapIsEmpty value) isEmpty,
-    required TResult Function(_MapIsNotEmpty value) isNotEmpty,
-    required TResult Function(_MapContainsKey value) containsKey,
-    required TResult Function(_MapContainsValue value) containsValue,
-    required TResult Function(_MapMapper value) mapper,
-    required TResult Function(_MapFromObjectObject value) fromObjectObject,
-    required TResult Function(_MapFromStringObject value) fromStringObject,
-    required TResult Function(_MapFromStringNullObject value)
-        fromStringNullObject,
-    required TResult Function(_MapKey value) key,
-    required TResult Function(_MapSetValueForKey value) setValueForKey,
-    required TResult Function(_MapFromStringFlutterWidget value)
-        fromStringFlutterWidget,
-  }) {
-    return fromStringFlutterWidget(this);
-  }
-}
-
-abstract class _MapFromStringFlutterWidget extends MapTransformer {
-  const factory _MapFromStringFlutterWidget() = _$_MapFromStringFlutterWidget;
-  const _MapFromStringFlutterWidget._() : super._();
-
-  factory _MapFromStringFlutterWidget.fromJson(Map<String, dynamic> json) =
-      _$_MapFromStringFlutterWidget.fromJson;
 }
 
 IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {
@@ -2325,8 +2231,6 @@ ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
   switch (json['converter']) {
     case 'z:1:Transformer:List.reversed':
       return _ListReversed.fromJson(json);
-    case 'z:1:Transformer:List<FlutterWidget>.from':
-      return _ListFromFlutterWidget.fromJson(json);
     case 'z:1:Transformer:List.add':
       return _ListAdd.fromJson(json);
 
@@ -2341,7 +2245,6 @@ mixin _$ListTransformer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
-    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
     required TResult Function(_ListAdd value) add,
   }) =>
       throw _privateConstructorUsedError;
@@ -2379,7 +2282,6 @@ class _$_ListReversed extends _ListReversed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
-    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
     required TResult Function(_ListAdd value) add,
   }) {
     return reversed(this);
@@ -2392,53 +2294,6 @@ abstract class _ListReversed extends ListTransformer {
 
   factory _ListReversed.fromJson(Map<String, dynamic> json) =
       _$_ListReversed.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ListFromFlutterWidget extends _ListFromFlutterWidget {
-  const _$_ListFromFlutterWidget({final String? $type})
-      : $type = $type ?? 'z:1:Transformer:List<FlutterWidget>.from',
-        super._();
-
-  factory _$_ListFromFlutterWidget.fromJson(Map<String, dynamic> json) =>
-      _$$_ListFromFlutterWidgetFromJson(json);
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ListTransformer.fromFlutterWidget()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ListFromFlutterWidget);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ListReversed value) reversed,
-    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
-    required TResult Function(_ListAdd value) add,
-  }) {
-    return fromFlutterWidget(this);
-  }
-}
-
-abstract class _ListFromFlutterWidget extends ListTransformer {
-  const factory _ListFromFlutterWidget() = _$_ListFromFlutterWidget;
-  const _ListFromFlutterWidget._() : super._();
-
-  factory _ListFromFlutterWidget.fromJson(Map<String, dynamic> json) =
-      _$_ListFromFlutterWidget.fromJson;
 }
 
 /// @nodoc
@@ -2478,7 +2333,6 @@ class _$_ListAdd extends _ListAdd {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
-    required TResult Function(_ListFromFlutterWidget value) fromFlutterWidget,
     required TResult Function(_ListAdd value) add,
   }) {
     return add(this);
@@ -2508,8 +2362,6 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsDouble.fromJson(json);
     case 'z:1:Transformer:Object.isInt':
       return _ObjectIsInt.fromJson(json);
-    case 'z:1:Transformer:Object.isFlutterWidget':
-      return _ObjectIsFlutterWidget.fromJson(json);
     case 'z:1:Transformer:Object.isNull':
       return _ObjectIsNull.fromJson(json);
     case 'z:1:Transformer:Object.equals':
@@ -2539,7 +2391,6 @@ mixin _$ObjectTransformer {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2587,7 +2438,6 @@ class _$_ObjectIsList extends _ObjectIsList {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2644,7 +2494,6 @@ class _$_ObjectIsMap extends _ObjectIsMap {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2701,7 +2550,6 @@ class _$_ObjectIsBool extends _ObjectIsBool {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2758,7 +2606,6 @@ class _$_ObjectIsString extends _ObjectIsString {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2815,7 +2662,6 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2872,7 +2718,6 @@ class _$_ObjectIsInt extends _ObjectIsInt {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -2890,63 +2735,6 @@ abstract class _ObjectIsInt extends ObjectTransformer {
 
   factory _ObjectIsInt.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsInt.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ObjectIsFlutterWidget extends _ObjectIsFlutterWidget {
-  _$_ObjectIsFlutterWidget({final String? $type})
-      : $type = $type ?? 'z:1:Transformer:Object.isFlutterWidget',
-        super._();
-
-  factory _$_ObjectIsFlutterWidget.fromJson(Map<String, dynamic> json) =>
-      _$$_ObjectIsFlutterWidgetFromJson(json);
-
-  @JsonKey(name: 'converter')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ObjectTransformer.isFlutterWidget()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsFlutterWidget);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ObjectIsList value) isList,
-    required TResult Function(_ObjectIsMap value) isMap,
-    required TResult Function(_ObjectIsBool value) isBool,
-    required TResult Function(_ObjectIsString value) isString,
-    required TResult Function(_ObjectIsDouble value) isDouble,
-    required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
-    required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectEquals value) equals,
-    required TResult Function(_ObjectToString value) toString,
-    required TResult Function(_ObjectRuntimeType value) runtimeType,
-    required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
-  }) {
-    return isFlutterWidget(this);
-  }
-}
-
-abstract class _ObjectIsFlutterWidget extends ObjectTransformer {
-  factory _ObjectIsFlutterWidget() = _$_ObjectIsFlutterWidget;
-  _ObjectIsFlutterWidget._() : super._();
-
-  factory _ObjectIsFlutterWidget.fromJson(Map<String, dynamic> json) =
-      _$_ObjectIsFlutterWidget.fromJson;
 }
 
 /// @nodoc
@@ -2986,7 +2774,6 @@ class _$_ObjectIsNull extends _ObjectIsNull {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3049,7 +2836,6 @@ class _$_ObjectEquals extends _ObjectEquals {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3108,7 +2894,6 @@ class _$_ObjectToString extends _ObjectToString {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3165,7 +2950,6 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3222,7 +3006,6 @@ class _$_ObjectHashCode extends _ObjectHashCode {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3253,7 +3036,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final ZacValue<Object> value;
+  final ZacValue<Object?>? value;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3284,7 +3067,6 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
     required TResult Function(_ObjectIsString value) isString,
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsFlutterWidget value) isFlutterWidget,
     required TResult Function(_ObjectIsNull value) isNull,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
@@ -3297,14 +3079,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
 }
 
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
-  factory _ObjectEqualsSharedValue({required final ZacValue<Object> value}) =
+  factory _ObjectEqualsSharedValue({required final ZacValue<Object?>? value}) =
       _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  ZacValue<Object> get value;
+  ZacValue<Object?>? get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

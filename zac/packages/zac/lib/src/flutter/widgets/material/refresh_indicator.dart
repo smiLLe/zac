@@ -18,7 +18,7 @@ part 'refresh_indicator.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
-    implements FlutterWidget {
+    implements ZacBuilder<RefreshIndicator> {
   const FlutterRefreshIndicator._();
 
   static const String unionValue = 'f:1:RefreshIndicator';
@@ -29,7 +29,7 @@ class FlutterRefreshIndicator
   @FreezedUnionValue(FlutterRefreshIndicator.unionValue)
   factory FlutterRefreshIndicator({
     FlutterKey? key,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
     ZacValue<double?>? displacement,
     ZacValue<double?>? edgeOffset,
     required ZacActions onRefresh,

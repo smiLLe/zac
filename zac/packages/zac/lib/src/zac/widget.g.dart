@@ -24,6 +24,6 @@ _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
       data: json['data'] as Object,
       errorChild: json['errorChild'] == null
           ? null
-          : FlutterWidget.fromJson(json['errorChild'] as Object),
+          : ZacValue<Widget?>.fromJson(json['errorChild'] as Object),
       $type: json['converter'] as String?,
     );

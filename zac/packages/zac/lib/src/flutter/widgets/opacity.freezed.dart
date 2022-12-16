@@ -24,7 +24,7 @@ mixin _$FlutterOpacity {
   ZacValue<double> get opacity => throw _privateConstructorUsedError;
   ZacValue<bool?>? get alwaysIncludeSemantics =>
       throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -53,7 +53,7 @@ class _$_FlutterOpacity extends _FlutterOpacity {
   @override
   final ZacValue<bool?>? alwaysIncludeSemantics;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -91,7 +91,7 @@ abstract class _FlutterOpacity extends FlutterOpacity {
       {final FlutterKey? key,
       required final ZacValue<double> opacity,
       final ZacValue<bool?>? alwaysIncludeSemantics,
-      final FlutterWidget? child}) = _$_FlutterOpacity;
+      final ZacValue<Widget?>? child}) = _$_FlutterOpacity;
   _FlutterOpacity._() : super._();
 
   factory _FlutterOpacity.fromJson(Map<String, dynamic> json) =
@@ -104,5 +104,5 @@ abstract class _FlutterOpacity extends FlutterOpacity {
   @override
   ZacValue<bool?>? get alwaysIncludeSemantics;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

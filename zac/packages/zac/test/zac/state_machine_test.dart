@@ -228,16 +228,18 @@ void main() {
             ),
           ),
         },
-        child: LeakContext(
-          cb: (c) {
-            zacContext = c;
-            curMachine = SharedValue.get(
-              zacContext: c,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            );
-          },
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (c) {
+              zacContext = c;
+              curMachine = SharedValue.get(
+                zacContext: c,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              );
+            },
+          ),
         ),
       ),
     );
@@ -283,18 +285,20 @@ void main() {
               ),
             ),
           },
-          child: TestBuildCustomWidget((zacContext) {
-            context = zacContext;
-            return TextButton(
-              key: const Key('button'),
-              child: const SizedBox(),
-              onPressed: () {
-                (zacContext.ref.read(SharedValue.provider('machine'))
-                        as ZacStateMachine)
-                    .send('NEXT', null);
-              },
-            );
-          }),
+          child: ZacValue<Widget>.builder(
+            TestBuildCustomWidget((zacContext) {
+              context = zacContext;
+              return TextButton(
+                key: const Key('button'),
+                child: const SizedBox(),
+                onPressed: () {
+                  (zacContext.ref.read(SharedValue.provider('machine'))
+                          as ZacStateMachine)
+                      .send('NEXT', null);
+                },
+              );
+            }),
+          ),
         ));
 
     await tester.tap(find.byKey(const Key('button')));
@@ -333,15 +337,17 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'a')],
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            ) as ZacStateMachine;
-          },
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (zacContext) {
+              curMachine = SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              ) as ZacStateMachine;
+            },
+          ),
         ),
       ),
     );
@@ -387,15 +393,17 @@ void main() {
             widget: ZacValue<Widget>.builder(FlutterSizedBox()),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            ) as ZacStateMachine;
-          },
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (zacContext) {
+              curMachine = SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              ) as ZacStateMachine;
+            },
+          ),
         ),
       ),
     );
@@ -428,15 +436,17 @@ void main() {
             widget: ZacValue<Widget>.builder(FlutterSizedBox()),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            ) as ZacStateMachine;
-          },
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (zacContext) {
+              curMachine = SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              ) as ZacStateMachine;
+            },
+          ),
         ),
       ),
     );
@@ -468,15 +478,17 @@ void main() {
             widget: ZacValue<Widget>.builder(FlutterSizedBox()),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            machines.add(SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            ) as ZacStateMachine);
-          },
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (zacContext) {
+              machines.add(SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              ) as ZacStateMachine);
+            },
+          ),
         ),
       ),
     );
@@ -527,20 +539,26 @@ void main() {
             ),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            machine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-              select: null,
-            ) as ZacStateMachine;
-          },
-          child: ZacStateMachineBuildStateBuilder(
-            family: ZacValue<String>.fromJson('machine'),
-            states: ['a', 'b'],
-            unmappedStateWidget: FlutterSizedBox(
-              key: FlutterValueKey('unmapped'),
+        child: ZacValue<Widget>.builder(
+          LeakContext(
+            cb: (zacContext) {
+              machine = SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'machine',
+                select: null,
+              ) as ZacStateMachine;
+            },
+            child: ZacValue<Widget>.builder(
+              ZacStateMachineBuildStateBuilder(
+                family: ZacValue<String>.fromJson('machine'),
+                states: ['a', 'b'],
+                unmappedStateWidget: ZacValue<Widget>.builder(
+                  FlutterSizedBox(
+                    key: FlutterValueKey('unmapped'),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
@@ -581,9 +599,11 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
         },
-        child: ZacStateMachineBuildStateBuilder(
-          family: ZacValue<String>.fromJson('machine'),
-          states: ['b'],
+        child: ZacValue<Widget>.builder(
+          ZacStateMachineBuildStateBuilder(
+            family: ZacValue<String>.fromJson('machine'),
+            states: ['b'],
+          ),
         ),
       ),
     );
@@ -625,9 +645,11 @@ void main() {
             ),
           ),
         },
-        child: ZacStateMachineBuildStateBuilder(
-          family: ZacValue<String>.fromJson('machine'),
-          states: ['a', 'b'],
+        child: ZacValue<Widget>.builder(
+          ZacStateMachineBuildStateBuilder(
+            family: ZacValue<String>.fromJson('machine'),
+            states: ['a', 'b'],
+          ),
         ),
       ),
     );
@@ -668,9 +690,11 @@ void main() {
             ),
           ),
         },
-        child: ZacStateMachineBuildStateBuilder(
-          family: ZacValue<String>.fromJson('machine'),
-          states: ['a', 'b'],
+        child: ZacValue<Widget>.builder(
+          ZacStateMachineBuildStateBuilder(
+            family: ZacValue<String>.fromJson('machine'),
+            states: ['a', 'b'],
+          ),
         ),
       ),
     );

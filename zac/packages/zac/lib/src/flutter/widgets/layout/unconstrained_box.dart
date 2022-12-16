@@ -7,6 +7,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'unconstrained_box.freezed.dart';
 part 'unconstrained_box.g.dart';
@@ -15,7 +16,7 @@ part 'unconstrained_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
-    implements FlutterWidget {
+    implements ZacBuilder<UnconstrainedBox> {
   const FlutterUnconstrainedBox._();
 
   static const String unionValue = 'f:1:UnconstrainedBox';
@@ -26,7 +27,7 @@ class FlutterUnconstrainedBox
   @FreezedUnionValue(FlutterUnconstrainedBox.unionValue)
   factory FlutterUnconstrainedBox({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     FlutterTextDirection? textDirection,
     FlutterAlignmentGeometry? alignment,
     FlutterAxis? constrainedAxis,

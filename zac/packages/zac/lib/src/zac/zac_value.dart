@@ -317,10 +317,8 @@ Value after: $transformedVal''');
           })
         ];
 
-        final transformedList = obj.transformer?.transform(
-                ZacTransformValue(list),
-                zacContext,
-                const ZacActionPayload()) ??
+        final transformedList = obj.transformer
+                ?.transform(ZacTransformValue(list), zacContext, null) ??
             list;
 
         if (transformedList is X) {

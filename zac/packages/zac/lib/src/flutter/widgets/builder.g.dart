@@ -11,5 +11,5 @@ _$_FlutterBuilder _$$_FlutterBuilderFromJson(Map<String, dynamic> json) =>
       key: json['key'] == null
           ? null
           : FlutterKey.fromJson(json['key'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
     );

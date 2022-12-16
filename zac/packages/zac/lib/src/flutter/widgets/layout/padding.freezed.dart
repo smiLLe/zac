@@ -22,7 +22,7 @@ FlutterPadding _$FlutterPaddingFromJson(Map<String, dynamic> json) {
 mixin _$FlutterPadding {
   FlutterKey? get key => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry get padding => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -44,7 +44,7 @@ class _$_FlutterPadding extends _FlutterPadding {
   @override
   final FlutterEdgeInsetsGeometry padding;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -78,7 +78,7 @@ abstract class _FlutterPadding extends FlutterPadding {
   factory _FlutterPadding(
       {final FlutterKey? key,
       required final FlutterEdgeInsetsGeometry padding,
-      final FlutterWidget? child}) = _$_FlutterPadding;
+      final ZacValue<Widget?>? child}) = _$_FlutterPadding;
   _FlutterPadding._() : super._();
 
   factory _FlutterPadding.fromJson(Map<String, dynamic> json) =
@@ -89,5 +89,5 @@ abstract class _FlutterPadding extends FlutterPadding {
   @override
   FlutterEdgeInsetsGeometry get padding;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

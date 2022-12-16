@@ -98,12 +98,6 @@ _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
       $type: json['converter'] as String?,
     );
 
-_$_MapFromStringFlutterWidget _$$_MapFromStringFlutterWidgetFromJson(
-        Map<String, dynamic> json) =>
-    _$_MapFromStringFlutterWidget(
-      $type: json['converter'] as String?,
-    );
-
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
       transformer: ZacTransformers.fromJson(json['transformer'] as Object),
@@ -193,12 +187,6 @@ _$_ListReversed _$$_ListReversedFromJson(Map<String, dynamic> json) =>
       $type: json['converter'] as String?,
     );
 
-_$_ListFromFlutterWidget _$$_ListFromFlutterWidgetFromJson(
-        Map<String, dynamic> json) =>
-    _$_ListFromFlutterWidget(
-      $type: json['converter'] as String?,
-    );
-
 _$_ListAdd _$$_ListAddFromJson(Map<String, dynamic> json) => _$_ListAdd(
       ZacValue<Object>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
@@ -234,12 +222,6 @@ _$_ObjectIsInt _$$_ObjectIsIntFromJson(Map<String, dynamic> json) =>
       $type: json['converter'] as String?,
     );
 
-_$_ObjectIsFlutterWidget _$$_ObjectIsFlutterWidgetFromJson(
-        Map<String, dynamic> json) =>
-    _$_ObjectIsFlutterWidget(
-      $type: json['converter'] as String?,
-    );
-
 _$_ObjectIsNull _$$_ObjectIsNullFromJson(Map<String, dynamic> json) =>
     _$_ObjectIsNull(
       $type: json['converter'] as String?,
@@ -269,7 +251,9 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
 _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ObjectEqualsSharedValue(
-      value: ZacValue<Object>.fromJson(json['value'] as Object),
+      value: json['value'] == null
+          ? null
+          : ZacValue<Object?>.fromJson(json['value'] as Object),
       $type: json['converter'] as String?,
     );
 

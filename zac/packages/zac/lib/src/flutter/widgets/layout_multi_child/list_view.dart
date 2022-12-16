@@ -17,7 +17,7 @@ part 'list_view.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterListView with _$FlutterListView implements FlutterWidget {
+class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
   const FlutterListView._();
 
   static const String unionValue = 'f:1:ListView';
@@ -36,7 +36,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
     ZacValue<bool?>? shrinkWrap,
     FlutterEdgeInsetsGeometry? padding,
     ZacValue<double?>? itemExtent,
-    FlutterWidget? prototypeItem,
+    ZacValue<Widget?>? prototypeItem,
     ZacValue<bool?>? addAutomaticKeepAlives,
     ZacValue<bool?>? addRepaintBoundaries,
     ZacValue<bool?>? addSemanticIndexes,

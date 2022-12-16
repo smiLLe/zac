@@ -13,7 +13,9 @@ part 'material_app.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
+class FlutterMaterialApp
+    with _$FlutterMaterialApp
+    implements ZacBuilder<MaterialApp> {
   const FlutterMaterialApp._();
 
   static const String unionValue = 'f:1:MaterialApp';
@@ -26,7 +28,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
     FlutterKey? key,
     ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
     ZacValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
-    FlutterWidget? home,
+    ZacValue<Widget?>? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
     ZacValue<String?>? initialRoute,
     FlutterRouteFactory? onGenerateRoute,

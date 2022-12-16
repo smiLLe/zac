@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,7 @@ part 'expanded.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
+class FlutterExpanded with _$FlutterExpanded implements ZacBuilder<Expanded> {
   const FlutterExpanded._();
 
   static const String unionValue = 'f:1:Expanded';
@@ -23,7 +24,7 @@ class FlutterExpanded with _$FlutterExpanded implements FlutterWidget {
   factory FlutterExpanded({
     FlutterKey? key,
     ZacValue<int?>? flex,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterExpanded;
 
   Expanded _buildWidget(ZacContext zacContext) {

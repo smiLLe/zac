@@ -16,7 +16,7 @@ part 'app_bar.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
+class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
   const FlutterAppBar._();
 
   static const String unionValue = 'f:1:AppBar';
@@ -27,13 +27,13 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   @FreezedUnionValue(FlutterAppBar.unionValue)
   factory FlutterAppBar({
     FlutterKey? key,
-    FlutterWidget? leading,
+    ZacValue<Widget?>? leading,
     ZacValue<bool?>? automaticallyImplyLeading,
-    FlutterWidget? title,
+    ZacValue<Widget?>? title,
     ZacValueList<Widget, List<Widget>?>? actions,
-    FlutterWidget? flexibleSpace,
+    ZacValue<Widget?>? flexibleSpace,
 // PreferredSizeWidget
-    FlutterWidget? bottom,
+    ZacValue<Widget?>? bottom,
     ZacValue<double?>? elevation,
     FlutterColor? shadowColor,
     FlutterShapeBorder? shape,

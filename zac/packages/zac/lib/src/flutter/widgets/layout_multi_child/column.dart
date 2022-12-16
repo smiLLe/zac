@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,7 +15,7 @@ part 'column.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterColumn with _$FlutterColumn implements FlutterWidget {
+class FlutterColumn with _$FlutterColumn implements ZacBuilder<Column> {
   const FlutterColumn._();
 
   static const String unionValue = 'f:1:Column';

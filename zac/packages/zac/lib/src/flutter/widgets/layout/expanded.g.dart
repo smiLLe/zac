@@ -14,5 +14,5 @@ _$_FlutterExpanded _$$_FlutterExpandedFromJson(Map<String, dynamic> json) =>
       flex: json['flex'] == null
           ? null
           : ZacValue<int?>.fromJson(json['flex'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
     );

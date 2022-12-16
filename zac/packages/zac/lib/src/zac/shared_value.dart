@@ -10,6 +10,7 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';
@@ -314,7 +315,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
-    implements FlutterWidget {
+    implements ZacBuilder<Widget> {
   SharedValueProviderBuilder._();
   static const String unionValue = 'z:1:SharedValue.provide';
 
@@ -327,7 +328,7 @@ class SharedValueProviderBuilder
     required SharedValueType value,
     ZacTransformers? transformer,
     required SharedValueFamily family,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
     @Default(true) bool autoCreate,
   }) = _SharedValueProviderBuilder;
 
@@ -353,8 +354,7 @@ class SharedValueProviderBuilder
   }
 
   @override
-  SharedValueProvider build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SharedValueProvider build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

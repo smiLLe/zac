@@ -11,7 +11,7 @@ part 'spacer.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
+class FlutterSpacer with _$FlutterSpacer implements ZacBuilder<Spacer> {
   const FlutterSpacer._();
 
   static const String unionValue = 'f:1:Spacer';

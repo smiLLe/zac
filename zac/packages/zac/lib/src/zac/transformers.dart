@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
@@ -297,8 +298,6 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       'z:1:Transformer:Map<String, Object>.from';
   static const String unionValueFromStringNullObject =
       'z:1:Transformer:Map<String, Object?>.from';
-  static const String unionValueFromStringFlutterWidget =
-      'z:1:Transformer:Map<String, FlutterWidget>.from';
   static const String unionValueKey = 'z:1:Transformer:Map[key]';
   static const String unionValueSetValueForKey =
       'z:1:Transformer:Map.setValueForKey';
@@ -357,10 +356,6 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
     required ZacValue<Object> value,
     required ZacValue<String> key,
   }) = _MapSetValueForKey;
-
-  @FreezedUnionValue(MapTransformer.unionValueFromStringFlutterWidget)
-  const factory MapTransformer.fromStringFlutterWidget() =
-      _MapFromStringFlutterWidget;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -441,9 +436,6 @@ The value: $theMap
         theMap[key] = value;
         return theMap;
       },
-      fromStringFlutterWidget: (_) {
-        return Map<String, FlutterWidget>.from(theMap);
-      },
     );
   }
 }
@@ -469,8 +461,6 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
       'z:1:Transformer:Iterable.elementAt';
   static const String unionValueSkip = 'z:1:Transformer:Iterable.skip';
   static const String unionValueTake = 'z:1:Transformer:Iterable.take';
-  static const String unionValueFromFlutterWidget =
-      'z:1:Transformer:Iterable<FlutterWidget>.from';
 
   factory IterableTransformer.fromJson(Map<String, dynamic> json) =>
       _$IterableTransformerFromJson(json);
@@ -567,8 +557,6 @@ The value: $value
 class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.reversed';
-  static const String unionValueFromFlutterWidget =
-      'z:1:Transformer:List<FlutterWidget>.from';
   static const String unionValueAdd = 'z:1:Transformer:List.add';
 
   factory ListTransformer.fromJson(Map<String, dynamic> json) =>
@@ -577,9 +565,6 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(ListTransformer.unionValue)
   const factory ListTransformer.reversed() = _ListReversed;
-
-  @FreezedUnionValue(ListTransformer.unionValueFromFlutterWidget)
-  const factory ListTransformer.fromFlutterWidget() = _ListFromFlutterWidget;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
   const factory ListTransformer.add(ZacValue<Object> value) = _ListAdd;
@@ -598,7 +583,6 @@ The value: $value
 
     return map(
       reversed: (_) => value.reversed.toList(),
-      fromFlutterWidget: (_) => List<FlutterWidget>.from(value),
       add: (obj) {
         value.add(obj.value.build(
           zacContext,
@@ -623,15 +607,11 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   static const String unionValueIsString = 'z:1:Transformer:Object.isString';
   static const String unionValueIsDouble = 'z:1:Transformer:Object.isDouble';
   static const String unionValueIsInt = 'z:1:Transformer:Object.isInt';
-  static const String unionValueIsFlutterWidget =
-      'z:1:Transformer:Object.isFlutterWidget';
   static const String unionValueIsNull = 'z:1:Transformer:Object.isNull';
   static const String unionValueAsBool = 'z:1:Transformer:Object.asBool';
   static const String unionValueAsString = 'z:1:Transformer:Object.asString';
   static const String unionValueAsInt = 'z:1:Transformer:Object.asInt';
   static const String unionValueAsDouble = 'z:1:Transformer:Object.asDouble';
-  static const String unionValueAsFlutterWidget =
-      'z:1:Transformer:Object.asFlutterWidget';
   static const String unionValueEquals = 'z:1:Transformer:Object.equals';
   static const String unionValueEqualsSharedValue =
       'z:1:Transformer:Object.equalsSharedValue';
@@ -661,9 +641,6 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   @FreezedUnionValue(ObjectTransformer.unionValueIsInt)
   factory ObjectTransformer.isInt() = _ObjectIsInt;
 
-  @FreezedUnionValue(ObjectTransformer.unionValueIsFlutterWidget)
-  factory ObjectTransformer.isFlutterWidget() = _ObjectIsFlutterWidget;
-
   @FreezedUnionValue(ObjectTransformer.unionValueIsNull)
   factory ObjectTransformer.isNull() = _ObjectIsNull;
 
@@ -681,7 +658,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacValue<Object> value,
+    required ZacValue<Object?>? value,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -695,11 +672,10 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isString: (_) => value is String,
       isInt: (_) => value is int,
       isDouble: (_) => value is double,
-      isFlutterWidget: (_) => value is FlutterWidget,
       isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value.build(
+          obj.value?.build(
             zacContext,
             onConsume:
                 const ZacBuilderConsume(type: SharedValueConsumeType.read()),

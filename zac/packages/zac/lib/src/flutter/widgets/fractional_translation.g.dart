@@ -14,7 +14,7 @@ _$_FlutterFractionalTranslation _$$_FlutterFractionalTranslationFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
       translation:
           FlutterOffset.fromJson(json['translation'] as Map<String, dynamic>),
       transformHitTests: json['transformHitTests'] == null

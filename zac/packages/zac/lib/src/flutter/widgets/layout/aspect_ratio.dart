@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,9 @@ part 'aspect_ratio.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
+class FlutterAspectRatio
+    with _$FlutterAspectRatio
+    implements ZacBuilder<AspectRatio> {
   const FlutterAspectRatio._();
 
   static const String unionValue = 'f:1:AspectRatio';
@@ -23,7 +26,7 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   factory FlutterAspectRatio({
     FlutterKey? key,
     required ZacValue<double> aspectRatio,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterAspectRatio;
 
   AspectRatio _buildWidget(ZacContext zacContext) {

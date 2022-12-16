@@ -34,7 +34,7 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
       semanticContainer: json['semanticContainer'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['semanticContainer'] as Object),

@@ -22,7 +22,7 @@ FlutterInteractiveViewer _$FlutterInteractiveViewerFromJson(
 /// @nodoc
 mixin _$FlutterInteractiveViewer {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<bool?>? get alignPanAxis => throw _privateConstructorUsedError;
   FlutterEdgeInsets? get boundaryMargin => throw _privateConstructorUsedError;
@@ -67,7 +67,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   final FlutterClip? clipBehavior;
   @override
@@ -157,7 +157,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
 abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   factory _FlutterInteractiveViewer(
       {final FlutterKey? key,
-      required final FlutterWidget child,
+      required final ZacValue<Widget> child,
       final FlutterClip? clipBehavior,
       final ZacValue<bool?>? alignPanAxis,
       final FlutterEdgeInsets? boundaryMargin,
@@ -177,7 +177,7 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   FlutterClip? get clipBehavior;
   @override

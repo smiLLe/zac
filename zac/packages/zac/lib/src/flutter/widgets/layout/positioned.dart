@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,9 @@ part 'positioned.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
+class FlutterPositioned
+    with _$FlutterPositioned
+    implements ZacBuilder<Positioned> {
   const FlutterPositioned._();
 
   static const String unionValue = 'f:1:Positioned';
@@ -31,7 +34,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
     ZacValue<double?>? bottom,
     ZacValue<double?>? width,
     ZacValue<double?>? height,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterPositioneddirectional;
 
   @FreezedUnionValue(FlutterPositioned.unionValueDirectional)
@@ -44,7 +47,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
     ZacValue<double?>? bottom,
     ZacValue<double?>? width,
     ZacValue<double?>? height,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterPositioned;
 
   @FreezedUnionValue(FlutterPositioned.unionValueFill)
@@ -54,7 +57,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
     ZacValue<double?>? top,
     ZacValue<double?>? right,
     ZacValue<double?>? bottom,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterPositionedfill;
 
   Positioned _buildWidget(ZacContext zacContext) {

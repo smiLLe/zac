@@ -1,5 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,7 +16,7 @@ part 'gesture_detector.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGestureDetector
     with _$FlutterGestureDetector
-    implements FlutterWidget {
+    implements ZacBuilder<GestureDetector> {
   const FlutterGestureDetector._();
 
   static const String unionValue = 'f:1:GestureDetector';
@@ -26,7 +27,7 @@ class FlutterGestureDetector
   @FreezedUnionValue(FlutterGestureDetector.unionValue)
   factory FlutterGestureDetector({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     ZacActions? onTap,
     ZacActions? onSecondaryTap,
     ZacActions? onDoubleTap,

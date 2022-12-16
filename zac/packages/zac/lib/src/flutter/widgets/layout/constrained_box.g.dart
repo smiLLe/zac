@@ -16,5 +16,5 @@ _$_FlutterConstrainedBox _$$_FlutterConstrainedBoxFromJson(
           json['constraints'] as Map<String, dynamic>),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

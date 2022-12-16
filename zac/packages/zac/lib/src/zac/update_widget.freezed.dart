@@ -22,7 +22,7 @@ ZacUpdateContextBuilder _$ZacUpdateContextBuilderFromJson(
 /// @nodoc
 mixin _$ZacUpdateContextBuilder {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -42,7 +42,7 @@ class _$_ZacUpdateContextBuilder extends _ZacUpdateContextBuilder {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
 
   @override
   String toString() {
@@ -74,7 +74,7 @@ class _$_ZacUpdateContextBuilder extends _ZacUpdateContextBuilder {
 abstract class _ZacUpdateContextBuilder extends ZacUpdateContextBuilder {
   factory _ZacUpdateContextBuilder(
       {final FlutterKey? key,
-      required final FlutterWidget child}) = _$_ZacUpdateContextBuilder;
+      required final ZacValue<Widget> child}) = _$_ZacUpdateContextBuilder;
   _ZacUpdateContextBuilder._() : super._();
 
   factory _ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =
@@ -83,5 +83,5 @@ abstract class _ZacUpdateContextBuilder extends ZacUpdateContextBuilder {
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
 }

@@ -18,7 +18,7 @@ part 'widget.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
-class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
+class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
   const ZacWidgetBuilder._();
 
   static const String unionValue = 'z:1:Widget';
@@ -37,7 +37,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements FlutterWidget {
   factory ZacWidgetBuilder.isolate({
     FlutterKey? key,
     required Object data,
-    FlutterWidget? errorChild,
+    ZacValue<Widget?>? errorChild,
   }) = _ZacWidgetBuilderIsolate;
 
   Widget _buildWidget(ZacContext zacContext) {
@@ -74,7 +74,7 @@ class ZacWidget extends HookWidget {
   Widget build(
     BuildContext context,
   ) {
-    final flutterWidget = useMemoized(() {
+    final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
       if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
       late Map<String, dynamic> map;
@@ -97,7 +97,7 @@ class ZacWidget extends HookWidget {
     }, [data]);
 
     return ZacUpdateContext(
-      builder: flutterWidget.build,
+      builder: zacBuilder.build,
     );
   }
 }
@@ -108,10 +108,10 @@ class ZacWidgetIsolated extends StatelessWidget {
         super(key: key);
 
   final Object? data;
-  final FlutterWidget? errorChild;
+  final ZacValue<Widget?>? errorChild;
 
-  static AutoDisposeFutureProvider<FlutterWidget> provider =
-      FutureProvider.autoDispose<FlutterWidget>(
+  static AutoDisposeFutureProvider<ZacBuilder<Widget>> provider =
+      FutureProvider.autoDispose<ZacBuilder<Widget>>(
     (_) {
       throw StateError('');
     },
@@ -127,9 +127,9 @@ class ZacWidgetIsolated extends StatelessWidget {
     return result;
   }
 
-  static Future<FlutterWidget> _convert(List<Object?> data) async {
+  static Future<ZacBuilder<Widget>> _convert(List<Object?> data) async {
     allConverter = data[1] as Map<String, Convert>;
-    return ConverterHelper.convertToType<FlutterWidget>(
+    return ConverterHelper.convertToType<ZacBuilder<Widget>>(
         data[0] as Map<String, dynamic>);
   }
 
@@ -167,8 +167,7 @@ class ZacWidgetIsolated extends StatelessWidget {
             ),
             error: (obj) {
               return ZacUpdateContext(builder: (zacContext) {
-                FlutterWidget error =
-                    errorChild ?? const FlutterSizedBox.shrink();
+                Widget? error = errorChild?.build(zacContext);
                 assert(() {
                   if (null != errorChild) return true;
                   error = FlutterContainer(
@@ -185,12 +184,14 @@ class ZacWidgetIsolated extends StatelessWidget {
                     ),
                     padding:
                         FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0)),
-                    child: FlutterText(ZacValue<String>.fromJson(
-                        'ERROR IN $ZacWidgetIsolated:\n${obj.error}')),
-                  );
+                    child: ZacValue<Widget>.builder(FlutterText(
+                      ZacValue<String>.fromJson(
+                          'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),
+                    )),
+                  ).build(zacContext);
                   return true;
                 }(), '');
-                return error.build(zacContext);
+                return error ?? const SizedBox.shrink();
               });
             },
             loading: (obj) => const SizedBox.shrink(),

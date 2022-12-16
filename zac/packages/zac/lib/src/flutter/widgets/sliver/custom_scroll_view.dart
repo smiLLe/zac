@@ -18,7 +18,7 @@ part 'custom_scroll_view.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView
-    implements FlutterWidget {
+    implements ZacBuilder<CustomScrollView> {
   const FlutterCustomScrollView._();
 
   static const String unionValue = 'f:1:CustomScrollView';

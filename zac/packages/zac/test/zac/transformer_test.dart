@@ -1,4 +1,4 @@
-import 'package:zac/src/base.dart';
+import 'package:flutter/widgets.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
@@ -790,26 +790,6 @@ void main() {
           throwsA(isA<ZacTransformError>()));
     });
 
-    test('.List<FlutterWidget>.from', () {
-      _expectFromJson<ListTransformer>(
-        fromJson: ListTransformer.fromJson,
-        converter: 'z:1:Transformer:List<FlutterWidget>.from',
-        equals: const ListTransformer.fromFlutterWidget(),
-      );
-
-      expect(
-          const ListTransformer.fromFlutterWidget().transform(
-              ZacTransformValue(<Object?>[FlutterSizedBox()]),
-              FakeZacOrigin(),
-              null),
-          isA<List<FlutterWidget>>());
-
-      expect(
-          () => const ListTransformer.fromFlutterWidget()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
-    });
-
     test('.add', () {
       _expectFromJson<ListTransformer>(
           fromJson: ListTransformer.fromJson,
@@ -1138,26 +1118,6 @@ void main() {
           isA<Map<String, Object>>());
     });
 
-    test('.from() of type <String, FlutterWidget>', () {
-      _expectFromJson<MapTransformer>(
-        fromJson: MapTransformer.fromJson,
-        converter: 'z:1:Transformer:Map<String, FlutterWidget>.from',
-        equals: const MapTransformer.fromStringFlutterWidget(),
-      );
-
-      expect(
-          () => const MapTransformer.fromStringFlutterWidget()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
-
-      expect(
-          const MapTransformer.fromStringFlutterWidget().transform(
-              ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
-              FakeZacOrigin(),
-              null),
-          isA<Map<String, FlutterWidget>>());
-    });
-
     test('get value in map from key', () {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
@@ -1177,7 +1137,7 @@ void main() {
               ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
               FakeZacOrigin(),
               null),
-          isA<FlutterWidget>());
+          isA<FlutterSizedBox>());
     });
 
     test('set value in map for key', () {
@@ -1422,7 +1382,7 @@ void main() {
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
           equals: ObjectTransformer.equalsSharedValue(
-              value: ZacValue<Object>.consume(family: 'shared')),
+              value: ZacValue<Object?>.consume(family: 'shared')),
           props: <String, dynamic>{
             'value': {
               'converter': 'z:1:ZacValue.consume',
@@ -1439,11 +1399,15 @@ void main() {
           SharedValueProviderBuilder(
             value: 5,
             family: 'shared',
-            child: SharedValueProviderBuilder(
-              value: 'foo',
-              family: 'shared2',
-              child: LeakContext(
-                cb: (o) => zacContext = o,
+            child: ZacValue<Widget>.builder(
+              SharedValueProviderBuilder(
+                value: 'foo',
+                family: 'shared2',
+                child: ZacValue<Widget>.builder(
+                  LeakContext(
+                    cb: (o) => zacContext = o,
+                  ),
+                ),
               ),
             ),
           ),

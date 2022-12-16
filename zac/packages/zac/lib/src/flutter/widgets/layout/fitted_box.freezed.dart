@@ -24,7 +24,7 @@ mixin _$FlutterFittedBox {
   FlutterBoxFit? get fit => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -52,7 +52,7 @@ class _$_FlutterFittedBox extends _FlutterFittedBox {
   @override
   final FlutterClip? clipBehavior;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -93,7 +93,7 @@ abstract class _FlutterFittedBox extends FlutterFittedBox {
       final FlutterBoxFit? fit,
       final FlutterAlignmentGeometry? alignment,
       final FlutterClip? clipBehavior,
-      final FlutterWidget? child}) = _$_FlutterFittedBox;
+      final ZacValue<Widget?>? child}) = _$_FlutterFittedBox;
   _FlutterFittedBox._() : super._();
 
   factory _FlutterFittedBox.fromJson(Map<String, dynamic> json) =
@@ -108,5 +108,5 @@ abstract class _FlutterFittedBox extends FlutterFittedBox {
   @override
   FlutterClip? get clipBehavior;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

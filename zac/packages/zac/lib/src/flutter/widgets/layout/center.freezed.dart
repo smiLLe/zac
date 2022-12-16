@@ -23,7 +23,7 @@ mixin _$FlutterCenter {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
   ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -48,7 +48,7 @@ class _$_FlutterCenter extends _FlutterCenter {
   @override
   final ZacValue<double?>? heightFactor;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -87,7 +87,7 @@ abstract class _FlutterCenter extends FlutterCenter {
       {final FlutterKey? key,
       final ZacValue<double?>? widthFactor,
       final ZacValue<double?>? heightFactor,
-      final FlutterWidget? child}) = _$_FlutterCenter;
+      final ZacValue<Widget?>? child}) = _$_FlutterCenter;
   _FlutterCenter._() : super._();
 
   factory _FlutterCenter.fromJson(Map<String, dynamic> json) =
@@ -100,5 +100,5 @@ abstract class _FlutterCenter extends FlutterCenter {
   @override
   ZacValue<double?>? get heightFactor;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

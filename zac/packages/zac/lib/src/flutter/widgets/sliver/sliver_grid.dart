@@ -12,7 +12,9 @@ part 'sliver_grid.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
+class FlutterSliverGrid
+    with _$FlutterSliverGrid
+    implements ZacBuilder<SliverGrid> {
   const FlutterSliverGrid._();
 
   static const String unionValue = 'f:1:SliverGrid';

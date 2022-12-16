@@ -299,7 +299,7 @@ mixin _$SharedValueProviderBuilder {
   Object? get value => throw _privateConstructorUsedError;
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  FlutterWidget get child => throw _privateConstructorUsedError;
+  ZacValue<Widget> get child => throw _privateConstructorUsedError;
   bool get autoCreate => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -333,7 +333,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   @override
   final Object family;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   @JsonKey()
   final bool autoCreate;
@@ -384,7 +384,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       required final Object? value,
       final ZacTransformers? transformer,
       required final Object family,
-      required final FlutterWidget child,
+      required final ZacValue<Widget> child,
       final bool autoCreate}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
 
@@ -400,7 +400,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   Object get family;
   @override
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   bool get autoCreate;
 }

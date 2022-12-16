@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,7 @@ part 'opacity.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
+class FlutterOpacity with _$FlutterOpacity implements ZacBuilder<Opacity> {
   const FlutterOpacity._();
 
   static const String unionValue = 'f:1:Opacity';
@@ -24,7 +25,7 @@ class FlutterOpacity with _$FlutterOpacity implements FlutterWidget {
     FlutterKey? key,
     required ZacValue<double> opacity,
     ZacValue<bool?>? alwaysIncludeSemantics,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterOpacity;
 
   Opacity _buildWidget(ZacContext zacContext) {

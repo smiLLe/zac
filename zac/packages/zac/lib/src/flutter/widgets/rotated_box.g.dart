@@ -13,6 +13,6 @@ _$_FlutterRotatedBox _$$_FlutterRotatedBoxFromJson(Map<String, dynamic> json) =>
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
       quarterTurns: json['quarterTurns'] as int,
     );

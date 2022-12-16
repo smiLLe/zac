@@ -6,13 +6,17 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'decorated_box.freezed.dart';
 part 'decorated_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
+class FlutterDecoratedBox
+    with _$FlutterDecoratedBox
+    implements ZacBuilder<DecoratedBox> {
   const FlutterDecoratedBox._();
 
   static const String unionValue = 'f:1:DecoratedBox';
@@ -23,7 +27,7 @@ class FlutterDecoratedBox with _$FlutterDecoratedBox implements FlutterWidget {
   @FreezedUnionValue(FlutterDecoratedBox.unionValue)
   factory FlutterDecoratedBox({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     required FlutterDecoration decoration,
     FlutterDecorationPosition? position,
   }) = _FlutterDecoratedBox;

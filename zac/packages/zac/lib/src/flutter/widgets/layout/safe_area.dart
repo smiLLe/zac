@@ -12,7 +12,7 @@ part 'safe_area.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
+class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
   const FlutterSafeArea._();
 
   static const String unionValue = 'f:1:SafeArea';
@@ -29,7 +29,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
     ZacValue<bool?>? bottom,
     FlutterEdgeInsets? minimum,
     ZacValue<bool?>? maintainBottomViewPadding,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterSafeArea;
 
   SafeArea _buildWidget(ZacContext zacContext) {

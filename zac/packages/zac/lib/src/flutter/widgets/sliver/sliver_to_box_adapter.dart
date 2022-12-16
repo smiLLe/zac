@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'sliver_to_box_adapter.freezed.dart';
 part 'sliver_to_box_adapter.g.dart';
@@ -13,7 +14,7 @@ part 'sliver_to_box_adapter.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
-    implements FlutterWidget {
+    implements ZacBuilder<SliverToBoxAdapter> {
   const FlutterSliverToBoxAdapter._();
 
   static const String unionValue = 'f:1:SliverToBoxAdapter';
@@ -24,7 +25,7 @@ class FlutterSliverToBoxAdapter
   @FreezedUnionValue(FlutterSliverToBoxAdapter.unionValue)
   factory FlutterSliverToBoxAdapter({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterSliverToBoxAdapter;
 
   SliverToBoxAdapter _buildWidget(ZacContext zacContext) {

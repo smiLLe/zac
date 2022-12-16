@@ -22,7 +22,7 @@ FlutterFractionalTranslation _$FlutterFractionalTranslationFromJson(
 /// @nodoc
 mixin _$FlutterFractionalTranslation {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   FlutterOffset get translation => throw _privateConstructorUsedError;
   ZacValue<bool?>? get transformHitTests => throw _privateConstructorUsedError;
 
@@ -46,7 +46,7 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
   @override
   final FlutterOffset translation;
   @override
@@ -88,7 +88,7 @@ abstract class _FlutterFractionalTranslation
     extends FlutterFractionalTranslation {
   factory _FlutterFractionalTranslation(
           {final FlutterKey? key,
-          final FlutterWidget? child,
+          final ZacValue<Widget?>? child,
           required final FlutterOffset translation,
           final ZacValue<bool?>? transformHitTests}) =
       _$_FlutterFractionalTranslation;
@@ -100,7 +100,7 @@ abstract class _FlutterFractionalTranslation
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override
   FlutterOffset get translation;
   @override

@@ -15,7 +15,7 @@ part 'row.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterRow with _$FlutterRow implements FlutterWidget {
+class FlutterRow with _$FlutterRow implements ZacBuilder<Row> {
   const FlutterRow._();
 
   static const String unionValue = 'f:1:Row';

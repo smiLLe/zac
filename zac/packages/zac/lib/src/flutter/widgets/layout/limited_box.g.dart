@@ -19,5 +19,5 @@ _$_FlutterLimitedBox _$$_FlutterLimitedBoxFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

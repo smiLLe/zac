@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -211,11 +212,12 @@ void main() {
       await testZacWidget(
           tester,
           FlutterMaterial(
-              child: FlutterDialogs.simpleDialogOption(
+              child: ZacValue<Widget>.builder(FlutterDialogs.simpleDialogOption(
             key: FlutterValueKey('FIND_ME'),
-            child: FlutterSizedBox(key: FlutterValueKey('child1')),
+            child: ZacValue<Widget>.builder(
+                FlutterSizedBox(key: FlutterValueKey('child1'))),
             onPressed: LeakAction.createActions(cb),
-          )));
+          ))));
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 

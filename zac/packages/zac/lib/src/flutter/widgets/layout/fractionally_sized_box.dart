@@ -15,7 +15,7 @@ part 'fractionally_sized_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox
-    implements FlutterWidget {
+    implements ZacBuilder<FractionallySizedBox> {
   const FlutterFractionallySizedBox._();
 
   static const String unionValue = 'f:1:FractionallySizedBox';
@@ -26,7 +26,7 @@ class FlutterFractionallySizedBox
   @FreezedUnionValue(FlutterFractionallySizedBox.unionValue)
   factory FlutterFractionallySizedBox({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     FlutterAlignmentGeometry? alignment,
     ZacValue<double?>? widthFactor,
     ZacValue<double?>? heightFactor,

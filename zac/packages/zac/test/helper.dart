@@ -14,6 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'helper.freezed.dart';
 part 'helper.g.dart';
@@ -150,7 +151,7 @@ Future<void> testMap(
 
 Future<void> testZacWidget(
   WidgetTester tester,
-  FlutterWidget zacWidget, {
+  ZacBuilder<Widget> zacWidget, {
   Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
@@ -259,14 +260,14 @@ class CustomTransformer implements ZacTransformer {
   }
 }
 
-class LeakContext implements FlutterWidget {
+class LeakContext implements ZacBuilder<Widget> {
   LeakContext({
     required this.cb,
     this.child,
   });
 
   final void Function(ZacContext zacContext) cb;
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   Widget _buildWidget(ZacContext zacContext) {
     cb(zacContext);
@@ -280,7 +281,7 @@ class LeakContext implements FlutterWidget {
   }
 }
 
-class TestBuildCustomWidget implements FlutterWidget {
+class TestBuildCustomWidget implements ZacBuilder<Widget> {
   TestBuildCustomWidget(
     this.cb,
   );

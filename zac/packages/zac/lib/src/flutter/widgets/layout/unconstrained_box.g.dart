@@ -14,7 +14,7 @@ _$_FlutterUnconstrainedBox _$$_FlutterUnconstrainedBoxFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : FlutterTextDirection.fromJson(

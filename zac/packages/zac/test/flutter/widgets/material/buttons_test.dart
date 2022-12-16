@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -43,7 +44,7 @@ void main() {
       await testZacWidget(
         tester,
         FlutterElevatedButton(
-          child: FlutterSizedBox(),
+          child: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
@@ -58,7 +59,7 @@ void main() {
       await testZacWidget(
         tester,
         FlutterOutlinedButton(
-          child: FlutterSizedBox(),
+          child: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
@@ -73,7 +74,7 @@ void main() {
       await testZacWidget(
         tester,
         FlutterTextButton(
-          child: FlutterSizedBox(),
+          child: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
@@ -158,8 +159,8 @@ void main() {
       await testZacWidget(
         tester,
         FlutterElevatedButton.icon(
-          icon: FlutterSizedBox(),
-          label: FlutterSizedBox(),
+          icon: ZacValue<Widget>.builder(FlutterSizedBox()),
+          label: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
@@ -174,8 +175,8 @@ void main() {
       await testZacWidget(
         tester,
         FlutterOutlinedButton.icon(
-          icon: FlutterSizedBox(),
-          label: FlutterSizedBox(),
+          icon: ZacValue<Widget>.builder(FlutterSizedBox()),
+          label: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
@@ -190,8 +191,8 @@ void main() {
       await testZacWidget(
         tester,
         FlutterTextButton.icon(
-          icon: FlutterSizedBox(),
-          label: FlutterSizedBox(),
+          icon: ZacValue<Widget>.builder(FlutterSizedBox()),
+          label: ZacValue<Widget>.builder(FlutterSizedBox()),
           key: FlutterValueKey('FIND_ME'),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),

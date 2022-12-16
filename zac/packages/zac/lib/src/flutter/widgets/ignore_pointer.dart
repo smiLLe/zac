@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,7 +14,7 @@ part 'ignore_pointer.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIgnorePointer
     with _$FlutterIgnorePointer
-    implements FlutterWidget {
+    implements ZacBuilder<IgnorePointer> {
   const FlutterIgnorePointer._();
 
   static const String unionValue = 'f:1:IgnorePointer';
@@ -26,7 +27,7 @@ class FlutterIgnorePointer
     FlutterKey? key,
     ZacValue<bool?>? ignoring,
     ZacValue<bool?>? ignoringSemantics,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterIgnorePointer;
 
   IgnorePointer _buildWidget(ZacContext zacContext) {

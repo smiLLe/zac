@@ -45,7 +45,7 @@ class FlutterMaterialPageRoute
     ZacValue<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -119,7 +119,7 @@ class FlutterPageRouteBuilder
     ZacValue<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [FlutterRoute.nameOfSharedArguments]
@@ -209,7 +209,9 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
+class FlutterNavigator
+    with _$FlutterNavigator
+    implements ZacBuilder<Navigator> {
   const FlutterNavigator._();
 
   factory FlutterNavigator.fromJson(Map<String, dynamic> json) =>

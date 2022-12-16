@@ -94,7 +94,7 @@ Could not find State "$state" in $this'''),
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineProviderBuilder
     with _$ZacStateMachineProviderBuilder
-    implements FlutterWidget {
+    implements ZacBuilder<Widget> {
   const ZacStateMachineProviderBuilder._();
   static const String unionValue = 'z:1:StateMachine.provide';
 
@@ -107,7 +107,7 @@ class ZacStateMachineProviderBuilder
     required ZacValue<String> family,
     required ZacValue<String> initialState,
     required Map<String, ZacStateConfig> states,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
     ZacValue<Object?>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
@@ -183,7 +183,7 @@ because there was already a transition.
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineBuildStateBuilder
     with _$ZacStateMachineBuildStateBuilder
-    implements FlutterWidget {
+    implements ZacBuilder<Widget> {
   const ZacStateMachineBuildStateBuilder._();
   static const String unionValue = 'z:1:StateMachine:BuildState';
 
@@ -196,7 +196,7 @@ class ZacStateMachineBuildStateBuilder
     FlutterKey? key,
     required ZacValue<String> family,
     required List<String> states,
-    FlutterWidget? unmappedStateWidget,
+    ZacValue<Widget?>? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
 
   ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
@@ -205,8 +205,7 @@ class ZacStateMachineBuildStateBuilder
       family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          (unmappedStateWidget ?? const FlutterSizedBox.shrink())
-              .build(zacContext),
+          unmappedStateWidget?.build(zacContext) ?? const SizedBox.shrink(),
     );
   }
 

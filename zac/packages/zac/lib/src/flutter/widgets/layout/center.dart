@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +12,7 @@ part 'center.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterCenter with _$FlutterCenter implements FlutterWidget {
+class FlutterCenter with _$FlutterCenter implements ZacBuilder<Center> {
   const FlutterCenter._();
 
   static const String unionValue = 'f:1:Center';
@@ -24,7 +25,7 @@ class FlutterCenter with _$FlutterCenter implements FlutterWidget {
     FlutterKey? key,
     ZacValue<double?>? widthFactor,
     ZacValue<double?>? heightFactor,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterCenter;
 
   Center _buildWidget(ZacContext zacContext) {

@@ -5,6 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
@@ -13,7 +14,7 @@ part 'intrinsic_height.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
-    implements FlutterWidget {
+    implements ZacBuilder<IntrinsicHeight> {
   const FlutterIntrinsicHeight._();
 
   static const String unionValue = 'f:1:IntrinsicHeight';
@@ -24,7 +25,7 @@ class FlutterIntrinsicHeight
   @FreezedUnionValue(FlutterIntrinsicHeight.unionValue)
   factory FlutterIntrinsicHeight({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterIntrinsicHeight;
 
   IntrinsicHeight _buildWidget(ZacContext zacContext) {

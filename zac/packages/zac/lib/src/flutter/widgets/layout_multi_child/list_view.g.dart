@@ -39,7 +39,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['itemExtent'] as Object),
       prototypeItem: json['prototypeItem'] == null
           ? null
-          : FlutterWidget.fromJson(json['prototypeItem'] as Object),
+          : ZacValue<Widget?>.fromJson(json['prototypeItem'] as Object),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['addAutomaticKeepAlives'] as Object),

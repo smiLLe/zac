@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -33,11 +34,11 @@ void main() {
     await testZacWidget(
         tester,
         FlutterScaffold(
-            body: FlutterListTile(
+            body: ZacValue<Widget>.builder(FlutterListTile(
           key: FlutterValueKey('FIND_ME'),
           onTap: LeakAction.createActions(onTapCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
-        )));
+        ))));
 
     final findMe = find.byKey(const ValueKey('FIND_ME'));
 

@@ -15,5 +15,5 @@ _$_FlutterAspectRatio _$$_FlutterAspectRatioFromJson(
       aspectRatio: ZacValue<double>.fromJson(json['aspectRatio'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

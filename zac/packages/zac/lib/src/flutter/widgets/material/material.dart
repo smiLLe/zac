@@ -14,7 +14,7 @@ part 'material.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
+class FlutterMaterial with _$FlutterMaterial implements ZacBuilder<Material> {
   const FlutterMaterial._();
 
   static const String unionValue = 'f:1:Material';
@@ -25,7 +25,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   @FreezedUnionValue(FlutterMaterial.unionValue)
   factory FlutterMaterial({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     ZacValue<double?>? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,

@@ -13,7 +13,7 @@ part 'text.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterText with _$FlutterText implements FlutterWidget {
+class FlutterText with _$FlutterText implements ZacBuilder<Text> {
   const FlutterText._();
 
   static const String unionValue = 'f:1:Text';

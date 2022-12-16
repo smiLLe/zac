@@ -14,5 +14,5 @@ _$_FlutterIntrinsicHeight _$$_FlutterIntrinsicHeightFromJson(
           : FlutterKey.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : FlutterWidget.fromJson(json['child'] as Object),
+          : ZacValue<Widget?>.fromJson(json['child'] as Object),
     );

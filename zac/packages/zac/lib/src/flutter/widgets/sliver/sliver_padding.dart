@@ -6,6 +6,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
@@ -14,7 +15,7 @@ part 'sliver_padding.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverPadding
     with _$FlutterSliverPadding
-    implements FlutterWidget {
+    implements ZacBuilder<SliverPadding> {
   const FlutterSliverPadding._();
 
   static const String unionValue = 'f:1:SliverPadding';
@@ -25,7 +26,7 @@ class FlutterSliverPadding
   @FreezedUnionValue(FlutterSliverPadding.unionValue)
   factory FlutterSliverPadding({
     FlutterKey? key,
-    FlutterWidget? sliver,
+    ZacValue<Widget?>? sliver,
     required FlutterEdgeInsetsGeometry padding,
   }) = _FlutterSliverPadding;
 

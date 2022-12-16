@@ -13,7 +13,7 @@ part 'sized_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
+class FlutterSizedBox with _$FlutterSizedBox implements ZacBuilder<SizedBox> {
   const FlutterSizedBox._();
 
   static const String unionValue = 'f:1:SizedBox';
@@ -30,32 +30,32 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
     FlutterKey? key,
     ZacValue<double?>? width,
     ZacValue<double?>? height,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterWidgetSizedBox;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueExpand)
   factory FlutterSizedBox.expand({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterWidgetSizedBoxExpand;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueFromSize)
   factory FlutterSizedBox.fromSize({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     FlutterSize? size,
   }) = _FlutterWidgetSizedBoxFromSize;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueShrink)
   const factory FlutterSizedBox.shrink({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterWidgetSizedBoxShrink;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueSquare)
   factory FlutterSizedBox.square({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     ZacValue<double?>? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 

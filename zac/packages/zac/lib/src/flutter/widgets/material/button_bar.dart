@@ -13,7 +13,9 @@ part 'button_bar.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
+class FlutterButtonBar
+    with _$FlutterButtonBar
+    implements ZacBuilder<ButtonBar> {
   const FlutterButtonBar._();
 
   static const String unionValue = 'f:1:ButtonBar';

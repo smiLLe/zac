@@ -12,7 +12,7 @@ part 'divider.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterDivider with _$FlutterDivider implements FlutterWidget {
+class FlutterDivider with _$FlutterDivider implements ZacBuilder<Divider> {
   const FlutterDivider._();
 
   static const String unionValue = 'f:1:Divider';

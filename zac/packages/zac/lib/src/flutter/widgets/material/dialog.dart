@@ -8,7 +8,7 @@ part 'dialog.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
+class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';
@@ -30,14 +30,14 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
     FlutterClip? clipBehavior,
     FlutterShapeBorder? shape,
     FlutterAlignmentGeometry? alignment,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterDialogsDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueAlertDialog)
   factory FlutterDialogs.alertDialog({
     FlutterKey? key,
-    FlutterWidget? title,
-    FlutterWidget? content,
+    ZacValue<Widget?>? title,
+    ZacValue<Widget?>? content,
     ZacValueList<Widget, List<Widget>?>? actions,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -61,7 +61,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
   factory FlutterDialogs.simpleDialog({
     FlutterKey? key,
-    FlutterWidget? title,
+    ZacValue<Widget?>? title,
     ZacValueList<Widget, List<Widget>?>? children,
     FlutterEdgeInsetsGeometry? titlePadding,
     FlutterTextStyle? titleTextStyle,
@@ -78,7 +78,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialogOption)
   factory FlutterDialogs.simpleDialogOption({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     ZacActions? onPressed,
     FlutterEdgeInsets? padding,
   }) = _FlutterDialogsSimpleDialogOption;
@@ -170,7 +170,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
 
   @FreezedUnionValue(FlutterDialogActions.unionValue)
   factory FlutterDialogActions.showDialog({
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
     ZacValue<bool?>? barrierDismissible,
     FlutterColor? barrierColor,
     ZacValue<String?>? barrierLabel,

@@ -33,7 +33,7 @@ _$_ZacStateMachineProviderBuilder _$$_ZacStateMachineProviderBuilderFromJson(
         (k, e) =>
             MapEntry(k, ZacStateConfig.fromJson(e as Map<String, dynamic>)),
       ),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       initialContext: json['initialContext'] == null
           ? null
           : ZacValue<Object?>.fromJson(json['initialContext'] as Object),
@@ -51,7 +51,8 @@ _$_ZacStateMachineBuildStateBuilder
               .toList(),
           unmappedStateWidget: json['unmappedStateWidget'] == null
               ? null
-              : FlutterWidget.fromJson(json['unmappedStateWidget'] as Object),
+              : ZacValue<Widget?>.fromJson(
+                  json['unmappedStateWidget'] as Object),
         );
 
 _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(

@@ -21,10 +21,10 @@ FlutterListTile _$FlutterListTileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterListTile {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget? get leading => throw _privateConstructorUsedError;
-  FlutterWidget? get title => throw _privateConstructorUsedError;
-  FlutterWidget? get subtitle => throw _privateConstructorUsedError;
-  FlutterWidget? get trailing => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get leading => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get title => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get subtitle => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get trailing => throw _privateConstructorUsedError;
   ZacValue<bool?>? get isThreeLine => throw _privateConstructorUsedError;
   ZacValue<bool?>? get dense =>
       throw _privateConstructorUsedError; // FlutterVisualDensity? visualDensity,
@@ -97,13 +97,13 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? leading;
+  final ZacValue<Widget?>? leading;
   @override
-  final FlutterWidget? title;
+  final ZacValue<Widget?>? title;
   @override
-  final FlutterWidget? subtitle;
+  final ZacValue<Widget?>? subtitle;
   @override
-  final FlutterWidget? trailing;
+  final ZacValue<Widget?>? trailing;
   @override
   final ZacValue<bool?>? isThreeLine;
   @override
@@ -247,10 +247,10 @@ class _$_FlutterListTile extends _FlutterListTile {
 abstract class _FlutterListTile extends FlutterListTile {
   factory _FlutterListTile(
       {final FlutterKey? key,
-      final FlutterWidget? leading,
-      final FlutterWidget? title,
-      final FlutterWidget? subtitle,
-      final FlutterWidget? trailing,
+      final ZacValue<Widget?>? leading,
+      final ZacValue<Widget?>? title,
+      final ZacValue<Widget?>? subtitle,
+      final ZacValue<Widget?>? trailing,
       final ZacValue<bool?>? isThreeLine,
       final ZacValue<bool?>? dense,
       final FlutterShapeBorder? shape,
@@ -279,13 +279,13 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget? get leading;
+  ZacValue<Widget?>? get leading;
   @override
-  FlutterWidget? get title;
+  ZacValue<Widget?>? get title;
   @override
-  FlutterWidget? get subtitle;
+  ZacValue<Widget?>? get subtitle;
   @override
-  FlutterWidget? get trailing;
+  ZacValue<Widget?>? get trailing;
   @override
   ZacValue<bool?>? get isThreeLine;
   @override

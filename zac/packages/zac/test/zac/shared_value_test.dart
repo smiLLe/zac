@@ -30,9 +30,9 @@ void main() {
         SharedValueProviderBuilder(
           value: 55,
           family: 'foo',
-          child: LeakContext(cb: (zacContext) {
+          child: ZacValue<Widget>.builder(LeakContext(cb: (zacContext) {
             obj = zacContext.ref.watch(SharedValue.provider('foo'));
-          }),
+          })),
         ),
       );
 
@@ -106,9 +106,11 @@ void main() {
             'converter': 'f:1:SizedBox',
           },
           family: 'foo',
-          child: LeakContext(cb: (zacContext) {
-            obj = zacContext.ref.watch(SharedValue.provider('foo'));
-          }),
+          child: ZacValue<Widget>.builder(
+            LeakContext(cb: (zacContext) {
+              obj = zacContext.ref.watch(SharedValue.provider('foo'));
+            }),
+          ),
           transformer: ZacTransformers([ConvertTransformer()]),
         ),
       );
@@ -128,21 +130,32 @@ void main() {
         SharedValueProviderBuilder(
           value: 'a',
           family: 'sharedA',
-          child: SharedValueProviderBuilder(
-            value: 'b',
-            family: 'sharedB',
-            child: SharedValueProviderBuilder(
-              value: 'c',
-              family: 'sharedC',
-              child: SharedValueProviderBuilder(
-                value: 'AA',
-                family: 'sharedA',
-                child: LeakContext(
-                  cb: (zacContext) {
-                    a = zacContext.ref.watch(SharedValue.provider('sharedA'));
-                    b = zacContext.ref.watch(SharedValue.provider('sharedB'));
-                    c = zacContext.ref.watch(SharedValue.provider('sharedC'));
-                  },
+          child: ZacValue<Widget>.builder(
+            SharedValueProviderBuilder(
+              value: 'b',
+              family: 'sharedB',
+              child: ZacValue<Widget>.builder(
+                SharedValueProviderBuilder(
+                  value: 'c',
+                  family: 'sharedC',
+                  child: ZacValue<Widget>.builder(
+                    SharedValueProviderBuilder(
+                      value: 'AA',
+                      family: 'sharedA',
+                      child: ZacValue<Widget>.builder(
+                        LeakContext(
+                          cb: (zacContext) {
+                            a = zacContext.ref
+                                .watch(SharedValue.provider('sharedA'));
+                            b = zacContext.ref
+                                .watch(SharedValue.provider('sharedB'));
+                            c = zacContext.ref
+                                .watch(SharedValue.provider('sharedC'));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -163,8 +176,10 @@ void main() {
           SharedValueProviderBuilder(
             value: 10,
             family: 'foo',
-            child: LeakContext(
-              cb: (o) => zacContext = o,
+            child: ZacValue<Widget>.builder(
+              LeakContext(
+                cb: (o) => zacContext = o,
+              ),
             ),
           ),
         );
@@ -186,8 +201,10 @@ void main() {
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (o) => zacContext = o,
+            child: ZacValue<Widget>.builder(
+              LeakContext(
+                cb: (o) => zacContext = o,
+              ),
             ),
           ),
         );
@@ -229,8 +246,10 @@ void main() {
         SharedValueProviderBuilder(
           value: 5,
           family: 'shared',
-          child: LeakContext(
-            cb: (o) => zacContext = o,
+          child: ZacValue<Widget>.builder(
+            LeakContext(
+              cb: (o) => zacContext = o,
+            ),
           ),
         ),
       );
@@ -270,8 +289,10 @@ void main() {
         SharedValueProviderBuilder(
           value: completer,
           family: 'shared',
-          child: LeakContext(
-            cb: (o) => zacContext = o,
+          child: ZacValue<Widget>.builder(
+            LeakContext(
+              cb: (o) => zacContext = o,
+            ),
           ),
         ),
       );
@@ -318,8 +339,10 @@ void main() {
           SharedValueProviderBuilder(
             value: null,
             family: 'foo',
-            child: LeakContext(
-              cb: (o) => zacContext = o,
+            child: ZacValue<Widget>.builder(
+              LeakContext(
+                cb: (o) => zacContext = o,
+              ),
             ),
           ),
         );
@@ -395,9 +418,12 @@ void main() {
           SharedValueProviderBuilder(
             value: 'hello',
             family: 'shared',
-            child: LeakContext(
-              cb: (c) => zacContext = c,
-              child: FlutterText(ZacValue<String>.consume(family: 'shared')),
+            child: ZacValue<Widget>.builder(
+              LeakContext(
+                cb: (c) => zacContext = c,
+                child: ZacValue<Widget>.builder(
+                    FlutterText(ZacValue<String>.consume(family: 'shared'))),
+              ),
             ),
           ),
         );
@@ -423,29 +449,31 @@ void main() {
           SharedValueProviderBuilder(
             value: 'foo',
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(FlutterText(
-                  ZacValue<String>.consume(
-                    family: 'family',
-                    transformer: ZacTransformers([
-                      CustomTransformer(
-                        (transformValue, zacContext, payload) {
-                          if (null == transformValue.value) return 'IS NULL';
-                          return transformValue.value;
-                        },
-                      )
-                    ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(FlutterText(
+                    ZacValue<String>.consume(
+                      family: 'family',
+                      transformer: ZacTransformers([
+                        CustomTransformer(
+                          (transformValue, zacContext, payload) {
+                            if (null == transformValue.value) return 'IS NULL';
+                            return transformValue.value;
+                          },
+                        )
+                      ]),
+                    ),
+                  )),
+                  ZacValue<Widget>.builder(
+                    ZacExecuteActionsBuilder.once(
+                      actions: ZacActions([
+                        SharedValueActions.update(family: 'family'),
+                      ]),
+                    ),
                   ),
-                )),
-                ZacValue<Widget>.builder(
-                  ZacExecuteActionsBuilder.once(
-                    actions: ZacActions([
-                      SharedValueActions.update(family: 'family'),
-                    ]),
-                  ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ),
         );
@@ -464,22 +492,24 @@ void main() {
           SharedValueProviderBuilder(
             value: 'foo',
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(
-                    FlutterText(ZacValue<String>.consume(family: 'family'))),
-                ZacValue<Widget>.builder(
-                  ZacExecuteActionsBuilder.once(
-                    actions: ZacActions([
-                      SharedValueActions.update(
-                        family: 'family',
-                        transformer: ZacTransformers([_ConcatStr('oof')]),
-                        ifNoPayloadTakeCurrent: true,
-                      ),
-                    ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(
+                      FlutterText(ZacValue<String>.consume(family: 'family'))),
+                  ZacValue<Widget>.builder(
+                    ZacExecuteActionsBuilder.once(
+                      actions: ZacActions([
+                        SharedValueActions.update(
+                          family: 'family',
+                          transformer: ZacTransformers([_ConcatStr('oof')]),
+                          ifNoPayloadTakeCurrent: true,
+                        ),
+                      ]),
+                    ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ),
         );
@@ -497,26 +527,28 @@ void main() {
           SharedValueProviderBuilder(
             value: ['a', 'b'],
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
-                  family: 'family',
-                  transformer: ZacTransformers(
-                      [const IterableTransformer.join(separator: ', ')]),
-                ))),
-                ZacValue<Widget>.builder(ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
-                    SharedValueActions.update(
-                      family: 'family',
-                      transformer: ZacTransformers([
-                        IterableTransformer.map(
-                            transformer: ZacTransformers([_ConcatStr('foo')]))
-                      ]),
-                      ifNoPayloadTakeCurrent: true,
-                    ),
-                  ]),
-                )),
-              ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
+                    family: 'family',
+                    transformer: ZacTransformers(
+                        [const IterableTransformer.join(separator: ', ')]),
+                  ))),
+                  ZacValue<Widget>.builder(ZacExecuteActionsBuilder.once(
+                    actions: ZacActions([
+                      SharedValueActions.update(
+                        family: 'family',
+                        transformer: ZacTransformers([
+                          IterableTransformer.map(
+                              transformer: ZacTransformers([_ConcatStr('foo')]))
+                        ]),
+                        ifNoPayloadTakeCurrent: true,
+                      ),
+                    ]),
+                  )),
+                ]),
+              ),
             ),
           ),
         );
@@ -538,16 +570,18 @@ void main() {
             /// provide a new value
             value: ['ignore'],
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
-                  family: 'family',
-                  transformer: ZacTransformers(
-                      [const IterableTransformer.join(separator: ', ')]),
-                ))),
-                ZacValue<Widget>.builder(
-                    LeakContext(cb: (c) => zacContext = c)),
-              ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
+                    family: 'family',
+                    transformer: ZacTransformers(
+                        [const IterableTransformer.join(separator: ', ')]),
+                  ))),
+                  ZacValue<Widget>.builder(
+                      LeakContext(cb: (c) => zacContext = c)),
+                ]),
+              ),
             ),
           ),
         );
@@ -584,25 +618,27 @@ void main() {
               ['ignore']
             ],
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
-                  family: 'family',
-                  transformer: ZacTransformers([
-                    const IterableTransformer.first(),
-                    const IterableTransformer.join(separator: ', ')
-                  ]),
-                ))),
-                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
-                  family: 'family',
-                  transformer: ZacTransformers([
-                    const IterableTransformer.last(),
-                    const IterableTransformer.join(separator: ', ')
-                  ]),
-                ))),
-                ZacValue<Widget>.builder(
-                    LeakContext(cb: (c) => zacContext = c)),
-              ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
+                    family: 'family',
+                    transformer: ZacTransformers([
+                      const IterableTransformer.first(),
+                      const IterableTransformer.join(separator: ', ')
+                    ]),
+                  ))),
+                  ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
+                    family: 'family',
+                    transformer: ZacTransformers([
+                      const IterableTransformer.last(),
+                      const IterableTransformer.join(separator: ', ')
+                    ]),
+                  ))),
+                  ZacValue<Widget>.builder(
+                      LeakContext(cb: (c) => zacContext = c)),
+                ]),
+              ),
             ),
           ),
         );
@@ -637,18 +673,20 @@ void main() {
             /// provide a new value
             value: {'ignore': 'ignore'},
             family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
-                ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
-                  family: 'family',
-                  transformer: ZacTransformers([
-                    const MapTransformer.values(),
-                    const IterableTransformer.join(separator: ', ')
-                  ]),
-                ))),
-                ZacValue<Widget>.builder(
-                    LeakContext(cb: (c) => zacContext = c)),
-              ]),
+            child: ZacValue<Widget>.builder(
+              FlutterColumn(
+                children: ZacValueList<Widget, List<Widget>?>(items: [
+                  ZacValue<Widget>.builder(FlutterText(ZacValue<String>.consume(
+                    family: 'family',
+                    transformer: ZacTransformers([
+                      const MapTransformer.values(),
+                      const IterableTransformer.join(separator: ', ')
+                    ]),
+                  ))),
+                  ZacValue<Widget>.builder(
+                      LeakContext(cb: (c) => zacContext = c)),
+                ]),
+              ),
             ),
           ),
         );
@@ -686,14 +724,16 @@ void main() {
         SharedValueProviderBuilder(
           value: 'foo',
           family: 'shared',
-          child: LeakContext(cb: (zacContext) {
-            obj = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'shared',
-              select: ZacTransformers([_ConcatStr('bar')]),
-            );
-          }),
+          child: ZacValue<Widget>.builder(
+            LeakContext(cb: (zacContext) {
+              obj = SharedValue.get(
+                zacContext: zacContext,
+                consumeType: const SharedValueConsumeType.watch(),
+                family: 'shared',
+                select: ZacTransformers([_ConcatStr('bar')]),
+              );
+            }),
+          ),
         ),
       );
 

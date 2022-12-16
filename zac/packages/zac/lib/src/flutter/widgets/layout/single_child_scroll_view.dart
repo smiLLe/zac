@@ -18,7 +18,7 @@ part 'single_child_scroll_view.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSingleChildScrollView
     with _$FlutterSingleChildScrollView
-    implements FlutterWidget {
+    implements ZacBuilder<SingleChildScrollView> {
   const FlutterSingleChildScrollView._();
 
   static const String unionValue = 'f:1:SingleChildScrollView';
@@ -35,7 +35,7 @@ class FlutterSingleChildScrollView
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     ZacValue<ScrollController?>? controller,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterClip? clipBehavior,
     ZacValue<String?>? restorationId,

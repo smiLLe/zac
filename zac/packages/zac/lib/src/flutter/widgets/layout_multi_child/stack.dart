@@ -15,7 +15,7 @@ part 'stack.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterStack with _$FlutterStack implements FlutterWidget {
+class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
   const FlutterStack._();
 
   static const String unionValue = 'f:1:Stack';

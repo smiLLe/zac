@@ -4,6 +4,7 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -28,14 +29,18 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
-            },
-            child: LeakContext(
+          child: ZacValue<Widget>.builder(
+            LeakContext(
               cb: (o) {
-                zacContext2 = o;
+                zacContext1 = o;
               },
+              child: ZacValue<Widget>.builder(
+                LeakContext(
+                  cb: (o) {
+                    zacContext2 = o;
+                  },
+                ),
+              ),
             ),
           ),
         ),
@@ -46,15 +51,21 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
-            },
-            child: ZacUpdateContextBuilder(
-              child: LeakContext(
-                cb: (o) {
-                  zacContext2 = o;
-                },
+          child: ZacValue<Widget>.builder(
+            LeakContext(
+              cb: (o) {
+                zacContext1 = o;
+              },
+              child: ZacValue<Widget>.builder(
+                ZacUpdateContextBuilder(
+                  child: ZacValue<Widget>.builder(
+                    LeakContext(
+                      cb: (o) {
+                        zacContext2 = o;
+                      },
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -75,16 +86,24 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
-            },
-            child: ZacUpdateContextBuilder(
-              child: LeakContext(
-                cb: (o) {
-                  zacContext2 = o;
-                },
-                child: FlutterSizedBox(),
+          child: ZacValue<Widget>.builder(
+            LeakContext(
+              cb: (o) {
+                zacContext1 = o;
+              },
+              child: ZacValue<Widget>.builder(
+                ZacUpdateContextBuilder(
+                  child: ZacValue<Widget>.builder(
+                    LeakContext(
+                      cb: (o) {
+                        zacContext2 = o;
+                      },
+                      child: ZacValue<Widget>.builder(
+                        FlutterSizedBox(),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),

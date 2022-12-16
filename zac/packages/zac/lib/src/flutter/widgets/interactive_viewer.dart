@@ -1,6 +1,7 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,7 +16,7 @@ part 'interactive_viewer.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
-    implements FlutterWidget {
+    implements ZacBuilder<InteractiveViewer> {
   const FlutterInteractiveViewer._();
 
   static const String unionValue = 'f:1:InteractiveViewer';
@@ -26,7 +27,7 @@ class FlutterInteractiveViewer
   @FreezedUnionValue(FlutterInteractiveViewer.unionValue)
   factory FlutterInteractiveViewer({
     FlutterKey? key,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
     FlutterClip? clipBehavior,
     ZacValue<bool?>? alignPanAxis,
     FlutterEdgeInsets? boundaryMargin,

@@ -23,7 +23,7 @@ mixin _$FlutterLimitedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get maxWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get maxHeight => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -48,7 +48,7 @@ class _$_FlutterLimitedBox extends _FlutterLimitedBox {
   @override
   final ZacValue<double?>? maxHeight;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
 
   @override
   String toString() {
@@ -86,7 +86,7 @@ abstract class _FlutterLimitedBox extends FlutterLimitedBox {
       {final FlutterKey? key,
       final ZacValue<double?>? maxWidth,
       final ZacValue<double?>? maxHeight,
-      final FlutterWidget? child}) = _$_FlutterLimitedBox;
+      final ZacValue<Widget?>? child}) = _$_FlutterLimitedBox;
   _FlutterLimitedBox._() : super._();
 
   factory _FlutterLimitedBox.fromJson(Map<String, dynamic> json) =
@@ -99,5 +99,5 @@ abstract class _FlutterLimitedBox extends FlutterLimitedBox {
   @override
   ZacValue<double?>? get maxHeight;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
 }

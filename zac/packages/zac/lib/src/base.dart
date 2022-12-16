@@ -1,7 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/converter.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 
 const freezedZacBuilder = Freezed(
   fromJson: true,
@@ -19,12 +17,6 @@ const freezedZacDefaults = Freezed(
   when: FreezedWhenOptions(when: false, whenOrNull: false, maybeWhen: false),
   copyWith: false,
 );
-
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterWidget with ZacBuilder<Widget> {
-  factory FlutterWidget.fromJson(Object data) =>
-      ConverterHelper.convertToType<FlutterWidget>(data);
-}
 
 const zacGenerateOrderLast = 10000;
 const zacGenerateOrderFlutterWidget = 9999;

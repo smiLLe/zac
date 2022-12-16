@@ -13,7 +13,7 @@ part 'flexible.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
+class FlutterFlexible with _$FlutterFlexible implements ZacBuilder<Flexible> {
   const FlutterFlexible._();
 
   static const String unionValue = 'f:1:Flexible';
@@ -26,7 +26,7 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
     FlutterKey? key,
     ZacValue<int?>? flex,
     FlutterFlexFit? fit,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterFlexible;
 
   Flexible _buildWidget(ZacContext zacContext) {

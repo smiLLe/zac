@@ -30,7 +30,7 @@ mixin _$FlutterListView {
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
   FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
   ZacValue<double?>? get itemExtent => throw _privateConstructorUsedError;
-  FlutterWidget? get prototypeItem => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get prototypeItem => throw _privateConstructorUsedError;
   ZacValue<bool?>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get addRepaintBoundaries =>
@@ -100,7 +100,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacValue<double?>? itemExtent;
   @override
-  final FlutterWidget? prototypeItem;
+  final ZacValue<Widget?>? prototypeItem;
   @override
   final ZacValue<bool?>? addAutomaticKeepAlives;
   @override
@@ -212,7 +212,7 @@ abstract class _FlutterListView extends FlutterListView {
       final ZacValue<bool?>? shrinkWrap,
       final FlutterEdgeInsetsGeometry? padding,
       final ZacValue<double?>? itemExtent,
-      final FlutterWidget? prototypeItem,
+      final ZacValue<Widget?>? prototypeItem,
       final ZacValue<bool?>? addAutomaticKeepAlives,
       final ZacValue<bool?>? addRepaintBoundaries,
       final ZacValue<bool?>? addSemanticIndexes,
@@ -246,7 +246,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<double?>? get itemExtent;
   @override
-  FlutterWidget? get prototypeItem;
+  ZacValue<Widget?>? get prototypeItem;
   @override
   ZacValue<bool?>? get addAutomaticKeepAlives;
   @override

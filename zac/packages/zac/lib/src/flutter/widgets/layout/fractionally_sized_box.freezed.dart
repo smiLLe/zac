@@ -22,7 +22,7 @@ FlutterFractionallySizedBox _$FlutterFractionallySizedBoxFromJson(
 /// @nodoc
 mixin _$FlutterFractionallySizedBox {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
   ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
   ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ class _$_FlutterFractionallySizedBox extends _FlutterFractionallySizedBox {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
   @override
   final FlutterAlignmentGeometry? alignment;
   @override
@@ -97,7 +97,7 @@ abstract class _FlutterFractionallySizedBox
     extends FlutterFractionallySizedBox {
   factory _FlutterFractionallySizedBox(
       {final FlutterKey? key,
-      final FlutterWidget? child,
+      final ZacValue<Widget?>? child,
       final FlutterAlignmentGeometry? alignment,
       final ZacValue<double?>? widthFactor,
       final ZacValue<double?>? heightFactor}) = _$_FlutterFractionallySizedBox;
@@ -109,7 +109,7 @@ abstract class _FlutterFractionallySizedBox
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override
   FlutterAlignmentGeometry? get alignment;
   @override

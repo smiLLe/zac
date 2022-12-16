@@ -194,7 +194,8 @@ void main() {
         ),
         ZacActions([
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child'))))
         ]));
 
     expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
@@ -217,9 +218,11 @@ void main() {
         }),
         ZacActions([
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))),
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))))
         ]));
     expect(
         ZacActions.fromJson([
@@ -234,9 +237,11 @@ void main() {
         ]),
         ZacActions([
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))),
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))),
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))))
         ]));
     expect(
         ZacActions.fromJson({
@@ -245,7 +250,8 @@ void main() {
         }),
         ZacActions([
           FlutterDialogActions.showDialog(
-              child: FlutterSizedBox(key: FlutterValueKey('dialog_child')))
+              child: ZacValue<Widget>.builder(
+                  FlutterSizedBox(key: FlutterValueKey('dialog_child'))))
         ]));
 
     expect(() => ZacActions.fromJson('nonono'), throwsException);
@@ -328,13 +334,16 @@ void main() {
         SharedValueProviderBuilder(
           value: 1,
           family: 'shared',
-          child: ZacExecuteActionsBuilder.listen(
-            actions: ZacActions([LeakAction(cb)]),
-            family: 'shared',
-            child: ZacValue<Widget>.builder(
-              FlutterSizedBox(
-                key: FlutterValueKey('child'),
-                child: LeakContext(cb: (o) => zacContext = o),
+          child: ZacValue<Widget>.builder(
+            ZacExecuteActionsBuilder.listen(
+              actions: ZacActions([LeakAction(cb)]),
+              family: 'shared',
+              child: ZacValue<Widget>.builder(
+                FlutterSizedBox(
+                  key: FlutterValueKey('child'),
+                  child: ZacValue<Widget>.builder(
+                      LeakContext(cb: (o) => zacContext = o)),
+                ),
               ),
             ),
           ),

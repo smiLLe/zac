@@ -4,6 +4,8 @@ import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
@@ -12,7 +14,7 @@ part 'constrained_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterConstrainedBox
     with _$FlutterConstrainedBox
-    implements FlutterWidget {
+    implements ZacBuilder<ConstrainedBox> {
   const FlutterConstrainedBox._();
 
   static const String unionValue = 'f:1:ConstrainedBox';
@@ -24,7 +26,7 @@ class FlutterConstrainedBox
   factory FlutterConstrainedBox({
     FlutterKey? key,
     required FlutterBoxConstraints constraints,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterConstrainedBox;
 
   ConstrainedBox _buildWidget(ZacContext zacContext) {

@@ -30,7 +30,7 @@ _$_FlutterPositioneddirectional _$$_FlutterPositioneddirectionalFromJson(
       height: json['height'] == null
           ? null
           : ZacValue<double?>.fromJson(json['height'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -59,7 +59,7 @@ _$_FlutterPositioned _$$_FlutterPositionedFromJson(Map<String, dynamic> json) =>
       height: json['height'] == null
           ? null
           : ZacValue<double?>.fromJson(json['height'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -81,6 +81,6 @@ _$_FlutterPositionedfill _$$_FlutterPositionedfillFromJson(
       bottom: json['bottom'] == null
           ? null
           : ZacValue<double?>.fromJson(json['bottom'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       $type: json['converter'] as String?,
     );

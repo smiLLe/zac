@@ -13,7 +13,7 @@ part 'card.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterCard with _$FlutterCard implements FlutterWidget {
+class FlutterCard with _$FlutterCard implements ZacBuilder<Card> {
   const FlutterCard._();
 
   static const String unionValue = 'f:1:Card';
@@ -31,7 +31,7 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
     ZacValue<bool?>? borderOnForeground,
     FlutterEdgeInsetsGeometry? margin,
     FlutterClip? clipBehavior,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     ZacValue<bool?>? semanticContainer,
   }) = _FlutterCard;
 

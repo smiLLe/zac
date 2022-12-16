@@ -64,7 +64,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
   @override
   final ZacActions? onPressed;
   @override
@@ -117,7 +117,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
 abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   factory _FlutterElevatedButton(
       {final FlutterKey? key,
-      required final FlutterWidget? child,
+      required final ZacValue<Widget?>? child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -129,7 +129,7 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override
   ZacActions? get onPressed;
   @override
@@ -161,9 +161,9 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget icon;
+  final ZacValue<Widget> icon;
   @override
-  final FlutterWidget label;
+  final ZacValue<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
@@ -217,8 +217,8 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
 abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
   factory _FlutterElevatedButtonIcon(
       {final FlutterKey? key,
-      required final FlutterWidget icon,
-      required final FlutterWidget label,
+      required final ZacValue<Widget> icon,
+      required final ZacValue<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -230,8 +230,8 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get icon;
-  FlutterWidget get label;
+  ZacValue<Widget> get icon;
+  ZacValue<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override
@@ -292,7 +292,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   final ZacActions? onPressed;
   @override
@@ -345,7 +345,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
 abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   factory _FlutterOutlinedButton(
       {final FlutterKey? key,
-      required final FlutterWidget child,
+      required final ZacValue<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -357,7 +357,7 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   ZacActions? get onPressed;
   @override
@@ -389,9 +389,9 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget icon;
+  final ZacValue<Widget> icon;
   @override
-  final FlutterWidget label;
+  final ZacValue<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
@@ -445,8 +445,8 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
 abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
   factory _FlutterOutlinedButtonIcon(
       {final FlutterKey? key,
-      required final FlutterWidget icon,
-      required final FlutterWidget label,
+      required final ZacValue<Widget> icon,
+      required final ZacValue<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -458,8 +458,8 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get icon;
-  FlutterWidget get label;
+  ZacValue<Widget> get icon;
+  ZacValue<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override
@@ -519,7 +519,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget child;
+  final ZacValue<Widget> child;
   @override
   final ZacActions? onPressed;
   @override
@@ -572,7 +572,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
 abstract class _FlutterTextButton extends FlutterTextButton {
   factory _FlutterTextButton(
       {final FlutterKey? key,
-      required final FlutterWidget child,
+      required final ZacValue<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -584,7 +584,7 @@ abstract class _FlutterTextButton extends FlutterTextButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get child;
+  ZacValue<Widget> get child;
   @override
   ZacActions? get onPressed;
   @override
@@ -616,9 +616,9 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget icon;
+  final ZacValue<Widget> icon;
   @override
-  final FlutterWidget label;
+  final ZacValue<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
@@ -672,8 +672,8 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
 abstract class _FlutterTextButtonIcon extends FlutterTextButton {
   factory _FlutterTextButtonIcon(
       {final FlutterKey? key,
-      required final FlutterWidget icon,
-      required final FlutterWidget label,
+      required final ZacValue<Widget> icon,
+      required final ZacValue<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
@@ -685,8 +685,8 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
 
   @override
   FlutterKey? get key;
-  FlutterWidget get icon;
-  FlutterWidget get label;
+  ZacValue<Widget> get icon;
+  ZacValue<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override

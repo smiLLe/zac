@@ -22,7 +22,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
               json['scaffoldMessengerKey'] as Object),
       home: json['home'] == null
           ? null
-          : FlutterWidget.fromJson(json['home'] as Object),
+          : ZacValue<Widget?>.fromJson(json['home'] as Object),
       initialRoute: json['initialRoute'] == null
           ? null
           : ZacValue<String?>.fromJson(json['initialRoute'] as Object),

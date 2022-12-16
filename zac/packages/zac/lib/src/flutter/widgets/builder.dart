@@ -5,13 +5,15 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
+class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
   const FlutterBuilder._();
 
   static const String unionValue = 'f:1:Builder';
@@ -22,7 +24,7 @@ class FlutterBuilder with _$FlutterBuilder implements FlutterWidget {
   @FreezedUnionValue(FlutterBuilder.unionValue)
   factory FlutterBuilder({
     FlutterKey? key,
-    required FlutterWidget child,
+    required ZacValue<Widget> child,
   }) = _FlutterBuilder;
 
   Widget _builder(ZacContext zacContext) => child.build(zacContext);

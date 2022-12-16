@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,7 @@ part 'image.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterImage with _$FlutterImage implements FlutterWidget {
+class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
   const FlutterImage._();
 
   static const String unionValueNetwork = 'f:1:Image.network';

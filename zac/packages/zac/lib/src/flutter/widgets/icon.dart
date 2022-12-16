@@ -12,7 +12,7 @@ part 'icon.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterIcon with _$FlutterIcon implements FlutterWidget {
+class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
   const FlutterIcon._();
 
   static const String unionValue = 'f:1:Icon';

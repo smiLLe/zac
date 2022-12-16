@@ -21,7 +21,7 @@ FlutterMaterial _$FlutterMaterialFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterMaterial {
   FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterWidget? get child => throw _privateConstructorUsedError;
+  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ class _$_FlutterMaterial extends _FlutterMaterial {
   @override
   final FlutterKey? key;
   @override
-  final FlutterWidget? child;
+  final ZacValue<Widget?>? child;
   @override
   final ZacValue<double?>? elevation;
   @override
@@ -134,7 +134,7 @@ class _$_FlutterMaterial extends _FlutterMaterial {
 abstract class _FlutterMaterial extends FlutterMaterial {
   factory _FlutterMaterial(
       {final FlutterKey? key,
-      final FlutterWidget? child,
+      final ZacValue<Widget?>? child,
       final ZacValue<double?>? elevation,
       final FlutterColor? color,
       final FlutterColor? shadowColor,
@@ -151,7 +151,7 @@ abstract class _FlutterMaterial extends FlutterMaterial {
   @override
   FlutterKey? get key;
   @override
-  FlutterWidget? get child;
+  ZacValue<Widget?>? get child;
   @override
   ZacValue<double?>? get elevation;
   @override

@@ -4,13 +4,16 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
+class FlutterRotatedBox
+    with _$FlutterRotatedBox
+    implements ZacBuilder<RotatedBox> {
   const FlutterRotatedBox._();
 
   static const String unionValue = 'f:1:RotatedBox';
@@ -21,7 +24,7 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   @FreezedUnionValue(FlutterRotatedBox.unionValue)
   factory FlutterRotatedBox({
     FlutterKey? key,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
     required int quarterTurns,
   }) = _FlutterRotatedBox;
 

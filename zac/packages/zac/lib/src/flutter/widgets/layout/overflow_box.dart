@@ -1,5 +1,6 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,9 @@ part 'overflow_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
+class FlutterOverflowBox
+    with _$FlutterOverflowBox
+    implements ZacBuilder<OverflowBox> {
   const FlutterOverflowBox._();
 
   static const String unionValue = 'f:1:OverflowBox';
@@ -28,7 +31,7 @@ class FlutterOverflowBox with _$FlutterOverflowBox implements FlutterWidget {
     ZacValue<double?>? maxWidth,
     ZacValue<double?>? minHeight,
     ZacValue<double?>? maxHeight,
-    FlutterWidget? child,
+    ZacValue<Widget?>? child,
   }) = _FlutterOverflowBox;
 
   OverflowBox _buildWidget(ZacContext zacContext) {

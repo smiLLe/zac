@@ -19,7 +19,7 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
           : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
@@ -50,7 +50,7 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
-      child: FlutterWidget.fromJson(json['child'] as Object),
+      child: ZacValue<Widget>.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
           : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
