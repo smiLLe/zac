@@ -83,11 +83,6 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
   Offset build(ZacContext zacContext) {
     return _build(zacContext);
   }
-
-  @override
-  Offset? buildOrNull(ZacContext zacContext) {
-    return _build(zacContext);
-  }
 }
 
 @freezedZacBuilder

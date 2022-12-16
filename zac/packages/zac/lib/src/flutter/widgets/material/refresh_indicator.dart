@@ -116,14 +116,7 @@ class FlutterRefreshIndicatorTriggerMode
   }
 
   @override
-  RefreshIndicatorTriggerMode build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  RefreshIndicatorTriggerMode? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  RefreshIndicatorTriggerMode build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
