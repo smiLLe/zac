@@ -97,14 +97,7 @@ class FlutterAppBar with _$FlutterAppBar implements FlutterWidget {
   }
 
   @override
-  AppBar build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  AppBar? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  AppBar build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

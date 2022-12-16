@@ -42,14 +42,7 @@ class FlutterIcon with _$FlutterIcon implements FlutterWidget {
   }
 
   @override
-  Icon build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Icon? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Icon build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -80,14 +73,7 @@ class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
   }
 
   @override
-  IconData build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  IconData? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  IconData build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -117,14 +103,7 @@ class FlutterIconThemeData
   }
 
   @override
-  IconThemeData build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  IconThemeData? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  IconThemeData build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

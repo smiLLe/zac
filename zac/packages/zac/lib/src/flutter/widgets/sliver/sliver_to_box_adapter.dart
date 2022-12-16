@@ -35,14 +35,7 @@ class FlutterSliverToBoxAdapter
   }
 
   @override
-  SliverToBoxAdapter build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SliverToBoxAdapter? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SliverToBoxAdapter build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

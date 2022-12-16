@@ -90,14 +90,7 @@ class FlutterListTile with _$FlutterListTile implements FlutterWidget {
   }
 
   @override
-  ListTile build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ListTile? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ListTile build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -33,14 +33,7 @@ class FlutterSpacer with _$FlutterSpacer implements FlutterWidget {
   }
 
   @override
-  Spacer build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Spacer? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Spacer build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

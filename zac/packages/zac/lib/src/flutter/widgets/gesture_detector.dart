@@ -1,6 +1,5 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -55,14 +54,7 @@ class FlutterGestureDetector
   }
 
   @override
-  GestureDetector build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  GestureDetector? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  GestureDetector build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

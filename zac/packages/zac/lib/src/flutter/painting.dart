@@ -32,14 +32,7 @@ class FlutterBoxShape with _$FlutterBoxShape, ZacBuilder<BoxShape> {
   }
 
   @override
-  BoxShape build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxShape? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxShape build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -64,14 +57,7 @@ class FlutterAxis with _$FlutterAxis, ZacBuilder<Axis> {
   }
 
   @override
-  Axis build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Axis? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Axis build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -97,14 +83,7 @@ class FlutterVerticalDirection
   }
 
   @override
-  VerticalDirection build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  VerticalDirection? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  VerticalDirection build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -139,14 +118,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuilder<TextOverflow> {
   }
 
   @override
-  TextOverflow build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextOverflow? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextOverflow build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -223,14 +195,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuilder<StrutStyle> {
   }
 
   @override
-  StrutStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  StrutStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  StrutStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -258,14 +223,7 @@ class FlutterTextWidthBasis
   }
 
   @override
-  TextWidthBasis build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextWidthBasis? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextWidthBasis build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -312,14 +270,7 @@ class FlutterBoxFit with _$FlutterBoxFit, ZacBuilder<BoxFit> {
   }
 
   @override
-  BoxFit build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxFit? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxFit build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -354,14 +305,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuilder<ImageRepeat> {
   }
 
   @override
-  ImageRepeat build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  ImageRepeat? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ImageRepeat build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -432,14 +376,7 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
   }
 
   @override
-  TextStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -473,14 +410,7 @@ class FlutterTextAlignVertical
   }
 
   @override
-  TextAlignVertical build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextAlignVertical? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextAlignVertical build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -515,14 +445,7 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements DartShadow {
   }
 
   @override
-  BoxShadow build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxShadow? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxShadow build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -603,14 +526,7 @@ class FlutterAlignment
   }
 
   @override
-  Alignment build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Alignment? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Alignment build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -700,14 +616,7 @@ class FlutterAlignmentDirectional
   }
 
   @override
-  AlignmentDirectional build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  AlignmentDirectional? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  AlignmentDirectional build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -733,14 +642,7 @@ class FlutterFractionalOffset
   }
 
   @override
-  FractionalOffset build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FractionalOffset? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FractionalOffset build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -759,12 +661,7 @@ abstract class FlutterBoxBorder implements FlutterShapeBorder {
   }
 
   @override
-  BoxBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
-
-  @override
-  BoxBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+  BoxBorder build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -797,14 +694,7 @@ class FlutterBorderDirectional
   }
 
   @override
-  BorderDirectional build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BorderDirectional? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BorderDirectional build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -852,14 +742,7 @@ class FlutterBorder with _$FlutterBorder implements FlutterBoxBorder {
   }
 
   @override
-  Border build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Border? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Border build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -886,14 +769,7 @@ class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuilder<BorderStyle> {
   }
 
   @override
-  BorderStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BorderStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BorderStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -947,14 +823,7 @@ class FlutterBorderRadius
   }
 
   @override
-  BorderRadius build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BorderRadius? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BorderRadius build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -983,14 +852,7 @@ class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
   }
 
   @override
-  BorderSide build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BorderSide? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BorderSide build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1002,12 +864,7 @@ abstract class FlutterOutlinedBorder implements FlutterShapeBorder {
   }
 
   @override
-  ShapeBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
-
-  @override
-  ShapeBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+  ShapeBorder build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -1030,14 +887,7 @@ class FlutterCircleBorder
   }
 
   @override
-  CircleBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  CircleBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  CircleBorder build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1068,14 +918,7 @@ class FlutterRoundedRectangleBorder
   }
 
   @override
-  ShapeBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  ShapeBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ShapeBorder build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1120,14 +963,7 @@ class FlutterBoxDecoration
   }
 
   @override
-  BoxDecoration build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxDecoration? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxDecoration build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1162,14 +998,7 @@ class FlutterShapeDecoration
   }
 
   @override
-  ShapeDecoration build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  ShapeDecoration? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ShapeDecoration build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1229,14 +1058,7 @@ class FlutterEdgeInsets
   }
 
   @override
-  EdgeInsets build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  EdgeInsets? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  EdgeInsets build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1280,14 +1102,7 @@ class FlutterEdgeInsetsDirectional
   }
 
   @override
-  EdgeInsetsDirectional build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  EdgeInsetsDirectional? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  EdgeInsetsDirectional build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

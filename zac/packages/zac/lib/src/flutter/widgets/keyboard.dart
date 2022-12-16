@@ -34,14 +34,7 @@ class FlutterScrollViewKeyboardDismissBehavior
   }
 
   @override
-  ScrollViewKeyboardDismissBehavior build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  ScrollViewKeyboardDismissBehavior? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ScrollViewKeyboardDismissBehavior build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

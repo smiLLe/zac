@@ -174,8 +174,7 @@ because there was already a transition.
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -212,14 +211,7 @@ class ZacStateMachineBuildStateBuilder
   }
 
   @override
-  ZacStateMachineBuildState build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ZacStateMachineBuildState? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ZacStateMachineBuildState build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

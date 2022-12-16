@@ -55,14 +55,7 @@ class FlutterWrap with _$FlutterWrap implements FlutterWidget {
   }
 
   @override
-  Wrap build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Wrap? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Wrap build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -76,14 +76,7 @@ class FlutterSelectableText
   }
 
   @override
-  SelectableText build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SelectableText? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SelectableText build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

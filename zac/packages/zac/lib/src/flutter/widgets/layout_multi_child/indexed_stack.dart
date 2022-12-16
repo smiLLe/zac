@@ -45,14 +45,7 @@ class FlutterIndexedStack with _$FlutterIndexedStack implements FlutterWidget {
   }
 
   @override
-  IndexedStack build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  IndexedStack? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  IndexedStack build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

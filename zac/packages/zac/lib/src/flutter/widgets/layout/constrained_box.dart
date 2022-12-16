@@ -4,7 +4,6 @@ import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 
 part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
@@ -37,14 +36,7 @@ class FlutterConstrainedBox
   }
 
   @override
-  ConstrainedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ConstrainedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ConstrainedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

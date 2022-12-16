@@ -36,14 +36,7 @@ class FlutterSliverGrid with _$FlutterSliverGrid implements FlutterWidget {
   }
 
   @override
-  SliverGrid build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SliverGrid? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SliverGrid build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

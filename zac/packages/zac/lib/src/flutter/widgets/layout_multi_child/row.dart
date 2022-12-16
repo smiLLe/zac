@@ -52,14 +52,7 @@ class FlutterRow with _$FlutterRow implements FlutterWidget {
   }
 
   @override
-  Row build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Row? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Row build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

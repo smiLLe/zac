@@ -43,14 +43,7 @@ class FlutterFractionallySizedBox
   }
 
   @override
-  FractionallySizedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  FractionallySizedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FractionallySizedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -55,14 +55,7 @@ class FlutterMaterial with _$FlutterMaterial implements FlutterWidget {
   }
 
   @override
-  Material build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Material? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Material build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

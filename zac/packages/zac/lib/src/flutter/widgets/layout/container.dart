@@ -6,7 +6,6 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 
 part 'container.freezed.dart';
 part 'container.g.dart';
@@ -45,14 +44,7 @@ class FlutterContainer with _$FlutterContainer implements FlutterWidget {
   }
 
   @override
-  Container build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Container? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Container build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

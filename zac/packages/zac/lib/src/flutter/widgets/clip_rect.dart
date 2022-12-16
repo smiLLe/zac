@@ -5,8 +5,6 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
-
 part 'clip_rect.freezed.dart';
 part 'clip_rect.g.dart';
 
@@ -37,14 +35,7 @@ class FlutterClipRect with _$FlutterClipRect implements FlutterWidget {
   }
 
   @override
-  ClipRect build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ClipRect? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ClipRect build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

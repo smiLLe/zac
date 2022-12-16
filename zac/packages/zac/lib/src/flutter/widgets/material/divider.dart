@@ -42,14 +42,7 @@ class FlutterDivider with _$FlutterDivider implements FlutterWidget {
   }
 
   @override
-  Divider build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Divider? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Divider build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

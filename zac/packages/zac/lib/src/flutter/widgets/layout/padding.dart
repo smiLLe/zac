@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 
 part 'padding.freezed.dart';
 part 'padding.g.dart';
@@ -36,14 +35,7 @@ class FlutterPadding with _$FlutterPadding implements FlutterWidget {
   }
 
   @override
-  Padding build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Padding? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Padding build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

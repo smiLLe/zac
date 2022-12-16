@@ -1,5 +1,4 @@
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -93,14 +92,7 @@ class FlutterPositioned with _$FlutterPositioned implements FlutterWidget {
   }
 
   @override
-  Positioned build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Positioned? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Positioned build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -59,14 +59,7 @@ class FlutterSingleChildScrollView
   }
 
   @override
-  SingleChildScrollView build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SingleChildScrollView? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SingleChildScrollView build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

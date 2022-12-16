@@ -75,14 +75,7 @@ class FlutterListView with _$FlutterListView implements FlutterWidget {
   }
 
   @override
-  ListView build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ListView? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ListView build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

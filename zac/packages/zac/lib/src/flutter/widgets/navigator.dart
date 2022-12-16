@@ -53,8 +53,7 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   MaterialPageRoute<Object?> _build(
-    ZacContext zacContext,
-    ZacBuilderConsume onConsume, {
+    ZacContext zacContext, {
     required String familyName,
     required Object? arguments,
   }) {
@@ -65,32 +64,16 @@ class FlutterMaterialPageRoute
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.build(zacContext, onConsume: onConsume),
-      fullscreenDialog:
-          fullscreenDialog?.build(zacContext, onConsume: onConsume) ?? false,
-      maintainState:
-          maintainState?.build(zacContext, onConsume: onConsume) ?? true,
+      settings: settings?.build(zacContext),
+      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
+      maintainState: maintainState?.build(zacContext) ?? true,
     );
   }
 
   @override
-  MaterialPageRoute<Object?> build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  MaterialPageRoute<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      onConsume,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
-          FlutterRoute.nameOfSharedArguments,
-      arguments: settings?.arguments,
-    );
-  }
-
-  @override
-  MaterialPageRoute<Object?>? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(
-      zacContext,
-      onConsume,
       familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
@@ -106,7 +89,6 @@ class FlutterMaterialPageRoute
   }) {
     return _build(
       zacContext,
-      onConsume,
       familyName: argName ?? FlutterRoute.nameOfSharedArguments,
       arguments: args,
     );
@@ -145,8 +127,7 @@ class FlutterPageRouteBuilder
   }) = _FlutterPageRouteBuilder;
 
   PageRouteBuilder<Object?> _build(
-    ZacContext zacContext,
-    ZacBuilderConsume onConsume, {
+    ZacContext zacContext, {
     required String familyName,
     required Object? arguments,
   }) {
@@ -168,23 +149,9 @@ class FlutterPageRouteBuilder
   }
 
   @override
-  PageRouteBuilder<Object?> build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  PageRouteBuilder<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      onConsume,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
-          FlutterRoute.nameOfSharedArguments,
-      arguments: settings?.arguments,
-    );
-  }
-
-  @override
-  PageRouteBuilder<Object?>? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(
-      zacContext,
-      onConsume,
       familyName: nameOfSharedArguments?.build(zacContext) ??
           FlutterRoute.nameOfSharedArguments,
       arguments: settings?.arguments,
@@ -200,7 +167,6 @@ class FlutterPageRouteBuilder
   }) {
     return _build(
       zacContext,
-      onConsume,
       familyName: argName ?? FlutterRoute.nameOfSharedArguments,
       arguments: args,
     );
@@ -271,14 +237,7 @@ class FlutterNavigator with _$FlutterNavigator implements FlutterWidget {
   }
 
   @override
-  Navigator build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Navigator? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Navigator build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -469,15 +428,13 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
     required Map<String, String>? familyNameOfArguments,
   }) = _FlutterRouteFactory;
 
-  RouteFactory _build(ZacContext zacContext,
-      {required ZacBuilderConsume onConsume}) {
+  RouteFactory _build(ZacContext zacContext) {
     return (settings) {
       final route = routes[settings.name]?.buildWithArgs(
         zacContext,
         argName: familyNameOfArguments?[settings.name] ??
             FlutterRoute.nameOfSharedArguments,
         args: settings.arguments,
-        onConsume: onConsume,
       );
 
       assert(null != route,
@@ -488,15 +445,8 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
   }
 
   @override
-  RouteFactory build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext, onConsume: onConsume);
-  }
-
-  @override
-  RouteFactory? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext, onConsume: onConsume);
+  RouteFactory build(ZacContext zacContext) {
+    return _build(zacContext);
   }
 }
 
@@ -523,14 +473,7 @@ class FlutterRouteSettings
   }
 
   @override
-  RouteSettings build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  RouteSettings? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  RouteSettings build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

@@ -1,5 +1,4 @@
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -52,14 +51,7 @@ class FlutterColumn with _$FlutterColumn implements FlutterWidget {
   }
 
   @override
-  Column build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Column? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Column build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

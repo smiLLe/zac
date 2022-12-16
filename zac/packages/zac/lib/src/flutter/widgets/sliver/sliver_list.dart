@@ -33,14 +33,7 @@ class FlutterSliverList with _$FlutterSliverList implements FlutterWidget {
   }
 
   @override
-  SliverList build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SliverList? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SliverList build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

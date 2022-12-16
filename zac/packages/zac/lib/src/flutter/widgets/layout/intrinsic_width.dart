@@ -35,14 +35,7 @@ class FlutterIntrinsicWidth
   }
 
   @override
-  IntrinsicWidth build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  IntrinsicWidth? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  IntrinsicWidth build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

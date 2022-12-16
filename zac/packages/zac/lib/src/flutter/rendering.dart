@@ -38,14 +38,7 @@ class FlutterHitTestBehavior
   }
 
   @override
-  HitTestBehavior build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  HitTestBehavior? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  HitTestBehavior build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -87,14 +80,7 @@ class FlutterCrossAxisAlignment
   }
 
   @override
-  CrossAxisAlignment build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  CrossAxisAlignment? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  CrossAxisAlignment build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -141,14 +127,7 @@ class FlutterMainAxisAlignment
   }
 
   @override
-  MainAxisAlignment build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  MainAxisAlignment? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  MainAxisAlignment build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -172,14 +151,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
   }
 
   @override
-  MainAxisSize build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  MainAxisSize? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  MainAxisSize build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -203,14 +175,7 @@ class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
   }
 
   @override
-  FlexFit build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FlexFit? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FlexFit build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -255,14 +220,7 @@ class FlutterWrapAlignment
   }
 
   @override
-  WrapAlignment build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  WrapAlignment? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  WrapAlignment build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -294,14 +252,7 @@ class FlutterWrapCrossAlignment
   }
 
   @override
-  WrapCrossAlignment build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  WrapCrossAlignment? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  WrapCrossAlignment build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -332,14 +283,7 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
   }
 
   @override
-  StackFit build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  StackFit? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  StackFit build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -409,14 +353,7 @@ class FlutterBoxConstraints
   }
 
   @override
-  BoxConstraints build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxConstraints? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxConstraints build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -444,14 +381,7 @@ class FlutterDecorationPosition
   }
 
   @override
-  DecorationPosition build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  DecorationPosition? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  DecorationPosition build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

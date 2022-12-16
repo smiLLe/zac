@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/widgets/navigator.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
@@ -21,12 +17,7 @@ abstract class FlutterInputBorder implements FlutterShapeBorder {
   }
 
   @override
-  InputBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
-
-  @override
-  InputBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()});
+  InputBorder build(ZacContext zacContext);
 }
 
 @freezedZacBuilder
@@ -58,14 +49,7 @@ class FlutterOutlineInputBorder
   }
 
   @override
-  OutlineInputBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  OutlineInputBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  OutlineInputBorder build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -100,14 +84,7 @@ class FlutterUnderlineInputBorder
   }
 
   @override
-  UnderlineInputBorder build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  UnderlineInputBorder? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  UnderlineInputBorder build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

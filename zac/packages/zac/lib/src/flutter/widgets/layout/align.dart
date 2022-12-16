@@ -1,12 +1,11 @@
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'align.freezed.dart';
 part 'align.g.dart';
@@ -42,14 +41,7 @@ class FlutterAlign with _$FlutterAlign implements FlutterWidget {
   }
 
   @override
-  Align build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return buildWidget(zacContext);
-  }
-
-  @override
-  Align? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Align build(ZacContext zacContext) {
     return buildWidget(zacContext);
   }
 }

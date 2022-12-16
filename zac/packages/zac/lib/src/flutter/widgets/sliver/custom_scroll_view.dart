@@ -48,16 +48,8 @@ class FlutterCustomScrollView
   }) = _FlutterCustomScrollView;
 
   @override
-  CustomScrollView build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  CustomScrollView build(ZacContext zacContext) {
     // TODO: implement build
-    throw UnimplementedError();
-  }
-
-  @override
-  CustomScrollView? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    // TODO: implement buildOrNull
     throw UnimplementedError();
   }
 }

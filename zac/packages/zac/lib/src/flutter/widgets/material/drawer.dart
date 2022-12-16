@@ -44,14 +44,7 @@ class FlutterDrawer with _$FlutterDrawer implements FlutterWidget {
   }
 
   @override
-  Drawer build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Drawer? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Drawer build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

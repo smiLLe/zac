@@ -153,8 +153,7 @@ class FlutterDialogs with _$FlutterDialogs implements FlutterWidget {
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

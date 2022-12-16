@@ -89,14 +89,7 @@ class FlutterMaterialApp with _$FlutterMaterialApp implements FlutterWidget {
   }
 
   @override
-  MaterialApp build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  MaterialApp? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  MaterialApp build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

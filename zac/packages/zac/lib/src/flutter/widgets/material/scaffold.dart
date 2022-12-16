@@ -87,14 +87,7 @@ class FlutterScaffold with _$FlutterScaffold implements FlutterWidget {
   }
 
   @override
-  Scaffold build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Scaffold? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Scaffold build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -249,9 +242,7 @@ class FlutterScaffoldMessenger
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
-        state.showSnackBar(value.snackBar.build(zacContext,
-            onConsume:
-                const ZacBuilderConsume(type: SharedValueConsumeType.read())));
+        state.showSnackBar(value.snackBar.build(zacContext));
       },
       hideCurrentSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(zacContext.context);
@@ -270,9 +261,7 @@ class FlutterScaffoldMessenger
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
-        state.showMaterialBanner(value.materialBanner.build(zacContext,
-            onConsume:
-                const ZacBuilderConsume(type: SharedValueConsumeType.read())));
+        state.showMaterialBanner(value.materialBanner.build(zacContext));
       },
       hideCurrentMaterialBanner: (value) {
         final state = ScaffoldMessenger.maybeOf(zacContext.context);
@@ -338,14 +327,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements FlutterWidget {
   }
 
   @override
-  SnackBar build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SnackBar? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SnackBar build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -373,14 +355,7 @@ class FlutterSnackBarBehavior
   }
 
   @override
-  SnackBarBehavior build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  SnackBarBehavior? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SnackBarBehavior build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -417,14 +392,7 @@ class FlutterSnackBarAction
   }
 
   @override
-  SnackBarAction build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SnackBarAction? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SnackBarAction build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -477,14 +445,7 @@ class FlutterMaterialBanner
   }
 
   @override
-  MaterialBanner build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  MaterialBanner? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  MaterialBanner build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

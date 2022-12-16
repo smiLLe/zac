@@ -47,14 +47,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements FlutterWidget {
   }
 
   @override
-  SafeArea build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SafeArea? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SafeArea build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

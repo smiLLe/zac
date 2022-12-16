@@ -78,14 +78,7 @@ class FlutterRefreshIndicator
   }
 
   @override
-  RefreshIndicator build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  RefreshIndicator? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  RefreshIndicator build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

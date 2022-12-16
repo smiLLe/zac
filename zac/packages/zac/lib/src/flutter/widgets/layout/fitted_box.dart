@@ -5,7 +5,6 @@ import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 
 part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
@@ -40,14 +39,7 @@ class FlutterFittedBox with _$FlutterFittedBox implements FlutterWidget {
   }
 
   @override
-  FittedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  FittedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FittedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

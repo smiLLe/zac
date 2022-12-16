@@ -34,14 +34,7 @@ class FlutterRotatedBox with _$FlutterRotatedBox implements FlutterWidget {
   }
 
   @override
-  RotatedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  RotatedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  RotatedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

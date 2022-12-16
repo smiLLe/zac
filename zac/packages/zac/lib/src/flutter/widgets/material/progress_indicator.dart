@@ -74,14 +74,7 @@ class FlutterProgressIndicator
   }
 
   @override
-  ProgressIndicator build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ProgressIndicator? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ProgressIndicator build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -69,14 +69,7 @@ class FlutterElevatedButton
   }
 
   @override
-  ElevatedButton build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ElevatedButton? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ElevatedButton build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -138,14 +131,7 @@ class FlutterOutlinedButton
   }
 
   @override
-  OutlinedButton build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  OutlinedButton? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  OutlinedButton build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -205,14 +191,7 @@ class FlutterTextButton with _$FlutterTextButton implements FlutterWidget {
   }
 
   @override
-  TextButton build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  TextButton? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextButton build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -50,14 +50,7 @@ class FlutterScrollPhysics
   }
 
   @override
-  ScrollPhysics build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  ScrollPhysics? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ScrollPhysics build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

@@ -39,14 +39,7 @@ class FlutterFlexible with _$FlutterFlexible implements FlutterWidget {
   }
 
   @override
-  Flexible build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Flexible? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Flexible build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

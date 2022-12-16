@@ -45,14 +45,7 @@ class FlutterUnconstrainedBox
   }
 
   @override
-  UnconstrainedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  UnconstrainedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  UnconstrainedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

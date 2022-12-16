@@ -45,14 +45,7 @@ class FlutterStack with _$FlutterStack implements FlutterWidget {
   }
 
   @override
-  Stack build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Stack? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Stack build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

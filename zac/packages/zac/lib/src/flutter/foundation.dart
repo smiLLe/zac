@@ -65,8 +65,7 @@ class FlutterGlobalKeyNavigatorStateProvider
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return SharedValueProvider(
       childBuilder: child.build,
       valueBuilder: _valueBuilder,
@@ -101,8 +100,7 @@ class FlutterGlobalKeyScaffoldMessengerStateProvider
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return SharedValueProvider(
       childBuilder: child.build,
       valueBuilder: _valueBuilder,

@@ -55,14 +55,7 @@ class FlutterButtonBar with _$FlutterButtonBar implements FlutterWidget {
   }
 
   @override
-  ButtonBar build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ButtonBar? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ButtonBar build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

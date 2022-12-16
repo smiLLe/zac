@@ -1,5 +1,4 @@
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -36,14 +35,7 @@ class FlutterAspectRatio with _$FlutterAspectRatio implements FlutterWidget {
   }
 
   @override
-  AspectRatio build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  AspectRatio? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  AspectRatio build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

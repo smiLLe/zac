@@ -59,14 +59,7 @@ class FlutterText with _$FlutterText implements FlutterWidget {
   }
 
   @override
-  Text build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Text? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Text build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

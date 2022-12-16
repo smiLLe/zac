@@ -89,14 +89,7 @@ class FlutterSizedBox with _$FlutterSizedBox implements FlutterWidget {
   }
 
   @override
-  SizedBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SizedBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SizedBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

@@ -35,14 +35,7 @@ class ZacUpdateContextBuilder
   }
 
   @override
-  ZacUpdateContext build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  ZacUpdateContext? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  ZacUpdateContext build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

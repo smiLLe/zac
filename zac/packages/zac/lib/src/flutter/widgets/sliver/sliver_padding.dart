@@ -38,14 +38,7 @@ class FlutterSliverPadding
   }
 
   @override
-  SliverPadding build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SliverPadding? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SliverPadding build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

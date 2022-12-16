@@ -48,14 +48,7 @@ class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
   }
 
   @override
-  Color build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Color? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Color build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -87,14 +80,12 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
   }
 
   @override
-  Offset build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Offset build(ZacContext zacContext) {
     return _build(zacContext);
   }
 
   @override
-  Offset? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Offset? buildOrNull(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -129,8 +120,7 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
   }
 
   @override
-  build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -160,14 +150,7 @@ class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
   }
 
   @override
-  Radius build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Radius? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Radius build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -192,14 +175,7 @@ class FlutterTextDirection
   }
 
   @override
-  TextDirection build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextDirection? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextDirection build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -230,14 +206,7 @@ class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
   }
 
   @override
-  Clip build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Clip? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Clip build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -263,14 +232,7 @@ class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuilder<TextBaseline> {
   }
 
   @override
-  TextBaseline build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextBaseline? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextBaseline build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -333,14 +295,7 @@ class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
   }
 
   @override
-  FontWeight build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FontWeight? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FontWeight build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -365,14 +320,7 @@ class FlutterFontStyle with _$FlutterFontStyle, ZacBuilder<FontStyle> {
   }
 
   @override
-  FontStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FontStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FontStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -409,14 +357,7 @@ class FlutterTextDecoration
   }
 
   @override
-  TextDecoration build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextDecoration? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextDecoration build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -445,14 +386,7 @@ class FlutterTextLeadingDistribution
   }
 
   @override
-  TextLeadingDistribution build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextLeadingDistribution? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextLeadingDistribution build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -474,14 +408,7 @@ class FlutterLocale with _$FlutterLocale, ZacBuilder<Locale> {
   }
 
   @override
-  Locale build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Locale? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Locale build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -626,14 +553,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   }
 
   @override
-  FontFeature build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FontFeature? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FontFeature build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -676,14 +596,7 @@ class FlutterTextDecorationStyle
   }
 
   @override
-  TextDecorationStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextDecorationStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextDecorationStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -726,14 +639,7 @@ class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
   }
 
   @override
-  TextAlign build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextAlign? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextAlign build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -766,14 +672,7 @@ class FlutterTextHeightBehavior
   }
 
   @override
-  TextHeightBehavior build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextHeightBehavior? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextHeightBehavior build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -908,14 +807,7 @@ class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
   }
 
   @override
-  BlendMode build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BlendMode? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BlendMode build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -978,14 +870,7 @@ class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
   }
 
   @override
-  Rect build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Rect? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Rect build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1021,14 +906,7 @@ class FlutterFilterQuality
   }
 
   @override
-  FilterQuality build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  FilterQuality? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  FilterQuality build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1052,14 +930,7 @@ class FlutterBrightness with _$FlutterBrightness, ZacBuilder<Brightness> {
   }
 
   @override
-  Brightness build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Brightness? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Brightness build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1083,14 +954,7 @@ class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
   }
 
   @override
-  Size build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Size? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Size build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1137,14 +1001,7 @@ class FlutterBoxHeightStyle
   }
 
   @override
-  BoxHeightStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxHeightStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxHeightStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1172,14 +1029,7 @@ class FlutterBoxWidthStyle
   }
 
   @override
-  BoxWidthStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  BoxWidthStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  BoxWidthStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -1217,14 +1067,7 @@ class FlutterShadow with _$FlutterShadow implements DartShadow {
   }
 
   @override
-  Shadow build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  Shadow? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Shadow build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

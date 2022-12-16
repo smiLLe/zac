@@ -35,14 +35,7 @@ class FlutterIntrinsicHeight
   }
 
   @override
-  IntrinsicHeight build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  IntrinsicHeight? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  IntrinsicHeight build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

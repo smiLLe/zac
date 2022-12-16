@@ -71,14 +71,7 @@ class FlutterGridView with _$FlutterGridView implements FlutterWidget {
   }
 
   @override
-  GridView build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  GridView? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  GridView build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

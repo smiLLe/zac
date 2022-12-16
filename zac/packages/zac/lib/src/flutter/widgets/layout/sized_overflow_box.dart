@@ -40,14 +40,7 @@ class FlutterSizedOverflowBox
   }
 
   @override
-  SizedOverflowBox build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  SizedOverflowBox? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SizedOverflowBox build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

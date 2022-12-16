@@ -51,14 +51,7 @@ class FlutterCard with _$FlutterCard implements FlutterWidget {
   }
 
   @override
-  Card build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _buildWidget(zacContext);
-  }
-
-  @override
-  Card? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Card build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

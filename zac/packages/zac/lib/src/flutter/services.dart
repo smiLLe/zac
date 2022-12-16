@@ -49,14 +49,7 @@ class FlutterSystemUiOverlayStyle
   }
 
   @override
-  SystemUiOverlayStyle build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  SystemUiOverlayStyle? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SystemUiOverlayStyle build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -113,14 +106,7 @@ class FlutterTextInputType
   }
 
   @override
-  TextInputType build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextInputType? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextInputType build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -183,14 +169,7 @@ class FlutterTextInputAction
   }
 
   @override
-  TextInputAction build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextInputAction? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextInputAction build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -225,14 +204,7 @@ class FlutterTextCapitalization
   }
 
   @override
-  TextCapitalization build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  TextCapitalization? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextCapitalization build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -260,14 +232,7 @@ class FlutterSmartDashesType
   }
 
   @override
-  SmartDashesType build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  SmartDashesType? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SmartDashesType build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
@@ -295,14 +260,7 @@ class FlutterSmartQuotesType
   }
 
   @override
-  SmartQuotesType build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  SmartQuotesType? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  SmartQuotesType build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }

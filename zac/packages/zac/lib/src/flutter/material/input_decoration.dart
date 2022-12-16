@@ -129,14 +129,7 @@ class FlutterInputDecoration
   }
 
   @override
-  InputDecoration build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
-    return _build(zacContext);
-  }
-
-  @override
-  InputDecoration? buildOrNull(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  InputDecoration build(ZacContext zacContext) {
     return _build(zacContext);
   }
 }
