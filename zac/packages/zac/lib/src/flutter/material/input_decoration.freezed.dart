@@ -22,62 +22,66 @@ FlutterInputDecoration _$FlutterInputDecorationFromJson(
 /// @nodoc
 mixin _$FlutterInputDecoration {
   ZacValue<Widget?>? get icon => throw _privateConstructorUsedError;
-  FlutterColor? get iconColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get iconColor => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get label => throw _privateConstructorUsedError;
   ZacValue<String?>? get labelText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get labelStyle => throw _privateConstructorUsedError;
-  FlutterTextStyle? get floatingLabelStyle =>
+  ZacValue<TextStyle?>? get labelStyle => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get floatingLabelStyle =>
       throw _privateConstructorUsedError;
   ZacValue<String?>? get helperText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get helperStyle => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get helperStyle => throw _privateConstructorUsedError;
   ZacValue<int?>? get helperMaxLines => throw _privateConstructorUsedError;
   ZacValue<String?>? get hintText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get hintStyle => throw _privateConstructorUsedError;
-  FlutterTextDirection? get hintTextDirection =>
+  ZacValue<TextStyle?>? get hintStyle => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get hintTextDirection =>
       throw _privateConstructorUsedError;
   ZacValue<int?>? get hintMaxLines => throw _privateConstructorUsedError;
   ZacValue<String?>? get errorText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get errorStyle => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get errorStyle => throw _privateConstructorUsedError;
   ZacValue<int?>? get errorMaxLines =>
       throw _privateConstructorUsedError; // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   ZacValue<bool?>? get isCollapsed => throw _privateConstructorUsedError;
   ZacValue<bool?>? get isDense => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get contentPadding =>
+  ZacValue<EdgeInsetsGeometry?>? get contentPadding =>
       throw _privateConstructorUsedError;
   ZacValue<Widget?>? get prefixIcon => throw _privateConstructorUsedError;
-  FlutterBoxConstraints? get prefixIconConstraints =>
+  ZacValue<BoxConstraints?>? get prefixIconConstraints =>
       throw _privateConstructorUsedError;
   ZacValue<Widget?>? get prefix => throw _privateConstructorUsedError;
   ZacValue<String?>? get prefixText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get prefixStyle => throw _privateConstructorUsedError;
-  FlutterColor? get prefixIconColor => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get prefixStyle => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get prefixIconColor => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get suffixIcon => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get suffix => throw _privateConstructorUsedError;
   ZacValue<String?>? get suffixText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get suffixStyle => throw _privateConstructorUsedError;
-  FlutterColor? get suffixIconColor => throw _privateConstructorUsedError;
-  FlutterBoxConstraints? get suffixIconConstraints =>
+  ZacValue<TextStyle?>? get suffixStyle => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get suffixIconColor => throw _privateConstructorUsedError;
+  ZacValue<BoxConstraints?>? get suffixIconConstraints =>
       throw _privateConstructorUsedError;
   ZacValue<Widget?>? get counter => throw _privateConstructorUsedError;
   ZacValue<String?>? get counterText => throw _privateConstructorUsedError;
-  FlutterTextStyle? get counterStyle => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get counterStyle => throw _privateConstructorUsedError;
   ZacValue<bool?>? get filled => throw _privateConstructorUsedError;
-  FlutterColor? get fillColor => throw _privateConstructorUsedError;
-  FlutterColor? get focusColor => throw _privateConstructorUsedError;
-  FlutterColor? get hoverColor => throw _privateConstructorUsedError;
-  FlutterInputBorder? get errorBorder => throw _privateConstructorUsedError;
-  FlutterInputBorder? get focusedBorder => throw _privateConstructorUsedError;
-  FlutterInputBorder? get focusedErrorBorder =>
+  ZacValue<Color?>? get fillColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get focusColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get hoverColor => throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get errorBorder => throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get focusedBorder =>
       throw _privateConstructorUsedError;
-  FlutterInputBorder? get disabledBorder => throw _privateConstructorUsedError;
-  FlutterInputBorder? get enabledBorder => throw _privateConstructorUsedError;
-  FlutterInputBorder? get border => throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get focusedErrorBorder =>
+      throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get disabledBorder =>
+      throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get enabledBorder =>
+      throw _privateConstructorUsedError;
+  ZacValue<InputBorder?>? get border => throw _privateConstructorUsedError;
   ZacValue<bool?>? get enabled => throw _privateConstructorUsedError;
   ZacValue<String?>? get semanticCounterText =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get alignLabelWithHint => throw _privateConstructorUsedError;
-  FlutterBoxConstraints? get constraints => throw _privateConstructorUsedError;
+  ZacValue<BoxConstraints?>? get constraints =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -146,33 +150,33 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final ZacValue<Widget?>? icon;
   @override
-  final FlutterColor? iconColor;
+  final ZacValue<Color?>? iconColor;
   @override
   final ZacValue<Widget?>? label;
   @override
   final ZacValue<String?>? labelText;
   @override
-  final FlutterTextStyle? labelStyle;
+  final ZacValue<TextStyle?>? labelStyle;
   @override
-  final FlutterTextStyle? floatingLabelStyle;
+  final ZacValue<TextStyle?>? floatingLabelStyle;
   @override
   final ZacValue<String?>? helperText;
   @override
-  final FlutterTextStyle? helperStyle;
+  final ZacValue<TextStyle?>? helperStyle;
   @override
   final ZacValue<int?>? helperMaxLines;
   @override
   final ZacValue<String?>? hintText;
   @override
-  final FlutterTextStyle? hintStyle;
+  final ZacValue<TextStyle?>? hintStyle;
   @override
-  final FlutterTextDirection? hintTextDirection;
+  final ZacValue<TextDirection?>? hintTextDirection;
   @override
   final ZacValue<int?>? hintMaxLines;
   @override
   final ZacValue<String?>? errorText;
   @override
-  final FlutterTextStyle? errorStyle;
+  final ZacValue<TextStyle?>? errorStyle;
   @override
   final ZacValue<int?>? errorMaxLines;
 // FloatingLabelBehavior? floatingLabelBehavior,
@@ -182,19 +186,19 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final ZacValue<bool?>? isDense;
   @override
-  final FlutterEdgeInsetsGeometry? contentPadding;
+  final ZacValue<EdgeInsetsGeometry?>? contentPadding;
   @override
   final ZacValue<Widget?>? prefixIcon;
   @override
-  final FlutterBoxConstraints? prefixIconConstraints;
+  final ZacValue<BoxConstraints?>? prefixIconConstraints;
   @override
   final ZacValue<Widget?>? prefix;
   @override
   final ZacValue<String?>? prefixText;
   @override
-  final FlutterTextStyle? prefixStyle;
+  final ZacValue<TextStyle?>? prefixStyle;
   @override
-  final FlutterColor? prefixIconColor;
+  final ZacValue<Color?>? prefixIconColor;
   @override
   final ZacValue<Widget?>? suffixIcon;
   @override
@@ -202,37 +206,37 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final ZacValue<String?>? suffixText;
   @override
-  final FlutterTextStyle? suffixStyle;
+  final ZacValue<TextStyle?>? suffixStyle;
   @override
-  final FlutterColor? suffixIconColor;
+  final ZacValue<Color?>? suffixIconColor;
   @override
-  final FlutterBoxConstraints? suffixIconConstraints;
+  final ZacValue<BoxConstraints?>? suffixIconConstraints;
   @override
   final ZacValue<Widget?>? counter;
   @override
   final ZacValue<String?>? counterText;
   @override
-  final FlutterTextStyle? counterStyle;
+  final ZacValue<TextStyle?>? counterStyle;
   @override
   final ZacValue<bool?>? filled;
   @override
-  final FlutterColor? fillColor;
+  final ZacValue<Color?>? fillColor;
   @override
-  final FlutterColor? focusColor;
+  final ZacValue<Color?>? focusColor;
   @override
-  final FlutterColor? hoverColor;
+  final ZacValue<Color?>? hoverColor;
   @override
-  final FlutterInputBorder? errorBorder;
+  final ZacValue<InputBorder?>? errorBorder;
   @override
-  final FlutterInputBorder? focusedBorder;
+  final ZacValue<InputBorder?>? focusedBorder;
   @override
-  final FlutterInputBorder? focusedErrorBorder;
+  final ZacValue<InputBorder?>? focusedErrorBorder;
   @override
-  final FlutterInputBorder? disabledBorder;
+  final ZacValue<InputBorder?>? disabledBorder;
   @override
-  final FlutterInputBorder? enabledBorder;
+  final ZacValue<InputBorder?>? enabledBorder;
   @override
-  final FlutterInputBorder? border;
+  final ZacValue<InputBorder?>? border;
   @override
   final ZacValue<bool?>? enabled;
   @override
@@ -240,7 +244,7 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
   @override
   final ZacValue<bool?>? alignLabelWithHint;
   @override
-  final FlutterBoxConstraints? constraints;
+  final ZacValue<BoxConstraints?>? constraints;
 
   @override
   String toString() {
@@ -406,54 +410,55 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
 
 abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   factory _FlutterInputDecoration(
-      {final ZacValue<Widget?>? icon,
-      final FlutterColor? iconColor,
-      final ZacValue<Widget?>? label,
-      final ZacValue<String?>? labelText,
-      final FlutterTextStyle? labelStyle,
-      final FlutterTextStyle? floatingLabelStyle,
-      final ZacValue<String?>? helperText,
-      final FlutterTextStyle? helperStyle,
-      final ZacValue<int?>? helperMaxLines,
-      final ZacValue<String?>? hintText,
-      final FlutterTextStyle? hintStyle,
-      final FlutterTextDirection? hintTextDirection,
-      final ZacValue<int?>? hintMaxLines,
-      final ZacValue<String?>? errorText,
-      final FlutterTextStyle? errorStyle,
-      final ZacValue<int?>? errorMaxLines,
-      final ZacValue<bool?>? isCollapsed,
-      final ZacValue<bool?>? isDense,
-      final FlutterEdgeInsetsGeometry? contentPadding,
-      final ZacValue<Widget?>? prefixIcon,
-      final FlutterBoxConstraints? prefixIconConstraints,
-      final ZacValue<Widget?>? prefix,
-      final ZacValue<String?>? prefixText,
-      final FlutterTextStyle? prefixStyle,
-      final FlutterColor? prefixIconColor,
-      final ZacValue<Widget?>? suffixIcon,
-      final ZacValue<Widget?>? suffix,
-      final ZacValue<String?>? suffixText,
-      final FlutterTextStyle? suffixStyle,
-      final FlutterColor? suffixIconColor,
-      final FlutterBoxConstraints? suffixIconConstraints,
-      final ZacValue<Widget?>? counter,
-      final ZacValue<String?>? counterText,
-      final FlutterTextStyle? counterStyle,
-      final ZacValue<bool?>? filled,
-      final FlutterColor? fillColor,
-      final FlutterColor? focusColor,
-      final FlutterColor? hoverColor,
-      final FlutterInputBorder? errorBorder,
-      final FlutterInputBorder? focusedBorder,
-      final FlutterInputBorder? focusedErrorBorder,
-      final FlutterInputBorder? disabledBorder,
-      final FlutterInputBorder? enabledBorder,
-      final FlutterInputBorder? border,
-      final ZacValue<bool?>? enabled,
-      final ZacValue<String?>? semanticCounterText,
-      final ZacValue<bool?>? alignLabelWithHint,
-      final FlutterBoxConstraints? constraints}) = _$_FlutterInputDecoration;
+          {final ZacValue<Widget?>? icon,
+          final ZacValue<Color?>? iconColor,
+          final ZacValue<Widget?>? label,
+          final ZacValue<String?>? labelText,
+          final ZacValue<TextStyle?>? labelStyle,
+          final ZacValue<TextStyle?>? floatingLabelStyle,
+          final ZacValue<String?>? helperText,
+          final ZacValue<TextStyle?>? helperStyle,
+          final ZacValue<int?>? helperMaxLines,
+          final ZacValue<String?>? hintText,
+          final ZacValue<TextStyle?>? hintStyle,
+          final ZacValue<TextDirection?>? hintTextDirection,
+          final ZacValue<int?>? hintMaxLines,
+          final ZacValue<String?>? errorText,
+          final ZacValue<TextStyle?>? errorStyle,
+          final ZacValue<int?>? errorMaxLines,
+          final ZacValue<bool?>? isCollapsed,
+          final ZacValue<bool?>? isDense,
+          final ZacValue<EdgeInsetsGeometry?>? contentPadding,
+          final ZacValue<Widget?>? prefixIcon,
+          final ZacValue<BoxConstraints?>? prefixIconConstraints,
+          final ZacValue<Widget?>? prefix,
+          final ZacValue<String?>? prefixText,
+          final ZacValue<TextStyle?>? prefixStyle,
+          final ZacValue<Color?>? prefixIconColor,
+          final ZacValue<Widget?>? suffixIcon,
+          final ZacValue<Widget?>? suffix,
+          final ZacValue<String?>? suffixText,
+          final ZacValue<TextStyle?>? suffixStyle,
+          final ZacValue<Color?>? suffixIconColor,
+          final ZacValue<BoxConstraints?>? suffixIconConstraints,
+          final ZacValue<Widget?>? counter,
+          final ZacValue<String?>? counterText,
+          final ZacValue<TextStyle?>? counterStyle,
+          final ZacValue<bool?>? filled,
+          final ZacValue<Color?>? fillColor,
+          final ZacValue<Color?>? focusColor,
+          final ZacValue<Color?>? hoverColor,
+          final ZacValue<InputBorder?>? errorBorder,
+          final ZacValue<InputBorder?>? focusedBorder,
+          final ZacValue<InputBorder?>? focusedErrorBorder,
+          final ZacValue<InputBorder?>? disabledBorder,
+          final ZacValue<InputBorder?>? enabledBorder,
+          final ZacValue<InputBorder?>? border,
+          final ZacValue<bool?>? enabled,
+          final ZacValue<String?>? semanticCounterText,
+          final ZacValue<bool?>? alignLabelWithHint,
+          final ZacValue<BoxConstraints?>? constraints}) =
+      _$_FlutterInputDecoration;
   _FlutterInputDecoration._() : super._();
 
   factory _FlutterInputDecoration.fromJson(Map<String, dynamic> json) =
@@ -462,33 +467,33 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   ZacValue<Widget?>? get icon;
   @override
-  FlutterColor? get iconColor;
+  ZacValue<Color?>? get iconColor;
   @override
   ZacValue<Widget?>? get label;
   @override
   ZacValue<String?>? get labelText;
   @override
-  FlutterTextStyle? get labelStyle;
+  ZacValue<TextStyle?>? get labelStyle;
   @override
-  FlutterTextStyle? get floatingLabelStyle;
+  ZacValue<TextStyle?>? get floatingLabelStyle;
   @override
   ZacValue<String?>? get helperText;
   @override
-  FlutterTextStyle? get helperStyle;
+  ZacValue<TextStyle?>? get helperStyle;
   @override
   ZacValue<int?>? get helperMaxLines;
   @override
   ZacValue<String?>? get hintText;
   @override
-  FlutterTextStyle? get hintStyle;
+  ZacValue<TextStyle?>? get hintStyle;
   @override
-  FlutterTextDirection? get hintTextDirection;
+  ZacValue<TextDirection?>? get hintTextDirection;
   @override
   ZacValue<int?>? get hintMaxLines;
   @override
   ZacValue<String?>? get errorText;
   @override
-  FlutterTextStyle? get errorStyle;
+  ZacValue<TextStyle?>? get errorStyle;
   @override
   ZacValue<int?>? get errorMaxLines;
   @override // FloatingLabelBehavior? floatingLabelBehavior,
@@ -497,19 +502,19 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   ZacValue<bool?>? get isDense;
   @override
-  FlutterEdgeInsetsGeometry? get contentPadding;
+  ZacValue<EdgeInsetsGeometry?>? get contentPadding;
   @override
   ZacValue<Widget?>? get prefixIcon;
   @override
-  FlutterBoxConstraints? get prefixIconConstraints;
+  ZacValue<BoxConstraints?>? get prefixIconConstraints;
   @override
   ZacValue<Widget?>? get prefix;
   @override
   ZacValue<String?>? get prefixText;
   @override
-  FlutterTextStyle? get prefixStyle;
+  ZacValue<TextStyle?>? get prefixStyle;
   @override
-  FlutterColor? get prefixIconColor;
+  ZacValue<Color?>? get prefixIconColor;
   @override
   ZacValue<Widget?>? get suffixIcon;
   @override
@@ -517,37 +522,37 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   ZacValue<String?>? get suffixText;
   @override
-  FlutterTextStyle? get suffixStyle;
+  ZacValue<TextStyle?>? get suffixStyle;
   @override
-  FlutterColor? get suffixIconColor;
+  ZacValue<Color?>? get suffixIconColor;
   @override
-  FlutterBoxConstraints? get suffixIconConstraints;
+  ZacValue<BoxConstraints?>? get suffixIconConstraints;
   @override
   ZacValue<Widget?>? get counter;
   @override
   ZacValue<String?>? get counterText;
   @override
-  FlutterTextStyle? get counterStyle;
+  ZacValue<TextStyle?>? get counterStyle;
   @override
   ZacValue<bool?>? get filled;
   @override
-  FlutterColor? get fillColor;
+  ZacValue<Color?>? get fillColor;
   @override
-  FlutterColor? get focusColor;
+  ZacValue<Color?>? get focusColor;
   @override
-  FlutterColor? get hoverColor;
+  ZacValue<Color?>? get hoverColor;
   @override
-  FlutterInputBorder? get errorBorder;
+  ZacValue<InputBorder?>? get errorBorder;
   @override
-  FlutterInputBorder? get focusedBorder;
+  ZacValue<InputBorder?>? get focusedBorder;
   @override
-  FlutterInputBorder? get focusedErrorBorder;
+  ZacValue<InputBorder?>? get focusedErrorBorder;
   @override
-  FlutterInputBorder? get disabledBorder;
+  ZacValue<InputBorder?>? get disabledBorder;
   @override
-  FlutterInputBorder? get enabledBorder;
+  ZacValue<InputBorder?>? get enabledBorder;
   @override
-  FlutterInputBorder? get border;
+  ZacValue<InputBorder?>? get border;
   @override
   ZacValue<bool?>? get enabled;
   @override
@@ -555,5 +560,5 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   @override
   ZacValue<bool?>? get alignLabelWithHint;
   @override
-  FlutterBoxConstraints? get constraints;
+  ZacValue<BoxConstraints?>? get constraints;
 }

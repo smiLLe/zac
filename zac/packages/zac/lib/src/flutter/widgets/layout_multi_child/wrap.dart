@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -23,16 +22,16 @@ class FlutterWrap with _$FlutterWrap implements ZacBuilder<Wrap> {
 
   @FreezedUnionValue(FlutterWrap.unionValue)
   factory FlutterWrap({
-    ZacValue<Key>? key,
-    ZacValue<Axis>? direction,
-    ZacValue<WrapAlignment>? alignment,
+    ZacValue<Key?>? key,
+    ZacValue<Axis?>? direction,
+    ZacValue<WrapAlignment?>? alignment,
     ZacValue<double?>? spacing,
     ZacValue<double?>? runSpacing,
-    ZacValue<WrapAlignment>? runAlignment,
-    ZacValue<WrapCrossAlignment>? crossAxisAlignment,
-    FlutterTextDirection? textDirection,
-    ZacValue<VerticalDirection>? verticalDirection,
-    FlutterClip? clipBehavior,
+    ZacValue<WrapAlignment?>? runAlignment,
+    ZacValue<WrapCrossAlignment?>? crossAxisAlignment,
+    ZacValue<TextDirection?>? textDirection,
+    ZacValue<VerticalDirection?>? verticalDirection,
+    ZacValue<Clip?>? clipBehavior,
     ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterWrap;
 

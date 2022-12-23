@@ -10,13 +10,13 @@ _$_FlutterWrap _$$_FlutterWrapFromJson(Map<String, dynamic> json) =>
     _$_FlutterWrap(
       key: json['key'] == null
           ? null
-          : ZacValue<Key>.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       direction: json['direction'] == null
           ? null
-          : ZacValue<Axis>.fromJson(json['direction'] as Object),
+          : ZacValue<Axis?>.fromJson(json['direction'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : ZacValue<WrapAlignment>.fromJson(json['alignment'] as Object),
+          : ZacValue<WrapAlignment?>.fromJson(json['alignment'] as Object),
       spacing: json['spacing'] == null
           ? null
           : ZacValue<double?>.fromJson(json['spacing'] as Object),
@@ -25,22 +25,21 @@ _$_FlutterWrap _$$_FlutterWrapFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['runSpacing'] as Object),
       runAlignment: json['runAlignment'] == null
           ? null
-          : ZacValue<WrapAlignment>.fromJson(json['runAlignment'] as Object),
+          : ZacValue<WrapAlignment?>.fromJson(json['runAlignment'] as Object),
       crossAxisAlignment: json['crossAxisAlignment'] == null
           ? null
-          : ZacValue<WrapCrossAlignment>.fromJson(
+          : ZacValue<WrapCrossAlignment?>.fromJson(
               json['crossAxisAlignment'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       verticalDirection: json['verticalDirection'] == null
           ? null
-          : ZacValue<VerticalDirection>.fromJson(
+          : ZacValue<VerticalDirection?>.fromJson(
               json['verticalDirection'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       children: json['children'] == null
           ? null
           : ZacValueList<Widget, List<Widget>?>.fromJson(
