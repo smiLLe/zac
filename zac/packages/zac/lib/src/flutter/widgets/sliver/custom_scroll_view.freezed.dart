@@ -21,7 +21,7 @@ FlutterCustomScrollView _$FlutterCustomScrollViewFromJson(
 
 /// @nodoc
 mixin _$FlutterCustomScrollView {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   ZacValue<ScrollController?>? get controller =>
@@ -30,7 +30,7 @@ mixin _$FlutterCustomScrollView {
   FlutterScrollPhysics? get physics =>
       throw _privateConstructorUsedError; // FlutterScrollBehavior? scrollBehavior,
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
-  FlutterKey? get center => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get center => throw _privateConstructorUsedError;
   ZacValue<double?>? get anchor => throw _privateConstructorUsedError;
   ZacValue<double?>? get cacheExtent => throw _privateConstructorUsedError;
   ZacValueList<Widget, List<Widget>?>? get slivers =>
@@ -74,7 +74,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
       _$$_FlutterCustomScrollViewFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterAxis? scrollDirection;
   @override
@@ -89,7 +89,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   @override
   final ZacValue<bool?>? shrinkWrap;
   @override
-  final FlutterKey? center;
+  final ZacValue<Key?>? center;
   @override
   final ZacValue<double?>? anchor;
   @override
@@ -173,14 +173,14 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
 
 abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   factory _FlutterCustomScrollView(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool?>? reverse,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
       final FlutterScrollPhysics? physics,
       final ZacValue<bool?>? shrinkWrap,
-      final FlutterKey? center,
+      final ZacValue<Key?>? center,
       final ZacValue<double?>? anchor,
       final ZacValue<double?>? cacheExtent,
       final ZacValueList<Widget, List<Widget>?>? slivers,
@@ -194,7 +194,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       _$_FlutterCustomScrollView.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterAxis? get scrollDirection;
   @override
@@ -208,7 +208,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   @override // FlutterScrollBehavior? scrollBehavior,
   ZacValue<bool?>? get shrinkWrap;
   @override
-  FlutterKey? get center;
+  ZacValue<Key?>? get center;
   @override
   ZacValue<double?>? get anchor;
   @override

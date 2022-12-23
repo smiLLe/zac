@@ -25,7 +25,7 @@ class FlutterMaterialApp
 
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
     ZacValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
     ZacValue<Widget?>? home,

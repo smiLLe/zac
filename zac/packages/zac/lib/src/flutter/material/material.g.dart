@@ -11,12 +11,10 @@ _$_FlutterOutlineInputBorder _$$_FlutterOutlineInputBorderFromJson(
     _$_FlutterOutlineInputBorder(
       borderSide: json['borderSide'] == null
           ? null
-          : FlutterBorderSide.fromJson(
-              json['borderSide'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['borderSide'] as Object),
       borderRadius: json['borderRadius'] == null
           ? null
-          : FlutterBorderRadius.fromJson(
-              json['borderRadius'] as Map<String, dynamic>),
+          : ZacValue<BorderRadius?>.fromJson(json['borderRadius'] as Object),
       gapPadding: json['gapPadding'] == null
           ? null
           : ZacValue<double?>.fromJson(json['gapPadding'] as Object),
@@ -27,10 +25,8 @@ _$_FlutterUnderlineInputBorder _$$_FlutterUnderlineInputBorderFromJson(
     _$_FlutterUnderlineInputBorder(
       borderSide: json['borderSide'] == null
           ? null
-          : FlutterBorderSide.fromJson(
-              json['borderSide'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['borderSide'] as Object),
       borderRadius: json['borderRadius'] == null
           ? null
-          : FlutterBorderRadius.fromJson(
-              json['borderRadius'] as Map<String, dynamic>),
+          : ZacValue<BorderRadius?>.fromJson(json['borderRadius'] as Object),
     );

@@ -1719,7 +1719,8 @@ mixin _$FlutterTextStyle {
   FlutterLocale? get locale =>
       throw _privateConstructorUsedError; // Paint? foreground,
 // Paint? background,
-  List<DartShadow>? get shadows => throw _privateConstructorUsedError;
+  ZacValueList<Shadow, List<Shadow>?>? get shadows =>
+      throw _privateConstructorUsedError;
   List<FlutterFontFeature>? get fontFeatures =>
       throw _privateConstructorUsedError;
   FlutterTextDecoration? get decoration => throw _privateConstructorUsedError;
@@ -1757,7 +1758,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       this.height,
       this.leadingDistribution,
       this.locale,
-      final List<DartShadow>? shadows,
+      this.shadows,
       final List<FlutterFontFeature>? fontFeatures,
       this.decoration,
       this.decorationColor,
@@ -1768,8 +1769,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       final List<String>? fontFamilyFallback,
       this.package,
       this.overflow})
-      : _shadows = shadows,
-        _fontFeatures = fontFeatures,
+      : _fontFeatures = fontFeatures,
         _fontFamilyFallback = fontFamilyFallback,
         super._();
 
@@ -1802,18 +1802,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   final FlutterLocale? locale;
 // Paint? foreground,
 // Paint? background,
-  final List<DartShadow>? _shadows;
-// Paint? foreground,
-// Paint? background,
   @override
-  List<DartShadow>? get shadows {
-    final value = _shadows;
-    if (value == null) return null;
-    if (_shadows is EqualUnmodifiableListView) return _shadows;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacValueList<Shadow, List<Shadow>?>? shadows;
   final List<FlutterFontFeature>? _fontFeatures;
   @override
   List<FlutterFontFeature>? get fontFeatures {
@@ -1882,7 +1872,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
             (identical(other.leadingDistribution, leadingDistribution) ||
                 other.leadingDistribution == leadingDistribution) &&
             (identical(other.locale, locale) || other.locale == locale) &&
-            const DeepCollectionEquality().equals(other._shadows, _shadows) &&
+            (identical(other.shadows, shadows) || other.shadows == shadows) &&
             const DeepCollectionEquality()
                 .equals(other._fontFeatures, _fontFeatures) &&
             (identical(other.decoration, decoration) ||
@@ -1920,7 +1910,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
         height,
         leadingDistribution,
         locale,
-        const DeepCollectionEquality().hash(_shadows),
+        shadows,
         const DeepCollectionEquality().hash(_fontFeatures),
         decoration,
         decorationColor,
@@ -1956,7 +1946,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacValue<double?>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
       final FlutterLocale? locale,
-      final List<DartShadow>? shadows,
+      final ZacValueList<Shadow, List<Shadow>?>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       final FlutterTextDecoration? decoration,
       final FlutterColor? decorationColor,
@@ -1998,7 +1988,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   FlutterLocale? get locale;
   @override // Paint? foreground,
 // Paint? background,
-  List<DartShadow>? get shadows;
+  ZacValueList<Shadow, List<Shadow>?>? get shadows;
   @override
   List<FlutterFontFeature>? get fontFeatures;
   @override
@@ -3788,10 +3778,10 @@ FlutterBorderDirectional _$FlutterBorderDirectionalFromJson(
 
 /// @nodoc
 mixin _$FlutterBorderDirectional {
-  FlutterBorderSide? get top => throw _privateConstructorUsedError;
-  FlutterBorderSide? get start => throw _privateConstructorUsedError;
-  FlutterBorderSide? get bottom => throw _privateConstructorUsedError;
-  FlutterBorderSide? get end => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get top => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get start => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get bottom => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get end => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -3810,13 +3800,13 @@ class _$_FlutterBorderDirectional extends _FlutterBorderDirectional {
       _$$_FlutterBorderDirectionalFromJson(json);
 
   @override
-  final FlutterBorderSide? top;
+  final ZacValue<BorderSide?>? top;
   @override
-  final FlutterBorderSide? start;
+  final ZacValue<BorderSide?>? start;
   @override
-  final FlutterBorderSide? bottom;
+  final ZacValue<BorderSide?>? bottom;
   @override
-  final FlutterBorderSide? end;
+  final ZacValue<BorderSide?>? end;
 
   @override
   String toString() {
@@ -3849,23 +3839,23 @@ class _$_FlutterBorderDirectional extends _FlutterBorderDirectional {
 
 abstract class _FlutterBorderDirectional extends FlutterBorderDirectional {
   factory _FlutterBorderDirectional(
-      {final FlutterBorderSide? top,
-      final FlutterBorderSide? start,
-      final FlutterBorderSide? bottom,
-      final FlutterBorderSide? end}) = _$_FlutterBorderDirectional;
+      {final ZacValue<BorderSide?>? top,
+      final ZacValue<BorderSide?>? start,
+      final ZacValue<BorderSide?>? bottom,
+      final ZacValue<BorderSide?>? end}) = _$_FlutterBorderDirectional;
   _FlutterBorderDirectional._() : super._();
 
   factory _FlutterBorderDirectional.fromJson(Map<String, dynamic> json) =
       _$_FlutterBorderDirectional.fromJson;
 
   @override
-  FlutterBorderSide? get top;
+  ZacValue<BorderSide?>? get top;
   @override
-  FlutterBorderSide? get start;
+  ZacValue<BorderSide?>? get start;
   @override
-  FlutterBorderSide? get bottom;
+  ZacValue<BorderSide?>? get bottom;
   @override
-  FlutterBorderSide? get end;
+  ZacValue<BorderSide?>? get end;
 }
 
 FlutterBorder _$FlutterBorderFromJson(Map<String, dynamic> json) {
@@ -3903,13 +3893,13 @@ class _$_FlutterBorder extends _FlutterBorder {
       _$$_FlutterBorderFromJson(json);
 
   @override
-  final FlutterBorderSide? top;
+  final ZacValue<BorderSide?>? top;
   @override
-  final FlutterBorderSide? right;
+  final ZacValue<BorderSide?>? right;
   @override
-  final FlutterBorderSide? bottom;
+  final ZacValue<BorderSide?>? bottom;
   @override
-  final FlutterBorderSide? left;
+  final ZacValue<BorderSide?>? left;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -3946,19 +3936,19 @@ class _$_FlutterBorder extends _FlutterBorder {
 
 abstract class _FlutterBorder extends FlutterBorder {
   factory _FlutterBorder(
-      {final FlutterBorderSide? top,
-      final FlutterBorderSide? right,
-      final FlutterBorderSide? bottom,
-      final FlutterBorderSide? left}) = _$_FlutterBorder;
+      {final ZacValue<BorderSide?>? top,
+      final ZacValue<BorderSide?>? right,
+      final ZacValue<BorderSide?>? bottom,
+      final ZacValue<BorderSide?>? left}) = _$_FlutterBorder;
   _FlutterBorder._() : super._();
 
   factory _FlutterBorder.fromJson(Map<String, dynamic> json) =
       _$_FlutterBorder.fromJson;
 
-  FlutterBorderSide? get top;
-  FlutterBorderSide? get right;
-  FlutterBorderSide? get bottom;
-  FlutterBorderSide? get left;
+  ZacValue<BorderSide?>? get top;
+  ZacValue<BorderSide?>? get right;
+  ZacValue<BorderSide?>? get bottom;
+  ZacValue<BorderSide?>? get left;
 }
 
 /// @nodoc
@@ -4423,7 +4413,7 @@ FlutterCircleBorder _$FlutterCircleBorderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterCircleBorder {
-  FlutterBorderSide? get side => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get side => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -4441,7 +4431,7 @@ class _$_FlutterCircleBorder extends _FlutterCircleBorder {
       _$$_FlutterCircleBorderFromJson(json);
 
   @override
-  final FlutterBorderSide? side;
+  final ZacValue<BorderSide?>? side;
 
   @override
   String toString() {
@@ -4470,7 +4460,7 @@ class _$_FlutterCircleBorder extends _FlutterCircleBorder {
 }
 
 abstract class _FlutterCircleBorder extends FlutterCircleBorder {
-  factory _FlutterCircleBorder({final FlutterBorderSide? side}) =
+  factory _FlutterCircleBorder({final ZacValue<BorderSide?>? side}) =
       _$_FlutterCircleBorder;
   _FlutterCircleBorder._() : super._();
 
@@ -4478,7 +4468,7 @@ abstract class _FlutterCircleBorder extends FlutterCircleBorder {
       _$_FlutterCircleBorder.fromJson;
 
   @override
-  FlutterBorderSide? get side;
+  ZacValue<BorderSide?>? get side;
 }
 
 FlutterRoundedRectangleBorder _$FlutterRoundedRectangleBorderFromJson(
@@ -4488,8 +4478,8 @@ FlutterRoundedRectangleBorder _$FlutterRoundedRectangleBorderFromJson(
 
 /// @nodoc
 mixin _$FlutterRoundedRectangleBorder {
-  FlutterBorderSide? get side => throw _privateConstructorUsedError;
-  FlutterBorderRadiusGeometry? get borderRadius =>
+  ZacValue<BorderSide?>? get side => throw _privateConstructorUsedError;
+  ZacValue<BorderRadiusGeometry?>? get borderRadius =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -4509,9 +4499,9 @@ class _$_FlutterRoundedRectangleBorder extends _FlutterRoundedRectangleBorder {
       _$$_FlutterRoundedRectangleBorderFromJson(json);
 
   @override
-  final FlutterBorderSide? side;
+  final ZacValue<BorderSide?>? side;
   @override
-  final FlutterBorderRadiusGeometry? borderRadius;
+  final ZacValue<BorderRadiusGeometry?>? borderRadius;
 
   @override
   String toString() {
@@ -4544,8 +4534,8 @@ class _$_FlutterRoundedRectangleBorder extends _FlutterRoundedRectangleBorder {
 abstract class _FlutterRoundedRectangleBorder
     extends FlutterRoundedRectangleBorder {
   factory _FlutterRoundedRectangleBorder(
-          {final FlutterBorderSide? side,
-          final FlutterBorderRadiusGeometry? borderRadius}) =
+          {final ZacValue<BorderSide?>? side,
+          final ZacValue<BorderRadiusGeometry?>? borderRadius}) =
       _$_FlutterRoundedRectangleBorder;
   _FlutterRoundedRectangleBorder._() : super._();
 
@@ -4553,9 +4543,9 @@ abstract class _FlutterRoundedRectangleBorder
       _$_FlutterRoundedRectangleBorder.fromJson;
 
   @override
-  FlutterBorderSide? get side;
+  ZacValue<BorderSide?>? get side;
   @override
-  FlutterBorderRadiusGeometry? get borderRadius;
+  ZacValue<BorderRadiusGeometry?>? get borderRadius;
 }
 
 FlutterBoxDecoration _$FlutterBoxDecorationFromJson(Map<String, dynamic> json) {
@@ -4565,8 +4555,8 @@ FlutterBoxDecoration _$FlutterBoxDecorationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterBoxDecoration {
   FlutterColor? get color => throw _privateConstructorUsedError;
-  FlutterBoxBorder? get border => throw _privateConstructorUsedError;
-  FlutterBorderRadiusGeometry? get borderRadius =>
+  ZacValue<BoxBorder?>? get border => throw _privateConstructorUsedError;
+  ZacValue<BorderRadiusGeometry?>? get borderRadius =>
       throw _privateConstructorUsedError;
   List<FlutterBoxShadow>? get boxShadow => throw _privateConstructorUsedError;
   FlutterBoxShape? get shape => throw _privateConstructorUsedError;
@@ -4599,9 +4589,9 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
   @override
   final FlutterColor? color;
   @override
-  final FlutterBoxBorder? border;
+  final ZacValue<BoxBorder?>? border;
   @override
-  final FlutterBorderRadiusGeometry? borderRadius;
+  final ZacValue<BorderRadiusGeometry?>? borderRadius;
   final List<FlutterBoxShadow>? _boxShadow;
   @override
   List<FlutterBoxShadow>? get boxShadow {
@@ -4661,8 +4651,8 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
 abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   factory _FlutterBoxDecoration(
       {final FlutterColor? color,
-      final FlutterBoxBorder? border,
-      final FlutterBorderRadiusGeometry? borderRadius,
+      final ZacValue<BoxBorder?>? border,
+      final ZacValue<BorderRadiusGeometry?>? borderRadius,
       final List<FlutterBoxShadow>? boxShadow,
       final FlutterBoxShape? shape,
       final FlutterBlendMode? backgroundBlendMode}) = _$_FlutterBoxDecoration;
@@ -4674,9 +4664,9 @@ abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   @override
   FlutterColor? get color;
   @override
-  FlutterBoxBorder? get border;
+  ZacValue<BoxBorder?>? get border;
   @override
-  FlutterBorderRadiusGeometry? get borderRadius;
+  ZacValue<BorderRadiusGeometry?>? get borderRadius;
   @override
   List<FlutterBoxShadow>? get boxShadow;
   @override
@@ -4696,7 +4686,7 @@ mixin _$FlutterShapeDecoration {
       throw _privateConstructorUsedError; // FlutterDecorationImage? image,
 // FlutterGradient? gradient,
   List<FlutterBoxShadow>? get shadows => throw _privateConstructorUsedError;
-  FlutterShapeBorder get shape => throw _privateConstructorUsedError;
+  ZacValue<ShapeBorder> get shape => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -4733,7 +4723,7 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
   }
 
   @override
-  final FlutterShapeBorder shape;
+  final ZacValue<ShapeBorder> shape;
 
   @override
   String toString() {
@@ -4768,7 +4758,7 @@ abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
   factory _FlutterShapeDecoration(
       {final FlutterColor? color,
       final List<FlutterBoxShadow>? shadows,
-      required final FlutterShapeBorder shape}) = _$_FlutterShapeDecoration;
+      required final ZacValue<ShapeBorder> shape}) = _$_FlutterShapeDecoration;
   _FlutterShapeDecoration._() : super._();
 
   factory _FlutterShapeDecoration.fromJson(Map<String, dynamic> json) =
@@ -4780,7 +4770,7 @@ abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
 // FlutterGradient? gradient,
   List<FlutterBoxShadow>? get shadows;
   @override
-  FlutterShapeBorder get shape;
+  ZacValue<ShapeBorder> get shape;
 }
 
 FlutterEdgeInsets _$FlutterEdgeInsetsFromJson(Map<String, dynamic> json) {

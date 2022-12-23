@@ -22,7 +22,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
 
   @FreezedUnionValue(FlutterSafeArea.unionValue)
   factory FlutterSafeArea({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<bool?>? left,
     ZacValue<bool?>? top,
     ZacValue<bool?>? right,

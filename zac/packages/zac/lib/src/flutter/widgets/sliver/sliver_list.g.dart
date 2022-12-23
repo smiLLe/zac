@@ -10,7 +10,7 @@ _$_FlutterSliverList _$$_FlutterSliverListFromJson(Map<String, dynamic> json) =>
     _$_FlutterSliverList(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       delegate: FlutterSliverChildDelegate.fromJson(
           json['delegate'] as Map<String, dynamic>),
     );

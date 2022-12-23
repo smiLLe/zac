@@ -20,7 +20,7 @@ void main() {
     await testZacWidget(
       tester,
       FlutterGestureDetector(
-        key: FlutterValueKey('FIND_ME'),
+        key: FlutterValueKey('FIND_ME').toZacValue(),
         behavior: FlutterHitTestBehavior.opaque(),
         child: ZacValue<Widget>.builder(FlutterSizedBox()),
         onTap: LeakAction.createActions(onTapCb),
@@ -64,7 +64,7 @@ void main() {
     await testZacWidget(
       tester,
       FlutterGestureDetector(
-        key: FlutterValueKey('FIND_ME'),
+        key: FlutterValueKey('FIND_ME').toZacValue(),
         behavior: FlutterHitTestBehavior.opaque(),
         child: ZacValue<Widget>.builder(FlutterSizedBox()),
         onDoubleTap: LeakAction.createActions(doubleTapCb),

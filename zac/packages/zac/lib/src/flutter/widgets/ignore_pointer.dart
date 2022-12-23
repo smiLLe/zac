@@ -24,7 +24,7 @@ class FlutterIgnorePointer
 
   @FreezedUnionValue(FlutterIgnorePointer.unionValue)
   factory FlutterIgnorePointer({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<bool?>? ignoring,
     ZacValue<bool?>? ignoringSemantics,
     ZacValue<Widget?>? child,

@@ -32,14 +32,6 @@ void main() {
       (matcher) => matcher.having(
           (p0) => p0, 'BoxDecoration', equals(BoxDecorationModel.equals)),
     );
-
-    fakeBuild<BoxDecoration>(
-      FlutterDecoration.fromJson(
-              BoxDecorationModel.getMap(type: FlutterBoxDecoration.unionValue))
-          .build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'BoxDecoration', equals(BoxDecorationModel.equals)),
-    );
   });
 
   test('FlutterShapeDecoration', () {
@@ -52,16 +44,6 @@ void main() {
       }).build,
       (matcher) => matcher.having(
           (p0) => p0.shape, 'ShapeDecoration.shape', isA<CircleBorder>()),
-    );
-
-    fakeBuild<ShapeDecoration>(
-      FlutterDecoration.fromJson(<String, dynamic>{
-        'converter': 'f:1:ShapeDecoration',
-        'shape': {
-          'converter': 'f:1:CircleBorder',
-        },
-      }).build,
-      (matcher) => matcher,
     );
   });
 

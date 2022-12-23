@@ -31,7 +31,7 @@ FlutterPositioned _$FlutterPositionedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterPositioned {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get top => throw _privateConstructorUsedError;
   ZacValue<double?>? get bottom => throw _privateConstructorUsedError;
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
       _$$_FlutterPositioneddirectionalFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? left;
   @override
@@ -122,7 +122,7 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
 
 abstract class _FlutterPositioneddirectional extends FlutterPositioned {
   factory _FlutterPositioneddirectional(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<double?>? left,
       final ZacValue<double?>? top,
       final ZacValue<double?>? right,
@@ -136,7 +136,7 @@ abstract class _FlutterPositioneddirectional extends FlutterPositioned {
       _$_FlutterPositioneddirectional.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<double?>? get left;
   @override
   ZacValue<double?>? get top;
@@ -170,7 +170,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
       _$$_FlutterPositionedFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterTextDirection textDirection;
   @override
@@ -231,7 +231,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
 
 abstract class _FlutterPositioned extends FlutterPositioned {
   factory _FlutterPositioned(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final FlutterTextDirection textDirection,
       final ZacValue<double?>? start,
       final ZacValue<double?>? top,
@@ -246,7 +246,7 @@ abstract class _FlutterPositioned extends FlutterPositioned {
       _$_FlutterPositioned.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   FlutterTextDirection get textDirection;
   ZacValue<double?>? get start;
   @override
@@ -278,7 +278,7 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
       _$$_FlutterPositionedfillFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? left;
   @override
@@ -329,7 +329,7 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
 
 abstract class _FlutterPositionedfill extends FlutterPositioned {
   factory _FlutterPositionedfill(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<double?>? left,
       final ZacValue<double?>? top,
       final ZacValue<double?>? right,
@@ -341,7 +341,7 @@ abstract class _FlutterPositionedfill extends FlutterPositioned {
       _$_FlutterPositionedfill.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<double?>? get left;
   @override
   ZacValue<double?>? get top;

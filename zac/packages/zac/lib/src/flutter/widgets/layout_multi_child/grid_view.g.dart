@@ -10,7 +10,7 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
     _$_FlutterGridView(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
           : FlutterAxis.fromJson(
@@ -29,7 +29,7 @@ _$_FlutterGridView _$$_FlutterGridViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['shrinkWrap'] as Object),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       gridDelegate: FlutterSliverGridDelegate.fromJson(
           json['gridDelegate'] as Map<String, dynamic>),
       addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null

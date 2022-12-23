@@ -21,7 +21,7 @@ class FlutterSelectableText
   @FreezedUnionValue(FlutterSelectableText.unionValue)
   factory FlutterSelectableText(
     String data, {
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     // FocusNode? focusNode,
     FlutterTextStyle? style,
     FlutterStrutStyle? strutStyle,

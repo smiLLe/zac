@@ -268,9 +268,10 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
       locale: json['locale'] == null
           ? null
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
-      shadows: (json['shadows'] as List<dynamic>?)
-          ?.map((e) => DartShadow.fromJson(e as Object))
-          .toList(),
+      shadows: json['shadows'] == null
+          ? null
+          : ZacValueList<Shadow, List<Shadow>?>.fromJson(
+              json['shadows'] as Object),
       fontFeatures: (json['fontFeatures'] as List<dynamic>?)
           ?.map((e) => FlutterFontFeature.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -494,32 +495,32 @@ _$_FlutterBorderDirectional _$$_FlutterBorderDirectionalFromJson(
     _$_FlutterBorderDirectional(
       top: json['top'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['top'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['top'] as Object),
       start: json['start'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['start'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['start'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['bottom'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['bottom'] as Object),
       end: json['end'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['end'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['end'] as Object),
     );
 
 _$_FlutterBorder _$$_FlutterBorderFromJson(Map<String, dynamic> json) =>
     _$_FlutterBorder(
       top: json['top'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['top'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['top'] as Object),
       right: json['right'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['right'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['right'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['bottom'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['bottom'] as Object),
       left: json['left'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['left'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['left'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -593,7 +594,7 @@ _$_FlutterCircleBorder _$$_FlutterCircleBorderFromJson(
     _$_FlutterCircleBorder(
       side: json['side'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['side'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['side'] as Object),
     );
 
 _$_FlutterRoundedRectangleBorder _$$_FlutterRoundedRectangleBorderFromJson(
@@ -601,10 +602,10 @@ _$_FlutterRoundedRectangleBorder _$$_FlutterRoundedRectangleBorderFromJson(
     _$_FlutterRoundedRectangleBorder(
       side: json['side'] == null
           ? null
-          : FlutterBorderSide.fromJson(json['side'] as Map<String, dynamic>),
+          : ZacValue<BorderSide?>.fromJson(json['side'] as Object),
       borderRadius: json['borderRadius'] == null
           ? null
-          : FlutterBorderRadiusGeometry.fromJson(
+          : ZacValue<BorderRadiusGeometry?>.fromJson(
               json['borderRadius'] as Object),
     );
 
@@ -616,10 +617,10 @@ _$_FlutterBoxDecoration _$$_FlutterBoxDecorationFromJson(
           : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
       border: json['border'] == null
           ? null
-          : FlutterBoxBorder.fromJson(json['border'] as Object),
+          : ZacValue<BoxBorder?>.fromJson(json['border'] as Object),
       borderRadius: json['borderRadius'] == null
           ? null
-          : FlutterBorderRadiusGeometry.fromJson(
+          : ZacValue<BorderRadiusGeometry?>.fromJson(
               json['borderRadius'] as Object),
       boxShadow: (json['boxShadow'] as List<dynamic>?)
           ?.map((e) => FlutterBoxShadow.fromJson(e as Map<String, dynamic>))
@@ -642,7 +643,7 @@ _$_FlutterShapeDecoration _$$_FlutterShapeDecorationFromJson(
       shadows: (json['shadows'] as List<dynamic>?)
           ?.map((e) => FlutterBoxShadow.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shape: FlutterShapeBorder.fromJson(json['shape'] as Object),
+      shape: ZacValue<ShapeBorder>.fromJson(json['shape'] as Object),
     );
 
 _$_FlutterEdgeInsetsAll _$$_FlutterEdgeInsetsAllFromJson(

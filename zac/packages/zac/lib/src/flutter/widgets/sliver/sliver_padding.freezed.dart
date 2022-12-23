@@ -20,9 +20,10 @@ FlutterSliverPadding _$FlutterSliverPaddingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSliverPadding {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get sliver => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry get padding => throw _privateConstructorUsedError;
+  ZacValue<EdgeInsetsGeometry> get padding =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -41,11 +42,11 @@ class _$_FlutterSliverPadding extends _FlutterSliverPadding {
       _$$_FlutterSliverPaddingFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? sliver;
   @override
-  final FlutterEdgeInsetsGeometry padding;
+  final ZacValue<EdgeInsetsGeometry> padding;
 
   @override
   String toString() {
@@ -77,9 +78,9 @@ class _$_FlutterSliverPadding extends _FlutterSliverPadding {
 
 abstract class _FlutterSliverPadding extends FlutterSliverPadding {
   factory _FlutterSliverPadding(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final ZacValue<Widget?>? sliver,
-          required final FlutterEdgeInsetsGeometry padding}) =
+          required final ZacValue<EdgeInsetsGeometry> padding}) =
       _$_FlutterSliverPadding;
   _FlutterSliverPadding._() : super._();
 
@@ -87,9 +88,9 @@ abstract class _FlutterSliverPadding extends FlutterSliverPadding {
       _$_FlutterSliverPadding.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get sliver;
   @override
-  FlutterEdgeInsetsGeometry get padding;
+  ZacValue<EdgeInsetsGeometry> get padding;
 }

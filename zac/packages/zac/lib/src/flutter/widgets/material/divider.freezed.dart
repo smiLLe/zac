@@ -20,7 +20,7 @@ FlutterDivider _$FlutterDividerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDivider {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get height => throw _privateConstructorUsedError;
   ZacValue<double?>? get thickness => throw _privateConstructorUsedError;
   ZacValue<double?>? get indent => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ class _$_FlutterDivider extends _FlutterDivider {
       _$$_FlutterDividerFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? height;
   @override
@@ -98,7 +98,7 @@ class _$_FlutterDivider extends _FlutterDivider {
 
 abstract class _FlutterDivider extends FlutterDivider {
   factory _FlutterDivider(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<double?>? height,
       final ZacValue<double?>? thickness,
       final ZacValue<double?>? indent,
@@ -110,7 +110,7 @@ abstract class _FlutterDivider extends FlutterDivider {
       _$_FlutterDivider.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<double?>? get height;
   @override

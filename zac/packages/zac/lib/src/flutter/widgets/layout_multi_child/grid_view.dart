@@ -26,14 +26,14 @@ class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
 
   @FreezedUnionValue(FlutterGridView.unionValue)
   factory FlutterGridView({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     ZacValue<bool?>? shrinkWrap,
-    FlutterEdgeInsetsGeometry? padding,
+    ZacValue<EdgeInsetsGeometry?>? padding,
     required FlutterSliverGridDelegate gridDelegate,
     ZacValue<bool?>? addAutomaticKeepAlives,
     ZacValue<bool?>? addRepaintBoundaries,

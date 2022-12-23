@@ -11,11 +11,11 @@ _$_FlutterDecoratedBox _$$_FlutterDecoratedBoxFromJson(
     _$_FlutterDecoratedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
-      decoration: FlutterDecoration.fromJson(json['decoration'] as Object),
+      decoration: ZacValue<Decoration>.fromJson(json['decoration'] as Object),
       position: json['position'] == null
           ? null
           : FlutterDecorationPosition.fromJson(

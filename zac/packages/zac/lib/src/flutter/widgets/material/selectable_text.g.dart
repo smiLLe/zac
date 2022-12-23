@@ -12,7 +12,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
       json['data'] as String,
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       style: json['style'] == null
           ? null
           : FlutterTextStyle.fromJson(json['style'] as Map<String, dynamic>),

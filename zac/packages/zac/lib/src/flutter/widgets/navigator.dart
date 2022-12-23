@@ -219,7 +219,7 @@ class FlutterNavigator
 
   @FreezedUnionValue('f:1:Navigator')
   factory FlutterNavigator({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
     ZacValue<String?>? initialRoute,

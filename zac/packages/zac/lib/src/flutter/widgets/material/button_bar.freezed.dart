@@ -20,13 +20,13 @@ FlutterButtonBar _$FlutterButtonBarFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterButtonBar {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterMainAxisAlignment? get alignment => throw _privateConstructorUsedError;
   FlutterMainAxisSize? get mainAxisSize =>
       throw _privateConstructorUsedError; // FlutterButtonTextTheme? buttonTextTheme,
   ZacValue<double?>? get buttonMinWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get buttonHeight => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get buttonPadding =>
+  ZacValue<EdgeInsetsGeometry?>? get buttonPadding =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get buttonAlignedDropdown =>
       throw _privateConstructorUsedError; // FlutterButtonBarLayoutBehavior? layoutBehavior,
@@ -64,7 +64,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
       _$$_FlutterButtonBarFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterMainAxisAlignment? alignment;
   @override
@@ -75,7 +75,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
   @override
   final ZacValue<double?>? buttonHeight;
   @override
-  final FlutterEdgeInsetsGeometry? buttonPadding;
+  final ZacValue<EdgeInsetsGeometry?>? buttonPadding;
   @override
   final ZacValue<bool?>? buttonAlignedDropdown;
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
@@ -143,12 +143,12 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
 
 abstract class _FlutterButtonBar extends FlutterButtonBar {
   factory _FlutterButtonBar(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final FlutterMainAxisAlignment? alignment,
           final FlutterMainAxisSize? mainAxisSize,
           final ZacValue<double?>? buttonMinWidth,
           final ZacValue<double?>? buttonHeight,
-          final FlutterEdgeInsetsGeometry? buttonPadding,
+          final ZacValue<EdgeInsetsGeometry?>? buttonPadding,
           final ZacValue<bool?>? buttonAlignedDropdown,
           final FlutterVerticalDirection? overflowDirection,
           final ZacValue<double?>? overflowButtonSpacing,
@@ -160,7 +160,7 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
       _$_FlutterButtonBar.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterMainAxisAlignment? get alignment;
   @override
@@ -170,7 +170,7 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
   @override
   ZacValue<double?>? get buttonHeight;
   @override
-  FlutterEdgeInsetsGeometry? get buttonPadding;
+  ZacValue<EdgeInsetsGeometry?>? get buttonPadding;
   @override
   ZacValue<bool?>? get buttonAlignedDropdown;
   @override // FlutterButtonBarLayoutBehavior? layoutBehavior,

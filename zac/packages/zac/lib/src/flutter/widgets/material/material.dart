@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 
 part 'material.freezed.dart';
@@ -24,14 +23,14 @@ class FlutterMaterial with _$FlutterMaterial implements ZacBuilder<Material> {
 
   @FreezedUnionValue(FlutterMaterial.unionValue)
   factory FlutterMaterial({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     ZacValue<double?>? elevation,
     FlutterColor? color,
     FlutterColor? shadowColor,
     FlutterTextStyle? textStyle,
-    FlutterBorderRadiusGeometry? borderRadius,
-    FlutterShapeBorder? shape,
+    ZacValue<BorderRadiusGeometry?>? borderRadius,
+    ZacValue<ShapeBorder?>? shape,
     ZacValue<bool?>? borderOnForeground,
     FlutterClip? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,

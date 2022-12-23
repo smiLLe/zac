@@ -404,7 +404,7 @@ ZacStateMachineProviderBuilder _$ZacStateMachineProviderBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineProviderBuilder {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<String> get family => throw _privateConstructorUsedError;
   ZacValue<String> get initialState => throw _privateConstructorUsedError;
   Map<String, ZacStateConfig> get states => throw _privateConstructorUsedError;
@@ -437,7 +437,7 @@ class _$_ZacStateMachineProviderBuilder
       _$$_ZacStateMachineProviderBuilderFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<String> family;
   @override
@@ -492,7 +492,7 @@ class _$_ZacStateMachineProviderBuilder
 abstract class _ZacStateMachineProviderBuilder
     extends ZacStateMachineProviderBuilder {
   factory _ZacStateMachineProviderBuilder(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           required final ZacValue<String> family,
           required final ZacValue<String> initialState,
           required final Map<String, ZacStateConfig> states,
@@ -505,7 +505,7 @@ abstract class _ZacStateMachineProviderBuilder
       _$_ZacStateMachineProviderBuilder.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<String> get family;
   @override
@@ -525,7 +525,7 @@ ZacStateMachineBuildStateBuilder _$ZacStateMachineBuildStateBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineBuildStateBuilder {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<String> get family => throw _privateConstructorUsedError;
   List<String> get states => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get unmappedStateWidget =>
@@ -555,7 +555,7 @@ class _$_ZacStateMachineBuildStateBuilder
       _$$_ZacStateMachineBuildStateBuilderFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<String> family;
   final List<String> _states;
@@ -603,7 +603,7 @@ class _$_ZacStateMachineBuildStateBuilder
 abstract class _ZacStateMachineBuildStateBuilder
     extends ZacStateMachineBuildStateBuilder {
   factory _ZacStateMachineBuildStateBuilder(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           required final ZacValue<String> family,
           required final List<String> states,
           final ZacValue<Widget?>? unmappedStateWidget}) =
@@ -614,7 +614,7 @@ abstract class _ZacStateMachineBuildStateBuilder
       Map<String, dynamic> json) = _$_ZacStateMachineBuildStateBuilder.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<String> get family;
   @override

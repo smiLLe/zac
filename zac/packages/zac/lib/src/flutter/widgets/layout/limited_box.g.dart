@@ -10,7 +10,7 @@ _$_FlutterLimitedBox _$$_FlutterLimitedBoxFromJson(Map<String, dynamic> json) =>
     _$_FlutterLimitedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
           : ZacValue<double?>.fromJson(json['maxWidth'] as Object),

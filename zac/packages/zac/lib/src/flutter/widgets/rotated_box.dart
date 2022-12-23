@@ -23,7 +23,7 @@ class FlutterRotatedBox
 
   @FreezedUnionValue(FlutterRotatedBox.unionValue)
   factory FlutterRotatedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     required int quarterTurns,
   }) = _FlutterRotatedBox;

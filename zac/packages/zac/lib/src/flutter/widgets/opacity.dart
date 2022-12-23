@@ -22,7 +22,7 @@ class FlutterOpacity with _$FlutterOpacity implements ZacBuilder<Opacity> {
 
   @FreezedUnionValue(FlutterOpacity.unionValue)
   factory FlutterOpacity({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<double> opacity,
     ZacValue<bool?>? alwaysIncludeSemantics,
     ZacValue<Widget?>? child,

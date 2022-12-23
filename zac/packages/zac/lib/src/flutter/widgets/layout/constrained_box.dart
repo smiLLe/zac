@@ -24,7 +24,7 @@ class FlutterConstrainedBox
 
   @FreezedUnionValue(FlutterConstrainedBox.unionValue)
   factory FlutterConstrainedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required FlutterBoxConstraints constraints,
     ZacValue<Widget?>? child,
   }) = _FlutterConstrainedBox;

@@ -25,9 +25,9 @@ class FlutterFittedBox
 
   @FreezedUnionValue(FlutterFittedBox.unionValue)
   factory FlutterFittedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterBoxFit? fit,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterClip? clipBehavior,
     ZacValue<Widget?>? child,
   }) = _FlutterFittedBox;

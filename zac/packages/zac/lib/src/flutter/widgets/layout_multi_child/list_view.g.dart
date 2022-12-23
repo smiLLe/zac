@@ -10,7 +10,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
     _$_FlutterListView(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
           : FlutterAxis.fromJson(
@@ -33,7 +33,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['shrinkWrap'] as Object),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       itemExtent: json['itemExtent'] == null
           ? null
           : ZacValue<double?>.fromJson(json['itemExtent'] as Object),

@@ -10,7 +10,7 @@ _$_FlutterFlexible _$$_FlutterFlexibleFromJson(Map<String, dynamic> json) =>
     _$_FlutterFlexible(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       flex: json['flex'] == null
           ? null
           : ZacValue<int?>.fromJson(json['flex'] as Object),

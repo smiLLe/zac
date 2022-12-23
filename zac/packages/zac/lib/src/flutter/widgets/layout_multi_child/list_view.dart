@@ -26,14 +26,14 @@ class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
 
   @FreezedUnionValue(FlutterListView.unionValue)
   factory FlutterListView({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
     FlutterScrollPhysics? physics,
     ZacValue<bool?>? shrinkWrap,
-    FlutterEdgeInsetsGeometry? padding,
+    ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<double?>? itemExtent,
     ZacValue<Widget?>? prototypeItem,
     ZacValue<bool?>? addAutomaticKeepAlives,

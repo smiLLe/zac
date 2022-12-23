@@ -20,7 +20,7 @@ FlutterSliverGrid _$FlutterSliverGridFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSliverGrid {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterSliverChildDelegate get delegate => throw _privateConstructorUsedError;
   FlutterSliverGridDelegate get gridDelegate =>
       throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ class _$_FlutterSliverGrid extends _FlutterSliverGrid {
       _$$_FlutterSliverGridFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterSliverChildDelegate delegate;
   @override
@@ -81,7 +81,7 @@ class _$_FlutterSliverGrid extends _FlutterSliverGrid {
 
 abstract class _FlutterSliverGrid extends FlutterSliverGrid {
   factory _FlutterSliverGrid(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           required final FlutterSliverChildDelegate delegate,
           required final FlutterSliverGridDelegate gridDelegate}) =
       _$_FlutterSliverGrid;
@@ -91,7 +91,7 @@ abstract class _FlutterSliverGrid extends FlutterSliverGrid {
       _$_FlutterSliverGrid.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterSliverChildDelegate get delegate;
   @override

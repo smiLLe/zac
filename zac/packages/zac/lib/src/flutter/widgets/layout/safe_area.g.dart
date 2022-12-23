@@ -10,7 +10,7 @@ _$_FlutterSafeArea _$$_FlutterSafeAreaFromJson(Map<String, dynamic> json) =>
     _$_FlutterSafeArea(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['left'] as Object),

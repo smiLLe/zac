@@ -23,7 +23,7 @@ class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
 
   @FreezedUnionValue(FlutterBuilder.unionValue)
   factory FlutterBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
   }) = _FlutterBuilder;
 

@@ -11,7 +11,7 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
     _$_FlutterDialogsDialog(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -28,10 +28,10 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -43,7 +43,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
     _$_FlutterDialogsAlertDialog(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       title: json['title'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['title'] as Object),
@@ -56,14 +56,15 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['actions'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['titlePadding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
+              json['titlePadding'] as Object),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
               json['titleTextStyle'] as Map<String, dynamic>),
       contentPadding: json['contentPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['contentPadding'] as Object),
       contentTextStyle: json['contentTextStyle'] == null
           ? null
@@ -71,7 +72,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['contentTextStyle'] as Map<String, dynamic>),
       actionsPadding: json['actionsPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['actionsPadding'] as Object),
       actionsAlignment: json['actionsAlignment'] == null
           ? null
@@ -87,7 +88,8 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['actionsOverflowButtonSpacing'] as Object),
       buttonPadding: json['buttonPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['buttonPadding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
+              json['buttonPadding'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -107,10 +109,10 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       scrollable: json['scrollable'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['scrollable'] as Object),
@@ -122,7 +124,7 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
     _$_FlutterDialogsSimpleDialog(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       title: json['title'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['title'] as Object),
@@ -132,14 +134,15 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
               json['children'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['titlePadding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
+              json['titlePadding'] as Object),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
           : FlutterTextStyle.fromJson(
               json['titleTextStyle'] as Map<String, dynamic>),
       contentPadding: json['contentPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['contentPadding'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
@@ -160,10 +163,10 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
           : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -172,7 +175,7 @@ _$_FlutterDialogsSimpleDialogOption
         _$_FlutterDialogsSimpleDialogOption(
           key: json['key'] == null
               ? null
-              : FlutterKey.fromJson(json['key'] as Object),
+              : ZacValue<Key?>.fromJson(json['key'] as Object),
           child: json['child'] == null
               ? null
               : ZacValue<Widget?>.fromJson(json['child'] as Object),

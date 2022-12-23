@@ -6,6 +6,7 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_dele
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
@@ -24,7 +25,7 @@ class FlutterSliverGrid
 
   @FreezedUnionValue(FlutterSliverGrid.unionValue)
   factory FlutterSliverGrid({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required FlutterSliverChildDelegate delegate,
     required FlutterSliverGridDelegate gridDelegate,
   }) = _FlutterSliverGrid;

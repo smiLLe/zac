@@ -20,8 +20,9 @@ FlutterIndexedStack _$FlutterIndexedStackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterIndexedStack {
-  FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterStackFit? get sizing => throw _privateConstructorUsedError;
   ZacValue<int?>? get index => throw _privateConstructorUsedError;
@@ -51,9 +52,9 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
       _$$_FlutterIndexedStackFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final FlutterTextDirection? textDirection;
   @override
@@ -100,8 +101,8 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
 
 abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   factory _FlutterIndexedStack(
-          {final FlutterKey? key,
-          final FlutterAlignmentGeometry? alignment,
+          {final ZacValue<Key?>? key,
+          final ZacValue<AlignmentGeometry?>? alignment,
           final FlutterTextDirection? textDirection,
           final FlutterStackFit? sizing,
           final ZacValue<int?>? index,
@@ -113,9 +114,9 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
       _$_FlutterIndexedStack.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   FlutterTextDirection? get textDirection;
   @override

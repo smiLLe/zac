@@ -26,10 +26,10 @@ class FlutterUnconstrainedBox
 
   @FreezedUnionValue(FlutterUnconstrainedBox.unionValue)
   factory FlutterUnconstrainedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     FlutterTextDirection? textDirection,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterAxis? constrainedAxis,
     FlutterClip? clipBehavior,
   }) = _FlutterUnconstrainedBox;

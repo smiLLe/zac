@@ -184,80 +184,6 @@ void main() {
     });
   });
 
-  test('AnyAction', () {
-    expect(
-        ZacActions.fromJson(
-          <String, dynamic>{
-            'converter': 'f:1:showDialog',
-            'child': ChildModel.getSizedBox(key: 'dialog_child')
-          },
-        ),
-        ZacActions([
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child'))))
-        ]));
-
-    expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
-  });
-
-  test('AnyActions', () {
-    expect(
-        ZacActions.fromJson({
-          'converter': 'z:1:Actions',
-          'actions': [
-            {
-              'converter': 'f:1:showDialog',
-              'child': ChildModel.getSizedBox(key: 'dialog_child_1')
-            },
-            {
-              'converter': 'f:1:showDialog',
-              'child': ChildModel.getSizedBox(key: 'dialog_child_1')
-            }
-          ]
-        }),
-        ZacActions([
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))),
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))))
-        ]));
-    expect(
-        ZacActions.fromJson([
-          {
-            'converter': 'f:1:showDialog',
-            'child': ChildModel.getSizedBox(key: 'dialog_child_1')
-          },
-          {
-            'converter': 'f:1:showDialog',
-            'child': ChildModel.getSizedBox(key: 'dialog_child_1')
-          }
-        ]),
-        ZacActions([
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1')))),
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child_1'))))
-        ]));
-    expect(
-        ZacActions.fromJson({
-          'converter': 'f:1:showDialog',
-          'child': ChildModel.getSizedBox(key: 'dialog_child')
-        }),
-        ZacActions([
-          FlutterDialogActions.showDialog(
-              child: ZacValue<Widget>.builder(
-                  FlutterSizedBox(key: FlutterValueKey('dialog_child'))))
-        ]));
-
-    expect(() => ZacActions.fromJson('nonono'), throwsException);
-    expect(() => ZacActions.fromJson(<String, dynamic>{}), throwsException);
-  });
-
   test('ActionPayload can expose the values as list', () {
     expect(const ZacActionPayload().paramsAsList, <Object?>[]);
     expect(ZacActionPayload.param('foo').paramsAsList, <Object?>['foo']);
@@ -340,7 +266,7 @@ void main() {
               family: 'shared',
               child: ZacValue<Widget>.builder(
                 FlutterSizedBox(
-                  key: FlutterValueKey('child'),
+                  key: FlutterValueKey('child').toZacValue(),
                   child: ZacValue<Widget>.builder(
                       LeakContext(cb: (o) => zacContext = o)),
                 ),

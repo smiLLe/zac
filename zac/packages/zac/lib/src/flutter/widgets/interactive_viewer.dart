@@ -26,7 +26,7 @@ class FlutterInteractiveViewer
 
   @FreezedUnionValue(FlutterInteractiveViewer.unionValue)
   factory FlutterInteractiveViewer({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
     FlutterClip? clipBehavior,
     ZacValue<bool?>? alignPanAxis,

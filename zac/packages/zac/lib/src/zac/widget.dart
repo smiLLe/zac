@@ -29,13 +29,13 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValue)
   factory ZacWidgetBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required Object data,
   }) = _ZacWidgetBuilder;
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolate)
   factory ZacWidgetBuilder.isolate({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required Object data,
     ZacValue<Widget?>? errorChild,
   }) = _ZacWidgetBuilderIsolate;
@@ -180,10 +180,11 @@ class ZacWidgetIsolated extends StatelessWidget {
                           opacity: ZacValue<double>.fromJson(1.0),
                         ),
                         width: ZacValue<double>.fromJson(3.0),
-                      ),
-                    ),
+                      ).toZacValue(),
+                    ).toZacValue(),
                     padding:
-                        FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0)),
+                        FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0))
+                            .toZacValue(),
                     child: ZacValue<Widget>.builder(FlutterText(
                       ZacValue<String>.fromJson(
                           'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),

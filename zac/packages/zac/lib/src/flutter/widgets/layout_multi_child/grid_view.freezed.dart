@@ -20,7 +20,7 @@ FlutterGridView _$FlutterGridViewFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterGridView {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   ZacValue<ScrollController?>? get controller =>
@@ -28,7 +28,8 @@ mixin _$FlutterGridView {
   ZacValue<bool?>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
+  ZacValue<EdgeInsetsGeometry?>? get padding =>
+      throw _privateConstructorUsedError;
   FlutterSliverGridDelegate get gridDelegate =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get addAutomaticKeepAlives =>
@@ -80,7 +81,7 @@ class _$_FlutterGridView extends _FlutterGridView {
       _$$_FlutterGridViewFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterAxis? scrollDirection;
   @override
@@ -93,7 +94,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacValue<bool?>? shrinkWrap;
   @override
-  final FlutterEdgeInsetsGeometry? padding;
+  final ZacValue<EdgeInsetsGeometry?>? padding;
   @override
   final FlutterSliverGridDelegate gridDelegate;
   @override
@@ -192,13 +193,13 @@ class _$_FlutterGridView extends _FlutterGridView {
 
 abstract class _FlutterGridView extends FlutterGridView {
   factory _FlutterGridView(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool?>? reverse,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
       final ZacValue<bool?>? shrinkWrap,
-      final FlutterEdgeInsetsGeometry? padding,
+      final ZacValue<EdgeInsetsGeometry?>? padding,
       required final FlutterSliverGridDelegate gridDelegate,
       final ZacValue<bool?>? addAutomaticKeepAlives,
       final ZacValue<bool?>? addRepaintBoundaries,
@@ -215,7 +216,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       _$_FlutterGridView.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterAxis? get scrollDirection;
   @override
@@ -227,7 +228,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override // ScrollPhysics? physics,
   ZacValue<bool?>? get shrinkWrap;
   @override
-  FlutterEdgeInsetsGeometry? get padding;
+  ZacValue<EdgeInsetsGeometry?>? get padding;
   @override
   FlutterSliverGridDelegate get gridDelegate;
   @override

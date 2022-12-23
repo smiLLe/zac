@@ -175,7 +175,7 @@ void main() {
               child: ZacWidget(
                 data: SharedValueProviderBuilder(
                   value: FlutterSizedBox(
-                    key: FlutterValueKey('FIND_ME_2'),
+                    key: FlutterValueKey('FIND_ME_2').toZacValue(),
                   ),
                   family: 'shared',
                   child: ZacValue<Widget>.builder(
@@ -416,7 +416,7 @@ void main() {
                 data: SharedValueProviderBuilder(
                   value: [
                     FlutterSizedBox(
-                      key: FlutterValueKey('FIND_ME_2'),
+                      key: FlutterValueKey('FIND_ME_2').toZacValue(),
                     )
                   ],
                   family: 'shared',

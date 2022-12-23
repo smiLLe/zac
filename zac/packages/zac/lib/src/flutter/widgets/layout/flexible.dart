@@ -23,7 +23,7 @@ class FlutterFlexible with _$FlutterFlexible implements ZacBuilder<Flexible> {
 
   @FreezedUnionValue(FlutterFlexible.unionValue)
   factory FlutterFlexible({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<int?>? flex,
     FlutterFlexFit? fit,
     required ZacValue<Widget> child,

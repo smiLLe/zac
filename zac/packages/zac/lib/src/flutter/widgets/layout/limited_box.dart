@@ -24,7 +24,7 @@ class FlutterLimitedBox
 
   @FreezedUnionValue(FlutterLimitedBox.unionValue)
   factory FlutterLimitedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? maxWidth,
     ZacValue<double?>? maxHeight,
     ZacValue<Widget?>? child,

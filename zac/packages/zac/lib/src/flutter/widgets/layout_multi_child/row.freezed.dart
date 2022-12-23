@@ -20,7 +20,7 @@ FlutterRow _$FlutterRowFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRow {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterMainAxisAlignment? get mainAxisAlignment =>
       throw _privateConstructorUsedError;
   FlutterMainAxisSize? get mainAxisSize => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ class _$_FlutterRow extends _FlutterRow {
       _$$_FlutterRowFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterMainAxisAlignment? mainAxisAlignment;
   @override
@@ -125,7 +125,7 @@ class _$_FlutterRow extends _FlutterRow {
 
 abstract class _FlutterRow extends FlutterRow {
   factory _FlutterRow(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterMainAxisAlignment? mainAxisAlignment,
       final FlutterMainAxisSize? mainAxisSize,
       final FlutterCrossAxisAlignment? crossAxisAlignment,
@@ -139,7 +139,7 @@ abstract class _FlutterRow extends FlutterRow {
       _$_FlutterRow.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterMainAxisAlignment? get mainAxisAlignment;
   @override

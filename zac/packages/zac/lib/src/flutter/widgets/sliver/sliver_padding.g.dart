@@ -11,9 +11,9 @@ _$_FlutterSliverPadding _$$_FlutterSliverPaddingFromJson(
     _$_FlutterSliverPadding(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       sliver: json['sliver'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['sliver'] as Object),
-      padding: FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+      padding: ZacValue<EdgeInsetsGeometry>.fromJson(json['padding'] as Object),
     );

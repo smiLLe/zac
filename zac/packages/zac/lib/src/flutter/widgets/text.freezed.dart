@@ -21,7 +21,7 @@ FlutterText _$FlutterTextFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterText {
   ZacValue<String> get data => throw _privateConstructorUsedError;
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterTextStyle? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ class _$_FlutterText extends _FlutterText {
   @override
   final ZacValue<String> data;
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterTextStyle? style;
   @override
@@ -161,7 +161,7 @@ class _$_FlutterText extends _FlutterText {
 
 abstract class _FlutterText extends FlutterText {
   factory _FlutterText(final ZacValue<String> data,
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterTextStyle? style,
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
@@ -182,7 +182,7 @@ abstract class _FlutterText extends FlutterText {
   @override
   ZacValue<String> get data;
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterTextStyle? get style;
   @override

@@ -21,63 +21,63 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
 
   @FreezedUnionValue(FlutterDialogs.unionValueDialog)
   factory FlutterDialogs.dialog({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
 // Duration insetAnimationDuration = const Duration(milliseconds: 100),
 // FlutterCurve insetAnimationCurve = Curves.decelerate,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
-    FlutterShapeBorder? shape,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<ShapeBorder?>? shape,
+    ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<Widget?>? child,
   }) = _FlutterDialogsDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueAlertDialog)
   factory FlutterDialogs.alertDialog({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? title,
     ZacValue<Widget?>? content,
     ZacValueList<Widget, List<Widget>?>? actions,
-    FlutterEdgeInsetsGeometry? titlePadding,
+    ZacValue<EdgeInsetsGeometry?>? titlePadding,
     FlutterTextStyle? titleTextStyle,
-    FlutterEdgeInsetsGeometry? contentPadding,
+    ZacValue<EdgeInsetsGeometry?>? contentPadding,
     FlutterTextStyle? contentTextStyle,
-    FlutterEdgeInsetsGeometry? actionsPadding,
+    ZacValue<EdgeInsetsGeometry?>? actionsPadding,
     FlutterMainAxisAlignment? actionsAlignment,
     FlutterVerticalDirection? actionsOverflowDirection,
     ZacValue<double?>? actionsOverflowButtonSpacing,
-    FlutterEdgeInsetsGeometry? buttonPadding,
+    ZacValue<EdgeInsetsGeometry?>? buttonPadding,
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
     ZacValue<String?>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
-    FlutterShapeBorder? shape,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<ShapeBorder?>? shape,
+    ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<bool?>? scrollable,
   }) = _FlutterDialogsAlertDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialog)
   factory FlutterDialogs.simpleDialog({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? title,
     ZacValueList<Widget, List<Widget>?>? children,
-    FlutterEdgeInsetsGeometry? titlePadding,
+    ZacValue<EdgeInsetsGeometry?>? titlePadding,
     FlutterTextStyle? titleTextStyle,
-    FlutterEdgeInsetsGeometry? contentPadding,
+    ZacValue<EdgeInsetsGeometry?>? contentPadding,
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
     ZacValue<String?>? semanticLabel,
     FlutterEdgeInsets? insetPadding,
     FlutterClip? clipBehavior,
-    FlutterShapeBorder? shape,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<ShapeBorder?>? shape,
+    ZacValue<AlignmentGeometry?>? alignment,
   }) = _FlutterDialogsSimpleDialog;
 
   @FreezedUnionValue(FlutterDialogs.unionValueSimpleDialogOption)
   factory FlutterDialogs.simpleDialogOption({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     ZacActions? onPressed,
     FlutterEdgeInsets? padding,

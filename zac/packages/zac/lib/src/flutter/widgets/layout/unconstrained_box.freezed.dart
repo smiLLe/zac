@@ -21,10 +21,11 @@ FlutterUnconstrainedBox _$FlutterUnconstrainedBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterUnconstrainedBox {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   FlutterAxis? get constrainedAxis => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
 
@@ -51,13 +52,13 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
       _$$_FlutterUnconstrainedBoxFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? child;
   @override
   final FlutterTextDirection? textDirection;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final FlutterAxis? constrainedAxis;
   @override
@@ -101,10 +102,10 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
 
 abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   factory _FlutterUnconstrainedBox(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? child,
       final FlutterTextDirection? textDirection,
-      final FlutterAlignmentGeometry? alignment,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final FlutterAxis? constrainedAxis,
       final FlutterClip? clipBehavior}) = _$_FlutterUnconstrainedBox;
   _FlutterUnconstrainedBox._() : super._();
@@ -113,13 +114,13 @@ abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
       _$_FlutterUnconstrainedBox.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get child;
   @override
   FlutterTextDirection? get textDirection;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   FlutterAxis? get constrainedAxis;
   @override

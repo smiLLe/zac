@@ -11,7 +11,7 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
     _$_FlutterProgressIndicatorLinear(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       value: json['value'] == null
           ? null
           : ZacValue<double?>.fromJson(json['value'] as Object),
@@ -39,7 +39,7 @@ _$_FlutterProgressIndicatorCircular
         _$_FlutterProgressIndicatorCircular(
           key: json['key'] == null
               ? null
-              : FlutterKey.fromJson(json['key'] as Object),
+              : ZacValue<Key?>.fromJson(json['key'] as Object),
           value: json['value'] == null
               ? null
               : ZacValue<double?>.fromJson(json['value'] as Object),

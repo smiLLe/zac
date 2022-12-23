@@ -1,9 +1,6 @@
-import 'package:zac/src/flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -26,9 +23,9 @@ class FlutterDecoratedBox
 
   @FreezedUnionValue(FlutterDecoratedBox.unionValue)
   factory FlutterDecoratedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
-    required FlutterDecoration decoration,
+    required ZacValue<Decoration> decoration,
     FlutterDecorationPosition? position,
   }) = _FlutterDecoratedBox;
 

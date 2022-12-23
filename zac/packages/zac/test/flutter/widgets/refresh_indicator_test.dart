@@ -77,8 +77,8 @@ void main() {
               FlutterListView(
                 children: ZacValueList<Widget, List<Widget>?>(
                   items: [
-                    ZacValue<Widget>.builder(
-                        FlutterSizedBox(key: FlutterValueKey('child1'))),
+                    ZacValue<Widget>.builder(FlutterSizedBox(
+                        key: FlutterValueKey('child1').toZacValue())),
                   ],
                 ),
               ),
@@ -126,8 +126,8 @@ void main() {
                   FlutterListView(
                     children: ZacValueList<Widget, List<Widget>?>(
                       items: [
-                        ZacValue<Widget>.builder(
-                            FlutterSizedBox(key: FlutterValueKey('child1'))),
+                        ZacValue<Widget>.builder(FlutterSizedBox(
+                            key: FlutterValueKey('child1').toZacValue())),
                       ],
                     ),
                   ),

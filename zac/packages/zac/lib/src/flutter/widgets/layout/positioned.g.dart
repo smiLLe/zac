@@ -11,7 +11,7 @@ _$_FlutterPositioneddirectional _$$_FlutterPositioneddirectionalFromJson(
     _$_FlutterPositioneddirectional(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
           : ZacValue<double?>.fromJson(json['left'] as Object),
@@ -38,7 +38,7 @@ _$_FlutterPositioned _$$_FlutterPositionedFromJson(Map<String, dynamic> json) =>
     _$_FlutterPositioned(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       textDirection: FlutterTextDirection.fromJson(
           json['textDirection'] as Map<String, dynamic>),
       start: json['start'] == null
@@ -68,7 +68,7 @@ _$_FlutterPositionedfill _$$_FlutterPositionedfillFromJson(
     _$_FlutterPositionedfill(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
           : ZacValue<double?>.fromJson(json['left'] as Object),

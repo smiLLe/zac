@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,21 +9,11 @@ import 'package:zac/src/base.dart';
 part 'material.freezed.dart';
 part 'material.g.dart';
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB)
-abstract class FlutterInputBorder implements FlutterShapeBorder {
-  factory FlutterInputBorder.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterInputBorder>(data);
-  }
-
-  @override
-  InputBorder build(ZacContext zacContext);
-}
-
 @freezedZacBuilder
 @ZacGenerate()
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
-    implements FlutterInputBorder {
+    implements ZacBuilder<OutlineInputBorder> {
   const FlutterOutlineInputBorder._();
 
   static const String unionValue = 'f:1:OutlineInputBorder';
@@ -34,8 +23,8 @@ class FlutterOutlineInputBorder
 
   @FreezedUnionValue(FlutterOutlineInputBorder.unionValue)
   factory FlutterOutlineInputBorder({
-    FlutterBorderSide? borderSide,
-    FlutterBorderRadius? borderRadius,
+    ZacValue<BorderSide?>? borderSide,
+    ZacValue<BorderRadius?>? borderRadius,
     ZacValue<double?>? gapPadding,
   }) = _FlutterOutlineInputBorder;
 
@@ -58,7 +47,7 @@ class FlutterOutlineInputBorder
 @ZacGenerate()
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
-    implements FlutterInputBorder {
+    implements ZacBuilder<UnderlineInputBorder> {
   const FlutterUnderlineInputBorder._();
 
   static const String unionValue = 'f:1:UnderlineInputBorder';
@@ -68,8 +57,8 @@ class FlutterUnderlineInputBorder
 
   @FreezedUnionValue(FlutterUnderlineInputBorder.unionValue)
   factory FlutterUnderlineInputBorder({
-    FlutterBorderSide? borderSide,
-    FlutterBorderRadius? borderRadius,
+    ZacValue<BorderSide?>? borderSide,
+    ZacValue<BorderRadius?>? borderRadius,
   }) = _FlutterUnderlineInputBorder;
 
   UnderlineInputBorder _build(ZacContext zacContext) {

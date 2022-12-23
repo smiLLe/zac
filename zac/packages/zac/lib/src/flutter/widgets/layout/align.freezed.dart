@@ -20,8 +20,9 @@ FlutterAlign _$FlutterAlignFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterAlign {
-  FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
   ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
@@ -48,9 +49,9 @@ class _$_FlutterAlign extends _FlutterAlign {
       _$$_FlutterAlignFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final ZacValue<double?>? widthFactor;
   @override
@@ -94,8 +95,8 @@ class _$_FlutterAlign extends _FlutterAlign {
 
 abstract class _FlutterAlign extends FlutterAlign {
   factory _FlutterAlign(
-      {final FlutterKey? key,
-      final FlutterAlignmentGeometry? alignment,
+      {final ZacValue<Key?>? key,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final ZacValue<double?>? widthFactor,
       final ZacValue<double?>? heightFactor,
       final ZacValue<Widget?>? child}) = _$_FlutterAlign;
@@ -105,9 +106,9 @@ abstract class _FlutterAlign extends FlutterAlign {
       _$_FlutterAlign.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   ZacValue<double?>? get widthFactor;
   @override

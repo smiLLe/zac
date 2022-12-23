@@ -11,7 +11,7 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
     _$_FlutterSingleChildScrollView(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
           : FlutterAxis.fromJson(
@@ -21,7 +21,7 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : ZacValue<bool?>.fromJson(json['reverse'] as Object),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       primary: json['primary'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['primary'] as Object),

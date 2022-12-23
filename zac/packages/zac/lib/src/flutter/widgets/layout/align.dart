@@ -1,10 +1,8 @@
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -23,8 +21,8 @@ class FlutterAlign with _$FlutterAlign implements ZacBuilder<Align> {
 
   @FreezedUnionValue(FlutterAlign.unionValue)
   factory FlutterAlign({
-    FlutterKey? key,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<Key?>? key,
+    ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<double?>? widthFactor,
     ZacValue<double?>? heightFactor,
     ZacValue<Widget?>? child,

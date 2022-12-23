@@ -33,7 +33,7 @@ FlutterProgressIndicator _$FlutterProgressIndicatorFromJson(
 
 /// @nodoc
 mixin _$FlutterProgressIndicator {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get value => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ class _$_FlutterProgressIndicatorLinear
       _$$_FlutterProgressIndicatorLinearFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? value;
   @override
@@ -128,7 +128,7 @@ class _$_FlutterProgressIndicatorLinear
 abstract class _FlutterProgressIndicatorLinear
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorLinear(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final ZacValue<double?>? value,
           final FlutterColor? backgroundColor,
           final FlutterColor? color,
@@ -142,7 +142,7 @@ abstract class _FlutterProgressIndicatorLinear
       _$_FlutterProgressIndicatorLinear.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<double?>? get value;
   @override
@@ -177,7 +177,7 @@ class _$_FlutterProgressIndicatorCircular
       _$$_FlutterProgressIndicatorCircularFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? value;
   @override
@@ -236,7 +236,7 @@ class _$_FlutterProgressIndicatorCircular
 abstract class _FlutterProgressIndicatorCircular
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorCircular(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final ZacValue<double?>? value,
           final FlutterColor? backgroundColor,
           final FlutterColor? color,
@@ -250,7 +250,7 @@ abstract class _FlutterProgressIndicatorCircular
       Map<String, dynamic> json) = _$_FlutterProgressIndicatorCircular.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<double?>? get value;
   @override

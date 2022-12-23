@@ -45,7 +45,7 @@ void main() {
         tester,
         FlutterElevatedButton(
           child: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),
@@ -60,7 +60,7 @@ void main() {
         tester,
         FlutterOutlinedButton(
           child: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),
@@ -75,7 +75,7 @@ void main() {
         tester,
         FlutterTextButton(
           child: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),
@@ -161,7 +161,7 @@ void main() {
         FlutterElevatedButton.icon(
           icon: ZacValue<Widget>.builder(FlutterSizedBox()),
           label: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),
@@ -177,7 +177,7 @@ void main() {
         FlutterOutlinedButton.icon(
           icon: ZacValue<Widget>.builder(FlutterSizedBox()),
           label: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),
@@ -193,7 +193,7 @@ void main() {
         FlutterTextButton.icon(
           icon: ZacValue<Widget>.builder(FlutterSizedBox()),
           label: ZacValue<Widget>.builder(FlutterSizedBox()),
-          key: FlutterValueKey('FIND_ME'),
+          key: FlutterValueKey('FIND_ME').toZacValue(),
           onPressed: LeakAction.createActions(onPressedCb),
           onLongPress: LeakAction.createActions(onLongPressCb),
         ),

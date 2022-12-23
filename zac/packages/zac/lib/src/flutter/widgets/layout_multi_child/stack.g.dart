@@ -10,10 +10,10 @@ _$_FlutterStack _$$_FlutterStackFromJson(Map<String, dynamic> json) =>
     _$_FlutterStack(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : FlutterTextDirection.fromJson(

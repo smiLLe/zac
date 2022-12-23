@@ -10,7 +10,7 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
     _$_FlutterMaterial(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -29,11 +29,11 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
               json['textStyle'] as Map<String, dynamic>),
       borderRadius: json['borderRadius'] == null
           ? null
-          : FlutterBorderRadiusGeometry.fromJson(
+          : ZacValue<BorderRadiusGeometry?>.fromJson(
               json['borderRadius'] as Object),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       borderOnForeground: json['borderOnForeground'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['borderOnForeground'] as Object),

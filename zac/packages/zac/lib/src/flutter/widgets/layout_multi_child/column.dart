@@ -25,7 +25,7 @@ class FlutterColumn with _$FlutterColumn implements ZacBuilder<Column> {
 
   @FreezedUnionValue(FlutterColumn.unionValue)
   factory FlutterColumn({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterMainAxisAlignment? mainAxisAlignment,
     FlutterMainAxisSize? mainAxisSize,
     FlutterCrossAxisAlignment? crossAxisAlignment,

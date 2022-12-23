@@ -11,13 +11,13 @@ _$_FlutterFractionallySizedBox _$$_FlutterFractionallySizedBoxFromJson(
     _$_FlutterFractionallySizedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       widthFactor: json['widthFactor'] == null
           ? null
           : ZacValue<double?>.fromJson(json['widthFactor'] as Object),

@@ -10,7 +10,7 @@ _$_FlutterOpacity _$$_FlutterOpacityFromJson(Map<String, dynamic> json) =>
     _$_FlutterOpacity(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       opacity: ZacValue<double>.fromJson(json['opacity'] as Object),
       alwaysIncludeSemantics: json['alwaysIncludeSemantics'] == null
           ? null

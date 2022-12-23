@@ -20,7 +20,7 @@ FlutterTextField _$FlutterTextFieldFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterTextField {
-  FlutterKey? get key =>
+  ZacValue<Key?>? get key =>
       throw _privateConstructorUsedError; // TextEditingController? controller,
 // FocusNode? focusNode,
   FlutterInputDecoration? get decoration => throw _privateConstructorUsedError;
@@ -145,7 +145,7 @@ class _$_FlutterTextField extends _FlutterTextField {
       _$$_FlutterTextFieldFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
 // TextEditingController? controller,
 // FocusNode? focusNode,
   @override
@@ -393,7 +393,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 
 abstract class _FlutterTextField extends FlutterTextField {
   factory _FlutterTextField(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final FlutterInputDecoration? decoration,
           final FlutterTextInputType? keyboardType,
           final FlutterTextInputAction? textInputAction,
@@ -441,7 +441,7 @@ abstract class _FlutterTextField extends FlutterTextField {
       _$_FlutterTextField.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override // TextEditingController? controller,
 // FocusNode? focusNode,
   FlutterInputDecoration? get decoration;

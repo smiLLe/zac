@@ -25,7 +25,7 @@ class FlutterRow with _$FlutterRow implements ZacBuilder<Row> {
 
   @FreezedUnionValue(FlutterRow.unionValue)
   factory FlutterRow({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterMainAxisAlignment? mainAxisAlignment,
     FlutterMainAxisSize? mainAxisSize,
     FlutterCrossAxisAlignment? crossAxisAlignment,

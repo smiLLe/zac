@@ -10,7 +10,7 @@ _$_FlutterCenter _$$_FlutterCenterFromJson(Map<String, dynamic> json) =>
     _$_FlutterCenter(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       widthFactor: json['widthFactor'] == null
           ? null
           : ZacValue<double?>.fromJson(json['widthFactor'] as Object),

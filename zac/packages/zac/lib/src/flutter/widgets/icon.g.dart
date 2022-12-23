@@ -13,7 +13,7 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
           : FlutterIconData.fromJson(json['icon'] as Map<String, dynamic>),
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       size: json['size'] == null
           ? null
           : ZacValue<double?>.fromJson(json['size'] as Object),

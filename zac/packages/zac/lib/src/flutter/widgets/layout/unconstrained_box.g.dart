@@ -11,7 +11,7 @@ _$_FlutterUnconstrainedBox _$$_FlutterUnconstrainedBoxFromJson(
     _$_FlutterUnconstrainedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -21,7 +21,7 @@ _$_FlutterUnconstrainedBox _$$_FlutterUnconstrainedBoxFromJson(
               json['textDirection'] as Map<String, dynamic>),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       constrainedAxis: json['constrainedAxis'] == null
           ? null
           : FlutterAxis.fromJson(

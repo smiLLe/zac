@@ -10,8 +10,8 @@ _$_FlutterPadding _$$_FlutterPaddingFromJson(Map<String, dynamic> json) =>
     _$_FlutterPadding(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
-      padding: FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
+      padding: ZacValue<EdgeInsetsGeometry>.fromJson(json['padding'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),

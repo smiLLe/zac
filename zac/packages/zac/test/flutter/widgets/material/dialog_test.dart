@@ -213,9 +213,9 @@ void main() {
           tester,
           FlutterMaterial(
               child: ZacValue<Widget>.builder(FlutterDialogs.simpleDialogOption(
-            key: FlutterValueKey('FIND_ME'),
+            key: FlutterValueKey('FIND_ME').toZacValue(),
             child: ZacValue<Widget>.builder(
-                FlutterSizedBox(key: FlutterValueKey('child1'))),
+                FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())),
             onPressed: LeakAction.createActions(cb),
           ))));
 

@@ -20,7 +20,7 @@ FlutterColumn _$FlutterColumnFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterColumn {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterMainAxisAlignment? get mainAxisAlignment =>
       throw _privateConstructorUsedError;
   FlutterMainAxisSize? get mainAxisSize => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ class _$_FlutterColumn extends _FlutterColumn {
       _$$_FlutterColumnFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterMainAxisAlignment? mainAxisAlignment;
   @override
@@ -125,7 +125,7 @@ class _$_FlutterColumn extends _FlutterColumn {
 
 abstract class _FlutterColumn extends FlutterColumn {
   factory _FlutterColumn(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterMainAxisAlignment? mainAxisAlignment,
       final FlutterMainAxisSize? mainAxisSize,
       final FlutterCrossAxisAlignment? crossAxisAlignment,
@@ -139,7 +139,7 @@ abstract class _FlutterColumn extends FlutterColumn {
       _$_FlutterColumn.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterMainAxisAlignment? get mainAxisAlignment;
   @override

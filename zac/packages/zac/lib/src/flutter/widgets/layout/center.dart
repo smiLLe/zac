@@ -22,7 +22,7 @@ class FlutterCenter with _$FlutterCenter implements ZacBuilder<Center> {
 
   @FreezedUnionValue(FlutterCenter.unionValue)
   factory FlutterCenter({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? widthFactor,
     ZacValue<double?>? heightFactor,
     ZacValue<Widget?>? child,

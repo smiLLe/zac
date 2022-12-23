@@ -27,10 +27,10 @@ class FlutterSingleChildScrollView
 
   @FreezedUnionValue(FlutterSingleChildScrollView.unionValue)
   factory FlutterSingleChildScrollView({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
-    FlutterEdgeInsetsGeometry? padding,
+    ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     ZacValue<ScrollController?>? controller,

@@ -10,7 +10,7 @@ _$_FlutterClipRect _$$_FlutterClipRectFromJson(Map<String, dynamic> json) =>
     _$_FlutterClipRect(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),

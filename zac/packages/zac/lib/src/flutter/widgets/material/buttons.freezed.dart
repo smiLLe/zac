@@ -30,7 +30,7 @@ FlutterElevatedButton _$FlutterElevatedButtonFromJson(
 
 /// @nodoc
 mixin _$FlutterElevatedButton {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
@@ -62,7 +62,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
       _$$_FlutterElevatedButtonFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? child;
   @override
@@ -116,7 +116,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
 
 abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   factory _FlutterElevatedButton(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget?>? child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
@@ -128,7 +128,7 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
       _$_FlutterElevatedButton.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget?>? get child;
   @override
   ZacActions? get onPressed;
@@ -159,7 +159,7 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
       _$$_FlutterElevatedButtonIconFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget> icon;
   @override
@@ -216,7 +216,7 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
 
 abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
   factory _FlutterElevatedButtonIcon(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget> icon,
       required final ZacValue<Widget> label,
       final ZacActions? onPressed,
@@ -229,7 +229,7 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
       _$_FlutterElevatedButtonIcon.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget> get icon;
   ZacValue<Widget> get label;
   @override
@@ -258,7 +258,7 @@ FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
 
 /// @nodoc
 mixin _$FlutterOutlinedButton {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
@@ -290,7 +290,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
       _$$_FlutterOutlinedButtonFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget> child;
   @override
@@ -344,7 +344,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
 
 abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   factory _FlutterOutlinedButton(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
@@ -356,7 +356,7 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
       _$_FlutterOutlinedButton.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget> get child;
   @override
   ZacActions? get onPressed;
@@ -387,7 +387,7 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
       _$$_FlutterOutlinedButtonIconFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget> icon;
   @override
@@ -444,7 +444,7 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
 
 abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
   factory _FlutterOutlinedButtonIcon(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget> icon,
       required final ZacValue<Widget> label,
       final ZacActions? onPressed,
@@ -457,7 +457,7 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
       _$_FlutterOutlinedButtonIcon.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget> get icon;
   ZacValue<Widget> get label;
   @override
@@ -485,7 +485,7 @@ FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterTextButton {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
@@ -517,7 +517,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
       _$$_FlutterTextButtonFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget> child;
   @override
@@ -571,7 +571,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
 
 abstract class _FlutterTextButton extends FlutterTextButton {
   factory _FlutterTextButton(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
@@ -583,7 +583,7 @@ abstract class _FlutterTextButton extends FlutterTextButton {
       _$_FlutterTextButton.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget> get child;
   @override
   ZacActions? get onPressed;
@@ -614,7 +614,7 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
       _$$_FlutterTextButtonIconFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget> icon;
   @override
@@ -671,7 +671,7 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
 
 abstract class _FlutterTextButtonIcon extends FlutterTextButton {
   factory _FlutterTextButtonIcon(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final ZacValue<Widget> icon,
       required final ZacValue<Widget> label,
       final ZacActions? onPressed,
@@ -684,7 +684,7 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
       _$_FlutterTextButtonIcon.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   ZacValue<Widget> get icon;
   ZacValue<Widget> get label;
   @override

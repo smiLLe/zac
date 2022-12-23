@@ -10,7 +10,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
     _$_FlutterTextField(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       decoration: json['decoration'] == null
           ? null
           : FlutterInputDecoration.fromJson(

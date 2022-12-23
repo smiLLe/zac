@@ -28,7 +28,7 @@ class FlutterRefreshIndicator
 
   @FreezedUnionValue(FlutterRefreshIndicator.unionValue)
   factory FlutterRefreshIndicator({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
     ZacValue<double?>? displacement,
     ZacValue<double?>? edgeOffset,

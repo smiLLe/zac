@@ -20,7 +20,7 @@ FlutterListView _$FlutterListViewFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterListView {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   ZacValue<ScrollController?>? get controller =>
@@ -28,7 +28,8 @@ mixin _$FlutterListView {
   ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
+  ZacValue<EdgeInsetsGeometry?>? get padding =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get itemExtent => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get prototypeItem => throw _privateConstructorUsedError;
   ZacValue<bool?>? get addAutomaticKeepAlives =>
@@ -82,7 +83,7 @@ class _$_FlutterListView extends _FlutterListView {
       _$$_FlutterListViewFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterAxis? scrollDirection;
   @override
@@ -96,7 +97,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacValue<bool?>? shrinkWrap;
   @override
-  final FlutterEdgeInsetsGeometry? padding;
+  final ZacValue<EdgeInsetsGeometry?>? padding;
   @override
   final ZacValue<double?>? itemExtent;
   @override
@@ -203,14 +204,14 @@ class _$_FlutterListView extends _FlutterListView {
 
 abstract class _FlutterListView extends FlutterListView {
   factory _FlutterListView(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool?>? reverse,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
       final FlutterScrollPhysics? physics,
       final ZacValue<bool?>? shrinkWrap,
-      final FlutterEdgeInsetsGeometry? padding,
+      final ZacValue<EdgeInsetsGeometry?>? padding,
       final ZacValue<double?>? itemExtent,
       final ZacValue<Widget?>? prototypeItem,
       final ZacValue<bool?>? addAutomaticKeepAlives,
@@ -228,7 +229,7 @@ abstract class _FlutterListView extends FlutterListView {
       _$_FlutterListView.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterAxis? get scrollDirection;
   @override
@@ -242,7 +243,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<bool?>? get shrinkWrap;
   @override
-  FlutterEdgeInsetsGeometry? get padding;
+  ZacValue<EdgeInsetsGeometry?>? get padding;
   @override
   ZacValue<double?>? get itemExtent;
   @override

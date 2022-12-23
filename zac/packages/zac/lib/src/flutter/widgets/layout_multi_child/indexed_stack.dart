@@ -27,8 +27,8 @@ class FlutterIndexedStack
 
   @FreezedUnionValue(FlutterIndexedStack.unionValue)
   factory FlutterIndexedStack({
-    FlutterKey? key,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<Key?>? key,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterTextDirection? textDirection,
     FlutterStackFit? sizing,
     ZacValue<int?>? index,

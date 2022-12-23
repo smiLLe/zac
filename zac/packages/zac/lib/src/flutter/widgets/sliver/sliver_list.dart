@@ -5,6 +5,7 @@ import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
@@ -23,7 +24,7 @@ class FlutterSliverList
 
   @FreezedUnionValue(FlutterSliverList.unionValue)
   factory FlutterSliverList({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required FlutterSliverChildDelegate delegate,
   }) = _FlutterSliverList;
 

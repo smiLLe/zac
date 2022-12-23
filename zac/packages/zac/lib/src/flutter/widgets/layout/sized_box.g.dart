@@ -11,7 +11,7 @@ _$_FlutterWidgetSizedBox _$$_FlutterWidgetSizedBoxFromJson(
     _$_FlutterWidgetSizedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       width: json['width'] == null
           ? null
           : ZacValue<double?>.fromJson(json['width'] as Object),
@@ -29,7 +29,7 @@ _$_FlutterWidgetSizedBoxExpand _$$_FlutterWidgetSizedBoxExpandFromJson(
     _$_FlutterWidgetSizedBoxExpand(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -41,7 +41,7 @@ _$_FlutterWidgetSizedBoxFromSize _$$_FlutterWidgetSizedBoxFromSizeFromJson(
     _$_FlutterWidgetSizedBoxFromSize(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -56,7 +56,7 @@ _$_FlutterWidgetSizedBoxShrink _$$_FlutterWidgetSizedBoxShrinkFromJson(
     _$_FlutterWidgetSizedBoxShrink(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
@@ -68,7 +68,7 @@ _$_FlutterWidgetSizedBoxSquare _$$_FlutterWidgetSizedBoxSquareFromJson(
     _$_FlutterWidgetSizedBoxSquare(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),

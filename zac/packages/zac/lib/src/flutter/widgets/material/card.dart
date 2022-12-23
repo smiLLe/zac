@@ -23,13 +23,13 @@ class FlutterCard with _$FlutterCard implements ZacBuilder<Card> {
 
   @FreezedUnionValue(FlutterCard.unionValue)
   factory FlutterCard({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterColor? color,
     FlutterColor? shadowColor,
     ZacValue<double?>? elevation,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
     ZacValue<bool?>? borderOnForeground,
-    FlutterEdgeInsetsGeometry? margin,
+    ZacValue<EdgeInsetsGeometry?>? margin,
     FlutterClip? clipBehavior,
     ZacValue<Widget?>? child,
     ZacValue<bool?>? semanticContainer,

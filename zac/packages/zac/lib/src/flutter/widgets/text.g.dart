@@ -11,7 +11,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
       ZacValue<String>.fromJson(json['data'] as Object),
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       style: json['style'] == null
           ? null
           : FlutterTextStyle.fromJson(json['style'] as Map<String, dynamic>),

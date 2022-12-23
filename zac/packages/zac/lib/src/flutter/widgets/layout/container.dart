@@ -26,13 +26,13 @@ class FlutterContainer
 
   @FreezedUnionValue(FlutterContainer.unionValue)
   factory FlutterContainer({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
-    FlutterColor? color,
-    FlutterEdgeInsetsGeometry? margin,
-    FlutterEdgeInsetsGeometry? padding,
-    FlutterAlignmentGeometry? alignment,
-    FlutterDecoration? decoration,
+    ZacValue<Color?>? color,
+    ZacValue<EdgeInsetsGeometry?>? margin,
+    ZacValue<EdgeInsetsGeometry?>? padding,
+    ZacValue<AlignmentGeometry?>? alignment,
+    ZacValue<Decoration?>? decoration,
   }) = _FlutterContainer;
 
   Container _buildWidget(ZacContext zacContext) {

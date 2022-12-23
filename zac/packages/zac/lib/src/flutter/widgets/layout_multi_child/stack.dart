@@ -25,8 +25,8 @@ class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
 
   @FreezedUnionValue(FlutterStack.unionValue)
   factory FlutterStack({
-    FlutterKey? key,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<Key?>? key,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterTextDirection? textDirection,
     FlutterStackFit? fit,
     FlutterClip? clipBehavior,

@@ -1029,16 +1029,9 @@ class FlutterBoxWidthStyle
   }
 }
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class DartShadow with ZacBuilder<Shadow> {
-  factory DartShadow.fromJson(Object data) {
-    return ConverterHelper.convertToType<DartShadow>(data);
-  }
-}
-
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterShadow with _$FlutterShadow implements DartShadow {
+class FlutterShadow with _$FlutterShadow implements ZacBuilder<Shadow> {
   const FlutterShadow._();
 
   static const String unionValue = 'f:1:Shadow';

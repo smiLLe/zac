@@ -12,7 +12,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
       ZacValue<String>.fromJson(json['src'] as Object),
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       scale: json['scale'] == null
           ? null
           : ZacValue<double?>.fromJson(json['scale'] as Object),
@@ -40,7 +40,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : FlutterBoxFit.fromJson(json['fit'] as Map<String, dynamic>),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       repeat: json['repeat'] == null
           ? null
           : FlutterImageRepeat.fromJson(json['repeat'] as Map<String, dynamic>),
@@ -77,7 +77,7 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
       ZacValue<String>.fromJson(json['name'] as Object),
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
           : ZacValue<String?>.fromJson(json['semanticLabel'] as Object),
@@ -105,7 +105,7 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : FlutterBoxFit.fromJson(json['fit'] as Map<String, dynamic>),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       repeat: json['repeat'] == null
           ? null
           : FlutterImageRepeat.fromJson(json['repeat'] as Map<String, dynamic>),

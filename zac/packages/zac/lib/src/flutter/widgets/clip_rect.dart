@@ -22,7 +22,7 @@ class FlutterClipRect with _$FlutterClipRect implements ZacBuilder<ClipRect> {
 
   @FreezedUnionValue(FlutterClipRect.unionValue)
   factory FlutterClipRect({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
     FlutterClip? clipBehavior,

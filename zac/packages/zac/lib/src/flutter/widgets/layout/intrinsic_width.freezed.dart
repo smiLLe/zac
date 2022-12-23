@@ -21,7 +21,7 @@ FlutterIntrinsicWidth _$FlutterIntrinsicWidthFromJson(
 
 /// @nodoc
 mixin _$FlutterIntrinsicWidth {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -40,7 +40,7 @@ class _$_FlutterIntrinsicWidth extends _FlutterIntrinsicWidth {
       _$$_FlutterIntrinsicWidthFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? child;
 
@@ -73,7 +73,7 @@ class _$_FlutterIntrinsicWidth extends _FlutterIntrinsicWidth {
 
 abstract class _FlutterIntrinsicWidth extends FlutterIntrinsicWidth {
   factory _FlutterIntrinsicWidth(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? child}) = _$_FlutterIntrinsicWidth;
   _FlutterIntrinsicWidth._() : super._();
 
@@ -81,7 +81,7 @@ abstract class _FlutterIntrinsicWidth extends FlutterIntrinsicWidth {
       _$_FlutterIntrinsicWidth.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get child;
 }

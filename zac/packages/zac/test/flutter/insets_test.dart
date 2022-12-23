@@ -15,11 +15,6 @@ void main() {
         FlutterEdgeInsets.fromJson(map).build,
         (matcher) => matcher.having((p0) => p0.bottom, 'EdgeInsets.bottom', 10),
       );
-
-      fakeBuild<EdgeInsets>(
-        FlutterEdgeInsetsGeometry.fromJson(map).build,
-        (matcher) => matcher.having((p0) => p0.bottom, 'EdgeInsets.bottom', 10),
-      );
     });
 
     test('.symmetric', () {
@@ -30,13 +25,6 @@ void main() {
       };
       fakeBuild<EdgeInsets>(
         FlutterEdgeInsets.fromJson(map).build,
-        (matcher) => matcher
-            .having((p0) => p0.bottom, 'EdgeInsets.bottom', 10)
-            .having((p0) => p0.left, 'EdgeInsets.left', 11),
-      );
-
-      fakeBuild<EdgeInsets>(
-        FlutterEdgeInsetsGeometry.fromJson(map).build,
         (matcher) => matcher
             .having((p0) => p0.bottom, 'EdgeInsets.bottom', 10)
             .having((p0) => p0.left, 'EdgeInsets.left', 11),
@@ -59,15 +47,6 @@ void main() {
             .having((p0) => p0.right, 'EdgeInsets.left', 3)
             .having((p0) => p0.bottom, 'EdgeInsets.bottom', 4),
       );
-
-      fakeBuild<EdgeInsets>(
-        FlutterEdgeInsetsGeometry.fromJson(map).build,
-        (matcher) => matcher
-            .having((p0) => p0.left, 'EdgeInsets.left', 1)
-            .having((p0) => p0.top, 'EdgeInsets.top', 2)
-            .having((p0) => p0.right, 'EdgeInsets.left', 3)
-            .having((p0) => p0.bottom, 'EdgeInsets.bottom', 4),
-      );
     });
   });
 
@@ -79,12 +58,6 @@ void main() {
       };
       fakeBuild<EdgeInsetsDirectional>(
         FlutterEdgeInsetsDirectional.fromJson(map).build,
-        (matcher) => matcher.having(
-            (p0) => p0.bottom, 'EdgeInsetsDirectional.bottom', 10),
-      );
-
-      fakeBuild<EdgeInsetsDirectional>(
-        FlutterEdgeInsetsGeometry.fromJson(map).build,
         (matcher) => matcher.having(
             (p0) => p0.bottom, 'EdgeInsetsDirectional.bottom', 10),
       );
@@ -101,14 +74,6 @@ void main() {
 
       fakeBuild<EdgeInsetsDirectional>(
         FlutterEdgeInsetsDirectional.fromJson(map).build,
-        (matcher) => matcher
-            .having((p0) => p0.start, 'EdgeInsets.start', 1)
-            .having((p0) => p0.top, 'EdgeInsets.top', 2)
-            .having((p0) => p0.end, 'EdgeInsets.end', 3)
-            .having((p0) => p0.bottom, 'EdgeInsets.bottom', 4),
-      );
-      fakeBuild<EdgeInsetsDirectional>(
-        FlutterEdgeInsetsGeometry.fromJson(map).build,
         (matcher) => matcher
             .having((p0) => p0.start, 'EdgeInsets.start', 1)
             .having((p0) => p0.top, 'EdgeInsets.top', 2)

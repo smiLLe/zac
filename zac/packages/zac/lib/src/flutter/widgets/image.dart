@@ -25,7 +25,7 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
   @FreezedUnionValue(FlutterImage.unionValueNetwork)
   factory FlutterImage.network(
     ZacValue<String> src, {
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? scale,
     // ImageFrameBuilder? frameBuilder,
     // ImageLoadingBuilder? loadingBuilder,
@@ -38,7 +38,7 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
     // Animation<double>? opacity,
     FlutterBlendMode? colorBlendMode,
     FlutterBoxFit? fit,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterImageRepeat? repeat,
     FlutterRect? centerSlice,
     ZacValue<bool?>? matchTextDirection,
@@ -53,7 +53,7 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
   @FreezedUnionValue(FlutterImage.unionValueAsset)
   factory FlutterImage.asset(
     ZacValue<String> name, {
-    FlutterKey? key,
+    ZacValue<Key?>? key,
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
@@ -66,7 +66,7 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
 // Animation<double>? opacity,
     FlutterBlendMode? colorBlendMode,
     FlutterBoxFit? fit,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<AlignmentGeometry?>? alignment,
     FlutterImageRepeat? repeat,
     FlutterRect? centerSlice,
     ZacValue<bool?>? matchTextDirection,

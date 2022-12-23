@@ -7,7 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
 
@@ -26,7 +25,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
 
   @FreezedUnionValue(FlutterAppBar.unionValue)
   factory FlutterAppBar({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? leading,
     ZacValue<bool?>? automaticallyImplyLeading,
     ZacValue<Widget?>? title,
@@ -36,7 +35,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
     ZacValue<Widget?>? bottom,
     ZacValue<double?>? elevation,
     FlutterColor? shadowColor,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
     FlutterColor? backgroundColor,
     FlutterColor? foregroundColor,
     FlutterIconThemeData? iconTheme,

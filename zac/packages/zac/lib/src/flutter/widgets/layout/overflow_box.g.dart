@@ -11,10 +11,10 @@ _$_FlutterOverflowBox _$$_FlutterOverflowBoxFromJson(
     _$_FlutterOverflowBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       minWidth: json['minWidth'] == null
           ? null
           : ZacValue<double?>.fromJson(json['minWidth'] as Object),

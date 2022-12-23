@@ -25,13 +25,13 @@ class FlutterButtonBar
 
   @FreezedUnionValue(FlutterButtonBar.unionValue)
   factory FlutterButtonBar({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterMainAxisAlignment? alignment,
     FlutterMainAxisSize? mainAxisSize,
 // FlutterButtonTextTheme? buttonTextTheme,
     ZacValue<double?>? buttonMinWidth,
     ZacValue<double?>? buttonHeight,
-    FlutterEdgeInsetsGeometry? buttonPadding,
+    ZacValue<EdgeInsetsGeometry?>? buttonPadding,
     ZacValue<bool?>? buttonAlignedDropdown,
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
     FlutterVerticalDirection? overflowDirection,

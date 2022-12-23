@@ -29,7 +29,7 @@ FlutterImage _$FlutterImageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterImage {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get scale =>
       throw _privateConstructorUsedError; // ImageFrameBuilder? frameBuilder,
 // ImageLoadingBuilder? loadingBuilder,
@@ -43,7 +43,8 @@ mixin _$FlutterImage {
       throw _privateConstructorUsedError; // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode => throw _privateConstructorUsedError;
   FlutterBoxFit? get fit => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   FlutterImageRepeat? get repeat => throw _privateConstructorUsedError;
   FlutterRect? get centerSlice => throw _privateConstructorUsedError;
   ZacValue<bool?>? get matchTextDirection => throw _privateConstructorUsedError;
@@ -95,7 +96,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final ZacValue<String> src;
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? scale;
 // ImageFrameBuilder? frameBuilder,
@@ -117,7 +118,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final FlutterBoxFit? fit;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final FlutterImageRepeat? repeat;
   @override
@@ -229,7 +230,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
 
 abstract class _FlutterImageNetowrk extends FlutterImage {
   factory _FlutterImageNetowrk(final ZacValue<String> src,
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<double?>? scale,
       final ZacValue<String?>? semanticLabel,
       final ZacValue<bool?>? excludeFromSemantics,
@@ -238,7 +239,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
-      final FlutterAlignmentGeometry? alignment,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final FlutterImageRepeat? repeat,
       final FlutterRect? centerSlice,
       final ZacValue<bool?>? matchTextDirection,
@@ -255,7 +256,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
 
   ZacValue<String> get src;
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<double?>? get scale;
   @override // ImageFrameBuilder? frameBuilder,
@@ -275,7 +276,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   FlutterBoxFit? get fit;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   FlutterImageRepeat? get repeat;
   @override
@@ -328,7 +329,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacValue<String> name;
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
 // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
@@ -350,7 +351,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final FlutterBoxFit? fit;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final FlutterImageRepeat? repeat;
   @override
@@ -454,7 +455,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
 
 abstract class _FlutterImageAsset extends FlutterImage {
   factory _FlutterImageAsset(final ZacValue<String> name,
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<String?>? semanticLabel,
       final ZacValue<bool?>? excludeFromSemantics,
       final ZacValue<double?>? scale,
@@ -463,7 +464,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
       final FlutterColor? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
-      final FlutterAlignmentGeometry? alignment,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final FlutterImageRepeat? repeat,
       final FlutterRect? centerSlice,
       final ZacValue<bool?>? matchTextDirection,
@@ -480,7 +481,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
 
   ZacValue<String> get name;
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override // AssetBundle? bundle,
 // ImageFrameBuilder? frameBuilder,
 // ImageErrorWidgetBuilder? errorBuilder,
@@ -500,7 +501,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   FlutterBoxFit? get fit;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   FlutterImageRepeat? get repeat;
   @override

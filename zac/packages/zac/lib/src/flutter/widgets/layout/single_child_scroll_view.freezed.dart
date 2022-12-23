@@ -21,10 +21,11 @@ FlutterSingleChildScrollView _$FlutterSingleChildScrollViewFromJson(
 
 /// @nodoc
 mixin _$FlutterSingleChildScrollView {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get padding => throw _privateConstructorUsedError;
+  ZacValue<EdgeInsetsGeometry?>? get padding =>
+      throw _privateConstructorUsedError;
   ZacValue<bool?>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
   ZacValue<ScrollController?>? get controller =>
@@ -63,13 +64,13 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
       _$$_FlutterSingleChildScrollViewFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterAxis? scrollDirection;
   @override
   final ZacValue<bool?>? reverse;
   @override
-  final FlutterEdgeInsetsGeometry? padding;
+  final ZacValue<EdgeInsetsGeometry?>? padding;
   @override
   final ZacValue<bool?>? primary;
 // ScrollPhysics? physics,
@@ -140,10 +141,10 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
 abstract class _FlutterSingleChildScrollView
     extends FlutterSingleChildScrollView {
   factory _FlutterSingleChildScrollView(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterAxis? scrollDirection,
       final ZacValue<bool?>? reverse,
-      final FlutterEdgeInsetsGeometry? padding,
+      final ZacValue<EdgeInsetsGeometry?>? padding,
       final ZacValue<bool?>? primary,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<Widget?>? child,
@@ -157,13 +158,13 @@ abstract class _FlutterSingleChildScrollView
       _$_FlutterSingleChildScrollView.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterAxis? get scrollDirection;
   @override
   ZacValue<bool?>? get reverse;
   @override
-  FlutterEdgeInsetsGeometry? get padding;
+  ZacValue<EdgeInsetsGeometry?>? get padding;
   @override
   ZacValue<bool?>? get primary;
   @override // ScrollPhysics? physics,

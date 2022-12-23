@@ -20,10 +20,10 @@ FlutterDrawer _$FlutterDrawerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDrawer {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
+  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   ZacValue<String?>? get semanticLabel => throw _privateConstructorUsedError;
 
@@ -50,13 +50,13 @@ class _$_FlutterDrawer extends _FlutterDrawer {
       _$$_FlutterDrawerFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterColor? backgroundColor;
   @override
   final ZacValue<double?>? elevation;
   @override
-  final FlutterShapeBorder? shape;
+  final ZacValue<ShapeBorder?>? shape;
   @override
   final ZacValue<Widget?>? child;
   @override
@@ -99,10 +99,10 @@ class _$_FlutterDrawer extends _FlutterDrawer {
 
 abstract class _FlutterDrawer extends FlutterDrawer {
   factory _FlutterDrawer(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterColor? backgroundColor,
       final ZacValue<double?>? elevation,
-      final FlutterShapeBorder? shape,
+      final ZacValue<ShapeBorder?>? shape,
       final ZacValue<Widget?>? child,
       final ZacValue<String?>? semanticLabel}) = _$_FlutterDrawer;
   _FlutterDrawer._() : super._();
@@ -111,13 +111,13 @@ abstract class _FlutterDrawer extends FlutterDrawer {
       _$_FlutterDrawer.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterColor? get backgroundColor;
   @override
   ZacValue<double?>? get elevation;
   @override
-  FlutterShapeBorder? get shape;
+  ZacValue<ShapeBorder?>? get shape;
   @override
   ZacValue<Widget?>? get child;
   @override

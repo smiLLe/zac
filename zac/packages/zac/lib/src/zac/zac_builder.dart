@@ -3,6 +3,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'zac_builder.freezed.dart';
 

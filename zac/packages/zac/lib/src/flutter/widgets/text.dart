@@ -24,7 +24,7 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
   @FreezedUnionValue(FlutterText.unionValue)
   factory FlutterText(
     ZacValue<String> data, {
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterTextStyle? style,
     FlutterStrutStyle? strutStyle,
     FlutterTextAlign? textAlign,

@@ -24,7 +24,7 @@ class ZacUpdateContextBuilder
 
   @FreezedUnionValue(ZacUpdateContextBuilder.unionValue)
   factory ZacUpdateContextBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
   }) = _ZacUpdateContextBuilder;
 

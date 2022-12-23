@@ -28,7 +28,7 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuilder<Scaffold> {
 
   @FreezedUnionValue(FlutterScaffold.unionValue)
   factory FlutterScaffold({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     // PreferredSizeWidget?
     ZacValue<Widget?>? appBar,
     ZacValue<Widget?>? body,
@@ -126,7 +126,7 @@ class FlutterScaffoldActions
     ZacValue<Widget> child, {
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
     FlutterClip? clipBehavior,
     FlutterBoxConstraints? constraints,
     ZacValue<bool?>? enableDrag,
@@ -291,14 +291,14 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
 
   @FreezedUnionValue(FlutterSnackBar.unionValue)
   factory FlutterSnackBar({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> content,
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
-    FlutterEdgeInsetsGeometry? margin,
-    FlutterEdgeInsetsGeometry? padding,
+    ZacValue<EdgeInsetsGeometry?>? margin,
+    ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<double?>? width,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
     FlutterSnackBarBehavior? behavior,
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
@@ -374,7 +374,7 @@ class FlutterSnackBarAction
 
   @FreezedUnionValue(FlutterSnackBarAction.unionValue)
   factory FlutterSnackBarAction({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterColor? textColor,
     FlutterColor? disabledTextColor,
     required String label,
@@ -411,15 +411,15 @@ class FlutterMaterialBanner
 
   @FreezedUnionValue(FlutterMaterialBanner.unionValue)
   factory FlutterMaterialBanner({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> content,
     FlutterTextStyle? contentTextStyle,
     required ZacValueList<Widget, List<Widget>> actions,
     ZacValue<double?>? elevation,
     required ZacValue<Widget?>? leading,
     FlutterColor? backgroundColor,
-    FlutterEdgeInsetsGeometry? padding,
-    FlutterEdgeInsetsGeometry? leadingPadding,
+    ZacValue<EdgeInsetsGeometry?>? padding,
+    ZacValue<EdgeInsetsGeometry?>? leadingPadding,
     ZacValue<bool?>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,

@@ -20,7 +20,7 @@ FlutterFlexible _$FlutterFlexibleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterFlexible {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<int?>? get flex => throw _privateConstructorUsedError;
   FlutterFlexFit? get fit => throw _privateConstructorUsedError;
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ class _$_FlutterFlexible extends _FlutterFlexible {
       _$$_FlutterFlexibleFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<int?>? flex;
   @override
@@ -81,7 +81,7 @@ class _$_FlutterFlexible extends _FlutterFlexible {
 
 abstract class _FlutterFlexible extends FlutterFlexible {
   factory _FlutterFlexible(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<int?>? flex,
       final FlutterFlexFit? fit,
       required final ZacValue<Widget> child}) = _$_FlutterFlexible;
@@ -91,7 +91,7 @@ abstract class _FlutterFlexible extends FlutterFlexible {
       _$_FlutterFlexible.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<int?>? get flex;
   @override

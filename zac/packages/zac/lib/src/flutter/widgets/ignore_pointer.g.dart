@@ -11,7 +11,7 @@ _$_FlutterIgnorePointer _$$_FlutterIgnorePointerFromJson(
     _$_FlutterIgnorePointer(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       ignoring: json['ignoring'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['ignoring'] as Object),

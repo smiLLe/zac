@@ -24,10 +24,10 @@ class FlutterDrawer with _$FlutterDrawer implements ZacBuilder<Drawer> {
 
   @FreezedUnionValue(FlutterDrawer.unionValue)
   factory FlutterDrawer({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterColor? backgroundColor,
     ZacValue<double?>? elevation,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
     ZacValue<Widget?>? child,
     ZacValue<String?>? semanticLabel,
   }) = _FlutterDrawer;

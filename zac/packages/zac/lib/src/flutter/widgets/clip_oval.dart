@@ -23,7 +23,7 @@ class FlutterClipOval with _$FlutterClipOval implements ZacBuilder<ClipOval> {
 
   @FreezedUnionValue(FlutterClipOval.unionValue)
   factory FlutterClipOval({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
     FlutterClip? clipBehavior,

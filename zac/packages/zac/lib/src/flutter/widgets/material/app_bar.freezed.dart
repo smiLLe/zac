@@ -20,7 +20,7 @@ FlutterAppBar _$FlutterAppBarFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterAppBar {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get leading => throw _privateConstructorUsedError;
   ZacValue<bool?>? get automaticallyImplyLeading =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$FlutterAppBar {
   ZacValue<Widget?>? get bottom => throw _privateConstructorUsedError;
   ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
   FlutterColor? get shadowColor => throw _privateConstructorUsedError;
-  FlutterShapeBorder? get shape => throw _privateConstructorUsedError;
+  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
   FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
   FlutterColor? get foregroundColor => throw _privateConstructorUsedError;
   FlutterIconThemeData? get iconTheme => throw _privateConstructorUsedError;
@@ -94,7 +94,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
       _$$_FlutterAppBarFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? leading;
   @override
@@ -113,7 +113,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final FlutterColor? shadowColor;
   @override
-  final FlutterShapeBorder? shape;
+  final ZacValue<ShapeBorder?>? shape;
   @override
   final FlutterColor? backgroundColor;
   @override
@@ -243,7 +243,7 @@ class _$_FlutterAppBar extends _FlutterAppBar {
 
 abstract class _FlutterAppBar extends FlutterAppBar {
   factory _FlutterAppBar(
-          {final FlutterKey? key,
+          {final ZacValue<Key?>? key,
           final ZacValue<Widget?>? leading,
           final ZacValue<bool?>? automaticallyImplyLeading,
           final ZacValue<Widget?>? title,
@@ -252,7 +252,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final ZacValue<Widget?>? bottom,
           final ZacValue<double?>? elevation,
           final FlutterColor? shadowColor,
-          final FlutterShapeBorder? shape,
+          final ZacValue<ShapeBorder?>? shape,
           final FlutterColor? backgroundColor,
           final FlutterColor? foregroundColor,
           final FlutterIconThemeData? iconTheme,
@@ -275,7 +275,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
       _$_FlutterAppBar.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get leading;
   @override
@@ -293,7 +293,7 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   FlutterColor? get shadowColor;
   @override
-  FlutterShapeBorder? get shape;
+  ZacValue<ShapeBorder?>? get shape;
   @override
   FlutterColor? get backgroundColor;
   @override

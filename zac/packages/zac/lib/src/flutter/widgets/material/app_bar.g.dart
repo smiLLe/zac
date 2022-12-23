@@ -10,7 +10,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
     _$_FlutterAppBar(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       leading: json['leading'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['leading'] as Object),
@@ -39,7 +39,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
           : FlutterColor.fromJson(

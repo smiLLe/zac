@@ -22,7 +22,7 @@ FlutterSelectableText _$FlutterSelectableTextFromJson(
 /// @nodoc
 mixin _$FlutterSelectableText {
   String get data => throw _privateConstructorUsedError;
-  FlutterKey? get key =>
+  ZacValue<Key?>? get key =>
       throw _privateConstructorUsedError; // FocusNode? focusNode,
   FlutterTextStyle? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
@@ -88,7 +88,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final String data;
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
 // FocusNode? focusNode,
   @override
   final FlutterTextStyle? style;
@@ -217,7 +217,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 
 abstract class _FlutterSelectableText extends FlutterSelectableText {
   factory _FlutterSelectableText(final String data,
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterTextStyle? style,
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
@@ -243,7 +243,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   String get data;
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override // FocusNode? focusNode,
   FlutterTextStyle? get style;
   @override

@@ -20,7 +20,7 @@ FlutterMaterialApp _$FlutterMaterialAppFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterMaterialApp {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<GlobalKey<NavigatorState>>? get navigatorKey =>
       throw _privateConstructorUsedError;
   ZacValue<GlobalKey<ScaffoldMessengerState>>? get scaffoldMessengerKey =>
@@ -99,7 +99,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
       _$$_FlutterMaterialAppFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<GlobalKey<NavigatorState>>? navigatorKey;
   @override
@@ -235,7 +235,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 
 abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<GlobalKey<NavigatorState>>? navigatorKey,
       final ZacValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
       final ZacValue<Widget?>? home,
@@ -259,7 +259,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       _$_FlutterMaterialApp.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<GlobalKey<NavigatorState>>? get navigatorKey;
   @override

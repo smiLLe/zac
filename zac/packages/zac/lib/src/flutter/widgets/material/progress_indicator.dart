@@ -27,7 +27,7 @@ class FlutterProgressIndicator
 
   @FreezedUnionValue(FlutterProgressIndicator.unionValueLinearProgressIndicator)
   factory FlutterProgressIndicator.linear({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,
@@ -40,7 +40,7 @@ class FlutterProgressIndicator
   @FreezedUnionValue(
       FlutterProgressIndicator.unionValueCircularProgressIndicator)
   factory FlutterProgressIndicator.circular({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? value,
     FlutterColor? backgroundColor,
     FlutterColor? color,

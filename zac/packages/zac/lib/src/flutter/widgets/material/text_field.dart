@@ -30,7 +30,7 @@ class FlutterTextField
 
   @FreezedUnionValue(FlutterTextField.unionValue)
   factory FlutterTextField({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
 // TextEditingController? controller,
 // FocusNode? focusNode,
     FlutterInputDecoration? decoration,

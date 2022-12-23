@@ -21,7 +21,7 @@ FlutterIcon _$FlutterIconFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterIcon {
   FlutterIconData? get icon => throw _privateConstructorUsedError;
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<double?>? get size => throw _privateConstructorUsedError;
   FlutterColor? get color => throw _privateConstructorUsedError;
   ZacValue<String?>? get semanticLabel => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ class _$_FlutterIcon extends _FlutterIcon {
   @override
   final FlutterIconData? icon;
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<double?>? size;
   @override
@@ -93,7 +93,7 @@ class _$_FlutterIcon extends _FlutterIcon {
 
 abstract class _FlutterIcon extends FlutterIcon {
   factory _FlutterIcon(final FlutterIconData? icon,
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<double?>? size,
       final FlutterColor? color,
       final ZacValue<String?>? semanticLabel,
@@ -106,7 +106,7 @@ abstract class _FlutterIcon extends FlutterIcon {
   @override
   FlutterIconData? get icon;
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<double?>? get size;
   @override

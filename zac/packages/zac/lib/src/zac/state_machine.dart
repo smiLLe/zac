@@ -102,7 +102,7 @@ class ZacStateMachineProviderBuilder
 
   @FreezedUnionValue(ZacStateMachineProviderBuilder.unionValue)
   factory ZacStateMachineProviderBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<String> family,
     required ZacValue<String> initialState,
     required Map<String, ZacStateConfig> states,
@@ -192,7 +192,7 @@ class ZacStateMachineBuildStateBuilder
 
   @FreezedUnionValue(ZacStateMachineBuildStateBuilder.unionValue)
   factory ZacStateMachineBuildStateBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<String> family,
     required List<String> states,
     ZacValue<Widget?>? unmappedStateWidget,

@@ -27,7 +27,7 @@ class FlutterElevatedButton
 
   @FreezedUnionValue(FlutterElevatedButton.unionValue)
   factory FlutterElevatedButton({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget?>? child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
@@ -37,7 +37,7 @@ class FlutterElevatedButton
 
   @FreezedUnionValue(FlutterElevatedButton.unionValueIcon)
   factory FlutterElevatedButton.icon({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> icon,
     required ZacValue<Widget> label,
     ZacActions? onPressed,
@@ -89,7 +89,7 @@ class FlutterOutlinedButton
 
   @FreezedUnionValue(FlutterOutlinedButton.unionValue)
   factory FlutterOutlinedButton({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
@@ -99,7 +99,7 @@ class FlutterOutlinedButton
 
   @FreezedUnionValue(FlutterOutlinedButton.unionValueIcon)
   factory FlutterOutlinedButton.icon({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> icon,
     required ZacValue<Widget> label,
     ZacActions? onPressed,
@@ -151,7 +151,7 @@ class FlutterTextButton
 
   @FreezedUnionValue(FlutterTextButton.unionValue)
   factory FlutterTextButton({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
@@ -161,7 +161,7 @@ class FlutterTextButton
 
   @FreezedUnionValue(FlutterTextButton.unionValueIcon)
   factory FlutterTextButton.icon({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required ZacValue<Widget> icon,
     required ZacValue<Widget> label,
     ZacActions? onPressed,

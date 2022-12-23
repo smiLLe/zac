@@ -25,9 +25,9 @@ class FlutterFractionallySizedBox
 
   @FreezedUnionValue(FlutterFractionallySizedBox.unionValue)
   factory FlutterFractionallySizedBox({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<double?>? widthFactor,
     ZacValue<double?>? heightFactor,
   }) = _FlutterFractionallySizedBox;

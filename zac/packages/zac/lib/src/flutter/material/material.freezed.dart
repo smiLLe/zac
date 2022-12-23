@@ -21,8 +21,9 @@ FlutterOutlineInputBorder _$FlutterOutlineInputBorderFromJson(
 
 /// @nodoc
 mixin _$FlutterOutlineInputBorder {
-  FlutterBorderSide? get borderSide => throw _privateConstructorUsedError;
-  FlutterBorderRadius? get borderRadius => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get borderSide => throw _privateConstructorUsedError;
+  ZacValue<BorderRadius?>? get borderRadius =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get gapPadding => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -43,9 +44,9 @@ class _$_FlutterOutlineInputBorder extends _FlutterOutlineInputBorder {
       _$$_FlutterOutlineInputBorderFromJson(json);
 
   @override
-  final FlutterBorderSide? borderSide;
+  final ZacValue<BorderSide?>? borderSide;
   @override
-  final FlutterBorderRadius? borderRadius;
+  final ZacValue<BorderRadius?>? borderRadius;
   @override
   final ZacValue<double?>? gapPadding;
 
@@ -83,8 +84,8 @@ class _$_FlutterOutlineInputBorder extends _FlutterOutlineInputBorder {
 
 abstract class _FlutterOutlineInputBorder extends FlutterOutlineInputBorder {
   factory _FlutterOutlineInputBorder(
-      {final FlutterBorderSide? borderSide,
-      final FlutterBorderRadius? borderRadius,
+      {final ZacValue<BorderSide?>? borderSide,
+      final ZacValue<BorderRadius?>? borderRadius,
       final ZacValue<double?>? gapPadding}) = _$_FlutterOutlineInputBorder;
   _FlutterOutlineInputBorder._() : super._();
 
@@ -92,9 +93,9 @@ abstract class _FlutterOutlineInputBorder extends FlutterOutlineInputBorder {
       _$_FlutterOutlineInputBorder.fromJson;
 
   @override
-  FlutterBorderSide? get borderSide;
+  ZacValue<BorderSide?>? get borderSide;
   @override
-  FlutterBorderRadius? get borderRadius;
+  ZacValue<BorderRadius?>? get borderRadius;
   @override
   ZacValue<double?>? get gapPadding;
 }
@@ -106,8 +107,9 @@ FlutterUnderlineInputBorder _$FlutterUnderlineInputBorderFromJson(
 
 /// @nodoc
 mixin _$FlutterUnderlineInputBorder {
-  FlutterBorderSide? get borderSide => throw _privateConstructorUsedError;
-  FlutterBorderRadius? get borderRadius => throw _privateConstructorUsedError;
+  ZacValue<BorderSide?>? get borderSide => throw _privateConstructorUsedError;
+  ZacValue<BorderRadius?>? get borderRadius =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -126,9 +128,9 @@ class _$_FlutterUnderlineInputBorder extends _FlutterUnderlineInputBorder {
       _$$_FlutterUnderlineInputBorderFromJson(json);
 
   @override
-  final FlutterBorderSide? borderSide;
+  final ZacValue<BorderSide?>? borderSide;
   @override
-  final FlutterBorderRadius? borderRadius;
+  final ZacValue<BorderRadius?>? borderRadius;
 
   @override
   String toString() {
@@ -162,8 +164,8 @@ class _$_FlutterUnderlineInputBorder extends _FlutterUnderlineInputBorder {
 abstract class _FlutterUnderlineInputBorder
     extends FlutterUnderlineInputBorder {
   factory _FlutterUnderlineInputBorder(
-          {final FlutterBorderSide? borderSide,
-          final FlutterBorderRadius? borderRadius}) =
+          {final ZacValue<BorderSide?>? borderSide,
+          final ZacValue<BorderRadius?>? borderRadius}) =
       _$_FlutterUnderlineInputBorder;
   _FlutterUnderlineInputBorder._() : super._();
 
@@ -171,7 +173,7 @@ abstract class _FlutterUnderlineInputBorder
       _$_FlutterUnderlineInputBorder.fromJson;
 
   @override
-  FlutterBorderSide? get borderSide;
+  ZacValue<BorderSide?>? get borderSide;
   @override
-  FlutterBorderRadius? get borderRadius;
+  ZacValue<BorderRadius?>? get borderRadius;
 }

@@ -10,23 +10,23 @@ _$_FlutterContainer _$$_FlutterContainerFromJson(Map<String, dynamic> json) =>
     _$_FlutterContainer(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       margin: json['margin'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['margin'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['margin'] as Object),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterAlignmentGeometry.fromJson(json['alignment'] as Object),
+          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       decoration: json['decoration'] == null
           ? null
-          : FlutterDecoration.fromJson(json['decoration'] as Object),
+          : ZacValue<Decoration?>.fromJson(json['decoration'] as Object),
     );

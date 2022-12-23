@@ -11,7 +11,7 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
     _$_FlutterCustomScrollView(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
           : FlutterAxis.fromJson(
@@ -34,7 +34,7 @@ _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
           : ZacValue<bool?>.fromJson(json['shrinkWrap'] as Object),
       center: json['center'] == null
           ? null
-          : FlutterKey.fromJson(json['center'] as Object),
+          : ZacValue<Key?>.fromJson(json['center'] as Object),
       anchor: json['anchor'] == null
           ? null
           : ZacValue<double?>.fromJson(json['anchor'] as Object),

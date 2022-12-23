@@ -1,9 +1,6 @@
-import 'package:zac/src/flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -23,8 +20,8 @@ class FlutterPadding with _$FlutterPadding implements ZacBuilder<Padding> {
 
   @FreezedUnionValue(FlutterPadding.unionValue)
   factory FlutterPadding({
-    FlutterKey? key,
-    required FlutterEdgeInsetsGeometry padding,
+    ZacValue<Key?>? key,
+    required ZacValue<EdgeInsetsGeometry> padding,
     ZacValue<Widget?>? child,
   }) = _FlutterPadding;
 

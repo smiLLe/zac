@@ -24,7 +24,7 @@ class FlutterIntrinsicHeight
 
   @FreezedUnionValue(FlutterIntrinsicHeight.unionValue)
   factory FlutterIntrinsicHeight({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
   }) = _FlutterIntrinsicHeight;
 

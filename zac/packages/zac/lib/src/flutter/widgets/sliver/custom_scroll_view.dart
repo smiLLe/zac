@@ -27,7 +27,7 @@ class FlutterCustomScrollView
 
   @FreezedUnionValue(FlutterCustomScrollView.unionValue)
   factory FlutterCustomScrollView({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     FlutterAxis? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<ScrollController?>? controller,
@@ -35,7 +35,7 @@ class FlutterCustomScrollView
     FlutterScrollPhysics? physics,
 // FlutterScrollBehavior? scrollBehavior,
     ZacValue<bool?>? shrinkWrap,
-    FlutterKey? center,
+    ZacValue<Key?>? center,
     ZacValue<double?>? anchor,
     ZacValue<double?>? cacheExtent,
     ZacValueList<Widget, List<Widget>?>? slivers,

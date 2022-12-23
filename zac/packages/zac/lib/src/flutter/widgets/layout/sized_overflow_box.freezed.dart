@@ -21,9 +21,10 @@ FlutterSizedOverflowBox _$FlutterSizedOverflowBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterSizedOverflowBox {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterSize get size => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -44,11 +45,11 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
       _$$_FlutterSizedOverflowBoxFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterSize size;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final ZacValue<Widget?>? child;
 
@@ -84,9 +85,9 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
 
 abstract class _FlutterSizedOverflowBox extends FlutterSizedOverflowBox {
   factory _FlutterSizedOverflowBox(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final FlutterSize size,
-      final FlutterAlignmentGeometry? alignment,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final ZacValue<Widget?>? child}) = _$_FlutterSizedOverflowBox;
   _FlutterSizedOverflowBox._() : super._();
 
@@ -94,11 +95,11 @@ abstract class _FlutterSizedOverflowBox extends FlutterSizedOverflowBox {
       _$_FlutterSizedOverflowBox.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterSize get size;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   ZacValue<Widget?>? get child;
 }

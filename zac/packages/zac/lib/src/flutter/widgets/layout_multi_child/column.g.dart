@@ -10,7 +10,7 @@ _$_FlutterColumn _$$_FlutterColumnFromJson(Map<String, dynamic> json) =>
     _$_FlutterColumn(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       mainAxisAlignment: json['mainAxisAlignment'] == null
           ? null
           : FlutterMainAxisAlignment.fromJson(

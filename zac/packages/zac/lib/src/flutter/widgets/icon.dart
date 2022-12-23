@@ -23,7 +23,7 @@ class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
   @FreezedUnionValue(FlutterIcon.unionValue)
   factory FlutterIcon(
     FlutterIconData? icon, {
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? size,
     FlutterColor? color,
     ZacValue<String?>? semanticLabel,

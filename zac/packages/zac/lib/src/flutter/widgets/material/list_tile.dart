@@ -24,7 +24,7 @@ class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
 
   @FreezedUnionValue(FlutterListTile.unionValue)
   factory FlutterListTile({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? leading,
     ZacValue<Widget?>? title,
     ZacValue<Widget?>? subtitle,
@@ -32,12 +32,12 @@ class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
     ZacValue<bool?>? isThreeLine,
     ZacValue<bool?>? dense,
 // FlutterVisualDensity? visualDensity,
-    FlutterShapeBorder? shape,
+    ZacValue<ShapeBorder?>? shape,
 // FlutterListTileStyle? style,
     FlutterColor? selectedColor,
     FlutterColor? iconColor,
     FlutterColor? textColor,
-    FlutterEdgeInsetsGeometry? contentPadding,
+    ZacValue<EdgeInsetsGeometry?>? contentPadding,
     ZacValue<bool?>? enabled,
     ZacActions? onTap,
     ZacActions? onLongPress,

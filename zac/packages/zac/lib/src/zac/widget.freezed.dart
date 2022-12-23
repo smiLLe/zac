@@ -29,7 +29,7 @@ ZacWidgetBuilder _$ZacWidgetBuilderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacWidgetBuilder {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   Object get data => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -52,7 +52,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
       _$$_ZacWidgetBuilderFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final Object data;
 
@@ -99,7 +99,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
 
 abstract class _ZacWidgetBuilder extends ZacWidgetBuilder {
   factory _ZacWidgetBuilder(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final Object data}) = _$_ZacWidgetBuilder;
   _ZacWidgetBuilder._() : super._();
 
@@ -107,7 +107,7 @@ abstract class _ZacWidgetBuilder extends ZacWidgetBuilder {
       _$_ZacWidgetBuilder.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   Object get data;
 }
@@ -125,7 +125,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
       _$$_ZacWidgetBuilderIsolateFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final Object data;
   @override
@@ -177,7 +177,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
 
 abstract class _ZacWidgetBuilderIsolate extends ZacWidgetBuilder {
   factory _ZacWidgetBuilderIsolate(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final Object data,
       final ZacValue<Widget?>? errorChild}) = _$_ZacWidgetBuilderIsolate;
   _ZacWidgetBuilderIsolate._() : super._();
@@ -186,7 +186,7 @@ abstract class _ZacWidgetBuilderIsolate extends ZacWidgetBuilder {
       _$_ZacWidgetBuilderIsolate.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   Object get data;
   ZacValue<Widget?>? get errorChild;

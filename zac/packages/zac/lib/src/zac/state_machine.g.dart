@@ -26,7 +26,7 @@ _$_ZacStateMachineProviderBuilder _$$_ZacStateMachineProviderBuilderFromJson(
     _$_ZacStateMachineProviderBuilder(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       family: ZacValue<String>.fromJson(json['family'] as Object),
       initialState: ZacValue<String>.fromJson(json['initialState'] as Object),
       states: (json['states'] as Map<String, dynamic>).map(
@@ -44,7 +44,7 @@ _$_ZacStateMachineBuildStateBuilder
         _$_ZacStateMachineBuildStateBuilder(
           key: json['key'] == null
               ? null
-              : FlutterKey.fromJson(json['key'] as Object),
+              : ZacValue<Key?>.fromJson(json['key'] as Object),
           family: ZacValue<String>.fromJson(json['family'] as Object),
           states: (json['states'] as List<dynamic>)
               .map((e) => e as String)

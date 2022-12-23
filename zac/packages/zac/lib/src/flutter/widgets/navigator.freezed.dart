@@ -492,7 +492,7 @@ FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterNavigator {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   FlutterRouteFactory? get onGenerateRoute =>
       throw _privateConstructorUsedError;
   FlutterRouteFactory? get onUnknownRoute => throw _privateConstructorUsedError;
@@ -521,7 +521,7 @@ class _$_FlutterNavigator extends _FlutterNavigator {
       _$$_FlutterNavigatorFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final FlutterRouteFactory? onGenerateRoute;
   @override
@@ -568,7 +568,7 @@ class _$_FlutterNavigator extends _FlutterNavigator {
 
 abstract class _FlutterNavigator extends FlutterNavigator {
   factory _FlutterNavigator(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
       final ZacValue<String?>? initialRoute,
@@ -579,7 +579,7 @@ abstract class _FlutterNavigator extends FlutterNavigator {
       _$_FlutterNavigator.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   FlutterRouteFactory? get onGenerateRoute;
   @override

@@ -22,7 +22,7 @@ class FlutterOffstage with _$FlutterOffstage implements ZacBuilder<Offstage> {
 
   @FreezedUnionValue(FlutterOffstage.unionValue)
   factory FlutterOffstage({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<bool?>? offstage,
     ZacValue<Widget?>? child,
   }) = _FlutterOffstage;

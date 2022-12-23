@@ -80,7 +80,7 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
     _$_FlutterNavigator(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
           : FlutterRouteFactory.fromJson(

@@ -12,6 +12,12 @@ part 'zac_value.g.dart';
 
 bool isType<T, Y>() => T == Y;
 
+extension XZacBuilder<T> on ZacBuilder<T> {
+  ZacValue<T> toZacValue() {
+    return ZacValue<T>.builder(this);
+  }
+}
+
 class _BuiltInValueConverter<T> implements JsonConverter<T, Object> {
   const _BuiltInValueConverter();
 

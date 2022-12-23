@@ -26,7 +26,7 @@ class FlutterGestureDetector
 
   @FreezedUnionValue(FlutterGestureDetector.unionValue)
   factory FlutterGestureDetector({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     ZacActions? onTap,
     ZacActions? onSecondaryTap,

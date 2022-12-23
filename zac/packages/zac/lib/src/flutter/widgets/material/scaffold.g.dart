@@ -10,7 +10,7 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
     _$_FlutterScaffold(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       appBar: json['appBar'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['appBar'] as Object),
@@ -110,7 +110,7 @@ _$_FlutterScaffoldActionsShowBottomSheet
               : ZacValue<double?>.fromJson(json['elevation'] as Object),
           shape: json['shape'] == null
               ? null
-              : FlutterShapeBorder.fromJson(json['shape'] as Object),
+              : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
           clipBehavior: json['clipBehavior'] == null
               ? null
               : FlutterClip.fromJson(
@@ -174,7 +174,7 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
     _$_FlutterSnackBar(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       content: ZacValue<Widget>.fromJson(json['content'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
@@ -185,16 +185,16 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
       margin: json['margin'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['margin'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['margin'] as Object),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       width: json['width'] == null
           ? null
           : ZacValue<double?>.fromJson(json['width'] as Object),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       behavior: json['behavior'] == null
           ? null
           : FlutterSnackBarBehavior.fromJson(
@@ -225,7 +225,7 @@ _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
     _$_FlutterSnackBarAction(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       textColor: json['textColor'] == null
           ? null
           : FlutterColor.fromJson(json['textColor'] as Map<String, dynamic>),
@@ -244,7 +244,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
     _$_FlutterMaterialBanner(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       content: ZacValue<Widget>.fromJson(json['content'] as Object),
       contentTextStyle: json['contentTextStyle'] == null
           ? null
@@ -264,10 +264,10 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
               json['backgroundColor'] as Map<String, dynamic>),
       padding: json['padding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['padding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
       leadingPadding: json['leadingPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['leadingPadding'] as Object),
       forceActionsBelow: json['forceActionsBelow'] == null
           ? null

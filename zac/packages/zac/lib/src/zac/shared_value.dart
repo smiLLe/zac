@@ -324,7 +324,7 @@ class SharedValueProviderBuilder
 
   @FreezedUnionValue(SharedValueProviderBuilder.unionValue)
   factory SharedValueProviderBuilder({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     required SharedValueType value,
     ZacTransformers? transformer,
     required SharedValueFamily family,

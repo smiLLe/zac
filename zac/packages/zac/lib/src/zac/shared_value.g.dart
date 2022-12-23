@@ -41,7 +41,7 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
     _$_SharedValueProviderBuilder(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       value: json['value'],
       transformer: json['transformer'] == null
           ? null

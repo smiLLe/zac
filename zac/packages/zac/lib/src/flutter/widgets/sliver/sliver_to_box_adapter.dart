@@ -24,7 +24,7 @@ class FlutterSliverToBoxAdapter
 
   @FreezedUnionValue(FlutterSliverToBoxAdapter.unionValue)
   factory FlutterSliverToBoxAdapter({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
   }) = _FlutterSliverToBoxAdapter;
 

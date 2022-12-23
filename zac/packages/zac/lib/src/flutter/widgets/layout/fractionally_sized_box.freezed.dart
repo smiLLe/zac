@@ -21,9 +21,10 @@ FlutterFractionallySizedBox _$FlutterFractionallySizedBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterFractionallySizedBox {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
   ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
 
@@ -49,11 +50,11 @@ class _$_FlutterFractionallySizedBox extends _FlutterFractionallySizedBox {
       _$$_FlutterFractionallySizedBoxFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? child;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final ZacValue<double?>? widthFactor;
   @override
@@ -96,9 +97,9 @@ class _$_FlutterFractionallySizedBox extends _FlutterFractionallySizedBox {
 abstract class _FlutterFractionallySizedBox
     extends FlutterFractionallySizedBox {
   factory _FlutterFractionallySizedBox(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? child,
-      final FlutterAlignmentGeometry? alignment,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final ZacValue<double?>? widthFactor,
       final ZacValue<double?>? heightFactor}) = _$_FlutterFractionallySizedBox;
   _FlutterFractionallySizedBox._() : super._();
@@ -107,11 +108,11 @@ abstract class _FlutterFractionallySizedBox
       _$_FlutterFractionallySizedBox.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get child;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   ZacValue<double?>? get widthFactor;
   @override

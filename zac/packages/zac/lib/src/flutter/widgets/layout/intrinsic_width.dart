@@ -24,7 +24,7 @@ class FlutterIntrinsicWidth
 
   @FreezedUnionValue(FlutterIntrinsicWidth.unionValue)
   factory FlutterIntrinsicWidth({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
   }) = _FlutterIntrinsicWidth;
 

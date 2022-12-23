@@ -25,8 +25,8 @@ class FlutterOverflowBox
 
   @FreezedUnionValue(FlutterOverflowBox.unionValue)
   factory FlutterOverflowBox({
-    FlutterKey? key,
-    FlutterAlignmentGeometry? alignment,
+    ZacValue<Key?>? key,
+    ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<double?>? minWidth,
     ZacValue<double?>? maxWidth,
     ZacValue<double?>? minHeight,

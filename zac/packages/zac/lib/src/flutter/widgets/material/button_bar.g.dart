@@ -10,7 +10,7 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
     _$_FlutterButtonBar(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       alignment: json['alignment'] == null
           ? null
           : FlutterMainAxisAlignment.fromJson(
@@ -27,7 +27,8 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['buttonHeight'] as Object),
       buttonPadding: json['buttonPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(json['buttonPadding'] as Object),
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
+              json['buttonPadding'] as Object),
       buttonAlignedDropdown: json['buttonAlignedDropdown'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['buttonAlignedDropdown'] as Object),

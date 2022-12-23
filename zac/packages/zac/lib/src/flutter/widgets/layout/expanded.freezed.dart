@@ -20,7 +20,7 @@ FlutterExpanded _$FlutterExpandedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterExpanded {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<int?>? get flex => throw _privateConstructorUsedError;
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
@@ -40,7 +40,7 @@ class _$_FlutterExpanded extends _FlutterExpanded {
       _$$_FlutterExpandedFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<int?>? flex;
   @override
@@ -76,7 +76,7 @@ class _$_FlutterExpanded extends _FlutterExpanded {
 
 abstract class _FlutterExpanded extends FlutterExpanded {
   factory _FlutterExpanded(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<int?>? flex,
       required final ZacValue<Widget> child}) = _$_FlutterExpanded;
   _FlutterExpanded._() : super._();
@@ -85,7 +85,7 @@ abstract class _FlutterExpanded extends FlutterExpanded {
       _$_FlutterExpanded.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<int?>? get flex;
   @override

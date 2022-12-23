@@ -20,7 +20,7 @@ FlutterSafeArea _$FlutterSafeAreaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSafeArea {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<bool?>? get left => throw _privateConstructorUsedError;
   ZacValue<bool?>? get top => throw _privateConstructorUsedError;
   ZacValue<bool?>? get right => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
       _$$_FlutterSafeAreaFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<bool?>? left;
   @override
@@ -109,7 +109,7 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
 
 abstract class _FlutterSafeArea extends FlutterSafeArea {
   factory _FlutterSafeArea(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<bool?>? left,
       final ZacValue<bool?>? top,
       final ZacValue<bool?>? right,
@@ -123,7 +123,7 @@ abstract class _FlutterSafeArea extends FlutterSafeArea {
       _$_FlutterSafeArea.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<bool?>? get left;
   @override

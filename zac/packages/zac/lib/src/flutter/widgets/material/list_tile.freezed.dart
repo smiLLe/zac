@@ -20,7 +20,7 @@ FlutterListTile _$FlutterListTileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterListTile {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get leading => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get title => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get subtitle => throw _privateConstructorUsedError;
@@ -28,12 +28,12 @@ mixin _$FlutterListTile {
   ZacValue<bool?>? get isThreeLine => throw _privateConstructorUsedError;
   ZacValue<bool?>? get dense =>
       throw _privateConstructorUsedError; // FlutterVisualDensity? visualDensity,
-  FlutterShapeBorder? get shape =>
+  ZacValue<ShapeBorder?>? get shape =>
       throw _privateConstructorUsedError; // FlutterListTileStyle? style,
   FlutterColor? get selectedColor => throw _privateConstructorUsedError;
   FlutterColor? get iconColor => throw _privateConstructorUsedError;
   FlutterColor? get textColor => throw _privateConstructorUsedError;
-  FlutterEdgeInsetsGeometry? get contentPadding =>
+  ZacValue<EdgeInsetsGeometry?>? get contentPadding =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get enabled => throw _privateConstructorUsedError;
   ZacActions? get onTap => throw _privateConstructorUsedError;
@@ -95,7 +95,7 @@ class _$_FlutterListTile extends _FlutterListTile {
       _$$_FlutterListTileFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final ZacValue<Widget?>? leading;
   @override
@@ -110,7 +110,7 @@ class _$_FlutterListTile extends _FlutterListTile {
   final ZacValue<bool?>? dense;
 // FlutterVisualDensity? visualDensity,
   @override
-  final FlutterShapeBorder? shape;
+  final ZacValue<ShapeBorder?>? shape;
 // FlutterListTileStyle? style,
   @override
   final FlutterColor? selectedColor;
@@ -119,7 +119,7 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final FlutterColor? textColor;
   @override
-  final FlutterEdgeInsetsGeometry? contentPadding;
+  final ZacValue<EdgeInsetsGeometry?>? contentPadding;
   @override
   final ZacValue<bool?>? enabled;
   @override
@@ -246,18 +246,18 @@ class _$_FlutterListTile extends _FlutterListTile {
 
 abstract class _FlutterListTile extends FlutterListTile {
   factory _FlutterListTile(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? leading,
       final ZacValue<Widget?>? title,
       final ZacValue<Widget?>? subtitle,
       final ZacValue<Widget?>? trailing,
       final ZacValue<bool?>? isThreeLine,
       final ZacValue<bool?>? dense,
-      final FlutterShapeBorder? shape,
+      final ZacValue<ShapeBorder?>? shape,
       final FlutterColor? selectedColor,
       final FlutterColor? iconColor,
       final FlutterColor? textColor,
-      final FlutterEdgeInsetsGeometry? contentPadding,
+      final ZacValue<EdgeInsetsGeometry?>? contentPadding,
       final ZacValue<bool?>? enabled,
       final ZacActions? onTap,
       final ZacActions? onLongPress,
@@ -277,7 +277,7 @@ abstract class _FlutterListTile extends FlutterListTile {
       _$_FlutterListTile.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   ZacValue<Widget?>? get leading;
   @override
@@ -291,7 +291,7 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   ZacValue<bool?>? get dense;
   @override // FlutterVisualDensity? visualDensity,
-  FlutterShapeBorder? get shape;
+  ZacValue<ShapeBorder?>? get shape;
   @override // FlutterListTileStyle? style,
   FlutterColor? get selectedColor;
   @override
@@ -299,7 +299,7 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   FlutterColor? get textColor;
   @override
-  FlutterEdgeInsetsGeometry? get contentPadding;
+  ZacValue<EdgeInsetsGeometry?>? get contentPadding;
   @override
   ZacValue<bool?>? get enabled;
   @override

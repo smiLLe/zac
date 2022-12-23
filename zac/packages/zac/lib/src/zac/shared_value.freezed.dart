@@ -295,7 +295,7 @@ SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
 
 /// @nodoc
 mixin _$SharedValueProviderBuilder {
-  FlutterKey? get key => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   Object? get value => throw _privateConstructorUsedError;
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
@@ -325,7 +325,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       _$$_SharedValueProviderBuilderFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
   final Object? value;
   @override
@@ -380,7 +380,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
 
 abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   factory _SharedValueProviderBuilder(
-      {final FlutterKey? key,
+      {final ZacValue<Key?>? key,
       required final Object? value,
       final ZacTransformers? transformer,
       required final Object family,
@@ -392,7 +392,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       _$_SharedValueProviderBuilder.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
   Object? get value;
   @override

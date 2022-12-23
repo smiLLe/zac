@@ -10,7 +10,7 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
     _$_FlutterListTile(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       leading: json['leading'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['leading'] as Object),
@@ -31,7 +31,7 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['dense'] as Object),
       shape: json['shape'] == null
           ? null
-          : FlutterShapeBorder.fromJson(json['shape'] as Object),
+          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       selectedColor: json['selectedColor'] == null
           ? null
           : FlutterColor.fromJson(
@@ -44,7 +44,7 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : FlutterColor.fromJson(json['textColor'] as Map<String, dynamic>),
       contentPadding: json['contentPadding'] == null
           ? null
-          : FlutterEdgeInsetsGeometry.fromJson(
+          : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['contentPadding'] as Object),
       enabled: json['enabled'] == null
           ? null

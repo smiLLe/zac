@@ -22,7 +22,7 @@ class FlutterDivider with _$FlutterDivider implements ZacBuilder<Divider> {
 
   @FreezedUnionValue(FlutterDivider.unionValue)
   factory FlutterDivider({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<double?>? height,
     ZacValue<double?>? thickness,
     ZacValue<double?>? indent,

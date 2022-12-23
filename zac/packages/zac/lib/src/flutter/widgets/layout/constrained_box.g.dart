@@ -11,7 +11,7 @@ _$_FlutterConstrainedBox _$$_FlutterConstrainedBoxFromJson(
     _$_FlutterConstrainedBox(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       constraints: FlutterBoxConstraints.fromJson(
           json['constraints'] as Map<String, dynamic>),
       child: json['child'] == null

@@ -11,6 +11,6 @@ _$_ZacUpdateContextBuilder _$$_ZacUpdateContextBuilderFromJson(
     _$_ZacUpdateContextBuilder(
       key: json['key'] == null
           ? null
-          : FlutterKey.fromJson(json['key'] as Object),
+          : ZacValue<Key?>.fromJson(json['key'] as Object),
       child: ZacValue<Widget>.fromJson(json['child'] as Object),
     );

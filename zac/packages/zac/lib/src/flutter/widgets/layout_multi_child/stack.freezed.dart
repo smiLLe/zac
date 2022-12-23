@@ -20,8 +20,9 @@ FlutterStack _$FlutterStackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterStack {
-  FlutterKey? get key => throw _privateConstructorUsedError;
-  FlutterAlignmentGeometry? get alignment => throw _privateConstructorUsedError;
+  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacValue<AlignmentGeometry?>? get alignment =>
+      throw _privateConstructorUsedError;
   FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
   FlutterStackFit? get fit => throw _privateConstructorUsedError;
   FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
@@ -51,9 +52,9 @@ class _$_FlutterStack extends _FlutterStack {
       _$$_FlutterStackFromJson(json);
 
   @override
-  final FlutterKey? key;
+  final ZacValue<Key?>? key;
   @override
-  final FlutterAlignmentGeometry? alignment;
+  final ZacValue<AlignmentGeometry?>? alignment;
   @override
   final FlutterTextDirection? textDirection;
   @override
@@ -101,8 +102,8 @@ class _$_FlutterStack extends _FlutterStack {
 
 abstract class _FlutterStack extends FlutterStack {
   factory _FlutterStack(
-      {final FlutterKey? key,
-      final FlutterAlignmentGeometry? alignment,
+      {final ZacValue<Key?>? key,
+      final ZacValue<AlignmentGeometry?>? alignment,
       final FlutterTextDirection? textDirection,
       final FlutterStackFit? fit,
       final FlutterClip? clipBehavior,
@@ -113,9 +114,9 @@ abstract class _FlutterStack extends FlutterStack {
       _$_FlutterStack.fromJson;
 
   @override
-  FlutterKey? get key;
+  ZacValue<Key?>? get key;
   @override
-  FlutterAlignmentGeometry? get alignment;
+  ZacValue<AlignmentGeometry?>? get alignment;
   @override
   FlutterTextDirection? get textDirection;
   @override

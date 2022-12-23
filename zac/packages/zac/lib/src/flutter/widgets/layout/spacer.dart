@@ -21,7 +21,7 @@ class FlutterSpacer with _$FlutterSpacer implements ZacBuilder<Spacer> {
 
   @FreezedUnionValue(FlutterSpacer.unionValue)
   factory FlutterSpacer({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<int?>? flex,
   }) = _FlutterSpacer;
 

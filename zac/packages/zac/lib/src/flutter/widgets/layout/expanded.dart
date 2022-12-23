@@ -22,7 +22,7 @@ class FlutterExpanded with _$FlutterExpanded implements ZacBuilder<Expanded> {
 
   @FreezedUnionValue(FlutterExpanded.unionValue)
   factory FlutterExpanded({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<int?>? flex,
     required ZacValue<Widget> child,
   }) = _FlutterExpanded;

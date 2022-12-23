@@ -25,7 +25,7 @@ class FlutterFractionalTranslation
 
   @FreezedUnionValue(FlutterFractionalTranslation.unionValue)
   factory FlutterFractionalTranslation({
-    FlutterKey? key,
+    ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     required FlutterOffset translation,
     ZacValue<bool?>? transformHitTests,
