@@ -21,15 +21,18 @@ FlutterRow _$FlutterRowFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterRow {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterMainAxisAlignment? get mainAxisAlignment =>
+  ZacValue<MainAxisAlignment?>? get mainAxisAlignment =>
       throw _privateConstructorUsedError;
-  FlutterMainAxisSize? get mainAxisSize => throw _privateConstructorUsedError;
-  FlutterCrossAxisAlignment? get crossAxisAlignment =>
+  ZacValue<MainAxisSize?>? get mainAxisSize =>
       throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  FlutterVerticalDirection? get verticalDirection =>
+  ZacValue<CrossAxisAlignment?>? get crossAxisAlignment =>
       throw _privateConstructorUsedError;
-  FlutterTextBaseline? get textBaseline => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
+  ZacValue<VerticalDirection?>? get verticalDirection =>
+      throw _privateConstructorUsedError;
+  ZacValue<TextBaseline?>? get textBaseline =>
+      throw _privateConstructorUsedError;
   ZacValueList<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
@@ -60,17 +63,17 @@ class _$_FlutterRow extends _FlutterRow {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterMainAxisAlignment? mainAxisAlignment;
+  final ZacValue<MainAxisAlignment?>? mainAxisAlignment;
   @override
-  final FlutterMainAxisSize? mainAxisSize;
+  final ZacValue<MainAxisSize?>? mainAxisSize;
   @override
-  final FlutterCrossAxisAlignment? crossAxisAlignment;
+  final ZacValue<CrossAxisAlignment?>? crossAxisAlignment;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
-  final FlutterVerticalDirection? verticalDirection;
+  final ZacValue<VerticalDirection?>? verticalDirection;
   @override
-  final FlutterTextBaseline? textBaseline;
+  final ZacValue<TextBaseline?>? textBaseline;
   @override
   final ZacValueList<Widget, List<Widget>?>? children;
 
@@ -126,12 +129,12 @@ class _$_FlutterRow extends _FlutterRow {
 abstract class _FlutterRow extends FlutterRow {
   factory _FlutterRow(
       {final ZacValue<Key?>? key,
-      final FlutterMainAxisAlignment? mainAxisAlignment,
-      final FlutterMainAxisSize? mainAxisSize,
-      final FlutterCrossAxisAlignment? crossAxisAlignment,
-      final FlutterTextDirection? textDirection,
-      final FlutterVerticalDirection? verticalDirection,
-      final FlutterTextBaseline? textBaseline,
+      final ZacValue<MainAxisAlignment?>? mainAxisAlignment,
+      final ZacValue<MainAxisSize?>? mainAxisSize,
+      final ZacValue<CrossAxisAlignment?>? crossAxisAlignment,
+      final ZacValue<TextDirection?>? textDirection,
+      final ZacValue<VerticalDirection?>? verticalDirection,
+      final ZacValue<TextBaseline?>? textBaseline,
       final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterRow;
   _FlutterRow._() : super._();
 
@@ -141,17 +144,17 @@ abstract class _FlutterRow extends FlutterRow {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterMainAxisAlignment? get mainAxisAlignment;
+  ZacValue<MainAxisAlignment?>? get mainAxisAlignment;
   @override
-  FlutterMainAxisSize? get mainAxisSize;
+  ZacValue<MainAxisSize?>? get mainAxisSize;
   @override
-  FlutterCrossAxisAlignment? get crossAxisAlignment;
+  ZacValue<CrossAxisAlignment?>? get crossAxisAlignment;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
-  FlutterVerticalDirection? get verticalDirection;
+  ZacValue<VerticalDirection?>? get verticalDirection;
   @override
-  FlutterTextBaseline? get textBaseline;
+  ZacValue<TextBaseline?>? get textBaseline;
   @override
   ZacValueList<Widget, List<Widget>?>? get children;
 }

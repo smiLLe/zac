@@ -25,9 +25,9 @@ class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
     FlutterIconData? icon, {
     ZacValue<Key?>? key,
     ZacValue<double?>? size,
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     ZacValue<String?>? semanticLabel,
-    FlutterTextDirection? textDirection,
+    ZacValue<TextDirection?>? textDirection,
   }) = _FlutterIcon;
 
   Icon _buildWidget(ZacContext zacContext) {
@@ -89,7 +89,7 @@ class FlutterIconThemeData
 
   @FreezedUnionValue('f:1:IconThemeData')
   factory FlutterIconThemeData({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     ZacValue<double?>? opacity,
     ZacValue<double?>? size,
   }) = _FlutterIconThemeData;

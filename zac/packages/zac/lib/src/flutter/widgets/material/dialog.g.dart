@@ -14,18 +14,16 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(
-              json['insetPadding'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       shape: json['shape'] == null
           ? null
           : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
@@ -60,16 +58,14 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['titlePadding'] as Object),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['titleTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['titleTextStyle'] as Object),
       contentPadding: json['contentPadding'] == null
           ? null
           : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['contentPadding'] as Object),
       contentTextStyle: json['contentTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['contentTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['contentTextStyle'] as Object),
       actionsPadding: json['actionsPadding'] == null
           ? null
           : ZacValue<EdgeInsetsGeometry?>.fromJson(
@@ -80,8 +76,8 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['actionsAlignment'] as Map<String, dynamic>),
       actionsOverflowDirection: json['actionsOverflowDirection'] == null
           ? null
-          : FlutterVerticalDirection.fromJson(
-              json['actionsOverflowDirection'] as Map<String, dynamic>),
+          : ZacValue<VerticalDirection?>.fromJson(
+              json['actionsOverflowDirection'] as Object),
       actionsOverflowButtonSpacing: json['actionsOverflowButtonSpacing'] == null
           ? null
           : ZacValue<double?>.fromJson(
@@ -92,8 +88,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['buttonPadding'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
@@ -102,11 +97,10 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : ZacValue<String?>.fromJson(json['semanticLabel'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(
-              json['insetPadding'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       shape: json['shape'] == null
           ? null
           : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
@@ -138,16 +132,14 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
               json['titlePadding'] as Object),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['titleTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['titleTextStyle'] as Object),
       contentPadding: json['contentPadding'] == null
           ? null
           : ZacValue<EdgeInsetsGeometry?>.fromJson(
               json['contentPadding'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
@@ -156,11 +148,10 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
           : ZacValue<String?>.fromJson(json['semanticLabel'] as Object),
       insetPadding: json['insetPadding'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(
-              json['insetPadding'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       shape: json['shape'] == null
           ? null
           : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
@@ -184,8 +175,7 @@ _$_FlutterDialogsSimpleDialogOption
               : ZacActions.fromJson(json['onPressed'] as Object),
           padding: json['padding'] == null
               ? null
-              : FlutterEdgeInsets.fromJson(
-                  json['padding'] as Map<String, dynamic>),
+              : ZacValue<EdgeInsets?>.fromJson(json['padding'] as Object),
           $type: json['converter'] as String?,
         );
 
@@ -198,7 +188,7 @@ _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
           : ZacValue<bool?>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
-          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['barrierColor'] as Object),
       barrierLabel: json['barrierLabel'] == null
           ? null
           : ZacValue<String?>.fromJson(json['barrierLabel'] as Object),
@@ -210,6 +200,5 @@ _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
           : ZacValue<bool?>.fromJson(json['useRootNavigator'] as Object),
       routeSettings: json['routeSettings'] == null
           ? null
-          : FlutterRouteSettings.fromJson(
-              json['routeSettings'] as Map<String, dynamic>),
+          : ZacValue<RouteSettings?>.fromJson(json['routeSettings'] as Object),
     );

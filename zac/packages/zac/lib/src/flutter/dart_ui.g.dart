@@ -827,7 +827,7 @@ _$_FlutterShadowShadow _$$_FlutterShadowShadowFromJson(
     _$_FlutterShadowShadow(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       offset: json['offset'] == null
           ? null
           : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),

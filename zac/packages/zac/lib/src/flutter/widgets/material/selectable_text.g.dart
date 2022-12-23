@@ -15,7 +15,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       style: json['style'] == null
           ? null
-          : FlutterTextStyle.fromJson(json['style'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['style'] as Object),
       strutStyle: json['strutStyle'] == null
           ? null
           : FlutterStrutStyle.fromJson(
@@ -26,8 +26,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['textAlign'] as Map<String, dynamic>),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
           : ZacValue<double?>.fromJson(json['textScaleFactor'] as Object),
@@ -55,7 +54,7 @@ _$_FlutterSelectableText _$$_FlutterSelectableTextFromJson(
               json['cursorRadius'] as Map<String, dynamic>),
       cursorColor: json['cursorColor'] == null
           ? null
-          : FlutterColor.fromJson(json['cursorColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['cursorColor'] as Object),
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
           : ZacValue<bool?>.fromJson(

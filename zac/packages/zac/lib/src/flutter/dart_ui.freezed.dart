@@ -9133,7 +9133,7 @@ FlutterShadow _$FlutterShadowFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterShadow {
-  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
   ZacValue<double?>? get blurRadius => throw _privateConstructorUsedError;
 
@@ -9154,7 +9154,7 @@ class _$_FlutterShadowShadow extends _FlutterShadowShadow {
       _$$_FlutterShadowShadowFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
   final FlutterOffset? offset;
   @override
@@ -9191,7 +9191,7 @@ class _$_FlutterShadowShadow extends _FlutterShadowShadow {
 
 abstract class _FlutterShadowShadow extends FlutterShadow {
   factory _FlutterShadowShadow(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final FlutterOffset? offset,
       final ZacValue<double?>? blurRadius}) = _$_FlutterShadowShadow;
   _FlutterShadowShadow._() : super._();
@@ -9200,7 +9200,7 @@ abstract class _FlutterShadowShadow extends FlutterShadow {
       _$_FlutterShadowShadow.fromJson;
 
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
   FlutterOffset? get offset;
   @override

@@ -13,10 +13,10 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       shadowColor: json['shadowColor'] == null
           ? null
-          : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['shadowColor'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
@@ -31,7 +31,7 @@ _$_FlutterCard _$$_FlutterCardFromJson(Map<String, dynamic> json) =>
           : ZacValue<EdgeInsetsGeometry?>.fromJson(json['margin'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),

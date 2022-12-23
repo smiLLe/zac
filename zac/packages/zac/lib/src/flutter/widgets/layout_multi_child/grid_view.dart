@@ -1,15 +1,9 @@
-import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/widgets/keyboard.dart';
 
 part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
@@ -27,14 +21,14 @@ class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
   @FreezedUnionValue(FlutterGridView.unionValue)
   factory FlutterGridView({
     ZacValue<Key?>? key,
-    FlutterAxis? scrollDirection,
+    ZacValue<Axis?>? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
     // ScrollPhysics? physics,
     ZacValue<bool?>? shrinkWrap,
     ZacValue<EdgeInsetsGeometry?>? padding,
-    required FlutterSliverGridDelegate gridDelegate,
+    required ZacValue<SliverGridDelegate> gridDelegate,
     ZacValue<bool?>? addAutomaticKeepAlives,
     ZacValue<bool?>? addRepaintBoundaries,
     ZacValue<bool?>? addSemanticIndexes,
@@ -42,8 +36,8 @@ class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
     ZacValueList<Widget, List<Widget>?>? children,
     ZacValue<int?>? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    FlutterClip? clipBehavior,
-    FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+    ZacValue<Clip?>? clipBehavior,
+    ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
     ZacValue<String?>? restorationId,
   }) = _FlutterGridView;
 

@@ -21,14 +21,14 @@ FlutterCard _$FlutterCardFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterCard {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterColor? get color => throw _privateConstructorUsedError;
-  FlutterColor? get shadowColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get shadowColor => throw _privateConstructorUsedError;
   ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
   ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
   ZacValue<bool?>? get borderOnForeground => throw _privateConstructorUsedError;
   ZacValue<EdgeInsetsGeometry?>? get margin =>
       throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   ZacValue<bool?>? get semanticContainer => throw _privateConstructorUsedError;
 
@@ -61,9 +61,9 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
-  final FlutterColor? shadowColor;
+  final ZacValue<Color?>? shadowColor;
   @override
   final ZacValue<double?>? elevation;
   @override
@@ -73,7 +73,7 @@ class _$_FlutterCard extends _FlutterCard {
   @override
   final ZacValue<EdgeInsetsGeometry?>? margin;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
   final ZacValue<Widget?>? child;
   @override
@@ -133,13 +133,13 @@ class _$_FlutterCard extends _FlutterCard {
 abstract class _FlutterCard extends FlutterCard {
   factory _FlutterCard(
       {final ZacValue<Key?>? key,
-      final FlutterColor? color,
-      final FlutterColor? shadowColor,
+      final ZacValue<Color?>? color,
+      final ZacValue<Color?>? shadowColor,
       final ZacValue<double?>? elevation,
       final ZacValue<ShapeBorder?>? shape,
       final ZacValue<bool?>? borderOnForeground,
       final ZacValue<EdgeInsetsGeometry?>? margin,
-      final FlutterClip? clipBehavior,
+      final ZacValue<Clip?>? clipBehavior,
       final ZacValue<Widget?>? child,
       final ZacValue<bool?>? semanticContainer}) = _$_FlutterCard;
   _FlutterCard._() : super._();
@@ -150,9 +150,9 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
-  FlutterColor? get shadowColor;
+  ZacValue<Color?>? get shadowColor;
   @override
   ZacValue<double?>? get elevation;
   @override
@@ -162,7 +162,7 @@ abstract class _FlutterCard extends FlutterCard {
   @override
   ZacValue<EdgeInsetsGeometry?>? get margin;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
   ZacValue<Widget?>? get child;
   @override

@@ -25,7 +25,7 @@ _$_FlutterSafeArea _$$_FlutterSafeAreaFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['bottom'] as Object),
       minimum: json['minimum'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(json['minimum'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['minimum'] as Object),
       maintainBottomViewPadding: json['maintainBottomViewPadding'] == null
           ? null
           : ZacValue<bool?>.fromJson(

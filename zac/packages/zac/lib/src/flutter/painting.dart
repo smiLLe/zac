@@ -321,14 +321,14 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
   @FreezedUnionValue('f:1:TextStyle')
   factory FlutterTextStyle({
     ZacValue<bool?>? inherit,
-    FlutterColor? color,
-    FlutterColor? backgroundColor,
+    ZacValue<Color?>? color,
+    ZacValue<Color?>? backgroundColor,
     ZacValue<double?>? fontSize,
     FlutterFontWeight? fontWeight,
     FlutterFontStyle? fontStyle,
     ZacValue<double?>? letterSpacing,
     ZacValue<double?>? wordSpacing,
-    FlutterTextBaseline? textBaseline,
+    ZacValue<TextBaseline?>? textBaseline,
     ZacValue<double?>? height,
     FlutterTextLeadingDistribution? leadingDistribution,
     FlutterLocale? locale,
@@ -337,7 +337,7 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
     ZacValueList<Shadow, List<Shadow>?>? shadows,
     List<FlutterFontFeature>? fontFeatures,
     FlutterTextDecoration? decoration,
-    FlutterColor? decorationColor,
+    ZacValue<Color?>? decorationColor,
     FlutterTextDecorationStyle? decorationStyle,
     ZacValue<double?>? decorationThickness,
     ZacValue<String?>? debugLabel,
@@ -429,7 +429,7 @@ class FlutterBoxShadow
 
   @FreezedUnionValue(FlutterBoxShadow.unionValue)
   factory FlutterBoxShadow({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     FlutterOffset? offset,
     ZacValue<double?>? blurRadius,
     ZacValue<double?>? spreadRadius,
@@ -698,7 +698,7 @@ class FlutterBorder with _$FlutterBorder implements ZacBuilder<Border> {
 
   @FreezedUnionValue(FlutterBorder.unionValueAll)
   factory FlutterBorder.all({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     ZacValue<double?>? width,
     FlutterBorderStyle? style,
   }) = _FlutterBorderAll;
@@ -808,7 +808,7 @@ class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
 
   @FreezedUnionValue('f:1:BorderSide')
   factory FlutterBorderSide({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     ZacValue<double?>? width,
     FlutterBorderStyle? style,
   }) = _FlutterBorderSide;
@@ -898,7 +898,7 @@ class FlutterBoxDecoration
 
   @FreezedUnionValue(FlutterBoxDecoration.unionValue)
   factory FlutterBoxDecoration({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     ZacValue<BoxBorder?>? border,
     ZacValue<BorderRadiusGeometry?>? borderRadius,
     List<FlutterBoxShadow>? boxShadow,
@@ -936,7 +936,7 @@ class FlutterShapeDecoration
 
   @FreezedUnionValue(FlutterShapeDecoration.unionValue)
   factory FlutterShapeDecoration({
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     // FlutterDecorationImage? image,
     // FlutterGradient? gradient,
     List<FlutterBoxShadow>? shadows,

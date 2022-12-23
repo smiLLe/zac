@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -28,10 +26,10 @@ class FlutterUnconstrainedBox
   factory FlutterUnconstrainedBox({
     ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
-    FlutterTextDirection? textDirection,
+    ZacValue<TextDirection?>? textDirection,
     ZacValue<AlignmentGeometry?>? alignment,
-    FlutterAxis? constrainedAxis,
-    FlutterClip? clipBehavior,
+    ZacValue<Axis?>? constrainedAxis,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterUnconstrainedBox;
 
   UnconstrainedBox _buildWidget(ZacContext zacContext) {

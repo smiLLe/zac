@@ -27,9 +27,9 @@ class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
   factory FlutterStack({
     ZacValue<Key?>? key,
     ZacValue<AlignmentGeometry?>? alignment,
-    FlutterTextDirection? textDirection,
+    ZacValue<TextDirection?>? textDirection,
     FlutterStackFit? fit,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
     ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterStack;
 

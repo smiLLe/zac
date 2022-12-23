@@ -21,12 +21,12 @@ FlutterListView _$FlutterListViewFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterListView {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
+  ZacValue<Axis?>? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   ZacValue<ScrollController?>? get controller =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
-  FlutterScrollPhysics? get physics => throw _privateConstructorUsedError;
+  ZacValue<ScrollPhysics?>? get physics => throw _privateConstructorUsedError;
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
   ZacValue<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
@@ -42,10 +42,10 @@ mixin _$FlutterListView {
       throw _privateConstructorUsedError;
   ZacValue<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
+  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
   ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -85,7 +85,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterAxis? scrollDirection;
+  final ZacValue<Axis?>? scrollDirection;
   @override
   final ZacValue<bool?>? reverse;
   @override
@@ -93,7 +93,7 @@ class _$_FlutterListView extends _FlutterListView {
   @override
   final ZacValue<bool?>? primary;
   @override
-  final FlutterScrollPhysics? physics;
+  final ZacValue<ScrollPhysics?>? physics;
   @override
   final ZacValue<bool?>? shrinkWrap;
   @override
@@ -116,11 +116,11 @@ class _$_FlutterListView extends _FlutterListView {
   final ZacValue<int?>? semanticChildCount;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
+  final ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior;
   @override
   final ZacValue<String?>? restorationId;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -205,11 +205,11 @@ class _$_FlutterListView extends _FlutterListView {
 abstract class _FlutterListView extends FlutterListView {
   factory _FlutterListView(
       {final ZacValue<Key?>? key,
-      final FlutterAxis? scrollDirection,
+      final ZacValue<Axis?>? scrollDirection,
       final ZacValue<bool?>? reverse,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
-      final FlutterScrollPhysics? physics,
+      final ZacValue<ScrollPhysics?>? physics,
       final ZacValue<bool?>? shrinkWrap,
       final ZacValue<EdgeInsetsGeometry?>? padding,
       final ZacValue<double?>? itemExtent,
@@ -220,9 +220,10 @@ abstract class _FlutterListView extends FlutterListView {
       final ZacValue<double?>? cacheExtent,
       final ZacValueList<Widget, List<Widget>?>? children,
       final ZacValue<int?>? semanticChildCount,
-      final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+      final ZacValue<ScrollViewKeyboardDismissBehavior?>?
+          keyboardDismissBehavior,
       final ZacValue<String?>? restorationId,
-      final FlutterClip? clipBehavior}) = _$_FlutterListView;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterListView;
   _FlutterListView._() : super._();
 
   factory _FlutterListView.fromJson(Map<String, dynamic> json) =
@@ -231,7 +232,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterAxis? get scrollDirection;
+  ZacValue<Axis?>? get scrollDirection;
   @override
   ZacValue<bool?>? get reverse;
   @override
@@ -239,7 +240,7 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<bool?>? get primary;
   @override
-  FlutterScrollPhysics? get physics;
+  ZacValue<ScrollPhysics?>? get physics;
   @override
   ZacValue<bool?>? get shrinkWrap;
   @override
@@ -261,9 +262,9 @@ abstract class _FlutterListView extends FlutterListView {
   @override
   ZacValue<int?>? get semanticChildCount;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
+  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior;
   @override
   ZacValue<String?>? get restorationId;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }

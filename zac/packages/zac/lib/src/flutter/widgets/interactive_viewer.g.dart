@@ -15,14 +15,13 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
       child: ZacValue<Widget>.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       alignPanAxis: json['alignPanAxis'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['alignPanAxis'] as Object),
       boundaryMargin: json['boundaryMargin'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(
-              json['boundaryMargin'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['boundaryMargin'] as Object),
       constrained: json['constrained'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['constrained'] as Object),

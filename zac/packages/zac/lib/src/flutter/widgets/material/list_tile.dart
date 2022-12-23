@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -34,21 +32,21 @@ class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
 // FlutterVisualDensity? visualDensity,
     ZacValue<ShapeBorder?>? shape,
 // FlutterListTileStyle? style,
-    FlutterColor? selectedColor,
-    FlutterColor? iconColor,
-    FlutterColor? textColor,
+    ZacValue<Color?>? selectedColor,
+    ZacValue<Color?>? iconColor,
+    ZacValue<Color?>? textColor,
     ZacValue<EdgeInsetsGeometry?>? contentPadding,
     ZacValue<bool?>? enabled,
     ZacActions? onTap,
     ZacActions? onLongPress,
 // MouseCursor? mouseCursor,
     ZacValue<bool?>? selected,
-    FlutterColor? focusColor,
-    FlutterColor? hoverColor,
+    ZacValue<Color?>? focusColor,
+    ZacValue<Color?>? hoverColor,
 // FocusNode? focusNode,
     ZacValue<bool?>? autofocus,
-    FlutterColor? tileColor,
-    FlutterColor? selectedTileColor,
+    ZacValue<Color?>? tileColor,
+    ZacValue<Color?>? selectedTileColor,
     ZacValue<bool?>? enableFeedback,
     ZacValue<double?>? horizontalTitleGap,
     ZacValue<double?>? minVerticalPadding,

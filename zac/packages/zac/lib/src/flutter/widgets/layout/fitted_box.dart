@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -26,9 +25,9 @@ class FlutterFittedBox
   @FreezedUnionValue(FlutterFittedBox.unionValue)
   factory FlutterFittedBox({
     ZacValue<Key?>? key,
-    FlutterBoxFit? fit,
+    ZacValue<BoxFit?>? fit,
     ZacValue<AlignmentGeometry?>? alignment,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
     ZacValue<Widget?>? child,
   }) = _FlutterFittedBox;
 

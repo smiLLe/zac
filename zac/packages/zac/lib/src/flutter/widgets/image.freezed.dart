@@ -39,7 +39,7 @@ mixin _$FlutterImage {
       throw _privateConstructorUsedError;
   ZacValue<double?>? get width => throw _privateConstructorUsedError;
   ZacValue<double?>? get height => throw _privateConstructorUsedError;
-  FlutterColor? get color =>
+  ZacValue<Color?>? get color =>
       throw _privateConstructorUsedError; // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode => throw _privateConstructorUsedError;
   FlutterBoxFit? get fit => throw _privateConstructorUsedError;
@@ -111,7 +111,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final ZacValue<double?>? height;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
 // Animation<double>? opacity,
   @override
   final FlutterBlendMode? colorBlendMode;
@@ -236,7 +236,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
       final ZacValue<bool?>? excludeFromSemantics,
       final ZacValue<double?>? width,
       final ZacValue<double?>? height,
-      final FlutterColor? color,
+      final ZacValue<Color?>? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
       final ZacValue<AlignmentGeometry?>? alignment,
@@ -270,7 +270,7 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   ZacValue<double?>? get height;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode;
   @override
@@ -344,7 +344,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacValue<double?>? height;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
 // Animation<double>? opacity,
   @override
   final FlutterBlendMode? colorBlendMode;
@@ -461,7 +461,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
       final ZacValue<double?>? scale,
       final ZacValue<double?>? width,
       final ZacValue<double?>? height,
-      final FlutterColor? color,
+      final ZacValue<Color?>? color,
       final FlutterBlendMode? colorBlendMode,
       final FlutterBoxFit? fit,
       final ZacValue<AlignmentGeometry?>? alignment,
@@ -495,7 +495,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   ZacValue<double?>? get height;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override // Animation<double>? opacity,
   FlutterBlendMode? get colorBlendMode;
   @override

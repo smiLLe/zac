@@ -4,10 +4,8 @@ import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 part 'buttons.freezed.dart';
 part 'buttons.g.dart';
@@ -32,7 +30,7 @@ class FlutterElevatedButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterElevatedButton;
 
   @FreezedUnionValue(FlutterElevatedButton.unionValueIcon)
@@ -43,7 +41,7 @@ class FlutterElevatedButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
 
   ElevatedButton _buildWidget(ZacContext zacContext) {
@@ -94,7 +92,7 @@ class FlutterOutlinedButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButton;
 
   @FreezedUnionValue(FlutterOutlinedButton.unionValueIcon)
@@ -105,7 +103,7 @@ class FlutterOutlinedButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
 
   OutlinedButton _buildWidget(ZacContext zacContext) {
@@ -156,7 +154,7 @@ class FlutterTextButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterTextButton;
 
   @FreezedUnionValue(FlutterTextButton.unionValueIcon)
@@ -167,7 +165,7 @@ class FlutterTextButton
     ZacActions? onPressed,
     ZacActions? onLongPress,
     ZacValue<bool?>? autofocus,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterTextButtonIcon;
 
   TextButton _buildWidget(ZacContext zacContext) {

@@ -25,10 +25,10 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
   factory FlutterText(
     ZacValue<String> data, {
     ZacValue<Key?>? key,
-    FlutterTextStyle? style,
+    ZacValue<TextStyle?>? style,
     FlutterStrutStyle? strutStyle,
     FlutterTextAlign? textAlign,
-    FlutterTextDirection? textDirection,
+    ZacValue<TextDirection?>? textDirection,
     FlutterLocale? locale,
     ZacValue<bool?>? softWrap,
     FlutterTextOverflow? overflow,

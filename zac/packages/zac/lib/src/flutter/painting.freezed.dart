@@ -1705,14 +1705,15 @@ FlutterTextStyle _$FlutterTextStyleFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterTextStyle {
   ZacValue<bool?>? get inherit => throw _privateConstructorUsedError;
-  FlutterColor? get color => throw _privateConstructorUsedError;
-  FlutterColor? get backgroundColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
   ZacValue<double?>? get fontSize => throw _privateConstructorUsedError;
   FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
   FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
   ZacValue<double?>? get letterSpacing => throw _privateConstructorUsedError;
   ZacValue<double?>? get wordSpacing => throw _privateConstructorUsedError;
-  FlutterTextBaseline? get textBaseline => throw _privateConstructorUsedError;
+  ZacValue<TextBaseline?>? get textBaseline =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get height => throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
@@ -1724,7 +1725,7 @@ mixin _$FlutterTextStyle {
   List<FlutterFontFeature>? get fontFeatures =>
       throw _privateConstructorUsedError;
   FlutterTextDecoration? get decoration => throw _privateConstructorUsedError;
-  FlutterColor? get decorationColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get decorationColor => throw _privateConstructorUsedError;
   FlutterTextDecorationStyle? get decorationStyle =>
       throw _privateConstructorUsedError;
   ZacValue<double?>? get decorationThickness =>
@@ -1779,9 +1780,9 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final ZacValue<bool?>? inherit;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
-  final FlutterColor? backgroundColor;
+  final ZacValue<Color?>? backgroundColor;
   @override
   final ZacValue<double?>? fontSize;
   @override
@@ -1793,7 +1794,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final ZacValue<double?>? wordSpacing;
   @override
-  final FlutterTextBaseline? textBaseline;
+  final ZacValue<TextBaseline?>? textBaseline;
   @override
   final ZacValue<double?>? height;
   @override
@@ -1817,7 +1818,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final FlutterTextDecoration? decoration;
   @override
-  final FlutterColor? decorationColor;
+  final ZacValue<Color?>? decorationColor;
   @override
   final FlutterTextDecorationStyle? decorationStyle;
   @override
@@ -1935,21 +1936,21 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
 abstract class _FlutterTextStyle extends FlutterTextStyle {
   factory _FlutterTextStyle(
       {final ZacValue<bool?>? inherit,
-      final FlutterColor? color,
-      final FlutterColor? backgroundColor,
+      final ZacValue<Color?>? color,
+      final ZacValue<Color?>? backgroundColor,
       final ZacValue<double?>? fontSize,
       final FlutterFontWeight? fontWeight,
       final FlutterFontStyle? fontStyle,
       final ZacValue<double?>? letterSpacing,
       final ZacValue<double?>? wordSpacing,
-      final FlutterTextBaseline? textBaseline,
+      final ZacValue<TextBaseline?>? textBaseline,
       final ZacValue<double?>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
       final FlutterLocale? locale,
       final ZacValueList<Shadow, List<Shadow>?>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       final FlutterTextDecoration? decoration,
-      final FlutterColor? decorationColor,
+      final ZacValue<Color?>? decorationColor,
       final FlutterTextDecorationStyle? decorationStyle,
       final ZacValue<double?>? decorationThickness,
       final ZacValue<String?>? debugLabel,
@@ -1965,9 +1966,9 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacValue<bool?>? get inherit;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
-  FlutterColor? get backgroundColor;
+  ZacValue<Color?>? get backgroundColor;
   @override
   ZacValue<double?>? get fontSize;
   @override
@@ -1979,7 +1980,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacValue<double?>? get wordSpacing;
   @override
-  FlutterTextBaseline? get textBaseline;
+  ZacValue<TextBaseline?>? get textBaseline;
   @override
   ZacValue<double?>? get height;
   @override
@@ -1994,7 +1995,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   FlutterTextDecoration? get decoration;
   @override
-  FlutterColor? get decorationColor;
+  ZacValue<Color?>? get decorationColor;
   @override
   FlutterTextDecorationStyle? get decorationStyle;
   @override
@@ -2259,7 +2260,7 @@ FlutterBoxShadow _$FlutterBoxShadowFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterBoxShadow {
-  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
   ZacValue<double?>? get blurRadius => throw _privateConstructorUsedError;
   ZacValue<double?>? get spreadRadius => throw _privateConstructorUsedError;
@@ -2287,7 +2288,7 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
       _$$_FlutterBoxShadowFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
   final FlutterOffset? offset;
   @override
@@ -2333,7 +2334,7 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
 
 abstract class _FlutterBoxShadow extends FlutterBoxShadow {
   factory _FlutterBoxShadow(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final FlutterOffset? offset,
       final ZacValue<double?>? blurRadius,
       final ZacValue<double?>? spreadRadius,
@@ -2344,7 +2345,7 @@ abstract class _FlutterBoxShadow extends FlutterBoxShadow {
       _$_FlutterBoxShadow.fromJson;
 
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
   FlutterOffset? get offset;
   @override
@@ -3962,7 +3963,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
       _$$_FlutterBorderAllFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
   final ZacValue<double?>? width;
   @override
@@ -4002,7 +4003,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
 
 abstract class _FlutterBorderAll extends FlutterBorder {
   factory _FlutterBorderAll(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final ZacValue<double?>? width,
       final FlutterBorderStyle? style}) = _$_FlutterBorderAll;
   _FlutterBorderAll._() : super._();
@@ -4010,7 +4011,7 @@ abstract class _FlutterBorderAll extends FlutterBorder {
   factory _FlutterBorderAll.fromJson(Map<String, dynamic> json) =
       _$_FlutterBorderAll.fromJson;
 
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   ZacValue<double?>? get width;
   FlutterBorderStyle? get style;
 }
@@ -4335,7 +4336,7 @@ FlutterBorderSide _$FlutterBorderSideFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterBorderSide {
-  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
   ZacValue<double?>? get width => throw _privateConstructorUsedError;
   FlutterBorderStyle? get style => throw _privateConstructorUsedError;
 
@@ -4355,7 +4356,7 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
       _$$_FlutterBorderSideFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
   final ZacValue<double?>? width;
   @override
@@ -4391,7 +4392,7 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
 
 abstract class _FlutterBorderSide extends FlutterBorderSide {
   factory _FlutterBorderSide(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final ZacValue<double?>? width,
       final FlutterBorderStyle? style}) = _$_FlutterBorderSide;
   _FlutterBorderSide._() : super._();
@@ -4400,7 +4401,7 @@ abstract class _FlutterBorderSide extends FlutterBorderSide {
       _$_FlutterBorderSide.fromJson;
 
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
   ZacValue<double?>? get width;
   @override
@@ -4554,7 +4555,7 @@ FlutterBoxDecoration _$FlutterBoxDecorationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterBoxDecoration {
-  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
   ZacValue<BoxBorder?>? get border => throw _privateConstructorUsedError;
   ZacValue<BorderRadiusGeometry?>? get borderRadius =>
       throw _privateConstructorUsedError;
@@ -4587,7 +4588,7 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
       _$$_FlutterBoxDecorationFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
   final ZacValue<BoxBorder?>? border;
   @override
@@ -4650,7 +4651,7 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
 
 abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   factory _FlutterBoxDecoration(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final ZacValue<BoxBorder?>? border,
       final ZacValue<BorderRadiusGeometry?>? borderRadius,
       final List<FlutterBoxShadow>? boxShadow,
@@ -4662,7 +4663,7 @@ abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
       _$_FlutterBoxDecoration.fromJson;
 
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
   ZacValue<BoxBorder?>? get border;
   @override
@@ -4682,7 +4683,7 @@ FlutterShapeDecoration _$FlutterShapeDecorationFromJson(
 
 /// @nodoc
 mixin _$FlutterShapeDecoration {
-  FlutterColor? get color =>
+  ZacValue<Color?>? get color =>
       throw _privateConstructorUsedError; // FlutterDecorationImage? image,
 // FlutterGradient? gradient,
   List<FlutterBoxShadow>? get shadows => throw _privateConstructorUsedError;
@@ -4707,7 +4708,7 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
       _$$_FlutterShapeDecorationFromJson(json);
 
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
 // FlutterDecorationImage? image,
 // FlutterGradient? gradient,
   final List<FlutterBoxShadow>? _shadows;
@@ -4756,7 +4757,7 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
 
 abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
   factory _FlutterShapeDecoration(
-      {final FlutterColor? color,
+      {final ZacValue<Color?>? color,
       final List<FlutterBoxShadow>? shadows,
       required final ZacValue<ShapeBorder> shape}) = _$_FlutterShapeDecoration;
   _FlutterShapeDecoration._() : super._();
@@ -4765,7 +4766,7 @@ abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
       _$_FlutterShapeDecoration.fromJson;
 
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override // FlutterDecorationImage? image,
 // FlutterGradient? gradient,
   List<FlutterBoxShadow>? get shadows;

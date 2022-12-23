@@ -16,14 +16,13 @@ _$_FlutterStack _$$_FlutterStackFromJson(Map<String, dynamic> json) =>
           : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       fit: json['fit'] == null
           ? null
           : FlutterStackFit.fromJson(json['fit'] as Map<String, dynamic>),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       children: json['children'] == null
           ? null
           : ZacValueList<Widget, List<Widget>?>.fromJson(

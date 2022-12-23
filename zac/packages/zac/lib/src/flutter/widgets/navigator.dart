@@ -33,7 +33,7 @@ class FlutterMaterialPageRoute
 
   @FreezedUnionValue('f:1:MaterialPageRoute')
   factory FlutterMaterialPageRoute({
-    FlutterRouteSettings? settings,
+    ZacValue<RouteSettings?>? settings,
     ZacValue<bool?>? maintainState,
     ZacValue<bool?>? fullscreenDialog,
 
@@ -69,7 +69,7 @@ class FlutterMaterialPageRoute
       zacContext,
       familyName: nameOfSharedArguments?.build(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.arguments,
+      arguments: settings?.build(zacContext)?.arguments,
     );
   }
 
@@ -100,13 +100,13 @@ class FlutterPageRouteBuilder
 
   @FreezedUnionValue('f:1:PageRouteBuilder')
   factory FlutterPageRouteBuilder({
-    FlutterRouteSettings? settings,
+    ZacValue<RouteSettings?>? settings,
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
     ZacValue<bool?>? opaque,
     ZacValue<bool?>? barrierDismissible,
-    FlutterColor? barrierColor,
+    ZacValue<Color?>? barrierColor,
     ZacValue<String?>? barrierLabel,
     ZacValue<bool?>? maintainState,
     ZacValue<bool?>? fullscreenDialog,
@@ -147,7 +147,7 @@ class FlutterPageRouteBuilder
       zacContext,
       familyName: nameOfSharedArguments?.build(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.arguments,
+      arguments: settings?.build(zacContext)?.arguments,
     );
   }
 

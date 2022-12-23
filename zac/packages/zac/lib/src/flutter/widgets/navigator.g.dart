@@ -11,8 +11,7 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
     _$_FlutterMaterialPageRoute(
       settings: json['settings'] == null
           ? null
-          : FlutterRouteSettings.fromJson(
-              json['settings'] as Map<String, dynamic>),
+          : ZacValue<RouteSettings?>.fromJson(json['settings'] as Object),
       maintainState: json['maintainState'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['maintainState'] as Object),
@@ -30,8 +29,7 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
     _$_FlutterPageRouteBuilder(
       settings: json['settings'] == null
           ? null
-          : FlutterRouteSettings.fromJson(
-              json['settings'] as Map<String, dynamic>),
+          : ZacValue<RouteSettings?>.fromJson(json['settings'] as Object),
       opaque: json['opaque'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['opaque'] as Object),
@@ -40,7 +38,7 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
           : ZacValue<bool?>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
-          : FlutterColor.fromJson(json['barrierColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['barrierColor'] as Object),
       barrierLabel: json['barrierLabel'] == null
           ? null
           : ZacValue<String?>.fromJson(json['barrierLabel'] as Object),

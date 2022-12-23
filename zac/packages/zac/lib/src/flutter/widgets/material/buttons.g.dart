@@ -26,7 +26,7 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -49,7 +49,7 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -71,7 +71,7 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -94,7 +94,7 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -115,7 +115,7 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );
 
@@ -138,6 +138,6 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['converter'] as String?,
     );

@@ -12,7 +12,7 @@ _$_FlutterSizedOverflowBox _$$_FlutterSizedOverflowBoxFromJson(
       key: json['key'] == null
           ? null
           : ZacValue<Key?>.fromJson(json['key'] as Object),
-      size: FlutterSize.fromJson(json['size'] as Map<String, dynamic>),
+      size: ZacValue<Size>.fromJson(json['size'] as Object),
       alignment: json['alignment'] == null
           ? null
           : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),

@@ -28,9 +28,9 @@ class FlutterInteractiveViewer
   factory FlutterInteractiveViewer({
     ZacValue<Key?>? key,
     required ZacValue<Widget> child,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
     ZacValue<bool?>? alignPanAxis,
-    FlutterEdgeInsets? boundaryMargin,
+    ZacValue<EdgeInsets?>? boundaryMargin,
     ZacValue<bool?>? constrained,
     ZacValue<double?>? maxScale,
     ZacValue<double?>? minScale,

@@ -29,8 +29,8 @@ class FlutterProgressIndicator
   factory FlutterProgressIndicator.linear({
     ZacValue<Key?>? key,
     ZacValue<double?>? value,
-    FlutterColor? backgroundColor,
-    FlutterColor? color,
+    ZacValue<Color?>? backgroundColor,
+    ZacValue<Color?>? color,
 // Animation<Color?>? valueColor,
     ZacValue<double?>? minHeight,
     ZacValue<String?>? semanticsLabel,
@@ -42,8 +42,8 @@ class FlutterProgressIndicator
   factory FlutterProgressIndicator.circular({
     ZacValue<Key?>? key,
     ZacValue<double?>? value,
-    FlutterColor? backgroundColor,
-    FlutterColor? color,
+    ZacValue<Color?>? backgroundColor,
+    ZacValue<Color?>? color,
     // Animation<Color?>? valueColor,
     ZacValue<double?>? strokeWidth,
     ZacValue<String?>? semanticsLabel,

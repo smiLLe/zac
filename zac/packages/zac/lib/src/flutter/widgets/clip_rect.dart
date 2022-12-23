@@ -25,7 +25,7 @@ class FlutterClipRect with _$FlutterClipRect implements ZacBuilder<ClipRect> {
     ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterClipRect;
 
   ClipRect _buildWidget(ZacContext zacContext) {

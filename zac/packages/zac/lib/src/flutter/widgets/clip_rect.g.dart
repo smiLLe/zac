@@ -16,5 +16,5 @@ _$_FlutterClipRect _$$_FlutterClipRectFromJson(Map<String, dynamic> json) =>
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
     );

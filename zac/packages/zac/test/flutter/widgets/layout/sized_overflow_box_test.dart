@@ -14,7 +14,7 @@ void main() {
         'key': KeysModel.getValueKey('FINDME'),
         'alignment': AlignmentModel.geometry_alignment,
         'size': {
-          'runtimeTyp': 'f:1:Size',
+          'converter': 'f:1:Size',
           'width': 20,
           'height': 21,
         },

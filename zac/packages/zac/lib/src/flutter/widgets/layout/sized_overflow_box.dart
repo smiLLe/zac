@@ -1,7 +1,4 @@
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/context.dart';
@@ -26,7 +23,7 @@ class FlutterSizedOverflowBox
   @FreezedUnionValue(FlutterSizedOverflowBox.unionValue)
   factory FlutterSizedOverflowBox({
     ZacValue<Key?>? key,
-    required FlutterSize size,
+    required ZacValue<Size> size,
     ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<Widget?>? child,
   }) = _FlutterSizedOverflowBox;

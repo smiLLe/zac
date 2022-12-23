@@ -22,7 +22,8 @@ FlutterConstrainedBox _$FlutterConstrainedBoxFromJson(
 /// @nodoc
 mixin _$FlutterConstrainedBox {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterBoxConstraints get constraints => throw _privateConstructorUsedError;
+  ZacValue<BoxConstraints> get constraints =>
+      throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -44,7 +45,7 @@ class _$_FlutterConstrainedBox extends _FlutterConstrainedBox {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterBoxConstraints constraints;
+  final ZacValue<BoxConstraints> constraints;
   @override
   final ZacValue<Widget?>? child;
 
@@ -80,7 +81,7 @@ class _$_FlutterConstrainedBox extends _FlutterConstrainedBox {
 abstract class _FlutterConstrainedBox extends FlutterConstrainedBox {
   factory _FlutterConstrainedBox(
       {final ZacValue<Key?>? key,
-      required final FlutterBoxConstraints constraints,
+      required final ZacValue<BoxConstraints> constraints,
       final ZacValue<Widget?>? child}) = _$_FlutterConstrainedBox;
   _FlutterConstrainedBox._() : super._();
 
@@ -90,7 +91,7 @@ abstract class _FlutterConstrainedBox extends FlutterConstrainedBox {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterBoxConstraints get constraints;
+  ZacValue<BoxConstraints> get constraints;
   @override
   ZacValue<Widget?>? get child;
 }

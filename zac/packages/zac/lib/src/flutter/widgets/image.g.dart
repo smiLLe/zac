@@ -30,7 +30,7 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacValue<double?>.fromJson(json['height'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       colorBlendMode: json['colorBlendMode'] == null
           ? null
           : FlutterBlendMode.fromJson(
@@ -95,7 +95,7 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['height'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       colorBlendMode: json['colorBlendMode'] == null
           ? null
           : FlutterBlendMode.fromJson(

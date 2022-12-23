@@ -29,7 +29,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['textCapitalization'] as Map<String, dynamic>),
       style: json['style'] == null
           ? null
-          : FlutterTextStyle.fromJson(json['style'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['style'] as Object),
       strutStyle: json['strutStyle'] == null
           ? null
           : FlutterStrutStyle.fromJson(
@@ -44,8 +44,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['textAlignVertical'] as Map<String, dynamic>),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       readOnly: json['readOnly'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['readOnly'] as Object),
@@ -111,7 +110,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['cursorRadius'] as Map<String, dynamic>),
       cursorColor: json['cursorColor'] == null
           ? null
-          : FlutterColor.fromJson(json['cursorColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['cursorColor'] as Object),
       selectionHeightStyle: json['selectionHeightStyle'] == null
           ? null
           : FlutterBoxHeightStyle.fromJson(
@@ -126,8 +125,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['keyboardAppearance'] as Map<String, dynamic>),
       scrollPadding: json['scrollPadding'] == null
           ? null
-          : FlutterEdgeInsets.fromJson(
-              json['scrollPadding'] as Map<String, dynamic>),
+          : ZacValue<EdgeInsets?>.fromJson(json['scrollPadding'] as Object),
       enableInteractiveSelection: json['enableInteractiveSelection'] == null
           ? null
           : ZacValue<bool?>.fromJson(
@@ -141,7 +139,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['scrollController'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       restorationId: json['restorationId'] == null
           ? null
           : ZacValue<String?>.fromJson(json['restorationId'] as Object),

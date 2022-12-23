@@ -23,8 +23,9 @@ mixin _$FlutterIndexedStack {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
-  FlutterStackFit? get sizing => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
+  ZacValue<StackFit?>? get sizing => throw _privateConstructorUsedError;
   ZacValue<int?>? get index => throw _privateConstructorUsedError;
   ZacValueList<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
@@ -56,9 +57,9 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
   @override
   final ZacValue<AlignmentGeometry?>? alignment;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
-  final FlutterStackFit? sizing;
+  final ZacValue<StackFit?>? sizing;
   @override
   final ZacValue<int?>? index;
   @override
@@ -103,8 +104,8 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   factory _FlutterIndexedStack(
           {final ZacValue<Key?>? key,
           final ZacValue<AlignmentGeometry?>? alignment,
-          final FlutterTextDirection? textDirection,
-          final FlutterStackFit? sizing,
+          final ZacValue<TextDirection?>? textDirection,
+          final ZacValue<StackFit?>? sizing,
           final ZacValue<int?>? index,
           final ZacValueList<Widget, List<Widget>?>? children}) =
       _$_FlutterIndexedStack;
@@ -118,9 +119,9 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   @override
   ZacValue<AlignmentGeometry?>? get alignment;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
-  FlutterStackFit? get sizing;
+  ZacValue<StackFit?>? get sizing;
   @override
   ZacValue<int?>? get index;
   @override

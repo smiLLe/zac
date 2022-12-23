@@ -14,7 +14,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       style: json['style'] == null
           ? null
-          : FlutterTextStyle.fromJson(json['style'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['style'] as Object),
       strutStyle: json['strutStyle'] == null
           ? null
           : FlutterStrutStyle.fromJson(
@@ -25,8 +25,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
               json['textAlign'] as Map<String, dynamic>),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       locale: json['locale'] == null
           ? null
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),

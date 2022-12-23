@@ -16,6 +16,6 @@ _$_FlutterFlexible _$$_FlutterFlexibleFromJson(Map<String, dynamic> json) =>
           : ZacValue<int?>.fromJson(json['flex'] as Object),
       fit: json['fit'] == null
           ? null
-          : FlutterFlexFit.fromJson(json['fit'] as Map<String, dynamic>),
+          : ZacValue<FlexFit?>.fromJson(json['fit'] as Object),
       child: ZacValue<Widget>.fromJson(json['child'] as Object),
     );

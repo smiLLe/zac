@@ -42,13 +42,13 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuilder<Scaffold> {
     // DrawerCallback? onEndDrawerChanged,
     ZacValue<Widget?>? bottomNavigationBar,
     ZacValue<Widget?>? bottomSheet,
-    FlutterColor? backgroundColor,
+    ZacValue<Color?>? backgroundColor,
     ZacValue<bool?>? resizeToAvoidBottomInset,
     ZacValue<bool?>? primary,
     // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
     ZacValue<bool?>? extendBody,
     ZacValue<bool?>? extendBodyBehindAppBar,
-    FlutterColor? drawerScrimColor,
+    ZacValue<Color?>? drawerScrimColor,
     ZacValue<double?>? drawerEdgeDragWidth,
     ZacValue<bool?>? drawerEnableOpenDragGesture,
     ZacValue<bool?>? endDrawerEnableOpenDragGesture,
@@ -124,10 +124,10 @@ class FlutterScaffoldActions
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBottomSheet)
   factory FlutterScaffoldActions.showBottomSheet(
     ZacValue<Widget> child, {
-    FlutterColor? backgroundColor,
+    ZacValue<Color?>? backgroundColor,
     ZacValue<double?>? elevation,
     ZacValue<ShapeBorder?>? shape,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
     FlutterBoxConstraints? constraints,
     ZacValue<bool?>? enableDrag,
 // AnimationController? transitionAnimationController,
@@ -293,7 +293,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
   factory FlutterSnackBar({
     ZacValue<Key?>? key,
     required ZacValue<Widget> content,
-    FlutterColor? backgroundColor,
+    ZacValue<Color?>? backgroundColor,
     ZacValue<double?>? elevation,
     ZacValue<EdgeInsetsGeometry?>? margin,
     ZacValue<EdgeInsetsGeometry?>? padding,
@@ -375,8 +375,8 @@ class FlutterSnackBarAction
   @FreezedUnionValue(FlutterSnackBarAction.unionValue)
   factory FlutterSnackBarAction({
     ZacValue<Key?>? key,
-    FlutterColor? textColor,
-    FlutterColor? disabledTextColor,
+    ZacValue<Color?>? textColor,
+    ZacValue<Color?>? disabledTextColor,
     required String label,
     required ZacActions? onPressed,
   }) = _FlutterSnackBarAction;
@@ -413,11 +413,11 @@ class FlutterMaterialBanner
   factory FlutterMaterialBanner({
     ZacValue<Key?>? key,
     required ZacValue<Widget> content,
-    FlutterTextStyle? contentTextStyle,
+    ZacValue<TextStyle?>? contentTextStyle,
     required ZacValueList<Widget, List<Widget>> actions,
     ZacValue<double?>? elevation,
     required ZacValue<Widget?>? leading,
-    FlutterColor? backgroundColor,
+    ZacValue<Color?>? backgroundColor,
     ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<EdgeInsetsGeometry?>? leadingPadding,
     ZacValue<bool?>? forceActionsBelow,

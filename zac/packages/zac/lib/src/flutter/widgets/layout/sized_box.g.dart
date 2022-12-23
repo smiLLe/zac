@@ -47,7 +47,7 @@ _$_FlutterWidgetSizedBoxFromSize _$$_FlutterWidgetSizedBoxFromSizeFromJson(
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       size: json['size'] == null
           ? null
-          : FlutterSize.fromJson(json['size'] as Map<String, dynamic>),
+          : ZacValue<Size?>.fromJson(json['size'] as Object),
       $type: json['converter'] as String?,
     );
 

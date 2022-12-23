@@ -36,18 +36,16 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
       shadowColor: json['shadowColor'] == null
           ? null
-          : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['shadowColor'] as Object),
       shape: json['shape'] == null
           ? null
           : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       foregroundColor: json['foregroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['foregroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['foregroundColor'] as Object),
       iconTheme: json['iconTheme'] == null
           ? null
           : FlutterIconThemeData.fromJson(
@@ -82,14 +80,12 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['leadingWidth'] as Object),
       toolbarTextStyle: json['toolbarTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['toolbarTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['toolbarTextStyle'] as Object),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['titleTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['titleTextStyle'] as Object),
       systemOverlayStyle: json['systemOverlayStyle'] == null
           ? null
-          : FlutterSystemUiOverlayStyle.fromJson(
-              json['systemOverlayStyle'] as Map<String, dynamic>),
+          : ZacValue<SystemUiOverlayStyle?>.fromJson(
+              json['systemOverlayStyle'] as Object),
     );

@@ -19,14 +19,13 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       shadowColor: json['shadowColor'] == null
           ? null
-          : FlutterColor.fromJson(json['shadowColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['shadowColor'] as Object),
       textStyle: json['textStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['textStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['textStyle'] as Object),
       borderRadius: json['borderRadius'] == null
           ? null
           : ZacValue<BorderRadiusGeometry?>.fromJson(
@@ -39,5 +38,5 @@ _$_FlutterMaterial _$$_FlutterMaterialFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['borderOnForeground'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
     );

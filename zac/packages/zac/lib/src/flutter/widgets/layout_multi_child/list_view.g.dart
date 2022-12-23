@@ -13,8 +13,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
-          : FlutterAxis.fromJson(
-              json['scrollDirection'] as Map<String, dynamic>),
+          : ZacValue<Axis?>.fromJson(json['scrollDirection'] as Object),
       reverse: json['reverse'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['reverse'] as Object),
@@ -26,8 +25,7 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['primary'] as Object),
       physics: json['physics'] == null
           ? null
-          : FlutterScrollPhysics.fromJson(
-              json['physics'] as Map<String, dynamic>),
+          : ZacValue<ScrollPhysics?>.fromJson(json['physics'] as Object),
       shrinkWrap: json['shrinkWrap'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['shrinkWrap'] as Object),
@@ -61,12 +59,12 @@ _$_FlutterListView _$$_FlutterListViewFromJson(Map<String, dynamic> json) =>
           : ZacValue<int?>.fromJson(json['semanticChildCount'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
-          : FlutterScrollViewKeyboardDismissBehavior.fromJson(
-              json['keyboardDismissBehavior'] as Map<String, dynamic>),
+          : ZacValue<ScrollViewKeyboardDismissBehavior?>.fromJson(
+              json['keyboardDismissBehavior'] as Object),
       restorationId: json['restorationId'] == null
           ? null
           : ZacValue<String?>.fromJson(json['restorationId'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
     );

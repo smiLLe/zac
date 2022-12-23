@@ -21,11 +21,11 @@ class FlutterSystemUiOverlayStyle
 
   @FreezedUnionValue('f:1:SystemUiOverlayStyle')
   factory FlutterSystemUiOverlayStyle({
-    FlutterColor? systemNavigationBarColor,
-    FlutterColor? systemNavigationBarDividerColor,
+    ZacValue<Color?>? systemNavigationBarColor,
+    ZacValue<Color?>? systemNavigationBarDividerColor,
     FlutterBrightness? systemNavigationBarIconBrightness,
     ZacValue<bool?>? systemNavigationBarContrastEnforced,
-    FlutterColor? statusBarColor,
+    ZacValue<Color?>? statusBarColor,
     FlutterBrightness? statusBarBrightness,
     FlutterBrightness? statusBarIconBrightness,
     ZacValue<bool?>? systemStatusBarContrastEnforced,

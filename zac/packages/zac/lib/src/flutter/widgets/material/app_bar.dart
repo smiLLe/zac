@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:zac/src/flutter/widgets/icon.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -34,10 +35,10 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
 // PreferredSizeWidget
     ZacValue<Widget?>? bottom,
     ZacValue<double?>? elevation,
-    FlutterColor? shadowColor,
+    ZacValue<Color?>? shadowColor,
     ZacValue<ShapeBorder?>? shape,
-    FlutterColor? backgroundColor,
-    FlutterColor? foregroundColor,
+    ZacValue<Color?>? backgroundColor,
+    ZacValue<Color?>? foregroundColor,
     FlutterIconThemeData? iconTheme,
     FlutterIconThemeData? actionsIconTheme,
     ZacValue<bool?>? primary,
@@ -48,9 +49,9 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
     ZacValue<double?>? bottomOpacity,
     ZacValue<double?>? toolbarHeight,
     ZacValue<double?>? leadingWidth,
-    FlutterTextStyle? toolbarTextStyle,
-    FlutterTextStyle? titleTextStyle,
-    FlutterSystemUiOverlayStyle? systemOverlayStyle,
+    ZacValue<TextStyle?>? toolbarTextStyle,
+    ZacValue<TextStyle?>? titleTextStyle,
+    ZacValue<SystemUiOverlayStyle?>? systemOverlayStyle,
   }) = _FlutterAppBar;
 
   AppBar _buildWidget(ZacContext zacContext) {

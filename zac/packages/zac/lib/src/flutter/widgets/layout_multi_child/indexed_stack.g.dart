@@ -17,11 +17,10 @@ _$_FlutterIndexedStack _$$_FlutterIndexedStackFromJson(
           : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       sizing: json['sizing'] == null
           ? null
-          : FlutterStackFit.fromJson(json['sizing'] as Map<String, dynamic>),
+          : ZacValue<StackFit?>.fromJson(json['sizing'] as Object),
       index: json['index'] == null
           ? null
           : ZacValue<int?>.fromJson(json['index'] as Object),

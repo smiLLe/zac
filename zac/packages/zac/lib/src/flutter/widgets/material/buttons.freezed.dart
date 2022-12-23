@@ -34,7 +34,7 @@ mixin _$FlutterElevatedButton {
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -72,7 +72,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -121,7 +121,7 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterElevatedButton;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterElevatedButton;
   _FlutterElevatedButton._() : super._();
 
   factory _FlutterElevatedButton.fromJson(Map<String, dynamic> json) =
@@ -137,7 +137,7 @@ abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -171,7 +171,7 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -222,7 +222,7 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterElevatedButtonIcon;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterElevatedButtonIcon;
   _FlutterElevatedButtonIcon._() : super._();
 
   factory _FlutterElevatedButtonIcon.fromJson(Map<String, dynamic> json) =
@@ -239,7 +239,7 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }
 
 FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
@@ -262,7 +262,7 @@ mixin _$FlutterOutlinedButton {
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -300,7 +300,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -349,7 +349,7 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterOutlinedButton;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterOutlinedButton;
   _FlutterOutlinedButton._() : super._();
 
   factory _FlutterOutlinedButton.fromJson(Map<String, dynamic> json) =
@@ -365,7 +365,7 @@ abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -399,7 +399,7 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -450,7 +450,7 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterOutlinedButtonIcon;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterOutlinedButtonIcon;
   _FlutterOutlinedButtonIcon._() : super._();
 
   factory _FlutterOutlinedButtonIcon.fromJson(Map<String, dynamic> json) =
@@ -467,7 +467,7 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }
 
 FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
@@ -489,7 +489,7 @@ mixin _$FlutterTextButton {
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -527,7 +527,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -576,7 +576,7 @@ abstract class _FlutterTextButton extends FlutterTextButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterTextButton;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterTextButton;
   _FlutterTextButton._() : super._();
 
   factory _FlutterTextButton.fromJson(Map<String, dynamic> json) =
@@ -592,7 +592,7 @@ abstract class _FlutterTextButton extends FlutterTextButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -626,7 +626,7 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
   @override
   final ZacValue<bool?>? autofocus;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -677,7 +677,7 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
       final ZacValue<bool?>? autofocus,
-      final FlutterClip? clipBehavior}) = _$_FlutterTextButtonIcon;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterTextButtonIcon;
   _FlutterTextButtonIcon._() : super._();
 
   factory _FlutterTextButtonIcon.fromJson(Map<String, dynamic> json) =
@@ -694,5 +694,5 @@ abstract class _FlutterTextButtonIcon extends FlutterTextButton {
   @override
   ZacValue<bool?>? get autofocus;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }

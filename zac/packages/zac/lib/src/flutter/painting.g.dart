@@ -232,11 +232,10 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['inherit'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       fontSize: json['fontSize'] == null
           ? null
           : ZacValue<double?>.fromJson(json['fontSize'] as Object),
@@ -256,8 +255,7 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['wordSpacing'] as Object),
       textBaseline: json['textBaseline'] == null
           ? null
-          : FlutterTextBaseline.fromJson(
-              json['textBaseline'] as Map<String, dynamic>),
+          : ZacValue<TextBaseline?>.fromJson(json['textBaseline'] as Object),
       height: json['height'] == null
           ? null
           : ZacValue<double?>.fromJson(json['height'] as Object),
@@ -281,8 +279,7 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
               json['decoration'] as Map<String, dynamic>),
       decorationColor: json['decorationColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['decorationColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['decorationColor'] as Object),
       decorationStyle: json['decorationStyle'] == null
           ? null
           : FlutterTextDecorationStyle.fromJson(
@@ -337,7 +334,7 @@ _$_FlutterBoxShadow _$$_FlutterBoxShadowFromJson(Map<String, dynamic> json) =>
     _$_FlutterBoxShadow(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       offset: json['offset'] == null
           ? null
           : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
@@ -528,7 +525,7 @@ _$_FlutterBorderAll _$$_FlutterBorderAllFromJson(Map<String, dynamic> json) =>
     _$_FlutterBorderAll(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       width: json['width'] == null
           ? null
           : ZacValue<double?>.fromJson(json['width'] as Object),
@@ -580,7 +577,7 @@ _$_FlutterBorderSide _$$_FlutterBorderSideFromJson(Map<String, dynamic> json) =>
     _$_FlutterBorderSide(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       width: json['width'] == null
           ? null
           : ZacValue<double?>.fromJson(json['width'] as Object),
@@ -614,7 +611,7 @@ _$_FlutterBoxDecoration _$$_FlutterBoxDecorationFromJson(
     _$_FlutterBoxDecoration(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       border: json['border'] == null
           ? null
           : ZacValue<BoxBorder?>.fromJson(json['border'] as Object),
@@ -639,7 +636,7 @@ _$_FlutterShapeDecoration _$$_FlutterShapeDecorationFromJson(
     _$_FlutterShapeDecoration(
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       shadows: (json['shadows'] as List<dynamic>?)
           ?.map((e) => FlutterBoxShadow.fromJson(e as Map<String, dynamic>))
           .toList(),

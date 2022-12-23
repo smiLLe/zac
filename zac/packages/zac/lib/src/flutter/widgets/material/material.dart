@@ -26,13 +26,13 @@ class FlutterMaterial with _$FlutterMaterial implements ZacBuilder<Material> {
     ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     ZacValue<double?>? elevation,
-    FlutterColor? color,
-    FlutterColor? shadowColor,
-    FlutterTextStyle? textStyle,
+    ZacValue<Color?>? color,
+    ZacValue<Color?>? shadowColor,
+    ZacValue<TextStyle?>? textStyle,
     ZacValue<BorderRadiusGeometry?>? borderRadius,
     ZacValue<ShapeBorder?>? shape,
     ZacValue<bool?>? borderOnForeground,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
 

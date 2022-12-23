@@ -26,8 +26,8 @@ mixin _$FlutterRefreshIndicator {
   ZacValue<double?>? get displacement => throw _privateConstructorUsedError;
   ZacValue<double?>? get edgeOffset => throw _privateConstructorUsedError;
   ZacActions get onRefresh => throw _privateConstructorUsedError;
-  FlutterColor? get color => throw _privateConstructorUsedError;
-  FlutterColor? get backgroundColor =>
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   ZacValue<String?>? get semanticsLabel => throw _privateConstructorUsedError;
   ZacValue<String?>? get semanticsValue => throw _privateConstructorUsedError;
@@ -76,9 +76,9 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final ZacActions onRefresh;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
   @override
-  final FlutterColor? backgroundColor;
+  final ZacValue<Color?>? backgroundColor;
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   @override
   final ZacValue<String?>? semanticsLabel;
@@ -157,8 +157,8 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
           final ZacValue<double?>? displacement,
           final ZacValue<double?>? edgeOffset,
           required final ZacActions onRefresh,
-          final FlutterColor? color,
-          final FlutterColor? backgroundColor,
+          final ZacValue<Color?>? color,
+          final ZacValue<Color?>? backgroundColor,
           final ZacValue<String?>? semanticsLabel,
           final ZacValue<String?>? semanticsValue,
           final ZacValue<double?>? strokeWidth,
@@ -181,9 +181,9 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   ZacActions get onRefresh;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override
-  FlutterColor? get backgroundColor;
+  ZacValue<Color?>? get backgroundColor;
   @override // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   ZacValue<String?>? get semanticsLabel;
   @override

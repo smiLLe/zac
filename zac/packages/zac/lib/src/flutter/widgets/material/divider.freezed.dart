@@ -25,7 +25,7 @@ mixin _$FlutterDivider {
   ZacValue<double?>? get thickness => throw _privateConstructorUsedError;
   ZacValue<double?>? get indent => throw _privateConstructorUsedError;
   ZacValue<double?>? get endIndent => throw _privateConstructorUsedError;
-  FlutterColor? get color => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -60,7 +60,7 @@ class _$_FlutterDivider extends _FlutterDivider {
   @override
   final ZacValue<double?>? endIndent;
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
 
   @override
   String toString() {
@@ -103,7 +103,7 @@ abstract class _FlutterDivider extends FlutterDivider {
       final ZacValue<double?>? thickness,
       final ZacValue<double?>? indent,
       final ZacValue<double?>? endIndent,
-      final FlutterColor? color}) = _$_FlutterDivider;
+      final ZacValue<Color?>? color}) = _$_FlutterDivider;
   _FlutterDivider._() : super._();
 
   factory _FlutterDivider.fromJson(Map<String, dynamic> json) =
@@ -120,5 +120,5 @@ abstract class _FlutterDivider extends FlutterDivider {
   @override
   ZacValue<double?>? get endIndent;
   @override
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
 }

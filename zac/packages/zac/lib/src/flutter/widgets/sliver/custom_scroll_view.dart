@@ -43,7 +43,7 @@ class FlutterCustomScrollView
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
     ZacValue<String?>? restorationId,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterCustomScrollView;
 
   @override

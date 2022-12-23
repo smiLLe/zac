@@ -1,5 +1,4 @@
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -25,7 +24,7 @@ class FlutterConstrainedBox
   @FreezedUnionValue(FlutterConstrainedBox.unionValue)
   factory FlutterConstrainedBox({
     ZacValue<Key?>? key,
-    required FlutterBoxConstraints constraints,
+    required ZacValue<BoxConstraints> constraints,
     ZacValue<Widget?>? child,
   }) = _FlutterConstrainedBox;
 

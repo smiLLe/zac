@@ -23,11 +23,12 @@ FlutterUnconstrainedBox _$FlutterUnconstrainedBoxFromJson(
 mixin _$FlutterUnconstrainedBox {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
   ZacValue<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  FlutterAxis? get constrainedAxis => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Axis?>? get constrainedAxis => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -56,13 +57,13 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
   @override
   final ZacValue<Widget?>? child;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
   final ZacValue<AlignmentGeometry?>? alignment;
   @override
-  final FlutterAxis? constrainedAxis;
+  final ZacValue<Axis?>? constrainedAxis;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -104,10 +105,10 @@ abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   factory _FlutterUnconstrainedBox(
       {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? child,
-      final FlutterTextDirection? textDirection,
+      final ZacValue<TextDirection?>? textDirection,
       final ZacValue<AlignmentGeometry?>? alignment,
-      final FlutterAxis? constrainedAxis,
-      final FlutterClip? clipBehavior}) = _$_FlutterUnconstrainedBox;
+      final ZacValue<Axis?>? constrainedAxis,
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterUnconstrainedBox;
   _FlutterUnconstrainedBox._() : super._();
 
   factory _FlutterUnconstrainedBox.fromJson(Map<String, dynamic> json) =
@@ -118,11 +119,11 @@ abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   @override
   ZacValue<Widget?>? get child;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
   ZacValue<AlignmentGeometry?>? get alignment;
   @override
-  FlutterAxis? get constrainedAxis;
+  ZacValue<Axis?>? get constrainedAxis;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }

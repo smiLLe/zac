@@ -17,8 +17,7 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
               json['alignment'] as Map<String, dynamic>),
       mainAxisSize: json['mainAxisSize'] == null
           ? null
-          : FlutterMainAxisSize.fromJson(
-              json['mainAxisSize'] as Map<String, dynamic>),
+          : ZacValue<MainAxisSize?>.fromJson(json['mainAxisSize'] as Object),
       buttonMinWidth: json['buttonMinWidth'] == null
           ? null
           : ZacValue<double?>.fromJson(json['buttonMinWidth'] as Object),
@@ -34,8 +33,8 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['buttonAlignedDropdown'] as Object),
       overflowDirection: json['overflowDirection'] == null
           ? null
-          : FlutterVerticalDirection.fromJson(
-              json['overflowDirection'] as Map<String, dynamic>),
+          : ZacValue<VerticalDirection?>.fromJson(
+              json['overflowDirection'] as Object),
       overflowButtonSpacing: json['overflowButtonSpacing'] == null
           ? null
           : ZacValue<double?>.fromJson(json['overflowButtonSpacing'] as Object),

@@ -40,7 +40,7 @@ mixin _$FlutterCustomScrollView {
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
   ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -104,7 +104,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   @override
   final ZacValue<String?>? restorationId;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -187,7 +187,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       final ZacValue<int?>? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
       final ZacValue<String?>? restorationId,
-      final FlutterClip? clipBehavior}) = _$_FlutterCustomScrollView;
+      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterCustomScrollView;
   _FlutterCustomScrollView._() : super._();
 
   factory _FlutterCustomScrollView.fromJson(Map<String, dynamic> json) =
@@ -222,5 +222,5 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   @override
   ZacValue<String?>? get restorationId;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
 }

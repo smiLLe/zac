@@ -39,7 +39,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacValue<String?>.fromJson(json['title'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       locale: json['locale'] == null
           ? null
           : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),

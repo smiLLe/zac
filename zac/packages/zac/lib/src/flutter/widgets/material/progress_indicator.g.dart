@@ -17,11 +17,10 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
           : ZacValue<double?>.fromJson(json['value'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       minHeight: json['minHeight'] == null
           ? null
           : ZacValue<double?>.fromJson(json['minHeight'] as Object),
@@ -45,11 +44,10 @@ _$_FlutterProgressIndicatorCircular
               : ZacValue<double?>.fromJson(json['value'] as Object),
           backgroundColor: json['backgroundColor'] == null
               ? null
-              : FlutterColor.fromJson(
-                  json['backgroundColor'] as Map<String, dynamic>),
+              : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
           color: json['color'] == null
               ? null
-              : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+              : ZacValue<Color?>.fromJson(json['color'] as Object),
           strokeWidth: json['strokeWidth'] == null
               ? null
               : ZacValue<double?>.fromJson(json['strokeWidth'] as Object),

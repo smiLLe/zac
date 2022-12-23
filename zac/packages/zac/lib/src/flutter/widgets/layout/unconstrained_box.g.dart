@@ -17,16 +17,14 @@ _$_FlutterUnconstrainedBox _$$_FlutterUnconstrainedBoxFromJson(
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : FlutterTextDirection.fromJson(
-              json['textDirection'] as Map<String, dynamic>),
+          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       alignment: json['alignment'] == null
           ? null
           : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
       constrainedAxis: json['constrainedAxis'] == null
           ? null
-          : FlutterAxis.fromJson(
-              json['constrainedAxis'] as Map<String, dynamic>),
+          : ZacValue<Axis?>.fromJson(json['constrainedAxis'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
     );

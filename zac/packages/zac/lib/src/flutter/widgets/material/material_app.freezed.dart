@@ -35,7 +35,7 @@ mixin _$FlutterMaterialApp {
 // TransitionBuilder? builder,
   ZacValue<String?>? get title =>
       throw _privateConstructorUsedError; // GenerateAppTitle? onGenerateTitle,
-  FlutterColor? get color =>
+  ZacValue<Color?>? get color =>
       throw _privateConstructorUsedError; // ThemeData? theme,
 // ThemeData? darkTheme,
 // ThemeData? highContrastTheme,
@@ -120,7 +120,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   final ZacValue<String?>? title;
 // GenerateAppTitle? onGenerateTitle,
   @override
-  final FlutterColor? color;
+  final ZacValue<Color?>? color;
 // ThemeData? theme,
 // ThemeData? darkTheme,
 // ThemeData? highContrastTheme,
@@ -243,7 +243,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
       final ZacValue<String?>? title,
-      final FlutterColor? color,
+      final ZacValue<Color?>? color,
       final FlutterLocale? locale,
       final ZacValue<bool?>? debugShowMaterialGrid,
       final ZacValue<bool?>? showPerformanceOverlay,
@@ -276,7 +276,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
 // TransitionBuilder? builder,
   ZacValue<String?>? get title;
   @override // GenerateAppTitle? onGenerateTitle,
-  FlutterColor? get color;
+  ZacValue<Color?>? get color;
   @override // ThemeData? theme,
 // ThemeData? darkTheme,
 // ThemeData? highContrastTheme,

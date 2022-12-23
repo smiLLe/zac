@@ -26,7 +26,7 @@ class FlutterClipOval with _$FlutterClipOval implements ZacBuilder<ClipOval> {
     ZacValue<Key?>? key,
     ZacValue<Widget?>? child,
     // CustomClipper<Rect>? clipper,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterClipOval;
 
   ClipOval _buildWidget(ZacContext zacContext) {

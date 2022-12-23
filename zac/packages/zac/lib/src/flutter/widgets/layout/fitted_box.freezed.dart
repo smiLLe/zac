@@ -21,10 +21,10 @@ FlutterFittedBox _$FlutterFittedBoxFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterFittedBox {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterBoxFit? get fit => throw _privateConstructorUsedError;
+  ZacValue<BoxFit?>? get fit => throw _privateConstructorUsedError;
   ZacValue<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -47,11 +47,11 @@ class _$_FlutterFittedBox extends _FlutterFittedBox {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterBoxFit? fit;
+  final ZacValue<BoxFit?>? fit;
   @override
   final ZacValue<AlignmentGeometry?>? alignment;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
   final ZacValue<Widget?>? child;
 
@@ -91,9 +91,9 @@ class _$_FlutterFittedBox extends _FlutterFittedBox {
 abstract class _FlutterFittedBox extends FlutterFittedBox {
   factory _FlutterFittedBox(
       {final ZacValue<Key?>? key,
-      final FlutterBoxFit? fit,
+      final ZacValue<BoxFit?>? fit,
       final ZacValue<AlignmentGeometry?>? alignment,
-      final FlutterClip? clipBehavior,
+      final ZacValue<Clip?>? clipBehavior,
       final ZacValue<Widget?>? child}) = _$_FlutterFittedBox;
   _FlutterFittedBox._() : super._();
 
@@ -103,11 +103,11 @@ abstract class _FlutterFittedBox extends FlutterFittedBox {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterBoxFit? get fit;
+  ZacValue<BoxFit?>? get fit;
   @override
   ZacValue<AlignmentGeometry?>? get alignment;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
   ZacValue<Widget?>? get child;
 }

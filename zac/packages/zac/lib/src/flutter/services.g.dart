@@ -11,13 +11,13 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
     _$_FlutterSystemUiOverlayStyle(
       systemNavigationBarColor: json['systemNavigationBarColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['systemNavigationBarColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(
+              json['systemNavigationBarColor'] as Object),
       systemNavigationBarDividerColor:
           json['systemNavigationBarDividerColor'] == null
               ? null
-              : FlutterColor.fromJson(json['systemNavigationBarDividerColor']
-                  as Map<String, dynamic>),
+              : ZacValue<Color?>.fromJson(
+                  json['systemNavigationBarDividerColor'] as Object),
       systemNavigationBarIconBrightness:
           json['systemNavigationBarIconBrightness'] == null
               ? null
@@ -31,8 +31,7 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
                   json['systemNavigationBarContrastEnforced'] as Object),
       statusBarColor: json['statusBarColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['statusBarColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['statusBarColor'] as Object),
       statusBarBrightness: json['statusBarBrightness'] == null
           ? null
           : FlutterBrightness.fromJson(

@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,7 +11,9 @@ part 'sliver_grid_delegate.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
+class FlutterSliverGridDelegate
+    with _$FlutterSliverGridDelegate
+    implements ZacBuilder<SliverGridDelegate> {
   const FlutterSliverGridDelegate._();
 
   static const String unionValueSliverGridDelegateWithFixedCrossAxisCount =
@@ -41,6 +44,7 @@ class FlutterSliverGridDelegate with _$FlutterSliverGridDelegate {
     ZacValue<double?>? mainAxisExtent,
   }) = _SliverGridDelegateWithMaxCrossAxisExtent;
 
+  @override
   SliverGridDelegate build(ZacContext zacContext) {
     return map(
       withFixedCrossAxisCount: (value) =>

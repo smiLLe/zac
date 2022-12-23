@@ -23,9 +23,10 @@ mixin _$FlutterStack {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
   FlutterStackFit? get fit => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValueList<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
@@ -56,11 +57,11 @@ class _$_FlutterStack extends _FlutterStack {
   @override
   final ZacValue<AlignmentGeometry?>? alignment;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
   final FlutterStackFit? fit;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
   final ZacValueList<Widget, List<Widget>?>? children;
 
@@ -104,9 +105,9 @@ abstract class _FlutterStack extends FlutterStack {
   factory _FlutterStack(
       {final ZacValue<Key?>? key,
       final ZacValue<AlignmentGeometry?>? alignment,
-      final FlutterTextDirection? textDirection,
+      final ZacValue<TextDirection?>? textDirection,
       final FlutterStackFit? fit,
-      final FlutterClip? clipBehavior,
+      final ZacValue<Clip?>? clipBehavior,
       final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterStack;
   _FlutterStack._() : super._();
 
@@ -118,11 +119,11 @@ abstract class _FlutterStack extends FlutterStack {
   @override
   ZacValue<AlignmentGeometry?>? get alignment;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
   FlutterStackFit? get fit;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
   ZacValueList<Widget, List<Widget>?>? get children;
 }

@@ -178,7 +178,7 @@ class ZacWidgetIsolated extends StatelessWidget {
                           g: 67,
                           b: 54,
                           opacity: ZacValue<double>.fromJson(1.0),
-                        ),
+                        ).toZacValue(),
                         width: ZacValue<double>.fromJson(3.0),
                       ).toZacValue(),
                     ).toZacValue(),

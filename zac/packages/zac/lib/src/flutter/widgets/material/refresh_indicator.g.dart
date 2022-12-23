@@ -22,11 +22,10 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       onRefresh: ZacActions.fromJson(json['onRefresh'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
           : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),

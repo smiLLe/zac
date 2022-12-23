@@ -38,7 +38,7 @@ class FlutterMaterialApp
     // TransitionBuilder? builder,
     ZacValue<String?>? title,
     // GenerateAppTitle? onGenerateTitle,
-    FlutterColor? color,
+    ZacValue<Color?>? color,
     // ThemeData? theme,
     // ThemeData? darkTheme,
     // ThemeData? highContrastTheme,

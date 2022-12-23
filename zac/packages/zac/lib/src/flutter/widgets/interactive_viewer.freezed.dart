@@ -23,9 +23,10 @@ FlutterInteractiveViewer _$FlutterInteractiveViewerFromJson(
 mixin _$FlutterInteractiveViewer {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<bool?>? get alignPanAxis => throw _privateConstructorUsedError;
-  FlutterEdgeInsets? get boundaryMargin => throw _privateConstructorUsedError;
+  ZacValue<EdgeInsets?>? get boundaryMargin =>
+      throw _privateConstructorUsedError;
   ZacValue<bool?>? get constrained => throw _privateConstructorUsedError;
   ZacValue<double?>? get maxScale => throw _privateConstructorUsedError;
   ZacValue<double?>? get minScale => throw _privateConstructorUsedError;
@@ -69,11 +70,11 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacValue<Widget> child;
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
   final ZacValue<bool?>? alignPanAxis;
   @override
-  final FlutterEdgeInsets? boundaryMargin;
+  final ZacValue<EdgeInsets?>? boundaryMargin;
   @override
   final ZacValue<bool?>? constrained;
   @override
@@ -158,9 +159,9 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   factory _FlutterInteractiveViewer(
       {final ZacValue<Key?>? key,
       required final ZacValue<Widget> child,
-      final FlutterClip? clipBehavior,
+      final ZacValue<Clip?>? clipBehavior,
       final ZacValue<bool?>? alignPanAxis,
-      final FlutterEdgeInsets? boundaryMargin,
+      final ZacValue<EdgeInsets?>? boundaryMargin,
       final ZacValue<bool?>? constrained,
       final ZacValue<double?>? maxScale,
       final ZacValue<double?>? minScale,
@@ -179,11 +180,11 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacValue<Widget> get child;
   @override
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
   ZacValue<bool?>? get alignPanAxis;
   @override
-  FlutterEdgeInsets? get boundaryMargin;
+  ZacValue<EdgeInsets?>? get boundaryMargin;
   @override
   ZacValue<bool?>? get constrained;
   @override

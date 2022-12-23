@@ -38,8 +38,7 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
           : ZacValue<Widget?>.fromJson(json['bottomSheet'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       resizeToAvoidBottomInset: json['resizeToAvoidBottomInset'] == null
           ? null
           : ZacValue<bool?>.fromJson(
@@ -55,8 +54,7 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['extendBodyBehindAppBar'] as Object),
       drawerScrimColor: json['drawerScrimColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['drawerScrimColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['drawerScrimColor'] as Object),
       drawerEdgeDragWidth: json['drawerEdgeDragWidth'] == null
           ? null
           : ZacValue<double?>.fromJson(json['drawerEdgeDragWidth'] as Object),
@@ -103,8 +101,7 @@ _$_FlutterScaffoldActionsShowBottomSheet
           ZacValue<Widget>.fromJson(json['child'] as Object),
           backgroundColor: json['backgroundColor'] == null
               ? null
-              : FlutterColor.fromJson(
-                  json['backgroundColor'] as Map<String, dynamic>),
+              : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
           elevation: json['elevation'] == null
               ? null
               : ZacValue<double?>.fromJson(json['elevation'] as Object),
@@ -113,8 +110,7 @@ _$_FlutterScaffoldActionsShowBottomSheet
               : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
           clipBehavior: json['clipBehavior'] == null
               ? null
-              : FlutterClip.fromJson(
-                  json['clipBehavior'] as Map<String, dynamic>),
+              : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
           constraints: json['constraints'] == null
               ? null
               : FlutterBoxConstraints.fromJson(
@@ -178,8 +174,7 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
       content: ZacValue<Widget>.fromJson(json['content'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacValue<double?>.fromJson(json['elevation'] as Object),
@@ -228,11 +223,10 @@ _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       textColor: json['textColor'] == null
           ? null
-          : FlutterColor.fromJson(json['textColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['textColor'] as Object),
       disabledTextColor: json['disabledTextColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['disabledTextColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['disabledTextColor'] as Object),
       label: json['label'] as String,
       onPressed: json['onPressed'] == null
           ? null
@@ -248,8 +242,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
       content: ZacValue<Widget>.fromJson(json['content'] as Object),
       contentTextStyle: json['contentTextStyle'] == null
           ? null
-          : FlutterTextStyle.fromJson(
-              json['contentTextStyle'] as Map<String, dynamic>),
+          : ZacValue<TextStyle?>.fromJson(json['contentTextStyle'] as Object),
       actions: ZacValueList<Widget, List<Widget>>.fromJson(
           json['actions'] as Object),
       elevation: json['elevation'] == null
@@ -260,8 +253,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
           : ZacValue<Widget?>.fromJson(json['leading'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['backgroundColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
       padding: json['padding'] == null
           ? null
           : ZacValue<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),

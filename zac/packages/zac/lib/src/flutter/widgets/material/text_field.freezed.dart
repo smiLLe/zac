@@ -29,12 +29,13 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError;
   FlutterTextCapitalization? get textCapitalization =>
       throw _privateConstructorUsedError;
-  FlutterTextStyle? get style => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
   FlutterTextAlignVertical? get textAlignVertical =>
       throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
   ZacValue<bool?>? get readOnly =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
   ZacValue<bool?>? get showCursor => throw _privateConstructorUsedError;
@@ -64,14 +65,14 @@ mixin _$FlutterTextField {
   ZacValue<double?>? get cursorWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
-  FlutterColor? get cursorColor => throw _privateConstructorUsedError;
+  ZacValue<Color?>? get cursorColor => throw _privateConstructorUsedError;
   FlutterBoxHeightStyle? get selectionHeightStyle =>
       throw _privateConstructorUsedError;
   FlutterBoxWidthStyle? get selectionWidthStyle =>
       throw _privateConstructorUsedError;
   FlutterBrightness? get keyboardAppearance =>
       throw _privateConstructorUsedError;
-  FlutterEdgeInsets? get scrollPadding =>
+  ZacValue<EdgeInsets?>? get scrollPadding =>
       throw _privateConstructorUsedError; // DragStartBehavior? dragStartBehavior,
   ZacValue<bool?>? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
@@ -82,7 +83,7 @@ mixin _$FlutterTextField {
   ZacValue<ScrollController?>? get scrollController =>
       throw _privateConstructorUsedError; // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
   ZacValue<bool?>? get enableIMEPersonalizedLearning =>
       throw _privateConstructorUsedError;
@@ -157,7 +158,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterTextCapitalization? textCapitalization;
   @override
-  final FlutterTextStyle? style;
+  final ZacValue<TextStyle?>? style;
   @override
   final FlutterStrutStyle? strutStyle;
   @override
@@ -165,7 +166,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterTextAlignVertical? textAlignVertical;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
   final ZacValue<bool?>? readOnly;
 // ToolbarOptions? toolbarOptions,
@@ -213,7 +214,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterRadius? cursorRadius;
   @override
-  final FlutterColor? cursorColor;
+  final ZacValue<Color?>? cursorColor;
   @override
   final FlutterBoxHeightStyle? selectionHeightStyle;
   @override
@@ -221,7 +222,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final FlutterBrightness? keyboardAppearance;
   @override
-  final FlutterEdgeInsets? scrollPadding;
+  final ZacValue<EdgeInsets?>? scrollPadding;
 // DragStartBehavior? dragStartBehavior,
   @override
   final ZacValue<bool?>? enableInteractiveSelection;
@@ -236,7 +237,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
   final ZacValue<String?>? restorationId;
   @override
@@ -398,11 +399,11 @@ abstract class _FlutterTextField extends FlutterTextField {
           final FlutterTextInputType? keyboardType,
           final FlutterTextInputAction? textInputAction,
           final FlutterTextCapitalization? textCapitalization,
-          final FlutterTextStyle? style,
+          final ZacValue<TextStyle?>? style,
           final FlutterStrutStyle? strutStyle,
           final FlutterTextAlign? textAlign,
           final FlutterTextAlignVertical? textAlignVertical,
-          final FlutterTextDirection? textDirection,
+          final ZacValue<TextDirection?>? textDirection,
           final ZacValue<bool?>? readOnly,
           final ZacValue<bool?>? showCursor,
           final ZacValue<bool?>? autofocus,
@@ -423,15 +424,15 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacValue<double?>? cursorWidth,
           final ZacValue<double?>? cursorHeight,
           final FlutterRadius? cursorRadius,
-          final FlutterColor? cursorColor,
+          final ZacValue<Color?>? cursorColor,
           final FlutterBoxHeightStyle? selectionHeightStyle,
           final FlutterBoxWidthStyle? selectionWidthStyle,
           final FlutterBrightness? keyboardAppearance,
-          final FlutterEdgeInsets? scrollPadding,
+          final ZacValue<EdgeInsets?>? scrollPadding,
           final ZacValue<bool?>? enableInteractiveSelection,
           final ZacActions? onTap,
           final ZacValue<ScrollController?>? scrollController,
-          final FlutterClip? clipBehavior,
+          final ZacValue<Clip?>? clipBehavior,
           final ZacValue<String?>? restorationId,
           final ZacValue<bool?>? enableIMEPersonalizedLearning}) =
       _$_FlutterTextField;
@@ -452,7 +453,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterTextCapitalization? get textCapitalization;
   @override
-  FlutterTextStyle? get style;
+  ZacValue<TextStyle?>? get style;
   @override
   FlutterStrutStyle? get strutStyle;
   @override
@@ -460,7 +461,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterTextAlignVertical? get textAlignVertical;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
   ZacValue<bool?>? get readOnly;
   @override // ToolbarOptions? toolbarOptions,
@@ -503,7 +504,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterRadius? get cursorRadius;
   @override
-  FlutterColor? get cursorColor;
+  ZacValue<Color?>? get cursorColor;
   @override
   FlutterBoxHeightStyle? get selectionHeightStyle;
   @override
@@ -511,7 +512,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   FlutterBrightness? get keyboardAppearance;
   @override
-  FlutterEdgeInsets? get scrollPadding;
+  ZacValue<EdgeInsets?>? get scrollPadding;
   @override // DragStartBehavior? dragStartBehavior,
   ZacValue<bool?>? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
@@ -522,7 +523,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacValue<ScrollController?>? get scrollController;
   @override // ScrollPhysics? scrollPhysics,
 // Iterable<String>? autofillHints = const <String>[],
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
   ZacValue<String?>? get restorationId;
   @override

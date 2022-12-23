@@ -14,8 +14,7 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       scrollDirection: json['scrollDirection'] == null
           ? null
-          : FlutterAxis.fromJson(
-              json['scrollDirection'] as Map<String, dynamic>),
+          : ZacValue<Axis?>.fromJson(json['scrollDirection'] as Object),
       reverse: json['reverse'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['reverse'] as Object),
@@ -33,12 +32,12 @@ _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : FlutterClip.fromJson(json['clipBehavior'] as Map<String, dynamic>),
+          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
       restorationId: json['restorationId'] == null
           ? null
           : ZacValue<String?>.fromJson(json['restorationId'] as Object),
       keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
           ? null
-          : FlutterScrollViewKeyboardDismissBehavior.fromJson(
-              json['keyboardDismissBehavior'] as Map<String, dynamic>),
+          : ZacValue<ScrollViewKeyboardDismissBehavior?>.fromJson(
+              json['keyboardDismissBehavior'] as Object),
     );

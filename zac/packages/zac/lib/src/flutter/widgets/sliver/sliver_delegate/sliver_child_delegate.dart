@@ -1,4 +1,5 @@
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +10,9 @@ part 'sliver_child_delegate.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
+class FlutterSliverChildDelegate
+    with _$FlutterSliverChildDelegate
+    implements ZacBuilder<SliverChildDelegate> {
   const FlutterSliverChildDelegate._();
 
   static const String unionValueSliverChildListDelegate =
@@ -42,6 +45,7 @@ class FlutterSliverChildDelegate with _$FlutterSliverChildDelegate {
     ZacValue<int?>? semanticIndexOffset,
   }) = _FlutterSliverChildListDelegateFixed;
 
+  @override
   SliverChildDelegate build(ZacContext zacContext) {
     return map(
       list: (value) => SliverChildListDelegate(

@@ -24,10 +24,11 @@ mixin _$FlutterSelectableText {
   String get data => throw _privateConstructorUsedError;
   ZacValue<Key?>? get key =>
       throw _privateConstructorUsedError; // FocusNode? focusNode,
-  FlutterTextStyle? get style => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
   ZacValue<double?>? get textScaleFactor => throw _privateConstructorUsedError;
   ZacValue<bool?>? get showCursor => throw _privateConstructorUsedError;
   ZacValue<bool?>? get autofocus =>
@@ -37,7 +38,7 @@ mixin _$FlutterSelectableText {
   ZacValue<double?>? get cursorWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get cursorHeight => throw _privateConstructorUsedError;
   FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
-  FlutterColor? get cursorColor =>
+  ZacValue<Color?>? get cursorColor =>
       throw _privateConstructorUsedError; // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -91,13 +92,13 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   final ZacValue<Key?>? key;
 // FocusNode? focusNode,
   @override
-  final FlutterTextStyle? style;
+  final ZacValue<TextStyle?>? style;
   @override
   final FlutterStrutStyle? strutStyle;
   @override
   final FlutterTextAlign? textAlign;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
   final ZacValue<double?>? textScaleFactor;
   @override
@@ -116,7 +117,7 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final FlutterRadius? cursorRadius;
   @override
-  final FlutterColor? cursorColor;
+  final ZacValue<Color?>? cursorColor;
 // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -218,10 +219,10 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 abstract class _FlutterSelectableText extends FlutterSelectableText {
   factory _FlutterSelectableText(final String data,
       {final ZacValue<Key?>? key,
-      final FlutterTextStyle? style,
+      final ZacValue<TextStyle?>? style,
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
-      final FlutterTextDirection? textDirection,
+      final ZacValue<TextDirection?>? textDirection,
       final ZacValue<double?>? textScaleFactor,
       final ZacValue<bool?>? showCursor,
       final ZacValue<bool?>? autofocus,
@@ -230,7 +231,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
       final ZacValue<double?>? cursorWidth,
       final ZacValue<double?>? cursorHeight,
       final FlutterRadius? cursorRadius,
-      final FlutterColor? cursorColor,
+      final ZacValue<Color?>? cursorColor,
       final ZacValue<bool?>? enableInteractiveSelection,
       final ZacValue<String?>? semanticsLabel,
       final FlutterTextHeightBehavior? textHeightBehavior,
@@ -245,13 +246,13 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   ZacValue<Key?>? get key;
   @override // FocusNode? focusNode,
-  FlutterTextStyle? get style;
+  ZacValue<TextStyle?>? get style;
   @override
   FlutterStrutStyle? get strutStyle;
   @override
   FlutterTextAlign? get textAlign;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
   ZacValue<double?>? get textScaleFactor;
   @override
@@ -269,7 +270,7 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   FlutterRadius? get cursorRadius;
   @override
-  FlutterColor? get cursorColor;
+  ZacValue<Color?>? get cursorColor;
   @override // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,

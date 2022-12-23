@@ -5,7 +5,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
@@ -27,7 +26,7 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
     ZacValue<bool?>? top,
     ZacValue<bool?>? right,
     ZacValue<bool?>? bottom,
-    FlutterEdgeInsets? minimum,
+    ZacValue<EdgeInsets?>? minimum,
     ZacValue<bool?>? maintainBottomViewPadding,
     required ZacValue<Widget> child,
   }) = _FlutterSafeArea;

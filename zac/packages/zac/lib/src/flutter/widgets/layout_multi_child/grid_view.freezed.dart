@@ -21,7 +21,7 @@ FlutterGridView _$FlutterGridViewFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterGridView {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
+  ZacValue<Axis?>? get scrollDirection => throw _privateConstructorUsedError;
   ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
   ZacValue<ScrollController?>? get controller =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$FlutterGridView {
   ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
   ZacValue<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
-  FlutterSliverGridDelegate get gridDelegate =>
+  ZacValue<SliverGridDelegate> get gridDelegate =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
@@ -42,8 +42,8 @@ mixin _$FlutterGridView {
       throw _privateConstructorUsedError;
   ZacValue<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  FlutterClip? get clipBehavior => throw _privateConstructorUsedError;
-  FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
+  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
   ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
 
@@ -83,7 +83,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterAxis? scrollDirection;
+  final ZacValue<Axis?>? scrollDirection;
   @override
   final ZacValue<bool?>? reverse;
   @override
@@ -96,7 +96,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacValue<EdgeInsetsGeometry?>? padding;
   @override
-  final FlutterSliverGridDelegate gridDelegate;
+  final ZacValue<SliverGridDelegate> gridDelegate;
   @override
   final ZacValue<bool?>? addAutomaticKeepAlives;
   @override
@@ -111,9 +111,9 @@ class _$_FlutterGridView extends _FlutterGridView {
   final ZacValue<int?>? semanticChildCount;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final FlutterClip? clipBehavior;
+  final ZacValue<Clip?>? clipBehavior;
   @override
-  final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
+  final ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior;
   @override
   final ZacValue<String?>? restorationId;
 
@@ -194,21 +194,22 @@ class _$_FlutterGridView extends _FlutterGridView {
 abstract class _FlutterGridView extends FlutterGridView {
   factory _FlutterGridView(
       {final ZacValue<Key?>? key,
-      final FlutterAxis? scrollDirection,
+      final ZacValue<Axis?>? scrollDirection,
       final ZacValue<bool?>? reverse,
       final ZacValue<ScrollController?>? controller,
       final ZacValue<bool?>? primary,
       final ZacValue<bool?>? shrinkWrap,
       final ZacValue<EdgeInsetsGeometry?>? padding,
-      required final FlutterSliverGridDelegate gridDelegate,
+      required final ZacValue<SliverGridDelegate> gridDelegate,
       final ZacValue<bool?>? addAutomaticKeepAlives,
       final ZacValue<bool?>? addRepaintBoundaries,
       final ZacValue<bool?>? addSemanticIndexes,
       final ZacValue<double?>? cacheExtent,
       final ZacValueList<Widget, List<Widget>?>? children,
       final ZacValue<int?>? semanticChildCount,
-      final FlutterClip? clipBehavior,
-      final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+      final ZacValue<Clip?>? clipBehavior,
+      final ZacValue<ScrollViewKeyboardDismissBehavior?>?
+          keyboardDismissBehavior,
       final ZacValue<String?>? restorationId}) = _$_FlutterGridView;
   _FlutterGridView._() : super._();
 
@@ -218,7 +219,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterAxis? get scrollDirection;
+  ZacValue<Axis?>? get scrollDirection;
   @override
   ZacValue<bool?>? get reverse;
   @override
@@ -230,7 +231,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacValue<EdgeInsetsGeometry?>? get padding;
   @override
-  FlutterSliverGridDelegate get gridDelegate;
+  ZacValue<SliverGridDelegate> get gridDelegate;
   @override
   ZacValue<bool?>? get addAutomaticKeepAlives;
   @override
@@ -244,9 +245,9 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacValue<int?>? get semanticChildCount;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  FlutterClip? get clipBehavior;
+  ZacValue<Clip?>? get clipBehavior;
   @override
-  FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
+  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior;
   @override
   ZacValue<String?>? get restorationId;
 }

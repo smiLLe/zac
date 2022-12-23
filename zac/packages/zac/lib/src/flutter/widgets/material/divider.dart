@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 part 'divider.freezed.dart';
 part 'divider.g.dart';
@@ -27,7 +26,7 @@ class FlutterDivider with _$FlutterDivider implements ZacBuilder<Divider> {
     ZacValue<double?>? thickness,
     ZacValue<double?>? indent,
     ZacValue<double?>? endIndent,
-    FlutterColor? color,
+    ZacValue<Color?>? color,
   }) = _FlutterDivider;
 
   Divider _buildWidget(ZacContext zacContext) {

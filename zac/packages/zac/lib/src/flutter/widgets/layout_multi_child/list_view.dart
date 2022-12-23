@@ -3,10 +3,8 @@ import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/keyboard.dart';
 import 'package:zac/src/flutter/widgets/scroll_physics.dart';
@@ -27,11 +25,11 @@ class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
   @FreezedUnionValue(FlutterListView.unionValue)
   factory FlutterListView({
     ZacValue<Key?>? key,
-    FlutterAxis? scrollDirection,
+    ZacValue<Axis?>? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<ScrollController?>? controller,
     ZacValue<bool?>? primary,
-    FlutterScrollPhysics? physics,
+    ZacValue<ScrollPhysics?>? physics,
     ZacValue<bool?>? shrinkWrap,
     ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<double?>? itemExtent,
@@ -43,9 +41,9 @@ class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
     ZacValueList<Widget, List<Widget>?>? children,
     ZacValue<int?>? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+    ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
     ZacValue<String?>? restorationId,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
   }) = _FlutterListView;
 
   ListView _buildWidget(ZacContext zacContext) {

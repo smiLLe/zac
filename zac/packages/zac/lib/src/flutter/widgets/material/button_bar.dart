@@ -27,14 +27,14 @@ class FlutterButtonBar
   factory FlutterButtonBar({
     ZacValue<Key?>? key,
     FlutterMainAxisAlignment? alignment,
-    FlutterMainAxisSize? mainAxisSize,
+    ZacValue<MainAxisSize?>? mainAxisSize,
 // FlutterButtonTextTheme? buttonTextTheme,
     ZacValue<double?>? buttonMinWidth,
     ZacValue<double?>? buttonHeight,
     ZacValue<EdgeInsetsGeometry?>? buttonPadding,
     ZacValue<bool?>? buttonAlignedDropdown,
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
-    FlutterVerticalDirection? overflowDirection,
+    ZacValue<VerticalDirection?>? overflowDirection,
     ZacValue<double?>? overflowButtonSpacing,
     ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterButtonBar;

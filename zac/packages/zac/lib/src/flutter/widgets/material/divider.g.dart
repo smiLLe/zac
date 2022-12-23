@@ -25,5 +25,5 @@ _$_FlutterDivider _$$_FlutterDividerFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['endIndent'] as Object),
       color: json['color'] == null
           ? null
-          : FlutterColor.fromJson(json['color'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['color'] as Object),
     );

@@ -34,14 +34,13 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
       selectedColor: json['selectedColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['selectedColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['selectedColor'] as Object),
       iconColor: json['iconColor'] == null
           ? null
-          : FlutterColor.fromJson(json['iconColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['iconColor'] as Object),
       textColor: json['textColor'] == null
           ? null
-          : FlutterColor.fromJson(json['textColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['textColor'] as Object),
       contentPadding: json['contentPadding'] == null
           ? null
           : ZacValue<EdgeInsetsGeometry?>.fromJson(
@@ -60,20 +59,19 @@ _$_FlutterListTile _$$_FlutterListTileFromJson(Map<String, dynamic> json) =>
           : ZacValue<bool?>.fromJson(json['selected'] as Object),
       focusColor: json['focusColor'] == null
           ? null
-          : FlutterColor.fromJson(json['focusColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['focusColor'] as Object),
       hoverColor: json['hoverColor'] == null
           ? null
-          : FlutterColor.fromJson(json['hoverColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['hoverColor'] as Object),
       autofocus: json['autofocus'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
       tileColor: json['tileColor'] == null
           ? null
-          : FlutterColor.fromJson(json['tileColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['tileColor'] as Object),
       selectedTileColor: json['selectedTileColor'] == null
           ? null
-          : FlutterColor.fromJson(
-              json['selectedTileColor'] as Map<String, dynamic>),
+          : ZacValue<Color?>.fromJson(json['selectedTileColor'] as Object),
       enableFeedback: json['enableFeedback'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['enableFeedback'] as Object),

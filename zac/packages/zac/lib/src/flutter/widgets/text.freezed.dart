@@ -22,10 +22,11 @@ FlutterText _$FlutterTextFromJson(Map<String, dynamic> json) {
 mixin _$FlutterText {
   ZacValue<String> get data => throw _privateConstructorUsedError;
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterTextStyle? get style => throw _privateConstructorUsedError;
+  ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
   FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
   FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
-  FlutterTextDirection? get textDirection => throw _privateConstructorUsedError;
+  ZacValue<TextDirection?>? get textDirection =>
+      throw _privateConstructorUsedError;
   FlutterLocale? get locale => throw _privateConstructorUsedError;
   ZacValue<bool?>? get softWrap => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
@@ -71,13 +72,13 @@ class _$_FlutterText extends _FlutterText {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterTextStyle? style;
+  final ZacValue<TextStyle?>? style;
   @override
   final FlutterStrutStyle? strutStyle;
   @override
   final FlutterTextAlign? textAlign;
   @override
-  final FlutterTextDirection? textDirection;
+  final ZacValue<TextDirection?>? textDirection;
   @override
   final FlutterLocale? locale;
   @override
@@ -162,10 +163,10 @@ class _$_FlutterText extends _FlutterText {
 abstract class _FlutterText extends FlutterText {
   factory _FlutterText(final ZacValue<String> data,
       {final ZacValue<Key?>? key,
-      final FlutterTextStyle? style,
+      final ZacValue<TextStyle?>? style,
       final FlutterStrutStyle? strutStyle,
       final FlutterTextAlign? textAlign,
-      final FlutterTextDirection? textDirection,
+      final ZacValue<TextDirection?>? textDirection,
       final FlutterLocale? locale,
       final ZacValue<bool?>? softWrap,
       final FlutterTextOverflow? overflow,
@@ -184,13 +185,13 @@ abstract class _FlutterText extends FlutterText {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterTextStyle? get style;
+  ZacValue<TextStyle?>? get style;
   @override
   FlutterStrutStyle? get strutStyle;
   @override
   FlutterTextAlign? get textAlign;
   @override
-  FlutterTextDirection? get textDirection;
+  ZacValue<TextDirection?>? get textDirection;
   @override
   FlutterLocale? get locale;
   @override

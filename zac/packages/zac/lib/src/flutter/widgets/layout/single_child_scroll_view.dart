@@ -3,10 +3,8 @@ import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/widgets/keyboard.dart';
 
@@ -28,7 +26,7 @@ class FlutterSingleChildScrollView
   @FreezedUnionValue(FlutterSingleChildScrollView.unionValue)
   factory FlutterSingleChildScrollView({
     ZacValue<Key?>? key,
-    FlutterAxis? scrollDirection,
+    ZacValue<Axis?>? scrollDirection,
     ZacValue<bool?>? reverse,
     ZacValue<EdgeInsetsGeometry?>? padding,
     ZacValue<bool?>? primary,
@@ -36,9 +34,9 @@ class FlutterSingleChildScrollView
     ZacValue<ScrollController?>? controller,
     ZacValue<Widget?>? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    FlutterClip? clipBehavior,
+    ZacValue<Clip?>? clipBehavior,
     ZacValue<String?>? restorationId,
-    FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
+    ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
   SingleChildScrollView _buildWidget(ZacContext zacContext) {
