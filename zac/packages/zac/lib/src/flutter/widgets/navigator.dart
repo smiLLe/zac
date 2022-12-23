@@ -5,21 +5,14 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/converter.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterRoute with ZacBuilder<Route<Object?>> {
-  static const String nameOfSharedArguments = 'Route.arguments';
+const String nameOfSharedArgumentsInRoute = 'Route.arguments';
 
-  factory FlutterRoute.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterRoute>(data);
-  }
-
+abstract class RouteWithArgs {
   Route<Object?> buildWithArgs(
     ZacContext zacContext, {
     required Object? args,
@@ -32,7 +25,7 @@ abstract class FlutterRoute with ZacBuilder<Route<Object?>> {
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute
-    implements FlutterRoute {
+    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
   const FlutterMaterialPageRoute._();
 
   factory FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =>
@@ -48,7 +41,7 @@ class FlutterMaterialPageRoute
     required ZacValue<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
-    /// fallback using [FlutterRoute.nameOfSharedArguments]
+    /// fallback using [nameOfSharedArgumentsInRoute]
     ZacValue<String?>? nameOfSharedArguments,
   }) = _FlutterMaterialPageRoute;
 
@@ -75,7 +68,7 @@ class FlutterMaterialPageRoute
     return _build(
       zacContext,
       familyName: nameOfSharedArguments?.build(zacContext) ??
-          FlutterRoute.nameOfSharedArguments,
+          nameOfSharedArgumentsInRoute,
       arguments: settings?.arguments,
     );
   }
@@ -89,7 +82,7 @@ class FlutterMaterialPageRoute
   }) {
     return _build(
       zacContext,
-      familyName: argName ?? FlutterRoute.nameOfSharedArguments,
+      familyName: argName ?? nameOfSharedArgumentsInRoute,
       arguments: args,
     );
   }
@@ -99,7 +92,7 @@ class FlutterMaterialPageRoute
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
-    implements FlutterRoute {
+    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
   const FlutterPageRouteBuilder._();
 
   factory FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =>
@@ -122,7 +115,7 @@ class FlutterPageRouteBuilder
     required ZacValue<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
-    /// fallback using [FlutterRoute.nameOfSharedArguments]
+    /// fallback using [nameOfSharedArgumentsInRoute]
     ZacValue<String?>? nameOfSharedArguments,
   }) = _FlutterPageRouteBuilder;
 
@@ -153,7 +146,7 @@ class FlutterPageRouteBuilder
     return _build(
       zacContext,
       familyName: nameOfSharedArguments?.build(zacContext) ??
-          FlutterRoute.nameOfSharedArguments,
+          nameOfSharedArgumentsInRoute,
       arguments: settings?.arguments,
     );
   }
@@ -167,7 +160,7 @@ class FlutterPageRouteBuilder
   }) {
     return _build(
       zacContext,
-      familyName: argName ?? FlutterRoute.nameOfSharedArguments,
+      familyName: argName ?? nameOfSharedArgumentsInRoute,
       arguments: args,
     );
   }
@@ -255,9 +248,10 @@ class FlutterNavigatorActions
       _$FlutterNavigatorActionsFromJson(json);
 
   @FreezedUnionValue('f:1:Navigator.push')
-  factory FlutterNavigatorActions.push(
-      {required FlutterRoute route,
-      FlutterNavigatorState? navigatorState}) = _FlutterNavigatorActionsPush;
+  factory FlutterNavigatorActions.push({
+    required ZacValue<Route<Object?>> route,
+    FlutterNavigatorState? navigatorState,
+  }) = _FlutterNavigatorActionsPush;
 
   @FreezedUnionValue('f:1:Navigator.pushNamed')
   factory FlutterNavigatorActions.pushNamed(
@@ -280,7 +274,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
-    required FlutterRoute route,
+    required ZacValue<Route<Object?>> route,
     ZacActions? result,
     FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
@@ -423,7 +417,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
 
   @FreezedUnionValue('f:1:RouteFactory')
   factory FlutterRouteFactory({
-    required Map<String, FlutterRoute> routes,
+    required Map<String, ZacBuilder<Route<Object?>>> routes,
 
     /// Key of the map equals the route name. Value of the map equals the
     /// [SharedValue] family.
@@ -432,17 +426,20 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
 
   RouteFactory _build(ZacContext zacContext) {
     return (settings) {
-      final route = routes[settings.name]?.buildWithArgs(
-        zacContext,
-        argName: familyNameOfArguments?[settings.name] ??
-            FlutterRoute.nameOfSharedArguments,
-        args: settings.arguments,
-      );
-
+      final route = routes[settings.name];
       assert(null != route,
           '$FlutterRouteFactory cannot handle a route without a name');
 
-      return route;
+      if (route is RouteWithArgs) {
+        return (route as RouteWithArgs).buildWithArgs(
+          zacContext,
+          argName: familyNameOfArguments?[settings.name] ??
+              nameOfSharedArgumentsInRoute,
+          args: settings.arguments,
+        );
+      } else {
+        return route!.build(zacContext);
+      }
     };
   }
 

@@ -6,23 +6,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'foundation.freezed.dart';
 part 'foundation.g.dart';
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterKey with ZacBuilder<Key> {
-  factory FlutterKey.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterKey>(data);
-  }
-}
-
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
-abstract class FlutterLocalKey implements FlutterKey {
-  factory FlutterLocalKey.fromJson(Object data) {
-    return ConverterHelper.convertToType<FlutterLocalKey>(data);
-  }
-}
-
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
-class FlutterValueKey with _$FlutterValueKey implements FlutterLocalKey {
+class FlutterValueKey
+    with _$FlutterValueKey
+    implements ZacBuilder<ValueKey<String>> {
   FlutterValueKey._();
 
   factory FlutterValueKey.fromJson(Map<String, dynamic> json) =>

@@ -100,7 +100,7 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
 _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterNavigatorActionsPush(
-      route: FlutterRoute.fromJson(json['route'] as Object),
+      route: ZacValue<Route<Object?>>.fromJson(json['route'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : FlutterNavigatorState.fromJson(
@@ -150,7 +150,7 @@ _$_FlutterNavigatorActionsPushReplacement
     _$$_FlutterNavigatorActionsPushReplacementFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushReplacement(
-          route: FlutterRoute.fromJson(json['route'] as Object),
+          route: ZacValue<Route<Object?>>.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
               : ZacActions.fromJson(json['result'] as Object),
@@ -193,7 +193,8 @@ _$_FlutterRouteFactory _$$_FlutterRouteFactoryFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRouteFactory(
       routes: (json['routes'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(k, FlutterRoute.fromJson(e as Object)),
+        (k, e) => MapEntry(
+            k, ZacBuilder<Route<Object?>>.fromJson(e as Map<String, dynamic>)),
       ),
       familyNameOfArguments:
           (json['familyNameOfArguments'] as Map<String, dynamic>?)?.map(

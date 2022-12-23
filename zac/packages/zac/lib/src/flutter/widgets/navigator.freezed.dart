@@ -29,7 +29,7 @@ mixin _$FlutterMaterialPageRoute {
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   ZacValue<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
@@ -66,7 +66,7 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
   final ZacValue<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   @override
   final ZacValue<String?>? nameOfSharedArguments;
 
@@ -131,7 +131,7 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   ZacValue<String?>? get nameOfSharedArguments;
 }
 
@@ -157,7 +157,7 @@ mixin _$FlutterPageRouteBuilder {
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   ZacValue<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
@@ -209,7 +209,7 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
   final ZacValue<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   @override
   final ZacValue<String?>? nameOfSharedArguments;
 
@@ -304,7 +304,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
-  /// fallback using [FlutterRoute.nameOfSharedArguments]
+  /// fallback using [nameOfSharedArgumentsInRoute]
   ZacValue<String?>? get nameOfSharedArguments;
 }
 
@@ -652,7 +652,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
       _$$_FlutterNavigatorActionsPushFromJson(json);
 
   @override
-  final FlutterRoute route;
+  final ZacValue<Route<Object?>> route;
   @override
   final FlutterNavigatorState? navigatorState;
 
@@ -700,7 +700,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
 
 abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush(
-          {required final FlutterRoute route,
+          {required final ZacValue<Route<Object?>> route,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPush;
   _FlutterNavigatorActionsPush._() : super._();
@@ -708,7 +708,7 @@ abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPush.fromJson;
 
-  FlutterRoute get route;
+  ZacValue<Route<Object?>> get route;
   @override
   FlutterNavigatorState? get navigatorState;
 }
@@ -965,7 +965,7 @@ class _$_FlutterNavigatorActionsPushReplacement
       _$$_FlutterNavigatorActionsPushReplacementFromJson(json);
 
   @override
-  final FlutterRoute route;
+  final ZacValue<Route<Object?>> route;
   @override
   final ZacActions? result;
   @override
@@ -1017,7 +1017,7 @@ class _$_FlutterNavigatorActionsPushReplacement
 abstract class _FlutterNavigatorActionsPushReplacement
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushReplacement(
-          {required final FlutterRoute route,
+          {required final ZacValue<Route<Object?>> route,
           final ZacActions? result,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
@@ -1027,7 +1027,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
           Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPushReplacement.fromJson;
 
-  FlutterRoute get route;
+  ZacValue<Route<Object?>> get route;
   ZacActions? get result;
   @override
   FlutterNavigatorState? get navigatorState;
@@ -1210,7 +1210,8 @@ FlutterRouteFactory _$FlutterRouteFactoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRouteFactory {
-  Map<String, FlutterRoute> get routes => throw _privateConstructorUsedError;
+  Map<String, ZacBuilder<Route<Object?>>> get routes =>
+      throw _privateConstructorUsedError;
 
   /// Key of the map equals the route name. Value of the map equals the
   /// [SharedValue] family.
@@ -1228,7 +1229,7 @@ mixin _$FlutterRouteFactory {
 @JsonSerializable(createToJson: false)
 class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   _$_FlutterRouteFactory(
-      {required final Map<String, FlutterRoute> routes,
+      {required final Map<String, ZacBuilder<Route<Object?>>> routes,
       required final Map<String, String>? familyNameOfArguments})
       : _routes = routes,
         _familyNameOfArguments = familyNameOfArguments,
@@ -1237,9 +1238,9 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   factory _$_FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterRouteFactoryFromJson(json);
 
-  final Map<String, FlutterRoute> _routes;
+  final Map<String, ZacBuilder<Route<Object?>>> _routes;
   @override
-  Map<String, FlutterRoute> get routes {
+  Map<String, ZacBuilder<Route<Object?>>> get routes {
     if (_routes is EqualUnmodifiableMapView) return _routes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_routes);
@@ -1294,7 +1295,7 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
 
 abstract class _FlutterRouteFactory extends FlutterRouteFactory {
   factory _FlutterRouteFactory(
-          {required final Map<String, FlutterRoute> routes,
+          {required final Map<String, ZacBuilder<Route<Object?>>> routes,
           required final Map<String, String>? familyNameOfArguments}) =
       _$_FlutterRouteFactory;
   _FlutterRouteFactory._() : super._();
@@ -1303,7 +1304,7 @@ abstract class _FlutterRouteFactory extends FlutterRouteFactory {
       _$_FlutterRouteFactory.fromJson;
 
   @override
-  Map<String, FlutterRoute> get routes;
+  Map<String, ZacBuilder<Route<Object?>>> get routes;
   @override
 
   /// Key of the map equals the route name. Value of the map equals the
