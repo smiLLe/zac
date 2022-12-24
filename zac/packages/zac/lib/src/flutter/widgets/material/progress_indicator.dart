@@ -4,8 +4,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 
 part 'progress_indicator.freezed.dart';
 part 'progress_indicator.g.dart';

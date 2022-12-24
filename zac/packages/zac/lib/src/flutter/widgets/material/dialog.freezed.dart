@@ -209,7 +209,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final ZacValue<EdgeInsetsGeometry?>? actionsPadding;
   @override
-  final FlutterMainAxisAlignment? actionsAlignment;
+  final ZacValue<MainAxisAlignment?>? actionsAlignment;
   @override
   final ZacValue<VerticalDirection?>? actionsOverflowDirection;
   @override
@@ -339,7 +339,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       final ZacValue<EdgeInsetsGeometry?>? contentPadding,
       final ZacValue<TextStyle?>? contentTextStyle,
       final ZacValue<EdgeInsetsGeometry?>? actionsPadding,
-      final FlutterMainAxisAlignment? actionsAlignment,
+      final ZacValue<MainAxisAlignment?>? actionsAlignment,
       final ZacValue<VerticalDirection?>? actionsOverflowDirection,
       final ZacValue<double?>? actionsOverflowButtonSpacing,
       final ZacValue<EdgeInsetsGeometry?>? buttonPadding,
@@ -366,7 +366,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   ZacValue<EdgeInsetsGeometry?>? get contentPadding;
   ZacValue<TextStyle?>? get contentTextStyle;
   ZacValue<EdgeInsetsGeometry?>? get actionsPadding;
-  FlutterMainAxisAlignment? get actionsAlignment;
+  ZacValue<MainAxisAlignment?>? get actionsAlignment;
   ZacValue<VerticalDirection?>? get actionsOverflowDirection;
   ZacValue<double?>? get actionsOverflowButtonSpacing;
   ZacValue<EdgeInsetsGeometry?>? get buttonPadding;

@@ -25,7 +25,7 @@ mixin _$FlutterStack {
       throw _privateConstructorUsedError;
   ZacValue<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  FlutterStackFit? get fit => throw _privateConstructorUsedError;
+  ZacValue<StackFit?>? get fit => throw _privateConstructorUsedError;
   ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
   ZacValueList<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ class _$_FlutterStack extends _FlutterStack {
   @override
   final ZacValue<TextDirection?>? textDirection;
   @override
-  final FlutterStackFit? fit;
+  final ZacValue<StackFit?>? fit;
   @override
   final ZacValue<Clip?>? clipBehavior;
   @override
@@ -106,7 +106,7 @@ abstract class _FlutterStack extends FlutterStack {
       {final ZacValue<Key?>? key,
       final ZacValue<AlignmentGeometry?>? alignment,
       final ZacValue<TextDirection?>? textDirection,
-      final FlutterStackFit? fit,
+      final ZacValue<StackFit?>? fit,
       final ZacValue<Clip?>? clipBehavior,
       final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterStack;
   _FlutterStack._() : super._();
@@ -121,7 +121,7 @@ abstract class _FlutterStack extends FlutterStack {
   @override
   ZacValue<TextDirection?>? get textDirection;
   @override
-  FlutterStackFit? get fit;
+  ZacValue<StackFit?>? get fit;
   @override
   ZacValue<Clip?>? get clipBehavior;
   @override

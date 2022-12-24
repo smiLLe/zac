@@ -35,8 +35,8 @@ mixin _$FlutterAppBar {
   ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
   ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
   ZacValue<Color?>? get foregroundColor => throw _privateConstructorUsedError;
-  FlutterIconThemeData? get iconTheme => throw _privateConstructorUsedError;
-  FlutterIconThemeData? get actionsIconTheme =>
+  ZacValue<IconThemeData?>? get iconTheme => throw _privateConstructorUsedError;
+  ZacValue<IconThemeData?>? get actionsIconTheme =>
       throw _privateConstructorUsedError;
   ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
   ZacValue<bool?>? get centerTitle => throw _privateConstructorUsedError;
@@ -121,9 +121,9 @@ class _$_FlutterAppBar extends _FlutterAppBar {
   @override
   final ZacValue<Color?>? foregroundColor;
   @override
-  final FlutterIconThemeData? iconTheme;
+  final ZacValue<IconThemeData?>? iconTheme;
   @override
-  final FlutterIconThemeData? actionsIconTheme;
+  final ZacValue<IconThemeData?>? actionsIconTheme;
   @override
   final ZacValue<bool?>? primary;
   @override
@@ -257,8 +257,8 @@ abstract class _FlutterAppBar extends FlutterAppBar {
           final ZacValue<ShapeBorder?>? shape,
           final ZacValue<Color?>? backgroundColor,
           final ZacValue<Color?>? foregroundColor,
-          final FlutterIconThemeData? iconTheme,
-          final FlutterIconThemeData? actionsIconTheme,
+          final ZacValue<IconThemeData?>? iconTheme,
+          final ZacValue<IconThemeData?>? actionsIconTheme,
           final ZacValue<bool?>? primary,
           final ZacValue<bool?>? centerTitle,
           final ZacValue<bool?>? excludeHeaderSemantics,
@@ -301,9 +301,9 @@ abstract class _FlutterAppBar extends FlutterAppBar {
   @override
   ZacValue<Color?>? get foregroundColor;
   @override
-  FlutterIconThemeData? get iconTheme;
+  ZacValue<IconThemeData?>? get iconTheme;
   @override
-  FlutterIconThemeData? get actionsIconTheme;
+  ZacValue<IconThemeData?>? get actionsIconTheme;
   @override
   ZacValue<bool?>? get primary;
   @override

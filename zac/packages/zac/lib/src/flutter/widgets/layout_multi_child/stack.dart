@@ -1,13 +1,9 @@
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/rendering.dart';
 
 part 'stack.freezed.dart';
@@ -28,7 +24,7 @@ class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
     ZacValue<Key?>? key,
     ZacValue<AlignmentGeometry?>? alignment,
     ZacValue<TextDirection?>? textDirection,
-    FlutterStackFit? fit,
+    ZacValue<StackFit?>? fit,
     ZacValue<Clip?>? clipBehavior,
     ZacValueList<Widget, List<Widget>?>? children,
   }) = _FlutterStack;

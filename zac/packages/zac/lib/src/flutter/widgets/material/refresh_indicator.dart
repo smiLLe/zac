@@ -6,8 +6,6 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -39,7 +37,7 @@ class FlutterRefreshIndicator
     ZacValue<String?>? semanticsLabel,
     ZacValue<String?>? semanticsValue,
     ZacValue<double?>? strokeWidth,
-    FlutterRefreshIndicatorTriggerMode? triggerMode,
+    ZacValue<RefreshIndicatorTriggerMode?>? triggerMode,
     ZacValue<Completer>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 

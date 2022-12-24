@@ -72,8 +72,8 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
               json['actionsPadding'] as Object),
       actionsAlignment: json['actionsAlignment'] == null
           ? null
-          : FlutterMainAxisAlignment.fromJson(
-              json['actionsAlignment'] as Map<String, dynamic>),
+          : ZacValue<MainAxisAlignment?>.fromJson(
+              json['actionsAlignment'] as Object),
       actionsOverflowDirection: json['actionsOverflowDirection'] == null
           ? null
           : ZacValue<VerticalDirection?>.fromJson(

@@ -38,7 +38,7 @@ class FlutterPositioned
   @FreezedUnionValue(FlutterPositioned.unionValueDirectional)
   factory FlutterPositioned.directional({
     ZacValue<Key?>? key,
-    required FlutterTextDirection textDirection,
+    required ZacValue<TextDirection> textDirection,
     ZacValue<double?>? start,
     ZacValue<double?>? top,
     ZacValue<double?>? end,

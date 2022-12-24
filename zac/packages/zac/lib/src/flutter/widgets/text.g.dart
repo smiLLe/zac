@@ -17,12 +17,10 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : ZacValue<TextStyle?>.fromJson(json['style'] as Object),
       strutStyle: json['strutStyle'] == null
           ? null
-          : FlutterStrutStyle.fromJson(
-              json['strutStyle'] as Map<String, dynamic>),
+          : ZacValue<StrutStyle?>.fromJson(json['strutStyle'] as Object),
       textAlign: json['textAlign'] == null
           ? null
-          : FlutterTextAlign.fromJson(
-              json['textAlign'] as Map<String, dynamic>),
+          : ZacValue<TextAlign?>.fromJson(json['textAlign'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
@@ -47,10 +45,10 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),
       textWidthBasis: json['textWidthBasis'] == null
           ? null
-          : FlutterTextWidthBasis.fromJson(
-              json['textWidthBasis'] as Map<String, dynamic>),
+          : ZacValue<TextWidthBasis?>.fromJson(
+              json['textWidthBasis'] as Object),
       textHeightBehavior: json['textHeightBehavior'] == null
           ? null
-          : FlutterTextHeightBehavior.fromJson(
-              json['textHeightBehavior'] as Map<String, dynamic>),
+          : ZacValue<TextHeightBehavior?>.fromJson(
+              json['textHeightBehavior'] as Object),
     );

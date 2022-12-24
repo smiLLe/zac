@@ -172,7 +172,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterTextDirection textDirection;
+  final ZacValue<TextDirection> textDirection;
   @override
   final ZacValue<double?>? start;
   @override
@@ -232,7 +232,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
 abstract class _FlutterPositioned extends FlutterPositioned {
   factory _FlutterPositioned(
       {final ZacValue<Key?>? key,
-      required final FlutterTextDirection textDirection,
+      required final ZacValue<TextDirection> textDirection,
       final ZacValue<double?>? start,
       final ZacValue<double?>? top,
       final ZacValue<double?>? end,
@@ -247,7 +247,7 @@ abstract class _FlutterPositioned extends FlutterPositioned {
 
   @override
   ZacValue<Key?>? get key;
-  FlutterTextDirection get textDirection;
+  ZacValue<TextDirection> get textDirection;
   ZacValue<double?>? get start;
   @override
   ZacValue<double?>? get top;

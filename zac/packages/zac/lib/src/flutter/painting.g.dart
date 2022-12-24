@@ -566,10 +566,10 @@ _$_FlutterBorderRadiusHorizontal _$$_FlutterBorderRadiusHorizontalFromJson(
     _$_FlutterBorderRadiusHorizontal(
       left: json['left'] == null
           ? null
-          : FlutterRadius.fromJson(json['left'] as Map<String, dynamic>),
+          : ZacValue<Radius?>.fromJson(json['left'] as Object),
       right: json['right'] == null
           ? null
-          : FlutterRadius.fromJson(json['right'] as Map<String, dynamic>),
+          : ZacValue<Radius?>.fromJson(json['right'] as Object),
       $type: json['converter'] as String?,
     );
 

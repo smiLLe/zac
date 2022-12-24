@@ -19,7 +19,7 @@ _$_FlutterStack _$$_FlutterStackFromJson(Map<String, dynamic> json) =>
           : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
       fit: json['fit'] == null
           ? null
-          : FlutterStackFit.fromJson(json['fit'] as Map<String, dynamic>),
+          : ZacValue<StackFit?>.fromJson(json['fit'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),

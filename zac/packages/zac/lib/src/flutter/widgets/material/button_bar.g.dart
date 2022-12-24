@@ -13,8 +13,7 @@ _$_FlutterButtonBar _$$_FlutterButtonBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : FlutterMainAxisAlignment.fromJson(
-              json['alignment'] as Map<String, dynamic>),
+          : ZacValue<MainAxisAlignment?>.fromJson(json['alignment'] as Object),
       mainAxisSize: json['mainAxisSize'] == null
           ? null
           : ZacValue<MainAxisSize?>.fromJson(json['mainAxisSize'] as Object),

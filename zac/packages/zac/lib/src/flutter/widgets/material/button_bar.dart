@@ -2,8 +2,6 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/rendering.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,7 +24,7 @@ class FlutterButtonBar
   @FreezedUnionValue(FlutterButtonBar.unionValue)
   factory FlutterButtonBar({
     ZacValue<Key?>? key,
-    FlutterMainAxisAlignment? alignment,
+    ZacValue<MainAxisAlignment?>? alignment,
     ZacValue<MainAxisSize?>? mainAxisSize,
 // FlutterButtonTextTheme? buttonTextTheme,
     ZacValue<double?>? buttonMinWidth,

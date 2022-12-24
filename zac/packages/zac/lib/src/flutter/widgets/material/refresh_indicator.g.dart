@@ -37,8 +37,8 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
           : ZacValue<double?>.fromJson(json['strokeWidth'] as Object),
       triggerMode: json['triggerMode'] == null
           ? null
-          : FlutterRefreshIndicatorTriggerMode.fromJson(
-              json['triggerMode'] as Map<String, dynamic>),
+          : ZacValue<RefreshIndicatorTriggerMode?>.fromJson(
+              json['triggerMode'] as Object),
       onRefreshCompleter: json['onRefreshCompleter'] == null
           ? null
           : ZacValue<Completer<dynamic>>.fromJson(

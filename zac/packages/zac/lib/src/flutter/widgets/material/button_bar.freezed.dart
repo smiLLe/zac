@@ -21,7 +21,8 @@ FlutterButtonBar _$FlutterButtonBarFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterButtonBar {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  FlutterMainAxisAlignment? get alignment => throw _privateConstructorUsedError;
+  ZacValue<MainAxisAlignment?>? get alignment =>
+      throw _privateConstructorUsedError;
   ZacValue<MainAxisSize?>? get mainAxisSize =>
       throw _privateConstructorUsedError; // FlutterButtonTextTheme? buttonTextTheme,
   ZacValue<double?>? get buttonMinWidth => throw _privateConstructorUsedError;
@@ -66,7 +67,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
   @override
   final ZacValue<Key?>? key;
   @override
-  final FlutterMainAxisAlignment? alignment;
+  final ZacValue<MainAxisAlignment?>? alignment;
   @override
   final ZacValue<MainAxisSize?>? mainAxisSize;
 // FlutterButtonTextTheme? buttonTextTheme,
@@ -144,7 +145,7 @@ class _$_FlutterButtonBar extends _FlutterButtonBar {
 abstract class _FlutterButtonBar extends FlutterButtonBar {
   factory _FlutterButtonBar(
           {final ZacValue<Key?>? key,
-          final FlutterMainAxisAlignment? alignment,
+          final ZacValue<MainAxisAlignment?>? alignment,
           final ZacValue<MainAxisSize?>? mainAxisSize,
           final ZacValue<double?>? buttonMinWidth,
           final ZacValue<double?>? buttonHeight,
@@ -162,7 +163,7 @@ abstract class _FlutterButtonBar extends FlutterButtonBar {
   @override
   ZacValue<Key?>? get key;
   @override
-  FlutterMainAxisAlignment? get alignment;
+  ZacValue<MainAxisAlignment?>? get alignment;
   @override
   ZacValue<MainAxisSize?>? get mainAxisSize;
   @override // FlutterButtonTextTheme? buttonTextTheme,

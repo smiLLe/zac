@@ -776,8 +776,8 @@ class FlutterBorderRadius
 
   @FreezedUnionValue(FlutterBorderRadius.unionValueHorizontal)
   factory FlutterBorderRadius.horizontal({
-    FlutterRadius? left,
-    FlutterRadius? right,
+    ZacValue<Radius?>? left,
+    ZacValue<Radius?>? right,
   }) = _FlutterBorderRadiusHorizontal;
 
   BorderRadius _build(ZacContext zacContext) {

@@ -44,7 +44,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
     ZacValue<EdgeInsetsGeometry?>? contentPadding,
     ZacValue<TextStyle?>? contentTextStyle,
     ZacValue<EdgeInsetsGeometry?>? actionsPadding,
-    FlutterMainAxisAlignment? actionsAlignment,
+    ZacValue<MainAxisAlignment?>? actionsAlignment,
     ZacValue<VerticalDirection?>? actionsOverflowDirection,
     ZacValue<double?>? actionsOverflowButtonSpacing,
     ZacValue<EdgeInsetsGeometry?>? buttonPadding,

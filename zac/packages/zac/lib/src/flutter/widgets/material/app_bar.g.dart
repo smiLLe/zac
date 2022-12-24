@@ -48,12 +48,11 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : ZacValue<Color?>.fromJson(json['foregroundColor'] as Object),
       iconTheme: json['iconTheme'] == null
           ? null
-          : FlutterIconThemeData.fromJson(
-              json['iconTheme'] as Map<String, dynamic>),
+          : ZacValue<IconThemeData?>.fromJson(json['iconTheme'] as Object),
       actionsIconTheme: json['actionsIconTheme'] == null
           ? null
-          : FlutterIconThemeData.fromJson(
-              json['actionsIconTheme'] as Map<String, dynamic>),
+          : ZacValue<IconThemeData?>.fromJson(
+              json['actionsIconTheme'] as Object),
       primary: json['primary'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['primary'] as Object),

@@ -4281,9 +4281,9 @@ class _$_FlutterBorderRadiusHorizontal extends _FlutterBorderRadiusHorizontal {
       _$$_FlutterBorderRadiusHorizontalFromJson(json);
 
   @override
-  final FlutterRadius? left;
+  final ZacValue<Radius?>? left;
   @override
-  final FlutterRadius? right;
+  final ZacValue<Radius?>? right;
 
   @JsonKey(name: 'converter')
   final String $type;
@@ -4319,15 +4319,15 @@ class _$_FlutterBorderRadiusHorizontal extends _FlutterBorderRadiusHorizontal {
 
 abstract class _FlutterBorderRadiusHorizontal extends FlutterBorderRadius {
   factory _FlutterBorderRadiusHorizontal(
-      {final FlutterRadius? left,
-      final FlutterRadius? right}) = _$_FlutterBorderRadiusHorizontal;
+      {final ZacValue<Radius?>? left,
+      final ZacValue<Radius?>? right}) = _$_FlutterBorderRadiusHorizontal;
   _FlutterBorderRadiusHorizontal._() : super._();
 
   factory _FlutterBorderRadiusHorizontal.fromJson(Map<String, dynamic> json) =
       _$_FlutterBorderRadiusHorizontal.fromJson;
 
-  FlutterRadius? get left;
-  FlutterRadius? get right;
+  ZacValue<Radius?>? get left;
+  ZacValue<Radius?>? get right;
 }
 
 FlutterBorderSide _$FlutterBorderSideFromJson(Map<String, dynamic> json) {

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
@@ -33,13 +32,13 @@ class FlutterTextField
     ZacValue<Key?>? key,
 // TextEditingController? controller,
 // FocusNode? focusNode,
-    FlutterInputDecoration? decoration,
-    FlutterTextInputType? keyboardType,
+    ZacValue<InputDecoration?>? decoration,
+    ZacValue<TextInputType?>? keyboardType,
     FlutterTextInputAction? textInputAction,
     FlutterTextCapitalization? textCapitalization,
     ZacValue<TextStyle?>? style,
-    FlutterStrutStyle? strutStyle,
-    FlutterTextAlign? textAlign,
+    ZacValue<StrutStyle?>? strutStyle,
+    ZacValue<TextAlign?>? textAlign,
     FlutterTextAlignVertical? textAlignVertical,
     ZacValue<TextDirection?>? textDirection,
     ZacValue<bool?>? readOnly,
@@ -67,7 +66,7 @@ class FlutterTextField
     ZacValue<bool?>? enabled,
     ZacValue<double?>? cursorWidth,
     ZacValue<double?>? cursorHeight,
-    FlutterRadius? cursorRadius,
+    ZacValue<Radius?>? cursorRadius,
     ZacValue<Color?>? cursorColor,
     FlutterBoxHeightStyle? selectionHeightStyle,
     FlutterBoxWidthStyle? selectionWidthStyle,

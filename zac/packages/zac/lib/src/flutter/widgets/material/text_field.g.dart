@@ -13,12 +13,10 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       decoration: json['decoration'] == null
           ? null
-          : FlutterInputDecoration.fromJson(
-              json['decoration'] as Map<String, dynamic>),
+          : ZacValue<InputDecoration?>.fromJson(json['decoration'] as Object),
       keyboardType: json['keyboardType'] == null
           ? null
-          : FlutterTextInputType.fromJson(
-              json['keyboardType'] as Map<String, dynamic>),
+          : ZacValue<TextInputType?>.fromJson(json['keyboardType'] as Object),
       textInputAction: json['textInputAction'] == null
           ? null
           : FlutterTextInputAction.fromJson(
@@ -32,12 +30,10 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacValue<TextStyle?>.fromJson(json['style'] as Object),
       strutStyle: json['strutStyle'] == null
           ? null
-          : FlutterStrutStyle.fromJson(
-              json['strutStyle'] as Map<String, dynamic>),
+          : ZacValue<StrutStyle?>.fromJson(json['strutStyle'] as Object),
       textAlign: json['textAlign'] == null
           ? null
-          : FlutterTextAlign.fromJson(
-              json['textAlign'] as Map<String, dynamic>),
+          : ZacValue<TextAlign?>.fromJson(json['textAlign'] as Object),
       textAlignVertical: json['textAlignVertical'] == null
           ? null
           : FlutterTextAlignVertical.fromJson(
@@ -106,8 +102,7 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacValue<double?>.fromJson(json['cursorHeight'] as Object),
       cursorRadius: json['cursorRadius'] == null
           ? null
-          : FlutterRadius.fromJson(
-              json['cursorRadius'] as Map<String, dynamic>),
+          : ZacValue<Radius?>.fromJson(json['cursorRadius'] as Object),
       cursorColor: json['cursorColor'] == null
           ? null
           : ZacValue<Color?>.fromJson(json['cursorColor'] as Object),

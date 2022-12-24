@@ -26,8 +26,8 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
     ZacValue<String> data, {
     ZacValue<Key?>? key,
     ZacValue<TextStyle?>? style,
-    FlutterStrutStyle? strutStyle,
-    FlutterTextAlign? textAlign,
+    ZacValue<StrutStyle?>? strutStyle,
+    ZacValue<TextAlign?>? textAlign,
     ZacValue<TextDirection?>? textDirection,
     FlutterLocale? locale,
     ZacValue<bool?>? softWrap,
@@ -35,8 +35,8 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
     ZacValue<double?>? textScaleFactor,
     ZacValue<int?>? maxLines,
     ZacValue<String?>? semanticsLabel,
-    FlutterTextWidthBasis? textWidthBasis,
-    FlutterTextHeightBehavior? textHeightBehavior,
+    ZacValue<TextWidthBasis?>? textWidthBasis,
+    ZacValue<TextHeightBehavior?>? textHeightBehavior,
   }) = _FlutterText;
 
   Text _buildWidget(ZacContext zacContext) {

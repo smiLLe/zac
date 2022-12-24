@@ -23,15 +23,17 @@ mixin _$FlutterTextField {
   ZacValue<Key?>? get key =>
       throw _privateConstructorUsedError; // TextEditingController? controller,
 // FocusNode? focusNode,
-  FlutterInputDecoration? get decoration => throw _privateConstructorUsedError;
-  FlutterTextInputType? get keyboardType => throw _privateConstructorUsedError;
+  ZacValue<InputDecoration?>? get decoration =>
+      throw _privateConstructorUsedError;
+  ZacValue<TextInputType?>? get keyboardType =>
+      throw _privateConstructorUsedError;
   FlutterTextInputAction? get textInputAction =>
       throw _privateConstructorUsedError;
   FlutterTextCapitalization? get textCapitalization =>
       throw _privateConstructorUsedError;
   ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
-  FlutterStrutStyle? get strutStyle => throw _privateConstructorUsedError;
-  FlutterTextAlign? get textAlign => throw _privateConstructorUsedError;
+  ZacValue<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
+  ZacValue<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
   FlutterTextAlignVertical? get textAlignVertical =>
       throw _privateConstructorUsedError;
   ZacValue<TextDirection?>? get textDirection =>
@@ -64,7 +66,7 @@ mixin _$FlutterTextField {
   ZacValue<bool?>? get enabled => throw _privateConstructorUsedError;
   ZacValue<double?>? get cursorWidth => throw _privateConstructorUsedError;
   ZacValue<double?>? get cursorHeight => throw _privateConstructorUsedError;
-  FlutterRadius? get cursorRadius => throw _privateConstructorUsedError;
+  ZacValue<Radius?>? get cursorRadius => throw _privateConstructorUsedError;
   ZacValue<Color?>? get cursorColor => throw _privateConstructorUsedError;
   FlutterBoxHeightStyle? get selectionHeightStyle =>
       throw _privateConstructorUsedError;
@@ -150,9 +152,9 @@ class _$_FlutterTextField extends _FlutterTextField {
 // TextEditingController? controller,
 // FocusNode? focusNode,
   @override
-  final FlutterInputDecoration? decoration;
+  final ZacValue<InputDecoration?>? decoration;
   @override
-  final FlutterTextInputType? keyboardType;
+  final ZacValue<TextInputType?>? keyboardType;
   @override
   final FlutterTextInputAction? textInputAction;
   @override
@@ -160,9 +162,9 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacValue<TextStyle?>? style;
   @override
-  final FlutterStrutStyle? strutStyle;
+  final ZacValue<StrutStyle?>? strutStyle;
   @override
-  final FlutterTextAlign? textAlign;
+  final ZacValue<TextAlign?>? textAlign;
   @override
   final FlutterTextAlignVertical? textAlignVertical;
   @override
@@ -212,7 +214,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacValue<double?>? cursorHeight;
   @override
-  final FlutterRadius? cursorRadius;
+  final ZacValue<Radius?>? cursorRadius;
   @override
   final ZacValue<Color?>? cursorColor;
   @override
@@ -395,13 +397,13 @@ class _$_FlutterTextField extends _FlutterTextField {
 abstract class _FlutterTextField extends FlutterTextField {
   factory _FlutterTextField(
           {final ZacValue<Key?>? key,
-          final FlutterInputDecoration? decoration,
-          final FlutterTextInputType? keyboardType,
+          final ZacValue<InputDecoration?>? decoration,
+          final ZacValue<TextInputType?>? keyboardType,
           final FlutterTextInputAction? textInputAction,
           final FlutterTextCapitalization? textCapitalization,
           final ZacValue<TextStyle?>? style,
-          final FlutterStrutStyle? strutStyle,
-          final FlutterTextAlign? textAlign,
+          final ZacValue<StrutStyle?>? strutStyle,
+          final ZacValue<TextAlign?>? textAlign,
           final FlutterTextAlignVertical? textAlignVertical,
           final ZacValue<TextDirection?>? textDirection,
           final ZacValue<bool?>? readOnly,
@@ -423,7 +425,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacValue<bool?>? enabled,
           final ZacValue<double?>? cursorWidth,
           final ZacValue<double?>? cursorHeight,
-          final FlutterRadius? cursorRadius,
+          final ZacValue<Radius?>? cursorRadius,
           final ZacValue<Color?>? cursorColor,
           final FlutterBoxHeightStyle? selectionHeightStyle,
           final FlutterBoxWidthStyle? selectionWidthStyle,
@@ -445,9 +447,9 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacValue<Key?>? get key;
   @override // TextEditingController? controller,
 // FocusNode? focusNode,
-  FlutterInputDecoration? get decoration;
+  ZacValue<InputDecoration?>? get decoration;
   @override
-  FlutterTextInputType? get keyboardType;
+  ZacValue<TextInputType?>? get keyboardType;
   @override
   FlutterTextInputAction? get textInputAction;
   @override
@@ -455,9 +457,9 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacValue<TextStyle?>? get style;
   @override
-  FlutterStrutStyle? get strutStyle;
+  ZacValue<StrutStyle?>? get strutStyle;
   @override
-  FlutterTextAlign? get textAlign;
+  ZacValue<TextAlign?>? get textAlign;
   @override
   FlutterTextAlignVertical? get textAlignVertical;
   @override
@@ -502,7 +504,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacValue<double?>? get cursorHeight;
   @override
-  FlutterRadius? get cursorRadius;
+  ZacValue<Radius?>? get cursorRadius;
   @override
   ZacValue<Color?>? get cursorColor;
   @override
