@@ -55,8 +55,7 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

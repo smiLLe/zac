@@ -104,36 +104,6 @@ void fakeBuild<T>(
   expect(builder(zacContext), matcher(isA<T>()));
 }
 
-// Future<void> testSingleWidget<TWidget>({
-//   required WidgetTester tester,
-//   required Map<String, dynamic> widget,
-// }) async {
-//   await testZacWidget(
-//     tester,
-//     ZacWidgetBuilderBuilder.map(
-//       data: ZacMap(
-//         <String, dynamic>{
-//           'converter': 'f:1:SizedBox',
-//           'key': {'converter': 'f:1:ValueKey', 'value': 'THE_PARENT'},
-//           'child': widget,
-//         },
-//       ),
-//     ),
-//   );
-
-//   final finder = find
-//       .descendant(
-//         of: find.byKey(const ValueKey('THE_PARENT')),
-//         matching: find.byWidgetPredicate((widget) => widget is TWidget),
-//       )
-//       .first
-//       .evaluate()
-//       .first
-//       .widget;
-
-//   expect(finder, isA<TWidget>());
-// }
-
 Future<void> testMap(
   WidgetTester tester,
   Map<String, dynamic> data, {
@@ -274,8 +244,7 @@ class LeakContext implements ZacBuild<Widget> {
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }
@@ -292,8 +261,7 @@ class TestBuildCustomWidget implements ZacBuild<Widget> {
   }
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

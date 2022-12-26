@@ -45,8 +45,7 @@ class FlutterScrollController with _$FlutterScrollController, ZacBuild<Widget> {
       );
 
   @override
-  Widget build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  Widget build(ZacContext zacContext) {
     return map(
       (obj) {
         return SharedValueProvider(

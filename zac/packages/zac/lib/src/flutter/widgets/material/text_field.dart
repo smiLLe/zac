@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/material/input_decoration.dart';
 import 'package:zac/src/flutter/painting.dart';
 import 'package:zac/src/flutter/services.dart';
 import 'package:zac/src/zac/action.dart';
@@ -138,8 +137,7 @@ class FlutterTextField with _$FlutterTextField implements ZacBuild<TextField> {
   }
 
   @override
-  TextField build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+  TextField build(ZacContext zacContext) {
     return _buildWidget(zacContext);
   }
 }

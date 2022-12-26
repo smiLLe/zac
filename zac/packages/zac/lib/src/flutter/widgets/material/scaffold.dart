@@ -142,8 +142,7 @@ class FlutterScaffoldActions
           clipBehavior: value.clipBehavior?.build(zacContext),
           constraints: value.constraints?.build(zacContext),
           elevation: value.elevation?.build(zacContext,
-              onConsume:
-                  const ZacBuilderConsume(type: SharedValueConsumeType.read())),
+              onConsume: const SharedValueConsumeType.read()),
           shape: value.shape?.build(zacContext),
           enableDrag: value.enableDrag?.build(zacContext),
           // transitionAnimationController:
@@ -169,8 +168,7 @@ class FlutterScaffoldActions
         state.showBodyScrim(
             value.value,
             value.opacity.build(zacContext,
-                onConsume: const ZacBuilderConsume(
-                    type: SharedValueConsumeType.read())));
+                onConsume: const SharedValueConsumeType.read()));
       },
     );
   }

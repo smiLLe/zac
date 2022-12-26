@@ -303,7 +303,9 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
       _$SharedValueConsumeTypeFromJson(json);
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
-  const factory SharedValueConsumeType.watch() = _SharedValueConsumeTypeWatch;
+  const factory SharedValueConsumeType.watch({
+    ZacTransformers? select,
+  }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
   const factory SharedValueConsumeType.read() = _SharedValueConsumeTypeRead;

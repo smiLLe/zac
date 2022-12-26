@@ -297,9 +297,7 @@ class ZacStateMachineActions
         machine.send(
             obj.event.build(
               zacContext,
-              onConsume: const ZacBuilderConsume(
-                type: SharedValueConsumeType.read(),
-              ),
+              onConsume: const SharedValueConsumeType.read(),
             ),
             payload.params);
       },
@@ -313,9 +311,7 @@ class ZacStateMachineActions
         machine.trySend(
             obj.event.build(
               zacContext,
-              onConsume: const ZacBuilderConsume(
-                type: SharedValueConsumeType.read(),
-              ),
+              onConsume: const SharedValueConsumeType.read(),
             ),
             payload.params);
       },

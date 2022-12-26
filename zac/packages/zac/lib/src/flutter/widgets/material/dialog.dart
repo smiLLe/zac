@@ -188,27 +188,22 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
         routeSettings: value.routeSettings?.build(zacContext),
         barrierDismissible: value.barrierDismissible?.build(
               zacContext,
-              onConsume:
-                  const ZacBuilderConsume(type: SharedValueConsumeType.read()),
+              onConsume: const SharedValueConsumeType.read(),
             ) ??
             true,
         barrierColor: value.barrierColor?.build(zacContext),
         barrierLabel: value.barrierLabel?.build(
           zacContext,
-          onConsume: const ZacBuilderConsume(
-            type: SharedValueConsumeType.read(),
-          ),
+          onConsume: const SharedValueConsumeType.read(),
         ),
         useSafeArea: value.useSafeArea?.build(
               zacContext,
-              onConsume:
-                  const ZacBuilderConsume(type: SharedValueConsumeType.read()),
+              onConsume: const SharedValueConsumeType.read(),
             ) ??
             true,
         useRootNavigator: value.useRootNavigator?.build(
               zacContext,
-              onConsume:
-                  const ZacBuilderConsume(type: SharedValueConsumeType.read()),
+              onConsume: const SharedValueConsumeType.read(),
             ) ??
             true,
       ),

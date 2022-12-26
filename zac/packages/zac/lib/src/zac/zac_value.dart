@@ -97,7 +97,8 @@ $data''');
 
   @override
   T build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+      {SharedValueConsumeType onConsume =
+          const SharedValueConsumeType.watch()}) {
     return map<T>(
       (obj) {
         final value = obj.value;
@@ -111,7 +112,7 @@ $data''');
         final value = SharedValue.get(
           zacContext: zacContext,
           select: obj.select,
-          consumeType: (obj.forceConsume ?? onConsume.type),
+          consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
 
@@ -286,7 +287,8 @@ Value after: $transformedVal''');
 
   @override
   X build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+      {SharedValueConsumeType onConsume =
+          const SharedValueConsumeType.watch()}) {
     return map<X>(
       (obj) {
         return <T>[
@@ -298,7 +300,7 @@ Value after: $transformedVal''');
         final consumedValue = SharedValue.get(
           zacContext: zacContext,
           select: obj.select,
-          consumeType: obj.forceConsume ?? onConsume.type,
+          consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
 
@@ -462,7 +464,8 @@ Value after: $transformedVal''');
 
   @override
   X build(ZacContext zacContext,
-      {ZacBuilderConsume onConsume = const ZacBuilderConsume()}) {
+      {SharedValueConsumeType onConsume =
+          const SharedValueConsumeType.watch()}) {
     return map<X>(
       (obj) {
         return <String, T>{
@@ -474,7 +477,7 @@ Value after: $transformedVal''');
         final consumedValue = SharedValue.get(
           zacContext: zacContext,
           select: obj.select,
-          consumeType: obj.forceConsume ?? onConsume.type,
+          consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
         if (consumedValue is! Map) {
@@ -534,8 +537,7 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
       asPayload: (obj) {
         final val = obj.value.build(
           zacContext,
-          onConsume:
-              const ZacBuilderConsume(type: SharedValueConsumeType.read()),
+          onConsume: const SharedValueConsumeType.read(),
         );
         obj.actions.execute(ZacActionPayload.param(val), zacContext);
       },

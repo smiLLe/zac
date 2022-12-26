@@ -27,6 +27,9 @@ _$_SharedValueActionsRefresh _$$_SharedValueActionsRefreshFromJson(
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeWatch(
+      select: json['select'] == null
+          ? null
+          : ZacTransformers.fromJson(json['select'] as Object),
       $type: json['converter'] as String?,
     );
 

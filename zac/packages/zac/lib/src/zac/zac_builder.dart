@@ -1,10 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/base.dart';
 import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
-
-part 'zac_builder.freezed.dart';
 
 abstract class ZacBuild<T> {
   factory ZacBuild.fromJson(Map<String, dynamic> json) {
@@ -36,11 +31,4 @@ Created builder: $builder''');
   }
 
   T build(ZacContext zacContext);
-}
-
-@freezedZacDefaults
-class ZacBuilderConsume with _$ZacBuilderConsume {
-  const factory ZacBuilderConsume({
-    @Default(SharedValueConsumeType.watch()) SharedValueConsumeType type,
-  }) = _ZacBuilderConsume;
 }

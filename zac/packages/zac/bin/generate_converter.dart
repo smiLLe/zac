@@ -8,8 +8,6 @@ import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:args/args.dart';
 
-const String classAnnotation = 'ZacGenerate';
-
 void main(List<String> args) async {
   final parser = ArgParser();
   late final String path;
@@ -185,12 +183,10 @@ extension ConstructorElementX on ConstructorElement {
 
 extension IterableElementAnnotation on Iterable<ElementAnnotation> {
   bool checkHasClassAnnotation() {
-    return where((element) =>
-        element
-            .computeConstantValue()
-            ?.type
-            ?.getDisplayString(withNullability: false) ==
-        classAnnotation).isNotEmpty;
+    return where((element) {
+      return element.computeConstantValue()?.variable?.name ==
+          'freezedZacBuilder';
+    }).isNotEmpty;
   }
 }
 

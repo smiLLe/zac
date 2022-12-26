@@ -1,4 +1,3 @@
-import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -17,7 +16,7 @@ abstract class RouteWithArgs {
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    ZacBuilderConsume onConsume = const ZacBuilderConsume(),
+    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   });
 }
 
@@ -78,7 +77,7 @@ class FlutterMaterialPageRoute
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    ZacBuilderConsume onConsume = const ZacBuilderConsume(),
+    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
       zacContext,
@@ -156,7 +155,7 @@ class FlutterPageRouteBuilder
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    ZacBuilderConsume onConsume = const ZacBuilderConsume(),
+    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
       zacContext,
@@ -330,9 +329,7 @@ class FlutterNavigatorActions
             .pushNamed(
           obj.routeName.build(
             zacContext,
-            onConsume: const ZacBuilderConsume(
-              type: SharedValueConsumeType.read(),
-            ),
+            onConsume: const SharedValueConsumeType.read(),
           ),
           arguments: obj.arguments,
         )
@@ -375,9 +372,7 @@ class FlutterNavigatorActions
             .pushReplacementNamed(
           obj.routeName.build(
             zacContext,
-            onConsume: const ZacBuilderConsume(
-              type: SharedValueConsumeType.read(),
-            ),
+            onConsume: const SharedValueConsumeType.read(),
           ),
           arguments: obj.arguments,
           result: obj.result,
@@ -396,9 +391,7 @@ class FlutterNavigatorActions
         /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
         state.popUntil(ModalRoute.withName(obj.routeName.build(
           zacContext,
-          onConsume: const ZacBuilderConsume(
-            type: SharedValueConsumeType.read(),
-          ),
+          onConsume: const SharedValueConsumeType.read(),
         )));
       },
     );
