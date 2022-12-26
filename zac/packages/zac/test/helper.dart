@@ -6,7 +6,7 @@ import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
-import 'package:zac/src/converter.dart';
+import 'package:zac/src/builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,8 +24,8 @@ void expectInConverter(Object obj, Convert fn) {
 
   List<String> items = obj is String ? [obj] : obj as List<String>;
   for (var item in items) {
-    expect(allConverter.containsKey(item), isTrue);
-    expect(allConverter[item], fn);
+    expect(allBuilder.containsKey(item), isTrue);
+    expect(allBuilder[item], fn);
   }
 }
 
@@ -154,7 +154,7 @@ Future<void> testWithConverters({
   required ProviderContainer container,
   Map<String, Convert>? converter,
 }) async {
-  allConverter = {...allConverter, ...(converter ?? <String, Convert>{})};
+  allBuilder = {...allBuilder, ...(converter ?? <String, Convert>{})};
 
   return tester.pumpWidget(
     UncontrolledProviderScope(

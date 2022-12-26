@@ -11,7 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/converter.dart';
+import 'package:zac/src/builder.dart';
 
 part 'widget.freezed.dart';
 part 'widget.g.dart';
@@ -126,7 +126,7 @@ class ZacWidgetIsolated extends StatelessWidget {
   }
 
   static Future<ZacBuild<Widget>> _convert(List<Object?> data) async {
-    allConverter = data[1] as Map<String, Convert>;
+    allBuilder = data[1] as Map<String, Convert>;
     return ConverterHelper.convertToType<ZacBuild<Widget>>(
         data[0] as Map<String, dynamic>);
   }
@@ -151,7 +151,7 @@ class ZacWidgetIsolated extends StatelessWidget {
           }
           return compute(
             _convert,
-            [map, allConverter],
+            [map, allBuilder],
             debugLabel: '$ZacWidgetIsolated.convertFlutterWidget',
           );
         })

@@ -1,8 +1,8 @@
-import 'package:zac/src/zac_converter.dart';
+import 'package:zac/src/generated_builder.dart';
 
 typedef Convert = Object Function(Map<String, dynamic> data);
-Map<String, Convert> allConverter = {
-  ...zacConverter,
+Map<String, Convert> allBuilder = {
+  ...generatedBuilder,
 };
 
 const converterKey = 'converter';
@@ -52,7 +52,7 @@ abstract class ConverterHelper {
   }
 
   static bool hasExistingConverter(String name) {
-    return allConverter.containsKey(name);
+    return allBuilder.containsKey(name);
   }
 
   static Map<String, dynamic> validateConverter<T>(Object? data) {
@@ -78,7 +78,7 @@ There is no registered Converter found for "$rt".''');
     final converterMap = validateConverter<T>(data);
     final rt = converterMap[converterKey] as String;
 
-    final dynamic converted = allConverter[rt]!(converterMap);
+    final dynamic converted = allBuilder[rt]!(converterMap);
     if (converted is! T) {
       throw ConverterError('''
 An unexpected Builder was returned after convertion of "$rt"

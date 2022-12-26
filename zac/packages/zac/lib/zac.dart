@@ -1,5 +1,5 @@
 export 'src/zac/zac_build.dart';
-export 'src/converter.dart';
+export 'src/builder.dart';
 export 'src/base.dart';
 export 'src/zac/context.dart';
 export 'src/zac/action.dart';

@@ -22,7 +22,7 @@
             ],
         },
         {
-            "name": "generate-converter",
+            "name": "generate-builder",
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
@@ -31,9 +31,9 @@
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
                 "--outFile",
-                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\zac_converter.dart",
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\generated_builder.dart",
                 "--varName",
-                "zacConverter"
+                "generatedBuilder"
             ],
         },
         {

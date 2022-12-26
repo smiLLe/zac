@@ -28,8 +28,8 @@ void _expectFromJson<T>({
 
 void main() {
   setUp(() {
-    allConverter = {
-      ...allConverter,
+    allBuilder = {
+      ...allBuilder,
       ...zacTemplateExpressionConverter,
     };
   });

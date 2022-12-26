@@ -1,7 +1,7 @@
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/converter.dart';
+import 'package:zac/src/builder.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
@@ -228,10 +228,7 @@ void main() {
 
   group('ZacExecuteActionsListen', () {
     test('convert', () {
-      allConverter = {
-        ...allConverter,
-        NoopAction.unionValue: NoopAction.fromJson
-      };
+      allBuilder = {...allBuilder, NoopAction.unionValue: NoopAction.fromJson};
       expect(
           ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
             'converter': 'z:1:ExecuteActions.listen',

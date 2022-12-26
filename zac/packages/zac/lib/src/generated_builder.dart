@@ -82,7 +82,8 @@ import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
-Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
+Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
+    const {
   'f:1:AlertDialog': FlutterDialogs.fromJson,
   'f:1:Align': FlutterAlign.fromJson,
   'f:1:Alignment': FlutterAlignment.fromJson,

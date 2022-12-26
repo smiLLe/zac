@@ -1,4 +1,4 @@
-import 'package:zac/src/converter.dart';
+import 'package:zac/src/builder.dart';
 import 'package:zac/src/zac/context.dart';
 
 abstract class ZacBuild<T> {

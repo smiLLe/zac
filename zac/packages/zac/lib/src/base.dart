@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/converter.dart';
+import 'package:zac/src/builder.dart';
 
 const freezedZacBuilder = Freezed(
   fromJson: true,
