@@ -11,7 +11,6 @@ part 'fitted_box.freezed.dart';
 part 'fitted_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFittedBox with _$FlutterFittedBox implements ZacBuild<FittedBox> {
   const FlutterFittedBox._();
 

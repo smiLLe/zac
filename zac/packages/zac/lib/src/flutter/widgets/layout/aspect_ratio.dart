@@ -9,7 +9,6 @@ part 'aspect_ratio.freezed.dart';
 part 'aspect_ratio.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAspectRatio
     with _$FlutterAspectRatio
     implements ZacBuild<AspectRatio> {

@@ -10,7 +10,6 @@ part 'rotated_box.freezed.dart';
 part 'rotated_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRotatedBox
     with _$FlutterRotatedBox
     implements ZacBuild<RotatedBox> {

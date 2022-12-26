@@ -23,7 +23,8 @@ mixin _$FlutterDecoratedBox {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
   ZacValue<Decoration> get decoration => throw _privateConstructorUsedError;
-  FlutterDecorationPosition? get position => throw _privateConstructorUsedError;
+  ZacValue<DecorationPosition?>? get position =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -49,7 +50,7 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
   @override
   final ZacValue<Decoration> decoration;
   @override
-  final FlutterDecorationPosition? position;
+  final ZacValue<DecorationPosition?>? position;
 
   @override
   String toString() {
@@ -88,7 +89,7 @@ abstract class _FlutterDecoratedBox extends FlutterDecoratedBox {
       {final ZacValue<Key?>? key,
       final ZacValue<Widget?>? child,
       required final ZacValue<Decoration> decoration,
-      final FlutterDecorationPosition? position}) = _$_FlutterDecoratedBox;
+      final ZacValue<DecorationPosition?>? position}) = _$_FlutterDecoratedBox;
   _FlutterDecoratedBox._() : super._();
 
   factory _FlutterDecoratedBox.fromJson(Map<String, dynamic> json) =
@@ -101,5 +102,5 @@ abstract class _FlutterDecoratedBox extends FlutterDecoratedBox {
   @override
   ZacValue<Decoration> get decoration;
   @override
-  FlutterDecorationPosition? get position;
+  ZacValue<DecorationPosition?>? get position;
 }

@@ -9,7 +9,6 @@ part 'input_decoration.freezed.dart';
 part 'input_decoration.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate()
 class FlutterInputDecoration
     with _$FlutterInputDecoration, ZacBuild<InputDecoration> {
   const FlutterInputDecoration._();

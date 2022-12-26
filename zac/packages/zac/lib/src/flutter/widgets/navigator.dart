@@ -21,7 +21,6 @@ abstract class RouteWithArgs {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute
     implements ZacBuild<Route<Object?>>, RouteWithArgs {
@@ -88,7 +87,6 @@ class FlutterMaterialPageRoute
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
     implements ZacBuild<Route<Object?>>, RouteWithArgs {
@@ -166,7 +164,6 @@ class FlutterPageRouteBuilder
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorState with _$FlutterNavigatorState {
   const FlutterNavigatorState._();
 
@@ -200,7 +197,6 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
   const FlutterNavigator._();
 
@@ -235,7 +231,6 @@ class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
     implements ZacAction {
@@ -399,7 +394,6 @@ class FlutterNavigatorActions
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
   const FlutterRouteFactory._();
 
@@ -441,7 +435,6 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRouteSettings
     with _$FlutterRouteSettings, ZacBuild<RouteSettings> {
   const FlutterRouteSettings._();

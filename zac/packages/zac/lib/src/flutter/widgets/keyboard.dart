@@ -8,7 +8,6 @@ part 'keyboard.freezed.dart';
 part 'keyboard.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScrollViewKeyboardDismissBehavior
     with
         _$FlutterScrollViewKeyboardDismissBehavior,

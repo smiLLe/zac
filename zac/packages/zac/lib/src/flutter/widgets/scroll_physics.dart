@@ -9,7 +9,6 @@ part 'scroll_physics.freezed.dart';
 part 'scroll_physics.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScrollPhysics
     with _$FlutterScrollPhysics, ZacBuild<ScrollPhysics> {
   const FlutterScrollPhysics._();

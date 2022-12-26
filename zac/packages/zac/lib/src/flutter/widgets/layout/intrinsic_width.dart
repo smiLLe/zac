@@ -9,7 +9,6 @@ part 'intrinsic_width.freezed.dart';
 part 'intrinsic_width.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicWidth
     with _$FlutterIntrinsicWidth
     implements ZacBuild<IntrinsicWidth> {

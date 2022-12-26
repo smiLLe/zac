@@ -13,7 +13,6 @@ part 'refresh_indicator.freezed.dart';
 part 'refresh_indicator.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
     implements ZacBuild<RefreshIndicator> {
@@ -81,7 +80,6 @@ class FlutterRefreshIndicator
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicatorTriggerMode
     with
         _$FlutterRefreshIndicatorTriggerMode,

@@ -10,7 +10,6 @@ part 'sliver_padding.freezed.dart';
 part 'sliver_padding.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverPadding
     with _$FlutterSliverPadding
     implements ZacBuild<SliverPadding> {

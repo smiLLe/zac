@@ -13,7 +13,6 @@ part 'interactive_viewer.freezed.dart';
 part 'interactive_viewer.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
     implements ZacBuild<InteractiveViewer> {

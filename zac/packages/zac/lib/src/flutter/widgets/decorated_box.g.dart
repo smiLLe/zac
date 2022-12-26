@@ -18,6 +18,5 @@ _$_FlutterDecoratedBox _$$_FlutterDecoratedBoxFromJson(
       decoration: ZacValue<Decoration>.fromJson(json['decoration'] as Object),
       position: json['position'] == null
           ? null
-          : FlutterDecorationPosition.fromJson(
-              json['position'] as Map<String, dynamic>),
+          : ZacValue<DecorationPosition?>.fromJson(json['position'] as Object),
     );

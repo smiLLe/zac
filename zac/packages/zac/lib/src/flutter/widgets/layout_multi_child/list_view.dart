@@ -13,7 +13,6 @@ part 'list_view.freezed.dart';
 part 'list_view.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListView with _$FlutterListView implements ZacBuild<ListView> {
   const FlutterListView._();
 

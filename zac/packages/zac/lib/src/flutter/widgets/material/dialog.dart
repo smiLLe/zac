@@ -7,7 +7,6 @@ part 'dialog.freezed.dart';
 part 'dialog.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDialogs with _$FlutterDialogs implements ZacBuild<Widget> {
   const FlutterDialogs._();
 
@@ -159,7 +158,6 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuild<Widget> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   const FlutterDialogActions._();
 

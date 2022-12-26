@@ -7,7 +7,6 @@ part 'foundation.freezed.dart';
 part 'foundation.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterValueKey
     with _$FlutterValueKey
     implements ZacBuild<ValueKey<String>> {
@@ -28,7 +27,6 @@ class FlutterValueKey
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyNavigatorStateProvider
     with _$FlutterGlobalKeyNavigatorStateProvider
     implements ZacBuild<Widget> {
@@ -63,7 +61,6 @@ class FlutterGlobalKeyNavigatorStateProvider
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyScaffoldMessengerStateProvider
     with _$FlutterGlobalKeyScaffoldMessengerStateProvider
     implements ZacBuild<Widget> {

@@ -11,7 +11,6 @@ part 'unconstrained_box.freezed.dart';
 part 'unconstrained_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
     implements ZacBuild<UnconstrainedBox> {

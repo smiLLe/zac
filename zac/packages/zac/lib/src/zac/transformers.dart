@@ -203,7 +203,6 @@ class ZacTransformValue with _$ZacTransformValue {
   ]) = _ZacTransformValue;
 }
 
-@ZacGenerate()
 abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
       ConverterHelper.convertToType<ZacTransformer>(json);
@@ -213,7 +212,6 @@ abstract class ZacTransformer {
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ZacTransformers with _$ZacTransformers {
   const ZacTransformers._();
 
@@ -257,7 +255,6 @@ class ZacTransformers with _$ZacTransformers {
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   const ConvertTransformer._();
   static const String unionValue = 'z:1:Transformer:Converter';
@@ -277,7 +274,6 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class MapTransformer with _$MapTransformer implements ZacTransformer {
   const MapTransformer._();
   static const String unionValue = 'z:1:Transformer:Map.values';
@@ -434,7 +430,6 @@ The value: $theMap
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const IterableTransformer._();
   static const String unionValue = 'z:1:Transformer:Iterable.map';
@@ -546,7 +541,6 @@ The value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ListTransformer with _$ListTransformer implements ZacTransformer {
   const ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.reversed';
@@ -589,7 +583,6 @@ The value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   const ObjectTransformer._();
 
@@ -680,7 +673,6 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class NumTransformer with _$NumTransformer implements ZacTransformer {
   const NumTransformer._();
   static const String unionValue = 'z:1:Transformer:num.toDouble';
@@ -773,7 +765,6 @@ The value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class IntTransformer with _$IntTransformer implements ZacTransformer {
   const IntTransformer._();
   static const String unionValue = 'z:1:Transformer:int.parse';
@@ -820,7 +811,6 @@ Value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class StringTransformer with _$StringTransformer implements ZacTransformer {
   const StringTransformer._();
   static const String unionValue = 'z:1:Transformer:String.length';
@@ -885,7 +875,6 @@ The value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const JsonTransformer._();
   static const String unionValue = 'z:1:Transformer:Json.encode';
@@ -922,7 +911,6 @@ The value: $value
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class BoolTransformer with _$BoolTransformer implements ZacTransformer {
   const BoolTransformer._();
   static const String unionValue = 'z:1:Transformer:Bool.negate';

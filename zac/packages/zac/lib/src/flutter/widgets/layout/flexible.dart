@@ -11,7 +11,6 @@ part 'flexible.freezed.dart';
 part 'flexible.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFlexible with _$FlutterFlexible implements ZacBuild<Flexible> {
   const FlutterFlexible._();
 

@@ -10,7 +10,6 @@ part 'rendering.freezed.dart';
 part 'rendering.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterHitTestBehavior
     with _$FlutterHitTestBehavior, ZacBuild<HitTestBehavior> {
   const FlutterHitTestBehavior._();
@@ -44,7 +43,6 @@ class FlutterHitTestBehavior
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterCrossAxisAlignment
     with _$FlutterCrossAxisAlignment, ZacBuild<CrossAxisAlignment> {
   const FlutterCrossAxisAlignment._();
@@ -86,7 +84,6 @@ class FlutterCrossAxisAlignment
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterMainAxisAlignment
     with _$FlutterMainAxisAlignment, ZacBuild<MainAxisAlignment> {
   const FlutterMainAxisAlignment._();
@@ -133,7 +130,6 @@ class FlutterMainAxisAlignment
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuild<MainAxisSize> {
   const FlutterMainAxisSize._();
 
@@ -157,7 +153,6 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuild<MainAxisSize> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterFlexFit with _$FlutterFlexFit, ZacBuild<FlexFit> {
   const FlutterFlexFit._();
 
@@ -181,7 +176,6 @@ class FlutterFlexFit with _$FlutterFlexFit, ZacBuild<FlexFit> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterWrapAlignment
     with _$FlutterWrapAlignment, ZacBuild<WrapAlignment> {
   const FlutterWrapAlignment._();
@@ -226,7 +220,6 @@ class FlutterWrapAlignment
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterWrapCrossAlignment
     with _$FlutterWrapCrossAlignment, ZacBuild<WrapCrossAlignment> {
   const FlutterWrapCrossAlignment._();
@@ -258,7 +251,6 @@ class FlutterWrapCrossAlignment
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterStackFit with _$FlutterStackFit, ZacBuild<StackFit> {
   const FlutterStackFit._();
 
@@ -289,7 +281,6 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuild<StackFit> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxConstraints
     with _$FlutterBoxConstraints, ZacBuild<BoxConstraints> {
   const FlutterBoxConstraints._();
@@ -359,7 +350,6 @@ class FlutterBoxConstraints
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterDecorationPosition
     with _$FlutterDecorationPosition, ZacBuild<DecorationPosition> {
   const FlutterDecorationPosition._();

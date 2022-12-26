@@ -11,7 +11,6 @@ part 'update_widget.freezed.dart';
 part 'update_widget.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder
     implements ZacBuild<ZacUpdateContext> {

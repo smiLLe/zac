@@ -10,7 +10,6 @@ part 'drawer.freezed.dart';
 part 'drawer.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDrawer with _$FlutterDrawer implements ZacBuild<Drawer> {
   const FlutterDrawer._();
 

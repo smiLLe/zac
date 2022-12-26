@@ -11,7 +11,6 @@ part 'sliver_list.freezed.dart';
 part 'sliver_list.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverList
     with _$FlutterSliverList
     implements ZacBuild<SliverList> {

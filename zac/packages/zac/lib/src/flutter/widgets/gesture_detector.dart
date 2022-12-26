@@ -13,7 +13,6 @@ part 'gesture_detector.freezed.dart';
 part 'gesture_detector.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGestureDetector
     with _$FlutterGestureDetector
     implements ZacBuild<GestureDetector> {

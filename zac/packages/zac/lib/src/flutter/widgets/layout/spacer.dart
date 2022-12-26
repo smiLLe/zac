@@ -9,7 +9,6 @@ part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSpacer with _$FlutterSpacer implements ZacBuild<Spacer> {
   const FlutterSpacer._();
 

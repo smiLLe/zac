@@ -11,7 +11,6 @@ part 'wrap.g.dart';
 part 'wrap.freezed.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterWrap with _$FlutterWrap implements ZacBuild<Wrap> {
   const FlutterWrap._();
 

@@ -12,7 +12,6 @@ part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverGrid
     with _$FlutterSliverGrid
     implements ZacBuild<SliverGrid> {

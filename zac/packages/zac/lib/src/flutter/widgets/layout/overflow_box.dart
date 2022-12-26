@@ -9,7 +9,6 @@ part 'overflow_box.freezed.dart';
 part 'overflow_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOverflowBox
     with _$FlutterOverflowBox
     implements ZacBuild<OverflowBox> {

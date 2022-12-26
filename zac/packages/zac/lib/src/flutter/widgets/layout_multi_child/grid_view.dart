@@ -9,7 +9,6 @@ part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGridView with _$FlutterGridView implements ZacBuild<GridView> {
   const FlutterGridView._();
 

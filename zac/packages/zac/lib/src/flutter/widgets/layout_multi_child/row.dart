@@ -12,7 +12,6 @@ part 'row.freezed.dart';
 part 'row.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRow with _$FlutterRow implements ZacBuild<Row> {
   const FlutterRow._();
 

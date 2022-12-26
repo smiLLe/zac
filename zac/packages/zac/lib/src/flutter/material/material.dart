@@ -10,7 +10,6 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate()
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
     implements ZacBuild<OutlineInputBorder> {
@@ -44,7 +43,6 @@ class FlutterOutlineInputBorder
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
     implements ZacBuild<UnderlineInputBorder> {

@@ -15,7 +15,6 @@ part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
   const FlutterAppBar._();
 

@@ -14,7 +14,6 @@ part 'completer.freezed.dart';
 part 'completer.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacCompleterVoidProvider
     with _$ZacCompleterVoidProvider, ZacBuild<Widget> {
   const ZacCompleterVoidProvider._();
@@ -59,7 +58,6 @@ class ZacCompleterVoidProvider
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
   ZacCompleterActions._();
 

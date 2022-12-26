@@ -11,7 +11,6 @@ part 'icon.freezed.dart';
 part 'icon.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
   const FlutterIcon._();
 
@@ -48,7 +47,6 @@ class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
   const FlutterIconData._();
 
@@ -79,7 +77,6 @@ class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIconThemeData
     with _$FlutterIconThemeData, ZacBuild<IconThemeData> {
   const FlutterIconThemeData._();

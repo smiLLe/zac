@@ -9,7 +9,6 @@ part 'offstage.freezed.dart';
 part 'offstage.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOffstage with _$FlutterOffstage implements ZacBuild<Offstage> {
   const FlutterOffstage._();
 

@@ -9,7 +9,6 @@ part 'padding.freezed.dart';
 part 'padding.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPadding with _$FlutterPadding implements ZacBuild<Padding> {
   const FlutterPadding._();
 

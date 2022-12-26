@@ -11,7 +11,6 @@ part 'ignore_pointer.freezed.dart';
 part 'ignore_pointer.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIgnorePointer
     with _$FlutterIgnorePointer
     implements ZacBuild<IgnorePointer> {

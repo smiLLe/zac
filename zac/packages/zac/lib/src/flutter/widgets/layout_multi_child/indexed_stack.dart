@@ -11,7 +11,6 @@ part 'indexed_stack.freezed.dart';
 part 'indexed_stack.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIndexedStack
     with _$FlutterIndexedStack
     implements ZacBuild<IndexedStack> {

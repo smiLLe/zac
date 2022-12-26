@@ -9,7 +9,6 @@ part 'column.freezed.dart';
 part 'column.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterColumn with _$FlutterColumn implements ZacBuild<Column> {
   const FlutterColumn._();
 

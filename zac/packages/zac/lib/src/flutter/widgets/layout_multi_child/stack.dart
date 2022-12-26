@@ -10,7 +10,6 @@ part 'stack.freezed.dart';
 part 'stack.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterStack with _$FlutterStack implements ZacBuild<Stack> {
   const FlutterStack._();
 

@@ -17,7 +17,6 @@ part 'widget.freezed.dart';
 part 'widget.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
   const ZacWidgetBuilder._();
 

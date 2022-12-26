@@ -12,7 +12,6 @@ part 'image.freezed.dart';
 part 'image.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterImage with _$FlutterImage implements ZacBuild<Image> {
   const FlutterImage._();
 

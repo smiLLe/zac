@@ -12,7 +12,6 @@ part 'text.freezed.dart';
 part 'text.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterText with _$FlutterText implements ZacBuild<Text> {
   const FlutterText._();
 

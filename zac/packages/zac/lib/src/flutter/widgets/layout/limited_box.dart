@@ -9,7 +9,6 @@ part 'limited_box.freezed.dart';
 part 'limited_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterLimitedBox
     with _$FlutterLimitedBox
     implements ZacBuild<LimitedBox> {

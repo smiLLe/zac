@@ -10,7 +10,6 @@ part 'constrained_box.freezed.dart';
 part 'constrained_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterConstrainedBox
     with _$FlutterConstrainedBox
     implements ZacBuild<ConstrainedBox> {

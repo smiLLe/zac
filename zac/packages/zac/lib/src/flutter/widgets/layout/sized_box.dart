@@ -10,7 +10,6 @@ part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSizedBox with _$FlutterSizedBox implements ZacBuild<SizedBox> {
   const FlutterSizedBox._();
 

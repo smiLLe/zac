@@ -11,7 +11,6 @@ part 'list_tile.freezed.dart';
 part 'list_tile.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterListTile with _$FlutterListTile implements ZacBuild<ListTile> {
   const FlutterListTile._();
 

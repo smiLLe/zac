@@ -9,7 +9,6 @@ part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterExpanded with _$FlutterExpanded implements ZacBuild<Expanded> {
   const FlutterExpanded._();
 

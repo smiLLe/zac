@@ -237,7 +237,6 @@ See "$SharedValueProviderBuilder" for more info.
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class SharedValueActions with _$SharedValueActions implements ZacAction {
   const SharedValueActions._();
 
@@ -294,7 +293,6 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueConsumeType with _$SharedValueConsumeType {
   static const String unionValue = 'z:1:SharedValueConsume.watch';
   static const String unionValueRead = 'z:1:SharedValueConsume.read';
@@ -312,7 +310,6 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
     implements ZacBuild<Widget> {

@@ -11,7 +11,6 @@ part 'buttons.freezed.dart';
 part 'buttons.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterElevatedButton
     with _$FlutterElevatedButton
     implements ZacBuild<ElevatedButton> {
@@ -73,7 +72,6 @@ class FlutterElevatedButton
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOutlinedButton
     with _$FlutterOutlinedButton
     implements ZacBuild<OutlinedButton> {
@@ -135,7 +133,6 @@ class FlutterOutlinedButton
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextButton
     with _$FlutterTextButton
     implements ZacBuild<TextButton> {

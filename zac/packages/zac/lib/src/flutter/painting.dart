@@ -1,4 +1,3 @@
-import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -11,7 +10,6 @@ part 'painting.freezed.dart';
 part 'painting.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxShape with _$FlutterBoxShape, ZacBuild<BoxShape> {
   const FlutterBoxShape._();
 
@@ -38,7 +36,6 @@ class FlutterBoxShape with _$FlutterBoxShape, ZacBuild<BoxShape> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAxis with _$FlutterAxis, ZacBuild<Axis> {
   const FlutterAxis._();
 
@@ -63,7 +60,6 @@ class FlutterAxis with _$FlutterAxis, ZacBuild<Axis> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterVerticalDirection
     with _$FlutterVerticalDirection, ZacBuild<VerticalDirection> {
   const FlutterVerticalDirection._();
@@ -89,7 +85,6 @@ class FlutterVerticalDirection
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuild<TextOverflow> {
   const FlutterTextOverflow._();
 
@@ -124,7 +119,6 @@ class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuild<TextOverflow> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuild<StrutStyle> {
   const FlutterStrutStyle._();
 
@@ -201,7 +195,6 @@ class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuild<StrutStyle> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextWidthBasis
     with _$FlutterTextWidthBasis, ZacBuild<TextWidthBasis> {
   const FlutterTextWidthBasis._();
@@ -229,7 +222,6 @@ class FlutterTextWidthBasis
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxFit with _$FlutterBoxFit, ZacBuild<BoxFit> {
   const FlutterBoxFit._();
 
@@ -276,7 +268,6 @@ class FlutterBoxFit with _$FlutterBoxFit, ZacBuild<BoxFit> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuild<ImageRepeat> {
   const FlutterImageRepeat._();
 
@@ -311,7 +302,6 @@ class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuild<ImageRepeat> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextStyle with _$FlutterTextStyle, ZacBuild<TextStyle> {
   const FlutterTextStyle._();
 
@@ -382,7 +372,6 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuild<TextStyle> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextAlignVertical
     with _$FlutterTextAlignVertical, ZacBuild<TextAlignVertical> {
   const FlutterTextAlignVertical._();
@@ -416,7 +405,6 @@ class FlutterTextAlignVertical
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxShadow with _$FlutterBoxShadow implements ZacBuild<BoxShadow> {
   const FlutterBoxShadow._();
 
@@ -451,7 +439,6 @@ class FlutterBoxShadow with _$FlutterBoxShadow implements ZacBuild<BoxShadow> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAlignment with _$FlutterAlignment implements ZacBuild<Alignment> {
   const FlutterAlignment._();
 
@@ -523,7 +510,6 @@ class FlutterAlignment with _$FlutterAlignment implements ZacBuild<Alignment> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAlignmentDirectional
     with _$FlutterAlignmentDirectional
     implements ZacBuild<AlignmentDirectional> {
@@ -613,7 +599,6 @@ class FlutterAlignmentDirectional
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterFractionalOffset
     with _$FlutterFractionalOffset
     implements ZacBuild<FractionalOffset> {
@@ -639,7 +624,6 @@ class FlutterFractionalOffset
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderDirectional
     with _$FlutterBorderDirectional
     implements ZacBuild<BorderDirectional> {
@@ -674,7 +658,6 @@ class FlutterBorderDirectional
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorder with _$FlutterBorder implements ZacBuild<Border> {
   const FlutterBorder._();
 
@@ -722,7 +705,6 @@ class FlutterBorder with _$FlutterBorder implements ZacBuild<Border> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuild<BorderStyle> {
   const FlutterBorderStyle._();
 
@@ -749,7 +731,6 @@ class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuild<BorderStyle> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderRadius
     with _$FlutterBorderRadius
     implements ZacBuild<BorderRadius> {
@@ -795,7 +776,6 @@ class FlutterBorderRadius
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderSide with _$FlutterBorderSide, ZacBuild<BorderSide> {
   const FlutterBorderSide._();
 
@@ -824,7 +804,6 @@ class FlutterBorderSide with _$FlutterBorderSide, ZacBuild<BorderSide> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterCircleBorder
     with _$FlutterCircleBorder
     implements ZacBuild<CircleBorder> {
@@ -850,7 +829,6 @@ class FlutterCircleBorder
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterRoundedRectangleBorder
     with _$FlutterRoundedRectangleBorder
     implements ZacBuild<ShapeBorder> {
@@ -881,7 +859,6 @@ class FlutterRoundedRectangleBorder
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxDecoration
     with _$FlutterBoxDecoration
     implements ZacBuild<BoxDecoration> {
@@ -919,7 +896,6 @@ class FlutterBoxDecoration
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterShapeDecoration
     with _$FlutterShapeDecoration
     implements ZacBuild<ShapeDecoration> {
@@ -954,7 +930,6 @@ class FlutterShapeDecoration
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsets
     with _$FlutterEdgeInsets
     implements ZacBuild<EdgeInsets> {
@@ -1007,7 +982,6 @@ class FlutterEdgeInsets
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsetsDirectional
     with _$FlutterEdgeInsetsDirectional
     implements ZacBuild<EdgeInsetsDirectional> {

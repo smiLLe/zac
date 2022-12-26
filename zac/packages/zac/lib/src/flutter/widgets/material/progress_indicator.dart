@@ -9,7 +9,6 @@ part 'progress_indicator.freezed.dart';
 part 'progress_indicator.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterProgressIndicator
     with _$FlutterProgressIndicator
     implements ZacBuild<ProgressIndicator> {

@@ -9,7 +9,6 @@ part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
     implements ZacBuild<IntrinsicHeight> {

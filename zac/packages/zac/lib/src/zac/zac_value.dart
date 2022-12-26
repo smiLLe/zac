@@ -19,7 +19,6 @@ extension XZacValue<T> on ZacBuild<T> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuild<T> {
   const ZacValue._();
 
@@ -165,7 +164,6 @@ Value after: $transformedVal''');
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValueList<T extends Object?, X extends List<T>?>
     with _$ZacValueList<T, X>
     implements ZacBuild<X> {
@@ -342,7 +340,6 @@ A ${List<T>} is expected but the data is: $transformedList''');
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValueMap<T extends Object?, X extends Map<String, T>?>
     with _$ZacValueMap<T, X>
     implements ZacBuild<X> {
@@ -516,7 +513,6 @@ A $X is expected but the data is: $transformedMap''');
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ZacValueActions with _$ZacValueActions implements ZacAction {
   const ZacValueActions._();
 

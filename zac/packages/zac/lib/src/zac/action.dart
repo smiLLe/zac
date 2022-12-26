@@ -16,7 +16,6 @@ import 'package:zac/src/zac/zac_value.dart';
 part 'action.freezed.dart';
 part 'action.g.dart';
 
-@ZacGenerate(order: zacGenerateOrderFlutterAbstractsA)
 abstract class ZacAction {
   factory ZacAction.fromJson(Map<String, dynamic> data) {
     return ConverterHelper.convertToType<ZacAction>(data);
@@ -47,7 +46,6 @@ class ZacActionPayload with _$ZacActionPayload {
 }
 
 @freezedZacBuilder
-@ZacGenerate()
 class ZacActions with _$ZacActions {
   const ZacActions._();
 
@@ -99,7 +97,6 @@ extension Interactions on ZacActions {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
     implements ZacBuild<Widget> {
@@ -195,7 +192,6 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderLast)
 class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
   const ZacControlFlowAction._();
 

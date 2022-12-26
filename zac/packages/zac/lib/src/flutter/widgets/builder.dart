@@ -2,7 +2,6 @@ import 'package:zac/src/zac/context.dart';
 
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/zac_build.dart';
@@ -12,7 +11,6 @@ part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterBuilder with _$FlutterBuilder implements ZacBuild<Builder> {
   const FlutterBuilder._();
 

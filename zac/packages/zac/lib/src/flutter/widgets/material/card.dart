@@ -12,7 +12,6 @@ part 'card.freezed.dart';
 part 'card.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCard with _$FlutterCard implements ZacBuild<Card> {
   const FlutterCard._();
 

@@ -9,7 +9,6 @@ part 'sliver_child_delegate.freezed.dart';
 part 'sliver_child_delegate.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverChildDelegate
     with _$FlutterSliverChildDelegate
     implements ZacBuild<SliverChildDelegate> {

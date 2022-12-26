@@ -14,7 +14,6 @@ part 'custom_scroll_view.freezed.dart';
 part 'custom_scroll_view.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView
     implements ZacBuild<CustomScrollView> {

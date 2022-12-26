@@ -9,7 +9,6 @@ part 'fractionally_sized_box.freezed.dart';
 part 'fractionally_sized_box.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox
     implements ZacBuild<FractionallySizedBox> {

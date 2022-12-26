@@ -11,7 +11,6 @@ part 'sliver_to_box_adapter.freezed.dart';
 part 'sliver_to_box_adapter.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
     implements ZacBuild<SliverToBoxAdapter> {

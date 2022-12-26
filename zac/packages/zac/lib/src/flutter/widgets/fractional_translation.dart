@@ -12,7 +12,6 @@ part 'fractional_translation.freezed.dart';
 part 'fractional_translation.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation
     implements ZacBuild<FractionalTranslation> {

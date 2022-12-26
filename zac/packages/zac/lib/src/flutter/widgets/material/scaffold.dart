@@ -14,7 +14,6 @@ part 'scaffold.freezed.dart';
 part 'scaffold.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffold with _$FlutterScaffold implements ZacBuild<Scaffold> {
   const FlutterScaffold._();
 
@@ -90,7 +89,6 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuild<Scaffold> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffoldActions
     with _$FlutterScaffoldActions
     implements ZacAction {
@@ -175,7 +173,6 @@ class FlutterScaffoldActions
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
     implements ZacAction {
@@ -275,7 +272,6 @@ class FlutterScaffoldMessenger
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBar with _$FlutterSnackBar implements ZacBuild<SnackBar> {
   const FlutterSnackBar._();
 
@@ -328,7 +324,6 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuild<SnackBar> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarBehavior
     with _$FlutterSnackBarBehavior, ZacBuild<SnackBarBehavior> {
   const FlutterSnackBarBehavior._();
@@ -356,7 +351,6 @@ class FlutterSnackBarBehavior
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarAction
     with _$FlutterSnackBarAction
     implements ZacBuild<SnackBarAction> {
@@ -393,7 +387,6 @@ class FlutterSnackBarAction
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialBanner
     with _$FlutterMaterialBanner
     implements ZacBuild<MaterialBanner> {

@@ -9,7 +9,6 @@ part 'center.freezed.dart';
 part 'center.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterCenter with _$FlutterCenter implements ZacBuild<Center> {
   const FlutterCenter._();
 

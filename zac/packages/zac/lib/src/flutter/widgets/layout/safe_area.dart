@@ -10,7 +10,6 @@ part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSafeArea with _$FlutterSafeArea implements ZacBuild<SafeArea> {
   const FlutterSafeArea._();
 

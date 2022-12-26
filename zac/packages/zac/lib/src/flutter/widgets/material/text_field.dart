@@ -15,7 +15,6 @@ part 'text_field.freezed.dart';
 part 'text_field.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextField with _$FlutterTextField implements ZacBuild<TextField> {
   const FlutterTextField._();
 

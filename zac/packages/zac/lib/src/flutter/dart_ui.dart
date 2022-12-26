@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:zac/src/converter.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -12,7 +11,6 @@ part 'dart_ui.freezed.dart';
 part 'dart_ui.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterColor with _$FlutterColor, ZacBuild<Color> {
   const FlutterColor._();
 
@@ -54,7 +52,6 @@ class FlutterColor with _$FlutterColor, ZacBuild<Color> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterOffset with _$FlutterOffset, ZacBuild<Offset> {
   const FlutterOffset._();
 
@@ -86,7 +83,6 @@ class FlutterOffset with _$FlutterOffset, ZacBuild<Offset> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuild<BlurStyle> {
   const FlutterBlurStyle._();
 
@@ -121,7 +117,6 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuild<BlurStyle> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterRadius with _$FlutterRadius, ZacBuild<Radius> {
   const FlutterRadius._();
 
@@ -151,7 +146,6 @@ class FlutterRadius with _$FlutterRadius, ZacBuild<Radius> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDirection
     with _$FlutterTextDirection, ZacBuild<TextDirection> {
   const FlutterTextDirection._();
@@ -176,7 +170,6 @@ class FlutterTextDirection
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterClip with _$FlutterClip, ZacBuild<Clip> {
   const FlutterClip._();
 
@@ -207,7 +200,6 @@ class FlutterClip with _$FlutterClip, ZacBuild<Clip> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuild<TextBaseline> {
   const FlutterTextBaseline._();
 
@@ -233,7 +225,6 @@ class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuild<TextBaseline> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontWeight with _$FlutterFontWeight, ZacBuild<FontWeight> {
   const FlutterFontWeight._();
 
@@ -296,7 +287,6 @@ class FlutterFontWeight with _$FlutterFontWeight, ZacBuild<FontWeight> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontStyle with _$FlutterFontStyle, ZacBuild<FontStyle> {
   const FlutterFontStyle._();
 
@@ -321,7 +311,6 @@ class FlutterFontStyle with _$FlutterFontStyle, ZacBuild<FontStyle> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecoration
     with _$FlutterTextDecoration, ZacBuild<TextDecoration> {
   const FlutterTextDecoration._();
@@ -358,7 +347,6 @@ class FlutterTextDecoration
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextLeadingDistribution
     with _$FlutterTextLeadingDistribution, ZacBuild<TextLeadingDistribution> {
   const FlutterTextLeadingDistribution._();
@@ -387,7 +375,6 @@ class FlutterTextLeadingDistribution
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterLocale with _$FlutterLocale, ZacBuild<Locale> {
   const FlutterLocale._();
 
@@ -409,7 +396,6 @@ class FlutterLocale with _$FlutterLocale, ZacBuild<Locale> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFontFeature with _$FlutterFontFeature, ZacBuild<FontFeature> {
   const FlutterFontFeature._();
 
@@ -554,7 +540,6 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuild<FontFeature> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecorationStyle
     with _$FlutterTextDecorationStyle, ZacBuild<TextDecorationStyle> {
   const FlutterTextDecorationStyle._();
@@ -597,7 +582,6 @@ class FlutterTextDecorationStyle
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextAlign with _$FlutterTextAlign, ZacBuild<TextAlign> {
   const FlutterTextAlign._();
 
@@ -640,7 +624,6 @@ class FlutterTextAlign with _$FlutterTextAlign, ZacBuild<TextAlign> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextHeightBehavior
     with _$FlutterTextHeightBehavior, ZacBuild<TextHeightBehavior> {
   const FlutterTextHeightBehavior._();
@@ -673,7 +656,6 @@ class FlutterTextHeightBehavior
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBlendMode with _$FlutterBlendMode, ZacBuild<BlendMode> {
   const FlutterBlendMode._();
 
@@ -808,7 +790,6 @@ class FlutterBlendMode with _$FlutterBlendMode, ZacBuild<BlendMode> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterRect with _$FlutterRect, ZacBuild<Rect> {
   const FlutterRect._();
 
@@ -871,7 +852,6 @@ class FlutterRect with _$FlutterRect, ZacBuild<Rect> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFilterQuality
     with _$FlutterFilterQuality, ZacBuild<FilterQuality> {
   const FlutterFilterQuality._();
@@ -907,7 +887,6 @@ class FlutterFilterQuality
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBrightness with _$FlutterBrightness, ZacBuild<Brightness> {
   const FlutterBrightness._();
 
@@ -931,7 +910,6 @@ class FlutterBrightness with _$FlutterBrightness, ZacBuild<Brightness> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterSize with _$FlutterSize, ZacBuild<Size> {
   const FlutterSize._();
 
@@ -955,7 +933,6 @@ class FlutterSize with _$FlutterSize, ZacBuild<Size> {
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxHeightStyle
     with _$FlutterBoxHeightStyle, ZacBuild<BoxHeightStyle> {
   const FlutterBoxHeightStyle._();
@@ -1002,7 +979,6 @@ class FlutterBoxHeightStyle
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxWidthStyle
     with _$FlutterBoxWidthStyle, ZacBuild<BoxWidthStyle> {
   const FlutterBoxWidthStyle._();
@@ -1030,7 +1006,6 @@ class FlutterBoxWidthStyle
 }
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterShadow with _$FlutterShadow implements ZacBuild<Shadow> {
   const FlutterShadow._();
 

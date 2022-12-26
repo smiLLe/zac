@@ -9,7 +9,6 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @freezedZacBuilder
-@ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterial with _$FlutterMaterial implements ZacBuild<Material> {
   const FlutterMaterial._();
 
