@@ -58,7 +58,7 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
     _$_ZacStateMachineActionsSend(
       family: json['family'] as Object,
       event: ZacValue<String>.fromJson(json['event'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
@@ -66,19 +66,19 @@ _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
     _$_ZacStateMachineActionsTrySend(
       family: json['family'] as Object,
       event: ZacValue<String>.fromJson(json['event'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacStateMachineTransformerPickState
     _$$_ZacStateMachineTransformerPickStateFromJson(
             Map<String, dynamic> json) =>
         _$_ZacStateMachineTransformerPickState(
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_ZacStateMachineTransformerPickContext
     _$$_ZacStateMachineTransformerPickContextFromJson(
             Map<String, dynamic> json) =>
         _$_ZacStateMachineTransformerPickContext(
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );

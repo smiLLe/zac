@@ -16,10 +16,10 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          'converter': rt,
+          'builder': rt,
           'key': KeysModel.getValueKey('FIND_ME'),
           'child': ChildModel.getSizedBox(key: 'test_sizedBox'),
-          'clipBehavior': {'converter': 'f:1:Clip.antiAlias'},
+          'clipBehavior': {'builder': 'f:1:Clip.antiAlias'},
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
@@ -128,11 +128,11 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          'converter': rt,
+          'builder': rt,
           'key': KeysModel.getValueKey('FIND_ME'),
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
-          'clipBehavior': {'converter': 'f:1:Clip.antiAlias'},
+          'clipBehavior': {'builder': 'f:1:Clip.antiAlias'},
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
@@ -249,11 +249,11 @@ void main() {
     test('properties', () {
       fakeBuild<ElevatedButton>(
         FlutterElevatedButton.fromJson(<String, dynamic>{
-          'converter': FlutterElevatedButton.unionValueIcon,
+          'builder': FlutterElevatedButton.unionValueIcon,
           'key': KeysModel.getValueKey('test_key'),
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
-          'clipBehavior': {'converter': 'f:1:Clip.antiAlias'}
+          'clipBehavior': {'builder': 'f:1:Clip.antiAlias'}
         }).build,
         (matcher) => matcher.havingValueKey('test_key').having(
             (p0) => p0.clipBehavior,
@@ -264,7 +264,7 @@ void main() {
 
     testWidgets('created a label and icon', (tester) async {
       await testMap(tester, <String, dynamic>{
-        'converter': 'f:1:ElevatedButton.icon',
+        'builder': 'f:1:ElevatedButton.icon',
         'icon': ChildModel.getSizedBox(key: 'test_icon'),
         'label': ChildModel.getSizedBox(key: 'test_label'),
       });

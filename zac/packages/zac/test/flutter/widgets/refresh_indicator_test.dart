@@ -17,10 +17,10 @@ void main() {
         appBar: AppBar(title: const Text('Title')),
         body: ZacWidget(
           data: {
-            'converter': 'f:1:RefreshIndicator',
+            'builder': 'f:1:RefreshIndicator',
             'key': KeysModel.getValueKey('FIND_ME'),
             'child': {
-              'converter': FlutterListView.unionValue,
+              'builder': FlutterListView.unionValue,
               'children': [
                 ChildModel.getSizedBox(key: 'child1'),
                 ChildModel.getSizedBox(key: 'child2')

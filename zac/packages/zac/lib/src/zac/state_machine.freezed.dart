@@ -620,18 +620,15 @@ abstract class _ZacStateMachineBuildStateBuilder
 
 ZacStateMachineActions _$ZacStateMachineActionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:StateMachine:Action.send':
       return _ZacStateMachineActionsSend.fromJson(json);
     case 'z:1:StateMachine:Action.trySend':
       return _ZacStateMachineActionsTrySend.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'ZacStateMachineActions',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ZacStateMachineActions',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -664,7 +661,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
   @override
   final ZacValue<String> event;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -728,7 +725,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   @override
   final ZacValue<String> event;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -778,7 +775,7 @@ abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
 
 ZacStateMachineTransformer _$ZacStateMachineTransformerFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:StateMachine:Transformer.pickState':
       return _ZacStateMachineTransformerPickState.fromJson(json);
     case 'z:1:StateMachine:Transformer.pickContext':
@@ -787,9 +784,9 @@ ZacStateMachineTransformer _$ZacStateMachineTransformerFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'ZacStateMachineTransformer',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -817,7 +814,7 @@ class _$_ZacStateMachineTransformerPickState
           Map<String, dynamic> json) =>
       _$$_ZacStateMachineTransformerPickStateFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -871,7 +868,7 @@ class _$_ZacStateMachineTransformerPickContext
           Map<String, dynamic> json) =>
       _$$_ZacStateMachineTransformerPickContextFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

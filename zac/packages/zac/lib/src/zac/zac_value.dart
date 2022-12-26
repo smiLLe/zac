@@ -69,13 +69,13 @@ $data''');
         }
 
         return _$ZacValueFromJson<T>(<String, Object?>{
-          'converter': ZacValue.union,
+          'builder': ZacValue.union,
           'value':
               _convert<T>(converterName == ZacValue.union ? map['value'] : map),
         });
       },
       orElse: () => _$ZacValueFromJson<T>(<String, dynamic>{
-        'converter': ZacValue.union,
+        'builder': ZacValue.union,
         'value': _convert<T>(data),
       }),
     );
@@ -214,7 +214,7 @@ class ZacValueList<T extends Object?, X extends List<T>?>
         }
 
         final zV = _$ZacValueListFromJson<T, X>(<String, dynamic>{
-          'converter': ZacValueList.unionFromValue,
+          'builder': ZacValueList.unionFromValue,
           'items': data,
         });
         return ZacValueList<T, X>._freezedFix(zV);
@@ -390,7 +390,7 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
         }
 
         final zV = _$ZacValueMapFromJson<T, X>(<String, dynamic>{
-          'converter': ZacValueMap.unionFromValue,
+          'builder': ZacValueMap.unionFromValue,
           'items': data,
         });
         return ZacValueMap<T, X>._freezedFix(zV);

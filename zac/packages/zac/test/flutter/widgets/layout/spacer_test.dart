@@ -11,10 +11,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterColumn.unionValue,
+        'builder': FlutterColumn.unionValue,
         'children': [
           {
-            'converter': FlutterSpacer.unionValue,
+            'builder': FlutterSpacer.unionValue,
             'key': KeysModel.getValueKey('FINDME'),
             'flex': 100,
           }

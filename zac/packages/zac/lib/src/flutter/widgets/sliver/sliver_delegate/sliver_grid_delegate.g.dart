@@ -23,7 +23,7 @@ _$_SliverGridDelegateWithFixedCrossAxisCount
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
               : ZacValue<double?>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_SliverGridDelegateWithMaxCrossAxisExtent
@@ -44,5 +44,5 @@ _$_SliverGridDelegateWithMaxCrossAxisExtent
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
               : ZacValue<double?>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );

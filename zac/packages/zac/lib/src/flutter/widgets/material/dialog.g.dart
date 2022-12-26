@@ -33,7 +33,7 @@ _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
       child: json['child'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['child'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
@@ -110,7 +110,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
       scrollable: json['scrollable'] == null
           ? null
           : ZacValue<bool?>.fromJson(json['scrollable'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
@@ -158,7 +158,7 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
       alignment: json['alignment'] == null
           ? null
           : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterDialogsSimpleDialogOption
@@ -176,7 +176,7 @@ _$_FlutterDialogsSimpleDialogOption
           padding: json['padding'] == null
               ? null
               : ZacValue<EdgeInsets?>.fromJson(json['padding'] as Object),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(

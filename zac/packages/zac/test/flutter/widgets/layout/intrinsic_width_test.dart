@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterIntrinsicWidth.unionValue,
+        'builder': FlutterIntrinsicWidth.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
       },

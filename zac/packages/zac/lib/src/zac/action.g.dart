@@ -20,7 +20,7 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
       child: json['child'] == null
           ? null
           : ZacValue<Widget>.fromJson(json['child'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
@@ -31,7 +31,7 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
       child: json['child'] == null
           ? null
           : ZacValue<Widget>.fromJson(json['child'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(

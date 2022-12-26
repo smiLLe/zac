@@ -10,14 +10,14 @@ void main() {
   test('BorderStyle', () {
     fakeBuild<BorderStyle>(
       FlutterBorderStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BorderStyle.none'}).build,
+          <String, dynamic>{'builder': 'f:1:BorderStyle.none'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BorderStyle.none', equals(BorderStyle.none)),
     );
 
     fakeBuild<BorderStyle>(
       FlutterBorderStyle.fromJson(
-          <String, dynamic>{'converter': 'f:1:BorderStyle.solid'}).build,
+          <String, dynamic>{'builder': 'f:1:BorderStyle.solid'}).build,
       (matcher) => matcher.having(
           (p0) => p0, 'BorderStyle.solid', equals(BorderStyle.solid)),
     );
@@ -26,27 +26,27 @@ void main() {
   group('Border', () {
     test('FlutterBorder', () {
       Map<String, dynamic> getMap(String type) => <String, dynamic>{
-            'converter': type,
+            'builder': type,
             'top': {
-              'converter': 'f:1:BorderSide',
+              'builder': 'f:1:BorderSide',
               'width': 11,
             },
             'right': {
-              'converter': 'f:1:BorderSide',
+              'builder': 'f:1:BorderSide',
               'width': 12,
             },
             'bottom': {
-              'converter': 'f:1:BorderSide',
+              'builder': 'f:1:BorderSide',
               'width': 13,
             },
             'left': {
-              'converter': 'f:1:BorderSide',
+              'builder': 'f:1:BorderSide',
               'width': 14,
             },
           };
 
       Map<String, dynamic> getMapAll(String type) => <String, dynamic>{
-            'converter': type,
+            'builder': type,
             'width': 11,
           };
 
@@ -79,9 +79,9 @@ void main() {
     test('BorderRadius.all', () {
       fakeBuild<BorderRadius>(
         FlutterBorderRadius.fromJson(<String, dynamic>{
-          'converter': FlutterBorderRadius.unionValueAll,
+          'builder': FlutterBorderRadius.unionValueAll,
           'radius': {
-            'converter': 'f:1:Radius.circular',
+            'builder': 'f:1:Radius.circular',
             'radius': 11,
           }
         }).build,
@@ -100,7 +100,7 @@ void main() {
     test('BorderRadius.circular', () {
       fakeBuild<BorderRadius>(
         FlutterBorderRadius.fromJson(<String, dynamic>{
-          'converter': FlutterBorderRadius.unionValueCircular,
+          'builder': FlutterBorderRadius.unionValueCircular,
           'radius': 12
         }).build,
         (matcher) => matcher
@@ -118,13 +118,13 @@ void main() {
     test('BorderRadius.horizontal', () {
       fakeBuild<BorderRadius>(
         FlutterBorderRadius.fromJson(<String, dynamic>{
-          'converter': FlutterBorderRadius.unionValueHorizontal,
+          'builder': FlutterBorderRadius.unionValueHorizontal,
           'left': {
-            'converter': 'f:1:Radius.circular',
+            'builder': 'f:1:Radius.circular',
             'radius': 11,
           },
           'right': {
-            'converter': 'f:1:Radius.circular',
+            'builder': 'f:1:Radius.circular',
             'radius': 12,
           },
         }).build,
@@ -145,9 +145,9 @@ void main() {
     test('FlutterOutlineInputBorder', () {
       fakeBuild<OutlineInputBorder>(
         FlutterOutlineInputBorder.fromJson(<String, dynamic>{
-          'converter': 'f:1:OutlineInputBorder',
+          'builder': 'f:1:OutlineInputBorder',
           'borderSide': {
-            'converter': 'f:1:BorderSide',
+            'builder': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
@@ -170,9 +170,9 @@ void main() {
     test('FlutterUnderlineInputBorder', () {
       fakeBuild<UnderlineInputBorder>(
         FlutterUnderlineInputBorder.fromJson(<String, dynamic>{
-          'converter': 'f:1:UnderlineInputBorder',
+          'builder': 'f:1:UnderlineInputBorder',
           'borderSide': {
-            'converter': 'f:1:BorderSide',
+            'builder': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
@@ -191,9 +191,9 @@ void main() {
   test('FlutterCircleBorder', () {
     fakeBuild<CircleBorder>(
       FlutterCircleBorder.fromJson(<String, dynamic>{
-        'converter': 'f:1:CircleBorder',
+        'builder': 'f:1:CircleBorder',
         'side': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 11,
         },
       }).build,
@@ -205,9 +205,9 @@ void main() {
   test('FlutterRoundedRectangleBorder', () {
     fakeBuild<RoundedRectangleBorder>(
       FlutterRoundedRectangleBorder.fromJson(<String, dynamic>{
-        'converter': 'f:1:RoundedRectangleBorder',
+        'builder': 'f:1:RoundedRectangleBorder',
         'side': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 11,
         },
         'borderRadius': BorderRadiusModel.allJson,
@@ -225,21 +225,21 @@ void main() {
   test('FlutterBorderDirectional', () {
     fakeBuild<BorderDirectional>(
       FlutterBorderDirectional.fromJson(<String, dynamic>{
-        'converter': 'f:1:BorderDirectional',
+        'builder': 'f:1:BorderDirectional',
         'top': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 11,
         },
         'start': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 12,
         },
         'bottom': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 13,
         },
         'end': {
-          'converter': 'f:1:BorderSide',
+          'builder': 'f:1:BorderSide',
           'width': 14,
         },
       }).build,

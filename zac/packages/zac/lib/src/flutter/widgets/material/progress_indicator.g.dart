@@ -30,7 +30,7 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
       semanticsValue: json['semanticsValue'] == null
           ? null
           : ZacValue<String?>.fromJson(json['semanticsValue'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterProgressIndicatorCircular
@@ -57,5 +57,5 @@ _$_FlutterProgressIndicatorCircular
           semanticsValue: json['semanticsValue'] == null
               ? null
               : ZacValue<String?>.fromJson(json['semanticsValue'] as Object),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );

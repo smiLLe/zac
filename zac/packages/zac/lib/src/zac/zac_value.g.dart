@@ -10,7 +10,7 @@ _$_ZacValue<T> _$$_ZacValueFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
     _$_ZacValue<T>(
       json['value'] as Object,
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
@@ -27,7 +27,7 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
           ? null
           : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacValueList<T, X>
@@ -37,7 +37,7 @@ _$_ZacValueList<T, X>
           items: (json['items'] as List<dynamic>)
               .map((e) => ZacValue<T>.fromJson(e as Object))
               .toList(),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_ZacValueListConsume<T, X>
@@ -58,7 +58,7 @@ _$_ZacValueListConsume<T, X>
               ? null
               : SharedValueConsumeType.fromJson(
                   json['forceConsume'] as Map<String, dynamic>),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_ZacValueMap<T, X>
@@ -68,7 +68,7 @@ _$_ZacValueMap<T, X>
           items: (json['items'] as Map<String, dynamic>).map(
             (k, e) => MapEntry(k, ZacValue<T>.fromJson(e as Object)),
           ),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_ZacValueMapConsume<T, X> _$$_ZacValueMapConsumeFromJson<T extends Object?,
@@ -88,7 +88,7 @@ _$_ZacValueMapConsume<T, X> _$$_ZacValueMapConsumeFromJson<T extends Object?,
           ? null
           : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(

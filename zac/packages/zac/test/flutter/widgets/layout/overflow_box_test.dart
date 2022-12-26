@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterOverflowBox.unionValue,
+        'builder': FlutterOverflowBox.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'alignment': AlignmentModel.geometry_alignment,
         'minWidth': 30,

@@ -12,7 +12,7 @@ _$_ZacWidgetBuilder _$$_ZacWidgetBuilderFromJson(Map<String, dynamic> json) =>
           ? null
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       data: json['data'] as Object,
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
@@ -25,5 +25,5 @@ _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
       errorChild: json['errorChild'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['errorChild'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );

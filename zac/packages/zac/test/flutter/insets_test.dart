@@ -8,7 +8,7 @@ void main() {
   group('FlutterEdgeInsets', () {
     test('.all', () {
       final map = {
-        'converter': FlutterEdgeInsets.unionValueAll,
+        'builder': FlutterEdgeInsets.unionValueAll,
         'value': 10,
       };
       fakeBuild<EdgeInsets>(
@@ -19,7 +19,7 @@ void main() {
 
     test('.symmetric', () {
       final map = {
-        'converter': FlutterEdgeInsets.unionValueSymmetric,
+        'builder': FlutterEdgeInsets.unionValueSymmetric,
         'vertical': 10,
         'horizontal': 11,
       };
@@ -33,7 +33,7 @@ void main() {
 
     test('.only', () {
       final map = {
-        'converter': FlutterEdgeInsets.unionValueOnly,
+        'builder': FlutterEdgeInsets.unionValueOnly,
         'left': 1,
         'top': 2,
         'right': 3,
@@ -53,7 +53,7 @@ void main() {
   group('FlutterEdgeInsetsDirectional', () {
     test('.all', () {
       final map = {
-        'converter': FlutterEdgeInsetsDirectional.unionValueAll,
+        'builder': FlutterEdgeInsetsDirectional.unionValueAll,
         'value': 10,
       };
       fakeBuild<EdgeInsetsDirectional>(
@@ -65,7 +65,7 @@ void main() {
 
     test('.only', () {
       final map = {
-        'converter': FlutterEdgeInsetsDirectional.unionValueOnly,
+        'builder': FlutterEdgeInsetsDirectional.unionValueOnly,
         'start': 1,
         'top': 2,
         'end': 3,

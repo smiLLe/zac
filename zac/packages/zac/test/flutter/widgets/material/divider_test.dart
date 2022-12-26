@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterDivider.unionValue,
+        'builder': FlutterDivider.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'height': 20,
         'thickness': 2,

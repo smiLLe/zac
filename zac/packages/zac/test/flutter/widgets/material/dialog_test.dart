@@ -12,13 +12,13 @@ import '../../models.dart';
 void main() {
   testWidgets('Dialog', (tester) async {
     await testMap(tester, <String, dynamic>{
-      'converter': FlutterDialogs.unionValueDialog,
+      'builder': FlutterDialogs.unionValueDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'child': ChildModel.getSizedBox(key: 'test_child'),
       'alignment': AlignmentModel.geometry_alignment,
       'backgroundColor': ColorModel.json,
       'clipBehavior': {
-        'converter': 'f:1:Clip.hardEdge',
+        'builder': 'f:1:Clip.hardEdge',
       },
       'insetPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
       'elevation': 42,
@@ -50,7 +50,7 @@ void main() {
 
   testWidgets('AlertDialog', (tester) async {
     await testMap(tester, <String, dynamic>{
-      'converter': FlutterDialogs.unionValueAlertDialog,
+      'builder': FlutterDialogs.unionValueAlertDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'title': ChildModel.getSizedBox(key: 'title_child'),
       'content': ChildModel.getSizedBox(key: 'content_child'),
@@ -59,17 +59,17 @@ void main() {
         ChildModel.getSizedBox(key: 'action2_child')
       ],
       'actionsAlignment': {
-        'converter': 'f:1:MainAxisAlignment.spaceAround',
+        'builder': 'f:1:MainAxisAlignment.spaceAround',
       },
       'actionsOverflowButtonSpacing': 11,
       'actionsOverflowDirection': {
-        'converter': 'f:1:VerticalDirection.up',
+        'builder': 'f:1:VerticalDirection.up',
       },
       'actionsPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
       'alignment': AlignmentModel.geometry_alignment,
       'backgroundColor': ColorModel.json,
       'clipBehavior': {
-        'converter': 'f:1:Clip.hardEdge',
+        'builder': 'f:1:Clip.hardEdge',
       },
       'contentPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
       'insetPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
@@ -124,7 +124,7 @@ void main() {
 
   testWidgets('SimpleDialog', (tester) async {
     await testMap(tester, <String, dynamic>{
-      'converter': FlutterDialogs.unionValueSimpleDialog,
+      'builder': FlutterDialogs.unionValueSimpleDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'title': ChildModel.getSizedBox(key: 'title_child'),
       'children': [
@@ -134,7 +134,7 @@ void main() {
       'alignment': AlignmentModel.geometry_alignment,
       'backgroundColor': ColorModel.json,
       'clipBehavior': {
-        'converter': 'f:1:Clip.hardEdge',
+        'builder': 'f:1:Clip.hardEdge',
       },
       'contentPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
       'insetPadding': EdgeInsetsModel.geometry_edgeInsetsAll,
@@ -180,9 +180,9 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          'converter': FlutterMaterial.unionValue,
+          'builder': FlutterMaterial.unionValue,
           'child': {
-            'converter': FlutterDialogs.unionValueSimpleDialogOption,
+            'builder': FlutterDialogs.unionValueSimpleDialogOption,
             'key': KeysModel.getValueKey('FIND_ME'),
             'child': ChildModel.getSizedBox(key: 'child1'),
             'padding': EdgeInsetsModel.geometry_edgeInsetsAll,

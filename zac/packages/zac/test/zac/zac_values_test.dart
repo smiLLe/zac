@@ -78,13 +78,13 @@ void main() {
       test('<Widget>', () {
         expect(
             ZacValue<Widget>.fromJson(<String, dynamic>{
-              'converter': 'f:1:SizedBox',
+              'builder': 'f:1:SizedBox',
             }),
             ZacValue<Widget>(FlutterSizedBox()));
 
         expect(
             ZacValue<Widget?>.fromJson(<String, dynamic>{
-              'converter': 'f:1:SizedBox',
+              'builder': 'f:1:SizedBox',
             }),
             ZacValue<Widget?>(FlutterSizedBox()));
       });
@@ -125,7 +125,7 @@ void main() {
       test('can be created', () {
         expect(
             ZacValue<Widget>.fromJson({
-              'converter': 'z:1:ZacValue.consume',
+              'builder': 'z:1:ZacValue.consume',
               'family': 'shared',
             }),
             ZacValue<Widget>.consume(family: 'shared'));
@@ -308,14 +308,14 @@ void main() {
       test('will wrap items into a ZacValue', () {
         expect(
             ZacValueList<int, List<int>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueList',
+              'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
             ZacValueList<int, List<int>>(items: [ZacValue<int>.fromJson(4)]));
 
         expect(
             ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueList',
+              'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
             ZacValueList<int?, List<int?>>(
@@ -323,17 +323,17 @@ void main() {
 
         expect(
             ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueList',
+              'builder': 'z:1:ZacValueList',
               'items': [
                 {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'hello',
                 }
               ],
             }),
             ZacValueList<Key, List<Key>>(items: [
               ZacValue<Key>.fromJson({
-                'converter': 'f:1:ValueKey',
+                'builder': 'f:1:ValueKey',
                 'value': 'hello',
               })
             ]));
@@ -353,14 +353,14 @@ void main() {
 
         expect(
             ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueList',
+              'builder': 'z:1:ZacValueList',
               'items': [
                 {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'hello',
                 },
                 {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'world',
                 }
               ],
@@ -369,7 +369,7 @@ void main() {
 
         expect(
             ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueList',
+              'builder': 'z:1:ZacValueList',
               'items': [1, 2],
             }).build(zacContext),
             const [1, 2]);
@@ -500,14 +500,14 @@ void main() {
       test('will wrap items into a ZacValue', () {
         expect(
             ZacValueMap<int, Map<String, int>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueMap',
+              'builder': 'z:1:ZacValueMap',
               'items': {'a': 1},
             }),
             ZacValueMap<int, Map<String, int>>(
                 items: {'a': ZacValue<int>.fromJson(1)}));
         expect(
             ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueMap',
+              'builder': 'z:1:ZacValueMap',
               'items': {'a': 1},
             }),
             ZacValueMap<int?, Map<String, int?>>(
@@ -515,10 +515,10 @@ void main() {
 
         expect(
             ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueMap',
+              'builder': 'z:1:ZacValueMap',
               'items': {
                 'a': {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'hello',
                 },
               },
@@ -526,7 +526,7 @@ void main() {
             ZacValueMap<Key, Map<String, Key>>(
               items: {
                 'a': ZacValue<Key>.fromJson({
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'hello',
                 })
               },
@@ -547,14 +547,14 @@ void main() {
 
         expect(
             ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueMap',
+              'builder': 'z:1:ZacValueMap',
               'items': {
                 'a': {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'hello',
                 },
                 'b': {
-                  'converter': 'f:1:ValueKey',
+                  'builder': 'f:1:ValueKey',
                   'value': 'world',
                 }
               },
@@ -563,7 +563,7 @@ void main() {
 
         expect(
             ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
-              'converter': 'z:1:ZacValueMap',
+              'builder': 'z:1:ZacValueMap',
               'items': {'a': 1, 'b': 2},
             }).build(zacContext),
             const {'a': 1, 'b': 2});
@@ -638,7 +638,7 @@ void main() {
       (tester) async {
     expect(
         () => ConverterHelper.convertToType<ZacValueActions>(<String, dynamic>{
-              'converter': 'z:1:ZacValue.asActionPayload',
+              'builder': 'z:1:ZacValue.asActionPayload',
               'value': 5,
               'actions': <Object>[],
             }),

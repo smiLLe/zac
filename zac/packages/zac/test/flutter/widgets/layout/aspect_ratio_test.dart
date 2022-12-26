@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterAspectRatio.unionValue,
+        'builder': FlutterAspectRatio.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'aspectRatio': 10,
         'child': ChildModel.getSizedBox(key: 'child'),

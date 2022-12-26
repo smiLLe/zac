@@ -14,14 +14,14 @@ _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
           ? null
           : ZacTransformers.fromJson(json['transformer'] as Object),
       ifNoPayloadTakeCurrent: json['ifNoPayloadTakeCurrent'] as bool? ?? false,
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_SharedValueActionsRefresh _$$_SharedValueActionsRefreshFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueActionsRefresh(
       family: json['family'] as Object,
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
@@ -30,13 +30,13 @@ _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
       select: json['select'] == null
           ? null
           : ZacTransformers.fromJson(json['select'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_SharedValueConsumeTypeRead _$$_SharedValueConsumeTypeReadFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueConsumeTypeRead(
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(

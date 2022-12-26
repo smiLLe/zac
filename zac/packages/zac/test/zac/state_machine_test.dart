@@ -16,7 +16,7 @@ void main() {
     test('Transition', () {
       expect(
           () => ConverterHelper.convertToType<ZacTransition>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:Transition',
+                'builder': 'z:1:StateMachine:Transition',
                 'event': 'NEXT',
                 'target': 'foo',
               }),
@@ -26,8 +26,8 @@ void main() {
     test('StateConfig', () {
       expect(
           () => ConverterHelper.convertToType<ZacStateConfig>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:StateConfig',
-                'widget': {'converter': 'f:1:SizedBox'},
+                'builder': 'z:1:StateMachine:StateConfig',
+                'widget': {'builder': 'f:1:SizedBox'},
               }),
           returnsNormally);
     });
@@ -36,11 +36,11 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineProviderBuilder>(<String, dynamic>{
-                'converter': 'z:1:StateMachine.provide',
+                'builder': 'z:1:StateMachine.provide',
                 'family': 'machine',
                 'initialState': 'foo',
                 'states': <String, dynamic>{},
-                'child': {'converter': 'f:1:SizedBox'},
+                'child': {'builder': 'f:1:SizedBox'},
               }),
           returnsNormally);
     });
@@ -49,7 +49,7 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineBuildStateBuilder>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:BuildState',
+                'builder': 'z:1:StateMachine:BuildState',
                 'family': 'machine',
                 'states': <String>[],
               }),
@@ -60,7 +60,7 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineActions>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:Action.send',
+                'builder': 'z:1:StateMachine:Action.send',
                 'family': 'machine',
                 'event': 'NEXT',
               }),
@@ -71,7 +71,7 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineActions>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:Action.trySend',
+                'builder': 'z:1:StateMachine:Action.trySend',
                 'family': 'machine',
                 'event': 'NEXT',
               }),
@@ -82,7 +82,7 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineTransformer>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:Transformer.pickState',
+                'builder': 'z:1:StateMachine:Transformer.pickState',
               }),
           returnsNormally);
     });
@@ -91,7 +91,7 @@ void main() {
       expect(
           () => ConverterHelper.convertToType<
                   ZacStateMachineTransformer>(<String, dynamic>{
-                'converter': 'z:1:StateMachine:Transformer.pickContext',
+                'builder': 'z:1:StateMachine:Transformer.pickContext',
               }),
           returnsNormally);
     });

@@ -15,9 +15,9 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': 'f:1:Material',
+        'builder': 'f:1:Material',
         'child': {
-          'converter': 'f:1:TextField',
+          'builder': 'f:1:TextField',
           'key': KeysModel.getValueKey('FINDME'),
           'style': TextModel.textStyle,
           'strutStyle': TextModel.strutStyle,
@@ -30,22 +30,22 @@ void main() {
           'obscureText': true,
           'maxLines': 1,
           'keyboardType': {
-            'converter': 'f:1:TextInputType.number',
+            'builder': 'f:1:TextInputType.number',
           },
           'textInputAction': {
-            'converter': 'f:1:TextInputAction.go',
+            'builder': 'f:1:TextInputAction.go',
           },
           'textCapitalization': {
-            'converter': 'f:1:TextCapitalization.words',
+            'builder': 'f:1:TextCapitalization.words',
           },
           'textAlignVertical': {
-            'converter': 'f:1:TextAlignVertical.bottom',
+            'builder': 'f:1:TextAlignVertical.bottom',
           },
           'smartDashesType': {
-            'converter': 'f:1:SmartDashesType.enabled',
+            'builder': 'f:1:SmartDashesType.enabled',
           },
           'selectionHeightStyle': {
-            'converter': 'f:1:BoxHeightStyle.max',
+            'builder': 'f:1:BoxHeightStyle.max',
           },
         },
       },
@@ -118,14 +118,14 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': 'z:1:ScrollController.provide',
+        'builder': 'z:1:ScrollController.provide',
         'child': {
-          'converter': 'f:1:Material',
+          'builder': 'f:1:Material',
           'child': {
-            'converter': 'f:1:TextField',
+            'builder': 'f:1:TextField',
             'key': KeysModel.getValueKey('FINDME'),
             'scrollController': {
-              'converter': 'z:1:ZacValue.consume',
+              'builder': 'z:1:ZacValue.consume',
               'family': 'Zac.ScrollController',
             },
           },

@@ -57,13 +57,13 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateClosest(
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateRoot(
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
@@ -71,7 +71,7 @@ _$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
     _$_ZacNavigatorStateSharedValue(
       value:
           ZacValue<GlobalKey<NavigatorState>>.fromJson(json['value'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
@@ -103,7 +103,7 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
           ? null
           : FlutterNavigatorState.fromJson(
               json['navigatorState'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterNavigatorActionsPushNamed
@@ -115,7 +115,7 @@ _$_FlutterNavigatorActionsPushNamed
               ? null
               : FlutterNavigatorState.fromJson(
                   json['navigatorState'] as Map<String, dynamic>),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
@@ -128,7 +128,7 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
           ? null
           : FlutterNavigatorState.fromJson(
               json['navigatorState'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
@@ -141,7 +141,7 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
           ? null
           : FlutterNavigatorState.fromJson(
               json['navigatorState'] as Map<String, dynamic>),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterNavigatorActionsPushReplacement
@@ -156,7 +156,7 @@ _$_FlutterNavigatorActionsPushReplacement
               ? null
               : FlutterNavigatorState.fromJson(
                   json['navigatorState'] as Map<String, dynamic>),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_FlutterNavigatorActionsPushReplacementNamed
@@ -172,7 +172,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
           result: json['result'] == null
               ? null
               : ZacActions.fromJson(json['result'] as Object),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_FlutterNavigatorActionsPopUntilRouteName
@@ -184,7 +184,7 @@ _$_FlutterNavigatorActionsPopUntilRouteName
               ? null
               : FlutterNavigatorState.fromJson(
                   json['navigatorState'] as Map<String, dynamic>),
-          $type: json['converter'] as String?,
+          $type: json['builder'] as String?,
         );
 
 _$_FlutterRouteFactory _$$_FlutterRouteFactoryFromJson(

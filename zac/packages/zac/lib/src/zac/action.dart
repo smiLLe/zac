@@ -54,7 +54,7 @@ class ZacActions with _$ZacActions {
   factory ZacActions.fromJson(Object data) {
     /// allow a single action or the default implementation
     if (ConverterHelper.isConverter(data)) {
-      if ((data as Map<String, dynamic>)[converterKey] as String !=
+      if ((data as Map<String, dynamic>)[builderKey] as String !=
           ZacActions.unionValue) {
         return ZacActions([ZacAction.fromJson(data)]);
       }

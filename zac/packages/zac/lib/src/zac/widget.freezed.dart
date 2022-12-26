@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ZacWidgetBuilder _$ZacWidgetBuilderFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Widget':
       return _ZacWidgetBuilder.fromJson(json);
     case 'z:1:Widget.isolate':
       return _ZacWidgetBuilderIsolate.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ZacWidgetBuilder',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ZacWidgetBuilder',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -56,7 +56,7 @@ class _$_ZacWidgetBuilder extends _ZacWidgetBuilder
   @override
   final Object data;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -131,7 +131,7 @@ class _$_ZacWidgetBuilderIsolate extends _ZacWidgetBuilderIsolate
   @override
   final ZacValue<Widget?>? errorChild;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

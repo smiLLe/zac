@@ -21,10 +21,9 @@ void main() {
         ),
       );
       expect(
-          FlutterValueKey.fromJson(<String, dynamic>{
-            'converter': 'f:1:ValueKey',
-            'value': 'val'
-          }).build(zacContext),
+          FlutterValueKey.fromJson(
+                  <String, dynamic>{'builder': 'f:1:ValueKey', 'value': 'val'})
+              .build(zacContext),
           const ValueKey<String>('val'));
     });
   });

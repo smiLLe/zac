@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterSliverChildDelegate _$FlutterSliverChildDelegateFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:SliverChildListDelegate':
       return _FlutterSliverChildListDelegate.fromJson(json);
     case 'f:1:SliverChildListDelegate.fixed':
@@ -25,9 +25,9 @@ FlutterSliverChildDelegate _$FlutterSliverChildDelegateFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterSliverChildDelegate',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -81,7 +81,7 @@ class _$_FlutterSliverChildListDelegate
   @override
   final ZacValue<int?>? semanticIndexOffset;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -177,7 +177,7 @@ class _$_FlutterSliverChildListDelegateFixed
   @override
   final ZacValue<int?>? semanticIndexOffset;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

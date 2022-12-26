@@ -8,10 +8,10 @@ import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 abstract class ActionsModel {
   static Map<String, Object?> createTestAction(String data) {
     return {
-      'converter': 'z:1:Actions',
+      'builder': 'z:1:Actions',
       'actions': [
         {
-          'converter': 'test_action',
+          'builder': 'test_action',
           'data': data,
         }
       ],
@@ -21,28 +21,28 @@ abstract class ActionsModel {
 
 abstract class ChildModel {
   static Map<String, Object?> sizedBox = {
-    'converter': FlutterSizedBox.unionValue,
+    'builder': FlutterSizedBox.unionValue,
   };
 
   static Map<String, Object?> getSizedBox({
     String? key,
   }) =>
       {
-        'converter': FlutterSizedBox.unionValue,
+        'builder': FlutterSizedBox.unionValue,
         'key': key == null ? null : KeysModel.getValueKey(key)
       };
 }
 
 abstract class KeysModel {
   static Map<String, Object?> getValueKey(String key) => {
-        'converter': 'f:1:ValueKey',
+        'builder': 'f:1:ValueKey',
         'value': key,
       };
 }
 
 abstract class ColorModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Color.fromARGB',
+    'builder': 'f:1:Color.fromARGB',
     'a': 10,
     'r': 100,
     'g': 100,
@@ -53,7 +53,7 @@ abstract class ColorModel {
 
 abstract class EdgeInsetsModel {
   static Map<String, Object?> geometry_edgeInsetsAll = {
-    'converter': FlutterEdgeInsets.unionValueAll,
+    'builder': FlutterEdgeInsets.unionValueAll,
     'value': 10,
   };
   static const EdgeInsets equalsAll = EdgeInsets.all(10);
@@ -61,7 +61,7 @@ abstract class EdgeInsetsModel {
 
 abstract class AlignmentModel {
   static Map<String, Object?> geometry_alignment = {
-    'converter': 'f:1:Alignment',
+    'builder': 'f:1:Alignment',
     'x': 10,
     'y': 15,
   };
@@ -70,11 +70,11 @@ abstract class AlignmentModel {
 
 abstract class BorderModel {
   static Map<String, Object?> borderAll = {
-    'converter': 'f:1:Border.all',
+    'builder': 'f:1:Border.all',
     'color': ColorModel.json,
     'width': 5,
     'style': {
-      'converter': 'f:1:BorderStyle.solid',
+      'builder': 'f:1:BorderStyle.solid',
     },
   };
 
@@ -88,21 +88,21 @@ abstract class BorderModel {
 
 abstract class BorderRadiusModel {
   static Map<String, Object?> allJson = {
-    'converter': FlutterBorderRadius.unionValueAll,
+    'builder': FlutterBorderRadius.unionValueAll,
     'radius': RadiusModel.json,
   };
 
   static const BorderRadius allEquals = BorderRadius.all(RadiusModel.equals);
 
   static Map<String, Object?> circularJson = {
-    'converter': FlutterBorderRadius.unionValueCircular,
+    'builder': FlutterBorderRadius.unionValueCircular,
     'radius': 22,
   };
 
   static BorderRadius circularEquals = BorderRadius.circular(22);
 
   static Map<String, Object?> horizontalJson = {
-    'converter': FlutterBorderRadius.unionValueHorizontal,
+    'builder': FlutterBorderRadius.unionValueHorizontal,
     'left': RadiusModel.json,
     'right': RadiusModel.json
   };
@@ -113,7 +113,7 @@ abstract class BorderRadiusModel {
 
 abstract class RadiusModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Radius.elliptical',
+    'builder': 'f:1:Radius.elliptical',
     'x': 10,
     'y': 20,
   };
@@ -125,13 +125,13 @@ abstract class BoxDecorationModel {
   static Map<String, dynamic> getMap(
           {String type = FlutterBoxDecoration.unionValue}) =>
       <String, dynamic>{
-        'converter': type,
+        'builder': type,
         'color': ColorModel.json,
         'border': BorderModel.box_borderAll,
         'borderRadius': BorderRadiusModel.horizontalJson,
         'boxShadow': [BoxShadowModel.json],
         'backgroundBlendMode': {
-          'converter': 'f:1:BlendMode.darken',
+          'builder': 'f:1:BlendMode.darken',
         }
       };
 
@@ -146,7 +146,7 @@ abstract class BoxDecorationModel {
 
 abstract class BlurStyleModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:BlurStyle.inner',
+    'builder': 'f:1:BlurStyle.inner',
   };
 
   static const BlurStyle equals = BlurStyle.inner;
@@ -154,7 +154,7 @@ abstract class BlurStyleModel {
 
 abstract class OffsetModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Offset',
+    'builder': 'f:1:Offset',
     'dx': 10,
     'dy': 20,
   };
@@ -164,7 +164,7 @@ abstract class OffsetModel {
 
 abstract class BoxShadowModel {
   static Map<String, Object?> json = {
-    'converter': FlutterBoxShadow.unionValue,
+    'builder': FlutterBoxShadow.unionValue,
     'color': ColorModel.json,
     'offset': OffsetModel.json,
     'blurRadius': 11,
@@ -183,7 +183,7 @@ abstract class BoxShadowModel {
 
 abstract class ShadowModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Shadow',
+    'builder': 'f:1:Shadow',
     'color': ColorModel.json,
     'offset': OffsetModel.json,
     'blurRadius': 10,
@@ -197,14 +197,14 @@ abstract class ShadowModel {
 }
 
 abstract class BoxShapeModel {
-  static Map<String, Object?> json = {'converter': 'f:1:BoxShape.circle'};
+  static Map<String, Object?> json = {'builder': 'f:1:BoxShape.circle'};
 
   static const BoxShape equals = BoxShape.circle;
 }
 
 abstract class LocaleModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Locale',
+    'builder': 'f:1:Locale',
     'languageCode': 'de',
     'countryCode': 'AT',
   };
@@ -214,14 +214,14 @@ abstract class LocaleModel {
 
 abstract class TextModel {
   static Map<String, Object?> textStyle = {
-    'converter': 'f:1:TextStyle',
+    'builder': 'f:1:TextStyle',
     'inherit': false,
     'color': ColorModel.json,
     'backgroundColor': ColorModel.json,
     'fontSize': 20,
     'letterSpacing': 5,
     'wordSpacing': 3,
-    'textBaseline': {'converter': 'f:1:TextBaseline.alphabetic'}
+    'textBaseline': {'builder': 'f:1:TextBaseline.alphabetic'}
   };
 
   static const TextStyle equalsTextStyle = TextStyle(
@@ -234,29 +234,29 @@ abstract class TextModel {
     textBaseline: TextBaseline.alphabetic,
   );
 
-  static Map<String, Object?> fontWeight = {'converter': 'f:1:FontWeight.w900'};
+  static Map<String, Object?> fontWeight = {'builder': 'f:1:FontWeight.w900'};
 
   static const FontWeight equalsFontWeight = FontWeight.w900;
 
-  static Map<String, Object?> fontStyle = {'converter': 'f:1:FontStyle.italic'};
+  static Map<String, Object?> fontStyle = {'builder': 'f:1:FontStyle.italic'};
 
   static const FontStyle equalsFontStyle = FontStyle.italic;
 
   static Map<String, Object?> textDecoration = {
-    'converter': 'f:1:TextDecoration.underline'
+    'builder': 'f:1:TextDecoration.underline'
   };
 
   static const TextDecoration equalsTextDecoration = TextDecoration.underline;
 
   static Map<String, Object?> textLeadingDistribution = {
-    'converter': 'f:1:TextLeadingDistribution.proportional'
+    'builder': 'f:1:TextLeadingDistribution.proportional'
   };
 
   static const TextLeadingDistribution equalsTextLeadingDistribution =
       TextLeadingDistribution.proportional;
 
   static Map<String, Object?> strutStyle = {
-    'converter': 'f:1:StrutStyle',
+    'builder': 'f:1:StrutStyle',
     'fontFamily': 'test_fontFamily',
     'fontFamilyFallback': ['test_fontFamilyFallback'],
     'fontSize': 42,
@@ -268,34 +268,34 @@ abstract class TextModel {
     fontSize: 42,
   );
 
-  static Map<String, Object?> textAlign = {'converter': 'f:1:TextAlign.right'};
+  static Map<String, Object?> textAlign = {'builder': 'f:1:TextAlign.right'};
 
   static const TextAlign equalsTextAlign = TextAlign.right;
 
   static Map<String, Object?> textDirection = {
-    'converter': 'f:1:TextDirection.ltr'
+    'builder': 'f:1:TextDirection.ltr'
   };
 
   static const TextDirection equalsTextDirection = TextDirection.ltr;
 
   static Map<String, Object?> textOverflow = {
-    'converter': 'f:1:TextOverflow.clip'
+    'builder': 'f:1:TextOverflow.clip'
   };
 
   static const TextOverflow equalsTextOverflow = TextOverflow.clip;
 
   static Map<String, Object?> textWidthBasis = {
-    'converter': 'f:1:TextWidthBasis.longestLine'
+    'builder': 'f:1:TextWidthBasis.longestLine'
   };
 
   static const TextWidthBasis equalsTextWidthBasis = TextWidthBasis.longestLine;
 
   static Map<String, Object?> textHeightBehavior = {
-    'converter': 'f:1:TextHeightBehavior',
+    'builder': 'f:1:TextHeightBehavior',
     'applyHeightToFirstAscent': false,
     'applyHeightToLastDescent': true,
     'leadingDistribution': {
-      'converter': 'f:1:TextLeadingDistribution.even',
+      'builder': 'f:1:TextLeadingDistribution.even',
     }
   };
 
@@ -307,20 +307,20 @@ abstract class TextModel {
 }
 
 abstract class AxisModel {
-  static Map<String, Object?> horizontal = {'converter': 'f:1:Axis.horizontal'};
+  static Map<String, Object?> horizontal = {'builder': 'f:1:Axis.horizontal'};
 
   static const Axis equalsHorizontal = Axis.horizontal;
 }
 
 abstract class BrightnessModel {
-  static Map<String, Object?> light = {'converter': 'f:1:Brightness.light'};
+  static Map<String, Object?> light = {'builder': 'f:1:Brightness.light'};
 
   static const Brightness equalsLight = Brightness.light;
 }
 
 abstract class SystemUiOverlayStyleModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:SystemUiOverlayStyle',
+    'builder': 'f:1:SystemUiOverlayStyle',
     'systemNavigationBarColor': ColorModel.json,
     'systemNavigationBarDividerColor': ColorModel.json,
     'systemNavigationBarIconBrightness': BrightnessModel.light,
@@ -345,14 +345,14 @@ abstract class SystemUiOverlayStyleModel {
 
 abstract class GridDelegateModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
+    'builder': 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
     'crossAxisCount': 7,
   };
 }
 
 abstract class ClipBehaviorModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:Clip.hardEdge',
+    'builder': 'f:1:Clip.hardEdge',
   };
 
   static Clip equals = Clip.hardEdge;
@@ -360,7 +360,7 @@ abstract class ClipBehaviorModel {
 
 abstract class BoxConstraintsModel {
   static Map<String, Object?> json = {
-    'converter': 'f:1:BoxConstraints.expand',
+    'builder': 'f:1:BoxConstraints.expand',
     'width': 400,
     'height': 401,
   };

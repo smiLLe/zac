@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ZacValue<T> _$ZacValueFromJson<T extends Object?>(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:ZacValue':
       return _ZacValue<T>.fromJson(json);
     case 'z:1:ZacValue.consume':
       return _ZacValueConsume<T>.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ZacValue',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ZacValue',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -50,7 +50,7 @@ class _$_ZacValue<T extends Object?> extends _ZacValue<T> {
   @override
   final Object value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -115,7 +115,7 @@ class _$_ZacValueConsume<T extends Object?> extends _ZacValueConsume<T> {
   @override
   final SharedValueConsumeType? forceConsume;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -175,15 +175,15 @@ abstract class _ZacValueConsume<T extends Object?> extends ZacValue<T> {
 ZacValueList<T, X>
     _$ZacValueListFromJson<T extends Object?, X extends List<T>?>(
         Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:ZacValueList':
       return _ZacValueList<T, X>.fromJson(json);
     case 'z:1:ZacValueList.consume':
       return _ZacValueListConsume<T, X>.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ZacValueList',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ZacValueList',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -217,7 +217,7 @@ class _$_ZacValueList<T extends Object?, X extends List<T>?>
     return EqualUnmodifiableListView(_items);
   }
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -288,7 +288,7 @@ class _$_ZacValueListConsume<T extends Object?, X extends List<T>?>
   @override
   final SharedValueConsumeType? forceConsume;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -355,15 +355,15 @@ abstract class _ZacValueListConsume<T extends Object?, X extends List<T>?>
 ZacValueMap<T, X>
     _$ZacValueMapFromJson<T extends Object?, X extends Map<String, T>?>(
         Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:ZacValueMap':
       return _ZacValueMap<T, X>.fromJson(json);
     case 'z:1:ZacValueMap.consume':
       return _ZacValueMapConsume<T, X>.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ZacValueMap',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ZacValueMap',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -398,7 +398,7 @@ class _$_ZacValueMap<T extends Object?, X extends Map<String, T>?>
     return EqualUnmodifiableMapView(_items);
   }
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -469,7 +469,7 @@ class _$_ZacValueMapConsume<T extends Object?, X extends Map<String, T>?>
   @override
   final SharedValueConsumeType? forceConsume;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

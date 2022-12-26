@@ -19,7 +19,7 @@ void main() {
       test('Can be created fromJson', () {
         expect(
             ConverterHelper.convertToType<ZacControlFlowAction>({
-              'converter': 'z:1:ControlFlowAction.if',
+              'builder': 'z:1:ControlFlowAction.if',
               'condition': <Object?>[<Object?>[]],
               'ifTrue': <Object?>[],
             }),
@@ -30,7 +30,7 @@ void main() {
 
         expect(
             ConverterHelper.convertToType<ZacControlFlowAction>({
-              'converter': 'z:1:ControlFlowAction.if',
+              'builder': 'z:1:ControlFlowAction.if',
               'condition': <Object?>[<Object?>[]],
               'ifTrue': <Object?>[],
               'ifFalse': <Object?>[],
@@ -194,12 +194,12 @@ void main() {
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
-        'converter': 'z:1:ExecuteActions.once',
+        'builder': 'z:1:ExecuteActions.once',
         'actions': [
-          {'converter': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
+          {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
         ],
         'child': {
-          'converter': 'f:1:SizedBox',
+          'builder': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('child')
         }
       });
@@ -231,7 +231,7 @@ void main() {
       allBuilder = {...allBuilder, NoopAction.unionValue: NoopAction.fromJson};
       expect(
           ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
-            'converter': 'z:1:ExecuteActions.listen',
+            'builder': 'z:1:ExecuteActions.listen',
             'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
@@ -240,7 +240,7 @@ void main() {
 
       expect(
           ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
-            'converter': 'z:1:ExecuteActions.listen',
+            'builder': 'z:1:ExecuteActions.listen',
             'family': 'foo',
             'actions': NoopAction.createActions(),
           }),
@@ -292,13 +292,13 @@ void main() {
       await testMap(
         tester,
         <String, dynamic>{
-          'converter': FlutterElevatedButton.unionValue,
+          'builder': FlutterElevatedButton.unionValue,
           'key': KeysModel.getValueKey('button'),
           'onPressed': {
-            'converter': 'z:1:Actions',
+            'builder': 'z:1:Actions',
             'actions': [
               {
-                'converter': 'f:1:showDialog',
+                'builder': 'f:1:showDialog',
                 'child': ChildModel.getSizedBox(key: 'dialog_child')
               },
             ],

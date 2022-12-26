@@ -11,7 +11,7 @@ void main() {
   test('Shadow', () {
     fakeBuild<Shadow>(
       FlutterShadow.fromJson(<String, dynamic>{
-        'converter': 'f:1:Shadow',
+        'builder': 'f:1:Shadow',
         'color': ColorModel.json,
         'offset': OffsetModel.json,
         'blurRadius': 10,
@@ -29,7 +29,7 @@ void main() {
   test('BoxShadow', () {
     fakeBuild<Shadow>(
       FlutterBoxShadow.fromJson(<String, dynamic>{
-        'converter': FlutterBoxShadow.unionValue,
+        'builder': FlutterBoxShadow.unionValue,
         ...BoxShadowModel.json,
       }).build,
       (matcher) => matcher.having(

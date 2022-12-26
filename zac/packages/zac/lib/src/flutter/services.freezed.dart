@@ -172,7 +172,7 @@ abstract class _FlutterSystemUiOverlayStyle
 }
 
 FlutterTextInputType _$FlutterTextInputTypeFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextInputType.datetime':
       return _FlutterTextInputTypedatetime.fromJson(json);
     case 'f:1:TextInputType.emailAddress':
@@ -197,8 +197,8 @@ FlutterTextInputType _$FlutterTextInputTypeFromJson(Map<String, dynamic> json) {
       return _FlutterTextInputTypevisiblePassword.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterTextInputType',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterTextInputType',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -234,7 +234,7 @@ class _$_FlutterTextInputTypedatetime extends _FlutterTextInputTypedatetime {
   factory _$_FlutterTextInputTypedatetime.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypedatetimeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -295,7 +295,7 @@ class _$_FlutterTextInputTypeemailAddress
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypeemailAddressFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -356,7 +356,7 @@ class _$_FlutterTextInputTypemultiline extends _FlutterTextInputTypemultiline {
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypemultilineFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -415,7 +415,7 @@ class _$_FlutterTextInputTypename extends _FlutterTextInputTypename {
   factory _$_FlutterTextInputTypename.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypenameFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -474,7 +474,7 @@ class _$_FlutterTextInputTypenone extends _FlutterTextInputTypenone {
   factory _$_FlutterTextInputTypenone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypenoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -533,7 +533,7 @@ class _$_FlutterTextInputTypenumber extends _FlutterTextInputTypenumber {
   factory _$_FlutterTextInputTypenumber.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypenumberFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -592,7 +592,7 @@ class _$_FlutterTextInputTypephone extends _FlutterTextInputTypephone {
   factory _$_FlutterTextInputTypephone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypephoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -653,7 +653,7 @@ class _$_FlutterTextInputTypestreetAddress
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypestreetAddressFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -714,7 +714,7 @@ class _$_FlutterTextInputTypetext extends _FlutterTextInputTypetext {
   factory _$_FlutterTextInputTypetext.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypetextFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -773,7 +773,7 @@ class _$_FlutterTextInputTypeurl extends _FlutterTextInputTypeurl {
   factory _$_FlutterTextInputTypeurl.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypeurlFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -834,7 +834,7 @@ class _$_FlutterTextInputTypevisiblePassword
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputTypevisiblePasswordFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -888,7 +888,7 @@ abstract class _FlutterTextInputTypevisiblePassword
 
 FlutterTextInputAction _$FlutterTextInputActionFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextInputAction.continueAction':
       return _FlutterTextInputActioncontinueAction.fromJson(json);
     case 'f:1:TextInputAction.done':
@@ -917,11 +917,8 @@ FlutterTextInputAction _$FlutterTextInputActionFromJson(
       return _FlutterTextInputActionunspecified.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterTextInputAction',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterTextInputAction',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -961,7 +958,7 @@ class _$_FlutterTextInputActioncontinueAction
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputActioncontinueActionFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1025,7 +1022,7 @@ class _$_FlutterTextInputActiondone extends _FlutterTextInputActiondone {
   factory _$_FlutterTextInputActiondone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActiondoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1088,7 +1085,7 @@ class _$_FlutterTextInputActionemergencyCall
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionemergencyCallFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1152,7 +1149,7 @@ class _$_FlutterTextInputActiongo extends _FlutterTextInputActiongo {
   factory _$_FlutterTextInputActiongo.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActiongoFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1213,7 +1210,7 @@ class _$_FlutterTextInputActionjoin extends _FlutterTextInputActionjoin {
   factory _$_FlutterTextInputActionjoin.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionjoinFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1275,7 +1272,7 @@ class _$_FlutterTextInputActionnewline extends _FlutterTextInputActionnewline {
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionnewlineFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1336,7 +1333,7 @@ class _$_FlutterTextInputActionnext extends _FlutterTextInputActionnext {
   factory _$_FlutterTextInputActionnext.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionnextFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1397,7 +1394,7 @@ class _$_FlutterTextInputActionnone extends _FlutterTextInputActionnone {
   factory _$_FlutterTextInputActionnone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionnoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1460,7 +1457,7 @@ class _$_FlutterTextInputActionprevious
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionpreviousFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1521,7 +1518,7 @@ class _$_FlutterTextInputActionroute extends _FlutterTextInputActionroute {
   factory _$_FlutterTextInputActionroute.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionrouteFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1582,7 +1579,7 @@ class _$_FlutterTextInputActionsearch extends _FlutterTextInputActionsearch {
   factory _$_FlutterTextInputActionsearch.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionsearchFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1643,7 +1640,7 @@ class _$_FlutterTextInputActionsend extends _FlutterTextInputActionsend {
   factory _$_FlutterTextInputActionsend.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionsendFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1706,7 +1703,7 @@ class _$_FlutterTextInputActionunspecified
           Map<String, dynamic> json) =>
       _$$_FlutterTextInputActionunspecifiedFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1762,7 +1759,7 @@ abstract class _FlutterTextInputActionunspecified
 
 FlutterTextCapitalization _$FlutterTextCapitalizationFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextCapitalization.characters':
       return _FlutterTextCapitalizationcharacters.fromJson(json);
     case 'f:1:TextCapitalization.none':
@@ -1775,9 +1772,9 @@ FlutterTextCapitalization _$FlutterTextCapitalizationFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterTextCapitalization',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -1807,7 +1804,7 @@ class _$_FlutterTextCapitalizationcharacters
           Map<String, dynamic> json) =>
       _$$_FlutterTextCapitalizationcharactersFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1862,7 +1859,7 @@ class _$_FlutterTextCapitalizationnone extends _FlutterTextCapitalizationnone {
           Map<String, dynamic> json) =>
       _$$_FlutterTextCapitalizationnoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1916,7 +1913,7 @@ class _$_FlutterTextCapitalizationsentences
           Map<String, dynamic> json) =>
       _$$_FlutterTextCapitalizationsentencesFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1972,7 +1969,7 @@ class _$_FlutterTextCapitalizationwords
           Map<String, dynamic> json) =>
       _$$_FlutterTextCapitalizationwordsFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2016,18 +2013,15 @@ abstract class _FlutterTextCapitalizationwords
 
 FlutterSmartDashesType _$FlutterSmartDashesTypeFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:SmartDashesType.disabled':
       return _FlutterSmartDashesTypedisabled.fromJson(json);
     case 'f:1:SmartDashesType.enabled':
       return _FlutterSmartDashesTypeenabled.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterSmartDashesType',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterSmartDashesType',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2053,7 +2047,7 @@ class _$_FlutterSmartDashesTypedisabled
           Map<String, dynamic> json) =>
       _$$_FlutterSmartDashesTypedisabledFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2101,7 +2095,7 @@ class _$_FlutterSmartDashesTypeenabled extends _FlutterSmartDashesTypeenabled {
           Map<String, dynamic> json) =>
       _$$_FlutterSmartDashesTypeenabledFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2140,18 +2134,15 @@ abstract class _FlutterSmartDashesTypeenabled extends FlutterSmartDashesType {
 
 FlutterSmartQuotesType _$FlutterSmartQuotesTypeFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:SmartQuotesType.disabled':
       return _FlutterSmartQuotesTypedisabled.fromJson(json);
     case 'f:1:SmartQuotesType.enabled':
       return _FlutterSmartQuotesTypeenabled.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterSmartQuotesType',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterSmartQuotesType',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2177,7 +2168,7 @@ class _$_FlutterSmartQuotesTypedisabled
           Map<String, dynamic> json) =>
       _$$_FlutterSmartQuotesTypedisabledFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2225,7 +2216,7 @@ class _$_FlutterSmartQuotesTypeenabled extends _FlutterSmartQuotesTypeenabled {
           Map<String, dynamic> json) =>
       _$$_FlutterSmartQuotesTypeenabledFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

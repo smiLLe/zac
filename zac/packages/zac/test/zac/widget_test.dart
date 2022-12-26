@@ -26,7 +26,7 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       home: ZacWidget(
         data: ZacBuild<Widget>.fromJson(<String, dynamic>{
-          'converter': 'f:1:Text',
+          'builder': 'f:1:Text',
           'data': 'hello',
         }),
       ),
@@ -38,9 +38,9 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       home: ZacUpdateContext(builder: (zacContext) {
         return ZacWidgetBuilder.fromJson(<String, dynamic>{
-          'converter': 'z:1:Widget',
+          'builder': 'z:1:Widget',
           'data': {
-            'converter': 'f:1:Text',
+            'builder': 'f:1:Text',
             'data': 'hello',
           }
         }).build(zacContext);
@@ -54,7 +54,7 @@ void main() {
       await tester.pumpWidget(const MaterialApp(
         home: ZacWidgetIsolated(
           data: <String, dynamic>{
-            'converter': 'f:1:Text',
+            'builder': 'f:1:Text',
             'data': 'hello',
           },
         ),
@@ -68,9 +68,9 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         home: ZacUpdateContext(builder: (zacContext) {
           return ZacWidgetBuilder.fromJson(<String, dynamic>{
-            'converter': 'z:1:Widget.isolate',
+            'builder': 'z:1:Widget.isolate',
             'data': {
-              'converter': 'f:1:Text',
+              'builder': 'f:1:Text',
               'data': 'hello',
             }
           }).build(zacContext);
@@ -86,15 +86,15 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       home: ZacUpdateContext(builder: (zacContext) {
         return ZacWidgetBuilder.fromJson(<String, dynamic>{
-          'converter': 'z:1:Widget.isolate',
+          'builder': 'z:1:Widget.isolate',
           'data': {
-            'converter': 'f:1:SizedBox',
+            'builder': 'f:1:SizedBox',
             'child': {
-              'converter': 'z:1:Widget',
+              'builder': 'z:1:Widget',
               'data': {
-                'converter': 'z:1:Widget.isolate',
+                'builder': 'z:1:Widget.isolate',
                 'data': {
-                  'converter': 'f:1:Text',
+                  'builder': 'f:1:Text',
                   'data': 'hello',
                 }
               }

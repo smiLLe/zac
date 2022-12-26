@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterContainer.unionValue,
+        'builder': FlutterContainer.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'margin': EdgeInsetsModel.geometry_edgeInsetsAll,
         'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
@@ -42,7 +42,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterContainer.unionValue,
+        'builder': FlutterContainer.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'color': ColorModel.json,
       },

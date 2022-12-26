@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Dialog':
       return _FlutterDialogsDialog.fromJson(json);
     case 'f:1:AlertDialog':
@@ -26,8 +26,8 @@ FlutterDialogs _$FlutterDialogsFromJson(Map<String, dynamic> json) {
       return _FlutterDialogsSimpleDialogOption.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterDialogs',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterDialogs',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -84,7 +84,7 @@ class _$_FlutterDialogsDialog extends _FlutterDialogsDialog {
   @override
   final ZacValue<Widget?>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -233,7 +233,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final ZacValue<bool?>? scrollable;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -431,7 +431,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final ZacValue<AlignmentGeometry?>? alignment;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -559,7 +559,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final ZacValue<EdgeInsets?>? padding;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

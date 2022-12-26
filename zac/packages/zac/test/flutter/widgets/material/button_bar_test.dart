@@ -8,15 +8,15 @@ import '../../models.dart';
 void main() {
   testWidgets('FlutterButtonBar()', (tester) async {
     await testMap(tester, <String, dynamic>{
-      'converter': FlutterButtonBar.unionValue,
+      'builder': FlutterButtonBar.unionValue,
       'key': KeysModel.getValueKey('test_key'),
       'children': [
         {
-          'converter': 'f:1:SizedBox',
+          'builder': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('FIND_ME'),
         },
         {
-          'converter': 'f:1:SizedBox',
+          'builder': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('FIND_ME_TOO'),
         }
       ],

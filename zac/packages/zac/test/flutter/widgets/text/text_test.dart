@@ -10,7 +10,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterText.unionValue,
+        'builder': FlutterText.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'data': 'Hello World',
         'style': TextModel.textStyle,

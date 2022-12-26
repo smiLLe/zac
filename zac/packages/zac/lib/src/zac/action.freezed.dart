@@ -550,7 +550,7 @@ abstract class _ZacActions extends ZacActions {
 
 ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:ExecuteActions.once':
       return _ZacExecuteActionsBuilderOnce.fromJson(json);
     case 'z:1:ExecuteActions.listen':
@@ -559,9 +559,9 @@ ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'ZacExecuteActionsBuilder',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -594,7 +594,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
   @override
   final ZacValue<Widget>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -663,7 +663,7 @@ class _$_ZacExecuteActionsBuilderListen
   @override
   final ZacValue<Widget>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

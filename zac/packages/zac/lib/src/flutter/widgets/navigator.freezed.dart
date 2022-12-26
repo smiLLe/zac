@@ -310,7 +310,7 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
 
 FlutterNavigatorState _$FlutterNavigatorStateFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:NavigatorState.closest':
       return _ZacNavigatorStateClosest.fromJson(json);
     case 'f:1:NavigatorState.root':
@@ -319,8 +319,8 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
       return _ZacNavigatorStateSharedValue.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterNavigatorState',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterNavigatorState',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -345,7 +345,7 @@ class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
   factory _$_ZacNavigatorStateClosest.fromJson(Map<String, dynamic> json) =>
       _$$_ZacNavigatorStateClosestFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -393,7 +393,7 @@ class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
   factory _$_ZacNavigatorStateRoot.fromJson(Map<String, dynamic> json) =>
       _$$_ZacNavigatorStateRootFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -443,7 +443,7 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
   @override
   final ZacValue<GlobalKey<NavigatorState>> value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -592,7 +592,7 @@ abstract class _FlutterNavigator extends FlutterNavigator {
 
 FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Navigator.push':
       return _FlutterNavigatorActionsPush.fromJson(json);
     case 'f:1:Navigator.pushNamed':
@@ -609,11 +609,8 @@ FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
       return _FlutterNavigatorActionsPopUntilRouteName.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterNavigatorActions',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterNavigatorActions',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -656,7 +653,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -736,7 +733,7 @@ class _$_FlutterNavigatorActionsPushNamed
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -815,7 +812,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -890,7 +887,7 @@ class _$_FlutterNavigatorActionsMaybePop
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -971,7 +968,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1059,7 +1056,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final ZacActions? result;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1144,7 +1141,7 @@ class _$_FlutterNavigatorActionsPopUntilRouteName
   @override
   final FlutterNavigatorState? navigatorState;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

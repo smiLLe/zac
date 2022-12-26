@@ -13,7 +13,7 @@ void main() {
   group('UpdateContext', () {
     testWidgets('convert', (tester) async {
       await testMap(tester, <String, dynamic>{
-        'converter': 'z:1:UpdateContext',
+        'builder': 'z:1:UpdateContext',
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
       });

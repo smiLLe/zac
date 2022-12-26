@@ -11,14 +11,14 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterColumn.unionValue,
+        'builder': FlutterColumn.unionValue,
         'children': [
           {
-            'converter': FlutterFlexible.unionValue,
+            'builder': FlutterFlexible.unionValue,
             'child': ChildModel.getSizedBox(key: 'child'),
             'key': KeysModel.getValueKey('FINDME'),
             'flex': 100,
-            'fit': {'converter': 'f:1:FlexFit.tight'}
+            'fit': {'builder': 'f:1:FlexFit.tight'}
           }
         ]
       },

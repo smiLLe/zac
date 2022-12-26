@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterPositioned _$FlutterPositionedFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Positioned':
       return _FlutterPositioneddirectional.fromJson(json);
     case 'f:1:Positioned.directional':
@@ -24,8 +24,8 @@ FlutterPositioned _$FlutterPositionedFromJson(Map<String, dynamic> json) {
       return _FlutterPositionedfill.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterPositioned',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterPositioned',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -81,7 +81,7 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
   @override
   final ZacValue<Widget> child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -188,7 +188,7 @@ class _$_FlutterPositioned extends _FlutterPositioned {
   @override
   final ZacValue<Widget> child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -290,7 +290,7 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
   @override
   final ZacValue<Widget> child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

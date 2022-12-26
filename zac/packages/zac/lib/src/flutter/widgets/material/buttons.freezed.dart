@@ -16,15 +16,15 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterElevatedButton _$FlutterElevatedButtonFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:ElevatedButton':
       return _FlutterElevatedButton.fromJson(json);
     case 'f:1:ElevatedButton.icon':
       return _FlutterElevatedButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterElevatedButton',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterElevatedButton',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -74,7 +74,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -173,7 +173,7 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -244,15 +244,15 @@ abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
 
 FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:OutlinedButton':
       return _FlutterOutlinedButton.fromJson(json);
     case 'f:1:OutlinedButton.icon':
       return _FlutterOutlinedButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterOutlinedButton',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterOutlinedButton',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -302,7 +302,7 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -401,7 +401,7 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -471,15 +471,15 @@ abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
 }
 
 FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextButton':
       return _FlutterTextButton.fromJson(json);
     case 'f:1:TextButton.icon':
       return _FlutterTextButtonIcon.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterTextButton',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterTextButton',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -529,7 +529,7 @@ class _$_FlutterTextButton extends _FlutterTextButton {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -628,7 +628,7 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
   @override
   final ZacValue<Clip?>? clipBehavior;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

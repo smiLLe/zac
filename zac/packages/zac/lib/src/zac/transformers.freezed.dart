@@ -296,7 +296,7 @@ abstract class _Convert extends ConvertTransformer {
 }
 
 MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:Map.values':
       return _MapValues.fromJson(json);
     case 'z:1:Transformer:Map.keys':
@@ -327,8 +327,8 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
       return _MapSetValueForKey.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'MapTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'MapTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -365,7 +365,7 @@ class _$_MapValues extends _MapValues {
   factory _$_MapValues.fromJson(Map<String, dynamic> json) =>
       _$$_MapValuesFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -424,7 +424,7 @@ class _$_MapKeys extends _MapKeys {
   factory _$_MapKeys.fromJson(Map<String, dynamic> json) =>
       _$$_MapKeysFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -482,7 +482,7 @@ class _$_MapEntries extends _MapEntries {
   factory _$_MapEntries.fromJson(Map<String, dynamic> json) =>
       _$$_MapEntriesFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -541,7 +541,7 @@ class _$_MapLength extends _MapLength {
   factory _$_MapLength.fromJson(Map<String, dynamic> json) =>
       _$$_MapLengthFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -600,7 +600,7 @@ class _$_MapIsEmpty extends _MapIsEmpty {
   factory _$_MapIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_MapIsEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -659,7 +659,7 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
   factory _$_MapIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_MapIsNotEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -721,7 +721,7 @@ class _$_MapContainsKey extends _MapContainsKey {
   @override
   final ZacValue<Object?>? key;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -788,7 +788,7 @@ class _$_MapContainsValue extends _MapContainsValue {
   @override
   final ZacValue<Object?>? value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -858,7 +858,7 @@ class _$_MapMapper extends _MapMapper {
   @override
   final ZacTransformers? valueTransformer;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -928,7 +928,7 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
   factory _$_MapFromObjectObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromObjectObjectFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -987,7 +987,7 @@ class _$_MapFromStringObject extends _MapFromStringObject {
   factory _$_MapFromStringObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromStringObjectFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1046,7 +1046,7 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
   factory _$_MapFromStringNullObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromStringNullObjectFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1109,7 +1109,7 @@ class _$_MapKey extends _MapKey {
   @override
   final ZacValue<String> key;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1177,7 +1177,7 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
   @override
   final ZacValue<String> key;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1235,7 +1235,7 @@ abstract class _MapSetValueForKey extends MapTransformer {
 }
 
 IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:Iterable.map':
       return _IterableMap.fromJson(json);
     case 'z:1:Transformer:Iterable.single':
@@ -1268,8 +1268,8 @@ IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {
       return _IterableTake.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'IterableTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'IterableTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -1309,7 +1309,7 @@ class _$_IterableMap extends _IterableMap {
   @override
   final ZacTransformers transformer;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1374,7 +1374,7 @@ class _$_IterableSingle extends _IterableSingle {
   factory _$_IterableSingle.fromJson(Map<String, dynamic> json) =>
       _$$_IterableSingleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1433,7 +1433,7 @@ class _$_IterableFirst extends _IterableFirst {
   factory _$_IterableFirst.fromJson(Map<String, dynamic> json) =>
       _$$_IterableFirstFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1492,7 +1492,7 @@ class _$_IterableLast extends _IterableLast {
   factory _$_IterableLast.fromJson(Map<String, dynamic> json) =>
       _$$_IterableLastFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1551,7 +1551,7 @@ class _$_IterableLength extends _IterableLength {
   factory _$_IterableLength.fromJson(Map<String, dynamic> json) =>
       _$$_IterableLengthFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1610,7 +1610,7 @@ class _$_IterableIsEmpty extends _IterableIsEmpty {
   factory _$_IterableIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_IterableIsEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1669,7 +1669,7 @@ class _$_IterableIsNotEmpty extends _IterableIsNotEmpty {
   factory _$_IterableIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_IterableIsNotEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1728,7 +1728,7 @@ class _$_IterableToList extends _IterableToList {
   factory _$_IterableToList.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToListFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1787,7 +1787,7 @@ class _$_IterableToSet extends _IterableToSet {
   factory _$_IterableToSet.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToSetFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1846,7 +1846,7 @@ class _$_IterableToString extends _IterableToString {
   factory _$_IterableToString.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToStringFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1908,7 +1908,7 @@ class _$_IterableJoin extends _IterableJoin {
   @override
   final String? separator;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1975,7 +1975,7 @@ class _$_IterableContains extends _IterableContains {
   @override
   final ZacValue<Object?>? element;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2042,7 +2042,7 @@ class _$_IterableElementAt extends _IterableElementAt {
   @override
   final int index;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2108,7 +2108,7 @@ class _$_IterableSkip extends _IterableSkip {
   @override
   final int count;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2174,7 +2174,7 @@ class _$_IterableTake extends _IterableTake {
   @override
   final int count;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2228,15 +2228,15 @@ abstract class _IterableTake extends IterableTransformer {
 }
 
 ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:List.reversed':
       return _ListReversed.fromJson(json);
     case 'z:1:Transformer:List.add':
       return _ListAdd.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ListTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ListTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2260,7 +2260,7 @@ class _$_ListReversed extends _ListReversed {
   factory _$_ListReversed.fromJson(Map<String, dynamic> json) =>
       _$$_ListReversedFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2309,7 +2309,7 @@ class _$_ListAdd extends _ListAdd {
   @override
   final ZacValue<Object> value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2349,7 +2349,7 @@ abstract class _ListAdd extends ListTransformer {
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:Object.isList':
       return _ObjectIsList.fromJson(json);
     case 'z:1:Transformer:Object.isMap':
@@ -2376,8 +2376,8 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectEqualsSharedValue.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'ObjectTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'ObjectTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2411,7 +2411,7 @@ class _$_ObjectIsList extends _ObjectIsList {
   factory _$_ObjectIsList.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsListFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2467,7 +2467,7 @@ class _$_ObjectIsMap extends _ObjectIsMap {
   factory _$_ObjectIsMap.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsMapFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2523,7 +2523,7 @@ class _$_ObjectIsBool extends _ObjectIsBool {
   factory _$_ObjectIsBool.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsBoolFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2579,7 +2579,7 @@ class _$_ObjectIsString extends _ObjectIsString {
   factory _$_ObjectIsString.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsStringFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2635,7 +2635,7 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
   factory _$_ObjectIsDouble.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsDoubleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2691,7 +2691,7 @@ class _$_ObjectIsInt extends _ObjectIsInt {
   factory _$_ObjectIsInt.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsIntFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2747,7 +2747,7 @@ class _$_ObjectIsNull extends _ObjectIsNull {
   factory _$_ObjectIsNull.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsNullFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2806,7 +2806,7 @@ class _$_ObjectEquals extends _ObjectEquals {
   @override
   final Object? other;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2867,7 +2867,7 @@ class _$_ObjectToString extends _ObjectToString {
   factory _$_ObjectToString.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectToStringFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2923,7 +2923,7 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
   factory _$_ObjectRuntimeType.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectRuntimeTypeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2979,7 +2979,7 @@ class _$_ObjectHashCode extends _ObjectHashCode {
   factory _$_ObjectHashCode.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectHashCodeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3038,7 +3038,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
   @override
   final ZacValue<Object?>? value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3090,7 +3090,7 @@ abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:num.toDouble':
       return _NumToDouble.fromJson(json);
     case 'z:1:Transformer:num.toInt':
@@ -3119,8 +3119,8 @@ NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
       return _NumIsNegative.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'NumTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'NumTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -3155,7 +3155,7 @@ class _$_NumToDouble extends _NumToDouble {
   factory _$_NumToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumToDoubleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3212,7 +3212,7 @@ class _$_NumToInt extends _NumToInt {
   factory _$_NumToInt.fromJson(Map<String, dynamic> json) =>
       _$$_NumToIntFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3268,7 +3268,7 @@ class _$_NumAbs extends _NumAbs {
   factory _$_NumAbs.fromJson(Map<String, dynamic> json) =>
       _$$_NumAbsFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3324,7 +3324,7 @@ class _$_NumCeil extends _NumCeil {
   factory _$_NumCeil.fromJson(Map<String, dynamic> json) =>
       _$$_NumCeilFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3380,7 +3380,7 @@ class _$_NumCeilToDouble extends _NumCeilToDouble {
   factory _$_NumCeilToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumCeilToDoubleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3437,7 +3437,7 @@ class _$_NumFloor extends _NumFloor {
   factory _$_NumFloor.fromJson(Map<String, dynamic> json) =>
       _$$_NumFloorFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3493,7 +3493,7 @@ class _$_NumFloorToDouble extends _NumFloorToDouble {
   factory _$_NumFloorToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumFloorToDoubleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3550,7 +3550,7 @@ class _$_NumRound extends _NumRound {
   factory _$_NumRound.fromJson(Map<String, dynamic> json) =>
       _$$_NumRoundFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3606,7 +3606,7 @@ class _$_NumRoundToDouble extends _NumRoundToDouble {
   factory _$_NumRoundToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumRoundToDoubleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3663,7 +3663,7 @@ class _$_NumIsFinite extends _NumIsFinite {
   factory _$_NumIsFinite.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsFiniteFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3720,7 +3720,7 @@ class _$_NumIsInfinite extends _NumIsInfinite {
   factory _$_NumIsInfinite.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsInfiniteFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3777,7 +3777,7 @@ class _$_NumIsNan extends _NumIsNan {
   factory _$_NumIsNan.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsNanFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3833,7 +3833,7 @@ class _$_NumIsNegative extends _NumIsNegative {
   factory _$_NumIsNegative.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsNegativeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3881,15 +3881,15 @@ abstract class _NumIsNegative extends NumTransformer {
 }
 
 IntTransformer _$IntTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:int.parse':
       return _IntParse.fromJson(json);
     case 'z:1:Transformer:int.tryParse':
       return _IntTryParse.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'IntTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'IntTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -3913,7 +3913,7 @@ class _$_IntParse extends _IntParse {
   factory _$_IntParse.fromJson(Map<String, dynamic> json) =>
       _$$_IntParseFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3958,7 +3958,7 @@ class _$_IntTryParse extends _IntTryParse {
   factory _$_IntTryParse.fromJson(Map<String, dynamic> json) =>
       _$$_IntTryParseFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3995,7 +3995,7 @@ abstract class _IntTryParse extends IntTransformer {
 }
 
 StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:String.length':
       return _StringLength.fromJson(json);
     case 'z:1:Transformer:String.split':
@@ -4008,8 +4008,8 @@ StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {
       return _StringReplaceAll.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'StringTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'StringTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -4036,7 +4036,7 @@ class _$_StringLength extends _StringLength {
   factory _$_StringLength.fromJson(Map<String, dynamic> json) =>
       _$$_StringLengthFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4088,7 +4088,7 @@ class _$_StringSplit extends _StringSplit {
   @override
   final ZacValue<String> pattern;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4142,7 +4142,7 @@ class _$_StringIsEmpty extends _StringIsEmpty {
   factory _$_StringIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_StringIsEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4191,7 +4191,7 @@ class _$_StringIsNotEmpty extends _StringIsNotEmpty {
   factory _$_StringIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_StringIsNotEmptyFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4245,7 +4245,7 @@ class _$_StringReplaceAll extends _StringReplaceAll {
   @override
   final ZacValue<String> replace;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4293,15 +4293,15 @@ abstract class _StringReplaceAll extends StringTransformer {
 }
 
 JsonTransformer _$JsonTransformerFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:Transformer:Json.encode':
       return _JsonEncode.fromJson(json);
     case 'z:1:Transformer:Json.decode':
       return _JsonDencode.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'JsonTransformer',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'JsonTransformer',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -4325,7 +4325,7 @@ class _$_JsonEncode extends _JsonEncode {
   factory _$_JsonEncode.fromJson(Map<String, dynamic> json) =>
       _$$_JsonEncodeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4371,7 +4371,7 @@ class _$_JsonDencode extends _JsonDencode {
   factory _$_JsonDencode.fromJson(Map<String, dynamic> json) =>
       _$$_JsonDencodeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

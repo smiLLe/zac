@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterSizedBox _$FlutterSizedBoxFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:SizedBox':
       return _FlutterWidgetSizedBox.fromJson(json);
     case 'f:1:SizedBox.expand':
@@ -28,8 +28,8 @@ FlutterSizedBox _$FlutterSizedBoxFromJson(Map<String, dynamic> json) {
       return _FlutterWidgetSizedBoxSquare.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterSizedBox',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterSizedBox',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -69,7 +69,7 @@ class _$_FlutterWidgetSizedBox extends _FlutterWidgetSizedBox {
   @override
   final ZacValue<Widget?>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -139,7 +139,7 @@ class _$_FlutterWidgetSizedBoxExpand extends _FlutterWidgetSizedBoxExpand {
   @override
   final ZacValue<Widget?>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -207,7 +207,7 @@ class _$_FlutterWidgetSizedBoxFromSize extends _FlutterWidgetSizedBoxFromSize {
   @override
   final ZacValue<Size?>? size;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -275,7 +275,7 @@ class _$_FlutterWidgetSizedBoxShrink extends _FlutterWidgetSizedBoxShrink {
   @override
   final ZacValue<Widget?>? child;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -342,7 +342,7 @@ class _$_FlutterWidgetSizedBoxSquare extends _FlutterWidgetSizedBoxSquare {
   @override
   final ZacValue<double?>? dimension;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

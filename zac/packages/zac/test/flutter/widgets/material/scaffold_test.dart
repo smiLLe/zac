@@ -13,10 +13,10 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('test_key'),
         'appBar': {
-          'converter': 'f:1:AppBar',
+          'builder': 'f:1:AppBar',
           'key': KeysModel.getValueKey('test_appBar'),
         },
         'body': ChildModel.getSizedBox(key: 'test_body'),
@@ -89,20 +89,20 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'drawer': ChildModel.getSizedBox(key: 'drawer_child'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': 'f:1:Scaffold.openDrawer',
+                  'builder': 'f:1:Scaffold.openDrawer',
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
                 },
               ],
@@ -125,20 +125,20 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'endDrawer': ChildModel.getSizedBox(key: 'drawer_child'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': 'f:1:Scaffold.openEndDrawer',
+                  'builder': 'f:1:Scaffold.openEndDrawer',
                   'child': ChildModel.getSizedBox(key: 'dialog_child')
                 },
               ],
@@ -161,19 +161,19 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': 'f:1:Scaffold.showBodyScrim',
+                  'builder': 'f:1:Scaffold.showBodyScrim',
                   'value': true,
                   'opacity': 0.33,
                 },
@@ -201,19 +201,19 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': 'f:1:Scaffold.showBottomSheet',
+                  'builder': 'f:1:Scaffold.showBottomSheet',
                   'child': ChildModel.getSizedBox(key: 'child')
                 },
               ],
@@ -236,21 +236,21 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter': FlutterScaffoldMessenger.unionValueShowSnackBar,
+                  'builder': FlutterScaffoldMessenger.unionValueShowSnackBar,
                   'snackBar': {
-                    'converter': 'f:1:SnackBar',
+                    'builder': 'f:1:SnackBar',
                     'content': ChildModel.getSizedBox(key: 'child'),
                   }
                 },
@@ -274,33 +274,33 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterScaffold.unionValue,
+        'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'converter': FlutterBuilder.unionValue,
+          'builder': FlutterBuilder.unionValue,
           'child': {
-            'converter': FlutterElevatedButton.unionValue,
+            'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
             'onPressed': {
-              'converter': 'z:1:Actions',
+              'builder': 'z:1:Actions',
               'actions': [
                 {
-                  'converter':
+                  'builder':
                       FlutterScaffoldMessenger.unionValueShowMaterialBanner,
                   'materialBanner': {
-                    'converter': FlutterMaterialBanner.unionValue,
+                    'builder': FlutterMaterialBanner.unionValue,
                     'content': ChildModel.getSizedBox(key: 'child'),
                     'actions': [
                       {
-                        'converter': FlutterElevatedButton.unionValue,
+                        'builder': FlutterElevatedButton.unionValue,
                         'key': KeysModel.getValueKey('remove_button'),
                         'child': ChildModel.sizedBox,
                         'onPressed': {
-                          'converter': 'z:1:Actions',
+                          'builder': 'z:1:Actions',
                           'actions': [
                             {
-                              'converter': FlutterScaffoldMessenger
+                              'builder': FlutterScaffoldMessenger
                                   .unionValueRemoveCurrentMaterialBanner
                             }
                           ],

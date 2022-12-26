@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterImage _$FlutterImageFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Image.network':
       return _FlutterImageNetowrk.fromJson(json);
     case 'f:1:Image.asset':
       return _FlutterImageAsset.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterImage',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterImage',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -146,7 +146,7 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   @override
   final ZacValue<int?>? cacheHeight;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -371,7 +371,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacValue<int?>? cacheHeight;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

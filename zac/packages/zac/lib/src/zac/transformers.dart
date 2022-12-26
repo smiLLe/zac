@@ -220,7 +220,7 @@ class ZacTransformers with _$ZacTransformers {
   factory ZacTransformers.fromJson(Object data) {
     /// allow a single transformer or the default implementation
     if (ConverterHelper.isConverter(data)) {
-      if ((data as Map<String, dynamic>)[converterKey] as String !=
+      if ((data as Map<String, dynamic>)[builderKey] as String !=
           ZacTransformers.unionValue) {
         return ZacTransformers([ZacTransformer.fromJson(data)]);
       }

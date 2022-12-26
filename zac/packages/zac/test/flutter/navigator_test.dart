@@ -43,24 +43,24 @@ void main() {
         required List<Map<String, dynamic>> backActions,
       }) {
         return <String, dynamic>{
-          'converter': FlutterColumn.unionValue,
+          'builder': FlutterColumn.unionValue,
           'children': [
             ChildModel.getSizedBox(key: 'page$number'),
             {
-              'converter': FlutterElevatedButton.unionValue,
+              'builder': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('page${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                'converter': 'z:1:Actions',
+                'builder': 'z:1:Actions',
                 'actions': interactions,
               }
             },
             {
-              'converter': FlutterElevatedButton.unionValue,
+              'builder': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('pageback${number}_button'),
               'child': ChildModel.sizedBox,
               'onPressed': {
-                'converter': 'z:1:Actions',
+                'builder': 'z:1:Actions',
                 'actions': backActions,
               }
             },
@@ -74,29 +74,29 @@ void main() {
           number: 1,
           interactions: [
             <String, dynamic>{
-              'converter': 'f:1:Navigator.push',
+              'builder': 'f:1:Navigator.push',
               'route': {
-                'converter': 'f:1:MaterialPageRoute',
+                'builder': 'f:1:MaterialPageRoute',
                 'child': page(
                   number: 2,
                   interactions: [
                     <String, dynamic>{
-                      'converter': 'f:1:Navigator.push',
+                      'builder': 'f:1:Navigator.push',
                       'route': {
-                        'converter': 'f:1:MaterialPageRoute',
+                        'builder': 'f:1:MaterialPageRoute',
                         'child': page(
                           number: 3,
                           interactions: [
                             <String, dynamic>{
-                              'converter': 'f:1:Navigator.pushReplacement',
+                              'builder': 'f:1:Navigator.pushReplacement',
                               'route': {
-                                'converter': 'f:1:MaterialPageRoute',
+                                'builder': 'f:1:MaterialPageRoute',
                                 'child': page(
                                   number: 4,
                                   interactions: [],
                                   backActions: [
                                     <String, dynamic>{
-                                      'converter': 'f:1:Navigator.maybePop',
+                                      'builder': 'f:1:Navigator.maybePop',
                                     }
                                   ],
                                 ),
@@ -105,7 +105,7 @@ void main() {
                           ],
                           backActions: [
                             <String, dynamic>{
-                              'converter': 'f:1:Navigator.maybePop',
+                              'builder': 'f:1:Navigator.maybePop',
                             }
                           ],
                         ),
@@ -114,7 +114,7 @@ void main() {
                   ],
                   backActions: [
                     <String, dynamic>{
-                      'converter': 'f:1:Navigator.pop',
+                      'builder': 'f:1:Navigator.pop',
                     }
                   ],
                 ),

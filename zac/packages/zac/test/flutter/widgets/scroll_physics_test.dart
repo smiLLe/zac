@@ -8,21 +8,21 @@ void main() {
   test('FlutterScrollPhysics()', () {
     fakeBuild<AlwaysScrollableScrollPhysics>(
       FlutterScrollPhysics.fromJson(<String, dynamic>{
-        'converter': 'f:1:AlwaysScrollableScrollPhysics',
+        'builder': 'f:1:AlwaysScrollableScrollPhysics',
       }).build,
       (matcher) => matcher,
     );
 
     fakeBuild<BouncingScrollPhysics>(
       FlutterScrollPhysics.fromJson(<String, dynamic>{
-        'converter': 'f:1:BouncingScrollPhysics',
+        'builder': 'f:1:BouncingScrollPhysics',
       }).build,
       (matcher) => matcher,
     );
 
     fakeBuild<ClampingScrollPhysics>(
       FlutterScrollPhysics.fromJson(<String, dynamic>{
-        'converter': 'f:1:ClampingScrollPhysics',
+        'builder': 'f:1:ClampingScrollPhysics',
       }).build,
       (matcher) => matcher,
     );

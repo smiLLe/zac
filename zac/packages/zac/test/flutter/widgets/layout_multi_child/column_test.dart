@@ -10,14 +10,14 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'converter': FlutterColumn.unionValue,
+        'builder': FlutterColumn.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
-        'mainAxisAlignment': {'converter': 'f:1:MainAxisAlignment.end'},
-        'mainAxisSize': {'converter': 'f:1:MainAxisSize.min'},
-        'crossAxisAlignment': {'converter': 'f:1:CrossAxisAlignment.end'},
-        'textDirection': {'converter': 'f:1:TextDirection.ltr'},
-        'verticalDirection': {'converter': 'f:1:VerticalDirection.up'},
-        'textBaseline': {'converter': 'f:1:TextBaseline.ideographic'},
+        'mainAxisAlignment': {'builder': 'f:1:MainAxisAlignment.end'},
+        'mainAxisSize': {'builder': 'f:1:MainAxisSize.min'},
+        'crossAxisAlignment': {'builder': 'f:1:CrossAxisAlignment.end'},
+        'textDirection': {'builder': 'f:1:TextDirection.ltr'},
+        'verticalDirection': {'builder': 'f:1:VerticalDirection.up'},
+        'textBaseline': {'builder': 'f:1:TextBaseline.ideographic'},
         'children': [
           ChildModel.getSizedBox(key: 'child1'),
           ChildModel.getSizedBox(key: 'child2')

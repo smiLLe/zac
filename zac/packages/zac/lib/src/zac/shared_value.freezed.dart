@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SharedValueActions _$SharedValueActionsFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:SharedValue.update':
       return _SharedValueActionsUpdate.fromJson(json);
     case 'z:1:SharedValue.invalidate':
       return _SharedValueActionsRefresh.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'SharedValueActions',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'SharedValueActions',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -61,7 +61,7 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   @JsonKey()
   final bool? ifNoPayloadTakeCurrent;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -128,7 +128,7 @@ class _$_SharedValueActionsRefresh extends _SharedValueActionsRefresh {
   @override
   final Object family;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -173,18 +173,15 @@ abstract class _SharedValueActionsRefresh extends SharedValueActions {
 
 SharedValueConsumeType _$SharedValueConsumeTypeFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'z:1:SharedValueConsume.watch':
       return _SharedValueConsumeTypeWatch.fromJson(json);
     case 'z:1:SharedValueConsume.read':
       return _SharedValueConsumeTypeRead.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'SharedValueConsumeType',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'SharedValueConsumeType',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -210,7 +207,7 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
   @override
   final ZacTransformers? select;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -259,7 +256,7 @@ class _$_SharedValueConsumeTypeRead implements _SharedValueConsumeTypeRead {
   factory _$_SharedValueConsumeTypeRead.fromJson(Map<String, dynamic> json) =>
       _$$_SharedValueConsumeTypeReadFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

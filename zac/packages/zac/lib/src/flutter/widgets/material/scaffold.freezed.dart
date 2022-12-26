@@ -287,7 +287,7 @@ abstract class _FlutterScaffold extends FlutterScaffold {
 
 FlutterScaffoldActions _$FlutterScaffoldActionsFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Scaffold.openDrawer':
       return _FlutterScaffoldActionsOpenDrawer.fromJson(json);
     case 'f:1:Scaffold.openEndDrawer':
@@ -298,11 +298,8 @@ FlutterScaffoldActions _$FlutterScaffoldActionsFromJson(
       return _FlutterScaffoldActionsShowBottomSheet.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterScaffoldActions',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterScaffoldActions',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -334,7 +331,7 @@ class _$_FlutterScaffoldActionsOpenDrawer
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldActionsOpenDrawerFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -391,7 +388,7 @@ class _$_FlutterScaffoldActionsOpenEndDrawer
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldActionsOpenEndDrawerFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -455,7 +452,7 @@ class _$_FlutterScaffoldActionsShowBodyScrim
   @override
   final ZacValue<double> opacity;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -541,7 +538,7 @@ class _$_FlutterScaffoldActionsShowBottomSheet
   @override
   final ZacValue<bool?>? enableDrag;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -616,7 +613,7 @@ abstract class _FlutterScaffoldActionsShowBottomSheet
 
 FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:ScaffoldMessenger.showSnackBar':
       return _FlutterScaffoldMessengerShowSnackBar.fromJson(json);
     case 'f:1:ScaffoldMessenger.hideCurrentSnackBar':
@@ -634,9 +631,9 @@ FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterScaffoldMessenger',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -679,7 +676,7 @@ class _$_FlutterScaffoldMessengerShowSnackBar
   @override
   final FlutterSnackBar snackBar;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -749,7 +746,7 @@ class _$_FlutterScaffoldMessengerhideCurrentSnackBar
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerhideCurrentSnackBarFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -815,7 +812,7 @@ class _$_FlutterScaffoldMessengerremoveCurrentSnackBar
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerremoveCurrentSnackBarFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -885,7 +882,7 @@ class _$_FlutterScaffoldMessengerShowMaterialBanner
   @override
   final FlutterMaterialBanner materialBanner;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -956,7 +953,7 @@ class _$_FlutterScaffoldMessengerHideCurrentMaterialBanner
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerHideCurrentMaterialBannerFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1022,7 +1019,7 @@ class _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner
           Map<String, dynamic> json) =>
       _$$_FlutterScaffoldMessengerRemoveCurrentMaterialBannerFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1236,18 +1233,15 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
 
 FlutterSnackBarBehavior _$FlutterSnackBarBehaviorFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:SnackBarBehavior.fixed':
       return _FlutterSnackBarBehaviorFixed.fromJson(json);
     case 'f:1:SnackBarBehavior.floating':
       return _FlutterSnackBarBehaviorFloating.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(
-          json,
-          'converter',
-          'FlutterSnackBarBehavior',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterSnackBarBehavior',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -1271,7 +1265,7 @@ class _$_FlutterSnackBarBehaviorFixed extends _FlutterSnackBarBehaviorFixed {
   factory _$_FlutterSnackBarBehaviorFixed.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterSnackBarBehaviorFixedFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1320,7 +1314,7 @@ class _$_FlutterSnackBarBehaviorFloating
           Map<String, dynamic> json) =>
       _$$_FlutterSnackBarBehaviorFloatingFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

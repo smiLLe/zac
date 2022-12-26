@@ -9,7 +9,7 @@ void main() {
   test('check non widget properties', () {
     fakeBuild<AppBar>(
       FlutterAppBar.fromJson(<String, dynamic>{
-        'converter': FlutterAppBar.unionValue,
+        'builder': FlutterAppBar.unionValue,
         'automaticallyImplyLeading': false,
         'elevation': 33,
         'shadowColor': ColorModel.json,
@@ -17,13 +17,13 @@ void main() {
         'backgroundColor': ColorModel.json,
         'foregroundColor': ColorModel.json,
         'iconTheme': {
-          'converter': 'f:1:IconThemeData',
+          'builder': 'f:1:IconThemeData',
           'color': ColorModel.json,
           'opacity': 0.9,
           'size': 22,
         },
         'actionsIconTheme': {
-          'converter': 'f:1:IconThemeData',
+          'builder': 'f:1:IconThemeData',
           'color': ColorModel.json,
           'opacity': 0.9,
           'size': 22,
@@ -81,7 +81,7 @@ void main() {
   });
   testWidgets('find all widgets', (tester) async {
     await testMap(tester, <String, dynamic>{
-      'converter': 'f:1:AppBar',
+      'builder': 'f:1:AppBar',
       'key': KeysModel.getValueKey('test_key'),
       'leading': ChildModel.getSizedBox(key: 'test_leading'),
       'title': ChildModel.getSizedBox(key: 'test_title'),
@@ -90,7 +90,7 @@ void main() {
       ],
       'flexibleSpace': ChildModel.getSizedBox(key: 'test_flexibleSpace'),
       'bottom': {
-        'converter': 'f:1:AppBar',
+        'builder': 'f:1:AppBar',
         'key': KeysModel.getValueKey('test_bottom'),
       },
     });

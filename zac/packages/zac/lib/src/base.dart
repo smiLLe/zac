@@ -7,7 +7,7 @@ const freezedZacBuilder = Freezed(
   map: FreezedMapOptions(map: true, mapOrNull: false, maybeMap: false),
   when: FreezedWhenOptions(when: false, whenOrNull: false, maybeWhen: false),
   copyWith: false,
-  unionKey: converterKey,
+  unionKey: builderKey,
 );
 
 const freezedZacDefaults = Freezed(

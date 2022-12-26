@@ -5,7 +5,7 @@ Map<String, Convert> allBuilder = {
   ...generatedBuilder,
 };
 
-const converterKey = 'converter';
+const builderKey = 'builder';
 
 class ConverterError extends StateError {
   ConverterError(super.message);
@@ -20,7 +20,7 @@ abstract class ConverterHelper {
     if (!isConverter(data)) {
       return orElse();
     }
-    final name = (data as Map<String, dynamic>)[converterKey] as String;
+    final name = (data as Map<String, dynamic>)[builderKey] as String;
     if (!hasExistingConverter(name)) {
       return orElse();
     }
@@ -36,7 +36,7 @@ abstract class ConverterHelper {
     if (!isConverter(data)) {
       return orElse?.call();
     }
-    final name = (data as Map<String, dynamic>)[converterKey] as String;
+    final name = (data as Map<String, dynamic>)[builderKey] as String;
     if (!hasExistingConverter(name)) {
       return orElse?.call();
     }
@@ -46,9 +46,9 @@ abstract class ConverterHelper {
 
   static bool isConverter(Object? data) {
     if (data is! Map<String, dynamic>) return false;
-    return data.containsKey(converterKey) &&
-        data[converterKey] is String &&
-        (data[converterKey] as String).isNotEmpty;
+    return data.containsKey(builderKey) &&
+        data[builderKey] is String &&
+        (data[builderKey] as String).isNotEmpty;
   }
 
   static bool hasExistingConverter(String name) {
@@ -59,11 +59,11 @@ abstract class ConverterHelper {
     if (!isConverter(data)) {
       throw ConverterError('''
 Could not convert ${data.runtimeType} to $T.
-It is either no Map<String, dynamic> or it has an invalid/missing "$converterKey" key/value.
+It is either no Map<String, dynamic> or it has an invalid/missing "$builderKey" key/value.
 Data: "$data"''');
     }
 
-    final rt = (data as Map<String, dynamic>)[converterKey] as String;
+    final rt = (data as Map<String, dynamic>)[builderKey] as String;
 
     if (!hasExistingConverter(rt)) {
       throw ConverterError('''
@@ -76,7 +76,7 @@ There is no registered Converter found for "$rt".''');
 
   static T convertToType<T>(Object? data) {
     final converterMap = validateConverter<T>(data);
-    final rt = converterMap[converterKey] as String;
+    final rt = converterMap[builderKey] as String;
 
     final dynamic converted = allBuilder[rt]!(converterMap);
     if (converted is! T) {

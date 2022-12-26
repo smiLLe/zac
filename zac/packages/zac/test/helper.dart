@@ -199,10 +199,10 @@ class NoopAction with _$NoopAction implements ZacAction {
   static const String unionValue = 'z:1:test:NoopAction';
 
   static Map<String, dynamic> createActions() => <String, dynamic>{
-        'converter': 'z:1:Actions',
+        'builder': 'z:1:Actions',
         'actions': [
           {
-            'converter': NoopAction.unionValue,
+            'builder': NoopAction.unionValue,
           }
         ],
       };

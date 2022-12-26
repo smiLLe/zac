@@ -14,13 +14,13 @@ void _expectFromJson<T>({
 }) {
   expect(
       ConverterHelper.convertToType<T>(<String, dynamic>{
-        'converter': converter,
+        'builder': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
   expect(
       fromJson(<String, dynamic>{
-        'converter': converter,
+        'builder': converter,
         ...(props ?? <String, dynamic>{}),
       }),
       equals);
@@ -56,11 +56,11 @@ void main() {
       props: <String, dynamic>{
         'expression': 'expr',
         'context': {
-          'converter': 'z:1:ZacValueMap',
+          'builder': 'z:1:ZacValueMap',
           'data': {
             'simple': 1,
             'shared': {
-              'converter': 'z:1:ZacValue.consume',
+              'builder': 'z:1:ZacValue.consume',
               'family': 'fam',
             },
           },
@@ -91,7 +91,7 @@ void main() {
         ZacTemplateExpressionsTransformer(
           expression: r'${hello}',
           context: ZacValueMap<Object>.fromJson({
-            'converter': 'z:1:ZacValueMap',
+            'builder': 'z:1:ZacValueMap',
             'data': {
               'hello': 'hello world',
             },

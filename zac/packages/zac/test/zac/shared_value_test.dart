@@ -103,7 +103,7 @@ void main() {
         tester,
         SharedValueProviderBuilder(
           value: const <String, dynamic>{
-            'converter': 'f:1:SizedBox',
+            'builder': 'f:1:SizedBox',
           },
           family: 'foo',
           child: ZacValue<Widget>(
@@ -384,7 +384,7 @@ void main() {
     test('fromJson', () {
       expect(
           ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
-            'converter': 'z:1:SharedValue.update',
+            'builder': 'z:1:SharedValue.update',
             'family': 'fam',
             'transformer': <ZacTransformer>[],
           }),
@@ -396,7 +396,7 @@ void main() {
 
       expect(
           ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
-            'converter': 'z:1:SharedValue.update',
+            'builder': 'z:1:SharedValue.update',
             'family': 'fam',
             'ifNoPayloadTakeCurrent': true,
           }),
@@ -404,7 +404,7 @@ void main() {
               family: 'fam', ifNoPayloadTakeCurrent: true));
       expect(
           ConverterHelper.convertToType<SharedValueActions>(<String, dynamic>{
-            'converter': 'z:1:SharedValue.invalidate',
+            'builder': 'z:1:SharedValue.invalidate',
             'family': 'fam',
           }),
           SharedValueActions.invalidate(family: 'fam'));

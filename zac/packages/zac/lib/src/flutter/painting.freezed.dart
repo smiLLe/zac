@@ -15,15 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FlutterBoxShape _$FlutterBoxShapeFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:BoxShape.circle':
       return _FlutterBoxShapeCircle.fromJson(json);
     case 'f:1:BoxShape.rectangle':
       return _FlutterBoxShapeRectangle.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterBoxShape',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterBoxShape',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -47,7 +47,7 @@ class _$_FlutterBoxShapeCircle extends _FlutterBoxShapeCircle {
   factory _$_FlutterBoxShapeCircle.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxShapeCircleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -93,7 +93,7 @@ class _$_FlutterBoxShapeRectangle extends _FlutterBoxShapeRectangle {
   factory _$_FlutterBoxShapeRectangle.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxShapeRectangleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -131,15 +131,15 @@ abstract class _FlutterBoxShapeRectangle extends FlutterBoxShape {
 }
 
 FlutterAxis _$FlutterAxisFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Axis.horizontal':
       return _FlutterAxisHori.fromJson(json);
     case 'f:1:Axis.vertical':
       return _FlutterAxisVertical.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterAxis',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterAxis',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -163,7 +163,7 @@ class _$_FlutterAxisHori extends _FlutterAxisHori {
   factory _$_FlutterAxisHori.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAxisHoriFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -209,7 +209,7 @@ class _$_FlutterAxisVertical extends _FlutterAxisVertical {
   factory _$_FlutterAxisVertical.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAxisVerticalFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -247,7 +247,7 @@ abstract class _FlutterAxisVertical extends FlutterAxis {
 
 FlutterVerticalDirection _$FlutterVerticalDirectionFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:VerticalDirection.up':
       return _FlutterVerticalDirectionUp.fromJson(json);
     case 'f:1:VerticalDirection.down':
@@ -256,9 +256,9 @@ FlutterVerticalDirection _$FlutterVerticalDirectionFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterVerticalDirection',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -282,7 +282,7 @@ class _$_FlutterVerticalDirectionUp extends _FlutterVerticalDirectionUp {
   factory _$_FlutterVerticalDirectionUp.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterVerticalDirectionUpFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -329,7 +329,7 @@ class _$_FlutterVerticalDirectionDown extends _FlutterVerticalDirectionDown {
   factory _$_FlutterVerticalDirectionDown.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterVerticalDirectionDownFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -367,7 +367,7 @@ abstract class _FlutterVerticalDirectionDown extends FlutterVerticalDirection {
 }
 
 FlutterTextOverflow _$FlutterTextOverflowFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextOverflow.clip':
       return _FlutterTextOverflowClip.fromJson(json);
     case 'f:1:TextOverflow.ellipsis':
@@ -378,8 +378,8 @@ FlutterTextOverflow _$FlutterTextOverflowFromJson(Map<String, dynamic> json) {
       return _FlutterTextOverflowVisible.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterTextOverflow',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterTextOverflow',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -405,7 +405,7 @@ class _$_FlutterTextOverflowClip extends _FlutterTextOverflowClip {
   factory _$_FlutterTextOverflowClip.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextOverflowClipFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -454,7 +454,7 @@ class _$_FlutterTextOverflowEllipsis extends _FlutterTextOverflowEllipsis {
   factory _$_FlutterTextOverflowEllipsis.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextOverflowEllipsisFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -503,7 +503,7 @@ class _$_FlutterTextOverflowFade extends _FlutterTextOverflowFade {
   factory _$_FlutterTextOverflowFade.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextOverflowFadeFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -552,7 +552,7 @@ class _$_FlutterTextOverflowVisible extends _FlutterTextOverflowVisible {
   factory _$_FlutterTextOverflowVisible.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextOverflowVisibleFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -592,15 +592,15 @@ abstract class _FlutterTextOverflowVisible extends FlutterTextOverflow {
 }
 
 FlutterStrutStyle _$FlutterStrutStyleFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:StrutStyle':
       return _FlutterStrutStyle.fromJson(json);
     case 'f:1:StrutStyle.fromTextStyle':
       return _FlutterStrutStyleFromTextStyle.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterStrutStyle',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterStrutStyle',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -683,7 +683,7 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
   @override
   final ZacValue<String?>? package;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -845,7 +845,7 @@ class _$_FlutterStrutStyleFromTextStyle
   @override
   final ZacValue<String?>? package;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -954,15 +954,15 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
 
 FlutterTextWidthBasis _$FlutterTextWidthBasisFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextWidthBasis.longestLine':
       return _FlutterTextWidthBasisLongestLine.fromJson(json);
     case 'f:1:TextWidthBasis.parent':
       return _FlutterTextWidthBasisParent.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterTextWidthBasis',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterTextWidthBasis',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -989,7 +989,7 @@ class _$_FlutterTextWidthBasisLongestLine
           Map<String, dynamic> json) =>
       _$$_FlutterTextWidthBasisLongestLineFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1038,7 +1038,7 @@ class _$_FlutterTextWidthBasisParent extends _FlutterTextWidthBasisParent {
   factory _$_FlutterTextWidthBasisParent.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextWidthBasisParentFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1077,7 +1077,7 @@ abstract class _FlutterTextWidthBasisParent extends FlutterTextWidthBasis {
 }
 
 FlutterBoxFit _$FlutterBoxFitFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:BoxFit.contain':
       return _FlutterBoxFitContain.fromJson(json);
     case 'f:1:BoxFit.cover':
@@ -1094,8 +1094,8 @@ FlutterBoxFit _$FlutterBoxFitFromJson(Map<String, dynamic> json) {
       return _FlutterBoxFitScaleDown.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterBoxFit',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterBoxFit',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -1124,7 +1124,7 @@ class _$_FlutterBoxFitContain extends _FlutterBoxFitContain {
   factory _$_FlutterBoxFitContain.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitContainFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1175,7 +1175,7 @@ class _$_FlutterBoxFitCover extends _FlutterBoxFitCover {
   factory _$_FlutterBoxFitCover.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitCoverFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1226,7 +1226,7 @@ class _$_FlutterBoxFitFill extends _FlutterBoxFitFill {
   factory _$_FlutterBoxFitFill.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitFillFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1277,7 +1277,7 @@ class _$_FlutterBoxFitFitHeight extends _FlutterBoxFitFitHeight {
   factory _$_FlutterBoxFitFitHeight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitFitHeightFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1329,7 +1329,7 @@ class _$_FlutterBoxFitFitWidth extends _FlutterBoxFitFitWidth {
   factory _$_FlutterBoxFitFitWidth.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitFitWidthFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1380,7 +1380,7 @@ class _$_FlutterBoxFitNone extends _FlutterBoxFitNone {
   factory _$_FlutterBoxFitNone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitNoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1431,7 +1431,7 @@ class _$_FlutterBoxFitScaleDown extends _FlutterBoxFitScaleDown {
   factory _$_FlutterBoxFitScaleDown.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBoxFitScaleDownFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1474,7 +1474,7 @@ abstract class _FlutterBoxFitScaleDown extends FlutterBoxFit {
 }
 
 FlutterImageRepeat _$FlutterImageRepeatFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:ImageRepeat.noRepeat':
       return _FlutterImageRepeatNoRepeat.fromJson(json);
     case 'f:1:ImageRepeat.repeat':
@@ -1485,8 +1485,8 @@ FlutterImageRepeat _$FlutterImageRepeatFromJson(Map<String, dynamic> json) {
       return _FlutterImageRepeatRepeatY.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterImageRepeat',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterImageRepeat',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -1512,7 +1512,7 @@ class _$_FlutterImageRepeatNoRepeat extends _FlutterImageRepeatNoRepeat {
   factory _$_FlutterImageRepeatNoRepeat.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterImageRepeatNoRepeatFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1561,7 +1561,7 @@ class _$_FlutterImageRepeatRepeat extends _FlutterImageRepeatRepeat {
   factory _$_FlutterImageRepeatRepeat.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterImageRepeatRepeatFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1610,7 +1610,7 @@ class _$_FlutterImageRepeatRepeatX extends _FlutterImageRepeatRepeatX {
   factory _$_FlutterImageRepeatRepeatX.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterImageRepeatRepeatXFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -1659,7 +1659,7 @@ class _$_FlutterImageRepeatRepeatY extends _FlutterImageRepeatRepeatY {
   factory _$_FlutterImageRepeatRepeatY.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterImageRepeatRepeatYFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2014,7 +2014,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
 
 FlutterTextAlignVertical _$FlutterTextAlignVerticalFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:TextAlignVertical':
       return _FlutterTextAlignVertical.fromJson(json);
     case 'f:1:TextAlignVertical.bottom':
@@ -2027,9 +2027,9 @@ FlutterTextAlignVertical _$FlutterTextAlignVerticalFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterTextAlignVertical',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2058,7 +2058,7 @@ class _$_FlutterTextAlignVertical extends _FlutterTextAlignVertical {
   @override
   final ZacValue<double> y;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2113,7 +2113,7 @@ class _$_FlutterTextAlignVerticalbottom
           Map<String, dynamic> json) =>
       _$$_FlutterTextAlignVerticalbottomFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2165,7 +2165,7 @@ class _$_FlutterTextAlignVerticalcenter
           Map<String, dynamic> json) =>
       _$$_FlutterTextAlignVerticalcenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2215,7 +2215,7 @@ class _$_FlutterTextAlignVerticaltop extends _FlutterTextAlignVerticaltop {
   factory _$_FlutterTextAlignVerticaltop.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextAlignVerticaltopFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2357,7 +2357,7 @@ abstract class _FlutterBoxShadow extends FlutterBoxShadow {
 }
 
 FlutterAlignment _$FlutterAlignmentFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Alignment':
       return _FlutterAlignment.fromJson(json);
     case 'f:1:Alignment.bottomCenter':
@@ -2380,8 +2380,8 @@ FlutterAlignment _$FlutterAlignmentFromJson(Map<String, dynamic> json) {
       return _FlutterAlignmenttopRight.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterAlignment',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterAlignment',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -2418,7 +2418,7 @@ class _$_FlutterAlignment extends _FlutterAlignment {
   @override
   final ZacValue<double> y;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2479,7 +2479,7 @@ class _$_FlutterAlignmentbottomCenter extends _FlutterAlignmentbottomCenter {
   factory _$_FlutterAlignmentbottomCenter.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentbottomCenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2534,7 +2534,7 @@ class _$_FlutterAlignmentbottomLeft extends _FlutterAlignmentbottomLeft {
   factory _$_FlutterAlignmentbottomLeft.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentbottomLeftFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2589,7 +2589,7 @@ class _$_FlutterAlignmentbottomRight extends _FlutterAlignmentbottomRight {
   factory _$_FlutterAlignmentbottomRight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentbottomRightFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2644,7 +2644,7 @@ class _$_FlutterAlignmentcenter extends _FlutterAlignmentcenter {
   factory _$_FlutterAlignmentcenter.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentcenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2699,7 +2699,7 @@ class _$_FlutterAlignmentcenterLeft extends _FlutterAlignmentcenterLeft {
   factory _$_FlutterAlignmentcenterLeft.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentcenterLeftFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2754,7 +2754,7 @@ class _$_FlutterAlignmentcenterRight extends _FlutterAlignmentcenterRight {
   factory _$_FlutterAlignmentcenterRight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmentcenterRightFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2809,7 +2809,7 @@ class _$_FlutterAlignmenttopCenter extends _FlutterAlignmenttopCenter {
   factory _$_FlutterAlignmenttopCenter.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmenttopCenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2864,7 +2864,7 @@ class _$_FlutterAlignmenttopLeft extends _FlutterAlignmenttopLeft {
   factory _$_FlutterAlignmenttopLeft.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmenttopLeftFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2919,7 +2919,7 @@ class _$_FlutterAlignmenttopRight extends _FlutterAlignmenttopRight {
   factory _$_FlutterAlignmenttopRight.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterAlignmenttopRightFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -2966,7 +2966,7 @@ abstract class _FlutterAlignmenttopRight extends FlutterAlignment {
 
 FlutterAlignmentDirectional _$FlutterAlignmentDirectionalFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:AlignmentDirectional':
       return _FlutterAlignmentDirectional.fromJson(json);
     case 'f:1:AlignmentDirectional.bottomCenter':
@@ -2991,9 +2991,9 @@ FlutterAlignmentDirectional _$FlutterAlignmentDirectionalFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterAlignmentDirectional',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -3037,7 +3037,7 @@ class _$_FlutterAlignmentDirectional extends _FlutterAlignmentDirectional {
   @override
   final ZacValue<double> y;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3109,7 +3109,7 @@ class _$_FlutterAlignmentDirectionalbottomCenter
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalbottomCenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3176,7 +3176,7 @@ class _$_FlutterAlignmentDirectionalbottomStart
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalbottomStartFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3243,7 +3243,7 @@ class _$_FlutterAlignmentDirectionalbottomEnd
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalbottomEndFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3310,7 +3310,7 @@ class _$_FlutterAlignmentDirectionalcenter
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalcenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3377,7 +3377,7 @@ class _$_FlutterAlignmentDirectionalcenterStart
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalcenterStartFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3444,7 +3444,7 @@ class _$_FlutterAlignmentDirectionalcenterEnd
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionalcenterEndFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3511,7 +3511,7 @@ class _$_FlutterAlignmentDirectionaltopCenter
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionaltopCenterFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3578,7 +3578,7 @@ class _$_FlutterAlignmentDirectionaltopStart
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionaltopStartFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3645,7 +3645,7 @@ class _$_FlutterAlignmentDirectionaltopEnd
           Map<String, dynamic> json) =>
       _$$_FlutterAlignmentDirectionaltopEndFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3860,15 +3860,15 @@ abstract class _FlutterBorderDirectional extends FlutterBorderDirectional {
 }
 
 FlutterBorder _$FlutterBorderFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:Border':
       return _FlutterBorder.fromJson(json);
     case 'f:1:Border.all':
       return _FlutterBorderAll.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterBorder',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterBorder',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -3902,7 +3902,7 @@ class _$_FlutterBorder extends _FlutterBorder {
   @override
   final ZacValue<BorderSide?>? left;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -3969,7 +3969,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
   @override
   final FlutterBorderStyle? style;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4017,15 +4017,15 @@ abstract class _FlutterBorderAll extends FlutterBorder {
 }
 
 FlutterBorderStyle _$FlutterBorderStyleFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:BorderStyle.none':
       return _FlutterBorderStyleNone.fromJson(json);
     case 'f:1:BorderStyle.solid':
       return _FlutterBorderStyleSolid.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterBorderStyle',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterBorderStyle',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -4049,7 +4049,7 @@ class _$_FlutterBorderStyleNone extends _FlutterBorderStyleNone {
   factory _$_FlutterBorderStyleNone.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBorderStyleNoneFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4096,7 +4096,7 @@ class _$_FlutterBorderStyleSolid extends _FlutterBorderStyleSolid {
   factory _$_FlutterBorderStyleSolid.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterBorderStyleSolidFromJson(json);
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4134,7 +4134,7 @@ abstract class _FlutterBorderStyleSolid extends FlutterBorderStyle {
 }
 
 FlutterBorderRadius _$FlutterBorderRadiusFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:BorderRadius.all':
       return _FlutterBorderRadiusAll.fromJson(json);
     case 'f:1:BorderRadius.circular':
@@ -4143,8 +4143,8 @@ FlutterBorderRadius _$FlutterBorderRadiusFromJson(Map<String, dynamic> json) {
       return _FlutterBorderRadiusHorizontal.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterBorderRadius',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterBorderRadius',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -4172,7 +4172,7 @@ class _$_FlutterBorderRadiusAll extends _FlutterBorderRadiusAll {
   @override
   final FlutterRadius radius;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4227,7 +4227,7 @@ class _$_FlutterBorderRadiusCircular extends _FlutterBorderRadiusCircular {
   @override
   final ZacValue<double> radius;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4285,7 +4285,7 @@ class _$_FlutterBorderRadiusHorizontal extends _FlutterBorderRadiusHorizontal {
   @override
   final ZacValue<Radius?>? right;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4775,7 +4775,7 @@ abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
 }
 
 FlutterEdgeInsets _$FlutterEdgeInsetsFromJson(Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:EdgeInsets.all':
       return _FlutterEdgeInsetsAll.fromJson(json);
     case 'f:1:EdgeInsets.symmetric':
@@ -4784,8 +4784,8 @@ FlutterEdgeInsets _$FlutterEdgeInsetsFromJson(Map<String, dynamic> json) {
       return _FlutterEdgeInsetsOnly.fromJson(json);
 
     default:
-      throw CheckedFromJsonException(json, 'converter', 'FlutterEdgeInsets',
-          'Invalid union type "${json['converter']}"!');
+      throw CheckedFromJsonException(json, 'builder', 'FlutterEdgeInsets',
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -4813,7 +4813,7 @@ class _$_FlutterEdgeInsetsAll extends _FlutterEdgeInsetsAll {
   @override
   final ZacValue<double> value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4871,7 +4871,7 @@ class _$_FlutterEdgeInsetsSymmetric extends _FlutterEdgeInsetsSymmetric {
   @override
   final ZacValue<double?>? horizontal;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4938,7 +4938,7 @@ class _$_FlutterEdgeInsetsOnly extends _FlutterEdgeInsetsOnly {
   @override
   final ZacValue<double?>? bottom;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -4991,7 +4991,7 @@ abstract class _FlutterEdgeInsetsOnly extends FlutterEdgeInsets {
 
 FlutterEdgeInsetsDirectional _$FlutterEdgeInsetsDirectionalFromJson(
     Map<String, dynamic> json) {
-  switch (json['converter']) {
+  switch (json['builder']) {
     case 'f:1:EdgeInsetsDirectional.all':
       return _FlutterEdgeInsetsDirectionalAll.fromJson(json);
     case 'f:1:EdgeInsetsDirectional.only':
@@ -5000,9 +5000,9 @@ FlutterEdgeInsetsDirectional _$FlutterEdgeInsetsDirectionalFromJson(
     default:
       throw CheckedFromJsonException(
           json,
-          'converter',
+          'builder',
           'FlutterEdgeInsetsDirectional',
-          'Invalid union type "${json['converter']}"!');
+          'Invalid union type "${json['builder']}"!');
   }
 }
 
@@ -5031,7 +5031,7 @@ class _$_FlutterEdgeInsetsDirectionalAll
   @override
   final ZacValue<double> value;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override
@@ -5095,7 +5095,7 @@ class _$_FlutterEdgeInsetsDirectionalOnly
   @override
   final ZacValue<double?>? bottom;
 
-  @JsonKey(name: 'converter')
+  @JsonKey(name: 'builder')
   final String $type;
 
   @override

@@ -27,7 +27,7 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
@@ -50,7 +50,7 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
@@ -72,7 +72,7 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
@@ -95,7 +95,7 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
@@ -116,7 +116,7 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
 
 _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
@@ -139,5 +139,5 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
       clipBehavior: json['clipBehavior'] == null
           ? null
           : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['converter'] as String?,
+      $type: json['builder'] as String?,
     );
