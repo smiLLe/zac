@@ -12,45 +12,10 @@ part 'zac_value.g.dart';
 
 bool isType<T, Y>() => T == Y;
 
-extension XZacBuilder<T> on ZacBuilder<T> {
+extension XZacValue<T> on ZacBuilder<T> {
   ZacValue<T> toZacValue() {
     return ZacValue<T>(this);
   }
-}
-
-class _BuiltInValueConverter<T> implements JsonConverter<T, Object> {
-  const _BuiltInValueConverter();
-
-  @override
-  T fromJson(Object data) {
-    if (isType<T, Object>() || isType<T, Object?>()) {
-      return data as T;
-    } else if ((isType<T, int>() || isType<T, int?>()) && data is num) {
-      return data.toInt() as T;
-    } else if ((isType<T, double>() || isType<T, double?>()) && data is num) {
-      return data.toDouble() as T;
-    } else if ((isType<T, num>() || isType<T, num?>()) && data is num) {
-      return data as T;
-    } else if ((isType<T, String>() || isType<T, String?>()) &&
-        data is String) {
-      return data as T;
-    } else if ((isType<T, bool>() || isType<T, bool?>()) && data is bool) {
-      return data as T;
-    } else if ((isType<T, DateTime>() || isType<T, DateTime?>()) &&
-        data is String) {
-      return DateTime.parse(data) as T;
-    } else if (data is T) {
-      return data as T;
-    }
-
-    throw StateError('''
-It is not possible to convert data in ${_BuiltInValueConverter<T>}.fromJson().
-The given data is not supported:
-$data''');
-  }
-
-  @override
-  Object toJson(T object) => throw StateError('not supported');
 }
 
 @freezedZacBuilder

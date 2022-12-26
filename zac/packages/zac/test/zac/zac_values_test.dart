@@ -17,8 +17,7 @@ void main() {
   group('ZacValue', () {
     test('Is in converters', () {
       expectInConverter(
-          ['z:1:ZacValue', 'z:1:ZacValue.builder', 'z:1:ZacValue.consume'],
-          ZacValue.fromJson);
+          ['z:1:ZacValue', 'z:1:ZacValue.consume'], ZacValue.fromJson);
     });
 
     group('From Value', () {
