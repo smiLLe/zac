@@ -22,7 +22,7 @@ void main() {
         child: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               LeakContext(
                 cb: (zacContext) {
                   c = ZacValue<Completer>.consume(family: 'shared')
@@ -60,7 +60,7 @@ void main() {
         child: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               LeakContext(
                 cb: (z) {
                   zacContext = z;

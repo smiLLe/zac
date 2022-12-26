@@ -29,12 +29,12 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>.builder(
+          child: ZacValue<Widget>(
             LeakContext(
               cb: (o) {
                 zacContext1 = o;
               },
-              child: ZacValue<Widget>.builder(
+              child: ZacValue<Widget>(
                 LeakContext(
                   cb: (o) {
                     zacContext2 = o;
@@ -51,14 +51,14 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>.builder(
+          child: ZacValue<Widget>(
             LeakContext(
               cb: (o) {
                 zacContext1 = o;
               },
-              child: ZacValue<Widget>.builder(
+              child: ZacValue<Widget>(
                 ZacUpdateContextBuilder(
-                  child: ZacValue<Widget>.builder(
+                  child: ZacValue<Widget>(
                     LeakContext(
                       cb: (o) {
                         zacContext2 = o;
@@ -86,19 +86,19 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>.builder(
+          child: ZacValue<Widget>(
             LeakContext(
               cb: (o) {
                 zacContext1 = o;
               },
-              child: ZacValue<Widget>.builder(
+              child: ZacValue<Widget>(
                 ZacUpdateContextBuilder(
-                  child: ZacValue<Widget>.builder(
+                  child: ZacValue<Widget>(
                     LeakContext(
                       cb: (o) {
                         zacContext2 = o;
                       },
-                      child: ZacValue<Widget>.builder(
+                      child: ZacValue<Widget>(
                         FlutterSizedBox(),
                       ),
                     ),

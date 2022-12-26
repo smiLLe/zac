@@ -407,7 +407,8 @@ mixin _$ZacStateMachineProviderBuilder {
   ZacValue<Key?>? get key => throw _privateConstructorUsedError;
   ZacValue<String> get family => throw _privateConstructorUsedError;
   ZacValue<String> get initialState => throw _privateConstructorUsedError;
-  Map<String, ZacStateConfig> get states => throw _privateConstructorUsedError;
+  ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> get states =>
+      throw _privateConstructorUsedError;
   ZacValue<Widget> get child => throw _privateConstructorUsedError;
   ZacValue<Object?>? get initialContext => throw _privateConstructorUsedError;
 
@@ -426,11 +427,10 @@ class _$_ZacStateMachineProviderBuilder
       {this.key,
       required this.family,
       required this.initialState,
-      required final Map<String, ZacStateConfig> states,
+      required this.states,
       required this.child,
       this.initialContext})
-      : _states = states,
-        super._();
+      : super._();
 
   factory _$_ZacStateMachineProviderBuilder.fromJson(
           Map<String, dynamic> json) =>
@@ -442,14 +442,8 @@ class _$_ZacStateMachineProviderBuilder
   final ZacValue<String> family;
   @override
   final ZacValue<String> initialState;
-  final Map<String, ZacStateConfig> _states;
   @override
-  Map<String, ZacStateConfig> get states {
-    if (_states is EqualUnmodifiableMapView) return _states;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_states);
-  }
-
+  final ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> states;
   @override
   final ZacValue<Widget> child;
   @override
@@ -469,7 +463,7 @@ class _$_ZacStateMachineProviderBuilder
             (identical(other.family, family) || other.family == family) &&
             (identical(other.initialState, initialState) ||
                 other.initialState == initialState) &&
-            const DeepCollectionEquality().equals(other._states, _states) &&
+            (identical(other.states, states) || other.states == states) &&
             (identical(other.child, child) || other.child == child) &&
             (identical(other.initialContext, initialContext) ||
                 other.initialContext == initialContext));
@@ -477,8 +471,8 @@ class _$_ZacStateMachineProviderBuilder
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key, family, initialState,
-      const DeepCollectionEquality().hash(_states), child, initialContext);
+  int get hashCode => Object.hash(
+      runtimeType, key, family, initialState, states, child, initialContext);
 
   @override
   @optionalTypeArgs
@@ -492,13 +486,14 @@ class _$_ZacStateMachineProviderBuilder
 abstract class _ZacStateMachineProviderBuilder
     extends ZacStateMachineProviderBuilder {
   factory _ZacStateMachineProviderBuilder(
-          {final ZacValue<Key?>? key,
-          required final ZacValue<String> family,
-          required final ZacValue<String> initialState,
-          required final Map<String, ZacStateConfig> states,
-          required final ZacValue<Widget> child,
-          final ZacValue<Object?>? initialContext}) =
-      _$_ZacStateMachineProviderBuilder;
+      {final ZacValue<Key?>? key,
+      required final ZacValue<String> family,
+      required final ZacValue<String> initialState,
+      required final ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>
+          states,
+      required final ZacValue<Widget> child,
+      final ZacValue<Object?>?
+          initialContext}) = _$_ZacStateMachineProviderBuilder;
   _ZacStateMachineProviderBuilder._() : super._();
 
   factory _ZacStateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
@@ -511,7 +506,7 @@ abstract class _ZacStateMachineProviderBuilder
   @override
   ZacValue<String> get initialState;
   @override
-  Map<String, ZacStateConfig> get states;
+  ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> get states;
   @override
   ZacValue<Widget> get child;
   @override

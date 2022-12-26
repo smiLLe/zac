@@ -545,7 +545,6 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:Transformer:Map.setValueForKey': MapTransformer.fromJson,
   'z:1:Transformer:Map.values': MapTransformer.fromJson,
   'z:1:Transformer:Map<Object, Object>.from': MapTransformer.fromJson,
-  'z:1:Transformer:Map<String, FlutterWidget>.from': MapTransformer.fromJson,
   'z:1:Transformer:Map<String, Object>.from': MapTransformer.fromJson,
   'z:1:Transformer:Map<String, Object?>.from': MapTransformer.fromJson,
   'z:1:Transformer:Map[key]': MapTransformer.fromJson,
@@ -590,5 +589,7 @@ Map<String, Object Function(Map<String, dynamic> data)> zacConverter = const {
   'z:1:ZacValue.builder': ZacValue.fromJson,
   'z:1:ZacValue.consume': ZacValue.fromJson,
   'z:1:ZacValueList': ZacValueList.fromJson,
-  'z:1:ZacValueList.consume': ZacValueList.fromJson
+  'z:1:ZacValueList.consume': ZacValueList.fromJson,
+  'z:1:ZacValueMap': ZacValueMap.fromJson,
+  'z:1:ZacValueMap.consume': ZacValueMap.fromJson
 };

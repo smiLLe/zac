@@ -42,7 +42,7 @@ void main() {
           child: ZacWidget(
             data: FlutterGlobalKeyNavigatorStateProvider(
               family: 'shared',
-              child: ZacValue<Widget>.builder(
+              child: ZacValue<Widget>(
                 LeakContext(
                   cb: (z) => zacContext = z,
                 ),
@@ -72,7 +72,7 @@ void main() {
           child: ZacWidget(
             data: FlutterGlobalKeyScaffoldMessengerStateProvider(
               family: 'shared',
-              child: ZacValue<Widget>.builder(
+              child: ZacValue<Widget>(
                 LeakContext(
                   cb: (z) => zacContext = z,
                 ),

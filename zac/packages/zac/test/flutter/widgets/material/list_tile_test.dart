@@ -34,7 +34,7 @@ void main() {
     await testZacWidget(
         tester,
         FlutterScaffold(
-            body: ZacValue<Widget>.builder(FlutterListTile(
+            body: ZacValue<Widget>(FlutterListTile(
           key: FlutterValueKey('FIND_ME').toZacValue(),
           onTap: LeakAction.createActions(onTapCb),
           onLongPress: LeakAction.createActions(onLongPressCb),

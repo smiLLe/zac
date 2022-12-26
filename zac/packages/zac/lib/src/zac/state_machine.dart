@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -105,7 +104,7 @@ class ZacStateMachineProviderBuilder
     ZacValue<Key?>? key,
     required ZacValue<String> family,
     required ZacValue<String> initialState,
-    required Map<String, ZacStateConfig> states,
+    required ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> states,
     required ZacValue<Widget> child,
     ZacValue<Object?>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
@@ -124,8 +123,7 @@ class ZacStateMachineProviderBuilder
           throw StateError('''
 No longer possible to send event "$event" to $ZacStateMachine.
 It is no longer possible to transition away from the current $ZacStateMachine 
-because there was already a transition.
-''');
+because there was already a transition.''');
         }
 
         ref.controller.update((curMachine) {
@@ -153,7 +151,7 @@ because there was already a transition.
     });
 
     return ZacStateMachine(
-      states: states,
+      states: states.build(zacContext),
       state: initialState.build(zacContext),
       context: initialContext?.build(zacContext),
       send: getSend(trySend: false, sId: sessionId),

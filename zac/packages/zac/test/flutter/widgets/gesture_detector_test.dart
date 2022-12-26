@@ -22,7 +22,7 @@ void main() {
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME').toZacValue(),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: ZacValue<Widget>.builder(FlutterSizedBox()),
+        child: ZacValue<Widget>(FlutterSizedBox()),
         onTap: LeakAction.createActions(onTapCb),
         onLongPress: LeakAction.createActions(onLongPressCb),
         onSecondaryLongPress: LeakAction.createActions(onSecondaryLongPressCb),
@@ -66,7 +66,7 @@ void main() {
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME').toZacValue(),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: ZacValue<Widget>.builder(FlutterSizedBox()),
+        child: ZacValue<Widget>(FlutterSizedBox()),
         onDoubleTap: LeakAction.createActions(doubleTapCb),
       ),
     );

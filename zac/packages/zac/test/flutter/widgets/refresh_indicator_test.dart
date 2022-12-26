@@ -73,11 +73,11 @@ void main() {
         body: ZacWidget(
           data: FlutterRefreshIndicator(
             onRefresh: ZacActions([LeakAction(cb)]),
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               FlutterListView(
                 children: ZacValueList<Widget, List<Widget>?>(
                   items: [
-                    ZacValue<Widget>.builder(FlutterSizedBox(
+                    ZacValue<Widget>(FlutterSizedBox(
                         key: FlutterValueKey('child1').toZacValue())),
                   ],
                 ),
@@ -113,7 +113,7 @@ void main() {
         body: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               FlutterRefreshIndicator(
                 onRefresh: ZacActions([
                   LeakAction(cb),
@@ -122,11 +122,11 @@ void main() {
                 ]),
                 onRefreshCompleter:
                     ZacValue<Completer>.consume(family: 'shared'),
-                child: ZacValue<Widget>.builder(
+                child: ZacValue<Widget>(
                   FlutterListView(
                     children: ZacValueList<Widget, List<Widget>?>(
                       items: [
-                        ZacValue<Widget>.builder(FlutterSizedBox(
+                        ZacValue<Widget>(FlutterSizedBox(
                             key: FlutterValueKey('child1').toZacValue())),
                       ],
                     ),

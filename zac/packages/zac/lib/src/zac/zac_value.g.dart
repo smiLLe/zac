@@ -6,17 +6,10 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValueBuiltIn<T> _$$_ZacValueBuiltInFromJson<T extends Object?>(
+_$_ZacValue<T> _$$_ZacValueFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValueBuiltIn<T>(
-      _BuiltInValueConverter<T>().fromJson(json['value'] as Object),
-      $type: json['converter'] as String?,
-    );
-
-_$_ZacValueFromBuilder<T> _$$_ZacValueFromBuilderFromJson<T extends Object?>(
-        Map<String, dynamic> json) =>
-    _$_ZacValueFromBuilder<T>(
-      ZacBuilder<T>.fromJson(json['value'] as Map<String, dynamic>),
+    _$_ZacValue<T>(
+      json['value'] as Object,
       $type: json['converter'] as String?,
     );
 
@@ -67,6 +60,36 @@ _$_ZacValueListConsume<T, X>
                   json['forceConsume'] as Map<String, dynamic>),
           $type: json['converter'] as String?,
         );
+
+_$_ZacValueMap<T, X>
+    _$$_ZacValueMapFromJson<T extends Object?, X extends Map<String, T>?>(
+            Map<String, dynamic> json) =>
+        _$_ZacValueMap<T, X>(
+          items: (json['items'] as Map<String, dynamic>).map(
+            (k, e) => MapEntry(k, ZacValue<T>.fromJson(e as Object)),
+          ),
+          $type: json['converter'] as String?,
+        );
+
+_$_ZacValueMapConsume<T, X> _$$_ZacValueMapConsumeFromJson<T extends Object?,
+        X extends Map<String, T>?>(Map<String, dynamic> json) =>
+    _$_ZacValueMapConsume<T, X>(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      itemTransformer: json['itemTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+      select: json['select'] == null
+          ? null
+          : ZacTransformers.fromJson(json['select'] as Object),
+      forceConsume: json['forceConsume'] == null
+          ? null
+          : SharedValueConsumeType.fromJson(
+              json['forceConsume'] as Map<String, dynamic>),
+      $type: json['converter'] as String?,
+    );
 
 _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
         Map<String, dynamic> json) =>

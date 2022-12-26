@@ -92,7 +92,7 @@ void main() {
     await testZacWidget(
       tester,
       FlutterMaterial(
-        child: ZacValue<Widget>.builder(
+        child: ZacValue<Widget>(
           FlutterTextField(
             key: FlutterValueKey('FINDME').toZacValue(),
             onChanged: ZacActions([LeakAction(cb)]),

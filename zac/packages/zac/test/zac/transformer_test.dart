@@ -1399,11 +1399,11 @@ void main() {
           SharedValueProviderBuilder(
             value: 5,
             family: 'shared',
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               SharedValueProviderBuilder(
                 value: 'foo',
                 family: 'shared2',
-                child: ZacValue<Widget>.builder(
+                child: ZacValue<Widget>(
                   LeakContext(
                     cb: (o) => zacContext = o,
                   ),

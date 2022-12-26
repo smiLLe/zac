@@ -15,7 +15,7 @@ void main() {
       ProviderScope(
         child: ZacWidget(
           data: FlutterScrollController(
-            child: ZacValue<Widget>.builder(
+            child: ZacValue<Widget>(
               LeakContext(
                 cb: (z) => zacContext = z,
               ),

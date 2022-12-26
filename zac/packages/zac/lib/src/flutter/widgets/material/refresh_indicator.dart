@@ -51,7 +51,6 @@ class FlutterRefreshIndicator
 
         onRefreshCompleter!.map(
           (_) {},
-          builder: (_) {},
           consume: (obj) {
             zacContext.ref.invalidate(SharedValue.provider(obj.family));
           },
