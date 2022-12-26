@@ -16,7 +16,7 @@ part 'refresh_indicator.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
-    implements ZacBuilder<RefreshIndicator> {
+    implements ZacBuild<RefreshIndicator> {
   const FlutterRefreshIndicator._();
 
   static const String unionValue = 'f:1:RefreshIndicator';
@@ -85,7 +85,7 @@ class FlutterRefreshIndicator
 class FlutterRefreshIndicatorTriggerMode
     with
         _$FlutterRefreshIndicatorTriggerMode,
-        ZacBuilder<RefreshIndicatorTriggerMode> {
+        ZacBuild<RefreshIndicatorTriggerMode> {
   const FlutterRefreshIndicatorTriggerMode._();
 
   static const String unionValueOnEdge =

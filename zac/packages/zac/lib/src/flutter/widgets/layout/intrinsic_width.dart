@@ -12,7 +12,7 @@ part 'intrinsic_width.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicWidth
     with _$FlutterIntrinsicWidth
-    implements ZacBuilder<IntrinsicWidth> {
+    implements ZacBuild<IntrinsicWidth> {
   const FlutterIntrinsicWidth._();
 
   static const String unionValue = 'f:1:IntrinsicWidth';

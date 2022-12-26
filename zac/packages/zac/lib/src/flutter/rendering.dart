@@ -12,7 +12,7 @@ part 'rendering.g.dart';
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterHitTestBehavior
-    with _$FlutterHitTestBehavior, ZacBuilder<HitTestBehavior> {
+    with _$FlutterHitTestBehavior, ZacBuild<HitTestBehavior> {
   const FlutterHitTestBehavior._();
 
   factory FlutterHitTestBehavior.fromJson(Map<String, dynamic> json) =>
@@ -46,7 +46,7 @@ class FlutterHitTestBehavior
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterCrossAxisAlignment
-    with _$FlutterCrossAxisAlignment, ZacBuilder<CrossAxisAlignment> {
+    with _$FlutterCrossAxisAlignment, ZacBuild<CrossAxisAlignment> {
   const FlutterCrossAxisAlignment._();
 
   factory FlutterCrossAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -88,7 +88,7 @@ class FlutterCrossAxisAlignment
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterMainAxisAlignment
-    with _$FlutterMainAxisAlignment, ZacBuilder<MainAxisAlignment> {
+    with _$FlutterMainAxisAlignment, ZacBuild<MainAxisAlignment> {
   const FlutterMainAxisAlignment._();
 
   factory FlutterMainAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -134,7 +134,7 @@ class FlutterMainAxisAlignment
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
+class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuild<MainAxisSize> {
   const FlutterMainAxisSize._();
 
   factory FlutterMainAxisSize.fromJson(Map<String, dynamic> json) =>
@@ -158,7 +158,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
+class FlutterFlexFit with _$FlutterFlexFit, ZacBuild<FlexFit> {
   const FlutterFlexFit._();
 
   factory FlutterFlexFit.fromJson(Map<String, dynamic> json) =>
@@ -183,7 +183,7 @@ class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterWrapAlignment
-    with _$FlutterWrapAlignment, ZacBuilder<WrapAlignment> {
+    with _$FlutterWrapAlignment, ZacBuild<WrapAlignment> {
   const FlutterWrapAlignment._();
 
   factory FlutterWrapAlignment.fromJson(Map<String, dynamic> json) =>
@@ -228,7 +228,7 @@ class FlutterWrapAlignment
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterWrapCrossAlignment
-    with _$FlutterWrapCrossAlignment, ZacBuilder<WrapCrossAlignment> {
+    with _$FlutterWrapCrossAlignment, ZacBuild<WrapCrossAlignment> {
   const FlutterWrapCrossAlignment._();
 
   factory FlutterWrapCrossAlignment.fromJson(Map<String, dynamic> json) =>
@@ -259,7 +259,7 @@ class FlutterWrapCrossAlignment
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
+class FlutterStackFit with _$FlutterStackFit, ZacBuild<StackFit> {
   const FlutterStackFit._();
 
   factory FlutterStackFit.fromJson(Map<String, dynamic> json) =>
@@ -291,7 +291,7 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxConstraints
-    with _$FlutterBoxConstraints, ZacBuilder<BoxConstraints> {
+    with _$FlutterBoxConstraints, ZacBuild<BoxConstraints> {
   const FlutterBoxConstraints._();
 
   factory FlutterBoxConstraints.fromJson(Map<String, dynamic> json) =>
@@ -361,7 +361,7 @@ class FlutterBoxConstraints
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterDecorationPosition
-    with _$FlutterDecorationPosition, ZacBuilder<DecorationPosition> {
+    with _$FlutterDecorationPosition, ZacBuild<DecorationPosition> {
   const FlutterDecorationPosition._();
 
   factory FlutterDecorationPosition.fromJson(Map<String, dynamic> json) =>

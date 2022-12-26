@@ -12,7 +12,7 @@ part 'intrinsic_height.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
-    implements ZacBuilder<IntrinsicHeight> {
+    implements ZacBuild<IntrinsicHeight> {
   const FlutterIntrinsicHeight._();
 
   static const String unionValue = 'f:1:IntrinsicHeight';

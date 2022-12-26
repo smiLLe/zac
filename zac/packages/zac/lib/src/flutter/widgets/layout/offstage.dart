@@ -10,7 +10,7 @@ part 'offstage.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterOffstage with _$FlutterOffstage implements ZacBuilder<Offstage> {
+class FlutterOffstage with _$FlutterOffstage implements ZacBuild<Offstage> {
   const FlutterOffstage._();
 
   static const String unionValue = 'f:1:Offstage';

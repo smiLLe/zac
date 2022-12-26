@@ -10,7 +10,7 @@ part 'column.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterColumn with _$FlutterColumn implements ZacBuilder<Column> {
+class FlutterColumn with _$FlutterColumn implements ZacBuild<Column> {
   const FlutterColumn._();
 
   static const String unionValue = 'f:1:Column';

@@ -13,7 +13,7 @@ part 'rotated_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRotatedBox
     with _$FlutterRotatedBox
-    implements ZacBuilder<RotatedBox> {
+    implements ZacBuild<RotatedBox> {
   const FlutterRotatedBox._();
 
   static const String unionValue = 'f:1:RotatedBox';

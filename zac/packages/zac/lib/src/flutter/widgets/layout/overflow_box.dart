@@ -12,7 +12,7 @@ part 'overflow_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOverflowBox
     with _$FlutterOverflowBox
-    implements ZacBuilder<OverflowBox> {
+    implements ZacBuild<OverflowBox> {
   const FlutterOverflowBox._();
 
   static const String unionValue = 'f:1:OverflowBox';

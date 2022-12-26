@@ -13,7 +13,7 @@ part 'sliver_grid_delegate.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverGridDelegate
     with _$FlutterSliverGridDelegate
-    implements ZacBuilder<SliverGridDelegate> {
+    implements ZacBuild<SliverGridDelegate> {
   const FlutterSliverGridDelegate._();
 
   static const String unionValueSliverGridDelegateWithFixedCrossAxisCount =

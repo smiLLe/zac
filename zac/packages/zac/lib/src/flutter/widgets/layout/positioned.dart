@@ -13,7 +13,7 @@ part 'positioned.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPositioned
     with _$FlutterPositioned
-    implements ZacBuilder<Positioned> {
+    implements ZacBuild<Positioned> {
   const FlutterPositioned._();
 
   static const String unionValue = 'f:1:Positioned';

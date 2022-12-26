@@ -10,7 +10,7 @@ part 'foundation.g.dart';
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterValueKey
     with _$FlutterValueKey
-    implements ZacBuilder<ValueKey<String>> {
+    implements ZacBuild<ValueKey<String>> {
   FlutterValueKey._();
 
   factory FlutterValueKey.fromJson(Map<String, dynamic> json) =>
@@ -31,7 +31,7 @@ class FlutterValueKey
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyNavigatorStateProvider
     with _$FlutterGlobalKeyNavigatorStateProvider
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   FlutterGlobalKeyNavigatorStateProvider._();
 
   factory FlutterGlobalKeyNavigatorStateProvider.fromJson(
@@ -66,7 +66,7 @@ class FlutterGlobalKeyNavigatorStateProvider
 @ZacGenerate(order: zacGenerateOrderDartFoundation)
 class FlutterGlobalKeyScaffoldMessengerStateProvider
     with _$FlutterGlobalKeyScaffoldMessengerStateProvider
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   FlutterGlobalKeyScaffoldMessengerStateProvider._();
 
   factory FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson(

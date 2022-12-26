@@ -12,7 +12,7 @@ part 'opacity.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterOpacity with _$FlutterOpacity implements ZacBuilder<Opacity> {
+class FlutterOpacity with _$FlutterOpacity implements ZacBuild<Opacity> {
   const FlutterOpacity._();
 
   static const String unionValue = 'f:1:Opacity';

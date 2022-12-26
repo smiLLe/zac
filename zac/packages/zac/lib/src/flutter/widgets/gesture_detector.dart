@@ -16,7 +16,7 @@ part 'gesture_detector.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterGestureDetector
     with _$FlutterGestureDetector
-    implements ZacBuilder<GestureDetector> {
+    implements ZacBuild<GestureDetector> {
   const FlutterGestureDetector._();
 
   static const String unionValue = 'f:1:GestureDetector';

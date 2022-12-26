@@ -10,7 +10,7 @@ part 'expanded.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterExpanded with _$FlutterExpanded implements ZacBuilder<Expanded> {
+class FlutterExpanded with _$FlutterExpanded implements ZacBuild<Expanded> {
   const FlutterExpanded._();
 
   static const String unionValue = 'f:1:Expanded';

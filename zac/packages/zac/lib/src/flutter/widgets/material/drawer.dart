@@ -11,7 +11,7 @@ part 'drawer.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterDrawer with _$FlutterDrawer implements ZacBuilder<Drawer> {
+class FlutterDrawer with _$FlutterDrawer implements ZacBuild<Drawer> {
   const FlutterDrawer._();
 
   static const String unionValue = 'f:1:Drawer';

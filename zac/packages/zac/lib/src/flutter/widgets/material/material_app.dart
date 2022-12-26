@@ -14,7 +14,7 @@ part 'material_app.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialApp
     with _$FlutterMaterialApp
-    implements ZacBuilder<MaterialApp> {
+    implements ZacBuild<MaterialApp> {
   const FlutterMaterialApp._();
 
   static const String unionValue = 'f:1:MaterialApp';

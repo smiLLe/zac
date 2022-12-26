@@ -13,7 +13,7 @@ part 'sliver_padding.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverPadding
     with _$FlutterSliverPadding
-    implements ZacBuilder<SliverPadding> {
+    implements ZacBuild<SliverPadding> {
   const FlutterSliverPadding._();
 
   static const String unionValue = 'f:1:SliverPadding';

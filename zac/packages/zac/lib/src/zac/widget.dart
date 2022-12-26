@@ -18,7 +18,7 @@ part 'widget.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
-class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
+class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
   const ZacWidgetBuilder._();
 
   static const String unionValue = 'z:1:Widget';
@@ -65,7 +65,7 @@ class ZacWidget extends HookWidget {
   const ZacWidget({required this.data, Key? key})
       : assert(data is String ||
             data is Map<String, dynamic> ||
-            data is ZacBuilder<Widget>),
+            data is ZacBuild<Widget>),
         super(key: key);
 
   final Object data;
@@ -74,8 +74,8 @@ class ZacWidget extends HookWidget {
   Widget build(
     BuildContext context,
   ) {
-    final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
-      if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
+    final zacBuilder = useMemoized<ZacBuild<Widget>>(() {
+      if (data is ZacBuild<Widget>) return data as ZacBuild<Widget>;
 
       late Map<String, dynamic> map;
       final obj = data;
@@ -93,7 +93,7 @@ class ZacWidget extends HookWidget {
             'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
       }
 
-      return ConverterHelper.convertToType<ZacBuilder<Widget>>(map);
+      return ConverterHelper.convertToType<ZacBuild<Widget>>(map);
     }, [data]);
 
     return ZacUpdateContext(
@@ -110,8 +110,8 @@ class ZacWidgetIsolated extends StatelessWidget {
   final Object? data;
   final ZacValue<Widget?>? errorChild;
 
-  static AutoDisposeFutureProvider<ZacBuilder<Widget>> provider =
-      FutureProvider.autoDispose<ZacBuilder<Widget>>(
+  static AutoDisposeFutureProvider<ZacBuild<Widget>> provider =
+      FutureProvider.autoDispose<ZacBuild<Widget>>(
     (_) {
       throw StateError('');
     },
@@ -127,9 +127,9 @@ class ZacWidgetIsolated extends StatelessWidget {
     return result;
   }
 
-  static Future<ZacBuilder<Widget>> _convert(List<Object?> data) async {
+  static Future<ZacBuild<Widget>> _convert(List<Object?> data) async {
     allConverter = data[1] as Map<String, Convert>;
-    return ConverterHelper.convertToType<ZacBuilder<Widget>>(
+    return ConverterHelper.convertToType<ZacBuild<Widget>>(
         data[0] as Map<String, dynamic>);
   }
 

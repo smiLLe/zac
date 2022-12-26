@@ -11,7 +11,7 @@ part 'input_decoration.g.dart';
 @freezedZacBuilder
 @ZacGenerate()
 class FlutterInputDecoration
-    with _$FlutterInputDecoration, ZacBuilder<InputDecoration> {
+    with _$FlutterInputDecoration, ZacBuild<InputDecoration> {
   const FlutterInputDecoration._();
 
   factory FlutterInputDecoration.fromJson(Map<String, dynamic> json) =>

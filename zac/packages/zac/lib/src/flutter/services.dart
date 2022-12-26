@@ -13,7 +13,7 @@ part 'services.g.dart';
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSystemUiOverlayStyle
-    with _$FlutterSystemUiOverlayStyle, ZacBuilder<SystemUiOverlayStyle> {
+    with _$FlutterSystemUiOverlayStyle, ZacBuild<SystemUiOverlayStyle> {
   const FlutterSystemUiOverlayStyle._();
 
   factory FlutterSystemUiOverlayStyle.fromJson(Map<String, dynamic> json) =>
@@ -57,7 +57,7 @@ class FlutterSystemUiOverlayStyle
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextInputType
-    with _$FlutterTextInputType, ZacBuilder<TextInputType> {
+    with _$FlutterTextInputType, ZacBuild<TextInputType> {
   const FlutterTextInputType._();
 
   factory FlutterTextInputType.fromJson(Map<String, dynamic> json) =>
@@ -114,7 +114,7 @@ class FlutterTextInputType
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextInputAction
-    with _$FlutterTextInputAction, ZacBuilder<TextInputAction> {
+    with _$FlutterTextInputAction, ZacBuild<TextInputAction> {
   const FlutterTextInputAction._();
 
   factory FlutterTextInputAction.fromJson(Map<String, dynamic> json) =>
@@ -177,7 +177,7 @@ class FlutterTextInputAction
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextCapitalization
-    with _$FlutterTextCapitalization, ZacBuilder<TextCapitalization> {
+    with _$FlutterTextCapitalization, ZacBuild<TextCapitalization> {
   const FlutterTextCapitalization._();
 
   factory FlutterTextCapitalization.fromJson(Map<String, dynamic> json) =>
@@ -212,7 +212,7 @@ class FlutterTextCapitalization
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSmartDashesType
-    with _$FlutterSmartDashesType, ZacBuilder<SmartDashesType> {
+    with _$FlutterSmartDashesType, ZacBuild<SmartDashesType> {
   const FlutterSmartDashesType._();
 
   factory FlutterSmartDashesType.fromJson(Map<String, dynamic> json) =>
@@ -240,7 +240,7 @@ class FlutterSmartDashesType
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterSmartQuotesType
-    with _$FlutterSmartQuotesType, ZacBuilder<SmartQuotesType> {
+    with _$FlutterSmartQuotesType, ZacBuild<SmartQuotesType> {
   const FlutterSmartQuotesType._();
 
   factory FlutterSmartQuotesType.fromJson(Map<String, dynamic> json) =>

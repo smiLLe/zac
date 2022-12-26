@@ -14,7 +14,7 @@ part 'list_view.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
+class FlutterListView with _$FlutterListView implements ZacBuild<ListView> {
   const FlutterListView._();
 
   static const String unionValue = 'f:1:ListView';

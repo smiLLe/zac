@@ -10,9 +10,7 @@ part 'container.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterContainer
-    with _$FlutterContainer
-    implements ZacBuilder<Container> {
+class FlutterContainer with _$FlutterContainer implements ZacBuild<Container> {
   const FlutterContainer._();
 
   static const String unionValue = 'f:1:Container';

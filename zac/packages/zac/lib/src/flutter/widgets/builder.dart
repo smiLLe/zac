@@ -13,7 +13,7 @@ part 'builder.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
+class FlutterBuilder with _$FlutterBuilder implements ZacBuild<Builder> {
   const FlutterBuilder._();
 
   static const String unionValue = 'f:1:Builder';

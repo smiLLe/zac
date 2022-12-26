@@ -12,8 +12,7 @@ part 'scroll_controller.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterScrollController
-    with _$FlutterScrollController, ZacBuilder<Widget> {
+class FlutterScrollController with _$FlutterScrollController, ZacBuild<Widget> {
   const FlutterScrollController._();
 
   static const String familyName = 'Zac.ScrollController';

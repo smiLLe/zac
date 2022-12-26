@@ -14,7 +14,7 @@ part 'sliver_to_box_adapter.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
-    implements ZacBuilder<SliverToBoxAdapter> {
+    implements ZacBuild<SliverToBoxAdapter> {
   const FlutterSliverToBoxAdapter._();
 
   static const String unionValue = 'f:1:SliverToBoxAdapter';

@@ -145,7 +145,7 @@ See "$SharedValueProviderBuilder" for more info.
       read: (_) {
         final value =
             zacContext.ref.read<Object?>(SharedValue.provider(family));
-        if (value is ZacBuilder) {
+        if (value is ZacBuild) {
           return value;
         }
         return select?.transform(ZacTransformValue(value), zacContext,
@@ -155,7 +155,7 @@ See "$SharedValueProviderBuilder" for more info.
       watch: (_) {
         return zacContext.ref
             .watch<Object?>(SharedValue.provider(family).select((value) {
-          if (value is ZacBuilder) {
+          if (value is ZacBuild) {
             return value;
           }
           return select?.transform(ZacTransformValue(value), zacContext,
@@ -165,7 +165,7 @@ See "$SharedValueProviderBuilder" for more info.
       },
     );
 
-    return consumedValue is ZacBuilder<Object>
+    return consumedValue is ZacBuild<Object>
         ? consumedValue.build(zacContext)
         : consumedValue;
   }
@@ -180,7 +180,7 @@ See "$SharedValueProviderBuilder" for more info.
       read: (_) {
         final value =
             zacContext.ref.read<Object?>(SharedValue.provider(family));
-        if (value is ZacBuilder) {
+        if (value is ZacBuild) {
           return value;
         }
         return select?.transform(ZacTransformValue(value), zacContext,
@@ -190,7 +190,7 @@ See "$SharedValueProviderBuilder" for more info.
       watch: (_) {
         return zacContext.ref
             .watch<Object?>(SharedValue.provider(family).select((value) {
-          if (value is ZacBuilder) {
+          if (value is ZacBuild) {
             return value;
           }
           return select?.transform(ZacTransformValue(value), zacContext,
@@ -206,7 +206,7 @@ See "$SharedValueProviderBuilder" for more info.
 
     return [
       ...consumedValue.map((dynamic e) {
-        return e is ZacBuilder<Object> ? e.build(zacContext) : e as Object;
+        return e is ZacBuild<Object> ? e.build(zacContext) : e as Object;
       })
     ];
   }
@@ -313,7 +313,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   SharedValueProviderBuilder._();
   static const String unionValue = 'z:1:SharedValue.provide';
 

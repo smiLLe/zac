@@ -10,7 +10,7 @@ part 'selectable_text.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSelectableText
     with _$FlutterSelectableText
-    implements ZacBuilder<SelectableText> {
+    implements ZacBuild<SelectableText> {
   const FlutterSelectableText._();
 
   static const String unionValue = 'f:1:SelectableText';

@@ -12,7 +12,7 @@ part 'list_tile.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
+class FlutterListTile with _$FlutterListTile implements ZacBuild<ListTile> {
   const FlutterListTile._();
 
   static const String unionValue = 'f:1:ListTile';

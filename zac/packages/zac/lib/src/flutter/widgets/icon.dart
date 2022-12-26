@@ -12,7 +12,7 @@ part 'icon.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
+class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
   const FlutterIcon._();
 
   static const String unionValue = 'f:1:Icon';
@@ -49,7 +49,7 @@ class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
+class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
   const FlutterIconData._();
 
   factory FlutterIconData.fromJson(Map<String, dynamic> json) =>
@@ -81,7 +81,7 @@ class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIconThemeData
-    with _$FlutterIconThemeData, ZacBuilder<IconThemeData> {
+    with _$FlutterIconThemeData, ZacBuild<IconThemeData> {
   const FlutterIconThemeData._();
 
   factory FlutterIconThemeData.fromJson(Map<String, dynamic> json) =>

@@ -12,7 +12,7 @@ part 'sliver_child_delegate.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSliverChildDelegate
     with _$FlutterSliverChildDelegate
-    implements ZacBuilder<SliverChildDelegate> {
+    implements ZacBuild<SliverChildDelegate> {
   const FlutterSliverChildDelegate._();
 
   static const String unionValueSliverChildListDelegate =

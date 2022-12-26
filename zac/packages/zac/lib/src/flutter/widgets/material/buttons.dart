@@ -14,7 +14,7 @@ part 'buttons.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterElevatedButton
     with _$FlutterElevatedButton
-    implements ZacBuilder<ElevatedButton> {
+    implements ZacBuild<ElevatedButton> {
   const FlutterElevatedButton._();
 
   static const String unionValue = 'f:1:ElevatedButton';
@@ -76,7 +76,7 @@ class FlutterElevatedButton
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterOutlinedButton
     with _$FlutterOutlinedButton
-    implements ZacBuilder<OutlinedButton> {
+    implements ZacBuild<OutlinedButton> {
   const FlutterOutlinedButton._();
 
   static const String unionValue = 'f:1:OutlinedButton';
@@ -138,7 +138,7 @@ class FlutterOutlinedButton
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterTextButton
     with _$FlutterTextButton
-    implements ZacBuilder<TextButton> {
+    implements ZacBuild<TextButton> {
   const FlutterTextButton._();
 
   static const String unionValue = 'f:1:TextButton';

@@ -16,7 +16,7 @@ part 'app_bar.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
+class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
   const FlutterAppBar._();
 
   static const String unionValue = 'f:1:AppBar';

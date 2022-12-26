@@ -16,7 +16,7 @@ part 'completer.g.dart';
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacCompleterVoidProvider
-    with _$ZacCompleterVoidProvider, ZacBuilder<Widget> {
+    with _$ZacCompleterVoidProvider, ZacBuild<Widget> {
   const ZacCompleterVoidProvider._();
 
   factory ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =>

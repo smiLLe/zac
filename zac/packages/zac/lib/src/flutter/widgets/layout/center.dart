@@ -10,7 +10,7 @@ part 'center.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterCenter with _$FlutterCenter implements ZacBuilder<Center> {
+class FlutterCenter with _$FlutterCenter implements ZacBuild<Center> {
   const FlutterCenter._();
 
   static const String unionValue = 'f:1:Center';

@@ -10,7 +10,7 @@ part 'padding.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterPadding with _$FlutterPadding implements ZacBuilder<Padding> {
+class FlutterPadding with _$FlutterPadding implements ZacBuild<Padding> {
   const FlutterPadding._();
 
   static const String unionValue = 'f:1:Padding';

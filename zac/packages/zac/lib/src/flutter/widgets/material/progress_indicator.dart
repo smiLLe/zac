@@ -12,7 +12,7 @@ part 'progress_indicator.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterProgressIndicator
     with _$FlutterProgressIndicator
-    implements ZacBuilder<ProgressIndicator> {
+    implements ZacBuild<ProgressIndicator> {
   const FlutterProgressIndicator._();
 
   static const String unionValueLinearProgressIndicator =

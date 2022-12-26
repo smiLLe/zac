@@ -6,17 +6,15 @@ import 'package:zac/src/zac/shared_value.dart';
 
 part 'zac_builder.freezed.dart';
 
-typedef ZacSharedBuilder = ZacBuilder<Object>;
-
-abstract class ZacBuilder<T> {
-  factory ZacBuilder.fromJson(Map<String, dynamic> json) {
+abstract class ZacBuild<T> {
+  factory ZacBuild.fromJson(Map<String, dynamic> json) {
     assert(() {
       /// Check if item can be converted
       ConverterHelper.ifRegisteredBuilderCb(
         json,
         orElse: () {
           throw StateError('''
-It was not possible to create an instance of ${ZacBuilder<T>} from JSON.
+It was not possible to create an instance of ${ZacBuild<T>} from JSON.
 The data could not be converted as no valid converter was found
 or the given JSON was of an unsupported type.
 This will fail on production.
@@ -25,16 +23,16 @@ The data: $json''');
       );
 
       final builder = ConverterHelper.convertToType<Object?>(json);
-      if (builder is! ZacBuilder<T>) {
+      if (builder is! ZacBuild<T>) {
         throw StateError('''
-It was not possible to create ${ZacBuilder<T>} because the created builder
+It was not possible to create ${ZacBuild<T>} because the created builder
 was of a different type.
 This will fail on production.
 Created builder: $builder''');
       }
       return true;
     }());
-    return ConverterHelper.convertToType<ZacBuilder<T>>(json);
+    return ConverterHelper.convertToType<ZacBuild<T>>(json);
   }
 
   T build(ZacContext zacContext);

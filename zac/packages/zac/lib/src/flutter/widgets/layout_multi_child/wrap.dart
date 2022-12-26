@@ -12,7 +12,7 @@ part 'wrap.freezed.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterWrap with _$FlutterWrap implements ZacBuilder<Wrap> {
+class FlutterWrap with _$FlutterWrap implements ZacBuild<Wrap> {
   const FlutterWrap._();
 
   static const String unionValue = 'f:1:Wrap';

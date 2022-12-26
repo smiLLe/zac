@@ -12,7 +12,7 @@ part 'keyboard.g.dart';
 class FlutterScrollViewKeyboardDismissBehavior
     with
         _$FlutterScrollViewKeyboardDismissBehavior,
-        ZacBuilder<ScrollViewKeyboardDismissBehavior> {
+        ZacBuild<ScrollViewKeyboardDismissBehavior> {
   const FlutterScrollViewKeyboardDismissBehavior._();
 
   factory FlutterScrollViewKeyboardDismissBehavior.fromJson(

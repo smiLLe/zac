@@ -8,7 +8,7 @@ part 'dialog.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
+class FlutterDialogs with _$FlutterDialogs implements ZacBuild<Widget> {
   const FlutterDialogs._();
 
   static const String unionValueDialog = 'f:1:Dialog';

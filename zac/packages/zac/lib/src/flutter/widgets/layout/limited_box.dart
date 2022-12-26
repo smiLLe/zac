@@ -12,7 +12,7 @@ part 'limited_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterLimitedBox
     with _$FlutterLimitedBox
-    implements ZacBuilder<LimitedBox> {
+    implements ZacBuild<LimitedBox> {
   const FlutterLimitedBox._();
 
   static const String unionValue = 'f:1:LimitedBox';

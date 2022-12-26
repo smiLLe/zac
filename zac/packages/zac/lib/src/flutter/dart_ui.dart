@@ -13,7 +13,7 @@ part 'dart_ui.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
+class FlutterColor with _$FlutterColor, ZacBuild<Color> {
   const FlutterColor._();
 
   factory FlutterColor.fromJson(Map<String, dynamic> json) =>
@@ -55,7 +55,7 @@ class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
+class FlutterOffset with _$FlutterOffset, ZacBuild<Offset> {
   const FlutterOffset._();
 
   factory FlutterOffset.fromJson(Map<String, dynamic> json) =>
@@ -87,7 +87,7 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
+class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuild<BlurStyle> {
   const FlutterBlurStyle._();
 
   factory FlutterBlurStyle.fromJson(Map<String, dynamic> json) =>
@@ -122,7 +122,7 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
+class FlutterRadius with _$FlutterRadius, ZacBuild<Radius> {
   const FlutterRadius._();
 
   factory FlutterRadius.fromJson(Map<String, dynamic> json) =>
@@ -153,7 +153,7 @@ class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDirection
-    with _$FlutterTextDirection, ZacBuilder<TextDirection> {
+    with _$FlutterTextDirection, ZacBuild<TextDirection> {
   const FlutterTextDirection._();
 
   factory FlutterTextDirection.fromJson(Map<String, dynamic> json) =>
@@ -177,7 +177,7 @@ class FlutterTextDirection
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
+class FlutterClip with _$FlutterClip, ZacBuild<Clip> {
   const FlutterClip._();
 
   factory FlutterClip.fromJson(Map<String, dynamic> json) =>
@@ -208,7 +208,7 @@ class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuilder<TextBaseline> {
+class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuild<TextBaseline> {
   const FlutterTextBaseline._();
 
   factory FlutterTextBaseline.fromJson(Map<String, dynamic> json) =>
@@ -234,7 +234,7 @@ class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuilder<TextBaseline> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
+class FlutterFontWeight with _$FlutterFontWeight, ZacBuild<FontWeight> {
   const FlutterFontWeight._();
 
   factory FlutterFontWeight.fromJson(Map<String, dynamic> json) =>
@@ -297,7 +297,7 @@ class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontStyle with _$FlutterFontStyle, ZacBuilder<FontStyle> {
+class FlutterFontStyle with _$FlutterFontStyle, ZacBuild<FontStyle> {
   const FlutterFontStyle._();
 
   factory FlutterFontStyle.fromJson(Map<String, dynamic> json) =>
@@ -323,7 +323,7 @@ class FlutterFontStyle with _$FlutterFontStyle, ZacBuilder<FontStyle> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecoration
-    with _$FlutterTextDecoration, ZacBuilder<TextDecoration> {
+    with _$FlutterTextDecoration, ZacBuild<TextDecoration> {
   const FlutterTextDecoration._();
 
   factory FlutterTextDecoration.fromJson(Map<String, dynamic> json) =>
@@ -360,7 +360,7 @@ class FlutterTextDecoration
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextLeadingDistribution
-    with _$FlutterTextLeadingDistribution, ZacBuilder<TextLeadingDistribution> {
+    with _$FlutterTextLeadingDistribution, ZacBuild<TextLeadingDistribution> {
   const FlutterTextLeadingDistribution._();
 
   factory FlutterTextLeadingDistribution.fromJson(Map<String, dynamic> json) =>
@@ -388,7 +388,7 @@ class FlutterTextLeadingDistribution
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterLocale with _$FlutterLocale, ZacBuilder<Locale> {
+class FlutterLocale with _$FlutterLocale, ZacBuild<Locale> {
   const FlutterLocale._();
 
   factory FlutterLocale.fromJson(Map<String, dynamic> json) =>
@@ -410,7 +410,7 @@ class FlutterLocale with _$FlutterLocale, ZacBuilder<Locale> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
+class FlutterFontFeature with _$FlutterFontFeature, ZacBuild<FontFeature> {
   const FlutterFontFeature._();
 
   factory FlutterFontFeature.fromJson(Map<String, dynamic> json) =>
@@ -556,7 +556,7 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextDecorationStyle
-    with _$FlutterTextDecorationStyle, ZacBuilder<TextDecorationStyle> {
+    with _$FlutterTextDecorationStyle, ZacBuild<TextDecorationStyle> {
   const FlutterTextDecorationStyle._();
 
   factory FlutterTextDecorationStyle.fromJson(Map<String, dynamic> json) =>
@@ -598,7 +598,7 @@ class FlutterTextDecorationStyle
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
+class FlutterTextAlign with _$FlutterTextAlign, ZacBuild<TextAlign> {
   const FlutterTextAlign._();
 
   factory FlutterTextAlign.fromJson(Map<String, dynamic> json) =>
@@ -642,7 +642,7 @@ class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterTextHeightBehavior
-    with _$FlutterTextHeightBehavior, ZacBuilder<TextHeightBehavior> {
+    with _$FlutterTextHeightBehavior, ZacBuild<TextHeightBehavior> {
   const FlutterTextHeightBehavior._();
 
   factory FlutterTextHeightBehavior.fromJson(Map<String, dynamic> json) =>
@@ -674,7 +674,7 @@ class FlutterTextHeightBehavior
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
+class FlutterBlendMode with _$FlutterBlendMode, ZacBuild<BlendMode> {
   const FlutterBlendMode._();
 
   factory FlutterBlendMode.fromJson(Map<String, dynamic> json) =>
@@ -809,7 +809,7 @@ class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
+class FlutterRect with _$FlutterRect, ZacBuild<Rect> {
   const FlutterRect._();
 
   factory FlutterRect.fromJson(Map<String, dynamic> json) =>
@@ -873,7 +873,7 @@ class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterFilterQuality
-    with _$FlutterFilterQuality, ZacBuilder<FilterQuality> {
+    with _$FlutterFilterQuality, ZacBuild<FilterQuality> {
   const FlutterFilterQuality._();
 
   factory FlutterFilterQuality.fromJson(Map<String, dynamic> json) =>
@@ -908,7 +908,7 @@ class FlutterFilterQuality
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterBrightness with _$FlutterBrightness, ZacBuilder<Brightness> {
+class FlutterBrightness with _$FlutterBrightness, ZacBuild<Brightness> {
   const FlutterBrightness._();
 
   factory FlutterBrightness.fromJson(Map<String, dynamic> json) =>
@@ -932,7 +932,7 @@ class FlutterBrightness with _$FlutterBrightness, ZacBuilder<Brightness> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
+class FlutterSize with _$FlutterSize, ZacBuild<Size> {
   const FlutterSize._();
 
   factory FlutterSize.fromJson(Map<String, dynamic> json) =>
@@ -957,7 +957,7 @@ class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxHeightStyle
-    with _$FlutterBoxHeightStyle, ZacBuilder<BoxHeightStyle> {
+    with _$FlutterBoxHeightStyle, ZacBuild<BoxHeightStyle> {
   const FlutterBoxHeightStyle._();
 
   factory FlutterBoxHeightStyle.fromJson(Map<String, dynamic> json) =>
@@ -1004,7 +1004,7 @@ class FlutterBoxHeightStyle
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
 class FlutterBoxWidthStyle
-    with _$FlutterBoxWidthStyle, ZacBuilder<BoxWidthStyle> {
+    with _$FlutterBoxWidthStyle, ZacBuild<BoxWidthStyle> {
   const FlutterBoxWidthStyle._();
 
   factory FlutterBoxWidthStyle.fromJson(Map<String, dynamic> json) =>
@@ -1031,7 +1031,7 @@ class FlutterBoxWidthStyle
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartUi)
-class FlutterShadow with _$FlutterShadow implements ZacBuilder<Shadow> {
+class FlutterShadow with _$FlutterShadow implements ZacBuild<Shadow> {
   const FlutterShadow._();
 
   static const String unionValue = 'f:1:Shadow';

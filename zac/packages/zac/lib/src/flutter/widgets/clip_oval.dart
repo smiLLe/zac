@@ -13,7 +13,7 @@ part 'clip_oval.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterClipOval with _$FlutterClipOval implements ZacBuilder<ClipOval> {
+class FlutterClipOval with _$FlutterClipOval implements ZacBuild<ClipOval> {
   const FlutterClipOval._();
 
   static const String unionValue = 'f:1:ClipOval';

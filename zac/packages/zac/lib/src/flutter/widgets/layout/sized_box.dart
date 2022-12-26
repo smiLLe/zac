@@ -11,7 +11,7 @@ part 'sized_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSizedBox with _$FlutterSizedBox implements ZacBuilder<SizedBox> {
+class FlutterSizedBox with _$FlutterSizedBox implements ZacBuild<SizedBox> {
   const FlutterSizedBox._();
 
   static const String unionValue = 'f:1:SizedBox';

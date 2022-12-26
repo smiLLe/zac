@@ -25,7 +25,7 @@ abstract class RouteWithArgs {
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute
-    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
+    implements ZacBuild<Route<Object?>>, RouteWithArgs {
   const FlutterMaterialPageRoute._();
 
   factory FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =>
@@ -92,7 +92,7 @@ class FlutterMaterialPageRoute
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
-    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
+    implements ZacBuild<Route<Object?>>, RouteWithArgs {
   const FlutterPageRouteBuilder._();
 
   factory FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =>
@@ -202,9 +202,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterNavigator
-    with _$FlutterNavigator
-    implements ZacBuilder<Navigator> {
+class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
   const FlutterNavigator._();
 
   factory FlutterNavigator.fromJson(Map<String, dynamic> json) =>
@@ -409,7 +407,7 @@ class FlutterNavigatorActions
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
+class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
   const FlutterRouteFactory._();
 
   factory FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
@@ -417,7 +415,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
 
   @FreezedUnionValue('f:1:RouteFactory')
   factory FlutterRouteFactory({
-    required Map<String, ZacBuilder<Route<Object?>>> routes,
+    required Map<String, ZacBuild<Route<Object?>>> routes,
 
     /// Key of the map equals the route name. Value of the map equals the
     /// [SharedValue] family.
@@ -452,7 +450,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterRouteSettings
-    with _$FlutterRouteSettings, ZacBuilder<RouteSettings> {
+    with _$FlutterRouteSettings, ZacBuild<RouteSettings> {
   const FlutterRouteSettings._();
 
   factory FlutterRouteSettings.fromJson(Map<String, dynamic> json) =>

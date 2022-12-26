@@ -12,7 +12,7 @@ part 'flexible.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterFlexible with _$FlutterFlexible implements ZacBuilder<Flexible> {
+class FlutterFlexible with _$FlutterFlexible implements ZacBuild<Flexible> {
   const FlutterFlexible._();
 
   static const String unionValue = 'f:1:Flexible';

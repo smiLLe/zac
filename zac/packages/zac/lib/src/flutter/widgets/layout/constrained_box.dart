@@ -13,7 +13,7 @@ part 'constrained_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterConstrainedBox
     with _$FlutterConstrainedBox
-    implements ZacBuilder<ConstrainedBox> {
+    implements ZacBuild<ConstrainedBox> {
   const FlutterConstrainedBox._();
 
   static const String unionValue = 'f:1:ConstrainedBox';

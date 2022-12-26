@@ -12,9 +12,7 @@ part 'fitted_box.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterFittedBox
-    with _$FlutterFittedBox
-    implements ZacBuilder<FittedBox> {
+class FlutterFittedBox with _$FlutterFittedBox implements ZacBuild<FittedBox> {
   const FlutterFittedBox._();
 
   static const String unionValue = 'f:1:FittedBox';

@@ -15,7 +15,7 @@ part 'single_child_scroll_view.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSingleChildScrollView
     with _$FlutterSingleChildScrollView
-    implements ZacBuilder<SingleChildScrollView> {
+    implements ZacBuild<SingleChildScrollView> {
   const FlutterSingleChildScrollView._();
 
   static const String unionValue = 'f:1:SingleChildScrollView';

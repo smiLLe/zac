@@ -10,7 +10,7 @@ part 'grid_view.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
+class FlutterGridView with _$FlutterGridView implements ZacBuild<GridView> {
   const FlutterGridView._();
 
   static const String unionValue = 'f:1:GridView';

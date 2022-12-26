@@ -13,7 +13,7 @@ part 'material.g.dart';
 @ZacGenerate()
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
-    implements ZacBuilder<OutlineInputBorder> {
+    implements ZacBuild<OutlineInputBorder> {
   const FlutterOutlineInputBorder._();
 
   static const String unionValue = 'f:1:OutlineInputBorder';
@@ -47,7 +47,7 @@ class FlutterOutlineInputBorder
 @ZacGenerate()
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
-    implements ZacBuilder<UnderlineInputBorder> {
+    implements ZacBuild<UnderlineInputBorder> {
   const FlutterUnderlineInputBorder._();
 
   static const String unionValue = 'f:1:UnderlineInputBorder';

@@ -12,7 +12,7 @@ part 'clip_rect.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterClipRect with _$FlutterClipRect implements ZacBuilder<ClipRect> {
+class FlutterClipRect with _$FlutterClipRect implements ZacBuild<ClipRect> {
   const FlutterClipRect._();
 
   static const String unionValue = 'f:1:ClipRect';

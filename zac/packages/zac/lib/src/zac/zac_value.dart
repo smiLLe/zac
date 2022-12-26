@@ -12,7 +12,7 @@ part 'zac_value.g.dart';
 
 bool isType<T, Y>() => T == Y;
 
-extension XZacValue<T> on ZacBuilder<T> {
+extension XZacValue<T> on ZacBuild<T> {
   ZacValue<T> toZacValue() {
     return ZacValue<T>(this);
   }
@@ -20,7 +20,7 @@ extension XZacValue<T> on ZacBuilder<T> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
-class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
+class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuild<T> {
   const ZacValue._();
 
   static const String union = 'z:1:ZacValue';
@@ -102,7 +102,7 @@ $data''');
       (obj) {
         final value = obj.value;
         if (value is T) return value as T;
-        if (value is ZacBuilder<T>) {
+        if (value is ZacBuild<T>) {
           return value.build(zacContext);
         }
         throw StateError('');
@@ -167,7 +167,7 @@ Value after: $transformedVal''');
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValueList<T extends Object?, X extends List<T>?>
     with _$ZacValueList<T, X>
-    implements ZacBuilder<X> {
+    implements ZacBuild<X> {
   const ZacValueList._();
 
   static const String unionFromValue = 'z:1:ZacValueList';
@@ -310,7 +310,7 @@ Value after: $transformedVal''');
         final list = [
           ...consumedValue.map<T>((dynamic e) {
             final value =
-                e is ZacBuilder<Object?> ? e.build(zacContext) : e as Object?;
+                e is ZacBuild<Object?> ? e.build(zacContext) : e as Object?;
             return _transformItem(
               value: value,
               zacContext: zacContext,
@@ -343,7 +343,7 @@ A ${List<T>} is expected but the data is: $transformedList''');
 @ZacGenerate(order: zacGenerateOrderFlutterAbstractsB + 1)
 class ZacValueMap<T extends Object?, X extends Map<String, T>?>
     with _$ZacValueMap<T, X>
-    implements ZacBuilder<X> {
+    implements ZacBuild<X> {
   const ZacValueMap._();
 
   static const String unionFromValue = 'z:1:ZacValueMap';
@@ -484,8 +484,8 @@ Value after: $transformedVal''');
         final map = <Object?, Object?>{
           for (var entry in consumedValue.entries)
             entry.key: _transformItem(
-              value: entry.value is ZacBuilder<Object?>
-                  ? (entry.value as ZacBuilder<Object?>).build(zacContext)
+              value: entry.value is ZacBuild<Object?>
+                  ? (entry.value as ZacBuild<Object?>).build(zacContext)
                   : entry.value,
               zacContext: zacContext,
               transformer: obj.itemTransformer,

@@ -15,7 +15,7 @@ part 'fractional_translation.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterFractionalTranslation
     with _$FlutterFractionalTranslation
-    implements ZacBuilder<FractionalTranslation> {
+    implements ZacBuild<FractionalTranslation> {
   const FlutterFractionalTranslation._();
 
   static const String unionValue = 'f:1:FractionalTranslation';

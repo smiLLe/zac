@@ -14,7 +14,7 @@ part 'unconstrained_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
-    implements ZacBuilder<UnconstrainedBox> {
+    implements ZacBuild<UnconstrainedBox> {
   const FlutterUnconstrainedBox._();
 
   static const String unionValue = 'f:1:UnconstrainedBox';

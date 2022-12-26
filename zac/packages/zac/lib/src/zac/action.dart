@@ -102,7 +102,7 @@ extension Interactions on ZacActions {
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActions.once';

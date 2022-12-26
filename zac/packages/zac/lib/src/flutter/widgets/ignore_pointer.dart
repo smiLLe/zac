@@ -14,7 +14,7 @@ part 'ignore_pointer.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterIgnorePointer
     with _$FlutterIgnorePointer
-    implements ZacBuilder<IgnorePointer> {
+    implements ZacBuild<IgnorePointer> {
   const FlutterIgnorePointer._();
 
   static const String unionValue = 'f:1:IgnorePointer';

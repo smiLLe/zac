@@ -92,7 +92,7 @@ Could not find State "$state" in $this'''),
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineProviderBuilder
     with _$ZacStateMachineProviderBuilder
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   const ZacStateMachineProviderBuilder._();
   static const String unionValue = 'z:1:StateMachine.provide';
 
@@ -180,7 +180,7 @@ because there was already a transition.''');
 @ZacGenerate(order: zacGenerateOrderZacWidget)
 class ZacStateMachineBuildStateBuilder
     with _$ZacStateMachineBuildStateBuilder
-    implements ZacBuilder<Widget> {
+    implements ZacBuild<Widget> {
   const ZacStateMachineBuildStateBuilder._();
   static const String unionValue = 'z:1:StateMachine:BuildState';
 

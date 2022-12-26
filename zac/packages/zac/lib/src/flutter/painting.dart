@@ -12,7 +12,7 @@ part 'painting.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxShape with _$FlutterBoxShape, ZacBuilder<BoxShape> {
+class FlutterBoxShape with _$FlutterBoxShape, ZacBuild<BoxShape> {
   const FlutterBoxShape._();
 
   factory FlutterBoxShape.fromJson(Map<String, dynamic> json) =>
@@ -39,7 +39,7 @@ class FlutterBoxShape with _$FlutterBoxShape, ZacBuilder<BoxShape> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterAxis with _$FlutterAxis, ZacBuilder<Axis> {
+class FlutterAxis with _$FlutterAxis, ZacBuild<Axis> {
   const FlutterAxis._();
 
   factory FlutterAxis.fromJson(Map<String, dynamic> json) =>
@@ -65,7 +65,7 @@ class FlutterAxis with _$FlutterAxis, ZacBuilder<Axis> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterVerticalDirection
-    with _$FlutterVerticalDirection, ZacBuilder<VerticalDirection> {
+    with _$FlutterVerticalDirection, ZacBuild<VerticalDirection> {
   const FlutterVerticalDirection._();
 
   factory FlutterVerticalDirection.fromJson(Map<String, dynamic> json) =>
@@ -90,7 +90,7 @@ class FlutterVerticalDirection
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuilder<TextOverflow> {
+class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuild<TextOverflow> {
   const FlutterTextOverflow._();
 
   factory FlutterTextOverflow.fromJson(Map<String, dynamic> json) =>
@@ -125,7 +125,7 @@ class FlutterTextOverflow with _$FlutterTextOverflow, ZacBuilder<TextOverflow> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuilder<StrutStyle> {
+class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuild<StrutStyle> {
   const FlutterStrutStyle._();
 
   factory FlutterStrutStyle.fromJson(Map<String, dynamic> json) =>
@@ -203,7 +203,7 @@ class FlutterStrutStyle with _$FlutterStrutStyle, ZacBuilder<StrutStyle> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextWidthBasis
-    with _$FlutterTextWidthBasis, ZacBuilder<TextWidthBasis> {
+    with _$FlutterTextWidthBasis, ZacBuild<TextWidthBasis> {
   const FlutterTextWidthBasis._();
 
   factory FlutterTextWidthBasis.fromJson(Map<String, dynamic> json) =>
@@ -230,7 +230,7 @@ class FlutterTextWidthBasis
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxFit with _$FlutterBoxFit, ZacBuilder<BoxFit> {
+class FlutterBoxFit with _$FlutterBoxFit, ZacBuild<BoxFit> {
   const FlutterBoxFit._();
 
   factory FlutterBoxFit.fromJson(Map<String, dynamic> json) =>
@@ -277,7 +277,7 @@ class FlutterBoxFit with _$FlutterBoxFit, ZacBuilder<BoxFit> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuilder<ImageRepeat> {
+class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuild<ImageRepeat> {
   const FlutterImageRepeat._();
 
   factory FlutterImageRepeat.fromJson(Map<String, dynamic> json) =>
@@ -312,7 +312,7 @@ class FlutterImageRepeat with _$FlutterImageRepeat, ZacBuilder<ImageRepeat> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
+class FlutterTextStyle with _$FlutterTextStyle, ZacBuild<TextStyle> {
   const FlutterTextStyle._();
 
   factory FlutterTextStyle.fromJson(Map<String, dynamic> json) =>
@@ -384,7 +384,7 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterTextAlignVertical
-    with _$FlutterTextAlignVertical, ZacBuilder<TextAlignVertical> {
+    with _$FlutterTextAlignVertical, ZacBuild<TextAlignVertical> {
   const FlutterTextAlignVertical._();
 
   factory FlutterTextAlignVertical.fromJson(Map<String, dynamic> json) =>
@@ -417,9 +417,7 @@ class FlutterTextAlignVertical
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBoxShadow
-    with _$FlutterBoxShadow
-    implements ZacBuilder<BoxShadow> {
+class FlutterBoxShadow with _$FlutterBoxShadow implements ZacBuild<BoxShadow> {
   const FlutterBoxShadow._();
 
   static const String unionValue = 'f:1:BoxShadow';
@@ -454,9 +452,7 @@ class FlutterBoxShadow
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterAlignment
-    with _$FlutterAlignment
-    implements ZacBuilder<Alignment> {
+class FlutterAlignment with _$FlutterAlignment implements ZacBuild<Alignment> {
   const FlutterAlignment._();
 
   static const String unionValue = 'f:1:Alignment';
@@ -530,7 +526,7 @@ class FlutterAlignment
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterAlignmentDirectional
     with _$FlutterAlignmentDirectional
-    implements ZacBuilder<AlignmentDirectional> {
+    implements ZacBuild<AlignmentDirectional> {
   const FlutterAlignmentDirectional._();
 
   static const String unionValue = 'f:1:AlignmentDirectional';
@@ -620,7 +616,7 @@ class FlutterAlignmentDirectional
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterFractionalOffset
     with _$FlutterFractionalOffset
-    implements ZacBuilder<FractionalOffset> {
+    implements ZacBuild<FractionalOffset> {
   const FlutterFractionalOffset._();
 
   static const String unionValue = 'f:1:FractionalOffset';
@@ -646,7 +642,7 @@ class FlutterFractionalOffset
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderDirectional
     with _$FlutterBorderDirectional
-    implements ZacBuilder<BorderDirectional> {
+    implements ZacBuild<BorderDirectional> {
   const FlutterBorderDirectional._();
 
   static const String unionValue = 'f:1:BorderDirectional';
@@ -679,7 +675,7 @@ class FlutterBorderDirectional
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBorder with _$FlutterBorder implements ZacBuilder<Border> {
+class FlutterBorder with _$FlutterBorder implements ZacBuild<Border> {
   const FlutterBorder._();
 
   static const String unionValue = 'f:1:Border';
@@ -727,7 +723,7 @@ class FlutterBorder with _$FlutterBorder implements ZacBuilder<Border> {
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuilder<BorderStyle> {
+class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuild<BorderStyle> {
   const FlutterBorderStyle._();
 
   factory FlutterBorderStyle.fromJson(Map<String, dynamic> json) =>
@@ -756,7 +752,7 @@ class FlutterBorderStyle with _$FlutterBorderStyle, ZacBuilder<BorderStyle> {
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBorderRadius
     with _$FlutterBorderRadius
-    implements ZacBuilder<BorderRadius> {
+    implements ZacBuild<BorderRadius> {
   const FlutterBorderRadius._();
 
   static const String unionValueAll = 'f:1:BorderRadius.all';
@@ -800,7 +796,7 @@ class FlutterBorderRadius
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
-class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
+class FlutterBorderSide with _$FlutterBorderSide, ZacBuild<BorderSide> {
   const FlutterBorderSide._();
 
   factory FlutterBorderSide.fromJson(Map<String, dynamic> json) =>
@@ -831,7 +827,7 @@ class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterCircleBorder
     with _$FlutterCircleBorder
-    implements ZacBuilder<CircleBorder> {
+    implements ZacBuild<CircleBorder> {
   const FlutterCircleBorder._();
 
   static const String unionValue = 'f:1:CircleBorder';
@@ -857,7 +853,7 @@ class FlutterCircleBorder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterRoundedRectangleBorder
     with _$FlutterRoundedRectangleBorder
-    implements ZacBuilder<ShapeBorder> {
+    implements ZacBuild<ShapeBorder> {
   const FlutterRoundedRectangleBorder._();
 
   static const String unionValue = 'f:1:RoundedRectangleBorder';
@@ -888,7 +884,7 @@ class FlutterRoundedRectangleBorder
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterBoxDecoration
     with _$FlutterBoxDecoration
-    implements ZacBuilder<BoxDecoration> {
+    implements ZacBuild<BoxDecoration> {
   const FlutterBoxDecoration._();
 
   static const String unionValue = 'f:1:BoxDecoration';
@@ -926,7 +922,7 @@ class FlutterBoxDecoration
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterShapeDecoration
     with _$FlutterShapeDecoration
-    implements ZacBuilder<ShapeDecoration> {
+    implements ZacBuild<ShapeDecoration> {
   const FlutterShapeDecoration._();
 
   static const String unionValue = 'f:1:ShapeDecoration';
@@ -961,7 +957,7 @@ class FlutterShapeDecoration
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsets
     with _$FlutterEdgeInsets
-    implements ZacBuilder<EdgeInsets> {
+    implements ZacBuild<EdgeInsets> {
   const FlutterEdgeInsets._();
 
   static const unionValueAll = 'f:1:EdgeInsets.all';
@@ -1014,7 +1010,7 @@ class FlutterEdgeInsets
 @ZacGenerate(order: zacGenerateOrderDartClasses)
 class FlutterEdgeInsetsDirectional
     with _$FlutterEdgeInsetsDirectional
-    implements ZacBuilder<EdgeInsetsDirectional> {
+    implements ZacBuild<EdgeInsetsDirectional> {
   const FlutterEdgeInsetsDirectional._();
 
   static const String unionValueAll = 'f:1:EdgeInsetsDirectional.all';

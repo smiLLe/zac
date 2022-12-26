@@ -11,7 +11,7 @@ part 'safe_area.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
+class FlutterSafeArea with _$FlutterSafeArea implements ZacBuild<SafeArea> {
   const FlutterSafeArea._();
 
   static const String unionValue = 'f:1:SafeArea';

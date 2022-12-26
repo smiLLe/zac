@@ -13,7 +13,7 @@ part 'card.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterCard with _$FlutterCard implements ZacBuilder<Card> {
+class FlutterCard with _$FlutterCard implements ZacBuild<Card> {
   const FlutterCard._();
 
   static const String unionValue = 'f:1:Card';

@@ -12,7 +12,7 @@ part 'aspect_ratio.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterAspectRatio
     with _$FlutterAspectRatio
-    implements ZacBuilder<AspectRatio> {
+    implements ZacBuild<AspectRatio> {
   const FlutterAspectRatio._();
 
   static const String unionValue = 'f:1:AspectRatio';

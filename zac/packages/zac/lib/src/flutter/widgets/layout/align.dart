@@ -11,7 +11,7 @@ part 'align.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterAlign with _$FlutterAlign implements ZacBuilder<Align> {
+class FlutterAlign with _$FlutterAlign implements ZacBuild<Align> {
   const FlutterAlign._();
 
   static const String unionValue = 'f:1:Align';

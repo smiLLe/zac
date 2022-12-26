@@ -13,7 +13,7 @@ part 'decorated_box.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterDecoratedBox
     with _$FlutterDecoratedBox
-    implements ZacBuilder<DecoratedBox> {
+    implements ZacBuild<DecoratedBox> {
   const FlutterDecoratedBox._();
 
   static const String unionValue = 'f:1:DecoratedBox';

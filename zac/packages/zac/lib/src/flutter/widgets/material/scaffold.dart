@@ -15,7 +15,7 @@ part 'scaffold.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterScaffold with _$FlutterScaffold implements ZacBuilder<Scaffold> {
+class FlutterScaffold with _$FlutterScaffold implements ZacBuild<Scaffold> {
   const FlutterScaffold._();
 
   static const String unionValue = 'f:1:Scaffold';
@@ -278,7 +278,7 @@ class FlutterScaffoldMessenger
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
+class FlutterSnackBar with _$FlutterSnackBar implements ZacBuild<SnackBar> {
   const FlutterSnackBar._();
 
   static const String unionValue = 'f:1:SnackBar';
@@ -332,7 +332,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarBehavior
-    with _$FlutterSnackBarBehavior, ZacBuilder<SnackBarBehavior> {
+    with _$FlutterSnackBarBehavior, ZacBuild<SnackBarBehavior> {
   const FlutterSnackBarBehavior._();
 
   factory FlutterSnackBarBehavior.fromJson(Map<String, dynamic> json) =>
@@ -361,7 +361,7 @@ class FlutterSnackBarBehavior
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterSnackBarAction
     with _$FlutterSnackBarAction
-    implements ZacBuilder<SnackBarAction> {
+    implements ZacBuild<SnackBarAction> {
   const FlutterSnackBarAction._();
 
   static const String unionValue = 'f:1:SnackBarAction';
@@ -398,7 +398,7 @@ class FlutterSnackBarAction
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterMaterialBanner
     with _$FlutterMaterialBanner
-    implements ZacBuilder<MaterialBanner> {
+    implements ZacBuild<MaterialBanner> {
   const FlutterMaterialBanner._();
 
   static const String unionValue = 'f:1:MaterialBanner';

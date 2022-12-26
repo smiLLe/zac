@@ -1210,7 +1210,7 @@ FlutterRouteFactory _$FlutterRouteFactoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRouteFactory {
-  Map<String, ZacBuilder<Route<Object?>>> get routes =>
+  Map<String, ZacBuild<Route<Object?>>> get routes =>
       throw _privateConstructorUsedError;
 
   /// Key of the map equals the route name. Value of the map equals the
@@ -1229,7 +1229,7 @@ mixin _$FlutterRouteFactory {
 @JsonSerializable(createToJson: false)
 class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   _$_FlutterRouteFactory(
-      {required final Map<String, ZacBuilder<Route<Object?>>> routes,
+      {required final Map<String, ZacBuild<Route<Object?>>> routes,
       required final Map<String, String>? familyNameOfArguments})
       : _routes = routes,
         _familyNameOfArguments = familyNameOfArguments,
@@ -1238,9 +1238,9 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   factory _$_FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterRouteFactoryFromJson(json);
 
-  final Map<String, ZacBuilder<Route<Object?>>> _routes;
+  final Map<String, ZacBuild<Route<Object?>>> _routes;
   @override
-  Map<String, ZacBuilder<Route<Object?>>> get routes {
+  Map<String, ZacBuild<Route<Object?>>> get routes {
     if (_routes is EqualUnmodifiableMapView) return _routes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_routes);
@@ -1295,7 +1295,7 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
 
 abstract class _FlutterRouteFactory extends FlutterRouteFactory {
   factory _FlutterRouteFactory(
-          {required final Map<String, ZacBuilder<Route<Object?>>> routes,
+          {required final Map<String, ZacBuild<Route<Object?>>> routes,
           required final Map<String, String>? familyNameOfArguments}) =
       _$_FlutterRouteFactory;
   _FlutterRouteFactory._() : super._();
@@ -1304,7 +1304,7 @@ abstract class _FlutterRouteFactory extends FlutterRouteFactory {
       _$_FlutterRouteFactory.fromJson;
 
   @override
-  Map<String, ZacBuilder<Route<Object?>>> get routes;
+  Map<String, ZacBuild<Route<Object?>>> get routes;
   @override
 
   /// Key of the map equals the route name. Value of the map equals the

@@ -192,7 +192,7 @@ _$_FlutterRouteFactory _$$_FlutterRouteFactoryFromJson(
     _$_FlutterRouteFactory(
       routes: (json['routes'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
-            k, ZacBuilder<Route<Object?>>.fromJson(e as Map<String, dynamic>)),
+            k, ZacBuild<Route<Object?>>.fromJson(e as Map<String, dynamic>)),
       ),
       familyNameOfArguments:
           (json['familyNameOfArguments'] as Map<String, dynamic>?)?.map(

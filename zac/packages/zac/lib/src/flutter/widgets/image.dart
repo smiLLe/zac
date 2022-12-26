@@ -13,7 +13,7 @@ part 'image.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
+class FlutterImage with _$FlutterImage implements ZacBuild<Image> {
   const FlutterImage._();
 
   static const String unionValueNetwork = 'f:1:Image.network';

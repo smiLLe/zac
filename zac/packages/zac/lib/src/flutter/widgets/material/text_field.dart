@@ -17,9 +17,7 @@ part 'text_field.g.dart';
 
 @freezedZacBuilder
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
-class FlutterTextField
-    with _$FlutterTextField
-    implements ZacBuilder<TextField> {
+class FlutterTextField with _$FlutterTextField implements ZacBuild<TextField> {
   const FlutterTextField._();
 
   static const String unionValue = 'f:1:TextField';

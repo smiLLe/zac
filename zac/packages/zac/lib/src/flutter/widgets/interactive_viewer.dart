@@ -16,7 +16,7 @@ part 'interactive_viewer.g.dart';
 @ZacGenerate(order: zacGenerateOrderFlutterWidget)
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
-    implements ZacBuilder<InteractiveViewer> {
+    implements ZacBuild<InteractiveViewer> {
   const FlutterInteractiveViewer._();
 
   static const String unionValue = 'f:1:InteractiveViewer';
