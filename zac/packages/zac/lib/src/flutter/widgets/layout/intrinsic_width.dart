@@ -27,8 +27,8 @@ class FlutterIntrinsicWidth
 
   IntrinsicWidth _buildWidget(ZacContext zacContext) {
     return IntrinsicWidth(
-      key: key?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

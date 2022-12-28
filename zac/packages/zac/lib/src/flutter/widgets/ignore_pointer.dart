@@ -31,10 +31,10 @@ class FlutterIgnorePointer
 
   IgnorePointer _buildWidget(ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.build(zacContext),
-      ignoring: ignoring?.build(zacContext) ?? true,
-      ignoringSemantics: ignoringSemantics?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      ignoring: ignoring?.getValue(zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

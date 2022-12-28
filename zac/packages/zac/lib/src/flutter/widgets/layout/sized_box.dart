@@ -59,28 +59,28 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacBuild<SizedBox> {
   SizedBox _buildWidget(ZacContext zacContext) {
     return map(
       (value) => SizedBox(
-        key: value.key?.build(zacContext),
-        width: value.width?.build(zacContext),
-        height: value.height?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        width: value.width?.getValue(zacContext),
+        height: value.height?.getValue(zacContext),
+        child: value.child?.getValue(zacContext),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        child: value.child?.getValue(zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.build(zacContext),
-        size: value.size?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        size: value.size?.getValue(zacContext),
+        child: value.child?.getValue(zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        child: value.child?.getValue(zacContext),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.build(zacContext),
-        dimension: value.dimension?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        dimension: value.dimension?.getValue(zacContext),
+        child: value.child?.getValue(zacContext),
       ),
     );
   }

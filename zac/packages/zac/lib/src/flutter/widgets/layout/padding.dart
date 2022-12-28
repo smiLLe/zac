@@ -26,9 +26,9 @@ class FlutterPadding with _$FlutterPadding implements ZacBuild<Padding> {
 
   Padding _buildWidget(ZacContext zacContext) {
     return Padding(
-      key: key?.build(zacContext),
-      padding: padding.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      padding: padding.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

@@ -28,9 +28,9 @@ class FlutterAspectRatio
 
   AspectRatio _buildWidget(ZacContext zacContext) {
     return AspectRatio(
-      aspectRatio: aspectRatio.build(zacContext),
-      key: key?.build(zacContext),
-      child: child?.build(zacContext),
+      aspectRatio: aspectRatio.getValue(zacContext),
+      key: key?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

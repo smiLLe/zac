@@ -29,9 +29,9 @@ class FlutterConstrainedBox
 
   ConstrainedBox _buildWidget(ZacContext zacContext) {
     return ConstrainedBox(
-      key: key?.build(zacContext),
-      constraints: constraints.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      constraints: constraints.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

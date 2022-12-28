@@ -242,7 +242,6 @@ void main() {
                 zacContext: c,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               );
             },
           ),
@@ -362,7 +361,6 @@ void main() {
                 zacContext: zacContext,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               ) as ZacStateMachine;
             },
           ),
@@ -426,7 +424,6 @@ void main() {
                 zacContext: zacContext,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               ) as ZacStateMachine;
             },
           ),
@@ -475,7 +472,6 @@ void main() {
                 zacContext: zacContext,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               ) as ZacStateMachine;
             },
           ),
@@ -523,7 +519,6 @@ void main() {
                 zacContext: zacContext,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               ) as ZacStateMachine);
             },
           ),
@@ -592,7 +587,6 @@ void main() {
                 zacContext: zacContext,
                 consumeType: const SharedValueConsumeType.watch(),
                 family: 'machine',
-                select: null,
               ) as ZacStateMachine;
             },
             child: ZacValue<Widget>(

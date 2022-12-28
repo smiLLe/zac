@@ -43,11 +43,11 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.getValue(zacContext),
       ),
       isolate: (obj) => ZacWidgetIsolated(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.getValue(zacContext),
         errorChild: obj.errorChild,
       ),
     );
@@ -165,7 +165,7 @@ class ZacWidgetIsolated extends StatelessWidget {
             ),
             error: (obj) {
               return ZacUpdateContext(builder: (zacContext) {
-                Widget? error = errorChild?.build(zacContext);
+                Widget? error = errorChild?.getValue(zacContext);
                 assert(() {
                   if (null != errorChild) return true;
                   error = FlutterContainer(

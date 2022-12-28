@@ -53,7 +53,7 @@ void main() {
 
       expect(
           ZacValue<GlobalKey<NavigatorState>>.consume(family: 'shared')
-              .build(zacContext),
+              .getValue(zacContext),
           isA<GlobalKey<NavigatorState>>());
     });
   });
@@ -83,7 +83,7 @@ void main() {
 
       expect(
           ZacValue<GlobalKey<ScaffoldMessengerState>>.consume(family: 'shared')
-              .build(zacContext),
+              .getValue(zacContext),
           isA<GlobalKey<ScaffoldMessengerState>>());
     });
   });

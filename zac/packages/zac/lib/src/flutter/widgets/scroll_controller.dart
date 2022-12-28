@@ -32,15 +32,16 @@ class FlutterScrollController with _$FlutterScrollController, ZacBuild<Widget> {
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return map(
       (obj) => ScrollController(
-        debugLabel: obj.debugLabel?.build(zacContext),
-        initialScrollOffset: obj.initialScrollOffset?.build(zacContext) ?? 0.0,
-        keepScrollOffset: obj.keepScrollOffset?.build(zacContext) ?? true,
+        debugLabel: obj.debugLabel?.getValue(zacContext),
+        initialScrollOffset:
+            obj.initialScrollOffset?.getValue(zacContext) ?? 0.0,
+        keepScrollOffset: obj.keepScrollOffset?.getValue(zacContext) ?? true,
       ),
     );
   }
 
   Widget _childBuilder(ZacContext zacContext) => map(
-        (obj) => obj.child.build(zacContext),
+        (obj) => obj.child.getValue(zacContext),
       );
 
   @override

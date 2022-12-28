@@ -29,9 +29,9 @@ class FlutterSliverPadding
 
   SliverPadding _buildWidget(ZacContext zacContext) {
     return SliverPadding(
-      key: key?.build(zacContext),
-      sliver: sliver?.build(zacContext),
-      padding: padding.build(zacContext),
+      key: key?.getValue(zacContext),
+      sliver: sliver?.getValue(zacContext),
+      padding: padding.getValue(zacContext),
     );
   }
 

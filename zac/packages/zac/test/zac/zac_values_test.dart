@@ -95,7 +95,7 @@ void main() {
           ZacWidget(
             data: LeakContext(
               cb: (zacContext) {
-                obj = ZacValue<String>.fromJson('foo').build(zacContext);
+                obj = ZacValue<String>.fromJson('foo').getValue(zacContext);
               },
             ),
           ),
@@ -116,7 +116,7 @@ void main() {
           ),
         );
 
-        expect(ZacValue<Key>(FlutterValueKey('key')).build(zacContext),
+        expect(ZacValue<Key>(FlutterValueKey('key')).getValue(zacContext),
             const ValueKey('key'));
       });
     });
@@ -156,7 +156,7 @@ void main() {
               ),
             );
 
-            expect(ZacValue<T>.consume(family: 'shared').build(zacContext),
+            expect(ZacValue<T>.consume(family: 'shared').getValue(zacContext),
                 shareValue);
           }
 
@@ -179,7 +179,7 @@ void main() {
                     TestBuildCustomWidget(
                       (zacContext) {
                         return ZacValue<Widget>.consume(family: 'shared')
-                            .build(zacContext);
+                            .getValue(zacContext);
                       },
                     ),
                   ),
@@ -217,7 +217,8 @@ void main() {
               ),
             ),
           );
-          expect(ZacValue<int>.consume(family: 'shared').build(zacContext), 5);
+          expect(
+              ZacValue<int>.consume(family: 'shared').getValue(zacContext), 5);
         });
 
         testWidgets('will throw if shared value is null but null is not wanted',
@@ -241,8 +242,8 @@ void main() {
             ),
           );
           expect(
-              () =>
-                  ZacValue<String>.consume(family: 'shared').build(zacContext),
+              () => ZacValue<String>.consume(family: 'shared')
+                  .getValue(zacContext),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
                   'error message',
@@ -272,7 +273,8 @@ void main() {
             ),
           );
           expect(
-              () => ZacValue<int>.consume(family: 'shared').build(zacContext),
+              () =>
+                  ZacValue<int>.consume(family: 'shared').getValue(zacContext),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
                   'error message',

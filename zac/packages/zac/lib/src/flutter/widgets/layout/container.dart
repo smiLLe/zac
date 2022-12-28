@@ -30,13 +30,13 @@ class FlutterContainer with _$FlutterContainer implements ZacBuild<Container> {
 
   Container _buildWidget(ZacContext zacContext) {
     return Container(
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      padding: padding?.build(zacContext),
-      margin: margin?.build(zacContext),
-      alignment: alignment?.build(zacContext),
-      decoration: decoration?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      color: color?.getValue(zacContext),
+      padding: padding?.getValue(zacContext),
+      margin: margin?.getValue(zacContext),
+      alignment: alignment?.getValue(zacContext),
+      decoration: decoration?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

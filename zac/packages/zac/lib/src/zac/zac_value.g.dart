@@ -13,16 +13,13 @@ _$_ZacValue<T> _$$_ZacValueFromJson<T extends Object?>(
       $type: json['builder'] as String?,
     );
 
-_$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
+_$ZacValueConsume<T> _$$ZacValueConsumeFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValueConsume<T>(
+    _$ZacValueConsume<T>(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
           : ZacTransformers.fromJson(json['transformer'] as Object),
-      select: json['select'] == null
-          ? null
-          : ZacTransformers.fromJson(json['select'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
           : SharedValueConsumeType.fromJson(

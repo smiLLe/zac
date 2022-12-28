@@ -40,20 +40,20 @@ class FlutterText with _$FlutterText implements ZacBuild<Text> {
 
   Text _buildWidget(ZacContext zacContext) {
     return Text(
-      data.build(zacContext),
-      key: key?.build(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
+      data.getValue(zacContext),
+      key: key?.getValue(zacContext),
+      style: style?.getValue(zacContext),
+      strutStyle: strutStyle?.getValue(zacContext),
+      textAlign: textAlign?.getValue(zacContext),
+      textDirection: textDirection?.getValue(zacContext),
       locale: locale?.build(zacContext),
-      softWrap: softWrap?.build(zacContext),
+      softWrap: softWrap?.getValue(zacContext),
       overflow: overflow?.build(zacContext),
-      textScaleFactor: textScaleFactor?.build(zacContext),
-      maxLines: maxLines?.build(zacContext),
-      semanticsLabel: semanticsLabel?.build(zacContext),
-      textWidthBasis: textWidthBasis?.build(zacContext),
-      textHeightBehavior: textHeightBehavior?.build(zacContext),
+      textScaleFactor: textScaleFactor?.getValue(zacContext),
+      maxLines: maxLines?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      textWidthBasis: textWidthBasis?.getValue(zacContext),
+      textHeightBehavior: textHeightBehavior?.getValue(zacContext),
     );
   }
 

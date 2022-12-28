@@ -40,7 +40,7 @@ class ZacCompleterVoidProvider
   }
 
   Widget _childBuilder(ZacContext zacContext) => map(
-        (obj) => obj.child.build(zacContext),
+        (obj) => obj.child.getValue(zacContext),
       );
 
   @override
@@ -73,7 +73,7 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       completeVoid: (obj) {
-        final completer = obj.completer.build(zacContext);
+        final completer = obj.completer.getValue(zacContext);
         if (completer.isCompleted) return;
         completer.complete();
       },

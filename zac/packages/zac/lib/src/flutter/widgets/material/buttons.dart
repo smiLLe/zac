@@ -46,21 +46,21 @@ class FlutterElevatedButton
   ElevatedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => ElevatedButton(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child?.build(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        child: value.child?.getValue(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.build(zacContext),
-        label: value.label.build(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        icon: value.icon.getValue(zacContext),
+        label: value.label.getValue(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
       ),
     );
   }
@@ -107,21 +107,21 @@ class FlutterOutlinedButton
   OutlinedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => OutlinedButton(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child.build(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        child: value.child.getValue(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.build(zacContext),
-        label: value.label.build(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        icon: value.icon.getValue(zacContext),
+        label: value.label.getValue(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
       ),
     );
   }
@@ -168,21 +168,21 @@ class FlutterTextButton
   TextButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => TextButton(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
-        child: value.child.build(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        child: value.child.getValue(zacContext),
       ),
       icon: (value) => TextButton.icon(
-        key: value.key?.build(zacContext),
+        key: value.key?.getValue(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.build(zacContext),
-        label: value.label.build(zacContext),
-        autofocus: value.autofocus?.build(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        icon: value.icon.getValue(zacContext),
+        label: value.label.getValue(zacContext),
+        autofocus: value.autofocus?.getValue(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
       ),
     );
   }

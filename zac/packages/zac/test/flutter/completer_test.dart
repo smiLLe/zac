@@ -26,7 +26,7 @@ void main() {
               LeakContext(
                 cb: (zacContext) {
                   c = ZacValue<Completer>.consume(family: 'shared')
-                      .build(zacContext);
+                      .getValue(zacContext);
                 },
               ),
             ),
@@ -73,7 +73,7 @@ void main() {
     );
 
     final completer =
-        ZacValue<Completer>.consume(family: 'shared').build(zacContext);
+        ZacValue<Completer>.consume(family: 'shared').getValue(zacContext);
 
     ZacCompleterActions.completeVoid(
             completer: ZacValue<Completer>.consume(family: 'shared'))

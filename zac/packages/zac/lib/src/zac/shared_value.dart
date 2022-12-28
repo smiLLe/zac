@@ -40,7 +40,6 @@ See "$SharedValueProviderBuilder" for more info.
   }) {
     final value = SharedValue.get(
       zacContext: zacContext,
-      select: select,
       consumeType: consumeType,
       family: family,
     );
@@ -65,7 +64,6 @@ See "$SharedValueProviderBuilder" for more info.
   }) {
     final value = SharedValue.get(
       zacContext: zacContext,
-      select: select,
       consumeType: consumeType,
       family: family,
     );
@@ -137,32 +135,18 @@ See "$SharedValueProviderBuilder" for more info.
 
   static SharedValueType get({
     required ZacContext zacContext,
-    required ZacTransformers? select,
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
   }) {
     final consumedValue = consumeType.map<Object?>(
-      read: (_) {
-        final value =
-            zacContext.ref.read<Object?>(SharedValue.provider(family));
-        if (value is ZacBuild) {
-          return value;
-        }
-        return select?.transform(ZacTransformValue(value), zacContext,
-                const ZacActionPayload()) ??
-            value;
-      },
-      watch: (_) {
-        return zacContext.ref
-            .watch<Object?>(SharedValue.provider(family).select((value) {
-          if (value is ZacBuild) {
-            return value;
-          }
-          return select?.transform(ZacTransformValue(value), zacContext,
-                  const ZacActionPayload()) ??
-              value;
-        }));
-      },
+      read: (_) => zacContext.ref.read<Object?>(SharedValue.provider(family)),
+      watch: (obj) => null != obj.select
+          ? zacContext.ref
+              .watch<Object?>(SharedValue.provider(family).select((value) {
+              return obj.select!
+                  .transform(ZacTransformValue(value), zacContext, null);
+            }))
+          : zacContext.ref.watch<Object?>(SharedValue.provider(family)),
     );
 
     return consumedValue is ZacBuild<Object>
@@ -338,11 +322,11 @@ class SharedValueProviderBuilder
     }
   }
 
-  Widget _childBuilder(ZacContext zacContext) => child.build(zacContext);
+  Widget _childBuilder(ZacContext zacContext) => child.getValue(zacContext);
 
   SharedValueProvider _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: _childBuilder,

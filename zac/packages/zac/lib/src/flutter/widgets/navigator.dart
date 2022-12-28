@@ -50,14 +50,14 @@ class FlutterMaterialPageRoute
   }) {
     return MaterialPageRoute<Object?>(
       builder: (_) => SharedValueProvider(
-        childBuilder: child.build,
+        childBuilder: child.getValue,
         valueBuilder: (_, __) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.build(zacContext),
-      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
-      maintainState: maintainState?.build(zacContext) ?? true,
+      settings: settings?.getValue(zacContext),
+      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
+      maintainState: maintainState?.getValue(zacContext) ?? true,
     );
   }
 
@@ -65,9 +65,9 @@ class FlutterMaterialPageRoute
   MaterialPageRoute<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
+      familyName: nameOfSharedArguments?.getValue(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.build(zacContext)?.arguments,
+      arguments: settings?.getValue(zacContext)?.arguments,
     );
   }
 
@@ -123,18 +123,18 @@ class FlutterPageRouteBuilder
   }) {
     return PageRouteBuilder<ZacActions?>(
       pageBuilder: (_, __, ___) => SharedValueProvider(
-        childBuilder: child.build,
+        childBuilder: child.getValue,
         valueBuilder: (ref, zacContext) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.build(zacContext),
-      opaque: opaque?.build(zacContext) ?? true,
-      barrierDismissible: barrierDismissible?.build(zacContext) ?? false,
-      barrierColor: barrierColor?.build(zacContext),
-      barrierLabel: barrierLabel?.build(zacContext),
-      maintainState: maintainState?.build(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
+      settings: settings?.getValue(zacContext),
+      opaque: opaque?.getValue(zacContext) ?? true,
+      barrierDismissible: barrierDismissible?.getValue(zacContext) ?? false,
+      barrierColor: barrierColor?.getValue(zacContext),
+      barrierLabel: barrierLabel?.getValue(zacContext),
+      maintainState: maintainState?.getValue(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
     );
   }
 
@@ -142,9 +142,9 @@ class FlutterPageRouteBuilder
   PageRouteBuilder<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
+      familyName: nameOfSharedArguments?.getValue(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.build(zacContext)?.arguments,
+      arguments: settings?.getValue(zacContext)?.arguments,
     );
   }
 
@@ -186,7 +186,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
       closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
       root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
       shared: (obj) {
-        final key = obj.value.build(zacContext);
+        final key = obj.value.getValue(zacContext);
         if (null != key.currentState) {
           return key.currentState!;
         }
@@ -215,11 +215,11 @@ class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
   Navigator _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.build(zacContext),
+        key: obj.key?.getValue(zacContext),
         onGenerateRoute: obj.onGenerateRoute?.build(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.build(zacContext),
-        initialRoute: obj.initialRoute?.build(zacContext),
-        requestFocus: obj.requestFocus?.build(zacContext) ?? true,
+        initialRoute: obj.initialRoute?.getValue(zacContext),
+        requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
       ),
     );
   }
@@ -307,7 +307,7 @@ class FlutterNavigatorActions
       push: (obj) {
         final state = _getState(zacContext);
         if (null == state) return null;
-        state.push(obj.route.build(zacContext)).then((value) {
+        state.push(obj.route.getValue(zacContext)).then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
             value.execute(
@@ -322,7 +322,7 @@ class FlutterNavigatorActions
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.build(
+          obj.routeName.getValue(
             zacContext,
             onConsume: const SharedValueConsumeType.read(),
           ),
@@ -350,7 +350,7 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.build(zacContext),
+          obj.route.getValue(zacContext),
           result: obj.result,
         )
             .then((value) {
@@ -365,7 +365,7 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.build(
+          obj.routeName.getValue(
             zacContext,
             onConsume: const SharedValueConsumeType.read(),
           ),
@@ -384,7 +384,7 @@ class FlutterNavigatorActions
         if (null == state) return;
 
         /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-        state.popUntil(ModalRoute.withName(obj.routeName.build(
+        state.popUntil(ModalRoute.withName(obj.routeName.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         )));
@@ -450,8 +450,8 @@ class FlutterRouteSettings
 
   RouteSettings _build(ZacContext zacContext) {
     return RouteSettings(
-      arguments: arguments?.build(zacContext),
-      name: name?.build(zacContext),
+      arguments: arguments?.getValue(zacContext),
+      name: name?.getValue(zacContext),
     );
   }
 

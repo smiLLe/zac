@@ -54,22 +54,22 @@ class FlutterRefreshIndicator
             zacContext.ref.invalidate(SharedValue.provider(obj.family));
           },
         );
-        final completer = onRefreshCompleter!.build(zacContext);
+        final completer = onRefreshCompleter!.getValue(zacContext);
 
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
-      displacement: displacement?.build(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.build(zacContext) ?? 0.0,
-      color: color?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      semanticsLabel: semanticsLabel?.build(zacContext),
-      semanticsValue: semanticsValue?.build(zacContext),
-      strokeWidth: strokeWidth?.build(zacContext) ??
+      displacement: displacement?.getValue(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
+      color: color?.getValue(zacContext),
+      backgroundColor: backgroundColor?.getValue(zacContext),
+      semanticsLabel: semanticsLabel?.getValue(zacContext),
+      semanticsValue: semanticsValue?.getValue(zacContext),
+      strokeWidth: strokeWidth?.getValue(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
-      triggerMode:
-          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
-      child: child.build(zacContext),
+      triggerMode: triggerMode?.getValue(zacContext) ??
+          RefreshIndicatorTriggerMode.onEdge,
+      child: child.getValue(zacContext),
     );
   }
 

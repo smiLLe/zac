@@ -28,7 +28,7 @@ void main() {
     expect(
         ZacValue<ScrollController>.consume(
                 family: FlutterScrollController.familyName)
-            .build(zacContext),
+            .getValue(zacContext),
         isA<ScrollController>());
   });
 }

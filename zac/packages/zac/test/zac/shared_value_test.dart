@@ -189,7 +189,6 @@ void main() {
               zacContext: zacContext,
               consumeType: const SharedValueConsumeType.read(),
               family: 'foo',
-              select: null,
             ),
             10);
       });
@@ -214,7 +213,6 @@ void main() {
               zacContext: zacContext,
               consumeType: const SharedValueConsumeType.read(),
               family: 'foo',
-              select: null,
             ),
             isNull);
       });
@@ -233,7 +231,6 @@ void main() {
                   zacContext: zacContext,
                   consumeType: const SharedValueConsumeType.read(),
                   family: 'foo',
-                  select: null,
                 ),
             throwsA(isA<AccessEmptySharedValueError>()));
       });
@@ -353,7 +350,6 @@ void main() {
               zacContext: zacContext,
               consumeType: const SharedValueConsumeType.read(),
               family: 'foo',
-              select: null,
             ),
             10);
 
@@ -364,7 +360,6 @@ void main() {
               zacContext: zacContext,
               consumeType: const SharedValueConsumeType.read(),
               family: 'foo',
-              select: null,
             ),
             20);
       });
@@ -725,9 +720,9 @@ void main() {
             LeakContext(cb: (zacContext) {
               obj = SharedValue.get(
                 zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
+                consumeType: SharedValueConsumeType.watch(
+                    select: ZacTransformers([_ConcatStr('bar')])),
                 family: 'shared',
-                select: ZacTransformers([_ConcatStr('bar')]),
               );
             }),
           ),

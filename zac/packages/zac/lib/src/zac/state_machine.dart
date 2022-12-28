@@ -149,8 +149,8 @@ because there was already a transition.''');
 
     return ZacStateMachine(
       states: states.build(zacContext),
-      state: initialState.build(zacContext),
-      context: initialContext?.build(zacContext),
+      state: initialState.getValue(zacContext),
+      context: initialContext?.getValue(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
@@ -159,10 +159,10 @@ because there was already a transition.''');
 
   Widget _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.getValue(zacContext),
+      family: family.getValue(zacContext),
       autoCreate: true,
-      childBuilder: child.build,
+      childBuilder: child.getValue,
       valueBuilder: _createMachine,
     );
   }
@@ -194,11 +194,11 @@ class ZacStateMachineBuildStateBuilder
 
   ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.getValue(zacContext),
+      family: family.getValue(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          unmappedStateWidget?.build(zacContext) ?? const SizedBox.shrink(),
+          unmappedStateWidget?.getValue(zacContext) ?? const SizedBox.shrink(),
     );
   }
 
@@ -226,7 +226,6 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
       zacContext: zacContext,
       consumeType: const SharedValueConsumeType.watch(),
       family: family,
-      select: null,
     ) as ZacStateMachine;
 
     /// check if mapped states actually exist in the StateMachine
@@ -249,7 +248,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.getWidget(zacContext).build(zacContext);
+      return machine.getWidget(zacContext).getValue(zacContext);
     }
     return unmappedStateWidget(zacContext);
   }
@@ -287,10 +286,9 @@ class ZacStateMachineActions
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
-          select: null,
         ) as ZacStateMachine;
         machine.send(
-            obj.event.build(
+            obj.event.getValue(
               zacContext,
               onConsume: const SharedValueConsumeType.read(),
             ),
@@ -301,10 +299,9 @@ class ZacStateMachineActions
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
-          select: null,
         ) as ZacStateMachine;
         machine.trySend(
-            obj.event.build(
+            obj.event.getValue(
               zacContext,
               onConsume: const SharedValueConsumeType.read(),
             ),

@@ -34,17 +34,17 @@ class FlutterMaterial with _$FlutterMaterial implements ZacBuild<Material> {
 
   Material _buildWidget(ZacContext zacContext) {
     return Material(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
-      borderRadius: borderRadius?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      color: color?.build(zacContext),
-      elevation: elevation?.build(zacContext) ?? 0,
-      shadowColor: shadowColor?.build(zacContext),
-      shape: shape?.build(zacContext),
-      textStyle: textStyle?.build(zacContext),
-      child: child?.build(zacContext),
+      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      borderRadius: borderRadius?.getValue(zacContext),
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
+      color: color?.getValue(zacContext),
+      elevation: elevation?.getValue(zacContext) ?? 0,
+      shadowColor: shadowColor?.getValue(zacContext),
+      shape: shape?.getValue(zacContext),
+      textStyle: textStyle?.getValue(zacContext),
+      child: child?.getValue(zacContext),
       // type: type?.toFlutter(context),
     );
   }

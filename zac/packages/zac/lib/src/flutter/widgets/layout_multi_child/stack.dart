@@ -30,11 +30,12 @@ class FlutterStack with _$FlutterStack implements ZacBuild<Stack> {
 
   Stack _buildWidget(ZacContext zacContext) {
     return Stack(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(zacContext),
-      fit: fit?.build(zacContext) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      key: key?.getValue(zacContext),
+      alignment:
+          alignment?.getValue(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.getValue(zacContext),
+      fit: fit?.getValue(zacContext) ?? StackFit.loose,
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
       children: children?.build(zacContext) ?? const <Widget>[],
     );
   }

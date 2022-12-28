@@ -30,11 +30,11 @@ class FlutterFittedBox with _$FlutterFittedBox implements ZacBuild<FittedBox> {
 
   FittedBox _buildWidget(ZacContext zacContext) {
     return FittedBox(
-      key: key?.build(zacContext),
-      fit: fit?.build(zacContext) ?? BoxFit.contain,
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      fit: fit?.getValue(zacContext) ?? BoxFit.contain,
+      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
+      child: child?.getValue(zacContext),
     );
   }
 

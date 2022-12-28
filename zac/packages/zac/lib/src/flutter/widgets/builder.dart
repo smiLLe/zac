@@ -25,11 +25,11 @@ class FlutterBuilder with _$FlutterBuilder implements ZacBuild<Builder> {
     required ZacValue<Widget> child,
   }) = _FlutterBuilder;
 
-  Widget _builder(ZacContext zacContext) => child.build(zacContext);
+  Widget _builder(ZacContext zacContext) => child.getValue(zacContext);
 
   Builder _buildWidget(ZacContext zacContext) {
     return Builder(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       builder: (_) {
         return ZacUpdateContext(
           builder: _builder,

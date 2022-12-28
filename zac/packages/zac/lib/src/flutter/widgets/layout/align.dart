@@ -29,12 +29,12 @@ class FlutterAlign with _$FlutterAlign implements ZacBuild<Align> {
 
   Align buildWidget(ZacContext zacContext) {
     return Align(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.build(zacContext),
-      heightFactor: heightFactor?.build(zacContext),
+      key: key?.getValue(zacContext),
+      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
+      widthFactor: widthFactor?.getValue(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
       // child: child?.build(zacContext),
-      child: child?.build(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

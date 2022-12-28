@@ -29,8 +29,8 @@ class ZacUpdateContextBuilder
 
   ZacUpdateContext _buildWidget(ZacContext zacContext) {
     return ZacUpdateContext(
-      builder: child.build,
-      key: key?.build(zacContext),
+      builder: child.getValue,
+      key: key?.getValue(zacContext),
     );
   }
 

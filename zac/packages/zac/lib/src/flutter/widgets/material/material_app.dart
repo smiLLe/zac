@@ -62,29 +62,31 @@ class FlutterMaterialApp
 
   MaterialApp _buildWidget(ZacContext zacContext) {
     return MaterialApp(
-      key: key?.build(zacContext),
-      navigatorKey: navigatorKey?.build(zacContext),
-      scaffoldMessengerKey: scaffoldMessengerKey?.build(zacContext),
-      home: home?.build(zacContext),
-      initialRoute: initialRoute?.build(zacContext),
+      key: key?.getValue(zacContext),
+      navigatorKey: navigatorKey?.getValue(zacContext),
+      scaffoldMessengerKey: scaffoldMessengerKey?.getValue(zacContext),
+      home: home?.getValue(zacContext),
+      initialRoute: initialRoute?.getValue(zacContext),
       onGenerateRoute: onGenerateRoute?.build(zacContext),
       onUnknownRoute: onUnknownRoute?.build(zacContext),
-      title: title?.build(zacContext) ?? '',
-      color: color?.build(zacContext),
+      title: title?.getValue(zacContext) ?? '',
+      color: color?.getValue(zacContext),
       locale: locale?.build(zacContext),
-      debugShowMaterialGrid: debugShowMaterialGrid?.build(zacContext) ?? false,
+      debugShowMaterialGrid:
+          debugShowMaterialGrid?.getValue(zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.build(zacContext) ?? false,
+          showPerformanceOverlay?.getValue(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.build(zacContext) ?? false,
+          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.build(zacContext) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.build(zacContext) ?? false,
+          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
+      showSemanticsDebugger:
+          showSemanticsDebugger?.getValue(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.build(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.build(zacContext),
+          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.getValue(zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.build(zacContext) ?? false,
+          useInheritedMediaQuery?.getValue(zacContext) ?? false,
     );
   }
 

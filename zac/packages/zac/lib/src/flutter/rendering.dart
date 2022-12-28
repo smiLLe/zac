@@ -323,22 +323,22 @@ class FlutterBoxConstraints
   BoxConstraints _build(ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.build(zacContext) ?? 0.0,
-        maxWidth: value.maxWidth?.build(zacContext) ?? double.infinity,
-        minHeight: value.minHeight?.build(zacContext) ?? 0.0,
-        maxHeight: value.maxHeight?.build(zacContext) ?? double.infinity,
+        minWidth: value.minWidth?.getValue(zacContext) ?? 0.0,
+        maxWidth: value.maxWidth?.getValue(zacContext) ?? double.infinity,
+        minHeight: value.minHeight?.getValue(zacContext) ?? 0.0,
+        maxHeight: value.maxHeight?.getValue(zacContext) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.build(zacContext),
-          height: value.height?.build(zacContext)),
+          width: value.width?.getValue(zacContext),
+          height: value.height?.getValue(zacContext)),
       loose: (value) => BoxConstraints.loose(value.size.build(zacContext)),
       tight: (value) => BoxConstraints.tight(value.size.build(zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.build(zacContext),
-          height: value.height?.build(zacContext)),
+          width: value.width?.getValue(zacContext),
+          height: value.height?.getValue(zacContext)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.build(zacContext) ?? double.infinity,
-        height: value.height?.build(zacContext) ?? double.infinity,
+        width: value.width?.getValue(zacContext) ?? double.infinity,
+        height: value.height?.getValue(zacContext) ?? double.infinity,
       ),
     );
   }

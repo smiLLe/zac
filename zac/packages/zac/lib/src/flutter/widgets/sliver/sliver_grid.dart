@@ -31,7 +31,7 @@ class FlutterSliverGrid
 
   SliverGrid _buildWidget(ZacContext zacContext) {
     return SliverGrid(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       delegate: delegate.build(zacContext),
       gridDelegate: gridDelegate.build(zacContext),
     );

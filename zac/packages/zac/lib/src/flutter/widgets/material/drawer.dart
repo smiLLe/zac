@@ -30,12 +30,12 @@ class FlutterDrawer with _$FlutterDrawer implements ZacBuild<Drawer> {
 
   Drawer _buildWidget(ZacContext zacContext) {
     return Drawer(
-      key: key?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      elevation: elevation?.build(zacContext),
-      semanticLabel: semanticLabel?.build(zacContext),
-      shape: shape?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      backgroundColor: backgroundColor?.getValue(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      shape: shape?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

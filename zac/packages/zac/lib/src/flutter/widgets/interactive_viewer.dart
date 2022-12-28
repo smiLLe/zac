@@ -43,22 +43,22 @@ class FlutterInteractiveViewer
 
   InteractiveViewer _buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
-      key: key?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.build(zacContext) ?? false,
-      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
-      constrained: constrained?.build(zacContext) ?? true,
-      maxScale: maxScale?.build(zacContext) ?? 2.5,
-      minScale: minScale?.build(zacContext) ?? 0.8,
+      key: key?.getValue(zacContext),
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
+      boundaryMargin: boundaryMargin?.getValue(zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.getValue(zacContext) ?? true,
+      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
+      minScale: minScale?.getValue(zacContext) ?? 0.8,
       onInteractionEnd:
           onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart:
           onInteractionStart?.createCbParam1<ScaleStartDetails>(zacContext),
       onInteractionUpdate:
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
-      panEnabled: panEnabled?.build(zacContext) ?? true,
-      scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
-      child: child.build(zacContext),
+      panEnabled: panEnabled?.getValue(zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
+      child: child.getValue(zacContext),
       // transformationController: key?.toFlutter(context),
     );
   }

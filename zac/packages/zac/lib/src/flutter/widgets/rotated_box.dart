@@ -29,9 +29,9 @@ class FlutterRotatedBox
 
   RotatedBox _buildWidget(ZacContext zacContext) {
     return RotatedBox(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       quarterTurns: quarterTurns,
-      child: child?.build(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

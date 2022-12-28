@@ -46,14 +46,14 @@ class FlutterGlobalKeyNavigatorStateProvider
   GlobalKey<NavigatorState> _valueBuilder(
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return GlobalKey<NavigatorState>(
-      debugLabel: debugLabel?.build(zacContext),
+      debugLabel: debugLabel?.getValue(zacContext),
     );
   }
 
   @override
   Widget build(ZacContext zacContext) {
     return SharedValueProvider(
-      childBuilder: child.build,
+      childBuilder: child.getValue,
       valueBuilder: _valueBuilder,
       family: family,
     );
@@ -80,14 +80,14 @@ class FlutterGlobalKeyScaffoldMessengerStateProvider
   GlobalKey<ScaffoldMessengerState> _valueBuilder(
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return GlobalKey<ScaffoldMessengerState>(
-      debugLabel: debugLabel?.build(zacContext),
+      debugLabel: debugLabel?.getValue(zacContext),
     );
   }
 
   @override
   Widget build(ZacContext zacContext) {
     return SharedValueProvider(
-      childBuilder: child.build,
+      childBuilder: child.getValue,
       valueBuilder: _valueBuilder,
       family: family,
     );

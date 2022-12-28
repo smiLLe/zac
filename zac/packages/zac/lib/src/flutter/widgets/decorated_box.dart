@@ -29,10 +29,10 @@ class FlutterDecoratedBox
 
   DecoratedBox _buildWidget(ZacContext zacContext) {
     return DecoratedBox(
-      key: key?.build(zacContext),
-      decoration: decoration.build(zacContext),
-      position: position?.build(zacContext) ?? DecorationPosition.background,
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      decoration: decoration.getValue(zacContext),
+      position: position?.getValue(zacContext) ?? DecorationPosition.background,
+      child: child?.getValue(zacContext),
     );
   }
 

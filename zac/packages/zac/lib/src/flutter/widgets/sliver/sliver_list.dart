@@ -29,7 +29,7 @@ class FlutterSliverList
 
   SliverList _buildWidget(ZacContext zacContext) {
     return SliverList(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       delegate: delegate.build(zacContext),
     );
   }

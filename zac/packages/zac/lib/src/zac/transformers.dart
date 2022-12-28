@@ -370,11 +370,11 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.build(
+      containsKey: (obj) => theMap.containsKey(obj.key?.getValue(
         zacContext,
         onConsume: const SharedValueConsumeType.read(),
       )),
-      containsValue: (obj) => theMap.containsValue(obj.value?.build(
+      containsValue: (obj) => theMap.containsValue(obj.value?.getValue(
         zacContext,
         onConsume: const SharedValueConsumeType.read(),
       )),
@@ -405,19 +405,19 @@ The value: $theMap
         return Map<String, Object>.from(theMap);
       },
       key: (obj) {
-        final key = obj.key.build(
+        final key = obj.key.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         );
         return theMap[key];
       },
       setValueForKey: (obj) {
-        final value = obj.value.build(
+        final value = obj.value.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         );
 
-        final key = obj.key.build(
+        final key = obj.key.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         );
@@ -529,7 +529,7 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.build(
+      contains: (obj) => value.contains(obj.element?.getValue(
         zacContext,
         onConsume: const SharedValueConsumeType.read(),
       )),
@@ -571,7 +571,7 @@ The value: $value
     return map(
       reversed: (_) => value.reversed.toList(),
       add: (obj) {
-        value.add(obj.value.build(
+        value.add(obj.value.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         ));
@@ -660,7 +660,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value?.build(
+          obj.value?.getValue(
             zacContext,
             onConsume: const SharedValueConsumeType.read(),
           ) ==
@@ -855,18 +855,18 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.build(
+      split: (obj) => value.split(obj.pattern.getValue(
         zacContext,
         onConsume: const SharedValueConsumeType.read(),
       )),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.build(
+          RegExp(obj.from.getValue(
             zacContext,
             onConsume: const SharedValueConsumeType.read(),
           )),
-          obj.replace.build(
+          obj.replace.getValue(
             zacContext,
             onConsume: const SharedValueConsumeType.read(),
           )),

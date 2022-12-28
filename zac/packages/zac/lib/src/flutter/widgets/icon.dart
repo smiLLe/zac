@@ -32,11 +32,11 @@ class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
   Icon _buildWidget(ZacContext zacContext) {
     return Icon(
       icon?.build(zacContext),
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      size: size?.build(zacContext),
-      semanticLabel: semanticLabel?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
+      key: key?.getValue(zacContext),
+      color: color?.getValue(zacContext),
+      size: size?.getValue(zacContext),
+      semanticLabel: semanticLabel?.getValue(zacContext),
+      textDirection: textDirection?.getValue(zacContext),
     );
   }
 
@@ -63,10 +63,10 @@ class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
 
   IconData _build(ZacContext zacContext) {
     return IconData(
-      codePoint.build(zacContext),
-      fontFamily: fontFamily?.build(zacContext),
-      fontPackage: fontPackage?.build(zacContext),
-      matchTextDirection: matchTextDirection?.build(zacContext) ?? false,
+      codePoint.getValue(zacContext),
+      fontFamily: fontFamily?.getValue(zacContext),
+      fontPackage: fontPackage?.getValue(zacContext),
+      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
     );
   }
 
@@ -93,9 +93,9 @@ class FlutterIconThemeData
 
   IconThemeData _build(ZacContext zacContext) {
     return IconThemeData(
-      color: color?.build(zacContext),
-      opacity: opacity?.build(zacContext),
-      size: size?.build(zacContext),
+      color: color?.getValue(zacContext),
+      opacity: opacity?.getValue(zacContext),
+      size: size?.getValue(zacContext),
     );
   }
 

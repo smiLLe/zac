@@ -49,18 +49,18 @@ class FlutterSliverGridDelegate
       withFixedCrossAxisCount: (value) =>
           SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: value.crossAxisCount,
-        childAspectRatio: value.childAspectRatio?.build(zacContext) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.build(zacContext) ?? 0.0,
-        mainAxisExtent: value.mainAxisExtent?.build(zacContext),
-        mainAxisSpacing: value.mainAxisSpacing?.build(zacContext) ?? 0.0,
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
       ),
       withMaxCrossAxisExtent: (value) =>
           SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: value.maxCrossAxisExtent.build(zacContext),
-        mainAxisExtent: value.mainAxisExtent?.build(zacContext),
-        childAspectRatio: value.childAspectRatio?.build(zacContext) ?? 1.0,
-        crossAxisSpacing: value.crossAxisSpacing?.build(zacContext) ?? 0.0,
-        mainAxisSpacing: value.mainAxisSpacing?.build(zacContext) ?? 0.0,
+        maxCrossAxisExtent: value.maxCrossAxisExtent.getValue(zacContext),
+        mainAxisExtent: value.mainAxisExtent?.getValue(zacContext),
+        childAspectRatio: value.childAspectRatio?.getValue(zacContext) ?? 1.0,
+        crossAxisSpacing: value.crossAxisSpacing?.getValue(zacContext) ?? 0.0,
+        mainAxisSpacing: value.mainAxisSpacing?.getValue(zacContext) ?? 0.0,
       ),
     );
   }

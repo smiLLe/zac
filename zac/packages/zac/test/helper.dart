@@ -240,7 +240,7 @@ class LeakContext implements ZacBuild<Widget> {
 
   Widget _buildWidget(ZacContext zacContext) {
     cb(zacContext);
-    return child?.build(zacContext) ?? const SizedBox.shrink();
+    return child?.getValue(zacContext) ?? const SizedBox.shrink();
   }
 
   @override

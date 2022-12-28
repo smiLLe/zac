@@ -31,16 +31,16 @@ class FlutterColumn with _$FlutterColumn implements ZacBuild<Column> {
 
   Column _buildWidget(ZacContext zacContext) {
     return Column(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       mainAxisAlignment:
-          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
+          mainAxisAlignment?.getValue(zacContext) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.getValue(zacContext) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(zacContext),
+          crossAxisAlignment?.getValue(zacContext) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.getValue(zacContext),
       verticalDirection:
-          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(zacContext),
+          verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.getValue(zacContext),
       children: children?.build(zacContext) ?? const <Widget>[],
     );
   }

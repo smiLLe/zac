@@ -33,11 +33,12 @@ class FlutterIndexedStack
 
   IndexedStack _buildWidget(ZacContext zacContext) {
     return IndexedStack(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(zacContext),
-      sizing: sizing?.build(zacContext) ?? StackFit.loose,
-      index: index?.build(zacContext),
+      key: key?.getValue(zacContext),
+      alignment:
+          alignment?.getValue(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.getValue(zacContext),
+      sizing: sizing?.getValue(zacContext) ?? StackFit.loose,
+      index: index?.getValue(zacContext),
       children: children?.build(zacContext) ?? const <Widget>[],
     );
   }

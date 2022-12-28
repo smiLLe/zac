@@ -29,10 +29,10 @@ class FlutterLimitedBox
 
   LimitedBox _buildWidget(ZacContext zacContext) {
     return LimitedBox(
-      key: key?.build(zacContext),
-      maxHeight: maxHeight?.build(zacContext) ?? double.infinity,
-      maxWidth: maxWidth?.build(zacContext) ?? double.infinity,
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      maxHeight: maxHeight?.getValue(zacContext) ?? double.infinity,
+      maxWidth: maxWidth?.getValue(zacContext) ?? double.infinity,
+      child: child?.getValue(zacContext),
     );
   }
 

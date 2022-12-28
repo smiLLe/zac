@@ -55,7 +55,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
 
   AppBar _buildWidget(ZacContext zacContext) {
     assert(() {
-      final w = bottom?.build(zacContext);
+      final w = bottom?.getValue(zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -65,33 +65,33 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
     }(), '');
 
     return AppBar(
-      key: key?.build(zacContext),
-      leading: leading?.build(zacContext),
+      key: key?.getValue(zacContext),
+      leading: leading?.getValue(zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.build(zacContext) ?? true,
-      title: title?.build(zacContext),
+          automaticallyImplyLeading?.getValue(zacContext) ?? true,
+      title: title?.getValue(zacContext),
       actions: actions?.build(zacContext) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.build(zacContext),
-      bottom: bottom?.build(zacContext) as PreferredSizeWidget?,
-      elevation: elevation?.build(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
-      shape: shape?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      foregroundColor: foregroundColor?.build(zacContext),
-      iconTheme: iconTheme?.build(zacContext),
-      actionsIconTheme: actionsIconTheme?.build(zacContext),
-      primary: primary?.build(zacContext) ?? true,
-      centerTitle: centerTitle?.build(zacContext),
+      flexibleSpace: flexibleSpace?.getValue(zacContext),
+      bottom: bottom?.getValue(zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.getValue(zacContext),
+      shadowColor: shadowColor?.getValue(zacContext),
+      shape: shape?.getValue(zacContext),
+      backgroundColor: backgroundColor?.getValue(zacContext),
+      foregroundColor: foregroundColor?.getValue(zacContext),
+      iconTheme: iconTheme?.getValue(zacContext),
+      actionsIconTheme: actionsIconTheme?.getValue(zacContext),
+      primary: primary?.getValue(zacContext) ?? true,
+      centerTitle: centerTitle?.getValue(zacContext),
       excludeHeaderSemantics:
-          excludeHeaderSemantics?.build(zacContext) ?? false,
-      titleSpacing: titleSpacing?.build(zacContext),
-      toolbarOpacity: toolbarOpacity?.build(zacContext) ?? 1.0,
-      bottomOpacity: bottomOpacity?.build(zacContext) ?? 1.0,
-      toolbarHeight: toolbarHeight?.build(zacContext),
-      leadingWidth: leadingWidth?.build(zacContext),
-      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
-      titleTextStyle: titleTextStyle?.build(zacContext),
-      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
+          excludeHeaderSemantics?.getValue(zacContext) ?? false,
+      titleSpacing: titleSpacing?.getValue(zacContext),
+      toolbarOpacity: toolbarOpacity?.getValue(zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.getValue(zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.getValue(zacContext),
+      leadingWidth: leadingWidth?.getValue(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.getValue(zacContext),
+      titleTextStyle: titleTextStyle?.getValue(zacContext),
+      systemOverlayStyle: systemOverlayStyle?.getValue(zacContext),
     );
   }
 

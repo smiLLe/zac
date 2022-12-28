@@ -27,10 +27,10 @@ class FlutterCenter with _$FlutterCenter implements ZacBuild<Center> {
 
   Center _buildWidget(ZacContext zacContext) {
     return Center(
-      key: key?.build(zacContext),
-      widthFactor: widthFactor?.build(zacContext),
-      heightFactor: heightFactor?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      widthFactor: widthFactor?.getValue(zacContext),
+      heightFactor: heightFactor?.getValue(zacContext),
+      child: child?.getValue(zacContext),
     );
   }
 

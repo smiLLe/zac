@@ -47,25 +47,26 @@ class FlutterListView with _$FlutterListView implements ZacBuild<ListView> {
 
   ListView _buildWidget(ZacContext zacContext) {
     return ListView(
-      key: key?.build(zacContext),
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.build(zacContext) ?? false,
-      controller: controller?.build(zacContext),
-      primary: primary?.build(zacContext),
-      shrinkWrap: shrinkWrap?.build(zacContext) ?? false,
-      padding: padding?.build(zacContext),
-      itemExtent: itemExtent?.build(zacContext),
-      prototypeItem: prototypeItem?.build(zacContext),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.build(zacContext) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.build(zacContext) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.build(zacContext) ?? true,
-      cacheExtent: cacheExtent?.build(zacContext),
-      semanticChildCount: semanticChildCount?.build(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
+      key: key?.getValue(zacContext),
+      scrollDirection: scrollDirection?.getValue(zacContext) ?? Axis.vertical,
+      reverse: reverse?.getValue(zacContext) ?? false,
+      controller: controller?.getValue(zacContext),
+      primary: primary?.getValue(zacContext),
+      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
+      padding: padding?.getValue(zacContext),
+      itemExtent: itemExtent?.getValue(zacContext),
+      prototypeItem: prototypeItem?.getValue(zacContext),
+      addAutomaticKeepAlives:
+          addAutomaticKeepAlives?.getValue(zacContext) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
+      cacheExtent: cacheExtent?.getValue(zacContext),
+      semanticChildCount: semanticChildCount?.getValue(zacContext),
+      keyboardDismissBehavior: keyboardDismissBehavior?.getValue(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      physics: physics?.build(zacContext),
+      restorationId: restorationId?.getValue(zacContext),
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
+      physics: physics?.getValue(zacContext),
       children: children?.build(zacContext) ?? const <Widget>[],
     );
   }

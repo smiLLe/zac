@@ -36,16 +36,16 @@ class FlutterCard with _$FlutterCard implements ZacBuild<Card> {
 
   Card _buildWidget(ZacContext zacContext) {
     return Card(
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
-      elevation: elevation?.build(zacContext),
-      shape: shape?.build(zacContext),
-      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
-      margin: margin?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext),
-      semanticContainer: semanticContainer?.build(zacContext) ?? true,
-      child: child?.build(zacContext),
+      key: key?.getValue(zacContext),
+      color: color?.getValue(zacContext),
+      shadowColor: shadowColor?.getValue(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      shape: shape?.getValue(zacContext),
+      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
+      margin: margin?.getValue(zacContext),
+      clipBehavior: clipBehavior?.getValue(zacContext),
+      semanticContainer: semanticContainer?.getValue(zacContext) ?? true,
+      child: child?.getValue(zacContext),
     );
   }
 

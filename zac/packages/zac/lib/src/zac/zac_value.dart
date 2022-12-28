@@ -19,7 +19,7 @@ extension XZacValue<T> on ZacBuild<T> {
 }
 
 @freezedZacBuilder
-class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuild<T> {
+class ZacValue<T extends Object?> with _$ZacValue<T> {
   const ZacValue._();
 
   static const String union = 'z:1:ZacValue';
@@ -90,12 +90,10 @@ $data''');
   factory ZacValue.consume({
     required SharedValueFamily family,
     ZacTransformers? transformer,
-    ZacTransformers? select,
     SharedValueConsumeType? forceConsume,
-  }) = _ZacValueConsume<T>;
+  }) = ZacValueConsume<T>;
 
-  @override
-  T build(ZacContext zacContext,
+  T getValue(ZacContext zacContext,
       {SharedValueConsumeType onConsume =
           const SharedValueConsumeType.watch()}) {
     return map<T>(
@@ -110,7 +108,6 @@ $data''');
       consume: (obj) {
         final value = SharedValue.get(
           zacContext: zacContext,
-          select: obj.select,
           consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
@@ -291,13 +288,12 @@ Value after: $transformedVal''');
       (obj) {
         return <T>[
           for (var item in obj.items)
-            item.build(zacContext, onConsume: onConsume),
+            item.getValue(zacContext, onConsume: onConsume),
         ] as X;
       },
       consume: (obj) {
         final consumedValue = SharedValue.get(
           zacContext: zacContext,
-          select: obj.select,
           consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
@@ -467,13 +463,12 @@ Value after: $transformedVal''');
       (obj) {
         return <String, T>{
           for (var entry in obj.items.entries)
-            entry.key: entry.value.build(zacContext, onConsume: onConsume),
+            entry.key: entry.value.getValue(zacContext, onConsume: onConsume),
         } as X;
       },
       consume: (obj) {
         final consumedValue = SharedValue.get(
           zacContext: zacContext,
-          select: obj.select,
           consumeType: obj.forceConsume ?? onConsume,
           family: obj.family,
         );
@@ -531,7 +526,7 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
       asPayload: (obj) {
-        final val = obj.value.build(
+        final val = obj.value.getValue(
           zacContext,
           onConsume: const SharedValueConsumeType.read(),
         );

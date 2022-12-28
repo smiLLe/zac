@@ -54,30 +54,30 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuild<Scaffold> {
   Scaffold _buildWidget(ZacContext zacContext) {
     return map(
       (value) => Scaffold(
-        key: value.key?.build(zacContext),
-        body: value.body?.build(zacContext),
-        floatingActionButton: value.floatingActionButton?.build(zacContext),
+        key: value.key?.getValue(zacContext),
+        body: value.body?.getValue(zacContext),
+        floatingActionButton: value.floatingActionButton?.getValue(zacContext),
         persistentFooterButtons:
             value.persistentFooterButtons?.build(zacContext),
-        appBar: value.appBar?.build(zacContext) as PreferredSizeWidget?,
-        drawer: value.drawer?.build(zacContext),
-        endDrawer: value.endDrawer?.build(zacContext),
-        bottomNavigationBar: value.bottomNavigationBar?.build(zacContext),
-        bottomSheet: value.bottomSheet?.build(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
+        appBar: value.appBar?.getValue(zacContext) as PreferredSizeWidget?,
+        drawer: value.drawer?.getValue(zacContext),
+        endDrawer: value.endDrawer?.getValue(zacContext),
+        bottomNavigationBar: value.bottomNavigationBar?.getValue(zacContext),
+        bottomSheet: value.bottomSheet?.getValue(zacContext),
+        backgroundColor: value.backgroundColor?.getValue(zacContext),
         resizeToAvoidBottomInset:
-            value.resizeToAvoidBottomInset?.build(zacContext),
-        primary: value.primary?.build(zacContext) ?? true,
-        extendBody: value.extendBody?.build(zacContext) ?? false,
+            value.resizeToAvoidBottomInset?.getValue(zacContext),
+        primary: value.primary?.getValue(zacContext) ?? true,
+        extendBody: value.extendBody?.getValue(zacContext) ?? false,
         extendBodyBehindAppBar:
-            value.extendBodyBehindAppBar?.build(zacContext) ?? false,
-        drawerScrimColor: value.drawerScrimColor?.build(zacContext),
-        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.build(zacContext),
+            value.extendBodyBehindAppBar?.getValue(zacContext) ?? false,
+        drawerScrimColor: value.drawerScrimColor?.getValue(zacContext),
+        drawerEdgeDragWidth: value.drawerEdgeDragWidth?.getValue(zacContext),
         drawerEnableOpenDragGesture:
-            value.drawerEnableOpenDragGesture?.build(zacContext) ?? true,
+            value.drawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
         endDrawerEnableOpenDragGesture:
-            value.endDrawerEnableOpenDragGesture?.build(zacContext) ?? true,
-        restorationId: value.restorationId?.build(zacContext),
+            value.endDrawerEnableOpenDragGesture?.getValue(zacContext) ?? true,
+        restorationId: value.restorationId?.getValue(zacContext),
       ),
     );
   }
@@ -136,13 +136,13 @@ class FlutterScaffoldActions
         if (null == state) return;
         state.showBottomSheet<void>(
           (_) => FlutterBuilder(child: value.child).build(zacContext),
-          backgroundColor: value.backgroundColor?.build(zacContext),
-          clipBehavior: value.clipBehavior?.build(zacContext),
+          backgroundColor: value.backgroundColor?.getValue(zacContext),
+          clipBehavior: value.clipBehavior?.getValue(zacContext),
           constraints: value.constraints?.build(zacContext),
-          elevation: value.elevation?.build(zacContext,
+          elevation: value.elevation?.getValue(zacContext,
               onConsume: const SharedValueConsumeType.read()),
-          shape: value.shape?.build(zacContext),
-          enableDrag: value.enableDrag?.build(zacContext),
+          shape: value.shape?.getValue(zacContext),
+          enableDrag: value.enableDrag?.getValue(zacContext),
           // transitionAnimationController:
         );
       },
@@ -165,7 +165,7 @@ class FlutterScaffoldActions
         if (null == state) return null;
         state.showBodyScrim(
             value.value,
-            value.opacity.build(zacContext,
+            value.opacity.getValue(zacContext,
                 onConsume: const SharedValueConsumeType.read()));
       },
     );
@@ -300,20 +300,20 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuild<SnackBar> {
 
   SnackBar _buildWidget(ZacContext zacContext) {
     return SnackBar(
-      content: content.build(zacContext),
-      key: key?.build(zacContext),
+      content: content.getValue(zacContext),
+      key: key?.getValue(zacContext),
       action: action?.build(zacContext),
       // animation: key?.toFlutter(context),
-      backgroundColor: backgroundColor?.build(zacContext),
+      backgroundColor: backgroundColor?.getValue(zacContext),
       behavior: behavior?.build(zacContext),
       // dismissDirection: dismissDirection?.toFlutter(context),
       // duration: duration?.toFlutter(context),
-      elevation: elevation?.build(zacContext),
-      margin: margin?.build(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      margin: margin?.getValue(zacContext),
       onVisible: onVisible?.createCb(zacContext),
-      padding: padding?.build(zacContext),
-      shape: shape?.build(zacContext),
-      width: width?.build(zacContext),
+      padding: padding?.getValue(zacContext),
+      shape: shape?.getValue(zacContext),
+      width: width?.getValue(zacContext),
     );
   }
 
@@ -372,11 +372,11 @@ class FlutterSnackBarAction
 
   SnackBarAction _buildWidget(ZacContext zacContext) {
     return SnackBarAction(
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       label: label,
       onPressed: onPressed?.createCb(zacContext) ?? () {},
-      disabledTextColor: disabledTextColor?.build(zacContext),
-      textColor: textColor?.build(zacContext),
+      disabledTextColor: disabledTextColor?.getValue(zacContext),
+      textColor: textColor?.getValue(zacContext),
     );
   }
 
@@ -416,19 +416,19 @@ class FlutterMaterialBanner
 
   MaterialBanner _buildWidget(ZacContext zacContext) {
     return MaterialBanner(
-      content: content.build(zacContext),
+      content: content.getValue(zacContext),
       actions: actions.build(zacContext),
-      key: key?.build(zacContext),
+      key: key?.getValue(zacContext),
       // animation: ,
-      backgroundColor: backgroundColor?.build(zacContext),
-      contentTextStyle: contentTextStyle?.build(zacContext),
-      elevation: elevation?.build(zacContext),
-      forceActionsBelow: forceActionsBelow?.build(zacContext) ?? false,
-      leading: leading?.build(zacContext),
-      leadingPadding: leadingPadding?.build(zacContext),
+      backgroundColor: backgroundColor?.getValue(zacContext),
+      contentTextStyle: contentTextStyle?.getValue(zacContext),
+      elevation: elevation?.getValue(zacContext),
+      forceActionsBelow: forceActionsBelow?.getValue(zacContext) ?? false,
+      leading: leading?.getValue(zacContext),
+      leadingPadding: leadingPadding?.getValue(zacContext),
       onVisible: onVisible?.createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
-      padding: padding?.build(zacContext),
+      padding: padding?.getValue(zacContext),
     );
   }
 

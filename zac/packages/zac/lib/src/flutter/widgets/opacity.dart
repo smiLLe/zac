@@ -29,11 +29,11 @@ class FlutterOpacity with _$FlutterOpacity implements ZacBuild<Opacity> {
 
   Opacity _buildWidget(ZacContext zacContext) {
     return Opacity(
-      key: key?.build(zacContext),
-      opacity: opacity.build(zacContext),
+      key: key?.getValue(zacContext),
+      opacity: opacity.getValue(zacContext),
       alwaysIncludeSemantics:
-          alwaysIncludeSemantics?.build(zacContext) ?? false,
-      child: child?.build(zacContext),
+          alwaysIncludeSemantics?.getValue(zacContext) ?? false,
+      child: child?.getValue(zacContext),
     );
   }
 

@@ -29,10 +29,10 @@ class FlutterFlexible with _$FlutterFlexible implements ZacBuild<Flexible> {
 
   Flexible _buildWidget(ZacContext zacContext) {
     return Flexible(
-      key: key?.build(zacContext),
-      flex: flex?.build(zacContext) ?? 1,
-      fit: fit?.build(zacContext) ?? FlexFit.loose,
-      child: child.build(zacContext),
+      key: key?.getValue(zacContext),
+      flex: flex?.getValue(zacContext) ?? 1,
+      fit: fit?.getValue(zacContext) ?? FlexFit.loose,
+      child: child.getValue(zacContext),
     );
   }
 

@@ -36,18 +36,18 @@ class FlutterWrap with _$FlutterWrap implements ZacBuild<Wrap> {
 
   Wrap _buildWidget(ZacContext zacContext) {
     return Wrap(
-      key: key?.build(zacContext),
-      direction: direction?.build(zacContext) ?? Axis.horizontal,
-      alignment: alignment?.build(zacContext) ?? WrapAlignment.start,
-      spacing: spacing?.build(zacContext) ?? 0.0,
-      runAlignment: runAlignment?.build(zacContext) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.build(zacContext) ?? 0.0,
+      key: key?.getValue(zacContext),
+      direction: direction?.getValue(zacContext) ?? Axis.horizontal,
+      alignment: alignment?.getValue(zacContext) ?? WrapAlignment.start,
+      spacing: spacing?.getValue(zacContext) ?? 0.0,
+      runAlignment: runAlignment?.getValue(zacContext) ?? WrapAlignment.start,
+      runSpacing: runSpacing?.getValue(zacContext) ?? 0.0,
       crossAxisAlignment:
-          crossAxisAlignment?.build(zacContext) ?? WrapCrossAlignment.start,
-      textDirection: textDirection?.build(zacContext),
+          crossAxisAlignment?.getValue(zacContext) ?? WrapCrossAlignment.start,
+      textDirection: textDirection?.getValue(zacContext),
       verticalDirection:
-          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+          verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
+      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
       children: children?.build(zacContext) ?? const <Widget>[],
     );
   }

@@ -32,18 +32,18 @@ class FlutterSystemUiOverlayStyle
 
   SystemUiOverlayStyle _build(ZacContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
+      systemNavigationBarColor: systemNavigationBarColor?.getValue(zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(zacContext),
+          systemNavigationBarDividerColor?.getValue(zacContext),
       systemNavigationBarIconBrightness:
           systemNavigationBarIconBrightness?.build(zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.build(zacContext),
-      statusBarColor: statusBarColor?.build(zacContext),
+          systemNavigationBarContrastEnforced?.getValue(zacContext),
+      statusBarColor: statusBarColor?.getValue(zacContext),
       statusBarBrightness: statusBarBrightness?.build(zacContext),
       statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.build(zacContext),
+          systemStatusBarContrastEnforced?.getValue(zacContext),
     );
   }
 
