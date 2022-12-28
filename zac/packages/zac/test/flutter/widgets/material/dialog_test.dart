@@ -213,11 +213,10 @@ void main() {
           tester,
           FlutterMaterial(
               child: FlutterDialogs.simpleDialogOption(
-            key: FlutterValueKey('FIND_ME').toZacValue(),
-            child: FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
-                .toZacValue(),
+            key: FlutterValueKey('FIND_ME'),
+            child: FlutterSizedBox(key: FlutterValueKey('child1')),
             onPressed: LeakAction.createActions(cb),
-          ).toZacValue()));
+          )));
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 

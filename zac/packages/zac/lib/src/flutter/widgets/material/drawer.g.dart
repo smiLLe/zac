@@ -10,20 +10,20 @@ _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
     _$_FlutterDrawer(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
       elevation: json['elevation'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['elevation'] as Object),
+          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
       shape: json['shape'] == null
           ? null
-          : ZacValue<ShapeBorder?>.fromJson(json['shape'] as Object),
+          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['semanticLabel'] as Object),
+          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
     );

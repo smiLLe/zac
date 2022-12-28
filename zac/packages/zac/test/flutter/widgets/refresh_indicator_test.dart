@@ -76,11 +76,10 @@ void main() {
             child: FlutterListView(
               children: ZacValueListSimple<Widget, List<Widget>?>(
                 [
-                  FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
-                      .toZacValue(),
+                  FlutterSizedBox(key: FlutterValueKey('child1')),
                 ],
               ),
-            ).toZacValue(),
+            ),
           ),
         ),
       ),
@@ -115,18 +114,18 @@ void main() {
               onRefresh: ZacActions([
                 LeakAction(cb),
                 ZacCompleterActions.completeVoid(
-                    completer: ZacValueConsume<Completer>(family: 'shared'))
+                    completer: ConsumeSharedValue<Completer>(family: 'shared'))
               ]),
-              onRefreshCompleter: ZacValueConsume<Completer>(family: 'shared'),
+              onRefreshCompleter:
+                  ConsumeSharedValue<Completer>(family: 'shared'),
               child: FlutterListView(
                 children: ZacValueListSimple<Widget, List<Widget>?>(
                   [
-                    FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
-                        .toZacValue(),
+                    FlutterSizedBox(key: FlutterValueKey('child1')),
                   ],
                 ),
-              ).toZacValue(),
-            ).toZacValue(),
+              ),
+            ),
           ),
         ),
       ),

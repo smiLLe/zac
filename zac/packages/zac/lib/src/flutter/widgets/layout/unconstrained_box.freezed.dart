@@ -21,14 +21,14 @@ FlutterUnconstrainedBox _$FlutterUnconstrainedBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterUnconstrainedBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<Axis?>? get constrainedAxis => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<Axis?>? get constrainedAxis => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -53,17 +53,17 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
       _$$_FlutterUnconstrainedBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<Axis?>? constrainedAxis;
+  final ZacBuilder<Axis?>? constrainedAxis;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -103,27 +103,27 @@ class _$_FlutterUnconstrainedBox extends _FlutterUnconstrainedBox {
 
 abstract class _FlutterUnconstrainedBox extends FlutterUnconstrainedBox {
   factory _FlutterUnconstrainedBox(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child,
-      final ZacValue<TextDirection?>? textDirection,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<Axis?>? constrainedAxis,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterUnconstrainedBox;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<Axis?>? constrainedAxis,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterUnconstrainedBox;
   _FlutterUnconstrainedBox._() : super._();
 
   factory _FlutterUnconstrainedBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterUnconstrainedBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<Axis?>? get constrainedAxis;
+  ZacBuilder<Axis?>? get constrainedAxis;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }

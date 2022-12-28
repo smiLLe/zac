@@ -21,66 +21,69 @@ FlutterInputDecoration _$FlutterInputDecorationFromJson(
 
 /// @nodoc
 mixin _$FlutterInputDecoration {
-  ZacValue<Widget?>? get icon => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get iconColor => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get label => throw _privateConstructorUsedError;
-  ZacValue<String?>? get labelText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get labelStyle => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get floatingLabelStyle =>
+  ZacBuilder<Widget?>? get icon => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get iconColor => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get label => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get labelText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get labelStyle => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get floatingLabelStyle =>
       throw _privateConstructorUsedError;
-  ZacValue<String?>? get helperText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get helperStyle => throw _privateConstructorUsedError;
-  ZacValue<int?>? get helperMaxLines => throw _privateConstructorUsedError;
-  ZacValue<String?>? get hintText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get hintStyle => throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get hintTextDirection =>
+  ZacBuilder<String?>? get helperText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get helperStyle => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get helperMaxLines => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get hintText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get hintStyle => throw _privateConstructorUsedError;
+  ZacBuilder<TextDirection?>? get hintTextDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<int?>? get hintMaxLines => throw _privateConstructorUsedError;
-  ZacValue<String?>? get errorText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get errorStyle => throw _privateConstructorUsedError;
-  ZacValue<int?>? get errorMaxLines =>
+  ZacBuilder<int?>? get hintMaxLines => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get errorText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get errorStyle => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get errorMaxLines =>
       throw _privateConstructorUsedError; // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
-  ZacValue<bool?>? get isCollapsed => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get isDense => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get contentPadding =>
+  ZacBuilder<bool?>? get isCollapsed => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get isDense => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry?>? get contentPadding =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get prefixIcon => throw _privateConstructorUsedError;
-  ZacValue<BoxConstraints?>? get prefixIconConstraints =>
+  ZacBuilder<Widget?>? get prefixIcon => throw _privateConstructorUsedError;
+  ZacBuilder<BoxConstraints?>? get prefixIconConstraints =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get prefix => throw _privateConstructorUsedError;
-  ZacValue<String?>? get prefixText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get prefixStyle => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get prefixIconColor => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get suffixIcon => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get suffix => throw _privateConstructorUsedError;
-  ZacValue<String?>? get suffixText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get suffixStyle => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get suffixIconColor => throw _privateConstructorUsedError;
-  ZacValue<BoxConstraints?>? get suffixIconConstraints =>
+  ZacBuilder<Widget?>? get prefix => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get prefixText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get prefixStyle => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get prefixIconColor => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get suffixIcon => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get suffix => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get suffixText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get suffixStyle => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get suffixIconColor => throw _privateConstructorUsedError;
+  ZacBuilder<BoxConstraints?>? get suffixIconConstraints =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get counter => throw _privateConstructorUsedError;
-  ZacValue<String?>? get counterText => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get counterStyle => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get filled => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get fillColor => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get focusColor => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get hoverColor => throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get errorBorder => throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get focusedBorder =>
+  ZacBuilder<Widget?>? get counter => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get counterText => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get counterStyle =>
       throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get focusedErrorBorder =>
+  ZacBuilder<bool?>? get filled => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get fillColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get focusColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get hoverColor => throw _privateConstructorUsedError;
+  ZacBuilder<InputBorder?>? get errorBorder =>
       throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get disabledBorder =>
+  ZacBuilder<InputBorder?>? get focusedBorder =>
       throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get enabledBorder =>
+  ZacBuilder<InputBorder?>? get focusedErrorBorder =>
       throw _privateConstructorUsedError;
-  ZacValue<InputBorder?>? get border => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get enabled => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticCounterText =>
+  ZacBuilder<InputBorder?>? get disabledBorder =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get alignLabelWithHint => throw _privateConstructorUsedError;
-  ZacValue<BoxConstraints?>? get constraints =>
+  ZacBuilder<InputBorder?>? get enabledBorder =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<InputBorder?>? get border => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get enabled => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticCounterText =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get alignLabelWithHint =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<BoxConstraints?>? get constraints =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -148,103 +151,103 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
       _$$_FlutterInputDecorationFromJson(json);
 
   @override
-  final ZacValue<Widget?>? icon;
+  final ZacBuilder<Widget?>? icon;
   @override
-  final ZacValue<Color?>? iconColor;
+  final ZacBuilder<Color?>? iconColor;
   @override
-  final ZacValue<Widget?>? label;
+  final ZacBuilder<Widget?>? label;
   @override
-  final ZacValue<String?>? labelText;
+  final ZacBuilder<String?>? labelText;
   @override
-  final ZacValue<TextStyle?>? labelStyle;
+  final ZacBuilder<TextStyle?>? labelStyle;
   @override
-  final ZacValue<TextStyle?>? floatingLabelStyle;
+  final ZacBuilder<TextStyle?>? floatingLabelStyle;
   @override
-  final ZacValue<String?>? helperText;
+  final ZacBuilder<String?>? helperText;
   @override
-  final ZacValue<TextStyle?>? helperStyle;
+  final ZacBuilder<TextStyle?>? helperStyle;
   @override
-  final ZacValue<int?>? helperMaxLines;
+  final ZacBuilder<int?>? helperMaxLines;
   @override
-  final ZacValue<String?>? hintText;
+  final ZacBuilder<String?>? hintText;
   @override
-  final ZacValue<TextStyle?>? hintStyle;
+  final ZacBuilder<TextStyle?>? hintStyle;
   @override
-  final ZacValue<TextDirection?>? hintTextDirection;
+  final ZacBuilder<TextDirection?>? hintTextDirection;
   @override
-  final ZacValue<int?>? hintMaxLines;
+  final ZacBuilder<int?>? hintMaxLines;
   @override
-  final ZacValue<String?>? errorText;
+  final ZacBuilder<String?>? errorText;
   @override
-  final ZacValue<TextStyle?>? errorStyle;
+  final ZacBuilder<TextStyle?>? errorStyle;
   @override
-  final ZacValue<int?>? errorMaxLines;
+  final ZacBuilder<int?>? errorMaxLines;
 // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
   @override
-  final ZacValue<bool?>? isCollapsed;
+  final ZacBuilder<bool?>? isCollapsed;
   @override
-  final ZacValue<bool?>? isDense;
+  final ZacBuilder<bool?>? isDense;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? contentPadding;
+  final ZacBuilder<EdgeInsetsGeometry?>? contentPadding;
   @override
-  final ZacValue<Widget?>? prefixIcon;
+  final ZacBuilder<Widget?>? prefixIcon;
   @override
-  final ZacValue<BoxConstraints?>? prefixIconConstraints;
+  final ZacBuilder<BoxConstraints?>? prefixIconConstraints;
   @override
-  final ZacValue<Widget?>? prefix;
+  final ZacBuilder<Widget?>? prefix;
   @override
-  final ZacValue<String?>? prefixText;
+  final ZacBuilder<String?>? prefixText;
   @override
-  final ZacValue<TextStyle?>? prefixStyle;
+  final ZacBuilder<TextStyle?>? prefixStyle;
   @override
-  final ZacValue<Color?>? prefixIconColor;
+  final ZacBuilder<Color?>? prefixIconColor;
   @override
-  final ZacValue<Widget?>? suffixIcon;
+  final ZacBuilder<Widget?>? suffixIcon;
   @override
-  final ZacValue<Widget?>? suffix;
+  final ZacBuilder<Widget?>? suffix;
   @override
-  final ZacValue<String?>? suffixText;
+  final ZacBuilder<String?>? suffixText;
   @override
-  final ZacValue<TextStyle?>? suffixStyle;
+  final ZacBuilder<TextStyle?>? suffixStyle;
   @override
-  final ZacValue<Color?>? suffixIconColor;
+  final ZacBuilder<Color?>? suffixIconColor;
   @override
-  final ZacValue<BoxConstraints?>? suffixIconConstraints;
+  final ZacBuilder<BoxConstraints?>? suffixIconConstraints;
   @override
-  final ZacValue<Widget?>? counter;
+  final ZacBuilder<Widget?>? counter;
   @override
-  final ZacValue<String?>? counterText;
+  final ZacBuilder<String?>? counterText;
   @override
-  final ZacValue<TextStyle?>? counterStyle;
+  final ZacBuilder<TextStyle?>? counterStyle;
   @override
-  final ZacValue<bool?>? filled;
+  final ZacBuilder<bool?>? filled;
   @override
-  final ZacValue<Color?>? fillColor;
+  final ZacBuilder<Color?>? fillColor;
   @override
-  final ZacValue<Color?>? focusColor;
+  final ZacBuilder<Color?>? focusColor;
   @override
-  final ZacValue<Color?>? hoverColor;
+  final ZacBuilder<Color?>? hoverColor;
   @override
-  final ZacValue<InputBorder?>? errorBorder;
+  final ZacBuilder<InputBorder?>? errorBorder;
   @override
-  final ZacValue<InputBorder?>? focusedBorder;
+  final ZacBuilder<InputBorder?>? focusedBorder;
   @override
-  final ZacValue<InputBorder?>? focusedErrorBorder;
+  final ZacBuilder<InputBorder?>? focusedErrorBorder;
   @override
-  final ZacValue<InputBorder?>? disabledBorder;
+  final ZacBuilder<InputBorder?>? disabledBorder;
   @override
-  final ZacValue<InputBorder?>? enabledBorder;
+  final ZacBuilder<InputBorder?>? enabledBorder;
   @override
-  final ZacValue<InputBorder?>? border;
+  final ZacBuilder<InputBorder?>? border;
   @override
-  final ZacValue<bool?>? enabled;
+  final ZacBuilder<bool?>? enabled;
   @override
-  final ZacValue<String?>? semanticCounterText;
+  final ZacBuilder<String?>? semanticCounterText;
   @override
-  final ZacValue<bool?>? alignLabelWithHint;
+  final ZacBuilder<bool?>? alignLabelWithHint;
   @override
-  final ZacValue<BoxConstraints?>? constraints;
+  final ZacBuilder<BoxConstraints?>? constraints;
 
   @override
   String toString() {
@@ -410,54 +413,54 @@ class _$_FlutterInputDecoration extends _FlutterInputDecoration {
 
 abstract class _FlutterInputDecoration extends FlutterInputDecoration {
   factory _FlutterInputDecoration(
-          {final ZacValue<Widget?>? icon,
-          final ZacValue<Color?>? iconColor,
-          final ZacValue<Widget?>? label,
-          final ZacValue<String?>? labelText,
-          final ZacValue<TextStyle?>? labelStyle,
-          final ZacValue<TextStyle?>? floatingLabelStyle,
-          final ZacValue<String?>? helperText,
-          final ZacValue<TextStyle?>? helperStyle,
-          final ZacValue<int?>? helperMaxLines,
-          final ZacValue<String?>? hintText,
-          final ZacValue<TextStyle?>? hintStyle,
-          final ZacValue<TextDirection?>? hintTextDirection,
-          final ZacValue<int?>? hintMaxLines,
-          final ZacValue<String?>? errorText,
-          final ZacValue<TextStyle?>? errorStyle,
-          final ZacValue<int?>? errorMaxLines,
-          final ZacValue<bool?>? isCollapsed,
-          final ZacValue<bool?>? isDense,
-          final ZacValue<EdgeInsetsGeometry?>? contentPadding,
-          final ZacValue<Widget?>? prefixIcon,
-          final ZacValue<BoxConstraints?>? prefixIconConstraints,
-          final ZacValue<Widget?>? prefix,
-          final ZacValue<String?>? prefixText,
-          final ZacValue<TextStyle?>? prefixStyle,
-          final ZacValue<Color?>? prefixIconColor,
-          final ZacValue<Widget?>? suffixIcon,
-          final ZacValue<Widget?>? suffix,
-          final ZacValue<String?>? suffixText,
-          final ZacValue<TextStyle?>? suffixStyle,
-          final ZacValue<Color?>? suffixIconColor,
-          final ZacValue<BoxConstraints?>? suffixIconConstraints,
-          final ZacValue<Widget?>? counter,
-          final ZacValue<String?>? counterText,
-          final ZacValue<TextStyle?>? counterStyle,
-          final ZacValue<bool?>? filled,
-          final ZacValue<Color?>? fillColor,
-          final ZacValue<Color?>? focusColor,
-          final ZacValue<Color?>? hoverColor,
-          final ZacValue<InputBorder?>? errorBorder,
-          final ZacValue<InputBorder?>? focusedBorder,
-          final ZacValue<InputBorder?>? focusedErrorBorder,
-          final ZacValue<InputBorder?>? disabledBorder,
-          final ZacValue<InputBorder?>? enabledBorder,
-          final ZacValue<InputBorder?>? border,
-          final ZacValue<bool?>? enabled,
-          final ZacValue<String?>? semanticCounterText,
-          final ZacValue<bool?>? alignLabelWithHint,
-          final ZacValue<BoxConstraints?>? constraints}) =
+          {final ZacBuilder<Widget?>? icon,
+          final ZacBuilder<Color?>? iconColor,
+          final ZacBuilder<Widget?>? label,
+          final ZacBuilder<String?>? labelText,
+          final ZacBuilder<TextStyle?>? labelStyle,
+          final ZacBuilder<TextStyle?>? floatingLabelStyle,
+          final ZacBuilder<String?>? helperText,
+          final ZacBuilder<TextStyle?>? helperStyle,
+          final ZacBuilder<int?>? helperMaxLines,
+          final ZacBuilder<String?>? hintText,
+          final ZacBuilder<TextStyle?>? hintStyle,
+          final ZacBuilder<TextDirection?>? hintTextDirection,
+          final ZacBuilder<int?>? hintMaxLines,
+          final ZacBuilder<String?>? errorText,
+          final ZacBuilder<TextStyle?>? errorStyle,
+          final ZacBuilder<int?>? errorMaxLines,
+          final ZacBuilder<bool?>? isCollapsed,
+          final ZacBuilder<bool?>? isDense,
+          final ZacBuilder<EdgeInsetsGeometry?>? contentPadding,
+          final ZacBuilder<Widget?>? prefixIcon,
+          final ZacBuilder<BoxConstraints?>? prefixIconConstraints,
+          final ZacBuilder<Widget?>? prefix,
+          final ZacBuilder<String?>? prefixText,
+          final ZacBuilder<TextStyle?>? prefixStyle,
+          final ZacBuilder<Color?>? prefixIconColor,
+          final ZacBuilder<Widget?>? suffixIcon,
+          final ZacBuilder<Widget?>? suffix,
+          final ZacBuilder<String?>? suffixText,
+          final ZacBuilder<TextStyle?>? suffixStyle,
+          final ZacBuilder<Color?>? suffixIconColor,
+          final ZacBuilder<BoxConstraints?>? suffixIconConstraints,
+          final ZacBuilder<Widget?>? counter,
+          final ZacBuilder<String?>? counterText,
+          final ZacBuilder<TextStyle?>? counterStyle,
+          final ZacBuilder<bool?>? filled,
+          final ZacBuilder<Color?>? fillColor,
+          final ZacBuilder<Color?>? focusColor,
+          final ZacBuilder<Color?>? hoverColor,
+          final ZacBuilder<InputBorder?>? errorBorder,
+          final ZacBuilder<InputBorder?>? focusedBorder,
+          final ZacBuilder<InputBorder?>? focusedErrorBorder,
+          final ZacBuilder<InputBorder?>? disabledBorder,
+          final ZacBuilder<InputBorder?>? enabledBorder,
+          final ZacBuilder<InputBorder?>? border,
+          final ZacBuilder<bool?>? enabled,
+          final ZacBuilder<String?>? semanticCounterText,
+          final ZacBuilder<bool?>? alignLabelWithHint,
+          final ZacBuilder<BoxConstraints?>? constraints}) =
       _$_FlutterInputDecoration;
   _FlutterInputDecoration._() : super._();
 
@@ -465,100 +468,100 @@ abstract class _FlutterInputDecoration extends FlutterInputDecoration {
       _$_FlutterInputDecoration.fromJson;
 
   @override
-  ZacValue<Widget?>? get icon;
+  ZacBuilder<Widget?>? get icon;
   @override
-  ZacValue<Color?>? get iconColor;
+  ZacBuilder<Color?>? get iconColor;
   @override
-  ZacValue<Widget?>? get label;
+  ZacBuilder<Widget?>? get label;
   @override
-  ZacValue<String?>? get labelText;
+  ZacBuilder<String?>? get labelText;
   @override
-  ZacValue<TextStyle?>? get labelStyle;
+  ZacBuilder<TextStyle?>? get labelStyle;
   @override
-  ZacValue<TextStyle?>? get floatingLabelStyle;
+  ZacBuilder<TextStyle?>? get floatingLabelStyle;
   @override
-  ZacValue<String?>? get helperText;
+  ZacBuilder<String?>? get helperText;
   @override
-  ZacValue<TextStyle?>? get helperStyle;
+  ZacBuilder<TextStyle?>? get helperStyle;
   @override
-  ZacValue<int?>? get helperMaxLines;
+  ZacBuilder<int?>? get helperMaxLines;
   @override
-  ZacValue<String?>? get hintText;
+  ZacBuilder<String?>? get hintText;
   @override
-  ZacValue<TextStyle?>? get hintStyle;
+  ZacBuilder<TextStyle?>? get hintStyle;
   @override
-  ZacValue<TextDirection?>? get hintTextDirection;
+  ZacBuilder<TextDirection?>? get hintTextDirection;
   @override
-  ZacValue<int?>? get hintMaxLines;
+  ZacBuilder<int?>? get hintMaxLines;
   @override
-  ZacValue<String?>? get errorText;
+  ZacBuilder<String?>? get errorText;
   @override
-  ZacValue<TextStyle?>? get errorStyle;
+  ZacBuilder<TextStyle?>? get errorStyle;
   @override
-  ZacValue<int?>? get errorMaxLines;
+  ZacBuilder<int?>? get errorMaxLines;
   @override // FloatingLabelBehavior? floatingLabelBehavior,
 // FloatingLabelAlignment? floatingLabelAlignment,
-  ZacValue<bool?>? get isCollapsed;
+  ZacBuilder<bool?>? get isCollapsed;
   @override
-  ZacValue<bool?>? get isDense;
+  ZacBuilder<bool?>? get isDense;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get contentPadding;
+  ZacBuilder<EdgeInsetsGeometry?>? get contentPadding;
   @override
-  ZacValue<Widget?>? get prefixIcon;
+  ZacBuilder<Widget?>? get prefixIcon;
   @override
-  ZacValue<BoxConstraints?>? get prefixIconConstraints;
+  ZacBuilder<BoxConstraints?>? get prefixIconConstraints;
   @override
-  ZacValue<Widget?>? get prefix;
+  ZacBuilder<Widget?>? get prefix;
   @override
-  ZacValue<String?>? get prefixText;
+  ZacBuilder<String?>? get prefixText;
   @override
-  ZacValue<TextStyle?>? get prefixStyle;
+  ZacBuilder<TextStyle?>? get prefixStyle;
   @override
-  ZacValue<Color?>? get prefixIconColor;
+  ZacBuilder<Color?>? get prefixIconColor;
   @override
-  ZacValue<Widget?>? get suffixIcon;
+  ZacBuilder<Widget?>? get suffixIcon;
   @override
-  ZacValue<Widget?>? get suffix;
+  ZacBuilder<Widget?>? get suffix;
   @override
-  ZacValue<String?>? get suffixText;
+  ZacBuilder<String?>? get suffixText;
   @override
-  ZacValue<TextStyle?>? get suffixStyle;
+  ZacBuilder<TextStyle?>? get suffixStyle;
   @override
-  ZacValue<Color?>? get suffixIconColor;
+  ZacBuilder<Color?>? get suffixIconColor;
   @override
-  ZacValue<BoxConstraints?>? get suffixIconConstraints;
+  ZacBuilder<BoxConstraints?>? get suffixIconConstraints;
   @override
-  ZacValue<Widget?>? get counter;
+  ZacBuilder<Widget?>? get counter;
   @override
-  ZacValue<String?>? get counterText;
+  ZacBuilder<String?>? get counterText;
   @override
-  ZacValue<TextStyle?>? get counterStyle;
+  ZacBuilder<TextStyle?>? get counterStyle;
   @override
-  ZacValue<bool?>? get filled;
+  ZacBuilder<bool?>? get filled;
   @override
-  ZacValue<Color?>? get fillColor;
+  ZacBuilder<Color?>? get fillColor;
   @override
-  ZacValue<Color?>? get focusColor;
+  ZacBuilder<Color?>? get focusColor;
   @override
-  ZacValue<Color?>? get hoverColor;
+  ZacBuilder<Color?>? get hoverColor;
   @override
-  ZacValue<InputBorder?>? get errorBorder;
+  ZacBuilder<InputBorder?>? get errorBorder;
   @override
-  ZacValue<InputBorder?>? get focusedBorder;
+  ZacBuilder<InputBorder?>? get focusedBorder;
   @override
-  ZacValue<InputBorder?>? get focusedErrorBorder;
+  ZacBuilder<InputBorder?>? get focusedErrorBorder;
   @override
-  ZacValue<InputBorder?>? get disabledBorder;
+  ZacBuilder<InputBorder?>? get disabledBorder;
   @override
-  ZacValue<InputBorder?>? get enabledBorder;
+  ZacBuilder<InputBorder?>? get enabledBorder;
   @override
-  ZacValue<InputBorder?>? get border;
+  ZacBuilder<InputBorder?>? get border;
   @override
-  ZacValue<bool?>? get enabled;
+  ZacBuilder<bool?>? get enabled;
   @override
-  ZacValue<String?>? get semanticCounterText;
+  ZacBuilder<String?>? get semanticCounterText;
   @override
-  ZacValue<bool?>? get alignLabelWithHint;
+  ZacBuilder<bool?>? get alignLabelWithHint;
   @override
-  ZacValue<BoxConstraints?>? get constraints;
+  ZacBuilder<BoxConstraints?>? get constraints;
 }

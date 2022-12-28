@@ -15,7 +15,7 @@ part 'refresh_indicator.g.dart';
 @freezedZacBuilder
 class FlutterRefreshIndicator
     with _$FlutterRefreshIndicator
-    implements ZacBuild<RefreshIndicator> {
+    implements ZacBuilder<RefreshIndicator> {
   const FlutterRefreshIndicator._();
 
   static const String unionValue = 'f:1:RefreshIndicator';
@@ -25,19 +25,19 @@ class FlutterRefreshIndicator
 
   @FreezedUnionValue(FlutterRefreshIndicator.unionValue)
   factory FlutterRefreshIndicator({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
-    ZacValue<double?>? displacement,
-    ZacValue<double?>? edgeOffset,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
+    ZacBuilder<double?>? displacement,
+    ZacBuilder<double?>? edgeOffset,
     required ZacActions onRefresh,
-    ZacValue<Color?>? color,
-    ZacValue<Color?>? backgroundColor,
+    ZacBuilder<Color?>? color,
+    ZacBuilder<Color?>? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-    ZacValue<String?>? semanticsLabel,
-    ZacValue<String?>? semanticsValue,
-    ZacValue<double?>? strokeWidth,
-    ZacValue<RefreshIndicatorTriggerMode?>? triggerMode,
-    ZacValueConsume<Completer>? onRefreshCompleter,
+    ZacBuilder<String?>? semanticsLabel,
+    ZacBuilder<String?>? semanticsValue,
+    ZacBuilder<double?>? strokeWidth,
+    ZacBuilder<RefreshIndicatorTriggerMode?>? triggerMode,
+    ConsumeSharedValue<Completer>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   RefreshIndicator _buildWidget(ZacContext zacContext) {
@@ -50,22 +50,22 @@ class FlutterRefreshIndicator
 
         zacContext.ref
             .invalidate(SharedValue.provider(onRefreshCompleter!.family));
-        final completer = onRefreshCompleter!.getValue(zacContext);
+        final completer = onRefreshCompleter!.build(zacContext);
 
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
-      displacement: displacement?.getValue(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.getValue(zacContext) ?? 0.0,
-      color: color?.getValue(zacContext),
-      backgroundColor: backgroundColor?.getValue(zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      semanticsValue: semanticsValue?.getValue(zacContext),
-      strokeWidth: strokeWidth?.getValue(zacContext) ??
+      displacement: displacement?.build(zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.build(zacContext) ?? 0.0,
+      color: color?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      semanticsLabel: semanticsLabel?.build(zacContext),
+      semanticsValue: semanticsValue?.build(zacContext),
+      strokeWidth: strokeWidth?.build(zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
-      triggerMode: triggerMode?.getValue(zacContext) ??
-          RefreshIndicatorTriggerMode.onEdge,
-      child: child.getValue(zacContext),
+      triggerMode:
+          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
+      child: child.build(zacContext),
     );
   }
 
@@ -79,7 +79,7 @@ class FlutterRefreshIndicator
 class FlutterRefreshIndicatorTriggerMode
     with
         _$FlutterRefreshIndicatorTriggerMode,
-        ZacBuild<RefreshIndicatorTriggerMode> {
+        ZacBuilder<RefreshIndicatorTriggerMode> {
   const FlutterRefreshIndicatorTriggerMode._();
 
   static const String unionValueOnEdge =

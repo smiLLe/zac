@@ -20,10 +20,10 @@ FlutterClipOval _$FlutterClipOvalFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterClipOval {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child =>
       throw _privateConstructorUsedError; // CustomClipper<Rect>? clipper,
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -41,12 +41,12 @@ class _$_FlutterClipOval extends _FlutterClipOval {
       _$$_FlutterClipOvalFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 // CustomClipper<Rect>? clipper,
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -79,18 +79,18 @@ class _$_FlutterClipOval extends _FlutterClipOval {
 
 abstract class _FlutterClipOval extends FlutterClipOval {
   factory _FlutterClipOval(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterClipOval;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterClipOval;
   _FlutterClipOval._() : super._();
 
   factory _FlutterClipOval.fromJson(Map<String, dynamic> json) =
       _$_FlutterClipOval.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override // CustomClipper<Rect>? clipper,
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }

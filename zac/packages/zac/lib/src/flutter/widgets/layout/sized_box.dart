@@ -9,7 +9,7 @@ part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
 
 @freezedZacBuilder
-class FlutterSizedBox with _$FlutterSizedBox implements ZacBuild<SizedBox> {
+class FlutterSizedBox with _$FlutterSizedBox implements ZacBuilder<SizedBox> {
   const FlutterSizedBox._();
 
   static const String unionValue = 'f:1:SizedBox';
@@ -23,63 +23,63 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacBuild<SizedBox> {
 
   @FreezedUnionValue(FlutterSizedBox.unionValue)
   factory FlutterSizedBox({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? width,
-    ZacValue<double?>? height,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? width,
+    ZacBuilder<double?>? height,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterWidgetSizedBox;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueExpand)
   factory FlutterSizedBox.expand({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterWidgetSizedBoxExpand;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueFromSize)
   factory FlutterSizedBox.fromSize({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    ZacValue<Size?>? size,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<Size?>? size,
   }) = _FlutterWidgetSizedBoxFromSize;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueShrink)
   const factory FlutterSizedBox.shrink({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterWidgetSizedBoxShrink;
 
   @FreezedUnionValue(FlutterSizedBox.unionValueSquare)
   factory FlutterSizedBox.square({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    ZacValue<double?>? dimension,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<double?>? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 
   SizedBox _buildWidget(ZacContext zacContext) {
     return map(
       (value) => SizedBox(
-        key: value.key?.getValue(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
-        child: value.child?.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        width: value.width?.build(zacContext),
+        height: value.height?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.getValue(zacContext),
-        child: value.child?.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.getValue(zacContext),
-        size: value.size?.getValue(zacContext),
-        child: value.child?.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        size: value.size?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.getValue(zacContext),
-        child: value.child?.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.getValue(zacContext),
-        dimension: value.dimension?.getValue(zacContext),
-        child: value.child?.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        dimension: value.dimension?.build(zacContext),
+        child: value.child?.build(zacContext),
       ),
     );
   }

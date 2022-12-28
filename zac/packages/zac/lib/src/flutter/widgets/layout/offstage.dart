@@ -9,7 +9,7 @@ part 'offstage.freezed.dart';
 part 'offstage.g.dart';
 
 @freezedZacBuilder
-class FlutterOffstage with _$FlutterOffstage implements ZacBuild<Offstage> {
+class FlutterOffstage with _$FlutterOffstage implements ZacBuilder<Offstage> {
   const FlutterOffstage._();
 
   static const String unionValue = 'f:1:Offstage';
@@ -19,16 +19,16 @@ class FlutterOffstage with _$FlutterOffstage implements ZacBuild<Offstage> {
 
   @FreezedUnionValue(FlutterOffstage.unionValue)
   factory FlutterOffstage({
-    ZacValue<Key?>? key,
-    ZacValue<bool?>? offstage,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<bool?>? offstage,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterOffstage;
 
   Offstage _buildWidget(ZacContext zacContext) {
     return Offstage(
-      key: key?.getValue(zacContext),
-      offstage: offstage?.getValue(zacContext) ?? true,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      offstage: offstage?.build(zacContext) ?? true,
+      child: child?.build(zacContext),
     );
   }
 

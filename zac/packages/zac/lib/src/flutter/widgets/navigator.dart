@@ -2,7 +2,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,7 +22,7 @@ abstract class RouteWithArgs {
 @freezedZacBuilder
 class FlutterMaterialPageRoute
     with _$FlutterMaterialPageRoute
-    implements ZacBuild<Route<Object?>>, RouteWithArgs {
+    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
   const FlutterMaterialPageRoute._();
 
   factory FlutterMaterialPageRoute.fromJson(Map<String, dynamic> json) =>
@@ -31,16 +30,16 @@ class FlutterMaterialPageRoute
 
   @FreezedUnionValue('f:1:MaterialPageRoute')
   factory FlutterMaterialPageRoute({
-    ZacValue<RouteSettings?>? settings,
-    ZacValue<bool?>? maintainState,
-    ZacValue<bool?>? fullscreenDialog,
+    ZacBuilder<RouteSettings?>? settings,
+    ZacBuilder<bool?>? maintainState,
+    ZacBuilder<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [nameOfSharedArgumentsInRoute]
-    ZacValue<String?>? nameOfSharedArguments,
+    ZacBuilder<String?>? nameOfSharedArguments,
   }) = _FlutterMaterialPageRoute;
 
   MaterialPageRoute<Object?> _build(
@@ -50,14 +49,14 @@ class FlutterMaterialPageRoute
   }) {
     return MaterialPageRoute<Object?>(
       builder: (_) => SharedValueProvider(
-        childBuilder: child.getValue,
+        childBuilder: child.build,
         valueBuilder: (_, __) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.getValue(zacContext),
-      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
-      maintainState: maintainState?.getValue(zacContext) ?? true,
+      settings: settings?.build(zacContext),
+      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
+      maintainState: maintainState?.build(zacContext) ?? true,
     );
   }
 
@@ -65,9 +64,9 @@ class FlutterMaterialPageRoute
   MaterialPageRoute<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      familyName: nameOfSharedArguments?.getValue(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.getValue(zacContext)?.arguments,
+      arguments: settings?.build(zacContext)?.arguments,
     );
   }
 
@@ -89,7 +88,7 @@ class FlutterMaterialPageRoute
 @freezedZacBuilder
 class FlutterPageRouteBuilder
     with _$FlutterPageRouteBuilder
-    implements ZacBuild<Route<Object?>>, RouteWithArgs {
+    implements ZacBuilder<Route<Object?>>, RouteWithArgs {
   const FlutterPageRouteBuilder._();
 
   factory FlutterPageRouteBuilder.fromJson(Map<String, dynamic> json) =>
@@ -97,23 +96,23 @@ class FlutterPageRouteBuilder
 
   @FreezedUnionValue('f:1:PageRouteBuilder')
   factory FlutterPageRouteBuilder({
-    ZacValue<RouteSettings?>? settings,
+    ZacBuilder<RouteSettings?>? settings,
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-    ZacValue<bool?>? opaque,
-    ZacValue<bool?>? barrierDismissible,
-    ZacValue<Color?>? barrierColor,
-    ZacValue<String?>? barrierLabel,
-    ZacValue<bool?>? maintainState,
-    ZacValue<bool?>? fullscreenDialog,
+    ZacBuilder<bool?>? opaque,
+    ZacBuilder<bool?>? barrierDismissible,
+    ZacBuilder<Color?>? barrierColor,
+    ZacBuilder<String?>? barrierLabel,
+    ZacBuilder<bool?>? maintainState,
+    ZacBuilder<bool?>? fullscreenDialog,
 
     /// Used instead of WidgetBuilder builder
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
 
     /// [FlutterRouteSettings] arguments are shared using this name or as a
     /// fallback using [nameOfSharedArgumentsInRoute]
-    ZacValue<String?>? nameOfSharedArguments,
+    ZacBuilder<String?>? nameOfSharedArguments,
   }) = _FlutterPageRouteBuilder;
 
   PageRouteBuilder<Object?> _build(
@@ -123,18 +122,18 @@ class FlutterPageRouteBuilder
   }) {
     return PageRouteBuilder<ZacActions?>(
       pageBuilder: (_, __, ___) => SharedValueProvider(
-        childBuilder: child.getValue,
+        childBuilder: child.build,
         valueBuilder: (ref, zacContext) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.getValue(zacContext),
-      opaque: opaque?.getValue(zacContext) ?? true,
-      barrierDismissible: barrierDismissible?.getValue(zacContext) ?? false,
-      barrierColor: barrierColor?.getValue(zacContext),
-      barrierLabel: barrierLabel?.getValue(zacContext),
-      maintainState: maintainState?.getValue(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.getValue(zacContext) ?? false,
+      settings: settings?.build(zacContext),
+      opaque: opaque?.build(zacContext) ?? true,
+      barrierDismissible: barrierDismissible?.build(zacContext) ?? false,
+      barrierColor: barrierColor?.build(zacContext),
+      barrierLabel: barrierLabel?.build(zacContext),
+      maintainState: maintainState?.build(zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
     );
   }
 
@@ -142,9 +141,9 @@ class FlutterPageRouteBuilder
   PageRouteBuilder<Object?> build(ZacContext zacContext) {
     return _build(
       zacContext,
-      familyName: nameOfSharedArguments?.getValue(zacContext) ??
+      familyName: nameOfSharedArguments?.build(zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.getValue(zacContext)?.arguments,
+      arguments: settings?.build(zacContext)?.arguments,
     );
   }
 
@@ -178,7 +177,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 
   @FreezedUnionValue('z:1:NavigatorState.shared')
   factory FlutterNavigatorState.shared({
-    required ZacValueConsume<GlobalKey<NavigatorState>> value,
+    required ZacBuilder<GlobalKey<NavigatorState>> value,
   }) = _ZacNavigatorStateSharedValue;
 
   NavigatorState getNavigatorState(ZacContext zacContext) {
@@ -186,7 +185,7 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
       closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
       root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
       shared: (obj) {
-        final key = obj.value.getValue(zacContext);
+        final key = obj.value.build(zacContext);
         if (null != key.currentState) {
           return key.currentState!;
         }
@@ -197,7 +196,9 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
 }
 
 @freezedZacBuilder
-class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
+class FlutterNavigator
+    with _$FlutterNavigator
+    implements ZacBuilder<Navigator> {
   const FlutterNavigator._();
 
   factory FlutterNavigator.fromJson(Map<String, dynamic> json) =>
@@ -205,21 +206,21 @@ class FlutterNavigator with _$FlutterNavigator implements ZacBuild<Navigator> {
 
   @FreezedUnionValue('f:1:Navigator')
   factory FlutterNavigator({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     FlutterRouteFactory? onGenerateRoute,
     FlutterRouteFactory? onUnknownRoute,
-    ZacValue<String?>? initialRoute,
-    ZacValue<bool?>? requestFocus,
+    ZacBuilder<String?>? initialRoute,
+    ZacBuilder<bool?>? requestFocus,
   }) = _FlutterNavigator;
 
   Navigator _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.getValue(zacContext),
+        key: obj.key?.build(zacContext),
         onGenerateRoute: obj.onGenerateRoute?.build(zacContext),
         onUnknownRoute: obj.onUnknownRoute?.build(zacContext),
-        initialRoute: obj.initialRoute?.getValue(zacContext),
-        requestFocus: obj.requestFocus?.getValue(zacContext) ?? true,
+        initialRoute: obj.initialRoute?.build(zacContext),
+        requestFocus: obj.requestFocus?.build(zacContext) ?? true,
       ),
     );
   }
@@ -241,13 +242,13 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.push')
   factory FlutterNavigatorActions.push({
-    required ZacValue<Route<Object?>> route,
+    required ZacBuilder<Route<Object?>> route,
     FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPush;
 
   @FreezedUnionValue('f:1:Navigator.pushNamed')
   factory FlutterNavigatorActions.pushNamed(
-          {required ZacValue<String> routeName,
+          {required ZacBuilder<String> routeName,
           Object? arguments,
           FlutterNavigatorState? navigatorState}) =
       _FlutterNavigatorActionsPushNamed;
@@ -266,14 +267,14 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
-    required ZacValue<Route<Object?>> route,
+    required ZacBuilder<Route<Object?>> route,
     ZacActions? result,
     FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacementNamed')
   factory FlutterNavigatorActions.pushReplacementNamed({
-    required ZacValue<String> routeName,
+    required ZacBuilder<String> routeName,
     Object? arguments,
     FlutterNavigatorState? navigatorState,
     ZacActions? result,
@@ -281,7 +282,7 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')
   factory FlutterNavigatorActions.popUntilRouteName({
-    required ZacValue<String> routeName,
+    required ZacBuilder<String> routeName,
     FlutterNavigatorState? navigatorState,
   }) = _FlutterNavigatorActionsPopUntilRouteName;
 
@@ -307,7 +308,7 @@ class FlutterNavigatorActions
       push: (obj) {
         final state = _getState(zacContext);
         if (null == state) return null;
-        state.push(obj.route.getValue(zacContext)).then((value) {
+        state.push(obj.route.build(zacContext)).then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
             value.execute(
@@ -322,9 +323,8 @@ class FlutterNavigatorActions
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.getValue(
+          obj.routeName.build(
             zacContext,
-            onConsume: const SharedValueConsumeType.read(),
           ),
           arguments: obj.arguments,
         )
@@ -350,7 +350,7 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.getValue(zacContext),
+          obj.route.build(zacContext),
           result: obj.result,
         )
             .then((value) {
@@ -365,9 +365,8 @@ class FlutterNavigatorActions
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.getValue(
+          obj.routeName.build(
             zacContext,
-            onConsume: const SharedValueConsumeType.read(),
           ),
           arguments: obj.arguments,
           result: obj.result,
@@ -384,9 +383,8 @@ class FlutterNavigatorActions
         if (null == state) return;
 
         /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
-        state.popUntil(ModalRoute.withName(obj.routeName.getValue(
+        state.popUntil(ModalRoute.withName(obj.routeName.build(
           zacContext,
-          onConsume: const SharedValueConsumeType.read(),
         )));
       },
     );
@@ -394,7 +392,7 @@ class FlutterNavigatorActions
 }
 
 @freezedZacBuilder
-class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
+class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
   const FlutterRouteFactory._();
 
   factory FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
@@ -402,7 +400,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
 
   @FreezedUnionValue('f:1:RouteFactory')
   factory FlutterRouteFactory({
-    required Map<String, ZacBuild<Route<Object?>>> routes,
+    required Map<String, ZacBuilder<Route<Object?>>> routes,
 
     /// Key of the map equals the route name. Value of the map equals the
     /// [SharedValue] family.
@@ -436,7 +434,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuild<RouteFactory> {
 
 @freezedZacBuilder
 class FlutterRouteSettings
-    with _$FlutterRouteSettings, ZacBuild<RouteSettings> {
+    with _$FlutterRouteSettings, ZacBuilder<RouteSettings> {
   const FlutterRouteSettings._();
 
   factory FlutterRouteSettings.fromJson(Map<String, dynamic> json) =>
@@ -444,14 +442,14 @@ class FlutterRouteSettings
 
   @FreezedUnionValue('f:1:RouteSettings')
   factory FlutterRouteSettings({
-    ZacValue<String?>? name,
-    ZacValue<Object?>? arguments,
+    ZacBuilder<String?>? name,
+    ZacBuilder<Object?>? arguments,
   }) = _FlutterRouteSettings;
 
   RouteSettings _build(ZacContext zacContext) {
     return RouteSettings(
-      arguments: arguments?.getValue(zacContext),
-      name: name?.getValue(zacContext),
+      arguments: arguments?.build(zacContext),
+      name: name?.build(zacContext),
     );
   }
 

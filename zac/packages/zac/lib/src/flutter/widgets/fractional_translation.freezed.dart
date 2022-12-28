@@ -21,10 +21,11 @@ FlutterFractionalTranslation _$FlutterFractionalTranslationFromJson(
 
 /// @nodoc
 mixin _$FlutterFractionalTranslation {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
   FlutterOffset get translation => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get transformHitTests => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get transformHitTests =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -44,13 +45,13 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
       _$$_FlutterFractionalTranslationFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
   final FlutterOffset translation;
   @override
-  final ZacValue<bool?>? transformHitTests;
+  final ZacBuilder<bool?>? transformHitTests;
 
   @override
   String toString() {
@@ -87,10 +88,10 @@ class _$_FlutterFractionalTranslation extends _FlutterFractionalTranslation {
 abstract class _FlutterFractionalTranslation
     extends FlutterFractionalTranslation {
   factory _FlutterFractionalTranslation(
-          {final ZacValue<Key?>? key,
-          final ZacValue<Widget?>? child,
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<Widget?>? child,
           required final FlutterOffset translation,
-          final ZacValue<bool?>? transformHitTests}) =
+          final ZacBuilder<bool?>? transformHitTests}) =
       _$_FlutterFractionalTranslation;
   _FlutterFractionalTranslation._() : super._();
 
@@ -98,11 +99,11 @@ abstract class _FlutterFractionalTranslation
       _$_FlutterFractionalTranslation.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
   FlutterOffset get translation;
   @override
-  ZacValue<bool?>? get transformHitTests;
+  ZacBuilder<bool?>? get transformHitTests;
 }

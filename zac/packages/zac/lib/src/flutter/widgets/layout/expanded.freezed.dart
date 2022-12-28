@@ -20,9 +20,9 @@ FlutterExpanded _$FlutterExpandedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterExpanded {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<int?>? get flex => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get flex => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -40,11 +40,11 @@ class _$_FlutterExpanded extends _FlutterExpanded {
       _$$_FlutterExpandedFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<int?>? flex;
+  final ZacBuilder<int?>? flex;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -76,18 +76,18 @@ class _$_FlutterExpanded extends _FlutterExpanded {
 
 abstract class _FlutterExpanded extends FlutterExpanded {
   factory _FlutterExpanded(
-      {final ZacValue<Key?>? key,
-      final ZacValue<int?>? flex,
-      required final ZacValue<Widget> child}) = _$_FlutterExpanded;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<int?>? flex,
+      required final ZacBuilder<Widget> child}) = _$_FlutterExpanded;
   _FlutterExpanded._() : super._();
 
   factory _FlutterExpanded.fromJson(Map<String, dynamic> json) =
       _$_FlutterExpanded.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<int?>? get flex;
+  ZacBuilder<int?>? get flex;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

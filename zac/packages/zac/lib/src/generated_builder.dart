@@ -80,6 +80,7 @@ import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
@@ -500,11 +501,13 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:Navigator.popUntilRouteName': FlutterNavigatorActions.fromJson,
   'z:1:NavigatorState.shared': FlutterNavigatorState.fromJson,
   'z:1:ScrollController.provide': FlutterScrollController.fromJson,
+  'z:1:SharedValue.consume': ConsumeSharedValue.fromJson,
   'z:1:SharedValue.invalidate': SharedValueActions.fromJson,
   'z:1:SharedValue.provide': SharedValueProviderBuilder.fromJson,
   'z:1:SharedValue.update': SharedValueActions.fromJson,
   'z:1:SharedValueConsume.read': SharedValueConsumeType.fromJson,
   'z:1:SharedValueConsume.watch': SharedValueConsumeType.fromJson,
+  'z:1:SharedValueList.consume': ConsumeSharedValueList.fromJson,
   'z:1:StateMachine.provide': ZacStateMachineProviderBuilder.fromJson,
   'z:1:StateMachine:Action.send': ZacStateMachineActions.fromJson,
   'z:1:StateMachine:Action.trySend': ZacStateMachineActions.fromJson,
@@ -587,9 +590,7 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:Widget.isolate': ZacWidgetBuilder.fromJson,
   'z:1:ZacValue': ZacValueSimple.fromJson,
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
-  'z:1:ZacValue.consume': ZacValueConsume.fromJson,
   'z:1:ZacValueList': ZacValueListSimple.fromJson,
-  'z:1:ZacValueList.consume': ZacValueListConsume.fromJson,
   'z:1:ZacValueMap': ZacValueMap.fromJson,
   'z:1:ZacValueMap.consume': ZacValueMap.fromJson
 };

@@ -719,7 +719,7 @@ class _$_MapContainsKey extends _MapContainsKey {
       _$$_MapContainsKeyFromJson(json);
 
   @override
-  final ZacValue<Object?>? key;
+  final ZacBuilder<Object?>? key;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -765,14 +765,14 @@ class _$_MapContainsKey extends _MapContainsKey {
 }
 
 abstract class _MapContainsKey extends MapTransformer {
-  const factory _MapContainsKey(final ZacValue<Object?>? key) =
+  const factory _MapContainsKey(final ZacBuilder<Object?>? key) =
       _$_MapContainsKey;
   const _MapContainsKey._() : super._();
 
   factory _MapContainsKey.fromJson(Map<String, dynamic> json) =
       _$_MapContainsKey.fromJson;
 
-  ZacValue<Object?>? get key;
+  ZacBuilder<Object?>? get key;
 }
 
 /// @nodoc
@@ -786,7 +786,7 @@ class _$_MapContainsValue extends _MapContainsValue {
       _$$_MapContainsValueFromJson(json);
 
   @override
-  final ZacValue<Object?>? value;
+  final ZacBuilder<Object?>? value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -832,14 +832,14 @@ class _$_MapContainsValue extends _MapContainsValue {
 }
 
 abstract class _MapContainsValue extends MapTransformer {
-  const factory _MapContainsValue(final ZacValue<Object?>? value) =
+  const factory _MapContainsValue(final ZacBuilder<Object?>? value) =
       _$_MapContainsValue;
   const _MapContainsValue._() : super._();
 
   factory _MapContainsValue.fromJson(Map<String, dynamic> json) =
       _$_MapContainsValue.fromJson;
 
-  ZacValue<Object?>? get value;
+  ZacBuilder<Object?>? get value;
 }
 
 /// @nodoc
@@ -1107,7 +1107,7 @@ class _$_MapKey extends _MapKey {
       _$$_MapKeyFromJson(json);
 
   @override
-  final ZacValue<String> key;
+  final ZacBuilder<String> key;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1153,12 +1153,12 @@ class _$_MapKey extends _MapKey {
 }
 
 abstract class _MapKey extends MapTransformer {
-  const factory _MapKey(final ZacValue<String> key) = _$_MapKey;
+  const factory _MapKey(final ZacBuilder<String> key) = _$_MapKey;
   const _MapKey._() : super._();
 
   factory _MapKey.fromJson(Map<String, dynamic> json) = _$_MapKey.fromJson;
 
-  ZacValue<String> get key;
+  ZacBuilder<String> get key;
 }
 
 /// @nodoc
@@ -1173,9 +1173,9 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
       _$$_MapSetValueForKeyFromJson(json);
 
   @override
-  final ZacValue<Object> value;
+  final ZacBuilder<Object> value;
   @override
-  final ZacValue<String> key;
+  final ZacBuilder<String> key;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1223,15 +1223,15 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
 
 abstract class _MapSetValueForKey extends MapTransformer {
   const factory _MapSetValueForKey(
-      {required final ZacValue<Object> value,
-      required final ZacValue<String> key}) = _$_MapSetValueForKey;
+      {required final ZacBuilder<Object> value,
+      required final ZacBuilder<String> key}) = _$_MapSetValueForKey;
   const _MapSetValueForKey._() : super._();
 
   factory _MapSetValueForKey.fromJson(Map<String, dynamic> json) =
       _$_MapSetValueForKey.fromJson;
 
-  ZacValue<Object> get value;
-  ZacValue<String> get key;
+  ZacBuilder<Object> get value;
+  ZacBuilder<String> get key;
 }
 
 IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {
@@ -1973,7 +1973,7 @@ class _$_IterableContains extends _IterableContains {
       _$$_IterableContainsFromJson(json);
 
   @override
-  final ZacValue<Object?>? element;
+  final ZacBuilder<Object?>? element;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2019,14 +2019,14 @@ class _$_IterableContains extends _IterableContains {
 }
 
 abstract class _IterableContains extends IterableTransformer {
-  const factory _IterableContains(final ZacValue<Object?>? element) =
+  const factory _IterableContains(final ZacBuilder<Object?>? element) =
       _$_IterableContains;
   const _IterableContains._() : super._();
 
   factory _IterableContains.fromJson(Map<String, dynamic> json) =
       _$_IterableContains.fromJson;
 
-  ZacValue<Object?>? get element;
+  ZacBuilder<Object?>? get element;
 }
 
 /// @nodoc
@@ -2307,7 +2307,7 @@ class _$_ListAdd extends _ListAdd {
       _$$_ListAddFromJson(json);
 
   @override
-  final ZacValue<Object> value;
+  final ZacBuilder<Object> value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2340,12 +2340,12 @@ class _$_ListAdd extends _ListAdd {
 }
 
 abstract class _ListAdd extends ListTransformer {
-  const factory _ListAdd(final ZacValue<Object> value) = _$_ListAdd;
+  const factory _ListAdd(final ZacBuilder<Object> value) = _$_ListAdd;
   const _ListAdd._() : super._();
 
   factory _ListAdd.fromJson(Map<String, dynamic> json) = _$_ListAdd.fromJson;
 
-  ZacValue<Object> get value;
+  ZacBuilder<Object> get value;
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
@@ -3036,7 +3036,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
       _$$_ObjectEqualsSharedValueFromJson(json);
 
   @override
-  final ZacValue<Object?>? value;
+  final ZacBuilder<Object?>? value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -3079,14 +3079,14 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
 }
 
 abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
-  factory _ObjectEqualsSharedValue({required final ZacValue<Object?>? value}) =
-      _$_ObjectEqualsSharedValue;
+  factory _ObjectEqualsSharedValue(
+      {required final ZacBuilder<Object?>? value}) = _$_ObjectEqualsSharedValue;
   _ObjectEqualsSharedValue._() : super._();
 
   factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ObjectEqualsSharedValue.fromJson;
 
-  ZacValue<Object?>? get value;
+  ZacBuilder<Object?>? get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
@@ -4086,7 +4086,7 @@ class _$_StringSplit extends _StringSplit {
       _$$_StringSplitFromJson(json);
 
   @override
-  final ZacValue<String> pattern;
+  final ZacBuilder<String> pattern;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -4122,14 +4122,14 @@ class _$_StringSplit extends _StringSplit {
 }
 
 abstract class _StringSplit extends StringTransformer {
-  const factory _StringSplit({required final ZacValue<String> pattern}) =
+  const factory _StringSplit({required final ZacBuilder<String> pattern}) =
       _$_StringSplit;
   const _StringSplit._() : super._();
 
   factory _StringSplit.fromJson(Map<String, dynamic> json) =
       _$_StringSplit.fromJson;
 
-  ZacValue<String> get pattern;
+  ZacBuilder<String> get pattern;
 }
 
 /// @nodoc
@@ -4241,9 +4241,9 @@ class _$_StringReplaceAll extends _StringReplaceAll {
       _$$_StringReplaceAllFromJson(json);
 
   @override
-  final ZacValue<String> from;
+  final ZacBuilder<String> from;
   @override
-  final ZacValue<String> replace;
+  final ZacBuilder<String> replace;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -4281,15 +4281,15 @@ class _$_StringReplaceAll extends _StringReplaceAll {
 
 abstract class _StringReplaceAll extends StringTransformer {
   const factory _StringReplaceAll(
-          final ZacValue<String> from, final ZacValue<String> replace) =
+          final ZacBuilder<String> from, final ZacBuilder<String> replace) =
       _$_StringReplaceAll;
   const _StringReplaceAll._() : super._();
 
   factory _StringReplaceAll.fromJson(Map<String, dynamic> json) =
       _$_StringReplaceAll.fromJson;
 
-  ZacValue<String> get from;
-  ZacValue<String> get replace;
+  ZacBuilder<String> get from;
+  ZacBuilder<String> get replace;
 }
 
 JsonTransformer _$JsonTransformerFromJson(Map<String, dynamic> json) {

@@ -11,10 +11,10 @@ _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
     _$_FlutterGestureDetector(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       onTap: json['onTap'] == null
           ? null
           : ZacActions.fromJson(json['onTap'] as Object),
@@ -39,5 +39,5 @@ _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
               json['behavior'] as Map<String, dynamic>),
       excludeFromSemantics: json['excludeFromSemantics'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['excludeFromSemantics'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['excludeFromSemantics'] as Object),
     );

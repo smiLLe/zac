@@ -11,16 +11,16 @@ _$_FlutterWidgetSizedBox _$$_FlutterWidgetSizedBoxFromJson(
     _$_FlutterWidgetSizedBox(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       width: json['width'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['width'] as Object),
+          : ZacBuilder<double?>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['height'] as Object),
+          : ZacBuilder<double?>.fromJson(json['height'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -29,10 +29,10 @@ _$_FlutterWidgetSizedBoxExpand _$$_FlutterWidgetSizedBoxExpandFromJson(
     _$_FlutterWidgetSizedBoxExpand(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -41,13 +41,13 @@ _$_FlutterWidgetSizedBoxFromSize _$$_FlutterWidgetSizedBoxFromSizeFromJson(
     _$_FlutterWidgetSizedBoxFromSize(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       size: json['size'] == null
           ? null
-          : ZacValue<Size?>.fromJson(json['size'] as Object),
+          : ZacBuilder<Size?>.fromJson(json['size'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -56,10 +56,10 @@ _$_FlutterWidgetSizedBoxShrink _$$_FlutterWidgetSizedBoxShrinkFromJson(
     _$_FlutterWidgetSizedBoxShrink(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -68,12 +68,12 @@ _$_FlutterWidgetSizedBoxSquare _$$_FlutterWidgetSizedBoxSquareFromJson(
     _$_FlutterWidgetSizedBoxSquare(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       dimension: json['dimension'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['dimension'] as Object),
+          : ZacBuilder<double?>.fromJson(json['dimension'] as Object),
       $type: json['builder'] as String?,
     );

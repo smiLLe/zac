@@ -13,16 +13,18 @@ _$_SliverGridDelegateWithFixedCrossAxisCount
           crossAxisCount: json['crossAxisCount'] as int,
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacBuilder<double?>.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacBuilder<double?>.fromJson(
+                  json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['childAspectRatio'] as Object),
+              : ZacBuilder<double?>.fromJson(
+                  json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['mainAxisExtent'] as Object),
+              : ZacBuilder<double?>.fromJson(json['mainAxisExtent'] as Object),
           $type: json['builder'] as String?,
         );
 
@@ -31,18 +33,20 @@ _$_SliverGridDelegateWithMaxCrossAxisExtent
             Map<String, dynamic> json) =>
         _$_SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent:
-              ZacValue<double>.fromJson(json['maxCrossAxisExtent'] as Object),
+              ZacBuilder<double>.fromJson(json['maxCrossAxisExtent'] as Object),
           mainAxisSpacing: json['mainAxisSpacing'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['mainAxisSpacing'] as Object),
+              : ZacBuilder<double?>.fromJson(json['mainAxisSpacing'] as Object),
           crossAxisSpacing: json['crossAxisSpacing'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['crossAxisSpacing'] as Object),
+              : ZacBuilder<double?>.fromJson(
+                  json['crossAxisSpacing'] as Object),
           childAspectRatio: json['childAspectRatio'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['childAspectRatio'] as Object),
+              : ZacBuilder<double?>.fromJson(
+                  json['childAspectRatio'] as Object),
           mainAxisExtent: json['mainAxisExtent'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['mainAxisExtent'] as Object),
+              : ZacBuilder<double?>.fromJson(json['mainAxisExtent'] as Object),
           $type: json['builder'] as String?,
         );

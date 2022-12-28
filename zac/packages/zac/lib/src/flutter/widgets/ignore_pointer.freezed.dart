@@ -20,10 +20,11 @@ FlutterIgnorePointer _$FlutterIgnorePointerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterIgnorePointer {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get ignoring => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get ignoringSemantics => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get ignoring => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get ignoringSemantics =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -43,13 +44,13 @@ class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
       _$$_FlutterIgnorePointerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<bool?>? ignoring;
+  final ZacBuilder<bool?>? ignoring;
   @override
-  final ZacValue<bool?>? ignoringSemantics;
+  final ZacBuilder<bool?>? ignoringSemantics;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -85,21 +86,21 @@ class _$_FlutterIgnorePointer extends _FlutterIgnorePointer {
 
 abstract class _FlutterIgnorePointer extends FlutterIgnorePointer {
   factory _FlutterIgnorePointer(
-      {final ZacValue<Key?>? key,
-      final ZacValue<bool?>? ignoring,
-      final ZacValue<bool?>? ignoringSemantics,
-      final ZacValue<Widget?>? child}) = _$_FlutterIgnorePointer;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<bool?>? ignoring,
+      final ZacBuilder<bool?>? ignoringSemantics,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterIgnorePointer;
   _FlutterIgnorePointer._() : super._();
 
   factory _FlutterIgnorePointer.fromJson(Map<String, dynamic> json) =
       _$_FlutterIgnorePointer.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<bool?>? get ignoring;
+  ZacBuilder<bool?>? get ignoring;
   @override
-  ZacValue<bool?>? get ignoringSemantics;
+  ZacBuilder<bool?>? get ignoringSemantics;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

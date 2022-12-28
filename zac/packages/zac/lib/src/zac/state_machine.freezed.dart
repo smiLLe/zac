@@ -91,7 +91,7 @@ ZacStateConfig _$ZacStateConfigFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacStateConfig {
-  ZacValue<Widget> get widget => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get widget => throw _privateConstructorUsedError;
   List<ZacTransition> get on => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -114,7 +114,7 @@ class _$_ZacStateConfig extends _ZacStateConfig {
       _$$_ZacStateConfigFromJson(json);
 
   @override
-  final ZacValue<Widget> widget;
+  final ZacBuilder<Widget> widget;
   final List<ZacTransition> _on;
   @override
   @JsonKey()
@@ -154,7 +154,7 @@ class _$_ZacStateConfig extends _ZacStateConfig {
 
 abstract class _ZacStateConfig extends ZacStateConfig {
   factory _ZacStateConfig(
-      {required final ZacValue<Widget> widget,
+      {required final ZacBuilder<Widget> widget,
       final List<ZacTransition> on}) = _$_ZacStateConfig;
   _ZacStateConfig._() : super._();
 
@@ -162,7 +162,7 @@ abstract class _ZacStateConfig extends ZacStateConfig {
       _$_ZacStateConfig.fromJson;
 
   @override
-  ZacValue<Widget> get widget;
+  ZacBuilder<Widget> get widget;
   @override
   List<ZacTransition> get on;
 }
@@ -407,13 +407,13 @@ ZacStateMachineProviderBuilder _$ZacStateMachineProviderBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineProviderBuilder {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<String> get family => throw _privateConstructorUsedError;
-  ZacValue<String> get initialState => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<String> get family => throw _privateConstructorUsedError;
+  ZacBuilder<String> get initialState => throw _privateConstructorUsedError;
   ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> get states =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
-  ZacValue<Object?>? get initialContext => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Object?>? get initialContext => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -440,17 +440,17 @@ class _$_ZacStateMachineProviderBuilder
       _$$_ZacStateMachineProviderBuilderFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<String> family;
+  final ZacBuilder<String> family;
   @override
-  final ZacValue<String> initialState;
+  final ZacBuilder<String> initialState;
   @override
   final ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> states;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
-  final ZacValue<Object?>? initialContext;
+  final ZacBuilder<Object?>? initialContext;
 
   @override
   String toString() {
@@ -489,13 +489,13 @@ class _$_ZacStateMachineProviderBuilder
 abstract class _ZacStateMachineProviderBuilder
     extends ZacStateMachineProviderBuilder {
   factory _ZacStateMachineProviderBuilder(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<String> family,
-      required final ZacValue<String> initialState,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<String> family,
+      required final ZacBuilder<String> initialState,
       required final ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>
           states,
-      required final ZacValue<Widget> child,
-      final ZacValue<Object?>?
+      required final ZacBuilder<Widget> child,
+      final ZacBuilder<Object?>?
           initialContext}) = _$_ZacStateMachineProviderBuilder;
   _ZacStateMachineProviderBuilder._() : super._();
 
@@ -503,17 +503,17 @@ abstract class _ZacStateMachineProviderBuilder
       _$_ZacStateMachineProviderBuilder.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<String> get family;
+  ZacBuilder<String> get family;
   @override
-  ZacValue<String> get initialState;
+  ZacBuilder<String> get initialState;
   @override
   ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> get states;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
-  ZacValue<Object?>? get initialContext;
+  ZacBuilder<Object?>? get initialContext;
 }
 
 ZacStateMachineBuildStateBuilder _$ZacStateMachineBuildStateBuilderFromJson(
@@ -523,10 +523,10 @@ ZacStateMachineBuildStateBuilder _$ZacStateMachineBuildStateBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineBuildStateBuilder {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<String> get family => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<String> get family => throw _privateConstructorUsedError;
   List<String> get states => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get unmappedStateWidget =>
+  ZacBuilder<Widget?>? get unmappedStateWidget =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -553,9 +553,9 @@ class _$_ZacStateMachineBuildStateBuilder
       _$$_ZacStateMachineBuildStateBuilderFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<String> family;
+  final ZacBuilder<String> family;
   final List<String> _states;
   @override
   List<String> get states {
@@ -565,7 +565,7 @@ class _$_ZacStateMachineBuildStateBuilder
   }
 
   @override
-  final ZacValue<Widget?>? unmappedStateWidget;
+  final ZacBuilder<Widget?>? unmappedStateWidget;
 
   @override
   String toString() {
@@ -601,10 +601,10 @@ class _$_ZacStateMachineBuildStateBuilder
 abstract class _ZacStateMachineBuildStateBuilder
     extends ZacStateMachineBuildStateBuilder {
   factory _ZacStateMachineBuildStateBuilder(
-          {final ZacValue<Key?>? key,
-          required final ZacValue<String> family,
+          {final ZacBuilder<Key?>? key,
+          required final ZacBuilder<String> family,
           required final List<String> states,
-          final ZacValue<Widget?>? unmappedStateWidget}) =
+          final ZacBuilder<Widget?>? unmappedStateWidget}) =
       _$_ZacStateMachineBuildStateBuilder;
   _ZacStateMachineBuildStateBuilder._() : super._();
 
@@ -612,13 +612,13 @@ abstract class _ZacStateMachineBuildStateBuilder
       Map<String, dynamic> json) = _$_ZacStateMachineBuildStateBuilder.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<String> get family;
+  ZacBuilder<String> get family;
   @override
   List<String> get states;
   @override
-  ZacValue<Widget?>? get unmappedStateWidget;
+  ZacBuilder<Widget?>? get unmappedStateWidget;
 }
 
 ZacStateMachineActions _$ZacStateMachineActionsFromJson(
@@ -638,7 +638,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
 /// @nodoc
 mixin _$ZacStateMachineActions {
   Object get family => throw _privateConstructorUsedError;
-  ZacValue<String> get event => throw _privateConstructorUsedError;
+  ZacBuilder<String> get event => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -662,7 +662,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
   @override
   final Object family;
   @override
-  final ZacValue<String> event;
+  final ZacBuilder<String> event;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -699,7 +699,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
 abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsSend(
       {required final Object family,
-      required final ZacValue<String> event}) = _$_ZacStateMachineActionsSend;
+      required final ZacBuilder<String> event}) = _$_ZacStateMachineActionsSend;
   _ZacStateMachineActionsSend._() : super._();
 
   factory _ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =
@@ -708,7 +708,7 @@ abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   @override
   Object get family;
   @override
-  ZacValue<String> get event;
+  ZacBuilder<String> get event;
 }
 
 /// @nodoc
@@ -726,7 +726,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   @override
   final Object family;
   @override
-  final ZacValue<String> event;
+  final ZacBuilder<String> event;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -763,7 +763,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
 abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsTrySend(
           {required final Object family,
-          required final ZacValue<String> event}) =
+          required final ZacBuilder<String> event}) =
       _$_ZacStateMachineActionsTrySend;
   _ZacStateMachineActionsTrySend._() : super._();
 
@@ -773,7 +773,7 @@ abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   @override
   Object get family;
   @override
-  ZacValue<String> get event;
+  ZacBuilder<String> get event;
 }
 
 ZacStateMachineTransformer _$ZacStateMachineTransformerFromJson(

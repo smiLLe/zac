@@ -21,8 +21,8 @@ FlutterIntrinsicHeight _$FlutterIntrinsicHeightFromJson(
 
 /// @nodoc
 mixin _$FlutterIntrinsicHeight {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -40,9 +40,9 @@ class _$_FlutterIntrinsicHeight extends _FlutterIntrinsicHeight {
       _$$_FlutterIntrinsicHeightFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -73,15 +73,15 @@ class _$_FlutterIntrinsicHeight extends _FlutterIntrinsicHeight {
 
 abstract class _FlutterIntrinsicHeight extends FlutterIntrinsicHeight {
   factory _FlutterIntrinsicHeight(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child}) = _$_FlutterIntrinsicHeight;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterIntrinsicHeight;
   _FlutterIntrinsicHeight._() : super._();
 
   factory _FlutterIntrinsicHeight.fromJson(Map<String, dynamic> json) =
       _$_FlutterIntrinsicHeight.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

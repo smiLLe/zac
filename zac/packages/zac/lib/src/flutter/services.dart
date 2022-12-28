@@ -12,7 +12,7 @@ part 'services.g.dart';
 
 @freezedZacBuilder
 class FlutterSystemUiOverlayStyle
-    with _$FlutterSystemUiOverlayStyle, ZacBuild<SystemUiOverlayStyle> {
+    with _$FlutterSystemUiOverlayStyle, ZacBuilder<SystemUiOverlayStyle> {
   const FlutterSystemUiOverlayStyle._();
 
   factory FlutterSystemUiOverlayStyle.fromJson(Map<String, dynamic> json) =>
@@ -20,30 +20,30 @@ class FlutterSystemUiOverlayStyle
 
   @FreezedUnionValue('f:1:SystemUiOverlayStyle')
   factory FlutterSystemUiOverlayStyle({
-    ZacValue<Color?>? systemNavigationBarColor,
-    ZacValue<Color?>? systemNavigationBarDividerColor,
+    ZacBuilder<Color?>? systemNavigationBarColor,
+    ZacBuilder<Color?>? systemNavigationBarDividerColor,
     FlutterBrightness? systemNavigationBarIconBrightness,
-    ZacValue<bool?>? systemNavigationBarContrastEnforced,
-    ZacValue<Color?>? statusBarColor,
+    ZacBuilder<bool?>? systemNavigationBarContrastEnforced,
+    ZacBuilder<Color?>? statusBarColor,
     FlutterBrightness? statusBarBrightness,
     FlutterBrightness? statusBarIconBrightness,
-    ZacValue<bool?>? systemStatusBarContrastEnforced,
+    ZacBuilder<bool?>? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
   SystemUiOverlayStyle _build(ZacContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.getValue(zacContext),
+      systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.getValue(zacContext),
+          systemNavigationBarDividerColor?.build(zacContext),
       systemNavigationBarIconBrightness:
           systemNavigationBarIconBrightness?.build(zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.getValue(zacContext),
-      statusBarColor: statusBarColor?.getValue(zacContext),
+          systemNavigationBarContrastEnforced?.build(zacContext),
+      statusBarColor: statusBarColor?.build(zacContext),
       statusBarBrightness: statusBarBrightness?.build(zacContext),
       statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.getValue(zacContext),
+          systemStatusBarContrastEnforced?.build(zacContext),
     );
   }
 
@@ -55,7 +55,7 @@ class FlutterSystemUiOverlayStyle
 
 @freezedZacBuilder
 class FlutterTextInputType
-    with _$FlutterTextInputType, ZacBuild<TextInputType> {
+    with _$FlutterTextInputType, ZacBuilder<TextInputType> {
   const FlutterTextInputType._();
 
   factory FlutterTextInputType.fromJson(Map<String, dynamic> json) =>
@@ -111,7 +111,7 @@ class FlutterTextInputType
 
 @freezedZacBuilder
 class FlutterTextInputAction
-    with _$FlutterTextInputAction, ZacBuild<TextInputAction> {
+    with _$FlutterTextInputAction, ZacBuilder<TextInputAction> {
   const FlutterTextInputAction._();
 
   factory FlutterTextInputAction.fromJson(Map<String, dynamic> json) =>
@@ -173,7 +173,7 @@ class FlutterTextInputAction
 
 @freezedZacBuilder
 class FlutterTextCapitalization
-    with _$FlutterTextCapitalization, ZacBuild<TextCapitalization> {
+    with _$FlutterTextCapitalization, ZacBuilder<TextCapitalization> {
   const FlutterTextCapitalization._();
 
   factory FlutterTextCapitalization.fromJson(Map<String, dynamic> json) =>
@@ -207,7 +207,7 @@ class FlutterTextCapitalization
 
 @freezedZacBuilder
 class FlutterSmartDashesType
-    with _$FlutterSmartDashesType, ZacBuild<SmartDashesType> {
+    with _$FlutterSmartDashesType, ZacBuilder<SmartDashesType> {
   const FlutterSmartDashesType._();
 
   factory FlutterSmartDashesType.fromJson(Map<String, dynamic> json) =>
@@ -234,7 +234,7 @@ class FlutterSmartDashesType
 
 @freezedZacBuilder
 class FlutterSmartQuotesType
-    with _$FlutterSmartQuotesType, ZacBuild<SmartQuotesType> {
+    with _$FlutterSmartQuotesType, ZacBuilder<SmartQuotesType> {
   const FlutterSmartQuotesType._();
 
   factory FlutterSmartQuotesType.fromJson(Map<String, dynamic> json) =>

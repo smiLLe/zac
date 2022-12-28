@@ -85,9 +85,9 @@ FlutterGlobalKeyNavigatorStateProvider
 
 /// @nodoc
 mixin _$FlutterGlobalKeyNavigatorStateProvider {
-  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -109,11 +109,11 @@ class _$_FlutterGlobalKeyNavigatorStateProvider
       _$$_FlutterGlobalKeyNavigatorStateProviderFromJson(json);
 
   @override
-  final ZacValue<String?>? debugLabel;
+  final ZacBuilder<String?>? debugLabel;
   @override
   final Object family;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -148,9 +148,9 @@ class _$_FlutterGlobalKeyNavigatorStateProvider
 abstract class _FlutterGlobalKeyNavigatorStateProvider
     extends FlutterGlobalKeyNavigatorStateProvider {
   factory _FlutterGlobalKeyNavigatorStateProvider(
-          {final ZacValue<String?>? debugLabel,
+          {final ZacBuilder<String?>? debugLabel,
           required final Object family,
-          required final ZacValue<Widget> child}) =
+          required final ZacBuilder<Widget> child}) =
       _$_FlutterGlobalKeyNavigatorStateProvider;
   _FlutterGlobalKeyNavigatorStateProvider._() : super._();
 
@@ -159,11 +159,11 @@ abstract class _FlutterGlobalKeyNavigatorStateProvider
       _$_FlutterGlobalKeyNavigatorStateProvider.fromJson;
 
   @override
-  ZacValue<String?>? get debugLabel;
+  ZacBuilder<String?>? get debugLabel;
   @override
   Object get family;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }
 
 FlutterGlobalKeyScaffoldMessengerStateProvider
@@ -174,9 +174,9 @@ FlutterGlobalKeyScaffoldMessengerStateProvider
 
 /// @nodoc
 mixin _$FlutterGlobalKeyScaffoldMessengerStateProvider {
-  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -199,11 +199,11 @@ class _$_FlutterGlobalKeyScaffoldMessengerStateProvider
       _$$_FlutterGlobalKeyScaffoldMessengerStateProviderFromJson(json);
 
   @override
-  final ZacValue<String?>? debugLabel;
+  final ZacBuilder<String?>? debugLabel;
   @override
   final Object family;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -239,9 +239,9 @@ class _$_FlutterGlobalKeyScaffoldMessengerStateProvider
 abstract class _FlutterGlobalKeyScaffoldMessengerStateProvider
     extends FlutterGlobalKeyScaffoldMessengerStateProvider {
   factory _FlutterGlobalKeyScaffoldMessengerStateProvider(
-          {final ZacValue<String?>? debugLabel,
+          {final ZacBuilder<String?>? debugLabel,
           required final Object family,
-          required final ZacValue<Widget> child}) =
+          required final ZacBuilder<Widget> child}) =
       _$_FlutterGlobalKeyScaffoldMessengerStateProvider;
   _FlutterGlobalKeyScaffoldMessengerStateProvider._() : super._();
 
@@ -250,9 +250,9 @@ abstract class _FlutterGlobalKeyScaffoldMessengerStateProvider
       _$_FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson;
 
   @override
-  ZacValue<String?>? get debugLabel;
+  ZacBuilder<String?>? get debugLabel;
   @override
   Object get family;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

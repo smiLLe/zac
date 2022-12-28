@@ -16,7 +16,7 @@ part 'custom_scroll_view.g.dart';
 @freezedZacBuilder
 class FlutterCustomScrollView
     with _$FlutterCustomScrollView
-    implements ZacBuild<CustomScrollView> {
+    implements ZacBuilder<CustomScrollView> {
   const FlutterCustomScrollView._();
 
   static const String unionValue = 'f:1:CustomScrollView';
@@ -26,23 +26,23 @@ class FlutterCustomScrollView
 
   @FreezedUnionValue(FlutterCustomScrollView.unionValue)
   factory FlutterCustomScrollView({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     FlutterAxis? scrollDirection,
-    ZacValue<bool?>? reverse,
-    ZacValue<ScrollController?>? controller,
-    ZacValue<bool?>? primary,
+    ZacBuilder<bool?>? reverse,
+    ZacBuilder<ScrollController?>? controller,
+    ZacBuilder<bool?>? primary,
     FlutterScrollPhysics? physics,
 // FlutterScrollBehavior? scrollBehavior,
-    ZacValue<bool?>? shrinkWrap,
-    ZacValue<Key?>? center,
-    ZacValue<double?>? anchor,
-    ZacValue<double?>? cacheExtent,
-    ZacValueList<Widget, List<Widget>?>? slivers,
-    ZacValue<int?>? semanticChildCount,
+    ZacBuilder<bool?>? shrinkWrap,
+    ZacBuilder<Key?>? center,
+    ZacBuilder<double?>? anchor,
+    ZacBuilder<double?>? cacheExtent,
+    ZacListBuilder<Widget, List<Widget>?>? slivers,
+    ZacBuilder<int?>? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-    ZacValue<String?>? restorationId,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<String?>? restorationId,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterCustomScrollView;
 
   @override

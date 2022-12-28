@@ -21,20 +21,20 @@ FlutterRefreshIndicator _$FlutterRefreshIndicatorFromJson(
 
 /// @nodoc
 mixin _$FlutterRefreshIndicator {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
-  ZacValue<double?>? get displacement => throw _privateConstructorUsedError;
-  ZacValue<double?>? get edgeOffset => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get displacement => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get edgeOffset => throw _privateConstructorUsedError;
   ZacActions get onRefresh => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor =>
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor =>
       throw _privateConstructorUsedError; // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacValue<String?>? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticsValue => throw _privateConstructorUsedError;
-  ZacValue<double?>? get strokeWidth => throw _privateConstructorUsedError;
-  ZacValue<RefreshIndicatorTriggerMode?>? get triggerMode =>
+  ZacBuilder<String?>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticsValue => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get strokeWidth => throw _privateConstructorUsedError;
+  ZacBuilder<RefreshIndicatorTriggerMode?>? get triggerMode =>
       throw _privateConstructorUsedError;
-  ZacValueConsume<Completer>? get onRefreshCompleter =>
+  ConsumeSharedValue<Completer>? get onRefreshCompleter =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -66,30 +66,30 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
       _$$_FlutterRefreshIndicatorFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
-  final ZacValue<double?>? displacement;
+  final ZacBuilder<double?>? displacement;
   @override
-  final ZacValue<double?>? edgeOffset;
+  final ZacBuilder<double?>? edgeOffset;
   @override
   final ZacActions onRefresh;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
   @override
-  final ZacValue<String?>? semanticsLabel;
+  final ZacBuilder<String?>? semanticsLabel;
   @override
-  final ZacValue<String?>? semanticsValue;
+  final ZacBuilder<String?>? semanticsValue;
   @override
-  final ZacValue<double?>? strokeWidth;
+  final ZacBuilder<double?>? strokeWidth;
   @override
-  final ZacValue<RefreshIndicatorTriggerMode?>? triggerMode;
+  final ZacBuilder<RefreshIndicatorTriggerMode?>? triggerMode;
   @override
-  final ZacValueConsume<Completer>? onRefreshCompleter;
+  final ConsumeSharedValue<Completer>? onRefreshCompleter;
 
   @override
   String toString() {
@@ -152,18 +152,18 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
 
 abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   factory _FlutterRefreshIndicator(
-          {final ZacValue<Key?>? key,
-          required final ZacValue<Widget> child,
-          final ZacValue<double?>? displacement,
-          final ZacValue<double?>? edgeOffset,
+          {final ZacBuilder<Key?>? key,
+          required final ZacBuilder<Widget> child,
+          final ZacBuilder<double?>? displacement,
+          final ZacBuilder<double?>? edgeOffset,
           required final ZacActions onRefresh,
-          final ZacValue<Color?>? color,
-          final ZacValue<Color?>? backgroundColor,
-          final ZacValue<String?>? semanticsLabel,
-          final ZacValue<String?>? semanticsValue,
-          final ZacValue<double?>? strokeWidth,
-          final ZacValue<RefreshIndicatorTriggerMode?>? triggerMode,
-          final ZacValueConsume<Completer>? onRefreshCompleter}) =
+          final ZacBuilder<Color?>? color,
+          final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<String?>? semanticsLabel,
+          final ZacBuilder<String?>? semanticsValue,
+          final ZacBuilder<double?>? strokeWidth,
+          final ZacBuilder<RefreshIndicatorTriggerMode?>? triggerMode,
+          final ConsumeSharedValue<Completer>? onRefreshCompleter}) =
       _$_FlutterRefreshIndicator;
   _FlutterRefreshIndicator._() : super._();
 
@@ -171,29 +171,29 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
       _$_FlutterRefreshIndicator.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
-  ZacValue<double?>? get displacement;
+  ZacBuilder<double?>? get displacement;
   @override
-  ZacValue<double?>? get edgeOffset;
+  ZacBuilder<double?>? get edgeOffset;
   @override
   ZacActions get onRefresh;
   @override
-  ZacValue<Color?>? get color;
+  ZacBuilder<Color?>? get color;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
-  ZacValue<String?>? get semanticsLabel;
+  ZacBuilder<String?>? get semanticsLabel;
   @override
-  ZacValue<String?>? get semanticsValue;
+  ZacBuilder<String?>? get semanticsValue;
   @override
-  ZacValue<double?>? get strokeWidth;
+  ZacBuilder<double?>? get strokeWidth;
   @override
-  ZacValue<RefreshIndicatorTriggerMode?>? get triggerMode;
+  ZacBuilder<RefreshIndicatorTriggerMode?>? get triggerMode;
   @override
-  ZacValueConsume<Completer>? get onRefreshCompleter;
+  ConsumeSharedValue<Completer>? get onRefreshCompleter;
 }
 
 FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(

@@ -20,10 +20,10 @@ FlutterDecoratedBox _$FlutterDecoratedBoxFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDecoratedBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  ZacValue<Decoration> get decoration => throw _privateConstructorUsedError;
-  ZacValue<DecorationPosition?>? get position =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Decoration> get decoration => throw _privateConstructorUsedError;
+  ZacBuilder<DecorationPosition?>? get position =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -44,13 +44,13 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
       _$$_FlutterDecoratedBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
-  final ZacValue<Decoration> decoration;
+  final ZacBuilder<Decoration> decoration;
   @override
-  final ZacValue<DecorationPosition?>? position;
+  final ZacBuilder<DecorationPosition?>? position;
 
   @override
   String toString() {
@@ -86,21 +86,22 @@ class _$_FlutterDecoratedBox extends _FlutterDecoratedBox {
 
 abstract class _FlutterDecoratedBox extends FlutterDecoratedBox {
   factory _FlutterDecoratedBox(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child,
-      required final ZacValue<Decoration> decoration,
-      final ZacValue<DecorationPosition?>? position}) = _$_FlutterDecoratedBox;
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<Widget?>? child,
+          required final ZacBuilder<Decoration> decoration,
+          final ZacBuilder<DecorationPosition?>? position}) =
+      _$_FlutterDecoratedBox;
   _FlutterDecoratedBox._() : super._();
 
   factory _FlutterDecoratedBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterDecoratedBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
-  ZacValue<Decoration> get decoration;
+  ZacBuilder<Decoration> get decoration;
   @override
-  ZacValue<DecorationPosition?>? get position;
+  ZacBuilder<DecorationPosition?>? get position;
 }

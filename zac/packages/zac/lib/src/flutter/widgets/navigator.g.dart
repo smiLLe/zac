@@ -11,17 +11,18 @@ _$_FlutterMaterialPageRoute _$$_FlutterMaterialPageRouteFromJson(
     _$_FlutterMaterialPageRoute(
       settings: json['settings'] == null
           ? null
-          : ZacValue<RouteSettings?>.fromJson(json['settings'] as Object),
+          : ZacBuilder<RouteSettings?>.fromJson(json['settings'] as Object),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['maintainState'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['fullscreenDialog'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacBuilder<String?>.fromJson(
+              json['nameOfSharedArguments'] as Object),
     );
 
 _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
@@ -29,29 +30,30 @@ _$_FlutterPageRouteBuilder _$$_FlutterPageRouteBuilderFromJson(
     _$_FlutterPageRouteBuilder(
       settings: json['settings'] == null
           ? null
-          : ZacValue<RouteSettings?>.fromJson(json['settings'] as Object),
+          : ZacBuilder<RouteSettings?>.fromJson(json['settings'] as Object),
       opaque: json['opaque'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['opaque'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['opaque'] as Object),
       barrierDismissible: json['barrierDismissible'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['barrierDismissible'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['barrierDismissible'] as Object),
       barrierColor: json['barrierColor'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['barrierColor'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['barrierColor'] as Object),
       barrierLabel: json['barrierLabel'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['barrierLabel'] as Object),
+          : ZacBuilder<String?>.fromJson(json['barrierLabel'] as Object),
       maintainState: json['maintainState'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['maintainState'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['maintainState'] as Object),
       fullscreenDialog: json['fullscreenDialog'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['fullscreenDialog'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['fullscreenDialog'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       nameOfSharedArguments: json['nameOfSharedArguments'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['nameOfSharedArguments'] as Object),
+          : ZacBuilder<String?>.fromJson(
+              json['nameOfSharedArguments'] as Object),
     );
 
 _$_ZacNavigatorStateClosest _$$_ZacNavigatorStateClosestFromJson(
@@ -69,8 +71,8 @@ _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
 _$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateSharedValue(
-      value: ZacValueConsume<GlobalKey<NavigatorState>>.fromJson(
-          json['value'] as Map<String, dynamic>),
+      value: ZacBuilder<GlobalKey<NavigatorState>>.fromJson(
+          json['value'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -78,7 +80,7 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
     _$_FlutterNavigator(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       onGenerateRoute: json['onGenerateRoute'] == null
           ? null
           : FlutterRouteFactory.fromJson(
@@ -89,16 +91,16 @@ _$_FlutterNavigator _$$_FlutterNavigatorFromJson(Map<String, dynamic> json) =>
               json['onUnknownRoute'] as Map<String, dynamic>),
       initialRoute: json['initialRoute'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['initialRoute'] as Object),
+          : ZacBuilder<String?>.fromJson(json['initialRoute'] as Object),
       requestFocus: json['requestFocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['requestFocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['requestFocus'] as Object),
     );
 
 _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterNavigatorActionsPush(
-      route: ZacValue<Route<Object?>>.fromJson(json['route'] as Object),
+      route: ZacBuilder<Route<Object?>>.fromJson(json['route'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : FlutterNavigatorState.fromJson(
@@ -109,7 +111,7 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
 _$_FlutterNavigatorActionsPushNamed
     _$$_FlutterNavigatorActionsPushNamedFromJson(Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushNamed(
-          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
+          routeName: ZacBuilder<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -148,7 +150,7 @@ _$_FlutterNavigatorActionsPushReplacement
     _$$_FlutterNavigatorActionsPushReplacementFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushReplacement(
-          route: ZacValue<Route<Object?>>.fromJson(json['route'] as Object),
+          route: ZacBuilder<Route<Object?>>.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
               : ZacActions.fromJson(json['result'] as Object),
@@ -163,7 +165,7 @@ _$_FlutterNavigatorActionsPushReplacementNamed
     _$$_FlutterNavigatorActionsPushReplacementNamedFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPushReplacementNamed(
-          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
+          routeName: ZacBuilder<String>.fromJson(json['routeName'] as Object),
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
@@ -179,7 +181,7 @@ _$_FlutterNavigatorActionsPopUntilRouteName
     _$$_FlutterNavigatorActionsPopUntilRouteNameFromJson(
             Map<String, dynamic> json) =>
         _$_FlutterNavigatorActionsPopUntilRouteName(
-          routeName: ZacValue<String>.fromJson(json['routeName'] as Object),
+          routeName: ZacBuilder<String>.fromJson(json['routeName'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
               : FlutterNavigatorState.fromJson(
@@ -191,8 +193,7 @@ _$_FlutterRouteFactory _$$_FlutterRouteFactoryFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterRouteFactory(
       routes: (json['routes'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(
-            k, ZacBuild<Route<Object?>>.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(k, ZacBuilder<Route<Object?>>.fromJson(e as Object)),
       ),
       familyNameOfArguments:
           (json['familyNameOfArguments'] as Map<String, dynamic>?)?.map(
@@ -205,8 +206,8 @@ _$_FlutterRouteSettings _$$_FlutterRouteSettingsFromJson(
     _$_FlutterRouteSettings(
       name: json['name'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['name'] as Object),
+          : ZacBuilder<String?>.fromJson(json['name'] as Object),
       arguments: json['arguments'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['arguments'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['arguments'] as Object),
     );

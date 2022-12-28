@@ -11,23 +11,24 @@ _$_FlutterOverflowBox _$$_FlutterOverflowBoxFromJson(
     _$_FlutterOverflowBox(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       alignment: json['alignment'] == null
           ? null
-          : ZacValue<AlignmentGeometry?>.fromJson(json['alignment'] as Object),
+          : ZacBuilder<AlignmentGeometry?>.fromJson(
+              json['alignment'] as Object),
       minWidth: json['minWidth'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['minWidth'] as Object),
+          : ZacBuilder<double?>.fromJson(json['minWidth'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['maxWidth'] as Object),
+          : ZacBuilder<double?>.fromJson(json['maxWidth'] as Object),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['minHeight'] as Object),
+          : ZacBuilder<double?>.fromJson(json['minHeight'] as Object),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['maxHeight'] as Object),
+          : ZacBuilder<double?>.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );

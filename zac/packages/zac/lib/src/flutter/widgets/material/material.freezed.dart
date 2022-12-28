@@ -20,17 +20,18 @@ FlutterMaterial _$FlutterMaterialFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterMaterial {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get shadowColor => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get textStyle => throw _privateConstructorUsedError;
-  ZacValue<BorderRadiusGeometry?>? get borderRadius =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get elevation => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get shadowColor => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get textStyle => throw _privateConstructorUsedError;
+  ZacBuilder<BorderRadiusGeometry?>? get borderRadius =>
       throw _privateConstructorUsedError;
-  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get borderOnForeground => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get borderOnForeground =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -59,25 +60,25 @@ class _$_FlutterMaterial extends _FlutterMaterial {
       _$$_FlutterMaterialFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
   @override
-  final ZacValue<Color?>? shadowColor;
+  final ZacBuilder<Color?>? shadowColor;
   @override
-  final ZacValue<TextStyle?>? textStyle;
+  final ZacBuilder<TextStyle?>? textStyle;
   @override
-  final ZacValue<BorderRadiusGeometry?>? borderRadius;
+  final ZacBuilder<BorderRadiusGeometry?>? borderRadius;
   @override
-  final ZacValue<ShapeBorder?>? shape;
+  final ZacBuilder<ShapeBorder?>? shape;
   @override
-  final ZacValue<bool?>? borderOnForeground;
+  final ZacBuilder<bool?>? borderOnForeground;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -133,39 +134,39 @@ class _$_FlutterMaterial extends _FlutterMaterial {
 
 abstract class _FlutterMaterial extends FlutterMaterial {
   factory _FlutterMaterial(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child,
-      final ZacValue<double?>? elevation,
-      final ZacValue<Color?>? color,
-      final ZacValue<Color?>? shadowColor,
-      final ZacValue<TextStyle?>? textStyle,
-      final ZacValue<BorderRadiusGeometry?>? borderRadius,
-      final ZacValue<ShapeBorder?>? shape,
-      final ZacValue<bool?>? borderOnForeground,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterMaterial;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<double?>? elevation,
+      final ZacBuilder<Color?>? color,
+      final ZacBuilder<Color?>? shadowColor,
+      final ZacBuilder<TextStyle?>? textStyle,
+      final ZacBuilder<BorderRadiusGeometry?>? borderRadius,
+      final ZacBuilder<ShapeBorder?>? shape,
+      final ZacBuilder<bool?>? borderOnForeground,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterMaterial;
   _FlutterMaterial._() : super._();
 
   factory _FlutterMaterial.fromJson(Map<String, dynamic> json) =
       _$_FlutterMaterial.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
-  ZacValue<double?>? get elevation;
+  ZacBuilder<double?>? get elevation;
   @override
-  ZacValue<Color?>? get color;
+  ZacBuilder<Color?>? get color;
   @override
-  ZacValue<Color?>? get shadowColor;
+  ZacBuilder<Color?>? get shadowColor;
   @override
-  ZacValue<TextStyle?>? get textStyle;
+  ZacBuilder<TextStyle?>? get textStyle;
   @override
-  ZacValue<BorderRadiusGeometry?>? get borderRadius;
+  ZacBuilder<BorderRadiusGeometry?>? get borderRadius;
   @override
-  ZacValue<ShapeBorder?>? get shape;
+  ZacBuilder<ShapeBorder?>? get shape;
   @override
-  ZacValue<bool?>? get borderOnForeground;
+  ZacBuilder<bool?>? get borderOnForeground;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }

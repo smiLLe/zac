@@ -46,7 +46,7 @@ _$_MapContainsKey _$$_MapContainsKeyFromJson(Map<String, dynamic> json) =>
     _$_MapContainsKey(
       json['key'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['key'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -54,7 +54,7 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
     _$_MapContainsValue(
       json['value'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['value'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['value'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -87,14 +87,14 @@ _$_MapFromStringNullObject _$$_MapFromStringNullObjectFromJson(
     );
 
 _$_MapKey _$$_MapKeyFromJson(Map<String, dynamic> json) => _$_MapKey(
-      ZacValue<String>.fromJson(json['key'] as Object),
+      ZacBuilder<String>.fromJson(json['key'] as Object),
       $type: json['builder'] as String?,
     );
 
 _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
     _$_MapSetValueForKey(
-      value: ZacValue<Object>.fromJson(json['value'] as Object),
-      key: ZacValue<String>.fromJson(json['key'] as Object),
+      value: ZacBuilder<Object>.fromJson(json['value'] as Object),
+      key: ZacBuilder<String>.fromJson(json['key'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -160,7 +160,7 @@ _$_IterableContains _$$_IterableContainsFromJson(Map<String, dynamic> json) =>
     _$_IterableContains(
       json['element'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['element'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['element'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -188,7 +188,7 @@ _$_ListReversed _$$_ListReversedFromJson(Map<String, dynamic> json) =>
     );
 
 _$_ListAdd _$$_ListAddFromJson(Map<String, dynamic> json) => _$_ListAdd(
-      ZacValue<Object>.fromJson(json['value'] as Object),
+      ZacBuilder<Object>.fromJson(json['value'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -253,7 +253,7 @@ _$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
     _$_ObjectEqualsSharedValue(
       value: json['value'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['value'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['value'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -332,7 +332,7 @@ _$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
 
 _$_StringSplit _$$_StringSplitFromJson(Map<String, dynamic> json) =>
     _$_StringSplit(
-      pattern: ZacValue<String>.fromJson(json['pattern'] as Object),
+      pattern: ZacBuilder<String>.fromJson(json['pattern'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -348,8 +348,8 @@ _$_StringIsNotEmpty _$$_StringIsNotEmptyFromJson(Map<String, dynamic> json) =>
 
 _$_StringReplaceAll _$$_StringReplaceAllFromJson(Map<String, dynamic> json) =>
     _$_StringReplaceAll(
-      ZacValue<String>.fromJson(json['from'] as Object),
-      ZacValue<String>.fromJson(json['replace'] as Object),
+      ZacBuilder<String>.fromJson(json['from'] as Object),
+      ZacBuilder<String>.fromJson(json['replace'] as Object),
       $type: json['builder'] as String?,
     );
 

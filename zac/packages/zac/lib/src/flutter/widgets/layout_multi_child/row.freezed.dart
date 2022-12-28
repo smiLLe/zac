@@ -20,20 +20,20 @@ FlutterRow _$FlutterRowFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRow {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<MainAxisAlignment?>? get mainAxisAlignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<MainAxisAlignment?>? get mainAxisAlignment =>
       throw _privateConstructorUsedError;
-  ZacValue<MainAxisSize?>? get mainAxisSize =>
+  ZacBuilder<MainAxisSize?>? get mainAxisSize =>
       throw _privateConstructorUsedError;
-  ZacValue<CrossAxisAlignment?>? get crossAxisAlignment =>
+  ZacBuilder<CrossAxisAlignment?>? get crossAxisAlignment =>
       throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<VerticalDirection?>? get verticalDirection =>
+  ZacBuilder<VerticalDirection?>? get verticalDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<TextBaseline?>? get textBaseline =>
+  ZacBuilder<TextBaseline?>? get textBaseline =>
       throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get children =>
+  ZacListBuilder<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -61,21 +61,21 @@ class _$_FlutterRow extends _FlutterRow {
       _$$_FlutterRowFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<MainAxisAlignment?>? mainAxisAlignment;
+  final ZacBuilder<MainAxisAlignment?>? mainAxisAlignment;
   @override
-  final ZacValue<MainAxisSize?>? mainAxisSize;
+  final ZacBuilder<MainAxisSize?>? mainAxisSize;
   @override
-  final ZacValue<CrossAxisAlignment?>? crossAxisAlignment;
+  final ZacBuilder<CrossAxisAlignment?>? crossAxisAlignment;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<VerticalDirection?>? verticalDirection;
+  final ZacBuilder<VerticalDirection?>? verticalDirection;
   @override
-  final ZacValue<TextBaseline?>? textBaseline;
+  final ZacBuilder<TextBaseline?>? textBaseline;
   @override
-  final ZacValueList<Widget, List<Widget>?>? children;
+  final ZacListBuilder<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -128,33 +128,33 @@ class _$_FlutterRow extends _FlutterRow {
 
 abstract class _FlutterRow extends FlutterRow {
   factory _FlutterRow(
-      {final ZacValue<Key?>? key,
-      final ZacValue<MainAxisAlignment?>? mainAxisAlignment,
-      final ZacValue<MainAxisSize?>? mainAxisSize,
-      final ZacValue<CrossAxisAlignment?>? crossAxisAlignment,
-      final ZacValue<TextDirection?>? textDirection,
-      final ZacValue<VerticalDirection?>? verticalDirection,
-      final ZacValue<TextBaseline?>? textBaseline,
-      final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterRow;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<MainAxisAlignment?>? mainAxisAlignment,
+      final ZacBuilder<MainAxisSize?>? mainAxisSize,
+      final ZacBuilder<CrossAxisAlignment?>? crossAxisAlignment,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<VerticalDirection?>? verticalDirection,
+      final ZacBuilder<TextBaseline?>? textBaseline,
+      final ZacListBuilder<Widget, List<Widget>?>? children}) = _$_FlutterRow;
   _FlutterRow._() : super._();
 
   factory _FlutterRow.fromJson(Map<String, dynamic> json) =
       _$_FlutterRow.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<MainAxisAlignment?>? get mainAxisAlignment;
+  ZacBuilder<MainAxisAlignment?>? get mainAxisAlignment;
   @override
-  ZacValue<MainAxisSize?>? get mainAxisSize;
+  ZacBuilder<MainAxisSize?>? get mainAxisSize;
   @override
-  ZacValue<CrossAxisAlignment?>? get crossAxisAlignment;
+  ZacBuilder<CrossAxisAlignment?>? get crossAxisAlignment;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<VerticalDirection?>? get verticalDirection;
+  ZacBuilder<VerticalDirection?>? get verticalDirection;
   @override
-  ZacValue<TextBaseline?>? get textBaseline;
+  ZacBuilder<TextBaseline?>? get textBaseline;
   @override
-  ZacValueList<Widget, List<Widget>?>? get children;
+  ZacListBuilder<Widget, List<Widget>?>? get children;
 }

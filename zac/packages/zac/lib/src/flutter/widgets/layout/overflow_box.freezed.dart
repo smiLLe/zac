@@ -20,14 +20,14 @@ FlutterOverflowBox _$FlutterOverflowBoxFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterOverflowBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get minWidth => throw _privateConstructorUsedError;
-  ZacValue<double?>? get maxWidth => throw _privateConstructorUsedError;
-  ZacValue<double?>? get minHeight => throw _privateConstructorUsedError;
-  ZacValue<double?>? get maxHeight => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get minWidth => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get maxWidth => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get minHeight => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get maxHeight => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -53,19 +53,19 @@ class _$_FlutterOverflowBox extends _FlutterOverflowBox {
       _$$_FlutterOverflowBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<double?>? minWidth;
+  final ZacBuilder<double?>? minWidth;
   @override
-  final ZacValue<double?>? maxWidth;
+  final ZacBuilder<double?>? maxWidth;
   @override
-  final ZacValue<double?>? minHeight;
+  final ZacBuilder<double?>? minHeight;
   @override
-  final ZacValue<double?>? maxHeight;
+  final ZacBuilder<double?>? maxHeight;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -107,30 +107,30 @@ class _$_FlutterOverflowBox extends _FlutterOverflowBox {
 
 abstract class _FlutterOverflowBox extends FlutterOverflowBox {
   factory _FlutterOverflowBox(
-      {final ZacValue<Key?>? key,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<double?>? minWidth,
-      final ZacValue<double?>? maxWidth,
-      final ZacValue<double?>? minHeight,
-      final ZacValue<double?>? maxHeight,
-      final ZacValue<Widget?>? child}) = _$_FlutterOverflowBox;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<double?>? minWidth,
+      final ZacBuilder<double?>? maxWidth,
+      final ZacBuilder<double?>? minHeight,
+      final ZacBuilder<double?>? maxHeight,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterOverflowBox;
   _FlutterOverflowBox._() : super._();
 
   factory _FlutterOverflowBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterOverflowBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<double?>? get minWidth;
+  ZacBuilder<double?>? get minWidth;
   @override
-  ZacValue<double?>? get maxWidth;
+  ZacBuilder<double?>? get maxWidth;
   @override
-  ZacValue<double?>? get minHeight;
+  ZacBuilder<double?>? get minHeight;
   @override
-  ZacValue<double?>? get maxHeight;
+  ZacBuilder<double?>? get maxHeight;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

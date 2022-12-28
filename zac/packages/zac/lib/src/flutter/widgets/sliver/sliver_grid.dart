@@ -14,7 +14,7 @@ part 'sliver_grid.g.dart';
 @freezedZacBuilder
 class FlutterSliverGrid
     with _$FlutterSliverGrid
-    implements ZacBuild<SliverGrid> {
+    implements ZacBuilder<SliverGrid> {
   const FlutterSliverGrid._();
 
   static const String unionValue = 'f:1:SliverGrid';
@@ -24,14 +24,14 @@ class FlutterSliverGrid
 
   @FreezedUnionValue(FlutterSliverGrid.unionValue)
   factory FlutterSliverGrid({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     required FlutterSliverChildDelegate delegate,
     required FlutterSliverGridDelegate gridDelegate,
   }) = _FlutterSliverGrid;
 
   SliverGrid _buildWidget(ZacContext zacContext) {
     return SliverGrid(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       delegate: delegate.build(zacContext),
       gridDelegate: gridDelegate.build(zacContext),
     );

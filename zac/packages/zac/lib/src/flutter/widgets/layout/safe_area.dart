@@ -10,7 +10,7 @@ part 'safe_area.freezed.dart';
 part 'safe_area.g.dart';
 
 @freezedZacBuilder
-class FlutterSafeArea with _$FlutterSafeArea implements ZacBuild<SafeArea> {
+class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
   const FlutterSafeArea._();
 
   static const String unionValue = 'f:1:SafeArea';
@@ -20,27 +20,27 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacBuild<SafeArea> {
 
   @FreezedUnionValue(FlutterSafeArea.unionValue)
   factory FlutterSafeArea({
-    ZacValue<Key?>? key,
-    ZacValue<bool?>? left,
-    ZacValue<bool?>? top,
-    ZacValue<bool?>? right,
-    ZacValue<bool?>? bottom,
-    ZacValue<EdgeInsets?>? minimum,
-    ZacValue<bool?>? maintainBottomViewPadding,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<bool?>? left,
+    ZacBuilder<bool?>? top,
+    ZacBuilder<bool?>? right,
+    ZacBuilder<bool?>? bottom,
+    ZacBuilder<EdgeInsets?>? minimum,
+    ZacBuilder<bool?>? maintainBottomViewPadding,
+    required ZacBuilder<Widget> child,
   }) = _FlutterSafeArea;
 
   SafeArea _buildWidget(ZacContext zacContext) {
     return SafeArea(
-      key: key?.getValue(zacContext),
-      left: left?.getValue(zacContext) ?? true,
-      top: top?.getValue(zacContext) ?? true,
-      right: right?.getValue(zacContext) ?? true,
-      bottom: bottom?.getValue(zacContext) ?? true,
-      minimum: minimum?.getValue(zacContext) ?? EdgeInsets.zero,
+      key: key?.build(zacContext),
+      left: left?.build(zacContext) ?? true,
+      top: top?.build(zacContext) ?? true,
+      right: right?.build(zacContext) ?? true,
+      bottom: bottom?.build(zacContext) ?? true,
+      minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.getValue(zacContext) ?? false,
-      child: child.getValue(zacContext),
+          maintainBottomViewPadding?.build(zacContext) ?? false,
+      child: child.build(zacContext),
     );
   }
 

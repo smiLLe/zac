@@ -10,6 +10,6 @@ _$_FlutterBuilder _$$_FlutterBuilderFromJson(Map<String, dynamic> json) =>
     _$_FlutterBuilder(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );

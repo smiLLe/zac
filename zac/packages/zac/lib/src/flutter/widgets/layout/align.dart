@@ -10,7 +10,7 @@ part 'align.freezed.dart';
 part 'align.g.dart';
 
 @freezedZacBuilder
-class FlutterAlign with _$FlutterAlign implements ZacBuild<Align> {
+class FlutterAlign with _$FlutterAlign implements ZacBuilder<Align> {
   const FlutterAlign._();
 
   static const String unionValue = 'f:1:Align';
@@ -20,21 +20,21 @@ class FlutterAlign with _$FlutterAlign implements ZacBuild<Align> {
 
   @FreezedUnionValue(FlutterAlign.unionValue)
   factory FlutterAlign({
-    ZacValue<Key?>? key,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<double?>? widthFactor,
-    ZacValue<double?>? heightFactor,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<double?>? widthFactor,
+    ZacBuilder<double?>? heightFactor,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterAlign;
 
   Align buildWidget(ZacContext zacContext) {
     return Align(
-      key: key?.getValue(zacContext),
-      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.getValue(zacContext),
-      heightFactor: heightFactor?.getValue(zacContext),
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      widthFactor: widthFactor?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
       // child: child?.build(zacContext),
-      child: child?.getValue(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

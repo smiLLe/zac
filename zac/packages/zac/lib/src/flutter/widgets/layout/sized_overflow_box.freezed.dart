@@ -21,11 +21,11 @@ FlutterSizedOverflowBox _$FlutterSizedOverflowBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterSizedOverflowBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Size> get size => throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Size> get size => throw _privateConstructorUsedError;
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -45,13 +45,13 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
       _$$_FlutterSizedOverflowBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Size> size;
+  final ZacBuilder<Size> size;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -85,21 +85,21 @@ class _$_FlutterSizedOverflowBox extends _FlutterSizedOverflowBox {
 
 abstract class _FlutterSizedOverflowBox extends FlutterSizedOverflowBox {
   factory _FlutterSizedOverflowBox(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Size> size,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<Widget?>? child}) = _$_FlutterSizedOverflowBox;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Size> size,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterSizedOverflowBox;
   _FlutterSizedOverflowBox._() : super._();
 
   factory _FlutterSizedOverflowBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterSizedOverflowBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Size> get size;
+  ZacBuilder<Size> get size;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

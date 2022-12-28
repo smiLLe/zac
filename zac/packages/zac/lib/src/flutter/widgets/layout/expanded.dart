@@ -9,7 +9,7 @@ part 'expanded.freezed.dart';
 part 'expanded.g.dart';
 
 @freezedZacBuilder
-class FlutterExpanded with _$FlutterExpanded implements ZacBuild<Expanded> {
+class FlutterExpanded with _$FlutterExpanded implements ZacBuilder<Expanded> {
   const FlutterExpanded._();
 
   static const String unionValue = 'f:1:Expanded';
@@ -19,16 +19,16 @@ class FlutterExpanded with _$FlutterExpanded implements ZacBuild<Expanded> {
 
   @FreezedUnionValue(FlutterExpanded.unionValue)
   factory FlutterExpanded({
-    ZacValue<Key?>? key,
-    ZacValue<int?>? flex,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<int?>? flex,
+    required ZacBuilder<Widget> child,
   }) = _FlutterExpanded;
 
   Expanded _buildWidget(ZacContext zacContext) {
     return Expanded(
-      key: key?.getValue(zacContext),
-      flex: flex?.getValue(zacContext) ?? 1,
-      child: child.getValue(zacContext),
+      key: key?.build(zacContext),
+      flex: flex?.build(zacContext) ?? 1,
+      child: child.build(zacContext),
     );
   }
 

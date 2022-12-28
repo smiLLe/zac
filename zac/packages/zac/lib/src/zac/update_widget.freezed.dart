@@ -21,8 +21,8 @@ ZacUpdateContextBuilder _$ZacUpdateContextBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacUpdateContextBuilder {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -40,9 +40,9 @@ class _$_ZacUpdateContextBuilder extends _ZacUpdateContextBuilder {
       _$$_ZacUpdateContextBuilderFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -73,15 +73,15 @@ class _$_ZacUpdateContextBuilder extends _ZacUpdateContextBuilder {
 
 abstract class _ZacUpdateContextBuilder extends ZacUpdateContextBuilder {
   factory _ZacUpdateContextBuilder(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> child}) = _$_ZacUpdateContextBuilder;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> child}) = _$_ZacUpdateContextBuilder;
   _ZacUpdateContextBuilder._() : super._();
 
   factory _ZacUpdateContextBuilder.fromJson(Map<String, dynamic> json) =
       _$_ZacUpdateContextBuilder.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

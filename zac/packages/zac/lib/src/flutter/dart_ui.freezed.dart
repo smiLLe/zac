@@ -140,7 +140,7 @@ class _$_FlutterColorFromRBGO extends _FlutterColorFromRBGO {
   @override
   final int b;
   @override
-  final ZacValue<double> opacity;
+  final ZacBuilder<double> opacity;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -180,7 +180,7 @@ abstract class _FlutterColorFromRBGO extends FlutterColor {
       {required final int r,
       required final int g,
       required final int b,
-      required final ZacValue<double> opacity}) = _$_FlutterColorFromRBGO;
+      required final ZacBuilder<double> opacity}) = _$_FlutterColorFromRBGO;
   _FlutterColorFromRBGO._() : super._();
 
   factory _FlutterColorFromRBGO.fromJson(Map<String, dynamic> json) =
@@ -192,7 +192,7 @@ abstract class _FlutterColorFromRBGO extends FlutterColor {
   int get g;
   @override
   int get b;
-  ZacValue<double> get opacity;
+  ZacBuilder<double> get opacity;
 }
 
 FlutterOffset _$FlutterOffsetFromJson(Map<String, dynamic> json) {
@@ -229,9 +229,9 @@ class _$_FlutterOffset extends _FlutterOffset {
       _$$_FlutterOffsetFromJson(json);
 
   @override
-  final ZacValue<double> dx;
+  final ZacBuilder<double> dx;
   @override
-  final ZacValue<double> dy;
+  final ZacBuilder<double> dy;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -265,15 +265,16 @@ class _$_FlutterOffset extends _FlutterOffset {
 }
 
 abstract class _FlutterOffset extends FlutterOffset {
-  factory _FlutterOffset(final ZacValue<double> dx, final ZacValue<double> dy) =
+  factory _FlutterOffset(
+          final ZacBuilder<double> dx, final ZacBuilder<double> dy) =
       _$_FlutterOffset;
   _FlutterOffset._() : super._();
 
   factory _FlutterOffset.fromJson(Map<String, dynamic> json) =
       _$_FlutterOffset.fromJson;
 
-  ZacValue<double> get dx;
-  ZacValue<double> get dy;
+  ZacBuilder<double> get dx;
+  ZacBuilder<double> get dy;
 }
 
 /// @nodoc
@@ -288,9 +289,9 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
       _$$_FlutterOffsetFromDirectionFromJson(json);
 
   @override
-  final ZacValue<double> direction;
+  final ZacBuilder<double> direction;
   @override
-  final ZacValue<double?>? distance;
+  final ZacBuilder<double?>? distance;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -327,15 +328,15 @@ class _$_FlutterOffsetFromDirection extends _FlutterOffsetFromDirection {
 
 abstract class _FlutterOffsetFromDirection extends FlutterOffset {
   factory _FlutterOffsetFromDirection(
-      {required final ZacValue<double> direction,
-      final ZacValue<double?>? distance}) = _$_FlutterOffsetFromDirection;
+      {required final ZacBuilder<double> direction,
+      final ZacBuilder<double?>? distance}) = _$_FlutterOffsetFromDirection;
   _FlutterOffsetFromDirection._() : super._();
 
   factory _FlutterOffsetFromDirection.fromJson(Map<String, dynamic> json) =
       _$_FlutterOffsetFromDirection.fromJson;
 
-  ZacValue<double> get direction;
-  ZacValue<double?>? get distance;
+  ZacBuilder<double> get direction;
+  ZacBuilder<double?>? get distance;
 }
 
 FlutterBlurStyle _$FlutterBlurStyleFromJson(Map<String, dynamic> json) {
@@ -594,7 +595,7 @@ class _$_FlutterRadiusCircular extends _FlutterRadiusCircular {
       _$$_FlutterRadiusCircularFromJson(json);
 
   @override
-  final ZacValue<double> radius;
+  final ZacBuilder<double> radius;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -627,14 +628,14 @@ class _$_FlutterRadiusCircular extends _FlutterRadiusCircular {
 }
 
 abstract class _FlutterRadiusCircular extends FlutterRadius {
-  factory _FlutterRadiusCircular(final ZacValue<double> radius) =
+  factory _FlutterRadiusCircular(final ZacBuilder<double> radius) =
       _$_FlutterRadiusCircular;
   _FlutterRadiusCircular._() : super._();
 
   factory _FlutterRadiusCircular.fromJson(Map<String, dynamic> json) =
       _$_FlutterRadiusCircular.fromJson;
 
-  ZacValue<double> get radius;
+  ZacBuilder<double> get radius;
 }
 
 /// @nodoc
@@ -648,9 +649,9 @@ class _$_FlutterRadiusElliptical extends _FlutterRadiusElliptical {
       _$$_FlutterRadiusEllipticalFromJson(json);
 
   @override
-  final ZacValue<double> x;
+  final ZacBuilder<double> x;
   @override
-  final ZacValue<double> y;
+  final ZacBuilder<double> y;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -685,15 +686,15 @@ class _$_FlutterRadiusElliptical extends _FlutterRadiusElliptical {
 
 abstract class _FlutterRadiusElliptical extends FlutterRadius {
   factory _FlutterRadiusElliptical(
-          final ZacValue<double> x, final ZacValue<double> y) =
+          final ZacBuilder<double> x, final ZacBuilder<double> y) =
       _$_FlutterRadiusElliptical;
   _FlutterRadiusElliptical._() : super._();
 
   factory _FlutterRadiusElliptical.fromJson(Map<String, dynamic> json) =
       _$_FlutterRadiusElliptical.fromJson;
 
-  ZacValue<double> get x;
-  ZacValue<double> get y;
+  ZacBuilder<double> get x;
+  ZacBuilder<double> get y;
 }
 
 FlutterTextDirection _$FlutterTextDirectionFromJson(Map<String, dynamic> json) {
@@ -2444,7 +2445,7 @@ class _$_FontFeature extends _FontFeature {
   @override
   final String feature;
   @override
-  final ZacValue<int?>? value;
+  final ZacBuilder<int?>? value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2515,7 +2516,7 @@ class _$_FontFeature extends _FontFeature {
 }
 
 abstract class _FontFeature extends FlutterFontFeature {
-  factory _FontFeature(final String feature, [final ZacValue<int?>? value]) =
+  factory _FontFeature(final String feature, [final ZacBuilder<int?>? value]) =
       _$_FontFeature;
   _FontFeature._() : super._();
 
@@ -2523,7 +2524,7 @@ abstract class _FontFeature extends FlutterFontFeature {
       _$_FontFeature.fromJson;
 
   String get feature;
-  ZacValue<int?>? get value;
+  ZacBuilder<int?>? get value;
 }
 
 /// @nodoc
@@ -3577,7 +3578,7 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
       _$$_FontFeatureLocaleAwareFromJson(json);
 
   @override
-  final ZacValue<bool?>? enable;
+  final ZacBuilder<bool?>? enable;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -3647,14 +3648,14 @@ class _$_FontFeatureLocaleAware extends _FontFeatureLocaleAware {
 }
 
 abstract class _FontFeatureLocaleAware extends FlutterFontFeature {
-  factory _FontFeatureLocaleAware({final ZacValue<bool?>? enable}) =
+  factory _FontFeatureLocaleAware({final ZacBuilder<bool?>? enable}) =
       _$_FontFeatureLocaleAware;
   _FontFeatureLocaleAware._() : super._();
 
   factory _FontFeatureLocaleAware.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureLocaleAware.fromJson;
 
-  ZacValue<bool?>? get enable;
+  ZacBuilder<bool?>? get enable;
 }
 
 /// @nodoc
@@ -3668,7 +3669,7 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
       _$$_FontFeatureNotationalFormsFromJson(json);
 
   @override
-  final ZacValue<int?>? value;
+  final ZacBuilder<int?>? value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -3738,14 +3739,14 @@ class _$_FontFeatureNotationalForms extends _FontFeatureNotationalForms {
 }
 
 abstract class _FontFeatureNotationalForms extends FlutterFontFeature {
-  factory _FontFeatureNotationalForms([final ZacValue<int?>? value]) =
+  factory _FontFeatureNotationalForms([final ZacBuilder<int?>? value]) =
       _$_FontFeatureNotationalForms;
   _FontFeatureNotationalForms._() : super._();
 
   factory _FontFeatureNotationalForms.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureNotationalForms.fromJson;
 
-  ZacValue<int?>? get value;
+  ZacBuilder<int?>? get value;
 }
 
 /// @nodoc
@@ -4693,7 +4694,7 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
       _$$_FontFeatureSwashFromJson(json);
 
   @override
-  final ZacValue<int?>? value;
+  final ZacBuilder<int?>? value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -4763,14 +4764,14 @@ class _$_FontFeatureSwash extends _FontFeatureSwash {
 }
 
 abstract class _FontFeatureSwash extends FlutterFontFeature {
-  factory _FontFeatureSwash([final ZacValue<int?>? value]) =
+  factory _FontFeatureSwash([final ZacBuilder<int?>? value]) =
       _$_FontFeatureSwash;
   _FontFeatureSwash._() : super._();
 
   factory _FontFeatureSwash.fromJson(Map<String, dynamic> json) =
       _$_FontFeatureSwash.fromJson;
 
-  ZacValue<int?>? get value;
+  ZacBuilder<int?>? get value;
 }
 
 /// @nodoc
@@ -5506,9 +5507,9 @@ FlutterTextHeightBehavior _$FlutterTextHeightBehaviorFromJson(
 
 /// @nodoc
 mixin _$FlutterTextHeightBehavior {
-  ZacValue<bool?>? get applyHeightToFirstAscent =>
+  ZacBuilder<bool?>? get applyHeightToFirstAscent =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get applyHeightToLastDescent =>
+  ZacBuilder<bool?>? get applyHeightToLastDescent =>
       throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
@@ -5533,9 +5534,9 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
       _$$_FlutterTextHeightBehaviorFromJson(json);
 
   @override
-  final ZacValue<bool?>? applyHeightToFirstAscent;
+  final ZacBuilder<bool?>? applyHeightToFirstAscent;
   @override
-  final ZacValue<bool?>? applyHeightToLastDescent;
+  final ZacBuilder<bool?>? applyHeightToLastDescent;
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
 
@@ -5575,8 +5576,8 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
 
 abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
   factory _FlutterTextHeightBehavior(
-          {final ZacValue<bool?>? applyHeightToFirstAscent,
-          final ZacValue<bool?>? applyHeightToLastDescent,
+          {final ZacBuilder<bool?>? applyHeightToFirstAscent,
+          final ZacBuilder<bool?>? applyHeightToLastDescent,
           final FlutterTextLeadingDistribution? leadingDistribution}) =
       _$_FlutterTextHeightBehavior;
   _FlutterTextHeightBehavior._() : super._();
@@ -5585,9 +5586,9 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
       _$_FlutterTextHeightBehavior.fromJson;
 
   @override
-  ZacValue<bool?>? get applyHeightToFirstAscent;
+  ZacBuilder<bool?>? get applyHeightToFirstAscent;
   @override
-  ZacValue<bool?>? get applyHeightToLastDescent;
+  ZacBuilder<bool?>? get applyHeightToLastDescent;
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
 }
@@ -7882,9 +7883,9 @@ class _$_FlutterRectFroMCenter extends _FlutterRectFroMCenter {
   @override
   final FlutterOffset center;
   @override
-  final ZacValue<double> width;
+  final ZacBuilder<double> width;
   @override
-  final ZacValue<double> height;
+  final ZacBuilder<double> height;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -7924,16 +7925,16 @@ class _$_FlutterRectFroMCenter extends _FlutterRectFroMCenter {
 abstract class _FlutterRectFroMCenter extends FlutterRect {
   factory _FlutterRectFroMCenter(
       {required final FlutterOffset center,
-      required final ZacValue<double> width,
-      required final ZacValue<double> height}) = _$_FlutterRectFroMCenter;
+      required final ZacBuilder<double> width,
+      required final ZacBuilder<double> height}) = _$_FlutterRectFroMCenter;
   _FlutterRectFroMCenter._() : super._();
 
   factory _FlutterRectFroMCenter.fromJson(Map<String, dynamic> json) =
       _$_FlutterRectFroMCenter.fromJson;
 
   FlutterOffset get center;
-  ZacValue<double> get width;
-  ZacValue<double> get height;
+  ZacBuilder<double> get width;
+  ZacBuilder<double> get height;
 }
 
 /// @nodoc
@@ -7950,7 +7951,7 @@ class _$_FlutterRectFromCircle extends _FlutterRectFromCircle {
   @override
   final FlutterOffset center;
   @override
-  final ZacValue<double> radius;
+  final ZacBuilder<double> radius;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -7989,14 +7990,14 @@ class _$_FlutterRectFromCircle extends _FlutterRectFromCircle {
 abstract class _FlutterRectFromCircle extends FlutterRect {
   factory _FlutterRectFromCircle(
       {required final FlutterOffset center,
-      required final ZacValue<double> radius}) = _$_FlutterRectFromCircle;
+      required final ZacBuilder<double> radius}) = _$_FlutterRectFromCircle;
   _FlutterRectFromCircle._() : super._();
 
   factory _FlutterRectFromCircle.fromJson(Map<String, dynamic> json) =
       _$_FlutterRectFromCircle.fromJson;
 
   FlutterOffset get center;
-  ZacValue<double> get radius;
+  ZacBuilder<double> get radius;
 }
 
 /// @nodoc
@@ -8011,13 +8012,13 @@ class _$_FlutterRectFromLTRB extends _FlutterRectFromLTRB {
       _$$_FlutterRectFromLTRBFromJson(json);
 
   @override
-  final ZacValue<double> left;
+  final ZacBuilder<double> left;
   @override
-  final ZacValue<double> top;
+  final ZacBuilder<double> top;
   @override
-  final ZacValue<double> right;
+  final ZacBuilder<double> right;
   @override
-  final ZacValue<double> bottom;
+  final ZacBuilder<double> bottom;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -8057,19 +8058,19 @@ class _$_FlutterRectFromLTRB extends _FlutterRectFromLTRB {
 
 abstract class _FlutterRectFromLTRB extends FlutterRect {
   factory _FlutterRectFromLTRB(
-      final ZacValue<double> left,
-      final ZacValue<double> top,
-      final ZacValue<double> right,
-      final ZacValue<double> bottom) = _$_FlutterRectFromLTRB;
+      final ZacBuilder<double> left,
+      final ZacBuilder<double> top,
+      final ZacBuilder<double> right,
+      final ZacBuilder<double> bottom) = _$_FlutterRectFromLTRB;
   _FlutterRectFromLTRB._() : super._();
 
   factory _FlutterRectFromLTRB.fromJson(Map<String, dynamic> json) =
       _$_FlutterRectFromLTRB.fromJson;
 
-  ZacValue<double> get left;
-  ZacValue<double> get top;
-  ZacValue<double> get right;
-  ZacValue<double> get bottom;
+  ZacBuilder<double> get left;
+  ZacBuilder<double> get top;
+  ZacBuilder<double> get right;
+  ZacBuilder<double> get bottom;
 }
 
 /// @nodoc
@@ -8084,13 +8085,13 @@ class _$_FlutterRectFromLTWH extends _FlutterRectFromLTWH {
       _$$_FlutterRectFromLTWHFromJson(json);
 
   @override
-  final ZacValue<double> left;
+  final ZacBuilder<double> left;
   @override
-  final ZacValue<double> top;
+  final ZacBuilder<double> top;
   @override
-  final ZacValue<double> width;
+  final ZacBuilder<double> width;
   @override
-  final ZacValue<double> height;
+  final ZacBuilder<double> height;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -8130,19 +8131,19 @@ class _$_FlutterRectFromLTWH extends _FlutterRectFromLTWH {
 
 abstract class _FlutterRectFromLTWH extends FlutterRect {
   factory _FlutterRectFromLTWH(
-      final ZacValue<double> left,
-      final ZacValue<double> top,
-      final ZacValue<double> width,
-      final ZacValue<double> height) = _$_FlutterRectFromLTWH;
+      final ZacBuilder<double> left,
+      final ZacBuilder<double> top,
+      final ZacBuilder<double> width,
+      final ZacBuilder<double> height) = _$_FlutterRectFromLTWH;
   _FlutterRectFromLTWH._() : super._();
 
   factory _FlutterRectFromLTWH.fromJson(Map<String, dynamic> json) =
       _$_FlutterRectFromLTWH.fromJson;
 
-  ZacValue<double> get left;
-  ZacValue<double> get top;
-  ZacValue<double> get width;
-  ZacValue<double> get height;
+  ZacBuilder<double> get left;
+  ZacBuilder<double> get top;
+  ZacBuilder<double> get width;
+  ZacBuilder<double> get height;
 }
 
 /// @nodoc
@@ -8553,8 +8554,8 @@ FlutterSize _$FlutterSizeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSize {
-  ZacValue<double> get width => throw _privateConstructorUsedError;
-  ZacValue<double> get height => throw _privateConstructorUsedError;
+  ZacBuilder<double> get width => throw _privateConstructorUsedError;
+  ZacBuilder<double> get height => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -8572,9 +8573,9 @@ class _$_FlutterSize extends _FlutterSize {
       _$$_FlutterSizeFromJson(json);
 
   @override
-  final ZacValue<double> width;
+  final ZacBuilder<double> width;
   @override
-  final ZacValue<double> height;
+  final ZacBuilder<double> height;
 
   @override
   String toString() {
@@ -8605,7 +8606,7 @@ class _$_FlutterSize extends _FlutterSize {
 
 abstract class _FlutterSize extends FlutterSize {
   factory _FlutterSize(
-          final ZacValue<double> width, final ZacValue<double> height) =
+          final ZacBuilder<double> width, final ZacBuilder<double> height) =
       _$_FlutterSize;
   _FlutterSize._() : super._();
 
@@ -8613,9 +8614,9 @@ abstract class _FlutterSize extends FlutterSize {
       _$_FlutterSize.fromJson;
 
   @override
-  ZacValue<double> get width;
+  ZacBuilder<double> get width;
   @override
-  ZacValue<double> get height;
+  ZacBuilder<double> get height;
 }
 
 FlutterBoxHeightStyle _$FlutterBoxHeightStyleFromJson(
@@ -9133,9 +9134,9 @@ FlutterShadow _$FlutterShadowFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterShadow {
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
   FlutterOffset? get offset => throw _privateConstructorUsedError;
-  ZacValue<double?>? get blurRadius => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get blurRadius => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -9154,11 +9155,11 @@ class _$_FlutterShadowShadow extends _FlutterShadowShadow {
       _$$_FlutterShadowShadowFromJson(json);
 
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
   @override
   final FlutterOffset? offset;
   @override
-  final ZacValue<double?>? blurRadius;
+  final ZacBuilder<double?>? blurRadius;
 
   @override
   String toString() {
@@ -9191,18 +9192,18 @@ class _$_FlutterShadowShadow extends _FlutterShadowShadow {
 
 abstract class _FlutterShadowShadow extends FlutterShadow {
   factory _FlutterShadowShadow(
-      {final ZacValue<Color?>? color,
+      {final ZacBuilder<Color?>? color,
       final FlutterOffset? offset,
-      final ZacValue<double?>? blurRadius}) = _$_FlutterShadowShadow;
+      final ZacBuilder<double?>? blurRadius}) = _$_FlutterShadowShadow;
   _FlutterShadowShadow._() : super._();
 
   factory _FlutterShadowShadow.fromJson(Map<String, dynamic> json) =
       _$_FlutterShadowShadow.fromJson;
 
   @override
-  ZacValue<Color?>? get color;
+  ZacBuilder<Color?>? get color;
   @override
   FlutterOffset? get offset;
   @override
-  ZacValue<double?>? get blurRadius;
+  ZacBuilder<double?>? get blurRadius;
 }

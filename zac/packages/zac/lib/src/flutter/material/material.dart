@@ -12,7 +12,7 @@ part 'material.g.dart';
 @freezedZacBuilder
 class FlutterOutlineInputBorder
     with _$FlutterOutlineInputBorder
-    implements ZacBuild<OutlineInputBorder> {
+    implements ZacBuilder<OutlineInputBorder> {
   const FlutterOutlineInputBorder._();
 
   static const String unionValue = 'f:1:OutlineInputBorder';
@@ -22,17 +22,17 @@ class FlutterOutlineInputBorder
 
   @FreezedUnionValue(FlutterOutlineInputBorder.unionValue)
   factory FlutterOutlineInputBorder({
-    ZacValue<BorderSide?>? borderSide,
-    ZacValue<BorderRadius?>? borderRadius,
-    ZacValue<double?>? gapPadding,
+    ZacBuilder<BorderSide?>? borderSide,
+    ZacBuilder<BorderRadius?>? borderRadius,
+    ZacBuilder<double?>? gapPadding,
   }) = _FlutterOutlineInputBorder;
 
   OutlineInputBorder _build(ZacContext zacContext) {
     return OutlineInputBorder(
-      borderSide: borderSide?.getValue(zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.getValue(zacContext) ??
+      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.getValue(zacContext) ?? 4.0,
+      gapPadding: gapPadding?.build(zacContext) ?? 4.0,
     );
   }
 
@@ -45,7 +45,7 @@ class FlutterOutlineInputBorder
 @freezedZacBuilder
 class FlutterUnderlineInputBorder
     with _$FlutterUnderlineInputBorder
-    implements ZacBuild<UnderlineInputBorder> {
+    implements ZacBuilder<UnderlineInputBorder> {
   const FlutterUnderlineInputBorder._();
 
   static const String unionValue = 'f:1:UnderlineInputBorder';
@@ -55,14 +55,14 @@ class FlutterUnderlineInputBorder
 
   @FreezedUnionValue(FlutterUnderlineInputBorder.unionValue)
   factory FlutterUnderlineInputBorder({
-    ZacValue<BorderSide?>? borderSide,
-    ZacValue<BorderRadius?>? borderRadius,
+    ZacBuilder<BorderSide?>? borderSide,
+    ZacBuilder<BorderRadius?>? borderRadius,
   }) = _FlutterUnderlineInputBorder;
 
   UnderlineInputBorder _build(ZacContext zacContext) {
     return UnderlineInputBorder(
-      borderSide: borderSide?.getValue(zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.getValue(zacContext) ??
+      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(zacContext) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),

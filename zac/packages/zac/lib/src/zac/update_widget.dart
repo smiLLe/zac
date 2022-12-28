@@ -13,7 +13,7 @@ part 'update_widget.g.dart';
 @freezedZacBuilder
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder
-    implements ZacBuild<ZacUpdateContext> {
+    implements ZacBuilder<ZacUpdateContext> {
   const ZacUpdateContextBuilder._();
 
   static const String unionValue = 'z:1:UpdateContext';
@@ -23,14 +23,14 @@ class ZacUpdateContextBuilder
 
   @FreezedUnionValue(ZacUpdateContextBuilder.unionValue)
   factory ZacUpdateContextBuilder({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
   }) = _ZacUpdateContextBuilder;
 
   ZacUpdateContext _buildWidget(ZacContext zacContext) {
     return ZacUpdateContext(
-      builder: child.getValue,
-      key: key?.getValue(zacContext),
+      builder: child.build,
+      key: key?.build(zacContext),
     );
   }
 

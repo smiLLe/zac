@@ -149,7 +149,7 @@ See "$SharedValueProviderBuilder" for more info.
           : zacContext.ref.watch<Object?>(SharedValue.provider(family)),
     );
 
-    return consumedValue is ZacBuild<Object>
+    return consumedValue is ZacBuilder<Object>
         ? consumedValue.build(zacContext)
         : consumedValue;
   }
@@ -164,7 +164,7 @@ See "$SharedValueProviderBuilder" for more info.
       read: (_) {
         final value =
             zacContext.ref.read<Object?>(SharedValue.provider(family));
-        if (value is ZacBuild) {
+        if (value is ZacBuilder) {
           return value;
         }
         return select?.transform(ZacTransformValue(value), zacContext,
@@ -174,7 +174,7 @@ See "$SharedValueProviderBuilder" for more info.
       watch: (_) {
         return zacContext.ref
             .watch<Object?>(SharedValue.provider(family).select((value) {
-          if (value is ZacBuild) {
+          if (value is ZacBuilder) {
             return value;
           }
           return select?.transform(ZacTransformValue(value), zacContext,
@@ -190,7 +190,7 @@ See "$SharedValueProviderBuilder" for more info.
 
     return [
       ...consumedValue.map((dynamic e) {
-        return e is ZacBuild<Object> ? e.build(zacContext) : e as Object;
+        return e is ZacBuilder<Object> ? e.build(zacContext) : e as Object;
       })
     ];
   }
@@ -296,7 +296,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 @freezedZacBuilder
 class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   SharedValueProviderBuilder._();
   static const String unionValue = 'z:1:SharedValue.provide';
 
@@ -305,11 +305,11 @@ class SharedValueProviderBuilder
 
   @FreezedUnionValue(SharedValueProviderBuilder.unionValue)
   factory SharedValueProviderBuilder({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     required SharedValueType value,
     ZacTransformers? transformer,
     required SharedValueFamily family,
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
     @Default(true) bool autoCreate,
   }) = _SharedValueProviderBuilder;
 
@@ -322,11 +322,11 @@ class SharedValueProviderBuilder
     }
   }
 
-  Widget _childBuilder(ZacContext zacContext) => child.getValue(zacContext);
+  Widget _childBuilder(ZacContext zacContext) => child.build(zacContext);
 
   SharedValueProvider _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: _childBuilder,

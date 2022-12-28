@@ -99,7 +99,7 @@ extension Interactions on ZacActions {
 @freezedZacBuilder
 class ZacExecuteActionsBuilder
     with _$ZacExecuteActionsBuilder
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActions.once';
@@ -111,14 +111,14 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
     required ZacActions actions,
-    ZacValue<Widget>? child,
+    ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacActions actions,
     required SharedValueFamily family,
-    ZacValue<Widget>? child,
+    ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
 
   Widget _buildWidget(ZacContext zacContext) {
@@ -148,14 +148,14 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   final ZacActions actions;
   final SharedValueFamily family;
-  final ZacValue<Widget>? child;
+  final ZacBuilder<Widget>? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     SharedValue.listenAndExecuteActions(zacContext, family, actions);
 
-    return child?.getValue(zacContext) ?? const SizedBox.shrink();
+    return child?.build(zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -165,7 +165,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       : super(key: key);
 
   final ZacActions actions;
-  final ZacValue<Widget>? child;
+  final ZacBuilder<Widget>? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -184,7 +184,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
     }, [actions]);
 
     if (null == child || !doneState.value) return const SizedBox.shrink();
-    return child?.getValue(zacContext) ?? const SizedBox.shrink();
+    return child?.build(zacContext) ?? const SizedBox.shrink();
   }
 }
 

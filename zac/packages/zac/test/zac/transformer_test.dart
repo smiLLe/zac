@@ -1,13 +1,12 @@
-import 'package:flutter/widgets.dart';
 import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_build.dart';
 
 import '../helper.dart';
 
@@ -689,14 +688,15 @@ void main() {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.contains',
-        equals: IterableTransformer.contains(ZacValue<Object?>.fromJson('foo')),
+        equals:
+            IterableTransformer.contains(ZacBuilder<Object?>.fromJson('foo')),
         props: <String, dynamic>{
           'element': 'foo',
         },
       );
 
       expect(
-          () => IterableTransformer.contains(ZacValue<Object>.fromJson('foo'))
+          () => IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
 
@@ -704,7 +704,7 @@ void main() {
       await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
-          IterableTransformer.contains(ZacValue<Object>.fromJson('foo'))
+          IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
               .transform(
                   ZacTransformValue(<String>['foo', 'bar']), zacContext, null),
           isTrue);
@@ -794,18 +794,18 @@ void main() {
       _expectFromJson<ListTransformer>(
           fromJson: ListTransformer.fromJson,
           converter: 'z:1:Transformer:List.add',
-          equals: ListTransformer.add(ZacValue<Object>.fromJson('hello')),
+          equals: ListTransformer.add(ZacBuilder<Object>.fromJson('hello')),
           props: <String, dynamic>{
             'value': 'hello',
           });
 
       expect(
-          ListTransformer.add(ZacValue<Object>.fromJson('hello')).transform(
+          ListTransformer.add(ZacBuilder<Object>.fromJson('hello')).transform(
               ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
           ['foo', 'bar', 'hello']);
 
       expect(
-          () => ListTransformer.add(ZacValue<Object>.fromJson('hello'))
+          () => ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
@@ -946,11 +946,12 @@ void main() {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.containsKey',
-          equals: MapTransformer.containsKey(ZacValue<Object?>.fromJson('foo')),
+          equals:
+              MapTransformer.containsKey(ZacBuilder<Object?>.fromJson('foo')),
           props: <String, dynamic>{'key': 'foo'});
 
       expect(
-          () => MapTransformer.containsKey(ZacValue<Object>.fromJson('foo'))
+          () => MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
 
@@ -958,7 +959,7 @@ void main() {
       await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
-          MapTransformer.containsKey(ZacValue<Object>.fromJson('foo'))
+          MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
               .transform(
                   ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                   zacContext,
@@ -970,11 +971,11 @@ void main() {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.containsValue',
-          equals: MapTransformer.containsValue(ZacValue<Object?>.fromJson(2)),
+          equals: MapTransformer.containsValue(ZacBuilder<Object?>.fromJson(2)),
           props: <String, dynamic>{'value': 2});
 
       expect(
-          () => MapTransformer.containsValue(ZacValue<Object>.fromJson(2))
+          () => MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
 
@@ -982,10 +983,11 @@ void main() {
       await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
 
       expect(
-          MapTransformer.containsValue(ZacValue<Object>.fromJson(2)).transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              zacContext,
-              null),
+          MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
+              .transform(
+                  ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                  zacContext,
+                  null),
           isTrue);
     });
 
@@ -1122,18 +1124,18 @@ void main() {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map[key]',
-          equals: MapTransformer.key(ZacValue<String>.fromJson('nameOfKey')),
+          equals: MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey')),
           props: <String, dynamic>{
             'key': 'nameOfKey',
           });
 
       expect(
-          () => MapTransformer.key(ZacValue<String>.fromJson('nameOfKey'))
+          () => MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
 
       expect(
-          MapTransformer.key(ZacValue<String>.fromJson('foo')).transform(
+          MapTransformer.key(ZacBuilder<String>.fromJson('foo')).transform(
               ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
               FakeZacOrigin(),
               null),
@@ -1145,8 +1147,8 @@ void main() {
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.setValueForKey',
           equals: MapTransformer.setValueForKey(
-            key: ZacValue<String>.fromJson('nameOfKey'),
-            value: ZacValue<Object>.fromJson('hello'),
+            key: ZacBuilder<String>.fromJson('nameOfKey'),
+            value: ZacBuilder<Object>.fromJson('hello'),
           ),
           props: <String, dynamic>{
             'key': 'nameOfKey',
@@ -1155,15 +1157,15 @@ void main() {
 
       expect(
           () => MapTransformer.setValueForKey(
-                key: ZacValue<String>.fromJson('nameOfKey'),
-                value: ZacValue<Object>.fromJson('hello'),
+                key: ZacBuilder<String>.fromJson('nameOfKey'),
+                value: ZacBuilder<Object>.fromJson('hello'),
               ).transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
 
       expect(
           MapTransformer.setValueForKey(
-            key: ZacValue<String>.fromJson('nameOfKey'),
-            value: ZacValue<Object>.fromJson('hello'),
+            key: ZacBuilder<String>.fromJson('nameOfKey'),
+            value: ZacBuilder<Object>.fromJson('hello'),
           ).transform(ZacTransformValue(<String, dynamic>{'a': 'a'}),
               FakeZacOrigin(), null),
           <String, dynamic>{'a': 'a', 'nameOfKey': 'hello'});
@@ -1382,10 +1384,10 @@ void main() {
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
           equals: ObjectTransformer.equalsSharedValue(
-              value: ZacValueConsume<Object?>(family: 'shared')),
+              value: ConsumeSharedValue<Object?>(family: 'shared')),
           props: <String, dynamic>{
             'value': {
-              'builder': 'z:1:ZacValue.consume',
+              'builder': 'z:1:SharedValue.consume',
               'family': 'shared',
             }
           },
@@ -1404,20 +1406,20 @@ void main() {
               family: 'shared2',
               child: LeakContext(
                 cb: (o) => zacContext = o,
-              ).toZacValue(),
-            ).toZacValue(),
+              ),
+            ),
           ),
         );
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValueConsume<Object>(family: 'shared'))
+                    value: ConsumeSharedValue<Object>(family: 'shared'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValueConsume<Object>(family: 'shared2'))
+                    value: ConsumeSharedValue<Object>(family: 'shared2'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isFalse);
       });
@@ -1732,19 +1734,20 @@ void main() {
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.split',
         equals:
-            StringTransformer.split(pattern: ZacValue<String>.fromJson(',')),
+            StringTransformer.split(pattern: ZacBuilder<String>.fromJson(',')),
         props: <String, dynamic>{
           'pattern': ',',
         },
       );
 
       expect(
-          StringTransformer.split(pattern: ZacValue<String>.fromJson(','))
+          StringTransformer.split(pattern: ZacBuilder<String>.fromJson(','))
               .transform(ZacTransformValue('a,b'), FakeZacOrigin(), null),
           ['a', 'b']);
 
       expect(
-          () => StringTransformer.split(pattern: ZacValue<String>.fromJson(','))
+          () => StringTransformer.split(
+                  pattern: ZacBuilder<String>.fromJson(','))
               .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
@@ -1789,20 +1792,20 @@ void main() {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.replaceAll',
-        equals: StringTransformer.replaceAll(
-            ZacValue<String>.fromJson('xx'), ZacValue<String>.fromJson('yy')),
+        equals: StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
+            ZacBuilder<String>.fromJson('yy')),
         props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
       );
 
       expect(
-          StringTransformer.replaceAll(ZacValue<String>.fromJson('xx'),
-                  ZacValue<String>.fromJson('yy'))
+          StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
+                  ZacBuilder<String>.fromJson('yy'))
               .transform(ZacTransformValue('fooxx'), FakeZacOrigin(), null),
           'fooyy');
 
       expect(
-          () => StringTransformer.replaceAll(ZacValue<String>.fromJson('xx'),
-                  ZacValue<String>.fromJson('yy'))
+          () => StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
+                  ZacBuilder<String>.fromJson('yy'))
               .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });

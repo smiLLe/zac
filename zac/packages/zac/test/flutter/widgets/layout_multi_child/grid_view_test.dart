@@ -80,7 +80,7 @@ void main() {
           'key': KeysModel.getValueKey('FINDME'),
           'gridDelegate': GridDelegateModel.json,
           'controller': {
-            'builder': 'z:1:ZacValue.consume',
+            'builder': 'z:1:SharedValue.consume',
             'family': 'Zac.ScrollController',
           },
         },

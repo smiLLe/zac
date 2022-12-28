@@ -31,10 +31,10 @@ FlutterPositioned _$FlutterPositionedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterPositioned {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double?>? get top => throw _privateConstructorUsedError;
-  ZacValue<double?>? get bottom => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get top => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get bottom => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -65,21 +65,21 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
       _$$_FlutterPositioneddirectionalFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? left;
+  final ZacBuilder<double?>? left;
   @override
-  final ZacValue<double?>? top;
+  final ZacBuilder<double?>? top;
   @override
-  final ZacValue<double?>? right;
+  final ZacBuilder<double?>? right;
   @override
-  final ZacValue<double?>? bottom;
+  final ZacBuilder<double?>? bottom;
   @override
-  final ZacValue<double?>? width;
+  final ZacBuilder<double?>? width;
   @override
-  final ZacValue<double?>? height;
+  final ZacBuilder<double?>? height;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -122,31 +122,32 @@ class _$_FlutterPositioneddirectional extends _FlutterPositioneddirectional {
 
 abstract class _FlutterPositioneddirectional extends FlutterPositioned {
   factory _FlutterPositioneddirectional(
-      {final ZacValue<Key?>? key,
-      final ZacValue<double?>? left,
-      final ZacValue<double?>? top,
-      final ZacValue<double?>? right,
-      final ZacValue<double?>? bottom,
-      final ZacValue<double?>? width,
-      final ZacValue<double?>? height,
-      required final ZacValue<Widget> child}) = _$_FlutterPositioneddirectional;
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<double?>? left,
+          final ZacBuilder<double?>? top,
+          final ZacBuilder<double?>? right,
+          final ZacBuilder<double?>? bottom,
+          final ZacBuilder<double?>? width,
+          final ZacBuilder<double?>? height,
+          required final ZacBuilder<Widget> child}) =
+      _$_FlutterPositioneddirectional;
   _FlutterPositioneddirectional._() : super._();
 
   factory _FlutterPositioneddirectional.fromJson(Map<String, dynamic> json) =
       _$_FlutterPositioneddirectional.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<double?>? get left;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<double?>? get left;
   @override
-  ZacValue<double?>? get top;
-  ZacValue<double?>? get right;
+  ZacBuilder<double?>? get top;
+  ZacBuilder<double?>? get right;
   @override
-  ZacValue<double?>? get bottom;
-  ZacValue<double?>? get width;
-  ZacValue<double?>? get height;
+  ZacBuilder<double?>? get bottom;
+  ZacBuilder<double?>? get width;
+  ZacBuilder<double?>? get height;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }
 
 /// @nodoc
@@ -170,23 +171,23 @@ class _$_FlutterPositioned extends _FlutterPositioned {
       _$$_FlutterPositionedFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<TextDirection> textDirection;
+  final ZacBuilder<TextDirection> textDirection;
   @override
-  final ZacValue<double?>? start;
+  final ZacBuilder<double?>? start;
   @override
-  final ZacValue<double?>? top;
+  final ZacBuilder<double?>? top;
   @override
-  final ZacValue<double?>? end;
+  final ZacBuilder<double?>? end;
   @override
-  final ZacValue<double?>? bottom;
+  final ZacBuilder<double?>? bottom;
   @override
-  final ZacValue<double?>? width;
+  final ZacBuilder<double?>? width;
   @override
-  final ZacValue<double?>? height;
+  final ZacBuilder<double?>? height;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -231,33 +232,33 @@ class _$_FlutterPositioned extends _FlutterPositioned {
 
 abstract class _FlutterPositioned extends FlutterPositioned {
   factory _FlutterPositioned(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<TextDirection> textDirection,
-      final ZacValue<double?>? start,
-      final ZacValue<double?>? top,
-      final ZacValue<double?>? end,
-      final ZacValue<double?>? bottom,
-      final ZacValue<double?>? width,
-      final ZacValue<double?>? height,
-      required final ZacValue<Widget> child}) = _$_FlutterPositioned;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<TextDirection> textDirection,
+      final ZacBuilder<double?>? start,
+      final ZacBuilder<double?>? top,
+      final ZacBuilder<double?>? end,
+      final ZacBuilder<double?>? bottom,
+      final ZacBuilder<double?>? width,
+      final ZacBuilder<double?>? height,
+      required final ZacBuilder<Widget> child}) = _$_FlutterPositioned;
   _FlutterPositioned._() : super._();
 
   factory _FlutterPositioned.fromJson(Map<String, dynamic> json) =
       _$_FlutterPositioned.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<TextDirection> get textDirection;
-  ZacValue<double?>? get start;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<TextDirection> get textDirection;
+  ZacBuilder<double?>? get start;
   @override
-  ZacValue<double?>? get top;
-  ZacValue<double?>? get end;
+  ZacBuilder<double?>? get top;
+  ZacBuilder<double?>? get end;
   @override
-  ZacValue<double?>? get bottom;
-  ZacValue<double?>? get width;
-  ZacValue<double?>? get height;
+  ZacBuilder<double?>? get bottom;
+  ZacBuilder<double?>? get width;
+  ZacBuilder<double?>? get height;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }
 
 /// @nodoc
@@ -278,17 +279,17 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
       _$$_FlutterPositionedfillFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? left;
+  final ZacBuilder<double?>? left;
   @override
-  final ZacValue<double?>? top;
+  final ZacBuilder<double?>? top;
   @override
-  final ZacValue<double?>? right;
+  final ZacBuilder<double?>? right;
   @override
-  final ZacValue<double?>? bottom;
+  final ZacBuilder<double?>? bottom;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -329,25 +330,25 @@ class _$_FlutterPositionedfill extends _FlutterPositionedfill {
 
 abstract class _FlutterPositionedfill extends FlutterPositioned {
   factory _FlutterPositionedfill(
-      {final ZacValue<Key?>? key,
-      final ZacValue<double?>? left,
-      final ZacValue<double?>? top,
-      final ZacValue<double?>? right,
-      final ZacValue<double?>? bottom,
-      required final ZacValue<Widget> child}) = _$_FlutterPositionedfill;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<double?>? left,
+      final ZacBuilder<double?>? top,
+      final ZacBuilder<double?>? right,
+      final ZacBuilder<double?>? bottom,
+      required final ZacBuilder<Widget> child}) = _$_FlutterPositionedfill;
   _FlutterPositionedfill._() : super._();
 
   factory _FlutterPositionedfill.fromJson(Map<String, dynamic> json) =
       _$_FlutterPositionedfill.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<double?>? get left;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<double?>? get left;
   @override
-  ZacValue<double?>? get top;
-  ZacValue<double?>? get right;
+  ZacBuilder<double?>? get top;
+  ZacBuilder<double?>? get right;
   @override
-  ZacValue<double?>? get bottom;
+  ZacBuilder<double?>? get bottom;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

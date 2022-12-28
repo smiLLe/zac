@@ -17,9 +17,9 @@ _$_FlutterGlobalKeyNavigatorStateProvider
         _$_FlutterGlobalKeyNavigatorStateProvider(
           debugLabel: json['debugLabel'] == null
               ? null
-              : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
+              : ZacBuilder<String?>.fromJson(json['debugLabel'] as Object),
           family: json['family'] as Object,
-          child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
         );
 
 _$_FlutterGlobalKeyScaffoldMessengerStateProvider
@@ -28,7 +28,7 @@ _$_FlutterGlobalKeyScaffoldMessengerStateProvider
         _$_FlutterGlobalKeyScaffoldMessengerStateProvider(
           debugLabel: json['debugLabel'] == null
               ? null
-              : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
+              : ZacBuilder<String?>.fromJson(json['debugLabel'] as Object),
           family: json['family'] as Object,
-          child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
         );

@@ -9,20 +9,7 @@ part of 'zac_value.dart';
 _$_ZacValueSimple<T> _$$_ZacValueSimpleFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
     _$_ZacValueSimple<T>(
-      json['value'] as Object,
-    );
-
-_$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
-        Map<String, dynamic> json) =>
-    _$_ZacValueConsume<T>(
-      family: json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      forceConsume: json['forceConsume'] == null
-          ? null
-          : SharedValueConsumeType.fromJson(
-              json['forceConsume'] as Map<String, dynamic>),
+      _Converter<T>().fromJson(json['value']),
     );
 
 _$_ZacValueListSimple<T, X>
@@ -30,25 +17,8 @@ _$_ZacValueListSimple<T, X>
             Map<String, dynamic> json) =>
         _$_ZacValueListSimple<T, X>(
           (json['items'] as List<dynamic>)
-              .map((e) => ZacValue<T>.fromJson(e as Object))
+              .map((e) => ZacBuilder<T>.fromJson(e as Object))
               .toList(),
-        );
-
-_$_ZacValueListConsume<T, X>
-    _$$_ZacValueListConsumeFromJson<T extends Object?, X extends List<T>?>(
-            Map<String, dynamic> json) =>
-        _$_ZacValueListConsume<T, X>(
-          family: json['family'] as Object,
-          transformer: json['transformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
-          itemTransformer: json['itemTransformer'] == null
-              ? null
-              : ZacTransformers.fromJson(json['itemTransformer'] as Object),
-          forceConsume: json['forceConsume'] == null
-              ? null
-              : SharedValueConsumeType.fromJson(
-                  json['forceConsume'] as Map<String, dynamic>),
         );
 
 _$_ZacValueMap<T, X>
@@ -56,7 +26,7 @@ _$_ZacValueMap<T, X>
             Map<String, dynamic> json) =>
         _$_ZacValueMap<T, X>(
           items: (json['items'] as Map<String, dynamic>).map(
-            (k, e) => MapEntry(k, ZacValue<T>.fromJson(e as Object)),
+            (k, e) => MapEntry(k, ZacBuilder<T>.fromJson(e as Object)),
           ),
           $type: json['builder'] as String?,
         );
@@ -84,6 +54,6 @@ _$_ZacValueMapConsume<T, X> _$$_ZacValueMapConsumeFromJson<T extends Object?,
 _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_ZacValueActionsAsPayload(
-      value: ZacValue<Object?>.fromJson(json['value'] as Object),
+      value: ZacBuilder<Object?>.fromJson(json['value'] as Object),
       actions: ZacActions.fromJson(json['actions'] as Object),
     );

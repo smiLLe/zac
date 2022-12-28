@@ -11,26 +11,26 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
     _$_FlutterInteractiveViewer(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       alignPanAxis: json['alignPanAxis'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['alignPanAxis'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['alignPanAxis'] as Object),
       boundaryMargin: json['boundaryMargin'] == null
           ? null
-          : ZacValue<EdgeInsets?>.fromJson(json['boundaryMargin'] as Object),
+          : ZacBuilder<EdgeInsets?>.fromJson(json['boundaryMargin'] as Object),
       constrained: json['constrained'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['constrained'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['constrained'] as Object),
       maxScale: json['maxScale'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['maxScale'] as Object),
+          : ZacBuilder<double?>.fromJson(json['maxScale'] as Object),
       minScale: json['minScale'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['minScale'] as Object),
+          : ZacBuilder<double?>.fromJson(json['minScale'] as Object),
       onInteractionEnd: json['onInteractionEnd'] == null
           ? null
           : ZacActions.fromJson(json['onInteractionEnd'] as Object),
@@ -42,8 +42,8 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
           : ZacActions.fromJson(json['onInteractionUpdate'] as Object),
       panEnabled: json['panEnabled'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['panEnabled'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['panEnabled'] as Object),
       scaleEnabled: json['scaleEnabled'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['scaleEnabled'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['scaleEnabled'] as Object),
     );

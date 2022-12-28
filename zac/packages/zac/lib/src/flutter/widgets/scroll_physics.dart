@@ -10,7 +10,7 @@ part 'scroll_physics.g.dart';
 
 @freezedZacBuilder
 class FlutterScrollPhysics
-    with _$FlutterScrollPhysics, ZacBuild<ScrollPhysics> {
+    with _$FlutterScrollPhysics, ZacBuilder<ScrollPhysics> {
   const FlutterScrollPhysics._();
 
   static const String unionValueAlwaysScrollableScrollPhysics =

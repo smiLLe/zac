@@ -11,7 +11,7 @@ part 'limited_box.g.dart';
 @freezedZacBuilder
 class FlutterLimitedBox
     with _$FlutterLimitedBox
-    implements ZacBuild<LimitedBox> {
+    implements ZacBuilder<LimitedBox> {
   const FlutterLimitedBox._();
 
   static const String unionValue = 'f:1:LimitedBox';
@@ -21,18 +21,18 @@ class FlutterLimitedBox
 
   @FreezedUnionValue(FlutterLimitedBox.unionValue)
   factory FlutterLimitedBox({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? maxWidth,
-    ZacValue<double?>? maxHeight,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? maxWidth,
+    ZacBuilder<double?>? maxHeight,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterLimitedBox;
 
   LimitedBox _buildWidget(ZacContext zacContext) {
     return LimitedBox(
-      key: key?.getValue(zacContext),
-      maxHeight: maxHeight?.getValue(zacContext) ?? double.infinity,
-      maxWidth: maxWidth?.getValue(zacContext) ?? double.infinity,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      maxHeight: maxHeight?.build(zacContext) ?? double.infinity,
+      maxWidth: maxWidth?.build(zacContext) ?? double.infinity,
+      child: child?.build(zacContext),
     );
   }
 

@@ -299,11 +299,11 @@ SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
 
 /// @nodoc
 mixin _$SharedValueProviderBuilder {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   Object? get value => throw _privateConstructorUsedError;
   ZacTransformers? get transformer => throw _privateConstructorUsedError;
   Object get family => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
   bool get autoCreate => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -329,7 +329,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       _$$_SharedValueProviderBuilderFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
   final Object? value;
   @override
@@ -337,7 +337,7 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
   @override
   final Object family;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
   @JsonKey()
   final bool autoCreate;
@@ -384,11 +384,11 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
 
 abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   factory _SharedValueProviderBuilder(
-      {final ZacValue<Key?>? key,
+      {final ZacBuilder<Key?>? key,
       required final Object? value,
       final ZacTransformers? transformer,
       required final Object family,
-      required final ZacValue<Widget> child,
+      required final ZacBuilder<Widget> child,
       final bool autoCreate}) = _$_SharedValueProviderBuilder;
   _SharedValueProviderBuilder._() : super._();
 
@@ -396,7 +396,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
       _$_SharedValueProviderBuilder.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
   Object? get value;
   @override
@@ -404,7 +404,7 @@ abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
   @override
   Object get family;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
   bool get autoCreate;
 }

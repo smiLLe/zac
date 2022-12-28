@@ -10,25 +10,25 @@ _$_FlutterSafeArea _$$_FlutterSafeAreaFromJson(Map<String, dynamic> json) =>
     _$_FlutterSafeArea(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['left'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['left'] as Object),
       top: json['top'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['top'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['top'] as Object),
       right: json['right'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['right'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['right'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['bottom'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['bottom'] as Object),
       minimum: json['minimum'] == null
           ? null
-          : ZacValue<EdgeInsets?>.fromJson(json['minimum'] as Object),
+          : ZacBuilder<EdgeInsets?>.fromJson(json['minimum'] as Object),
       maintainBottomViewPadding: json['maintainBottomViewPadding'] == null
           ? null
-          : ZacValue<bool?>.fromJson(
+          : ZacBuilder<bool?>.fromJson(
               json['maintainBottomViewPadding'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );

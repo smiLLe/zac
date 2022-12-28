@@ -20,11 +20,11 @@ FlutterOpacity _$FlutterOpacityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterOpacity {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double> get opacity => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get alwaysIncludeSemantics =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double> get opacity => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get alwaysIncludeSemantics =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -47,13 +47,13 @@ class _$_FlutterOpacity extends _FlutterOpacity {
       _$$_FlutterOpacityFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double> opacity;
+  final ZacBuilder<double> opacity;
   @override
-  final ZacValue<bool?>? alwaysIncludeSemantics;
+  final ZacBuilder<bool?>? alwaysIncludeSemantics;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -88,21 +88,21 @@ class _$_FlutterOpacity extends _FlutterOpacity {
 
 abstract class _FlutterOpacity extends FlutterOpacity {
   factory _FlutterOpacity(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<double> opacity,
-      final ZacValue<bool?>? alwaysIncludeSemantics,
-      final ZacValue<Widget?>? child}) = _$_FlutterOpacity;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<double> opacity,
+      final ZacBuilder<bool?>? alwaysIncludeSemantics,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterOpacity;
   _FlutterOpacity._() : super._();
 
   factory _FlutterOpacity.fromJson(Map<String, dynamic> json) =
       _$_FlutterOpacity.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double> get opacity;
+  ZacBuilder<double> get opacity;
   @override
-  ZacValue<bool?>? get alwaysIncludeSemantics;
+  ZacBuilder<bool?>? get alwaysIncludeSemantics;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

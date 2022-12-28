@@ -20,10 +20,10 @@ FlutterPadding _$FlutterPaddingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterPadding {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry> get padding =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry> get padding =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -41,11 +41,11 @@ class _$_FlutterPadding extends _FlutterPadding {
       _$$_FlutterPaddingFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<EdgeInsetsGeometry> padding;
+  final ZacBuilder<EdgeInsetsGeometry> padding;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -77,18 +77,18 @@ class _$_FlutterPadding extends _FlutterPadding {
 
 abstract class _FlutterPadding extends FlutterPadding {
   factory _FlutterPadding(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<EdgeInsetsGeometry> padding,
-      final ZacValue<Widget?>? child}) = _$_FlutterPadding;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<EdgeInsetsGeometry> padding,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterPadding;
   _FlutterPadding._() : super._();
 
   factory _FlutterPadding.fromJson(Map<String, dynamic> json) =
       _$_FlutterPadding.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<EdgeInsetsGeometry> get padding;
+  ZacBuilder<EdgeInsetsGeometry> get padding;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

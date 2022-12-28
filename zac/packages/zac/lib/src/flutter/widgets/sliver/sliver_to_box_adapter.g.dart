@@ -11,8 +11,8 @@ _$_FlutterSliverToBoxAdapter _$$_FlutterSliverToBoxAdapterFromJson(
     _$_FlutterSliverToBoxAdapter(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );

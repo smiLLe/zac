@@ -21,16 +21,17 @@ FlutterMaterialPageRoute _$FlutterMaterialPageRouteFromJson(
 
 /// @nodoc
 mixin _$FlutterMaterialPageRoute {
-  ZacValue<RouteSettings?>? get settings => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get maintainState => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacBuilder<RouteSettings?>? get settings =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get maintainState => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
-  ZacValue<String?>? get nameOfSharedArguments =>
+  ZacBuilder<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -55,20 +56,20 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
       _$$_FlutterMaterialPageRouteFromJson(json);
 
   @override
-  final ZacValue<RouteSettings?>? settings;
+  final ZacBuilder<RouteSettings?>? settings;
   @override
-  final ZacValue<bool?>? maintainState;
+  final ZacBuilder<bool?>? maintainState;
   @override
-  final ZacValue<bool?>? fullscreenDialog;
+  final ZacBuilder<bool?>? fullscreenDialog;
 
   /// Used instead of WidgetBuilder builder
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
   @override
-  final ZacValue<String?>? nameOfSharedArguments;
+  final ZacBuilder<String?>? nameOfSharedArguments;
 
   @override
   String toString() {
@@ -107,11 +108,11 @@ class _$_FlutterMaterialPageRoute extends _FlutterMaterialPageRoute {
 
 abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
   factory _FlutterMaterialPageRoute(
-          {final ZacValue<RouteSettings?>? settings,
-          final ZacValue<bool?>? maintainState,
-          final ZacValue<bool?>? fullscreenDialog,
-          required final ZacValue<Widget> child,
-          final ZacValue<String?>? nameOfSharedArguments}) =
+          {final ZacBuilder<RouteSettings?>? settings,
+          final ZacBuilder<bool?>? maintainState,
+          final ZacBuilder<bool?>? fullscreenDialog,
+          required final ZacBuilder<Widget> child,
+          final ZacBuilder<String?>? nameOfSharedArguments}) =
       _$_FlutterMaterialPageRoute;
   _FlutterMaterialPageRoute._() : super._();
 
@@ -119,20 +120,20 @@ abstract class _FlutterMaterialPageRoute extends FlutterMaterialPageRoute {
       _$_FlutterMaterialPageRoute.fromJson;
 
   @override
-  ZacValue<RouteSettings?>? get settings;
+  ZacBuilder<RouteSettings?>? get settings;
   @override
-  ZacValue<bool?>? get maintainState;
+  ZacBuilder<bool?>? get maintainState;
   @override
-  ZacValue<bool?>? get fullscreenDialog;
+  ZacBuilder<bool?>? get fullscreenDialog;
   @override
 
   /// Used instead of WidgetBuilder builder
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
-  ZacValue<String?>? get nameOfSharedArguments;
+  ZacBuilder<String?>? get nameOfSharedArguments;
 }
 
 FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
@@ -142,23 +143,24 @@ FlutterPageRouteBuilder _$FlutterPageRouteBuilderFromJson(
 
 /// @nodoc
 mixin _$FlutterPageRouteBuilder {
-  ZacValue<RouteSettings?>? get settings =>
+  ZacBuilder<RouteSettings?>? get settings =>
       throw _privateConstructorUsedError; //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacValue<bool?>? get opaque => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get barrierDismissible => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get barrierColor => throw _privateConstructorUsedError;
-  ZacValue<String?>? get barrierLabel => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get maintainState => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get opaque => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get barrierDismissible =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get barrierColor => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get barrierLabel => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get maintainState => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get fullscreenDialog => throw _privateConstructorUsedError;
 
   /// Used instead of WidgetBuilder builder
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
-  ZacValue<String?>? get nameOfSharedArguments =>
+  ZacBuilder<String?>? get nameOfSharedArguments =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -187,31 +189,31 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
       _$$_FlutterPageRouteBuilderFromJson(json);
 
   @override
-  final ZacValue<RouteSettings?>? settings;
+  final ZacBuilder<RouteSettings?>? settings;
 //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
   @override
-  final ZacValue<bool?>? opaque;
+  final ZacBuilder<bool?>? opaque;
   @override
-  final ZacValue<bool?>? barrierDismissible;
+  final ZacBuilder<bool?>? barrierDismissible;
   @override
-  final ZacValue<Color?>? barrierColor;
+  final ZacBuilder<Color?>? barrierColor;
   @override
-  final ZacValue<String?>? barrierLabel;
+  final ZacBuilder<String?>? barrierLabel;
   @override
-  final ZacValue<bool?>? maintainState;
+  final ZacBuilder<bool?>? maintainState;
   @override
-  final ZacValue<bool?>? fullscreenDialog;
+  final ZacBuilder<bool?>? fullscreenDialog;
 
   /// Used instead of WidgetBuilder builder
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
   @override
-  final ZacValue<String?>? nameOfSharedArguments;
+  final ZacBuilder<String?>? nameOfSharedArguments;
 
   @override
   String toString() {
@@ -266,15 +268,15 @@ class _$_FlutterPageRouteBuilder extends _FlutterPageRouteBuilder {
 
 abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
   factory _FlutterPageRouteBuilder(
-          {final ZacValue<RouteSettings?>? settings,
-          final ZacValue<bool?>? opaque,
-          final ZacValue<bool?>? barrierDismissible,
-          final ZacValue<Color?>? barrierColor,
-          final ZacValue<String?>? barrierLabel,
-          final ZacValue<bool?>? maintainState,
-          final ZacValue<bool?>? fullscreenDialog,
-          required final ZacValue<Widget> child,
-          final ZacValue<String?>? nameOfSharedArguments}) =
+          {final ZacBuilder<RouteSettings?>? settings,
+          final ZacBuilder<bool?>? opaque,
+          final ZacBuilder<bool?>? barrierDismissible,
+          final ZacBuilder<Color?>? barrierColor,
+          final ZacBuilder<String?>? barrierLabel,
+          final ZacBuilder<bool?>? maintainState,
+          final ZacBuilder<bool?>? fullscreenDialog,
+          required final ZacBuilder<Widget> child,
+          final ZacBuilder<String?>? nameOfSharedArguments}) =
       _$_FlutterPageRouteBuilder;
   _FlutterPageRouteBuilder._() : super._();
 
@@ -282,30 +284,30 @@ abstract class _FlutterPageRouteBuilder extends FlutterPageRouteBuilder {
       _$_FlutterPageRouteBuilder.fromJson;
 
   @override
-  ZacValue<RouteSettings?>? get settings;
+  ZacBuilder<RouteSettings?>? get settings;
   @override //     RouteTransitionsBuilder transitionsBuilder = _defaultTransitionsBuilder,
 // Duration transitionDuration = const Duration(milliseconds: 300),
 // Duration reverseTransitionDuration = const Duration(milliseconds: 300),
-  ZacValue<bool?>? get opaque;
+  ZacBuilder<bool?>? get opaque;
   @override
-  ZacValue<bool?>? get barrierDismissible;
+  ZacBuilder<bool?>? get barrierDismissible;
   @override
-  ZacValue<Color?>? get barrierColor;
+  ZacBuilder<Color?>? get barrierColor;
   @override
-  ZacValue<String?>? get barrierLabel;
+  ZacBuilder<String?>? get barrierLabel;
   @override
-  ZacValue<bool?>? get maintainState;
+  ZacBuilder<bool?>? get maintainState;
   @override
-  ZacValue<bool?>? get fullscreenDialog;
+  ZacBuilder<bool?>? get fullscreenDialog;
   @override
 
   /// Used instead of WidgetBuilder builder
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
 
   /// [FlutterRouteSettings] arguments are shared using this name or as a
   /// fallback using [nameOfSharedArgumentsInRoute]
-  ZacValue<String?>? get nameOfSharedArguments;
+  ZacBuilder<String?>? get nameOfSharedArguments;
 }
 
 FlutterNavigatorState _$FlutterNavigatorStateFromJson(
@@ -441,7 +443,7 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
       _$$_ZacNavigatorStateSharedValueFromJson(json);
 
   @override
-  final ZacValueConsume<GlobalKey<NavigatorState>> value;
+  final ZacBuilder<GlobalKey<NavigatorState>> value;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -476,14 +478,14 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
 
 abstract class _ZacNavigatorStateSharedValue extends FlutterNavigatorState {
   factory _ZacNavigatorStateSharedValue(
-          {required final ZacValueConsume<GlobalKey<NavigatorState>> value}) =
+          {required final ZacBuilder<GlobalKey<NavigatorState>> value}) =
       _$_ZacNavigatorStateSharedValue;
   _ZacNavigatorStateSharedValue._() : super._();
 
   factory _ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =
       _$_ZacNavigatorStateSharedValue.fromJson;
 
-  ZacValueConsume<GlobalKey<NavigatorState>> get value;
+  ZacBuilder<GlobalKey<NavigatorState>> get value;
 }
 
 FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
@@ -492,12 +494,12 @@ FlutterNavigator _$FlutterNavigatorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterNavigator {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   FlutterRouteFactory? get onGenerateRoute =>
       throw _privateConstructorUsedError;
   FlutterRouteFactory? get onUnknownRoute => throw _privateConstructorUsedError;
-  ZacValue<String?>? get initialRoute => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get requestFocus => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get initialRoute => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get requestFocus => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -521,15 +523,15 @@ class _$_FlutterNavigator extends _FlutterNavigator {
       _$$_FlutterNavigatorFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
   final FlutterRouteFactory? onGenerateRoute;
   @override
   final FlutterRouteFactory? onUnknownRoute;
   @override
-  final ZacValue<String?>? initialRoute;
+  final ZacBuilder<String?>? initialRoute;
   @override
-  final ZacValue<bool?>? requestFocus;
+  final ZacBuilder<bool?>? requestFocus;
 
   @override
   String toString() {
@@ -568,26 +570,26 @@ class _$_FlutterNavigator extends _FlutterNavigator {
 
 abstract class _FlutterNavigator extends FlutterNavigator {
   factory _FlutterNavigator(
-      {final ZacValue<Key?>? key,
+      {final ZacBuilder<Key?>? key,
       final FlutterRouteFactory? onGenerateRoute,
       final FlutterRouteFactory? onUnknownRoute,
-      final ZacValue<String?>? initialRoute,
-      final ZacValue<bool?>? requestFocus}) = _$_FlutterNavigator;
+      final ZacBuilder<String?>? initialRoute,
+      final ZacBuilder<bool?>? requestFocus}) = _$_FlutterNavigator;
   _FlutterNavigator._() : super._();
 
   factory _FlutterNavigator.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigator.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
   FlutterRouteFactory? get onGenerateRoute;
   @override
   FlutterRouteFactory? get onUnknownRoute;
   @override
-  ZacValue<String?>? get initialRoute;
+  ZacBuilder<String?>? get initialRoute;
   @override
-  ZacValue<bool?>? get requestFocus;
+  ZacBuilder<bool?>? get requestFocus;
 }
 
 FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
@@ -649,7 +651,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
       _$$_FlutterNavigatorActionsPushFromJson(json);
 
   @override
-  final ZacValue<Route<Object?>> route;
+  final ZacBuilder<Route<Object?>> route;
   @override
   final FlutterNavigatorState? navigatorState;
 
@@ -697,7 +699,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
 
 abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush(
-          {required final ZacValue<Route<Object?>> route,
+          {required final ZacBuilder<Route<Object?>> route,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPush;
   _FlutterNavigatorActionsPush._() : super._();
@@ -705,7 +707,7 @@ abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPush.fromJson;
 
-  ZacValue<Route<Object?>> get route;
+  ZacBuilder<Route<Object?>> get route;
   @override
   FlutterNavigatorState? get navigatorState;
 }
@@ -727,7 +729,7 @@ class _$_FlutterNavigatorActionsPushNamed
       _$$_FlutterNavigatorActionsPushNamedFromJson(json);
 
   @override
-  final ZacValue<String> routeName;
+  final ZacBuilder<String> routeName;
   @override
   final Object? arguments;
   @override
@@ -781,7 +783,7 @@ class _$_FlutterNavigatorActionsPushNamed
 abstract class _FlutterNavigatorActionsPushNamed
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushNamed(
-          {required final ZacValue<String> routeName,
+          {required final ZacBuilder<String> routeName,
           final Object? arguments,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushNamed;
@@ -790,7 +792,7 @@ abstract class _FlutterNavigatorActionsPushNamed
   factory _FlutterNavigatorActionsPushNamed.fromJson(
       Map<String, dynamic> json) = _$_FlutterNavigatorActionsPushNamed.fromJson;
 
-  ZacValue<String> get routeName;
+  ZacBuilder<String> get routeName;
   Object? get arguments;
   @override
   FlutterNavigatorState? get navigatorState;
@@ -962,7 +964,7 @@ class _$_FlutterNavigatorActionsPushReplacement
       _$$_FlutterNavigatorActionsPushReplacementFromJson(json);
 
   @override
-  final ZacValue<Route<Object?>> route;
+  final ZacBuilder<Route<Object?>> route;
   @override
   final ZacActions? result;
   @override
@@ -1014,7 +1016,7 @@ class _$_FlutterNavigatorActionsPushReplacement
 abstract class _FlutterNavigatorActionsPushReplacement
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushReplacement(
-          {required final ZacValue<Route<Object?>> route,
+          {required final ZacBuilder<Route<Object?>> route,
           final ZacActions? result,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
@@ -1024,7 +1026,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
           Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPushReplacement.fromJson;
 
-  ZacValue<Route<Object?>> get route;
+  ZacBuilder<Route<Object?>> get route;
   ZacActions? get result;
   @override
   FlutterNavigatorState? get navigatorState;
@@ -1048,7 +1050,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
       _$$_FlutterNavigatorActionsPushReplacementNamedFromJson(json);
 
   @override
-  final ZacValue<String> routeName;
+  final ZacBuilder<String> routeName;
   @override
   final Object? arguments;
   @override
@@ -1105,7 +1107,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
 abstract class _FlutterNavigatorActionsPushReplacementNamed
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushReplacementNamed(
-          {required final ZacValue<String> routeName,
+          {required final ZacBuilder<String> routeName,
           final Object? arguments,
           final FlutterNavigatorState? navigatorState,
           final ZacActions? result}) =
@@ -1116,7 +1118,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
           Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPushReplacementNamed.fromJson;
 
-  ZacValue<String> get routeName;
+  ZacBuilder<String> get routeName;
   Object? get arguments;
   @override
   FlutterNavigatorState? get navigatorState;
@@ -1137,7 +1139,7 @@ class _$_FlutterNavigatorActionsPopUntilRouteName
       _$$_FlutterNavigatorActionsPopUntilRouteNameFromJson(json);
 
   @override
-  final ZacValue<String> routeName;
+  final ZacBuilder<String> routeName;
   @override
   final FlutterNavigatorState? navigatorState;
 
@@ -1187,7 +1189,7 @@ class _$_FlutterNavigatorActionsPopUntilRouteName
 abstract class _FlutterNavigatorActionsPopUntilRouteName
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPopUntilRouteName(
-          {required final ZacValue<String> routeName,
+          {required final ZacBuilder<String> routeName,
           final FlutterNavigatorState? navigatorState}) =
       _$_FlutterNavigatorActionsPopUntilRouteName;
   _FlutterNavigatorActionsPopUntilRouteName._() : super._();
@@ -1196,7 +1198,7 @@ abstract class _FlutterNavigatorActionsPopUntilRouteName
           Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPopUntilRouteName.fromJson;
 
-  ZacValue<String> get routeName;
+  ZacBuilder<String> get routeName;
   @override
   FlutterNavigatorState? get navigatorState;
 }
@@ -1207,7 +1209,7 @@ FlutterRouteFactory _$FlutterRouteFactoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRouteFactory {
-  Map<String, ZacBuild<Route<Object?>>> get routes =>
+  Map<String, ZacBuilder<Route<Object?>>> get routes =>
       throw _privateConstructorUsedError;
 
   /// Key of the map equals the route name. Value of the map equals the
@@ -1226,7 +1228,7 @@ mixin _$FlutterRouteFactory {
 @JsonSerializable(createToJson: false)
 class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   _$_FlutterRouteFactory(
-      {required final Map<String, ZacBuild<Route<Object?>>> routes,
+      {required final Map<String, ZacBuilder<Route<Object?>>> routes,
       required final Map<String, String>? familyNameOfArguments})
       : _routes = routes,
         _familyNameOfArguments = familyNameOfArguments,
@@ -1235,9 +1237,9 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   factory _$_FlutterRouteFactory.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterRouteFactoryFromJson(json);
 
-  final Map<String, ZacBuild<Route<Object?>>> _routes;
+  final Map<String, ZacBuilder<Route<Object?>>> _routes;
   @override
-  Map<String, ZacBuild<Route<Object?>>> get routes {
+  Map<String, ZacBuilder<Route<Object?>>> get routes {
     if (_routes is EqualUnmodifiableMapView) return _routes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_routes);
@@ -1292,7 +1294,7 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
 
 abstract class _FlutterRouteFactory extends FlutterRouteFactory {
   factory _FlutterRouteFactory(
-          {required final Map<String, ZacBuild<Route<Object?>>> routes,
+          {required final Map<String, ZacBuilder<Route<Object?>>> routes,
           required final Map<String, String>? familyNameOfArguments}) =
       _$_FlutterRouteFactory;
   _FlutterRouteFactory._() : super._();
@@ -1301,7 +1303,7 @@ abstract class _FlutterRouteFactory extends FlutterRouteFactory {
       _$_FlutterRouteFactory.fromJson;
 
   @override
-  Map<String, ZacBuild<Route<Object?>>> get routes;
+  Map<String, ZacBuilder<Route<Object?>>> get routes;
   @override
 
   /// Key of the map equals the route name. Value of the map equals the
@@ -1315,8 +1317,8 @@ FlutterRouteSettings _$FlutterRouteSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterRouteSettings {
-  ZacValue<String?>? get name => throw _privateConstructorUsedError;
-  ZacValue<Object?>? get arguments => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get name => throw _privateConstructorUsedError;
+  ZacBuilder<Object?>? get arguments => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1334,9 +1336,9 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
       _$$_FlutterRouteSettingsFromJson(json);
 
   @override
-  final ZacValue<String?>? name;
+  final ZacBuilder<String?>? name;
   @override
-  final ZacValue<Object?>? arguments;
+  final ZacBuilder<Object?>? arguments;
 
   @override
   String toString() {
@@ -1368,15 +1370,15 @@ class _$_FlutterRouteSettings extends _FlutterRouteSettings {
 
 abstract class _FlutterRouteSettings extends FlutterRouteSettings {
   factory _FlutterRouteSettings(
-      {final ZacValue<String?>? name,
-      final ZacValue<Object?>? arguments}) = _$_FlutterRouteSettings;
+      {final ZacBuilder<String?>? name,
+      final ZacBuilder<Object?>? arguments}) = _$_FlutterRouteSettings;
   _FlutterRouteSettings._() : super._();
 
   factory _FlutterRouteSettings.fromJson(Map<String, dynamic> json) =
       _$_FlutterRouteSettings.fromJson;
 
   @override
-  ZacValue<String?>? get name;
+  ZacBuilder<String?>? get name;
   @override
-  ZacValue<Object?>? get arguments;
+  ZacBuilder<Object?>? get arguments;
 }

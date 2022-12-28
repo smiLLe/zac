@@ -11,26 +11,26 @@ _$_FlutterPositioneddirectional _$$_FlutterPositioneddirectionalFromJson(
     _$_FlutterPositioneddirectional(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['left'] as Object),
+          : ZacBuilder<double?>.fromJson(json['left'] as Object),
       top: json['top'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['top'] as Object),
+          : ZacBuilder<double?>.fromJson(json['top'] as Object),
       right: json['right'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['right'] as Object),
+          : ZacBuilder<double?>.fromJson(json['right'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['bottom'] as Object),
+          : ZacBuilder<double?>.fromJson(json['bottom'] as Object),
       width: json['width'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['width'] as Object),
+          : ZacBuilder<double?>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['height'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<double?>.fromJson(json['height'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -38,28 +38,28 @@ _$_FlutterPositioned _$$_FlutterPositionedFromJson(Map<String, dynamic> json) =>
     _$_FlutterPositioned(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       textDirection:
-          ZacValue<TextDirection>.fromJson(json['textDirection'] as Object),
+          ZacBuilder<TextDirection>.fromJson(json['textDirection'] as Object),
       start: json['start'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['start'] as Object),
+          : ZacBuilder<double?>.fromJson(json['start'] as Object),
       top: json['top'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['top'] as Object),
+          : ZacBuilder<double?>.fromJson(json['top'] as Object),
       end: json['end'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['end'] as Object),
+          : ZacBuilder<double?>.fromJson(json['end'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['bottom'] as Object),
+          : ZacBuilder<double?>.fromJson(json['bottom'] as Object),
       width: json['width'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['width'] as Object),
+          : ZacBuilder<double?>.fromJson(json['width'] as Object),
       height: json['height'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['height'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<double?>.fromJson(json['height'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -68,19 +68,19 @@ _$_FlutterPositionedfill _$$_FlutterPositionedfillFromJson(
     _$_FlutterPositionedfill(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       left: json['left'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['left'] as Object),
+          : ZacBuilder<double?>.fromJson(json['left'] as Object),
       top: json['top'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['top'] as Object),
+          : ZacBuilder<double?>.fromJson(json['top'] as Object),
       right: json['right'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['right'] as Object),
+          : ZacBuilder<double?>.fromJson(json['right'] as Object),
       bottom: json['bottom'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['bottom'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<double?>.fromJson(json['bottom'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );

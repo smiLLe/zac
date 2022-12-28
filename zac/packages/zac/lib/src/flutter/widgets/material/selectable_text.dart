@@ -9,7 +9,7 @@ part 'selectable_text.g.dart';
 @freezedZacBuilder
 class FlutterSelectableText
     with _$FlutterSelectableText
-    implements ZacBuild<SelectableText> {
+    implements ZacBuilder<SelectableText> {
   const FlutterSelectableText._();
 
   static const String unionValue = 'f:1:SelectableText';
@@ -20,57 +20,57 @@ class FlutterSelectableText
   @FreezedUnionValue(FlutterSelectableText.unionValue)
   factory FlutterSelectableText(
     String data, {
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     // FocusNode? focusNode,
-    ZacValue<TextStyle?>? style,
-    ZacValue<StrutStyle?>? strutStyle,
-    ZacValue<TextAlign?>? textAlign,
-    ZacValue<TextDirection?>? textDirection,
-    ZacValue<double?>? textScaleFactor,
-    ZacValue<bool?>? showCursor,
-    ZacValue<bool?>? autofocus,
+    ZacBuilder<TextStyle?>? style,
+    ZacBuilder<StrutStyle?>? strutStyle,
+    ZacBuilder<TextAlign?>? textAlign,
+    ZacBuilder<TextDirection?>? textDirection,
+    ZacBuilder<double?>? textScaleFactor,
+    ZacBuilder<bool?>? showCursor,
+    ZacBuilder<bool?>? autofocus,
     // ToolbarOptions? toolbarOptions,
-    ZacValue<int?>? minLines,
-    ZacValue<int?>? maxLines,
-    ZacValue<double?>? cursorWidth,
-    ZacValue<double?>? cursorHeight,
-    ZacValue<Radius?>? cursorRadius,
-    ZacValue<Color?>? cursorColor,
+    ZacBuilder<int?>? minLines,
+    ZacBuilder<int?>? maxLines,
+    ZacBuilder<double?>? cursorWidth,
+    ZacBuilder<double?>? cursorHeight,
+    ZacBuilder<Radius?>? cursorRadius,
+    ZacBuilder<Color?>? cursorColor,
     // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
     // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ZacValue<bool?>? enableInteractiveSelection,
+    ZacBuilder<bool?>? enableInteractiveSelection,
     // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
     // ScrollPhysics? scrollPhysics,
-    ZacValue<String?>? semanticsLabel,
-    ZacValue<TextHeightBehavior?>? textHeightBehavior,
-    ZacValue<TextWidthBasis?>? textWidthBasis,
+    ZacBuilder<String?>? semanticsLabel,
+    ZacBuilder<TextHeightBehavior?>? textHeightBehavior,
+    ZacBuilder<TextWidthBasis?>? textWidthBasis,
     // SelectionChangedCallback? onSelectionChanged,
   }) = _FlutterSelectableText;
 
   SelectableText _buildWidget(ZacContext zacContext) {
     return SelectableText(
       data,
-      key: key?.getValue(zacContext),
-      style: style?.getValue(zacContext),
-      strutStyle: strutStyle?.getValue(zacContext),
-      textAlign: textAlign?.getValue(zacContext),
-      textDirection: textDirection?.getValue(zacContext),
-      textScaleFactor: textScaleFactor?.getValue(zacContext),
-      showCursor: showCursor?.getValue(zacContext) ?? false,
-      autofocus: autofocus?.getValue(zacContext) ?? false,
-      minLines: minLines?.getValue(zacContext),
-      maxLines: maxLines?.getValue(zacContext),
-      cursorWidth: cursorWidth?.getValue(zacContext) ?? 2.0,
-      cursorHeight: cursorHeight?.getValue(zacContext),
-      cursorRadius: cursorRadius?.getValue(zacContext),
-      cursorColor: cursorColor?.getValue(zacContext),
+      key: key?.build(zacContext),
+      style: style?.build(zacContext),
+      strutStyle: strutStyle?.build(zacContext),
+      textAlign: textAlign?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      textScaleFactor: textScaleFactor?.build(zacContext),
+      showCursor: showCursor?.build(zacContext) ?? false,
+      autofocus: autofocus?.build(zacContext) ?? false,
+      minLines: minLines?.build(zacContext),
+      maxLines: maxLines?.build(zacContext),
+      cursorWidth: cursorWidth?.build(zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.build(zacContext),
+      cursorRadius: cursorRadius?.build(zacContext),
+      cursorColor: cursorColor?.build(zacContext),
       enableInteractiveSelection:
-          enableInteractiveSelection?.getValue(zacContext) ?? true,
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      textHeightBehavior: textHeightBehavior?.getValue(zacContext),
-      textWidthBasis: textWidthBasis?.getValue(zacContext),
+          enableInteractiveSelection?.build(zacContext) ?? true,
+      semanticsLabel: semanticsLabel?.build(zacContext),
+      textHeightBehavior: textHeightBehavior?.build(zacContext),
+      textWidthBasis: textWidthBasis?.build(zacContext),
     );
   }
 

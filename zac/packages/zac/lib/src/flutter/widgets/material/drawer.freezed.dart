@@ -20,12 +20,12 @@ FlutterDrawer _$FlutterDrawerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDrawer {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticLabel => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get elevation => throw _privateConstructorUsedError;
+  ZacBuilder<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,17 +50,17 @@ class _$_FlutterDrawer extends _FlutterDrawer {
       _$$_FlutterDrawerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<ShapeBorder?>? shape;
+  final ZacBuilder<ShapeBorder?>? shape;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
-  final ZacValue<String?>? semanticLabel;
+  final ZacBuilder<String?>? semanticLabel;
 
   @override
   String toString() {
@@ -99,27 +99,27 @@ class _$_FlutterDrawer extends _FlutterDrawer {
 
 abstract class _FlutterDrawer extends FlutterDrawer {
   factory _FlutterDrawer(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Color?>? backgroundColor,
-      final ZacValue<double?>? elevation,
-      final ZacValue<ShapeBorder?>? shape,
-      final ZacValue<Widget?>? child,
-      final ZacValue<String?>? semanticLabel}) = _$_FlutterDrawer;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Color?>? backgroundColor,
+      final ZacBuilder<double?>? elevation,
+      final ZacBuilder<ShapeBorder?>? shape,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<String?>? semanticLabel}) = _$_FlutterDrawer;
   _FlutterDrawer._() : super._();
 
   factory _FlutterDrawer.fromJson(Map<String, dynamic> json) =
       _$_FlutterDrawer.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<double?>? get elevation;
+  ZacBuilder<double?>? get elevation;
   @override
-  ZacValue<ShapeBorder?>? get shape;
+  ZacBuilder<ShapeBorder?>? get shape;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
-  ZacValue<String?>? get semanticLabel;
+  ZacBuilder<String?>? get semanticLabel;
 }

@@ -93,9 +93,9 @@ void main() {
       tester,
       FlutterMaterial(
         child: FlutterTextField(
-          key: FlutterValueKey('FINDME').toZacValue(),
+          key: FlutterValueKey('FINDME'),
           onChanged: ZacActions([LeakAction(cb)]),
-        ).toZacValue(),
+        ),
       ),
     );
     final findMe = find.byKey(const ValueKey('FINDME'));
@@ -123,7 +123,7 @@ void main() {
             'builder': 'f:1:TextField',
             'key': KeysModel.getValueKey('FINDME'),
             'scrollController': {
-              'builder': 'z:1:ZacValue.consume',
+              'builder': 'z:1:SharedValue.consume',
               'family': 'Zac.ScrollController',
             },
           },

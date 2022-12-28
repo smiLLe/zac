@@ -21,12 +21,12 @@ FlutterScrollController _$FlutterScrollControllerFromJson(
 
 /// @nodoc
 mixin _$FlutterScrollController {
-  ZacValue<double?>? get initialScrollOffset =>
+  ZacBuilder<double?>? get initialScrollOffset =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get keepScrollOffset => throw _privateConstructorUsedError;
-  ZacValue<String?>? get debugLabel => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get keepScrollOffset => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
   Object? get family => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,15 +50,15 @@ class _$_ScrollControllerProvide extends _ScrollControllerProvide {
       _$$_ScrollControllerProvideFromJson(json);
 
   @override
-  final ZacValue<double?>? initialScrollOffset;
+  final ZacBuilder<double?>? initialScrollOffset;
   @override
-  final ZacValue<bool?>? keepScrollOffset;
+  final ZacBuilder<bool?>? keepScrollOffset;
   @override
-  final ZacValue<String?>? debugLabel;
+  final ZacBuilder<String?>? debugLabel;
   @override
   final Object? family;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -101,24 +101,24 @@ class _$_ScrollControllerProvide extends _ScrollControllerProvide {
 
 abstract class _ScrollControllerProvide extends FlutterScrollController {
   factory _ScrollControllerProvide(
-      {final ZacValue<double?>? initialScrollOffset,
-      final ZacValue<bool?>? keepScrollOffset,
-      final ZacValue<String?>? debugLabel,
+      {final ZacBuilder<double?>? initialScrollOffset,
+      final ZacBuilder<bool?>? keepScrollOffset,
+      final ZacBuilder<String?>? debugLabel,
       final Object? family,
-      required final ZacValue<Widget> child}) = _$_ScrollControllerProvide;
+      required final ZacBuilder<Widget> child}) = _$_ScrollControllerProvide;
   _ScrollControllerProvide._() : super._();
 
   factory _ScrollControllerProvide.fromJson(Map<String, dynamic> json) =
       _$_ScrollControllerProvide.fromJson;
 
   @override
-  ZacValue<double?>? get initialScrollOffset;
+  ZacBuilder<double?>? get initialScrollOffset;
   @override
-  ZacValue<bool?>? get keepScrollOffset;
+  ZacBuilder<bool?>? get keepScrollOffset;
   @override
-  ZacValue<String?>? get debugLabel;
+  ZacBuilder<String?>? get debugLabel;
   @override
   Object? get family;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

@@ -44,12 +44,12 @@ _$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
     _$_SharedValueProviderBuilder(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       value: json['value'],
       transformer: json['transformer'] == null
           ? null
           : ZacTransformers.fromJson(json['transformer'] as Object),
       family: json['family'] as Object,
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       autoCreate: json['autoCreate'] as bool? ?? true,
     );

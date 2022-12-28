@@ -12,7 +12,7 @@ part 'sliver_padding.g.dart';
 @freezedZacBuilder
 class FlutterSliverPadding
     with _$FlutterSliverPadding
-    implements ZacBuild<SliverPadding> {
+    implements ZacBuilder<SliverPadding> {
   const FlutterSliverPadding._();
 
   static const String unionValue = 'f:1:SliverPadding';
@@ -22,16 +22,16 @@ class FlutterSliverPadding
 
   @FreezedUnionValue(FlutterSliverPadding.unionValue)
   factory FlutterSliverPadding({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? sliver,
-    required ZacValue<EdgeInsetsGeometry> padding,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? sliver,
+    required ZacBuilder<EdgeInsetsGeometry> padding,
   }) = _FlutterSliverPadding;
 
   SliverPadding _buildWidget(ZacContext zacContext) {
     return SliverPadding(
-      key: key?.getValue(zacContext),
-      sliver: sliver?.getValue(zacContext),
-      padding: padding.getValue(zacContext),
+      key: key?.build(zacContext),
+      sliver: sliver?.build(zacContext),
+      padding: padding.build(zacContext),
     );
   }
 

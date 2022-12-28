@@ -13,7 +13,7 @@ part 'sliver_to_box_adapter.g.dart';
 @freezedZacBuilder
 class FlutterSliverToBoxAdapter
     with _$FlutterSliverToBoxAdapter
-    implements ZacBuild<SliverToBoxAdapter> {
+    implements ZacBuilder<SliverToBoxAdapter> {
   const FlutterSliverToBoxAdapter._();
 
   static const String unionValue = 'f:1:SliverToBoxAdapter';
@@ -23,14 +23,14 @@ class FlutterSliverToBoxAdapter
 
   @FreezedUnionValue(FlutterSliverToBoxAdapter.unionValue)
   factory FlutterSliverToBoxAdapter({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterSliverToBoxAdapter;
 
   SliverToBoxAdapter _buildWidget(ZacContext zacContext) {
     return SliverToBoxAdapter(
-      key: key?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

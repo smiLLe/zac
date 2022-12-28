@@ -21,8 +21,8 @@ FlutterSliverToBoxAdapter _$FlutterSliverToBoxAdapterFromJson(
 
 /// @nodoc
 mixin _$FlutterSliverToBoxAdapter {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -40,9 +40,9 @@ class _$_FlutterSliverToBoxAdapter extends _FlutterSliverToBoxAdapter {
       _$$_FlutterSliverToBoxAdapterFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -73,15 +73,15 @@ class _$_FlutterSliverToBoxAdapter extends _FlutterSliverToBoxAdapter {
 
 abstract class _FlutterSliverToBoxAdapter extends FlutterSliverToBoxAdapter {
   factory _FlutterSliverToBoxAdapter(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child}) = _$_FlutterSliverToBoxAdapter;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterSliverToBoxAdapter;
   _FlutterSliverToBoxAdapter._() : super._();
 
   factory _FlutterSliverToBoxAdapter.fromJson(Map<String, dynamic> json) =
       _$_FlutterSliverToBoxAdapter.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

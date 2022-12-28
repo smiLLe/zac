@@ -20,21 +20,22 @@ FlutterWrap _$FlutterWrapFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterWrap {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Axis?>? get direction => throw _privateConstructorUsedError;
-  ZacValue<WrapAlignment?>? get alignment => throw _privateConstructorUsedError;
-  ZacValue<double?>? get spacing => throw _privateConstructorUsedError;
-  ZacValue<double?>? get runSpacing => throw _privateConstructorUsedError;
-  ZacValue<WrapAlignment?>? get runAlignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Axis?>? get direction => throw _privateConstructorUsedError;
+  ZacBuilder<WrapAlignment?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<WrapCrossAlignment?>? get crossAxisAlignment =>
+  ZacBuilder<double?>? get spacing => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get runSpacing => throw _privateConstructorUsedError;
+  ZacBuilder<WrapAlignment?>? get runAlignment =>
       throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<WrapCrossAlignment?>? get crossAxisAlignment =>
       throw _privateConstructorUsedError;
-  ZacValue<VerticalDirection?>? get verticalDirection =>
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get children =>
+  ZacBuilder<VerticalDirection?>? get verticalDirection =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacListBuilder<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -65,27 +66,27 @@ class _$_FlutterWrap extends _FlutterWrap {
       _$$_FlutterWrapFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Axis?>? direction;
+  final ZacBuilder<Axis?>? direction;
   @override
-  final ZacValue<WrapAlignment?>? alignment;
+  final ZacBuilder<WrapAlignment?>? alignment;
   @override
-  final ZacValue<double?>? spacing;
+  final ZacBuilder<double?>? spacing;
   @override
-  final ZacValue<double?>? runSpacing;
+  final ZacBuilder<double?>? runSpacing;
   @override
-  final ZacValue<WrapAlignment?>? runAlignment;
+  final ZacBuilder<WrapAlignment?>? runAlignment;
   @override
-  final ZacValue<WrapCrossAlignment?>? crossAxisAlignment;
+  final ZacBuilder<WrapCrossAlignment?>? crossAxisAlignment;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<VerticalDirection?>? verticalDirection;
+  final ZacBuilder<VerticalDirection?>? verticalDirection;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacValueList<Widget, List<Widget>?>? children;
+  final ZacListBuilder<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -146,42 +147,42 @@ class _$_FlutterWrap extends _FlutterWrap {
 
 abstract class _FlutterWrap extends FlutterWrap {
   factory _FlutterWrap(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Axis?>? direction,
-      final ZacValue<WrapAlignment?>? alignment,
-      final ZacValue<double?>? spacing,
-      final ZacValue<double?>? runSpacing,
-      final ZacValue<WrapAlignment?>? runAlignment,
-      final ZacValue<WrapCrossAlignment?>? crossAxisAlignment,
-      final ZacValue<TextDirection?>? textDirection,
-      final ZacValue<VerticalDirection?>? verticalDirection,
-      final ZacValue<Clip?>? clipBehavior,
-      final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterWrap;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Axis?>? direction,
+      final ZacBuilder<WrapAlignment?>? alignment,
+      final ZacBuilder<double?>? spacing,
+      final ZacBuilder<double?>? runSpacing,
+      final ZacBuilder<WrapAlignment?>? runAlignment,
+      final ZacBuilder<WrapCrossAlignment?>? crossAxisAlignment,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<VerticalDirection?>? verticalDirection,
+      final ZacBuilder<Clip?>? clipBehavior,
+      final ZacListBuilder<Widget, List<Widget>?>? children}) = _$_FlutterWrap;
   _FlutterWrap._() : super._();
 
   factory _FlutterWrap.fromJson(Map<String, dynamic> json) =
       _$_FlutterWrap.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Axis?>? get direction;
+  ZacBuilder<Axis?>? get direction;
   @override
-  ZacValue<WrapAlignment?>? get alignment;
+  ZacBuilder<WrapAlignment?>? get alignment;
   @override
-  ZacValue<double?>? get spacing;
+  ZacBuilder<double?>? get spacing;
   @override
-  ZacValue<double?>? get runSpacing;
+  ZacBuilder<double?>? get runSpacing;
   @override
-  ZacValue<WrapAlignment?>? get runAlignment;
+  ZacBuilder<WrapAlignment?>? get runAlignment;
   @override
-  ZacValue<WrapCrossAlignment?>? get crossAxisAlignment;
+  ZacBuilder<WrapCrossAlignment?>? get crossAxisAlignment;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<VerticalDirection?>? get verticalDirection;
+  ZacBuilder<VerticalDirection?>? get verticalDirection;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacValueList<Widget, List<Widget>?>? get children;
+  ZacListBuilder<Widget, List<Widget>?>? get children;
 }

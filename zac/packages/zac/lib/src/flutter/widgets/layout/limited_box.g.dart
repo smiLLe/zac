@@ -10,14 +10,14 @@ _$_FlutterLimitedBox _$$_FlutterLimitedBoxFromJson(Map<String, dynamic> json) =>
     _$_FlutterLimitedBox(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       maxWidth: json['maxWidth'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['maxWidth'] as Object),
+          : ZacBuilder<double?>.fromJson(json['maxWidth'] as Object),
       maxHeight: json['maxHeight'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['maxHeight'] as Object),
+          : ZacBuilder<double?>.fromJson(json['maxHeight'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );

@@ -261,10 +261,10 @@ void main() {
             actions: ZacActions([LeakAction(cb)]),
             family: 'shared',
             child: FlutterSizedBox(
-              key: FlutterValueKey('child').toZacValue(),
-              child: LeakContext(cb: (o) => zacContext = o).toZacValue(),
-            ).toZacValue(),
-          ).toZacValue(),
+              key: FlutterValueKey('child'),
+              child: LeakContext(cb: (o) => zacContext = o),
+            ),
+          ),
         ),
       );
 

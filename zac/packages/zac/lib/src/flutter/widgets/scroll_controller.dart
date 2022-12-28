@@ -11,7 +11,8 @@ part 'scroll_controller.freezed.dart';
 part 'scroll_controller.g.dart';
 
 @freezedZacBuilder
-class FlutterScrollController with _$FlutterScrollController, ZacBuild<Widget> {
+class FlutterScrollController
+    with _$FlutterScrollController, ZacBuilder<Widget> {
   const FlutterScrollController._();
 
   static const String familyName = 'Zac.ScrollController';
@@ -21,27 +22,26 @@ class FlutterScrollController with _$FlutterScrollController, ZacBuild<Widget> {
 
   @FreezedUnionValue('z:1:ScrollController.provide')
   factory FlutterScrollController({
-    ZacValue<double?>? initialScrollOffset,
-    ZacValue<bool?>? keepScrollOffset,
-    ZacValue<String?>? debugLabel,
+    ZacBuilder<double?>? initialScrollOffset,
+    ZacBuilder<bool?>? keepScrollOffset,
+    ZacBuilder<String?>? debugLabel,
     SharedValueFamily? family,
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
   }) = _ScrollControllerProvide;
 
   ScrollController _valueBuilder(
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return map(
       (obj) => ScrollController(
-        debugLabel: obj.debugLabel?.getValue(zacContext),
-        initialScrollOffset:
-            obj.initialScrollOffset?.getValue(zacContext) ?? 0.0,
-        keepScrollOffset: obj.keepScrollOffset?.getValue(zacContext) ?? true,
+        debugLabel: obj.debugLabel?.build(zacContext),
+        initialScrollOffset: obj.initialScrollOffset?.build(zacContext) ?? 0.0,
+        keepScrollOffset: obj.keepScrollOffset?.build(zacContext) ?? true,
       ),
     );
   }
 
   Widget _childBuilder(ZacContext zacContext) => map(
-        (obj) => obj.child.getValue(zacContext),
+        (obj) => obj.child.build(zacContext),
       );
 
   @override

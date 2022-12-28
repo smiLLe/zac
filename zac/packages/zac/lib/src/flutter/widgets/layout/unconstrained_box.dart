@@ -13,7 +13,7 @@ part 'unconstrained_box.g.dart';
 @freezedZacBuilder
 class FlutterUnconstrainedBox
     with _$FlutterUnconstrainedBox
-    implements ZacBuild<UnconstrainedBox> {
+    implements ZacBuilder<UnconstrainedBox> {
   const FlutterUnconstrainedBox._();
 
   static const String unionValue = 'f:1:UnconstrainedBox';
@@ -23,22 +23,22 @@ class FlutterUnconstrainedBox
 
   @FreezedUnionValue(FlutterUnconstrainedBox.unionValue)
   factory FlutterUnconstrainedBox({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    ZacValue<TextDirection?>? textDirection,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<Axis?>? constrainedAxis,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<TextDirection?>? textDirection,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<Axis?>? constrainedAxis,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterUnconstrainedBox;
 
   UnconstrainedBox _buildWidget(ZacContext zacContext) {
     return UnconstrainedBox(
-      key: key?.getValue(zacContext),
-      textDirection: textDirection?.getValue(zacContext),
-      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

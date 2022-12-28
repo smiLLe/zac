@@ -11,7 +11,7 @@ part 'icon.freezed.dart';
 part 'icon.g.dart';
 
 @freezedZacBuilder
-class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
+class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
   const FlutterIcon._();
 
   static const String unionValue = 'f:1:Icon';
@@ -22,21 +22,21 @@ class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
   @FreezedUnionValue(FlutterIcon.unionValue)
   factory FlutterIcon(
     FlutterIconData? icon, {
-    ZacValue<Key?>? key,
-    ZacValue<double?>? size,
-    ZacValue<Color?>? color,
-    ZacValue<String?>? semanticLabel,
-    ZacValue<TextDirection?>? textDirection,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? size,
+    ZacBuilder<Color?>? color,
+    ZacBuilder<String?>? semanticLabel,
+    ZacBuilder<TextDirection?>? textDirection,
   }) = _FlutterIcon;
 
   Icon _buildWidget(ZacContext zacContext) {
     return Icon(
       icon?.build(zacContext),
-      key: key?.getValue(zacContext),
-      color: color?.getValue(zacContext),
-      size: size?.getValue(zacContext),
-      semanticLabel: semanticLabel?.getValue(zacContext),
-      textDirection: textDirection?.getValue(zacContext),
+      key: key?.build(zacContext),
+      color: color?.build(zacContext),
+      size: size?.build(zacContext),
+      semanticLabel: semanticLabel?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
     );
   }
 
@@ -47,7 +47,7 @@ class FlutterIcon with _$FlutterIcon implements ZacBuild<Icon> {
 }
 
 @freezedZacBuilder
-class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
+class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
   const FlutterIconData._();
 
   factory FlutterIconData.fromJson(Map<String, dynamic> json) =>
@@ -55,18 +55,18 @@ class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
 
   @FreezedUnionValue('f:1:IconData')
   factory FlutterIconData(
-    ZacValue<int> codePoint, {
-    ZacValue<String?>? fontFamily,
-    ZacValue<String?>? fontPackage,
-    ZacValue<bool?>? matchTextDirection,
+    ZacBuilder<int> codePoint, {
+    ZacBuilder<String?>? fontFamily,
+    ZacBuilder<String?>? fontPackage,
+    ZacBuilder<bool?>? matchTextDirection,
   }) = _FlutterIconData;
 
   IconData _build(ZacContext zacContext) {
     return IconData(
-      codePoint.getValue(zacContext),
-      fontFamily: fontFamily?.getValue(zacContext),
-      fontPackage: fontPackage?.getValue(zacContext),
-      matchTextDirection: matchTextDirection?.getValue(zacContext) ?? false,
+      codePoint.build(zacContext),
+      fontFamily: fontFamily?.build(zacContext),
+      fontPackage: fontPackage?.build(zacContext),
+      matchTextDirection: matchTextDirection?.build(zacContext) ?? false,
     );
   }
 
@@ -78,7 +78,7 @@ class FlutterIconData with _$FlutterIconData, ZacBuild<IconData> {
 
 @freezedZacBuilder
 class FlutterIconThemeData
-    with _$FlutterIconThemeData, ZacBuild<IconThemeData> {
+    with _$FlutterIconThemeData, ZacBuilder<IconThemeData> {
   const FlutterIconThemeData._();
 
   factory FlutterIconThemeData.fromJson(Map<String, dynamic> json) =>
@@ -86,16 +86,16 @@ class FlutterIconThemeData
 
   @FreezedUnionValue('f:1:IconThemeData')
   factory FlutterIconThemeData({
-    ZacValue<Color?>? color,
-    ZacValue<double?>? opacity,
-    ZacValue<double?>? size,
+    ZacBuilder<Color?>? color,
+    ZacBuilder<double?>? opacity,
+    ZacBuilder<double?>? size,
   }) = _FlutterIconThemeData;
 
   IconThemeData _build(ZacContext zacContext) {
     return IconThemeData(
-      color: color?.getValue(zacContext),
-      opacity: opacity?.getValue(zacContext),
-      size: size?.getValue(zacContext),
+      color: color?.build(zacContext),
+      opacity: opacity?.build(zacContext),
+      size: size?.build(zacContext),
     );
   }
 

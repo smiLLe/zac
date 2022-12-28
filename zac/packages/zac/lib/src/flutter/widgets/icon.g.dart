@@ -13,33 +13,34 @@ _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
           : FlutterIconData.fromJson(json['icon'] as Map<String, dynamic>),
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       size: json['size'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['size'] as Object),
+          : ZacBuilder<double?>.fromJson(json['size'] as Object),
       color: json['color'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['color'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       semanticLabel: json['semanticLabel'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['semanticLabel'] as Object),
+          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
       textDirection: json['textDirection'] == null
           ? null
-          : ZacValue<TextDirection?>.fromJson(json['textDirection'] as Object),
+          : ZacBuilder<TextDirection?>.fromJson(
+              json['textDirection'] as Object),
     );
 
 _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
     _$_FlutterIconData(
-      ZacValue<int>.fromJson(json['codePoint'] as Object),
+      ZacBuilder<int>.fromJson(json['codePoint'] as Object),
       fontFamily: json['fontFamily'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['fontFamily'] as Object),
+          : ZacBuilder<String?>.fromJson(json['fontFamily'] as Object),
       fontPackage: json['fontPackage'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['fontPackage'] as Object),
+          : ZacBuilder<String?>.fromJson(json['fontPackage'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['matchTextDirection'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
     );
 
 _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
@@ -47,11 +48,11 @@ _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
     _$_FlutterIconThemeData(
       color: json['color'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['color'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       opacity: json['opacity'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['opacity'] as Object),
+          : ZacBuilder<double?>.fromJson(json['opacity'] as Object),
       size: json['size'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['size'] as Object),
+          : ZacBuilder<double?>.fromJson(json['size'] as Object),
     );

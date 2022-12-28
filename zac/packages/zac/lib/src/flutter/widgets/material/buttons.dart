@@ -13,7 +13,7 @@ part 'buttons.g.dart';
 @freezedZacBuilder
 class FlutterElevatedButton
     with _$FlutterElevatedButton
-    implements ZacBuild<ElevatedButton> {
+    implements ZacBuilder<ElevatedButton> {
   const FlutterElevatedButton._();
 
   static const String unionValue = 'f:1:ElevatedButton';
@@ -24,43 +24,43 @@ class FlutterElevatedButton
 
   @FreezedUnionValue(FlutterElevatedButton.unionValue)
   factory FlutterElevatedButton({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget?>? child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButton;
 
   @FreezedUnionValue(FlutterElevatedButton.unionValueIcon)
   factory FlutterElevatedButton.icon({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> icon,
-    required ZacValue<Widget> label,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> icon,
+    required ZacBuilder<Widget> label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
 
   ElevatedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => ElevatedButton(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
-        child: value.child?.getValue(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        child: value.child?.build(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.getValue(zacContext),
-        label: value.label.getValue(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
   }
@@ -74,7 +74,7 @@ class FlutterElevatedButton
 @freezedZacBuilder
 class FlutterOutlinedButton
     with _$FlutterOutlinedButton
-    implements ZacBuild<OutlinedButton> {
+    implements ZacBuilder<OutlinedButton> {
   const FlutterOutlinedButton._();
 
   static const String unionValue = 'f:1:OutlinedButton';
@@ -85,43 +85,43 @@ class FlutterOutlinedButton
 
   @FreezedUnionValue(FlutterOutlinedButton.unionValue)
   factory FlutterOutlinedButton({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButton;
 
   @FreezedUnionValue(FlutterOutlinedButton.unionValueIcon)
   factory FlutterOutlinedButton.icon({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> icon,
-    required ZacValue<Widget> label,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> icon,
+    required ZacBuilder<Widget> label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
 
   OutlinedButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => OutlinedButton(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
-        child: value.child.getValue(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        child: value.child.build(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.getValue(zacContext),
-        label: value.label.getValue(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
   }
@@ -135,7 +135,7 @@ class FlutterOutlinedButton
 @freezedZacBuilder
 class FlutterTextButton
     with _$FlutterTextButton
-    implements ZacBuild<TextButton> {
+    implements ZacBuilder<TextButton> {
   const FlutterTextButton._();
 
   static const String unionValue = 'f:1:TextButton';
@@ -146,43 +146,43 @@ class FlutterTextButton
 
   @FreezedUnionValue(FlutterTextButton.unionValue)
   factory FlutterTextButton({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButton;
 
   @FreezedUnionValue(FlutterTextButton.unionValueIcon)
   factory FlutterTextButton.icon({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> icon,
-    required ZacValue<Widget> label,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> icon,
+    required ZacBuilder<Widget> label,
     ZacActions? onPressed,
     ZacActions? onLongPress,
-    ZacValue<bool?>? autofocus,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButtonIcon;
 
   TextButton _buildWidget(ZacContext zacContext) {
     return map(
       (value) => TextButton(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
-        child: value.child.getValue(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
+        child: value.child.build(zacContext),
       ),
       icon: (value) => TextButton.icon(
-        key: value.key?.getValue(zacContext),
+        key: value.key?.build(zacContext),
         onPressed: value.onPressed?.createCb(zacContext),
         onLongPress: value.onLongPress?.createCb(zacContext),
-        icon: value.icon.getValue(zacContext),
-        label: value.label.getValue(zacContext),
-        autofocus: value.autofocus?.getValue(zacContext) ?? false,
-        clipBehavior: value.clipBehavior?.getValue(zacContext) ?? Clip.none,
+        icon: value.icon.build(zacContext),
+        label: value.label.build(zacContext),
+        autofocus: value.autofocus?.build(zacContext) ?? false,
+        clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
       ),
     );
   }

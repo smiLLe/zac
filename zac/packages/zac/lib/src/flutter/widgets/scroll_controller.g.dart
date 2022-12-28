@@ -11,13 +11,13 @@ _$_ScrollControllerProvide _$$_ScrollControllerProvideFromJson(
     _$_ScrollControllerProvide(
       initialScrollOffset: json['initialScrollOffset'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['initialScrollOffset'] as Object),
+          : ZacBuilder<double?>.fromJson(json['initialScrollOffset'] as Object),
       keepScrollOffset: json['keepScrollOffset'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['keepScrollOffset'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['keepScrollOffset'] as Object),
       debugLabel: json['debugLabel'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['debugLabel'] as Object),
+          : ZacBuilder<String?>.fromJson(json['debugLabel'] as Object),
       family: json['family'],
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );

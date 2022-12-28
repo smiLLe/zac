@@ -11,25 +11,25 @@ _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
     _$_FlutterProgressIndicatorLinear(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       value: json['value'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['value'] as Object),
+          : ZacBuilder<double?>.fromJson(json['value'] as Object),
       backgroundColor: json['backgroundColor'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
       color: json['color'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['color'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       minHeight: json['minHeight'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['minHeight'] as Object),
+          : ZacBuilder<double?>.fromJson(json['minHeight'] as Object),
       semanticsLabel: json['semanticsLabel'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),
+          : ZacBuilder<String?>.fromJson(json['semanticsLabel'] as Object),
       semanticsValue: json['semanticsValue'] == null
           ? null
-          : ZacValue<String?>.fromJson(json['semanticsValue'] as Object),
+          : ZacBuilder<String?>.fromJson(json['semanticsValue'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -38,24 +38,24 @@ _$_FlutterProgressIndicatorCircular
         _$_FlutterProgressIndicatorCircular(
           key: json['key'] == null
               ? null
-              : ZacValue<Key?>.fromJson(json['key'] as Object),
+              : ZacBuilder<Key?>.fromJson(json['key'] as Object),
           value: json['value'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['value'] as Object),
+              : ZacBuilder<double?>.fromJson(json['value'] as Object),
           backgroundColor: json['backgroundColor'] == null
               ? null
-              : ZacValue<Color?>.fromJson(json['backgroundColor'] as Object),
+              : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
           color: json['color'] == null
               ? null
-              : ZacValue<Color?>.fromJson(json['color'] as Object),
+              : ZacBuilder<Color?>.fromJson(json['color'] as Object),
           strokeWidth: json['strokeWidth'] == null
               ? null
-              : ZacValue<double?>.fromJson(json['strokeWidth'] as Object),
+              : ZacBuilder<double?>.fromJson(json['strokeWidth'] as Object),
           semanticsLabel: json['semanticsLabel'] == null
               ? null
-              : ZacValue<String?>.fromJson(json['semanticsLabel'] as Object),
+              : ZacBuilder<String?>.fromJson(json['semanticsLabel'] as Object),
           semanticsValue: json['semanticsValue'] == null
               ? null
-              : ZacValue<String?>.fromJson(json['semanticsValue'] as Object),
+              : ZacBuilder<String?>.fromJson(json['semanticsValue'] as Object),
           $type: json['builder'] as String?,
         );

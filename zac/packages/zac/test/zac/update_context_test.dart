@@ -37,8 +37,8 @@ void main() {
               cb: (o) {
                 zacContext2 = o;
               },
-            ).toZacValue(),
-          ).toZacValue(),
+            ),
+          ),
         ),
       );
 
@@ -56,9 +56,9 @@ void main() {
                 cb: (o) {
                   zacContext2 = o;
                 },
-              ).toZacValue(),
-            ).toZacValue(),
-          ).toZacValue(),
+              ),
+            ),
+          ),
         ),
       );
 
@@ -85,10 +85,10 @@ void main() {
                 cb: (o) {
                   zacContext2 = o;
                 },
-                child: FlutterSizedBox().toZacValue(),
-              ).toZacValue(),
-            ).toZacValue(),
-          ).toZacValue(),
+                child: FlutterSizedBox(),
+              ),
+            ),
+          ),
         ),
       );
       zacContext1.onUnmount(cb1);

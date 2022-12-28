@@ -22,34 +22,35 @@ FlutterSelectableText _$FlutterSelectableTextFromJson(
 /// @nodoc
 mixin _$FlutterSelectableText {
   String get data => throw _privateConstructorUsedError;
-  ZacValue<Key?>? get key =>
+  ZacBuilder<Key?>? get key =>
       throw _privateConstructorUsedError; // FocusNode? focusNode,
-  ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
-  ZacValue<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
-  ZacValue<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<TextStyle?>? get style => throw _privateConstructorUsedError;
+  ZacBuilder<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
+  ZacBuilder<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get textScaleFactor => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get showCursor => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get autofocus =>
+  ZacBuilder<double?>? get textScaleFactor =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get showCursor => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get autofocus =>
       throw _privateConstructorUsedError; // ToolbarOptions? toolbarOptions,
-  ZacValue<int?>? get minLines => throw _privateConstructorUsedError;
-  ZacValue<int?>? get maxLines => throw _privateConstructorUsedError;
-  ZacValue<double?>? get cursorWidth => throw _privateConstructorUsedError;
-  ZacValue<double?>? get cursorHeight => throw _privateConstructorUsedError;
-  ZacValue<Radius?>? get cursorRadius => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get cursorColor =>
+  ZacBuilder<int?>? get minLines => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get maxLines => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get cursorWidth => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get cursorHeight => throw _privateConstructorUsedError;
+  ZacBuilder<Radius?>? get cursorRadius => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get cursorColor =>
       throw _privateConstructorUsedError; // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool?>? get enableInteractiveSelection =>
+  ZacBuilder<bool?>? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacValue<String?>? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacValue<TextHeightBehavior?>? get textHeightBehavior =>
+  ZacBuilder<String?>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacBuilder<TextHeightBehavior?>? get textHeightBehavior =>
       throw _privateConstructorUsedError;
-  ZacValue<TextWidthBasis?>? get textWidthBasis =>
+  ZacBuilder<TextWidthBasis?>? get textWidthBasis =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -89,49 +90,49 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
   @override
   final String data;
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
 // FocusNode? focusNode,
   @override
-  final ZacValue<TextStyle?>? style;
+  final ZacBuilder<TextStyle?>? style;
   @override
-  final ZacValue<StrutStyle?>? strutStyle;
+  final ZacBuilder<StrutStyle?>? strutStyle;
   @override
-  final ZacValue<TextAlign?>? textAlign;
+  final ZacBuilder<TextAlign?>? textAlign;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<double?>? textScaleFactor;
+  final ZacBuilder<double?>? textScaleFactor;
   @override
-  final ZacValue<bool?>? showCursor;
+  final ZacBuilder<bool?>? showCursor;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
 // ToolbarOptions? toolbarOptions,
   @override
-  final ZacValue<int?>? minLines;
+  final ZacBuilder<int?>? minLines;
   @override
-  final ZacValue<int?>? maxLines;
+  final ZacBuilder<int?>? maxLines;
   @override
-  final ZacValue<double?>? cursorWidth;
+  final ZacBuilder<double?>? cursorWidth;
   @override
-  final ZacValue<double?>? cursorHeight;
+  final ZacBuilder<double?>? cursorHeight;
   @override
-  final ZacValue<Radius?>? cursorRadius;
+  final ZacBuilder<Radius?>? cursorRadius;
   @override
-  final ZacValue<Color?>? cursorColor;
+  final ZacBuilder<Color?>? cursorColor;
 // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacValue<bool?>? enableInteractiveSelection;
+  final ZacBuilder<bool?>? enableInteractiveSelection;
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
   @override
-  final ZacValue<String?>? semanticsLabel;
+  final ZacBuilder<String?>? semanticsLabel;
   @override
-  final ZacValue<TextHeightBehavior?>? textHeightBehavior;
+  final ZacBuilder<TextHeightBehavior?>? textHeightBehavior;
   @override
-  final ZacValue<TextWidthBasis?>? textWidthBasis;
+  final ZacBuilder<TextWidthBasis?>? textWidthBasis;
 
   @override
   String toString() {
@@ -218,24 +219,24 @@ class _$_FlutterSelectableText extends _FlutterSelectableText {
 
 abstract class _FlutterSelectableText extends FlutterSelectableText {
   factory _FlutterSelectableText(final String data,
-          {final ZacValue<Key?>? key,
-          final ZacValue<TextStyle?>? style,
-          final ZacValue<StrutStyle?>? strutStyle,
-          final ZacValue<TextAlign?>? textAlign,
-          final ZacValue<TextDirection?>? textDirection,
-          final ZacValue<double?>? textScaleFactor,
-          final ZacValue<bool?>? showCursor,
-          final ZacValue<bool?>? autofocus,
-          final ZacValue<int?>? minLines,
-          final ZacValue<int?>? maxLines,
-          final ZacValue<double?>? cursorWidth,
-          final ZacValue<double?>? cursorHeight,
-          final ZacValue<Radius?>? cursorRadius,
-          final ZacValue<Color?>? cursorColor,
-          final ZacValue<bool?>? enableInteractiveSelection,
-          final ZacValue<String?>? semanticsLabel,
-          final ZacValue<TextHeightBehavior?>? textHeightBehavior,
-          final ZacValue<TextWidthBasis?>? textWidthBasis}) =
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<TextStyle?>? style,
+          final ZacBuilder<StrutStyle?>? strutStyle,
+          final ZacBuilder<TextAlign?>? textAlign,
+          final ZacBuilder<TextDirection?>? textDirection,
+          final ZacBuilder<double?>? textScaleFactor,
+          final ZacBuilder<bool?>? showCursor,
+          final ZacBuilder<bool?>? autofocus,
+          final ZacBuilder<int?>? minLines,
+          final ZacBuilder<int?>? maxLines,
+          final ZacBuilder<double?>? cursorWidth,
+          final ZacBuilder<double?>? cursorHeight,
+          final ZacBuilder<Radius?>? cursorRadius,
+          final ZacBuilder<Color?>? cursorColor,
+          final ZacBuilder<bool?>? enableInteractiveSelection,
+          final ZacBuilder<String?>? semanticsLabel,
+          final ZacBuilder<TextHeightBehavior?>? textHeightBehavior,
+          final ZacBuilder<TextWidthBasis?>? textWidthBasis}) =
       _$_FlutterSelectableText;
   _FlutterSelectableText._() : super._();
 
@@ -245,43 +246,43 @@ abstract class _FlutterSelectableText extends FlutterSelectableText {
   @override
   String get data;
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override // FocusNode? focusNode,
-  ZacValue<TextStyle?>? get style;
+  ZacBuilder<TextStyle?>? get style;
   @override
-  ZacValue<StrutStyle?>? get strutStyle;
+  ZacBuilder<StrutStyle?>? get strutStyle;
   @override
-  ZacValue<TextAlign?>? get textAlign;
+  ZacBuilder<TextAlign?>? get textAlign;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<double?>? get textScaleFactor;
+  ZacBuilder<double?>? get textScaleFactor;
   @override
-  ZacValue<bool?>? get showCursor;
+  ZacBuilder<bool?>? get showCursor;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override // ToolbarOptions? toolbarOptions,
-  ZacValue<int?>? get minLines;
+  ZacBuilder<int?>? get minLines;
   @override
-  ZacValue<int?>? get maxLines;
+  ZacBuilder<int?>? get maxLines;
   @override
-  ZacValue<double?>? get cursorWidth;
+  ZacBuilder<double?>? get cursorWidth;
   @override
-  ZacValue<double?>? get cursorHeight;
+  ZacBuilder<double?>? get cursorHeight;
   @override
-  ZacValue<Radius?>? get cursorRadius;
+  ZacBuilder<Radius?>? get cursorRadius;
   @override
-  ZacValue<Color?>? get cursorColor;
+  ZacBuilder<Color?>? get cursorColor;
   @override // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
 // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool?>? get enableInteractiveSelection;
+  ZacBuilder<bool?>? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
 // ScrollPhysics? scrollPhysics,
-  ZacValue<String?>? get semanticsLabel;
+  ZacBuilder<String?>? get semanticsLabel;
   @override
-  ZacValue<TextHeightBehavior?>? get textHeightBehavior;
+  ZacBuilder<TextHeightBehavior?>? get textHeightBehavior;
   @override
-  ZacValue<TextWidthBasis?>? get textWidthBasis;
+  ZacBuilder<TextWidthBasis?>? get textWidthBasis;
 }

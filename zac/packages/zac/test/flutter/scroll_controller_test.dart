@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/widgets/scroll_controller.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/zac/zac_value.dart';
+import 'package:zac/src/zac/zac_build.dart';
 
 import '../helper.dart';
 
@@ -17,16 +17,16 @@ void main() {
           data: FlutterScrollController(
             child: LeakContext(
               cb: (z) => zacContext = z,
-            ).toZacValue(),
+            ),
           ),
         ),
       ),
     );
 
     expect(
-        ZacValueConsume<ScrollController>(
+        ConsumeSharedValue<ScrollController>(
                 family: FlutterScrollController.familyName)
-            .getValue(zacContext),
+            .build(zacContext),
         isA<ScrollController>());
   });
 }

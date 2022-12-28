@@ -13,7 +13,7 @@ part 'sliver_list.g.dart';
 @freezedZacBuilder
 class FlutterSliverList
     with _$FlutterSliverList
-    implements ZacBuild<SliverList> {
+    implements ZacBuilder<SliverList> {
   const FlutterSliverList._();
 
   static const String unionValue = 'f:1:SliverList';
@@ -23,13 +23,13 @@ class FlutterSliverList
 
   @FreezedUnionValue(FlutterSliverList.unionValue)
   factory FlutterSliverList({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     required FlutterSliverChildDelegate delegate,
   }) = _FlutterSliverList;
 
   SliverList _buildWidget(ZacContext zacContext) {
     return SliverList(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       delegate: delegate.build(zacContext),
     );
   }

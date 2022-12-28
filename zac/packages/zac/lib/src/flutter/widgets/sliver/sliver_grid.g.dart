@@ -10,7 +10,7 @@ _$_FlutterSliverGrid _$$_FlutterSliverGridFromJson(Map<String, dynamic> json) =>
     _$_FlutterSliverGrid(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       delegate: FlutterSliverChildDelegate.fromJson(
           json['delegate'] as Map<String, dynamic>),
       gridDelegate: FlutterSliverGridDelegate.fromJson(

@@ -20,14 +20,14 @@ FlutterStack _$FlutterStackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterStack {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<StackFit?>? get fit => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get children =>
+  ZacBuilder<StackFit?>? get fit => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacListBuilder<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -53,17 +53,17 @@ class _$_FlutterStack extends _FlutterStack {
       _$$_FlutterStackFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<StackFit?>? fit;
+  final ZacBuilder<StackFit?>? fit;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacValueList<Widget, List<Widget>?>? children;
+  final ZacListBuilder<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -103,27 +103,27 @@ class _$_FlutterStack extends _FlutterStack {
 
 abstract class _FlutterStack extends FlutterStack {
   factory _FlutterStack(
-      {final ZacValue<Key?>? key,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<TextDirection?>? textDirection,
-      final ZacValue<StackFit?>? fit,
-      final ZacValue<Clip?>? clipBehavior,
-      final ZacValueList<Widget, List<Widget>?>? children}) = _$_FlutterStack;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<StackFit?>? fit,
+      final ZacBuilder<Clip?>? clipBehavior,
+      final ZacListBuilder<Widget, List<Widget>?>? children}) = _$_FlutterStack;
   _FlutterStack._() : super._();
 
   factory _FlutterStack.fromJson(Map<String, dynamic> json) =
       _$_FlutterStack.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<StackFit?>? get fit;
+  ZacBuilder<StackFit?>? get fit;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacValueList<Widget, List<Widget>?>? get children;
+  ZacListBuilder<Widget, List<Widget>?>? get children;
 }

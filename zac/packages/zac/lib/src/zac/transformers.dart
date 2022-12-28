@@ -5,8 +5,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/builder.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/zac_value.dart';
+import 'package:zac/src/zac/zac_build.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
@@ -318,11 +317,11 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacValue<Object?>? key) =
+  const factory MapTransformer.containsKey(ZacBuilder<Object?>? key) =
       _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacValue<Object?>? value) =
+  const factory MapTransformer.containsValue(ZacBuilder<Object?>? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
@@ -343,12 +342,12 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _MapFromStringNullObject;
 
   @FreezedUnionValue(MapTransformer.unionValueKey)
-  const factory MapTransformer.key(ZacValue<String> key) = _MapKey;
+  const factory MapTransformer.key(ZacBuilder<String> key) = _MapKey;
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
   const factory MapTransformer.setValueForKey({
-    required ZacValue<Object> value,
-    required ZacValue<String> key,
+    required ZacBuilder<Object> value,
+    required ZacBuilder<String> key,
   }) = _MapSetValueForKey;
 
   @override
@@ -370,13 +369,11 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.getValue(
+      containsKey: (obj) => theMap.containsKey(obj.key?.build(
         zacContext,
-        onConsume: const SharedValueConsumeType.read(),
       )),
-      containsValue: (obj) => theMap.containsValue(obj.value?.getValue(
+      containsValue: (obj) => theMap.containsValue(obj.value?.build(
         zacContext,
-        onConsume: const SharedValueConsumeType.read(),
       )),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
@@ -405,22 +402,13 @@ The value: $theMap
         return Map<String, Object>.from(theMap);
       },
       key: (obj) {
-        final key = obj.key.getValue(
-          zacContext,
-          onConsume: const SharedValueConsumeType.read(),
-        );
+        final key = obj.key.build(zacContext);
         return theMap[key];
       },
       setValueForKey: (obj) {
-        final value = obj.value.getValue(
-          zacContext,
-          onConsume: const SharedValueConsumeType.read(),
-        );
+        final value = obj.value.build(zacContext);
 
-        final key = obj.key.getValue(
-          zacContext,
-          onConsume: const SharedValueConsumeType.read(),
-        );
+        final key = obj.key.build(zacContext);
 
         theMap[key] = value;
         return theMap;
@@ -492,7 +480,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacValue<Object?>? element) =
+  const factory IterableTransformer.contains(ZacBuilder<Object?>? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
@@ -529,9 +517,8 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.getValue(
+      contains: (obj) => value.contains(obj.element?.build(
         zacContext,
-        onConsume: const SharedValueConsumeType.read(),
       )),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
@@ -554,7 +541,7 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.reversed() = _ListReversed;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
-  const factory ListTransformer.add(ZacValue<Object> value) = _ListAdd;
+  const factory ListTransformer.add(ZacBuilder<Object> value) = _ListAdd;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -571,9 +558,8 @@ The value: $value
     return map(
       reversed: (_) => value.reversed.toList(),
       add: (obj) {
-        value.add(obj.value.getValue(
+        value.add(obj.value.build(
           zacContext,
-          onConsume: const SharedValueConsumeType.read(),
         ));
 
         return value;
@@ -643,7 +629,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
 
   @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
   factory ObjectTransformer.equalsSharedValue({
-    required ZacValue<Object?>? value,
+    required ZacBuilder<Object?>? value,
   }) = _ObjectEqualsSharedValue;
 
   @override
@@ -660,9 +646,8 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value?.getValue(
+          obj.value?.build(
             zacContext,
-            onConsume: const SharedValueConsumeType.read(),
           ) ==
           value,
       hashCode: (_) => value.hashCode,
@@ -828,7 +813,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
   const factory StringTransformer.length() = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  const factory StringTransformer.split({required ZacValue<String> pattern}) =
+  const factory StringTransformer.split({required ZacBuilder<String> pattern}) =
       _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
@@ -839,7 +824,7 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
   const factory StringTransformer.replaceAll(
-      ZacValue<String> from, ZacValue<String> replace) = _StringReplaceAll;
+      ZacBuilder<String> from, ZacBuilder<String> replace) = _StringReplaceAll;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -855,21 +840,11 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.getValue(
-        zacContext,
-        onConsume: const SharedValueConsumeType.read(),
-      )),
+      split: (obj) => value.split(obj.pattern.build(zacContext)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.getValue(
-            zacContext,
-            onConsume: const SharedValueConsumeType.read(),
-          )),
-          obj.replace.getValue(
-            zacContext,
-            onConsume: const SharedValueConsumeType.read(),
-          )),
+          RegExp(obj.from.build(zacContext)), obj.replace.build(zacContext)),
     );
   }
 }

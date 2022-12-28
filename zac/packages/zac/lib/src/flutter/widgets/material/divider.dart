@@ -10,7 +10,7 @@ part 'divider.freezed.dart';
 part 'divider.g.dart';
 
 @freezedZacBuilder
-class FlutterDivider with _$FlutterDivider implements ZacBuild<Divider> {
+class FlutterDivider with _$FlutterDivider implements ZacBuilder<Divider> {
   const FlutterDivider._();
 
   static const String unionValue = 'f:1:Divider';
@@ -20,22 +20,22 @@ class FlutterDivider with _$FlutterDivider implements ZacBuild<Divider> {
 
   @FreezedUnionValue(FlutterDivider.unionValue)
   factory FlutterDivider({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? height,
-    ZacValue<double?>? thickness,
-    ZacValue<double?>? indent,
-    ZacValue<double?>? endIndent,
-    ZacValue<Color?>? color,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? height,
+    ZacBuilder<double?>? thickness,
+    ZacBuilder<double?>? indent,
+    ZacBuilder<double?>? endIndent,
+    ZacBuilder<Color?>? color,
   }) = _FlutterDivider;
 
   Divider _buildWidget(ZacContext zacContext) {
     return Divider(
-      key: key?.getValue(zacContext),
-      height: height?.getValue(zacContext),
-      thickness: thickness?.getValue(zacContext),
-      indent: indent?.getValue(zacContext),
-      endIndent: endIndent?.getValue(zacContext),
-      color: color?.getValue(zacContext),
+      key: key?.build(zacContext),
+      height: height?.build(zacContext),
+      thickness: thickness?.build(zacContext),
+      indent: indent?.build(zacContext),
+      endIndent: endIndent?.build(zacContext),
+      color: color?.build(zacContext),
     );
   }
 

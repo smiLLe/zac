@@ -20,38 +20,39 @@ FlutterScaffold _$FlutterScaffoldFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterScaffold {
-  ZacValue<Key?>? get key =>
+  ZacBuilder<Key?>? get key =>
       throw _privateConstructorUsedError; // PreferredSizeWidget?
-  ZacValue<Widget?>? get appBar => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get body => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get floatingActionButton =>
+  ZacBuilder<Widget?>? get appBar => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get body => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get floatingActionButton =>
       throw _privateConstructorUsedError; // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-  ZacValueList<Widget, List<Widget>?>? get persistentFooterButtons =>
+  ZacListBuilder<Widget, List<Widget>?>? get persistentFooterButtons =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get drawer =>
+  ZacBuilder<Widget?>? get drawer =>
       throw _privateConstructorUsedError; // DrawerCallback? onDrawerChanged,
-  ZacValue<Widget?>? get endDrawer =>
+  ZacBuilder<Widget?>? get endDrawer =>
       throw _privateConstructorUsedError; // DrawerCallback? onEndDrawerChanged,
-  ZacValue<Widget?>? get bottomNavigationBar =>
+  ZacBuilder<Widget?>? get bottomNavigationBar =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get bottomSheet => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get resizeToAvoidBottomInset =>
+  ZacBuilder<Widget?>? get bottomSheet => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get resizeToAvoidBottomInset =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get primary =>
+  ZacBuilder<bool?>? get primary =>
       throw _privateConstructorUsedError; // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool?>? get extendBody => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get extendBodyBehindAppBar =>
+  ZacBuilder<bool?>? get extendBody => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get extendBodyBehindAppBar =>
       throw _privateConstructorUsedError;
-  ZacValue<Color?>? get drawerScrimColor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get drawerEdgeDragWidth =>
+  ZacBuilder<Color?>? get drawerScrimColor =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get drawerEnableOpenDragGesture =>
+  ZacBuilder<double?>? get drawerEdgeDragWidth =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get endDrawerEnableOpenDragGesture =>
+  ZacBuilder<bool?>? get drawerEnableOpenDragGesture =>
       throw _privateConstructorUsedError;
-  ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get endDrawerEnableOpenDragGesture =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get restorationId => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -89,49 +90,49 @@ class _$_FlutterScaffold extends _FlutterScaffold {
       _$$_FlutterScaffoldFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
 // PreferredSizeWidget?
   @override
-  final ZacValue<Widget?>? appBar;
+  final ZacBuilder<Widget?>? appBar;
   @override
-  final ZacValue<Widget?>? body;
+  final ZacBuilder<Widget?>? body;
   @override
-  final ZacValue<Widget?>? floatingActionButton;
+  final ZacBuilder<Widget?>? floatingActionButton;
 // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
   @override
-  final ZacValueList<Widget, List<Widget>?>? persistentFooterButtons;
+  final ZacListBuilder<Widget, List<Widget>?>? persistentFooterButtons;
   @override
-  final ZacValue<Widget?>? drawer;
+  final ZacBuilder<Widget?>? drawer;
 // DrawerCallback? onDrawerChanged,
   @override
-  final ZacValue<Widget?>? endDrawer;
+  final ZacBuilder<Widget?>? endDrawer;
 // DrawerCallback? onEndDrawerChanged,
   @override
-  final ZacValue<Widget?>? bottomNavigationBar;
+  final ZacBuilder<Widget?>? bottomNavigationBar;
   @override
-  final ZacValue<Widget?>? bottomSheet;
+  final ZacBuilder<Widget?>? bottomSheet;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<bool?>? resizeToAvoidBottomInset;
+  final ZacBuilder<bool?>? resizeToAvoidBottomInset;
   @override
-  final ZacValue<bool?>? primary;
+  final ZacBuilder<bool?>? primary;
 // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacValue<bool?>? extendBody;
+  final ZacBuilder<bool?>? extendBody;
   @override
-  final ZacValue<bool?>? extendBodyBehindAppBar;
+  final ZacBuilder<bool?>? extendBodyBehindAppBar;
   @override
-  final ZacValue<Color?>? drawerScrimColor;
+  final ZacBuilder<Color?>? drawerScrimColor;
   @override
-  final ZacValue<double?>? drawerEdgeDragWidth;
+  final ZacBuilder<double?>? drawerEdgeDragWidth;
   @override
-  final ZacValue<bool?>? drawerEnableOpenDragGesture;
+  final ZacBuilder<bool?>? drawerEnableOpenDragGesture;
   @override
-  final ZacValue<bool?>? endDrawerEnableOpenDragGesture;
+  final ZacBuilder<bool?>? endDrawerEnableOpenDragGesture;
   @override
-  final ZacValue<String?>? restorationId;
+  final ZacBuilder<String?>? restorationId;
 
   @override
   String toString() {
@@ -220,69 +221,69 @@ class _$_FlutterScaffold extends _FlutterScaffold {
 
 abstract class _FlutterScaffold extends FlutterScaffold {
   factory _FlutterScaffold(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? appBar,
-      final ZacValue<Widget?>? body,
-      final ZacValue<Widget?>? floatingActionButton,
-      final ZacValueList<Widget, List<Widget>?>? persistentFooterButtons,
-      final ZacValue<Widget?>? drawer,
-      final ZacValue<Widget?>? endDrawer,
-      final ZacValue<Widget?>? bottomNavigationBar,
-      final ZacValue<Widget?>? bottomSheet,
-      final ZacValue<Color?>? backgroundColor,
-      final ZacValue<bool?>? resizeToAvoidBottomInset,
-      final ZacValue<bool?>? primary,
-      final ZacValue<bool?>? extendBody,
-      final ZacValue<bool?>? extendBodyBehindAppBar,
-      final ZacValue<Color?>? drawerScrimColor,
-      final ZacValue<double?>? drawerEdgeDragWidth,
-      final ZacValue<bool?>? drawerEnableOpenDragGesture,
-      final ZacValue<bool?>? endDrawerEnableOpenDragGesture,
-      final ZacValue<String?>? restorationId}) = _$_FlutterScaffold;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? appBar,
+      final ZacBuilder<Widget?>? body,
+      final ZacBuilder<Widget?>? floatingActionButton,
+      final ZacListBuilder<Widget, List<Widget>?>? persistentFooterButtons,
+      final ZacBuilder<Widget?>? drawer,
+      final ZacBuilder<Widget?>? endDrawer,
+      final ZacBuilder<Widget?>? bottomNavigationBar,
+      final ZacBuilder<Widget?>? bottomSheet,
+      final ZacBuilder<Color?>? backgroundColor,
+      final ZacBuilder<bool?>? resizeToAvoidBottomInset,
+      final ZacBuilder<bool?>? primary,
+      final ZacBuilder<bool?>? extendBody,
+      final ZacBuilder<bool?>? extendBodyBehindAppBar,
+      final ZacBuilder<Color?>? drawerScrimColor,
+      final ZacBuilder<double?>? drawerEdgeDragWidth,
+      final ZacBuilder<bool?>? drawerEnableOpenDragGesture,
+      final ZacBuilder<bool?>? endDrawerEnableOpenDragGesture,
+      final ZacBuilder<String?>? restorationId}) = _$_FlutterScaffold;
   _FlutterScaffold._() : super._();
 
   factory _FlutterScaffold.fromJson(Map<String, dynamic> json) =
       _$_FlutterScaffold.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override // PreferredSizeWidget?
-  ZacValue<Widget?>? get appBar;
+  ZacBuilder<Widget?>? get appBar;
   @override
-  ZacValue<Widget?>? get body;
+  ZacBuilder<Widget?>? get body;
   @override
-  ZacValue<Widget?>? get floatingActionButton;
+  ZacBuilder<Widget?>? get floatingActionButton;
   @override // FloatingActionButtonLocation? floatingActionButtonLocation,
 // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-  ZacValueList<Widget, List<Widget>?>? get persistentFooterButtons;
+  ZacListBuilder<Widget, List<Widget>?>? get persistentFooterButtons;
   @override
-  ZacValue<Widget?>? get drawer;
+  ZacBuilder<Widget?>? get drawer;
   @override // DrawerCallback? onDrawerChanged,
-  ZacValue<Widget?>? get endDrawer;
+  ZacBuilder<Widget?>? get endDrawer;
   @override // DrawerCallback? onEndDrawerChanged,
-  ZacValue<Widget?>? get bottomNavigationBar;
+  ZacBuilder<Widget?>? get bottomNavigationBar;
   @override
-  ZacValue<Widget?>? get bottomSheet;
+  ZacBuilder<Widget?>? get bottomSheet;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<bool?>? get resizeToAvoidBottomInset;
+  ZacBuilder<bool?>? get resizeToAvoidBottomInset;
   @override
-  ZacValue<bool?>? get primary;
+  ZacBuilder<bool?>? get primary;
   @override // DragStartBehavior drawerDragStartBehavior = DragStartBehavior.start,
-  ZacValue<bool?>? get extendBody;
+  ZacBuilder<bool?>? get extendBody;
   @override
-  ZacValue<bool?>? get extendBodyBehindAppBar;
+  ZacBuilder<bool?>? get extendBodyBehindAppBar;
   @override
-  ZacValue<Color?>? get drawerScrimColor;
+  ZacBuilder<Color?>? get drawerScrimColor;
   @override
-  ZacValue<double?>? get drawerEdgeDragWidth;
+  ZacBuilder<double?>? get drawerEdgeDragWidth;
   @override
-  ZacValue<bool?>? get drawerEnableOpenDragGesture;
+  ZacBuilder<bool?>? get drawerEnableOpenDragGesture;
   @override
-  ZacValue<bool?>? get endDrawerEnableOpenDragGesture;
+  ZacBuilder<bool?>? get endDrawerEnableOpenDragGesture;
   @override
-  ZacValue<String?>? get restorationId;
+  ZacBuilder<String?>? get restorationId;
 }
 
 FlutterScaffoldActions _$FlutterScaffoldActionsFromJson(
@@ -450,7 +451,7 @@ class _$_FlutterScaffoldActionsShowBodyScrim
   @override
   final bool value;
   @override
-  final ZacValue<double> opacity;
+  final ZacBuilder<double> opacity;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -492,7 +493,7 @@ class _$_FlutterScaffoldActionsShowBodyScrim
 abstract class _FlutterScaffoldActionsShowBodyScrim
     extends FlutterScaffoldActions {
   factory _FlutterScaffoldActionsShowBodyScrim(
-          final bool value, final ZacValue<double> opacity) =
+          final bool value, final ZacBuilder<double> opacity) =
       _$_FlutterScaffoldActionsShowBodyScrim;
   _FlutterScaffoldActionsShowBodyScrim._() : super._();
 
@@ -501,7 +502,7 @@ abstract class _FlutterScaffoldActionsShowBodyScrim
       _$_FlutterScaffoldActionsShowBodyScrim.fromJson;
 
   bool get value;
-  ZacValue<double> get opacity;
+  ZacBuilder<double> get opacity;
 }
 
 /// @nodoc
@@ -524,19 +525,19 @@ class _$_FlutterScaffoldActionsShowBottomSheet
       _$$_FlutterScaffoldActionsShowBottomSheetFromJson(json);
 
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<ShapeBorder?>? shape;
+  final ZacBuilder<ShapeBorder?>? shape;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
   @override
   final FlutterBoxConstraints? constraints;
   @override
-  final ZacValue<bool?>? enableDrag;
+  final ZacBuilder<bool?>? enableDrag;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -588,13 +589,13 @@ class _$_FlutterScaffoldActionsShowBottomSheet
 
 abstract class _FlutterScaffoldActionsShowBottomSheet
     extends FlutterScaffoldActions {
-  factory _FlutterScaffoldActionsShowBottomSheet(final ZacValue<Widget> child,
-          {final ZacValue<Color?>? backgroundColor,
-          final ZacValue<double?>? elevation,
-          final ZacValue<ShapeBorder?>? shape,
-          final ZacValue<Clip?>? clipBehavior,
+  factory _FlutterScaffoldActionsShowBottomSheet(final ZacBuilder<Widget> child,
+          {final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<double?>? elevation,
+          final ZacBuilder<ShapeBorder?>? shape,
+          final ZacBuilder<Clip?>? clipBehavior,
           final FlutterBoxConstraints? constraints,
-          final ZacValue<bool?>? enableDrag}) =
+          final ZacBuilder<bool?>? enableDrag}) =
       _$_FlutterScaffoldActionsShowBottomSheet;
   _FlutterScaffoldActionsShowBottomSheet._() : super._();
 
@@ -602,13 +603,13 @@ abstract class _FlutterScaffoldActionsShowBottomSheet
           Map<String, dynamic> json) =
       _$_FlutterScaffoldActionsShowBottomSheet.fromJson;
 
-  ZacValue<Widget> get child;
-  ZacValue<Color?>? get backgroundColor;
-  ZacValue<double?>? get elevation;
-  ZacValue<ShapeBorder?>? get shape;
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Widget> get child;
+  ZacBuilder<Color?>? get backgroundColor;
+  ZacBuilder<double?>? get elevation;
+  ZacBuilder<ShapeBorder?>? get shape;
+  ZacBuilder<Clip?>? get clipBehavior;
   FlutterBoxConstraints? get constraints;
-  ZacValue<bool?>? get enableDrag;
+  ZacBuilder<bool?>? get enableDrag;
 }
 
 FlutterScaffoldMessenger _$FlutterScaffoldMessengerFromJson(
@@ -1079,16 +1080,16 @@ FlutterSnackBar _$FlutterSnackBarFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSnackBar {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget> get content => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get margin =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get content => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get elevation => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry?>? get margin =>
       throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get padding =>
+  ZacBuilder<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get width => throw _privateConstructorUsedError;
-  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get width => throw _privateConstructorUsedError;
+  ZacBuilder<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
   FlutterSnackBarBehavior? get behavior => throw _privateConstructorUsedError;
   FlutterSnackBarAction? get action =>
       throw _privateConstructorUsedError; // Duration duration = _snackBarDisplayDuration,
@@ -1123,21 +1124,21 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
       _$$_FlutterSnackBarFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> content;
+  final ZacBuilder<Widget> content;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? margin;
+  final ZacBuilder<EdgeInsetsGeometry?>? margin;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? padding;
+  final ZacBuilder<EdgeInsetsGeometry?>? padding;
   @override
-  final ZacValue<double?>? width;
+  final ZacBuilder<double?>? width;
   @override
-  final ZacValue<ShapeBorder?>? shape;
+  final ZacBuilder<ShapeBorder?>? shape;
   @override
   final FlutterSnackBarBehavior? behavior;
   @override
@@ -1190,14 +1191,14 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
 
 abstract class _FlutterSnackBar extends FlutterSnackBar {
   factory _FlutterSnackBar(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> content,
-      final ZacValue<Color?>? backgroundColor,
-      final ZacValue<double?>? elevation,
-      final ZacValue<EdgeInsetsGeometry?>? margin,
-      final ZacValue<EdgeInsetsGeometry?>? padding,
-      final ZacValue<double?>? width,
-      final ZacValue<ShapeBorder?>? shape,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> content,
+      final ZacBuilder<Color?>? backgroundColor,
+      final ZacBuilder<double?>? elevation,
+      final ZacBuilder<EdgeInsetsGeometry?>? margin,
+      final ZacBuilder<EdgeInsetsGeometry?>? padding,
+      final ZacBuilder<double?>? width,
+      final ZacBuilder<ShapeBorder?>? shape,
       final FlutterSnackBarBehavior? behavior,
       final FlutterSnackBarAction? action,
       final ZacActions? onVisible}) = _$_FlutterSnackBar;
@@ -1207,21 +1208,21 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
       _$_FlutterSnackBar.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget> get content;
+  ZacBuilder<Widget> get content;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<double?>? get elevation;
+  ZacBuilder<double?>? get elevation;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get margin;
+  ZacBuilder<EdgeInsetsGeometry?>? get margin;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get padding;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding;
   @override
-  ZacValue<double?>? get width;
+  ZacBuilder<double?>? get width;
   @override
-  ZacValue<ShapeBorder?>? get shape;
+  ZacBuilder<ShapeBorder?>? get shape;
   @override
   FlutterSnackBarBehavior? get behavior;
   @override
@@ -1360,9 +1361,10 @@ FlutterSnackBarAction _$FlutterSnackBarActionFromJson(
 
 /// @nodoc
 mixin _$FlutterSnackBarAction {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get textColor => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get disabledTextColor => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get textColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get disabledTextColor =>
+      throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
 
@@ -1388,11 +1390,11 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
       _$$_FlutterSnackBarActionFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Color?>? textColor;
+  final ZacBuilder<Color?>? textColor;
   @override
-  final ZacValue<Color?>? disabledTextColor;
+  final ZacBuilder<Color?>? disabledTextColor;
   @override
   final String label;
   @override
@@ -1434,9 +1436,9 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
 
 abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
   factory _FlutterSnackBarAction(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Color?>? textColor,
-      final ZacValue<Color?>? disabledTextColor,
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Color?>? textColor,
+      final ZacBuilder<Color?>? disabledTextColor,
       required final String label,
       required final ZacActions? onPressed}) = _$_FlutterSnackBarAction;
   _FlutterSnackBarAction._() : super._();
@@ -1445,11 +1447,11 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
       _$_FlutterSnackBarAction.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Color?>? get textColor;
+  ZacBuilder<Color?>? get textColor;
   @override
-  ZacValue<Color?>? get disabledTextColor;
+  ZacBuilder<Color?>? get disabledTextColor;
   @override
   String get label;
   @override
@@ -1463,20 +1465,20 @@ FlutterMaterialBanner _$FlutterMaterialBannerFromJson(
 
 /// @nodoc
 mixin _$FlutterMaterialBanner {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget> get content => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get contentTextStyle =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get content => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get contentTextStyle =>
       throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>> get actions =>
+  ZacListBuilder<Widget, List<Widget>> get actions =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get leading => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get padding =>
+  ZacBuilder<double?>? get elevation => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get leading => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get leadingPadding =>
+  ZacBuilder<EdgeInsetsGeometry?>? get leadingPadding =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get forceActionsBelow =>
+  ZacBuilder<bool?>? get forceActionsBelow =>
       throw _privateConstructorUsedError; // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   ZacActions? get onVisible => throw _privateConstructorUsedError;
@@ -1509,25 +1511,25 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
       _$$_FlutterMaterialBannerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> content;
+  final ZacBuilder<Widget> content;
   @override
-  final ZacValue<TextStyle?>? contentTextStyle;
+  final ZacBuilder<TextStyle?>? contentTextStyle;
   @override
-  final ZacValueList<Widget, List<Widget>> actions;
+  final ZacListBuilder<Widget, List<Widget>> actions;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<Widget?>? leading;
+  final ZacBuilder<Widget?>? leading;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? padding;
+  final ZacBuilder<EdgeInsetsGeometry?>? padding;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? leadingPadding;
+  final ZacBuilder<EdgeInsetsGeometry?>? leadingPadding;
   @override
-  final ZacValue<bool?>? forceActionsBelow;
+  final ZacBuilder<bool?>? forceActionsBelow;
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   @override
@@ -1589,16 +1591,16 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
 
 abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   factory _FlutterMaterialBanner(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> content,
-      final ZacValue<TextStyle?>? contentTextStyle,
-      required final ZacValueList<Widget, List<Widget>> actions,
-      final ZacValue<double?>? elevation,
-      required final ZacValue<Widget?>? leading,
-      final ZacValue<Color?>? backgroundColor,
-      final ZacValue<EdgeInsetsGeometry?>? padding,
-      final ZacValue<EdgeInsetsGeometry?>? leadingPadding,
-      final ZacValue<bool?>? forceActionsBelow,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> content,
+      final ZacBuilder<TextStyle?>? contentTextStyle,
+      required final ZacListBuilder<Widget, List<Widget>> actions,
+      final ZacBuilder<double?>? elevation,
+      required final ZacBuilder<Widget?>? leading,
+      final ZacBuilder<Color?>? backgroundColor,
+      final ZacBuilder<EdgeInsetsGeometry?>? padding,
+      final ZacBuilder<EdgeInsetsGeometry?>? leadingPadding,
+      final ZacBuilder<bool?>? forceActionsBelow,
       final ZacActions? onVisible}) = _$_FlutterMaterialBanner;
   _FlutterMaterialBanner._() : super._();
 
@@ -1606,25 +1608,25 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
       _$_FlutterMaterialBanner.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget> get content;
+  ZacBuilder<Widget> get content;
   @override
-  ZacValue<TextStyle?>? get contentTextStyle;
+  ZacBuilder<TextStyle?>? get contentTextStyle;
   @override
-  ZacValueList<Widget, List<Widget>> get actions;
+  ZacListBuilder<Widget, List<Widget>> get actions;
   @override
-  ZacValue<double?>? get elevation;
+  ZacBuilder<double?>? get elevation;
   @override
-  ZacValue<Widget?>? get leading;
+  ZacBuilder<Widget?>? get leading;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get padding;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get leadingPadding;
+  ZacBuilder<EdgeInsetsGeometry?>? get leadingPadding;
   @override
-  ZacValue<bool?>? get forceActionsBelow;
+  ZacBuilder<bool?>? get forceActionsBelow;
   @override // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   ZacActions? get onVisible;

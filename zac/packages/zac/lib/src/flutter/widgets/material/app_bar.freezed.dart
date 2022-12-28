@@ -20,38 +20,39 @@ FlutterAppBar _$FlutterAppBarFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterAppBar {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get leading => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get automaticallyImplyLeading =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get leading => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get automaticallyImplyLeading =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get title => throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get actions =>
+  ZacBuilder<Widget?>? get title => throw _privateConstructorUsedError;
+  ZacListBuilder<Widget, List<Widget>?>? get actions =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get flexibleSpace =>
+  ZacBuilder<Widget?>? get flexibleSpace =>
       throw _privateConstructorUsedError; // PreferredSizeWidget
-  ZacValue<Widget?>? get bottom => throw _privateConstructorUsedError;
-  ZacValue<double?>? get elevation => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get shadowColor => throw _privateConstructorUsedError;
-  ZacValue<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get foregroundColor => throw _privateConstructorUsedError;
-  ZacValue<IconThemeData?>? get iconTheme => throw _privateConstructorUsedError;
-  ZacValue<IconThemeData?>? get actionsIconTheme =>
+  ZacBuilder<Widget?>? get bottom => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get elevation => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get shadowColor => throw _privateConstructorUsedError;
+  ZacBuilder<ShapeBorder?>? get shape => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get foregroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<IconThemeData?>? get iconTheme =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get centerTitle => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get excludeHeaderSemantics =>
+  ZacBuilder<IconThemeData?>? get actionsIconTheme =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get titleSpacing => throw _privateConstructorUsedError;
-  ZacValue<double?>? get toolbarOpacity => throw _privateConstructorUsedError;
-  ZacValue<double?>? get bottomOpacity => throw _privateConstructorUsedError;
-  ZacValue<double?>? get toolbarHeight => throw _privateConstructorUsedError;
-  ZacValue<double?>? get leadingWidth => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get toolbarTextStyle =>
+  ZacBuilder<bool?>? get primary => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get centerTitle => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get excludeHeaderSemantics =>
       throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get titleTextStyle =>
+  ZacBuilder<double?>? get titleSpacing => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get toolbarOpacity => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get bottomOpacity => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get toolbarHeight => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get leadingWidth => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get toolbarTextStyle =>
       throw _privateConstructorUsedError;
-  ZacValue<SystemUiOverlayStyle?>? get systemOverlayStyle =>
+  ZacBuilder<TextStyle?>? get titleTextStyle =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<SystemUiOverlayStyle?>? get systemOverlayStyle =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -96,56 +97,56 @@ class _$_FlutterAppBar extends _FlutterAppBar {
       _$$_FlutterAppBarFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? leading;
+  final ZacBuilder<Widget?>? leading;
   @override
-  final ZacValue<bool?>? automaticallyImplyLeading;
+  final ZacBuilder<bool?>? automaticallyImplyLeading;
   @override
-  final ZacValue<Widget?>? title;
+  final ZacBuilder<Widget?>? title;
   @override
-  final ZacValueList<Widget, List<Widget>?>? actions;
+  final ZacListBuilder<Widget, List<Widget>?>? actions;
   @override
-  final ZacValue<Widget?>? flexibleSpace;
+  final ZacBuilder<Widget?>? flexibleSpace;
 // PreferredSizeWidget
   @override
-  final ZacValue<Widget?>? bottom;
+  final ZacBuilder<Widget?>? bottom;
   @override
-  final ZacValue<double?>? elevation;
+  final ZacBuilder<double?>? elevation;
   @override
-  final ZacValue<Color?>? shadowColor;
+  final ZacBuilder<Color?>? shadowColor;
   @override
-  final ZacValue<ShapeBorder?>? shape;
+  final ZacBuilder<ShapeBorder?>? shape;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<Color?>? foregroundColor;
+  final ZacBuilder<Color?>? foregroundColor;
   @override
-  final ZacValue<IconThemeData?>? iconTheme;
+  final ZacBuilder<IconThemeData?>? iconTheme;
   @override
-  final ZacValue<IconThemeData?>? actionsIconTheme;
+  final ZacBuilder<IconThemeData?>? actionsIconTheme;
   @override
-  final ZacValue<bool?>? primary;
+  final ZacBuilder<bool?>? primary;
   @override
-  final ZacValue<bool?>? centerTitle;
+  final ZacBuilder<bool?>? centerTitle;
   @override
-  final ZacValue<bool?>? excludeHeaderSemantics;
+  final ZacBuilder<bool?>? excludeHeaderSemantics;
   @override
-  final ZacValue<double?>? titleSpacing;
+  final ZacBuilder<double?>? titleSpacing;
   @override
-  final ZacValue<double?>? toolbarOpacity;
+  final ZacBuilder<double?>? toolbarOpacity;
   @override
-  final ZacValue<double?>? bottomOpacity;
+  final ZacBuilder<double?>? bottomOpacity;
   @override
-  final ZacValue<double?>? toolbarHeight;
+  final ZacBuilder<double?>? toolbarHeight;
   @override
-  final ZacValue<double?>? leadingWidth;
+  final ZacBuilder<double?>? leadingWidth;
   @override
-  final ZacValue<TextStyle?>? toolbarTextStyle;
+  final ZacBuilder<TextStyle?>? toolbarTextStyle;
   @override
-  final ZacValue<TextStyle?>? titleTextStyle;
+  final ZacBuilder<TextStyle?>? titleTextStyle;
   @override
-  final ZacValue<SystemUiOverlayStyle?>? systemOverlayStyle;
+  final ZacBuilder<SystemUiOverlayStyle?>? systemOverlayStyle;
 
   @override
   String toString() {
@@ -245,31 +246,31 @@ class _$_FlutterAppBar extends _FlutterAppBar {
 
 abstract class _FlutterAppBar extends FlutterAppBar {
   factory _FlutterAppBar(
-          {final ZacValue<Key?>? key,
-          final ZacValue<Widget?>? leading,
-          final ZacValue<bool?>? automaticallyImplyLeading,
-          final ZacValue<Widget?>? title,
-          final ZacValueList<Widget, List<Widget>?>? actions,
-          final ZacValue<Widget?>? flexibleSpace,
-          final ZacValue<Widget?>? bottom,
-          final ZacValue<double?>? elevation,
-          final ZacValue<Color?>? shadowColor,
-          final ZacValue<ShapeBorder?>? shape,
-          final ZacValue<Color?>? backgroundColor,
-          final ZacValue<Color?>? foregroundColor,
-          final ZacValue<IconThemeData?>? iconTheme,
-          final ZacValue<IconThemeData?>? actionsIconTheme,
-          final ZacValue<bool?>? primary,
-          final ZacValue<bool?>? centerTitle,
-          final ZacValue<bool?>? excludeHeaderSemantics,
-          final ZacValue<double?>? titleSpacing,
-          final ZacValue<double?>? toolbarOpacity,
-          final ZacValue<double?>? bottomOpacity,
-          final ZacValue<double?>? toolbarHeight,
-          final ZacValue<double?>? leadingWidth,
-          final ZacValue<TextStyle?>? toolbarTextStyle,
-          final ZacValue<TextStyle?>? titleTextStyle,
-          final ZacValue<SystemUiOverlayStyle?>? systemOverlayStyle}) =
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<Widget?>? leading,
+          final ZacBuilder<bool?>? automaticallyImplyLeading,
+          final ZacBuilder<Widget?>? title,
+          final ZacListBuilder<Widget, List<Widget>?>? actions,
+          final ZacBuilder<Widget?>? flexibleSpace,
+          final ZacBuilder<Widget?>? bottom,
+          final ZacBuilder<double?>? elevation,
+          final ZacBuilder<Color?>? shadowColor,
+          final ZacBuilder<ShapeBorder?>? shape,
+          final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<Color?>? foregroundColor,
+          final ZacBuilder<IconThemeData?>? iconTheme,
+          final ZacBuilder<IconThemeData?>? actionsIconTheme,
+          final ZacBuilder<bool?>? primary,
+          final ZacBuilder<bool?>? centerTitle,
+          final ZacBuilder<bool?>? excludeHeaderSemantics,
+          final ZacBuilder<double?>? titleSpacing,
+          final ZacBuilder<double?>? toolbarOpacity,
+          final ZacBuilder<double?>? bottomOpacity,
+          final ZacBuilder<double?>? toolbarHeight,
+          final ZacBuilder<double?>? leadingWidth,
+          final ZacBuilder<TextStyle?>? toolbarTextStyle,
+          final ZacBuilder<TextStyle?>? titleTextStyle,
+          final ZacBuilder<SystemUiOverlayStyle?>? systemOverlayStyle}) =
       _$_FlutterAppBar;
   _FlutterAppBar._() : super._();
 
@@ -277,53 +278,53 @@ abstract class _FlutterAppBar extends FlutterAppBar {
       _$_FlutterAppBar.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get leading;
+  ZacBuilder<Widget?>? get leading;
   @override
-  ZacValue<bool?>? get automaticallyImplyLeading;
+  ZacBuilder<bool?>? get automaticallyImplyLeading;
   @override
-  ZacValue<Widget?>? get title;
+  ZacBuilder<Widget?>? get title;
   @override
-  ZacValueList<Widget, List<Widget>?>? get actions;
+  ZacListBuilder<Widget, List<Widget>?>? get actions;
   @override
-  ZacValue<Widget?>? get flexibleSpace;
+  ZacBuilder<Widget?>? get flexibleSpace;
   @override // PreferredSizeWidget
-  ZacValue<Widget?>? get bottom;
+  ZacBuilder<Widget?>? get bottom;
   @override
-  ZacValue<double?>? get elevation;
+  ZacBuilder<double?>? get elevation;
   @override
-  ZacValue<Color?>? get shadowColor;
+  ZacBuilder<Color?>? get shadowColor;
   @override
-  ZacValue<ShapeBorder?>? get shape;
+  ZacBuilder<ShapeBorder?>? get shape;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<Color?>? get foregroundColor;
+  ZacBuilder<Color?>? get foregroundColor;
   @override
-  ZacValue<IconThemeData?>? get iconTheme;
+  ZacBuilder<IconThemeData?>? get iconTheme;
   @override
-  ZacValue<IconThemeData?>? get actionsIconTheme;
+  ZacBuilder<IconThemeData?>? get actionsIconTheme;
   @override
-  ZacValue<bool?>? get primary;
+  ZacBuilder<bool?>? get primary;
   @override
-  ZacValue<bool?>? get centerTitle;
+  ZacBuilder<bool?>? get centerTitle;
   @override
-  ZacValue<bool?>? get excludeHeaderSemantics;
+  ZacBuilder<bool?>? get excludeHeaderSemantics;
   @override
-  ZacValue<double?>? get titleSpacing;
+  ZacBuilder<double?>? get titleSpacing;
   @override
-  ZacValue<double?>? get toolbarOpacity;
+  ZacBuilder<double?>? get toolbarOpacity;
   @override
-  ZacValue<double?>? get bottomOpacity;
+  ZacBuilder<double?>? get bottomOpacity;
   @override
-  ZacValue<double?>? get toolbarHeight;
+  ZacBuilder<double?>? get toolbarHeight;
   @override
-  ZacValue<double?>? get leadingWidth;
+  ZacBuilder<double?>? get leadingWidth;
   @override
-  ZacValue<TextStyle?>? get toolbarTextStyle;
+  ZacBuilder<TextStyle?>? get toolbarTextStyle;
   @override
-  ZacValue<TextStyle?>? get titleTextStyle;
+  ZacBuilder<TextStyle?>? get titleTextStyle;
   @override
-  ZacValue<SystemUiOverlayStyle?>? get systemOverlayStyle;
+  ZacBuilder<SystemUiOverlayStyle?>? get systemOverlayStyle;
 }

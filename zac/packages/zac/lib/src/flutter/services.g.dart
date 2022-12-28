@@ -11,12 +11,12 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
     _$_FlutterSystemUiOverlayStyle(
       systemNavigationBarColor: json['systemNavigationBarColor'] == null
           ? null
-          : ZacValue<Color?>.fromJson(
+          : ZacBuilder<Color?>.fromJson(
               json['systemNavigationBarColor'] as Object),
       systemNavigationBarDividerColor:
           json['systemNavigationBarDividerColor'] == null
               ? null
-              : ZacValue<Color?>.fromJson(
+              : ZacBuilder<Color?>.fromJson(
                   json['systemNavigationBarDividerColor'] as Object),
       systemNavigationBarIconBrightness:
           json['systemNavigationBarIconBrightness'] == null
@@ -27,11 +27,11 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
       systemNavigationBarContrastEnforced:
           json['systemNavigationBarContrastEnforced'] == null
               ? null
-              : ZacValue<bool?>.fromJson(
+              : ZacBuilder<bool?>.fromJson(
                   json['systemNavigationBarContrastEnforced'] as Object),
       statusBarColor: json['statusBarColor'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['statusBarColor'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['statusBarColor'] as Object),
       statusBarBrightness: json['statusBarBrightness'] == null
           ? null
           : FlutterBrightness.fromJson(
@@ -43,7 +43,7 @@ _$_FlutterSystemUiOverlayStyle _$$_FlutterSystemUiOverlayStyleFromJson(
       systemStatusBarContrastEnforced:
           json['systemStatusBarContrastEnforced'] == null
               ? null
-              : ZacValue<bool?>.fromJson(
+              : ZacBuilder<bool?>.fromJson(
                   json['systemStatusBarContrastEnforced'] as Object),
     );
 

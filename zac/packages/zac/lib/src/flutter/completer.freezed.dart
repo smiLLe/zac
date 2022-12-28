@@ -22,7 +22,7 @@ ZacCompleterVoidProvider _$ZacCompleterVoidProviderFromJson(
 /// @nodoc
 mixin _$ZacCompleterVoidProvider {
   Object get family => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -43,7 +43,7 @@ class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
   @override
   final Object family;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -76,7 +76,7 @@ class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
 abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
   factory _ZacCompleterVoidProvider(
       {required final Object family,
-      required final ZacValue<Widget> child}) = _$_ZacCompleterVoidProvider;
+      required final ZacBuilder<Widget> child}) = _$_ZacCompleterVoidProvider;
   _ZacCompleterVoidProvider._() : super._();
 
   factory _ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =
@@ -85,7 +85,7 @@ abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
   @override
   Object get family;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }
 
 ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {
@@ -94,7 +94,8 @@ ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacCompleterActions {
-  ZacValue<Completer> get completer => throw _privateConstructorUsedError;
+  ConsumeSharedValue<Completer> get completer =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -112,7 +113,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
       _$$_ZacCompleterActionsVoidFromJson(json);
 
   @override
-  final ZacValue<Completer> completer;
+  final ConsumeSharedValue<Completer> completer;
 
   @override
   String toString() {
@@ -143,7 +144,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
 
 abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
   factory _ZacCompleterActionsVoid(
-          {required final ZacValue<Completer> completer}) =
+          {required final ConsumeSharedValue<Completer> completer}) =
       _$_ZacCompleterActionsVoid;
   _ZacCompleterActionsVoid._() : super._();
 
@@ -151,5 +152,5 @@ abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
       _$_ZacCompleterActionsVoid.fromJson;
 
   @override
-  ZacValue<Completer> get completer;
+  ConsumeSharedValue<Completer> get completer;
 }

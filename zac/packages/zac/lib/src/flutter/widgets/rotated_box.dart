@@ -12,7 +12,7 @@ part 'rotated_box.g.dart';
 @freezedZacBuilder
 class FlutterRotatedBox
     with _$FlutterRotatedBox
-    implements ZacBuild<RotatedBox> {
+    implements ZacBuilder<RotatedBox> {
   const FlutterRotatedBox._();
 
   static const String unionValue = 'f:1:RotatedBox';
@@ -22,16 +22,16 @@ class FlutterRotatedBox
 
   @FreezedUnionValue(FlutterRotatedBox.unionValue)
   factory FlutterRotatedBox({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
     required int quarterTurns,
   }) = _FlutterRotatedBox;
 
   RotatedBox _buildWidget(ZacContext zacContext) {
     return RotatedBox(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       quarterTurns: quarterTurns,
-      child: child?.getValue(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

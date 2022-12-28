@@ -30,11 +30,11 @@ FlutterElevatedButton _$FlutterElevatedButtonFromJson(
 
 /// @nodoc
 mixin _$FlutterElevatedButton {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get autofocus => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -62,17 +62,17 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
       _$$_FlutterElevatedButtonFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -116,28 +116,28 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
 
 abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   factory _FlutterElevatedButton(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget?>? child,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget?>? child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterElevatedButton;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterElevatedButton;
   _FlutterElevatedButton._() : super._();
 
   factory _FlutterElevatedButton.fromJson(Map<String, dynamic> json) =
       _$_FlutterElevatedButton.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget?>? get child;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -159,19 +159,19 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
       _$$_FlutterElevatedButtonIconFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> icon;
+  final ZacBuilder<Widget> icon;
   @override
-  final ZacValue<Widget> label;
+  final ZacBuilder<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -216,30 +216,30 @@ class _$_FlutterElevatedButtonIcon extends _FlutterElevatedButtonIcon {
 
 abstract class _FlutterElevatedButtonIcon extends FlutterElevatedButton {
   factory _FlutterElevatedButtonIcon(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> icon,
-      required final ZacValue<Widget> label,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> icon,
+      required final ZacBuilder<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterElevatedButtonIcon;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterElevatedButtonIcon;
   _FlutterElevatedButtonIcon._() : super._();
 
   factory _FlutterElevatedButtonIcon.fromJson(Map<String, dynamic> json) =
       _$_FlutterElevatedButtonIcon.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget> get icon;
-  ZacValue<Widget> get label;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get icon;
+  ZacBuilder<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }
 
 FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
@@ -258,11 +258,11 @@ FlutterOutlinedButton _$FlutterOutlinedButtonFromJson(
 
 /// @nodoc
 mixin _$FlutterOutlinedButton {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get autofocus => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -290,17 +290,17 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
       _$$_FlutterOutlinedButtonFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -344,28 +344,28 @@ class _$_FlutterOutlinedButton extends _FlutterOutlinedButton {
 
 abstract class _FlutterOutlinedButton extends FlutterOutlinedButton {
   factory _FlutterOutlinedButton(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> child,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterOutlinedButton;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterOutlinedButton;
   _FlutterOutlinedButton._() : super._();
 
   factory _FlutterOutlinedButton.fromJson(Map<String, dynamic> json) =
       _$_FlutterOutlinedButton.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget> get child;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get child;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -387,19 +387,19 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
       _$$_FlutterOutlinedButtonIconFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> icon;
+  final ZacBuilder<Widget> icon;
   @override
-  final ZacValue<Widget> label;
+  final ZacBuilder<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -444,30 +444,30 @@ class _$_FlutterOutlinedButtonIcon extends _FlutterOutlinedButtonIcon {
 
 abstract class _FlutterOutlinedButtonIcon extends FlutterOutlinedButton {
   factory _FlutterOutlinedButtonIcon(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> icon,
-      required final ZacValue<Widget> label,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> icon,
+      required final ZacBuilder<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterOutlinedButtonIcon;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterOutlinedButtonIcon;
   _FlutterOutlinedButtonIcon._() : super._();
 
   factory _FlutterOutlinedButtonIcon.fromJson(Map<String, dynamic> json) =
       _$_FlutterOutlinedButtonIcon.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget> get icon;
-  ZacValue<Widget> get label;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get icon;
+  ZacBuilder<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }
 
 FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
@@ -485,11 +485,11 @@ FlutterTextButton _$FlutterTextButtonFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterTextButton {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   ZacActions? get onPressed => throw _privateConstructorUsedError;
   ZacActions? get onLongPress => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get autofocus => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get autofocus => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -517,17 +517,17 @@ class _$_FlutterTextButton extends _FlutterTextButton {
       _$$_FlutterTextButtonFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -571,28 +571,28 @@ class _$_FlutterTextButton extends _FlutterTextButton {
 
 abstract class _FlutterTextButton extends FlutterTextButton {
   factory _FlutterTextButton(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> child,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> child,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterTextButton;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterTextButton;
   _FlutterTextButton._() : super._();
 
   factory _FlutterTextButton.fromJson(Map<String, dynamic> json) =
       _$_FlutterTextButton.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget> get child;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get child;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }
 
 /// @nodoc
@@ -614,19 +614,19 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
       _$$_FlutterTextButtonIconFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> icon;
+  final ZacBuilder<Widget> icon;
   @override
-  final ZacValue<Widget> label;
+  final ZacBuilder<Widget> label;
   @override
   final ZacActions? onPressed;
   @override
   final ZacActions? onLongPress;
   @override
-  final ZacValue<bool?>? autofocus;
+  final ZacBuilder<bool?>? autofocus;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -671,28 +671,28 @@ class _$_FlutterTextButtonIcon extends _FlutterTextButtonIcon {
 
 abstract class _FlutterTextButtonIcon extends FlutterTextButton {
   factory _FlutterTextButtonIcon(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> icon,
-      required final ZacValue<Widget> label,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> icon,
+      required final ZacBuilder<Widget> label,
       final ZacActions? onPressed,
       final ZacActions? onLongPress,
-      final ZacValue<bool?>? autofocus,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterTextButtonIcon;
+      final ZacBuilder<bool?>? autofocus,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterTextButtonIcon;
   _FlutterTextButtonIcon._() : super._();
 
   factory _FlutterTextButtonIcon.fromJson(Map<String, dynamic> json) =
       _$_FlutterTextButtonIcon.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
-  ZacValue<Widget> get icon;
-  ZacValue<Widget> get label;
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get icon;
+  ZacBuilder<Widget> get label;
   @override
   ZacActions? get onPressed;
   @override
   ZacActions? get onLongPress;
   @override
-  ZacValue<bool?>? get autofocus;
+  ZacBuilder<bool?>? get autofocus;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }

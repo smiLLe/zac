@@ -12,7 +12,7 @@ part 'card.freezed.dart';
 part 'card.g.dart';
 
 @freezedZacBuilder
-class FlutterCard with _$FlutterCard implements ZacBuild<Card> {
+class FlutterCard with _$FlutterCard implements ZacBuilder<Card> {
   const FlutterCard._();
 
   static const String unionValue = 'f:1:Card';
@@ -22,30 +22,30 @@ class FlutterCard with _$FlutterCard implements ZacBuild<Card> {
 
   @FreezedUnionValue(FlutterCard.unionValue)
   factory FlutterCard({
-    ZacValue<Key?>? key,
-    ZacValue<Color?>? color,
-    ZacValue<Color?>? shadowColor,
-    ZacValue<double?>? elevation,
-    ZacValue<ShapeBorder?>? shape,
-    ZacValue<bool?>? borderOnForeground,
-    ZacValue<EdgeInsetsGeometry?>? margin,
-    ZacValue<Clip?>? clipBehavior,
-    ZacValue<Widget?>? child,
-    ZacValue<bool?>? semanticContainer,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Color?>? color,
+    ZacBuilder<Color?>? shadowColor,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<bool?>? borderOnForeground,
+    ZacBuilder<EdgeInsetsGeometry?>? margin,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<bool?>? semanticContainer,
   }) = _FlutterCard;
 
   Card _buildWidget(ZacContext zacContext) {
     return Card(
-      key: key?.getValue(zacContext),
-      color: color?.getValue(zacContext),
-      shadowColor: shadowColor?.getValue(zacContext),
-      elevation: elevation?.getValue(zacContext),
-      shape: shape?.getValue(zacContext),
-      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
-      margin: margin?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext),
-      semanticContainer: semanticContainer?.getValue(zacContext) ?? true,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      color: color?.build(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      elevation: elevation?.build(zacContext),
+      shape: shape?.build(zacContext),
+      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
+      margin: margin?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext),
+      semanticContainer: semanticContainer?.build(zacContext) ?? true,
+      child: child?.build(zacContext),
     );
   }
 

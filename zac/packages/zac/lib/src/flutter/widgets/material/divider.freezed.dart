@@ -20,12 +20,12 @@ FlutterDivider _$FlutterDividerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterDivider {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double?>? get height => throw _privateConstructorUsedError;
-  ZacValue<double?>? get thickness => throw _privateConstructorUsedError;
-  ZacValue<double?>? get indent => throw _privateConstructorUsedError;
-  ZacValue<double?>? get endIndent => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get height => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get thickness => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get indent => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get endIndent => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -50,17 +50,17 @@ class _$_FlutterDivider extends _FlutterDivider {
       _$$_FlutterDividerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? height;
+  final ZacBuilder<double?>? height;
   @override
-  final ZacValue<double?>? thickness;
+  final ZacBuilder<double?>? thickness;
   @override
-  final ZacValue<double?>? indent;
+  final ZacBuilder<double?>? indent;
   @override
-  final ZacValue<double?>? endIndent;
+  final ZacBuilder<double?>? endIndent;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
 
   @override
   String toString() {
@@ -98,27 +98,27 @@ class _$_FlutterDivider extends _FlutterDivider {
 
 abstract class _FlutterDivider extends FlutterDivider {
   factory _FlutterDivider(
-      {final ZacValue<Key?>? key,
-      final ZacValue<double?>? height,
-      final ZacValue<double?>? thickness,
-      final ZacValue<double?>? indent,
-      final ZacValue<double?>? endIndent,
-      final ZacValue<Color?>? color}) = _$_FlutterDivider;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<double?>? height,
+      final ZacBuilder<double?>? thickness,
+      final ZacBuilder<double?>? indent,
+      final ZacBuilder<double?>? endIndent,
+      final ZacBuilder<Color?>? color}) = _$_FlutterDivider;
   _FlutterDivider._() : super._();
 
   factory _FlutterDivider.fromJson(Map<String, dynamic> json) =
       _$_FlutterDivider.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double?>? get height;
+  ZacBuilder<double?>? get height;
   @override
-  ZacValue<double?>? get thickness;
+  ZacBuilder<double?>? get thickness;
   @override
-  ZacValue<double?>? get indent;
+  ZacBuilder<double?>? get indent;
   @override
-  ZacValue<double?>? get endIndent;
+  ZacBuilder<double?>? get endIndent;
   @override
-  ZacValue<Color?>? get color;
+  ZacBuilder<Color?>? get color;
 }

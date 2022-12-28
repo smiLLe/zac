@@ -10,7 +10,7 @@ part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
 
 @freezedZacBuilder
-class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
+class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
   const FlutterAppBar._();
 
   static const String unionValue = 'f:1:AppBar';
@@ -20,37 +20,37 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
 
   @FreezedUnionValue(FlutterAppBar.unionValue)
   factory FlutterAppBar({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? leading,
-    ZacValue<bool?>? automaticallyImplyLeading,
-    ZacValue<Widget?>? title,
-    ZacValueList<Widget, List<Widget>?>? actions,
-    ZacValue<Widget?>? flexibleSpace,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? leading,
+    ZacBuilder<bool?>? automaticallyImplyLeading,
+    ZacBuilder<Widget?>? title,
+    ZacListBuilder<Widget, List<Widget>?>? actions,
+    ZacBuilder<Widget?>? flexibleSpace,
 // PreferredSizeWidget
-    ZacValue<Widget?>? bottom,
-    ZacValue<double?>? elevation,
-    ZacValue<Color?>? shadowColor,
-    ZacValue<ShapeBorder?>? shape,
-    ZacValue<Color?>? backgroundColor,
-    ZacValue<Color?>? foregroundColor,
-    ZacValue<IconThemeData?>? iconTheme,
-    ZacValue<IconThemeData?>? actionsIconTheme,
-    ZacValue<bool?>? primary,
-    ZacValue<bool?>? centerTitle,
-    ZacValue<bool?>? excludeHeaderSemantics,
-    ZacValue<double?>? titleSpacing,
-    ZacValue<double?>? toolbarOpacity,
-    ZacValue<double?>? bottomOpacity,
-    ZacValue<double?>? toolbarHeight,
-    ZacValue<double?>? leadingWidth,
-    ZacValue<TextStyle?>? toolbarTextStyle,
-    ZacValue<TextStyle?>? titleTextStyle,
-    ZacValue<SystemUiOverlayStyle?>? systemOverlayStyle,
+    ZacBuilder<Widget?>? bottom,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<Color?>? shadowColor,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<Color?>? foregroundColor,
+    ZacBuilder<IconThemeData?>? iconTheme,
+    ZacBuilder<IconThemeData?>? actionsIconTheme,
+    ZacBuilder<bool?>? primary,
+    ZacBuilder<bool?>? centerTitle,
+    ZacBuilder<bool?>? excludeHeaderSemantics,
+    ZacBuilder<double?>? titleSpacing,
+    ZacBuilder<double?>? toolbarOpacity,
+    ZacBuilder<double?>? bottomOpacity,
+    ZacBuilder<double?>? toolbarHeight,
+    ZacBuilder<double?>? leadingWidth,
+    ZacBuilder<TextStyle?>? toolbarTextStyle,
+    ZacBuilder<TextStyle?>? titleTextStyle,
+    ZacBuilder<SystemUiOverlayStyle?>? systemOverlayStyle,
   }) = _FlutterAppBar;
 
   AppBar _buildWidget(ZacContext zacContext) {
     assert(() {
-      final w = bottom?.getValue(zacContext);
+      final w = bottom?.build(zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -60,33 +60,33 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
     }(), '');
 
     return AppBar(
-      key: key?.getValue(zacContext),
-      leading: leading?.getValue(zacContext),
+      key: key?.build(zacContext),
+      leading: leading?.build(zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.getValue(zacContext) ?? true,
-      title: title?.getValue(zacContext),
-      actions: actions?.getList(zacContext) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.getValue(zacContext),
-      bottom: bottom?.getValue(zacContext) as PreferredSizeWidget?,
-      elevation: elevation?.getValue(zacContext),
-      shadowColor: shadowColor?.getValue(zacContext),
-      shape: shape?.getValue(zacContext),
-      backgroundColor: backgroundColor?.getValue(zacContext),
-      foregroundColor: foregroundColor?.getValue(zacContext),
-      iconTheme: iconTheme?.getValue(zacContext),
-      actionsIconTheme: actionsIconTheme?.getValue(zacContext),
-      primary: primary?.getValue(zacContext) ?? true,
-      centerTitle: centerTitle?.getValue(zacContext),
+          automaticallyImplyLeading?.build(zacContext) ?? true,
+      title: title?.build(zacContext),
+      actions: actions?.build(zacContext) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.build(zacContext),
+      bottom: bottom?.build(zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.build(zacContext),
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      foregroundColor: foregroundColor?.build(zacContext),
+      iconTheme: iconTheme?.build(zacContext),
+      actionsIconTheme: actionsIconTheme?.build(zacContext),
+      primary: primary?.build(zacContext) ?? true,
+      centerTitle: centerTitle?.build(zacContext),
       excludeHeaderSemantics:
-          excludeHeaderSemantics?.getValue(zacContext) ?? false,
-      titleSpacing: titleSpacing?.getValue(zacContext),
-      toolbarOpacity: toolbarOpacity?.getValue(zacContext) ?? 1.0,
-      bottomOpacity: bottomOpacity?.getValue(zacContext) ?? 1.0,
-      toolbarHeight: toolbarHeight?.getValue(zacContext),
-      leadingWidth: leadingWidth?.getValue(zacContext),
-      toolbarTextStyle: toolbarTextStyle?.getValue(zacContext),
-      titleTextStyle: titleTextStyle?.getValue(zacContext),
-      systemOverlayStyle: systemOverlayStyle?.getValue(zacContext),
+          excludeHeaderSemantics?.build(zacContext) ?? false,
+      titleSpacing: titleSpacing?.build(zacContext),
+      toolbarOpacity: toolbarOpacity?.build(zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.build(zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.build(zacContext),
+      leadingWidth: leadingWidth?.build(zacContext),
+      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
+      titleTextStyle: titleTextStyle?.build(zacContext),
+      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
     );
   }
 

@@ -33,12 +33,12 @@ FlutterProgressIndicator _$FlutterProgressIndicatorFromJson(
 
 /// @nodoc
 mixin _$FlutterProgressIndicator {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double?>? get value => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get backgroundColor => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticsValue => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get value => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticsValue => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -69,20 +69,20 @@ class _$_FlutterProgressIndicatorLinear
       _$$_FlutterProgressIndicatorLinearFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? value;
+  final ZacBuilder<double?>? value;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
 // Animation<Color?>? valueColor,
   @override
-  final ZacValue<double?>? minHeight;
+  final ZacBuilder<double?>? minHeight;
   @override
-  final ZacValue<String?>? semanticsLabel;
+  final ZacBuilder<String?>? semanticsLabel;
   @override
-  final ZacValue<String?>? semanticsValue;
+  final ZacBuilder<String?>? semanticsValue;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -128,13 +128,13 @@ class _$_FlutterProgressIndicatorLinear
 abstract class _FlutterProgressIndicatorLinear
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorLinear(
-          {final ZacValue<Key?>? key,
-          final ZacValue<double?>? value,
-          final ZacValue<Color?>? backgroundColor,
-          final ZacValue<Color?>? color,
-          final ZacValue<double?>? minHeight,
-          final ZacValue<String?>? semanticsLabel,
-          final ZacValue<String?>? semanticsValue}) =
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<double?>? value,
+          final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<Color?>? color,
+          final ZacBuilder<double?>? minHeight,
+          final ZacBuilder<String?>? semanticsLabel,
+          final ZacBuilder<String?>? semanticsValue}) =
       _$_FlutterProgressIndicatorLinear;
   _FlutterProgressIndicatorLinear._() : super._();
 
@@ -142,18 +142,18 @@ abstract class _FlutterProgressIndicatorLinear
       _$_FlutterProgressIndicatorLinear.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double?>? get value;
+  ZacBuilder<double?>? get value;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<Color?>? get color; // Animation<Color?>? valueColor,
-  ZacValue<double?>? get minHeight;
+  ZacBuilder<Color?>? get color; // Animation<Color?>? valueColor,
+  ZacBuilder<double?>? get minHeight;
   @override
-  ZacValue<String?>? get semanticsLabel;
+  ZacBuilder<String?>? get semanticsLabel;
   @override
-  ZacValue<String?>? get semanticsValue;
+  ZacBuilder<String?>? get semanticsValue;
 }
 
 /// @nodoc
@@ -177,20 +177,20 @@ class _$_FlutterProgressIndicatorCircular
       _$$_FlutterProgressIndicatorCircularFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? value;
+  final ZacBuilder<double?>? value;
   @override
-  final ZacValue<Color?>? backgroundColor;
+  final ZacBuilder<Color?>? backgroundColor;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
 // Animation<Color?>? valueColor,
   @override
-  final ZacValue<double?>? strokeWidth;
+  final ZacBuilder<double?>? strokeWidth;
   @override
-  final ZacValue<String?>? semanticsLabel;
+  final ZacBuilder<String?>? semanticsLabel;
   @override
-  final ZacValue<String?>? semanticsValue;
+  final ZacBuilder<String?>? semanticsValue;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -236,13 +236,13 @@ class _$_FlutterProgressIndicatorCircular
 abstract class _FlutterProgressIndicatorCircular
     extends FlutterProgressIndicator {
   factory _FlutterProgressIndicatorCircular(
-          {final ZacValue<Key?>? key,
-          final ZacValue<double?>? value,
-          final ZacValue<Color?>? backgroundColor,
-          final ZacValue<Color?>? color,
-          final ZacValue<double?>? strokeWidth,
-          final ZacValue<String?>? semanticsLabel,
-          final ZacValue<String?>? semanticsValue}) =
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<double?>? value,
+          final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<Color?>? color,
+          final ZacBuilder<double?>? strokeWidth,
+          final ZacBuilder<String?>? semanticsLabel,
+          final ZacBuilder<String?>? semanticsValue}) =
       _$_FlutterProgressIndicatorCircular;
   _FlutterProgressIndicatorCircular._() : super._();
 
@@ -250,16 +250,16 @@ abstract class _FlutterProgressIndicatorCircular
       Map<String, dynamic> json) = _$_FlutterProgressIndicatorCircular.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double?>? get value;
+  ZacBuilder<double?>? get value;
   @override
-  ZacValue<Color?>? get backgroundColor;
+  ZacBuilder<Color?>? get backgroundColor;
   @override
-  ZacValue<Color?>? get color; // Animation<Color?>? valueColor,
-  ZacValue<double?>? get strokeWidth;
+  ZacBuilder<Color?>? get color; // Animation<Color?>? valueColor,
+  ZacBuilder<double?>? get strokeWidth;
   @override
-  ZacValue<String?>? get semanticsLabel;
+  ZacBuilder<String?>? get semanticsLabel;
   @override
-  ZacValue<String?>? get semanticsValue;
+  ZacBuilder<String?>? get semanticsValue;
 }

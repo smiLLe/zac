@@ -9,7 +9,7 @@ part 'grid_view.freezed.dart';
 part 'grid_view.g.dart';
 
 @freezedZacBuilder
-class FlutterGridView with _$FlutterGridView implements ZacBuild<GridView> {
+class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
   const FlutterGridView._();
 
   static const String unionValue = 'f:1:GridView';
@@ -19,48 +19,47 @@ class FlutterGridView with _$FlutterGridView implements ZacBuild<GridView> {
 
   @FreezedUnionValue(FlutterGridView.unionValue)
   factory FlutterGridView({
-    ZacValue<Key?>? key,
-    ZacValue<Axis?>? scrollDirection,
-    ZacValue<bool?>? reverse,
-    ZacValue<ScrollController?>? controller,
-    ZacValue<bool?>? primary,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Axis?>? scrollDirection,
+    ZacBuilder<bool?>? reverse,
+    ZacBuilder<ScrollController?>? controller,
+    ZacBuilder<bool?>? primary,
     // ScrollPhysics? physics,
-    ZacValue<bool?>? shrinkWrap,
-    ZacValue<EdgeInsetsGeometry?>? padding,
-    required ZacValue<SliverGridDelegate> gridDelegate,
-    ZacValue<bool?>? addAutomaticKeepAlives,
-    ZacValue<bool?>? addRepaintBoundaries,
-    ZacValue<bool?>? addSemanticIndexes,
-    ZacValue<double?>? cacheExtent,
-    ZacValueList<Widget, List<Widget>?>? children,
-    ZacValue<int?>? semanticChildCount,
+    ZacBuilder<bool?>? shrinkWrap,
+    ZacBuilder<EdgeInsetsGeometry?>? padding,
+    required ZacBuilder<SliverGridDelegate> gridDelegate,
+    ZacBuilder<bool?>? addAutomaticKeepAlives,
+    ZacBuilder<bool?>? addRepaintBoundaries,
+    ZacBuilder<bool?>? addSemanticIndexes,
+    ZacBuilder<double?>? cacheExtent,
+    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<int?>? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ZacValue<Clip?>? clipBehavior,
-    ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
-    ZacValue<String?>? restorationId,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
+    ZacBuilder<String?>? restorationId,
   }) = _FlutterGridView;
 
   GridView _buildWidget(ZacContext zacContext) {
     return GridView(
-      gridDelegate: gridDelegate.getValue(zacContext),
-      key: key?.getValue(zacContext),
-      scrollDirection: scrollDirection?.getValue(zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacContext) ?? false,
-      controller: controller?.getValue(zacContext),
-      primary: primary?.getValue(zacContext),
-      shrinkWrap: shrinkWrap?.getValue(zacContext) ?? false,
-      padding: padding?.getValue(zacContext),
-      addAutomaticKeepAlives:
-          addAutomaticKeepAlives?.getValue(zacContext) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.getValue(zacContext) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.getValue(zacContext) ?? true,
-      cacheExtent: cacheExtent?.getValue(zacContext),
-      semanticChildCount: semanticChildCount?.getValue(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.getValue(zacContext) ??
+      gridDelegate: gridDelegate.build(zacContext),
+      key: key?.build(zacContext),
+      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(zacContext) ?? false,
+      controller: controller?.build(zacContext),
+      primary: primary?.build(zacContext),
+      shrinkWrap: shrinkWrap?.build(zacContext) ?? false,
+      padding: padding?.build(zacContext),
+      addAutomaticKeepAlives: addAutomaticKeepAlives?.build(zacContext) ?? true,
+      addRepaintBoundaries: addRepaintBoundaries?.build(zacContext) ?? true,
+      addSemanticIndexes: addSemanticIndexes?.build(zacContext) ?? true,
+      cacheExtent: cacheExtent?.build(zacContext),
+      semanticChildCount: semanticChildCount?.build(zacContext),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      children: children?.getList(zacContext) ?? const <Widget>[],
+      restorationId: restorationId?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

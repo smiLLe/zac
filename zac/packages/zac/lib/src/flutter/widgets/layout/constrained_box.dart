@@ -12,7 +12,7 @@ part 'constrained_box.g.dart';
 @freezedZacBuilder
 class FlutterConstrainedBox
     with _$FlutterConstrainedBox
-    implements ZacBuild<ConstrainedBox> {
+    implements ZacBuilder<ConstrainedBox> {
   const FlutterConstrainedBox._();
 
   static const String unionValue = 'f:1:ConstrainedBox';
@@ -22,16 +22,16 @@ class FlutterConstrainedBox
 
   @FreezedUnionValue(FlutterConstrainedBox.unionValue)
   factory FlutterConstrainedBox({
-    ZacValue<Key?>? key,
-    required ZacValue<BoxConstraints> constraints,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<BoxConstraints> constraints,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterConstrainedBox;
 
   ConstrainedBox _buildWidget(ZacContext zacContext) {
     return ConstrainedBox(
-      key: key?.getValue(zacContext),
-      constraints: constraints.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      constraints: constraints.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

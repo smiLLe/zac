@@ -20,15 +20,15 @@ FlutterSafeArea _$FlutterSafeAreaFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSafeArea {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get left => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get top => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get right => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get bottom => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsets?>? get minimum => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get maintainBottomViewPadding =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get left => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get top => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get right => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get bottom => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsets?>? get minimum => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get maintainBottomViewPadding =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -55,21 +55,21 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
       _$$_FlutterSafeAreaFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<bool?>? left;
+  final ZacBuilder<bool?>? left;
   @override
-  final ZacValue<bool?>? top;
+  final ZacBuilder<bool?>? top;
   @override
-  final ZacValue<bool?>? right;
+  final ZacBuilder<bool?>? right;
   @override
-  final ZacValue<bool?>? bottom;
+  final ZacBuilder<bool?>? bottom;
   @override
-  final ZacValue<EdgeInsets?>? minimum;
+  final ZacBuilder<EdgeInsets?>? minimum;
   @override
-  final ZacValue<bool?>? maintainBottomViewPadding;
+  final ZacBuilder<bool?>? maintainBottomViewPadding;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -109,33 +109,33 @@ class _$_FlutterSafeArea extends _FlutterSafeArea {
 
 abstract class _FlutterSafeArea extends FlutterSafeArea {
   factory _FlutterSafeArea(
-      {final ZacValue<Key?>? key,
-      final ZacValue<bool?>? left,
-      final ZacValue<bool?>? top,
-      final ZacValue<bool?>? right,
-      final ZacValue<bool?>? bottom,
-      final ZacValue<EdgeInsets?>? minimum,
-      final ZacValue<bool?>? maintainBottomViewPadding,
-      required final ZacValue<Widget> child}) = _$_FlutterSafeArea;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<bool?>? left,
+      final ZacBuilder<bool?>? top,
+      final ZacBuilder<bool?>? right,
+      final ZacBuilder<bool?>? bottom,
+      final ZacBuilder<EdgeInsets?>? minimum,
+      final ZacBuilder<bool?>? maintainBottomViewPadding,
+      required final ZacBuilder<Widget> child}) = _$_FlutterSafeArea;
   _FlutterSafeArea._() : super._();
 
   factory _FlutterSafeArea.fromJson(Map<String, dynamic> json) =
       _$_FlutterSafeArea.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<bool?>? get left;
+  ZacBuilder<bool?>? get left;
   @override
-  ZacValue<bool?>? get top;
+  ZacBuilder<bool?>? get top;
   @override
-  ZacValue<bool?>? get right;
+  ZacBuilder<bool?>? get right;
   @override
-  ZacValue<bool?>? get bottom;
+  ZacBuilder<bool?>? get bottom;
   @override
-  ZacValue<EdgeInsets?>? get minimum;
+  ZacBuilder<EdgeInsets?>? get minimum;
   @override
-  ZacValue<bool?>? get maintainBottomViewPadding;
+  ZacBuilder<bool?>? get maintainBottomViewPadding;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

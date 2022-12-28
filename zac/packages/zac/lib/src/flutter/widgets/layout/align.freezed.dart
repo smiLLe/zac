@@ -20,12 +20,12 @@ FlutterAlign _$FlutterAlignFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterAlign {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get widthFactor => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get heightFactor => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -49,15 +49,15 @@ class _$_FlutterAlign extends _FlutterAlign {
       _$$_FlutterAlignFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<double?>? widthFactor;
+  final ZacBuilder<double?>? widthFactor;
   @override
-  final ZacValue<double?>? heightFactor;
+  final ZacBuilder<double?>? heightFactor;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -95,24 +95,24 @@ class _$_FlutterAlign extends _FlutterAlign {
 
 abstract class _FlutterAlign extends FlutterAlign {
   factory _FlutterAlign(
-      {final ZacValue<Key?>? key,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<double?>? widthFactor,
-      final ZacValue<double?>? heightFactor,
-      final ZacValue<Widget?>? child}) = _$_FlutterAlign;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<double?>? widthFactor,
+      final ZacBuilder<double?>? heightFactor,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterAlign;
   _FlutterAlign._() : super._();
 
   factory _FlutterAlign.fromJson(Map<String, dynamic> json) =
       _$_FlutterAlign.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<double?>? get widthFactor;
+  ZacBuilder<double?>? get widthFactor;
   @override
-  ZacValue<double?>? get heightFactor;
+  ZacBuilder<double?>? get heightFactor;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

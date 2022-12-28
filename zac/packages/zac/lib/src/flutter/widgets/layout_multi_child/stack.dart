@@ -1,6 +1,5 @@
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -9,7 +8,7 @@ part 'stack.freezed.dart';
 part 'stack.g.dart';
 
 @freezedZacBuilder
-class FlutterStack with _$FlutterStack implements ZacBuild<Stack> {
+class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
   const FlutterStack._();
 
   static const String unionValue = 'f:1:Stack';
@@ -19,23 +18,22 @@ class FlutterStack with _$FlutterStack implements ZacBuild<Stack> {
 
   @FreezedUnionValue(FlutterStack.unionValue)
   factory FlutterStack({
-    ZacValue<Key?>? key,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<TextDirection?>? textDirection,
-    ZacValue<StackFit?>? fit,
-    ZacValue<Clip?>? clipBehavior,
-    ZacValueList<Widget, List<Widget>?>? children,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<TextDirection?>? textDirection,
+    ZacBuilder<StackFit?>? fit,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterStack;
 
   Stack _buildWidget(ZacContext zacContext) {
     return Stack(
-      key: key?.getValue(zacContext),
-      alignment:
-          alignment?.getValue(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.getValue(zacContext),
-      fit: fit?.getValue(zacContext) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      children: children?.getList(zacContext) ?? const <Widget>[],
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(zacContext),
+      fit: fit?.build(zacContext) ?? StackFit.loose,
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

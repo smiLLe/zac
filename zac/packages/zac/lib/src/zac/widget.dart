@@ -17,7 +17,7 @@ part 'widget.freezed.dart';
 part 'widget.g.dart';
 
 @freezedZacBuilder
-class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
+class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
   const ZacWidgetBuilder._();
 
   static const String unionValue = 'z:1:Widget';
@@ -28,26 +28,26 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuild<Widget> {
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValue)
   factory ZacWidgetBuilder({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     required Object data,
   }) = _ZacWidgetBuilder;
 
   @FreezedUnionValue(ZacWidgetBuilder.unionValueIsolate)
   factory ZacWidgetBuilder.isolate({
-    ZacValue<Key?>? key,
+    ZacBuilder<Key?>? key,
     required Object data,
-    ZacValue<Widget?>? errorChild,
+    ZacBuilder<Widget?>? errorChild,
   }) = _ZacWidgetBuilderIsolate;
 
   Widget _buildWidget(ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
-        key: obj.key?.getValue(zacContext),
+        key: obj.key?.build(zacContext),
       ),
       isolate: (obj) => ZacWidgetIsolated(
         data: obj.data,
-        key: obj.key?.getValue(zacContext),
+        key: obj.key?.build(zacContext),
         errorChild: obj.errorChild,
       ),
     );
@@ -63,7 +63,7 @@ class ZacWidget extends HookWidget {
   const ZacWidget({required this.data, Key? key})
       : assert(data is String ||
             data is Map<String, dynamic> ||
-            data is ZacBuild<Widget>),
+            data is ZacBuilder<Widget>),
         super(key: key);
 
   final Object data;
@@ -72,8 +72,8 @@ class ZacWidget extends HookWidget {
   Widget build(
     BuildContext context,
   ) {
-    final zacBuilder = useMemoized<ZacBuild<Widget>>(() {
-      if (data is ZacBuild<Widget>) return data as ZacBuild<Widget>;
+    final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
+      if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
       late Map<String, dynamic> map;
       final obj = data;
@@ -91,7 +91,7 @@ class ZacWidget extends HookWidget {
             'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
       }
 
-      return ConverterHelper.convertToType<ZacBuild<Widget>>(map);
+      return ConverterHelper.convertToType<ZacBuilder<Widget>>(map);
     }, [data]);
 
     return ZacUpdateContext(
@@ -106,10 +106,10 @@ class ZacWidgetIsolated extends StatelessWidget {
         super(key: key);
 
   final Object? data;
-  final ZacValue<Widget?>? errorChild;
+  final ZacBuilder<Widget?>? errorChild;
 
-  static AutoDisposeFutureProvider<ZacBuild<Widget>> provider =
-      FutureProvider.autoDispose<ZacBuild<Widget>>(
+  static AutoDisposeFutureProvider<ZacBuilder<Widget>> provider =
+      FutureProvider.autoDispose<ZacBuilder<Widget>>(
     (_) {
       throw StateError('');
     },
@@ -125,9 +125,9 @@ class ZacWidgetIsolated extends StatelessWidget {
     return result;
   }
 
-  static Future<ZacBuild<Widget>> _convert(List<Object?> data) async {
+  static Future<ZacBuilder<Widget>> _convert(List<Object?> data) async {
     allBuilder = data[1] as Map<String, Convert>;
-    return ConverterHelper.convertToType<ZacBuild<Widget>>(
+    return ConverterHelper.convertToType<ZacBuilder<Widget>>(
         data[0] as Map<String, dynamic>);
   }
 
@@ -165,7 +165,7 @@ class ZacWidgetIsolated extends StatelessWidget {
             ),
             error: (obj) {
               return ZacUpdateContext(builder: (zacContext) {
-                Widget? error = errorChild?.getValue(zacContext);
+                Widget? error = errorChild?.build(zacContext);
                 assert(() {
                   if (null != errorChild) return true;
                   error = FlutterContainer(
@@ -175,18 +175,17 @@ class ZacWidgetIsolated extends StatelessWidget {
                           r: 244,
                           g: 67,
                           b: 54,
-                          opacity: ZacValue<double>.fromJson(1.0),
-                        ).toZacValue(),
-                        width: ZacValue<double>.fromJson(3.0),
-                      ).toZacValue(),
-                    ).toZacValue(),
+                          opacity: ZacBuilder<double>.fromJson(1.0),
+                        ),
+                        width: ZacBuilder<double>.fromJson(3.0),
+                      ),
+                    ),
                     padding:
-                        FlutterEdgeInsets.all(ZacValue<double>.fromJson(8.0))
-                            .toZacValue(),
+                        FlutterEdgeInsets.all(ZacBuilder<double>.fromJson(8.0)),
                     child: FlutterText(
-                      ZacValue<String>.fromJson(
+                      ZacBuilder<String>.fromJson(
                           'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),
-                    ).toZacValue(),
+                    ),
                   ).build(zacContext);
                   return true;
                 }(), '');

@@ -20,22 +20,23 @@ FlutterText _$FlutterTextFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterText {
-  ZacValue<String> get data => throw _privateConstructorUsedError;
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<TextStyle?>? get style => throw _privateConstructorUsedError;
-  ZacValue<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
-  ZacValue<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<String> get data => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<TextStyle?>? get style => throw _privateConstructorUsedError;
+  ZacBuilder<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
+  ZacBuilder<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
   FlutterLocale? get locale => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get softWrap => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get softWrap => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
-  ZacValue<double?>? get textScaleFactor => throw _privateConstructorUsedError;
-  ZacValue<int?>? get maxLines => throw _privateConstructorUsedError;
-  ZacValue<String?>? get semanticsLabel => throw _privateConstructorUsedError;
-  ZacValue<TextWidthBasis?>? get textWidthBasis =>
+  ZacBuilder<double?>? get textScaleFactor =>
       throw _privateConstructorUsedError;
-  ZacValue<TextHeightBehavior?>? get textHeightBehavior =>
+  ZacBuilder<int?>? get maxLines => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get semanticsLabel => throw _privateConstructorUsedError;
+  ZacBuilder<TextWidthBasis?>? get textWidthBasis =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<TextHeightBehavior?>? get textHeightBehavior =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -68,33 +69,33 @@ class _$_FlutterText extends _FlutterText {
       _$$_FlutterTextFromJson(json);
 
   @override
-  final ZacValue<String> data;
+  final ZacBuilder<String> data;
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<TextStyle?>? style;
+  final ZacBuilder<TextStyle?>? style;
   @override
-  final ZacValue<StrutStyle?>? strutStyle;
+  final ZacBuilder<StrutStyle?>? strutStyle;
   @override
-  final ZacValue<TextAlign?>? textAlign;
+  final ZacBuilder<TextAlign?>? textAlign;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
   final FlutterLocale? locale;
   @override
-  final ZacValue<bool?>? softWrap;
+  final ZacBuilder<bool?>? softWrap;
   @override
   final FlutterTextOverflow? overflow;
   @override
-  final ZacValue<double?>? textScaleFactor;
+  final ZacBuilder<double?>? textScaleFactor;
   @override
-  final ZacValue<int?>? maxLines;
+  final ZacBuilder<int?>? maxLines;
   @override
-  final ZacValue<String?>? semanticsLabel;
+  final ZacBuilder<String?>? semanticsLabel;
   @override
-  final ZacValue<TextWidthBasis?>? textWidthBasis;
+  final ZacBuilder<TextWidthBasis?>? textWidthBasis;
   @override
-  final ZacValue<TextHeightBehavior?>? textHeightBehavior;
+  final ZacBuilder<TextHeightBehavior?>? textHeightBehavior;
 
   @override
   String toString() {
@@ -161,20 +162,20 @@ class _$_FlutterText extends _FlutterText {
 }
 
 abstract class _FlutterText extends FlutterText {
-  factory _FlutterText(final ZacValue<String> data,
-          {final ZacValue<Key?>? key,
-          final ZacValue<TextStyle?>? style,
-          final ZacValue<StrutStyle?>? strutStyle,
-          final ZacValue<TextAlign?>? textAlign,
-          final ZacValue<TextDirection?>? textDirection,
+  factory _FlutterText(final ZacBuilder<String> data,
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<TextStyle?>? style,
+          final ZacBuilder<StrutStyle?>? strutStyle,
+          final ZacBuilder<TextAlign?>? textAlign,
+          final ZacBuilder<TextDirection?>? textDirection,
           final FlutterLocale? locale,
-          final ZacValue<bool?>? softWrap,
+          final ZacBuilder<bool?>? softWrap,
           final FlutterTextOverflow? overflow,
-          final ZacValue<double?>? textScaleFactor,
-          final ZacValue<int?>? maxLines,
-          final ZacValue<String?>? semanticsLabel,
-          final ZacValue<TextWidthBasis?>? textWidthBasis,
-          final ZacValue<TextHeightBehavior?>? textHeightBehavior}) =
+          final ZacBuilder<double?>? textScaleFactor,
+          final ZacBuilder<int?>? maxLines,
+          final ZacBuilder<String?>? semanticsLabel,
+          final ZacBuilder<TextWidthBasis?>? textWidthBasis,
+          final ZacBuilder<TextHeightBehavior?>? textHeightBehavior}) =
       _$_FlutterText;
   _FlutterText._() : super._();
 
@@ -182,31 +183,31 @@ abstract class _FlutterText extends FlutterText {
       _$_FlutterText.fromJson;
 
   @override
-  ZacValue<String> get data;
+  ZacBuilder<String> get data;
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<TextStyle?>? get style;
+  ZacBuilder<TextStyle?>? get style;
   @override
-  ZacValue<StrutStyle?>? get strutStyle;
+  ZacBuilder<StrutStyle?>? get strutStyle;
   @override
-  ZacValue<TextAlign?>? get textAlign;
+  ZacBuilder<TextAlign?>? get textAlign;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
   FlutterLocale? get locale;
   @override
-  ZacValue<bool?>? get softWrap;
+  ZacBuilder<bool?>? get softWrap;
   @override
   FlutterTextOverflow? get overflow;
   @override
-  ZacValue<double?>? get textScaleFactor;
+  ZacBuilder<double?>? get textScaleFactor;
   @override
-  ZacValue<int?>? get maxLines;
+  ZacBuilder<int?>? get maxLines;
   @override
-  ZacValue<String?>? get semanticsLabel;
+  ZacBuilder<String?>? get semanticsLabel;
   @override
-  ZacValue<TextWidthBasis?>? get textWidthBasis;
+  ZacBuilder<TextWidthBasis?>? get textWidthBasis;
   @override
-  ZacValue<TextHeightBehavior?>? get textHeightBehavior;
+  ZacBuilder<TextHeightBehavior?>? get textHeightBehavior;
 }

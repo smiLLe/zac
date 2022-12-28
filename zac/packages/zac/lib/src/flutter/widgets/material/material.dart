@@ -9,7 +9,7 @@ part 'material.freezed.dart';
 part 'material.g.dart';
 
 @freezedZacBuilder
-class FlutterMaterial with _$FlutterMaterial implements ZacBuild<Material> {
+class FlutterMaterial with _$FlutterMaterial implements ZacBuilder<Material> {
   const FlutterMaterial._();
 
   static const String unionValue = 'f:1:Material';
@@ -19,32 +19,32 @@ class FlutterMaterial with _$FlutterMaterial implements ZacBuild<Material> {
 
   @FreezedUnionValue(FlutterMaterial.unionValue)
   factory FlutterMaterial({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    ZacValue<double?>? elevation,
-    ZacValue<Color?>? color,
-    ZacValue<Color?>? shadowColor,
-    ZacValue<TextStyle?>? textStyle,
-    ZacValue<BorderRadiusGeometry?>? borderRadius,
-    ZacValue<ShapeBorder?>? shape,
-    ZacValue<bool?>? borderOnForeground,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<Color?>? color,
+    ZacBuilder<Color?>? shadowColor,
+    ZacBuilder<TextStyle?>? textStyle,
+    ZacBuilder<BorderRadiusGeometry?>? borderRadius,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<bool?>? borderOnForeground,
+    ZacBuilder<Clip?>? clipBehavior,
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
 
   Material _buildWidget(ZacContext zacContext) {
     return Material(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.getValue(zacContext) ?? true,
-      borderRadius: borderRadius?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
-      color: color?.getValue(zacContext),
-      elevation: elevation?.getValue(zacContext) ?? 0,
-      shadowColor: shadowColor?.getValue(zacContext),
-      shape: shape?.getValue(zacContext),
-      textStyle: textStyle?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
+      borderRadius: borderRadius?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
+      color: color?.build(zacContext),
+      elevation: elevation?.build(zacContext) ?? 0,
+      shadowColor: shadowColor?.build(zacContext),
+      shape: shape?.build(zacContext),
+      textStyle: textStyle?.build(zacContext),
+      child: child?.build(zacContext),
       // type: type?.toFlutter(context),
     );
   }

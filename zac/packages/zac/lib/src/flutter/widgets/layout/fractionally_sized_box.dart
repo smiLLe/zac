@@ -11,7 +11,7 @@ part 'fractionally_sized_box.g.dart';
 @freezedZacBuilder
 class FlutterFractionallySizedBox
     with _$FlutterFractionallySizedBox
-    implements ZacBuild<FractionallySizedBox> {
+    implements ZacBuilder<FractionallySizedBox> {
   const FlutterFractionallySizedBox._();
 
   static const String unionValue = 'f:1:FractionallySizedBox';
@@ -21,20 +21,20 @@ class FlutterFractionallySizedBox
 
   @FreezedUnionValue(FlutterFractionallySizedBox.unionValue)
   factory FlutterFractionallySizedBox({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<double?>? widthFactor,
-    ZacValue<double?>? heightFactor,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<double?>? widthFactor,
+    ZacBuilder<double?>? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
   FractionallySizedBox _buildWidget(ZacContext zacContext) {
     return FractionallySizedBox(
-      key: key?.getValue(zacContext),
-      heightFactor: heightFactor?.getValue(zacContext),
-      widthFactor: widthFactor?.getValue(zacContext),
-      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
+      widthFactor: widthFactor?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.build(zacContext),
     );
   }
 

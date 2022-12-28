@@ -12,7 +12,7 @@ part 'positioned.g.dart';
 @freezedZacBuilder
 class FlutterPositioned
     with _$FlutterPositioned
-    implements ZacBuild<Positioned> {
+    implements ZacBuilder<Positioned> {
   const FlutterPositioned._();
 
   static const String unionValue = 'f:1:Positioned';
@@ -24,69 +24,69 @@ class FlutterPositioned
 
   @FreezedUnionValue(FlutterPositioned.unionValue)
   factory FlutterPositioned({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? left,
-    ZacValue<double?>? top,
-    ZacValue<double?>? right,
-    ZacValue<double?>? bottom,
-    ZacValue<double?>? width,
-    ZacValue<double?>? height,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? left,
+    ZacBuilder<double?>? top,
+    ZacBuilder<double?>? right,
+    ZacBuilder<double?>? bottom,
+    ZacBuilder<double?>? width,
+    ZacBuilder<double?>? height,
+    required ZacBuilder<Widget> child,
   }) = _FlutterPositioneddirectional;
 
   @FreezedUnionValue(FlutterPositioned.unionValueDirectional)
   factory FlutterPositioned.directional({
-    ZacValue<Key?>? key,
-    required ZacValue<TextDirection> textDirection,
-    ZacValue<double?>? start,
-    ZacValue<double?>? top,
-    ZacValue<double?>? end,
-    ZacValue<double?>? bottom,
-    ZacValue<double?>? width,
-    ZacValue<double?>? height,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<TextDirection> textDirection,
+    ZacBuilder<double?>? start,
+    ZacBuilder<double?>? top,
+    ZacBuilder<double?>? end,
+    ZacBuilder<double?>? bottom,
+    ZacBuilder<double?>? width,
+    ZacBuilder<double?>? height,
+    required ZacBuilder<Widget> child,
   }) = _FlutterPositioned;
 
   @FreezedUnionValue(FlutterPositioned.unionValueFill)
   factory FlutterPositioned.fill({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? left,
-    ZacValue<double?>? top,
-    ZacValue<double?>? right,
-    ZacValue<double?>? bottom,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? left,
+    ZacBuilder<double?>? top,
+    ZacBuilder<double?>? right,
+    ZacBuilder<double?>? bottom,
+    required ZacBuilder<Widget> child,
   }) = _FlutterPositionedfill;
 
   Positioned _buildWidget(ZacContext zacContext) {
     return map(
       (value) => Positioned(
-        key: value.key?.getValue(zacContext),
-        left: value.left?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        right: value.right?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
-        child: value.child.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        left: value.left?.build(zacContext),
+        top: value.top?.build(zacContext),
+        right: value.right?.build(zacContext),
+        bottom: value.bottom?.build(zacContext),
+        width: value.width?.build(zacContext),
+        height: value.height?.build(zacContext),
+        child: value.child.build(zacContext),
       ),
       directional: (value) => Positioned.directional(
-        textDirection: value.textDirection.getValue(zacContext),
-        key: value.key?.getValue(zacContext),
-        start: value.start?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        end: value.end?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
-        width: value.width?.getValue(zacContext),
-        height: value.height?.getValue(zacContext),
-        child: value.child.getValue(zacContext),
+        textDirection: value.textDirection.build(zacContext),
+        key: value.key?.build(zacContext),
+        start: value.start?.build(zacContext),
+        top: value.top?.build(zacContext),
+        end: value.end?.build(zacContext),
+        bottom: value.bottom?.build(zacContext),
+        width: value.width?.build(zacContext),
+        height: value.height?.build(zacContext),
+        child: value.child.build(zacContext),
       ),
       fill: (value) => Positioned.fill(
-        key: value.key?.getValue(zacContext),
-        left: value.left?.getValue(zacContext),
-        top: value.top?.getValue(zacContext),
-        right: value.right?.getValue(zacContext),
-        bottom: value.bottom?.getValue(zacContext),
-        child: value.child.getValue(zacContext),
+        key: value.key?.build(zacContext),
+        left: value.left?.build(zacContext),
+        top: value.top?.build(zacContext),
+        right: value.right?.build(zacContext),
+        bottom: value.bottom?.build(zacContext),
+        child: value.child.build(zacContext),
       ),
     );
   }

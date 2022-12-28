@@ -21,20 +21,20 @@ FlutterSingleChildScrollView _$FlutterSingleChildScrollViewFromJson(
 
 /// @nodoc
 mixin _$FlutterSingleChildScrollView {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Axis?>? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get padding =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Axis?>? get scrollDirection => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get reverse => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get primary =>
+  ZacBuilder<bool?>? get primary =>
       throw _privateConstructorUsedError; // ScrollPhysics? physics,
-  ZacValue<ScrollController?>? get controller =>
+  ZacBuilder<ScrollController?>? get controller =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child =>
+  ZacBuilder<Widget?>? get child =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
-  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior =>
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get restorationId => throw _privateConstructorUsedError;
+  ZacBuilder<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -64,27 +64,27 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
       _$$_FlutterSingleChildScrollViewFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Axis?>? scrollDirection;
+  final ZacBuilder<Axis?>? scrollDirection;
   @override
-  final ZacValue<bool?>? reverse;
+  final ZacBuilder<bool?>? reverse;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? padding;
+  final ZacBuilder<EdgeInsetsGeometry?>? padding;
   @override
-  final ZacValue<bool?>? primary;
+  final ZacBuilder<bool?>? primary;
 // ScrollPhysics? physics,
   @override
-  final ZacValue<ScrollController?>? controller;
+  final ZacBuilder<ScrollController?>? controller;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacValue<String?>? restorationId;
+  final ZacBuilder<String?>? restorationId;
   @override
-  final ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior;
+  final ZacBuilder<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior;
 
   @override
   String toString() {
@@ -141,16 +141,16 @@ class _$_FlutterSingleChildScrollView extends _FlutterSingleChildScrollView {
 abstract class _FlutterSingleChildScrollView
     extends FlutterSingleChildScrollView {
   factory _FlutterSingleChildScrollView(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Axis?>? scrollDirection,
-      final ZacValue<bool?>? reverse,
-      final ZacValue<EdgeInsetsGeometry?>? padding,
-      final ZacValue<bool?>? primary,
-      final ZacValue<ScrollController?>? controller,
-      final ZacValue<Widget?>? child,
-      final ZacValue<Clip?>? clipBehavior,
-      final ZacValue<String?>? restorationId,
-      final ZacValue<ScrollViewKeyboardDismissBehavior?>?
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Axis?>? scrollDirection,
+      final ZacBuilder<bool?>? reverse,
+      final ZacBuilder<EdgeInsetsGeometry?>? padding,
+      final ZacBuilder<bool?>? primary,
+      final ZacBuilder<ScrollController?>? controller,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<Clip?>? clipBehavior,
+      final ZacBuilder<String?>? restorationId,
+      final ZacBuilder<ScrollViewKeyboardDismissBehavior?>?
           keyboardDismissBehavior}) = _$_FlutterSingleChildScrollView;
   _FlutterSingleChildScrollView._() : super._();
 
@@ -158,23 +158,23 @@ abstract class _FlutterSingleChildScrollView
       _$_FlutterSingleChildScrollView.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Axis?>? get scrollDirection;
+  ZacBuilder<Axis?>? get scrollDirection;
   @override
-  ZacValue<bool?>? get reverse;
+  ZacBuilder<bool?>? get reverse;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get padding;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding;
   @override
-  ZacValue<bool?>? get primary;
+  ZacBuilder<bool?>? get primary;
   @override // ScrollPhysics? physics,
-  ZacValue<ScrollController?>? get controller;
+  ZacBuilder<ScrollController?>? get controller;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacValue<String?>? get restorationId;
+  ZacBuilder<String?>? get restorationId;
   @override
-  ZacValue<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior;
+  ZacBuilder<ScrollViewKeyboardDismissBehavior?>? get keyboardDismissBehavior;
 }

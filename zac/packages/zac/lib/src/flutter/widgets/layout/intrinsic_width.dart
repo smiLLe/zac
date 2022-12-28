@@ -11,7 +11,7 @@ part 'intrinsic_width.g.dart';
 @freezedZacBuilder
 class FlutterIntrinsicWidth
     with _$FlutterIntrinsicWidth
-    implements ZacBuild<IntrinsicWidth> {
+    implements ZacBuilder<IntrinsicWidth> {
   const FlutterIntrinsicWidth._();
 
   static const String unionValue = 'f:1:IntrinsicWidth';
@@ -21,14 +21,14 @@ class FlutterIntrinsicWidth
 
   @FreezedUnionValue(FlutterIntrinsicWidth.unionValue)
   factory FlutterIntrinsicWidth({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterIntrinsicWidth;
 
   IntrinsicWidth _buildWidget(ZacContext zacContext) {
     return IntrinsicWidth(
-      key: key?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

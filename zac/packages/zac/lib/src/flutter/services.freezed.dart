@@ -21,20 +21,20 @@ FlutterSystemUiOverlayStyle _$FlutterSystemUiOverlayStyleFromJson(
 
 /// @nodoc
 mixin _$FlutterSystemUiOverlayStyle {
-  ZacValue<Color?>? get systemNavigationBarColor =>
+  ZacBuilder<Color?>? get systemNavigationBarColor =>
       throw _privateConstructorUsedError;
-  ZacValue<Color?>? get systemNavigationBarDividerColor =>
+  ZacBuilder<Color?>? get systemNavigationBarDividerColor =>
       throw _privateConstructorUsedError;
   FlutterBrightness? get systemNavigationBarIconBrightness =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get systemNavigationBarContrastEnforced =>
+  ZacBuilder<bool?>? get systemNavigationBarContrastEnforced =>
       throw _privateConstructorUsedError;
-  ZacValue<Color?>? get statusBarColor => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get statusBarColor => throw _privateConstructorUsedError;
   FlutterBrightness? get statusBarBrightness =>
       throw _privateConstructorUsedError;
   FlutterBrightness? get statusBarIconBrightness =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get systemStatusBarContrastEnforced =>
+  ZacBuilder<bool?>? get systemStatusBarContrastEnforced =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -62,21 +62,21 @@ class _$_FlutterSystemUiOverlayStyle extends _FlutterSystemUiOverlayStyle {
       _$$_FlutterSystemUiOverlayStyleFromJson(json);
 
   @override
-  final ZacValue<Color?>? systemNavigationBarColor;
+  final ZacBuilder<Color?>? systemNavigationBarColor;
   @override
-  final ZacValue<Color?>? systemNavigationBarDividerColor;
+  final ZacBuilder<Color?>? systemNavigationBarDividerColor;
   @override
   final FlutterBrightness? systemNavigationBarIconBrightness;
   @override
-  final ZacValue<bool?>? systemNavigationBarContrastEnforced;
+  final ZacBuilder<bool?>? systemNavigationBarContrastEnforced;
   @override
-  final ZacValue<Color?>? statusBarColor;
+  final ZacBuilder<Color?>? statusBarColor;
   @override
   final FlutterBrightness? statusBarBrightness;
   @override
   final FlutterBrightness? statusBarIconBrightness;
   @override
-  final ZacValue<bool?>? systemStatusBarContrastEnforced;
+  final ZacBuilder<bool?>? systemStatusBarContrastEnforced;
 
   @override
   String toString() {
@@ -139,14 +139,14 @@ class _$_FlutterSystemUiOverlayStyle extends _FlutterSystemUiOverlayStyle {
 abstract class _FlutterSystemUiOverlayStyle
     extends FlutterSystemUiOverlayStyle {
   factory _FlutterSystemUiOverlayStyle(
-          {final ZacValue<Color?>? systemNavigationBarColor,
-          final ZacValue<Color?>? systemNavigationBarDividerColor,
+          {final ZacBuilder<Color?>? systemNavigationBarColor,
+          final ZacBuilder<Color?>? systemNavigationBarDividerColor,
           final FlutterBrightness? systemNavigationBarIconBrightness,
-          final ZacValue<bool?>? systemNavigationBarContrastEnforced,
-          final ZacValue<Color?>? statusBarColor,
+          final ZacBuilder<bool?>? systemNavigationBarContrastEnforced,
+          final ZacBuilder<Color?>? statusBarColor,
           final FlutterBrightness? statusBarBrightness,
           final FlutterBrightness? statusBarIconBrightness,
-          final ZacValue<bool?>? systemStatusBarContrastEnforced}) =
+          final ZacBuilder<bool?>? systemStatusBarContrastEnforced}) =
       _$_FlutterSystemUiOverlayStyle;
   _FlutterSystemUiOverlayStyle._() : super._();
 
@@ -154,21 +154,21 @@ abstract class _FlutterSystemUiOverlayStyle
       _$_FlutterSystemUiOverlayStyle.fromJson;
 
   @override
-  ZacValue<Color?>? get systemNavigationBarColor;
+  ZacBuilder<Color?>? get systemNavigationBarColor;
   @override
-  ZacValue<Color?>? get systemNavigationBarDividerColor;
+  ZacBuilder<Color?>? get systemNavigationBarDividerColor;
   @override
   FlutterBrightness? get systemNavigationBarIconBrightness;
   @override
-  ZacValue<bool?>? get systemNavigationBarContrastEnforced;
+  ZacBuilder<bool?>? get systemNavigationBarContrastEnforced;
   @override
-  ZacValue<Color?>? get statusBarColor;
+  ZacBuilder<Color?>? get statusBarColor;
   @override
   FlutterBrightness? get statusBarBrightness;
   @override
   FlutterBrightness? get statusBarIconBrightness;
   @override
-  ZacValue<bool?>? get systemStatusBarContrastEnforced;
+  ZacBuilder<bool?>? get systemStatusBarContrastEnforced;
 }
 
 FlutterTextInputType _$FlutterTextInputTypeFromJson(Map<String, dynamic> json) {

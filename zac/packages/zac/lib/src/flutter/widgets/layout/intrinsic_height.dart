@@ -11,7 +11,7 @@ part 'intrinsic_height.g.dart';
 @freezedZacBuilder
 class FlutterIntrinsicHeight
     with _$FlutterIntrinsicHeight
-    implements ZacBuild<IntrinsicHeight> {
+    implements ZacBuilder<IntrinsicHeight> {
   const FlutterIntrinsicHeight._();
 
   static const String unionValue = 'f:1:IntrinsicHeight';
@@ -21,14 +21,14 @@ class FlutterIntrinsicHeight
 
   @FreezedUnionValue(FlutterIntrinsicHeight.unionValue)
   factory FlutterIntrinsicHeight({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterIntrinsicHeight;
 
   IntrinsicHeight _buildWidget(ZacContext zacContext) {
     return IntrinsicHeight(
-      key: key?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

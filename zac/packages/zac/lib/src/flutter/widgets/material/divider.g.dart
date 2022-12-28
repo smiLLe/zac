@@ -10,20 +10,20 @@ _$_FlutterDivider _$$_FlutterDividerFromJson(Map<String, dynamic> json) =>
     _$_FlutterDivider(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       height: json['height'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['height'] as Object),
+          : ZacBuilder<double?>.fromJson(json['height'] as Object),
       thickness: json['thickness'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['thickness'] as Object),
+          : ZacBuilder<double?>.fromJson(json['thickness'] as Object),
       indent: json['indent'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['indent'] as Object),
+          : ZacBuilder<double?>.fromJson(json['indent'] as Object),
       endIndent: json['endIndent'] == null
           ? null
-          : ZacValue<double?>.fromJson(json['endIndent'] as Object),
+          : ZacBuilder<double?>.fromJson(json['endIndent'] as Object),
       color: json['color'] == null
           ? null
-          : ZacValue<Color?>.fromJson(json['color'] as Object),
+          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
     );

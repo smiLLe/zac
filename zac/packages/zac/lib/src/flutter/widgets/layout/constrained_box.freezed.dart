@@ -21,10 +21,10 @@ FlutterConstrainedBox _$FlutterConstrainedBoxFromJson(
 
 /// @nodoc
 mixin _$FlutterConstrainedBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<BoxConstraints> get constraints =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<BoxConstraints> get constraints =>
       throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -43,11 +43,11 @@ class _$_FlutterConstrainedBox extends _FlutterConstrainedBox {
       _$$_FlutterConstrainedBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<BoxConstraints> constraints;
+  final ZacBuilder<BoxConstraints> constraints;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -80,18 +80,18 @@ class _$_FlutterConstrainedBox extends _FlutterConstrainedBox {
 
 abstract class _FlutterConstrainedBox extends FlutterConstrainedBox {
   factory _FlutterConstrainedBox(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<BoxConstraints> constraints,
-      final ZacValue<Widget?>? child}) = _$_FlutterConstrainedBox;
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<BoxConstraints> constraints,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterConstrainedBox;
   _FlutterConstrainedBox._() : super._();
 
   factory _FlutterConstrainedBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterConstrainedBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<BoxConstraints> get constraints;
+  ZacBuilder<BoxConstraints> get constraints;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

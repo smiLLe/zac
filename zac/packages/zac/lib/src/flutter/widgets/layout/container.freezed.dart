@@ -20,16 +20,16 @@ FlutterContainer _$FlutterContainerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterContainer {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
-  ZacValue<Color?>? get color => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get margin =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsetsGeometry?>? get margin =>
       throw _privateConstructorUsedError;
-  ZacValue<EdgeInsetsGeometry?>? get padding =>
+  ZacBuilder<EdgeInsetsGeometry?>? get padding =>
       throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<Decoration?>? get decoration => throw _privateConstructorUsedError;
+  ZacBuilder<Decoration?>? get decoration => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -55,19 +55,19 @@ class _$_FlutterContainer extends _FlutterContainer {
       _$$_FlutterContainerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
   @override
-  final ZacValue<Color?>? color;
+  final ZacBuilder<Color?>? color;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? margin;
+  final ZacBuilder<EdgeInsetsGeometry?>? margin;
   @override
-  final ZacValue<EdgeInsetsGeometry?>? padding;
+  final ZacBuilder<EdgeInsetsGeometry?>? padding;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<Decoration?>? decoration;
+  final ZacBuilder<Decoration?>? decoration;
 
   @override
   String toString() {
@@ -106,30 +106,30 @@ class _$_FlutterContainer extends _FlutterContainer {
 
 abstract class _FlutterContainer extends FlutterContainer {
   factory _FlutterContainer(
-      {final ZacValue<Key?>? key,
-      final ZacValue<Widget?>? child,
-      final ZacValue<Color?>? color,
-      final ZacValue<EdgeInsetsGeometry?>? margin,
-      final ZacValue<EdgeInsetsGeometry?>? padding,
-      final ZacValue<AlignmentGeometry?>? alignment,
-      final ZacValue<Decoration?>? decoration}) = _$_FlutterContainer;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Widget?>? child,
+      final ZacBuilder<Color?>? color,
+      final ZacBuilder<EdgeInsetsGeometry?>? margin,
+      final ZacBuilder<EdgeInsetsGeometry?>? padding,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<Decoration?>? decoration}) = _$_FlutterContainer;
   _FlutterContainer._() : super._();
 
   factory _FlutterContainer.fromJson(Map<String, dynamic> json) =
       _$_FlutterContainer.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
   @override
-  ZacValue<Color?>? get color;
+  ZacBuilder<Color?>? get color;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get margin;
+  ZacBuilder<EdgeInsetsGeometry?>? get margin;
   @override
-  ZacValue<EdgeInsetsGeometry?>? get padding;
+  ZacBuilder<EdgeInsetsGeometry?>? get padding;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<Decoration?>? get decoration;
+  ZacBuilder<Decoration?>? get decoration;
 }

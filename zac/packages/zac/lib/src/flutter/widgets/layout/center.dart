@@ -9,7 +9,7 @@ part 'center.freezed.dart';
 part 'center.g.dart';
 
 @freezedZacBuilder
-class FlutterCenter with _$FlutterCenter implements ZacBuild<Center> {
+class FlutterCenter with _$FlutterCenter implements ZacBuilder<Center> {
   const FlutterCenter._();
 
   static const String unionValue = 'f:1:Center';
@@ -19,18 +19,18 @@ class FlutterCenter with _$FlutterCenter implements ZacBuild<Center> {
 
   @FreezedUnionValue(FlutterCenter.unionValue)
   factory FlutterCenter({
-    ZacValue<Key?>? key,
-    ZacValue<double?>? widthFactor,
-    ZacValue<double?>? heightFactor,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<double?>? widthFactor,
+    ZacBuilder<double?>? heightFactor,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterCenter;
 
   Center _buildWidget(ZacContext zacContext) {
     return Center(
-      key: key?.getValue(zacContext),
-      widthFactor: widthFactor?.getValue(zacContext),
-      heightFactor: heightFactor?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      widthFactor: widthFactor?.build(zacContext),
+      heightFactor: heightFactor?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

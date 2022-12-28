@@ -11,10 +11,10 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
     _$_FlutterElevatedButton(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -23,10 +23,10 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -35,9 +35,9 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
     _$_FlutterElevatedButtonIcon(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      icon: ZacValue<Widget>.fromJson(json['icon'] as Object),
-      label: ZacValue<Widget>.fromJson(json['label'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
+      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -46,10 +46,10 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -58,8 +58,8 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
     _$_FlutterOutlinedButton(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -68,10 +68,10 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -80,9 +80,9 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
     _$_FlutterOutlinedButtonIcon(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      icon: ZacValue<Widget>.fromJson(json['icon'] as Object),
-      label: ZacValue<Widget>.fromJson(json['label'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
+      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -91,10 +91,10 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -102,8 +102,8 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
     _$_FlutterTextButton(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -112,10 +112,10 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -124,9 +124,9 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
     _$_FlutterTextButtonIcon(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      icon: ZacValue<Widget>.fromJson(json['icon'] as Object),
-      label: ZacValue<Widget>.fromJson(json['label'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
+      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
           : ZacActions.fromJson(json['onPressed'] as Object),
@@ -135,9 +135,9 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
           : ZacActions.fromJson(json['onLongPress'] as Object),
       autofocus: json['autofocus'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['autofocus'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
       clipBehavior: json['clipBehavior'] == null
           ? null
-          : ZacValue<Clip?>.fromJson(json['clipBehavior'] as Object),
+          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
       $type: json['builder'] as String?,
     );

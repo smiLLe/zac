@@ -11,7 +11,7 @@ part 'sized_overflow_box.g.dart';
 @freezedZacBuilder
 class FlutterSizedOverflowBox
     with _$FlutterSizedOverflowBox
-    implements ZacBuild<SizedOverflowBox> {
+    implements ZacBuilder<SizedOverflowBox> {
   const FlutterSizedOverflowBox._();
 
   static const String unionValue = 'f:1:SizedOverflowBox';
@@ -21,18 +21,18 @@ class FlutterSizedOverflowBox
 
   @FreezedUnionValue(FlutterSizedOverflowBox.unionValue)
   factory FlutterSizedOverflowBox({
-    ZacValue<Key?>? key,
-    required ZacValue<Size> size,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Size> size,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterSizedOverflowBox;
 
   SizedOverflowBox _buildWidget(ZacContext zacContext) {
     return SizedOverflowBox(
-      key: key?.getValue(zacContext),
-      size: size.getValue(zacContext),
-      alignment: alignment?.getValue(zacContext) ?? Alignment.center,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      size: size.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? Alignment.center,
+      child: child?.build(zacContext),
     );
   }
 

@@ -13,7 +13,7 @@ part 'material_app.g.dart';
 @freezedZacBuilder
 class FlutterMaterialApp
     with _$FlutterMaterialApp
-    implements ZacBuild<MaterialApp> {
+    implements ZacBuilder<MaterialApp> {
   const FlutterMaterialApp._();
 
   static const String unionValue = 'f:1:MaterialApp';
@@ -23,20 +23,20 @@ class FlutterMaterialApp
 
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
-    ZacValue<Key?>? key,
-    ZacValueConsume<GlobalKey<NavigatorState>>? navigatorKey,
-    ZacValueConsume<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
-    ZacValue<Widget?>? home,
+    ZacBuilder<Key?>? key,
+    ConsumeSharedValue<GlobalKey<NavigatorState>>? navigatorKey,
+    ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
+    ZacBuilder<Widget?>? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
-    ZacValue<String?>? initialRoute,
+    ZacBuilder<String?>? initialRoute,
     FlutterRouteFactory? onGenerateRoute,
     // InitialRouteListFactory? onGenerateInitialRoutes,
     FlutterRouteFactory? onUnknownRoute,
     // List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
     // TransitionBuilder? builder,
-    ZacValue<String?>? title,
+    ZacBuilder<String?>? title,
     // GenerateAppTitle? onGenerateTitle,
-    ZacValue<Color?>? color,
+    ZacBuilder<Color?>? color,
     // ThemeData? theme,
     // ThemeData? darkTheme,
     // ThemeData? highContrastTheme,
@@ -47,46 +47,44 @@ class FlutterMaterialApp
     // LocaleListResolutionCallback? localeListResolutionCallback,
     // LocaleResolutionCallback? localeResolutionCallback,
     // Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
-    ZacValue<bool?>? debugShowMaterialGrid,
-    ZacValue<bool?>? showPerformanceOverlay,
-    ZacValue<bool?>? checkerboardRasterCacheImages,
-    ZacValue<bool?>? checkerboardOffscreenLayers,
-    ZacValue<bool?>? showSemanticsDebugger,
-    ZacValue<bool?>? debugShowCheckedModeBanner,
+    ZacBuilder<bool?>? debugShowMaterialGrid,
+    ZacBuilder<bool?>? showPerformanceOverlay,
+    ZacBuilder<bool?>? checkerboardRasterCacheImages,
+    ZacBuilder<bool?>? checkerboardOffscreenLayers,
+    ZacBuilder<bool?>? showSemanticsDebugger,
+    ZacBuilder<bool?>? debugShowCheckedModeBanner,
     // Map<ShortcutActivator, Intent>? shortcuts,
     // Map<Type, Action<Intent>>? actions,
-    ZacValue<String?>? restorationScopeId,
+    ZacBuilder<String?>? restorationScopeId,
     // ScrollBehavior? scrollBehavior,
-    ZacValue<bool?>? useInheritedMediaQuery,
+    ZacBuilder<bool?>? useInheritedMediaQuery,
   }) = _FlutterMaterialApp;
 
   MaterialApp _buildWidget(ZacContext zacContext) {
     return MaterialApp(
-      key: key?.getValue(zacContext),
-      navigatorKey: navigatorKey?.getValue(zacContext),
-      scaffoldMessengerKey: scaffoldMessengerKey?.getValue(zacContext),
-      home: home?.getValue(zacContext),
-      initialRoute: initialRoute?.getValue(zacContext),
+      key: key?.build(zacContext),
+      navigatorKey: navigatorKey?.build(zacContext),
+      scaffoldMessengerKey: scaffoldMessengerKey?.build(zacContext),
+      home: home?.build(zacContext),
+      initialRoute: initialRoute?.build(zacContext),
       onGenerateRoute: onGenerateRoute?.build(zacContext),
       onUnknownRoute: onUnknownRoute?.build(zacContext),
-      title: title?.getValue(zacContext) ?? '',
-      color: color?.getValue(zacContext),
+      title: title?.build(zacContext) ?? '',
+      color: color?.build(zacContext),
       locale: locale?.build(zacContext),
-      debugShowMaterialGrid:
-          debugShowMaterialGrid?.getValue(zacContext) ?? false,
+      debugShowMaterialGrid: debugShowMaterialGrid?.build(zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.getValue(zacContext) ?? false,
+          showPerformanceOverlay?.build(zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.getValue(zacContext) ?? false,
+          checkerboardRasterCacheImages?.build(zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.getValue(zacContext) ?? false,
-      showSemanticsDebugger:
-          showSemanticsDebugger?.getValue(zacContext) ?? false,
+          checkerboardOffscreenLayers?.build(zacContext) ?? false,
+      showSemanticsDebugger: showSemanticsDebugger?.build(zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.getValue(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.getValue(zacContext),
+          debugShowCheckedModeBanner?.build(zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.build(zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.getValue(zacContext) ?? false,
+          useInheritedMediaQuery?.build(zacContext) ?? false,
     );
   }
 

@@ -10,7 +10,7 @@ part 'drawer.freezed.dart';
 part 'drawer.g.dart';
 
 @freezedZacBuilder
-class FlutterDrawer with _$FlutterDrawer implements ZacBuild<Drawer> {
+class FlutterDrawer with _$FlutterDrawer implements ZacBuilder<Drawer> {
   const FlutterDrawer._();
 
   static const String unionValue = 'f:1:Drawer';
@@ -20,22 +20,22 @@ class FlutterDrawer with _$FlutterDrawer implements ZacBuild<Drawer> {
 
   @FreezedUnionValue(FlutterDrawer.unionValue)
   factory FlutterDrawer({
-    ZacValue<Key?>? key,
-    ZacValue<Color?>? backgroundColor,
-    ZacValue<double?>? elevation,
-    ZacValue<ShapeBorder?>? shape,
-    ZacValue<Widget?>? child,
-    ZacValue<String?>? semanticLabel,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<String?>? semanticLabel,
   }) = _FlutterDrawer;
 
   Drawer _buildWidget(ZacContext zacContext) {
     return Drawer(
-      key: key?.getValue(zacContext),
-      backgroundColor: backgroundColor?.getValue(zacContext),
-      elevation: elevation?.getValue(zacContext),
-      semanticLabel: semanticLabel?.getValue(zacContext),
-      shape: shape?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      backgroundColor: backgroundColor?.build(zacContext),
+      elevation: elevation?.build(zacContext),
+      semanticLabel: semanticLabel?.build(zacContext),
+      shape: shape?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

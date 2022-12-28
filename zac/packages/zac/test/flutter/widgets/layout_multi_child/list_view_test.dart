@@ -132,7 +132,7 @@ void main() {
             'builder': 'f:1:ListView',
             'key': KeysModel.getValueKey('FINDME'),
             'controller': {
-              'builder': 'z:1:ZacValue.consume',
+              'builder': 'z:1:SharedValue.consume',
               'family': 'Zac.ScrollController',
             },
           },

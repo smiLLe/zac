@@ -19,7 +19,7 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
       actions: ZacActions.fromJson(json['actions'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -30,7 +30,7 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
       family: json['family'] as Object,
       child: json['child'] == null
           ? null
-          : ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget>.fromJson(json['child'] as Object),
       $type: json['builder'] as String?,
     );
 

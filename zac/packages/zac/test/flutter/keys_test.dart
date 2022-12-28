@@ -43,15 +43,15 @@ void main() {
               family: 'shared',
               child: LeakContext(
                 cb: (z) => zacContext = z,
-              ).toZacValue(),
+              ),
             ),
           ),
         ),
       );
 
       expect(
-          ZacValueConsume<GlobalKey<NavigatorState>>(family: 'shared')
-              .getValue(zacContext),
+          ConsumeSharedValue<GlobalKey<NavigatorState>>(family: 'shared')
+              .build(zacContext),
           isA<GlobalKey<NavigatorState>>());
     });
   });
@@ -71,15 +71,16 @@ void main() {
               family: 'shared',
               child: LeakContext(
                 cb: (z) => zacContext = z,
-              ).toZacValue(),
+              ),
             ),
           ),
         ),
       );
 
       expect(
-          ZacValueConsume<GlobalKey<ScaffoldMessengerState>>(family: 'shared')
-              .getValue(zacContext),
+          ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>(
+                  family: 'shared')
+              .build(zacContext),
           isA<GlobalKey<ScaffoldMessengerState>>());
     });
   });

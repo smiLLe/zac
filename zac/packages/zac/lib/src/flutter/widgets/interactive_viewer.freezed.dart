@@ -21,20 +21,20 @@ FlutterInteractiveViewer _$FlutterInteractiveViewerFromJson(
 
 /// @nodoc
 mixin _$FlutterInteractiveViewer {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get alignPanAxis => throw _privateConstructorUsedError;
-  ZacValue<EdgeInsets?>? get boundaryMargin =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get alignPanAxis => throw _privateConstructorUsedError;
+  ZacBuilder<EdgeInsets?>? get boundaryMargin =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get constrained => throw _privateConstructorUsedError;
-  ZacValue<double?>? get maxScale => throw _privateConstructorUsedError;
-  ZacValue<double?>? get minScale => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get constrained => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get maxScale => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get minScale => throw _privateConstructorUsedError;
   ZacActions? get onInteractionEnd => throw _privateConstructorUsedError;
   ZacActions? get onInteractionStart => throw _privateConstructorUsedError;
   ZacActions? get onInteractionUpdate => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get panEnabled => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get scaleEnabled => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get panEnabled => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get scaleEnabled => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -66,21 +66,21 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
       _$$_FlutterInteractiveViewerFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacValue<bool?>? alignPanAxis;
+  final ZacBuilder<bool?>? alignPanAxis;
   @override
-  final ZacValue<EdgeInsets?>? boundaryMargin;
+  final ZacBuilder<EdgeInsets?>? boundaryMargin;
   @override
-  final ZacValue<bool?>? constrained;
+  final ZacBuilder<bool?>? constrained;
   @override
-  final ZacValue<double?>? maxScale;
+  final ZacBuilder<double?>? maxScale;
   @override
-  final ZacValue<double?>? minScale;
+  final ZacBuilder<double?>? minScale;
   @override
   final ZacActions? onInteractionEnd;
   @override
@@ -88,9 +88,9 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacActions? onInteractionUpdate;
   @override
-  final ZacValue<bool?>? panEnabled;
+  final ZacBuilder<bool?>? panEnabled;
   @override
-  final ZacValue<bool?>? scaleEnabled;
+  final ZacBuilder<bool?>? scaleEnabled;
 
   @override
   String toString() {
@@ -157,40 +157,40 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
 
 abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   factory _FlutterInteractiveViewer(
-      {final ZacValue<Key?>? key,
-      required final ZacValue<Widget> child,
-      final ZacValue<Clip?>? clipBehavior,
-      final ZacValue<bool?>? alignPanAxis,
-      final ZacValue<EdgeInsets?>? boundaryMargin,
-      final ZacValue<bool?>? constrained,
-      final ZacValue<double?>? maxScale,
-      final ZacValue<double?>? minScale,
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> child,
+      final ZacBuilder<Clip?>? clipBehavior,
+      final ZacBuilder<bool?>? alignPanAxis,
+      final ZacBuilder<EdgeInsets?>? boundaryMargin,
+      final ZacBuilder<bool?>? constrained,
+      final ZacBuilder<double?>? maxScale,
+      final ZacBuilder<double?>? minScale,
       final ZacActions? onInteractionEnd,
       final ZacActions? onInteractionStart,
       final ZacActions? onInteractionUpdate,
-      final ZacValue<bool?>? panEnabled,
-      final ZacValue<bool?>? scaleEnabled}) = _$_FlutterInteractiveViewer;
+      final ZacBuilder<bool?>? panEnabled,
+      final ZacBuilder<bool?>? scaleEnabled}) = _$_FlutterInteractiveViewer;
   _FlutterInteractiveViewer._() : super._();
 
   factory _FlutterInteractiveViewer.fromJson(Map<String, dynamic> json) =
       _$_FlutterInteractiveViewer.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacValue<bool?>? get alignPanAxis;
+  ZacBuilder<bool?>? get alignPanAxis;
   @override
-  ZacValue<EdgeInsets?>? get boundaryMargin;
+  ZacBuilder<EdgeInsets?>? get boundaryMargin;
   @override
-  ZacValue<bool?>? get constrained;
+  ZacBuilder<bool?>? get constrained;
   @override
-  ZacValue<double?>? get maxScale;
+  ZacBuilder<double?>? get maxScale;
   @override
-  ZacValue<double?>? get minScale;
+  ZacBuilder<double?>? get minScale;
   @override
   ZacActions? get onInteractionEnd;
   @override
@@ -198,7 +198,7 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacActions? get onInteractionUpdate;
   @override
-  ZacValue<bool?>? get panEnabled;
+  ZacBuilder<bool?>? get panEnabled;
   @override
-  ZacValue<bool?>? get scaleEnabled;
+  ZacBuilder<bool?>? get scaleEnabled;
 }

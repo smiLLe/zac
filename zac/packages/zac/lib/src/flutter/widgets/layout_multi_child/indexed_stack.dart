@@ -11,7 +11,7 @@ part 'indexed_stack.g.dart';
 @freezedZacBuilder
 class FlutterIndexedStack
     with _$FlutterIndexedStack
-    implements ZacBuild<IndexedStack> {
+    implements ZacBuilder<IndexedStack> {
   const FlutterIndexedStack._();
 
   static const String unionValue = 'f:1:IndexedStack';
@@ -21,23 +21,22 @@ class FlutterIndexedStack
 
   @FreezedUnionValue(FlutterIndexedStack.unionValue)
   factory FlutterIndexedStack({
-    ZacValue<Key?>? key,
-    ZacValue<AlignmentGeometry?>? alignment,
-    ZacValue<TextDirection?>? textDirection,
-    ZacValue<StackFit?>? sizing,
-    ZacValue<int?>? index,
-    ZacValueList<Widget, List<Widget>?>? children,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<AlignmentGeometry?>? alignment,
+    ZacBuilder<TextDirection?>? textDirection,
+    ZacBuilder<StackFit?>? sizing,
+    ZacBuilder<int?>? index,
+    ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterIndexedStack;
 
   IndexedStack _buildWidget(ZacContext zacContext) {
     return IndexedStack(
-      key: key?.getValue(zacContext),
-      alignment:
-          alignment?.getValue(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.getValue(zacContext),
-      sizing: sizing?.getValue(zacContext) ?? StackFit.loose,
-      index: index?.getValue(zacContext),
-      children: children?.getList(zacContext) ?? const <Widget>[],
+      key: key?.build(zacContext),
+      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(zacContext),
+      sizing: sizing?.build(zacContext) ?? StackFit.loose,
+      index: index?.build(zacContext),
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

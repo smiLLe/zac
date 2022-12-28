@@ -35,10 +35,10 @@ void main() {
         tester,
         FlutterScaffold(
           body: FlutterListTile(
-            key: FlutterValueKey('FIND_ME').toZacValue(),
+            key: FlutterValueKey('FIND_ME'),
             onTap: LeakAction.createActions(onTapCb),
             onLongPress: LeakAction.createActions(onLongPressCb),
-          ).toZacValue(),
+          ),
         ));
 
     final findMe = find.byKey(const ValueKey('FIND_ME'));

@@ -13,7 +13,7 @@ part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';
 
 @freezedZacBuilder
-class ZacTransition with _$ZacTransition implements ZacBuild<ZacTransition> {
+class ZacTransition with _$ZacTransition implements ZacBuilder<ZacTransition> {
   ZacTransition._();
 
   static const String unionValue = 'z:1:StateMachine:Transition';
@@ -32,7 +32,9 @@ class ZacTransition with _$ZacTransition implements ZacBuild<ZacTransition> {
 }
 
 @freezedZacBuilder
-class ZacStateConfig with _$ZacStateConfig implements ZacBuild<ZacStateConfig> {
+class ZacStateConfig
+    with _$ZacStateConfig
+    implements ZacBuilder<ZacStateConfig> {
   ZacStateConfig._();
 
   static const String unionValue = 'z:1:StateMachine:StateConfig';
@@ -42,7 +44,7 @@ class ZacStateConfig with _$ZacStateConfig implements ZacBuild<ZacStateConfig> {
 
   @FreezedUnionValue(ZacStateConfig.unionValue)
   factory ZacStateConfig({
-    required ZacValue<Widget> widget,
+    required ZacBuilder<Widget> widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
 
@@ -74,7 +76,7 @@ All configured states are "${states.keys.join(', ')}".
     return states[state]!;
   }
 
-  ZacValue<Widget> getWidget(ZacContext zacContext) {
+  ZacBuilder<Widget> getWidget(ZacContext zacContext) {
     return config.widget;
   }
 
@@ -99,7 +101,7 @@ Could not find State "$state" in $this'''),
 @freezedZacBuilder
 class ZacStateMachineProviderBuilder
     with _$ZacStateMachineProviderBuilder
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   const ZacStateMachineProviderBuilder._();
   static const String unionValue = 'z:1:StateMachine.provide';
 
@@ -108,12 +110,12 @@ class ZacStateMachineProviderBuilder
 
   @FreezedUnionValue(ZacStateMachineProviderBuilder.unionValue)
   factory ZacStateMachineProviderBuilder({
-    ZacValue<Key?>? key,
-    required ZacValue<String> family,
-    required ZacValue<String> initialState,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<String> family,
+    required ZacBuilder<String> initialState,
     required ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> states,
-    required ZacValue<Widget> child,
-    ZacValue<Object?>? initialContext,
+    required ZacBuilder<Widget> child,
+    ZacBuilder<Object?>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
@@ -159,8 +161,8 @@ because there was already a transition.''');
 
     return ZacStateMachine(
       states: states.build(zacContext),
-      state: initialState.getValue(zacContext),
-      context: initialContext?.getValue(zacContext),
+      state: initialState.build(zacContext),
+      context: initialContext?.build(zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
@@ -169,10 +171,10 @@ because there was already a transition.''');
 
   Widget _buildWidget(ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.getValue(zacContext),
-      family: family.getValue(zacContext),
+      key: key?.build(zacContext),
+      family: family.build(zacContext),
       autoCreate: true,
-      childBuilder: child.getValue,
+      childBuilder: child.build,
       valueBuilder: _createMachine,
     );
   }
@@ -186,7 +188,7 @@ because there was already a transition.''');
 @freezedZacBuilder
 class ZacStateMachineBuildStateBuilder
     with _$ZacStateMachineBuildStateBuilder
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   const ZacStateMachineBuildStateBuilder._();
   static const String unionValue = 'z:1:StateMachine:BuildState';
 
@@ -196,19 +198,19 @@ class ZacStateMachineBuildStateBuilder
 
   @FreezedUnionValue(ZacStateMachineBuildStateBuilder.unionValue)
   factory ZacStateMachineBuildStateBuilder({
-    ZacValue<Key?>? key,
-    required ZacValue<String> family,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<String> family,
     required List<String> states,
-    ZacValue<Widget?>? unmappedStateWidget,
+    ZacBuilder<Widget?>? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
 
   ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.getValue(zacContext),
-      family: family.getValue(zacContext),
+      key: key?.build(zacContext),
+      family: family.build(zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          unmappedStateWidget?.getValue(zacContext) ?? const SizedBox.shrink(),
+          unmappedStateWidget?.build(zacContext) ?? const SizedBox.shrink(),
     );
   }
 
@@ -258,7 +260,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.getWidget(zacContext).getValue(zacContext);
+      return machine.getWidget(zacContext).build(zacContext);
     }
     return unmappedStateWidget(zacContext);
   }
@@ -279,13 +281,13 @@ class ZacStateMachineActions
   @FreezedUnionValue(ZacStateMachineActions.unionValue)
   factory ZacStateMachineActions.send({
     required SharedValueFamily family,
-    required ZacValue<String> event,
+    required ZacBuilder<String> event,
   }) = _ZacStateMachineActionsSend;
 
   @FreezedUnionValue(ZacStateMachineActions.unionValueTrySend)
   factory ZacStateMachineActions.trySend({
     required SharedValueFamily family,
-    required ZacValue<String> event,
+    required ZacBuilder<String> event,
   }) = _ZacStateMachineActionsTrySend;
 
   @override
@@ -298,9 +300,8 @@ class ZacStateMachineActions
           family: obj.family,
         ) as ZacStateMachine;
         machine.send(
-            obj.event.getValue(
+            obj.event.build(
               zacContext,
-              onConsume: const SharedValueConsumeType.read(),
             ),
             payload.params);
       },
@@ -311,9 +312,8 @@ class ZacStateMachineActions
           family: obj.family,
         ) as ZacStateMachine;
         machine.trySend(
-            obj.event.getValue(
+            obj.event.build(
               zacContext,
-              onConsume: const SharedValueConsumeType.read(),
             ),
             payload.params);
       },

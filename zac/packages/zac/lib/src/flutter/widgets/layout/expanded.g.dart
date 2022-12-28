@@ -10,9 +10,9 @@ _$_FlutterExpanded _$$_FlutterExpandedFromJson(Map<String, dynamic> json) =>
     _$_FlutterExpanded(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       flex: json['flex'] == null
           ? null
-          : ZacValue<int?>.fromJson(json['flex'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+          : ZacBuilder<int?>.fromJson(json['flex'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );

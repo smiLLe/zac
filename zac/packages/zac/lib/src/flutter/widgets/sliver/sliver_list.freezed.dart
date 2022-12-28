@@ -20,7 +20,7 @@ FlutterSliverList _$FlutterSliverListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterSliverList {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   FlutterSliverChildDelegate get delegate => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -39,7 +39,7 @@ class _$_FlutterSliverList extends _FlutterSliverList {
       _$$_FlutterSliverListFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
   final FlutterSliverChildDelegate delegate;
 
@@ -73,7 +73,7 @@ class _$_FlutterSliverList extends _FlutterSliverList {
 
 abstract class _FlutterSliverList extends FlutterSliverList {
   factory _FlutterSliverList(
-          {final ZacValue<Key?>? key,
+          {final ZacBuilder<Key?>? key,
           required final FlutterSliverChildDelegate delegate}) =
       _$_FlutterSliverList;
   _FlutterSliverList._() : super._();
@@ -82,7 +82,7 @@ abstract class _FlutterSliverList extends FlutterSliverList {
       _$_FlutterSliverList.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
   FlutterSliverChildDelegate get delegate;
 }

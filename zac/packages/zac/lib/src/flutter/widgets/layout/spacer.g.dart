@@ -10,8 +10,8 @@ _$_FlutterSpacer _$$_FlutterSpacerFromJson(Map<String, dynamic> json) =>
     _$_FlutterSpacer(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       flex: json['flex'] == null
           ? null
-          : ZacValue<int?>.fromJson(json['flex'] as Object),
+          : ZacBuilder<int?>.fromJson(json['flex'] as Object),
     );

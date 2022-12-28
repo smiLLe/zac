@@ -9,7 +9,7 @@ part 'foundation.g.dart';
 @freezedZacBuilder
 class FlutterValueKey
     with _$FlutterValueKey
-    implements ZacBuild<ValueKey<String>> {
+    implements ZacBuilder<ValueKey<String>> {
   FlutterValueKey._();
 
   factory FlutterValueKey.fromJson(Map<String, dynamic> json) =>
@@ -29,7 +29,7 @@ class FlutterValueKey
 @freezedZacBuilder
 class FlutterGlobalKeyNavigatorStateProvider
     with _$FlutterGlobalKeyNavigatorStateProvider
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   FlutterGlobalKeyNavigatorStateProvider._();
 
   factory FlutterGlobalKeyNavigatorStateProvider.fromJson(
@@ -38,22 +38,22 @@ class FlutterGlobalKeyNavigatorStateProvider
 
   @FreezedUnionValue('z:1:GlobalKey<NavigatorState>.provide')
   factory FlutterGlobalKeyNavigatorStateProvider({
-    ZacValue<String?>? debugLabel,
+    ZacBuilder<String?>? debugLabel,
     required SharedValueFamily family,
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
   }) = _FlutterGlobalKeyNavigatorStateProvider;
 
   GlobalKey<NavigatorState> _valueBuilder(
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return GlobalKey<NavigatorState>(
-      debugLabel: debugLabel?.getValue(zacContext),
+      debugLabel: debugLabel?.build(zacContext),
     );
   }
 
   @override
   Widget build(ZacContext zacContext) {
     return SharedValueProvider(
-      childBuilder: child.getValue,
+      childBuilder: child.build,
       valueBuilder: _valueBuilder,
       family: family,
     );
@@ -63,7 +63,7 @@ class FlutterGlobalKeyNavigatorStateProvider
 @freezedZacBuilder
 class FlutterGlobalKeyScaffoldMessengerStateProvider
     with _$FlutterGlobalKeyScaffoldMessengerStateProvider
-    implements ZacBuild<Widget> {
+    implements ZacBuilder<Widget> {
   FlutterGlobalKeyScaffoldMessengerStateProvider._();
 
   factory FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson(
@@ -72,22 +72,22 @@ class FlutterGlobalKeyScaffoldMessengerStateProvider
 
   @FreezedUnionValue('z:1:GlobalKey<ScaffoldMessengerState>.provide')
   factory FlutterGlobalKeyScaffoldMessengerStateProvider({
-    ZacValue<String?>? debugLabel,
+    ZacBuilder<String?>? debugLabel,
     required SharedValueFamily family,
-    required ZacValue<Widget> child,
+    required ZacBuilder<Widget> child,
   }) = _FlutterGlobalKeyScaffoldMessengerStateProvider;
 
   GlobalKey<ScaffoldMessengerState> _valueBuilder(
       AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
     return GlobalKey<ScaffoldMessengerState>(
-      debugLabel: debugLabel?.getValue(zacContext),
+      debugLabel: debugLabel?.build(zacContext),
     );
   }
 
   @override
   Widget build(ZacContext zacContext) {
     return SharedValueProvider(
-      childBuilder: child.getValue,
+      childBuilder: child.build,
       valueBuilder: _valueBuilder,
       family: family,
     );

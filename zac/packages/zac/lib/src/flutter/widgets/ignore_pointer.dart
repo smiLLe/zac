@@ -13,7 +13,7 @@ part 'ignore_pointer.g.dart';
 @freezedZacBuilder
 class FlutterIgnorePointer
     with _$FlutterIgnorePointer
-    implements ZacBuild<IgnorePointer> {
+    implements ZacBuilder<IgnorePointer> {
   const FlutterIgnorePointer._();
 
   static const String unionValue = 'f:1:IgnorePointer';
@@ -23,18 +23,18 @@ class FlutterIgnorePointer
 
   @FreezedUnionValue(FlutterIgnorePointer.unionValue)
   factory FlutterIgnorePointer({
-    ZacValue<Key?>? key,
-    ZacValue<bool?>? ignoring,
-    ZacValue<bool?>? ignoringSemantics,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<bool?>? ignoring,
+    ZacBuilder<bool?>? ignoringSemantics,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterIgnorePointer;
 
   IgnorePointer _buildWidget(ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.getValue(zacContext),
-      ignoring: ignoring?.getValue(zacContext) ?? true,
-      ignoringSemantics: ignoringSemantics?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      ignoring: ignoring?.build(zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

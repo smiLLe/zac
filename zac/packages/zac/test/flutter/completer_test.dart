@@ -24,10 +24,10 @@ void main() {
             family: 'shared',
             child: LeakContext(
               cb: (zacContext) {
-                c = ZacValueConsume<Completer>(family: 'shared')
-                    .getValue(zacContext);
+                c = ConsumeSharedValue<Completer>(family: 'shared')
+                    .build(zacContext);
               },
-            ).toZacValue(),
+            ),
           ),
         ),
       ),
@@ -62,17 +62,17 @@ void main() {
               cb: (z) {
                 zacContext = z;
               },
-            ).toZacValue(),
+            ),
           ),
         ),
       ),
     );
 
     final completer =
-        ZacValueConsume<Completer>(family: 'shared').getValue(zacContext);
+        ConsumeSharedValue<Completer>(family: 'shared').build(zacContext);
 
     ZacCompleterActions.completeVoid(
-            completer: ZacValueConsume<Completer>(family: 'shared'))
+            completer: ConsumeSharedValue<Completer>(family: 'shared'))
         .execute(const ZacActionPayload(), zacContext);
 
     expect(completer.isCompleted, isTrue);

@@ -11,14 +11,14 @@ _$_FlutterIgnorePointer _$$_FlutterIgnorePointerFromJson(
     _$_FlutterIgnorePointer(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       ignoring: json['ignoring'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['ignoring'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['ignoring'] as Object),
       ignoringSemantics: json['ignoringSemantics'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['ignoringSemantics'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['ignoringSemantics'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );

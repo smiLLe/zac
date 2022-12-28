@@ -14,7 +14,7 @@ _$_ZacTransition _$$_ZacTransitionFromJson(Map<String, dynamic> json) =>
 
 _$_ZacStateConfig _$$_ZacStateConfigFromJson(Map<String, dynamic> json) =>
     _$_ZacStateConfig(
-      widget: ZacValue<Widget>.fromJson(json['widget'] as Object),
+      widget: ZacBuilder<Widget>.fromJson(json['widget'] as Object),
       on: (json['on'] as List<dynamic>?)
               ?.map((e) => ZacTransition.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -26,15 +26,15 @@ _$_ZacStateMachineProviderBuilder _$$_ZacStateMachineProviderBuilderFromJson(
     _$_ZacStateMachineProviderBuilder(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      family: ZacValue<String>.fromJson(json['family'] as Object),
-      initialState: ZacValue<String>.fromJson(json['initialState'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      family: ZacBuilder<String>.fromJson(json['family'] as Object),
+      initialState: ZacBuilder<String>.fromJson(json['initialState'] as Object),
       states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>.fromJson(
           json['states'] as Object),
-      child: ZacValue<Widget>.fromJson(json['child'] as Object),
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       initialContext: json['initialContext'] == null
           ? null
-          : ZacValue<Object?>.fromJson(json['initialContext'] as Object),
+          : ZacBuilder<Object?>.fromJson(json['initialContext'] as Object),
     );
 
 _$_ZacStateMachineBuildStateBuilder
@@ -42,14 +42,14 @@ _$_ZacStateMachineBuildStateBuilder
         _$_ZacStateMachineBuildStateBuilder(
           key: json['key'] == null
               ? null
-              : ZacValue<Key?>.fromJson(json['key'] as Object),
-          family: ZacValue<String>.fromJson(json['family'] as Object),
+              : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+          family: ZacBuilder<String>.fromJson(json['family'] as Object),
           states: (json['states'] as List<dynamic>)
               .map((e) => e as String)
               .toList(),
           unmappedStateWidget: json['unmappedStateWidget'] == null
               ? null
-              : ZacValue<Widget?>.fromJson(
+              : ZacBuilder<Widget?>.fromJson(
                   json['unmappedStateWidget'] as Object),
         );
 
@@ -57,7 +57,7 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
         Map<String, dynamic> json) =>
     _$_ZacStateMachineActionsSend(
       family: json['family'] as Object,
-      event: ZacValue<String>.fromJson(json['event'] as Object),
+      event: ZacBuilder<String>.fromJson(json['event'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -65,7 +65,7 @@ _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
         Map<String, dynamic> json) =>
     _$_ZacStateMachineActionsTrySend(
       family: json['family'] as Object,
-      event: ZacValue<String>.fromJson(json['event'] as Object),
+      event: ZacBuilder<String>.fromJson(json['event'] as Object),
       $type: json['builder'] as String?,
     );
 

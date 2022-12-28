@@ -10,12 +10,13 @@ _$_FlutterOpacity _$$_FlutterOpacityFromJson(Map<String, dynamic> json) =>
     _$_FlutterOpacity(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
-      opacity: ZacValue<double>.fromJson(json['opacity'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      opacity: ZacBuilder<double>.fromJson(json['opacity'] as Object),
       alwaysIncludeSemantics: json['alwaysIncludeSemantics'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['alwaysIncludeSemantics'] as Object),
+          : ZacBuilder<bool?>.fromJson(
+              json['alwaysIncludeSemantics'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );

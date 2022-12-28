@@ -9,7 +9,7 @@ part 'clip_rect.freezed.dart';
 part 'clip_rect.g.dart';
 
 @freezedZacBuilder
-class FlutterClipRect with _$FlutterClipRect implements ZacBuild<ClipRect> {
+class FlutterClipRect with _$FlutterClipRect implements ZacBuilder<ClipRect> {
   const FlutterClipRect._();
 
   static const String unionValue = 'f:1:ClipRect';
@@ -19,17 +19,17 @@ class FlutterClipRect with _$FlutterClipRect implements ZacBuild<ClipRect> {
 
   @FreezedUnionValue(FlutterClipRect.unionValue)
   factory FlutterClipRect({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
     // CustomClipper<Rect>? clipper,
-    ZacValue<Clip?>? clipBehavior,
+    ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterClipRect;
 
   ClipRect _buildWidget(ZacContext zacContext) {
     return ClipRect(
-      key: key?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      child: child?.build(zacContext),
     );
   }
 

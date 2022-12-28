@@ -11,7 +11,7 @@ part 'flexible.freezed.dart';
 part 'flexible.g.dart';
 
 @freezedZacBuilder
-class FlutterFlexible with _$FlutterFlexible implements ZacBuild<Flexible> {
+class FlutterFlexible with _$FlutterFlexible implements ZacBuilder<Flexible> {
   const FlutterFlexible._();
 
   static const String unionValue = 'f:1:Flexible';
@@ -21,18 +21,18 @@ class FlutterFlexible with _$FlutterFlexible implements ZacBuild<Flexible> {
 
   @FreezedUnionValue(FlutterFlexible.unionValue)
   factory FlutterFlexible({
-    ZacValue<Key?>? key,
-    ZacValue<int?>? flex,
-    ZacValue<FlexFit?>? fit,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<int?>? flex,
+    ZacBuilder<FlexFit?>? fit,
+    required ZacBuilder<Widget> child,
   }) = _FlutterFlexible;
 
   Flexible _buildWidget(ZacContext zacContext) {
     return Flexible(
-      key: key?.getValue(zacContext),
-      flex: flex?.getValue(zacContext) ?? 1,
-      fit: fit?.getValue(zacContext) ?? FlexFit.loose,
-      child: child.getValue(zacContext),
+      key: key?.build(zacContext),
+      flex: flex?.build(zacContext) ?? 1,
+      fit: fit?.build(zacContext) ?? FlexFit.loose,
+      child: child.build(zacContext),
     );
   }
 

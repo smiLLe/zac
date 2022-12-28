@@ -20,9 +20,9 @@ FlutterOffstage _$FlutterOffstageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterOffstage {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get offstage => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get offstage => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -40,11 +40,11 @@ class _$_FlutterOffstage extends _FlutterOffstage {
       _$$_FlutterOffstageFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<bool?>? offstage;
+  final ZacBuilder<bool?>? offstage;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -77,18 +77,18 @@ class _$_FlutterOffstage extends _FlutterOffstage {
 
 abstract class _FlutterOffstage extends FlutterOffstage {
   factory _FlutterOffstage(
-      {final ZacValue<Key?>? key,
-      final ZacValue<bool?>? offstage,
-      final ZacValue<Widget?>? child}) = _$_FlutterOffstage;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<bool?>? offstage,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterOffstage;
   _FlutterOffstage._() : super._();
 
   factory _FlutterOffstage.fromJson(Map<String, dynamic> json) =
       _$_FlutterOffstage.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<bool?>? get offstage;
+  ZacBuilder<bool?>? get offstage;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

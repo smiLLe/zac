@@ -11,7 +11,7 @@ part 'opacity.freezed.dart';
 part 'opacity.g.dart';
 
 @freezedZacBuilder
-class FlutterOpacity with _$FlutterOpacity implements ZacBuild<Opacity> {
+class FlutterOpacity with _$FlutterOpacity implements ZacBuilder<Opacity> {
   const FlutterOpacity._();
 
   static const String unionValue = 'f:1:Opacity';
@@ -21,19 +21,19 @@ class FlutterOpacity with _$FlutterOpacity implements ZacBuild<Opacity> {
 
   @FreezedUnionValue(FlutterOpacity.unionValue)
   factory FlutterOpacity({
-    ZacValue<Key?>? key,
-    required ZacValue<double> opacity,
-    ZacValue<bool?>? alwaysIncludeSemantics,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<double> opacity,
+    ZacBuilder<bool?>? alwaysIncludeSemantics,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterOpacity;
 
   Opacity _buildWidget(ZacContext zacContext) {
     return Opacity(
-      key: key?.getValue(zacContext),
-      opacity: opacity.getValue(zacContext),
+      key: key?.build(zacContext),
+      opacity: opacity.build(zacContext),
       alwaysIncludeSemantics:
-          alwaysIncludeSemantics?.getValue(zacContext) ?? false,
-      child: child?.getValue(zacContext),
+          alwaysIncludeSemantics?.build(zacContext) ?? false,
+      child: child?.build(zacContext),
     );
   }
 

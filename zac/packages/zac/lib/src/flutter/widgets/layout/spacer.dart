@@ -9,7 +9,7 @@ part 'spacer.freezed.dart';
 part 'spacer.g.dart';
 
 @freezedZacBuilder
-class FlutterSpacer with _$FlutterSpacer implements ZacBuild<Spacer> {
+class FlutterSpacer with _$FlutterSpacer implements ZacBuilder<Spacer> {
   const FlutterSpacer._();
 
   static const String unionValue = 'f:1:Spacer';
@@ -19,14 +19,14 @@ class FlutterSpacer with _$FlutterSpacer implements ZacBuild<Spacer> {
 
   @FreezedUnionValue(FlutterSpacer.unionValue)
   factory FlutterSpacer({
-    ZacValue<Key?>? key,
-    ZacValue<int?>? flex,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<int?>? flex,
   }) = _FlutterSpacer;
 
   Spacer _buildWidget(ZacContext zacContext) {
     return Spacer(
-      key: key?.getValue(zacContext),
-      flex: flex?.getValue(zacContext) ?? 1,
+      key: key?.build(zacContext),
+      flex: flex?.build(zacContext) ?? 1,
     );
   }
 

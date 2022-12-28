@@ -21,26 +21,26 @@ FlutterCustomScrollView _$FlutterCustomScrollViewFromJson(
 
 /// @nodoc
 mixin _$FlutterCustomScrollView {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   FlutterAxis? get scrollDirection => throw _privateConstructorUsedError;
-  ZacValue<bool?>? get reverse => throw _privateConstructorUsedError;
-  ZacValue<ScrollController?>? get controller =>
+  ZacBuilder<bool?>? get reverse => throw _privateConstructorUsedError;
+  ZacBuilder<ScrollController?>? get controller =>
       throw _privateConstructorUsedError;
-  ZacValue<bool?>? get primary => throw _privateConstructorUsedError;
+  ZacBuilder<bool?>? get primary => throw _privateConstructorUsedError;
   FlutterScrollPhysics? get physics =>
       throw _privateConstructorUsedError; // FlutterScrollBehavior? scrollBehavior,
-  ZacValue<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
-  ZacValue<Key?>? get center => throw _privateConstructorUsedError;
-  ZacValue<double?>? get anchor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get cacheExtent => throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get slivers =>
+  ZacBuilder<bool?>? get shrinkWrap => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get center => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get anchor => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get cacheExtent => throw _privateConstructorUsedError;
+  ZacListBuilder<Widget, List<Widget>?>? get slivers =>
       throw _privateConstructorUsedError;
-  ZacValue<int?>? get semanticChildCount =>
+  ZacBuilder<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
       throw _privateConstructorUsedError;
-  ZacValue<String?>? get restorationId => throw _privateConstructorUsedError;
-  ZacValue<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
+  ZacBuilder<String?>? get restorationId => throw _privateConstructorUsedError;
+  ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -74,37 +74,37 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
       _$$_FlutterCustomScrollViewFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
   final FlutterAxis? scrollDirection;
   @override
-  final ZacValue<bool?>? reverse;
+  final ZacBuilder<bool?>? reverse;
   @override
-  final ZacValue<ScrollController?>? controller;
+  final ZacBuilder<ScrollController?>? controller;
   @override
-  final ZacValue<bool?>? primary;
+  final ZacBuilder<bool?>? primary;
   @override
   final FlutterScrollPhysics? physics;
 // FlutterScrollBehavior? scrollBehavior,
   @override
-  final ZacValue<bool?>? shrinkWrap;
+  final ZacBuilder<bool?>? shrinkWrap;
   @override
-  final ZacValue<Key?>? center;
+  final ZacBuilder<Key?>? center;
   @override
-  final ZacValue<double?>? anchor;
+  final ZacBuilder<double?>? anchor;
   @override
-  final ZacValue<double?>? cacheExtent;
+  final ZacBuilder<double?>? cacheExtent;
   @override
-  final ZacValueList<Widget, List<Widget>?>? slivers;
+  final ZacListBuilder<Widget, List<Widget>?>? slivers;
   @override
-  final ZacValue<int?>? semanticChildCount;
+  final ZacBuilder<int?>? semanticChildCount;
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
   @override
   final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior;
   @override
-  final ZacValue<String?>? restorationId;
+  final ZacBuilder<String?>? restorationId;
   @override
-  final ZacValue<Clip?>? clipBehavior;
+  final ZacBuilder<Clip?>? clipBehavior;
 
   @override
   String toString() {
@@ -173,54 +173,54 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
 
 abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   factory _FlutterCustomScrollView(
-      {final ZacValue<Key?>? key,
+      {final ZacBuilder<Key?>? key,
       final FlutterAxis? scrollDirection,
-      final ZacValue<bool?>? reverse,
-      final ZacValue<ScrollController?>? controller,
-      final ZacValue<bool?>? primary,
+      final ZacBuilder<bool?>? reverse,
+      final ZacBuilder<ScrollController?>? controller,
+      final ZacBuilder<bool?>? primary,
       final FlutterScrollPhysics? physics,
-      final ZacValue<bool?>? shrinkWrap,
-      final ZacValue<Key?>? center,
-      final ZacValue<double?>? anchor,
-      final ZacValue<double?>? cacheExtent,
-      final ZacValueList<Widget, List<Widget>?>? slivers,
-      final ZacValue<int?>? semanticChildCount,
+      final ZacBuilder<bool?>? shrinkWrap,
+      final ZacBuilder<Key?>? center,
+      final ZacBuilder<double?>? anchor,
+      final ZacBuilder<double?>? cacheExtent,
+      final ZacListBuilder<Widget, List<Widget>?>? slivers,
+      final ZacBuilder<int?>? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
-      final ZacValue<String?>? restorationId,
-      final ZacValue<Clip?>? clipBehavior}) = _$_FlutterCustomScrollView;
+      final ZacBuilder<String?>? restorationId,
+      final ZacBuilder<Clip?>? clipBehavior}) = _$_FlutterCustomScrollView;
   _FlutterCustomScrollView._() : super._();
 
   factory _FlutterCustomScrollView.fromJson(Map<String, dynamic> json) =
       _$_FlutterCustomScrollView.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
   FlutterAxis? get scrollDirection;
   @override
-  ZacValue<bool?>? get reverse;
+  ZacBuilder<bool?>? get reverse;
   @override
-  ZacValue<ScrollController?>? get controller;
+  ZacBuilder<ScrollController?>? get controller;
   @override
-  ZacValue<bool?>? get primary;
+  ZacBuilder<bool?>? get primary;
   @override
   FlutterScrollPhysics? get physics;
   @override // FlutterScrollBehavior? scrollBehavior,
-  ZacValue<bool?>? get shrinkWrap;
+  ZacBuilder<bool?>? get shrinkWrap;
   @override
-  ZacValue<Key?>? get center;
+  ZacBuilder<Key?>? get center;
   @override
-  ZacValue<double?>? get anchor;
+  ZacBuilder<double?>? get anchor;
   @override
-  ZacValue<double?>? get cacheExtent;
+  ZacBuilder<double?>? get cacheExtent;
   @override
-  ZacValueList<Widget, List<Widget>?>? get slivers;
+  ZacListBuilder<Widget, List<Widget>?>? get slivers;
   @override
-  ZacValue<int?>? get semanticChildCount;
+  ZacBuilder<int?>? get semanticChildCount;
   @override // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior;
   @override
-  ZacValue<String?>? get restorationId;
+  ZacBuilder<String?>? get restorationId;
   @override
-  ZacValue<Clip?>? get clipBehavior;
+  ZacBuilder<Clip?>? get clipBehavior;
 }

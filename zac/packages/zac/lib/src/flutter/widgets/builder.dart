@@ -11,7 +11,7 @@ part 'builder.freezed.dart';
 part 'builder.g.dart';
 
 @freezedZacBuilder
-class FlutterBuilder with _$FlutterBuilder implements ZacBuild<Builder> {
+class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
   const FlutterBuilder._();
 
   static const String unionValue = 'f:1:Builder';
@@ -21,15 +21,15 @@ class FlutterBuilder with _$FlutterBuilder implements ZacBuild<Builder> {
 
   @FreezedUnionValue(FlutterBuilder.unionValue)
   factory FlutterBuilder({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
   }) = _FlutterBuilder;
 
-  Widget _builder(ZacContext zacContext) => child.getValue(zacContext);
+  Widget _builder(ZacContext zacContext) => child.build(zacContext);
 
   Builder _buildWidget(ZacContext zacContext) {
     return Builder(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       builder: (_) {
         return ZacUpdateContext(
           builder: _builder,

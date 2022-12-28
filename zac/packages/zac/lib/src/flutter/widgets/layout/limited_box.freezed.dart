@@ -20,10 +20,10 @@ FlutterLimitedBox _$FlutterLimitedBoxFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterLimitedBox {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double?>? get maxWidth => throw _privateConstructorUsedError;
-  ZacValue<double?>? get maxHeight => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get maxWidth => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get maxHeight => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -42,13 +42,13 @@ class _$_FlutterLimitedBox extends _FlutterLimitedBox {
       _$$_FlutterLimitedBoxFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? maxWidth;
+  final ZacBuilder<double?>? maxWidth;
   @override
-  final ZacValue<double?>? maxHeight;
+  final ZacBuilder<double?>? maxHeight;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -83,21 +83,21 @@ class _$_FlutterLimitedBox extends _FlutterLimitedBox {
 
 abstract class _FlutterLimitedBox extends FlutterLimitedBox {
   factory _FlutterLimitedBox(
-      {final ZacValue<Key?>? key,
-      final ZacValue<double?>? maxWidth,
-      final ZacValue<double?>? maxHeight,
-      final ZacValue<Widget?>? child}) = _$_FlutterLimitedBox;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<double?>? maxWidth,
+      final ZacBuilder<double?>? maxHeight,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterLimitedBox;
   _FlutterLimitedBox._() : super._();
 
   factory _FlutterLimitedBox.fromJson(Map<String, dynamic> json) =
       _$_FlutterLimitedBox.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double?>? get maxWidth;
+  ZacBuilder<double?>? get maxWidth;
   @override
-  ZacValue<double?>? get maxHeight;
+  ZacBuilder<double?>? get maxHeight;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

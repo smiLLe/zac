@@ -29,8 +29,8 @@ void expectInConverter(Object obj, Convert fn) {
   }
 }
 
-TypeMatcher<ZacBuild<T>> isAZacBuilder<T>() {
-  return isA<ZacBuild<T>>();
+TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
+  return isA<ZacBuilder<T>>();
 }
 
 void expectConvert<Builder>({
@@ -42,7 +42,7 @@ void expectConvert<Builder>({
 
 void expectConvertToZacBuilder<Builder, Value>({
   required Object? json,
-  required ZacBuild<Value> expected,
+  required ZacBuilder<Value> expected,
 }) {
   expect(ConverterHelper.convertToType<Builder>(json), expected);
 }
@@ -53,7 +53,8 @@ void expectConvertIsA<Builder, IsA>({
   expect(ConverterHelper.convertToType<Builder>(json), isA<IsA>());
 }
 
-Future<void> expectValueFromZacBuilder<Builder extends ZacBuild<Value>, Value>({
+Future<void>
+    expectValueFromZacBuilder<Builder extends ZacBuilder<Value>, Value>({
   required WidgetTester tester,
   required Builder builder,
   required Value expectValue,
@@ -120,7 +121,7 @@ Future<void> testMap(
 
 Future<void> testZacWidget(
   WidgetTester tester,
-  ZacBuild<Widget> zacWidget, {
+  ZacBuilder<Widget> zacWidget, {
   Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
@@ -229,18 +230,18 @@ class CustomTransformer implements ZacTransformer {
   }
 }
 
-class LeakContext implements ZacBuild<Widget> {
+class LeakContext implements ZacBuilder<Widget> {
   LeakContext({
     required this.cb,
     this.child,
   });
 
   final void Function(ZacContext zacContext) cb;
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   Widget _buildWidget(ZacContext zacContext) {
     cb(zacContext);
-    return child?.getValue(zacContext) ?? const SizedBox.shrink();
+    return child?.build(zacContext) ?? const SizedBox.shrink();
   }
 
   @override
@@ -249,7 +250,7 @@ class LeakContext implements ZacBuild<Widget> {
   }
 }
 
-class TestBuildCustomWidget implements ZacBuild<Widget> {
+class TestBuildCustomWidget implements ZacBuilder<Widget> {
   TestBuildCustomWidget(
     this.cb,
   );

@@ -20,14 +20,14 @@ FlutterIndexedStack _$FlutterIndexedStackFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterIndexedStack {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<AlignmentGeometry?>? get alignment =>
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  ZacValue<TextDirection?>? get textDirection =>
+  ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  ZacValue<StackFit?>? get sizing => throw _privateConstructorUsedError;
-  ZacValue<int?>? get index => throw _privateConstructorUsedError;
-  ZacValueList<Widget, List<Widget>?>? get children =>
+  ZacBuilder<StackFit?>? get sizing => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get index => throw _privateConstructorUsedError;
+  ZacListBuilder<Widget, List<Widget>?>? get children =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -53,17 +53,17 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
       _$$_FlutterIndexedStackFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<AlignmentGeometry?>? alignment;
+  final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final ZacValue<TextDirection?>? textDirection;
+  final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final ZacValue<StackFit?>? sizing;
+  final ZacBuilder<StackFit?>? sizing;
   @override
-  final ZacValue<int?>? index;
+  final ZacBuilder<int?>? index;
   @override
-  final ZacValueList<Widget, List<Widget>?>? children;
+  final ZacListBuilder<Widget, List<Widget>?>? children;
 
   @override
   String toString() {
@@ -102,12 +102,12 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
 
 abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   factory _FlutterIndexedStack(
-          {final ZacValue<Key?>? key,
-          final ZacValue<AlignmentGeometry?>? alignment,
-          final ZacValue<TextDirection?>? textDirection,
-          final ZacValue<StackFit?>? sizing,
-          final ZacValue<int?>? index,
-          final ZacValueList<Widget, List<Widget>?>? children}) =
+          {final ZacBuilder<Key?>? key,
+          final ZacBuilder<AlignmentGeometry?>? alignment,
+          final ZacBuilder<TextDirection?>? textDirection,
+          final ZacBuilder<StackFit?>? sizing,
+          final ZacBuilder<int?>? index,
+          final ZacListBuilder<Widget, List<Widget>?>? children}) =
       _$_FlutterIndexedStack;
   _FlutterIndexedStack._() : super._();
 
@@ -115,15 +115,15 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
       _$_FlutterIndexedStack.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<AlignmentGeometry?>? get alignment;
+  ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  ZacValue<TextDirection?>? get textDirection;
+  ZacBuilder<TextDirection?>? get textDirection;
   @override
-  ZacValue<StackFit?>? get sizing;
+  ZacBuilder<StackFit?>? get sizing;
   @override
-  ZacValue<int?>? get index;
+  ZacBuilder<int?>? get index;
   @override
-  ZacValueList<Widget, List<Widget>?>? get children;
+  ZacListBuilder<Widget, List<Widget>?>? get children;
 }

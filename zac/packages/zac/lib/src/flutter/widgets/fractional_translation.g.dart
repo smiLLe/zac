@@ -11,13 +11,13 @@ _$_FlutterFractionalTranslation _$$_FlutterFractionalTranslationFromJson(
     _$_FlutterFractionalTranslation(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       translation:
           FlutterOffset.fromJson(json['translation'] as Map<String, dynamic>),
       transformHitTests: json['transformHitTests'] == null
           ? null
-          : ZacValue<bool?>.fromJson(json['transformHitTests'] as Object),
+          : ZacBuilder<bool?>.fromJson(json['transformHitTests'] as Object),
     );

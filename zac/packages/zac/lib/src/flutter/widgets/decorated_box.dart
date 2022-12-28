@@ -11,7 +11,7 @@ part 'decorated_box.g.dart';
 @freezedZacBuilder
 class FlutterDecoratedBox
     with _$FlutterDecoratedBox
-    implements ZacBuild<DecoratedBox> {
+    implements ZacBuilder<DecoratedBox> {
   const FlutterDecoratedBox._();
 
   static const String unionValue = 'f:1:DecoratedBox';
@@ -21,18 +21,18 @@ class FlutterDecoratedBox
 
   @FreezedUnionValue(FlutterDecoratedBox.unionValue)
   factory FlutterDecoratedBox({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
-    required ZacValue<Decoration> decoration,
-    ZacValue<DecorationPosition?>? position,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    required ZacBuilder<Decoration> decoration,
+    ZacBuilder<DecorationPosition?>? position,
   }) = _FlutterDecoratedBox;
 
   DecoratedBox _buildWidget(ZacContext zacContext) {
     return DecoratedBox(
-      key: key?.getValue(zacContext),
-      decoration: decoration.getValue(zacContext),
-      position: position?.getValue(zacContext) ?? DecorationPosition.background,
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      decoration: decoration.build(zacContext),
+      position: position?.build(zacContext) ?? DecorationPosition.background,
+      child: child?.build(zacContext),
     );
   }
 

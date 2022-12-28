@@ -11,7 +11,7 @@ part 'rendering.g.dart';
 
 @freezedZacBuilder
 class FlutterHitTestBehavior
-    with _$FlutterHitTestBehavior, ZacBuild<HitTestBehavior> {
+    with _$FlutterHitTestBehavior, ZacBuilder<HitTestBehavior> {
   const FlutterHitTestBehavior._();
 
   factory FlutterHitTestBehavior.fromJson(Map<String, dynamic> json) =>
@@ -44,7 +44,7 @@ class FlutterHitTestBehavior
 
 @freezedZacBuilder
 class FlutterCrossAxisAlignment
-    with _$FlutterCrossAxisAlignment, ZacBuild<CrossAxisAlignment> {
+    with _$FlutterCrossAxisAlignment, ZacBuilder<CrossAxisAlignment> {
   const FlutterCrossAxisAlignment._();
 
   factory FlutterCrossAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -85,7 +85,7 @@ class FlutterCrossAxisAlignment
 
 @freezedZacBuilder
 class FlutterMainAxisAlignment
-    with _$FlutterMainAxisAlignment, ZacBuild<MainAxisAlignment> {
+    with _$FlutterMainAxisAlignment, ZacBuilder<MainAxisAlignment> {
   const FlutterMainAxisAlignment._();
 
   factory FlutterMainAxisAlignment.fromJson(Map<String, dynamic> json) =>
@@ -130,7 +130,7 @@ class FlutterMainAxisAlignment
 }
 
 @freezedZacBuilder
-class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuild<MainAxisSize> {
+class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
   const FlutterMainAxisSize._();
 
   factory FlutterMainAxisSize.fromJson(Map<String, dynamic> json) =>
@@ -153,7 +153,7 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuild<MainAxisSize> {
 }
 
 @freezedZacBuilder
-class FlutterFlexFit with _$FlutterFlexFit, ZacBuild<FlexFit> {
+class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
   const FlutterFlexFit._();
 
   factory FlutterFlexFit.fromJson(Map<String, dynamic> json) =>
@@ -177,7 +177,7 @@ class FlutterFlexFit with _$FlutterFlexFit, ZacBuild<FlexFit> {
 
 @freezedZacBuilder
 class FlutterWrapAlignment
-    with _$FlutterWrapAlignment, ZacBuild<WrapAlignment> {
+    with _$FlutterWrapAlignment, ZacBuilder<WrapAlignment> {
   const FlutterWrapAlignment._();
 
   factory FlutterWrapAlignment.fromJson(Map<String, dynamic> json) =>
@@ -221,7 +221,7 @@ class FlutterWrapAlignment
 
 @freezedZacBuilder
 class FlutterWrapCrossAlignment
-    with _$FlutterWrapCrossAlignment, ZacBuild<WrapCrossAlignment> {
+    with _$FlutterWrapCrossAlignment, ZacBuilder<WrapCrossAlignment> {
   const FlutterWrapCrossAlignment._();
 
   factory FlutterWrapCrossAlignment.fromJson(Map<String, dynamic> json) =>
@@ -251,7 +251,7 @@ class FlutterWrapCrossAlignment
 }
 
 @freezedZacBuilder
-class FlutterStackFit with _$FlutterStackFit, ZacBuild<StackFit> {
+class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
   const FlutterStackFit._();
 
   factory FlutterStackFit.fromJson(Map<String, dynamic> json) =>
@@ -282,7 +282,7 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuild<StackFit> {
 
 @freezedZacBuilder
 class FlutterBoxConstraints
-    with _$FlutterBoxConstraints, ZacBuild<BoxConstraints> {
+    with _$FlutterBoxConstraints, ZacBuilder<BoxConstraints> {
   const FlutterBoxConstraints._();
 
   factory FlutterBoxConstraints.fromJson(Map<String, dynamic> json) =>
@@ -290,16 +290,16 @@ class FlutterBoxConstraints
 
   @FreezedUnionValue('f:1:BoxConstraints')
   factory FlutterBoxConstraints({
-    ZacValue<double?>? minWidth,
-    ZacValue<double?>? maxWidth,
-    ZacValue<double?>? minHeight,
-    ZacValue<double?>? maxHeight,
+    ZacBuilder<double?>? minWidth,
+    ZacBuilder<double?>? maxWidth,
+    ZacBuilder<double?>? minHeight,
+    ZacBuilder<double?>? maxHeight,
   }) = _FlutterBoxConstraints;
 
   @FreezedUnionValue('f:1:BoxConstraints.expand')
   factory FlutterBoxConstraints.expand({
-    ZacValue<double?>? width,
-    ZacValue<double?>? height,
+    ZacBuilder<double?>? width,
+    ZacBuilder<double?>? height,
   }) = _FlutterBoxConstraintsExpand;
 
   @FreezedUnionValue('f:1:BoxConstraints.loose')
@@ -312,33 +312,33 @@ class FlutterBoxConstraints
 
   @FreezedUnionValue('f:1:BoxConstraints.tightFor')
   factory FlutterBoxConstraints.tightFor(
-      {ZacValue<double?>? width,
-      ZacValue<double?>? height}) = _FlutterBoxConstraintsTightFor;
+      {ZacBuilder<double?>? width,
+      ZacBuilder<double?>? height}) = _FlutterBoxConstraintsTightFor;
 
   @FreezedUnionValue('f:1:BoxConstraints.tightForFinite')
   factory FlutterBoxConstraints.tightForFinite(
-      {ZacValue<double?>? width,
-      ZacValue<double?>? height}) = _FlutterBoxConstraintsTightForFinite;
+      {ZacBuilder<double?>? width,
+      ZacBuilder<double?>? height}) = _FlutterBoxConstraintsTightForFinite;
 
   BoxConstraints _build(ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.getValue(zacContext) ?? 0.0,
-        maxWidth: value.maxWidth?.getValue(zacContext) ?? double.infinity,
-        minHeight: value.minHeight?.getValue(zacContext) ?? 0.0,
-        maxHeight: value.maxHeight?.getValue(zacContext) ?? double.infinity,
+        minWidth: value.minWidth?.build(zacContext) ?? 0.0,
+        maxWidth: value.maxWidth?.build(zacContext) ?? double.infinity,
+        minHeight: value.minHeight?.build(zacContext) ?? 0.0,
+        maxHeight: value.maxHeight?.build(zacContext) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.build(zacContext),
+          height: value.height?.build(zacContext)),
       loose: (value) => BoxConstraints.loose(value.size.build(zacContext)),
       tight: (value) => BoxConstraints.tight(value.size.build(zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.getValue(zacContext),
-          height: value.height?.getValue(zacContext)),
+          width: value.width?.build(zacContext),
+          height: value.height?.build(zacContext)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.getValue(zacContext) ?? double.infinity,
-        height: value.height?.getValue(zacContext) ?? double.infinity,
+        width: value.width?.build(zacContext) ?? double.infinity,
+        height: value.height?.build(zacContext) ?? double.infinity,
       ),
     );
   }
@@ -351,7 +351,7 @@ class FlutterBoxConstraints
 
 @freezedZacBuilder
 class FlutterDecorationPosition
-    with _$FlutterDecorationPosition, ZacBuild<DecorationPosition> {
+    with _$FlutterDecorationPosition, ZacBuilder<DecorationPosition> {
   const FlutterDecorationPosition._();
 
   factory FlutterDecorationPosition.fromJson(Map<String, dynamic> json) =>

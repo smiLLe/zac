@@ -9,7 +9,7 @@ part 'padding.freezed.dart';
 part 'padding.g.dart';
 
 @freezedZacBuilder
-class FlutterPadding with _$FlutterPadding implements ZacBuild<Padding> {
+class FlutterPadding with _$FlutterPadding implements ZacBuilder<Padding> {
   const FlutterPadding._();
 
   static const String unionValue = 'f:1:Padding';
@@ -19,16 +19,16 @@ class FlutterPadding with _$FlutterPadding implements ZacBuild<Padding> {
 
   @FreezedUnionValue(FlutterPadding.unionValue)
   factory FlutterPadding({
-    ZacValue<Key?>? key,
-    required ZacValue<EdgeInsetsGeometry> padding,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<EdgeInsetsGeometry> padding,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterPadding;
 
   Padding _buildWidget(ZacContext zacContext) {
     return Padding(
-      key: key?.getValue(zacContext),
-      padding: padding.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      key: key?.build(zacContext),
+      padding: padding.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

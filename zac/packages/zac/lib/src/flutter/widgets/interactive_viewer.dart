@@ -15,7 +15,7 @@ part 'interactive_viewer.g.dart';
 @freezedZacBuilder
 class FlutterInteractiveViewer
     with _$FlutterInteractiveViewer
-    implements ZacBuild<InteractiveViewer> {
+    implements ZacBuilder<InteractiveViewer> {
   const FlutterInteractiveViewer._();
 
   static const String unionValue = 'f:1:InteractiveViewer';
@@ -25,40 +25,40 @@ class FlutterInteractiveViewer
 
   @FreezedUnionValue(FlutterInteractiveViewer.unionValue)
   factory FlutterInteractiveViewer({
-    ZacValue<Key?>? key,
-    required ZacValue<Widget> child,
-    ZacValue<Clip?>? clipBehavior,
-    ZacValue<bool?>? alignPanAxis,
-    ZacValue<EdgeInsets?>? boundaryMargin,
-    ZacValue<bool?>? constrained,
-    ZacValue<double?>? maxScale,
-    ZacValue<double?>? minScale,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> child,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<bool?>? alignPanAxis,
+    ZacBuilder<EdgeInsets?>? boundaryMargin,
+    ZacBuilder<bool?>? constrained,
+    ZacBuilder<double?>? maxScale,
+    ZacBuilder<double?>? minScale,
     ZacActions? onInteractionEnd,
     ZacActions? onInteractionStart,
     ZacActions? onInteractionUpdate,
-    ZacValue<bool?>? panEnabled,
-    ZacValue<bool?>? scaleEnabled,
+    ZacBuilder<bool?>? panEnabled,
+    ZacBuilder<bool?>? scaleEnabled,
 // TransformationController? transformationController,
   }) = _FlutterInteractiveViewer;
 
   InteractiveViewer _buildWidget(ZacContext zacContext) {
     return InteractiveViewer(
-      key: key?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.getValue(zacContext) ?? false,
-      boundaryMargin: boundaryMargin?.getValue(zacContext) ?? EdgeInsets.zero,
-      constrained: constrained?.getValue(zacContext) ?? true,
-      maxScale: maxScale?.getValue(zacContext) ?? 2.5,
-      minScale: minScale?.getValue(zacContext) ?? 0.8,
+      key: key?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.build(zacContext) ?? false,
+      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.build(zacContext) ?? true,
+      maxScale: maxScale?.build(zacContext) ?? 2.5,
+      minScale: minScale?.build(zacContext) ?? 0.8,
       onInteractionEnd:
           onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart:
           onInteractionStart?.createCbParam1<ScaleStartDetails>(zacContext),
       onInteractionUpdate:
           onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
-      panEnabled: panEnabled?.getValue(zacContext) ?? true,
-      scaleEnabled: scaleEnabled?.getValue(zacContext) ?? true,
-      child: child.getValue(zacContext),
+      panEnabled: panEnabled?.build(zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
+      child: child.build(zacContext),
       // transformationController: key?.toFlutter(context),
     );
   }

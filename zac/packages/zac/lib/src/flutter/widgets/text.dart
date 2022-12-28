@@ -12,7 +12,7 @@ part 'text.freezed.dart';
 part 'text.g.dart';
 
 @freezedZacBuilder
-class FlutterText with _$FlutterText implements ZacBuild<Text> {
+class FlutterText with _$FlutterText implements ZacBuilder<Text> {
   const FlutterText._();
 
   static const String unionValue = 'f:1:Text';
@@ -22,38 +22,38 @@ class FlutterText with _$FlutterText implements ZacBuild<Text> {
 
   @FreezedUnionValue(FlutterText.unionValue)
   factory FlutterText(
-    ZacValue<String> data, {
-    ZacValue<Key?>? key,
-    ZacValue<TextStyle?>? style,
-    ZacValue<StrutStyle?>? strutStyle,
-    ZacValue<TextAlign?>? textAlign,
-    ZacValue<TextDirection?>? textDirection,
+    ZacBuilder<String> data, {
+    ZacBuilder<Key?>? key,
+    ZacBuilder<TextStyle?>? style,
+    ZacBuilder<StrutStyle?>? strutStyle,
+    ZacBuilder<TextAlign?>? textAlign,
+    ZacBuilder<TextDirection?>? textDirection,
     FlutterLocale? locale,
-    ZacValue<bool?>? softWrap,
+    ZacBuilder<bool?>? softWrap,
     FlutterTextOverflow? overflow,
-    ZacValue<double?>? textScaleFactor,
-    ZacValue<int?>? maxLines,
-    ZacValue<String?>? semanticsLabel,
-    ZacValue<TextWidthBasis?>? textWidthBasis,
-    ZacValue<TextHeightBehavior?>? textHeightBehavior,
+    ZacBuilder<double?>? textScaleFactor,
+    ZacBuilder<int?>? maxLines,
+    ZacBuilder<String?>? semanticsLabel,
+    ZacBuilder<TextWidthBasis?>? textWidthBasis,
+    ZacBuilder<TextHeightBehavior?>? textHeightBehavior,
   }) = _FlutterText;
 
   Text _buildWidget(ZacContext zacContext) {
     return Text(
-      data.getValue(zacContext),
-      key: key?.getValue(zacContext),
-      style: style?.getValue(zacContext),
-      strutStyle: strutStyle?.getValue(zacContext),
-      textAlign: textAlign?.getValue(zacContext),
-      textDirection: textDirection?.getValue(zacContext),
+      data.build(zacContext),
+      key: key?.build(zacContext),
+      style: style?.build(zacContext),
+      strutStyle: strutStyle?.build(zacContext),
+      textAlign: textAlign?.build(zacContext),
+      textDirection: textDirection?.build(zacContext),
       locale: locale?.build(zacContext),
-      softWrap: softWrap?.getValue(zacContext),
+      softWrap: softWrap?.build(zacContext),
       overflow: overflow?.build(zacContext),
-      textScaleFactor: textScaleFactor?.getValue(zacContext),
-      maxLines: maxLines?.getValue(zacContext),
-      semanticsLabel: semanticsLabel?.getValue(zacContext),
-      textWidthBasis: textWidthBasis?.getValue(zacContext),
-      textHeightBehavior: textHeightBehavior?.getValue(zacContext),
+      textScaleFactor: textScaleFactor?.build(zacContext),
+      maxLines: maxLines?.build(zacContext),
+      semanticsLabel: semanticsLabel?.build(zacContext),
+      textWidthBasis: textWidthBasis?.build(zacContext),
+      textHeightBehavior: textHeightBehavior?.build(zacContext),
     );
   }
 

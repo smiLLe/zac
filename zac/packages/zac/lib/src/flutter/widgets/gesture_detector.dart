@@ -15,7 +15,7 @@ part 'gesture_detector.g.dart';
 @freezedZacBuilder
 class FlutterGestureDetector
     with _$FlutterGestureDetector
-    implements ZacBuild<GestureDetector> {
+    implements ZacBuilder<GestureDetector> {
   const FlutterGestureDetector._();
 
   static const String unionValue = 'f:1:GestureDetector';
@@ -25,8 +25,8 @@ class FlutterGestureDetector
 
   @FreezedUnionValue(FlutterGestureDetector.unionValue)
   factory FlutterGestureDetector({
-    ZacValue<Key?>? key,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
     ZacActions? onTap,
     ZacActions? onSecondaryTap,
     ZacActions? onDoubleTap,
@@ -34,22 +34,22 @@ class FlutterGestureDetector
     ZacActions? onSecondaryLongPress,
     ZacActions? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
-    ZacValue<bool?>? excludeFromSemantics,
+    ZacBuilder<bool?>? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) = _FlutterGestureDetector;
 
   GestureDetector _buildWidget(ZacContext zacContext) {
     return GestureDetector(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       behavior: behavior?.build(zacContext),
-      excludeFromSemantics: excludeFromSemantics?.getValue(zacContext) ?? false,
+      excludeFromSemantics: excludeFromSemantics?.build(zacContext) ?? false,
       onTap: onTap?.createCb(zacContext),
       onSecondaryTap: onSecondaryTap?.createCb(zacContext),
       onDoubleTap: onDoubleTap?.createCb(zacContext),
       onLongPress: onLongPress?.createCb(zacContext),
       onSecondaryLongPress: onSecondaryLongPress?.createCb(zacContext),
       onTertiaryLongPress: onTertiaryLongPress?.createCb(zacContext),
-      child: child?.getValue(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

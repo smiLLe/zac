@@ -11,7 +11,7 @@ part 'aspect_ratio.g.dart';
 @freezedZacBuilder
 class FlutterAspectRatio
     with _$FlutterAspectRatio
-    implements ZacBuild<AspectRatio> {
+    implements ZacBuilder<AspectRatio> {
   const FlutterAspectRatio._();
 
   static const String unionValue = 'f:1:AspectRatio';
@@ -21,16 +21,16 @@ class FlutterAspectRatio
 
   @FreezedUnionValue(FlutterAspectRatio.unionValue)
   factory FlutterAspectRatio({
-    ZacValue<Key?>? key,
-    required ZacValue<double> aspectRatio,
-    ZacValue<Widget?>? child,
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<double> aspectRatio,
+    ZacBuilder<Widget?>? child,
   }) = _FlutterAspectRatio;
 
   AspectRatio _buildWidget(ZacContext zacContext) {
     return AspectRatio(
-      aspectRatio: aspectRatio.getValue(zacContext),
-      key: key?.getValue(zacContext),
-      child: child?.getValue(zacContext),
+      aspectRatio: aspectRatio.build(zacContext),
+      key: key?.build(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

@@ -14,7 +14,7 @@ part 'single_child_scroll_view.g.dart';
 @freezedZacBuilder
 class FlutterSingleChildScrollView
     with _$FlutterSingleChildScrollView
-    implements ZacBuild<SingleChildScrollView> {
+    implements ZacBuilder<SingleChildScrollView> {
   const FlutterSingleChildScrollView._();
 
   static const String unionValue = 'f:1:SingleChildScrollView';
@@ -24,33 +24,33 @@ class FlutterSingleChildScrollView
 
   @FreezedUnionValue(FlutterSingleChildScrollView.unionValue)
   factory FlutterSingleChildScrollView({
-    ZacValue<Key?>? key,
-    ZacValue<Axis?>? scrollDirection,
-    ZacValue<bool?>? reverse,
-    ZacValue<EdgeInsetsGeometry?>? padding,
-    ZacValue<bool?>? primary,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Axis?>? scrollDirection,
+    ZacBuilder<bool?>? reverse,
+    ZacBuilder<EdgeInsetsGeometry?>? padding,
+    ZacBuilder<bool?>? primary,
     // ScrollPhysics? physics,
-    ZacValue<ScrollController?>? controller,
-    ZacValue<Widget?>? child,
+    ZacBuilder<ScrollController?>? controller,
+    ZacBuilder<Widget?>? child,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-    ZacValue<Clip?>? clipBehavior,
-    ZacValue<String?>? restorationId,
-    ZacValue<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<String?>? restorationId,
+    ZacBuilder<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
   SingleChildScrollView _buildWidget(ZacContext zacContext) {
     return SingleChildScrollView(
-      key: key?.getValue(zacContext),
-      scrollDirection: scrollDirection?.getValue(zacContext) ?? Axis.vertical,
-      reverse: reverse?.getValue(zacContext) ?? false,
-      padding: padding?.getValue(zacContext),
-      primary: primary?.getValue(zacContext),
-      controller: controller?.getValue(zacContext),
-      clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.getValue(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.getValue(zacContext) ??
+      key: key?.build(zacContext),
+      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(zacContext) ?? false,
+      padding: padding?.build(zacContext),
+      primary: primary?.build(zacContext),
+      controller: controller?.build(zacContext),
+      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.build(zacContext),
+      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
           ScrollViewKeyboardDismissBehavior.manual,
-      child: child?.getValue(zacContext),
+      child: child?.build(zacContext),
     );
   }
 

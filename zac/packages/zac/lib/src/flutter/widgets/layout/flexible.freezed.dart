@@ -20,10 +20,10 @@ FlutterFlexible _$FlutterFlexibleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterFlexible {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<int?>? get flex => throw _privateConstructorUsedError;
-  ZacValue<FlexFit?>? get fit => throw _privateConstructorUsedError;
-  ZacValue<Widget> get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<int?>? get flex => throw _privateConstructorUsedError;
+  ZacBuilder<FlexFit?>? get fit => throw _privateConstructorUsedError;
+  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -42,13 +42,13 @@ class _$_FlutterFlexible extends _FlutterFlexible {
       _$$_FlutterFlexibleFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<int?>? flex;
+  final ZacBuilder<int?>? flex;
   @override
-  final ZacValue<FlexFit?>? fit;
+  final ZacBuilder<FlexFit?>? fit;
   @override
-  final ZacValue<Widget> child;
+  final ZacBuilder<Widget> child;
 
   @override
   String toString() {
@@ -81,21 +81,21 @@ class _$_FlutterFlexible extends _FlutterFlexible {
 
 abstract class _FlutterFlexible extends FlutterFlexible {
   factory _FlutterFlexible(
-      {final ZacValue<Key?>? key,
-      final ZacValue<int?>? flex,
-      final ZacValue<FlexFit?>? fit,
-      required final ZacValue<Widget> child}) = _$_FlutterFlexible;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<int?>? flex,
+      final ZacBuilder<FlexFit?>? fit,
+      required final ZacBuilder<Widget> child}) = _$_FlutterFlexible;
   _FlutterFlexible._() : super._();
 
   factory _FlutterFlexible.fromJson(Map<String, dynamic> json) =
       _$_FlutterFlexible.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<int?>? get flex;
+  ZacBuilder<int?>? get flex;
   @override
-  ZacValue<FlexFit?>? get fit;
+  ZacBuilder<FlexFit?>? get fit;
   @override
-  ZacValue<Widget> get child;
+  ZacBuilder<Widget> get child;
 }

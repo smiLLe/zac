@@ -9,7 +9,7 @@ part 'row.freezed.dart';
 part 'row.g.dart';
 
 @freezedZacBuilder
-class FlutterRow with _$FlutterRow implements ZacBuild<Row> {
+class FlutterRow with _$FlutterRow implements ZacBuilder<Row> {
   const FlutterRow._();
 
   static const String unionValue = 'f:1:Row';
@@ -19,29 +19,29 @@ class FlutterRow with _$FlutterRow implements ZacBuild<Row> {
 
   @FreezedUnionValue(FlutterRow.unionValue)
   factory FlutterRow({
-    ZacValue<Key?>? key,
-    ZacValue<MainAxisAlignment?>? mainAxisAlignment,
-    ZacValue<MainAxisSize?>? mainAxisSize,
-    ZacValue<CrossAxisAlignment?>? crossAxisAlignment,
-    ZacValue<TextDirection?>? textDirection,
-    ZacValue<VerticalDirection?>? verticalDirection,
-    ZacValue<TextBaseline?>? textBaseline,
-    ZacValueList<Widget, List<Widget>?>? children,
+    ZacBuilder<Key?>? key,
+    ZacBuilder<MainAxisAlignment?>? mainAxisAlignment,
+    ZacBuilder<MainAxisSize?>? mainAxisSize,
+    ZacBuilder<CrossAxisAlignment?>? crossAxisAlignment,
+    ZacBuilder<TextDirection?>? textDirection,
+    ZacBuilder<VerticalDirection?>? verticalDirection,
+    ZacBuilder<TextBaseline?>? textBaseline,
+    ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterRow;
 
   Row _buildWidget(ZacContext zacContext) {
     return Row(
-      key: key?.getValue(zacContext),
+      key: key?.build(zacContext),
       mainAxisAlignment:
-          mainAxisAlignment?.getValue(zacContext) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.getValue(zacContext) ?? MainAxisSize.max,
+          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
+      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
       crossAxisAlignment:
-          crossAxisAlignment?.getValue(zacContext) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.getValue(zacContext),
+          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
+      textDirection: textDirection?.build(zacContext),
       verticalDirection:
-          verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.getValue(zacContext),
-      children: children?.getList(zacContext) ?? const <Widget>[],
+          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
+      textBaseline: textBaseline?.build(zacContext),
+      children: children?.build(zacContext) ?? const <Widget>[],
     );
   }
 

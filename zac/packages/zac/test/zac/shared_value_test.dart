@@ -7,6 +7,7 @@ import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
@@ -32,7 +33,7 @@ void main() {
           family: 'foo',
           child: LeakContext(cb: (zacContext) {
             obj = zacContext.ref.watch(SharedValue.provider('foo'));
-          }).toZacValue(),
+          }),
         ),
       );
 
@@ -108,7 +109,7 @@ void main() {
           family: 'foo',
           child: LeakContext(cb: (zacContext) {
             obj = zacContext.ref.watch(SharedValue.provider('foo'));
-          }).toZacValue(),
+          }),
           transformer: ZacTransformers([ConvertTransformer()]),
         ),
       );
@@ -143,10 +144,10 @@ void main() {
                     b = zacContext.ref.watch(SharedValue.provider('sharedB'));
                     c = zacContext.ref.watch(SharedValue.provider('sharedC'));
                   },
-                ).toZacValue(),
-              ).toZacValue(),
-            ).toZacValue(),
-          ).toZacValue(),
+                ),
+              ),
+            ),
+          ),
         ),
       );
 
@@ -165,7 +166,7 @@ void main() {
             family: 'foo',
             child: LeakContext(
               cb: (o) => zacContext = o,
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -187,7 +188,7 @@ void main() {
             family: 'foo',
             child: LeakContext(
               cb: (o) => zacContext = o,
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -228,7 +229,7 @@ void main() {
           family: 'shared',
           child: LeakContext(
             cb: (o) => zacContext = o,
-          ).toZacValue(),
+          ),
         ),
       );
 
@@ -269,7 +270,7 @@ void main() {
           family: 'shared',
           child: LeakContext(
             cb: (o) => zacContext = o,
-          ).toZacValue(),
+          ),
         ),
       );
 
@@ -317,7 +318,7 @@ void main() {
             family: 'foo',
             child: LeakContext(
               cb: (o) => zacContext = o,
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -392,9 +393,8 @@ void main() {
             family: 'shared',
             child: LeakContext(
               cb: (c) => zacContext = c,
-              child: FlutterText(ZacValueConsume<String>(family: 'shared'))
-                  .toZacValue(),
-            ).toZacValue(),
+              child: FlutterText(ConsumeSharedValue<String>(family: 'shared')),
+            ),
           ),
         );
 
@@ -422,7 +422,7 @@ void main() {
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(
-                  ZacValueConsume<String>(
+                  ConsumeSharedValue<String>(
                     family: 'family',
                     transformer: ZacTransformers([
                       CustomTransformer(
@@ -433,14 +433,14 @@ void main() {
                       )
                     ]),
                   ),
-                ).toZacValue(),
+                ),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
                     SharedValueActions.update(family: 'family'),
                   ]),
-                ).toZacValue(),
+                ),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
         expect(find.text('foo'), findsOneWidget);
@@ -460,8 +460,7 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
-                FlutterText(ZacValueConsume<String>(family: 'family'))
-                    .toZacValue(),
+                FlutterText(ConsumeSharedValue<String>(family: 'family')),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
                     SharedValueActions.update(
@@ -470,9 +469,9 @@ void main() {
                       ifNoPayloadTakeCurrent: true,
                     ),
                   ]),
-                ).toZacValue(),
+                ),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -491,11 +490,11 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
-                FlutterText(ZacValueConsume<String>(
+                FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
-                )).toZacValue(),
+                )),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
                     SharedValueActions.update(
@@ -507,9 +506,9 @@ void main() {
                       ifNoPayloadTakeCurrent: true,
                     ),
                   ]),
-                ).toZacValue(),
+                ),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -532,14 +531,14 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
-                FlutterText(ZacValueConsume<String>(
+                FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers(
                       [const IterableTransformer.join(separator: ', ')]),
-                )).toZacValue(),
-                LeakContext(cb: (c) => zacContext = c).toZacValue(),
+                )),
+                LeakContext(cb: (c) => zacContext = c),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -577,23 +576,23 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
-                FlutterText(ZacValueConsume<String>(
+                FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.first(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )).toZacValue(),
-                FlutterText(ZacValueConsume<String>(
+                )),
+                FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers([
                     const IterableTransformer.last(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )).toZacValue(),
-                LeakContext(cb: (c) => zacContext = c).toZacValue(),
+                )),
+                LeakContext(cb: (c) => zacContext = c),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -629,16 +628,16 @@ void main() {
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([
-                FlutterText(ZacValueConsume<String>(
+                FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers([
                     const MapTransformer.values(),
                     const IterableTransformer.join(separator: ', ')
                   ]),
-                )).toZacValue(),
-                LeakContext(cb: (c) => zacContext = c).toZacValue(),
+                )),
+                LeakContext(cb: (c) => zacContext = c),
               ]),
-            ).toZacValue(),
+            ),
           ),
         );
 
@@ -682,7 +681,7 @@ void main() {
                   select: ZacTransformers([_ConcatStr('bar')])),
               family: 'shared',
             );
-          }).toZacValue(),
+          }),
         ),
       );
 

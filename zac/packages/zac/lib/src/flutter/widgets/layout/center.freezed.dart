@@ -20,10 +20,10 @@ FlutterCenter _$FlutterCenterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FlutterCenter {
-  ZacValue<Key?>? get key => throw _privateConstructorUsedError;
-  ZacValue<double?>? get widthFactor => throw _privateConstructorUsedError;
-  ZacValue<double?>? get heightFactor => throw _privateConstructorUsedError;
-  ZacValue<Widget?>? get child => throw _privateConstructorUsedError;
+  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get widthFactor => throw _privateConstructorUsedError;
+  ZacBuilder<double?>? get heightFactor => throw _privateConstructorUsedError;
+  ZacBuilder<Widget?>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -42,13 +42,13 @@ class _$_FlutterCenter extends _FlutterCenter {
       _$$_FlutterCenterFromJson(json);
 
   @override
-  final ZacValue<Key?>? key;
+  final ZacBuilder<Key?>? key;
   @override
-  final ZacValue<double?>? widthFactor;
+  final ZacBuilder<double?>? widthFactor;
   @override
-  final ZacValue<double?>? heightFactor;
+  final ZacBuilder<double?>? heightFactor;
   @override
-  final ZacValue<Widget?>? child;
+  final ZacBuilder<Widget?>? child;
 
   @override
   String toString() {
@@ -84,21 +84,21 @@ class _$_FlutterCenter extends _FlutterCenter {
 
 abstract class _FlutterCenter extends FlutterCenter {
   factory _FlutterCenter(
-      {final ZacValue<Key?>? key,
-      final ZacValue<double?>? widthFactor,
-      final ZacValue<double?>? heightFactor,
-      final ZacValue<Widget?>? child}) = _$_FlutterCenter;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<double?>? widthFactor,
+      final ZacBuilder<double?>? heightFactor,
+      final ZacBuilder<Widget?>? child}) = _$_FlutterCenter;
   _FlutterCenter._() : super._();
 
   factory _FlutterCenter.fromJson(Map<String, dynamic> json) =
       _$_FlutterCenter.fromJson;
 
   @override
-  ZacValue<Key?>? get key;
+  ZacBuilder<Key?>? get key;
   @override
-  ZacValue<double?>? get widthFactor;
+  ZacBuilder<double?>? get widthFactor;
   @override
-  ZacValue<double?>? get heightFactor;
+  ZacBuilder<double?>? get heightFactor;
   @override
-  ZacValue<Widget?>? get child;
+  ZacBuilder<Widget?>? get child;
 }

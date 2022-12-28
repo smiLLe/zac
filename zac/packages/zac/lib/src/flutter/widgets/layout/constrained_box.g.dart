@@ -11,10 +11,10 @@ _$_FlutterConstrainedBox _$$_FlutterConstrainedBoxFromJson(
     _$_FlutterConstrainedBox(
       key: json['key'] == null
           ? null
-          : ZacValue<Key?>.fromJson(json['key'] as Object),
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       constraints:
-          ZacValue<BoxConstraints>.fromJson(json['constraints'] as Object),
+          ZacBuilder<BoxConstraints>.fromJson(json['constraints'] as Object),
       child: json['child'] == null
           ? null
-          : ZacValue<Widget?>.fromJson(json['child'] as Object),
+          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
     );
