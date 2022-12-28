@@ -60,7 +60,7 @@ class FlutterGridView with _$FlutterGridView implements ZacBuild<GridView> {
           ScrollViewKeyboardDismissBehavior.manual,
       restorationId: restorationId?.getValue(zacContext),
       clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 

@@ -351,7 +351,7 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuild<TextStyle> {
       height: height?.getValue(zacContext),
       leadingDistribution: leadingDistribution?.build(zacContext),
       locale: locale?.build(zacContext),
-      shadows: shadows?.build(zacContext),
+      shadows: shadows?.getList(zacContext),
       fontFeatures: fontFeatures?.map((e) => e.build(zacContext)).toList(),
       decoration: decoration?.build(zacContext),
       decorationColor: decorationColor?.getValue(zacContext),

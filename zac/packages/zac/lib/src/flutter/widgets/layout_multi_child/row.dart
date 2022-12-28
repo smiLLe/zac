@@ -4,9 +4,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/rendering.dart';
 
 part 'row.freezed.dart';
 part 'row.g.dart';
@@ -44,7 +41,7 @@ class FlutterRow with _$FlutterRow implements ZacBuild<Row> {
       verticalDirection:
           verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
       textBaseline: textBaseline?.getValue(zacContext),
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 

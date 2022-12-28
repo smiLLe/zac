@@ -164,42 +164,33 @@ abstract class _ZacValueConsume<T extends Object?> extends ZacValueConsume<T> {
   SharedValueConsumeType? get forceConsume;
 }
 
-ZacValueList<T, X>
-    _$ZacValueListFromJson<T extends Object?, X extends List<T>?>(
+ZacValueListSimple<T, X>
+    _$ZacValueListSimpleFromJson<T extends Object?, X extends List<T>?>(
         Map<String, dynamic> json) {
-  switch (json['builder']) {
-    case 'z:1:ZacValueList':
-      return _ZacValueList<T, X>.fromJson(json);
-    case 'z:1:ZacValueList.consume':
-      return _ZacValueListConsume<T, X>.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'builder', 'ZacValueList',
-          'Invalid union type "${json['builder']}"!');
-  }
+  return _ZacValueListSimple<T, X>.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacValueList<T extends Object?, X extends List<T>?> {
+mixin _$ZacValueListSimple<T extends Object?, X extends List<T>?> {
+  List<ZacValue<T>> get items => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueList<T, X> value) $default, {
-    required TResult Function(_ZacValueListConsume<T, X> value) consume,
-  }) =>
+    TResult Function(_ZacValueListSimple<T, X> value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacValueList<T extends Object?, X extends List<T>?>
-    extends _ZacValueList<T, X> {
-  _$_ZacValueList({required final List<ZacValue<T>> items, final String? $type})
+class _$_ZacValueListSimple<T extends Object?, X extends List<T>?>
+    extends _ZacValueListSimple<T, X> {
+  _$_ZacValueListSimple(final List<ZacValue<T>> items)
       : _items = items,
-        $type = $type ?? 'z:1:ZacValueList',
         super._();
 
-  factory _$_ZacValueList.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueListFromJson(json);
+  factory _$_ZacValueListSimple.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueListSimpleFromJson(json);
 
   final List<ZacValue<T>> _items;
   @override
@@ -209,19 +200,16 @@ class _$_ZacValueList<T extends Object?, X extends List<T>?>
     return EqualUnmodifiableListView(_items);
   }
 
-  @JsonKey(name: 'builder')
-  final String $type;
-
   @override
   String toString() {
-    return 'ZacValueList<$T, $X>(items: $items)';
+    return 'ZacValueListSimple<$T, $X>(items: $items)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacValueList<T, X> &&
+            other is _$_ZacValueListSimple<T, X> &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -233,23 +221,44 @@ class _$_ZacValueList<T extends Object?, X extends List<T>?>
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueList<T, X> value) $default, {
-    required TResult Function(_ZacValueListConsume<T, X> value) consume,
-  }) {
+    TResult Function(_ZacValueListSimple<T, X> value) $default,
+  ) {
     return $default(this);
   }
 }
 
-abstract class _ZacValueList<T extends Object?, X extends List<T>?>
-    extends ZacValueList<T, X> {
-  factory _ZacValueList({required final List<ZacValue<T>> items}) =
-      _$_ZacValueList<T, X>;
-  _ZacValueList._() : super._();
+abstract class _ZacValueListSimple<T extends Object?, X extends List<T>?>
+    extends ZacValueListSimple<T, X> {
+  factory _ZacValueListSimple(final List<ZacValue<T>> items) =
+      _$_ZacValueListSimple<T, X>;
+  _ZacValueListSimple._() : super._();
 
-  factory _ZacValueList.fromJson(Map<String, dynamic> json) =
-      _$_ZacValueList<T, X>.fromJson;
+  factory _ZacValueListSimple.fromJson(Map<String, dynamic> json) =
+      _$_ZacValueListSimple<T, X>.fromJson;
 
+  @override
   List<ZacValue<T>> get items;
+}
+
+ZacValueListConsume<T, X>
+    _$ZacValueListConsumeFromJson<T extends Object?, X extends List<T>?>(
+        Map<String, dynamic> json) {
+  return _ZacValueListConsume<T, X>.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacValueListConsume<T extends Object?, X extends List<T>?> {
+  Object get family => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get itemTransformer => throw _privateConstructorUsedError;
+  SharedValueConsumeType? get forceConsume =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacValueListConsume<T, X> value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -260,11 +269,8 @@ class _$_ZacValueListConsume<T extends Object?, X extends List<T>?>
       {required this.family,
       this.transformer,
       this.itemTransformer,
-      this.select,
-      this.forceConsume,
-      final String? $type})
-      : $type = $type ?? 'z:1:ZacValueList.consume',
-        super._();
+      this.forceConsume})
+      : super._();
 
   factory _$_ZacValueListConsume.fromJson(Map<String, dynamic> json) =>
       _$$_ZacValueListConsumeFromJson(json);
@@ -276,16 +282,11 @@ class _$_ZacValueListConsume<T extends Object?, X extends List<T>?>
   @override
   final ZacTransformers? itemTransformer;
   @override
-  final ZacTransformers? select;
-  @override
   final SharedValueConsumeType? forceConsume;
-
-  @JsonKey(name: 'builder')
-  final String $type;
 
   @override
   String toString() {
-    return 'ZacValueList<$T, $X>.consume(family: $family, transformer: $transformer, itemTransformer: $itemTransformer, select: $select, forceConsume: $forceConsume)';
+    return 'ZacValueListConsume<$T, $X>(family: $family, transformer: $transformer, itemTransformer: $itemTransformer, forceConsume: $forceConsume)';
   }
 
   @override
@@ -298,7 +299,6 @@ class _$_ZacValueListConsume<T extends Object?, X extends List<T>?>
                 other.transformer == transformer) &&
             (identical(other.itemTransformer, itemTransformer) ||
                 other.itemTransformer == itemTransformer) &&
-            (identical(other.select, select) || other.select == select) &&
             (identical(other.forceConsume, forceConsume) ||
                 other.forceConsume == forceConsume));
   }
@@ -310,26 +310,23 @@ class _$_ZacValueListConsume<T extends Object?, X extends List<T>?>
       const DeepCollectionEquality().hash(family),
       transformer,
       itemTransformer,
-      select,
       forceConsume);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueList<T, X> value) $default, {
-    required TResult Function(_ZacValueListConsume<T, X> value) consume,
-  }) {
-    return consume(this);
+    TResult Function(_ZacValueListConsume<T, X> value) $default,
+  ) {
+    return $default(this);
   }
 }
 
 abstract class _ZacValueListConsume<T extends Object?, X extends List<T>?>
-    extends ZacValueList<T, X> {
+    extends ZacValueListConsume<T, X> {
   factory _ZacValueListConsume(
           {required final Object family,
           final ZacTransformers? transformer,
           final ZacTransformers? itemTransformer,
-          final ZacTransformers? select,
           final SharedValueConsumeType? forceConsume}) =
       _$_ZacValueListConsume<T, X>;
   _ZacValueListConsume._() : super._();
@@ -337,10 +334,13 @@ abstract class _ZacValueListConsume<T extends Object?, X extends List<T>?>
   factory _ZacValueListConsume.fromJson(Map<String, dynamic> json) =
       _$_ZacValueListConsume<T, X>.fromJson;
 
+  @override
   Object get family;
+  @override
   ZacTransformers? get transformer;
+  @override
   ZacTransformers? get itemTransformer;
-  ZacTransformers? get select;
+  @override
   SharedValueConsumeType? get forceConsume;
 }
 

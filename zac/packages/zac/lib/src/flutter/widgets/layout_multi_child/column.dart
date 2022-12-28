@@ -41,7 +41,7 @@ class FlutterColumn with _$FlutterColumn implements ZacBuild<Column> {
       verticalDirection:
           verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
       textBaseline: textBaseline?.getValue(zacContext),
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 

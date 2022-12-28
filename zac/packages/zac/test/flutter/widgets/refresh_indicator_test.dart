@@ -74,8 +74,8 @@ void main() {
           data: FlutterRefreshIndicator(
             onRefresh: ZacActions([LeakAction(cb)]),
             child: FlutterListView(
-              children: ZacValueList<Widget, List<Widget>?>(
-                items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>(
+                [
                   FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
                       .toZacValue(),
                 ],
@@ -119,8 +119,8 @@ void main() {
               ]),
               onRefreshCompleter: ZacValueConsume<Completer>(family: 'shared'),
               child: FlutterListView(
-                children: ZacValueList<Widget, List<Widget>?>(
-                  items: [
+                children: ZacValueListSimple<Widget, List<Widget>?>(
+                  [
                     FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
                         .toZacValue(),
                   ],

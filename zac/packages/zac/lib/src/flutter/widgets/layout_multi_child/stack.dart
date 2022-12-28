@@ -4,7 +4,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/rendering.dart';
 
 part 'stack.freezed.dart';
 part 'stack.g.dart';
@@ -36,7 +35,7 @@ class FlutterStack with _$FlutterStack implements ZacBuild<Stack> {
       textDirection: textDirection?.getValue(zacContext),
       fit: fit?.getValue(zacContext) ?? StackFit.loose,
       clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.hardEdge,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 

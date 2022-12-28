@@ -4,8 +4,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/rendering.dart';
 
 part 'indexed_stack.freezed.dart';
 part 'indexed_stack.g.dart';
@@ -39,7 +37,7 @@ class FlutterIndexedStack
       textDirection: textDirection?.getValue(zacContext),
       sizing: sizing?.getValue(zacContext) ?? StackFit.loose,
       index: index?.getValue(zacContext),
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 

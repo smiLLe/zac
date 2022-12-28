@@ -25,14 +25,13 @@ _$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
               json['forceConsume'] as Map<String, dynamic>),
     );
 
-_$_ZacValueList<T, X>
-    _$$_ZacValueListFromJson<T extends Object?, X extends List<T>?>(
+_$_ZacValueListSimple<T, X>
+    _$$_ZacValueListSimpleFromJson<T extends Object?, X extends List<T>?>(
             Map<String, dynamic> json) =>
-        _$_ZacValueList<T, X>(
-          items: (json['items'] as List<dynamic>)
+        _$_ZacValueListSimple<T, X>(
+          (json['items'] as List<dynamic>)
               .map((e) => ZacValue<T>.fromJson(e as Object))
               .toList(),
-          $type: json['builder'] as String?,
         );
 
 _$_ZacValueListConsume<T, X>
@@ -46,14 +45,10 @@ _$_ZacValueListConsume<T, X>
           itemTransformer: json['itemTransformer'] == null
               ? null
               : ZacTransformers.fromJson(json['itemTransformer'] as Object),
-          select: json['select'] == null
-              ? null
-              : ZacTransformers.fromJson(json['select'] as Object),
           forceConsume: json['forceConsume'] == null
               ? null
               : SharedValueConsumeType.fromJson(
                   json['forceConsume'] as Map<String, dynamic>),
-          $type: json['builder'] as String?,
         );
 
 _$_ZacValueMap<T, X>

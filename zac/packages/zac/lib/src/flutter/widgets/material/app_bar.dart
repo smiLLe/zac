@@ -1,15 +1,10 @@
 import 'package:flutter/services.dart';
-import 'package:zac/src/flutter/widgets/icon.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/services.dart';
 
 part 'app_bar.freezed.dart';
 part 'app_bar.g.dart';
@@ -70,7 +65,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuild<AppBar> {
       automaticallyImplyLeading:
           automaticallyImplyLeading?.getValue(zacContext) ?? true,
       title: title?.getValue(zacContext),
-      actions: actions?.build(zacContext) ?? const <Widget>[],
+      actions: actions?.getList(zacContext) ?? const <Widget>[],
       flexibleSpace: flexibleSpace?.getValue(zacContext),
       bottom: bottom?.getValue(zacContext) as PreferredSizeWidget?,
       elevation: elevation?.getValue(zacContext),

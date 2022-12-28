@@ -588,8 +588,8 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:ZacValue': ZacValueSimple.fromJson,
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
   'z:1:ZacValue.consume': ZacValueConsume.fromJson,
-  'z:1:ZacValueList': ZacValueList.fromJson,
-  'z:1:ZacValueList.consume': ZacValueList.fromJson,
+  'z:1:ZacValueList': ZacValueListSimple.fromJson,
+  'z:1:ZacValueList.consume': ZacValueListConsume.fromJson,
   'z:1:ZacValueMap': ZacValueMap.fromJson,
   'z:1:ZacValueMap.consume': ZacValueMap.fromJson
 };

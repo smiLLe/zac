@@ -58,7 +58,7 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuild<Scaffold> {
         body: value.body?.getValue(zacContext),
         floatingActionButton: value.floatingActionButton?.getValue(zacContext),
         persistentFooterButtons:
-            value.persistentFooterButtons?.build(zacContext),
+            value.persistentFooterButtons?.getList(zacContext),
         appBar: value.appBar?.getValue(zacContext) as PreferredSizeWidget?,
         drawer: value.drawer?.getValue(zacContext),
         endDrawer: value.endDrawer?.getValue(zacContext),
@@ -417,7 +417,7 @@ class FlutterMaterialBanner
   MaterialBanner _buildWidget(ZacContext zacContext) {
     return MaterialBanner(
       content: content.getValue(zacContext),
-      actions: actions.build(zacContext),
+      actions: actions.getList(zacContext),
       key: key?.getValue(zacContext),
       // animation: ,
       backgroundColor: backgroundColor?.getValue(zacContext),

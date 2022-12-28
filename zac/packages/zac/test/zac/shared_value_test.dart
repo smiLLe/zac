@@ -420,7 +420,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(
                   ZacValueConsume<String>(
                     family: 'family',
@@ -459,7 +459,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(ZacValueConsume<String>(family: 'family'))
                     .toZacValue(),
                 ZacExecuteActionsBuilder.once(
@@ -490,7 +490,7 @@ void main() {
             value: ['a', 'b'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(ZacValueConsume<String>(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -531,7 +531,7 @@ void main() {
             value: ['ignore'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(ZacValueConsume<String>(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -576,7 +576,7 @@ void main() {
             ],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(ZacValueConsume<String>(
                   family: 'family',
                   transformer: ZacTransformers([
@@ -628,7 +628,7 @@ void main() {
             value: {'ignore': 'ignore'},
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>(items: [
+              children: ZacValueListSimple<Widget, List<Widget>?>([
                 FlutterText(ZacValueConsume<String>(
                   family: 'family',
                   transformer: ZacTransformers([

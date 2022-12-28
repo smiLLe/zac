@@ -100,7 +100,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuild<Widget> {
         key: value.key?.getValue(zacContext),
         title: value.title?.getValue(zacContext),
         content: value.content?.getValue(zacContext),
-        actions: value.actions?.build(zacContext) ?? const <Widget>[],
+        actions: value.actions?.getList(zacContext) ?? const <Widget>[],
         actionsAlignment: value.actionsAlignment?.getValue(zacContext),
         actionsOverflowButtonSpacing:
             value.actionsOverflowButtonSpacing?.getValue(zacContext),
@@ -140,7 +140,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuild<Widget> {
         titlePadding: value.titlePadding?.getValue(zacContext) ??
             const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
         titleTextStyle: value.titleTextStyle?.getValue(zacContext),
-        children: value.children?.build(zacContext) ?? const <Widget>[],
+        children: value.children?.getList(zacContext) ?? const <Widget>[],
       ),
       simpleDialogOption: (value) => SimpleDialogOption(
         key: value.key?.getValue(zacContext),

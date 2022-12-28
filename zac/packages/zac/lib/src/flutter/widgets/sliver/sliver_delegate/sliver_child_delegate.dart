@@ -48,7 +48,7 @@ class FlutterSliverChildDelegate
   SliverChildDelegate build(ZacContext zacContext) {
     return map(
       list: (value) => SliverChildListDelegate(
-        children.build(zacContext),
+        children.getList(zacContext),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacContext) ?? true,
         addRepaintBoundaries:
@@ -58,7 +58,7 @@ class FlutterSliverChildDelegate
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.build(zacContext),
+        children.getList(zacContext),
         addAutomaticKeepAlives:
             addAutomaticKeepAlives?.getValue(zacContext) ?? true,
         addRepaintBoundaries:

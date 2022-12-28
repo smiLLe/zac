@@ -272,14 +272,15 @@ void main() {
 
   group('ZacValueList', () {
     test('Is in converters', () {
-      expectInConverter(['z:1:ZacValueList', 'z:1:ZacValueList.consume'],
-          ZacValueList.fromJson);
+      expectInConverter(['z:1:ZacValueList'], ZacValueListSimple.fromJson);
+      expectInConverter(
+          ['z:1:ZacValueList.consume'], ZacValueListConsume.fromJson);
     });
 
     group('From Values', () {
       test('create from simple list', () {
         expect(ZacValueList<int, List<int>>.fromJson([4]),
-            ZacValueList<int, List<int>>(items: [ZacValue<int>.fromJson(4)]));
+            ZacValueListSimple<int, List<int>>([ZacValue<int>.fromJson(4)]));
       });
 
       test('throws if unsupported type in fromJson', () {
@@ -289,7 +290,7 @@ void main() {
                 (p0) => p0.message,
                 'error message',
                 contains(
-                    'Unsupported type in ZacValueList<int, List<int>>: NONO'))));
+                    'Unsupported type in ZacValueListSimple<int, List<int>>: NONO'))));
       });
 
       test('will wrap items into a ZacValue', () {
@@ -298,15 +299,14 @@ void main() {
               'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
-            ZacValueList<int, List<int>>(items: [ZacValue<int>.fromJson(4)]));
+            ZacValueListSimple<int, List<int>>([ZacValue<int>.fromJson(4)]));
 
         expect(
             ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
-            ZacValueList<int?, List<int?>>(
-                items: [ZacValue<int?>.fromJson(4)]));
+            ZacValueListSimple<int?, List<int?>>([ZacValue<int?>.fromJson(4)]));
 
         expect(
             ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
@@ -318,7 +318,7 @@ void main() {
                 }
               ],
             }),
-            ZacValueList<Key, List<Key>>(items: [
+            ZacValueListSimple<Key, List<Key>>([
               ZacValue<Key>.fromJson({
                 'builder': 'f:1:ValueKey',
                 'value': 'hello',
@@ -351,14 +351,14 @@ void main() {
                   'value': 'world',
                 }
               ],
-            }).build(zacContext),
+            }).getList(zacContext),
             const [ValueKey('hello'), ValueKey('world')]);
 
         expect(
             ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [1, 2],
-            }).build(zacContext),
+            }).getList(zacContext),
             const [1, 2]);
       });
     });
@@ -375,9 +375,9 @@ void main() {
                   family: 'shared',
                   child: TestBuildCustomWidget(
                     (zacContext) {
-                      items = ZacValueList<int?, List<int?>>.consume(
+                      items = ZacValueListConsume<int?, List<int?>>(
                               family: 'shared')
-                          .build(zacContext);
+                          .getList(zacContext);
                       return const SizedBox();
                     },
                   ).toZacValue(),
@@ -405,9 +405,9 @@ void main() {
                   child: TestBuildCustomWidget(
                     (zacContext) {
                       return Column(
-                        children: ZacValueList<Widget, List<Widget>>.consume(
+                        children: ZacValueListConsume<Widget, List<Widget>>(
                                 family: 'shared')
-                            .build(zacContext),
+                            .getList(zacContext),
                       );
                     },
                   ).toZacValue(),
@@ -433,9 +433,9 @@ void main() {
                       (zacContext) {
                         return Column(
                           children: [
-                            ...ZacValueList<String, List<String>>.consume(
+                            ...ZacValueListConsume<String, List<String>>(
                                     family: 'shared')
-                                .build(zacContext)
+                                .getList(zacContext)
                                 .map((e) => Text(e))
                           ],
                         );

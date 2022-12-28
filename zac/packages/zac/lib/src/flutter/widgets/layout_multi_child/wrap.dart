@@ -48,7 +48,7 @@ class FlutterWrap with _$FlutterWrap implements ZacBuild<Wrap> {
       verticalDirection:
           verticalDirection?.getValue(zacContext) ?? VerticalDirection.down,
       clipBehavior: clipBehavior?.getValue(zacContext) ?? Clip.none,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      children: children?.getList(zacContext) ?? const <Widget>[],
     );
   }
 
