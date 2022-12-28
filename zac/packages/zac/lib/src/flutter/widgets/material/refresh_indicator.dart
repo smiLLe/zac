@@ -37,7 +37,7 @@ class FlutterRefreshIndicator
     ZacValue<String?>? semanticsValue,
     ZacValue<double?>? strokeWidth,
     ZacValue<RefreshIndicatorTriggerMode?>? triggerMode,
-    ZacValue<Completer>? onRefreshCompleter,
+    ZacValueConsume<Completer>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   RefreshIndicator _buildWidget(ZacContext zacContext) {
@@ -48,12 +48,8 @@ class FlutterRefreshIndicator
           return Future.value(null);
         }
 
-        onRefreshCompleter!.map(
-          (_) {},
-          consume: (obj) {
-            zacContext.ref.invalidate(SharedValue.provider(obj.family));
-          },
-        );
+        zacContext.ref
+            .invalidate(SharedValue.provider(onRefreshCompleter!.family));
         final completer = onRefreshCompleter!.getValue(zacContext);
 
         onRefresh.execute(ZacActionPayload.param(completer), zacContext);

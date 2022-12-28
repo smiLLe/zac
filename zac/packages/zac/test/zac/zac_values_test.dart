@@ -5,74 +5,72 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../helper.dart';
 
-Matcher _throwsInBuiltInConverter<T>() {
+Matcher _throwsConverterIssue<T>() {
   return throwsA(isA<StateError>().having(
       (p0) => p0.message,
       'error message',
       contains(
-          'It was not possible to convert data in ZacValue<$T>.fromJson()')));
+          'It was not possible to convert data in ZacValueSimple<$T>.fromJson()')));
 }
 
 void main() {
   group('ZacValue', () {
     test('Is in converters', () {
-      expectInConverter(
-          ['z:1:ZacValue', 'z:1:ZacValue.consume'], ZacValue.fromJson);
+      expectInConverter('z:1:ZacValue', ZacValueSimple.fromJson);
+      expectInConverter('z:1:ZacValue.consume', ZacValueConsume.fromJson);
     });
 
     group('From Value', () {
       test('<num>', () {
-        expect(ZacValue<num>.fromJson(5), ZacValue<num>(5));
-        expect(ZacValue<num>.fromJson(5.1), ZacValue<num>(5.1));
-        expect(ZacValue<num?>.fromJson(5), ZacValue<num?>(5));
-        expect(
-            () => ZacValue<num>.fromJson(''), _throwsInBuiltInConverter<num>());
+        expect(ZacValue<num>.fromJson(5), ZacValueSimple<num>(5));
+        expect(ZacValue<num>.fromJson(5.1), ZacValueSimple<num>(5.1));
+        expect(ZacValue<num?>.fromJson(5), ZacValueSimple<num?>(5));
+        expect(() => ZacValue<num>.fromJson(''), _throwsConverterIssue<num>());
       });
 
       test('<int>', () {
-        expect(ZacValue<int>.fromJson(5), ZacValue<int>(5));
-        expect(ZacValue<int?>.fromJson(5), ZacValue<int?>(5));
-        expect(ZacValue<int>.fromJson(5.1), ZacValue<int>(5));
-        expect(
-            () => ZacValue<int>.fromJson(''), _throwsInBuiltInConverter<int>());
+        expect(ZacValue<int>.fromJson(5), ZacValueSimple<int>(5));
+        expect(ZacValue<int?>.fromJson(5), ZacValueSimple<int?>(5));
+        expect(ZacValue<int>.fromJson(5.1), ZacValueSimple<int>(5));
+        expect(() => ZacValue<int>.fromJson(''), _throwsConverterIssue<int>());
       });
 
       test('<double>', () {
-        expect(ZacValue<double>.fromJson(5), ZacValue<double>(5.0));
-        expect(ZacValue<double>.fromJson(5.1), ZacValue<double>(5.1));
-        expect(ZacValue<double?>.fromJson(5.1), ZacValue<double?>(5.1));
+        expect(ZacValue<double>.fromJson(5), ZacValueSimple<double>(5.0));
+        expect(ZacValue<double>.fromJson(5.1), ZacValueSimple<double>(5.1));
+        expect(ZacValue<double?>.fromJson(5.1), ZacValueSimple<double?>(5.1));
         expect(() => ZacValue<double>.fromJson(''),
-            _throwsInBuiltInConverter<double>());
+            _throwsConverterIssue<double>());
       });
 
       test('<String>', () {
-        expect(ZacValue<String>.fromJson('foo'), ZacValue<String>('foo'));
-        expect(ZacValue<String?>.fromJson('foo'), ZacValue<String?>('foo'));
+        expect(ZacValue<String>.fromJson('foo'), ZacValueSimple<String>('foo'));
+        expect(
+            ZacValue<String?>.fromJson('foo'), ZacValueSimple<String?>('foo'));
         expect(() => ZacValue<String>.fromJson(1),
-            _throwsInBuiltInConverter<String>());
+            _throwsConverterIssue<String>());
       });
 
       test('<bool>', () {
-        expect(ZacValue<bool>.fromJson(false), ZacValue<bool>(false));
-        expect(ZacValue<bool?>.fromJson(false), ZacValue<bool?>(false));
-        expect(() => ZacValue<bool>.fromJson(1),
-            _throwsInBuiltInConverter<bool>());
+        expect(ZacValue<bool>.fromJson(false), ZacValueSimple<bool>(false));
+        expect(ZacValue<bool?>.fromJson(false), ZacValueSimple<bool?>(false));
+        expect(() => ZacValue<bool>.fromJson(1), _throwsConverterIssue<bool>());
       });
 
       test('<DateTime>', () {
         final now = DateTime.now();
         expect(ZacValue<DateTime>.fromJson(now.toIso8601String()),
-            ZacValue<DateTime>(now));
+            ZacValueSimple<DateTime>(now));
         expect(() => ZacValue<DateTime>.fromJson(1),
-            _throwsInBuiltInConverter<DateTime>());
+            _throwsConverterIssue<DateTime>());
       });
 
       test('<Object>', () {
         final now = DateTime.now();
         expect(ZacValue<Object>.fromJson(now.toIso8601String()),
-            ZacValue<Object>(now.toIso8601String()));
+            ZacValueSimple<Object>(now.toIso8601String()));
 
-        expect(ZacValue<Object>.fromJson(5.1), ZacValue<Object>(5.1));
+        expect(ZacValue<Object>.fromJson(5.1), ZacValueSimple<Object>(5.1));
       });
 
       test('<Widget>', () {
@@ -80,13 +78,13 @@ void main() {
             ZacValue<Widget>.fromJson(<String, dynamic>{
               'builder': 'f:1:SizedBox',
             }),
-            ZacValue<Widget>(FlutterSizedBox()));
+            ZacValueSimple<Widget>(FlutterSizedBox()));
 
         expect(
             ZacValue<Widget?>.fromJson(<String, dynamic>{
               'builder': 'f:1:SizedBox',
             }),
-            ZacValue<Widget?>(FlutterSizedBox()));
+            ZacValueSimple<Widget?>(FlutterSizedBox()));
       });
 
       testWidgets('.build()', (tester) async {
@@ -107,16 +105,14 @@ void main() {
       testWidgets('.build() #2', (tester) async {
         late ZacContext zacContext;
         await tester.pumpWidget(
-          ProviderScope(
-            child: ZacWidget(
-              data: LeakContext(
-                cb: (z) => zacContext = z,
-              ),
+          ZacWidget(
+            data: LeakContext(
+              cb: (z) => zacContext = z,
             ),
           ),
         );
 
-        expect(ZacValue<Key>(FlutterValueKey('key')).getValue(zacContext),
+        expect(ZacValueSimple<Key>(FlutterValueKey('key')).getValue(zacContext),
             const ValueKey('key'));
       });
     });
@@ -128,7 +124,7 @@ void main() {
               'builder': 'z:1:ZacValue.consume',
               'family': 'shared',
             }),
-            ZacValue<Widget>.consume(family: 'shared'));
+            ZacValueConsume<Widget>(family: 'shared'));
       });
 
       group('.build()', () {
@@ -144,11 +140,9 @@ void main() {
                       data: SharedValueProviderBuilder(
                         value: shareValue,
                         family: 'shared',
-                        child: ZacValue<Widget>(
-                          LeakContext(
-                            cb: (z) => zacContext = z,
-                          ),
-                        ),
+                        child: LeakContext(
+                          cb: (z) => zacContext = z,
+                        ).toZacValue(),
                       ),
                     ),
                   ),
@@ -156,7 +150,7 @@ void main() {
               ),
             );
 
-            expect(ZacValue<T>.consume(family: 'shared').getValue(zacContext),
+            expect(ZacValueConsume<T>(family: 'shared').getValue(zacContext),
                 shareValue);
           }
 
@@ -175,14 +169,12 @@ void main() {
                     key: FlutterValueKey('FIND_ME_2').toZacValue(),
                   ),
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    TestBuildCustomWidget(
-                      (zacContext) {
-                        return ZacValue<Widget>.consume(family: 'shared')
-                            .getValue(zacContext);
-                      },
-                    ),
-                  ),
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      return ZacValueConsume<Widget>(family: 'shared')
+                          .getValue(zacContext);
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
@@ -206,19 +198,17 @@ void main() {
                       },
                     )
                   ]),
-                  child: ZacValue<Widget>(
-                    LeakContext(
-                      cb: (c) {
-                        zacContext = c;
-                      },
-                    ),
-                  ),
+                  child: LeakContext(
+                    cb: (c) {
+                      zacContext = c;
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
           );
           expect(
-              ZacValue<int>.consume(family: 'shared').getValue(zacContext), 5);
+              ZacValueConsume<int>(family: 'shared').getValue(zacContext), 5);
         });
 
         testWidgets('will throw if shared value is null but null is not wanted',
@@ -230,19 +220,17 @@ void main() {
                 data: SharedValueProviderBuilder(
                   value: null,
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    LeakContext(
-                      cb: (c) {
-                        zacContext = c;
-                      },
-                    ),
-                  ),
+                  child: LeakContext(
+                    cb: (c) {
+                      zacContext = c;
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
           );
           expect(
-              () => ZacValue<String>.consume(family: 'shared')
+              () => ZacValueConsume<String>(family: 'shared')
                   .getValue(zacContext),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
@@ -261,20 +249,17 @@ void main() {
                 data: SharedValueProviderBuilder(
                   value: 'hello',
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    LeakContext(
-                      cb: (c) {
-                        zacContext = c;
-                      },
-                    ),
-                  ),
+                  child: LeakContext(
+                    cb: (c) {
+                      zacContext = c;
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
           );
           expect(
-              () =>
-                  ZacValue<int>.consume(family: 'shared').getValue(zacContext),
+              () => ZacValueConsume<int>(family: 'shared').getValue(zacContext),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
                   'error message',
@@ -388,16 +373,14 @@ void main() {
                 data: SharedValueProviderBuilder(
                   value: [1, null],
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    TestBuildCustomWidget(
-                      (zacContext) {
-                        items = ZacValueList<int?, List<int?>>.consume(
-                                family: 'shared')
-                            .build(zacContext);
-                        return const SizedBox();
-                      },
-                    ),
-                  ),
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      items = ZacValueList<int?, List<int?>>.consume(
+                              family: 'shared')
+                          .build(zacContext);
+                      return const SizedBox();
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
@@ -419,17 +402,15 @@ void main() {
                     )
                   ],
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    TestBuildCustomWidget(
-                      (zacContext) {
-                        return Column(
-                          children: ZacValueList<Widget, List<Widget>>.consume(
-                                  family: 'shared')
-                              .build(zacContext),
-                        );
-                      },
-                    ),
-                  ),
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      return Column(
+                        children: ZacValueList<Widget, List<Widget>>.consume(
+                                family: 'shared')
+                            .build(zacContext),
+                      );
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
@@ -448,20 +429,18 @@ void main() {
                   data: SharedValueProviderBuilder(
                     value: ['hello', 'world'],
                     family: 'shared',
-                    child: ZacValue<Widget>(
-                      TestBuildCustomWidget(
-                        (zacContext) {
-                          return Column(
-                            children: [
-                              ...ZacValueList<String, List<String>>.consume(
-                                      family: 'shared')
-                                  .build(zacContext)
-                                  .map((e) => Text(e))
-                            ],
-                          );
-                        },
-                      ),
-                    ),
+                    child: TestBuildCustomWidget(
+                      (zacContext) {
+                        return Column(
+                          children: [
+                            ...ZacValueList<String, List<String>>.consume(
+                                    family: 'shared')
+                                .build(zacContext)
+                                .map((e) => Text(e))
+                          ],
+                        );
+                      },
+                    ).toZacValue(),
                   ),
                 ),
               ),
@@ -582,16 +561,14 @@ void main() {
                 data: SharedValueProviderBuilder(
                   value: {'a': null, 'b': 1},
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    TestBuildCustomWidget(
-                      (zacContext) {
-                        items = ZacValueMap<int?, Map<String, int?>>.consume(
-                                family: 'shared')
-                            .build(zacContext);
-                        return const SizedBox();
-                      },
-                    ),
-                  ),
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      items = ZacValueMap<int?, Map<String, int?>>.consume(
+                              family: 'shared')
+                          .build(zacContext);
+                      return const SizedBox();
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
@@ -613,18 +590,16 @@ void main() {
                     )
                   },
                   family: 'shared',
-                  child: ZacValue<Widget>(
-                    TestBuildCustomWidget(
-                      (zacContext) {
-                        final map =
-                            ZacValueMap<Widget, Map<String, Widget>>.consume(
-                                    family: 'shared')
-                                .build(zacContext);
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      final map =
+                          ZacValueMap<Widget, Map<String, Widget>>.consume(
+                                  family: 'shared')
+                              .build(zacContext);
 
-                        return map['a']!;
-                      },
-                    ),
-                  ),
+                      return map['a']!;
+                    },
+                  ).toZacValue(),
                 ),
               ),
             ),
@@ -660,7 +635,7 @@ void main() {
             ]),
           ),
         ]),
-        child: ZacValue<Widget>(FlutterSizedBox()),
+        child: FlutterSizedBox().toZacValue(),
       ),
     );
 

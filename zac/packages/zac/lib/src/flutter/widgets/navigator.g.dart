@@ -69,8 +69,8 @@ _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
 _$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
         Map<String, dynamic> json) =>
     _$_ZacNavigatorStateSharedValue(
-      value:
-          ZacValue<GlobalKey<NavigatorState>>.fromJson(json['value'] as Object),
+      value: ZacValueConsume<GlobalKey<NavigatorState>>.fromJson(
+          json['value'] as Map<String, dynamic>),
       $type: json['builder'] as String?,
     );
 

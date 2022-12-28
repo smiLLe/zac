@@ -101,11 +101,11 @@ void main() {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('a').toZacValue()))),
+            widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                .toZacValue()),
         'b': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('b').toZacValue())))
+            widget: FlutterSizedBox(key: FlutterValueKey('b').toZacValue())
+                .toZacValue())
       },
       context: null,
       state: 'a',
@@ -117,15 +117,15 @@ void main() {
     expect(
         machine.config,
         ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('a').toZacValue()))));
+            widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                .toZacValue()));
 
     machine = machine.copyWith.call(state: 'b');
     expect(
         machine.config,
         ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('b').toZacValue()))));
+            widget: FlutterSizedBox(key: FlutterValueKey('b').toZacValue())
+                .toZacValue()));
 
     machine = machine.copyWith.call(state: 'c');
     expect(
@@ -140,8 +140,8 @@ void main() {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('a').toZacValue()))),
+            widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                .toZacValue()),
       },
       context: null,
       state: 'a',
@@ -150,21 +150,19 @@ void main() {
       isActive: () => true,
     );
 
-    expect(
-        machine.getWidget(zacContext),
-        ZacValue<Widget>(
-            FlutterSizedBox(key: FlutterValueKey('a').toZacValue())));
+    expect(machine.getWidget(zacContext),
+        FlutterSizedBox(key: FlutterValueKey('a').toZacValue()).toZacValue());
   });
 
   test('Find a config for a certain state in a StateMachine', () {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('a').toZacValue()))),
+            widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                .toZacValue()),
         'b': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('b').toZacValue())))
+            widget: FlutterSizedBox(key: FlutterValueKey('b').toZacValue())
+                .toZacValue())
       },
       context: null,
       state: 'a',
@@ -176,29 +174,29 @@ void main() {
     expect(
         machine.findConfigByState('a'),
         ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('a').toZacValue()))));
+            widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                .toZacValue()));
     expect(
         machine.findConfigByState('b'),
         ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('b').toZacValue()))));
+            widget: FlutterSizedBox(key: FlutterValueKey('b').toZacValue())
+                .toZacValue()));
   });
 
   test('Find a transition candidate for event in a StateMachine', () {
     var machine = ZacStateMachine(
       states: {
         'a': ZacStateConfig(
-          widget: ZacValue<Widget>(
-              FlutterSizedBox(key: FlutterValueKey('a').toZacValue())),
+          widget: FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+              .toZacValue(),
           on: [
             ZacTransition(event: 'NEXT', target: 'b'),
             ZacTransition(event: 'NEXT', target: 'c')
           ],
         ),
         'b': ZacStateConfig(
-            widget: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('b').toZacValue())))
+            widget: FlutterSizedBox(key: FlutterValueKey('b').toZacValue())
+                .toZacValue())
       },
       context: null,
       state: 'a',
@@ -223,29 +221,23 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in a').toZacValue(),
-                  ),
-                ),
-              ),
-            )
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a').toZacValue(),
+              ).toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (c) {
-              zacContext = c;
-              curMachine = SharedValue.get(
-                zacContext: c,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              );
-            },
-          ),
-        ),
+        child: LeakContext(
+          cb: (c) {
+            zacContext = c;
+            curMachine = SharedValue.get(
+              zacContext: c,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            );
+          },
+        ).toZacValue(),
       ),
     );
 
@@ -256,9 +248,9 @@ void main() {
             .having(
                 (p0) => p0.getWidget(zacContext),
                 'widget',
-                ZacValue<Widget>(FlutterSizedBox(
+                FlutterSizedBox(
                   key: FlutterValueKey('in a').toZacValue(),
-                )))
+                ).toZacValue())
             .having((p0) => p0.context, 'context', 1));
   });
 
@@ -273,43 +265,33 @@ void main() {
           initialState: ZacValue<String>.fromJson('a'),
           states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
             items: {
-              'a': ZacValue<ZacStateConfig>(
-                ZacStateConfig(
-                  widget: ZacValue<Widget>(
-                    FlutterSizedBox(
-                      key: FlutterValueKey('in a').toZacValue(),
-                    ),
-                  ),
-                  on: [
-                    ZacTransition(event: 'NEXT', target: 'b'),
-                  ],
-                ),
-              ),
-              'b': ZacValue<ZacStateConfig>(
-                ZacStateConfig(
-                  widget: ZacValue<Widget>(
-                    FlutterSizedBox(
-                      key: FlutterValueKey('in b').toZacValue(),
-                    ),
-                  ),
-                ),
-              ),
+              'a': ZacStateConfig(
+                widget: FlutterSizedBox(
+                  key: FlutterValueKey('in a').toZacValue(),
+                ).toZacValue(),
+                on: [
+                  ZacTransition(event: 'NEXT', target: 'b'),
+                ],
+              ).toZacValue(),
+              'b': ZacStateConfig(
+                widget: FlutterSizedBox(
+                  key: FlutterValueKey('in b').toZacValue(),
+                ).toZacValue(),
+              ).toZacValue(),
             },
           ),
-          child: ZacValue<Widget>(
-            TestBuildCustomWidget((zacContext) {
-              context = zacContext;
-              return TextButton(
-                key: const Key('button'),
-                child: const SizedBox(),
-                onPressed: () {
-                  (zacContext.ref.read(SharedValue.provider('machine'))
-                          as ZacStateMachine)
-                      .send('NEXT', null);
-                },
-              );
-            }),
-          ),
+          child: TestBuildCustomWidget((zacContext) {
+            context = zacContext;
+            return TextButton(
+              key: const Key('button'),
+              child: const SizedBox(),
+              onPressed: () {
+                (zacContext.ref.read(SharedValue.provider('machine'))
+                        as ZacStateMachine)
+                    .send('NEXT', null);
+              },
+            );
+          }).toZacValue(),
         ));
 
     await tester.tap(find.byKey(const Key('button')));
@@ -332,39 +314,29 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in a').toZacValue(),
-                  ),
-                ),
-                on: [ZacTransition(event: 'NEXT', target: 'b')],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in a').toZacValue(),
-                  ),
-                ),
-                on: [ZacTransition(event: 'NEXT', target: 'a')],
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a').toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'b')],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a').toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'a')],
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (zacContext) {
-              curMachine = SharedValue.get(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              ) as ZacStateMachine;
-            },
-          ),
-        ),
+        child: LeakContext(
+          cb: (zacContext) {
+            curMachine = SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ) as ZacStateMachine;
+          },
+        ).toZacValue(),
       ),
     );
 
@@ -396,38 +368,30 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-                on: [
-                  ZacTransition(event: 'NEXT', target: 'b'),
-                  ZacTransition(event: 'OTHER', target: 'c'),
-                ],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-              ),
-            ),
-            'c': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+              on: [
+                ZacTransition(event: 'NEXT', target: 'b'),
+                ZacTransition(event: 'OTHER', target: 'c'),
+              ],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+            ).toZacValue(),
+            'c': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (zacContext) {
-              curMachine = SharedValue.get(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              ) as ZacStateMachine;
-            },
-          ),
-        ),
+        child: LeakContext(
+          cb: (zacContext) {
+            curMachine = SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ) as ZacStateMachine;
+          },
+        ).toZacValue(),
       ),
     );
 
@@ -450,32 +414,26 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-                on: [
-                  ZacTransition(event: 'NEXT', target: 'b'),
-                ],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+              on: [
+                ZacTransition(event: 'NEXT', target: 'b'),
+              ],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (zacContext) {
-              curMachine = SharedValue.get(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              ) as ZacStateMachine;
-            },
-          ),
-        ),
+        child: LeakContext(
+          cb: (zacContext) {
+            curMachine = SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ) as ZacStateMachine;
+          },
+        ).toZacValue(),
       ),
     );
 
@@ -497,32 +455,26 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-                on: [
-                  ZacTransition(event: 'NEXT', target: 'b'),
-                ],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(FlutterSizedBox()),
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+              on: [
+                ZacTransition(event: 'NEXT', target: 'b'),
+              ],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox().toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (zacContext) {
-              machines.add(SharedValue.get(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              ) as ZacStateMachine);
-            },
-          ),
-        ),
+        child: LeakContext(
+          cb: (zacContext) {
+            machines.add(SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ) as ZacStateMachine);
+          },
+        ).toZacValue(),
       ),
     );
 
@@ -549,59 +501,41 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in a').toZacValue(),
-                  ),
-                ),
-                on: [ZacTransition(event: 'NEXT', target: 'b')],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in b').toZacValue(),
-                  ),
-                ),
-                on: [ZacTransition(event: 'NEXT', target: 'c')],
-              ),
-            ),
-            'c': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in c').toZacValue(),
-                  ),
-                ),
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a').toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'b')],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in b').toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'c')],
+            ).toZacValue(),
+            'c': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in c').toZacValue(),
+              ).toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          LeakContext(
-            cb: (zacContext) {
-              machine = SharedValue.get(
-                zacContext: zacContext,
-                consumeType: const SharedValueConsumeType.watch(),
-                family: 'machine',
-              ) as ZacStateMachine;
-            },
-            child: ZacValue<Widget>(
-              ZacStateMachineBuildStateBuilder(
-                family: ZacValue<String>.fromJson('machine'),
-                states: ['a', 'b'],
-                unmappedStateWidget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('unmapped').toZacValue(),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
+        child: LeakContext(
+          cb: (zacContext) {
+            machine = SharedValue.get(
+              zacContext: zacContext,
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ) as ZacStateMachine;
+          },
+          child: ZacStateMachineBuildStateBuilder(
+            family: ZacValue<String>.fromJson('machine'),
+            states: ['a', 'b'],
+            unmappedStateWidget: FlutterSizedBox(
+              key: FlutterValueKey('unmapped').toZacValue(),
+            ).toZacValue(),
+          ).toZacValue(),
+        ).toZacValue(),
       ),
     );
 
@@ -631,24 +565,18 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in a').toZacValue(),
-                  ),
-                ),
-                on: [ZacTransition(event: 'NEXT', target: 'b')],
-              ),
-            ),
+            'a': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in a').toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'b')],
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          ZacStateMachineBuildStateBuilder(
-            family: ZacValue<String>.fromJson('machine'),
-            states: ['b'],
-          ),
-        ),
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacValue<String>.fromJson('machine'),
+          states: ['b'],
+        ).toZacValue(),
       ),
     );
 
@@ -666,41 +594,31 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  ZacExecuteActionsBuilder.once(
-                    actions: ZacActions(
-                      [
-                        ZacStateMachineActions.send(
-                          family: 'machine',
-                          event: ZacValue<String>.fromJson('NEXT'),
-                        )
-                      ],
-                    ),
-                    child: ZacValue<Widget>(FlutterSizedBox()),
-                  ),
+            'a': ZacStateConfig(
+              widget: ZacExecuteActionsBuilder.once(
+                actions: ZacActions(
+                  [
+                    ZacStateMachineActions.send(
+                      family: 'machine',
+                      event: ZacValue<String>.fromJson('NEXT'),
+                    )
+                  ],
                 ),
-                on: [ZacTransition(event: 'NEXT', target: 'b')],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in b').toZacValue(),
-                  ),
-                ),
-              ),
-            ),
+                child: FlutterSizedBox().toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'b')],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in b').toZacValue(),
+              ).toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          ZacStateMachineBuildStateBuilder(
-            family: ZacValue<String>.fromJson('machine'),
-            states: ['a', 'b'],
-          ),
-        ),
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacValue<String>.fromJson('machine'),
+          states: ['a', 'b'],
+        ).toZacValue(),
       ),
     );
 
@@ -717,41 +635,31 @@ void main() {
         initialState: ZacValue<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
           items: {
-            'a': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  ZacExecuteActionsBuilder.once(
-                    actions: ZacActions(
-                      [
-                        ZacStateMachineActions.trySend(
-                          family: 'machine',
-                          event: ZacValue<String>.fromJson('NEXT'),
-                        )
-                      ],
-                    ),
-                    child: ZacValue<Widget>(FlutterSizedBox()),
-                  ),
+            'a': ZacStateConfig(
+              widget: ZacExecuteActionsBuilder.once(
+                actions: ZacActions(
+                  [
+                    ZacStateMachineActions.trySend(
+                      family: 'machine',
+                      event: ZacValue<String>.fromJson('NEXT'),
+                    )
+                  ],
                 ),
-                on: [ZacTransition(event: 'NEXT', target: 'b')],
-              ),
-            ),
-            'b': ZacValue<ZacStateConfig>(
-              ZacStateConfig(
-                widget: ZacValue<Widget>(
-                  FlutterSizedBox(
-                    key: FlutterValueKey('in b').toZacValue(),
-                  ),
-                ),
-              ),
-            ),
+                child: FlutterSizedBox().toZacValue(),
+              ).toZacValue(),
+              on: [ZacTransition(event: 'NEXT', target: 'b')],
+            ).toZacValue(),
+            'b': ZacStateConfig(
+              widget: FlutterSizedBox(
+                key: FlutterValueKey('in b').toZacValue(),
+              ).toZacValue(),
+            ).toZacValue(),
           },
         ),
-        child: ZacValue<Widget>(
-          ZacStateMachineBuildStateBuilder(
-            family: ZacValue<String>.fromJson('machine'),
-            states: ['a', 'b'],
-          ),
-        ),
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacValue<String>.fromJson('machine'),
+          states: ['a', 'b'],
+        ).toZacValue(),
       ),
     );
 
@@ -766,8 +674,9 @@ void main() {
             ZacTransformValue(ZacStateMachine(
               states: {
                 'a': ZacStateConfig(
-                    widget: ZacValue<Widget>(FlutterSizedBox(
-                        key: FlutterValueKey('a').toZacValue()))),
+                    widget:
+                        FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                            .toZacValue()),
               },
               context: null,
               state: 'a',
@@ -795,8 +704,9 @@ void main() {
             ZacTransformValue(ZacStateMachine(
               states: {
                 'a': ZacStateConfig(
-                    widget: ZacValue<Widget>(FlutterSizedBox(
-                        key: FlutterValueKey('a').toZacValue()))),
+                    widget:
+                        FlutterSizedBox(key: FlutterValueKey('a').toZacValue())
+                            .toZacValue()),
               },
               context: 'hello',
               state: 'a',

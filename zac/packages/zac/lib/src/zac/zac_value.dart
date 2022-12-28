@@ -14,16 +14,36 @@ bool isType<T, Y>() => T == Y;
 
 extension XZacValue<T> on ZacBuild<T> {
   ZacValue<T> toZacValue() {
-    return ZacValue<T>(this);
+    return ZacValueSimple<T>(this);
   }
 }
 
+abstract class ZacValue<T extends Object?> {
+  factory ZacValue.fromJson(Object data) {
+    return ConverterHelper.ifRegisteredBuilder<ZacValue<T>>(
+      data,
+      cb: (map, converterName) {
+        if (converterName == ZacValueConsume.union) {
+          return ZacValueConsume<T>.fromJson(map);
+        }
+        return ZacValueSimple<T>.fromJson(map);
+      },
+      orElse: () => ZacValueSimple<T>.fromJson(data),
+    );
+  }
+
+  T getValue(ZacContext zacContext,
+      {SharedValueConsumeType onConsume =
+          const SharedValueConsumeType.watch()});
+}
+
 @freezedZacBuilder
-class ZacValue<T extends Object?> with _$ZacValue<T> {
-  const ZacValue._();
+class ZacValueSimple<T extends Object?>
+    with _$ZacValueSimple<T>
+    implements ZacValue<T> {
+  const ZacValueSimple._();
 
   static const String union = 'z:1:ZacValue';
-  static const String unionFromSharedValue = 'z:1:ZacValue.consume';
 
   static Object _convert<T>(Object? data) {
     if (isType<T, Object>() || isType<T, Object?>()) {
@@ -53,110 +73,118 @@ class ZacValue<T extends Object?> with _$ZacValue<T> {
       },
       orElse: () {
         throw StateError('''
-It was not possible to convert data in ${ZacValue<T>}.fromJson().
+It was not possible to convert data in ${ZacValueSimple<T>}.fromJson().
 The given data is not supported:
 $data''');
       },
     );
   }
 
-  factory ZacValue.fromJson(Object? data) {
-    final zacValue = ConverterHelper.ifRegisteredBuilder<ZacValue<T>>(
+  factory ZacValueSimple.fromJson(Object data) {
+    return ConverterHelper.ifRegisteredBuilder<ZacValueSimple<T>>(
       data,
       cb: (map, converterName) {
-        if (converterName == ZacValue.unionFromSharedValue) {
-          return _$ZacValueFromJson<T>(map);
-        }
-
-        return _$ZacValueFromJson<T>(<String, Object?>{
-          'builder': ZacValue.union,
-          'value':
-              _convert<T>(converterName == ZacValue.union ? map['value'] : map),
+        return _$ZacValueSimpleFromJson<T>(<String, Object?>{
+          'builder': ZacValueSimple.union,
+          'value': _convert<T>(
+              converterName == ZacValueSimple.union ? map['value'] : map),
         });
       },
-      orElse: () => _$ZacValueFromJson<T>(<String, dynamic>{
-        'builder': ZacValue.union,
+      orElse: () => _$ZacValueSimpleFromJson<T>(<String, dynamic>{
+        'builder': ZacValueSimple.union,
         'value': _convert<T>(data),
       }),
     );
-
-    return zacValue;
   }
 
-  @FreezedUnionValue(ZacValue.union)
-  factory ZacValue(Object value) = _ZacValue<T>;
+  @FreezedUnionValue(ZacValueSimple.union)
+  factory ZacValueSimple(Object value) = _ZacValueSimple<T>;
 
-  @FreezedUnionValue(ZacValue.unionFromSharedValue)
-  factory ZacValue.consume({
-    required SharedValueFamily family,
-    ZacTransformers? transformer,
-    SharedValueConsumeType? forceConsume,
-  }) = ZacValueConsume<T>;
-
+  @override
   T getValue(ZacContext zacContext,
       {SharedValueConsumeType onConsume =
           const SharedValueConsumeType.watch()}) {
-    return map<T>(
-      (obj) {
-        final value = obj.value;
-        if (value is T) return value as T;
-        if (value is ZacBuild<T>) {
-          return value.build(zacContext);
-        }
-        throw StateError('');
-      },
-      consume: (obj) {
-        final value = SharedValue.get(
-          zacContext: zacContext,
-          consumeType: obj.forceConsume ?? onConsume,
-          family: obj.family,
-        );
+    final val = value;
+    if (val is T) return val as T;
+    if (val is ZacBuild<T>) return val.build(zacContext);
 
-        final transformer = obj.transformer;
+    throw StateError('''
+It was not possible to return a value in ${ZacValueSimple<T>}.getValue().
+The value is not of the requested type $T but instead:
+$val''');
+  }
+}
 
-        if (null == value) {
-          if (null is T && true != transformer?.transformers.isNotEmpty) {
-            return null as T;
-          } else if (null is! T &&
-              true != transformer?.transformers.isNotEmpty) {
-            throw StateError('''
-It was not possible to return a $SharedValue of type $T from ${ZacValue<T>}.build()
+@freezedZacBuilder
+class ZacValueConsume<T extends Object?>
+    with _$ZacValueConsume<T>
+    implements ZacValue<T> {
+  const ZacValueConsume._();
+
+  static const String union = 'z:1:ZacValue.consume';
+
+  factory ZacValueConsume.fromJson(Map<String, dynamic> data) =>
+      _$ZacValueConsumeFromJson<T>(data);
+
+  @FreezedUnionValue(ZacValueConsume.union)
+  factory ZacValueConsume({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    SharedValueConsumeType? forceConsume,
+  }) = _ZacValueConsume<T>;
+
+  @override
+  T getValue(ZacContext zacContext,
+      {SharedValueConsumeType onConsume =
+          const SharedValueConsumeType.watch()}) {
+    final value = SharedValue.get(
+      zacContext: zacContext,
+      consumeType: forceConsume ?? onConsume,
+      family: family,
+    );
+
+    if (null == value) {
+      if (null is T && true != transformer?.transformers.isNotEmpty) {
+        return null as T;
+      } else if (null is! T && true != transformer?.transformers.isNotEmpty) {
+        throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValueConsume<T>}.build()
 because the value is null and there are no transformers added.
 Value: $value''');
-          }
-        }
+      }
+    }
 
-        if (value is T && true != transformer?.transformers.isNotEmpty) {
-          return value;
-        }
+    if (value is T && true != transformer?.transformers.isNotEmpty) {
+      return value;
+    }
 
-        if (null == transformer || transformer.transformers.isEmpty) {
-          throw StateError('''
-It was not possible to return a $SharedValue of type $T from ${ZacValue<T>}.build()
+    final thisTransformer = transformer;
+
+    if (null == thisTransformer || thisTransformer.transformers.isEmpty) {
+      throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValueConsume<T>}.build()
 because there were no transformer.
 The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
-        }
+    }
 
-        final transformedVal =
-            transformer.transform(ZacTransformValue(value), zacContext, null);
-        if (transformedVal is! T) {
-          final transformerErr =
-              transformer.transformers.map((e) => e.runtimeType);
+    final transformedVal =
+        thisTransformer.transform(ZacTransformValue(value), zacContext, null);
+    if (transformedVal is! T) {
+      final transformerErr =
+          thisTransformer.transformers.map((e) => e.runtimeType);
 
-          throw StateError('''
-It was not possible to return a $SharedValue of type $T from ${ZacValue<T>} 
+      throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ZacValueConsume<T>}
 after transformers were applied.
 Type of value before transformation: ${value.runtimeType}
 Type of value after transformation: ${transformedVal.runtimeType}
 ${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
 Value before: $value
 Value after: $transformedVal''');
-        }
+    }
 
-        return transformedVal;
-      },
-    );
+    return transformedVal;
   }
 }
 

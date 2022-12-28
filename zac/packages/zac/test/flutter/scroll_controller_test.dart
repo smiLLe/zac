@@ -15,18 +15,16 @@ void main() {
       ProviderScope(
         child: ZacWidget(
           data: FlutterScrollController(
-            child: ZacValue<Widget>(
-              LeakContext(
-                cb: (z) => zacContext = z,
-              ),
-            ),
+            child: LeakContext(
+              cb: (z) => zacContext = z,
+            ).toZacValue(),
           ),
         ),
       ),
     );
 
     expect(
-        ZacValue<ScrollController>.consume(
+        ZacValueConsume<ScrollController>(
                 family: FlutterScrollController.familyName)
             .getValue(zacContext),
         isA<ScrollController>());

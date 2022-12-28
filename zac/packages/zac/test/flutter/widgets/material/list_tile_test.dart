@@ -34,11 +34,12 @@ void main() {
     await testZacWidget(
         tester,
         FlutterScaffold(
-            body: ZacValue<Widget>(FlutterListTile(
-          key: FlutterValueKey('FIND_ME').toZacValue(),
-          onTap: LeakAction.createActions(onTapCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
-        ))));
+          body: FlutterListTile(
+            key: FlutterValueKey('FIND_ME').toZacValue(),
+            onTap: LeakAction.createActions(onTapCb),
+            onLongPress: LeakAction.createActions(onLongPressCb),
+          ).toZacValue(),
+        ));
 
     final findMe = find.byKey(const ValueKey('FIND_ME'));
 

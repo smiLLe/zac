@@ -6,16 +6,15 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValue<T> _$$_ZacValueFromJson<T extends Object?>(
+_$_ZacValueSimple<T> _$$_ZacValueSimpleFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValue<T>(
+    _$_ZacValueSimple<T>(
       json['value'] as Object,
-      $type: json['builder'] as String?,
     );
 
-_$ZacValueConsume<T> _$$ZacValueConsumeFromJson<T extends Object?>(
+_$_ZacValueConsume<T> _$$_ZacValueConsumeFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$ZacValueConsume<T>(
+    _$_ZacValueConsume<T>(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
@@ -24,7 +23,6 @@ _$ZacValueConsume<T> _$$ZacValueConsumeFromJson<T extends Object?>(
           ? null
           : SharedValueConsumeType.fromJson(
               json['forceConsume'] as Map<String, dynamic>),
-      $type: json['builder'] as String?,
     );
 
 _$_ZacValueList<T, X>

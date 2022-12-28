@@ -34,7 +34,7 @@ mixin _$FlutterRefreshIndicator {
   ZacValue<double?>? get strokeWidth => throw _privateConstructorUsedError;
   ZacValue<RefreshIndicatorTriggerMode?>? get triggerMode =>
       throw _privateConstructorUsedError;
-  ZacValue<Completer>? get onRefreshCompleter =>
+  ZacValueConsume<Completer>? get onRefreshCompleter =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -89,7 +89,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final ZacValue<RefreshIndicatorTriggerMode?>? triggerMode;
   @override
-  final ZacValue<Completer>? onRefreshCompleter;
+  final ZacValueConsume<Completer>? onRefreshCompleter;
 
   @override
   String toString() {
@@ -163,7 +163,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
           final ZacValue<String?>? semanticsValue,
           final ZacValue<double?>? strokeWidth,
           final ZacValue<RefreshIndicatorTriggerMode?>? triggerMode,
-          final ZacValue<Completer>? onRefreshCompleter}) =
+          final ZacValueConsume<Completer>? onRefreshCompleter}) =
       _$_FlutterRefreshIndicator;
   _FlutterRefreshIndicator._() : super._();
 
@@ -193,7 +193,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   ZacValue<RefreshIndicatorTriggerMode?>? get triggerMode;
   @override
-  ZacValue<Completer>? get onRefreshCompleter;
+  ZacValueConsume<Completer>? get onRefreshCompleter;
 }
 
 FlutterRefreshIndicatorTriggerMode _$FlutterRefreshIndicatorTriggerModeFromJson(

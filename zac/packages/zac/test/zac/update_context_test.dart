@@ -29,20 +29,16 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>(
-            LeakContext(
+          child: LeakContext(
+            cb: (o) {
+              zacContext1 = o;
+            },
+            child: LeakContext(
               cb: (o) {
-                zacContext1 = o;
+                zacContext2 = o;
               },
-              child: ZacValue<Widget>(
-                LeakContext(
-                  cb: (o) {
-                    zacContext2 = o;
-                  },
-                ),
-              ),
-            ),
-          ),
+            ).toZacValue(),
+          ).toZacValue(),
         ),
       );
 
@@ -51,24 +47,18 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>(
-            LeakContext(
-              cb: (o) {
-                zacContext1 = o;
-              },
-              child: ZacValue<Widget>(
-                ZacUpdateContextBuilder(
-                  child: ZacValue<Widget>(
-                    LeakContext(
-                      cb: (o) {
-                        zacContext2 = o;
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: LeakContext(
+            cb: (o) {
+              zacContext1 = o;
+            },
+            child: ZacUpdateContextBuilder(
+              child: LeakContext(
+                cb: (o) {
+                  zacContext2 = o;
+                },
+              ).toZacValue(),
+            ).toZacValue(),
+          ).toZacValue(),
         ),
       );
 
@@ -86,27 +76,19 @@ void main() {
       await testZacWidget(
         tester,
         ZacUpdateContextBuilder(
-          child: ZacValue<Widget>(
-            LeakContext(
-              cb: (o) {
-                zacContext1 = o;
-              },
-              child: ZacValue<Widget>(
-                ZacUpdateContextBuilder(
-                  child: ZacValue<Widget>(
-                    LeakContext(
-                      cb: (o) {
-                        zacContext2 = o;
-                      },
-                      child: ZacValue<Widget>(
-                        FlutterSizedBox(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: LeakContext(
+            cb: (o) {
+              zacContext1 = o;
+            },
+            child: ZacUpdateContextBuilder(
+              child: LeakContext(
+                cb: (o) {
+                  zacContext2 = o;
+                },
+                child: FlutterSizedBox().toZacValue(),
+              ).toZacValue(),
+            ).toZacValue(),
+          ).toZacValue(),
         ),
       );
       zacContext1.onUnmount(cb1);

@@ -41,18 +41,16 @@ void main() {
           child: ZacWidget(
             data: FlutterGlobalKeyNavigatorStateProvider(
               family: 'shared',
-              child: ZacValue<Widget>(
-                LeakContext(
-                  cb: (z) => zacContext = z,
-                ),
-              ),
+              child: LeakContext(
+                cb: (z) => zacContext = z,
+              ).toZacValue(),
             ),
           ),
         ),
       );
 
       expect(
-          ZacValue<GlobalKey<NavigatorState>>.consume(family: 'shared')
+          ZacValueConsume<GlobalKey<NavigatorState>>(family: 'shared')
               .getValue(zacContext),
           isA<GlobalKey<NavigatorState>>());
     });
@@ -71,18 +69,16 @@ void main() {
           child: ZacWidget(
             data: FlutterGlobalKeyScaffoldMessengerStateProvider(
               family: 'shared',
-              child: ZacValue<Widget>(
-                LeakContext(
-                  cb: (z) => zacContext = z,
-                ),
-              ),
+              child: LeakContext(
+                cb: (z) => zacContext = z,
+              ).toZacValue(),
             ),
           ),
         ),
       );
 
       expect(
-          ZacValue<GlobalKey<ScaffoldMessengerState>>.consume(family: 'shared')
+          ZacValueConsume<GlobalKey<ScaffoldMessengerState>>(family: 'shared')
               .getValue(zacContext),
           isA<GlobalKey<ScaffoldMessengerState>>());
     });

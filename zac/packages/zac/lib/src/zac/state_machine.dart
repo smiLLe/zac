@@ -13,7 +13,9 @@ part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';
 
 @freezedZacBuilder
-class ZacTransition with _$ZacTransition {
+class ZacTransition with _$ZacTransition implements ZacBuild<ZacTransition> {
+  ZacTransition._();
+
   static const String unionValue = 'z:1:StateMachine:Transition';
 
   factory ZacTransition.fromJson(Map<String, dynamic> json) =>
@@ -24,10 +26,15 @@ class ZacTransition with _$ZacTransition {
     required String event,
     required String target,
   }) = _ZacTransition;
+
+  @override
+  ZacTransition build(ZacContext zacContext) => this;
 }
 
 @freezedZacBuilder
-class ZacStateConfig with _$ZacStateConfig {
+class ZacStateConfig with _$ZacStateConfig implements ZacBuild<ZacStateConfig> {
+  ZacStateConfig._();
+
   static const String unionValue = 'z:1:StateMachine:StateConfig';
 
   factory ZacStateConfig.fromJson(Map<String, dynamic> json) =>
@@ -38,6 +45,9 @@ class ZacStateConfig with _$ZacStateConfig {
     required ZacValue<Widget> widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
+
+  @override
+  ZacStateConfig build(ZacContext zacContext) => this;
 }
 
 @freezed

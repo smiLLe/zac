@@ -14,12 +14,12 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacValue<Key?>.fromJson(json['key'] as Object),
       navigatorKey: json['navigatorKey'] == null
           ? null
-          : ZacValue<GlobalKey<NavigatorState>>.fromJson(
-              json['navigatorKey'] as Object),
+          : ZacValueConsume<GlobalKey<NavigatorState>>.fromJson(
+              json['navigatorKey'] as Map<String, dynamic>),
       scaffoldMessengerKey: json['scaffoldMessengerKey'] == null
           ? null
-          : ZacValue<GlobalKey<ScaffoldMessengerState>>.fromJson(
-              json['scaffoldMessengerKey'] as Object),
+          : ZacValueConsume<GlobalKey<ScaffoldMessengerState>>.fromJson(
+              json['scaffoldMessengerKey'] as Map<String, dynamic>),
       home: json['home'] == null
           ? null
           : ZacValue<Widget?>.fromJson(json['home'] as Object),

@@ -257,19 +257,14 @@ void main() {
         SharedValueProviderBuilder(
           value: 1,
           family: 'shared',
-          child: ZacValue<Widget>(
-            ZacExecuteActionsBuilder.listen(
-              actions: ZacActions([LeakAction(cb)]),
-              family: 'shared',
-              child: ZacValue<Widget>(
-                FlutterSizedBox(
-                  key: FlutterValueKey('child').toZacValue(),
-                  child:
-                      ZacValue<Widget>(LeakContext(cb: (o) => zacContext = o)),
-                ),
-              ),
-            ),
-          ),
+          child: ZacExecuteActionsBuilder.listen(
+            actions: ZacActions([LeakAction(cb)]),
+            family: 'shared',
+            child: FlutterSizedBox(
+              key: FlutterValueKey('child').toZacValue(),
+              child: LeakContext(cb: (o) => zacContext = o).toZacValue(),
+            ).toZacValue(),
+          ).toZacValue(),
         ),
       );
 

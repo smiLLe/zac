@@ -92,12 +92,10 @@ void main() {
     await testZacWidget(
       tester,
       FlutterMaterial(
-        child: ZacValue<Widget>(
-          FlutterTextField(
-            key: FlutterValueKey('FINDME').toZacValue(),
-            onChanged: ZacActions([LeakAction(cb)]),
-          ),
-        ),
+        child: FlutterTextField(
+          key: FlutterValueKey('FINDME').toZacValue(),
+          onChanged: ZacActions([LeakAction(cb)]),
+        ).toZacValue(),
       ),
     );
     final findMe = find.byKey(const ValueKey('FINDME'));

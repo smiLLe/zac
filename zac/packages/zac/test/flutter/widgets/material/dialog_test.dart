@@ -212,12 +212,12 @@ void main() {
       await testZacWidget(
           tester,
           FlutterMaterial(
-              child: ZacValue<Widget>(FlutterDialogs.simpleDialogOption(
+              child: FlutterDialogs.simpleDialogOption(
             key: FlutterValueKey('FIND_ME').toZacValue(),
-            child: ZacValue<Widget>(
-                FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())),
+            child: FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
+                .toZacValue(),
             onPressed: LeakAction.createActions(cb),
-          ))));
+          ).toZacValue()));
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 

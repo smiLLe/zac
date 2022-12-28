@@ -22,14 +22,12 @@ void main() {
         child: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>(
-              LeakContext(
-                cb: (zacContext) {
-                  c = ZacValue<Completer>.consume(family: 'shared')
-                      .getValue(zacContext);
-                },
-              ),
-            ),
+            child: LeakContext(
+              cb: (zacContext) {
+                c = ZacValueConsume<Completer>(family: 'shared')
+                    .getValue(zacContext);
+              },
+            ).toZacValue(),
           ),
         ),
       ),
@@ -60,23 +58,21 @@ void main() {
         child: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>(
-              LeakContext(
-                cb: (z) {
-                  zacContext = z;
-                },
-              ),
-            ),
+            child: LeakContext(
+              cb: (z) {
+                zacContext = z;
+              },
+            ).toZacValue(),
           ),
         ),
       ),
     );
 
     final completer =
-        ZacValue<Completer>.consume(family: 'shared').getValue(zacContext);
+        ZacValueConsume<Completer>(family: 'shared').getValue(zacContext);
 
     ZacCompleterActions.completeVoid(
-            completer: ZacValue<Completer>.consume(family: 'shared'))
+            completer: ZacValueConsume<Completer>(family: 'shared'))
         .execute(const ZacActionPayload(), zacContext);
 
     expect(completer.isCompleted, isTrue);

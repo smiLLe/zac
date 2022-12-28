@@ -32,8 +32,8 @@ mixin _$ZacTransition {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacTransition implements _ZacTransition {
-  _$_ZacTransition({required this.event, required this.target});
+class _$_ZacTransition extends _ZacTransition {
+  _$_ZacTransition({required this.event, required this.target}) : super._();
 
   factory _$_ZacTransition.fromJson(Map<String, dynamic> json) =>
       _$$_ZacTransitionFromJson(json);
@@ -70,10 +70,11 @@ class _$_ZacTransition implements _ZacTransition {
   }
 }
 
-abstract class _ZacTransition implements ZacTransition {
+abstract class _ZacTransition extends ZacTransition {
   factory _ZacTransition(
       {required final String event,
       required final String target}) = _$_ZacTransition;
+  _ZacTransition._() : super._();
 
   factory _ZacTransition.fromJson(Map<String, dynamic> json) =
       _$_ZacTransition.fromJson;
@@ -102,11 +103,12 @@ mixin _$ZacStateConfig {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateConfig implements _ZacStateConfig {
+class _$_ZacStateConfig extends _ZacStateConfig {
   _$_ZacStateConfig(
       {required this.widget,
       final List<ZacTransition> on = const <ZacTransition>[]})
-      : _on = on;
+      : _on = on,
+        super._();
 
   factory _$_ZacStateConfig.fromJson(Map<String, dynamic> json) =>
       _$$_ZacStateConfigFromJson(json);
@@ -150,10 +152,11 @@ class _$_ZacStateConfig implements _ZacStateConfig {
   }
 }
 
-abstract class _ZacStateConfig implements ZacStateConfig {
+abstract class _ZacStateConfig extends ZacStateConfig {
   factory _ZacStateConfig(
       {required final ZacValue<Widget> widget,
       final List<ZacTransition> on}) = _$_ZacStateConfig;
+  _ZacStateConfig._() : super._();
 
   factory _ZacStateConfig.fromJson(Map<String, dynamic> json) =
       _$_ZacStateConfig.fromJson;

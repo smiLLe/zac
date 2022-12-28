@@ -73,16 +73,14 @@ void main() {
         body: ZacWidget(
           data: FlutterRefreshIndicator(
             onRefresh: ZacActions([LeakAction(cb)]),
-            child: ZacValue<Widget>(
-              FlutterListView(
-                children: ZacValueList<Widget, List<Widget>?>(
-                  items: [
-                    ZacValue<Widget>(FlutterSizedBox(
-                        key: FlutterValueKey('child1').toZacValue())),
-                  ],
-                ),
+            child: FlutterListView(
+              children: ZacValueList<Widget, List<Widget>?>(
+                items: [
+                  FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
+                      .toZacValue(),
+                ],
               ),
-            ),
+            ).toZacValue(),
           ),
         ),
       ),
@@ -113,27 +111,22 @@ void main() {
         body: ZacWidget(
           data: ZacCompleterVoidProvider(
             family: 'shared',
-            child: ZacValue<Widget>(
-              FlutterRefreshIndicator(
-                onRefresh: ZacActions([
-                  LeakAction(cb),
-                  ZacCompleterActions.completeVoid(
-                      completer: ZacValue<Completer>.consume(family: 'shared'))
-                ]),
-                onRefreshCompleter:
-                    ZacValue<Completer>.consume(family: 'shared'),
-                child: ZacValue<Widget>(
-                  FlutterListView(
-                    children: ZacValueList<Widget, List<Widget>?>(
-                      items: [
-                        ZacValue<Widget>(FlutterSizedBox(
-                            key: FlutterValueKey('child1').toZacValue())),
-                      ],
-                    ),
-                  ),
+            child: FlutterRefreshIndicator(
+              onRefresh: ZacActions([
+                LeakAction(cb),
+                ZacCompleterActions.completeVoid(
+                    completer: ZacValueConsume<Completer>(family: 'shared'))
+              ]),
+              onRefreshCompleter: ZacValueConsume<Completer>(family: 'shared'),
+              child: FlutterListView(
+                children: ZacValueList<Widget, List<Widget>?>(
+                  items: [
+                    FlutterSizedBox(key: FlutterValueKey('child1').toZacValue())
+                        .toZacValue(),
+                  ],
                 ),
-              ),
-            ),
+              ).toZacValue(),
+            ).toZacValue(),
           ),
         ),
       ),

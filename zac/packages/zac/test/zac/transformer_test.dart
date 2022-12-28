@@ -794,18 +794,18 @@ void main() {
       _expectFromJson<ListTransformer>(
           fromJson: ListTransformer.fromJson,
           converter: 'z:1:Transformer:List.add',
-          equals: ListTransformer.add(ZacValue<Object>('hello')),
+          equals: ListTransformer.add(ZacValue<Object>.fromJson('hello')),
           props: <String, dynamic>{
             'value': 'hello',
           });
 
       expect(
-          ListTransformer.add(ZacValue<Object>('hello')).transform(
+          ListTransformer.add(ZacValue<Object>.fromJson('hello')).transform(
               ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
           ['foo', 'bar', 'hello']);
 
       expect(
-          () => ListTransformer.add(ZacValue<Object>('hello'))
+          () => ListTransformer.add(ZacValue<Object>.fromJson('hello'))
               .transform(ZacTransformValue(55), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
     });
@@ -1382,7 +1382,7 @@ void main() {
           fromJson: ObjectTransformer.fromJson,
           converter: 'z:1:Transformer:Object.equalsSharedValue',
           equals: ObjectTransformer.equalsSharedValue(
-              value: ZacValue<Object?>.consume(family: 'shared')),
+              value: ZacValueConsume<Object?>(family: 'shared')),
           props: <String, dynamic>{
             'value': {
               'builder': 'z:1:ZacValue.consume',
@@ -1399,29 +1399,25 @@ void main() {
           SharedValueProviderBuilder(
             value: 5,
             family: 'shared',
-            child: ZacValue<Widget>(
-              SharedValueProviderBuilder(
-                value: 'foo',
-                family: 'shared2',
-                child: ZacValue<Widget>(
-                  LeakContext(
-                    cb: (o) => zacContext = o,
-                  ),
-                ),
-              ),
-            ),
+            child: SharedValueProviderBuilder(
+              value: 'foo',
+              family: 'shared2',
+              child: LeakContext(
+                cb: (o) => zacContext = o,
+              ).toZacValue(),
+            ).toZacValue(),
           ),
         );
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValue<Object>.consume(family: 'shared'))
+                    value: ZacValueConsume<Object>(family: 'shared'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isTrue);
 
         expect(
             ObjectTransformer.equalsSharedValue(
-                    value: ZacValue<Object>.consume(family: 'shared2'))
+                    value: ZacValueConsume<Object>(family: 'shared2'))
                 .transform(ZacTransformValue(5), zacContext, null),
             isFalse);
       });

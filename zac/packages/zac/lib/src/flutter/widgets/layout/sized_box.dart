@@ -4,7 +4,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
 
 part 'sized_box.freezed.dart';
 part 'sized_box.g.dart';
