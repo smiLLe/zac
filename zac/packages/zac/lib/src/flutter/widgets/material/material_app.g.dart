@@ -14,11 +14,11 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       navigatorKey: json['navigatorKey'] == null
           ? null
-          : ConsumeSharedValue<GlobalKey<NavigatorState>>.fromJson(
+          : ConsumeSharedValue<GlobalKey<NavigatorState>?>.fromJson(
               json['navigatorKey'] as Map<String, dynamic>),
       scaffoldMessengerKey: json['scaffoldMessengerKey'] == null
           ? null
-          : ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>.fromJson(
+          : ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>.fromJson(
               json['scaffoldMessengerKey'] as Map<String, dynamic>),
       home: json['home'] == null
           ? null
@@ -42,7 +42,7 @@ _$_FlutterMaterialApp _$$_FlutterMaterialAppFromJson(
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       locale: json['locale'] == null
           ? null
-          : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
+          : ZacBuilder<Locale?>.fromJson(json['locale'] as Object),
       debugShowMaterialGrid: json['debugShowMaterialGrid'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['debugShowMaterialGrid'] as Object),

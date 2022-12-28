@@ -21,9 +21,9 @@ FlutterMaterialApp _$FlutterMaterialAppFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterMaterialApp {
   ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
-  ConsumeSharedValue<GlobalKey<NavigatorState>>? get navigatorKey =>
+  ConsumeSharedValue<GlobalKey<NavigatorState>?>? get navigatorKey =>
       throw _privateConstructorUsedError;
-  ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>?
+  ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
       get scaffoldMessengerKey => throw _privateConstructorUsedError;
   ZacBuilder<Widget?>? get home =>
       throw _privateConstructorUsedError; // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
@@ -41,7 +41,7 @@ mixin _$FlutterMaterialApp {
 // ThemeData? highContrastTheme,
 // ThemeData? highContrastDarkTheme,
 // ThemeMode? themeMode = ThemeMode.system,
-  FlutterLocale? get locale =>
+  ZacBuilder<Locale?>? get locale =>
       throw _privateConstructorUsedError; // Iterable<LocalizationsDelegate>? localizationsDelegates,
 // LocaleListResolutionCallback? localeListResolutionCallback,
 // LocaleResolutionCallback? localeResolutionCallback,
@@ -101,9 +101,9 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
   @override
   final ZacBuilder<Key?>? key;
   @override
-  final ConsumeSharedValue<GlobalKey<NavigatorState>>? navigatorKey;
+  final ConsumeSharedValue<GlobalKey<NavigatorState>?>? navigatorKey;
   @override
-  final ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>?
+  final ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
       scaffoldMessengerKey;
   @override
   final ZacBuilder<Widget?>? home;
@@ -128,7 +128,7 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 // ThemeData? highContrastDarkTheme,
 // ThemeMode? themeMode = ThemeMode.system,
   @override
-  final FlutterLocale? locale;
+  final ZacBuilder<Locale?>? locale;
 // Iterable<LocalizationsDelegate>? localizationsDelegates,
 // LocaleListResolutionCallback? localeListResolutionCallback,
 // LocaleResolutionCallback? localeResolutionCallback,
@@ -237,8 +237,8 @@ class _$_FlutterMaterialApp extends _FlutterMaterialApp {
 abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   factory _FlutterMaterialApp(
       {final ZacBuilder<Key?>? key,
-      final ConsumeSharedValue<GlobalKey<NavigatorState>>? navigatorKey,
-      final ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>?
+      final ConsumeSharedValue<GlobalKey<NavigatorState>?>? navigatorKey,
+      final ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
           scaffoldMessengerKey,
       final ZacBuilder<Widget?>? home,
       final ZacBuilder<String?>? initialRoute,
@@ -246,7 +246,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
       final FlutterRouteFactory? onUnknownRoute,
       final ZacBuilder<String?>? title,
       final ZacBuilder<Color?>? color,
-      final FlutterLocale? locale,
+      final ZacBuilder<Locale?>? locale,
       final ZacBuilder<bool?>? debugShowMaterialGrid,
       final ZacBuilder<bool?>? showPerformanceOverlay,
       final ZacBuilder<bool?>? checkerboardRasterCacheImages,
@@ -263,9 +263,9 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
   @override
   ZacBuilder<Key?>? get key;
   @override
-  ConsumeSharedValue<GlobalKey<NavigatorState>>? get navigatorKey;
+  ConsumeSharedValue<GlobalKey<NavigatorState>?>? get navigatorKey;
   @override
-  ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>?
+  ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
       get scaffoldMessengerKey;
   @override
   ZacBuilder<Widget?>? get home;
@@ -285,7 +285,7 @@ abstract class _FlutterMaterialApp extends FlutterMaterialApp {
 // ThemeData? highContrastTheme,
 // ThemeData? highContrastDarkTheme,
 // ThemeMode? themeMode = ThemeMode.system,
-  FlutterLocale? get locale;
+  ZacBuilder<Locale?>? get locale;
   @override // Iterable<LocalizationsDelegate>? localizationsDelegates,
 // LocaleListResolutionCallback? localeListResolutionCallback,
 // LocaleResolutionCallback? localeResolutionCallback,

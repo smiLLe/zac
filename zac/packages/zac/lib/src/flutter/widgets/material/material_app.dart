@@ -1,7 +1,7 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
@@ -24,8 +24,9 @@ class FlutterMaterialApp
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
     ZacBuilder<Key?>? key,
-    ConsumeSharedValue<GlobalKey<NavigatorState>>? navigatorKey,
-    ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>? scaffoldMessengerKey,
+    ConsumeSharedValue<GlobalKey<NavigatorState>?>? navigatorKey,
+    ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
+        scaffoldMessengerKey,
     ZacBuilder<Widget?>? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
     ZacBuilder<String?>? initialRoute,
@@ -42,7 +43,7 @@ class FlutterMaterialApp
     // ThemeData? highContrastTheme,
     // ThemeData? highContrastDarkTheme,
     // ThemeMode? themeMode = ThemeMode.system,
-    FlutterLocale? locale,
+    ZacBuilder<Locale?>? locale,
     // Iterable<LocalizationsDelegate>? localizationsDelegates,
     // LocaleListResolutionCallback? localeListResolutionCallback,
     // LocaleResolutionCallback? localeResolutionCallback,

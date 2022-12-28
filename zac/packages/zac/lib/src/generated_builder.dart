@@ -588,7 +588,7 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:UpdateContext': ZacUpdateContextBuilder.fromJson,
   'z:1:Widget': ZacWidgetBuilder.fromJson,
   'z:1:Widget.isolate': ZacWidgetBuilder.fromJson,
-  'z:1:ZacValue': ZacValueSimple.fromJson,
+  'z:1:ZacValue': ZacValue.fromJson,
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
   'z:1:ZacValueList': ZacValueListSimple.fromJson,
   'z:1:ZacValueMap': ZacValueMap.fromJson,

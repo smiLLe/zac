@@ -38,7 +38,7 @@ class _Converter<T> implements JsonConverter<T, Object?> {
     }
 
     throw StateError('''
-It was not possible to convert data in ${ZacValueSimple<T>}.fromJson().
+It was not possible to convert data in ${ZacValue<T>}.fromJson().
 The given data is not supported:
 $data''');
   }
@@ -48,52 +48,31 @@ $data''');
 }
 
 @freezedZacBuilder
-class ZacValueSimple<T extends Object?>
-    with _$ZacValueSimple<T>
-    implements ZacBuilder<T> {
-  const ZacValueSimple._();
+class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
+  const ZacValue._();
 
   static const String union = 'z:1:ZacValue';
 
-  factory ZacValueSimple.fromJson(Object data) {
-    return ConverterHelper.ifRegisteredBuilder<ZacValueSimple<T>>(
+  factory ZacValue.fromJson(Object data) {
+    return ConverterHelper.ifRegisteredBuilder<ZacValue<T>>(
       data,
       cb: (map, converterName) {
-        assert(converterName == ZacValueSimple.union);
-        return _$ZacValueSimpleFromJson<T>(map);
+        assert(converterName == ZacValue.union);
+        return _$ZacValueFromJson<T>(map);
       },
-      orElse: () => _$ZacValueSimpleFromJson<T>(<String, dynamic>{
-        'builder': ZacValueSimple.union,
+      orElse: () => _$ZacValueFromJson<T>(<String, dynamic>{
+        'builder': ZacValue.union,
         'value': data,
       }),
     );
   }
 
-  @FreezedUnionValue(ZacValueSimple.union)
-  factory ZacValueSimple(@_Converter() T value) = _ZacValueSimple<T>;
+  @FreezedUnionValue(ZacValue.union)
+  factory ZacValue(@_Converter() T value) = _ZacValue<T>;
 
   @override
   T build(ZacContext zacContext) => value;
 }
-
-// abstract class ZacValueList<T extends Object?, X extends List<T>?> {
-//   factory ZacValueList.fromJson(Object data) {
-//     return ConverterHelper.ifRegisteredBuilder<ZacValueList<T, X>>(
-//       data,
-//       cb: (map, converterName) {
-//         if (converterName == ZacValueListConsume.union) {
-//           return ZacValueListConsume<T, X>.fromJson(map);
-//         }
-//         return ZacValueListSimple<T, X>.fromJson(map);
-//       },
-//       orElse: () => ZacValueListSimple<T, X>.fromJson(data),
-//     );
-//   }
-
-//   X getList(ZacContext zacContext,
-//       {SharedValueConsumeType onConsume =
-//           const SharedValueConsumeType.watch()});
-// }
 
 @freezedZacBuilder
 class ZacValueListSimple<T extends Object?, X extends List<T>?>

@@ -1717,7 +1717,7 @@ mixin _$FlutterTextStyle {
   ZacBuilder<double?>? get height => throw _privateConstructorUsedError;
   FlutterTextLeadingDistribution? get leadingDistribution =>
       throw _privateConstructorUsedError;
-  FlutterLocale? get locale =>
+  ZacBuilder<Locale?>? get locale =>
       throw _privateConstructorUsedError; // Paint? foreground,
 // Paint? background,
   ZacListBuilder<Shadow, List<Shadow>?>? get shadows =>
@@ -1800,7 +1800,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final FlutterTextLeadingDistribution? leadingDistribution;
   @override
-  final FlutterLocale? locale;
+  final ZacBuilder<Locale?>? locale;
 // Paint? foreground,
 // Paint? background,
   @override
@@ -1946,7 +1946,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacBuilder<TextBaseline?>? textBaseline,
       final ZacBuilder<double?>? height,
       final FlutterTextLeadingDistribution? leadingDistribution,
-      final FlutterLocale? locale,
+      final ZacBuilder<Locale?>? locale,
       final ZacListBuilder<Shadow, List<Shadow>?>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
       final FlutterTextDecoration? decoration,
@@ -1986,7 +1986,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   FlutterTextLeadingDistribution? get leadingDistribution;
   @override
-  FlutterLocale? get locale;
+  ZacBuilder<Locale?>? get locale;
   @override // Paint? foreground,
 // Paint? background,
   ZacListBuilder<Shadow, List<Shadow>?>? get shadows;

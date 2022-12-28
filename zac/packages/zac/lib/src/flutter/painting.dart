@@ -320,7 +320,7 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
     ZacBuilder<TextBaseline?>? textBaseline,
     ZacBuilder<double?>? height,
     FlutterTextLeadingDistribution? leadingDistribution,
-    FlutterLocale? locale,
+    ZacBuilder<Locale?>? locale,
 // Paint? foreground,
 // Paint? background,
     ZacListBuilder<Shadow, List<Shadow>?>? shadows,

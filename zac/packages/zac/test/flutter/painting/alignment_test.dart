@@ -63,8 +63,8 @@ void main() {
           'x': 1,
           'y': 2,
         }).build(zacContext),
-        FlutterAlignment(ZacValueSimple<double>.fromJson(1),
-                ZacValueSimple<double>.fromJson(2))
+        FlutterAlignment(
+                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
             .build(zacContext));
 
     final map = {
@@ -96,8 +96,8 @@ void main() {
           'start': 1,
           'y': 2,
         }).build(zacContext),
-        FlutterAlignmentDirectional(ZacValueSimple<double>.fromJson(1),
-                ZacValueSimple<double>.fromJson(2))
+        FlutterAlignmentDirectional(
+                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
             .build(zacContext));
 
     final map = {
@@ -136,8 +136,8 @@ void main() {
           'dx': 1,
           'dy': 2,
         }).build(zacContext),
-        FlutterFractionalOffset(ZacValueSimple<double>.fromJson(1),
-                ZacValueSimple<double>.fromJson(2))
+        FlutterFractionalOffset(
+                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
             .build(zacContext));
   });
 }

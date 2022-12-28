@@ -265,7 +265,7 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
               json['leadingDistribution'] as Map<String, dynamic>),
       locale: json['locale'] == null
           ? null
-          : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
+          : ZacBuilder<Locale?>.fromJson(json['locale'] as Object),
       shadows: json['shadows'] == null
           ? null
           : ZacListBuilder<Shadow, List<Shadow>?>.fromJson(

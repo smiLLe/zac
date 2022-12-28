@@ -14,30 +14,29 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacValueSimple<T> _$ZacValueSimpleFromJson<T extends Object?>(
-    Map<String, dynamic> json) {
-  return _ZacValueSimple<T>.fromJson(json);
+ZacValue<T> _$ZacValueFromJson<T extends Object?>(Map<String, dynamic> json) {
+  return _ZacValue<T>.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacValueSimple<T extends Object?> {
+mixin _$ZacValue<T extends Object?> {
   @_Converter()
   T get value => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueSimple<T> value) $default,
+    TResult Function(_ZacValue<T> value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacValueSimple<T extends Object?> extends _ZacValueSimple<T> {
-  _$_ZacValueSimple(@_Converter() this.value) : super._();
+class _$_ZacValue<T extends Object?> extends _ZacValue<T> {
+  _$_ZacValue(@_Converter() this.value) : super._();
 
-  factory _$_ZacValueSimple.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueSimpleFromJson(json);
+  factory _$_ZacValue.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacValueFromJson(json);
 
   @override
   @_Converter()
@@ -45,14 +44,14 @@ class _$_ZacValueSimple<T extends Object?> extends _ZacValueSimple<T> {
 
   @override
   String toString() {
-    return 'ZacValueSimple<$T>(value: $value)';
+    return 'ZacValue<$T>(value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacValueSimple<T> &&
+            other is _$_ZacValue<T> &&
             const DeepCollectionEquality().equals(other.value, value));
   }
 
@@ -64,18 +63,18 @@ class _$_ZacValueSimple<T extends Object?> extends _ZacValueSimple<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueSimple<T> value) $default,
+    TResult Function(_ZacValue<T> value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacValueSimple<T extends Object?> extends ZacValueSimple<T> {
-  factory _ZacValueSimple(@_Converter() final T value) = _$_ZacValueSimple<T>;
-  _ZacValueSimple._() : super._();
+abstract class _ZacValue<T extends Object?> extends ZacValue<T> {
+  factory _ZacValue(@_Converter() final T value) = _$_ZacValue<T>;
+  _ZacValue._() : super._();
 
-  factory _ZacValueSimple.fromJson(Map<String, dynamic> json) =
-      _$_ZacValueSimple<T>.fromJson;
+  factory _ZacValue.fromJson(Map<String, dynamic> json) =
+      _$_ZacValue<T>.fromJson;
 
   @override
   @_Converter()

@@ -28,7 +28,7 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
     ZacBuilder<StrutStyle?>? strutStyle,
     ZacBuilder<TextAlign?>? textAlign,
     ZacBuilder<TextDirection?>? textDirection,
-    FlutterLocale? locale,
+    ZacBuilder<Locale?>? locale,
     ZacBuilder<bool?>? softWrap,
     FlutterTextOverflow? overflow,
     ZacBuilder<double?>? textScaleFactor,

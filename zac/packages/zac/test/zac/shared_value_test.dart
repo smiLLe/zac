@@ -7,6 +7,7 @@ import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_build.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -16,6 +17,246 @@ import 'package:zac/src/zac/transformers.dart';
 import '../helper.dart';
 
 void main() {
+  group('ConsumeSharedValue', () {
+    test('can be created', () {
+      expect(
+          ZacBuilder<Widget>.fromJson({
+            'builder': 'z:1:SharedValue.consume',
+            'family': 'shared',
+          }),
+          ConsumeSharedValue<Widget>(family: 'shared'));
+    });
+
+    group('.build()', () {
+      testWidgets('can consume and build without transformer', (tester) async {
+        // ignore: no_leading_underscores_for_local_identifiers
+        Future<void> _test<T>({required Object? shareValue}) async {
+          late final ZacContext zacContext;
+          await tester.pumpWidget(
+            ProviderScope(
+              child: MaterialApp(
+                home: Material(
+                  child: ZacWidget(
+                    data: SharedValueProviderBuilder(
+                      value: shareValue,
+                      family: 'shared',
+                      child: LeakContext(
+                        cb: (z) => zacContext = z,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+
+          expect(ConsumeSharedValue<T>(family: 'shared').build(zacContext),
+              shareValue);
+        }
+
+        await _test<int>(shareValue: 5);
+        await _test<int?>(shareValue: 5);
+        await _test<int?>(shareValue: null);
+      });
+
+      testWidgets('can consume and build a ZacBuilder<Widget>', (tester) async {
+        await tester.pumpWidget(
+          ProviderScope(
+            child: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: FlutterSizedBox(
+                  key: FlutterValueKey('FIND_ME_2'),
+                ),
+                family: 'shared',
+                child: TestBuildCustomWidget(
+                  (zacContext) {
+                    return ConsumeSharedValue<Widget>(family: 'shared')
+                        .build(zacContext);
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+
+        expect(find.byKey(const ValueKey('FIND_ME_2')), findsOneWidget);
+      });
+
+      testWidgets('can transform the shared value', (tester) async {
+        late ZacContext zacContext;
+        await tester.pumpWidget(
+          ProviderScope(
+            child: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: 'hello',
+                family: 'shared',
+                transformer: ZacTransformers([
+                  CustomTransformer(
+                    (transformValue, zacContext, payload) {
+                      return (transformValue.value as String).length;
+                    },
+                  )
+                ]),
+                child: LeakContext(
+                  cb: (c) {
+                    zacContext = c;
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(ConsumeSharedValue<int>(family: 'shared').build(zacContext), 5);
+      });
+
+      testWidgets('will throw if shared value is null but null is not wanted',
+          (tester) async {
+        late ZacContext zacContext;
+        await tester.pumpWidget(
+          ProviderScope(
+            child: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: null,
+                family: 'shared',
+                child: LeakContext(
+                  cb: (c) {
+                    zacContext = c;
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(
+            () =>
+                ConsumeSharedValue<String>(family: 'shared').build(zacContext),
+            throwsA(isA<StateError>().having(
+                (p0) => p0.message,
+                'error message',
+                contains(
+                    'because the value is null and there are no transformers added'))));
+      });
+
+      testWidgets(
+          'will throw if shared value is not of expected type and no transformer were available',
+          (tester) async {
+        late ZacContext zacContext;
+        await tester.pumpWidget(
+          ProviderScope(
+            child: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: 'hello',
+                family: 'shared',
+                child: LeakContext(
+                  cb: (c) {
+                    zacContext = c;
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(
+            () => ConsumeSharedValue<int>(family: 'shared').build(zacContext),
+            throwsA(isA<StateError>().having(
+                (p0) => p0.message,
+                'error message',
+                contains(
+                    'The value of type String was expected to be transformed'))));
+      });
+    });
+  });
+
+  group('ConsumeSharedValueList', () {
+    testWidgets('can consume null as list item', (tester) async {
+      late List<int?> items;
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: [1, null],
+                family: 'shared',
+                child: TestBuildCustomWidget(
+                  (zacContext) {
+                    items = ConsumeSharedValueList<int?, List<int?>>(
+                            family: 'shared')
+                        .build(zacContext);
+                    return const SizedBox();
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(items, [1, null]);
+    });
+
+    testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: [
+                  FlutterSizedBox(
+                    key: FlutterValueKey('FIND_ME_2'),
+                  )
+                ],
+                family: 'shared',
+                child: TestBuildCustomWidget(
+                  (zacContext) {
+                    return Column(
+                      children: ConsumeSharedValueList<Widget, List<Widget>>(
+                              family: 'shared')
+                          .build(zacContext),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.byKey(const ValueKey('FIND_ME_2')), findsOneWidget);
+    });
+
+    testWidgets('can consume a String', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: Material(
+              child: ZacWidget(
+                data: SharedValueProviderBuilder(
+                  value: ['hello', 'world'],
+                  family: 'shared',
+                  child: TestBuildCustomWidget(
+                    (zacContext) {
+                      return Column(
+                        children: [
+                          ...ConsumeSharedValueList<String, List<String>>(
+                                  family: 'shared')
+                              .build(zacContext)
+                              .map((e) => Text(e))
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('hello'), findsOneWidget);
+      expect(find.text('world'), findsOneWidget);
+    });
+  });
+
   group('SharedValue', () {
     test('provider default value', () {
       final c = ProviderContainer();

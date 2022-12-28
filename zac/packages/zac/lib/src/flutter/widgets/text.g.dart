@@ -27,7 +27,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
               json['textDirection'] as Object),
       locale: json['locale'] == null
           ? null
-          : FlutterLocale.fromJson(json['locale'] as Map<String, dynamic>),
+          : ZacBuilder<Locale?>.fromJson(json['locale'] as Object),
       softWrap: json['softWrap'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['softWrap'] as Object),

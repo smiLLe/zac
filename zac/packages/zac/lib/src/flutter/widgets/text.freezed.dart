@@ -27,7 +27,7 @@ mixin _$FlutterText {
   ZacBuilder<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
   ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
-  FlutterLocale? get locale => throw _privateConstructorUsedError;
+  ZacBuilder<Locale?>? get locale => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get softWrap => throw _privateConstructorUsedError;
   FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get textScaleFactor =>
@@ -81,7 +81,7 @@ class _$_FlutterText extends _FlutterText {
   @override
   final ZacBuilder<TextDirection?>? textDirection;
   @override
-  final FlutterLocale? locale;
+  final ZacBuilder<Locale?>? locale;
   @override
   final ZacBuilder<bool?>? softWrap;
   @override
@@ -168,7 +168,7 @@ abstract class _FlutterText extends FlutterText {
           final ZacBuilder<StrutStyle?>? strutStyle,
           final ZacBuilder<TextAlign?>? textAlign,
           final ZacBuilder<TextDirection?>? textDirection,
-          final FlutterLocale? locale,
+          final ZacBuilder<Locale?>? locale,
           final ZacBuilder<bool?>? softWrap,
           final FlutterTextOverflow? overflow,
           final ZacBuilder<double?>? textScaleFactor,
@@ -195,7 +195,7 @@ abstract class _FlutterText extends FlutterText {
   @override
   ZacBuilder<TextDirection?>? get textDirection;
   @override
-  FlutterLocale? get locale;
+  ZacBuilder<Locale?>? get locale;
   @override
   ZacBuilder<bool?>? get softWrap;
   @override

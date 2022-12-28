@@ -6,9 +6,9 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValueSimple<T> _$$_ZacValueSimpleFromJson<T extends Object?>(
+_$_ZacValue<T> _$$_ZacValueFromJson<T extends Object?>(
         Map<String, dynamic> json) =>
-    _$_ZacValueSimple<T>(
+    _$_ZacValue<T>(
       _Converter<T>().fromJson(json['value']),
     );
 
