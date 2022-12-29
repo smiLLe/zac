@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'scroll_controller.freezed.dart';
 part 'scroll_controller.g.dart';

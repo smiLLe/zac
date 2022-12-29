@@ -1,4 +1,4 @@
-export 'src/zac/zac_build.dart';
+export 'src/zac/zac_builder.dart';
 export 'src/builder.dart';
 export 'src/base.dart';
 export 'src/zac/context.dart';

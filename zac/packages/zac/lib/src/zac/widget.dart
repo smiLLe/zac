@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:flutter/foundation.dart';

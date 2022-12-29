@@ -4,7 +4,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_child_delegate.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_delegate/sliver_grid_delegate.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'sliver_grid.freezed.dart';
 part 'sliver_grid.g.dart';

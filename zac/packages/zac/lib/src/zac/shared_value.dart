@@ -7,7 +7,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'shared_value.freezed.dart';
 part 'shared_value.g.dart';

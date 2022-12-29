@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'intrinsic_height.freezed.dart';
 part 'intrinsic_height.g.dart';

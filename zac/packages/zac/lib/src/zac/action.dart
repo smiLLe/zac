@@ -9,7 +9,7 @@ import 'package:zac/src/builder.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/zac_build.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 
 part 'action.freezed.dart';
 part 'action.g.dart';
