@@ -597,3 +597,106 @@ abstract class _ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   @override
   SharedValueConsumeType? get forceConsume;
 }
+
+ConsumeSharedValueMap<T, X> _$ConsumeSharedValueMapFromJson<T extends Object?,
+    X extends Map<String, T>?>(Map<String, dynamic> json) {
+  return _ConsumeSharedValueMap<T, X>.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?> {
+  Object get family => throw _privateConstructorUsedError;
+  ZacTransformers? get transformer => throw _privateConstructorUsedError;
+  ZacTransformers? get itemTransformer => throw _privateConstructorUsedError;
+  SharedValueConsumeType? get forceConsume =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ConsumeSharedValueMap<T, X> value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
+    extends _ConsumeSharedValueMap<T, X> {
+  _$_ConsumeSharedValueMap(
+      {required this.family,
+      this.transformer,
+      this.itemTransformer,
+      this.forceConsume})
+      : super._();
+
+  factory _$_ConsumeSharedValueMap.fromJson(Map<String, dynamic> json) =>
+      _$$_ConsumeSharedValueMapFromJson(json);
+
+  @override
+  final Object family;
+  @override
+  final ZacTransformers? transformer;
+  @override
+  final ZacTransformers? itemTransformer;
+  @override
+  final SharedValueConsumeType? forceConsume;
+
+  @override
+  String toString() {
+    return 'ConsumeSharedValueMap<$T, $X>(family: $family, transformer: $transformer, itemTransformer: $itemTransformer, forceConsume: $forceConsume)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ConsumeSharedValueMap<T, X> &&
+            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer) &&
+            (identical(other.itemTransformer, itemTransformer) ||
+                other.itemTransformer == itemTransformer) &&
+            (identical(other.forceConsume, forceConsume) ||
+                other.forceConsume == forceConsume));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(family),
+      transformer,
+      itemTransformer,
+      forceConsume);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ConsumeSharedValueMap<T, X> value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ConsumeSharedValueMap<T extends Object?,
+    X extends Map<String, T>?> extends ConsumeSharedValueMap<T, X> {
+  factory _ConsumeSharedValueMap(
+          {required final Object family,
+          final ZacTransformers? transformer,
+          final ZacTransformers? itemTransformer,
+          final SharedValueConsumeType? forceConsume}) =
+      _$_ConsumeSharedValueMap<T, X>;
+  _ConsumeSharedValueMap._() : super._();
+
+  factory _ConsumeSharedValueMap.fromJson(Map<String, dynamic> json) =
+      _$_ConsumeSharedValueMap<T, X>.fromJson;
+
+  @override
+  Object get family;
+  @override
+  ZacTransformers? get transformer;
+  @override
+  ZacTransformers? get itemTransformer;
+  @override
+  SharedValueConsumeType? get forceConsume;
+}

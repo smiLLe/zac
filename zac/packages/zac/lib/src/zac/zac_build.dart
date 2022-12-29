@@ -71,3 +71,27 @@ abstract class ZacListBuilder<T extends Object?, X extends List<T>?>
     );
   }
 }
+
+abstract class ZacMapBuilder<T extends Object?, X extends Map<String, T>?>
+    implements ZacBuilder<X> {
+  factory ZacMapBuilder.fromJson(Object data) {
+    return ConverterHelper.ifRegisteredBuilder<ZacMapBuilder<T, X>>(
+      data,
+      cb: (map, converterName) {
+        switch (converterName) {
+          // case ConsumeSharedValueList.union:
+          //   return ConsumeSharedValueList<T, X>.fromJson(map);
+          default:
+            return ConverterHelper.convertToType<ZacMapBuilder<T, X>>(map);
+        }
+      },
+      orElse: () {
+        if (data is! Map) {
+          throw StateError('Unsupported type in ${ZacMapBuilder<T, X>}: $data');
+        }
+
+        return ZacValueMap<T, X>.fromJson(data);
+      },
+    );
+  }
+}

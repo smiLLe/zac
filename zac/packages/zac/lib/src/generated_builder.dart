@@ -507,6 +507,7 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:SharedValueConsume.read': SharedValueConsumeType.fromJson,
   'z:1:SharedValueConsume.watch': SharedValueConsumeType.fromJson,
   'z:1:SharedValueList.consume': ConsumeSharedValueList.fromJson,
+  'z:1:SharedValueMap.consume': ConsumeSharedValueMap.fromJson,
   'z:1:StateMachine.provide': ZacStateMachineProviderBuilder.fromJson,
   'z:1:StateMachine:Action.send': ZacStateMachineActions.fromJson,
   'z:1:StateMachine:Action.trySend': ZacStateMachineActions.fromJson,
@@ -590,6 +591,5 @@ Map<String, Object Function(Map<String, dynamic> data)> generatedBuilder =
   'z:1:ZacValue': ZacValue.fromJson,
   'z:1:ZacValue.asActionPayload': ZacValueActions.fromJson,
   'z:1:ZacValueList': ZacValueListSimple.fromJson,
-  'z:1:ZacValueMap': ZacValueMap.fromJson,
-  'z:1:ZacValueMap.consume': ZacValueMap.fromJson
+  'z:1:ZacValueMap': ZacValueMap.fromJson
 };

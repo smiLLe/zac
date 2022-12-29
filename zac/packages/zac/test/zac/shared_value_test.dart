@@ -8,7 +8,6 @@ import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/zac/zac_build.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -18,13 +17,9 @@ import '../helper.dart';
 
 void main() {
   group('ConsumeSharedValue', () {
-    test('can be created', () {
-      expect(
-          ZacBuilder<Widget>.fromJson({
-            'builder': 'z:1:SharedValue.consume',
-            'family': 'shared',
-          }),
-          ConsumeSharedValue<Widget>(family: 'shared'));
+    test('Is in converters', () {
+      expectInConverter(
+          ['z:1:SharedValue.consume'], ConsumeSharedValue.fromJson);
     });
 
     group('.build()', () {
@@ -168,6 +163,11 @@ void main() {
   });
 
   group('ConsumeSharedValueList', () {
+    test('Is in converters', () {
+      expectInConverter(
+          ['z:1:SharedValueList.consume'], ConsumeSharedValueList.fromJson);
+    });
+
     testWidgets('can consume null as list item', (tester) async {
       late List<int?> items;
       await tester.pumpWidget(
@@ -254,6 +254,70 @@ void main() {
 
       expect(find.text('hello'), findsOneWidget);
       expect(find.text('world'), findsOneWidget);
+    });
+  });
+
+  group('ConsumeSharedValueMap', () {
+    test('Is in converters', () {
+      expectInConverter(
+          ['z:1:SharedValueMap.consume'], ConsumeSharedValueMap.fromJson);
+    });
+
+    testWidgets('can consume null as value', (tester) async {
+      late Map<String, int?> items;
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: {'a': null, 'b': 1},
+                family: 'shared',
+                child: TestBuildCustomWidget(
+                  (zacContext) {
+                    items = ConsumeSharedValueMap<int?, Map<String, int?>>(
+                            family: 'shared')
+                        .build(zacContext);
+                    return const SizedBox();
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(items, {'a': null, 'b': 1});
+    });
+
+    testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: ZacWidget(
+              data: SharedValueProviderBuilder(
+                value: {
+                  'a': FlutterSizedBox(
+                    key: FlutterValueKey('FIND_ME_2'),
+                  )
+                },
+                family: 'shared',
+                child: TestBuildCustomWidget(
+                  (zacContext) {
+                    final map =
+                        ConsumeSharedValueMap<Widget, Map<String, Widget>>(
+                                family: 'shared')
+                            .build(zacContext);
+
+                    return map['a']!;
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.byKey(const ValueKey('FIND_ME_2')), findsOneWidget);
     });
   });
 

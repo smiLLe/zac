@@ -196,7 +196,7 @@ void main() {
         initialContext: ZacBuilder<Object>.fromJson(1),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
@@ -240,7 +240,7 @@ void main() {
           family: ZacBuilder<String>.fromJson('machine'),
           initialState: ZacBuilder<String>.fromJson('a'),
           states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-            items: {
+            {
               'a': ZacStateConfig(
                 widget: FlutterSizedBox(
                   key: FlutterValueKey('in a'),
@@ -289,7 +289,7 @@ void main() {
         initialContext: ZacBuilder<Object>.fromJson(1),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
@@ -343,7 +343,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(),
               on: [
@@ -389,7 +389,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(),
               on: [
@@ -430,7 +430,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(),
               on: [
@@ -476,7 +476,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
@@ -540,7 +540,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
@@ -569,7 +569,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: ZacExecuteActionsBuilder.once(
                 actions: ZacActions(
@@ -610,7 +610,7 @@ void main() {
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>(
-          items: {
+          {
             'a': ZacStateConfig(
               widget: ZacExecuteActionsBuilder.once(
                 actions: ZacActions(

@@ -186,8 +186,7 @@ void main() {
 
   group('ZacValueMap', () {
     test('Is in converters', () {
-      expectInConverter(
-          ['z:1:ZacValueMap', 'z:1:ZacValueMap.consume'], ZacValueMap.fromJson);
+      expectInConverter(['z:1:ZacValueMap'], ZacValueMap.fromJson);
     });
 
     group('From Values', () {
@@ -195,7 +194,7 @@ void main() {
         expect(
             ZacValueMap<int, Map<String, int>>.fromJson({'a': 1}),
             ZacValueMap<int, Map<String, int>>(
-                items: {'a': ZacBuilder<int>.fromJson(1)}));
+                {'a': ZacBuilder<int>.fromJson(1)}));
       });
 
       test('throws if unsupported type in fromJson', () {
@@ -215,14 +214,14 @@ void main() {
               'items': {'a': 1},
             }),
             ZacValueMap<int, Map<String, int>>(
-                items: {'a': ZacBuilder<int>.fromJson(1)}));
+                {'a': ZacBuilder<int>.fromJson(1)}));
         expect(
             ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueMap',
               'items': {'a': 1},
             }),
             ZacValueMap<int?, Map<String, int?>>(
-                items: {'a': ZacBuilder<int?>.fromJson(1)}));
+                {'a': ZacBuilder<int?>.fromJson(1)}));
 
         expect(
             ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
@@ -235,7 +234,7 @@ void main() {
               },
             }),
             ZacValueMap<Key, Map<String, Key>>(
-              items: {
+              {
                 'a': ZacBuilder<Key>.fromJson({
                   'builder': 'f:1:ValueKey',
                   'value': 'hello',
@@ -278,65 +277,6 @@ void main() {
               'items': {'a': 1, 'b': 2},
             }).build(zacContext),
             const {'a': 1, 'b': 2});
-      });
-    });
-
-    group('.consume', () {
-      testWidgets('can consume null as value', (tester) async {
-        late Map<String, int?> items;
-        await tester.pumpWidget(
-          ProviderScope(
-            child: MaterialApp(
-              home: ZacWidget(
-                data: SharedValueProviderBuilder(
-                  value: {'a': null, 'b': 1},
-                  family: 'shared',
-                  child: TestBuildCustomWidget(
-                    (zacContext) {
-                      items = ZacValueMap<int?, Map<String, int?>>.consume(
-                              family: 'shared')
-                          .build(zacContext);
-                      return const SizedBox();
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-
-        expect(items, {'a': null, 'b': 1});
-      });
-
-      testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
-        await tester.pumpWidget(
-          ProviderScope(
-            child: MaterialApp(
-              home: ZacWidget(
-                data: SharedValueProviderBuilder(
-                  value: {
-                    'a': FlutterSizedBox(
-                      key: FlutterValueKey('FIND_ME_2'),
-                    )
-                  },
-                  family: 'shared',
-                  child: TestBuildCustomWidget(
-                    (zacContext) {
-                      final map =
-                          ZacValueMap<Widget, Map<String, Widget>>.consume(
-                                  family: 'shared')
-                              .build(zacContext);
-
-                      return map['a']!;
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-
-        expect(find.byKey(const ValueKey('FIND_ME_2')), findsOneWidget);
       });
     });
   });

@@ -601,3 +601,128 @@ A ${List<T>} is expected but the data is: $transformedList''');
     return List<T>.from(transformedList) as X;
   }
 }
+
+@freezedZacBuilder
+class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
+    with _$ConsumeSharedValueMap<T, X>
+    implements ZacMapBuilder<T, X> {
+  const ConsumeSharedValueMap._();
+
+  static const String union = 'z:1:SharedValueMap.consume';
+
+  /// freezed generates a code like this
+  ///   factory _$ConsumeSharedValueMap.fromJson(Map<String, dynamic> json) =>
+  ///   _$ConsumeSharedValueMap(json);
+  ///
+  /// _$ConsumeSharedValueMap is missing <T,X>
+  /// it should be: _$ConsumeSharedValueMap<T,X>(json)
+  ///
+  /// This will result in X being a Never type
+  factory ConsumeSharedValueMap._freezedFix(
+      ConsumeSharedValueMap<T, Object?> zV) {
+    return ConsumeSharedValueMap<T, X>(
+      family: zV.family,
+      forceConsume: zV.forceConsume,
+      itemTransformer: zV.itemTransformer,
+      transformer: zV.transformer,
+    );
+  }
+
+  factory ConsumeSharedValueMap.fromJson(Map<String, dynamic> data) {
+    final zV = _$ConsumeSharedValueMapFromJson<T, X>(data);
+    return ConsumeSharedValueMap._freezedFix(zV);
+  }
+
+  @FreezedUnionValue(ConsumeSharedValueMap.union)
+  factory ConsumeSharedValueMap({
+    required SharedValueFamily family,
+    ZacTransformers? transformer,
+    ZacTransformers? itemTransformer,
+    SharedValueConsumeType? forceConsume,
+  }) = _ConsumeSharedValueMap<T, X>;
+
+  T _transformItem({
+    required Object? value,
+    required ZacContext zacContext,
+    required ZacTransformers? transformer,
+  }) {
+    if (null == value) {
+      if (null is T && true != transformer?.transformers.isNotEmpty) {
+        return null as T;
+      } else if (null is! T && true != transformer?.transformers.isNotEmpty) {
+        throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}.build()
+because the value is null and there are no transformers added.
+Value: $value''');
+      }
+    }
+
+    if (value is T && true != transformer?.transformers.isNotEmpty) {
+      return value;
+    }
+
+    if (null == transformer || transformer.transformers.isEmpty) {
+      throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}.build()
+because there were no transformer.
+The value of type ${value.runtimeType} was expected to be transformed.
+$value''');
+    }
+
+    final transformedVal =
+        transformer.transform(ZacTransformValue(value), zacContext, null);
+
+    if (transformedVal is! T) {
+      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+
+      throw StateError('''
+It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}
+after transformers were applied.
+Type of value before transformation: ${value.runtimeType}
+Type of value after transformation: ${transformedVal.runtimeType}
+${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
+Value before: $value
+Value after: $transformedVal''');
+    }
+
+    return transformedVal;
+  }
+
+  @override
+  X build(ZacContext zacContext) {
+    final consumedValue = SharedValue.get(
+      zacContext: zacContext,
+      consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
+      family: family,
+    );
+    if (consumedValue is! Map) {
+      throw StateError(
+          'Unexpected $SharedValue in ${ConsumeSharedValueMap<T, X>}: $consumedValue');
+    }
+    final map = <Object?, Object?>{
+      for (var entry in consumedValue.entries)
+        entry.key: _transformItem(
+          value: entry.value is ZacBuilder<Object?>
+              ? (entry.value as ZacBuilder<Object?>).build(zacContext)
+              : entry.value,
+          zacContext: zacContext,
+          transformer: itemTransformer,
+        )
+    };
+
+    final transformedMap =
+        transformer?.transform(ZacTransformValue(map), zacContext, null) ?? map;
+
+    if (transformedMap is X) {
+      return transformedMap as X;
+    }
+
+    if (transformedMap is! Map) {
+      throw StateError('''
+Unexpected value after transformation in ${ConsumeSharedValueMap<T, X>}.
+A $X is expected but the data is: $transformedMap''');
+    }
+
+    return Map<String, T>.from(transformedMap) as X;
+  }
+}

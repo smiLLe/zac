@@ -83,3 +83,20 @@ _$_ConsumeSharedValueList<T, X>
               : SharedValueConsumeType.fromJson(
                   json['forceConsume'] as Map<String, dynamic>),
         );
+
+_$_ConsumeSharedValueMap<T, X> _$$_ConsumeSharedValueMapFromJson<
+        T extends Object?,
+        X extends Map<String, T>?>(Map<String, dynamic> json) =>
+    _$_ConsumeSharedValueMap<T, X>(
+      family: json['family'] as Object,
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['transformer'] as Object),
+      itemTransformer: json['itemTransformer'] == null
+          ? null
+          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+      forceConsume: json['forceConsume'] == null
+          ? null
+          : SharedValueConsumeType.fromJson(
+              json['forceConsume'] as Map<String, dynamic>),
+    );
