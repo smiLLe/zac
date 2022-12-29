@@ -610,11 +610,11 @@ mixin _$FlutterStrutStyle {
   List<String>? get fontFamilyFallback => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get fontSize => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get height => throw _privateConstructorUsedError;
-  FlutterTextLeadingDistribution? get leadingDistribution =>
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution =>
       throw _privateConstructorUsedError;
   ZacBuilder<double?>? get leading => throw _privateConstructorUsedError;
-  FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
-  FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
+  ZacBuilder<FontWeight?>? get fontWeight => throw _privateConstructorUsedError;
+  ZacBuilder<FontStyle?>? get fontStyle => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get forceStrutHeight => throw _privateConstructorUsedError;
   ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
   ZacBuilder<String?>? get package => throw _privateConstructorUsedError;
@@ -669,13 +669,13 @@ class _$_FlutterStrutStyle extends _FlutterStrutStyle {
   @override
   final ZacBuilder<double?>? height;
   @override
-  final FlutterTextLeadingDistribution? leadingDistribution;
+  final ZacBuilder<TextLeadingDistribution?>? leadingDistribution;
   @override
   final ZacBuilder<double?>? leading;
   @override
-  final FlutterFontWeight? fontWeight;
+  final ZacBuilder<FontWeight?>? fontWeight;
   @override
-  final FlutterFontStyle? fontStyle;
+  final ZacBuilder<FontStyle?>? fontStyle;
   @override
   final ZacBuilder<bool?>? forceStrutHeight;
   @override
@@ -750,10 +750,10 @@ abstract class _FlutterStrutStyle extends FlutterStrutStyle {
       final List<String>? fontFamilyFallback,
       final ZacBuilder<double?>? fontSize,
       final ZacBuilder<double?>? height,
-      final FlutterTextLeadingDistribution? leadingDistribution,
+      final ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
       final ZacBuilder<double?>? leading,
-      final FlutterFontWeight? fontWeight,
-      final FlutterFontStyle? fontStyle,
+      final ZacBuilder<FontWeight?>? fontWeight,
+      final ZacBuilder<FontStyle?>? fontStyle,
       final ZacBuilder<bool?>? forceStrutHeight,
       final ZacBuilder<String?>? debugLabel,
       final ZacBuilder<String?>? package}) = _$_FlutterStrutStyle;
@@ -771,13 +771,13 @@ abstract class _FlutterStrutStyle extends FlutterStrutStyle {
   @override
   ZacBuilder<double?>? get height;
   @override
-  FlutterTextLeadingDistribution? get leadingDistribution;
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution;
   @override
   ZacBuilder<double?>? get leading;
   @override
-  FlutterFontWeight? get fontWeight;
+  ZacBuilder<FontWeight?>? get fontWeight;
   @override
-  FlutterFontStyle? get fontStyle;
+  ZacBuilder<FontStyle?>? get fontStyle;
   @override
   ZacBuilder<bool?>? get forceStrutHeight;
   @override
@@ -831,13 +831,13 @@ class _$_FlutterStrutStyleFromTextStyle
   @override
   final ZacBuilder<double?>? height;
   @override
-  final FlutterTextLeadingDistribution? leadingDistribution;
+  final ZacBuilder<TextLeadingDistribution?>? leadingDistribution;
   @override
   final ZacBuilder<double?>? leading;
   @override
-  final FlutterFontWeight? fontWeight;
+  final ZacBuilder<FontWeight?>? fontWeight;
   @override
-  final FlutterFontStyle? fontStyle;
+  final ZacBuilder<FontStyle?>? fontStyle;
   @override
   final ZacBuilder<bool?>? forceStrutHeight;
   @override
@@ -915,10 +915,10 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
       final List<String>? fontFamilyFallback,
       final ZacBuilder<double?>? fontSize,
       final ZacBuilder<double?>? height,
-      final FlutterTextLeadingDistribution? leadingDistribution,
+      final ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
       final ZacBuilder<double?>? leading,
-      final FlutterFontWeight? fontWeight,
-      final FlutterFontStyle? fontStyle,
+      final ZacBuilder<FontWeight?>? fontWeight,
+      final ZacBuilder<FontStyle?>? fontStyle,
       final ZacBuilder<bool?>? forceStrutHeight,
       final ZacBuilder<String?>? debugLabel,
       final ZacBuilder<String?>? package}) = _$_FlutterStrutStyleFromTextStyle;
@@ -937,13 +937,13 @@ abstract class _FlutterStrutStyleFromTextStyle extends FlutterStrutStyle {
   @override
   ZacBuilder<double?>? get height;
   @override
-  FlutterTextLeadingDistribution? get leadingDistribution;
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution;
   @override
   ZacBuilder<double?>? get leading;
   @override
-  FlutterFontWeight? get fontWeight;
+  ZacBuilder<FontWeight?>? get fontWeight;
   @override
-  FlutterFontStyle? get fontStyle;
+  ZacBuilder<FontStyle?>? get fontStyle;
   @override
   ZacBuilder<bool?>? get forceStrutHeight;
   @override
@@ -1708,14 +1708,14 @@ mixin _$FlutterTextStyle {
   ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get backgroundColor => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get fontSize => throw _privateConstructorUsedError;
-  FlutterFontWeight? get fontWeight => throw _privateConstructorUsedError;
-  FlutterFontStyle? get fontStyle => throw _privateConstructorUsedError;
+  ZacBuilder<FontWeight?>? get fontWeight => throw _privateConstructorUsedError;
+  ZacBuilder<FontStyle?>? get fontStyle => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get letterSpacing => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get wordSpacing => throw _privateConstructorUsedError;
   ZacBuilder<TextBaseline?>? get textBaseline =>
       throw _privateConstructorUsedError;
   ZacBuilder<double?>? get height => throw _privateConstructorUsedError;
-  FlutterTextLeadingDistribution? get leadingDistribution =>
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution =>
       throw _privateConstructorUsedError;
   ZacBuilder<Locale?>? get locale =>
       throw _privateConstructorUsedError; // Paint? foreground,
@@ -1724,9 +1724,10 @@ mixin _$FlutterTextStyle {
       throw _privateConstructorUsedError;
   List<FlutterFontFeature>? get fontFeatures =>
       throw _privateConstructorUsedError;
-  FlutterTextDecoration? get decoration => throw _privateConstructorUsedError;
+  ZacBuilder<TextDecoration?>? get decoration =>
+      throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get decorationColor => throw _privateConstructorUsedError;
-  FlutterTextDecorationStyle? get decorationStyle =>
+  ZacBuilder<TextDecorationStyle?>? get decorationStyle =>
       throw _privateConstructorUsedError;
   ZacBuilder<double?>? get decorationThickness =>
       throw _privateConstructorUsedError;
@@ -1734,7 +1735,7 @@ mixin _$FlutterTextStyle {
   ZacBuilder<String?>? get fontFamily => throw _privateConstructorUsedError;
   List<String>? get fontFamilyFallback => throw _privateConstructorUsedError;
   ZacBuilder<String?>? get package => throw _privateConstructorUsedError;
-  FlutterTextOverflow? get overflow => throw _privateConstructorUsedError;
+  ZacBuilder<TextOverflow?>? get overflow => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -1786,9 +1787,9 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final ZacBuilder<double?>? fontSize;
   @override
-  final FlutterFontWeight? fontWeight;
+  final ZacBuilder<FontWeight?>? fontWeight;
   @override
-  final FlutterFontStyle? fontStyle;
+  final ZacBuilder<FontStyle?>? fontStyle;
   @override
   final ZacBuilder<double?>? letterSpacing;
   @override
@@ -1798,7 +1799,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final ZacBuilder<double?>? height;
   @override
-  final FlutterTextLeadingDistribution? leadingDistribution;
+  final ZacBuilder<TextLeadingDistribution?>? leadingDistribution;
   @override
   final ZacBuilder<Locale?>? locale;
 // Paint? foreground,
@@ -1816,11 +1817,11 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   }
 
   @override
-  final FlutterTextDecoration? decoration;
+  final ZacBuilder<TextDecoration?>? decoration;
   @override
   final ZacBuilder<Color?>? decorationColor;
   @override
-  final FlutterTextDecorationStyle? decorationStyle;
+  final ZacBuilder<TextDecorationStyle?>? decorationStyle;
   @override
   final ZacBuilder<double?>? decorationThickness;
   @override
@@ -1841,7 +1842,7 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   @override
   final ZacBuilder<String?>? package;
   @override
-  final FlutterTextOverflow? overflow;
+  final ZacBuilder<TextOverflow?>? overflow;
 
   @override
   String toString() {
@@ -1939,25 +1940,25 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacBuilder<Color?>? color,
       final ZacBuilder<Color?>? backgroundColor,
       final ZacBuilder<double?>? fontSize,
-      final FlutterFontWeight? fontWeight,
-      final FlutterFontStyle? fontStyle,
+      final ZacBuilder<FontWeight?>? fontWeight,
+      final ZacBuilder<FontStyle?>? fontStyle,
       final ZacBuilder<double?>? letterSpacing,
       final ZacBuilder<double?>? wordSpacing,
       final ZacBuilder<TextBaseline?>? textBaseline,
       final ZacBuilder<double?>? height,
-      final FlutterTextLeadingDistribution? leadingDistribution,
+      final ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
       final ZacBuilder<Locale?>? locale,
       final ZacListBuilder<Shadow, List<Shadow>?>? shadows,
       final List<FlutterFontFeature>? fontFeatures,
-      final FlutterTextDecoration? decoration,
+      final ZacBuilder<TextDecoration?>? decoration,
       final ZacBuilder<Color?>? decorationColor,
-      final FlutterTextDecorationStyle? decorationStyle,
+      final ZacBuilder<TextDecorationStyle?>? decorationStyle,
       final ZacBuilder<double?>? decorationThickness,
       final ZacBuilder<String?>? debugLabel,
       final ZacBuilder<String?>? fontFamily,
       final List<String>? fontFamilyFallback,
       final ZacBuilder<String?>? package,
-      final FlutterTextOverflow? overflow}) = _$_FlutterTextStyle;
+      final ZacBuilder<TextOverflow?>? overflow}) = _$_FlutterTextStyle;
   _FlutterTextStyle._() : super._();
 
   factory _FlutterTextStyle.fromJson(Map<String, dynamic> json) =
@@ -1972,9 +1973,9 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacBuilder<double?>? get fontSize;
   @override
-  FlutterFontWeight? get fontWeight;
+  ZacBuilder<FontWeight?>? get fontWeight;
   @override
-  FlutterFontStyle? get fontStyle;
+  ZacBuilder<FontStyle?>? get fontStyle;
   @override
   ZacBuilder<double?>? get letterSpacing;
   @override
@@ -1984,7 +1985,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacBuilder<double?>? get height;
   @override
-  FlutterTextLeadingDistribution? get leadingDistribution;
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution;
   @override
   ZacBuilder<Locale?>? get locale;
   @override // Paint? foreground,
@@ -1993,11 +1994,11 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   List<FlutterFontFeature>? get fontFeatures;
   @override
-  FlutterTextDecoration? get decoration;
+  ZacBuilder<TextDecoration?>? get decoration;
   @override
   ZacBuilder<Color?>? get decorationColor;
   @override
-  FlutterTextDecorationStyle? get decorationStyle;
+  ZacBuilder<TextDecorationStyle?>? get decorationStyle;
   @override
   ZacBuilder<double?>? get decorationThickness;
   @override
@@ -2009,7 +2010,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacBuilder<String?>? get package;
   @override
-  FlutterTextOverflow? get overflow;
+  ZacBuilder<TextOverflow?>? get overflow;
 }
 
 FlutterTextAlignVertical _$FlutterTextAlignVerticalFromJson(

@@ -636,7 +636,7 @@ class FlutterTextHeightBehavior
   factory FlutterTextHeightBehavior({
     ZacBuilder<bool?>? applyHeightToFirstAscent,
     ZacBuilder<bool?>? applyHeightToLastDescent,
-    FlutterTextLeadingDistribution? leadingDistribution,
+    ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
   TextHeightBehavior _build(ZacContext zacContext) {

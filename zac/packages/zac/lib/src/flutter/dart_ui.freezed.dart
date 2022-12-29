@@ -5511,7 +5511,7 @@ mixin _$FlutterTextHeightBehavior {
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get applyHeightToLastDescent =>
       throw _privateConstructorUsedError;
-  FlutterTextLeadingDistribution? get leadingDistribution =>
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -5538,7 +5538,7 @@ class _$_FlutterTextHeightBehavior extends _FlutterTextHeightBehavior {
   @override
   final ZacBuilder<bool?>? applyHeightToLastDescent;
   @override
-  final FlutterTextLeadingDistribution? leadingDistribution;
+  final ZacBuilder<TextLeadingDistribution?>? leadingDistribution;
 
   @override
   String toString() {
@@ -5578,7 +5578,7 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
   factory _FlutterTextHeightBehavior(
           {final ZacBuilder<bool?>? applyHeightToFirstAscent,
           final ZacBuilder<bool?>? applyHeightToLastDescent,
-          final FlutterTextLeadingDistribution? leadingDistribution}) =
+          final ZacBuilder<TextLeadingDistribution?>? leadingDistribution}) =
       _$_FlutterTextHeightBehavior;
   _FlutterTextHeightBehavior._() : super._();
 
@@ -5590,7 +5590,7 @@ abstract class _FlutterTextHeightBehavior extends FlutterTextHeightBehavior {
   @override
   ZacBuilder<bool?>? get applyHeightToLastDescent;
   @override
-  FlutterTextLeadingDistribution? get leadingDistribution;
+  ZacBuilder<TextLeadingDistribution?>? get leadingDistribution;
 }
 
 FlutterBlendMode _$FlutterBlendModeFromJson(Map<String, dynamic> json) {

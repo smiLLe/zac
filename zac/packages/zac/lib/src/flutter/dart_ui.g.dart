@@ -506,8 +506,8 @@ _$_FlutterTextHeightBehavior _$$_FlutterTextHeightBehaviorFromJson(
               json['applyHeightToLastDescent'] as Object),
       leadingDistribution: json['leadingDistribution'] == null
           ? null
-          : FlutterTextLeadingDistribution.fromJson(
-              json['leadingDistribution'] as Map<String, dynamic>),
+          : ZacBuilder<TextLeadingDistribution?>.fromJson(
+              json['leadingDistribution'] as Object),
     );
 
 _$_FlutterBlendModeClear _$$_FlutterBlendModeClearFromJson(

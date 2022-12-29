@@ -33,8 +33,7 @@ _$_FlutterText _$$_FlutterTextFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<bool?>.fromJson(json['softWrap'] as Object),
       overflow: json['overflow'] == null
           ? null
-          : FlutterTextOverflow.fromJson(
-              json['overflow'] as Map<String, dynamic>),
+          : ZacBuilder<TextOverflow?>.fromJson(json['overflow'] as Object),
       textScaleFactor: json['textScaleFactor'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['textScaleFactor'] as Object),

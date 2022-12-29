@@ -30,7 +30,7 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
     ZacBuilder<TextDirection?>? textDirection,
     ZacBuilder<Locale?>? locale,
     ZacBuilder<bool?>? softWrap,
-    FlutterTextOverflow? overflow,
+    ZacBuilder<TextOverflow?>? overflow,
     ZacBuilder<double?>? textScaleFactor,
     ZacBuilder<int?>? maxLines,
     ZacBuilder<String?>? semanticsLabel,
