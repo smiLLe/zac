@@ -79,8 +79,8 @@ abstract class ZacMapBuilder<T extends Object?, X extends Map<String, T>?>
       data,
       cb: (map, converterName) {
         switch (converterName) {
-          // case ConsumeSharedValueList.union:
-          //   return ConsumeSharedValueList<T, X>.fromJson(map);
+          case ConsumeSharedValueMap.union:
+            return ConsumeSharedValueMap<T, X>.fromJson(map);
           default:
             return ConverterHelper.convertToType<ZacMapBuilder<T, X>>(map);
         }

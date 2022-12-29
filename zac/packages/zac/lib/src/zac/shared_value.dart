@@ -379,25 +379,21 @@ class SharedValueProvider extends HookConsumerWidget {
       return container.dispose;
     }, [container]);
 
-    return ZacUpdateContext(
-      builder: (zacContext) {
-        return UncontrolledProviderScope(
-          container: container,
-          child: ZacUpdateContext(
-            builder: !autoCreate
-                ? childBuilder
-                : (zacContext) {
-                    /// immediately create the AutoDispose Provider and its value
-                    /// and keep it alive as long as possible
-                    zacContext.ref.listen<SharedValueType>(
-                      SharedValue.provider(family),
-                      _autoCreateListener,
-                    );
-                    return childBuilder(zacContext);
-                  },
-          ),
-        );
-      },
+    return UncontrolledProviderScope(
+      container: container,
+      child: ZacUpdateContext(
+        builder: !autoCreate
+            ? childBuilder
+            : (zacContext) {
+                /// immediately create the AutoDispose Provider and its value
+                /// and keep it alive as long as possible
+                zacContext.ref.listen<SharedValueType>(
+                  SharedValue.provider(family),
+                  _autoCreateListener,
+                );
+                return childBuilder(zacContext);
+              },
+      ),
     );
   }
 }
