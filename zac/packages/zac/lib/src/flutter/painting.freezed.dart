@@ -1722,7 +1722,7 @@ mixin _$FlutterTextStyle {
 // Paint? background,
   ZacListBuilder<Shadow, List<Shadow>?>? get shadows =>
       throw _privateConstructorUsedError;
-  List<FlutterFontFeature>? get fontFeatures =>
+  ZacListBuilder<FontFeature, List<FontFeature>?>? get fontFeatures =>
       throw _privateConstructorUsedError;
   ZacBuilder<TextDecoration?>? get decoration =>
       throw _privateConstructorUsedError;
@@ -1733,7 +1733,8 @@ mixin _$FlutterTextStyle {
       throw _privateConstructorUsedError;
   ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
   ZacBuilder<String?>? get fontFamily => throw _privateConstructorUsedError;
-  List<String>? get fontFamilyFallback => throw _privateConstructorUsedError;
+  ZacListBuilder<String, List<String>?>? get fontFamilyFallback =>
+      throw _privateConstructorUsedError;
   ZacBuilder<String?>? get package => throw _privateConstructorUsedError;
   ZacBuilder<TextOverflow?>? get overflow => throw _privateConstructorUsedError;
 
@@ -1761,19 +1762,17 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
       this.leadingDistribution,
       this.locale,
       this.shadows,
-      final List<FlutterFontFeature>? fontFeatures,
+      this.fontFeatures,
       this.decoration,
       this.decorationColor,
       this.decorationStyle,
       this.decorationThickness,
       this.debugLabel,
       this.fontFamily,
-      final List<String>? fontFamilyFallback,
+      this.fontFamilyFallback,
       this.package,
       this.overflow})
-      : _fontFeatures = fontFeatures,
-        _fontFamilyFallback = fontFamilyFallback,
-        super._();
+      : super._();
 
   factory _$_FlutterTextStyle.fromJson(Map<String, dynamic> json) =>
       _$$_FlutterTextStyleFromJson(json);
@@ -1806,16 +1805,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
 // Paint? background,
   @override
   final ZacListBuilder<Shadow, List<Shadow>?>? shadows;
-  final List<FlutterFontFeature>? _fontFeatures;
   @override
-  List<FlutterFontFeature>? get fontFeatures {
-    final value = _fontFeatures;
-    if (value == null) return null;
-    if (_fontFeatures is EqualUnmodifiableListView) return _fontFeatures;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacListBuilder<FontFeature, List<FontFeature>?>? fontFeatures;
   @override
   final ZacBuilder<TextDecoration?>? decoration;
   @override
@@ -1828,17 +1819,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
   final ZacBuilder<String?>? debugLabel;
   @override
   final ZacBuilder<String?>? fontFamily;
-  final List<String>? _fontFamilyFallback;
   @override
-  List<String>? get fontFamilyFallback {
-    final value = _fontFamilyFallback;
-    if (value == null) return null;
-    if (_fontFamilyFallback is EqualUnmodifiableListView)
-      return _fontFamilyFallback;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final ZacListBuilder<String, List<String>?>? fontFamilyFallback;
   @override
   final ZacBuilder<String?>? package;
   @override
@@ -1875,8 +1857,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
                 other.leadingDistribution == leadingDistribution) &&
             (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.shadows, shadows) || other.shadows == shadows) &&
-            const DeepCollectionEquality()
-                .equals(other._fontFeatures, _fontFeatures) &&
+            (identical(other.fontFeatures, fontFeatures) ||
+                other.fontFeatures == fontFeatures) &&
             (identical(other.decoration, decoration) ||
                 other.decoration == decoration) &&
             (identical(other.decorationColor, decorationColor) ||
@@ -1889,8 +1871,8 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
                 other.debugLabel == debugLabel) &&
             (identical(other.fontFamily, fontFamily) ||
                 other.fontFamily == fontFamily) &&
-            const DeepCollectionEquality()
-                .equals(other._fontFamilyFallback, _fontFamilyFallback) &&
+            (identical(other.fontFamilyFallback, fontFamilyFallback) ||
+                other.fontFamilyFallback == fontFamilyFallback) &&
             (identical(other.package, package) || other.package == package) &&
             (identical(other.overflow, overflow) ||
                 other.overflow == overflow));
@@ -1913,14 +1895,14 @@ class _$_FlutterTextStyle extends _FlutterTextStyle {
         leadingDistribution,
         locale,
         shadows,
-        const DeepCollectionEquality().hash(_fontFeatures),
+        fontFeatures,
         decoration,
         decorationColor,
         decorationStyle,
         decorationThickness,
         debugLabel,
         fontFamily,
-        const DeepCollectionEquality().hash(_fontFamilyFallback),
+        fontFamilyFallback,
         package,
         overflow
       ]);
@@ -1949,14 +1931,14 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
       final ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
       final ZacBuilder<Locale?>? locale,
       final ZacListBuilder<Shadow, List<Shadow>?>? shadows,
-      final List<FlutterFontFeature>? fontFeatures,
+      final ZacListBuilder<FontFeature, List<FontFeature>?>? fontFeatures,
       final ZacBuilder<TextDecoration?>? decoration,
       final ZacBuilder<Color?>? decorationColor,
       final ZacBuilder<TextDecorationStyle?>? decorationStyle,
       final ZacBuilder<double?>? decorationThickness,
       final ZacBuilder<String?>? debugLabel,
       final ZacBuilder<String?>? fontFamily,
-      final List<String>? fontFamilyFallback,
+      final ZacListBuilder<String, List<String>?>? fontFamilyFallback,
       final ZacBuilder<String?>? package,
       final ZacBuilder<TextOverflow?>? overflow}) = _$_FlutterTextStyle;
   _FlutterTextStyle._() : super._();
@@ -1992,7 +1974,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
 // Paint? background,
   ZacListBuilder<Shadow, List<Shadow>?>? get shadows;
   @override
-  List<FlutterFontFeature>? get fontFeatures;
+  ZacListBuilder<FontFeature, List<FontFeature>?>? get fontFeatures;
   @override
   ZacBuilder<TextDecoration?>? get decoration;
   @override
@@ -2006,7 +1988,7 @@ abstract class _FlutterTextStyle extends FlutterTextStyle {
   @override
   ZacBuilder<String?>? get fontFamily;
   @override
-  List<String>? get fontFamilyFallback;
+  ZacListBuilder<String, List<String>?>? get fontFamilyFallback;
   @override
   ZacBuilder<String?>? get package;
   @override
@@ -4563,7 +4545,7 @@ mixin _$FlutterBoxDecoration {
       throw _privateConstructorUsedError;
   List<FlutterBoxShadow>? get boxShadow => throw _privateConstructorUsedError;
   FlutterBoxShape? get shape => throw _privateConstructorUsedError;
-  FlutterBlendMode? get backgroundBlendMode =>
+  ZacBuilder<BlendMode?>? get backgroundBlendMode =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -4608,7 +4590,7 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
   @override
   final FlutterBoxShape? shape;
   @override
-  final FlutterBlendMode? backgroundBlendMode;
+  final ZacBuilder<BlendMode?>? backgroundBlendMode;
 
   @override
   String toString() {
@@ -4653,12 +4635,13 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
 
 abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   factory _FlutterBoxDecoration(
-      {final ZacBuilder<Color?>? color,
-      final ZacBuilder<BoxBorder?>? border,
-      final ZacBuilder<BorderRadiusGeometry?>? borderRadius,
-      final List<FlutterBoxShadow>? boxShadow,
-      final FlutterBoxShape? shape,
-      final FlutterBlendMode? backgroundBlendMode}) = _$_FlutterBoxDecoration;
+          {final ZacBuilder<Color?>? color,
+          final ZacBuilder<BoxBorder?>? border,
+          final ZacBuilder<BorderRadiusGeometry?>? borderRadius,
+          final List<FlutterBoxShadow>? boxShadow,
+          final FlutterBoxShape? shape,
+          final ZacBuilder<BlendMode?>? backgroundBlendMode}) =
+      _$_FlutterBoxDecoration;
   _FlutterBoxDecoration._() : super._();
 
   factory _FlutterBoxDecoration.fromJson(Map<String, dynamic> json) =
@@ -4675,7 +4658,7 @@ abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   @override
   FlutterBoxShape? get shape;
   @override
-  FlutterBlendMode? get backgroundBlendMode;
+  ZacBuilder<BlendMode?>? get backgroundBlendMode;
 }
 
 FlutterShapeDecoration _$FlutterShapeDecorationFromJson(

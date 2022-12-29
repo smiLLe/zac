@@ -7,7 +7,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';

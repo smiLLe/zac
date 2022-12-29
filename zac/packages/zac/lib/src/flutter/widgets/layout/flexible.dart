@@ -1,11 +1,9 @@
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/rendering.dart';
 
 part 'flexible.freezed.dart';
 part 'flexible.g.dart';

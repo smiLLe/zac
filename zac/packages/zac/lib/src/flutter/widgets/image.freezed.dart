@@ -41,16 +41,18 @@ mixin _$FlutterImage {
   ZacBuilder<double?>? get height => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get color =>
       throw _privateConstructorUsedError; // Animation<double>? opacity,
-  FlutterBlendMode? get colorBlendMode => throw _privateConstructorUsedError;
-  FlutterBoxFit? get fit => throw _privateConstructorUsedError;
+  ZacBuilder<BlendMode?>? get colorBlendMode =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<BoxFit?>? get fit => throw _privateConstructorUsedError;
   ZacBuilder<AlignmentGeometry?>? get alignment =>
       throw _privateConstructorUsedError;
-  FlutterImageRepeat? get repeat => throw _privateConstructorUsedError;
-  FlutterRect? get centerSlice => throw _privateConstructorUsedError;
+  ZacBuilder<ImageRepeat?>? get repeat => throw _privateConstructorUsedError;
+  ZacBuilder<Rect?>? get centerSlice => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get matchTextDirection =>
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get gaplessPlayback => throw _privateConstructorUsedError;
-  FlutterFilterQuality? get filterQuality => throw _privateConstructorUsedError;
+  ZacBuilder<FilterQuality?>? get filterQuality =>
+      throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get isAntiAlias => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get cacheWidth => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get cacheHeight => throw _privateConstructorUsedError;
@@ -115,21 +117,21 @@ class _$_FlutterImageNetowrk extends _FlutterImageNetowrk {
   final ZacBuilder<Color?>? color;
 // Animation<double>? opacity,
   @override
-  final FlutterBlendMode? colorBlendMode;
+  final ZacBuilder<BlendMode?>? colorBlendMode;
   @override
-  final FlutterBoxFit? fit;
+  final ZacBuilder<BoxFit?>? fit;
   @override
   final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final FlutterImageRepeat? repeat;
+  final ZacBuilder<ImageRepeat?>? repeat;
   @override
-  final FlutterRect? centerSlice;
+  final ZacBuilder<Rect?>? centerSlice;
   @override
   final ZacBuilder<bool?>? matchTextDirection;
   @override
   final ZacBuilder<bool?>? gaplessPlayback;
   @override
-  final FlutterFilterQuality? filterQuality;
+  final ZacBuilder<FilterQuality?>? filterQuality;
   @override
   final ZacBuilder<bool?>? isAntiAlias;
   final Map<String, String>? _headers;
@@ -238,14 +240,14 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
       final ZacBuilder<double?>? width,
       final ZacBuilder<double?>? height,
       final ZacBuilder<Color?>? color,
-      final FlutterBlendMode? colorBlendMode,
-      final FlutterBoxFit? fit,
+      final ZacBuilder<BlendMode?>? colorBlendMode,
+      final ZacBuilder<BoxFit?>? fit,
       final ZacBuilder<AlignmentGeometry?>? alignment,
-      final FlutterImageRepeat? repeat,
-      final FlutterRect? centerSlice,
+      final ZacBuilder<ImageRepeat?>? repeat,
+      final ZacBuilder<Rect?>? centerSlice,
       final ZacBuilder<bool?>? matchTextDirection,
       final ZacBuilder<bool?>? gaplessPlayback,
-      final FlutterFilterQuality? filterQuality,
+      final ZacBuilder<FilterQuality?>? filterQuality,
       final ZacBuilder<bool?>? isAntiAlias,
       final Map<String, String>? headers,
       final ZacBuilder<int?>? cacheWidth,
@@ -273,21 +275,21 @@ abstract class _FlutterImageNetowrk extends FlutterImage {
   @override
   ZacBuilder<Color?>? get color;
   @override // Animation<double>? opacity,
-  FlutterBlendMode? get colorBlendMode;
+  ZacBuilder<BlendMode?>? get colorBlendMode;
   @override
-  FlutterBoxFit? get fit;
+  ZacBuilder<BoxFit?>? get fit;
   @override
   ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  FlutterImageRepeat? get repeat;
+  ZacBuilder<ImageRepeat?>? get repeat;
   @override
-  FlutterRect? get centerSlice;
+  ZacBuilder<Rect?>? get centerSlice;
   @override
   ZacBuilder<bool?>? get matchTextDirection;
   @override
   ZacBuilder<bool?>? get gaplessPlayback;
   @override
-  FlutterFilterQuality? get filterQuality;
+  ZacBuilder<FilterQuality?>? get filterQuality;
   @override
   ZacBuilder<bool?>? get isAntiAlias;
   Map<String, String>? get headers;
@@ -348,15 +350,15 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   final ZacBuilder<Color?>? color;
 // Animation<double>? opacity,
   @override
-  final FlutterBlendMode? colorBlendMode;
+  final ZacBuilder<BlendMode?>? colorBlendMode;
   @override
-  final FlutterBoxFit? fit;
+  final ZacBuilder<BoxFit?>? fit;
   @override
   final ZacBuilder<AlignmentGeometry?>? alignment;
   @override
-  final FlutterImageRepeat? repeat;
+  final ZacBuilder<ImageRepeat?>? repeat;
   @override
-  final FlutterRect? centerSlice;
+  final ZacBuilder<Rect?>? centerSlice;
   @override
   final ZacBuilder<bool?>? matchTextDirection;
   @override
@@ -366,7 +368,7 @@ class _$_FlutterImageAsset extends _FlutterImageAsset {
   @override
   final ZacBuilder<String?>? package;
   @override
-  final FlutterFilterQuality? filterQuality;
+  final ZacBuilder<FilterQuality?>? filterQuality;
   @override
   final ZacBuilder<int?>? cacheWidth;
   @override
@@ -463,16 +465,16 @@ abstract class _FlutterImageAsset extends FlutterImage {
       final ZacBuilder<double?>? width,
       final ZacBuilder<double?>? height,
       final ZacBuilder<Color?>? color,
-      final FlutterBlendMode? colorBlendMode,
-      final FlutterBoxFit? fit,
+      final ZacBuilder<BlendMode?>? colorBlendMode,
+      final ZacBuilder<BoxFit?>? fit,
       final ZacBuilder<AlignmentGeometry?>? alignment,
-      final FlutterImageRepeat? repeat,
-      final FlutterRect? centerSlice,
+      final ZacBuilder<ImageRepeat?>? repeat,
+      final ZacBuilder<Rect?>? centerSlice,
       final ZacBuilder<bool?>? matchTextDirection,
       final ZacBuilder<bool?>? gaplessPlayback,
       final ZacBuilder<bool?>? isAntiAlias,
       final ZacBuilder<String?>? package,
-      final FlutterFilterQuality? filterQuality,
+      final ZacBuilder<FilterQuality?>? filterQuality,
       final ZacBuilder<int?>? cacheWidth,
       final ZacBuilder<int?>? cacheHeight}) = _$_FlutterImageAsset;
   _FlutterImageAsset._() : super._();
@@ -498,15 +500,15 @@ abstract class _FlutterImageAsset extends FlutterImage {
   @override
   ZacBuilder<Color?>? get color;
   @override // Animation<double>? opacity,
-  FlutterBlendMode? get colorBlendMode;
+  ZacBuilder<BlendMode?>? get colorBlendMode;
   @override
-  FlutterBoxFit? get fit;
+  ZacBuilder<BoxFit?>? get fit;
   @override
   ZacBuilder<AlignmentGeometry?>? get alignment;
   @override
-  FlutterImageRepeat? get repeat;
+  ZacBuilder<ImageRepeat?>? get repeat;
   @override
-  FlutterRect? get centerSlice;
+  ZacBuilder<Rect?>? get centerSlice;
   @override
   ZacBuilder<bool?>? get matchTextDirection;
   @override
@@ -515,7 +517,7 @@ abstract class _FlutterImageAsset extends FlutterImage {
   ZacBuilder<bool?>? get isAntiAlias;
   ZacBuilder<String?>? get package;
   @override
-  FlutterFilterQuality? get filterQuality;
+  ZacBuilder<FilterQuality?>? get filterQuality;
   @override
   ZacBuilder<int?>? get cacheWidth;
   @override

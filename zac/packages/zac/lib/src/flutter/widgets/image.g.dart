@@ -33,21 +33,20 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       colorBlendMode: json['colorBlendMode'] == null
           ? null
-          : FlutterBlendMode.fromJson(
-              json['colorBlendMode'] as Map<String, dynamic>),
+          : ZacBuilder<BlendMode?>.fromJson(json['colorBlendMode'] as Object),
       fit: json['fit'] == null
           ? null
-          : FlutterBoxFit.fromJson(json['fit'] as Map<String, dynamic>),
+          : ZacBuilder<BoxFit?>.fromJson(json['fit'] as Object),
       alignment: json['alignment'] == null
           ? null
           : ZacBuilder<AlignmentGeometry?>.fromJson(
               json['alignment'] as Object),
       repeat: json['repeat'] == null
           ? null
-          : FlutterImageRepeat.fromJson(json['repeat'] as Map<String, dynamic>),
+          : ZacBuilder<ImageRepeat?>.fromJson(json['repeat'] as Object),
       centerSlice: json['centerSlice'] == null
           ? null
-          : FlutterRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
+          : ZacBuilder<Rect?>.fromJson(json['centerSlice'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
@@ -56,8 +55,8 @@ _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
           : ZacBuilder<bool?>.fromJson(json['gaplessPlayback'] as Object),
       filterQuality: json['filterQuality'] == null
           ? null
-          : FlutterFilterQuality.fromJson(
-              json['filterQuality'] as Map<String, dynamic>),
+          : ZacBuilder<FilterQuality?>.fromJson(
+              json['filterQuality'] as Object),
       isAntiAlias: json['isAntiAlias'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['isAntiAlias'] as Object),
@@ -99,21 +98,20 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       colorBlendMode: json['colorBlendMode'] == null
           ? null
-          : FlutterBlendMode.fromJson(
-              json['colorBlendMode'] as Map<String, dynamic>),
+          : ZacBuilder<BlendMode?>.fromJson(json['colorBlendMode'] as Object),
       fit: json['fit'] == null
           ? null
-          : FlutterBoxFit.fromJson(json['fit'] as Map<String, dynamic>),
+          : ZacBuilder<BoxFit?>.fromJson(json['fit'] as Object),
       alignment: json['alignment'] == null
           ? null
           : ZacBuilder<AlignmentGeometry?>.fromJson(
               json['alignment'] as Object),
       repeat: json['repeat'] == null
           ? null
-          : FlutterImageRepeat.fromJson(json['repeat'] as Map<String, dynamic>),
+          : ZacBuilder<ImageRepeat?>.fromJson(json['repeat'] as Object),
       centerSlice: json['centerSlice'] == null
           ? null
-          : FlutterRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
+          : ZacBuilder<Rect?>.fromJson(json['centerSlice'] as Object),
       matchTextDirection: json['matchTextDirection'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
@@ -128,8 +126,8 @@ _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<String?>.fromJson(json['package'] as Object),
       filterQuality: json['filterQuality'] == null
           ? null
-          : FlutterFilterQuality.fromJson(
-              json['filterQuality'] as Map<String, dynamic>),
+          : ZacBuilder<FilterQuality?>.fromJson(
+              json['filterQuality'] as Object),
       cacheWidth: json['cacheWidth'] == null
           ? null
           : ZacBuilder<int?>.fromJson(json['cacheWidth'] as Object),

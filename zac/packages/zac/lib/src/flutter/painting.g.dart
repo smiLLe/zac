@@ -264,9 +264,10 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
           ? null
           : ZacListBuilder<Shadow, List<Shadow>?>.fromJson(
               json['shadows'] as Object),
-      fontFeatures: (json['fontFeatures'] as List<dynamic>?)
-          ?.map((e) => FlutterFontFeature.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      fontFeatures: json['fontFeatures'] == null
+          ? null
+          : ZacListBuilder<FontFeature, List<FontFeature>?>.fromJson(
+              json['fontFeatures'] as Object),
       decoration: json['decoration'] == null
           ? null
           : ZacBuilder<TextDecoration?>.fromJson(json['decoration'] as Object),
@@ -286,9 +287,10 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
       fontFamily: json['fontFamily'] == null
           ? null
           : ZacBuilder<String?>.fromJson(json['fontFamily'] as Object),
-      fontFamilyFallback: (json['fontFamilyFallback'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      fontFamilyFallback: json['fontFamilyFallback'] == null
+          ? null
+          : ZacListBuilder<String, List<String>?>.fromJson(
+              json['fontFamilyFallback'] as Object),
       package: json['package'] == null
           ? null
           : ZacBuilder<String?>.fromJson(json['package'] as Object),
@@ -619,8 +621,8 @@ _$_FlutterBoxDecoration _$$_FlutterBoxDecorationFromJson(
           : FlutterBoxShape.fromJson(json['shape'] as Map<String, dynamic>),
       backgroundBlendMode: json['backgroundBlendMode'] == null
           ? null
-          : FlutterBlendMode.fromJson(
-              json['backgroundBlendMode'] as Map<String, dynamic>),
+          : ZacBuilder<BlendMode?>.fromJson(
+              json['backgroundBlendMode'] as Object),
     );
 
 _$_FlutterShapeDecoration _$$_FlutterShapeDecorationFromJson(

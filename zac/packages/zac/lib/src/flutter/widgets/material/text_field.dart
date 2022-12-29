@@ -9,7 +9,6 @@ import 'package:zac/src/flutter/services.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 part 'text_field.freezed.dart';
 part 'text_field.g.dart';

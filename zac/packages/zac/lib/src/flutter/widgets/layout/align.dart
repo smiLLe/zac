@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 part 'align.freezed.dart';
 part 'align.g.dart';

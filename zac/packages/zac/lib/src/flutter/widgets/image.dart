@@ -1,12 +1,8 @@
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
-import 'package:zac/src/zac/zac_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/foundation.dart';
-import 'package:zac/src/flutter/painting.dart';
 
 part 'image.freezed.dart';
 part 'image.g.dart';
@@ -35,14 +31,14 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
     ZacBuilder<double?>? height,
     ZacBuilder<Color?>? color,
     // Animation<double>? opacity,
-    FlutterBlendMode? colorBlendMode,
-    FlutterBoxFit? fit,
+    ZacBuilder<BlendMode?>? colorBlendMode,
+    ZacBuilder<BoxFit?>? fit,
     ZacBuilder<AlignmentGeometry?>? alignment,
-    FlutterImageRepeat? repeat,
-    FlutterRect? centerSlice,
+    ZacBuilder<ImageRepeat?>? repeat,
+    ZacBuilder<Rect?>? centerSlice,
     ZacBuilder<bool?>? matchTextDirection,
     ZacBuilder<bool?>? gaplessPlayback,
-    FlutterFilterQuality? filterQuality,
+    ZacBuilder<FilterQuality?>? filterQuality,
     ZacBuilder<bool?>? isAntiAlias,
     Map<String, String>? headers,
     ZacBuilder<int?>? cacheWidth,
@@ -63,16 +59,16 @@ class FlutterImage with _$FlutterImage implements ZacBuilder<Image> {
     ZacBuilder<double?>? height,
     ZacBuilder<Color?>? color,
 // Animation<double>? opacity,
-    FlutterBlendMode? colorBlendMode,
-    FlutterBoxFit? fit,
+    ZacBuilder<BlendMode?>? colorBlendMode,
+    ZacBuilder<BoxFit?>? fit,
     ZacBuilder<AlignmentGeometry?>? alignment,
-    FlutterImageRepeat? repeat,
-    FlutterRect? centerSlice,
+    ZacBuilder<ImageRepeat?>? repeat,
+    ZacBuilder<Rect?>? centerSlice,
     ZacBuilder<bool?>? matchTextDirection,
     ZacBuilder<bool?>? gaplessPlayback,
     ZacBuilder<bool?>? isAntiAlias,
     ZacBuilder<String?>? package,
-    FlutterFilterQuality? filterQuality,
+    ZacBuilder<FilterQuality?>? filterQuality,
     ZacBuilder<int?>? cacheWidth,
     ZacBuilder<int?>? cacheHeight,
   }) = _FlutterImageAsset;

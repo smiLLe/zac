@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_build.dart';
 import 'package:flutter/widgets.dart';
@@ -324,14 +326,14 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
 // Paint? foreground,
 // Paint? background,
     ZacListBuilder<Shadow, List<Shadow>?>? shadows,
-    List<FlutterFontFeature>? fontFeatures,
+    ZacListBuilder<FontFeature, List<FontFeature>?>? fontFeatures,
     ZacBuilder<TextDecoration?>? decoration,
     ZacBuilder<Color?>? decorationColor,
     ZacBuilder<TextDecorationStyle?>? decorationStyle,
     ZacBuilder<double?>? decorationThickness,
     ZacBuilder<String?>? debugLabel,
     ZacBuilder<String?>? fontFamily,
-    List<String>? fontFamilyFallback,
+    ZacListBuilder<String, List<String>?>? fontFamilyFallback,
     ZacBuilder<String?>? package,
     ZacBuilder<TextOverflow?>? overflow,
   }) = _FlutterTextStyle;
@@ -351,14 +353,14 @@ class FlutterTextStyle with _$FlutterTextStyle, ZacBuilder<TextStyle> {
       leadingDistribution: leadingDistribution?.build(zacContext),
       locale: locale?.build(zacContext),
       shadows: shadows?.build(zacContext),
-      fontFeatures: fontFeatures?.map((e) => e.build(zacContext)).toList(),
+      fontFeatures: fontFeatures?.build(zacContext),
       decoration: decoration?.build(zacContext),
       decorationColor: decorationColor?.build(zacContext),
       decorationStyle: decorationStyle?.build(zacContext),
       decorationThickness: decorationThickness?.build(zacContext),
       debugLabel: debugLabel?.build(zacContext),
       fontFamily: fontFamily?.build(zacContext),
-      fontFamilyFallback: fontFamilyFallback,
+      fontFamilyFallback: fontFamilyFallback?.build(zacContext),
       package: package?.build(zacContext),
       overflow: overflow?.build(zacContext),
     );
@@ -879,7 +881,7 @@ class FlutterBoxDecoration
     ZacBuilder<BorderRadiusGeometry?>? borderRadius,
     List<FlutterBoxShadow>? boxShadow,
     FlutterBoxShape? shape,
-    FlutterBlendMode? backgroundBlendMode,
+    ZacBuilder<BlendMode?>? backgroundBlendMode,
   }) = _FlutterBoxDecoration;
 
   BoxDecoration _build(ZacContext zacContext) {
