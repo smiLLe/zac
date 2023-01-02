@@ -19,12 +19,12 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<TextInputType?>.fromJson(json['keyboardType'] as Object),
       textInputAction: json['textInputAction'] == null
           ? null
-          : FlutterTextInputAction.fromJson(
-              json['textInputAction'] as Map<String, dynamic>),
+          : ZacBuilder<TextInputAction?>.fromJson(
+              json['textInputAction'] as Object),
       textCapitalization: json['textCapitalization'] == null
           ? null
-          : FlutterTextCapitalization.fromJson(
-              json['textCapitalization'] as Map<String, dynamic>),
+          : ZacBuilder<TextCapitalization?>.fromJson(
+              json['textCapitalization'] as Object),
       style: json['style'] == null
           ? null
           : ZacBuilder<TextStyle?>.fromJson(json['style'] as Object),
@@ -36,8 +36,8 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<TextAlign?>.fromJson(json['textAlign'] as Object),
       textAlignVertical: json['textAlignVertical'] == null
           ? null
-          : FlutterTextAlignVertical.fromJson(
-              json['textAlignVertical'] as Map<String, dynamic>),
+          : ZacBuilder<TextAlignVertical?>.fromJson(
+              json['textAlignVertical'] as Object),
       textDirection: json['textDirection'] == null
           ? null
           : ZacBuilder<TextDirection?>.fromJson(
@@ -62,12 +62,12 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<bool?>.fromJson(json['autocorrect'] as Object),
       smartDashesType: json['smartDashesType'] == null
           ? null
-          : FlutterSmartDashesType.fromJson(
-              json['smartDashesType'] as Map<String, dynamic>),
+          : ZacBuilder<SmartDashesType?>.fromJson(
+              json['smartDashesType'] as Object),
       smartQuotesType: json['smartQuotesType'] == null
           ? null
-          : FlutterSmartQuotesType.fromJson(
-              json['smartQuotesType'] as Map<String, dynamic>),
+          : ZacBuilder<SmartQuotesType?>.fromJson(
+              json['smartQuotesType'] as Object),
       enableSuggestions: json['enableSuggestions'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['enableSuggestions'] as Object),
@@ -110,16 +110,16 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<Color?>.fromJson(json['cursorColor'] as Object),
       selectionHeightStyle: json['selectionHeightStyle'] == null
           ? null
-          : FlutterBoxHeightStyle.fromJson(
-              json['selectionHeightStyle'] as Map<String, dynamic>),
+          : ZacBuilder<BoxHeightStyle?>.fromJson(
+              json['selectionHeightStyle'] as Object),
       selectionWidthStyle: json['selectionWidthStyle'] == null
           ? null
-          : FlutterBoxWidthStyle.fromJson(
-              json['selectionWidthStyle'] as Map<String, dynamic>),
+          : ZacBuilder<BoxWidthStyle?>.fromJson(
+              json['selectionWidthStyle'] as Object),
       keyboardAppearance: json['keyboardAppearance'] == null
           ? null
-          : FlutterBrightness.fromJson(
-              json['keyboardAppearance'] as Map<String, dynamic>),
+          : ZacBuilder<Brightness?>.fromJson(
+              json['keyboardAppearance'] as Object),
       scrollPadding: json['scrollPadding'] == null
           ? null
           : ZacBuilder<EdgeInsets?>.fromJson(json['scrollPadding'] as Object),

@@ -331,7 +331,7 @@ _$_FlutterBoxShadow _$$_FlutterBoxShadowFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       offset: json['offset'] == null
           ? null
-          : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
+          : ZacBuilder<Offset?>.fromJson(json['offset'] as Object),
       blurRadius: json['blurRadius'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['blurRadius'] as Object),
@@ -525,7 +525,7 @@ _$_FlutterBorderAll _$$_FlutterBorderAllFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<double?>.fromJson(json['width'] as Object),
       style: json['style'] == null
           ? null
-          : FlutterBorderStyle.fromJson(json['style'] as Map<String, dynamic>),
+          : ZacBuilder<BorderStyle?>.fromJson(json['style'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -577,7 +577,7 @@ _$_FlutterBorderSide _$$_FlutterBorderSideFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<double?>.fromJson(json['width'] as Object),
       style: json['style'] == null
           ? null
-          : FlutterBorderStyle.fromJson(json['style'] as Map<String, dynamic>),
+          : ZacBuilder<BorderStyle?>.fromJson(json['style'] as Object),
     );
 
 _$_FlutterCircleBorder _$$_FlutterCircleBorderFromJson(
@@ -618,7 +618,7 @@ _$_FlutterBoxDecoration _$$_FlutterBoxDecorationFromJson(
           .toList(),
       shape: json['shape'] == null
           ? null
-          : FlutterBoxShape.fromJson(json['shape'] as Map<String, dynamic>),
+          : ZacBuilder<BoxShape?>.fromJson(json['shape'] as Object),
       backgroundBlendMode: json['backgroundBlendMode'] == null
           ? null
           : ZacBuilder<BlendMode?>.fromJson(
@@ -631,6 +631,12 @@ _$_FlutterShapeDecoration _$$_FlutterShapeDecorationFromJson(
       color: json['color'] == null
           ? null
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
+      image: json['image'] == null
+          ? null
+          : ZacBuilder<DecorationImage?>.fromJson(json['image'] as Object),
+      gradient: json['gradient'] == null
+          ? null
+          : ZacBuilder<Gradient?>.fromJson(json['gradient'] as Object),
       shadows: (json['shadows'] as List<dynamic>?)
           ?.map((e) => FlutterBoxShadow.fromJson(e as Map<String, dynamic>))
           .toList(),

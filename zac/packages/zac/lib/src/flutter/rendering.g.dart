@@ -219,14 +219,14 @@ _$_FlutterBoxConstraintsExpand _$$_FlutterBoxConstraintsExpandFromJson(
 _$_FlutterBoxConstraintsLoose _$$_FlutterBoxConstraintsLooseFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxConstraintsLoose(
-      FlutterSize.fromJson(json['size'] as Map<String, dynamic>),
+      ZacBuilder<Size>.fromJson(json['size'] as Object),
       $type: json['builder'] as String?,
     );
 
 _$_FlutterBoxConstraintsTight _$$_FlutterBoxConstraintsTightFromJson(
         Map<String, dynamic> json) =>
     _$_FlutterBoxConstraintsTight(
-      FlutterSize.fromJson(json['size'] as Map<String, dynamic>),
+      ZacBuilder<Size>.fromJson(json['size'] as Object),
       $type: json['builder'] as String?,
     );
 

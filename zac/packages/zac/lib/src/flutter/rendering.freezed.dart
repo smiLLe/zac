@@ -2039,7 +2039,7 @@ class _$_FlutterBoxConstraintsLoose extends _FlutterBoxConstraintsLoose {
       _$$_FlutterBoxConstraintsLooseFromJson(json);
 
   @override
-  final FlutterSize size;
+  final ZacBuilder<Size> size;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2077,14 +2077,14 @@ class _$_FlutterBoxConstraintsLoose extends _FlutterBoxConstraintsLoose {
 }
 
 abstract class _FlutterBoxConstraintsLoose extends FlutterBoxConstraints {
-  factory _FlutterBoxConstraintsLoose(final FlutterSize size) =
+  factory _FlutterBoxConstraintsLoose(final ZacBuilder<Size> size) =
       _$_FlutterBoxConstraintsLoose;
   _FlutterBoxConstraintsLoose._() : super._();
 
   factory _FlutterBoxConstraintsLoose.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsLoose.fromJson;
 
-  FlutterSize get size;
+  ZacBuilder<Size> get size;
 }
 
 /// @nodoc
@@ -2098,7 +2098,7 @@ class _$_FlutterBoxConstraintsTight extends _FlutterBoxConstraintsTight {
       _$$_FlutterBoxConstraintsTightFromJson(json);
 
   @override
-  final FlutterSize size;
+  final ZacBuilder<Size> size;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2136,14 +2136,14 @@ class _$_FlutterBoxConstraintsTight extends _FlutterBoxConstraintsTight {
 }
 
 abstract class _FlutterBoxConstraintsTight extends FlutterBoxConstraints {
-  factory _FlutterBoxConstraintsTight(final FlutterSize size) =
+  factory _FlutterBoxConstraintsTight(final ZacBuilder<Size> size) =
       _$_FlutterBoxConstraintsTight;
   _FlutterBoxConstraintsTight._() : super._();
 
   factory _FlutterBoxConstraintsTight.fromJson(Map<String, dynamic> json) =
       _$_FlutterBoxConstraintsTight.fromJson;
 
-  FlutterSize get size;
+  ZacBuilder<Size> get size;
 }
 
 /// @nodoc

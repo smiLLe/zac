@@ -302,11 +302,11 @@ class FlutterBoxConstraints
   }) = _FlutterBoxConstraintsExpand;
 
   @FreezedUnionValue('f:1:BoxConstraints.loose')
-  factory FlutterBoxConstraints.loose(FlutterSize size) =
+  factory FlutterBoxConstraints.loose(ZacBuilder<Size> size) =
       _FlutterBoxConstraintsLoose;
 
   @FreezedUnionValue('f:1:BoxConstraints.tight')
-  factory FlutterBoxConstraints.tight(FlutterSize size) =
+  factory FlutterBoxConstraints.tight(ZacBuilder<Size> size) =
       _FlutterBoxConstraintsTight;
 
   @FreezedUnionValue('f:1:BoxConstraints.tightFor')

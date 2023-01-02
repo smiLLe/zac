@@ -1023,7 +1023,7 @@ class FlutterShadow with _$FlutterShadow implements ZacBuilder<Shadow> {
   @FreezedUnionValue(FlutterShadow.unionValue)
   factory FlutterShadow({
     ZacBuilder<Color?>? color,
-    FlutterOffset? offset,
+    ZacBuilder<Offset?>? offset,
     ZacBuilder<double?>? blurRadius,
   }) = _FlutterShadowShadow;
 

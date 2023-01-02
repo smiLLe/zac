@@ -2244,7 +2244,7 @@ FlutterBoxShadow _$FlutterBoxShadowFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FlutterBoxShadow {
   ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
-  FlutterOffset? get offset => throw _privateConstructorUsedError;
+  ZacBuilder<Offset?>? get offset => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get blurRadius => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get spreadRadius => throw _privateConstructorUsedError;
   FlutterBlurStyle? get blurStyle => throw _privateConstructorUsedError;
@@ -2273,7 +2273,7 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
   @override
   final ZacBuilder<Color?>? color;
   @override
-  final FlutterOffset? offset;
+  final ZacBuilder<Offset?>? offset;
   @override
   final ZacBuilder<double?>? blurRadius;
   @override
@@ -2318,7 +2318,7 @@ class _$_FlutterBoxShadow extends _FlutterBoxShadow {
 abstract class _FlutterBoxShadow extends FlutterBoxShadow {
   factory _FlutterBoxShadow(
       {final ZacBuilder<Color?>? color,
-      final FlutterOffset? offset,
+      final ZacBuilder<Offset?>? offset,
       final ZacBuilder<double?>? blurRadius,
       final ZacBuilder<double?>? spreadRadius,
       final FlutterBlurStyle? blurStyle}) = _$_FlutterBoxShadow;
@@ -2330,7 +2330,7 @@ abstract class _FlutterBoxShadow extends FlutterBoxShadow {
   @override
   ZacBuilder<Color?>? get color;
   @override
-  FlutterOffset? get offset;
+  ZacBuilder<Offset?>? get offset;
   @override
   ZacBuilder<double?>? get blurRadius;
   @override
@@ -3951,7 +3951,7 @@ class _$_FlutterBorderAll extends _FlutterBorderAll {
   @override
   final ZacBuilder<double?>? width;
   @override
-  final FlutterBorderStyle? style;
+  final ZacBuilder<BorderStyle?>? style;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -3989,7 +3989,7 @@ abstract class _FlutterBorderAll extends FlutterBorder {
   factory _FlutterBorderAll(
       {final ZacBuilder<Color?>? color,
       final ZacBuilder<double?>? width,
-      final FlutterBorderStyle? style}) = _$_FlutterBorderAll;
+      final ZacBuilder<BorderStyle?>? style}) = _$_FlutterBorderAll;
   _FlutterBorderAll._() : super._();
 
   factory _FlutterBorderAll.fromJson(Map<String, dynamic> json) =
@@ -3997,7 +3997,7 @@ abstract class _FlutterBorderAll extends FlutterBorder {
 
   ZacBuilder<Color?>? get color;
   ZacBuilder<double?>? get width;
-  FlutterBorderStyle? get style;
+  ZacBuilder<BorderStyle?>? get style;
 }
 
 FlutterBorderStyle _$FlutterBorderStyleFromJson(Map<String, dynamic> json) {
@@ -4322,7 +4322,7 @@ FlutterBorderSide _$FlutterBorderSideFromJson(Map<String, dynamic> json) {
 mixin _$FlutterBorderSide {
   ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get width => throw _privateConstructorUsedError;
-  FlutterBorderStyle? get style => throw _privateConstructorUsedError;
+  ZacBuilder<BorderStyle?>? get style => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -4344,7 +4344,7 @@ class _$_FlutterBorderSide extends _FlutterBorderSide {
   @override
   final ZacBuilder<double?>? width;
   @override
-  final FlutterBorderStyle? style;
+  final ZacBuilder<BorderStyle?>? style;
 
   @override
   String toString() {
@@ -4378,7 +4378,7 @@ abstract class _FlutterBorderSide extends FlutterBorderSide {
   factory _FlutterBorderSide(
       {final ZacBuilder<Color?>? color,
       final ZacBuilder<double?>? width,
-      final FlutterBorderStyle? style}) = _$_FlutterBorderSide;
+      final ZacBuilder<BorderStyle?>? style}) = _$_FlutterBorderSide;
   _FlutterBorderSide._() : super._();
 
   factory _FlutterBorderSide.fromJson(Map<String, dynamic> json) =
@@ -4389,7 +4389,7 @@ abstract class _FlutterBorderSide extends FlutterBorderSide {
   @override
   ZacBuilder<double?>? get width;
   @override
-  FlutterBorderStyle? get style;
+  ZacBuilder<BorderStyle?>? get style;
 }
 
 FlutterCircleBorder _$FlutterCircleBorderFromJson(Map<String, dynamic> json) {
@@ -4544,7 +4544,7 @@ mixin _$FlutterBoxDecoration {
   ZacBuilder<BorderRadiusGeometry?>? get borderRadius =>
       throw _privateConstructorUsedError;
   List<FlutterBoxShadow>? get boxShadow => throw _privateConstructorUsedError;
-  FlutterBoxShape? get shape => throw _privateConstructorUsedError;
+  ZacBuilder<BoxShape?>? get shape => throw _privateConstructorUsedError;
   ZacBuilder<BlendMode?>? get backgroundBlendMode =>
       throw _privateConstructorUsedError;
 
@@ -4588,7 +4588,7 @@ class _$_FlutterBoxDecoration extends _FlutterBoxDecoration {
   }
 
   @override
-  final FlutterBoxShape? shape;
+  final ZacBuilder<BoxShape?>? shape;
   @override
   final ZacBuilder<BlendMode?>? backgroundBlendMode;
 
@@ -4639,7 +4639,7 @@ abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
           final ZacBuilder<BoxBorder?>? border,
           final ZacBuilder<BorderRadiusGeometry?>? borderRadius,
           final List<FlutterBoxShadow>? boxShadow,
-          final FlutterBoxShape? shape,
+          final ZacBuilder<BoxShape?>? shape,
           final ZacBuilder<BlendMode?>? backgroundBlendMode}) =
       _$_FlutterBoxDecoration;
   _FlutterBoxDecoration._() : super._();
@@ -4656,7 +4656,7 @@ abstract class _FlutterBoxDecoration extends FlutterBoxDecoration {
   @override
   List<FlutterBoxShadow>? get boxShadow;
   @override
-  FlutterBoxShape? get shape;
+  ZacBuilder<BoxShape?>? get shape;
   @override
   ZacBuilder<BlendMode?>? get backgroundBlendMode;
 }
@@ -4668,9 +4668,9 @@ FlutterShapeDecoration _$FlutterShapeDecorationFromJson(
 
 /// @nodoc
 mixin _$FlutterShapeDecoration {
-  ZacBuilder<Color?>? get color =>
-      throw _privateConstructorUsedError; // FlutterDecorationImage? image,
-// FlutterGradient? gradient,
+  ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
+  ZacBuilder<DecorationImage?>? get image => throw _privateConstructorUsedError;
+  ZacBuilder<Gradient?>? get gradient => throw _privateConstructorUsedError;
   List<FlutterBoxShadow>? get shadows => throw _privateConstructorUsedError;
   ZacBuilder<ShapeBorder> get shape => throw _privateConstructorUsedError;
 
@@ -4685,7 +4685,11 @@ mixin _$FlutterShapeDecoration {
 @JsonSerializable(createToJson: false)
 class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
   _$_FlutterShapeDecoration(
-      {this.color, final List<FlutterBoxShadow>? shadows, required this.shape})
+      {this.color,
+      this.image,
+      this.gradient,
+      final List<FlutterBoxShadow>? shadows,
+      required this.shape})
       : _shadows = shadows,
         super._();
 
@@ -4694,11 +4698,11 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
 
   @override
   final ZacBuilder<Color?>? color;
-// FlutterDecorationImage? image,
-// FlutterGradient? gradient,
+  @override
+  final ZacBuilder<DecorationImage?>? image;
+  @override
+  final ZacBuilder<Gradient?>? gradient;
   final List<FlutterBoxShadow>? _shadows;
-// FlutterDecorationImage? image,
-// FlutterGradient? gradient,
   @override
   List<FlutterBoxShadow>? get shadows {
     final value = _shadows;
@@ -4713,7 +4717,7 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
 
   @override
   String toString() {
-    return 'FlutterShapeDecoration(color: $color, shadows: $shadows, shape: $shape)';
+    return 'FlutterShapeDecoration(color: $color, image: $image, gradient: $gradient, shadows: $shadows, shape: $shape)';
   }
 
   @override
@@ -4722,14 +4726,17 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
         (other.runtimeType == runtimeType &&
             other is _$_FlutterShapeDecoration &&
             (identical(other.color, color) || other.color == color) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.gradient, gradient) ||
+                other.gradient == gradient) &&
             const DeepCollectionEquality().equals(other._shadows, _shadows) &&
             (identical(other.shape, shape) || other.shape == shape));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, color, const DeepCollectionEquality().hash(_shadows), shape);
+  int get hashCode => Object.hash(runtimeType, color, image, gradient,
+      const DeepCollectionEquality().hash(_shadows), shape);
 
   @override
   @optionalTypeArgs
@@ -4743,6 +4750,8 @@ class _$_FlutterShapeDecoration extends _FlutterShapeDecoration {
 abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
   factory _FlutterShapeDecoration(
           {final ZacBuilder<Color?>? color,
+          final ZacBuilder<DecorationImage?>? image,
+          final ZacBuilder<Gradient?>? gradient,
           final List<FlutterBoxShadow>? shadows,
           required final ZacBuilder<ShapeBorder> shape}) =
       _$_FlutterShapeDecoration;
@@ -4753,8 +4762,11 @@ abstract class _FlutterShapeDecoration extends FlutterShapeDecoration {
 
   @override
   ZacBuilder<Color?>? get color;
-  @override // FlutterDecorationImage? image,
-// FlutterGradient? gradient,
+  @override
+  ZacBuilder<DecorationImage?>? get image;
+  @override
+  ZacBuilder<Gradient?>? get gradient;
+  @override
   List<FlutterBoxShadow>? get shadows;
   @override
   ZacBuilder<ShapeBorder> get shape;

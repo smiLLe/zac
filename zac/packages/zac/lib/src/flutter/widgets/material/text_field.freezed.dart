@@ -27,14 +27,14 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError;
   ZacBuilder<TextInputType?>? get keyboardType =>
       throw _privateConstructorUsedError;
-  FlutterTextInputAction? get textInputAction =>
+  ZacBuilder<TextInputAction?>? get textInputAction =>
       throw _privateConstructorUsedError;
-  FlutterTextCapitalization? get textCapitalization =>
+  ZacBuilder<TextCapitalization?>? get textCapitalization =>
       throw _privateConstructorUsedError;
   ZacBuilder<TextStyle?>? get style => throw _privateConstructorUsedError;
   ZacBuilder<StrutStyle?>? get strutStyle => throw _privateConstructorUsedError;
   ZacBuilder<TextAlign?>? get textAlign => throw _privateConstructorUsedError;
-  FlutterTextAlignVertical? get textAlignVertical =>
+  ZacBuilder<TextAlignVertical?>? get textAlignVertical =>
       throw _privateConstructorUsedError;
   ZacBuilder<TextDirection?>? get textDirection =>
       throw _privateConstructorUsedError;
@@ -46,9 +46,9 @@ mixin _$FlutterTextField {
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get obscureText => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get autocorrect => throw _privateConstructorUsedError;
-  FlutterSmartDashesType? get smartDashesType =>
+  ZacBuilder<SmartDashesType?>? get smartDashesType =>
       throw _privateConstructorUsedError;
-  FlutterSmartQuotesType? get smartQuotesType =>
+  ZacBuilder<SmartQuotesType?>? get smartQuotesType =>
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get enableSuggestions =>
       throw _privateConstructorUsedError;
@@ -69,11 +69,11 @@ mixin _$FlutterTextField {
   ZacBuilder<double?>? get cursorHeight => throw _privateConstructorUsedError;
   ZacBuilder<Radius?>? get cursorRadius => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get cursorColor => throw _privateConstructorUsedError;
-  FlutterBoxHeightStyle? get selectionHeightStyle =>
+  ZacBuilder<BoxHeightStyle?>? get selectionHeightStyle =>
       throw _privateConstructorUsedError;
-  FlutterBoxWidthStyle? get selectionWidthStyle =>
+  ZacBuilder<BoxWidthStyle?>? get selectionWidthStyle =>
       throw _privateConstructorUsedError;
-  FlutterBrightness? get keyboardAppearance =>
+  ZacBuilder<Brightness?>? get keyboardAppearance =>
       throw _privateConstructorUsedError;
   ZacBuilder<EdgeInsets?>? get scrollPadding =>
       throw _privateConstructorUsedError; // DragStartBehavior? dragStartBehavior,
@@ -157,9 +157,9 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBuilder<TextInputType?>? keyboardType;
   @override
-  final FlutterTextInputAction? textInputAction;
+  final ZacBuilder<TextInputAction?>? textInputAction;
   @override
-  final FlutterTextCapitalization? textCapitalization;
+  final ZacBuilder<TextCapitalization?>? textCapitalization;
   @override
   final ZacBuilder<TextStyle?>? style;
   @override
@@ -167,7 +167,7 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBuilder<TextAlign?>? textAlign;
   @override
-  final FlutterTextAlignVertical? textAlignVertical;
+  final ZacBuilder<TextAlignVertical?>? textAlignVertical;
   @override
   final ZacBuilder<TextDirection?>? textDirection;
   @override
@@ -184,9 +184,9 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBuilder<bool?>? autocorrect;
   @override
-  final FlutterSmartDashesType? smartDashesType;
+  final ZacBuilder<SmartDashesType?>? smartDashesType;
   @override
-  final FlutterSmartQuotesType? smartQuotesType;
+  final ZacBuilder<SmartQuotesType?>? smartQuotesType;
   @override
   final ZacBuilder<bool?>? enableSuggestions;
   @override
@@ -219,11 +219,11 @@ class _$_FlutterTextField extends _FlutterTextField {
   @override
   final ZacBuilder<Color?>? cursorColor;
   @override
-  final FlutterBoxHeightStyle? selectionHeightStyle;
+  final ZacBuilder<BoxHeightStyle?>? selectionHeightStyle;
   @override
-  final FlutterBoxWidthStyle? selectionWidthStyle;
+  final ZacBuilder<BoxWidthStyle?>? selectionWidthStyle;
   @override
-  final FlutterBrightness? keyboardAppearance;
+  final ZacBuilder<Brightness?>? keyboardAppearance;
   @override
   final ZacBuilder<EdgeInsets?>? scrollPadding;
 // DragStartBehavior? dragStartBehavior,
@@ -400,12 +400,12 @@ abstract class _FlutterTextField extends FlutterTextField {
           {final ZacBuilder<Key?>? key,
           final ZacBuilder<InputDecoration?>? decoration,
           final ZacBuilder<TextInputType?>? keyboardType,
-          final FlutterTextInputAction? textInputAction,
-          final FlutterTextCapitalization? textCapitalization,
+          final ZacBuilder<TextInputAction?>? textInputAction,
+          final ZacBuilder<TextCapitalization?>? textCapitalization,
           final ZacBuilder<TextStyle?>? style,
           final ZacBuilder<StrutStyle?>? strutStyle,
           final ZacBuilder<TextAlign?>? textAlign,
-          final FlutterTextAlignVertical? textAlignVertical,
+          final ZacBuilder<TextAlignVertical?>? textAlignVertical,
           final ZacBuilder<TextDirection?>? textDirection,
           final ZacBuilder<bool?>? readOnly,
           final ZacBuilder<bool?>? showCursor,
@@ -413,8 +413,8 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacBuilder<String?>? obscuringCharacter,
           final ZacBuilder<bool?>? obscureText,
           final ZacBuilder<bool?>? autocorrect,
-          final FlutterSmartDashesType? smartDashesType,
-          final FlutterSmartQuotesType? smartQuotesType,
+          final ZacBuilder<SmartDashesType?>? smartDashesType,
+          final ZacBuilder<SmartQuotesType?>? smartQuotesType,
           final ZacBuilder<bool?>? enableSuggestions,
           final ZacBuilder<int?>? maxLines,
           final ZacBuilder<int?>? minLines,
@@ -428,9 +428,9 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacBuilder<double?>? cursorHeight,
           final ZacBuilder<Radius?>? cursorRadius,
           final ZacBuilder<Color?>? cursorColor,
-          final FlutterBoxHeightStyle? selectionHeightStyle,
-          final FlutterBoxWidthStyle? selectionWidthStyle,
-          final FlutterBrightness? keyboardAppearance,
+          final ZacBuilder<BoxHeightStyle?>? selectionHeightStyle,
+          final ZacBuilder<BoxWidthStyle?>? selectionWidthStyle,
+          final ZacBuilder<Brightness?>? keyboardAppearance,
           final ZacBuilder<EdgeInsets?>? scrollPadding,
           final ZacBuilder<bool?>? enableInteractiveSelection,
           final ZacActions? onTap,
@@ -452,9 +452,9 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBuilder<TextInputType?>? get keyboardType;
   @override
-  FlutterTextInputAction? get textInputAction;
+  ZacBuilder<TextInputAction?>? get textInputAction;
   @override
-  FlutterTextCapitalization? get textCapitalization;
+  ZacBuilder<TextCapitalization?>? get textCapitalization;
   @override
   ZacBuilder<TextStyle?>? get style;
   @override
@@ -462,7 +462,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBuilder<TextAlign?>? get textAlign;
   @override
-  FlutterTextAlignVertical? get textAlignVertical;
+  ZacBuilder<TextAlignVertical?>? get textAlignVertical;
   @override
   ZacBuilder<TextDirection?>? get textDirection;
   @override
@@ -478,9 +478,9 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBuilder<bool?>? get autocorrect;
   @override
-  FlutterSmartDashesType? get smartDashesType;
+  ZacBuilder<SmartDashesType?>? get smartDashesType;
   @override
-  FlutterSmartQuotesType? get smartQuotesType;
+  ZacBuilder<SmartQuotesType?>? get smartQuotesType;
   @override
   ZacBuilder<bool?>? get enableSuggestions;
   @override
@@ -509,11 +509,11 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBuilder<Color?>? get cursorColor;
   @override
-  FlutterBoxHeightStyle? get selectionHeightStyle;
+  ZacBuilder<BoxHeightStyle?>? get selectionHeightStyle;
   @override
-  FlutterBoxWidthStyle? get selectionWidthStyle;
+  ZacBuilder<BoxWidthStyle?>? get selectionWidthStyle;
   @override
-  FlutterBrightness? get keyboardAppearance;
+  ZacBuilder<Brightness?>? get keyboardAppearance;
   @override
   ZacBuilder<EdgeInsets?>? get scrollPadding;
   @override // DragStartBehavior? dragStartBehavior,

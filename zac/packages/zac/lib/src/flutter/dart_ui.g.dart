@@ -830,7 +830,7 @@ _$_FlutterShadowShadow _$$_FlutterShadowShadowFromJson(
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
       offset: json['offset'] == null
           ? null
-          : FlutterOffset.fromJson(json['offset'] as Map<String, dynamic>),
+          : ZacBuilder<Offset?>.fromJson(json['offset'] as Object),
       blurRadius: json['blurRadius'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['blurRadius'] as Object),

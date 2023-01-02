@@ -419,7 +419,7 @@ class FlutterBoxShadow
   @FreezedUnionValue(FlutterBoxShadow.unionValue)
   factory FlutterBoxShadow({
     ZacBuilder<Color?>? color,
-    FlutterOffset? offset,
+    ZacBuilder<Offset?>? offset,
     ZacBuilder<double?>? blurRadius,
     ZacBuilder<double?>? spreadRadius,
     FlutterBlurStyle? blurStyle,
@@ -684,7 +684,7 @@ class FlutterBorder with _$FlutterBorder implements ZacBuilder<Border> {
   factory FlutterBorder.all({
     ZacBuilder<Color?>? color,
     ZacBuilder<double?>? width,
-    FlutterBorderStyle? style,
+    ZacBuilder<BorderStyle?>? style,
   }) = _FlutterBorderAll;
 
   Border _build(ZacContext zacContext) {
@@ -791,7 +791,7 @@ class FlutterBorderSide with _$FlutterBorderSide, ZacBuilder<BorderSide> {
   factory FlutterBorderSide({
     ZacBuilder<Color?>? color,
     ZacBuilder<double?>? width,
-    FlutterBorderStyle? style,
+    ZacBuilder<BorderStyle?>? style,
   }) = _FlutterBorderSide;
 
   BorderSide _build(ZacContext zacContext) {
@@ -880,7 +880,7 @@ class FlutterBoxDecoration
     ZacBuilder<BoxBorder?>? border,
     ZacBuilder<BorderRadiusGeometry?>? borderRadius,
     List<FlutterBoxShadow>? boxShadow,
-    FlutterBoxShape? shape,
+    ZacBuilder<BoxShape?>? shape,
     ZacBuilder<BlendMode?>? backgroundBlendMode,
   }) = _FlutterBoxDecoration;
 
@@ -914,8 +914,8 @@ class FlutterShapeDecoration
   @FreezedUnionValue(FlutterShapeDecoration.unionValue)
   factory FlutterShapeDecoration({
     ZacBuilder<Color?>? color,
-    // FlutterDecorationImage? image,
-    // FlutterGradient? gradient,
+    ZacBuilder<DecorationImage?>? image,
+    ZacBuilder<Gradient?>? gradient,
     List<FlutterBoxShadow>? shadows,
     required ZacBuilder<ShapeBorder> shape,
   }) = _FlutterShapeDecoration;
@@ -925,6 +925,8 @@ class FlutterShapeDecoration
       color: color?.build(zacContext),
       shadows: shadows?.map((e) => e.build(zacContext)).toList(),
       shape: shape.build(zacContext),
+      image: image?.build(zacContext),
+      gradient: gradient?.build(zacContext),
     );
   }
 
