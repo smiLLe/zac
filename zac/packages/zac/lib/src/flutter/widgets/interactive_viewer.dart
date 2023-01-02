@@ -29,9 +29,9 @@ class FlutterInteractiveViewer
     ZacBuilder<bool?>? constrained,
     ZacBuilder<double?>? maxScale,
     ZacBuilder<double?>? minScale,
-    ZacActions? onInteractionEnd,
-    ZacActions? onInteractionStart,
-    ZacActions? onInteractionUpdate,
+    ZacBuilder<List<ZacAction>?>? onInteractionEnd,
+    ZacBuilder<List<ZacAction>?>? onInteractionStart,
+    ZacBuilder<List<ZacAction>?>? onInteractionUpdate,
     ZacBuilder<bool?>? panEnabled,
     ZacBuilder<bool?>? scaleEnabled,
 // TransformationController? transformationController,
@@ -48,13 +48,13 @@ class FlutterInteractiveViewer
       minScale: minScale?.build(zacContext) ?? 0.8,
       onInteractionEnd: onInteractionEnd
           ?.build(zacContext)
-          .createCbParam1<ScaleEndDetails>(zacContext),
+          ?.createCbParam1<ScaleEndDetails>(zacContext),
       onInteractionStart: onInteractionStart
           ?.build(zacContext)
-          .createCbParam1<ScaleStartDetails>(zacContext),
+          ?.createCbParam1<ScaleStartDetails>(zacContext),
       onInteractionUpdate: onInteractionUpdate
           ?.build(zacContext)
-          .createCbParam1<ScaleUpdateDetails>(zacContext),
+          ?.createCbParam1<ScaleUpdateDetails>(zacContext),
       panEnabled: panEnabled?.build(zacContext) ?? true,
       scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
       child: child.build(zacContext),

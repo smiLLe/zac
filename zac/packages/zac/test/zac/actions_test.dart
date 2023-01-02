@@ -168,7 +168,7 @@ void main() {
       await testMap(tester, <String, dynamic>{
         'builder': 'z:1:ExecuteActions.once',
         'actions': {
-          'builder': 'z:1:ZacActions',
+          'builder': 'z:1:Actions',
           'actions': [
             {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
           ],

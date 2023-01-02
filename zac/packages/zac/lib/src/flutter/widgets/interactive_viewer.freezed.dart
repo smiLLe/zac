@@ -30,9 +30,12 @@ mixin _$FlutterInteractiveViewer {
   ZacBuilder<bool?>? get constrained => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get maxScale => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get minScale => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionEnd => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionStart => throw _privateConstructorUsedError;
-  ZacActions? get onInteractionUpdate => throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>?>? get onInteractionEnd =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>?>? get onInteractionStart =>
+      throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>?>? get onInteractionUpdate =>
+      throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get panEnabled => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get scaleEnabled => throw _privateConstructorUsedError;
 
@@ -82,11 +85,11 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacBuilder<double?>? minScale;
   @override
-  final ZacActions? onInteractionEnd;
+  final ZacBuilder<List<ZacAction>?>? onInteractionEnd;
   @override
-  final ZacActions? onInteractionStart;
+  final ZacBuilder<List<ZacAction>?>? onInteractionStart;
   @override
-  final ZacActions? onInteractionUpdate;
+  final ZacBuilder<List<ZacAction>?>? onInteractionUpdate;
   @override
   final ZacBuilder<bool?>? panEnabled;
   @override
@@ -165,9 +168,9 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       final ZacBuilder<bool?>? constrained,
       final ZacBuilder<double?>? maxScale,
       final ZacBuilder<double?>? minScale,
-      final ZacActions? onInteractionEnd,
-      final ZacActions? onInteractionStart,
-      final ZacActions? onInteractionUpdate,
+      final ZacBuilder<List<ZacAction>?>? onInteractionEnd,
+      final ZacBuilder<List<ZacAction>?>? onInteractionStart,
+      final ZacBuilder<List<ZacAction>?>? onInteractionUpdate,
       final ZacBuilder<bool?>? panEnabled,
       final ZacBuilder<bool?>? scaleEnabled}) = _$_FlutterInteractiveViewer;
   _FlutterInteractiveViewer._() : super._();
@@ -192,11 +195,11 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacBuilder<double?>? get minScale;
   @override
-  ZacActions? get onInteractionEnd;
+  ZacBuilder<List<ZacAction>?>? get onInteractionEnd;
   @override
-  ZacActions? get onInteractionStart;
+  ZacBuilder<List<ZacAction>?>? get onInteractionStart;
   @override
-  ZacActions? get onInteractionUpdate;
+  ZacBuilder<List<ZacAction>?>? get onInteractionUpdate;
   @override
   ZacBuilder<bool?>? get panEnabled;
   @override

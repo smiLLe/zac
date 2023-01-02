@@ -78,7 +78,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
   factory FlutterDialogs.simpleDialogOption({
     ZacBuilder<Key?>? key,
     ZacBuilder<Widget?>? child,
-    ZacActions? onPressed,
+    ZacBuilder<List<ZacAction>?>? onPressed,
     ZacBuilder<EdgeInsets?>? padding,
   }) = _FlutterDialogsSimpleDialogOption;
 
@@ -145,7 +145,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
       simpleDialogOption: (value) => SimpleDialogOption(
         key: value.key?.build(zacContext),
         padding: value.padding?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
         child: value.child?.build(zacContext),
       ),
     );
@@ -180,7 +180,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
   @override
   void execute(ZacActionPayload payload, ZacContext zacContext) {
     map(
-      showDialog: (value) => showDialog<ZacActions?>(
+      showDialog: (value) => showDialog<ZacBuilder<List<ZacAction>?>?>(
         context: zacContext.context,
         builder: (_) => FlutterBuilder(child: value.child).build(zacContext),
         routeSettings: value.routeSettings?.build(zacContext),

@@ -101,34 +101,30 @@ class ZacExecuteActionsBuilder
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
-    required ZacActions actions,
+    required ZacBuilder<List<ZacAction>> actions,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
-    required ZacActions actions,
+    required ZacBuilder<List<ZacAction>> actions,
     required SharedValueFamily family,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
 
-  Widget _buildWidget(ZacContext zacContext) {
-    return map(
-      once: (obj) => ZacExecuteActionsOnce(
-        actions: obj.actions,
-        child: obj.child,
-      ),
-      listen: (obj) => ZacExecuteActionsListen(
-        actions: obj.actions,
-        family: obj.family,
-        child: obj.child,
-      ),
-    );
-  }
-
   @override
   Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+    return map(
+      once: (obj) => ZacExecuteActionsOnce(
+        actions: obj.actions.build,
+        child: obj.child?.build,
+      ),
+      listen: (obj) => ZacExecuteActionsListen(
+        actions: obj.actions.build,
+        family: obj.family,
+        child: obj.child?.build,
+      ),
+    );
   }
 }
 
@@ -137,20 +133,20 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
       {required this.actions, required this.family, this.child, Key? key})
       : super(key: key);
 
-  final ZacActions actions;
+  final List<ZacAction> Function(ZacContext zacContext) actions;
   final SharedValueFamily family;
-  final ZacBuilder<Widget>? child;
+  final Widget Function(ZacContext zacContext)? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
-    final actionsList = actions.build(zacContext);
     zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
-      actionsList.execute(ZacActionPayload.param2(next, previous), zacContext);
+      actions(zacContext)
+          .execute(ZacActionPayload.param2(next, previous), zacContext);
     });
 
-    return child?.build(zacContext) ?? const SizedBox.shrink();
+    return child?.call(zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -159,8 +155,8 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       {required this.actions, required this.child, Key? key})
       : super(key: key);
 
-  final ZacActions actions;
-  final ZacBuilder<Widget>? child;
+  final List<ZacAction> Function(ZacContext zacContext) actions;
+  final Widget Function(ZacContext zacContext)? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -171,7 +167,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.build(zacContext).execute(const ZacActionPayload(), zacContext);
+        actions(zacContext).execute(const ZacActionPayload(), zacContext);
         if (!mounted) return;
         doneState.value = true;
       });
@@ -179,7 +175,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
     }, [actions]);
 
     if (null == child || !doneState.value) return const SizedBox.shrink();
-    return child?.build(zacContext) ?? const SizedBox.shrink();
+    return child?.call(zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -195,8 +191,8 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
     required List<ZacTransformers> condition,
-    required ZacActions ifTrue,
-    ZacActions? ifFalse,
+    required ZacBuilder<List<ZacAction>> ifTrue,
+    ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
 
   @override

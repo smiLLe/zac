@@ -810,7 +810,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
       _$$_FlutterNavigatorActionsPopFromJson(json);
 
   @override
-  final ZacActions? actions;
+  final ZacBuilder<List<ZacAction>?>? actions;
   @override
   final ZacBuilder<NavigatorState?>? navigatorState;
 
@@ -858,7 +858,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
 
 abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop(
-          {final ZacActions? actions,
+          {final ZacBuilder<List<ZacAction>?>? actions,
           final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPop;
   _FlutterNavigatorActionsPop._() : super._();
@@ -866,7 +866,7 @@ abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsPop.fromJson;
 
-  ZacActions? get actions;
+  ZacBuilder<List<ZacAction>?>? get actions;
   @override
   ZacBuilder<NavigatorState?>? get navigatorState;
 }
@@ -885,7 +885,7 @@ class _$_FlutterNavigatorActionsMaybePop
       _$$_FlutterNavigatorActionsMaybePopFromJson(json);
 
   @override
-  final ZacActions? actions;
+  final ZacBuilder<List<ZacAction>?>? actions;
   @override
   final ZacBuilder<NavigatorState?>? navigatorState;
 
@@ -934,7 +934,7 @@ class _$_FlutterNavigatorActionsMaybePop
 abstract class _FlutterNavigatorActionsMaybePop
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsMaybePop(
-          {final ZacActions? actions,
+          {final ZacBuilder<List<ZacAction>?>? actions,
           final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsMaybePop;
   _FlutterNavigatorActionsMaybePop._() : super._();
@@ -942,7 +942,7 @@ abstract class _FlutterNavigatorActionsMaybePop
   factory _FlutterNavigatorActionsMaybePop.fromJson(Map<String, dynamic> json) =
       _$_FlutterNavigatorActionsMaybePop.fromJson;
 
-  ZacActions? get actions;
+  ZacBuilder<List<ZacAction>?>? get actions;
   @override
   ZacBuilder<NavigatorState?>? get navigatorState;
 }
@@ -966,7 +966,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final ZacBuilder<Route<Object?>> route;
   @override
-  final ZacActions? result;
+  final ZacBuilder<List<ZacAction>?>? result;
   @override
   final ZacBuilder<NavigatorState?>? navigatorState;
 
@@ -1017,7 +1017,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPushReplacement(
           {required final ZacBuilder<Route<Object?>> route,
-          final ZacActions? result,
+          final ZacBuilder<List<ZacAction>?>? result,
           final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
   _FlutterNavigatorActionsPushReplacement._() : super._();
@@ -1027,7 +1027,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
       _$_FlutterNavigatorActionsPushReplacement.fromJson;
 
   ZacBuilder<Route<Object?>> get route;
-  ZacActions? get result;
+  ZacBuilder<List<ZacAction>?>? get result;
   @override
   ZacBuilder<NavigatorState?>? get navigatorState;
 }
@@ -1056,7 +1056,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final ZacBuilder<NavigatorState?>? navigatorState;
   @override
-  final ZacActions? result;
+  final ZacBuilder<List<ZacAction>?>? result;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1110,7 +1110,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
           {required final ZacBuilder<String> routeName,
           final Object? arguments,
           final ZacBuilder<NavigatorState?>? navigatorState,
-          final ZacActions? result}) =
+          final ZacBuilder<List<ZacAction>?>? result}) =
       _$_FlutterNavigatorActionsPushReplacementNamed;
   _FlutterNavigatorActionsPushReplacementNamed._() : super._();
 
@@ -1122,7 +1122,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   Object? get arguments;
   @override
   ZacBuilder<NavigatorState?>? get navigatorState;
-  ZacActions? get result;
+  ZacBuilder<List<ZacAction>?>? get result;
 }
 
 /// @nodoc

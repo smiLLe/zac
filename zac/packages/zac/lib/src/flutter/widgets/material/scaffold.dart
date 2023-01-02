@@ -288,7 +288,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
     // Animation<double>? animation,
-    ZacActions? onVisible,
+    ZacBuilder<List<ZacAction>?>? onVisible,
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
@@ -304,7 +304,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
       // duration: duration?.toFlutter(context),
       elevation: elevation?.build(zacContext),
       margin: margin?.build(zacContext),
-      onVisible: onVisible?.build(zacContext).createCb(zacContext),
+      onVisible: onVisible?.build(zacContext)?.createCb(zacContext),
       padding: padding?.build(zacContext),
       shape: shape?.build(zacContext),
       width: width?.build(zacContext),
@@ -361,14 +361,14 @@ class FlutterSnackBarAction
     ZacBuilder<Color?>? textColor,
     ZacBuilder<Color?>? disabledTextColor,
     required String label,
-    required ZacActions? onPressed,
+    required ZacBuilder<List<ZacAction>?>? onPressed,
   }) = _FlutterSnackBarAction;
 
   SnackBarAction _buildWidget(ZacContext zacContext) {
     return SnackBarAction(
       key: key?.build(zacContext),
       label: label,
-      onPressed: onPressed?.build(zacContext).createCb(zacContext) ?? () {},
+      onPressed: onPressed?.build(zacContext)?.createCb(zacContext) ?? () {},
       disabledTextColor: disabledTextColor?.build(zacContext),
       textColor: textColor?.build(zacContext),
     );
@@ -405,7 +405,7 @@ class FlutterMaterialBanner
     ZacBuilder<bool?>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-    ZacActions? onVisible,
+    ZacBuilder<List<ZacAction>?>? onVisible,
   }) = _FlutterMaterialBanner;
 
   MaterialBanner _buildWidget(ZacContext zacContext) {
@@ -420,7 +420,7 @@ class FlutterMaterialBanner
       forceActionsBelow: forceActionsBelow?.build(zacContext) ?? false,
       leading: leading?.build(zacContext),
       leadingPadding: leadingPadding?.build(zacContext),
-      onVisible: onVisible?.build(zacContext).createCb(zacContext),
+      onVisible: onVisible?.build(zacContext)?.createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
       padding: padding?.build(zacContext),
     );

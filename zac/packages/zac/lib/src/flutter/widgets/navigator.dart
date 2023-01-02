@@ -120,7 +120,7 @@ class FlutterPageRouteBuilder
     required String familyName,
     required Object? arguments,
   }) {
-    return PageRouteBuilder<ZacActions?>(
+    return PageRouteBuilder<ZacBuilder<List<ZacAction>?>?>(
       pageBuilder: (_, __, ___) => SharedValueProvider(
         childBuilder: child.build,
         valueBuilder: (ref, zacContext) => arguments,
@@ -258,20 +258,20 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pop')
   factory FlutterNavigatorActions.pop({
-    ZacActions? actions,
+    ZacBuilder<List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue('f:1:Navigator.maybePop')
   factory FlutterNavigatorActions.maybePop({
-    ZacActions? actions,
+    ZacBuilder<List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
     required ZacBuilder<Route<Object?>> route,
-    ZacActions? result,
+    ZacBuilder<List<ZacAction>?>? result,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
@@ -280,7 +280,7 @@ class FlutterNavigatorActions
     required ZacBuilder<String> routeName,
     Object? arguments,
     ZacBuilder<NavigatorState?>? navigatorState,
-    ZacActions? result,
+    ZacBuilder<List<ZacAction>?>? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')

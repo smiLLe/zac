@@ -555,7 +555,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final ZacBuilder<Widget?>? child;
   @override
-  final ZacActions? onPressed;
+  final ZacBuilder<List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<EdgeInsets?>? padding;
 
@@ -600,7 +600,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialogOption(
           {final ZacBuilder<Key?>? key,
           final ZacBuilder<Widget?>? child,
-          final ZacActions? onPressed,
+          final ZacBuilder<List<ZacAction>?>? onPressed,
           final ZacBuilder<EdgeInsets?>? padding}) =
       _$_FlutterDialogsSimpleDialogOption;
   _FlutterDialogsSimpleDialogOption._() : super._();
@@ -611,7 +611,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   @override
   ZacBuilder<Key?>? get key;
   ZacBuilder<Widget?>? get child;
-  ZacActions? get onPressed;
+  ZacBuilder<List<ZacAction>?>? get onPressed;
   ZacBuilder<EdgeInsets?>? get padding;
 }
 

@@ -14,6 +14,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 part 'helper.freezed.dart';
 part 'helper.g.dart';
@@ -154,7 +155,7 @@ class LeakAction with _$LeakAction implements ZacAction {
           void Function(ZacActionPayload payload, ZacContext zacContext) cb) =
       _LeakAction;
 
-  static ZacActions createActions(
+  static ZacBuilder<List<ZacAction>> createActions(
           void Function(ZacActionPayload payload, ZacContext zacContext) cb) =>
       ZacActions([LeakAction(cb)]);
 

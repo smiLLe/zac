@@ -53,11 +53,11 @@ class FlutterTextField
     ZacBuilder<bool?>? expands,
     ZacBuilder<int?>? maxLength,
     // ValueChanged<String>? onChanged,
-    ZacActions? onChanged,
+    ZacBuilder<List<ZacAction>?>? onChanged,
     // VoidCallback? onEditingComplete,
-    ZacActions? onEditingComplete,
+    ZacBuilder<List<ZacAction>?>? onEditingComplete,
     // ValueChanged<String>? onSubmitted,
-    ZacActions? onSubmitted,
+    ZacBuilder<List<ZacAction>?>? onSubmitted,
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
     ZacBuilder<bool?>? enabled,
@@ -73,7 +73,7 @@ class FlutterTextField
     ZacBuilder<bool?>? enableInteractiveSelection,
 // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
-    ZacActions? onTap,
+    ZacBuilder<List<ZacAction>?>? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
     ZacBuilder<ScrollController?>? scrollController,
@@ -117,7 +117,7 @@ class FlutterTextField
       enableIMEPersonalizedLearning:
           enableIMEPersonalizedLearning?.build(zacContext) ?? true,
       onChanged:
-          onChanged?.build(zacContext).createCbParam1<String>(zacContext),
+          onChanged?.build(zacContext)?.createCbParam1<String>(zacContext),
       decoration: decoration?.build(zacContext) ?? const InputDecoration(),
       keyboardType: keyboardType?.build(zacContext),
       textInputAction: textInputAction?.build(zacContext),
@@ -130,11 +130,11 @@ class FlutterTextField
           selectionHeightStyle?.build(zacContext) ?? BoxHeightStyle.tight,
       selectionWidthStyle:
           selectionWidthStyle?.build(zacContext) ?? BoxWidthStyle.tight,
-      onTap: onTap?.build(zacContext).createCb(zacContext),
+      onTap: onTap?.build(zacContext)?.createCb(zacContext),
       onEditingComplete:
-          onEditingComplete?.build(zacContext).createCb(zacContext),
+          onEditingComplete?.build(zacContext)?.createCb(zacContext),
       onSubmitted:
-          onSubmitted?.build(zacContext).createCbParam1<String>(zacContext),
+          onSubmitted?.build(zacContext)?.createCbParam1<String>(zacContext),
       scrollController: scrollController?.build(zacContext),
     );
   }

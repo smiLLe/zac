@@ -23,8 +23,8 @@ class FlutterElevatedButton
   factory FlutterElevatedButton({
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget?>? child,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButton;
@@ -34,8 +34,8 @@ class FlutterElevatedButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
@@ -44,16 +44,16 @@ class FlutterElevatedButton
     return map(
       (value) => ElevatedButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child?.build(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
@@ -84,8 +84,8 @@ class FlutterOutlinedButton
   factory FlutterOutlinedButton({
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> child,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButton;
@@ -95,8 +95,8 @@ class FlutterOutlinedButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
@@ -105,16 +105,16 @@ class FlutterOutlinedButton
     return map(
       (value) => OutlinedButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.build(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
@@ -145,8 +145,8 @@ class FlutterTextButton
   factory FlutterTextButton({
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> child,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButton;
@@ -156,8 +156,8 @@ class FlutterTextButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacActions? onPressed,
-    ZacActions? onLongPress,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButtonIcon;
@@ -166,16 +166,16 @@ class FlutterTextButton
     return map(
       (value) => TextButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.build(zacContext),
       ),
       icon: (value) => TextButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
-        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext)?.createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext)?.createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,

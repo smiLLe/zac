@@ -16,7 +16,7 @@ _$_ZacActions _$$_ZacActionsFromJson(Map<String, dynamic> json) =>
 _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
         Map<String, dynamic> json) =>
     _$_ZacExecuteActionsBuilderOnce(
-      actions: ZacActions.fromJson(json['actions'] as Map<String, dynamic>),
+      actions: ZacBuilder<List<ZacAction>>.fromJson(json['actions'] as Object),
       child: json['child'] == null
           ? null
           : ZacBuilder<Widget>.fromJson(json['child'] as Object),
@@ -26,7 +26,7 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
 _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
         Map<String, dynamic> json) =>
     _$_ZacExecuteActionsBuilderListen(
-      actions: ZacActions.fromJson(json['actions'] as Map<String, dynamic>),
+      actions: ZacBuilder<List<ZacAction>>.fromJson(json['actions'] as Object),
       family: json['family'] as Object,
       child: json['child'] == null
           ? null
@@ -40,8 +40,8 @@ _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(
       condition: (json['condition'] as List<dynamic>)
           .map((e) => ZacTransformers.fromJson(e as Map<String, dynamic>))
           .toList(),
-      ifTrue: ZacActions.fromJson(json['ifTrue'] as Map<String, dynamic>),
+      ifTrue: ZacBuilder<List<ZacAction>>.fromJson(json['ifTrue'] as Object),
       ifFalse: json['ifFalse'] == null
           ? null
-          : ZacActions.fromJson(json['ifFalse'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacAction>>.fromJson(json['ifFalse'] as Object),
     );
