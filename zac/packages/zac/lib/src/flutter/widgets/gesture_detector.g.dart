@@ -17,22 +17,24 @@ _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
           : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       onTap: json['onTap'] == null
           ? null
-          : ZacActions.fromJson(json['onTap'] as Object),
+          : ZacActions.fromJson(json['onTap'] as Map<String, dynamic>),
       onSecondaryTap: json['onSecondaryTap'] == null
           ? null
-          : ZacActions.fromJson(json['onSecondaryTap'] as Object),
+          : ZacActions.fromJson(json['onSecondaryTap'] as Map<String, dynamic>),
       onDoubleTap: json['onDoubleTap'] == null
           ? null
-          : ZacActions.fromJson(json['onDoubleTap'] as Object),
+          : ZacActions.fromJson(json['onDoubleTap'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       onSecondaryLongPress: json['onSecondaryLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onSecondaryLongPress'] as Object),
+          : ZacActions.fromJson(
+              json['onSecondaryLongPress'] as Map<String, dynamic>),
       onTertiaryLongPress: json['onTertiaryLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onTertiaryLongPress'] as Object),
+          : ZacActions.fromJson(
+              json['onTertiaryLongPress'] as Map<String, dynamic>),
       behavior: json['behavior'] == null
           ? null
           : FlutterHitTestBehavior.fromJson(

@@ -103,8 +103,8 @@ _$_FlutterNavigatorActionsPush _$$_FlutterNavigatorActionsPushFromJson(
       route: ZacBuilder<Route<Object?>>.fromJson(json['route'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
-          : FlutterNavigatorState.fromJson(
-              json['navigatorState'] as Map<String, dynamic>),
+          : ZacBuilder<NavigatorState?>.fromJson(
+              json['navigatorState'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -115,8 +115,8 @@ _$_FlutterNavigatorActionsPushNamed
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
-              : FlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Map<String, dynamic>),
+              : ZacBuilder<NavigatorState?>.fromJson(
+                  json['navigatorState'] as Object),
           $type: json['builder'] as String?,
         );
 
@@ -125,11 +125,11 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
     _$_FlutterNavigatorActionsPop(
       actions: json['actions'] == null
           ? null
-          : ZacActions.fromJson(json['actions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Map<String, dynamic>),
       navigatorState: json['navigatorState'] == null
           ? null
-          : FlutterNavigatorState.fromJson(
-              json['navigatorState'] as Map<String, dynamic>),
+          : ZacBuilder<NavigatorState?>.fromJson(
+              json['navigatorState'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -138,11 +138,11 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
     _$_FlutterNavigatorActionsMaybePop(
       actions: json['actions'] == null
           ? null
-          : ZacActions.fromJson(json['actions'] as Object),
+          : ZacActions.fromJson(json['actions'] as Map<String, dynamic>),
       navigatorState: json['navigatorState'] == null
           ? null
-          : FlutterNavigatorState.fromJson(
-              json['navigatorState'] as Map<String, dynamic>),
+          : ZacBuilder<NavigatorState?>.fromJson(
+              json['navigatorState'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -153,11 +153,11 @@ _$_FlutterNavigatorActionsPushReplacement
           route: ZacBuilder<Route<Object?>>.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
-              : ZacActions.fromJson(json['result'] as Object),
+              : ZacActions.fromJson(json['result'] as Map<String, dynamic>),
           navigatorState: json['navigatorState'] == null
               ? null
-              : FlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Map<String, dynamic>),
+              : ZacBuilder<NavigatorState?>.fromJson(
+                  json['navigatorState'] as Object),
           $type: json['builder'] as String?,
         );
 
@@ -169,11 +169,11 @@ _$_FlutterNavigatorActionsPushReplacementNamed
           arguments: json['arguments'],
           navigatorState: json['navigatorState'] == null
               ? null
-              : FlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Map<String, dynamic>),
+              : ZacBuilder<NavigatorState?>.fromJson(
+                  json['navigatorState'] as Object),
           result: json['result'] == null
               ? null
-              : ZacActions.fromJson(json['result'] as Object),
+              : ZacActions.fromJson(json['result'] as Map<String, dynamic>),
           $type: json['builder'] as String?,
         );
 
@@ -184,8 +184,8 @@ _$_FlutterNavigatorActionsPopUntilRouteName
           routeName: ZacBuilder<String>.fromJson(json['routeName'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
-              : FlutterNavigatorState.fromJson(
-                  json['navigatorState'] as Map<String, dynamic>),
+              : ZacBuilder<NavigatorState?>.fromJson(
+                  json['navigatorState'] as Object),
           $type: json['builder'] as String?,
         );
 

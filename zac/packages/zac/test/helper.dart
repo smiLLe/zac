@@ -18,38 +18,19 @@ import 'package:zac/src/zac/zac_builder.dart';
 part 'helper.freezed.dart';
 part 'helper.g.dart';
 
-void expectInConverter(Object obj, Convert fn) {
+void expectInRegistry(Object obj, Object fn) {
   if (obj is! String && obj is! List<String>) throw Error();
 
   List<String> items = obj is String ? [obj] : obj as List<String>;
   for (var item in items) {
-    expect(allBuilder.containsKey(item), isTrue);
-    expect(allBuilder[item], fn);
+    expect(ZacRegistry().containsKey(item), isTrue);
+    final map = ZacRegistry();
+    expect(map[item], fn);
   }
 }
 
 TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
   return isA<ZacBuilder<T>>();
-}
-
-void expectConvert<Builder>({
-  required Object? json,
-  required Builder expected,
-}) {
-  expect(ConverterHelper.convertToType<Builder>(json), expected);
-}
-
-void expectConvertToZacBuilder<Builder, Value>({
-  required Object? json,
-  required ZacBuilder<Value> expected,
-}) {
-  expect(ConverterHelper.convertToType<Builder>(json), expected);
-}
-
-void expectConvertIsA<Builder, IsA>({
-  required Object? json,
-}) {
-  expect(ConverterHelper.convertToType<Builder>(json), isA<IsA>());
 }
 
 Future<void>
@@ -107,13 +88,11 @@ void fakeBuild<T>(
 Future<void> testMap(
   WidgetTester tester,
   Map<String, dynamic> data, {
-  Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithinMaterialApp(
     tester,
     ZacWidget(data: data),
-    converter: converter,
     useContainer: useContainer,
   );
 }
@@ -127,7 +106,6 @@ Future<void> testZacWidget(
   return testWithinMaterialApp(
     tester,
     ZacWidget(data: zacWidget),
-    converter: converter,
     useContainer: useContainer,
   );
 }
@@ -135,16 +113,12 @@ Future<void> testZacWidget(
 Future<void> testWithinMaterialApp(
   WidgetTester tester,
   Widget widget, {
-  Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithConverters(
     tester: tester,
-    widget: MaterialApp(
-      home: widget,
-    ),
+    widget: MaterialApp(home: widget),
     container: useContainer ?? ProviderContainer(),
-    converter: converter,
   );
 }
 
@@ -152,10 +126,7 @@ Future<void> testWithConverters({
   required WidgetTester tester,
   required Widget widget,
   required ProviderContainer container,
-  Map<String, Convert>? converter,
 }) async {
-  allBuilder = {...allBuilder, ...(converter ?? <String, Convert>{})};
-
   return tester.pumpWidget(
     UncontrolledProviderScope(
       key: GlobalKey(),

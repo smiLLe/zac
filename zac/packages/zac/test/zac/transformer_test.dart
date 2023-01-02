@@ -17,7 +17,7 @@ void _expectFromJson<T>({
   Map<String, dynamic>? props,
 }) {
   expect(
-      ConverterHelper.convertToType<T>(<String, dynamic>{
+      ZacRegistry().getRegisteredTransformer(converter).call(<String, dynamic>{
         'builder': converter,
         ...(props ?? <String, dynamic>{}),
       }),
@@ -438,16 +438,6 @@ void main() {
                   'It was not possible to return a List<int> or null after transformers were applied'))));
     });
   });
-  test('Convert', () {
-    expect(
-        ConvertTransformer().transform(
-            ZacTransformValue({
-              'builder': 'f:1:SizedBox',
-            }),
-            FakeZacOrigin(),
-            null),
-        FlutterSizedBox());
-  });
 
   group('Iterable', () {
     test('.map()', () {
@@ -456,7 +446,10 @@ void main() {
         converter: 'z:1:Transformer:Iterable.map',
         equals: IterableTransformer.map(transformer: ZacTransformers([])),
         props: <String, dynamic>{
-          'transformer': <Map<String, dynamic>>[],
+          'transformer': {
+            'builder': 'z:1:Transformers',
+            'transformers': <dynamic>[]
+          },
         },
       );
 
@@ -1005,8 +998,14 @@ void main() {
             keyTransformer: ZacTransformers(<ZacTransformer>[]),
             valueTransformer: ZacTransformers([])),
         props: <String, dynamic>{
-          'keyTransformer': <Map<String, dynamic>>[],
-          'valueTransformer': <Map<String, dynamic>>[],
+          'keyTransformer': {
+            'builder': 'z:1:Transformers',
+            'transformers': <dynamic>[]
+          },
+          'valueTransformer': {
+            'builder': 'z:1:Transformers',
+            'transformers': <dynamic>[]
+          },
         },
       );
 
@@ -1398,10 +1397,10 @@ void main() {
         late ZacContext zacContext;
         await testZacWidget(
           tester,
-          SharedValueProviderBuilder(
+          SharedValueProviderBuilder.provideInt(
             value: 5,
             family: 'shared',
-            child: SharedValueProviderBuilder(
+            child: SharedValueProviderBuilder.provideString(
               value: 'foo',
               family: 'shared2',
               child: LeakContext(

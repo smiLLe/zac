@@ -294,70 +294,490 @@ abstract class _SharedValueConsumeTypeRead implements SharedValueConsumeType {
 
 SharedValueProviderBuilder _$SharedValueProviderBuilderFromJson(
     Map<String, dynamic> json) {
-  return _SharedValueProviderBuilder.fromJson(json);
+  switch (json['builder']) {
+    case 'z:1:int.provide':
+      return _ProvideInt.fromJson(json);
+    case 'z:1:double.provide':
+      return _ProvideDouble.fromJson(json);
+    case 'z:1:String.provide':
+      return _ProvideString.fromJson(json);
+    case 'z:1:bool.provide':
+      return _ProvideBool.fromJson(json);
+    case 'z:1:Object.provide':
+      return _ProvideObject.fromJson(json);
+    case 'z:1:null.provide':
+      return _ProvideNull.fromJson(json);
+    case 'z:1:Widget.provide':
+      return _ProvideWidget.fromJson(json);
+    case 'z:1:List<Widget>.provide':
+      return _ProvideWidgets.fromJson(json);
+    case 'z:1:Map<String, Widget>.provide':
+      return _ProvideWidgetsMap.fromJson(json);
+    case 'z:1:ZacBuilder<Object>.provide':
+      return _ProvideAnyBuilder.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'builder',
+          'SharedValueProviderBuilder',
+          'Invalid union type "${json['builder']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$SharedValueProviderBuilder {
   ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
-  Object? get value => throw _privateConstructorUsedError;
-  ZacTransformers? get transformer => throw _privateConstructorUsedError;
-  Object get family => throw _privateConstructorUsedError;
+  String get family => throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
   bool get autoCreate => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_SharedValueProviderBuilder value) $default,
-  ) =>
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
-  _$_SharedValueProviderBuilder(
+class _$_ProvideInt extends _ProvideInt {
+  _$_ProvideInt(
       {this.key,
       required this.value,
-      this.transformer,
       required this.family,
       required this.child,
-      this.autoCreate = true})
-      : super._();
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:int.provide',
+        super._();
 
-  factory _$_SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_SharedValueProviderBuilderFromJson(json);
+  factory _$_ProvideInt.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideIntFromJson(json);
 
   @override
   final ZacBuilder<Key?>? key;
   @override
-  final Object? value;
+  final int value;
   @override
-  final ZacTransformers? transformer;
-  @override
-  final Object family;
+  final String family;
   @override
   final ZacBuilder<Widget> child;
   @override
   @JsonKey()
   final bool autoCreate;
 
+  @JsonKey(name: 'builder')
+  final String $type;
+
   @override
   String toString() {
-    return 'SharedValueProviderBuilder(key: $key, value: $value, transformer: $transformer, family: $family, child: $child, autoCreate: $autoCreate)';
+    return 'SharedValueProviderBuilder.provideInt(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SharedValueProviderBuilder &&
+            other is _$_ProvideInt &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideInt(this);
+  }
+}
+
+abstract class _ProvideInt extends SharedValueProviderBuilder {
+  factory _ProvideInt(
+      {final ZacBuilder<Key?>? key,
+      required final int value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideInt;
+  _ProvideInt._() : super._();
+
+  factory _ProvideInt.fromJson(Map<String, dynamic> json) =
+      _$_ProvideInt.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  int get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideDouble extends _ProvideDouble {
+  _$_ProvideDouble(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:double.provide',
+        super._();
+
+  factory _$_ProvideDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideDoubleFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final double value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideDouble(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideDouble &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideDouble(this);
+  }
+}
+
+abstract class _ProvideDouble extends SharedValueProviderBuilder {
+  factory _ProvideDouble(
+      {final ZacBuilder<Key?>? key,
+      required final double value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideDouble;
+  _ProvideDouble._() : super._();
+
+  factory _ProvideDouble.fromJson(Map<String, dynamic> json) =
+      _$_ProvideDouble.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  double get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideString extends _ProvideString {
+  _$_ProvideString(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:String.provide',
+        super._();
+
+  factory _$_ProvideString.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideStringFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final String value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideString(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideString &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideString(this);
+  }
+}
+
+abstract class _ProvideString extends SharedValueProviderBuilder {
+  factory _ProvideString(
+      {final ZacBuilder<Key?>? key,
+      required final String value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideString;
+  _ProvideString._() : super._();
+
+  factory _ProvideString.fromJson(Map<String, dynamic> json) =
+      _$_ProvideString.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  String get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideBool extends _ProvideBool {
+  _$_ProvideBool(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:bool.provide',
+        super._();
+
+  factory _$_ProvideBool.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideBoolFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final bool value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideBool(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideBool &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideBool(this);
+  }
+}
+
+abstract class _ProvideBool extends SharedValueProviderBuilder {
+  factory _ProvideBool(
+      {final ZacBuilder<Key?>? key,
+      required final bool value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideBool;
+  _ProvideBool._() : super._();
+
+  factory _ProvideBool.fromJson(Map<String, dynamic> json) =
+      _$_ProvideBool.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  bool get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideObject extends _ProvideObject {
+  _$_ProvideObject(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.transformer,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:Object.provide',
+        super._();
+
+  factory _$_ProvideObject.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideObjectFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final Object value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  final ZacTransformers? transformer;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideObject(key: $key, value: $value, family: $family, child: $child, transformer: $transformer, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideObject &&
             (identical(other.key, key) || other.key == key) &&
             const DeepCollectionEquality().equals(other.value, value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
             (identical(other.transformer, transformer) ||
                 other.transformer == transformer) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
-            (identical(other.child, child) || other.child == child) &&
             (identical(other.autoCreate, autoCreate) ||
                 other.autoCreate == autoCreate));
   }
@@ -368,41 +788,516 @@ class _$_SharedValueProviderBuilder extends _SharedValueProviderBuilder {
       runtimeType,
       key,
       const DeepCollectionEquality().hash(value),
-      transformer,
-      const DeepCollectionEquality().hash(family),
+      family,
       child,
+      transformer,
       autoCreate);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_SharedValueProviderBuilder value) $default,
-  ) {
-    return $default(this);
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideObject(this);
   }
 }
 
-abstract class _SharedValueProviderBuilder extends SharedValueProviderBuilder {
-  factory _SharedValueProviderBuilder(
+abstract class _ProvideObject extends SharedValueProviderBuilder {
+  factory _ProvideObject(
       {final ZacBuilder<Key?>? key,
-      required final Object? value,
-      final ZacTransformers? transformer,
-      required final Object family,
+      required final Object value,
+      required final String family,
       required final ZacBuilder<Widget> child,
-      final bool autoCreate}) = _$_SharedValueProviderBuilder;
-  _SharedValueProviderBuilder._() : super._();
+      final ZacTransformers? transformer,
+      final bool autoCreate}) = _$_ProvideObject;
+  _ProvideObject._() : super._();
 
-  factory _SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =
-      _$_SharedValueProviderBuilder.fromJson;
+  factory _ProvideObject.fromJson(Map<String, dynamic> json) =
+      _$_ProvideObject.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  Object get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  ZacTransformers? get transformer;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideNull extends _ProvideNull {
+  _$_ProvideNull(
+      {this.key,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:null.provide',
+        super._();
+
+  factory _$_ProvideNull.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideNullFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideNull(key: $key, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideNull &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, key, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideNull(this);
+  }
+}
+
+abstract class _ProvideNull extends SharedValueProviderBuilder {
+  factory _ProvideNull(
+      {final ZacBuilder<Key?>? key,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideNull;
+  _ProvideNull._() : super._();
+
+  factory _ProvideNull.fromJson(Map<String, dynamic> json) =
+      _$_ProvideNull.fromJson;
 
   @override
   ZacBuilder<Key?>? get key;
   @override
-  Object? get value;
+  String get family;
   @override
-  ZacTransformers? get transformer;
+  ZacBuilder<Widget> get child;
   @override
-  Object get family;
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideWidget extends _ProvideWidget {
+  _$_ProvideWidget(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:Widget.provide',
+        super._();
+
+  factory _$_ProvideWidget.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideWidgetFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final ZacBuilder<Widget> value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideWidget(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideWidget &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideWidget(this);
+  }
+}
+
+abstract class _ProvideWidget extends SharedValueProviderBuilder {
+  factory _ProvideWidget(
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Widget> value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideWidget;
+  _ProvideWidget._() : super._();
+
+  factory _ProvideWidget.fromJson(Map<String, dynamic> json) =
+      _$_ProvideWidget.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Widget> get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideWidgets extends _ProvideWidgets {
+  _$_ProvideWidgets(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:List<Widget>.provide',
+        super._();
+
+  factory _$_ProvideWidgets.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideWidgetsFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final ZacListBuilder<Widget, List<Widget>> value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideWidgets(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideWidgets &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideWidgets(this);
+  }
+}
+
+abstract class _ProvideWidgets extends SharedValueProviderBuilder {
+  factory _ProvideWidgets(
+      {final ZacBuilder<Key?>? key,
+      required final ZacListBuilder<Widget, List<Widget>> value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideWidgets;
+  _ProvideWidgets._() : super._();
+
+  factory _ProvideWidgets.fromJson(Map<String, dynamic> json) =
+      _$_ProvideWidgets.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  ZacListBuilder<Widget, List<Widget>> get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideWidgetsMap extends _ProvideWidgetsMap {
+  _$_ProvideWidgetsMap(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:Map<String, Widget>.provide',
+        super._();
+
+  factory _$_ProvideWidgetsMap.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideWidgetsMapFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final ZacMapBuilder<Widget, Map<String, Widget>> value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideWidgetsMap(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideWidgetsMap &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideWidgetsMap(this);
+  }
+}
+
+abstract class _ProvideWidgetsMap extends SharedValueProviderBuilder {
+  factory _ProvideWidgetsMap(
+      {final ZacBuilder<Key?>? key,
+      required final ZacMapBuilder<Widget, Map<String, Widget>> value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideWidgetsMap;
+  _ProvideWidgetsMap._() : super._();
+
+  factory _ProvideWidgetsMap.fromJson(Map<String, dynamic> json) =
+      _$_ProvideWidgetsMap.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  ZacMapBuilder<Widget, Map<String, Widget>> get value;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget> get child;
+  @override
+  bool get autoCreate;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ProvideAnyBuilder extends _ProvideAnyBuilder {
+  _$_ProvideAnyBuilder(
+      {this.key,
+      required this.value,
+      required this.family,
+      required this.child,
+      this.autoCreate = true,
+      final String? $type})
+      : $type = $type ?? 'z:1:ZacBuilder<Object>.provide',
+        super._();
+
+  factory _$_ProvideAnyBuilder.fromJson(Map<String, dynamic> json) =>
+      _$$_ProvideAnyBuilderFromJson(json);
+
+  @override
+  final ZacBuilder<Key?>? key;
+  @override
+  final ZacBuilder<Object> value;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget> child;
+  @override
+  @JsonKey()
+  final bool autoCreate;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'SharedValueProviderBuilder.provideAnyBuilder(key: $key, value: $value, family: $family, child: $child, autoCreate: $autoCreate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ProvideAnyBuilder &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child) &&
+            (identical(other.autoCreate, autoCreate) ||
+                other.autoCreate == autoCreate));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, key, value, family, child, autoCreate);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProvideInt value) provideInt,
+    required TResult Function(_ProvideDouble value) provideDouble,
+    required TResult Function(_ProvideString value) provideString,
+    required TResult Function(_ProvideBool value) provideBool,
+    required TResult Function(_ProvideObject value) provideObject,
+    required TResult Function(_ProvideNull value) provideNull,
+    required TResult Function(_ProvideWidget value) provideWidget,
+    required TResult Function(_ProvideWidgets value) provideWidgets,
+    required TResult Function(_ProvideWidgetsMap value) provideWidgetsMap,
+    required TResult Function(_ProvideAnyBuilder value) provideAnyBuilder,
+  }) {
+    return provideAnyBuilder(this);
+  }
+}
+
+abstract class _ProvideAnyBuilder extends SharedValueProviderBuilder {
+  factory _ProvideAnyBuilder(
+      {final ZacBuilder<Key?>? key,
+      required final ZacBuilder<Object> value,
+      required final String family,
+      required final ZacBuilder<Widget> child,
+      final bool autoCreate}) = _$_ProvideAnyBuilder;
+  _ProvideAnyBuilder._() : super._();
+
+  factory _ProvideAnyBuilder.fromJson(Map<String, dynamic> json) =
+      _$_ProvideAnyBuilder.fromJson;
+
+  @override
+  ZacBuilder<Key?>? get key;
+  ZacBuilder<Object> get value;
+  @override
+  String get family;
   @override
   ZacBuilder<Widget> get child;
   @override

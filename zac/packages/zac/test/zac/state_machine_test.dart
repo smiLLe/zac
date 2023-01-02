@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
@@ -13,91 +12,6 @@ import 'package:zac/src/zac/zac_value.dart';
 import '../helper.dart';
 
 void main() {
-  group('convert', () {
-    test('Transition', () {
-      expect(
-          () => ConverterHelper.convertToType<ZacTransition>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:Transition',
-                'event': 'NEXT',
-                'target': 'foo',
-              }),
-          returnsNormally);
-    });
-
-    test('StateConfig', () {
-      expect(
-          () => ConverterHelper.convertToType<ZacStateConfig>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:StateConfig',
-                'widget': {'builder': 'f:1:SizedBox'},
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineProvider', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineProviderBuilder>(<String, dynamic>{
-                'builder': 'z:1:StateMachine.provide',
-                'family': 'machine',
-                'initialState': 'foo',
-                'states': <String, dynamic>{},
-                'child': {'builder': 'f:1:SizedBox'},
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineBuildState', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineBuildStateBuilder>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:BuildState',
-                'family': 'machine',
-                'states': <String>[],
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineActions.send', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineActions>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:Action.send',
-                'family': 'machine',
-                'event': 'NEXT',
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineActions.trySend', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineActions>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:Action.trySend',
-                'family': 'machine',
-                'event': 'NEXT',
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineTransformer.pickState', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineTransformer>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:Transformer.pickState',
-              }),
-          returnsNormally);
-    });
-
-    test('ZacStateMachineTransformer.pickContext', () {
-      expect(
-          () => ConverterHelper.convertToType<
-                  ZacStateMachineTransformer>(<String, dynamic>{
-                'builder': 'z:1:StateMachine:Transformer.pickContext',
-              }),
-          returnsNormally);
-    });
-  });
-
   test('Get current config in StateMachine', () {
     var machine = ZacStateMachine(
       states: {

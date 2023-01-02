@@ -8,7 +8,7 @@ import '../helper.dart';
 void main() {
   group('FlutterValueKey', () {
     test('is in converters', () {
-      expectInConverter('f:1:ValueKey', FlutterValueKey.fromJson);
+      expectInRegistry('f:1:ValueKey', FlutterValueKey.fromJson);
     });
 
     testWidgets('.build()', (tester) async {
@@ -30,7 +30,7 @@ void main() {
 
   group('Provide GlobalKey<NavigatorState>', () {
     test('is in converters', () {
-      expectInConverter('z:1:GlobalKey<NavigatorState>.provide',
+      expectInRegistry('z:1:GlobalKey<NavigatorState>.provide',
           FlutterGlobalKeyNavigatorStateProvider.fromJson);
     });
 
@@ -58,7 +58,7 @@ void main() {
 
   group('Provide GlobalKey<ScaffoldMessengerState>', () {
     test('is in converters', () {
-      expectInConverter('z:1:GlobalKey<ScaffoldMessengerState>.provide',
+      expectInRegistry('z:1:GlobalKey<ScaffoldMessengerState>.provide',
           FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson);
     });
 

@@ -24,113 +24,11 @@ abstract class SharedValue {
       StateProvider.family.autoDispose<SharedValueType, SharedValueFamily>(
     (_, family) => throw AccessEmptySharedValueError('''
 Could not find a $SharedValue for family: "$family".
-Provide a $SharedValue via "${SharedValueProviderBuilder.unionValue}".
+Provide a $SharedValue via "$SharedValueProviderBuilder".
 See "$SharedValueProviderBuilder" for more info.
 '''),
     name: 'Zac SharedValue',
   );
-
-  static T getTyped<T>({
-    required ZacContext zacContext,
-    required ZacTransformers? select,
-    required ZacTransformers? transformer,
-    required SharedValueConsumeType consumeType,
-    required SharedValueFamily family,
-  }) {
-    final value = SharedValue.get(
-      zacContext: zacContext,
-      consumeType: consumeType,
-      family: family,
-    );
-
-    if (null == value && true != transformer?.transformers.isNotEmpty) {
-      throw StateError('$SharedValue must not be null');
-    }
-
-    return TransformObjectHelper.simple<T>(
-      fromValue: value,
-      zacContext: zacContext,
-      transformer: transformer,
-    );
-  }
-
-  static T? getTypedOrNull<T>({
-    required ZacContext zacContext,
-    required ZacTransformers? select,
-    required ZacTransformers? transformer,
-    required SharedValueConsumeType consumeType,
-    required SharedValueFamily family,
-  }) {
-    final value = SharedValue.get(
-      zacContext: zacContext,
-      consumeType: consumeType,
-      family: family,
-    );
-
-    if (null == value && true != transformer?.transformers.isNotEmpty) {
-      return null;
-    }
-
-    return TransformObjectHelper.simpleOrNull<T>(
-      fromValue: value,
-      zacContext: zacContext,
-      transformer: transformer,
-    );
-  }
-
-  static List<T> getTypedList<T>({
-    required ZacContext zacContext,
-    required ZacTransformers? select,
-    required ZacTransformers? transformer,
-    required ZacTransformers? itemTransformer,
-    required SharedValueConsumeType consumeType,
-    required SharedValueFamily family,
-  }) {
-    final value = SharedValue.getList(
-      zacContext: zacContext,
-      select: select,
-      consumeType: consumeType,
-      family: family,
-    );
-
-    if (null == value && true != transformer?.transformers.isNotEmpty) {
-      throw StateError('$SharedValue must not be null');
-    }
-
-    return TransformObjectHelper.list<T>(
-      fromValue: value!,
-      zacContext: zacContext,
-      transformer: transformer,
-      itemTransformer: itemTransformer,
-    );
-  }
-
-  static List<T>? getTypedListOrNull<T>({
-    required ZacContext zacContext,
-    required ZacTransformers? select,
-    required ZacTransformers? transformer,
-    required ZacTransformers? itemTransformer,
-    required SharedValueConsumeType consumeType,
-    required SharedValueFamily family,
-  }) {
-    final value = SharedValue.getList(
-      zacContext: zacContext,
-      select: select,
-      consumeType: consumeType,
-      family: family,
-    );
-
-    if (null == value && true != transformer?.transformers.isNotEmpty) {
-      return null;
-    }
-
-    return TransformObjectHelper.listOrNull<T>(
-      fromValue: value,
-      zacContext: zacContext,
-      transformer: transformer,
-      itemTransformer: itemTransformer,
-    );
-  }
 
   static SharedValueType get({
     required ZacContext zacContext,
@@ -143,6 +41,7 @@ See "$SharedValueProviderBuilder" for more info.
           ? zacContext.ref
               .watch<Object?>(SharedValue.provider(family).select((value) {
               return obj.select!
+                  .build(zacContext)
                   .transform(ZacTransformValue(value), zacContext, null);
             }))
           : zacContext.ref.watch<Object?>(SharedValue.provider(family)),
@@ -151,47 +50,6 @@ See "$SharedValueProviderBuilder" for more info.
     return consumedValue is ZacBuilder<Object>
         ? consumedValue.build(zacContext)
         : consumedValue;
-  }
-
-  static List<Object>? getList({
-    required ZacContext zacContext,
-    required ZacTransformers? select,
-    required SharedValueConsumeType consumeType,
-    required SharedValueFamily family,
-  }) {
-    final consumedValue = consumeType.map<Object?>(
-      read: (_) {
-        final value =
-            zacContext.ref.read<Object?>(SharedValue.provider(family));
-        if (value is ZacBuilder) {
-          return value;
-        }
-        return select?.transform(ZacTransformValue(value), zacContext,
-                const ZacActionPayload()) ??
-            value;
-      },
-      watch: (_) {
-        return zacContext.ref
-            .watch<Object?>(SharedValue.provider(family).select((value) {
-          if (value is ZacBuilder) {
-            return value;
-          }
-          return select?.transform(ZacTransformValue(value), zacContext,
-                  const ZacActionPayload()) ??
-              value;
-        }));
-      },
-    );
-
-    if (consumedValue is! List) {
-      throw StateError('Unexpected $SharedValue: $consumedValue');
-    }
-
-    return [
-      ...consumedValue.map((dynamic e) {
-        return e is ZacBuilder<Object> ? e.build(zacContext) : e as Object;
-      })
-    ];
   }
 
   static void update(
@@ -208,14 +66,6 @@ See "$SharedValueProviderBuilder" for more info.
     }(), '');
 
     zacContext.ref.read(SharedValue.provider(family).notifier).update(update);
-  }
-
-  static void listenAndExecuteActions(
-      ZacContext zacContext, SharedValueFamily family, ZacActions actions) {
-    zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
-        (previous, next) {
-      actions.execute(ZacActionPayload.param2(next, previous), zacContext);
-    });
   }
 }
 
@@ -244,7 +94,8 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   SharedValueType _updateTransformItems(Object? value, ZacActionPayload payload,
       ZacContext zacContext, _SharedValueActionsUpdate obj) {
     return obj.transformer
-            ?.transform(ZacTransformValue(value), zacContext, payload) ??
+            ?.build(zacContext)
+            .transform(ZacTransformValue(value), zacContext, payload) ??
         value;
   }
 
@@ -297,28 +148,118 @@ class SharedValueProviderBuilder
     with _$SharedValueProviderBuilder
     implements ZacBuilder<Widget> {
   SharedValueProviderBuilder._();
-  static const String unionValue = 'z:1:SharedValue.provide';
 
   factory SharedValueProviderBuilder.fromJson(Map<String, dynamic> json) =>
       _$SharedValueProviderBuilderFromJson(json);
 
-  @FreezedUnionValue(SharedValueProviderBuilder.unionValue)
-  factory SharedValueProviderBuilder({
+  @FreezedUnionValue('z:1:int.provide')
+  factory SharedValueProviderBuilder.provideInt({
     ZacBuilder<Key?>? key,
-    required SharedValueType value,
-    ZacTransformers? transformer,
-    required SharedValueFamily family,
+    required int value,
+    required String family,
     required ZacBuilder<Widget> child,
     @Default(true) bool autoCreate,
-  }) = _SharedValueProviderBuilder;
+  }) = _ProvideInt;
+
+  @FreezedUnionValue('z:1:double.provide')
+  factory SharedValueProviderBuilder.provideDouble({
+    ZacBuilder<Key?>? key,
+    required double value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideDouble;
+
+  @FreezedUnionValue('z:1:String.provide')
+  factory SharedValueProviderBuilder.provideString({
+    ZacBuilder<Key?>? key,
+    required String value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideString;
+
+  @FreezedUnionValue('z:1:bool.provide')
+  factory SharedValueProviderBuilder.provideBool({
+    ZacBuilder<Key?>? key,
+    required bool value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideBool;
+
+  @FreezedUnionValue('z:1:Object.provide')
+  factory SharedValueProviderBuilder.provideObject({
+    ZacBuilder<Key?>? key,
+    required Object value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    ZacTransformers? transformer,
+    @Default(true) bool autoCreate,
+  }) = _ProvideObject;
+
+  @FreezedUnionValue('z:1:null.provide')
+  factory SharedValueProviderBuilder.provideNull({
+    ZacBuilder<Key?>? key,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideNull;
+
+  @FreezedUnionValue('z:1:Widget.provide')
+  factory SharedValueProviderBuilder.provideWidget({
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Widget> value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideWidget;
+
+  @FreezedUnionValue('z:1:List<Widget>.provide')
+  factory SharedValueProviderBuilder.provideWidgets({
+    ZacBuilder<Key?>? key,
+    required ZacListBuilder<Widget, List<Widget>> value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideWidgets;
+
+  @FreezedUnionValue('z:1:Map<String, Widget>.provide')
+  factory SharedValueProviderBuilder.provideWidgetsMap({
+    ZacBuilder<Key?>? key,
+    required ZacMapBuilder<Widget, Map<String, Widget>> value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideWidgetsMap;
+
+  @FreezedUnionValue('z:1:ZacBuilder<Object>.provide')
+  factory SharedValueProviderBuilder.provideAnyBuilder({
+    ZacBuilder<Key?>? key,
+    required ZacBuilder<Object> value,
+    required String family,
+    required ZacBuilder<Widget> child,
+    @Default(true) bool autoCreate,
+  }) = _ProvideAnyBuilder;
 
   SharedValueType valueBuilder(
       AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
-    if (null == transformer || true == transformer!.transformers.isEmpty) {
-      return value;
-    } else {
-      return transformer!.transform(ZacTransformValue(value), zacContext, null);
-    }
+    return map<Object?>(
+      provideNull: (_) => null,
+      provideInt: (obj) => obj.value,
+      provideDouble: (obj) => obj.value,
+      provideBool: (obj) => obj.value,
+      provideString: (obj) => obj.value,
+      provideObject: (obj) =>
+          obj.transformer
+              ?.build(zacContext)
+              .transform(ZacTransformValue(obj.value), zacContext, null) ??
+          obj.value,
+      provideWidget: (obj) => obj.value,
+      provideWidgets: (obj) => obj.value,
+      provideWidgetsMap: (obj) => obj.value,
+      provideAnyBuilder: (obj) => obj.value,
+    );
   }
 
   Widget _childBuilder(ZacContext zacContext) => child.build(zacContext);
@@ -406,6 +347,11 @@ class ConsumeSharedValue<T>
 
   static const String union = 'z:1:SharedValue.consume';
 
+  static ConsumeSharedValue<T> fromRegister<T extends Object?>(
+      Map<String, dynamic> map) {
+    return ConsumeSharedValue<T>.fromJson(map);
+  }
+
   factory ConsumeSharedValue.fromJson(Map<String, dynamic> data) =>
       _$ConsumeSharedValueFromJson<T>(data);
 
@@ -449,8 +395,9 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        thisTransformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = thisTransformer
+        .build(zacContext)
+        .transform(ZacTransformValue(value), zacContext, null);
     if (transformedVal is! T) {
       final transformerErr =
           thisTransformer.transformers.map((e) => e.runtimeType);
@@ -476,6 +423,12 @@ class ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   const ConsumeSharedValueList._();
 
   static const String union = 'z:1:SharedValueList.consume';
+
+  static ConsumeSharedValueList<T, X>
+      fromRegister<T extends Object?, X extends List<T>?>(
+          Map<String, dynamic> map) {
+    return ConsumeSharedValueList<T, X>.fromJson(map);
+  }
 
   /// freezed generates a code like this
   ///   factory _$ConsumeSharedValueList.fromJson(Map<String, dynamic> json) =>
@@ -536,8 +489,9 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        transformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = transformer
+        .build(zacContext)
+        .transform(ZacTransformValue(value), zacContext, null);
 
     if (transformedVal is! T) {
       final transformerErr = transformer.transformers.map((e) => e.runtimeType);
@@ -580,9 +534,10 @@ Value after: $transformedVal''');
       })
     ];
 
-    final transformedList =
-        transformer?.transform(ZacTransformValue(list), zacContext, null) ??
-            list;
+    final transformedList = transformer
+            ?.build(zacContext)
+            .transform(ZacTransformValue(list), zacContext, null) ??
+        list;
 
     if (transformedList is X) {
       return transformedList as X;
@@ -605,6 +560,12 @@ class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
   const ConsumeSharedValueMap._();
 
   static const String union = 'z:1:SharedValueMap.consume';
+
+  static ConsumeSharedValueMap<T, X>
+      fromRegister<T extends Object?, X extends Map<String, T>?>(
+          Map<String, dynamic> map) {
+    return ConsumeSharedValueMap<T, X>.fromJson(map);
+  }
 
   /// freezed generates a code like this
   ///   factory _$ConsumeSharedValueMap.fromJson(Map<String, dynamic> json) =>
@@ -665,8 +626,9 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        transformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = transformer
+        .build(zacContext)
+        .transform(ZacTransformValue(value), zacContext, null);
 
     if (transformedVal is! T) {
       final transformerErr = transformer.transformers.map((e) => e.runtimeType);
@@ -706,8 +668,10 @@ Value after: $transformedVal''');
         )
     };
 
-    final transformedMap =
-        transformer?.transform(ZacTransformValue(map), zacContext, null) ?? map;
+    final transformedMap = transformer
+            ?.build(zacContext)
+            .transform(ZacTransformValue(map), zacContext, null) ??
+        map;
 
     if (transformedMap is X) {
       return transformedMap as X;

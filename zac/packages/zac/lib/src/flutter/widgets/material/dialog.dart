@@ -145,7 +145,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
       simpleDialogOption: (value) => SimpleDialogOption(
         key: value.key?.build(zacContext),
         padding: value.padding?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
         child: value.child?.build(zacContext),
       ),
     );

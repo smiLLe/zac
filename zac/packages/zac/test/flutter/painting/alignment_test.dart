@@ -26,9 +26,9 @@ Future<ZacContext> _getZacContext(WidgetTester tester) async {
 
 void main() {
   test('is in builder list', () {
-    expectInConverter('f:1:FractionalOffset', FlutterFractionalOffset.fromJson);
+    expectInRegistry('f:1:FractionalOffset', FlutterFractionalOffset.fromJson);
 
-    expectInConverter([
+    expectInRegistry([
       'f:1:AlignmentDirectional',
       'f:1:AlignmentDirectional.bottomCenter',
       'f:1:AlignmentDirectional.bottomEnd',
@@ -41,7 +41,7 @@ void main() {
       'f:1:AlignmentDirectional.topStart',
     ], FlutterAlignmentDirectional.fromJson);
 
-    expectInConverter([
+    expectInRegistry([
       'f:1:Alignment',
       'f:1:Alignment.bottomCenter',
       'f:1:Alignment.bottomLeft',

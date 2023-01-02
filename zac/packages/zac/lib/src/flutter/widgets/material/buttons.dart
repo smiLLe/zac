@@ -44,16 +44,16 @@ class FlutterElevatedButton
     return map(
       (value) => ElevatedButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child?.build(zacContext),
       ),
       icon: (value) => ElevatedButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
@@ -105,16 +105,16 @@ class FlutterOutlinedButton
     return map(
       (value) => OutlinedButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.build(zacContext),
       ),
       icon: (value) => OutlinedButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
@@ -166,16 +166,16 @@ class FlutterTextButton
     return map(
       (value) => TextButton(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,
         clipBehavior: value.clipBehavior?.build(zacContext) ?? Clip.none,
         child: value.child.build(zacContext),
       ),
       icon: (value) => TextButton.icon(
         key: value.key?.build(zacContext),
-        onPressed: value.onPressed?.createCb(zacContext),
-        onLongPress: value.onLongPress?.createCb(zacContext),
+        onPressed: value.onPressed?.build(zacContext).createCb(zacContext),
+        onLongPress: value.onLongPress?.build(zacContext).createCb(zacContext),
         icon: value.icon.build(zacContext),
         label: value.label.build(zacContext),
         autofocus: value.autofocus?.build(zacContext) ?? false,

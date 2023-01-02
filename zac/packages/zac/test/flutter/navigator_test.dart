@@ -7,20 +7,20 @@ import '../helper.dart';
 
 void main() {
   test('Is registered converter', () {
-    expectInConverter([
+    expectInRegistry([
       'f:1:NavigatorState.closest',
       'f:1:NavigatorState.root',
       'z:1:NavigatorState.shared'
     ], FlutterNavigatorState.fromJson);
 
-    expectInConverter(
+    expectInRegistry(
         'f:1:MaterialPageRoute', FlutterMaterialPageRoute.fromJson);
 
-    expectInConverter('f:1:PageRouteBuilder', FlutterPageRouteBuilder.fromJson);
+    expectInRegistry('f:1:PageRouteBuilder', FlutterPageRouteBuilder.fromJson);
 
-    expectInConverter('f:1:Navigator', FlutterNavigator.fromJson);
+    expectInRegistry('f:1:Navigator', FlutterNavigator.fromJson);
 
-    expectInConverter([
+    expectInRegistry([
       'f:1:Navigator.push',
       'f:1:Navigator.pushNamed',
       'f:1:Navigator.pop',
@@ -30,9 +30,9 @@ void main() {
       'z:1:Navigator.popUntilRouteName',
     ], FlutterNavigatorActions.fromJson);
 
-    expectInConverter('f:1:RouteFactory', FlutterRouteFactory.fromJson);
+    expectInRegistry('f:1:RouteFactory', FlutterRouteFactory.fromJson);
 
-    expectInConverter('f:1:RouteSettings', FlutterRouteSettings.fromJson);
+    expectInRegistry('f:1:RouteSettings', FlutterRouteSettings.fromJson);
   });
 
   group('navigation', () {

@@ -90,7 +90,7 @@ class ZacWidget extends HookWidget {
             'Data is not String or ${Map<String, dynamic>} in $ZacWidget. $data');
       }
 
-      return ConverterHelper.convertToType<ZacBuilder<Widget>>(map);
+      return ZacBuilder<Widget>.fromJson(map);
     }, [data]);
 
     return ZacUpdateContext(
@@ -124,10 +124,8 @@ class ZacWidgetIsolated extends StatelessWidget {
     return result;
   }
 
-  static Future<ZacBuilder<Widget>> _convert(List<Object?> data) async {
-    allBuilder = data[1] as Map<String, Convert>;
-    return ConverterHelper.convertToType<ZacBuilder<Widget>>(
-        data[0] as Map<String, dynamic>);
+  static Future<ZacBuilder<Widget>> _convert(Map<String, dynamic> json) async {
+    return ZacBuilder<Widget>.fromJson(json);
   }
 
   @override
@@ -148,11 +146,13 @@ class ZacWidgetIsolated extends StatelessWidget {
             throw StateError(
                 'Data is not String or ${Map<String, dynamic>} in $ZacWidgetIsolated. $data');
           }
-          return compute(
+          final builder = compute(
             _convert,
-            [map, allBuilder],
+            map,
             debugLabel: '$ZacWidgetIsolated.convertFlutterWidget',
           );
+
+          return builder;
         })
       ],
       child: Consumer(

@@ -46,12 +46,15 @@ class FlutterInteractiveViewer
       constrained: constrained?.build(zacContext) ?? true,
       maxScale: maxScale?.build(zacContext) ?? 2.5,
       minScale: minScale?.build(zacContext) ?? 0.8,
-      onInteractionEnd:
-          onInteractionEnd?.createCbParam1<ScaleEndDetails>(zacContext),
-      onInteractionStart:
-          onInteractionStart?.createCbParam1<ScaleStartDetails>(zacContext),
-      onInteractionUpdate:
-          onInteractionUpdate?.createCbParam1<ScaleUpdateDetails>(zacContext),
+      onInteractionEnd: onInteractionEnd
+          ?.build(zacContext)
+          .createCbParam1<ScaleEndDetails>(zacContext),
+      onInteractionStart: onInteractionStart
+          ?.build(zacContext)
+          .createCbParam1<ScaleStartDetails>(zacContext),
+      onInteractionUpdate: onInteractionUpdate
+          ?.build(zacContext)
+          .createCbParam1<ScaleUpdateDetails>(zacContext),
       panEnabled: panEnabled?.build(zacContext) ?? true,
       scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
       child: child.build(zacContext),

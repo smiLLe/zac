@@ -34,8 +34,16 @@ void main(List<String> args) async {
   final ctx = ctxColl.contextFor(path);
   final allFiles = AllFiles(await filesToCreate(ctx, Uri.directory(path)));
 
-  final allConverter = allFiles.ctors.map<String>((ctor) {
-    return '\'${ctor.ctorElement.freezedUnionValue}\': ${ctor.parent.name}.fromJson';
+  final zacBuilder = allFiles.zacBuilderCtors.map<String>((ctor) {
+    return '..register(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
+  });
+
+  final zacAction = allFiles.zacActionCtors.map<String>((ctor) {
+    return '..registerAction(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
+  });
+
+  final zacTransformer = allFiles.zacTransformerCtors.map<String>((ctor) {
+    return '..registerTransformer(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
   });
 
   final allImports = allFiles.imports.map((import) => 'import \'$import\';');
@@ -44,10 +52,14 @@ void main(List<String> args) async {
   writeFile.createSync();
   await writeFile.writeAsString('''
 ${allImports.join('\n')}
+import 'builder.dart';
+void addZacBuilders(ZacRegistry registry) {
+registry${[...zacBuilder, ...zacAction, ...zacTransformer].join('\n')};
+}''');
 
-Map<String, Object Function(Map<String, dynamic> data)> $varName = const {
-${allConverter.join(',\n')}
-};''');
+// Map<String, Object Function(Map<String, dynamic> data)> $varName = const {
+// ${allConverter.join(',\n')}
+// };
 
   await Process.run(
     'dart format $outFile',
@@ -81,15 +93,31 @@ class AllFiles {
 
   AllFiles(this.files);
 
-  late final Iterable<BuilderClass> classes = files
-      .map((file) => file.getClasses())
+  late final Iterable<BuilderClass> zacBuilderClasses = files
+      .map((file) => file.getZacBuilderClasses())
       .where((it) => it.isNotEmpty)
       .fold<Iterable<BuilderClass>>([], (previousValue, element) {
     return [...previousValue, ...element];
   }).toList()
     ..sort((a, b) => a.name.compareTo(b.name));
 
-  late final Iterable<BuilderCtor> ctors = classes
+  late final Iterable<BuilderClass> zacActionClasses = files
+      .map((file) => file.getZacActionClasses())
+      .where((it) => it.isNotEmpty)
+      .fold<Iterable<BuilderClass>>([], (previousValue, element) {
+    return [...previousValue, ...element];
+  }).toList()
+    ..sort((a, b) => a.name.compareTo(b.name));
+
+  late final Iterable<BuilderClass> zacTransformerClasses = files
+      .map((file) => file.getZacTransformerClasses())
+      .where((it) => it.isNotEmpty)
+      .fold<Iterable<BuilderClass>>([], (previousValue, element) {
+    return [...previousValue, ...element];
+  }).toList()
+    ..sort((a, b) => a.name.compareTo(b.name));
+
+  late final Iterable<BuilderCtor> zacBuilderCtors = zacBuilderClasses
       .map((cls) => cls.getCtor())
       .fold<Iterable<BuilderCtor>>([], (previousValue, element) {
     return [...previousValue, ...element];
@@ -97,10 +125,28 @@ class AllFiles {
     ..sort((a, b) => a.ctorElement.freezedUnionValue
         .compareTo(b.ctorElement.freezedUnionValue));
 
-  late final Iterable<String> imports = files
-      .where((file) => file.getClasses().isNotEmpty)
-      .fold<Iterable<String>>([], (previousValue, element) {
-    return [...previousValue, element.converterImport];
+  late final Iterable<BuilderCtor> zacActionCtors = zacActionClasses
+      .map((cls) => cls.getCtor())
+      .fold<Iterable<BuilderCtor>>([], (previousValue, element) {
+    return [...previousValue, ...element];
+  }).toList()
+    ..sort((a, b) => a.ctorElement.freezedUnionValue
+        .compareTo(b.ctorElement.freezedUnionValue));
+
+  late final Iterable<BuilderCtor> zacTransformerCtors = zacTransformerClasses
+      .map((cls) => cls.getCtor())
+      .fold<Iterable<BuilderCtor>>([], (previousValue, element) {
+    return [...previousValue, ...element];
+  }).toList()
+    ..sort((a, b) => a.ctorElement.freezedUnionValue
+        .compareTo(b.ctorElement.freezedUnionValue));
+
+  late final Iterable<String> imports = [
+    ...files.where((file) => file.getZacBuilderClasses().isNotEmpty),
+    ...files.where((file) => file.getZacTransformerClasses().isNotEmpty),
+    ...files.where((file) => file.getZacActionClasses().isNotEmpty)
+  ].fold<Set<String>>({}, (previousValue, element) {
+    return {...previousValue, element.converterImport};
   }).toList()
     ..sort((a, b) => a.compareTo(b));
 }
@@ -113,15 +159,37 @@ class OneFile {
 
   String get converterImport => lib.element.identifier;
 
-  late final Iterable<ClassElement> _filteredClasses = lib
-      .element.topLevelElements
-      .whereType<ClassElement>()
-      .where((cls) => !cls.isPrivate)
-      .where((cls) => !cls.displayName.startsWith('_'))
-      .where((cls) => cls.metadata.checkHasClassAnnotation());
+  late final Iterable<ClassElement> _filteredClasses =
+      lib.element.topLevelElements
+          .whereType<ClassElement>()
+          .where((cls) => !cls.isPrivate)
+          .where((cls) => !cls.displayName.startsWith('_'))
+          // .where((cls) => cls.metadata.checkHasClassAnnotation())
+          .where((cls) => cls.typeParameters.isEmpty);
 
-  Iterable<BuilderClass> getClasses() {
+  Iterable<BuilderClass> getZacBuilderClasses() {
     return _filteredClasses
+        .where((cls) => cls.allSupertypes.any((element) => element
+            .getDisplayString(withNullability: false)
+            .startsWith('ZacBuilder')))
+        .where((cls) => cls.constructors.checkHasValidBuilder())
+        .map(BuilderClass.new);
+  }
+
+  Iterable<BuilderClass> getZacActionClasses() {
+    return _filteredClasses
+        .where((cls) => cls.allSupertypes.any((element) => element
+            .getDisplayString(withNullability: false)
+            .startsWith('ZacAction')))
+        .where((cls) => cls.constructors.checkHasValidBuilder())
+        .map(BuilderClass.new);
+  }
+
+  Iterable<BuilderClass> getZacTransformerClasses() {
+    return _filteredClasses
+        .where((cls) => cls.allSupertypes.any((element) => element
+            .getDisplayString(withNullability: false)
+            .startsWith('ZacTransformer')))
         .where((cls) => cls.constructors.checkHasValidBuilder())
         .map(BuilderClass.new);
   }

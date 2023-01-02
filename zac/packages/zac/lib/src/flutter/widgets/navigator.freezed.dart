@@ -618,7 +618,7 @@ FlutterNavigatorActions _$FlutterNavigatorActionsFromJson(
 
 /// @nodoc
 mixin _$FlutterNavigatorActions {
-  FlutterNavigatorState? get navigatorState =>
+  ZacBuilder<NavigatorState?>? get navigatorState =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -653,7 +653,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
   @override
   final ZacBuilder<Route<Object?>> route;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -700,7 +700,7 @@ class _$_FlutterNavigatorActionsPush extends _FlutterNavigatorActionsPush {
 abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPush(
           {required final ZacBuilder<Route<Object?>> route,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPush;
   _FlutterNavigatorActionsPush._() : super._();
 
@@ -709,7 +709,7 @@ abstract class _FlutterNavigatorActionsPush extends FlutterNavigatorActions {
 
   ZacBuilder<Route<Object?>> get route;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 /// @nodoc
@@ -733,7 +733,7 @@ class _$_FlutterNavigatorActionsPushNamed
   @override
   final Object? arguments;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -785,7 +785,7 @@ abstract class _FlutterNavigatorActionsPushNamed
   factory _FlutterNavigatorActionsPushNamed(
           {required final ZacBuilder<String> routeName,
           final Object? arguments,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPushNamed;
   _FlutterNavigatorActionsPushNamed._() : super._();
 
@@ -795,7 +795,7 @@ abstract class _FlutterNavigatorActionsPushNamed
   ZacBuilder<String> get routeName;
   Object? get arguments;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 /// @nodoc
@@ -812,7 +812,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
   @override
   final ZacActions? actions;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -859,7 +859,7 @@ class _$_FlutterNavigatorActionsPop extends _FlutterNavigatorActionsPop {
 abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPop(
           {final ZacActions? actions,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPop;
   _FlutterNavigatorActionsPop._() : super._();
 
@@ -868,7 +868,7 @@ abstract class _FlutterNavigatorActionsPop extends FlutterNavigatorActions {
 
   ZacActions? get actions;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 /// @nodoc
@@ -887,7 +887,7 @@ class _$_FlutterNavigatorActionsMaybePop
   @override
   final ZacActions? actions;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -935,7 +935,7 @@ abstract class _FlutterNavigatorActionsMaybePop
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsMaybePop(
           {final ZacActions? actions,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsMaybePop;
   _FlutterNavigatorActionsMaybePop._() : super._();
 
@@ -944,7 +944,7 @@ abstract class _FlutterNavigatorActionsMaybePop
 
   ZacActions? get actions;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 /// @nodoc
@@ -968,7 +968,7 @@ class _$_FlutterNavigatorActionsPushReplacement
   @override
   final ZacActions? result;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1018,7 +1018,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
   factory _FlutterNavigatorActionsPushReplacement(
           {required final ZacBuilder<Route<Object?>> route,
           final ZacActions? result,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPushReplacement;
   _FlutterNavigatorActionsPushReplacement._() : super._();
 
@@ -1029,7 +1029,7 @@ abstract class _FlutterNavigatorActionsPushReplacement
   ZacBuilder<Route<Object?>> get route;
   ZacActions? get result;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 /// @nodoc
@@ -1054,7 +1054,7 @@ class _$_FlutterNavigatorActionsPushReplacementNamed
   @override
   final Object? arguments;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
   @override
   final ZacActions? result;
 
@@ -1109,7 +1109,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   factory _FlutterNavigatorActionsPushReplacementNamed(
           {required final ZacBuilder<String> routeName,
           final Object? arguments,
-          final FlutterNavigatorState? navigatorState,
+          final ZacBuilder<NavigatorState?>? navigatorState,
           final ZacActions? result}) =
       _$_FlutterNavigatorActionsPushReplacementNamed;
   _FlutterNavigatorActionsPushReplacementNamed._() : super._();
@@ -1121,7 +1121,7 @@ abstract class _FlutterNavigatorActionsPushReplacementNamed
   ZacBuilder<String> get routeName;
   Object? get arguments;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
   ZacActions? get result;
 }
 
@@ -1141,7 +1141,7 @@ class _$_FlutterNavigatorActionsPopUntilRouteName
   @override
   final ZacBuilder<String> routeName;
   @override
-  final FlutterNavigatorState? navigatorState;
+  final ZacBuilder<NavigatorState?>? navigatorState;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1190,7 +1190,7 @@ abstract class _FlutterNavigatorActionsPopUntilRouteName
     extends FlutterNavigatorActions {
   factory _FlutterNavigatorActionsPopUntilRouteName(
           {required final ZacBuilder<String> routeName,
-          final FlutterNavigatorState? navigatorState}) =
+          final ZacBuilder<NavigatorState?>? navigatorState}) =
       _$_FlutterNavigatorActionsPopUntilRouteName;
   _FlutterNavigatorActionsPopUntilRouteName._() : super._();
 
@@ -1200,7 +1200,7 @@ abstract class _FlutterNavigatorActionsPopUntilRouteName
 
   ZacBuilder<String> get routeName;
   @override
-  FlutterNavigatorState? get navigatorState;
+  ZacBuilder<NavigatorState?>? get navigatorState;
 }
 
 FlutterRouteFactory _$FlutterRouteFactoryFromJson(Map<String, dynamic> json) {

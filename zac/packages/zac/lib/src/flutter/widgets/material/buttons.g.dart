@@ -17,10 +17,10 @@ _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
           : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
@@ -40,10 +40,10 @@ _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
       label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
@@ -62,10 +62,10 @@ _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
@@ -85,10 +85,10 @@ _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
       label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
@@ -106,10 +106,10 @@ _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
@@ -129,10 +129,10 @@ _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
       label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacActions.fromJson(json['onPressed'] as Object),
+          : ZacActions.fromJson(json['onPressed'] as Map<String, dynamic>),
       onLongPress: json['onLongPress'] == null
           ? null
-          : ZacActions.fromJson(json['onLongPress'] as Object),
+          : ZacActions.fromJson(json['onLongPress'] as Map<String, dynamic>),
       autofocus: json['autofocus'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),

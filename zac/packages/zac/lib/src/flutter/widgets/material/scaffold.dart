@@ -304,7 +304,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
       // duration: duration?.toFlutter(context),
       elevation: elevation?.build(zacContext),
       margin: margin?.build(zacContext),
-      onVisible: onVisible?.createCb(zacContext),
+      onVisible: onVisible?.build(zacContext).createCb(zacContext),
       padding: padding?.build(zacContext),
       shape: shape?.build(zacContext),
       width: width?.build(zacContext),
@@ -368,7 +368,7 @@ class FlutterSnackBarAction
     return SnackBarAction(
       key: key?.build(zacContext),
       label: label,
-      onPressed: onPressed?.createCb(zacContext) ?? () {},
+      onPressed: onPressed?.build(zacContext).createCb(zacContext) ?? () {},
       disabledTextColor: disabledTextColor?.build(zacContext),
       textColor: textColor?.build(zacContext),
     );
@@ -420,7 +420,7 @@ class FlutterMaterialBanner
       forceActionsBelow: forceActionsBelow?.build(zacContext) ?? false,
       leading: leading?.build(zacContext),
       leadingPadding: leadingPadding?.build(zacContext),
-      onVisible: onVisible?.createCb(zacContext),
+      onVisible: onVisible?.build(zacContext).createCb(zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
       padding: padding?.build(zacContext),
     );

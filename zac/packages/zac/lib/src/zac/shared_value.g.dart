@@ -12,7 +12,8 @@ _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
+          : ZacTransformers.fromJson(
+              json['transformer'] as Map<String, dynamic>),
       ifNoPayloadTakeCurrent: json['ifNoPayloadTakeCurrent'] as bool? ?? false,
       $type: json['builder'] as String?,
     );
@@ -29,7 +30,7 @@ _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
     _$_SharedValueConsumeTypeWatch(
       select: json['select'] == null
           ? null
-          : ZacTransformers.fromJson(json['select'] as Object),
+          : ZacTransformers.fromJson(json['select'] as Map<String, dynamic>),
       $type: json['builder'] as String?,
     );
 
@@ -39,19 +40,129 @@ _$_SharedValueConsumeTypeRead _$$_SharedValueConsumeTypeReadFromJson(
       $type: json['builder'] as String?,
     );
 
-_$_SharedValueProviderBuilder _$$_SharedValueProviderBuilderFromJson(
-        Map<String, dynamic> json) =>
-    _$_SharedValueProviderBuilder(
+_$_ProvideInt _$$_ProvideIntFromJson(Map<String, dynamic> json) =>
+    _$_ProvideInt(
       key: json['key'] == null
           ? null
           : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      value: json['value'],
-      transformer: json['transformer'] == null
-          ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
-      family: json['family'] as Object,
+      value: json['value'] as int,
+      family: json['family'] as String,
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideDouble _$$_ProvideDoubleFromJson(Map<String, dynamic> json) =>
+    _$_ProvideDouble(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: (json['value'] as num).toDouble(),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideString _$$_ProvideStringFromJson(Map<String, dynamic> json) =>
+    _$_ProvideString(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: json['value'] as String,
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideBool _$$_ProvideBoolFromJson(Map<String, dynamic> json) =>
+    _$_ProvideBool(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: json['value'] as bool,
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideObject _$$_ProvideObjectFromJson(Map<String, dynamic> json) =>
+    _$_ProvideObject(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: json['value'] as Object,
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      transformer: json['transformer'] == null
+          ? null
+          : ZacTransformers.fromJson(
+              json['transformer'] as Map<String, dynamic>),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideNull _$$_ProvideNullFromJson(Map<String, dynamic> json) =>
+    _$_ProvideNull(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideWidget _$$_ProvideWidgetFromJson(Map<String, dynamic> json) =>
+    _$_ProvideWidget(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: ZacBuilder<Widget>.fromJson(json['value'] as Object),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideWidgets _$$_ProvideWidgetsFromJson(Map<String, dynamic> json) =>
+    _$_ProvideWidgets(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: ZacListBuilder<Widget, List<Widget>>.fromJson(
+          json['value'] as Object),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideWidgetsMap _$$_ProvideWidgetsMapFromJson(Map<String, dynamic> json) =>
+    _$_ProvideWidgetsMap(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: ZacMapBuilder<Widget, Map<String, Widget>>.fromJson(
+          json['value'] as Object),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
+    );
+
+_$_ProvideAnyBuilder _$$_ProvideAnyBuilderFromJson(Map<String, dynamic> json) =>
+    _$_ProvideAnyBuilder(
+      key: json['key'] == null
+          ? null
+          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
+      value: ZacBuilder<Object>.fromJson(json['value'] as Object),
+      family: json['family'] as String,
+      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+      autoCreate: json['autoCreate'] as bool? ?? true,
+      $type: json['builder'] as String?,
     );
 
 _$_ConsumeSharedValue<T> _$$_ConsumeSharedValueFromJson<T>(
@@ -60,7 +171,8 @@ _$_ConsumeSharedValue<T> _$$_ConsumeSharedValueFromJson<T>(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
+          : ZacTransformers.fromJson(
+              json['transformer'] as Map<String, dynamic>),
       forceConsume: json['forceConsume'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -74,10 +186,12 @@ _$_ConsumeSharedValueList<T, X>
           family: json['family'] as Object,
           transformer: json['transformer'] == null
               ? null
-              : ZacTransformers.fromJson(json['transformer'] as Object),
+              : ZacTransformers.fromJson(
+                  json['transformer'] as Map<String, dynamic>),
           itemTransformer: json['itemTransformer'] == null
               ? null
-              : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+              : ZacTransformers.fromJson(
+                  json['itemTransformer'] as Map<String, dynamic>),
           forceConsume: json['forceConsume'] == null
               ? null
               : SharedValueConsumeType.fromJson(
@@ -91,10 +205,12 @@ _$_ConsumeSharedValueMap<T, X> _$$_ConsumeSharedValueMapFromJson<
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(json['transformer'] as Object),
+          : ZacTransformers.fromJson(
+              json['transformer'] as Map<String, dynamic>),
       itemTransformer: json['itemTransformer'] == null
           ? null
-          : ZacTransformers.fromJson(json['itemTransformer'] as Object),
+          : ZacTransformers.fromJson(
+              json['itemTransformer'] as Map<String, dynamic>),
       forceConsume: json['forceConsume'] == null
           ? null
           : SharedValueConsumeType.fromJson(

@@ -43,7 +43,9 @@ class FlutterRefreshIndicator
     return RefreshIndicator(
       onRefresh: () async {
         if (null == onRefreshCompleter) {
-          onRefresh.execute(const ZacActionPayload(), zacContext);
+          onRefresh
+              .build(zacContext)
+              .execute(const ZacActionPayload(), zacContext);
           return Future.value(null);
         }
 
@@ -51,7 +53,9 @@ class FlutterRefreshIndicator
             .invalidate(SharedValue.provider(onRefreshCompleter!.family));
         final completer = onRefreshCompleter!.build(zacContext);
 
-        onRefresh.execute(ZacActionPayload.param(completer), zacContext);
+        onRefresh
+            .build(zacContext)
+            .execute(ZacActionPayload.param(completer), zacContext);
         return completer.future;
       },
       displacement: displacement?.build(zacContext) ?? 40.0,

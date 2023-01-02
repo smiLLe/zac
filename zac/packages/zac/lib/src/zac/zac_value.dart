@@ -51,8 +51,12 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
 
   static const String union = 'z:1:ZacValue';
 
+  static ZacValue<T> fromRegister<T extends Object?>(Map<String, dynamic> map) {
+    return ZacValue<T>.fromJson(map);
+  }
+
   factory ZacValue.fromJson(Object data) {
-    return ConverterHelper.ifRegisteredBuilder<ZacValue<T>>(
+    return ZacRegistry().ifBuilderLikeMap<ZacValue<T>>(
       data,
       cb: (map, converterName) {
         assert(converterName == ZacValue.union);
@@ -92,24 +96,31 @@ class ZacValueListSimple<T extends Object?, X extends List<T>?>
     return ZacValueListSimple<T, X>(zV.items);
   }
 
+  static ZacValueListSimple<T, X>
+      fromRegister<T extends Object?, X extends List<T>?>(
+          Map<String, dynamic> map) {
+    return ZacValueListSimple<T, X>.fromJson(map);
+  }
+
   factory ZacValueListSimple.fromJson(Object data) {
     return ConverterHelper.ifRegisteredBuilder<ZacValueListSimple<T, X>>(
       data,
       cb: (map, converterName) {
         assert(converterName == ZacValueListSimple.union);
-        final zV = _$ZacValueListSimpleFromJson<T, X>(map);
-        return ZacValueListSimple<T, X>._freezedFix(zV);
+        return ZacValueListSimple<T, X>._freezedFix(
+            _$ZacValueListSimpleFromJson<T, X>(map));
       },
       orElse: () {
         if (data is! List) {
           throw StateError(
               'Unsupported type in ${ZacValueListSimple<T, X>}: $data');
         }
-        final zV = _$ZacValueListSimpleFromJson<T, X>(<String, dynamic>{
+
+        return ZacValueListSimple<T, X>._freezedFix(
+            _$ZacValueListSimpleFromJson<T, X>(<String, dynamic>{
           'builder': ZacValueListSimple.union,
           'items': data,
-        });
-        return ZacValueListSimple<T, X>._freezedFix(zV);
+        }));
       },
     );
   }
@@ -134,6 +145,12 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
 
   static const String union = 'z:1:ZacValueMap';
 
+  static ZacValueMap<T, X>
+      fromRegister<T extends Object?, X extends Map<String, T>?>(
+          Map<String, dynamic> map) {
+    return ZacValueMap<T, X>.fromJson(map);
+  }
+
   /// freezed generates a code like this
   ///   factory _$_ZacValueList.fromJson(Map<String, dynamic> json) =>
   ///   _$$_ZacValueListFromJson(json);
@@ -151,19 +168,18 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
       data,
       cb: (map, converterName) {
         assert(ZacValueMap.union == converterName);
-        final zV = _$ZacValueMapFromJson<T, X>(map);
-        return ZacValueMap<T, X>._freezedFix(zV);
+        return ZacValueMap<T, X>._freezedFix(_$ZacValueMapFromJson<T, X>(map));
       },
       orElse: () {
         if (data is! Map) {
           throw StateError('Unsupported type in ${ZacValueMap<T, X>}: $data');
         }
 
-        final zV = _$ZacValueMapFromJson<T, X>(<String, dynamic>{
+        return ZacValueMap<T, X>._freezedFix(
+            _$ZacValueMapFromJson<T, X>(<String, dynamic>{
           'builder': ZacValueMap.union,
           'items': data,
-        });
-        return ZacValueMap<T, X>._freezedFix(zV);
+        }));
       },
     );
   }
@@ -201,7 +217,9 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
         final val = obj.value.build(
           zacContext,
         );
-        obj.actions.execute(ZacActionPayload.param(val), zacContext);
+        obj.actions
+            .build(zacContext)
+            .execute(ZacActionPayload.param(val), zacContext);
       },
     );
   }

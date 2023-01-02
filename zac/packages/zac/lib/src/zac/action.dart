@@ -15,8 +15,13 @@ part 'action.freezed.dart';
 part 'action.g.dart';
 
 abstract class ZacAction {
-  factory ZacAction.fromJson(Map<String, dynamic> data) {
-    return ConverterHelper.convertToType<ZacAction>(data);
+  factory ZacAction.fromJson(Map<String, dynamic> json) {
+    return ZacRegistry().ifBuilderLikeMap<ZacAction>(
+      json,
+      cb: (map, converterName) =>
+          ZacRegistry().getRegisteredAction(converterName).call(map),
+      orElse: () => throw StateError('Could not create $ZacAction from $json'),
+    );
   }
 
   void execute(ZacActionPayload payload, ZacContext zacContext);
@@ -44,46 +49,34 @@ class ZacActionPayload with _$ZacActionPayload {
 }
 
 @freezedZacBuilder
-class ZacActions with _$ZacActions {
+class ZacActions with _$ZacActions implements ZacBuilder<List<ZacAction>> {
   const ZacActions._();
 
   static const String unionValue = 'z:1:Actions';
 
-  factory ZacActions.fromJson(Object data) {
-    /// allow a single action or the default implementation
-    if (ConverterHelper.isConverter(data)) {
-      if ((data as Map<String, dynamic>)[builderKey] as String !=
-          ZacActions.unionValue) {
-        return ZacActions([ZacAction.fromJson(data)]);
-      }
-      return _$ZacActionsFromJson(data);
-    }
-
-    /// allow a list of actions
-    else if (data is List) {
-      return ZacActions(
-          data.cast<Map<String, dynamic>>().map(ZacAction.fromJson).toList());
-    }
-
-    throw Exception(
-        'It was not possible to convert to $ZacActions from data: $data ');
-  }
+  factory ZacActions.fromJson(Map<String, dynamic> json) =>
+      _$ZacActionsFromJson(json);
 
   @FreezedUnionValue(ZacActions.unionValue)
   const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
+  @override
+  List<ZacAction> build(ZacContext zacContext) {
+    return actions;
+  }
+}
+
+extension HandleActions on List<ZacAction> {
   void execute(ZacActionPayload payload, ZacContext zacContext) async {
     if (!zacContext.isMounted()) return;
-    for (var action in actions) {
+    for (var action in this) {
       if (!zacContext.isMounted()) {
-        return;
+        break;
       }
       action.execute(payload, zacContext);
     }
   }
-}
 
-extension Interactions on ZacActions {
   void Function() createCb(ZacContext zacContext) {
     return () => execute(const ZacActionPayload(), zacContext);
   }
@@ -151,7 +144,11 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
-    SharedValue.listenAndExecuteActions(zacContext, family, actions);
+    final actionsList = actions.build(zacContext);
+    zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
+        (previous, next) {
+      actionsList.execute(ZacActionPayload.param2(next, previous), zacContext);
+    });
 
     return child?.build(zacContext) ?? const SizedBox.shrink();
   }
@@ -174,7 +171,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions.execute(const ZacActionPayload(), zacContext);
+        actions.build(zacContext).execute(const ZacActionPayload(), zacContext);
         if (!mounted) return;
         doneState.value = true;
       });
@@ -215,9 +212,10 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
           param2: (obj) => obj.params,
         );
         final trueOfFalse =
-            condition.fold<bool>(true, (previousValue, element) {
-          final cond =
-              element.transform(ZacTransformValue(val), zacContext, payload);
+            condition.fold<bool>(true, (previousValue, zacTransformers) {
+          final cond = zacTransformers
+              .build(zacContext)
+              .transform(ZacTransformValue(val), zacContext, payload);
 
           if (cond is! bool) {
             throw StateError(
@@ -227,7 +225,9 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
           return cond && previousValue;
         });
 
-        (trueOfFalse ? obj.ifTrue : obj.ifFalse)?.execute(payload, zacContext);
+        (trueOfFalse ? obj.ifTrue : obj.ifFalse)
+            ?.build(zacContext)
+            .execute(payload, zacContext);
       },
     );
   }

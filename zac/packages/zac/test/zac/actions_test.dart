@@ -1,7 +1,6 @@
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/builder.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
@@ -15,32 +14,6 @@ import '../helper.mocks.dart';
 void main() {
   group('Control Flow Actions:', () {
     group('if Action', () {
-      test('Can be created fromJson', () {
-        expect(
-            ConverterHelper.convertToType<ZacControlFlowAction>({
-              'builder': 'z:1:ControlFlowAction.if',
-              'condition': <Object?>[<Object?>[]],
-              'ifTrue': <Object?>[],
-            }),
-            ZacControlFlowAction.ifCond(
-                condition: [ZacTransformers([])],
-                ifTrue: const ZacActions([]),
-                ifFalse: null));
-
-        expect(
-            ConverterHelper.convertToType<ZacControlFlowAction>({
-              'builder': 'z:1:ControlFlowAction.if',
-              'condition': <Object?>[<Object?>[]],
-              'ifTrue': <Object?>[],
-              'ifFalse': <Object?>[],
-            }),
-            ZacControlFlowAction.ifCond(
-              condition: [ZacTransformers([])],
-              ifTrue: const ZacActions([]),
-              ifFalse: const ZacActions([]),
-            ));
-      });
-
       testWidgets('will execute Action if condition is true', (tester) async {
         late ZacContext zacContext;
         final trueCb = MockLeakedActionCb();
@@ -194,9 +167,12 @@ void main() {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
         'builder': 'z:1:ExecuteActions.once',
-        'actions': [
-          {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()},
-        ],
+        'actions': {
+          'builder': 'z:1:ZacActions',
+          'actions': [
+            {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
+          ],
+        },
         'child': {
           'builder': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('child')
@@ -226,34 +202,13 @@ void main() {
   });
 
   group('ZacExecuteActionsListen', () {
-    test('convert', () {
-      allBuilder = {...allBuilder, NoopAction.unionValue: NoopAction.fromJson};
-      expect(
-          ConverterHelper.convertToType<ZacExecuteActionsBuilder>({
-            'builder': 'z:1:ExecuteActions.listen',
-            'family': 'foo',
-            'actions': NoopAction.createActions(),
-          }),
-          ZacExecuteActionsBuilder.listen(
-              actions: const ZacActions([NoopAction()]), family: 'foo'));
-
-      expect(
-          ZacExecuteActionsBuilder.fromJson(<String, dynamic>{
-            'builder': 'z:1:ExecuteActions.listen',
-            'family': 'foo',
-            'actions': NoopAction.createActions(),
-          }),
-          ZacExecuteActionsBuilder.listen(
-              actions: const ZacActions([NoopAction()]), family: 'foo'));
-    });
-
     testWidgets('execute interactions', (tester) async {
       late ZacContext zacContext;
       final cb = MockLeakedActionCb();
 
       await testZacWidget(
         tester,
-        SharedValueProviderBuilder(
+        SharedValueProviderBuilder.provideInt(
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(

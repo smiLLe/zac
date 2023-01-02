@@ -163,7 +163,9 @@ class FlutterPageRouteBuilder
 }
 
 @freezedZacBuilder
-class FlutterNavigatorState with _$FlutterNavigatorState {
+class FlutterNavigatorState
+    with _$FlutterNavigatorState
+    implements ZacBuilder<NavigatorState> {
   const FlutterNavigatorState._();
 
   factory FlutterNavigatorState.fromJson(Map<String, dynamic> json) =>
@@ -180,7 +182,8 @@ class FlutterNavigatorState with _$FlutterNavigatorState {
     required ZacBuilder<GlobalKey<NavigatorState>> value,
   }) = _ZacNavigatorStateSharedValue;
 
-  NavigatorState getNavigatorState(ZacContext zacContext) {
+  @override
+  NavigatorState build(ZacContext zacContext) {
     return map(
       closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
       root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
@@ -243,61 +246,58 @@ class FlutterNavigatorActions
   @FreezedUnionValue('f:1:Navigator.push')
   factory FlutterNavigatorActions.push({
     required ZacBuilder<Route<Object?>> route,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPush;
 
   @FreezedUnionValue('f:1:Navigator.pushNamed')
-  factory FlutterNavigatorActions.pushNamed(
-          {required ZacBuilder<String> routeName,
-          Object? arguments,
-          FlutterNavigatorState? navigatorState}) =
-      _FlutterNavigatorActionsPushNamed;
+  factory FlutterNavigatorActions.pushNamed({
+    required ZacBuilder<String> routeName,
+    Object? arguments,
+    ZacBuilder<NavigatorState?>? navigatorState,
+  }) = _FlutterNavigatorActionsPushNamed;
 
   @FreezedUnionValue('f:1:Navigator.pop')
   factory FlutterNavigatorActions.pop({
     ZacActions? actions,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue('f:1:Navigator.maybePop')
   factory FlutterNavigatorActions.maybePop({
     ZacActions? actions,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
     required ZacBuilder<Route<Object?>> route,
     ZacActions? result,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacementNamed')
   factory FlutterNavigatorActions.pushReplacementNamed({
     required ZacBuilder<String> routeName,
     Object? arguments,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
     ZacActions? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')
   factory FlutterNavigatorActions.popUntilRouteName({
     required ZacBuilder<String> routeName,
-    FlutterNavigatorState? navigatorState,
+    ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPopUntilRouteName;
 
   NavigatorState? _getState(ZacContext zacContext) {
     return map(
-          push: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
-          pushNamed: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
-          pop: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
-          maybePop: (obj) => obj.navigatorState?.getNavigatorState(zacContext),
-          pushReplacement: (obj) =>
-              obj.navigatorState?.getNavigatorState(zacContext),
-          pushReplacementNamed: (obj) =>
-              obj.navigatorState?.getNavigatorState(zacContext),
-          popUntilRouteName: (obj) =>
-              obj.navigatorState?.getNavigatorState(zacContext),
+          push: (obj) => obj.navigatorState?.build(zacContext),
+          pushNamed: (obj) => obj.navigatorState?.build(zacContext),
+          pop: (obj) => obj.navigatorState?.build(zacContext),
+          maybePop: (obj) => obj.navigatorState?.build(zacContext),
+          pushReplacement: (obj) => obj.navigatorState?.build(zacContext),
+          pushReplacementNamed: (obj) => obj.navigatorState?.build(zacContext),
+          popUntilRouteName: (obj) => obj.navigatorState?.build(zacContext),
         ) ??
         Navigator.maybeOf(zacContext.context);
   }
@@ -311,10 +311,10 @@ class FlutterNavigatorActions
         state.push(obj.route.build(zacContext)).then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
-            value.execute(
-              const ZacActionPayload(),
-              zacContext,
-            );
+            value.build(zacContext).execute(
+                  const ZacActionPayload(),
+                  zacContext,
+                );
           }
         });
       },
@@ -331,7 +331,9 @@ class FlutterNavigatorActions
             .then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
-            value.execute(const ZacActionPayload(), zacContext);
+            value
+                .build(zacContext)
+                .execute(const ZacActionPayload(), zacContext);
           }
         });
       },
@@ -356,7 +358,9 @@ class FlutterNavigatorActions
             .then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
-            value.execute(const ZacActionPayload(), zacContext);
+            value
+                .build(zacContext)
+                .execute(const ZacActionPayload(), zacContext);
           }
         });
       },
@@ -374,7 +378,9 @@ class FlutterNavigatorActions
             .then((value) {
           if (!zacContext.isMounted()) return;
           if (value is ZacActions) {
-            value.execute(const ZacActionPayload(), zacContext);
+            value
+                .build(zacContext)
+                .execute(const ZacActionPayload(), zacContext);
           }
         });
       },

@@ -9,7 +9,7 @@ import '../helper.dart';
 
 void main() {
   test('ZacCompleterVoidProvider is in converter', () {
-    expectInConverter(
+    expectInRegistry(
         'z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson);
   });
 
@@ -46,7 +46,7 @@ void main() {
   });
 
   test('ZacCompleterActions from json', () {
-    expectInConverter(
+    expectInRegistry(
         'z:1:Completer<void>.complete', ZacCompleterActions.fromJson);
   });
 

@@ -1,3 +1,4 @@
+import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -176,6 +177,7 @@ void main() {
 
   group('SimpleDialogOption', () {
     testWidgets('SimpleDialogOption*', (tester) async {
+      ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
       await testMap(
         tester,
         <String, dynamic>{
@@ -187,9 +189,6 @@ void main() {
             'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
             'onPressed': NoopAction.createActions(),
           }
-        },
-        converter: {
-          NoopAction.unionValue: NoopAction.fromJson,
         },
       );
 

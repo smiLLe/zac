@@ -33,13 +33,16 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
           : ZacBuilder<double?>.fromJson(json['minScale'] as Object),
       onInteractionEnd: json['onInteractionEnd'] == null
           ? null
-          : ZacActions.fromJson(json['onInteractionEnd'] as Object),
+          : ZacActions.fromJson(
+              json['onInteractionEnd'] as Map<String, dynamic>),
       onInteractionStart: json['onInteractionStart'] == null
           ? null
-          : ZacActions.fromJson(json['onInteractionStart'] as Object),
+          : ZacActions.fromJson(
+              json['onInteractionStart'] as Map<String, dynamic>),
       onInteractionUpdate: json['onInteractionUpdate'] == null
           ? null
-          : ZacActions.fromJson(json['onInteractionUpdate'] as Object),
+          : ZacActions.fromJson(
+              json['onInteractionUpdate'] as Map<String, dynamic>),
       panEnabled: json['panEnabled'] == null
           ? null
           : ZacBuilder<bool?>.fromJson(json['panEnabled'] as Object),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
@@ -16,7 +17,7 @@ Matcher _throwsConverterIssue<T>() {
 void main() {
   group('ZacValue', () {
     test('Is in converters', () {
-      expectInConverter('z:1:ZacValue', ZacValue.fromJson);
+      expectInRegistry('z:1:ZacValue', ZacValue.fromRegister);
     });
 
     group('From Value', () {
@@ -93,7 +94,7 @@ void main() {
 
   group('ZacValueList', () {
     test('Is in converters', () {
-      expectInConverter(['z:1:ZacValueList'], ZacValueListSimple.fromJson);
+      expectInRegistry(['z:1:ZacValueList'], ZacValueListSimple.fromRegister);
     });
 
     group('From Values', () {
@@ -186,13 +187,13 @@ void main() {
 
   group('ZacValueMap', () {
     test('Is in converters', () {
-      expectInConverter(['z:1:ZacValueMap'], ZacValueMap.fromJson);
+      expectInRegistry(['z:1:ZacValueMap'], ZacValueMap.fromRegister);
     });
 
     group('From Values', () {
       test('create from simple Map', () {
         expect(
-            ZacValueMap<int, Map<String, int>>.fromJson({'a': 1}),
+            ZacMapBuilder<int, Map<String, int>>.fromJson({'a': 1}),
             ZacValueMap<int, Map<String, int>>(
                 {'a': ZacBuilder<int>.fromJson(1)}));
       });
@@ -207,16 +208,16 @@ void main() {
                     'Unsupported type in ZacValueMap<int, Map<String, int>>: NONO'))));
       });
 
-      test('will wrap items into a ZacValue', () {
+      test('will wrap items into a ZacBuilder', () {
         expect(
-            ZacValueMap<int, Map<String, int>>.fromJson(<String, dynamic>{
+            ZacMapBuilder<int, Map<String, int>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueMap',
               'items': {'a': 1},
             }),
             ZacValueMap<int, Map<String, int>>(
                 {'a': ZacBuilder<int>.fromJson(1)}));
         expect(
-            ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
+            ZacMapBuilder<int?, Map<String, int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueMap',
               'items': {'a': 1},
             }),
@@ -224,7 +225,7 @@ void main() {
                 {'a': ZacBuilder<int?>.fromJson(1)}));
 
         expect(
-            ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
+            ZacMapBuilder<Key, Map<String, Key>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueMap',
               'items': {
                 'a': {
@@ -283,14 +284,6 @@ void main() {
 
   testWidgets('Pick a ZacValue and pass it to new actions as payload',
       (tester) async {
-    expect(
-        () => ConverterHelper.convertToType<ZacValueActions>(<String, dynamic>{
-              'builder': 'z:1:ZacValue.asActionPayload',
-              'value': 5,
-              'actions': <Object>[],
-            }),
-        returnsNormally);
-
     late ZacActionPayload payload;
     await testZacWidget(
       tester,

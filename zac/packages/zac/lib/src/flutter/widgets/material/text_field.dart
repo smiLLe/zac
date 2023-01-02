@@ -116,7 +116,8 @@ class FlutterTextField
       restorationId: restorationId?.build(zacContext),
       enableIMEPersonalizedLearning:
           enableIMEPersonalizedLearning?.build(zacContext) ?? true,
-      onChanged: onChanged?.createCbParam1<String>(zacContext),
+      onChanged:
+          onChanged?.build(zacContext).createCbParam1<String>(zacContext),
       decoration: decoration?.build(zacContext) ?? const InputDecoration(),
       keyboardType: keyboardType?.build(zacContext),
       textInputAction: textInputAction?.build(zacContext),
@@ -129,9 +130,11 @@ class FlutterTextField
           selectionHeightStyle?.build(zacContext) ?? BoxHeightStyle.tight,
       selectionWidthStyle:
           selectionWidthStyle?.build(zacContext) ?? BoxWidthStyle.tight,
-      onTap: onTap?.createCb(zacContext),
-      onEditingComplete: onEditingComplete?.createCb(zacContext),
-      onSubmitted: onSubmitted?.createCbParam1<String>(zacContext),
+      onTap: onTap?.build(zacContext).createCb(zacContext),
+      onEditingComplete:
+          onEditingComplete?.build(zacContext).createCb(zacContext),
+      onSubmitted:
+          onSubmitted?.build(zacContext).createCbParam1<String>(zacContext),
       scrollController: scrollController?.build(zacContext),
     );
   }

@@ -27,8 +27,9 @@ The value of type ${fromValue.runtimeType} was expected to be transformed.
 $fromValue''');
     }
 
-    final Object? transformedValue =
-        transformer.transform(ZacTransformValue(fromValue), zacContext, null);
+    final Object? transformedValue = transformer
+        .build(zacContext)
+        .transform(ZacTransformValue(fromValue), zacContext, null);
 
     if (transformedValue is! T) {
       final transformerErr = transformer.transformers.map((e) => e.runtimeType);
@@ -65,8 +66,9 @@ The value of type ${fromValue.runtimeType} was expected to be transformed.
 $fromValue''');
     }
 
-    final Object? transformedValue =
-        transformer.transform(ZacTransformValue(fromValue), zacContext, null);
+    final Object? transformedValue = transformer
+        .build(zacContext)
+        .transform(ZacTransformValue(fromValue), zacContext, null);
 
     if (null == transformedValue) {
       return null;
@@ -104,7 +106,7 @@ Value after: $transformedValue''');
     List<dynamic> transformedItems = null == itemTransformer
         ? fromValue
         : fromValue
-            .map((dynamic e) => itemTransformer.transform(
+            .map((dynamic e) => itemTransformer.build(zacContext).transform(
                 ZacTransformValue(e), zacContext, const ZacActionPayload()))
             .toList();
 
@@ -112,7 +114,7 @@ Value after: $transformedValue''');
       return List<T>.from(transformedItems);
     }
 
-    final transformed = transformer.transform(
+    final transformed = transformer.build(zacContext).transform(
         ZacTransformValue(transformedItems),
         zacContext,
         const ZacActionPayload());
@@ -151,7 +153,7 @@ Value after: $transformed''');
     List<dynamic> transformedItems = null == itemTransformer
         ? fromValue!
         : fromValue!
-            .map((Object e) => itemTransformer.transform(
+            .map((Object e) => itemTransformer.build(zacContext).transform(
                 ZacTransformValue(e), zacContext, const ZacActionPayload()))
             .toList();
 
@@ -159,7 +161,7 @@ Value after: $transformed''');
       return List<T>.from(transformedItems);
     }
 
-    final transformed = transformer.transform(
+    final transformed = transformer.build(zacContext).transform(
         ZacTransformValue(transformedItems),
         zacContext,
         const ZacActionPayload());
@@ -203,50 +205,45 @@ class ZacTransformValue with _$ZacTransformValue {
 }
 
 abstract class ZacTransformer {
-  factory ZacTransformer.fromJson(Map<String, dynamic> json) =>
-      ConverterHelper.convertToType<ZacTransformer>(json);
+  factory ZacTransformer.fromJson(Map<String, dynamic> json) {
+    return ZacRegistry().ifBuilderLikeMap<ZacTransformer>(
+      json,
+      cb: (map, converterName) =>
+          ZacRegistry().getRegisteredTransformer(converterName).call(map),
+      orElse: () =>
+          throw StateError('Could not create $ZacTransformer from $json'),
+    );
+  }
 
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
       ZacActionPayload? payload);
 }
 
 @freezedZacBuilder
-class ZacTransformers with _$ZacTransformers {
+class ZacTransformers
+    with _$ZacTransformers
+    implements ZacBuilder<List<ZacTransformer>> {
   const ZacTransformers._();
 
   static const String unionValue = 'z:1:Transformers';
 
-  factory ZacTransformers.fromJson(Object data) {
-    /// allow a single transformer or the default implementation
-    if (ConverterHelper.isConverter(data)) {
-      if ((data as Map<String, dynamic>)[builderKey] as String !=
-          ZacTransformers.unionValue) {
-        return ZacTransformers([ZacTransformer.fromJson(data)]);
-      }
-      return _$ZacTransformersFromJson(data);
-    }
-
-    /// allow a list of transformer
-    else if (data is List) {
-      return ZacTransformers(List<Map<String, dynamic>>.from(data)
-          .map(ZacTransformer.fromJson)
-          .toList());
-    }
-
-    throw Exception(
-        'It was not possible to convert to $ZacTransformers from data: $data ');
-  }
+  factory ZacTransformers.fromJson(Map<String, dynamic> json) =>
+      _$ZacTransformersFromJson(json);
 
   @FreezedUnionValue(ZacTransformers.unionValue)
   factory ZacTransformers(List<ZacTransformer> transformers) = _ZacTransformers;
 
+  @override
+  List<ZacTransformer> build(ZacContext zacContext) => transformers;
+}
+
+extension HandleTransformer on List<ZacTransformer> {
   Object? transform(
     ZacTransformValue value,
     ZacContext zacContext,
     ZacActionPayload? payload,
   ) {
-    return transformers.fold<ZacTransformValue>(value,
-        (previousValue, element) {
+    return fold<ZacTransformValue>(value, (previousValue, element) {
       final obj = element.transform(previousValue, zacContext, payload);
       return previousValue.copyWith.call(value: obj);
     }).value;
@@ -268,7 +265,8 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
       ZacActionPayload? payload) {
     final value = transformValue.value;
-    return ConverterHelper.convertToType<Object>(value);
+    return throw Exception('');
+    // return ConverterHelper.convertToType<Object>(value);
   }
 }
 
@@ -381,11 +379,11 @@ The value: $theMap
           dynamic updatedKey = entry.key;
           dynamic updatedValue = entry.value;
           if (true == obj.keyTransformer?.transformers.isNotEmpty) {
-            updatedKey = obj.keyTransformer?.transform(
+            updatedKey = obj.keyTransformer?.build(zacContext).transform(
                 ZacTransformValue(updatedKey, entry), zacContext, payload);
           }
           if (true == obj.valueTransformer?.transformers.isNotEmpty) {
-            updatedValue = obj.valueTransformer?.transform(
+            updatedValue = obj.valueTransformer?.build(zacContext).transform(
                 ZacTransformValue(updatedValue, entry), zacContext, payload);
           }
 
@@ -505,8 +503,9 @@ The value: $value
     }
 
     return map(
-      map: (obj) => value.map((dynamic e) =>
-          obj.transformer.transform(ZacTransformValue(e), zacContext, payload)),
+      map: (obj) => value.map((dynamic e) => obj.transformer
+          .build(zacContext)
+          .transform(ZacTransformValue(e), zacContext, payload)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,

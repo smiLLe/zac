@@ -1,3 +1,4 @@
+import 'package:zac/src/builder.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,6 +12,7 @@ import '../helper.dart';
 
 void main() {
   group('Default Button', () {
+    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testMap(
         tester,
@@ -22,9 +24,6 @@ void main() {
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
-        },
-        converter: {
-          NoopAction.unionValue: NoopAction.fromJson,
         },
       );
       expect(find.byKey(const ValueKey('test_sizedBox')), findsOneWidget);
@@ -123,6 +122,7 @@ void main() {
   });
 
   group('Button.icon', () {
+    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testMap(
         tester,
@@ -135,9 +135,6 @@ void main() {
           'onPressed': NoopAction.createActions(),
           'onLongPress': NoopAction.createActions(),
           'autofocus': true,
-        },
-        converter: {
-          NoopAction.unionValue: NoopAction.fromJson,
         },
       );
 

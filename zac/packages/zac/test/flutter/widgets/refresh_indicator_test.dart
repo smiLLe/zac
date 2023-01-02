@@ -11,6 +11,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterRefreshIndicator()', (tester) async {
+    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
     await testWithinMaterialApp(
       tester,
       Scaffold(
@@ -36,7 +37,6 @@ void main() {
           },
         ),
       ),
-      converter: {NoopAction.unionValue: NoopAction.fromJson},
     );
 
     final widget = find
