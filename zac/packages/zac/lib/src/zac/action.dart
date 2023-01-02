@@ -190,7 +190,7 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
 
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
-    required List<ZacTransformers> condition,
+    required ZacBuilder<List<ZacTransformer>> condition,
     required ZacBuilder<List<ZacAction>> ifTrue,
     ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
@@ -207,11 +207,10 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
           param: (obj) => obj.params,
           param2: (obj) => obj.params,
         );
-        final trueOfFalse =
-            condition.fold<bool>(true, (previousValue, zacTransformers) {
-          final cond = zacTransformers
-              .build(zacContext)
-              .transform(ZacTransformValue(val), zacContext, payload);
+        final trueOfFalse = condition.build(zacContext).fold<bool>(true,
+            (previousValue, zacTransformers) {
+          final cond = zacTransformers.transform(
+              ZacTransformValue(val), zacContext, payload);
 
           if (cond is! bool) {
             throw StateError(

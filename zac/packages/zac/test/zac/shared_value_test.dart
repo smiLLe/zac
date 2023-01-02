@@ -972,7 +972,7 @@ void main() {
           SharedValueProviderBuilder.provideObject(
             /// this value is not relevant for this test because the action will
             /// provide a new value
-            value: {'ignore': 'ignore'},
+            value: {'ignore': 'ignored'},
             family: 'family',
             child: FlutterColumn(
               children: ZacValueListSimple<Widget, List<Widget>?>([

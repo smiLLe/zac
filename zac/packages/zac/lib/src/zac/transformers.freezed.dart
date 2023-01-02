@@ -854,9 +854,9 @@ class _$_MapMapper extends _MapMapper {
       _$$_MapMapperFromJson(json);
 
   @override
-  final ZacTransformers? keyTransformer;
+  final ZacBuilder<List<ZacTransformer>?>? keyTransformer;
   @override
-  final ZacTransformers? valueTransformer;
+  final ZacBuilder<List<ZacTransformer>?>? valueTransformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -907,15 +907,16 @@ class _$_MapMapper extends _MapMapper {
 
 abstract class _MapMapper extends MapTransformer {
   const factory _MapMapper(
-      {final ZacTransformers? keyTransformer,
-      final ZacTransformers? valueTransformer}) = _$_MapMapper;
+          {final ZacBuilder<List<ZacTransformer>?>? keyTransformer,
+          final ZacBuilder<List<ZacTransformer>?>? valueTransformer}) =
+      _$_MapMapper;
   const _MapMapper._() : super._();
 
   factory _MapMapper.fromJson(Map<String, dynamic> json) =
       _$_MapMapper.fromJson;
 
-  ZacTransformers? get keyTransformer;
-  ZacTransformers? get valueTransformer;
+  ZacBuilder<List<ZacTransformer>?>? get keyTransformer;
+  ZacBuilder<List<ZacTransformer>?>? get valueTransformer;
 }
 
 /// @nodoc
@@ -1307,7 +1308,7 @@ class _$_IterableMap extends _IterableMap {
       _$$_IterableMapFromJson(json);
 
   @override
-  final ZacTransformers transformer;
+  final ZacBuilder<List<ZacTransformer>> transformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1354,14 +1355,15 @@ class _$_IterableMap extends _IterableMap {
 }
 
 abstract class _IterableMap extends IterableTransformer {
-  factory _IterableMap({required final ZacTransformers transformer}) =
+  factory _IterableMap(
+          {required final ZacBuilder<List<ZacTransformer>> transformer}) =
       _$_IterableMap;
   _IterableMap._() : super._();
 
   factory _IterableMap.fromJson(Map<String, dynamic> json) =
       _$_IterableMap.fromJson;
 
-  ZacTransformers get transformer;
+  ZacBuilder<List<ZacTransformer>> get transformer;
 }
 
 /// @nodoc

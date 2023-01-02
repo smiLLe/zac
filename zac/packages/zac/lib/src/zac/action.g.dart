@@ -37,9 +37,8 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
 _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(
         Map<String, dynamic> json) =>
     _$_ZacControlFlowActionIf(
-      condition: (json['condition'] as List<dynamic>)
-          .map((e) => ZacTransformers.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      condition: ZacBuilder<List<ZacTransformer>>.fromJson(
+          json['condition'] as Object),
       ifTrue: ZacBuilder<List<ZacAction>>.fromJson(json['ifTrue'] as Object),
       ifFalse: json['ifFalse'] == null
           ? null

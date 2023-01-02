@@ -21,9 +21,8 @@ void main() {
 
         await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
         ZacControlFlowAction.ifCond(
-          condition: [
-            ZacTransformers([ObjectTransformer.equals(other: 'hello')])
-          ],
+          condition:
+              ZacTransformers([ObjectTransformer.equals(other: 'hello')]),
           ifTrue: ZacActions([LeakAction(trueCb)]),
           ifFalse: ZacActions([LeakAction(falseCb)]),
         ).execute(ZacActionPayload.param('hello'), zacContext);
@@ -43,9 +42,8 @@ void main() {
 
         await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
         ZacControlFlowAction.ifCond(
-          condition: [
-            ZacTransformers([ObjectTransformer.equals(other: 'world')])
-          ],
+          condition:
+              ZacTransformers([ObjectTransformer.equals(other: 'world')]),
           ifTrue: ZacActions([LeakAction(trueCb)]),
           ifFalse: ZacActions([LeakAction(falseCb)]),
         ).execute(ZacActionPayload.param('hello'), zacContext);
@@ -59,35 +57,6 @@ void main() {
       });
 
       testWidgets(
-          'condition can be an array and must only return true to trigger ifTrue Actions',
-          (tester) async {
-        late ZacContext zacContext;
-        final trueCb = MockLeakedActionCb();
-        final falseCb = MockLeakedActionCb();
-
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        ZacControlFlowAction.ifCond(
-          condition: [
-            ZacTransformers([
-              ObjectTransformer.equals(other: 'hello'),
-            ]),
-            ZacTransformers([
-              ObjectTransformer.equals(other: 'hello'),
-            ]),
-          ],
-          ifTrue: ZacActions([LeakAction(trueCb)]),
-          ifFalse: ZacActions([LeakAction(falseCb)]),
-        ).execute(ZacActionPayload.param('hello'), zacContext);
-
-        verify(trueCb(
-                argThat(isA<ZacActionPayload>()
-                    .having((p0) => p0.params, 'payload params', 'hello')),
-                argThat(isA<ZacContext>())))
-            .called(1);
-        verifyZeroInteractions(falseCb);
-      });
-
-      testWidgets(
           'condition can be an array and once returned false it will execute ifFalse Actions',
           (tester) async {
         late ZacContext zacContext;
@@ -96,17 +65,11 @@ void main() {
 
         await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
         ZacControlFlowAction.ifCond(
-          condition: [
-            ZacTransformers([
-              ObjectTransformer.equals(other: 'hello'),
-            ]),
-            ZacTransformers([
-              ObjectTransformer.equals(other: 'THAT IS FALSE'),
-            ]),
-            ZacTransformers([
-              ObjectTransformer.equals(other: 'hello'),
-            ])
-          ],
+          condition: ZacTransformers([
+            ObjectTransformer.equals(other: 'hello'),
+            ObjectTransformer.equals(other: 'THAT IS FALSE'),
+            ObjectTransformer.equals(other: 'hello'),
+          ]),
           ifTrue: ZacActions([LeakAction(trueCb)]),
           ifFalse: ZacActions([LeakAction(falseCb)]),
         ).execute(ZacActionPayload.param('hello'), zacContext);
@@ -125,7 +88,7 @@ void main() {
         await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
         expect(
             () => ZacControlFlowAction.ifCond(
-                  condition: [ZacTransformers([])],
+                  condition: ZacTransformers([]),
                   ifTrue: const ZacActions([]),
                 ).execute(const ZacActionPayload(), zacContext),
             throwsA(isA<StateError>().having(
@@ -142,9 +105,7 @@ void main() {
         await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
         expect(
             () => ZacControlFlowAction.ifCond(
-                  condition: [
-                    ZacTransformers([ObjectTransformer.toString()])
-                  ],
+                  condition: ZacTransformers([ObjectTransformer.toString()]),
                   ifTrue: const ZacActions([]),
                 ).execute(ZacActionPayload.param('hello'), zacContext),
             throwsA(isA<StateError>().having(

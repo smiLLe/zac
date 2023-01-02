@@ -82,7 +82,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
   @FreezedUnionValue(SharedValueActions.unionValue)
   factory SharedValueActions.update({
     required SharedValueFamily family,
-    ZacTransformers? transformer,
+    ZacBuilder<List<ZacTransformer>?>? transformer,
     @Default(false) bool? ifNoPayloadTakeCurrent,
   }) = _SharedValueActionsUpdate;
 
@@ -95,7 +95,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
       ZacContext zacContext, _SharedValueActionsUpdate obj) {
     return obj.transformer
             ?.build(zacContext)
-            .transform(ZacTransformValue(value), zacContext, payload) ??
+            ?.transform(ZacTransformValue(value), zacContext, payload) ??
         value;
   }
 
@@ -136,7 +136,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
   const factory SharedValueConsumeType.watch({
-    ZacTransformers? select,
+    ZacBuilder<List<ZacTransformer>>? select,
   }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
@@ -194,7 +194,7 @@ class SharedValueProviderBuilder
     required Object value,
     required String family,
     required ZacBuilder<Widget> child,
-    ZacTransformers? transformer,
+    ZacBuilder<List<ZacTransformer>?>? transformer,
     @Default(true) bool autoCreate,
   }) = _ProvideObject;
 
@@ -253,7 +253,7 @@ class SharedValueProviderBuilder
       provideObject: (obj) =>
           obj.transformer
               ?.build(zacContext)
-              .transform(ZacTransformValue(obj.value), zacContext, null) ??
+              ?.transform(ZacTransformValue(obj.value), zacContext, null) ??
           obj.value,
       provideWidget: (obj) => obj.value,
       provideWidgets: (obj) => obj.value,
@@ -358,7 +358,7 @@ class ConsumeSharedValue<T>
   @FreezedUnionValue(ConsumeSharedValue.union)
   factory ConsumeSharedValue({
     required SharedValueFamily family,
-    ZacTransformers? transformer,
+    ZacBuilder<List<ZacTransformer>?>? transformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValue<T>;
 
@@ -370,10 +370,12 @@ class ConsumeSharedValue<T>
       family: family,
     );
 
+    final buildTransformer = transformer?.build(zacContext);
+
     if (null == value) {
-      if (null is T && true != transformer?.transformers.isNotEmpty) {
+      if (null is T && true != buildTransformer?.isNotEmpty) {
         return null as T;
-      } else if (null is! T && true != transformer?.transformers.isNotEmpty) {
+      } else if (null is! T && true != buildTransformer?.isNotEmpty) {
         throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValue<T>}.build()
 because the value is null and there are no transformers added.
@@ -381,13 +383,11 @@ Value: $value''');
       }
     }
 
-    if (value is T && true != transformer?.transformers.isNotEmpty) {
+    if (value is T && true != buildTransformer?.isNotEmpty) {
       return value;
     }
 
-    final thisTransformer = transformer;
-
-    if (null == thisTransformer || thisTransformer.transformers.isEmpty) {
+    if (null == buildTransformer || buildTransformer.isEmpty) {
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValue<T>}.build()
 because there were no transformer.
@@ -395,12 +395,10 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal = thisTransformer
-        .build(zacContext)
-        .transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal =
+        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
     if (transformedVal is! T) {
-      final transformerErr =
-          thisTransformer.transformers.map((e) => e.runtimeType);
+      final transformerErr = buildTransformer.map((e) => e.runtimeType);
 
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValue<T>}
@@ -456,20 +454,21 @@ class ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   @FreezedUnionValue(ConsumeSharedValueList.union)
   factory ConsumeSharedValueList({
     required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? itemTransformer,
+    ZacBuilder<List<ZacTransformer>?>? transformer,
+    ZacBuilder<List<ZacTransformer>?>? itemTransformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValueList<T, X>;
 
   T _transformItem({
     required Object? value,
     required ZacContext zacContext,
-    required ZacTransformers? transformer,
+    required ZacBuilder<List<ZacTransformer>?>? transformer,
   }) {
+    final buildTransformer = transformer?.build(zacContext);
     if (null == value) {
-      if (null is T && true != transformer?.transformers.isNotEmpty) {
+      if (null is T && true != buildTransformer?.isNotEmpty) {
         return null as T;
-      } else if (null is! T && true != transformer?.transformers.isNotEmpty) {
+      } else if (null is! T && true != buildTransformer?.isNotEmpty) {
         throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueList<T, X>}.build()
 because the value is null and there are no transformers added.
@@ -477,11 +476,11 @@ Value: $value''');
       }
     }
 
-    if (value is T && true != transformer?.transformers.isNotEmpty) {
+    if (value is T && true != buildTransformer?.isNotEmpty) {
       return value;
     }
 
-    if (null == transformer || transformer.transformers.isEmpty) {
+    if (null == buildTransformer || buildTransformer.isEmpty) {
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueList<T, X>}.build()
 because there were no transformer.
@@ -489,12 +488,11 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal = transformer
-        .build(zacContext)
-        .transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal =
+        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
 
     if (transformedVal is! T) {
-      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+      final transformerErr = buildTransformer.map((e) => e.runtimeType);
 
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueList<T, X>} 
@@ -536,7 +534,7 @@ Value after: $transformedVal''');
 
     final transformedList = transformer
             ?.build(zacContext)
-            .transform(ZacTransformValue(list), zacContext, null) ??
+            ?.transform(ZacTransformValue(list), zacContext, null) ??
         list;
 
     if (transformedList is X) {
@@ -593,20 +591,21 @@ class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
   @FreezedUnionValue(ConsumeSharedValueMap.union)
   factory ConsumeSharedValueMap({
     required SharedValueFamily family,
-    ZacTransformers? transformer,
-    ZacTransformers? itemTransformer,
+    ZacBuilder<List<ZacTransformer>?>? transformer,
+    ZacBuilder<List<ZacTransformer>?>? itemTransformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValueMap<T, X>;
 
   T _transformItem({
     required Object? value,
     required ZacContext zacContext,
-    required ZacTransformers? transformer,
+    required ZacBuilder<List<ZacTransformer>?>? transformer,
   }) {
+    final buildTransformer = transformer?.build(zacContext);
     if (null == value) {
-      if (null is T && true != transformer?.transformers.isNotEmpty) {
+      if (null is T && true != buildTransformer?.isNotEmpty) {
         return null as T;
-      } else if (null is! T && true != transformer?.transformers.isNotEmpty) {
+      } else if (null is! T && true != buildTransformer?.isNotEmpty) {
         throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}.build()
 because the value is null and there are no transformers added.
@@ -614,11 +613,11 @@ Value: $value''');
       }
     }
 
-    if (value is T && true != transformer?.transformers.isNotEmpty) {
+    if (value is T && true != buildTransformer?.isNotEmpty) {
       return value;
     }
 
-    if (null == transformer || transformer.transformers.isEmpty) {
+    if (null == buildTransformer || buildTransformer.isEmpty) {
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}.build()
 because there were no transformer.
@@ -626,12 +625,11 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal = transformer
-        .build(zacContext)
-        .transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal =
+        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
 
     if (transformedVal is! T) {
-      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
+      final transformerErr = buildTransformer.map((e) => e.runtimeType);
 
       throw StateError('''
 It was not possible to return a $SharedValue of type $T from ${ConsumeSharedValueMap<T, X>}
@@ -670,7 +668,7 @@ Value after: $transformedVal''');
 
     final transformedMap = transformer
             ?.build(zacContext)
-            .transform(ZacTransformValue(map), zacContext, null) ??
+            ?.transform(ZacTransformValue(map), zacContext, null) ??
         map;
 
     if (transformedMap is X) {

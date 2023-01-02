@@ -12,8 +12,8 @@ _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(
-              json['transformer'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+              json['transformer'] as Object),
       ifNoPayloadTakeCurrent: json['ifNoPayloadTakeCurrent'] as bool? ?? false,
       $type: json['builder'] as String?,
     );
@@ -30,7 +30,7 @@ _$_SharedValueConsumeTypeWatch _$$_SharedValueConsumeTypeWatchFromJson(
     _$_SharedValueConsumeTypeWatch(
       select: json['select'] == null
           ? null
-          : ZacTransformers.fromJson(json['select'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>>.fromJson(json['select'] as Object),
       $type: json['builder'] as String?,
     );
 
@@ -98,8 +98,8 @@ _$_ProvideObject _$$_ProvideObjectFromJson(Map<String, dynamic> json) =>
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(
-              json['transformer'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+              json['transformer'] as Object),
       autoCreate: json['autoCreate'] as bool? ?? true,
       $type: json['builder'] as String?,
     );
@@ -171,8 +171,8 @@ _$_ConsumeSharedValue<T> _$$_ConsumeSharedValueFromJson<T>(
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(
-              json['transformer'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+              json['transformer'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
           : SharedValueConsumeType.fromJson(
@@ -186,12 +186,12 @@ _$_ConsumeSharedValueList<T, X>
           family: json['family'] as Object,
           transformer: json['transformer'] == null
               ? null
-              : ZacTransformers.fromJson(
-                  json['transformer'] as Map<String, dynamic>),
+              : ZacBuilder<List<ZacTransformer>?>.fromJson(
+                  json['transformer'] as Object),
           itemTransformer: json['itemTransformer'] == null
               ? null
-              : ZacTransformers.fromJson(
-                  json['itemTransformer'] as Map<String, dynamic>),
+              : ZacBuilder<List<ZacTransformer>?>.fromJson(
+                  json['itemTransformer'] as Object),
           forceConsume: json['forceConsume'] == null
               ? null
               : SharedValueConsumeType.fromJson(
@@ -205,12 +205,12 @@ _$_ConsumeSharedValueMap<T, X> _$$_ConsumeSharedValueMapFromJson<
       family: json['family'] as Object,
       transformer: json['transformer'] == null
           ? null
-          : ZacTransformers.fromJson(
-              json['transformer'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+              json['transformer'] as Object),
       itemTransformer: json['itemTransformer'] == null
           ? null
-          : ZacTransformers.fromJson(
-              json['itemTransformer'] as Map<String, dynamic>),
+          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+              json['itemTransformer'] as Object),
       forceConsume: json['forceConsume'] == null
           ? null
           : SharedValueConsumeType.fromJson(

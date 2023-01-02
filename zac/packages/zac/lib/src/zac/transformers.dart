@@ -10,184 +10,6 @@ import 'package:zac/src/zac/zac_builder.dart';
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
 
-abstract class TransformObjectHelper {
-  static T simple<T>({
-    required Object? fromValue,
-    required ZacContext zacContext,
-    required ZacTransformers? transformer,
-  }) {
-    if (fromValue is T && true != transformer?.transformers.isNotEmpty) {
-      return fromValue;
-    }
-
-    if (null == transformer || transformer.transformers.isEmpty) {
-      throw StateError('''
-It was not possible to return a value of type $T because there were no transformer.
-The value of type ${fromValue.runtimeType} was expected to be transformed.
-$fromValue''');
-    }
-
-    final Object? transformedValue = transformer
-        .build(zacContext)
-        .transform(ZacTransformValue(fromValue), zacContext, null);
-
-    if (transformedValue is! T) {
-      final transformerErr = transformer.transformers.map((e) => e.runtimeType);
-
-      throw StateError('''
-It was not possible to return a value of type $T after transformers were applied.
-Type of value before transformation: ${fromValue.runtimeType}
-Type of value after transformation: ${transformedValue.runtimeType}
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-Value before: $fromValue
-Value after: $transformedValue''');
-    }
-
-    return transformedValue;
-  }
-
-  static T? simpleOrNull<T>({
-    required Object? fromValue,
-    required ZacContext zacContext,
-    required ZacTransformers? transformer,
-  }) {
-    if (null == fromValue && true != transformer?.transformers.isNotEmpty) {
-      return null;
-    }
-
-    if (fromValue is T && true != transformer?.transformers.isNotEmpty) {
-      return fromValue;
-    }
-
-    if (null == transformer || transformer.transformers.isEmpty) {
-      throw StateError('''
-It was not possible to return a value of type $T because there were no transformer.
-The value of type ${fromValue.runtimeType} was expected to be transformed.
-$fromValue''');
-    }
-
-    final Object? transformedValue = transformer
-        .build(zacContext)
-        .transform(ZacTransformValue(fromValue), zacContext, null);
-
-    if (null == transformedValue) {
-      return null;
-    }
-
-    if (transformedValue is T?) {
-      return transformedValue as T?;
-    }
-
-    if (transformedValue is T) {
-      return transformedValue as T;
-    }
-
-    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
-
-    throw StateError('''
-It was not possible to return a value of type $T? after transformers were applied.
-Type of value before transformation: ${fromValue.runtimeType}
-Type of value after transformation: ${transformedValue.runtimeType}
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-Value before: $fromValue
-Value after: $transformedValue''');
-  }
-
-  static List<T> list<T>({
-    required List<Object> fromValue,
-    required ZacContext zacContext,
-    required ZacTransformers? transformer,
-    required ZacTransformers? itemTransformer,
-  }) {
-    if (null == transformer && null == itemTransformer) {
-      return List<T>.from(fromValue);
-    }
-
-    List<dynamic> transformedItems = null == itemTransformer
-        ? fromValue
-        : fromValue
-            .map((dynamic e) => itemTransformer.build(zacContext).transform(
-                ZacTransformValue(e), zacContext, const ZacActionPayload()))
-            .toList();
-
-    if (null == transformer || transformer.transformers.isEmpty) {
-      return List<T>.from(transformedItems);
-    }
-
-    final transformed = transformer.build(zacContext).transform(
-        ZacTransformValue(transformedItems),
-        zacContext,
-        const ZacActionPayload());
-
-    if (transformed is List) {
-      if (transformed is List<T>) return transformed;
-
-      return List<T>.from(transformedItems);
-    }
-
-    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
-
-    throw StateError('''
-It was not possible to return a List<$T> after transformers were applied.
-Type of value before transformation: ${transformedItems.runtimeType}
-Type of value after transformation: ${transformed.runtimeType}
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-Value before: $transformedItems
-Value after: $transformed''');
-  }
-
-  static List<T>? listOrNull<T>({
-    required List<Object>? fromValue,
-    required ZacContext zacContext,
-    required ZacTransformers? transformer,
-    required ZacTransformers? itemTransformer,
-  }) {
-    if (null == fromValue && null == transformer && null == itemTransformer) {
-      return null;
-    }
-
-    if (null != fromValue && null == transformer && null == itemTransformer) {
-      return List<T>.from(fromValue);
-    }
-
-    List<dynamic> transformedItems = null == itemTransformer
-        ? fromValue!
-        : fromValue!
-            .map((Object e) => itemTransformer.build(zacContext).transform(
-                ZacTransformValue(e), zacContext, const ZacActionPayload()))
-            .toList();
-
-    if (null == transformer || transformer.transformers.isEmpty) {
-      return List<T>.from(transformedItems);
-    }
-
-    final transformed = transformer.build(zacContext).transform(
-        ZacTransformValue(transformedItems),
-        zacContext,
-        const ZacActionPayload());
-
-    if (null == transformed) {
-      return null;
-    }
-
-    if (transformed is List) {
-      if (transformed is List<T>) return transformed;
-
-      return List<T>.from(transformedItems);
-    }
-
-    final transformerErr = transformer.transformers.map((e) => e.runtimeType);
-
-    throw StateError('''
-It was not possible to return a List<$T> or null after transformers were applied.
-Type of value before transformation: ${transformedItems.runtimeType}
-Type of value after transformation: ${transformed.runtimeType}
-${transformerErr.isEmpty ? 'No transformer were used.' : 'Following transformer were used: ${transformerErr.join(' > ')}.'}
-Value before: $transformedItems
-Value after: $transformed''');
-  }
-}
-
 class ZacTransformError extends StateError {
   ZacTransformError(super.message);
 }
@@ -325,8 +147,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   const factory MapTransformer.mapper({
-    ZacTransformers? keyTransformer,
-    ZacTransformers? valueTransformer,
+    ZacBuilder<List<ZacTransformer>?>? keyTransformer,
+    ZacBuilder<List<ZacTransformer>?>? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
@@ -378,12 +200,14 @@ The value: $theMap
             theMap.entries.map<MapEntry<dynamic, dynamic>>((entry) {
           dynamic updatedKey = entry.key;
           dynamic updatedValue = entry.value;
-          if (true == obj.keyTransformer?.transformers.isNotEmpty) {
-            updatedKey = obj.keyTransformer?.build(zacContext).transform(
+          final keyT = obj.keyTransformer?.build(zacContext);
+          final valueT = obj.valueTransformer?.build(zacContext);
+          if (true == keyT?.isNotEmpty) {
+            updatedKey = keyT!.transform(
                 ZacTransformValue(updatedKey, entry), zacContext, payload);
           }
-          if (true == obj.valueTransformer?.transformers.isNotEmpty) {
-            updatedValue = obj.valueTransformer?.build(zacContext).transform(
+          if (true == valueT?.isNotEmpty) {
+            updatedValue = valueT!.transform(
                 ZacTransformValue(updatedValue, entry), zacContext, payload);
           }
 
@@ -442,7 +266,7 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
-    required ZacTransformers transformer,
+    required ZacBuilder<List<ZacTransformer>> transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)

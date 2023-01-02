@@ -720,7 +720,8 @@ ZacControlFlowAction _$ZacControlFlowActionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacControlFlowAction {
-  List<ZacTransformers> get condition => throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacTransformer>> get condition =>
+      throw _privateConstructorUsedError;
   ZacBuilder<List<ZacAction>> get ifTrue => throw _privateConstructorUsedError;
   ZacBuilder<List<ZacAction>>? get ifFalse =>
       throw _privateConstructorUsedError;
@@ -736,23 +737,14 @@ mixin _$ZacControlFlowAction {
 @JsonSerializable(createToJson: false)
 class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
   _$_ZacControlFlowActionIf(
-      {required final List<ZacTransformers> condition,
-      required this.ifTrue,
-      this.ifFalse})
-      : _condition = condition,
-        super._();
+      {required this.condition, required this.ifTrue, this.ifFalse})
+      : super._();
 
   factory _$_ZacControlFlowActionIf.fromJson(Map<String, dynamic> json) =>
       _$$_ZacControlFlowActionIfFromJson(json);
 
-  final List<ZacTransformers> _condition;
   @override
-  List<ZacTransformers> get condition {
-    if (_condition is EqualUnmodifiableListView) return _condition;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_condition);
-  }
-
+  final ZacBuilder<List<ZacTransformer>> condition;
   @override
   final ZacBuilder<List<ZacAction>> ifTrue;
   @override
@@ -768,16 +760,15 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacControlFlowActionIf &&
-            const DeepCollectionEquality()
-                .equals(other._condition, _condition) &&
+            (identical(other.condition, condition) ||
+                other.condition == condition) &&
             (identical(other.ifTrue, ifTrue) || other.ifTrue == ifTrue) &&
             (identical(other.ifFalse, ifFalse) || other.ifFalse == ifFalse));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_condition), ifTrue, ifFalse);
+  int get hashCode => Object.hash(runtimeType, condition, ifTrue, ifFalse);
 
   @override
   @optionalTypeArgs
@@ -790,7 +781,7 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
 
 abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
   factory _ZacControlFlowActionIf(
-      {required final List<ZacTransformers> condition,
+      {required final ZacBuilder<List<ZacTransformer>> condition,
       required final ZacBuilder<List<ZacAction>> ifTrue,
       final ZacBuilder<List<ZacAction>>? ifFalse}) = _$_ZacControlFlowActionIf;
   _ZacControlFlowActionIf._() : super._();
@@ -799,7 +790,7 @@ abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
       _$_ZacControlFlowActionIf.fromJson;
 
   @override
-  List<ZacTransformers> get condition;
+  ZacBuilder<List<ZacTransformer>> get condition;
   @override
   ZacBuilder<List<ZacAction>> get ifTrue;
   @override
