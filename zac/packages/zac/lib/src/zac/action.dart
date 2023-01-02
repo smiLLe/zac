@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -16,7 +16,7 @@ part 'action.g.dart';
 
 abstract class ZacAction {
   factory ZacAction.fromJson(Map<String, dynamic> json) {
-    return ZacRegistry().ifBuilderLikeMap<ZacAction>(
+    return ZacRegistry.ifBuilderLikeMap<ZacAction>(
       json,
       cb: (map, converterName) =>
           ZacRegistry().getRegisteredAction(converterName).call(map),

@@ -6,7 +6,7 @@ import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -69,8 +69,6 @@ class FakeZacOrigin extends Fake implements ZacContext {}
 
 class FakeZacContext extends Fake implements ZacContext {}
 
-Matcher throwsConverterError = throwsA(isA<ConverterError>());
-
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
 
 TypeMatcher<SharedValueType> isSharedValue(dynamic matcher) {
@@ -101,7 +99,6 @@ Future<void> testMap(
 Future<void> testZacWidget(
   WidgetTester tester,
   ZacBuilder<Widget> zacWidget, {
-  Map<String, Convert>? converter,
   ProviderContainer? useContainer,
 }) async {
   return testWithinMaterialApp(

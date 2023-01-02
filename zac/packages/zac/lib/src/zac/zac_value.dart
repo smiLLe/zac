@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -56,7 +56,7 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
   }
 
   factory ZacValue.fromJson(Object data) {
-    return ZacRegistry().ifBuilderLikeMap<ZacValue<T>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacValue<T>>(
       data,
       cb: (map, converterName) {
         assert(converterName == ZacValue.union);
@@ -103,7 +103,7 @@ class ZacValueListSimple<T extends Object?, X extends List<T>?>
   }
 
   factory ZacValueListSimple.fromJson(Object data) {
-    return ConverterHelper.ifRegisteredBuilder<ZacValueListSimple<T, X>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacValueListSimple<T, X>>(
       data,
       cb: (map, converterName) {
         assert(converterName == ZacValueListSimple.union);
@@ -164,7 +164,7 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
   }
 
   factory ZacValueMap.fromJson(Object data) {
-    return ConverterHelper.ifRegisteredBuilder<ZacValueMap<T, X>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacValueMap<T, X>>(
       data,
       cb: (map, converterName) {
         assert(ZacValueMap.union == converterName);

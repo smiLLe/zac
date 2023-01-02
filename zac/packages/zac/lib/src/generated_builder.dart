@@ -81,7 +81,7 @@ import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
-import 'builder.dart';
+import 'zac/registry.dart';
 
 void addZacBuilders(ZacRegistry registry) {
   registry

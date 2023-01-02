@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -28,7 +28,7 @@ class ZacTransformValue with _$ZacTransformValue {
 
 abstract class ZacTransformer {
   factory ZacTransformer.fromJson(Map<String, dynamic> json) {
-    return ZacRegistry().ifBuilderLikeMap<ZacTransformer>(
+    return ZacRegistry.ifBuilderLikeMap<ZacTransformer>(
       json,
       cb: (map, converterName) =>
           ZacRegistry().getRegisteredTransformer(converterName).call(map),

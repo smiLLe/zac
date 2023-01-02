@@ -1,4 +1,4 @@
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -29,7 +29,7 @@ abstract class ZacBuilder<T> {
 //       return true;
 //     }());
 
-    return ZacRegistry().ifBuilderLikeMap<ZacBuilder<T>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacBuilder<T>>(
       data,
       cb: (map, converterName) => ZacRegistry().when<T>(
         name: converterName,
@@ -38,27 +38,6 @@ abstract class ZacBuilder<T> {
       ),
       orElse: () => ZacValue<T>.fromJson(data),
     );
-
-    // return ConverterHelper.ifRegisteredBuilder<ZacBuilder<T>>(
-    //   data,
-    //   cb: (map, converterName) {
-    //     final builder = BuilderRegister().when<T>(
-    //       name: converterName,
-    //       noType: (builder) => builder.call(map),
-    //       withType: (builder) => builder.call<T>(map),
-    //     );
-
-    //     return builder;
-
-    //     switch (converterName) {
-    //       case ConsumeSharedValue.union:
-    //         return ConsumeSharedValue<T>.fromJson(map);
-    //       default:
-    //         return ConverterHelper.convertToType<ZacBuilder<T>>(map);
-    //     }
-    //   },
-    //   orElse: () => ZacValue<T>.fromJson(data),
-    // );
   }
 
   T build(ZacContext zacContext);
@@ -67,7 +46,7 @@ abstract class ZacBuilder<T> {
 abstract class ZacListBuilder<T extends Object?, X extends List<T>?>
     implements ZacBuilder<X> {
   factory ZacListBuilder.fromJson(Object data) {
-    return ZacRegistry().ifBuilderLikeMap<ZacListBuilder<T, X>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacListBuilder<T, X>>(
       data,
       cb: (map, converterName) {
         final builder =
@@ -84,33 +63,13 @@ abstract class ZacListBuilder<T extends Object?, X extends List<T>?>
         return ZacValueListSimple<T, X>.fromJson(data);
       },
     );
-
-    // return ConverterHelper.ifRegisteredBuilder<ZacListBuilder<T, X>>(
-    //   data,
-    //   cb: (map, converterName) {
-    //     switch (converterName) {
-    //       case ConsumeSharedValueList.union:
-    //         return ConsumeSharedValueList<T, X>.fromJson(map);
-    //       default:
-    //         return ConverterHelper.convertToType<ZacListBuilder<T, X>>(map);
-    //     }
-    //   },
-    //   orElse: () {
-    //     if (data is! List) {
-    //       throw StateError(
-    //           'Unsupported type in ${ZacListBuilder<T, X>}: $data');
-    //     }
-
-    //     return ZacValueListSimple<T, X>.fromJson(data);
-    //   },
-    // );
   }
 }
 
 abstract class ZacMapBuilder<T extends Object?, X extends Map<String, T>?>
     implements ZacBuilder<X> {
   factory ZacMapBuilder.fromJson(Object data) {
-    return ZacRegistry().ifBuilderLikeMap<ZacMapBuilder<T, X>>(
+    return ZacRegistry.ifBuilderLikeMap<ZacMapBuilder<T, X>>(
       data,
       cb: (map, converterName) {
         final builder =
@@ -126,30 +85,5 @@ abstract class ZacMapBuilder<T extends Object?, X extends Map<String, T>?>
         return ZacValueMap<T, X>.fromJson(data);
       },
     );
-
-    // return ConverterHelper.ifRegisteredBuilder<ZacMapBuilder<T, X>>(
-    //   data,
-    //   cb: (map, converterName) {
-    //     switch (converterName) {
-    //       case ConsumeSharedValueMap.union:
-    //         return ConsumeSharedValueMap<T, X>.fromJson(map);
-    //       default:
-    //         ZacMapBuilder<T, X>
-    //             fn<T extends Object?, X extends Map<String, T>?>(
-    //                 Map<String, dynamic> data) {
-    //           return ZacValueMap<T, X>.fromJson(data);
-    //         }
-    //         return fn<T, X>(map);
-    //       // return ConverterHelper.convertToType<ZacMapBuilder<T, X>>(map);
-    //     }
-    //   },
-    //   orElse: () {
-    //     if (data is! Map) {
-    //       throw StateError('Unsupported type in ${ZacMapBuilder<T, X>}: $data');
-    //     }
-
-    //     return ZacValueMap<T, X>.fromJson(data);
-    //   },
-    // );
   }
 }

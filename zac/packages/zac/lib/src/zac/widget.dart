@@ -10,7 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/builder.dart';
+import 'package:zac/src/zac/registry.dart';
 
 part 'widget.freezed.dart';
 part 'widget.g.dart';
