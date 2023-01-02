@@ -94,43 +94,42 @@ void main() {
 
   group('ZacValueList', () {
     test('Is in converters', () {
-      expectInRegistry(['z:1:ZacValueList'], ZacValueListSimple.fromRegister);
+      expectInRegistry(['z:1:ZacValueList'], ZacValueList.fromRegister);
     });
 
     group('From Values', () {
       test('create from simple list', () {
-        expect(ZacValueListSimple<int, List<int>>.fromJson([4]),
-            ZacValueListSimple<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
+        expect(ZacValueList<int, List<int>>.fromJson([4]),
+            ZacValueList<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
       });
 
       test('throws if unsupported type in fromJson', () {
         expect(
-            () => ZacValueListSimple<int, List<int>>.fromJson('NONO'),
+            () => ZacValueList<int, List<int>>.fromJson('NONO'),
             throwsA(isA<StateError>().having(
                 (p0) => p0.message,
                 'error message',
                 contains(
-                    'Unsupported type in ZacValueListSimple<int, List<int>>: NONO'))));
+                    'Unsupported type in ZacValueList<int, List<int>>: NONO'))));
       });
 
       test('will wrap items into a ZacValue', () {
         expect(
-            ZacValueListSimple<int, List<int>>.fromJson(<String, dynamic>{
+            ZacValueList<int, List<int>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
-            ZacValueListSimple<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
+            ZacValueList<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
 
         expect(
-            ZacValueListSimple<int?, List<int?>>.fromJson(<String, dynamic>{
+            ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [4],
             }),
-            ZacValueListSimple<int?, List<int?>>(
-                [ZacBuilder<int?>.fromJson(4)]));
+            ZacValueList<int?, List<int?>>([ZacBuilder<int?>.fromJson(4)]));
 
         expect(
-            ZacValueListSimple<Key, List<Key>>.fromJson(<String, dynamic>{
+            ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [
                 {
@@ -139,7 +138,7 @@ void main() {
                 }
               ],
             }),
-            ZacValueListSimple<Key, List<Key>>([
+            ZacValueList<Key, List<Key>>([
               ZacBuilder<Key>.fromJson({
                 'builder': 'f:1:ValueKey',
                 'value': 'hello',
@@ -160,7 +159,7 @@ void main() {
         );
 
         expect(
-            ZacValueListSimple<Key, List<Key>>.fromJson(<String, dynamic>{
+            ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [
                 {
@@ -176,7 +175,7 @@ void main() {
             const [ValueKey('hello'), ValueKey('world')]);
 
         expect(
-            ZacValueListSimple<int?, List<int?>>.fromJson(<String, dynamic>{
+            ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [1, 2],
             }).build(zacContext),

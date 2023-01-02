@@ -81,14 +81,14 @@ abstract class _ZacValue<T extends Object?> extends ZacValue<T> {
   T get value;
 }
 
-ZacValueListSimple<T, X>
-    _$ZacValueListSimpleFromJson<T extends Object?, X extends List<T>?>(
+ZacValueList<T, X>
+    _$ZacValueListFromJson<T extends Object?, X extends List<T>?>(
         Map<String, dynamic> json) {
   return _ZacValueListSimple<T, X>.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacValueListSimple<T extends Object?, X extends List<T>?> {
+mixin _$ZacValueList<T extends Object?, X extends List<T>?> {
   List<ZacBuilder<T>> get items => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -119,7 +119,7 @@ class _$_ZacValueListSimple<T extends Object?, X extends List<T>?>
 
   @override
   String toString() {
-    return 'ZacValueListSimple<$T, $X>(items: $items)';
+    return 'ZacValueList<$T, $X>(items: $items)';
   }
 
   @override
@@ -145,7 +145,7 @@ class _$_ZacValueListSimple<T extends Object?, X extends List<T>?>
 }
 
 abstract class _ZacValueListSimple<T extends Object?, X extends List<T>?>
-    extends ZacValueListSimple<T, X> {
+    extends ZacValueList<T, X> {
   factory _ZacValueListSimple(final List<ZacBuilder<T>> items) =
       _$_ZacValueListSimple<T, X>;
   _ZacValueListSimple._() : super._();

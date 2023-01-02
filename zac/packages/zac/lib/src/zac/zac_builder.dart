@@ -60,7 +60,7 @@ abstract class ZacListBuilder<T extends Object?, X extends List<T>?>
               'Unsupported type in ${ZacListBuilder<T, X>}: $data');
         }
 
-        return ZacValueListSimple<T, X>.fromJson(data);
+        return ZacValueList<T, X>.fromJson(data);
       },
     );
   }

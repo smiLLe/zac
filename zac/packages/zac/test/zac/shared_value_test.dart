@@ -168,8 +168,7 @@ void main() {
         ProviderScope(
           child: ZacWidget(
             data: SharedValueProviderBuilder.provideWidgets(
-              value:
-                  ZacValueListSimple<Widget, List<Widget>>([FlutterSizedBox()]),
+              value: ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]),
               family: 'shared',
               child: LeakContext(
                 cb: (zacContext) => sharedValue =
@@ -180,8 +179,8 @@ void main() {
         ),
       );
 
-      expect(sharedValue,
-          ZacValueListSimple<Widget, List<Widget>>([FlutterSizedBox()]));
+      expect(
+          sharedValue, ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]));
     });
 
     testWidgets('provide Map<String, Widget>', (tester) async {
@@ -382,7 +381,7 @@ void main() {
           child: MaterialApp(
             home: ZacWidget(
               data: SharedValueProviderBuilder.provideWidgets(
-                value: ZacValueListSimple<Widget, List<Widget>>([
+                value: ZacValueList<Widget, List<Widget>>([
                   FlutterSizedBox(
                     key: FlutterValueKey('FIND_ME_2'),
                   )
@@ -768,7 +767,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(
                   ConsumeSharedValue<String>(
                     family: 'family',
@@ -807,7 +806,7 @@ void main() {
             value: 'foo',
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(family: 'family')),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacActions([
@@ -837,7 +836,7 @@ void main() {
             value: ['a', 'b'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -878,7 +877,7 @@ void main() {
             value: ['ignore'],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers(
@@ -923,7 +922,7 @@ void main() {
             ],
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers([
@@ -975,7 +974,7 @@ void main() {
             value: {'ignore': 'ignored'},
             family: 'family',
             child: FlutterColumn(
-              children: ZacValueListSimple<Widget, List<Widget>?>([
+              children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
                   transformer: ZacTransformers([

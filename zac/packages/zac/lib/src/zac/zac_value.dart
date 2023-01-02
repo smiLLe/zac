@@ -77,57 +77,54 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
 }
 
 @freezedZacBuilder
-class ZacValueListSimple<T extends Object?, X extends List<T>?>
-    with _$ZacValueListSimple<T, X>
+class ZacValueList<T extends Object?, X extends List<T>?>
+    with _$ZacValueList<T, X>
     implements ZacListBuilder<T, X> {
-  const ZacValueListSimple._();
+  const ZacValueList._();
 
   static const String union = 'z:1:ZacValueList';
 
   /// freezed generates a code like this
-  ///   factory _$ZacValueListSimple.fromJson(Map<String, dynamic> json) =>
-  ///   _$ZacValueListSimple(json);
+  ///   factory _$ZacValueList.fromJson(Map<String, dynamic> json) =>
+  ///   _$ZacValueListFromJson(json);
   ///
-  /// _$ZacValueListSimple is missing <T,X>
-  /// it should be: _$ZacValueListSimple<T,X>(json)
+  /// _$ZacValueList is missing <T,X>
+  /// it should be: _$ZacValueList<T,X>(json)
   ///
   /// This will result in X being a Never type
-  factory ZacValueListSimple._freezedFix(ZacValueListSimple<T, Object?> zV) {
-    return ZacValueListSimple<T, X>(zV.items);
+  factory ZacValueList._freezedFix(ZacValueList<T, Object?> zV) {
+    return ZacValueList<T, X>(zV.items);
   }
 
-  static ZacValueListSimple<T, X>
-      fromRegister<T extends Object?, X extends List<T>?>(
-          Map<String, dynamic> map) {
-    return ZacValueListSimple<T, X>.fromJson(map);
+  static ZacValueList<T, X> fromRegister<T extends Object?, X extends List<T>?>(
+      Map<String, dynamic> map) {
+    return ZacValueList<T, X>.fromJson(map);
   }
 
-  factory ZacValueListSimple.fromJson(Object data) {
-    return ZacRegistry.ifBuilderLikeMap<ZacValueListSimple<T, X>>(
+  factory ZacValueList.fromJson(Object data) {
+    return ZacRegistry.ifBuilderLikeMap<ZacValueList<T, X>>(
       data,
       cb: (map, converterName) {
-        assert(converterName == ZacValueListSimple.union);
-        return ZacValueListSimple<T, X>._freezedFix(
-            _$ZacValueListSimpleFromJson<T, X>(map));
+        assert(converterName == ZacValueList.union);
+        return ZacValueList<T, X>._freezedFix(
+            _$ZacValueListFromJson<T, X>(map));
       },
       orElse: () {
         if (data is! List) {
-          throw StateError(
-              'Unsupported type in ${ZacValueListSimple<T, X>}: $data');
+          throw StateError('Unsupported type in ${ZacValueList<T, X>}: $data');
         }
 
-        return ZacValueListSimple<T, X>._freezedFix(
-            _$ZacValueListSimpleFromJson<T, X>(<String, dynamic>{
-          'builder': ZacValueListSimple.union,
+        return ZacValueList<T, X>._freezedFix(
+            _$ZacValueListFromJson<T, X>(<String, dynamic>{
+          'builder': ZacValueList.union,
           'items': data,
         }));
       },
     );
   }
 
-  @FreezedUnionValue(ZacValueListSimple.union)
-  factory ZacValueListSimple(List<ZacBuilder<T>> items) =
-      _ZacValueListSimple<T, X>;
+  @FreezedUnionValue(ZacValueList.union)
+  factory ZacValueList(List<ZacBuilder<T>> items) = _ZacValueListSimple<T, X>;
 
   @override
   X build(ZacContext zacContext) {
@@ -152,11 +149,11 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
   }
 
   /// freezed generates a code like this
-  ///   factory _$_ZacValueList.fromJson(Map<String, dynamic> json) =>
-  ///   _$$_ZacValueListFromJson(json);
+  ///   factory _$ZacValueMap.fromJson(Map<String, dynamic> json) =>
+  ///   _$$_ZacValueMapFromJson(json);
   ///
-  /// _ZacValueListFromJson is missing <T,X>
-  /// it should be: _ZacValueListFromJson<T,X>(json)
+  /// ZacValueMap is missing <T,X>
+  /// it should be: _ZacValueMap<T,X>(json)
   ///
   /// This will result in X being a Never type
   factory ZacValueMap._freezedFix(ZacValueMap<T, Object?> zV) {

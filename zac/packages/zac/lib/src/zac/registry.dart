@@ -27,7 +27,7 @@ class ZacRegistry extends DelegatingMap<String, Object> {
       ..registerGeneric(ZacValue.union, ZacValue.fromRegister)
       ..registerGeneric(
           ConsumeSharedValue.union, ConsumeSharedValue.fromRegister)
-      ..registerList(ZacValueListSimple.union, ZacValueListSimple.fromRegister)
+      ..registerList(ZacValueList.union, ZacValueList.fromRegister)
       ..registerList(
           ConsumeSharedValueList.union, ConsumeSharedValueList.fromRegister)
       ..registerMap(ZacValueMap.union, ZacValueMap.fromRegister)
