@@ -5,16 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "generate-ts",
+            "name": "generate-ts-lib",
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/generate_ts.dart",
+            "program": "generate/bin/generate_ts.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
-                "--path",
-                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
                 "--outFile",
                 "${workspaceFolder}\\zac_js\\src\\generated.ts",
                 "--jsRoot",

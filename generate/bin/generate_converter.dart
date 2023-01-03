@@ -12,7 +12,6 @@ void main(List<String> args) async {
   final parser = ArgParser();
   late final String path;
   late final String outFile;
-  late final String varName;
   parser.addOption(
     'path',
     mandatory: true,
@@ -22,11 +21,6 @@ void main(List<String> args) async {
     'outFile',
     mandatory: true,
     callback: (str) => outFile = str ?? 'NO FILE',
-  );
-  parser.addOption(
-    'varName',
-    mandatory: true,
-    callback: (str) => varName = str ?? '#######',
   );
   parser.parse(args);
 
@@ -56,10 +50,6 @@ import 'builder.dart';
 void addZacBuilders(ZacRegistry registry) {
 registry${[...zacBuilder, ...zacAction, ...zacTransformer].join('\n')};
 }''');
-
-// Map<String, Object Function(Map<String, dynamic> data)> $varName = const {
-// ${allConverter.join(',\n')}
-// };
 
   await Process.run(
     'dart format $outFile',
@@ -159,13 +149,12 @@ class OneFile {
 
   String get converterImport => lib.element.identifier;
 
-  late final Iterable<ClassElement> _filteredClasses =
-      lib.element.topLevelElements
-          .whereType<ClassElement>()
-          .where((cls) => !cls.isPrivate)
-          .where((cls) => !cls.displayName.startsWith('_'))
-          // .where((cls) => cls.metadata.checkHasClassAnnotation())
-          .where((cls) => cls.typeParameters.isEmpty);
+  late final Iterable<ClassElement> _filteredClasses = lib
+      .element.topLevelElements
+      .whereType<ClassElement>()
+      .where((cls) => !cls.isPrivate)
+      .where((cls) => !cls.displayName.startsWith('_'))
+      .where((cls) => cls.typeParameters.isEmpty);
 
   Iterable<BuilderClass> getZacBuilderClasses() {
     return _filteredClasses
