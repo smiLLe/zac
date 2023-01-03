@@ -1,0 +1,28 @@
+name: zac
+
+packages:
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  test:all:
+    run: |
+      melos run test --no-select
+    description: |
+      Run all tests available.
+  test:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter test --no-pub"
+    description: Run `flutter test` for a specific package.
+    select-package:
+      dir-exists:
+        - test
+      ignore:
+        - '*example*'
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    # runPubGetInParallel: false

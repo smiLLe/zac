@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "generate-ts",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "type": "dart",
+            "program": "zac/packages/zac/bin/generate_ts.dart",
+            "args": [
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
+                "--outFile",
+                "${workspaceFolder}\\zac_js\\src\\generated.ts",
+                "--jsRoot",
+                "${workspaceFolder}\\zac_js"
+            ],
+        },
+        {
+            "name": "generate-builder",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "type": "dart",
+            "program": "zac/packages/zac/bin/generate_converter.dart",
+            "args": [
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
+                "--outFile",
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\generated_builder.dart",
+                "--varName",
+                "generatedBuilder"
+            ],
+        },
+        {
+            "name": "generate-template-expression-converter",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "type": "dart",
+            "program": "zac/packages/zac/bin/generate_converter.dart",
+            "args": [
+                "--path",
+                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
+                "--outFile",
+                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src\\converter.dart",
+                "--varName",
+                "zacTemplateExpressionConverter"
+            ],
+        }
+    ]
+}

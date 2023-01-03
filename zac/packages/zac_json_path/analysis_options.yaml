@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+analyzer:
+  exclude: [lib/**.freezed.dart,  "**/*.g.dart"]
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
