@@ -65,7 +65,7 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
 
   @FreezedUnionValue('z:1:Completer<void>.complete')
   factory ZacCompleterActions.completeVoid({
-    required ConsumeSharedValue<Completer> completer,
+    required ZacBuilder<Completer> completer,
   }) = _ZacCompleterActionsVoid;
 
   @override

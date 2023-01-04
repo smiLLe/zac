@@ -16,6 +16,6 @@ _$_ZacCompleterVoidProvider _$$_ZacCompleterVoidProviderFromJson(
 _$_ZacCompleterActionsVoid _$$_ZacCompleterActionsVoidFromJson(
         Map<String, dynamic> json) =>
     _$_ZacCompleterActionsVoid(
-      completer: ConsumeSharedValue<Completer<dynamic>>.fromJson(
-          json['completer'] as Map<String, dynamic>),
+      completer:
+          ZacBuilder<Completer<dynamic>>.fromJson(json['completer'] as Object),
     );

@@ -28,7 +28,7 @@ class FlutterRefreshIndicator
     required ZacBuilder<Widget> child,
     ZacBuilder<double?>? displacement,
     ZacBuilder<double?>? edgeOffset,
-    required ZacActions onRefresh,
+    required ZacBuilder<List<ZacAction>> onRefresh,
     ZacBuilder<Color?>? color,
     ZacBuilder<Color?>? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
@@ -36,27 +36,15 @@ class FlutterRefreshIndicator
     ZacBuilder<String?>? semanticsValue,
     ZacBuilder<double?>? strokeWidth,
     ZacBuilder<RefreshIndicatorTriggerMode?>? triggerMode,
-    ConsumeSharedValue<Completer>? onRefreshCompleter,
   }) = _FlutterRefreshIndicator;
 
   RefreshIndicator _buildWidget(ZacContext zacContext) {
     return RefreshIndicator(
       onRefresh: () async {
-        if (null == onRefreshCompleter) {
-          onRefresh
-              .build(zacContext)
-              .execute(const ZacActionPayload(), zacContext);
-          return Future.value(null);
-        }
-
-        zacContext.ref
-            .invalidate(SharedValue.provider(onRefreshCompleter!.family));
-        final completer = onRefreshCompleter!.build(zacContext);
-
         onRefresh
             .build(zacContext)
-            .execute(ZacActionPayload.param(completer), zacContext);
-        return completer.future;
+            .execute(const ZacActionPayload(), zacContext);
+        return Future.value(null);
       },
       displacement: displacement?.build(zacContext) ?? 40.0,
       edgeOffset: edgeOffset?.build(zacContext) ?? 0.0,

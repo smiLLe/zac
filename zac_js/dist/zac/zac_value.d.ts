@@ -8,7 +8,7 @@ export declare class ZacValueConsumeOnly<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: SharedValueConsumeType;
-    }): ZacValueConsumeOnly<ZacValueTypes>;
+    }): ZacValueConsumeOnly<any>;
 }
 export declare class ZacValue<T> extends ZacConverter {
     private ignoredProp;
@@ -21,7 +21,7 @@ export declare class ZacValue<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: SharedValueConsumeType;
-    }): ZacValue<ZacValueTypes>;
+    }): ZacValue<any>;
 }
 declare type ZacValueListTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValueList<T> extends ZacConverter {
@@ -35,7 +35,7 @@ export declare class ZacValueList<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: SharedValueConsumeType;
-    }): ZacValueList<ZacValueListTypes>;
+    }): ZacValueList<any>;
 }
 declare type ZacValueMapTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValueMap<T> extends ZacConverter {
@@ -51,6 +51,6 @@ export declare class ZacValueMap<T> extends ZacConverter {
         transformer?: ZacTransformers;
         select?: ZacTransformers;
         forceConsume?: SharedValueConsumeType;
-    }): ZacValueMap<ZacValueMapTypes>;
+    }): ZacValueMap<any>;
 }
 export {};

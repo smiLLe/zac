@@ -23,9 +23,8 @@ class FlutterMaterialApp
   @FreezedUnionValue(FlutterMaterialApp.unionValue)
   factory FlutterMaterialApp({
     ZacBuilder<Key?>? key,
-    ConsumeSharedValue<GlobalKey<NavigatorState>?>? navigatorKey,
-    ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>?>?
-        scaffoldMessengerKey,
+    ZacBuilder<GlobalKey<NavigatorState>?>? navigatorKey,
+    ZacBuilder<GlobalKey<ScaffoldMessengerState>?>? scaffoldMessengerKey,
     ZacBuilder<Widget?>? home,
     // Map<String, WidgetBuilder> routes = const <String, WidgetBuilder>{},
     ZacBuilder<String?>? initialRoute,

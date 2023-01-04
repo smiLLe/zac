@@ -6,6 +6,7 @@
     "configurations": [
         {
             "name": "generate-ts-lib",
+            "console": "debugConsole",
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
@@ -13,8 +14,10 @@
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
-                "--outFile",
-                "${workspaceFolder}\\zac_js\\src\\generated.ts",
+                "--nativeTypesFiles",
+                "${workspaceFolder}\\zac_js\\src\\generated.nativetypes.ts",
+                "--classesFile",
+                "${workspaceFolder}\\zac_js\\src\\generated.classes.ts",
                 "--jsRoot",
                 "${workspaceFolder}\\zac_js"
             ],

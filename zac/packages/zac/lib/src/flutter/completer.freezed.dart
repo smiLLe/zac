@@ -94,8 +94,7 @@ ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacCompleterActions {
-  ConsumeSharedValue<Completer> get completer =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<Completer> get completer => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -113,7 +112,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
       _$$_ZacCompleterActionsVoidFromJson(json);
 
   @override
-  final ConsumeSharedValue<Completer> completer;
+  final ZacBuilder<Completer> completer;
 
   @override
   String toString() {
@@ -144,7 +143,7 @@ class _$_ZacCompleterActionsVoid extends _ZacCompleterActionsVoid {
 
 abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
   factory _ZacCompleterActionsVoid(
-          {required final ConsumeSharedValue<Completer> completer}) =
+          {required final ZacBuilder<Completer> completer}) =
       _$_ZacCompleterActionsVoid;
   _ZacCompleterActionsVoid._() : super._();
 
@@ -152,5 +151,5 @@ abstract class _ZacCompleterActionsVoid extends ZacCompleterActions {
       _$_ZacCompleterActionsVoid.fromJson;
 
   @override
-  ConsumeSharedValue<Completer> get completer;
+  ZacBuilder<Completer> get completer;
 }
