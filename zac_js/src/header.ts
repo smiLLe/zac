@@ -1,3 +1,5 @@
+export type SharedValueFamily = string;
+
 export type ZacBuilderData = {
     builder: string;
     [key: string]: unknown;

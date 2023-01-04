@@ -54,19 +54,6 @@ void main(List<String> args) async {
   );
 }
 
-bool isFlutterNativeType(DartType type) {
-  if (null != type.alias) {
-    final ele = type.alias!.element;
-    return ele.library.identifier.startsWith('package:flutter') ||
-        ele.library.identifier.startsWith('dart:');
-  }
-
-  if (type is! InterfaceType) return false;
-
-  return type.element.library.identifier.startsWith('package:flutter') ||
-      type.element.library.identifier.startsWith('dart:');
-}
-
 Future<AllFiles> fillAllFiles(List<String> paths) async {
   final listOfAllFiles = <OneFile>[];
   final ctxColl = AnalysisContextCollection(includedPaths: paths);
@@ -88,15 +75,23 @@ Future<void> createClassesFile(
 }
 
 abstract class NativeTypes {
-  static String getName(DartType type) {
+  static bool isFlutterNativeType(DartType type) {
     if (null != type.alias) {
-      return type.alias!.element.name;
-    }
-    if (type is InterfaceType) {
-      return type.element.name;
+      final ele = type.alias!.element;
+      return ele.library.identifier.startsWith('package:flutter') ||
+          ele.library.identifier.startsWith('dart:');
     }
 
-    throw StateError('Invalid type in $NativeTypes: $type');
+    if (type is! InterfaceType) return false;
+
+    return type.element.library.identifier.startsWith('package:flutter') ||
+        type.element.library.identifier.startsWith('dart:');
+  }
+
+  static String nativeNameOrLibName(DartType type) {
+    return isFlutterNativeType(type)
+        ? 'native.${OneClass.getName(type)}'
+        : OneClass.cleanUpFlutterPrefix(OneClass.getName(type));
   }
 }
 
@@ -222,6 +217,17 @@ class OneClass {
 
   final ClassElement element;
 
+  static String getName(DartType type) {
+    if (null != type.alias) {
+      return type.alias!.element.name;
+    }
+    if (type is InterfaceType) {
+      return type.element.name;
+    }
+
+    throw StateError('Invalid type in $NativeTypes: $type');
+  }
+
   static String cleanUpFlutterPrefix(String name) {
     if (name.startsWith('Flutter')) {
       return name.substring('Flutter'.length);
@@ -231,7 +237,7 @@ class OneClass {
   }
 
   late final String className = () {
-    return cleanUpFlutterPrefix(element.displayName);
+    return cleanUpFlutterPrefix(getName(element.thisType));
   }();
 
   late final String classNameWithTypes = () {
@@ -410,22 +416,14 @@ ${_actionsTmpl().join('\n')}
 
 String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
     [int depth = 0]) {
-  if (type is DynamicType) {
+  if (null != type.alias && type is FunctionType) {
+    return NativeTypes.nativeNameOrLibName(type);
+  }
+
+  if (type is! InterfaceType) {
     return 'any';
   }
-  if (null != type.alias && type is FunctionType) {
-    return isFlutterNativeType(type)
-        ? 'native.${type.alias!.element.name}'
-        : OneClass.cleanUpFlutterPrefix(type.alias!.element.name);
-  }
-  if (type is! InterfaceType) {
-    throw Error();
-  }
-  var name = type.getDisplayString(withNullability: false);
-  if (type.typeArguments.isNotEmpty) {
-    name = name.split('<').first;
-  }
-  name = OneClass.cleanUpFlutterPrefix(name);
+
   String opt() {
     if (depth == 0) return '';
     return type.getDisplayString(withNullability: true).endsWith('?')
@@ -433,11 +431,22 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
         : '';
   }
 
+  final name = OneClass.getName(type);
+
   switch (name) {
     case 'ZacBuilder':
       final mappedName =
           mapDartTypeToTypescript(allFiles, type.typeArguments.first);
-      return 'ZacBuilder<$mappedName>${opt()}';
+      final def = 'ZacBuilder<$mappedName>${opt()}';
+
+      switch (mappedName) {
+        case 'number':
+        case 'string':
+        case 'boolean':
+          return '$mappedName | $def';
+        default:
+          return def;
+      }
     case 'ZacListBuilder':
       final mappedName =
           mapDartTypeToTypescript(allFiles, type.typeArguments.first);
@@ -453,6 +462,7 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
       return 'string${opt()}';
     case 'double':
     case 'int':
+    case 'num':
       return 'number${opt()}';
     case 'void':
     case 'dynamic':
@@ -465,9 +475,6 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
     case 'Iterable':
       return 'Array<${mapDartTypeToTypescript(allFiles, type.typeArguments.first, depth + 1)}>${opt()}';
     default:
-      return isFlutterNativeType(type)
-          ? 'native.${NativeTypes.getName(type)}'
-          : OneClass.cleanUpFlutterPrefix(
-              type.getDisplayString(withNullability: false));
+      return NativeTypes.nativeNameOrLibName(type);
   }
 }

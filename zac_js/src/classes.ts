@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as native from "./nativetypes";
 
+export type SharedValueFamily = string;
+
 export type ZacBuilderData = {
   builder: string;
   [key: string]: unknown;
@@ -116,8 +118,8 @@ export class Align extends ZacBuilder<native.Align> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
-    widthFactor?: ZacBuilder<number>;
-    heightFactor?: ZacBuilder<number>;
+    widthFactor?: number | ZacBuilder<number>;
+    heightFactor?: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new Align({
@@ -127,7 +129,10 @@ export class Align extends ZacBuilder<native.Align> {
   }
 }
 export class Alignment extends ZacBuilder<native.Alignment> {
-  static new(data: { x: ZacBuilder<number>; y: ZacBuilder<number> }) {
+  static new(data: {
+    x: number | ZacBuilder<number>;
+    y: number | ZacBuilder<number>;
+  }) {
     return new Alignment({
       builder: "f:1:Alignment",
       ...data,
@@ -180,7 +185,10 @@ export class Alignment extends ZacBuilder<native.Alignment> {
   }
 }
 export class AlignmentDirectional extends ZacBuilder<native.AlignmentDirectional> {
-  static new(data: { start: ZacBuilder<number>; y: ZacBuilder<number> }) {
+  static new(data: {
+    start: number | ZacBuilder<number>;
+    y: number | ZacBuilder<number>;
+  }) {
     return new AlignmentDirectional({
       builder: "f:1:AlignmentDirectional",
       ...data,
@@ -236,26 +244,26 @@ export class AppBar extends ZacBuilder<native.AppBar> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     leading?: ZacBuilder<native.Widget>;
-    automaticallyImplyLeading?: ZacBuilder<boolean>;
+    automaticallyImplyLeading?: boolean | ZacBuilder<boolean>;
     title?: ZacBuilder<native.Widget>;
     actions?: ZacListBuilder<native.Widget>;
     flexibleSpace?: ZacBuilder<native.Widget>;
     bottom?: ZacBuilder<native.Widget>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     shadowColor?: ZacBuilder<native.Color>;
     shape?: ZacBuilder<native.ShapeBorder>;
     backgroundColor?: ZacBuilder<native.Color>;
     foregroundColor?: ZacBuilder<native.Color>;
     iconTheme?: ZacBuilder<native.IconThemeData>;
     actionsIconTheme?: ZacBuilder<native.IconThemeData>;
-    primary?: ZacBuilder<boolean>;
-    centerTitle?: ZacBuilder<boolean>;
-    excludeHeaderSemantics?: ZacBuilder<boolean>;
-    titleSpacing?: ZacBuilder<number>;
-    toolbarOpacity?: ZacBuilder<number>;
-    bottomOpacity?: ZacBuilder<number>;
-    toolbarHeight?: ZacBuilder<number>;
-    leadingWidth?: ZacBuilder<number>;
+    primary?: boolean | ZacBuilder<boolean>;
+    centerTitle?: boolean | ZacBuilder<boolean>;
+    excludeHeaderSemantics?: boolean | ZacBuilder<boolean>;
+    titleSpacing?: number | ZacBuilder<number>;
+    toolbarOpacity?: number | ZacBuilder<number>;
+    bottomOpacity?: number | ZacBuilder<number>;
+    toolbarHeight?: number | ZacBuilder<number>;
+    leadingWidth?: number | ZacBuilder<number>;
     toolbarTextStyle?: ZacBuilder<native.TextStyle>;
     titleTextStyle?: ZacBuilder<native.TextStyle>;
     systemOverlayStyle?: ZacBuilder<native.SystemUiOverlayStyle>;
@@ -269,7 +277,7 @@ export class AppBar extends ZacBuilder<native.AppBar> {
 export class AspectRatio extends ZacBuilder<native.AspectRatio> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    aspectRatio: ZacBuilder<number>;
+    aspectRatio: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new AspectRatio({
@@ -473,7 +481,7 @@ export class Border extends ZacBuilder<native.Border> {
   }
   static all(data?: {
     color?: ZacBuilder<native.Color>;
-    width?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
     style?: ZacBuilder<native.BorderStyle>;
   }) {
     return new Border({
@@ -502,7 +510,7 @@ export class BorderRadius extends ZacBuilder<native.BorderRadius> {
       ...data,
     });
   }
-  static circular(data: { radius: ZacBuilder<number> }) {
+  static circular(data: { radius: number | ZacBuilder<number> }) {
     return new BorderRadius({
       builder: "f:1:BorderRadius.circular",
       ...data,
@@ -521,7 +529,7 @@ export class BorderRadius extends ZacBuilder<native.BorderRadius> {
 export class BorderSide extends ZacBuilder<native.BorderSide> {
   static new(data?: {
     color?: ZacBuilder<native.Color>;
-    width?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
     style?: ZacBuilder<native.BorderStyle>;
   }) {
     return new BorderSide({
@@ -544,10 +552,10 @@ export class BorderStyle extends ZacBuilder<native.BorderStyle> {
 }
 export class BoxConstraints extends ZacBuilder<native.BoxConstraints> {
   static new(data?: {
-    minWidth?: ZacBuilder<number>;
-    maxWidth?: ZacBuilder<number>;
-    minHeight?: ZacBuilder<number>;
-    maxHeight?: ZacBuilder<number>;
+    minWidth?: number | ZacBuilder<number>;
+    maxWidth?: number | ZacBuilder<number>;
+    minHeight?: number | ZacBuilder<number>;
+    maxHeight?: number | ZacBuilder<number>;
   }) {
     return new BoxConstraints({
       builder: "f:1:BoxConstraints",
@@ -555,8 +563,8 @@ export class BoxConstraints extends ZacBuilder<native.BoxConstraints> {
     });
   }
   static expand(data?: {
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
   }) {
     return new BoxConstraints({
       builder: "f:1:BoxConstraints.expand",
@@ -576,8 +584,8 @@ export class BoxConstraints extends ZacBuilder<native.BoxConstraints> {
     });
   }
   static tightFor(data?: {
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
   }) {
     return new BoxConstraints({
       builder: "f:1:BoxConstraints.tightFor",
@@ -585,8 +593,8 @@ export class BoxConstraints extends ZacBuilder<native.BoxConstraints> {
     });
   }
   static tightForFinite(data?: {
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
   }) {
     return new BoxConstraints({
       builder: "f:1:BoxConstraints.tightForFinite",
@@ -682,8 +690,8 @@ export class BoxShadow extends ZacBuilder<native.BoxShadow> {
   static new(data?: {
     color?: ZacBuilder<native.Color>;
     offset?: ZacBuilder<native.Offset>;
-    blurRadius?: ZacBuilder<number>;
-    spreadRadius?: ZacBuilder<number>;
+    blurRadius?: number | ZacBuilder<number>;
+    spreadRadius?: number | ZacBuilder<number>;
     blurStyle?: BlurStyle;
   }) {
     return new BoxShadow({
@@ -744,12 +752,12 @@ export class ButtonBar extends ZacBuilder<native.ButtonBar> {
     key?: ZacBuilder<native.Key>;
     alignment?: ZacBuilder<native.MainAxisAlignment>;
     mainAxisSize?: ZacBuilder<native.MainAxisSize>;
-    buttonMinWidth?: ZacBuilder<number>;
-    buttonHeight?: ZacBuilder<number>;
+    buttonMinWidth?: number | ZacBuilder<number>;
+    buttonHeight?: number | ZacBuilder<number>;
     buttonPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    buttonAlignedDropdown?: ZacBuilder<boolean>;
+    buttonAlignedDropdown?: boolean | ZacBuilder<boolean>;
     overflowDirection?: ZacBuilder<native.VerticalDirection>;
-    overflowButtonSpacing?: ZacBuilder<number>;
+    overflowButtonSpacing?: number | ZacBuilder<number>;
     children?: ZacListBuilder<native.Widget>;
   }) {
     return new ButtonBar({
@@ -763,13 +771,13 @@ export class Card extends ZacBuilder<native.Card> {
     key?: ZacBuilder<native.Key>;
     color?: ZacBuilder<native.Color>;
     shadowColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     shape?: ZacBuilder<native.ShapeBorder>;
-    borderOnForeground?: ZacBuilder<boolean>;
+    borderOnForeground?: boolean | ZacBuilder<boolean>;
     margin?: ZacBuilder<native.EdgeInsetsGeometry>;
     clipBehavior?: ZacBuilder<native.Clip>;
     child?: ZacBuilder<native.Widget>;
-    semanticContainer?: ZacBuilder<boolean>;
+    semanticContainer?: boolean | ZacBuilder<boolean>;
   }) {
     return new Card({
       builder: "f:1:Card",
@@ -780,8 +788,8 @@ export class Card extends ZacBuilder<native.Card> {
 export class Center extends ZacBuilder<native.Center> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    widthFactor?: ZacBuilder<number>;
-    heightFactor?: ZacBuilder<number>;
+    widthFactor?: number | ZacBuilder<number>;
+    heightFactor?: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new Center({
@@ -850,7 +858,7 @@ export class Color extends ZacBuilder<native.Color> {
     r: number;
     g: number;
     b: number;
-    opacity: ZacBuilder<number>;
+    opacity: number | ZacBuilder<number>;
   }) {
     return new Color({
       builder: "f:1:Color.fromRGBO",
@@ -934,18 +942,18 @@ export class CustomScrollView extends ZacBuilder<native.CustomScrollView> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     scrollDirection?: Axis;
-    reverse?: ZacBuilder<boolean>;
+    reverse?: boolean | ZacBuilder<boolean>;
     controller?: ZacBuilder<native.ScrollController>;
-    primary?: ZacBuilder<boolean>;
+    primary?: boolean | ZacBuilder<boolean>;
     physics?: ScrollPhysics;
-    shrinkWrap?: ZacBuilder<boolean>;
+    shrinkWrap?: boolean | ZacBuilder<boolean>;
     center?: ZacBuilder<native.Key>;
-    anchor?: ZacBuilder<number>;
-    cacheExtent?: ZacBuilder<number>;
+    anchor?: number | ZacBuilder<number>;
+    cacheExtent?: number | ZacBuilder<number>;
     slivers?: ZacListBuilder<native.Widget>;
-    semanticChildCount?: ZacBuilder<number>;
+    semanticChildCount?: number | ZacBuilder<number>;
     keyboardDismissBehavior?: ScrollViewKeyboardDismissBehavior;
-    restorationId?: ZacBuilder<string>;
+    restorationId?: string | ZacBuilder<string>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new CustomScrollView({
@@ -983,7 +991,7 @@ export class Dialogs extends ZacBuilder<native.Widget> {
   static dialog(data?: {
     key?: ZacBuilder<native.Key>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     insetPadding?: ZacBuilder<native.EdgeInsets>;
     clipBehavior?: ZacBuilder<native.Clip>;
     shape?: ZacBuilder<native.ShapeBorder>;
@@ -1007,16 +1015,16 @@ export class Dialogs extends ZacBuilder<native.Widget> {
     actionsPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     actionsAlignment?: ZacBuilder<native.MainAxisAlignment>;
     actionsOverflowDirection?: ZacBuilder<native.VerticalDirection>;
-    actionsOverflowButtonSpacing?: ZacBuilder<number>;
+    actionsOverflowButtonSpacing?: number | ZacBuilder<number>;
     buttonPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
-    semanticLabel?: ZacBuilder<string>;
+    elevation?: number | ZacBuilder<number>;
+    semanticLabel?: string | ZacBuilder<string>;
     insetPadding?: ZacBuilder<native.EdgeInsets>;
     clipBehavior?: ZacBuilder<native.Clip>;
     shape?: ZacBuilder<native.ShapeBorder>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
-    scrollable?: ZacBuilder<boolean>;
+    scrollable?: boolean | ZacBuilder<boolean>;
   }) {
     return new Dialogs({
       builder: "f:1:AlertDialog",
@@ -1031,8 +1039,8 @@ export class Dialogs extends ZacBuilder<native.Widget> {
     titleTextStyle?: ZacBuilder<native.TextStyle>;
     contentPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
-    semanticLabel?: ZacBuilder<string>;
+    elevation?: number | ZacBuilder<number>;
+    semanticLabel?: string | ZacBuilder<string>;
     insetPadding?: ZacBuilder<native.EdgeInsets>;
     clipBehavior?: ZacBuilder<native.Clip>;
     shape?: ZacBuilder<native.ShapeBorder>;
@@ -1058,10 +1066,10 @@ export class Dialogs extends ZacBuilder<native.Widget> {
 export class Divider extends ZacBuilder<native.Divider> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    height?: ZacBuilder<number>;
-    thickness?: ZacBuilder<number>;
-    indent?: ZacBuilder<number>;
-    endIndent?: ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
+    thickness?: number | ZacBuilder<number>;
+    indent?: number | ZacBuilder<number>;
+    endIndent?: number | ZacBuilder<number>;
     color?: ZacBuilder<native.Color>;
   }) {
     return new Divider({
@@ -1074,10 +1082,10 @@ export class Drawer extends ZacBuilder<native.Drawer> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     shape?: ZacBuilder<native.ShapeBorder>;
     child?: ZacBuilder<native.Widget>;
-    semanticLabel?: ZacBuilder<string>;
+    semanticLabel?: string | ZacBuilder<string>;
   }) {
     return new Drawer({
       builder: "f:1:Drawer",
@@ -1086,15 +1094,15 @@ export class Drawer extends ZacBuilder<native.Drawer> {
   }
 }
 export class EdgeInsets extends ZacBuilder<native.EdgeInsets> {
-  static all(data: { value: ZacBuilder<number> }) {
+  static all(data: { value: number | ZacBuilder<number> }) {
     return new EdgeInsets({
       builder: "f:1:EdgeInsets.all",
       ...data,
     });
   }
   static symmetric(data?: {
-    vertical?: ZacBuilder<number>;
-    horizontal?: ZacBuilder<number>;
+    vertical?: number | ZacBuilder<number>;
+    horizontal?: number | ZacBuilder<number>;
   }) {
     return new EdgeInsets({
       builder: "f:1:EdgeInsets.symmetric",
@@ -1102,10 +1110,10 @@ export class EdgeInsets extends ZacBuilder<native.EdgeInsets> {
     });
   }
   static only(data?: {
-    left?: ZacBuilder<number>;
-    top?: ZacBuilder<number>;
-    right?: ZacBuilder<number>;
-    bottom?: ZacBuilder<number>;
+    left?: number | ZacBuilder<number>;
+    top?: number | ZacBuilder<number>;
+    right?: number | ZacBuilder<number>;
+    bottom?: number | ZacBuilder<number>;
   }) {
     return new EdgeInsets({
       builder: "f:1:EdgeInsets.only",
@@ -1114,17 +1122,17 @@ export class EdgeInsets extends ZacBuilder<native.EdgeInsets> {
   }
 }
 export class EdgeInsetsDirectional extends ZacBuilder<native.EdgeInsetsDirectional> {
-  static all(data: { value: ZacBuilder<number> }) {
+  static all(data: { value: number | ZacBuilder<number> }) {
     return new EdgeInsetsDirectional({
       builder: "f:1:EdgeInsetsDirectional.all",
       ...data,
     });
   }
   static only(data?: {
-    start?: ZacBuilder<number>;
-    top?: ZacBuilder<number>;
-    end?: ZacBuilder<number>;
-    bottom?: ZacBuilder<number>;
+    start?: number | ZacBuilder<number>;
+    top?: number | ZacBuilder<number>;
+    end?: number | ZacBuilder<number>;
+    bottom?: number | ZacBuilder<number>;
   }) {
     return new EdgeInsetsDirectional({
       builder: "f:1:EdgeInsetsDirectional.only",
@@ -1138,7 +1146,7 @@ export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
     child?: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new ElevatedButton({
@@ -1152,7 +1160,7 @@ export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
     label: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new ElevatedButton({
@@ -1164,7 +1172,7 @@ export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
 export class Expanded extends ZacBuilder<native.Expanded> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    flex?: ZacBuilder<number>;
+    flex?: number | ZacBuilder<number>;
     child: ZacBuilder<native.Widget>;
   }) {
     return new Expanded({
@@ -1224,7 +1232,7 @@ export class FlexFit extends ZacBuilder<native.FlexFit> {
 export class Flexible extends ZacBuilder<native.Flexible> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    flex?: ZacBuilder<number>;
+    flex?: number | ZacBuilder<number>;
     fit?: ZacBuilder<native.FlexFit>;
     child: ZacBuilder<native.Widget>;
   }) {
@@ -1235,7 +1243,7 @@ export class Flexible extends ZacBuilder<native.Flexible> {
   }
 }
 export class FontFeature extends ZacBuilder<native.FontFeature> {
-  static new(data: { feature: string; value?: ZacBuilder<number> }) {
+  static new(data: { feature: string; value?: number | ZacBuilder<number> }) {
     return new FontFeature({
       builder: "f:1:FontFeature",
       ...data,
@@ -1305,13 +1313,13 @@ export class FontFeature extends ZacBuilder<native.FontFeature> {
       builder: "f:1:FontFeature.liningFigures",
     });
   }
-  static localeAware(data?: { enable?: ZacBuilder<boolean> }) {
+  static localeAware(data?: { enable?: boolean | ZacBuilder<boolean> }) {
     return new FontFeature({
       builder: "f:1:FontFeature.localeAware",
       ...data,
     });
   }
-  static notationalForms(data?: { value?: ZacBuilder<number> }) {
+  static notationalForms(data?: { value?: number | ZacBuilder<number> }) {
     return new FontFeature({
       builder: "f:1:FontFeature.notationalForms",
       ...data,
@@ -1373,7 +1381,7 @@ export class FontFeature extends ZacBuilder<native.FontFeature> {
       builder: "f:1:FontFeature.superscripts",
     });
   }
-  static swash(data?: { value?: ZacBuilder<number> }) {
+  static swash(data?: { value?: number | ZacBuilder<number> }) {
     return new FontFeature({
       builder: "f:1:FontFeature.swash",
       ...data,
@@ -1455,7 +1463,10 @@ export class FontWeight extends ZacBuilder<native.FontWeight> {
   }
 }
 export class FractionalOffset extends ZacBuilder<native.FractionalOffset> {
-  static new(data: { dx: ZacBuilder<number>; dy: ZacBuilder<number> }) {
+  static new(data: {
+    dx: number | ZacBuilder<number>;
+    dy: number | ZacBuilder<number>;
+  }) {
     return new FractionalOffset({
       builder: "f:1:FractionalOffset",
       ...data,
@@ -1467,7 +1478,7 @@ export class FractionalTranslation extends ZacBuilder<native.FractionalTranslati
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
     translation: Offset;
-    transformHitTests?: ZacBuilder<boolean>;
+    transformHitTests?: boolean | ZacBuilder<boolean>;
   }) {
     return new FractionalTranslation({
       builder: "f:1:FractionalTranslation",
@@ -1480,8 +1491,8 @@ export class FractionallySizedBox extends ZacBuilder<native.FractionallySizedBox
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
-    widthFactor?: ZacBuilder<number>;
-    heightFactor?: ZacBuilder<number>;
+    widthFactor?: number | ZacBuilder<number>;
+    heightFactor?: number | ZacBuilder<number>;
   }) {
     return new FractionallySizedBox({
       builder: "f:1:FractionallySizedBox",
@@ -1500,7 +1511,7 @@ export class GestureDetector extends ZacBuilder<native.GestureDetector> {
     onSecondaryLongPress?: ZacBuilder<Array<ZacAction>>;
     onTertiaryLongPress?: ZacBuilder<Array<ZacAction>>;
     behavior?: HitTestBehavior;
-    excludeFromSemantics?: ZacBuilder<boolean>;
+    excludeFromSemantics?: boolean | ZacBuilder<boolean>;
   }) {
     return new GestureDetector({
       builder: "f:1:GestureDetector",
@@ -1510,8 +1521,8 @@ export class GestureDetector extends ZacBuilder<native.GestureDetector> {
 }
 export class GlobalKeyNavigatorStateProvider extends ZacBuilder<native.Widget> {
   static new(data: {
-    debugLabel?: ZacBuilder<string>;
-    family: any;
+    debugLabel?: string | ZacBuilder<string>;
+    family: SharedValueFamily;
     child: ZacBuilder<native.Widget>;
   }) {
     return new GlobalKeyNavigatorStateProvider({
@@ -1522,8 +1533,8 @@ export class GlobalKeyNavigatorStateProvider extends ZacBuilder<native.Widget> {
 }
 export class GlobalKeyScaffoldMessengerStateProvider extends ZacBuilder<native.Widget> {
   static new(data: {
-    debugLabel?: ZacBuilder<string>;
-    family: any;
+    debugLabel?: string | ZacBuilder<string>;
+    family: SharedValueFamily;
     child: ZacBuilder<native.Widget>;
   }) {
     return new GlobalKeyScaffoldMessengerStateProvider({
@@ -1536,21 +1547,21 @@ export class GridView extends ZacBuilder<native.GridView> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
     scrollDirection?: ZacBuilder<native.Axis>;
-    reverse?: ZacBuilder<boolean>;
+    reverse?: boolean | ZacBuilder<boolean>;
     controller?: ZacBuilder<native.ScrollController>;
-    primary?: ZacBuilder<boolean>;
-    shrinkWrap?: ZacBuilder<boolean>;
+    primary?: boolean | ZacBuilder<boolean>;
+    shrinkWrap?: boolean | ZacBuilder<boolean>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
     gridDelegate: ZacBuilder<native.SliverGridDelegate>;
-    addAutomaticKeepAlives?: ZacBuilder<boolean>;
-    addRepaintBoundaries?: ZacBuilder<boolean>;
-    addSemanticIndexes?: ZacBuilder<boolean>;
-    cacheExtent?: ZacBuilder<number>;
+    addAutomaticKeepAlives?: boolean | ZacBuilder<boolean>;
+    addRepaintBoundaries?: boolean | ZacBuilder<boolean>;
+    addSemanticIndexes?: boolean | ZacBuilder<boolean>;
+    cacheExtent?: number | ZacBuilder<number>;
     children?: ZacListBuilder<native.Widget>;
-    semanticChildCount?: ZacBuilder<number>;
+    semanticChildCount?: number | ZacBuilder<number>;
     clipBehavior?: ZacBuilder<native.Clip>;
     keyboardDismissBehavior?: ZacBuilder<native.ScrollViewKeyboardDismissBehavior>;
-    restorationId?: ZacBuilder<string>;
+    restorationId?: string | ZacBuilder<string>;
   }) {
     return new GridView({
       builder: "f:1:GridView",
@@ -1579,9 +1590,9 @@ export class Icon extends ZacBuilder<native.Icon> {
   static new(data: {
     icon: IconData;
     key?: ZacBuilder<native.Key>;
-    size?: ZacBuilder<number>;
+    size?: number | ZacBuilder<number>;
     color?: ZacBuilder<native.Color>;
-    semanticLabel?: ZacBuilder<string>;
+    semanticLabel?: string | ZacBuilder<string>;
     textDirection?: ZacBuilder<native.TextDirection>;
   }) {
     return new Icon({
@@ -1592,10 +1603,10 @@ export class Icon extends ZacBuilder<native.Icon> {
 }
 export class IconData extends ZacBuilder<native.IconData> {
   static new(data: {
-    codePoint: ZacBuilder<number>;
-    fontFamily?: ZacBuilder<string>;
-    fontPackage?: ZacBuilder<string>;
-    matchTextDirection?: ZacBuilder<boolean>;
+    codePoint: number | ZacBuilder<number>;
+    fontFamily?: string | ZacBuilder<string>;
+    fontPackage?: string | ZacBuilder<string>;
+    matchTextDirection?: boolean | ZacBuilder<boolean>;
   }) {
     return new IconData({
       builder: "f:1:IconData",
@@ -1606,8 +1617,8 @@ export class IconData extends ZacBuilder<native.IconData> {
 export class IconThemeData extends ZacBuilder<native.IconThemeData> {
   static new(data?: {
     color?: ZacBuilder<native.Color>;
-    opacity?: ZacBuilder<number>;
-    size?: ZacBuilder<number>;
+    opacity?: number | ZacBuilder<number>;
+    size?: number | ZacBuilder<number>;
   }) {
     return new IconThemeData({
       builder: "f:1:IconThemeData",
@@ -1618,8 +1629,8 @@ export class IconThemeData extends ZacBuilder<native.IconThemeData> {
 export class IgnorePointer extends ZacBuilder<native.IgnorePointer> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    ignoring?: ZacBuilder<boolean>;
-    ignoringSemantics?: ZacBuilder<boolean>;
+    ignoring?: boolean | ZacBuilder<boolean>;
+    ignoringSemantics?: boolean | ZacBuilder<boolean>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new IgnorePointer({
@@ -1630,26 +1641,26 @@ export class IgnorePointer extends ZacBuilder<native.IgnorePointer> {
 }
 export class Image extends ZacBuilder<native.Image> {
   static network(data: {
-    src: ZacBuilder<string>;
+    src: string | ZacBuilder<string>;
     key?: ZacBuilder<native.Key>;
-    scale?: ZacBuilder<number>;
-    semanticLabel?: ZacBuilder<string>;
-    excludeFromSemantics?: ZacBuilder<boolean>;
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    scale?: number | ZacBuilder<number>;
+    semanticLabel?: string | ZacBuilder<string>;
+    excludeFromSemantics?: boolean | ZacBuilder<boolean>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     color?: ZacBuilder<native.Color>;
     colorBlendMode?: ZacBuilder<native.BlendMode>;
     fit?: ZacBuilder<native.BoxFit>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
     repeat?: ZacBuilder<native.ImageRepeat>;
     centerSlice?: ZacBuilder<native.Rect>;
-    matchTextDirection?: ZacBuilder<boolean>;
-    gaplessPlayback?: ZacBuilder<boolean>;
+    matchTextDirection?: boolean | ZacBuilder<boolean>;
+    gaplessPlayback?: boolean | ZacBuilder<boolean>;
     filterQuality?: ZacBuilder<native.FilterQuality>;
-    isAntiAlias?: ZacBuilder<boolean>;
+    isAntiAlias?: boolean | ZacBuilder<boolean>;
     headers?: Record<string, string>;
-    cacheWidth?: ZacBuilder<number>;
-    cacheHeight?: ZacBuilder<number>;
+    cacheWidth?: number | ZacBuilder<number>;
+    cacheHeight?: number | ZacBuilder<number>;
   }) {
     return new Image({
       builder: "f:1:Image.network",
@@ -1657,26 +1668,26 @@ export class Image extends ZacBuilder<native.Image> {
     });
   }
   static asset(data: {
-    name: ZacBuilder<string>;
+    name: string | ZacBuilder<string>;
     key?: ZacBuilder<native.Key>;
-    semanticLabel?: ZacBuilder<string>;
-    excludeFromSemantics?: ZacBuilder<boolean>;
-    scale?: ZacBuilder<number>;
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    semanticLabel?: string | ZacBuilder<string>;
+    excludeFromSemantics?: boolean | ZacBuilder<boolean>;
+    scale?: number | ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     color?: ZacBuilder<native.Color>;
     colorBlendMode?: ZacBuilder<native.BlendMode>;
     fit?: ZacBuilder<native.BoxFit>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
     repeat?: ZacBuilder<native.ImageRepeat>;
     centerSlice?: ZacBuilder<native.Rect>;
-    matchTextDirection?: ZacBuilder<boolean>;
-    gaplessPlayback?: ZacBuilder<boolean>;
-    isAntiAlias?: ZacBuilder<boolean>;
-    package?: ZacBuilder<string>;
+    matchTextDirection?: boolean | ZacBuilder<boolean>;
+    gaplessPlayback?: boolean | ZacBuilder<boolean>;
+    isAntiAlias?: boolean | ZacBuilder<boolean>;
+    package?: string | ZacBuilder<string>;
     filterQuality?: ZacBuilder<native.FilterQuality>;
-    cacheWidth?: ZacBuilder<number>;
-    cacheHeight?: ZacBuilder<number>;
+    cacheWidth?: number | ZacBuilder<number>;
+    cacheHeight?: number | ZacBuilder<number>;
   }) {
     return new Image({
       builder: "f:1:Image.asset",
@@ -1712,7 +1723,7 @@ export class IndexedStack extends ZacBuilder<native.IndexedStack> {
     alignment?: ZacBuilder<native.AlignmentGeometry>;
     textDirection?: ZacBuilder<native.TextDirection>;
     sizing?: ZacBuilder<native.StackFit>;
-    index?: ZacBuilder<number>;
+    index?: number | ZacBuilder<number>;
     children?: ZacListBuilder<native.Widget>;
   }) {
     return new IndexedStack({
@@ -1726,38 +1737,38 @@ export class InputDecoration extends ZacBuilder<native.InputDecoration> {
     icon?: ZacBuilder<native.Widget>;
     iconColor?: ZacBuilder<native.Color>;
     label?: ZacBuilder<native.Widget>;
-    labelText?: ZacBuilder<string>;
+    labelText?: string | ZacBuilder<string>;
     labelStyle?: ZacBuilder<native.TextStyle>;
     floatingLabelStyle?: ZacBuilder<native.TextStyle>;
-    helperText?: ZacBuilder<string>;
+    helperText?: string | ZacBuilder<string>;
     helperStyle?: ZacBuilder<native.TextStyle>;
-    helperMaxLines?: ZacBuilder<number>;
-    hintText?: ZacBuilder<string>;
+    helperMaxLines?: number | ZacBuilder<number>;
+    hintText?: string | ZacBuilder<string>;
     hintStyle?: ZacBuilder<native.TextStyle>;
     hintTextDirection?: ZacBuilder<native.TextDirection>;
-    hintMaxLines?: ZacBuilder<number>;
-    errorText?: ZacBuilder<string>;
+    hintMaxLines?: number | ZacBuilder<number>;
+    errorText?: string | ZacBuilder<string>;
     errorStyle?: ZacBuilder<native.TextStyle>;
-    errorMaxLines?: ZacBuilder<number>;
-    isCollapsed?: ZacBuilder<boolean>;
-    isDense?: ZacBuilder<boolean>;
+    errorMaxLines?: number | ZacBuilder<number>;
+    isCollapsed?: boolean | ZacBuilder<boolean>;
+    isDense?: boolean | ZacBuilder<boolean>;
     contentPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     prefixIcon?: ZacBuilder<native.Widget>;
     prefixIconConstraints?: ZacBuilder<native.BoxConstraints>;
     prefix?: ZacBuilder<native.Widget>;
-    prefixText?: ZacBuilder<string>;
+    prefixText?: string | ZacBuilder<string>;
     prefixStyle?: ZacBuilder<native.TextStyle>;
     prefixIconColor?: ZacBuilder<native.Color>;
     suffixIcon?: ZacBuilder<native.Widget>;
     suffix?: ZacBuilder<native.Widget>;
-    suffixText?: ZacBuilder<string>;
+    suffixText?: string | ZacBuilder<string>;
     suffixStyle?: ZacBuilder<native.TextStyle>;
     suffixIconColor?: ZacBuilder<native.Color>;
     suffixIconConstraints?: ZacBuilder<native.BoxConstraints>;
     counter?: ZacBuilder<native.Widget>;
-    counterText?: ZacBuilder<string>;
+    counterText?: string | ZacBuilder<string>;
     counterStyle?: ZacBuilder<native.TextStyle>;
-    filled?: ZacBuilder<boolean>;
+    filled?: boolean | ZacBuilder<boolean>;
     fillColor?: ZacBuilder<native.Color>;
     focusColor?: ZacBuilder<native.Color>;
     hoverColor?: ZacBuilder<native.Color>;
@@ -1767,9 +1778,9 @@ export class InputDecoration extends ZacBuilder<native.InputDecoration> {
     disabledBorder?: ZacBuilder<native.InputBorder>;
     enabledBorder?: ZacBuilder<native.InputBorder>;
     border?: ZacBuilder<native.InputBorder>;
-    enabled?: ZacBuilder<boolean>;
-    semanticCounterText?: ZacBuilder<string>;
-    alignLabelWithHint?: ZacBuilder<boolean>;
+    enabled?: boolean | ZacBuilder<boolean>;
+    semanticCounterText?: string | ZacBuilder<string>;
+    alignLabelWithHint?: boolean | ZacBuilder<boolean>;
     constraints?: ZacBuilder<native.BoxConstraints>;
   }) {
     return new InputDecoration({
@@ -1783,16 +1794,16 @@ export class InteractiveViewer extends ZacBuilder<native.InteractiveViewer> {
     key?: ZacBuilder<native.Key>;
     child: ZacBuilder<native.Widget>;
     clipBehavior?: ZacBuilder<native.Clip>;
-    alignPanAxis?: ZacBuilder<boolean>;
+    alignPanAxis?: boolean | ZacBuilder<boolean>;
     boundaryMargin?: ZacBuilder<native.EdgeInsets>;
-    constrained?: ZacBuilder<boolean>;
-    maxScale?: ZacBuilder<number>;
-    minScale?: ZacBuilder<number>;
+    constrained?: boolean | ZacBuilder<boolean>;
+    maxScale?: number | ZacBuilder<number>;
+    minScale?: number | ZacBuilder<number>;
     onInteractionEnd?: ZacBuilder<Array<ZacAction>>;
     onInteractionStart?: ZacBuilder<Array<ZacAction>>;
     onInteractionUpdate?: ZacBuilder<Array<ZacAction>>;
-    panEnabled?: ZacBuilder<boolean>;
-    scaleEnabled?: ZacBuilder<boolean>;
+    panEnabled?: boolean | ZacBuilder<boolean>;
+    scaleEnabled?: boolean | ZacBuilder<boolean>;
   }) {
     return new InteractiveViewer({
       builder: "f:1:InteractiveViewer",
@@ -1825,8 +1836,8 @@ export class IntrinsicWidth extends ZacBuilder<native.IntrinsicWidth> {
 export class LimitedBox extends ZacBuilder<native.LimitedBox> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    maxWidth?: ZacBuilder<number>;
-    maxHeight?: ZacBuilder<number>;
+    maxWidth?: number | ZacBuilder<number>;
+    maxHeight?: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new LimitedBox({
@@ -1842,26 +1853,26 @@ export class ListTile extends ZacBuilder<native.ListTile> {
     title?: ZacBuilder<native.Widget>;
     subtitle?: ZacBuilder<native.Widget>;
     trailing?: ZacBuilder<native.Widget>;
-    isThreeLine?: ZacBuilder<boolean>;
-    dense?: ZacBuilder<boolean>;
+    isThreeLine?: boolean | ZacBuilder<boolean>;
+    dense?: boolean | ZacBuilder<boolean>;
     shape?: ZacBuilder<native.ShapeBorder>;
     selectedColor?: ZacBuilder<native.Color>;
     iconColor?: ZacBuilder<native.Color>;
     textColor?: ZacBuilder<native.Color>;
     contentPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    enabled?: ZacBuilder<boolean>;
+    enabled?: boolean | ZacBuilder<boolean>;
     onTap?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    selected?: ZacBuilder<boolean>;
+    selected?: boolean | ZacBuilder<boolean>;
     focusColor?: ZacBuilder<native.Color>;
     hoverColor?: ZacBuilder<native.Color>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     tileColor?: ZacBuilder<native.Color>;
     selectedTileColor?: ZacBuilder<native.Color>;
-    enableFeedback?: ZacBuilder<boolean>;
-    horizontalTitleGap?: ZacBuilder<number>;
-    minVerticalPadding?: ZacBuilder<number>;
-    minLeadingWidth?: ZacBuilder<number>;
+    enableFeedback?: boolean | ZacBuilder<boolean>;
+    horizontalTitleGap?: number | ZacBuilder<number>;
+    minVerticalPadding?: number | ZacBuilder<number>;
+    minLeadingWidth?: number | ZacBuilder<number>;
   }) {
     return new ListTile({
       builder: "f:1:ListTile",
@@ -1873,22 +1884,22 @@ export class ListView extends ZacBuilder<native.ListView> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     scrollDirection?: ZacBuilder<native.Axis>;
-    reverse?: ZacBuilder<boolean>;
+    reverse?: boolean | ZacBuilder<boolean>;
     controller?: ZacBuilder<native.ScrollController>;
-    primary?: ZacBuilder<boolean>;
+    primary?: boolean | ZacBuilder<boolean>;
     physics?: ZacBuilder<native.ScrollPhysics>;
-    shrinkWrap?: ZacBuilder<boolean>;
+    shrinkWrap?: boolean | ZacBuilder<boolean>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    itemExtent?: ZacBuilder<number>;
+    itemExtent?: number | ZacBuilder<number>;
     prototypeItem?: ZacBuilder<native.Widget>;
-    addAutomaticKeepAlives?: ZacBuilder<boolean>;
-    addRepaintBoundaries?: ZacBuilder<boolean>;
-    addSemanticIndexes?: ZacBuilder<boolean>;
-    cacheExtent?: ZacBuilder<number>;
+    addAutomaticKeepAlives?: boolean | ZacBuilder<boolean>;
+    addRepaintBoundaries?: boolean | ZacBuilder<boolean>;
+    addSemanticIndexes?: boolean | ZacBuilder<boolean>;
+    cacheExtent?: number | ZacBuilder<number>;
     children?: ZacListBuilder<native.Widget>;
-    semanticChildCount?: ZacBuilder<number>;
+    semanticChildCount?: number | ZacBuilder<number>;
     keyboardDismissBehavior?: ZacBuilder<native.ScrollViewKeyboardDismissBehavior>;
-    restorationId?: ZacBuilder<string>;
+    restorationId?: string | ZacBuilder<string>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new ListView({
@@ -1953,13 +1964,13 @@ export class Material extends ZacBuilder<native.Material> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     color?: ZacBuilder<native.Color>;
     shadowColor?: ZacBuilder<native.Color>;
     textStyle?: ZacBuilder<native.TextStyle>;
     borderRadius?: ZacBuilder<native.BorderRadiusGeometry>;
     shape?: ZacBuilder<native.ShapeBorder>;
-    borderOnForeground?: ZacBuilder<boolean>;
+    borderOnForeground?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new Material({
@@ -1974,20 +1985,20 @@ export class MaterialApp extends ZacBuilder<native.MaterialApp> {
     navigatorKey?: ZacBuilder<native.GlobalKey>;
     scaffoldMessengerKey?: ZacBuilder<native.GlobalKey>;
     home?: ZacBuilder<native.Widget>;
-    initialRoute?: ZacBuilder<string>;
+    initialRoute?: string | ZacBuilder<string>;
     onGenerateRoute?: RouteFactory;
     onUnknownRoute?: RouteFactory;
-    title?: ZacBuilder<string>;
+    title?: string | ZacBuilder<string>;
     color?: ZacBuilder<native.Color>;
     locale?: ZacBuilder<native.Locale>;
-    debugShowMaterialGrid?: ZacBuilder<boolean>;
-    showPerformanceOverlay?: ZacBuilder<boolean>;
-    checkerboardRasterCacheImages?: ZacBuilder<boolean>;
-    checkerboardOffscreenLayers?: ZacBuilder<boolean>;
-    showSemanticsDebugger?: ZacBuilder<boolean>;
-    debugShowCheckedModeBanner?: ZacBuilder<boolean>;
-    restorationScopeId?: ZacBuilder<string>;
-    useInheritedMediaQuery?: ZacBuilder<boolean>;
+    debugShowMaterialGrid?: boolean | ZacBuilder<boolean>;
+    showPerformanceOverlay?: boolean | ZacBuilder<boolean>;
+    checkerboardRasterCacheImages?: boolean | ZacBuilder<boolean>;
+    checkerboardOffscreenLayers?: boolean | ZacBuilder<boolean>;
+    showSemanticsDebugger?: boolean | ZacBuilder<boolean>;
+    debugShowCheckedModeBanner?: boolean | ZacBuilder<boolean>;
+    restorationScopeId?: string | ZacBuilder<string>;
+    useInheritedMediaQuery?: boolean | ZacBuilder<boolean>;
   }) {
     return new MaterialApp({
       builder: "f:1:MaterialApp",
@@ -2001,12 +2012,12 @@ export class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
     content: ZacBuilder<native.Widget>;
     contentTextStyle?: ZacBuilder<native.TextStyle>;
     actions: ZacListBuilder<native.Widget>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     leading: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
     leadingPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    forceActionsBelow?: ZacBuilder<boolean>;
+    forceActionsBelow?: boolean | ZacBuilder<boolean>;
     onVisible?: ZacBuilder<Array<ZacAction>>;
   }) {
     return new MaterialBanner({
@@ -2018,10 +2029,10 @@ export class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
 export class MaterialPageRoute extends ZacBuilder<native.Route> {
   static new(data: {
     settings?: ZacBuilder<native.RouteSettings>;
-    maintainState?: ZacBuilder<boolean>;
-    fullscreenDialog?: ZacBuilder<boolean>;
+    maintainState?: boolean | ZacBuilder<boolean>;
+    fullscreenDialog?: boolean | ZacBuilder<boolean>;
     child: ZacBuilder<native.Widget>;
-    nameOfSharedArguments?: ZacBuilder<string>;
+    nameOfSharedArguments?: string | ZacBuilder<string>;
   }) {
     return new MaterialPageRoute({
       builder: "f:1:MaterialPageRoute",
@@ -2034,8 +2045,8 @@ export class Navigator extends ZacBuilder<native.Navigator> {
     key?: ZacBuilder<native.Key>;
     onGenerateRoute?: RouteFactory;
     onUnknownRoute?: RouteFactory;
-    initialRoute?: ZacBuilder<string>;
-    requestFocus?: ZacBuilder<boolean>;
+    initialRoute?: string | ZacBuilder<string>;
+    requestFocus?: boolean | ZacBuilder<boolean>;
   }) {
     return new Navigator({
       builder: "f:1:Navigator",
@@ -2062,15 +2073,18 @@ export class NavigatorState extends ZacBuilder<native.NavigatorState> {
   }
 }
 export class Offset extends ZacBuilder<native.Offset> {
-  static new(data: { dx: ZacBuilder<number>; dy: ZacBuilder<number> }) {
+  static new(data: {
+    dx: number | ZacBuilder<number>;
+    dy: number | ZacBuilder<number>;
+  }) {
     return new Offset({
       builder: "f:1:Offset",
       ...data,
     });
   }
   static fromDirection(data: {
-    direction: ZacBuilder<number>;
-    distance?: ZacBuilder<number>;
+    direction: number | ZacBuilder<number>;
+    distance?: number | ZacBuilder<number>;
   }) {
     return new Offset({
       builder: "f:1:Offset.fromDirection",
@@ -2081,7 +2095,7 @@ export class Offset extends ZacBuilder<native.Offset> {
 export class Offstage extends ZacBuilder<native.Offstage> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    offstage?: ZacBuilder<boolean>;
+    offstage?: boolean | ZacBuilder<boolean>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new Offstage({
@@ -2093,8 +2107,8 @@ export class Offstage extends ZacBuilder<native.Offstage> {
 export class Opacity extends ZacBuilder<native.Opacity> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    opacity: ZacBuilder<number>;
-    alwaysIncludeSemantics?: ZacBuilder<boolean>;
+    opacity: number | ZacBuilder<number>;
+    alwaysIncludeSemantics?: boolean | ZacBuilder<boolean>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new Opacity({
@@ -2107,7 +2121,7 @@ export class OutlineInputBorder extends ZacBuilder<native.OutlineInputBorder> {
   static new(data?: {
     borderSide?: ZacBuilder<native.BorderSide>;
     borderRadius?: ZacBuilder<native.BorderRadius>;
-    gapPadding?: ZacBuilder<number>;
+    gapPadding?: number | ZacBuilder<number>;
   }) {
     return new OutlineInputBorder({
       builder: "f:1:OutlineInputBorder",
@@ -2121,7 +2135,7 @@ export class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
     child: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new OutlinedButton({
@@ -2135,7 +2149,7 @@ export class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
     label: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new OutlinedButton({
@@ -2148,10 +2162,10 @@ export class OverflowBox extends ZacBuilder<native.OverflowBox> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     alignment?: ZacBuilder<native.AlignmentGeometry>;
-    minWidth?: ZacBuilder<number>;
-    maxWidth?: ZacBuilder<number>;
-    minHeight?: ZacBuilder<number>;
-    maxHeight?: ZacBuilder<number>;
+    minWidth?: number | ZacBuilder<number>;
+    maxWidth?: number | ZacBuilder<number>;
+    minHeight?: number | ZacBuilder<number>;
+    maxHeight?: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new OverflowBox({
@@ -2175,14 +2189,14 @@ export class Padding extends ZacBuilder<native.Padding> {
 export class PageRouteBuilder extends ZacBuilder<native.Route> {
   static new(data: {
     settings?: ZacBuilder<native.RouteSettings>;
-    opaque?: ZacBuilder<boolean>;
-    barrierDismissible?: ZacBuilder<boolean>;
+    opaque?: boolean | ZacBuilder<boolean>;
+    barrierDismissible?: boolean | ZacBuilder<boolean>;
     barrierColor?: ZacBuilder<native.Color>;
-    barrierLabel?: ZacBuilder<string>;
-    maintainState?: ZacBuilder<boolean>;
-    fullscreenDialog?: ZacBuilder<boolean>;
+    barrierLabel?: string | ZacBuilder<string>;
+    maintainState?: boolean | ZacBuilder<boolean>;
+    fullscreenDialog?: boolean | ZacBuilder<boolean>;
     child: ZacBuilder<native.Widget>;
-    nameOfSharedArguments?: ZacBuilder<string>;
+    nameOfSharedArguments?: string | ZacBuilder<string>;
   }) {
     return new PageRouteBuilder({
       builder: "f:1:PageRouteBuilder",
@@ -2193,12 +2207,12 @@ export class PageRouteBuilder extends ZacBuilder<native.Route> {
 export class Positioned extends ZacBuilder<native.Positioned> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    left?: ZacBuilder<number>;
-    top?: ZacBuilder<number>;
-    right?: ZacBuilder<number>;
-    bottom?: ZacBuilder<number>;
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    left?: number | ZacBuilder<number>;
+    top?: number | ZacBuilder<number>;
+    right?: number | ZacBuilder<number>;
+    bottom?: number | ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     child: ZacBuilder<native.Widget>;
   }) {
     return new Positioned({
@@ -2209,12 +2223,12 @@ export class Positioned extends ZacBuilder<native.Positioned> {
   static directional(data: {
     key?: ZacBuilder<native.Key>;
     textDirection: ZacBuilder<native.TextDirection>;
-    start?: ZacBuilder<number>;
-    top?: ZacBuilder<number>;
-    end?: ZacBuilder<number>;
-    bottom?: ZacBuilder<number>;
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    start?: number | ZacBuilder<number>;
+    top?: number | ZacBuilder<number>;
+    end?: number | ZacBuilder<number>;
+    bottom?: number | ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     child: ZacBuilder<native.Widget>;
   }) {
     return new Positioned({
@@ -2224,10 +2238,10 @@ export class Positioned extends ZacBuilder<native.Positioned> {
   }
   static fill(data: {
     key?: ZacBuilder<native.Key>;
-    left?: ZacBuilder<number>;
-    top?: ZacBuilder<number>;
-    right?: ZacBuilder<number>;
-    bottom?: ZacBuilder<number>;
+    left?: number | ZacBuilder<number>;
+    top?: number | ZacBuilder<number>;
+    right?: number | ZacBuilder<number>;
+    bottom?: number | ZacBuilder<number>;
     child: ZacBuilder<native.Widget>;
   }) {
     return new Positioned({
@@ -2239,12 +2253,12 @@ export class Positioned extends ZacBuilder<native.Positioned> {
 export class ProgressIndicator extends ZacBuilder<native.ProgressIndicator> {
   static linear(data?: {
     key?: ZacBuilder<native.Key>;
-    value?: ZacBuilder<number>;
+    value?: number | ZacBuilder<number>;
     backgroundColor?: ZacBuilder<native.Color>;
     color?: ZacBuilder<native.Color>;
-    minHeight?: ZacBuilder<number>;
-    semanticsLabel?: ZacBuilder<string>;
-    semanticsValue?: ZacBuilder<string>;
+    minHeight?: number | ZacBuilder<number>;
+    semanticsLabel?: string | ZacBuilder<string>;
+    semanticsValue?: string | ZacBuilder<string>;
   }) {
     return new ProgressIndicator({
       builder: "f:1:LinearProgressIndicator",
@@ -2253,12 +2267,12 @@ export class ProgressIndicator extends ZacBuilder<native.ProgressIndicator> {
   }
   static circular(data?: {
     key?: ZacBuilder<native.Key>;
-    value?: ZacBuilder<number>;
+    value?: number | ZacBuilder<number>;
     backgroundColor?: ZacBuilder<native.Color>;
     color?: ZacBuilder<native.Color>;
-    strokeWidth?: ZacBuilder<number>;
-    semanticsLabel?: ZacBuilder<string>;
-    semanticsValue?: ZacBuilder<string>;
+    strokeWidth?: number | ZacBuilder<number>;
+    semanticsLabel?: string | ZacBuilder<string>;
+    semanticsValue?: string | ZacBuilder<string>;
   }) {
     return new ProgressIndicator({
       builder: "f:1:CircularProgressIndicator",
@@ -2267,13 +2281,16 @@ export class ProgressIndicator extends ZacBuilder<native.ProgressIndicator> {
   }
 }
 export class Radius extends ZacBuilder<native.Radius> {
-  static circular(data: { radius: ZacBuilder<number> }) {
+  static circular(data: { radius: number | ZacBuilder<number> }) {
     return new Radius({
       builder: "f:1:Radius.circular",
       ...data,
     });
   }
-  static elliptical(data: { x: ZacBuilder<number>; y: ZacBuilder<number> }) {
+  static elliptical(data: {
+    x: number | ZacBuilder<number>;
+    y: number | ZacBuilder<number>;
+  }) {
     return new Radius({
       builder: "f:1:Radius.elliptical",
       ...data,
@@ -2283,25 +2300,28 @@ export class Radius extends ZacBuilder<native.Radius> {
 export class Rect extends ZacBuilder<native.Rect> {
   static fromCenter(data: {
     center: Offset;
-    width: ZacBuilder<number>;
-    height: ZacBuilder<number>;
+    width: number | ZacBuilder<number>;
+    height: number | ZacBuilder<number>;
   }) {
     return new Rect({
       builder: "f:1:Rect.fromCenter",
       ...data,
     });
   }
-  static fromCircle(data: { center: Offset; radius: ZacBuilder<number> }) {
+  static fromCircle(data: {
+    center: Offset;
+    radius: number | ZacBuilder<number>;
+  }) {
     return new Rect({
       builder: "f:1:Rect.fromCircle",
       ...data,
     });
   }
   static fromLTRB(data: {
-    left: ZacBuilder<number>;
-    top: ZacBuilder<number>;
-    right: ZacBuilder<number>;
-    bottom: ZacBuilder<number>;
+    left: number | ZacBuilder<number>;
+    top: number | ZacBuilder<number>;
+    right: number | ZacBuilder<number>;
+    bottom: number | ZacBuilder<number>;
   }) {
     return new Rect({
       builder: "f:1:Rect.fromLTRB",
@@ -2309,10 +2329,10 @@ export class Rect extends ZacBuilder<native.Rect> {
     });
   }
   static fromLTWH(data: {
-    left: ZacBuilder<number>;
-    top: ZacBuilder<number>;
-    width: ZacBuilder<number>;
-    height: ZacBuilder<number>;
+    left: number | ZacBuilder<number>;
+    top: number | ZacBuilder<number>;
+    width: number | ZacBuilder<number>;
+    height: number | ZacBuilder<number>;
   }) {
     return new Rect({
       builder: "f:1:Rect.fromLTWH",
@@ -2330,14 +2350,14 @@ export class RefreshIndicator extends ZacBuilder<native.RefreshIndicator> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
     child: ZacBuilder<native.Widget>;
-    displacement?: ZacBuilder<number>;
-    edgeOffset?: ZacBuilder<number>;
+    displacement?: number | ZacBuilder<number>;
+    edgeOffset?: number | ZacBuilder<number>;
     onRefresh: ZacBuilder<Array<ZacAction>>;
     color?: ZacBuilder<native.Color>;
     backgroundColor?: ZacBuilder<native.Color>;
-    semanticsLabel?: ZacBuilder<string>;
-    semanticsValue?: ZacBuilder<string>;
-    strokeWidth?: ZacBuilder<number>;
+    semanticsLabel?: string | ZacBuilder<string>;
+    semanticsValue?: string | ZacBuilder<string>;
+    strokeWidth?: number | ZacBuilder<number>;
     triggerMode?: ZacBuilder<native.RefreshIndicatorTriggerMode>;
   }) {
     return new RefreshIndicator({
@@ -2394,7 +2414,7 @@ export class RouteFactory extends ZacBuilder<native.RouteFactory> {
 }
 export class RouteSettings extends ZacBuilder<native.RouteSettings> {
   static new(data?: {
-    name?: ZacBuilder<string>;
+    name?: string | ZacBuilder<string>;
     arguments?: ZacBuilder<any>;
   }) {
     return new RouteSettings({
@@ -2423,12 +2443,12 @@ export class Row extends ZacBuilder<native.Row> {
 export class SafeArea extends ZacBuilder<native.SafeArea> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    left?: ZacBuilder<boolean>;
-    top?: ZacBuilder<boolean>;
-    right?: ZacBuilder<boolean>;
-    bottom?: ZacBuilder<boolean>;
+    left?: boolean | ZacBuilder<boolean>;
+    top?: boolean | ZacBuilder<boolean>;
+    right?: boolean | ZacBuilder<boolean>;
+    bottom?: boolean | ZacBuilder<boolean>;
     minimum?: ZacBuilder<native.EdgeInsets>;
-    maintainBottomViewPadding?: ZacBuilder<boolean>;
+    maintainBottomViewPadding?: boolean | ZacBuilder<boolean>;
     child: ZacBuilder<native.Widget>;
   }) {
     return new SafeArea({
@@ -2449,15 +2469,15 @@ export class Scaffold extends ZacBuilder<native.Scaffold> {
     bottomNavigationBar?: ZacBuilder<native.Widget>;
     bottomSheet?: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
-    resizeToAvoidBottomInset?: ZacBuilder<boolean>;
-    primary?: ZacBuilder<boolean>;
-    extendBody?: ZacBuilder<boolean>;
-    extendBodyBehindAppBar?: ZacBuilder<boolean>;
+    resizeToAvoidBottomInset?: boolean | ZacBuilder<boolean>;
+    primary?: boolean | ZacBuilder<boolean>;
+    extendBody?: boolean | ZacBuilder<boolean>;
+    extendBodyBehindAppBar?: boolean | ZacBuilder<boolean>;
     drawerScrimColor?: ZacBuilder<native.Color>;
-    drawerEdgeDragWidth?: ZacBuilder<number>;
-    drawerEnableOpenDragGesture?: ZacBuilder<boolean>;
-    endDrawerEnableOpenDragGesture?: ZacBuilder<boolean>;
-    restorationId?: ZacBuilder<string>;
+    drawerEdgeDragWidth?: number | ZacBuilder<number>;
+    drawerEnableOpenDragGesture?: boolean | ZacBuilder<boolean>;
+    endDrawerEnableOpenDragGesture?: boolean | ZacBuilder<boolean>;
+    restorationId?: string | ZacBuilder<string>;
   }) {
     return new Scaffold({
       builder: "f:1:Scaffold",
@@ -2467,10 +2487,10 @@ export class Scaffold extends ZacBuilder<native.Scaffold> {
 }
 export class ScrollController extends ZacBuilder<native.Widget> {
   static new(data: {
-    initialScrollOffset?: ZacBuilder<number>;
-    keepScrollOffset?: ZacBuilder<boolean>;
-    debugLabel?: ZacBuilder<string>;
-    family?: any;
+    initialScrollOffset?: number | ZacBuilder<number>;
+    keepScrollOffset?: boolean | ZacBuilder<boolean>;
+    debugLabel?: string | ZacBuilder<string>;
+    family?: SharedValueFamily;
     child: ZacBuilder<native.Widget>;
   }) {
     return new ScrollController({
@@ -2519,17 +2539,17 @@ export class SelectableText extends ZacBuilder<native.SelectableText> {
     strutStyle?: ZacBuilder<native.StrutStyle>;
     textAlign?: ZacBuilder<native.TextAlign>;
     textDirection?: ZacBuilder<native.TextDirection>;
-    textScaleFactor?: ZacBuilder<number>;
-    showCursor?: ZacBuilder<boolean>;
-    autofocus?: ZacBuilder<boolean>;
-    minLines?: ZacBuilder<number>;
-    maxLines?: ZacBuilder<number>;
-    cursorWidth?: ZacBuilder<number>;
-    cursorHeight?: ZacBuilder<number>;
+    textScaleFactor?: number | ZacBuilder<number>;
+    showCursor?: boolean | ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    minLines?: number | ZacBuilder<number>;
+    maxLines?: number | ZacBuilder<number>;
+    cursorWidth?: number | ZacBuilder<number>;
+    cursorHeight?: number | ZacBuilder<number>;
     cursorRadius?: ZacBuilder<native.Radius>;
     cursorColor?: ZacBuilder<native.Color>;
-    enableInteractiveSelection?: ZacBuilder<boolean>;
-    semanticsLabel?: ZacBuilder<string>;
+    enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
+    semanticsLabel?: string | ZacBuilder<string>;
     textHeightBehavior?: ZacBuilder<native.TextHeightBehavior>;
     textWidthBasis?: ZacBuilder<native.TextWidthBasis>;
   }) {
@@ -2543,7 +2563,7 @@ export class Shadow extends ZacBuilder<native.Shadow> {
   static new(data?: {
     color?: ZacBuilder<native.Color>;
     offset?: ZacBuilder<native.Offset>;
-    blurRadius?: ZacBuilder<number>;
+    blurRadius?: number | ZacBuilder<number>;
   }) {
     return new Shadow({
       builder: "f:1:Shadow",
@@ -2569,13 +2589,13 @@ export class SingleChildScrollView extends ZacBuilder<native.SingleChildScrollVi
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     scrollDirection?: ZacBuilder<native.Axis>;
-    reverse?: ZacBuilder<boolean>;
+    reverse?: boolean | ZacBuilder<boolean>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    primary?: ZacBuilder<boolean>;
+    primary?: boolean | ZacBuilder<boolean>;
     controller?: ZacBuilder<native.ScrollController>;
     child?: ZacBuilder<native.Widget>;
     clipBehavior?: ZacBuilder<native.Clip>;
-    restorationId?: ZacBuilder<string>;
+    restorationId?: string | ZacBuilder<string>;
     keyboardDismissBehavior?: ZacBuilder<native.ScrollViewKeyboardDismissBehavior>;
   }) {
     return new SingleChildScrollView({
@@ -2585,7 +2605,10 @@ export class SingleChildScrollView extends ZacBuilder<native.SingleChildScrollVi
   }
 }
 export class Size extends ZacBuilder<native.Size> {
-  static new(data: { width: ZacBuilder<number>; height: ZacBuilder<number> }) {
+  static new(data: {
+    width: number | ZacBuilder<number>;
+    height: number | ZacBuilder<number>;
+  }) {
     return new Size({
       builder: "f:1:Size",
       ...data,
@@ -2595,8 +2618,8 @@ export class Size extends ZacBuilder<native.Size> {
 export class SizedBox extends ZacBuilder<native.SizedBox> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    width?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new SizedBox({
@@ -2635,7 +2658,7 @@ export class SizedBox extends ZacBuilder<native.SizedBox> {
   static square(data?: {
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
-    dimension?: ZacBuilder<number>;
+    dimension?: number | ZacBuilder<number>;
   }) {
     return new SizedBox({
       builder: "f:1:SizedBox.square",
@@ -2659,10 +2682,10 @@ export class SizedOverflowBox extends ZacBuilder<native.SizedOverflowBox> {
 export class SliverChildDelegate extends ZacBuilder<native.SliverChildDelegate> {
   static list(data: {
     children: ZacListBuilder<native.Widget>;
-    addAutomaticKeepAlives?: ZacBuilder<boolean>;
-    addRepaintBoundaries?: ZacBuilder<boolean>;
-    addSemanticIndexes?: ZacBuilder<boolean>;
-    semanticIndexOffset?: ZacBuilder<number>;
+    addAutomaticKeepAlives?: boolean | ZacBuilder<boolean>;
+    addRepaintBoundaries?: boolean | ZacBuilder<boolean>;
+    addSemanticIndexes?: boolean | ZacBuilder<boolean>;
+    semanticIndexOffset?: number | ZacBuilder<number>;
   }) {
     return new SliverChildDelegate({
       builder: "f:1:SliverChildListDelegate",
@@ -2671,10 +2694,10 @@ export class SliverChildDelegate extends ZacBuilder<native.SliverChildDelegate> 
   }
   static listFixed(data: {
     children: ZacListBuilder<native.Widget>;
-    addAutomaticKeepAlives?: ZacBuilder<boolean>;
-    addRepaintBoundaries?: ZacBuilder<boolean>;
-    addSemanticIndexes?: ZacBuilder<boolean>;
-    semanticIndexOffset?: ZacBuilder<number>;
+    addAutomaticKeepAlives?: boolean | ZacBuilder<boolean>;
+    addRepaintBoundaries?: boolean | ZacBuilder<boolean>;
+    addSemanticIndexes?: boolean | ZacBuilder<boolean>;
+    semanticIndexOffset?: number | ZacBuilder<number>;
   }) {
     return new SliverChildDelegate({
       builder: "f:1:SliverChildListDelegate.fixed",
@@ -2697,10 +2720,10 @@ export class SliverGrid extends ZacBuilder<native.SliverGrid> {
 export class SliverGridDelegate extends ZacBuilder<native.SliverGridDelegate> {
   static withFixedCrossAxisCount(data: {
     crossAxisCount: number;
-    mainAxisSpacing?: ZacBuilder<number>;
-    crossAxisSpacing?: ZacBuilder<number>;
-    childAspectRatio?: ZacBuilder<number>;
-    mainAxisExtent?: ZacBuilder<number>;
+    mainAxisSpacing?: number | ZacBuilder<number>;
+    crossAxisSpacing?: number | ZacBuilder<number>;
+    childAspectRatio?: number | ZacBuilder<number>;
+    mainAxisExtent?: number | ZacBuilder<number>;
   }) {
     return new SliverGridDelegate({
       builder: "f:1:SliverGridDelegateWithFixedCrossAxisCount",
@@ -2708,11 +2731,11 @@ export class SliverGridDelegate extends ZacBuilder<native.SliverGridDelegate> {
     });
   }
   static withMaxCrossAxisExtent(data: {
-    maxCrossAxisExtent: ZacBuilder<number>;
-    mainAxisSpacing?: ZacBuilder<number>;
-    crossAxisSpacing?: ZacBuilder<number>;
-    childAspectRatio?: ZacBuilder<number>;
-    mainAxisExtent?: ZacBuilder<number>;
+    maxCrossAxisExtent: number | ZacBuilder<number>;
+    mainAxisSpacing?: number | ZacBuilder<number>;
+    crossAxisSpacing?: number | ZacBuilder<number>;
+    childAspectRatio?: number | ZacBuilder<number>;
+    mainAxisExtent?: number | ZacBuilder<number>;
   }) {
     return new SliverGridDelegate({
       builder: "f:1:SliverGridDelegateWithMaxCrossAxisExtent",
@@ -2783,10 +2806,10 @@ export class SnackBar extends ZacBuilder<native.SnackBar> {
     key?: ZacBuilder<native.Key>;
     content: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     margin?: ZacBuilder<native.EdgeInsetsGeometry>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
-    width?: ZacBuilder<number>;
+    width?: number | ZacBuilder<number>;
     shape?: ZacBuilder<native.ShapeBorder>;
     behavior?: SnackBarBehavior;
     action?: SnackBarAction;
@@ -2827,7 +2850,7 @@ export class SnackBarBehavior extends ZacBuilder<native.SnackBarBehavior> {
 export class Spacer extends ZacBuilder<native.Spacer> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
-    flex?: ZacBuilder<number>;
+    flex?: number | ZacBuilder<number>;
   }) {
     return new Spacer({
       builder: "f:1:Spacer",
@@ -2869,17 +2892,17 @@ export class StackFit extends ZacBuilder<native.StackFit> {
 }
 export class StrutStyle extends ZacBuilder<native.StrutStyle> {
   static new(data?: {
-    fontFamily?: ZacBuilder<string>;
+    fontFamily?: string | ZacBuilder<string>;
     fontFamilyFallback?: Array<string>;
-    fontSize?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    fontSize?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     leadingDistribution?: ZacBuilder<native.TextLeadingDistribution>;
-    leading?: ZacBuilder<number>;
+    leading?: number | ZacBuilder<number>;
     fontWeight?: ZacBuilder<native.FontWeight>;
     fontStyle?: ZacBuilder<native.FontStyle>;
-    forceStrutHeight?: ZacBuilder<boolean>;
-    debugLabel?: ZacBuilder<string>;
-    package?: ZacBuilder<string>;
+    forceStrutHeight?: boolean | ZacBuilder<boolean>;
+    debugLabel?: string | ZacBuilder<string>;
+    package?: string | ZacBuilder<string>;
   }) {
     return new StrutStyle({
       builder: "f:1:StrutStyle",
@@ -2888,17 +2911,17 @@ export class StrutStyle extends ZacBuilder<native.StrutStyle> {
   }
   static fromTextStyle(data: {
     textStyle: TextStyle;
-    fontFamily?: ZacBuilder<string>;
+    fontFamily?: string | ZacBuilder<string>;
     fontFamilyFallback?: Array<string>;
-    fontSize?: ZacBuilder<number>;
-    height?: ZacBuilder<number>;
+    fontSize?: number | ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     leadingDistribution?: ZacBuilder<native.TextLeadingDistribution>;
-    leading?: ZacBuilder<number>;
+    leading?: number | ZacBuilder<number>;
     fontWeight?: ZacBuilder<native.FontWeight>;
     fontStyle?: ZacBuilder<native.FontStyle>;
-    forceStrutHeight?: ZacBuilder<boolean>;
-    debugLabel?: ZacBuilder<string>;
-    package?: ZacBuilder<string>;
+    forceStrutHeight?: boolean | ZacBuilder<boolean>;
+    debugLabel?: string | ZacBuilder<string>;
+    package?: string | ZacBuilder<string>;
   }) {
     return new StrutStyle({
       builder: "f:1:StrutStyle.fromTextStyle",
@@ -2911,11 +2934,11 @@ export class SystemUiOverlayStyle extends ZacBuilder<native.SystemUiOverlayStyle
     systemNavigationBarColor?: ZacBuilder<native.Color>;
     systemNavigationBarDividerColor?: ZacBuilder<native.Color>;
     systemNavigationBarIconBrightness?: ZacBuilder<native.Brightness>;
-    systemNavigationBarContrastEnforced?: ZacBuilder<boolean>;
+    systemNavigationBarContrastEnforced?: boolean | ZacBuilder<boolean>;
     statusBarColor?: ZacBuilder<native.Color>;
     statusBarBrightness?: ZacBuilder<native.Brightness>;
     statusBarIconBrightness?: ZacBuilder<native.Brightness>;
-    systemStatusBarContrastEnforced?: ZacBuilder<boolean>;
+    systemStatusBarContrastEnforced?: boolean | ZacBuilder<boolean>;
   }) {
     return new SystemUiOverlayStyle({
       builder: "f:1:SystemUiOverlayStyle",
@@ -2925,18 +2948,18 @@ export class SystemUiOverlayStyle extends ZacBuilder<native.SystemUiOverlayStyle
 }
 export class Text extends ZacBuilder<native.Text> {
   static new(data: {
-    data: ZacBuilder<string>;
+    data: string | ZacBuilder<string>;
     key?: ZacBuilder<native.Key>;
     style?: ZacBuilder<native.TextStyle>;
     strutStyle?: ZacBuilder<native.StrutStyle>;
     textAlign?: ZacBuilder<native.TextAlign>;
     textDirection?: ZacBuilder<native.TextDirection>;
     locale?: ZacBuilder<native.Locale>;
-    softWrap?: ZacBuilder<boolean>;
+    softWrap?: boolean | ZacBuilder<boolean>;
     overflow?: ZacBuilder<native.TextOverflow>;
-    textScaleFactor?: ZacBuilder<number>;
-    maxLines?: ZacBuilder<number>;
-    semanticsLabel?: ZacBuilder<string>;
+    textScaleFactor?: number | ZacBuilder<number>;
+    maxLines?: number | ZacBuilder<number>;
+    semanticsLabel?: string | ZacBuilder<string>;
     textWidthBasis?: ZacBuilder<native.TextWidthBasis>;
     textHeightBehavior?: ZacBuilder<native.TextHeightBehavior>;
   }) {
@@ -2979,7 +3002,7 @@ export class TextAlign extends ZacBuilder<native.TextAlign> {
   }
 }
 export class TextAlignVertical extends ZacBuilder<native.TextAlignVertical> {
-  static new(data: { y: ZacBuilder<number> }) {
+  static new(data: { y: number | ZacBuilder<number> }) {
     return new TextAlignVertical({
       builder: "f:1:TextAlignVertical",
       ...data,
@@ -3019,7 +3042,7 @@ export class TextButton extends ZacBuilder<native.TextButton> {
     child: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new TextButton({
@@ -3033,7 +3056,7 @@ export class TextButton extends ZacBuilder<native.TextButton> {
     label: ZacBuilder<native.Widget>;
     onPressed?: ZacBuilder<Array<ZacAction>>;
     onLongPress?: ZacBuilder<Array<ZacAction>>;
-    autofocus?: ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
     return new TextButton({
@@ -3137,37 +3160,37 @@ export class TextField extends ZacBuilder<native.TextField> {
     textAlign?: ZacBuilder<native.TextAlign>;
     textAlignVertical?: ZacBuilder<native.TextAlignVertical>;
     textDirection?: ZacBuilder<native.TextDirection>;
-    readOnly?: ZacBuilder<boolean>;
-    showCursor?: ZacBuilder<boolean>;
-    autofocus?: ZacBuilder<boolean>;
-    obscuringCharacter?: ZacBuilder<string>;
-    obscureText?: ZacBuilder<boolean>;
-    autocorrect?: ZacBuilder<boolean>;
+    readOnly?: boolean | ZacBuilder<boolean>;
+    showCursor?: boolean | ZacBuilder<boolean>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    obscuringCharacter?: string | ZacBuilder<string>;
+    obscureText?: boolean | ZacBuilder<boolean>;
+    autocorrect?: boolean | ZacBuilder<boolean>;
     smartDashesType?: ZacBuilder<native.SmartDashesType>;
     smartQuotesType?: ZacBuilder<native.SmartQuotesType>;
-    enableSuggestions?: ZacBuilder<boolean>;
-    maxLines?: ZacBuilder<number>;
-    minLines?: ZacBuilder<number>;
-    expands?: ZacBuilder<boolean>;
-    maxLength?: ZacBuilder<number>;
+    enableSuggestions?: boolean | ZacBuilder<boolean>;
+    maxLines?: number | ZacBuilder<number>;
+    minLines?: number | ZacBuilder<number>;
+    expands?: boolean | ZacBuilder<boolean>;
+    maxLength?: number | ZacBuilder<number>;
     onChanged?: ZacBuilder<Array<ZacAction>>;
     onEditingComplete?: ZacBuilder<Array<ZacAction>>;
     onSubmitted?: ZacBuilder<Array<ZacAction>>;
-    enabled?: ZacBuilder<boolean>;
-    cursorWidth?: ZacBuilder<number>;
-    cursorHeight?: ZacBuilder<number>;
+    enabled?: boolean | ZacBuilder<boolean>;
+    cursorWidth?: number | ZacBuilder<number>;
+    cursorHeight?: number | ZacBuilder<number>;
     cursorRadius?: ZacBuilder<native.Radius>;
     cursorColor?: ZacBuilder<native.Color>;
     selectionHeightStyle?: ZacBuilder<native.BoxHeightStyle>;
     selectionWidthStyle?: ZacBuilder<native.BoxWidthStyle>;
     keyboardAppearance?: ZacBuilder<native.Brightness>;
     scrollPadding?: ZacBuilder<native.EdgeInsets>;
-    enableInteractiveSelection?: ZacBuilder<boolean>;
+    enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
     onTap?: ZacBuilder<Array<ZacAction>>;
     scrollController?: ZacBuilder<native.ScrollController>;
     clipBehavior?: ZacBuilder<native.Clip>;
-    restorationId?: ZacBuilder<string>;
-    enableIMEPersonalizedLearning?: ZacBuilder<boolean>;
+    restorationId?: string | ZacBuilder<string>;
+    enableIMEPersonalizedLearning?: boolean | ZacBuilder<boolean>;
   }) {
     return new TextField({
       builder: "f:1:TextField",
@@ -3177,8 +3200,8 @@ export class TextField extends ZacBuilder<native.TextField> {
 }
 export class TextHeightBehavior extends ZacBuilder<native.TextHeightBehavior> {
   static new(data?: {
-    applyHeightToFirstAscent?: ZacBuilder<boolean>;
-    applyHeightToLastDescent?: ZacBuilder<boolean>;
+    applyHeightToFirstAscent?: boolean | ZacBuilder<boolean>;
+    applyHeightToLastDescent?: boolean | ZacBuilder<boolean>;
     leadingDistribution?: ZacBuilder<native.TextLeadingDistribution>;
   }) {
     return new TextHeightBehavior({
@@ -3347,16 +3370,16 @@ export class TextOverflow extends ZacBuilder<native.TextOverflow> {
 }
 export class TextStyle extends ZacBuilder<native.TextStyle> {
   static new(data?: {
-    inherit?: ZacBuilder<boolean>;
+    inherit?: boolean | ZacBuilder<boolean>;
     color?: ZacBuilder<native.Color>;
     backgroundColor?: ZacBuilder<native.Color>;
-    fontSize?: ZacBuilder<number>;
+    fontSize?: number | ZacBuilder<number>;
     fontWeight?: ZacBuilder<native.FontWeight>;
     fontStyle?: ZacBuilder<native.FontStyle>;
-    letterSpacing?: ZacBuilder<number>;
-    wordSpacing?: ZacBuilder<number>;
+    letterSpacing?: number | ZacBuilder<number>;
+    wordSpacing?: number | ZacBuilder<number>;
     textBaseline?: ZacBuilder<native.TextBaseline>;
-    height?: ZacBuilder<number>;
+    height?: number | ZacBuilder<number>;
     leadingDistribution?: ZacBuilder<native.TextLeadingDistribution>;
     locale?: ZacBuilder<native.Locale>;
     shadows?: ZacListBuilder<native.Shadow>;
@@ -3364,11 +3387,11 @@ export class TextStyle extends ZacBuilder<native.TextStyle> {
     decoration?: ZacBuilder<native.TextDecoration>;
     decorationColor?: ZacBuilder<native.Color>;
     decorationStyle?: ZacBuilder<native.TextDecorationStyle>;
-    decorationThickness?: ZacBuilder<number>;
-    debugLabel?: ZacBuilder<string>;
-    fontFamily?: ZacBuilder<string>;
+    decorationThickness?: number | ZacBuilder<number>;
+    debugLabel?: string | ZacBuilder<string>;
+    fontFamily?: string | ZacBuilder<string>;
     fontFamilyFallback?: ZacListBuilder<string>;
-    package?: ZacBuilder<string>;
+    package?: string | ZacBuilder<string>;
     overflow?: ZacBuilder<native.TextOverflow>;
   }) {
     return new TextStyle({
@@ -3440,8 +3463,8 @@ export class Wrap extends ZacBuilder<native.Wrap> {
     key?: ZacBuilder<native.Key>;
     direction?: ZacBuilder<native.Axis>;
     alignment?: ZacBuilder<native.WrapAlignment>;
-    spacing?: ZacBuilder<number>;
-    runSpacing?: ZacBuilder<number>;
+    spacing?: number | ZacBuilder<number>;
+    runSpacing?: number | ZacBuilder<number>;
     runAlignment?: ZacBuilder<native.WrapAlignment>;
     crossAxisAlignment?: ZacBuilder<native.WrapCrossAlignment>;
     textDirection?: ZacBuilder<native.TextDirection>;
@@ -3635,7 +3658,10 @@ export class ZacActions extends ZacBuilder<Array<ZacAction>> {
   }
 }
 export class ZacCompleterVoidProvider extends ZacBuilder<native.Widget> {
-  static new(data: { family: any; child: ZacBuilder<native.Widget> }) {
+  static new(data: {
+    family: SharedValueFamily;
+    child: ZacBuilder<native.Widget>;
+  }) {
     return new ZacCompleterVoidProvider({
       builder: "z:1:Completer<void>.provide",
       ...data,
@@ -3654,7 +3680,7 @@ export class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {
   }
   static listen(data: {
     actions: ZacBuilder<Array<ZacAction>>;
-    family: any;
+    family: SharedValueFamily;
     child?: ZacBuilder<native.Widget>;
   }) {
     return new ZacExecuteActionsBuilder({
@@ -3666,7 +3692,7 @@ export class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {
 export class ZacStateMachineBuildStateBuilder extends ZacBuilder<native.Widget> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    family: ZacBuilder<string>;
+    family: string | ZacBuilder<string>;
     states: Array<string>;
     unmappedStateWidget?: ZacBuilder<native.Widget>;
   }) {
@@ -3679,8 +3705,8 @@ export class ZacStateMachineBuildStateBuilder extends ZacBuilder<native.Widget> 
 export class ZacStateMachineProviderBuilder extends ZacBuilder<native.Widget> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
-    family: ZacBuilder<string>;
-    initialState: ZacBuilder<string>;
+    family: string | ZacBuilder<string>;
+    initialState: string | ZacBuilder<string>;
     states: Record<string, ZacStateConfig>;
     child: ZacBuilder<native.Widget>;
     initialContext?: ZacBuilder<any>;
@@ -3929,7 +3955,7 @@ export class MapTransformer extends ZacTransformer {
       builder: "z:1:Transformer:Map<String, Object?>.from",
     });
   }
-  static key(data: { key: ZacBuilder<string> }) {
+  static key(data: { key: string | ZacBuilder<string> }) {
     return new MapTransformer({
       builder: "z:1:Transformer:Map[key]",
       ...data,
@@ -3937,7 +3963,7 @@ export class MapTransformer extends ZacTransformer {
   }
   static setValueForKey(data: {
     value: ZacBuilder<any>;
-    key: ZacBuilder<string>;
+    key: string | ZacBuilder<string>;
   }) {
     return new MapTransformer({
       builder: "z:1:Transformer:Map.setValueForKey",
@@ -4082,7 +4108,7 @@ export class StringTransformer extends ZacTransformer {
       builder: "z:1:Transformer:String.length",
     });
   }
-  static split(data: { pattern: ZacBuilder<string> }) {
+  static split(data: { pattern: string | ZacBuilder<string> }) {
     return new StringTransformer({
       builder: "z:1:Transformer:String.split",
       ...data,
@@ -4099,8 +4125,8 @@ export class StringTransformer extends ZacTransformer {
     });
   }
   static replaceAll(data: {
-    from: ZacBuilder<string>;
-    replace: ZacBuilder<string>;
+    from: string | ZacBuilder<string>;
+    replace: string | ZacBuilder<string>;
   }) {
     return new StringTransformer({
       builder: "z:1:Transformer:String.replaceAll",
@@ -4123,11 +4149,11 @@ export class ZacStateMachineTransformer extends ZacTransformer {
 export class DialogActions extends ZacAction {
   static showDialog(data: {
     child: ZacBuilder<native.Widget>;
-    barrierDismissible?: ZacBuilder<boolean>;
+    barrierDismissible?: boolean | ZacBuilder<boolean>;
     barrierColor?: ZacBuilder<native.Color>;
-    barrierLabel?: ZacBuilder<string>;
-    useSafeArea?: ZacBuilder<boolean>;
-    useRootNavigator?: ZacBuilder<boolean>;
+    barrierLabel?: string | ZacBuilder<string>;
+    useSafeArea?: boolean | ZacBuilder<boolean>;
+    useRootNavigator?: boolean | ZacBuilder<boolean>;
     routeSettings?: ZacBuilder<native.RouteSettings>;
   }) {
     return new DialogActions({
@@ -4147,7 +4173,7 @@ export class NavigatorActions extends ZacAction {
     });
   }
   static pushNamed(data: {
-    routeName: ZacBuilder<string>;
+    routeName: string | ZacBuilder<string>;
     arguments?: any;
     navigatorState?: ZacBuilder<native.NavigatorState>;
   }) {
@@ -4185,7 +4211,7 @@ export class NavigatorActions extends ZacAction {
     });
   }
   static pushReplacementNamed(data: {
-    routeName: ZacBuilder<string>;
+    routeName: string | ZacBuilder<string>;
     arguments?: any;
     navigatorState?: ZacBuilder<native.NavigatorState>;
     result?: ZacBuilder<Array<ZacAction>>;
@@ -4196,7 +4222,7 @@ export class NavigatorActions extends ZacAction {
     });
   }
   static popUntilRouteName(data: {
-    routeName: ZacBuilder<string>;
+    routeName: string | ZacBuilder<string>;
     navigatorState?: ZacBuilder<native.NavigatorState>;
   }) {
     return new NavigatorActions({
@@ -4216,7 +4242,10 @@ export class ScaffoldActions extends ZacAction {
       builder: "f:1:Scaffold.openEndDrawer",
     });
   }
-  static showBodyScrim(data: { value: boolean; opacity: ZacBuilder<number> }) {
+  static showBodyScrim(data: {
+    value: boolean;
+    opacity: number | ZacBuilder<number>;
+  }) {
     return new ScaffoldActions({
       builder: "f:1:Scaffold.showBodyScrim",
       ...data,
@@ -4225,11 +4254,11 @@ export class ScaffoldActions extends ZacAction {
   static showBottomSheet(data: {
     child: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: ZacBuilder<number>;
+    elevation?: number | ZacBuilder<number>;
     shape?: ZacBuilder<native.ShapeBorder>;
     clipBehavior?: ZacBuilder<native.Clip>;
     constraints?: BoxConstraints;
-    enableDrag?: ZacBuilder<boolean>;
+    enableDrag?: boolean | ZacBuilder<boolean>;
   }) {
     return new ScaffoldActions({
       builder: "f:1:Scaffold.showBottomSheet",
@@ -4273,7 +4302,7 @@ export class ScaffoldMessenger extends ZacAction {
 }
 export class SharedValueActions extends ZacAction {
   static update(data: {
-    family: any;
+    family: SharedValueFamily;
     transformer?: ZacBuilder<Array<ZacTransformer>>;
     ifNoPayloadTakeCurrent?: boolean;
   }) {
@@ -4282,7 +4311,7 @@ export class SharedValueActions extends ZacAction {
       ...data,
     });
   }
-  static invalidate(data: { family: any }) {
+  static invalidate(data: { family: SharedValueFamily }) {
     return new SharedValueActions({
       builder: "z:1:SharedValue.invalidate",
       ...data,
@@ -4310,13 +4339,19 @@ export class ZacControlFlowAction extends ZacAction {
   }
 }
 export class ZacStateMachineActions extends ZacAction {
-  static send(data: { family: any; event: ZacBuilder<string> }) {
+  static send(data: {
+    family: SharedValueFamily;
+    event: string | ZacBuilder<string>;
+  }) {
     return new ZacStateMachineActions({
       builder: "z:1:StateMachine:Action.send",
       ...data,
     });
   }
-  static trySend(data: { family: any; event: ZacBuilder<string> }) {
+  static trySend(data: {
+    family: SharedValueFamily;
+    event: string | ZacBuilder<string>;
+  }) {
     return new ZacStateMachineActions({
       builder: "z:1:StateMachine:Action.trySend",
       ...data,
