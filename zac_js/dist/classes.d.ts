@@ -1,4 +1,4 @@
-import * as native from 'generated.nativetypes';
+import * as native from './nativetypes';
 export declare type ZacBuilderData = {
     builder: string;
     [key: string]: unknown;
@@ -9,7 +9,8 @@ export declare abstract class ZacConvertable {
     toJSON(): ZacBuilderData;
 }
 export declare abstract class ZacBuilder<T> extends ZacConvertable {
-    private ignoredProp;
+    private _doNotUse;
+    get doNotUse(): T;
 }
 export declare abstract class ZacListBuilder<T> extends ZacBuilder<Array<T>> {
 }

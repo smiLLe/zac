@@ -1,11 +1,12 @@
 import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/generated_builder.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
+
+import 'package:zac/src/zac/generated_registry.dart';
 
 typedef CreateBuilder<T> = ZacBuilder<T> Function(Map<String, dynamic> map);
 typedef CreateBuilderFromSingleType = ZacBuilder<T> Function<T>(

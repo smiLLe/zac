@@ -10,7 +10,7 @@
     "lint-and-fix": "eslint . --ext .ts --fix",
     "test": "jest",
     "transpile": "tsc",
-    "pretty": "prettier --write \"src/generated.ts\""
+    "pretty": "prettier --write \"src/classes.ts\""
   },
   "keywords": [],
   "author": "",

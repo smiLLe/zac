@@ -15,7 +15,18 @@ export abstract class ZacConvertable {
 }
 
 export abstract class ZacBuilder<T> extends ZacConvertable {
-    private ignoredProp: T | undefined;
+    // Type T must be used somewhere in this class so that TypeScript will make
+    // checks to types.
+    //
+    // This would be a valid assignment if T was not used somewhere
+    // const a: ZacBuilder<nativeTypes.Container> = Container.new();
+    // const b: ZacBuilder<nativeTypes.Container> = SizedBox.new();
+    private _doNotUse!: T;
+
+    // Create the public getter or otherwise d.ts files will just omit T
+    public get doNotUse(): T {
+        return this._doNotUse;
+    }
 }
 export abstract class ZacListBuilder<T> extends ZacBuilder<Array<T>> { }
 export abstract class ZacMapBuilder<T> extends ZacBuilder<{ [key: string]: T }> { }

@@ -46,7 +46,8 @@ void main(List<String> args) async {
   writeFile.createSync();
   await writeFile.writeAsString('''
 ${allImports.join('\n')}
-import 'builder.dart';
+import 'package:zac/src/zac/registry.dart';
+
 void addZacBuilders(ZacRegistry registry) {
 registry${[...zacBuilder, ...zacAction, ...zacTransformer].join('\n')};
 }''');

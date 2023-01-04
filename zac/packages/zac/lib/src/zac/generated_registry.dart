@@ -81,7 +81,7 @@ import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
-import 'zac/registry.dart';
+import 'package:zac/src/zac/registry.dart';
 
 void addZacBuilders(ZacRegistry registry) {
   registry
@@ -545,8 +545,6 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:StateMachine.provide', ZacStateMachineProviderBuilder.fromJson)
     ..register('z:1:StateMachine:BuildState',
         ZacStateMachineBuildStateBuilder.fromJson)
-    ..register('z:1:StateMachine:StateConfig', ZacStateConfig.fromJson)
-    ..register('z:1:StateMachine:Transition', ZacTransition.fromJson)
     ..register('z:1:String.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:Transformers', ZacTransformers.fromJson)
     ..register('z:1:UpdateContext', ZacUpdateContextBuilder.fromJson)

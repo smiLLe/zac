@@ -7,6 +7,10 @@ export class ZacConvertable {
     }
 }
 export class ZacBuilder extends ZacConvertable {
+    // Create the public getter or otherwise d.ts files will just omit T
+    get doNotUse() {
+        return this._doNotUse;
+    }
 }
 export class ZacListBuilder extends ZacBuilder {
 }
