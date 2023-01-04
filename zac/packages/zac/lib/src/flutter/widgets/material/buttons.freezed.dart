@@ -51,7 +51,7 @@ mixin _$FlutterElevatedButton {
 class _$_FlutterElevatedButton extends _FlutterElevatedButton {
   _$_FlutterElevatedButton(
       {this.key,
-      required this.child,
+      this.child,
       this.onPressed,
       this.onLongPress,
       this.autofocus,
@@ -119,7 +119,7 @@ class _$_FlutterElevatedButton extends _FlutterElevatedButton {
 abstract class _FlutterElevatedButton extends FlutterElevatedButton {
   factory _FlutterElevatedButton(
       {final ZacBuilder<Key?>? key,
-      required final ZacBuilder<Widget?>? child,
+      final ZacBuilder<Widget?>? child,
       final ZacBuilder<List<ZacAction>?>? onPressed,
       final ZacBuilder<List<ZacAction>?>? onLongPress,
       final ZacBuilder<bool?>? autofocus,

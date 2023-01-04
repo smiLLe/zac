@@ -6,10 +6,6 @@ import 'package:json_path/json_path.dart';
 part 'zac_json_path.freezed.dart';
 part 'zac_json_path.g.dart';
 
-Map<String, Convert> zacJsonPathConverter = const {
-  ZacJsonPathTransformer.unionValue: ZacJsonPathTransformer.fromJson,
-};
-
 @freezedZacBuilder
 class ZacJsonPathTransformer
     with _$ZacJsonPathTransformer

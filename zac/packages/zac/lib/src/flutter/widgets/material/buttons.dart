@@ -22,7 +22,7 @@ class FlutterElevatedButton
   @FreezedUnionValue(FlutterElevatedButton.unionValue)
   factory FlutterElevatedButton({
     ZacBuilder<Key?>? key,
-    required ZacBuilder<Widget?>? child,
+    ZacBuilder<Widget?>? child,
     ZacBuilder<List<ZacAction>?>? onPressed,
     ZacBuilder<List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,

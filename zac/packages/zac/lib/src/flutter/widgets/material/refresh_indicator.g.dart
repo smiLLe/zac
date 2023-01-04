@@ -19,7 +19,8 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       edgeOffset: json['edgeOffset'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['edgeOffset'] as Object),
-      onRefresh: ZacActions.fromJson(json['onRefresh'] as Map<String, dynamic>),
+      onRefresh:
+          ZacBuilder<List<ZacAction>>.fromJson(json['onRefresh'] as Object),
       color: json['color'] == null
           ? null
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),
@@ -39,10 +40,6 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
           ? null
           : ZacBuilder<RefreshIndicatorTriggerMode?>.fromJson(
               json['triggerMode'] as Object),
-      onRefreshCompleter: json['onRefreshCompleter'] == null
-          ? null
-          : ConsumeSharedValue<Completer<dynamic>>.fromJson(
-              json['onRefreshCompleter'] as Map<String, dynamic>),
     );
 
 _$_FlutterRefreshIndicatorTriggerModeonEdge

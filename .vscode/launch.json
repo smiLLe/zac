@@ -5,18 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "generate-ts",
+            "name": "generate-ts-lib",
+            "console": "debugConsole",
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/generate_ts.dart",
+            "program": "generate/bin/generate_ts.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
-                "--path",
-                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
-                "--outFile",
-                "${workspaceFolder}\\zac_js\\src\\generated.ts",
+                "--headFile",
+                "${workspaceFolder}\\zac_js\\src\\header.ts",
+                "--classesFile",
+                "${workspaceFolder}\\zac_js\\src\\classes.ts",
                 "--jsRoot",
                 "${workspaceFolder}\\zac_js"
             ],
@@ -26,29 +27,12 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "zac/packages/zac/bin/generate_converter.dart",
+            "program": "generate/bin/generate_registry.dart",
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
                 "--outFile",
-                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\generated_builder.dart",
-                "--varName",
-                "generatedBuilder"
-            ],
-        },
-        {
-            "name": "generate-template-expression-converter",
-            "cwd": "${workspaceFolder}",
-            "request": "launch",
-            "type": "dart",
-            "program": "zac/packages/zac/bin/generate_converter.dart",
-            "args": [
-                "--path",
-                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src",
-                "--outFile",
-                "${workspaceFolder}\\zac\\packages\\zac_template_expressions\\lib\\src\\converter.dart",
-                "--varName",
-                "zacTemplateExpressionConverter"
+                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\zac\\generated_registry.dart"
             ],
         }
     ]

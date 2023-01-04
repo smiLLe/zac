@@ -7,13 +7,12 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 part 'state_machine.freezed.dart';
 part 'state_machine.g.dart';
 
 @freezedZacBuilder
-class ZacTransition with _$ZacTransition implements ZacBuilder<ZacTransition> {
+class ZacTransition with _$ZacTransition {
   ZacTransition._();
 
   static const String unionValue = 'z:1:StateMachine:Transition';
@@ -26,15 +25,10 @@ class ZacTransition with _$ZacTransition implements ZacBuilder<ZacTransition> {
     required String event,
     required String target,
   }) = _ZacTransition;
-
-  @override
-  ZacTransition build(ZacContext zacContext) => this;
 }
 
 @freezedZacBuilder
-class ZacStateConfig
-    with _$ZacStateConfig
-    implements ZacBuilder<ZacStateConfig> {
+class ZacStateConfig with _$ZacStateConfig {
   ZacStateConfig._();
 
   static const String unionValue = 'z:1:StateMachine:StateConfig';
@@ -47,9 +41,6 @@ class ZacStateConfig
     required ZacBuilder<Widget> widget,
     @Default(<ZacTransition>[]) List<ZacTransition> on,
   }) = _ZacStateConfig;
-
-  @override
-  ZacStateConfig build(ZacContext zacContext) => this;
 }
 
 @freezed
@@ -113,7 +104,7 @@ class ZacStateMachineProviderBuilder
     ZacBuilder<Key?>? key,
     required ZacBuilder<String> family,
     required ZacBuilder<String> initialState,
-    required ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>> states,
+    required Map<String, ZacStateConfig> states,
     required ZacBuilder<Widget> child,
     ZacBuilder<Object?>? initialContext,
   }) = _ZacStateMachineProviderBuilder;
@@ -160,7 +151,7 @@ because there was already a transition.''');
     });
 
     return ZacStateMachine(
-      states: states.build(zacContext),
+      states: states,
       state: initialState.build(zacContext),
       context: initialContext?.build(zacContext),
       send: getSend(trySend: false, sId: sessionId),

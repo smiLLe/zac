@@ -29,8 +29,10 @@ _$_ZacStateMachineProviderBuilder _$$_ZacStateMachineProviderBuilderFromJson(
           : ZacBuilder<Key?>.fromJson(json['key'] as Object),
       family: ZacBuilder<String>.fromJson(json['family'] as Object),
       initialState: ZacBuilder<String>.fromJson(json['initialState'] as Object),
-      states: ZacValueMap<ZacStateConfig, Map<String, ZacStateConfig>>.fromJson(
-          json['states'] as Object),
+      states: (json['states'] as Map<String, dynamic>).map(
+        (k, e) =>
+            MapEntry(k, ZacStateConfig.fromJson(e as Map<String, dynamic>)),
+      ),
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
       initialContext: json['initialContext'] == null
           ? null

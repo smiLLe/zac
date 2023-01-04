@@ -11,7 +11,7 @@ part 'update_widget.g.dart';
 @freezedZacBuilder
 class ZacUpdateContextBuilder
     with _$ZacUpdateContextBuilder
-    implements ZacBuilder<ZacUpdateContext> {
+    implements ZacBuilder<Widget> {
   const ZacUpdateContextBuilder._();
 
   static const String unionValue = 'z:1:UpdateContext';
