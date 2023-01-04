@@ -44,19 +44,29 @@ export class ZacValueMap extends ZacMapBuilder {
         });
     }
 }
+export class SharedValueConsumeType extends ZacConvertable {
+    static watch(data) {
+        return new SharedValueConsumeType(Object.assign({ builder: "z:1:SharedValueConsume.watch" }, data));
+    }
+    static read() {
+        return new SharedValueConsumeType({
+            builder: "z:1:SharedValueConsume.read",
+        });
+    }
+}
 export class ConsumeSharedValue extends ZacBuilder {
     static new(data) {
         return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValue.consume' }, data));
     }
 }
-export class SharedValueConsumeType extends ZacConvertable {
-    static watch(data) {
-        return new SharedValueConsumeType(Object.assign({ builder: 'z:1:SharedValueConsume.watch' }, data));
+export class ConsumeSharedValueList extends ZacListBuilder {
+    static new(data) {
+        return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValueList.consume' }, data));
     }
-    static read() {
-        return new SharedValueConsumeType({
-            builder: 'z:1:SharedValueConsume.read'
-        });
+}
+export class ConsumeSharedValueMap extends ZacMapBuilder {
+    static new(data) {
+        return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValueMap.consume' }, data));
     }
 }
 export class ZacStateConfig extends ZacConvertable {

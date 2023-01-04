@@ -70,18 +70,6 @@ export class ZacValueMap<T> extends ZacMapBuilder<T> {
   }
 }
 
-export class ConsumeSharedValue<T> extends ZacBuilder<T> {
-  static new<T>(data: {
-    family: string;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
-  }) {
-    return new ConsumeSharedValue<T>({
-      builder: "z:1:SharedValue.consume",
-      ...data,
-    });
-  }
-}
-
 export class SharedValueConsumeType extends ZacConvertable {
   static watch(data?: { select?: ZacBuilder<Array<ZacTransformer>> }) {
     return new SharedValueConsumeType({
@@ -95,6 +83,48 @@ export class SharedValueConsumeType extends ZacConvertable {
     });
   }
 }
+
+export class ConsumeSharedValue<T> extends ZacBuilder<T> {
+  static new<T>(data: {
+    family: string;
+    transformer?: ZacBuilder<Array<ZacTransformer>>;
+    forceConsume?: SharedValueConsumeType;
+  }) {
+    return new ConsumeSharedValue<T>({
+      builder: "z:1:SharedValue.consume",
+      ...data,
+    });
+  }
+}
+
+export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
+  static new<T>(data: {
+    family: string;
+    transformer?: ZacBuilder<Array<ZacTransformer>>;
+    itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+    forceConsume?: SharedValueConsumeType;
+  }) {
+    return new ConsumeSharedValue<T>({
+      builder: "z:1:SharedValueList.consume",
+      ...data,
+    });
+  }
+}
+
+export class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
+  static new<T>(data: {
+    family: string;
+    transformer?: ZacBuilder<Array<ZacTransformer>>;
+    itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+    forceConsume?: SharedValueConsumeType;
+  }) {
+    return new ConsumeSharedValue<T>({
+      builder: "z:1:SharedValueMap.consume",
+      ...data,
+    });
+  }
+}
+
 export class ZacStateConfig extends ZacConvertable {
   static new(data: {
     widget: ZacBuilder<native.Widget>;

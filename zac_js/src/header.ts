@@ -66,13 +66,57 @@ export class ZacValueMap<T> extends ZacMapBuilder<T> {
     }
 }
 
+
+export class SharedValueConsumeType extends ZacConvertable {
+    static watch(data?: { select?: ZacBuilder<Array<ZacTransformer>> }) {
+        return new SharedValueConsumeType({
+            builder: "z:1:SharedValueConsume.watch",
+            ...data,
+        });
+    }
+    static read() {
+        return new SharedValueConsumeType({
+            builder: "z:1:SharedValueConsume.read",
+        });
+    }
+}
+
 export class ConsumeSharedValue<T> extends ZacBuilder<T> {
     static new<T>(data: {
         family: string,
         transformer?: ZacBuilder<Array<ZacTransformer>>,
+        forceConsume?: SharedValueConsumeType,
     }) {
         return new ConsumeSharedValue<T>({
             builder: 'z:1:SharedValue.consume',
+            ...data,
+        });
+    }
+}
+
+export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
+    static new<T>(data: {
+        family: string,
+        transformer?: ZacBuilder<Array<ZacTransformer>>,
+        itemTransformer?: ZacBuilder<Array<ZacTransformer>>,
+        forceConsume?: SharedValueConsumeType,
+    }) {
+        return new ConsumeSharedValue<T>({
+            builder: 'z:1:SharedValueList.consume',
+            ...data,
+        });
+    }
+}
+
+export class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
+    static new<T>(data: {
+        family: string,
+        transformer?: ZacBuilder<Array<ZacTransformer>>,
+        itemTransformer?: ZacBuilder<Array<ZacTransformer>>,
+        forceConsume?: SharedValueConsumeType,
+    }) {
+        return new ConsumeSharedValue<T>({
+            builder: 'z:1:SharedValueMap.consume',
             ...data,
         });
     }

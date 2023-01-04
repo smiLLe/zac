@@ -35,17 +35,34 @@ export declare class ZacValueMap<T> extends ZacMapBuilder<T> {
         [key: string]: T | ZacBuilder<T>;
     }): ZacValueMap<T>;
 }
-export declare class ConsumeSharedValue<T> extends ZacBuilder<T> {
-    static new<T>(data: {
-        family: string;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
-    }): ConsumeSharedValue<T>;
-}
 export declare class SharedValueConsumeType extends ZacConvertable {
     static watch(data?: {
         select?: ZacBuilder<Array<ZacTransformer>>;
     }): SharedValueConsumeType;
     static read(): SharedValueConsumeType;
+}
+export declare class ConsumeSharedValue<T> extends ZacBuilder<T> {
+    static new<T>(data: {
+        family: string;
+        transformer?: ZacBuilder<Array<ZacTransformer>>;
+        forceConsume?: SharedValueConsumeType;
+    }): ConsumeSharedValue<T>;
+}
+export declare class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
+    static new<T>(data: {
+        family: string;
+        transformer?: ZacBuilder<Array<ZacTransformer>>;
+        itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+        forceConsume?: SharedValueConsumeType;
+    }): ConsumeSharedValue<T>;
+}
+export declare class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
+    static new<T>(data: {
+        family: string;
+        transformer?: ZacBuilder<Array<ZacTransformer>>;
+        itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+        forceConsume?: SharedValueConsumeType;
+    }): ConsumeSharedValue<T>;
 }
 export declare class ZacStateConfig extends ZacConvertable {
     static new(data: {

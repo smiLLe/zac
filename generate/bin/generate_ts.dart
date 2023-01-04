@@ -162,11 +162,14 @@ class OneFile {
 
   OneFile(this.lib, this.origin);
 
+  static final List<String> excludeClasses = ['SharedValueConsumeType'];
+
   late final Iterable<ClassElement> _filteredClasses = lib
       .element.topLevelElements
       .whereType<ClassElement>()
       .where((cls) => !cls.isPrivate)
-      .where((cls) => !cls.displayName.startsWith('_'))
+      .where((cls) => !cls.name.startsWith('_'))
+      .where((cls) => !excludeClasses.contains(cls.name))
       .where((cls) => cls.metadata
           .where((element) =>
               element.computeConstantValue()?.variable?.name ==
