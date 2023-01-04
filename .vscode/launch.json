@@ -10,16 +10,16 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "generate/bin/generate_ts.dart",
+            "program": "generate${pathSeparator}bin${pathSeparator}generate_ts.dart",
             "args": [
                 "--path",
-                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
+                "${workspaceFolder}${pathSeparator}zac${pathSeparator}packages${pathSeparator}zac${pathSeparator}lib${pathSeparator}src",
                 "--headFile",
-                "${workspaceFolder}\\zac_js\\src\\header.ts",
+                "${workspaceFolder}${pathSeparator}zac_js${pathSeparator}src${pathSeparator}header.ts",
                 "--classesFile",
-                "${workspaceFolder}\\zac_js\\src\\classes.ts",
+                "${workspaceFolder}${pathSeparator}zac_js${pathSeparator}src${pathSeparator}classes.ts",
                 "--jsRoot",
-                "${workspaceFolder}\\zac_js"
+                "${workspaceFolder}${pathSeparator}zac_js"
             ],
         },
         {
@@ -27,12 +27,12 @@
             "cwd": "${workspaceFolder}",
             "request": "launch",
             "type": "dart",
-            "program": "generate/bin/generate_registry.dart",
+            "program": "generate${pathSeparator}bin${pathSeparator}generate_registry.dart",
             "args": [
                 "--path",
-                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
+                "${workspaceFolder}${pathSeparator}zac${pathSeparator}packages${pathSeparator}zac${pathSeparator}lib${pathSeparator}src",
                 "--outFile",
-                "${workspaceFolder}\\zac\\packages\\zac\\lib\\src\\zac\\generated_registry.dart"
+                "${workspaceFolder}${pathSeparator}zac${pathSeparator}packages${pathSeparator}zac${pathSeparator}lib${pathSeparator}src${pathSeparator}zac${pathSeparator}generated_registry.dart"
             ],
         }
     ]
