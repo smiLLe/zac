@@ -14,10 +14,10 @@
             "args": [
                 "--path",
                 "${workspaceFolder}\\zac\\packages\\zac\\lib\\src",
-                "--nativeTypesFiles",
-                "${workspaceFolder}\\zac_js\\src\\generated.nativetypes.ts",
+                "--headFile",
+                "${workspaceFolder}\\zac_js\\src\\header.ts",
                 "--classesFile",
-                "${workspaceFolder}\\zac_js\\src\\generated.classes.ts",
+                "${workspaceFolder}\\zac_js\\src\\classes.ts",
                 "--jsRoot",
                 "${workspaceFolder}\\zac_js"
             ],

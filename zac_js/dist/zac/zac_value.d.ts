@@ -1,4 +1,4 @@
-import { SharedValueFamily, ZacConverter, DartDateTime, DartDouble, DartInt } from "../base";
+import { SharedValueFamily, ZacConverter, DartDateTime, DartDouble, DartInt } from "../header";
 import { ZacTransformers, SharedValueConsumeType } from "../generated";
 declare type ZacValueTypes = boolean | string | DartDateTime | DartDouble | DartInt | ZacConverter;
 export declare class ZacValueConsumeOnly<T> extends ZacConverter {

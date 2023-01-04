@@ -1,5 +1,3 @@
-export type DartDateTime = string;
-
 export type ZacBuilderData = {
     builder: string;
     [key: string]: unknown;
@@ -7,7 +5,7 @@ export type ZacBuilderData = {
 
 export abstract class ZacConvertable {
     protected data: ZacBuilderData;
-    constructor(data: ZacBuilderData) {
+    protected constructor(data: ZacBuilderData) {
         this.data = data;
     }
 
@@ -26,7 +24,7 @@ export abstract class ZacMapBuilder<T> extends ZacBuilder<{ [key: string]: T }> 
 export abstract class ZacTransformer extends ZacConvertable { }
 export abstract class ZacAction extends ZacConvertable { }
 
-export type ZacValueTypes = boolean | string | number | DartDateTime;
+export type ZacValueTypes = boolean | string | number;
 
 export class ZacValue<T extends ZacValueTypes> extends ZacBuilder<T> {
     static new<T extends ZacValueTypes>(data: T) {

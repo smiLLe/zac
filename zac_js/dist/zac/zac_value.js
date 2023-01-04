@@ -1,4 +1,4 @@
-import { ZacConverter } from "../base";
+import { ZacConverter } from "../header";
 export class ZacValueConsumeOnly extends ZacConverter {
     static new(data) {
         return new ZacValueConsumeOnly(Object.assign({ converter: 'z:1:ZacValue.consume' }, data));

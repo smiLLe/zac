@@ -14,13 +14,13 @@ void main(List<String> args) async {
   final parser = ArgParser();
   late final List<String> paths;
   late final String classesFile;
-  late final String nativeTypesFiles;
+  late final String headFile;
   late final String jsRoot;
   parser.addMultiOption('path', callback: (list) => paths = list);
   parser.addOption(
-    'nativeTypesFiles',
+    'headFile',
     mandatory: true,
-    callback: (str) => nativeTypesFiles = str ?? 'UNKNOWN PATH',
+    callback: (str) => headFile = str ?? 'UNKNOWN PATH',
   );
   parser.addOption(
     'classesFile',
@@ -38,7 +38,7 @@ void main(List<String> args) async {
   // final nativeTypes = NativeTypes(allFiles);
   // await nativeTypes.create();
   // await createNativeTypesFile(nativeTypesFiles, nativeTypes);
-  await createClassesFile(classesFile, allFiles);
+  await createClassesFile(classesFile, headFile, allFiles);
 
   await Process.run(
     'npm run transpile',
@@ -52,14 +52,6 @@ void main(List<String> args) async {
     workingDirectory: jsRoot,
     runInShell: true,
   );
-}
-
-String cleanUpFlutterPrefix(String name) {
-  if (name.startsWith('Flutter')) {
-    return name.substring('Flutter'.length);
-  }
-
-  return name;
 }
 
 bool isFlutterNativeType(DartType type) {
@@ -86,232 +78,26 @@ Future<AllFiles> fillAllFiles(List<String> paths) async {
   return AllFiles(listOfAllFiles);
 }
 
-extension ZacBuilderExtension on List<InterfaceType> {
-  bool implementsZacBuilder() {
-    return any((element) {
-      final displayString = element.getDisplayString(withNullability: false);
-      return displayString.startsWith('ZacBuilder');
-    });
-  }
-
-  InterfaceType getImplementedZacBuilder() {
-    return firstWhere((element) {
-      final displayString = element.getDisplayString(withNullability: false);
-      return displayString.startsWith('ZacBuilder');
-    });
-  }
-}
-
-extension ClassElementExtension on ClassElement {
-  DartType getZacBuilderType() {
-    final zacBuilder = allSupertypes.getImplementedZacBuilder();
-    return zacBuilder.typeArguments.first;
-  }
-}
-
-// Future<void> createNativeTypesFile(
-//     String outFile, NativeTypes nativeTypes) async {
-//   final items = nativeTypes.map.entries.map((e) {
-//     return '''
-// export interface ${e.key} ${e.value is String ? 'extends ${e.value}' : ''} {
-//   _${e.key}: unknown;
-// }
-// ''';
-//   });
-
-//   final writeFile = File(outFile);
-//   writeFile.createSync();
-//   writeFile.writeAsString(items.join('\n'));
-// }
-
-Future<void> createClassesFile(String outFile, AllFiles allFiles) async {
-  final template = Template(allFiles);
+Future<void> createClassesFile(
+    String outFile, String headFile, AllFiles allFiles) async {
+  final headerFile = File(headFile);
+  final template = Template(allFiles, headerFile.readAsStringSync());
   final writeFile = File(outFile);
   writeFile.createSync();
   writeFile.writeAsString(template.toString());
-
-//   final builders = allFiles.builders.map((builder) {
-//     final zacBuilderType = builder.getZacBuilderType();
-//     final typeName = isFlutterNativeType(zacBuilderType)
-//         ? 'native.${NativeTypes.getName(zacBuilderType)}'
-//         : zacBuilderType.getDisplayString(withNullability: false);
-
-//     final ctorTmpl = builder.constructors
-//         .where((ctor) {
-//           return !(!ctor.isFactory ||
-//               ctor.name == 'fromJson' ||
-//               null == ctor.redirectedConstructor);
-//         })
-//         .map((ctor) => UnionValueCtor(ctor))
-//         .map((ctor) {
-//           return '''
-// static ${ctor.name}() {
-//   return new ${builder.name}({});
-// }
-// ''';
-//         });
-
-//     return '''
-// export class ${builder.name} extends ZacBuilder<$typeName> {
-//   ${ctorTmpl.join('\n')}
-// }''';
-//   });
-
-//   final transformer = allFiles.zacTransformer.map((builder) {
-//     return 'export class ${builder.name} extends ZacTransformer {}';
-//   });
-
-//   final actions = allFiles.zacActions.map((builder) {
-//     return 'export class ${builder.name} extends ZacAction {}';
-//   });
-
-//   final writeFile = File(outFile);
-//   writeFile.createSync();
-//   writeFile.writeAsString('''
-// import { ZacBuilder, ZacTransformer, ZacAction } from 'base';
-// import * as native from 'generated.nativetypes';
-
-// ${builders.join('\n')}
-// ${transformer.join('\n')}
-// ${actions.join('\n')}
-// ''');
 }
 
-class NativeTypes {
-  NativeTypes(this.allFiles);
-
-  final AllFiles allFiles;
-  // final Map<String, String?> map = {
-  //   'Widget': null,
-  //   'AlignmentGeometry': null,
-  //   'EdgeInsetsGeometry': null,
-  //   'Flexible': null,
-  //   'Alignment': null,
-  // };
-
+abstract class NativeTypes {
   static String getName(DartType type) {
     if (null != type.alias) {
       return type.alias!.element.name;
     }
     if (type is InterfaceType) {
       return type.element.name;
-      // return type.getDisplayString(withNullability: false);
     }
 
     throw StateError('Invalid type in $NativeTypes: $type');
   }
-
-  // Future<void> create() async {
-  //   for (var builder in allFiles.builders) {
-  //     for (var supertype in builder.allSupertypes) {
-  //       final displayString =
-  //           supertype.getDisplayString(withNullability: false);
-  //       if (displayString.startsWith('ZacBuilder') ||
-  //           displayString.startsWith('ZacListBuilder') ||
-  //           displayString.startsWith('ZacMapBuilder')) {
-  //         add(supertype.typeArguments.first);
-  //         // _fromSuperType(supertype);
-  //       }
-  //     }
-  //   }
-  // }
-
-  // void _fromSuperType(ParameterizedType type) {
-  //   for (var typeArg in type.typeArguments) {
-  //     if (typeArg is ParameterizedType) {
-  //       _fromSuperType(typeArg);
-
-  //       if (typeArg is InterfaceType) {
-  //         if (null != typeArg.superclass) {
-  //           _fromSuperType(typeArg.superclass!);
-  //         }
-  //       }
-  //     } else {
-  //       add(typeArg);
-  //     }
-  //   }
-  //   for (var typeArg in type.typeArguments) {
-  //     if (typeArg is InterfaceType) {
-  //       for (var i in typeArg.interfaces) {
-  //         _fromSuperType(i);
-  //       }
-  //     }
-  //   }
-  //   add(type);
-  // }
-
-  // void add(DartType type) {
-  //   if (!isFlutterNativeType(type)) {
-  //     return;
-  //   }
-
-  //   if (type is! InterfaceType) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => null);
-  //     return;
-  //   }
-
-  //   final supertypes = type.superclass!.allSupertypes;
-
-  //   if (supertypes.any((element) =>
-  //       element.getDisplayString(withNullability: false) == 'Widget')) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => 'Widget');
-  //   } else if (supertypes.any((element) =>
-  //           element.getDisplayString(withNullability: false) ==
-  //           'AlignmentGeometry') ||
-  //       supertypes.any((element) => element.interfaces.any((element) =>
-  //           element.getDisplayString(withNullability: false) ==
-  //           'AlignmentGeometry'))) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => 'AlignmentGeometry');
-  //   } else if (supertypes.any((element) =>
-  //           element.getDisplayString(withNullability: false) ==
-  //           'EdgeInsetsGeometry') ||
-  //       type.interfaces.any((element) =>
-  //           element.getDisplayString(withNullability: false) ==
-  //           'EdgeInsetsGeometry')) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => 'EdgeInsetsGeometry');
-  //   } else if (supertypes.any((element) =>
-  //           element.getDisplayString(withNullability: false) == 'Flexible') ||
-  //       supertypes.any((element) => element.interfaces.any((element) =>
-  //           element.getDisplayString(withNullability: false) == 'Flexible'))) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => 'Flexible');
-  //   } else if (supertypes.any((element) =>
-  //           element.getDisplayString(withNullability: false) == 'Alignment') ||
-  //       supertypes.any((element) => element.interfaces.any((element) =>
-  //           element.getDisplayString(withNullability: false) == 'Alignment'))) {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => 'Alignment');
-  //   } else {
-  //     map.putIfAbsent(NativeTypes.getName(type), () => null);
-  //   }
-  //   // final superName = NativeTypes.getName(type.superclass!);
-  //   // switch (superName) {
-  //   //   case 'Enum':
-  //   //   case 'Object':
-  //   //     map.putIfAbsent(NativeTypes.getName(type), () => null);
-  //   //     break;
-  //   //   default:
-  //   //     // add(type.superclass!);
-  //   //     map.putIfAbsent(NativeTypes.getName(type), () => superName);
-  //   // }
-  //   // if (!isFlutterNativeType(type)) {
-  //   //   return;
-  //   // }
-
-  //   // if (type is! InterfaceType || null == type.superclass) {
-  //   //   map.putIfAbsent(NativeTypes.getName(type), () => null);
-  //   //   return;
-  //   // }
-
-  //   // final superName = NativeTypes.getName(type.superclass!);
-  //   // switch (superName) {
-  //   //   case 'Enum':
-  //   //   case 'Object':
-  //   //     map.putIfAbsent(NativeTypes.getName(type), () => null);
-  //   //     break;
-  //   //   default:
-  //   //     // add(type.superclass!);
-  //   //     map.putIfAbsent(NativeTypes.getName(type), () => superName);
-  //   // }
-  // }
 }
 
 Future<List<OneFile>> filesToCreate(AnalysisContext ctx, Uri uri) async {
@@ -338,37 +124,41 @@ class AllFiles {
 
   AllFiles(this.files);
 
-  late final Iterable<ClassElement> others = [
+  late final Iterable<OneClass> others = [
     ...files
         .where((oneFile) => oneFile.others.isNotEmpty)
-        .fold<Iterable<ClassElement>>([], (previousValue, element) {
+        .fold<Iterable<OneClass>>([], (previousValue, element) {
       return [...previousValue, ...element.others];
     })
-  ]..sortByCompare((element) => element.displayName, (a, b) => a.compareTo(b));
+  ]..sortByCompare(
+      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 
-  late final Iterable<ClassElement> builders = [
+  late final Iterable<OneClass> builders = [
     ...files
         .where((oneFile) => oneFile.builders.isNotEmpty)
-        .fold<Iterable<ClassElement>>([], (previousValue, element) {
+        .fold<Iterable<OneClass>>([], (previousValue, element) {
       return [...previousValue, ...element.builders];
     })
-  ]..sortByCompare((element) => element.displayName, (a, b) => a.compareTo(b));
+  ]..sortByCompare(
+      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 
-  late final Iterable<ClassElement> zacActions = [
+  late final Iterable<OneClass> zacActions = [
     ...files
         .where((oneFile) => oneFile.zacActions.isNotEmpty)
-        .fold<Iterable<ClassElement>>([], (previousValue, element) {
+        .fold<Iterable<OneClass>>([], (previousValue, element) {
       return [...previousValue, ...element.zacActions];
     })
-  ]..sortByCompare((element) => element.displayName, (a, b) => a.compareTo(b));
+  ]..sortByCompare(
+      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 
-  late final Iterable<ClassElement> zacTransformer = [
+  late final Iterable<OneClass> zacTransformer = [
     ...files
         .where((oneFile) => oneFile.zacTransformer.isNotEmpty)
-        .fold<Iterable<ClassElement>>([], (previousValue, element) {
+        .fold<Iterable<OneClass>>([], (previousValue, element) {
       return [...previousValue, ...element.zacTransformer];
     })
-  ]..sortByCompare((element) => element.displayName, (a, b) => a.compareTo(b));
+  ]..sortByCompare(
+      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 }
 
 class OneFile {
@@ -394,7 +184,7 @@ class OneFile {
           .startsWith('ZacBuilder')));
 
   /// Classes that don't extend any Zac class and and are just a freezed class
-  late final Iterable<ClassElement> others = _filteredClasses
+  late final Iterable<OneClass> others = _filteredClasses
       .where((cls) => !cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
           .startsWith('ZacBuilder')))
@@ -403,83 +193,95 @@ class OneFile {
           .startsWith('ZacAction')))
       .where((cls) => !cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
-          .startsWith('ZacTransformer')));
+          .startsWith('ZacTransformer')))
+      .map(OneClass.new);
 
-  late final Iterable<ClassElement> builders =
-      _builders.where((cls) => cls.typeParameters.isEmpty);
+  late final Iterable<OneClass> builders =
+      _builders.where((cls) => cls.typeParameters.isEmpty).map(OneClass.new);
 
-  late final Iterable<ClassElement> buildersWithTypeParams =
-      _builders.where((cls) => cls.typeParameters.isNotEmpty);
+  late final Iterable<OneClass> buildersWithTypeParams =
+      _builders.where((cls) => cls.typeParameters.isNotEmpty).map(OneClass.new);
 
-  late final Iterable<ClassElement> zacActions = _filteredClasses
+  late final Iterable<OneClass> zacActions = _filteredClasses
       .where((cls) => cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
           .startsWith('ZacAction')))
-      .where((cls) => cls.typeParameters.isEmpty);
+      .where((cls) => cls.typeParameters.isEmpty)
+      .map(OneClass.new);
 
-  late final Iterable<ClassElement> zacTransformer = _filteredClasses
+  late final Iterable<OneClass> zacTransformer = _filteredClasses
       .where((cls) => cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
           .startsWith('ZacTransformer')))
-      .where((cls) => cls.typeParameters.isEmpty);
+      .where((cls) => cls.typeParameters.isEmpty)
+      .map(OneClass.new);
 }
 
-// class TsAbstractClass {
-//   TsAbstractClass(this.element) {
-//     final o = element.metadata
-//         .map((e) => e.computeConstantValue())
-//         .where((e) =>
-//             e?.type?.getDisplayString(withNullability: false) ==
-//             classAnnotation)
-//         .map((e) => e?.getField('order')?.toIntValue())
-//         .first;
-//     if (null == o) {
-//       throw Error();
-//     }
-//     order = o;
-//   }
+class OneClass {
+  OneClass(this.element);
 
-//   final ClassElement element;
-//   late final int order;
+  final ClassElement element;
 
-//   late final String className = () {
-//     return cleanUpFlutterPrefix(element.displayName);
-//   }();
+  static String cleanUpFlutterPrefix(String name) {
+    if (name.startsWith('Flutter')) {
+      return name.substring('Flutter'.length);
+    }
 
-//   late final String classNameWithTypes = () {
-//     return cleanUpFlutterPrefix(
-//         element.thisType.getDisplayString(withNullability: false));
-//   }();
+    return name;
+  }
 
-//   late final List<String> implements = element.interfaces.isEmpty
-//       ? <String>[]
-//       : element.interfaces
+  late final String className = () {
+    return cleanUpFlutterPrefix(element.displayName);
+  }();
 
-//           /// only accept classes that are marked with the classAnnotation
-//           .where((element) {
-//             return element.element2.metadata
-//                 .map((e) => e.computeConstantValue())
-//                 .where((e) =>
-//                     e?.type?.getDisplayString(withNullability: false) ==
-//                     classAnnotation)
-//                 .isNotEmpty;
-//           })
-//           .map((e) =>
-//               cleanUpFlutterPrefix(e.getDisplayString(withNullability: false)))
-//           .toList();
-// }
+  late final String classNameWithTypes = () {
+    return cleanUpFlutterPrefix(
+        element.thisType.getDisplayString(withNullability: false));
+  }();
 
-// class TsClass extends TsAbstractClass {
-//   TsClass(super.element);
+  late final Iterable<UnionValueCtor> tsClassCtors = element.constructors
+      .map(UnionValueCtor.new)
+      .where((element) => element.canUseAsTSClassCtor);
 
-//   /// all Freezed UnionValues and their factory constructor
-//   late final Iterable<UnionValueCtor> unionValueCtor =
-//       element.constructors.where((ctor) {
-//     return !(!ctor.isFactory ||
-//         ctor.name == 'fromJson' ||
-//         null == ctor.redirectedConstructor);
-//   }).map((ctor) => UnionValueCtor(ctor));
-// }
+  bool get implementsZacBuilder => element.allSupertypes.any((element) {
+        final displayString = element.getDisplayString(withNullability: false);
+        return displayString.startsWith('ZacBuilder');
+      });
+
+  bool get implementsZacListBuilder => element.allSupertypes.any((element) {
+        final displayString = element.getDisplayString(withNullability: false);
+        return displayString.startsWith('ZacListBuilder');
+      });
+
+  bool get implementsZacMapBuilder => element.allSupertypes.any((element) {
+        final displayString = element.getDisplayString(withNullability: false);
+        return displayString.startsWith('ZacMapBuilder');
+      });
+
+  InterfaceType get implementedZacBuilder {
+    assert(implementsZacBuilder);
+    return element.allSupertypes.firstWhere((element) {
+      final displayString = element.getDisplayString(withNullability: false);
+      return displayString.startsWith('ZacBuilder');
+    });
+  }
+
+  InterfaceType get implementedZacListBuilder {
+    assert(implementsZacListBuilder);
+    return element.allSupertypes.firstWhere((element) {
+      final displayString = element.getDisplayString(withNullability: false);
+      return displayString.startsWith('ZacListBuilder');
+    });
+  }
+
+  InterfaceType get implementedZacMapBuilder {
+    assert(implementsZacMapBuilder);
+    return element.allSupertypes.firstWhere((element) {
+      final displayString = element.getDisplayString(withNullability: false);
+      return displayString.startsWith('ZacMapBuilder');
+    });
+  }
+}
 
 class UnionValueCtor {
   UnionValueCtor(this.element);
@@ -514,62 +316,51 @@ class UnionValueCtor {
     }
     return uv;
   }();
+
+  bool get canUseAsTSClassCtor => !(!element.isFactory ||
+      element.name == 'fromJson' ||
+      null == element.redirectedConstructor);
 }
 
 class Template {
-  Template(this.allFiles);
+  Template(this.allFiles, this.header);
   final AllFiles allFiles;
+  final String header;
 
-  Iterable<String> _ctorTmpl(ClassElement freezedClass) {
-    return freezedClass.constructors
-        .where((ctor) {
-          return !(!ctor.isFactory ||
-              ctor.name == 'fromJson' ||
-              null == ctor.redirectedConstructor);
-        })
-        .map((ctor) => UnionValueCtor(ctor))
-        .map((ctor) {
-          final mappedParams = ctor.element.parameters.map((paramEle) {
-            final mappedType = mapDartTypeToTypescript(allFiles, paramEle.type);
+  Iterable<String> _ctorTmpl(OneClass cls) {
+    return cls.tsClassCtors.map((ctor) {
+      final ctorParams = ctor.element.parameters.map((paramEle) {
+        final mappedType = mapDartTypeToTypescript(allFiles, paramEle.type);
+        var paramNameOpt = paramEle.isOptional ? '?' : '';
+        return '${paramEle.displayName}$paramNameOpt: $mappedType';
+      });
 
-            /// This will allow a param to be required but still to accept null
-            /// param: string | null
-            /// In Dart this could be {required String? param}
-            ///
-            /// But it will also allow a param to be completely optional
-            /// param?: string
-            /// In Dart this could be {String? param}
-            ///
-            /// Also the analyzers isOptional could not be used here because
-            /// isOptional is false when Dart uses {required String? param}
-            /// So just check if the type ends with an ? and assume it is Optional
-            final isOptional = paramEle.type
-                .getDisplayString(withNullability: true)
-                .endsWith('?');
-            var paramNameOpt = (!paramEle.isRequired && isOptional) ? '?' : '';
-            var orNull = (paramEle.isRequired && isOptional) ? ' | null' : '';
+      final allParamsOptional =
+          ctor.element.parameters.every((paramEle) => paramEle.isOptional);
 
-            return '${paramEle.displayName}$paramNameOpt: $mappedType$orNull';
-          });
-
-          return '''
-static ${ctor.name}(${mappedParams.isNotEmpty ? 'data: {${mappedParams.join(',\n')}}' : ''}) {
-  return new ${freezedClass.name}({
-    builder: '${ctor.unionValue}'${mappedParams.isNotEmpty ? ',' : ''}
-    ${mappedParams.isNotEmpty ? '...data' : ''}
+      String ctorParamsDef = '';
+      if (ctorParams.isNotEmpty) {
+        ctorParamsDef =
+            'data${allParamsOptional ? '?' : ''}: {${ctorParams.join(',\n')}}';
+      }
+      return '''
+static ${ctor.name}($ctorParamsDef) {
+  return new ${cls.className}({
+    builder: '${ctor.unionValue}'${ctorParams.isNotEmpty ? ',' : ''}
+    ${ctorParams.isNotEmpty ? '...data' : ''}
   })
 }''';
-        });
+    });
   }
 
   Iterable<String> _builderTmpl() {
-    return allFiles.builders.map((b) {
-      final zacBuilderType = b.getZacBuilderType();
-      final typeName = mapDartTypeToTypescript(allFiles, zacBuilderType);
+    return allFiles.builders.map((cls) {
+      final typeName = mapDartTypeToTypescript(
+          allFiles, cls.implementedZacBuilder.typeArguments.first);
 
       return '''
-export class ${b.name} extends ZacBuilder<$typeName> {
-  ${_ctorTmpl(b).join('\n')}
+export class ${cls.className} extends ZacBuilder<$typeName> {
+  ${_ctorTmpl(cls).join('\n')}
 }''';
     });
   }
@@ -577,7 +368,7 @@ export class ${b.name} extends ZacBuilder<$typeName> {
   Iterable<String> _othersTmpl() {
     return allFiles.others.map((b) {
       return '''
-export class ${b.name} extends ZacConvertable {
+export class ${b.className} extends ZacConvertable {
   ${_ctorTmpl(b).join('\n')}
 }''';
     });
@@ -586,7 +377,7 @@ export class ${b.name} extends ZacConvertable {
   Iterable<String> _transformersTmpl() {
     return allFiles.zacTransformer.map((b) {
       return '''
-export class ${b.name} extends ZacTransformer {
+export class ${b.className} extends ZacTransformer {
   ${_ctorTmpl(b).join('\n')}
 }''';
     });
@@ -595,7 +386,7 @@ export class ${b.name} extends ZacTransformer {
   Iterable<String> _actionsTmpl() {
     return allFiles.zacActions.map((b) {
       return '''
-export class ${b.name} extends ZacAction {
+export class ${b.className} extends ZacAction {
   ${_ctorTmpl(b).join('\n')}
 }''';
     });
@@ -605,9 +396,8 @@ export class ${b.name} extends ZacAction {
   String toString() {
     return '''
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ConsumeSharedValue, ZacConvertable, ZacBuilder, ZacListBuilder, ZacMapBuilder, ZacTransformer, ZacAction, DartDateTime } from 'base';
 import * as native from 'generated.nativetypes';
-
+$header
 ${_othersTmpl().join('\n')}
 ${_builderTmpl().join('\n')}
 ${_transformersTmpl().join('\n')}
@@ -624,7 +414,7 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
   if (null != type.alias && type is FunctionType) {
     return isFlutterNativeType(type)
         ? 'native.${type.alias!.element.name}'
-        : type.alias!.element.name;
+        : OneClass.cleanUpFlutterPrefix(type.alias!.element.name);
   }
   if (type is! InterfaceType) {
     throw Error();
@@ -633,7 +423,7 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
   if (type.typeArguments.isNotEmpty) {
     name = name.split('<').first;
   }
-  name = cleanUpFlutterPrefix(name);
+  name = OneClass.cleanUpFlutterPrefix(name);
   String opt() {
     if (depth == 0) return '';
     return type.getDisplayString(withNullability: true).endsWith('?')
@@ -657,12 +447,12 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
     case 'bool':
       return 'boolean${opt()}';
     case 'String':
-      return 'string${opt()}';
     case 'DateTime':
-      return 'DartDateTime${opt()}';
+      return 'string${opt()}';
     case 'double':
     case 'int':
       return 'number${opt()}';
+    case 'void':
     case 'dynamic':
     case 'Object':
       return 'any${opt()}';
@@ -675,7 +465,8 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
     default:
       return isFlutterNativeType(type)
           ? 'native.${NativeTypes.getName(type)}'
-          : type.getDisplayString(withNullability: false);
+          : OneClass.cleanUpFlutterPrefix(
+              type.getDisplayString(withNullability: false));
   }
 }
 

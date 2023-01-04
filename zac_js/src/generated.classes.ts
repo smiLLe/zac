@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ConsumeSharedValue, ZacConvertable, ZacBuilder, ZacListBuilder, ZacMapBuilder, ZacTransformer, ZacAction, DartDateTime } from 'base';
+import { ConsumeSharedValue, ZacConvertable, ZacBuilder, ZacListBuilder, ZacMapBuilder, ZacTransformer, ZacAction } from './header';
 import * as native from 'generated.nativetypes';
 
 export class SharedValueConsumeType extends ZacConvertable {
-    static watch(data: { select?: ZacBuilder<Array<ZacTransformer>> }) {
+    static watch(data?: { select?: ZacBuilder<Array<ZacTransformer>> }) {
         return new SharedValueConsumeType({
             builder: 'z:1:SharedValueConsume.watch',
             ...data
@@ -19,7 +19,7 @@ export class SharedValueConsumeType extends ZacConvertable {
 export class ZacStateConfig extends ZacConvertable {
     static new(data: {
         widget: ZacBuilder<native.Widget>,
-        on: Array<ZacTransition>
+        on?: Array<ZacTransition>
     }) {
         return new ZacStateConfig({
             builder: 'z:1:StateMachine:StateConfig',
@@ -38,152 +38,152 @@ export class ZacTransition extends ZacConvertable {
         })
     }
 }
-export class FlutterAlign extends ZacBuilder<native.Align> {
-    static new(data: {
+export class Align extends ZacBuilder<native.Align> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         widthFactor?: ZacBuilder<number>,
         heightFactor?: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterAlign({
+        return new Align({
             builder: 'f:1:Align',
             ...data
         })
     }
 }
-export class FlutterAlignment extends ZacBuilder<native.Alignment> {
+export class Alignment extends ZacBuilder<native.Alignment> {
     static new(data: {
         x: ZacBuilder<number>,
         y: ZacBuilder<number>
     }) {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment',
             ...data
         })
     }
     static bottomCenter() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.bottomCenter'
 
         })
     }
     static bottomLeft() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.bottomLeft'
 
         })
     }
     static bottomRight() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.bottomRight'
 
         })
     }
     static center() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.center'
 
         })
     }
     static centerLeft() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.centerLeft'
 
         })
     }
     static centerRight() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.centerRight'
 
         })
     }
     static topCenter() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.topCenter'
 
         })
     }
     static topLeft() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.topLeft'
 
         })
     }
     static topRight() {
-        return new FlutterAlignment({
+        return new Alignment({
             builder: 'f:1:Alignment.topRight'
 
         })
     }
 }
-export class FlutterAlignmentDirectional extends ZacBuilder<native.AlignmentDirectional> {
+export class AlignmentDirectional extends ZacBuilder<native.AlignmentDirectional> {
     static new(data: {
         start: ZacBuilder<number>,
         y: ZacBuilder<number>
     }) {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional',
             ...data
         })
     }
     static bottomCenter() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.bottomCenter'
 
         })
     }
     static bottomStart() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.bottomStart'
 
         })
     }
     static bottomEnd() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.bottomEnd'
 
         })
     }
     static center() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.center'
 
         })
     }
     static centerStart() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.centerStart'
 
         })
     }
     static centerEnd() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.centerEnd'
 
         })
     }
     static topCenter() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.topCenter'
 
         })
     }
     static topStart() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.topStart'
 
         })
     }
     static topEnd() {
-        return new FlutterAlignmentDirectional({
+        return new AlignmentDirectional({
             builder: 'f:1:AlignmentDirectional.topEnd'
 
         })
     }
 }
-export class FlutterAppBar extends ZacBuilder<native.AppBar> {
-    static new(data: {
+export class AppBar extends ZacBuilder<native.AppBar> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         leading?: ZacBuilder<native.Widget>,
         automaticallyImplyLeading?: ZacBuilder<boolean>,
@@ -210,543 +210,543 @@ export class FlutterAppBar extends ZacBuilder<native.AppBar> {
         titleTextStyle?: ZacBuilder<native.TextStyle>,
         systemOverlayStyle?: ZacBuilder<native.SystemUiOverlayStyle>
     }) {
-        return new FlutterAppBar({
+        return new AppBar({
             builder: 'f:1:AppBar',
             ...data
         })
     }
 }
-export class FlutterAspectRatio extends ZacBuilder<native.AspectRatio> {
+export class AspectRatio extends ZacBuilder<native.AspectRatio> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         aspectRatio: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterAspectRatio({
+        return new AspectRatio({
             builder: 'f:1:AspectRatio',
             ...data
         })
     }
 }
-export class FlutterAxis extends ZacBuilder<native.Axis> {
+export class Axis extends ZacBuilder<native.Axis> {
     static horizontal() {
-        return new FlutterAxis({
+        return new Axis({
             builder: 'f:1:Axis.horizontal'
 
         })
     }
     static vertical() {
-        return new FlutterAxis({
+        return new Axis({
             builder: 'f:1:Axis.vertical'
 
         })
     }
 }
-export class FlutterBlendMode extends ZacBuilder<native.BlendMode> {
+export class BlendMode extends ZacBuilder<native.BlendMode> {
     static clear() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.clear'
 
         })
     }
     static color() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.color'
 
         })
     }
     static colorBurn() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.colorBurn'
 
         })
     }
     static colorDodge() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.colorDodge'
 
         })
     }
     static darken() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.darken'
 
         })
     }
     static difference() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.difference'
 
         })
     }
     static dst() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.dst'
 
         })
     }
     static dstATop() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.dstATop'
 
         })
     }
     static dstIn() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.dstIn'
 
         })
     }
     static dstOut() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.dstOut'
 
         })
     }
     static dstOver() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.dstOver'
 
         })
     }
     static exclusion() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.exclusion'
 
         })
     }
     static hardLight() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.hardLight'
 
         })
     }
     static hue() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.hue'
 
         })
     }
     static lighten() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.lighten'
 
         })
     }
     static luminosity() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.luminosity'
 
         })
     }
     static modulate() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.modulate'
 
         })
     }
     static multiply() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.multiply'
 
         })
     }
     static overlay() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.overlay'
 
         })
     }
     static plus() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.plus'
 
         })
     }
     static saturation() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.saturation'
 
         })
     }
     static screen() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.screen'
 
         })
     }
     static softLight() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.softLight'
 
         })
     }
     static src() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.src'
 
         })
     }
     static srcATop() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.srcATop'
 
         })
     }
     static srcIn() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.srcIn'
 
         })
     }
     static srcOut() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.srcOut'
 
         })
     }
     static srcOver() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.srcOver'
 
         })
     }
     static xor() {
-        return new FlutterBlendMode({
+        return new BlendMode({
             builder: 'f:1:BlendMode.xor'
 
         })
     }
 }
-export class FlutterBlurStyle extends ZacBuilder<native.BlurStyle> {
+export class BlurStyle extends ZacBuilder<native.BlurStyle> {
     static inner() {
-        return new FlutterBlurStyle({
+        return new BlurStyle({
             builder: 'f:1:BlurStyle.inner'
 
         })
     }
     static normal() {
-        return new FlutterBlurStyle({
+        return new BlurStyle({
             builder: 'f:1:BlurStyle.normal'
 
         })
     }
     static outer() {
-        return new FlutterBlurStyle({
+        return new BlurStyle({
             builder: 'f:1:BlurStyle.outer'
 
         })
     }
     static solid() {
-        return new FlutterBlurStyle({
+        return new BlurStyle({
             builder: 'f:1:BlurStyle.solid'
 
         })
     }
 }
-export class FlutterBorder extends ZacBuilder<native.Border> {
-    static new(data: {
+export class Border extends ZacBuilder<native.Border> {
+    static new(data?: {
         top?: ZacBuilder<native.BorderSide>,
         right?: ZacBuilder<native.BorderSide>,
         bottom?: ZacBuilder<native.BorderSide>,
         left?: ZacBuilder<native.BorderSide>
     }) {
-        return new FlutterBorder({
+        return new Border({
             builder: 'f:1:Border',
             ...data
         })
     }
-    static all(data: {
+    static all(data?: {
         color?: ZacBuilder<native.Color>,
         width?: ZacBuilder<number>,
         style?: ZacBuilder<native.BorderStyle>
     }) {
-        return new FlutterBorder({
+        return new Border({
             builder: 'f:1:Border.all',
             ...data
         })
     }
 }
-export class FlutterBorderDirectional extends ZacBuilder<native.BorderDirectional> {
-    static new(data: {
+export class BorderDirectional extends ZacBuilder<native.BorderDirectional> {
+    static new(data?: {
         top?: ZacBuilder<native.BorderSide>,
         start?: ZacBuilder<native.BorderSide>,
         bottom?: ZacBuilder<native.BorderSide>,
         end?: ZacBuilder<native.BorderSide>
     }) {
-        return new FlutterBorderDirectional({
+        return new BorderDirectional({
             builder: 'f:1:BorderDirectional',
             ...data
         })
     }
 }
-export class FlutterBorderRadius extends ZacBuilder<native.BorderRadius> {
-    static all(data: { radius: FlutterRadius }) {
-        return new FlutterBorderRadius({
+export class BorderRadius extends ZacBuilder<native.BorderRadius> {
+    static all(data: { radius: Radius }) {
+        return new BorderRadius({
             builder: 'f:1:BorderRadius.all',
             ...data
         })
     }
     static circular(data: { radius: ZacBuilder<number> }) {
-        return new FlutterBorderRadius({
+        return new BorderRadius({
             builder: 'f:1:BorderRadius.circular',
             ...data
         })
     }
-    static horizontal(data: {
+    static horizontal(data?: {
         left?: ZacBuilder<native.Radius>,
         right?: ZacBuilder<native.Radius>
     }) {
-        return new FlutterBorderRadius({
+        return new BorderRadius({
             builder: 'f:1:BorderRadius.horizontal',
             ...data
         })
     }
 }
-export class FlutterBorderSide extends ZacBuilder<native.BorderSide> {
-    static new(data: {
+export class BorderSide extends ZacBuilder<native.BorderSide> {
+    static new(data?: {
         color?: ZacBuilder<native.Color>,
         width?: ZacBuilder<number>,
         style?: ZacBuilder<native.BorderStyle>
     }) {
-        return new FlutterBorderSide({
+        return new BorderSide({
             builder: 'f:1:BorderSide',
             ...data
         })
     }
 }
-export class FlutterBorderStyle extends ZacBuilder<native.BorderStyle> {
+export class BorderStyle extends ZacBuilder<native.BorderStyle> {
     static none() {
-        return new FlutterBorderStyle({
+        return new BorderStyle({
             builder: 'f:1:BorderStyle.none'
 
         })
     }
     static solid() {
-        return new FlutterBorderStyle({
+        return new BorderStyle({
             builder: 'f:1:BorderStyle.solid'
 
         })
     }
 }
-export class FlutterBoxConstraints extends ZacBuilder<native.BoxConstraints> {
-    static new(data: {
+export class BoxConstraints extends ZacBuilder<native.BoxConstraints> {
+    static new(data?: {
         minWidth?: ZacBuilder<number>,
         maxWidth?: ZacBuilder<number>,
         minHeight?: ZacBuilder<number>,
         maxHeight?: ZacBuilder<number>
     }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints',
             ...data
         })
     }
-    static expand(data: {
+    static expand(data?: {
         width?: ZacBuilder<number>,
         height?: ZacBuilder<number>
     }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints.expand',
             ...data
         })
     }
     static loose(data: { size: ZacBuilder<native.Size> }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints.loose',
             ...data
         })
     }
     static tight(data: { size: ZacBuilder<native.Size> }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints.tight',
             ...data
         })
     }
-    static tightFor(data: {
+    static tightFor(data?: {
         width?: ZacBuilder<number>,
         height?: ZacBuilder<number>
     }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints.tightFor',
             ...data
         })
     }
-    static tightForFinite(data: {
+    static tightForFinite(data?: {
         width?: ZacBuilder<number>,
         height?: ZacBuilder<number>
     }) {
-        return new FlutterBoxConstraints({
+        return new BoxConstraints({
             builder: 'f:1:BoxConstraints.tightForFinite',
             ...data
         })
     }
 }
-export class FlutterBoxDecoration extends ZacBuilder<native.BoxDecoration> {
-    static new(data: {
+export class BoxDecoration extends ZacBuilder<native.BoxDecoration> {
+    static new(data?: {
         color?: ZacBuilder<native.Color>,
         border?: ZacBuilder<native.BoxBorder>,
         borderRadius?: ZacBuilder<native.BorderRadiusGeometry>,
-        boxShadow?: Array<FlutterBoxShadow>,
+        boxShadow?: Array<BoxShadow>,
         shape?: ZacBuilder<native.BoxShape>,
         backgroundBlendMode?: ZacBuilder<native.BlendMode>
     }) {
-        return new FlutterBoxDecoration({
+        return new BoxDecoration({
             builder: 'f:1:BoxDecoration',
             ...data
         })
     }
 }
-export class FlutterBoxFit extends ZacBuilder<native.BoxFit> {
+export class BoxFit extends ZacBuilder<native.BoxFit> {
     static contain() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.contain'
 
         })
     }
     static cover() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.cover'
 
         })
     }
     static fill() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.fill'
 
         })
     }
     static fitHeight() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.fitHeight'
 
         })
     }
     static fitWidth() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.fitWidth'
 
         })
     }
     static none() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.none'
 
         })
     }
     static scaleDown() {
-        return new FlutterBoxFit({
+        return new BoxFit({
             builder: 'f:1:BoxFit.scaleDown'
 
         })
     }
 }
-export class FlutterBoxHeightStyle extends ZacBuilder<native.BoxHeightStyle> {
+export class BoxHeightStyle extends ZacBuilder<native.BoxHeightStyle> {
     static includeLineSpacingBottom() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.includeLineSpacingBottom'
 
         })
     }
     static includeLineSpacingMiddle() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.includeLineSpacingMiddle'
 
         })
     }
     static includeLineSpacingTop() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.includeLineSpacingTop'
 
         })
     }
     static max() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.max'
 
         })
     }
     static strut() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.strut'
 
         })
     }
     static tight() {
-        return new FlutterBoxHeightStyle({
+        return new BoxHeightStyle({
             builder: 'f:1:BoxHeightStyle.tight'
 
         })
     }
 }
-export class FlutterBoxShadow extends ZacBuilder<native.BoxShadow> {
-    static new(data: {
+export class BoxShadow extends ZacBuilder<native.BoxShadow> {
+    static new(data?: {
         color?: ZacBuilder<native.Color>,
         offset?: ZacBuilder<native.Offset>,
         blurRadius?: ZacBuilder<number>,
         spreadRadius?: ZacBuilder<number>,
-        blurStyle?: FlutterBlurStyle
+        blurStyle?: BlurStyle
     }) {
-        return new FlutterBoxShadow({
+        return new BoxShadow({
             builder: 'f:1:BoxShadow',
             ...data
         })
     }
 }
-export class FlutterBoxShape extends ZacBuilder<native.BoxShape> {
+export class BoxShape extends ZacBuilder<native.BoxShape> {
     static circle() {
-        return new FlutterBoxShape({
+        return new BoxShape({
             builder: 'f:1:BoxShape.circle'
 
         })
     }
     static rectangle() {
-        return new FlutterBoxShape({
+        return new BoxShape({
             builder: 'f:1:BoxShape.rectangle'
 
         })
     }
 }
-export class FlutterBoxWidthStyle extends ZacBuilder<native.BoxWidthStyle> {
+export class BoxWidthStyle extends ZacBuilder<native.BoxWidthStyle> {
     static max() {
-        return new FlutterBoxWidthStyle({
+        return new BoxWidthStyle({
             builder: 'f:1:BoxWidthStyle.max'
 
         })
     }
     static tight() {
-        return new FlutterBoxWidthStyle({
+        return new BoxWidthStyle({
             builder: 'f:1:BoxWidthStyle.tight'
 
         })
     }
 }
-export class FlutterBrightness extends ZacBuilder<native.Brightness> {
+export class Brightness extends ZacBuilder<native.Brightness> {
     static dark() {
-        return new FlutterBrightness({
+        return new Brightness({
             builder: 'f:1:Brightness.dark'
 
         })
     }
     static light() {
-        return new FlutterBrightness({
+        return new Brightness({
             builder: 'f:1:Brightness.light'
 
         })
     }
 }
-export class FlutterBuilder extends ZacBuilder<native.Builder> {
+export class Builder extends ZacBuilder<native.Builder> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterBuilder({
+        return new Builder({
             builder: 'f:1:Builder',
             ...data
         })
     }
 }
-export class FlutterButtonBar extends ZacBuilder<native.ButtonBar> {
-    static new(data: {
+export class ButtonBar extends ZacBuilder<native.ButtonBar> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         alignment?: ZacBuilder<native.MainAxisAlignment>,
         mainAxisSize?: ZacBuilder<native.MainAxisSize>,
@@ -758,14 +758,14 @@ export class FlutterButtonBar extends ZacBuilder<native.ButtonBar> {
         overflowButtonSpacing?: ZacBuilder<number>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterButtonBar({
+        return new ButtonBar({
             builder: 'f:1:ButtonBar',
             ...data
         })
     }
 }
-export class FlutterCard extends ZacBuilder<native.Card> {
-    static new(data: {
+export class Card extends ZacBuilder<native.Card> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         color?: ZacBuilder<native.Color>,
         shadowColor?: ZacBuilder<native.Color>,
@@ -777,85 +777,85 @@ export class FlutterCard extends ZacBuilder<native.Card> {
         child?: ZacBuilder<native.Widget>,
         semanticContainer?: ZacBuilder<boolean>
     }) {
-        return new FlutterCard({
+        return new Card({
             builder: 'f:1:Card',
             ...data
         })
     }
 }
-export class FlutterCenter extends ZacBuilder<native.Center> {
-    static new(data: {
+export class Center extends ZacBuilder<native.Center> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         widthFactor?: ZacBuilder<number>,
         heightFactor?: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterCenter({
+        return new Center({
             builder: 'f:1:Center',
             ...data
         })
     }
 }
-export class FlutterCircleBorder extends ZacBuilder<native.CircleBorder> {
-    static new(data: { side?: ZacBuilder<native.BorderSide> }) {
-        return new FlutterCircleBorder({
+export class CircleBorder extends ZacBuilder<native.CircleBorder> {
+    static new(data?: { side?: ZacBuilder<native.BorderSide> }) {
+        return new CircleBorder({
             builder: 'f:1:CircleBorder',
             ...data
         })
     }
 }
-export class FlutterClip extends ZacBuilder<native.Clip> {
+export class Clip extends ZacBuilder<native.Clip> {
     static none() {
-        return new FlutterClip({
+        return new Clip({
             builder: 'f:1:Clip.none'
 
         })
     }
     static antiAlias() {
-        return new FlutterClip({
+        return new Clip({
             builder: 'f:1:Clip.antiAlias'
 
         })
     }
     static hardEdge() {
-        return new FlutterClip({
+        return new Clip({
             builder: 'f:1:Clip.hardEdge'
 
         })
     }
 }
-export class FlutterClipOval extends ZacBuilder<native.ClipOval> {
-    static new(data: {
+export class ClipOval extends ZacBuilder<native.ClipOval> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterClipOval({
+        return new ClipOval({
             builder: 'f:1:ClipOval',
             ...data
         })
     }
 }
-export class FlutterClipRect extends ZacBuilder<native.ClipRect> {
-    static new(data: {
+export class ClipRect extends ZacBuilder<native.ClipRect> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterClipRect({
+        return new ClipRect({
             builder: 'f:1:ClipRect',
             ...data
         })
     }
 }
-export class FlutterColor extends ZacBuilder<native.Color> {
+export class Color extends ZacBuilder<native.Color> {
     static fromARGB(data: {
         a: number,
         r: number,
         g: number,
         b: number
     }) {
-        return new FlutterColor({
+        return new Color({
             builder: 'f:1:Color.fromARGB',
             ...data
         })
@@ -866,14 +866,14 @@ export class FlutterColor extends ZacBuilder<native.Color> {
         b: number,
         opacity: ZacBuilder<number>
     }) {
-        return new FlutterColor({
+        return new Color({
             builder: 'f:1:Color.fromRGBO',
             ...data
         })
     }
 }
-export class FlutterColumn extends ZacBuilder<native.Column> {
-    static new(data: {
+export class Column extends ZacBuilder<native.Column> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         mainAxisAlignment?: ZacBuilder<native.MainAxisAlignment>,
         mainAxisSize?: ZacBuilder<native.MainAxisSize>,
@@ -883,26 +883,26 @@ export class FlutterColumn extends ZacBuilder<native.Column> {
         textBaseline?: ZacBuilder<native.TextBaseline>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterColumn({
+        return new Column({
             builder: 'f:1:Column',
             ...data
         })
     }
 }
-export class FlutterConstrainedBox extends ZacBuilder<native.ConstrainedBox> {
+export class ConstrainedBox extends ZacBuilder<native.ConstrainedBox> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         constraints: ZacBuilder<native.BoxConstraints>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterConstrainedBox({
+        return new ConstrainedBox({
             builder: 'f:1:ConstrainedBox',
             ...data
         })
     }
 }
-export class FlutterContainer extends ZacBuilder<native.Container> {
-    static new(data: {
+export class Container extends ZacBuilder<native.Container> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         color?: ZacBuilder<native.Color>,
@@ -911,97 +911,97 @@ export class FlutterContainer extends ZacBuilder<native.Container> {
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         decoration?: ZacBuilder<native.Decoration>
     }) {
-        return new FlutterContainer({
+        return new Container({
             builder: 'f:1:Container',
             ...data
         })
     }
 }
-export class FlutterCrossAxisAlignment extends ZacBuilder<native.CrossAxisAlignment> {
+export class CrossAxisAlignment extends ZacBuilder<native.CrossAxisAlignment> {
     static baseline() {
-        return new FlutterCrossAxisAlignment({
+        return new CrossAxisAlignment({
             builder: 'f:1:CrossAxisAlignment.baseline'
 
         })
     }
     static center() {
-        return new FlutterCrossAxisAlignment({
+        return new CrossAxisAlignment({
             builder: 'f:1:CrossAxisAlignment.center'
 
         })
     }
     static end() {
-        return new FlutterCrossAxisAlignment({
+        return new CrossAxisAlignment({
             builder: 'f:1:CrossAxisAlignment.end'
 
         })
     }
     static start() {
-        return new FlutterCrossAxisAlignment({
+        return new CrossAxisAlignment({
             builder: 'f:1:CrossAxisAlignment.start'
 
         })
     }
     static stretch() {
-        return new FlutterCrossAxisAlignment({
+        return new CrossAxisAlignment({
             builder: 'f:1:CrossAxisAlignment.stretch'
 
         })
     }
 }
-export class FlutterCustomScrollView extends ZacBuilder<native.CustomScrollView> {
-    static new(data: {
+export class CustomScrollView extends ZacBuilder<native.CustomScrollView> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
-        scrollDirection?: FlutterAxis,
+        scrollDirection?: Axis,
         reverse?: ZacBuilder<boolean>,
         controller?: ZacBuilder<native.ScrollController>,
         primary?: ZacBuilder<boolean>,
-        physics?: FlutterScrollPhysics,
+        physics?: ScrollPhysics,
         shrinkWrap?: ZacBuilder<boolean>,
         center?: ZacBuilder<native.Key>,
         anchor?: ZacBuilder<number>,
         cacheExtent?: ZacBuilder<number>,
         slivers?: ZacListBuilder<native.Widget>,
         semanticChildCount?: ZacBuilder<number>,
-        keyboardDismissBehavior?: FlutterScrollViewKeyboardDismissBehavior,
+        keyboardDismissBehavior?: ScrollViewKeyboardDismissBehavior,
         restorationId?: ZacBuilder<string>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterCustomScrollView({
+        return new CustomScrollView({
             builder: 'f:1:CustomScrollView',
             ...data
         })
     }
 }
-export class FlutterDecoratedBox extends ZacBuilder<native.DecoratedBox> {
+export class DecoratedBox extends ZacBuilder<native.DecoratedBox> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         decoration: ZacBuilder<native.Decoration>,
         position?: ZacBuilder<native.DecorationPosition>
     }) {
-        return new FlutterDecoratedBox({
+        return new DecoratedBox({
             builder: 'f:1:DecoratedBox',
             ...data
         })
     }
 }
-export class FlutterDecorationPosition extends ZacBuilder<native.DecorationPosition> {
+export class DecorationPosition extends ZacBuilder<native.DecorationPosition> {
     static background() {
-        return new FlutterDecorationPosition({
+        return new DecorationPosition({
             builder: 'f:1:DecorationPosition.background'
 
         })
     }
     static foreground() {
-        return new FlutterDecorationPosition({
+        return new DecorationPosition({
             builder: 'f:1:DecorationPosition.foreground'
 
         })
     }
 }
-export class FlutterDialogs extends ZacBuilder<native.Widget> {
-    static dialog(data: {
+export class Dialogs extends ZacBuilder<native.Widget> {
+    static dialog(data?: {
         key?: ZacBuilder<native.Key>,
         backgroundColor?: ZacBuilder<native.Color>,
         elevation?: ZacBuilder<number>,
@@ -1011,12 +1011,12 @@ export class FlutterDialogs extends ZacBuilder<native.Widget> {
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterDialogs({
+        return new Dialogs({
             builder: 'f:1:Dialog',
             ...data
         })
     }
-    static alertDialog(data: {
+    static alertDialog(data?: {
         key?: ZacBuilder<native.Key>,
         title?: ZacBuilder<native.Widget>,
         content?: ZacBuilder<native.Widget>,
@@ -1039,12 +1039,12 @@ export class FlutterDialogs extends ZacBuilder<native.Widget> {
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         scrollable?: ZacBuilder<boolean>
     }) {
-        return new FlutterDialogs({
+        return new Dialogs({
             builder: 'f:1:AlertDialog',
             ...data
         })
     }
-    static simpleDialog(data: {
+    static simpleDialog(data?: {
         key?: ZacBuilder<native.Key>,
         title?: ZacBuilder<native.Widget>,
         children?: ZacListBuilder<native.Widget>,
@@ -1059,25 +1059,25 @@ export class FlutterDialogs extends ZacBuilder<native.Widget> {
         shape?: ZacBuilder<native.ShapeBorder>,
         alignment?: ZacBuilder<native.AlignmentGeometry>
     }) {
-        return new FlutterDialogs({
+        return new Dialogs({
             builder: 'f:1:SimpleDialog',
             ...data
         })
     }
-    static simpleDialogOption(data: {
+    static simpleDialogOption(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         onPressed?: ZacBuilder<Array<ZacAction>>,
         padding?: ZacBuilder<native.EdgeInsets>
     }) {
-        return new FlutterDialogs({
+        return new Dialogs({
             builder: 'f:1:SimpleDialogOption',
             ...data
         })
     }
 }
-export class FlutterDivider extends ZacBuilder<native.Divider> {
-    static new(data: {
+export class Divider extends ZacBuilder<native.Divider> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         height?: ZacBuilder<number>,
         thickness?: ZacBuilder<number>,
@@ -1085,14 +1085,14 @@ export class FlutterDivider extends ZacBuilder<native.Divider> {
         endIndent?: ZacBuilder<number>,
         color?: ZacBuilder<native.Color>
     }) {
-        return new FlutterDivider({
+        return new Divider({
             builder: 'f:1:Divider',
             ...data
         })
     }
 }
-export class FlutterDrawer extends ZacBuilder<native.Drawer> {
-    static new(data: {
+export class Drawer extends ZacBuilder<native.Drawer> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         backgroundColor?: ZacBuilder<native.Color>,
         elevation?: ZacBuilder<number>,
@@ -1100,69 +1100,69 @@ export class FlutterDrawer extends ZacBuilder<native.Drawer> {
         child?: ZacBuilder<native.Widget>,
         semanticLabel?: ZacBuilder<string>
     }) {
-        return new FlutterDrawer({
+        return new Drawer({
             builder: 'f:1:Drawer',
             ...data
         })
     }
 }
-export class FlutterEdgeInsets extends ZacBuilder<native.EdgeInsets> {
+export class EdgeInsets extends ZacBuilder<native.EdgeInsets> {
     static all(data: { value: ZacBuilder<number> }) {
-        return new FlutterEdgeInsets({
+        return new EdgeInsets({
             builder: 'f:1:EdgeInsets.all',
             ...data
         })
     }
-    static symmetric(data: {
+    static symmetric(data?: {
         vertical?: ZacBuilder<number>,
         horizontal?: ZacBuilder<number>
     }) {
-        return new FlutterEdgeInsets({
+        return new EdgeInsets({
             builder: 'f:1:EdgeInsets.symmetric',
             ...data
         })
     }
-    static only(data: {
+    static only(data?: {
         left?: ZacBuilder<number>,
         top?: ZacBuilder<number>,
         right?: ZacBuilder<number>,
         bottom?: ZacBuilder<number>
     }) {
-        return new FlutterEdgeInsets({
+        return new EdgeInsets({
             builder: 'f:1:EdgeInsets.only',
             ...data
         })
     }
 }
-export class FlutterEdgeInsetsDirectional extends ZacBuilder<native.EdgeInsetsDirectional> {
+export class EdgeInsetsDirectional extends ZacBuilder<native.EdgeInsetsDirectional> {
     static all(data: { value: ZacBuilder<number> }) {
-        return new FlutterEdgeInsetsDirectional({
+        return new EdgeInsetsDirectional({
             builder: 'f:1:EdgeInsetsDirectional.all',
             ...data
         })
     }
-    static only(data: {
+    static only(data?: {
         start?: ZacBuilder<number>,
         top?: ZacBuilder<number>,
         end?: ZacBuilder<number>,
         bottom?: ZacBuilder<number>
     }) {
-        return new FlutterEdgeInsetsDirectional({
+        return new EdgeInsetsDirectional({
             builder: 'f:1:EdgeInsetsDirectional.only',
             ...data
         })
     }
 }
-export class FlutterElevatedButton extends ZacBuilder<native.ElevatedButton> {
-    static new(data: {
+export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
-        child: ZacBuilder<native.Widget> | null,
+        child?: ZacBuilder<native.Widget>,
         onPressed?: ZacBuilder<Array<ZacAction>>,
         onLongPress?: ZacBuilder<Array<ZacAction>>,
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterElevatedButton({
+        return new ElevatedButton({
             builder: 'f:1:ElevatedButton',
             ...data
         })
@@ -1176,386 +1176,386 @@ export class FlutterElevatedButton extends ZacBuilder<native.ElevatedButton> {
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterElevatedButton({
+        return new ElevatedButton({
             builder: 'f:1:ElevatedButton.icon',
             ...data
         })
     }
 }
-export class FlutterExpanded extends ZacBuilder<native.Expanded> {
+export class Expanded extends ZacBuilder<native.Expanded> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         flex?: ZacBuilder<number>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterExpanded({
+        return new Expanded({
             builder: 'f:1:Expanded',
             ...data
         })
     }
 }
-export class FlutterFilterQuality extends ZacBuilder<native.FilterQuality> {
+export class FilterQuality extends ZacBuilder<native.FilterQuality> {
     static high() {
-        return new FlutterFilterQuality({
+        return new FilterQuality({
             builder: 'f:1:FilterQuality.high'
 
         })
     }
     static low() {
-        return new FlutterFilterQuality({
+        return new FilterQuality({
             builder: 'f:1:FilterQuality.low'
 
         })
     }
     static medium() {
-        return new FlutterFilterQuality({
+        return new FilterQuality({
             builder: 'f:1:FilterQuality.medium'
 
         })
     }
     static none() {
-        return new FlutterFilterQuality({
+        return new FilterQuality({
             builder: 'f:1:FilterQuality.none'
 
         })
     }
 }
-export class FlutterFittedBox extends ZacBuilder<native.FittedBox> {
-    static new(data: {
+export class FittedBox extends ZacBuilder<native.FittedBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         fit?: ZacBuilder<native.BoxFit>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         clipBehavior?: ZacBuilder<native.Clip>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterFittedBox({
+        return new FittedBox({
             builder: 'f:1:FittedBox',
             ...data
         })
     }
 }
-export class FlutterFlexFit extends ZacBuilder<native.FlexFit> {
+export class FlexFit extends ZacBuilder<native.FlexFit> {
     static tight() {
-        return new FlutterFlexFit({
+        return new FlexFit({
             builder: 'f:1:FlexFit.tight'
 
         })
     }
     static loose() {
-        return new FlutterFlexFit({
+        return new FlexFit({
             builder: 'f:1:FlexFit.loose'
 
         })
     }
 }
-export class FlutterFlexible extends ZacBuilder<native.Flexible> {
+export class Flexible extends ZacBuilder<native.Flexible> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         flex?: ZacBuilder<number>,
         fit?: ZacBuilder<native.FlexFit>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterFlexible({
+        return new Flexible({
             builder: 'f:1:Flexible',
             ...data
         })
     }
 }
-export class FlutterFontFeature extends ZacBuilder<native.FontFeature> {
+export class FontFeature extends ZacBuilder<native.FontFeature> {
     static new(data: {
         feature: string,
         value?: ZacBuilder<number>
     }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature',
             ...data
         })
     }
     static alternative(data: { value: number }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.alternative',
             ...data
         })
     }
     static alternativeFractions() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.alternativeFractions'
 
         })
     }
     static caseSensitiveForms() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.caseSensitiveForms'
 
         })
     }
     static characterVariant(data: { value: number }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.characterVariant',
             ...data
         })
     }
     static contextualAlternates() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.contextualAlternates'
 
         })
     }
     static denominator() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.denominator'
 
         })
     }
     static disable(data: { feature: string }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.disable',
             ...data
         })
     }
     static enable(data: { feature: string }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.enable',
             ...data
         })
     }
     static fractions() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.fractions'
 
         })
     }
     static historicalForms() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.historicalForms'
 
         })
     }
     static historicalLigatures() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.historicalLigatures'
 
         })
     }
     static liningFigures() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.liningFigures'
 
         })
     }
-    static localeAware(data: { enable?: ZacBuilder<boolean> }) {
-        return new FlutterFontFeature({
+    static localeAware(data?: { enable?: ZacBuilder<boolean> }) {
+        return new FontFeature({
             builder: 'f:1:FontFeature.localeAware',
             ...data
         })
     }
-    static notationalForms(data: { value?: ZacBuilder<number> }) {
-        return new FlutterFontFeature({
+    static notationalForms(data?: { value?: ZacBuilder<number> }) {
+        return new FontFeature({
             builder: 'f:1:FontFeature.notationalForms',
             ...data
         })
     }
     static numerators() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.numerators'
 
         })
     }
     static oldstyleFigures() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.oldstyleFigures'
 
         })
     }
     static ordinalForms() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.ordinalForms'
 
         })
     }
     static proportionalFigures() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.proportionalFigures'
 
         })
     }
     static randomize() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.randomize'
 
         })
     }
     static scientificInferiors() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.scientificInferiors'
 
         })
     }
     static slashedZero() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.slashedZero'
 
         })
     }
     static stylisticAlternates() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.stylisticAlternates'
 
         })
     }
     static stylisticSet(data: { value: number }) {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.stylisticSet',
             ...data
         })
     }
     static subscripts() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.subscripts'
 
         })
     }
     static superscripts() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.superscripts'
 
         })
     }
-    static swash(data: { value?: ZacBuilder<number> }) {
-        return new FlutterFontFeature({
+    static swash(data?: { value?: ZacBuilder<number> }) {
+        return new FontFeature({
             builder: 'f:1:FontFeature.swash',
             ...data
         })
     }
     static tabularFigures() {
-        return new FlutterFontFeature({
+        return new FontFeature({
             builder: 'f:1:FontFeature.tabularFigures'
 
         })
     }
 }
-export class FlutterFontStyle extends ZacBuilder<native.FontStyle> {
+export class FontStyle extends ZacBuilder<native.FontStyle> {
     static italic() {
-        return new FlutterFontStyle({
+        return new FontStyle({
             builder: 'f:1:FontStyle.italic'
 
         })
     }
     static normal() {
-        return new FlutterFontStyle({
+        return new FontStyle({
             builder: 'f:1:FontStyle.normal'
 
         })
     }
 }
-export class FlutterFontWeight extends ZacBuilder<native.FontWeight> {
+export class FontWeight extends ZacBuilder<native.FontWeight> {
     static bold() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.bold'
 
         })
     }
     static normal() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.normal'
 
         })
     }
     static w100() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w100'
 
         })
     }
     static w200() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w200'
 
         })
     }
     static w300() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w300'
 
         })
     }
     static w400() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w400'
 
         })
     }
     static w500() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w500'
 
         })
     }
     static w600() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w600'
 
         })
     }
     static w700() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w700'
 
         })
     }
     static w800() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w800'
 
         })
     }
     static w900() {
-        return new FlutterFontWeight({
+        return new FontWeight({
             builder: 'f:1:FontWeight.w900'
 
         })
     }
 }
-export class FlutterFractionalOffset extends ZacBuilder<native.FractionalOffset> {
+export class FractionalOffset extends ZacBuilder<native.FractionalOffset> {
     static new(data: {
         dx: ZacBuilder<number>,
         dy: ZacBuilder<number>
     }) {
-        return new FlutterFractionalOffset({
+        return new FractionalOffset({
             builder: 'f:1:FractionalOffset',
             ...data
         })
     }
 }
-export class FlutterFractionalTranslation extends ZacBuilder<native.FractionalTranslation> {
+export class FractionalTranslation extends ZacBuilder<native.FractionalTranslation> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
-        translation: FlutterOffset,
+        translation: Offset,
         transformHitTests?: ZacBuilder<boolean>
     }) {
-        return new FlutterFractionalTranslation({
+        return new FractionalTranslation({
             builder: 'f:1:FractionalTranslation',
             ...data
         })
     }
 }
-export class FlutterFractionallySizedBox extends ZacBuilder<native.FractionallySizedBox> {
-    static new(data: {
+export class FractionallySizedBox extends ZacBuilder<native.FractionallySizedBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         widthFactor?: ZacBuilder<number>,
         heightFactor?: ZacBuilder<number>
     }) {
-        return new FlutterFractionallySizedBox({
+        return new FractionallySizedBox({
             builder: 'f:1:FractionallySizedBox',
             ...data
         })
     }
 }
-export class FlutterGestureDetector extends ZacBuilder<native.GestureDetector> {
-    static new(data: {
+export class GestureDetector extends ZacBuilder<native.GestureDetector> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         onTap?: ZacBuilder<Array<ZacAction>>,
@@ -1564,40 +1564,40 @@ export class FlutterGestureDetector extends ZacBuilder<native.GestureDetector> {
         onLongPress?: ZacBuilder<Array<ZacAction>>,
         onSecondaryLongPress?: ZacBuilder<Array<ZacAction>>,
         onTertiaryLongPress?: ZacBuilder<Array<ZacAction>>,
-        behavior?: FlutterHitTestBehavior,
+        behavior?: HitTestBehavior,
         excludeFromSemantics?: ZacBuilder<boolean>
     }) {
-        return new FlutterGestureDetector({
+        return new GestureDetector({
             builder: 'f:1:GestureDetector',
             ...data
         })
     }
 }
-export class FlutterGlobalKeyNavigatorStateProvider extends ZacBuilder<native.Widget> {
+export class GlobalKeyNavigatorStateProvider extends ZacBuilder<native.Widget> {
     static new(data: {
         debugLabel?: ZacBuilder<string>,
         family: any,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterGlobalKeyNavigatorStateProvider({
+        return new GlobalKeyNavigatorStateProvider({
             builder: 'z:1:GlobalKey<NavigatorState>.provide',
             ...data
         })
     }
 }
-export class FlutterGlobalKeyScaffoldMessengerStateProvider extends ZacBuilder<native.Widget> {
+export class GlobalKeyScaffoldMessengerStateProvider extends ZacBuilder<native.Widget> {
     static new(data: {
         debugLabel?: ZacBuilder<string>,
         family: any,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterGlobalKeyScaffoldMessengerStateProvider({
+        return new GlobalKeyScaffoldMessengerStateProvider({
             builder: 'z:1:GlobalKey<ScaffoldMessengerState>.provide',
             ...data
         })
     }
 }
-export class FlutterGridView extends ZacBuilder<native.GridView> {
+export class GridView extends ZacBuilder<native.GridView> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         scrollDirection?: ZacBuilder<native.Axis>,
@@ -1617,86 +1617,86 @@ export class FlutterGridView extends ZacBuilder<native.GridView> {
         keyboardDismissBehavior?: ZacBuilder<native.ScrollViewKeyboardDismissBehavior>,
         restorationId?: ZacBuilder<string>
     }) {
-        return new FlutterGridView({
+        return new GridView({
             builder: 'f:1:GridView',
             ...data
         })
     }
 }
-export class FlutterHitTestBehavior extends ZacBuilder<native.HitTestBehavior> {
+export class HitTestBehavior extends ZacBuilder<native.HitTestBehavior> {
     static deferToChild() {
-        return new FlutterHitTestBehavior({
+        return new HitTestBehavior({
             builder: 'f:1:HitTestBehavior.deferToChild'
 
         })
     }
     static opaque() {
-        return new FlutterHitTestBehavior({
+        return new HitTestBehavior({
             builder: 'f:1:HitTestBehavior.opaque'
 
         })
     }
     static translucent() {
-        return new FlutterHitTestBehavior({
+        return new HitTestBehavior({
             builder: 'f:1:HitTestBehavior.translucent'
 
         })
     }
 }
-export class FlutterIcon extends ZacBuilder<native.Icon> {
+export class Icon extends ZacBuilder<native.Icon> {
     static new(data: {
-        icon: FlutterIconData | null,
+        icon: IconData,
         key?: ZacBuilder<native.Key>,
         size?: ZacBuilder<number>,
         color?: ZacBuilder<native.Color>,
         semanticLabel?: ZacBuilder<string>,
         textDirection?: ZacBuilder<native.TextDirection>
     }) {
-        return new FlutterIcon({
+        return new Icon({
             builder: 'f:1:Icon',
             ...data
         })
     }
 }
-export class FlutterIconData extends ZacBuilder<native.IconData> {
+export class IconData extends ZacBuilder<native.IconData> {
     static new(data: {
         codePoint: ZacBuilder<number>,
         fontFamily?: ZacBuilder<string>,
         fontPackage?: ZacBuilder<string>,
         matchTextDirection?: ZacBuilder<boolean>
     }) {
-        return new FlutterIconData({
+        return new IconData({
             builder: 'f:1:IconData',
             ...data
         })
     }
 }
-export class FlutterIconThemeData extends ZacBuilder<native.IconThemeData> {
-    static new(data: {
+export class IconThemeData extends ZacBuilder<native.IconThemeData> {
+    static new(data?: {
         color?: ZacBuilder<native.Color>,
         opacity?: ZacBuilder<number>,
         size?: ZacBuilder<number>
     }) {
-        return new FlutterIconThemeData({
+        return new IconThemeData({
             builder: 'f:1:IconThemeData',
             ...data
         })
     }
 }
-export class FlutterIgnorePointer extends ZacBuilder<native.IgnorePointer> {
-    static new(data: {
+export class IgnorePointer extends ZacBuilder<native.IgnorePointer> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         ignoring?: ZacBuilder<boolean>,
         ignoringSemantics?: ZacBuilder<boolean>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterIgnorePointer({
+        return new IgnorePointer({
             builder: 'f:1:IgnorePointer',
             ...data
         })
     }
 }
-export class FlutterImage extends ZacBuilder<native.Image> {
+export class Image extends ZacBuilder<native.Image> {
     static network(data: {
         src: ZacBuilder<string>,
         key?: ZacBuilder<native.Key>,
@@ -1719,7 +1719,7 @@ export class FlutterImage extends ZacBuilder<native.Image> {
         cacheWidth?: ZacBuilder<number>,
         cacheHeight?: ZacBuilder<number>
     }) {
-        return new FlutterImage({
+        return new Image({
             builder: 'f:1:Image.network',
             ...data
         })
@@ -1746,40 +1746,40 @@ export class FlutterImage extends ZacBuilder<native.Image> {
         cacheWidth?: ZacBuilder<number>,
         cacheHeight?: ZacBuilder<number>
     }) {
-        return new FlutterImage({
+        return new Image({
             builder: 'f:1:Image.asset',
             ...data
         })
     }
 }
-export class FlutterImageRepeat extends ZacBuilder<native.ImageRepeat> {
+export class ImageRepeat extends ZacBuilder<native.ImageRepeat> {
     static noRepeat() {
-        return new FlutterImageRepeat({
+        return new ImageRepeat({
             builder: 'f:1:ImageRepeat.noRepeat'
 
         })
     }
     static repeat() {
-        return new FlutterImageRepeat({
+        return new ImageRepeat({
             builder: 'f:1:ImageRepeat.repeat'
 
         })
     }
     static repeatX() {
-        return new FlutterImageRepeat({
+        return new ImageRepeat({
             builder: 'f:1:ImageRepeat.repeatX'
 
         })
     }
     static repeatY() {
-        return new FlutterImageRepeat({
+        return new ImageRepeat({
             builder: 'f:1:ImageRepeat.repeatY'
 
         })
     }
 }
-export class FlutterIndexedStack extends ZacBuilder<native.IndexedStack> {
-    static new(data: {
+export class IndexedStack extends ZacBuilder<native.IndexedStack> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         textDirection?: ZacBuilder<native.TextDirection>,
@@ -1787,14 +1787,14 @@ export class FlutterIndexedStack extends ZacBuilder<native.IndexedStack> {
         index?: ZacBuilder<number>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterIndexedStack({
+        return new IndexedStack({
             builder: 'f:1:IndexedStack',
             ...data
         })
     }
 }
-export class FlutterInputDecoration extends ZacBuilder<native.InputDecoration> {
-    static new(data: {
+export class InputDecoration extends ZacBuilder<native.InputDecoration> {
+    static new(data?: {
         icon?: ZacBuilder<native.Widget>,
         iconColor?: ZacBuilder<native.Color>,
         label?: ZacBuilder<native.Widget>,
@@ -1844,13 +1844,13 @@ export class FlutterInputDecoration extends ZacBuilder<native.InputDecoration> {
         alignLabelWithHint?: ZacBuilder<boolean>,
         constraints?: ZacBuilder<native.BoxConstraints>
     }) {
-        return new FlutterInputDecoration({
+        return new InputDecoration({
             builder: 'f:1:InputDecoration',
             ...data
         })
     }
 }
-export class FlutterInteractiveViewer extends ZacBuilder<native.InteractiveViewer> {
+export class InteractiveViewer extends ZacBuilder<native.InteractiveViewer> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child: ZacBuilder<native.Widget>,
@@ -1866,49 +1866,49 @@ export class FlutterInteractiveViewer extends ZacBuilder<native.InteractiveViewe
         panEnabled?: ZacBuilder<boolean>,
         scaleEnabled?: ZacBuilder<boolean>
     }) {
-        return new FlutterInteractiveViewer({
+        return new InteractiveViewer({
             builder: 'f:1:InteractiveViewer',
             ...data
         })
     }
 }
-export class FlutterIntrinsicHeight extends ZacBuilder<native.IntrinsicHeight> {
-    static new(data: {
+export class IntrinsicHeight extends ZacBuilder<native.IntrinsicHeight> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterIntrinsicHeight({
+        return new IntrinsicHeight({
             builder: 'f:1:IntrinsicHeight',
             ...data
         })
     }
 }
-export class FlutterIntrinsicWidth extends ZacBuilder<native.IntrinsicWidth> {
-    static new(data: {
+export class IntrinsicWidth extends ZacBuilder<native.IntrinsicWidth> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterIntrinsicWidth({
+        return new IntrinsicWidth({
             builder: 'f:1:IntrinsicWidth',
             ...data
         })
     }
 }
-export class FlutterLimitedBox extends ZacBuilder<native.LimitedBox> {
-    static new(data: {
+export class LimitedBox extends ZacBuilder<native.LimitedBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         maxWidth?: ZacBuilder<number>,
         maxHeight?: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterLimitedBox({
+        return new LimitedBox({
             builder: 'f:1:LimitedBox',
             ...data
         })
     }
 }
-export class FlutterListTile extends ZacBuilder<native.ListTile> {
-    static new(data: {
+export class ListTile extends ZacBuilder<native.ListTile> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         leading?: ZacBuilder<native.Widget>,
         title?: ZacBuilder<native.Widget>,
@@ -1935,14 +1935,14 @@ export class FlutterListTile extends ZacBuilder<native.ListTile> {
         minVerticalPadding?: ZacBuilder<number>,
         minLeadingWidth?: ZacBuilder<number>
     }) {
-        return new FlutterListTile({
+        return new ListTile({
             builder: 'f:1:ListTile',
             ...data
         })
     }
 }
-export class FlutterListView extends ZacBuilder<native.ListView> {
-    static new(data: {
+export class ListView extends ZacBuilder<native.ListView> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         scrollDirection?: ZacBuilder<native.Axis>,
         reverse?: ZacBuilder<boolean>,
@@ -1963,77 +1963,77 @@ export class FlutterListView extends ZacBuilder<native.ListView> {
         restorationId?: ZacBuilder<string>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterListView({
+        return new ListView({
             builder: 'f:1:ListView',
             ...data
         })
     }
 }
-export class FlutterLocale extends ZacBuilder<native.Locale> {
+export class Locale extends ZacBuilder<native.Locale> {
     static new(data: {
         languageCode: string,
         countryCode?: string
     }) {
-        return new FlutterLocale({
+        return new Locale({
             builder: 'f:1:Locale',
             ...data
         })
     }
 }
-export class FlutterMainAxisAlignment extends ZacBuilder<native.MainAxisAlignment> {
+export class MainAxisAlignment extends ZacBuilder<native.MainAxisAlignment> {
     static start() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.start'
 
         })
     }
     static end() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.end'
 
         })
     }
     static center() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.center'
 
         })
     }
     static spaceBetween() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.spaceBetween'
 
         })
     }
     static spaceAround() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.spaceAround'
 
         })
     }
     static spaceEvenly() {
-        return new FlutterMainAxisAlignment({
+        return new MainAxisAlignment({
             builder: 'f:1:MainAxisAlignment.spaceEvenly'
 
         })
     }
 }
-export class FlutterMainAxisSize extends ZacBuilder<native.MainAxisSize> {
+export class MainAxisSize extends ZacBuilder<native.MainAxisSize> {
     static min() {
-        return new FlutterMainAxisSize({
+        return new MainAxisSize({
             builder: 'f:1:MainAxisSize.min'
 
         })
     }
     static max() {
-        return new FlutterMainAxisSize({
+        return new MainAxisSize({
             builder: 'f:1:MainAxisSize.max'
 
         })
     }
 }
-export class FlutterMaterial extends ZacBuilder<native.Material> {
-    static new(data: {
+export class Material extends ZacBuilder<native.Material> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         elevation?: ZacBuilder<number>,
@@ -2045,21 +2045,21 @@ export class FlutterMaterial extends ZacBuilder<native.Material> {
         borderOnForeground?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterMaterial({
+        return new Material({
             builder: 'f:1:Material',
             ...data
         })
     }
 }
-export class FlutterMaterialApp extends ZacBuilder<native.MaterialApp> {
-    static new(data: {
+export class MaterialApp extends ZacBuilder<native.MaterialApp> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         navigatorKey?: ZacBuilder<native.GlobalKey>,
         scaffoldMessengerKey?: ZacBuilder<native.GlobalKey>,
         home?: ZacBuilder<native.Widget>,
         initialRoute?: ZacBuilder<string>,
-        onGenerateRoute?: FlutterRouteFactory,
-        onUnknownRoute?: FlutterRouteFactory,
+        onGenerateRoute?: RouteFactory,
+        onUnknownRoute?: RouteFactory,
         title?: ZacBuilder<string>,
         color?: ZacBuilder<native.Color>,
         locale?: ZacBuilder<native.Locale>,
@@ -2072,33 +2072,33 @@ export class FlutterMaterialApp extends ZacBuilder<native.MaterialApp> {
         restorationScopeId?: ZacBuilder<string>,
         useInheritedMediaQuery?: ZacBuilder<boolean>
     }) {
-        return new FlutterMaterialApp({
+        return new MaterialApp({
             builder: 'f:1:MaterialApp',
             ...data
         })
     }
 }
-export class FlutterMaterialBanner extends ZacBuilder<native.MaterialBanner> {
+export class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         content: ZacBuilder<native.Widget>,
         contentTextStyle?: ZacBuilder<native.TextStyle>,
         actions: ZacListBuilder<native.Widget>,
         elevation?: ZacBuilder<number>,
-        leading: ZacBuilder<native.Widget> | null,
+        leading: ZacBuilder<native.Widget>,
         backgroundColor?: ZacBuilder<native.Color>,
         padding?: ZacBuilder<native.EdgeInsetsGeometry>,
         leadingPadding?: ZacBuilder<native.EdgeInsetsGeometry>,
         forceActionsBelow?: ZacBuilder<boolean>,
         onVisible?: ZacBuilder<Array<ZacAction>>
     }) {
-        return new FlutterMaterialBanner({
+        return new MaterialBanner({
             builder: 'f:1:MaterialBanner',
             ...data
         })
     }
 }
-export class FlutterMaterialPageRoute extends ZacBuilder<native.Route> {
+export class MaterialPageRoute extends ZacBuilder<native.Route> {
     static new(data: {
         settings?: ZacBuilder<native.RouteSettings>,
         maintainState?: ZacBuilder<boolean>,
@@ -2106,52 +2106,52 @@ export class FlutterMaterialPageRoute extends ZacBuilder<native.Route> {
         child: ZacBuilder<native.Widget>,
         nameOfSharedArguments?: ZacBuilder<string>
     }) {
-        return new FlutterMaterialPageRoute({
+        return new MaterialPageRoute({
             builder: 'f:1:MaterialPageRoute',
             ...data
         })
     }
 }
-export class FlutterNavigator extends ZacBuilder<native.Navigator> {
-    static new(data: {
+export class Navigator extends ZacBuilder<native.Navigator> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
-        onGenerateRoute?: FlutterRouteFactory,
-        onUnknownRoute?: FlutterRouteFactory,
+        onGenerateRoute?: RouteFactory,
+        onUnknownRoute?: RouteFactory,
         initialRoute?: ZacBuilder<string>,
         requestFocus?: ZacBuilder<boolean>
     }) {
-        return new FlutterNavigator({
+        return new Navigator({
             builder: 'f:1:Navigator',
             ...data
         })
     }
 }
-export class FlutterNavigatorState extends ZacBuilder<native.NavigatorState> {
+export class NavigatorState extends ZacBuilder<native.NavigatorState> {
     static closest() {
-        return new FlutterNavigatorState({
+        return new NavigatorState({
             builder: 'f:1:NavigatorState.closest'
 
         })
     }
     static root() {
-        return new FlutterNavigatorState({
+        return new NavigatorState({
             builder: 'f:1:NavigatorState.root'
 
         })
     }
     static shared(data: { value: ZacBuilder<native.GlobalKey> }) {
-        return new FlutterNavigatorState({
+        return new NavigatorState({
             builder: 'z:1:NavigatorState.shared',
             ...data
         })
     }
 }
-export class FlutterOffset extends ZacBuilder<native.Offset> {
+export class Offset extends ZacBuilder<native.Offset> {
     static new(data: {
         dx: ZacBuilder<number>,
         dy: ZacBuilder<number>
     }) {
-        return new FlutterOffset({
+        return new Offset({
             builder: 'f:1:Offset',
             ...data
         })
@@ -2160,50 +2160,50 @@ export class FlutterOffset extends ZacBuilder<native.Offset> {
         direction: ZacBuilder<number>,
         distance?: ZacBuilder<number>
     }) {
-        return new FlutterOffset({
+        return new Offset({
             builder: 'f:1:Offset.fromDirection',
             ...data
         })
     }
 }
-export class FlutterOffstage extends ZacBuilder<native.Offstage> {
-    static new(data: {
+export class Offstage extends ZacBuilder<native.Offstage> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         offstage?: ZacBuilder<boolean>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterOffstage({
+        return new Offstage({
             builder: 'f:1:Offstage',
             ...data
         })
     }
 }
-export class FlutterOpacity extends ZacBuilder<native.Opacity> {
+export class Opacity extends ZacBuilder<native.Opacity> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         opacity: ZacBuilder<number>,
         alwaysIncludeSemantics?: ZacBuilder<boolean>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterOpacity({
+        return new Opacity({
             builder: 'f:1:Opacity',
             ...data
         })
     }
 }
-export class FlutterOutlineInputBorder extends ZacBuilder<native.OutlineInputBorder> {
-    static new(data: {
+export class OutlineInputBorder extends ZacBuilder<native.OutlineInputBorder> {
+    static new(data?: {
         borderSide?: ZacBuilder<native.BorderSide>,
         borderRadius?: ZacBuilder<native.BorderRadius>,
         gapPadding?: ZacBuilder<number>
     }) {
-        return new FlutterOutlineInputBorder({
+        return new OutlineInputBorder({
             builder: 'f:1:OutlineInputBorder',
             ...data
         })
     }
 }
-export class FlutterOutlinedButton extends ZacBuilder<native.OutlinedButton> {
+export class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child: ZacBuilder<native.Widget>,
@@ -2212,7 +2212,7 @@ export class FlutterOutlinedButton extends ZacBuilder<native.OutlinedButton> {
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterOutlinedButton({
+        return new OutlinedButton({
             builder: 'f:1:OutlinedButton',
             ...data
         })
@@ -2226,14 +2226,14 @@ export class FlutterOutlinedButton extends ZacBuilder<native.OutlinedButton> {
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterOutlinedButton({
+        return new OutlinedButton({
             builder: 'f:1:OutlinedButton.icon',
             ...data
         })
     }
 }
-export class FlutterOverflowBox extends ZacBuilder<native.OverflowBox> {
-    static new(data: {
+export class OverflowBox extends ZacBuilder<native.OverflowBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         minWidth?: ZacBuilder<number>,
@@ -2242,25 +2242,25 @@ export class FlutterOverflowBox extends ZacBuilder<native.OverflowBox> {
         maxHeight?: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterOverflowBox({
+        return new OverflowBox({
             builder: 'f:1:OverflowBox',
             ...data
         })
     }
 }
-export class FlutterPadding extends ZacBuilder<native.Padding> {
+export class Padding extends ZacBuilder<native.Padding> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         padding: ZacBuilder<native.EdgeInsetsGeometry>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterPadding({
+        return new Padding({
             builder: 'f:1:Padding',
             ...data
         })
     }
 }
-export class FlutterPageRouteBuilder extends ZacBuilder<native.Route> {
+export class PageRouteBuilder extends ZacBuilder<native.Route> {
     static new(data: {
         settings?: ZacBuilder<native.RouteSettings>,
         opaque?: ZacBuilder<boolean>,
@@ -2272,13 +2272,13 @@ export class FlutterPageRouteBuilder extends ZacBuilder<native.Route> {
         child: ZacBuilder<native.Widget>,
         nameOfSharedArguments?: ZacBuilder<string>
     }) {
-        return new FlutterPageRouteBuilder({
+        return new PageRouteBuilder({
             builder: 'f:1:PageRouteBuilder',
             ...data
         })
     }
 }
-export class FlutterPositioned extends ZacBuilder<native.Positioned> {
+export class Positioned extends ZacBuilder<native.Positioned> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         left?: ZacBuilder<number>,
@@ -2289,7 +2289,7 @@ export class FlutterPositioned extends ZacBuilder<native.Positioned> {
         height?: ZacBuilder<number>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterPositioned({
+        return new Positioned({
             builder: 'f:1:Positioned',
             ...data
         })
@@ -2305,7 +2305,7 @@ export class FlutterPositioned extends ZacBuilder<native.Positioned> {
         height?: ZacBuilder<number>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterPositioned({
+        return new Positioned({
             builder: 'f:1:Positioned.directional',
             ...data
         })
@@ -2318,14 +2318,14 @@ export class FlutterPositioned extends ZacBuilder<native.Positioned> {
         bottom?: ZacBuilder<number>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterPositioned({
+        return new Positioned({
             builder: 'f:1:Positioned.fill',
             ...data
         })
     }
 }
-export class FlutterProgressIndicator extends ZacBuilder<native.ProgressIndicator> {
-    static linear(data: {
+export class ProgressIndicator extends ZacBuilder<native.ProgressIndicator> {
+    static linear(data?: {
         key?: ZacBuilder<native.Key>,
         value?: ZacBuilder<number>,
         backgroundColor?: ZacBuilder<native.Color>,
@@ -2334,12 +2334,12 @@ export class FlutterProgressIndicator extends ZacBuilder<native.ProgressIndicato
         semanticsLabel?: ZacBuilder<string>,
         semanticsValue?: ZacBuilder<string>
     }) {
-        return new FlutterProgressIndicator({
+        return new ProgressIndicator({
             builder: 'f:1:LinearProgressIndicator',
             ...data
         })
     }
-    static circular(data: {
+    static circular(data?: {
         key?: ZacBuilder<native.Key>,
         value?: ZacBuilder<number>,
         backgroundColor?: ZacBuilder<native.Color>,
@@ -2348,15 +2348,15 @@ export class FlutterProgressIndicator extends ZacBuilder<native.ProgressIndicato
         semanticsLabel?: ZacBuilder<string>,
         semanticsValue?: ZacBuilder<string>
     }) {
-        return new FlutterProgressIndicator({
+        return new ProgressIndicator({
             builder: 'f:1:CircularProgressIndicator',
             ...data
         })
     }
 }
-export class FlutterRadius extends ZacBuilder<native.Radius> {
+export class Radius extends ZacBuilder<native.Radius> {
     static circular(data: { radius: ZacBuilder<number> }) {
-        return new FlutterRadius({
+        return new Radius({
             builder: 'f:1:Radius.circular',
             ...data
         })
@@ -2365,28 +2365,28 @@ export class FlutterRadius extends ZacBuilder<native.Radius> {
         x: ZacBuilder<number>,
         y: ZacBuilder<number>
     }) {
-        return new FlutterRadius({
+        return new Radius({
             builder: 'f:1:Radius.elliptical',
             ...data
         })
     }
 }
-export class FlutterRect extends ZacBuilder<native.Rect> {
+export class Rect extends ZacBuilder<native.Rect> {
     static fromCenter(data: {
-        center: FlutterOffset,
+        center: Offset,
         width: ZacBuilder<number>,
         height: ZacBuilder<number>
     }) {
-        return new FlutterRect({
+        return new Rect({
             builder: 'f:1:Rect.fromCenter',
             ...data
         })
     }
     static fromCircle(data: {
-        center: FlutterOffset,
+        center: Offset,
         radius: ZacBuilder<number>
     }) {
-        return new FlutterRect({
+        return new Rect({
             builder: 'f:1:Rect.fromCircle',
             ...data
         })
@@ -2397,7 +2397,7 @@ export class FlutterRect extends ZacBuilder<native.Rect> {
         right: ZacBuilder<number>,
         bottom: ZacBuilder<number>
     }) {
-        return new FlutterRect({
+        return new Rect({
             builder: 'f:1:Rect.fromLTRB',
             ...data
         })
@@ -2408,22 +2408,22 @@ export class FlutterRect extends ZacBuilder<native.Rect> {
         width: ZacBuilder<number>,
         height: ZacBuilder<number>
     }) {
-        return new FlutterRect({
+        return new Rect({
             builder: 'f:1:Rect.fromLTWH',
             ...data
         })
     }
     static fromPoints(data: {
-        a: FlutterOffset,
-        b: FlutterOffset
+        a: Offset,
+        b: Offset
     }) {
-        return new FlutterRect({
+        return new Rect({
             builder: 'f:1:Rect.fromPoints',
             ...data
         })
     }
 }
-export class FlutterRefreshIndicator extends ZacBuilder<native.RefreshIndicator> {
+export class RefreshIndicator extends ZacBuilder<native.RefreshIndicator> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child: ZacBuilder<native.Widget>,
@@ -2437,73 +2437,73 @@ export class FlutterRefreshIndicator extends ZacBuilder<native.RefreshIndicator>
         strokeWidth?: ZacBuilder<number>,
         triggerMode?: ZacBuilder<native.RefreshIndicatorTriggerMode>
     }) {
-        return new FlutterRefreshIndicator({
+        return new RefreshIndicator({
             builder: 'f:1:RefreshIndicator',
             ...data
         })
     }
 }
-export class FlutterRefreshIndicatorTriggerMode extends ZacBuilder<native.RefreshIndicatorTriggerMode> {
+export class RefreshIndicatorTriggerMode extends ZacBuilder<native.RefreshIndicatorTriggerMode> {
     static onEdge() {
-        return new FlutterRefreshIndicatorTriggerMode({
+        return new RefreshIndicatorTriggerMode({
             builder: 'f:1:RefreshIndicatorTriggerMode.onEdge'
 
         })
     }
     static anywhere() {
-        return new FlutterRefreshIndicatorTriggerMode({
+        return new RefreshIndicatorTriggerMode({
             builder: 'f:1:RefreshIndicatorTriggerMode.anywhere'
 
         })
     }
 }
-export class FlutterRotatedBox extends ZacBuilder<native.RotatedBox> {
+export class RotatedBox extends ZacBuilder<native.RotatedBox> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         quarterTurns: number
     }) {
-        return new FlutterRotatedBox({
+        return new RotatedBox({
             builder: 'f:1:RotatedBox',
             ...data
         })
     }
 }
-export class FlutterRoundedRectangleBorder extends ZacBuilder<native.ShapeBorder> {
-    static new(data: {
+export class RoundedRectangleBorder extends ZacBuilder<native.ShapeBorder> {
+    static new(data?: {
         side?: ZacBuilder<native.BorderSide>,
         borderRadius?: ZacBuilder<native.BorderRadiusGeometry>
     }) {
-        return new FlutterRoundedRectangleBorder({
+        return new RoundedRectangleBorder({
             builder: 'f:1:RoundedRectangleBorder',
             ...data
         })
     }
 }
-export class FlutterRouteFactory extends ZacBuilder<native.RouteFactory> {
+export class RouteFactory extends ZacBuilder<native.RouteFactory> {
     static new(data: {
         routes: Record<string, ZacBuilder<native.Route>>,
-        familyNameOfArguments: Record<string, string> | null
+        familyNameOfArguments: Record<string, string>
     }) {
-        return new FlutterRouteFactory({
+        return new RouteFactory({
             builder: 'f:1:RouteFactory',
             ...data
         })
     }
 }
-export class FlutterRouteSettings extends ZacBuilder<native.RouteSettings> {
-    static new(data: {
+export class RouteSettings extends ZacBuilder<native.RouteSettings> {
+    static new(data?: {
         name?: ZacBuilder<string>,
         arguments?: ZacBuilder<any>
     }) {
-        return new FlutterRouteSettings({
+        return new RouteSettings({
             builder: 'f:1:RouteSettings',
             ...data
         })
     }
 }
-export class FlutterRow extends ZacBuilder<native.Row> {
-    static new(data: {
+export class Row extends ZacBuilder<native.Row> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         mainAxisAlignment?: ZacBuilder<native.MainAxisAlignment>,
         mainAxisSize?: ZacBuilder<native.MainAxisSize>,
@@ -2513,13 +2513,13 @@ export class FlutterRow extends ZacBuilder<native.Row> {
         textBaseline?: ZacBuilder<native.TextBaseline>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterRow({
+        return new Row({
             builder: 'f:1:Row',
             ...data
         })
     }
 }
-export class FlutterSafeArea extends ZacBuilder<native.SafeArea> {
+export class SafeArea extends ZacBuilder<native.SafeArea> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         left?: ZacBuilder<boolean>,
@@ -2530,14 +2530,14 @@ export class FlutterSafeArea extends ZacBuilder<native.SafeArea> {
         maintainBottomViewPadding?: ZacBuilder<boolean>,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSafeArea({
+        return new SafeArea({
             builder: 'f:1:SafeArea',
             ...data
         })
     }
 }
-export class FlutterScaffold extends ZacBuilder<native.Scaffold> {
-    static new(data: {
+export class Scaffold extends ZacBuilder<native.Scaffold> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         appBar?: ZacBuilder<native.Widget>,
         body?: ZacBuilder<native.Widget>,
@@ -2558,13 +2558,13 @@ export class FlutterScaffold extends ZacBuilder<native.Scaffold> {
         endDrawerEnableOpenDragGesture?: ZacBuilder<boolean>,
         restorationId?: ZacBuilder<string>
     }) {
-        return new FlutterScaffold({
+        return new Scaffold({
             builder: 'f:1:Scaffold',
             ...data
         })
     }
 }
-export class FlutterScrollController extends ZacBuilder<native.Widget> {
+export class ScrollController extends ZacBuilder<native.Widget> {
     static new(data: {
         initialScrollOffset?: ZacBuilder<number>,
         keepScrollOffset?: ZacBuilder<boolean>,
@@ -2572,47 +2572,47 @@ export class FlutterScrollController extends ZacBuilder<native.Widget> {
         family?: any,
         child: ZacBuilder<native.Widget>
     }) {
-        return new FlutterScrollController({
+        return new ScrollController({
             builder: 'z:1:ScrollController.provide',
             ...data
         })
     }
 }
-export class FlutterScrollPhysics extends ZacBuilder<native.ScrollPhysics> {
-    static alwaysScrollable(data: { parent?: FlutterScrollPhysics }) {
-        return new FlutterScrollPhysics({
+export class ScrollPhysics extends ZacBuilder<native.ScrollPhysics> {
+    static alwaysScrollable(data?: { parent?: ScrollPhysics }) {
+        return new ScrollPhysics({
             builder: 'f:1:AlwaysScrollableScrollPhysics',
             ...data
         })
     }
-    static bouncingScroll(data: { parent?: FlutterScrollPhysics }) {
-        return new FlutterScrollPhysics({
+    static bouncingScroll(data?: { parent?: ScrollPhysics }) {
+        return new ScrollPhysics({
             builder: 'f:1:BouncingScrollPhysics',
             ...data
         })
     }
-    static clampingScrollPhysics(data: { parent?: FlutterScrollPhysics }) {
-        return new FlutterScrollPhysics({
+    static clampingScrollPhysics(data?: { parent?: ScrollPhysics }) {
+        return new ScrollPhysics({
             builder: 'f:1:ClampingScrollPhysics',
             ...data
         })
     }
 }
-export class FlutterScrollViewKeyboardDismissBehavior extends ZacBuilder<native.ScrollViewKeyboardDismissBehavior> {
+export class ScrollViewKeyboardDismissBehavior extends ZacBuilder<native.ScrollViewKeyboardDismissBehavior> {
     static manual() {
-        return new FlutterScrollViewKeyboardDismissBehavior({
+        return new ScrollViewKeyboardDismissBehavior({
             builder: 'f:1:ScrollViewKeyboardDismissBehavior.manual'
 
         })
     }
     static onDrag() {
-        return new FlutterScrollViewKeyboardDismissBehavior({
+        return new ScrollViewKeyboardDismissBehavior({
             builder: 'f:1:ScrollViewKeyboardDismissBehavior.onDrag'
 
         })
     }
 }
-export class FlutterSelectableText extends ZacBuilder<native.SelectableText> {
+export class SelectableText extends ZacBuilder<native.SelectableText> {
     static new(data: {
         data: string,
         key?: ZacBuilder<native.Key>,
@@ -2634,40 +2634,40 @@ export class FlutterSelectableText extends ZacBuilder<native.SelectableText> {
         textHeightBehavior?: ZacBuilder<native.TextHeightBehavior>,
         textWidthBasis?: ZacBuilder<native.TextWidthBasis>
     }) {
-        return new FlutterSelectableText({
+        return new SelectableText({
             builder: 'f:1:SelectableText',
             ...data
         })
     }
 }
-export class FlutterShadow extends ZacBuilder<native.Shadow> {
-    static new(data: {
+export class Shadow extends ZacBuilder<native.Shadow> {
+    static new(data?: {
         color?: ZacBuilder<native.Color>,
         offset?: ZacBuilder<native.Offset>,
         blurRadius?: ZacBuilder<number>
     }) {
-        return new FlutterShadow({
+        return new Shadow({
             builder: 'f:1:Shadow',
             ...data
         })
     }
 }
-export class FlutterShapeDecoration extends ZacBuilder<native.ShapeDecoration> {
+export class ShapeDecoration extends ZacBuilder<native.ShapeDecoration> {
     static new(data: {
         color?: ZacBuilder<native.Color>,
         image?: ZacBuilder<native.DecorationImage>,
         gradient?: ZacBuilder<native.Gradient>,
-        shadows?: Array<FlutterBoxShadow>,
+        shadows?: Array<BoxShadow>,
         shape: ZacBuilder<native.ShapeBorder>
     }) {
-        return new FlutterShapeDecoration({
+        return new ShapeDecoration({
             builder: 'f:1:ShapeDecoration',
             ...data
         })
     }
 }
-export class FlutterSingleChildScrollView extends ZacBuilder<native.SingleChildScrollView> {
-    static new(data: {
+export class SingleChildScrollView extends ZacBuilder<native.SingleChildScrollView> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         scrollDirection?: ZacBuilder<native.Axis>,
         reverse?: ZacBuilder<boolean>,
@@ -2679,88 +2679,88 @@ export class FlutterSingleChildScrollView extends ZacBuilder<native.SingleChildS
         restorationId?: ZacBuilder<string>,
         keyboardDismissBehavior?: ZacBuilder<native.ScrollViewKeyboardDismissBehavior>
     }) {
-        return new FlutterSingleChildScrollView({
+        return new SingleChildScrollView({
             builder: 'f:1:SingleChildScrollView',
             ...data
         })
     }
 }
-export class FlutterSize extends ZacBuilder<native.Size> {
+export class Size extends ZacBuilder<native.Size> {
     static new(data: {
         width: ZacBuilder<number>,
         height: ZacBuilder<number>
     }) {
-        return new FlutterSize({
+        return new Size({
             builder: 'f:1:Size',
             ...data
         })
     }
 }
-export class FlutterSizedBox extends ZacBuilder<native.SizedBox> {
-    static new(data: {
+export class SizedBox extends ZacBuilder<native.SizedBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         width?: ZacBuilder<number>,
         height?: ZacBuilder<number>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSizedBox({
+        return new SizedBox({
             builder: 'f:1:SizedBox',
             ...data
         })
     }
-    static expand(data: {
+    static expand(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSizedBox({
+        return new SizedBox({
             builder: 'f:1:SizedBox.expand',
             ...data
         })
     }
-    static fromSize(data: {
+    static fromSize(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         size?: ZacBuilder<native.Size>
     }) {
-        return new FlutterSizedBox({
+        return new SizedBox({
             builder: 'f:1:SizedBox.fromSize',
             ...data
         })
     }
-    static shrink(data: {
+    static shrink(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSizedBox({
+        return new SizedBox({
             builder: 'f:1:SizedBox.shrink',
             ...data
         })
     }
-    static square(data: {
+    static square(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         dimension?: ZacBuilder<number>
     }) {
-        return new FlutterSizedBox({
+        return new SizedBox({
             builder: 'f:1:SizedBox.square',
             ...data
         })
     }
 }
-export class FlutterSizedOverflowBox extends ZacBuilder<native.SizedOverflowBox> {
+export class SizedOverflowBox extends ZacBuilder<native.SizedOverflowBox> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         size: ZacBuilder<native.Size>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSizedOverflowBox({
+        return new SizedOverflowBox({
             builder: 'f:1:SizedOverflowBox',
             ...data
         })
     }
 }
-export class FlutterSliverChildDelegate extends ZacBuilder<native.SliverChildDelegate> {
+export class SliverChildDelegate extends ZacBuilder<native.SliverChildDelegate> {
     static list(data: {
         children: ZacListBuilder<native.Widget>,
         addAutomaticKeepAlives?: ZacBuilder<boolean>,
@@ -2768,7 +2768,7 @@ export class FlutterSliverChildDelegate extends ZacBuilder<native.SliverChildDel
         addSemanticIndexes?: ZacBuilder<boolean>,
         semanticIndexOffset?: ZacBuilder<number>
     }) {
-        return new FlutterSliverChildDelegate({
+        return new SliverChildDelegate({
             builder: 'f:1:SliverChildListDelegate',
             ...data
         })
@@ -2780,25 +2780,25 @@ export class FlutterSliverChildDelegate extends ZacBuilder<native.SliverChildDel
         addSemanticIndexes?: ZacBuilder<boolean>,
         semanticIndexOffset?: ZacBuilder<number>
     }) {
-        return new FlutterSliverChildDelegate({
+        return new SliverChildDelegate({
             builder: 'f:1:SliverChildListDelegate.fixed',
             ...data
         })
     }
 }
-export class FlutterSliverGrid extends ZacBuilder<native.SliverGrid> {
+export class SliverGrid extends ZacBuilder<native.SliverGrid> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
-        delegate: FlutterSliverChildDelegate,
-        gridDelegate: FlutterSliverGridDelegate
+        delegate: SliverChildDelegate,
+        gridDelegate: SliverGridDelegate
     }) {
-        return new FlutterSliverGrid({
+        return new SliverGrid({
             builder: 'f:1:SliverGrid',
             ...data
         })
     }
 }
-export class FlutterSliverGridDelegate extends ZacBuilder<native.SliverGridDelegate> {
+export class SliverGridDelegate extends ZacBuilder<native.SliverGridDelegate> {
     static withFixedCrossAxisCount(data: {
         crossAxisCount: number,
         mainAxisSpacing?: ZacBuilder<number>,
@@ -2806,7 +2806,7 @@ export class FlutterSliverGridDelegate extends ZacBuilder<native.SliverGridDeleg
         childAspectRatio?: ZacBuilder<number>,
         mainAxisExtent?: ZacBuilder<number>
     }) {
-        return new FlutterSliverGridDelegate({
+        return new SliverGridDelegate({
             builder: 'f:1:SliverGridDelegateWithFixedCrossAxisCount',
             ...data
         })
@@ -2818,75 +2818,75 @@ export class FlutterSliverGridDelegate extends ZacBuilder<native.SliverGridDeleg
         childAspectRatio?: ZacBuilder<number>,
         mainAxisExtent?: ZacBuilder<number>
     }) {
-        return new FlutterSliverGridDelegate({
+        return new SliverGridDelegate({
             builder: 'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
             ...data
         })
     }
 }
-export class FlutterSliverList extends ZacBuilder<native.SliverList> {
+export class SliverList extends ZacBuilder<native.SliverList> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
-        delegate: FlutterSliverChildDelegate
+        delegate: SliverChildDelegate
     }) {
-        return new FlutterSliverList({
+        return new SliverList({
             builder: 'f:1:SliverList',
             ...data
         })
     }
 }
-export class FlutterSliverPadding extends ZacBuilder<native.SliverPadding> {
+export class SliverPadding extends ZacBuilder<native.SliverPadding> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         sliver?: ZacBuilder<native.Widget>,
         padding: ZacBuilder<native.EdgeInsetsGeometry>
     }) {
-        return new FlutterSliverPadding({
+        return new SliverPadding({
             builder: 'f:1:SliverPadding',
             ...data
         })
     }
 }
-export class FlutterSliverToBoxAdapter extends ZacBuilder<native.SliverToBoxAdapter> {
-    static new(data: {
+export class SliverToBoxAdapter extends ZacBuilder<native.SliverToBoxAdapter> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>
     }) {
-        return new FlutterSliverToBoxAdapter({
+        return new SliverToBoxAdapter({
             builder: 'f:1:SliverToBoxAdapter',
             ...data
         })
     }
 }
-export class FlutterSmartDashesType extends ZacBuilder<native.SmartDashesType> {
+export class SmartDashesType extends ZacBuilder<native.SmartDashesType> {
     static disabled() {
-        return new FlutterSmartDashesType({
+        return new SmartDashesType({
             builder: 'f:1:SmartDashesType.disabled'
 
         })
     }
     static enabled() {
-        return new FlutterSmartDashesType({
+        return new SmartDashesType({
             builder: 'f:1:SmartDashesType.enabled'
 
         })
     }
 }
-export class FlutterSmartQuotesType extends ZacBuilder<native.SmartQuotesType> {
+export class SmartQuotesType extends ZacBuilder<native.SmartQuotesType> {
     static disabled() {
-        return new FlutterSmartQuotesType({
+        return new SmartQuotesType({
             builder: 'f:1:SmartQuotesType.disabled'
 
         })
     }
     static enabled() {
-        return new FlutterSmartQuotesType({
+        return new SmartQuotesType({
             builder: 'f:1:SmartQuotesType.enabled'
 
         })
     }
 }
-export class FlutterSnackBar extends ZacBuilder<native.SnackBar> {
+export class SnackBar extends ZacBuilder<native.SnackBar> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         content: ZacBuilder<native.Widget>,
@@ -2896,57 +2896,57 @@ export class FlutterSnackBar extends ZacBuilder<native.SnackBar> {
         padding?: ZacBuilder<native.EdgeInsetsGeometry>,
         width?: ZacBuilder<number>,
         shape?: ZacBuilder<native.ShapeBorder>,
-        behavior?: FlutterSnackBarBehavior,
-        action?: FlutterSnackBarAction,
+        behavior?: SnackBarBehavior,
+        action?: SnackBarAction,
         onVisible?: ZacBuilder<Array<ZacAction>>
     }) {
-        return new FlutterSnackBar({
+        return new SnackBar({
             builder: 'f:1:SnackBar',
             ...data
         })
     }
 }
-export class FlutterSnackBarAction extends ZacBuilder<native.SnackBarAction> {
+export class SnackBarAction extends ZacBuilder<native.SnackBarAction> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         textColor?: ZacBuilder<native.Color>,
         disabledTextColor?: ZacBuilder<native.Color>,
         label: string,
-        onPressed: ZacBuilder<Array<ZacAction>> | null
+        onPressed: ZacBuilder<Array<ZacAction>>
     }) {
-        return new FlutterSnackBarAction({
+        return new SnackBarAction({
             builder: 'f:1:SnackBarAction',
             ...data
         })
     }
 }
-export class FlutterSnackBarBehavior extends ZacBuilder<native.SnackBarBehavior> {
+export class SnackBarBehavior extends ZacBuilder<native.SnackBarBehavior> {
     static fixed() {
-        return new FlutterSnackBarBehavior({
+        return new SnackBarBehavior({
             builder: 'f:1:SnackBarBehavior.fixed'
 
         })
     }
     static floating() {
-        return new FlutterSnackBarBehavior({
+        return new SnackBarBehavior({
             builder: 'f:1:SnackBarBehavior.floating'
 
         })
     }
 }
-export class FlutterSpacer extends ZacBuilder<native.Spacer> {
-    static new(data: {
+export class Spacer extends ZacBuilder<native.Spacer> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         flex?: ZacBuilder<number>
     }) {
-        return new FlutterSpacer({
+        return new Spacer({
             builder: 'f:1:Spacer',
             ...data
         })
     }
 }
-export class FlutterStack extends ZacBuilder<native.Stack> {
-    static new(data: {
+export class Stack extends ZacBuilder<native.Stack> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         alignment?: ZacBuilder<native.AlignmentGeometry>,
         textDirection?: ZacBuilder<native.TextDirection>,
@@ -2954,34 +2954,34 @@ export class FlutterStack extends ZacBuilder<native.Stack> {
         clipBehavior?: ZacBuilder<native.Clip>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterStack({
+        return new Stack({
             builder: 'f:1:Stack',
             ...data
         })
     }
 }
-export class FlutterStackFit extends ZacBuilder<native.StackFit> {
+export class StackFit extends ZacBuilder<native.StackFit> {
     static expand() {
-        return new FlutterStackFit({
+        return new StackFit({
             builder: 'f:1:StackFit.expand'
 
         })
     }
     static loose() {
-        return new FlutterStackFit({
+        return new StackFit({
             builder: 'f:1:StackFit.loose'
 
         })
     }
     static passthrough() {
-        return new FlutterStackFit({
+        return new StackFit({
             builder: 'f:1:StackFit.passthrough'
 
         })
     }
 }
-export class FlutterStrutStyle extends ZacBuilder<native.StrutStyle> {
-    static new(data: {
+export class StrutStyle extends ZacBuilder<native.StrutStyle> {
+    static new(data?: {
         fontFamily?: ZacBuilder<string>,
         fontFamilyFallback?: Array<string>,
         fontSize?: ZacBuilder<number>,
@@ -2994,13 +2994,13 @@ export class FlutterStrutStyle extends ZacBuilder<native.StrutStyle> {
         debugLabel?: ZacBuilder<string>,
         package?: ZacBuilder<string>
     }) {
-        return new FlutterStrutStyle({
+        return new StrutStyle({
             builder: 'f:1:StrutStyle',
             ...data
         })
     }
     static fromTextStyle(data: {
-        textStyle: FlutterTextStyle,
+        textStyle: TextStyle,
         fontFamily?: ZacBuilder<string>,
         fontFamilyFallback?: Array<string>,
         fontSize?: ZacBuilder<number>,
@@ -3013,14 +3013,14 @@ export class FlutterStrutStyle extends ZacBuilder<native.StrutStyle> {
         debugLabel?: ZacBuilder<string>,
         package?: ZacBuilder<string>
     }) {
-        return new FlutterStrutStyle({
+        return new StrutStyle({
             builder: 'f:1:StrutStyle.fromTextStyle',
             ...data
         })
     }
 }
-export class FlutterSystemUiOverlayStyle extends ZacBuilder<native.SystemUiOverlayStyle> {
-    static new(data: {
+export class SystemUiOverlayStyle extends ZacBuilder<native.SystemUiOverlayStyle> {
+    static new(data?: {
         systemNavigationBarColor?: ZacBuilder<native.Color>,
         systemNavigationBarDividerColor?: ZacBuilder<native.Color>,
         systemNavigationBarIconBrightness?: ZacBuilder<native.Brightness>,
@@ -3030,13 +3030,13 @@ export class FlutterSystemUiOverlayStyle extends ZacBuilder<native.SystemUiOverl
         statusBarIconBrightness?: ZacBuilder<native.Brightness>,
         systemStatusBarContrastEnforced?: ZacBuilder<boolean>
     }) {
-        return new FlutterSystemUiOverlayStyle({
+        return new SystemUiOverlayStyle({
             builder: 'f:1:SystemUiOverlayStyle',
             ...data
         })
     }
 }
-export class FlutterText extends ZacBuilder<native.Text> {
+export class Text extends ZacBuilder<native.Text> {
     static new(data: {
         data: ZacBuilder<string>,
         key?: ZacBuilder<native.Key>,
@@ -3053,91 +3053,91 @@ export class FlutterText extends ZacBuilder<native.Text> {
         textWidthBasis?: ZacBuilder<native.TextWidthBasis>,
         textHeightBehavior?: ZacBuilder<native.TextHeightBehavior>
     }) {
-        return new FlutterText({
+        return new Text({
             builder: 'f:1:Text',
             ...data
         })
     }
 }
-export class FlutterTextAlign extends ZacBuilder<native.TextAlign> {
+export class TextAlign extends ZacBuilder<native.TextAlign> {
     static center() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.center'
 
         })
     }
     static end() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.end'
 
         })
     }
     static justify() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.justify'
 
         })
     }
     static left() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.left'
 
         })
     }
     static right() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.right'
 
         })
     }
     static start() {
-        return new FlutterTextAlign({
+        return new TextAlign({
             builder: 'f:1:TextAlign.start'
 
         })
     }
 }
-export class FlutterTextAlignVertical extends ZacBuilder<native.TextAlignVertical> {
+export class TextAlignVertical extends ZacBuilder<native.TextAlignVertical> {
     static new(data: { y: ZacBuilder<number> }) {
-        return new FlutterTextAlignVertical({
+        return new TextAlignVertical({
             builder: 'f:1:TextAlignVertical',
             ...data
         })
     }
     static bottom() {
-        return new FlutterTextAlignVertical({
+        return new TextAlignVertical({
             builder: 'f:1:TextAlignVertical.bottom'
 
         })
     }
     static center() {
-        return new FlutterTextAlignVertical({
+        return new TextAlignVertical({
             builder: 'f:1:TextAlignVertical.center'
 
         })
     }
     static top() {
-        return new FlutterTextAlignVertical({
+        return new TextAlignVertical({
             builder: 'f:1:TextAlignVertical.top'
 
         })
     }
 }
-export class FlutterTextBaseline extends ZacBuilder<native.TextBaseline> {
+export class TextBaseline extends ZacBuilder<native.TextBaseline> {
     static alphabetic() {
-        return new FlutterTextBaseline({
+        return new TextBaseline({
             builder: 'f:1:TextBaseline.alphabetic'
 
         })
     }
     static ideographic() {
-        return new FlutterTextBaseline({
+        return new TextBaseline({
             builder: 'f:1:TextBaseline.ideographic'
 
         })
     }
 }
-export class FlutterTextButton extends ZacBuilder<native.TextButton> {
+export class TextButton extends ZacBuilder<native.TextButton> {
     static new(data: {
         key?: ZacBuilder<native.Key>,
         child: ZacBuilder<native.Widget>,
@@ -3146,7 +3146,7 @@ export class FlutterTextButton extends ZacBuilder<native.TextButton> {
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterTextButton({
+        return new TextButton({
             builder: 'f:1:TextButton',
             ...data
         })
@@ -3160,112 +3160,112 @@ export class FlutterTextButton extends ZacBuilder<native.TextButton> {
         autofocus?: ZacBuilder<boolean>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterTextButton({
+        return new TextButton({
             builder: 'f:1:TextButton.icon',
             ...data
         })
     }
 }
-export class FlutterTextCapitalization extends ZacBuilder<native.TextCapitalization> {
+export class TextCapitalization extends ZacBuilder<native.TextCapitalization> {
     static characters() {
-        return new FlutterTextCapitalization({
+        return new TextCapitalization({
             builder: 'f:1:TextCapitalization.characters'
 
         })
     }
     static none() {
-        return new FlutterTextCapitalization({
+        return new TextCapitalization({
             builder: 'f:1:TextCapitalization.none'
 
         })
     }
     static sentences() {
-        return new FlutterTextCapitalization({
+        return new TextCapitalization({
             builder: 'f:1:TextCapitalization.sentences'
 
         })
     }
     static words() {
-        return new FlutterTextCapitalization({
+        return new TextCapitalization({
             builder: 'f:1:TextCapitalization.words'
 
         })
     }
 }
-export class FlutterTextDecoration extends ZacBuilder<native.TextDecoration> {
+export class TextDecoration extends ZacBuilder<native.TextDecoration> {
     static lineThrough() {
-        return new FlutterTextDecoration({
+        return new TextDecoration({
             builder: 'f:1:TextDecoration.lineThrough'
 
         })
     }
     static none() {
-        return new FlutterTextDecoration({
+        return new TextDecoration({
             builder: 'f:1:TextDecoration.none'
 
         })
     }
     static overline() {
-        return new FlutterTextDecoration({
+        return new TextDecoration({
             builder: 'f:1:TextDecoration.overline'
 
         })
     }
     static underline() {
-        return new FlutterTextDecoration({
+        return new TextDecoration({
             builder: 'f:1:TextDecoration.underline'
 
         })
     }
 }
-export class FlutterTextDecorationStyle extends ZacBuilder<native.TextDecorationStyle> {
+export class TextDecorationStyle extends ZacBuilder<native.TextDecorationStyle> {
     static dashed() {
-        return new FlutterTextDecorationStyle({
+        return new TextDecorationStyle({
             builder: 'f:1:TextDecorationStyle.dashed'
 
         })
     }
     static dotted() {
-        return new FlutterTextDecorationStyle({
+        return new TextDecorationStyle({
             builder: 'f:1:TextDecorationStyle.dotted'
 
         })
     }
     static double() {
-        return new FlutterTextDecorationStyle({
+        return new TextDecorationStyle({
             builder: 'f:1:TextDecorationStyle.double'
 
         })
     }
     static solid() {
-        return new FlutterTextDecorationStyle({
+        return new TextDecorationStyle({
             builder: 'f:1:TextDecorationStyle.solid'
 
         })
     }
     static wavy() {
-        return new FlutterTextDecorationStyle({
+        return new TextDecorationStyle({
             builder: 'f:1:TextDecorationStyle.wavy'
 
         })
     }
 }
-export class FlutterTextDirection extends ZacBuilder<native.TextDirection> {
+export class TextDirection extends ZacBuilder<native.TextDirection> {
     static rtl() {
-        return new FlutterTextDirection({
+        return new TextDirection({
             builder: 'f:1:TextDirection.rtl'
 
         })
     }
     static ltr() {
-        return new FlutterTextDirection({
+        return new TextDirection({
             builder: 'f:1:TextDirection.ltr'
 
         })
     }
 }
-export class FlutterTextField extends ZacBuilder<native.TextField> {
-    static new(data: {
+export class TextField extends ZacBuilder<native.TextField> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         decoration?: ZacBuilder<native.InputDecoration>,
         keyboardType?: ZacBuilder<native.TextInputType>,
@@ -3308,214 +3308,214 @@ export class FlutterTextField extends ZacBuilder<native.TextField> {
         restorationId?: ZacBuilder<string>,
         enableIMEPersonalizedLearning?: ZacBuilder<boolean>
     }) {
-        return new FlutterTextField({
+        return new TextField({
             builder: 'f:1:TextField',
             ...data
         })
     }
 }
-export class FlutterTextHeightBehavior extends ZacBuilder<native.TextHeightBehavior> {
-    static new(data: {
+export class TextHeightBehavior extends ZacBuilder<native.TextHeightBehavior> {
+    static new(data?: {
         applyHeightToFirstAscent?: ZacBuilder<boolean>,
         applyHeightToLastDescent?: ZacBuilder<boolean>,
         leadingDistribution?: ZacBuilder<native.TextLeadingDistribution>
     }) {
-        return new FlutterTextHeightBehavior({
+        return new TextHeightBehavior({
             builder: 'f:1:TextHeightBehavior',
             ...data
         })
     }
 }
-export class FlutterTextInputAction extends ZacBuilder<native.TextInputAction> {
+export class TextInputAction extends ZacBuilder<native.TextInputAction> {
     static continueAction() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.continueAction'
 
         })
     }
     static done() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.done'
 
         })
     }
     static emergencyCall() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.emergencyCall'
 
         })
     }
     static go() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.go'
 
         })
     }
     static join() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.join'
 
         })
     }
     static newline() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.newline'
 
         })
     }
     static next() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.next'
 
         })
     }
     static none() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.none'
 
         })
     }
     static previous() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.previous'
 
         })
     }
     static route() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.route'
 
         })
     }
     static search() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.search'
 
         })
     }
     static send() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.send'
 
         })
     }
     static unspecified() {
-        return new FlutterTextInputAction({
+        return new TextInputAction({
             builder: 'f:1:TextInputAction.unspecified'
 
         })
     }
 }
-export class FlutterTextInputType extends ZacBuilder<native.TextInputType> {
+export class TextInputType extends ZacBuilder<native.TextInputType> {
     static datetime() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.datetime'
 
         })
     }
     static emailAddress() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.emailAddress'
 
         })
     }
     static multiline() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.multiline'
 
         })
     }
     static name_() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.name'
 
         })
     }
     static none() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.none'
 
         })
     }
     static number() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.number'
 
         })
     }
     static phone() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.phone'
 
         })
     }
     static streetAddress() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.streetAddress'
 
         })
     }
     static text() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.text'
 
         })
     }
     static url() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.url'
 
         })
     }
     static visiblePassword() {
-        return new FlutterTextInputType({
+        return new TextInputType({
             builder: 'f:1:TextInputType.visiblePassword'
 
         })
     }
 }
-export class FlutterTextLeadingDistribution extends ZacBuilder<native.TextLeadingDistribution> {
+export class TextLeadingDistribution extends ZacBuilder<native.TextLeadingDistribution> {
     static even() {
-        return new FlutterTextLeadingDistribution({
+        return new TextLeadingDistribution({
             builder: 'f:1:TextLeadingDistribution.even'
 
         })
     }
     static proportional() {
-        return new FlutterTextLeadingDistribution({
+        return new TextLeadingDistribution({
             builder: 'f:1:TextLeadingDistribution.proportional'
 
         })
     }
 }
-export class FlutterTextOverflow extends ZacBuilder<native.TextOverflow> {
+export class TextOverflow extends ZacBuilder<native.TextOverflow> {
     static clip() {
-        return new FlutterTextOverflow({
+        return new TextOverflow({
             builder: 'f:1:TextOverflow.clip'
 
         })
     }
     static ellipsis() {
-        return new FlutterTextOverflow({
+        return new TextOverflow({
             builder: 'f:1:TextOverflow.ellipsis'
 
         })
     }
     static fade() {
-        return new FlutterTextOverflow({
+        return new TextOverflow({
             builder: 'f:1:TextOverflow.fade'
 
         })
     }
     static visible() {
-        return new FlutterTextOverflow({
+        return new TextOverflow({
             builder: 'f:1:TextOverflow.visible'
 
         })
     }
 }
-export class FlutterTextStyle extends ZacBuilder<native.TextStyle> {
-    static new(data: {
+export class TextStyle extends ZacBuilder<native.TextStyle> {
+    static new(data?: {
         inherit?: ZacBuilder<boolean>,
         color?: ZacBuilder<native.Color>,
         backgroundColor?: ZacBuilder<native.Color>,
@@ -3540,28 +3540,28 @@ export class FlutterTextStyle extends ZacBuilder<native.TextStyle> {
         package?: ZacBuilder<string>,
         overflow?: ZacBuilder<native.TextOverflow>
     }) {
-        return new FlutterTextStyle({
+        return new TextStyle({
             builder: 'f:1:TextStyle',
             ...data
         })
     }
 }
-export class FlutterTextWidthBasis extends ZacBuilder<native.TextWidthBasis> {
+export class TextWidthBasis extends ZacBuilder<native.TextWidthBasis> {
     static longestLine() {
-        return new FlutterTextWidthBasis({
+        return new TextWidthBasis({
             builder: 'f:1:TextWidthBasis.longestLine'
 
         })
     }
     static parent() {
-        return new FlutterTextWidthBasis({
+        return new TextWidthBasis({
             builder: 'f:1:TextWidthBasis.parent'
 
         })
     }
 }
-export class FlutterUnconstrainedBox extends ZacBuilder<native.UnconstrainedBox> {
-    static new(data: {
+export class UnconstrainedBox extends ZacBuilder<native.UnconstrainedBox> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         child?: ZacBuilder<native.Widget>,
         textDirection?: ZacBuilder<native.TextDirection>,
@@ -3569,47 +3569,47 @@ export class FlutterUnconstrainedBox extends ZacBuilder<native.UnconstrainedBox>
         constrainedAxis?: ZacBuilder<native.Axis>,
         clipBehavior?: ZacBuilder<native.Clip>
     }) {
-        return new FlutterUnconstrainedBox({
+        return new UnconstrainedBox({
             builder: 'f:1:UnconstrainedBox',
             ...data
         })
     }
 }
-export class FlutterUnderlineInputBorder extends ZacBuilder<native.UnderlineInputBorder> {
-    static new(data: {
+export class UnderlineInputBorder extends ZacBuilder<native.UnderlineInputBorder> {
+    static new(data?: {
         borderSide?: ZacBuilder<native.BorderSide>,
         borderRadius?: ZacBuilder<native.BorderRadius>
     }) {
-        return new FlutterUnderlineInputBorder({
+        return new UnderlineInputBorder({
             builder: 'f:1:UnderlineInputBorder',
             ...data
         })
     }
 }
-export class FlutterValueKey extends ZacBuilder<native.ValueKey> {
+export class ValueKey extends ZacBuilder<native.ValueKey> {
     static new(data: { value: string }) {
-        return new FlutterValueKey({
+        return new ValueKey({
             builder: 'f:1:ValueKey',
             ...data
         })
     }
 }
-export class FlutterVerticalDirection extends ZacBuilder<native.VerticalDirection> {
+export class VerticalDirection extends ZacBuilder<native.VerticalDirection> {
     static up() {
-        return new FlutterVerticalDirection({
+        return new VerticalDirection({
             builder: 'f:1:VerticalDirection.up'
 
         })
     }
     static down() {
-        return new FlutterVerticalDirection({
+        return new VerticalDirection({
             builder: 'f:1:VerticalDirection.down'
 
         })
     }
 }
-export class FlutterWrap extends ZacBuilder<native.Wrap> {
-    static new(data: {
+export class Wrap extends ZacBuilder<native.Wrap> {
+    static new(data?: {
         key?: ZacBuilder<native.Key>,
         direction?: ZacBuilder<native.Axis>,
         alignment?: ZacBuilder<native.WrapAlignment>,
@@ -3622,65 +3622,65 @@ export class FlutterWrap extends ZacBuilder<native.Wrap> {
         clipBehavior?: ZacBuilder<native.Clip>,
         children?: ZacListBuilder<native.Widget>
     }) {
-        return new FlutterWrap({
+        return new Wrap({
             builder: 'f:1:Wrap',
             ...data
         })
     }
 }
-export class FlutterWrapAlignment extends ZacBuilder<native.WrapAlignment> {
+export class WrapAlignment extends ZacBuilder<native.WrapAlignment> {
     static start() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.start'
 
         })
     }
     static end() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.end'
 
         })
     }
     static center() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.center'
 
         })
     }
     static spaceBetween() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.spaceBetween'
 
         })
     }
     static spaceAround() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.spaceAround'
 
         })
     }
     static spaceEvenly() {
-        return new FlutterWrapAlignment({
+        return new WrapAlignment({
             builder: 'f:1:WrapAlignment.spaceEvenly'
 
         })
     }
 }
-export class FlutterWrapCrossAlignment extends ZacBuilder<native.WrapCrossAlignment> {
+export class WrapCrossAlignment extends ZacBuilder<native.WrapCrossAlignment> {
     static center() {
-        return new FlutterWrapCrossAlignment({
+        return new WrapCrossAlignment({
             builder: 'f:1:WrapCrossAlignment.center'
 
         })
     }
     static end() {
-        return new FlutterWrapCrossAlignment({
+        return new WrapCrossAlignment({
             builder: 'f:1:WrapCrossAlignment.end'
 
         })
     }
     static start() {
-        return new FlutterWrapCrossAlignment({
+        return new WrapCrossAlignment({
             builder: 'f:1:WrapCrossAlignment.start'
 
         })
@@ -3692,7 +3692,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: number,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:int.provide',
@@ -3704,7 +3704,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: number,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:double.provide',
@@ -3716,7 +3716,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: string,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:String.provide',
@@ -3728,7 +3728,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: boolean,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:bool.provide',
@@ -3741,7 +3741,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         family: string,
         child: ZacBuilder<native.Widget>,
         transformer?: ZacBuilder<Array<ZacTransformer>>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:Object.provide',
@@ -3752,7 +3752,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         key?: ZacBuilder<native.Key>,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:null.provide',
@@ -3764,7 +3764,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: ZacBuilder<native.Widget>,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:Widget.provide',
@@ -3776,7 +3776,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: ZacListBuilder<native.Widget>,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:List<Widget>.provide',
@@ -3788,7 +3788,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: ZacMapBuilder<native.Widget>,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:Map<String, Widget>.provide',
@@ -3800,7 +3800,7 @@ export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
         value: ZacBuilder<any>,
         family: string,
         child: ZacBuilder<native.Widget>,
-        autoCreate: boolean
+        autoCreate?: boolean
     }) {
         return new SharedValueProviderBuilder({
             builder: 'z:1:ZacBuilder<Object>.provide',
@@ -4007,13 +4007,13 @@ export class IterableTransformer extends ZacTransformer {
 
         })
     }
-    static join(data: { separator?: string }) {
+    static join(data?: { separator?: string }) {
         return new IterableTransformer({
             builder: 'z:1:Transformer:Iterable.join',
             ...data
         })
     }
-    static contains(data: { element: ZacBuilder<any> | null }) {
+    static contains(data: { element: ZacBuilder<any> }) {
         return new IterableTransformer({
             builder: 'z:1:Transformer:Iterable.contains',
             ...data
@@ -4103,19 +4103,19 @@ export class MapTransformer extends ZacTransformer {
 
         })
     }
-    static containsKey(data: { key: ZacBuilder<any> | null }) {
+    static containsKey(data: { key: ZacBuilder<any> }) {
         return new MapTransformer({
             builder: 'z:1:Transformer:Map.containsKey',
             ...data
         })
     }
-    static containsValue(data: { value: ZacBuilder<any> | null }) {
+    static containsValue(data: { value: ZacBuilder<any> }) {
         return new MapTransformer({
             builder: 'z:1:Transformer:Map.containsValue',
             ...data
         })
     }
-    static mapper(data: {
+    static mapper(data?: {
         keyTransformer?: ZacBuilder<Array<ZacTransformer>>,
         valueTransformer?: ZacBuilder<Array<ZacTransformer>>
     }) {
@@ -4281,7 +4281,7 @@ export class ObjectTransformer extends ZacTransformer {
 
         })
     }
-    static equals(data: { other: any | null }) {
+    static equals(data: { other: any }) {
         return new ObjectTransformer({
             builder: 'z:1:Transformer:Object.equals',
             ...data
@@ -4305,7 +4305,7 @@ export class ObjectTransformer extends ZacTransformer {
 
         })
     }
-    static equalsSharedValue(data: { value: ZacBuilder<any> | null }) {
+    static equalsSharedValue(data: { value: ZacBuilder<any> }) {
         return new ObjectTransformer({
             builder: 'z:1:Transformer:Object.equalsSharedValue',
             ...data
@@ -4361,7 +4361,7 @@ export class ZacStateMachineTransformer extends ZacTransformer {
         })
     }
 }
-export class FlutterDialogActions extends ZacAction {
+export class DialogActions extends ZacAction {
     static showDialog(data: {
         child: ZacBuilder<native.Widget>,
         barrierDismissible?: ZacBuilder<boolean>,
@@ -4371,18 +4371,18 @@ export class FlutterDialogActions extends ZacAction {
         useRootNavigator?: ZacBuilder<boolean>,
         routeSettings?: ZacBuilder<native.RouteSettings>
     }) {
-        return new FlutterDialogActions({
+        return new DialogActions({
             builder: 'f:1:showDialog',
             ...data
         })
     }
 }
-export class FlutterNavigatorActions extends ZacAction {
+export class NavigatorActions extends ZacAction {
     static push(data: {
         route: ZacBuilder<native.Route>,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.push',
             ...data
         })
@@ -4392,25 +4392,25 @@ export class FlutterNavigatorActions extends ZacAction {
         arguments?: any,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.pushNamed',
             ...data
         })
     }
-    static pop(data: {
+    static pop(data?: {
         actions?: ZacBuilder<Array<ZacAction>>,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.pop',
             ...data
         })
     }
-    static maybePop(data: {
+    static maybePop(data?: {
         actions?: ZacBuilder<Array<ZacAction>>,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.maybePop',
             ...data
         })
@@ -4420,7 +4420,7 @@ export class FlutterNavigatorActions extends ZacAction {
         result?: ZacBuilder<Array<ZacAction>>,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.pushReplacement',
             ...data
         })
@@ -4431,7 +4431,7 @@ export class FlutterNavigatorActions extends ZacAction {
         navigatorState?: ZacBuilder<native.NavigatorState>,
         result?: ZacBuilder<Array<ZacAction>>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'f:1:Navigator.pushReplacementNamed',
             ...data
         })
@@ -4440,21 +4440,21 @@ export class FlutterNavigatorActions extends ZacAction {
         routeName: ZacBuilder<string>,
         navigatorState?: ZacBuilder<native.NavigatorState>
     }) {
-        return new FlutterNavigatorActions({
+        return new NavigatorActions({
             builder: 'z:1:Navigator.popUntilRouteName',
             ...data
         })
     }
 }
-export class FlutterScaffoldActions extends ZacAction {
+export class ScaffoldActions extends ZacAction {
     static openDrawer() {
-        return new FlutterScaffoldActions({
+        return new ScaffoldActions({
             builder: 'f:1:Scaffold.openDrawer'
 
         })
     }
     static openEndDrawer() {
-        return new FlutterScaffoldActions({
+        return new ScaffoldActions({
             builder: 'f:1:Scaffold.openEndDrawer'
 
         })
@@ -4463,7 +4463,7 @@ export class FlutterScaffoldActions extends ZacAction {
         value: boolean,
         opacity: ZacBuilder<number>
     }) {
-        return new FlutterScaffoldActions({
+        return new ScaffoldActions({
             builder: 'f:1:Scaffold.showBodyScrim',
             ...data
         })
@@ -4474,48 +4474,48 @@ export class FlutterScaffoldActions extends ZacAction {
         elevation?: ZacBuilder<number>,
         shape?: ZacBuilder<native.ShapeBorder>,
         clipBehavior?: ZacBuilder<native.Clip>,
-        constraints?: FlutterBoxConstraints,
+        constraints?: BoxConstraints,
         enableDrag?: ZacBuilder<boolean>
     }) {
-        return new FlutterScaffoldActions({
+        return new ScaffoldActions({
             builder: 'f:1:Scaffold.showBottomSheet',
             ...data
         })
     }
 }
-export class FlutterScaffoldMessenger extends ZacAction {
-    static showSnackBar(data: { snackBar: FlutterSnackBar }) {
-        return new FlutterScaffoldMessenger({
+export class ScaffoldMessenger extends ZacAction {
+    static showSnackBar(data: { snackBar: SnackBar }) {
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.showSnackBar',
             ...data
         })
     }
     static hideCurrentSnackBar() {
-        return new FlutterScaffoldMessenger({
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.hideCurrentSnackBar'
 
         })
     }
     static removeCurrentSnackBar() {
-        return new FlutterScaffoldMessenger({
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.removeCurrentSnackBar'
 
         })
     }
-    static showMaterialBanner(data: { materialBanner: FlutterMaterialBanner }) {
-        return new FlutterScaffoldMessenger({
+    static showMaterialBanner(data: { materialBanner: MaterialBanner }) {
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.showMaterialBanner',
             ...data
         })
     }
     static hideCurrentMaterialBanner() {
-        return new FlutterScaffoldMessenger({
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.hideCurrentMaterialBanner'
 
         })
     }
     static removeCurrentMaterialBanner() {
-        return new FlutterScaffoldMessenger({
+        return new ScaffoldMessenger({
             builder: 'f:1:ScaffoldMessenger.removeCurrentMaterialBanner'
 
         })
