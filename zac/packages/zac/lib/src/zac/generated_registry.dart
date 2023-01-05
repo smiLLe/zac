@@ -53,6 +53,7 @@ import 'package:zac/src/flutter/widgets/material/card.dart';
 import 'package:zac/src/flutter/widgets/material/dialog.dart';
 import 'package:zac/src/flutter/widgets/material/divider.dart';
 import 'package:zac/src/flutter/widgets/material/drawer.dart';
+import 'package:zac/src/flutter/widgets/material/floating_action_button.dart';
 import 'package:zac/src/flutter/widgets/material/list_tile.dart';
 import 'package:zac/src/flutter/widgets/material/material.dart';
 import 'package:zac/src/flutter/widgets/material/material_app.dart';
@@ -250,6 +251,13 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:FlexFit.loose', FlutterFlexFit.fromJson)
     ..register('f:1:FlexFit.tight', FlutterFlexFit.fromJson)
     ..register('f:1:Flexible', FlutterFlexible.fromJson)
+    ..register('f:1:FloatingActionButton', FlutterFloatingActionButton.fromJson)
+    ..register('f:1:FloatingActionButton.extended',
+        FlutterFloatingActionButton.fromJson)
+    ..register(
+        'f:1:FloatingActionButton.large', FlutterFloatingActionButton.fromJson)
+    ..register(
+        'f:1:FloatingActionButton.small', FlutterFloatingActionButton.fromJson)
     ..register('f:1:FontFeature', FlutterFontFeature.fromJson)
     ..register('f:1:FontFeature.alternative', FlutterFontFeature.fromJson)
     ..register(
@@ -700,6 +708,8 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Transformer:String.replaceAll', StringTransformer.fromJson)
     ..registerTransformer(
         'z:1:Transformer:String.split', StringTransformer.fromJson)
+    ..registerTransformer('z:1:Transformer:int.decr', IntTransformer.fromJson)
+    ..registerTransformer('z:1:Transformer:int.incr', IntTransformer.fromJson)
     ..registerTransformer('z:1:Transformer:int.parse', IntTransformer.fromJson)
     ..registerTransformer(
         'z:1:Transformer:int.tryParse', IntTransformer.fromJson)

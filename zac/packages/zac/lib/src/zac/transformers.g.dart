@@ -328,6 +328,16 @@ _$_IntTryParse _$$_IntTryParseFromJson(Map<String, dynamic> json) =>
       $type: json['builder'] as String?,
     );
 
+_$_IntIncr _$$_IntIncrFromJson(Map<String, dynamic> json) => _$_IntIncr(
+      ZacBuilder<int>.fromJson(json['by'] as Object),
+      $type: json['builder'] as String?,
+    );
+
+_$_IntDecr _$$_IntDecrFromJson(Map<String, dynamic> json) => _$_IntDecr(
+      ZacBuilder<int>.fromJson(json['by'] as Object),
+      $type: json['builder'] as String?,
+    );
+
 _$_StringLength _$$_StringLengthFromJson(Map<String, dynamic> json) =>
     _$_StringLength(
       $type: json['builder'] as String?,

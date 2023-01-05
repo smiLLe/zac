@@ -577,6 +577,8 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
   const IntTransformer._();
   static const String unionValue = 'z:1:Transformer:int.parse';
   static const String unionValueTryParse = 'z:1:Transformer:int.tryParse';
+  static const String unionValueIncrementBy = 'z:1:Transformer:int.incr';
+  static const String unionValueDecrementBy = 'z:1:Transformer:int.decr';
 
   factory IntTransformer.fromJson(Map<String, dynamic> json) =>
       _$IntTransformerFromJson(json);
@@ -586,6 +588,12 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
 
   @FreezedUnionValue(IntTransformer.unionValueTryParse)
   const factory IntTransformer.tryParse() = _IntTryParse;
+
+  @FreezedUnionValue(IntTransformer.unionValueIncrementBy)
+  const factory IntTransformer.incr(ZacBuilder<int> by) = _IntIncr;
+
+  @FreezedUnionValue(IntTransformer.unionValueDecrementBy)
+  const factory IntTransformer.decr(ZacBuilder<int> by) = _IntDecr;
 
   @override
   Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
@@ -613,6 +621,20 @@ Value: $value
 ''');
         }
         return int.tryParse(value);
+      },
+      incr: (obj) {
+        if (value is! int) {
+          throw StateError(
+              'Expected value to be int in $IntTransformer(${IntTransformer.unionValueIncrementBy}): $value');
+        }
+        return value + obj.by.build(zacContext);
+      },
+      decr: (obj) {
+        if (value is! int) {
+          throw StateError(
+              'Expected value to be int in $IntTransformer(${IntTransformer.unionValueDecrementBy}): $value');
+        }
+        return value - obj.by.build(zacContext);
       },
     );
   }

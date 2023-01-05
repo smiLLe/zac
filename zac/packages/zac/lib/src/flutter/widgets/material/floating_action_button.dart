@@ -1,0 +1,241 @@
+import 'package:flutter/services.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/zac_builder.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/base.dart';
+
+part 'floating_action_button.freezed.dart';
+part 'floating_action_button.g.dart';
+
+@freezedZacBuilder
+class FlutterFloatingActionButton
+    with _$FlutterFloatingActionButton
+    implements ZacBuilder<FloatingActionButton> {
+  const FlutterFloatingActionButton._();
+
+  factory FlutterFloatingActionButton.fromJson(Map<String, dynamic> json) =>
+      _$FlutterFloatingActionButtonFromJson(json);
+
+  @FreezedUnionValue('f:1:FloatingActionButton')
+  factory FlutterFloatingActionButton({
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<String?>? tooltip,
+    ZacBuilder<Color?>? foregroundColor,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<Color?>? focusColor,
+    ZacBuilder<Color?>? hoverColor,
+    ZacBuilder<Color?>? splashColor,
+    ZacBuilder<Object?>? heroTag,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<double?>? focusElevation,
+    ZacBuilder<double?>? hoverElevation,
+    ZacBuilder<double?>? highlightElevation,
+    ZacBuilder<double?>? disabledElevation,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<MouseCursor?>? mouseCursor,
+    ZacBuilder<bool?>? mini,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<FocusNode?>? focusNode,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<MaterialTapTargetSize?>? materialTapTargetSize,
+    ZacBuilder<bool?>? isExtended,
+    ZacBuilder<bool?>? enableFeedback,
+  }) = _FlutterFloatingActionButton;
+
+  @FreezedUnionValue('f:1:FloatingActionButton.extended')
+  factory FlutterFloatingActionButton.extended({
+    ZacBuilder<Key?>? key,
+    ZacBuilder<String?>? tooltip,
+    ZacBuilder<Color?>? foregroundColor,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<Color?>? focusColor,
+    ZacBuilder<Color?>? hoverColor,
+    ZacBuilder<Color?>? splashColor,
+    ZacBuilder<Object?>? heroTag,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<double?>? focusElevation,
+    ZacBuilder<double?>? hoverElevation,
+    ZacBuilder<double?>? highlightElevation,
+    ZacBuilder<double?>? disabledElevation,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<MouseCursor?>? mouseCursor,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<FocusNode?>? focusNode,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<MaterialTapTargetSize?>? materialTapTargetSize,
+    ZacBuilder<bool?>? isExtended,
+    ZacBuilder<bool?>? enableFeedback,
+    ZacBuilder<double?>? extendedIconLabelSpacing,
+    ZacBuilder<EdgeInsetsGeometry?>? extendedPadding,
+    ZacBuilder<TextStyle?>? extendedTextStyle,
+    ZacBuilder<Widget?>? icon,
+    required ZacBuilder<Widget> label,
+  }) = _Extended;
+
+  @FreezedUnionValue('f:1:FloatingActionButton.large')
+  factory FlutterFloatingActionButton.large({
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<String?>? tooltip,
+    ZacBuilder<Color?>? foregroundColor,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<Color?>? focusColor,
+    ZacBuilder<Color?>? hoverColor,
+    ZacBuilder<Color?>? splashColor,
+    ZacBuilder<Object?>? heroTag,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<double?>? focusElevation,
+    ZacBuilder<double?>? hoverElevation,
+    ZacBuilder<double?>? highlightElevation,
+    ZacBuilder<double?>? disabledElevation,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<MouseCursor?>? mouseCursor,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<FocusNode?>? focusNode,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<MaterialTapTargetSize?>? materialTapTargetSize,
+    ZacBuilder<bool?>? enableFeedback,
+  }) = _Large;
+
+  @FreezedUnionValue('f:1:FloatingActionButton.small')
+  factory FlutterFloatingActionButton.small({
+    ZacBuilder<Key?>? key,
+    ZacBuilder<Widget?>? child,
+    ZacBuilder<String?>? tooltip,
+    ZacBuilder<Color?>? foregroundColor,
+    ZacBuilder<Color?>? backgroundColor,
+    ZacBuilder<Color?>? focusColor,
+    ZacBuilder<Color?>? hoverColor,
+    ZacBuilder<Color?>? splashColor,
+    ZacBuilder<Object?>? heroTag,
+    ZacBuilder<double?>? elevation,
+    ZacBuilder<double?>? focusElevation,
+    ZacBuilder<double?>? hoverElevation,
+    ZacBuilder<double?>? highlightElevation,
+    ZacBuilder<double?>? disabledElevation,
+    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacBuilder<MouseCursor?>? mouseCursor,
+    ZacBuilder<ShapeBorder?>? shape,
+    ZacBuilder<Clip?>? clipBehavior,
+    ZacBuilder<FocusNode?>? focusNode,
+    ZacBuilder<bool?>? autofocus,
+    ZacBuilder<MaterialTapTargetSize?>? materialTapTargetSize,
+    ZacBuilder<bool?>? enableFeedback,
+  }) = _Small;
+
+  @override
+  FloatingActionButton build(ZacContext zacContext) {
+    return map(
+      (obj) => FloatingActionButton(
+        key: obj.key?.build(zacContext),
+        tooltip: obj.tooltip?.build(zacContext),
+        foregroundColor: obj.foregroundColor?.build(zacContext),
+        backgroundColor: obj.backgroundColor?.build(zacContext),
+        focusColor: obj.focusColor?.build(zacContext),
+        hoverColor: obj.hoverColor?.build(zacContext),
+        splashColor: obj.splashColor?.build(zacContext),
+        heroTag: obj.heroTag?.build(zacContext),
+        elevation: obj.elevation?.build(zacContext),
+        focusElevation: obj.focusElevation?.build(zacContext),
+        hoverElevation: obj.hoverElevation?.build(zacContext),
+        highlightElevation: obj.highlightElevation?.build(zacContext),
+        disabledElevation: obj.disabledElevation?.build(zacContext),
+        onPressed: obj.onPressed?.build(zacContext)?.createCb(zacContext),
+        mouseCursor: obj.mouseCursor?.build(zacContext),
+        mini: obj.mini?.build(zacContext) ?? false,
+        shape: obj.shape?.build(zacContext),
+        clipBehavior: obj.clipBehavior?.build(zacContext) ?? Clip.none,
+        focusNode: obj.focusNode?.build(zacContext),
+        autofocus: obj.autofocus?.build(zacContext) ?? false,
+        materialTapTargetSize: obj.materialTapTargetSize?.build(zacContext),
+        isExtended: obj.isExtended?.build(zacContext) ?? false,
+        enableFeedback: obj.enableFeedback?.build(zacContext),
+        child: obj.child?.build(zacContext),
+      ),
+      extended: (obj) => FloatingActionButton.extended(
+        key: obj.key?.build(zacContext),
+        tooltip: obj.tooltip?.build(zacContext),
+        foregroundColor: obj.foregroundColor?.build(zacContext),
+        backgroundColor: obj.backgroundColor?.build(zacContext),
+        focusColor: obj.focusColor?.build(zacContext),
+        hoverColor: obj.hoverColor?.build(zacContext),
+        splashColor: obj.splashColor?.build(zacContext),
+        heroTag: obj.heroTag?.build(zacContext),
+        elevation: obj.elevation?.build(zacContext),
+        focusElevation: obj.focusElevation?.build(zacContext),
+        hoverElevation: obj.hoverElevation?.build(zacContext),
+        highlightElevation: obj.highlightElevation?.build(zacContext),
+        disabledElevation: obj.disabledElevation?.build(zacContext),
+        onPressed: obj.onPressed?.build(zacContext)?.createCb(zacContext),
+        mouseCursor: obj.mouseCursor?.build(zacContext),
+        shape: obj.shape?.build(zacContext),
+        clipBehavior: obj.clipBehavior?.build(zacContext) ?? Clip.none,
+        focusNode: obj.focusNode?.build(zacContext),
+        autofocus: obj.autofocus?.build(zacContext) ?? false,
+        materialTapTargetSize: obj.materialTapTargetSize?.build(zacContext),
+        isExtended: obj.isExtended?.build(zacContext) ?? false,
+        enableFeedback: obj.enableFeedback?.build(zacContext),
+        extendedIconLabelSpacing:
+            obj.extendedIconLabelSpacing?.build(zacContext),
+        extendedPadding: obj.extendedPadding?.build(zacContext),
+        extendedTextStyle: obj.extendedTextStyle?.build(zacContext),
+        icon: obj.icon?.build(zacContext),
+        label: obj.label.build(zacContext),
+      ),
+      large: (obj) => FloatingActionButton.large(
+        key: obj.key?.build(zacContext),
+        tooltip: obj.tooltip?.build(zacContext),
+        foregroundColor: obj.foregroundColor?.build(zacContext),
+        backgroundColor: obj.backgroundColor?.build(zacContext),
+        focusColor: obj.focusColor?.build(zacContext),
+        hoverColor: obj.hoverColor?.build(zacContext),
+        splashColor: obj.splashColor?.build(zacContext),
+        heroTag: obj.heroTag?.build(zacContext),
+        elevation: obj.elevation?.build(zacContext),
+        focusElevation: obj.focusElevation?.build(zacContext),
+        hoverElevation: obj.hoverElevation?.build(zacContext),
+        highlightElevation: obj.highlightElevation?.build(zacContext),
+        disabledElevation: obj.disabledElevation?.build(zacContext),
+        onPressed: obj.onPressed?.build(zacContext)?.createCb(zacContext),
+        mouseCursor: obj.mouseCursor?.build(zacContext),
+        shape: obj.shape?.build(zacContext),
+        clipBehavior: obj.clipBehavior?.build(zacContext) ?? Clip.none,
+        focusNode: obj.focusNode?.build(zacContext),
+        autofocus: obj.autofocus?.build(zacContext) ?? false,
+        materialTapTargetSize: obj.materialTapTargetSize?.build(zacContext),
+        enableFeedback: obj.enableFeedback?.build(zacContext),
+        child: obj.child?.build(zacContext),
+      ),
+      small: (obj) => FloatingActionButton.small(
+        key: obj.key?.build(zacContext),
+        tooltip: obj.tooltip?.build(zacContext),
+        foregroundColor: obj.foregroundColor?.build(zacContext),
+        backgroundColor: obj.backgroundColor?.build(zacContext),
+        focusColor: obj.focusColor?.build(zacContext),
+        hoverColor: obj.hoverColor?.build(zacContext),
+        splashColor: obj.splashColor?.build(zacContext),
+        heroTag: obj.heroTag?.build(zacContext),
+        elevation: obj.elevation?.build(zacContext),
+        focusElevation: obj.focusElevation?.build(zacContext),
+        hoverElevation: obj.hoverElevation?.build(zacContext),
+        highlightElevation: obj.highlightElevation?.build(zacContext),
+        disabledElevation: obj.disabledElevation?.build(zacContext),
+        onPressed: obj.onPressed?.build(zacContext)?.createCb(zacContext),
+        mouseCursor: obj.mouseCursor?.build(zacContext),
+        shape: obj.shape?.build(zacContext),
+        clipBehavior: obj.clipBehavior?.build(zacContext) ?? Clip.none,
+        focusNode: obj.focusNode?.build(zacContext),
+        autofocus: obj.autofocus?.build(zacContext) ?? false,
+        materialTapTargetSize: obj.materialTapTargetSize?.build(zacContext),
+        enableFeedback: obj.enableFeedback?.build(zacContext),
+        child: obj.child?.build(zacContext),
+      ),
+    );
+  }
+}

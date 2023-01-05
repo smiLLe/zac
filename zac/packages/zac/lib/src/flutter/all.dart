@@ -50,6 +50,7 @@ export 'widgets/material/card.dart';
 export 'widgets/material/dialog.dart';
 export 'widgets/material/divider.dart';
 export 'widgets/material/drawer.dart';
+export 'widgets/material/floating_action_button.dart';
 export 'widgets/material/list_tile.dart';
 export 'widgets/material/material.dart';
 export 'widgets/material/progress_indicator.dart';

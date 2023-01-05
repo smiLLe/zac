@@ -3888,6 +3888,10 @@ IntTransformer _$IntTransformerFromJson(Map<String, dynamic> json) {
       return _IntParse.fromJson(json);
     case 'z:1:Transformer:int.tryParse':
       return _IntTryParse.fromJson(json);
+    case 'z:1:Transformer:int.incr':
+      return _IntIncr.fromJson(json);
+    case 'z:1:Transformer:int.decr':
+      return _IntDecr.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'builder', 'IntTransformer',
@@ -3901,6 +3905,8 @@ mixin _$IntTransformer {
   TResult map<TResult extends Object?>({
     required TResult Function(_IntParse value) parse,
     required TResult Function(_IntTryParse value) tryParse,
+    required TResult Function(_IntIncr value) incr,
+    required TResult Function(_IntDecr value) decr,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -3938,6 +3944,8 @@ class _$_IntParse extends _IntParse {
   TResult map<TResult extends Object?>({
     required TResult Function(_IntParse value) parse,
     required TResult Function(_IntTryParse value) tryParse,
+    required TResult Function(_IntIncr value) incr,
+    required TResult Function(_IntDecr value) decr,
   }) {
     return parse(this);
   }
@@ -3983,6 +3991,8 @@ class _$_IntTryParse extends _IntTryParse {
   TResult map<TResult extends Object?>({
     required TResult Function(_IntParse value) parse,
     required TResult Function(_IntTryParse value) tryParse,
+    required TResult Function(_IntIncr value) incr,
+    required TResult Function(_IntDecr value) decr,
   }) {
     return tryParse(this);
   }
@@ -3994,6 +4004,114 @@ abstract class _IntTryParse extends IntTransformer {
 
   factory _IntTryParse.fromJson(Map<String, dynamic> json) =
       _$_IntTryParse.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_IntIncr extends _IntIncr {
+  const _$_IntIncr(this.by, {final String? $type})
+      : $type = $type ?? 'z:1:Transformer:int.incr',
+        super._();
+
+  factory _$_IntIncr.fromJson(Map<String, dynamic> json) =>
+      _$$_IntIncrFromJson(json);
+
+  @override
+  final ZacBuilder<int> by;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'IntTransformer.incr(by: $by)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IntIncr &&
+            (identical(other.by, by) || other.by == by));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, by);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_IntParse value) parse,
+    required TResult Function(_IntTryParse value) tryParse,
+    required TResult Function(_IntIncr value) incr,
+    required TResult Function(_IntDecr value) decr,
+  }) {
+    return incr(this);
+  }
+}
+
+abstract class _IntIncr extends IntTransformer {
+  const factory _IntIncr(final ZacBuilder<int> by) = _$_IntIncr;
+  const _IntIncr._() : super._();
+
+  factory _IntIncr.fromJson(Map<String, dynamic> json) = _$_IntIncr.fromJson;
+
+  ZacBuilder<int> get by;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_IntDecr extends _IntDecr {
+  const _$_IntDecr(this.by, {final String? $type})
+      : $type = $type ?? 'z:1:Transformer:int.decr',
+        super._();
+
+  factory _$_IntDecr.fromJson(Map<String, dynamic> json) =>
+      _$$_IntDecrFromJson(json);
+
+  @override
+  final ZacBuilder<int> by;
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'IntTransformer.decr(by: $by)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IntDecr &&
+            (identical(other.by, by) || other.by == by));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, by);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_IntParse value) parse,
+    required TResult Function(_IntTryParse value) tryParse,
+    required TResult Function(_IntIncr value) incr,
+    required TResult Function(_IntDecr value) decr,
+  }) {
+    return decr(this);
+  }
+}
+
+abstract class _IntDecr extends IntTransformer {
+  const factory _IntDecr(final ZacBuilder<int> by) = _$_IntDecr;
+  const _IntDecr._() : super._();
+
+  factory _IntDecr.fromJson(Map<String, dynamic> json) = _$_IntDecr.fromJson;
+
+  ZacBuilder<int> get by;
 }
 
 StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {

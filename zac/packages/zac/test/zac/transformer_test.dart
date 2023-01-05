@@ -7,6 +7,7 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
 
@@ -16,6 +17,7 @@ void _expectFromJson<T>({
   required Object equals,
   Map<String, dynamic>? props,
 }) {
+  expectInRegistry(converter, fromJson);
   expect(
       ZacRegistry().getRegisteredTransformer(converter).call(<String, dynamic>{
         'builder': converter,
@@ -1298,6 +1300,44 @@ void main() {
           () => const IntTransformer.tryParse()
               .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
           throwsA(isA<ZacTransformError>()));
+    });
+
+    test('.operatorPlusPlus()', () {
+      _expectFromJson<IntTransformer>(
+        fromJson: IntTransformer.fromJson,
+        converter: 'z:1:Transformer:int.incr',
+        equals: IntTransformer.incr(ZacValue<int>(1)),
+        props: <String, dynamic>{'by': 1},
+      );
+
+      expect(
+          IntTransformer.incr(ZacValue<int>(1))
+              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
+          6);
+
+      expect(
+          () => IntTransformer.incr(ZacValue<int>(1))
+              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
+          throwsA(isA<StateError>()));
+    });
+
+    test('.operatorMinusMinus()', () {
+      _expectFromJson<IntTransformer>(
+        fromJson: IntTransformer.fromJson,
+        converter: 'z:1:Transformer:int.decr',
+        equals: IntTransformer.decr(ZacValue<int>(1)),
+        props: <String, dynamic>{'by': 1},
+      );
+
+      expect(
+          IntTransformer.decr(ZacValue<int>(1))
+              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
+          4);
+
+      expect(
+          () => IntTransformer.decr(ZacValue<int>(1))
+              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
+          throwsA(isA<StateError>()));
     });
   });
 
