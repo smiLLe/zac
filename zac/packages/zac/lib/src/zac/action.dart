@@ -70,9 +70,9 @@ class ZacActions with _$ZacActions implements ZacBuilder<List<ZacAction>> {
 extension HandleActions on List<ZacAction> {
   void execute(ZacActionPayload payload, BuildContext context,
       ZacContext zacContext) async {
-    if (!zacContext.isMounted()) return;
+    if (!context.isMounted) return;
     for (var action in this) {
-      if (!zacContext.isMounted()) {
+      if (!context.isMounted) {
         break;
       }
       action.execute(payload, context, zacContext);
@@ -143,9 +143,8 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
-        (previous, next) {
+    final zacContext = useZacContext();
+    ref.listen<SharedValueType>(SharedValue.provider(family), (previous, next) {
       actions(context, zacContext).execute(
           ZacActionPayload.param2(next, previous), context, zacContext);
     });
@@ -165,7 +164,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
+    final zacContext = useZacContext();
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;

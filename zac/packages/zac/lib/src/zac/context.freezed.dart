@@ -16,9 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ZacContext {
-  BuildContext get context => throw _privateConstructorUsedError;
-  WidgetRef get ref => throw _privateConstructorUsedError;
-  bool Function() get isMounted => throw _privateConstructorUsedError;
   void Function(void Function()) get onUnmount =>
       throw _privateConstructorUsedError;
 
@@ -33,11 +30,7 @@ abstract class $ZacContextCopyWith<$Res> {
           ZacContext value, $Res Function(ZacContext) then) =
       _$ZacContextCopyWithImpl<$Res, ZacContext>;
   @useResult
-  $Res call(
-      {BuildContext context,
-      WidgetRef ref,
-      bool Function() isMounted,
-      void Function(void Function()) onUnmount});
+  $Res call({void Function(void Function()) onUnmount});
 }
 
 /// @nodoc
@@ -53,24 +46,9 @@ class _$ZacContextCopyWithImpl<$Res, $Val extends ZacContext>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? context = null,
-    Object? ref = null,
-    Object? isMounted = null,
     Object? onUnmount = null,
   }) {
     return _then(_value.copyWith(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as WidgetRef,
-      isMounted: null == isMounted
-          ? _value.isMounted
-          : isMounted // ignore: cast_nullable_to_non_nullable
-              as bool Function(),
       onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
@@ -87,11 +65,7 @@ abstract class _$$_ZacContextCopyWith<$Res>
       __$$_ZacContextCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {BuildContext context,
-      WidgetRef ref,
-      bool Function() isMounted,
-      void Function(void Function()) onUnmount});
+  $Res call({void Function(void Function()) onUnmount});
 }
 
 /// @nodoc
@@ -105,24 +79,9 @@ class __$$_ZacContextCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? context = null,
-    Object? ref = null,
-    Object? isMounted = null,
     Object? onUnmount = null,
   }) {
     return _then(_$_ZacContext(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-      ref: null == ref
-          ? _value.ref
-          : ref // ignore: cast_nullable_to_non_nullable
-              as WidgetRef,
-      isMounted: null == isMounted
-          ? _value.isMounted
-          : isMounted // ignore: cast_nullable_to_non_nullable
-              as bool Function(),
       onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
@@ -134,24 +93,14 @@ class __$$_ZacContextCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ZacContext implements _ZacContext {
-  _$_ZacContext(
-      {required this.context,
-      required this.ref,
-      required this.isMounted,
-      required this.onUnmount});
+  _$_ZacContext({required this.onUnmount});
 
-  @override
-  final BuildContext context;
-  @override
-  final WidgetRef ref;
-  @override
-  final bool Function() isMounted;
   @override
   final void Function(void Function()) onUnmount;
 
   @override
   String toString() {
-    return 'ZacContext(context: $context, ref: $ref, isMounted: $isMounted, onUnmount: $onUnmount)';
+    return 'ZacContext(onUnmount: $onUnmount)';
   }
 
   @override
@@ -159,17 +108,12 @@ class _$_ZacContext implements _ZacContext {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacContext &&
-            (identical(other.context, context) || other.context == context) &&
-            (identical(other.ref, ref) || other.ref == ref) &&
-            (identical(other.isMounted, isMounted) ||
-                other.isMounted == isMounted) &&
             (identical(other.onUnmount, onUnmount) ||
                 other.onUnmount == onUnmount));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, context, ref, isMounted, onUnmount);
+  int get hashCode => Object.hash(runtimeType, onUnmount);
 
   @JsonKey(ignore: true)
   @override
@@ -180,17 +124,9 @@ class _$_ZacContext implements _ZacContext {
 
 abstract class _ZacContext implements ZacContext {
   factory _ZacContext(
-      {required final BuildContext context,
-      required final WidgetRef ref,
-      required final bool Function() isMounted,
-      required final void Function(void Function()) onUnmount}) = _$_ZacContext;
+          {required final void Function(void Function()) onUnmount}) =
+      _$_ZacContext;
 
-  @override
-  BuildContext get context;
-  @override
-  WidgetRef get ref;
-  @override
-  bool Function() get isMounted;
   @override
   void Function(void Function()) get onUnmount;
   @override

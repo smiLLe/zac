@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -37,14 +37,15 @@ See "$SharedValueProviderBuilder" for more info.
     required SharedValueFamily family,
   }) {
     final consumedValue = consumeType.map<Object?>(
-      read: (_) => zacContext.ref.read<Object?>(SharedValue.provider(family)),
+      read: (_) =>
+          context.widgetRef.read<Object?>(SharedValue.provider(family)),
       watch: (obj) => null != obj.select
-          ? zacContext.ref
+          ? context.widgetRef
               .watch<Object?>(SharedValue.provider(family).select((value) {
               return obj.select!.build(context, zacContext).transform(
                   ZacTransformValue(value), context, zacContext, null);
             }))
-          : zacContext.ref.watch<Object?>(SharedValue.provider(family)),
+          : context.widgetRef.watch<Object?>(SharedValue.provider(family)),
     );
 
     return consumedValue is ZacBuilder<Object>
@@ -62,11 +63,13 @@ See "$SharedValueProviderBuilder" for more info.
       /// Read the value first in order to trigger the custom exception.
       /// Otherwise the .update() below will throw a StateError by riverpod.
       /// This happens since riverpod 2.0 release
-      zacContext.ref.read(SharedValue.provider(family));
+      context.widgetRef.read(SharedValue.provider(family));
       return true;
     }(), '');
 
-    zacContext.ref.read(SharedValue.provider(family).notifier).update(update);
+    context.widgetRef
+        .read(SharedValue.provider(family).notifier)
+        .update(update);
   }
 }
 
@@ -128,7 +131,7 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
         });
       },
       invalidate: (obj) {
-        zacContext.ref.invalidate(SharedValue.provider(family));
+        context.widgetRef.invalidate(SharedValue.provider(family));
       },
     );
   }
@@ -302,9 +305,10 @@ class SharedValueProvider extends HookConsumerWidget {
       childBuilder;
   final SharedValueFamily family;
   final SharedValueType Function(
-      AutoDisposeStateProviderRef<SharedValueType> ref,
-      BuildContext context,
-      ZacContext zacContext) valueBuilder;
+    AutoDisposeStateProviderRef<SharedValueType> ref,
+    BuildContext context,
+    ZacContext zacContext,
+  ) valueBuilder;
   final bool autoCreate;
 
   static void _autoCreateListener(
@@ -313,7 +317,7 @@ class SharedValueProvider extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final parentContainer = ProviderScope.containerOf(context);
-    final zacContext = useZacContext(ref);
+    final zacContext = useZacContext();
     final override = useMemoized(() {
       return SharedValue.provider(family).overrideWith(
         (ref) => valueBuilder(ref, context, zacContext),
@@ -333,13 +337,13 @@ class SharedValueProvider extends HookConsumerWidget {
 
     return UncontrolledProviderScope(
       container: container,
-      child: ZacUpdateContext(
+      child: ZacFlutterBuilder(
         builder: !autoCreate
             ? childBuilder
             : (context, zacContext) {
                 /// immediately create the AutoDispose Provider and its value
                 /// and keep it alive as long as possible
-                zacContext.ref.listen<SharedValueType>(
+                context.widgetRef.listen<SharedValueType>(
                   SharedValue.provider(family),
                   _autoCreateListener,
                 );

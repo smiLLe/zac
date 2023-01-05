@@ -93,7 +93,7 @@ void main() {
         'key': KeysModel.getValueKey('scaffold'),
         'drawer': ChildModel.getSizedBox(key: 'drawer_child'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
@@ -129,7 +129,7 @@ void main() {
         'key': KeysModel.getValueKey('scaffold'),
         'endDrawer': ChildModel.getSizedBox(key: 'drawer_child'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
@@ -164,7 +164,7 @@ void main() {
         'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
@@ -204,7 +204,7 @@ void main() {
         'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
@@ -239,7 +239,7 @@ void main() {
         'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
@@ -277,7 +277,7 @@ void main() {
         'builder': FlutterScaffold.unionValue,
         'key': KeysModel.getValueKey('scaffold'),
         'body': {
-          'builder': FlutterBuilder.unionValue,
+          'builder': 'f:1:Builder',
           'child': {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),

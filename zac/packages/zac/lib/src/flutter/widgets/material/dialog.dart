@@ -188,7 +188,7 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
       ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       showDialog: (value) => showDialog<ZacBuilder<List<ZacAction>?>?>(
-        context: zacContext.context,
+        context: context,
         builder: (_) =>
             FlutterBuilder(child: value.child).build(context, zacContext),
         routeSettings: value.routeSettings?.build(context, zacContext),

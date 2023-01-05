@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/widgets/builder.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -10,7 +9,7 @@ void main() {
     await testMap(
       tester,
       <String, dynamic>{
-        'builder': FlutterBuilder.unionValue,
+        'builder': 'f:1:Builder',
         'key': KeysModel.getValueKey('builder'),
         'child': ChildModel.getSizedBox(key: 'child'),
       },

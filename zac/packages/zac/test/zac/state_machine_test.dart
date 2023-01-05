@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
 
@@ -40,21 +38,25 @@ void main() {
   });
 
   testWidgets('Get current widget in StateMachine', (tester) async {
-    late ZacContext zacContext;
-    await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-    var machine = ZacStateMachine(
-      states: {
-        'a': ZacStateConfig(widget: FlutterSizedBox(key: FlutterValueKey('a'))),
-      },
-      context: null,
-      state: 'a',
-      send: (event, context) {},
-      trySend: (event, context) {},
-      isActive: () => true,
-    );
+    await testWithContext(
+      tester,
+      (getContext, getZacContext) {
+        var machine = ZacStateMachine(
+          states: {
+            'a': ZacStateConfig(
+                widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+          },
+          context: null,
+          state: 'a',
+          send: (event, context) {},
+          trySend: (event, context) {},
+          isActive: () => true,
+        );
 
-    expect(machine.getWidget(zacContext),
-        FlutterSizedBox(key: FlutterValueKey('a')));
+        expect(machine.getWidget(getContext(), getZacContext()),
+            FlutterSizedBox(key: FlutterValueKey('a')));
+      },
+    );
   });
 
   test('Find a config for a certain state in a StateMachine', () {
@@ -101,100 +103,47 @@ void main() {
   });
 
   testWidgets('Provide the current machine', (tester) async {
-    Object? curMachine;
-    late ZacContext zacContext;
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
-        family: ZacBuilder<String>.fromJson('machine'),
-        initialContext: ZacBuilder<Object>.fromJson(1),
-        initialState: ZacBuilder<String>.fromJson('a'),
-        states: <String, ZacStateConfig>{
-          'a': ZacStateConfig(
-            widget: FlutterSizedBox(
-              key: FlutterValueKey('in a'),
-            ),
-          ),
-        },
-        child: LeakContext(
-          cb: (c) {
-            zacContext = c;
-            curMachine = SharedValue.get(
-              zacContext: c,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            );
-          },
-        ),
-      ),
-    );
-
-    expect(
-        curMachine,
-        isA<ZacStateMachine>()
-            .having((p0) => p0.state, 'state', 'a')
-            .having(
-                (p0) => p0.getWidget(zacContext),
-                'widget',
-                FlutterSizedBox(
-                  key: FlutterValueKey('in a'),
-                ))
-            .having((p0) => p0.context, 'context', 1));
-  });
-
-  testWidgets(
-      'Provided machine is automatically created and kept alive even if it is never listened to',
-      (tester) async {
-    late ZacContext context;
-    await testZacWidget(
-        tester,
-        ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
           family: ZacBuilder<String>.fromJson('machine'),
+          initialContext: ZacBuilder<Object>.fromJson(1),
           initialState: ZacBuilder<String>.fromJson('a'),
           states: <String, ZacStateConfig>{
             'a': ZacStateConfig(
               widget: FlutterSizedBox(
                 key: FlutterValueKey('in a'),
               ),
-              on: [
-                ZacTransition(event: 'NEXT', target: 'b'),
-              ],
-            ),
-            'b': ZacStateConfig(
-              widget: FlutterSizedBox(
-                key: FlutterValueKey('in b'),
-              ),
             ),
           },
-          child: TestBuildCustomWidget((zacContext) {
-            context = zacContext;
-            return TextButton(
-              key: const Key('button'),
-              child: const SizedBox(),
-              onPressed: () {
-                (zacContext.ref.read(SharedValue.provider('machine'))
-                        as ZacStateMachine)
-                    .send('NEXT', null);
-              },
-            );
-          }),
-        ));
-
-    await tester.tap(find.byKey(const Key('button')));
-    await tester.pump();
-    expect(
-        (context.ref.read(SharedValue.provider('machine')) as ZacStateMachine)
-            .state,
-        'b');
+          child: child),
+      (getContext, getZacContext) {
+        expect(
+            SharedValue.get(
+              context: getContext(),
+              zacContext: getZacContext(),
+              consumeType: const SharedValueConsumeType.watch(),
+              family: 'machine',
+            ),
+            isA<ZacStateMachine>()
+                .having((p0) => p0.state, 'state', 'a')
+                .having(
+                    (p0) => p0.getWidget(getContext(), getZacContext()),
+                    'widget',
+                    FlutterSizedBox(
+                      key: FlutterValueKey('in a'),
+                    ))
+                .having((p0) => p0.context, 'context', 1));
+      },
+    );
   });
 
   testWidgets(
       'Transition to another state and update context through an event ',
       (tester) async {
-    late ZacStateMachine curMachine;
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
         initialContext: ZacBuilder<Object>.fromJson(1),
         initialState: ZacBuilder<String>.fromJson('a'),
@@ -212,42 +161,54 @@ void main() {
             on: [ZacTransition(event: 'NEXT', target: 'a')],
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            ) as ZacStateMachine;
-          },
-        ),
+        child: child,
       ),
+      (getContext, getZacContext) async {
+        var curMachine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.read(),
+          family: 'machine',
+        ) as ZacStateMachine;
+        curMachine.send('NEXT', 'foo');
+        await tester.pump();
+        curMachine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.read(),
+          family: 'machine',
+        ) as ZacStateMachine;
+
+        expect(
+            curMachine,
+            isA<ZacStateMachine>()
+                .having((p0) => p0.state, 'state', 'b')
+                .having((p0) => p0.context, 'context', 'foo'));
+
+        curMachine.send('NEXT', 'bar');
+        await tester.pump();
+        curMachine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.read(),
+          family: 'machine',
+        ) as ZacStateMachine;
+
+        expect(
+            curMachine,
+            isA<ZacStateMachine>()
+                .having((p0) => p0.state, 'state', 'a')
+                .having((p0) => p0.context, 'context', 'bar'));
+      },
     );
-
-    curMachine.send('NEXT', 'foo');
-    await tester.pump();
-    expect(
-        curMachine,
-        isA<ZacStateMachine>()
-            .having((p0) => p0.state, 'state', 'b')
-            .having((p0) => p0.context, 'context', 'foo'));
-
-    curMachine.send('NEXT', 'bar');
-    await tester.pump();
-    expect(
-        curMachine,
-        isA<ZacStateMachine>()
-            .having((p0) => p0.state, 'state', 'a')
-            .having((p0) => p0.context, 'context', 'bar'));
   });
 
   testWidgets(
       'It is not possible to send another event after successful transition',
       (tester) async {
-    late ZacStateMachine curMachine;
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: <String, ZacStateConfig>{
@@ -265,33 +226,33 @@ void main() {
             widget: FlutterSizedBox(),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            ) as ZacStateMachine;
-          },
-        ),
+        child: child,
       ),
-    );
+      (getContext, getZacContext) {
+        final curMachine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
 
-    curMachine.send('NEXT', null);
-    expect(
-        () => curMachine.send('OTHER', null),
-        throwsA(isA<StateError>().having((p0) => p0.message, 'message',
-            contains('No longer possible to send event "OTHER"'))));
-    expect(() => curMachine.trySend('OTHER', null), returnsNormally);
+        curMachine.send('NEXT', null);
+
+        expect(
+            () => curMachine.send('OTHER', null),
+            throwsA(isA<StateError>().having((p0) => p0.message, 'message',
+                contains('No longer possible to send event "OTHER"'))));
+        expect(() => curMachine.trySend('OTHER', null), returnsNormally);
+      },
+    );
   });
 
   testWidgets(
       'It is not possible to send another event after StateMachine dispose',
       (tester) async {
-    late ZacStateMachine curMachine;
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: <String, ZacStateConfig>{
@@ -305,32 +266,31 @@ void main() {
             widget: FlutterSizedBox(),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            curMachine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            ) as ZacStateMachine;
-          },
-        ),
+        child: child,
       ),
+      (getContext, getZacContext) async {
+        final curMachine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.read(),
+          family: 'machine',
+        ) as ZacStateMachine;
+
+        await testZacWidget(tester, FlutterSizedBox());
+
+        expect(
+            () => curMachine.send('NEXT', null),
+            throwsA(isA<StateError>().having((p0) => p0.message, 'message',
+                contains('No longer possible to send event "NEXT"'))));
+        expect(() => curMachine.trySend('NEXT', null), returnsNormally);
+      },
     );
-
-    await testZacWidget(tester, FlutterSizedBox());
-
-    expect(
-        () => curMachine.send('NEXT', null),
-        throwsA(isA<StateError>().having((p0) => p0.message, 'message',
-            contains('No longer possible to send event "NEXT"'))));
-    expect(() => curMachine.trySend('NEXT', null), returnsNormally);
   });
 
   testWidgets('Check StateMachine for being active', (tester) async {
-    final List<ZacStateMachine> machines = [];
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: <String, ZacStateConfig>{
@@ -344,86 +304,106 @@ void main() {
             widget: FlutterSizedBox(),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            machines.add(SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            ) as ZacStateMachine);
-          },
-        ),
+        child: child,
       ),
+      (getContext, getZacContext) async {
+        final m1 = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
+        expect(m1.isActive(), isTrue);
+        m1.send('NEXT', null);
+        await tester.pump();
+        final m2 = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
+        expect(m1.isActive(), isFalse);
+        expect(m2.isActive(), isTrue);
+
+        /// dispose
+        await testZacWidget(tester, FlutterSizedBox());
+        expect(m2.isActive(), isFalse);
+      },
     );
-
-    expect(machines[0].isActive(), isTrue);
-    machines[0].send('NEXT', null);
-    await tester.pump();
-    expect(machines[0].isActive(), isFalse);
-    expect(machines[1].isActive(), isTrue);
-
-    /// dispose
-    await testZacWidget(tester, FlutterSizedBox());
-    expect(machines[1].isActive(), isFalse);
   });
 
   testWidgets(
       'BuildState will build the StateConfig attached widget when in specified state',
       (tester) async {
-    late ZacStateMachine machine;
-
-    await testZacWidget(
+    await testWithContextWithChild(
       tester,
-      ZacStateMachineProviderBuilder(
+      (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
         initialState: ZacBuilder<String>.fromJson('a'),
         states: <String, ZacStateConfig>{
           'a': ZacStateConfig(
             widget: FlutterSizedBox(
               key: FlutterValueKey('in a'),
+              child: child,
             ),
             on: [ZacTransition(event: 'NEXT', target: 'b')],
           ),
           'b': ZacStateConfig(
             widget: FlutterSizedBox(
               key: FlutterValueKey('in b'),
+              child: child,
             ),
             on: [ZacTransition(event: 'NEXT', target: 'c')],
           ),
           'c': ZacStateConfig(
             widget: FlutterSizedBox(
               key: FlutterValueKey('in c'),
+              child: child,
             ),
           ),
         },
-        child: LeakContext(
-          cb: (zacContext) {
-            machine = SharedValue.get(
-              zacContext: zacContext,
-              consumeType: const SharedValueConsumeType.watch(),
-              family: 'machine',
-            ) as ZacStateMachine;
-          },
-          child: ZacStateMachineBuildStateBuilder(
-            family: ZacBuilder<String>.fromJson('machine'),
-            states: ['a', 'b'],
-            unmappedStateWidget: FlutterSizedBox(
-              key: FlutterValueKey('unmapped'),
-            ),
+        child: ZacStateMachineBuildStateBuilder(
+          family: ZacBuilder<String>.fromJson('machine'),
+          states: ['a', 'b'],
+          unmappedStateWidget: FlutterSizedBox(
+            key: FlutterValueKey('unmapped'),
+            child: child,
           ),
         ),
       ),
+      (getContext, getZacContext) async {
+        var machine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
+
+        expect(find.byKey(const ValueKey('in a')), findsOneWidget);
+
+        machine.send('NEXT', null);
+
+        await tester.pump();
+        machine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
+        expect(find.byKey(const ValueKey('in b')), findsOneWidget);
+
+        machine.send('NEXT', null);
+
+        await tester.pump();
+        machine = SharedValue.get(
+          context: getContext(),
+          zacContext: getZacContext(),
+          consumeType: const SharedValueConsumeType.watch(),
+          family: 'machine',
+        ) as ZacStateMachine;
+        expect(find.byKey(const ValueKey('unmapped')), findsOneWidget);
+      },
     );
-
-    expect(find.byKey(const ValueKey('in a')), findsOneWidget);
-
-    machine.send('NEXT', null);
-    await tester.pump();
-    expect(find.byKey(const ValueKey('in b')), findsOneWidget);
-
-    machine.send('NEXT', null);
-    await tester.pump();
-    expect(find.byKey(const ValueKey('unmapped')), findsOneWidget);
   });
 
   testWidgets(
@@ -538,59 +518,74 @@ void main() {
     expect(find.byKey(const ValueKey('in b')), findsOneWidget);
   });
 
-  test('Let a transformer pick and return the state of a StateMachine ', () {
-    expect(
-        ZacStateMachineTransformer.pickState().transform(
-            ZacTransformValue(ZacStateMachine(
-              states: {
-                'a': ZacStateConfig(
-                    widget: FlutterSizedBox(key: FlutterValueKey('a'))),
-              },
-              context: null,
-              state: 'a',
-              send: (event, context) {},
-              trySend: (event, context) {},
-              isActive: () => true,
-            )),
-            FakeZacContext(),
-            null),
-        'a');
+  testWidgets('Let a transformer pick and return the state of a StateMachine ',
+      (tester) async {
+    await testWithContext(
+      tester,
+      (getContext, getZacContext) {
+        expect(
+            ZacStateMachineTransformer.pickState().transform(
+                ZacTransformValue(ZacStateMachine(
+                  states: {
+                    'a': ZacStateConfig(
+                        widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+                  },
+                  context: null,
+                  state: 'a',
+                  send: (event, context) {},
+                  trySend: (event, context) {},
+                  isActive: () => true,
+                )),
+                getContext(),
+                getZacContext(),
+                null),
+            'a');
 
-    expect(
-        () => ZacStateMachineTransformer.pickState()
-            .transform(ZacTransformValue('FAIL'), FakeZacContext(), null),
-        throwsA(isA<StateError>().having(
-            (p0) => p0.message,
-            'Error',
-            contains(
-                'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
+        expect(
+            () => ZacStateMachineTransformer.pickState().transform(
+                ZacTransformValue('FAIL'), getContext(), getZacContext(), null),
+            throwsA(isA<StateError>().having(
+                (p0) => p0.message,
+                'Error',
+                contains(
+                    'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
+      },
+    );
   });
 
-  test('Let a transformer pick and return the context of a StateMachine ', () {
-    expect(
-        ZacStateMachineTransformer.pickContext().transform(
-            ZacTransformValue(ZacStateMachine(
-              states: {
-                'a': ZacStateConfig(
-                    widget: FlutterSizedBox(key: FlutterValueKey('a'))),
-              },
-              context: 'hello',
-              state: 'a',
-              send: (event, context) {},
-              trySend: (event, context) {},
-              isActive: () => true,
-            )),
-            FakeZacContext(),
-            null),
-        'hello');
+  testWidgets(
+      'Let a transformer pick and return the context of a StateMachine ',
+      (tester) async {
+    await testWithContext(
+      tester,
+      (getContext, getZacContext) {
+        expect(
+            ZacStateMachineTransformer.pickContext().transform(
+                ZacTransformValue(ZacStateMachine(
+                  states: {
+                    'a': ZacStateConfig(
+                        widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+                  },
+                  context: 'hello',
+                  state: 'a',
+                  send: (event, context) {},
+                  trySend: (event, context) {},
+                  isActive: () => true,
+                )),
+                getContext(),
+                getZacContext(),
+                null),
+            'hello');
 
-    expect(
-        () => ZacStateMachineTransformer.pickContext()
-            .transform(ZacTransformValue('FAIL'), FakeZacContext(), null),
-        throwsA(isA<StateError>().having(
-            (p0) => p0.message,
-            'Error',
-            contains(
-                'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
+        expect(
+            () => ZacStateMachineTransformer.pickContext().transform(
+                ZacTransformValue('FAIL'), getContext(), getZacContext(), null),
+            throwsA(isA<StateError>().having(
+                (p0) => p0.message,
+                'Error',
+                contains(
+                    'The ZacStateMachineTransformer expected a transformer value of ZacStateMachine'))));
+      },
+    );
   });
 }

@@ -196,8 +196,8 @@ class FlutterNavigatorState
   @override
   NavigatorState build(BuildContext context, ZacContext zacContext) {
     return map(
-      closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
-      root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
+      closest: (_) => Navigator.of(context, rootNavigator: false),
+      root: (_) => Navigator.of(context, rootNavigator: true),
       shared: (obj) {
         final key = obj.value.build(context, zacContext);
         if (null != key.currentState) {
@@ -313,7 +313,7 @@ class FlutterNavigatorActions
           popUntilRouteName: (obj) =>
               obj.navigatorState?.build(context, zacContext),
         ) ??
-        Navigator.maybeOf(zacContext.context);
+        Navigator.maybeOf(context);
   }
 
   @override
@@ -324,7 +324,7 @@ class FlutterNavigatorActions
         final state = _getState(context, zacContext);
         if (null == state) return null;
         state.push(obj.route.build(context, zacContext)).then((value) {
-          if (!zacContext.isMounted()) return;
+          if (!context.isMounted) return;
           if (value is ZacActions) {
             value.build(context, zacContext).execute(
                   const ZacActionPayload(),
@@ -343,7 +343,7 @@ class FlutterNavigatorActions
           arguments: obj.arguments,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
+          if (!context.isMounted) return;
           if (value is ZacActions) {
             value
                 .build(context, zacContext)
@@ -370,7 +370,7 @@ class FlutterNavigatorActions
           result: obj.result,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
+          if (!context.isMounted) return;
           if (value is ZacActions) {
             value
                 .build(context, zacContext)
@@ -388,7 +388,7 @@ class FlutterNavigatorActions
           result: obj.result,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
+          if (!context.isMounted) return;
           if (value is ZacActions) {
             value
                 .build(context, zacContext)

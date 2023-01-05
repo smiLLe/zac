@@ -228,7 +228,7 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
+    final zacContext = useZacContext();
     final machine = SharedValue.get(
       context: context,
       zacContext: zacContext,

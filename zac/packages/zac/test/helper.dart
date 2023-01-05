@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:zac/src/flutter/foundation.dart';
+import 'package:zac/src/flutter/widgets/builder.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
@@ -18,7 +18,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 part 'helper.freezed.dart';
 part 'helper.g.dart';
@@ -45,7 +44,7 @@ Future<void> testWithContext(
   late ZacContext _zacContext;
   await tester.pumpWidget(
     ProviderScope(
-      child: ZacUpdateContext(
+      child: ZacFlutterBuilder(
         builder: (context, zacContext) {
           _context = context;
           _zacContext = zacContext;

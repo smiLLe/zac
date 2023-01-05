@@ -137,7 +137,7 @@ class FlutterScaffoldActions
       ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       showBottomSheet: (value) {
-        final state = Scaffold.maybeOf(zacContext.context);
+        final state = Scaffold.maybeOf(context);
         if (null == state) return;
         state.showBottomSheet<void>(
           (_) => FlutterBuilder(child: value.child).build(context, zacContext),
@@ -151,21 +151,21 @@ class FlutterScaffoldActions
         );
       },
       openEndDrawer: (value) {
-        final state = Scaffold.maybeOf(zacContext.context);
+        final state = Scaffold.maybeOf(context);
         if (null == state ||
             false == state.hasEndDrawer ||
             true == state.isEndDrawerOpen) return null;
         state.openEndDrawer();
       },
       openDrawer: (value) {
-        final state = Scaffold.maybeOf(zacContext.context);
+        final state = Scaffold.maybeOf(context);
         if (null == state ||
             false == state.hasDrawer ||
             true == state.isDrawerOpen) return null;
         state.openDrawer();
       },
       showBodyScrim: (value) {
-        final state = Scaffold.maybeOf(zacContext.context);
+        final state = Scaffold.maybeOf(context);
         if (null == state) return null;
         state.showBodyScrim(
             value.value, value.opacity.build(context, zacContext));
@@ -233,26 +233,26 @@ class FlutterScaffoldMessenger
       ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       showSnackBar: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
         state.showSnackBar(value.snackBar.build(context, zacContext));
       },
       hideCurrentSnackBar: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         state.hideCurrentSnackBar();
       },
       removeCurrentSnackBar: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         state.removeCurrentSnackBar();
       },
       showMaterialBanner: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         // TODO: Add reasons via AWActions in constructor
@@ -260,13 +260,13 @@ class FlutterScaffoldMessenger
             value.materialBanner.build(context, zacContext));
       },
       hideCurrentMaterialBanner: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         state.hideCurrentMaterialBanner();
       },
       removeCurrentMaterialBanner: (value) {
-        final state = ScaffoldMessenger.maybeOf(zacContext.context);
+        final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
         state.removeCurrentMaterialBanner();

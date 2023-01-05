@@ -80,8 +80,9 @@ void main() {
         await tester.pumpWidget(
           ZacWidget(
             data: LeakContext(
-              cb: (zacContext) {
-                obj = ZacBuilder<String>.fromJson('foo').build(zacContext);
+              cb: (context, zacContext) {
+                obj = ZacBuilder<String>.fromJson('foo')
+                    .build(context, zacContext);
               },
             ),
           ),
@@ -147,39 +148,33 @@ void main() {
       });
 
       testWidgets('.build()', (tester) async {
-        late ZacContext zacContext;
-        await tester.pumpWidget(
-          ProviderScope(
-            child: ZacWidget(
-              data: LeakContext(
-                cb: (z) => zacContext = z,
-              ),
-            ),
-          ),
+        testWithContext(
+          tester,
+          (getContext, getZacContext) {
+            expect(
+                ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
+                  'builder': 'z:1:ZacValueList',
+                  'items': [
+                    {
+                      'builder': 'f:1:ValueKey',
+                      'value': 'hello',
+                    },
+                    {
+                      'builder': 'f:1:ValueKey',
+                      'value': 'world',
+                    }
+                  ],
+                }).build(getContext(), getZacContext()),
+                const [ValueKey('hello'), ValueKey('world')]);
+
+            expect(
+                ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
+                  'builder': 'z:1:ZacValueList',
+                  'items': [1, 2],
+                }).build(getContext(), getZacContext()),
+                const [1, 2]);
+          },
         );
-
-        expect(
-            ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueList',
-              'items': [
-                {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'hello',
-                },
-                {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'world',
-                }
-              ],
-            }).build(context, zacContext),
-            const [ValueKey('hello'), ValueKey('world')]);
-
-        expect(
-            ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueList',
-              'items': [1, 2],
-            }).build(context, zacContext),
-            const [1, 2]);
       });
     });
   });
@@ -244,39 +239,30 @@ void main() {
       });
 
       testWidgets('.build()', (tester) async {
-        late ZacContext zacContext;
-        await tester.pumpWidget(
-          ProviderScope(
-            child: ZacWidget(
-              data: LeakContext(
-                cb: (z) => zacContext = z,
-              ),
-            ),
-          ),
-        );
-
-        expect(
-            ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueMap',
-              'items': {
-                'a': {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'hello',
+        testWithContext(tester, (getContext, getZacContext) {
+          expect(
+              ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
+                'builder': 'z:1:ZacValueMap',
+                'items': {
+                  'a': {
+                    'builder': 'f:1:ValueKey',
+                    'value': 'hello',
+                  },
+                  'b': {
+                    'builder': 'f:1:ValueKey',
+                    'value': 'world',
+                  }
                 },
-                'b': {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'world',
-                }
-              },
-            }).build(context, zacContext),
-            const {'a': ValueKey('hello'), 'b': ValueKey('world')});
+              }).build(getContext(), getZacContext()),
+              const {'a': ValueKey('hello'), 'b': ValueKey('world')});
 
-        expect(
-            ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueMap',
-              'items': {'a': 1, 'b': 2},
-            }).build(context, zacContext),
-            const {'a': 1, 'b': 2});
+          expect(
+              ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
+                'builder': 'z:1:ZacValueMap',
+                'items': {'a': 1, 'b': 2},
+              }).build(getContext(), getZacContext()),
+              const {'a': 1, 'b': 2});
+        });
       });
     });
   });

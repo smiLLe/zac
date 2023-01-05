@@ -1,6 +1,8 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
@@ -37,7 +39,8 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')), 5);
+          expect(
+              getContext().widgetRef.watch(SharedValue.provider('shared')), 5);
         },
       );
     });
@@ -51,8 +54,8 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(
-              getZacContext().ref.watch(SharedValue.provider('shared')), 5.1);
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
+              5.1);
         },
       );
     });
@@ -66,8 +69,8 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(
-              getZacContext().ref.watch(SharedValue.provider('shared')), 'foo');
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
+              'foo');
         },
       );
     });
@@ -81,8 +84,8 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(
-              getZacContext().ref.watch(SharedValue.provider('shared')), false);
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
+              false);
         },
       );
     });
@@ -95,7 +98,7 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')),
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
               isNull);
         },
       );
@@ -110,7 +113,7 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')),
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
               'something');
         },
       );
@@ -125,7 +128,7 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')),
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
               FlutterSizedBox());
         },
       );
@@ -140,7 +143,7 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')),
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
               ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]));
         },
       );
@@ -157,7 +160,7 @@ void main() {
         ),
         (getContext, getZacContext) {
           expect(
-              getZacContext().ref.watch(SharedValue.provider('shared')),
+              getContext().widgetRef.watch(SharedValue.provider('shared')),
               ZacValueMap<Widget, Map<String, Widget>>(
                   {'a': FlutterSizedBox()}));
         },
@@ -173,7 +176,7 @@ void main() {
           child: child,
         ),
         (getContext, getZacContext) {
-          expect(getZacContext().ref.watch(SharedValue.provider('shared')),
+          expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
               FlutterBoxShape.circle());
         },
       );
@@ -395,57 +398,105 @@ void main() {
 
     testWidgets('is automatically kept alive', (tester) async {
       var i = 0;
-      late ZacContext zacContext;
+      Object? valueBuilder(AutoDisposeStateProviderRef<Object?> ref,
+          BuildContext context, ZacContext zacContext) {
+        ++i;
+        return 0;
+      }
+
       await tester.pumpWidget(ProviderScope(
         child: MaterialApp(
           home: SharedValueProvider(
             autoCreate: true,
             family: 'shared',
-            valueBuilder: (ref, context, zacContext) {
-              ++i;
-              return 0;
-            },
-            childBuilder: (c, z) {
-              zacContext = z;
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              context.widgetRef.read(SharedValue.provider('shared'));
               return const SizedBox();
             },
           ),
         ),
       ));
 
-      zacContext.ref.read(SharedValue.provider('shared'));
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: true,
+            family: 'shared',
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              return const SizedBox();
+            },
+          ),
+        ),
+      ));
 
-      await tester.pump();
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: true,
+            family: 'shared',
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              context.widgetRef.read(SharedValue.provider('shared'));
+              return const SizedBox();
+            },
+          ),
+        ),
+      ));
 
-      zacContext.ref.read(SharedValue.provider('shared'));
       expect(i, 1);
     });
 
     testWidgets('is not automatically kept alive', (tester) async {
       var i = 0;
-      late ZacContext zacContext;
+      Object? valueBuilder(AutoDisposeStateProviderRef<Object?> ref,
+          BuildContext context, ZacContext zacContext) {
+        ++i;
+        return 0;
+      }
+
       await tester.pumpWidget(ProviderScope(
         child: MaterialApp(
           home: SharedValueProvider(
             autoCreate: false,
             family: 'shared',
-            valueBuilder: (ref, context, zacContext) {
-              ++i;
-              return 0;
-            },
-            childBuilder: (c, z) {
-              zacContext = z;
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              context.widgetRef.read(SharedValue.provider('shared'));
               return const SizedBox();
             },
           ),
         ),
       ));
 
-      zacContext.ref.read(SharedValue.provider('shared'));
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: false,
+            family: 'shared',
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              return const SizedBox();
+            },
+          ),
+        ),
+      ));
 
-      await tester.pump();
+      await tester.pumpWidget(ProviderScope(
+        child: MaterialApp(
+          home: SharedValueProvider(
+            autoCreate: false,
+            family: 'shared',
+            valueBuilder: valueBuilder,
+            childBuilder: (context, z) {
+              context.widgetRef.read(SharedValue.provider('shared'));
+              return const SizedBox();
+            },
+          ),
+        ),
+      ));
 
-      zacContext.ref.read(SharedValue.provider('shared'));
       expect(i, 2);
     });
 
@@ -469,9 +520,12 @@ void main() {
                 family: 'sharedA',
                 child: LeakContext(
                   cb: (context, zacContext) {
-                    a = zacContext.ref.watch(SharedValue.provider('sharedA'));
-                    b = zacContext.ref.watch(SharedValue.provider('sharedB'));
-                    c = zacContext.ref.watch(SharedValue.provider('sharedC'));
+                    a = context.widgetRef
+                        .watch(SharedValue.provider('sharedA'));
+                    b = context.widgetRef
+                        .watch(SharedValue.provider('sharedB'));
+                    c = context.widgetRef
+                        .watch(SharedValue.provider('sharedC'));
                   },
                 ),
               ),

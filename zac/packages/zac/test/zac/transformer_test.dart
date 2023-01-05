@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/action.dart';
@@ -34,7 +35,7 @@ void _expectFromJson<T>({
 
 void main() {
   group('Iterable', () {
-    test('.map()', () {
+    testWidgets('.map()', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.map',
@@ -47,205 +48,263 @@ void main() {
         },
       );
 
-      expect(
-          IterableTransformer.map(transformer: ZacTransformers([])).transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), null),
-          isA<Iterable<Object?>>());
+      await testWithContext(
+        tester,
+        (getContext, getZacContext) {
+          expect(
+              IterableTransformer.map(transformer: ZacTransformers([]))
+                  .transform(ZacTransformValue(['foo', 'oof']), getContext(),
+                      getZacContext(), null),
+              isA<Iterable<Object?>>());
 
-      expect(
-          IterableTransformer.map(
-                  transformer: ZacTransformers([_ConcatStr('bar')]))
-              .transform(
-                  ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), null),
-          ['foobar', 'oofbar']);
+          expect(
+              IterableTransformer.map(
+                      transformer: ZacTransformers([_ConcatStr('bar')]))
+                  .transform(ZacTransformValue(['foo', 'oof']), getContext(),
+                      getZacContext(), null),
+              ['foobar', 'oofbar']);
 
-      expect(
-          () => IterableTransformer.map(
-                  transformer: ZacTransformers([_ConcatStr('bar')]))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+          expect(
+              () => IterableTransformer.map(
+                  transformer:
+                      ZacTransformers([_ConcatStr('bar')])).transform(
+                  ZacTransformValue(55), getContext(), getZacContext(), null),
+              throwsA(isA<ZacTransformError>()));
+        },
+      );
     });
 
-    test('.first', () {
+    testWidgets('.first', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.first',
         equals: const IterableTransformer.first(),
       );
 
-      expect(
-          const IterableTransformer.first().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), null),
-          'foo');
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.first().transform(
+                ZacTransformValue(['foo', 'oof']),
+                getContext(),
+                getZacContext(),
+                null),
+            'foo');
 
-      expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.first().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.last', () {
+    testWidgets('.last', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.last',
         equals: const IterableTransformer.last(),
       );
 
-      expect(
-          const IterableTransformer.last().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), null),
-          'oof');
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.last().transform(
+                ZacTransformValue(['foo', 'oof']),
+                getContext(),
+                getZacContext(),
+                null),
+            'oof');
 
-      expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.first().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.single', () {
+    testWidgets('.single', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.single',
         equals: const IterableTransformer.single(),
       );
 
-      expect(
-          const IterableTransformer.single()
-              .transform(ZacTransformValue(['foo']), FakeZacOrigin(), null),
-          'foo');
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.single().transform(
+                ZacTransformValue(['foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            'foo');
 
-      expect(
-          () => const IterableTransformer.single().transform(
-              ZacTransformValue(['foo', 'oof']), FakeZacOrigin(), null),
-          throwsStateError);
+        expect(
+            () => const IterableTransformer.single().transform(
+                ZacTransformValue(['foo', 'oof']),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsStateError);
 
-      expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.first().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.length', () {
+    testWidgets('.length', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.length',
         equals: const IterableTransformer.length(),
       );
 
-      expect(
-          const IterableTransformer.length().transform(
-              ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
-              FakeZacOrigin(),
-              null),
-          4);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.length().transform(
+                ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            4);
 
-      expect(
-          () => const IterableTransformer.first()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.first().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isEmpty', () {
+    testWidgets('.isEmpty', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.isEmpty',
         equals: const IterableTransformer.isEmpty(),
       );
 
-      expect(
-          const IterableTransformer.isEmpty()
-              .transform(ZacTransformValue(['foo']), FakeZacOrigin(), null),
-          isFalse);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.isEmpty().transform(
+                ZacTransformValue(['foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            isFalse);
 
-      expect(
-          const IterableTransformer.isEmpty()
-              .transform(ZacTransformValue(<dynamic>[]), FakeZacOrigin(), null),
-          isTrue);
+        expect(
+            const IterableTransformer.isEmpty().transform(
+                ZacTransformValue(<dynamic>[]),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          () => const IterableTransformer.isEmpty()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.isEmpty().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isNotEmpty', () {
+    testWidgets('.isNotEmpty', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.isNotEmpty',
         equals: const IterableTransformer.isNotEmpty(),
       );
 
-      expect(
-          const IterableTransformer.isNotEmpty()
-              .transform(ZacTransformValue(['foo']), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.isNotEmpty().transform(
+                ZacTransformValue(['foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          const IterableTransformer.isNotEmpty()
-              .transform(ZacTransformValue(<dynamic>[]), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            const IterableTransformer.isNotEmpty().transform(
+                ZacTransformValue(<dynamic>[]),
+                getContext(),
+                getZacContext(),
+                null),
+            isFalse);
 
-      expect(
-          () => const IterableTransformer.isNotEmpty()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.isNotEmpty().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.toList', () {
+    testWidgets('.toList', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.toList',
         equals: const IterableTransformer.toList(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.toList().transform(
+                ZacTransformValue(<String>{'foo'}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<List<Object?>>());
 
-      expect(
-          const IterableTransformer.toList().transform(
-              ZacTransformValue(<String>{'foo'}), FakeZacOrigin(), null),
-          isA<List<Object?>>());
-
-      expect(
-          () => const IterableTransformer.toList()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.toList().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.toSet', () {
+    testWidgets('.toSet', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.toSet',
         equals: const IterableTransformer.toSet(),
       );
 
-      expect(
-          const IterableTransformer.toSet().transform(
-              ZacTransformValue(<String>['foo']), FakeZacOrigin(), null),
-          isA<Set<Object?>>());
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.toSet().transform(
+                ZacTransformValue(<String>['foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Set<Object?>>());
 
-      expect(
-          () => const IterableTransformer.toSet()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.toSet().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.toString()', () {
+    testWidgets('.toString()', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.toString',
         equals: const IterableTransformer.toString(),
       );
 
-      expect(
-          const IterableTransformer.toString().transform(
-              ZacTransformValue(<String>['foo']), FakeZacOrigin(), null),
-          equals('[foo]'));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.toString().transform(
+                ZacTransformValue(<String>['foo']),
+                getContext(),
+                getZacContext(),
+                null),
+            equals('[foo]'));
 
-      expect(
-          () => const IterableTransformer.toString()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.toString().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.join()', () {
+    testWidgets('.join()', (tester) async {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.join',
@@ -260,15 +319,20 @@ void main() {
             'separator': '##',
           });
 
-      expect(
-          const IterableTransformer.join().transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          equals('foobar'));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.join().transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            equals('foobar'));
 
-      expect(
-          () => const IterableTransformer.join()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.join().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
     testWidgets('.contains()', (tester) async {
@@ -282,22 +346,23 @@ void main() {
         },
       );
 
-      expect(
-          () => IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) async {
+        expect(
+            () =>
+                IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
+                    .transform(ZacTransformValue(55), getContext(),
+                        getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      late ZacContext zacContext;
-      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
-
-      expect(
-          IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
-              .transform(
-                  ZacTransformValue(<String>['foo', 'bar']), zacContext, null),
-          isTrue);
+        expect(
+            IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
+                .transform(ZacTransformValue(<String>['foo', 'bar']),
+                    getContext(), getZacContext(), null),
+            isTrue);
+      });
     });
 
-    test('.elementAt()', () {
+    testWidgets('.elementAt()', (tester) async {
       _expectFromJson<IterableTransformer>(
           fromJson: IterableTransformer.fromJson,
           converter: 'z:1:Transformer:Iterable.elementAt',
@@ -306,18 +371,23 @@ void main() {
             'index': 1,
           });
 
-      expect(
-          const IterableTransformer.elementAt(1).transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          equals('bar'));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.elementAt(1).transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            equals('bar'));
 
-      expect(
-          () => const IterableTransformer.elementAt(1)
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.elementAt(1).transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.skip()', () {
+    testWidgets('.skip()', (tester) async {
       _expectFromJson<IterableTransformer>(
           fromJson: IterableTransformer.fromJson,
           converter: 'z:1:Transformer:Iterable.skip',
@@ -326,18 +396,23 @@ void main() {
             'count': 1,
           });
 
-      expect(
-          const IterableTransformer.skip(1).transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          ['bar']);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.skip(1).transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            ['bar']);
 
-      expect(
-          () => const IterableTransformer.skip(1)
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.skip(1).transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.take()', () {
+    testWidgets('.take()', (tester) async {
       _expectFromJson<IterableTransformer>(
           fromJson: IterableTransformer.fromJson,
           converter: 'z:1:Transformer:Iterable.take',
@@ -346,38 +421,48 @@ void main() {
             'count': 2,
           });
 
-      expect(
-          const IterableTransformer.take(2).transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          ['foo', 'bar']);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IterableTransformer.take(2).transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            ['foo', 'bar']);
 
-      expect(
-          () => const IterableTransformer.take(2)
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IterableTransformer.take(2).transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 
   group('List', () {
-    test('.reversed', () {
+    testWidgets('.reversed', (tester) async {
       _expectFromJson<ListTransformer>(
         fromJson: ListTransformer.fromJson,
         converter: 'z:1:Transformer:List.reversed',
         equals: const ListTransformer.reversed(),
       );
 
-      expect(
-          const ListTransformer.reversed().transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          ['bar', 'foo']);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const ListTransformer.reversed().transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            ['bar', 'foo']);
 
-      expect(
-          () => const ListTransformer.reversed()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const ListTransformer.reversed().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.add', () {
+    testWidgets('.add', (tester) async {
       _expectFromJson<ListTransformer>(
           fromJson: ListTransformer.fromJson,
           converter: 'z:1:Transformer:List.add',
@@ -386,147 +471,177 @@ void main() {
             'value': 'hello',
           });
 
-      expect(
-          ListTransformer.add(ZacBuilder<Object>.fromJson('hello')).transform(
-              ZacTransformValue(<String>['foo', 'bar']), FakeZacOrigin(), null),
-          ['foo', 'bar', 'hello']);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ListTransformer.add(ZacBuilder<Object>.fromJson('hello')).transform(
+                ZacTransformValue(<String>['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            ['foo', 'bar', 'hello']);
 
-      expect(
-          () => ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
+                .transform(
+                    ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 
   group('Map', () {
-    test('.values', () {
+    testWidgets('.values', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.values',
         equals: const MapTransformer.values(),
       );
 
-      expect(
-          const MapTransformer.values().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          [1, 2]);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.values().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            [1, 2]);
 
-      expect(
-          () => const MapTransformer.values()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.values().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.keys', () {
+    testWidgets('.keys', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.keys',
         equals: const MapTransformer.keys(),
       );
 
-      expect(
-          const MapTransformer.keys().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          ['foo', 'bar']);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.keys().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            ['foo', 'bar']);
 
-      expect(
-          () => const MapTransformer.keys()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.keys().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.entries', () {
+    testWidgets('.entries', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.entries',
         equals: const MapTransformer.entries(),
       );
 
-      expect(
-          const MapTransformer.entries().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          isA<Iterable<MapEntry<String, dynamic>>>());
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.entries().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Iterable<MapEntry<String, dynamic>>>());
 
-      expect(
-          () => const MapTransformer.entries()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.entries().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.length', () {
+    testWidgets('.length', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.length',
         equals: const MapTransformer.length(),
       );
 
-      expect(
-          const MapTransformer.length().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          2);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.length().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            2);
 
-      expect(
-          () => const MapTransformer.length()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.length().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isEmpty', () {
+    testWidgets('.isEmpty', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.isEmpty',
         equals: const MapTransformer.isEmpty(),
       );
 
-      expect(
-          const MapTransformer.isEmpty().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          isFalse);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.isEmpty().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            isFalse);
 
-      expect(
-          const MapTransformer.isEmpty().transform(
-              ZacTransformValue(<String, dynamic>{}), FakeZacOrigin(), null),
-          isTrue);
+        expect(
+            const MapTransformer.isEmpty().transform(
+                ZacTransformValue(<String, dynamic>{}),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          () => const MapTransformer.isEmpty()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.isEmpty().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isNotEmpty', () {
+    testWidgets('.isNotEmpty', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.isNotEmpty',
         equals: const MapTransformer.isNotEmpty(),
       );
 
-      expect(
-          const MapTransformer.isNotEmpty().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-              FakeZacOrigin(),
-              null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.isNotEmpty().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          const MapTransformer.isNotEmpty().transform(
-              ZacTransformValue(<String, dynamic>{}), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            const MapTransformer.isNotEmpty().transform(
+                ZacTransformValue(<String, dynamic>{}),
+                getContext(),
+                getZacContext(),
+                null),
+            isFalse);
 
-      expect(
-          () => const MapTransformer.isNotEmpty()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.isNotEmpty().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
     testWidgets('.containsKey', (tester) async {
@@ -537,21 +652,22 @@ void main() {
               MapTransformer.containsKey(ZacBuilder<Object?>.fromJson('foo')),
           props: <String, dynamic>{'key': 'foo'});
 
-      expect(
-          () => MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
+                .transform(
+                    ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      late ZacContext zacContext;
-      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
-
-      expect(
-          MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
-              .transform(
-                  ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-                  zacContext,
-                  null),
-          isTrue);
+        expect(
+            MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
+                .transform(
+                    ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                    getContext(),
+                    getZacContext(),
+                    null),
+            isTrue);
+      });
     });
 
     testWidgets('.containsValue', (tester) async {
@@ -561,24 +677,25 @@ void main() {
           equals: MapTransformer.containsValue(ZacBuilder<Object?>.fromJson(2)),
           props: <String, dynamic>{'value': 2});
 
-      expect(
-          () => MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
+                .transform(
+                    ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      late ZacContext zacContext;
-      await testZacWidget(tester, LeakContext(cb: (o) => zacContext = o));
-
-      expect(
-          MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
-              .transform(
-                  ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
-                  zacContext,
-                  null),
-          isTrue);
+        expect(
+            MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
+                .transform(
+                    ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
+                    getContext(),
+                    getZacContext(),
+                    null),
+            isTrue);
+      });
     });
 
-    test('.map', () {
+    testWidgets('.map', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.map',
@@ -603,117 +720,132 @@ void main() {
         },
       );
 
-      expect(
-          const MapTransformer.mapper().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          isA<Map<Object?, Object?>>());
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const MapTransformer.mapper().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Map<Object?, Object?>>());
 
-      Object? keyExtra;
-      Object? valueExtra;
-      expect(
-          MapTransformer.mapper(
-            keyTransformer: ZacTransformers([
-              _ConcatStr('cool'),
-              CustomTransformer(
-                (transformValue, zacContext, payload) {
-                  keyExtra = transformValue.extra1;
-                  return transformValue.value;
-                },
-              )
-            ]),
-            valueTransformer: ZacTransformers([
-              _ConcatStr('hello'),
-              CustomTransformer(
-                (transformValue, zacContext, payload) {
-                  valueExtra = transformValue.extra1;
-                  return transformValue.value;
-                },
-              ),
-            ]),
-          ).transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          equals(<String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
-      expect(keyExtra, isA<MapEntry<dynamic, dynamic>>());
-      expect(valueExtra, isA<MapEntry<dynamic, dynamic>>());
+        Object? keyExtra;
+        Object? valueExtra;
+        expect(
+            MapTransformer.mapper(
+              keyTransformer: ZacTransformers([
+                _ConcatStr('cool'),
+                CustomTransformer(
+                  (transformValue, context, zacContext, payload) {
+                    keyExtra = transformValue.extra1;
+                    return transformValue.value;
+                  },
+                )
+              ]),
+              valueTransformer: ZacTransformers([
+                _ConcatStr('hello'),
+                CustomTransformer(
+                  (transformValue, context, zacContext, payload) {
+                    valueExtra = transformValue.extra1;
+                    return transformValue.value;
+                  },
+                ),
+              ]),
+            ).transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            equals(
+                <String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
+        expect(keyExtra, isA<MapEntry<dynamic, dynamic>>());
+        expect(valueExtra, isA<MapEntry<dynamic, dynamic>>());
 
-      expect(
-          const MapTransformer.mapper().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
+        expect(
+            const MapTransformer.mapper().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
 
-      expect(
-          () => const MapTransformer.mapper()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const MapTransformer.mapper().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.from() of type <Object, Object>', () {
+    testWidgets('.from() of type <Object, Object>', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map<Object, Object>.from',
         equals: const MapTransformer.fromObjectObject(),
       );
 
-      expect(
-          () => const MapTransformer.fromObjectObject()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => const MapTransformer.fromObjectObject().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      expect(
-          const MapTransformer.fromObjectObject().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          isA<Map<Object, Object>>());
+        expect(
+            const MapTransformer.fromObjectObject().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Map<Object, Object>>());
+      });
     });
 
-    test('.from() of type <String, Object?>', () {
+    testWidgets('.from() of type <String, Object?>', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map<String, Object?>.from',
         equals: const MapTransformer.fromStringNullObject(),
       );
 
-      expect(
-          () => const MapTransformer.fromStringNullObject()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => const MapTransformer.fromStringNullObject().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      expect(
-          const MapTransformer.fromStringNullObject().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          isA<Map<String, Object?>>());
+        expect(
+            const MapTransformer.fromStringNullObject().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Map<String, Object?>>());
+      });
     });
 
-    test('.from() of type <String, Object>', () {
+    testWidgets('.from() of type <String, Object>', (tester) async {
       _expectFromJson<MapTransformer>(
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map<String, Object>.from',
         equals: const MapTransformer.fromStringObject(),
       );
 
-      expect(
-          () => const MapTransformer.fromStringObject()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => const MapTransformer.fromStringObject().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      expect(
-          const MapTransformer.fromStringObject().transform(
-              ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
-              FakeZacOrigin(),
-              null),
-          isA<Map<String, Object>>());
+        expect(
+            const MapTransformer.fromStringObject().transform(
+                ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<Map<String, Object>>());
+      });
     });
 
-    test('get value in map from key', () {
+    testWidgets('get value in map from key', (tester) async {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map[key]',
@@ -722,20 +854,24 @@ void main() {
             'key': 'nameOfKey',
           });
 
-      expect(
-          () => MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey'))
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey'))
+                .transform(
+                    ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      expect(
-          MapTransformer.key(ZacBuilder<String>.fromJson('foo')).transform(
-              ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
-              FakeZacOrigin(),
-              null),
-          isA<FlutterSizedBox>());
+        expect(
+            MapTransformer.key(ZacBuilder<String>.fromJson('foo')).transform(
+                ZacTransformValue(<String, dynamic>{'foo': FlutterSizedBox()}),
+                getContext(),
+                getZacContext(),
+                null),
+            isA<FlutterSizedBox>());
+      });
     });
 
-    test('set value in map for key', () {
+    testWidgets('set value in map for key', (tester) async {
       _expectFromJson<MapTransformer>(
           fromJson: MapTransformer.fromJson,
           converter: 'z:1:Transformer:Map.setValueForKey',
@@ -748,160 +884,181 @@ void main() {
             'value': 'hello',
           });
 
-      expect(
-          () => MapTransformer.setValueForKey(
-                key: ZacBuilder<String>.fromJson('nameOfKey'),
-                value: ZacBuilder<Object>.fromJson('hello'),
-              ).transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            () => MapTransformer.setValueForKey(
+                  key: ZacBuilder<String>.fromJson('nameOfKey'),
+                  value: ZacBuilder<Object>.fromJson('hello'),
+                ).transform(
+                    ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
 
-      expect(
-          MapTransformer.setValueForKey(
-            key: ZacBuilder<String>.fromJson('nameOfKey'),
-            value: ZacBuilder<Object>.fromJson('hello'),
-          ).transform(ZacTransformValue(<String, dynamic>{'a': 'a'}),
-              FakeZacOrigin(), null),
-          <String, dynamic>{'a': 'a', 'nameOfKey': 'hello'});
+        expect(
+            MapTransformer.setValueForKey(
+              key: ZacBuilder<String>.fromJson('nameOfKey'),
+              value: ZacBuilder<Object>.fromJson('hello'),
+            ).transform(ZacTransformValue(<String, dynamic>{'a': 'a'}),
+                getContext(), getZacContext(), null),
+            <String, dynamic>{'a': 'a', 'nameOfKey': 'hello'});
+      });
     });
   });
 
   group('Object', () {
-    test('.isList()', () {
+    testWidgets('.isList()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isList',
         equals: ObjectTransformer.isList(),
       );
 
-      expect(
-          ObjectTransformer.isList()
-              .transform(ZacTransformValue(['foo']), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isList().transform(ZacTransformValue(['foo']),
+                getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isList()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isList().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isMap()', () {
+    testWidgets('.isMap()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isMap',
         equals: ObjectTransformer.isMap(),
       );
 
-      expect(
-          ObjectTransformer.isMap().transform(
-              ZacTransformValue(<String, dynamic>{}), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isMap().transform(
+                ZacTransformValue(<String, dynamic>{}),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isMap()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isMap().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isBool()', () {
+    testWidgets('.isBool()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isBool',
         equals: ObjectTransformer.isBool(),
       );
 
-      expect(
-          ObjectTransformer.isBool()
-              .transform(ZacTransformValue(true), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isBool().transform(
+                ZacTransformValue(true), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isBool()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isBool().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isString()', () {
+    testWidgets('.isString()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isString',
         equals: ObjectTransformer.isString(),
       );
 
-      expect(
-          ObjectTransformer.isString()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isString().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isString()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isString().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isDouble()', () {
+    testWidgets('.isDouble()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isDouble',
         equals: ObjectTransformer.isDouble(),
       );
 
-      expect(
-          ObjectTransformer.isDouble()
-              .transform(ZacTransformValue(5.6), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isDouble().transform(
+                ZacTransformValue(5.6), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isDouble()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isDouble().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            isFalse);
 
-      expect(
-          ObjectTransformer.isDouble()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isDouble().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isInt()', () {
+    testWidgets('.isInt()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isInt',
         equals: ObjectTransformer.isInt(),
       );
 
-      expect(
-          ObjectTransformer.isInt()
-              .transform(ZacTransformValue(5.6), FakeZacOrigin(), null),
-          isFalse);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isInt().transform(
+                ZacTransformValue(5.6), getContext(), getZacContext(), null),
+            isFalse);
 
-      expect(
-          ObjectTransformer.isInt()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          isTrue);
+        expect(
+            ObjectTransformer.isInt().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.isInt()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.isInt().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.isNull()', () {
+    testWidgets('.isNull()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.isNull',
         equals: ObjectTransformer.isNull(),
       );
-      expect(
-          ObjectTransformer.isNull()
-              .transform(ZacTransformValue(null), FakeZacOrigin(), null),
-          isTrue);
 
-      expect(
-          ObjectTransformer.isNull()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isFalse);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isNull().transform(
+                ZacTransformValue(null), getContext(), getZacContext(), null),
+            isTrue);
+
+        expect(
+            ObjectTransformer.isNull().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.equals()', () {
+    testWidgets('.equals()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.equals',
@@ -911,64 +1068,72 @@ void main() {
         },
       );
 
-      expect(
-          ObjectTransformer.equals(other: 5)
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.equals(other: 5).transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          ObjectTransformer.equals(other: 5)
-              .transform(ZacTransformValue('foo'), FakeZacOrigin(), null),
-          isFalse);
+        expect(
+            ObjectTransformer.equals(other: 5).transform(
+                ZacTransformValue('foo'), getContext(), getZacContext(), null),
+            isFalse);
+      });
     });
 
-    test('.hashCode', () {
+    testWidgets('.hashCode', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.hashCode',
         equals: ObjectTransformer.hashCode(),
       );
 
-      expect(
-          ObjectTransformer.hashCode()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          5.hashCode);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.hashCode().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            5.hashCode);
+      });
     });
 
-    test('.runtimeType', () {
+    testWidgets('.runtimeType', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.runtimeType',
         equals: ObjectTransformer.runtimeType(),
       );
 
-      expect(
-          ObjectTransformer.runtimeType()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          5.runtimeType);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.runtimeType().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            5.runtimeType);
 
-      expect(
-          ObjectTransformer.runtimeType()
-              .transform(ZacTransformValue('foo'), FakeZacOrigin(), null),
-          'foo'.runtimeType);
+        expect(
+            ObjectTransformer.runtimeType().transform(
+                ZacTransformValue('foo'), getContext(), getZacContext(), null),
+            'foo'.runtimeType);
+      });
     });
 
-    test('.toString()', () {
+    testWidgets('.toString()', (tester) async {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.toString',
         equals: ObjectTransformer.toString(),
       );
 
-      expect(
-          ObjectTransformer.toString()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          '5');
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.toString().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            '5');
 
-      expect(
-          ObjectTransformer.toString()
-              .transform(ZacTransformValue('foo'), FakeZacOrigin(), null),
-          'foo');
+        expect(
+            ObjectTransformer.toString().transform(
+                ZacTransformValue('foo'), getContext(), getZacContext(), null),
+            'foo');
+      });
     });
 
     group('.equalsSharedValue()', () {
@@ -988,340 +1153,425 @@ void main() {
       });
 
       testWidgets('.transform()', (tester) async {
-        late ZacContext zacContext;
-        await testZacWidget(
+        await testWithContextWithChild(
           tester,
-          SharedValueProviderBuilder.provideInt(
+          (child) => SharedValueProviderBuilder.provideInt(
             value: 5,
             family: 'shared',
             child: SharedValueProviderBuilder.provideString(
               value: 'foo',
               family: 'shared2',
-              child: LeakContext(
-                cb: (o) => zacContext = o,
-              ),
+              child: child,
             ),
           ),
+          (getContext, getZacContext) {
+            expect(
+                ObjectTransformer.equalsSharedValue(
+                        value: ConsumeSharedValue<Object>(family: 'shared'))
+                    .transform(ZacTransformValue(5), getContext(),
+                        getZacContext(), null),
+                isTrue);
+
+            expect(
+                ObjectTransformer.equalsSharedValue(
+                        value: ConsumeSharedValue<Object>(family: 'shared2'))
+                    .transform(ZacTransformValue(5), getContext(),
+                        getZacContext(), null),
+                isFalse);
+          },
         );
-
-        expect(
-            ObjectTransformer.equalsSharedValue(
-                    value: ConsumeSharedValue<Object>(family: 'shared'))
-                .transform(ZacTransformValue(5), zacContext, null),
-            isTrue);
-
-        expect(
-            ObjectTransformer.equalsSharedValue(
-                    value: ConsumeSharedValue<Object>(family: 'shared2'))
-                .transform(ZacTransformValue(5), zacContext, null),
-            isFalse);
       });
     });
   });
 
   group('Num', () {
-    test('.toDouble()', () {
+    testWidgets('.toDouble()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.toDouble',
         equals: const NumTransformer.toDouble(),
       );
 
-      expect(
-          const NumTransformer.toDouble()
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          isA<double>().having((p0) => p0, 'is double', 5.0));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.toDouble().transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            isA<double>().having((p0) => p0, 'is double', 5.0));
 
-      expect(
-          () => const NumTransformer.toDouble()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.toDouble().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.toInt()', () {
+    testWidgets('.toInt()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.toInt',
         equals: const NumTransformer.toInt(),
       );
 
-      expect(
-          const NumTransformer.toInt()
-              .transform(ZacTransformValue(5.1), FakeZacOrigin(), null),
-          isA<int>().having((p0) => p0, 'is int', 5));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.toInt().transform(
+                ZacTransformValue(5.1), getContext(), getZacContext(), null),
+            isA<int>().having((p0) => p0, 'is int', 5));
 
-      expect(
-          () => const NumTransformer.toInt()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.toInt().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.abs()', () {
+    testWidgets('.abs()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.abs',
         equals: const NumTransformer.abs(),
       );
 
-      expect(
-          const NumTransformer.abs()
-              .transform(ZacTransformValue(-2.5), FakeZacOrigin(), null),
-          2.5);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.abs().transform(
+                ZacTransformValue(-2.5), getContext(), getZacContext(), null),
+            2.5);
 
-      expect(
-          () => const NumTransformer.abs()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.abs().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.ceil()', () {
+    testWidgets('.ceil()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.ceil',
         equals: const NumTransformer.ceil(),
       );
 
-      expect(
-          const NumTransformer.ceil()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          3);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.ceil().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            3);
 
-      expect(
-          () => const NumTransformer.ceil()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.ceil().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.ceilToDouble()', () {
+    testWidgets('.ceilToDouble()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.ceilToDouble',
         equals: const NumTransformer.ceilToDouble(),
       );
 
-      expect(
-          const NumTransformer.ceilToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          isA<double>().having((p0) => p0, 'double', 3.0));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.ceilToDouble().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            isA<double>().having((p0) => p0, 'double', 3.0));
 
-      expect(
-          () => const NumTransformer.ceilToDouble()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.ceilToDouble().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.floor()', () {
+    testWidgets('.floor()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.floor',
         equals: const NumTransformer.floor(),
       );
 
-      expect(
-          const NumTransformer.floor()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          2);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.floor().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            2);
 
-      expect(
-          () => const NumTransformer.floor()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.floor().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.floorToDouble()', () {
+    testWidgets('.floorToDouble()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.floorToDouble',
         equals: const NumTransformer.floorToDouble(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.floorToDouble().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            isA<double>().having((p0) => p0, 'double', 2.0));
 
-      expect(
-          const NumTransformer.floorToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          isA<double>().having((p0) => p0, 'double', 2.0));
-
-      expect(
-          () => const NumTransformer.floorToDouble()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.floorToDouble().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.round()', () {
+    testWidgets('.round()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.round',
         equals: const NumTransformer.round(),
       );
 
-      expect(
-          const NumTransformer.round()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          isA<int>().having((p0) => p0, 'int', 3));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.round().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            isA<int>().having((p0) => p0, 'int', 3));
 
-      expect(
-          () => const NumTransformer.round()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.round().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.roundToDouble()', () {
+    testWidgets('.roundToDouble()', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.roundToDouble',
         equals: const NumTransformer.roundToDouble(),
       );
 
-      expect(
-          const NumTransformer.roundToDouble()
-              .transform(ZacTransformValue(2.5), FakeZacOrigin(), null),
-          isA<double>().having((p0) => p0, 'int', 3.0));
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.roundToDouble().transform(
+                ZacTransformValue(2.5), getContext(), getZacContext(), null),
+            isA<double>().having((p0) => p0, 'int', 3.0));
 
-      expect(
-          () => const NumTransformer.roundToDouble()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.roundToDouble().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isFinite', () {
+    testWidgets('.isFinite', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.isFinite',
         equals: const NumTransformer.isFinite(),
       );
 
-      expect(
-          const NumTransformer.isFinite()
-              .transform(ZacTransformValue(1), FakeZacOrigin(), null),
-          isTrue);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.isFinite().transform(
+                ZacTransformValue(1), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          () => const NumTransformer.roundToDouble()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.roundToDouble().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isInfinite', () {
+    testWidgets('.isInfinite', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.isInfinite',
         equals: const NumTransformer.isInfinite(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.isInfinite().transform(
+                ZacTransformValue(double.infinity),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          const NumTransformer.isInfinite().transform(
-              ZacTransformValue(double.infinity), FakeZacOrigin(), null),
-          isTrue);
-
-      expect(
-          () => const NumTransformer.isInfinite()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.isInfinite().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isNan', () {
+    testWidgets('.isNan', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.isNan',
         equals: const NumTransformer.isNan(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.isNan().transform(
+                ZacTransformValue(double.nan),
+                getContext(),
+                getZacContext(),
+                null),
+            isTrue);
 
-      expect(
-          const NumTransformer.isNan()
-              .transform(ZacTransformValue(double.nan), FakeZacOrigin(), null),
-          isTrue);
-
-      expect(
-          () => const NumTransformer.isNan()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.isNan().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isNegative', () {
+    testWidgets('.isNegative', (tester) async {
       _expectFromJson<NumTransformer>(
         fromJson: NumTransformer.fromJson,
         converter: 'z:1:Transformer:num.isNegative',
         equals: const NumTransformer.isNegative(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const NumTransformer.isNegative().transform(
+                ZacTransformValue(-1.0), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          const NumTransformer.isNegative()
-              .transform(ZacTransformValue(-1.0), FakeZacOrigin(), null),
-          isTrue);
-
-      expect(
-          () => const NumTransformer.isNegative()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const NumTransformer.isNegative().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 
   group('Int', () {
-    test('.parse()', () {
+    testWidgets('.parse()', (tester) async {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.parse',
         equals: const IntTransformer.parse(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IntTransformer.parse().transform(
+                ZacTransformValue('5'), getContext(), getZacContext(), null),
+            5);
 
-      expect(
-          const IntTransformer.parse()
-              .transform(ZacTransformValue('5'), FakeZacOrigin(), null),
-          5);
+        expect(
+            () => const IntTransformer.parse().transform(
+                ZacTransformValue('no no no'),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsFormatException);
 
-      expect(
-          () => const IntTransformer.parse()
-              .transform(ZacTransformValue('no no no'), FakeZacOrigin(), null),
-          throwsFormatException);
-
-      expect(
-          () => const IntTransformer.parse()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IntTransformer.parse().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.tryParse()', () {
+    testWidgets('.tryParse()', (tester) async {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.tryParse',
         equals: const IntTransformer.tryParse(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const IntTransformer.tryParse().transform(
+                ZacTransformValue('5'), getContext(), getZacContext(), null),
+            5);
 
-      expect(
-          const IntTransformer.tryParse()
-              .transform(ZacTransformValue('5'), FakeZacOrigin(), null),
-          5);
+        expect(
+            const IntTransformer.tryParse().transform(
+                ZacTransformValue('no no no'),
+                getContext(),
+                getZacContext(),
+                null),
+            isNull);
 
-      expect(
-          const IntTransformer.tryParse()
-              .transform(ZacTransformValue('no no no'), FakeZacOrigin(), null),
-          isNull);
-
-      expect(
-          () => const IntTransformer.tryParse()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const IntTransformer.tryParse().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.operatorPlusPlus()', () {
+    testWidgets('.operatorPlusPlus()', (tester) async {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.incr',
         equals: IntTransformer.incr(ZacValue<int>(1)),
         props: <String, dynamic>{'by': 1},
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            IntTransformer.incr(ZacValue<int>(1)).transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            6);
 
-      expect(
-          IntTransformer.incr(ZacValue<int>(1))
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          6);
-
-      expect(
-          () => IntTransformer.incr(ZacValue<int>(1))
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<StateError>()));
+        expect(
+            () => IntTransformer.incr(ZacValue<int>(1)).transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<StateError>()));
+      });
     });
 
-    test('.operatorMinusMinus()', () {
+    testWidgets('.operatorMinusMinus()', (tester) async {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.decr',
@@ -1329,38 +1579,47 @@ void main() {
         props: <String, dynamic>{'by': 1},
       );
 
-      expect(
-          IntTransformer.decr(ZacValue<int>(1))
-              .transform(ZacTransformValue(5), FakeZacOrigin(), null),
-          4);
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            IntTransformer.decr(ZacValue<int>(1)).transform(
+                ZacTransformValue(5), getContext(), getZacContext(), null),
+            4);
 
-      expect(
-          () => IntTransformer.decr(ZacValue<int>(1))
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<StateError>()));
+        expect(
+            () => IntTransformer.decr(ZacValue<int>(1)).transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<StateError>()));
+      });
     });
   });
 
   group('String', () {
-    test('.length', () {
+    testWidgets('.length', (tester) async {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.length',
         equals: const StringTransformer.length(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const StringTransformer.length().transform(
+                ZacTransformValue('foo'), getContext(), getZacContext(), null),
+            3);
 
-      expect(
-          const StringTransformer.length()
-              .transform(ZacTransformValue('foo'), FakeZacOrigin(), null),
-          3);
-
-      expect(
-          () => const StringTransformer.length()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const StringTransformer.length().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.split()', () {
+    testWidgets('.split()', (tester) async {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.split',
@@ -1370,56 +1629,67 @@ void main() {
           'pattern': ',',
         },
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            StringTransformer.split(pattern: ZacBuilder<String>.fromJson(','))
+                .transform(ZacTransformValue('a,b'), getContext(),
+                    getZacContext(), null),
+            ['a', 'b']);
 
-      expect(
-          StringTransformer.split(pattern: ZacBuilder<String>.fromJson(','))
-              .transform(ZacTransformValue('a,b'), FakeZacOrigin(), null),
-          ['a', 'b']);
-
-      expect(
-          () => StringTransformer.split(
-                  pattern: ZacBuilder<String>.fromJson(','))
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => StringTransformer.split(
+                    pattern: ZacBuilder<String>.fromJson(','))
+                .transform(ZacTransformValue(Object()), getContext(),
+                    getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isEmpty', () {
+    testWidgets('.isEmpty', (tester) async {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.isEmpty',
         equals: const StringTransformer.isEmpty(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const StringTransformer.isEmpty().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isTrue);
 
-      expect(
-          const StringTransformer.isEmpty()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isTrue);
-
-      expect(
-          () => const StringTransformer.isEmpty()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const StringTransformer.isEmpty().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.isNotEmpty', () {
+    testWidgets('.isNotEmpty', (tester) async {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.isNotEmpty',
         equals: const StringTransformer.isNotEmpty(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const StringTransformer.isNotEmpty().transform(
+                ZacTransformValue(''), getContext(), getZacContext(), null),
+            isFalse);
 
-      expect(
-          const StringTransformer.isNotEmpty()
-              .transform(ZacTransformValue(''), FakeZacOrigin(), null),
-          isFalse);
-
-      expect(
-          () => const StringTransformer.isNotEmpty()
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const StringTransformer.isNotEmpty().transform(
+                ZacTransformValue(Object()),
+                getContext(),
+                getZacContext(),
+                null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
 
-    test('.replaceAll()', () {
+    testWidgets('.replaceAll()', (tester) async {
       _expectFromJson<StringTransformer>(
         fromJson: StringTransformer.fromJson,
         converter: 'z:1:Transformer:String.replaceAll',
@@ -1427,71 +1697,84 @@ void main() {
             ZacBuilder<String>.fromJson('yy')),
         props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
+                    ZacBuilder<String>.fromJson('yy'))
+                .transform(ZacTransformValue('fooxx'), getContext(),
+                    getZacContext(), null),
+            'fooyy');
 
-      expect(
-          StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
-                  ZacBuilder<String>.fromJson('yy'))
-              .transform(ZacTransformValue('fooxx'), FakeZacOrigin(), null),
-          'fooyy');
-
-      expect(
-          () => StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
-                  ZacBuilder<String>.fromJson('yy'))
-              .transform(ZacTransformValue(Object()), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => StringTransformer.replaceAll(
+                    ZacBuilder<String>.fromJson('xx'),
+                    ZacBuilder<String>.fromJson('yy'))
+                .transform(ZacTransformValue(Object()), getContext(),
+                    getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 
   group('Json', () {
-    test('.encode()', () {
+    testWidgets('.encode()', (tester) async {
       _expectFromJson<JsonTransformer>(
         fromJson: JsonTransformer.fromJson,
         converter: 'z:1:Transformer:Json.encode',
         equals: const JsonTransformer.encode(),
       );
-
-      expect(
-          const JsonTransformer.encode().transform(
-              ZacTransformValue(['foo', 'bar']), FakeZacOrigin(), null),
-          '["foo","bar"]');
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const JsonTransformer.encode().transform(
+                ZacTransformValue(['foo', 'bar']),
+                getContext(),
+                getZacContext(),
+                null),
+            '["foo","bar"]');
+      });
     });
 
-    test('.decode()', () {
+    testWidgets('.decode()', (tester) async {
       _expectFromJson<JsonTransformer>(
         fromJson: JsonTransformer.fromJson,
         converter: 'z:1:Transformer:Json.decode',
         equals: const JsonTransformer.decode(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const JsonTransformer.decode().transform(
+                ZacTransformValue('["foo", "bar"]'),
+                getContext(),
+                getZacContext(),
+                null),
+            ['foo', 'bar']);
 
-      expect(
-          const JsonTransformer.decode().transform(
-              ZacTransformValue('["foo", "bar"]'), FakeZacOrigin(), null),
-          ['foo', 'bar']);
-
-      expect(
-          () => const JsonTransformer.decode()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const JsonTransformer.decode().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 
   group('Bool', () {
-    test('.negate()', () {
+    testWidgets('.negate()', (tester) async {
       _expectFromJson<BoolTransformer>(
         fromJson: BoolTransformer.fromJson,
         converter: 'z:1:Transformer:Bool.negate',
         equals: const BoolTransformer.negate(),
       );
+      await testWithContext(tester, (getContext, getZacContext) {
+        expect(
+            const BoolTransformer.negate().transform(
+                ZacTransformValue(false), getContext(), getZacContext(), null),
+            true);
 
-      expect(
-          const BoolTransformer.negate()
-              .transform(ZacTransformValue(false), FakeZacOrigin(), null),
-          true);
-
-      expect(
-          () => const JsonTransformer.decode()
-              .transform(ZacTransformValue(55), FakeZacOrigin(), null),
-          throwsA(isA<ZacTransformError>()));
+        expect(
+            () => const JsonTransformer.decode().transform(
+                ZacTransformValue(55), getContext(), getZacContext(), null),
+            throwsA(isA<ZacTransformError>()));
+      });
     });
   });
 }
@@ -1502,8 +1785,8 @@ class _ConcatStr implements ZacTransformer {
   _ConcatStr(this.str);
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     return (transformValue.value as String) + str;
   }
 }

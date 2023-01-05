@@ -1,6 +1,6 @@
+import 'package:zac/src/base.dart';
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/update_widget.dart';
-import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -10,102 +10,76 @@ import '../helper.dart';
 
 void main() {
   group('UpdateContext', () {
-    testWidgets('convert', (tester) async {
-      await testMap(tester, <String, dynamic>{
-        'builder': 'z:1:UpdateContext',
-        'key': KeysModel.getValueKey('FINDME'),
-        'child': ChildModel.getSizedBox(key: 'child'),
-      });
-
-      final findMe = find.byKey(const ValueKey('FINDME'));
-      expect(findMe, findsOneWidget);
-      expect(find.byKey(const ValueKey('child')), findsOneWidget);
-    });
-
-    testWidgets('can be updated in tree', (tester) async {
-      late ZacContext zacContext1;
-      late ZacContext zacContext2;
-      await testZacWidget(
-        tester,
-        ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
-            },
-            child: LeakContext(
-              cb: (o) {
-                zacContext2 = o;
-              },
-            ),
-          ),
-        ),
-      );
-
-      expect(zacContext1, equals(zacContext2));
-
-      await testZacWidget(
-        tester,
-        ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
-            },
-            child: ZacUpdateContextBuilder(
-              child: LeakContext(
-                cb: (o) {
-                  zacContext2 = o;
-                },
-              ),
-            ),
-          ),
-        ),
-      );
-
-      expect(zacContext1, isNot(equals(zacContext2)));
-    });
     testWidgets('Unmount Callback', (tester) async {
-      final cb1 = MockUnmountCb();
-      final cb2 = MockUnmountCb();
-      final cb3 = MockUnmountCb();
-      final cb4 = MockUnmountCb();
-
-      late ZacContext zacContext1;
-      late ZacContext zacContext2;
-
-      await testZacWidget(
+      await testWithContextWithChild(
         tester,
-        ZacUpdateContextBuilder(
-          child: LeakContext(
-            cb: (o) {
-              zacContext1 = o;
+        (child) => FlutterBuilder(child: child),
+        (getContext, getZacContext) async {
+          await testWithContextWithChild(
+            tester,
+            (child) => FlutterBuilder(child: child),
+            (getContext2, getZacContext2) async {
+              final cb1 = MockUnmountCb();
+              final cb2 = MockUnmountCb();
+              final cb3 = MockUnmountCb();
+              final cb4 = MockUnmountCb();
+
+              getZacContext().onUnmount(cb1);
+              getZacContext().onUnmount(cb2);
+
+              getZacContext2().onUnmount(cb3);
+              getZacContext2().onUnmount(cb4);
+
+              await testZacWidget(
+                tester,
+                FlutterSizedBox(),
+              );
+
+              verifyInOrder([cb4(), cb3(), cb2(), cb1()]);
+              verifyNoMoreInteractions(cb1);
+              verifyNoMoreInteractions(cb2);
+              verifyNoMoreInteractions(cb3);
+              verifyNoMoreInteractions(cb4);
             },
-            child: ZacUpdateContextBuilder(
-              child: LeakContext(
-                cb: (o) {
-                  zacContext2 = o;
-                },
-                child: FlutterSizedBox(),
-              ),
-            ),
-          ),
-        ),
+          );
+        },
       );
-      zacContext1.onUnmount(cb1);
-      zacContext1.onUnmount(cb2);
+    });
 
-      zacContext2.onUnmount(cb3);
-      zacContext2.onUnmount(cb4);
-
-      await testZacWidget(
+    testWidgets('BuildContext.isMounted', (tester) async {
+      await testWithContextWithChild(
         tester,
-        FlutterSizedBox(),
+        (child) => child,
+        (getContext, getZacContext) async {
+          expect(getContext().isMounted, isTrue);
+          await tester.pumpWidget(const SizedBox());
+          expect(getContext().isMounted, isFalse);
+        },
+      );
+    });
+
+    testWidgets('BuildContext.widgetRef', (tester) async {
+      await testWithContextWithChild(
+        tester,
+        (child) => child,
+        (getContext, getZacContext) async {
+          expect(() => getContext().widgetRef, returnsNormally);
+        },
       );
 
-      verifyInOrder([cb4(), cb3(), cb2(), cb1()]);
-      verifyNoMoreInteractions(cb1);
-      verifyNoMoreInteractions(cb2);
-      verifyNoMoreInteractions(cb3);
-      verifyNoMoreInteractions(cb4);
+      // ignore: no_leading_underscores_for_local_identifiers
+      late BuildContext _context;
+      await tester.pumpWidget(Builder(
+        builder: (context) {
+          _context = context;
+          return const SizedBox();
+        },
+      ));
+
+      expect(
+          () => _context.widgetRef,
+          throwsA(isA<StateError>().having((p0) => p0.message, 'error message',
+              contains('It was not possible to call context.widgetRef'))));
     });
   });
 }
