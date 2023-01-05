@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 
 import '../helper.dart';
@@ -12,19 +11,17 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      late ZacContext zacContext;
-      await tester.pumpWidget(
-        ZacWidget(
-          data: LeakContext(
-            cb: (z) => zacContext = z,
-          ),
-        ),
+      await testWithContext(
+        tester,
+        (getContext, getZacContext) {
+          expect(
+              FlutterValueKey.fromJson(<String, dynamic>{
+                'builder': 'f:1:ValueKey',
+                'value': 'val'
+              }).build(getContext(), getZacContext()),
+              const ValueKey<String>('val'));
+        },
       );
-      expect(
-          FlutterValueKey.fromJson(
-                  <String, dynamic>{'builder': 'f:1:ValueKey', 'value': 'val'})
-              .build(zacContext),
-          const ValueKey<String>('val'));
     });
   });
 
@@ -35,24 +32,19 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      late ZacContext zacContext;
-      await tester.pumpWidget(
-        ProviderScope(
-          child: ZacWidget(
-            data: FlutterGlobalKeyNavigatorStateProvider(
-              family: 'shared',
-              child: LeakContext(
-                cb: (z) => zacContext = z,
-              ),
-            ),
-          ),
+      await testWithContextWithChild(
+        tester,
+        (child) => FlutterGlobalKeyNavigatorStateProvider(
+          family: 'shared',
+          child: child,
         ),
+        (getContext, getZacContext) {
+          expect(
+              ConsumeSharedValue<GlobalKey<NavigatorState>>(family: 'shared')
+                  .build(getContext(), getZacContext()),
+              isA<GlobalKey<NavigatorState>>());
+        },
       );
-
-      expect(
-          ConsumeSharedValue<GlobalKey<NavigatorState>>(family: 'shared')
-              .build(zacContext),
-          isA<GlobalKey<NavigatorState>>());
     });
   });
 
@@ -63,25 +55,20 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      late ZacContext zacContext;
-      await tester.pumpWidget(
-        ProviderScope(
-          child: ZacWidget(
-            data: FlutterGlobalKeyScaffoldMessengerStateProvider(
-              family: 'shared',
-              child: LeakContext(
-                cb: (z) => zacContext = z,
-              ),
-            ),
-          ),
+      await testWithContextWithChild(
+        tester,
+        (child) => FlutterGlobalKeyScaffoldMessengerStateProvider(
+          family: 'shared',
+          child: child,
         ),
+        (getContext, getZacContext) {
+          expect(
+              ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>(
+                      family: 'shared')
+                  .build(getContext(), getZacContext()),
+              isA<GlobalKey<ScaffoldMessengerState>>());
+        },
       );
-
-      expect(
-          ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>(
-                  family: 'shared')
-              .build(zacContext),
-          isA<GlobalKey<ScaffoldMessengerState>>());
     });
   });
 }

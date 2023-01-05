@@ -26,14 +26,16 @@ class FlutterScrollViewKeyboardDismissBehavior
   factory FlutterScrollViewKeyboardDismissBehavior.onDrag() =
       _FlutterScrollViewKeyboardDismissBehaviorOnDrag;
 
-  ScrollViewKeyboardDismissBehavior _build(ZacContext zacContext) {
+  ScrollViewKeyboardDismissBehavior _build(
+      BuildContext context, ZacContext zacContext) {
     return map(
         manual: (_) => ScrollViewKeyboardDismissBehavior.manual,
         onDrag: (_) => ScrollViewKeyboardDismissBehavior.onDrag);
   }
 
   @override
-  ScrollViewKeyboardDismissBehavior build(ZacContext zacContext) {
-    return _build(zacContext);
+  ScrollViewKeyboardDismissBehavior build(
+      BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

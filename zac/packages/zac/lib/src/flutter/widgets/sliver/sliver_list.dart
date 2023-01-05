@@ -25,15 +25,15 @@ class FlutterSliverList
     required FlutterSliverChildDelegate delegate,
   }) = _FlutterSliverList;
 
-  SliverList _buildWidget(ZacContext zacContext) {
+  SliverList _buildWidget(BuildContext context, ZacContext zacContext) {
     return SliverList(
-      key: key?.build(zacContext),
-      delegate: delegate.build(zacContext),
+      key: key?.build(context, zacContext),
+      delegate: delegate.build(context, zacContext),
     );
   }
 
   @override
-  SliverList build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SliverList build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

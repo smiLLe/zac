@@ -10,7 +10,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/registry.dart';
 
 part 'widget.freezed.dart';
 part 'widget.g.dart';
@@ -38,23 +37,23 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
     ZacBuilder<Widget?>? errorChild,
   }) = _ZacWidgetBuilderIsolate;
 
-  Widget _buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.build(context, zacContext),
       ),
       isolate: (obj) => ZacWidgetIsolated(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.build(context, zacContext),
         errorChild: obj.errorChild,
       ),
     );
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -163,8 +162,8 @@ class ZacWidgetIsolated extends StatelessWidget {
               builder: obj.value.build,
             ),
             error: (obj) {
-              return ZacUpdateContext(builder: (zacContext) {
-                Widget? error = errorChild?.build(zacContext);
+              return ZacUpdateContext(builder: (context, zacContext) {
+                Widget? error = errorChild?.build(context, zacContext);
                 assert(() {
                   if (null != errorChild) return true;
                   error = FlutterContainer(
@@ -185,7 +184,7 @@ class ZacWidgetIsolated extends StatelessWidget {
                       ZacBuilder<String>.fromJson(
                           'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),
                     ),
-                  ).build(zacContext);
+                  ).build(context, zacContext);
                   return true;
                 }(), '');
                 return error ?? const SizedBox.shrink();

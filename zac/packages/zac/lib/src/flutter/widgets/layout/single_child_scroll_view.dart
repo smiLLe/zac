@@ -34,24 +34,27 @@ class FlutterSingleChildScrollView
     ZacBuilder<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,
   }) = _FlutterSingleChildScrollView;
 
-  SingleChildScrollView _buildWidget(ZacContext zacContext) {
+  SingleChildScrollView _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return SingleChildScrollView(
-      key: key?.build(zacContext),
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.build(zacContext) ?? false,
-      padding: padding?.build(zacContext),
-      primary: primary?.build(zacContext),
-      controller: controller?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.build(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
-          ScrollViewKeyboardDismissBehavior.manual,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      scrollDirection:
+          scrollDirection?.build(context, zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(context, zacContext) ?? false,
+      padding: padding?.build(context, zacContext),
+      primary: primary?.build(context, zacContext),
+      controller: controller?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.build(context, zacContext),
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  SingleChildScrollView build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SingleChildScrollView build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

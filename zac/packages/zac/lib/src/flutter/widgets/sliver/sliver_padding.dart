@@ -26,16 +26,16 @@ class FlutterSliverPadding
     required ZacBuilder<EdgeInsetsGeometry> padding,
   }) = _FlutterSliverPadding;
 
-  SliverPadding _buildWidget(ZacContext zacContext) {
+  SliverPadding _buildWidget(BuildContext context, ZacContext zacContext) {
     return SliverPadding(
-      key: key?.build(zacContext),
-      sliver: sliver?.build(zacContext),
-      padding: padding.build(zacContext),
+      key: key?.build(context, zacContext),
+      sliver: sliver?.build(context, zacContext),
+      padding: padding.build(context, zacContext),
     );
   }
 
   @override
-  SliverPadding build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SliverPadding build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

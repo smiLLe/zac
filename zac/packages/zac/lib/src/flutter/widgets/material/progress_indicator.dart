@@ -46,31 +46,31 @@ class FlutterProgressIndicator
     ZacBuilder<String?>? semanticsValue,
   }) = _FlutterProgressIndicatorCircular;
 
-  ProgressIndicator _buildWidget(ZacContext zacContext) {
+  ProgressIndicator _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       linear: (value) => LinearProgressIndicator(
-        key: value.key?.build(zacContext),
-        value: value.value?.build(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
-        color: value.color?.build(zacContext),
-        minHeight: value.minHeight?.build(zacContext),
-        semanticsLabel: value.semanticsLabel?.build(zacContext),
-        semanticsValue: value.semanticsValue?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        value: value.value?.build(context, zacContext),
+        backgroundColor: value.backgroundColor?.build(context, zacContext),
+        color: value.color?.build(context, zacContext),
+        minHeight: value.minHeight?.build(context, zacContext),
+        semanticsLabel: value.semanticsLabel?.build(context, zacContext),
+        semanticsValue: value.semanticsValue?.build(context, zacContext),
       ),
       circular: (value) => CircularProgressIndicator(
-        key: value.key?.build(zacContext),
-        value: value.value?.build(zacContext),
-        backgroundColor: value.backgroundColor?.build(zacContext),
-        color: value.color?.build(zacContext),
-        strokeWidth: value.strokeWidth?.build(zacContext) ?? 4.0,
-        semanticsLabel: value.semanticsLabel?.build(zacContext),
-        semanticsValue: value.semanticsValue?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        value: value.value?.build(context, zacContext),
+        backgroundColor: value.backgroundColor?.build(context, zacContext),
+        color: value.color?.build(context, zacContext),
+        strokeWidth: value.strokeWidth?.build(context, zacContext) ?? 4.0,
+        semanticsLabel: value.semanticsLabel?.build(context, zacContext),
+        semanticsValue: value.semanticsValue?.build(context, zacContext),
       ),
     );
   }
 
   @override
-  ProgressIndicator build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ProgressIndicator build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

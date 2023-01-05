@@ -25,16 +25,16 @@ class FlutterRotatedBox
     required int quarterTurns,
   }) = _FlutterRotatedBox;
 
-  RotatedBox _buildWidget(ZacContext zacContext) {
+  RotatedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return RotatedBox(
-      key: key?.build(zacContext),
+      key: key?.build(context, zacContext),
       quarterTurns: quarterTurns,
-      child: child?.build(zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  RotatedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  RotatedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

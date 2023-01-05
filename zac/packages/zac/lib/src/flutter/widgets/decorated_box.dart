@@ -26,17 +26,18 @@ class FlutterDecoratedBox
     ZacBuilder<DecorationPosition?>? position,
   }) = _FlutterDecoratedBox;
 
-  DecoratedBox _buildWidget(ZacContext zacContext) {
+  DecoratedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return DecoratedBox(
-      key: key?.build(zacContext),
-      decoration: decoration.build(zacContext),
-      position: position?.build(zacContext) ?? DecorationPosition.background,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      decoration: decoration.build(context, zacContext),
+      position:
+          position?.build(context, zacContext) ?? DecorationPosition.background,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  DecoratedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  DecoratedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

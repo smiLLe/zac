@@ -24,7 +24,8 @@ abstract class ZacAction {
     );
   }
 
-  void execute(ZacActionPayload payload, ZacContext zacContext);
+  void execute(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
 }
 
 @freezed
@@ -61,29 +62,31 @@ class ZacActions with _$ZacActions implements ZacBuilder<List<ZacAction>> {
   const factory ZacActions(List<ZacAction> actions) = _ZacActions;
 
   @override
-  List<ZacAction> build(ZacContext zacContext) {
+  List<ZacAction> build(BuildContext context, ZacContext zacContext) {
     return actions;
   }
 }
 
 extension HandleActions on List<ZacAction> {
-  void execute(ZacActionPayload payload, ZacContext zacContext) async {
+  void execute(ZacActionPayload payload, BuildContext context,
+      ZacContext zacContext) async {
     if (!zacContext.isMounted()) return;
     for (var action in this) {
       if (!zacContext.isMounted()) {
         break;
       }
-      action.execute(payload, zacContext);
+      action.execute(payload, context, zacContext);
     }
   }
 
-  void Function() createCb(ZacContext zacContext) {
-    return () => execute(const ZacActionPayload(), zacContext);
+  void Function() createCb(BuildContext context, ZacContext zacContext) {
+    return () => execute(const ZacActionPayload(), context, zacContext);
   }
 
   void Function(T data) createCbParam1<T extends Object?>(
-      ZacContext zacContext) {
-    return (T data) => execute(ZacActionPayload.param(data), zacContext);
+      BuildContext context, ZacContext zacContext) {
+    return (T data) =>
+        execute(ZacActionPayload.param(data), context, zacContext);
   }
 }
 
@@ -113,7 +116,7 @@ class ZacExecuteActionsBuilder
   }) = _ZacExecuteActionsBuilderListen;
 
   @override
-  Widget build(ZacContext zacContext) {
+  Widget build(BuildContext context, ZacContext zacContext) {
     return map(
       once: (obj) => ZacExecuteActionsOnce(
         actions: obj.actions.build,
@@ -133,20 +136,21 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
       {required this.actions, required this.family, this.child, Key? key})
       : super(key: key);
 
-  final List<ZacAction> Function(ZacContext zacContext) actions;
+  final List<ZacAction> Function(BuildContext context, ZacContext zacContext)
+      actions;
   final SharedValueFamily family;
-  final Widget Function(ZacContext zacContext)? child;
+  final Widget Function(BuildContext context, ZacContext zacContext)? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     zacContext.ref.listen<SharedValueType>(SharedValue.provider(family),
         (previous, next) {
-      actions(zacContext)
-          .execute(ZacActionPayload.param2(next, previous), zacContext);
+      actions(context, zacContext).execute(
+          ZacActionPayload.param2(next, previous), context, zacContext);
     });
 
-    return child?.call(zacContext) ?? const SizedBox.shrink();
+    return child?.call(context, zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -155,8 +159,9 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       {required this.actions, required this.child, Key? key})
       : super(key: key);
 
-  final List<ZacAction> Function(ZacContext zacContext) actions;
-  final Widget Function(ZacContext zacContext)? child;
+  final List<ZacAction> Function(BuildContext context, ZacContext zacContext)
+      actions;
+  final Widget Function(BuildContext context, ZacContext zacContext)? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -167,7 +172,8 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions(zacContext).execute(const ZacActionPayload(), zacContext);
+        actions(context, zacContext)
+            .execute(const ZacActionPayload(), context, zacContext);
         if (!mounted) return;
         doneState.value = true;
       });
@@ -175,7 +181,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
     }, [actions]);
 
     if (null == child || !doneState.value) return const SizedBox.shrink();
-    return child?.call(zacContext) ?? const SizedBox.shrink();
+    return child?.call(context, zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -196,7 +202,8 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
   }) = _ZacControlFlowActionIf;
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  void execute(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       ifCond: (obj) {
         final val = payload.map(
@@ -207,10 +214,11 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
           param: (obj) => obj.params,
           param2: (obj) => obj.params,
         );
-        final trueOfFalse = condition.build(zacContext).fold<bool>(true,
-            (previousValue, zacTransformers) {
+        final trueOfFalse = condition
+            .build(context, zacContext)
+            .fold<bool>(true, (previousValue, zacTransformers) {
           final cond = zacTransformers.transform(
-              ZacTransformValue(val), zacContext, payload);
+              ZacTransformValue(val), context, zacContext, payload);
 
           if (cond is! bool) {
             throw StateError(
@@ -221,8 +229,8 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
         });
 
         (trueOfFalse ? obj.ifTrue : obj.ifFalse)
-            ?.build(zacContext)
-            .execute(payload, zacContext);
+            ?.build(context, zacContext)
+            .execute(payload, context, zacContext);
       },
     );
   }

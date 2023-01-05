@@ -25,16 +25,16 @@ class FlutterAspectRatio
     ZacBuilder<Widget?>? child,
   }) = _FlutterAspectRatio;
 
-  AspectRatio _buildWidget(ZacContext zacContext) {
+  AspectRatio _buildWidget(BuildContext context, ZacContext zacContext) {
     return AspectRatio(
-      aspectRatio: aspectRatio.build(zacContext),
-      key: key?.build(zacContext),
-      child: child?.build(zacContext),
+      aspectRatio: aspectRatio.build(context, zacContext),
+      key: key?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  AspectRatio build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  AspectRatio build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

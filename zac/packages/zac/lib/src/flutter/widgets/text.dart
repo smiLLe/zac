@@ -34,27 +34,27 @@ class FlutterText with _$FlutterText implements ZacBuilder<Text> {
     ZacBuilder<TextHeightBehavior?>? textHeightBehavior,
   }) = _FlutterText;
 
-  Text _buildWidget(ZacContext zacContext) {
+  Text _buildWidget(BuildContext context, ZacContext zacContext) {
     return Text(
-      data.build(zacContext),
-      key: key?.build(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
-      locale: locale?.build(zacContext),
-      softWrap: softWrap?.build(zacContext),
-      overflow: overflow?.build(zacContext),
-      textScaleFactor: textScaleFactor?.build(zacContext),
-      maxLines: maxLines?.build(zacContext),
-      semanticsLabel: semanticsLabel?.build(zacContext),
-      textWidthBasis: textWidthBasis?.build(zacContext),
-      textHeightBehavior: textHeightBehavior?.build(zacContext),
+      data.build(context, zacContext),
+      key: key?.build(context, zacContext),
+      style: style?.build(context, zacContext),
+      strutStyle: strutStyle?.build(context, zacContext),
+      textAlign: textAlign?.build(context, zacContext),
+      textDirection: textDirection?.build(context, zacContext),
+      locale: locale?.build(context, zacContext),
+      softWrap: softWrap?.build(context, zacContext),
+      overflow: overflow?.build(context, zacContext),
+      textScaleFactor: textScaleFactor?.build(context, zacContext),
+      maxLines: maxLines?.build(context, zacContext),
+      semanticsLabel: semanticsLabel?.build(context, zacContext),
+      textWidthBasis: textWidthBasis?.build(context, zacContext),
+      textHeightBehavior: textHeightBehavior?.build(context, zacContext),
     );
   }
 
   @override
-  Text build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Text build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

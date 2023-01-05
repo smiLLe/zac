@@ -26,17 +26,17 @@ class FlutterLimitedBox
     ZacBuilder<Widget?>? child,
   }) = _FlutterLimitedBox;
 
-  LimitedBox _buildWidget(ZacContext zacContext) {
+  LimitedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return LimitedBox(
-      key: key?.build(zacContext),
-      maxHeight: maxHeight?.build(zacContext) ?? double.infinity,
-      maxWidth: maxWidth?.build(zacContext) ?? double.infinity,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      maxHeight: maxHeight?.build(context, zacContext) ?? double.infinity,
+      maxWidth: maxWidth?.build(context, zacContext) ?? double.infinity,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  LimitedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  LimitedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

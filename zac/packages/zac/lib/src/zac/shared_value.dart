@@ -31,6 +31,7 @@ See "$SharedValueProviderBuilder" for more info.
   );
 
   static SharedValueType get({
+    required BuildContext context,
     required ZacContext zacContext,
     required SharedValueConsumeType consumeType,
     required SharedValueFamily family,
@@ -40,19 +41,19 @@ See "$SharedValueProviderBuilder" for more info.
       watch: (obj) => null != obj.select
           ? zacContext.ref
               .watch<Object?>(SharedValue.provider(family).select((value) {
-              return obj.select!
-                  .build(zacContext)
-                  .transform(ZacTransformValue(value), zacContext, null);
+              return obj.select!.build(context, zacContext).transform(
+                  ZacTransformValue(value), context, zacContext, null);
             }))
           : zacContext.ref.watch<Object?>(SharedValue.provider(family)),
     );
 
     return consumedValue is ZacBuilder<Object>
-        ? consumedValue.build(zacContext)
+        ? consumedValue.build(context, zacContext)
         : consumedValue;
   }
 
   static void update(
+    BuildContext context,
     ZacContext zacContext,
     SharedValueFamily family,
     SharedValueType Function(SharedValueType current) update,
@@ -91,29 +92,36 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
     required SharedValueFamily family,
   }) = _SharedValueActionsRefresh;
 
-  SharedValueType _updateTransformItems(Object? value, ZacActionPayload payload,
-      ZacContext zacContext, _SharedValueActionsUpdate obj) {
-    return obj.transformer
-            ?.build(zacContext)
-            ?.transform(ZacTransformValue(value), zacContext, payload) ??
+  SharedValueType _updateTransformItems(
+      Object? value,
+      ZacActionPayload payload,
+      BuildContext context,
+      ZacContext zacContext,
+      _SharedValueActionsUpdate obj) {
+    return obj.transformer?.build(context, zacContext)?.transform(
+            ZacTransformValue(value), context, zacContext, payload) ??
         value;
   }
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  void execute(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       update: (obj) {
-        SharedValue.update(zacContext, obj.family, (current) {
+        SharedValue.update(context, zacContext, obj.family, (current) {
           return payload.map(
             (_) => true == obj.ifNoPayloadTakeCurrent
-                ? _updateTransformItems(current, payload, zacContext, obj)
+                ? _updateTransformItems(
+                    current, payload, context, zacContext, obj)
                 : null,
-            param: (pl) =>
-                _updateTransformItems(pl.value, payload, zacContext, obj),
+            param: (pl) => _updateTransformItems(
+                pl.value, payload, context, zacContext, obj),
             param2: (pl) {
               return <Object?>[
-                _updateTransformItems(pl.first, payload, zacContext, obj),
-                _updateTransformItems(pl.second, payload, zacContext, obj)
+                _updateTransformItems(
+                    pl.first, payload, context, zacContext, obj),
+                _updateTransformItems(
+                    pl.second, payload, context, zacContext, obj)
               ];
             },
           );
@@ -242,8 +250,8 @@ class SharedValueProviderBuilder
     @Default(true) bool autoCreate,
   }) = _ProvideAnyBuilder;
 
-  SharedValueType valueBuilder(
-      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+  SharedValueType valueBuilder(AutoDisposeStateProviderRef<SharedValueType> ref,
+      BuildContext context, ZacContext zacContext) {
     return map<Object?>(
       provideNull: (_) => null,
       provideInt: (obj) => obj.value,
@@ -251,9 +259,8 @@ class SharedValueProviderBuilder
       provideBool: (obj) => obj.value,
       provideString: (obj) => obj.value,
       provideObject: (obj) =>
-          obj.transformer
-              ?.build(zacContext)
-              ?.transform(ZacTransformValue(obj.value), zacContext, null) ??
+          obj.transformer?.build(context, zacContext)?.transform(
+              ZacTransformValue(obj.value), context, zacContext, null) ??
           obj.value,
       provideWidget: (obj) => obj.value,
       provideWidgets: (obj) => obj.value,
@@ -262,11 +269,13 @@ class SharedValueProviderBuilder
     );
   }
 
-  Widget _childBuilder(ZacContext zacContext) => child.build(zacContext);
+  Widget _childBuilder(BuildContext context, ZacContext zacContext) =>
+      child.build(context, zacContext);
 
-  SharedValueProvider _buildWidget(ZacContext zacContext) {
+  SharedValueProvider _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.build(zacContext),
+      key: key?.build(context, zacContext),
       valueBuilder: valueBuilder,
       family: family,
       childBuilder: _childBuilder,
@@ -275,8 +284,8 @@ class SharedValueProviderBuilder
   }
 
   @override
-  SharedValueProvider build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SharedValueProvider build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -289,10 +298,12 @@ class SharedValueProvider extends HookConsumerWidget {
     super.key,
   });
 
-  final Widget Function(ZacContext zacContext) childBuilder;
+  final Widget Function(BuildContext context, ZacContext zacContext)
+      childBuilder;
   final SharedValueFamily family;
   final SharedValueType Function(
       AutoDisposeStateProviderRef<SharedValueType> ref,
+      BuildContext context,
       ZacContext zacContext) valueBuilder;
   final bool autoCreate;
 
@@ -305,7 +316,7 @@ class SharedValueProvider extends HookConsumerWidget {
     final zacContext = useZacContext(ref);
     final override = useMemoized(() {
       return SharedValue.provider(family).overrideWith(
-        (ref) => valueBuilder(ref, zacContext),
+        (ref) => valueBuilder(ref, context, zacContext),
       );
     }, [valueBuilder, zacContext]);
 
@@ -325,14 +336,14 @@ class SharedValueProvider extends HookConsumerWidget {
       child: ZacUpdateContext(
         builder: !autoCreate
             ? childBuilder
-            : (zacContext) {
+            : (context, zacContext) {
                 /// immediately create the AutoDispose Provider and its value
                 /// and keep it alive as long as possible
                 zacContext.ref.listen<SharedValueType>(
                   SharedValue.provider(family),
                   _autoCreateListener,
                 );
-                return childBuilder(zacContext);
+                return childBuilder(context, zacContext);
               },
       ),
     );
@@ -363,14 +374,15 @@ class ConsumeSharedValue<T>
   }) = _ConsumeSharedValue<T>;
 
   @override
-  T build(ZacContext zacContext) {
+  T build(BuildContext context, ZacContext zacContext) {
     final value = SharedValue.get(
+      context: context,
       zacContext: zacContext,
       consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
       family: family,
     );
 
-    final buildTransformer = transformer?.build(zacContext);
+    final buildTransformer = transformer?.build(context, zacContext);
 
     if (null == value) {
       if (null is T && true != buildTransformer?.isNotEmpty) {
@@ -395,8 +407,8 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = buildTransformer.transform(
+        ZacTransformValue(value), context, zacContext, null);
     if (transformedVal is! T) {
       final transformerErr = buildTransformer.map((e) => e.runtimeType);
 
@@ -461,10 +473,11 @@ class ConsumeSharedValueList<T extends Object?, X extends List<T>?>
 
   T _transformItem({
     required Object? value,
+    required BuildContext context,
     required ZacContext zacContext,
     required ZacBuilder<List<ZacTransformer>?>? transformer,
   }) {
-    final buildTransformer = transformer?.build(zacContext);
+    final buildTransformer = transformer?.build(context, zacContext);
     if (null == value) {
       if (null is T && true != buildTransformer?.isNotEmpty) {
         return null as T;
@@ -488,8 +501,8 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = buildTransformer.transform(
+        ZacTransformValue(value), context, zacContext, null);
 
     if (transformedVal is! T) {
       final transformerErr = buildTransformer.map((e) => e.runtimeType);
@@ -508,8 +521,9 @@ Value after: $transformedVal''');
   }
 
   @override
-  X build(ZacContext zacContext) {
+  X build(BuildContext context, ZacContext zacContext) {
     final consumedValue = SharedValue.get(
+      context: context,
       zacContext: zacContext,
       consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
       family: family,
@@ -522,10 +536,12 @@ Value after: $transformedVal''');
 
     final list = [
       ...consumedValue.map<T>((dynamic e) {
-        final value =
-            e is ZacBuilder<Object?> ? e.build(zacContext) : e as Object?;
+        final value = e is ZacBuilder<Object?>
+            ? e.build(context, zacContext)
+            : e as Object?;
         return _transformItem(
           value: value,
+          context: context,
           zacContext: zacContext,
           transformer: itemTransformer,
         );
@@ -533,8 +549,8 @@ Value after: $transformedVal''');
     ];
 
     final transformedList = transformer
-            ?.build(zacContext)
-            ?.transform(ZacTransformValue(list), zacContext, null) ??
+            ?.build(context, zacContext)
+            ?.transform(ZacTransformValue(list), context, zacContext, null) ??
         list;
 
     if (transformedList is X) {
@@ -598,10 +614,11 @@ class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
 
   T _transformItem({
     required Object? value,
+    required BuildContext context,
     required ZacContext zacContext,
     required ZacBuilder<List<ZacTransformer>?>? transformer,
   }) {
-    final buildTransformer = transformer?.build(zacContext);
+    final buildTransformer = transformer?.build(context, zacContext);
     if (null == value) {
       if (null is T && true != buildTransformer?.isNotEmpty) {
         return null as T;
@@ -625,8 +642,8 @@ The value of type ${value.runtimeType} was expected to be transformed.
 $value''');
     }
 
-    final transformedVal =
-        buildTransformer.transform(ZacTransformValue(value), zacContext, null);
+    final transformedVal = buildTransformer.transform(
+        ZacTransformValue(value), context, zacContext, null);
 
     if (transformedVal is! T) {
       final transformerErr = buildTransformer.map((e) => e.runtimeType);
@@ -645,8 +662,9 @@ Value after: $transformedVal''');
   }
 
   @override
-  X build(ZacContext zacContext) {
+  X build(BuildContext context, ZacContext zacContext) {
     final consumedValue = SharedValue.get(
+      context: context,
       zacContext: zacContext,
       consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
       family: family,
@@ -659,16 +677,17 @@ Value after: $transformedVal''');
       for (var entry in consumedValue.entries)
         entry.key: _transformItem(
           value: entry.value is ZacBuilder<Object?>
-              ? (entry.value as ZacBuilder<Object?>).build(zacContext)
+              ? (entry.value as ZacBuilder<Object?>).build(context, zacContext)
               : entry.value,
+          context: context,
           zacContext: zacContext,
           transformer: itemTransformer,
         )
     };
 
     final transformedMap = transformer
-            ?.build(zacContext)
-            ?.transform(ZacTransformValue(map), zacContext, null) ??
+            ?.build(context, zacContext)
+            ?.transform(ZacTransformValue(map), context, zacContext, null) ??
         map;
 
     if (transformedMap is X) {

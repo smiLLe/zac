@@ -28,19 +28,19 @@ class FlutterUnconstrainedBox
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterUnconstrainedBox;
 
-  UnconstrainedBox _buildWidget(ZacContext zacContext) {
+  UnconstrainedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return UnconstrainedBox(
-      key: key?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      constrainedAxis: constrainedAxis?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      textDirection: textDirection?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.none,
+      constrainedAxis: constrainedAxis?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  UnconstrainedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  UnconstrainedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

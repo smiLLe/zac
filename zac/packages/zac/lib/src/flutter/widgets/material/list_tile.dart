@@ -50,42 +50,44 @@ class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
     ZacBuilder<double?>? minLeadingWidth,
   }) = _FlutterListTile;
 
-  ListTile _buildWidget(ZacContext zacContext) {
+  ListTile _buildWidget(BuildContext context, ZacContext zacContext) {
     return ListTile(
-      key: key?.build(zacContext),
-      leading: leading?.build(zacContext),
-      title: title?.build(zacContext),
-      subtitle: subtitle?.build(zacContext),
-      trailing: trailing?.build(zacContext),
-      isThreeLine: isThreeLine?.build(zacContext) ?? false,
-      dense: dense?.build(zacContext),
+      key: key?.build(context, zacContext),
+      leading: leading?.build(context, zacContext),
+      title: title?.build(context, zacContext),
+      subtitle: subtitle?.build(context, zacContext),
+      trailing: trailing?.build(context, zacContext),
+      isThreeLine: isThreeLine?.build(context, zacContext) ?? false,
+      dense: dense?.build(context, zacContext),
 // FlutterVisualDensity? visualDensity,
-      shape: shape?.build(zacContext),
+      shape: shape?.build(context, zacContext),
 // FlutterListTileStyle? style,
-      selectedColor: selectedColor?.build(zacContext),
-      iconColor: iconColor?.build(zacContext),
-      textColor: textColor?.build(zacContext),
-      contentPadding: contentPadding?.build(zacContext),
-      enabled: enabled?.build(zacContext) ?? true,
-      onTap: onTap?.build(zacContext)?.createCb(zacContext),
-      onLongPress: onLongPress?.build(zacContext)?.createCb(zacContext),
+      selectedColor: selectedColor?.build(context, zacContext),
+      iconColor: iconColor?.build(context, zacContext),
+      textColor: textColor?.build(context, zacContext),
+      contentPadding: contentPadding?.build(context, zacContext),
+      enabled: enabled?.build(context, zacContext) ?? true,
+      onTap: onTap?.build(context, zacContext)?.createCb(context, zacContext),
+      onLongPress: onLongPress
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
 // MouseCursor? mouseCursor,
-      selected: selected?.build(zacContext) ?? false,
-      focusColor: focusColor?.build(zacContext),
-      hoverColor: hoverColor?.build(zacContext),
+      selected: selected?.build(context, zacContext) ?? false,
+      focusColor: focusColor?.build(context, zacContext),
+      hoverColor: hoverColor?.build(context, zacContext),
 // FocusNode? focusNode,
-      autofocus: autofocus?.build(zacContext) ?? false,
-      tileColor: tileColor?.build(zacContext),
-      selectedTileColor: selectedTileColor?.build(zacContext),
-      enableFeedback: enableFeedback?.build(zacContext),
-      horizontalTitleGap: horizontalTitleGap?.build(zacContext),
-      minVerticalPadding: minVerticalPadding?.build(zacContext),
-      minLeadingWidth: minLeadingWidth?.build(zacContext),
+      autofocus: autofocus?.build(context, zacContext) ?? false,
+      tileColor: tileColor?.build(context, zacContext),
+      selectedTileColor: selectedTileColor?.build(context, zacContext),
+      enableFeedback: enableFeedback?.build(context, zacContext),
+      horizontalTitleGap: horizontalTitleGap?.build(context, zacContext),
+      minVerticalPadding: minVerticalPadding?.build(context, zacContext),
+      minLeadingWidth: minLeadingWidth?.build(context, zacContext),
     );
   }
 
   @override
-  ListTile build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ListTile build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

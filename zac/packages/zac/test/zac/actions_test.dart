@@ -15,104 +15,132 @@ void main() {
   group('Control Flow Actions:', () {
     group('if Action', () {
       testWidgets('will execute Action if condition is true', (tester) async {
-        late ZacContext zacContext;
-        final trueCb = MockLeakedActionCb();
-        final falseCb = MockLeakedActionCb();
+        await testWithContext(
+          tester,
+          (getContext, getZacContext) {
+            final trueCb = MockLeakedActionCb();
+            final falseCb = MockLeakedActionCb();
 
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        ZacControlFlowAction.ifCond(
-          condition:
-              ZacTransformers([ObjectTransformer.equals(other: 'hello')]),
-          ifTrue: ZacActions([LeakAction(trueCb)]),
-          ifFalse: ZacActions([LeakAction(falseCb)]),
-        ).execute(ZacActionPayload.param('hello'), zacContext);
+            ZacControlFlowAction.ifCond(
+              condition:
+                  ZacTransformers([ObjectTransformer.equals(other: 'hello')]),
+              ifTrue: ZacActions([LeakAction(trueCb)]),
+              ifFalse: ZacActions([LeakAction(falseCb)]),
+            ).execute(
+                ZacActionPayload.param('hello'), getContext(), getZacContext());
 
-        verify(trueCb(
-                argThat(isA<ZacActionPayload>()
-                    .having((p0) => p0.params, 'payload params', 'hello')),
-                argThat(isA<ZacContext>())))
-            .called(1);
-        verifyZeroInteractions(falseCb);
+            verify(trueCb(
+                    argThat(isA<ZacActionPayload>()
+                        .having((p0) => p0.params, 'payload params', 'hello')),
+                    argThat(isA<ZacContext>())))
+                .called(1);
+            verifyZeroInteractions(falseCb);
+          },
+        );
       });
 
       testWidgets('will execute Action if condition is false', (tester) async {
-        late ZacContext zacContext;
-        final trueCb = MockLeakedActionCb();
-        final falseCb = MockLeakedActionCb();
+        await testWithContext(
+          tester,
+          (getContext, getZacContext) {
+            final trueCb = MockLeakedActionCb();
+            final falseCb = MockLeakedActionCb();
+            ZacControlFlowAction.ifCond(
+              condition:
+                  ZacTransformers([ObjectTransformer.equals(other: 'world')]),
+              ifTrue: ZacActions([LeakAction(trueCb)]),
+              ifFalse: ZacActions([LeakAction(falseCb)]),
+            ).execute(
+                ZacActionPayload.param('hello'), getContext(), getZacContext());
 
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        ZacControlFlowAction.ifCond(
-          condition:
-              ZacTransformers([ObjectTransformer.equals(other: 'world')]),
-          ifTrue: ZacActions([LeakAction(trueCb)]),
-          ifFalse: ZacActions([LeakAction(falseCb)]),
-        ).execute(ZacActionPayload.param('hello'), zacContext);
-
-        verify(falseCb(
-                argThat(isA<ZacActionPayload>()
-                    .having((p0) => p0.params, 'payload params', 'hello')),
-                argThat(isA<ZacContext>())))
-            .called(1);
-        verifyZeroInteractions(trueCb);
+            verify(falseCb(
+                    argThat(isA<ZacActionPayload>()
+                        .having((p0) => p0.params, 'payload params', 'hello')),
+                    argThat(isA<ZacContext>())))
+                .called(1);
+            verifyZeroInteractions(trueCb);
+          },
+        );
       });
 
       testWidgets(
           'condition can be an array and once returned false it will execute ifFalse Actions',
           (tester) async {
-        late ZacContext zacContext;
-        final trueCb = MockLeakedActionCb();
-        final falseCb = MockLeakedActionCb();
+        await testWithContext(tester, (getContext, getZacContext) {
+          final trueCb = MockLeakedActionCb();
+          final falseCb = MockLeakedActionCb();
+          ZacControlFlowAction.ifCond(
+            condition: ZacTransformers([
+              ObjectTransformer.equals(other: 'hello'),
+              ObjectTransformer.equals(other: 'THAT IS FALSE'),
+              ObjectTransformer.equals(other: 'hello'),
+            ]),
+            ifTrue: ZacActions([LeakAction(trueCb)]),
+            ifFalse: ZacActions([LeakAction(falseCb)]),
+          ).execute(
+              ZacActionPayload.param('hello'), getContext(), getZacContext());
 
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        ZacControlFlowAction.ifCond(
-          condition: ZacTransformers([
-            ObjectTransformer.equals(other: 'hello'),
-            ObjectTransformer.equals(other: 'THAT IS FALSE'),
-            ObjectTransformer.equals(other: 'hello'),
-          ]),
-          ifTrue: ZacActions([LeakAction(trueCb)]),
-          ifFalse: ZacActions([LeakAction(falseCb)]),
-        ).execute(ZacActionPayload.param('hello'), zacContext);
+          verify(falseCb(
+                  argThat(isA<ZacActionPayload>()
+                      .having((p0) => p0.params, 'payload params', 'hello')),
+                  argThat(isA<ZacContext>())))
+              .called(1);
+          verifyZeroInteractions(trueCb);
+        });
+        // late ZacContext zacContext;
+        // final trueCb = MockLeakedActionCb();
+        // final falseCb = MockLeakedActionCb();
 
-        verify(falseCb(
-                argThat(isA<ZacActionPayload>()
-                    .having((p0) => p0.params, 'payload params', 'hello')),
-                argThat(isA<ZacContext>())))
-            .called(1);
-        verifyZeroInteractions(trueCb);
+        // await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
+        // ZacControlFlowAction.ifCond(
+        //   condition: ZacTransformers([
+        //     ObjectTransformer.equals(other: 'hello'),
+        //     ObjectTransformer.equals(other: 'THAT IS FALSE'),
+        //     ObjectTransformer.equals(other: 'hello'),
+        //   ]),
+        //   ifTrue: ZacActions([LeakAction(trueCb)]),
+        //   ifFalse: ZacActions([LeakAction(falseCb)]),
+        // ).execute(ZacActionPayload.param('hello'), zacContext);
+
+        // verify(falseCb(
+        //         argThat(isA<ZacActionPayload>()
+        //             .having((p0) => p0.params, 'payload params', 'hello')),
+        //         argThat(isA<ZacContext>())))
+        //     .called(1);
+        // verifyZeroInteractions(trueCb);
       });
 
       testWidgets('will throw an error if payload is empty', (tester) async {
-        late ZacContext zacContext;
-
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        expect(
-            () => ZacControlFlowAction.ifCond(
-                  condition: ZacTransformers([]),
-                  ifTrue: const ZacActions([]),
-                ).execute(const ZacActionPayload(), zacContext),
-            throwsA(isA<StateError>().having(
-                (p0) => p0.message,
-                'error message',
-                contains(
-                    'It is not possible to execute "z:1:ControlFlowAction.if". The ZacActionPayload was empty'))));
+        await testWithContext(tester, (getContext, getZacContext) {
+          expect(
+              () => ZacControlFlowAction.ifCond(
+                    condition: ZacTransformers([]),
+                    ifTrue: const ZacActions([]),
+                  ).execute(
+                      const ZacActionPayload(), getContext(), getZacContext()),
+              throwsA(isA<StateError>().having(
+                  (p0) => p0.message,
+                  'error message',
+                  contains(
+                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacActionPayload was empty'))));
+        });
       });
 
       testWidgets('will throw an error if condition is not a bool',
           (tester) async {
-        late ZacContext zacContext;
-
-        await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        expect(
-            () => ZacControlFlowAction.ifCond(
-                  condition: ZacTransformers([ObjectTransformer.toString()]),
-                  ifTrue: const ZacActions([]),
-                ).execute(ZacActionPayload.param('hello'), zacContext),
-            throwsA(isA<StateError>().having(
-                (p0) => p0.message,
-                'error message',
-                contains(
-                    'It is not possible to execute "z:1:ControlFlowAction.if". The ZacTransformers condition did not result in a bool but "hello"'))));
+        await testWithContext(tester, (getContext, getZacContext) {
+          expect(
+              () => ZacControlFlowAction.ifCond(
+                    condition: ZacTransformers([ObjectTransformer.toString()]),
+                    ifTrue: const ZacActions([]),
+                  ).execute(ZacActionPayload.param('hello'), getContext(),
+                      getZacContext()),
+              throwsA(isA<StateError>().having(
+                  (p0) => p0.message,
+                  'error message',
+                  contains(
+                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacTransformers condition did not result in a bool but "hello"'))));
+        });
       });
     });
   });
@@ -164,12 +192,10 @@ void main() {
 
   group('ZacExecuteActionsListen', () {
     testWidgets('execute interactions', (tester) async {
-      late ZacContext zacContext;
       final cb = MockLeakedActionCb();
-
-      await testZacWidget(
+      await testWithContextWithChild(
         tester,
-        SharedValueProviderBuilder.provideInt(
+        (child) => SharedValueProviderBuilder.provideInt(
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
@@ -177,23 +203,25 @@ void main() {
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
-              child: LeakContext(cb: (o) => zacContext = o),
+              child: child,
             ),
           ),
         ),
+        (getContext, getZacContext) async {
+          verifyZeroInteractions(cb);
+
+          SharedValue.update(
+              getContext(), getZacContext(), 'shared', (current) => 2);
+          await tester.pumpAndSettle();
+
+          verify(cb(
+                  argThat(isA<ZacActionPayload>()
+                      .having((p0) => p0.params, 'param', [2, 1])),
+                  any))
+              .called(1);
+          verifyNoMoreInteractions(cb);
+        },
       );
-
-      verifyZeroInteractions(cb);
-
-      SharedValue.update(zacContext, 'shared', (current) => 2);
-      await tester.pumpAndSettle();
-
-      verify(cb(
-              argThat(isA<ZacActionPayload>()
-                  .having((p0) => p0.params, 'param', [2, 1])),
-              any))
-          .called(1);
-      verifyNoMoreInteractions(cb);
     });
   });
 

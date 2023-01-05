@@ -26,18 +26,18 @@ class FlutterOutlineInputBorder
     ZacBuilder<double?>? gapPadding,
   }) = _FlutterOutlineInputBorder;
 
-  OutlineInputBorder _build(ZacContext zacContext) {
+  OutlineInputBorder _build(BuildContext context, ZacContext zacContext) {
     return OutlineInputBorder(
-      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(zacContext) ??
+      borderSide: borderSide?.build(context, zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, zacContext) ??
           const BorderRadius.all(Radius.circular(4.0)),
-      gapPadding: gapPadding?.build(zacContext) ?? 4.0,
+      gapPadding: gapPadding?.build(context, zacContext) ?? 4.0,
     );
   }
 
   @override
-  OutlineInputBorder build(ZacContext zacContext) {
-    return _build(zacContext);
+  OutlineInputBorder build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -58,10 +58,10 @@ class FlutterUnderlineInputBorder
     ZacBuilder<BorderRadius?>? borderRadius,
   }) = _FlutterUnderlineInputBorder;
 
-  UnderlineInputBorder _build(ZacContext zacContext) {
+  UnderlineInputBorder _build(BuildContext context, ZacContext zacContext) {
     return UnderlineInputBorder(
-      borderSide: borderSide?.build(zacContext) ?? const BorderSide(),
-      borderRadius: borderRadius?.build(zacContext) ??
+      borderSide: borderSide?.build(context, zacContext) ?? const BorderSide(),
+      borderRadius: borderRadius?.build(context, zacContext) ??
           const BorderRadius.only(
             topLeft: Radius.circular(4.0),
             topRight: Radius.circular(4.0),
@@ -70,7 +70,7 @@ class FlutterUnderlineInputBorder
   }
 
   @override
-  UnderlineInputBorder build(ZacContext zacContext) {
-    return _build(zacContext);
+  UnderlineInputBorder build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

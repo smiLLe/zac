@@ -54,37 +54,37 @@ class FlutterSizedBox with _$FlutterSizedBox implements ZacBuilder<SizedBox> {
     ZacBuilder<double?>? dimension,
   }) = _FlutterWidgetSizedBoxSquare;
 
-  SizedBox _buildWidget(ZacContext zacContext) {
+  SizedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       (value) => SizedBox(
-        key: value.key?.build(zacContext),
-        width: value.width?.build(zacContext),
-        height: value.height?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        width: value.width?.build(context, zacContext),
+        height: value.height?.build(context, zacContext),
+        child: value.child?.build(context, zacContext),
       ),
       expand: (value) => SizedBox.expand(
-        key: value.key?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        child: value.child?.build(context, zacContext),
       ),
       fromSize: (value) => SizedBox.fromSize(
-        key: value.key?.build(zacContext),
-        size: value.size?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        size: value.size?.build(context, zacContext),
+        child: value.child?.build(context, zacContext),
       ),
       shrink: (value) => SizedBox.shrink(
-        key: value.key?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        child: value.child?.build(context, zacContext),
       ),
       square: (value) => SizedBox.square(
-        key: value.key?.build(zacContext),
-        dimension: value.dimension?.build(zacContext),
-        child: value.child?.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        dimension: value.dimension?.build(context, zacContext),
+        child: value.child?.build(context, zacContext),
       ),
     );
   }
 
   @override
-  SizedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SizedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/registry.dart';
@@ -37,8 +38,8 @@ abstract class ZacTransformer {
     );
   }
 
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload);
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload);
 }
 
 @freezedZacBuilder
@@ -56,17 +57,20 @@ class ZacTransformers
   factory ZacTransformers(List<ZacTransformer> transformers) = _ZacTransformers;
 
   @override
-  List<ZacTransformer> build(ZacContext zacContext) => transformers;
+  List<ZacTransformer> build(BuildContext context, ZacContext zacContext) =>
+      transformers;
 }
 
 extension HandleTransformer on List<ZacTransformer> {
   Object? transform(
     ZacTransformValue value,
+    BuildContext context,
     ZacContext zacContext,
     ZacActionPayload? payload,
   ) {
     return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(previousValue, zacContext, payload);
+      final obj =
+          element.transform(previousValue, context, zacContext, payload);
       return previousValue.copyWith.call(value: obj);
     }).value;
   }
@@ -84,8 +88,8 @@ class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
   factory ConvertTransformer() = _Convert;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     return throw Exception('');
     // return ConverterHelper.convertToType<Object>(value);
@@ -171,8 +175,8 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
   }) = _MapSetValueForKey;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final theMap = transformValue.value;
     if (theMap is! Map) {
       throw ZacTransformError('''
@@ -189,26 +193,27 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.build(
-        zacContext,
-      )),
-      containsValue: (obj) => theMap.containsValue(obj.value?.build(
-        zacContext,
-      )),
+      containsKey: (obj) =>
+          theMap.containsKey(obj.key?.build(context, zacContext)),
+      containsValue: (obj) =>
+          theMap.containsValue(obj.value?.build(context, zacContext)),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
             theMap.entries.map<MapEntry<dynamic, dynamic>>((entry) {
           dynamic updatedKey = entry.key;
           dynamic updatedValue = entry.value;
-          final keyT = obj.keyTransformer?.build(zacContext);
-          final valueT = obj.valueTransformer?.build(zacContext);
+          final keyT = obj.keyTransformer?.build(context, zacContext);
+          final valueT = obj.valueTransformer?.build(context, zacContext);
           if (true == keyT?.isNotEmpty) {
-            updatedKey = keyT!.transform(
-                ZacTransformValue(updatedKey, entry), zacContext, payload);
+            updatedKey = keyT!.transform(ZacTransformValue(updatedKey, entry),
+                context, zacContext, payload);
           }
           if (true == valueT?.isNotEmpty) {
             updatedValue = valueT!.transform(
-                ZacTransformValue(updatedValue, entry), zacContext, payload);
+                ZacTransformValue(updatedValue, entry),
+                context,
+                zacContext,
+                payload);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -224,13 +229,13 @@ The value: $theMap
         return Map<String, Object>.from(theMap);
       },
       key: (obj) {
-        final key = obj.key.build(zacContext);
+        final key = obj.key.build(context, zacContext);
         return theMap[key];
       },
       setValueForKey: (obj) {
-        final value = obj.value.build(zacContext);
+        final value = obj.value.build(context, zacContext);
 
-        final key = obj.key.build(zacContext);
+        final key = obj.key.build(context, zacContext);
 
         theMap[key] = value;
         return theMap;
@@ -315,8 +320,8 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   const factory IterableTransformer.take(int count) = _IterableTake;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
@@ -328,8 +333,8 @@ The value: $value
 
     return map(
       map: (obj) => value.map((dynamic e) => obj.transformer
-          .build(zacContext)
-          .transform(ZacTransformValue(e), zacContext, payload)),
+          .build(context, zacContext)
+          .transform(ZacTransformValue(e), context, zacContext, payload)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -340,9 +345,8 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.build(
-        zacContext,
-      )),
+      contains: (obj) =>
+          value.contains(obj.element?.build(context, zacContext)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
@@ -367,8 +371,8 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
   const factory ListTransformer.add(ZacBuilder<Object> value) = _ListAdd;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! List) {
       throw ZacTransformError('''
@@ -381,9 +385,7 @@ The value: $value
     return map(
       reversed: (_) => value.reversed.toList(),
       add: (obj) {
-        value.add(obj.value.build(
-          zacContext,
-        ));
+        value.add(obj.value.build(context, zacContext));
 
         return value;
       },
@@ -456,8 +458,8 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
   }) = _ObjectEqualsSharedValue;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     return map(
       isList: (_) => value is List,
@@ -469,10 +471,7 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value?.build(
-            zacContext,
-          ) ==
-          value,
+          obj.value?.build(context, zacContext) == value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
       toString: (_) => value.toString(),
@@ -543,8 +542,8 @@ class NumTransformer with _$NumTransformer implements ZacTransformer {
   const factory NumTransformer.isNegative() = _NumIsNegative;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! num) {
       throw ZacTransformError('''
@@ -596,8 +595,8 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
   const factory IntTransformer.decr(ZacBuilder<int> by) = _IntDecr;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     return map(
       parse: (obj) {
@@ -627,14 +626,14 @@ Value: $value
           throw StateError(
               'Expected value to be int in $IntTransformer(${IntTransformer.unionValueIncrementBy}): $value');
         }
-        return value + obj.by.build(zacContext);
+        return value + obj.by.build(context, zacContext);
       },
       decr: (obj) {
         if (value is! int) {
           throw StateError(
               'Expected value to be int in $IntTransformer(${IntTransformer.unionValueDecrementBy}): $value');
         }
-        return value - obj.by.build(zacContext);
+        return value - obj.by.build(context, zacContext);
       },
     );
   }
@@ -672,8 +671,8 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
       ZacBuilder<String> from, ZacBuilder<String> replace) = _StringReplaceAll;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! String) {
       throw ZacTransformError('''
@@ -685,11 +684,12 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.build(zacContext)),
+      split: (obj) => value.split(obj.pattern.build(context, zacContext)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.build(zacContext)), obj.replace.build(zacContext)),
+          RegExp(obj.from.build(context, zacContext)),
+          obj.replace.build(context, zacContext)),
     );
   }
 }
@@ -710,8 +710,8 @@ class JsonTransformer with _$JsonTransformer implements ZacTransformer {
   const factory JsonTransformer.decode() = _JsonDencode;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
 
     return map(
@@ -742,8 +742,8 @@ class BoolTransformer with _$BoolTransformer implements ZacTransformer {
   const factory BoolTransformer.negate() = _BoolTransformerNegate;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! bool) {
       throw ZacTransformError(

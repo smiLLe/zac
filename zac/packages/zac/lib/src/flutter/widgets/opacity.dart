@@ -25,18 +25,18 @@ class FlutterOpacity with _$FlutterOpacity implements ZacBuilder<Opacity> {
     ZacBuilder<Widget?>? child,
   }) = _FlutterOpacity;
 
-  Opacity _buildWidget(ZacContext zacContext) {
+  Opacity _buildWidget(BuildContext context, ZacContext zacContext) {
     return Opacity(
-      key: key?.build(zacContext),
-      opacity: opacity.build(zacContext),
+      key: key?.build(context, zacContext),
+      opacity: opacity.build(context, zacContext),
       alwaysIncludeSemantics:
-          alwaysIncludeSemantics?.build(zacContext) ?? false,
-      child: child?.build(zacContext),
+          alwaysIncludeSemantics?.build(context, zacContext) ?? false,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Opacity build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Opacity build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

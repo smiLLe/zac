@@ -37,33 +37,34 @@ class FlutterInteractiveViewer
 // TransformationController? transformationController,
   }) = _FlutterInteractiveViewer;
 
-  InteractiveViewer _buildWidget(ZacContext zacContext) {
+  InteractiveViewer _buildWidget(BuildContext context, ZacContext zacContext) {
     return InteractiveViewer(
-      key: key?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.build(zacContext) ?? false,
-      boundaryMargin: boundaryMargin?.build(zacContext) ?? EdgeInsets.zero,
-      constrained: constrained?.build(zacContext) ?? true,
-      maxScale: maxScale?.build(zacContext) ?? 2.5,
-      minScale: minScale?.build(zacContext) ?? 0.8,
+      key: key?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+      alignPanAxis: alignPanAxis?.build(context, zacContext) ?? false,
+      boundaryMargin:
+          boundaryMargin?.build(context, zacContext) ?? EdgeInsets.zero,
+      constrained: constrained?.build(context, zacContext) ?? true,
+      maxScale: maxScale?.build(context, zacContext) ?? 2.5,
+      minScale: minScale?.build(context, zacContext) ?? 0.8,
       onInteractionEnd: onInteractionEnd
-          ?.build(zacContext)
-          ?.createCbParam1<ScaleEndDetails>(zacContext),
+          ?.build(context, zacContext)
+          ?.createCbParam1<ScaleEndDetails>(context, zacContext),
       onInteractionStart: onInteractionStart
-          ?.build(zacContext)
-          ?.createCbParam1<ScaleStartDetails>(zacContext),
+          ?.build(context, zacContext)
+          ?.createCbParam1<ScaleStartDetails>(context, zacContext),
       onInteractionUpdate: onInteractionUpdate
-          ?.build(zacContext)
-          ?.createCbParam1<ScaleUpdateDetails>(zacContext),
-      panEnabled: panEnabled?.build(zacContext) ?? true,
-      scaleEnabled: scaleEnabled?.build(zacContext) ?? true,
-      child: child.build(zacContext),
+          ?.build(context, zacContext)
+          ?.createCbParam1<ScaleUpdateDetails>(context, zacContext),
+      panEnabled: panEnabled?.build(context, zacContext) ?? true,
+      scaleEnabled: scaleEnabled?.build(context, zacContext) ?? true,
+      child: child.build(context, zacContext),
       // transformationController: key?.toFlutter(context),
     );
   }
 
   @override
-  InteractiveViewer build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  InteractiveViewer build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

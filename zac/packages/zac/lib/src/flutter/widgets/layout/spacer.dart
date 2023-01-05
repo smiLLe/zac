@@ -22,15 +22,15 @@ class FlutterSpacer with _$FlutterSpacer implements ZacBuilder<Spacer> {
     ZacBuilder<int?>? flex,
   }) = _FlutterSpacer;
 
-  Spacer _buildWidget(ZacContext zacContext) {
+  Spacer _buildWidget(BuildContext context, ZacContext zacContext) {
     return Spacer(
-      key: key?.build(zacContext),
-      flex: flex?.build(zacContext) ?? 1,
+      key: key?.build(context, zacContext),
+      flex: flex?.build(context, zacContext) ?? 1,
     );
   }
 
   @override
-  Spacer build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Spacer build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

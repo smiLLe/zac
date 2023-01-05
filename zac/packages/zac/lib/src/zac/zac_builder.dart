@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -40,7 +41,7 @@ abstract class ZacBuilder<T> {
     );
   }
 
-  T build(ZacContext zacContext);
+  T build(BuildContext context, ZacContext zacContext);
 }
 
 abstract class ZacListBuilder<T extends Object?, X extends List<T>?>

@@ -171,14 +171,14 @@ void main() {
                   'value': 'world',
                 }
               ],
-            }).build(zacContext),
+            }).build(context, zacContext),
             const [ValueKey('hello'), ValueKey('world')]);
 
         expect(
             ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueList',
               'items': [1, 2],
-            }).build(zacContext),
+            }).build(context, zacContext),
             const [1, 2]);
       });
     });
@@ -268,14 +268,14 @@ void main() {
                   'value': 'world',
                 }
               },
-            }).build(zacContext),
+            }).build(context, zacContext),
             const {'a': ValueKey('hello'), 'b': ValueKey('world')});
 
         expect(
             ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
               'builder': 'z:1:ZacValueMap',
               'items': {'a': 1, 'b': 2},
-            }).build(zacContext),
+            }).build(context, zacContext),
             const {'a': 1, 'b': 2});
       });
     });

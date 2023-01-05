@@ -31,25 +31,26 @@ class FlutterMaterial with _$FlutterMaterial implements ZacBuilder<Material> {
 // Duration animationDuration = kThemeChangeDuration,
   }) = _FlutterMaterial;
 
-  Material _buildWidget(ZacContext zacContext) {
+  Material _buildWidget(BuildContext context, ZacContext zacContext) {
     return Material(
-      key: key?.build(zacContext),
+      key: key?.build(context, zacContext),
       // animationDuration: key?.toFlutter(context),
-      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
-      borderRadius: borderRadius?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      color: color?.build(zacContext),
-      elevation: elevation?.build(zacContext) ?? 0,
-      shadowColor: shadowColor?.build(zacContext),
-      shape: shape?.build(zacContext),
-      textStyle: textStyle?.build(zacContext),
-      child: child?.build(zacContext),
+      borderOnForeground:
+          borderOnForeground?.build(context, zacContext) ?? true,
+      borderRadius: borderRadius?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.none,
+      color: color?.build(context, zacContext),
+      elevation: elevation?.build(context, zacContext) ?? 0,
+      shadowColor: shadowColor?.build(context, zacContext),
+      shape: shape?.build(context, zacContext),
+      textStyle: textStyle?.build(context, zacContext),
+      child: child?.build(context, zacContext),
       // type: type?.toFlutter(context),
     );
   }
 
   @override
-  Material build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Material build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

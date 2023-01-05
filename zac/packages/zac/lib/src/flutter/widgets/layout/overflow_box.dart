@@ -29,20 +29,20 @@ class FlutterOverflowBox
     ZacBuilder<Widget?>? child,
   }) = _FlutterOverflowBox;
 
-  OverflowBox _buildWidget(ZacContext zacContext) {
+  OverflowBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return OverflowBox(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      minWidth: minWidth?.build(zacContext),
-      maxWidth: maxWidth?.build(zacContext),
-      minHeight: minHeight?.build(zacContext),
-      maxHeight: maxHeight?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext) ?? Alignment.center,
+      minWidth: minWidth?.build(context, zacContext),
+      maxWidth: maxWidth?.build(context, zacContext),
+      minHeight: minHeight?.build(context, zacContext),
+      maxHeight: maxHeight?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  OverflowBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  OverflowBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -47,9 +47,9 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
     ZacBuilder<SystemUiOverlayStyle?>? systemOverlayStyle,
   }) = _FlutterAppBar;
 
-  AppBar _buildWidget(ZacContext zacContext) {
+  AppBar _buildWidget(BuildContext context, ZacContext zacContext) {
     assert(() {
-      final w = bottom?.build(zacContext);
+      final w = bottom?.build(context, zacContext);
       if (null == w) return true;
       if (w is! PreferredSizeWidget) {
         throw AssertionError(
@@ -59,38 +59,38 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
     }(), '');
 
     return AppBar(
-      key: key?.build(zacContext),
-      leading: leading?.build(zacContext),
+      key: key?.build(context, zacContext),
+      leading: leading?.build(context, zacContext),
       automaticallyImplyLeading:
-          automaticallyImplyLeading?.build(zacContext) ?? true,
-      title: title?.build(zacContext),
-      actions: actions?.build(zacContext) ?? const <Widget>[],
-      flexibleSpace: flexibleSpace?.build(zacContext),
-      bottom: bottom?.build(zacContext) as PreferredSizeWidget?,
-      elevation: elevation?.build(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
-      shape: shape?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      foregroundColor: foregroundColor?.build(zacContext),
-      iconTheme: iconTheme?.build(zacContext),
-      actionsIconTheme: actionsIconTheme?.build(zacContext),
-      primary: primary?.build(zacContext) ?? true,
-      centerTitle: centerTitle?.build(zacContext),
+          automaticallyImplyLeading?.build(context, zacContext) ?? true,
+      title: title?.build(context, zacContext),
+      actions: actions?.build(context, zacContext) ?? const <Widget>[],
+      flexibleSpace: flexibleSpace?.build(context, zacContext),
+      bottom: bottom?.build(context, zacContext) as PreferredSizeWidget?,
+      elevation: elevation?.build(context, zacContext),
+      shadowColor: shadowColor?.build(context, zacContext),
+      shape: shape?.build(context, zacContext),
+      backgroundColor: backgroundColor?.build(context, zacContext),
+      foregroundColor: foregroundColor?.build(context, zacContext),
+      iconTheme: iconTheme?.build(context, zacContext),
+      actionsIconTheme: actionsIconTheme?.build(context, zacContext),
+      primary: primary?.build(context, zacContext) ?? true,
+      centerTitle: centerTitle?.build(context, zacContext),
       excludeHeaderSemantics:
-          excludeHeaderSemantics?.build(zacContext) ?? false,
-      titleSpacing: titleSpacing?.build(zacContext),
-      toolbarOpacity: toolbarOpacity?.build(zacContext) ?? 1.0,
-      bottomOpacity: bottomOpacity?.build(zacContext) ?? 1.0,
-      toolbarHeight: toolbarHeight?.build(zacContext),
-      leadingWidth: leadingWidth?.build(zacContext),
-      toolbarTextStyle: toolbarTextStyle?.build(zacContext),
-      titleTextStyle: titleTextStyle?.build(zacContext),
-      systemOverlayStyle: systemOverlayStyle?.build(zacContext),
+          excludeHeaderSemantics?.build(context, zacContext) ?? false,
+      titleSpacing: titleSpacing?.build(context, zacContext),
+      toolbarOpacity: toolbarOpacity?.build(context, zacContext) ?? 1.0,
+      bottomOpacity: bottomOpacity?.build(context, zacContext) ?? 1.0,
+      toolbarHeight: toolbarHeight?.build(context, zacContext),
+      leadingWidth: leadingWidth?.build(context, zacContext),
+      toolbarTextStyle: toolbarTextStyle?.build(context, zacContext),
+      titleTextStyle: titleTextStyle?.build(context, zacContext),
+      systemOverlayStyle: systemOverlayStyle?.build(context, zacContext),
     );
   }
 
   @override
-  AppBar build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  AppBar build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -25,27 +25,27 @@ class ZacUpdateContextBuilder
     required ZacBuilder<Widget> child,
   }) = _ZacUpdateContextBuilder;
 
-  ZacUpdateContext _buildWidget(ZacContext zacContext) {
+  ZacUpdateContext _buildWidget(BuildContext context, ZacContext zacContext) {
     return ZacUpdateContext(
       builder: child.build,
-      key: key?.build(zacContext),
+      key: key?.build(context, zacContext),
     );
   }
 
   @override
-  ZacUpdateContext build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ZacUpdateContext build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
 class ZacUpdateContext extends HookConsumerWidget {
   const ZacUpdateContext({required this.builder, Key? key}) : super(key: key);
 
-  final Widget Function(ZacContext zacContext) builder;
+  final Widget Function(BuildContext context, ZacContext zacContext) builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
-    return builder(zacContext);
+    return builder(context, zacContext);
   }
 }

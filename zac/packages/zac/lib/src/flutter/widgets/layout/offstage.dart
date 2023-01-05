@@ -23,16 +23,16 @@ class FlutterOffstage with _$FlutterOffstage implements ZacBuilder<Offstage> {
     ZacBuilder<Widget?>? child,
   }) = _FlutterOffstage;
 
-  Offstage _buildWidget(ZacContext zacContext) {
+  Offstage _buildWidget(BuildContext context, ZacContext zacContext) {
     return Offstage(
-      key: key?.build(zacContext),
-      offstage: offstage?.build(zacContext) ?? true,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      offstage: offstage?.build(context, zacContext) ?? true,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Offstage build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Offstage build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

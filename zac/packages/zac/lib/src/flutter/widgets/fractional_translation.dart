@@ -28,17 +28,18 @@ class FlutterFractionalTranslation
     ZacBuilder<bool?>? transformHitTests,
   }) = _FlutterFractionalTranslation;
 
-  FractionalTranslation _buildWidget(ZacContext zacContext) {
+  FractionalTranslation _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return FractionalTranslation(
-      key: key?.build(zacContext),
-      translation: translation.build(zacContext),
-      transformHitTests: transformHitTests?.build(zacContext) ?? true,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      translation: translation.build(context, zacContext),
+      transformHitTests: transformHitTests?.build(context, zacContext) ?? true,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  FractionalTranslation build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  FractionalTranslation build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

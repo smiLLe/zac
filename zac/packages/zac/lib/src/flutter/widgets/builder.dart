@@ -24,11 +24,12 @@ class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
     required ZacBuilder<Widget> child,
   }) = _FlutterBuilder;
 
-  Widget _builder(ZacContext zacContext) => child.build(zacContext);
+  Widget _builder(BuildContext context, ZacContext zacContext) =>
+      child.build(context, zacContext);
 
-  Builder _buildWidget(ZacContext zacContext) {
+  Builder _buildWidget(BuildContext context, ZacContext zacContext) {
     return Builder(
-      key: key?.build(zacContext),
+      key: key?.build(context, zacContext),
       builder: (_) {
         return ZacUpdateContext(
           builder: _builder,
@@ -38,7 +39,7 @@ class FlutterBuilder with _$FlutterBuilder implements ZacBuilder<Builder> {
   }
 
   @override
-  Builder build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Builder build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

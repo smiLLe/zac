@@ -28,23 +28,25 @@ class FlutterScrollController
     required ZacBuilder<Widget> child,
   }) = _ScrollControllerProvide;
 
-  ScrollController _valueBuilder(
-      AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
+  ScrollController _valueBuilder(AutoDisposeStateProviderRef<Object?> ref,
+      BuildContext context, ZacContext zacContext) {
     return map(
       (obj) => ScrollController(
-        debugLabel: obj.debugLabel?.build(zacContext),
-        initialScrollOffset: obj.initialScrollOffset?.build(zacContext) ?? 0.0,
-        keepScrollOffset: obj.keepScrollOffset?.build(zacContext) ?? true,
+        debugLabel: obj.debugLabel?.build(context, zacContext),
+        initialScrollOffset:
+            obj.initialScrollOffset?.build(context, zacContext) ?? 0.0,
+        keepScrollOffset:
+            obj.keepScrollOffset?.build(context, zacContext) ?? true,
       ),
     );
   }
 
-  Widget _childBuilder(ZacContext zacContext) => map(
-        (obj) => obj.child.build(zacContext),
+  Widget _childBuilder(BuildContext context, ZacContext zacContext) => map(
+        (obj) => obj.child.build(context, zacContext),
       );
 
   @override
-  Widget build(ZacContext zacContext) {
+  Widget build(BuildContext context, ZacContext zacContext) {
     return map(
       (obj) {
         return SharedValueProvider(

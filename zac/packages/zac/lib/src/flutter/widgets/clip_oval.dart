@@ -25,16 +25,16 @@ class FlutterClipOval with _$FlutterClipOval implements ZacBuilder<ClipOval> {
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterClipOval;
 
-  ClipOval _buildWidget(ZacContext zacContext) {
+  ClipOval _buildWidget(BuildContext context, ZacContext zacContext) {
     return ClipOval(
-      key: key?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.antiAlias,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.antiAlias,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  ClipOval build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ClipOval build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

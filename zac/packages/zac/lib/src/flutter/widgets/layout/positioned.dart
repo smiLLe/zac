@@ -55,42 +55,42 @@ class FlutterPositioned
     required ZacBuilder<Widget> child,
   }) = _FlutterPositionedfill;
 
-  Positioned _buildWidget(ZacContext zacContext) {
+  Positioned _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       (value) => Positioned(
-        key: value.key?.build(zacContext),
-        left: value.left?.build(zacContext),
-        top: value.top?.build(zacContext),
-        right: value.right?.build(zacContext),
-        bottom: value.bottom?.build(zacContext),
-        width: value.width?.build(zacContext),
-        height: value.height?.build(zacContext),
-        child: value.child.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        left: value.left?.build(context, zacContext),
+        top: value.top?.build(context, zacContext),
+        right: value.right?.build(context, zacContext),
+        bottom: value.bottom?.build(context, zacContext),
+        width: value.width?.build(context, zacContext),
+        height: value.height?.build(context, zacContext),
+        child: value.child.build(context, zacContext),
       ),
       directional: (value) => Positioned.directional(
-        textDirection: value.textDirection.build(zacContext),
-        key: value.key?.build(zacContext),
-        start: value.start?.build(zacContext),
-        top: value.top?.build(zacContext),
-        end: value.end?.build(zacContext),
-        bottom: value.bottom?.build(zacContext),
-        width: value.width?.build(zacContext),
-        height: value.height?.build(zacContext),
-        child: value.child.build(zacContext),
+        textDirection: value.textDirection.build(context, zacContext),
+        key: value.key?.build(context, zacContext),
+        start: value.start?.build(context, zacContext),
+        top: value.top?.build(context, zacContext),
+        end: value.end?.build(context, zacContext),
+        bottom: value.bottom?.build(context, zacContext),
+        width: value.width?.build(context, zacContext),
+        height: value.height?.build(context, zacContext),
+        child: value.child.build(context, zacContext),
       ),
       fill: (value) => Positioned.fill(
-        key: value.key?.build(zacContext),
-        left: value.left?.build(zacContext),
-        top: value.top?.build(zacContext),
-        right: value.right?.build(zacContext),
-        bottom: value.bottom?.build(zacContext),
-        child: value.child.build(zacContext),
+        key: value.key?.build(context, zacContext),
+        left: value.left?.build(context, zacContext),
+        top: value.top?.build(context, zacContext),
+        right: value.right?.build(context, zacContext),
+        bottom: value.bottom?.build(context, zacContext),
+        child: value.child.build(context, zacContext),
       ),
     );
   }
 
   @override
-  Positioned build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Positioned build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

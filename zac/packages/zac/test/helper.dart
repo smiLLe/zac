@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/base.dart';
 
@@ -30,6 +34,92 @@ void expectInRegistry(Object obj, Object fn) {
   }
 }
 
+Future<void> testWithContext(
+    WidgetTester tester,
+    FutureOr<void> Function(BuildContext Function() getContext,
+            ZacContext Function() getZacContext)
+        cb) async {
+  // ignore: no_leading_underscores_for_local_identifiers
+  late BuildContext _context;
+  // ignore: no_leading_underscores_for_local_identifiers
+  late ZacContext _zacContext;
+  await tester.pumpWidget(
+    ProviderScope(
+      child: ZacUpdateContext(
+        builder: (context, zacContext) {
+          _context = context;
+          _zacContext = zacContext;
+          return const SizedBox.shrink();
+        },
+      ),
+    ),
+  );
+  final res = cb(() => _context, () => _zacContext);
+  if (res is Future) await res;
+}
+
+Future<void> testWithContextWithChild(
+    WidgetTester tester,
+    ZacBuilder<Widget> Function(ZacBuilder<Widget> child) build,
+    FutureOr<void> Function(BuildContext Function() getContext,
+            ZacContext Function() getZacContext)
+        cb) async {
+  // ignore: no_leading_underscores_for_local_identifiers
+  late BuildContext _context;
+  // ignore: no_leading_underscores_for_local_identifiers
+  late ZacContext _zacContext;
+
+  await tester.pumpWidget(
+    ProviderScope(
+      child: MaterialApp(
+        home: Material(
+          child: ZacWidget(
+            data: build(
+              TestBuildCustomWidget(
+                (context, zacContext) {
+                  _context = context;
+                  _zacContext = zacContext;
+                  return const SizedBox.shrink();
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+  final res = cb(() => _context, () => _zacContext);
+  if (res is Future) await res;
+}
+
+Future<void> testFindWidget<T extends Widget>(
+  WidgetTester tester,
+  ZacBuilder<Widget> Function(FlutterValueKey valueKey) build, {
+  TypeMatcher<T> Function(TypeMatcher<T> matcher)? match,
+}) async {
+  await tester.pumpWidget(
+    ProviderScope(
+      child: MaterialApp(
+        home: Material(
+          child: ZacWidget(
+            data: build(FlutterValueKey('FIND_ME')),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  final widget = find.byKey(const ValueKey('FIND_ME'));
+
+  expect(widget, findsOneWidget);
+
+  if (null == match) {
+    expect(widget.evaluate().first.widget, isA<T>());
+  } else {
+    expect(widget.evaluate().first.widget, match(isA<T>()));
+  }
+}
+
 TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
   return isA<ZacBuilder<T>>();
 }
@@ -43,8 +133,8 @@ Future<void>
 }) async {
   dynamic obj;
   await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(data: LeakContext(cb: (zacContext) {
-      obj = builder.build(zacContext);
+    child: ZacWidget(data: LeakContext(cb: (context, zacContext) {
+      obj = builder.build(context, zacContext);
     })),
   ));
 
@@ -52,8 +142,8 @@ Future<void>
   expect(obj, expectValue);
 
   await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(data: LeakContext(cb: (zacContext) {
-      obj = builder.build(zacContext);
+    child: ZacWidget(data: LeakContext(cb: (context, zacContext) {
+      obj = builder.build(context, zacContext);
     })),
   ));
 
@@ -76,12 +166,13 @@ TypeMatcher<SharedValueType> isSharedValue(dynamic matcher) {
 }
 
 void fakeBuild<T>(
-  Object Function(ZacContext zacContext) builder,
+  Object Function(BuildContext context, ZacContext zacContext) builder,
   TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 ) {
   final zacContext = FakeZacContext();
-  expect(builder(zacContext), isA<T>());
-  expect(builder(zacContext), matcher(isA<T>()));
+  final context = FakeBuildContext();
+  expect(builder(context, zacContext), isA<T>());
+  expect(builder(context, zacContext), matcher(isA<T>()));
 }
 
 Future<void> testMap(
@@ -157,7 +248,8 @@ class LeakAction with _$LeakAction implements ZacAction {
       ZacActions([LeakAction(cb)]);
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) =>
+  void execute(ZacActionPayload payload, BuildContext context,
+          ZacContext zacContext) =>
       cb(payload, zacContext);
 }
 
@@ -182,19 +274,20 @@ class NoopAction with _$NoopAction implements ZacAction {
   const factory NoopAction() = _NoopAction;
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {}
+  void execute(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {}
 }
 
 class CustomTransformer implements ZacTransformer {
   CustomTransformer(this.cb);
 
-  final Object? Function(ZacTransformValue transformValue,
+  final Object? Function(ZacTransformValue transformValue, BuildContext context,
       ZacContext zacContext, ZacActionPayload? payload) cb;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
-    return cb(transformValue, zacContext, payload);
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
+    return cb(transformValue, context, zacContext, payload);
   }
 }
 
@@ -204,17 +297,17 @@ class LeakContext implements ZacBuilder<Widget> {
     this.child,
   });
 
-  final void Function(ZacContext zacContext) cb;
+  final void Function(BuildContext context, ZacContext zacContext) cb;
   final ZacBuilder<Widget?>? child;
 
-  Widget _buildWidget(ZacContext zacContext) {
-    cb(zacContext);
-    return child?.build(zacContext) ?? const SizedBox.shrink();
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
+    cb(context, zacContext);
+    return child?.build(context, zacContext) ?? const SizedBox.shrink();
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -223,14 +316,14 @@ class TestBuildCustomWidget implements ZacBuilder<Widget> {
     this.cb,
   );
 
-  final Widget Function(ZacContext zacContext) cb;
+  final Widget Function(BuildContext context, ZacContext zacContext) cb;
 
-  Widget _buildWidget(ZacContext zacContext) {
-    return cb(zacContext);
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
+    return cb(context, zacContext);
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

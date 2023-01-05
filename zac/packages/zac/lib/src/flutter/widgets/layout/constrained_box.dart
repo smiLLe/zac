@@ -25,16 +25,16 @@ class FlutterConstrainedBox
     ZacBuilder<Widget?>? child,
   }) = _FlutterConstrainedBox;
 
-  ConstrainedBox _buildWidget(ZacContext zacContext) {
+  ConstrainedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return ConstrainedBox(
-      key: key?.build(zacContext),
-      constraints: constraints.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      constraints: constraints.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  ConstrainedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ConstrainedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

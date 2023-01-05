@@ -67,7 +67,7 @@ All configured states are "${states.keys.join(', ')}".
     return states[state]!;
   }
 
-  ZacBuilder<Widget> getWidget(ZacContext zacContext) {
+  ZacBuilder<Widget> getWidget(BuildContext context, ZacContext zacContext) {
     return config.widget;
   }
 
@@ -110,7 +110,9 @@ class ZacStateMachineProviderBuilder
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
-      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+      AutoDisposeStateProviderRef<SharedValueType> ref,
+      BuildContext context,
+      ZacContext zacContext) {
     int sessionId = 0;
 
     void Function(String event, SharedValueType? context) getSend({
@@ -152,18 +154,18 @@ because there was already a transition.''');
 
     return ZacStateMachine(
       states: states,
-      state: initialState.build(zacContext),
-      context: initialContext?.build(zacContext),
+      state: initialState.build(context, zacContext),
+      context: initialContext?.build(context, zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
     );
   }
 
-  Widget _buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.build(context, zacContext),
+      family: family.build(context, zacContext),
       autoCreate: true,
       childBuilder: child.build,
       valueBuilder: _createMachine,
@@ -171,8 +173,8 @@ because there was already a transition.''');
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -195,19 +197,21 @@ class ZacStateMachineBuildStateBuilder
     ZacBuilder<Widget?>? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
 
-  ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
+  ZacStateMachineBuildState _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.build(context, zacContext),
+      family: family.build(context, zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          unmappedStateWidget?.build(zacContext) ?? const SizedBox.shrink(),
+          unmappedStateWidget?.build(context, zacContext) ??
+          const SizedBox.shrink(),
     );
   }
 
   @override
-  ZacStateMachineBuildState build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ZacStateMachineBuildState build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -226,6 +230,7 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     final machine = SharedValue.get(
+      context: context,
       zacContext: zacContext,
       consumeType: const SharedValueConsumeType.watch(),
       family: family,
@@ -251,7 +256,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.getWidget(zacContext).build(zacContext);
+      return machine.getWidget(context, zacContext).build(context, zacContext);
     }
     return unmappedStateWidget(zacContext);
   }
@@ -282,31 +287,26 @@ class ZacStateMachineActions
   }) = _ZacStateMachineActionsTrySend;
 
   @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  void execute(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       send: (obj) {
         final machine = SharedValue.get(
+          context: context,
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
         ) as ZacStateMachine;
-        machine.send(
-            obj.event.build(
-              zacContext,
-            ),
-            payload.params);
+        machine.send(obj.event.build(context, zacContext), payload.params);
       },
       trySend: (obj) {
         final machine = SharedValue.get(
+          context: context,
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
         ) as ZacStateMachine;
-        machine.trySend(
-            obj.event.build(
-              zacContext,
-            ),
-            payload.params);
+        machine.trySend(obj.event.build(context, zacContext), payload.params);
       },
     );
   }
@@ -334,8 +334,8 @@ class ZacStateMachineTransformer
       _ZacStateMachineTransformerPickContext;
 
   @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  Object? transform(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! ZacStateMachine) {
       throw StateError('''
