@@ -75,7 +75,11 @@ extension HandleActions on List<ZacAction> {
       if (!context.isMounted) {
         break;
       }
-      action.execute(payload, context, zacContext);
+      action.execute(
+        payload,
+        context,
+        zacContext.copyWith.call(buildIn: BuildIn.action),
+      );
     }
   }
 

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ZacContext {
   void Function(void Function()) get onUnmount =>
       throw _privateConstructorUsedError;
+  BuildIn get buildIn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ZacContextCopyWith<ZacContext> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $ZacContextCopyWith<$Res> {
           ZacContext value, $Res Function(ZacContext) then) =
       _$ZacContextCopyWithImpl<$Res, ZacContext>;
   @useResult
-  $Res call({void Function(void Function()) onUnmount});
+  $Res call({void Function(void Function()) onUnmount, BuildIn buildIn});
 }
 
 /// @nodoc
@@ -47,12 +48,17 @@ class _$ZacContextCopyWithImpl<$Res, $Val extends ZacContext>
   @override
   $Res call({
     Object? onUnmount = null,
+    Object? buildIn = null,
   }) {
     return _then(_value.copyWith(
       onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
               as void Function(void Function()),
+      buildIn: null == buildIn
+          ? _value.buildIn
+          : buildIn // ignore: cast_nullable_to_non_nullable
+              as BuildIn,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_ZacContextCopyWith<$Res>
       __$$_ZacContextCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({void Function(void Function()) onUnmount});
+  $Res call({void Function(void Function()) onUnmount, BuildIn buildIn});
 }
 
 /// @nodoc
@@ -80,12 +86,17 @@ class __$$_ZacContextCopyWithImpl<$Res>
   @override
   $Res call({
     Object? onUnmount = null,
+    Object? buildIn = null,
   }) {
     return _then(_$_ZacContext(
       onUnmount: null == onUnmount
           ? _value.onUnmount
           : onUnmount // ignore: cast_nullable_to_non_nullable
               as void Function(void Function()),
+      buildIn: null == buildIn
+          ? _value.buildIn
+          : buildIn // ignore: cast_nullable_to_non_nullable
+              as BuildIn,
     ));
   }
 }
@@ -93,14 +104,16 @@ class __$$_ZacContextCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ZacContext implements _ZacContext {
-  _$_ZacContext({required this.onUnmount});
+  _$_ZacContext({required this.onUnmount, required this.buildIn});
 
   @override
   final void Function(void Function()) onUnmount;
+  @override
+  final BuildIn buildIn;
 
   @override
   String toString() {
-    return 'ZacContext(onUnmount: $onUnmount)';
+    return 'ZacContext(onUnmount: $onUnmount, buildIn: $buildIn)';
   }
 
   @override
@@ -109,11 +122,12 @@ class _$_ZacContext implements _ZacContext {
         (other.runtimeType == runtimeType &&
             other is _$_ZacContext &&
             (identical(other.onUnmount, onUnmount) ||
-                other.onUnmount == onUnmount));
+                other.onUnmount == onUnmount) &&
+            (identical(other.buildIn, buildIn) || other.buildIn == buildIn));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onUnmount);
+  int get hashCode => Object.hash(runtimeType, onUnmount, buildIn);
 
   @JsonKey(ignore: true)
   @override
@@ -124,11 +138,13 @@ class _$_ZacContext implements _ZacContext {
 
 abstract class _ZacContext implements ZacContext {
   factory _ZacContext(
-          {required final void Function(void Function()) onUnmount}) =
-      _$_ZacContext;
+      {required final void Function(void Function()) onUnmount,
+      required final BuildIn buildIn}) = _$_ZacContext;
 
   @override
   void Function(void Function()) get onUnmount;
+  @override
+  BuildIn get buildIn;
   @override
   @JsonKey(ignore: true)
   _$$_ZacContextCopyWith<_$_ZacContext> get copyWith =>

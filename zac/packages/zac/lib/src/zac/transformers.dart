@@ -69,8 +69,12 @@ extension HandleTransformer on List<ZacTransformer> {
     ZacActionPayload? payload,
   ) {
     return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj =
-          element.transform(previousValue, context, zacContext, payload);
+      final obj = element.transform(
+        previousValue,
+        context,
+        zacContext.copyWith.call(buildIn: BuildIn.transformer),
+        payload,
+      );
       return previousValue.copyWith.call(value: obj);
     }).value;
   }

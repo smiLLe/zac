@@ -5,31 +5,6 @@ import 'package:zac/src/zac/zac_value.dart';
 
 abstract class ZacBuilder<T> {
   factory ZacBuilder.fromJson(Object data) {
-//     assert(() {
-//       /// Check if item can be converted
-//       ConverterHelper.ifRegisteredBuilderCb(
-//         data,
-//         orElse: () {
-//           throw StateError('''
-// It was not possible to create an instance of ${ZacBuilder<T>} from JSON.
-// The data could not be converted as no valid converter was found
-// or the given JSON was of an unsupported type.
-// This will fail on production.
-// The data: $data''');
-//         },
-//       );
-
-//       final builder = ConverterHelper.convertToType<Object?>(data);
-//       if (builder is! ZacBuilder<T>) {
-//         throw StateError('''
-// It was not possible to create ${ZacBuilder<T>} because the created builder
-// was of a different type.
-// This will fail on production.
-// Created builder: $builder''');
-//       }
-//       return true;
-//     }());
-
     return ZacRegistry.ifBuilderLikeMap<ZacBuilder<T>>(
       data,
       cb: (map, converterName) => ZacRegistry().when<T>(

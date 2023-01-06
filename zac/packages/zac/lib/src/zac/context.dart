@@ -3,10 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'context.freezed.dart';
 
+enum BuildIn { widget, action, transformer }
+
 @freezed
 class ZacContext with _$ZacContext {
   factory ZacContext({
     required void Function(void Function() cb) onUnmount,
+    required BuildIn buildIn,
   }) = _ZacContext;
 }
 
@@ -28,5 +31,6 @@ ZacContext useZacContext() {
 
   return ZacContext(
     onUnmount: addCb,
+    buildIn: BuildIn.widget,
   );
 }

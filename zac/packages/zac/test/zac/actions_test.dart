@@ -12,6 +12,26 @@ import '../helper.dart';
 import '../helper.mocks.dart';
 
 void main() {
+  group('List of Actions', () {
+    testWidgets('BuldIn has correct value', (tester) async {
+      await testWithContext(
+        tester,
+        (getContext, getZacContext) {
+          late BuildIn buildIn;
+          [
+            LeakAction(
+              (payload, zacContext) {
+                buildIn = zacContext.buildIn;
+              },
+            )
+          ].execute(const ZacActionPayload(), getContext(), getZacContext());
+
+          expect(buildIn, BuildIn.action);
+        },
+      );
+    });
+  });
+
   group('Control Flow Actions:', () {
     group('if Action', () {
       testWidgets('will execute Action if condition is true', (tester) async {

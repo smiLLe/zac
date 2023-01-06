@@ -354,6 +354,18 @@ class SharedValueProvider extends HookConsumerWidget {
   }
 }
 
+extension SharedValueOnBuildIn on BuildIn {
+  SharedValueConsumeType get defaultConsumeType {
+    switch (this) {
+      case BuildIn.widget:
+        return const SharedValueConsumeType.watch();
+      case BuildIn.transformer:
+      case BuildIn.action:
+        return const SharedValueConsumeType.read();
+    }
+  }
+}
+
 @freezedZacBuilder
 class ConsumeSharedValue<T>
     with _$ConsumeSharedValue<T>
@@ -382,7 +394,7 @@ class ConsumeSharedValue<T>
     final value = SharedValue.get(
       context: context,
       zacContext: zacContext,
-      consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
+      consumeType: forceConsume ?? zacContext.buildIn.defaultConsumeType,
       family: family,
     );
 
@@ -529,7 +541,7 @@ Value after: $transformedVal''');
     final consumedValue = SharedValue.get(
       context: context,
       zacContext: zacContext,
-      consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
+      consumeType: forceConsume ?? zacContext.buildIn.defaultConsumeType,
       family: family,
     );
 
@@ -670,7 +682,7 @@ Value after: $transformedVal''');
     final consumedValue = SharedValue.get(
       context: context,
       zacContext: zacContext,
-      consumeType: forceConsume ?? const SharedValueConsumeType.watch(),
+      consumeType: forceConsume ?? zacContext.buildIn.defaultConsumeType,
       family: family,
     );
     if (consumedValue is! Map) {

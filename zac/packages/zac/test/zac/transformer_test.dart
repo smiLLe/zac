@@ -34,6 +34,28 @@ void _expectFromJson<T>({
 }
 
 void main() {
+  group('List of Transformer', () {
+    testWidgets('BuldIn has correct value', (tester) async {
+      await testWithContext(
+        tester,
+        (getContext, getZacContext) {
+          late BuildIn buildIn;
+          [
+            CustomTransformer(
+              (transformValue, context, zacContext, payload) {
+                buildIn = zacContext.buildIn;
+                return transformValue.value;
+              },
+            )
+          ].transform(
+              ZacTransformValue(1), getContext(), getZacContext(), null);
+
+          expect(buildIn, BuildIn.transformer);
+        },
+      );
+    });
+  });
+
   group('Iterable', () {
     testWidgets('.map()', (tester) async {
       _expectFromJson<IterableTransformer>(
