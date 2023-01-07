@@ -265,8 +265,8 @@ All possible states are "${machine.states.keys.join(', ')}".
 @freezedZacBuilder
 class ZacStateMachineActions
     with _$ZacStateMachineActions
-    implements ZacAction {
-  const ZacStateMachineActions._();
+    implements ZacBuilder<ZacAction> {
+  ZacStateMachineActions._();
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
   static const String unionValueTrySend = 'z:1:StateMachine:Action.trySend';
@@ -286,9 +286,8 @@ class ZacStateMachineActions
     required ZacBuilder<String> event,
   }) = _ZacStateMachineActionsTrySend;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       send: (obj) {
         final machine = SharedValue.get(
@@ -309,7 +308,10 @@ class ZacStateMachineActions
         machine.trySend(obj.event.build(context, zacContext), payload.params);
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder

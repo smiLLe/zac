@@ -88,13 +88,13 @@ void main() {
   });
 
   testWidgets('FlutterTextField() onChanged', (tester) async {
-    final cb = MockLeakedActionCb();
+    final cb = MockTestExecute();
     await testZacWidget(
       tester,
       FlutterMaterial(
         child: FlutterTextField(
           key: FlutterValueKey('FINDME'),
-          onChanged: ZacActions([LeakAction(cb)]),
+          onChanged: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
         ),
       ),
     );
@@ -107,6 +107,7 @@ void main() {
     verify(cb(
             argThat(isA<ZacActionPayload>()
                 .having((p0) => p0.params, 'param', 'hello world')),
+            any,
             any))
         .called(1);
   });

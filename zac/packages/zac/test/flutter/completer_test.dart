@@ -58,6 +58,7 @@ void main() {
 
         ZacCompleterActions.completeVoid(
                 completer: ConsumeSharedValue<Completer>(family: 'shared'))
+            .build(getContext(), getZacContext())
             .execute(const ZacActionPayload(), getContext(), getZacContext());
 
         expect(c.isCompleted, isTrue);

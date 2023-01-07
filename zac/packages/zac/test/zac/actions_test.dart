@@ -6,6 +6,7 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../flutter/models.dart';
 import '../helper.dart';
@@ -19,11 +20,9 @@ void main() {
         (getContext, getZacContext) {
           late BuildIn buildIn;
           [
-            LeakAction(
-              (payload, zacContext) {
-                buildIn = zacContext.buildIn;
-              },
-            )
+            TestAction((payload, buildContext, zacContext) {
+              buildIn = zacContext.buildIn;
+            }).build(getContext(), getZacContext())
           ].execute(const ZacActionPayload(), getContext(), getZacContext());
 
           expect(buildIn, BuildIn.action);
@@ -38,20 +37,23 @@ void main() {
         await testWithContext(
           tester,
           (getContext, getZacContext) {
-            final trueCb = MockLeakedActionCb();
-            final falseCb = MockLeakedActionCb();
+            final trueCb = MockTestExecute();
+            final falseCb = MockTestExecute();
 
             ZacControlFlowAction.ifCond(
               condition:
                   ZacTransformers([ObjectTransformer.equals(other: 'hello')]),
-              ifTrue: ZacActions([LeakAction(trueCb)]),
-              ifFalse: ZacActions([LeakAction(falseCb)]),
-            ).execute(
+              ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(trueCb)]),
+              ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(falseCb)]),
+            ).build(getContext(), getZacContext()).execute(
                 ZacActionPayload.param('hello'), getContext(), getZacContext());
 
             verify(trueCb(
                     argThat(isA<ZacActionPayload>()
                         .having((p0) => p0.params, 'payload params', 'hello')),
+                    any,
                     argThat(isA<ZacContext>())))
                 .called(1);
             verifyZeroInteractions(falseCb);
@@ -63,19 +65,22 @@ void main() {
         await testWithContext(
           tester,
           (getContext, getZacContext) {
-            final trueCb = MockLeakedActionCb();
-            final falseCb = MockLeakedActionCb();
+            final trueCb = MockTestExecute();
+            final falseCb = MockTestExecute();
             ZacControlFlowAction.ifCond(
               condition:
                   ZacTransformers([ObjectTransformer.equals(other: 'world')]),
-              ifTrue: ZacActions([LeakAction(trueCb)]),
-              ifFalse: ZacActions([LeakAction(falseCb)]),
-            ).execute(
+              ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(trueCb)]),
+              ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(falseCb)]),
+            ).build(getContext(), getZacContext()).execute(
                 ZacActionPayload.param('hello'), getContext(), getZacContext());
 
             verify(falseCb(
                     argThat(isA<ZacActionPayload>()
                         .having((p0) => p0.params, 'payload params', 'hello')),
+                    any,
                     argThat(isA<ZacContext>())))
                 .called(1);
             verifyZeroInteractions(trueCb);
@@ -87,22 +92,25 @@ void main() {
           'condition can be an array and once returned false it will execute ifFalse Actions',
           (tester) async {
         await testWithContext(tester, (getContext, getZacContext) {
-          final trueCb = MockLeakedActionCb();
-          final falseCb = MockLeakedActionCb();
+          final trueCb = MockTestExecute();
+          final falseCb = MockTestExecute();
           ZacControlFlowAction.ifCond(
             condition: ZacTransformers([
               ObjectTransformer.equals(other: 'hello'),
               ObjectTransformer.equals(other: 'THAT IS FALSE'),
               ObjectTransformer.equals(other: 'hello'),
             ]),
-            ifTrue: ZacActions([LeakAction(trueCb)]),
-            ifFalse: ZacActions([LeakAction(falseCb)]),
-          ).execute(
+            ifTrue:
+                ZacValueList<ZacAction, List<ZacAction>>([TestAction(trueCb)]),
+            ifFalse:
+                ZacValueList<ZacAction, List<ZacAction>>([TestAction(falseCb)]),
+          ).build(getContext(), getZacContext()).execute(
               ZacActionPayload.param('hello'), getContext(), getZacContext());
 
           verify(falseCb(
                   argThat(isA<ZacActionPayload>()
                       .having((p0) => p0.params, 'payload params', 'hello')),
+                  any,
                   argThat(isA<ZacContext>())))
               .called(1);
           verifyZeroInteractions(trueCb);
@@ -135,8 +143,8 @@ void main() {
           expect(
               () => ZacControlFlowAction.ifCond(
                     condition: ZacTransformers([]),
-                    ifTrue: const ZacActions([]),
-                  ).execute(
+                    ifTrue: ZacValueList<ZacAction, List<ZacAction>>([]),
+                  ).build(getContext(), getZacContext()).execute(
                       const ZacActionPayload(), getContext(), getZacContext()),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
@@ -152,8 +160,11 @@ void main() {
           expect(
               () => ZacControlFlowAction.ifCond(
                     condition: ZacTransformers([ObjectTransformer.toString()]),
-                    ifTrue: const ZacActions([]),
-                  ).execute(ZacActionPayload.param('hello'), getContext(),
+                    ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
+                        [TestAction.noop(<String, dynamic>{})]),
+                  ).build(getContext(), getZacContext()).execute(
+                      ZacActionPayload.param('hello'),
+                      getContext(),
                       getZacContext()),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
@@ -176,12 +187,9 @@ void main() {
     testWidgets('can be converted', (tester) async {
       await testMap(tester, <String, dynamic>{
         'builder': 'z:1:ExecuteActions.once',
-        'actions': {
-          'builder': 'z:1:Actions',
-          'actions': [
-            {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
-          ],
-        },
+        'actions': [
+          {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
+        ],
         'child': {
           'builder': 'f:1:SizedBox',
           'key': KeysModel.getValueKey('child')
@@ -193,14 +201,16 @@ void main() {
     });
 
     testWidgets('will execute interactions', (tester) async {
-      final executeCb = MockLeakedActionCb();
+      final executeCb = MockTestExecute();
 
       await testZacWidget(
-        tester,
-        ZacExecuteActionsBuilder.once(
-            actions: LeakAction.createActions(executeCb)),
-      );
-      verify(executeCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+          tester,
+          ZacExecuteActionsBuilder.once(
+            actions: ZacValueList<ZacAction, List<ZacAction>>(
+                [TestAction(executeCb)]),
+          ));
+      verify(executeCb(
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(1);
       await tester.pump();
       await tester.pump();
@@ -212,14 +222,14 @@ void main() {
 
   group('ZacExecuteActionsListen', () {
     testWidgets('execute interactions', (tester) async {
-      final cb = MockLeakedActionCb();
+      final cb = MockTestExecute();
       await testWithContextWithChild(
         tester,
         (child) => SharedValueProviderBuilder.provideInt(
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            actions: ZacActions([LeakAction(cb)]),
+            actions: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),
@@ -237,6 +247,7 @@ void main() {
           verify(cb(
                   argThat(isA<ZacActionPayload>()
                       .having((p0) => p0.params, 'param', [2, 1])),
+                  any,
                   any))
               .called(1);
           verifyNoMoreInteractions(cb);
@@ -252,15 +263,12 @@ void main() {
         <String, dynamic>{
           'builder': FlutterElevatedButton.unionValue,
           'key': KeysModel.getValueKey('button'),
-          'onPressed': {
-            'builder': 'z:1:Actions',
-            'actions': [
-              {
-                'builder': 'f:1:showDialog',
-                'child': ChildModel.getSizedBox(key: 'dialog_child')
-              },
-            ],
-          }
+          'onPressed': [
+            {
+              'builder': 'f:1:showDialog',
+              'child': ChildModel.getSizedBox(key: 'dialog_child')
+            },
+          ],
         },
       );
 

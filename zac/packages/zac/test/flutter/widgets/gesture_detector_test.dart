@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../helper.dart';
 import '../../helper.mocks.dart';
@@ -11,10 +12,10 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterGestureDetector interactions', (tester) async {
-    final onTapCb = MockLeakedActionCb();
-    final onLongPressCb = MockLeakedActionCb();
-    final onSecondaryLongPressCb = MockLeakedActionCb();
-    final onTertiaryLongPressCb = MockLeakedActionCb();
+    final onTapCb = MockTestExecute();
+    final onLongPressCb = MockTestExecute();
+    final onSecondaryLongPressCb = MockTestExecute();
+    final onTertiaryLongPressCb = MockTestExecute();
 
     await testZacWidget(
       tester,
@@ -22,10 +23,13 @@ void main() {
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: FlutterSizedBox(),
-        onTap: LeakAction.createActions(onTapCb),
-        onLongPress: LeakAction.createActions(onLongPressCb),
-        onSecondaryLongPress: LeakAction.createActions(onSecondaryLongPressCb),
-        onTertiaryLongPress: LeakAction.createActions(onTertiaryLongPressCb),
+        onTap: ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
+        onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+            [TestAction(onLongPressCb)]),
+        onSecondaryLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+            [TestAction(onSecondaryLongPressCb)]),
+        onTertiaryLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+            [TestAction(onTertiaryLongPressCb)]),
       ),
     );
 
@@ -44,12 +48,13 @@ void main() {
     widget.onTertiaryLongPress?.call();
 
     verifyInOrder([
-      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
-      onLongPressCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+      onTapCb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+      onLongPressCb(
+          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
       onSecondaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
       onTertiaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
     ]);
 
     verifyNoMoreInteractions(onTapCb);
@@ -59,14 +64,15 @@ void main() {
   });
 
   testWidgets('doubleTap', (tester) async {
-    final doubleTapCb = MockLeakedActionCb();
+    final doubleTapCb = MockTestExecute();
     await testZacWidget(
       tester,
       FlutterGestureDetector(
         key: FlutterValueKey('FIND_ME'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: FlutterSizedBox(),
-        onDoubleTap: LeakAction.createActions(doubleTapCb),
+        onDoubleTap:
+            ZacValueList<ZacAction, List<ZacAction>>([TestAction(doubleTapCb)]),
       ),
     );
 
@@ -80,7 +86,8 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('FIND_ME')));
     await tester.pumpAndSettle();
 
-    verify(doubleTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+    verify(doubleTapCb(
+            argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
         .called(1);
   });
 

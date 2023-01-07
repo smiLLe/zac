@@ -19,8 +19,8 @@ _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
       edgeOffset: json['edgeOffset'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['edgeOffset'] as Object),
-      onRefresh:
-          ZacBuilder<List<ZacAction>>.fromJson(json['onRefresh'] as Object),
+      onRefresh: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
+          json['onRefresh'] as Object),
       color: json['color'] == null
           ? null
           : ZacBuilder<Color?>.fromJson(json['color'] as Object),

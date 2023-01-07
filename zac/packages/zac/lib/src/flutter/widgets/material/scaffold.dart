@@ -95,8 +95,8 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuilder<Scaffold> {
 @freezedZacBuilder
 class FlutterScaffoldActions
     with _$FlutterScaffoldActions
-    implements ZacAction {
-  const FlutterScaffoldActions._();
+    implements ZacBuilder<ZacAction> {
+  FlutterScaffoldActions._();
 
   static const String unionValueOpenDrawer = 'f:1:Scaffold.openDrawer';
   static const String unionValueOpenEndDrawer = 'f:1:Scaffold.openEndDrawer';
@@ -132,9 +132,8 @@ class FlutterScaffoldActions
 // AnimationController? transitionAnimationController,
   }) = _FlutterScaffoldActionsShowBottomSheet;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       showBottomSheet: (value) {
         final state = Scaffold.maybeOf(context);
@@ -171,14 +170,17 @@ class FlutterScaffoldActions
             value.value, value.opacity.build(context, zacContext));
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder
 class FlutterScaffoldMessenger
     with _$FlutterScaffoldMessenger
-    implements ZacAction {
-  const FlutterScaffoldMessenger._();
+    implements ZacBuilder<ZacAction> {
+  FlutterScaffoldMessenger._();
 
   static const String unionValue = 'f:1:ScaffoldMessenger';
 
@@ -228,9 +230,8 @@ class FlutterScaffoldMessenger
   factory FlutterScaffoldMessenger.removeCurrentMaterialBanner() =
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context);
@@ -272,7 +273,10 @@ class FlutterScaffoldMessenger
         state.removeCurrentMaterialBanner();
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder
@@ -298,7 +302,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
     // Animation<double>? animation,
-    ZacBuilder<List<ZacAction>?>? onVisible,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible,
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
@@ -372,7 +376,7 @@ class FlutterSnackBarAction
     ZacBuilder<Color?>? textColor,
     ZacBuilder<Color?>? disabledTextColor,
     required String label,
-    required ZacBuilder<List<ZacAction>?>? onPressed,
+    required ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
   }) = _FlutterSnackBarAction;
 
   SnackBarAction _buildWidget(BuildContext context, ZacContext zacContext) {
@@ -419,7 +423,7 @@ class FlutterMaterialBanner
     ZacBuilder<bool?>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-    ZacBuilder<List<ZacAction>?>? onVisible,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible,
   }) = _FlutterMaterialBanner;
 
   MaterialBanner _buildWidget(BuildContext context, ZacContext zacContext) {

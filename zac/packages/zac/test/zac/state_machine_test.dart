@@ -6,6 +6,7 @@ import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
 
@@ -449,14 +450,12 @@ void main() {
         states: <String, ZacStateConfig>{
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
-              actions: ZacActions(
-                [
-                  ZacStateMachineActions.send(
-                    family: 'machine',
-                    event: ZacBuilder<String>.fromJson('NEXT'),
-                  )
-                ],
-              ),
+              actions: ZacValueList<ZacAction, List<ZacAction>>([
+                ZacStateMachineActions.send(
+                  family: 'machine',
+                  event: ZacBuilder<String>.fromJson('NEXT'),
+                )
+              ]),
               child: FlutterSizedBox(),
             ),
             on: [ZacTransition(event: 'NEXT', target: 'b')],
@@ -488,14 +487,12 @@ void main() {
         states: <String, ZacStateConfig>{
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
-              actions: ZacActions(
-                [
-                  ZacStateMachineActions.trySend(
-                    family: 'machine',
-                    event: ZacBuilder<String>.fromJson('NEXT'),
-                  )
-                ],
-              ),
+              actions: ZacValueList<ZacAction, List<ZacAction>>([
+                ZacStateMachineActions.trySend(
+                  family: 'machine',
+                  event: ZacBuilder<String>.fromJson('NEXT'),
+                )
+              ]),
               child: FlutterSizedBox(),
             ),
             on: [ZacTransition(event: 'NEXT', target: 'b')],

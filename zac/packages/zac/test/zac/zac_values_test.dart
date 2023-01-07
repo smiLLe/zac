@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -273,12 +272,14 @@ void main() {
     await testZacWidget(
       tester,
       ZacExecuteActionsBuilder.once(
-        actions: ZacActions([
+        actions: ZacValueList<ZacAction, List<ZacAction>>([
           ZacValueActions.asPayload(
             value: ZacBuilder<Object>.fromJson('hello'),
-            actions: ZacActions([
-              LeakAction(
-                (p, zacContext) => payload = p,
+            actions: ZacValueList<ZacAction, List<ZacAction>>([
+              TestAction(
+                (p, context, zacContext) {
+                  payload = p;
+                },
               )
             ]),
           ),

@@ -1,3 +1,4 @@
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/widgets/interactive_viewer.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterInteractiveViewer()', (tester) async {
-    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
+    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     await testMap(
       tester,
       <String, dynamic>{
@@ -25,9 +26,15 @@ void main() {
         'panEnabled': false,
         'scaleEnabled': false,
         'alignPanAxis': true,
-        'onInteractionStart': NoopAction.createActions(),
-        'onInteractionEnd': NoopAction.createActions(),
-        'onInteractionUpdate': NoopAction.createActions(),
+        'onInteractionStart': const [
+          {'builder': 'test.action'}
+        ],
+        'onInteractionEnd': const [
+          {'builder': 'test.action'}
+        ],
+        'onInteractionUpdate': const [
+          {'builder': 'test.action'}
+        ],
       },
     );
 

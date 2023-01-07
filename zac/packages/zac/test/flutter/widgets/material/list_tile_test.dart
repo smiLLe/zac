@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -28,15 +29,17 @@ void main() {
   });
 
   testWidgets('FlutterListTile interactions', (tester) async {
-    final onTapCb = MockLeakedActionCb();
-    final onLongPressCb = MockLeakedActionCb();
+    final onTapCb = MockTestExecute();
+    final onLongPressCb = MockTestExecute();
     await testZacWidget(
         tester,
         FlutterScaffold(
           body: FlutterListTile(
             key: FlutterValueKey('FIND_ME'),
-            onTap: LeakAction.createActions(onTapCb),
-            onLongPress: LeakAction.createActions(onLongPressCb),
+            onTap:
+                ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
+            onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+                [TestAction(onLongPressCb)]),
           ),
         ));
 
@@ -46,8 +49,9 @@ void main() {
     await tester.longPress(findMe);
 
     verifyInOrder([
-      onTapCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
-      onLongPressCb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)),
+      onTapCb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+      onLongPressCb(
+          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
     ]);
 
     verifyNoMoreInteractions(onTapCb);

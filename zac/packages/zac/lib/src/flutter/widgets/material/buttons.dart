@@ -23,8 +23,8 @@ class FlutterElevatedButton
   factory FlutterElevatedButton({
     ZacBuilder<Key?>? key,
     ZacBuilder<Widget?>? child,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButton;
@@ -34,8 +34,8 @@ class FlutterElevatedButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterElevatedButtonIcon;
@@ -94,8 +94,8 @@ class FlutterOutlinedButton
   factory FlutterOutlinedButton({
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> child,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButton;
@@ -105,8 +105,8 @@ class FlutterOutlinedButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterOutlinedButtonIcon;
@@ -165,8 +165,8 @@ class FlutterTextButton
   factory FlutterTextButton({
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> child,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButton;
@@ -176,8 +176,8 @@ class FlutterTextButton
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> icon,
     required ZacBuilder<Widget> label,
-    ZacBuilder<List<ZacAction>?>? onPressed,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
     ZacBuilder<bool?>? autofocus,
     ZacBuilder<Clip?>? clipBehavior,
   }) = _FlutterTextButtonIcon;

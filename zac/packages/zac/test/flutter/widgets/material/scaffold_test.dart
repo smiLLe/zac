@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/widgets/builder.dart';
 import 'package:zac/src/flutter/widgets/material/buttons.dart';
 import 'package:zac/src/flutter/widgets/material/scaffold.dart';
 
@@ -98,15 +97,12 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder': 'f:1:Scaffold.openDrawer',
-                  'child': ChildModel.getSizedBox(key: 'dialog_child')
-                },
-              ],
-            }
+            'onPressed': [
+              {
+                'builder': 'f:1:Scaffold.openDrawer',
+                'child': ChildModel.getSizedBox(key: 'dialog_child')
+              },
+            ],
           }
         }
       },
@@ -134,15 +130,12 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder': 'f:1:Scaffold.openEndDrawer',
-                  'child': ChildModel.getSizedBox(key: 'dialog_child')
-                },
-              ],
-            }
+            'onPressed': [
+              {
+                'builder': 'f:1:Scaffold.openEndDrawer',
+                'child': ChildModel.getSizedBox(key: 'dialog_child')
+              },
+            ],
           }
         }
       },
@@ -169,16 +162,13 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder': 'f:1:Scaffold.showBodyScrim',
-                  'value': true,
-                  'opacity': 0.33,
-                },
-              ],
-            }
+            'onPressed': [
+              {
+                'builder': 'f:1:Scaffold.showBodyScrim',
+                'value': true,
+                'opacity': 0.33,
+              },
+            ],
           }
         }
       },
@@ -209,15 +199,12 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder': 'f:1:Scaffold.showBottomSheet',
-                  'child': ChildModel.getSizedBox(key: 'child')
-                },
-              ],
-            }
+            'onPressed': [
+              {
+                'builder': 'f:1:Scaffold.showBottomSheet',
+                'child': ChildModel.getSizedBox(key: 'child')
+              },
+            ],
           }
         }
       },
@@ -244,18 +231,15 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder': FlutterScaffoldMessenger.unionValueShowSnackBar,
-                  'snackBar': {
-                    'builder': 'f:1:SnackBar',
-                    'content': ChildModel.getSizedBox(key: 'child'),
-                  }
-                },
-              ],
-            }
+            'onPressed': [
+              {
+                'builder': FlutterScaffoldMessenger.unionValueShowSnackBar,
+                'snackBar': {
+                  'builder': 'f:1:SnackBar',
+                  'content': ChildModel.getSizedBox(key: 'child'),
+                }
+              },
+            ],
           }
         }
       },
@@ -282,35 +266,29 @@ void main() {
             'builder': FlutterElevatedButton.unionValue,
             'key': KeysModel.getValueKey('button'),
             'child': ChildModel.sizedBox,
-            'onPressed': {
-              'builder': 'z:1:Actions',
-              'actions': [
-                {
-                  'builder':
-                      FlutterScaffoldMessenger.unionValueShowMaterialBanner,
-                  'materialBanner': {
-                    'builder': FlutterMaterialBanner.unionValue,
-                    'content': ChildModel.getSizedBox(key: 'child'),
-                    'actions': [
-                      {
-                        'builder': FlutterElevatedButton.unionValue,
-                        'key': KeysModel.getValueKey('remove_button'),
-                        'child': ChildModel.sizedBox,
-                        'onPressed': {
-                          'builder': 'z:1:Actions',
-                          'actions': [
-                            {
-                              'builder': FlutterScaffoldMessenger
-                                  .unionValueRemoveCurrentMaterialBanner
-                            }
-                          ],
+            'onPressed': [
+              {
+                'builder':
+                    FlutterScaffoldMessenger.unionValueShowMaterialBanner,
+                'materialBanner': {
+                  'builder': FlutterMaterialBanner.unionValue,
+                  'content': ChildModel.getSizedBox(key: 'child'),
+                  'actions': [
+                    {
+                      'builder': FlutterElevatedButton.unionValue,
+                      'key': KeysModel.getValueKey('remove_button'),
+                      'child': ChildModel.sizedBox,
+                      'onPressed': [
+                        {
+                          'builder': FlutterScaffoldMessenger
+                              .unionValueRemoveCurrentMaterialBanner
                         }
-                      }
-                    ]
-                  },
+                      ],
+                    }
+                  ]
                 },
-              ],
-            }
+              },
+            ],
           }
         }
       },

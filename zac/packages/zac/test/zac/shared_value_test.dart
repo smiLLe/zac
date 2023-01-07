@@ -672,8 +672,10 @@ void main() {
             await tester.pump();
             expect(find.text('hello'), findsNothing);
             expect(find.text('world'), findsOneWidget);
-            SharedValueActions.invalidate(family: 'shared').execute(
-                const ZacActionPayload(), getContext(), getZacContext());
+            SharedValueActions.invalidate(family: 'shared')
+                .build(getContext(), getZacContext())
+                .execute(
+                    const ZacActionPayload(), getContext(), getZacContext());
             await tester.pumpAndSettle();
             expect(find.text('hello'), findsOneWidget);
             expect(find.text('world'), findsNothing);
@@ -706,9 +708,8 @@ void main() {
                   ),
                 ),
                 ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
-                    SharedValueActions.update(family: 'family'),
-                  ]),
+                  actions: ZacValueList<ZacAction, List<ZacAction>>(
+                      [SharedValueActions.update(family: 'family')]),
                 ),
                 child,
               ]),
@@ -736,12 +737,12 @@ void main() {
               children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(family: 'family')),
                 ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
+                  actions: ZacValueList<ZacAction, List<ZacAction>>([
                     SharedValueActions.update(
                       family: 'family',
                       transformer: ZacTransformers([_ConcatStr('oof')]),
                       ifNoPayloadTakeCurrent: true,
-                    ),
+                    )
                   ]),
                 ),
               ]),
@@ -770,7 +771,7 @@ void main() {
                       [const IterableTransformer.join(separator: ', ')]),
                 )),
                 ZacExecuteActionsBuilder.once(
-                  actions: ZacActions([
+                  actions: ZacValueList<ZacAction, List<ZacAction>>([
                     SharedValueActions.update(
                       family: 'family',
                       transformer: ZacTransformers([
@@ -778,7 +779,7 @@ void main() {
                             transformer: ZacTransformers([_ConcatStr('foo')]))
                       ]),
                       ifNoPayloadTakeCurrent: true,
-                    ),
+                    )
                   ]),
                 ),
               ]),
@@ -814,14 +815,14 @@ void main() {
             ),
           ),
           (getContext, getZacContext) async {
-            ZacActions([
+            ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
                 transformer: ZacTransformers([
                   IterableTransformer.map(
                       transformer: ZacTransformers([_ConcatStr('foo')]))
                 ]),
-              ),
+              )
             ]).build(getContext(), getZacContext()).execute(
                 ZacActionPayload.param(['a', 'b']),
                 getContext(),
@@ -868,7 +869,7 @@ void main() {
             ),
           ),
           (getContext, getZacContext) async {
-            ZacActions([
+            ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
                 transformer: ZacTransformers([
@@ -913,7 +914,7 @@ void main() {
             ),
           ),
           (getContext, getZacContext) async {
-            ZacActions([
+            ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
                 transformer: ZacTransformers([

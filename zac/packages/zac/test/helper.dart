@@ -19,9 +19,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
-part 'helper.freezed.dart';
-part 'helper.g.dart';
-
 void expectInRegistry(Object obj, Object fn) {
   if (obj is! String && obj is! List<String>) throw Error();
 
@@ -119,8 +116,29 @@ Future<void> testFindWidget<T extends Widget>(
   }
 }
 
+class TestAction implements ZacBuilder<ZacAction> {
+  final void Function(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) cb;
+
+  TestAction(this.cb);
+  factory TestAction.noop(Map<String, dynamic> map) {
+    return TestAction((payload, context, zacContext) {});
+  }
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) {
+    return ZacAction(cb);
+  }
+}
+
 TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
   return isA<ZacBuilder<T>>();
+}
+
+@GenerateMocks([TestExecute])
+class TestExecute extends Mock {
+  void call(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
 }
 
 Future<void>
@@ -234,48 +252,48 @@ class LeakBagCb extends Mock {
   void call(Map<String, dynamic> bag) {}
 }
 
-@freezedZacDefaults
-class LeakAction with _$LeakAction implements ZacAction {
-  const LeakAction._();
+// @freezedZacDefaults
+// class LeakAction with _$LeakAction implements ZacAction {
+//   const LeakAction._();
 
-  factory LeakAction(
-          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =
-      _LeakAction;
+//   factory LeakAction(
+//           void Function(ZacActionPayload payload, ZacContext zacContext) cb) =
+//       _LeakAction;
 
-  static ZacBuilder<List<ZacAction>> createActions(
-          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =>
-      ZacActions([LeakAction(cb)]);
+//   static ZacListBuilder<ZacAction, List<ZacAction>> createActions(
+//           void Function(ZacActionPayload payload, ZacContext zacContext) cb) =>
+//       ZacActions([LeakAction(cb)]);
 
-  @override
-  void execute(ZacActionPayload payload, BuildContext context,
-          ZacContext zacContext) =>
-      cb(payload, zacContext);
-}
+//   @override
+//   void execute(ZacActionPayload payload, BuildContext context,
+//           ZacContext zacContext) =>
+//       cb(payload, zacContext);
+// }
 
-@freezedZacBuilder
-class NoopAction with _$NoopAction implements ZacAction {
-  const NoopAction._();
+// @freezedZacBuilder
+// class NoopAction with _$NoopAction implements ZacAction {
+//   const NoopAction._();
 
-  static const String unionValue = 'z:1:test:NoopAction';
+//   static const String unionValue = 'z:1:test:NoopAction';
 
-  static Map<String, dynamic> createActions() => <String, dynamic>{
-        'builder': 'z:1:Actions',
-        'actions': [
-          {
-            'builder': NoopAction.unionValue,
-          }
-        ],
-      };
+//   static Map<String, dynamic> createActions() => <String, dynamic>{
+//         'builder': 'z:1:Actions',
+//         'actions': [
+//           {
+//             'builder': NoopAction.unionValue,
+//           }
+//         ],
+//       };
 
-  factory NoopAction.fromJson(Map<String, dynamic> json) =>
-      _$NoopActionFromJson(json);
+//   factory NoopAction.fromJson(Map<String, dynamic> json) =>
+//       _$NoopActionFromJson(json);
 
-  const factory NoopAction() = _NoopAction;
+//   const factory NoopAction() = _NoopAction;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {}
-}
+//   @override
+//   void execute(
+//       ZacActionPayload payload, BuildContext context, ZacContext zacContext) {}
+// }
 
 class CustomTransformer implements ZacTransformer {
   CustomTransformer(this.cb);

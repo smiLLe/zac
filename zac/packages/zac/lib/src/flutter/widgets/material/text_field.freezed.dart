@@ -57,11 +57,11 @@ mixin _$FlutterTextField {
   ZacBuilder<bool?>? get expands => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get maxLength =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onChanged,
-  ZacBuilder<List<ZacAction>?>? get onChanged =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onChanged =>
       throw _privateConstructorUsedError; // VoidCallback? onEditingComplete,
-  ZacBuilder<List<ZacAction>?>? get onEditingComplete =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onEditingComplete =>
       throw _privateConstructorUsedError; // ValueChanged<String>? onSubmitted,
-  ZacBuilder<List<ZacAction>?>? get onSubmitted =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onSubmitted =>
       throw _privateConstructorUsedError; // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   ZacBuilder<bool?>? get enabled => throw _privateConstructorUsedError;
@@ -80,7 +80,7 @@ mixin _$FlutterTextField {
   ZacBuilder<bool?>? get enableInteractiveSelection =>
       throw _privateConstructorUsedError; // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
-  ZacBuilder<List<ZacAction>?>? get onTap =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onTap =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
   ZacBuilder<ScrollController?>? get scrollController =>
@@ -199,13 +199,13 @@ class _$_FlutterTextField extends _FlutterTextField {
   final ZacBuilder<int?>? maxLength;
 // ValueChanged<String>? onChanged,
   @override
-  final ZacBuilder<List<ZacAction>?>? onChanged;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onChanged;
 // VoidCallback? onEditingComplete,
   @override
-  final ZacBuilder<List<ZacAction>?>? onEditingComplete;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onEditingComplete;
 // ValueChanged<String>? onSubmitted,
   @override
-  final ZacBuilder<List<ZacAction>?>? onSubmitted;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onSubmitted;
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   @override
@@ -232,7 +232,7 @@ class _$_FlutterTextField extends _FlutterTextField {
 // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
   @override
-  final ZacBuilder<List<ZacAction>?>? onTap;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onTap;
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
   @override
@@ -420,9 +420,9 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacBuilder<int?>? minLines,
           final ZacBuilder<bool?>? expands,
           final ZacBuilder<int?>? maxLength,
-          final ZacBuilder<List<ZacAction>?>? onChanged,
-          final ZacBuilder<List<ZacAction>?>? onEditingComplete,
-          final ZacBuilder<List<ZacAction>?>? onSubmitted,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onChanged,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onEditingComplete,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onSubmitted,
           final ZacBuilder<bool?>? enabled,
           final ZacBuilder<double?>? cursorWidth,
           final ZacBuilder<double?>? cursorHeight,
@@ -433,7 +433,7 @@ abstract class _FlutterTextField extends FlutterTextField {
           final ZacBuilder<Brightness?>? keyboardAppearance,
           final ZacBuilder<EdgeInsets?>? scrollPadding,
           final ZacBuilder<bool?>? enableInteractiveSelection,
-          final ZacBuilder<List<ZacAction>?>? onTap,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onTap,
           final ZacBuilder<ScrollController?>? scrollController,
           final ZacBuilder<Clip?>? clipBehavior,
           final ZacBuilder<String?>? restorationId,
@@ -492,11 +492,11 @@ abstract class _FlutterTextField extends FlutterTextField {
   @override
   ZacBuilder<int?>? get maxLength;
   @override // ValueChanged<String>? onChanged,
-  ZacBuilder<List<ZacAction>?>? get onChanged;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onChanged;
   @override // VoidCallback? onEditingComplete,
-  ZacBuilder<List<ZacAction>?>? get onEditingComplete;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onEditingComplete;
   @override // ValueChanged<String>? onSubmitted,
-  ZacBuilder<List<ZacAction>?>? get onSubmitted;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onSubmitted;
   @override // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
   ZacBuilder<bool?>? get enabled;
@@ -520,7 +520,7 @@ abstract class _FlutterTextField extends FlutterTextField {
   ZacBuilder<bool?>? get enableInteractiveSelection;
   @override // TextSelectionControls? selectionControls,
 // GestureTapCallback? onTap,
-  ZacBuilder<List<ZacAction>?>? get onTap;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onTap;
   @override // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
   ZacBuilder<ScrollController?>? get scrollController;

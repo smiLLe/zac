@@ -74,8 +74,10 @@ See "$SharedValueProviderBuilder" for more info.
 }
 
 @freezedZacBuilder
-class SharedValueActions with _$SharedValueActions implements ZacAction {
-  const SharedValueActions._();
+class SharedValueActions
+    with _$SharedValueActions
+    implements ZacBuilder<ZacAction> {
+  SharedValueActions._();
 
   static const String unionValue = 'z:1:SharedValue.update';
   static const String unionValueInvalidate = 'z:1:SharedValue.invalidate';
@@ -106,9 +108,8 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
         value;
   }
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       update: (obj) {
         SharedValue.update(context, zacContext, obj.family, (current) {
@@ -134,7 +135,10 @@ class SharedValueActions with _$SharedValueActions implements ZacAction {
         context.widgetRef.invalidate(SharedValue.provider(family));
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder

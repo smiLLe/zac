@@ -127,7 +127,7 @@ class FlutterPageRouteBuilder
     required String familyName,
     required Object? arguments,
   }) {
-    return PageRouteBuilder<ZacBuilder<List<ZacAction>?>?>(
+    return PageRouteBuilder<ZacListBuilder<ZacAction, List<ZacAction>?>?>(
       pageBuilder: (_, __, ___) => SharedValueProvider(
         childBuilder: child.build,
         valueBuilder: (_, __, ___) => arguments,
@@ -248,8 +248,8 @@ class FlutterNavigator
 @freezedZacBuilder
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
-    implements ZacAction {
-  const FlutterNavigatorActions._();
+    implements ZacBuilder<ZacAction> {
+  FlutterNavigatorActions._();
 
   factory FlutterNavigatorActions.fromJson(Map<String, dynamic> json) =>
       _$FlutterNavigatorActionsFromJson(json);
@@ -269,20 +269,20 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pop')
   factory FlutterNavigatorActions.pop({
-    ZacBuilder<List<ZacAction>?>? actions,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue('f:1:Navigator.maybePop')
   factory FlutterNavigatorActions.maybePop({
-    ZacBuilder<List<ZacAction>?>? actions,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
     required ZacBuilder<Route<Object?>> route,
-    ZacBuilder<List<ZacAction>?>? result,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? result,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
@@ -291,7 +291,7 @@ class FlutterNavigatorActions
     required ZacBuilder<String> routeName,
     Object? arguments,
     ZacBuilder<NavigatorState?>? navigatorState,
-    ZacBuilder<List<ZacAction>?>? result,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')
@@ -316,21 +316,20 @@ class FlutterNavigatorActions
         Navigator.maybeOf(context);
   }
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       push: (obj) {
         final state = _getState(context, zacContext);
         if (null == state) return null;
         state.push(obj.route.build(context, zacContext)).then((value) {
           if (!context.isMounted) return;
-          if (value is ZacActions) {
-            value.build(context, zacContext).execute(
-                  const ZacActionPayload(),
-                  context,
-                  zacContext,
-                );
+          if (value is List<ZacAction>) {
+            value.execute(
+              const ZacActionPayload(),
+              context,
+              zacContext,
+            );
           }
         });
       },
@@ -344,10 +343,8 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (!context.isMounted) return;
-          if (value is ZacActions) {
-            value
-                .build(context, zacContext)
-                .execute(const ZacActionPayload(), context, zacContext);
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
@@ -371,10 +368,8 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (!context.isMounted) return;
-          if (value is ZacActions) {
-            value
-                .build(context, zacContext)
-                .execute(const ZacActionPayload(), context, zacContext);
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
@@ -389,10 +384,8 @@ class FlutterNavigatorActions
         )
             .then((value) {
           if (!context.isMounted) return;
-          if (value is ZacActions) {
-            value
-                .build(context, zacContext)
-                .execute(const ZacActionPayload(), context, zacContext);
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
@@ -407,7 +400,10 @@ class FlutterNavigatorActions
         )));
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder

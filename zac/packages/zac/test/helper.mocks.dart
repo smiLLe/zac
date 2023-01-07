@@ -3,9 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:zac/src/zac/action.dart' as _i3;
-import 'package:zac/src/zac/context.dart' as _i4;
+import 'package:zac/src/zac/context.dart' as _i5;
 
 import 'helper.dart' as _i2;
 
@@ -20,6 +21,33 @@ import 'helper.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+/// A class which mocks [TestExecute].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTestExecute extends _i1.Mock implements _i2.TestExecute {
+  MockTestExecute() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  void call(
+    _i3.ZacActionPayload? payload,
+    _i4.BuildContext? context,
+    _i5.ZacContext? zacContext,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [
+            payload,
+            context,
+            zacContext,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
 /// A class which mocks [LeakedActionCb].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -31,7 +59,7 @@ class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
   @override
   void call(
     _i3.ZacActionPayload? payload,
-    _i4.ZacContext? zacContext,
+    _i5.ZacContext? zacContext,
   ) =>
       super.noSuchMethod(
         Invocation.method(

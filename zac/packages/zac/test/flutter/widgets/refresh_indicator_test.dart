@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:mockito/mockito.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +9,13 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterRefreshIndicator()', (tester) async {
-    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
+    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     await testWithinMaterialApp(
       tester,
       Scaffold(
         appBar: AppBar(title: const Text('Title')),
         body: ZacWidget(
-          data: {
+          data: <String, dynamic>{
             'builder': 'f:1:RefreshIndicator',
             'key': KeysModel.getValueKey('FIND_ME'),
             'child': {
@@ -27,7 +25,9 @@ void main() {
                 ChildModel.getSizedBox(key: 'child2')
               ],
             },
-            'onRefresh': NoopAction.createActions(),
+            'onRefresh': const [
+              {'builder': 'test.action'}
+            ],
             'semanticsLabel': 'semanticsLabel',
             'semanticsValue': 'semanticsValue',
             'color': ColorModel.json,
@@ -65,14 +65,15 @@ void main() {
 
   testWidgets('Execute onRefresh without custom completer', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
-    final cb = MockLeakedActionCb();
+    final cb = MockTestExecute();
     await testWithinMaterialApp(
       tester,
       Scaffold(
         appBar: AppBar(title: const Text('Title')),
         body: ZacWidget(
           data: FlutterRefreshIndicator(
-            onRefresh: ZacActions([LeakAction(cb)]),
+            onRefresh:
+                ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
             child: FlutterListView(
               children: ZacValueList<Widget, List<Widget>?>(
                 [
@@ -96,6 +97,6 @@ void main() {
 
     handle.dispose();
 
-    verify(cb(const ZacActionPayload(), any)).called(1);
+    verify(cb(const ZacActionPayload(), any, any)).called(1);
   });
 }

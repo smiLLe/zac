@@ -85,14 +85,15 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<int?>.fromJson(json['maxLength'] as Object),
       onChanged: json['onChanged'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onChanged'] as Object),
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+              json['onChanged'] as Object),
       onEditingComplete: json['onEditingComplete'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
               json['onEditingComplete'] as Object),
       onSubmitted: json['onSubmitted'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
               json['onSubmitted'] as Object),
       enabled: json['enabled'] == null
           ? null
@@ -130,7 +131,8 @@ _$_FlutterTextField _$$_FlutterTextFieldFromJson(Map<String, dynamic> json) =>
               json['enableInteractiveSelection'] as Object),
       onTap: json['onTap'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onTap'] as Object),
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+              json['onTap'] as Object),
       scrollController: json['scrollController'] == null
           ? null
           : ZacBuilder<ScrollController?>.fromJson(

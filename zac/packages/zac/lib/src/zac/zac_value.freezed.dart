@@ -240,7 +240,8 @@ ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ZacValueActions {
   ZacBuilder<Object?> get value => throw _privateConstructorUsedError;
-  ZacActions get actions => throw _privateConstructorUsedError;
+  ZacListBuilder<ZacAction, List<ZacAction>> get actions =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -261,7 +262,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
   @override
   final ZacBuilder<Object?> value;
   @override
-  final ZacActions actions;
+  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
 
   @override
   String toString() {
@@ -292,8 +293,9 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
 
 abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   factory _ZacValueActionsAsPayload(
-      {required final ZacBuilder<Object?> value,
-      required final ZacActions actions}) = _$_ZacValueActionsAsPayload;
+          {required final ZacBuilder<Object?> value,
+          required final ZacListBuilder<ZacAction, List<ZacAction>> actions}) =
+      _$_ZacValueActionsAsPayload;
   _ZacValueActionsAsPayload._() : super._();
 
   factory _ZacValueActionsAsPayload.fromJson(Map<String, dynamic> json) =
@@ -302,5 +304,5 @@ abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   @override
   ZacBuilder<Object?> get value;
   @override
-  ZacActions get actions;
+  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
 }

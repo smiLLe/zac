@@ -195,8 +195,8 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
 }
 
 @freezedZacBuilder
-class ZacValueActions with _$ZacValueActions implements ZacAction {
-  const ZacValueActions._();
+class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
+  ZacValueActions._();
 
   static const String unionValue = 'z:1:ZacValue.asActionPayload';
 
@@ -206,12 +206,11 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
   @FreezedUnionValue(ZacValueActions.unionValue)
   factory ZacValueActions.asPayload({
     required ZacBuilder<Object?> value,
-    required ZacActions actions,
+    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
   }) = _ZacValueActionsAsPayload;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       asPayload: (obj) {
         final val = obj.value.build(context, zacContext);
@@ -220,5 +219,8 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
             .execute(ZacActionPayload.param(val), context, zacContext);
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }

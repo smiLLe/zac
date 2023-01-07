@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -177,7 +178,7 @@ void main() {
 
   group('SimpleDialogOption', () {
     testWidgets('SimpleDialogOption*', (tester) async {
-      ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
+      ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
       await testMap(
         tester,
         <String, dynamic>{
@@ -187,7 +188,9 @@ void main() {
             'key': KeysModel.getValueKey('FIND_ME'),
             'child': ChildModel.getSizedBox(key: 'child1'),
             'padding': EdgeInsetsModel.geometry_edgeInsetsAll,
-            'onPressed': NoopAction.createActions(),
+            'onPressed': const [
+              {'builder': 'test.action'}
+            ],
           }
         },
       );
@@ -206,21 +209,22 @@ void main() {
     });
 
     testWidgets('interaction', (tester) async {
-      final cb = MockLeakedActionCb();
+      final cb = MockTestExecute();
       await testZacWidget(
           tester,
           FlutterMaterial(
               child: FlutterDialogs.simpleDialogOption(
             key: FlutterValueKey('FIND_ME'),
             child: FlutterSizedBox(key: FlutterValueKey('child1')),
-            onPressed: LeakAction.createActions(cb),
+            onPressed:
+                ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
           )));
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
       await tester.tap(findMe);
 
-      verify(cb(argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+      verify(cb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(1);
     });
   });

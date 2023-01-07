@@ -78,7 +78,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
   factory FlutterDialogs.simpleDialogOption({
     ZacBuilder<Key?>? key,
     ZacBuilder<Widget?>? child,
-    ZacBuilder<List<ZacAction>?>? onPressed,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
     ZacBuilder<EdgeInsets?>? padding,
   }) = _FlutterDialogsSimpleDialogOption;
 
@@ -164,8 +164,10 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
 }
 
 @freezedZacBuilder
-class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
-  const FlutterDialogActions._();
+class FlutterDialogActions
+    with _$FlutterDialogActions
+    implements ZacBuilder<ZacAction> {
+  FlutterDialogActions._();
 
   static const String unionValue = 'f:1:showDialog';
 
@@ -183,11 +185,11 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
     ZacBuilder<RouteSettings?>? routeSettings,
   }) = _FlutterDialogActionsShowDialog;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
-      showDialog: (value) => showDialog<ZacBuilder<List<ZacAction>?>?>(
+      showDialog: (value) =>
+          showDialog<ZacListBuilder<ZacAction, List<ZacAction>?>?>(
         context: context,
         builder: (_) =>
             FlutterBuilder(child: value.child).build(context, zacContext),
@@ -201,5 +203,8 @@ class FlutterDialogActions with _$FlutterDialogActions implements ZacAction {
             value.useRootNavigator?.build(context, zacContext) ?? true,
       ),
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }

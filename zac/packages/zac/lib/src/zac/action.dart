@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/registry.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
@@ -14,18 +13,13 @@ import 'package:zac/src/zac/zac_builder.dart';
 part 'action.freezed.dart';
 part 'action.g.dart';
 
-abstract class ZacAction {
-  factory ZacAction.fromJson(Map<String, dynamic> json) {
-    return ZacRegistry.ifBuilderLikeMap<ZacAction>(
-      json,
-      cb: (map, converterName) =>
-          ZacRegistry().getRegisteredAction(converterName).call(map),
-      orElse: () => throw StateError('Could not create $ZacAction from $json'),
-    );
-  }
-
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
+@freezed
+class ZacAction with _$ZacAction {
+  factory ZacAction(
+    void Function(ZacActionPayload payload, BuildContext context,
+            ZacContext zacContext)
+        execute,
+  ) = _ZacAction;
 }
 
 @freezed
@@ -47,24 +41,6 @@ class ZacActionPayload with _$ZacActionPayload {
         param: (obj) => [obj.value],
         param2: (obj) => [obj.first, obj.second],
       );
-}
-
-@freezedZacBuilder
-class ZacActions with _$ZacActions implements ZacBuilder<List<ZacAction>> {
-  const ZacActions._();
-
-  static const String unionValue = 'z:1:Actions';
-
-  factory ZacActions.fromJson(Map<String, dynamic> json) =>
-      _$ZacActionsFromJson(json);
-
-  @FreezedUnionValue(ZacActions.unionValue)
-  const factory ZacActions(List<ZacAction> actions) = _ZacActions;
-
-  @override
-  List<ZacAction> build(BuildContext context, ZacContext zacContext) {
-    return actions;
-  }
 }
 
 extension HandleActions on List<ZacAction> {
@@ -108,13 +84,13 @@ class ZacExecuteActionsBuilder
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
-    required ZacBuilder<List<ZacAction>> actions,
+    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
-    required ZacBuilder<List<ZacAction>> actions,
+    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
     required SharedValueFamily family,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
@@ -189,8 +165,10 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 }
 
 @freezedZacBuilder
-class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
-  const ZacControlFlowAction._();
+class ZacControlFlowAction
+    with _$ZacControlFlowAction
+    implements ZacBuilder<ZacAction> {
+  ZacControlFlowAction._();
 
   static const String unionValue = 'z:1:ControlFlowAction.if';
 
@@ -200,13 +178,12 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
     required ZacBuilder<List<ZacTransformer>> condition,
-    required ZacBuilder<List<ZacAction>> ifTrue,
+    required ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
     ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       ifCond: (obj) {
         final val = payload.map(
@@ -236,5 +213,8 @@ class ZacControlFlowAction with _$ZacControlFlowAction implements ZacAction {
             .execute(payload, context, zacContext);
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }

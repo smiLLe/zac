@@ -50,19 +50,13 @@ void main() {
               'builder': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('page${number}_button'),
               'child': ChildModel.sizedBox,
-              'onPressed': {
-                'builder': 'z:1:Actions',
-                'actions': interactions,
-              }
+              'onPressed': interactions
             },
             {
               'builder': FlutterElevatedButton.unionValue,
               'key': KeysModel.getValueKey('pageback${number}_button'),
               'child': ChildModel.sizedBox,
-              'onPressed': {
-                'builder': 'z:1:Actions',
-                'actions': backActions,
-              }
+              'onPressed': backActions
             },
           ]
         };

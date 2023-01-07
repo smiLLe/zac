@@ -57,7 +57,9 @@ class ZacCompleterVoidProvider
 }
 
 @freezedZacBuilder
-class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
+class ZacCompleterActions
+    with _$ZacCompleterActions
+    implements ZacBuilder<ZacAction> {
   ZacCompleterActions._();
 
   factory ZacCompleterActions.fromJson(Map<String, dynamic> json) =>
@@ -68,9 +70,8 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
     required ZacBuilder<Completer> completer,
   }) = _ZacCompleterActionsVoid;
 
-  @override
-  void execute(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       completeVoid: (obj) {
         final completer = obj.completer.build(context, zacContext);
@@ -78,5 +79,8 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
         completer.complete();
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
