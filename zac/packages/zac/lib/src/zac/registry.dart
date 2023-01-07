@@ -18,8 +18,6 @@ typedef CreateListBuilder = ZacListBuilder<T, X>
 typedef CreateMapBuilder = ZacMapBuilder<T, X> Function<T extends Object?,
     X extends Map<String, T>?>(Map<String, dynamic> map);
 
-typedef CreateAction = ZacAction Function(Map<String, dynamic> map);
-
 typedef CreateTransformer = ZacTransformer Function(Map<String, dynamic> map);
 
 class ZacRegistry extends DelegatingMap<String, Object> {
@@ -58,8 +56,6 @@ $builder''');
 
     return builder;
   }
-
-  CreateAction getRegisteredAction(String name) => _get<CreateAction>(name);
 
   CreateTransformer getRegisteredTransformer(String name) =>
       _get<CreateTransformer>(name);
@@ -132,10 +128,6 @@ Builder: $builder''');
   }
 
   void registerGeneric(String name, CreateBuilderFromSingleType cb) {
-    putIfAbsent(name, () => cb);
-  }
-
-  void registerAction(String name, CreateAction cb) {
     putIfAbsent(name, () => cb);
   }
 

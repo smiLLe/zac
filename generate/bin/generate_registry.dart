@@ -32,10 +32,6 @@ void main(List<String> args) async {
     return '..register(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
   });
 
-  final zacAction = allFiles.zacActionCtors.map<String>((ctor) {
-    return '..registerAction(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
-  });
-
   final zacTransformer = allFiles.zacTransformerCtors.map<String>((ctor) {
     return '..registerTransformer(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
   });
@@ -49,7 +45,7 @@ ${allImports.join('\n')}
 import 'package:zac/src/zac/registry.dart';
 
 void addZacBuilders(ZacRegistry registry) {
-registry${[...zacBuilder, ...zacAction, ...zacTransformer].join('\n')};
+registry${[...zacBuilder, ...zacTransformer].join('\n')};
 }''');
 
   await Process.run(
@@ -92,14 +88,6 @@ class AllFiles {
   }).toList()
     ..sort((a, b) => a.name.compareTo(b.name));
 
-  late final Iterable<BuilderClass> zacActionClasses = files
-      .map((file) => file.getZacActionClasses())
-      .where((it) => it.isNotEmpty)
-      .fold<Iterable<BuilderClass>>([], (previousValue, element) {
-    return [...previousValue, ...element];
-  }).toList()
-    ..sort((a, b) => a.name.compareTo(b.name));
-
   late final Iterable<BuilderClass> zacTransformerClasses = files
       .map((file) => file.getZacTransformerClasses())
       .where((it) => it.isNotEmpty)
@@ -109,14 +97,6 @@ class AllFiles {
     ..sort((a, b) => a.name.compareTo(b.name));
 
   late final Iterable<BuilderCtor> zacBuilderCtors = zacBuilderClasses
-      .map((cls) => cls.getCtor())
-      .fold<Iterable<BuilderCtor>>([], (previousValue, element) {
-    return [...previousValue, ...element];
-  }).toList()
-    ..sort((a, b) => a.ctorElement.freezedUnionValue
-        .compareTo(b.ctorElement.freezedUnionValue));
-
-  late final Iterable<BuilderCtor> zacActionCtors = zacActionClasses
       .map((cls) => cls.getCtor())
       .fold<Iterable<BuilderCtor>>([], (previousValue, element) {
     return [...previousValue, ...element];
@@ -135,7 +115,6 @@ class AllFiles {
   late final Iterable<String> imports = [
     ...files.where((file) => file.getZacBuilderClasses().isNotEmpty),
     ...files.where((file) => file.getZacTransformerClasses().isNotEmpty),
-    ...files.where((file) => file.getZacActionClasses().isNotEmpty)
   ].fold<Set<String>>({}, (previousValue, element) {
     return {...previousValue, element.converterImport};
   }).toList()
@@ -162,15 +141,6 @@ class OneFile {
         .where((cls) => cls.allSupertypes.any((element) => element
             .getDisplayString(withNullability: false)
             .startsWith('ZacBuilder')))
-        .where((cls) => cls.constructors.checkHasValidBuilder())
-        .map(BuilderClass.new);
-  }
-
-  Iterable<BuilderClass> getZacActionClasses() {
-    return _filteredClasses
-        .where((cls) => cls.allSupertypes.any((element) => element
-            .getDisplayString(withNullability: false)
-            .startsWith('ZacAction')))
         .where((cls) => cls.constructors.checkHasValidBuilder())
         .map(BuilderClass.new);
   }

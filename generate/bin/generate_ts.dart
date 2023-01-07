@@ -137,15 +137,6 @@ class AllFiles {
   ]..sortByCompare(
       (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 
-  late final Iterable<OneClass> zacActions = [
-    ...files
-        .where((oneFile) => oneFile.zacActions.isNotEmpty)
-        .fold<Iterable<OneClass>>([], (previousValue, element) {
-      return [...previousValue, ...element.zacActions];
-    })
-  ]..sortByCompare(
-      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
-
   late final Iterable<OneClass> zacTransformer = [
     ...files
         .where((oneFile) => oneFile.zacTransformer.isNotEmpty)
@@ -188,9 +179,6 @@ class OneFile {
           .startsWith('ZacBuilder')))
       .where((cls) => !cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
-          .startsWith('ZacAction')))
-      .where((cls) => !cls.allSupertypes.any((element) => element
-          .getDisplayString(withNullability: false)
           .startsWith('ZacTransformer')))
       .map(OneClass.new);
 
@@ -199,13 +187,6 @@ class OneFile {
 
   late final Iterable<OneClass> buildersWithTypeParams =
       _builders.where((cls) => cls.typeParameters.isNotEmpty).map(OneClass.new);
-
-  late final Iterable<OneClass> zacActions = _filteredClasses
-      .where((cls) => cls.allSupertypes.any((element) => element
-          .getDisplayString(withNullability: false)
-          .startsWith('ZacAction')))
-      .where((cls) => cls.typeParameters.isEmpty)
-      .map(OneClass.new);
 
   late final Iterable<OneClass> zacTransformer = _filteredClasses
       .where((cls) => cls.allSupertypes.any((element) => element
@@ -392,15 +373,6 @@ export class ${b.className} extends ZacTransformer {
     });
   }
 
-  Iterable<String> _actionsTmpl() {
-    return allFiles.zacActions.map((b) {
-      return '''
-export class ${b.className} extends ZacAction {
-  ${_ctorTmpl(b).join('\n')}
-}''';
-    });
-  }
-
   @override
   String toString() {
     return '''
@@ -412,7 +384,6 @@ $header
 ${_othersTmpl().join('\n')}
 ${_builderTmpl().join('\n')}
 ${_transformersTmpl().join('\n')}
-${_actionsTmpl().join('\n')}
 ''';
   }
 }
