@@ -521,26 +521,30 @@ void main() {
       tester,
       (getContext, getZacContext) {
         expect(
-            ZacStateMachineTransformer.pickState().transform(
-                ZacTransformValue(ZacStateMachine(
-                  states: {
-                    'a': ZacStateConfig(
-                        widget: FlutterSizedBox(key: FlutterValueKey('a'))),
-                  },
-                  context: null,
-                  state: 'a',
-                  send: (event, context) {},
-                  trySend: (event, context) {},
-                  isActive: () => true,
-                )),
-                getContext(),
-                getZacContext(),
-                null),
+            ZacStateMachineTransformer.pickState()
+                .build(getContext(), getZacContext())
+                .transform(
+                    ZacTransformValue(ZacStateMachine(
+                      states: {
+                        'a': ZacStateConfig(
+                            widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+                      },
+                      context: null,
+                      state: 'a',
+                      send: (event, context) {},
+                      trySend: (event, context) {},
+                      isActive: () => true,
+                    )),
+                    getContext(),
+                    getZacContext(),
+                    null),
             'a');
 
         expect(
-            () => ZacStateMachineTransformer.pickState().transform(
-                ZacTransformValue('FAIL'), getContext(), getZacContext(), null),
+            () => ZacStateMachineTransformer.pickState()
+                .build(getContext(), getZacContext())
+                .transform(ZacTransformValue('FAIL'), getContext(),
+                    getZacContext(), null),
             throwsA(isA<StateError>().having(
                 (p0) => p0.message,
                 'Error',
@@ -557,26 +561,30 @@ void main() {
       tester,
       (getContext, getZacContext) {
         expect(
-            ZacStateMachineTransformer.pickContext().transform(
-                ZacTransformValue(ZacStateMachine(
-                  states: {
-                    'a': ZacStateConfig(
-                        widget: FlutterSizedBox(key: FlutterValueKey('a'))),
-                  },
-                  context: 'hello',
-                  state: 'a',
-                  send: (event, context) {},
-                  trySend: (event, context) {},
-                  isActive: () => true,
-                )),
-                getContext(),
-                getZacContext(),
-                null),
+            ZacStateMachineTransformer.pickContext()
+                .build(getContext(), getZacContext())
+                .transform(
+                    ZacTransformValue(ZacStateMachine(
+                      states: {
+                        'a': ZacStateConfig(
+                            widget: FlutterSizedBox(key: FlutterValueKey('a'))),
+                      },
+                      context: 'hello',
+                      state: 'a',
+                      send: (event, context) {},
+                      trySend: (event, context) {},
+                      isActive: () => true,
+                    )),
+                    getContext(),
+                    getZacContext(),
+                    null),
             'hello');
 
         expect(
-            () => ZacStateMachineTransformer.pickContext().transform(
-                ZacTransformValue('FAIL'), getContext(), getZacContext(), null),
+            () => ZacStateMachineTransformer.pickContext()
+                .build(getContext(), getZacContext())
+                .transform(ZacTransformValue('FAIL'), getContext(),
+                    getZacContext(), null),
             throwsA(isA<StateError>().having(
                 (p0) => p0.message,
                 'Error',

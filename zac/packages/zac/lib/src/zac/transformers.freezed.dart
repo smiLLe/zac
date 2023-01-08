@@ -170,129 +170,138 @@ abstract class _ZacTransformValue extends ZacTransformValue {
       throw _privateConstructorUsedError;
 }
 
-ZacTransformers _$ZacTransformersFromJson(Map<String, dynamic> json) {
-  return _ZacTransformers.fromJson(json);
-}
-
 /// @nodoc
-mixin _$ZacTransformers {
-  List<ZacTransformer> get transformers => throw _privateConstructorUsedError;
+mixin _$ZacTransform {
+  Object? Function(
+          ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
+      get transform => throw _privateConstructorUsedError;
 
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransformers value) $default,
-  ) =>
+  @JsonKey(ignore: true)
+  $ZacTransformCopyWith<ZacTransform> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacTransformers extends _ZacTransformers {
-  _$_ZacTransformers(final List<ZacTransformer> transformers)
-      : _transformers = transformers,
-        super._();
+abstract class $ZacTransformCopyWith<$Res> {
+  factory $ZacTransformCopyWith(
+          ZacTransform value, $Res Function(ZacTransform) then) =
+      _$ZacTransformCopyWithImpl<$Res, ZacTransform>;
+  @useResult
+  $Res call(
+      {Object? Function(
+              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
+          transform});
+}
 
-  factory _$_ZacTransformers.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacTransformersFromJson(json);
+/// @nodoc
+class _$ZacTransformCopyWithImpl<$Res, $Val extends ZacTransform>
+    implements $ZacTransformCopyWith<$Res> {
+  _$ZacTransformCopyWithImpl(this._value, this._then);
 
-  final List<ZacTransformer> _transformers;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
   @override
-  List<ZacTransformer> get transformers {
-    if (_transformers is EqualUnmodifiableListView) return _transformers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_transformers);
+  $Res call({
+    Object? transform = null,
+  }) {
+    return _then(_value.copyWith(
+      transform: null == transform
+          ? _value.transform
+          : transform // ignore: cast_nullable_to_non_nullable
+              as Object? Function(ZacTransformValue, BuildContext, ZacContext,
+                  ZacActionPayload?),
+    ) as $Val);
   }
+}
+
+/// @nodoc
+abstract class _$$_ZacTransformCopyWith<$Res>
+    implements $ZacTransformCopyWith<$Res> {
+  factory _$$_ZacTransformCopyWith(
+          _$_ZacTransform value, $Res Function(_$_ZacTransform) then) =
+      __$$_ZacTransformCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Object? Function(
+              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
+          transform});
+}
+
+/// @nodoc
+class __$$_ZacTransformCopyWithImpl<$Res>
+    extends _$ZacTransformCopyWithImpl<$Res, _$_ZacTransform>
+    implements _$$_ZacTransformCopyWith<$Res> {
+  __$$_ZacTransformCopyWithImpl(
+      _$_ZacTransform _value, $Res Function(_$_ZacTransform) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? transform = null,
+  }) {
+    return _then(_$_ZacTransform(
+      null == transform
+          ? _value.transform
+          : transform // ignore: cast_nullable_to_non_nullable
+              as Object? Function(ZacTransformValue, BuildContext, ZacContext,
+                  ZacActionPayload?),
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ZacTransform implements _ZacTransform {
+  _$_ZacTransform(this.transform);
+
+  @override
+  final Object? Function(
+      ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?) transform;
 
   @override
   String toString() {
-    return 'ZacTransformers(transformers: $transformers)';
+    return 'ZacTransform(transform: $transform)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacTransformers &&
-            const DeepCollectionEquality()
-                .equals(other._transformers, _transformers));
+            other is _$_ZacTransform &&
+            (identical(other.transform, transform) ||
+                other.transform == transform));
   }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, transform);
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_transformers));
+  @pragma('vm:prefer-inline')
+  _$$_ZacTransformCopyWith<_$_ZacTransform> get copyWith =>
+      __$$_ZacTransformCopyWithImpl<_$_ZacTransform>(this, _$identity);
+}
+
+abstract class _ZacTransform implements ZacTransform {
+  factory _ZacTransform(
+      final Object? Function(
+              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
+          transform) = _$_ZacTransform;
 
   @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransformers value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacTransformers extends ZacTransformers {
-  factory _ZacTransformers(final List<ZacTransformer> transformers) =
-      _$_ZacTransformers;
-  _ZacTransformers._() : super._();
-
-  factory _ZacTransformers.fromJson(Map<String, dynamic> json) =
-      _$_ZacTransformers.fromJson;
-
+  Object? Function(
+          ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
+      get transform;
   @override
-  List<ZacTransformer> get transformers;
-}
-
-ConvertTransformer _$ConvertTransformerFromJson(Map<String, dynamic> json) {
-  return _Convert.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ConvertTransformer {
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Convert value) $default,
-  ) =>
+  @JsonKey(ignore: true)
+  _$$_ZacTransformCopyWith<_$_ZacTransform> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_Convert extends _Convert {
-  _$_Convert() : super._();
-
-  factory _$_Convert.fromJson(Map<String, dynamic> json) =>
-      _$$_ConvertFromJson(json);
-
-  @override
-  String toString() {
-    return 'ConvertTransformer()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Convert);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Convert value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _Convert extends ConvertTransformer {
-  factory _Convert() = _$_Convert;
-  _Convert._() : super._();
-
-  factory _Convert.fromJson(Map<String, dynamic> json) = _$_Convert.fromJson;
 }
 
 MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
@@ -358,7 +367,7 @@ mixin _$MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapValues extends _MapValues {
-  const _$_MapValues({final String? $type})
+  _$_MapValues({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.values',
         super._();
 
@@ -407,8 +416,8 @@ class _$_MapValues extends _MapValues {
 }
 
 abstract class _MapValues extends MapTransformer {
-  const factory _MapValues() = _$_MapValues;
-  const _MapValues._() : super._();
+  factory _MapValues() = _$_MapValues;
+  _MapValues._() : super._();
 
   factory _MapValues.fromJson(Map<String, dynamic> json) =
       _$_MapValues.fromJson;
@@ -417,7 +426,7 @@ abstract class _MapValues extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapKeys extends _MapKeys {
-  const _$_MapKeys({final String? $type})
+  _$_MapKeys({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.keys',
         super._();
 
@@ -466,8 +475,8 @@ class _$_MapKeys extends _MapKeys {
 }
 
 abstract class _MapKeys extends MapTransformer {
-  const factory _MapKeys() = _$_MapKeys;
-  const _MapKeys._() : super._();
+  factory _MapKeys() = _$_MapKeys;
+  _MapKeys._() : super._();
 
   factory _MapKeys.fromJson(Map<String, dynamic> json) = _$_MapKeys.fromJson;
 }
@@ -475,7 +484,7 @@ abstract class _MapKeys extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapEntries extends _MapEntries {
-  const _$_MapEntries({final String? $type})
+  _$_MapEntries({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.entries',
         super._();
 
@@ -524,8 +533,8 @@ class _$_MapEntries extends _MapEntries {
 }
 
 abstract class _MapEntries extends MapTransformer {
-  const factory _MapEntries() = _$_MapEntries;
-  const _MapEntries._() : super._();
+  factory _MapEntries() = _$_MapEntries;
+  _MapEntries._() : super._();
 
   factory _MapEntries.fromJson(Map<String, dynamic> json) =
       _$_MapEntries.fromJson;
@@ -534,7 +543,7 @@ abstract class _MapEntries extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapLength extends _MapLength {
-  const _$_MapLength({final String? $type})
+  _$_MapLength({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.length',
         super._();
 
@@ -583,8 +592,8 @@ class _$_MapLength extends _MapLength {
 }
 
 abstract class _MapLength extends MapTransformer {
-  const factory _MapLength() = _$_MapLength;
-  const _MapLength._() : super._();
+  factory _MapLength() = _$_MapLength;
+  _MapLength._() : super._();
 
   factory _MapLength.fromJson(Map<String, dynamic> json) =
       _$_MapLength.fromJson;
@@ -593,7 +602,7 @@ abstract class _MapLength extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapIsEmpty extends _MapIsEmpty {
-  const _$_MapIsEmpty({final String? $type})
+  _$_MapIsEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.isEmpty',
         super._();
 
@@ -642,8 +651,8 @@ class _$_MapIsEmpty extends _MapIsEmpty {
 }
 
 abstract class _MapIsEmpty extends MapTransformer {
-  const factory _MapIsEmpty() = _$_MapIsEmpty;
-  const _MapIsEmpty._() : super._();
+  factory _MapIsEmpty() = _$_MapIsEmpty;
+  _MapIsEmpty._() : super._();
 
   factory _MapIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_MapIsEmpty.fromJson;
@@ -652,7 +661,7 @@ abstract class _MapIsEmpty extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapIsNotEmpty extends _MapIsNotEmpty {
-  const _$_MapIsNotEmpty({final String? $type})
+  _$_MapIsNotEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.isNotEmpty',
         super._();
 
@@ -701,8 +710,8 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
 }
 
 abstract class _MapIsNotEmpty extends MapTransformer {
-  const factory _MapIsNotEmpty() = _$_MapIsNotEmpty;
-  const _MapIsNotEmpty._() : super._();
+  factory _MapIsNotEmpty() = _$_MapIsNotEmpty;
+  _MapIsNotEmpty._() : super._();
 
   factory _MapIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_MapIsNotEmpty.fromJson;
@@ -711,7 +720,7 @@ abstract class _MapIsNotEmpty extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapContainsKey extends _MapContainsKey {
-  const _$_MapContainsKey(this.key, {final String? $type})
+  _$_MapContainsKey(this.key, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.containsKey',
         super._();
 
@@ -765,9 +774,8 @@ class _$_MapContainsKey extends _MapContainsKey {
 }
 
 abstract class _MapContainsKey extends MapTransformer {
-  const factory _MapContainsKey(final ZacBuilder<Object?>? key) =
-      _$_MapContainsKey;
-  const _MapContainsKey._() : super._();
+  factory _MapContainsKey(final ZacBuilder<Object?>? key) = _$_MapContainsKey;
+  _MapContainsKey._() : super._();
 
   factory _MapContainsKey.fromJson(Map<String, dynamic> json) =
       _$_MapContainsKey.fromJson;
@@ -778,7 +786,7 @@ abstract class _MapContainsKey extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapContainsValue extends _MapContainsValue {
-  const _$_MapContainsValue(this.value, {final String? $type})
+  _$_MapContainsValue(this.value, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.containsValue',
         super._();
 
@@ -832,9 +840,9 @@ class _$_MapContainsValue extends _MapContainsValue {
 }
 
 abstract class _MapContainsValue extends MapTransformer {
-  const factory _MapContainsValue(final ZacBuilder<Object?>? value) =
+  factory _MapContainsValue(final ZacBuilder<Object?>? value) =
       _$_MapContainsValue;
-  const _MapContainsValue._() : super._();
+  _MapContainsValue._() : super._();
 
   factory _MapContainsValue.fromJson(Map<String, dynamic> json) =
       _$_MapContainsValue.fromJson;
@@ -845,7 +853,7 @@ abstract class _MapContainsValue extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapMapper extends _MapMapper {
-  const _$_MapMapper(
+  _$_MapMapper(
       {this.keyTransformer, this.valueTransformer, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.map',
         super._();
@@ -854,9 +862,9 @@ class _$_MapMapper extends _MapMapper {
       _$$_MapMapperFromJson(json);
 
   @override
-  final ZacBuilder<List<ZacTransformer>?>? keyTransformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? valueTransformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? valueTransformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -906,23 +914,23 @@ class _$_MapMapper extends _MapMapper {
 }
 
 abstract class _MapMapper extends MapTransformer {
-  const factory _MapMapper(
-          {final ZacBuilder<List<ZacTransformer>?>? keyTransformer,
-          final ZacBuilder<List<ZacTransformer>?>? valueTransformer}) =
-      _$_MapMapper;
-  const _MapMapper._() : super._();
+  factory _MapMapper(
+      {final ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>?
+          valueTransformer}) = _$_MapMapper;
+  _MapMapper._() : super._();
 
   factory _MapMapper.fromJson(Map<String, dynamic> json) =
       _$_MapMapper.fromJson;
 
-  ZacBuilder<List<ZacTransformer>?>? get keyTransformer;
-  ZacBuilder<List<ZacTransformer>?>? get valueTransformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get keyTransformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get valueTransformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromObjectObject extends _MapFromObjectObject {
-  const _$_MapFromObjectObject({final String? $type})
+  _$_MapFromObjectObject({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<Object, Object>.from',
         super._();
 
@@ -971,8 +979,8 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
 }
 
 abstract class _MapFromObjectObject extends MapTransformer {
-  const factory _MapFromObjectObject() = _$_MapFromObjectObject;
-  const _MapFromObjectObject._() : super._();
+  factory _MapFromObjectObject() = _$_MapFromObjectObject;
+  _MapFromObjectObject._() : super._();
 
   factory _MapFromObjectObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromObjectObject.fromJson;
@@ -981,7 +989,7 @@ abstract class _MapFromObjectObject extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromStringObject extends _MapFromStringObject {
-  const _$_MapFromStringObject({final String? $type})
+  _$_MapFromStringObject({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<String, Object>.from',
         super._();
 
@@ -1030,8 +1038,8 @@ class _$_MapFromStringObject extends _MapFromStringObject {
 }
 
 abstract class _MapFromStringObject extends MapTransformer {
-  const factory _MapFromStringObject() = _$_MapFromStringObject;
-  const _MapFromStringObject._() : super._();
+  factory _MapFromStringObject() = _$_MapFromStringObject;
+  _MapFromStringObject._() : super._();
 
   factory _MapFromStringObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromStringObject.fromJson;
@@ -1040,7 +1048,7 @@ abstract class _MapFromStringObject extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromStringNullObject extends _MapFromStringNullObject {
-  const _$_MapFromStringNullObject({final String? $type})
+  _$_MapFromStringNullObject({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<String, Object?>.from',
         super._();
 
@@ -1090,8 +1098,8 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
 }
 
 abstract class _MapFromStringNullObject extends MapTransformer {
-  const factory _MapFromStringNullObject() = _$_MapFromStringNullObject;
-  const _MapFromStringNullObject._() : super._();
+  factory _MapFromStringNullObject() = _$_MapFromStringNullObject;
+  _MapFromStringNullObject._() : super._();
 
   factory _MapFromStringNullObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromStringNullObject.fromJson;
@@ -1100,7 +1108,7 @@ abstract class _MapFromStringNullObject extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapKey extends _MapKey {
-  const _$_MapKey(this.key, {final String? $type})
+  _$_MapKey(this.key, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map[key]',
         super._();
 
@@ -1154,8 +1162,8 @@ class _$_MapKey extends _MapKey {
 }
 
 abstract class _MapKey extends MapTransformer {
-  const factory _MapKey(final ZacBuilder<String> key) = _$_MapKey;
-  const _MapKey._() : super._();
+  factory _MapKey(final ZacBuilder<String> key) = _$_MapKey;
+  _MapKey._() : super._();
 
   factory _MapKey.fromJson(Map<String, dynamic> json) = _$_MapKey.fromJson;
 
@@ -1165,7 +1173,7 @@ abstract class _MapKey extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapSetValueForKey extends _MapSetValueForKey {
-  const _$_MapSetValueForKey(
+  _$_MapSetValueForKey(
       {required this.value, required this.key, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.setValueForKey',
         super._();
@@ -1223,10 +1231,10 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
 }
 
 abstract class _MapSetValueForKey extends MapTransformer {
-  const factory _MapSetValueForKey(
+  factory _MapSetValueForKey(
       {required final ZacBuilder<Object> value,
       required final ZacBuilder<String> key}) = _$_MapSetValueForKey;
-  const _MapSetValueForKey._() : super._();
+  _MapSetValueForKey._() : super._();
 
   factory _MapSetValueForKey.fromJson(Map<String, dynamic> json) =
       _$_MapSetValueForKey.fromJson;
@@ -1308,7 +1316,7 @@ class _$_IterableMap extends _IterableMap {
       _$$_IterableMapFromJson(json);
 
   @override
-  final ZacBuilder<List<ZacTransformer>> transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>> transformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1356,20 +1364,20 @@ class _$_IterableMap extends _IterableMap {
 
 abstract class _IterableMap extends IterableTransformer {
   factory _IterableMap(
-          {required final ZacBuilder<List<ZacTransformer>> transformer}) =
-      _$_IterableMap;
+      {required final ZacListBuilder<ZacTransform, List<ZacTransform>>
+          transformer}) = _$_IterableMap;
   _IterableMap._() : super._();
 
   factory _IterableMap.fromJson(Map<String, dynamic> json) =
       _$_IterableMap.fromJson;
 
-  ZacBuilder<List<ZacTransformer>> get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>> get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableSingle extends _IterableSingle {
-  const _$_IterableSingle({final String? $type})
+  _$_IterableSingle({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.single',
         super._();
 
@@ -1418,8 +1426,8 @@ class _$_IterableSingle extends _IterableSingle {
 }
 
 abstract class _IterableSingle extends IterableTransformer {
-  const factory _IterableSingle() = _$_IterableSingle;
-  const _IterableSingle._() : super._();
+  factory _IterableSingle() = _$_IterableSingle;
+  _IterableSingle._() : super._();
 
   factory _IterableSingle.fromJson(Map<String, dynamic> json) =
       _$_IterableSingle.fromJson;
@@ -1428,7 +1436,7 @@ abstract class _IterableSingle extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableFirst extends _IterableFirst {
-  const _$_IterableFirst({final String? $type})
+  _$_IterableFirst({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.first',
         super._();
 
@@ -1477,8 +1485,8 @@ class _$_IterableFirst extends _IterableFirst {
 }
 
 abstract class _IterableFirst extends IterableTransformer {
-  const factory _IterableFirst() = _$_IterableFirst;
-  const _IterableFirst._() : super._();
+  factory _IterableFirst() = _$_IterableFirst;
+  _IterableFirst._() : super._();
 
   factory _IterableFirst.fromJson(Map<String, dynamic> json) =
       _$_IterableFirst.fromJson;
@@ -1487,7 +1495,7 @@ abstract class _IterableFirst extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableLast extends _IterableLast {
-  const _$_IterableLast({final String? $type})
+  _$_IterableLast({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.last',
         super._();
 
@@ -1536,8 +1544,8 @@ class _$_IterableLast extends _IterableLast {
 }
 
 abstract class _IterableLast extends IterableTransformer {
-  const factory _IterableLast() = _$_IterableLast;
-  const _IterableLast._() : super._();
+  factory _IterableLast() = _$_IterableLast;
+  _IterableLast._() : super._();
 
   factory _IterableLast.fromJson(Map<String, dynamic> json) =
       _$_IterableLast.fromJson;
@@ -1546,7 +1554,7 @@ abstract class _IterableLast extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableLength extends _IterableLength {
-  const _$_IterableLength({final String? $type})
+  _$_IterableLength({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.length',
         super._();
 
@@ -1595,8 +1603,8 @@ class _$_IterableLength extends _IterableLength {
 }
 
 abstract class _IterableLength extends IterableTransformer {
-  const factory _IterableLength() = _$_IterableLength;
-  const _IterableLength._() : super._();
+  factory _IterableLength() = _$_IterableLength;
+  _IterableLength._() : super._();
 
   factory _IterableLength.fromJson(Map<String, dynamic> json) =
       _$_IterableLength.fromJson;
@@ -1605,7 +1613,7 @@ abstract class _IterableLength extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableIsEmpty extends _IterableIsEmpty {
-  const _$_IterableIsEmpty({final String? $type})
+  _$_IterableIsEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.isEmpty',
         super._();
 
@@ -1654,8 +1662,8 @@ class _$_IterableIsEmpty extends _IterableIsEmpty {
 }
 
 abstract class _IterableIsEmpty extends IterableTransformer {
-  const factory _IterableIsEmpty() = _$_IterableIsEmpty;
-  const _IterableIsEmpty._() : super._();
+  factory _IterableIsEmpty() = _$_IterableIsEmpty;
+  _IterableIsEmpty._() : super._();
 
   factory _IterableIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_IterableIsEmpty.fromJson;
@@ -1664,7 +1672,7 @@ abstract class _IterableIsEmpty extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableIsNotEmpty extends _IterableIsNotEmpty {
-  const _$_IterableIsNotEmpty({final String? $type})
+  _$_IterableIsNotEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.isNotEmpty',
         super._();
 
@@ -1713,8 +1721,8 @@ class _$_IterableIsNotEmpty extends _IterableIsNotEmpty {
 }
 
 abstract class _IterableIsNotEmpty extends IterableTransformer {
-  const factory _IterableIsNotEmpty() = _$_IterableIsNotEmpty;
-  const _IterableIsNotEmpty._() : super._();
+  factory _IterableIsNotEmpty() = _$_IterableIsNotEmpty;
+  _IterableIsNotEmpty._() : super._();
 
   factory _IterableIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_IterableIsNotEmpty.fromJson;
@@ -1723,7 +1731,7 @@ abstract class _IterableIsNotEmpty extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToList extends _IterableToList {
-  const _$_IterableToList({final String? $type})
+  _$_IterableToList({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toList',
         super._();
 
@@ -1772,8 +1780,8 @@ class _$_IterableToList extends _IterableToList {
 }
 
 abstract class _IterableToList extends IterableTransformer {
-  const factory _IterableToList() = _$_IterableToList;
-  const _IterableToList._() : super._();
+  factory _IterableToList() = _$_IterableToList;
+  _IterableToList._() : super._();
 
   factory _IterableToList.fromJson(Map<String, dynamic> json) =
       _$_IterableToList.fromJson;
@@ -1782,7 +1790,7 @@ abstract class _IterableToList extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToSet extends _IterableToSet {
-  const _$_IterableToSet({final String? $type})
+  _$_IterableToSet({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toSet',
         super._();
 
@@ -1831,8 +1839,8 @@ class _$_IterableToSet extends _IterableToSet {
 }
 
 abstract class _IterableToSet extends IterableTransformer {
-  const factory _IterableToSet() = _$_IterableToSet;
-  const _IterableToSet._() : super._();
+  factory _IterableToSet() = _$_IterableToSet;
+  _IterableToSet._() : super._();
 
   factory _IterableToSet.fromJson(Map<String, dynamic> json) =
       _$_IterableToSet.fromJson;
@@ -1841,7 +1849,7 @@ abstract class _IterableToSet extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToString extends _IterableToString {
-  const _$_IterableToString({final String? $type})
+  _$_IterableToString({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toString',
         super._();
 
@@ -1890,8 +1898,8 @@ class _$_IterableToString extends _IterableToString {
 }
 
 abstract class _IterableToString extends IterableTransformer {
-  const factory _IterableToString() = _$_IterableToString;
-  const _IterableToString._() : super._();
+  factory _IterableToString() = _$_IterableToString;
+  _IterableToString._() : super._();
 
   factory _IterableToString.fromJson(Map<String, dynamic> json) =
       _$_IterableToString.fromJson;
@@ -1900,7 +1908,7 @@ abstract class _IterableToString extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableJoin extends _IterableJoin {
-  const _$_IterableJoin({this.separator, final String? $type})
+  _$_IterableJoin({this.separator, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.join',
         super._();
 
@@ -1955,8 +1963,8 @@ class _$_IterableJoin extends _IterableJoin {
 }
 
 abstract class _IterableJoin extends IterableTransformer {
-  const factory _IterableJoin({final String? separator}) = _$_IterableJoin;
-  const _IterableJoin._() : super._();
+  factory _IterableJoin({final String? separator}) = _$_IterableJoin;
+  _IterableJoin._() : super._();
 
   factory _IterableJoin.fromJson(Map<String, dynamic> json) =
       _$_IterableJoin.fromJson;
@@ -1967,7 +1975,7 @@ abstract class _IterableJoin extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableContains extends _IterableContains {
-  const _$_IterableContains(this.element, {final String? $type})
+  _$_IterableContains(this.element, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.contains',
         super._();
 
@@ -2021,9 +2029,9 @@ class _$_IterableContains extends _IterableContains {
 }
 
 abstract class _IterableContains extends IterableTransformer {
-  const factory _IterableContains(final ZacBuilder<Object?>? element) =
+  factory _IterableContains(final ZacBuilder<Object?>? element) =
       _$_IterableContains;
-  const _IterableContains._() : super._();
+  _IterableContains._() : super._();
 
   factory _IterableContains.fromJson(Map<String, dynamic> json) =
       _$_IterableContains.fromJson;
@@ -2034,7 +2042,7 @@ abstract class _IterableContains extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableElementAt extends _IterableElementAt {
-  const _$_IterableElementAt(this.index, {final String? $type})
+  _$_IterableElementAt(this.index, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.elementAt',
         super._();
 
@@ -2088,8 +2096,8 @@ class _$_IterableElementAt extends _IterableElementAt {
 }
 
 abstract class _IterableElementAt extends IterableTransformer {
-  const factory _IterableElementAt(final int index) = _$_IterableElementAt;
-  const _IterableElementAt._() : super._();
+  factory _IterableElementAt(final int index) = _$_IterableElementAt;
+  _IterableElementAt._() : super._();
 
   factory _IterableElementAt.fromJson(Map<String, dynamic> json) =
       _$_IterableElementAt.fromJson;
@@ -2100,7 +2108,7 @@ abstract class _IterableElementAt extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableSkip extends _IterableSkip {
-  const _$_IterableSkip(this.count, {final String? $type})
+  _$_IterableSkip(this.count, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.skip',
         super._();
 
@@ -2154,8 +2162,8 @@ class _$_IterableSkip extends _IterableSkip {
 }
 
 abstract class _IterableSkip extends IterableTransformer {
-  const factory _IterableSkip(final int count) = _$_IterableSkip;
-  const _IterableSkip._() : super._();
+  factory _IterableSkip(final int count) = _$_IterableSkip;
+  _IterableSkip._() : super._();
 
   factory _IterableSkip.fromJson(Map<String, dynamic> json) =
       _$_IterableSkip.fromJson;
@@ -2166,7 +2174,7 @@ abstract class _IterableSkip extends IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableTake extends _IterableTake {
-  const _$_IterableTake(this.count, {final String? $type})
+  _$_IterableTake(this.count, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.take',
         super._();
 
@@ -2220,8 +2228,8 @@ class _$_IterableTake extends _IterableTake {
 }
 
 abstract class _IterableTake extends IterableTransformer {
-  const factory _IterableTake(final int count) = _$_IterableTake;
-  const _IterableTake._() : super._();
+  factory _IterableTake(final int count) = _$_IterableTake;
+  _IterableTake._() : super._();
 
   factory _IterableTake.fromJson(Map<String, dynamic> json) =
       _$_IterableTake.fromJson;
@@ -2255,7 +2263,7 @@ mixin _$ListTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ListReversed extends _ListReversed {
-  const _$_ListReversed({final String? $type})
+  _$_ListReversed({final String? $type})
       : $type = $type ?? 'z:1:Transformer:List.reversed',
         super._();
 
@@ -2291,8 +2299,8 @@ class _$_ListReversed extends _ListReversed {
 }
 
 abstract class _ListReversed extends ListTransformer {
-  const factory _ListReversed() = _$_ListReversed;
-  const _ListReversed._() : super._();
+  factory _ListReversed() = _$_ListReversed;
+  _ListReversed._() : super._();
 
   factory _ListReversed.fromJson(Map<String, dynamic> json) =
       _$_ListReversed.fromJson;
@@ -2301,7 +2309,7 @@ abstract class _ListReversed extends ListTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ListAdd extends _ListAdd {
-  const _$_ListAdd(this.value, {final String? $type})
+  _$_ListAdd(this.value, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:List.add',
         super._();
 
@@ -2342,8 +2350,8 @@ class _$_ListAdd extends _ListAdd {
 }
 
 abstract class _ListAdd extends ListTransformer {
-  const factory _ListAdd(final ZacBuilder<Object> value) = _$_ListAdd;
-  const _ListAdd._() : super._();
+  factory _ListAdd(final ZacBuilder<Object> value) = _$_ListAdd;
+  _ListAdd._() : super._();
 
   factory _ListAdd.fromJson(Map<String, dynamic> json) = _$_ListAdd.fromJson;
 
@@ -3150,7 +3158,7 @@ mixin _$NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumToDouble extends _NumToDouble {
-  const _$_NumToDouble({final String? $type})
+  _$_NumToDouble({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.toDouble',
         super._();
 
@@ -3197,8 +3205,8 @@ class _$_NumToDouble extends _NumToDouble {
 }
 
 abstract class _NumToDouble extends NumTransformer {
-  const factory _NumToDouble() = _$_NumToDouble;
-  const _NumToDouble._() : super._();
+  factory _NumToDouble() = _$_NumToDouble;
+  _NumToDouble._() : super._();
 
   factory _NumToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumToDouble.fromJson;
@@ -3207,7 +3215,7 @@ abstract class _NumToDouble extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumToInt extends _NumToInt {
-  const _$_NumToInt({final String? $type})
+  _$_NumToInt({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.toInt',
         super._();
 
@@ -3254,8 +3262,8 @@ class _$_NumToInt extends _NumToInt {
 }
 
 abstract class _NumToInt extends NumTransformer {
-  const factory _NumToInt() = _$_NumToInt;
-  const _NumToInt._() : super._();
+  factory _NumToInt() = _$_NumToInt;
+  _NumToInt._() : super._();
 
   factory _NumToInt.fromJson(Map<String, dynamic> json) = _$_NumToInt.fromJson;
 }
@@ -3263,7 +3271,7 @@ abstract class _NumToInt extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumAbs extends _NumAbs {
-  const _$_NumAbs({final String? $type})
+  _$_NumAbs({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.abs',
         super._();
 
@@ -3310,8 +3318,8 @@ class _$_NumAbs extends _NumAbs {
 }
 
 abstract class _NumAbs extends NumTransformer {
-  const factory _NumAbs() = _$_NumAbs;
-  const _NumAbs._() : super._();
+  factory _NumAbs() = _$_NumAbs;
+  _NumAbs._() : super._();
 
   factory _NumAbs.fromJson(Map<String, dynamic> json) = _$_NumAbs.fromJson;
 }
@@ -3319,7 +3327,7 @@ abstract class _NumAbs extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumCeil extends _NumCeil {
-  const _$_NumCeil({final String? $type})
+  _$_NumCeil({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.ceil',
         super._();
 
@@ -3366,8 +3374,8 @@ class _$_NumCeil extends _NumCeil {
 }
 
 abstract class _NumCeil extends NumTransformer {
-  const factory _NumCeil() = _$_NumCeil;
-  const _NumCeil._() : super._();
+  factory _NumCeil() = _$_NumCeil;
+  _NumCeil._() : super._();
 
   factory _NumCeil.fromJson(Map<String, dynamic> json) = _$_NumCeil.fromJson;
 }
@@ -3375,7 +3383,7 @@ abstract class _NumCeil extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumCeilToDouble extends _NumCeilToDouble {
-  const _$_NumCeilToDouble({final String? $type})
+  _$_NumCeilToDouble({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.ceilToDouble',
         super._();
 
@@ -3422,8 +3430,8 @@ class _$_NumCeilToDouble extends _NumCeilToDouble {
 }
 
 abstract class _NumCeilToDouble extends NumTransformer {
-  const factory _NumCeilToDouble() = _$_NumCeilToDouble;
-  const _NumCeilToDouble._() : super._();
+  factory _NumCeilToDouble() = _$_NumCeilToDouble;
+  _NumCeilToDouble._() : super._();
 
   factory _NumCeilToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumCeilToDouble.fromJson;
@@ -3432,7 +3440,7 @@ abstract class _NumCeilToDouble extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumFloor extends _NumFloor {
-  const _$_NumFloor({final String? $type})
+  _$_NumFloor({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.floor',
         super._();
 
@@ -3479,8 +3487,8 @@ class _$_NumFloor extends _NumFloor {
 }
 
 abstract class _NumFloor extends NumTransformer {
-  const factory _NumFloor() = _$_NumFloor;
-  const _NumFloor._() : super._();
+  factory _NumFloor() = _$_NumFloor;
+  _NumFloor._() : super._();
 
   factory _NumFloor.fromJson(Map<String, dynamic> json) = _$_NumFloor.fromJson;
 }
@@ -3488,7 +3496,7 @@ abstract class _NumFloor extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumFloorToDouble extends _NumFloorToDouble {
-  const _$_NumFloorToDouble({final String? $type})
+  _$_NumFloorToDouble({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.floorToDouble',
         super._();
 
@@ -3535,8 +3543,8 @@ class _$_NumFloorToDouble extends _NumFloorToDouble {
 }
 
 abstract class _NumFloorToDouble extends NumTransformer {
-  const factory _NumFloorToDouble() = _$_NumFloorToDouble;
-  const _NumFloorToDouble._() : super._();
+  factory _NumFloorToDouble() = _$_NumFloorToDouble;
+  _NumFloorToDouble._() : super._();
 
   factory _NumFloorToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumFloorToDouble.fromJson;
@@ -3545,7 +3553,7 @@ abstract class _NumFloorToDouble extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumRound extends _NumRound {
-  const _$_NumRound({final String? $type})
+  _$_NumRound({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.round',
         super._();
 
@@ -3592,8 +3600,8 @@ class _$_NumRound extends _NumRound {
 }
 
 abstract class _NumRound extends NumTransformer {
-  const factory _NumRound() = _$_NumRound;
-  const _NumRound._() : super._();
+  factory _NumRound() = _$_NumRound;
+  _NumRound._() : super._();
 
   factory _NumRound.fromJson(Map<String, dynamic> json) = _$_NumRound.fromJson;
 }
@@ -3601,7 +3609,7 @@ abstract class _NumRound extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumRoundToDouble extends _NumRoundToDouble {
-  const _$_NumRoundToDouble({final String? $type})
+  _$_NumRoundToDouble({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.roundToDouble',
         super._();
 
@@ -3648,8 +3656,8 @@ class _$_NumRoundToDouble extends _NumRoundToDouble {
 }
 
 abstract class _NumRoundToDouble extends NumTransformer {
-  const factory _NumRoundToDouble() = _$_NumRoundToDouble;
-  const _NumRoundToDouble._() : super._();
+  factory _NumRoundToDouble() = _$_NumRoundToDouble;
+  _NumRoundToDouble._() : super._();
 
   factory _NumRoundToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumRoundToDouble.fromJson;
@@ -3658,7 +3666,7 @@ abstract class _NumRoundToDouble extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsFinite extends _NumIsFinite {
-  const _$_NumIsFinite({final String? $type})
+  _$_NumIsFinite({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isFinite',
         super._();
 
@@ -3705,8 +3713,8 @@ class _$_NumIsFinite extends _NumIsFinite {
 }
 
 abstract class _NumIsFinite extends NumTransformer {
-  const factory _NumIsFinite() = _$_NumIsFinite;
-  const _NumIsFinite._() : super._();
+  factory _NumIsFinite() = _$_NumIsFinite;
+  _NumIsFinite._() : super._();
 
   factory _NumIsFinite.fromJson(Map<String, dynamic> json) =
       _$_NumIsFinite.fromJson;
@@ -3715,7 +3723,7 @@ abstract class _NumIsFinite extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsInfinite extends _NumIsInfinite {
-  const _$_NumIsInfinite({final String? $type})
+  _$_NumIsInfinite({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isInfinite',
         super._();
 
@@ -3762,8 +3770,8 @@ class _$_NumIsInfinite extends _NumIsInfinite {
 }
 
 abstract class _NumIsInfinite extends NumTransformer {
-  const factory _NumIsInfinite() = _$_NumIsInfinite;
-  const _NumIsInfinite._() : super._();
+  factory _NumIsInfinite() = _$_NumIsInfinite;
+  _NumIsInfinite._() : super._();
 
   factory _NumIsInfinite.fromJson(Map<String, dynamic> json) =
       _$_NumIsInfinite.fromJson;
@@ -3772,7 +3780,7 @@ abstract class _NumIsInfinite extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsNan extends _NumIsNan {
-  const _$_NumIsNan({final String? $type})
+  _$_NumIsNan({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isNan',
         super._();
 
@@ -3819,8 +3827,8 @@ class _$_NumIsNan extends _NumIsNan {
 }
 
 abstract class _NumIsNan extends NumTransformer {
-  const factory _NumIsNan() = _$_NumIsNan;
-  const _NumIsNan._() : super._();
+  factory _NumIsNan() = _$_NumIsNan;
+  _NumIsNan._() : super._();
 
   factory _NumIsNan.fromJson(Map<String, dynamic> json) = _$_NumIsNan.fromJson;
 }
@@ -3828,7 +3836,7 @@ abstract class _NumIsNan extends NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsNegative extends _NumIsNegative {
-  const _$_NumIsNegative({final String? $type})
+  _$_NumIsNegative({final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isNegative',
         super._();
 
@@ -3875,8 +3883,8 @@ class _$_NumIsNegative extends _NumIsNegative {
 }
 
 abstract class _NumIsNegative extends NumTransformer {
-  const factory _NumIsNegative() = _$_NumIsNegative;
-  const _NumIsNegative._() : super._();
+  factory _NumIsNegative() = _$_NumIsNegative;
+  _NumIsNegative._() : super._();
 
   factory _NumIsNegative.fromJson(Map<String, dynamic> json) =
       _$_NumIsNegative.fromJson;
@@ -3914,7 +3922,7 @@ mixin _$IntTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntParse extends _IntParse {
-  const _$_IntParse({final String? $type})
+  _$_IntParse({final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.parse',
         super._();
 
@@ -3952,8 +3960,8 @@ class _$_IntParse extends _IntParse {
 }
 
 abstract class _IntParse extends IntTransformer {
-  const factory _IntParse() = _$_IntParse;
-  const _IntParse._() : super._();
+  factory _IntParse() = _$_IntParse;
+  _IntParse._() : super._();
 
   factory _IntParse.fromJson(Map<String, dynamic> json) = _$_IntParse.fromJson;
 }
@@ -3961,7 +3969,7 @@ abstract class _IntParse extends IntTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntTryParse extends _IntTryParse {
-  const _$_IntTryParse({final String? $type})
+  _$_IntTryParse({final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.tryParse',
         super._();
 
@@ -3999,8 +4007,8 @@ class _$_IntTryParse extends _IntTryParse {
 }
 
 abstract class _IntTryParse extends IntTransformer {
-  const factory _IntTryParse() = _$_IntTryParse;
-  const _IntTryParse._() : super._();
+  factory _IntTryParse() = _$_IntTryParse;
+  _IntTryParse._() : super._();
 
   factory _IntTryParse.fromJson(Map<String, dynamic> json) =
       _$_IntTryParse.fromJson;
@@ -4009,7 +4017,7 @@ abstract class _IntTryParse extends IntTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntIncr extends _IntIncr {
-  const _$_IntIncr(this.by, {final String? $type})
+  _$_IntIncr(this.by, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.incr',
         super._();
 
@@ -4052,8 +4060,8 @@ class _$_IntIncr extends _IntIncr {
 }
 
 abstract class _IntIncr extends IntTransformer {
-  const factory _IntIncr(final ZacBuilder<int> by) = _$_IntIncr;
-  const _IntIncr._() : super._();
+  factory _IntIncr(final ZacBuilder<int> by) = _$_IntIncr;
+  _IntIncr._() : super._();
 
   factory _IntIncr.fromJson(Map<String, dynamic> json) = _$_IntIncr.fromJson;
 
@@ -4063,7 +4071,7 @@ abstract class _IntIncr extends IntTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntDecr extends _IntDecr {
-  const _$_IntDecr(this.by, {final String? $type})
+  _$_IntDecr(this.by, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.decr',
         super._();
 
@@ -4106,8 +4114,8 @@ class _$_IntDecr extends _IntDecr {
 }
 
 abstract class _IntDecr extends IntTransformer {
-  const factory _IntDecr(final ZacBuilder<int> by) = _$_IntDecr;
-  const _IntDecr._() : super._();
+  factory _IntDecr(final ZacBuilder<int> by) = _$_IntDecr;
+  _IntDecr._() : super._();
 
   factory _IntDecr.fromJson(Map<String, dynamic> json) = _$_IntDecr.fromJson;
 
@@ -4149,7 +4157,7 @@ mixin _$StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringLength extends _StringLength {
-  const _$_StringLength({final String? $type})
+  _$_StringLength({final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.length',
         super._();
 
@@ -4188,8 +4196,8 @@ class _$_StringLength extends _StringLength {
 }
 
 abstract class _StringLength extends StringTransformer {
-  const factory _StringLength() = _$_StringLength;
-  const _StringLength._() : super._();
+  factory _StringLength() = _$_StringLength;
+  _StringLength._() : super._();
 
   factory _StringLength.fromJson(Map<String, dynamic> json) =
       _$_StringLength.fromJson;
@@ -4198,7 +4206,7 @@ abstract class _StringLength extends StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringSplit extends _StringSplit {
-  const _$_StringSplit({required this.pattern, final String? $type})
+  _$_StringSplit({required this.pattern, final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.split',
         super._();
 
@@ -4242,9 +4250,9 @@ class _$_StringSplit extends _StringSplit {
 }
 
 abstract class _StringSplit extends StringTransformer {
-  const factory _StringSplit({required final ZacBuilder<String> pattern}) =
+  factory _StringSplit({required final ZacBuilder<String> pattern}) =
       _$_StringSplit;
-  const _StringSplit._() : super._();
+  _StringSplit._() : super._();
 
   factory _StringSplit.fromJson(Map<String, dynamic> json) =
       _$_StringSplit.fromJson;
@@ -4255,7 +4263,7 @@ abstract class _StringSplit extends StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringIsEmpty extends _StringIsEmpty {
-  const _$_StringIsEmpty({final String? $type})
+  _$_StringIsEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.isEmpty',
         super._();
 
@@ -4294,8 +4302,8 @@ class _$_StringIsEmpty extends _StringIsEmpty {
 }
 
 abstract class _StringIsEmpty extends StringTransformer {
-  const factory _StringIsEmpty() = _$_StringIsEmpty;
-  const _StringIsEmpty._() : super._();
+  factory _StringIsEmpty() = _$_StringIsEmpty;
+  _StringIsEmpty._() : super._();
 
   factory _StringIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsEmpty.fromJson;
@@ -4304,7 +4312,7 @@ abstract class _StringIsEmpty extends StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringIsNotEmpty extends _StringIsNotEmpty {
-  const _$_StringIsNotEmpty({final String? $type})
+  _$_StringIsNotEmpty({final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.isNotEmpty',
         super._();
 
@@ -4343,8 +4351,8 @@ class _$_StringIsNotEmpty extends _StringIsNotEmpty {
 }
 
 abstract class _StringIsNotEmpty extends StringTransformer {
-  const factory _StringIsNotEmpty() = _$_StringIsNotEmpty;
-  const _StringIsNotEmpty._() : super._();
+  factory _StringIsNotEmpty() = _$_StringIsNotEmpty;
+  _StringIsNotEmpty._() : super._();
 
   factory _StringIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsNotEmpty.fromJson;
@@ -4353,7 +4361,7 @@ abstract class _StringIsNotEmpty extends StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringReplaceAll extends _StringReplaceAll {
-  const _$_StringReplaceAll(this.from, this.replace, {final String? $type})
+  _$_StringReplaceAll(this.from, this.replace, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.replaceAll',
         super._();
 
@@ -4400,10 +4408,10 @@ class _$_StringReplaceAll extends _StringReplaceAll {
 }
 
 abstract class _StringReplaceAll extends StringTransformer {
-  const factory _StringReplaceAll(
+  factory _StringReplaceAll(
           final ZacBuilder<String> from, final ZacBuilder<String> replace) =
       _$_StringReplaceAll;
-  const _StringReplaceAll._() : super._();
+  _StringReplaceAll._() : super._();
 
   factory _StringReplaceAll.fromJson(Map<String, dynamic> json) =
       _$_StringReplaceAll.fromJson;
@@ -4438,7 +4446,7 @@ mixin _$JsonTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_JsonEncode extends _JsonEncode {
-  const _$_JsonEncode({final String? $type})
+  _$_JsonEncode({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Json.encode',
         super._();
 
@@ -4474,8 +4482,8 @@ class _$_JsonEncode extends _JsonEncode {
 }
 
 abstract class _JsonEncode extends JsonTransformer {
-  const factory _JsonEncode() = _$_JsonEncode;
-  const _JsonEncode._() : super._();
+  factory _JsonEncode() = _$_JsonEncode;
+  _JsonEncode._() : super._();
 
   factory _JsonEncode.fromJson(Map<String, dynamic> json) =
       _$_JsonEncode.fromJson;
@@ -4484,7 +4492,7 @@ abstract class _JsonEncode extends JsonTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_JsonDencode extends _JsonDencode {
-  const _$_JsonDencode({final String? $type})
+  _$_JsonDencode({final String? $type})
       : $type = $type ?? 'z:1:Transformer:Json.decode',
         super._();
 
@@ -4520,8 +4528,8 @@ class _$_JsonDencode extends _JsonDencode {
 }
 
 abstract class _JsonDencode extends JsonTransformer {
-  const factory _JsonDencode() = _$_JsonDencode;
-  const _JsonDencode._() : super._();
+  factory _JsonDencode() = _$_JsonDencode;
+  _JsonDencode._() : super._();
 
   factory _JsonDencode.fromJson(Map<String, dynamic> json) =
       _$_JsonDencode.fromJson;
@@ -4543,7 +4551,7 @@ mixin _$BoolTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_BoolTransformerNegate extends _BoolTransformerNegate {
-  const _$_BoolTransformerNegate() : super._();
+  _$_BoolTransformerNegate() : super._();
 
   factory _$_BoolTransformerNegate.fromJson(Map<String, dynamic> json) =>
       _$$_BoolTransformerNegateFromJson(json);
@@ -4573,8 +4581,8 @@ class _$_BoolTransformerNegate extends _BoolTransformerNegate {
 }
 
 abstract class _BoolTransformerNegate extends BoolTransformer {
-  const factory _BoolTransformerNegate() = _$_BoolTransformerNegate;
-  const _BoolTransformerNegate._() : super._();
+  factory _BoolTransformerNegate() = _$_BoolTransformerNegate;
+  _BoolTransformerNegate._() : super._();
 
   factory _BoolTransformerNegate.fromJson(Map<String, dynamic> json) =
       _$_BoolTransformerNegate.fromJson;

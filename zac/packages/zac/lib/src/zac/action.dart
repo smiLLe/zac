@@ -177,7 +177,7 @@ class ZacControlFlowAction
 
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
-    required ZacBuilder<List<ZacTransformer>> condition,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>> condition,
     required ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
     ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
@@ -202,7 +202,7 @@ class ZacControlFlowAction
 
           if (cond is! bool) {
             throw StateError(
-                'It is not possible to execute "${ZacControlFlowAction.unionValue}". The $ZacTransformers condition did not result in a bool but "$cond"');
+                'It is not possible to execute "${ZacControlFlowAction.unionValue}". The $ZacTransform condition did not result in a bool but "$cond"');
           }
 
           return cond && previousValue;

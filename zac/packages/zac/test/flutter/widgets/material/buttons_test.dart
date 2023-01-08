@@ -36,8 +36,8 @@ void main() {
     }
 
     testWidgets('interaction', (tester) async {
-      final onPressedCb = MockTestExecute();
-      final onLongPressCb = MockTestExecute();
+      final onPressedCb = MockTestActionExecute();
+      final onLongPressCb = MockTestActionExecute();
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
@@ -159,8 +159,8 @@ void main() {
     }
 
     testWidgets('interaction', (tester) async {
-      final onPressedCb = MockTestExecute();
-      final onLongPressCb = MockTestExecute();
+      final onPressedCb = MockTestActionExecute();
+      final onLongPressCb = MockTestActionExecute();
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 

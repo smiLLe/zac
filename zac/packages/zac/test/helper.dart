@@ -8,12 +8,10 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/base.dart';
 
 import 'package:zac/src/zac/registry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -116,6 +114,29 @@ Future<void> testFindWidget<T extends Widget>(
   }
 }
 
+class TestTransform implements ZacBuilder<ZacTransform> {
+  final Object? Function(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) cb;
+
+  TestTransform(this.cb);
+  factory TestTransform.noop(Map<String, dynamic> map) {
+    return TestTransform((transformValue, context, zacContext, payload) {
+      return null;
+    });
+  }
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) {
+    return ZacTransform(cb);
+  }
+}
+
+@GenerateMocks([TestTransformExecute])
+class TestTransformExecute extends Mock {
+  Object? call(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload);
+}
+
 class TestAction implements ZacBuilder<ZacAction> {
   final void Function(
       ZacActionPayload payload, BuildContext context, ZacContext zacContext) cb;
@@ -131,14 +152,14 @@ class TestAction implements ZacBuilder<ZacAction> {
   }
 }
 
-TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
-  return isA<ZacBuilder<T>>();
-}
-
-@GenerateMocks([TestExecute])
-class TestExecute extends Mock {
+@GenerateMocks([TestActionExecute])
+class TestActionExecute extends Mock {
   void call(
       ZacActionPayload payload, BuildContext context, ZacContext zacContext);
+}
+
+TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
+  return isA<ZacBuilder<T>>();
 }
 
 Future<void>
@@ -295,18 +316,18 @@ class LeakBagCb extends Mock {
 //       ZacActionPayload payload, BuildContext context, ZacContext zacContext) {}
 // }
 
-class CustomTransformer implements ZacTransformer {
-  CustomTransformer(this.cb);
+// class CustomTransformer implements ZacBuilder<ZacTransform> {
+//   CustomTransformer(this.cb);
 
-  final Object? Function(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) cb;
+//   final Object? Function(ZacTransformValue transformValue, BuildContext context,
+//       ZacContext zacContext, ZacActionPayload? payload) cb;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) {
-    return cb(transformValue, context, zacContext, payload);
-  }
-}
+//   @override
+//   Object? transform(ZacTransformValue transformValue, BuildContext context,
+//       ZacContext zacContext, ZacActionPayload? payload) {
+//     return cb(transformValue, context, zacContext, payload);
+//   }
+// }
 
 class LeakContext implements ZacBuilder<Widget> {
   LeakContext({

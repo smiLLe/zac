@@ -29,8 +29,8 @@ void main() {
   });
 
   testWidgets('FlutterListTile interactions', (tester) async {
-    final onTapCb = MockTestExecute();
-    final onLongPressCb = MockTestExecute();
+    final onTapCb = MockTestActionExecute();
+    final onLongPressCb = MockTestActionExecute();
     await testZacWidget(
         tester,
         FlutterScaffold(

@@ -9,6 +9,7 @@ import 'package:zac/src/zac/context.dart';
 
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
+import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../helper.dart';
@@ -697,8 +698,9 @@ void main() {
                 FlutterText(
                   ConsumeSharedValue<String>(
                     family: 'family',
-                    transformer: ZacTransformers([
-                      CustomTransformer(
+                    transformer:
+                        ZacValueList<ZacTransform, List<ZacTransform>>([
+                      TestTransform(
                         (transformValue, context, zacContext, payload) {
                           if (null == transformValue.value) return 'IS NULL';
                           return transformValue.value;
@@ -740,7 +742,9 @@ void main() {
                   actions: ZacValueList<ZacAction, List<ZacAction>>([
                     SharedValueActions.update(
                       family: 'family',
-                      transformer: ZacTransformers([_ConcatStr('oof')]),
+                      transformer:
+                          ZacValueList<ZacTransform, List<ZacTransform>>(
+                              [_ConcatStr('oof')]),
                       ifNoPayloadTakeCurrent: true,
                     )
                   ]),
@@ -767,16 +771,19 @@ void main() {
               children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
-                  transformer: ZacTransformers(
-                      [const IterableTransformer.join(separator: ', ')]),
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
+                      [IterableTransformer.join(separator: ', ')]),
                 )),
                 ZacExecuteActionsBuilder.once(
                   actions: ZacValueList<ZacAction, List<ZacAction>>([
                     SharedValueActions.update(
                       family: 'family',
-                      transformer: ZacTransformers([
+                      transformer:
+                          ZacValueList<ZacTransform, List<ZacTransform>>([
                         IterableTransformer.map(
-                            transformer: ZacTransformers([_ConcatStr('foo')]))
+                            transformer:
+                                ZacValueList<ZacTransform, List<ZacTransform>>(
+                                    [_ConcatStr('foo')]))
                       ]),
                       ifNoPayloadTakeCurrent: true,
                     )
@@ -807,8 +814,8 @@ void main() {
               children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
-                  transformer: ZacTransformers(
-                      [const IterableTransformer.join(separator: ', ')]),
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
+                      [IterableTransformer.join(separator: ', ')]),
                 )),
                 child,
               ]),
@@ -818,9 +825,11 @@ void main() {
             ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
-                transformer: ZacTransformers([
+                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
                   IterableTransformer.map(
-                      transformer: ZacTransformers([_ConcatStr('foo')]))
+                    transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
+                        [_ConcatStr('foo')]),
+                  ),
                 ]),
               )
             ]).build(getContext(), getZacContext()).execute(
@@ -852,16 +861,16 @@ void main() {
               children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
-                  transformer: ZacTransformers([
-                    const IterableTransformer.first(),
-                    const IterableTransformer.join(separator: ', ')
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                    IterableTransformer.first(),
+                    IterableTransformer.join(separator: ', ')
                   ]),
                 )),
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
-                  transformer: ZacTransformers([
-                    const IterableTransformer.last(),
-                    const IterableTransformer.join(separator: ', ')
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                    IterableTransformer.last(),
+                    IterableTransformer.join(separator: ', ')
                   ]),
                 )),
                 child,
@@ -872,9 +881,11 @@ void main() {
             ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
-                transformer: ZacTransformers([
+                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
                   IterableTransformer.map(
-                      transformer: ZacTransformers([_ConcatStr('foo')]))
+                      transformer:
+                          ZacValueList<ZacTransform, List<ZacTransform>>(
+                              [_ConcatStr('foo')])),
                 ]),
               ),
             ]).build(getContext(), getZacContext()).execute(
@@ -904,9 +915,9 @@ void main() {
               children: ZacValueList<Widget, List<Widget>?>([
                 FlutterText(ConsumeSharedValue<String>(
                   family: 'family',
-                  transformer: ZacTransformers([
-                    const MapTransformer.values(),
-                    const IterableTransformer.join(separator: ', ')
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                    MapTransformer.values(),
+                    IterableTransformer.join(separator: ', ')
                   ]),
                 )),
                 child,
@@ -917,10 +928,12 @@ void main() {
             ZacValueList<ZacAction, List<ZacAction>>([
               SharedValueActions.update(
                 family: 'family',
-                transformer: ZacTransformers([
+                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
                   MapTransformer.mapper(
-                    valueTransformer: ZacTransformers([_ConcatStr('foo')]),
-                  )
+                    valueTransformer:
+                        ZacValueList<ZacTransform, List<ZacTransform>>(
+                            [_ConcatStr('foo')]),
+                  ),
                 ]),
               ),
             ]).build(getContext(), getZacContext()).execute(
@@ -954,7 +967,8 @@ void main() {
                   context: getContext(),
                   zacContext: getZacContext(),
                   consumeType: SharedValueConsumeType.watch(
-                      select: ZacTransformers([_ConcatStr('bar')])),
+                      select: ZacValueList<ZacTransform, List<ZacTransform>>(
+                          [_ConcatStr('bar')])),
                   family: 'shared',
                 ),
                 'foobar');
@@ -965,14 +979,17 @@ void main() {
   });
 }
 
-class _ConcatStr implements ZacTransformer {
+class _ConcatStr implements ZacBuilder<ZacTransform> {
   final String str;
 
   _ConcatStr(this.str);
 
-  @override
-  Object? transform(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     return (transformValue.value as String) + str;
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }

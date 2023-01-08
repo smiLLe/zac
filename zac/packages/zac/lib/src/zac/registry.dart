@@ -1,8 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -17,8 +15,6 @@ typedef CreateListBuilder = ZacListBuilder<T, X>
 
 typedef CreateMapBuilder = ZacMapBuilder<T, X> Function<T extends Object?,
     X extends Map<String, T>?>(Map<String, dynamic> map);
-
-typedef CreateTransformer = ZacTransformer Function(Map<String, dynamic> map);
 
 class ZacRegistry extends DelegatingMap<String, Object> {
   static final ZacRegistry _singleton = () {
@@ -56,9 +52,6 @@ $builder''');
 
     return builder;
   }
-
-  CreateTransformer getRegisteredTransformer(String name) =>
-      _get<CreateTransformer>(name);
 
   CreateListBuilder getRegisteredList(String name) =>
       _get<CreateListBuilder>(name);
@@ -128,10 +121,6 @@ Builder: $builder''');
   }
 
   void registerGeneric(String name, CreateBuilderFromSingleType cb) {
-    putIfAbsent(name, () => cb);
-  }
-
-  void registerTransformer(String name, CreateTransformer cb) {
     putIfAbsent(name, () => cb);
   }
 }

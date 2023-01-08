@@ -136,15 +136,6 @@ class AllFiles {
     })
   ]..sortByCompare(
       (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
-
-  late final Iterable<OneClass> zacTransformer = [
-    ...files
-        .where((oneFile) => oneFile.zacTransformer.isNotEmpty)
-        .fold<Iterable<OneClass>>([], (previousValue, element) {
-      return [...previousValue, ...element.zacTransformer];
-    })
-  ]..sortByCompare(
-      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 }
 
 class OneFile {
@@ -177,9 +168,6 @@ class OneFile {
       .where((cls) => !cls.allSupertypes.any((element) => element
           .getDisplayString(withNullability: false)
           .startsWith('ZacBuilder')))
-      .where((cls) => !cls.allSupertypes.any((element) => element
-          .getDisplayString(withNullability: false)
-          .startsWith('ZacTransformer')))
       .map(OneClass.new);
 
   late final Iterable<OneClass> builders =
@@ -187,13 +175,6 @@ class OneFile {
 
   late final Iterable<OneClass> buildersWithTypeParams =
       _builders.where((cls) => cls.typeParameters.isNotEmpty).map(OneClass.new);
-
-  late final Iterable<OneClass> zacTransformer = _filteredClasses
-      .where((cls) => cls.allSupertypes.any((element) => element
-          .getDisplayString(withNullability: false)
-          .startsWith('ZacTransformer')))
-      .where((cls) => cls.typeParameters.isEmpty)
-      .map(OneClass.new);
 }
 
 class OneClass {
@@ -364,15 +345,6 @@ export class ${b.className} extends ZacConvertable {
     });
   }
 
-  Iterable<String> _transformersTmpl() {
-    return allFiles.zacTransformer.map((b) {
-      return '''
-export class ${b.className} extends ZacTransformer {
-  ${_ctorTmpl(b).join('\n')}
-}''';
-    });
-  }
-
   @override
   String toString() {
     return '''
@@ -383,7 +355,6 @@ $header
 
 ${_othersTmpl().join('\n')}
 ${_builderTmpl().join('\n')}
-${_transformersTmpl().join('\n')}
 ''';
   }
 }

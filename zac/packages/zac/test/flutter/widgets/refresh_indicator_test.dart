@@ -65,7 +65,7 @@ void main() {
 
   testWidgets('Execute onRefresh without custom completer', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
-    final cb = MockTestExecute();
+    final cb = MockTestActionExecute();
     await testWithinMaterialApp(
       tester,
       Scaffold(

@@ -12,10 +12,10 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterGestureDetector interactions', (tester) async {
-    final onTapCb = MockTestExecute();
-    final onLongPressCb = MockTestExecute();
-    final onSecondaryLongPressCb = MockTestExecute();
-    final onTertiaryLongPressCb = MockTestExecute();
+    final onTapCb = MockTestActionExecute();
+    final onLongPressCb = MockTestActionExecute();
+    final onSecondaryLongPressCb = MockTestActionExecute();
+    final onTertiaryLongPressCb = MockTestActionExecute();
 
     await testZacWidget(
       tester,
@@ -64,7 +64,7 @@ void main() {
   });
 
   testWidgets('doubleTap', (tester) async {
-    final doubleTapCb = MockTestExecute();
+    final doubleTapCb = MockTestActionExecute();
     await testZacWidget(
       tester,
       FlutterGestureDetector(

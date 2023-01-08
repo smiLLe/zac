@@ -317,8 +317,8 @@ class ZacStateMachineActions
 @freezedZacBuilder
 class ZacStateMachineTransformer
     with _$ZacStateMachineTransformer
-    implements ZacTransformer {
-  const ZacStateMachineTransformer._();
+    implements ZacBuilder<ZacTransform> {
+  ZacStateMachineTransformer._();
 
   static const String unionValue = 'z:1:StateMachine:Transformer.pickState';
   static const String unionValuePickContext =
@@ -335,9 +335,9 @@ class ZacStateMachineTransformer
   factory ZacStateMachineTransformer.pickContext() =
       _ZacStateMachineTransformerPickContext;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! ZacStateMachine) {
       throw StateError('''
@@ -349,5 +349,8 @@ but instead got: $value''');
       pickState: (_) => value.state,
       pickContext: (_) => value.context,
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }

@@ -88,7 +88,7 @@ class SharedValueActions
   @FreezedUnionValue(SharedValueActions.unionValue)
   factory SharedValueActions.update({
     required SharedValueFamily family,
-    ZacBuilder<List<ZacTransformer>?>? transformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
     @Default(false) bool? ifNoPayloadTakeCurrent,
   }) = _SharedValueActionsUpdate;
 
@@ -151,7 +151,7 @@ class SharedValueConsumeType with _$SharedValueConsumeType {
 
   @FreezedUnionValue(SharedValueConsumeType.unionValue)
   const factory SharedValueConsumeType.watch({
-    ZacBuilder<List<ZacTransformer>>? select,
+    ZacListBuilder<ZacTransform, List<ZacTransform>>? select,
   }) = _SharedValueConsumeTypeWatch;
 
   @FreezedUnionValue(SharedValueConsumeType.unionValueRead)
@@ -209,7 +209,7 @@ class SharedValueProviderBuilder
     required Object value,
     required String family,
     required ZacBuilder<Widget> child,
-    ZacBuilder<List<ZacTransformer>?>? transformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
     @Default(true) bool autoCreate,
   }) = _ProvideObject;
 
@@ -389,7 +389,7 @@ class ConsumeSharedValue<T>
   @FreezedUnionValue(ConsumeSharedValue.union)
   factory ConsumeSharedValue({
     required SharedValueFamily family,
-    ZacBuilder<List<ZacTransformer>?>? transformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValue<T>;
 
@@ -486,8 +486,8 @@ class ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   @FreezedUnionValue(ConsumeSharedValueList.union)
   factory ConsumeSharedValueList({
     required SharedValueFamily family,
-    ZacBuilder<List<ZacTransformer>?>? transformer,
-    ZacBuilder<List<ZacTransformer>?>? itemTransformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValueList<T, X>;
 
@@ -495,7 +495,7 @@ class ConsumeSharedValueList<T extends Object?, X extends List<T>?>
     required Object? value,
     required BuildContext context,
     required ZacContext zacContext,
-    required ZacBuilder<List<ZacTransformer>?>? transformer,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
   }) {
     final buildTransformer = transformer?.build(context, zacContext);
     if (null == value) {
@@ -627,8 +627,8 @@ class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
   @FreezedUnionValue(ConsumeSharedValueMap.union)
   factory ConsumeSharedValueMap({
     required SharedValueFamily family,
-    ZacBuilder<List<ZacTransformer>?>? transformer,
-    ZacBuilder<List<ZacTransformer>?>? itemTransformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer,
     SharedValueConsumeType? forceConsume,
   }) = _ConsumeSharedValueMap<T, X>;
 
@@ -636,7 +636,7 @@ class ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
     required Object? value,
     required BuildContext context,
     required ZacContext zacContext,
-    required ZacBuilder<List<ZacTransformer>?>? transformer,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
   }) {
     final buildTransformer = transformer?.build(context, zacContext);
     if (null == value) {

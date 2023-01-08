@@ -37,12 +37,12 @@ void main() {
         await testWithContext(
           tester,
           (getContext, getZacContext) {
-            final trueCb = MockTestExecute();
-            final falseCb = MockTestExecute();
+            final trueCb = MockTestActionExecute();
+            final falseCb = MockTestActionExecute();
 
             ZacControlFlowAction.ifCond(
-              condition:
-                  ZacTransformers([ObjectTransformer.equals(other: 'hello')]),
+              condition: ZacValueList<ZacTransform, List<ZacTransform>>(
+                  [ObjectTransformer.equals(other: 'hello')]),
               ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
                   [TestAction(trueCb)]),
               ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
@@ -65,11 +65,11 @@ void main() {
         await testWithContext(
           tester,
           (getContext, getZacContext) {
-            final trueCb = MockTestExecute();
-            final falseCb = MockTestExecute();
+            final trueCb = MockTestActionExecute();
+            final falseCb = MockTestActionExecute();
             ZacControlFlowAction.ifCond(
-              condition:
-                  ZacTransformers([ObjectTransformer.equals(other: 'world')]),
+              condition: ZacValueList<ZacTransform, List<ZacTransform>>(
+                  [ObjectTransformer.equals(other: 'world')]),
               ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
                   [TestAction(trueCb)]),
               ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
@@ -92,10 +92,10 @@ void main() {
           'condition can be an array and once returned false it will execute ifFalse Actions',
           (tester) async {
         await testWithContext(tester, (getContext, getZacContext) {
-          final trueCb = MockTestExecute();
-          final falseCb = MockTestExecute();
+          final trueCb = MockTestActionExecute();
+          final falseCb = MockTestActionExecute();
           ZacControlFlowAction.ifCond(
-            condition: ZacTransformers([
+            condition: ZacValueList<ZacTransform, List<ZacTransform>>([
               ObjectTransformer.equals(other: 'hello'),
               ObjectTransformer.equals(other: 'THAT IS FALSE'),
               ObjectTransformer.equals(other: 'hello'),
@@ -142,7 +142,8 @@ void main() {
         await testWithContext(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
-                    condition: ZacTransformers([]),
+                    condition:
+                        ZacValueList<ZacTransform, List<ZacTransform>>([]),
                     ifTrue: ZacValueList<ZacAction, List<ZacAction>>([]),
                   ).build(getContext(), getZacContext()).execute(
                       const ZacActionPayload(), getContext(), getZacContext()),
@@ -159,7 +160,8 @@ void main() {
         await testWithContext(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
-                    condition: ZacTransformers([ObjectTransformer.toString()]),
+                    condition: ZacValueList<ZacTransform, List<ZacTransform>>(
+                        [ObjectTransformer.toString()]),
                     ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
                         [TestAction.noop(<String, dynamic>{})]),
                   ).build(getContext(), getZacContext()).execute(
@@ -170,7 +172,7 @@ void main() {
                   (p0) => p0.message,
                   'error message',
                   contains(
-                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacTransformers condition did not result in a bool but "hello"'))));
+                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacTransform condition did not result in a bool but "hello"'))));
         });
       });
     });
@@ -201,7 +203,7 @@ void main() {
     });
 
     testWidgets('will execute interactions', (tester) async {
-      final executeCb = MockTestExecute();
+      final executeCb = MockTestActionExecute();
 
       await testZacWidget(
           tester,
@@ -222,7 +224,7 @@ void main() {
 
   group('ZacExecuteActionsListen', () {
     testWidgets('execute interactions', (tester) async {
-      final cb = MockTestExecute();
+      final cb = MockTestActionExecute();
       await testWithContextWithChild(
         tester,
         (child) => SharedValueProviderBuilder.provideInt(
