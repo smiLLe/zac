@@ -1,4 +1,17 @@
-# See https://www.dartlang.org/guides/libraries/private-files
+# Ignoring native folders of the example as they can be re-generated easily using:
+# flutter create --platforms=android,ios,web,windows,macos .
+**/example/android/
+**/example/ios/
+**/example/web/
+**/example/windows/
+**/example/macos/
+**/example/linux/
+examples/**/android/
+examples/**/ios/
+examples/**/web/
+examples/**/windows/
+examples/**/macos/
+examples/**/linux/
 
 # Files and directories created by pub
 .dart_tool/

@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "start-example-chrome",
+            "console": "debugConsole",
+            "cwd": "zac${pathSeparator}packages${pathSeparator}zac${pathSeparator}example",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib${pathSeparator}main.dart",
+            "args": [
+                "-d",
+                "chrome"
+            ],
+        },
+        {
             "name": "generate-ts-lib",
             "console": "debugConsole",
             "cwd": "${workspaceFolder}",
