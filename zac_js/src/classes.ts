@@ -2191,7 +2191,7 @@ export class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
     contentTextStyle?: ZacBuilder<native.TextStyle>;
     actions: ZacListBuilder<native.Widget>;
     elevation?: number | ZacBuilder<number>;
-    leading: ZacBuilder<native.Widget>;
+    leading?: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
     leadingPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
@@ -3142,7 +3142,7 @@ export class SnackBarAction extends ZacBuilder<native.SnackBarAction> {
     key?: ZacBuilder<native.Key>;
     textColor?: ZacBuilder<native.Color>;
     disabledTextColor?: ZacBuilder<native.Color>;
-    label: string;
+    label: string | ZacBuilder<string>;
     onPressed: ZacListBuilder<ZacAction>;
   }) {
     return new SnackBarAction({

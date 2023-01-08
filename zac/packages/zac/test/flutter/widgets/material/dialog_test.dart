@@ -1,9 +1,12 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
@@ -207,25 +210,72 @@ void main() {
           isA<SimpleDialogOption>().having((p0) => p0.padding,
               'SimpleDialogOption.padding', EdgeInsetsModel.equalsAll));
     });
+  });
 
-    testWidgets('interaction', (tester) async {
-      final cb = MockTestActionExecute();
-      await testZacWidget(
-          tester,
-          FlutterMaterial(
-              child: FlutterDialogs.simpleDialogOption(
-            key: FlutterValueKey('FIND_ME'),
-            child: FlutterSizedBox(key: FlutterValueKey('child1')),
-            onPressed:
-                ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
-          )));
+  group('showDialog()', () {
+    testWidgets('will show', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: FlutterBuilder(
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterDialogActions.showDialog(
+                          child: FlutterText(ZacValue('hello world')),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(find.text('hello world'), findsNothing);
 
-      final findMe = find.byKey(const ValueKey('FIND_ME'));
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
 
-      await tester.tap(findMe);
+      expect(find.text('hello world'), findsOneWidget);
+    });
 
-      verify(cb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(1);
+    testWidgets('will have access to parent shared values', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: SharedValueProviderBuilder.provideString(
+                    value: 'hello world',
+                    family: 'shared',
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterDialogActions.showDialog(
+                          child: FlutterText(
+                            ConsumeSharedValue<String>(family: 'shared'),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsOneWidget);
     });
   });
 }

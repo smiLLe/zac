@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/widgets/material/buttons.dart';
-import 'package:zac/src/flutter/widgets/material/scaffold.dart';
+import 'package:zac/src/flutter/all.dart';
+import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
 import '../../models.dart';
@@ -187,123 +191,300 @@ void main() {
         findsOneWidget);
   });
 
-  testWidgets('showBottomSheet', (tester) async {
-    await testMap(
-      tester,
-      <String, dynamic>{
-        'builder': FlutterScaffold.unionValue,
-        'key': KeysModel.getValueKey('scaffold'),
-        'body': {
-          'builder': 'f:1:Builder',
-          'child': {
-            'builder': FlutterElevatedButton.unionValue,
-            'key': KeysModel.getValueKey('button'),
-            'child': ChildModel.sizedBox,
-            'onPressed': [
-              {
-                'builder': 'f:1:Scaffold.showBottomSheet',
-                'child': ChildModel.getSizedBox(key: 'child')
-              },
-            ],
-          }
-        }
-      },
-    );
+  group('showBottomSheet()', () {
+    testWidgets('will show', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            home: Material(
+              child: ZacWidget(
+                data: FlutterScaffold(
+                  body: FlutterBuilder(
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldActions.showBottomSheet(
+                          FlutterText(
+                            ZacValue('hello world'),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
 
-    expect(find.byKey(const ValueKey('scaffold')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
 
-    await tester.tap(find.byKey(const ValueKey('button')));
-    await tester.pumpAndSettle();
+      expect(find.text('hello world'), findsOneWidget);
+    });
 
-    expect(find.byKey(const ValueKey('child')), findsOneWidget);
+    testWidgets('will have access to parent shared values', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: SharedValueProviderBuilder.provideString(
+                    value: 'hello world',
+                    family: 'shared',
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldActions.showBottomSheet(
+                          FlutterText(
+                            ConsumeSharedValue<String>(family: 'shared'),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsOneWidget);
+    });
   });
 
-  testWidgets('SnackBar', (tester) async {
-    // TODO: Add more testing
-    await testMap(
-      tester,
-      <String, dynamic>{
-        'builder': FlutterScaffold.unionValue,
-        'key': KeysModel.getValueKey('scaffold'),
-        'body': {
-          'builder': 'f:1:Builder',
-          'child': {
-            'builder': FlutterElevatedButton.unionValue,
-            'key': KeysModel.getValueKey('button'),
-            'child': ChildModel.sizedBox,
-            'onPressed': [
-              {
-                'builder': FlutterScaffoldMessenger.unionValueShowSnackBar,
-                'snackBar': {
-                  'builder': 'f:1:SnackBar',
-                  'content': ChildModel.getSizedBox(key: 'child'),
-                }
-              },
-            ],
-          }
-        }
-      },
-    );
+  group('SnackBar', () {
+    testWidgets('showSnackBar() / hideCurrentSnackBar()', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: FlutterBuilder(
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('show'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldMessenger.showSnackBar(
+                          FlutterSnackBar(
+                            content: FlutterElevatedButton(
+                              key: FlutterValueKey('hide'),
+                              child: FlutterText(ZacValue('hello world')),
+                              onPressed:
+                                  ZacValueList<ZacAction, List<ZacAction>>([
+                                FlutterScaffoldMessenger.hideCurrentSnackBar(),
+                              ]),
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(find.text('hello world'), findsNothing);
 
-    expect(find.byKey(const ValueKey('scaffold')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('show')));
+      await tester.pumpAndSettle();
 
-    await tester.tap(find.byKey(const ValueKey('button')));
-    await tester.pumpAndSettle();
+      expect(find.text('hello world'), findsOneWidget);
 
-    expect(find.byKey(const ValueKey('child')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('hide')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsNothing);
+    });
+
+    testWidgets('will have access to parent shared values', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: SharedValueProviderBuilder.provideString(
+                    value: 'hello world',
+                    family: 'shared',
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldMessenger.showSnackBar(
+                          FlutterSnackBar(
+                            content: FlutterText(
+                              ConsumeSharedValue<String>(family: 'shared'),
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsOneWidget);
+    });
   });
 
-  testWidgets('Material Banner', (tester) async {
-    // TODO: Add more testing
-    await testMap(
-      tester,
-      <String, dynamic>{
-        'builder': FlutterScaffold.unionValue,
-        'key': KeysModel.getValueKey('scaffold'),
-        'body': {
-          'builder': 'f:1:Builder',
-          'child': {
-            'builder': FlutterElevatedButton.unionValue,
-            'key': KeysModel.getValueKey('button'),
-            'child': ChildModel.sizedBox,
-            'onPressed': [
-              {
-                'builder':
-                    FlutterScaffoldMessenger.unionValueShowMaterialBanner,
-                'materialBanner': {
-                  'builder': FlutterMaterialBanner.unionValue,
-                  'content': ChildModel.getSizedBox(key: 'child'),
-                  'actions': [
-                    {
-                      'builder': FlutterElevatedButton.unionValue,
-                      'key': KeysModel.getValueKey('remove_button'),
-                      'child': ChildModel.sizedBox,
-                      'onPressed': [
-                        {
-                          'builder': FlutterScaffoldMessenger
-                              .unionValueRemoveCurrentMaterialBanner
-                        }
-                      ],
-                    }
-                  ]
-                },
-              },
-            ],
-          }
-        }
-      },
-    );
+  group('MaterialBanner', () {
+    testWidgets('showMaterialBanner() / removeCurrentMaterialBanner()',
+        (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: FlutterBuilder(
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('show'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldMessenger.showMaterialBanner(
+                          FlutterMaterialBanner(
+                            content: FlutterText(ZacValue('hello world')),
+                            actions: ZacValueList<Widget, List<Widget>>([
+                              FlutterElevatedButton(
+                                key: FlutterValueKey('remove'),
+                                onPressed:
+                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                  FlutterScaffoldMessenger
+                                      .removeCurrentMaterialBanner(),
+                                ]),
+                              ),
+                            ]),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
 
-    expect(find.byKey(const ValueKey('scaffold')), findsOneWidget);
+      expect(find.text('hello world'), findsNothing);
 
-    await tester.tap(find.byKey(const ValueKey('button')));
-    await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('show')));
+      await tester.pumpAndSettle();
 
-    expect(find.byKey(const ValueKey('child')), findsOneWidget);
+      expect(find.text('hello world'), findsOneWidget);
 
-    await tester.tap(find.byKey(const ValueKey('remove_button')));
-    await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('remove')));
+      await tester.pumpAndSettle();
 
-    expect(find.byKey(const ValueKey('child')), findsNothing);
+      expect(find.text('hello world'), findsNothing);
+    });
+
+    testWidgets('showMaterialBanner() / hideCurrentMaterialBanner()',
+        (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: FlutterBuilder(
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('show'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldMessenger.showMaterialBanner(
+                          FlutterMaterialBanner(
+                            content: FlutterText(ZacValue('hello world')),
+                            actions: ZacValueList<Widget, List<Widget>>([
+                              FlutterElevatedButton(
+                                key: FlutterValueKey('hide'),
+                                onPressed:
+                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                  FlutterScaffoldMessenger
+                                      .hideCurrentMaterialBanner(),
+                                ]),
+                              ),
+                            ]),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('hello world'), findsNothing);
+
+      await tester.tap(find.byKey(const ValueKey('show')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsOneWidget);
+
+      await tester.tap(find.byKey(const ValueKey('hide')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsNothing);
+    });
+
+    testWidgets('will have access to parent shared values', (tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          child: ZacWidget(
+            data: FlutterMaterialApp(
+              home: FlutterMaterial(
+                child: FlutterScaffold(
+                  body: SharedValueProviderBuilder.provideString(
+                    value: 'hello world',
+                    family: 'shared',
+                    child: FlutterElevatedButton(
+                      key: FlutterValueKey('button'),
+                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                        FlutterScaffoldMessenger.showMaterialBanner(
+                          FlutterMaterialBanner(
+                            content: FlutterText(ZacValue('hello world')),
+                            actions: ZacValueList<Widget, List<Widget>>([
+                              FlutterElevatedButton(
+                                key: FlutterValueKey('remove'),
+                                onPressed:
+                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                  FlutterScaffoldMessenger
+                                      .removeCurrentMaterialBanner(),
+                                ]),
+                              ),
+                            ]),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byKey(const ValueKey('button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text('hello world'), findsOneWidget);
+    });
   });
 }

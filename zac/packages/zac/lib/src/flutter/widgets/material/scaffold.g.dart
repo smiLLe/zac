@@ -230,11 +230,9 @@ _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
       disabledTextColor: json['disabledTextColor'] == null
           ? null
           : ZacBuilder<Color?>.fromJson(json['disabledTextColor'] as Object),
-      label: json['label'] as String,
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
+      label: ZacBuilder<String>.fromJson(json['label'] as Object),
+      onPressed: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
+          json['onPressed'] as Object),
     );
 
 _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(

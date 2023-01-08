@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -117,8 +118,9 @@ class FlutterScaffoldActions
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBodyScrim)
   factory FlutterScaffoldActions.showBodyScrim(
-          bool value, ZacBuilder<double> opacity) =
-      _FlutterScaffoldActionsShowBodyScrim;
+    bool value,
+    ZacBuilder<double> opacity,
+  ) = _FlutterScaffoldActionsShowBodyScrim;
 
   @FreezedUnionValue(FlutterScaffoldActions.unionValueShowBottomSheet)
   factory FlutterScaffoldActions.showBottomSheet(
@@ -139,7 +141,10 @@ class FlutterScaffoldActions
         final state = Scaffold.maybeOf(context);
         if (null == state) return;
         state.showBottomSheet<void>(
-          (_) => FlutterBuilder(child: value.child).build(context, zacContext),
+          (_) => ProviderScope(
+            parent: ProviderScope.containerOf(context),
+            child: ZacFlutterBuilder(builder: value.child.build),
+          ),
           backgroundColor: value.backgroundColor?.build(context, zacContext),
           clipBehavior: value.clipBehavior?.build(context, zacContext),
           constraints: value.constraints?.build(context, zacContext),
@@ -167,7 +172,9 @@ class FlutterScaffoldActions
         final state = Scaffold.maybeOf(context);
         if (null == state) return null;
         state.showBodyScrim(
-            value.value, value.opacity.build(context, zacContext));
+          value.value,
+          value.opacity.build(context, zacContext),
+        );
       },
     );
   });
@@ -237,7 +244,7 @@ class FlutterScaffoldMessenger
         final state = ScaffoldMessenger.maybeOf(context);
         if (null == state) return null;
 
-        // TODO: Add reasons via AWActions in constructor
+        // TODO: Add reasons
         state.showSnackBar(value.snackBar.build(context, zacContext));
       },
       hideCurrentSnackBar: (value) {
@@ -375,18 +382,16 @@ class FlutterSnackBarAction
     ZacBuilder<Key?>? key,
     ZacBuilder<Color?>? textColor,
     ZacBuilder<Color?>? disabledTextColor,
-    required String label,
-    required ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+    required ZacBuilder<String> label,
+    required ZacListBuilder<ZacAction, List<ZacAction>> onPressed,
   }) = _FlutterSnackBarAction;
 
   SnackBarAction _buildWidget(BuildContext context, ZacContext zacContext) {
     return SnackBarAction(
       key: key?.build(context, zacContext),
-      label: label,
-      onPressed: onPressed
-              ?.build(context, zacContext)
-              ?.createCb(context, zacContext) ??
-          () {},
+      label: label.build(context, zacContext),
+      onPressed:
+          onPressed.build(context, zacContext).createCb(context, zacContext),
       disabledTextColor: disabledTextColor?.build(context, zacContext),
       textColor: textColor?.build(context, zacContext),
     );
@@ -416,7 +421,7 @@ class FlutterMaterialBanner
     ZacBuilder<TextStyle?>? contentTextStyle,
     required ZacListBuilder<Widget, List<Widget>> actions,
     ZacBuilder<double?>? elevation,
-    required ZacBuilder<Widget?>? leading,
+    ZacBuilder<Widget?>? leading,
     ZacBuilder<Color?>? backgroundColor,
     ZacBuilder<EdgeInsetsGeometry?>? padding,
     ZacBuilder<EdgeInsetsGeometry?>? leadingPadding,

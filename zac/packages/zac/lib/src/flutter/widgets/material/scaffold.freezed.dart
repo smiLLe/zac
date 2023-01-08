@@ -1367,8 +1367,8 @@ mixin _$FlutterSnackBarAction {
   ZacBuilder<Color?>? get textColor => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get disabledTextColor =>
       throw _privateConstructorUsedError;
-  String get label => throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed =>
+  ZacBuilder<String> get label => throw _privateConstructorUsedError;
+  ZacListBuilder<ZacAction, List<ZacAction>> get onPressed =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1399,9 +1399,9 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
   @override
   final ZacBuilder<Color?>? disabledTextColor;
   @override
-  final String label;
+  final ZacBuilder<String> label;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>> onPressed;
 
   @override
   String toString() {
@@ -1442,8 +1442,8 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
       {final ZacBuilder<Key?>? key,
       final ZacBuilder<Color?>? textColor,
       final ZacBuilder<Color?>? disabledTextColor,
-      required final String label,
-      required final ZacListBuilder<ZacAction, List<ZacAction>?>?
+      required final ZacBuilder<String> label,
+      required final ZacListBuilder<ZacAction, List<ZacAction>>
           onPressed}) = _$_FlutterSnackBarAction;
   _FlutterSnackBarAction._() : super._();
 
@@ -1457,9 +1457,9 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
   @override
   ZacBuilder<Color?>? get disabledTextColor;
   @override
-  String get label;
+  ZacBuilder<String> get label;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>> get onPressed;
 }
 
 FlutterMaterialBanner _$FlutterMaterialBannerFromJson(
@@ -1504,7 +1504,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
       this.contentTextStyle,
       required this.actions,
       this.elevation,
-      required this.leading,
+      this.leading,
       this.backgroundColor,
       this.padding,
       this.leadingPadding,
@@ -1601,7 +1601,7 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
           final ZacBuilder<TextStyle?>? contentTextStyle,
           required final ZacListBuilder<Widget, List<Widget>> actions,
           final ZacBuilder<double?>? elevation,
-          required final ZacBuilder<Widget?>? leading,
+          final ZacBuilder<Widget?>? leading,
           final ZacBuilder<Color?>? backgroundColor,
           final ZacBuilder<EdgeInsetsGeometry?>? padding,
           final ZacBuilder<EdgeInsetsGeometry?>? leadingPadding,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:zac/zac.dart';
@@ -188,20 +189,23 @@ class FlutterDialogActions
   late final ZacAction _action = ZacAction(
       (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
-      showDialog: (value) =>
-          showDialog<ZacListBuilder<ZacAction, List<ZacAction>?>?>(
-        context: context,
-        builder: (_) =>
-            FlutterBuilder(child: value.child).build(context, zacContext),
-        routeSettings: value.routeSettings?.build(context, zacContext),
-        barrierDismissible:
-            value.barrierDismissible?.build(context, zacContext) ?? true,
-        barrierColor: value.barrierColor?.build(context, zacContext),
-        barrierLabel: value.barrierLabel?.build(context, zacContext),
-        useSafeArea: value.useSafeArea?.build(context, zacContext) ?? true,
-        useRootNavigator:
-            value.useRootNavigator?.build(context, zacContext) ?? true,
-      ),
+      showDialog: (value) {
+        showDialog<ZacListBuilder<ZacAction, List<ZacAction>?>?>(
+          context: context,
+          builder: (_) => ProviderScope(
+            parent: ProviderScope.containerOf(context),
+            child: ZacFlutterBuilder(builder: value.child.build),
+          ),
+          routeSettings: value.routeSettings?.build(context, zacContext),
+          barrierDismissible:
+              value.barrierDismissible?.build(context, zacContext) ?? true,
+          barrierColor: value.barrierColor?.build(context, zacContext),
+          barrierLabel: value.barrierLabel?.build(context, zacContext),
+          useSafeArea: value.useSafeArea?.build(context, zacContext) ?? true,
+          useRootNavigator:
+              value.useRootNavigator?.build(context, zacContext) ?? true,
+        );
+      },
     );
   });
 
