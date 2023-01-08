@@ -25,36 +25,45 @@ class FlutterGestureDetector
   factory FlutterGestureDetector({
     ZacBuilder<Key?>? key,
     ZacBuilder<Widget?>? child,
-    ZacBuilder<List<ZacAction>?>? onTap,
-    ZacBuilder<List<ZacAction>?>? onSecondaryTap,
-    ZacBuilder<List<ZacAction>?>? onDoubleTap,
-    ZacBuilder<List<ZacAction>?>? onLongPress,
-    ZacBuilder<List<ZacAction>?>? onSecondaryLongPress,
-    ZacBuilder<List<ZacAction>?>? onTertiaryLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onTap,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onSecondaryTap,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onDoubleTap,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onSecondaryLongPress,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onTertiaryLongPress,
     FlutterHitTestBehavior? behavior,
     ZacBuilder<bool?>? excludeFromSemantics,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) = _FlutterGestureDetector;
 
-  GestureDetector _buildWidget(ZacContext zacContext) {
+  GestureDetector _buildWidget(BuildContext context, ZacContext zacContext) {
     return GestureDetector(
-      key: key?.build(zacContext),
-      behavior: behavior?.build(zacContext),
-      excludeFromSemantics: excludeFromSemantics?.build(zacContext) ?? false,
-      onTap: onTap?.build(zacContext)?.createCb(zacContext),
-      onSecondaryTap: onSecondaryTap?.build(zacContext)?.createCb(zacContext),
-      onDoubleTap: onDoubleTap?.build(zacContext)?.createCb(zacContext),
-      onLongPress: onLongPress?.build(zacContext)?.createCb(zacContext),
-      onSecondaryLongPress:
-          onSecondaryLongPress?.build(zacContext)?.createCb(zacContext),
-      onTertiaryLongPress:
-          onTertiaryLongPress?.build(zacContext)?.createCb(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      behavior: behavior?.build(context, zacContext),
+      excludeFromSemantics:
+          excludeFromSemantics?.build(context, zacContext) ?? false,
+      onTap: onTap?.build(context, zacContext)?.createCb(context, zacContext),
+      onSecondaryTap: onSecondaryTap
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      onDoubleTap: onDoubleTap
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      onLongPress: onLongPress
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      onSecondaryLongPress: onSecondaryLongPress
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      onTertiaryLongPress: onTertiaryLongPress
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  GestureDetector build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  GestureDetector build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -175,7 +175,7 @@ _$_FlutterDialogsSimpleDialogOption
               : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
           onPressed: json['onPressed'] == null
               ? null
-              : ZacBuilder<List<ZacAction>?>.fromJson(
+              : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
                   json['onPressed'] as Object),
           padding: json['padding'] == null
               ? null

@@ -1,3 +1,8 @@
+///
+/// Generated file.
+/// DO NOT MODIFY BY HAND.
+///
+
 import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
@@ -79,7 +84,6 @@ import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/registry.dart';
@@ -354,6 +358,14 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:MaterialBanner', FlutterMaterialBanner.fromJson)
     ..register('f:1:MaterialPageRoute', FlutterMaterialPageRoute.fromJson)
     ..register('f:1:Navigator', FlutterNavigator.fromJson)
+    ..register('f:1:Navigator.maybePop', FlutterNavigatorActions.fromJson)
+    ..register('f:1:Navigator.pop', FlutterNavigatorActions.fromJson)
+    ..register('f:1:Navigator.push', FlutterNavigatorActions.fromJson)
+    ..register('f:1:Navigator.pushNamed', FlutterNavigatorActions.fromJson)
+    ..register(
+        'f:1:Navigator.pushReplacement', FlutterNavigatorActions.fromJson)
+    ..register(
+        'f:1:Navigator.pushReplacementNamed', FlutterNavigatorActions.fromJson)
     ..register('f:1:NavigatorState.closest', FlutterNavigatorState.fromJson)
     ..register('f:1:NavigatorState.root', FlutterNavigatorState.fromJson)
     ..register('f:1:Offset', FlutterOffset.fromJson)
@@ -389,6 +401,22 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:Row', FlutterRow.fromJson)
     ..register('f:1:SafeArea', FlutterSafeArea.fromJson)
     ..register('f:1:Scaffold', FlutterScaffold.fromJson)
+    ..register('f:1:Scaffold.openDrawer', FlutterScaffoldActions.fromJson)
+    ..register('f:1:Scaffold.openEndDrawer', FlutterScaffoldActions.fromJson)
+    ..register('f:1:Scaffold.showBodyScrim', FlutterScaffoldActions.fromJson)
+    ..register('f:1:Scaffold.showBottomSheet', FlutterScaffoldActions.fromJson)
+    ..register('f:1:ScaffoldMessenger.hideCurrentMaterialBanner',
+        FlutterScaffoldMessenger.fromJson)
+    ..register('f:1:ScaffoldMessenger.hideCurrentSnackBar',
+        FlutterScaffoldMessenger.fromJson)
+    ..register('f:1:ScaffoldMessenger.removeCurrentMaterialBanner',
+        FlutterScaffoldMessenger.fromJson)
+    ..register('f:1:ScaffoldMessenger.removeCurrentSnackBar',
+        FlutterScaffoldMessenger.fromJson)
+    ..register('f:1:ScaffoldMessenger.showMaterialBanner',
+        FlutterScaffoldMessenger.fromJson)
+    ..register(
+        'f:1:ScaffoldMessenger.showSnackBar', FlutterScaffoldMessenger.fromJson)
     ..register('f:1:ScrollViewKeyboardDismissBehavior.manual',
         FlutterScrollViewKeyboardDismissBehavior.fromJson)
     ..register('f:1:ScrollViewKeyboardDismissBehavior.onDrag',
@@ -535,8 +563,10 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:WrapCrossAlignment.end', FlutterWrapCrossAlignment.fromJson)
     ..register(
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
-    ..register('z:1:Actions', ZacActions.fromJson)
+    ..register('f:1:showDialog', FlutterDialogActions.fromJson)
+    ..register('z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
     ..register('z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson)
+    ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:ExecuteActions.once', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:GlobalKey<NavigatorState>.provide',
@@ -546,191 +576,109 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:List<Widget>.provide', SharedValueProviderBuilder.fromJson)
     ..register(
         'z:1:Map<String, Widget>.provide', SharedValueProviderBuilder.fromJson)
+    ..register(
+        'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:ScrollController.provide', FlutterScrollController.fromJson)
+    ..register('z:1:SharedValue.invalidate', SharedValueActions.fromJson)
+    ..register('z:1:SharedValue.update', SharedValueActions.fromJson)
     ..register(
         'z:1:StateMachine.provide', ZacStateMachineProviderBuilder.fromJson)
+    ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
+    ..register(
+        'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
     ..register('z:1:StateMachine:BuildState',
         ZacStateMachineBuildStateBuilder.fromJson)
+    ..register('z:1:StateMachine:Transformer.pickContext',
+        ZacStateMachineTransformer.fromJson)
+    ..register('z:1:StateMachine:Transformer.pickState',
+        ZacStateMachineTransformer.fromJson)
     ..register('z:1:String.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:Transformers', ZacTransformers.fromJson)
-    ..register('z:1:UpdateContext', ZacUpdateContextBuilder.fromJson)
+    ..register('z:1:Transformer:Bool.negate', BoolTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Iterable.contains', IterableTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Iterable.elementAt', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.first', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.isEmpty', IterableTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Iterable.isNotEmpty', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.join', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.last', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.length', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.map', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.single', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.skip', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.take', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.toList', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Iterable.toSet', IterableTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Iterable.toString', IterableTransformer.fromJson)
+    ..register('z:1:Transformer:Json.decode', JsonTransformer.fromJson)
+    ..register('z:1:Transformer:Json.encode', JsonTransformer.fromJson)
+    ..register('z:1:Transformer:List.add', ListTransformer.fromJson)
+    ..register('z:1:Transformer:List.reversed', ListTransformer.fromJson)
+    ..register('z:1:Transformer:Map.containsKey', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.containsValue', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.entries', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.isEmpty', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.isNotEmpty', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.keys', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.length', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.map', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.setValueForKey', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map.values', MapTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Map<Object, Object>.from', MapTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Map<String, Object>.from', MapTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Map<String, Object?>.from', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Map[key]', MapTransformer.fromJson)
+    ..register('z:1:Transformer:Object.equals', ObjectTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Object.equalsSharedValue', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.hashCode', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isBool', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isDouble', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isInt', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isList', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isMap', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isNull', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.isString', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.runtimeType', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:Object.toString', ObjectTransformer.fromJson)
+    ..register('z:1:Transformer:String.isEmpty', StringTransformer.fromJson)
+    ..register('z:1:Transformer:String.isNotEmpty', StringTransformer.fromJson)
+    ..register('z:1:Transformer:String.length', StringTransformer.fromJson)
+    ..register('z:1:Transformer:String.replaceAll', StringTransformer.fromJson)
+    ..register('z:1:Transformer:String.split', StringTransformer.fromJson)
+    ..register('z:1:Transformer:int.decr', IntTransformer.fromJson)
+    ..register('z:1:Transformer:int.incr', IntTransformer.fromJson)
+    ..register('z:1:Transformer:int.parse', IntTransformer.fromJson)
+    ..register('z:1:Transformer:int.tryParse', IntTransformer.fromJson)
+    ..register('z:1:Transformer:num.abs', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.ceil', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.ceilToDouble', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.floor', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.floorToDouble', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.isFinite', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.isInfinite', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.isNan', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.isNegative', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.round', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.roundToDouble', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.toDouble', NumTransformer.fromJson)
+    ..register('z:1:Transformer:num.toInt', NumTransformer.fromJson)
     ..register('z:1:Widget', ZacWidgetBuilder.fromJson)
     ..register('z:1:Widget.isolate', ZacWidgetBuilder.fromJson)
     ..register('z:1:Widget.provide', SharedValueProviderBuilder.fromJson)
     ..register(
         'z:1:ZacBuilder<Object>.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
     ..register('z:1:bool.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:double.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:int.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson)
-    ..registerAction('f:1:Navigator.maybePop', FlutterNavigatorActions.fromJson)
-    ..registerAction('f:1:Navigator.pop', FlutterNavigatorActions.fromJson)
-    ..registerAction('f:1:Navigator.push', FlutterNavigatorActions.fromJson)
-    ..registerAction(
-        'f:1:Navigator.pushNamed', FlutterNavigatorActions.fromJson)
-    ..registerAction(
-        'f:1:Navigator.pushReplacement', FlutterNavigatorActions.fromJson)
-    ..registerAction(
-        'f:1:Navigator.pushReplacementNamed', FlutterNavigatorActions.fromJson)
-    ..registerAction('f:1:Scaffold.openDrawer', FlutterScaffoldActions.fromJson)
-    ..registerAction(
-        'f:1:Scaffold.openEndDrawer', FlutterScaffoldActions.fromJson)
-    ..registerAction(
-        'f:1:Scaffold.showBodyScrim', FlutterScaffoldActions.fromJson)
-    ..registerAction(
-        'f:1:Scaffold.showBottomSheet', FlutterScaffoldActions.fromJson)
-    ..registerAction('f:1:ScaffoldMessenger.hideCurrentMaterialBanner',
-        FlutterScaffoldMessenger.fromJson)
-    ..registerAction('f:1:ScaffoldMessenger.hideCurrentSnackBar',
-        FlutterScaffoldMessenger.fromJson)
-    ..registerAction('f:1:ScaffoldMessenger.removeCurrentMaterialBanner',
-        FlutterScaffoldMessenger.fromJson)
-    ..registerAction('f:1:ScaffoldMessenger.removeCurrentSnackBar',
-        FlutterScaffoldMessenger.fromJson)
-    ..registerAction('f:1:ScaffoldMessenger.showMaterialBanner',
-        FlutterScaffoldMessenger.fromJson)
-    ..registerAction(
-        'f:1:ScaffoldMessenger.showSnackBar', FlutterScaffoldMessenger.fromJson)
-    ..registerAction('f:1:showDialog', FlutterDialogActions.fromJson)
-    ..registerAction(
-        'z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
-    ..registerAction('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
-    ..registerAction(
-        'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
-    ..registerAction('z:1:SharedValue.invalidate', SharedValueActions.fromJson)
-    ..registerAction('z:1:SharedValue.update', SharedValueActions.fromJson)
-    ..registerAction(
-        'z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
-    ..registerAction(
-        'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
-    ..registerAction('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
-    ..registerTransformer('z:1:StateMachine:Transformer.pickContext',
-        ZacStateMachineTransformer.fromJson)
-    ..registerTransformer('z:1:StateMachine:Transformer.pickState',
-        ZacStateMachineTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Bool.negate', BoolTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Converter', ConvertTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.contains', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.elementAt', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.first', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.isEmpty', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.isNotEmpty', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.join', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.last', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.length', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.map', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.single', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.skip', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.take', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.toList', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.toSet', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Iterable.toString', IterableTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Json.decode', JsonTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Json.encode', JsonTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:List.add', ListTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:List.reversed', ListTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.containsKey', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.containsValue', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.entries', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.isEmpty', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.isNotEmpty', MapTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:Map.keys', MapTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:Map.length', MapTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:Map.map', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map.setValueForKey', MapTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:Map.values', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map<Object, Object>.from', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map<String, Object>.from', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Map<String, Object?>.from', MapTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:Map[key]', MapTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.equals', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.equalsSharedValue', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.hashCode', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isBool', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isDouble', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isInt', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isList', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isMap', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isNull', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.isString', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.runtimeType', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:Object.toString', ObjectTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:String.isEmpty', StringTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:String.isNotEmpty', StringTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:String.length', StringTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:String.replaceAll', StringTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:String.split', StringTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:int.decr', IntTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:int.incr', IntTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:int.parse', IntTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:int.tryParse', IntTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.abs', NumTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.ceil', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.ceilToDouble', NumTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.floor', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.floorToDouble', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.isFinite', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.isInfinite', NumTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.isNan', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.isNegative', NumTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.round', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.roundToDouble', NumTransformer.fromJson)
-    ..registerTransformer(
-        'z:1:Transformer:num.toDouble', NumTransformer.fromJson)
-    ..registerTransformer('z:1:Transformer:num.toInt', NumTransformer.fromJson);
+    ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson);
 }

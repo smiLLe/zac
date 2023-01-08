@@ -16,8 +16,20 @@ export interface EdgeInsetsGeometry {
 export interface Flexible extends Widget {
     _Flexible: unknown;
 }
+export interface FloatingActionButton extends Widget {
+    _FloatingActionButton: unknown;
+}
 export interface Alignment extends AlignmentGeometry {
     _Alignment: unknown;
+}
+export interface MouseCursor {
+    _MouseCursor: unknown;
+}
+export interface FocusNode {
+    _FocusNode: unknown;
+}
+export interface MaterialTapTargetSize {
+    _MaterialTapTargetSize: unknown;
 }
 export interface Align extends Widget {
     _Align: unknown;

@@ -36,15 +36,17 @@ void main() {
 
   testWidgets('Build a FlutterWidget from ZacWidgetBuilder', (tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: ZacUpdateContext(builder: (zacContext) {
-        return ZacWidgetBuilder.fromJson(<String, dynamic>{
-          'builder': 'z:1:Widget',
-          'data': {
-            'builder': 'f:1:Text',
-            'data': 'hello',
-          }
-        }).build(zacContext);
-      }),
+      home: ZacFlutterBuilder(
+        builder: (context, zacContext) {
+          return ZacWidgetBuilder.fromJson(<String, dynamic>{
+            'builder': 'z:1:Widget',
+            'data': {
+              'builder': 'f:1:Text',
+              'data': 'hello',
+            }
+          }).build(context, zacContext);
+        },
+      ),
     ));
     expect(find.text('hello'), findsOneWidget);
   });
@@ -66,15 +68,17 @@ void main() {
 
     testWidgets('using ZacWidgetBuilder', (tester) async {
       await tester.pumpWidget(MaterialApp(
-        home: ZacUpdateContext(builder: (zacContext) {
-          return ZacWidgetBuilder.fromJson(<String, dynamic>{
-            'builder': 'z:1:Widget.isolate',
-            'data': {
-              'builder': 'f:1:Text',
-              'data': 'hello',
-            }
-          }).build(zacContext);
-        }),
+        home: ZacFlutterBuilder(
+          builder: (context, zacContext) {
+            return ZacWidgetBuilder.fromJson(<String, dynamic>{
+              'builder': 'z:1:Widget.isolate',
+              'data': {
+                'builder': 'f:1:Text',
+                'data': 'hello',
+              }
+            }).build(context, zacContext);
+          },
+        ),
       ));
 
       await pumpUntilFound(tester, find.text('hello'));
@@ -84,7 +88,7 @@ void main() {
 
   testWidgets('Nested WidgetBuilder', (tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: ZacUpdateContext(builder: (zacContext) {
+      home: ZacFlutterBuilder(builder: (context, zacContext) {
         return ZacWidgetBuilder.fromJson(<String, dynamic>{
           'builder': 'z:1:Widget.isolate',
           'data': {
@@ -100,7 +104,7 @@ void main() {
               }
             },
           }
-        }).build(zacContext);
+        }).build(context, zacContext);
       }),
     ));
 

@@ -39,31 +39,36 @@ class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
     ZacBuilder<String?>? restorationId,
   }) = _FlutterGridView;
 
-  GridView _buildWidget(ZacContext zacContext) {
+  GridView _buildWidget(BuildContext context, ZacContext zacContext) {
     return GridView(
-      gridDelegate: gridDelegate.build(zacContext),
-      key: key?.build(zacContext),
-      scrollDirection: scrollDirection?.build(zacContext) ?? Axis.vertical,
-      reverse: reverse?.build(zacContext) ?? false,
-      controller: controller?.build(zacContext),
-      primary: primary?.build(zacContext),
-      shrinkWrap: shrinkWrap?.build(zacContext) ?? false,
-      padding: padding?.build(zacContext),
-      addAutomaticKeepAlives: addAutomaticKeepAlives?.build(zacContext) ?? true,
-      addRepaintBoundaries: addRepaintBoundaries?.build(zacContext) ?? true,
-      addSemanticIndexes: addSemanticIndexes?.build(zacContext) ?? true,
-      cacheExtent: cacheExtent?.build(zacContext),
-      semanticChildCount: semanticChildCount?.build(zacContext),
-      keyboardDismissBehavior: keyboardDismissBehavior?.build(zacContext) ??
-          ScrollViewKeyboardDismissBehavior.manual,
-      restorationId: restorationId?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      gridDelegate: gridDelegate.build(context, zacContext),
+      key: key?.build(context, zacContext),
+      scrollDirection:
+          scrollDirection?.build(context, zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(context, zacContext) ?? false,
+      controller: controller?.build(context, zacContext),
+      primary: primary?.build(context, zacContext),
+      shrinkWrap: shrinkWrap?.build(context, zacContext) ?? false,
+      padding: padding?.build(context, zacContext),
+      addAutomaticKeepAlives:
+          addAutomaticKeepAlives?.build(context, zacContext) ?? true,
+      addRepaintBoundaries:
+          addRepaintBoundaries?.build(context, zacContext) ?? true,
+      addSemanticIndexes:
+          addSemanticIndexes?.build(context, zacContext) ?? true,
+      cacheExtent: cacheExtent?.build(context, zacContext),
+      semanticChildCount: semanticChildCount?.build(context, zacContext),
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+      children: children?.build(context, zacContext) ?? const <Widget>[],
     );
   }
 
   @override
-  GridView build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  GridView build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

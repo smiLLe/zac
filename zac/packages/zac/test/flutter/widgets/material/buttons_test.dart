@@ -1,9 +1,7 @@
-import 'package:zac/src/zac/registry.dart';
-import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/zac/action.dart';
+import 'package:zac/zac.dart';
 
 import '../../../helper.dart';
 import '../../../helper.mocks.dart';
@@ -12,7 +10,7 @@ import '../helper.dart';
 
 void main() {
   group('Default Button', () {
-    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
+    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testMap(
         tester,
@@ -21,8 +19,12 @@ void main() {
           'key': KeysModel.getValueKey('FIND_ME'),
           'child': ChildModel.getSizedBox(key: 'test_sizedBox'),
           'clipBehavior': {'builder': 'f:1:Clip.antiAlias'},
-          'onPressed': NoopAction.createActions(),
-          'onLongPress': NoopAction.createActions(),
+          'onPressed': const [
+            {'builder': 'test.action'}
+          ],
+          'onLongPress': const [
+            {'builder': 'test.action'}
+          ],
           'autofocus': true,
         },
       );
@@ -34,8 +36,8 @@ void main() {
     }
 
     testWidgets('interaction', (tester) async {
-      final onPressedCb = MockLeakedActionCb();
-      final onLongPressCb = MockLeakedActionCb();
+      final onPressedCb = MockTestActionExecute();
+      final onLongPressCb = MockTestActionExecute();
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
@@ -44,8 +46,10 @@ void main() {
         FlutterElevatedButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -59,8 +63,10 @@ void main() {
         FlutterOutlinedButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -74,8 +80,10 @@ void main() {
         FlutterTextButton(
           child: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -85,10 +93,10 @@ void main() {
       await tester.pump();
 
       verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(3);
       verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(3);
     });
 
@@ -122,7 +130,7 @@ void main() {
   });
 
   group('Button.icon', () {
-    ZacRegistry().registerAction(NoopAction.unionValue, NoopAction.fromJson);
+    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testMap(
         tester,
@@ -132,8 +140,12 @@ void main() {
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
           'clipBehavior': {'builder': 'f:1:Clip.antiAlias'},
-          'onPressed': NoopAction.createActions(),
-          'onLongPress': NoopAction.createActions(),
+          'onPressed': const [
+            {'builder': 'test.action'}
+          ],
+          'onLongPress': const [
+            {'builder': 'test.action'}
+          ],
           'autofocus': true,
         },
       );
@@ -147,8 +159,8 @@ void main() {
     }
 
     testWidgets('interaction', (tester) async {
-      final onPressedCb = MockLeakedActionCb();
-      final onLongPressCb = MockLeakedActionCb();
+      final onPressedCb = MockTestActionExecute();
+      final onLongPressCb = MockTestActionExecute();
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
@@ -158,8 +170,10 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -174,8 +188,10 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -190,8 +206,10 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: LeakAction.createActions(onPressedCb),
-          onLongPress: LeakAction.createActions(onLongPressCb),
+          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onPressedCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
         ),
       );
 
@@ -201,10 +219,10 @@ void main() {
       await tester.pump();
 
       verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(3);
       verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), argThat(isZacContext)))
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
           .called(3);
     });
 

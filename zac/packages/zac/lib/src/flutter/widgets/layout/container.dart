@@ -29,20 +29,20 @@ class FlutterContainer
     ZacBuilder<Decoration?>? decoration,
   }) = _FlutterContainer;
 
-  Container _buildWidget(ZacContext zacContext) {
+  Container _buildWidget(BuildContext context, ZacContext zacContext) {
     return Container(
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      padding: padding?.build(zacContext),
-      margin: margin?.build(zacContext),
-      alignment: alignment?.build(zacContext),
-      decoration: decoration?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      color: color?.build(context, zacContext),
+      padding: padding?.build(context, zacContext),
+      margin: margin?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext),
+      decoration: decoration?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Container build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Container build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

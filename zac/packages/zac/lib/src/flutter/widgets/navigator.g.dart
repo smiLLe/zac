@@ -125,7 +125,8 @@ _$_FlutterNavigatorActionsPop _$$_FlutterNavigatorActionsPopFromJson(
     _$_FlutterNavigatorActionsPop(
       actions: json['actions'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['actions'] as Object),
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+              json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : ZacBuilder<NavigatorState?>.fromJson(
@@ -138,7 +139,8 @@ _$_FlutterNavigatorActionsMaybePop _$$_FlutterNavigatorActionsMaybePopFromJson(
     _$_FlutterNavigatorActionsMaybePop(
       actions: json['actions'] == null
           ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['actions'] as Object),
+          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+              json['actions'] as Object),
       navigatorState: json['navigatorState'] == null
           ? null
           : ZacBuilder<NavigatorState?>.fromJson(
@@ -153,7 +155,8 @@ _$_FlutterNavigatorActionsPushReplacement
           route: ZacBuilder<Route<Object?>>.fromJson(json['route'] as Object),
           result: json['result'] == null
               ? null
-              : ZacBuilder<List<ZacAction>?>.fromJson(json['result'] as Object),
+              : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+                  json['result'] as Object),
           navigatorState: json['navigatorState'] == null
               ? null
               : ZacBuilder<NavigatorState?>.fromJson(
@@ -173,7 +176,8 @@ _$_FlutterNavigatorActionsPushReplacementNamed
                   json['navigatorState'] as Object),
           result: json['result'] == null
               ? null
-              : ZacBuilder<List<ZacAction>?>.fromJson(json['result'] as Object),
+              : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+                  json['result'] as Object),
           $type: json['builder'] as String?,
         );
 

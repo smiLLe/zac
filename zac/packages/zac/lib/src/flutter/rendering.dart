@@ -2,7 +2,6 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/base.dart';
 
 part 'rendering.freezed.dart';
@@ -27,7 +26,7 @@ class FlutterHitTestBehavior
   factory FlutterHitTestBehavior.translucent() =
       _FlutterHitTestBehaviortranslucent;
 
-  HitTestBehavior _build(ZacContext zacContext) {
+  HitTestBehavior _build(BuildContext context, ZacContext zacContext) {
     return map(
       deferToChild: (_) => HitTestBehavior.deferToChild,
       opaque: (_) => HitTestBehavior.opaque,
@@ -36,8 +35,8 @@ class FlutterHitTestBehavior
   }
 
   @override
-  HitTestBehavior build(ZacContext zacContext) {
-    return _build(zacContext);
+  HitTestBehavior build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -66,7 +65,7 @@ class FlutterCrossAxisAlignment
   factory FlutterCrossAxisAlignment.stretch() =
       _FlutterCrossAxisAlignmentStretch;
 
-  CrossAxisAlignment _build(ZacContext zacContext) {
+  CrossAxisAlignment _build(BuildContext context, ZacContext zacContext) {
     return map(
       baseline: (_) => CrossAxisAlignment.baseline,
       center: (_) => CrossAxisAlignment.center,
@@ -77,8 +76,8 @@ class FlutterCrossAxisAlignment
   }
 
   @override
-  CrossAxisAlignment build(ZacContext zacContext) {
-    return _build(zacContext);
+  CrossAxisAlignment build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -111,7 +110,7 @@ class FlutterMainAxisAlignment
   factory FlutterMainAxisAlignment.spaceEvenly() =
       _FlutterMainAxisAlignmentEvenly;
 
-  MainAxisAlignment _build(ZacContext zacContext) {
+  MainAxisAlignment _build(BuildContext context, ZacContext zacContext) {
     return map(
       start: (_) => MainAxisAlignment.start,
       end: (_) => MainAxisAlignment.end,
@@ -123,8 +122,8 @@ class FlutterMainAxisAlignment
   }
 
   @override
-  MainAxisAlignment build(ZacContext zacContext) {
-    return _build(zacContext);
+  MainAxisAlignment build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -141,13 +140,13 @@ class FlutterMainAxisSize with _$FlutterMainAxisSize, ZacBuilder<MainAxisSize> {
   @FreezedUnionValue('f:1:MainAxisSize.max')
   factory FlutterMainAxisSize.max() = _FlutterMainAxisSizeMax;
 
-  MainAxisSize _build(ZacContext zacContext) {
+  MainAxisSize _build(BuildContext context, ZacContext zacContext) {
     return map(min: (_) => MainAxisSize.min, max: (_) => MainAxisSize.max);
   }
 
   @override
-  MainAxisSize build(ZacContext zacContext) {
-    return _build(zacContext);
+  MainAxisSize build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -164,13 +163,13 @@ class FlutterFlexFit with _$FlutterFlexFit, ZacBuilder<FlexFit> {
   @FreezedUnionValue('f:1:FlexFit.loose')
   factory FlutterFlexFit.loose() = _FlutterFlexFitLoose;
 
-  FlexFit _build(ZacContext zacContext) {
+  FlexFit _build(BuildContext context, ZacContext zacContext) {
     return map(tight: (_) => FlexFit.tight, loose: (_) => FlexFit.loose);
   }
 
   @override
-  FlexFit build(ZacContext zacContext) {
-    return _build(zacContext);
+  FlexFit build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -201,7 +200,7 @@ class FlutterWrapAlignment
   @FreezedUnionValue('f:1:WrapAlignment.spaceEvenly')
   factory FlutterWrapAlignment.spaceEvenly() = _FlutterWrapAlignmentSpaceEvenly;
 
-  WrapAlignment _build(ZacContext zacContext) {
+  WrapAlignment _build(BuildContext context, ZacContext zacContext) {
     return map(
       center: (_) => WrapAlignment.center,
       end: (_) => WrapAlignment.end,
@@ -213,8 +212,8 @@ class FlutterWrapAlignment
   }
 
   @override
-  WrapAlignment build(ZacContext zacContext) {
-    return _build(zacContext);
+  WrapAlignment build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -235,7 +234,7 @@ class FlutterWrapCrossAlignment
   @FreezedUnionValue('f:1:WrapCrossAlignment.start')
   factory FlutterWrapCrossAlignment.start() = _FlutterWrapCrossAlignmentStart;
 
-  WrapCrossAlignment _build(ZacContext zacContext) {
+  WrapCrossAlignment _build(BuildContext context, ZacContext zacContext) {
     return map(
       center: (_) => WrapCrossAlignment.center,
       end: (_) => WrapCrossAlignment.end,
@@ -244,8 +243,8 @@ class FlutterWrapCrossAlignment
   }
 
   @override
-  WrapCrossAlignment build(ZacContext zacContext) {
-    return _build(zacContext);
+  WrapCrossAlignment build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -265,7 +264,7 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
   @FreezedUnionValue('f:1:StackFit.passthrough')
   factory FlutterStackFit.passthrough() = _FlutterStackFit;
 
-  StackFit _build(ZacContext zacContext) {
+  StackFit _build(BuildContext context, ZacContext zacContext) {
     return map(
       expand: (_) => StackFit.expand,
       loose: (_) => StackFit.loose,
@@ -274,8 +273,8 @@ class FlutterStackFit with _$FlutterStackFit, ZacBuilder<StackFit> {
   }
 
   @override
-  StackFit build(ZacContext zacContext) {
-    return _build(zacContext);
+  StackFit build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -319,32 +318,35 @@ class FlutterBoxConstraints
       {ZacBuilder<double?>? width,
       ZacBuilder<double?>? height}) = _FlutterBoxConstraintsTightForFinite;
 
-  BoxConstraints _build(ZacContext zacContext) {
+  BoxConstraints _build(BuildContext context, ZacContext zacContext) {
     return map(
       (value) => BoxConstraints(
-        minWidth: value.minWidth?.build(zacContext) ?? 0.0,
-        maxWidth: value.maxWidth?.build(zacContext) ?? double.infinity,
-        minHeight: value.minHeight?.build(zacContext) ?? 0.0,
-        maxHeight: value.maxHeight?.build(zacContext) ?? double.infinity,
+        minWidth: value.minWidth?.build(context, zacContext) ?? 0.0,
+        maxWidth: value.maxWidth?.build(context, zacContext) ?? double.infinity,
+        minHeight: value.minHeight?.build(context, zacContext) ?? 0.0,
+        maxHeight:
+            value.maxHeight?.build(context, zacContext) ?? double.infinity,
       ),
       expand: (value) => BoxConstraints.expand(
-          width: value.width?.build(zacContext),
-          height: value.height?.build(zacContext)),
-      loose: (value) => BoxConstraints.loose(value.size.build(zacContext)),
-      tight: (value) => BoxConstraints.tight(value.size.build(zacContext)),
+          width: value.width?.build(context, zacContext),
+          height: value.height?.build(context, zacContext)),
+      loose: (value) =>
+          BoxConstraints.loose(value.size.build(context, zacContext)),
+      tight: (value) =>
+          BoxConstraints.tight(value.size.build(context, zacContext)),
       tightFor: (value) => BoxConstraints.tightFor(
-          width: value.width?.build(zacContext),
-          height: value.height?.build(zacContext)),
+          width: value.width?.build(context, zacContext),
+          height: value.height?.build(context, zacContext)),
       tightForFinite: (value) => BoxConstraints.tightForFinite(
-        width: value.width?.build(zacContext) ?? double.infinity,
-        height: value.height?.build(zacContext) ?? double.infinity,
+        width: value.width?.build(context, zacContext) ?? double.infinity,
+        height: value.height?.build(context, zacContext) ?? double.infinity,
       ),
     );
   }
 
   @override
-  BoxConstraints build(ZacContext zacContext) {
-    return _build(zacContext);
+  BoxConstraints build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -362,7 +364,7 @@ class FlutterDecorationPosition
   @FreezedUnionValue('f:1:DecorationPosition.foreground')
   factory FlutterDecorationPosition.foreground() = _FlutterDecorationPositionFG;
 
-  DecorationPosition _build(ZacContext zacContext) {
+  DecorationPosition _build(BuildContext context, ZacContext zacContext) {
     return map(
       background: (_) => DecorationPosition.background,
       foreground: (_) => DecorationPosition.foreground,
@@ -370,7 +372,7 @@ class FlutterDecorationPosition
   }
 
   @override
-  DecorationPosition build(ZacContext zacContext) {
-    return _build(zacContext);
+  DecorationPosition build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

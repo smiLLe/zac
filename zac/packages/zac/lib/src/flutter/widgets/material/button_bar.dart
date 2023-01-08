@@ -34,25 +34,25 @@ class FlutterButtonBar
     ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterButtonBar;
 
-  ButtonBar _buildWidget(ZacContext zacContext) {
+  ButtonBar _buildWidget(BuildContext context, ZacContext zacContext) {
     return ButtonBar(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext),
-      mainAxisSize: mainAxisSize?.build(zacContext),
+      key: key?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext),
+      mainAxisSize: mainAxisSize?.build(context, zacContext),
 // FlutterButtonTextTheme? buttonTextTheme,
-      buttonMinWidth: buttonMinWidth?.build(zacContext),
-      buttonHeight: buttonHeight?.build(zacContext),
-      buttonPadding: buttonPadding?.build(zacContext),
-      buttonAlignedDropdown: buttonAlignedDropdown?.build(zacContext),
+      buttonMinWidth: buttonMinWidth?.build(context, zacContext),
+      buttonHeight: buttonHeight?.build(context, zacContext),
+      buttonPadding: buttonPadding?.build(context, zacContext),
+      buttonAlignedDropdown: buttonAlignedDropdown?.build(context, zacContext),
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
-      overflowDirection: overflowDirection?.build(zacContext),
-      overflowButtonSpacing: overflowButtonSpacing?.build(zacContext),
-      children: children?.build(zacContext) ?? const <Widget>[],
+      overflowDirection: overflowDirection?.build(context, zacContext),
+      overflowButtonSpacing: overflowButtonSpacing?.build(context, zacContext),
+      children: children?.build(context, zacContext) ?? const <Widget>[],
     );
   }
 
   @override
-  ButtonBar build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ButtonBar build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

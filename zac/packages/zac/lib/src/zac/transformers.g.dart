@@ -6,15 +6,6 @@ part of 'transformers.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacTransformers _$$_ZacTransformersFromJson(Map<String, dynamic> json) =>
-    _$_ZacTransformers(
-      (json['transformers'] as List<dynamic>)
-          .map((e) => ZacTransformer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-_$_Convert _$$_ConvertFromJson(Map<String, dynamic> json) => _$_Convert();
-
 _$_MapValues _$$_MapValuesFromJson(Map<String, dynamic> json) => _$_MapValues(
       $type: json['builder'] as String?,
     );
@@ -61,11 +52,11 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
 _$_MapMapper _$$_MapMapperFromJson(Map<String, dynamic> json) => _$_MapMapper(
       keyTransformer: json['keyTransformer'] == null
           ? null
-          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+          : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
               json['keyTransformer'] as Object),
       valueTransformer: json['valueTransformer'] == null
           ? null
-          : ZacBuilder<List<ZacTransformer>?>.fromJson(
+          : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
               json['valueTransformer'] as Object),
       $type: json['builder'] as String?,
     );
@@ -102,7 +93,7 @@ _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
 
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
-      transformer: ZacBuilder<List<ZacTransformer>>.fromJson(
+      transformer: ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
           json['transformer'] as Object),
       $type: json['builder'] as String?,
     );

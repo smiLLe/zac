@@ -49,33 +49,33 @@ class FlutterSelectableText
     // SelectionChangedCallback? onSelectionChanged,
   }) = _FlutterSelectableText;
 
-  SelectableText _buildWidget(ZacContext zacContext) {
+  SelectableText _buildWidget(BuildContext context, ZacContext zacContext) {
     return SelectableText(
       data,
-      key: key?.build(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
-      textScaleFactor: textScaleFactor?.build(zacContext),
-      showCursor: showCursor?.build(zacContext) ?? false,
-      autofocus: autofocus?.build(zacContext) ?? false,
-      minLines: minLines?.build(zacContext),
-      maxLines: maxLines?.build(zacContext),
-      cursorWidth: cursorWidth?.build(zacContext) ?? 2.0,
-      cursorHeight: cursorHeight?.build(zacContext),
-      cursorRadius: cursorRadius?.build(zacContext),
-      cursorColor: cursorColor?.build(zacContext),
+      key: key?.build(context, zacContext),
+      style: style?.build(context, zacContext),
+      strutStyle: strutStyle?.build(context, zacContext),
+      textAlign: textAlign?.build(context, zacContext),
+      textDirection: textDirection?.build(context, zacContext),
+      textScaleFactor: textScaleFactor?.build(context, zacContext),
+      showCursor: showCursor?.build(context, zacContext) ?? false,
+      autofocus: autofocus?.build(context, zacContext) ?? false,
+      minLines: minLines?.build(context, zacContext),
+      maxLines: maxLines?.build(context, zacContext),
+      cursorWidth: cursorWidth?.build(context, zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.build(context, zacContext),
+      cursorRadius: cursorRadius?.build(context, zacContext),
+      cursorColor: cursorColor?.build(context, zacContext),
       enableInteractiveSelection:
-          enableInteractiveSelection?.build(zacContext) ?? true,
-      semanticsLabel: semanticsLabel?.build(zacContext),
-      textHeightBehavior: textHeightBehavior?.build(zacContext),
-      textWidthBasis: textWidthBasis?.build(zacContext),
+          enableInteractiveSelection?.build(context, zacContext) ?? true,
+      semanticsLabel: semanticsLabel?.build(context, zacContext),
+      textHeightBehavior: textHeightBehavior?.build(context, zacContext),
+      textWidthBasis: textWidthBasis?.build(context, zacContext),
     );
   }
 
   @override
-  SelectableText build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SelectableText build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -1094,7 +1094,7 @@ mixin _$FlutterSnackBar {
   FlutterSnackBarAction? get action =>
       throw _privateConstructorUsedError; // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
-  ZacBuilder<List<ZacAction>?>? get onVisible =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onVisible =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1147,7 +1147,7 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
 // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
   @override
-  final ZacBuilder<List<ZacAction>?>? onVisible;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible;
 
   @override
   String toString() {
@@ -1192,17 +1192,18 @@ class _$_FlutterSnackBar extends _FlutterSnackBar {
 
 abstract class _FlutterSnackBar extends FlutterSnackBar {
   factory _FlutterSnackBar(
-      {final ZacBuilder<Key?>? key,
-      required final ZacBuilder<Widget> content,
-      final ZacBuilder<Color?>? backgroundColor,
-      final ZacBuilder<double?>? elevation,
-      final ZacBuilder<EdgeInsetsGeometry?>? margin,
-      final ZacBuilder<EdgeInsetsGeometry?>? padding,
-      final ZacBuilder<double?>? width,
-      final ZacBuilder<ShapeBorder?>? shape,
-      final FlutterSnackBarBehavior? behavior,
-      final FlutterSnackBarAction? action,
-      final ZacBuilder<List<ZacAction>?>? onVisible}) = _$_FlutterSnackBar;
+          {final ZacBuilder<Key?>? key,
+          required final ZacBuilder<Widget> content,
+          final ZacBuilder<Color?>? backgroundColor,
+          final ZacBuilder<double?>? elevation,
+          final ZacBuilder<EdgeInsetsGeometry?>? margin,
+          final ZacBuilder<EdgeInsetsGeometry?>? padding,
+          final ZacBuilder<double?>? width,
+          final ZacBuilder<ShapeBorder?>? shape,
+          final FlutterSnackBarBehavior? behavior,
+          final FlutterSnackBarAction? action,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible}) =
+      _$_FlutterSnackBar;
   _FlutterSnackBar._() : super._();
 
   factory _FlutterSnackBar.fromJson(Map<String, dynamic> json) =
@@ -1230,7 +1231,7 @@ abstract class _FlutterSnackBar extends FlutterSnackBar {
   FlutterSnackBarAction? get action;
   @override // Duration duration = _snackBarDisplayDuration,
 // Animation<double>? animation,
-  ZacBuilder<List<ZacAction>?>? get onVisible;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onVisible;
 }
 
 FlutterSnackBarBehavior _$FlutterSnackBarBehaviorFromJson(
@@ -1366,8 +1367,8 @@ mixin _$FlutterSnackBarAction {
   ZacBuilder<Color?>? get textColor => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get disabledTextColor =>
       throw _privateConstructorUsedError;
-  String get label => throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacAction>?>? get onPressed =>
+  ZacBuilder<String> get label => throw _privateConstructorUsedError;
+  ZacListBuilder<ZacAction, List<ZacAction>> get onPressed =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1398,9 +1399,9 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
   @override
   final ZacBuilder<Color?>? disabledTextColor;
   @override
-  final String label;
+  final ZacBuilder<String> label;
   @override
-  final ZacBuilder<List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>> onPressed;
 
   @override
   String toString() {
@@ -1438,12 +1439,12 @@ class _$_FlutterSnackBarAction extends _FlutterSnackBarAction {
 
 abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
   factory _FlutterSnackBarAction(
-          {final ZacBuilder<Key?>? key,
-          final ZacBuilder<Color?>? textColor,
-          final ZacBuilder<Color?>? disabledTextColor,
-          required final String label,
-          required final ZacBuilder<List<ZacAction>?>? onPressed}) =
-      _$_FlutterSnackBarAction;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<Color?>? textColor,
+      final ZacBuilder<Color?>? disabledTextColor,
+      required final ZacBuilder<String> label,
+      required final ZacListBuilder<ZacAction, List<ZacAction>>
+          onPressed}) = _$_FlutterSnackBarAction;
   _FlutterSnackBarAction._() : super._();
 
   factory _FlutterSnackBarAction.fromJson(Map<String, dynamic> json) =
@@ -1456,9 +1457,9 @@ abstract class _FlutterSnackBarAction extends FlutterSnackBarAction {
   @override
   ZacBuilder<Color?>? get disabledTextColor;
   @override
-  String get label;
+  ZacBuilder<String> get label;
   @override
-  ZacBuilder<List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>> get onPressed;
 }
 
 FlutterMaterialBanner _$FlutterMaterialBannerFromJson(
@@ -1484,7 +1485,7 @@ mixin _$FlutterMaterialBanner {
   ZacBuilder<bool?>? get forceActionsBelow =>
       throw _privateConstructorUsedError; // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-  ZacBuilder<List<ZacAction>?>? get onVisible =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onVisible =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -1503,7 +1504,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
       this.contentTextStyle,
       required this.actions,
       this.elevation,
-      required this.leading,
+      this.leading,
       this.backgroundColor,
       this.padding,
       this.leadingPadding,
@@ -1537,7 +1538,7 @@ class _$_FlutterMaterialBanner extends _FlutterMaterialBanner {
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
   @override
-  final ZacBuilder<List<ZacAction>?>? onVisible;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible;
 
   @override
   String toString() {
@@ -1600,12 +1601,12 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
           final ZacBuilder<TextStyle?>? contentTextStyle,
           required final ZacListBuilder<Widget, List<Widget>> actions,
           final ZacBuilder<double?>? elevation,
-          required final ZacBuilder<Widget?>? leading,
+          final ZacBuilder<Widget?>? leading,
           final ZacBuilder<Color?>? backgroundColor,
           final ZacBuilder<EdgeInsetsGeometry?>? padding,
           final ZacBuilder<EdgeInsetsGeometry?>? leadingPadding,
           final ZacBuilder<bool?>? forceActionsBelow,
-          final ZacBuilder<List<ZacAction>?>? onVisible}) =
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible}) =
       _$_FlutterMaterialBanner;
   _FlutterMaterialBanner._() : super._();
 
@@ -1634,5 +1635,5 @@ abstract class _FlutterMaterialBanner extends FlutterMaterialBanner {
   ZacBuilder<bool?>? get forceActionsBelow;
   @override // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-  ZacBuilder<List<ZacAction>?>? get onVisible;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onVisible;
 }

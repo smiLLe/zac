@@ -27,16 +27,16 @@ class FlutterSliverGrid
     required FlutterSliverGridDelegate gridDelegate,
   }) = _FlutterSliverGrid;
 
-  SliverGrid _buildWidget(ZacContext zacContext) {
+  SliverGrid _buildWidget(BuildContext context, ZacContext zacContext) {
     return SliverGrid(
-      key: key?.build(zacContext),
-      delegate: delegate.build(zacContext),
-      gridDelegate: gridDelegate.build(zacContext),
+      key: key?.build(context, zacContext),
+      delegate: delegate.build(context, zacContext),
+      gridDelegate: gridDelegate.build(context, zacContext),
     );
   }
 
   @override
-  SliverGrid build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SliverGrid build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

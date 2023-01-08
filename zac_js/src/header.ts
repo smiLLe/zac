@@ -33,9 +33,8 @@ export abstract class ZacBuilder<T> extends ZacConvertable {
 export abstract class ZacListBuilder<T> extends ZacBuilder<Array<T>> { }
 export abstract class ZacMapBuilder<T> extends ZacBuilder<{ [key: string]: T }> { }
 
-
-export abstract class ZacTransformer extends ZacConvertable { }
-export abstract class ZacAction extends ZacConvertable { }
+export abstract class ZacTransform { }
+export abstract class ZacAction { }
 
 export type ZacValueTypes = boolean | string | number;
 
@@ -68,7 +67,7 @@ export class ZacValueMap<T> extends ZacMapBuilder<T> {
 
 
 export class SharedValueConsumeType extends ZacConvertable {
-    static watch(data?: { select?: ZacBuilder<Array<ZacTransformer>> }) {
+    static watch(data?: { select?: ZacListBuilder<ZacTransform> }) {
         return new SharedValueConsumeType({
             builder: "z:1:SharedValueConsume.watch",
             ...data,
@@ -84,7 +83,7 @@ export class SharedValueConsumeType extends ZacConvertable {
 export class ConsumeSharedValue<T> extends ZacBuilder<T> {
     static new<T>(data: {
         family: string,
-        transformer?: ZacBuilder<Array<ZacTransformer>>,
+        transformer?: ZacListBuilder<ZacTransform>,
         forceConsume?: SharedValueConsumeType,
     }) {
         return new ConsumeSharedValue<T>({
@@ -97,8 +96,8 @@ export class ConsumeSharedValue<T> extends ZacBuilder<T> {
 export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
     static new<T>(data: {
         family: string,
-        transformer?: ZacBuilder<Array<ZacTransformer>>,
-        itemTransformer?: ZacBuilder<Array<ZacTransformer>>,
+        transformer?: ZacListBuilder<ZacTransform>,
+        itemTransformer?: ZacListBuilder<ZacTransform>,
         forceConsume?: SharedValueConsumeType,
     }) {
         return new ConsumeSharedValue<T>({
@@ -111,8 +110,8 @@ export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
 export class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
     static new<T>(data: {
         family: string,
-        transformer?: ZacBuilder<Array<ZacTransformer>>,
-        itemTransformer?: ZacBuilder<Array<ZacTransformer>>,
+        transformer?: ZacListBuilder<ZacTransform>,
+        itemTransformer?: ZacListBuilder<ZacTransform>,
         forceConsume?: SharedValueConsumeType,
     }) {
         return new ConsumeSharedValue<T>({

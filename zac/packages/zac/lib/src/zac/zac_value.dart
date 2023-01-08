@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/registry.dart';
@@ -73,7 +74,7 @@ class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
   factory ZacValue(@_Converter() T value) = _ZacValue<T>;
 
   @override
-  T build(ZacContext zacContext) => value;
+  T build(BuildContext context, ZacContext zacContext) => value;
 }
 
 @freezedZacBuilder
@@ -127,9 +128,9 @@ class ZacValueList<T extends Object?, X extends List<T>?>
   factory ZacValueList(List<ZacBuilder<T>> items) = _ZacValueListSimple<T, X>;
 
   @override
-  X build(ZacContext zacContext) {
+  X build(BuildContext context, ZacContext zacContext) {
     return <T>[
-      for (var item in items) item.build(zacContext),
+      for (var item in items) item.build(context, zacContext),
     ] as X;
   }
 }
@@ -185,16 +186,17 @@ class ZacValueMap<T extends Object?, X extends Map<String, T>?>
   factory ZacValueMap(Map<String, ZacBuilder<T>> items) = _ZacValueMap<T, X>;
 
   @override
-  X build(ZacContext zacContext) {
+  X build(BuildContext context, ZacContext zacContext) {
     return <String, T>{
-      for (var entry in items.entries) entry.key: entry.value.build(zacContext),
+      for (var entry in items.entries)
+        entry.key: entry.value.build(context, zacContext),
     } as X;
   }
 }
 
 @freezedZacBuilder
-class ZacValueActions with _$ZacValueActions implements ZacAction {
-  const ZacValueActions._();
+class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
+  ZacValueActions._();
 
   static const String unionValue = 'z:1:ZacValue.asActionPayload';
 
@@ -204,20 +206,21 @@ class ZacValueActions with _$ZacValueActions implements ZacAction {
   @FreezedUnionValue(ZacValueActions.unionValue)
   factory ZacValueActions.asPayload({
     required ZacBuilder<Object?> value,
-    required ZacActions actions,
+    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
   }) = _ZacValueActionsAsPayload;
 
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       asPayload: (obj) {
-        final val = obj.value.build(
-          zacContext,
-        );
+        final val = obj.value.build(context, zacContext);
         obj.actions
-            .build(zacContext)
-            .execute(ZacActionPayload.param(val), zacContext);
+            .build(context, zacContext)
+            .execute(ZacActionPayload.param(val), context, zacContext);
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }

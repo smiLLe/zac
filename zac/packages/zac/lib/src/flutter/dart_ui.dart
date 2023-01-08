@@ -32,21 +32,21 @@ class FlutterColor with _$FlutterColor, ZacBuilder<Color> {
     required ZacBuilder<double> opacity,
   }) = _FlutterColorFromRBGO;
 
-  Color _build(ZacContext zacContext) {
+  Color _build(BuildContext context, ZacContext zacContext) {
     return map(
       fromARGB: (value) {
         return Color.fromARGB(value.a, value.r, value.g, value.b);
       },
       fromRGBO: (value) {
-        return Color.fromRGBO(
-            value.r, value.g, value.b, value.opacity.build(zacContext));
+        return Color.fromRGBO(value.r, value.g, value.b,
+            value.opacity.build(context, zacContext));
       },
     );
   }
 
   @override
-  Color build(ZacContext zacContext) {
-    return _build(zacContext);
+  Color build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -66,18 +66,19 @@ class FlutterOffset with _$FlutterOffset, ZacBuilder<Offset> {
       {required ZacBuilder<double> direction,
       ZacBuilder<double?>? distance}) = _FlutterOffsetFromDirection;
 
-  Offset _build(ZacContext zacContext) {
+  Offset _build(BuildContext context, ZacContext zacContext) {
     return map(
-      (value) => Offset(value.dx.build(zacContext), value.dy.build(zacContext)),
+      (value) => Offset(value.dx.build(context, zacContext),
+          value.dy.build(context, zacContext)),
       fromDirection: (value) => Offset.fromDirection(
-          value.direction.build(zacContext),
-          value.distance?.build(zacContext) ?? 1.0),
+          value.direction.build(context, zacContext),
+          value.distance?.build(context, zacContext) ?? 1.0),
     );
   }
 
   @override
-  Offset build(ZacContext zacContext) {
-    return _build(zacContext);
+  Offset build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -100,7 +101,7 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
   @FreezedUnionValue('f:1:BlurStyle.solid')
   factory FlutterBlurStyle.solid() = _FlutterBlurStyleSolid;
 
-  BlurStyle _build(ZacContext zacContext) {
+  BlurStyle _build(BuildContext context, ZacContext zacContext) {
     return map(
       inner: (_) => BlurStyle.inner,
       normal: (_) => BlurStyle.normal,
@@ -110,8 +111,8 @@ class FlutterBlurStyle with _$FlutterBlurStyle, ZacBuilder<BlurStyle> {
   }
 
   @override
-  build(ZacContext zacContext) {
-    return _build(zacContext);
+  build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -130,17 +131,19 @@ class FlutterRadius with _$FlutterRadius, ZacBuilder<Radius> {
   factory FlutterRadius.elliptical(ZacBuilder<double> x, ZacBuilder<double> y) =
       _FlutterRadiusElliptical;
 
-  Radius _build(ZacContext zacContext) {
+  Radius _build(BuildContext context, ZacContext zacContext) {
     return map(
-      circular: (value) => Radius.circular(value.radius.build(zacContext)),
+      circular: (value) =>
+          Radius.circular(value.radius.build(context, zacContext)),
       elliptical: (value) => Radius.elliptical(
-          value.x.build(zacContext), value.y.build(zacContext)),
+          value.x.build(context, zacContext),
+          value.y.build(context, zacContext)),
     );
   }
 
   @override
-  Radius build(ZacContext zacContext) {
-    return _build(zacContext);
+  Radius build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -158,13 +161,13 @@ class FlutterTextDirection
   @FreezedUnionValue('f:1:TextDirection.ltr')
   factory FlutterTextDirection.ltr() = _FlutterTextDirectionLtr;
 
-  TextDirection _build(ZacContext zacContext) {
+  TextDirection _build(BuildContext context, ZacContext zacContext) {
     return map(ltr: (_) => TextDirection.ltr, rtl: (_) => TextDirection.rtl);
   }
 
   @override
-  TextDirection build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextDirection build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -184,7 +187,7 @@ class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
   @FreezedUnionValue('f:1:Clip.hardEdge')
   factory FlutterClip.hardEdge() = _FlutterClipHardEdge;
 
-  Clip _build(ZacContext zacContext) {
+  Clip _build(BuildContext context, ZacContext zacContext) {
     return map(
       none: (_) => Clip.none,
       antiAlias: (_) => Clip.antiAlias,
@@ -193,8 +196,8 @@ class FlutterClip with _$FlutterClip, ZacBuilder<Clip> {
   }
 
   @override
-  Clip build(ZacContext zacContext) {
-    return _build(zacContext);
+  Clip build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -211,15 +214,15 @@ class FlutterTextBaseline with _$FlutterTextBaseline, ZacBuilder<TextBaseline> {
   @FreezedUnionValue('f:1:TextBaseline.ideographic')
   factory FlutterTextBaseline.ideographic() = _FlutterTextBaselineIdeographic;
 
-  TextBaseline _build(ZacContext zacContext) {
+  TextBaseline _build(BuildContext context, ZacContext zacContext) {
     return map(
         alphabetic: (_) => TextBaseline.alphabetic,
         ideographic: (_) => TextBaseline.ideographic);
   }
 
   @override
-  TextBaseline build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextBaseline build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -263,7 +266,7 @@ class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
   @FreezedUnionValue('f:1:FontWeight.w900')
   factory FlutterFontWeight.w900() = _FlutterFontWeightW900;
 
-  FontWeight _build(ZacContext zacContext) {
+  FontWeight _build(BuildContext context, ZacContext zacContext) {
     return map(
       bold: (_) => FontWeight.bold,
       normal: (_) => FontWeight.normal,
@@ -280,8 +283,8 @@ class FlutterFontWeight with _$FlutterFontWeight, ZacBuilder<FontWeight> {
   }
 
   @override
-  FontWeight build(ZacContext zacContext) {
-    return _build(zacContext);
+  FontWeight build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -298,14 +301,14 @@ class FlutterFontStyle with _$FlutterFontStyle, ZacBuilder<FontStyle> {
   @FreezedUnionValue('f:1:FontStyle.normal')
   factory FlutterFontStyle.normal() = _FlutterFontStyleNormal;
 
-  FontStyle _build(ZacContext zacContext) {
+  FontStyle _build(BuildContext context, ZacContext zacContext) {
     return map(
         italic: (_) => FontStyle.italic, normal: (_) => FontStyle.normal);
   }
 
   @override
-  FontStyle build(ZacContext zacContext) {
-    return _build(zacContext);
+  FontStyle build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -330,7 +333,7 @@ class FlutterTextDecoration
   @FreezedUnionValue('f:1:TextDecoration.underline')
   factory FlutterTextDecoration.underline() = _FlutterTextDecorationUnderline;
 
-  TextDecoration _build(ZacContext zacContext) {
+  TextDecoration _build(BuildContext context, ZacContext zacContext) {
     return map(
       lineThrough: (_) => TextDecoration.lineThrough,
       none: (_) => TextDecoration.none,
@@ -340,8 +343,8 @@ class FlutterTextDecoration
   }
 
   @override
-  TextDecoration build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextDecoration build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -361,15 +364,15 @@ class FlutterTextLeadingDistribution
   factory FlutterTextLeadingDistribution.proportional() =
       _FlutterTextLeadingDistributionProportional;
 
-  TextLeadingDistribution _build(ZacContext zacContext) {
+  TextLeadingDistribution _build(BuildContext context, ZacContext zacContext) {
     return map(
         even: (_) => TextLeadingDistribution.even,
         proportional: (_) => TextLeadingDistribution.proportional);
   }
 
   @override
-  TextLeadingDistribution build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextLeadingDistribution build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -384,13 +387,13 @@ class FlutterLocale with _$FlutterLocale, ZacBuilder<Locale> {
   factory FlutterLocale(String languageCode, [String? countryCode]) =
       _FlutterLocale;
 
-  Locale _build(ZacContext zacContext) {
+  Locale _build(BuildContext context, ZacContext zacContext) {
     return Locale(languageCode, countryCode);
   }
 
   @override
-  Locale build(ZacContext zacContext) {
-    return _build(zacContext);
+  Locale build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -497,10 +500,10 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
   @FreezedUnionValue('f:1:FontFeature.tabularFigures')
   factory FlutterFontFeature.tabularFigures() = _FontFeatureTabularFigures;
 
-  FontFeature _build(ZacContext zacContext) {
+  FontFeature _build(BuildContext context, ZacContext zacContext) {
     return map(
-      (value) =>
-          FontFeature(value.feature, value.value?.build(zacContext) ?? 1),
+      (value) => FontFeature(
+          value.feature, value.value?.build(context, zacContext) ?? 1),
       alternative: (value) => FontFeature.alternative(value.value),
       alternativeFractions: (value) => const FontFeature.alternativeFractions(),
       caseSensitiveForms: (value) => const FontFeature.caseSensitiveForms(),
@@ -514,9 +517,9 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       historicalLigatures: (value) => const FontFeature.historicalLigatures(),
       liningFigures: (value) => const FontFeature.liningFigures(),
       localeAware: (value) => FontFeature.localeAware(
-          enable: value.enable?.build(zacContext) ?? true),
-      notationalForms: (value) =>
-          FontFeature.notationalForms(value.value?.build(zacContext) ?? 1),
+          enable: value.enable?.build(context, zacContext) ?? true),
+      notationalForms: (value) => FontFeature.notationalForms(
+          value.value?.build(context, zacContext) ?? 1),
       numerators: (value) => const FontFeature.numerators(),
       oldstyleFigures: (value) => const FontFeature.oldstyleFigures(),
       ordinalForms: (value) => const FontFeature.ordinalForms(),
@@ -528,14 +531,15 @@ class FlutterFontFeature with _$FlutterFontFeature, ZacBuilder<FontFeature> {
       stylisticSet: (value) => FontFeature.stylisticSet(value.value),
       subscripts: (value) => const FontFeature.subscripts(),
       superscripts: (value) => const FontFeature.superscripts(),
-      swash: (value) => FontFeature.swash(value.value?.build(zacContext) ?? 1),
+      swash: (value) =>
+          FontFeature.swash(value.value?.build(context, zacContext) ?? 1),
       tabularFigures: (value) => const FontFeature.tabularFigures(),
     );
   }
 
   @override
-  FontFeature build(ZacContext zacContext) {
-    return _build(zacContext);
+  FontFeature build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -565,7 +569,7 @@ class FlutterTextDecorationStyle
   @FreezedUnionValue('f:1:TextDecorationStyle.wavy')
   factory FlutterTextDecorationStyle.wavy() = _FlutterTextDecorationStyleWavy;
 
-  TextDecorationStyle _build(ZacContext zacContext) {
+  TextDecorationStyle _build(BuildContext context, ZacContext zacContext) {
     return map(
       dashed: (_) => TextDecorationStyle.dashed,
       dotted: (_) => TextDecorationStyle.dotted,
@@ -576,8 +580,8 @@ class FlutterTextDecorationStyle
   }
 
   @override
-  TextDecorationStyle build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextDecorationStyle build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -606,7 +610,7 @@ class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
   @FreezedUnionValue('f:1:TextAlign.start')
   factory FlutterTextAlign.start() = _FlutterTextAlignStart;
 
-  TextAlign _build(ZacContext zacContext) {
+  TextAlign _build(BuildContext context, ZacContext zacContext) {
     return map(
       center: (_) => TextAlign.center,
       end: (_) => TextAlign.end,
@@ -618,8 +622,8 @@ class FlutterTextAlign with _$FlutterTextAlign, ZacBuilder<TextAlign> {
   }
 
   @override
-  TextAlign build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextAlign build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -638,20 +642,20 @@ class FlutterTextHeightBehavior
     ZacBuilder<TextLeadingDistribution?>? leadingDistribution,
   }) = _FlutterTextHeightBehavior;
 
-  TextHeightBehavior _build(ZacContext zacContext) {
+  TextHeightBehavior _build(BuildContext context, ZacContext zacContext) {
     return TextHeightBehavior(
       applyHeightToFirstAscent:
-          applyHeightToFirstAscent?.build(zacContext) ?? true,
+          applyHeightToFirstAscent?.build(context, zacContext) ?? true,
       applyHeightToLastDescent:
-          applyHeightToLastDescent?.build(zacContext) ?? true,
-      leadingDistribution: leadingDistribution?.build(zacContext) ??
+          applyHeightToLastDescent?.build(context, zacContext) ?? true,
+      leadingDistribution: leadingDistribution?.build(context, zacContext) ??
           TextLeadingDistribution.proportional,
     );
   }
 
   @override
-  TextHeightBehavior build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextHeightBehavior build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -749,7 +753,7 @@ class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
   @FreezedUnionValue('f:1:BlendMode.xor')
   factory FlutterBlendMode.xor() = _FlutterBlendModeXor;
 
-  BlendMode _build(ZacContext zacContext) {
+  BlendMode _build(BuildContext context, ZacContext zacContext) {
     return map(
       clear: (_) => BlendMode.clear,
       color: (_) => BlendMode.color,
@@ -784,8 +788,8 @@ class FlutterBlendMode with _$FlutterBlendMode, ZacBuilder<BlendMode> {
   }
 
   @override
-  BlendMode build(ZacContext zacContext) {
-    return _build(zacContext);
+  BlendMode build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -827,33 +831,33 @@ class FlutterRect with _$FlutterRect, ZacBuilder<Rect> {
   factory FlutterRect.fromPoints(FlutterOffset a, FlutterOffset b) =
       _FlutterRectFromPoints;
 
-  Rect _build(ZacContext zacContext) {
+  Rect _build(BuildContext context, ZacContext zacContext) {
     return map(
       fromCenter: (value) => Rect.fromCenter(
-          center: value.center.build(zacContext),
-          width: value.width.build(zacContext),
-          height: value.height.build(zacContext)),
+          center: value.center.build(context, zacContext),
+          width: value.width.build(context, zacContext),
+          height: value.height.build(context, zacContext)),
       fromCircle: (value) => Rect.fromCircle(
-          center: value.center.build(zacContext),
-          radius: value.radius.build(zacContext)),
+          center: value.center.build(context, zacContext),
+          radius: value.radius.build(context, zacContext)),
       fromLTRB: (value) => Rect.fromLTRB(
-          value.left.build(zacContext),
-          value.top.build(zacContext),
-          value.right.build(zacContext),
-          value.bottom.build(zacContext)),
+          value.left.build(context, zacContext),
+          value.top.build(context, zacContext),
+          value.right.build(context, zacContext),
+          value.bottom.build(context, zacContext)),
       fromLTWH: (value) => Rect.fromLTWH(
-          value.left.build(zacContext),
-          value.top.build(zacContext),
-          value.width.build(zacContext),
-          value.height.build(zacContext)),
-      fromPoints: (value) =>
-          Rect.fromPoints(value.a.build(zacContext), value.b.build(zacContext)),
+          value.left.build(context, zacContext),
+          value.top.build(context, zacContext),
+          value.width.build(context, zacContext),
+          value.height.build(context, zacContext)),
+      fromPoints: (value) => Rect.fromPoints(value.a.build(context, zacContext),
+          value.b.build(context, zacContext)),
     );
   }
 
   @override
-  Rect build(ZacContext zacContext) {
-    return _build(zacContext);
+  Rect build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -877,7 +881,7 @@ class FlutterFilterQuality
   @FreezedUnionValue('f:1:FilterQuality.none')
   factory FlutterFilterQuality.none() = _FlutterFilterQualityNone;
 
-  FilterQuality _build(ZacContext zacContext) {
+  FilterQuality _build(BuildContext context, ZacContext zacContext) {
     return map(
       high: (_) => FilterQuality.high,
       low: (_) => FilterQuality.low,
@@ -887,8 +891,8 @@ class FlutterFilterQuality
   }
 
   @override
-  FilterQuality build(ZacContext zacContext) {
-    return _build(zacContext);
+  FilterQuality build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -905,13 +909,13 @@ class FlutterBrightness with _$FlutterBrightness, ZacBuilder<Brightness> {
   @FreezedUnionValue('f:1:Brightness.light')
   factory FlutterBrightness.light() = _FlutterBrightnessLight;
 
-  Brightness _build(ZacContext zacContext) {
+  Brightness _build(BuildContext context, ZacContext zacContext) {
     return map(light: (_) => Brightness.light, dark: (_) => Brightness.dark);
   }
 
   @override
-  Brightness build(ZacContext zacContext) {
-    return _build(zacContext);
+  Brightness build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -928,13 +932,14 @@ class FlutterSize with _$FlutterSize, ZacBuilder<Size> {
     ZacBuilder<double> height,
   ) = _FlutterSize;
 
-  Size _build(ZacContext zacContext) {
-    return Size(width.build(zacContext), height.build(zacContext));
+  Size _build(BuildContext context, ZacContext zacContext) {
+    return Size(
+        width.build(context, zacContext), height.build(context, zacContext));
   }
 
   @override
-  Size build(ZacContext zacContext) {
-    return _build(zacContext);
+  Size build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -967,7 +972,7 @@ class FlutterBoxHeightStyle
   @FreezedUnionValue('f:1:BoxHeightStyle.tight')
   factory FlutterBoxHeightStyle.tight() = _FlutterBoxHeightStyletight;
 
-  BoxHeightStyle _build(ZacContext zacContext) {
+  BoxHeightStyle _build(BuildContext context, ZacContext zacContext) {
     return map(
       includeLineSpacingBottom: (_) => BoxHeightStyle.includeLineSpacingBottom,
       includeLineSpacingMiddle: (_) => BoxHeightStyle.includeLineSpacingMiddle,
@@ -979,8 +984,8 @@ class FlutterBoxHeightStyle
   }
 
   @override
-  BoxHeightStyle build(ZacContext zacContext) {
-    return _build(zacContext);
+  BoxHeightStyle build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -998,7 +1003,7 @@ class FlutterBoxWidthStyle
   @FreezedUnionValue('f:1:BoxWidthStyle.tight')
   factory FlutterBoxWidthStyle.tight() = _FlutterBoxWidthStyletight;
 
-  BoxWidthStyle _build(ZacContext zacContext) {
+  BoxWidthStyle _build(BuildContext context, ZacContext zacContext) {
     return map(
       max: (_) => BoxWidthStyle.max,
       tight: (_) => BoxWidthStyle.tight,
@@ -1006,8 +1011,8 @@ class FlutterBoxWidthStyle
   }
 
   @override
-  BoxWidthStyle build(ZacContext zacContext) {
-    return _build(zacContext);
+  BoxWidthStyle build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -1027,16 +1032,16 @@ class FlutterShadow with _$FlutterShadow implements ZacBuilder<Shadow> {
     ZacBuilder<double?>? blurRadius,
   }) = _FlutterShadowShadow;
 
-  Shadow _build(ZacContext zacContext) {
+  Shadow _build(BuildContext context, ZacContext zacContext) {
     return Shadow(
-      color: color?.build(zacContext) ?? const Color(0xFF000000),
-      offset: offset?.build(zacContext) ?? Offset.zero,
-      blurRadius: blurRadius?.build(zacContext) ?? 0.0,
+      color: color?.build(context, zacContext) ?? const Color(0xFF000000),
+      offset: offset?.build(context, zacContext) ?? Offset.zero,
+      blurRadius: blurRadius?.build(context, zacContext) ?? 0.0,
     );
   }
 
   @override
-  Shadow build(ZacContext zacContext) {
-    return _build(zacContext);
+  Shadow build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

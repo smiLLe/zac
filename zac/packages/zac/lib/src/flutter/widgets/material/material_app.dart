@@ -1,6 +1,5 @@
 import 'package:zac/src/flutter/widgets/navigator.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -59,36 +58,38 @@ class FlutterMaterialApp
     ZacBuilder<bool?>? useInheritedMediaQuery,
   }) = _FlutterMaterialApp;
 
-  MaterialApp _buildWidget(ZacContext zacContext) {
+  MaterialApp _buildWidget(BuildContext context, ZacContext zacContext) {
     return MaterialApp(
-      key: key?.build(zacContext),
-      navigatorKey: navigatorKey?.build(zacContext),
-      scaffoldMessengerKey: scaffoldMessengerKey?.build(zacContext),
-      home: home?.build(zacContext),
-      initialRoute: initialRoute?.build(zacContext),
-      onGenerateRoute: onGenerateRoute?.build(zacContext),
-      onUnknownRoute: onUnknownRoute?.build(zacContext),
-      title: title?.build(zacContext) ?? '',
-      color: color?.build(zacContext),
-      locale: locale?.build(zacContext),
-      debugShowMaterialGrid: debugShowMaterialGrid?.build(zacContext) ?? false,
+      key: key?.build(context, zacContext),
+      navigatorKey: navigatorKey?.build(context, zacContext),
+      scaffoldMessengerKey: scaffoldMessengerKey?.build(context, zacContext),
+      home: home?.build(context, zacContext),
+      initialRoute: initialRoute?.build(context, zacContext),
+      onGenerateRoute: onGenerateRoute?.build(context, zacContext),
+      onUnknownRoute: onUnknownRoute?.build(context, zacContext),
+      title: title?.build(context, zacContext) ?? '',
+      color: color?.build(context, zacContext),
+      locale: locale?.build(context, zacContext),
+      debugShowMaterialGrid:
+          debugShowMaterialGrid?.build(context, zacContext) ?? false,
       showPerformanceOverlay:
-          showPerformanceOverlay?.build(zacContext) ?? false,
+          showPerformanceOverlay?.build(context, zacContext) ?? false,
       checkerboardRasterCacheImages:
-          checkerboardRasterCacheImages?.build(zacContext) ?? false,
+          checkerboardRasterCacheImages?.build(context, zacContext) ?? false,
       checkerboardOffscreenLayers:
-          checkerboardOffscreenLayers?.build(zacContext) ?? false,
-      showSemanticsDebugger: showSemanticsDebugger?.build(zacContext) ?? false,
+          checkerboardOffscreenLayers?.build(context, zacContext) ?? false,
+      showSemanticsDebugger:
+          showSemanticsDebugger?.build(context, zacContext) ?? false,
       debugShowCheckedModeBanner:
-          debugShowCheckedModeBanner?.build(zacContext) ?? true,
-      restorationScopeId: restorationScopeId?.build(zacContext),
+          debugShowCheckedModeBanner?.build(context, zacContext) ?? true,
+      restorationScopeId: restorationScopeId?.build(context, zacContext),
       useInheritedMediaQuery:
-          useInheritedMediaQuery?.build(zacContext) ?? false,
+          useInheritedMediaQuery?.build(context, zacContext) ?? false,
     );
   }
 
   @override
-  MaterialApp build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  MaterialApp build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

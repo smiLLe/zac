@@ -26,19 +26,19 @@ class FlutterAlign with _$FlutterAlign implements ZacBuilder<Align> {
     ZacBuilder<Widget?>? child,
   }) = _FlutterAlign;
 
-  Align buildWidget(ZacContext zacContext) {
+  Align buildWidget(BuildContext context, ZacContext zacContext) {
     return Align(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      widthFactor: widthFactor?.build(zacContext),
-      heightFactor: heightFactor?.build(zacContext),
-      // child: child?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext) ?? Alignment.center,
+      widthFactor: widthFactor?.build(context, zacContext),
+      heightFactor: heightFactor?.build(context, zacContext),
+      // child: child?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Align build(ZacContext zacContext) {
-    return buildWidget(zacContext);
+  Align build(BuildContext context, ZacContext zacContext) {
+    return buildWidget(context, zacContext);
   }
 }

@@ -19,9 +19,9 @@ export declare abstract class ZacMapBuilder<T> extends ZacBuilder<{
     [key: string]: T;
 }> {
 }
-export declare abstract class ZacTransformer extends ZacConvertable {
+export declare abstract class ZacTransform {
 }
-export declare abstract class ZacAction extends ZacConvertable {
+export declare abstract class ZacAction {
 }
 export declare type ZacValueTypes = boolean | string | number;
 export declare class ZacValue<T extends ZacValueTypes> extends ZacBuilder<T> {
@@ -37,30 +37,30 @@ export declare class ZacValueMap<T> extends ZacMapBuilder<T> {
 }
 export declare class SharedValueConsumeType extends ZacConvertable {
     static watch(data?: {
-        select?: ZacBuilder<Array<ZacTransformer>>;
+        select?: ZacListBuilder<ZacTransform>;
     }): SharedValueConsumeType;
     static read(): SharedValueConsumeType;
 }
 export declare class ConsumeSharedValue<T> extends ZacBuilder<T> {
     static new<T>(data: {
         family: string;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
+        transformer?: ZacListBuilder<ZacTransform>;
         forceConsume?: SharedValueConsumeType;
     }): ConsumeSharedValue<T>;
 }
 export declare class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
     static new<T>(data: {
         family: string;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
-        itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+        transformer?: ZacListBuilder<ZacTransform>;
+        itemTransformer?: ZacListBuilder<ZacTransform>;
         forceConsume?: SharedValueConsumeType;
     }): ConsumeSharedValue<T>;
 }
 export declare class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
     static new<T>(data: {
         family: string;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
-        itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+        transformer?: ZacListBuilder<ZacTransform>;
+        itemTransformer?: ZacListBuilder<ZacTransform>;
         forceConsume?: SharedValueConsumeType;
     }): ConsumeSharedValue<T>;
 }
@@ -75,6 +75,9 @@ export declare class ZacTransition extends ZacConvertable {
         event: string;
         target: string;
     }): ZacTransition;
+}
+export declare class BoolTransformer extends ZacBuilder<ZacTransform> {
+    static negate(): BoolTransformer;
 }
 export declare class Align extends ZacBuilder<native.Align> {
     static new(data?: {
@@ -310,7 +313,7 @@ export declare class Brightness extends ZacBuilder<native.Brightness> {
     static dark(): Brightness;
     static light(): Brightness;
 }
-export declare class Builder extends ZacBuilder<native.Builder> {
+export declare class Builder extends ZacBuilder<native.Widget> {
     static new(data: {
         key?: ZacBuilder<native.Key>;
         child: ZacBuilder<native.Widget>;
@@ -458,6 +461,17 @@ export declare class DecorationPosition extends ZacBuilder<native.DecorationPosi
     static background(): DecorationPosition;
     static foreground(): DecorationPosition;
 }
+export declare class DialogActions extends ZacBuilder<ZacAction> {
+    static showDialog(data: {
+        child: ZacBuilder<native.Widget>;
+        barrierDismissible?: boolean | ZacBuilder<boolean>;
+        barrierColor?: ZacBuilder<native.Color>;
+        barrierLabel?: string | ZacBuilder<string>;
+        useSafeArea?: boolean | ZacBuilder<boolean>;
+        useRootNavigator?: boolean | ZacBuilder<boolean>;
+        routeSettings?: ZacBuilder<native.RouteSettings>;
+    }): DialogActions;
+}
 export declare class Dialogs extends ZacBuilder<native.Widget> {
     static dialog(data?: {
         key?: ZacBuilder<native.Key>;
@@ -510,7 +524,7 @@ export declare class Dialogs extends ZacBuilder<native.Widget> {
     static simpleDialogOption(data?: {
         key?: ZacBuilder<native.Key>;
         child?: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
         padding?: ZacBuilder<native.EdgeInsets>;
     }): Dialogs;
 }
@@ -564,8 +578,8 @@ export declare class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
     static new(data?: {
         key?: ZacBuilder<native.Key>;
         child?: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): ElevatedButton;
@@ -573,8 +587,8 @@ export declare class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
         key?: ZacBuilder<native.Key>;
         icon: ZacBuilder<native.Widget>;
         label: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): ElevatedButton;
@@ -612,6 +626,111 @@ export declare class Flexible extends ZacBuilder<native.Flexible> {
         fit?: ZacBuilder<native.FlexFit>;
         child: ZacBuilder<native.Widget>;
     }): Flexible;
+}
+export declare class FloatingActionButton extends ZacBuilder<native.FloatingActionButton> {
+    static new(data?: {
+        key?: ZacBuilder<native.Key>;
+        child?: ZacBuilder<native.Widget>;
+        tooltip?: string | ZacBuilder<string>;
+        foregroundColor?: ZacBuilder<native.Color>;
+        backgroundColor?: ZacBuilder<native.Color>;
+        focusColor?: ZacBuilder<native.Color>;
+        hoverColor?: ZacBuilder<native.Color>;
+        splashColor?: ZacBuilder<native.Color>;
+        heroTag?: ZacBuilder<any>;
+        elevation?: number | ZacBuilder<number>;
+        focusElevation?: number | ZacBuilder<number>;
+        hoverElevation?: number | ZacBuilder<number>;
+        highlightElevation?: number | ZacBuilder<number>;
+        disabledElevation?: number | ZacBuilder<number>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        mouseCursor?: ZacBuilder<native.MouseCursor>;
+        mini?: boolean | ZacBuilder<boolean>;
+        shape?: ZacBuilder<native.ShapeBorder>;
+        clipBehavior?: ZacBuilder<native.Clip>;
+        focusNode?: ZacBuilder<native.FocusNode>;
+        autofocus?: boolean | ZacBuilder<boolean>;
+        materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+        isExtended?: boolean | ZacBuilder<boolean>;
+        enableFeedback?: boolean | ZacBuilder<boolean>;
+    }): FloatingActionButton;
+    static extended(data: {
+        key?: ZacBuilder<native.Key>;
+        tooltip?: string | ZacBuilder<string>;
+        foregroundColor?: ZacBuilder<native.Color>;
+        backgroundColor?: ZacBuilder<native.Color>;
+        focusColor?: ZacBuilder<native.Color>;
+        hoverColor?: ZacBuilder<native.Color>;
+        splashColor?: ZacBuilder<native.Color>;
+        heroTag?: ZacBuilder<any>;
+        elevation?: number | ZacBuilder<number>;
+        focusElevation?: number | ZacBuilder<number>;
+        hoverElevation?: number | ZacBuilder<number>;
+        highlightElevation?: number | ZacBuilder<number>;
+        disabledElevation?: number | ZacBuilder<number>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        mouseCursor?: ZacBuilder<native.MouseCursor>;
+        shape?: ZacBuilder<native.ShapeBorder>;
+        clipBehavior?: ZacBuilder<native.Clip>;
+        focusNode?: ZacBuilder<native.FocusNode>;
+        autofocus?: boolean | ZacBuilder<boolean>;
+        materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+        isExtended?: boolean | ZacBuilder<boolean>;
+        enableFeedback?: boolean | ZacBuilder<boolean>;
+        extendedIconLabelSpacing?: number | ZacBuilder<number>;
+        extendedPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
+        extendedTextStyle?: ZacBuilder<native.TextStyle>;
+        icon?: ZacBuilder<native.Widget>;
+        label: ZacBuilder<native.Widget>;
+    }): FloatingActionButton;
+    static large(data?: {
+        key?: ZacBuilder<native.Key>;
+        child?: ZacBuilder<native.Widget>;
+        tooltip?: string | ZacBuilder<string>;
+        foregroundColor?: ZacBuilder<native.Color>;
+        backgroundColor?: ZacBuilder<native.Color>;
+        focusColor?: ZacBuilder<native.Color>;
+        hoverColor?: ZacBuilder<native.Color>;
+        splashColor?: ZacBuilder<native.Color>;
+        heroTag?: ZacBuilder<any>;
+        elevation?: number | ZacBuilder<number>;
+        focusElevation?: number | ZacBuilder<number>;
+        hoverElevation?: number | ZacBuilder<number>;
+        highlightElevation?: number | ZacBuilder<number>;
+        disabledElevation?: number | ZacBuilder<number>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        mouseCursor?: ZacBuilder<native.MouseCursor>;
+        shape?: ZacBuilder<native.ShapeBorder>;
+        clipBehavior?: ZacBuilder<native.Clip>;
+        focusNode?: ZacBuilder<native.FocusNode>;
+        autofocus?: boolean | ZacBuilder<boolean>;
+        materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+        enableFeedback?: boolean | ZacBuilder<boolean>;
+    }): FloatingActionButton;
+    static small(data?: {
+        key?: ZacBuilder<native.Key>;
+        child?: ZacBuilder<native.Widget>;
+        tooltip?: string | ZacBuilder<string>;
+        foregroundColor?: ZacBuilder<native.Color>;
+        backgroundColor?: ZacBuilder<native.Color>;
+        focusColor?: ZacBuilder<native.Color>;
+        hoverColor?: ZacBuilder<native.Color>;
+        splashColor?: ZacBuilder<native.Color>;
+        heroTag?: ZacBuilder<any>;
+        elevation?: number | ZacBuilder<number>;
+        focusElevation?: number | ZacBuilder<number>;
+        hoverElevation?: number | ZacBuilder<number>;
+        highlightElevation?: number | ZacBuilder<number>;
+        disabledElevation?: number | ZacBuilder<number>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        mouseCursor?: ZacBuilder<native.MouseCursor>;
+        shape?: ZacBuilder<native.ShapeBorder>;
+        clipBehavior?: ZacBuilder<native.Clip>;
+        focusNode?: ZacBuilder<native.FocusNode>;
+        autofocus?: boolean | ZacBuilder<boolean>;
+        materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+        enableFeedback?: boolean | ZacBuilder<boolean>;
+    }): FloatingActionButton;
 }
 export declare class FontFeature extends ZacBuilder<native.FontFeature> {
     static new(data: {
@@ -706,12 +825,12 @@ export declare class GestureDetector extends ZacBuilder<native.GestureDetector> 
     static new(data?: {
         key?: ZacBuilder<native.Key>;
         child?: ZacBuilder<native.Widget>;
-        onTap?: ZacBuilder<Array<ZacAction>>;
-        onSecondaryTap?: ZacBuilder<Array<ZacAction>>;
-        onDoubleTap?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
-        onSecondaryLongPress?: ZacBuilder<Array<ZacAction>>;
-        onTertiaryLongPress?: ZacBuilder<Array<ZacAction>>;
+        onTap?: ZacListBuilder<ZacAction>;
+        onSecondaryTap?: ZacListBuilder<ZacAction>;
+        onDoubleTap?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
+        onSecondaryLongPress?: ZacListBuilder<ZacAction>;
+        onTertiaryLongPress?: ZacListBuilder<ZacAction>;
         behavior?: HitTestBehavior;
         excludeFromSemantics?: boolean | ZacBuilder<boolean>;
     }): GestureDetector;
@@ -913,9 +1032,9 @@ export declare class InteractiveViewer extends ZacBuilder<native.InteractiveView
         constrained?: boolean | ZacBuilder<boolean>;
         maxScale?: number | ZacBuilder<number>;
         minScale?: number | ZacBuilder<number>;
-        onInteractionEnd?: ZacBuilder<Array<ZacAction>>;
-        onInteractionStart?: ZacBuilder<Array<ZacAction>>;
-        onInteractionUpdate?: ZacBuilder<Array<ZacAction>>;
+        onInteractionEnd?: ZacListBuilder<ZacAction>;
+        onInteractionStart?: ZacListBuilder<ZacAction>;
+        onInteractionUpdate?: ZacListBuilder<ZacAction>;
         panEnabled?: boolean | ZacBuilder<boolean>;
         scaleEnabled?: boolean | ZacBuilder<boolean>;
     }): InteractiveViewer;
@@ -955,8 +1074,8 @@ export declare class ListTile extends ZacBuilder<native.ListTile> {
         textColor?: ZacBuilder<native.Color>;
         contentPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
         enabled?: boolean | ZacBuilder<boolean>;
-        onTap?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onTap?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         selected?: boolean | ZacBuilder<boolean>;
         focusColor?: ZacBuilder<native.Color>;
         hoverColor?: ZacBuilder<native.Color>;
@@ -1053,12 +1172,12 @@ export declare class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
         contentTextStyle?: ZacBuilder<native.TextStyle>;
         actions: ZacListBuilder<native.Widget>;
         elevation?: number | ZacBuilder<number>;
-        leading: ZacBuilder<native.Widget>;
+        leading?: ZacBuilder<native.Widget>;
         backgroundColor?: ZacBuilder<native.Color>;
         padding?: ZacBuilder<native.EdgeInsetsGeometry>;
         leadingPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
         forceActionsBelow?: boolean | ZacBuilder<boolean>;
-        onVisible?: ZacBuilder<Array<ZacAction>>;
+        onVisible?: ZacListBuilder<ZacAction>;
     }): MaterialBanner;
 }
 export declare class MaterialPageRoute extends ZacBuilder<native.Route> {
@@ -1078,6 +1197,40 @@ export declare class Navigator extends ZacBuilder<native.Navigator> {
         initialRoute?: string | ZacBuilder<string>;
         requestFocus?: boolean | ZacBuilder<boolean>;
     }): Navigator;
+}
+export declare class NavigatorActions extends ZacBuilder<ZacAction> {
+    static push(data: {
+        route: ZacBuilder<native.Route>;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
+    static pushNamed(data: {
+        routeName: string | ZacBuilder<string>;
+        arguments?: any;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
+    static pop(data?: {
+        actions?: ZacListBuilder<ZacAction>;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
+    static maybePop(data?: {
+        actions?: ZacListBuilder<ZacAction>;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
+    static pushReplacement(data: {
+        route: ZacBuilder<native.Route>;
+        result?: ZacListBuilder<ZacAction>;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
+    static pushReplacementNamed(data: {
+        routeName: string | ZacBuilder<string>;
+        arguments?: any;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+        result?: ZacListBuilder<ZacAction>;
+    }): NavigatorActions;
+    static popUntilRouteName(data: {
+        routeName: string | ZacBuilder<string>;
+        navigatorState?: ZacBuilder<native.NavigatorState>;
+    }): NavigatorActions;
 }
 export declare class NavigatorState extends ZacBuilder<native.NavigatorState> {
     static closest(): NavigatorState;
@@ -1122,8 +1275,8 @@ export declare class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
     static new(data: {
         key?: ZacBuilder<native.Key>;
         child: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): OutlinedButton;
@@ -1131,8 +1284,8 @@ export declare class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
         key?: ZacBuilder<native.Key>;
         icon: ZacBuilder<native.Widget>;
         label: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): OutlinedButton;
@@ -1261,7 +1414,7 @@ export declare class RefreshIndicator extends ZacBuilder<native.RefreshIndicator
         child: ZacBuilder<native.Widget>;
         displacement?: number | ZacBuilder<number>;
         edgeOffset?: number | ZacBuilder<number>;
-        onRefresh: ZacBuilder<Array<ZacAction>>;
+        onRefresh: ZacListBuilder<ZacAction>;
         color?: ZacBuilder<native.Color>;
         backgroundColor?: ZacBuilder<native.Color>;
         semanticsLabel?: string | ZacBuilder<string>;
@@ -1345,6 +1498,35 @@ export declare class Scaffold extends ZacBuilder<native.Scaffold> {
         endDrawerEnableOpenDragGesture?: boolean | ZacBuilder<boolean>;
         restorationId?: string | ZacBuilder<string>;
     }): Scaffold;
+}
+export declare class ScaffoldActions extends ZacBuilder<ZacAction> {
+    static openDrawer(): ScaffoldActions;
+    static openEndDrawer(): ScaffoldActions;
+    static showBodyScrim(data: {
+        value: boolean;
+        opacity: number | ZacBuilder<number>;
+    }): ScaffoldActions;
+    static showBottomSheet(data: {
+        child: ZacBuilder<native.Widget>;
+        backgroundColor?: ZacBuilder<native.Color>;
+        elevation?: number | ZacBuilder<number>;
+        shape?: ZacBuilder<native.ShapeBorder>;
+        clipBehavior?: ZacBuilder<native.Clip>;
+        constraints?: BoxConstraints;
+        enableDrag?: boolean | ZacBuilder<boolean>;
+    }): ScaffoldActions;
+}
+export declare class ScaffoldMessenger extends ZacBuilder<ZacAction> {
+    static showSnackBar(data: {
+        snackBar: SnackBar;
+    }): ScaffoldMessenger;
+    static hideCurrentSnackBar(): ScaffoldMessenger;
+    static removeCurrentSnackBar(): ScaffoldMessenger;
+    static showMaterialBanner(data: {
+        materialBanner: MaterialBanner;
+    }): ScaffoldMessenger;
+    static hideCurrentMaterialBanner(): ScaffoldMessenger;
+    static removeCurrentMaterialBanner(): ScaffoldMessenger;
 }
 export declare class ScrollController extends ZacBuilder<native.Widget> {
     static new(data: {
@@ -1541,7 +1723,7 @@ export declare class SnackBar extends ZacBuilder<native.SnackBar> {
         shape?: ZacBuilder<native.ShapeBorder>;
         behavior?: SnackBarBehavior;
         action?: SnackBarAction;
-        onVisible?: ZacBuilder<Array<ZacAction>>;
+        onVisible?: ZacListBuilder<ZacAction>;
     }): SnackBar;
 }
 export declare class SnackBarAction extends ZacBuilder<native.SnackBarAction> {
@@ -1549,8 +1731,8 @@ export declare class SnackBarAction extends ZacBuilder<native.SnackBarAction> {
         key?: ZacBuilder<native.Key>;
         textColor?: ZacBuilder<native.Color>;
         disabledTextColor?: ZacBuilder<native.Color>;
-        label: string;
-        onPressed: ZacBuilder<Array<ZacAction>>;
+        label: string | ZacBuilder<string>;
+        onPressed: ZacListBuilder<ZacAction>;
     }): SnackBarAction;
 }
 export declare class SnackBarBehavior extends ZacBuilder<native.SnackBarBehavior> {
@@ -1661,8 +1843,8 @@ export declare class TextButton extends ZacBuilder<native.TextButton> {
     static new(data: {
         key?: ZacBuilder<native.Key>;
         child: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): TextButton;
@@ -1670,8 +1852,8 @@ export declare class TextButton extends ZacBuilder<native.TextButton> {
         key?: ZacBuilder<native.Key>;
         icon: ZacBuilder<native.Widget>;
         label: ZacBuilder<native.Widget>;
-        onPressed?: ZacBuilder<Array<ZacAction>>;
-        onLongPress?: ZacBuilder<Array<ZacAction>>;
+        onPressed?: ZacListBuilder<ZacAction>;
+        onLongPress?: ZacListBuilder<ZacAction>;
         autofocus?: boolean | ZacBuilder<boolean>;
         clipBehavior?: ZacBuilder<native.Clip>;
     }): TextButton;
@@ -1724,9 +1906,9 @@ export declare class TextField extends ZacBuilder<native.TextField> {
         minLines?: number | ZacBuilder<number>;
         expands?: boolean | ZacBuilder<boolean>;
         maxLength?: number | ZacBuilder<number>;
-        onChanged?: ZacBuilder<Array<ZacAction>>;
-        onEditingComplete?: ZacBuilder<Array<ZacAction>>;
-        onSubmitted?: ZacBuilder<Array<ZacAction>>;
+        onChanged?: ZacListBuilder<ZacAction>;
+        onEditingComplete?: ZacListBuilder<ZacAction>;
+        onSubmitted?: ZacListBuilder<ZacAction>;
         enabled?: boolean | ZacBuilder<boolean>;
         cursorWidth?: number | ZacBuilder<number>;
         cursorHeight?: number | ZacBuilder<number>;
@@ -1737,7 +1919,7 @@ export declare class TextField extends ZacBuilder<native.TextField> {
         keyboardAppearance?: ZacBuilder<native.Brightness>;
         scrollPadding?: ZacBuilder<native.EdgeInsets>;
         enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
-        onTap?: ZacBuilder<Array<ZacAction>>;
+        onTap?: ZacListBuilder<ZacAction>;
         scrollController?: ZacBuilder<native.ScrollController>;
         clipBehavior?: ZacBuilder<native.Clip>;
         restorationId?: string | ZacBuilder<string>;
@@ -1873,6 +2055,126 @@ export declare class WrapCrossAlignment extends ZacBuilder<native.WrapCrossAlign
     static end(): WrapCrossAlignment;
     static start(): WrapCrossAlignment;
 }
+export declare class IntTransformer extends ZacBuilder<ZacTransform> {
+    static parse(): IntTransformer;
+    static tryParse(): IntTransformer;
+    static incr(data: {
+        by: number | ZacBuilder<number>;
+    }): IntTransformer;
+    static decr(data: {
+        by: number | ZacBuilder<number>;
+    }): IntTransformer;
+}
+export declare class IterableTransformer extends ZacBuilder<ZacTransform> {
+    static map(data: {
+        transformer: ZacListBuilder<ZacTransform>;
+    }): IterableTransformer;
+    static single(): IterableTransformer;
+    static first(): IterableTransformer;
+    static last(): IterableTransformer;
+    static length_(): IterableTransformer;
+    static isEmpty(): IterableTransformer;
+    static isNotEmpty(): IterableTransformer;
+    static toList(): IterableTransformer;
+    static toSet(): IterableTransformer;
+    static toString(): IterableTransformer;
+    static join(data?: {
+        separator?: string;
+    }): IterableTransformer;
+    static contains(data: {
+        element: ZacBuilder<any>;
+    }): IterableTransformer;
+    static elementAt(data: {
+        index: number;
+    }): IterableTransformer;
+    static skip(data: {
+        count: number;
+    }): IterableTransformer;
+    static take(data: {
+        count: number;
+    }): IterableTransformer;
+}
+export declare class JsonTransformer extends ZacBuilder<ZacTransform> {
+    static encode(): JsonTransformer;
+    static decode(): JsonTransformer;
+}
+export declare class ListTransformer extends ZacBuilder<ZacTransform> {
+    static reversed(): ListTransformer;
+    static add(data: {
+        value: ZacBuilder<any>;
+    }): ListTransformer;
+}
+export declare class MapTransformer extends ZacBuilder<ZacTransform> {
+    static values(): MapTransformer;
+    static keys(): MapTransformer;
+    static entries(): MapTransformer;
+    static length_(): MapTransformer;
+    static isEmpty(): MapTransformer;
+    static isNotEmpty(): MapTransformer;
+    static containsKey(data: {
+        key: ZacBuilder<any>;
+    }): MapTransformer;
+    static containsValue(data: {
+        value: ZacBuilder<any>;
+    }): MapTransformer;
+    static mapper(data?: {
+        keyTransformer?: ZacListBuilder<ZacTransform>;
+        valueTransformer?: ZacListBuilder<ZacTransform>;
+    }): MapTransformer;
+    static fromObjectObject(): MapTransformer;
+    static fromStringObject(): MapTransformer;
+    static fromStringNullObject(): MapTransformer;
+    static key(data: {
+        key: string | ZacBuilder<string>;
+    }): MapTransformer;
+    static setValueForKey(data: {
+        value: ZacBuilder<any>;
+        key: string | ZacBuilder<string>;
+    }): MapTransformer;
+}
+export declare class NumTransformer extends ZacBuilder<ZacTransform> {
+    static toDouble(): NumTransformer;
+    static toInt(): NumTransformer;
+    static abs(): NumTransformer;
+    static ceil(): NumTransformer;
+    static ceilToDouble(): NumTransformer;
+    static floor(): NumTransformer;
+    static floorToDouble(): NumTransformer;
+    static round(): NumTransformer;
+    static roundToDouble(): NumTransformer;
+    static isFinite(): NumTransformer;
+    static isInfinite(): NumTransformer;
+    static isNan(): NumTransformer;
+    static isNegative(): NumTransformer;
+}
+export declare class ObjectTransformer extends ZacBuilder<ZacTransform> {
+    static isList(): ObjectTransformer;
+    static isMap(): ObjectTransformer;
+    static isBool(): ObjectTransformer;
+    static isString(): ObjectTransformer;
+    static isDouble(): ObjectTransformer;
+    static isInt(): ObjectTransformer;
+    static isNull(): ObjectTransformer;
+    static equals(data: {
+        other: any;
+    }): ObjectTransformer;
+    static toString(): ObjectTransformer;
+    static runtimeType(): ObjectTransformer;
+    static hashCode(): ObjectTransformer;
+    static equalsSharedValue(data: {
+        value: ZacBuilder<any>;
+    }): ObjectTransformer;
+}
+export declare class SharedValueActions extends ZacBuilder<ZacAction> {
+    static update(data: {
+        family: SharedValueFamily;
+        transformer?: ZacListBuilder<ZacTransform>;
+        ifNoPayloadTakeCurrent?: boolean;
+    }): SharedValueActions;
+    static invalidate(data: {
+        family: SharedValueFamily;
+    }): SharedValueActions;
+}
 export declare class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
     static provideInt(data: {
         key?: ZacBuilder<native.Key>;
@@ -1907,7 +2209,7 @@ export declare class SharedValueProviderBuilder extends ZacBuilder<native.Widget
         value: any;
         family: string;
         child: ZacBuilder<native.Widget>;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
+        transformer?: ZacListBuilder<ZacTransform>;
         autoCreate?: boolean;
     }): SharedValueProviderBuilder;
     static provideNull(data: {
@@ -1945,10 +2247,22 @@ export declare class SharedValueProviderBuilder extends ZacBuilder<native.Widget
         autoCreate?: boolean;
     }): SharedValueProviderBuilder;
 }
-export declare class ZacActions extends ZacBuilder<Array<ZacAction>> {
-    static new(data: {
-        actions: Array<ZacAction>;
-    }): ZacActions;
+export declare class StringTransformer extends ZacBuilder<ZacTransform> {
+    static length_(): StringTransformer;
+    static split(data: {
+        pattern: string | ZacBuilder<string>;
+    }): StringTransformer;
+    static isEmpty(): StringTransformer;
+    static isNotEmpty(): StringTransformer;
+    static replaceAll(data: {
+        from: string | ZacBuilder<string>;
+        replace: string | ZacBuilder<string>;
+    }): StringTransformer;
+}
+export declare class ZacCompleterActions extends ZacBuilder<ZacAction> {
+    static completeVoid(data: {
+        completer: ZacBuilder<native.Completer>;
+    }): ZacCompleterActions;
 }
 export declare class ZacCompleterVoidProvider extends ZacBuilder<native.Widget> {
     static new(data: {
@@ -1956,16 +2270,33 @@ export declare class ZacCompleterVoidProvider extends ZacBuilder<native.Widget> 
         child: ZacBuilder<native.Widget>;
     }): ZacCompleterVoidProvider;
 }
+export declare class ZacControlFlowAction extends ZacBuilder<ZacAction> {
+    static ifCond(data: {
+        condition: ZacListBuilder<ZacTransform>;
+        ifTrue: ZacListBuilder<ZacAction>;
+        ifFalse?: ZacBuilder<Array<ZacAction>>;
+    }): ZacControlFlowAction;
+}
 export declare class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {
     static once(data: {
-        actions: ZacBuilder<Array<ZacAction>>;
+        actions: ZacListBuilder<ZacAction>;
         child?: ZacBuilder<native.Widget>;
     }): ZacExecuteActionsBuilder;
     static listen(data: {
-        actions: ZacBuilder<Array<ZacAction>>;
+        actions: ZacListBuilder<ZacAction>;
         family: SharedValueFamily;
         child?: ZacBuilder<native.Widget>;
     }): ZacExecuteActionsBuilder;
+}
+export declare class ZacStateMachineActions extends ZacBuilder<ZacAction> {
+    static send(data: {
+        family: SharedValueFamily;
+        event: string | ZacBuilder<string>;
+    }): ZacStateMachineActions;
+    static trySend(data: {
+        family: SharedValueFamily;
+        event: string | ZacBuilder<string>;
+    }): ZacStateMachineActions;
 }
 export declare class ZacStateMachineBuildStateBuilder extends ZacBuilder<native.Widget> {
     static new(data: {
@@ -1985,16 +2316,15 @@ export declare class ZacStateMachineProviderBuilder extends ZacBuilder<native.Wi
         initialContext?: ZacBuilder<any>;
     }): ZacStateMachineProviderBuilder;
 }
-export declare class ZacTransformers extends ZacBuilder<Array<ZacTransformer>> {
-    static new(data: {
-        transformers: Array<ZacTransformer>;
-    }): ZacTransformers;
+export declare class ZacStateMachineTransformer extends ZacBuilder<ZacTransform> {
+    static pickState(): ZacStateMachineTransformer;
+    static pickContext(): ZacStateMachineTransformer;
 }
-export declare class ZacUpdateContextBuilder extends ZacBuilder<native.Widget> {
-    static new(data: {
-        key?: ZacBuilder<native.Key>;
-        child: ZacBuilder<native.Widget>;
-    }): ZacUpdateContextBuilder;
+export declare class ZacValueActions extends ZacBuilder<ZacAction> {
+    static asPayload(data: {
+        value: ZacBuilder<any>;
+        actions: ZacListBuilder<ZacAction>;
+    }): ZacValueActions;
 }
 export declare class ZacWidgetBuilder extends ZacBuilder<native.Widget> {
     static new(data: {
@@ -2006,242 +2336,4 @@ export declare class ZacWidgetBuilder extends ZacBuilder<native.Widget> {
         data: any;
         errorChild?: ZacBuilder<native.Widget>;
     }): ZacWidgetBuilder;
-}
-export declare class BoolTransformer extends ZacTransformer {
-    static negate(): BoolTransformer;
-}
-export declare class ConvertTransformer extends ZacTransformer {
-    static new(): ConvertTransformer;
-}
-export declare class IntTransformer extends ZacTransformer {
-    static parse(): IntTransformer;
-    static tryParse(): IntTransformer;
-}
-export declare class IterableTransformer extends ZacTransformer {
-    static map(data: {
-        transformer: ZacBuilder<Array<ZacTransformer>>;
-    }): IterableTransformer;
-    static single(): IterableTransformer;
-    static first(): IterableTransformer;
-    static last(): IterableTransformer;
-    static length_(): IterableTransformer;
-    static isEmpty(): IterableTransformer;
-    static isNotEmpty(): IterableTransformer;
-    static toList(): IterableTransformer;
-    static toSet(): IterableTransformer;
-    static toString(): IterableTransformer;
-    static join(data?: {
-        separator?: string;
-    }): IterableTransformer;
-    static contains(data: {
-        element: ZacBuilder<any>;
-    }): IterableTransformer;
-    static elementAt(data: {
-        index: number;
-    }): IterableTransformer;
-    static skip(data: {
-        count: number;
-    }): IterableTransformer;
-    static take(data: {
-        count: number;
-    }): IterableTransformer;
-}
-export declare class JsonTransformer extends ZacTransformer {
-    static encode(): JsonTransformer;
-    static decode(): JsonTransformer;
-}
-export declare class ListTransformer extends ZacTransformer {
-    static reversed(): ListTransformer;
-    static add(data: {
-        value: ZacBuilder<any>;
-    }): ListTransformer;
-}
-export declare class MapTransformer extends ZacTransformer {
-    static values(): MapTransformer;
-    static keys(): MapTransformer;
-    static entries(): MapTransformer;
-    static length_(): MapTransformer;
-    static isEmpty(): MapTransformer;
-    static isNotEmpty(): MapTransformer;
-    static containsKey(data: {
-        key: ZacBuilder<any>;
-    }): MapTransformer;
-    static containsValue(data: {
-        value: ZacBuilder<any>;
-    }): MapTransformer;
-    static mapper(data?: {
-        keyTransformer?: ZacBuilder<Array<ZacTransformer>>;
-        valueTransformer?: ZacBuilder<Array<ZacTransformer>>;
-    }): MapTransformer;
-    static fromObjectObject(): MapTransformer;
-    static fromStringObject(): MapTransformer;
-    static fromStringNullObject(): MapTransformer;
-    static key(data: {
-        key: string | ZacBuilder<string>;
-    }): MapTransformer;
-    static setValueForKey(data: {
-        value: ZacBuilder<any>;
-        key: string | ZacBuilder<string>;
-    }): MapTransformer;
-}
-export declare class NumTransformer extends ZacTransformer {
-    static toDouble(): NumTransformer;
-    static toInt(): NumTransformer;
-    static abs(): NumTransformer;
-    static ceil(): NumTransformer;
-    static ceilToDouble(): NumTransformer;
-    static floor(): NumTransformer;
-    static floorToDouble(): NumTransformer;
-    static round(): NumTransformer;
-    static roundToDouble(): NumTransformer;
-    static isFinite(): NumTransformer;
-    static isInfinite(): NumTransformer;
-    static isNan(): NumTransformer;
-    static isNegative(): NumTransformer;
-}
-export declare class ObjectTransformer extends ZacTransformer {
-    static isList(): ObjectTransformer;
-    static isMap(): ObjectTransformer;
-    static isBool(): ObjectTransformer;
-    static isString(): ObjectTransformer;
-    static isDouble(): ObjectTransformer;
-    static isInt(): ObjectTransformer;
-    static isNull(): ObjectTransformer;
-    static equals(data: {
-        other: any;
-    }): ObjectTransformer;
-    static toString(): ObjectTransformer;
-    static runtimeType(): ObjectTransformer;
-    static hashCode(): ObjectTransformer;
-    static equalsSharedValue(data: {
-        value: ZacBuilder<any>;
-    }): ObjectTransformer;
-}
-export declare class StringTransformer extends ZacTransformer {
-    static length_(): StringTransformer;
-    static split(data: {
-        pattern: string | ZacBuilder<string>;
-    }): StringTransformer;
-    static isEmpty(): StringTransformer;
-    static isNotEmpty(): StringTransformer;
-    static replaceAll(data: {
-        from: string | ZacBuilder<string>;
-        replace: string | ZacBuilder<string>;
-    }): StringTransformer;
-}
-export declare class ZacStateMachineTransformer extends ZacTransformer {
-    static pickState(): ZacStateMachineTransformer;
-    static pickContext(): ZacStateMachineTransformer;
-}
-export declare class DialogActions extends ZacAction {
-    static showDialog(data: {
-        child: ZacBuilder<native.Widget>;
-        barrierDismissible?: boolean | ZacBuilder<boolean>;
-        barrierColor?: ZacBuilder<native.Color>;
-        barrierLabel?: string | ZacBuilder<string>;
-        useSafeArea?: boolean | ZacBuilder<boolean>;
-        useRootNavigator?: boolean | ZacBuilder<boolean>;
-        routeSettings?: ZacBuilder<native.RouteSettings>;
-    }): DialogActions;
-}
-export declare class NavigatorActions extends ZacAction {
-    static push(data: {
-        route: ZacBuilder<native.Route>;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-    static pushNamed(data: {
-        routeName: string | ZacBuilder<string>;
-        arguments?: any;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-    static pop(data?: {
-        actions?: ZacBuilder<Array<ZacAction>>;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-    static maybePop(data?: {
-        actions?: ZacBuilder<Array<ZacAction>>;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-    static pushReplacement(data: {
-        route: ZacBuilder<native.Route>;
-        result?: ZacBuilder<Array<ZacAction>>;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-    static pushReplacementNamed(data: {
-        routeName: string | ZacBuilder<string>;
-        arguments?: any;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-        result?: ZacBuilder<Array<ZacAction>>;
-    }): NavigatorActions;
-    static popUntilRouteName(data: {
-        routeName: string | ZacBuilder<string>;
-        navigatorState?: ZacBuilder<native.NavigatorState>;
-    }): NavigatorActions;
-}
-export declare class ScaffoldActions extends ZacAction {
-    static openDrawer(): ScaffoldActions;
-    static openEndDrawer(): ScaffoldActions;
-    static showBodyScrim(data: {
-        value: boolean;
-        opacity: number | ZacBuilder<number>;
-    }): ScaffoldActions;
-    static showBottomSheet(data: {
-        child: ZacBuilder<native.Widget>;
-        backgroundColor?: ZacBuilder<native.Color>;
-        elevation?: number | ZacBuilder<number>;
-        shape?: ZacBuilder<native.ShapeBorder>;
-        clipBehavior?: ZacBuilder<native.Clip>;
-        constraints?: BoxConstraints;
-        enableDrag?: boolean | ZacBuilder<boolean>;
-    }): ScaffoldActions;
-}
-export declare class ScaffoldMessenger extends ZacAction {
-    static showSnackBar(data: {
-        snackBar: SnackBar;
-    }): ScaffoldMessenger;
-    static hideCurrentSnackBar(): ScaffoldMessenger;
-    static removeCurrentSnackBar(): ScaffoldMessenger;
-    static showMaterialBanner(data: {
-        materialBanner: MaterialBanner;
-    }): ScaffoldMessenger;
-    static hideCurrentMaterialBanner(): ScaffoldMessenger;
-    static removeCurrentMaterialBanner(): ScaffoldMessenger;
-}
-export declare class SharedValueActions extends ZacAction {
-    static update(data: {
-        family: SharedValueFamily;
-        transformer?: ZacBuilder<Array<ZacTransformer>>;
-        ifNoPayloadTakeCurrent?: boolean;
-    }): SharedValueActions;
-    static invalidate(data: {
-        family: SharedValueFamily;
-    }): SharedValueActions;
-}
-export declare class ZacCompleterActions extends ZacAction {
-    static completeVoid(data: {
-        completer: ZacBuilder<native.Completer>;
-    }): ZacCompleterActions;
-}
-export declare class ZacControlFlowAction extends ZacAction {
-    static ifCond(data: {
-        condition: ZacBuilder<Array<ZacTransformer>>;
-        ifTrue: ZacBuilder<Array<ZacAction>>;
-        ifFalse?: ZacBuilder<Array<ZacAction>>;
-    }): ZacControlFlowAction;
-}
-export declare class ZacStateMachineActions extends ZacAction {
-    static send(data: {
-        family: SharedValueFamily;
-        event: string | ZacBuilder<string>;
-    }): ZacStateMachineActions;
-    static trySend(data: {
-        family: SharedValueFamily;
-        event: string | ZacBuilder<string>;
-    }): ZacStateMachineActions;
-}
-export declare class ZacValueActions extends ZacAction {
-    static asPayload(data: {
-        value: ZacBuilder<any>;
-        actions: ZacActions;
-    }): ZacValueActions;
 }

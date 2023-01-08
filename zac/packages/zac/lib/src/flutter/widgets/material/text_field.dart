@@ -3,9 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/flutter/services.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -53,11 +50,11 @@ class FlutterTextField
     ZacBuilder<bool?>? expands,
     ZacBuilder<int?>? maxLength,
     // ValueChanged<String>? onChanged,
-    ZacBuilder<List<ZacAction>?>? onChanged,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onChanged,
     // VoidCallback? onEditingComplete,
-    ZacBuilder<List<ZacAction>?>? onEditingComplete,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onEditingComplete,
     // ValueChanged<String>? onSubmitted,
-    ZacBuilder<List<ZacAction>?>? onSubmitted,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onSubmitted,
 // AppPrivateCommandCallback? onAppPrivateCommand,
 // List<TextInputFormatter>? inputFormatters,
     ZacBuilder<bool?>? enabled,
@@ -73,7 +70,7 @@ class FlutterTextField
     ZacBuilder<bool?>? enableInteractiveSelection,
 // TextSelectionControls? selectionControls,
     // GestureTapCallback? onTap,
-    ZacBuilder<List<ZacAction>?>? onTap,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? onTap,
 // MouseCursor? mouseCursor,
 // InputCounterWidgetBuilder? buildCounter,
     ZacBuilder<ScrollController?>? scrollController,
@@ -84,63 +81,67 @@ class FlutterTextField
     ZacBuilder<bool?>? enableIMEPersonalizedLearning,
   }) = _FlutterTextField;
 
-  TextField _buildWidget(ZacContext zacContext) {
+  TextField _buildWidget(BuildContext context, ZacContext zacContext) {
     return TextField(
-      key: key?.build(zacContext),
-      style: style?.build(zacContext),
-      strutStyle: strutStyle?.build(zacContext),
-      textAlign: textAlign?.build(zacContext) ?? TextAlign.start,
-      textDirection: textDirection?.build(zacContext),
-      readOnly: readOnly?.build(zacContext) ?? false,
-      showCursor: showCursor?.build(zacContext),
-      autofocus: autofocus?.build(zacContext) ?? false,
-      obscuringCharacter: obscuringCharacter?.build(zacContext) ?? '•',
-      obscureText: obscureText?.build(zacContext) ?? false,
-      autocorrect: autocorrect?.build(zacContext) ?? true,
-      enableSuggestions: enableSuggestions?.build(zacContext) ?? true,
-      maxLines: maxLines?.build(zacContext),
-      minLines: minLines?.build(zacContext),
-      expands: expands?.build(zacContext) ?? false,
-      maxLength: maxLength?.build(zacContext),
-      enabled: enabled?.build(zacContext),
-      cursorWidth: cursorWidth?.build(zacContext) ?? 2.0,
-      cursorHeight: cursorHeight?.build(zacContext),
-      cursorRadius: cursorRadius?.build(zacContext),
-      cursorColor: cursorColor?.build(zacContext),
-      keyboardAppearance: keyboardAppearance?.build(zacContext),
-      scrollPadding:
-          scrollPadding?.build(zacContext) ?? const EdgeInsets.all(20.0),
+      key: key?.build(context, zacContext),
+      style: style?.build(context, zacContext),
+      strutStyle: strutStyle?.build(context, zacContext),
+      textAlign: textAlign?.build(context, zacContext) ?? TextAlign.start,
+      textDirection: textDirection?.build(context, zacContext),
+      readOnly: readOnly?.build(context, zacContext) ?? false,
+      showCursor: showCursor?.build(context, zacContext),
+      autofocus: autofocus?.build(context, zacContext) ?? false,
+      obscuringCharacter: obscuringCharacter?.build(context, zacContext) ?? '•',
+      obscureText: obscureText?.build(context, zacContext) ?? false,
+      autocorrect: autocorrect?.build(context, zacContext) ?? true,
+      enableSuggestions: enableSuggestions?.build(context, zacContext) ?? true,
+      maxLines: maxLines?.build(context, zacContext),
+      minLines: minLines?.build(context, zacContext),
+      expands: expands?.build(context, zacContext) ?? false,
+      maxLength: maxLength?.build(context, zacContext),
+      enabled: enabled?.build(context, zacContext),
+      cursorWidth: cursorWidth?.build(context, zacContext) ?? 2.0,
+      cursorHeight: cursorHeight?.build(context, zacContext),
+      cursorRadius: cursorRadius?.build(context, zacContext),
+      cursorColor: cursorColor?.build(context, zacContext),
+      keyboardAppearance: keyboardAppearance?.build(context, zacContext),
+      scrollPadding: scrollPadding?.build(context, zacContext) ??
+          const EdgeInsets.all(20.0),
       enableInteractiveSelection:
-          enableInteractiveSelection?.build(zacContext) ?? true,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      restorationId: restorationId?.build(zacContext),
+          enableInteractiveSelection?.build(context, zacContext) ?? true,
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+      restorationId: restorationId?.build(context, zacContext),
       enableIMEPersonalizedLearning:
-          enableIMEPersonalizedLearning?.build(zacContext) ?? true,
-      onChanged:
-          onChanged?.build(zacContext)?.createCbParam1<String>(zacContext),
-      decoration: decoration?.build(zacContext) ?? const InputDecoration(),
-      keyboardType: keyboardType?.build(zacContext),
-      textInputAction: textInputAction?.build(zacContext),
-      textCapitalization:
-          textCapitalization?.build(zacContext) ?? TextCapitalization.none,
-      textAlignVertical: textAlignVertical?.build(zacContext),
-      smartDashesType: smartDashesType?.build(zacContext),
-      smartQuotesType: smartQuotesType?.build(zacContext),
-      selectionHeightStyle:
-          selectionHeightStyle?.build(zacContext) ?? BoxHeightStyle.tight,
-      selectionWidthStyle:
-          selectionWidthStyle?.build(zacContext) ?? BoxWidthStyle.tight,
-      onTap: onTap?.build(zacContext)?.createCb(zacContext),
-      onEditingComplete:
-          onEditingComplete?.build(zacContext)?.createCb(zacContext),
-      onSubmitted:
-          onSubmitted?.build(zacContext)?.createCbParam1<String>(zacContext),
-      scrollController: scrollController?.build(zacContext),
+          enableIMEPersonalizedLearning?.build(context, zacContext) ?? true,
+      onChanged: onChanged
+          ?.build(context, zacContext)
+          ?.createCbParam1<String>(context, zacContext),
+      decoration:
+          decoration?.build(context, zacContext) ?? const InputDecoration(),
+      keyboardType: keyboardType?.build(context, zacContext),
+      textInputAction: textInputAction?.build(context, zacContext),
+      textCapitalization: textCapitalization?.build(context, zacContext) ??
+          TextCapitalization.none,
+      textAlignVertical: textAlignVertical?.build(context, zacContext),
+      smartDashesType: smartDashesType?.build(context, zacContext),
+      smartQuotesType: smartQuotesType?.build(context, zacContext),
+      selectionHeightStyle: selectionHeightStyle?.build(context, zacContext) ??
+          BoxHeightStyle.tight,
+      selectionWidthStyle: selectionWidthStyle?.build(context, zacContext) ??
+          BoxWidthStyle.tight,
+      onTap: onTap?.build(context, zacContext)?.createCb(context, zacContext),
+      onEditingComplete: onEditingComplete
+          ?.build(context, zacContext)
+          ?.createCb(context, zacContext),
+      onSubmitted: onSubmitted
+          ?.build(context, zacContext)
+          ?.createCbParam1<String>(context, zacContext),
+      scrollController: scrollController?.build(context, zacContext),
     );
   }
 
   @override
-  TextField build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  TextField build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

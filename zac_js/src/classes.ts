@@ -38,8 +38,8 @@ export abstract class ZacMapBuilder<T> extends ZacBuilder<{
   [key: string]: T;
 }> {}
 
-export abstract class ZacTransformer extends ZacConvertable {}
-export abstract class ZacAction extends ZacConvertable {}
+export abstract class ZacTransform {}
+export abstract class ZacAction {}
 
 export type ZacValueTypes = boolean | string | number;
 
@@ -71,7 +71,7 @@ export class ZacValueMap<T> extends ZacMapBuilder<T> {
 }
 
 export class SharedValueConsumeType extends ZacConvertable {
-  static watch(data?: { select?: ZacBuilder<Array<ZacTransformer>> }) {
+  static watch(data?: { select?: ZacListBuilder<ZacTransform> }) {
     return new SharedValueConsumeType({
       builder: "z:1:SharedValueConsume.watch",
       ...data,
@@ -87,7 +87,7 @@ export class SharedValueConsumeType extends ZacConvertable {
 export class ConsumeSharedValue<T> extends ZacBuilder<T> {
   static new<T>(data: {
     family: string;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
+    transformer?: ZacListBuilder<ZacTransform>;
     forceConsume?: SharedValueConsumeType;
   }) {
     return new ConsumeSharedValue<T>({
@@ -100,8 +100,8 @@ export class ConsumeSharedValue<T> extends ZacBuilder<T> {
 export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
   static new<T>(data: {
     family: string;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
-    itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+    transformer?: ZacListBuilder<ZacTransform>;
+    itemTransformer?: ZacListBuilder<ZacTransform>;
     forceConsume?: SharedValueConsumeType;
   }) {
     return new ConsumeSharedValue<T>({
@@ -114,8 +114,8 @@ export class ConsumeSharedValueList<T> extends ZacListBuilder<T> {
 export class ConsumeSharedValueMap<T> extends ZacMapBuilder<T> {
   static new<T>(data: {
     family: string;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
-    itemTransformer?: ZacBuilder<Array<ZacTransformer>>;
+    transformer?: ZacListBuilder<ZacTransform>;
+    itemTransformer?: ZacListBuilder<ZacTransform>;
     forceConsume?: SharedValueConsumeType;
   }) {
     return new ConsumeSharedValue<T>({
@@ -141,6 +141,13 @@ export class ZacTransition extends ZacConvertable {
     return new ZacTransition({
       builder: "z:1:StateMachine:Transition",
       ...data,
+    });
+  }
+}
+export class BoolTransformer extends ZacBuilder<ZacTransform> {
+  static negate() {
+    return new BoolTransformer({
+      builder: "z:1:Transformer:Bool.negate",
     });
   }
 }
@@ -766,7 +773,7 @@ export class Brightness extends ZacBuilder<native.Brightness> {
     });
   }
 }
-export class Builder extends ZacBuilder<native.Builder> {
+export class Builder extends ZacBuilder<native.Widget> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
     child: ZacBuilder<native.Widget>;
@@ -1017,6 +1024,22 @@ export class DecorationPosition extends ZacBuilder<native.DecorationPosition> {
     });
   }
 }
+export class DialogActions extends ZacBuilder<ZacAction> {
+  static showDialog(data: {
+    child: ZacBuilder<native.Widget>;
+    barrierDismissible?: boolean | ZacBuilder<boolean>;
+    barrierColor?: ZacBuilder<native.Color>;
+    barrierLabel?: string | ZacBuilder<string>;
+    useSafeArea?: boolean | ZacBuilder<boolean>;
+    useRootNavigator?: boolean | ZacBuilder<boolean>;
+    routeSettings?: ZacBuilder<native.RouteSettings>;
+  }) {
+    return new DialogActions({
+      builder: "f:1:showDialog",
+      ...data,
+    });
+  }
+}
 export class Dialogs extends ZacBuilder<native.Widget> {
   static dialog(data?: {
     key?: ZacBuilder<native.Key>;
@@ -1084,7 +1107,7 @@ export class Dialogs extends ZacBuilder<native.Widget> {
   static simpleDialogOption(data?: {
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
     padding?: ZacBuilder<native.EdgeInsets>;
   }) {
     return new Dialogs({
@@ -1174,8 +1197,8 @@ export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -1188,8 +1211,8 @@ export class ElevatedButton extends ZacBuilder<native.ElevatedButton> {
     key?: ZacBuilder<native.Key>;
     icon: ZacBuilder<native.Widget>;
     label: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -1268,6 +1291,131 @@ export class Flexible extends ZacBuilder<native.Flexible> {
   }) {
     return new Flexible({
       builder: "f:1:Flexible",
+      ...data,
+    });
+  }
+}
+export class FloatingActionButton extends ZacBuilder<native.FloatingActionButton> {
+  static new(data?: {
+    key?: ZacBuilder<native.Key>;
+    child?: ZacBuilder<native.Widget>;
+    tooltip?: string | ZacBuilder<string>;
+    foregroundColor?: ZacBuilder<native.Color>;
+    backgroundColor?: ZacBuilder<native.Color>;
+    focusColor?: ZacBuilder<native.Color>;
+    hoverColor?: ZacBuilder<native.Color>;
+    splashColor?: ZacBuilder<native.Color>;
+    heroTag?: ZacBuilder<any>;
+    elevation?: number | ZacBuilder<number>;
+    focusElevation?: number | ZacBuilder<number>;
+    hoverElevation?: number | ZacBuilder<number>;
+    highlightElevation?: number | ZacBuilder<number>;
+    disabledElevation?: number | ZacBuilder<number>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    mouseCursor?: ZacBuilder<native.MouseCursor>;
+    mini?: boolean | ZacBuilder<boolean>;
+    shape?: ZacBuilder<native.ShapeBorder>;
+    clipBehavior?: ZacBuilder<native.Clip>;
+    focusNode?: ZacBuilder<native.FocusNode>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+    isExtended?: boolean | ZacBuilder<boolean>;
+    enableFeedback?: boolean | ZacBuilder<boolean>;
+  }) {
+    return new FloatingActionButton({
+      builder: "f:1:FloatingActionButton",
+      ...data,
+    });
+  }
+  static extended(data: {
+    key?: ZacBuilder<native.Key>;
+    tooltip?: string | ZacBuilder<string>;
+    foregroundColor?: ZacBuilder<native.Color>;
+    backgroundColor?: ZacBuilder<native.Color>;
+    focusColor?: ZacBuilder<native.Color>;
+    hoverColor?: ZacBuilder<native.Color>;
+    splashColor?: ZacBuilder<native.Color>;
+    heroTag?: ZacBuilder<any>;
+    elevation?: number | ZacBuilder<number>;
+    focusElevation?: number | ZacBuilder<number>;
+    hoverElevation?: number | ZacBuilder<number>;
+    highlightElevation?: number | ZacBuilder<number>;
+    disabledElevation?: number | ZacBuilder<number>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    mouseCursor?: ZacBuilder<native.MouseCursor>;
+    shape?: ZacBuilder<native.ShapeBorder>;
+    clipBehavior?: ZacBuilder<native.Clip>;
+    focusNode?: ZacBuilder<native.FocusNode>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+    isExtended?: boolean | ZacBuilder<boolean>;
+    enableFeedback?: boolean | ZacBuilder<boolean>;
+    extendedIconLabelSpacing?: number | ZacBuilder<number>;
+    extendedPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
+    extendedTextStyle?: ZacBuilder<native.TextStyle>;
+    icon?: ZacBuilder<native.Widget>;
+    label: ZacBuilder<native.Widget>;
+  }) {
+    return new FloatingActionButton({
+      builder: "f:1:FloatingActionButton.extended",
+      ...data,
+    });
+  }
+  static large(data?: {
+    key?: ZacBuilder<native.Key>;
+    child?: ZacBuilder<native.Widget>;
+    tooltip?: string | ZacBuilder<string>;
+    foregroundColor?: ZacBuilder<native.Color>;
+    backgroundColor?: ZacBuilder<native.Color>;
+    focusColor?: ZacBuilder<native.Color>;
+    hoverColor?: ZacBuilder<native.Color>;
+    splashColor?: ZacBuilder<native.Color>;
+    heroTag?: ZacBuilder<any>;
+    elevation?: number | ZacBuilder<number>;
+    focusElevation?: number | ZacBuilder<number>;
+    hoverElevation?: number | ZacBuilder<number>;
+    highlightElevation?: number | ZacBuilder<number>;
+    disabledElevation?: number | ZacBuilder<number>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    mouseCursor?: ZacBuilder<native.MouseCursor>;
+    shape?: ZacBuilder<native.ShapeBorder>;
+    clipBehavior?: ZacBuilder<native.Clip>;
+    focusNode?: ZacBuilder<native.FocusNode>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+    enableFeedback?: boolean | ZacBuilder<boolean>;
+  }) {
+    return new FloatingActionButton({
+      builder: "f:1:FloatingActionButton.large",
+      ...data,
+    });
+  }
+  static small(data?: {
+    key?: ZacBuilder<native.Key>;
+    child?: ZacBuilder<native.Widget>;
+    tooltip?: string | ZacBuilder<string>;
+    foregroundColor?: ZacBuilder<native.Color>;
+    backgroundColor?: ZacBuilder<native.Color>;
+    focusColor?: ZacBuilder<native.Color>;
+    hoverColor?: ZacBuilder<native.Color>;
+    splashColor?: ZacBuilder<native.Color>;
+    heroTag?: ZacBuilder<any>;
+    elevation?: number | ZacBuilder<number>;
+    focusElevation?: number | ZacBuilder<number>;
+    hoverElevation?: number | ZacBuilder<number>;
+    highlightElevation?: number | ZacBuilder<number>;
+    disabledElevation?: number | ZacBuilder<number>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    mouseCursor?: ZacBuilder<native.MouseCursor>;
+    shape?: ZacBuilder<native.ShapeBorder>;
+    clipBehavior?: ZacBuilder<native.Clip>;
+    focusNode?: ZacBuilder<native.FocusNode>;
+    autofocus?: boolean | ZacBuilder<boolean>;
+    materialTapTargetSize?: ZacBuilder<native.MaterialTapTargetSize>;
+    enableFeedback?: boolean | ZacBuilder<boolean>;
+  }) {
+    return new FloatingActionButton({
+      builder: "f:1:FloatingActionButton.small",
       ...data,
     });
   }
@@ -1534,12 +1682,12 @@ export class GestureDetector extends ZacBuilder<native.GestureDetector> {
   static new(data?: {
     key?: ZacBuilder<native.Key>;
     child?: ZacBuilder<native.Widget>;
-    onTap?: ZacBuilder<Array<ZacAction>>;
-    onSecondaryTap?: ZacBuilder<Array<ZacAction>>;
-    onDoubleTap?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
-    onSecondaryLongPress?: ZacBuilder<Array<ZacAction>>;
-    onTertiaryLongPress?: ZacBuilder<Array<ZacAction>>;
+    onTap?: ZacListBuilder<ZacAction>;
+    onSecondaryTap?: ZacListBuilder<ZacAction>;
+    onDoubleTap?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
+    onSecondaryLongPress?: ZacListBuilder<ZacAction>;
+    onTertiaryLongPress?: ZacListBuilder<ZacAction>;
     behavior?: HitTestBehavior;
     excludeFromSemantics?: boolean | ZacBuilder<boolean>;
   }) {
@@ -1829,9 +1977,9 @@ export class InteractiveViewer extends ZacBuilder<native.InteractiveViewer> {
     constrained?: boolean | ZacBuilder<boolean>;
     maxScale?: number | ZacBuilder<number>;
     minScale?: number | ZacBuilder<number>;
-    onInteractionEnd?: ZacBuilder<Array<ZacAction>>;
-    onInteractionStart?: ZacBuilder<Array<ZacAction>>;
-    onInteractionUpdate?: ZacBuilder<Array<ZacAction>>;
+    onInteractionEnd?: ZacListBuilder<ZacAction>;
+    onInteractionStart?: ZacListBuilder<ZacAction>;
+    onInteractionUpdate?: ZacListBuilder<ZacAction>;
     panEnabled?: boolean | ZacBuilder<boolean>;
     scaleEnabled?: boolean | ZacBuilder<boolean>;
   }) {
@@ -1891,8 +2039,8 @@ export class ListTile extends ZacBuilder<native.ListTile> {
     textColor?: ZacBuilder<native.Color>;
     contentPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     enabled?: boolean | ZacBuilder<boolean>;
-    onTap?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onTap?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     selected?: boolean | ZacBuilder<boolean>;
     focusColor?: ZacBuilder<native.Color>;
     hoverColor?: ZacBuilder<native.Color>;
@@ -2043,12 +2191,12 @@ export class MaterialBanner extends ZacBuilder<native.MaterialBanner> {
     contentTextStyle?: ZacBuilder<native.TextStyle>;
     actions: ZacListBuilder<native.Widget>;
     elevation?: number | ZacBuilder<number>;
-    leading: ZacBuilder<native.Widget>;
+    leading?: ZacBuilder<native.Widget>;
     backgroundColor?: ZacBuilder<native.Color>;
     padding?: ZacBuilder<native.EdgeInsetsGeometry>;
     leadingPadding?: ZacBuilder<native.EdgeInsetsGeometry>;
     forceActionsBelow?: boolean | ZacBuilder<boolean>;
-    onVisible?: ZacBuilder<Array<ZacAction>>;
+    onVisible?: ZacListBuilder<ZacAction>;
   }) {
     return new MaterialBanner({
       builder: "f:1:MaterialBanner",
@@ -2080,6 +2228,75 @@ export class Navigator extends ZacBuilder<native.Navigator> {
   }) {
     return new Navigator({
       builder: "f:1:Navigator",
+      ...data,
+    });
+  }
+}
+export class NavigatorActions extends ZacBuilder<ZacAction> {
+  static push(data: {
+    route: ZacBuilder<native.Route>;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.push",
+      ...data,
+    });
+  }
+  static pushNamed(data: {
+    routeName: string | ZacBuilder<string>;
+    arguments?: any;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.pushNamed",
+      ...data,
+    });
+  }
+  static pop(data?: {
+    actions?: ZacListBuilder<ZacAction>;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.pop",
+      ...data,
+    });
+  }
+  static maybePop(data?: {
+    actions?: ZacListBuilder<ZacAction>;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.maybePop",
+      ...data,
+    });
+  }
+  static pushReplacement(data: {
+    route: ZacBuilder<native.Route>;
+    result?: ZacListBuilder<ZacAction>;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.pushReplacement",
+      ...data,
+    });
+  }
+  static pushReplacementNamed(data: {
+    routeName: string | ZacBuilder<string>;
+    arguments?: any;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+    result?: ZacListBuilder<ZacAction>;
+  }) {
+    return new NavigatorActions({
+      builder: "f:1:Navigator.pushReplacementNamed",
+      ...data,
+    });
+  }
+  static popUntilRouteName(data: {
+    routeName: string | ZacBuilder<string>;
+    navigatorState?: ZacBuilder<native.NavigatorState>;
+  }) {
+    return new NavigatorActions({
+      builder: "z:1:Navigator.popUntilRouteName",
       ...data,
     });
   }
@@ -2163,8 +2380,8 @@ export class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
     child: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -2177,8 +2394,8 @@ export class OutlinedButton extends ZacBuilder<native.OutlinedButton> {
     key?: ZacBuilder<native.Key>;
     icon: ZacBuilder<native.Widget>;
     label: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -2382,7 +2599,7 @@ export class RefreshIndicator extends ZacBuilder<native.RefreshIndicator> {
     child: ZacBuilder<native.Widget>;
     displacement?: number | ZacBuilder<number>;
     edgeOffset?: number | ZacBuilder<number>;
-    onRefresh: ZacBuilder<Array<ZacAction>>;
+    onRefresh: ZacListBuilder<ZacAction>;
     color?: ZacBuilder<native.Color>;
     backgroundColor?: ZacBuilder<native.Color>;
     semanticsLabel?: string | ZacBuilder<string>;
@@ -2512,6 +2729,75 @@ export class Scaffold extends ZacBuilder<native.Scaffold> {
     return new Scaffold({
       builder: "f:1:Scaffold",
       ...data,
+    });
+  }
+}
+export class ScaffoldActions extends ZacBuilder<ZacAction> {
+  static openDrawer() {
+    return new ScaffoldActions({
+      builder: "f:1:Scaffold.openDrawer",
+    });
+  }
+  static openEndDrawer() {
+    return new ScaffoldActions({
+      builder: "f:1:Scaffold.openEndDrawer",
+    });
+  }
+  static showBodyScrim(data: {
+    value: boolean;
+    opacity: number | ZacBuilder<number>;
+  }) {
+    return new ScaffoldActions({
+      builder: "f:1:Scaffold.showBodyScrim",
+      ...data,
+    });
+  }
+  static showBottomSheet(data: {
+    child: ZacBuilder<native.Widget>;
+    backgroundColor?: ZacBuilder<native.Color>;
+    elevation?: number | ZacBuilder<number>;
+    shape?: ZacBuilder<native.ShapeBorder>;
+    clipBehavior?: ZacBuilder<native.Clip>;
+    constraints?: BoxConstraints;
+    enableDrag?: boolean | ZacBuilder<boolean>;
+  }) {
+    return new ScaffoldActions({
+      builder: "f:1:Scaffold.showBottomSheet",
+      ...data,
+    });
+  }
+}
+export class ScaffoldMessenger extends ZacBuilder<ZacAction> {
+  static showSnackBar(data: { snackBar: SnackBar }) {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.showSnackBar",
+      ...data,
+    });
+  }
+  static hideCurrentSnackBar() {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.hideCurrentSnackBar",
+    });
+  }
+  static removeCurrentSnackBar() {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.removeCurrentSnackBar",
+    });
+  }
+  static showMaterialBanner(data: { materialBanner: MaterialBanner }) {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.showMaterialBanner",
+      ...data,
+    });
+  }
+  static hideCurrentMaterialBanner() {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.hideCurrentMaterialBanner",
+    });
+  }
+  static removeCurrentMaterialBanner() {
+    return new ScaffoldMessenger({
+      builder: "f:1:ScaffoldMessenger.removeCurrentMaterialBanner",
     });
   }
 }
@@ -2843,7 +3129,7 @@ export class SnackBar extends ZacBuilder<native.SnackBar> {
     shape?: ZacBuilder<native.ShapeBorder>;
     behavior?: SnackBarBehavior;
     action?: SnackBarAction;
-    onVisible?: ZacBuilder<Array<ZacAction>>;
+    onVisible?: ZacListBuilder<ZacAction>;
   }) {
     return new SnackBar({
       builder: "f:1:SnackBar",
@@ -2856,8 +3142,8 @@ export class SnackBarAction extends ZacBuilder<native.SnackBarAction> {
     key?: ZacBuilder<native.Key>;
     textColor?: ZacBuilder<native.Color>;
     disabledTextColor?: ZacBuilder<native.Color>;
-    label: string;
-    onPressed: ZacBuilder<Array<ZacAction>>;
+    label: string | ZacBuilder<string>;
+    onPressed: ZacListBuilder<ZacAction>;
   }) {
     return new SnackBarAction({
       builder: "f:1:SnackBarAction",
@@ -3070,8 +3356,8 @@ export class TextButton extends ZacBuilder<native.TextButton> {
   static new(data: {
     key?: ZacBuilder<native.Key>;
     child: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -3084,8 +3370,8 @@ export class TextButton extends ZacBuilder<native.TextButton> {
     key?: ZacBuilder<native.Key>;
     icon: ZacBuilder<native.Widget>;
     label: ZacBuilder<native.Widget>;
-    onPressed?: ZacBuilder<Array<ZacAction>>;
-    onLongPress?: ZacBuilder<Array<ZacAction>>;
+    onPressed?: ZacListBuilder<ZacAction>;
+    onLongPress?: ZacListBuilder<ZacAction>;
     autofocus?: boolean | ZacBuilder<boolean>;
     clipBehavior?: ZacBuilder<native.Clip>;
   }) {
@@ -3203,9 +3489,9 @@ export class TextField extends ZacBuilder<native.TextField> {
     minLines?: number | ZacBuilder<number>;
     expands?: boolean | ZacBuilder<boolean>;
     maxLength?: number | ZacBuilder<number>;
-    onChanged?: ZacBuilder<Array<ZacAction>>;
-    onEditingComplete?: ZacBuilder<Array<ZacAction>>;
-    onSubmitted?: ZacBuilder<Array<ZacAction>>;
+    onChanged?: ZacListBuilder<ZacAction>;
+    onEditingComplete?: ZacListBuilder<ZacAction>;
+    onSubmitted?: ZacListBuilder<ZacAction>;
     enabled?: boolean | ZacBuilder<boolean>;
     cursorWidth?: number | ZacBuilder<number>;
     cursorHeight?: number | ZacBuilder<number>;
@@ -3216,7 +3502,7 @@ export class TextField extends ZacBuilder<native.TextField> {
     keyboardAppearance?: ZacBuilder<native.Brightness>;
     scrollPadding?: ZacBuilder<native.EdgeInsets>;
     enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
-    onTap?: ZacBuilder<Array<ZacAction>>;
+    onTap?: ZacListBuilder<ZacAction>;
     scrollController?: ZacBuilder<native.ScrollController>;
     clipBehavior?: ZacBuilder<native.Clip>;
     restorationId?: string | ZacBuilder<string>;
@@ -3557,248 +3843,7 @@ export class WrapCrossAlignment extends ZacBuilder<native.WrapCrossAlignment> {
     });
   }
 }
-export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
-  static provideInt(data: {
-    key?: ZacBuilder<native.Key>;
-    value: number;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:int.provide",
-      ...data,
-    });
-  }
-  static provideDouble(data: {
-    key?: ZacBuilder<native.Key>;
-    value: number;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:double.provide",
-      ...data,
-    });
-  }
-  static provideString(data: {
-    key?: ZacBuilder<native.Key>;
-    value: string;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:String.provide",
-      ...data,
-    });
-  }
-  static provideBool(data: {
-    key?: ZacBuilder<native.Key>;
-    value: boolean;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:bool.provide",
-      ...data,
-    });
-  }
-  static provideObject(data: {
-    key?: ZacBuilder<native.Key>;
-    value: any;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:Object.provide",
-      ...data,
-    });
-  }
-  static provideNull(data: {
-    key?: ZacBuilder<native.Key>;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:null.provide",
-      ...data,
-    });
-  }
-  static provideWidget(data: {
-    key?: ZacBuilder<native.Key>;
-    value: ZacBuilder<native.Widget>;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:Widget.provide",
-      ...data,
-    });
-  }
-  static provideWidgets(data: {
-    key?: ZacBuilder<native.Key>;
-    value: ZacListBuilder<native.Widget>;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:List<Widget>.provide",
-      ...data,
-    });
-  }
-  static provideWidgetsMap(data: {
-    key?: ZacBuilder<native.Key>;
-    value: ZacMapBuilder<native.Widget>;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:Map<String, Widget>.provide",
-      ...data,
-    });
-  }
-  static provideAnyBuilder(data: {
-    key?: ZacBuilder<native.Key>;
-    value: ZacBuilder<any>;
-    family: string;
-    child: ZacBuilder<native.Widget>;
-    autoCreate?: boolean;
-  }) {
-    return new SharedValueProviderBuilder({
-      builder: "z:1:ZacBuilder<Object>.provide",
-      ...data,
-    });
-  }
-}
-export class ZacActions extends ZacBuilder<Array<ZacAction>> {
-  static new(data: { actions: Array<ZacAction> }) {
-    return new ZacActions({
-      builder: "z:1:Actions",
-      ...data,
-    });
-  }
-}
-export class ZacCompleterVoidProvider extends ZacBuilder<native.Widget> {
-  static new(data: {
-    family: SharedValueFamily;
-    child: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacCompleterVoidProvider({
-      builder: "z:1:Completer<void>.provide",
-      ...data,
-    });
-  }
-}
-export class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {
-  static once(data: {
-    actions: ZacBuilder<Array<ZacAction>>;
-    child?: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacExecuteActionsBuilder({
-      builder: "z:1:ExecuteActions.once",
-      ...data,
-    });
-  }
-  static listen(data: {
-    actions: ZacBuilder<Array<ZacAction>>;
-    family: SharedValueFamily;
-    child?: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacExecuteActionsBuilder({
-      builder: "z:1:ExecuteActions.listen",
-      ...data,
-    });
-  }
-}
-export class ZacStateMachineBuildStateBuilder extends ZacBuilder<native.Widget> {
-  static new(data: {
-    key?: ZacBuilder<native.Key>;
-    family: string | ZacBuilder<string>;
-    states: Array<string>;
-    unmappedStateWidget?: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacStateMachineBuildStateBuilder({
-      builder: "z:1:StateMachine:BuildState",
-      ...data,
-    });
-  }
-}
-export class ZacStateMachineProviderBuilder extends ZacBuilder<native.Widget> {
-  static new(data: {
-    key?: ZacBuilder<native.Key>;
-    family: string | ZacBuilder<string>;
-    initialState: string | ZacBuilder<string>;
-    states: Record<string, ZacStateConfig>;
-    child: ZacBuilder<native.Widget>;
-    initialContext?: ZacBuilder<any>;
-  }) {
-    return new ZacStateMachineProviderBuilder({
-      builder: "z:1:StateMachine.provide",
-      ...data,
-    });
-  }
-}
-export class ZacTransformers extends ZacBuilder<Array<ZacTransformer>> {
-  static new(data: { transformers: Array<ZacTransformer> }) {
-    return new ZacTransformers({
-      builder: "z:1:Transformers",
-      ...data,
-    });
-  }
-}
-export class ZacUpdateContextBuilder extends ZacBuilder<native.Widget> {
-  static new(data: {
-    key?: ZacBuilder<native.Key>;
-    child: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacUpdateContextBuilder({
-      builder: "z:1:UpdateContext",
-      ...data,
-    });
-  }
-}
-export class ZacWidgetBuilder extends ZacBuilder<native.Widget> {
-  static new(data: { key?: ZacBuilder<native.Key>; data: any }) {
-    return new ZacWidgetBuilder({
-      builder: "z:1:Widget",
-      ...data,
-    });
-  }
-  static isolate(data: {
-    key?: ZacBuilder<native.Key>;
-    data: any;
-    errorChild?: ZacBuilder<native.Widget>;
-  }) {
-    return new ZacWidgetBuilder({
-      builder: "z:1:Widget.isolate",
-      ...data,
-    });
-  }
-}
-export class BoolTransformer extends ZacTransformer {
-  static negate() {
-    return new BoolTransformer({
-      builder: "z:1:Transformer:Bool.negate",
-    });
-  }
-}
-export class ConvertTransformer extends ZacTransformer {
-  static new() {
-    return new ConvertTransformer({
-      builder: "z:1:Transformer:Converter",
-    });
-  }
-}
-export class IntTransformer extends ZacTransformer {
+export class IntTransformer extends ZacBuilder<ZacTransform> {
   static parse() {
     return new IntTransformer({
       builder: "z:1:Transformer:int.parse",
@@ -3809,9 +3854,21 @@ export class IntTransformer extends ZacTransformer {
       builder: "z:1:Transformer:int.tryParse",
     });
   }
+  static incr(data: { by: number | ZacBuilder<number> }) {
+    return new IntTransformer({
+      builder: "z:1:Transformer:int.incr",
+      ...data,
+    });
+  }
+  static decr(data: { by: number | ZacBuilder<number> }) {
+    return new IntTransformer({
+      builder: "z:1:Transformer:int.decr",
+      ...data,
+    });
+  }
 }
-export class IterableTransformer extends ZacTransformer {
-  static map(data: { transformer: ZacBuilder<Array<ZacTransformer>> }) {
+export class IterableTransformer extends ZacBuilder<ZacTransform> {
+  static map(data: { transformer: ZacListBuilder<ZacTransform> }) {
     return new IterableTransformer({
       builder: "z:1:Transformer:Iterable.map",
       ...data,
@@ -3893,7 +3950,7 @@ export class IterableTransformer extends ZacTransformer {
     });
   }
 }
-export class JsonTransformer extends ZacTransformer {
+export class JsonTransformer extends ZacBuilder<ZacTransform> {
   static encode() {
     return new JsonTransformer({
       builder: "z:1:Transformer:Json.encode",
@@ -3905,7 +3962,7 @@ export class JsonTransformer extends ZacTransformer {
     });
   }
 }
-export class ListTransformer extends ZacTransformer {
+export class ListTransformer extends ZacBuilder<ZacTransform> {
   static reversed() {
     return new ListTransformer({
       builder: "z:1:Transformer:List.reversed",
@@ -3918,7 +3975,7 @@ export class ListTransformer extends ZacTransformer {
     });
   }
 }
-export class MapTransformer extends ZacTransformer {
+export class MapTransformer extends ZacBuilder<ZacTransform> {
   static values() {
     return new MapTransformer({
       builder: "z:1:Transformer:Map.values",
@@ -3962,8 +4019,8 @@ export class MapTransformer extends ZacTransformer {
     });
   }
   static mapper(data?: {
-    keyTransformer?: ZacBuilder<Array<ZacTransformer>>;
-    valueTransformer?: ZacBuilder<Array<ZacTransformer>>;
+    keyTransformer?: ZacListBuilder<ZacTransform>;
+    valueTransformer?: ZacListBuilder<ZacTransform>;
   }) {
     return new MapTransformer({
       builder: "z:1:Transformer:Map.map",
@@ -4001,7 +4058,7 @@ export class MapTransformer extends ZacTransformer {
     });
   }
 }
-export class NumTransformer extends ZacTransformer {
+export class NumTransformer extends ZacBuilder<ZacTransform> {
   static toDouble() {
     return new NumTransformer({
       builder: "z:1:Transformer:num.toDouble",
@@ -4068,7 +4125,7 @@ export class NumTransformer extends ZacTransformer {
     });
   }
 }
-export class ObjectTransformer extends ZacTransformer {
+export class ObjectTransformer extends ZacBuilder<ZacTransform> {
   static isList() {
     return new ObjectTransformer({
       builder: "z:1:Transformer:Object.isList",
@@ -4132,7 +4189,147 @@ export class ObjectTransformer extends ZacTransformer {
     });
   }
 }
-export class StringTransformer extends ZacTransformer {
+export class SharedValueActions extends ZacBuilder<ZacAction> {
+  static update(data: {
+    family: SharedValueFamily;
+    transformer?: ZacListBuilder<ZacTransform>;
+    ifNoPayloadTakeCurrent?: boolean;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:SharedValue.update",
+      ...data,
+    });
+  }
+  static invalidate(data: { family: SharedValueFamily }) {
+    return new SharedValueActions({
+      builder: "z:1:SharedValue.invalidate",
+      ...data,
+    });
+  }
+}
+export class SharedValueProviderBuilder extends ZacBuilder<native.Widget> {
+  static provideInt(data: {
+    key?: ZacBuilder<native.Key>;
+    value: number;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:int.provide",
+      ...data,
+    });
+  }
+  static provideDouble(data: {
+    key?: ZacBuilder<native.Key>;
+    value: number;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:double.provide",
+      ...data,
+    });
+  }
+  static provideString(data: {
+    key?: ZacBuilder<native.Key>;
+    value: string;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:String.provide",
+      ...data,
+    });
+  }
+  static provideBool(data: {
+    key?: ZacBuilder<native.Key>;
+    value: boolean;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:bool.provide",
+      ...data,
+    });
+  }
+  static provideObject(data: {
+    key?: ZacBuilder<native.Key>;
+    value: any;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    transformer?: ZacListBuilder<ZacTransform>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:Object.provide",
+      ...data,
+    });
+  }
+  static provideNull(data: {
+    key?: ZacBuilder<native.Key>;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:null.provide",
+      ...data,
+    });
+  }
+  static provideWidget(data: {
+    key?: ZacBuilder<native.Key>;
+    value: ZacBuilder<native.Widget>;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:Widget.provide",
+      ...data,
+    });
+  }
+  static provideWidgets(data: {
+    key?: ZacBuilder<native.Key>;
+    value: ZacListBuilder<native.Widget>;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:List<Widget>.provide",
+      ...data,
+    });
+  }
+  static provideWidgetsMap(data: {
+    key?: ZacBuilder<native.Key>;
+    value: ZacMapBuilder<native.Widget>;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:Map<String, Widget>.provide",
+      ...data,
+    });
+  }
+  static provideAnyBuilder(data: {
+    key?: ZacBuilder<native.Key>;
+    value: ZacBuilder<any>;
+    family: string;
+    child: ZacBuilder<native.Widget>;
+    autoCreate?: boolean;
+  }) {
+    return new SharedValueProviderBuilder({
+      builder: "z:1:ZacBuilder<Object>.provide",
+      ...data,
+    });
+  }
+}
+export class StringTransformer extends ZacBuilder<ZacTransform> {
   static length_() {
     return new StringTransformer({
       builder: "z:1:Transformer:String.length",
@@ -4164,191 +4361,7 @@ export class StringTransformer extends ZacTransformer {
     });
   }
 }
-export class ZacStateMachineTransformer extends ZacTransformer {
-  static pickState() {
-    return new ZacStateMachineTransformer({
-      builder: "z:1:StateMachine:Transformer.pickState",
-    });
-  }
-  static pickContext() {
-    return new ZacStateMachineTransformer({
-      builder: "z:1:StateMachine:Transformer.pickContext",
-    });
-  }
-}
-export class DialogActions extends ZacAction {
-  static showDialog(data: {
-    child: ZacBuilder<native.Widget>;
-    barrierDismissible?: boolean | ZacBuilder<boolean>;
-    barrierColor?: ZacBuilder<native.Color>;
-    barrierLabel?: string | ZacBuilder<string>;
-    useSafeArea?: boolean | ZacBuilder<boolean>;
-    useRootNavigator?: boolean | ZacBuilder<boolean>;
-    routeSettings?: ZacBuilder<native.RouteSettings>;
-  }) {
-    return new DialogActions({
-      builder: "f:1:showDialog",
-      ...data,
-    });
-  }
-}
-export class NavigatorActions extends ZacAction {
-  static push(data: {
-    route: ZacBuilder<native.Route>;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.push",
-      ...data,
-    });
-  }
-  static pushNamed(data: {
-    routeName: string | ZacBuilder<string>;
-    arguments?: any;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.pushNamed",
-      ...data,
-    });
-  }
-  static pop(data?: {
-    actions?: ZacBuilder<Array<ZacAction>>;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.pop",
-      ...data,
-    });
-  }
-  static maybePop(data?: {
-    actions?: ZacBuilder<Array<ZacAction>>;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.maybePop",
-      ...data,
-    });
-  }
-  static pushReplacement(data: {
-    route: ZacBuilder<native.Route>;
-    result?: ZacBuilder<Array<ZacAction>>;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.pushReplacement",
-      ...data,
-    });
-  }
-  static pushReplacementNamed(data: {
-    routeName: string | ZacBuilder<string>;
-    arguments?: any;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-    result?: ZacBuilder<Array<ZacAction>>;
-  }) {
-    return new NavigatorActions({
-      builder: "f:1:Navigator.pushReplacementNamed",
-      ...data,
-    });
-  }
-  static popUntilRouteName(data: {
-    routeName: string | ZacBuilder<string>;
-    navigatorState?: ZacBuilder<native.NavigatorState>;
-  }) {
-    return new NavigatorActions({
-      builder: "z:1:Navigator.popUntilRouteName",
-      ...data,
-    });
-  }
-}
-export class ScaffoldActions extends ZacAction {
-  static openDrawer() {
-    return new ScaffoldActions({
-      builder: "f:1:Scaffold.openDrawer",
-    });
-  }
-  static openEndDrawer() {
-    return new ScaffoldActions({
-      builder: "f:1:Scaffold.openEndDrawer",
-    });
-  }
-  static showBodyScrim(data: {
-    value: boolean;
-    opacity: number | ZacBuilder<number>;
-  }) {
-    return new ScaffoldActions({
-      builder: "f:1:Scaffold.showBodyScrim",
-      ...data,
-    });
-  }
-  static showBottomSheet(data: {
-    child: ZacBuilder<native.Widget>;
-    backgroundColor?: ZacBuilder<native.Color>;
-    elevation?: number | ZacBuilder<number>;
-    shape?: ZacBuilder<native.ShapeBorder>;
-    clipBehavior?: ZacBuilder<native.Clip>;
-    constraints?: BoxConstraints;
-    enableDrag?: boolean | ZacBuilder<boolean>;
-  }) {
-    return new ScaffoldActions({
-      builder: "f:1:Scaffold.showBottomSheet",
-      ...data,
-    });
-  }
-}
-export class ScaffoldMessenger extends ZacAction {
-  static showSnackBar(data: { snackBar: SnackBar }) {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.showSnackBar",
-      ...data,
-    });
-  }
-  static hideCurrentSnackBar() {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.hideCurrentSnackBar",
-    });
-  }
-  static removeCurrentSnackBar() {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.removeCurrentSnackBar",
-    });
-  }
-  static showMaterialBanner(data: { materialBanner: MaterialBanner }) {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.showMaterialBanner",
-      ...data,
-    });
-  }
-  static hideCurrentMaterialBanner() {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.hideCurrentMaterialBanner",
-    });
-  }
-  static removeCurrentMaterialBanner() {
-    return new ScaffoldMessenger({
-      builder: "f:1:ScaffoldMessenger.removeCurrentMaterialBanner",
-    });
-  }
-}
-export class SharedValueActions extends ZacAction {
-  static update(data: {
-    family: SharedValueFamily;
-    transformer?: ZacBuilder<Array<ZacTransformer>>;
-    ifNoPayloadTakeCurrent?: boolean;
-  }) {
-    return new SharedValueActions({
-      builder: "z:1:SharedValue.update",
-      ...data,
-    });
-  }
-  static invalidate(data: { family: SharedValueFamily }) {
-    return new SharedValueActions({
-      builder: "z:1:SharedValue.invalidate",
-      ...data,
-    });
-  }
-}
-export class ZacCompleterActions extends ZacAction {
+export class ZacCompleterActions extends ZacBuilder<ZacAction> {
   static completeVoid(data: { completer: ZacBuilder<native.Completer> }) {
     return new ZacCompleterActions({
       builder: "z:1:Completer<void>.complete",
@@ -4356,10 +4369,21 @@ export class ZacCompleterActions extends ZacAction {
     });
   }
 }
-export class ZacControlFlowAction extends ZacAction {
+export class ZacCompleterVoidProvider extends ZacBuilder<native.Widget> {
+  static new(data: {
+    family: SharedValueFamily;
+    child: ZacBuilder<native.Widget>;
+  }) {
+    return new ZacCompleterVoidProvider({
+      builder: "z:1:Completer<void>.provide",
+      ...data,
+    });
+  }
+}
+export class ZacControlFlowAction extends ZacBuilder<ZacAction> {
   static ifCond(data: {
-    condition: ZacBuilder<Array<ZacTransformer>>;
-    ifTrue: ZacBuilder<Array<ZacAction>>;
+    condition: ZacListBuilder<ZacTransform>;
+    ifTrue: ZacListBuilder<ZacAction>;
     ifFalse?: ZacBuilder<Array<ZacAction>>;
   }) {
     return new ZacControlFlowAction({
@@ -4368,7 +4392,28 @@ export class ZacControlFlowAction extends ZacAction {
     });
   }
 }
-export class ZacStateMachineActions extends ZacAction {
+export class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {
+  static once(data: {
+    actions: ZacListBuilder<ZacAction>;
+    child?: ZacBuilder<native.Widget>;
+  }) {
+    return new ZacExecuteActionsBuilder({
+      builder: "z:1:ExecuteActions.once",
+      ...data,
+    });
+  }
+  static listen(data: {
+    actions: ZacListBuilder<ZacAction>;
+    family: SharedValueFamily;
+    child?: ZacBuilder<native.Widget>;
+  }) {
+    return new ZacExecuteActionsBuilder({
+      builder: "z:1:ExecuteActions.listen",
+      ...data,
+    });
+  }
+}
+export class ZacStateMachineActions extends ZacBuilder<ZacAction> {
   static send(data: {
     family: SharedValueFamily;
     event: string | ZacBuilder<string>;
@@ -4388,10 +4433,71 @@ export class ZacStateMachineActions extends ZacAction {
     });
   }
 }
-export class ZacValueActions extends ZacAction {
-  static asPayload(data: { value: ZacBuilder<any>; actions: ZacActions }) {
+export class ZacStateMachineBuildStateBuilder extends ZacBuilder<native.Widget> {
+  static new(data: {
+    key?: ZacBuilder<native.Key>;
+    family: string | ZacBuilder<string>;
+    states: Array<string>;
+    unmappedStateWidget?: ZacBuilder<native.Widget>;
+  }) {
+    return new ZacStateMachineBuildStateBuilder({
+      builder: "z:1:StateMachine:BuildState",
+      ...data,
+    });
+  }
+}
+export class ZacStateMachineProviderBuilder extends ZacBuilder<native.Widget> {
+  static new(data: {
+    key?: ZacBuilder<native.Key>;
+    family: string | ZacBuilder<string>;
+    initialState: string | ZacBuilder<string>;
+    states: Record<string, ZacStateConfig>;
+    child: ZacBuilder<native.Widget>;
+    initialContext?: ZacBuilder<any>;
+  }) {
+    return new ZacStateMachineProviderBuilder({
+      builder: "z:1:StateMachine.provide",
+      ...data,
+    });
+  }
+}
+export class ZacStateMachineTransformer extends ZacBuilder<ZacTransform> {
+  static pickState() {
+    return new ZacStateMachineTransformer({
+      builder: "z:1:StateMachine:Transformer.pickState",
+    });
+  }
+  static pickContext() {
+    return new ZacStateMachineTransformer({
+      builder: "z:1:StateMachine:Transformer.pickContext",
+    });
+  }
+}
+export class ZacValueActions extends ZacBuilder<ZacAction> {
+  static asPayload(data: {
+    value: ZacBuilder<any>;
+    actions: ZacListBuilder<ZacAction>;
+  }) {
     return new ZacValueActions({
       builder: "z:1:ZacValue.asActionPayload",
+      ...data,
+    });
+  }
+}
+export class ZacWidgetBuilder extends ZacBuilder<native.Widget> {
+  static new(data: { key?: ZacBuilder<native.Key>; data: any }) {
+    return new ZacWidgetBuilder({
+      builder: "z:1:Widget",
+      ...data,
+    });
+  }
+  static isolate(data: {
+    key?: ZacBuilder<native.Key>;
+    data: any;
+    errorChild?: ZacBuilder<native.Widget>;
+  }) {
+    return new ZacWidgetBuilder({
+      builder: "z:1:Widget.isolate",
       ...data,
     });
   }

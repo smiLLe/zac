@@ -33,26 +33,27 @@ class FlutterWrap with _$FlutterWrap implements ZacBuilder<Wrap> {
     ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterWrap;
 
-  Wrap _buildWidget(ZacContext zacContext) {
+  Wrap _buildWidget(BuildContext context, ZacContext zacContext) {
     return Wrap(
-      key: key?.build(zacContext),
-      direction: direction?.build(zacContext) ?? Axis.horizontal,
-      alignment: alignment?.build(zacContext) ?? WrapAlignment.start,
-      spacing: spacing?.build(zacContext) ?? 0.0,
-      runAlignment: runAlignment?.build(zacContext) ?? WrapAlignment.start,
-      runSpacing: runSpacing?.build(zacContext) ?? 0.0,
-      crossAxisAlignment:
-          crossAxisAlignment?.build(zacContext) ?? WrapCrossAlignment.start,
-      textDirection: textDirection?.build(zacContext),
-      verticalDirection:
-          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      key: key?.build(context, zacContext),
+      direction: direction?.build(context, zacContext) ?? Axis.horizontal,
+      alignment: alignment?.build(context, zacContext) ?? WrapAlignment.start,
+      spacing: spacing?.build(context, zacContext) ?? 0.0,
+      runAlignment:
+          runAlignment?.build(context, zacContext) ?? WrapAlignment.start,
+      runSpacing: runSpacing?.build(context, zacContext) ?? 0.0,
+      crossAxisAlignment: crossAxisAlignment?.build(context, zacContext) ??
+          WrapCrossAlignment.start,
+      textDirection: textDirection?.build(context, zacContext),
+      verticalDirection: verticalDirection?.build(context, zacContext) ??
+          VerticalDirection.down,
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.none,
+      children: children?.build(context, zacContext) ?? const <Widget>[],
     );
   }
 
   @override
-  Wrap build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Wrap build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

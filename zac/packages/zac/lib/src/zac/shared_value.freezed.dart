@@ -56,7 +56,7 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
   @override
   final Object family;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer;
   @override
   @JsonKey()
   final bool? ifNoPayloadTakeCurrent;
@@ -102,7 +102,7 @@ class _$_SharedValueActionsUpdate extends _SharedValueActionsUpdate {
 abstract class _SharedValueActionsUpdate extends SharedValueActions {
   factory _SharedValueActionsUpdate(
       {required final Object family,
-      final ZacBuilder<List<ZacTransformer>?>? transformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
       final bool? ifNoPayloadTakeCurrent}) = _$_SharedValueActionsUpdate;
   _SharedValueActionsUpdate._() : super._();
 
@@ -111,7 +111,7 @@ abstract class _SharedValueActionsUpdate extends SharedValueActions {
 
   @override
   Object get family;
-  ZacBuilder<List<ZacTransformer>?>? get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer;
   bool? get ifNoPayloadTakeCurrent;
 }
 
@@ -205,7 +205,7 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
       _$$_SharedValueConsumeTypeWatchFromJson(json);
 
   @override
-  final ZacBuilder<List<ZacTransformer>>? select;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>>? select;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -239,13 +239,13 @@ class _$_SharedValueConsumeTypeWatch implements _SharedValueConsumeTypeWatch {
 
 abstract class _SharedValueConsumeTypeWatch implements SharedValueConsumeType {
   const factory _SharedValueConsumeTypeWatch(
-          {final ZacBuilder<List<ZacTransformer>>? select}) =
+          {final ZacListBuilder<ZacTransform, List<ZacTransform>>? select}) =
       _$_SharedValueConsumeTypeWatch;
 
   factory _SharedValueConsumeTypeWatch.fromJson(Map<String, dynamic> json) =
       _$_SharedValueConsumeTypeWatch.fromJson;
 
-  ZacBuilder<List<ZacTransformer>>? get select;
+  ZacListBuilder<ZacTransform, List<ZacTransform>>? get select;
 }
 
 /// @nodoc
@@ -755,7 +755,7 @@ class _$_ProvideObject extends _ProvideObject {
   @override
   final ZacBuilder<Widget> child;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer;
   @override
   @JsonKey()
   final bool autoCreate;
@@ -818,7 +818,7 @@ abstract class _ProvideObject extends SharedValueProviderBuilder {
       required final Object value,
       required final String family,
       required final ZacBuilder<Widget> child,
-      final ZacBuilder<List<ZacTransformer>?>? transformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
       final bool autoCreate}) = _$_ProvideObject;
   _ProvideObject._() : super._();
 
@@ -832,7 +832,7 @@ abstract class _ProvideObject extends SharedValueProviderBuilder {
   String get family;
   @override
   ZacBuilder<Widget> get child;
-  ZacBuilder<List<ZacTransformer>?>? get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer;
   @override
   bool get autoCreate;
 }
@@ -1313,7 +1313,7 @@ ConsumeSharedValue<T> _$ConsumeSharedValueFromJson<T>(
 /// @nodoc
 mixin _$ConsumeSharedValue<T> {
   Object get family => throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacTransformer>?>? get transformer =>
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer =>
       throw _privateConstructorUsedError;
   SharedValueConsumeType? get forceConsume =>
       throw _privateConstructorUsedError;
@@ -1338,7 +1338,7 @@ class _$_ConsumeSharedValue<T> extends _ConsumeSharedValue<T> {
   @override
   final Object family;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer;
   @override
   final SharedValueConsumeType? forceConsume;
 
@@ -1376,7 +1376,7 @@ class _$_ConsumeSharedValue<T> extends _ConsumeSharedValue<T> {
 abstract class _ConsumeSharedValue<T> extends ConsumeSharedValue<T> {
   factory _ConsumeSharedValue(
       {required final Object family,
-      final ZacBuilder<List<ZacTransformer>?>? transformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
       final SharedValueConsumeType? forceConsume}) = _$_ConsumeSharedValue<T>;
   _ConsumeSharedValue._() : super._();
 
@@ -1386,7 +1386,7 @@ abstract class _ConsumeSharedValue<T> extends ConsumeSharedValue<T> {
   @override
   Object get family;
   @override
-  ZacBuilder<List<ZacTransformer>?>? get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer;
   @override
   SharedValueConsumeType? get forceConsume;
 }
@@ -1400,9 +1400,9 @@ ConsumeSharedValueList<T, X>
 /// @nodoc
 mixin _$ConsumeSharedValueList<T extends Object?, X extends List<T>?> {
   Object get family => throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacTransformer>?>? get transformer =>
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer =>
       throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacTransformer>?>? get itemTransformer =>
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get itemTransformer =>
       throw _privateConstructorUsedError;
   SharedValueConsumeType? get forceConsume =>
       throw _privateConstructorUsedError;
@@ -1431,9 +1431,9 @@ class _$_ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   @override
   final Object family;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? itemTransformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer;
   @override
   final SharedValueConsumeType? forceConsume;
 
@@ -1477,11 +1477,11 @@ class _$_ConsumeSharedValueList<T extends Object?, X extends List<T>?>
 abstract class _ConsumeSharedValueList<T extends Object?, X extends List<T>?>
     extends ConsumeSharedValueList<T, X> {
   factory _ConsumeSharedValueList(
-          {required final Object family,
-          final ZacBuilder<List<ZacTransformer>?>? transformer,
-          final ZacBuilder<List<ZacTransformer>?>? itemTransformer,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_ConsumeSharedValueList<T, X>;
+      {required final Object family,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer,
+      final SharedValueConsumeType?
+          forceConsume}) = _$_ConsumeSharedValueList<T, X>;
   _ConsumeSharedValueList._() : super._();
 
   factory _ConsumeSharedValueList.fromJson(Map<String, dynamic> json) =
@@ -1490,9 +1490,9 @@ abstract class _ConsumeSharedValueList<T extends Object?, X extends List<T>?>
   @override
   Object get family;
   @override
-  ZacBuilder<List<ZacTransformer>?>? get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer;
   @override
-  ZacBuilder<List<ZacTransformer>?>? get itemTransformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get itemTransformer;
   @override
   SharedValueConsumeType? get forceConsume;
 }
@@ -1505,9 +1505,9 @@ ConsumeSharedValueMap<T, X> _$ConsumeSharedValueMapFromJson<T extends Object?,
 /// @nodoc
 mixin _$ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?> {
   Object get family => throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacTransformer>?>? get transformer =>
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer =>
       throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacTransformer>?>? get itemTransformer =>
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get itemTransformer =>
       throw _privateConstructorUsedError;
   SharedValueConsumeType? get forceConsume =>
       throw _privateConstructorUsedError;
@@ -1536,9 +1536,9 @@ class _$_ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
   @override
   final Object family;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? transformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer;
   @override
-  final ZacBuilder<List<ZacTransformer>?>? itemTransformer;
+  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer;
   @override
   final SharedValueConsumeType? forceConsume;
 
@@ -1582,11 +1582,11 @@ class _$_ConsumeSharedValueMap<T extends Object?, X extends Map<String, T>?>
 abstract class _ConsumeSharedValueMap<T extends Object?,
     X extends Map<String, T>?> extends ConsumeSharedValueMap<T, X> {
   factory _ConsumeSharedValueMap(
-          {required final Object family,
-          final ZacBuilder<List<ZacTransformer>?>? transformer,
-          final ZacBuilder<List<ZacTransformer>?>? itemTransformer,
-          final SharedValueConsumeType? forceConsume}) =
-      _$_ConsumeSharedValueMap<T, X>;
+      {required final Object family,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>?>? itemTransformer,
+      final SharedValueConsumeType?
+          forceConsume}) = _$_ConsumeSharedValueMap<T, X>;
   _ConsumeSharedValueMap._() : super._();
 
   factory _ConsumeSharedValueMap.fromJson(Map<String, dynamic> json) =
@@ -1595,9 +1595,9 @@ abstract class _ConsumeSharedValueMap<T extends Object?,
   @override
   Object get family;
   @override
-  ZacBuilder<List<ZacTransformer>?>? get transformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get transformer;
   @override
-  ZacBuilder<List<ZacTransformer>?>? get itemTransformer;
+  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get itemTransformer;
   @override
   SharedValueConsumeType? get forceConsume;
 }

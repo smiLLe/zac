@@ -1,23 +1,17 @@
+import 'dart:async';
+
+import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
-import 'package:zac/src/base.dart';
-
 import 'package:zac/src/zac/registry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
-
-part 'helper.freezed.dart';
-part 'helper.g.dart';
 
 void expectInRegistry(Object obj, Object fn) {
   if (obj is! String && obj is! List<String>) throw Error();
@@ -30,35 +24,146 @@ void expectInRegistry(Object obj, Object fn) {
   }
 }
 
-TypeMatcher<ZacBuilder<T>> isAZacBuilder<T>() {
-  return isA<ZacBuilder<T>>();
+Future<void> testWithContexts(
+    WidgetTester tester,
+    FutureOr<void> Function(BuildContext Function() getContext,
+            ZacContext Function() getZacContext)
+        cb) async {
+  // ignore: no_leading_underscores_for_local_identifiers
+  late BuildContext _context;
+  // ignore: no_leading_underscores_for_local_identifiers
+  late ZacContext _zacContext;
+  await tester.pumpWidget(
+    ProviderScope(
+      child: ZacFlutterBuilder(
+        builder: (context, zacContext) {
+          _context = context;
+          _zacContext = zacContext;
+          return const SizedBox.shrink();
+        },
+      ),
+    ),
+  );
+  final res = cb(() => _context, () => _zacContext);
+  if (res is Future) await res;
 }
 
-Future<void>
-    expectValueFromZacBuilder<Builder extends ZacBuilder<Value>, Value>({
-  required WidgetTester tester,
-  required Builder builder,
-  required Value expectValue,
-  required Value? expectValueOrNull,
+Future<void> testWithContextsWraped(
+    WidgetTester tester,
+    ZacBuilder<Widget> Function(ZacBuilder<Widget> child) build,
+    FutureOr<void> Function(BuildContext Function() getContext,
+            ZacContext Function() getZacContext)
+        cb) async {
+  // ignore: no_leading_underscores_for_local_identifiers
+  late BuildContext _context;
+  // ignore: no_leading_underscores_for_local_identifiers
+  late ZacContext _zacContext;
+
+  await tester.pumpWidget(
+    ProviderScope(
+      child: MaterialApp(
+        home: Material(
+          child: ZacWidget(
+            data: build(
+              TestWidget(
+                (context, zacContext) {
+                  _context = context;
+                  _zacContext = zacContext;
+                  return const FlutterSizedBox.shrink();
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+  final res = cb(() => _context, () => _zacContext);
+  if (res is Future) await res;
+}
+
+Future<void> testFindWidget<T extends Widget>(
+  WidgetTester tester,
+  ZacBuilder<Widget> Function(FlutterValueKey valueKey) build, {
+  TypeMatcher<T> Function(TypeMatcher<T> matcher)? match,
 }) async {
-  dynamic obj;
-  await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(data: LeakContext(cb: (zacContext) {
-      obj = builder.build(zacContext);
-    })),
-  ));
+  await tester.pumpWidget(
+    ProviderScope(
+      child: MaterialApp(
+        home: Material(
+          child: ZacWidget(
+            data: build(FlutterValueKey('FIND_ME')),
+          ),
+        ),
+      ),
+    ),
+  );
 
-  expect(obj, isA<Value>());
-  expect(obj, expectValue);
+  final widget = find.byKey(const ValueKey('FIND_ME'));
 
-  await tester.pumpWidget(ProviderScope(
-    child: ZacWidget(data: LeakContext(cb: (zacContext) {
-      obj = builder.build(zacContext);
-    })),
-  ));
+  expect(widget, findsOneWidget);
 
-  expect(obj, isA<Value?>());
-  expect(obj, expectValueOrNull);
+  if (null == match) {
+    expect(widget.evaluate().first.widget, isA<T>());
+  } else {
+    expect(widget.evaluate().first.widget, match(isA<T>()));
+  }
+}
+
+class TestTransform implements ZacBuilder<ZacTransform> {
+  final Object? Function(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload) cb;
+
+  TestTransform(this.cb);
+  factory TestTransform.noop(Map<String, dynamic> map) {
+    return TestTransform((transformValue, context, zacContext, payload) {
+      return null;
+    });
+  }
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) {
+    return ZacTransform(cb);
+  }
+}
+
+@GenerateMocks([TestTransformExecute])
+class TestTransformExecute extends Mock {
+  Object? call(ZacTransformValue transformValue, BuildContext context,
+      ZacContext zacContext, ZacActionPayload? payload);
+}
+
+class TestWidget implements ZacBuilder<Widget> {
+  final ZacBuilder<Widget> Function(BuildContext context, ZacContext zacContext)
+      cb;
+
+  TestWidget(this.cb);
+
+  @override
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return cb(context, zacContext).build(context, zacContext);
+  }
+}
+
+class TestAction implements ZacBuilder<ZacAction> {
+  final void Function(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext) cb;
+
+  TestAction(this.cb);
+  factory TestAction.noop(Map<String, dynamic> map) {
+    return TestAction((payload, context, zacContext) {});
+  }
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) {
+    return ZacAction(cb);
+  }
+}
+
+@GenerateMocks([TestActionExecute])
+class TestActionExecute extends Mock {
+  void call(
+      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
 }
 
 class FakeBuildContext extends Fake implements BuildContext {}
@@ -71,17 +176,14 @@ class FakeZacContext extends Fake implements ZacContext {}
 
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
 
-TypeMatcher<SharedValueType> isSharedValue(dynamic matcher) {
-  return isA<SharedValueType>().having((p0) => p0, 'SharedValueType', matcher);
-}
-
 void fakeBuild<T>(
-  Object Function(ZacContext zacContext) builder,
+  Object Function(BuildContext context, ZacContext zacContext) builder,
   TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 ) {
   final zacContext = FakeZacContext();
-  expect(builder(zacContext), isA<T>());
-  expect(builder(zacContext), matcher(isA<T>()));
+  final context = FakeBuildContext();
+  expect(builder(context, zacContext), isA<T>());
+  expect(builder(context, zacContext), matcher(isA<T>()));
 }
 
 Future<void> testMap(
@@ -132,105 +234,4 @@ Future<void> testWithConverters({
       child: widget,
     ),
   );
-}
-
-@GenerateMocks([LeakedActionCb])
-class LeakedActionCb extends Mock {
-  void call(ZacActionPayload payload, ZacContext zacContext);
-}
-
-@GenerateMocks([LeakBagCb])
-class LeakBagCb extends Mock {
-  void call(Map<String, dynamic> bag) {}
-}
-
-@freezedZacDefaults
-class LeakAction with _$LeakAction implements ZacAction {
-  const LeakAction._();
-
-  factory LeakAction(
-          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =
-      _LeakAction;
-
-  static ZacBuilder<List<ZacAction>> createActions(
-          void Function(ZacActionPayload payload, ZacContext zacContext) cb) =>
-      ZacActions([LeakAction(cb)]);
-
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) =>
-      cb(payload, zacContext);
-}
-
-@freezedZacBuilder
-class NoopAction with _$NoopAction implements ZacAction {
-  const NoopAction._();
-
-  static const String unionValue = 'z:1:test:NoopAction';
-
-  static Map<String, dynamic> createActions() => <String, dynamic>{
-        'builder': 'z:1:Actions',
-        'actions': [
-          {
-            'builder': NoopAction.unionValue,
-          }
-        ],
-      };
-
-  factory NoopAction.fromJson(Map<String, dynamic> json) =>
-      _$NoopActionFromJson(json);
-
-  const factory NoopAction() = _NoopAction;
-
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {}
-}
-
-class CustomTransformer implements ZacTransformer {
-  CustomTransformer(this.cb);
-
-  final Object? Function(ZacTransformValue transformValue,
-      ZacContext zacContext, ZacActionPayload? payload) cb;
-
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
-    return cb(transformValue, zacContext, payload);
-  }
-}
-
-class LeakContext implements ZacBuilder<Widget> {
-  LeakContext({
-    required this.cb,
-    this.child,
-  });
-
-  final void Function(ZacContext zacContext) cb;
-  final ZacBuilder<Widget?>? child;
-
-  Widget _buildWidget(ZacContext zacContext) {
-    cb(zacContext);
-    return child?.build(zacContext) ?? const SizedBox.shrink();
-  }
-
-  @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
-  }
-}
-
-class TestBuildCustomWidget implements ZacBuilder<Widget> {
-  TestBuildCustomWidget(
-    this.cb,
-  );
-
-  final Widget Function(ZacContext zacContext) cb;
-
-  Widget _buildWidget(ZacContext zacContext) {
-    return cb(zacContext);
-  }
-
-  @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
-  }
 }

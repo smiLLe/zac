@@ -24,15 +24,15 @@ class FlutterIntrinsicHeight
     ZacBuilder<Widget?>? child,
   }) = _FlutterIntrinsicHeight;
 
-  IntrinsicHeight _buildWidget(ZacContext zacContext) {
+  IntrinsicHeight _buildWidget(BuildContext context, ZacContext zacContext) {
     return IntrinsicHeight(
-      key: key?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  IntrinsicHeight build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  IntrinsicHeight build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

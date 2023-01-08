@@ -26,8 +26,8 @@ class ZacCompleterVoidProvider
     required ZacBuilder<Widget> child,
   }) = _ZacCompleterVoidProvider;
 
-  Completer<void> _valueBuilder(
-      AutoDisposeStateProviderRef<Object?> ref, ZacContext zacContext) {
+  Completer<void> _valueBuilder(AutoDisposeStateProviderRef<Object?> ref,
+      BuildContext context, ZacContext zacContext) {
     return map((_) {
       final completer = Completer<void>();
       ref.onDispose(() {
@@ -38,12 +38,12 @@ class ZacCompleterVoidProvider
     });
   }
 
-  Widget _childBuilder(ZacContext zacContext) => map(
-        (obj) => obj.child.build(zacContext),
+  Widget _childBuilder(BuildContext context, ZacContext zacContext) => map(
+        (obj) => obj.child.build(context, zacContext),
       );
 
   @override
-  Widget build(ZacContext zacContext) {
+  Widget build(BuildContext context, ZacContext zacContext) {
     return map(
       (obj) {
         return SharedValueProvider(
@@ -57,7 +57,9 @@ class ZacCompleterVoidProvider
 }
 
 @freezedZacBuilder
-class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
+class ZacCompleterActions
+    with _$ZacCompleterActions
+    implements ZacBuilder<ZacAction> {
   ZacCompleterActions._();
 
   factory ZacCompleterActions.fromJson(Map<String, dynamic> json) =>
@@ -68,14 +70,17 @@ class ZacCompleterActions with _$ZacCompleterActions implements ZacAction {
     required ZacBuilder<Completer> completer,
   }) = _ZacCompleterActionsVoid;
 
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       completeVoid: (obj) {
-        final completer = obj.completer.build(zacContext);
+        final completer = obj.completer.build(context, zacContext);
         if (completer.isCompleted) return;
         completer.complete();
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }

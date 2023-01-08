@@ -1,28 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/flutter/painting.dart';
-import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../helper.dart';
-
-Future<ZacContext> _getZacContext(WidgetTester tester) async {
-  late ZacContext zacContext;
-  await tester.pumpWidget(
-    ProviderScope(
-      child: ZacUpdateContext(
-        builder: (z) {
-          zacContext = z;
-          return const SizedBox.shrink();
-        },
-      ),
-    ),
-  );
-
-  return zacContext;
-}
 
 void main() {
   test('is in builder list', () {
@@ -56,16 +36,20 @@ void main() {
   });
 
   testWidgets('FlutterAlignment', (tester) async {
-    final zacContext = await _getZacContext(tester);
-    expect(
-        FlutterAlignment.fromJson(<String, dynamic>{
-          'builder': 'f:1:Alignment',
-          'x': 1,
-          'y': 2,
-        }).build(zacContext),
-        FlutterAlignment(
-                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
-            .build(zacContext));
+    await testWithContexts(
+      tester,
+      (getContext, getZacContext) {
+        expect(
+            FlutterAlignment.fromJson(<String, dynamic>{
+              'builder': 'f:1:Alignment',
+              'x': 1,
+              'y': 2,
+            }).build(getContext(), getZacContext()),
+            FlutterAlignment(
+                    ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+                .build(getContext(), getZacContext()));
+      },
+    );
 
     final map = {
       'f:1:Alignment.bottomCenter': FlutterAlignment.bottomCenter(),
@@ -80,25 +64,28 @@ void main() {
     };
 
     for (var e in map.entries) {
-      expect(
-          FlutterAlignment.fromJson(<String, dynamic>{
-            'builder': e.key,
-          }).build(zacContext),
-          e.value.build(zacContext));
+      await testWithContexts(tester, (getContext, getZacContext) {
+        expect(
+            FlutterAlignment.fromJson(<String, dynamic>{
+              'builder': e.key,
+            }).build(getContext(), getZacContext()),
+            e.value.build(getContext(), getZacContext()));
+      });
     }
   });
 
   testWidgets('FlutterAlignmentDirectional', (tester) async {
-    final zacContext = await _getZacContext(tester);
-    expect(
-        FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-          'builder': 'f:1:AlignmentDirectional',
-          'start': 1,
-          'y': 2,
-        }).build(zacContext),
-        FlutterAlignmentDirectional(
-                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
-            .build(zacContext));
+    await testWithContexts(tester, (getContext, getZacContext) {
+      expect(
+          FlutterAlignmentDirectional.fromJson(<String, dynamic>{
+            'builder': 'f:1:AlignmentDirectional',
+            'start': 1,
+            'y': 2,
+          }).build(getContext(), getZacContext()),
+          FlutterAlignmentDirectional(
+                  ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+              .build(getContext(), getZacContext()));
+    });
 
     final map = {
       'f:1:AlignmentDirectional.bottomCenter':
@@ -120,24 +107,27 @@ void main() {
     };
 
     for (var e in map.entries) {
-      expect(
-          FlutterAlignmentDirectional.fromJson(<String, dynamic>{
-            'builder': e.key,
-          }).build(zacContext),
-          e.value.build(zacContext));
+      await testWithContexts(tester, (getContext, getZacContext) {
+        expect(
+            FlutterAlignmentDirectional.fromJson(<String, dynamic>{
+              'builder': e.key,
+            }).build(getContext(), getZacContext()),
+            e.value.build(getContext(), getZacContext()));
+      });
     }
   });
 
   testWidgets('FlutterFractionalOffset', (tester) async {
-    final zacContext = await _getZacContext(tester);
-    expect(
-        FlutterFractionalOffset.fromJson(<String, dynamic>{
-          'builder': 'f:1:FractionalOffset',
-          'dx': 1,
-          'dy': 2,
-        }).build(zacContext),
-        FlutterFractionalOffset(
-                ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
-            .build(zacContext));
+    await testWithContexts(tester, (getContext, getZacContext) {
+      expect(
+          FlutterFractionalOffset.fromJson(<String, dynamic>{
+            'builder': 'f:1:FractionalOffset',
+            'dx': 1,
+            'dy': 2,
+          }).build(getContext(), getZacContext()),
+          FlutterFractionalOffset(
+                  ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+              .build(getContext(), getZacContext()));
+    });
   });
 }

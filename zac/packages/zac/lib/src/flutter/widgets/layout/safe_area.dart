@@ -28,22 +28,22 @@ class FlutterSafeArea with _$FlutterSafeArea implements ZacBuilder<SafeArea> {
     required ZacBuilder<Widget> child,
   }) = _FlutterSafeArea;
 
-  SafeArea _buildWidget(ZacContext zacContext) {
+  SafeArea _buildWidget(BuildContext context, ZacContext zacContext) {
     return SafeArea(
-      key: key?.build(zacContext),
-      left: left?.build(zacContext) ?? true,
-      top: top?.build(zacContext) ?? true,
-      right: right?.build(zacContext) ?? true,
-      bottom: bottom?.build(zacContext) ?? true,
-      minimum: minimum?.build(zacContext) ?? EdgeInsets.zero,
+      key: key?.build(context, zacContext),
+      left: left?.build(context, zacContext) ?? true,
+      top: top?.build(context, zacContext) ?? true,
+      right: right?.build(context, zacContext) ?? true,
+      bottom: bottom?.build(context, zacContext) ?? true,
+      minimum: minimum?.build(context, zacContext) ?? EdgeInsets.zero,
       maintainBottomViewPadding:
-          maintainBottomViewPadding?.build(zacContext) ?? false,
-      child: child.build(zacContext),
+          maintainBottomViewPadding?.build(context, zacContext) ?? false,
+      child: child.build(context, zacContext),
     );
   }
 
   @override
-  SafeArea build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SafeArea build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -23,16 +23,16 @@ class FlutterPadding with _$FlutterPadding implements ZacBuilder<Padding> {
     ZacBuilder<Widget?>? child,
   }) = _FlutterPadding;
 
-  Padding _buildWidget(ZacContext zacContext) {
+  Padding _buildWidget(BuildContext context, ZacContext zacContext) {
     return Padding(
-      key: key?.build(zacContext),
-      padding: padding.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      padding: padding.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Padding build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Padding build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

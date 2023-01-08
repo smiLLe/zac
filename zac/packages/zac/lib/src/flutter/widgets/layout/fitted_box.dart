@@ -27,18 +27,18 @@ class FlutterFittedBox
     ZacBuilder<Widget?>? child,
   }) = _FlutterFittedBox;
 
-  FittedBox _buildWidget(ZacContext zacContext) {
+  FittedBox _buildWidget(BuildContext context, ZacContext zacContext) {
     return FittedBox(
-      key: key?.build(zacContext),
-      fit: fit?.build(zacContext) ?? BoxFit.contain,
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.none,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      fit: fit?.build(context, zacContext) ?? BoxFit.contain,
+      alignment: alignment?.build(context, zacContext) ?? Alignment.center,
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.none,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  FittedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  FittedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

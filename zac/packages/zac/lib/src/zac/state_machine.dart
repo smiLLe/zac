@@ -67,7 +67,7 @@ All configured states are "${states.keys.join(', ')}".
     return states[state]!;
   }
 
-  ZacBuilder<Widget> getWidget(ZacContext zacContext) {
+  ZacBuilder<Widget> getWidget(BuildContext context, ZacContext zacContext) {
     return config.widget;
   }
 
@@ -110,7 +110,9 @@ class ZacStateMachineProviderBuilder
   }) = _ZacStateMachineProviderBuilder;
 
   ZacStateMachine _createMachine(
-      AutoDisposeStateProviderRef<SharedValueType> ref, ZacContext zacContext) {
+      AutoDisposeStateProviderRef<SharedValueType> ref,
+      BuildContext context,
+      ZacContext zacContext) {
     int sessionId = 0;
 
     void Function(String event, SharedValueType? context) getSend({
@@ -152,18 +154,18 @@ because there was already a transition.''');
 
     return ZacStateMachine(
       states: states,
-      state: initialState.build(zacContext),
-      context: initialContext?.build(zacContext),
+      state: initialState.build(context, zacContext),
+      context: initialContext?.build(context, zacContext),
       send: getSend(trySend: false, sId: sessionId),
       trySend: getSend(trySend: true, sId: sessionId),
       isActive: () => sessionId == 0,
     );
   }
 
-  Widget _buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
     return SharedValueProvider(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.build(context, zacContext),
+      family: family.build(context, zacContext),
       autoCreate: true,
       childBuilder: child.build,
       valueBuilder: _createMachine,
@@ -171,8 +173,8 @@ because there was already a transition.''');
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -195,19 +197,21 @@ class ZacStateMachineBuildStateBuilder
     ZacBuilder<Widget?>? unmappedStateWidget,
   }) = _ZacStateMachineBuildStateBuilder;
 
-  ZacStateMachineBuildState _buildWidget(ZacContext zacContext) {
+  ZacStateMachineBuildState _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return ZacStateMachineBuildState(
-      key: key?.build(zacContext),
-      family: family.build(zacContext),
+      key: key?.build(context, zacContext),
+      family: family.build(context, zacContext),
       states: states,
       unmappedStateWidget: (zacContext) =>
-          unmappedStateWidget?.build(zacContext) ?? const SizedBox.shrink(),
+          unmappedStateWidget?.build(context, zacContext) ??
+          const SizedBox.shrink(),
     );
   }
 
   @override
-  ZacStateMachineBuildState build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  ZacStateMachineBuildState build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -224,8 +228,9 @@ class ZacStateMachineBuildState extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
+    final zacContext = useZacContext();
     final machine = SharedValue.get(
+      context: context,
       zacContext: zacContext,
       consumeType: const SharedValueConsumeType.watch(),
       family: family,
@@ -251,7 +256,7 @@ All possible states are "${machine.states.keys.join(', ')}".
     }(), '');
 
     if (states.contains(machine.state)) {
-      return machine.getWidget(zacContext).build(zacContext);
+      return machine.getWidget(context, zacContext).build(context, zacContext);
     }
     return unmappedStateWidget(zacContext);
   }
@@ -260,8 +265,8 @@ All possible states are "${machine.states.keys.join(', ')}".
 @freezedZacBuilder
 class ZacStateMachineActions
     with _$ZacStateMachineActions
-    implements ZacAction {
-  const ZacStateMachineActions._();
+    implements ZacBuilder<ZacAction> {
+  ZacStateMachineActions._();
 
   static const String unionValue = 'z:1:StateMachine:Action.send';
   static const String unionValueTrySend = 'z:1:StateMachine:Action.trySend';
@@ -281,42 +286,39 @@ class ZacStateMachineActions
     required ZacBuilder<String> event,
   }) = _ZacStateMachineActionsTrySend;
 
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       send: (obj) {
         final machine = SharedValue.get(
+          context: context,
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
         ) as ZacStateMachine;
-        machine.send(
-            obj.event.build(
-              zacContext,
-            ),
-            payload.params);
+        machine.send(obj.event.build(context, zacContext), payload.params);
       },
       trySend: (obj) {
         final machine = SharedValue.get(
+          context: context,
           zacContext: zacContext,
           consumeType: const SharedValueConsumeType.read(),
           family: obj.family,
         ) as ZacStateMachine;
-        machine.trySend(
-            obj.event.build(
-              zacContext,
-            ),
-            payload.params);
+        machine.trySend(obj.event.build(context, zacContext), payload.params);
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder
 class ZacStateMachineTransformer
     with _$ZacStateMachineTransformer
-    implements ZacTransformer {
-  const ZacStateMachineTransformer._();
+    implements ZacBuilder<ZacTransform> {
+  ZacStateMachineTransformer._();
 
   static const String unionValue = 'z:1:StateMachine:Transformer.pickState';
   static const String unionValuePickContext =
@@ -333,9 +335,9 @@ class ZacStateMachineTransformer
   factory ZacStateMachineTransformer.pickContext() =
       _ZacStateMachineTransformerPickContext;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! ZacStateMachine) {
       throw StateError('''
@@ -347,5 +349,8 @@ but instead got: $value''');
       pickState: (_) => value.state,
       pickContext: (_) => value.context,
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }

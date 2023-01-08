@@ -26,19 +26,19 @@ class FlutterDrawer with _$FlutterDrawer implements ZacBuilder<Drawer> {
     ZacBuilder<String?>? semanticLabel,
   }) = _FlutterDrawer;
 
-  Drawer _buildWidget(ZacContext zacContext) {
+  Drawer _buildWidget(BuildContext context, ZacContext zacContext) {
     return Drawer(
-      key: key?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      elevation: elevation?.build(zacContext),
-      semanticLabel: semanticLabel?.build(zacContext),
-      shape: shape?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      backgroundColor: backgroundColor?.build(context, zacContext),
+      elevation: elevation?.build(context, zacContext),
+      semanticLabel: semanticLabel?.build(context, zacContext),
+      shape: shape?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Drawer build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Drawer build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

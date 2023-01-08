@@ -25,7 +25,7 @@ mixin _$FlutterRefreshIndicator {
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get displacement => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get edgeOffset => throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacAction>> get onRefresh =>
+  ZacListBuilder<ZacAction, List<ZacAction>> get onRefresh =>
       throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get color => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get backgroundColor =>
@@ -72,7 +72,7 @@ class _$_FlutterRefreshIndicator extends _FlutterRefreshIndicator {
   @override
   final ZacBuilder<double?>? edgeOffset;
   @override
-  final ZacBuilder<List<ZacAction>> onRefresh;
+  final ZacListBuilder<ZacAction, List<ZacAction>> onRefresh;
   @override
   final ZacBuilder<Color?>? color;
   @override
@@ -149,7 +149,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
           required final ZacBuilder<Widget> child,
           final ZacBuilder<double?>? displacement,
           final ZacBuilder<double?>? edgeOffset,
-          required final ZacBuilder<List<ZacAction>> onRefresh,
+          required final ZacListBuilder<ZacAction, List<ZacAction>> onRefresh,
           final ZacBuilder<Color?>? color,
           final ZacBuilder<Color?>? backgroundColor,
           final ZacBuilder<String?>? semanticsLabel,
@@ -171,7 +171,7 @@ abstract class _FlutterRefreshIndicator extends FlutterRefreshIndicator {
   @override
   ZacBuilder<double?>? get edgeOffset;
   @override
-  ZacBuilder<List<ZacAction>> get onRefresh;
+  ZacListBuilder<ZacAction, List<ZacAction>> get onRefresh;
   @override
   ZacBuilder<Color?>? get color;
   @override

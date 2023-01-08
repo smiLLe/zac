@@ -12,6 +12,7 @@ const String nameOfSharedArgumentsInRoute = 'Route.arguments';
 
 abstract class RouteWithArgs {
   Route<Object?> buildWithArgs(
+    BuildContext context,
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
@@ -43,6 +44,7 @@ class FlutterMaterialPageRoute
   }) = _FlutterMaterialPageRoute;
 
   MaterialPageRoute<Object?> _build(
+    BuildContext context,
     ZacContext zacContext, {
     required String familyName,
     required Object? arguments,
@@ -50,34 +52,38 @@ class FlutterMaterialPageRoute
     return MaterialPageRoute<Object?>(
       builder: (_) => SharedValueProvider(
         childBuilder: child.build,
-        valueBuilder: (_, __) => arguments,
+        valueBuilder: (_, __, ___) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.build(zacContext),
-      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
-      maintainState: maintainState?.build(zacContext) ?? true,
+      settings: settings?.build(context, zacContext),
+      fullscreenDialog: fullscreenDialog?.build(context, zacContext) ?? false,
+      maintainState: maintainState?.build(context, zacContext) ?? true,
     );
   }
 
   @override
-  MaterialPageRoute<Object?> build(ZacContext zacContext) {
+  MaterialPageRoute<Object?> build(
+      BuildContext context, ZacContext zacContext) {
     return _build(
+      context,
       zacContext,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
+      familyName: nameOfSharedArguments?.build(context, zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.build(zacContext)?.arguments,
+      arguments: settings?.build(context, zacContext)?.arguments,
     );
   }
 
   @override
   MaterialPageRoute<Object?> buildWithArgs(
+    BuildContext context,
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
     SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
+      context,
       zacContext,
       familyName: argName ?? nameOfSharedArgumentsInRoute,
       arguments: args,
@@ -116,45 +122,50 @@ class FlutterPageRouteBuilder
   }) = _FlutterPageRouteBuilder;
 
   PageRouteBuilder<Object?> _build(
+    BuildContext context,
     ZacContext zacContext, {
     required String familyName,
     required Object? arguments,
   }) {
-    return PageRouteBuilder<ZacBuilder<List<ZacAction>?>?>(
+    return PageRouteBuilder<ZacListBuilder<ZacAction, List<ZacAction>?>?>(
       pageBuilder: (_, __, ___) => SharedValueProvider(
         childBuilder: child.build,
-        valueBuilder: (ref, zacContext) => arguments,
+        valueBuilder: (_, __, ___) => arguments,
         family: familyName,
         autoCreate: true,
       ),
-      settings: settings?.build(zacContext),
-      opaque: opaque?.build(zacContext) ?? true,
-      barrierDismissible: barrierDismissible?.build(zacContext) ?? false,
-      barrierColor: barrierColor?.build(zacContext),
-      barrierLabel: barrierLabel?.build(zacContext),
-      maintainState: maintainState?.build(zacContext) ?? true,
-      fullscreenDialog: fullscreenDialog?.build(zacContext) ?? false,
+      settings: settings?.build(context, zacContext),
+      opaque: opaque?.build(context, zacContext) ?? true,
+      barrierDismissible:
+          barrierDismissible?.build(context, zacContext) ?? false,
+      barrierColor: barrierColor?.build(context, zacContext),
+      barrierLabel: barrierLabel?.build(context, zacContext),
+      maintainState: maintainState?.build(context, zacContext) ?? true,
+      fullscreenDialog: fullscreenDialog?.build(context, zacContext) ?? false,
     );
   }
 
   @override
-  PageRouteBuilder<Object?> build(ZacContext zacContext) {
+  PageRouteBuilder<Object?> build(BuildContext context, ZacContext zacContext) {
     return _build(
+      context,
       zacContext,
-      familyName: nameOfSharedArguments?.build(zacContext) ??
+      familyName: nameOfSharedArguments?.build(context, zacContext) ??
           nameOfSharedArgumentsInRoute,
-      arguments: settings?.build(zacContext)?.arguments,
+      arguments: settings?.build(context, zacContext)?.arguments,
     );
   }
 
   @override
   PageRouteBuilder<Object?> buildWithArgs(
+    BuildContext context,
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
     SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
+      context,
       zacContext,
       familyName: argName ?? nameOfSharedArgumentsInRoute,
       arguments: args,
@@ -183,12 +194,12 @@ class FlutterNavigatorState
   }) = _ZacNavigatorStateSharedValue;
 
   @override
-  NavigatorState build(ZacContext zacContext) {
+  NavigatorState build(BuildContext context, ZacContext zacContext) {
     return map(
-      closest: (_) => Navigator.of(zacContext.context, rootNavigator: false),
-      root: (_) => Navigator.of(zacContext.context, rootNavigator: true),
+      closest: (_) => Navigator.of(context, rootNavigator: false),
+      root: (_) => Navigator.of(context, rootNavigator: true),
       shared: (obj) {
-        final key = obj.value.build(zacContext);
+        final key = obj.value.build(context, zacContext);
         if (null != key.currentState) {
           return key.currentState!;
         }
@@ -216,29 +227,29 @@ class FlutterNavigator
     ZacBuilder<bool?>? requestFocus,
   }) = _FlutterNavigator;
 
-  Navigator _buildWidget(ZacContext zacContext) {
+  Navigator _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       (obj) => Navigator(
-        key: obj.key?.build(zacContext),
-        onGenerateRoute: obj.onGenerateRoute?.build(zacContext),
-        onUnknownRoute: obj.onUnknownRoute?.build(zacContext),
-        initialRoute: obj.initialRoute?.build(zacContext),
-        requestFocus: obj.requestFocus?.build(zacContext) ?? true,
+        key: obj.key?.build(context, zacContext),
+        onGenerateRoute: obj.onGenerateRoute?.build(context, zacContext),
+        onUnknownRoute: obj.onUnknownRoute?.build(context, zacContext),
+        initialRoute: obj.initialRoute?.build(context, zacContext),
+        requestFocus: obj.requestFocus?.build(context, zacContext) ?? true,
       ),
     );
   }
 
   @override
-  Navigator build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Navigator build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
 @freezedZacBuilder
 class FlutterNavigatorActions
     with _$FlutterNavigatorActions
-    implements ZacAction {
-  const FlutterNavigatorActions._();
+    implements ZacBuilder<ZacAction> {
+  FlutterNavigatorActions._();
 
   factory FlutterNavigatorActions.fromJson(Map<String, dynamic> json) =>
       _$FlutterNavigatorActionsFromJson(json);
@@ -258,20 +269,20 @@ class FlutterNavigatorActions
 
   @FreezedUnionValue('f:1:Navigator.pop')
   factory FlutterNavigatorActions.pop({
-    ZacBuilder<List<ZacAction>?>? actions,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPop;
 
   @FreezedUnionValue('f:1:Navigator.maybePop')
   factory FlutterNavigatorActions.maybePop({
-    ZacBuilder<List<ZacAction>?>? actions,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? actions,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsMaybePop;
 
   @FreezedUnionValue('f:1:Navigator.pushReplacement')
   factory FlutterNavigatorActions.pushReplacement({
     required ZacBuilder<Route<Object?>> route,
-    ZacBuilder<List<ZacAction>?>? result,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? result,
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPushReplacement;
 
@@ -280,7 +291,7 @@ class FlutterNavigatorActions
     required ZacBuilder<String> routeName,
     Object? arguments,
     ZacBuilder<NavigatorState?>? navigatorState,
-    ZacBuilder<List<ZacAction>?>? result,
+    ZacListBuilder<ZacAction, List<ZacAction>?>? result,
   }) = _FlutterNavigatorActionsPushReplacementNamed;
 
   @FreezedUnionValue('z:1:Navigator.popUntilRouteName')
@@ -289,112 +300,110 @@ class FlutterNavigatorActions
     ZacBuilder<NavigatorState?>? navigatorState,
   }) = _FlutterNavigatorActionsPopUntilRouteName;
 
-  NavigatorState? _getState(ZacContext zacContext) {
+  NavigatorState? _getState(BuildContext context, ZacContext zacContext) {
     return map(
-          push: (obj) => obj.navigatorState?.build(zacContext),
-          pushNamed: (obj) => obj.navigatorState?.build(zacContext),
-          pop: (obj) => obj.navigatorState?.build(zacContext),
-          maybePop: (obj) => obj.navigatorState?.build(zacContext),
-          pushReplacement: (obj) => obj.navigatorState?.build(zacContext),
-          pushReplacementNamed: (obj) => obj.navigatorState?.build(zacContext),
-          popUntilRouteName: (obj) => obj.navigatorState?.build(zacContext),
+          push: (obj) => obj.navigatorState?.build(context, zacContext),
+          pushNamed: (obj) => obj.navigatorState?.build(context, zacContext),
+          pop: (obj) => obj.navigatorState?.build(context, zacContext),
+          maybePop: (obj) => obj.navigatorState?.build(context, zacContext),
+          pushReplacement: (obj) =>
+              obj.navigatorState?.build(context, zacContext),
+          pushReplacementNamed: (obj) =>
+              obj.navigatorState?.build(context, zacContext),
+          popUntilRouteName: (obj) =>
+              obj.navigatorState?.build(context, zacContext),
         ) ??
-        Navigator.maybeOf(zacContext.context);
+        Navigator.maybeOf(context);
   }
 
-  @override
-  void execute(ZacActionPayload payload, ZacContext zacContext) {
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
       push: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return null;
-        state.push(obj.route.build(zacContext)).then((value) {
-          if (!zacContext.isMounted()) return;
-          if (value is ZacActions) {
-            value.build(zacContext).execute(
-                  const ZacActionPayload(),
-                  zacContext,
-                );
+        state.push(obj.route.build(context, zacContext)).then((value) {
+          if (!context.isMounted) return;
+          if (value is List<ZacAction>) {
+            value.execute(
+              const ZacActionPayload(),
+              context,
+              zacContext,
+            );
           }
         });
       },
       pushNamed: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return null;
         state
             .pushNamed(
-          obj.routeName.build(
-            zacContext,
-          ),
+          obj.routeName.build(context, zacContext),
           arguments: obj.arguments,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
-          if (value is ZacActions) {
-            value
-                .build(zacContext)
-                .execute(const ZacActionPayload(), zacContext);
+          if (!context.isMounted) return;
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
       pop: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return;
         state.pop(obj.actions);
       },
       maybePop: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return;
         state.maybePop(obj.actions);
       },
       pushReplacement: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return;
         state
             .pushReplacement(
-          obj.route.build(zacContext),
+          obj.route.build(context, zacContext),
           result: obj.result,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
-          if (value is ZacActions) {
-            value
-                .build(zacContext)
-                .execute(const ZacActionPayload(), zacContext);
+          if (!context.isMounted) return;
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
       pushReplacementNamed: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return;
         state
             .pushReplacementNamed(
-          obj.routeName.build(
-            zacContext,
-          ),
+          obj.routeName.build(context, zacContext),
           arguments: obj.arguments,
           result: obj.result,
         )
             .then((value) {
-          if (!zacContext.isMounted()) return;
-          if (value is ZacActions) {
-            value
-                .build(zacContext)
-                .execute(const ZacActionPayload(), zacContext);
+          if (!context.isMounted) return;
+          if (value is List<ZacAction>) {
+            value.execute(const ZacActionPayload(), context, zacContext);
           }
         });
       },
       popUntilRouteName: (obj) {
-        final state = _getState(zacContext);
+        final state = _getState(context, zacContext);
         if (null == state) return;
 
         /// @see https://api.flutter.dev/flutter/widgets/Navigator/popUntil.html
         state.popUntil(ModalRoute.withName(obj.routeName.build(
+          context,
           zacContext,
         )));
       },
     );
-  }
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder
@@ -413,7 +422,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
     required Map<String, String>? familyNameOfArguments,
   }) = _FlutterRouteFactory;
 
-  RouteFactory _build(ZacContext zacContext) {
+  RouteFactory _build(BuildContext context, ZacContext zacContext) {
     return (settings) {
       final route = routes[settings.name];
       assert(null != route,
@@ -421,20 +430,21 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
 
       if (route is RouteWithArgs) {
         return (route as RouteWithArgs).buildWithArgs(
+          context,
           zacContext,
           argName: familyNameOfArguments?[settings.name] ??
               nameOfSharedArgumentsInRoute,
           args: settings.arguments,
         );
       } else {
-        return route!.build(zacContext);
+        return route!.build(context, zacContext);
       }
     };
   }
 
   @override
-  RouteFactory build(ZacContext zacContext) {
-    return _build(zacContext);
+  RouteFactory build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -452,15 +462,15 @@ class FlutterRouteSettings
     ZacBuilder<Object?>? arguments,
   }) = _FlutterRouteSettings;
 
-  RouteSettings _build(ZacContext zacContext) {
+  RouteSettings _build(BuildContext context, ZacContext zacContext) {
     return RouteSettings(
-      arguments: arguments?.build(zacContext),
-      name: name?.build(zacContext),
+      arguments: arguments?.build(context, zacContext),
+      name: name?.build(context, zacContext),
     );
   }
 
   @override
-  RouteSettings build(ZacContext zacContext) {
-    return _build(zacContext);
+  RouteSettings build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

@@ -25,15 +25,15 @@ class FlutterSliverToBoxAdapter
     ZacBuilder<Widget?>? child,
   }) = _FlutterSliverToBoxAdapter;
 
-  SliverToBoxAdapter _buildWidget(ZacContext zacContext) {
+  SliverToBoxAdapter _buildWidget(BuildContext context, ZacContext zacContext) {
     return SliverToBoxAdapter(
-      key: key?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  SliverToBoxAdapter build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  SliverToBoxAdapter build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

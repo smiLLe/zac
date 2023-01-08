@@ -3,7 +3,6 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/base.dart';
 
 part 'services.freezed.dart';
@@ -29,26 +28,28 @@ class FlutterSystemUiOverlayStyle
     ZacBuilder<bool?>? systemStatusBarContrastEnforced,
   }) = _FlutterSystemUiOverlayStyle;
 
-  SystemUiOverlayStyle _build(ZacContext zacContext) {
+  SystemUiOverlayStyle _build(BuildContext context, ZacContext zacContext) {
     return SystemUiOverlayStyle(
-      systemNavigationBarColor: systemNavigationBarColor?.build(zacContext),
+      systemNavigationBarColor:
+          systemNavigationBarColor?.build(context, zacContext),
       systemNavigationBarDividerColor:
-          systemNavigationBarDividerColor?.build(zacContext),
+          systemNavigationBarDividerColor?.build(context, zacContext),
       systemNavigationBarIconBrightness:
-          systemNavigationBarIconBrightness?.build(zacContext),
+          systemNavigationBarIconBrightness?.build(context, zacContext),
       systemNavigationBarContrastEnforced:
-          systemNavigationBarContrastEnforced?.build(zacContext),
-      statusBarColor: statusBarColor?.build(zacContext),
-      statusBarBrightness: statusBarBrightness?.build(zacContext),
-      statusBarIconBrightness: statusBarIconBrightness?.build(zacContext),
+          systemNavigationBarContrastEnforced?.build(context, zacContext),
+      statusBarColor: statusBarColor?.build(context, zacContext),
+      statusBarBrightness: statusBarBrightness?.build(context, zacContext),
+      statusBarIconBrightness:
+          statusBarIconBrightness?.build(context, zacContext),
       systemStatusBarContrastEnforced:
-          systemStatusBarContrastEnforced?.build(zacContext),
+          systemStatusBarContrastEnforced?.build(context, zacContext),
     );
   }
 
   @override
-  SystemUiOverlayStyle build(ZacContext zacContext) {
-    return _build(zacContext);
+  SystemUiOverlayStyle build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -86,7 +87,7 @@ class FlutterTextInputType
   factory FlutterTextInputType.visiblePassword() =
       _FlutterTextInputTypevisiblePassword;
 
-  TextInputType _build(ZacContext zacContext) {
+  TextInputType _build(BuildContext context, ZacContext zacContext) {
     return map(
       datetime: (_) => TextInputType.datetime,
       emailAddress: (_) => TextInputType.emailAddress,
@@ -103,8 +104,8 @@ class FlutterTextInputType
   }
 
   @override
-  TextInputType build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextInputType build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -146,7 +147,7 @@ class FlutterTextInputAction
   factory FlutterTextInputAction.unspecified() =
       _FlutterTextInputActionunspecified;
 
-  TextInputAction _build(ZacContext zacContext) {
+  TextInputAction _build(BuildContext context, ZacContext zacContext) {
     return map(
       continueAction: (_) => TextInputAction.continueAction,
       done: (_) => TextInputAction.done,
@@ -165,8 +166,8 @@ class FlutterTextInputAction
   }
 
   @override
-  TextInputAction build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextInputAction build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -189,7 +190,7 @@ class FlutterTextCapitalization
   @FreezedUnionValue('f:1:TextCapitalization.words')
   factory FlutterTextCapitalization.words() = _FlutterTextCapitalizationwords;
 
-  TextCapitalization _build(ZacContext zacContext) {
+  TextCapitalization _build(BuildContext context, ZacContext zacContext) {
     return map(
       characters: (_) => TextCapitalization.characters,
       none: (_) => TextCapitalization.none,
@@ -199,8 +200,8 @@ class FlutterTextCapitalization
   }
 
   @override
-  TextCapitalization build(ZacContext zacContext) {
-    return _build(zacContext);
+  TextCapitalization build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -218,7 +219,7 @@ class FlutterSmartDashesType
   @FreezedUnionValue('f:1:SmartDashesType.enabled')
   factory FlutterSmartDashesType.enabled() = _FlutterSmartDashesTypeenabled;
 
-  SmartDashesType _build(ZacContext zacContext) {
+  SmartDashesType _build(BuildContext context, ZacContext zacContext) {
     return map(
       disabled: (_) => SmartDashesType.disabled,
       enabled: (_) => SmartDashesType.enabled,
@@ -226,8 +227,8 @@ class FlutterSmartDashesType
   }
 
   @override
-  SmartDashesType build(ZacContext zacContext) {
-    return _build(zacContext);
+  SmartDashesType build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -245,7 +246,7 @@ class FlutterSmartQuotesType
   @FreezedUnionValue('f:1:SmartQuotesType.enabled')
   factory FlutterSmartQuotesType.enabled() = _FlutterSmartQuotesTypeenabled;
 
-  SmartQuotesType _build(ZacContext zacContext) {
+  SmartQuotesType _build(BuildContext context, ZacContext zacContext) {
     return map(
       disabled: (_) => SmartQuotesType.disabled,
       enabled: (_) => SmartQuotesType.enabled,
@@ -253,7 +254,7 @@ class FlutterSmartQuotesType
   }
 
   @override
-  SmartQuotesType build(ZacContext zacContext) {
-    return _build(zacContext);
+  SmartQuotesType build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

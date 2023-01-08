@@ -3,9 +3,11 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:zac/src/zac/action.dart' as _i3;
-import 'package:zac/src/zac/context.dart' as _i4;
+import 'package:zac/src/zac/action.dart' as _i6;
+import 'package:zac/src/zac/context.dart' as _i5;
+import 'package:zac/src/zac/transformers.dart' as _i3;
 
 import 'helper.dart' as _i2;
 
@@ -20,44 +22,55 @@ import 'helper.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [LeakedActionCb].
+/// A class which mocks [TestTransformExecute].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLeakedActionCb extends _i1.Mock implements _i2.LeakedActionCb {
-  MockLeakedActionCb() {
+class MockTestTransformExecute extends _i1.Mock
+    implements _i2.TestTransformExecute {
+  MockTestTransformExecute() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  Object? call(
+    _i3.ZacTransformValue? transformValue,
+    _i4.BuildContext? context,
+    _i5.ZacContext? zacContext,
+    _i6.ZacActionPayload? payload,
+  ) =>
+      (super.noSuchMethod(Invocation.method(
+        #call,
+        [
+          transformValue,
+          context,
+          zacContext,
+          payload,
+        ],
+      )) as Object?);
+}
+
+/// A class which mocks [TestActionExecute].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTestActionExecute extends _i1.Mock implements _i2.TestActionExecute {
+  MockTestActionExecute() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
   void call(
-    _i3.ZacActionPayload? payload,
-    _i4.ZacContext? zacContext,
+    _i6.ZacActionPayload? payload,
+    _i4.BuildContext? context,
+    _i5.ZacContext? zacContext,
   ) =>
       super.noSuchMethod(
         Invocation.method(
           #call,
           [
             payload,
+            context,
             zacContext,
           ],
-        ),
-        returnValueForMissingStub: null,
-      );
-}
-
-/// A class which mocks [LeakBagCb].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockLeakBagCb extends _i1.Mock implements _i2.LeakBagCb {
-  MockLeakBagCb() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  void call(Map<String, dynamic>? bag) => super.noSuchMethod(
-        Invocation.method(
-          #call,
-          [bag],
         ),
         returnValueForMissingStub: null,
       );

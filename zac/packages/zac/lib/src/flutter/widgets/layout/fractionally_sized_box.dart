@@ -27,18 +27,19 @@ class FlutterFractionallySizedBox
     ZacBuilder<double?>? heightFactor,
   }) = _FlutterFractionallySizedBox;
 
-  FractionallySizedBox _buildWidget(ZacContext zacContext) {
+  FractionallySizedBox _buildWidget(
+      BuildContext context, ZacContext zacContext) {
     return FractionallySizedBox(
-      key: key?.build(zacContext),
-      heightFactor: heightFactor?.build(zacContext),
-      widthFactor: widthFactor?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? Alignment.center,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      heightFactor: heightFactor?.build(context, zacContext),
+      widthFactor: widthFactor?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext) ?? Alignment.center,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  FractionallySizedBox build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  FractionallySizedBox build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

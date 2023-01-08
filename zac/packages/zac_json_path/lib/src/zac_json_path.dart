@@ -1,4 +1,4 @@
-// ignore: depend_on_referenced_packages
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/zac.dart';
 import 'package:json_path/json_path.dart';
@@ -9,8 +9,8 @@ part 'zac_json_path.g.dart';
 @freezedZacBuilder
 class ZacJsonPathTransformer
     with _$ZacJsonPathTransformer
-    implements ZacTransformer {
-  const ZacJsonPathTransformer._();
+    implements ZacBuilder<ZacTransform> {
+  ZacJsonPathTransformer._();
   static const String unionValue = 'json_path:1:Transformer:JsonPath';
 
   factory ZacJsonPathTransformer.fromJson(Map<String, dynamic> json) =>
@@ -22,9 +22,12 @@ class ZacJsonPathTransformer
     // Map<String, MatchPredicate>? filters
   }) = _ZacJsonPathTransformer;
 
-  @override
-  Iterable<dynamic> transform(ZacTransformValue transformValue,
-      ZacContext zacContext, ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     return JsonPath(expression).readValues(transformValue.value);
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }

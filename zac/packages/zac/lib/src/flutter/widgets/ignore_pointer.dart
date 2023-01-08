@@ -26,17 +26,17 @@ class FlutterIgnorePointer
     ZacBuilder<Widget?>? child,
   }) = _FlutterIgnorePointer;
 
-  IgnorePointer _buildWidget(ZacContext zacContext) {
+  IgnorePointer _buildWidget(BuildContext context, ZacContext zacContext) {
     return IgnorePointer(
-      key: key?.build(zacContext),
-      ignoring: ignoring?.build(zacContext) ?? true,
-      ignoringSemantics: ignoringSemantics?.build(zacContext),
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      ignoring: ignoring?.build(context, zacContext) ?? true,
+      ignoringSemantics: ignoringSemantics?.build(context, zacContext),
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  IgnorePointer build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  IgnorePointer build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

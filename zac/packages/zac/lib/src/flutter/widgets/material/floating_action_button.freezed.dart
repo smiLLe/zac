@@ -52,7 +52,7 @@ mixin _$FlutterFloatingActionButton {
       throw _privateConstructorUsedError;
   ZacBuilder<double?>? get disabledElevation =>
       throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacAction>?>? get onPressed =>
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed =>
       throw _privateConstructorUsedError;
   ZacBuilder<MouseCursor?>? get mouseCursor =>
       throw _privateConstructorUsedError;
@@ -138,7 +138,7 @@ class _$_FlutterFloatingActionButton extends _FlutterFloatingActionButton {
   @override
   final ZacBuilder<double?>? disabledElevation;
   @override
-  final ZacBuilder<List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<MouseCursor?>? mouseCursor;
   @override
@@ -274,7 +274,7 @@ abstract class _FlutterFloatingActionButton
           final ZacBuilder<double?>? hoverElevation,
           final ZacBuilder<double?>? highlightElevation,
           final ZacBuilder<double?>? disabledElevation,
-          final ZacBuilder<List<ZacAction>?>? onPressed,
+          final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
           final ZacBuilder<MouseCursor?>? mouseCursor,
           final ZacBuilder<bool?>? mini,
           final ZacBuilder<ShapeBorder?>? shape,
@@ -318,7 +318,7 @@ abstract class _FlutterFloatingActionButton
   @override
   ZacBuilder<double?>? get disabledElevation;
   @override
-  ZacBuilder<List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
   @override
   ZacBuilder<MouseCursor?>? get mouseCursor;
   ZacBuilder<bool?>? get mini;
@@ -402,7 +402,7 @@ class _$_Extended extends _Extended {
   @override
   final ZacBuilder<double?>? disabledElevation;
   @override
-  final ZacBuilder<List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<MouseCursor?>? mouseCursor;
   @override
@@ -554,7 +554,7 @@ abstract class _Extended extends FlutterFloatingActionButton {
       final ZacBuilder<double?>? hoverElevation,
       final ZacBuilder<double?>? highlightElevation,
       final ZacBuilder<double?>? disabledElevation,
-      final ZacBuilder<List<ZacAction>?>? onPressed,
+      final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
       final ZacBuilder<MouseCursor?>? mouseCursor,
       final ZacBuilder<ShapeBorder?>? shape,
       final ZacBuilder<Clip?>? clipBehavior,
@@ -599,7 +599,7 @@ abstract class _Extended extends FlutterFloatingActionButton {
   @override
   ZacBuilder<double?>? get disabledElevation;
   @override
-  ZacBuilder<List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
   @override
   ZacBuilder<MouseCursor?>? get mouseCursor;
   @override
@@ -684,7 +684,7 @@ class _$_Large extends _Large {
   @override
   final ZacBuilder<double?>? disabledElevation;
   @override
-  final ZacBuilder<List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<MouseCursor?>? mouseCursor;
   @override
@@ -810,7 +810,7 @@ abstract class _Large extends FlutterFloatingActionButton {
       final ZacBuilder<double?>? hoverElevation,
       final ZacBuilder<double?>? highlightElevation,
       final ZacBuilder<double?>? disabledElevation,
-      final ZacBuilder<List<ZacAction>?>? onPressed,
+      final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
       final ZacBuilder<MouseCursor?>? mouseCursor,
       final ZacBuilder<ShapeBorder?>? shape,
       final ZacBuilder<Clip?>? clipBehavior,
@@ -850,7 +850,7 @@ abstract class _Large extends FlutterFloatingActionButton {
   @override
   ZacBuilder<double?>? get disabledElevation;
   @override
-  ZacBuilder<List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
   @override
   ZacBuilder<MouseCursor?>? get mouseCursor;
   @override
@@ -929,7 +929,7 @@ class _$_Small extends _Small {
   @override
   final ZacBuilder<double?>? disabledElevation;
   @override
-  final ZacBuilder<List<ZacAction>?>? onPressed;
+  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<MouseCursor?>? mouseCursor;
   @override
@@ -1055,7 +1055,7 @@ abstract class _Small extends FlutterFloatingActionButton {
       final ZacBuilder<double?>? hoverElevation,
       final ZacBuilder<double?>? highlightElevation,
       final ZacBuilder<double?>? disabledElevation,
-      final ZacBuilder<List<ZacAction>?>? onPressed,
+      final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
       final ZacBuilder<MouseCursor?>? mouseCursor,
       final ZacBuilder<ShapeBorder?>? shape,
       final ZacBuilder<Clip?>? clipBehavior,
@@ -1095,7 +1095,7 @@ abstract class _Small extends FlutterFloatingActionButton {
   @override
   ZacBuilder<double?>? get disabledElevation;
   @override
-  ZacBuilder<List<ZacAction>?>? get onPressed;
+  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
   @override
   ZacBuilder<MouseCursor?>? get mouseCursor;
   @override

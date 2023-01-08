@@ -37,19 +37,19 @@ class FlutterScrollPhysics
           {FlutterScrollPhysics? parent}) =
       _FlutterScrollPhysicsClampingScrollPhysics;
 
-  ScrollPhysics _build(ZacContext zacContext) {
+  ScrollPhysics _build(BuildContext context, ZacContext zacContext) {
     return map(
-      alwaysScrollable: (value) =>
-          AlwaysScrollableScrollPhysics(parent: parent?.build(zacContext)),
+      alwaysScrollable: (value) => AlwaysScrollableScrollPhysics(
+          parent: parent?.build(context, zacContext)),
       bouncingScroll: (value) =>
-          BouncingScrollPhysics(parent: parent?.build(zacContext)),
+          BouncingScrollPhysics(parent: parent?.build(context, zacContext)),
       clampingScrollPhysics: (value) =>
-          ClampingScrollPhysics(parent: parent?.build(zacContext)),
+          ClampingScrollPhysics(parent: parent?.build(context, zacContext)),
     );
   }
 
   @override
-  ScrollPhysics build(ZacContext zacContext) {
-    return _build(zacContext);
+  ScrollPhysics build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

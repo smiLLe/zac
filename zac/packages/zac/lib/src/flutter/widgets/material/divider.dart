@@ -26,19 +26,19 @@ class FlutterDivider with _$FlutterDivider implements ZacBuilder<Divider> {
     ZacBuilder<Color?>? color,
   }) = _FlutterDivider;
 
-  Divider _buildWidget(ZacContext zacContext) {
+  Divider _buildWidget(BuildContext context, ZacContext zacContext) {
     return Divider(
-      key: key?.build(zacContext),
-      height: height?.build(zacContext),
-      thickness: thickness?.build(zacContext),
-      indent: indent?.build(zacContext),
-      endIndent: endIndent?.build(zacContext),
-      color: color?.build(zacContext),
+      key: key?.build(context, zacContext),
+      height: height?.build(context, zacContext),
+      thickness: thickness?.build(context, zacContext),
+      indent: indent?.build(context, zacContext),
+      endIndent: endIndent?.build(context, zacContext),
+      color: color?.build(context, zacContext),
     );
   }
 
   @override
-  Divider build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Divider build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

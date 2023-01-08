@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -26,75 +26,37 @@ class ZacTransformValue with _$ZacTransformValue {
   ]) = _ZacTransformValue;
 }
 
-abstract class ZacTransformer {
-  factory ZacTransformer.fromJson(Map<String, dynamic> json) {
-    return ZacRegistry.ifBuilderLikeMap<ZacTransformer>(
-      json,
-      cb: (map, converterName) =>
-          ZacRegistry().getRegisteredTransformer(converterName).call(map),
-      orElse: () =>
-          throw StateError('Could not create $ZacTransformer from $json'),
-    );
-  }
-
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload);
+@freezed
+class ZacTransform with _$ZacTransform {
+  factory ZacTransform(
+    Object? Function(ZacTransformValue transformValue, BuildContext context,
+            ZacContext zacContext, ZacActionPayload? payload)
+        transform,
+  ) = _ZacTransform;
 }
 
-@freezedZacBuilder
-class ZacTransformers
-    with _$ZacTransformers
-    implements ZacBuilder<List<ZacTransformer>> {
-  const ZacTransformers._();
-
-  static const String unionValue = 'z:1:Transformers';
-
-  factory ZacTransformers.fromJson(Map<String, dynamic> json) =>
-      _$ZacTransformersFromJson(json);
-
-  @FreezedUnionValue(ZacTransformers.unionValue)
-  factory ZacTransformers(List<ZacTransformer> transformers) = _ZacTransformers;
-
-  @override
-  List<ZacTransformer> build(ZacContext zacContext) => transformers;
-}
-
-extension HandleTransformer on List<ZacTransformer> {
+extension HandleTransformer on List<ZacTransform> {
   Object? transform(
     ZacTransformValue value,
+    BuildContext context,
     ZacContext zacContext,
     ZacActionPayload? payload,
   ) {
     return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(previousValue, zacContext, payload);
+      final obj = element.transform(
+        previousValue,
+        context,
+        zacContext.copyWith.call(buildIn: BuildIn.transformer),
+        payload,
+      );
       return previousValue.copyWith.call(value: obj);
     }).value;
   }
 }
 
 @freezedZacBuilder
-class ConvertTransformer with _$ConvertTransformer implements ZacTransformer {
-  const ConvertTransformer._();
-  static const String unionValue = 'z:1:Transformer:Converter';
-
-  factory ConvertTransformer.fromJson(Map<String, dynamic> json) =>
-      _$ConvertTransformerFromJson(json);
-
-  @FreezedUnionValue(ConvertTransformer.unionValue)
-  factory ConvertTransformer() = _Convert;
-
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
-    final value = transformValue.value;
-    return throw Exception('');
-    // return ConverterHelper.convertToType<Object>(value);
-  }
-}
-
-@freezedZacBuilder
-class MapTransformer with _$MapTransformer implements ZacTransformer {
-  const MapTransformer._();
+class MapTransformer with _$MapTransformer implements ZacBuilder<ZacTransform> {
+  MapTransformer._();
   static const String unionValue = 'z:1:Transformer:Map.values';
   static const String unionValueKeys = 'z:1:Transformer:Map.keys';
   static const String unionValueEntries = 'z:1:Transformer:Map.entries';
@@ -119,60 +81,59 @@ class MapTransformer with _$MapTransformer implements ZacTransformer {
       _$MapTransformerFromJson(json);
 
   @FreezedUnionValue(MapTransformer.unionValue)
-  const factory MapTransformer.values() = _MapValues;
+  factory MapTransformer.values() = _MapValues;
 
   @FreezedUnionValue(MapTransformer.unionValueKeys)
-  const factory MapTransformer.keys() = _MapKeys;
+  factory MapTransformer.keys() = _MapKeys;
 
   @FreezedUnionValue(MapTransformer.unionValueEntries)
-  const factory MapTransformer.entries() = _MapEntries;
+  factory MapTransformer.entries() = _MapEntries;
 
   @FreezedUnionValue(MapTransformer.unionValueLength)
-  const factory MapTransformer.length() = _MapLength;
+  factory MapTransformer.length() = _MapLength;
 
   @FreezedUnionValue(MapTransformer.unionValueIsEmpty)
-  const factory MapTransformer.isEmpty() = _MapIsEmpty;
+  factory MapTransformer.isEmpty() = _MapIsEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueIsNotEmpty)
-  const factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
+  factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  const factory MapTransformer.containsKey(ZacBuilder<Object?>? key) =
+  factory MapTransformer.containsKey(ZacBuilder<Object?>? key) =
       _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  const factory MapTransformer.containsValue(ZacBuilder<Object?>? value) =
+  factory MapTransformer.containsValue(ZacBuilder<Object?>? value) =
       _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
-  const factory MapTransformer.mapper({
-    ZacBuilder<List<ZacTransformer>?>? keyTransformer,
-    ZacBuilder<List<ZacTransformer>?>? valueTransformer,
+  factory MapTransformer.mapper({
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer,
+    ZacListBuilder<ZacTransform, List<ZacTransform>?>? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
-  const factory MapTransformer.fromObjectObject() = _MapFromObjectObject;
+  factory MapTransformer.fromObjectObject() = _MapFromObjectObject;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringObject)
-  const factory MapTransformer.fromStringObject() = _MapFromStringObject;
+  factory MapTransformer.fromStringObject() = _MapFromStringObject;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringNullObject)
-  const factory MapTransformer.fromStringNullObject() =
-      _MapFromStringNullObject;
+  factory MapTransformer.fromStringNullObject() = _MapFromStringNullObject;
 
   @FreezedUnionValue(MapTransformer.unionValueKey)
-  const factory MapTransformer.key(ZacBuilder<String> key) = _MapKey;
+  factory MapTransformer.key(ZacBuilder<String> key) = _MapKey;
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
-  const factory MapTransformer.setValueForKey({
+  factory MapTransformer.setValueForKey({
     required ZacBuilder<Object> value,
     required ZacBuilder<String> key,
   }) = _MapSetValueForKey;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final theMap = transformValue.value;
     if (theMap is! Map) {
       throw ZacTransformError('''
@@ -189,26 +150,27 @@ The value: $theMap
       isEmpty: (_) => theMap.isEmpty,
       isNotEmpty: (_) => theMap.isNotEmpty,
       length: (_) => theMap.length,
-      containsKey: (obj) => theMap.containsKey(obj.key?.build(
-        zacContext,
-      )),
-      containsValue: (obj) => theMap.containsValue(obj.value?.build(
-        zacContext,
-      )),
+      containsKey: (obj) =>
+          theMap.containsKey(obj.key?.build(context, zacContext)),
+      containsValue: (obj) =>
+          theMap.containsValue(obj.value?.build(context, zacContext)),
       mapper: (obj) {
         return Map<dynamic, dynamic>.fromEntries(
             theMap.entries.map<MapEntry<dynamic, dynamic>>((entry) {
           dynamic updatedKey = entry.key;
           dynamic updatedValue = entry.value;
-          final keyT = obj.keyTransformer?.build(zacContext);
-          final valueT = obj.valueTransformer?.build(zacContext);
+          final keyT = obj.keyTransformer?.build(context, zacContext);
+          final valueT = obj.valueTransformer?.build(context, zacContext);
           if (true == keyT?.isNotEmpty) {
-            updatedKey = keyT!.transform(
-                ZacTransformValue(updatedKey, entry), zacContext, payload);
+            updatedKey = keyT!.transform(ZacTransformValue(updatedKey, entry),
+                context, zacContext, payload);
           }
           if (true == valueT?.isNotEmpty) {
             updatedValue = valueT!.transform(
-                ZacTransformValue(updatedValue, entry), zacContext, payload);
+                ZacTransformValue(updatedValue, entry),
+                context,
+                zacContext,
+                payload);
           }
 
           return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
@@ -224,24 +186,29 @@ The value: $theMap
         return Map<String, Object>.from(theMap);
       },
       key: (obj) {
-        final key = obj.key.build(zacContext);
+        final key = obj.key.build(context, zacContext);
         return theMap[key];
       },
       setValueForKey: (obj) {
-        final value = obj.value.build(zacContext);
+        final value = obj.value.build(context, zacContext);
 
-        final key = obj.key.build(zacContext);
+        final key = obj.key.build(context, zacContext);
 
         theMap[key] = value;
         return theMap;
       },
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class IterableTransformer with _$IterableTransformer implements ZacTransformer {
-  const IterableTransformer._();
+class IterableTransformer
+    with _$IterableTransformer
+    implements ZacBuilder<ZacTransform> {
+  IterableTransformer._();
   static const String unionValue = 'z:1:Transformer:Iterable.map';
   static const String unionValueSingle = 'z:1:Transformer:Iterable.single';
   static const String unionValueFirst = 'z:1:Transformer:Iterable.first';
@@ -266,57 +233,57 @@ class IterableTransformer with _$IterableTransformer implements ZacTransformer {
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
-    required ZacBuilder<List<ZacTransformer>> transformer,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>> transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)
-  const factory IterableTransformer.single() = _IterableSingle;
+  factory IterableTransformer.single() = _IterableSingle;
 
   @FreezedUnionValue(IterableTransformer.unionValueFirst)
-  const factory IterableTransformer.first() = _IterableFirst;
+  factory IterableTransformer.first() = _IterableFirst;
 
   @FreezedUnionValue(IterableTransformer.unionValueLast)
-  const factory IterableTransformer.last() = _IterableLast;
+  factory IterableTransformer.last() = _IterableLast;
 
   @FreezedUnionValue(IterableTransformer.unionValueLength)
-  const factory IterableTransformer.length() = _IterableLength;
+  factory IterableTransformer.length() = _IterableLength;
 
   @FreezedUnionValue(IterableTransformer.unionValueIsEmpty)
-  const factory IterableTransformer.isEmpty() = _IterableIsEmpty;
+  factory IterableTransformer.isEmpty() = _IterableIsEmpty;
 
   @FreezedUnionValue(IterableTransformer.unionValueIsNotEmpty)
-  const factory IterableTransformer.isNotEmpty() = _IterableIsNotEmpty;
+  factory IterableTransformer.isNotEmpty() = _IterableIsNotEmpty;
 
   /// Will return a List<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToList)
-  const factory IterableTransformer.toList() = _IterableToList;
+  factory IterableTransformer.toList() = _IterableToList;
 
   /// Will return a Set<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToSet)
-  const factory IterableTransformer.toSet() = _IterableToSet;
+  factory IterableTransformer.toSet() = _IterableToSet;
 
   @FreezedUnionValue(IterableTransformer.unionValueToString)
-  const factory IterableTransformer.toString() = _IterableToString;
+  factory IterableTransformer.toString() = _IterableToString;
 
   @FreezedUnionValue(IterableTransformer.unionValueJoin)
-  const factory IterableTransformer.join({String? separator}) = _IterableJoin;
+  factory IterableTransformer.join({String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  const factory IterableTransformer.contains(ZacBuilder<Object?>? element) =
+  factory IterableTransformer.contains(ZacBuilder<Object?>? element) =
       _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
-  const factory IterableTransformer.elementAt(int index) = _IterableElementAt;
+  factory IterableTransformer.elementAt(int index) = _IterableElementAt;
 
   @FreezedUnionValue(IterableTransformer.unionValueSkip)
-  const factory IterableTransformer.skip(int count) = _IterableSkip;
+  factory IterableTransformer.skip(int count) = _IterableSkip;
 
   @FreezedUnionValue(IterableTransformer.unionValueTake)
-  const factory IterableTransformer.take(int count) = _IterableTake;
+  factory IterableTransformer.take(int count) = _IterableTake;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! Iterable) {
       throw ZacTransformError('''
@@ -328,8 +295,8 @@ The value: $value
 
     return map(
       map: (obj) => value.map((dynamic e) => obj.transformer
-          .build(zacContext)
-          .transform(ZacTransformValue(e), zacContext, payload)),
+          .build(context, zacContext)
+          .transform(ZacTransformValue(e), context, zacContext, payload)),
       first: (_) => value.first,
       last: (_) => value.last,
       single: (_) => value.single,
@@ -340,19 +307,23 @@ The value: $value
       toSet: (_) => value.toSet(),
       toString: (_) => value.toString(),
       join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) => value.contains(obj.element?.build(
-        zacContext,
-      )),
+      contains: (obj) =>
+          value.contains(obj.element?.build(context, zacContext)),
       elementAt: (obj) => value.elementAt(obj.index),
       skip: (obj) => value.skip(obj.count),
       take: (obj) => value.take(obj.count),
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class ListTransformer with _$ListTransformer implements ZacTransformer {
-  const ListTransformer._();
+class ListTransformer
+    with _$ListTransformer
+    implements ZacBuilder<ZacTransform> {
+  ListTransformer._();
   static const String unionValue = 'z:1:Transformer:List.reversed';
   static const String unionValueAdd = 'z:1:Transformer:List.add';
 
@@ -361,14 +332,14 @@ class ListTransformer with _$ListTransformer implements ZacTransformer {
 
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(ListTransformer.unionValue)
-  const factory ListTransformer.reversed() = _ListReversed;
+  factory ListTransformer.reversed() = _ListReversed;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
-  const factory ListTransformer.add(ZacBuilder<Object> value) = _ListAdd;
+  factory ListTransformer.add(ZacBuilder<Object> value) = _ListAdd;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! List) {
       throw ZacTransformError('''
@@ -381,19 +352,22 @@ The value: $value
     return map(
       reversed: (_) => value.reversed.toList(),
       add: (obj) {
-        value.add(obj.value.build(
-          zacContext,
-        ));
+        value.add(obj.value.build(context, zacContext));
 
         return value;
       },
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
-  const ObjectTransformer._();
+class ObjectTransformer
+    with _$ObjectTransformer
+    implements ZacBuilder<ZacTransform> {
+  ObjectTransformer._();
 
   static const String unionValue = 'z:1:Transformer:Object.isList';
   static const String unionValueIsMap = 'z:1:Transformer:Object.isMap';
@@ -455,9 +429,9 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
     required ZacBuilder<Object?>? value,
   }) = _ObjectEqualsSharedValue;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     return map(
       isList: (_) => value is List,
@@ -469,20 +443,20 @@ class ObjectTransformer with _$ObjectTransformer implements ZacTransformer {
       isNull: (_) => null == value,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
-          obj.value?.build(
-            zacContext,
-          ) ==
-          value,
+          obj.value?.build(context, zacContext) == value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
       toString: (_) => value.toString(),
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class NumTransformer with _$NumTransformer implements ZacTransformer {
-  const NumTransformer._();
+class NumTransformer with _$NumTransformer implements ZacBuilder<ZacTransform> {
+  NumTransformer._();
   static const String unionValue = 'z:1:Transformer:num.toDouble';
   static const String unionValueToInt = 'z:1:Transformer:num.toInt';
   static const String unionValueAbs = 'z:1:Transformer:num.abs';
@@ -504,47 +478,47 @@ class NumTransformer with _$NumTransformer implements ZacTransformer {
       _$NumTransformerFromJson(json);
 
   @FreezedUnionValue(NumTransformer.unionValue)
-  const factory NumTransformer.toDouble() = _NumToDouble;
+  factory NumTransformer.toDouble() = _NumToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueToInt)
-  const factory NumTransformer.toInt() = _NumToInt;
+  factory NumTransformer.toInt() = _NumToInt;
 
   @FreezedUnionValue(NumTransformer.unionValueAbs)
-  const factory NumTransformer.abs() = _NumAbs;
+  factory NumTransformer.abs() = _NumAbs;
 
   @FreezedUnionValue(NumTransformer.unionValueCeil)
-  const factory NumTransformer.ceil() = _NumCeil;
+  factory NumTransformer.ceil() = _NumCeil;
 
   @FreezedUnionValue(NumTransformer.unionValueCeilToDouble)
-  const factory NumTransformer.ceilToDouble() = _NumCeilToDouble;
+  factory NumTransformer.ceilToDouble() = _NumCeilToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueFloor)
-  const factory NumTransformer.floor() = _NumFloor;
+  factory NumTransformer.floor() = _NumFloor;
 
   @FreezedUnionValue(NumTransformer.unionValueFloorToDouble)
-  const factory NumTransformer.floorToDouble() = _NumFloorToDouble;
+  factory NumTransformer.floorToDouble() = _NumFloorToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueRound)
-  const factory NumTransformer.round() = _NumRound;
+  factory NumTransformer.round() = _NumRound;
 
   @FreezedUnionValue(NumTransformer.unionValueRoundToDouble)
-  const factory NumTransformer.roundToDouble() = _NumRoundToDouble;
+  factory NumTransformer.roundToDouble() = _NumRoundToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueIsFinite)
-  const factory NumTransformer.isFinite() = _NumIsFinite;
+  factory NumTransformer.isFinite() = _NumIsFinite;
 
   @FreezedUnionValue(NumTransformer.unionValueIsInfinite)
-  const factory NumTransformer.isInfinite() = _NumIsInfinite;
+  factory NumTransformer.isInfinite() = _NumIsInfinite;
 
   @FreezedUnionValue(NumTransformer.unionValueIsNan)
-  const factory NumTransformer.isNan() = _NumIsNan;
+  factory NumTransformer.isNan() = _NumIsNan;
 
   @FreezedUnionValue(NumTransformer.unionValueIsNegative)
-  const factory NumTransformer.isNegative() = _NumIsNegative;
+  factory NumTransformer.isNegative() = _NumIsNegative;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! num) {
       throw ZacTransformError('''
@@ -569,12 +543,15 @@ The value: $value
       isNan: (_) => value.isNaN,
       isNegative: (_) => value.isNegative,
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class IntTransformer with _$IntTransformer implements ZacTransformer {
-  const IntTransformer._();
+class IntTransformer with _$IntTransformer implements ZacBuilder<ZacTransform> {
+  IntTransformer._();
   static const String unionValue = 'z:1:Transformer:int.parse';
   static const String unionValueTryParse = 'z:1:Transformer:int.tryParse';
   static const String unionValueIncrementBy = 'z:1:Transformer:int.incr';
@@ -584,20 +561,20 @@ class IntTransformer with _$IntTransformer implements ZacTransformer {
       _$IntTransformerFromJson(json);
 
   @FreezedUnionValue(IntTransformer.unionValue)
-  const factory IntTransformer.parse() = _IntParse;
+  factory IntTransformer.parse() = _IntParse;
 
   @FreezedUnionValue(IntTransformer.unionValueTryParse)
-  const factory IntTransformer.tryParse() = _IntTryParse;
+  factory IntTransformer.tryParse() = _IntTryParse;
 
   @FreezedUnionValue(IntTransformer.unionValueIncrementBy)
-  const factory IntTransformer.incr(ZacBuilder<int> by) = _IntIncr;
+  factory IntTransformer.incr(ZacBuilder<int> by) = _IntIncr;
 
   @FreezedUnionValue(IntTransformer.unionValueDecrementBy)
-  const factory IntTransformer.decr(ZacBuilder<int> by) = _IntDecr;
+  factory IntTransformer.decr(ZacBuilder<int> by) = _IntDecr;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     return map(
       parse: (obj) {
@@ -627,22 +604,27 @@ Value: $value
           throw StateError(
               'Expected value to be int in $IntTransformer(${IntTransformer.unionValueIncrementBy}): $value');
         }
-        return value + obj.by.build(zacContext);
+        return value + obj.by.build(context, zacContext);
       },
       decr: (obj) {
         if (value is! int) {
           throw StateError(
               'Expected value to be int in $IntTransformer(${IntTransformer.unionValueDecrementBy}): $value');
         }
-        return value - obj.by.build(zacContext);
+        return value - obj.by.build(context, zacContext);
       },
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class StringTransformer with _$StringTransformer implements ZacTransformer {
-  const StringTransformer._();
+class StringTransformer
+    with _$StringTransformer
+    implements ZacBuilder<ZacTransform> {
+  StringTransformer._();
   static const String unionValue = 'z:1:Transformer:String.length';
   static const String unionValueSplit = 'z:1:Transformer:String.split';
   static const String unionValueIsEmpty = 'z:1:Transformer:String.isEmpty';
@@ -655,25 +637,25 @@ class StringTransformer with _$StringTransformer implements ZacTransformer {
       _$StringTransformerFromJson(json);
 
   @FreezedUnionValue(StringTransformer.unionValue)
-  const factory StringTransformer.length() = _StringLength;
+  factory StringTransformer.length() = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  const factory StringTransformer.split({required ZacBuilder<String> pattern}) =
+  factory StringTransformer.split({required ZacBuilder<String> pattern}) =
       _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
-  const factory StringTransformer.isEmpty() = _StringIsEmpty;
+  factory StringTransformer.isEmpty() = _StringIsEmpty;
 
   @FreezedUnionValue(StringTransformer.unionValueIsNotEmpty)
-  const factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
+  factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
-  const factory StringTransformer.replaceAll(
+  factory StringTransformer.replaceAll(
       ZacBuilder<String> from, ZacBuilder<String> replace) = _StringReplaceAll;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! String) {
       throw ZacTransformError('''
@@ -685,18 +667,24 @@ The value: $value
 
     return map(
       length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.build(zacContext)),
+      split: (obj) => value.split(obj.pattern.build(context, zacContext)),
       isEmpty: (_) => value.isEmpty,
       isNotEmpty: (_) => value.isNotEmpty,
       replaceAll: (obj) => value.replaceAll(
-          RegExp(obj.from.build(zacContext)), obj.replace.build(zacContext)),
+          RegExp(obj.from.build(context, zacContext)),
+          obj.replace.build(context, zacContext)),
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class JsonTransformer with _$JsonTransformer implements ZacTransformer {
-  const JsonTransformer._();
+class JsonTransformer
+    with _$JsonTransformer
+    implements ZacBuilder<ZacTransform> {
+  JsonTransformer._();
   static const String unionValue = 'z:1:Transformer:Json.encode';
   static const String unionValueDecode = 'z:1:Transformer:Json.decode';
 
@@ -704,14 +692,14 @@ class JsonTransformer with _$JsonTransformer implements ZacTransformer {
       _$JsonTransformerFromJson(json);
 
   @FreezedUnionValue(JsonTransformer.unionValue)
-  const factory JsonTransformer.encode() = _JsonEncode;
+  factory JsonTransformer.encode() = _JsonEncode;
 
   @FreezedUnionValue(JsonTransformer.unionValueDecode)
-  const factory JsonTransformer.decode() = _JsonDencode;
+  factory JsonTransformer.decode() = _JsonDencode;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
 
     return map(
@@ -727,23 +715,28 @@ The value: $value
       },
       encode: (_) => jsonEncode(value),
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }
 
 @freezedZacBuilder
-class BoolTransformer with _$BoolTransformer implements ZacTransformer {
-  const BoolTransformer._();
+class BoolTransformer
+    with _$BoolTransformer
+    implements ZacBuilder<ZacTransform> {
+  BoolTransformer._();
   static const String unionValue = 'z:1:Transformer:Bool.negate';
 
   factory BoolTransformer.fromJson(Map<String, dynamic> json) =>
       _$BoolTransformerFromJson(json);
 
   @FreezedUnionValue(BoolTransformer.unionValue)
-  const factory BoolTransformer.negate() = _BoolTransformerNegate;
+  factory BoolTransformer.negate() = _BoolTransformerNegate;
 
-  @override
-  Object? transform(ZacTransformValue transformValue, ZacContext zacContext,
-      ZacActionPayload? payload) {
+  late final ZacTransform _transform = ZacTransform(
+      (ZacTransformValue transformValue, BuildContext context,
+          ZacContext zacContext, ZacActionPayload? payload) {
     final value = transformValue.value;
     if (value is! bool) {
       throw ZacTransformError(
@@ -753,5 +746,8 @@ class BoolTransformer with _$BoolTransformer implements ZacTransformer {
     return map(
       negate: (_) => !value,
     );
-  }
+  });
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) => _transform;
 }

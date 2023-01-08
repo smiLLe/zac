@@ -5,12 +5,10 @@ import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:zac/src/zac/update_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/registry.dart';
 
 part 'widget.freezed.dart';
 part 'widget.g.dart';
@@ -38,27 +36,27 @@ class ZacWidgetBuilder with _$ZacWidgetBuilder implements ZacBuilder<Widget> {
     ZacBuilder<Widget?>? errorChild,
   }) = _ZacWidgetBuilderIsolate;
 
-  Widget _buildWidget(ZacContext zacContext) {
+  Widget _buildWidget(BuildContext context, ZacContext zacContext) {
     return map(
       (obj) => ZacWidget(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.build(context, zacContext),
       ),
       isolate: (obj) => ZacWidgetIsolated(
         data: obj.data,
-        key: obj.key?.build(zacContext),
+        key: obj.key?.build(context, zacContext),
         errorChild: obj.errorChild,
       ),
     );
   }
 
   @override
-  Widget build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
-class ZacWidget extends HookWidget {
+class ZacWidget extends HookConsumerWidget {
   const ZacWidget({required this.data, Key? key})
       : assert(data is String ||
             data is Map<String, dynamic> ||
@@ -68,9 +66,8 @@ class ZacWidget extends HookWidget {
   final Object data;
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacContext();
     final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
       if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
@@ -93,13 +90,11 @@ class ZacWidget extends HookWidget {
       return ZacBuilder<Widget>.fromJson(map);
     }, [data]);
 
-    return ZacUpdateContext(
-      builder: zacBuilder.build,
-    );
+    return zacBuilder.build(context, zacContext);
   }
 }
 
-class ZacWidgetIsolated extends StatelessWidget {
+class ZacWidgetIsolated extends HookConsumerWidget {
   const ZacWidgetIsolated({required this.data, this.errorChild, Key? key})
       : assert(data is String || data is Map<String, dynamic>),
         super(key: key);
@@ -129,7 +124,7 @@ class ZacWidgetIsolated extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ProviderScope(
       overrides: [
         provider.overrideWith((ref) async {
@@ -155,44 +150,40 @@ class ZacWidgetIsolated extends StatelessWidget {
           return builder;
         })
       ],
-      child: Consumer(
-        builder: (context, ref, _) {
-          final val = ref.watch(provider);
-          return val.map<Widget>(
-            data: (obj) => ZacUpdateContext(
-              builder: obj.value.build,
-            ),
-            error: (obj) {
-              return ZacUpdateContext(builder: (zacContext) {
-                Widget? error = errorChild?.build(zacContext);
-                assert(() {
-                  if (null != errorChild) return true;
-                  error = FlutterContainer(
-                    decoration: FlutterBoxDecoration(
-                      border: FlutterBorder.all(
-                        color: FlutterColor.fromRGBO(
-                          r: 244,
-                          g: 67,
-                          b: 54,
-                          opacity: ZacBuilder<double>.fromJson(1.0),
+      child: HookConsumer(
+        builder: (context, ref, ___) {
+          final zacContext = useZacContext();
+          return ref.watch(provider).map<Widget>(
+                data: (obj) => obj.value.build(context, zacContext),
+                error: (obj) {
+                  Widget? error = errorChild?.build(context, zacContext);
+                  assert(() {
+                    if (null != errorChild) return true;
+                    error = FlutterContainer(
+                      decoration: FlutterBoxDecoration(
+                        border: FlutterBorder.all(
+                          color: FlutterColor.fromRGBO(
+                            r: 244,
+                            g: 67,
+                            b: 54,
+                            opacity: ZacBuilder<double>.fromJson(1.0),
+                          ),
+                          width: ZacBuilder<double>.fromJson(3.0),
                         ),
-                        width: ZacBuilder<double>.fromJson(3.0),
                       ),
-                    ),
-                    padding:
-                        FlutterEdgeInsets.all(ZacBuilder<double>.fromJson(8.0)),
-                    child: FlutterText(
-                      ZacBuilder<String>.fromJson(
-                          'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),
-                    ),
-                  ).build(zacContext);
-                  return true;
-                }(), '');
-                return error ?? const SizedBox.shrink();
-              });
-            },
-            loading: (obj) => const SizedBox.shrink(),
-          );
+                      padding: FlutterEdgeInsets.all(
+                          ZacBuilder<double>.fromJson(8.0)),
+                      child: FlutterText(
+                        ZacBuilder<String>.fromJson(
+                            'ERROR IN $ZacWidgetIsolated:\n${obj.error}'),
+                      ),
+                    ).build(context, zacContext);
+                    return true;
+                  }(), '');
+                  return error ?? const SizedBox.shrink();
+                },
+                loading: (obj) => const SizedBox.shrink(),
+              );
         },
       ),
     );

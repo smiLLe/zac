@@ -28,24 +28,25 @@ class FlutterRow with _$FlutterRow implements ZacBuilder<Row> {
     ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterRow;
 
-  Row _buildWidget(ZacContext zacContext) {
+  Row _buildWidget(BuildContext context, ZacContext zacContext) {
     return Row(
-      key: key?.build(zacContext),
-      mainAxisAlignment:
-          mainAxisAlignment?.build(zacContext) ?? MainAxisAlignment.start,
-      mainAxisSize: mainAxisSize?.build(zacContext) ?? MainAxisSize.max,
-      crossAxisAlignment:
-          crossAxisAlignment?.build(zacContext) ?? CrossAxisAlignment.center,
-      textDirection: textDirection?.build(zacContext),
-      verticalDirection:
-          verticalDirection?.build(zacContext) ?? VerticalDirection.down,
-      textBaseline: textBaseline?.build(zacContext),
-      children: children?.build(zacContext) ?? const <Widget>[],
+      key: key?.build(context, zacContext),
+      mainAxisAlignment: mainAxisAlignment?.build(context, zacContext) ??
+          MainAxisAlignment.start,
+      mainAxisSize:
+          mainAxisSize?.build(context, zacContext) ?? MainAxisSize.max,
+      crossAxisAlignment: crossAxisAlignment?.build(context, zacContext) ??
+          CrossAxisAlignment.center,
+      textDirection: textDirection?.build(context, zacContext),
+      verticalDirection: verticalDirection?.build(context, zacContext) ??
+          VerticalDirection.down,
+      textBaseline: textBaseline?.build(context, zacContext),
+      children: children?.build(context, zacContext) ?? const <Widget>[],
     );
   }
 
   @override
-  Row build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Row build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

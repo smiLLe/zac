@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/zac.dart';
 
 import '../helper.dart';
@@ -16,33 +15,28 @@ void main() {
   testWidgets(
       'ZacCompleterVoidProvider will provide a Completer and complete the provider on dispose',
       (tester) async {
-    late Object? c;
-    await tester.pumpWidget(
-      ProviderScope(
-        child: ZacWidget(
-          data: ZacCompleterVoidProvider(
-            family: 'shared',
-            child: LeakContext(
-              cb: (zacContext) {
-                c = ConsumeSharedValue<Completer>(family: 'shared')
-                    .build(zacContext);
-              },
-            ),
-          ),
-        ),
+    await testWithContextsWraped(
+      tester,
+      (widget) => ZacCompleterVoidProvider(
+        family: 'shared',
+        child: widget,
       ),
+      (getContext, getZacContext) async {
+        final c = ConsumeSharedValue<Completer>(family: 'shared')
+            .build(getContext(), getZacContext());
+        expect(
+            c,
+            isA<Completer<void>>()
+                .having((p0) => p0.isCompleted, 'isCompleted', isFalse));
+
+        await tester.pumpWidget(const SizedBox());
+
+        expect(
+            c,
+            isA<Completer<void>>()
+                .having((p0) => p0.isCompleted, 'isCompleted', isTrue));
+      },
     );
-    expect(
-        c,
-        isA<Completer<void>>()
-            .having((p0) => p0.isCompleted, 'isCompleted', isFalse));
-
-    await tester.pumpWidget(const SizedBox());
-
-    expect(
-        c,
-        isA<Completer<void>>()
-            .having((p0) => p0.isCompleted, 'isCompleted', isTrue));
   });
 
   test('ZacCompleterActions from json', () {
@@ -52,29 +46,23 @@ void main() {
 
   testWidgets('Complete a Completer<void> using ZacCompleterActions',
       (tester) async {
-    late ZacContext zacContext;
-    await tester.pumpWidget(
-      ProviderScope(
-        child: ZacWidget(
-          data: ZacCompleterVoidProvider(
-            family: 'shared',
-            child: LeakContext(
-              cb: (z) {
-                zacContext = z;
-              },
-            ),
-          ),
-        ),
+    await testWithContextsWraped(
+      tester,
+      (widget) => ZacCompleterVoidProvider(
+        family: 'shared',
+        child: widget,
       ),
+      (getContext, getZacContext) {
+        final c = ConsumeSharedValue<Completer>(family: 'shared')
+            .build(getContext(), getZacContext());
+
+        ZacCompleterActions.completeVoid(
+                completer: ConsumeSharedValue<Completer>(family: 'shared'))
+            .build(getContext(), getZacContext())
+            .execute(const ZacActionPayload(), getContext(), getZacContext());
+
+        expect(c.isCompleted, isTrue);
+      },
     );
-
-    final completer =
-        ConsumeSharedValue<Completer>(family: 'shared').build(zacContext);
-
-    ZacCompleterActions.completeVoid(
-            completer: ConsumeSharedValue<Completer>(family: 'shared'))
-        .execute(const ZacActionPayload(), zacContext);
-
-    expect(completer.isCompleted, isTrue);
   });
 }

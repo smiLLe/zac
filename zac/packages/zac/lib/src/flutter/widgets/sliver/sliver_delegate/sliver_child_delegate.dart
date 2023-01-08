@@ -44,24 +44,30 @@ class FlutterSliverChildDelegate
   }) = _FlutterSliverChildListDelegateFixed;
 
   @override
-  SliverChildDelegate build(ZacContext zacContext) {
+  SliverChildDelegate build(BuildContext context, ZacContext zacContext) {
     return map(
       list: (value) => SliverChildListDelegate(
-        children.build(zacContext),
+        children.build(context, zacContext),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.build(zacContext) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.build(zacContext) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.build(zacContext) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.build(zacContext) ?? 0,
+            addAutomaticKeepAlives?.build(context, zacContext) ?? true,
+        addRepaintBoundaries:
+            addRepaintBoundaries?.build(context, zacContext) ?? true,
+        addSemanticIndexes:
+            addSemanticIndexes?.build(context, zacContext) ?? true,
+        semanticIndexOffset:
+            semanticIndexOffset?.build(context, zacContext) ?? 0,
         // semanticIndexCallback:
       ),
       listFixed: (value) => SliverChildListDelegate.fixed(
-        children.build(zacContext),
+        children.build(context, zacContext),
         addAutomaticKeepAlives:
-            addAutomaticKeepAlives?.build(zacContext) ?? true,
-        addRepaintBoundaries: addRepaintBoundaries?.build(zacContext) ?? true,
-        addSemanticIndexes: addSemanticIndexes?.build(zacContext) ?? true,
-        semanticIndexOffset: semanticIndexOffset?.build(zacContext) ?? 0,
+            addAutomaticKeepAlives?.build(context, zacContext) ?? true,
+        addRepaintBoundaries:
+            addRepaintBoundaries?.build(context, zacContext) ?? true,
+        addSemanticIndexes:
+            addSemanticIndexes?.build(context, zacContext) ?? true,
+        semanticIndexOffset:
+            semanticIndexOffset?.build(context, zacContext) ?? 0,
         // semanticIndexCallback:
       ),
     );

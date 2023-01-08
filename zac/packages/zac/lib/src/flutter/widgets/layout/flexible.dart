@@ -25,17 +25,17 @@ class FlutterFlexible with _$FlutterFlexible implements ZacBuilder<Flexible> {
     required ZacBuilder<Widget> child,
   }) = _FlutterFlexible;
 
-  Flexible _buildWidget(ZacContext zacContext) {
+  Flexible _buildWidget(BuildContext context, ZacContext zacContext) {
     return Flexible(
-      key: key?.build(zacContext),
-      flex: flex?.build(zacContext) ?? 1,
-      fit: fit?.build(zacContext) ?? FlexFit.loose,
-      child: child.build(zacContext),
+      key: key?.build(context, zacContext),
+      flex: flex?.build(context, zacContext) ?? 1,
+      fit: fit?.build(context, zacContext) ?? FlexFit.loose,
+      child: child.build(context, zacContext),
     );
   }
 
   @override
-  Flexible build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Flexible build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

@@ -30,23 +30,24 @@ class FlutterCard with _$FlutterCard implements ZacBuilder<Card> {
     ZacBuilder<bool?>? semanticContainer,
   }) = _FlutterCard;
 
-  Card _buildWidget(ZacContext zacContext) {
+  Card _buildWidget(BuildContext context, ZacContext zacContext) {
     return Card(
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      shadowColor: shadowColor?.build(zacContext),
-      elevation: elevation?.build(zacContext),
-      shape: shape?.build(zacContext),
-      borderOnForeground: borderOnForeground?.build(zacContext) ?? true,
-      margin: margin?.build(zacContext),
-      clipBehavior: clipBehavior?.build(zacContext),
-      semanticContainer: semanticContainer?.build(zacContext) ?? true,
-      child: child?.build(zacContext),
+      key: key?.build(context, zacContext),
+      color: color?.build(context, zacContext),
+      shadowColor: shadowColor?.build(context, zacContext),
+      elevation: elevation?.build(context, zacContext),
+      shape: shape?.build(context, zacContext),
+      borderOnForeground:
+          borderOnForeground?.build(context, zacContext) ?? true,
+      margin: margin?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext),
+      semanticContainer: semanticContainer?.build(context, zacContext) ?? true,
+      child: child?.build(context, zacContext),
     );
   }
 
   @override
-  Card build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Card build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }

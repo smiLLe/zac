@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:zac/src/zac/action.dart';
-
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +26,7 @@ class FlutterRefreshIndicator
     required ZacBuilder<Widget> child,
     ZacBuilder<double?>? displacement,
     ZacBuilder<double?>? edgeOffset,
-    required ZacBuilder<List<ZacAction>> onRefresh,
+    required ZacListBuilder<ZacAction, List<ZacAction>> onRefresh,
     ZacBuilder<Color?>? color,
     ZacBuilder<Color?>? backgroundColor,
 // ScrollNotificationPredicate notificationPredicate = defaultScrollNotificationPredicate,
@@ -38,31 +36,31 @@ class FlutterRefreshIndicator
     ZacBuilder<RefreshIndicatorTriggerMode?>? triggerMode,
   }) = _FlutterRefreshIndicator;
 
-  RefreshIndicator _buildWidget(ZacContext zacContext) {
+  RefreshIndicator _buildWidget(BuildContext context, ZacContext zacContext) {
     return RefreshIndicator(
       onRefresh: () async {
         onRefresh
-            .build(zacContext)
-            .execute(const ZacActionPayload(), zacContext);
+            .build(context, zacContext)
+            .execute(const ZacActionPayload(), context, zacContext);
         return Future.value(null);
       },
-      displacement: displacement?.build(zacContext) ?? 40.0,
-      edgeOffset: edgeOffset?.build(zacContext) ?? 0.0,
-      color: color?.build(zacContext),
-      backgroundColor: backgroundColor?.build(zacContext),
-      semanticsLabel: semanticsLabel?.build(zacContext),
-      semanticsValue: semanticsValue?.build(zacContext),
-      strokeWidth: strokeWidth?.build(zacContext) ??
+      displacement: displacement?.build(context, zacContext) ?? 40.0,
+      edgeOffset: edgeOffset?.build(context, zacContext) ?? 0.0,
+      color: color?.build(context, zacContext),
+      backgroundColor: backgroundColor?.build(context, zacContext),
+      semanticsLabel: semanticsLabel?.build(context, zacContext),
+      semanticsValue: semanticsValue?.build(context, zacContext),
+      strokeWidth: strokeWidth?.build(context, zacContext) ??
           RefreshProgressIndicator.defaultStrokeWidth,
-      triggerMode:
-          triggerMode?.build(zacContext) ?? RefreshIndicatorTriggerMode.onEdge,
-      child: child.build(zacContext),
+      triggerMode: triggerMode?.build(context, zacContext) ??
+          RefreshIndicatorTriggerMode.onEdge,
+      child: child.build(context, zacContext),
     );
   }
 
   @override
-  RefreshIndicator build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  RefreshIndicator build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -90,7 +88,8 @@ class FlutterRefreshIndicatorTriggerMode
   factory FlutterRefreshIndicatorTriggerMode.anywhere() =
       _FlutterRefreshIndicatorTriggerModeanywhere;
 
-  RefreshIndicatorTriggerMode _build(ZacContext zacContext) {
+  RefreshIndicatorTriggerMode _build(
+      BuildContext context, ZacContext zacContext) {
     return map(
       onEdge: (_) => RefreshIndicatorTriggerMode.onEdge,
       anywhere: (_) => RefreshIndicatorTriggerMode.anywhere,
@@ -98,7 +97,8 @@ class FlutterRefreshIndicatorTriggerMode
   }
 
   @override
-  RefreshIndicatorTriggerMode build(ZacContext zacContext) {
-    return _build(zacContext);
+  RefreshIndicatorTriggerMode build(
+      BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

@@ -34,5 +34,6 @@ _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_ZacValueActionsAsPayload(
       value: ZacBuilder<Object?>.fromJson(json['value'] as Object),
-      actions: ZacActions.fromJson(json['actions'] as Map<String, dynamic>),
+      actions: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
+          json['actions'] as Object),
     );

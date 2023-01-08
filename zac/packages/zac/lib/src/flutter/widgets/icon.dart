@@ -25,20 +25,20 @@ class FlutterIcon with _$FlutterIcon implements ZacBuilder<Icon> {
     ZacBuilder<TextDirection?>? textDirection,
   }) = _FlutterIcon;
 
-  Icon _buildWidget(ZacContext zacContext) {
+  Icon _buildWidget(BuildContext context, ZacContext zacContext) {
     return Icon(
-      icon?.build(zacContext),
-      key: key?.build(zacContext),
-      color: color?.build(zacContext),
-      size: size?.build(zacContext),
-      semanticLabel: semanticLabel?.build(zacContext),
-      textDirection: textDirection?.build(zacContext),
+      icon?.build(context, zacContext),
+      key: key?.build(context, zacContext),
+      color: color?.build(context, zacContext),
+      size: size?.build(context, zacContext),
+      semanticLabel: semanticLabel?.build(context, zacContext),
+      textDirection: textDirection?.build(context, zacContext),
     );
   }
 
   @override
-  Icon build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Icon build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
 
@@ -57,18 +57,19 @@ class FlutterIconData with _$FlutterIconData, ZacBuilder<IconData> {
     ZacBuilder<bool?>? matchTextDirection,
   }) = _FlutterIconData;
 
-  IconData _build(ZacContext zacContext) {
+  IconData _build(BuildContext context, ZacContext zacContext) {
     return IconData(
-      codePoint.build(zacContext),
-      fontFamily: fontFamily?.build(zacContext),
-      fontPackage: fontPackage?.build(zacContext),
-      matchTextDirection: matchTextDirection?.build(zacContext) ?? false,
+      codePoint.build(context, zacContext),
+      fontFamily: fontFamily?.build(context, zacContext),
+      fontPackage: fontPackage?.build(context, zacContext),
+      matchTextDirection:
+          matchTextDirection?.build(context, zacContext) ?? false,
     );
   }
 
   @override
-  IconData build(ZacContext zacContext) {
-    return _build(zacContext);
+  IconData build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }
 
@@ -87,16 +88,16 @@ class FlutterIconThemeData
     ZacBuilder<double?>? size,
   }) = _FlutterIconThemeData;
 
-  IconThemeData _build(ZacContext zacContext) {
+  IconThemeData _build(BuildContext context, ZacContext zacContext) {
     return IconThemeData(
-      color: color?.build(zacContext),
-      opacity: opacity?.build(zacContext),
-      size: size?.build(zacContext),
+      color: color?.build(context, zacContext),
+      opacity: opacity?.build(context, zacContext),
+      size: size?.build(context, zacContext),
     );
   }
 
   @override
-  IconThemeData build(ZacContext zacContext) {
-    return _build(zacContext);
+  IconThemeData build(BuildContext context, ZacContext zacContext) {
+    return _build(context, zacContext);
   }
 }

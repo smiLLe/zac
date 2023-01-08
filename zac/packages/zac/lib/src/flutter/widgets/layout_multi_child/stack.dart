@@ -26,19 +26,20 @@ class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
     ZacListBuilder<Widget, List<Widget>?>? children,
   }) = _FlutterStack;
 
-  Stack _buildWidget(ZacContext zacContext) {
+  Stack _buildWidget(BuildContext context, ZacContext zacContext) {
     return Stack(
-      key: key?.build(zacContext),
-      alignment: alignment?.build(zacContext) ?? AlignmentDirectional.topStart,
-      textDirection: textDirection?.build(zacContext),
-      fit: fit?.build(zacContext) ?? StackFit.loose,
-      clipBehavior: clipBehavior?.build(zacContext) ?? Clip.hardEdge,
-      children: children?.build(zacContext) ?? const <Widget>[],
+      key: key?.build(context, zacContext),
+      alignment: alignment?.build(context, zacContext) ??
+          AlignmentDirectional.topStart,
+      textDirection: textDirection?.build(context, zacContext),
+      fit: fit?.build(context, zacContext) ?? StackFit.loose,
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+      children: children?.build(context, zacContext) ?? const <Widget>[],
     );
   }
 
   @override
-  Stack build(ZacContext zacContext) {
-    return _buildWidget(zacContext);
+  Stack build(BuildContext context, ZacContext zacContext) {
+    return _buildWidget(context, zacContext);
   }
 }
