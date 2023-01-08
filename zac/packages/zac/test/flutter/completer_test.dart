@@ -15,7 +15,7 @@ void main() {
   testWidgets(
       'ZacCompleterVoidProvider will provide a Completer and complete the provider on dispose',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (widget) => ZacCompleterVoidProvider(
         family: 'shared',
@@ -46,7 +46,7 @@ void main() {
 
   testWidgets('Complete a Completer<void> using ZacCompleterActions',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (widget) => ZacCompleterVoidProvider(
         family: 'shared',

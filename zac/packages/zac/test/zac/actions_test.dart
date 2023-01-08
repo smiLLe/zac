@@ -15,7 +15,7 @@ import '../helper.mocks.dart';
 void main() {
   group('List of Actions', () {
     testWidgets('BuldIn has correct value', (tester) async {
-      await testWithContext(
+      await testWithContexts(
         tester,
         (getContext, getZacContext) {
           late BuildIn buildIn;
@@ -34,7 +34,7 @@ void main() {
   group('Control Flow Actions:', () {
     group('if Action', () {
       testWidgets('will execute Action if condition is true', (tester) async {
-        await testWithContext(
+        await testWithContexts(
           tester,
           (getContext, getZacContext) {
             final trueCb = MockTestActionExecute();
@@ -62,7 +62,7 @@ void main() {
       });
 
       testWidgets('will execute Action if condition is false', (tester) async {
-        await testWithContext(
+        await testWithContexts(
           tester,
           (getContext, getZacContext) {
             final trueCb = MockTestActionExecute();
@@ -91,7 +91,7 @@ void main() {
       testWidgets(
           'condition can be an array and once returned false it will execute ifFalse Actions',
           (tester) async {
-        await testWithContext(tester, (getContext, getZacContext) {
+        await testWithContexts(tester, (getContext, getZacContext) {
           final trueCb = MockTestActionExecute();
           final falseCb = MockTestActionExecute();
           ZacControlFlowAction.ifCond(
@@ -139,7 +139,7 @@ void main() {
       });
 
       testWidgets('will throw an error if payload is empty', (tester) async {
-        await testWithContext(tester, (getContext, getZacContext) {
+        await testWithContexts(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
                     condition:
@@ -157,7 +157,7 @@ void main() {
 
       testWidgets('will throw an error if condition is not a bool',
           (tester) async {
-        await testWithContext(tester, (getContext, getZacContext) {
+        await testWithContexts(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
                     condition: ZacValueList<ZacTransform, List<ZacTransform>>(
@@ -225,7 +225,7 @@ void main() {
   group('ZacExecuteActionsListen', () {
     testWidgets('execute interactions', (tester) async {
       final cb = MockTestActionExecute();
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideInt(
           value: 1,

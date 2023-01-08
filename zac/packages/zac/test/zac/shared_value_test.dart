@@ -32,7 +32,7 @@ void main() {
     });
 
     testWidgets('provide int', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideInt(
           value: 5,
@@ -47,7 +47,7 @@ void main() {
     });
 
     testWidgets('provide double', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideDouble(
           value: 5.1,
@@ -62,7 +62,7 @@ void main() {
     });
 
     testWidgets('provide string', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideString(
           value: 'foo',
@@ -77,7 +77,7 @@ void main() {
     });
 
     testWidgets('provide bool', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideBool(
           value: false,
@@ -92,7 +92,7 @@ void main() {
     });
 
     testWidgets('provide null', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideNull(
           family: 'shared',
@@ -106,7 +106,7 @@ void main() {
     });
 
     testWidgets('provide Object', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideObject(
           value: 'something',
@@ -121,7 +121,7 @@ void main() {
     });
 
     testWidgets('provide Widget', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideWidget(
           value: FlutterSizedBox(),
@@ -136,7 +136,7 @@ void main() {
     });
 
     testWidgets('provide List<Widget>', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideWidgets(
           value: ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]),
@@ -151,7 +151,7 @@ void main() {
     });
 
     testWidgets('provide Map<String, Widget>', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideWidgetsMap(
           value: ZacValueMap<Widget, Map<String, Widget>>(
@@ -169,7 +169,7 @@ void main() {
     });
 
     testWidgets('provide any ZacBuilder', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideAnyBuilder(
           value: FlutterBoxShape.circle(),
@@ -229,19 +229,14 @@ void main() {
               key: valueKey,
             ),
             family: 'shared',
-            child: TestBuildCustomWidget(
-              (context, zacContext) {
-                return ConsumeSharedValue<Widget>(family: 'shared')
-                    .build(context, zacContext);
-              },
-            ),
+            child: ConsumeSharedValue<Widget>(family: 'shared'),
           ),
         );
       });
 
       testWidgets('will throw if shared value is null but null is not wanted',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideNull(
               family: 'shared', child: child),
@@ -261,7 +256,7 @@ void main() {
       testWidgets(
           'will throw if shared value is not of expected type and no transformer were available',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideObject(
             value: 'hello',
@@ -290,7 +285,7 @@ void main() {
     });
 
     testWidgets('can consume null as list item', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideObject(
           value: [1, null],
@@ -326,7 +321,7 @@ void main() {
     });
 
     testWidgets('can consume a String', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideObject(
           value: ['hello', 'world'],
@@ -350,7 +345,7 @@ void main() {
     });
 
     testWidgets('can consume null as value', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideObject(
           value: {'a': null, 'b': 1},
@@ -367,25 +362,27 @@ void main() {
     });
 
     testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
-      await testFindWidget(
+      await testWithContextsWraped(
         tester,
-        (valueKey) => SharedValueProviderBuilder.provideWidgetsMap(
+        (child) => SharedValueProviderBuilder.provideWidgetsMap(
           value: ZacValueMap<Widget, Map<String, Widget>>({
             'a': FlutterSizedBox(
-              key: valueKey,
+              key: FlutterValueKey('map_child'),
             )
           }),
           family: 'shared',
-          child: TestBuildCustomWidget(
-            (context, zacContext) {
-              final map = ConsumeSharedValueMap<Widget, Map<String, Widget>>(
-                      family: 'shared')
-                  .build(context, zacContext);
-
-              return map['a']!;
-            },
-          ),
+          child: child,
         ),
+        (getContext, getZacContext) {
+          final map = ConsumeSharedValueMap<Widget, Map<String, Widget>>(
+                  family: 'shared')
+              .build(getContext(), getZacContext());
+
+          expect(
+              map['a'],
+              isA<SizedBox>().having(
+                  (p0) => p0.key, 'SizedBox.key', const ValueKey('map_child')));
+        },
       );
     });
   });
@@ -502,12 +499,9 @@ void main() {
     });
 
     testWidgets('nested', (tester) async {
-      dynamic a;
-      dynamic b;
-      dynamic c;
-      await testZacWidget(
+      await testWithContextsWraped(
         tester,
-        SharedValueProviderBuilder.provideString(
+        (child) => SharedValueProviderBuilder.provideString(
           value: 'a',
           family: 'sharedA',
           child: SharedValueProviderBuilder.provideString(
@@ -519,30 +513,29 @@ void main() {
               child: SharedValueProviderBuilder.provideString(
                 value: 'AA',
                 family: 'sharedA',
-                child: LeakContext(
-                  cb: (context, zacContext) {
-                    a = context.widgetRef
-                        .watch(SharedValue.provider('sharedA'));
-                    b = context.widgetRef
-                        .watch(SharedValue.provider('sharedB'));
-                    c = context.widgetRef
-                        .watch(SharedValue.provider('sharedC'));
-                  },
+                child: FlutterColumn(
+                  children: ZacValueList<Widget, List<Widget>>([
+                    FlutterText(ConsumeSharedValue<String>(family: 'sharedA')),
+                    FlutterText(ConsumeSharedValue<String>(family: 'sharedB')),
+                    FlutterText(ConsumeSharedValue<String>(family: 'sharedC')),
+                    // FlutterText(data)
+                  ]),
                 ),
               ),
             ),
           ),
         ),
+        (getContext, getZacContext) {
+          expect(find.text('AA'), findsOneWidget);
+          expect(find.text('b'), findsOneWidget);
+          expect(find.text('c'), findsOneWidget);
+        },
       );
-
-      expect(a, 'AA');
-      expect(b, 'b');
-      expect(c, 'c');
     });
 
     group('get()', () {
       testWidgets('return the provided value', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideInt(
             value: 10,
@@ -563,7 +556,7 @@ void main() {
       });
 
       testWidgets('also accepts null as provided value', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideNull(
             family: 'foo',
@@ -583,7 +576,7 @@ void main() {
       });
 
       testWidgets('throws if empty', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => child,
           (getContext, getZacContext) {
@@ -602,7 +595,7 @@ void main() {
 
     group('update()', () {
       testWidgets('throws if empty', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => child,
           (getContext, getZacContext) {
@@ -615,7 +608,7 @@ void main() {
       });
 
       testWidgets('existing value', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideNull(
             family: 'foo',
@@ -652,7 +645,7 @@ void main() {
   group('SharedValueActions', () {
     group('invalidate', () {
       testWidgets('will invalidate the provider', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideString(
             value: 'hello',
@@ -688,7 +681,7 @@ void main() {
     group('update', () {
       testWidgets('may update the SharedValue if no payload is present',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideString(
             value: 'foo',
@@ -803,7 +796,7 @@ void main() {
       testWidgets(
           'may transform child items in a List before updating the SharedValue from payload',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideObject(
             /// this value is not relevant for this test because the action will
@@ -847,7 +840,7 @@ void main() {
       testWidgets(
           'may transform child items in a List before updating the SharedValue from payload with two params',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideObject(
             /// this value is not relevant for this test because the action will
@@ -904,7 +897,7 @@ void main() {
       testWidgets(
           'may transform value items in a Map before updating the SharedValue from payload',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideObject(
             /// this value is not relevant for this test because the action will
@@ -954,7 +947,7 @@ void main() {
     group('SharedValueConsumeType', () {
       testWidgets('execute transformer through provider.select() in .watch()',
           (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideString(
             value: 'foo',

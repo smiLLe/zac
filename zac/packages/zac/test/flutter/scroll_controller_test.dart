@@ -7,7 +7,7 @@ import '../helper.dart';
 
 void main() {
   testWidgets('Provide ScrollController', (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => FlutterScrollController(
         child: child,

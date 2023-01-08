@@ -39,7 +39,7 @@ void main() {
   });
 
   testWidgets('Get current widget in StateMachine', (tester) async {
-    await testWithContext(
+    await testWithContexts(
       tester,
       (getContext, getZacContext) {
         var machine = ZacStateMachine(
@@ -104,7 +104,7 @@ void main() {
   });
 
   testWidgets('Provide the current machine', (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
           family: ZacBuilder<String>.fromJson('machine'),
@@ -142,7 +142,7 @@ void main() {
   testWidgets(
       'Transition to another state and update context through an event ',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -207,7 +207,7 @@ void main() {
   testWidgets(
       'It is not possible to send another event after successful transition',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -251,7 +251,7 @@ void main() {
   testWidgets(
       'It is not possible to send another event after StateMachine dispose',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -289,7 +289,7 @@ void main() {
   });
 
   testWidgets('Check StateMachine for being active', (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -336,7 +336,7 @@ void main() {
   testWidgets(
       'BuildState will build the StateConfig attached widget when in specified state',
       (tester) async {
-    await testWithContextWithChild(
+    await testWithContextsWraped(
       tester,
       (child) => ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -517,7 +517,7 @@ void main() {
 
   testWidgets('Let a transformer pick and return the state of a StateMachine ',
       (tester) async {
-    await testWithContext(
+    await testWithContexts(
       tester,
       (getContext, getZacContext) {
         expect(
@@ -557,7 +557,7 @@ void main() {
   testWidgets(
       'Let a transformer pick and return the context of a StateMachine ',
       (tester) async {
-    await testWithContext(
+    await testWithContexts(
       tester,
       (getContext, getZacContext) {
         expect(

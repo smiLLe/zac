@@ -36,7 +36,7 @@ void main() {
   });
 
   testWidgets('FlutterAlignment', (tester) async {
-    await testWithContext(
+    await testWithContexts(
       tester,
       (getContext, getZacContext) {
         expect(
@@ -64,7 +64,7 @@ void main() {
     };
 
     for (var e in map.entries) {
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             FlutterAlignment.fromJson(<String, dynamic>{
               'builder': e.key,
@@ -75,7 +75,7 @@ void main() {
   });
 
   testWidgets('FlutterAlignmentDirectional', (tester) async {
-    await testWithContext(tester, (getContext, getZacContext) {
+    await testWithContexts(tester, (getContext, getZacContext) {
       expect(
           FlutterAlignmentDirectional.fromJson(<String, dynamic>{
             'builder': 'f:1:AlignmentDirectional',
@@ -107,7 +107,7 @@ void main() {
     };
 
     for (var e in map.entries) {
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             FlutterAlignmentDirectional.fromJson(<String, dynamic>{
               'builder': e.key,
@@ -118,7 +118,7 @@ void main() {
   });
 
   testWidgets('FlutterFractionalOffset', (tester) async {
-    await testWithContext(tester, (getContext, getZacContext) {
+    await testWithContexts(tester, (getContext, getZacContext) {
       expect(
           FlutterFractionalOffset.fromJson(<String, dynamic>{
             'builder': 'f:1:FractionalOffset',

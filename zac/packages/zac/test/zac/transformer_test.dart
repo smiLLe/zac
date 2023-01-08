@@ -37,7 +37,7 @@ void _expectFromJson<T>({
 void main() {
   group('List of Transformer', () {
     testWidgets('BuldIn has correct value', (tester) async {
-      await testWithContext(
+      await testWithContexts(
         tester,
         (getContext, getZacContext) {
           late BuildIn buildIn;
@@ -69,7 +69,7 @@ void main() {
         },
       );
 
-      await testWithContext(
+      await testWithContexts(
         tester,
         (getContext, getZacContext) {
           expect(
@@ -111,7 +111,7 @@ void main() {
         equals: IterableTransformer.first(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.first()
                 .build(getContext(), getZacContext())
@@ -135,7 +135,7 @@ void main() {
         equals: IterableTransformer.last(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.last()
                 .build(getContext(), getZacContext())
@@ -159,7 +159,7 @@ void main() {
         equals: IterableTransformer.single(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.single()
                 .build(getContext(), getZacContext())
@@ -190,7 +190,7 @@ void main() {
         equals: IterableTransformer.length(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.length()
                 .build(getContext(), getZacContext())
@@ -214,7 +214,7 @@ void main() {
         equals: IterableTransformer.isEmpty(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.isEmpty()
                 .build(getContext(), getZacContext())
@@ -245,7 +245,7 @@ void main() {
         equals: IterableTransformer.isNotEmpty(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
@@ -275,7 +275,7 @@ void main() {
         converter: 'z:1:Transformer:Iterable.toList',
         equals: IterableTransformer.toList(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.toList()
                 .build(getContext(), getZacContext())
@@ -299,7 +299,7 @@ void main() {
         equals: IterableTransformer.toSet(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.toSet()
                 .build(getContext(), getZacContext())
@@ -323,7 +323,7 @@ void main() {
         equals: IterableTransformer.toString(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.toString()
                 .build(getContext(), getZacContext())
@@ -355,7 +355,7 @@ void main() {
             'separator': '##',
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.join()
                 .build(getContext(), getZacContext())
@@ -383,7 +383,7 @@ void main() {
         },
       );
 
-      await testWithContext(tester, (getContext, getZacContext) async {
+      await testWithContexts(tester, (getContext, getZacContext) async {
         expect(
             () =>
                 IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
@@ -410,7 +410,7 @@ void main() {
             'index': 1,
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.elementAt(1)
                 .build(getContext(), getZacContext())
@@ -436,7 +436,7 @@ void main() {
             'count': 1,
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.skip(1)
                 .build(getContext(), getZacContext())
@@ -462,7 +462,7 @@ void main() {
             'count': 2,
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IterableTransformer.take(2)
                 .build(getContext(), getZacContext())
@@ -488,7 +488,7 @@ void main() {
         equals: ListTransformer.reversed(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ListTransformer.reversed()
                 .build(getContext(), getZacContext())
@@ -514,7 +514,7 @@ void main() {
             'value': 'hello',
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
                 .build(getContext(), getZacContext())
@@ -540,7 +540,7 @@ void main() {
         equals: MapTransformer.values(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.values()
                 .build(getContext(), getZacContext())
@@ -567,7 +567,7 @@ void main() {
         equals: MapTransformer.keys(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.keys()
                 .build(getContext(), getZacContext())
@@ -594,7 +594,7 @@ void main() {
         equals: MapTransformer.entries(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.entries()
                 .build(getContext(), getZacContext())
@@ -621,7 +621,7 @@ void main() {
         equals: MapTransformer.length(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.length()
                 .build(getContext(), getZacContext())
@@ -648,7 +648,7 @@ void main() {
         equals: MapTransformer.isEmpty(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.isEmpty()
                 .build(getContext(), getZacContext())
@@ -682,7 +682,7 @@ void main() {
         equals: MapTransformer.isNotEmpty(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
@@ -717,7 +717,7 @@ void main() {
               MapTransformer.containsKey(ZacBuilder<Object?>.fromJson('foo')),
           props: <String, dynamic>{'key': 'foo'});
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
                 .build(getContext(), getZacContext())
@@ -744,7 +744,7 @@ void main() {
           equals: MapTransformer.containsValue(ZacBuilder<Object?>.fromJson(2)),
           props: <String, dynamic>{'value': 2});
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
                 .build(getContext(), getZacContext())
@@ -784,7 +784,7 @@ void main() {
         },
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             MapTransformer.mapper()
                 .build(getContext(), getZacContext())
@@ -856,7 +856,7 @@ void main() {
         equals: MapTransformer.fromObjectObject(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.fromObjectObject()
                 .build(getContext(), getZacContext())
@@ -884,7 +884,7 @@ void main() {
         equals: MapTransformer.fromStringNullObject(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.fromStringNullObject()
                 .build(getContext(), getZacContext())
@@ -912,7 +912,7 @@ void main() {
         equals: MapTransformer.fromStringObject(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.fromStringObject()
                 .build(getContext(), getZacContext())
@@ -942,7 +942,7 @@ void main() {
             'key': 'nameOfKey',
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey'))
                 .build(getContext(), getZacContext())
@@ -976,7 +976,7 @@ void main() {
             'value': 'hello',
           });
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             () => MapTransformer.setValueForKey(
                   key: ZacBuilder<String>.fromJson('nameOfKey'),
@@ -1007,7 +1007,7 @@ void main() {
         equals: ObjectTransformer.isList(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isList()
                 .build(getContext(), getZacContext())
@@ -1031,7 +1031,7 @@ void main() {
         equals: ObjectTransformer.isMap(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isMap()
                 .build(getContext(), getZacContext())
@@ -1055,7 +1055,7 @@ void main() {
         equals: ObjectTransformer.isBool(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isBool()
                 .build(getContext(), getZacContext())
@@ -1079,7 +1079,7 @@ void main() {
         equals: ObjectTransformer.isString(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isString()
                 .build(getContext(), getZacContext())
@@ -1103,7 +1103,7 @@ void main() {
         equals: ObjectTransformer.isDouble(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isDouble()
                 .build(getContext(), getZacContext())
@@ -1134,7 +1134,7 @@ void main() {
         equals: ObjectTransformer.isInt(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isInt()
                 .build(getContext(), getZacContext())
@@ -1165,7 +1165,7 @@ void main() {
         equals: ObjectTransformer.isNull(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.isNull()
                 .build(getContext(), getZacContext())
@@ -1192,7 +1192,7 @@ void main() {
         },
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.equals(other: 5)
                 .build(getContext(), getZacContext())
@@ -1216,7 +1216,7 @@ void main() {
         equals: ObjectTransformer.hashCode(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.hashCode()
                 .build(getContext(), getZacContext())
@@ -1233,7 +1233,7 @@ void main() {
         equals: ObjectTransformer.runtimeType(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.runtimeType()
                 .build(getContext(), getZacContext())
@@ -1257,7 +1257,7 @@ void main() {
         equals: ObjectTransformer.toString(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             ObjectTransformer.toString()
                 .build(getContext(), getZacContext())
@@ -1291,7 +1291,7 @@ void main() {
       });
 
       testWidgets('.transform()', (tester) async {
-        await testWithContextWithChild(
+        await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideInt(
             value: 5,
@@ -1332,7 +1332,7 @@ void main() {
         equals: NumTransformer.toDouble(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.toDouble()
                 .build(getContext(), getZacContext())
@@ -1356,7 +1356,7 @@ void main() {
         equals: NumTransformer.toInt(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.toInt()
                 .build(getContext(), getZacContext())
@@ -1380,7 +1380,7 @@ void main() {
         equals: NumTransformer.abs(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.abs().build(getContext(), getZacContext()).transform(
                 ZacTransformValue(-2.5), getContext(), getZacContext(), null),
@@ -1402,7 +1402,7 @@ void main() {
         equals: NumTransformer.ceil(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.ceil()
                 .build(getContext(), getZacContext())
@@ -1426,7 +1426,7 @@ void main() {
         equals: NumTransformer.ceilToDouble(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.ceilToDouble()
                 .build(getContext(), getZacContext())
@@ -1450,7 +1450,7 @@ void main() {
         equals: NumTransformer.floor(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.floor()
                 .build(getContext(), getZacContext())
@@ -1473,7 +1473,7 @@ void main() {
         converter: 'z:1:Transformer:num.floorToDouble',
         equals: NumTransformer.floorToDouble(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.floorToDouble()
                 .build(getContext(), getZacContext())
@@ -1497,7 +1497,7 @@ void main() {
         equals: NumTransformer.round(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.round()
                 .build(getContext(), getZacContext())
@@ -1521,7 +1521,7 @@ void main() {
         equals: NumTransformer.roundToDouble(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.roundToDouble()
                 .build(getContext(), getZacContext())
@@ -1545,7 +1545,7 @@ void main() {
         equals: NumTransformer.isFinite(),
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.isFinite()
                 .build(getContext(), getZacContext())
@@ -1568,7 +1568,7 @@ void main() {
         converter: 'z:1:Transformer:num.isInfinite',
         equals: NumTransformer.isInfinite(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.isInfinite()
                 .build(getContext(), getZacContext())
@@ -1591,7 +1591,7 @@ void main() {
         converter: 'z:1:Transformer:num.isNan',
         equals: NumTransformer.isNan(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.isNan()
                 .build(getContext(), getZacContext())
@@ -1614,7 +1614,7 @@ void main() {
         converter: 'z:1:Transformer:num.isNegative',
         equals: NumTransformer.isNegative(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.isNegative()
                 .build(getContext(), getZacContext())
@@ -1639,7 +1639,7 @@ void main() {
         converter: 'z:1:Transformer:int.parse',
         equals: IntTransformer.parse(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IntTransformer.parse()
                 .build(getContext(), getZacContext())
@@ -1669,7 +1669,7 @@ void main() {
         converter: 'z:1:Transformer:int.tryParse',
         equals: IntTransformer.tryParse(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IntTransformer.tryParse()
                 .build(getContext(), getZacContext())
@@ -1700,7 +1700,7 @@ void main() {
         equals: IntTransformer.incr(ZacValue<int>(1)),
         props: <String, dynamic>{'by': 1},
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IntTransformer.incr(ZacValue<int>(1))
                 .build(getContext(), getZacContext())
@@ -1725,7 +1725,7 @@ void main() {
         props: <String, dynamic>{'by': 1},
       );
 
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             IntTransformer.decr(ZacValue<int>(1))
                 .build(getContext(), getZacContext())
@@ -1750,7 +1750,7 @@ void main() {
         converter: 'z:1:Transformer:String.length',
         equals: StringTransformer.length(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             StringTransformer.length()
                 .build(getContext(), getZacContext())
@@ -1777,7 +1777,7 @@ void main() {
           'pattern': ',',
         },
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             StringTransformer.split(pattern: ZacBuilder<String>.fromJson(','))
                 .build(getContext(), getZacContext())
@@ -1801,7 +1801,7 @@ void main() {
         converter: 'z:1:Transformer:String.isEmpty',
         equals: StringTransformer.isEmpty(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             StringTransformer.isEmpty()
                 .build(getContext(), getZacContext())
@@ -1824,7 +1824,7 @@ void main() {
         converter: 'z:1:Transformer:String.isNotEmpty',
         equals: StringTransformer.isNotEmpty(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             StringTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
@@ -1849,7 +1849,7 @@ void main() {
             ZacBuilder<String>.fromJson('yy')),
         props: <String, dynamic>{'from': 'xx', 'replace': 'yy'},
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
                     ZacBuilder<String>.fromJson('yy'))
@@ -1877,7 +1877,7 @@ void main() {
         converter: 'z:1:Transformer:Json.encode',
         equals: JsonTransformer.encode(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             JsonTransformer.encode()
                 .build(getContext(), getZacContext())
@@ -1893,7 +1893,7 @@ void main() {
         converter: 'z:1:Transformer:Json.decode',
         equals: JsonTransformer.decode(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             JsonTransformer.decode()
                 .build(getContext(), getZacContext())
@@ -1918,7 +1918,7 @@ void main() {
         converter: 'z:1:Transformer:Bool.negate',
         equals: BoolTransformer.negate(),
       );
-      await testWithContext(tester, (getContext, getZacContext) {
+      await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             BoolTransformer.negate()
                 .build(getContext(), getZacContext())

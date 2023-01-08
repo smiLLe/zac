@@ -75,19 +75,17 @@ void main() {
       });
 
       testWidgets('.build()', (tester) async {
-        Object? obj;
-        await tester.pumpWidget(
-          ZacWidget(
-            data: LeakContext(
-              cb: (context, zacContext) {
-                obj = ZacBuilder<String>.fromJson('foo')
-                    .build(context, zacContext);
-              },
+        await testWithContextsWraped(
+          tester,
+          (child) => FlutterColumn(
+            children: ZacValueList<Widget, List<Widget>>(
+              [FlutterText(ZacBuilder<String>.fromJson('hello world')), child],
             ),
           ),
+          (getContext, getZacContext) {
+            expect(find.text('hello world'), findsOneWidget);
+          },
         );
-
-        expect(obj, 'foo');
       });
     });
   });
@@ -147,7 +145,7 @@ void main() {
       });
 
       testWidgets('.build()', (tester) async {
-        testWithContext(
+        testWithContexts(
           tester,
           (getContext, getZacContext) {
             expect(
@@ -238,7 +236,7 @@ void main() {
       });
 
       testWidgets('.build()', (tester) async {
-        testWithContext(tester, (getContext, getZacContext) {
+        testWithContexts(tester, (getContext, getZacContext) {
           expect(
               ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
                 'builder': 'z:1:ZacValueMap',

@@ -23,11 +23,11 @@ void main() {
 
   group('UpdateContext', () {
     testWidgets('Unmount Callback', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => FlutterBuilder(child: child),
         (getContext, getZacContext) async {
-          await testWithContextWithChild(
+          await testWithContextsWraped(
             tester,
             (child) => FlutterBuilder(child: child),
             (getContext2, getZacContext2) async {
@@ -59,7 +59,7 @@ void main() {
     });
 
     testWidgets('BuildContext.isMounted', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => child,
         (getContext, getZacContext) async {
@@ -71,7 +71,7 @@ void main() {
     });
 
     testWidgets('BuildContext.widgetRef', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => child,
         (getContext, getZacContext) async {

@@ -11,7 +11,7 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      await testWithContext(
+      await testWithContexts(
         tester,
         (getContext, getZacContext) {
           expect(
@@ -32,7 +32,7 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => FlutterGlobalKeyNavigatorStateProvider(
           family: 'shared',
@@ -55,7 +55,7 @@ void main() {
     });
 
     testWidgets('.build()', (tester) async {
-      await testWithContextWithChild(
+      await testWithContextsWraped(
         tester,
         (child) => FlutterGlobalKeyScaffoldMessengerStateProvider(
           family: 'shared',
