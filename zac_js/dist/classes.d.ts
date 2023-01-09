@@ -2155,6 +2155,7 @@ export declare class ObjectTransformer extends ZacBuilder<ZacTransform> {
     static isDouble(): ObjectTransformer;
     static isInt(): ObjectTransformer;
     static isNull(): ObjectTransformer;
+    static isActionPayload(): ObjectTransformer;
     static equals(data: {
         other: any;
     }): ObjectTransformer;
@@ -2167,9 +2168,31 @@ export declare class ObjectTransformer extends ZacBuilder<ZacTransform> {
 }
 export declare class SharedValueActions extends ZacBuilder<ZacAction> {
     static update(data: {
+        value: ZacBuilder<any>;
         family: SharedValueFamily;
-        transformer?: ZacListBuilder<ZacTransform>;
-        ifNoPayloadTakeCurrent?: boolean;
+    }): SharedValueActions;
+    static transformCurrentValue(data: {
+        family: SharedValueFamily;
+        transformer: ZacListBuilder<ZacTransform>;
+    }): SharedValueActions;
+    static updateFromPayload(data: {
+        family: SharedValueFamily;
+        transformer: ZacListBuilder<ZacTransform>;
+    }): SharedValueActions;
+    static updateWithNull(data: {
+        family: SharedValueFamily;
+    }): SharedValueActions;
+    static updateWithWidget(data: {
+        value: ZacBuilder<native.Widget>;
+        family: SharedValueFamily;
+    }): SharedValueActions;
+    static updateWithWidgets(data: {
+        value: ZacListBuilder<native.Widget>;
+        family: SharedValueFamily;
+    }): SharedValueActions;
+    static updateWithBuilder(data: {
+        value: ZacBuilder<any>;
+        family: SharedValueFamily;
     }): SharedValueActions;
     static invalidate(data: {
         family: SharedValueFamily;
@@ -2258,6 +2281,10 @@ export declare class StringTransformer extends ZacBuilder<ZacTransform> {
         from: string | ZacBuilder<string>;
         replace: string | ZacBuilder<string>;
     }): StringTransformer;
+}
+export declare class ZacActionPayloadTransformer extends ZacBuilder<ZacTransform> {
+    static toList(): ZacActionPayloadTransformer;
+    static toObject(): ZacActionPayloadTransformer;
 }
 export declare class ZacCompleterActions extends ZacBuilder<ZacAction> {
     static completeVoid(data: {

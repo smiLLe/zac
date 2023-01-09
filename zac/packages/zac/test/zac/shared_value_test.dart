@@ -678,33 +678,145 @@ void main() {
       });
     });
 
-    group('update', () {
-      testWidgets('may update the SharedValue if no payload is present',
-          (tester) async {
+    group('.update()', () {
+      test('Is registered', () {
+        expectInRegistry('z:1:SharedValue.update', SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute', (tester) async {
         await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideString(
             value: 'foo',
-            family: 'family',
+            family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(
-                  ConsumeSharedValue<String>(
-                    family: 'family',
-                    transformer:
-                        ZacValueList<ZacTransform, List<ZacTransform>>([
-                      TestTransform(
-                        (transformValue, context, zacContext, payload) {
-                          if (null == transformValue.value) return 'IS NULL';
-                          return transformValue.value;
-                        },
-                      )
-                    ]),
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterText(ConsumeSharedValue(family: 'shared')),
+                child,
+              ]),
+            ),
+          ),
+          (getContext, getZacContext) async {
+            expect(find.text('foo'), findsOneWidget);
+
+            [
+              SharedValueActions.update(
+                      value: ZacValue('bar'), family: 'shared')
+                  .build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
+
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
+          },
+        );
+      });
+    });
+
+    group('.updateWithNull()', () {
+      test('Is registered', () {
+        expectInRegistry('z:1:null.updateShared', SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute', (tester) async {
+        await testWithContextsWraped(
+          tester,
+          (child) => SharedValueProviderBuilder.provideString(
+            value: 'foo',
+            family: 'shared',
+            child: FlutterColumn(
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterText(ConsumeSharedValue(
+                  family: 'shared',
+                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                    TestTransform(
+                      (transformValue, context, zacContext, payload) {
+                        if (transformValue.value == null) return 'IS NULL';
+                        return transformValue.value;
+                      },
+                    )
+                  ]),
+                )),
+                child,
+              ]),
+            ),
+          ),
+          (getContext, getZacContext) async {
+            expect(find.text('foo'), findsOneWidget);
+
+            [
+              SharedValueActions.updateWithNull(family: 'shared')
+                  .build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
+
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('IS NULL'), findsOneWidget);
+          },
+        );
+      });
+    });
+
+    group('.updateWithWidget()', () {
+      test('Is registered', () {
+        expectInRegistry(
+            'z:1:Widget.updateShared', SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute', (tester) async {
+        await testWithContextsWraped(
+          tester,
+          (child) => SharedValueProviderBuilder.provideWidget(
+            value: FlutterText(ZacValue('foo')),
+            family: 'shared',
+            child: FlutterColumn(
+              children: ZacValueList<Widget, List<Widget>>([
+                ConsumeSharedValue(family: 'shared'),
+                child,
+              ]),
+            ),
+          ),
+          (getContext, getZacContext) async {
+            expect(find.text('foo'), findsOneWidget);
+
+            [
+              SharedValueActions.updateWithWidget(
+                value: FlutterText(ZacValue('bar')),
+                family: 'shared',
+              ).build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
+
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
+          },
+        );
+      });
+    });
+
+    group('.updateWithWidgets()', () {
+      test('Is registered', () {
+        expectInRegistry(
+            'z:1:List<Widget>.updateShared', SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute', (tester) async {
+        await testWithContextsWraped(
+          tester,
+          (child) => SharedValueProviderBuilder.provideWidgets(
+            value: ZacValueList<Widget, List<Widget>>([
+              FlutterText(ZacValue('foo')),
+            ]),
+            family: 'shared',
+            child: FlutterColumn(
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterColumn(
+                  children: ConsumeSharedValueList<Widget, List<Widget>>(
+                    family: 'shared',
                   ),
-                ),
-                ZacExecuteActionsBuilder.once(
-                  actions: ZacValueList<ZacAction, List<ZacAction>>(
-                      [SharedValueActions.update(family: 'family')]),
                 ),
                 child,
               ]),
@@ -713,232 +825,138 @@ void main() {
           (getContext, getZacContext) async {
             expect(find.text('foo'), findsOneWidget);
 
-            await tester.pumpAndSettle();
+            [
+              SharedValueActions.updateWithWidgets(
+                value: ZacValueList<Widget, List<Widget>>(
+                    [FlutterText(ZacValue('bar'))]),
+                family: 'shared',
+              ).build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
 
-            expect(find.text('IS NULL'), findsOneWidget);
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
           },
         );
       });
+    });
 
-      testWidgets(
-          'may update the SharedValue by using its current value if no payload is present',
-          (tester) async {
-        await testZacWidget(
+    group('.updateWithBuilder()', () {
+      test('Is registered', () {
+        expectInRegistry(
+            'z:1:ZacBuilder<Object>.updateShared', SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute', (tester) async {
+        await testWithContextsWraped(
           tester,
-          SharedValueProviderBuilder.provideString(
+          (child) => SharedValueProviderBuilder.provideAnyBuilder(
+            value: ZacValue('foo'),
+            family: 'shared',
+            child: FlutterColumn(
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterText(ConsumeSharedValue(family: 'shared')),
+                child,
+              ]),
+            ),
+          ),
+          (getContext, getZacContext) async {
+            expect(find.text('foo'), findsOneWidget);
+
+            [
+              SharedValueActions.updateWithBuilder(
+                value: ZacValue('bar'),
+                family: 'shared',
+              ).build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
+
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
+          },
+        );
+      });
+    });
+
+    group('.transformCurrentValue()', () {
+      test('Is registered', () {
+        expectInRegistry('z:1:SharedValue.transformCurrentValue',
+            SharedValueActions.fromJson);
+      });
+
+      testWidgets('execute action', (tester) async {
+        await testWithContextsWraped(
+          tester,
+          (child) => SharedValueProviderBuilder.provideString(
             value: 'foo',
-            family: 'family',
+            family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(ConsumeSharedValue<String>(family: 'family')),
-                ZacExecuteActionsBuilder.once(
-                  actions: ZacValueList<ZacAction, List<ZacAction>>([
-                    SharedValueActions.update(
-                      family: 'family',
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>(
-                              [_ConcatStr('oof')]),
-                      ifNoPayloadTakeCurrent: true,
-                    )
-                  ]),
-                ),
-              ]),
-            ),
-          ),
-        );
-
-        await tester.pumpAndSettle();
-
-        expect(find.text('foooof'), findsOneWidget);
-      });
-
-      testWidgets(
-          'may transform child items in a List before updating the SharedValue',
-          (tester) async {
-        await testZacWidget(
-          tester,
-          SharedValueProviderBuilder.provideObject(
-            value: ['a', 'b'],
-            family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(ConsumeSharedValue<String>(
-                  family: 'family',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
-                      [IterableTransformer.join(separator: ', ')]),
-                )),
-                ZacExecuteActionsBuilder.once(
-                  actions: ZacValueList<ZacAction, List<ZacAction>>([
-                    SharedValueActions.update(
-                      family: 'family',
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>([
-                        IterableTransformer.map(
-                            transformer:
-                                ZacValueList<ZacTransform, List<ZacTransform>>(
-                                    [_ConcatStr('foo')]))
-                      ]),
-                      ifNoPayloadTakeCurrent: true,
-                    )
-                  ]),
-                ),
-              ]),
-            ),
-          ),
-        );
-
-        expect(find.text('a, b'), findsOneWidget);
-        await tester.pumpAndSettle();
-
-        expect(find.text('afoo, bfoo'), findsOneWidget);
-      });
-
-      testWidgets(
-          'may transform child items in a List before updating the SharedValue from payload',
-          (tester) async {
-        await testWithContextsWraped(
-          tester,
-          (child) => SharedValueProviderBuilder.provideObject(
-            /// this value is not relevant for this test because the action will
-            /// provide a new value
-            value: ['ignore'],
-            family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(ConsumeSharedValue<String>(
-                  family: 'family',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
-                      [IterableTransformer.join(separator: ', ')]),
-                )),
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
             ),
           ),
           (getContext, getZacContext) async {
-            ZacValueList<ZacAction, List<ZacAction>>([
-              SharedValueActions.update(
-                family: 'family',
+            expect(find.text('foo'), findsOneWidget);
+
+            [
+              SharedValueActions.transformCurrentValue(
+                family: 'shared',
                 transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                  IterableTransformer.map(
-                    transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
-                        [_ConcatStr('foo')]),
-                  ),
+                  TestTransform(
+                    (transformValue, context, zacContext, payload) => 'bar',
+                  )
                 ]),
-              )
-            ]).build(getContext(), getZacContext()).execute(
-                ZacActionPayload.param(['a', 'b']),
-                getContext(),
-                getZacContext());
+              ).build(getContext(), getZacContext())
+            ].execute(const ZacActionPayload(), getContext(), getZacContext());
 
-            await tester.pumpAndSettle();
+            await tester.pump();
 
-            expect(find.text('afoo, bfoo'), findsOneWidget);
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
           },
         );
       });
+    });
 
-      testWidgets(
-          'may transform child items in a List before updating the SharedValue from payload with two params',
-          (tester) async {
-        await testWithContextsWraped(
-          tester,
-          (child) => SharedValueProviderBuilder.provideObject(
-            /// this value is not relevant for this test because the action will
-            /// provide a new value
-            value: [
-              ['ignore'],
-              ['ignore']
-            ],
-            family: 'family',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(ConsumeSharedValue<String>(
-                  family: 'family',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                    IterableTransformer.first(),
-                    IterableTransformer.join(separator: ', ')
-                  ]),
-                )),
-                FlutterText(ConsumeSharedValue<String>(
-                  family: 'family',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                    IterableTransformer.last(),
-                    IterableTransformer.join(separator: ', ')
-                  ]),
-                )),
-                child,
-              ]),
-            ),
-          ),
-          (getContext, getZacContext) async {
-            ZacValueList<ZacAction, List<ZacAction>>([
-              SharedValueActions.update(
-                family: 'family',
-                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                  IterableTransformer.map(
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>(
-                              [_ConcatStr('foo')])),
-                ]),
-              ),
-            ]).build(getContext(), getZacContext()).execute(
-                ZacActionPayload.param2(['a', 'b'], ['c', 'd']),
-                getContext(),
-                getZacContext());
-
-            await tester.pumpAndSettle();
-
-            expect(find.text('afoo, bfoo'), findsOneWidget);
-            expect(find.text('cfoo, dfoo'), findsOneWidget);
-          },
-        );
+    group('.updateFromPayload()', () {
+      test('Is registered', () {
+        expectInRegistry(
+            'z:1:SharedValue.updateFromPayload', SharedValueActions.fromJson);
       });
 
-      testWidgets(
-          'may transform value items in a Map before updating the SharedValue from payload',
-          (tester) async {
+      testWidgets('execute action', (tester) async {
         await testWithContextsWraped(
           tester,
-          (child) => SharedValueProviderBuilder.provideObject(
-            /// this value is not relevant for this test because the action will
-            /// provide a new value
-            value: {'ignore': 'ignored'},
-            family: 'family',
+          (child) => SharedValueProviderBuilder.provideString(
+            value: 'foo',
+            family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>?>([
-                FlutterText(ConsumeSharedValue<String>(
-                  family: 'family',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                    MapTransformer.values(),
-                    IterableTransformer.join(separator: ', ')
-                  ]),
-                )),
+              children: ZacValueList<Widget, List<Widget>>([
+                FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
             ),
           ),
           (getContext, getZacContext) async {
-            ZacValueList<ZacAction, List<ZacAction>>([
-              SharedValueActions.update(
-                family: 'family',
-                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
-                  MapTransformer.mapper(
-                    valueTransformer:
-                        ZacValueList<ZacTransform, List<ZacTransform>>(
-                            [_ConcatStr('foo')]),
-                  ),
-                ]),
-              ),
-            ]).build(getContext(), getZacContext()).execute(
-                ZacActionPayload.param(
-                  {'ignore': 'a', 'ignore2': 'b'},
-                ),
-                getContext(),
-                getZacContext());
+            expect(find.text('foo'), findsOneWidget);
 
-            await tester.pumpAndSettle();
+            [
+              SharedValueActions.updateFromPayload(
+                family: 'shared',
+                transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
+                    [ZacActionPayloadTransformer.toObject()]),
+              ).build(getContext(), getZacContext())
+            ].execute(
+                ZacActionPayload.param('bar'), getContext(), getZacContext());
 
-            expect(find.text('afoo, bfoo'), findsOneWidget);
+            await tester.pump();
+
+            expect(find.text('foo'), findsNothing);
+            expect(find.text('bar'), findsOneWidget);
           },
         );
       });

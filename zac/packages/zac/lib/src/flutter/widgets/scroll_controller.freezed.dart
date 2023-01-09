@@ -25,7 +25,7 @@ mixin _$FlutterScrollController {
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get keepScrollOffset => throw _privateConstructorUsedError;
   ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
-  Object? get family => throw _privateConstructorUsedError;
+  String? get family => throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -56,7 +56,7 @@ class _$_ScrollControllerProvide extends _ScrollControllerProvide {
   @override
   final ZacBuilder<String?>? debugLabel;
   @override
-  final Object? family;
+  final String? family;
   @override
   final ZacBuilder<Widget> child;
 
@@ -76,19 +76,14 @@ class _$_ScrollControllerProvide extends _ScrollControllerProvide {
                 other.keepScrollOffset == keepScrollOffset) &&
             (identical(other.debugLabel, debugLabel) ||
                 other.debugLabel == debugLabel) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.family, family) || other.family == family) &&
             (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      initialScrollOffset,
-      keepScrollOffset,
-      debugLabel,
-      const DeepCollectionEquality().hash(family),
-      child);
+  int get hashCode => Object.hash(runtimeType, initialScrollOffset,
+      keepScrollOffset, debugLabel, family, child);
 
   @override
   @optionalTypeArgs
@@ -104,7 +99,7 @@ abstract class _ScrollControllerProvide extends FlutterScrollController {
       {final ZacBuilder<double?>? initialScrollOffset,
       final ZacBuilder<bool?>? keepScrollOffset,
       final ZacBuilder<String?>? debugLabel,
-      final Object? family,
+      final String? family,
       required final ZacBuilder<Widget> child}) = _$_ScrollControllerProvide;
   _ScrollControllerProvide._() : super._();
 
@@ -118,7 +113,7 @@ abstract class _ScrollControllerProvide extends FlutterScrollController {
   @override
   ZacBuilder<String?>? get debugLabel;
   @override
-  Object? get family;
+  String? get family;
   @override
   ZacBuilder<Widget> get child;
 }

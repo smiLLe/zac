@@ -16,7 +16,7 @@ class AccessEmptySharedValueError extends StateError {
   AccessEmptySharedValueError(super.message);
 }
 
-typedef SharedValueFamily = Object;
+typedef SharedValueFamily = String;
 typedef SharedValueType = Object?;
 
 abstract class SharedValue {
@@ -79,56 +79,93 @@ class SharedValueActions
     implements ZacBuilder<ZacAction> {
   SharedValueActions._();
 
-  static const String unionValue = 'z:1:SharedValue.update';
-  static const String unionValueInvalidate = 'z:1:SharedValue.invalidate';
-
   factory SharedValueActions.fromJson(Map<String, dynamic> json) =>
       _$SharedValueActionsFromJson(json);
 
-  @FreezedUnionValue(SharedValueActions.unionValue)
+  /// Build the value and set the result as SharedValue
+  @FreezedUnionValue('z:1:SharedValue.update')
   factory SharedValueActions.update({
+    required ZacBuilder<Object> value,
     required SharedValueFamily family,
-    ZacListBuilder<ZacTransform, List<ZacTransform>?>? transformer,
-    @Default(false) bool? ifNoPayloadTakeCurrent,
   }) = _SharedValueActionsUpdate;
 
-  @FreezedUnionValue(SharedValueActions.unionValueInvalidate)
+  /// Takes the current [Sharedvalue] from [family], pass it into the
+  /// [transformer] and update it afterwards
+  @FreezedUnionValue('z:1:SharedValue.transformCurrentValue')
+  factory SharedValueActions.transformCurrentValue({
+    required SharedValueFamily family,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>> transformer,
+  }) = _SharedValueActionsTransformCurrentValue;
+
+  /// Takes the [ZacAction] payload and pass it to [transformer].
+  /// After that it will update the [SharedValue].
+  /// Consider using [ZacActionPayloadTransformer] in [transformer].
+  @FreezedUnionValue('z:1:SharedValue.updateFromPayload')
+  factory SharedValueActions.updateFromPayload({
+    required SharedValueFamily family,
+    required ZacListBuilder<ZacTransform, List<ZacTransform>> transformer,
+  }) = _SharedValueActionsUpdateFromPayload;
+
+  /// Will set Null as [SharedValue]
+  @FreezedUnionValue('z:1:null.updateShared')
+  factory SharedValueActions.updateWithNull({
+    required SharedValueFamily family,
+  }) = _SharedValueActionsUpdateWIthNull;
+
+  /// Will set [ZacBuilder<Widget>] as [SharedValue]
+  @FreezedUnionValue('z:1:Widget.updateShared')
+  factory SharedValueActions.updateWithWidget({
+    required ZacBuilder<Widget> value,
+    required SharedValueFamily family,
+  }) = _SharedValueActionsUpdateWithWidget;
+
+  /// Will set a List of [ZacBuilder<Widget>] as [SharedValue]
+  @FreezedUnionValue('z:1:List<Widget>.updateShared')
+  factory SharedValueActions.updateWithWidgets({
+    required ZacListBuilder<Widget, List<Widget>> value,
+    required SharedValueFamily family,
+  }) = _SharedValueActionsUpdateWithWidgets;
+
+  /// Will set any ZacBuilder as [SharedValue]
+  @FreezedUnionValue('z:1:ZacBuilder<Object>.updateShared')
+  factory SharedValueActions.updateWithBuilder({
+    required ZacBuilder<Object> value,
+    required SharedValueFamily family,
+  }) = _SharedValueActionsUpdateWithBuilder;
+
+  @FreezedUnionValue('z:1:SharedValue.invalidate')
   factory SharedValueActions.invalidate({
     required SharedValueFamily family,
   }) = _SharedValueActionsRefresh;
 
-  SharedValueType _updateTransformItems(
-      Object? value,
-      ZacActionPayload payload,
-      BuildContext context,
-      ZacContext zacContext,
-      _SharedValueActionsUpdate obj) {
-    return obj.transformer?.build(context, zacContext)?.transform(
-            ZacTransformValue(value), context, zacContext, payload) ??
-        value;
-  }
-
   late final ZacAction _action = ZacAction(
       (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
     map(
+      updateWithBuilder: (obj) =>
+          SharedValue.update(context, zacContext, obj.family, (_) => obj.value),
+      updateWithWidgets: (obj) =>
+          SharedValue.update(context, zacContext, obj.family, (_) => obj.value),
+      updateWithWidget: (obj) =>
+          SharedValue.update(context, zacContext, obj.family, (_) => obj.value),
+      updateWithNull: (obj) =>
+          SharedValue.update(context, zacContext, obj.family, (_) => null),
       update: (obj) {
+        SharedValue.update(context, zacContext, obj.family,
+            (_) => obj.value.build(context, zacContext));
+      },
+      transformCurrentValue: (obj) {
         SharedValue.update(context, zacContext, obj.family, (current) {
-          return payload.map(
-            (_) => true == obj.ifNoPayloadTakeCurrent
-                ? _updateTransformItems(
-                    current, payload, context, zacContext, obj)
-                : null,
-            param: (pl) => _updateTransformItems(
-                pl.value, payload, context, zacContext, obj),
-            param2: (pl) {
-              return <Object?>[
-                _updateTransformItems(
-                    pl.first, payload, context, zacContext, obj),
-                _updateTransformItems(
-                    pl.second, payload, context, zacContext, obj)
-              ];
-            },
-          );
+          final nextValue = obj.transformer
+              .build(context, zacContext)
+              .transform(
+                  ZacTransformValue(current), context, zacContext, payload);
+          return nextValue;
+        });
+      },
+      updateFromPayload: (obj) {
+        SharedValue.update(context, zacContext, obj.family, (current) {
+          return obj.transformer.build(context, zacContext).transform(
+              ZacTransformValue(payload), context, zacContext, payload);
         });
       },
       invalidate: (obj) {

@@ -59,7 +59,7 @@ void main() {
               },
               'onPressed': [
                 {
-                  'builder': 'z:1:SharedValue.update',
+                  'builder': 'z:1:SharedValue.transformCurrentValue',
                   'family': 'counter',
                   'transformer': [
                     {
@@ -67,7 +67,6 @@ void main() {
                       'by': 1,
                     }
                   ],
-                  'ifNoPayloadTakeCurrent': true,
                 },
               ],
             }

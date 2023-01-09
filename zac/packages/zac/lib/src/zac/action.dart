@@ -43,6 +43,39 @@ class ZacActionPayload with _$ZacActionPayload {
       );
 }
 
+@freezedZacBuilder
+class ZacActionPayloadTransformer
+    with _$ZacActionPayloadTransformer
+    implements ZacBuilder<ZacTransform> {
+  ZacActionPayloadTransformer._();
+
+  factory ZacActionPayloadTransformer.fromJson(Map<String, dynamic> json) =>
+      _$ZacActionPayloadTransformerFromJson(json);
+
+  @FreezedUnionValue('z:1:Transformer:ActionPayload.toList')
+  factory ZacActionPayloadTransformer.toList() =
+      _ZacActionPayloadTransformerToList;
+
+  @FreezedUnionValue('z:1:Transformer:ActionPayload.toObject')
+  factory ZacActionPayloadTransformer.toObject() =
+      _ZacActionPayloadTransformerToObject;
+
+  late final ZacTransform _transformer = ZacTransform(
+    (transformValue, context, zacContext, payload) {
+      final value = transformValue.value;
+      assert(value is ZacActionPayload);
+      return map(
+        toList: (obj) => (value as ZacActionPayload).paramsAsList,
+        toObject: (obj) => (value as ZacActionPayload).params,
+      );
+    },
+  );
+
+  @override
+  ZacTransform build(BuildContext context, ZacContext zacContext) =>
+      _transformer;
+}
+
 extension HandleActions on List<ZacAction> {
   void execute(ZacActionPayload payload, BuildContext context,
       ZacContext zacContext) async {

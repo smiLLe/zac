@@ -597,6 +597,140 @@ abstract class _ZacActionPayloadParam2 extends ZacActionPayload {
       throw _privateConstructorUsedError;
 }
 
+ZacActionPayloadTransformer _$ZacActionPayloadTransformerFromJson(
+    Map<String, dynamic> json) {
+  switch (json['builder']) {
+    case 'z:1:Transformer:ActionPayload.toList':
+      return _ZacActionPayloadTransformerToList.fromJson(json);
+    case 'z:1:Transformer:ActionPayload.toObject':
+      return _ZacActionPayloadTransformerToObject.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json,
+          'builder',
+          'ZacActionPayloadTransformer',
+          'Invalid union type "${json['builder']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacActionPayloadTransformer {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacActionPayloadTransformerToList value) toList,
+    required TResult Function(_ZacActionPayloadTransformerToObject value)
+        toObject,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacActionPayloadTransformerToList
+    extends _ZacActionPayloadTransformerToList {
+  _$_ZacActionPayloadTransformerToList({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:ActionPayload.toList',
+        super._();
+
+  factory _$_ZacActionPayloadTransformerToList.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacActionPayloadTransformerToListFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacActionPayloadTransformer.toList()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacActionPayloadTransformerToList);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacActionPayloadTransformerToList value) toList,
+    required TResult Function(_ZacActionPayloadTransformerToObject value)
+        toObject,
+  }) {
+    return toList(this);
+  }
+}
+
+abstract class _ZacActionPayloadTransformerToList
+    extends ZacActionPayloadTransformer {
+  factory _ZacActionPayloadTransformerToList() =
+      _$_ZacActionPayloadTransformerToList;
+  _ZacActionPayloadTransformerToList._() : super._();
+
+  factory _ZacActionPayloadTransformerToList.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacActionPayloadTransformerToList.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacActionPayloadTransformerToObject
+    extends _ZacActionPayloadTransformerToObject {
+  _$_ZacActionPayloadTransformerToObject({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:ActionPayload.toObject',
+        super._();
+
+  factory _$_ZacActionPayloadTransformerToObject.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_ZacActionPayloadTransformerToObjectFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacActionPayloadTransformer.toObject()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacActionPayloadTransformerToObject);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacActionPayloadTransformerToList value) toList,
+    required TResult Function(_ZacActionPayloadTransformerToObject value)
+        toObject,
+  }) {
+    return toObject(this);
+  }
+}
+
+abstract class _ZacActionPayloadTransformerToObject
+    extends ZacActionPayloadTransformer {
+  factory _ZacActionPayloadTransformerToObject() =
+      _$_ZacActionPayloadTransformerToObject;
+  _ZacActionPayloadTransformerToObject._() : super._();
+
+  factory _ZacActionPayloadTransformerToObject.fromJson(
+          Map<String, dynamic> json) =
+      _$_ZacActionPayloadTransformerToObject.fromJson;
+}
+
 ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
     Map<String, dynamic> json) {
   switch (json['builder']) {
@@ -709,7 +843,7 @@ class _$_ZacExecuteActionsBuilderListen
   @override
   final ZacListBuilder<ZacAction, List<ZacAction>> actions;
   @override
-  final Object family;
+  final String family;
   @override
   final ZacBuilder<Widget>? child;
 
@@ -727,14 +861,13 @@ class _$_ZacExecuteActionsBuilderListen
         (other.runtimeType == runtimeType &&
             other is _$_ZacExecuteActionsBuilderListen &&
             (identical(other.actions, actions) || other.actions == actions) &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.family, family) || other.family == family) &&
             (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, actions, const DeepCollectionEquality().hash(family), child);
+  int get hashCode => Object.hash(runtimeType, actions, family, child);
 
   @override
   @optionalTypeArgs
@@ -750,7 +883,7 @@ abstract class _ZacExecuteActionsBuilderListen
     extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderListen(
       {required final ZacListBuilder<ZacAction, List<ZacAction>> actions,
-      required final Object family,
+      required final String family,
       final ZacBuilder<Widget>? child}) = _$_ZacExecuteActionsBuilderListen;
   _ZacExecuteActionsBuilderListen._() : super._();
 
@@ -759,7 +892,7 @@ abstract class _ZacExecuteActionsBuilderListen
 
   @override
   ZacListBuilder<ZacAction, List<ZacAction>> get actions;
-  Object get family;
+  String get family;
   @override
   ZacBuilder<Widget>? get child;
 }

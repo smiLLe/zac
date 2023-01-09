@@ -58,7 +58,7 @@ _$_ZacStateMachineBuildStateBuilder
 _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
         Map<String, dynamic> json) =>
     _$_ZacStateMachineActionsSend(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       event: ZacBuilder<String>.fromJson(json['event'] as Object),
       $type: json['builder'] as String?,
     );
@@ -66,7 +66,7 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
 _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
         Map<String, dynamic> json) =>
     _$_ZacStateMachineActionsTrySend(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       event: ZacBuilder<String>.fromJson(json['event'] as Object),
       $type: json['builder'] as String?,
     );

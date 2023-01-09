@@ -2374,6 +2374,8 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsInt.fromJson(json);
     case 'z:1:Transformer:Object.isNull':
       return _ObjectIsNull.fromJson(json);
+    case 'z:1:Transformer:Object.isActionPayload':
+      return _ObjectIsActionPayload.fromJson(json);
     case 'z:1:Transformer:Object.equals':
       return _ObjectEquals.fromJson(json);
     case 'z:1:Transformer:Object.toString':
@@ -2402,6 +2404,7 @@ mixin _$ObjectTransformer {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2449,6 +2452,7 @@ class _$_ObjectIsList extends _ObjectIsList {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2505,6 +2509,7 @@ class _$_ObjectIsMap extends _ObjectIsMap {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2561,6 +2566,7 @@ class _$_ObjectIsBool extends _ObjectIsBool {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2617,6 +2623,7 @@ class _$_ObjectIsString extends _ObjectIsString {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2673,6 +2680,7 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2729,6 +2737,7 @@ class _$_ObjectIsInt extends _ObjectIsInt {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2785,6 +2794,7 @@ class _$_ObjectIsNull extends _ObjectIsNull {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2801,6 +2811,63 @@ abstract class _ObjectIsNull extends ObjectTransformer {
 
   factory _ObjectIsNull.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsNull.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ObjectIsActionPayload extends _ObjectIsActionPayload {
+  _$_ObjectIsActionPayload({final String? $type})
+      : $type = $type ?? 'z:1:Transformer:Object.isActionPayload',
+        super._();
+
+  factory _$_ObjectIsActionPayload.fromJson(Map<String, dynamic> json) =>
+      _$$_ObjectIsActionPayloadFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ObjectTransformer.isActionPayload()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObjectIsActionPayload);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ObjectIsList value) isList,
+    required TResult Function(_ObjectIsMap value) isMap,
+    required TResult Function(_ObjectIsBool value) isBool,
+    required TResult Function(_ObjectIsString value) isString,
+    required TResult Function(_ObjectIsDouble value) isDouble,
+    required TResult Function(_ObjectIsInt value) isInt,
+    required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
+    required TResult Function(_ObjectEquals value) equals,
+    required TResult Function(_ObjectToString value) toString,
+    required TResult Function(_ObjectRuntimeType value) runtimeType,
+    required TResult Function(_ObjectHashCode value) hashCode,
+    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
+  }) {
+    return isActionPayload(this);
+  }
+}
+
+abstract class _ObjectIsActionPayload extends ObjectTransformer {
+  factory _ObjectIsActionPayload() = _$_ObjectIsActionPayload;
+  _ObjectIsActionPayload._() : super._();
+
+  factory _ObjectIsActionPayload.fromJson(Map<String, dynamic> json) =
+      _$_ObjectIsActionPayload.fromJson;
 }
 
 /// @nodoc
@@ -2847,6 +2914,7 @@ class _$_ObjectEquals extends _ObjectEquals {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2905,6 +2973,7 @@ class _$_ObjectToString extends _ObjectToString {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2961,6 +3030,7 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -3017,6 +3087,7 @@ class _$_ObjectHashCode extends _ObjectHashCode {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -3078,6 +3149,7 @@ class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
+    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,

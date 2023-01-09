@@ -221,6 +221,12 @@ _$_ObjectIsNull _$$_ObjectIsNullFromJson(Map<String, dynamic> json) =>
       $type: json['builder'] as String?,
     );
 
+_$_ObjectIsActionPayload _$$_ObjectIsActionPayloadFromJson(
+        Map<String, dynamic> json) =>
+    _$_ObjectIsActionPayload(
+      $type: json['builder'] as String?,
+    );
+
 _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
     _$_ObjectEquals(
       other: json['other'],

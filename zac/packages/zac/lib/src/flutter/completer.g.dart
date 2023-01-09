@@ -9,7 +9,7 @@ part of 'completer.dart';
 _$_ZacCompleterVoidProvider _$$_ZacCompleterVoidProviderFromJson(
         Map<String, dynamic> json) =>
     _$_ZacCompleterVoidProvider(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );
 

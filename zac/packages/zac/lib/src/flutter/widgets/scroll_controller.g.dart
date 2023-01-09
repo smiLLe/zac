@@ -18,6 +18,6 @@ _$_ScrollControllerProvide _$$_ScrollControllerProvideFromJson(
       debugLabel: json['debugLabel'] == null
           ? null
           : ZacBuilder<String?>.fromJson(json['debugLabel'] as Object),
-      family: json['family'],
+      family: json['family'] as String?,
       child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
     );

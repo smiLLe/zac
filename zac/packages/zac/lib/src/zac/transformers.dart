@@ -412,6 +412,9 @@ class ObjectTransformer
   @FreezedUnionValue(ObjectTransformer.unionValueIsNull)
   factory ObjectTransformer.isNull() = _ObjectIsNull;
 
+  @FreezedUnionValue('z:1:Transformer:Object.isActionPayload')
+  factory ObjectTransformer.isActionPayload() = _ObjectIsActionPayload;
+
   @FreezedUnionValue(ObjectTransformer.unionValueEquals)
   factory ObjectTransformer.equals({required Object? other}) = _ObjectEquals;
 
@@ -441,6 +444,7 @@ class ObjectTransformer
       isInt: (_) => value is int,
       isDouble: (_) => value is double,
       isNull: (_) => null == value,
+      isActionPayload: (_) => value is ZacActionPayload,
       equals: (obj) => obj.other == value,
       equalsSharedValue: (obj) =>
           obj.value?.build(context, zacContext) == value,

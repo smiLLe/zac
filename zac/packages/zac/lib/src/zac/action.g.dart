@@ -6,6 +6,19 @@ part of 'action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$_ZacActionPayloadTransformerToList
+    _$$_ZacActionPayloadTransformerToListFromJson(Map<String, dynamic> json) =>
+        _$_ZacActionPayloadTransformerToList(
+          $type: json['builder'] as String?,
+        );
+
+_$_ZacActionPayloadTransformerToObject
+    _$$_ZacActionPayloadTransformerToObjectFromJson(
+            Map<String, dynamic> json) =>
+        _$_ZacActionPayloadTransformerToObject(
+          $type: json['builder'] as String?,
+        );
+
 _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
         Map<String, dynamic> json) =>
     _$_ZacExecuteActionsBuilderOnce(
@@ -22,7 +35,7 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
     _$_ZacExecuteActionsBuilderListen(
       actions: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
           json['actions'] as Object),
-      family: json['family'] as Object,
+      family: json['family'] as String,
       child: json['child'] == null
           ? null
           : ZacBuilder<Widget>.fromJson(json['child'] as Object),

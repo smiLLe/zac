@@ -4161,6 +4161,11 @@ export class ObjectTransformer extends ZacBuilder<ZacTransform> {
       builder: "z:1:Transformer:Object.isNull",
     });
   }
+  static isActionPayload() {
+    return new ObjectTransformer({
+      builder: "z:1:Transformer:Object.isActionPayload",
+    });
+  }
   static equals(data: { other: any }) {
     return new ObjectTransformer({
       builder: "z:1:Transformer:Object.equals",
@@ -4190,13 +4195,60 @@ export class ObjectTransformer extends ZacBuilder<ZacTransform> {
   }
 }
 export class SharedValueActions extends ZacBuilder<ZacAction> {
-  static update(data: {
-    family: SharedValueFamily;
-    transformer?: ZacListBuilder<ZacTransform>;
-    ifNoPayloadTakeCurrent?: boolean;
-  }) {
+  static update(data: { value: ZacBuilder<any>; family: SharedValueFamily }) {
     return new SharedValueActions({
       builder: "z:1:SharedValue.update",
+      ...data,
+    });
+  }
+  static transformCurrentValue(data: {
+    family: SharedValueFamily;
+    transformer: ZacListBuilder<ZacTransform>;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:SharedValue.transformCurrentValue",
+      ...data,
+    });
+  }
+  static updateFromPayload(data: {
+    family: SharedValueFamily;
+    transformer: ZacListBuilder<ZacTransform>;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:SharedValue.updateFromPayload",
+      ...data,
+    });
+  }
+  static updateWithNull(data: { family: SharedValueFamily }) {
+    return new SharedValueActions({
+      builder: "z:1:null.updateShared",
+      ...data,
+    });
+  }
+  static updateWithWidget(data: {
+    value: ZacBuilder<native.Widget>;
+    family: SharedValueFamily;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:Widget.updateShared",
+      ...data,
+    });
+  }
+  static updateWithWidgets(data: {
+    value: ZacListBuilder<native.Widget>;
+    family: SharedValueFamily;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:List<Widget>.updateShared",
+      ...data,
+    });
+  }
+  static updateWithBuilder(data: {
+    value: ZacBuilder<any>;
+    family: SharedValueFamily;
+  }) {
+    return new SharedValueActions({
+      builder: "z:1:ZacBuilder<Object>.updateShared",
       ...data,
     });
   }
@@ -4358,6 +4410,18 @@ export class StringTransformer extends ZacBuilder<ZacTransform> {
     return new StringTransformer({
       builder: "z:1:Transformer:String.replaceAll",
       ...data,
+    });
+  }
+}
+export class ZacActionPayloadTransformer extends ZacBuilder<ZacTransform> {
+  static toList() {
+    return new ZacActionPayloadTransformer({
+      builder: "z:1:Transformer:ActionPayload.toList",
+    });
+  }
+  static toObject() {
+    return new ZacActionPayloadTransformer({
+      builder: "z:1:Transformer:ActionPayload.toObject",
     });
   }
 }

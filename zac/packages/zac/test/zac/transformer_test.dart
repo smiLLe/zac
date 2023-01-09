@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/context.dart';
@@ -1175,6 +1176,30 @@ void main() {
 
         expect(
             ObjectTransformer.isNull()
+                .build(getContext(), getZacContext())
+                .transform(
+                    ZacTransformValue(''), getContext(), getZacContext(), null),
+            isFalse);
+      });
+    });
+
+    testWidgets('.isActionPayload()', (tester) async {
+      _expectFromJson<ObjectTransformer>(
+        fromJson: ObjectTransformer.fromJson,
+        converter: 'z:1:Transformer:Object.isActionPayload',
+        equals: ObjectTransformer.isActionPayload(),
+      );
+
+      await testWithContexts(tester, (getContext, getZacContext) {
+        expect(
+            ObjectTransformer.isActionPayload()
+                .build(getContext(), getZacContext())
+                .transform(ZacTransformValue(const ZacActionPayload()),
+                    getContext(), getZacContext(), null),
+            isTrue);
+
+        expect(
+            ObjectTransformer.isActionPayload()
                 .build(getContext(), getZacContext())
                 .transform(
                     ZacTransformValue(''), getContext(), getZacContext(), null),

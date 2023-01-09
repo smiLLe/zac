@@ -2329,6 +2329,11 @@ export class ObjectTransformer extends ZacBuilder {
             builder: 'z:1:Transformer:Object.isNull'
         });
     }
+    static isActionPayload() {
+        return new ObjectTransformer({
+            builder: 'z:1:Transformer:Object.isActionPayload'
+        });
+    }
     static equals(data) {
         return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.equals' }, data));
     }
@@ -2354,6 +2359,24 @@ export class ObjectTransformer extends ZacBuilder {
 export class SharedValueActions extends ZacBuilder {
     static update(data) {
         return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.update' }, data));
+    }
+    static transformCurrentValue(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.transformCurrentValue' }, data));
+    }
+    static updateFromPayload(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.updateFromPayload' }, data));
+    }
+    static updateWithNull(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:null.updateShared' }, data));
+    }
+    static updateWithWidget(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:Widget.updateShared' }, data));
+    }
+    static updateWithWidgets(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:List<Widget>.updateShared' }, data));
+    }
+    static updateWithBuilder(data) {
+        return new SharedValueActions(Object.assign({ builder: 'z:1:ZacBuilder<Object>.updateShared' }, data));
     }
     static invalidate(data) {
         return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.invalidate' }, data));
@@ -2412,6 +2435,18 @@ export class StringTransformer extends ZacBuilder {
     }
     static replaceAll(data) {
         return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.replaceAll' }, data));
+    }
+}
+export class ZacActionPayloadTransformer extends ZacBuilder {
+    static toList() {
+        return new ZacActionPayloadTransformer({
+            builder: 'z:1:Transformer:ActionPayload.toList'
+        });
+    }
+    static toObject() {
+        return new ZacActionPayloadTransformer({
+            builder: 'z:1:Transformer:ActionPayload.toObject'
+        });
     }
 }
 export class ZacCompleterActions extends ZacBuilder {

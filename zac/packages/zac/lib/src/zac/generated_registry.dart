@@ -574,6 +574,7 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:GlobalKey<ScaffoldMessengerState>.provide',
         FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson)
     ..register('z:1:List<Widget>.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:List<Widget>.updateShared', SharedValueActions.fromJson)
     ..register(
         'z:1:Map<String, Widget>.provide', SharedValueProviderBuilder.fromJson)
     ..register(
@@ -582,7 +583,10 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Object.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:ScrollController.provide', FlutterScrollController.fromJson)
     ..register('z:1:SharedValue.invalidate', SharedValueActions.fromJson)
+    ..register(
+        'z:1:SharedValue.transformCurrentValue', SharedValueActions.fromJson)
     ..register('z:1:SharedValue.update', SharedValueActions.fromJson)
+    ..register('z:1:SharedValue.updateFromPayload', SharedValueActions.fromJson)
     ..register(
         'z:1:StateMachine.provide', ZacStateMachineProviderBuilder.fromJson)
     ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
@@ -595,6 +599,10 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:StateMachine:Transformer.pickState',
         ZacStateMachineTransformer.fromJson)
     ..register('z:1:String.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:Transformer:ActionPayload.toList',
+        ZacActionPayloadTransformer.fromJson)
+    ..register('z:1:Transformer:ActionPayload.toObject',
+        ZacActionPayloadTransformer.fromJson)
     ..register('z:1:Transformer:Bool.negate', BoolTransformer.fromJson)
     ..register(
         'z:1:Transformer:Iterable.contains', IterableTransformer.fromJson)
@@ -640,6 +648,8 @@ void addZacBuilders(ZacRegistry registry) {
     ..register(
         'z:1:Transformer:Object.equalsSharedValue', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.hashCode', ObjectTransformer.fromJson)
+    ..register(
+        'z:1:Transformer:Object.isActionPayload', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isBool', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isDouble', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isInt', ObjectTransformer.fromJson)
@@ -674,11 +684,15 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Widget', ZacWidgetBuilder.fromJson)
     ..register('z:1:Widget.isolate', ZacWidgetBuilder.fromJson)
     ..register('z:1:Widget.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:Widget.updateShared', SharedValueActions.fromJson)
     ..register(
         'z:1:ZacBuilder<Object>.provide', SharedValueProviderBuilder.fromJson)
+    ..register(
+        'z:1:ZacBuilder<Object>.updateShared', SharedValueActions.fromJson)
     ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
     ..register('z:1:bool.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:double.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:int.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson);
+    ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:null.updateShared', SharedValueActions.fromJson);
 }

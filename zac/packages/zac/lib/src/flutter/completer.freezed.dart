@@ -21,7 +21,7 @@ ZacCompleterVoidProvider _$ZacCompleterVoidProviderFromJson(
 
 /// @nodoc
 mixin _$ZacCompleterVoidProvider {
-  Object get family => throw _privateConstructorUsedError;
+  String get family => throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -41,7 +41,7 @@ class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
       _$$_ZacCompleterVoidProviderFromJson(json);
 
   @override
-  final Object family;
+  final String family;
   @override
   final ZacBuilder<Widget> child;
 
@@ -55,14 +55,13 @@ class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacCompleterVoidProvider &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.family, family) || other.family == family) &&
             (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(family), child);
+  int get hashCode => Object.hash(runtimeType, family, child);
 
   @override
   @optionalTypeArgs
@@ -75,7 +74,7 @@ class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
 
 abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
   factory _ZacCompleterVoidProvider(
-      {required final Object family,
+      {required final String family,
       required final ZacBuilder<Widget> child}) = _$_ZacCompleterVoidProvider;
   _ZacCompleterVoidProvider._() : super._();
 
@@ -83,7 +82,7 @@ abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
       _$_ZacCompleterVoidProvider.fromJson;
 
   @override
-  Object get family;
+  String get family;
   @override
   ZacBuilder<Widget> get child;
 }

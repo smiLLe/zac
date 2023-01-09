@@ -642,7 +642,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineActions {
-  Object get family => throw _privateConstructorUsedError;
+  String get family => throw _privateConstructorUsedError;
   ZacBuilder<String> get event => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -665,7 +665,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
       _$$_ZacStateMachineActionsSendFromJson(json);
 
   @override
-  final Object family;
+  final String family;
   @override
   final ZacBuilder<String> event;
 
@@ -682,14 +682,13 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsSend &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.family, family) || other.family == family) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(family), event);
+  int get hashCode => Object.hash(runtimeType, family, event);
 
   @override
   @optionalTypeArgs
@@ -703,7 +702,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
 
 abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsSend(
-      {required final Object family,
+      {required final String family,
       required final ZacBuilder<String> event}) = _$_ZacStateMachineActionsSend;
   _ZacStateMachineActionsSend._() : super._();
 
@@ -711,7 +710,7 @@ abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
       _$_ZacStateMachineActionsSend.fromJson;
 
   @override
-  Object get family;
+  String get family;
   @override
   ZacBuilder<String> get event;
 }
@@ -729,7 +728,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
       _$$_ZacStateMachineActionsTrySendFromJson(json);
 
   @override
-  final Object family;
+  final String family;
   @override
   final ZacBuilder<String> event;
 
@@ -746,14 +745,13 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsTrySend &&
-            const DeepCollectionEquality().equals(other.family, family) &&
+            (identical(other.family, family) || other.family == family) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(family), event);
+  int get hashCode => Object.hash(runtimeType, family, event);
 
   @override
   @optionalTypeArgs
@@ -767,7 +765,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
 
 abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsTrySend(
-          {required final Object family,
+          {required final String family,
           required final ZacBuilder<String> event}) =
       _$_ZacStateMachineActionsTrySend;
   _ZacStateMachineActionsTrySend._() : super._();
@@ -776,7 +774,7 @@ abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
       _$_ZacStateMachineActionsTrySend.fromJson;
 
   @override
-  Object get family;
+  String get family;
   @override
   ZacBuilder<String> get event;
 }

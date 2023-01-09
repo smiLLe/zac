@@ -258,28 +258,63 @@ void main() {
     });
   });
 
-  group('showDialog', () {
-    testWidgets('show a simple Dialog', (tester) async {
-      await testMap(
+  group('ZacActionPayloadTransformer', () {
+    testWidgets('toList', (tester) async {
+      expectInRegistry('z:1:Transformer:ActionPayload.toList',
+          ZacActionPayloadTransformer.fromJson);
+
+      await testWithContexts(
         tester,
-        <String, dynamic>{
-          'builder': FlutterElevatedButton.unionValue,
-          'key': KeysModel.getValueKey('button'),
-          'onPressed': [
-            {
-              'builder': 'f:1:showDialog',
-              'child': ChildModel.getSizedBox(key: 'dialog_child')
-            },
-          ],
+        (getContext, getZacContext) {
+          expect(
+              ZacActionPayloadTransformer.toList()
+                  .build(getContext(), getZacContext())
+                  .transform(ZacTransformValue(const ZacActionPayload()),
+                      getContext(), getZacContext(), null),
+              <Object>[]);
+
+          expect(
+              ZacActionPayloadTransformer.toList()
+                  .build(getContext(), getZacContext())
+                  .transform(ZacTransformValue(ZacActionPayload.param('foo')),
+                      getContext(), getZacContext(), null),
+              <Object>['foo']);
         },
       );
+    });
 
-      expect(find.byKey(const ValueKey('dialog_child')), findsNothing);
+    testWidgets('toObject', (tester) async {
+      expectInRegistry('z:1:Transformer:ActionPayload.toObject',
+          ZacActionPayloadTransformer.fromJson);
 
-      await tester.tap(find.byKey(const ValueKey('button')));
-      await tester.pumpAndSettle();
+      await testWithContexts(
+        tester,
+        (getContext, getZacContext) {
+          expect(
+              ZacActionPayloadTransformer.toObject()
+                  .build(getContext(), getZacContext())
+                  .transform(ZacTransformValue(const ZacActionPayload()),
+                      getContext(), getZacContext(), null),
+              isNull);
 
-      expect(find.byKey(const ValueKey('dialog_child')), findsOneWidget);
+          expect(
+              ZacActionPayloadTransformer.toObject()
+                  .build(getContext(), getZacContext())
+                  .transform(ZacTransformValue(ZacActionPayload.param('foo')),
+                      getContext(), getZacContext(), null),
+              'foo');
+
+          expect(
+              ZacActionPayloadTransformer.toObject()
+                  .build(getContext(), getZacContext())
+                  .transform(
+                      ZacTransformValue(ZacActionPayload.param2('foo', 'bar')),
+                      getContext(),
+                      getZacContext(),
+                      null),
+              ['foo', 'bar']);
+        },
+      );
     });
   });
 }

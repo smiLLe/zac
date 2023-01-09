@@ -9,19 +9,71 @@ part of 'shared_value.dart';
 _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueActionsUpdate(
-      family: json['family'] as Object,
-      transformer: json['transformer'] == null
-          ? null
-          : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
-              json['transformer'] as Object),
-      ifNoPayloadTakeCurrent: json['ifNoPayloadTakeCurrent'] as bool? ?? false,
+      value: ZacBuilder<Object>.fromJson(json['value'] as Object),
+      family: json['family'] as String,
       $type: json['builder'] as String?,
     );
+
+_$_SharedValueActionsUpdateWIthNull
+    _$$_SharedValueActionsUpdateWIthNullFromJson(Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateWIthNull(
+          family: json['family'] as String,
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsUpdateWithWidget
+    _$$_SharedValueActionsUpdateWithWidgetFromJson(Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateWithWidget(
+          value: ZacBuilder<Widget>.fromJson(json['value'] as Object),
+          family: json['family'] as String,
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsUpdateWithWidgets
+    _$$_SharedValueActionsUpdateWithWidgetsFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateWithWidgets(
+          value: ZacListBuilder<Widget, List<Widget>>.fromJson(
+              json['value'] as Object),
+          family: json['family'] as String,
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsUpdateWithBuilder
+    _$$_SharedValueActionsUpdateWithBuilderFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateWithBuilder(
+          value: ZacBuilder<Object>.fromJson(json['value'] as Object),
+          family: json['family'] as String,
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsTransformCurrentValue
+    _$$_SharedValueActionsTransformCurrentValueFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsTransformCurrentValue(
+          family: json['family'] as String,
+          transformer:
+              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
+                  json['transformer'] as Object),
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsUpdateFromPayload
+    _$$_SharedValueActionsUpdateFromPayloadFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateFromPayload(
+          family: json['family'] as String,
+          transformer:
+              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
+                  json['transformer'] as Object),
+          $type: json['builder'] as String?,
+        );
 
 _$_SharedValueActionsRefresh _$$_SharedValueActionsRefreshFromJson(
         Map<String, dynamic> json) =>
     _$_SharedValueActionsRefresh(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       $type: json['builder'] as String?,
     );
 
@@ -169,7 +221,7 @@ _$_ProvideAnyBuilder _$$_ProvideAnyBuilderFromJson(Map<String, dynamic> json) =>
 _$_ConsumeSharedValue<T> _$$_ConsumeSharedValueFromJson<T>(
         Map<String, dynamic> json) =>
     _$_ConsumeSharedValue<T>(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       transformer: json['transformer'] == null
           ? null
           : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
@@ -184,7 +236,7 @@ _$_ConsumeSharedValueList<T, X>
     _$$_ConsumeSharedValueListFromJson<T extends Object?, X extends List<T>?>(
             Map<String, dynamic> json) =>
         _$_ConsumeSharedValueList<T, X>(
-          family: json['family'] as Object,
+          family: json['family'] as String,
           transformer: json['transformer'] == null
               ? null
               : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
@@ -203,7 +255,7 @@ _$_ConsumeSharedValueMap<T, X> _$$_ConsumeSharedValueMapFromJson<
         T extends Object?,
         X extends Map<String, T>?>(Map<String, dynamic> json) =>
     _$_ConsumeSharedValueMap<T, X>(
-      family: json['family'] as Object,
+      family: json['family'] as String,
       transformer: json['transformer'] == null
           ? null
           : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
