@@ -595,9 +595,8 @@ void main() {
 
     group('update()', () {
       testWidgets('throws if empty', (tester) async {
-        await testWithContextsWraped(
+        await testWithContexts(
           tester,
-          (child) => child,
           (getContext, getZacContext) {
             expect(
                 () => SharedValue.update(

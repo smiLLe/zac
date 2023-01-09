@@ -59,13 +59,12 @@ See "$SharedValueProviderBuilder" for more info.
     SharedValueFamily family,
     SharedValueType Function(SharedValueType current) update,
   ) {
-    assert(() {
-      /// Read the value first in order to trigger the custom exception.
-      /// Otherwise the .update() below will throw a StateError by riverpod.
-      /// This happens since riverpod 2.0 release
+    /// Read the value first in order to trigger the custom exception.
+    /// Otherwise the .update() below will throw a StateError by riverpod.
+    /// This happens since riverpod 2.0 release
+    if (!context.widgetRef.exists(SharedValue.provider(family))) {
       context.widgetRef.read(SharedValue.provider(family));
-      return true;
-    }(), '');
+    }
 
     context.widgetRef
         .read(SharedValue.provider(family).notifier)
