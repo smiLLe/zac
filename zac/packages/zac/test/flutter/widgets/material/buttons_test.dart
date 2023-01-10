@@ -266,7 +266,7 @@ void main() {
 
   group('ElevatedButton.icon()', () {
     testWidgets('properties', (tester) async {
-      await foo<ElevatedButton>(
+      await testBuilder<ElevatedButton>(
         tester,
         'f:1:ElevatedButton.icon',
         props: <String, dynamic>{

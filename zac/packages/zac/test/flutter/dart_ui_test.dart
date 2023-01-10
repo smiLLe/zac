@@ -7,14 +7,14 @@ import '../helper.dart';
 
 void main() {
   testWidgets('FlutterColor', (tester) async {
-    await foo<Color>(
+    await testBuilder<Color>(
       tester,
       'f:1:Color.fromARGB',
       props: <String, dynamic>{'a': 10, 'r': 100, 'g': 100, 'b': 100},
       matcher: (matcher) => matcher.having((p0) => p0, 'Color.fromARGB',
           equals(const Color.fromARGB(10, 100, 100, 100))),
     );
-    await foo<Color>(
+    await testBuilder<Color>(
       tester,
       'f:1:Color.fromRGBO',
       props: <String, dynamic>{'opacity': 0.9, 'r': 100, 'g': 100, 'b': 100},
@@ -24,7 +24,7 @@ void main() {
   });
 
   testWidgets('FlutterOffset', (tester) async {
-    await foo<Offset>(
+    await testBuilder<Offset>(
       tester,
       'f:1:Offset',
       props: <String, dynamic>{
@@ -35,7 +35,7 @@ void main() {
           matcher.having((p0) => p0, 'Offset', equals(const Offset(10, 20))),
     );
 
-    await foo<Offset>(
+    await testBuilder<Offset>(
       tester,
       'f:1:Offset.fromDirection',
       props: <String, dynamic>{
@@ -54,7 +54,7 @@ void main() {
       ['outer', BlurStyle.outer],
       ['solid', BlurStyle.solid],
     ]) {
-      await foo<BlurStyle>(
+      await testBuilder<BlurStyle>(
         tester,
         'f:1:BlurStyle.${ele[0]}',
         matcher: (matcher) =>
@@ -64,7 +64,7 @@ void main() {
   });
 
   testWidgets('FlutterRadius', (tester) async {
-    await foo<Radius>(
+    await testBuilder<Radius>(
       tester,
       'f:1:Radius.circular',
       props: <String, dynamic>{
@@ -73,7 +73,7 @@ void main() {
       matcher: (matcher) => matcher.having(
           (p0) => p0, 'Radius.circular', equals(const Radius.circular(5))),
     );
-    await foo<Radius>(
+    await testBuilder<Radius>(
       tester,
       'f:1:Radius.elliptical',
       props: <String, dynamic>{
@@ -90,7 +90,7 @@ void main() {
       ['rtl', TextDirection.rtl],
       ['ltr', TextDirection.ltr],
     ]) {
-      await foo<TextDirection>(
+      await testBuilder<TextDirection>(
         tester,
         'f:1:TextDirection.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -105,7 +105,7 @@ void main() {
       ['antiAlias', Clip.antiAlias],
       ['hardEdge', Clip.hardEdge]
     ]) {
-      await foo<Clip>(
+      await testBuilder<Clip>(
         tester,
         'f:1:Clip.${ele[0]}',
         matcher: (matcher) =>
@@ -119,7 +119,7 @@ void main() {
       ['alphabetic', TextBaseline.alphabetic],
       ['ideographic', TextBaseline.ideographic],
     ]) {
-      await foo<TextBaseline>(
+      await testBuilder<TextBaseline>(
         tester,
         'f:1:TextBaseline.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -142,7 +142,7 @@ void main() {
       ['w800', FontWeight.w800],
       ['w900', FontWeight.w900],
     ]) {
-      await foo<FontWeight>(
+      await testBuilder<FontWeight>(
         tester,
         'f:1:FontWeight.${ele[0]}',
         matcher: (matcher) =>
@@ -156,7 +156,7 @@ void main() {
       ['italic', FontStyle.italic],
       ['normal', FontStyle.normal],
     ]) {
-      await foo<FontStyle>(
+      await testBuilder<FontStyle>(
         tester,
         'f:1:FontStyle.${ele[0]}',
         matcher: (matcher) =>
@@ -172,7 +172,7 @@ void main() {
       ['underline', TextDecoration.underline],
       ['overline', TextDecoration.overline],
     ]) {
-      await foo<TextDecoration>(
+      await testBuilder<TextDecoration>(
         tester,
         'f:1:TextDecoration.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -186,7 +186,7 @@ void main() {
       ['even', TextLeadingDistribution.even],
       ['proportional', TextLeadingDistribution.proportional],
     ]) {
-      await foo<TextLeadingDistribution>(
+      await testBuilder<TextLeadingDistribution>(
         tester,
         'f:1:TextLeadingDistribution.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -196,7 +196,7 @@ void main() {
   });
 
   testWidgets('FlutterLocale', (tester) async {
-    await foo<Locale>(
+    await testBuilder<Locale>(
       tester,
       'f:1:Locale',
       props: <String, dynamic>{
@@ -231,7 +231,7 @@ void main() {
       ['superscripts', const FontFeature.superscripts()],
       ['tabularFigures', const FontFeature.tabularFigures()],
     ]) {
-      await foo<FontFeature>(
+      await testBuilder<FontFeature>(
         tester,
         'f:1:FontFeature.${ele[0]}',
         matcher: (matcher) =>
@@ -239,7 +239,7 @@ void main() {
       );
     }
 
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature',
       props: <String, dynamic>{
@@ -250,7 +250,7 @@ void main() {
           (p0) => p0, 'FontFeature', equals(const FontFeature('some', 5))),
     );
 
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.alternative',
       props: <String, dynamic>{
@@ -259,7 +259,7 @@ void main() {
       matcher: (matcher) => matcher.having((p0) => p0,
           'FontFeature.alternative', equals(const FontFeature.alternative(5))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.characterVariant',
       props: <String, dynamic>{
@@ -270,21 +270,21 @@ void main() {
           'FontFeature.characterVariant',
           equals(FontFeature.characterVariant(5))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.disable',
       props: <String, dynamic>{'feature': 'some'},
       matcher: (matcher) => matcher.having((p0) => p0, 'FontFeature.disable',
           equals(const FontFeature.disable('some'))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.enable',
       props: <String, dynamic>{'feature': 'some'},
       matcher: (matcher) => matcher.having((p0) => p0, 'FontFeature.enable',
           equals(const FontFeature.enable('some'))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.notationalForms',
       props: <String, dynamic>{'value': 5},
@@ -293,14 +293,14 @@ void main() {
           'FontFeature.notationalForms',
           equals(const FontFeature.notationalForms(5))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.stylisticSet',
       props: <String, dynamic>{'value': 5},
       matcher: (matcher) => matcher.having((p0) => p0,
           'FontFeature.stylisticSet', equals(FontFeature.stylisticSet(5))),
     );
-    await foo<FontFeature>(
+    await testBuilder<FontFeature>(
       tester,
       'f:1:FontFeature.swash',
       props: <String, dynamic>{'value': 5},
@@ -317,7 +317,7 @@ void main() {
       ['solid', TextDecorationStyle.solid],
       ['wavy', TextDecorationStyle.wavy],
     ]) {
-      await foo<TextDecorationStyle>(
+      await testBuilder<TextDecorationStyle>(
         tester,
         'f:1:TextDecorationStyle.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -335,7 +335,7 @@ void main() {
       ['right', TextAlign.right],
       ['start', TextAlign.start],
     ]) {
-      await foo<TextAlign>(
+      await testBuilder<TextAlign>(
         tester,
         'f:1:TextAlign.${ele[0]}',
         matcher: (matcher) =>
@@ -345,7 +345,7 @@ void main() {
   });
 
   testWidgets('FlutterTextHeightBehavior', (tester) async {
-    await foo<TextHeightBehavior>(
+    await testBuilder<TextHeightBehavior>(
       tester,
       'f:1:TextHeightBehavior',
       props: <String, dynamic>{
@@ -395,7 +395,7 @@ void main() {
       ['srcOver', BlendMode.srcOver],
       ['xor', BlendMode.xor],
     ]) {
-      await foo<BlendMode>(
+      await testBuilder<BlendMode>(
         tester,
         'f:1:BlendMode.${ele[0]}',
         matcher: (matcher) =>
@@ -405,7 +405,7 @@ void main() {
   });
 
   testWidgets('FlutterRect', (tester) async {
-    await foo<Rect>(
+    await testBuilder<Rect>(
       tester,
       'f:1:Rect.fromCenter',
       props: <String, dynamic>{
@@ -424,7 +424,7 @@ void main() {
               center: const Offset(10, 20), width: 11, height: 22))),
     );
 
-    await foo<Rect>(
+    await testBuilder<Rect>(
       tester,
       'f:1:Rect.fromCircle',
       props: <String, dynamic>{
@@ -439,7 +439,7 @@ void main() {
           equals(Rect.fromCircle(center: const Offset(10, 20), radius: 11))),
     );
 
-    await foo<Rect>(
+    await testBuilder<Rect>(
       tester,
       'f:1:Rect.fromLTRB',
       props: <String, dynamic>{'left': 1, 'top': 2, 'right': 3, 'bottom': 4},
@@ -447,7 +447,7 @@ void main() {
           equals(const Rect.fromLTRB(1, 2, 3, 4))),
     );
 
-    await foo<Rect>(
+    await testBuilder<Rect>(
       tester,
       'f:1:Rect.fromLTWH',
       props: <String, dynamic>{
@@ -459,7 +459,7 @@ void main() {
       matcher: (matcher) => matcher.having((p0) => p0, 'Rect.fromCenter',
           equals(const Rect.fromLTWH(1, 2, 3, 4))),
     );
-    await foo<Rect>(
+    await testBuilder<Rect>(
       tester,
       'f:1:Rect.fromPoints',
       props: <String, dynamic>{
@@ -491,7 +491,7 @@ void main() {
       ['medium', FilterQuality.medium],
       ['none', FilterQuality.none],
     ]) {
-      await foo<FilterQuality>(
+      await testBuilder<FilterQuality>(
         tester,
         'f:1:FilterQuality.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -505,7 +505,7 @@ void main() {
       ['light', Brightness.light],
       ['dark', Brightness.dark],
     ]) {
-      await foo<Brightness>(
+      await testBuilder<Brightness>(
         tester,
         'f:1:Brightness.${ele[0]}',
         matcher: (matcher) =>
@@ -515,7 +515,7 @@ void main() {
   });
 
   testWidgets('FlutterSize', (tester) async {
-    await foo<Size>(
+    await testBuilder<Size>(
       tester,
       'f:1:Size',
       props: <String, dynamic>{
@@ -540,7 +540,7 @@ void main() {
       ['includeLineSpacingBottom', BoxHeightStyle.includeLineSpacingBottom],
       ['includeLineSpacingBottom', BoxHeightStyle.includeLineSpacingBottom],
     ]) {
-      await foo<BoxHeightStyle>(
+      await testBuilder<BoxHeightStyle>(
         tester,
         'f:1:BoxHeightStyle.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -554,7 +554,7 @@ void main() {
       ['max', BoxWidthStyle.max],
       ['tight', BoxWidthStyle.tight],
     ]) {
-      await foo<BoxWidthStyle>(
+      await testBuilder<BoxWidthStyle>(
         tester,
         'f:1:BoxWidthStyle.${ele[0]}',
         matcher: (matcher) => matcher.having(

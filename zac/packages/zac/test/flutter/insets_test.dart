@@ -7,7 +7,7 @@ import '../helper.dart';
 void main() {
   group('FlutterEdgeInsets', () {
     testWidgets('.all', (tester) async {
-      await foo<EdgeInsets>(
+      await testBuilder<EdgeInsets>(
         tester,
         'f:1:EdgeInsets.all',
         props: <String, dynamic>{
@@ -19,7 +19,7 @@ void main() {
     });
 
     testWidgets('.symmetric', (tester) async {
-      await foo<EdgeInsets>(
+      await testBuilder<EdgeInsets>(
         tester,
         'f:1:EdgeInsets.symmetric',
         props: <String, dynamic>{
@@ -33,7 +33,7 @@ void main() {
     });
 
     testWidgets('.only', (tester) async {
-      await foo<EdgeInsets>(
+      await testBuilder<EdgeInsets>(
         tester,
         'f:1:EdgeInsets.only',
         props: <String, dynamic>{
@@ -53,7 +53,7 @@ void main() {
 
   group('FlutterEdgeInsetsDirectional', () {
     testWidgets('.all', (tester) async {
-      await foo<EdgeInsetsDirectional>(
+      await testBuilder<EdgeInsetsDirectional>(
         tester,
         'f:1:EdgeInsetsDirectional.all',
         props: <String, dynamic>{
@@ -65,7 +65,7 @@ void main() {
     });
 
     testWidgets('.only', (tester) async {
-      await foo<EdgeInsetsDirectional>(
+      await testBuilder<EdgeInsetsDirectional>(
         tester,
         'f:1:EdgeInsetsDirectional.only',
         props: <String, dynamic>{

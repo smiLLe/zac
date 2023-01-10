@@ -8,14 +8,14 @@ import 'models.dart';
 
 void main() {
   testWidgets('BorderStyle', (tester) async {
-    await foo<BorderStyle>(
+    await testBuilder<BorderStyle>(
       tester,
       'f:1:BorderStyle.none',
       matcher: (matcher) => matcher.having(
           (p0) => p0, 'BorderStyle.none', equals(BorderStyle.none)),
     );
 
-    await foo<BorderStyle>(
+    await testBuilder<BorderStyle>(
       tester,
       'f:1:BorderStyle.solid',
       matcher: (matcher) => matcher.having(
@@ -38,7 +38,7 @@ void main() {
       final matcherAll = isA<Border>().having((p0) => p0.top, 'Border.top',
           isA<BorderSide>().having((p0) => p0.width, 'width', 11));
 
-      await foo<Border>(
+      await testBuilder<Border>(
         tester,
         'f:1:Border',
         props: <String, dynamic>{
@@ -62,7 +62,7 @@ void main() {
         matcher: (m) => m.having((p0) => p0, 'matcher', matcher),
       );
 
-      await foo<Border>(
+      await testBuilder<Border>(
         tester,
         'f:1:Border.all',
         props: <String, dynamic>{'width': 11},
@@ -73,7 +73,7 @@ void main() {
 
   group('Radius', () {
     testWidgets('BorderRadius.all', (tester) async {
-      await foo<BorderRadius>(
+      await testBuilder<BorderRadius>(
         tester,
         'f:1:BorderRadius.all',
         props: <String, dynamic>{
@@ -95,7 +95,7 @@ void main() {
     });
 
     testWidgets('BorderRadius.circular', (tester) async {
-      await foo<BorderRadius>(
+      await testBuilder<BorderRadius>(
         tester,
         'f:1:BorderRadius.circular',
         props: <String, dynamic>{'radius': 12},
@@ -112,7 +112,7 @@ void main() {
     });
 
     testWidgets('BorderRadius.horizontal', (tester) async {
-      await foo<BorderRadius>(
+      await testBuilder<BorderRadius>(
         tester,
         'f:1:BorderRadius.horizontal',
         props: <String, dynamic>{
@@ -140,7 +140,7 @@ void main() {
 
   group('FlutterInputBorder', () {
     testWidgets('FlutterOutlineInputBorder', (tester) async {
-      await foo<OutlineInputBorder>(
+      await testBuilder<OutlineInputBorder>(
         tester,
         'f:1:OutlineInputBorder',
         props: <String, dynamic>{
@@ -166,7 +166,7 @@ void main() {
     });
 
     testWidgets('FlutterUnderlineInputBorder', (tester) async {
-      await foo<UnderlineInputBorder>(
+      await testBuilder<UnderlineInputBorder>(
         tester,
         'f:1:UnderlineInputBorder',
         props: <String, dynamic>{
@@ -188,7 +188,7 @@ void main() {
   });
 
   testWidgets('FlutterCircleBorder', (tester) async {
-    await foo<CircleBorder>(
+    await testBuilder<CircleBorder>(
       tester,
       'f:1:CircleBorder',
       props: <String, dynamic>{
@@ -203,7 +203,7 @@ void main() {
   });
 
   testWidgets('FlutterRoundedRectangleBorder', (tester) async {
-    await foo<RoundedRectangleBorder>(
+    await testBuilder<RoundedRectangleBorder>(
       tester,
       'f:1:RoundedRectangleBorder',
       props: <String, dynamic>{
@@ -224,7 +224,7 @@ void main() {
   });
 
   testWidgets('FlutterBorderDirectional', (tester) async {
-    await foo<BorderDirectional>(
+    await testBuilder<BorderDirectional>(
       tester,
       'f:1:BorderDirectional',
       props: <String, dynamic>{

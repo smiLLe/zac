@@ -6,7 +6,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('IconData', (tester) async {
-    await foo<IconData>(
+    await testBuilder<IconData>(
       tester,
       'f:1:IconData',
       props: <String, dynamic>{
@@ -25,7 +25,7 @@ void main() {
   });
 
   testWidgets('Icon', (tester) async {
-    await foo<Icon>(
+    await testBuilder<Icon>(
       tester,
       'f:1:Icon',
       props: <String, dynamic>{
@@ -50,7 +50,7 @@ void main() {
   });
 
   testWidgets('IconThemeData', (tester) async {
-    await foo<IconThemeData>(
+    await testBuilder<IconThemeData>(
       tester,
       'f:1:IconThemeData',
       props: <String, dynamic>{

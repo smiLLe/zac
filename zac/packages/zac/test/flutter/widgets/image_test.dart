@@ -8,7 +8,7 @@ import '../models.dart';
 void main() {
   group('Image.network', () {
     testWidgets('#1', (tester) async {
-      await foo<Image>(
+      await testBuilder<Image>(
         tester,
         'f:1:Image.network',
         props: <String, dynamic>{
@@ -71,7 +71,7 @@ void main() {
     });
 
     testWidgets('#2', (tester) async {
-      await foo<Image>(
+      await testBuilder<Image>(
         tester,
         'f:1:Image.network',
         props: <String, dynamic>{
@@ -91,7 +91,7 @@ void main() {
 
   group('Image.asset', () {
     testWidgets('#1', (tester) async {
-      await foo<Image>(
+      await testBuilder<Image>(
         tester,
         'f:1:Image.asset',
         props: <String, dynamic>{
@@ -151,7 +151,7 @@ void main() {
     });
 
     testWidgets('#2', (tester) async {
-      await foo<Image>(
+      await testBuilder<Image>(
         tester,
         'f:1:Image.asset',
         props: <String, dynamic>{

@@ -24,6 +24,23 @@ void expectInRegistry(Object obj, Object fn) {
   }
 }
 
+Future<void> testBuilder<T>(
+  WidgetTester tester,
+  String name, {
+  Map<String, dynamic>? props,
+  required TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
+}) async {
+  final builder = ZacRegistry().getRegistered<Object>(name)(
+      <String, dynamic>{'builder': name, ...(props ?? <String, dynamic>{})});
+  expect(builder, isA<ZacBuilder<T>>());
+
+  await testWithContexts(tester, (getContext, getZacContext) {
+    final buildItem = builder.build(getContext(), getZacContext());
+
+    expect(buildItem, matcher(isA<T>()));
+  });
+}
+
 Future<void> testJSON(WidgetTester tester, Map<String, dynamic> data) async {
   await tester.pumpWidget(
     ProviderScope(
@@ -192,20 +209,3 @@ class TestActionExecute extends Mock {
 }
 
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
-
-Future<void> foo<T>(
-  WidgetTester tester,
-  String name, {
-  Map<String, dynamic>? props,
-  required TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
-}) async {
-  final builder = ZacRegistry().getRegistered<Object>(name)(
-      <String, dynamic>{'builder': name, ...(props ?? <String, dynamic>{})});
-  expect(builder, isA<ZacBuilder<T>>());
-
-  await testWithContexts(tester, (getContext, getZacContext) {
-    final buildItem = builder.build(getContext(), getZacContext());
-
-    expect(buildItem, matcher(isA<T>()));
-  });
-}

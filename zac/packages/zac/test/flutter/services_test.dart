@@ -17,7 +17,7 @@ void main() {
       ['url', TextInputType.url],
       ['visiblePassword', TextInputType.visiblePassword],
     ]) {
-      await foo<TextInputType>(
+      await testBuilder<TextInputType>(
         tester,
         'f:1:TextInputType.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -42,7 +42,7 @@ void main() {
       ['send', TextInputAction.send],
       ['unspecified', TextInputAction.unspecified],
     ]) {
-      await foo<TextInputAction>(
+      await testBuilder<TextInputAction>(
         tester,
         'f:1:TextInputAction.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -58,7 +58,7 @@ void main() {
       ['sentences', TextCapitalization.sentences],
       ['words', TextCapitalization.words],
     ]) {
-      await foo<TextCapitalization>(
+      await testBuilder<TextCapitalization>(
         tester,
         'f:1:TextCapitalization.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -72,7 +72,7 @@ void main() {
       ['disabled', SmartDashesType.disabled],
       ['enabled', SmartDashesType.enabled],
     ]) {
-      await foo<SmartDashesType>(
+      await testBuilder<SmartDashesType>(
         tester,
         'f:1:SmartDashesType.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -86,7 +86,7 @@ void main() {
       ['disabled', SmartQuotesType.disabled],
       ['enabled', SmartQuotesType.enabled],
     ]) {
-      await foo<SmartQuotesType>(
+      await testBuilder<SmartQuotesType>(
         tester,
         'f:1:SmartQuotesType.${ele[0]}',
         matcher: (matcher) => matcher.having(

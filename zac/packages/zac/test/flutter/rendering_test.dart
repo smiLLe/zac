@@ -18,7 +18,7 @@ void main() {
       ['baseline', CrossAxisAlignment.baseline],
       ['baseline', CrossAxisAlignment.baseline],
     ]) {
-      await foo<CrossAxisAlignment>(
+      await testBuilder<CrossAxisAlignment>(
         tester,
         'f:1:CrossAxisAlignment.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -32,7 +32,7 @@ void main() {
       ['min', MainAxisSize.min],
       ['max', MainAxisSize.max],
     ]) {
-      await foo<MainAxisSize>(
+      await testBuilder<MainAxisSize>(
         tester,
         'f:1:MainAxisSize.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -50,7 +50,7 @@ void main() {
       ['spaceAround', MainAxisAlignment.spaceAround],
       ['spaceEvenly', MainAxisAlignment.spaceEvenly],
     ]) {
-      await foo<MainAxisAlignment>(
+      await testBuilder<MainAxisAlignment>(
         tester,
         'f:1:MainAxisAlignment.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -64,7 +64,7 @@ void main() {
       ['tight', FlexFit.tight],
       ['loose', FlexFit.loose],
     ]) {
-      await foo<FlexFit>(
+      await testBuilder<FlexFit>(
         tester,
         'f:1:FlexFit.${ele[0]}',
         matcher: (matcher) =>
@@ -82,7 +82,7 @@ void main() {
       ['spaceAround', WrapAlignment.spaceAround],
       ['spaceEvenly', WrapAlignment.spaceEvenly],
     ]) {
-      await foo<WrapAlignment>(
+      await testBuilder<WrapAlignment>(
         tester,
         'f:1:WrapAlignment.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -96,7 +96,7 @@ void main() {
       ['center', WrapCrossAlignment.center],
       ['end', WrapCrossAlignment.end],
     ]) {
-      await foo<WrapCrossAlignment>(
+      await testBuilder<WrapCrossAlignment>(
         tester,
         'f:1:WrapCrossAlignment.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -111,7 +111,7 @@ void main() {
       ['loose', StackFit.loose],
       ['passthrough', StackFit.passthrough],
     ]) {
-      await foo<StackFit>(
+      await testBuilder<StackFit>(
         tester,
         'f:1:StackFit.${ele[0]}',
         matcher: (matcher) =>
@@ -123,7 +123,7 @@ void main() {
   group('FlutterSliverGridDelegate', () {
     testWidgets('FlutterSliverGridDelegateWithFixedCrossAxisCount()',
         (tester) async {
-      await foo<SliverGridDelegate>(
+      await testBuilder<SliverGridDelegate>(
         tester,
         'f:1:SliverGridDelegateWithFixedCrossAxisCount',
         props: <String, dynamic>{
@@ -147,7 +147,7 @@ void main() {
 
     testWidgets('FlutterSliverGridDelegateWithMaxCrossAxisExtent()',
         (tester) async {
-      await foo<SliverGridDelegate>(
+      await testBuilder<SliverGridDelegate>(
         tester,
         'f:1:SliverGridDelegateWithMaxCrossAxisExtent',
         props: <String, dynamic>{
@@ -176,7 +176,7 @@ void main() {
       ['opaque', HitTestBehavior.opaque],
       ['translucent', HitTestBehavior.translucent],
     ]) {
-      await foo<HitTestBehavior>(
+      await testBuilder<HitTestBehavior>(
         tester,
         'f:1:HitTestBehavior.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -186,7 +186,7 @@ void main() {
   });
 
   testWidgets('FlutterBoxConstraints', (tester) async {
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints',
       props: <String, dynamic>{
@@ -205,7 +205,7 @@ void main() {
             maxWidth: 400,
           ))),
     );
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints.expand',
       props: <String, dynamic>{
@@ -216,7 +216,7 @@ void main() {
           equals(const BoxConstraints.expand(width: 20, height: 30))),
     );
 
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints.loose',
       props: <String, dynamic>{
@@ -229,7 +229,7 @@ void main() {
       matcher: (matcher) => matcher.having((p0) => p0, 'BoxConstraints',
           equals(BoxConstraints.loose(const Size(10, 20)))),
     );
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints.tight',
       props: <String, dynamic>{
@@ -242,7 +242,7 @@ void main() {
       matcher: (matcher) => matcher.having((p0) => p0, 'BoxConstraints',
           equals(BoxConstraints.tight(const Size(10, 20)))),
     );
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints.tightFor',
       props: <String, dynamic>{
@@ -253,7 +253,7 @@ void main() {
           equals(const BoxConstraints.tightFor(width: 30, height: 40))),
     );
 
-    await foo<BoxConstraints>(
+    await testBuilder<BoxConstraints>(
       tester,
       'f:1:BoxConstraints.tightForFinite',
       props: <String, dynamic>{
@@ -270,7 +270,7 @@ void main() {
       ['background', DecorationPosition.background],
       ['foreground', DecorationPosition.foreground],
     ]) {
-      await foo<DecorationPosition>(
+      await testBuilder<DecorationPosition>(
         tester,
         'f:1:DecorationPosition.${ele[0]}',
         matcher: (matcher) => matcher.having(

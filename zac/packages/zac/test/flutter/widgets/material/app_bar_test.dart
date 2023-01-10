@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('check non widget properties', (tester) async {
-    await foo<AppBar>(
+    await testBuilder<AppBar>(
       tester,
       'f:1:AppBar',
       props: <String, dynamic>{

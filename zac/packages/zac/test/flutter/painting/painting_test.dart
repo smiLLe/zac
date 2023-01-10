@@ -9,7 +9,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterBoxShadow', (tester) async {
-    await foo<BoxShadow>(
+    await testBuilder<BoxShadow>(
       tester,
       'f:1:BoxShadow',
       props: <String, dynamic>{
@@ -25,7 +25,7 @@ void main() {
   });
 
   testWidgets('FlutterBoxShape', (tester) async {
-    await foo<BoxShape>(
+    await testBuilder<BoxShape>(
       tester,
       'f:1:BoxShape.circle',
       matcher: (matcher) =>
@@ -34,7 +34,7 @@ void main() {
   });
 
   testWidgets('FlutterBoxDecoration', (tester) async {
-    await foo<BoxDecoration>(
+    await testBuilder<BoxDecoration>(
       tester,
       'f:1:BoxDecoration',
       props: <String, dynamic>{
@@ -52,7 +52,7 @@ void main() {
   });
 
   testWidgets('FlutterShapeDecoration', (tester) async {
-    await foo<ShapeDecoration>(
+    await testBuilder<ShapeDecoration>(
       tester,
       'f:1:ShapeDecoration',
       props: <String, dynamic>{
@@ -66,13 +66,13 @@ void main() {
   });
 
   testWidgets('FlutterAxis', (tester) async {
-    await foo<Axis>(
+    await testBuilder<Axis>(
       tester,
       'f:1:Axis.horizontal',
       matcher: (matcher) =>
           matcher.having((p0) => p0, 'Axis', equals(Axis.horizontal)),
     );
-    await foo<Axis>(
+    await testBuilder<Axis>(
       tester,
       'f:1:Axis.vertical',
       matcher: (matcher) =>
@@ -81,13 +81,13 @@ void main() {
   });
 
   testWidgets('FlutterVerticalDirection', (tester) async {
-    await foo<VerticalDirection>(
+    await testBuilder<VerticalDirection>(
       tester,
       'f:1:VerticalDirection.up',
       matcher: (matcher) => matcher.having(
           (p0) => p0, 'VerticalDirection.up', equals(VerticalDirection.up)),
     );
-    await foo<VerticalDirection>(
+    await testBuilder<VerticalDirection>(
       tester,
       'f:1:VerticalDirection.down',
       matcher: (matcher) => matcher.having(
@@ -96,7 +96,7 @@ void main() {
   });
 
   testWidgets('TextStyle', (tester) async {
-    await foo<TextStyle>(
+    await testBuilder<TextStyle>(
       tester,
       'f:1:TextStyle',
       props: <String, dynamic>{
@@ -181,7 +181,7 @@ void main() {
       ['fade', TextOverflow.fade],
       ['visible', TextOverflow.visible],
     ]) {
-      await foo<TextOverflow>(
+      await testBuilder<TextOverflow>(
         tester,
         'f:1:TextOverflow.${ele[0]}',
         matcher: (matcher) => matcher.having(
@@ -192,7 +192,7 @@ void main() {
 
   group('FlutterStrutStyle', () {
     testWidgets('FlutterStrutStyle()', (tester) async {
-      await foo<StrutStyle>(
+      await testBuilder<StrutStyle>(
         tester,
         'f:1:StrutStyle',
         props: <String, dynamic>{
@@ -228,7 +228,7 @@ void main() {
     });
 
     testWidgets('FlutterStrutStyle.fromTextStyle()', (tester) async {
-      await foo<StrutStyle>(
+      await testBuilder<StrutStyle>(
         tester,
         'f:1:StrutStyle.fromTextStyle',
         props: <String, dynamic>{
@@ -267,14 +267,14 @@ void main() {
   });
 
   testWidgets('FlutterTextWidthBasis', (tester) async {
-    await foo<TextWidthBasis>(
+    await testBuilder<TextWidthBasis>(
       tester,
       'f:1:TextWidthBasis.longestLine',
       matcher: (matcher) => matcher.having((p0) => p0,
           'TextWidthBasis.longestLine', equals(TextWidthBasis.longestLine)),
     );
 
-    await foo<TextWidthBasis>(
+    await testBuilder<TextWidthBasis>(
       tester,
       'f:1:TextWidthBasis.parent',
       matcher: (matcher) => matcher.having(
@@ -292,7 +292,7 @@ void main() {
       ['none', BoxFit.none],
       ['scaleDown', BoxFit.scaleDown],
     ]) {
-      await foo<BoxFit>(
+      await testBuilder<BoxFit>(
         tester,
         'f:1:BoxFit.${ele[0]}',
         matcher: (matcher) =>
@@ -308,7 +308,7 @@ void main() {
       ['repeatX', ImageRepeat.repeatX],
       ['repeatY', ImageRepeat.repeatY],
     ]) {
-      await foo<ImageRepeat>(
+      await testBuilder<ImageRepeat>(
         tester,
         'f:1:ImageRepeat.${ele[0]}',
         matcher: (matcher) =>
@@ -323,7 +323,7 @@ void main() {
       ['center', TextAlignVertical.center],
       ['top', TextAlignVertical.top],
     ]) {
-      await foo<TextAlignVertical>(
+      await testBuilder<TextAlignVertical>(
         tester,
         'f:1:TextAlignVertical.${ele[0]}',
         matcher: (matcher) =>
@@ -331,7 +331,7 @@ void main() {
       );
     }
 
-    await foo<TextAlignVertical>(
+    await testBuilder<TextAlignVertical>(
       tester,
       'f:1:TextAlignVertical',
       props: <String, dynamic>{

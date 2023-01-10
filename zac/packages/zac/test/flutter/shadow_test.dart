@@ -7,7 +7,7 @@ import 'models.dart';
 
 void main() {
   testWidgets('Shadow', (tester) async {
-    await foo<Shadow>(
+    await testBuilder<Shadow>(
       tester,
       'f:1:Shadow',
       props: <String, dynamic>{
@@ -26,7 +26,7 @@ void main() {
   });
 
   testWidgets('BoxShadow', (tester) async {
-    await foo<Shadow>(
+    await testBuilder<Shadow>(
       tester,
       'f:1:BoxShadow',
       props: BoxShadowModel.json,
