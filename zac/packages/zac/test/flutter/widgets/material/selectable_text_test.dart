@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterSelectableText() #1', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSelectableText.unionValue,
@@ -74,7 +74,7 @@ void main() {
   });
 
   testWidgets('FlutterSelectableText() #2', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSelectableText.unionValue,

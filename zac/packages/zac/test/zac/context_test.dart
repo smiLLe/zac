@@ -42,10 +42,7 @@ void main() {
               getZacContext2().onUnmount(cb3);
               getZacContext2().onUnmount(cb4);
 
-              await testZacWidget(
-                tester,
-                FlutterSizedBox(),
-              );
+              await tester.pumpWidget(const SizedBox());
 
               verifyInOrder([cb4(), cb3(), cb2(), cb1()]);
               verifyNoMoreInteractions(cb1);

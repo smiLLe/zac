@@ -8,7 +8,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterSpacer()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterColumn.unionValue,

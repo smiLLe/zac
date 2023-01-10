@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterOffstage()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterOffstage.unionValue,

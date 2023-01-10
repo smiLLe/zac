@@ -13,7 +13,7 @@ import '../helper.dart';
 
 void main() {
   testWidgets('find all widgets', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterScaffold.unionValue,
@@ -89,7 +89,7 @@ void main() {
   });
 
   testWidgets('open drawer', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterScaffold.unionValue,
@@ -122,7 +122,7 @@ void main() {
   });
 
   testWidgets('open end drawer', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterScaffold.unionValue,
@@ -155,7 +155,7 @@ void main() {
   });
 
   testWidgets('showBodyScrim', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterScaffold.unionValue,

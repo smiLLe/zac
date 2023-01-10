@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('check borderRadius', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterMaterial.unionValue,
@@ -29,7 +29,7 @@ void main() {
   });
 
   testWidgets('all properties', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterMaterial.unionValue,

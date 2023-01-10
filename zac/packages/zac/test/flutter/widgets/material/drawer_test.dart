@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterDrawer()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterDrawer.unionValue,

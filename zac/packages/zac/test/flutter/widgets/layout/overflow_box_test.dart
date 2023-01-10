@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterOverflowBox()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterOverflowBox.unionValue,

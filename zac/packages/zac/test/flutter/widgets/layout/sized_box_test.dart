@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('SizedBox()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSizedBox.unionValue,
@@ -31,7 +31,7 @@ void main() {
   });
 
   testWidgets('SizedBox.expand()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSizedBox.unionValueExpand,
@@ -53,7 +53,7 @@ void main() {
   });
 
   testWidgets('SizedBox.shrink()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSizedBox.unionValueShrink,
@@ -75,7 +75,7 @@ void main() {
   });
 
   testWidgets('SizedBox.fromSize()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSizedBox.unionValueFromSize,
@@ -102,7 +102,7 @@ void main() {
   });
 
   testWidgets('SizedBox.square()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterSizedBox.unionValueSquare,

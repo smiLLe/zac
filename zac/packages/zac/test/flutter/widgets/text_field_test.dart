@@ -12,7 +12,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterTextField()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'f:1:Material',
@@ -89,7 +89,7 @@ void main() {
 
   testWidgets('FlutterTextField() onChanged', (tester) async {
     final cb = MockTestActionExecute();
-    await testZacWidget(
+    await testWidgetBuilder(
       tester,
       FlutterMaterial(
         child: FlutterTextField(
@@ -114,7 +114,7 @@ void main() {
 
   testWidgets('FlutterTextField() consumes the ScrollController',
       (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'z:1:ScrollController.provide',

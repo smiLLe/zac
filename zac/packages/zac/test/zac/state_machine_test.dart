@@ -277,7 +277,7 @@ void main() {
           family: 'machine',
         ) as ZacStateMachine;
 
-        await testZacWidget(tester, FlutterSizedBox());
+        await tester.pumpWidget(const SizedBox());
 
         expect(
             () => curMachine.send('NEXT', null),
@@ -327,7 +327,7 @@ void main() {
         expect(m2.isActive(), isTrue);
 
         /// dispose
-        await testZacWidget(tester, FlutterSizedBox());
+        await tester.pumpWidget(const SizedBox());
         expect(m2.isActive(), isFalse);
       },
     );
@@ -415,7 +415,7 @@ void main() {
       details = d;
     };
 
-    await testZacWidget(
+    await testWidgetBuilder(
       tester,
       ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -442,7 +442,7 @@ void main() {
   });
 
   testWidgets('Send an event through an Action', (tester) async {
-    await testZacWidget(
+    await testWidgetBuilder(
       tester,
       ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),
@@ -479,7 +479,7 @@ void main() {
   });
 
   testWidgets('Trying to send an event through an Action', (tester) async {
-    await testZacWidget(
+    await testWidgetBuilder(
       tester,
       ZacStateMachineProviderBuilder(
         family: ZacBuilder<String>.fromJson('machine'),

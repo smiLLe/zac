@@ -1,22 +1,21 @@
 import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/dart_ui.dart';
-import 'package:zac/src/flutter/painting.dart';
 
 import '../helper.dart';
 import 'models.dart';
 
 void main() {
-  test('Shadow', () {
-    fakeBuild<Shadow>(
-      FlutterShadow.fromJson(<String, dynamic>{
-        'builder': 'f:1:Shadow',
+  testWidgets('Shadow', (tester) async {
+    await foo<Shadow>(
+      tester,
+      'f:1:Shadow',
+      props: <String, dynamic>{
         'color': ColorModel.json,
         'offset': OffsetModel.json,
         'blurRadius': 10,
-      }).build,
-      (matcher) => matcher.having(
+      },
+      matcher: (matcher) => matcher.having(
           (p0) => p0,
           'Shadow',
           equals(const Shadow(
@@ -26,13 +25,12 @@ void main() {
     );
   });
 
-  test('BoxShadow', () {
-    fakeBuild<Shadow>(
-      FlutterBoxShadow.fromJson(<String, dynamic>{
-        'builder': FlutterBoxShadow.unionValue,
-        ...BoxShadowModel.json,
-      }).build,
-      (matcher) => matcher.having(
+  testWidgets('BoxShadow', (tester) async {
+    await foo<Shadow>(
+      tester,
+      'f:1:BoxShadow',
+      props: BoxShadowModel.json,
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'BoxShadowModel', equals(BoxShadowModel.equals)),
     );
   });

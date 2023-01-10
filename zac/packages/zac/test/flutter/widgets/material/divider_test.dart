@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterDivider()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterDivider.unionValue,

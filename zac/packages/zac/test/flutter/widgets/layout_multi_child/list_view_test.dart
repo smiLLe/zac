@@ -39,7 +39,7 @@ void main() {
   });
 
   testWidgets('FlutterListView() #1', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterListView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'prototypeItem': {
@@ -67,7 +67,7 @@ void main() {
   });
 
   testWidgets('FlutterListView() #2', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterListView.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'itemExtent': 300,
@@ -91,7 +91,7 @@ void main() {
   });
 
   testWidgets('FlutterListView() #3', (tester) async {
-    await testMap(tester, map);
+    await testJSON(tester, map);
 
     final findMe = find.byKey(const ValueKey('FINDME'));
     expect(findMe, findsOneWidget);
@@ -122,7 +122,7 @@ void main() {
 
   testWidgets('FlutterListView() consumes the ScrollController',
       (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'z:1:ScrollController.provide',

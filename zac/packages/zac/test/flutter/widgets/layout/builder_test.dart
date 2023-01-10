@@ -6,7 +6,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterBuilder()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'f:1:Builder',

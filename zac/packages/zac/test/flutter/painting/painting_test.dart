@@ -8,79 +8,98 @@ import '../../helper.dart';
 import '../models.dart';
 
 void main() {
-  test('FlutterBoxShadow', () {
-    fakeBuild<BoxShadow>(
-      FlutterBoxShadow.fromJson(BoxShadowModel.json).build,
-      (matcher) => matcher.having(
+  testWidgets('FlutterBoxShadow', (tester) async {
+    await foo<BoxShadow>(
+      tester,
+      'f:1:BoxShadow',
+      props: <String, dynamic>{
+        'color': ColorModel.json,
+        'offset': OffsetModel.json,
+        'blurRadius': 11,
+        'spreadRadius': 12,
+        'blurStyle': BlurStyleModel.json,
+      },
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'BoxShadow', equals(BoxShadowModel.equals)),
     );
   });
 
-  test('FlutterBoxShape', () {
-    fakeBuild<BoxShape>(
-      FlutterBoxShape.fromJson(BoxShapeModel.json).build,
-      (matcher) =>
-          matcher.having((p0) => p0, 'BoxShape ', equals(BoxShapeModel.equals)),
+  testWidgets('FlutterBoxShape', (tester) async {
+    await foo<BoxShape>(
+      tester,
+      'f:1:BoxShape.circle',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'BoxShadow', BoxShape.circle),
     );
   });
 
-  test('FlutterBoxDecoration', () {
-    fakeBuild<BoxDecoration>(
-      FlutterBoxDecoration.fromJson(
-              BoxDecorationModel.getMap(type: FlutterBoxDecoration.unionValue))
-          .build,
-      (matcher) => matcher.having(
+  testWidgets('FlutterBoxDecoration', (tester) async {
+    await foo<BoxDecoration>(
+      tester,
+      'f:1:BoxDecoration',
+      props: <String, dynamic>{
+        'color': ColorModel.json,
+        'border': BorderModel.box_borderAll,
+        'borderRadius': BorderRadiusModel.horizontalJson,
+        'boxShadow': [BoxShadowModel.json],
+        'backgroundBlendMode': {
+          'builder': 'f:1:BlendMode.darken',
+        }
+      },
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'BoxDecoration', equals(BoxDecorationModel.equals)),
     );
   });
 
-  test('FlutterShapeDecoration', () {
-    fakeBuild<ShapeDecoration>(
-      FlutterShapeDecoration.fromJson(<String, dynamic>{
-        'builder': 'f:1:ShapeDecoration',
+  testWidgets('FlutterShapeDecoration', (tester) async {
+    await foo<ShapeDecoration>(
+      tester,
+      'f:1:ShapeDecoration',
+      props: <String, dynamic>{
         'shape': {
           'builder': 'f:1:CircleBorder',
         },
-      }).build,
-      (matcher) => matcher.having(
+      },
+      matcher: (matcher) => matcher.having(
           (p0) => p0.shape, 'ShapeDecoration.shape', isA<CircleBorder>()),
     );
   });
 
-  test('FlutterAxis', () {
-    fakeBuild<Axis>(
-      FlutterAxis.fromJson(<String, dynamic>{'builder': 'f:1:Axis.horizontal'})
-          .build,
-      (matcher) => matcher.having((p0) => p0, 'Axis', equals(Axis.horizontal)),
+  testWidgets('FlutterAxis', (tester) async {
+    await foo<Axis>(
+      tester,
+      'f:1:Axis.horizontal',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'Axis', equals(Axis.horizontal)),
     );
-
-    fakeBuild<Axis>(
-      FlutterAxis.fromJson(<String, dynamic>{'builder': 'f:1:Axis.vertical'})
-          .build,
-      (matcher) => matcher.having((p0) => p0, 'Axis', equals(Axis.vertical)),
+    await foo<Axis>(
+      tester,
+      'f:1:Axis.vertical',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'Axis', equals(Axis.vertical)),
     );
   });
 
-  test('FlutterVerticalDirection', () {
-    fakeBuild<VerticalDirection>(
-      FlutterVerticalDirection.fromJson(
-          <String, dynamic>{'builder': 'f:1:VerticalDirection.up'}).build,
-      (matcher) => matcher.having(
+  testWidgets('FlutterVerticalDirection', (tester) async {
+    await foo<VerticalDirection>(
+      tester,
+      'f:1:VerticalDirection.up',
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'VerticalDirection.up', equals(VerticalDirection.up)),
     );
-
-    fakeBuild<VerticalDirection>(
-      FlutterVerticalDirection.fromJson(
-          <String, dynamic>{'builder': 'f:1:VerticalDirection.down'}).build,
-      (matcher) => matcher.having(
+    await foo<VerticalDirection>(
+      tester,
+      'f:1:VerticalDirection.down',
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'VerticalDirection.down', equals(VerticalDirection.down)),
     );
   });
 
-  test('TextStyle', () {
-    fakeBuild<TextStyle>(
-      FlutterTextStyle.fromJson(<String, dynamic>{
-        'builder': 'f:1:TextStyle',
+  testWidgets('TextStyle', (tester) async {
+    await foo<TextStyle>(
+      tester,
+      'f:1:TextStyle',
+      props: <String, dynamic>{
         'inherit': false,
         'color': ColorModel.json,
         'backgroundColor': ColorModel.json,
@@ -113,8 +132,8 @@ void main() {
         'overflow': {
           'builder': 'f:1:TextOverflow.clip',
         }
-      }).build,
-      (matcher) => matcher
+      },
+      matcher: (matcher) => matcher
           .having((p0) => p0.inherit, 'TextStyle.inherit', isFalse)
           .having((p0) => p0.color, 'TextStyle.color', ColorModel.equals)
           .having((p0) => p0.backgroundColor, 'TextStyle.backgroundColor',
@@ -155,41 +174,28 @@ void main() {
     );
   });
 
-  test('FlutterTextOverflow', () {
-    fakeBuild<TextOverflow>(
-      FlutterTextOverflow.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextOverflow.clip'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'TextOverflow.clip', equals(TextOverflow.clip)),
-    );
-
-    fakeBuild<TextOverflow>(
-      FlutterTextOverflow.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextOverflow.ellipsis'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'TextOverflow.ellipsis', equals(TextOverflow.ellipsis)),
-    );
-
-    fakeBuild<TextOverflow>(
-      FlutterTextOverflow.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextOverflow.fade'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'TextOverflow.fade', equals(TextOverflow.fade)),
-    );
-
-    fakeBuild<TextOverflow>(
-      FlutterTextOverflow.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextOverflow.visible'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'TextOverflow.visible', equals(TextOverflow.visible)),
-    );
+  testWidgets('FlutterTextOverflow', (tester) async {
+    for (var ele in [
+      ['clip', TextOverflow.clip],
+      ['ellipsis', TextOverflow.ellipsis],
+      ['fade', TextOverflow.fade],
+      ['visible', TextOverflow.visible],
+    ]) {
+      await foo<TextOverflow>(
+        tester,
+        'f:1:TextOverflow.${ele[0]}',
+        matcher: (matcher) => matcher.having(
+            (p0) => p0, 'VerticalDirection.${ele[0]}', equals(ele[1])),
+      );
+    }
   });
 
   group('FlutterStrutStyle', () {
-    test('FlutterStrutStyle()', () {
-      fakeBuild<StrutStyle>(
-        FlutterStrutStyle.fromJson(<String, dynamic>{
-          'builder': 'f:1:StrutStyle',
+    testWidgets('FlutterStrutStyle()', (tester) async {
+      await foo<StrutStyle>(
+        tester,
+        'f:1:StrutStyle',
+        props: <String, dynamic>{
           'fontFamily': 'test_fontFamily',
           'fontFamilyFallback': ['test_fontFamilyFallback'],
           'fontSize': 42,
@@ -201,8 +207,8 @@ void main() {
           'forceStrutHeight': true,
           'debugLabel': 'test_debugLabel',
           'package': 'test_package',
-        }).build,
-        (matcher) => matcher.having(
+        },
+        matcher: (matcher) => matcher.having(
             (p0) => p0,
             'StrutStyle',
             equals(const StrutStyle(
@@ -221,10 +227,11 @@ void main() {
       );
     });
 
-    test('FlutterStrutStyle.fromTextStyle()', () {
-      fakeBuild<StrutStyle>(
-        FlutterStrutStyle.fromJson(<String, dynamic>{
-          'builder': 'f:1:StrutStyle.fromTextStyle',
+    testWidgets('FlutterStrutStyle.fromTextStyle()', (tester) async {
+      await foo<StrutStyle>(
+        tester,
+        'f:1:StrutStyle.fromTextStyle',
+        props: <String, dynamic>{
           'textStyle': TextModel.textStyle,
           'fontFamily': 'test_fontFamily',
           'fontFamilyFallback': ['test_fontFamilyFallback'],
@@ -237,8 +244,8 @@ void main() {
           'forceStrutHeight': true,
           'debugLabel': 'test_debugLabel',
           'package': 'test_package',
-        }).build,
-        (matcher) => matcher.having(
+        },
+        matcher: (matcher) => matcher.having(
             (p0) => p0,
             'StrutStyle.fromTextStyle',
             equals(StrutStyle.fromTextStyle(
@@ -259,134 +266,79 @@ void main() {
     });
   });
 
-  test('FlutterTextWidthBasis', () {
-    fakeBuild<TextWidthBasis>(
-      FlutterTextWidthBasis.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextWidthBasis.longestLine'}).build,
-      (matcher) => matcher.having((p0) => p0, 'TextWidthBasis.longestLine',
-          equals(TextWidthBasis.longestLine)),
+  testWidgets('FlutterTextWidthBasis', (tester) async {
+    await foo<TextWidthBasis>(
+      tester,
+      'f:1:TextWidthBasis.longestLine',
+      matcher: (matcher) => matcher.having((p0) => p0,
+          'TextWidthBasis.longestLine', equals(TextWidthBasis.longestLine)),
     );
 
-    fakeBuild<TextWidthBasis>(
-      FlutterTextWidthBasis.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextWidthBasis.parent'}).build,
-      (matcher) => matcher.having(
+    await foo<TextWidthBasis>(
+      tester,
+      'f:1:TextWidthBasis.parent',
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'TextWidthBasis.parent', equals(TextWidthBasis.parent)),
     );
   });
 
-  test('FlutterBoxFit', () {
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(<String, dynamic>{'builder': 'f:1:BoxFit.contain'})
-          .build,
-      (matcher) =>
-          matcher.having((p0) => p0, 'BoxFit.contain', equals(BoxFit.contain)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(<String, dynamic>{'builder': 'f:1:BoxFit.cover'})
-          .build,
-      (matcher) =>
-          matcher.having((p0) => p0, 'BoxFit.cover', equals(BoxFit.cover)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(<String, dynamic>{'builder': 'f:1:BoxFit.fill'})
-          .build,
-      (matcher) =>
-          matcher.having((p0) => p0, 'BoxFit.fill', equals(BoxFit.fill)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(
-          <String, dynamic>{'builder': 'f:1:BoxFit.fitHeight'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'BoxFit.fitHeight', equals(BoxFit.fitHeight)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(
-          <String, dynamic>{'builder': 'f:1:BoxFit.fitWidth'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'BoxFit.fitWidth', equals(BoxFit.fitWidth)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(<String, dynamic>{'builder': 'f:1:BoxFit.none'})
-          .build,
-      (matcher) =>
-          matcher.having((p0) => p0, 'BoxFit.none', equals(BoxFit.none)),
-    );
-
-    fakeBuild<BoxFit>(
-      FlutterBoxFit.fromJson(
-          <String, dynamic>{'builder': 'f:1:BoxFit.scaleDown'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'BoxFit.scaleDown', equals(BoxFit.scaleDown)),
-    );
+  testWidgets('FlutterBoxFit', (tester) async {
+    for (var ele in [
+      ['contain', BoxFit.contain],
+      ['cover', BoxFit.cover],
+      ['fill', BoxFit.fill],
+      ['fitHeight', BoxFit.fitHeight],
+      ['fitWidth', BoxFit.fitWidth],
+      ['none', BoxFit.none],
+      ['scaleDown', BoxFit.scaleDown],
+    ]) {
+      await foo<BoxFit>(
+        tester,
+        'f:1:BoxFit.${ele[0]}',
+        matcher: (matcher) =>
+            matcher.having((p0) => p0, 'BoxFit.${ele[0]}', equals(ele[1])),
+      );
+    }
   });
 
-  test('FlutterImageRepeat', () {
-    fakeBuild<ImageRepeat>(
-      FlutterImageRepeat.fromJson(
-          <String, dynamic>{'builder': 'f:1:ImageRepeat.noRepeat'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'ImageRepeat.noRepeat', equals(ImageRepeat.noRepeat)),
-    );
-
-    fakeBuild<ImageRepeat>(
-      FlutterImageRepeat.fromJson(
-          <String, dynamic>{'builder': 'f:1:ImageRepeat.repeat'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'ImageRepeat.repeat', equals(ImageRepeat.repeat)),
-    );
-
-    fakeBuild<ImageRepeat>(
-      FlutterImageRepeat.fromJson(
-          <String, dynamic>{'builder': 'f:1:ImageRepeat.repeatX'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'ImageRepeat.repeatX', equals(ImageRepeat.repeatX)),
-    );
-
-    fakeBuild<ImageRepeat>(
-      FlutterImageRepeat.fromJson(
-          <String, dynamic>{'builder': 'f:1:ImageRepeat.repeatY'}).build,
-      (matcher) => matcher.having(
-          (p0) => p0, 'ImageRepeat.repeatY', equals(ImageRepeat.repeatY)),
-    );
+  testWidgets('FlutterImageRepeat', (tester) async {
+    for (var ele in [
+      ['noRepeat', ImageRepeat.noRepeat],
+      ['repeat', ImageRepeat.repeat],
+      ['repeatX', ImageRepeat.repeatX],
+      ['repeatY', ImageRepeat.repeatY],
+    ]) {
+      await foo<ImageRepeat>(
+        tester,
+        'f:1:ImageRepeat.${ele[0]}',
+        matcher: (matcher) =>
+            matcher.having((p0) => p0, 'ImageRepeat.${ele[0]}', equals(ele[1])),
+      );
+    }
   });
 
-  test('FlutterTextAlignVertical', () {
-    fakeBuild<TextAlignVertical>(
-      FlutterTextAlignVertical.fromJson(<String, dynamic>{
-        'builder': 'f:1:TextAlignVertical',
+  testWidgets('FlutterTextAlignVertical', (tester) async {
+    for (var ele in [
+      ['bottom', TextAlignVertical.bottom],
+      ['center', TextAlignVertical.center],
+      ['top', TextAlignVertical.top],
+    ]) {
+      await foo<TextAlignVertical>(
+        tester,
+        'f:1:TextAlignVertical.${ele[0]}',
+        matcher: (matcher) =>
+            matcher.having((p0) => p0, 'ImageRepeat.${ele[0]}', equals(ele[1])),
+      );
+    }
+
+    await foo<TextAlignVertical>(
+      tester,
+      'f:1:TextAlignVertical',
+      props: <String, dynamic>{
         'y': 0.2,
-      }).build,
-      (matcher) => matcher..having((p0) => p0.y, 'TextAlignVertical.y', 0.2),
-    );
-
-    fakeBuild<TextAlignVertical>(
-      FlutterTextAlignVertical.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextAlignVertical.bottom'}).build,
-      (matcher) => matcher
-        ..having((p0) => p0, 'TextAlignVertical.bottom',
-            equals(TextAlignVertical.bottom)),
-    );
-
-    fakeBuild<TextAlignVertical>(
-      FlutterTextAlignVertical.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextAlignVertical.center'}).build,
-      (matcher) => matcher
-        ..having((p0) => p0, 'TextAlignVertical.center',
-            equals(TextAlignVertical.center)),
-    );
-
-    fakeBuild<TextAlignVertical>(
-      FlutterTextAlignVertical.fromJson(
-          <String, dynamic>{'builder': 'f:1:TextAlignVertical.top'}).build,
-      (matcher) => matcher
-        ..having(
-            (p0) => p0, 'TextAlignVertical.top', equals(TextAlignVertical.top)),
+      },
+      matcher: (matcher) =>
+          matcher..having((p0) => p0.y, 'TextAlignVertical.y', 0.2),
     );
   });
 }

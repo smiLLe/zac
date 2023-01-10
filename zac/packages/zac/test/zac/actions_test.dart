@@ -187,7 +187,7 @@ void main() {
 
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
-      await testMap(tester, <String, dynamic>{
+      await testJSON(tester, <String, dynamic>{
         'builder': 'z:1:ExecuteActions.once',
         'actions': [
           {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
@@ -205,7 +205,7 @@ void main() {
     testWidgets('will execute interactions', (tester) async {
       final executeCb = MockTestActionExecute();
 
-      await testZacWidget(
+      await testWidgetBuilder(
           tester,
           ZacExecuteActionsBuilder.once(
             actions: ZacValueList<ZacAction, List<ZacAction>>(

@@ -10,7 +10,7 @@ import '../models.dart';
 void main() {
   testWidgets('FlutterInteractiveViewer()', (tester) async {
     ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterInteractiveViewer.unionValue,

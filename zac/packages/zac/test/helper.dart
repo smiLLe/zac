@@ -24,6 +24,31 @@ void expectInRegistry(Object obj, Object fn) {
   }
 }
 
+Future<void> testJSON(WidgetTester tester, Map<String, dynamic> data) async {
+  await tester.pumpWidget(
+    ProviderScope(
+      child: MaterialApp(
+        home: Material(
+          child: ZacWidget(data: data),
+        ),
+      ),
+    ),
+  );
+}
+
+Future<void> testWidgetBuilder(
+    WidgetTester tester, ZacBuilder<Widget> builder) async {
+  await tester.pumpWidget(
+    ProviderScope(
+      child: ZacWidget(
+        data: FlutterMaterialApp(
+          home: FlutterMaterial(child: builder),
+        ),
+      ),
+    ),
+  );
+}
+
 Future<void> testWithContexts(
     WidgetTester tester,
     FutureOr<void> Function(BuildContext Function() getContext,
@@ -166,72 +191,21 @@ class TestActionExecute extends Mock {
       ZacActionPayload payload, BuildContext context, ZacContext zacContext);
 }
 
-class FakeBuildContext extends Fake implements BuildContext {}
-
-class FakeWidgetRef extends Fake implements WidgetRef {}
-
-class FakeZacOrigin extends Fake implements ZacContext {}
-
-class FakeZacContext extends Fake implements ZacContext {}
-
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
 
-void fakeBuild<T>(
-  Object Function(BuildContext context, ZacContext zacContext) builder,
-  TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
-) {
-  final zacContext = FakeZacContext();
-  final context = FakeBuildContext();
-  expect(builder(context, zacContext), isA<T>());
-  expect(builder(context, zacContext), matcher(isA<T>()));
-}
-
-Future<void> testMap(
+Future<void> foo<T>(
   WidgetTester tester,
-  Map<String, dynamic> data, {
-  ProviderContainer? useContainer,
+  String name, {
+  Map<String, dynamic>? props,
+  required TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 }) async {
-  return testWithinMaterialApp(
-    tester,
-    ZacWidget(data: data),
-    useContainer: useContainer,
-  );
-}
+  final builder = ZacRegistry().getRegistered<Object>(name)(
+      <String, dynamic>{'builder': name, ...(props ?? <String, dynamic>{})});
+  expect(builder, isA<ZacBuilder<T>>());
 
-Future<void> testZacWidget(
-  WidgetTester tester,
-  ZacBuilder<Widget> zacWidget, {
-  ProviderContainer? useContainer,
-}) async {
-  return testWithinMaterialApp(
-    tester,
-    ZacWidget(data: zacWidget),
-    useContainer: useContainer,
-  );
-}
+  await testWithContexts(tester, (getContext, getZacContext) {
+    final buildItem = builder.build(getContext(), getZacContext());
 
-Future<void> testWithinMaterialApp(
-  WidgetTester tester,
-  Widget widget, {
-  ProviderContainer? useContainer,
-}) async {
-  return testWithConverters(
-    tester: tester,
-    widget: MaterialApp(home: widget),
-    container: useContainer ?? ProviderContainer(),
-  );
-}
-
-Future<void> testWithConverters({
-  required WidgetTester tester,
-  required Widget widget,
-  required ProviderContainer container,
-}) async {
-  return tester.pumpWidget(
-    UncontrolledProviderScope(
-      key: GlobalKey(),
-      container: container,
-      child: widget,
-    ),
-  );
+    expect(buildItem, matcher(isA<T>()));
+  });
 }

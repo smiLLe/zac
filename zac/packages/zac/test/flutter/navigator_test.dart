@@ -62,7 +62,7 @@ void main() {
         };
       }
 
-      await testMap(
+      await testJSON(
         tester,
         page(
           number: 1,

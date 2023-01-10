@@ -8,9 +8,10 @@ import '../models.dart';
 void main() {
   group('Image.network', () {
     testWidgets('#1', (tester) async {
-      fakeBuild<Image>(
-        FlutterImage.fromJson(<String, dynamic>{
-          'builder': FlutterImage.unionValueNetwork,
+      await foo<Image>(
+        tester,
+        'f:1:Image.network',
+        props: <String, dynamic>{
           'key': KeysModel.getValueKey('test_key'),
           'src': 'test_src',
           'scale': 0.9,
@@ -37,8 +38,8 @@ void main() {
           'filterQuality': {
             'builder': 'f:1:FilterQuality.high',
           }
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having(
                 (p0) => (p0.image as NetworkImage).url, 'Image.src', 'test_src')
             .having(
@@ -69,16 +70,17 @@ void main() {
       );
     });
 
-    test('#2', () {
-      fakeBuild<Image>(
-        FlutterImage.fromJson(<String, dynamic>{
-          'builder': FlutterImage.unionValueNetwork,
+    testWidgets('#2', (tester) async {
+      await foo<Image>(
+        tester,
+        'f:1:Image.network',
+        props: <String, dynamic>{
           'key': KeysModel.getValueKey('test_key'),
           'src': 'test_src',
           'cacheWidth': 11,
           'cacheHeight': 22,
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having(
                 (p0) => (p0.image as ResizeImage).width, 'Image.cacheWidth', 11)
             .having((p0) => (p0.image as ResizeImage).height,
@@ -88,10 +90,11 @@ void main() {
   });
 
   group('Image.asset', () {
-    test('#1', () {
-      fakeBuild<Image>(
-        FlutterImage.fromJson(<String, dynamic>{
-          'builder': FlutterImage.unionValueAsset,
+    testWidgets('#1', (tester) async {
+      await foo<Image>(
+        tester,
+        'f:1:Image.asset',
+        props: <String, dynamic>{
           'key': KeysModel.getValueKey('test_key'),
           'name': 'test_name',
           'semanticLabel': 'test_semanticLabel',
@@ -117,8 +120,8 @@ void main() {
           'filterQuality': {
             'builder': 'f:1:FilterQuality.high',
           }
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having((p0) => (p0.image as ExactAssetImage).assetName,
                 'Image.name', 'test_name')
             // .having(
@@ -147,16 +150,17 @@ void main() {
       );
     });
 
-    test('#2', () {
-      fakeBuild<Image>(
-        FlutterImage.fromJson(<String, dynamic>{
-          'builder': FlutterImage.unionValueAsset,
+    testWidgets('#2', (tester) async {
+      await foo<Image>(
+        tester,
+        'f:1:Image.asset',
+        props: <String, dynamic>{
           'key': KeysModel.getValueKey('test_key'),
           'name': 'test_name',
           'cacheWidth': 11,
           'cacheHeight': 22,
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having(
                 (p0) => (p0.image as ResizeImage).width, 'Image.cacheWidth', 11)
             .having((p0) => (p0.image as ResizeImage).height,

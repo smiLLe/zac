@@ -15,7 +15,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('Dialog', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterDialogs.unionValueDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'child': ChildModel.getSizedBox(key: 'test_child'),
@@ -53,7 +53,7 @@ void main() {
   });
 
   testWidgets('AlertDialog', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterDialogs.unionValueAlertDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'title': ChildModel.getSizedBox(key: 'title_child'),
@@ -127,7 +127,7 @@ void main() {
   });
 
   testWidgets('SimpleDialog', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterDialogs.unionValueSimpleDialog,
       'key': KeysModel.getValueKey('FIND_ME'),
       'title': ChildModel.getSizedBox(key: 'title_child'),
@@ -182,7 +182,7 @@ void main() {
   group('SimpleDialogOption', () {
     testWidgets('SimpleDialogOption*', (tester) async {
       ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
-      await testMap(
+      await testJSON(
         tester,
         <String, dynamic>{
           'builder': FlutterMaterial.unionValue,

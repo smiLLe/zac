@@ -6,7 +6,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterMaterialApp()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': 'f:1:MaterialApp',
       'key': KeysModel.getValueKey('FIND_ME'),
       'home': {

@@ -8,7 +8,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterPositioned() #1', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterStack.unionValue,
@@ -41,7 +41,7 @@ void main() {
   });
 
   testWidgets('FlutterPositioned() #2', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterStack.unionValue,
@@ -74,7 +74,7 @@ void main() {
   });
 
   testWidgets('FlutterPositioned.directional() #1', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterStack.unionValue,
@@ -104,7 +104,7 @@ void main() {
   });
 
   testWidgets('FlutterPositioned.fill() #1', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterStack.unionValue,

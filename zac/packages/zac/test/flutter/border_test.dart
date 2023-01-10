@@ -7,49 +7,24 @@ import '../helper.dart';
 import 'models.dart';
 
 void main() {
-  test('BorderStyle', () {
-    fakeBuild<BorderStyle>(
-      FlutterBorderStyle.fromJson(
-          <String, dynamic>{'builder': 'f:1:BorderStyle.none'}).build,
-      (matcher) => matcher.having(
+  testWidgets('BorderStyle', (tester) async {
+    await foo<BorderStyle>(
+      tester,
+      'f:1:BorderStyle.none',
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'BorderStyle.none', equals(BorderStyle.none)),
     );
 
-    fakeBuild<BorderStyle>(
-      FlutterBorderStyle.fromJson(
-          <String, dynamic>{'builder': 'f:1:BorderStyle.solid'}).build,
-      (matcher) => matcher.having(
+    await foo<BorderStyle>(
+      tester,
+      'f:1:BorderStyle.solid',
+      matcher: (matcher) => matcher.having(
           (p0) => p0, 'BorderStyle.solid', equals(BorderStyle.solid)),
     );
   });
 
   group('Border', () {
-    test('FlutterBorder', () {
-      Map<String, dynamic> getMap(String type) => <String, dynamic>{
-            'builder': type,
-            'top': {
-              'builder': 'f:1:BorderSide',
-              'width': 11,
-            },
-            'right': {
-              'builder': 'f:1:BorderSide',
-              'width': 12,
-            },
-            'bottom': {
-              'builder': 'f:1:BorderSide',
-              'width': 13,
-            },
-            'left': {
-              'builder': 'f:1:BorderSide',
-              'width': 14,
-            },
-          };
-
-      Map<String, dynamic> getMapAll(String type) => <String, dynamic>{
-            'builder': type,
-            'width': 11,
-          };
-
+    testWidgets('FlutterBorder', (tester) async {
       final matcher = isA<Border>()
           .having((p0) => p0.top, 'Border.top',
               isA<BorderSide>().having((p0) => p0.width, 'width', 11))
@@ -63,29 +38,51 @@ void main() {
       final matcherAll = isA<Border>().having((p0) => p0.top, 'Border.top',
           isA<BorderSide>().having((p0) => p0.width, 'width', 11));
 
-      fakeBuild<Border>(
-        FlutterBorder.fromJson(getMap(FlutterBorder.unionValue)).build,
-        (m) => m.having((p0) => p0, 'matcher', matcher),
+      await foo<Border>(
+        tester,
+        'f:1:Border',
+        props: <String, dynamic>{
+          'top': {
+            'builder': 'f:1:BorderSide',
+            'width': 11,
+          },
+          'right': {
+            'builder': 'f:1:BorderSide',
+            'width': 12,
+          },
+          'bottom': {
+            'builder': 'f:1:BorderSide',
+            'width': 13,
+          },
+          'left': {
+            'builder': 'f:1:BorderSide',
+            'width': 14,
+          },
+        },
+        matcher: (m) => m.having((p0) => p0, 'matcher', matcher),
       );
 
-      fakeBuild<Border>(
-        FlutterBorder.fromJson(getMapAll(FlutterBorder.unionValueAll)).build,
-        (m) => m.having((p0) => p0, 'matcher', matcherAll),
+      await foo<Border>(
+        tester,
+        'f:1:Border.all',
+        props: <String, dynamic>{'width': 11},
+        matcher: (m) => m.having((p0) => p0, 'matcher', matcherAll),
       );
     });
   });
 
   group('Radius', () {
-    test('BorderRadius.all', () {
-      fakeBuild<BorderRadius>(
-        FlutterBorderRadius.fromJson(<String, dynamic>{
-          'builder': FlutterBorderRadius.unionValueAll,
+    testWidgets('BorderRadius.all', (tester) async {
+      await foo<BorderRadius>(
+        tester,
+        'f:1:BorderRadius.all',
+        props: <String, dynamic>{
           'radius': {
             'builder': 'f:1:Radius.circular',
             'radius': 11,
           }
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
                 const Radius.circular(11))
             .having((p0) => p0.topRight, 'BorderRadius.topRight',
@@ -97,13 +94,12 @@ void main() {
       );
     });
 
-    test('BorderRadius.circular', () {
-      fakeBuild<BorderRadius>(
-        FlutterBorderRadius.fromJson(<String, dynamic>{
-          'builder': FlutterBorderRadius.unionValueCircular,
-          'radius': 12
-        }).build,
-        (matcher) => matcher
+    testWidgets('BorderRadius.circular', (tester) async {
+      await foo<BorderRadius>(
+        tester,
+        'f:1:BorderRadius.circular',
+        props: <String, dynamic>{'radius': 12},
+        matcher: (matcher) => matcher
             .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
                 const Radius.circular(12))
             .having((p0) => p0.topRight, 'BorderRadius.topRight',
@@ -115,10 +111,11 @@ void main() {
       );
     });
 
-    test('BorderRadius.horizontal', () {
-      fakeBuild<BorderRadius>(
-        FlutterBorderRadius.fromJson(<String, dynamic>{
-          'builder': FlutterBorderRadius.unionValueHorizontal,
+    testWidgets('BorderRadius.horizontal', (tester) async {
+      await foo<BorderRadius>(
+        tester,
+        'f:1:BorderRadius.horizontal',
+        props: <String, dynamic>{
           'left': {
             'builder': 'f:1:Radius.circular',
             'radius': 11,
@@ -127,8 +124,8 @@ void main() {
             'builder': 'f:1:Radius.circular',
             'radius': 12,
           },
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having((p0) => p0.topLeft, 'BorderRadius.topLeft',
                 const Radius.circular(11))
             .having((p0) => p0.topRight, 'BorderRadius.topRight',
@@ -142,18 +139,19 @@ void main() {
   });
 
   group('FlutterInputBorder', () {
-    test('FlutterOutlineInputBorder', () {
-      fakeBuild<OutlineInputBorder>(
-        FlutterOutlineInputBorder.fromJson(<String, dynamic>{
-          'builder': 'f:1:OutlineInputBorder',
+    testWidgets('FlutterOutlineInputBorder', (tester) async {
+      await foo<OutlineInputBorder>(
+        tester,
+        'f:1:OutlineInputBorder',
+        props: <String, dynamic>{
           'borderSide': {
             'builder': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
           'gapPadding': 1.0,
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having(
                 (p0) => p0.borderSide,
                 'FlutterOutlineInputBorder.borderSide',
@@ -167,17 +165,18 @@ void main() {
       );
     });
 
-    test('FlutterUnderlineInputBorder', () {
-      fakeBuild<UnderlineInputBorder>(
-        FlutterUnderlineInputBorder.fromJson(<String, dynamic>{
-          'builder': 'f:1:UnderlineInputBorder',
+    testWidgets('FlutterUnderlineInputBorder', (tester) async {
+      await foo<UnderlineInputBorder>(
+        tester,
+        'f:1:UnderlineInputBorder',
+        props: <String, dynamic>{
           'borderSide': {
             'builder': 'f:1:BorderSide',
             'width': 11,
           },
           'borderRadius': BorderRadiusModel.allJson,
-        }).build,
-        (matcher) => matcher
+        },
+        matcher: (matcher) => matcher
             .having((p0) => p0.borderSide, 'UnderlineInputBorder.borderSide',
                 const BorderSide(width: 11))
             .having(
@@ -188,31 +187,33 @@ void main() {
     });
   });
 
-  test('FlutterCircleBorder', () {
-    fakeBuild<CircleBorder>(
-      FlutterCircleBorder.fromJson(<String, dynamic>{
-        'builder': 'f:1:CircleBorder',
+  testWidgets('FlutterCircleBorder', (tester) async {
+    await foo<CircleBorder>(
+      tester,
+      'f:1:CircleBorder',
+      props: <String, dynamic>{
         'side': {
           'builder': 'f:1:BorderSide',
           'width': 11,
         },
-      }).build,
-      (matcher) => matcher.having(
+      },
+      matcher: (matcher) => matcher.having(
           (p0) => p0.side, 'CircleBorder.side', const BorderSide(width: 11)),
     );
   });
 
-  test('FlutterRoundedRectangleBorder', () {
-    fakeBuild<RoundedRectangleBorder>(
-      FlutterRoundedRectangleBorder.fromJson(<String, dynamic>{
-        'builder': 'f:1:RoundedRectangleBorder',
+  testWidgets('FlutterRoundedRectangleBorder', (tester) async {
+    await foo<RoundedRectangleBorder>(
+      tester,
+      'f:1:RoundedRectangleBorder',
+      props: <String, dynamic>{
         'side': {
           'builder': 'f:1:BorderSide',
           'width': 11,
         },
         'borderRadius': BorderRadiusModel.allJson,
-      }).build,
-      (matcher) => matcher
+      },
+      matcher: (matcher) => matcher
           .having((p0) => p0.side, 'RoundedRectangleBorder.side',
               const BorderSide(width: 11))
           .having(
@@ -222,10 +223,11 @@ void main() {
     );
   });
 
-  test('FlutterBorderDirectional', () {
-    fakeBuild<BorderDirectional>(
-      FlutterBorderDirectional.fromJson(<String, dynamic>{
-        'builder': 'f:1:BorderDirectional',
+  testWidgets('FlutterBorderDirectional', (tester) async {
+    await foo<BorderDirectional>(
+      tester,
+      'f:1:BorderDirectional',
+      props: <String, dynamic>{
         'top': {
           'builder': 'f:1:BorderSide',
           'width': 11,
@@ -242,8 +244,8 @@ void main() {
           'builder': 'f:1:BorderSide',
           'width': 14,
         },
-      }).build,
-      (matcher) => matcher
+      },
+      matcher: (matcher) => matcher
           .having((p0) => p0.top, 'BorderDirectional.top',
               const BorderSide(width: 11))
           .having((p0) => p0.start, 'BorderDirectional.start',

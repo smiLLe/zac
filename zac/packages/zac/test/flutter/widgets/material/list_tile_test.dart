@@ -12,7 +12,7 @@ import '../../models.dart';
 void main() {
   testWidgets('FlutterListTile()', (tester) async {
     // @Todo: Add missing props
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'f:1:Scaffold',
@@ -31,17 +31,18 @@ void main() {
   testWidgets('FlutterListTile interactions', (tester) async {
     final onTapCb = MockTestActionExecute();
     final onLongPressCb = MockTestActionExecute();
-    await testZacWidget(
-        tester,
-        FlutterScaffold(
-          body: FlutterListTile(
-            key: FlutterValueKey('FIND_ME'),
-            onTap:
-                ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
-            onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-                [TestAction(onLongPressCb)]),
-          ),
-        ));
+    await testWidgetBuilder(
+      tester,
+      FlutterScaffold(
+        body: FlutterListTile(
+          key: FlutterValueKey('FIND_ME'),
+          onTap:
+              ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
+          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+              [TestAction(onLongPressCb)]),
+        ),
+      ),
+    );
 
     final findMe = find.byKey(const ValueKey('FIND_ME'));
 

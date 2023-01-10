@@ -12,7 +12,7 @@ void main() {
   group('Default Button', () {
     ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
-      await testMap(
+      await testJSON(
         tester,
         <String, dynamic>{
           'builder': rt,
@@ -41,63 +41,66 @@ void main() {
 
       final findMe = find.byKey(const ValueKey('FIND_ME'));
 
-      await testZacWidget(
+      await testWithContextsWraped(
         tester,
-        FlutterElevatedButton(
-          child: FlutterSizedBox(),
+        (child) => FlutterElevatedButton(
+          child: child,
           key: FlutterValueKey('FIND_ME'),
           onPressed: ZacValueList<ZacAction, List<ZacAction>>(
               [TestAction(onPressedCb)]),
           onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
               [TestAction(onLongPressCb)]),
         ),
+        (getContext, getZacContext) async {
+          await tester.tap(findMe);
+          await tester.pump();
+          await tester.longPress(findMe);
+          await tester.pump();
+
+          await testWithContextsWraped(
+            tester,
+            (child) => FlutterOutlinedButton(
+              child: child,
+              key: FlutterValueKey('FIND_ME'),
+              onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(onPressedCb)]),
+              onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+                  [TestAction(onLongPressCb)]),
+            ),
+            (getContext, getZacContext) async {
+              await tester.tap(findMe);
+              await tester.pump();
+              await tester.longPress(findMe);
+              await tester.pump();
+
+              await testWithContextsWraped(
+                tester,
+                (child) => FlutterTextButton(
+                  child: child,
+                  key: FlutterValueKey('FIND_ME'),
+                  onPressed: ZacValueList<ZacAction, List<ZacAction>>(
+                      [TestAction(onPressedCb)]),
+                  onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
+                      [TestAction(onLongPressCb)]),
+                ),
+                (getContext, getZacContext) async {
+                  await tester.tap(findMe);
+                  await tester.pump();
+                  await tester.longPress(findMe);
+                  await tester.pump();
+
+                  verify(onPressedCb(argThat(isA<ZacActionPayload>()), any,
+                          argThat(isZacContext)))
+                      .called(3);
+                  verify(onLongPressCb(argThat(isA<ZacActionPayload>()), any,
+                          argThat(isZacContext)))
+                      .called(3);
+                },
+              );
+            },
+          );
+        },
       );
-
-      await tester.tap(findMe);
-      await tester.pump();
-      await tester.longPress(findMe);
-      await tester.pump();
-
-      await testZacWidget(
-        tester,
-        FlutterOutlinedButton(
-          child: FlutterSizedBox(),
-          key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
-        ),
-      );
-
-      await tester.tap(findMe);
-      await tester.pump();
-      await tester.longPress(findMe);
-      await tester.pump();
-
-      await testZacWidget(
-        tester,
-        FlutterTextButton(
-          child: FlutterSizedBox(),
-          key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
-        ),
-      );
-
-      await tester.tap(findMe);
-      await tester.pump();
-      await tester.longPress(findMe);
-      await tester.pump();
-
-      verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(3);
-      verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(3);
     });
 
     testWidgets('ElevatedButton()', (tester) async {
@@ -132,7 +135,7 @@ void main() {
   group('Button.icon', () {
     ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
-      await testMap(
+      await testJSON(
         tester,
         <String, dynamic>{
           'builder': rt,
@@ -162,9 +165,7 @@ void main() {
       final onPressedCb = MockTestActionExecute();
       final onLongPressCb = MockTestActionExecute();
 
-      final findMe = find.byKey(const ValueKey('FIND_ME'));
-
-      await testZacWidget(
+      await testWidgetBuilder(
         tester,
         FlutterElevatedButton.icon(
           icon: FlutterSizedBox(),
@@ -176,13 +177,14 @@ void main() {
               [TestAction(onLongPressCb)]),
         ),
       );
+      var findMe = find.byKey(const ValueKey('FIND_ME'));
 
       await tester.tap(findMe);
       await tester.pump();
       await tester.longPress(findMe);
       await tester.pump();
 
-      await testZacWidget(
+      await testWidgetBuilder(
         tester,
         FlutterOutlinedButton.icon(
           icon: FlutterSizedBox(),
@@ -195,12 +197,14 @@ void main() {
         ),
       );
 
+      findMe = find.byKey(const ValueKey('FIND_ME'));
+
       await tester.tap(findMe);
       await tester.pump();
       await tester.longPress(findMe);
       await tester.pump();
 
-      await testZacWidget(
+      await testWidgetBuilder(
         tester,
         FlutterTextButton.icon(
           icon: FlutterSizedBox(),
@@ -212,6 +216,7 @@ void main() {
               [TestAction(onLongPressCb)]),
         ),
       );
+      findMe = find.byKey(const ValueKey('FIND_ME'));
 
       await tester.tap(findMe);
       await tester.pump();
@@ -260,16 +265,17 @@ void main() {
   });
 
   group('ElevatedButton.icon()', () {
-    test('properties', () {
-      fakeBuild<ElevatedButton>(
-        FlutterElevatedButton.fromJson(<String, dynamic>{
-          'builder': FlutterElevatedButton.unionValueIcon,
+    testWidgets('properties', (tester) async {
+      await foo<ElevatedButton>(
+        tester,
+        'f:1:ElevatedButton.icon',
+        props: <String, dynamic>{
           'key': KeysModel.getValueKey('test_key'),
           'icon': ChildModel.getSizedBox(key: 'test_icon'),
           'label': ChildModel.getSizedBox(key: 'test_label'),
           'clipBehavior': {'builder': 'f:1:Clip.antiAlias'}
-        }).build,
-        (matcher) => matcher.havingValueKey('test_key').having(
+        },
+        matcher: (matcher) => matcher.havingValueKey('test_key').having(
             (p0) => p0.clipBehavior,
             'ElevatedButton.clipBehavior',
             Clip.antiAlias),
@@ -277,7 +283,7 @@ void main() {
     });
 
     testWidgets('created a label and icon', (tester) async {
-      await testMap(tester, <String, dynamic>{
+      await testJSON(tester, <String, dynamic>{
         'builder': 'f:1:ElevatedButton.icon',
         'icon': ChildModel.getSizedBox(key: 'test_icon'),
         'label': ChildModel.getSizedBox(key: 'test_label'),

@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterContainer() #1', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterContainer.unionValue,
@@ -39,7 +39,7 @@ void main() {
   });
 
   testWidgets('FlutterContainer() #2', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterContainer.unionValue,

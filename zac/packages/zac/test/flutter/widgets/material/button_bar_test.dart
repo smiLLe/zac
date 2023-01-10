@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('FlutterButtonBar()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterButtonBar.unionValue,
       'key': KeysModel.getValueKey('test_key'),
       'children': [

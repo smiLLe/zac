@@ -7,7 +7,7 @@ import '../../models.dart';
 
 void main() {
   testWidgets('ProgressIndicator.circular()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterProgressIndicator.unionValueCircularProgressIndicator,
@@ -46,7 +46,7 @@ void main() {
   });
 
   testWidgets('ProgressIndicator.linear()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterProgressIndicator.unionValueLinearProgressIndicator,

@@ -839,7 +839,7 @@ class FlutterCircleBorder
 @freezedZacBuilder
 class FlutterRoundedRectangleBorder
     with _$FlutterRoundedRectangleBorder
-    implements ZacBuilder<ShapeBorder> {
+    implements ZacBuilder<RoundedRectangleBorder> {
   const FlutterRoundedRectangleBorder._();
 
   static const String unionValue = 'f:1:RoundedRectangleBorder';
@@ -862,7 +862,7 @@ class FlutterRoundedRectangleBorder
   }
 
   @override
-  ShapeBorder build(BuildContext context, ZacContext zacContext) {
+  RoundedRectangleBorder build(BuildContext context, ZacContext zacContext) {
     return _build(context, zacContext);
   }
 }

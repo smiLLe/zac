@@ -37,7 +37,7 @@ void main() {
   });
 
   testWidgets('FlutterGridView()', (tester) async {
-    await testMap(tester, map);
+    await testJSON(tester, map);
     final findMe = find.byKey(const ValueKey('FINDME'));
     expect(findMe, findsOneWidget);
     expect(find.byKey(const ValueKey('child1')), findsOneWidget);
@@ -71,7 +71,7 @@ void main() {
   });
 
   testWidgets('FlutterGridView consumes ScrollController', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': 'z:1:ScrollController.provide',

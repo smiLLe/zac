@@ -17,12 +17,12 @@ void main() {
     final onSecondaryLongPressCb = MockTestActionExecute();
     final onTertiaryLongPressCb = MockTestActionExecute();
 
-    await testZacWidget(
+    await testWithContextsWraped(
       tester,
-      FlutterGestureDetector(
-        key: FlutterValueKey('FIND_ME'),
+      (child) => FlutterGestureDetector(
+        key: FlutterValueKey('GestureDetector'),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: FlutterSizedBox(),
+        child: child,
         onTap: ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
         onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
             [TestAction(onLongPressCb)]),
@@ -31,68 +31,70 @@ void main() {
         onTertiaryLongPress: ZacValueList<ZacAction, List<ZacAction>>(
             [TestAction(onTertiaryLongPressCb)]),
       ),
+      (getContext, getZacContext) async {
+        final findMe = find.byKey(const ValueKey('GestureDetector'));
+
+        expect(findMe, findsOneWidget);
+
+        await tester.tap(findMe);
+        await tester.longPress(findMe);
+        await tester.pumpAndSettle();
+
+        final widget = findMe.evaluate().first.widget as GestureDetector;
+
+        /// @TODO: Find better way to test calls
+        widget.onSecondaryLongPress?.call();
+        widget.onTertiaryLongPress?.call();
+
+        verifyInOrder([
+          onTapCb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+          onLongPressCb(
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+          onSecondaryLongPressCb(
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+          onTertiaryLongPressCb(
+              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+        ]);
+
+        verifyNoMoreInteractions(onTapCb);
+        verifyNoMoreInteractions(onLongPressCb);
+        verifyNoMoreInteractions(onSecondaryLongPressCb);
+        verifyNoMoreInteractions(onTertiaryLongPressCb);
+      },
     );
-
-    final findMe = find.byKey(const ValueKey('FIND_ME'));
-
-    expect(findMe, findsOneWidget);
-
-    await tester.tap(findMe);
-    await tester.longPress(findMe);
-    await tester.pumpAndSettle();
-
-    final widget = findMe.evaluate().first.widget as GestureDetector;
-
-    /// @TODO: Find better way to test calls
-    widget.onSecondaryLongPress?.call();
-    widget.onTertiaryLongPress?.call();
-
-    verifyInOrder([
-      onTapCb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-      onLongPressCb(
-          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-      onSecondaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-      onTertiaryLongPressCb(
-          argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-    ]);
-
-    verifyNoMoreInteractions(onTapCb);
-    verifyNoMoreInteractions(onLongPressCb);
-    verifyNoMoreInteractions(onSecondaryLongPressCb);
-    verifyNoMoreInteractions(onTertiaryLongPressCb);
   });
 
   testWidgets('doubleTap', (tester) async {
     final doubleTapCb = MockTestActionExecute();
-    await testZacWidget(
+    await testWithContextsWraped(
       tester,
-      FlutterGestureDetector(
-        key: FlutterValueKey('FIND_ME'),
+      (child) => FlutterGestureDetector(
+        key: FlutterValueKey('GestureDetector'),
         behavior: FlutterHitTestBehavior.opaque(),
-        child: FlutterSizedBox(),
+        child: child,
         onDoubleTap:
             ZacValueList<ZacAction, List<ZacAction>>([TestAction(doubleTapCb)]),
       ),
+      (getContext, getZacContext) async {
+        final findMe = find.byKey(const ValueKey('GestureDetector'));
+
+        expect(findMe, findsOneWidget);
+
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const ValueKey('GestureDetector')));
+        await tester.pump(kDoubleTapMinTime);
+        await tester.tap(find.byKey(const ValueKey('GestureDetector')));
+        await tester.pumpAndSettle();
+
+        verify(doubleTapCb(
+                argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
+            .called(1);
+      },
     );
-
-    final findMe = find.byKey(const ValueKey('FIND_ME'));
-
-    expect(findMe, findsOneWidget);
-
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const ValueKey('FIND_ME')));
-    await tester.pump(kDoubleTapMinTime);
-    await tester.tap(find.byKey(const ValueKey('FIND_ME')));
-    await tester.pumpAndSettle();
-
-    verify(doubleTapCb(
-            argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-        .called(1);
   });
 
   testWidgets('properties', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterGestureDetector.unionValue,
       'key': KeysModel.getValueKey('FIND_ME'),
       'child': ChildModel.getSizedBox(key: 'test_child'),

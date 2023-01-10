@@ -12,7 +12,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterDecoratedBox()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterDecoratedBox.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'decoration': BoxDecorationModel.getMap(),
@@ -32,7 +32,7 @@ void main() {
   });
 
   testWidgets('FlutterClipRect()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterClipRect.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
@@ -44,7 +44,7 @@ void main() {
   });
 
   testWidgets('FlutterClipOval()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterClipOval.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
@@ -56,7 +56,7 @@ void main() {
   });
 
   testWidgets('FlutterRotatedBox()', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': FlutterRotatedBox.unionValue,
       'key': KeysModel.getValueKey('FINDME'),
       'child': ChildModel.getSizedBox(key: 'child'),
@@ -78,7 +78,7 @@ void main() {
   testWidgets(
     'FlutterFractionalTranslation()',
     (tester) async {
-      await testMap(tester, <String, dynamic>{
+      await testJSON(tester, <String, dynamic>{
         'builder': FlutterFractionalTranslation.unionValue,
         'key': KeysModel.getValueKey('FINDME'),
         'child': ChildModel.getSizedBox(key: 'child'),
@@ -102,7 +102,7 @@ void main() {
   );
 
   testWidgets('FlutterOpacity()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterOpacity.unionValue,

@@ -6,10 +6,11 @@ import '../../../helper.dart';
 import '../../models.dart';
 
 void main() {
-  test('check non widget properties', () {
-    fakeBuild<AppBar>(
-      FlutterAppBar.fromJson(<String, dynamic>{
-        'builder': FlutterAppBar.unionValue,
+  testWidgets('check non widget properties', (tester) async {
+    await foo<AppBar>(
+      tester,
+      'f:1:AppBar',
+      props: <String, dynamic>{
         'automaticallyImplyLeading': false,
         'elevation': 33,
         'shadowColor': ColorModel.json,
@@ -39,8 +40,8 @@ void main() {
         'toolbarTextStyle': TextModel.textStyle,
         'titleTextStyle': TextModel.textStyle,
         'systemOverlayStyle': SystemUiOverlayStyleModel.json,
-      }).build,
-      (matcher) => matcher
+      },
+      matcher: (matcher) => matcher
           .having((p0) => p0.automaticallyImplyLeading,
               'AppBar.automaticallyImplyLeading', isFalse)
           .having((p0) => p0.elevation, 'AppBar.elevation', 33)
@@ -80,7 +81,7 @@ void main() {
     );
   });
   testWidgets('find all widgets', (tester) async {
-    await testMap(tester, <String, dynamic>{
+    await testJSON(tester, <String, dynamic>{
       'builder': 'f:1:AppBar',
       'key': KeysModel.getValueKey('test_key'),
       'leading': ChildModel.getSizedBox(key: 'test_leading'),

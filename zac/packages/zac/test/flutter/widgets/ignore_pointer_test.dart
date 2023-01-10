@@ -7,7 +7,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterIgnorePointer()', (tester) async {
-    await testMap(
+    await testJSON(
       tester,
       <String, dynamic>{
         'builder': FlutterIgnorePointer.unionValue,

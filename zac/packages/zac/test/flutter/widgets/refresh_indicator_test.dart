@@ -10,33 +10,35 @@ import '../models.dart';
 void main() {
   testWidgets('FlutterRefreshIndicator()', (tester) async {
     ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
-    await testWithinMaterialApp(
+    await testJSON(
       tester,
-      Scaffold(
-        appBar: AppBar(title: const Text('Title')),
-        body: ZacWidget(
-          data: <String, dynamic>{
-            'builder': 'f:1:RefreshIndicator',
-            'key': KeysModel.getValueKey('FIND_ME'),
-            'child': {
-              'builder': FlutterListView.unionValue,
-              'children': [
-                ChildModel.getSizedBox(key: 'child1'),
-                ChildModel.getSizedBox(key: 'child2')
-              ],
-            },
-            'onRefresh': const [
-              {'builder': 'test.action'}
+      <String, dynamic>{
+        'builder': 'f:1:Scaffold',
+        'appBar': {
+          'builder': 'f:1:AppBar',
+          'title': {'builder': 'f:1:Text', 'data': 'Title'},
+        },
+        'body': {
+          'builder': 'f:1:RefreshIndicator',
+          'key': KeysModel.getValueKey('FIND_ME'),
+          'child': {
+            'builder': FlutterListView.unionValue,
+            'children': [
+              ChildModel.getSizedBox(key: 'child1'),
+              ChildModel.getSizedBox(key: 'child2')
             ],
-            'semanticsLabel': 'semanticsLabel',
-            'semanticsValue': 'semanticsValue',
-            'color': ColorModel.json,
-            'backgroundColor': ColorModel.json,
-            'displacement': 1,
-            'edgeOffset': 2,
           },
-        ),
-      ),
+          'onRefresh': const [
+            {'builder': 'test.action'}
+          ],
+          'semanticsLabel': 'semanticsLabel',
+          'semanticsValue': 'semanticsValue',
+          'color': ColorModel.json,
+          'backgroundColor': ColorModel.json,
+          'displacement': 1,
+          'edgeOffset': 2,
+        },
+      },
     );
 
     final widget = find
@@ -66,20 +68,17 @@ void main() {
   testWidgets('Execute onRefresh without custom completer', (tester) async {
     final SemanticsHandle handle = tester.ensureSemantics();
     final cb = MockTestActionExecute();
-    await testWithinMaterialApp(
+    await testWidgetBuilder(
       tester,
-      Scaffold(
-        appBar: AppBar(title: const Text('Title')),
-        body: ZacWidget(
-          data: FlutterRefreshIndicator(
-            onRefresh:
-                ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
-            child: FlutterListView(
-              children: ZacValueList<Widget, List<Widget>?>(
-                [
-                  FlutterSizedBox(key: FlutterValueKey('child1')),
-                ],
-              ),
+      FlutterScaffold(
+        appBar: FlutterAppBar(title: FlutterText(ZacValue('Title'))),
+        body: FlutterRefreshIndicator(
+          onRefresh: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+          child: FlutterListView(
+            children: ZacValueList<Widget, List<Widget>?>(
+              [
+                FlutterSizedBox(key: FlutterValueKey('child1')),
+              ],
             ),
           ),
         ),

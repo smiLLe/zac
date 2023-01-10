@@ -267,7 +267,7 @@ void main() {
   testWidgets('Pick a ZacValue and pass it to new actions as payload',
       (tester) async {
     late ZacActionPayload payload;
-    await testZacWidget(
+    await testWidgetBuilder(
       tester,
       ZacExecuteActionsBuilder.once(
         actions: ZacValueList<ZacAction, List<ZacAction>>([
