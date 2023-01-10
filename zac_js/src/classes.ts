@@ -4448,7 +4448,7 @@ export class ZacControlFlowAction extends ZacBuilder<ZacAction> {
   static ifCond(data: {
     condition: ZacListBuilder<ZacTransform>;
     ifTrue: ZacListBuilder<ZacAction>;
-    ifFalse?: ZacBuilder<Array<ZacAction>>;
+    ifFalse?: ZacListBuilder<ZacAction>;
   }) {
     return new ZacControlFlowAction({
       builder: "z:1:ControlFlowAction.if",

@@ -14,6 +14,28 @@ _$_SharedValueActionsUpdate _$$_SharedValueActionsUpdateFromJson(
       $type: json['builder'] as String?,
     );
 
+_$_SharedValueActionsTransformCurrentValue
+    _$$_SharedValueActionsTransformCurrentValueFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsTransformCurrentValue(
+          family: json['family'] as String,
+          transformer:
+              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
+                  json['transformer'] as Object),
+          $type: json['builder'] as String?,
+        );
+
+_$_SharedValueActionsUpdateFromPayload
+    _$$_SharedValueActionsUpdateFromPayloadFromJson(
+            Map<String, dynamic> json) =>
+        _$_SharedValueActionsUpdateFromPayload(
+          family: json['family'] as String,
+          transformer:
+              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
+                  json['transformer'] as Object),
+          $type: json['builder'] as String?,
+        );
+
 _$_SharedValueActionsUpdateWIthNull
     _$$_SharedValueActionsUpdateWIthNullFromJson(Map<String, dynamic> json) =>
         _$_SharedValueActionsUpdateWIthNull(
@@ -45,28 +67,6 @@ _$_SharedValueActionsUpdateWithBuilder
         _$_SharedValueActionsUpdateWithBuilder(
           value: ZacBuilder<Object>.fromJson(json['value'] as Object),
           family: json['family'] as String,
-          $type: json['builder'] as String?,
-        );
-
-_$_SharedValueActionsTransformCurrentValue
-    _$$_SharedValueActionsTransformCurrentValueFromJson(
-            Map<String, dynamic> json) =>
-        _$_SharedValueActionsTransformCurrentValue(
-          family: json['family'] as String,
-          transformer:
-              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
-                  json['transformer'] as Object),
-          $type: json['builder'] as String?,
-        );
-
-_$_SharedValueActionsUpdateFromPayload
-    _$$_SharedValueActionsUpdateFromPayloadFromJson(
-            Map<String, dynamic> json) =>
-        _$_SharedValueActionsUpdateFromPayload(
-          family: json['family'] as String,
-          transformer:
-              ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
-                  json['transformer'] as Object),
           $type: json['builder'] as String?,
         );
 

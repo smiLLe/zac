@@ -907,7 +907,7 @@ mixin _$ZacControlFlowAction {
       throw _privateConstructorUsedError;
   ZacListBuilder<ZacAction, List<ZacAction>> get ifTrue =>
       throw _privateConstructorUsedError;
-  ZacBuilder<List<ZacAction>>? get ifFalse =>
+  ZacListBuilder<ZacAction, List<ZacAction>>? get ifFalse =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -932,7 +932,7 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
   @override
   final ZacListBuilder<ZacAction, List<ZacAction>> ifTrue;
   @override
-  final ZacBuilder<List<ZacAction>>? ifFalse;
+  final ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse;
 
   @override
   String toString() {
@@ -965,10 +965,11 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
 
 abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
   factory _ZacControlFlowActionIf(
-      {required final ZacListBuilder<ZacTransform, List<ZacTransform>>
-          condition,
-      required final ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
-      final ZacBuilder<List<ZacAction>>? ifFalse}) = _$_ZacControlFlowActionIf;
+          {required final ZacListBuilder<ZacTransform, List<ZacTransform>>
+              condition,
+          required final ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
+          final ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse}) =
+      _$_ZacControlFlowActionIf;
   _ZacControlFlowActionIf._() : super._();
 
   factory _ZacControlFlowActionIf.fromJson(Map<String, dynamic> json) =
@@ -979,5 +980,5 @@ abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
   @override
   ZacListBuilder<ZacAction, List<ZacAction>> get ifTrue;
   @override
-  ZacBuilder<List<ZacAction>>? get ifFalse;
+  ZacListBuilder<ZacAction, List<ZacAction>>? get ifFalse;
 }

@@ -212,7 +212,7 @@ class ZacControlFlowAction
   factory ZacControlFlowAction.ifCond({
     required ZacListBuilder<ZacTransform, List<ZacTransform>> condition,
     required ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
-    ZacBuilder<List<ZacAction>>? ifFalse,
+    ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
 
   late final ZacAction _action = ZacAction(
@@ -227,7 +227,7 @@ class ZacControlFlowAction
           param: (obj) => obj.params,
           param2: (obj) => obj.params,
         );
-        final trueOfFalse = condition
+        final trueOrFalse = condition
             .build(context, zacContext)
             .fold<bool>(true, (previousValue, zacTransformers) {
           final cond = zacTransformers.transform(
@@ -241,7 +241,7 @@ class ZacControlFlowAction
           return cond && previousValue;
         });
 
-        (trueOfFalse ? obj.ifTrue : obj.ifFalse)
+        (trueOrFalse ? obj.ifTrue : obj.ifFalse)
             ?.build(context, zacContext)
             .execute(payload, context, zacContext);
       },

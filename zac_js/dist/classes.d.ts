@@ -2301,7 +2301,7 @@ export declare class ZacControlFlowAction extends ZacBuilder<ZacAction> {
     static ifCond(data: {
         condition: ZacListBuilder<ZacTransform>;
         ifTrue: ZacListBuilder<ZacAction>;
-        ifFalse?: ZacBuilder<Array<ZacAction>>;
+        ifFalse?: ZacListBuilder<ZacAction>;
     }): ZacControlFlowAction;
 }
 export declare class ZacExecuteActionsBuilder extends ZacBuilder<native.Widget> {

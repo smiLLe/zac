@@ -51,5 +51,6 @@ _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(
           json['ifTrue'] as Object),
       ifFalse: json['ifFalse'] == null
           ? null
-          : ZacBuilder<List<ZacAction>>.fromJson(json['ifFalse'] as Object),
+          : ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
+              json['ifFalse'] as Object),
     );
