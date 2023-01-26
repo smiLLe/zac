@@ -8,21 +8,31 @@ part of 'fractionally_sized_box.dart';
 
 _$_FlutterFractionallySizedBox _$$_FlutterFractionallySizedBoxFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterFractionallySizedBox(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      widthFactor: json['widthFactor'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['widthFactor'] as Object),
-      heightFactor: json['heightFactor'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['heightFactor'] as Object),
+    $checkedCreate(
+      r'_$_FlutterFractionallySizedBox',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterFractionallySizedBox(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          widthFactor: $checkedConvert(
+              'widthFactor',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          heightFactor: $checkedConvert(
+              'heightFactor',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

@@ -8,308 +8,442 @@ part of 'floating_action_button.dart';
 
 _$_FlutterFloatingActionButton _$$_FlutterFloatingActionButtonFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterFloatingActionButton(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      tooltip: json['tooltip'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['tooltip'] as Object),
-      foregroundColor: json['foregroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['foregroundColor'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      focusColor: json['focusColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['focusColor'] as Object),
-      hoverColor: json['hoverColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['hoverColor'] as Object),
-      splashColor: json['splashColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['splashColor'] as Object),
-      heroTag: json['heroTag'] == null
-          ? null
-          : ZacBuilder<Object?>.fromJson(json['heroTag'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      focusElevation: json['focusElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['focusElevation'] as Object),
-      hoverElevation: json['hoverElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['hoverElevation'] as Object),
-      highlightElevation: json['highlightElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['highlightElevation'] as Object),
-      disabledElevation: json['disabledElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
-      mouseCursor: json['mouseCursor'] == null
-          ? null
-          : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
-      mini: json['mini'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['mini'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      focusNode: json['focusNode'] == null
-          ? null
-          : ZacBuilder<FocusNode?>.fromJson(json['focusNode'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      materialTapTargetSize: json['materialTapTargetSize'] == null
-          ? null
-          : ZacBuilder<MaterialTapTargetSize?>.fromJson(
-              json['materialTapTargetSize'] as Object),
-      isExtended: json['isExtended'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['isExtended'] as Object),
-      enableFeedback: json['enableFeedback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['enableFeedback'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterFloatingActionButton',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterFloatingActionButton(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          tooltip: $checkedConvert(
+              'tooltip',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          foregroundColor: $checkedConvert(
+              'foregroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          focusColor: $checkedConvert(
+              'focusColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          hoverColor: $checkedConvert(
+              'hoverColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          splashColor: $checkedConvert(
+              'splashColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          heroTag: $checkedConvert(
+              'heroTag',
+              (v) =>
+                  v == null ? null : ZacBuilder<Object?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          focusElevation: $checkedConvert(
+              'focusElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          hoverElevation: $checkedConvert(
+              'hoverElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          highlightElevation: $checkedConvert(
+              'highlightElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          disabledElevation: $checkedConvert(
+              'disabledElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          mouseCursor: $checkedConvert(
+              'mouseCursor',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MouseCursor?>.fromJson(v as Object)),
+          mini: $checkedConvert(
+              'mini',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          focusNode: $checkedConvert(
+              'focusNode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FocusNode?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          materialTapTargetSize: $checkedConvert(
+              'materialTapTargetSize',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MaterialTapTargetSize?>.fromJson(v as Object)),
+          isExtended: $checkedConvert(
+              'isExtended',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          enableFeedback: $checkedConvert(
+              'enableFeedback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
-_$_Extended _$$_ExtendedFromJson(Map<String, dynamic> json) => _$_Extended(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      tooltip: json['tooltip'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['tooltip'] as Object),
-      foregroundColor: json['foregroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['foregroundColor'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      focusColor: json['focusColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['focusColor'] as Object),
-      hoverColor: json['hoverColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['hoverColor'] as Object),
-      splashColor: json['splashColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['splashColor'] as Object),
-      heroTag: json['heroTag'] == null
-          ? null
-          : ZacBuilder<Object?>.fromJson(json['heroTag'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      focusElevation: json['focusElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['focusElevation'] as Object),
-      hoverElevation: json['hoverElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['hoverElevation'] as Object),
-      highlightElevation: json['highlightElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['highlightElevation'] as Object),
-      disabledElevation: json['disabledElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
-      mouseCursor: json['mouseCursor'] == null
-          ? null
-          : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      focusNode: json['focusNode'] == null
-          ? null
-          : ZacBuilder<FocusNode?>.fromJson(json['focusNode'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      materialTapTargetSize: json['materialTapTargetSize'] == null
-          ? null
-          : ZacBuilder<MaterialTapTargetSize?>.fromJson(
-              json['materialTapTargetSize'] as Object),
-      isExtended: json['isExtended'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['isExtended'] as Object),
-      enableFeedback: json['enableFeedback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['enableFeedback'] as Object),
-      extendedIconLabelSpacing: json['extendedIconLabelSpacing'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(
-              json['extendedIconLabelSpacing'] as Object),
-      extendedPadding: json['extendedPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['extendedPadding'] as Object),
-      extendedTextStyle: json['extendedTextStyle'] == null
-          ? null
-          : ZacBuilder<TextStyle?>.fromJson(
-              json['extendedTextStyle'] as Object),
-      icon: json['icon'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['icon'] as Object),
-      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
-      $type: json['builder'] as String?,
+_$_Extended _$$_ExtendedFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_Extended',
+      json,
+      ($checkedConvert) {
+        final val = _$_Extended(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          tooltip: $checkedConvert(
+              'tooltip',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          foregroundColor: $checkedConvert(
+              'foregroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          focusColor: $checkedConvert(
+              'focusColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          hoverColor: $checkedConvert(
+              'hoverColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          splashColor: $checkedConvert(
+              'splashColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          heroTag: $checkedConvert(
+              'heroTag',
+              (v) =>
+                  v == null ? null : ZacBuilder<Object?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          focusElevation: $checkedConvert(
+              'focusElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          hoverElevation: $checkedConvert(
+              'hoverElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          highlightElevation: $checkedConvert(
+              'highlightElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          disabledElevation: $checkedConvert(
+              'disabledElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          mouseCursor: $checkedConvert(
+              'mouseCursor',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MouseCursor?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          focusNode: $checkedConvert(
+              'focusNode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FocusNode?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          materialTapTargetSize: $checkedConvert(
+              'materialTapTargetSize',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MaterialTapTargetSize?>.fromJson(v as Object)),
+          isExtended: $checkedConvert(
+              'isExtended',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          enableFeedback: $checkedConvert(
+              'enableFeedback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          extendedIconLabelSpacing: $checkedConvert(
+              'extendedIconLabelSpacing',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          extendedPadding: $checkedConvert(
+              'extendedPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          extendedTextStyle: $checkedConvert(
+              'extendedTextStyle',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextStyle?>.fromJson(v as Object)),
+          icon: $checkedConvert(
+              'icon',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          label: $checkedConvert(
+              'label', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
-_$_Large _$$_LargeFromJson(Map<String, dynamic> json) => _$_Large(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      tooltip: json['tooltip'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['tooltip'] as Object),
-      foregroundColor: json['foregroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['foregroundColor'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      focusColor: json['focusColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['focusColor'] as Object),
-      hoverColor: json['hoverColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['hoverColor'] as Object),
-      splashColor: json['splashColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['splashColor'] as Object),
-      heroTag: json['heroTag'] == null
-          ? null
-          : ZacBuilder<Object?>.fromJson(json['heroTag'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      focusElevation: json['focusElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['focusElevation'] as Object),
-      hoverElevation: json['hoverElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['hoverElevation'] as Object),
-      highlightElevation: json['highlightElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['highlightElevation'] as Object),
-      disabledElevation: json['disabledElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
-      mouseCursor: json['mouseCursor'] == null
-          ? null
-          : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      focusNode: json['focusNode'] == null
-          ? null
-          : ZacBuilder<FocusNode?>.fromJson(json['focusNode'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      materialTapTargetSize: json['materialTapTargetSize'] == null
-          ? null
-          : ZacBuilder<MaterialTapTargetSize?>.fromJson(
-              json['materialTapTargetSize'] as Object),
-      enableFeedback: json['enableFeedback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['enableFeedback'] as Object),
-      $type: json['builder'] as String?,
+_$_Large _$$_LargeFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_Large',
+      json,
+      ($checkedConvert) {
+        final val = _$_Large(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          tooltip: $checkedConvert(
+              'tooltip',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          foregroundColor: $checkedConvert(
+              'foregroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          focusColor: $checkedConvert(
+              'focusColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          hoverColor: $checkedConvert(
+              'hoverColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          splashColor: $checkedConvert(
+              'splashColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          heroTag: $checkedConvert(
+              'heroTag',
+              (v) =>
+                  v == null ? null : ZacBuilder<Object?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          focusElevation: $checkedConvert(
+              'focusElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          hoverElevation: $checkedConvert(
+              'hoverElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          highlightElevation: $checkedConvert(
+              'highlightElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          disabledElevation: $checkedConvert(
+              'disabledElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          mouseCursor: $checkedConvert(
+              'mouseCursor',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MouseCursor?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          focusNode: $checkedConvert(
+              'focusNode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FocusNode?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          materialTapTargetSize: $checkedConvert(
+              'materialTapTargetSize',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MaterialTapTargetSize?>.fromJson(v as Object)),
+          enableFeedback: $checkedConvert(
+              'enableFeedback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
-_$_Small _$$_SmallFromJson(Map<String, dynamic> json) => _$_Small(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      tooltip: json['tooltip'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['tooltip'] as Object),
-      foregroundColor: json['foregroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['foregroundColor'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      focusColor: json['focusColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['focusColor'] as Object),
-      hoverColor: json['hoverColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['hoverColor'] as Object),
-      splashColor: json['splashColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['splashColor'] as Object),
-      heroTag: json['heroTag'] == null
-          ? null
-          : ZacBuilder<Object?>.fromJson(json['heroTag'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      focusElevation: json['focusElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['focusElevation'] as Object),
-      hoverElevation: json['hoverElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['hoverElevation'] as Object),
-      highlightElevation: json['highlightElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['highlightElevation'] as Object),
-      disabledElevation: json['disabledElevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
-      mouseCursor: json['mouseCursor'] == null
-          ? null
-          : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      focusNode: json['focusNode'] == null
-          ? null
-          : ZacBuilder<FocusNode?>.fromJson(json['focusNode'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      materialTapTargetSize: json['materialTapTargetSize'] == null
-          ? null
-          : ZacBuilder<MaterialTapTargetSize?>.fromJson(
-              json['materialTapTargetSize'] as Object),
-      enableFeedback: json['enableFeedback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['enableFeedback'] as Object),
-      $type: json['builder'] as String?,
+_$_Small _$$_SmallFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$_Small',
+      json,
+      ($checkedConvert) {
+        final val = _$_Small(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          tooltip: $checkedConvert(
+              'tooltip',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          foregroundColor: $checkedConvert(
+              'foregroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          focusColor: $checkedConvert(
+              'focusColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          hoverColor: $checkedConvert(
+              'hoverColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          splashColor: $checkedConvert(
+              'splashColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          heroTag: $checkedConvert(
+              'heroTag',
+              (v) =>
+                  v == null ? null : ZacBuilder<Object?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          focusElevation: $checkedConvert(
+              'focusElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          hoverElevation: $checkedConvert(
+              'hoverElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          highlightElevation: $checkedConvert(
+              'highlightElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          disabledElevation: $checkedConvert(
+              'disabledElevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          mouseCursor: $checkedConvert(
+              'mouseCursor',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MouseCursor?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          focusNode: $checkedConvert(
+              'focusNode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FocusNode?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          materialTapTargetSize: $checkedConvert(
+              'materialTapTargetSize',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MaterialTapTargetSize?>.fromJson(v as Object)),
+          enableFeedback: $checkedConvert(
+              'enableFeedback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );

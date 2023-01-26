@@ -7,17 +7,26 @@ part of 'center.dart';
 // **************************************************************************
 
 _$_FlutterCenter _$$_FlutterCenterFromJson(Map<String, dynamic> json) =>
-    _$_FlutterCenter(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      widthFactor: json['widthFactor'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['widthFactor'] as Object),
-      heightFactor: json['heightFactor'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['heightFactor'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterCenter',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterCenter(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          widthFactor: $checkedConvert(
+              'widthFactor',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          heightFactor: $checkedConvert(
+              'heightFactor',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

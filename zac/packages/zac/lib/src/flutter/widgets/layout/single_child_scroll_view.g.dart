@@ -8,37 +8,54 @@ part of 'single_child_scroll_view.dart';
 
 _$_FlutterSingleChildScrollView _$$_FlutterSingleChildScrollViewFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSingleChildScrollView(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      scrollDirection: json['scrollDirection'] == null
-          ? null
-          : ZacBuilder<Axis?>.fromJson(json['scrollDirection'] as Object),
-      reverse: json['reverse'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['reverse'] as Object),
-      padding: json['padding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
-      primary: json['primary'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['primary'] as Object),
-      controller: json['controller'] == null
-          ? null
-          : ZacBuilder<ScrollController?>.fromJson(
-              json['controller'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      restorationId: json['restorationId'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['restorationId'] as Object),
-      keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
-          ? null
-          : ZacBuilder<ScrollViewKeyboardDismissBehavior?>.fromJson(
-              json['keyboardDismissBehavior'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSingleChildScrollView',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSingleChildScrollView(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          scrollDirection: $checkedConvert(
+              'scrollDirection',
+              (v) =>
+                  v == null ? null : ZacBuilder<Axis?>.fromJson(v as Object)),
+          reverse: $checkedConvert(
+              'reverse',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          padding: $checkedConvert(
+              'padding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          primary: $checkedConvert(
+              'primary',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          controller: $checkedConvert(
+              'controller',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ScrollController?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          restorationId: $checkedConvert(
+              'restorationId',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          keyboardDismissBehavior: $checkedConvert(
+              'keyboardDismissBehavior',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ScrollViewKeyboardDismissBehavior?>.fromJson(
+                      v as Object)),
+        );
+        return val;
+      },
     );

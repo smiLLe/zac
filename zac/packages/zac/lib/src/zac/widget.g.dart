@@ -7,23 +7,38 @@ part of 'widget.dart';
 // **************************************************************************
 
 _$_ZacWidgetBuilder _$$_ZacWidgetBuilderFromJson(Map<String, dynamic> json) =>
-    _$_ZacWidgetBuilder(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      data: json['data'] as Object,
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_ZacWidgetBuilder',
+      json,
+      ($checkedConvert) {
+        final val = _$_ZacWidgetBuilder(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          data: $checkedConvert('data', (v) => v as Object),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_ZacWidgetBuilderIsolate _$$_ZacWidgetBuilderIsolateFromJson(
         Map<String, dynamic> json) =>
-    _$_ZacWidgetBuilderIsolate(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      data: json['data'] as Object,
-      errorChild: json['errorChild'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['errorChild'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_ZacWidgetBuilderIsolate',
+      json,
+      ($checkedConvert) {
+        final val = _$_ZacWidgetBuilderIsolate(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          data: $checkedConvert('data', (v) => v as Object),
+          errorChild: $checkedConvert(
+              'errorChild',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );

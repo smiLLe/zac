@@ -7,28 +7,41 @@ part of 'safe_area.dart';
 // **************************************************************************
 
 _$_FlutterSafeArea _$$_FlutterSafeAreaFromJson(Map<String, dynamic> json) =>
-    _$_FlutterSafeArea(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      left: json['left'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['left'] as Object),
-      top: json['top'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['top'] as Object),
-      right: json['right'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['right'] as Object),
-      bottom: json['bottom'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['bottom'] as Object),
-      minimum: json['minimum'] == null
-          ? null
-          : ZacBuilder<EdgeInsets?>.fromJson(json['minimum'] as Object),
-      maintainBottomViewPadding: json['maintainBottomViewPadding'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['maintainBottomViewPadding'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSafeArea',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSafeArea(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          left: $checkedConvert(
+              'left',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          top: $checkedConvert(
+              'top',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          right: $checkedConvert(
+              'right',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          bottom: $checkedConvert(
+              'bottom',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          minimum: $checkedConvert(
+              'minimum',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsets?>.fromJson(v as Object)),
+          maintainBottomViewPadding: $checkedConvert(
+              'maintainBottomViewPadding',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

@@ -7,17 +7,26 @@ part of 'limited_box.dart';
 // **************************************************************************
 
 _$_FlutterLimitedBox _$$_FlutterLimitedBoxFromJson(Map<String, dynamic> json) =>
-    _$_FlutterLimitedBox(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      maxWidth: json['maxWidth'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['maxWidth'] as Object),
-      maxHeight: json['maxHeight'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['maxHeight'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterLimitedBox',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterLimitedBox(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          maxWidth: $checkedConvert(
+              'maxWidth',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          maxHeight: $checkedConvert(
+              'maxHeight',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

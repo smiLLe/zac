@@ -7,52 +7,85 @@ part of 'icon.dart';
 // **************************************************************************
 
 _$_FlutterIcon _$$_FlutterIconFromJson(Map<String, dynamic> json) =>
-    _$_FlutterIcon(
-      json['icon'] == null
-          ? null
-          : FlutterIconData.fromJson(json['icon'] as Map<String, dynamic>),
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      size: json['size'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['size'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
-      textDirection: json['textDirection'] == null
-          ? null
-          : ZacBuilder<TextDirection?>.fromJson(
-              json['textDirection'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIcon',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIcon(
+          $checkedConvert(
+              'icon',
+              (v) => v == null
+                  ? null
+                  : FlutterIconData.fromJson(v as Map<String, dynamic>)),
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          size: $checkedConvert(
+              'size',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          textDirection: $checkedConvert(
+              'textDirection',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextDirection?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterIconData _$$_FlutterIconDataFromJson(Map<String, dynamic> json) =>
-    _$_FlutterIconData(
-      ZacBuilder<int>.fromJson(json['codePoint'] as Object),
-      fontFamily: json['fontFamily'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['fontFamily'] as Object),
-      fontPackage: json['fontPackage'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['fontPackage'] as Object),
-      matchTextDirection: json['matchTextDirection'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIconData',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIconData(
+          $checkedConvert(
+              'codePoint', (v) => ZacBuilder<int>.fromJson(v as Object)),
+          fontFamily: $checkedConvert(
+              'fontFamily',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          fontPackage: $checkedConvert(
+              'fontPackage',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          matchTextDirection: $checkedConvert(
+              'matchTextDirection',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterIconThemeData _$$_FlutterIconThemeDataFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterIconThemeData(
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      opacity: json['opacity'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['opacity'] as Object),
-      size: json['size'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['size'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIconThemeData',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIconThemeData(
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          opacity: $checkedConvert(
+              'opacity',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          size: $checkedConvert(
+              'size',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

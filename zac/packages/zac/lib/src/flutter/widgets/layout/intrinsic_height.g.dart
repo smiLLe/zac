@@ -8,11 +8,18 @@ part of 'intrinsic_height.dart';
 
 _$_FlutterIntrinsicHeight _$$_FlutterIntrinsicHeightFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterIntrinsicHeight(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIntrinsicHeight',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIntrinsicHeight(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

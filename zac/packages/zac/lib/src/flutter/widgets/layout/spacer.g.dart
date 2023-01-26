@@ -7,11 +7,16 @@ part of 'spacer.dart';
 // **************************************************************************
 
 _$_FlutterSpacer _$$_FlutterSpacerFromJson(Map<String, dynamic> json) =>
-    _$_FlutterSpacer(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      flex: json['flex'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['flex'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSpacer',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSpacer(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          flex: $checkedConvert('flex',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

@@ -8,27 +8,39 @@ part of 'overflow_box.dart';
 
 _$_FlutterOverflowBox _$$_FlutterOverflowBoxFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterOverflowBox(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      minWidth: json['minWidth'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['minWidth'] as Object),
-      maxWidth: json['maxWidth'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['maxWidth'] as Object),
-      minHeight: json['minHeight'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['minHeight'] as Object),
-      maxHeight: json['maxHeight'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['maxHeight'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterOverflowBox',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOverflowBox(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          minWidth: $checkedConvert(
+              'minWidth',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          maxWidth: $checkedConvert(
+              'maxWidth',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          minHeight: $checkedConvert(
+              'minHeight',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          maxHeight: $checkedConvert(
+              'maxHeight',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

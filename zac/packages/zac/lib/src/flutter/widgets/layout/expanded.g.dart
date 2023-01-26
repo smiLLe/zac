@@ -7,12 +7,18 @@ part of 'expanded.dart';
 // **************************************************************************
 
 _$_FlutterExpanded _$$_FlutterExpandedFromJson(Map<String, dynamic> json) =>
-    _$_FlutterExpanded(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      flex: json['flex'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['flex'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterExpanded',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterExpanded(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          flex: $checkedConvert('flex',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

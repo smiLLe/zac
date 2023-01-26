@@ -8,54 +8,72 @@ part of 'custom_scroll_view.dart';
 
 _$_FlutterCustomScrollView _$$_FlutterCustomScrollViewFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterCustomScrollView(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      scrollDirection: json['scrollDirection'] == null
-          ? null
-          : FlutterAxis.fromJson(
-              json['scrollDirection'] as Map<String, dynamic>),
-      reverse: json['reverse'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['reverse'] as Object),
-      controller: json['controller'] == null
-          ? null
-          : ZacBuilder<ScrollController?>.fromJson(
-              json['controller'] as Object),
-      primary: json['primary'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['primary'] as Object),
-      physics: json['physics'] == null
-          ? null
-          : FlutterScrollPhysics.fromJson(
-              json['physics'] as Map<String, dynamic>),
-      shrinkWrap: json['shrinkWrap'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['shrinkWrap'] as Object),
-      center: json['center'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['center'] as Object),
-      anchor: json['anchor'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['anchor'] as Object),
-      cacheExtent: json['cacheExtent'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['cacheExtent'] as Object),
-      slivers: json['slivers'] == null
-          ? null
-          : ZacBuilder<List<Widget>?>.fromJson(json['slivers'] as Object),
-      semanticChildCount: json['semanticChildCount'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['semanticChildCount'] as Object),
-      keyboardDismissBehavior: json['keyboardDismissBehavior'] == null
-          ? null
-          : FlutterScrollViewKeyboardDismissBehavior.fromJson(
-              json['keyboardDismissBehavior'] as Map<String, dynamic>),
-      restorationId: json['restorationId'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['restorationId'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
+    $checkedCreate(
+      r'_$_FlutterCustomScrollView',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterCustomScrollView(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          scrollDirection: $checkedConvert(
+              'scrollDirection',
+              (v) => v == null
+                  ? null
+                  : FlutterAxis.fromJson(v as Map<String, dynamic>)),
+          reverse: $checkedConvert(
+              'reverse',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          controller: $checkedConvert(
+              'controller',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ScrollController?>.fromJson(v as Object)),
+          primary: $checkedConvert(
+              'primary',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          physics: $checkedConvert(
+              'physics',
+              (v) => v == null
+                  ? null
+                  : FlutterScrollPhysics.fromJson(v as Map<String, dynamic>)),
+          shrinkWrap: $checkedConvert(
+              'shrinkWrap',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          center: $checkedConvert('center',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          anchor: $checkedConvert(
+              'anchor',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          cacheExtent: $checkedConvert(
+              'cacheExtent',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          slivers: $checkedConvert(
+              'slivers',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<Widget>?>.fromJson(v as Object)),
+          semanticChildCount: $checkedConvert('semanticChildCount',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          keyboardDismissBehavior: $checkedConvert(
+              'keyboardDismissBehavior',
+              (v) => v == null
+                  ? null
+                  : FlutterScrollViewKeyboardDismissBehavior.fromJson(
+                      v as Map<String, dynamic>)),
+          restorationId: $checkedConvert(
+              'restorationId',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

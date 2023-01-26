@@ -84,45 +84,45 @@ void main() {
   });
 
   test('ZacListOfActions', () {
-    ZacRegistry().register<ZacAction>('test', TestAction.noop);
+    ZacRegistry().register<ZacAction>('test:TestAction', TestAction.noop);
     expectInRegistry(ZacListOfActions.unionValue, ZacListOfActions.fromJson);
     expect(
         ZacBuilder<List<ZacAction>>.fromJson([
-          {'builder': 'test'}
+          {'builder': 'test:TestAction'}
         ]),
         isA<ZacListOfActions>().having(
             (p0) => p0.value,
             'ZacListOfActions value',
             isA<List<ZacBuilder<ZacAction>>>()
-                .having((p0) => p0.length, 'actions.length', 1)
-                .having((p0) => p0.first, 'actions.first', isA<TestAction>())));
+                .having((p0) => p0.length, 'length', 1)
+                .having((p0) => p0.first, 'first', isA<TestAction>())));
 
     expect(
         ZacBuilder<List<ZacAction>?>.fromJson([
-          {'builder': 'test'}
+          {'builder': 'test:TestAction'}
         ]),
         isA<ZacListOfActions>());
   });
 
   test('ZacListOfTransformers', () {
-    ZacRegistry().register<ZacTransform>('test', TestTransform.noop);
+    ZacRegistry()
+        .register<ZacTransform>('test:TestTransform', TestTransform.noop);
     expectInRegistry(
         ZacListOfTransformers.unionValue, ZacListOfTransformers.fromJson);
     expect(
         ZacBuilder<List<ZacTransform>>.fromJson([
-          {'builder': 'test'}
+          {'builder': 'test:TestTransform'}
         ]),
         isA<ZacListOfTransformers>().having(
             (p0) => p0.value,
             'ZacListOfTransformers value',
             isA<List<ZacBuilder<ZacTransform>>>()
-                .having((p0) => p0.length, 'actions.length', 1)
-                .having(
-                    (p0) => p0.first, 'actions.first', isA<TestTransform>())));
+                .having((p0) => p0.length, 'length', 1)
+                .having((p0) => p0.first, 'first', isA<TestTransform>())));
 
     expect(
         ZacBuilder<List<ZacTransform>?>.fromJson([
-          {'builder': 'test'}
+          {'builder': 'test:TestTransform'}
         ]),
         isA<ZacListOfTransformers>());
   });

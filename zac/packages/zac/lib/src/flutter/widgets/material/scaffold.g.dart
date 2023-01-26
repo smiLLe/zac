@@ -7,264 +7,444 @@ part of 'scaffold.dart';
 // **************************************************************************
 
 _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
-    _$_FlutterScaffold(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      appBar: json['appBar'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['appBar'] as Object),
-      body: json['body'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['body'] as Object),
-      floatingActionButton: json['floatingActionButton'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(
-              json['floatingActionButton'] as Object),
-      persistentFooterButtons: json['persistentFooterButtons'] == null
-          ? null
-          : ZacBuilder<List<Widget>?>.fromJson(
-              json['persistentFooterButtons'] as Object),
-      drawer: json['drawer'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['drawer'] as Object),
-      endDrawer: json['endDrawer'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['endDrawer'] as Object),
-      bottomNavigationBar: json['bottomNavigationBar'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['bottomNavigationBar'] as Object),
-      bottomSheet: json['bottomSheet'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['bottomSheet'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      resizeToAvoidBottomInset: json['resizeToAvoidBottomInset'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['resizeToAvoidBottomInset'] as Object),
-      primary: json['primary'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['primary'] as Object),
-      extendBody: json['extendBody'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['extendBody'] as Object),
-      extendBodyBehindAppBar: json['extendBodyBehindAppBar'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['extendBodyBehindAppBar'] as Object),
-      drawerScrimColor: json['drawerScrimColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['drawerScrimColor'] as Object),
-      drawerEdgeDragWidth: json['drawerEdgeDragWidth'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['drawerEdgeDragWidth'] as Object),
-      drawerEnableOpenDragGesture: json['drawerEnableOpenDragGesture'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['drawerEnableOpenDragGesture'] as Object),
-      endDrawerEnableOpenDragGesture:
-          json['endDrawerEnableOpenDragGesture'] == null
-              ? null
-              : ZacBuilder<bool?>.fromJson(
-                  json['endDrawerEnableOpenDragGesture'] as Object),
-      restorationId: json['restorationId'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['restorationId'] as Object),
+    $checkedCreate(
+      r'_$_FlutterScaffold',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterScaffold(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          appBar: $checkedConvert(
+              'appBar',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          body: $checkedConvert(
+              'body',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          floatingActionButton: $checkedConvert(
+              'floatingActionButton',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          persistentFooterButtons: $checkedConvert(
+              'persistentFooterButtons',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<Widget>?>.fromJson(v as Object)),
+          drawer: $checkedConvert(
+              'drawer',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          endDrawer: $checkedConvert(
+              'endDrawer',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          bottomNavigationBar: $checkedConvert(
+              'bottomNavigationBar',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          bottomSheet: $checkedConvert(
+              'bottomSheet',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          resizeToAvoidBottomInset: $checkedConvert(
+              'resizeToAvoidBottomInset',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          primary: $checkedConvert(
+              'primary',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          extendBody: $checkedConvert(
+              'extendBody',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          extendBodyBehindAppBar: $checkedConvert(
+              'extendBodyBehindAppBar',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          drawerScrimColor: $checkedConvert(
+              'drawerScrimColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          drawerEdgeDragWidth: $checkedConvert(
+              'drawerEdgeDragWidth',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          drawerEnableOpenDragGesture: $checkedConvert(
+              'drawerEnableOpenDragGesture',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          endDrawerEnableOpenDragGesture: $checkedConvert(
+              'endDrawerEnableOpenDragGesture',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          restorationId: $checkedConvert(
+              'restorationId',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterScaffoldActionsOpenDrawer
     _$$_FlutterScaffoldActionsOpenDrawerFromJson(Map<String, dynamic> json) =>
-        _$_FlutterScaffoldActionsOpenDrawer(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldActionsOpenDrawer',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldActionsOpenDrawer(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldActionsOpenEndDrawer
     _$$_FlutterScaffoldActionsOpenEndDrawerFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldActionsOpenEndDrawer(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldActionsOpenEndDrawer',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldActionsOpenEndDrawer(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldActionsShowBodyScrim
     _$$_FlutterScaffoldActionsShowBodyScrimFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldActionsShowBodyScrim(
-          json['value'] as bool,
-          ZacBuilder<double>.fromJson(json['opacity'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldActionsShowBodyScrim',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldActionsShowBodyScrim(
+              $checkedConvert('value', (v) => v as bool),
+              $checkedConvert(
+                  'opacity', (v) => ZacBuilder<double>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldActionsShowBottomSheet
     _$$_FlutterScaffoldActionsShowBottomSheetFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldActionsShowBottomSheet(
-          ZacBuilder<Widget>.fromJson(json['child'] as Object),
-          backgroundColor: json['backgroundColor'] == null
-              ? null
-              : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-          elevation: json['elevation'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-          shape: json['shape'] == null
-              ? null
-              : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-          clipBehavior: json['clipBehavior'] == null
-              ? null
-              : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-          constraints: json['constraints'] == null
-              ? null
-              : FlutterBoxConstraints.fromJson(
-                  json['constraints'] as Map<String, dynamic>),
-          enableDrag: json['enableDrag'] == null
-              ? null
-              : ZacBuilder<bool?>.fromJson(json['enableDrag'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldActionsShowBottomSheet',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldActionsShowBottomSheet(
+              $checkedConvert(
+                  'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+              backgroundColor: $checkedConvert(
+                  'backgroundColor',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Color?>.fromJson(v as Object)),
+              elevation: $checkedConvert(
+                  'elevation',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              shape: $checkedConvert(
+                  'shape',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+              clipBehavior: $checkedConvert(
+                  'clipBehavior',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Clip?>.fromJson(v as Object)),
+              constraints: $checkedConvert(
+                  'constraints',
+                  (v) => v == null
+                      ? null
+                      : FlutterBoxConstraints.fromJson(
+                          v as Map<String, dynamic>)),
+              enableDrag: $checkedConvert(
+                  'enableDrag',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<bool?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerShowSnackBar
     _$$_FlutterScaffoldMessengerShowSnackBarFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerShowSnackBar(
-          FlutterSnackBar.fromJson(json['snackBar'] as Map<String, dynamic>),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerShowSnackBar',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerShowSnackBar(
+              $checkedConvert('snackBar',
+                  (v) => FlutterSnackBar.fromJson(v as Map<String, dynamic>)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerhideCurrentSnackBar
     _$$_FlutterScaffoldMessengerhideCurrentSnackBarFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerhideCurrentSnackBar(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerhideCurrentSnackBar',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerhideCurrentSnackBar(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerremoveCurrentSnackBar
     _$$_FlutterScaffoldMessengerremoveCurrentSnackBarFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerremoveCurrentSnackBar(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerremoveCurrentSnackBar',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerremoveCurrentSnackBar(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerShowMaterialBanner
     _$$_FlutterScaffoldMessengerShowMaterialBannerFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerShowMaterialBanner(
-          FlutterMaterialBanner.fromJson(
-              json['materialBanner'] as Map<String, dynamic>),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerShowMaterialBanner',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerShowMaterialBanner(
+              $checkedConvert(
+                  'materialBanner',
+                  (v) => FlutterMaterialBanner.fromJson(
+                      v as Map<String, dynamic>)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerHideCurrentMaterialBanner
     _$$_FlutterScaffoldMessengerHideCurrentMaterialBannerFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerHideCurrentMaterialBanner(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerHideCurrentMaterialBanner',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerHideCurrentMaterialBanner(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner
     _$$_FlutterScaffoldMessengerRemoveCurrentMaterialBannerFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterScaffoldMessengerRemoveCurrentMaterialBanner(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
-    _$_FlutterSnackBar(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      content: ZacBuilder<Widget>.fromJson(json['content'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      margin: json['margin'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(json['margin'] as Object),
-      padding: json['padding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
-      width: json['width'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['width'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      behavior: json['behavior'] == null
-          ? null
-          : FlutterSnackBarBehavior.fromJson(
-              json['behavior'] as Map<String, dynamic>),
-      action: json['action'] == null
-          ? null
-          : FlutterSnackBarAction.fromJson(
-              json['action'] as Map<String, dynamic>),
-      onVisible: json['onVisible'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onVisible'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSnackBar',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSnackBar(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          content: $checkedConvert(
+              'content', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          margin: $checkedConvert(
+              'margin',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          padding: $checkedConvert(
+              'padding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          width: $checkedConvert(
+              'width',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          behavior: $checkedConvert(
+              'behavior',
+              (v) => v == null
+                  ? null
+                  : FlutterSnackBarBehavior.fromJson(
+                      v as Map<String, dynamic>)),
+          action: $checkedConvert(
+              'action',
+              (v) => v == null
+                  ? null
+                  : FlutterSnackBarAction.fromJson(v as Map<String, dynamic>)),
+          onVisible: $checkedConvert(
+              'onVisible',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterSnackBarBehaviorFixed _$$_FlutterSnackBarBehaviorFixedFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSnackBarBehaviorFixed(
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterSnackBarBehaviorFixed',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSnackBarBehaviorFixed(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterSnackBarBehaviorFloating _$$_FlutterSnackBarBehaviorFloatingFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSnackBarBehaviorFloating(
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterSnackBarBehaviorFloating',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSnackBarBehaviorFloating(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSnackBarAction(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      textColor: json['textColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['textColor'] as Object),
-      disabledTextColor: json['disabledTextColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['disabledTextColor'] as Object),
-      label: ZacBuilder<String>.fromJson(json['label'] as Object),
-      onPressed:
-          ZacBuilder<List<ZacAction>>.fromJson(json['onPressed'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSnackBarAction',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSnackBarAction(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          textColor: $checkedConvert(
+              'textColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          disabledTextColor: $checkedConvert(
+              'disabledTextColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          label: $checkedConvert(
+              'label', (v) => ZacBuilder<String>.fromJson(v as Object)),
+          onPressed: $checkedConvert('onPressed',
+              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterMaterialBanner(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      content: ZacBuilder<Widget>.fromJson(json['content'] as Object),
-      contentTextStyle: json['contentTextStyle'] == null
-          ? null
-          : ZacBuilder<TextStyle?>.fromJson(json['contentTextStyle'] as Object),
-      actions: ZacBuilder<List<Widget>>.fromJson(json['actions'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      leading: json['leading'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['leading'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      padding: json['padding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(json['padding'] as Object),
-      leadingPadding: json['leadingPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['leadingPadding'] as Object),
-      forceActionsBelow: json['forceActionsBelow'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['forceActionsBelow'] as Object),
-      onVisible: json['onVisible'] == null
-          ? null
-          : ZacBuilder<List<ZacAction>?>.fromJson(json['onVisible'] as Object),
+    $checkedCreate(
+      r'_$_FlutterMaterialBanner',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterMaterialBanner(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          content: $checkedConvert(
+              'content', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          contentTextStyle: $checkedConvert(
+              'contentTextStyle',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextStyle?>.fromJson(v as Object)),
+          actions: $checkedConvert(
+              'actions', (v) => ZacBuilder<List<Widget>>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          leading: $checkedConvert(
+              'leading',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          padding: $checkedConvert(
+              'padding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          leadingPadding: $checkedConvert(
+              'leadingPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          forceActionsBelow: $checkedConvert(
+              'forceActionsBelow',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          onVisible: $checkedConvert(
+              'onVisible',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

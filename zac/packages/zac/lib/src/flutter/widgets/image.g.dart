@@ -8,131 +8,180 @@ part of 'image.dart';
 
 _$_FlutterImageNetowrk _$$_FlutterImageNetowrkFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterImageNetowrk(
-      ZacBuilder<String>.fromJson(json['src'] as Object),
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      scale: json['scale'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['scale'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
-      excludeFromSemantics: json['excludeFromSemantics'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['excludeFromSemantics'] as Object),
-      width: json['width'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['width'] as Object),
-      height: json['height'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['height'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      colorBlendMode: json['colorBlendMode'] == null
-          ? null
-          : ZacBuilder<BlendMode?>.fromJson(json['colorBlendMode'] as Object),
-      fit: json['fit'] == null
-          ? null
-          : ZacBuilder<BoxFit?>.fromJson(json['fit'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      repeat: json['repeat'] == null
-          ? null
-          : ZacBuilder<ImageRepeat?>.fromJson(json['repeat'] as Object),
-      centerSlice: json['centerSlice'] == null
-          ? null
-          : ZacBuilder<Rect?>.fromJson(json['centerSlice'] as Object),
-      matchTextDirection: json['matchTextDirection'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
-      gaplessPlayback: json['gaplessPlayback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['gaplessPlayback'] as Object),
-      filterQuality: json['filterQuality'] == null
-          ? null
-          : ZacBuilder<FilterQuality?>.fromJson(
-              json['filterQuality'] as Object),
-      isAntiAlias: json['isAntiAlias'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['isAntiAlias'] as Object),
-      headers: (json['headers'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
-      cacheWidth: json['cacheWidth'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['cacheWidth'] as Object),
-      cacheHeight: json['cacheHeight'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['cacheHeight'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterImageNetowrk',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterImageNetowrk(
+          $checkedConvert(
+              'src', (v) => ZacBuilder<String>.fromJson(v as Object)),
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          scale: $checkedConvert(
+              'scale',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          excludeFromSemantics: $checkedConvert(
+              'excludeFromSemantics',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          width: $checkedConvert(
+              'width',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          height: $checkedConvert(
+              'height',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          colorBlendMode: $checkedConvert(
+              'colorBlendMode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BlendMode?>.fromJson(v as Object)),
+          fit: $checkedConvert(
+              'fit',
+              (v) =>
+                  v == null ? null : ZacBuilder<BoxFit?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          repeat: $checkedConvert(
+              'repeat',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ImageRepeat?>.fromJson(v as Object)),
+          centerSlice: $checkedConvert(
+              'centerSlice',
+              (v) =>
+                  v == null ? null : ZacBuilder<Rect?>.fromJson(v as Object)),
+          matchTextDirection: $checkedConvert(
+              'matchTextDirection',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          gaplessPlayback: $checkedConvert(
+              'gaplessPlayback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          filterQuality: $checkedConvert(
+              'filterQuality',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FilterQuality?>.fromJson(v as Object)),
+          isAntiAlias: $checkedConvert(
+              'isAntiAlias',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          headers: $checkedConvert(
+              'headers',
+              (v) => (v as Map<String, dynamic>?)?.map(
+                    (k, e) => MapEntry(k, e as String),
+                  )),
+          cacheWidth: $checkedConvert('cacheWidth',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          cacheHeight: $checkedConvert('cacheHeight',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterImageAsset _$$_FlutterImageAssetFromJson(Map<String, dynamic> json) =>
-    _$_FlutterImageAsset(
-      ZacBuilder<String>.fromJson(json['name'] as Object),
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
-      excludeFromSemantics: json['excludeFromSemantics'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['excludeFromSemantics'] as Object),
-      scale: json['scale'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['scale'] as Object),
-      width: json['width'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['width'] as Object),
-      height: json['height'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['height'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      colorBlendMode: json['colorBlendMode'] == null
-          ? null
-          : ZacBuilder<BlendMode?>.fromJson(json['colorBlendMode'] as Object),
-      fit: json['fit'] == null
-          ? null
-          : ZacBuilder<BoxFit?>.fromJson(json['fit'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      repeat: json['repeat'] == null
-          ? null
-          : ZacBuilder<ImageRepeat?>.fromJson(json['repeat'] as Object),
-      centerSlice: json['centerSlice'] == null
-          ? null
-          : ZacBuilder<Rect?>.fromJson(json['centerSlice'] as Object),
-      matchTextDirection: json['matchTextDirection'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['matchTextDirection'] as Object),
-      gaplessPlayback: json['gaplessPlayback'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['gaplessPlayback'] as Object),
-      isAntiAlias: json['isAntiAlias'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['isAntiAlias'] as Object),
-      package: json['package'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['package'] as Object),
-      filterQuality: json['filterQuality'] == null
-          ? null
-          : ZacBuilder<FilterQuality?>.fromJson(
-              json['filterQuality'] as Object),
-      cacheWidth: json['cacheWidth'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['cacheWidth'] as Object),
-      cacheHeight: json['cacheHeight'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['cacheHeight'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterImageAsset',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterImageAsset(
+          $checkedConvert(
+              'name', (v) => ZacBuilder<String>.fromJson(v as Object)),
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          excludeFromSemantics: $checkedConvert(
+              'excludeFromSemantics',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          scale: $checkedConvert(
+              'scale',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          width: $checkedConvert(
+              'width',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          height: $checkedConvert(
+              'height',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          colorBlendMode: $checkedConvert(
+              'colorBlendMode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BlendMode?>.fromJson(v as Object)),
+          fit: $checkedConvert(
+              'fit',
+              (v) =>
+                  v == null ? null : ZacBuilder<BoxFit?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          repeat: $checkedConvert(
+              'repeat',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ImageRepeat?>.fromJson(v as Object)),
+          centerSlice: $checkedConvert(
+              'centerSlice',
+              (v) =>
+                  v == null ? null : ZacBuilder<Rect?>.fromJson(v as Object)),
+          matchTextDirection: $checkedConvert(
+              'matchTextDirection',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          gaplessPlayback: $checkedConvert(
+              'gaplessPlayback',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          isAntiAlias: $checkedConvert(
+              'isAntiAlias',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          package: $checkedConvert(
+              'package',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          filterQuality: $checkedConvert(
+              'filterQuality',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FilterQuality?>.fromJson(v as Object)),
+          cacheWidth: $checkedConvert('cacheWidth',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          cacheHeight: $checkedConvert('cacheHeight',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );

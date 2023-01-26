@@ -8,16 +8,27 @@ part of 'scroll_controller.dart';
 
 _$_ScrollControllerProvide _$$_ScrollControllerProvideFromJson(
         Map<String, dynamic> json) =>
-    _$_ScrollControllerProvide(
-      initialScrollOffset: json['initialScrollOffset'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['initialScrollOffset'] as Object),
-      keepScrollOffset: json['keepScrollOffset'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['keepScrollOffset'] as Object),
-      debugLabel: json['debugLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['debugLabel'] as Object),
-      family: json['family'] as String?,
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_ScrollControllerProvide',
+      json,
+      ($checkedConvert) {
+        final val = _$_ScrollControllerProvide(
+          initialScrollOffset: $checkedConvert(
+              'initialScrollOffset',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          keepScrollOffset: $checkedConvert(
+              'keepScrollOffset',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          debugLabel: $checkedConvert(
+              'debugLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          family: $checkedConvert('family', (v) => v as String?),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

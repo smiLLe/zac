@@ -8,50 +8,82 @@ part of 'refresh_indicator.dart';
 
 _$_FlutterRefreshIndicator _$$_FlutterRefreshIndicatorFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterRefreshIndicator(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
-      displacement: json['displacement'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['displacement'] as Object),
-      edgeOffset: json['edgeOffset'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['edgeOffset'] as Object),
-      onRefresh:
-          ZacBuilder<List<ZacAction>>.fromJson(json['onRefresh'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      semanticsLabel: json['semanticsLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticsLabel'] as Object),
-      semanticsValue: json['semanticsValue'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticsValue'] as Object),
-      strokeWidth: json['strokeWidth'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['strokeWidth'] as Object),
-      triggerMode: json['triggerMode'] == null
-          ? null
-          : ZacBuilder<RefreshIndicatorTriggerMode?>.fromJson(
-              json['triggerMode'] as Object),
+    $checkedCreate(
+      r'_$_FlutterRefreshIndicator',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterRefreshIndicator(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          displacement: $checkedConvert(
+              'displacement',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          edgeOffset: $checkedConvert(
+              'edgeOffset',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          onRefresh: $checkedConvert('onRefresh',
+              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          semanticsLabel: $checkedConvert(
+              'semanticsLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          semanticsValue: $checkedConvert(
+              'semanticsValue',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          strokeWidth: $checkedConvert(
+              'strokeWidth',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          triggerMode: $checkedConvert(
+              'triggerMode',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<RefreshIndicatorTriggerMode?>.fromJson(
+                      v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterRefreshIndicatorTriggerModeonEdge
     _$$_FlutterRefreshIndicatorTriggerModeonEdgeFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterRefreshIndicatorTriggerModeonEdge(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterRefreshIndicatorTriggerModeonEdge',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterRefreshIndicatorTriggerModeonEdge(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterRefreshIndicatorTriggerModeanywhere
     _$$_FlutterRefreshIndicatorTriggerModeanywhereFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterRefreshIndicatorTriggerModeanywhere(
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterRefreshIndicatorTriggerModeanywhere',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterRefreshIndicatorTriggerModeanywhere(
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );

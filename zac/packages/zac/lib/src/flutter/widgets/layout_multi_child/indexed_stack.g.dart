@@ -8,25 +8,36 @@ part of 'indexed_stack.dart';
 
 _$_FlutterIndexedStack _$$_FlutterIndexedStackFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterIndexedStack(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      textDirection: json['textDirection'] == null
-          ? null
-          : ZacBuilder<TextDirection?>.fromJson(
-              json['textDirection'] as Object),
-      sizing: json['sizing'] == null
-          ? null
-          : ZacBuilder<StackFit?>.fromJson(json['sizing'] as Object),
-      index: json['index'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['index'] as Object),
-      children: json['children'] == null
-          ? null
-          : ZacBuilder<List<Widget>?>.fromJson(json['children'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIndexedStack',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIndexedStack(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          textDirection: $checkedConvert(
+              'textDirection',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextDirection?>.fromJson(v as Object)),
+          sizing: $checkedConvert(
+              'sizing',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<StackFit?>.fromJson(v as Object)),
+          index: $checkedConvert('index',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          children: $checkedConvert(
+              'children',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<Widget>?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

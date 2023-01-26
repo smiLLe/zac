@@ -8,25 +8,48 @@ part of 'material.dart';
 
 _$_FlutterOutlineInputBorder _$$_FlutterOutlineInputBorderFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterOutlineInputBorder(
-      borderSide: json['borderSide'] == null
-          ? null
-          : ZacBuilder<BorderSide?>.fromJson(json['borderSide'] as Object),
-      borderRadius: json['borderRadius'] == null
-          ? null
-          : ZacBuilder<BorderRadius?>.fromJson(json['borderRadius'] as Object),
-      gapPadding: json['gapPadding'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['gapPadding'] as Object),
+    $checkedCreate(
+      r'_$_FlutterOutlineInputBorder',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOutlineInputBorder(
+          borderSide: $checkedConvert(
+              'borderSide',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BorderSide?>.fromJson(v as Object)),
+          borderRadius: $checkedConvert(
+              'borderRadius',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BorderRadius?>.fromJson(v as Object)),
+          gapPadding: $checkedConvert(
+              'gapPadding',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_FlutterUnderlineInputBorder _$$_FlutterUnderlineInputBorderFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterUnderlineInputBorder(
-      borderSide: json['borderSide'] == null
-          ? null
-          : ZacBuilder<BorderSide?>.fromJson(json['borderSide'] as Object),
-      borderRadius: json['borderRadius'] == null
-          ? null
-          : ZacBuilder<BorderRadius?>.fromJson(json['borderRadius'] as Object),
+    $checkedCreate(
+      r'_$_FlutterUnderlineInputBorder',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterUnderlineInputBorder(
+          borderSide: $checkedConvert(
+              'borderSide',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BorderSide?>.fromJson(v as Object)),
+          borderRadius: $checkedConvert(
+              'borderRadius',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<BorderRadius?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

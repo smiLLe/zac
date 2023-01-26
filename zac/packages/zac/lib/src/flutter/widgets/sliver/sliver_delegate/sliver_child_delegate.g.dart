@@ -8,44 +8,67 @@ part of 'sliver_child_delegate.dart';
 
 _$_FlutterSliverChildListDelegate _$$_FlutterSliverChildListDelegateFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSliverChildListDelegate(
-      ZacBuilder<List<Widget>>.fromJson(json['children'] as Object),
-      addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['addAutomaticKeepAlives'] as Object),
-      addRepaintBoundaries: json['addRepaintBoundaries'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['addRepaintBoundaries'] as Object),
-      addSemanticIndexes: json['addSemanticIndexes'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['addSemanticIndexes'] as Object),
-      semanticIndexOffset: json['semanticIndexOffset'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['semanticIndexOffset'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterSliverChildListDelegate',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSliverChildListDelegate(
+          $checkedConvert('children',
+              (v) => ZacBuilder<List<Widget>>.fromJson(v as Object)),
+          addAutomaticKeepAlives: $checkedConvert(
+              'addAutomaticKeepAlives',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          addRepaintBoundaries: $checkedConvert(
+              'addRepaintBoundaries',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          addSemanticIndexes: $checkedConvert(
+              'addSemanticIndexes',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          semanticIndexOffset: $checkedConvert('semanticIndexOffset',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterSliverChildListDelegateFixed
     _$$_FlutterSliverChildListDelegateFixedFromJson(
             Map<String, dynamic> json) =>
-        _$_FlutterSliverChildListDelegateFixed(
-          ZacBuilder<List<Widget>>.fromJson(json['children'] as Object),
-          addAutomaticKeepAlives: json['addAutomaticKeepAlives'] == null
-              ? null
-              : ZacBuilder<bool?>.fromJson(
-                  json['addAutomaticKeepAlives'] as Object),
-          addRepaintBoundaries: json['addRepaintBoundaries'] == null
-              ? null
-              : ZacBuilder<bool?>.fromJson(
-                  json['addRepaintBoundaries'] as Object),
-          addSemanticIndexes: json['addSemanticIndexes'] == null
-              ? null
-              : ZacBuilder<bool?>.fromJson(
-                  json['addSemanticIndexes'] as Object),
-          semanticIndexOffset: json['semanticIndexOffset'] == null
-              ? null
-              : ZacBuilder<int?>.fromJson(
-                  json['semanticIndexOffset'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterSliverChildListDelegateFixed',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterSliverChildListDelegateFixed(
+              $checkedConvert('children',
+                  (v) => ZacBuilder<List<Widget>>.fromJson(v as Object)),
+              addAutomaticKeepAlives: $checkedConvert(
+                  'addAutomaticKeepAlives',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<bool?>.fromJson(v as Object)),
+              addRepaintBoundaries: $checkedConvert(
+                  'addRepaintBoundaries',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<bool?>.fromJson(v as Object)),
+              addSemanticIndexes: $checkedConvert(
+                  'addSemanticIndexes',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<bool?>.fromJson(v as Object)),
+              semanticIndexOffset: $checkedConvert(
+                  'semanticIndexOffset',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<int?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
