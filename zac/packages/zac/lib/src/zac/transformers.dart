@@ -109,8 +109,8 @@ class MapTransformer with _$MapTransformer implements ZacBuilder<ZacTransform> {
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   factory MapTransformer.mapper({
-    ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer,
-    ZacListBuilder<ZacTransform, List<ZacTransform>?>? valueTransformer,
+    ZacBuilder<List<ZacTransform>?>? keyTransformer,
+    ZacBuilder<List<ZacTransform>?>? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
@@ -233,7 +233,7 @@ class IterableTransformer
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
-    required ZacListBuilder<ZacTransform, List<ZacTransform>> transformer,
+    required ZacBuilder<List<ZacTransform>> transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)

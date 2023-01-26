@@ -52,11 +52,11 @@ _$_MapContainsValue _$$_MapContainsValueFromJson(Map<String, dynamic> json) =>
 _$_MapMapper _$$_MapMapperFromJson(Map<String, dynamic> json) => _$_MapMapper(
       keyTransformer: json['keyTransformer'] == null
           ? null
-          : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
+          : ZacBuilder<List<ZacTransform>?>.fromJson(
               json['keyTransformer'] as Object),
       valueTransformer: json['valueTransformer'] == null
           ? null
-          : ZacListBuilder<ZacTransform, List<ZacTransform>?>.fromJson(
+          : ZacBuilder<List<ZacTransform>?>.fromJson(
               json['valueTransformer'] as Object),
       $type: json['builder'] as String?,
     );
@@ -93,7 +93,7 @@ _$_MapSetValueForKey _$$_MapSetValueForKeyFromJson(Map<String, dynamic> json) =>
 
 _$_IterableMap _$$_IterableMapFromJson(Map<String, dynamic> json) =>
     _$_IterableMap(
-      transformer: ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
+      transformer: ZacBuilder<List<ZacTransform>>.fromJson(
           json['transformer'] as Object),
       $type: json['builder'] as String?,
     );

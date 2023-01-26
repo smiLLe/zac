@@ -450,7 +450,7 @@ void main() {
         states: <String, ZacStateConfig>{
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
-              actions: ZacValueList<ZacAction, List<ZacAction>>([
+              actions: ZacListOfActions([
                 ZacStateMachineActions.send(
                   family: 'machine',
                   event: ZacBuilder<String>.fromJson('NEXT'),
@@ -487,7 +487,7 @@ void main() {
         states: <String, ZacStateConfig>{
           'a': ZacStateConfig(
             widget: ZacExecuteActionsBuilder.once(
-              actions: ZacValueList<ZacAction, List<ZacAction>>([
+              actions: ZacListOfActions([
                 ZacStateMachineActions.trySend(
                   family: 'machine',
                   event: ZacBuilder<String>.fromJson('NEXT'),

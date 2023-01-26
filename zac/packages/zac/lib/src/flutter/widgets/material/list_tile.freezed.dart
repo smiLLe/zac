@@ -36,9 +36,8 @@ mixin _$FlutterListTile {
   ZacBuilder<EdgeInsetsGeometry?>? get contentPadding =>
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get enabled => throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onTap =>
-      throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onLongPress =>
+  ZacBuilder<List<ZacAction>?>? get onTap => throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>?>? get onLongPress =>
       throw _privateConstructorUsedError; // MouseCursor? mouseCursor,
   ZacBuilder<bool?>? get selected => throw _privateConstructorUsedError;
   ZacBuilder<Color?>? get focusColor => throw _privateConstructorUsedError;
@@ -126,9 +125,9 @@ class _$_FlutterListTile extends _FlutterListTile {
   @override
   final ZacBuilder<bool?>? enabled;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>?>? onTap;
+  final ZacBuilder<List<ZacAction>?>? onTap;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress;
+  final ZacBuilder<List<ZacAction>?>? onLongPress;
 // MouseCursor? mouseCursor,
   @override
   final ZacBuilder<bool?>? selected;
@@ -262,8 +261,8 @@ abstract class _FlutterListTile extends FlutterListTile {
       final ZacBuilder<Color?>? textColor,
       final ZacBuilder<EdgeInsetsGeometry?>? contentPadding,
       final ZacBuilder<bool?>? enabled,
-      final ZacListBuilder<ZacAction, List<ZacAction>?>? onTap,
-      final ZacListBuilder<ZacAction, List<ZacAction>?>? onLongPress,
+      final ZacBuilder<List<ZacAction>?>? onTap,
+      final ZacBuilder<List<ZacAction>?>? onLongPress,
       final ZacBuilder<bool?>? selected,
       final ZacBuilder<Color?>? focusColor,
       final ZacBuilder<Color?>? hoverColor,
@@ -306,9 +305,9 @@ abstract class _FlutterListTile extends FlutterListTile {
   @override
   ZacBuilder<bool?>? get enabled;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onTap;
+  ZacBuilder<List<ZacAction>?>? get onTap;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onLongPress;
+  ZacBuilder<List<ZacAction>?>? get onLongPress;
   @override // MouseCursor? mouseCursor,
   ZacBuilder<bool?>? get selected;
   @override

@@ -33,8 +33,7 @@ mixin _$FlutterColumn {
       throw _privateConstructorUsedError;
   ZacBuilder<TextBaseline?>? get textBaseline =>
       throw _privateConstructorUsedError;
-  ZacListBuilder<Widget, List<Widget>?>? get children =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>?>? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -75,7 +74,7 @@ class _$_FlutterColumn extends _FlutterColumn {
   @override
   final ZacBuilder<TextBaseline?>? textBaseline;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? children;
+  final ZacBuilder<List<Widget>?>? children;
 
   @override
   String toString() {
@@ -128,15 +127,14 @@ class _$_FlutterColumn extends _FlutterColumn {
 
 abstract class _FlutterColumn extends FlutterColumn {
   factory _FlutterColumn(
-          {final ZacBuilder<Key?>? key,
-          final ZacBuilder<MainAxisAlignment?>? mainAxisAlignment,
-          final ZacBuilder<MainAxisSize?>? mainAxisSize,
-          final ZacBuilder<CrossAxisAlignment?>? crossAxisAlignment,
-          final ZacBuilder<TextDirection?>? textDirection,
-          final ZacBuilder<VerticalDirection?>? verticalDirection,
-          final ZacBuilder<TextBaseline?>? textBaseline,
-          final ZacListBuilder<Widget, List<Widget>?>? children}) =
-      _$_FlutterColumn;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<MainAxisAlignment?>? mainAxisAlignment,
+      final ZacBuilder<MainAxisSize?>? mainAxisSize,
+      final ZacBuilder<CrossAxisAlignment?>? crossAxisAlignment,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<VerticalDirection?>? verticalDirection,
+      final ZacBuilder<TextBaseline?>? textBaseline,
+      final ZacBuilder<List<Widget>?>? children}) = _$_FlutterColumn;
   _FlutterColumn._() : super._();
 
   factory _FlutterColumn.fromJson(Map<String, dynamic> json) =
@@ -157,5 +155,5 @@ abstract class _FlutterColumn extends FlutterColumn {
   @override
   ZacBuilder<TextBaseline?>? get textBaseline;
   @override
-  ZacListBuilder<Widget, List<Widget>?>? get children;
+  ZacBuilder<List<Widget>?>? get children;
 }

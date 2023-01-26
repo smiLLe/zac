@@ -36,10 +36,8 @@ void main() {
       FlutterScaffold(
         body: FlutterListTile(
           key: FlutterValueKey('FIND_ME'),
-          onTap:
-              ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
+          onTap: ZacListOfActions([TestAction(onTapCb)]),
+          onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
         ),
       ),
     );

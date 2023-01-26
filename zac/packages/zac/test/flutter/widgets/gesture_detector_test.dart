@@ -23,13 +23,12 @@ void main() {
         key: FlutterValueKey('GestureDetector'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: child,
-        onTap: ZacValueList<ZacAction, List<ZacAction>>([TestAction(onTapCb)]),
-        onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-            [TestAction(onLongPressCb)]),
-        onSecondaryLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-            [TestAction(onSecondaryLongPressCb)]),
-        onTertiaryLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-            [TestAction(onTertiaryLongPressCb)]),
+        onTap: ZacListOfActions([TestAction(onTapCb)]),
+        onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
+        onSecondaryLongPress:
+            ZacListOfActions([TestAction(onSecondaryLongPressCb)]),
+        onTertiaryLongPress:
+            ZacListOfActions([TestAction(onTertiaryLongPressCb)]),
       ),
       (getContext, getZacContext) async {
         final findMe = find.byKey(const ValueKey('GestureDetector'));
@@ -72,8 +71,7 @@ void main() {
         key: FlutterValueKey('GestureDetector'),
         behavior: FlutterHitTestBehavior.opaque(),
         child: child,
-        onDoubleTap:
-            ZacValueList<ZacAction, List<ZacAction>>([TestAction(doubleTapCb)]),
+        onDoubleTap: ZacListOfActions([TestAction(doubleTapCb)]),
       ),
       (getContext, getZacContext) async {
         final findMe = find.byKey(const ValueKey('GestureDetector'));

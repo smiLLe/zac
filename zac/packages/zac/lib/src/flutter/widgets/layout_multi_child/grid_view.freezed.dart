@@ -39,8 +39,7 @@ mixin _$FlutterGridView {
   ZacBuilder<bool?>? get addSemanticIndexes =>
       throw _privateConstructorUsedError;
   ZacBuilder<double?>? get cacheExtent => throw _privateConstructorUsedError;
-  ZacListBuilder<Widget, List<Widget>?>? get children =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>?>? get children => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
@@ -107,7 +106,7 @@ class _$_FlutterGridView extends _FlutterGridView {
   @override
   final ZacBuilder<double?>? cacheExtent;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? children;
+  final ZacBuilder<List<Widget>?>? children;
   @override
   final ZacBuilder<int?>? semanticChildCount;
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -206,7 +205,7 @@ abstract class _FlutterGridView extends FlutterGridView {
       final ZacBuilder<bool?>? addRepaintBoundaries,
       final ZacBuilder<bool?>? addSemanticIndexes,
       final ZacBuilder<double?>? cacheExtent,
-      final ZacListBuilder<Widget, List<Widget>?>? children,
+      final ZacBuilder<List<Widget>?>? children,
       final ZacBuilder<int?>? semanticChildCount,
       final ZacBuilder<Clip?>? clipBehavior,
       final ZacBuilder<ScrollViewKeyboardDismissBehavior?>?
@@ -242,7 +241,7 @@ abstract class _FlutterGridView extends FlutterGridView {
   @override
   ZacBuilder<double?>? get cacheExtent;
   @override
-  ZacListBuilder<Widget, List<Widget>?>? get children;
+  ZacBuilder<List<Widget>?>? get children;
   @override
   ZacBuilder<int?>? get semanticChildCount;
   @override // DragStartBehavior dragStartBehavior = DragStartBehavior.start,

@@ -45,8 +45,7 @@ void main() {
               'x': 1,
               'y': 2,
             }).build(getContext(), getZacContext()),
-            FlutterAlignment(
-                    ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+            FlutterAlignment(ZacDouble.fromJson(1), ZacDouble.fromJson(2))
                 .build(getContext(), getZacContext()));
       },
     );
@@ -83,7 +82,7 @@ void main() {
             'y': 2,
           }).build(getContext(), getZacContext()),
           FlutterAlignmentDirectional(
-                  ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+                  ZacDouble.fromJson(1), ZacDouble.fromJson(2))
               .build(getContext(), getZacContext()));
     });
 
@@ -125,8 +124,7 @@ void main() {
             'dx': 1,
             'dy': 2,
           }).build(getContext(), getZacContext()),
-          FlutterFractionalOffset(
-                  ZacValue<double>.fromJson(1), ZacValue<double>.fromJson(2))
+          FlutterFractionalOffset(ZacDouble.fromJson(1), ZacDouble.fromJson(2))
               .build(getContext(), getZacContext()));
     });
   });

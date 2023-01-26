@@ -53,8 +53,7 @@ _$_FlutterFloatingActionButton _$$_FlutterFloatingActionButtonFromJson(
           : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
       mouseCursor: json['mouseCursor'] == null
           ? null
           : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
@@ -128,8 +127,7 @@ _$_Extended _$$_ExtendedFromJson(Map<String, dynamic> json) => _$_Extended(
           : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
       mouseCursor: json['mouseCursor'] == null
           ? null
           : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
@@ -219,8 +217,7 @@ _$_Large _$$_LargeFromJson(Map<String, dynamic> json) => _$_Large(
           : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
       mouseCursor: json['mouseCursor'] == null
           ? null
           : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),
@@ -291,8 +288,7 @@ _$_Small _$$_SmallFromJson(Map<String, dynamic> json) => _$_Small(
           : ZacBuilder<double?>.fromJson(json['disabledElevation'] as Object),
       onPressed: json['onPressed'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onPressed'] as Object),
       mouseCursor: json['mouseCursor'] == null
           ? null
           : ZacBuilder<MouseCursor?>.fromJson(json['mouseCursor'] as Object),

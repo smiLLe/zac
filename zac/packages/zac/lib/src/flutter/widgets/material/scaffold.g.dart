@@ -23,7 +23,7 @@ _$_FlutterScaffold _$$_FlutterScaffoldFromJson(Map<String, dynamic> json) =>
               json['floatingActionButton'] as Object),
       persistentFooterButtons: json['persistentFooterButtons'] == null
           ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
+          : ZacBuilder<List<Widget>?>.fromJson(
               json['persistentFooterButtons'] as Object),
       drawer: json['drawer'] == null
           ? null
@@ -202,8 +202,7 @@ _$_FlutterSnackBar _$$_FlutterSnackBarFromJson(Map<String, dynamic> json) =>
               json['action'] as Map<String, dynamic>),
       onVisible: json['onVisible'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onVisible'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onVisible'] as Object),
     );
 
 _$_FlutterSnackBarBehaviorFixed _$$_FlutterSnackBarBehaviorFixedFromJson(
@@ -231,8 +230,8 @@ _$_FlutterSnackBarAction _$$_FlutterSnackBarActionFromJson(
           ? null
           : ZacBuilder<Color?>.fromJson(json['disabledTextColor'] as Object),
       label: ZacBuilder<String>.fromJson(json['label'] as Object),
-      onPressed: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
-          json['onPressed'] as Object),
+      onPressed:
+          ZacBuilder<List<ZacAction>>.fromJson(json['onPressed'] as Object),
     );
 
 _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
@@ -245,8 +244,7 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
       contentTextStyle: json['contentTextStyle'] == null
           ? null
           : ZacBuilder<TextStyle?>.fromJson(json['contentTextStyle'] as Object),
-      actions: ZacListBuilder<Widget, List<Widget>>.fromJson(
-          json['actions'] as Object),
+      actions: ZacBuilder<List<Widget>>.fromJson(json['actions'] as Object),
       elevation: json['elevation'] == null
           ? null
           : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
@@ -268,6 +266,5 @@ _$_FlutterMaterialBanner _$$_FlutterMaterialBannerFromJson(
           : ZacBuilder<bool?>.fromJson(json['forceActionsBelow'] as Object),
       onVisible: json['onVisible'] == null
           ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onVisible'] as Object),
+          : ZacBuilder<List<ZacAction>?>.fromJson(json['onVisible'] as Object),
     );

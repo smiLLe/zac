@@ -750,8 +750,7 @@ ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
 
 /// @nodoc
 mixin _$ZacExecuteActionsBuilder {
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>> get actions => throw _privateConstructorUsedError;
   ZacBuilder<Widget>? get child => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -774,7 +773,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
       _$$_ZacExecuteActionsBuilderOnceFromJson(json);
 
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
+  final ZacBuilder<List<ZacAction>> actions;
   @override
   final ZacBuilder<Widget>? child;
 
@@ -811,7 +810,7 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
 
 abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderOnce(
-      {required final ZacListBuilder<ZacAction, List<ZacAction>> actions,
+      {required final ZacBuilder<List<ZacAction>> actions,
       final ZacBuilder<Widget>? child}) = _$_ZacExecuteActionsBuilderOnce;
   _ZacExecuteActionsBuilderOnce._() : super._();
 
@@ -819,7 +818,7 @@ abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
       _$_ZacExecuteActionsBuilderOnce.fromJson;
 
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
+  ZacBuilder<List<ZacAction>> get actions;
   @override
   ZacBuilder<Widget>? get child;
 }
@@ -841,7 +840,7 @@ class _$_ZacExecuteActionsBuilderListen
       _$$_ZacExecuteActionsBuilderListenFromJson(json);
 
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
+  final ZacBuilder<List<ZacAction>> actions;
   @override
   final String family;
   @override
@@ -882,7 +881,7 @@ class _$_ZacExecuteActionsBuilderListen
 abstract class _ZacExecuteActionsBuilderListen
     extends ZacExecuteActionsBuilder {
   factory _ZacExecuteActionsBuilderListen(
-      {required final ZacListBuilder<ZacAction, List<ZacAction>> actions,
+      {required final ZacBuilder<List<ZacAction>> actions,
       required final String family,
       final ZacBuilder<Widget>? child}) = _$_ZacExecuteActionsBuilderListen;
   _ZacExecuteActionsBuilderListen._() : super._();
@@ -891,7 +890,7 @@ abstract class _ZacExecuteActionsBuilderListen
       _$_ZacExecuteActionsBuilderListen.fromJson;
 
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
+  ZacBuilder<List<ZacAction>> get actions;
   String get family;
   @override
   ZacBuilder<Widget>? get child;
@@ -903,11 +902,10 @@ ZacControlFlowAction _$ZacControlFlowActionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ZacControlFlowAction {
-  ZacListBuilder<ZacTransform, List<ZacTransform>> get condition =>
+  ZacBuilder<List<ZacTransform>> get condition =>
       throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>> get ifTrue =>
-      throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>>? get ifFalse =>
+  ZacBuilder<List<ZacAction>> get ifTrue => throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>>? get ifFalse =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -928,11 +926,11 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
       _$$_ZacControlFlowActionIfFromJson(json);
 
   @override
-  final ZacListBuilder<ZacTransform, List<ZacTransform>> condition;
+  final ZacBuilder<List<ZacTransform>> condition;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>> ifTrue;
+  final ZacBuilder<List<ZacAction>> ifTrue;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse;
+  final ZacBuilder<List<ZacAction>>? ifFalse;
 
   @override
   String toString() {
@@ -965,20 +963,18 @@ class _$_ZacControlFlowActionIf extends _ZacControlFlowActionIf {
 
 abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
   factory _ZacControlFlowActionIf(
-          {required final ZacListBuilder<ZacTransform, List<ZacTransform>>
-              condition,
-          required final ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
-          final ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse}) =
-      _$_ZacControlFlowActionIf;
+      {required final ZacBuilder<List<ZacTransform>> condition,
+      required final ZacBuilder<List<ZacAction>> ifTrue,
+      final ZacBuilder<List<ZacAction>>? ifFalse}) = _$_ZacControlFlowActionIf;
   _ZacControlFlowActionIf._() : super._();
 
   factory _ZacControlFlowActionIf.fromJson(Map<String, dynamic> json) =
       _$_ZacControlFlowActionIf.fromJson;
 
   @override
-  ZacListBuilder<ZacTransform, List<ZacTransform>> get condition;
+  ZacBuilder<List<ZacTransform>> get condition;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>> get ifTrue;
+  ZacBuilder<List<ZacAction>> get ifTrue;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>>? get ifFalse;
+  ZacBuilder<List<ZacAction>>? get ifFalse;
 }

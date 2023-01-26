@@ -35,6 +35,5 @@ _$_FlutterColumn _$$_FlutterColumnFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<TextBaseline?>.fromJson(json['textBaseline'] as Object),
       children: json['children'] == null
           ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['children'] as Object),
+          : ZacBuilder<List<Widget>?>.fromJson(json['children'] as Object),
     );

@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-import 'package:zac/src/zac/zac_value.dart';
 
 import 'package:zac/src/zac/generated_registry.dart';
 
@@ -10,24 +9,11 @@ typedef CreateBuilder<T> = ZacBuilder<T> Function(Map<String, dynamic> map);
 typedef CreateBuilderFromSingleType = ZacBuilder<T> Function<T>(
     Map<String, dynamic> map);
 
-typedef CreateListBuilder = ZacListBuilder<T, X>
-    Function<T extends Object?, X extends List<T>?>(Map<String, dynamic> map);
-
-typedef CreateMapBuilder = ZacMapBuilder<T, X> Function<T extends Object?,
-    X extends Map<String, T>?>(Map<String, dynamic> map);
-
 class ZacRegistry extends DelegatingMap<String, Object> {
   static final ZacRegistry _singleton = () {
     final register = ZacRegistry._()
-      ..registerGeneric(ZacValue.union, ZacValue.fromRegister)
       ..registerGeneric(
-          ConsumeSharedValue.union, ConsumeSharedValue.fromRegister)
-      ..registerList(ZacValueList.union, ZacValueList.fromRegister)
-      ..registerList(
-          ConsumeSharedValueList.union, ConsumeSharedValueList.fromRegister)
-      ..registerMap(ZacValueMap.union, ZacValueMap.fromRegister)
-      ..registerMap(
-          ConsumeSharedValueMap.union, ConsumeSharedValueMap.fromRegister);
+          ConsumeSharedValue.union, ConsumeSharedValue.fromRegister);
     addZacBuilders(register);
     return register;
   }();
@@ -52,12 +38,6 @@ $builder''');
 
     return builder;
   }
-
-  CreateListBuilder getRegisteredList(String name) =>
-      _get<CreateListBuilder>(name);
-
-  CreateMapBuilder getRegisteredMap(String name) =>
-      _get<CreateMapBuilder>(name);
 
   CreateBuilder<T> getRegistered<T>(String name) =>
       _get<CreateBuilder<T>>(name);
@@ -106,14 +86,6 @@ $builder''');
 It was not possible to return a ${ZacBuilder<T>} from $ZacRegistry.when
 because the found builder did not match $T.
 Builder: $builder''');
-  }
-
-  void registerList(String name, CreateListBuilder cb) {
-    putIfAbsent(name, () => cb);
-  }
-
-  void registerMap(String name, CreateMapBuilder cb) {
-    putIfAbsent(name, () => cb);
   }
 
   void register<T>(String name, CreateBuilder<T> cb) {

@@ -31,7 +31,7 @@ class FlutterGridView with _$FlutterGridView implements ZacBuilder<GridView> {
     ZacBuilder<bool?>? addRepaintBoundaries,
     ZacBuilder<bool?>? addSemanticIndexes,
     ZacBuilder<double?>? cacheExtent,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
     ZacBuilder<int?>? semanticChildCount,
     // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     ZacBuilder<Clip?>? clipBehavior,

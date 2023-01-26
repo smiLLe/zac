@@ -71,11 +71,11 @@ void main() {
     await testWidgetBuilder(
       tester,
       FlutterScaffold(
-        appBar: FlutterAppBar(title: FlutterText(ZacValue('Title'))),
+        appBar: FlutterAppBar(title: FlutterText(ZacString('Title'))),
         body: FlutterRefreshIndicator(
-          onRefresh: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+          onRefresh: ZacListOfActions([TestAction(cb)]),
           child: FlutterListView(
-            children: ZacValueList<Widget, List<Widget>?>(
+            children: ZacListOfWidgets(
               [
                 FlutterSizedBox(key: FlutterValueKey('child1')),
               ],

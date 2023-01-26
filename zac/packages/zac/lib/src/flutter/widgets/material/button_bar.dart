@@ -31,7 +31,7 @@ class FlutterButtonBar
 // FlutterButtonBarLayoutBehavior? layoutBehavior,
     ZacBuilder<VerticalDirection?>? overflowDirection,
     ZacBuilder<double?>? overflowButtonSpacing,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
   }) = _FlutterButtonBar;
 
   ButtonBar _buildWidget(BuildContext context, ZacContext zacContext) {

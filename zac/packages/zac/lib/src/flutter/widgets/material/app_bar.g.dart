@@ -23,8 +23,7 @@ _$_FlutterAppBar _$$_FlutterAppBarFromJson(Map<String, dynamic> json) =>
           : ZacBuilder<Widget?>.fromJson(json['title'] as Object),
       actions: json['actions'] == null
           ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['actions'] as Object),
+          : ZacBuilder<List<Widget>?>.fromJson(json['actions'] as Object),
       flexibleSpace: json['flexibleSpace'] == null
           ? null
           : ZacBuilder<Widget?>.fromJson(json['flexibleSpace'] as Object),

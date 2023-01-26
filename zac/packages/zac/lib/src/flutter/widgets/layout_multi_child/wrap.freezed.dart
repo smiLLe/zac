@@ -35,8 +35,7 @@ mixin _$FlutterWrap {
   ZacBuilder<VerticalDirection?>? get verticalDirection =>
       throw _privateConstructorUsedError;
   ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacListBuilder<Widget, List<Widget>?>? get children =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>?>? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -86,7 +85,7 @@ class _$_FlutterWrap extends _FlutterWrap {
   @override
   final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? children;
+  final ZacBuilder<List<Widget>?>? children;
 
   @override
   String toString() {
@@ -157,7 +156,7 @@ abstract class _FlutterWrap extends FlutterWrap {
       final ZacBuilder<TextDirection?>? textDirection,
       final ZacBuilder<VerticalDirection?>? verticalDirection,
       final ZacBuilder<Clip?>? clipBehavior,
-      final ZacListBuilder<Widget, List<Widget>?>? children}) = _$_FlutterWrap;
+      final ZacBuilder<List<Widget>?>? children}) = _$_FlutterWrap;
   _FlutterWrap._() : super._();
 
   factory _FlutterWrap.fromJson(Map<String, dynamic> json) =
@@ -184,5 +183,5 @@ abstract class _FlutterWrap extends FlutterWrap {
   @override
   ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacListBuilder<Widget, List<Widget>?>? get children;
+  ZacBuilder<List<Widget>?>? get children;
 }

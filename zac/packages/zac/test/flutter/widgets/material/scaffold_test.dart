@@ -202,10 +202,10 @@ void main() {
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldActions.showBottomSheet(
                           FlutterText(
-                            ZacValue('hello world'),
+                            ZacString('hello world'),
                           ),
                         ),
                       ]),
@@ -236,7 +236,7 @@ void main() {
                     family: 'shared',
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldActions.showBottomSheet(
                           FlutterText(
                             ConsumeSharedValue<String>(family: 'shared'),
@@ -270,14 +270,13 @@ void main() {
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('show'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showSnackBar(
                           FlutterSnackBar(
                             content: FlutterElevatedButton(
                               key: FlutterValueKey('hide'),
-                              child: FlutterText(ZacValue('hello world')),
-                              onPressed:
-                                  ZacValueList<ZacAction, List<ZacAction>>([
+                              child: FlutterText(ZacString('hello world')),
+                              onPressed: ZacListOfActions([
                                 FlutterScaffoldMessenger.hideCurrentSnackBar(),
                               ]),
                             ),
@@ -317,7 +316,7 @@ void main() {
                     family: 'shared',
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showSnackBar(
                           FlutterSnackBar(
                             content: FlutterText(
@@ -354,15 +353,14 @@ void main() {
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('show'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showMaterialBanner(
                           FlutterMaterialBanner(
-                            content: FlutterText(ZacValue('hello world')),
-                            actions: ZacValueList<Widget, List<Widget>>([
+                            content: FlutterText(ZacString('hello world')),
+                            actions: ZacListOfWidgets([
                               FlutterElevatedButton(
                                 key: FlutterValueKey('remove'),
-                                onPressed:
-                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                onPressed: ZacListOfActions([
                                   FlutterScaffoldMessenger
                                       .removeCurrentMaterialBanner(),
                                 ]),
@@ -404,15 +402,14 @@ void main() {
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('show'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showMaterialBanner(
                           FlutterMaterialBanner(
-                            content: FlutterText(ZacValue('hello world')),
-                            actions: ZacValueList<Widget, List<Widget>>([
+                            content: FlutterText(ZacString('hello world')),
+                            actions: ZacListOfWidgets([
                               FlutterElevatedButton(
                                 key: FlutterValueKey('hide'),
-                                onPressed:
-                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                onPressed: ZacListOfActions([
                                   FlutterScaffoldMessenger
                                       .hideCurrentMaterialBanner(),
                                 ]),
@@ -455,15 +452,14 @@ void main() {
                     family: 'shared',
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showMaterialBanner(
                           FlutterMaterialBanner(
-                            content: FlutterText(ZacValue('hello world')),
-                            actions: ZacValueList<Widget, List<Widget>>([
+                            content: FlutterText(ZacString('hello world')),
+                            actions: ZacListOfWidgets([
                               FlutterElevatedButton(
                                 key: FlutterValueKey('remove'),
-                                onPressed:
-                                    ZacValueList<ZacAction, List<ZacAction>>([
+                                onPressed: ZacListOfActions([
                                   FlutterScaffoldMessenger
                                       .removeCurrentMaterialBanner(),
                                 ]),

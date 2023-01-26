@@ -51,8 +51,7 @@ _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
           : ZacBuilder<Widget?>.fromJson(json['content'] as Object),
       actions: json['actions'] == null
           ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['actions'] as Object),
+          : ZacBuilder<List<Widget>?>.fromJson(json['actions'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
           : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
@@ -126,8 +125,7 @@ _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
           : ZacBuilder<Widget?>.fromJson(json['title'] as Object),
       children: json['children'] == null
           ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['children'] as Object),
+          : ZacBuilder<List<Widget>?>.fromJson(json['children'] as Object),
       titlePadding: json['titlePadding'] == null
           ? null
           : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
@@ -175,7 +173,7 @@ _$_FlutterDialogsSimpleDialogOption
               : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
           onPressed: json['onPressed'] == null
               ? null
-              : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
+              : ZacBuilder<List<ZacAction>?>.fromJson(
                   json['onPressed'] as Object),
           padding: json['padding'] == null
               ? null

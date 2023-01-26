@@ -25,7 +25,7 @@ class FlutterIndexedStack
     ZacBuilder<TextDirection?>? textDirection,
     ZacBuilder<StackFit?>? sizing,
     ZacBuilder<int?>? index,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder< List<Widget>?>? children,
   }) = _FlutterIndexedStack;
 
   IndexedStack _buildWidget(BuildContext context, ZacContext zacContext) {

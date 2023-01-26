@@ -260,14 +260,12 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
       locale: json['locale'] == null
           ? null
           : ZacBuilder<Locale?>.fromJson(json['locale'] as Object),
-      shadows: json['shadows'] == null
-          ? null
-          : ZacListBuilder<Shadow, List<Shadow>?>.fromJson(
-              json['shadows'] as Object),
-      fontFeatures: json['fontFeatures'] == null
-          ? null
-          : ZacListBuilder<FontFeature, List<FontFeature>?>.fromJson(
-              json['fontFeatures'] as Object),
+      shadows: (json['shadows'] as List<dynamic>?)
+          ?.map((e) => FlutterShadow.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      fontFeatures: (json['fontFeatures'] as List<dynamic>?)
+          ?.map((e) => FlutterFontFeature.fromJson(e as Map<String, dynamic>))
+          .toList(),
       decoration: json['decoration'] == null
           ? null
           : ZacBuilder<TextDecoration?>.fromJson(json['decoration'] as Object),
@@ -287,10 +285,9 @@ _$_FlutterTextStyle _$$_FlutterTextStyleFromJson(Map<String, dynamic> json) =>
       fontFamily: json['fontFamily'] == null
           ? null
           : ZacBuilder<String?>.fromJson(json['fontFamily'] as Object),
-      fontFamilyFallback: json['fontFamilyFallback'] == null
-          ? null
-          : ZacListBuilder<String, List<String>?>.fromJson(
-              json['fontFamilyFallback'] as Object),
+      fontFamilyFallback: (json['fontFamilyFallback'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       package: json['package'] == null
           ? null
           : ZacBuilder<String?>.fromJson(json['package'] as Object),

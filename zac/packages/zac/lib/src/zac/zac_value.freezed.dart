@@ -14,225 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacValue<T> _$ZacValueFromJson<T extends Object?>(Map<String, dynamic> json) {
-  return _ZacValue<T>.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ZacValue<T extends Object?> {
-  @_Converter()
-  T get value => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValue<T> value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacValue<T extends Object?> extends _ZacValue<T> {
-  _$_ZacValue(@_Converter() this.value) : super._();
-
-  factory _$_ZacValue.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueFromJson(json);
-
-  @override
-  @_Converter()
-  final T value;
-
-  @override
-  String toString() {
-    return 'ZacValue<$T>(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacValue<T> &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValue<T> value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacValue<T extends Object?> extends ZacValue<T> {
-  factory _ZacValue(@_Converter() final T value) = _$_ZacValue<T>;
-  _ZacValue._() : super._();
-
-  factory _ZacValue.fromJson(Map<String, dynamic> json) =
-      _$_ZacValue<T>.fromJson;
-
-  @override
-  @_Converter()
-  T get value;
-}
-
-ZacValueList<T, X>
-    _$ZacValueListFromJson<T extends Object?, X extends List<T>?>(
-        Map<String, dynamic> json) {
-  return _ZacValueListSimple<T, X>.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ZacValueList<T extends Object?, X extends List<T>?> {
-  List<ZacBuilder<T>> get items => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueListSimple<T, X> value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacValueListSimple<T extends Object?, X extends List<T>?>
-    extends _ZacValueListSimple<T, X> {
-  _$_ZacValueListSimple(final List<ZacBuilder<T>> items)
-      : _items = items,
-        super._();
-
-  factory _$_ZacValueListSimple.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueListSimpleFromJson(json);
-
-  final List<ZacBuilder<T>> _items;
-  @override
-  List<ZacBuilder<T>> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
-
-  @override
-  String toString() {
-    return 'ZacValueList<$T, $X>(items: $items)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacValueListSimple<T, X> &&
-            const DeepCollectionEquality().equals(other._items, _items));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueListSimple<T, X> value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacValueListSimple<T extends Object?, X extends List<T>?>
-    extends ZacValueList<T, X> {
-  factory _ZacValueListSimple(final List<ZacBuilder<T>> items) =
-      _$_ZacValueListSimple<T, X>;
-  _ZacValueListSimple._() : super._();
-
-  factory _ZacValueListSimple.fromJson(Map<String, dynamic> json) =
-      _$_ZacValueListSimple<T, X>.fromJson;
-
-  @override
-  List<ZacBuilder<T>> get items;
-}
-
-ZacValueMap<T, X>
-    _$ZacValueMapFromJson<T extends Object?, X extends Map<String, T>?>(
-        Map<String, dynamic> json) {
-  return _ZacValueMap<T, X>.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ZacValueMap<T extends Object?, X extends Map<String, T>?> {
-  Map<String, ZacBuilder<T>> get items => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueMap<T, X> value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacValueMap<T extends Object?, X extends Map<String, T>?>
-    extends _ZacValueMap<T, X> {
-  _$_ZacValueMap(final Map<String, ZacBuilder<T>> items)
-      : _items = items,
-        super._();
-
-  factory _$_ZacValueMap.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacValueMapFromJson(json);
-
-  final Map<String, ZacBuilder<T>> _items;
-  @override
-  Map<String, ZacBuilder<T>> get items {
-    if (_items is EqualUnmodifiableMapView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_items);
-  }
-
-  @override
-  String toString() {
-    return 'ZacValueMap<$T, $X>(items: $items)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacValueMap<T, X> &&
-            const DeepCollectionEquality().equals(other._items, _items));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ZacValueMap<T, X> value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _ZacValueMap<T extends Object?, X extends Map<String, T>?>
-    extends ZacValueMap<T, X> {
-  factory _ZacValueMap(final Map<String, ZacBuilder<T>> items) =
-      _$_ZacValueMap<T, X>;
-  _ZacValueMap._() : super._();
-
-  factory _ZacValueMap.fromJson(Map<String, dynamic> json) =
-      _$_ZacValueMap<T, X>.fromJson;
-
-  @override
-  Map<String, ZacBuilder<T>> get items;
-}
-
 ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
   return _ZacValueActionsAsPayload.fromJson(json);
 }
@@ -240,8 +21,7 @@ ZacValueActions _$ZacValueActionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ZacValueActions {
   ZacBuilder<Object?> get value => throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacAction>> get actions => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -262,7 +42,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
   @override
   final ZacBuilder<Object?> value;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
+  final ZacBuilder<List<ZacAction>> actions;
 
   @override
   String toString() {
@@ -294,7 +74,7 @@ class _$_ZacValueActionsAsPayload extends _ZacValueActionsAsPayload {
 abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   factory _ZacValueActionsAsPayload(
           {required final ZacBuilder<Object?> value,
-          required final ZacListBuilder<ZacAction, List<ZacAction>> actions}) =
+          required final ZacBuilder<List<ZacAction>> actions}) =
       _$_ZacValueActionsAsPayload;
   _ZacValueActionsAsPayload._() : super._();
 
@@ -304,5 +84,735 @@ abstract class _ZacValueActionsAsPayload extends ZacValueActions {
   @override
   ZacBuilder<Object?> get value;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
+  ZacBuilder<List<ZacAction>> get actions;
+}
+
+ZacNum _$ZacNumFromJson(Map<String, dynamic> json) {
+  return _ZacNum.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacNum {
+  num get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacNum value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacNum extends _ZacNum {
+  _$_ZacNum(this.value) : super._();
+
+  factory _$_ZacNum.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNumFromJson(json);
+
+  @override
+  final num value;
+
+  @override
+  String toString() {
+    return 'ZacNum(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacNum &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacNum value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacNum extends ZacNum {
+  factory _ZacNum(final num value) = _$_ZacNum;
+  _ZacNum._() : super._();
+
+  factory _ZacNum.fromJson(Map<String, dynamic> json) = _$_ZacNum.fromJson;
+
+  @override
+  num get value;
+}
+
+ZacInt _$ZacIntFromJson(Map<String, dynamic> json) {
+  return _ZacInt.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacInt {
+  int get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacInt value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacInt extends _ZacInt {
+  _$_ZacInt(this.value) : super._();
+
+  factory _$_ZacInt.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacIntFromJson(json);
+
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'ZacInt(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacInt &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacInt value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacInt extends ZacInt {
+  factory _ZacInt(final int value) = _$_ZacInt;
+  _ZacInt._() : super._();
+
+  factory _ZacInt.fromJson(Map<String, dynamic> json) = _$_ZacInt.fromJson;
+
+  @override
+  int get value;
+}
+
+ZacDouble _$ZacDoubleFromJson(Map<String, dynamic> json) {
+  return _ZacDouble.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacDouble {
+  double get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacDouble value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacDouble extends _ZacDouble {
+  _$_ZacDouble(this.value) : super._();
+
+  factory _$_ZacDouble.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacDoubleFromJson(json);
+
+  @override
+  final double value;
+
+  @override
+  String toString() {
+    return 'ZacDouble(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacDouble &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacDouble value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacDouble extends ZacDouble {
+  factory _ZacDouble(final double value) = _$_ZacDouble;
+  _ZacDouble._() : super._();
+
+  factory _ZacDouble.fromJson(Map<String, dynamic> json) =
+      _$_ZacDouble.fromJson;
+
+  @override
+  double get value;
+}
+
+ZacString _$ZacStringFromJson(Map<String, dynamic> json) {
+  return _ZacString.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacString {
+  String get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacString value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacString extends _ZacString {
+  _$_ZacString(this.value) : super._();
+
+  factory _$_ZacString.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStringFromJson(json);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'ZacString(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacString &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacString value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacString extends ZacString {
+  factory _ZacString(final String value) = _$_ZacString;
+  _ZacString._() : super._();
+
+  factory _ZacString.fromJson(Map<String, dynamic> json) =
+      _$_ZacString.fromJson;
+
+  @override
+  String get value;
+}
+
+ZacBool _$ZacBoolFromJson(Map<String, dynamic> json) {
+  return _ZacBool.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacBool {
+  bool get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacBool value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacBool extends _ZacBool {
+  _$_ZacBool(this.value) : super._();
+
+  factory _$_ZacBool.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacBoolFromJson(json);
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'ZacBool(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacBool &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacBool value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacBool extends ZacBool {
+  factory _ZacBool(final bool value) = _$_ZacBool;
+  _ZacBool._() : super._();
+
+  factory _ZacBool.fromJson(Map<String, dynamic> json) = _$_ZacBool.fromJson;
+
+  @override
+  bool get value;
+}
+
+ZacObject _$ZacObjectFromJson(Map<String, dynamic> json) {
+  return _ZacObject.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacObject {
+  Object get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacObject value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacObject extends _ZacObject {
+  _$_ZacObject(this.value) : super._();
+
+  factory _$_ZacObject.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacObjectFromJson(json);
+
+  @override
+  final Object value;
+
+  @override
+  String toString() {
+    return 'ZacObject(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacObject &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacObject value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacObject extends ZacObject {
+  factory _ZacObject(final Object value) = _$_ZacObject;
+  _ZacObject._() : super._();
+
+  factory _ZacObject.fromJson(Map<String, dynamic> json) =
+      _$_ZacObject.fromJson;
+
+  @override
+  Object get value;
+}
+
+ZacDateTime _$ZacDateTimeFromJson(Map<String, dynamic> json) {
+  return _ZacDateTime.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacDateTime {
+  DateTime get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacDateTime value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacDateTime extends _ZacDateTime {
+  _$_ZacDateTime(this.value) : super._();
+
+  factory _$_ZacDateTime.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacDateTimeFromJson(json);
+
+  @override
+  final DateTime value;
+
+  @override
+  String toString() {
+    return 'ZacDateTime(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacDateTime &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacDateTime value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacDateTime extends ZacDateTime {
+  factory _ZacDateTime(final DateTime value) = _$_ZacDateTime;
+  _ZacDateTime._() : super._();
+
+  factory _ZacDateTime.fromJson(Map<String, dynamic> json) =
+      _$_ZacDateTime.fromJson;
+
+  @override
+  DateTime get value;
+}
+
+ZacListOfWidgets _$ZacListOfWidgetsFromJson(Map<String, dynamic> json) {
+  return _ZacListOfWidgets.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacListOfWidgets {
+  List<ZacBuilder<Widget>> get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfWidgets value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacListOfWidgets extends _ZacListOfWidgets {
+  _$_ZacListOfWidgets(final List<ZacBuilder<Widget>> value)
+      : _value = value,
+        super._();
+
+  factory _$_ZacListOfWidgets.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacListOfWidgetsFromJson(json);
+
+  final List<ZacBuilder<Widget>> _value;
+  @override
+  List<ZacBuilder<Widget>> get value {
+    if (_value is EqualUnmodifiableListView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_value);
+  }
+
+  @override
+  String toString() {
+    return 'ZacListOfWidgets(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacListOfWidgets &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfWidgets value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacListOfWidgets extends ZacListOfWidgets {
+  factory _ZacListOfWidgets(final List<ZacBuilder<Widget>> value) =
+      _$_ZacListOfWidgets;
+  _ZacListOfWidgets._() : super._();
+
+  factory _ZacListOfWidgets.fromJson(Map<String, dynamic> json) =
+      _$_ZacListOfWidgets.fromJson;
+
+  @override
+  List<ZacBuilder<Widget>> get value;
+}
+
+ZacMapOfWidgets _$ZacMapOfWidgetsFromJson(Map<String, dynamic> json) {
+  return _ZacMapOfWidgets.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacMapOfWidgets {
+  Map<String, ZacBuilder<Widget>> get value =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacMapOfWidgets value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacMapOfWidgets extends _ZacMapOfWidgets {
+  _$_ZacMapOfWidgets(final Map<String, ZacBuilder<Widget>> value)
+      : _value = value,
+        super._();
+
+  factory _$_ZacMapOfWidgets.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacMapOfWidgetsFromJson(json);
+
+  final Map<String, ZacBuilder<Widget>> _value;
+  @override
+  Map<String, ZacBuilder<Widget>> get value {
+    if (_value is EqualUnmodifiableMapView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_value);
+  }
+
+  @override
+  String toString() {
+    return 'ZacMapOfWidgets(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacMapOfWidgets &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacMapOfWidgets value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacMapOfWidgets extends ZacMapOfWidgets {
+  factory _ZacMapOfWidgets(final Map<String, ZacBuilder<Widget>> value) =
+      _$_ZacMapOfWidgets;
+  _ZacMapOfWidgets._() : super._();
+
+  factory _ZacMapOfWidgets.fromJson(Map<String, dynamic> json) =
+      _$_ZacMapOfWidgets.fromJson;
+
+  @override
+  Map<String, ZacBuilder<Widget>> get value;
+}
+
+ZacListOfActions _$ZacListOfActionsFromJson(Map<String, dynamic> json) {
+  return _ZacListOfActions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacListOfActions {
+  List<ZacBuilder<ZacAction>> get value => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfActions value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacListOfActions extends _ZacListOfActions {
+  _$_ZacListOfActions(final List<ZacBuilder<ZacAction>> value)
+      : _value = value,
+        super._();
+
+  factory _$_ZacListOfActions.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacListOfActionsFromJson(json);
+
+  final List<ZacBuilder<ZacAction>> _value;
+  @override
+  List<ZacBuilder<ZacAction>> get value {
+    if (_value is EqualUnmodifiableListView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_value);
+  }
+
+  @override
+  String toString() {
+    return 'ZacListOfActions(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacListOfActions &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfActions value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacListOfActions extends ZacListOfActions {
+  factory _ZacListOfActions(final List<ZacBuilder<ZacAction>> value) =
+      _$_ZacListOfActions;
+  _ZacListOfActions._() : super._();
+
+  factory _ZacListOfActions.fromJson(Map<String, dynamic> json) =
+      _$_ZacListOfActions.fromJson;
+
+  @override
+  List<ZacBuilder<ZacAction>> get value;
+}
+
+ZacListOfTransformers _$ZacListOfTransformersFromJson(
+    Map<String, dynamic> json) {
+  return _ZacListOfTransformers.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacListOfTransformers {
+  List<ZacBuilder<ZacTransform>> get value =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfTransformers value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacListOfTransformers extends _ZacListOfTransformers {
+  _$_ZacListOfTransformers(final List<ZacBuilder<ZacTransform>> value)
+      : _value = value,
+        super._();
+
+  factory _$_ZacListOfTransformers.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacListOfTransformersFromJson(json);
+
+  final List<ZacBuilder<ZacTransform>> _value;
+  @override
+  List<ZacBuilder<ZacTransform>> get value {
+    if (_value is EqualUnmodifiableListView) return _value;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_value);
+  }
+
+  @override
+  String toString() {
+    return 'ZacListOfTransformers(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacListOfTransformers &&
+            const DeepCollectionEquality().equals(other._value, _value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacListOfTransformers value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacListOfTransformers extends ZacListOfTransformers {
+  factory _ZacListOfTransformers(final List<ZacBuilder<ZacTransform>> value) =
+      _$_ZacListOfTransformers;
+  _ZacListOfTransformers._() : super._();
+
+  factory _ZacListOfTransformers.fromJson(Map<String, dynamic> json) =
+      _$_ZacListOfTransformers.fromJson;
+
+  @override
+  List<ZacBuilder<ZacTransform>> get value;
 }

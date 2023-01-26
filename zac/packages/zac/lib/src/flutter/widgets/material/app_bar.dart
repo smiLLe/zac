@@ -23,7 +23,7 @@ class FlutterAppBar with _$FlutterAppBar implements ZacBuilder<AppBar> {
     ZacBuilder<Widget?>? leading,
     ZacBuilder<bool?>? automaticallyImplyLeading,
     ZacBuilder<Widget?>? title,
-    ZacListBuilder<Widget, List<Widget>?>? actions,
+    ZacBuilder<List<Widget>?>? actions,
     ZacBuilder<Widget?>? flexibleSpace,
 // PreferredSizeWidget
     ZacBuilder<Widget?>? bottom,
